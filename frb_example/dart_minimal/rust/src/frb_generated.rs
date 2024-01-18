@@ -94,8 +94,8 @@ fn wire_minimal_adder_impl(
             let arena = flutter_rust_bridge::for_generated::Arena::default();
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_a = <i32>::sse_decode(&arena, &mut deserializer);
-            let api_b = <i32>::sse_decode(&arena, &mut deserializer);
+            let api_a = <i32>::sse_decode(&mut deserializer, &arena);
+            let api_b = <i32>::sse_decode(&mut deserializer, &arena);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
@@ -128,7 +128,7 @@ fn wire_my_func_borrowed_impl(
             let arena = flutter_rust_bridge::for_generated::Arena::default();
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <Vec<&MyOpaqueType>>::sse_decode(&arena, &mut deserializer);
+            let api_arg = <Vec<&MyOpaqueType>>::sse_decode(&mut deserializer, &arena);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
@@ -161,7 +161,7 @@ fn wire_my_func_owned_impl(
             let arena = flutter_rust_bridge::for_generated::Arena::default();
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <Vec<MyOpaqueType>>::sse_decode(&arena, &mut deserializer);
+            let api_arg = <Vec<MyOpaqueType>>::sse_decode(&mut deserializer, &arena);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
@@ -183,12 +183,12 @@ flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
 impl SseDecode for MyOpaqueType {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(
-        arena: &flutter_rust_bridge::for_generated::Arena,
         deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer,
+        arena: &flutter_rust_bridge::for_generated::Arena,
     ) -> Self {
         let mut inner = <RustOpaqueMoi<
             flutter_rust_bridge::for_generated::rust_async::RwLock<MyOpaqueType>,
-        >>::sse_decode(arena, deserializer);
+        >>::sse_decode(deserializer, arena);
         return inner.rust_auto_opaque_decode_owned();
     }
 }
@@ -196,13 +196,13 @@ impl SseDecode for MyOpaqueType {
 impl SseDecode for &MyOpaqueType {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(
-        arena: &flutter_rust_bridge::for_generated::Arena,
         deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer,
+        arena: &flutter_rust_bridge::for_generated::Arena,
     ) -> Self {
         let mut inner = <RustOpaqueMoi<
             flutter_rust_bridge::for_generated::rust_async::RwLock<MyOpaqueType>,
-        >>::sse_decode(arena, deserializer);
-        return arena.alloc(inner.rust_auto_opaque_decode_ref()); // TODO hack
+        >>::sse_decode(deserializer, arena);
+        return arena.alloc(inner.rust_auto_opaque_decode_ref());
     }
 }
 
@@ -211,10 +211,10 @@ impl SseDecode
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(
-        arena: &flutter_rust_bridge::for_generated::Arena,
         deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer,
+        arena: &flutter_rust_bridge::for_generated::Arena,
     ) -> Self {
-        let mut inner = <usize>::sse_decode(arena, deserializer);
+        let mut inner = <usize>::sse_decode(deserializer, arena);
         return decode_rust_opaque_moi(inner);
     }
 }
@@ -222,8 +222,8 @@ impl SseDecode
 impl SseDecode for i32 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(
-        arena: &flutter_rust_bridge::for_generated::Arena,
         deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer,
+        arena: &flutter_rust_bridge::for_generated::Arena,
     ) -> Self {
         deserializer.cursor.read_i32::<NativeEndian>().unwrap()
     }
@@ -232,13 +232,13 @@ impl SseDecode for i32 {
 impl SseDecode for Vec<MyOpaqueType> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(
-        arena: &flutter_rust_bridge::for_generated::Arena,
         deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer,
+        arena: &flutter_rust_bridge::for_generated::Arena,
     ) -> Self {
-        let mut len_ = <i32>::sse_decode(arena, deserializer);
+        let mut len_ = <i32>::sse_decode(deserializer, arena);
         let mut ans_ = vec![];
         for idx_ in 0..len_ {
-            ans_.push(<MyOpaqueType>::sse_decode(arena, deserializer));
+            ans_.push(<MyOpaqueType>::sse_decode(deserializer, arena));
         }
         return ans_;
     }
@@ -247,13 +247,13 @@ impl SseDecode for Vec<MyOpaqueType> {
 impl SseDecode for Vec<&MyOpaqueType> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(
-        arena: &flutter_rust_bridge::for_generated::Arena,
         deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer,
+        arena: &flutter_rust_bridge::for_generated::Arena,
     ) -> Self {
-        let mut len_ = <i32>::sse_decode(arena, deserializer);
+        let mut len_ = <i32>::sse_decode(deserializer, arena);
         let mut ans_ = vec![];
         for idx_ in 0..len_ {
-            ans_.push(<&MyOpaqueType>::sse_decode(arena, deserializer));
+            ans_.push(<&MyOpaqueType>::sse_decode(deserializer, arena));
         }
         return ans_;
     }
@@ -262,8 +262,8 @@ impl SseDecode for Vec<&MyOpaqueType> {
 impl SseDecode for () {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(
-        arena: &flutter_rust_bridge::for_generated::Arena,
         deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer,
+        arena: &flutter_rust_bridge::for_generated::Arena,
     ) -> Self {
     }
 }
@@ -271,8 +271,8 @@ impl SseDecode for () {
 impl SseDecode for usize {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(
-        arena: &flutter_rust_bridge::for_generated::Arena,
         deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer,
+        arena: &flutter_rust_bridge::for_generated::Arena,
     ) -> Self {
         deserializer.cursor.read_u64::<NativeEndian>().unwrap() as _
     }
@@ -281,8 +281,8 @@ impl SseDecode for usize {
 impl SseDecode for bool {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(
-        arena: &flutter_rust_bridge::for_generated::Arena,
         deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer,
+        arena: &flutter_rust_bridge::for_generated::Arena,
     ) -> Self {
         deserializer.cursor.read_u8().unwrap() != 0
     }
