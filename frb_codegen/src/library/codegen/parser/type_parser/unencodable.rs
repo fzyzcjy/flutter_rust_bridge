@@ -6,7 +6,6 @@ use syn::TypePath;
 #[derive(Debug, Clone, Hash, Eq, PartialEq)]
 pub(crate) enum ArgsRefs<'a> {
     Generic(&'a [IrType]),
-    Signature(&'a [IrType]),
 }
 
 pub(crate) type SplayedSegment<'a> = (&'a str, Option<ArgsRefs<'a>>);
@@ -20,7 +19,6 @@ pub(crate) fn splay_segments(segments: &[NameComponent]) -> Vec<SplayedSegment> 
                 &ident[..],
                 args.as_ref().map(|args| match &args {
                     Args::Generic(types) => ArgsRefs::Generic(&types[..]),
-                    Args::Signature(types) => ArgsRefs::Signature(&types[..]),
                 }),
             )
         })

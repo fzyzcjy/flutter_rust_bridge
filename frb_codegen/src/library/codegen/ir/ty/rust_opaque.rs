@@ -105,5 +105,4 @@ pub struct NameComponent {
 #[derive(Debug, Clone, Hash, Eq, PartialEq, Serialize)]
 pub enum Args {
     Generic(Vec<IrType>),
-    Signature(Vec<IrType>),
 }
