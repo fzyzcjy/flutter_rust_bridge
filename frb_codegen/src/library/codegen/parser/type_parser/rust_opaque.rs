@@ -1,5 +1,7 @@
 use crate::codegen::ir::namespace::Namespace;
-use crate::codegen::ir::ty::rust_opaque::{IrTypeRustOpaque, RustOpaqueCodecMode};
+use crate::codegen::ir::ty::rust_opaque::{
+    IrRustOpaqueInner, IrTypeRustOpaque, RustOpaqueCodecMode,
+};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::RustOpaque;
 use crate::codegen::parser::type_parser::unencodable::ArgsRefs::Generic;
@@ -49,7 +51,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         );
         RustOpaque(IrTypeRustOpaque::new(
             info.namespace,
-            ty.clone(),
+            IrRustOpaqueInner(ty.rust_api_type()),
             info.codec,
             false,
         ))

@@ -39,13 +39,13 @@ impl RustOpaqueCodecMode {
 impl IrTypeRustOpaque {
     pub fn new(
         namespace: Namespace,
-        inner: IrType,
+        inner: IrRustOpaqueInner,
         codec: RustOpaqueCodecMode,
         brief_name: bool,
     ) -> Self {
         Self {
             namespace,
-            inner: Box::new(inner),
+            inner,
             codec,
             brief_name,
         }
