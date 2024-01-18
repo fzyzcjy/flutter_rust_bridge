@@ -46,7 +46,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             _ => (IrTypeOwnershipMode::Owned, ty.clone()),
         };
 
-        let info = self.get_or_insert_rust_auto_opaque_info(inner, None);
+        let info = self.get_or_insert_rust_auto_opaque_info(&inner, None);
 
         RustAutoOpaque(IrTypeRustAutoOpaque {
             ownership_mode,
