@@ -5,9 +5,10 @@ use std::any::Any;
 pub struct Arena(typed_arena::Arena<Box<dyn Any>>);
 
 impl Arena {
-    pub fn alloc<'a, T: 'static>(&'a self, value: T) -> &'a mut T {
-        let ans = self.0.alloc(Box::new(value));
-        ans.downcast_mut().unwrap()
+    pub fn alloc<'a, T: 'a>(&'a self, value: T) -> &'a mut T {
+        // let ans = self.0.alloc(Box::new(value));
+        // ans.downcast_mut().unwrap()
+        todo!()
     }
 }
 
