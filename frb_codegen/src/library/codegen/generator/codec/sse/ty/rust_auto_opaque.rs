@@ -1,3 +1,4 @@
+use crate::codegen::generator::codec::sse::ty::delegate::simple_delegate_encode;
 use crate::codegen::generator::codec::sse::ty::rust_opaque::{
     generate_generalized_rust_opaque_decode, generate_generalized_rust_opaque_encode,
 };
@@ -15,7 +16,11 @@ impl<'a> CodecSseTyTrait for RustAutoOpaqueCodecSseTy<'a> {
             }
             Lang::RustLang(_) => {
                 let arc = self.ir.inner.codec.arc_ty();
-                Some(format!("flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, {arc}<_>>(self)"))
+                Some(simple_delegate_encode(
+                    lang,
+                    &RustOpaque(self.ir.inner.to_owned()),
+                    &format!("flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, {arc}<_>>(self)"),
+                ))
             }
         }
     }
