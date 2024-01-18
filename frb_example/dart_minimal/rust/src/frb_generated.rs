@@ -105,7 +105,7 @@ fn wire_minimal_adder_impl(
         },
     )
 }
-fn wire_my_func_impl(
+fn wire_my_func_borrowed_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
@@ -113,7 +113,7 @@ fn wire_my_func_impl(
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "my_func",
+            debug_name: "my_func_borrowed",
             port: Some(port_),
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
@@ -132,7 +132,40 @@ fn wire_my_func_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
-                    Result::<_, ()>::Ok(crate::api::minimal::my_func(api_arg))
+                    Result::<_, ()>::Ok(crate::api::minimal::my_func_borrowed(api_arg))
+                })())
+            }
+        },
+    )
+}
+fn wire_my_func_owned_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "my_func_owned",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let arena = flutter_rust_bridge::for_generated::Arena::default();
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_arg = <Vec<MyOpaqueType>>::sse_decode(&mut deserializer, &arena);
+            deserializer.end();
+            move |context| {
+                transform_result_sse((move || {
+                    Result::<_, ()>::Ok(crate::api::minimal::my_func_owned(api_arg))
                 })())
             }
         },
@@ -198,6 +231,21 @@ impl SseDecode for Vec<MyOpaqueType> {
     }
 }
 
+impl SseDecode for Vec<MyOpaqueType> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(
+        deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer,
+        arena: &flutter_rust_bridge::for_generated::Arena,
+    ) -> Self {
+        let mut len_ = <i32>::sse_decode(deserializer, arena);
+        let mut ans_ = vec![];
+        for idx_ in 0..len_ {
+            ans_.push(<MyOpaqueType>::sse_decode(deserializer, arena));
+        }
+        return ans_;
+    }
+}
+
 impl SseDecode for () {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(
@@ -237,7 +285,8 @@ fn pde_ffi_dispatcher_primary_impl(
     match func_id {
         1 => wire_init_app_impl(port, ptr, rust_vec_len, data_len),
         2 => wire_minimal_adder_impl(port, ptr, rust_vec_len, data_len),
-        3 => wire_my_func_impl(port, ptr, rust_vec_len, data_len),
+        4 => wire_my_func_borrowed_impl(port, ptr, rust_vec_len, data_len),
+        3 => wire_my_func_owned_impl(port, ptr, rust_vec_len, data_len),
         _ => unreachable!(),
     }
 }
@@ -277,6 +326,16 @@ impl SseEncode for i32 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         serializer.cursor.write_i32::<NativeEndian>(self).unwrap();
+    }
+}
+
+impl SseEncode for Vec<MyOpaqueType> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self.len() as _, serializer);
+        for item in self {
+            <MyOpaqueType>::sse_encode(item, serializer);
+        }
     }
 }
 
