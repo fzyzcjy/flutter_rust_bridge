@@ -3,6 +3,7 @@ use crate::codegen::generator::codec::sse::ty::rust_opaque::{
     generate_generalized_rust_opaque_decode, generate_generalized_rust_opaque_encode,
 };
 use crate::codegen::generator::codec::sse::ty::*;
+use crate::library::codegen::generator::codec::sse::lang::LangTrait;
 
 impl<'a> CodecSseTyTrait for RustAutoOpaqueCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
@@ -33,7 +34,7 @@ impl<'a> CodecSseTyTrait for RustAutoOpaqueCodecSseTy<'a> {
                 self.ir.inner.codec,
                 self.context,
             )),
-            Lang::RustLang(_) => None,
+            Lang::RustLang(_) => Some(lang.throw_unimplemented("")),
         }
     }
 }
