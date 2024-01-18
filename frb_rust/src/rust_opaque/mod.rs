@@ -15,12 +15,17 @@ pub struct RustOpaqueBase<T: ?Sized + 'static, A: BaseArc<T>> {
 
 /// Please refer to `RustOpaque` for doc.
 pub type RustOpaqueNom<T> = RustOpaqueBase<T, StdArc<T>>;
+/// Please refer to `RustAutoOpaque` for doc.
+pub type RustAutoOpaqueNom<T> = RustAutoOpaqueBase<T, StdArc<T>>;
 
 #[doc(hidden)]
 #[macro_export]
 macro_rules! frb_generated_rust_opaque_def {
     (default_rust_opaque = $default_rust_opaque:ident) => {
+        /// Please refer to `RustOpaque` for doc.
         pub type RustOpaqueMoi<T> = $crate::for_generated::RustOpaqueBase<T, MoiArc<T>>;
+        /// Please refer to `RustAutoOpaque` for doc.
+        pub type RustAutoOpaqueMoi<T> = $crate::for_generated::RustAutoOpaqueBase<T, MoiArc<T>>;
 
         /// A wrapper to support [arbitrary Rust types](https://cjycode.com/flutter_rust_bridge/guides/types/arbitrary).
         ///
