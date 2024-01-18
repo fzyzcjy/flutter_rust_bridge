@@ -216,6 +216,7 @@ sealed class EnumOpaqueTwinNormal with _$EnumOpaqueTwinNormal {
   const factory EnumOpaqueTwinNormal.rwLock(
     RwLockHideDataTwinNormal field0,
   ) = EnumOpaqueTwinNormal_RwLock;
+  const factory EnumOpaqueTwinNormal.nothing() = EnumOpaqueTwinNormal_Nothing;
 }
 
 class EnumOpaqueTwinNormalArray5

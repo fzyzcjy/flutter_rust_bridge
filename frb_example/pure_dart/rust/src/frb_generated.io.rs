@@ -5493,6 +5493,7 @@ impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_moi::EnumOpaqueTwinMo
                     ans.field0.cst_decode(),
                 )
             }
+            5 => crate::api::pseudo_manual::rust_opaque_twin_moi::EnumOpaqueTwinMoi::Nothing,
             _ => unreachable!(),
         }
     }
@@ -5531,6 +5532,7 @@ impl CstDecode<crate::api::rust_opaque::EnumOpaqueTwinNormal> for wire_cst_enum_
                 let ans = unsafe { self.kind.RwLock };
                 crate::api::rust_opaque::EnumOpaqueTwinNormal::RwLock(ans.field0.cst_decode())
             }
+            5 => crate::api::rust_opaque::EnumOpaqueTwinNormal::Nothing,
             _ => unreachable!(),
         }
     }
@@ -5552,28 +5554,29 @@ impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqu
         self,
     ) -> crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync {
         match self.tag {
-            0 => {
-                let ans = unsafe { self.kind.Struct };
-                crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::Struct( ans.field0.cst_decode())
-            }
-            1 => {
-                let ans = unsafe { self.kind.Primitive };
-                crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::Primitive( ans.field0.cst_decode())
-            }
-            2 => {
-                let ans = unsafe { self.kind.TraitObj };
-                crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::TraitObj( ans.field0.cst_decode())
-            }
-            3 => {
-                let ans = unsafe { self.kind.Mutex };
-                crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::Mutex( ans.field0.cst_decode())
-            }
-            4 => {
-                let ans = unsafe { self.kind.RwLock };
-                crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::RwLock( ans.field0.cst_decode())
-            }
-            _ => unreachable!(),
-        }
+                    0 => {
+                        let ans = unsafe { self.kind.Struct };
+                        crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::Struct( ans.field0.cst_decode())
+                    }
+1 => {
+                        let ans = unsafe { self.kind.Primitive };
+                        crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::Primitive( ans.field0.cst_decode())
+                    }
+2 => {
+                        let ans = unsafe { self.kind.TraitObj };
+                        crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::TraitObj( ans.field0.cst_decode())
+                    }
+3 => {
+                        let ans = unsafe { self.kind.Mutex };
+                        crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::Mutex( ans.field0.cst_decode())
+                    }
+4 => {
+                        let ans = unsafe { self.kind.RwLock };
+                        crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::RwLock( ans.field0.cst_decode())
+                    }
+5 => crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::Nothing,
+                    _ => unreachable!(),
+                }
     }
 }
 impl CstDecode<[crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync; 5]>
@@ -5600,28 +5603,29 @@ impl
     ) -> crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi
     {
         match self.tag {
-            0 => {
-                let ans = unsafe { self.kind.Struct };
-                crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi::Struct( ans.field0.cst_decode())
-            }
-            1 => {
-                let ans = unsafe { self.kind.Primitive };
-                crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi::Primitive( ans.field0.cst_decode())
-            }
-            2 => {
-                let ans = unsafe { self.kind.TraitObj };
-                crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi::TraitObj( ans.field0.cst_decode())
-            }
-            3 => {
-                let ans = unsafe { self.kind.Mutex };
-                crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi::Mutex( ans.field0.cst_decode())
-            }
-            4 => {
-                let ans = unsafe { self.kind.RwLock };
-                crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi::RwLock( ans.field0.cst_decode())
-            }
-            _ => unreachable!(),
-        }
+                    0 => {
+                        let ans = unsafe { self.kind.Struct };
+                        crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi::Struct( ans.field0.cst_decode())
+                    }
+1 => {
+                        let ans = unsafe { self.kind.Primitive };
+                        crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi::Primitive( ans.field0.cst_decode())
+                    }
+2 => {
+                        let ans = unsafe { self.kind.TraitObj };
+                        crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi::TraitObj( ans.field0.cst_decode())
+                    }
+3 => {
+                        let ans = unsafe { self.kind.Mutex };
+                        crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi::Mutex( ans.field0.cst_decode())
+                    }
+4 => {
+                        let ans = unsafe { self.kind.RwLock };
+                        crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi::RwLock( ans.field0.cst_decode())
+                    }
+5 => crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi::Nothing,
+                    _ => unreachable!(),
+                }
     }
 }
 impl
@@ -5676,6 +5680,7 @@ impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinS
                     ans.field0.cst_decode(),
                 )
             }
+            5 => crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync::Nothing,
             _ => unreachable!(),
         }
     }
@@ -5725,6 +5730,9 @@ impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueT
                 crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi::RwLock(
                     ans.field0.cst_decode(),
                 )
+            }
+            5 => {
+                crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi::Nothing
             }
             _ => unreachable!(),
         }

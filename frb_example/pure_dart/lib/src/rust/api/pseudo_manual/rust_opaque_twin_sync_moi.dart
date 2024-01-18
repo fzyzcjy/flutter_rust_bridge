@@ -217,6 +217,7 @@ sealed class EnumOpaqueTwinSyncMoi with _$EnumOpaqueTwinSyncMoi {
   const factory EnumOpaqueTwinSyncMoi.rwLock(
     RwLockHideDataTwinSyncMoi field0,
   ) = EnumOpaqueTwinSyncMoi_RwLock;
+  const factory EnumOpaqueTwinSyncMoi.nothing() = EnumOpaqueTwinSyncMoi_Nothing;
 }
 
 class EnumOpaqueTwinSyncMoiArray5

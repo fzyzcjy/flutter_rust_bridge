@@ -212,6 +212,7 @@ sealed class EnumOpaqueTwinMoi with _$EnumOpaqueTwinMoi {
   const factory EnumOpaqueTwinMoi.rwLock(
     RwLockHideDataTwinMoi field0,
   ) = EnumOpaqueTwinMoi_RwLock;
+  const factory EnumOpaqueTwinMoi.nothing() = EnumOpaqueTwinMoi_Nothing;
 }
 
 class EnumOpaqueTwinMoiArray5 extends NonGrowableListView<EnumOpaqueTwinMoi> {

@@ -217,6 +217,7 @@ sealed class EnumOpaqueTwinSyncSse with _$EnumOpaqueTwinSyncSse {
   const factory EnumOpaqueTwinSyncSse.rwLock(
     RwLockHideDataTwinSyncSse field0,
   ) = EnumOpaqueTwinSyncSse_RwLock;
+  const factory EnumOpaqueTwinSyncSse.nothing() = EnumOpaqueTwinSyncSse_Nothing;
 }
 
 class EnumOpaqueTwinSyncSseArray5

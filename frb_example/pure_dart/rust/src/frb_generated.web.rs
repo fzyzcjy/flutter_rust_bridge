@@ -1948,6 +1948,7 @@ impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_moi::EnumOpaqueTwinMo
             4 => crate::api::pseudo_manual::rust_opaque_twin_moi::EnumOpaqueTwinMoi::RwLock(
                 self_.get(1).cst_decode(),
             ),
+            5 => crate::api::pseudo_manual::rust_opaque_twin_moi::EnumOpaqueTwinMoi::Nothing,
             _ => unreachable!(),
         }
     }
@@ -1966,6 +1967,7 @@ impl CstDecode<crate::api::rust_opaque::EnumOpaqueTwinNormal>
             2 => crate::api::rust_opaque::EnumOpaqueTwinNormal::TraitObj(self_.get(1).cst_decode()),
             3 => crate::api::rust_opaque::EnumOpaqueTwinNormal::Mutex(self_.get(1).cst_decode()),
             4 => crate::api::rust_opaque::EnumOpaqueTwinNormal::RwLock(self_.get(1).cst_decode()),
+            5 => crate::api::rust_opaque::EnumOpaqueTwinNormal::Nothing,
             _ => unreachable!(),
         }
     }
@@ -1984,6 +1986,7 @@ impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqu
 2 => { crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::TraitObj( self_.get(1).cst_decode()) },
 3 => { crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::Mutex( self_.get(1).cst_decode()) },
 4 => { crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::RwLock( self_.get(1).cst_decode()) },
+5 => crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::Nothing,
                     _ => unreachable!(),
                 }
     }
@@ -2005,6 +2008,7 @@ impl
 2 => { crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi::TraitObj( self_.get(1).cst_decode()) },
 3 => { crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi::Mutex( self_.get(1).cst_decode()) },
 4 => { crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi::RwLock( self_.get(1).cst_decode()) },
+5 => crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi::Nothing,
                     _ => unreachable!(),
                 }
     }
@@ -2031,6 +2035,7 @@ impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinS
             4 => crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync::RwLock(
                 self_.get(1).cst_decode(),
             ),
+            5 => crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync::Nothing,
             _ => unreachable!(),
         }
     }
@@ -2049,6 +2054,7 @@ impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueT
 2 => { crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi::TraitObj( self_.get(1).cst_decode()) },
 3 => { crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi::Mutex( self_.get(1).cst_decode()) },
 4 => { crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi::RwLock( self_.get(1).cst_decode()) },
+5 => crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi::Nothing,
                     _ => unreachable!(),
                 }
     }

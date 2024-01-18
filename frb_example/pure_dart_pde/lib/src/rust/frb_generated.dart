@@ -32991,6 +32991,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return EnumOpaqueTwinNormal_RwLock(
           dco_decode_RustOpaque_RwLockHideDataTwinNormal(raw[1]),
         );
+      case 5:
+        return EnumOpaqueTwinNormal_Nothing();
       default:
         throw Exception("unreachable");
     }
@@ -33029,6 +33031,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return EnumOpaqueTwinRustAsync_RwLock(
           dco_decode_RustOpaque_RwLockHideDataTwinRustAsync(raw[1]),
         );
+      case 5:
+        return EnumOpaqueTwinRustAsync_Nothing();
       default:
         throw Exception("unreachable");
     }
@@ -33067,6 +33071,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return EnumOpaqueTwinSync_RwLock(
           dco_decode_RustOpaque_RwLockHideDataTwinSync(raw[1]),
         );
+      case 5:
+        return EnumOpaqueTwinSync_Nothing();
       default:
         throw Exception("unreachable");
     }
@@ -40734,6 +40740,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var var_field0 =
             sse_decode_RustOpaque_RwLockHideDataTwinNormal(deserializer);
         return EnumOpaqueTwinNormal_RwLock(var_field0);
+      case 5:
+        return EnumOpaqueTwinNormal_Nothing();
       default:
         throw UnimplementedError('');
     }
@@ -40773,6 +40781,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var var_field0 =
             sse_decode_RustOpaque_RwLockHideDataTwinRustAsync(deserializer);
         return EnumOpaqueTwinRustAsync_RwLock(var_field0);
+      case 5:
+        return EnumOpaqueTwinRustAsync_Nothing();
       default:
         throw UnimplementedError('');
     }
@@ -40812,6 +40822,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var var_field0 =
             sse_decode_RustOpaque_RwLockHideDataTwinSync(deserializer);
         return EnumOpaqueTwinSync_RwLock(var_field0);
+      case 5:
+        return EnumOpaqueTwinSync_Nothing();
       default:
         throw UnimplementedError('');
     }
@@ -48738,6 +48750,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case EnumOpaqueTwinNormal_RwLock(field0: final field0):
         sse_encode_i_32(4, serializer);
         sse_encode_RustOpaque_RwLockHideDataTwinNormal(field0, serializer);
+      case EnumOpaqueTwinNormal_Nothing():
+        sse_encode_i_32(5, serializer);
     }
   }
 
@@ -48768,6 +48782,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case EnumOpaqueTwinRustAsync_RwLock(field0: final field0):
         sse_encode_i_32(4, serializer);
         sse_encode_RustOpaque_RwLockHideDataTwinRustAsync(field0, serializer);
+      case EnumOpaqueTwinRustAsync_Nothing():
+        sse_encode_i_32(5, serializer);
     }
   }
 
@@ -48798,6 +48814,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case EnumOpaqueTwinSync_RwLock(field0: final field0):
         sse_encode_i_32(4, serializer);
         sse_encode_RustOpaque_RwLockHideDataTwinSync(field0, serializer);
+      case EnumOpaqueTwinSync_Nothing():
+        sse_encode_i_32(5, serializer);
     }
   }
 

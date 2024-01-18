@@ -21782,6 +21782,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       wireObj.kind.RwLock.field0 = pre_field0;
       return;
     }
+    if (apiObj is EnumOpaqueTwinMoi_Nothing) {
+      wireObj.tag = 5;
+      return;
+    }
   }
 
   @protected
@@ -21819,6 +21823,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           cst_encode_RustOpaque_RwLockHideDataTwinNormal(apiObj.field0);
       wireObj.tag = 4;
       wireObj.kind.RwLock.field0 = pre_field0;
+      return;
+    }
+    if (apiObj is EnumOpaqueTwinNormal_Nothing) {
+      wireObj.tag = 5;
       return;
     }
   }
@@ -21861,6 +21869,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       wireObj.kind.RwLock.field0 = pre_field0;
       return;
     }
+    if (apiObj is EnumOpaqueTwinRustAsync_Nothing) {
+      wireObj.tag = 5;
+      return;
+    }
   }
 
   @protected
@@ -21901,6 +21913,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       wireObj.kind.RwLock.field0 = pre_field0;
       return;
     }
+    if (apiObj is EnumOpaqueTwinRustAsyncMoi_Nothing) {
+      wireObj.tag = 5;
+      return;
+    }
   }
 
   @protected
@@ -21937,6 +21953,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           cst_encode_RustOpaque_RwLockHideDataTwinSync(apiObj.field0);
       wireObj.tag = 4;
       wireObj.kind.RwLock.field0 = pre_field0;
+      return;
+    }
+    if (apiObj is EnumOpaqueTwinSync_Nothing) {
+      wireObj.tag = 5;
       return;
     }
   }
@@ -21977,6 +21997,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           cst_encode_RustOpaque_RwLockHideDataTwinSyncMoi(apiObj.field0);
       wireObj.tag = 4;
       wireObj.kind.RwLock.field0 = pre_field0;
+      return;
+    }
+    if (apiObj is EnumOpaqueTwinSyncMoi_Nothing) {
+      wireObj.tag = 5;
       return;
     }
   }

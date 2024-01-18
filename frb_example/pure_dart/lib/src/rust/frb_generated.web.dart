@@ -17486,6 +17486,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     if (raw is EnumOpaqueTwinMoi_RwLock) {
       return [4, cst_encode_RustOpaque_RwLockHideDataTwinMoi(raw.field0)];
     }
+    if (raw is EnumOpaqueTwinMoi_Nothing) {
+      return [5];
+    }
 
     throw Exception('unreachable');
   }
@@ -17514,6 +17517,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
     if (raw is EnumOpaqueTwinNormal_RwLock) {
       return [4, cst_encode_RustOpaque_RwLockHideDataTwinNormal(raw.field0)];
+    }
+    if (raw is EnumOpaqueTwinNormal_Nothing) {
+      return [5];
     }
 
     throw Exception('unreachable');
@@ -17547,6 +17553,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
     if (raw is EnumOpaqueTwinRustAsync_RwLock) {
       return [4, cst_encode_RustOpaque_RwLockHideDataTwinRustAsync(raw.field0)];
+    }
+    if (raw is EnumOpaqueTwinRustAsync_Nothing) {
+      return [5];
     }
 
     throw Exception('unreachable');
@@ -17590,6 +17599,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
         cst_encode_RustOpaque_RwLockHideDataTwinRustAsyncMoi(raw.field0)
       ];
     }
+    if (raw is EnumOpaqueTwinRustAsyncMoi_Nothing) {
+      return [5];
+    }
 
     throw Exception('unreachable');
   }
@@ -17618,6 +17630,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
     if (raw is EnumOpaqueTwinSync_RwLock) {
       return [4, cst_encode_RustOpaque_RwLockHideDataTwinSync(raw.field0)];
+    }
+    if (raw is EnumOpaqueTwinSync_Nothing) {
+      return [5];
     }
 
     throw Exception('unreachable');
@@ -17648,6 +17663,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
     if (raw is EnumOpaqueTwinSyncMoi_RwLock) {
       return [4, cst_encode_RustOpaque_RwLockHideDataTwinSyncMoi(raw.field0)];
+    }
+    if (raw is EnumOpaqueTwinSyncMoi_Nothing) {
+      return [5];
     }
 
     throw Exception('unreachable');

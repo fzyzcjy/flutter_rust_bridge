@@ -41023,6 +41023,9 @@ impl SseDecode for crate::api::pseudo_manual::rust_opaque_twin_moi::EnumOpaqueTw
                     var_field0,
                 );
             }
+            5 => {
+                return crate::api::pseudo_manual::rust_opaque_twin_moi::EnumOpaqueTwinMoi::Nothing;
+            }
             _ => {
                 unimplemented!("");
             }
@@ -41072,6 +41075,9 @@ impl SseDecode for crate::api::rust_opaque::EnumOpaqueTwinNormal {
                     <RustOpaqueNom<RwLock<HideDataTwinNormal>>>::sse_decode(deserializer);
                 return crate::api::rust_opaque::EnumOpaqueTwinNormal::RwLock(var_field0);
             }
+            5 => {
+                return crate::api::rust_opaque::EnumOpaqueTwinNormal::Nothing;
+            }
             _ => {
                 unimplemented!("");
             }
@@ -41117,6 +41123,9 @@ impl SseDecode for crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumO
                 let mut var_field0 =
                     <RustOpaqueNom<RwLock<HideDataTwinRustAsync>>>::sse_decode(deserializer);
                 return crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::RwLock(var_field0);
+            }
+            5 => {
+                return crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::Nothing;
             }
             _ => {
                 unimplemented!("");
@@ -41167,6 +41176,9 @@ impl SseDecode
                     <RustOpaqueMoi<RwLock<HideDataTwinRustAsyncMoi>>>::sse_decode(deserializer);
                 return crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi::RwLock(var_field0);
             }
+            5 => {
+                return crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi::Nothing;
+            }
             _ => {
                 unimplemented!("");
             }
@@ -41216,6 +41228,9 @@ impl SseDecode
                     <RustOpaqueNom<RwLock<HideDataTwinRustAsyncSse>>>::sse_decode(deserializer);
                 return crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse::RwLock(var_field0);
             }
+            5 => {
+                return crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse::Nothing;
+            }
             _ => {
                 unimplemented!("");
             }
@@ -41248,6 +41263,7 @@ return crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqu
 return crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRustAsyncSseMoi::Mutex(var_field0); }
 4 => { let mut var_field0 = <RustOpaqueMoi<RwLock < HideDataTwinRustAsyncSseMoi >>>::sse_decode(deserializer);
 return crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRustAsyncSseMoi::RwLock(var_field0); }
+5 => { return crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRustAsyncSseMoi::Nothing; }
  _ => { unimplemented!(""); }}}
                 }
 
@@ -41298,6 +41314,9 @@ impl SseDecode for crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTw
                     var_field0,
                 );
             }
+            5 => {
+                return crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse::Nothing;
+            }
             _ => {
                 unimplemented!("");
             }
@@ -41345,6 +41364,9 @@ impl SseDecode for crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaq
                 let mut var_field0 =
                     <RustOpaqueMoi<RwLock<HideDataTwinSseMoi>>>::sse_decode(deserializer);
                 return crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaqueTwinSseMoi::RwLock(var_field0);
+            }
+            5 => {
+                return crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaqueTwinSseMoi::Nothing;
             }
             _ => {
                 unimplemented!("");
@@ -41395,6 +41417,9 @@ impl SseDecode for crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueT
                     <RustOpaqueNom<RwLock<HideDataTwinSync>>>::sse_decode(deserializer);
                 return crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync::RwLock(var_field0);
             }
+            5 => {
+                return crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync::Nothing;
+            }
             _ => {
                 unimplemented!("");
             }
@@ -41442,6 +41467,9 @@ impl SseDecode for crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpa
                 let mut var_field0 =
                     <RustOpaqueMoi<RwLock<HideDataTwinSyncMoi>>>::sse_decode(deserializer);
                 return crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi::RwLock(var_field0);
+            }
+            5 => {
+                return crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi::Nothing;
             }
             _ => {
                 unimplemented!("");
@@ -41492,6 +41520,9 @@ impl SseDecode for crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpa
                     <RustOpaqueNom<RwLock<HideDataTwinSyncSse>>>::sse_decode(deserializer);
                 return crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse::RwLock(var_field0);
             }
+            5 => {
+                return crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse::Nothing;
+            }
             _ => {
                 unimplemented!("");
             }
@@ -41540,6 +41571,9 @@ impl SseDecode
                 let mut var_field0 =
                     <RustOpaqueMoi<RwLock<HideDataTwinSyncSseMoi>>>::sse_decode(deserializer);
                 return crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::EnumOpaqueTwinSyncSseMoi::RwLock(var_field0);
+            }
+            5 => {
+                return crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::EnumOpaqueTwinSyncSseMoi::Nothing;
             }
             _ => {
                 unimplemented!("");
@@ -55477,6 +55511,9 @@ impl flutter_rust_bridge::IntoDart
             crate::api::pseudo_manual::rust_opaque_twin_moi::EnumOpaqueTwinMoi::RwLock(field0) => {
                 [4.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
+            crate::api::pseudo_manual::rust_opaque_twin_moi::EnumOpaqueTwinMoi::Nothing => {
+                [5.into_dart()].into_dart()
+            }
         }
     }
 }
@@ -55512,6 +55549,7 @@ impl flutter_rust_bridge::IntoDart for crate::api::rust_opaque::EnumOpaqueTwinNo
             crate::api::rust_opaque::EnumOpaqueTwinNormal::RwLock(field0) => {
                 [4.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
+            crate::api::rust_opaque::EnumOpaqueTwinNormal::Nothing => [5.into_dart()].into_dart(),
         }
     }
 }
@@ -55541,6 +55579,7 @@ crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync:
 field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::RwLock(field0) => { [4.into_dart(),
 field0.into_into_dart().into_dart()].into_dart() }
+crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::Nothing => { [5.into_dart()].into_dart() }
  }
     }
 }
@@ -55574,6 +55613,7 @@ crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAs
 field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi::RwLock(field0) => { [4.into_dart(),
 field0.into_into_dart().into_dart()].into_dart() }
+crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi::Nothing => { [5.into_dart()].into_dart() }
  }
     }
 }
@@ -55608,6 +55648,7 @@ crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAs
 field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse::RwLock(field0) => { [4.into_dart(),
 field0.into_into_dart().into_dart()].into_dart() }
+crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse::Nothing => { [5.into_dart()].into_dart() }
  }
     }
 }
@@ -55640,6 +55681,7 @@ crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRu
 field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRustAsyncSseMoi::RwLock(field0) => { [4.into_dart(),
 field0.into_into_dart().into_dart()].into_dart() }
+crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRustAsyncSseMoi::Nothing => { [5.into_dart()].into_dart() }
  }
                 }
             }
@@ -55669,6 +55711,9 @@ impl flutter_rust_bridge::IntoDart
             }
             crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse::RwLock(field0) => {
                 [4.into_dart(), field0.into_into_dart().into_dart()].into_dart()
+            }
+            crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse::Nothing => {
+                [5.into_dart()].into_dart()
             }
         }
     }
@@ -55701,6 +55746,7 @@ crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaqueTwinSseMoi::Mutex
 field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaqueTwinSseMoi::RwLock(field0) => { [4.into_dart(),
 field0.into_into_dart().into_dart()].into_dart() }
+crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaqueTwinSseMoi::Nothing => { [5.into_dart()].into_dart() }
  }
     }
 }
@@ -55740,6 +55786,9 @@ impl flutter_rust_bridge::IntoDart
             crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync::RwLock(
                 field0,
             ) => [4.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
+            crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync::Nothing => {
+                [5.into_dart()].into_dart()
+            }
         }
     }
 }
@@ -55773,6 +55822,7 @@ crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi::Mut
 field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi::RwLock(field0) => { [4.into_dart(),
 field0.into_into_dart().into_dart()].into_dart() }
+crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi::Nothing => { [5.into_dart()].into_dart() }
  }
     }
 }
@@ -55806,6 +55856,7 @@ crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse::Mut
 field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse::RwLock(field0) => { [4.into_dart(),
 field0.into_into_dart().into_dart()].into_dart() }
+crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse::Nothing => { [5.into_dart()].into_dart() }
  }
     }
 }
@@ -55839,6 +55890,7 @@ crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::EnumOpaqueTwinSyncSseM
 field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::EnumOpaqueTwinSyncSseMoi::RwLock(field0) => { [4.into_dart(),
 field0.into_into_dart().into_dart()].into_dart() }
+crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::EnumOpaqueTwinSyncSseMoi::Nothing => { [5.into_dart()].into_dart() }
  }
     }
 }
@@ -67576,6 +67628,9 @@ impl SseEncode for crate::api::pseudo_manual::rust_opaque_twin_moi::EnumOpaqueTw
                 <i32>::sse_encode(4, serializer);
                 <RustOpaqueMoi<RwLock<HideDataTwinMoi>>>::sse_encode(field0, serializer);
             }
+            crate::api::pseudo_manual::rust_opaque_twin_moi::EnumOpaqueTwinMoi::Nothing => {
+                <i32>::sse_encode(5, serializer);
+            }
         }
     }
 }
@@ -67619,6 +67674,9 @@ impl SseEncode for crate::api::rust_opaque::EnumOpaqueTwinNormal {
                 <i32>::sse_encode(4, serializer);
                 <RustOpaqueNom<RwLock<HideDataTwinNormal>>>::sse_encode(field0, serializer);
             }
+            crate::api::rust_opaque::EnumOpaqueTwinNormal::Nothing => {
+                <i32>::sse_encode(5, serializer);
+            }
         }
     }
 }
@@ -67649,6 +67707,7 @@ crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync:
  }
 crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::RwLock(field0) => { <i32>::sse_encode(4, serializer); <RustOpaqueNom<RwLock < HideDataTwinRustAsync >>>::sse_encode(field0, serializer);
  }
+crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::Nothing => { <i32>::sse_encode(5, serializer);  }
  }
     }
 }
@@ -67677,6 +67736,7 @@ crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAs
  }
 crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi::RwLock(field0) => { <i32>::sse_encode(4, serializer); <RustOpaqueMoi<RwLock < HideDataTwinRustAsyncMoi >>>::sse_encode(field0, serializer);
  }
+crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi::Nothing => { <i32>::sse_encode(5, serializer);  }
  }
     }
 }
@@ -67705,6 +67765,7 @@ crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAs
  }
 crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse::RwLock(field0) => { <i32>::sse_encode(4, serializer); <RustOpaqueNom<RwLock < HideDataTwinRustAsyncSse >>>::sse_encode(field0, serializer);
  }
+crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse::Nothing => { <i32>::sse_encode(5, serializer);  }
  }
     }
 }
@@ -67730,6 +67791,7 @@ crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRu
  }
 crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRustAsyncSseMoi::RwLock(field0) => { <i32>::sse_encode(4, serializer); <RustOpaqueMoi<RwLock < HideDataTwinRustAsyncSseMoi >>>::sse_encode(field0, serializer);
  }
+crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRustAsyncSseMoi::Nothing => { <i32>::sse_encode(5, serializer);  }
  }}
                 }
 
@@ -67771,6 +67833,9 @@ impl SseEncode for crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTw
                 <i32>::sse_encode(4, serializer);
                 <RustOpaqueNom<RwLock<HideDataTwinSse>>>::sse_encode(field0, serializer);
             }
+            crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse::Nothing => {
+                <i32>::sse_encode(5, serializer);
+            }
         }
     }
 }
@@ -67801,6 +67866,7 @@ crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaqueTwinSseMoi::Mutex
  }
 crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaqueTwinSseMoi::RwLock(field0) => { <i32>::sse_encode(4, serializer); <RustOpaqueMoi<RwLock < HideDataTwinSseMoi >>>::sse_encode(field0, serializer);
  }
+crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaqueTwinSseMoi::Nothing => { <i32>::sse_encode(5, serializer);  }
  }
     }
 }
@@ -67844,6 +67910,9 @@ impl SseEncode for crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueT
                 <i32>::sse_encode(4, serializer);
                 <RustOpaqueNom<RwLock<HideDataTwinSync>>>::sse_encode(field0, serializer);
             }
+            crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync::Nothing => {
+                <i32>::sse_encode(5, serializer);
+            }
         }
     }
 }
@@ -67874,6 +67943,7 @@ crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi::Mut
  }
 crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi::RwLock(field0) => { <i32>::sse_encode(4, serializer); <RustOpaqueMoi<RwLock < HideDataTwinSyncMoi >>>::sse_encode(field0, serializer);
  }
+crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi::Nothing => { <i32>::sse_encode(5, serializer);  }
  }
     }
 }
@@ -67900,6 +67970,7 @@ crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse::Mut
  }
 crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse::RwLock(field0) => { <i32>::sse_encode(4, serializer); <RustOpaqueNom<RwLock < HideDataTwinSyncSse >>>::sse_encode(field0, serializer);
  }
+crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse::Nothing => { <i32>::sse_encode(5, serializer);  }
  }
     }
 }
@@ -67928,6 +67999,7 @@ crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::EnumOpaqueTwinSyncSseM
  }
 crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::EnumOpaqueTwinSyncSseMoi::RwLock(field0) => { <i32>::sse_encode(4, serializer); <RustOpaqueMoi<RwLock < HideDataTwinSyncSseMoi >>>::sse_encode(field0, serializer);
  }
+crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::EnumOpaqueTwinSyncSseMoi::Nothing => { <i32>::sse_encode(5, serializer);  }
  }
     }
 }
