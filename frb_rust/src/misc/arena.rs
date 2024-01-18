@@ -1,28 +1,20 @@
 use std::any::Any;
-use std::cell::RefCell;
 
 // ref: (1) "scoped" things (e.g. scoped-threads) (2) "arena" things (e.g. typed_arena and many others)
 pub struct Arena {
-    values: RefCell<Vec<Box<dyn Any>>>,
+    values: Vec<Box<dyn Any>>,
 }
 
 impl Default for Arena {
     fn default() -> Self {
-        Self {
-            values: RefCell::new(vec![]),
-        }
+        Self { values: vec![] }
     }
 }
 
 impl Arena {
     pub fn put<T: 'static>(&mut self, value: T) -> &mut T {
-        self.values.borrow_mut().push(Box::new(value));
-        self.values
-            .borrow_mut()
-            .last_mut()
-            .unwrap()
-            .downcast_mut()
-            .unwrap()
+        self.values.push(Box::new(value));
+        self.values.last_mut().unwrap().downcast_mut().unwrap()
     }
 }
 
