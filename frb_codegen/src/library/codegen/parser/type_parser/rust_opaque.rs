@@ -45,6 +45,10 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             false,
         ))
     }
+
+    fn parse_rust_auto_opaque(&mut self, ty: &IrType) -> IrType {
+        TODO
+    }
 }
 
 pub(super) type RustOpaqueParserInfo = GeneralizedRustOpaqueParserInfo;
