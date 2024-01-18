@@ -242,10 +242,10 @@ pub fn rust_auto_opaque_arg_vec_own_twin_normal(
     }
 }
 
-pub fn rust_auto_opaque_return_vec_own_twin_normal(initial: i32) -> Vec<NonCloneSimpleTwinNormal> {
+pub fn rust_auto_opaque_return_vec_own_twin_normal() -> Vec<NonCloneSimpleTwinNormal> {
     vec![
-        NonCloneSimpleTwinNormal { inner: initial },
-        NonCloneSimpleTwinNormal { inner: initial },
+        NonCloneSimpleTwinNormal { inner: 10 },
+        NonCloneSimpleTwinNormal { inner: 20 },
     ]
 }
 
