@@ -93,7 +93,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             info = info.merge(self.parse_fn_arg(i, sig_input, &owner, &context)?)?;
         }
         info = info.merge(self.parse_fn_output(sig, &context)?)?;
-        info = self.transform_fn_info(info, &context);
+        info = self.transform_fn_info(info);
 
         let codec_mode_pack = compute_codec_mode_pack(&attributes, force_codec_mode_pack);
         let mode = compute_func_mode(&attributes, &info);

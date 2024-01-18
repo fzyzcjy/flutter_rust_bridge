@@ -75,14 +75,6 @@ impl<'a> TypeParser<'a> {
         TypeParserWithContext::new(self, context).parse_type(ty)
     }
 
-    pub(crate) fn transform_type_rust_auto_opaque(
-        &mut self,
-        ty: &IrType,
-        context: &TypeParserParsingContext,
-    ) -> IrType {
-        TypeParserWithContext::new(self, context).transform_type_rust_auto_opaque(ty)
-    }
-
     pub(crate) fn check_candidate_rust_auto_opaque(
         &mut self,
         ty: &IrType,
