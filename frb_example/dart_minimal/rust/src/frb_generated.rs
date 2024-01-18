@@ -22,7 +22,6 @@
 use crate::api::minimal::*;
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, WriteBytesExt};
 use flutter_rust_bridge::for_generated::transform_result_dco;
-use flutter_rust_bridge::rust_async::{RwLock, RwLockReadGuard};
 use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 // Section: boilerplate
@@ -223,18 +222,17 @@ impl<'a> SseDecode<'a> for MyOpaqueType {
     }
 }
 
-impl<'a> SseDecode<'a> for &'a MyOpaqueType {
+impl<'a> SseDecode<'a> for &MyOpaqueType {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(
-        arena: &'a Arena<'a>,
+        arena: &Arena,
         deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer,
     ) -> Self {
         let mut inner = <RustOpaqueMoi<
             flutter_rust_bridge::for_generated::rust_async::RwLock<MyOpaqueType>,
         >>::sse_decode(arena, deserializer);
-        let inner_ref: &'a mut RustOpaqueMoi<RwLock<MyOpaqueType>> = arena.alloc_RustAutoOpaque_Opaque_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(inner);
-        let ans: &'a mut RwLockReadGuard<MyOpaqueType> = arena.alloc_RustAutoOpaque_Lock_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(inner_ref.rust_auto_opaque_decode_ref());
-        return ans;
+        let inner_ref = arena.alloc_RustAutoOpaque_Opaque_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(inner);
+        return arena.alloc_RustAutoOpaque_Lock_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(inner_ref.rust_auto_opaque_decode_ref());
     }
 }
 
