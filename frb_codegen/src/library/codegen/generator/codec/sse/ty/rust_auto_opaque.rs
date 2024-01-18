@@ -22,16 +22,16 @@ impl<'a> CodecSseTyTrait for RustAutoOpaqueCodecSseTy<'a> {
         })
     }
 
-    fn generate_extra(&self, lang: &Lang) -> String {
+    fn generate_extra(&self, lang: &Lang) -> Option<String> {
         match lang {
-            Lang::DartLang(_) => "".to_owned(),
+            Lang::DartLang(_) => None,
             Lang::RustLang(_) => {
                 let arc = self.ir.inner.codec.arc_ty();
-                generate_sse_encode_or_decode_impl(
+                Some(generate_sse_encode_or_decode_impl(
                     &self.ir.raw.string,
                     &format!("flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, {arc}<_>>(self)"),
                     EncodeOrDecode::Encode,
-                )
+                ))
             }
         }
     }
