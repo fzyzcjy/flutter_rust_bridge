@@ -69,7 +69,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 fn parse_datetime(args: &[IrType]) -> anyhow::Result<IrType> {
     // frb-coverage:ignore-end
     if let [IrType::RustAutoOpaque(inner)] = args {
-        if let Unencodable(IrTypeUnencodable { segments, .. }) = &inner.raw {
+        if let Unencodable(IrTypeUnencodable { segments, .. }) = &*inner.raw {
             return Ok(match splay_segments(segments).last().unwrap() {
                 ("Utc", None) => Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Utc)),
                 ("Local", None) => Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Local)),
