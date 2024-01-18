@@ -250,8 +250,18 @@ pub fn rust_auto_opaque_explicit_arg_twin_normal(
     arg: RustAutoOpaque<NonCloneSimpleTwinNormal>,
     expect: i32,
 ) {
-    // TODO provide API of borrow, mut-borrow, to-own
-    assert_eq!(TODO, expect);
+    assert_eq!(arg.try_read_blocking().unwrap(), expect);
+}
+
+pub struct StructWithExplicitAutoOpaqueFieldTwinNormal {
+    pub auto_opaque: RustAutoOpaque<NonCloneSimpleTwinNormal>,
+    pub normal: i32,
+}
+
+pub fn rust_auto_opaque_explicit_struct_twin_normal(
+    arg: StructWithExplicitAutoOpaqueFieldTwinNormal,
+) {
+    assert_eq!(arg.auto_opaque.try_read_blocking().unwrap(), arg.normal);
 }
 
 pub fn rust_auto_opaque_explicit_return_twin_normal(
