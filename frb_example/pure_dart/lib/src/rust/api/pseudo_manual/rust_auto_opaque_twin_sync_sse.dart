@@ -107,24 +107,23 @@ void rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSyncSse(
         .rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSyncSse(
             arg: arg, hint: hint);
 
-void rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinSyncSse(
-        {required StructWithGoodAndOpaqueFieldTwinSyncSse arg, dynamic hint}) =>
-    RustLib.instance.api
-        .rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinSyncSse(
-            arg: arg, hint: hint);
-
-void rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinSyncSse(
-        {required StructWithGoodAndOpaqueFieldTwinSyncSse arg, dynamic hint}) =>
-    RustLib.instance.api
-        .rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinSyncSse(
-            arg: arg, hint: hint);
-
 StructWithGoodAndOpaqueFieldTwinSyncSse
     rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSyncSse(
             {dynamic hint}) =>
         RustLib.instance.api
             .rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSyncSse(
                 hint: hint);
+
+void rustAutoOpaqueArgVecOwnTwinSyncSse(
+        {required List<NonCloneSimpleTwinSyncSse> arg,
+        required List<int> expect,
+        dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueArgVecOwnTwinSyncSse(
+        arg: arg, expect: expect, hint: hint);
+
+List<NonCloneSimpleTwinSyncSse> rustAutoOpaqueReturnVecOwnTwinSyncSse(
+        {dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueReturnVecOwnTwinSyncSse(hint: hint);
 
 void rustAutoOpaqueExplicitArgTwinSyncSse(
         {required NonCloneSimpleTwinSyncSse arg,
@@ -328,26 +327,6 @@ class OpaqueTwoTwinSyncSse extends RustOpaque {
   );
 }
 
-// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithGoodAndOpaqueFieldTwinSyncSse>>
-@sealed
-class StructWithGoodAndOpaqueFieldTwinSyncSse extends RustOpaque {
-  StructWithGoodAndOpaqueFieldTwinSyncSse.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
-
-  StructWithGoodAndOpaqueFieldTwinSyncSse.sseDecode(
-      int ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinSyncSse,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinSyncSse,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinSyncSsePtr,
-  );
-}
-
 class StructWithExplicitAutoOpaqueFieldTwinSyncSse {
   final NonCloneSimpleTwinSyncSse autoOpaque;
   final int normal;
@@ -367,4 +346,25 @@ class StructWithExplicitAutoOpaqueFieldTwinSyncSse {
           runtimeType == other.runtimeType &&
           autoOpaque == other.autoOpaque &&
           normal == other.normal;
+}
+
+class StructWithGoodAndOpaqueFieldTwinSyncSse {
+  final String good;
+  final NonCloneSimpleTwinSyncSse opaque;
+
+  const StructWithGoodAndOpaqueFieldTwinSyncSse({
+    required this.good,
+    required this.opaque,
+  });
+
+  @override
+  int get hashCode => good.hashCode ^ opaque.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StructWithGoodAndOpaqueFieldTwinSyncSse &&
+          runtimeType == other.runtimeType &&
+          good == other.good &&
+          opaque == other.opaque;
 }

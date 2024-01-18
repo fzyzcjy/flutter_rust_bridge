@@ -2631,6 +2631,78 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwin
         }
     }
 }
+impl CstDecode<Vec<NonCloneSimpleTwinMoi>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> Vec<NonCloneSimpleTwinMoi> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl CstDecode<Vec<NonCloneSimpleTwinNormal>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> Vec<NonCloneSimpleTwinNormal> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl CstDecode<Vec<NonCloneSimpleTwinRustAsync>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> Vec<NonCloneSimpleTwinRustAsync> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl CstDecode<Vec<NonCloneSimpleTwinRustAsyncMoi>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> Vec<NonCloneSimpleTwinRustAsyncMoi> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl CstDecode<Vec<NonCloneSimpleTwinSync>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> Vec<NonCloneSimpleTwinSync> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl CstDecode<Vec<NonCloneSimpleTwinSyncMoi>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> Vec<NonCloneSimpleTwinSyncMoi> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
 impl CstDecode<Vec<chrono::Duration>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -6304,6 +6376,97 @@ impl CstDecode<crate::api::pseudo_manual::rust_auto_opaque_twin_sync_moi::Struct
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync_moi::StructWithExplicitAutoOpaqueFieldTwinSyncMoi{auto_opaque:  self_.get(0).cst_decode(),normal:  self_.get(1).cst_decode()}
             }
         }
+impl
+    CstDecode<
+        crate::api::pseudo_manual::rust_auto_opaque_twin_moi::StructWithGoodAndOpaqueFieldTwinMoi,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::rust_auto_opaque_twin_moi::StructWithGoodAndOpaqueFieldTwinMoi
+    {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::rust_auto_opaque_twin_moi::StructWithGoodAndOpaqueFieldTwinMoi {
+            good: self_.get(0).cst_decode(),
+            opaque: self_.get(1).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::rust_auto_opaque::StructWithGoodAndOpaqueFieldTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> crate::api::rust_auto_opaque::StructWithGoodAndOpaqueFieldTwinNormal {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::rust_auto_opaque::StructWithGoodAndOpaqueFieldTwinNormal {
+            good: self_.get(0).cst_decode(),
+            opaque: self_.get(1).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::StructWithGoodAndOpaqueFieldTwinRustAsync> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+            // Codec=Cst (C-struct based), see doc to use other codecs
+            fn cst_decode(self) -> crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::StructWithGoodAndOpaqueFieldTwinRustAsync {
+                let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
+                assert_eq!(self_.length(), 2, "Expected 2 elements, got {}", self_.length());
+                crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::StructWithGoodAndOpaqueFieldTwinRustAsync{good:  self_.get(0).cst_decode(),opaque:  self_.get(1).cst_decode()}
+            }
+        }
+impl CstDecode<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_moi::StructWithGoodAndOpaqueFieldTwinRustAsyncMoi> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+            // Codec=Cst (C-struct based), see doc to use other codecs
+            fn cst_decode(self) -> crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_moi::StructWithGoodAndOpaqueFieldTwinRustAsyncMoi {
+                let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
+                assert_eq!(self_.length(), 2, "Expected 2 elements, got {}", self_.length());
+                crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_moi::StructWithGoodAndOpaqueFieldTwinRustAsyncMoi{good:  self_.get(0).cst_decode(),opaque:  self_.get(1).cst_decode()}
+            }
+        }
+impl
+    CstDecode<
+        crate::api::pseudo_manual::rust_auto_opaque_twin_sync::StructWithGoodAndOpaqueFieldTwinSync,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::rust_auto_opaque_twin_sync::StructWithGoodAndOpaqueFieldTwinSync
+    {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::rust_auto_opaque_twin_sync::StructWithGoodAndOpaqueFieldTwinSync{good:  self_.get(0).cst_decode(),opaque:  self_.get(1).cst_decode()}
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::rust_auto_opaque_twin_sync_moi::StructWithGoodAndOpaqueFieldTwinSyncMoi> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+            // Codec=Cst (C-struct based), see doc to use other codecs
+            fn cst_decode(self) -> crate::api::pseudo_manual::rust_auto_opaque_twin_sync_moi::StructWithGoodAndOpaqueFieldTwinSyncMoi {
+                let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
+                assert_eq!(self_.length(), 2, "Expected 2 elements, got {}", self_.length());
+                crate::api::pseudo_manual::rust_auto_opaque_twin_sync_moi::StructWithGoodAndOpaqueFieldTwinSyncMoi{good:  self_.get(0).cst_decode(),opaque:  self_.get(1).cst_decode()}
+            }
+        }
 impl CstDecode<crate::api::structure::StructWithOneFieldTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -7439,96 +7602,6 @@ impl CstDecode<StructInMiscNoTwinExampleA>
         CstDecode::<
             RustOpaqueNom<
                 flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleA>,
-            >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
-    }
-}
-impl CstDecode<StructWithGoodAndOpaqueFieldTwinMoi>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StructWithGoodAndOpaqueFieldTwinMoi {
-        CstDecode::<
-            RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::rust_async::RwLock<
-                    StructWithGoodAndOpaqueFieldTwinMoi,
-                >,
-            >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
-    }
-}
-impl CstDecode<StructWithGoodAndOpaqueFieldTwinNormal>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StructWithGoodAndOpaqueFieldTwinNormal {
-        CstDecode::<
-            RustOpaqueNom<
-                flutter_rust_bridge::for_generated::rust_async::RwLock<
-                    StructWithGoodAndOpaqueFieldTwinNormal,
-                >,
-            >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
-    }
-}
-impl CstDecode<StructWithGoodAndOpaqueFieldTwinRustAsync>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StructWithGoodAndOpaqueFieldTwinRustAsync {
-        CstDecode::<
-            RustOpaqueNom<
-                flutter_rust_bridge::for_generated::rust_async::RwLock<
-                    StructWithGoodAndOpaqueFieldTwinRustAsync,
-                >,
-            >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
-    }
-}
-impl CstDecode<StructWithGoodAndOpaqueFieldTwinRustAsyncMoi>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StructWithGoodAndOpaqueFieldTwinRustAsyncMoi {
-        CstDecode::<
-            RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::rust_async::RwLock<
-                    StructWithGoodAndOpaqueFieldTwinRustAsyncMoi,
-                >,
-            >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
-    }
-}
-impl CstDecode<StructWithGoodAndOpaqueFieldTwinSync>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StructWithGoodAndOpaqueFieldTwinSync {
-        CstDecode::<
-            RustOpaqueNom<
-                flutter_rust_bridge::for_generated::rust_async::RwLock<
-                    StructWithGoodAndOpaqueFieldTwinSync,
-                >,
-            >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
-    }
-}
-impl CstDecode<StructWithGoodAndOpaqueFieldTwinSyncMoi>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StructWithGoodAndOpaqueFieldTwinSyncMoi {
-        CstDecode::<
-            RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::rust_async::RwLock<
-                    StructWithGoodAndOpaqueFieldTwinSyncMoi,
-                >,
             >,
         >::cst_decode(self)
         .rust_auto_opaque_decode_owned()
@@ -9238,148 +9311,6 @@ impl
             compile_error!("64-bit pointers are not supported.");
         }
         unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<
-                StructWithGoodAndOpaqueFieldTwinMoi,
-            >,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithGoodAndOpaqueFieldTwinMoi>,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueNom<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<
-                StructWithGoodAndOpaqueFieldTwinNormal,
-            >,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueNom<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<
-            StructWithGoodAndOpaqueFieldTwinNormal,
-        >,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueNom<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<
-                StructWithGoodAndOpaqueFieldTwinRustAsync,
-            >,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueNom<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<
-            StructWithGoodAndOpaqueFieldTwinRustAsync,
-        >,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<
-                StructWithGoodAndOpaqueFieldTwinRustAsyncMoi,
-            >,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<
-            StructWithGoodAndOpaqueFieldTwinRustAsyncMoi,
-        >,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueNom<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<
-                StructWithGoodAndOpaqueFieldTwinSync,
-            >,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueNom<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<
-            StructWithGoodAndOpaqueFieldTwinSync,
-        >,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<
-                StructWithGoodAndOpaqueFieldTwinSyncMoi,
-            >,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<
-            StructWithGoodAndOpaqueFieldTwinSyncMoi,
-        >,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
     }
 }
 impl
@@ -23662,6 +23593,15 @@ pub fn wire_rust_auto_opaque_arg_own_twin_moi(
 }
 
 #[wasm_bindgen]
+pub fn wire_rust_auto_opaque_arg_vec_own_twin_moi(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    expect: Box<[i32]>,
+) {
+    wire_rust_auto_opaque_arg_vec_own_twin_moi_impl(port_, arg, expect)
+}
+
+#[wasm_bindgen]
 pub fn wire_rust_auto_opaque_borrow_and_borrow_twin_moi(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
@@ -23766,19 +23706,10 @@ pub fn wire_rust_auto_opaque_return_own_twin_moi(
 }
 
 #[wasm_bindgen]
-pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_moi(
+pub fn wire_rust_auto_opaque_return_vec_own_twin_moi(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_moi_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_moi(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_moi_impl(port_, arg)
+    wire_rust_auto_opaque_return_vec_own_twin_moi_impl(port_)
 }
 
 #[wasm_bindgen]
@@ -23977,6 +23908,15 @@ pub fn wire_rust_auto_opaque_arg_own_twin_rust_async(
 }
 
 #[wasm_bindgen]
+pub fn wire_rust_auto_opaque_arg_vec_own_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    expect: Box<[i32]>,
+) {
+    wire_rust_auto_opaque_arg_vec_own_twin_rust_async_impl(port_, arg, expect)
+}
+
+#[wasm_bindgen]
 pub fn wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
@@ -24081,23 +24021,10 @@ pub fn wire_rust_auto_opaque_return_own_twin_rust_async(
 }
 
 #[wasm_bindgen]
-pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_rust_async(
+pub fn wire_rust_auto_opaque_return_vec_own_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_rust_async_impl(
-        port_, arg,
-    )
-}
-
-#[wasm_bindgen]
-pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_rust_async_impl(
-        port_, arg,
-    )
+    wire_rust_auto_opaque_return_vec_own_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
@@ -24306,6 +24233,15 @@ pub fn wire_rust_auto_opaque_arg_own_twin_rust_async_moi(
 }
 
 #[wasm_bindgen]
+pub fn wire_rust_auto_opaque_arg_vec_own_twin_rust_async_moi(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    expect: Box<[i32]>,
+) {
+    wire_rust_auto_opaque_arg_vec_own_twin_rust_async_moi_impl(port_, arg, expect)
+}
+
+#[wasm_bindgen]
 pub fn wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_moi(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
@@ -24410,23 +24346,10 @@ pub fn wire_rust_auto_opaque_return_own_twin_rust_async_moi(
 }
 
 #[wasm_bindgen]
-pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_rust_async_moi(
+pub fn wire_rust_auto_opaque_return_vec_own_twin_rust_async_moi(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_rust_async_moi_impl(
-        port_, arg,
-    )
-}
-
-#[wasm_bindgen]
-pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_rust_async_moi_impl(
-        port_, arg,
-    )
+    wire_rust_auto_opaque_return_vec_own_twin_rust_async_moi_impl(port_)
 }
 
 #[wasm_bindgen]
@@ -24729,6 +24652,21 @@ pub fn wire_rust_auto_opaque_arg_own_twin_rust_async_sse(
 }
 
 #[wasm_bindgen]
+pub fn wire_rust_auto_opaque_arg_vec_own_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_arg_vec_own_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
 pub fn wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -24919,28 +24857,13 @@ pub fn wire_rust_auto_opaque_return_own_twin_rust_async_sse(
 }
 
 #[wasm_bindgen]
-pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_rust_async_sse(
+pub fn wire_rust_auto_opaque_return_vec_own_twin_rust_async_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_rust_async_sse_impl(
-        port_,
-        ptr_,
-        rust_vec_len_,
-        data_len_,
-    )
-}
-
-#[wasm_bindgen]
-pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_rust_async_sse_impl(
+    wire_rust_auto_opaque_return_vec_own_twin_rust_async_sse_impl(
         port_,
         ptr_,
         rust_vec_len_,
@@ -25299,6 +25222,21 @@ pub fn wire_rust_auto_opaque_arg_own_twin_rust_async_sse_moi(
 }
 
 #[wasm_bindgen]
+pub fn wire_rust_auto_opaque_arg_vec_own_twin_rust_async_sse_moi(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_arg_vec_own_twin_rust_async_sse_moi_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
 pub fn wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_sse_moi(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -25494,28 +25432,18 @@ pub fn wire_rust_auto_opaque_return_own_twin_rust_async_sse_moi(
 }
 
 #[wasm_bindgen]
-pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_rust_async_sse_moi(
+pub fn wire_rust_auto_opaque_return_vec_own_twin_rust_async_sse_moi(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_rust_async_sse_moi_impl(
+    wire_rust_auto_opaque_return_vec_own_twin_rust_async_sse_moi_impl(
         port_,
         ptr_,
         rust_vec_len_,
         data_len_,
     )
-}
-
-#[wasm_bindgen]
-pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_rust_async_sse_moi_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -25849,6 +25777,16 @@ pub fn wire_rust_auto_opaque_arg_own_twin_sse(
 }
 
 #[wasm_bindgen]
+pub fn wire_rust_auto_opaque_arg_vec_own_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_arg_vec_own_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
 pub fn wire_rust_auto_opaque_borrow_and_borrow_twin_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -25984,33 +25922,13 @@ pub fn wire_rust_auto_opaque_return_own_twin_sse(
 }
 
 #[wasm_bindgen]
-pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sse(
+pub fn wire_rust_auto_opaque_return_vec_own_twin_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sse_impl(
-        port_,
-        ptr_,
-        rust_vec_len_,
-        data_len_,
-    )
-}
-
-#[wasm_bindgen]
-pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sse_impl(
-        port_,
-        ptr_,
-        rust_vec_len_,
-        data_len_,
-    )
+    wire_rust_auto_opaque_return_vec_own_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -26344,6 +26262,16 @@ pub fn wire_rust_auto_opaque_arg_own_twin_sse_moi(
 }
 
 #[wasm_bindgen]
+pub fn wire_rust_auto_opaque_arg_vec_own_twin_sse_moi(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_arg_vec_own_twin_sse_moi_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
 pub fn wire_rust_auto_opaque_borrow_and_borrow_twin_sse_moi(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -26489,33 +26417,13 @@ pub fn wire_rust_auto_opaque_return_own_twin_sse_moi(
 }
 
 #[wasm_bindgen]
-pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sse_moi(
+pub fn wire_rust_auto_opaque_return_vec_own_twin_sse_moi(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sse_moi_impl(
-        port_,
-        ptr_,
-        rust_vec_len_,
-        data_len_,
-    )
-}
-
-#[wasm_bindgen]
-pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sse_moi_impl(
-        port_,
-        ptr_,
-        rust_vec_len_,
-        data_len_,
-    )
+    wire_rust_auto_opaque_return_vec_own_twin_sse_moi_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -26746,6 +26654,14 @@ pub fn wire_rust_auto_opaque_arg_own_twin_sync(
 }
 
 #[wasm_bindgen]
+pub fn wire_rust_auto_opaque_arg_vec_own_twin_sync(
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    expect: Box<[i32]>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_rust_auto_opaque_arg_vec_own_twin_sync_impl(arg, expect)
+}
+
+#[wasm_bindgen]
 pub fn wire_rust_auto_opaque_borrow_and_borrow_twin_sync(
     a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     b: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
@@ -26837,17 +26753,9 @@ pub fn wire_rust_auto_opaque_return_own_twin_sync(
 }
 
 #[wasm_bindgen]
-pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync(
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+pub fn wire_rust_auto_opaque_return_vec_own_twin_sync(
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync_impl(arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync(
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync_impl(arg)
+    wire_rust_auto_opaque_return_vec_own_twin_sync_impl()
 }
 
 #[wasm_bindgen]
@@ -27020,6 +26928,14 @@ pub fn wire_rust_auto_opaque_arg_own_twin_sync_moi(
 }
 
 #[wasm_bindgen]
+pub fn wire_rust_auto_opaque_arg_vec_own_twin_sync_moi(
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    expect: Box<[i32]>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_rust_auto_opaque_arg_vec_own_twin_sync_moi_impl(arg, expect)
+}
+
+#[wasm_bindgen]
 pub fn wire_rust_auto_opaque_borrow_and_borrow_twin_sync_moi(
     a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     b: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
@@ -27111,17 +27027,9 @@ pub fn wire_rust_auto_opaque_return_own_twin_sync_moi(
 }
 
 #[wasm_bindgen]
-pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync_moi(
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+pub fn wire_rust_auto_opaque_return_vec_own_twin_sync_moi(
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync_moi_impl(arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync_moi(
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync_moi_impl(arg)
+    wire_rust_auto_opaque_return_vec_own_twin_sync_moi_impl()
 }
 
 #[wasm_bindgen]
@@ -27370,6 +27278,15 @@ pub fn wire_rust_auto_opaque_arg_own_twin_sync_sse(
 }
 
 #[wasm_bindgen]
+pub fn wire_rust_auto_opaque_arg_vec_own_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_rust_auto_opaque_arg_vec_own_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
 pub fn wire_rust_auto_opaque_borrow_and_borrow_twin_sync_sse(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
@@ -27491,29 +27408,12 @@ pub fn wire_rust_auto_opaque_return_own_twin_sync_sse(
 }
 
 #[wasm_bindgen]
-pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync_sse(
+pub fn wire_rust_auto_opaque_return_vec_own_twin_sync_sse(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync_sse_impl(
-        ptr_,
-        rust_vec_len_,
-        data_len_,
-    )
-}
-
-#[wasm_bindgen]
-pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync_sse(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync_sse_impl(
-        ptr_,
-        rust_vec_len_,
-        data_len_,
-    )
+    wire_rust_auto_opaque_return_vec_own_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -27801,6 +27701,15 @@ pub fn wire_rust_auto_opaque_arg_own_twin_sync_sse_moi(
 }
 
 #[wasm_bindgen]
+pub fn wire_rust_auto_opaque_arg_vec_own_twin_sync_sse_moi(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_rust_auto_opaque_arg_vec_own_twin_sync_sse_moi_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
 pub fn wire_rust_auto_opaque_borrow_and_borrow_twin_sync_sse_moi(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
@@ -27930,29 +27839,12 @@ pub fn wire_rust_auto_opaque_return_own_twin_sync_sse_moi(
 }
 
 #[wasm_bindgen]
-pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync_sse_moi(
+pub fn wire_rust_auto_opaque_return_vec_own_twin_sync_sse_moi(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync_sse_moi_impl(
-        ptr_,
-        rust_vec_len_,
-        data_len_,
-    )
-}
-
-#[wasm_bindgen]
-pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync_sse_moi(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync_sse_moi_impl(
-        ptr_,
-        rust_vec_len_,
-        data_len_,
-    )
+    wire_rust_auto_opaque_return_vec_own_twin_sync_sse_moi_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -30425,6 +30317,15 @@ pub fn wire_rust_auto_opaque_arg_own_twin_normal(
 }
 
 #[wasm_bindgen]
+pub fn wire_rust_auto_opaque_arg_vec_own_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    expect: Box<[i32]>,
+) {
+    wire_rust_auto_opaque_arg_vec_own_twin_normal_impl(port_, arg, expect)
+}
+
+#[wasm_bindgen]
 pub fn wire_rust_auto_opaque_borrow_and_borrow_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
@@ -30529,21 +30430,10 @@ pub fn wire_rust_auto_opaque_return_own_twin_normal(
 }
 
 #[wasm_bindgen]
-pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_normal(
+pub fn wire_rust_auto_opaque_return_vec_own_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_normal_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_normal(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_normal_impl(
-        port_, arg,
-    )
+    wire_rust_auto_opaque_return_vec_own_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
@@ -33331,290 +33221,6 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     unsafe {
         StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleB>>::decrement_strong_count(ptr as _);
     }
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinMoi(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithGoodAndOpaqueFieldTwinMoi>,
-    >::increment_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinMoi(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithGoodAndOpaqueFieldTwinMoi>,
-    >::decrement_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<
-                StructWithGoodAndOpaqueFieldTwinNormal,
-            >,
-        >::increment_strong_count(ptr as _);
-    }
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<
-                StructWithGoodAndOpaqueFieldTwinNormal,
-            >,
-        >::decrement_strong_count(ptr as _);
-    }
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<
-                StructWithGoodAndOpaqueFieldTwinRustAsync,
-            >,
-        >::increment_strong_count(ptr as _);
-    }
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<
-                StructWithGoodAndOpaqueFieldTwinRustAsync,
-            >,
-        >::decrement_strong_count(ptr as _);
-    }
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncMoi(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<
-            StructWithGoodAndOpaqueFieldTwinRustAsyncMoi,
-        >,
-    >::increment_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncMoi(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<
-            StructWithGoodAndOpaqueFieldTwinRustAsyncMoi,
-        >,
-    >::decrement_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<
-                StructWithGoodAndOpaqueFieldTwinRustAsyncSse,
-            >,
-        >::increment_strong_count(ptr as _);
-    }
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<
-                StructWithGoodAndOpaqueFieldTwinRustAsyncSse,
-            >,
-        >::decrement_strong_count(ptr as _);
-    }
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<
-            StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi,
-        >,
-    >::increment_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<
-            StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi,
-        >,
-    >::decrement_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<
-                StructWithGoodAndOpaqueFieldTwinSse,
-            >,
-        >::increment_strong_count(ptr as _);
-    }
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<
-                StructWithGoodAndOpaqueFieldTwinSse,
-            >,
-        >::decrement_strong_count(ptr as _);
-    }
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSseMoi(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<
-            StructWithGoodAndOpaqueFieldTwinSseMoi,
-        >,
-    >::increment_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSseMoi(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<
-            StructWithGoodAndOpaqueFieldTwinSseMoi,
-        >,
-    >::decrement_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<
-                StructWithGoodAndOpaqueFieldTwinSync,
-            >,
-        >::increment_strong_count(ptr as _);
-    }
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<
-                StructWithGoodAndOpaqueFieldTwinSync,
-            >,
-        >::decrement_strong_count(ptr as _);
-    }
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncMoi(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<
-            StructWithGoodAndOpaqueFieldTwinSyncMoi,
-        >,
-    >::increment_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncMoi(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<
-            StructWithGoodAndOpaqueFieldTwinSyncMoi,
-        >,
-    >::decrement_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<
-                StructWithGoodAndOpaqueFieldTwinSyncSse,
-            >,
-        >::increment_strong_count(ptr as _);
-    }
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<
-                StructWithGoodAndOpaqueFieldTwinSyncSse,
-            >,
-        >::decrement_strong_count(ptr as _);
-    }
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSseMoi(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<
-            StructWithGoodAndOpaqueFieldTwinSyncSseMoi,
-        >,
-    >::increment_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSseMoi(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<
-            StructWithGoodAndOpaqueFieldTwinSyncSseMoi,
-        >,
-    >::decrement_strong_count(ptr as _);
 }
 
 #[wasm_bindgen]
