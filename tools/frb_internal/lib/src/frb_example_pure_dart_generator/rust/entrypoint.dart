@@ -80,7 +80,7 @@ class RustGenerator extends BaseGenerator {
       ans = ans.replaceAllMapped(
           RegExp(r'Rust(Auto)?Opaque(Nom)?(<|::)'),
           (m) =>
-              'crate::frb_generated::Rust${m.group(1)}OpaqueMoi${m.group(3)}');
+              'crate::frb_generated::Rust${m.group(1) ?? ""}OpaqueMoi${m.group(3)}');
     }
 
     return ans;
