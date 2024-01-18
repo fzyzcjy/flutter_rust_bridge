@@ -53,6 +53,19 @@ pub fn func_enum_with_item_struct_twin_sync(
     arg
 }
 
+// #1674
+pub enum EnumWithDiscriminantTwinSync {
+    OneHundred = 100,
+    Fifty = 50,
+}
+
+#[flutter_rust_bridge::frb(sync)]
+pub fn func_enum_with_discriminant_twin_sync(
+    arg: EnumWithDiscriminantTwinSync,
+) -> EnumWithDiscriminantTwinSync {
+    arg
+}
+
 #[frb]
 #[derive(Debug)]
 pub struct NoteTwinSync {

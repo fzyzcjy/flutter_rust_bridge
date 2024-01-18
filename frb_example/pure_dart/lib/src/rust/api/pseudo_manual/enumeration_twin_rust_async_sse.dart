@@ -29,6 +29,13 @@ Future<EnumWithItemStructTwinRustAsyncSse>
         RustLib.instance.api
             .funcEnumWithItemStructTwinRustAsyncSse(arg: arg, hint: hint);
 
+Future<EnumWithDiscriminantTwinRustAsyncSse>
+    funcEnumWithDiscriminantTwinRustAsyncSse(
+            {required EnumWithDiscriminantTwinRustAsyncSse arg,
+            dynamic hint}) =>
+        RustLib.instance.api
+            .funcEnumWithDiscriminantTwinRustAsyncSse(arg: arg, hint: hint);
+
 Future<Uint8List> printNoteTwinRustAsyncSse(
         {required NoteTwinRustAsyncSse note, dynamic hint}) =>
     RustLib.instance.api.printNoteTwinRustAsyncSse(note: note, hint: hint);
@@ -64,6 +71,11 @@ sealed class DistanceTwinRustAsyncSse with _$DistanceTwinRustAsyncSse {
 enum EnumSimpleTwinRustAsyncSse {
   a,
   b,
+}
+
+enum EnumWithDiscriminantTwinRustAsyncSse {
+  oneHundred,
+  fifty,
 }
 
 @freezed

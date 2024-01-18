@@ -2018,6 +2018,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   EnumSimpleTwinSync dco_decode_enum_simple_twin_sync(dynamic raw);
 
   @protected
+  EnumWithDiscriminantTwinNormal dco_decode_enum_with_discriminant_twin_normal(
+      dynamic raw);
+
+  @protected
+  EnumWithDiscriminantTwinRustAsync
+      dco_decode_enum_with_discriminant_twin_rust_async(dynamic raw);
+
+  @protected
+  EnumWithDiscriminantTwinSync dco_decode_enum_with_discriminant_twin_sync(
+      dynamic raw);
+
+  @protected
   EnumWithItemMixedTwinNormal dco_decode_enum_with_item_mixed_twin_normal(
       dynamic raw);
 
@@ -5169,6 +5181,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   EnumSimpleTwinSync sse_decode_enum_simple_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumWithDiscriminantTwinNormal sse_decode_enum_with_discriminant_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumWithDiscriminantTwinRustAsync
+      sse_decode_enum_with_discriminant_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithDiscriminantTwinSync sse_decode_enum_with_discriminant_twin_sync(
       SseDeserializer deserializer);
 
   @protected
@@ -8499,6 +8524,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_enum_simple_twin_sync(
       EnumSimpleTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_discriminant_twin_normal(
+      EnumWithDiscriminantTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_discriminant_twin_rust_async(
+      EnumWithDiscriminantTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_discriminant_twin_sync(
+      EnumWithDiscriminantTwinSync self, SseSerializer serializer);
 
   @protected
   void sse_encode_enum_with_item_mixed_twin_normal(
