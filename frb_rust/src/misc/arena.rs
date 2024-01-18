@@ -16,7 +16,7 @@ impl<'a, T: 'a> ArenaBase<T> {
 #[macro_export]
 macro_rules! frb_generated_arena {
     () => {
-        type Arena = $crate::for_generated::ArenaBase<ArenaItem>;
+        type Arena<'a> = $crate::for_generated::ArenaBase<ArenaItem<'a>>;
     };
 }
 
