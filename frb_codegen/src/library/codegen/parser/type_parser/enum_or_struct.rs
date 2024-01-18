@@ -34,7 +34,7 @@ where
                 debug!("Recognize {name} has opaque attribute");
                 return Ok(Some(self.parse_type_rust_auto_opaque(
                     Some(namespaced_name.namespace),
-                    &syn::parse_str(&namespaced_name.name),
+                    &syn::parse_str(&namespaced_name.name)?,
                 )));
             }
 
@@ -52,9 +52,10 @@ where
                         (self.parser_info().object_pool).insert(ident.clone(), parsed_object)
                     }
                     None => {
-                        return Ok(Some(
-                            self.parse_type_rust_auto_opaque(&Type::Path(type_path.to_owned())),
-                        ))
+                        return Ok(Some(self.parse_type_rust_auto_opaque(
+                            None,
+                            &Type::Path(type_path.to_owned()),
+                        )))
                     }
                 };
             }
