@@ -50,6 +50,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
         RustAutoOpaque(IrTypeRustAutoOpaque {
             ownership_mode,
+            raw: Box::new(ty.to_owned()),
             inner: IrTypeRustOpaque {
                 namespace: info.namespace,
                 inner: Box::new(self.create_rust_opaque_type_for_rust_auto_opaque(&inner)),

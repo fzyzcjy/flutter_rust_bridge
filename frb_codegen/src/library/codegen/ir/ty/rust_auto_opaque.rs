@@ -7,6 +7,8 @@ crate::ir! {
 pub struct IrTypeRustAutoOpaque {
     pub ownership_mode: IrTypeOwnershipMode,
     pub inner: IrTypeRustOpaque,
+    /// Original type without any transformation
+    pub raw: Box<IrType>,
 }
 }
 
