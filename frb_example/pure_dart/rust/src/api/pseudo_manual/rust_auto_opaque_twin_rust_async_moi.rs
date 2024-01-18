@@ -6,6 +6,7 @@
 
 use crate::frb_generated::RustAutoOpaque;
 use flutter_rust_bridge::frb;
+use flutter_rust_bridge::rust_async::RwLock;
 use std::path::PathBuf;
 
 // TODO auto determine it is opaque or not later
@@ -331,7 +332,9 @@ pub async fn rust_auto_opaque_explicit_struct_twin_rust_async_moi(
 pub async fn rust_auto_opaque_explicit_return_twin_rust_async_moi(
     initial: i32,
 ) -> RustAutoOpaque<NonCloneSimpleTwinRustAsyncMoi> {
-    NonCloneSimpleTwinRustAsyncMoi { inner: initial }.into()
+    RustAutoOpaque::new(RwLock::new(NonCloneSimpleTwinRustAsyncMoi {
+        inner: initial,
+    }))
 }
 
 // ================ misc ===================
