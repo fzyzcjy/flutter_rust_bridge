@@ -32,8 +32,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   ]);
 
   addTestsIdentityFunctionCall(funcEnumWithDiscriminantTwinNormal, [
-    EnumWithDiscriminantTwinNormal.a,
-    EnumWithDiscriminantTwinNormal.b,
+    EnumWithDiscriminantTwinNormal.oneHundred,
+    EnumWithDiscriminantTwinNormal.fifty,
   ]);
 
   group('example-based tests', () {
