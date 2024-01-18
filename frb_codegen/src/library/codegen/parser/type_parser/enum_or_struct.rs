@@ -33,11 +33,12 @@ where
             let attrs = FrbAttributes::parse(src_object.attrs())?;
             if attrs.opaque() {
                 debug!("Recognize {name} has opaque attribute");
-                return Ok(Some(IrType::Unencodable(IrTypeUnencodable {
-                    namespace: Some(namespaced_name.namespace),
-                    string: namespaced_name.name,
-                    segments: vec![],
-                })));
+                return TODO;
+                // return Ok(Some(IrType::Unencodable(IrTypeUnencodable {
+                //     namespace: Some(namespaced_name.namespace),
+                //     string: namespaced_name.name,
+                //     segments: vec![],
+                // })));
             }
 
             let ident: Id = namespaced_name.clone().into();
