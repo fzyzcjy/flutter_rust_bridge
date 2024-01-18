@@ -1,14 +1,14 @@
 use std::any::Any;
+use std::marker::PhantomData;
 
 // TODO improve performance later
 #[derive(Default)]
-pub struct Arena(typed_arena::Arena<Box<dyn Any>>);
+pub struct Arena<'a>(typed_arena::Arena<Box<dyn Any>>, PhantomData<&'a ()>);
 
-impl Arena {
-    pub fn alloc<'a, T: 'a>(&'a self, value: T) -> &'a mut T {
-        // let ans = self.0.alloc(Box::new(value));
-        // ans.downcast_mut().unwrap()
-        todo!()
+impl<'a> Arena<'a> {
+    pub fn alloc<T: 'a>(&'a self, value: T) -> &'a mut T {
+        let ans = self.0.alloc(Box::new(value));
+        ans.downcast_mut().unwrap()
     }
 }
 
