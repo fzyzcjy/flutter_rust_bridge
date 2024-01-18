@@ -49,10 +49,8 @@ impl<'a> CodecSseTyTrait for RustAutoOpaqueCodecSseTy<'a> {
                     }
                     OwnershipMode::Ref | OwnershipMode::RefMut => {
                         format!(
-                            "
-                            let inner_ref = arena.alloc(inner);
-                            return arena.alloc(inner_ref.rust_auto_opaque_decode_{ownership_mode}());
-                            "
+                            "let inner_ref = arena.alloc(inner);
+                            return arena.alloc(inner_ref.rust_auto_opaque_decode_{ownership_mode}());"
                         )
                     }
                 };
