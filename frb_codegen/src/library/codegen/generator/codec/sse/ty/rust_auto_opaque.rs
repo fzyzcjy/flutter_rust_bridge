@@ -13,7 +13,10 @@ impl<'a> CodecSseTyTrait for RustAutoOpaqueCodecSseTy<'a> {
                     &format!("{needs_move}"),
                 ))
             }
-            Lang::RustLang(_) => None,
+            Lang::RustLang(_) => {
+                let arc = self.ir.inner.codec.arc_ty();
+                Some(format!("flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, {arc}<_>>(self)"))
+            }
         }
     }
 
