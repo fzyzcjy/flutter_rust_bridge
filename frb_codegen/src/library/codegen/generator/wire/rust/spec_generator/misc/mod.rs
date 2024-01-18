@@ -27,7 +27,6 @@ pub(crate) struct WireRustOutputSpecMisc {
     pub imports: Acc<Vec<WireRustOutputCode>>,
     pub boilerplate: Acc<Vec<WireRustOutputCode>>,
     pub executor: Acc<Vec<WireRustOutputCode>>,
-    pub arena: Acc<Vec<WireRustOutputCode>>,
     pub wire_funcs: Acc<Vec<WireRustOutputCode>>,
     pub wrapper_structs: Acc<Vec<WireRustOutputCode>>,
     pub static_checks: Acc<Vec<WireRustOutputCode>>,
@@ -47,7 +46,6 @@ pub(crate) fn generate(
             context.config.default_stream_sink_codec,
             context.config.default_rust_opaque_codec,
         ),
-        arena: generate_arena(&cache.distinct_types),
         wire_funcs: (context.ir_pack.funcs.iter())
             .map(|f| generate_wire_func(f, context))
             .collect(),
@@ -226,8 +224,4 @@ fn generate_executor(ir_pack: &IrPack) -> String {
     } else {
         r#"flutter_rust_bridge::frb_generated_default_handler!();"#.to_owned()
     }
-}
-
-fn generate_arena(distinct_types: &[IrType]) -> Acc<Vec<WireRustOutputCode>> {
-    todo!()
 }

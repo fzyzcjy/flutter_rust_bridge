@@ -62,7 +62,6 @@ fn generate_merged_code(spec: &WireRustOutputSpec) -> Acc<WireRustOutputCode> {
     add("imports", &spec.misc.imports);
     add("boilerplate", &spec.misc.boilerplate);
     add("executor", &spec.misc.executor);
-    add("arena", &spec.misc.arena);
     add("wire_funcs", &spec.misc.wire_funcs);
     add("wrapper_structs", &spec.misc.wrapper_structs);
     add("static_checks", &spec.misc.static_checks);
