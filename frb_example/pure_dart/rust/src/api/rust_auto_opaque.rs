@@ -267,7 +267,7 @@ pub fn rust_auto_opaque_explicit_struct_twin_normal(
 pub fn rust_auto_opaque_explicit_return_twin_normal(
     initial: i32,
 ) -> RustAutoOpaque<NonCloneSimpleTwinNormal> {
-    RustAutoOpaque::new(NonCloneSimpleTwinNormal { inner: initial })
+    NonCloneSimpleTwinNormal { inner: initial }.into()
 }
 
 // ================ misc ===================
