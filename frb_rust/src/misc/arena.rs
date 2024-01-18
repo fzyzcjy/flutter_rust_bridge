@@ -23,6 +23,5 @@ mod tests {
         let orange = arena.alloc(PathBuf::new());
         assert_eq!(apple, "Apple");
         drop(arena);
-        // assert_eq!(apple, "Apple"); // This will make compile fail (as expected)
     }
 }
