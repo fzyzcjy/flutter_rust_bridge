@@ -18,7 +18,7 @@ mod tests {
 
     #[test]
     fn test_simple() {
-        let mut arena = Arena::default();
+        let arena = Arena::default();
         let apple = arena.alloc("Apple".to_owned());
         let orange = arena.alloc(PathBuf::new());
         assert_eq!(apple, "Apple");
