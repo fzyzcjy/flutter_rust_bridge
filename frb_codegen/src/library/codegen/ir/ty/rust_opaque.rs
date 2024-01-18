@@ -7,7 +7,7 @@ use strum_macros::{Display, EnumIter};
 crate::ir! {
 pub struct IrTypeRustOpaque {
     pub namespace: Namespace,
-    pub inner: Box<IrType>,
+    pub inner: String,
     pub codec: RustOpaqueCodecMode,
     pub brief_name: bool,
 }
@@ -35,13 +35,13 @@ impl RustOpaqueCodecMode {
 impl IrTypeRustOpaque {
     pub fn new(
         namespace: Namespace,
-        inner: IrType,
+        inner: String,
         codec: RustOpaqueCodecMode,
         brief_name: bool,
     ) -> Self {
         Self {
             namespace,
-            inner: Box::new(inner),
+            inner,
             codec,
             brief_name,
         }
