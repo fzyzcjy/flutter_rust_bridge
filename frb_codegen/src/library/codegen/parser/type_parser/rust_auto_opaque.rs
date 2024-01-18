@@ -18,14 +18,14 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     ) -> IrType {
         let (ownership_mode, inner) = match ty {
             Type::Reference(ty) => (
-                if ty.mutability {
+                if ty.mutability.is_some() {
                     OwnershipMode::RefMut
                 } else {
                     OwnershipMode::Ref
                 },
-                TODO,
+                (*ty.elem).to_owned(),
             ),
-            _ => (OwnershipMode::Owned, TODO),
+            _ => (OwnershipMode::Owned, ty.clone()),
         };
 
         let info = self.get_or_insert_rust_auto_opaque_info(&inner, namespace, None);
