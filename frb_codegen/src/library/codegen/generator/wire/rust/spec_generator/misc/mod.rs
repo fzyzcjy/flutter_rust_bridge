@@ -242,5 +242,5 @@ fn generate_arena(distinct_types: &[IrType]) -> Acc<Vec<WireRustOutputCode>> {
         }}
         "
     );
-    Acc::new_common(code.into())
+    Acc::new_common(vec![code.into()])
 }
