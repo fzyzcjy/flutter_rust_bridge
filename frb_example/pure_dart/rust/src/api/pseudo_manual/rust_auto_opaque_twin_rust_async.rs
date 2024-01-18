@@ -4,6 +4,7 @@
 
 // FRB_INTERNAL_GENERATOR: {"enableAll": true}
 
+use crate::frb_generated::RustAutoOpaque;
 use flutter_rust_bridge::frb;
 use std::path::PathBuf;
 
@@ -265,6 +266,32 @@ pub async fn rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_
         good: "hello".to_string(),
         opaque: NonCloneSimpleTwinRustAsync { inner: 42 },
     }
+}
+
+// ================ use explicit type ===================
+
+pub async fn rust_auto_opaque_explicit_arg_twin_rust_async(
+    arg: RustAutoOpaque<NonCloneSimpleTwinRustAsync>,
+    expect: i32,
+) {
+    assert_eq!((*arg).try_read().unwrap().inner, expect);
+}
+
+pub struct StructWithExplicitAutoOpaqueFieldTwinRustAsync {
+    pub auto_opaque: RustAutoOpaque<NonCloneSimpleTwinRustAsync>,
+    pub normal: i32,
+}
+
+pub async fn rust_auto_opaque_explicit_struct_twin_rust_async(
+    arg: StructWithExplicitAutoOpaqueFieldTwinRustAsync,
+) {
+    assert_eq!((*arg.auto_opaque).try_read().unwrap().inner, arg.normal);
+}
+
+pub async fn rust_auto_opaque_explicit_return_twin_rust_async(
+    initial: i32,
+) -> RustAutoOpaque<NonCloneSimpleTwinRustAsync> {
+    NonCloneSimpleTwinRustAsync { inner: initial }.into()
 }
 
 // ================ misc ===================

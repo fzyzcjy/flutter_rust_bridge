@@ -4,6 +4,7 @@
 
 // FRB_INTERNAL_GENERATOR: {"enableAll": true}
 
+use crate::frb_generated::RustAutoOpaque;
 use flutter_rust_bridge::frb;
 use std::path::PathBuf;
 
@@ -337,6 +338,38 @@ pub async fn rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_
         good: "hello".to_string(),
         opaque: NonCloneSimpleTwinRustAsyncSseMoi { inner: 42 },
     }
+}
+
+// ================ use explicit type ===================
+
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn rust_auto_opaque_explicit_arg_twin_rust_async_sse_moi(
+    arg: RustAutoOpaque<NonCloneSimpleTwinRustAsyncSseMoi>,
+    expect: i32,
+) {
+    assert_eq!((*arg).try_read().unwrap().inner, expect);
+}
+
+pub struct StructWithExplicitAutoOpaqueFieldTwinRustAsyncSseMoi {
+    pub auto_opaque: RustAutoOpaque<NonCloneSimpleTwinRustAsyncSseMoi>,
+    pub normal: i32,
+}
+
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn rust_auto_opaque_explicit_struct_twin_rust_async_sse_moi(
+    arg: StructWithExplicitAutoOpaqueFieldTwinRustAsyncSseMoi,
+) {
+    assert_eq!((*arg.auto_opaque).try_read().unwrap().inner, arg.normal);
+}
+
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn rust_auto_opaque_explicit_return_twin_rust_async_sse_moi(
+    initial: i32,
+) -> RustAutoOpaque<NonCloneSimpleTwinRustAsyncSseMoi> {
+    NonCloneSimpleTwinRustAsyncSseMoi { inner: initial }.into()
 }
 
 // ================ misc ===================

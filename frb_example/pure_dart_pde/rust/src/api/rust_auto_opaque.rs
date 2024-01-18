@@ -2,6 +2,7 @@
 
 // FRB_INTERNAL_GENERATOR: {"enableAll": true}
 
+use crate::frb_generated::RustAutoOpaque;
 use flutter_rust_bridge::frb;
 use std::path::PathBuf;
 
@@ -243,6 +244,32 @@ pub fn rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal
         good: "hello".to_string(),
         opaque: NonCloneSimpleTwinNormal { inner: 42 },
     }
+}
+
+// ================ use explicit type ===================
+
+pub fn rust_auto_opaque_explicit_arg_twin_normal(
+    arg: RustAutoOpaque<NonCloneSimpleTwinNormal>,
+    expect: i32,
+) {
+    assert_eq!((*arg).try_read().unwrap().inner, expect);
+}
+
+pub struct StructWithExplicitAutoOpaqueFieldTwinNormal {
+    pub auto_opaque: RustAutoOpaque<NonCloneSimpleTwinNormal>,
+    pub normal: i32,
+}
+
+pub fn rust_auto_opaque_explicit_struct_twin_normal(
+    arg: StructWithExplicitAutoOpaqueFieldTwinNormal,
+) {
+    assert_eq!((*arg.auto_opaque).try_read().unwrap().inner, arg.normal);
+}
+
+pub fn rust_auto_opaque_explicit_return_twin_normal(
+    initial: i32,
+) -> RustAutoOpaque<NonCloneSimpleTwinNormal> {
+    NonCloneSimpleTwinNormal { inner: initial }.into()
 }
 
 // ================ misc ===================
