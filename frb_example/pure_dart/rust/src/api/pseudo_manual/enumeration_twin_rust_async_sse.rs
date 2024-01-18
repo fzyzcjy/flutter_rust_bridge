@@ -57,8 +57,8 @@ pub async fn func_enum_with_item_struct_twin_rust_async_sse(
 
 // #1674
 pub enum EnumWithDiscriminantTwinRustAsyncSse {
-    A = 100,
-    B = 50,
+    OneHundred = 100,
+    Fifty = 50,
 }
 
 #[flutter_rust_bridge::frb(serialize)]

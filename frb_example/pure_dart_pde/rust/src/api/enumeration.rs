@@ -49,8 +49,8 @@ pub fn func_enum_with_item_struct_twin_normal(
 
 // #1674
 pub enum EnumWithDiscriminantTwinNormal {
-    A = 100,
-    B = 50,
+    OneHundred = 100,
+    Fifty = 50,
 }
 
 pub fn func_enum_with_discriminant_twin_normal(

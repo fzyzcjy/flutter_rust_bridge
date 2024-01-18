@@ -57,8 +57,8 @@ pub fn func_enum_with_item_struct_twin_sync(
 
 // #1674
 pub enum EnumWithDiscriminantTwinSync {
-    A = 100,
-    B = 50,
+    OneHundred = 100,
+    Fifty = 50,
 }
 
 #[flutter_rust_bridge::frb(sync)]

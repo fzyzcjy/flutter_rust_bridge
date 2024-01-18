@@ -36,8 +36,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   ]);
 
   addTestsIdentityFunctionCall(funcEnumWithDiscriminantTwinSse, [
-    EnumWithDiscriminantTwinSse.a,
-    EnumWithDiscriminantTwinSse.b,
+    EnumWithDiscriminantTwinSse.oneHundred,
+    EnumWithDiscriminantTwinSse.fifty,
   ]);
 
   group('example-based tests', () {

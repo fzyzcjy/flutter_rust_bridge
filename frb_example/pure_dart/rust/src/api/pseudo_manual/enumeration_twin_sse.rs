@@ -55,8 +55,8 @@ pub fn func_enum_with_item_struct_twin_sse(
 
 // #1674
 pub enum EnumWithDiscriminantTwinSse {
-    A = 100,
-    B = 50,
+    OneHundred = 100,
+    Fifty = 50,
 }
 
 #[flutter_rust_bridge::frb(serialize)]

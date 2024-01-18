@@ -53,8 +53,8 @@ pub async fn func_enum_with_item_struct_twin_rust_async(
 
 // #1674
 pub enum EnumWithDiscriminantTwinRustAsync {
-    A = 100,
-    B = 50,
+    OneHundred = 100,
+    Fifty = 50,
 }
 
 pub async fn func_enum_with_discriminant_twin_rust_async(
