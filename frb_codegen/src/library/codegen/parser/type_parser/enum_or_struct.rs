@@ -33,12 +33,13 @@ where
             let attrs = FrbAttributes::parse(src_object.attrs())?;
             if attrs.opaque() {
                 debug!("Recognize {name} has opaque attribute");
-                return TODO;
-                // return Ok(Some(IrType::Unencodable(IrTypeUnencodable {
-                //     namespace: Some(namespaced_name.namespace),
-                //     string: namespaced_name.name,
-                //     segments: vec![],
-                // })));
+                return Ok(Some(self.parse_type_rust_auto_opaque(
+                    &IrType::Unencodable(IrTypeUnencodable {
+                        namespace: Some(namespaced_name.namespace),
+                        string: namespaced_name.name,
+                        segments: vec![],
+                    }),
+                )));
             }
 
             let ident: Id = namespaced_name.clone().into();
@@ -81,6 +82,8 @@ where
     fn src_objects(&self) -> &HashMap<String, &SrcObj>;
 
     fn parser_info(&mut self) -> &mut EnumOrStructParserInfo<Id, Obj>;
+
+    fn parse_type_rust_auto_opaque(&mut self, ty: &IrType) -> IrType;
 }
 
 fn pop_last(mut v: Vec<String>) -> Vec<String> {

@@ -104,4 +104,8 @@ impl EnumOrStructParser<IrStructIdent, IrStruct, Struct, ItemStruct>
     fn parser_info(&mut self) -> &mut EnumOrStructParserInfo<IrStructIdent, IrStruct> {
         &mut self.0.inner.struct_parser_info
     }
+
+    fn parse_type_rust_auto_opaque(&mut self, ty: &IrType) -> IrType {
+        self.0.parse_type_rust_auto_opaque(ty)
+    }
 }

@@ -157,6 +157,10 @@ impl EnumOrStructParser<IrEnumIdent, IrEnum, Enum, ItemEnum>
     fn parser_info(&mut self) -> &mut EnumOrStructParserInfo<IrEnumIdent, IrEnum> {
         &mut self.0.inner.enum_parser_info
     }
+
+    fn parse_type_rust_auto_opaque(&mut self, ty: &IrType) -> IrType {
+        self.0.parse_type_rust_auto_opaque(ty)
+    }
 }
 
 fn maybe_field_wrap_box(mut variants: Vec<IrVariant>, mode: IrEnumMode) -> Vec<IrVariant> {
