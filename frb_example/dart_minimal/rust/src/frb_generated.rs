@@ -65,7 +65,8 @@ fn wire_another_func_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
-                    Result::<_, ()>::Ok(crate::api::minimal::another_func(api_arg))
+                    let api_arg = api_arg.rust_auto_opaque_decode_ref();
+                    Result::<_, ()>::Ok(crate::api::minimal::another_func(&api_arg))
                 })())
             }
         },
