@@ -8,9 +8,8 @@ use crate::frb_generated::StreamSink;
 use flutter_rust_bridge::frb;
 pub use frb_example_pure_dart_example_external_lib::{
     ApplicationEnv, ApplicationEnvVar, ApplicationMessage, ApplicationMode, ApplicationSettings,
-    ListOfNestedRawStringMirrored, NestedRawStringMirrored, Numbers, RawStringEnumMirrored,
-    RawStringMirrored, Sequences,
-    HashMapValue, StructWithHashMap,
+    HashMapValue, ListOfNestedRawStringMirrored, NestedRawStringMirrored, Numbers,
+    RawStringEnumMirrored, RawStringMirrored, Sequences, StructWithHashMap,
 };
 use std::collections::HashMap;
 
@@ -246,10 +245,8 @@ pub fn test_contains_mirrored_sub_struct_twin_normal() -> ContainsMirroredSubStr
     }
 }
 
-pub fn test_hashmap_with_mirrored_value() -> StructWithHashMap {
+pub fn test_hashmap_with_mirrored_value_twin_normal() -> StructWithHashMap {
     StructWithHashMap {
-        map: {
-            HashMap::new()
-        }
+        map: { HashMap::new() },
     }
 }
