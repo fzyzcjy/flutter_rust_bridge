@@ -432,6 +432,15 @@
       ]
     },
     {
+      "login": "aran",
+      "name": "Aran Donohue",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5295?v=4",
+      "profile": "https://github.com/aran",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "bus710",
       "name": "bus710",
       "avatar_url": "https://avatars.githubusercontent.com/u/8920680?v=4",
@@ -454,15 +463,6 @@
       "name": "Marc Gutenberger",
       "avatar_url": "https://avatars.githubusercontent.com/u/79616833?v=4",
       "profile": "https://gutenfries.deno.dev",
-      "contributions": [
-        "code"
-      ]
-    },
-    {
-      "login": "aran",
-      "name": "Aran Donohue",
-      "avatar_url": "https://avatars.githubusercontent.com/u/5295?v=4",
-      "profile": "https://github.com/aran",
       "contributions": [
         "code"
       ]

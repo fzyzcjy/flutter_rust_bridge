@@ -1,5 +1,16 @@
 # Changelog
 
+## 2.0.0-dev.21
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Support more fine-grained rust-auto-opaque #1680
+* Add RustAutoOpaque as an extra alternative approach to fully automatic arbitrary types #1679
+* Fix when primitive enums + has custom discriminator values + using SSE codec #1677
+* Fix when StreamSink + rust-auto-opaque types #1682
+* Fix when using types in external crate and use HashMap to contain it (continue from @aran's PR) #1684
+* Add doc to explain how to configure ios build system to avoid "linker undefined symbols" #1678
+* Improve comments for generated code #1685
+
 ## 2.0.0-dev.20
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.

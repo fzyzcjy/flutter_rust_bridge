@@ -42,10 +42,10 @@
 - Michael-F-Bryan: Detect broken bindings.
 - phlip9: Fix no-serde compilation.
 - patmuk: Set MSRV. Fail fast. Improve message. Add doc.
+- aran: Fix map + mirror. Fix pubspec. Bump version. Fix typo.
 - bus710: Add a case in troubleshooting.
 - Demezy: Mention troubleshooting.
 - gutenfries: Bump proc-macros.
-- aran: Fix pubspec. Bump version. Fix typo.
 - anstadnik: Check keywords.
 - syndim: Add a bracket to box.
 - TENX-S: Improve doc. Reproduce a bug.
