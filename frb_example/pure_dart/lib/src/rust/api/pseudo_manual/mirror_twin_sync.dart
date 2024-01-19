@@ -79,6 +79,9 @@ ContainsMirroredSubStructTwinSync testContainsMirroredSubStructTwinSync(
         {dynamic hint}) =>
     RustLib.instance.api.testContainsMirroredSubStructTwinSync(hint: hint);
 
+StructWithHashMap testHashmapWithMirroredValueTwinSync({dynamic hint}) =>
+    RustLib.instance.api.testHashmapWithMirroredValueTwinSync(hint: hint);
+
 class AnotherTwinSync {
   final String a;
 

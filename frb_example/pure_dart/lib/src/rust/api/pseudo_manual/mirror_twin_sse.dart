@@ -79,6 +79,9 @@ Future<ContainsMirroredSubStructTwinSse> testContainsMirroredSubStructTwinSse(
         {dynamic hint}) =>
     RustLib.instance.api.testContainsMirroredSubStructTwinSse(hint: hint);
 
+Future<StructWithHashMap> testHashmapWithMirroredValueTwinSse({dynamic hint}) =>
+    RustLib.instance.api.testHashmapWithMirroredValueTwinSse(hint: hint);
+
 class AnotherTwinSse {
   final String a;
 

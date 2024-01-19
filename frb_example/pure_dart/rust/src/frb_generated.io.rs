@@ -587,6 +587,28 @@ impl
         vec.into_iter().collect()
     }
 }
+impl
+    CstDecode<
+        std::collections::HashMap<
+            String,
+            crate::api::pseudo_manual::mirror_twin_sync_sse::HashMapValue,
+        >,
+    > for *mut wire_cst_list_record_string_hash_map_value
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> std::collections::HashMap<
+        String,
+        crate::api::pseudo_manual::mirror_twin_sync_sse::HashMapValue,
+    > {
+        let vec: Vec<(
+            String,
+            crate::api::pseudo_manual::mirror_twin_sync_sse::HashMapValue,
+        )> = self.cst_decode();
+        vec.into_iter().collect()
+    }
+}
 impl CstDecode<std::collections::HashMap<String, crate::api::enumeration::KitchenSinkTwinNormal>>
     for *mut wire_cst_list_record_string_kitchen_sink_twin_normal
 {
@@ -6544,6 +6566,16 @@ impl CstDecode<crate::api::pseudo_manual::array_twin_sync::FeedIdTwinSync>
         crate::api::pseudo_manual::array_twin_sync::FeedIdTwinSync(self.field0.cst_decode())
     }
 }
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::HashMapValue>
+    for wire_cst_hash_map_value
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::HashMapValue {
+        crate::api::pseudo_manual::mirror_twin_sync_sse::HashMapValue {
+            inner: self.inner.cst_decode(),
+        }
+    }
+}
 impl CstDecode<[i32; 2]> for *mut wire_cst_list_prim_i_32_strict {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [i32; 2] {
@@ -7999,6 +8031,28 @@ impl
         vec.into_iter().map(CstDecode::cst_decode).collect()
     }
 }
+impl
+    CstDecode<
+        Vec<(
+            String,
+            crate::api::pseudo_manual::mirror_twin_sync_sse::HashMapValue,
+        )>,
+    > for *mut wire_cst_list_record_string_hash_map_value
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> Vec<(
+        String,
+        crate::api::pseudo_manual::mirror_twin_sync_sse::HashMapValue,
+    )> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
 impl CstDecode<Vec<(String, i32)>> for *mut wire_cst_list_record_string_i_32 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(String, i32)> {
@@ -9220,6 +9274,22 @@ impl
         (self.field0.cst_decode(), self.field1.cst_decode())
     }
 }
+impl
+    CstDecode<(
+        String,
+        crate::api::pseudo_manual::mirror_twin_sync_sse::HashMapValue,
+    )> for wire_cst_record_string_hash_map_value
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> (
+        String,
+        crate::api::pseudo_manual::mirror_twin_sync_sse::HashMapValue,
+    ) {
+        (self.field0.cst_decode(), self.field1.cst_decode())
+    }
+}
 impl CstDecode<(String, i32)> for wire_cst_record_string_i_32 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (String, i32) {
@@ -9565,6 +9635,16 @@ impl CstDecode<crate::api::pseudo_manual::rust_auto_opaque_twin_sync_moi::Struct
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync_moi::StructWithGoodAndOpaqueFieldTwinSyncMoi{good:  self.good.cst_decode(),opaque:  self.opaque.cst_decode()}
             }
         }
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::StructWithHashMap>
+    for wire_cst_struct_with_hash_map
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::StructWithHashMap {
+        crate::api::pseudo_manual::mirror_twin_sync_sse::StructWithHashMap {
+            map: self.map.cst_decode(),
+        }
+    }
+}
 impl CstDecode<crate::api::structure::StructWithOneFieldTwinNormal>
     for wire_cst_struct_with_one_field_twin_normal
 {
@@ -11759,6 +11839,18 @@ impl Default for wire_cst_feed_id_twin_sync {
         Self::new_with_null_ptr()
     }
 }
+impl NewWithNullPtr for wire_cst_hash_map_value {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            inner: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_hash_map_value {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
 impl NewWithNullPtr for wire_cst_kitchen_sink_twin_normal {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -12961,6 +13053,19 @@ impl Default for wire_cst_record_string_enum_simple_twin_sync {
         Self::new_with_null_ptr()
     }
 }
+impl NewWithNullPtr for wire_cst_record_string_hash_map_value {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            field0: core::ptr::null_mut(),
+            field1: Default::default(),
+        }
+    }
+}
+impl Default for wire_cst_record_string_hash_map_value {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
 impl NewWithNullPtr for wire_cst_record_string_i_32 {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -13390,6 +13495,18 @@ impl NewWithNullPtr for wire_cst_struct_with_good_and_opaque_field_twin_sync_moi
     }
 }
 impl Default for wire_cst_struct_with_good_and_opaque_field_twin_sync_moi {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_struct_with_hash_map {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            map: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_struct_with_hash_map {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
@@ -14939,6 +15056,13 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_test_fallible_of_raw_string_
     port_: i64,
 ) {
     wire_test_fallible_of_raw_string_mirrored_twin_normal_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_test_hashmap_with_mirrored_value_twin_normal(
+    port_: i64,
+) {
+    wire_test_hashmap_with_mirrored_value_twin_normal_impl(port_)
 }
 
 #[no_mangle]
@@ -25130,6 +25254,13 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_test_fallible_of_raw_string_
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_test_hashmap_with_mirrored_value_twin_rust_async(
+    port_: i64,
+) {
+    wire_test_hashmap_with_mirrored_value_twin_rust_async_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_test_list_of_nested_enums_mirrored_twin_rust_async(
     port_: i64,
 ) {
@@ -25308,6 +25439,21 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_test_fallible_of_raw_string_
     data_len_: i32,
 ) {
     wire_test_fallible_of_raw_string_mirrored_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_test_hashmap_with_mirrored_value_twin_rust_async_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_test_hashmap_with_mirrored_value_twin_rust_async_sse_impl(
         port_,
         ptr_,
         rust_vec_len_,
@@ -25526,6 +25672,16 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_test_fallible_of_raw_string_
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_test_hashmap_with_mirrored_value_twin_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_test_hashmap_with_mirrored_value_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_test_list_of_nested_enums_mirrored_twin_sse(
     port_: i64,
     ptr_: *mut u8,
@@ -25665,6 +25821,12 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_test_contains_mirrored_sub_s
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_test_fallible_of_raw_string_mirrored_twin_sync(
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_test_fallible_of_raw_string_mirrored_twin_sync_impl()
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_test_hashmap_with_mirrored_value_twin_sync(
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_test_hashmap_with_mirrored_value_twin_sync_impl()
 }
 
 #[no_mangle]
@@ -25826,6 +25988,15 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_test_fallible_of_raw_string_
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_test_fallible_of_raw_string_mirrored_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_test_hashmap_with_mirrored_value_twin_sync_sse(
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_test_hashmap_with_mirrored_value_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
@@ -41010,6 +41181,20 @@ pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_record_string_enum_s
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_record_string_hash_map_value(
+    len: i32,
+) -> *mut wire_cst_list_record_string_hash_map_value {
+    let wrap = wire_cst_list_record_string_hash_map_value {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_record_string_hash_map_value>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_record_string_i_32(
     len: i32,
 ) -> *mut wire_cst_list_record_string_i_32 {
@@ -43017,6 +43202,11 @@ pub struct wire_cst_feed_id_twin_sync {
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
+pub struct wire_cst_hash_map_value {
+    inner: *mut wire_cst_list_prim_u_8_strict,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
 pub struct wire_cst_kitchen_sink_twin_normal {
     tag: i32,
     kind: KitchenSinkTwinNormalKind,
@@ -43805,6 +43995,12 @@ pub struct wire_cst_list_record_string_enum_simple_twin_sync {
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
+pub struct wire_cst_list_record_string_hash_map_value {
+    ptr: *mut wire_cst_record_string_hash_map_value,
+    len: i32,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
 pub struct wire_cst_list_record_string_i_32 {
     ptr: *mut wire_cst_record_string_i_32,
     len: i32,
@@ -44521,6 +44717,12 @@ pub struct wire_cst_record_string_enum_simple_twin_sync {
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
+pub struct wire_cst_record_string_hash_map_value {
+    field0: *mut wire_cst_list_prim_u_8_strict,
+    field1: wire_cst_hash_map_value,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
 pub struct wire_cst_record_string_i_32 {
     field0: *mut wire_cst_list_prim_u_8_strict,
     field1: i32,
@@ -44746,6 +44948,11 @@ pub struct wire_cst_struct_with_good_and_opaque_field_twin_sync {
 pub struct wire_cst_struct_with_good_and_opaque_field_twin_sync_moi {
     good: *mut wire_cst_list_prim_u_8_strict,
     opaque: usize,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_struct_with_hash_map {
+    map: *mut wire_cst_list_record_string_hash_map_value,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]

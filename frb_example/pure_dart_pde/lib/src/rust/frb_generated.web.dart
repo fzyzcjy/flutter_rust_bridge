@@ -555,6 +555,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  Map<String, HashMapValue> dco_decode_Map_String_hash_map_value(dynamic raw);
+
+  @protected
   Map<String, KitchenSinkTwinNormal>
       dco_decode_Map_String_kitchen_sink_twin_normal(dynamic raw);
 
@@ -2124,6 +2127,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   FeedIdTwinSync dco_decode_feed_id_twin_sync(dynamic raw);
 
   @protected
+  HashMapValue dco_decode_hash_map_value(dynamic raw);
+
+  @protected
   int dco_decode_i_16(dynamic raw);
 
   @protected
@@ -2484,6 +2490,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<(String, EnumSimpleTwinSync)>
       dco_decode_list_record_string_enum_simple_twin_sync(dynamic raw);
+
+  @protected
+  List<(String, HashMapValue)> dco_decode_list_record_string_hash_map_value(
+      dynamic raw);
 
   @protected
   List<(String, int)> dco_decode_list_record_string_i_32(dynamic raw);
@@ -3106,6 +3116,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  (String, HashMapValue) dco_decode_record_string_hash_map_value(dynamic raw);
+
+  @protected
   (String, int) dco_decode_record_string_i_32(dynamic raw);
 
   @protected
@@ -3204,6 +3217,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithGoodAndOpaqueFieldTwinSync
       dco_decode_struct_with_good_and_opaque_field_twin_sync(dynamic raw);
+
+  @protected
+  StructWithHashMap dco_decode_struct_with_hash_map(dynamic raw);
 
   @protected
   StructWithOneFieldTwinNormal dco_decode_struct_with_one_field_twin_normal(
@@ -3600,6 +3616,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   Map<String, EnumSimpleTwinSync> sse_decode_Map_String_enum_simple_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  Map<String, HashMapValue> sse_decode_Map_String_hash_map_value(
       SseDeserializer deserializer);
 
   @protected
@@ -5371,6 +5391,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   FeedIdTwinSync sse_decode_feed_id_twin_sync(SseDeserializer deserializer);
 
   @protected
+  HashMapValue sse_decode_hash_map_value(SseDeserializer deserializer);
+
+  @protected
   int sse_decode_i_16(SseDeserializer deserializer);
 
   @protected
@@ -5782,6 +5805,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<(String, EnumSimpleTwinSync)>
       sse_decode_list_record_string_enum_simple_twin_sync(
           SseDeserializer deserializer);
+
+  @protected
+  List<(String, HashMapValue)> sse_decode_list_record_string_hash_map_value(
+      SseDeserializer deserializer);
 
   @protected
   List<(String, int)> sse_decode_list_record_string_i_32(
@@ -6483,6 +6510,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  (String, HashMapValue) sse_decode_record_string_hash_map_value(
+      SseDeserializer deserializer);
+
+  @protected
   (String, int) sse_decode_record_string_i_32(SseDeserializer deserializer);
 
   @protected
@@ -6598,6 +6629,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   StructWithGoodAndOpaqueFieldTwinSync
       sse_decode_struct_with_good_and_opaque_field_twin_sync(
           SseDeserializer deserializer);
+
+  @protected
+  StructWithHashMap sse_decode_struct_with_hash_map(
+      SseDeserializer deserializer);
 
   @protected
   StructWithOneFieldTwinNormal sse_decode_struct_with_one_field_twin_normal(
@@ -7071,6 +7106,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_Map_String_enum_simple_twin_sync(
       Map<String, EnumSimpleTwinSync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Map_String_hash_map_value(
+      Map<String, HashMapValue> self, SseSerializer serializer);
 
   @protected
   void sse_encode_Map_String_kitchen_sink_twin_normal(
@@ -8770,6 +8809,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       FeedIdTwinSync self, SseSerializer serializer);
 
   @protected
+  void sse_encode_hash_map_value(HashMapValue self, SseSerializer serializer);
+
+  @protected
   void sse_encode_i_16(int self, SseSerializer serializer);
 
   @protected
@@ -9178,6 +9220,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_list_record_string_enum_simple_twin_sync(
       List<(String, EnumSimpleTwinSync)> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_record_string_hash_map_value(
+      List<(String, HashMapValue)> self, SseSerializer serializer);
 
   @protected
   void sse_encode_list_record_string_i_32(
@@ -9856,6 +9902,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       (String, EnumSimpleTwinSync) self, SseSerializer serializer);
 
   @protected
+  void sse_encode_record_string_hash_map_value(
+      (String, HashMapValue) self, SseSerializer serializer);
+
+  @protected
   void sse_encode_record_string_i_32(
       (String, int) self, SseSerializer serializer);
 
@@ -9966,6 +10016,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_struct_with_good_and_opaque_field_twin_sync(
       StructWithGoodAndOpaqueFieldTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_hash_map(
+      StructWithHashMap self, SseSerializer serializer);
 
   @protected
   void sse_encode_struct_with_one_field_twin_normal(

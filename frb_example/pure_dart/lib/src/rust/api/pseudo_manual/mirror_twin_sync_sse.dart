@@ -82,6 +82,9 @@ ContainsMirroredSubStructTwinSyncSse testContainsMirroredSubStructTwinSyncSse(
         {dynamic hint}) =>
     RustLib.instance.api.testContainsMirroredSubStructTwinSyncSse(hint: hint);
 
+StructWithHashMap testHashmapWithMirroredValueTwinSyncSse({dynamic hint}) =>
+    RustLib.instance.api.testHashmapWithMirroredValueTwinSyncSse(hint: hint);
+
 class AnotherTwinSyncSse {
   final String a;
 
@@ -212,6 +215,24 @@ class ContainsMirroredSubStructTwinSyncSse {
           test2 == other.test2;
 }
 
+class HashMapValue {
+  final String inner;
+
+  const HashMapValue({
+    required this.inner,
+  });
+
+  @override
+  int get hashCode => inner.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is HashMapValue &&
+          runtimeType == other.runtimeType &&
+          inner == other.inner;
+}
+
 class ListOfNestedRawStringMirrored {
   final List<NestedRawStringMirrored> raw;
 
@@ -340,4 +361,22 @@ class Sequences {
       other is Sequences &&
           runtimeType == other.runtimeType &&
           field0 == other.field0;
+}
+
+class StructWithHashMap {
+  final Map<String, HashMapValue> map;
+
+  const StructWithHashMap({
+    required this.map,
+  });
+
+  @override
+  int get hashCode => map.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StructWithHashMap &&
+          runtimeType == other.runtimeType &&
+          map == other.map;
 }
