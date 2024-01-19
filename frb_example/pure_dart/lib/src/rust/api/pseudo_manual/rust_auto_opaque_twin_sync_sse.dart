@@ -144,6 +144,10 @@ NonCloneSimpleEnumTwinSyncSse rustAutoOpaqueEnumReturnOwnTwinSyncSse(
         {dynamic hint}) =>
     RustLib.instance.api.rustAutoOpaqueEnumReturnOwnTwinSyncSse(hint: hint);
 
+Stream<NonCloneSimpleTwinSyncSse> rustAutoOpaqueStreamSinkTwinSyncSse(
+        {dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueStreamSinkTwinSyncSse(hint: hint);
+
 void rustAutoOpaqueArgVecOwnTwinSyncSse(
         {required List<NonCloneSimpleTwinSyncSse> arg,
         required List<int> expect,

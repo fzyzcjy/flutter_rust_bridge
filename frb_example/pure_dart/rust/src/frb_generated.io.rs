@@ -27340,6 +27340,13 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_return_vec_
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_stream_sink_twin_moi(
+    port_: i64,
+) {
+    wire_rust_auto_opaque_stream_sink_twin_moi_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_moi(
     port_: i64,
     arg: *mut wire_cst_struct_with_good_and_opaque_field_twin_moi,
@@ -27689,6 +27696,13 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_return_vec_
     port_: i64,
 ) {
     wire_rust_auto_opaque_return_vec_own_twin_rust_async_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_stream_sink_twin_rust_async(
+    port_: i64,
+) {
+    wire_rust_auto_opaque_stream_sink_twin_rust_async_impl(port_)
 }
 
 #[no_mangle]
@@ -28053,6 +28067,13 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_return_vec_
     port_: i64,
 ) {
     wire_rust_auto_opaque_return_vec_own_twin_rust_async_moi_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_stream_sink_twin_rust_async_moi(
+    port_: i64,
+) {
+    wire_rust_auto_opaque_stream_sink_twin_rust_async_moi_impl(port_)
 }
 
 #[no_mangle]
@@ -28642,6 +28663,21 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_return_vec_
     data_len_: i32,
 ) {
     wire_rust_auto_opaque_return_vec_own_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_stream_sink_twin_rust_async_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_stream_sink_twin_rust_async_sse_impl(
         port_,
         ptr_,
         rust_vec_len_,
@@ -29300,6 +29336,21 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_return_vec_
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_stream_sink_twin_rust_async_sse_moi(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_stream_sink_twin_rust_async_sse_moi_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async_sse_moi(
     port_: i64,
     ptr_: *mut u8,
@@ -29847,6 +29898,16 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_return_vec_
     data_len_: i32,
 ) {
     wire_rust_auto_opaque_return_vec_own_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_stream_sink_twin_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_stream_sink_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
@@ -30410,6 +30471,16 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_return_vec_
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_stream_sink_twin_sse_moi(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_stream_sink_twin_sse_moi_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sse_moi(
     port_: i64,
     ptr_: *mut u8,
@@ -30774,6 +30845,13 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_return_vec_
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_stream_sink_twin_sync(
+    port_: i64,
+) {
+    wire_rust_auto_opaque_stream_sink_twin_sync_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync(
     arg: *mut wire_cst_struct_with_good_and_opaque_field_twin_sync,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
@@ -31077,6 +31155,13 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_return_own_
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_return_vec_own_twin_sync_moi(
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_rust_auto_opaque_return_vec_own_twin_sync_moi_impl()
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_stream_sink_twin_sync_moi(
+    port_: i64,
+) {
+    wire_rust_auto_opaque_stream_sink_twin_sync_moi_impl(port_)
 }
 
 #[no_mangle]
@@ -31518,6 +31603,16 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_return_vec_
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_rust_auto_opaque_return_vec_own_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_stream_sink_twin_sync_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_stream_sink_twin_sync_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
@@ -32006,6 +32101,16 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_return_vec_
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_rust_auto_opaque_return_vec_own_twin_sync_sse_moi_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_stream_sink_twin_sync_sse_moi(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_stream_sink_twin_sync_sse_moi_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
@@ -34625,6 +34730,13 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_return_vec_
     port_: i64,
 ) {
     wire_rust_auto_opaque_return_vec_own_twin_normal_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_stream_sink_twin_normal(
+    port_: i64,
+) {
+    wire_rust_auto_opaque_stream_sink_twin_normal_impl(port_)
 }
 
 #[no_mangle]

@@ -266,6 +266,13 @@ Future<void> main({bool skipRustLibInit = false}) async {
     await futurizeVoidTwinMoi(rustAutoOpaqueEnumArgBorrowTwinMoi(arg: obj));
   });
 
+  test('stream sink', () async {
+    final stream = await rustAutoOpaqueStreamSinkTwinMoi();
+    final obj = (await stream.toList()).single;
+    await futurizeVoidTwinMoi(
+        rustAutoOpaqueArgBorrowTwinMoi(arg: obj, expect: 42));
+  });
+
   test('vec of opaque', () async {
     final vec = await rustAutoOpaqueReturnVecOwnTwinMoi();
 

@@ -6,6 +6,7 @@
 
 #[allow(unused_imports)]
 use crate::frb_generated::RustAutoOpaque;
+use crate::frb_generated::StreamSink;
 use flutter_rust_bridge::frb;
 use flutter_rust_bridge::rust_async::RwLock;
 use std::path::PathBuf;
@@ -307,6 +308,13 @@ pub fn rust_auto_opaque_enum_arg_borrow_twin_moi(arg: &NonCloneSimpleEnumTwinMoi
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
 pub fn rust_auto_opaque_enum_return_own_twin_moi() -> NonCloneSimpleEnumTwinMoi {
     NonCloneSimpleEnumTwinMoi::Orange
+}
+
+// ================ stream sink ===================
+
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+pub fn rust_auto_opaque_stream_sink_twin_moi(sink: StreamSink<NonCloneSimpleTwinMoi>) {
+    sink.add(NonCloneSimpleTwinMoi { inner: 42 }).unwrap();
 }
 
 // ================ vec of opaque ===================

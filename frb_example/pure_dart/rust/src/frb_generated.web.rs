@@ -24043,6 +24043,13 @@ pub fn wire_rust_auto_opaque_return_vec_own_twin_moi(
 }
 
 #[wasm_bindgen]
+pub fn wire_rust_auto_opaque_stream_sink_twin_moi(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire_rust_auto_opaque_stream_sink_twin_moi_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_moi(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
@@ -24392,6 +24399,13 @@ pub fn wire_rust_auto_opaque_return_vec_own_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire_rust_auto_opaque_return_vec_own_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_stream_sink_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire_rust_auto_opaque_stream_sink_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
@@ -24756,6 +24770,13 @@ pub fn wire_rust_auto_opaque_return_vec_own_twin_rust_async_moi(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire_rust_auto_opaque_return_vec_own_twin_rust_async_moi_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_stream_sink_twin_rust_async_moi(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire_rust_auto_opaque_stream_sink_twin_rust_async_moi_impl(port_)
 }
 
 #[wasm_bindgen]
@@ -25345,6 +25366,21 @@ pub fn wire_rust_auto_opaque_return_vec_own_twin_rust_async_sse(
     data_len_: i32,
 ) {
     wire_rust_auto_opaque_return_vec_own_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_stream_sink_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_stream_sink_twin_rust_async_sse_impl(
         port_,
         ptr_,
         rust_vec_len_,
@@ -26003,6 +26039,21 @@ pub fn wire_rust_auto_opaque_return_vec_own_twin_rust_async_sse_moi(
 }
 
 #[wasm_bindgen]
+pub fn wire_rust_auto_opaque_stream_sink_twin_rust_async_sse_moi(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_stream_sink_twin_rust_async_sse_moi_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
 pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async_sse_moi(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -26550,6 +26601,16 @@ pub fn wire_rust_auto_opaque_return_vec_own_twin_sse(
     data_len_: i32,
 ) {
     wire_rust_auto_opaque_return_vec_own_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_stream_sink_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_stream_sink_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -27113,6 +27174,16 @@ pub fn wire_rust_auto_opaque_return_vec_own_twin_sse_moi(
 }
 
 #[wasm_bindgen]
+pub fn wire_rust_auto_opaque_stream_sink_twin_sse_moi(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_stream_sink_twin_sse_moi_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
 pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sse_moi(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -27477,6 +27548,13 @@ pub fn wire_rust_auto_opaque_return_vec_own_twin_sync(
 }
 
 #[wasm_bindgen]
+pub fn wire_rust_auto_opaque_stream_sink_twin_sync(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire_rust_auto_opaque_stream_sink_twin_sync_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
@@ -27780,6 +27858,13 @@ pub fn wire_rust_auto_opaque_return_own_twin_sync_moi(
 pub fn wire_rust_auto_opaque_return_vec_own_twin_sync_moi(
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_rust_auto_opaque_return_vec_own_twin_sync_moi_impl()
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_stream_sink_twin_sync_moi(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire_rust_auto_opaque_stream_sink_twin_sync_moi_impl(port_)
 }
 
 #[wasm_bindgen]
@@ -28221,6 +28306,16 @@ pub fn wire_rust_auto_opaque_return_vec_own_twin_sync_sse(
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_rust_auto_opaque_return_vec_own_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_stream_sink_twin_sync_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_stream_sink_twin_sync_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -28709,6 +28804,16 @@ pub fn wire_rust_auto_opaque_return_vec_own_twin_sync_sse_moi(
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_rust_auto_opaque_return_vec_own_twin_sync_sse_moi_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_stream_sink_twin_sync_sse_moi(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_stream_sink_twin_sync_sse_moi_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -31335,6 +31440,13 @@ pub fn wire_rust_auto_opaque_return_vec_own_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire_rust_auto_opaque_return_vec_own_twin_normal_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_stream_sink_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire_rust_auto_opaque_stream_sink_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]

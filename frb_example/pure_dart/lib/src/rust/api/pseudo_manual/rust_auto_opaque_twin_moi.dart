@@ -136,6 +136,9 @@ Future<NonCloneSimpleEnumTwinMoi> rustAutoOpaqueEnumReturnOwnTwinMoi(
         {dynamic hint}) =>
     RustLib.instance.api.rustAutoOpaqueEnumReturnOwnTwinMoi(hint: hint);
 
+Stream<NonCloneSimpleTwinMoi> rustAutoOpaqueStreamSinkTwinMoi({dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueStreamSinkTwinMoi(hint: hint);
+
 Future<void> rustAutoOpaqueArgVecOwnTwinMoi(
         {required List<NonCloneSimpleTwinMoi> arg,
         required List<int> expect,
