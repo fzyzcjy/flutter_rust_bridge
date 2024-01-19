@@ -149,6 +149,16 @@ Future<EnumWithGoodAndOpaqueTwinRustAsyncSseMoi>
             .rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinRustAsyncSseMoi(
                 hint: hint);
 
+Future<void> rustAutoOpaqueEnumArgBorrowTwinRustAsyncSseMoi(
+        {required NonCloneSimpleEnumTwinRustAsyncSseMoi arg, dynamic hint}) =>
+    RustLib.instance.api
+        .rustAutoOpaqueEnumArgBorrowTwinRustAsyncSseMoi(arg: arg, hint: hint);
+
+Future<NonCloneSimpleEnumTwinRustAsyncSseMoi>
+    rustAutoOpaqueEnumReturnOwnTwinRustAsyncSseMoi({dynamic hint}) =>
+        RustLib.instance.api
+            .rustAutoOpaqueEnumReturnOwnTwinRustAsyncSseMoi(hint: hint);
+
 Future<void> rustAutoOpaqueArgVecOwnTwinRustAsyncSseMoi(
         {required List<NonCloneSimpleTwinRustAsyncSseMoi> arg,
         required List<int> expect,
@@ -239,6 +249,26 @@ class BoxMyTraitTwinRustAsyncSseMoi extends RustOpaque {
         .rust_arc_decrement_strong_count_BoxMyTraitTwinRustAsyncSseMoi,
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_BoxMyTraitTwinRustAsyncSseMoiPtr,
+  );
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleEnumTwinRustAsyncSseMoi>>
+@sealed
+class NonCloneSimpleEnumTwinRustAsyncSseMoi extends RustOpaque {
+  NonCloneSimpleEnumTwinRustAsyncSseMoi.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  NonCloneSimpleEnumTwinRustAsyncSseMoi.sseDecode(
+      int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_NonCloneSimpleEnumTwinRustAsyncSseMoi,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_NonCloneSimpleEnumTwinRustAsyncSseMoi,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_NonCloneSimpleEnumTwinRustAsyncSseMoiPtr,
   );
 }
 

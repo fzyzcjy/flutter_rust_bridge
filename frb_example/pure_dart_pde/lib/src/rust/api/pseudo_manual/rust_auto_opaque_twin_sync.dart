@@ -131,6 +131,15 @@ EnumWithGoodAndOpaqueTwinSync
             .rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinSync(
                 hint: hint);
 
+void rustAutoOpaqueEnumArgBorrowTwinSync(
+        {required NonCloneSimpleEnumTwinSync arg, dynamic hint}) =>
+    RustLib.instance.api
+        .rustAutoOpaqueEnumArgBorrowTwinSync(arg: arg, hint: hint);
+
+NonCloneSimpleEnumTwinSync rustAutoOpaqueEnumReturnOwnTwinSync(
+        {dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueEnumReturnOwnTwinSync(hint: hint);
+
 void rustAutoOpaqueArgVecOwnTwinSync(
         {required List<NonCloneSimpleTwinSync> arg,
         required List<int> expect,
@@ -217,6 +226,25 @@ class BoxMyTraitTwinSync extends RustOpaque {
         RustLib.instance.api.rust_arc_decrement_strong_count_BoxMyTraitTwinSync,
     rustArcDecrementStrongCountPtr: RustLib
         .instance.api.rust_arc_decrement_strong_count_BoxMyTraitTwinSyncPtr,
+  );
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleEnumTwinSync>>
+@sealed
+class NonCloneSimpleEnumTwinSync extends RustOpaque {
+  NonCloneSimpleEnumTwinSync.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  NonCloneSimpleEnumTwinSync.sseDecode(int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_NonCloneSimpleEnumTwinSync,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_NonCloneSimpleEnumTwinSync,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_NonCloneSimpleEnumTwinSyncPtr,
   );
 }
 

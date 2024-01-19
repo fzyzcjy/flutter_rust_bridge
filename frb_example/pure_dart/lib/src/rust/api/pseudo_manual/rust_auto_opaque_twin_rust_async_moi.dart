@@ -142,6 +142,16 @@ Future<EnumWithGoodAndOpaqueTwinRustAsyncMoi>
             .rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinRustAsyncMoi(
                 hint: hint);
 
+Future<void> rustAutoOpaqueEnumArgBorrowTwinRustAsyncMoi(
+        {required NonCloneSimpleEnumTwinRustAsyncMoi arg, dynamic hint}) =>
+    RustLib.instance.api
+        .rustAutoOpaqueEnumArgBorrowTwinRustAsyncMoi(arg: arg, hint: hint);
+
+Future<NonCloneSimpleEnumTwinRustAsyncMoi>
+    rustAutoOpaqueEnumReturnOwnTwinRustAsyncMoi({dynamic hint}) =>
+        RustLib.instance.api
+            .rustAutoOpaqueEnumReturnOwnTwinRustAsyncMoi(hint: hint);
+
 Future<void> rustAutoOpaqueArgVecOwnTwinRustAsyncMoi(
         {required List<NonCloneSimpleTwinRustAsyncMoi> arg,
         required List<int> expect,
@@ -232,6 +242,26 @@ class BoxMyTraitTwinRustAsyncMoi extends RustOpaque {
         .rust_arc_decrement_strong_count_BoxMyTraitTwinRustAsyncMoi,
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_BoxMyTraitTwinRustAsyncMoiPtr,
+  );
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleEnumTwinRustAsyncMoi>>
+@sealed
+class NonCloneSimpleEnumTwinRustAsyncMoi extends RustOpaque {
+  NonCloneSimpleEnumTwinRustAsyncMoi.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  NonCloneSimpleEnumTwinRustAsyncMoi.sseDecode(
+      int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_NonCloneSimpleEnumTwinRustAsyncMoi,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_NonCloneSimpleEnumTwinRustAsyncMoi,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_NonCloneSimpleEnumTwinRustAsyncMoiPtr,
   );
 }
 

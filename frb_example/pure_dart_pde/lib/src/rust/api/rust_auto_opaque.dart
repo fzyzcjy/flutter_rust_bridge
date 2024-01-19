@@ -137,6 +137,15 @@ Future<EnumWithGoodAndOpaqueTwinNormal>
             .rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinNormal(
                 hint: hint);
 
+Future<void> rustAutoOpaqueEnumArgBorrowTwinNormal(
+        {required NonCloneSimpleEnumTwinNormal arg, dynamic hint}) =>
+    RustLib.instance.api
+        .rustAutoOpaqueEnumArgBorrowTwinNormal(arg: arg, hint: hint);
+
+Future<NonCloneSimpleEnumTwinNormal> rustAutoOpaqueEnumReturnOwnTwinNormal(
+        {dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueEnumReturnOwnTwinNormal(hint: hint);
+
 Future<void> rustAutoOpaqueArgVecOwnTwinNormal(
         {required List<NonCloneSimpleTwinNormal> arg,
         required List<int> expect,
@@ -224,6 +233,25 @@ class BoxMyTraitTwinNormal extends RustOpaque {
         .instance.api.rust_arc_decrement_strong_count_BoxMyTraitTwinNormal,
     rustArcDecrementStrongCountPtr: RustLib
         .instance.api.rust_arc_decrement_strong_count_BoxMyTraitTwinNormalPtr,
+  );
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleEnumTwinNormal>>
+@sealed
+class NonCloneSimpleEnumTwinNormal extends RustOpaque {
+  NonCloneSimpleEnumTwinNormal.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  NonCloneSimpleEnumTwinNormal.sseDecode(int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_NonCloneSimpleEnumTwinNormal,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_NonCloneSimpleEnumTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_NonCloneSimpleEnumTwinNormalPtr,
   );
 }
 
