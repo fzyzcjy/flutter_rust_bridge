@@ -236,7 +236,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(await obj.instanceMethodGetterTwinNormal, 42);
   });
 
-  test('types with both encodable and opaque fields', () async {
+  test('structs with both encodable and opaque fields', () async {
     final obj =
         await rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinNormal();
     expect(obj.good, 'hello');
@@ -246,13 +246,35 @@ Future<void> main({bool skipRustLibInit = false}) async {
         rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinNormal(arg: obj));
   });
 
+  test('enums with both encodable and opaque', () async {
+    final good =
+        (await rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinNormal());
+    final opaque =
+        (await rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinNormal());
+
+    await futurizeVoidTwinNormal(
+        rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinNormal(arg: good));
+    await futurizeVoidTwinNormal(
+        rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinNormal(arg: opaque));
+
+    await futurizeVoidTwinNormal(
+        rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinNormal(
+            arg: EnumWithGoodAndOpaqueTwinNormal.good('hello')));
+  });
+
+  test('enum opaque type', () async {
+    final obj = await rustAutoOpaqueEnumReturnOwnTwinNormal();
+    await futurizeVoidTwinNormal(
+        rustAutoOpaqueEnumArgBorrowTwinNormal(arg: obj));
+  });
+
   test('stream sink', () async {
     final stream = await rustAutoOpaqueStreamSinkTwinNormal();
     final obj = (await stream.toList()).single;
     await futurizeVoidTwinNormal(
         rustAutoOpaqueArgBorrowTwinNormal(arg: obj, expect: 42));
   });
-
+  
   test('vec of opaque', () async {
     final vec = await rustAutoOpaqueReturnVecOwnTwinNormal();
 

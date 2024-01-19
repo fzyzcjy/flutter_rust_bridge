@@ -16,7 +16,7 @@ where
 {
     fn parse(
         &mut self,
-        type_path: &TypePath,
+        _type_path: &TypePath,
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
         let (name, _) = last_segment;
@@ -43,18 +43,8 @@ where
                     &src_object.inner().ident,
                     src_object.inner().mirror,
                 );
-
-                match self.parse_inner(&src_object, name, wrapper_name)? {
-                    Some(parsed_object) => {
-                        (self.parser_info().object_pool).insert(ident.clone(), parsed_object)
-                    }
-                    None => {
-                        return Ok(Some(self.parse_type_rust_auto_opaque(
-                            None,
-                            &Type::Path(type_path.to_owned()),
-                        )?))
-                    }
-                };
+                let parsed_object = self.parse_inner(&src_object, name, wrapper_name)?;
+                (self.parser_info().object_pool).insert(ident.clone(), parsed_object);
             }
 
             return Ok(Some(self.construct_output(ident)?));
@@ -68,7 +58,7 @@ where
         src_object: &SrcObj,
         name: NamespacedName,
         wrapper_name: Option<String>,
-    ) -> anyhow::Result<Option<Obj>>;
+    ) -> anyhow::Result<Obj>;
 
     fn construct_output(&self, ident: Id) -> anyhow::Result<IrType>;
 

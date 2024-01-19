@@ -16,6 +16,13 @@ pub struct NonCloneSimpleTwinNormal {
     inner: i32,
 }
 
+#[frb(opaque)]
+// Do *NOT* make it Clone or serializable
+pub enum NonCloneSimpleEnumTwinNormal {
+    Apple,
+    Orange,
+}
+
 // ==================================== simple =======================================
 
 pub fn rust_auto_opaque_arg_own_twin_normal(arg: NonCloneSimpleTwinNormal, expect: i32) {
@@ -212,7 +219,7 @@ impl NonCloneSimpleTwinNormal {
     }
 }
 
-// ================ types with both encodable and opaque fields ===================
+// ================ struct with both encodable and opaque fields ===================
 
 pub struct StructWithGoodAndOpaqueFieldTwinNormal {
     pub good: String,
@@ -232,6 +239,42 @@ pub fn rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal
         good: "hello".to_string(),
         opaque: NonCloneSimpleTwinNormal { inner: 42 },
     }
+}
+
+// ================ enum with both encodable and opaque fields ===================
+
+pub enum EnumWithGoodAndOpaqueTwinNormal {
+    Good(String),
+    Opaque(NonCloneSimpleTwinNormal),
+}
+
+pub fn rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_normal(
+    arg: EnumWithGoodAndOpaqueTwinNormal,
+) {
+    match arg {
+        EnumWithGoodAndOpaqueTwinNormal::Good(inner) => assert_eq!(&inner, "hello"),
+        EnumWithGoodAndOpaqueTwinNormal::Opaque(inner) => assert_eq!(inner.inner, 42),
+    }
+}
+
+pub fn rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_normal(
+) -> EnumWithGoodAndOpaqueTwinNormal {
+    EnumWithGoodAndOpaqueTwinNormal::Good("hello".to_owned())
+}
+
+pub fn rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_normal(
+) -> EnumWithGoodAndOpaqueTwinNormal {
+    EnumWithGoodAndOpaqueTwinNormal::Opaque(NonCloneSimpleTwinNormal { inner: 42 })
+}
+
+// ================ enum opaque type ===================
+
+pub fn rust_auto_opaque_enum_arg_borrow_twin_normal(arg: &NonCloneSimpleEnumTwinNormal) {
+    assert!(matches!(arg, NonCloneSimpleEnumTwinNormal::Orange));
+}
+
+pub fn rust_auto_opaque_enum_return_own_twin_normal() -> NonCloneSimpleEnumTwinNormal {
+    NonCloneSimpleEnumTwinNormal::Orange
 }
 
 // ================ stream sink ===================

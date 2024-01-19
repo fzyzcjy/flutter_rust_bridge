@@ -668,6 +668,54 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSseSendSyncPtr;
 
   CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonCloneSimpleEnumTwinMoiPtr => wire
+          ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinMoiPtr;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonCloneSimpleEnumTwinNormalPtr => wire
+          ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinNormalPtr;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonCloneSimpleEnumTwinRustAsyncPtr =>
+          wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncPtr;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonCloneSimpleEnumTwinRustAsyncMoiPtr =>
+          wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncMoiPtr;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonCloneSimpleEnumTwinRustAsyncSsePtr =>
+          wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSsePtr;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonCloneSimpleEnumTwinRustAsyncSseMoiPtr =>
+          wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSseMoiPtr;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonCloneSimpleEnumTwinSsePtr => wire
+          ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSsePtr;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonCloneSimpleEnumTwinSseMoiPtr => wire
+          ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSseMoiPtr;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonCloneSimpleEnumTwinSyncPtr => wire
+          ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncPtr;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonCloneSimpleEnumTwinSyncMoiPtr => wire
+          ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncMoiPtr;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonCloneSimpleEnumTwinSyncSsePtr => wire
+          ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSsePtr;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonCloneSimpleEnumTwinSyncSseMoiPtr =>
+          wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSseMoiPtr;
+
+  CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_NonCloneSimpleTwinMoiPtr => wire
           ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoiPtr;
 
@@ -955,6 +1003,66 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   BoxMyTraitTwinSyncSse
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleEnumTwinMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinMoi(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleEnumTwinNormal
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinNormal(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleEnumTwinRustAsync
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsync(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleEnumTwinRustAsyncMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncMoi(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleEnumTwinRustAsyncSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSse(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleEnumTwinRustAsyncSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSseMoi(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleEnumTwinSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSse(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleEnumTwinSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSseMoi(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleEnumTwinSync
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSync(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleEnumTwinSyncMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncMoi(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleEnumTwinSyncSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSse(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleEnumTwinSyncSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSseMoi(
           dynamic raw);
 
   @protected
@@ -1320,6 +1428,66 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   BoxHelloTraitTwinSyncSseMoi
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSseMoi(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleEnumTwinMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinMoi(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleEnumTwinNormal
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinNormal(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleEnumTwinRustAsync
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsync(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleEnumTwinRustAsyncMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncMoi(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleEnumTwinRustAsyncSse
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSse(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleEnumTwinRustAsyncSseMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSseMoi(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleEnumTwinSse
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSse(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleEnumTwinSseMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSseMoi(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleEnumTwinSync
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSync(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleEnumTwinSyncMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncMoi(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleEnumTwinSyncSse
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSse(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleEnumTwinSyncSseMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSseMoi(
           dynamic raw);
 
   @protected
@@ -2133,6 +2301,66 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   BoxMyTraitTwinSyncSse
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleEnumTwinMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinMoi(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleEnumTwinNormal
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinNormal(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleEnumTwinRustAsync
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsync(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleEnumTwinRustAsyncMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncMoi(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleEnumTwinRustAsyncSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSse(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleEnumTwinRustAsyncSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSseMoi(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleEnumTwinSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSse(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleEnumTwinSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSseMoi(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleEnumTwinSync
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSync(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleEnumTwinSyncMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncMoi(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleEnumTwinSyncSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSse(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleEnumTwinSyncSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSseMoi(
           dynamic raw);
 
   @protected
@@ -3218,6 +3446,62 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   EnumOpaqueTwinSyncSseMoi dco_decode_box_autoadd_enum_opaque_twin_sync_sse_moi(
       dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinMoi
+      dco_decode_box_autoadd_enum_with_good_and_opaque_twin_moi(dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinNormal
+      dco_decode_box_autoadd_enum_with_good_and_opaque_twin_normal(dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinRustAsync
+      dco_decode_box_autoadd_enum_with_good_and_opaque_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinRustAsyncMoi
+      dco_decode_box_autoadd_enum_with_good_and_opaque_twin_rust_async_moi(
+          dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinRustAsyncSse
+      dco_decode_box_autoadd_enum_with_good_and_opaque_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinRustAsyncSseMoi
+      dco_decode_box_autoadd_enum_with_good_and_opaque_twin_rust_async_sse_moi(
+          dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSse
+      dco_decode_box_autoadd_enum_with_good_and_opaque_twin_sse(dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSseMoi
+      dco_decode_box_autoadd_enum_with_good_and_opaque_twin_sse_moi(
+          dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSync
+      dco_decode_box_autoadd_enum_with_good_and_opaque_twin_sync(dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSyncMoi
+      dco_decode_box_autoadd_enum_with_good_and_opaque_twin_sync_moi(
+          dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSyncSse
+      dco_decode_box_autoadd_enum_with_good_and_opaque_twin_sync_sse(
+          dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSyncSseMoi
+      dco_decode_box_autoadd_enum_with_good_and_opaque_twin_sync_sse_moi(
+          dynamic raw);
 
   @protected
   EnumWithItemMixedTwinNormal
@@ -4786,6 +5070,54 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   EnumWithDiscriminantTwinSyncSse
       dco_decode_enum_with_discriminant_twin_sync_sse(dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinMoi dco_decode_enum_with_good_and_opaque_twin_moi(
+      dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinNormal
+      dco_decode_enum_with_good_and_opaque_twin_normal(dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinRustAsync
+      dco_decode_enum_with_good_and_opaque_twin_rust_async(dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinRustAsyncMoi
+      dco_decode_enum_with_good_and_opaque_twin_rust_async_moi(dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinRustAsyncSse
+      dco_decode_enum_with_good_and_opaque_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinRustAsyncSseMoi
+      dco_decode_enum_with_good_and_opaque_twin_rust_async_sse_moi(dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSse dco_decode_enum_with_good_and_opaque_twin_sse(
+      dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSseMoi
+      dco_decode_enum_with_good_and_opaque_twin_sse_moi(dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSync dco_decode_enum_with_good_and_opaque_twin_sync(
+      dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSyncMoi
+      dco_decode_enum_with_good_and_opaque_twin_sync_moi(dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSyncSse
+      dco_decode_enum_with_good_and_opaque_twin_sync_sse(dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSyncSseMoi
+      dco_decode_enum_with_good_and_opaque_twin_sync_sse_moi(dynamic raw);
 
   @protected
   EnumWithItemMixedTwinNormal dco_decode_enum_with_item_mixed_twin_normal(
@@ -7469,6 +7801,66 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  NonCloneSimpleEnumTwinMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleEnumTwinNormal
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleEnumTwinRustAsync
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsync(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleEnumTwinRustAsyncMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleEnumTwinRustAsyncSse
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleEnumTwinRustAsyncSseMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSseMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleEnumTwinSse
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSse(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleEnumTwinSseMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSseMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleEnumTwinSync
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSync(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleEnumTwinSyncMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleEnumTwinSyncSse
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleEnumTwinSyncSseMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSseMoi(
+          SseDeserializer deserializer);
+
+  @protected
   NonCloneSimpleTwinMoi
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoi(
           SseDeserializer deserializer);
@@ -7831,6 +8223,66 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   BoxHelloTraitTwinSyncSseMoi
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSseMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleEnumTwinMoi
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleEnumTwinNormal
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleEnumTwinRustAsync
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsync(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleEnumTwinRustAsyncMoi
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleEnumTwinRustAsyncSse
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleEnumTwinRustAsyncSseMoi
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSseMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleEnumTwinSse
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSse(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleEnumTwinSseMoi
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSseMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleEnumTwinSync
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSync(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleEnumTwinSyncMoi
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleEnumTwinSyncSse
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleEnumTwinSyncSseMoi
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSseMoi(
           SseDeserializer deserializer);
 
   @protected
@@ -8647,6 +9099,66 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   BoxMyTraitTwinSyncSse
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleEnumTwinMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleEnumTwinNormal
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleEnumTwinRustAsync
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsync(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleEnumTwinRustAsyncMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleEnumTwinRustAsyncSse
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleEnumTwinRustAsyncSseMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSseMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleEnumTwinSse
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSse(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleEnumTwinSseMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSseMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleEnumTwinSync
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSync(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleEnumTwinSyncMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleEnumTwinSyncSse
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleEnumTwinSyncSseMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSseMoi(
           SseDeserializer deserializer);
 
   @protected
@@ -9859,6 +10371,66 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   EnumOpaqueTwinSyncSseMoi sse_decode_box_autoadd_enum_opaque_twin_sync_sse_moi(
       SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinMoi
+      sse_decode_box_autoadd_enum_with_good_and_opaque_twin_moi(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinNormal
+      sse_decode_box_autoadd_enum_with_good_and_opaque_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinRustAsync
+      sse_decode_box_autoadd_enum_with_good_and_opaque_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinRustAsyncMoi
+      sse_decode_box_autoadd_enum_with_good_and_opaque_twin_rust_async_moi(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinRustAsyncSse
+      sse_decode_box_autoadd_enum_with_good_and_opaque_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinRustAsyncSseMoi
+      sse_decode_box_autoadd_enum_with_good_and_opaque_twin_rust_async_sse_moi(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSse
+      sse_decode_box_autoadd_enum_with_good_and_opaque_twin_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSseMoi
+      sse_decode_box_autoadd_enum_with_good_and_opaque_twin_sse_moi(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSync
+      sse_decode_box_autoadd_enum_with_good_and_opaque_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSyncMoi
+      sse_decode_box_autoadd_enum_with_good_and_opaque_twin_sync_moi(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSyncSse
+      sse_decode_box_autoadd_enum_with_good_and_opaque_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSyncSseMoi
+      sse_decode_box_autoadd_enum_with_good_and_opaque_twin_sync_sse_moi(
+          SseDeserializer deserializer);
 
   @protected
   EnumWithItemMixedTwinNormal
@@ -11649,6 +12221,63 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   EnumWithDiscriminantTwinSyncSse
       sse_decode_enum_with_discriminant_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinMoi sse_decode_enum_with_good_and_opaque_twin_moi(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinNormal
+      sse_decode_enum_with_good_and_opaque_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinRustAsync
+      sse_decode_enum_with_good_and_opaque_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinRustAsyncMoi
+      sse_decode_enum_with_good_and_opaque_twin_rust_async_moi(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinRustAsyncSse
+      sse_decode_enum_with_good_and_opaque_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinRustAsyncSseMoi
+      sse_decode_enum_with_good_and_opaque_twin_rust_async_sse_moi(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSse sse_decode_enum_with_good_and_opaque_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSseMoi
+      sse_decode_enum_with_good_and_opaque_twin_sse_moi(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSync sse_decode_enum_with_good_and_opaque_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSyncMoi
+      sse_decode_enum_with_good_and_opaque_twin_sync_moi(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSyncSse
+      sse_decode_enum_with_good_and_opaque_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSyncSseMoi
+      sse_decode_enum_with_good_and_opaque_twin_sync_sse_moi(
           SseDeserializer deserializer);
 
   @protected
@@ -15735,6 +16364,72 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     final ptr = wire.cst_new_box_autoadd_enum_opaque_twin_sync_moi();
     cst_api_fill_to_wire_enum_opaque_twin_sync_moi(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_enum_with_good_and_opaque_twin_moi>
+      cst_encode_box_autoadd_enum_with_good_and_opaque_twin_moi(
+          EnumWithGoodAndOpaqueTwinMoi raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr = wire.cst_new_box_autoadd_enum_with_good_and_opaque_twin_moi();
+    cst_api_fill_to_wire_enum_with_good_and_opaque_twin_moi(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_enum_with_good_and_opaque_twin_normal>
+      cst_encode_box_autoadd_enum_with_good_and_opaque_twin_normal(
+          EnumWithGoodAndOpaqueTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr =
+        wire.cst_new_box_autoadd_enum_with_good_and_opaque_twin_normal();
+    cst_api_fill_to_wire_enum_with_good_and_opaque_twin_normal(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_enum_with_good_and_opaque_twin_rust_async>
+      cst_encode_box_autoadd_enum_with_good_and_opaque_twin_rust_async(
+          EnumWithGoodAndOpaqueTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr =
+        wire.cst_new_box_autoadd_enum_with_good_and_opaque_twin_rust_async();
+    cst_api_fill_to_wire_enum_with_good_and_opaque_twin_rust_async(
+        raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_enum_with_good_and_opaque_twin_rust_async_moi>
+      cst_encode_box_autoadd_enum_with_good_and_opaque_twin_rust_async_moi(
+          EnumWithGoodAndOpaqueTwinRustAsyncMoi raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr = wire
+        .cst_new_box_autoadd_enum_with_good_and_opaque_twin_rust_async_moi();
+    cst_api_fill_to_wire_enum_with_good_and_opaque_twin_rust_async_moi(
+        raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_enum_with_good_and_opaque_twin_sync>
+      cst_encode_box_autoadd_enum_with_good_and_opaque_twin_sync(
+          EnumWithGoodAndOpaqueTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr = wire.cst_new_box_autoadd_enum_with_good_and_opaque_twin_sync();
+    cst_api_fill_to_wire_enum_with_good_and_opaque_twin_sync(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_enum_with_good_and_opaque_twin_sync_moi>
+      cst_encode_box_autoadd_enum_with_good_and_opaque_twin_sync_moi(
+          EnumWithGoodAndOpaqueTwinSyncMoi raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr =
+        wire.cst_new_box_autoadd_enum_with_good_and_opaque_twin_sync_moi();
+    cst_api_fill_to_wire_enum_with_good_and_opaque_twin_sync_moi(raw, ptr.ref);
     return ptr;
   }
 
@@ -20364,6 +21059,58 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  void cst_api_fill_to_wire_box_autoadd_enum_with_good_and_opaque_twin_moi(
+      EnumWithGoodAndOpaqueTwinMoi apiObj,
+      ffi.Pointer<wire_cst_enum_with_good_and_opaque_twin_moi> wireObj) {
+    cst_api_fill_to_wire_enum_with_good_and_opaque_twin_moi(
+        apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_enum_with_good_and_opaque_twin_normal(
+      EnumWithGoodAndOpaqueTwinNormal apiObj,
+      ffi.Pointer<wire_cst_enum_with_good_and_opaque_twin_normal> wireObj) {
+    cst_api_fill_to_wire_enum_with_good_and_opaque_twin_normal(
+        apiObj, wireObj.ref);
+  }
+
+  @protected
+  void
+      cst_api_fill_to_wire_box_autoadd_enum_with_good_and_opaque_twin_rust_async(
+          EnumWithGoodAndOpaqueTwinRustAsync apiObj,
+          ffi.Pointer<wire_cst_enum_with_good_and_opaque_twin_rust_async>
+              wireObj) {
+    cst_api_fill_to_wire_enum_with_good_and_opaque_twin_rust_async(
+        apiObj, wireObj.ref);
+  }
+
+  @protected
+  void
+      cst_api_fill_to_wire_box_autoadd_enum_with_good_and_opaque_twin_rust_async_moi(
+          EnumWithGoodAndOpaqueTwinRustAsyncMoi apiObj,
+          ffi.Pointer<wire_cst_enum_with_good_and_opaque_twin_rust_async_moi>
+              wireObj) {
+    cst_api_fill_to_wire_enum_with_good_and_opaque_twin_rust_async_moi(
+        apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_enum_with_good_and_opaque_twin_sync(
+      EnumWithGoodAndOpaqueTwinSync apiObj,
+      ffi.Pointer<wire_cst_enum_with_good_and_opaque_twin_sync> wireObj) {
+    cst_api_fill_to_wire_enum_with_good_and_opaque_twin_sync(
+        apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_enum_with_good_and_opaque_twin_sync_moi(
+      EnumWithGoodAndOpaqueTwinSyncMoi apiObj,
+      ffi.Pointer<wire_cst_enum_with_good_and_opaque_twin_sync_moi> wireObj) {
+    cst_api_fill_to_wire_enum_with_good_and_opaque_twin_sync_moi(
+        apiObj, wireObj.ref);
+  }
+
+  @protected
   void cst_api_fill_to_wire_box_autoadd_enum_with_item_mixed_twin_normal(
       EnumWithItemMixedTwinNormal apiObj,
       ffi.Pointer<wire_cst_enum_with_item_mixed_twin_normal> wireObj) {
@@ -22233,6 +22980,126 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
     if (apiObj is EnumOpaqueTwinSyncMoi_Nothing) {
       wireObj.tag = 5;
+      return;
+    }
+  }
+
+  @protected
+  void cst_api_fill_to_wire_enum_with_good_and_opaque_twin_moi(
+      EnumWithGoodAndOpaqueTwinMoi apiObj,
+      wire_cst_enum_with_good_and_opaque_twin_moi wireObj) {
+    if (apiObj is EnumWithGoodAndOpaqueTwinMoi_Good) {
+      var pre_field0 = cst_encode_String(apiObj.field0);
+      wireObj.tag = 0;
+      wireObj.kind.Good.field0 = pre_field0;
+      return;
+    }
+    if (apiObj is EnumWithGoodAndOpaqueTwinMoi_Opaque) {
+      var pre_field0 =
+          cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoi(
+              apiObj.field0);
+      wireObj.tag = 1;
+      wireObj.kind.Opaque.field0 = pre_field0;
+      return;
+    }
+  }
+
+  @protected
+  void cst_api_fill_to_wire_enum_with_good_and_opaque_twin_normal(
+      EnumWithGoodAndOpaqueTwinNormal apiObj,
+      wire_cst_enum_with_good_and_opaque_twin_normal wireObj) {
+    if (apiObj is EnumWithGoodAndOpaqueTwinNormal_Good) {
+      var pre_field0 = cst_encode_String(apiObj.field0);
+      wireObj.tag = 0;
+      wireObj.kind.Good.field0 = pre_field0;
+      return;
+    }
+    if (apiObj is EnumWithGoodAndOpaqueTwinNormal_Opaque) {
+      var pre_field0 =
+          cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
+              apiObj.field0);
+      wireObj.tag = 1;
+      wireObj.kind.Opaque.field0 = pre_field0;
+      return;
+    }
+  }
+
+  @protected
+  void cst_api_fill_to_wire_enum_with_good_and_opaque_twin_rust_async(
+      EnumWithGoodAndOpaqueTwinRustAsync apiObj,
+      wire_cst_enum_with_good_and_opaque_twin_rust_async wireObj) {
+    if (apiObj is EnumWithGoodAndOpaqueTwinRustAsync_Good) {
+      var pre_field0 = cst_encode_String(apiObj.field0);
+      wireObj.tag = 0;
+      wireObj.kind.Good.field0 = pre_field0;
+      return;
+    }
+    if (apiObj is EnumWithGoodAndOpaqueTwinRustAsync_Opaque) {
+      var pre_field0 =
+          cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync(
+              apiObj.field0);
+      wireObj.tag = 1;
+      wireObj.kind.Opaque.field0 = pre_field0;
+      return;
+    }
+  }
+
+  @protected
+  void cst_api_fill_to_wire_enum_with_good_and_opaque_twin_rust_async_moi(
+      EnumWithGoodAndOpaqueTwinRustAsyncMoi apiObj,
+      wire_cst_enum_with_good_and_opaque_twin_rust_async_moi wireObj) {
+    if (apiObj is EnumWithGoodAndOpaqueTwinRustAsyncMoi_Good) {
+      var pre_field0 = cst_encode_String(apiObj.field0);
+      wireObj.tag = 0;
+      wireObj.kind.Good.field0 = pre_field0;
+      return;
+    }
+    if (apiObj is EnumWithGoodAndOpaqueTwinRustAsyncMoi_Opaque) {
+      var pre_field0 =
+          cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+              apiObj.field0);
+      wireObj.tag = 1;
+      wireObj.kind.Opaque.field0 = pre_field0;
+      return;
+    }
+  }
+
+  @protected
+  void cst_api_fill_to_wire_enum_with_good_and_opaque_twin_sync(
+      EnumWithGoodAndOpaqueTwinSync apiObj,
+      wire_cst_enum_with_good_and_opaque_twin_sync wireObj) {
+    if (apiObj is EnumWithGoodAndOpaqueTwinSync_Good) {
+      var pre_field0 = cst_encode_String(apiObj.field0);
+      wireObj.tag = 0;
+      wireObj.kind.Good.field0 = pre_field0;
+      return;
+    }
+    if (apiObj is EnumWithGoodAndOpaqueTwinSync_Opaque) {
+      var pre_field0 =
+          cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
+              apiObj.field0);
+      wireObj.tag = 1;
+      wireObj.kind.Opaque.field0 = pre_field0;
+      return;
+    }
+  }
+
+  @protected
+  void cst_api_fill_to_wire_enum_with_good_and_opaque_twin_sync_moi(
+      EnumWithGoodAndOpaqueTwinSyncMoi apiObj,
+      wire_cst_enum_with_good_and_opaque_twin_sync_moi wireObj) {
+    if (apiObj is EnumWithGoodAndOpaqueTwinSyncMoi_Good) {
+      var pre_field0 = cst_encode_String(apiObj.field0);
+      wireObj.tag = 0;
+      wireObj.kind.Good.field0 = pre_field0;
+      return;
+    }
+    if (apiObj is EnumWithGoodAndOpaqueTwinSyncMoi_Opaque) {
+      var pre_field0 =
+          cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+              apiObj.field0);
+      wireObj.tag = 1;
+      wireObj.kind.Opaque.field0 = pre_field0;
       return;
     }
   }
@@ -24117,6 +24984,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       BoxMyTraitTwinSync raw);
 
   @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinMoi(
+      NonCloneSimpleEnumTwinMoi raw);
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinNormal(
+      NonCloneSimpleEnumTwinNormal raw);
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsync(
+      NonCloneSimpleEnumTwinRustAsync raw);
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncMoi(
+      NonCloneSimpleEnumTwinRustAsyncMoi raw);
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSync(
+      NonCloneSimpleEnumTwinSync raw);
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncMoi(
+      NonCloneSimpleEnumTwinSyncMoi raw);
+
+  @protected
   int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoi(
       NonCloneSimpleTwinMoi raw);
 
@@ -24263,6 +25154,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncMoi(
       BoxHelloTraitTwinSyncMoi raw);
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinMoi(
+      NonCloneSimpleEnumTwinMoi raw);
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinNormal(
+      NonCloneSimpleEnumTwinNormal raw);
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsync(
+      NonCloneSimpleEnumTwinRustAsync raw);
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncMoi(
+      NonCloneSimpleEnumTwinRustAsyncMoi raw);
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSync(
+      NonCloneSimpleEnumTwinSync raw);
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncMoi(
+      NonCloneSimpleEnumTwinSyncMoi raw);
 
   @protected
   int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoi(
@@ -24545,6 +25460,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSendSync(
       BoxMyTraitTwinSync raw);
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinMoi(
+      NonCloneSimpleEnumTwinMoi raw);
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinNormal(
+      NonCloneSimpleEnumTwinNormal raw);
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsync(
+      NonCloneSimpleEnumTwinRustAsync raw);
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncMoi(
+      NonCloneSimpleEnumTwinRustAsyncMoi raw);
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSync(
+      NonCloneSimpleEnumTwinSync raw);
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncMoi(
+      NonCloneSimpleEnumTwinSyncMoi raw);
 
   @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoi(
@@ -24847,6 +25786,66 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
           BoxMyTraitTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinMoi(
+          NonCloneSimpleEnumTwinMoi self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinNormal(
+          NonCloneSimpleEnumTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsync(
+          NonCloneSimpleEnumTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncMoi(
+          NonCloneSimpleEnumTwinRustAsyncMoi self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSse(
+          NonCloneSimpleEnumTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSseMoi(
+          NonCloneSimpleEnumTwinRustAsyncSseMoi self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSse(
+          NonCloneSimpleEnumTwinSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSseMoi(
+          NonCloneSimpleEnumTwinSseMoi self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSync(
+          NonCloneSimpleEnumTwinSync self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncMoi(
+          NonCloneSimpleEnumTwinSyncMoi self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSse(
+          NonCloneSimpleEnumTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSseMoi(
+          NonCloneSimpleEnumTwinSyncSseMoi self, SseSerializer serializer);
 
   @protected
   void
@@ -25212,6 +26211,66 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSseMoi(
           BoxHelloTraitTwinSyncSseMoi self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinMoi(
+          NonCloneSimpleEnumTwinMoi self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinNormal(
+          NonCloneSimpleEnumTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsync(
+          NonCloneSimpleEnumTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncMoi(
+          NonCloneSimpleEnumTwinRustAsyncMoi self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSse(
+          NonCloneSimpleEnumTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSseMoi(
+          NonCloneSimpleEnumTwinRustAsyncSseMoi self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSse(
+          NonCloneSimpleEnumTwinSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSseMoi(
+          NonCloneSimpleEnumTwinSseMoi self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSync(
+          NonCloneSimpleEnumTwinSync self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncMoi(
+          NonCloneSimpleEnumTwinSyncMoi self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSse(
+          NonCloneSimpleEnumTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSseMoi(
+          NonCloneSimpleEnumTwinSyncSseMoi self, SseSerializer serializer);
 
   @protected
   void
@@ -26067,6 +27126,66 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
           BoxMyTraitTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinMoi(
+          NonCloneSimpleEnumTwinMoi self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinNormal(
+          NonCloneSimpleEnumTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsync(
+          NonCloneSimpleEnumTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncMoi(
+          NonCloneSimpleEnumTwinRustAsyncMoi self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSse(
+          NonCloneSimpleEnumTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSseMoi(
+          NonCloneSimpleEnumTwinRustAsyncSseMoi self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSse(
+          NonCloneSimpleEnumTwinSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSseMoi(
+          NonCloneSimpleEnumTwinSseMoi self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSync(
+          NonCloneSimpleEnumTwinSync self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncMoi(
+          NonCloneSimpleEnumTwinSyncMoi self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSse(
+          NonCloneSimpleEnumTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSseMoi(
+          NonCloneSimpleEnumTwinSyncSseMoi self, SseSerializer serializer);
 
   @protected
   void
@@ -27228,6 +28347,54 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_box_autoadd_enum_opaque_twin_sync_sse_moi(
       EnumOpaqueTwinSyncSseMoi self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_good_and_opaque_twin_moi(
+      EnumWithGoodAndOpaqueTwinMoi self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_good_and_opaque_twin_normal(
+      EnumWithGoodAndOpaqueTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_good_and_opaque_twin_rust_async(
+      EnumWithGoodAndOpaqueTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_good_and_opaque_twin_rust_async_moi(
+      EnumWithGoodAndOpaqueTwinRustAsyncMoi self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_good_and_opaque_twin_rust_async_sse(
+      EnumWithGoodAndOpaqueTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_good_and_opaque_twin_rust_async_sse_moi(
+      EnumWithGoodAndOpaqueTwinRustAsyncSseMoi self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_good_and_opaque_twin_sse(
+      EnumWithGoodAndOpaqueTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_good_and_opaque_twin_sse_moi(
+      EnumWithGoodAndOpaqueTwinSseMoi self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_good_and_opaque_twin_sync(
+      EnumWithGoodAndOpaqueTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_good_and_opaque_twin_sync_moi(
+      EnumWithGoodAndOpaqueTwinSyncMoi self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_good_and_opaque_twin_sync_sse(
+      EnumWithGoodAndOpaqueTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_good_and_opaque_twin_sync_sse_moi(
+      EnumWithGoodAndOpaqueTwinSyncSseMoi self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_enum_with_item_mixed_twin_normal(
@@ -28920,6 +30087,54 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_enum_with_discriminant_twin_sync_sse(
       EnumWithDiscriminantTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_good_and_opaque_twin_moi(
+      EnumWithGoodAndOpaqueTwinMoi self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_good_and_opaque_twin_normal(
+      EnumWithGoodAndOpaqueTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_good_and_opaque_twin_rust_async(
+      EnumWithGoodAndOpaqueTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_good_and_opaque_twin_rust_async_moi(
+      EnumWithGoodAndOpaqueTwinRustAsyncMoi self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_good_and_opaque_twin_rust_async_sse(
+      EnumWithGoodAndOpaqueTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_good_and_opaque_twin_rust_async_sse_moi(
+      EnumWithGoodAndOpaqueTwinRustAsyncSseMoi self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_good_and_opaque_twin_sse(
+      EnumWithGoodAndOpaqueTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_good_and_opaque_twin_sse_moi(
+      EnumWithGoodAndOpaqueTwinSseMoi self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_good_and_opaque_twin_sync(
+      EnumWithGoodAndOpaqueTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_good_and_opaque_twin_sync_moi(
+      EnumWithGoodAndOpaqueTwinSyncMoi self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_good_and_opaque_twin_sync_sse(
+      EnumWithGoodAndOpaqueTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_good_and_opaque_twin_sync_sse_moi(
+      EnumWithGoodAndOpaqueTwinSyncSseMoi self, SseSerializer serializer);
 
   @protected
   void sse_encode_enum_with_item_mixed_twin_normal(
@@ -61728,6 +62943,93 @@ class RustLibWire implements BaseWire {
       _wire_rust_auto_opaque_callable_return_twin_moiPtr
           .asFunction<void Function(int)>();
 
+  void wire_rust_auto_opaque_enum_arg_borrow_twin_moi(
+    int port_,
+    int arg,
+  ) {
+    return _wire_rust_auto_opaque_enum_arg_borrow_twin_moi(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_arg_borrow_twin_moiPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_arg_borrow_twin_moi');
+  late final _wire_rust_auto_opaque_enum_arg_borrow_twin_moi =
+      _wire_rust_auto_opaque_enum_arg_borrow_twin_moiPtr
+          .asFunction<void Function(int, int)>();
+
+  void wire_rust_auto_opaque_enum_return_own_twin_moi(
+    int port_,
+  ) {
+    return _wire_rust_auto_opaque_enum_return_own_twin_moi(
+      port_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_return_own_twin_moiPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_return_own_twin_moi');
+  late final _wire_rust_auto_opaque_enum_return_own_twin_moi =
+      _wire_rust_auto_opaque_enum_return_own_twin_moiPtr
+          .asFunction<void Function(int)>();
+
+  void wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_moi(
+    int port_,
+    ffi.Pointer<wire_cst_enum_with_good_and_opaque_twin_moi> arg,
+  ) {
+    return _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_moi(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_moiPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(
+                      ffi.Int64,
+                      ffi.Pointer<
+                          wire_cst_enum_with_good_and_opaque_twin_moi>)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_moi');
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_moi =
+      _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_moiPtr
+          .asFunction<
+              void Function(int,
+                  ffi.Pointer<wire_cst_enum_with_good_and_opaque_twin_moi>)>();
+
+  void wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_moi(
+    int port_,
+  ) {
+    return _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_moi(
+      port_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_moiPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_moi');
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_moi =
+      _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_moiPtr
+          .asFunction<void Function(int)>();
+
+  void
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_moi(
+    int port_,
+  ) {
+    return _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_moi(
+      port_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_moiPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_moi');
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_moi =
+      _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_moiPtr
+          .asFunction<void Function(int)>();
+
   void wire_rust_auto_opaque_explicit_arg_twin_moi(
     int port_,
     int arg,
@@ -62461,6 +63763,96 @@ class RustLibWire implements BaseWire {
       'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_callable_return_twin_rust_async');
   late final _wire_rust_auto_opaque_callable_return_twin_rust_async =
       _wire_rust_auto_opaque_callable_return_twin_rust_asyncPtr
+          .asFunction<void Function(int)>();
+
+  void wire_rust_auto_opaque_enum_arg_borrow_twin_rust_async(
+    int port_,
+    int arg,
+  ) {
+    return _wire_rust_auto_opaque_enum_arg_borrow_twin_rust_async(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_arg_borrow_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_arg_borrow_twin_rust_async');
+  late final _wire_rust_auto_opaque_enum_arg_borrow_twin_rust_async =
+      _wire_rust_auto_opaque_enum_arg_borrow_twin_rust_asyncPtr
+          .asFunction<void Function(int, int)>();
+
+  void wire_rust_auto_opaque_enum_return_own_twin_rust_async(
+    int port_,
+  ) {
+    return _wire_rust_auto_opaque_enum_return_own_twin_rust_async(
+      port_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_return_own_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_return_own_twin_rust_async');
+  late final _wire_rust_auto_opaque_enum_return_own_twin_rust_async =
+      _wire_rust_auto_opaque_enum_return_own_twin_rust_asyncPtr
+          .asFunction<void Function(int)>();
+
+  void wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async(
+    int port_,
+    ffi.Pointer<wire_cst_enum_with_good_and_opaque_twin_rust_async> arg,
+  ) {
+    return _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_asyncPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(
+                      ffi.Int64,
+                      ffi.Pointer<
+                          wire_cst_enum_with_good_and_opaque_twin_rust_async>)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async');
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async =
+      _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_asyncPtr
+          .asFunction<
+              void Function(
+                  int,
+                  ffi.Pointer<
+                      wire_cst_enum_with_good_and_opaque_twin_rust_async>)>();
+
+  void
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async(
+    int port_,
+  ) {
+    return _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async(
+      port_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_asyncPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async');
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async =
+      _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_asyncPtr
+          .asFunction<void Function(int)>();
+
+  void
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async(
+    int port_,
+  ) {
+    return _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async(
+      port_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_asyncPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async');
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async =
+      _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_asyncPtr
           .asFunction<void Function(int)>();
 
   void wire_rust_auto_opaque_explicit_arg_twin_rust_async(
@@ -63208,6 +64600,97 @@ class RustLibWire implements BaseWire {
           'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_callable_return_twin_rust_async_moi');
   late final _wire_rust_auto_opaque_callable_return_twin_rust_async_moi =
       _wire_rust_auto_opaque_callable_return_twin_rust_async_moiPtr
+          .asFunction<void Function(int)>();
+
+  void wire_rust_auto_opaque_enum_arg_borrow_twin_rust_async_moi(
+    int port_,
+    int arg,
+  ) {
+    return _wire_rust_auto_opaque_enum_arg_borrow_twin_rust_async_moi(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_arg_borrow_twin_rust_async_moiPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_arg_borrow_twin_rust_async_moi');
+  late final _wire_rust_auto_opaque_enum_arg_borrow_twin_rust_async_moi =
+      _wire_rust_auto_opaque_enum_arg_borrow_twin_rust_async_moiPtr
+          .asFunction<void Function(int, int)>();
+
+  void wire_rust_auto_opaque_enum_return_own_twin_rust_async_moi(
+    int port_,
+  ) {
+    return _wire_rust_auto_opaque_enum_return_own_twin_rust_async_moi(
+      port_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_return_own_twin_rust_async_moiPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_return_own_twin_rust_async_moi');
+  late final _wire_rust_auto_opaque_enum_return_own_twin_rust_async_moi =
+      _wire_rust_auto_opaque_enum_return_own_twin_rust_async_moiPtr
+          .asFunction<void Function(int)>();
+
+  void
+      wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async_moi(
+    int port_,
+    ffi.Pointer<wire_cst_enum_with_good_and_opaque_twin_rust_async_moi> arg,
+  ) {
+    return _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async_moi(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async_moiPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(
+                      ffi.Int64,
+                      ffi.Pointer<
+                          wire_cst_enum_with_good_and_opaque_twin_rust_async_moi>)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async_moi');
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async_moi =
+      _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async_moiPtr
+          .asFunction<
+              void Function(
+                  int,
+                  ffi.Pointer<
+                      wire_cst_enum_with_good_and_opaque_twin_rust_async_moi>)>();
+
+  void
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async_moi(
+    int port_,
+  ) {
+    return _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async_moi(
+      port_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async_moiPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async_moi');
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async_moi =
+      _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async_moiPtr
+          .asFunction<void Function(int)>();
+
+  void
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async_moi(
+    int port_,
+  ) {
+    return _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async_moi(
+      port_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async_moiPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async_moi');
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async_moi =
+      _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async_moiPtr
           .asFunction<void Function(int)>();
 
   void wire_rust_auto_opaque_explicit_arg_twin_rust_async_moi(
@@ -64078,6 +65561,129 @@ class RustLibWire implements BaseWire {
           'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_callable_return_twin_rust_async_sse');
   late final _wire_rust_auto_opaque_callable_return_twin_rust_async_sse =
       _wire_rust_auto_opaque_callable_return_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_rust_auto_opaque_enum_arg_borrow_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_enum_arg_borrow_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_arg_borrow_twin_rust_async_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_arg_borrow_twin_rust_async_sse');
+  late final _wire_rust_auto_opaque_enum_arg_borrow_twin_rust_async_sse =
+      _wire_rust_auto_opaque_enum_arg_borrow_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_rust_auto_opaque_enum_return_own_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_enum_return_own_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_return_own_twin_rust_async_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_return_own_twin_rust_async_sse');
+  late final _wire_rust_auto_opaque_enum_return_own_twin_rust_async_sse =
+      _wire_rust_auto_opaque_enum_return_own_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void
+      wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async_sse');
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async_sse =
+      _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async_sse');
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async_sse =
+      _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async_sse');
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async_sse =
+      _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_rust_auto_opaque_explicit_arg_twin_rust_async_sse(
@@ -65045,6 +66651,129 @@ class RustLibWire implements BaseWire {
       _wire_rust_auto_opaque_callable_return_twin_rust_async_sse_moiPtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
+  void wire_rust_auto_opaque_enum_arg_borrow_twin_rust_async_sse_moi(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_enum_arg_borrow_twin_rust_async_sse_moi(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_arg_borrow_twin_rust_async_sse_moiPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_arg_borrow_twin_rust_async_sse_moi');
+  late final _wire_rust_auto_opaque_enum_arg_borrow_twin_rust_async_sse_moi =
+      _wire_rust_auto_opaque_enum_arg_borrow_twin_rust_async_sse_moiPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_rust_auto_opaque_enum_return_own_twin_rust_async_sse_moi(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_enum_return_own_twin_rust_async_sse_moi(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_return_own_twin_rust_async_sse_moiPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_return_own_twin_rust_async_sse_moi');
+  late final _wire_rust_auto_opaque_enum_return_own_twin_rust_async_sse_moi =
+      _wire_rust_auto_opaque_enum_return_own_twin_rust_async_sse_moiPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void
+      wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async_sse_moi(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async_sse_moi(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async_sse_moiPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async_sse_moi');
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async_sse_moi =
+      _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async_sse_moiPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async_sse_moi(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async_sse_moi(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async_sse_moiPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async_sse_moi');
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async_sse_moi =
+      _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async_sse_moiPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async_sse_moi(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async_sse_moi(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async_sse_moiPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async_sse_moi');
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async_sse_moi =
+      _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async_sse_moiPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
   void wire_rust_auto_opaque_explicit_arg_twin_rust_async_sse_moi(
     int port_,
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -65996,6 +67725,125 @@ class RustLibWire implements BaseWire {
       _wire_rust_auto_opaque_callable_return_twin_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
+  void wire_rust_auto_opaque_enum_arg_borrow_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_enum_arg_borrow_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_arg_borrow_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_arg_borrow_twin_sse');
+  late final _wire_rust_auto_opaque_enum_arg_borrow_twin_sse =
+      _wire_rust_auto_opaque_enum_arg_borrow_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_rust_auto_opaque_enum_return_own_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_enum_return_own_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_return_own_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_return_own_twin_sse');
+  late final _wire_rust_auto_opaque_enum_return_own_twin_sse =
+      _wire_rust_auto_opaque_enum_return_own_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sse');
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sse =
+      _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sse');
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sse =
+      _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sse');
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sse =
+      _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
   void wire_rust_auto_opaque_explicit_arg_twin_sse(
     int port_,
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -66935,6 +68783,126 @@ class RustLibWire implements BaseWire {
       _wire_rust_auto_opaque_callable_return_twin_sse_moiPtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
+  void wire_rust_auto_opaque_enum_arg_borrow_twin_sse_moi(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_enum_arg_borrow_twin_sse_moi(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_arg_borrow_twin_sse_moiPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_arg_borrow_twin_sse_moi');
+  late final _wire_rust_auto_opaque_enum_arg_borrow_twin_sse_moi =
+      _wire_rust_auto_opaque_enum_arg_borrow_twin_sse_moiPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_rust_auto_opaque_enum_return_own_twin_sse_moi(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_enum_return_own_twin_sse_moi(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_return_own_twin_sse_moiPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_return_own_twin_sse_moi');
+  late final _wire_rust_auto_opaque_enum_return_own_twin_sse_moi =
+      _wire_rust_auto_opaque_enum_return_own_twin_sse_moiPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sse_moi(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sse_moi(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sse_moiPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sse_moi');
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sse_moi =
+      _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sse_moiPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sse_moi(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sse_moi(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sse_moiPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sse_moi');
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sse_moi =
+      _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sse_moiPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sse_moi(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sse_moi(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sse_moiPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sse_moi');
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sse_moi =
+      _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sse_moiPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
   void wire_rust_auto_opaque_explicit_arg_twin_sse_moi(
     int port_,
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -67714,6 +69682,78 @@ class RustLibWire implements BaseWire {
       _wire_rust_auto_opaque_callable_return_twin_syncPtr
           .asFunction<WireSyncRust2DartDco Function()>();
 
+  WireSyncRust2DartDco wire_rust_auto_opaque_enum_arg_borrow_twin_sync(
+    int arg,
+  ) {
+    return _wire_rust_auto_opaque_enum_arg_borrow_twin_sync(
+      arg,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_arg_borrow_twin_syncPtr = _lookup<
+          ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.UintPtr)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_arg_borrow_twin_sync');
+  late final _wire_rust_auto_opaque_enum_arg_borrow_twin_sync =
+      _wire_rust_auto_opaque_enum_arg_borrow_twin_syncPtr
+          .asFunction<WireSyncRust2DartDco Function(int)>();
+
+  WireSyncRust2DartDco wire_rust_auto_opaque_enum_return_own_twin_sync() {
+    return _wire_rust_auto_opaque_enum_return_own_twin_sync();
+  }
+
+  late final _wire_rust_auto_opaque_enum_return_own_twin_syncPtr = _lookup<
+          ffi.NativeFunction<WireSyncRust2DartDco Function()>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_return_own_twin_sync');
+  late final _wire_rust_auto_opaque_enum_return_own_twin_sync =
+      _wire_rust_auto_opaque_enum_return_own_twin_syncPtr
+          .asFunction<WireSyncRust2DartDco Function()>();
+
+  WireSyncRust2DartDco
+      wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync(
+    ffi.Pointer<wire_cst_enum_with_good_and_opaque_twin_sync> arg,
+  ) {
+    return _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync(
+      arg,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_syncPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  WireSyncRust2DartDco Function(
+                      ffi.Pointer<
+                          wire_cst_enum_with_good_and_opaque_twin_sync>)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync');
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync =
+      _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_syncPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_enum_with_good_and_opaque_twin_sync>)>();
+
+  WireSyncRust2DartDco
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync() {
+    return _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync();
+  }
+
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_syncPtr =
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function()>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync');
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync =
+      _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_syncPtr
+          .asFunction<WireSyncRust2DartDco Function()>();
+
+  WireSyncRust2DartDco
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync() {
+    return _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync();
+  }
+
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_syncPtr =
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function()>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync');
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync =
+      _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_syncPtr
+          .asFunction<WireSyncRust2DartDco Function()>();
+
   WireSyncRust2DartDco wire_rust_auto_opaque_explicit_arg_twin_sync(
     int arg,
     int expect,
@@ -68353,6 +70393,79 @@ class RustLibWire implements BaseWire {
       'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_callable_return_twin_sync_moi');
   late final _wire_rust_auto_opaque_callable_return_twin_sync_moi =
       _wire_rust_auto_opaque_callable_return_twin_sync_moiPtr
+          .asFunction<WireSyncRust2DartDco Function()>();
+
+  WireSyncRust2DartDco wire_rust_auto_opaque_enum_arg_borrow_twin_sync_moi(
+    int arg,
+  ) {
+    return _wire_rust_auto_opaque_enum_arg_borrow_twin_sync_moi(
+      arg,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_arg_borrow_twin_sync_moiPtr = _lookup<
+          ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.UintPtr)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_arg_borrow_twin_sync_moi');
+  late final _wire_rust_auto_opaque_enum_arg_borrow_twin_sync_moi =
+      _wire_rust_auto_opaque_enum_arg_borrow_twin_sync_moiPtr
+          .asFunction<WireSyncRust2DartDco Function(int)>();
+
+  WireSyncRust2DartDco wire_rust_auto_opaque_enum_return_own_twin_sync_moi() {
+    return _wire_rust_auto_opaque_enum_return_own_twin_sync_moi();
+  }
+
+  late final _wire_rust_auto_opaque_enum_return_own_twin_sync_moiPtr = _lookup<
+          ffi.NativeFunction<WireSyncRust2DartDco Function()>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_return_own_twin_sync_moi');
+  late final _wire_rust_auto_opaque_enum_return_own_twin_sync_moi =
+      _wire_rust_auto_opaque_enum_return_own_twin_sync_moiPtr
+          .asFunction<WireSyncRust2DartDco Function()>();
+
+  WireSyncRust2DartDco
+      wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_moi(
+    ffi.Pointer<wire_cst_enum_with_good_and_opaque_twin_sync_moi> arg,
+  ) {
+    return _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_moi(
+      arg,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_moiPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  WireSyncRust2DartDco Function(
+                      ffi.Pointer<
+                          wire_cst_enum_with_good_and_opaque_twin_sync_moi>)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_moi');
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_moi =
+      _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_moiPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<
+                      wire_cst_enum_with_good_and_opaque_twin_sync_moi>)>();
+
+  WireSyncRust2DartDco
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_moi() {
+    return _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_moi();
+  }
+
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_moiPtr =
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function()>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_moi');
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_moi =
+      _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_moiPtr
+          .asFunction<WireSyncRust2DartDco Function()>();
+
+  WireSyncRust2DartDco
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_moi() {
+    return _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_moi();
+  }
+
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_moiPtr =
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function()>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_moi');
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_moi =
+      _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_moiPtr
           .asFunction<WireSyncRust2DartDco Function()>();
 
   WireSyncRust2DartDco wire_rust_auto_opaque_explicit_arg_twin_sync_moi(
@@ -69152,6 +71265,123 @@ class RustLibWire implements BaseWire {
   late final _wire_rust_auto_opaque_callable_return_twin_sync_sse =
       _wire_rust_auto_opaque_callable_return_twin_sync_ssePtr.asFunction<
           WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_rust_auto_opaque_enum_arg_borrow_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_enum_arg_borrow_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_arg_borrow_twin_sync_ssePtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_arg_borrow_twin_sync_sse');
+  late final _wire_rust_auto_opaque_enum_arg_borrow_twin_sync_sse =
+      _wire_rust_auto_opaque_enum_arg_borrow_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_rust_auto_opaque_enum_return_own_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_enum_return_own_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_return_own_twin_sync_ssePtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_return_own_twin_sync_sse');
+  late final _wire_rust_auto_opaque_enum_return_own_twin_sync_sse =
+      _wire_rust_auto_opaque_enum_return_own_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse
+      wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  WireSyncRust2DartSse Function(
+                      ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_sse');
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_sse =
+      _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_ssePtr
+          .asFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  WireSyncRust2DartSse Function(
+                      ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_sse');
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_sse =
+      _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_ssePtr
+          .asFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  WireSyncRust2DartSse Function(
+                      ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_sse');
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_sse =
+      _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_ssePtr
+          .asFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, int, int)>();
 
   WireSyncRust2DartSse wire_rust_auto_opaque_explicit_arg_twin_sync_sse(
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -70078,6 +72308,123 @@ class RustLibWire implements BaseWire {
   late final _wire_rust_auto_opaque_callable_return_twin_sync_sse_moi =
       _wire_rust_auto_opaque_callable_return_twin_sync_sse_moiPtr.asFunction<
           WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_rust_auto_opaque_enum_arg_borrow_twin_sync_sse_moi(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_enum_arg_borrow_twin_sync_sse_moi(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_arg_borrow_twin_sync_sse_moiPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_arg_borrow_twin_sync_sse_moi');
+  late final _wire_rust_auto_opaque_enum_arg_borrow_twin_sync_sse_moi =
+      _wire_rust_auto_opaque_enum_arg_borrow_twin_sync_sse_moiPtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_rust_auto_opaque_enum_return_own_twin_sync_sse_moi(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_enum_return_own_twin_sync_sse_moi(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_return_own_twin_sync_sse_moiPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_return_own_twin_sync_sse_moi');
+  late final _wire_rust_auto_opaque_enum_return_own_twin_sync_sse_moi =
+      _wire_rust_auto_opaque_enum_return_own_twin_sync_sse_moiPtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse
+      wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_sse_moi(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_sse_moi(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_sse_moiPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  WireSyncRust2DartSse Function(
+                      ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_sse_moi');
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_sse_moi =
+      _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_sse_moiPtr
+          .asFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_sse_moi(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_sse_moi(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_sse_moiPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  WireSyncRust2DartSse Function(
+                      ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_sse_moi');
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_sse_moi =
+      _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_sse_moiPtr
+          .asFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_sse_moi(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_sse_moi(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_sse_moiPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  WireSyncRust2DartSse Function(
+                      ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_sse_moi');
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_sse_moi =
+      _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_sse_moiPtr
+          .asFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, int, int)>();
 
   WireSyncRust2DartSse wire_rust_auto_opaque_explicit_arg_twin_sync_sse_moi(
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -76019,6 +78366,96 @@ class RustLibWire implements BaseWire {
       _wire_rust_auto_opaque_callable_return_twin_normalPtr
           .asFunction<void Function(int)>();
 
+  void wire_rust_auto_opaque_enum_arg_borrow_twin_normal(
+    int port_,
+    int arg,
+  ) {
+    return _wire_rust_auto_opaque_enum_arg_borrow_twin_normal(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_arg_borrow_twin_normalPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_arg_borrow_twin_normal');
+  late final _wire_rust_auto_opaque_enum_arg_borrow_twin_normal =
+      _wire_rust_auto_opaque_enum_arg_borrow_twin_normalPtr
+          .asFunction<void Function(int, int)>();
+
+  void wire_rust_auto_opaque_enum_return_own_twin_normal(
+    int port_,
+  ) {
+    return _wire_rust_auto_opaque_enum_return_own_twin_normal(
+      port_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_return_own_twin_normalPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_return_own_twin_normal');
+  late final _wire_rust_auto_opaque_enum_return_own_twin_normal =
+      _wire_rust_auto_opaque_enum_return_own_twin_normalPtr
+          .asFunction<void Function(int)>();
+
+  void wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_normal(
+    int port_,
+    ffi.Pointer<wire_cst_enum_with_good_and_opaque_twin_normal> arg,
+  ) {
+    return _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_normal(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_normalPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(
+                      ffi.Int64,
+                      ffi.Pointer<
+                          wire_cst_enum_with_good_and_opaque_twin_normal>)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_normal');
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_normal =
+      _wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_normalPtr
+          .asFunction<
+              void Function(
+                  int,
+                  ffi.Pointer<
+                      wire_cst_enum_with_good_and_opaque_twin_normal>)>();
+
+  void
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_normal(
+    int port_,
+  ) {
+    return _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_normal(
+      port_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_normalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_normal');
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_normal =
+      _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_normalPtr
+          .asFunction<void Function(int)>();
+
+  void
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_normal(
+    int port_,
+  ) {
+    return _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_normal(
+      port_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_normalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_normal');
+  late final _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_normal =
+      _wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_normalPtr
+          .asFunction<void Function(int)>();
+
   void wire_rust_auto_opaque_explicit_arg_twin_normal(
     int port_,
     int arg,
@@ -80284,6 +82721,390 @@ class RustLibWire implements BaseWire {
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinMoi(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinMoi(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinMoiPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinMoi');
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinMoi =
+      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinMoiPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinMoi(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinMoi(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinMoiPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinMoi');
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinMoi =
+      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinMoiPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinNormal(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinNormal(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinNormalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinNormal');
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinNormal =
+      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinNormalPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinNormal(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinNormal(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinNormalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinNormal');
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinNormal =
+      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinNormalPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsync(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsync(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsync');
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsync =
+      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsync(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsync(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsync');
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsync =
+      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncMoi(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncMoi(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncMoiPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncMoi');
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncMoi =
+      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncMoiPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncMoi(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncMoi(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncMoiPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncMoi');
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncMoi =
+      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncMoiPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSse(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSse(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSsePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSse');
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSse =
+      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSsePtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSse(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSse(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSsePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSse');
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSse =
+      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSsePtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSseMoi(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSseMoi(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSseMoiPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSseMoi');
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSseMoi =
+      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSseMoiPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSseMoi(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSseMoi(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSseMoiPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSseMoi');
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSseMoi =
+      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsyncSseMoiPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSse(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSse(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSsePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSse');
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSse =
+      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSsePtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSse(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSse(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSsePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSse');
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSse =
+      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSsePtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSseMoi(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSseMoi(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSseMoiPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSseMoi');
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSseMoi =
+      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSseMoiPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSseMoi(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSseMoi(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSseMoiPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSseMoi');
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSseMoi =
+      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSseMoiPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSync(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSync(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSync');
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSync =
+      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSync(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSync(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSync');
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSync =
+      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncMoi(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncMoi(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncMoiPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncMoi');
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncMoi =
+      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncMoiPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncMoi(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncMoi(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncMoiPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncMoi');
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncMoi =
+      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncMoiPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSse(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSse(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSsePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSse');
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSse =
+      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSsePtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSse(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSse(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSsePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSse');
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSse =
+      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSsePtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSseMoi(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSseMoi(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSseMoiPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSseMoi');
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSseMoi =
+      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSseMoiPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSseMoi(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSseMoi(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSseMoiPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSseMoi');
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSseMoi =
+      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSyncSseMoiPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoi(
     ffi.Pointer<ffi.Void> ptr,
   ) {
@@ -82749,6 +85570,106 @@ class RustLibWire implements BaseWire {
   late final _cst_new_box_autoadd_enum_opaque_twin_sync_moi =
       _cst_new_box_autoadd_enum_opaque_twin_sync_moiPtr.asFunction<
           ffi.Pointer<wire_cst_enum_opaque_twin_sync_moi> Function()>();
+
+  ffi.Pointer<wire_cst_enum_with_good_and_opaque_twin_moi>
+      cst_new_box_autoadd_enum_with_good_and_opaque_twin_moi() {
+    return _cst_new_box_autoadd_enum_with_good_and_opaque_twin_moi();
+  }
+
+  late final _cst_new_box_autoadd_enum_with_good_and_opaque_twin_moiPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<wire_cst_enum_with_good_and_opaque_twin_moi>
+                  Function()>>(
+      'frbgen_frb_example_pure_dart_cst_new_box_autoadd_enum_with_good_and_opaque_twin_moi');
+  late final _cst_new_box_autoadd_enum_with_good_and_opaque_twin_moi =
+      _cst_new_box_autoadd_enum_with_good_and_opaque_twin_moiPtr.asFunction<
+          ffi.Pointer<wire_cst_enum_with_good_and_opaque_twin_moi>
+              Function()>();
+
+  ffi.Pointer<wire_cst_enum_with_good_and_opaque_twin_normal>
+      cst_new_box_autoadd_enum_with_good_and_opaque_twin_normal() {
+    return _cst_new_box_autoadd_enum_with_good_and_opaque_twin_normal();
+  }
+
+  late final _cst_new_box_autoadd_enum_with_good_and_opaque_twin_normalPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Pointer<wire_cst_enum_with_good_and_opaque_twin_normal>
+                      Function()>>(
+          'frbgen_frb_example_pure_dart_cst_new_box_autoadd_enum_with_good_and_opaque_twin_normal');
+  late final _cst_new_box_autoadd_enum_with_good_and_opaque_twin_normal =
+      _cst_new_box_autoadd_enum_with_good_and_opaque_twin_normalPtr.asFunction<
+          ffi.Pointer<wire_cst_enum_with_good_and_opaque_twin_normal>
+              Function()>();
+
+  ffi.Pointer<wire_cst_enum_with_good_and_opaque_twin_rust_async>
+      cst_new_box_autoadd_enum_with_good_and_opaque_twin_rust_async() {
+    return _cst_new_box_autoadd_enum_with_good_and_opaque_twin_rust_async();
+  }
+
+  late final _cst_new_box_autoadd_enum_with_good_and_opaque_twin_rust_asyncPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Pointer<
+                          wire_cst_enum_with_good_and_opaque_twin_rust_async>
+                      Function()>>(
+          'frbgen_frb_example_pure_dart_cst_new_box_autoadd_enum_with_good_and_opaque_twin_rust_async');
+  late final _cst_new_box_autoadd_enum_with_good_and_opaque_twin_rust_async =
+      _cst_new_box_autoadd_enum_with_good_and_opaque_twin_rust_asyncPtr
+          .asFunction<
+              ffi.Pointer<wire_cst_enum_with_good_and_opaque_twin_rust_async>
+                  Function()>();
+
+  ffi.Pointer<wire_cst_enum_with_good_and_opaque_twin_rust_async_moi>
+      cst_new_box_autoadd_enum_with_good_and_opaque_twin_rust_async_moi() {
+    return _cst_new_box_autoadd_enum_with_good_and_opaque_twin_rust_async_moi();
+  }
+
+  late final _cst_new_box_autoadd_enum_with_good_and_opaque_twin_rust_async_moiPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Pointer<
+                          wire_cst_enum_with_good_and_opaque_twin_rust_async_moi>
+                      Function()>>(
+          'frbgen_frb_example_pure_dart_cst_new_box_autoadd_enum_with_good_and_opaque_twin_rust_async_moi');
+  late final _cst_new_box_autoadd_enum_with_good_and_opaque_twin_rust_async_moi =
+      _cst_new_box_autoadd_enum_with_good_and_opaque_twin_rust_async_moiPtr
+          .asFunction<
+              ffi.Pointer<
+                      wire_cst_enum_with_good_and_opaque_twin_rust_async_moi>
+                  Function()>();
+
+  ffi.Pointer<wire_cst_enum_with_good_and_opaque_twin_sync>
+      cst_new_box_autoadd_enum_with_good_and_opaque_twin_sync() {
+    return _cst_new_box_autoadd_enum_with_good_and_opaque_twin_sync();
+  }
+
+  late final _cst_new_box_autoadd_enum_with_good_and_opaque_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<wire_cst_enum_with_good_and_opaque_twin_sync>
+                  Function()>>(
+      'frbgen_frb_example_pure_dart_cst_new_box_autoadd_enum_with_good_and_opaque_twin_sync');
+  late final _cst_new_box_autoadd_enum_with_good_and_opaque_twin_sync =
+      _cst_new_box_autoadd_enum_with_good_and_opaque_twin_syncPtr.asFunction<
+          ffi.Pointer<wire_cst_enum_with_good_and_opaque_twin_sync>
+              Function()>();
+
+  ffi.Pointer<wire_cst_enum_with_good_and_opaque_twin_sync_moi>
+      cst_new_box_autoadd_enum_with_good_and_opaque_twin_sync_moi() {
+    return _cst_new_box_autoadd_enum_with_good_and_opaque_twin_sync_moi();
+  }
+
+  late final _cst_new_box_autoadd_enum_with_good_and_opaque_twin_sync_moiPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Pointer<wire_cst_enum_with_good_and_opaque_twin_sync_moi>
+                      Function()>>(
+          'frbgen_frb_example_pure_dart_cst_new_box_autoadd_enum_with_good_and_opaque_twin_sync_moi');
+  late final _cst_new_box_autoadd_enum_with_good_and_opaque_twin_sync_moi =
+      _cst_new_box_autoadd_enum_with_good_and_opaque_twin_sync_moiPtr
+          .asFunction<
+              ffi.Pointer<wire_cst_enum_with_good_and_opaque_twin_sync_moi>
+                  Function()>();
 
   ffi.Pointer<wire_cst_enum_with_item_mixed_twin_normal>
       cst_new_box_autoadd_enum_with_item_mixed_twin_normal() {
@@ -89483,6 +92404,28 @@ final class wire_cst_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generated
   external int len;
 }
 
+final class wire_cst_EnumWithGoodAndOpaqueTwinMoi_Good extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8_strict> field0;
+}
+
+final class wire_cst_EnumWithGoodAndOpaqueTwinMoi_Opaque extends ffi.Struct {
+  @ffi.UintPtr()
+  external int field0;
+}
+
+final class EnumWithGoodAndOpaqueTwinMoiKind extends ffi.Union {
+  external wire_cst_EnumWithGoodAndOpaqueTwinMoi_Good Good;
+
+  external wire_cst_EnumWithGoodAndOpaqueTwinMoi_Opaque Opaque;
+}
+
+final class wire_cst_enum_with_good_and_opaque_twin_moi extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external EnumWithGoodAndOpaqueTwinMoiKind kind;
+}
+
 final class wire_cst_struct_with_explicit_auto_opaque_field_twin_moi
     extends ffi.Struct {
   @ffi.UintPtr()
@@ -89506,6 +92449,31 @@ final class wire_cst_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generated
 
   @ffi.Int32()
   external int len;
+}
+
+final class wire_cst_EnumWithGoodAndOpaqueTwinRustAsync_Good
+    extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8_strict> field0;
+}
+
+final class wire_cst_EnumWithGoodAndOpaqueTwinRustAsync_Opaque
+    extends ffi.Struct {
+  @ffi.UintPtr()
+  external int field0;
+}
+
+final class EnumWithGoodAndOpaqueTwinRustAsyncKind extends ffi.Union {
+  external wire_cst_EnumWithGoodAndOpaqueTwinRustAsync_Good Good;
+
+  external wire_cst_EnumWithGoodAndOpaqueTwinRustAsync_Opaque Opaque;
+}
+
+final class wire_cst_enum_with_good_and_opaque_twin_rust_async
+    extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external EnumWithGoodAndOpaqueTwinRustAsyncKind kind;
 }
 
 final class wire_cst_struct_with_explicit_auto_opaque_field_twin_rust_async
@@ -89533,6 +92501,31 @@ final class wire_cst_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generated
   external int len;
 }
 
+final class wire_cst_EnumWithGoodAndOpaqueTwinRustAsyncMoi_Good
+    extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8_strict> field0;
+}
+
+final class wire_cst_EnumWithGoodAndOpaqueTwinRustAsyncMoi_Opaque
+    extends ffi.Struct {
+  @ffi.UintPtr()
+  external int field0;
+}
+
+final class EnumWithGoodAndOpaqueTwinRustAsyncMoiKind extends ffi.Union {
+  external wire_cst_EnumWithGoodAndOpaqueTwinRustAsyncMoi_Good Good;
+
+  external wire_cst_EnumWithGoodAndOpaqueTwinRustAsyncMoi_Opaque Opaque;
+}
+
+final class wire_cst_enum_with_good_and_opaque_twin_rust_async_moi
+    extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external EnumWithGoodAndOpaqueTwinRustAsyncMoiKind kind;
+}
+
 final class wire_cst_struct_with_explicit_auto_opaque_field_twin_rust_async_moi
     extends ffi.Struct {
   @ffi.UintPtr()
@@ -89558,6 +92551,28 @@ final class wire_cst_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generated
   external int len;
 }
 
+final class wire_cst_EnumWithGoodAndOpaqueTwinSync_Good extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8_strict> field0;
+}
+
+final class wire_cst_EnumWithGoodAndOpaqueTwinSync_Opaque extends ffi.Struct {
+  @ffi.UintPtr()
+  external int field0;
+}
+
+final class EnumWithGoodAndOpaqueTwinSyncKind extends ffi.Union {
+  external wire_cst_EnumWithGoodAndOpaqueTwinSync_Good Good;
+
+  external wire_cst_EnumWithGoodAndOpaqueTwinSync_Opaque Opaque;
+}
+
+final class wire_cst_enum_with_good_and_opaque_twin_sync extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external EnumWithGoodAndOpaqueTwinSyncKind kind;
+}
+
 final class wire_cst_struct_with_explicit_auto_opaque_field_twin_sync
     extends ffi.Struct {
   @ffi.UintPtr()
@@ -89581,6 +92596,30 @@ final class wire_cst_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generated
 
   @ffi.Int32()
   external int len;
+}
+
+final class wire_cst_EnumWithGoodAndOpaqueTwinSyncMoi_Good extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8_strict> field0;
+}
+
+final class wire_cst_EnumWithGoodAndOpaqueTwinSyncMoi_Opaque
+    extends ffi.Struct {
+  @ffi.UintPtr()
+  external int field0;
+}
+
+final class EnumWithGoodAndOpaqueTwinSyncMoiKind extends ffi.Union {
+  external wire_cst_EnumWithGoodAndOpaqueTwinSyncMoi_Good Good;
+
+  external wire_cst_EnumWithGoodAndOpaqueTwinSyncMoi_Opaque Opaque;
+}
+
+final class wire_cst_enum_with_good_and_opaque_twin_sync_moi
+    extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external EnumWithGoodAndOpaqueTwinSyncMoiKind kind;
 }
 
 final class wire_cst_struct_with_explicit_auto_opaque_field_twin_sync_moi
@@ -89983,6 +93022,28 @@ final class wire_cst_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generated
 
   @ffi.Int32()
   external int len;
+}
+
+final class wire_cst_EnumWithGoodAndOpaqueTwinNormal_Good extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8_strict> field0;
+}
+
+final class wire_cst_EnumWithGoodAndOpaqueTwinNormal_Opaque extends ffi.Struct {
+  @ffi.UintPtr()
+  external int field0;
+}
+
+final class EnumWithGoodAndOpaqueTwinNormalKind extends ffi.Union {
+  external wire_cst_EnumWithGoodAndOpaqueTwinNormal_Good Good;
+
+  external wire_cst_EnumWithGoodAndOpaqueTwinNormal_Opaque Opaque;
+}
+
+final class wire_cst_enum_with_good_and_opaque_twin_normal extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external EnumWithGoodAndOpaqueTwinNormalKind kind;
 }
 
 final class wire_cst_struct_with_explicit_auto_opaque_field_twin_normal
