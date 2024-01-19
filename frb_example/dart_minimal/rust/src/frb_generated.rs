@@ -68,9 +68,7 @@ fn wire_Undurchsichtiger_read_impl(
             move |context| {
                 transform_result_sse((move || {
                     let api_that = api_that.rust_auto_opaque_decode_ref();
-                    Result::<_, flutter_rust_bridge::for_generated::anyhow::Error>::Ok(
-                        crate::api::minimal::Undurchsichtiger::read(&api_that),
-                    )
+                    Result::<_, ()>::Ok(crate::api::minimal::Undurchsichtiger::read(&api_that))
                 })())
             }
         },
@@ -101,17 +99,11 @@ fn wire_anyhow_test_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
-                    Result::<_, ()>::Ok(
-                        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(
-                            crate::api::minimal::anyhow_test(StreamSink::new(
-                                context.rust2dart_context().stream_sink::<_, RustOpaqueMoi<
-                                    flutter_rust_bridge::for_generated::rust_async::RwLock<
-                                        Undurchsichtiger,
-                                    >,
-                                >>(),
-                            )),
-                        ),
-                    )
+                    Result::<_, ()>::Ok(crate::api::minimal::anyhow_test(StreamSink::new(
+                        context
+                            .rust2dart_context()
+                            .stream_sink::<_, Undurchsichtiger>(),
+                    )))
                 })())
             }
         },
@@ -189,6 +181,16 @@ flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
 );
 
 // Section: dart2rust
+
+impl SseDecode for Undurchsichtiger {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <RustOpaqueMoi<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<Undurchsichtiger>,
+        >>::sse_decode(deserializer);
+        return inner.rust_auto_opaque_decode_owned();
+    }
+}
 
 impl SseDecode
     for RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<Undurchsichtiger>>
@@ -273,6 +275,35 @@ fn pde_ffi_dispatcher_sync_impl(
 }
 
 // Section: rust2dart
+
+struct Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockUndurchsichtiger(
+    Undurchsichtiger,
+);
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart
+    for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockUndurchsichtiger
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockUndurchsichtiger
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockUndurchsichtiger> for Undurchsichtiger {
+            fn into_into_dart(self) -> Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockUndurchsichtiger {
+                Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockUndurchsichtiger(self)
+            }
+        }
+
+impl SseEncode for Undurchsichtiger {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<Undurchsichtiger>>>::sse_encode(flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self), serializer);
+    }
+}
 
 impl SseEncode
     for RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<Undurchsichtiger>>
