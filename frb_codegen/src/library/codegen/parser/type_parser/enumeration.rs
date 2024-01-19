@@ -126,7 +126,7 @@ impl EnumOrStructParser<IrEnumIdent, IrEnum, Enum, ItemEnum>
         name: NamespacedName,
         wrapper_name: Option<String>,
     ) -> anyhow::Result<IrEnum> {
-        Ok(self.0.parse_enum(src_object, name, wrapper_name)?)
+        self.0.parse_enum(src_object, name, wrapper_name)
     }
 
     fn construct_output(&self, ident: IrEnumIdent) -> anyhow::Result<IrType> {
