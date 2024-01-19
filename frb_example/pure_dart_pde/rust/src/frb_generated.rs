@@ -28832,6 +28832,7 @@ fn pde_ffi_dispatcher_primary_impl(
     rust_vec_len: i32,
     data_len: i32,
 ) {
+    // Codec=Pde (Serialization + dispatch), see doc to use other codecs
     match func_id {
                         5 => wire_boxed_blob_twin_normal_impl(port, ptr, rust_vec_len, data_len),
 9 => wire_func_test_id_twin_normal_impl(port, ptr, rust_vec_len, data_len),
@@ -29504,6 +29505,7 @@ fn pde_ffi_dispatcher_sync_impl(
     rust_vec_len: i32,
     data_len: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    // Codec=Pde (Serialization + dispatch), see doc to use other codecs
     match func_id {
         20 => wire_benchmark_void_semi_serialize_impl(ptr, rust_vec_len, data_len),
         56 => wire_sync_accept_dart_opaque_twin_normal_impl(ptr, rust_vec_len, data_len),
