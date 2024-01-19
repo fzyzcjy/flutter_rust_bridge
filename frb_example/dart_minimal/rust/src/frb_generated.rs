@@ -131,6 +131,7 @@ fn pde_ffi_dispatcher_primary_impl(
     rust_vec_len: i32,
     data_len: i32,
 ) {
+    // Codec=Pde (Serialization + dispatch), see doc to use other codecs
     match func_id {
         1 => wire_init_app_impl(port, ptr, rust_vec_len, data_len),
         2 => wire_minimal_adder_impl(port, ptr, rust_vec_len, data_len),
@@ -144,6 +145,7 @@ fn pde_ffi_dispatcher_sync_impl(
     rust_vec_len: i32,
     data_len: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    // Codec=Pde (Serialization + dispatch), see doc to use other codecs
     match func_id {
         _ => unreachable!(),
     }
