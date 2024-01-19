@@ -1,6 +1,8 @@
 //! Examples of types you'd want to mirror
 //!
 
+use std::collections::HashMap;
+
 #[derive(Debug, Clone)]
 pub struct RawStringMirrored {
     pub r#value: String,
@@ -58,6 +60,14 @@ pub struct Sequences(pub Vec<i32>);
 
 #[derive(Debug, Clone)]
 pub struct ApplicationEnvVar(pub String, pub bool);
+
+#[derive(Debug, Clone)]
+pub struct HashMapValue {}
+
+#[derive(Debug, Clone)]
+pub struct StructWithHashMap {
+    pub map: HashMap<String, HashMapValue>,
+}
 
 impl ApplicationSettings {
     pub fn new(

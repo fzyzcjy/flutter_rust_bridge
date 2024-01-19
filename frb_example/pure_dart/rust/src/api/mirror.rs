@@ -10,7 +10,9 @@ pub use frb_example_pure_dart_example_external_lib::{
     ApplicationEnv, ApplicationEnvVar, ApplicationMessage, ApplicationMode, ApplicationSettings,
     ListOfNestedRawStringMirrored, NestedRawStringMirrored, Numbers, RawStringEnumMirrored,
     RawStringMirrored, Sequences,
+    HashMapValue, StructWithHashMap,
 };
+use std::collections::HashMap;
 
 // To mirror an external struct, you need to define a placeholder type with the same definition
 #[frb(mirror(ApplicationSettings))]
@@ -34,6 +36,14 @@ pub struct _ApplicationEnvVarTwinNormal(pub String, pub bool);
 #[frb(mirror(ApplicationEnv))]
 pub struct _ApplicationEnvTwinNormal {
     pub vars: Vec<ApplicationEnvVar>,
+}
+
+#[frb(mirror(HashMapValue))]
+pub struct _HashMapValue {}
+
+#[frb(mirror(StructWithHashMap))]
+pub struct _StructWithHashMap {
+    pub map: HashMap<String, HashMapValue>,
 }
 
 // This function can directly return an object of the external type ApplicationSettings because it has a mirror
@@ -233,5 +243,13 @@ pub fn test_contains_mirrored_sub_struct_twin_normal() -> ContainsMirroredSubStr
         test2: AnotherTwinNormal {
             a: "test".to_owned(),
         },
+    }
+}
+
+pub fn test_hashmap_with_mirrored_value() -> StructWithHashMap {
+    StructWithHashMap {
+        map: {
+            HashMap::new()
+        }
     }
 }

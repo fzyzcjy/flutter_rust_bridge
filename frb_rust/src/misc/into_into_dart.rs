@@ -75,14 +75,19 @@ where
     }
 }
 
-impl<K, V> IntoIntoDart<HashMap<K, V>> for HashMap<K, V>
+impl<KT, KD, VT, VD> IntoIntoDart<HashMap<KD, VD>> for HashMap<KT, VT>
 where
-    K: IntoDart,
-    V: IntoDart,
+    KT: IntoIntoDart<KD>,
+    VT: IntoIntoDart<VD>,
+    HashMap<KD, VD>: IntoDart,
+    KD: IntoDart + std::cmp::Eq + std::hash::Hash,
+    VD: IntoDart,
 {
     #[inline(always)]
-    fn into_into_dart(self) -> Self {
-        self
+    fn into_into_dart(self) -> HashMap<KD, VD> {
+        self.into_iter()
+            .map(|(k, v)| (k.into_into_dart(), v.into_into_dart()))
+            .collect()
     }
 }
 
