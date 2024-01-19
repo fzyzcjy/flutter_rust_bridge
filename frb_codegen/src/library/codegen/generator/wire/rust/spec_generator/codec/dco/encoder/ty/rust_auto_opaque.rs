@@ -5,7 +5,6 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::
 };
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::ty::WireRustCodecDcoGeneratorEncoderTrait;
 use crate::codegen::ir::pack::IrPack;
-use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::rust_auto_opaque::{IrTypeRustAutoOpaque, OwnershipMode};
 use crate::codegen::ir::ty::IrTypeTrait;
 
