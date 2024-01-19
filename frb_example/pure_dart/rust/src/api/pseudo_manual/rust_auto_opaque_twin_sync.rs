@@ -301,7 +301,7 @@ pub fn rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync(
 
 #[flutter_rust_bridge::frb(sync)]
 pub fn rust_auto_opaque_enum_arg_borrow_twin_sync(arg: &NonCloneSimpleEnumTwinSync) {
-    assert_eq!(arg, NonCloneSimpleEnumTwinSync::Orange);
+    assert!(matches!(arg, NonCloneSimpleEnumTwinSync::Orange));
 }
 
 #[flutter_rust_bridge::frb(sync)]

@@ -349,7 +349,7 @@ pub fn rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_mo
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
 #[flutter_rust_bridge::frb(sync)]
 pub fn rust_auto_opaque_enum_arg_borrow_twin_sync_moi(arg: &NonCloneSimpleEnumTwinSyncMoi) {
-    assert_eq!(arg, NonCloneSimpleEnumTwinSyncMoi::Orange);
+    assert!(matches!(arg, NonCloneSimpleEnumTwinSyncMoi::Orange));
 }
 
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]

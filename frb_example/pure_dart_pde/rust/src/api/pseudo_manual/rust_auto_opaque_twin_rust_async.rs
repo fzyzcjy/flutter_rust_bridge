@@ -295,7 +295,7 @@ pub async fn rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_r
 pub async fn rust_auto_opaque_enum_arg_borrow_twin_rust_async(
     arg: &NonCloneSimpleEnumTwinRustAsync,
 ) {
-    assert_eq!(arg, NonCloneSimpleEnumTwinRustAsync::Orange);
+    assert!(matches!(arg, NonCloneSimpleEnumTwinRustAsync::Orange));
 }
 
 pub async fn rust_auto_opaque_enum_return_own_twin_rust_async() -> NonCloneSimpleEnumTwinRustAsync {
