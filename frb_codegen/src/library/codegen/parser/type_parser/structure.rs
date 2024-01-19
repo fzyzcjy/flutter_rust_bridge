@@ -12,6 +12,7 @@ use crate::codegen::parser::type_parser::enum_or_struct::{
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
+use anyhow::bail;
 use std::collections::HashMap;
 use syn::{Field, Fields, FieldsNamed, FieldsUnnamed, ItemStruct, Type, TypePath};
 
@@ -29,11 +30,14 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         src_struct: &Struct,
         name: NamespacedName,
         wrapper_name: Option<String>,
-    ) -> anyhow::Result<Option<IrStruct>> {
+    ) -> anyhow::Result<IrStruct> {
         let (is_fields_named, struct_fields) = match &src_struct.0.src.fields {
             Fields::Named(FieldsNamed { named, .. }) => (true, named),
             Fields::Unnamed(FieldsUnnamed { unnamed, .. }) => (false, unnamed),
-            _ => return Ok(None),
+            // This will stop the whole generator and tell the users, so we do not care about testing it
+            // frb-coverage:ignore-start
+            Fields::Unit => bail!("struct with unit fields are not supported yet, what about using `struct YourStructName {{}}` instead"),
+            // frb-coverage:ignore-end
         };
 
         let fields = struct_fields
@@ -47,14 +51,14 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         let attributes = FrbAttributes::parse(&src_struct.0.src.attrs)?;
         let dart_metadata = attributes.dart_metadata();
 
-        Ok(Some(IrStruct {
+        Ok(IrStruct {
             name,
             wrapper_name,
             fields,
             is_fields_named,
             dart_metadata,
             comments,
-        }))
+        })
     }
 
     fn parse_struct_field(&mut self, idx: usize, field: &Field) -> anyhow::Result<IrField> {
@@ -85,7 +89,7 @@ impl EnumOrStructParser<IrStructIdent, IrStruct, Struct, ItemStruct>
         src_object: &Struct,
         name: NamespacedName,
         wrapper_name: Option<String>,
-    ) -> anyhow::Result<Option<IrStruct>> {
+    ) -> anyhow::Result<IrStruct> {
         self.0.parse_struct(src_object, name, wrapper_name)
     }
 

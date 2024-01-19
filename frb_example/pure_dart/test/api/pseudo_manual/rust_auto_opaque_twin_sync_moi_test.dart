@@ -243,7 +243,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(await obj.instanceMethodGetterTwinSyncMoi, 42);
   });
 
-  test('types with both encodable and opaque fields', () async {
+  test('structs with both encodable and opaque fields', () async {
     final obj =
         await rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSyncMoi();
     expect(obj.good, 'hello');
@@ -251,6 +251,28 @@ Future<void> main({bool skipRustLibInit = false}) async {
         rustAutoOpaqueArgBorrowTwinSyncMoi(arg: obj.opaque, expect: 42));
     await futurizeVoidTwinSyncMoi(
         rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSyncMoi(arg: obj));
+  });
+
+  test('enums with both encodable and opaque', () async {
+    final good =
+        (await rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinSyncMoi());
+    final opaque =
+        (await rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinSyncMoi());
+
+    await futurizeVoidTwinSyncMoi(
+        rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinSyncMoi(arg: good));
+    await futurizeVoidTwinSyncMoi(
+        rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinSyncMoi(arg: opaque));
+
+    await futurizeVoidTwinSyncMoi(
+        rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinSyncMoi(
+            arg: EnumWithGoodAndOpaqueTwinSyncMoi.good('hello')));
+  });
+
+  test('enum opaque type', () async {
+    final obj = await rustAutoOpaqueEnumReturnOwnTwinSyncMoi();
+    await futurizeVoidTwinSyncMoi(
+        rustAutoOpaqueEnumArgBorrowTwinSyncMoi(arg: obj));
   });
 
   test('stream sink', () async {

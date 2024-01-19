@@ -5,7 +5,9 @@
 
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'rust_auto_opaque_twin_moi.dart';
+part 'rust_auto_opaque_twin_rust_async_sse_moi.freezed.dart';
 
 Future<void> rustAutoOpaqueArgOwnTwinRustAsyncSseMoi(
         {required NonCloneSimpleTwinRustAsyncSseMoi arg,
@@ -126,6 +128,37 @@ Future<StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi>
             .rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinRustAsyncSseMoi(
                 hint: hint);
 
+Future<void> rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinRustAsyncSseMoi(
+        {required EnumWithGoodAndOpaqueTwinRustAsyncSseMoi arg,
+        dynamic hint}) =>
+    RustLib.instance.api
+        .rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinRustAsyncSseMoi(
+            arg: arg, hint: hint);
+
+Future<EnumWithGoodAndOpaqueTwinRustAsyncSseMoi>
+    rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinRustAsyncSseMoi(
+            {dynamic hint}) =>
+        RustLib.instance.api
+            .rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinRustAsyncSseMoi(
+                hint: hint);
+
+Future<EnumWithGoodAndOpaqueTwinRustAsyncSseMoi>
+    rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinRustAsyncSseMoi(
+            {dynamic hint}) =>
+        RustLib.instance.api
+            .rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinRustAsyncSseMoi(
+                hint: hint);
+
+Future<void> rustAutoOpaqueEnumArgBorrowTwinRustAsyncSseMoi(
+        {required NonCloneSimpleEnumTwinRustAsyncSseMoi arg, dynamic hint}) =>
+    RustLib.instance.api
+        .rustAutoOpaqueEnumArgBorrowTwinRustAsyncSseMoi(arg: arg, hint: hint);
+
+Future<NonCloneSimpleEnumTwinRustAsyncSseMoi>
+    rustAutoOpaqueEnumReturnOwnTwinRustAsyncSseMoi({dynamic hint}) =>
+        RustLib.instance.api
+            .rustAutoOpaqueEnumReturnOwnTwinRustAsyncSseMoi(hint: hint);
+
 Stream<NonCloneSimpleTwinRustAsyncSseMoi>
     rustAutoOpaqueStreamSinkTwinRustAsyncSseMoi({dynamic hint}) =>
         RustLib.instance.api
@@ -221,6 +254,26 @@ class BoxMyTraitTwinRustAsyncSseMoi extends RustOpaque {
         .rust_arc_decrement_strong_count_BoxMyTraitTwinRustAsyncSseMoi,
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_BoxMyTraitTwinRustAsyncSseMoiPtr,
+  );
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleEnumTwinRustAsyncSseMoi>>
+@sealed
+class NonCloneSimpleEnumTwinRustAsyncSseMoi extends RustOpaque {
+  NonCloneSimpleEnumTwinRustAsyncSseMoi.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  NonCloneSimpleEnumTwinRustAsyncSseMoi.sseDecode(
+      int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_NonCloneSimpleEnumTwinRustAsyncSseMoi,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_NonCloneSimpleEnumTwinRustAsyncSseMoi,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_NonCloneSimpleEnumTwinRustAsyncSseMoiPtr,
   );
 }
 
@@ -352,6 +405,17 @@ class OpaqueTwoTwinRustAsyncSseMoi extends RustOpaque {
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_OpaqueTwoTwinRustAsyncSseMoiPtr,
   );
+}
+
+@freezed
+sealed class EnumWithGoodAndOpaqueTwinRustAsyncSseMoi
+    with _$EnumWithGoodAndOpaqueTwinRustAsyncSseMoi {
+  const factory EnumWithGoodAndOpaqueTwinRustAsyncSseMoi.good(
+    String field0,
+  ) = EnumWithGoodAndOpaqueTwinRustAsyncSseMoi_Good;
+  const factory EnumWithGoodAndOpaqueTwinRustAsyncSseMoi.opaque(
+    NonCloneSimpleTwinRustAsyncSseMoi field0,
+  ) = EnumWithGoodAndOpaqueTwinRustAsyncSseMoi_Opaque;
 }
 
 class StructWithExplicitAutoOpaqueFieldTwinRustAsyncSseMoi {

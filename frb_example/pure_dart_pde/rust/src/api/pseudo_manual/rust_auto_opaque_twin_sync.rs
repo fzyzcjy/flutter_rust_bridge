@@ -20,6 +20,13 @@ pub struct NonCloneSimpleTwinSync {
     inner: i32,
 }
 
+#[frb(opaque)]
+// Do *NOT* make it Clone or serializable
+pub enum NonCloneSimpleEnumTwinSync {
+    Apple,
+    Orange,
+}
+
 // ==================================== simple =======================================
 
 #[flutter_rust_bridge::frb(sync)]
@@ -240,7 +247,7 @@ impl NonCloneSimpleTwinSync {
     }
 }
 
-// ================ types with both encodable and opaque fields ===================
+// ================ struct with both encodable and opaque fields ===================
 
 pub struct StructWithGoodAndOpaqueFieldTwinSync {
     pub good: String,
@@ -262,6 +269,47 @@ pub fn rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync(
         good: "hello".to_string(),
         opaque: NonCloneSimpleTwinSync { inner: 42 },
     }
+}
+
+// ================ enum with both encodable and opaque fields ===================
+
+pub enum EnumWithGoodAndOpaqueTwinSync {
+    Good(String),
+    Opaque(NonCloneSimpleTwinSync),
+}
+
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync(
+    arg: EnumWithGoodAndOpaqueTwinSync,
+) {
+    match arg {
+        EnumWithGoodAndOpaqueTwinSync::Good(inner) => assert_eq!(&inner, "hello"),
+        EnumWithGoodAndOpaqueTwinSync::Opaque(inner) => assert_eq!(inner.inner, 42),
+    }
+}
+
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync(
+) -> EnumWithGoodAndOpaqueTwinSync {
+    EnumWithGoodAndOpaqueTwinSync::Good("hello".to_owned())
+}
+
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync(
+) -> EnumWithGoodAndOpaqueTwinSync {
+    EnumWithGoodAndOpaqueTwinSync::Opaque(NonCloneSimpleTwinSync { inner: 42 })
+}
+
+// ================ enum opaque type ===================
+
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_enum_arg_borrow_twin_sync(arg: &NonCloneSimpleEnumTwinSync) {
+    assert!(matches!(arg, NonCloneSimpleEnumTwinSync::Orange));
+}
+
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_enum_return_own_twin_sync() -> NonCloneSimpleEnumTwinSync {
+    NonCloneSimpleEnumTwinSync::Orange
 }
 
 // ================ stream sink ===================
