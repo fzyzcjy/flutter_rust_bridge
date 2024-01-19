@@ -2545,6 +2545,25 @@ impl CstDecode<crate::api::pseudo_manual::array_twin_sync::FeedIdTwinSync>
         crate::api::pseudo_manual::array_twin_sync::FeedIdTwinSync(self_.get(0).cst_decode())
     }
 }
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::HashMapValue>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::HashMapValue {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::mirror_twin_sync_sse::HashMapValue {
+            inner: self_.get(0).cst_decode(),
+        }
+    }
+}
 impl CstDecode<[i32; 2]> for Box<[i32]> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [i32; 2] {
@@ -3887,6 +3906,28 @@ impl
     ) -> Vec<(
         String,
         crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync,
+    )> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl
+    CstDecode<
+        Vec<(
+            String,
+            crate::api::pseudo_manual::mirror_twin_sync_sse::HashMapValue,
+        )>,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> Vec<(
+        String,
+        crate::api::pseudo_manual::mirror_twin_sync_sse::HashMapValue,
     )> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -5899,6 +5940,31 @@ impl
         (self_.get(0).cst_decode(), self_.get(1).cst_decode())
     }
 }
+impl
+    CstDecode<(
+        String,
+        crate::api::pseudo_manual::mirror_twin_sync_sse::HashMapValue,
+    )> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> (
+        String,
+        crate::api::pseudo_manual::mirror_twin_sync_sse::HashMapValue,
+    ) {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        (self_.get(0).cst_decode(), self_.get(1).cst_decode())
+    }
+}
 impl CstDecode<(String, i32)> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (String, i32) {
@@ -6467,6 +6533,25 @@ impl CstDecode<crate::api::pseudo_manual::rust_auto_opaque_twin_sync_moi::Struct
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync_moi::StructWithGoodAndOpaqueFieldTwinSyncMoi{good:  self_.get(0).cst_decode(),opaque:  self_.get(1).cst_decode()}
             }
         }
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::StructWithHashMap>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::StructWithHashMap {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::mirror_twin_sync_sse::StructWithHashMap {
+            map: self_.get(0).cst_decode(),
+        }
+    }
+}
 impl CstDecode<crate::api::structure::StructWithOneFieldTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -7712,6 +7797,28 @@ impl
         let vec: Vec<(
             String,
             crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync,
+        )> = self.cst_decode();
+        vec.into_iter().collect()
+    }
+}
+impl
+    CstDecode<
+        std::collections::HashMap<
+            String,
+            crate::api::pseudo_manual::mirror_twin_sync_sse::HashMapValue,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> std::collections::HashMap<
+        String,
+        crate::api::pseudo_manual::mirror_twin_sync_sse::HashMapValue,
+    > {
+        let vec: Vec<(
+            String,
+            crate::api::pseudo_manual::mirror_twin_sync_sse::HashMapValue,
         )> = self.cst_decode();
         vec.into_iter().collect()
     }
@@ -11338,6 +11445,13 @@ pub fn wire_test_fallible_of_raw_string_mirrored_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire_test_fallible_of_raw_string_mirrored_twin_normal_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_hashmap_with_mirrored_value_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire_test_hashmap_with_mirrored_value_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
@@ -21533,6 +21647,13 @@ pub fn wire_test_fallible_of_raw_string_mirrored_twin_rust_async(
 }
 
 #[wasm_bindgen]
+pub fn wire_test_hashmap_with_mirrored_value_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire_test_hashmap_with_mirrored_value_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_test_list_of_nested_enums_mirrored_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
@@ -21711,6 +21832,21 @@ pub fn wire_test_fallible_of_raw_string_mirrored_twin_rust_async_sse(
     data_len_: i32,
 ) {
     wire_test_fallible_of_raw_string_mirrored_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire_test_hashmap_with_mirrored_value_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_test_hashmap_with_mirrored_value_twin_rust_async_sse_impl(
         port_,
         ptr_,
         rust_vec_len_,
@@ -21929,6 +22065,16 @@ pub fn wire_test_fallible_of_raw_string_mirrored_twin_sse(
 }
 
 #[wasm_bindgen]
+pub fn wire_test_hashmap_with_mirrored_value_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_test_hashmap_with_mirrored_value_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
 pub fn wire_test_list_of_nested_enums_mirrored_twin_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -22069,6 +22215,12 @@ pub fn wire_test_contains_mirrored_sub_struct_twin_sync(
 pub fn wire_test_fallible_of_raw_string_mirrored_twin_sync(
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_test_fallible_of_raw_string_mirrored_twin_sync_impl()
+}
+
+#[wasm_bindgen]
+pub fn wire_test_hashmap_with_mirrored_value_twin_sync(
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_test_hashmap_with_mirrored_value_twin_sync_impl()
 }
 
 #[wasm_bindgen]
@@ -22230,6 +22382,15 @@ pub fn wire_test_fallible_of_raw_string_mirrored_twin_sync_sse(
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_test_fallible_of_raw_string_mirrored_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_hashmap_with_mirrored_value_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_test_hashmap_with_mirrored_value_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]

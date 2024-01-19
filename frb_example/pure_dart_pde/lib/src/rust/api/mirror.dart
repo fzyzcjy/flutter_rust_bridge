@@ -82,6 +82,10 @@ Future<ContainsMirroredSubStructTwinNormal>
         RustLib.instance.api
             .testContainsMirroredSubStructTwinNormal(hint: hint);
 
+Future<StructWithHashMap> testHashmapWithMirroredValueTwinNormal(
+        {dynamic hint}) =>
+    RustLib.instance.api.testHashmapWithMirroredValueTwinNormal(hint: hint);
+
 class AnotherTwinNormal {
   final String a;
 

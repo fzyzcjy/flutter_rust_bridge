@@ -90,6 +90,11 @@ Future<ContainsMirroredSubStructTwinRustAsyncSse>
         RustLib.instance.api
             .testContainsMirroredSubStructTwinRustAsyncSse(hint: hint);
 
+Future<StructWithHashMap> testHashmapWithMirroredValueTwinRustAsyncSse(
+        {dynamic hint}) =>
+    RustLib.instance.api
+        .testHashmapWithMirroredValueTwinRustAsyncSse(hint: hint);
+
 class AnotherTwinRustAsyncSse {
   final String a;
 

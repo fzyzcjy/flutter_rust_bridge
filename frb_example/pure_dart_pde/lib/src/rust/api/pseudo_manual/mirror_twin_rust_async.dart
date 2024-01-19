@@ -86,6 +86,10 @@ Future<ContainsMirroredSubStructTwinRustAsync>
         RustLib.instance.api
             .testContainsMirroredSubStructTwinRustAsync(hint: hint);
 
+Future<StructWithHashMap> testHashmapWithMirroredValueTwinRustAsync(
+        {dynamic hint}) =>
+    RustLib.instance.api.testHashmapWithMirroredValueTwinRustAsync(hint: hint);
+
 class AnotherTwinRustAsync {
   final String a;
 

@@ -1509,6 +1509,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_Map_String_enum_simple_twin_sync_sse(dynamic raw);
 
   @protected
+  Map<String, HashMapValue> dco_decode_Map_String_hash_map_value(dynamic raw);
+
+  @protected
   Map<String, KitchenSinkTwinNormal>
       dco_decode_Map_String_kitchen_sink_twin_normal(dynamic raw);
 
@@ -4940,6 +4943,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   FeedIdTwinSyncSse dco_decode_feed_id_twin_sync_sse(dynamic raw);
 
   @protected
+  HashMapValue dco_decode_hash_map_value(dynamic raw);
+
+  @protected
   int dco_decode_i_16(dynamic raw);
 
   @protected
@@ -5586,6 +5592,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<(String, EnumSimpleTwinSyncSse)>
       dco_decode_list_record_string_enum_simple_twin_sync_sse(dynamic raw);
+
+  @protected
+  List<(String, HashMapValue)> dco_decode_list_record_string_hash_map_value(
+      dynamic raw);
 
   @protected
   List<(String, int)> dco_decode_list_record_string_i_32(dynamic raw);
@@ -6769,6 +6779,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_record_string_enum_simple_twin_sync_sse(dynamic raw);
 
   @protected
+  (String, HashMapValue) dco_decode_record_string_hash_map_value(dynamic raw);
+
+  @protected
   (String, int) dco_decode_record_string_i_32(dynamic raw);
 
   @protected
@@ -7004,6 +7017,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   StructWithGoodAndOpaqueFieldTwinSyncSseMoi
       dco_decode_struct_with_good_and_opaque_field_twin_sync_sse_moi(
           dynamic raw);
+
+  @protected
+  StructWithHashMap dco_decode_struct_with_hash_map(dynamic raw);
 
   @protected
   StructWithOneFieldTwinNormal dco_decode_struct_with_one_field_twin_normal(
@@ -7960,6 +7976,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Map<String, EnumSimpleTwinSyncSse>
       sse_decode_Map_String_enum_simple_twin_sync_sse(
           SseDeserializer deserializer);
+
+  @protected
+  Map<String, HashMapValue> sse_decode_Map_String_hash_map_value(
+      SseDeserializer deserializer);
 
   @protected
   Map<String, KitchenSinkTwinNormal>
@@ -11823,6 +11843,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  HashMapValue sse_decode_hash_map_value(SseDeserializer deserializer);
+
+  @protected
   int sse_decode_i_16(SseDeserializer deserializer);
 
   @protected
@@ -12557,6 +12580,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<(String, EnumSimpleTwinSyncSse)>
       sse_decode_list_record_string_enum_simple_twin_sync_sse(
           SseDeserializer deserializer);
+
+  @protected
+  List<(String, HashMapValue)> sse_decode_list_record_string_hash_map_value(
+      SseDeserializer deserializer);
 
   @protected
   List<(String, int)> sse_decode_list_record_string_i_32(
@@ -13893,6 +13920,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  (String, HashMapValue) sse_decode_record_string_hash_map_value(
+      SseDeserializer deserializer);
+
+  @protected
   (String, int) sse_decode_record_string_i_32(SseDeserializer deserializer);
 
   @protected
@@ -14160,6 +14191,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   StructWithGoodAndOpaqueFieldTwinSyncSseMoi
       sse_decode_struct_with_good_and_opaque_field_twin_sync_sse_moi(
           SseDeserializer deserializer);
+
+  @protected
+  StructWithHashMap sse_decode_struct_with_hash_map(
+      SseDeserializer deserializer);
 
   @protected
   StructWithOneFieldTwinNormal sse_decode_struct_with_one_field_twin_normal(
@@ -14625,6 +14660,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           Map<String, EnumSimpleTwinSync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_string_enum_simple_twin_sync(
+        raw.entries.map((e) => (e.key, e.value)).toList());
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_record_string_hash_map_value>
+      cst_encode_Map_String_hash_map_value(Map<String, HashMapValue> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_list_record_string_hash_map_value(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
@@ -18505,6 +18548,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     for (var i = 0; i < raw.length; ++i) {
       cst_api_fill_to_wire_record_string_enum_simple_twin_sync(
           raw[i], ans.ref.ptr[i]);
+    }
+    return ans;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_record_string_hash_map_value>
+      cst_encode_list_record_string_hash_map_value(
+          List<(String, HashMapValue)> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ans = wire.cst_new_list_record_string_hash_map_value(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      cst_api_fill_to_wire_record_string_hash_map_value(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -22577,6 +22632,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  void cst_api_fill_to_wire_hash_map_value(
+      HashMapValue apiObj, wire_cst_hash_map_value wireObj) {
+    wireObj.inner = cst_encode_String(apiObj.inner);
+  }
+
+  @protected
   void cst_api_fill_to_wire_kitchen_sink_twin_normal(
       KitchenSinkTwinNormal apiObj, wire_cst_kitchen_sink_twin_normal wireObj) {
     if (apiObj is KitchenSinkTwinNormal_Empty) {
@@ -23493,6 +23554,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  void cst_api_fill_to_wire_record_string_hash_map_value(
+      (String, HashMapValue) apiObj,
+      wire_cst_record_string_hash_map_value wireObj) {
+    wireObj.field0 = cst_encode_String(apiObj.$1);
+    cst_api_fill_to_wire_hash_map_value(apiObj.$2, wireObj.field1);
+  }
+
+  @protected
   void cst_api_fill_to_wire_record_string_i_32(
       (String, int) apiObj, wire_cst_record_string_i_32 wireObj) {
     wireObj.field0 = cst_encode_String(apiObj.$1);
@@ -23799,6 +23868,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     wireObj.opaque =
         cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
             apiObj.opaque);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_struct_with_hash_map(
+      StructWithHashMap apiObj, wire_cst_struct_with_hash_map wireObj) {
+    wireObj.map = cst_encode_Map_String_hash_map_value(apiObj.map);
   }
 
   @protected
@@ -25419,6 +25494,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_Map_String_enum_simple_twin_sync_sse(
       Map<String, EnumSimpleTwinSyncSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Map_String_hash_map_value(
+      Map<String, HashMapValue> self, SseSerializer serializer);
 
   @protected
   void sse_encode_Map_String_kitchen_sink_twin_normal(
@@ -29090,6 +29169,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       FeedIdTwinSyncSse self, SseSerializer serializer);
 
   @protected
+  void sse_encode_hash_map_value(HashMapValue self, SseSerializer serializer);
+
+  @protected
   void sse_encode_i_16(int self, SseSerializer serializer);
 
   @protected
@@ -29800,6 +29882,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_list_record_string_enum_simple_twin_sync_sse(
       List<(String, EnumSimpleTwinSyncSse)> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_record_string_hash_map_value(
+      List<(String, HashMapValue)> self, SseSerializer serializer);
 
   @protected
   void sse_encode_list_record_string_i_32(
@@ -31060,6 +31146,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       (String, EnumSimpleTwinSyncSse) self, SseSerializer serializer);
 
   @protected
+  void sse_encode_record_string_hash_map_value(
+      (String, HashMapValue) self, SseSerializer serializer);
+
+  @protected
   void sse_encode_record_string_i_32(
       (String, int) self, SseSerializer serializer);
 
@@ -31313,6 +31403,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_struct_with_good_and_opaque_field_twin_sync_sse_moi(
       StructWithGoodAndOpaqueFieldTwinSyncSseMoi self,
       SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_hash_map(
+      StructWithHashMap self, SseSerializer serializer);
 
   @protected
   void sse_encode_struct_with_one_field_twin_normal(
@@ -34448,6 +34542,21 @@ class RustLibWire implements BaseWire {
       'frbgen_frb_example_pure_dart_wire_test_fallible_of_raw_string_mirrored_twin_normal');
   late final _wire_test_fallible_of_raw_string_mirrored_twin_normal =
       _wire_test_fallible_of_raw_string_mirrored_twin_normalPtr
+          .asFunction<void Function(int)>();
+
+  void wire_test_hashmap_with_mirrored_value_twin_normal(
+    int port_,
+  ) {
+    return _wire_test_hashmap_with_mirrored_value_twin_normal(
+      port_,
+    );
+  }
+
+  late final _wire_test_hashmap_with_mirrored_value_twin_normalPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      'frbgen_frb_example_pure_dart_wire_test_hashmap_with_mirrored_value_twin_normal');
+  late final _wire_test_hashmap_with_mirrored_value_twin_normal =
+      _wire_test_hashmap_with_mirrored_value_twin_normalPtr
           .asFunction<void Function(int)>();
 
   void wire_test_list_of_nested_enums_mirrored_twin_normal(
@@ -57000,6 +57109,21 @@ class RustLibWire implements BaseWire {
       _wire_test_fallible_of_raw_string_mirrored_twin_rust_asyncPtr
           .asFunction<void Function(int)>();
 
+  void wire_test_hashmap_with_mirrored_value_twin_rust_async(
+    int port_,
+  ) {
+    return _wire_test_hashmap_with_mirrored_value_twin_rust_async(
+      port_,
+    );
+  }
+
+  late final _wire_test_hashmap_with_mirrored_value_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      'frbgen_frb_example_pure_dart_wire_test_hashmap_with_mirrored_value_twin_rust_async');
+  late final _wire_test_hashmap_with_mirrored_value_twin_rust_async =
+      _wire_test_hashmap_with_mirrored_value_twin_rust_asyncPtr
+          .asFunction<void Function(int)>();
+
   void wire_test_list_of_nested_enums_mirrored_twin_rust_async(
     int port_,
   ) {
@@ -57399,6 +57523,30 @@ class RustLibWire implements BaseWire {
           'frbgen_frb_example_pure_dart_wire_test_fallible_of_raw_string_mirrored_twin_rust_async_sse');
   late final _wire_test_fallible_of_raw_string_mirrored_twin_rust_async_sse =
       _wire_test_fallible_of_raw_string_mirrored_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_test_hashmap_with_mirrored_value_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_test_hashmap_with_mirrored_value_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_test_hashmap_with_mirrored_value_twin_rust_async_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_test_hashmap_with_mirrored_value_twin_rust_async_sse');
+  late final _wire_test_hashmap_with_mirrored_value_twin_rust_async_sse =
+      _wire_test_hashmap_with_mirrored_value_twin_rust_async_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_test_list_of_nested_enums_mirrored_twin_rust_async_sse(
@@ -57834,6 +57982,29 @@ class RustLibWire implements BaseWire {
       _wire_test_fallible_of_raw_string_mirrored_twin_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
+  void wire_test_hashmap_with_mirrored_value_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_test_hashmap_with_mirrored_value_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_test_hashmap_with_mirrored_value_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_test_hashmap_with_mirrored_value_twin_sse');
+  late final _wire_test_hashmap_with_mirrored_value_twin_sse =
+      _wire_test_hashmap_with_mirrored_value_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
   void wire_test_list_of_nested_enums_mirrored_twin_sse(
     int port_,
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -58143,6 +58314,17 @@ class RustLibWire implements BaseWire {
       'frbgen_frb_example_pure_dart_wire_test_fallible_of_raw_string_mirrored_twin_sync');
   late final _wire_test_fallible_of_raw_string_mirrored_twin_sync =
       _wire_test_fallible_of_raw_string_mirrored_twin_syncPtr
+          .asFunction<WireSyncRust2DartDco Function()>();
+
+  WireSyncRust2DartDco wire_test_hashmap_with_mirrored_value_twin_sync() {
+    return _wire_test_hashmap_with_mirrored_value_twin_sync();
+  }
+
+  late final _wire_test_hashmap_with_mirrored_value_twin_syncPtr = _lookup<
+          ffi.NativeFunction<WireSyncRust2DartDco Function()>>(
+      'frbgen_frb_example_pure_dart_wire_test_hashmap_with_mirrored_value_twin_sync');
+  late final _wire_test_hashmap_with_mirrored_value_twin_sync =
+      _wire_test_hashmap_with_mirrored_value_twin_syncPtr
           .asFunction<WireSyncRust2DartDco Function()>();
 
   WireSyncRust2DartDco wire_test_list_of_nested_enums_mirrored_twin_sync() {
@@ -58505,6 +58687,27 @@ class RustLibWire implements BaseWire {
       'frbgen_frb_example_pure_dart_wire_test_fallible_of_raw_string_mirrored_twin_sync_sse');
   late final _wire_test_fallible_of_raw_string_mirrored_twin_sync_sse =
       _wire_test_fallible_of_raw_string_mirrored_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_test_hashmap_with_mirrored_value_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_test_hashmap_with_mirrored_value_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_test_hashmap_with_mirrored_value_twin_sync_ssePtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_test_hashmap_with_mirrored_value_twin_sync_sse');
+  late final _wire_test_hashmap_with_mirrored_value_twin_sync_sse =
+      _wire_test_hashmap_with_mirrored_value_twin_sync_ssePtr.asFunction<
           WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
   WireSyncRust2DartSse wire_test_list_of_nested_enums_mirrored_twin_sync_sse(
@@ -86775,6 +86978,25 @@ class RustLibWire implements BaseWire {
           ffi.Pointer<wire_cst_list_record_string_enum_simple_twin_sync>
               Function(int)>();
 
+  ffi.Pointer<wire_cst_list_record_string_hash_map_value>
+      cst_new_list_record_string_hash_map_value(
+    int len,
+  ) {
+    return _cst_new_list_record_string_hash_map_value(
+      len,
+    );
+  }
+
+  late final _cst_new_list_record_string_hash_map_valuePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<wire_cst_list_record_string_hash_map_value> Function(
+                  ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_cst_new_list_record_string_hash_map_value');
+  late final _cst_new_list_record_string_hash_map_value =
+      _cst_new_list_record_string_hash_map_valuePtr.asFunction<
+          ffi.Pointer<wire_cst_list_record_string_hash_map_value> Function(
+              int)>();
+
   ffi.Pointer<wire_cst_list_record_string_i_32> cst_new_list_record_string_i_32(
     int len,
   ) {
@@ -90410,6 +90632,23 @@ final class wire_cst_list_raw_string_mirrored extends ffi.Struct {
   external int len;
 }
 
+final class wire_cst_hash_map_value extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8_strict> inner;
+}
+
+final class wire_cst_record_string_hash_map_value extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8_strict> field0;
+
+  external wire_cst_hash_map_value field1;
+}
+
+final class wire_cst_list_record_string_hash_map_value extends ffi.Struct {
+  external ffi.Pointer<wire_cst_record_string_hash_map_value> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
 final class wire_cst_list_sum_with_twin_normal extends ffi.Struct {
   external ffi.Pointer<wire_cst_sum_with_twin_normal> ptr;
 
@@ -90954,6 +91193,10 @@ final class wire_cst_record_auto_owned_rust_opaque_flutter_rust_bridgefor_genera
 
   @ffi.UintPtr()
   external int field1;
+}
+
+final class wire_cst_struct_with_hash_map extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_record_string_hash_map_value> map;
 }
 
 final class wire_cst_test_chrono_twin_normal extends ffi.Struct {

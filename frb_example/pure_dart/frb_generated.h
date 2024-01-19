@@ -2469,6 +2469,20 @@ typedef struct wire_cst_list_raw_string_mirrored {
   int32_t len;
 } wire_cst_list_raw_string_mirrored;
 
+typedef struct wire_cst_hash_map_value {
+  struct wire_cst_list_prim_u_8_strict *inner;
+} wire_cst_hash_map_value;
+
+typedef struct wire_cst_record_string_hash_map_value {
+  struct wire_cst_list_prim_u_8_strict *field0;
+  struct wire_cst_hash_map_value field1;
+} wire_cst_record_string_hash_map_value;
+
+typedef struct wire_cst_list_record_string_hash_map_value {
+  struct wire_cst_record_string_hash_map_value *ptr;
+  int32_t len;
+} wire_cst_list_record_string_hash_map_value;
+
 typedef struct wire_cst_list_sum_with_twin_normal {
   struct wire_cst_sum_with_twin_normal *ptr;
   int32_t len;
@@ -2873,6 +2887,10 @@ typedef struct wire_cst_record_auto_owned_rust_opaque_flutter_rust_bridgefor_gen
   uintptr_t field0;
   uintptr_t field1;
 } wire_cst_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generatedrust_async_rw_lock_opaque_one_twin_sync_moi_auto_owned_rust_opaque_flutter_rust_bridgefor_generatedrust_async_rw_lock_opaque_two_twin_sync_moi;
+
+typedef struct wire_cst_struct_with_hash_map {
+  struct wire_cst_list_record_string_hash_map_value *map;
+} wire_cst_struct_with_hash_map;
 
 typedef struct wire_cst_test_chrono_twin_normal {
   int64_t *dt;
@@ -3369,6 +3387,8 @@ void frbgen_frb_example_pure_dart_wire_repeat_sequence_twin_normal(int64_t port_
 void frbgen_frb_example_pure_dart_wire_test_contains_mirrored_sub_struct_twin_normal(int64_t port_);
 
 void frbgen_frb_example_pure_dart_wire_test_fallible_of_raw_string_mirrored_twin_normal(int64_t port_);
+
+void frbgen_frb_example_pure_dart_wire_test_hashmap_with_mirrored_value_twin_normal(int64_t port_);
 
 void frbgen_frb_example_pure_dart_wire_test_list_of_nested_enums_mirrored_twin_normal(int64_t port_);
 
@@ -7441,6 +7461,8 @@ void frbgen_frb_example_pure_dart_wire_test_contains_mirrored_sub_struct_twin_ru
 
 void frbgen_frb_example_pure_dart_wire_test_fallible_of_raw_string_mirrored_twin_rust_async(int64_t port_);
 
+void frbgen_frb_example_pure_dart_wire_test_hashmap_with_mirrored_value_twin_rust_async(int64_t port_);
+
 void frbgen_frb_example_pure_dart_wire_test_list_of_nested_enums_mirrored_twin_rust_async(int64_t port_);
 
 void frbgen_frb_example_pure_dart_wire_test_list_of_raw_nested_string_mirrored_twin_rust_async(int64_t port_);
@@ -7521,6 +7543,11 @@ void frbgen_frb_example_pure_dart_wire_test_fallible_of_raw_string_mirrored_twin
                                                                                                 uint8_t *ptr_,
                                                                                                 int32_t rust_vec_len_,
                                                                                                 int32_t data_len_);
+
+void frbgen_frb_example_pure_dart_wire_test_hashmap_with_mirrored_value_twin_rust_async_sse(int64_t port_,
+                                                                                            uint8_t *ptr_,
+                                                                                            int32_t rust_vec_len_,
+                                                                                            int32_t data_len_);
 
 void frbgen_frb_example_pure_dart_wire_test_list_of_nested_enums_mirrored_twin_rust_async_sse(int64_t port_,
                                                                                               uint8_t *ptr_,
@@ -7617,6 +7644,11 @@ void frbgen_frb_example_pure_dart_wire_test_fallible_of_raw_string_mirrored_twin
                                                                                      int32_t rust_vec_len_,
                                                                                      int32_t data_len_);
 
+void frbgen_frb_example_pure_dart_wire_test_hashmap_with_mirrored_value_twin_sse(int64_t port_,
+                                                                                 uint8_t *ptr_,
+                                                                                 int32_t rust_vec_len_,
+                                                                                 int32_t data_len_);
+
 void frbgen_frb_example_pure_dart_wire_test_list_of_nested_enums_mirrored_twin_sse(int64_t port_,
                                                                                    uint8_t *ptr_,
                                                                                    int32_t rust_vec_len_,
@@ -7671,6 +7703,8 @@ WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_repeat_sequence_twin_sync
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_test_contains_mirrored_sub_struct_twin_sync(void);
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_test_fallible_of_raw_string_mirrored_twin_sync(void);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_test_hashmap_with_mirrored_value_twin_sync(void);
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_test_list_of_nested_enums_mirrored_twin_sync(void);
 
@@ -7741,6 +7775,10 @@ WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire_test_contains_mirrored_su
 WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire_test_fallible_of_raw_string_mirrored_twin_sync_sse(uint8_t *ptr_,
                                                                                                           int32_t rust_vec_len_,
                                                                                                           int32_t data_len_);
+
+WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire_test_hashmap_with_mirrored_value_twin_sync_sse(uint8_t *ptr_,
+                                                                                                      int32_t rust_vec_len_,
+                                                                                                      int32_t data_len_);
 
 WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire_test_list_of_nested_enums_mirrored_twin_sync_sse(uint8_t *ptr_,
                                                                                                         int32_t rust_vec_len_,
@@ -12408,6 +12446,8 @@ struct wire_cst_list_record_string_enum_simple_twin_rust_async *frbgen_frb_examp
 
 struct wire_cst_list_record_string_enum_simple_twin_sync *frbgen_frb_example_pure_dart_cst_new_list_record_string_enum_simple_twin_sync(int32_t len);
 
+struct wire_cst_list_record_string_hash_map_value *frbgen_frb_example_pure_dart_cst_new_list_record_string_hash_map_value(int32_t len);
+
 struct wire_cst_list_record_string_i_32 *frbgen_frb_example_pure_dart_cst_new_list_record_string_i_32(int32_t len);
 
 struct wire_cst_list_record_string_kitchen_sink_twin_normal *frbgen_frb_example_pure_dart_cst_new_list_record_string_kitchen_sink_twin_normal(int32_t len);
@@ -12788,6 +12828,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_record_string_enum_simple_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_record_string_enum_simple_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_record_string_enum_simple_twin_sync);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_record_string_hash_map_value);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_record_string_i_32);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_record_string_kitchen_sink_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_record_string_kitchen_sink_twin_rust_async);
@@ -15233,6 +15274,12 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_test_fallible_of_raw_string_mirrored_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_test_fallible_of_raw_string_mirrored_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_test_fallible_of_raw_string_mirrored_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_test_hashmap_with_mirrored_value_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_test_hashmap_with_mirrored_value_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_test_hashmap_with_mirrored_value_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_test_hashmap_with_mirrored_value_twin_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_test_hashmap_with_mirrored_value_twin_sync);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_test_hashmap_with_mirrored_value_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_test_list_of_nested_enums_mirrored_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_test_list_of_nested_enums_mirrored_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_test_list_of_nested_enums_mirrored_twin_rust_async_sse);
