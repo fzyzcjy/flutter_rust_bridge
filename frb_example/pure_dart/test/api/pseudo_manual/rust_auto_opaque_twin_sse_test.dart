@@ -246,6 +246,13 @@ Future<void> main({bool skipRustLibInit = false}) async {
         rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSse(arg: obj));
   });
 
+  test('stream sink', () async {
+    final stream = await rustAutoOpaqueStreamSinkTwinSse(initial: 100);
+    final obj = (await stream.toList()).single;
+    await futurizeVoidTwinSse(
+        rustAutoOpaqueArgBorrowTwinSse(arg: obj, expect: 100));
+  });
+
   test('vec of opaque', () async {
     final vec = await rustAutoOpaqueReturnVecOwnTwinSse();
 

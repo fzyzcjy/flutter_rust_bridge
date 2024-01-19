@@ -6,6 +6,7 @@
 
 #[allow(unused_imports)]
 use crate::frb_generated::RustAutoOpaque;
+use crate::frb_generated::StreamSink;
 use flutter_rust_bridge::frb;
 use flutter_rust_bridge::rust_async::RwLock;
 use std::path::PathBuf;
@@ -253,6 +254,14 @@ pub async fn rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_
         good: "hello".to_string(),
         opaque: NonCloneSimpleTwinRustAsync { inner: 42 },
     }
+}
+
+// ================ stream sink ===================
+
+pub async fn rust_auto_opaque_stream_sink_twin_rust_async(
+    sink: StreamSink<NonCloneSimpleTwinRustAsync>,
+) {
+    sink.add(NonCloneSimpleTwinRustAsync { inner: 42 }).unwrap();
 }
 
 // ================ vec of opaque ===================
