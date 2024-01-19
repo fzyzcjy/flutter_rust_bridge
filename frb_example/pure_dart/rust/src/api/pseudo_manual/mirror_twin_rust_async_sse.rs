@@ -286,12 +286,12 @@ pub async fn test_contains_mirrored_sub_struct_twin_rust_async_sse(
 pub async fn test_hashmap_with_mirrored_value_twin_rust_async_sse() -> StructWithHashMap {
     StructWithHashMap {
         map: {
-            [
+            [(
                 "key".to_owned(),
                 HashMapValue {
                     inner: "value".to_owned(),
                 },
-            ]
+            )]
             .into()
         },
     }
