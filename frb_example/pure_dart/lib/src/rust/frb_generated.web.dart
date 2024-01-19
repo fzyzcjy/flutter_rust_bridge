@@ -37719,6 +37719,9 @@ class RustLibWire implements BaseWire {
   void wire_rust_auto_opaque_return_vec_own_twin_moi(NativePortType port_) =>
       wasmModule.wire_rust_auto_opaque_return_vec_own_twin_moi(port_);
 
+  void wire_rust_auto_opaque_stream_sink_twin_moi(NativePortType port_) =>
+      wasmModule.wire_rust_auto_opaque_stream_sink_twin_moi(port_);
+
   void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_moi(
           NativePortType port_, List<dynamic> arg) =>
       wasmModule
@@ -37920,6 +37923,10 @@ class RustLibWire implements BaseWire {
   void wire_rust_auto_opaque_return_vec_own_twin_rust_async(
           NativePortType port_) =>
       wasmModule.wire_rust_auto_opaque_return_vec_own_twin_rust_async(port_);
+
+  void wire_rust_auto_opaque_stream_sink_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule.wire_rust_auto_opaque_stream_sink_twin_rust_async(port_);
 
   void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async(
           NativePortType port_, List<dynamic> arg) =>
@@ -38134,6 +38141,10 @@ class RustLibWire implements BaseWire {
           NativePortType port_) =>
       wasmModule
           .wire_rust_auto_opaque_return_vec_own_twin_rust_async_moi(port_);
+
+  void wire_rust_auto_opaque_stream_sink_twin_rust_async_moi(
+          NativePortType port_) =>
+      wasmModule.wire_rust_auto_opaque_stream_sink_twin_rust_async_moi(port_);
 
   void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async_moi(
           NativePortType port_, List<dynamic> arg) =>
@@ -38442,6 +38453,14 @@ class RustLibWire implements BaseWire {
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_rust_auto_opaque_return_vec_own_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_rust_auto_opaque_stream_sink_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_rust_auto_opaque_stream_sink_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async_sse(
@@ -38780,6 +38799,14 @@ class RustLibWire implements BaseWire {
       wasmModule.wire_rust_auto_opaque_return_vec_own_twin_rust_async_sse_moi(
           port_, ptr_, rust_vec_len_, data_len_);
 
+  void wire_rust_auto_opaque_stream_sink_twin_rust_async_sse_moi(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_rust_auto_opaque_stream_sink_twin_rust_async_sse_moi(
+          port_, ptr_, rust_vec_len_, data_len_);
+
   void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async_sse_moi(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
@@ -39099,6 +39126,14 @@ class RustLibWire implements BaseWire {
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_rust_auto_opaque_return_vec_own_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_rust_auto_opaque_stream_sink_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_rust_auto_opaque_stream_sink_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sse(
@@ -39424,6 +39459,14 @@ class RustLibWire implements BaseWire {
       wasmModule.wire_rust_auto_opaque_return_vec_own_twin_sse_moi(
           port_, ptr_, rust_vec_len_, data_len_);
 
+  void wire_rust_auto_opaque_stream_sink_twin_sse_moi(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_rust_auto_opaque_stream_sink_twin_sse_moi(
+          port_, ptr_, rust_vec_len_, data_len_);
+
   void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sse_moi(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
@@ -39645,6 +39688,9 @@ class RustLibWire implements BaseWire {
       wire_rust_auto_opaque_return_vec_own_twin_sync() =>
           wasmModule.wire_rust_auto_opaque_return_vec_own_twin_sync();
 
+  void wire_rust_auto_opaque_stream_sink_twin_sync(NativePortType port_) =>
+      wasmModule.wire_rust_auto_opaque_stream_sink_twin_sync(port_);
+
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync(
               List<dynamic> arg) =>
@@ -39856,6 +39902,9 @@ class RustLibWire implements BaseWire {
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_rust_auto_opaque_return_vec_own_twin_sync_moi() =>
           wasmModule.wire_rust_auto_opaque_return_vec_own_twin_sync_moi();
+
+  void wire_rust_auto_opaque_stream_sink_twin_sync_moi(NativePortType port_) =>
+      wasmModule.wire_rust_auto_opaque_stream_sink_twin_sync_moi(port_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_moi(
@@ -40162,6 +40211,14 @@ class RustLibWire implements BaseWire {
               int data_len_) =>
           wasmModule.wire_rust_auto_opaque_return_vec_own_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
+
+  void wire_rust_auto_opaque_stream_sink_twin_sync_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_rust_auto_opaque_stream_sink_twin_sync_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_sse(
@@ -40495,6 +40552,14 @@ class RustLibWire implements BaseWire {
               int data_len_) =>
           wasmModule.wire_rust_auto_opaque_return_vec_own_twin_sync_sse_moi(
               ptr_, rust_vec_len_, data_len_);
+
+  void wire_rust_auto_opaque_stream_sink_twin_sync_sse_moi(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_rust_auto_opaque_stream_sink_twin_sync_sse_moi(
+          port_, ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_sse_moi(
@@ -42275,6 +42340,9 @@ class RustLibWire implements BaseWire {
 
   void wire_rust_auto_opaque_return_vec_own_twin_normal(NativePortType port_) =>
       wasmModule.wire_rust_auto_opaque_return_vec_own_twin_normal(port_);
+
+  void wire_rust_auto_opaque_stream_sink_twin_normal(NativePortType port_) =>
+      wasmModule.wire_rust_auto_opaque_stream_sink_twin_normal(port_);
 
   void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal(
           NativePortType port_, List<dynamic> arg) =>
@@ -50163,6 +50231,9 @@ class RustLibWasmModule implements WasmModule {
   external void wire_rust_auto_opaque_return_vec_own_twin_moi(
       NativePortType port_);
 
+  external void wire_rust_auto_opaque_stream_sink_twin_moi(
+      NativePortType port_);
+
   external void
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_moi(
           NativePortType port_, List<dynamic> arg);
@@ -50291,6 +50362,9 @@ class RustLibWasmModule implements WasmModule {
       NativePortType port_, int initial);
 
   external void wire_rust_auto_opaque_return_vec_own_twin_rust_async(
+      NativePortType port_);
+
+  external void wire_rust_auto_opaque_stream_sink_twin_rust_async(
       NativePortType port_);
 
   external void
@@ -50426,6 +50500,9 @@ class RustLibWasmModule implements WasmModule {
       NativePortType port_, int initial);
 
   external void wire_rust_auto_opaque_return_vec_own_twin_rust_async_moi(
+      NativePortType port_);
+
+  external void wire_rust_auto_opaque_stream_sink_twin_rust_async_moi(
       NativePortType port_);
 
   external void
@@ -50652,6 +50729,12 @@ class RustLibWasmModule implements WasmModule {
       int data_len_);
 
   external void wire_rust_auto_opaque_return_vec_own_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_rust_auto_opaque_stream_sink_twin_rust_async_sse(
       NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_,
       int rust_vec_len_,
@@ -50913,6 +50996,12 @@ class RustLibWasmModule implements WasmModule {
       int rust_vec_len_,
       int data_len_);
 
+  external void wire_rust_auto_opaque_stream_sink_twin_rust_async_sse_moi(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
   external void
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async_sse_moi(
           NativePortType port_,
@@ -51140,6 +51229,9 @@ class RustLibWasmModule implements WasmModule {
       PlatformGeneralizedUint8ListPtr ptr_,
       int rust_vec_len_,
       int data_len_);
+
+  external void wire_rust_auto_opaque_stream_sink_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
   external void
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sse(
@@ -51380,6 +51472,12 @@ class RustLibWasmModule implements WasmModule {
       int rust_vec_len_,
       int data_len_);
 
+  external void wire_rust_auto_opaque_stream_sink_twin_sse_moi(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
   external void
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sse_moi(
           NativePortType port_,
@@ -51532,6 +51630,9 @@ class RustLibWasmModule implements WasmModule {
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_rust_auto_opaque_return_vec_own_twin_sync();
 
+  external void wire_rust_auto_opaque_stream_sink_twin_sync(
+      NativePortType port_);
+
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync(
           List<dynamic> arg);
@@ -51664,6 +51765,9 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_rust_auto_opaque_return_vec_own_twin_sync_moi();
+
+  external void wire_rust_auto_opaque_stream_sink_twin_sync_moi(
+      NativePortType port_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_moi(
@@ -51878,6 +51982,12 @@ class RustLibWasmModule implements WasmModule {
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
+
+  external void wire_rust_auto_opaque_stream_sink_twin_sync_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_sse(
@@ -52112,6 +52222,12 @@ class RustLibWasmModule implements WasmModule {
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
+
+  external void wire_rust_auto_opaque_stream_sink_twin_sync_sse_moi(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_sse_moi(
@@ -53233,6 +53349,9 @@ class RustLibWasmModule implements WasmModule {
       NativePortType port_, int initial);
 
   external void wire_rust_auto_opaque_return_vec_own_twin_normal(
+      NativePortType port_);
+
+  external void wire_rust_auto_opaque_stream_sink_twin_normal(
       NativePortType port_);
 
   external void

@@ -116,6 +116,10 @@ Future<StructWithGoodAndOpaqueFieldTwinNormal>
             .rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinNormal(
                 hint: hint);
 
+Stream<NonCloneSimpleTwinNormal> rustAutoOpaqueStreamSinkTwinNormal(
+        {dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueStreamSinkTwinNormal(hint: hint);
+
 Future<void> rustAutoOpaqueArgVecOwnTwinNormal(
         {required List<NonCloneSimpleTwinNormal> arg,
         required List<int> expect,

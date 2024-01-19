@@ -22864,6 +22864,15 @@ fn wire_rust_auto_opaque_return_vec_own_twin_moi_impl(
                     })())
                 } })
 }
+fn wire_rust_auto_opaque_stream_sink_twin_moi_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_stream_sink_twin_moi", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || {  move |context|  {
+                    transform_result_dco((move ||  {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_moi::rust_auto_opaque_stream_sink_twin_moi(StreamSink::new(context.rust2dart_context().stream_sink::<_,Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoi>())))
+                    })())
+                } })
+}
 fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_moi_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl CstDecode<
@@ -23328,6 +23337,15 @@ fn wire_rust_auto_opaque_return_vec_own_twin_rust_async_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_return_vec_own_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {  move |context| async move {
                     transform_result_dco((move || async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_return_vec_own_twin_rust_async().await)
+                    })().await)
+                } })
+}
+fn wire_rust_auto_opaque_stream_sink_twin_rust_async_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_stream_sink_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || {  move |context| async move {
+                    transform_result_dco((move || async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_stream_sink_twin_rust_async(StreamSink::new(context.rust2dart_context().stream_sink::<_,Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync>())).await)
                     })().await)
                 } })
 }
@@ -23797,6 +23815,15 @@ fn wire_rust_auto_opaque_return_vec_own_twin_rust_async_moi_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_return_vec_own_twin_rust_async_moi", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {  move |context| async move {
                     transform_result_dco((move || async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_moi::rust_auto_opaque_return_vec_own_twin_rust_async_moi().await)
+                    })().await)
+                } })
+}
+fn wire_rust_auto_opaque_stream_sink_twin_rust_async_moi_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_stream_sink_twin_rust_async_moi", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || {  move |context| async move {
+                    transform_result_dco((move || async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_moi::rust_auto_opaque_stream_sink_twin_rust_async_moi(StreamSink::new(context.rust2dart_context().stream_sink::<_,Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi>())).await)
                     })().await)
                 } })
 }
@@ -24378,6 +24405,21 @@ fn wire_rust_auto_opaque_return_vec_own_twin_rust_async_sse_impl(
             deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::rust_auto_opaque_return_vec_own_twin_rust_async_sse().await)
+                    })().await)
+                } })
+}
+fn wire_rust_auto_opaque_stream_sink_twin_rust_async_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_stream_sink_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            deserializer.end(); move |context| async move {
+                    transform_result_sse((move || async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::rust_auto_opaque_stream_sink_twin_rust_async_sse(StreamSink::new(context.rust2dart_context().stream_sink::<_,Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse>())).await)
                     })().await)
                 } })
 }
@@ -24993,6 +25035,21 @@ fn wire_rust_auto_opaque_return_vec_own_twin_rust_async_sse_moi_impl(
                     })().await)
                 } })
 }
+fn wire_rust_auto_opaque_stream_sink_twin_rust_async_sse_moi_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_stream_sink_twin_rust_async_sse_moi", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            deserializer.end(); move |context| async move {
+                    transform_result_sse((move || async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse_moi::rust_auto_opaque_stream_sink_twin_rust_async_sse_moi(StreamSink::new(context.rust2dart_context().stream_sink::<_,Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi>())).await)
+                    })().await)
+                } })
+}
 fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async_sse_moi_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -25602,6 +25659,21 @@ fn wire_rust_auto_opaque_return_vec_own_twin_sse_impl(
             deserializer.end(); move |context|  {
                     transform_result_sse((move ||  {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sse::rust_auto_opaque_return_vec_own_twin_sse())
+                    })())
+                } })
+}
+fn wire_rust_auto_opaque_stream_sink_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_stream_sink_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            deserializer.end(); move |context|  {
+                    transform_result_sse((move ||  {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sse::rust_auto_opaque_stream_sink_twin_sse(StreamSink::new(context.rust2dart_context().stream_sink::<_,Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSse>())))
                     })())
                 } })
 }
@@ -26217,6 +26289,21 @@ fn wire_rust_auto_opaque_return_vec_own_twin_sse_moi_impl(
                     })())
                 } })
 }
+fn wire_rust_auto_opaque_stream_sink_twin_sse_moi_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_stream_sink_twin_sse_moi", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            deserializer.end(); move |context|  {
+                    transform_result_sse((move ||  {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sse_moi::rust_auto_opaque_stream_sink_twin_sse_moi(StreamSink::new(context.rust2dart_context().stream_sink::<_,Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi>())))
+                    })())
+                } })
+}
 fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sse_moi_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -26655,6 +26742,15 @@ fn wire_rust_auto_opaque_return_vec_own_twin_sync_impl(
                      Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_return_vec_own_twin_sync())
                 })()) })
 }
+fn wire_rust_auto_opaque_stream_sink_twin_sync_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_stream_sink_twin_sync", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || {  move |context|  {
+                    transform_result_dco((move ||  {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_stream_sink_twin_sync(StreamSink::new(context.rust2dart_context().stream_sink::<_,Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync>())))
+                    })())
+                } })
+}
 fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_impl(
     arg: impl CstDecode<
         crate::api::pseudo_manual::rust_auto_opaque_twin_sync::StructWithGoodAndOpaqueFieldTwinSync,
@@ -27043,6 +27139,15 @@ fn wire_rust_auto_opaque_return_vec_own_twin_sync_moi_impl(
                 transform_result_dco((move || {
                      Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync_moi::rust_auto_opaque_return_vec_own_twin_sync_moi())
                 })()) })
+}
+fn wire_rust_auto_opaque_stream_sink_twin_sync_moi_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_stream_sink_twin_sync_moi", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || {  move |context|  {
+                    transform_result_dco((move ||  {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync_moi::rust_auto_opaque_stream_sink_twin_sync_moi(StreamSink::new(context.rust2dart_context().stream_sink::<_,Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi>())))
+                    })())
+                } })
 }
 fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_moi_impl(
     arg: impl CstDecode<crate::api::pseudo_manual::rust_auto_opaque_twin_sync_moi::StructWithGoodAndOpaqueFieldTwinSyncMoi>,
@@ -27542,6 +27647,21 @@ fn wire_rust_auto_opaque_return_vec_own_twin_sync_sse_impl(
                 transform_result_sse((move || {
                      Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::rust_auto_opaque_return_vec_own_twin_sync_sse())
                 })()) })
+}
+fn wire_rust_auto_opaque_stream_sink_twin_sync_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_stream_sink_twin_sync_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            deserializer.end(); move |context|  {
+                    transform_result_sse((move ||  {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::rust_auto_opaque_stream_sink_twin_sync_sse(StreamSink::new(context.rust2dart_context().stream_sink::<_,Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse>())))
+                    })())
+                } })
 }
 fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_sse_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -28076,6 +28196,21 @@ fn wire_rust_auto_opaque_return_vec_own_twin_sync_sse_moi_impl(
                 transform_result_sse((move || {
                      Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse_moi::rust_auto_opaque_return_vec_own_twin_sync_sse_moi())
                 })()) })
+}
+fn wire_rust_auto_opaque_stream_sink_twin_sync_sse_moi_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_stream_sink_twin_sync_sse_moi", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            deserializer.end(); move |context|  {
+                    transform_result_sse((move ||  {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse_moi::rust_auto_opaque_stream_sink_twin_sync_sse_moi(StreamSink::new(context.rust2dart_context().stream_sink::<_,Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi>())))
+                    })())
+                } })
 }
 fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_sse_moi_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -32632,6 +32767,15 @@ fn wire_rust_auto_opaque_return_vec_own_twin_normal_impl(
             }
         },
     )
+}
+fn wire_rust_auto_opaque_stream_sink_twin_normal_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_stream_sink_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || {  move |context|  {
+                    transform_result_dco((move ||  {
+                         Result::<_,()>::Ok(crate::api::rust_auto_opaque::rust_auto_opaque_stream_sink_twin_normal(StreamSink::new(context.rust2dart_context().stream_sink::<_,Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal>())))
+                    })())
+                } })
 }
 fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,

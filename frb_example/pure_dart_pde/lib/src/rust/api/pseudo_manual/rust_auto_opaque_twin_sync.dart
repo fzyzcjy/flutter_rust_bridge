@@ -111,6 +111,10 @@ StructWithGoodAndOpaqueFieldTwinSync
             .rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSync(
                 hint: hint);
 
+Stream<NonCloneSimpleTwinSync> rustAutoOpaqueStreamSinkTwinSync(
+        {dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueStreamSinkTwinSync(hint: hint);
+
 void rustAutoOpaqueArgVecOwnTwinSync(
         {required List<NonCloneSimpleTwinSync> arg,
         required List<int> expect,

@@ -120,6 +120,10 @@ Future<StructWithGoodAndOpaqueFieldTwinRustAsyncSse>
             .rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinRustAsyncSse(
                 hint: hint);
 
+Stream<NonCloneSimpleTwinRustAsyncSse> rustAutoOpaqueStreamSinkTwinRustAsyncSse(
+        {dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueStreamSinkTwinRustAsyncSse(hint: hint);
+
 Future<void> rustAutoOpaqueArgVecOwnTwinRustAsyncSse(
         {required List<NonCloneSimpleTwinRustAsyncSse> arg,
         required List<int> expect,
