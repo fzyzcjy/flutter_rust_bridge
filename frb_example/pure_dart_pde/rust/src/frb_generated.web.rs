@@ -24,6 +24,152 @@ use flutter_rust_bridge::{Handler, IntoIntoDart};
 flutter_rust_bridge::frb_generated_boilerplate_web!();
 
 #[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_BoxdynDartDebugTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<Box<dyn DartDebugTwinNormal>>::increment_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_BoxdynDartDebugTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<Box<dyn DartDebugTwinNormal>>::decrement_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_BoxdynDartDebugTwinRustAsync(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<Box<dyn DartDebugTwinRustAsync>>::increment_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_BoxdynDartDebugTwinRustAsync(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<Box<dyn DartDebugTwinRustAsync>>::decrement_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_BoxdynDartDebugTwinSync(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<Box<dyn DartDebugTwinSync>>::increment_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_BoxdynDartDebugTwinSync(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<Box<dyn DartDebugTwinSync>>::decrement_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_FrbOpaqueReturnTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<FrbOpaqueReturnTwinNormal>::increment_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_FrbOpaqueReturnTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<FrbOpaqueReturnTwinNormal>::decrement_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_FrbOpaqueReturnTwinRustAsync(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<FrbOpaqueReturnTwinRustAsync>::increment_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_FrbOpaqueReturnTwinRustAsync(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<FrbOpaqueReturnTwinRustAsync>::decrement_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_FrbOpaqueReturnTwinSync(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<FrbOpaqueReturnTwinSync>::increment_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_FrbOpaqueReturnTwinSync(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<FrbOpaqueReturnTwinSync>::decrement_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_FrbOpaqueSyncReturnTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<FrbOpaqueSyncReturnTwinNormal>::increment_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_FrbOpaqueSyncReturnTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<FrbOpaqueSyncReturnTwinNormal>::decrement_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_HideDataAnotherTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<HideDataAnotherTwinNormal>::increment_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_HideDataAnotherTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<HideDataAnotherTwinNormal>::decrement_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_HideDataTwinNormal(ptr: *const std::ffi::c_void) {
+    MoiArc::<HideDataTwinNormal>::increment_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_HideDataTwinNormal(ptr: *const std::ffi::c_void) {
+    MoiArc::<HideDataTwinNormal>::decrement_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_HideDataTwinRustAsync(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<HideDataTwinRustAsync>::increment_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_HideDataTwinRustAsync(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<HideDataTwinRustAsync>::decrement_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_HideDataTwinSync(ptr: *const std::ffi::c_void) {
+    MoiArc::<HideDataTwinSync>::increment_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_HideDataTwinSync(ptr: *const std::ffi::c_void) {
+    MoiArc::<HideDataTwinSync>::decrement_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
 pub fn rust_arc_increment_strong_count_RustOpaque_MutexHideDataTwinNormal(
     ptr: *const std::ffi::c_void,
 ) {
@@ -63,6 +209,48 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_MutexHideDataTwinSync(
     ptr: *const std::ffi::c_void,
 ) {
     MoiArc::<Mutex<HideDataTwinSync>>::decrement_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_NonCloneDataTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<NonCloneDataTwinNormal>::increment_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_NonCloneDataTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<NonCloneDataTwinNormal>::decrement_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_NonCloneDataTwinRustAsync(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<NonCloneDataTwinRustAsync>::increment_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_NonCloneDataTwinRustAsync(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<NonCloneDataTwinRustAsync>::decrement_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_NonCloneDataTwinSync(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<NonCloneDataTwinSync>::increment_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_NonCloneDataTwinSync(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<NonCloneDataTwinSync>::decrement_strong_count(ptr as _);
 }
 
 #[wasm_bindgen]
@@ -108,48 +296,6 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataTwinSync(
 }
 
 #[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinNormal(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<Box<dyn DartDebugTwinNormal>>::increment_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinNormal(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<Box<dyn DartDebugTwinNormal>>::decrement_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinRustAsync(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<Box<dyn DartDebugTwinRustAsync>>::increment_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinRustAsync(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<Box<dyn DartDebugTwinRustAsync>>::decrement_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinSync(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<Box<dyn DartDebugTwinSync>>::increment_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<Box<dyn DartDebugTwinSync>>::decrement_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
 pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynFnStringStringSendSync(
     ptr: *const std::ffi::c_void,
 ) {
@@ -175,14 +321,14 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
 pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinNormal(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinNormal>>>::increment_strong_count(ptr as _);
+    MoiArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<Box < dyn HelloTraitTwinNormal >>>::increment_strong_count(ptr as _);
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinNormal(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinNormal>>>::decrement_strong_count(ptr as _);
+    MoiArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<Box < dyn HelloTraitTwinNormal >>>::decrement_strong_count(ptr as _);
 }
 
 #[wasm_bindgen]
@@ -207,14 +353,14 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
 pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSync>>>::increment_strong_count(ptr as _);
+    MoiArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<Box < dyn HelloTraitTwinSync >>>::increment_strong_count(ptr as _);
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSync>>>::decrement_strong_count(ptr as _);
+    MoiArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<Box < dyn HelloTraitTwinSync >>>::decrement_strong_count(ptr as _);
 }
 
 #[wasm_bindgen]
@@ -326,6 +472,90 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
 }
 
 #[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueOneTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinNormal>>::increment_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueOneTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinNormal>>::decrement_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueOneTwinRustAsync(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinRustAsync>>::increment_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueOneTwinRustAsync(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinRustAsync>>::decrement_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueOneTwinSync(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinSync>>::increment_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueOneTwinSync(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinSync>>::decrement_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueTwoTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueTwoTwinNormal>>::increment_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueTwoTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueTwoTwinNormal>>::decrement_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueTwoTwinRustAsync(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueTwoTwinRustAsync>>::increment_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueTwoTwinRustAsync(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueTwoTwinRustAsync>>::decrement_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueTwoTwinSync(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueTwoTwinSync>>::increment_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueTwoTwinSync(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueTwoTwinSync>>::decrement_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
 pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
     ptr: *const std::ffi::c_void,
 ) {
@@ -354,72 +584,6 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
 }
 
 #[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<
-            StructWithGoodAndOpaqueFieldTwinNormal,
-        >,
-    >::increment_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<
-            StructWithGoodAndOpaqueFieldTwinNormal,
-        >,
-    >::decrement_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<
-            StructWithGoodAndOpaqueFieldTwinRustAsync,
-        >,
-    >::increment_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<
-            StructWithGoodAndOpaqueFieldTwinRustAsync,
-        >,
-    >::decrement_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<
-            StructWithGoodAndOpaqueFieldTwinSync,
-        >,
-    >::increment_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<
-            StructWithGoodAndOpaqueFieldTwinSync,
-        >,
-    >::decrement_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
 pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
     ptr: *const std::ffi::c_void,
 ) {
@@ -434,311 +598,11 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
 }
 
 #[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueOneTwinRustAsynccrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<(
-            crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueOneTwinRustAsync,
-            crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueTwoTwinRustAsync,
-        )>,
-    >::increment_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueOneTwinRustAsynccrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<(
-            crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueOneTwinRustAsync,
-            crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueTwoTwinRustAsync,
-        )>,
-    >::decrement_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<
-            crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueTwoTwinRustAsync,
-        >,
-    >::increment_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<
-            crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueTwoTwinRustAsync,
-        >,
-    >::decrement_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueOneTwinSynccrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueTwoTwinSync(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<(
-            crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueOneTwinSync,
-            crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueTwoTwinSync,
-        )>,
-    >::increment_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueOneTwinSynccrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueTwoTwinSync(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<(
-            crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueOneTwinSync,
-            crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueTwoTwinSync,
-        )>,
-    >::decrement_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueTwoTwinSync(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<
-            crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueTwoTwinSync,
-        >,
-    >::increment_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueTwoTwinSync(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<
-            crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueTwoTwinSync,
-        >,
-    >::decrement_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapirust_auto_opaqueOpaqueOneTwinNormalcrateapirust_auto_opaqueOpaqueTwoTwinNormal(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<(
-            crate::api::rust_auto_opaque::OpaqueOneTwinNormal,
-            crate::api::rust_auto_opaque::OpaqueTwoTwinNormal,
-        )>,
-    >::increment_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapirust_auto_opaqueOpaqueOneTwinNormalcrateapirust_auto_opaqueOpaqueTwoTwinNormal(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<(
-            crate::api::rust_auto_opaque::OpaqueOneTwinNormal,
-            crate::api::rust_auto_opaque::OpaqueTwoTwinNormal,
-        )>,
-    >::decrement_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapirust_auto_opaqueOpaqueTwoTwinNormal(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<
-            crate::api::rust_auto_opaque::OpaqueTwoTwinNormal,
-        >,
-    >::increment_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapirust_auto_opaqueOpaqueTwoTwinNormal(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<
-            crate::api::rust_auto_opaque::OpaqueTwoTwinNormal,
-        >,
-    >::decrement_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_frb_opaque_return_twin_normal(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<crate::api::rust_opaque::FrbOpaqueReturnTwinNormal>::increment_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_frb_opaque_return_twin_normal(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<crate::api::rust_opaque::FrbOpaqueReturnTwinNormal>::decrement_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_frb_opaque_return_twin_rust_async(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_twin_rust_async::FrbOpaqueReturnTwinRustAsync>::increment_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_frb_opaque_return_twin_rust_async(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_twin_rust_async::FrbOpaqueReturnTwinRustAsync>::decrement_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_frb_opaque_return_twin_sync(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_twin_sync::FrbOpaqueReturnTwinSync>::increment_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_frb_opaque_return_twin_sync(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_twin_sync::FrbOpaqueReturnTwinSync>::decrement_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_frb_opaque_sync_return_twin_normal(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<crate::api::rust_opaque_sync::FrbOpaqueSyncReturnTwinNormal>::increment_strong_count(
-        ptr as _,
-    );
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_frb_opaque_sync_return_twin_normal(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<crate::api::rust_opaque_sync::FrbOpaqueSyncReturnTwinNormal>::decrement_strong_count(
-        ptr as _,
-    );
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_hide_data_another_twin_normal(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<crate::api::rust_opaque_sync::HideDataAnotherTwinNormal>::increment_strong_count(
-        ptr as _,
-    );
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_hide_data_another_twin_normal(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<crate::api::rust_opaque_sync::HideDataAnotherTwinNormal>::decrement_strong_count(
-        ptr as _,
-    );
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_hide_data_twin_normal(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<crate::api::rust_opaque::HideDataTwinNormal>::increment_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_hide_data_twin_normal(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<crate::api::rust_opaque::HideDataTwinNormal>::decrement_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_hide_data_twin_rust_async(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_twin_rust_async::HideDataTwinRustAsync>::increment_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_hide_data_twin_rust_async(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_twin_rust_async::HideDataTwinRustAsync>::decrement_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_hide_data_twin_sync(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_twin_sync::HideDataTwinSync>::increment_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_hide_data_twin_sync(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_twin_sync::HideDataTwinSync>::decrement_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_i_32(ptr: *const std::ffi::c_void) {
+pub fn rust_arc_increment_strong_count_RustOpaque_i32(ptr: *const std::ffi::c_void) {
     MoiArc::<i32>::increment_strong_count(ptr as _);
 }
 
 #[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_i_32(ptr: *const std::ffi::c_void) {
+pub fn rust_arc_decrement_strong_count_RustOpaque_i32(ptr: *const std::ffi::c_void) {
     MoiArc::<i32>::decrement_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_non_clone_data_twin_normal(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<crate::api::rust_opaque::NonCloneDataTwinNormal>::increment_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_non_clone_data_twin_normal(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<crate::api::rust_opaque::NonCloneDataTwinNormal>::decrement_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_non_clone_data_twin_rust_async(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_twin_rust_async::NonCloneDataTwinRustAsync>::increment_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_non_clone_data_twin_rust_async(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_twin_rust_async::NonCloneDataTwinRustAsync>::decrement_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_non_clone_data_twin_sync(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_twin_sync::NonCloneDataTwinSync>::increment_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_non_clone_data_twin_sync(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_twin_sync::NonCloneDataTwinSync>::decrement_strong_count(ptr as _);
 }

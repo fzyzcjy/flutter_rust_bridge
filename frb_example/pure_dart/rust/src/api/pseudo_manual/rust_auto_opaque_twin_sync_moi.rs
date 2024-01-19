@@ -281,7 +281,6 @@ impl NonCloneSimpleTwinSyncMoi {
 
 // ================ types with both encodable and opaque fields ===================
 
-#[frb(opaque)]
 pub struct StructWithGoodAndOpaqueFieldTwinSyncMoi {
     pub good: String,
     pub opaque: NonCloneSimpleTwinSyncMoi,
@@ -298,30 +297,34 @@ pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_moi(
 
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
 #[flutter_rust_bridge::frb(sync)]
-pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync_moi(
-    arg: &StructWithGoodAndOpaqueFieldTwinSyncMoi,
-) {
-    assert_eq!(&arg.good, "hello");
-    assert_eq!(arg.opaque.inner, 42);
-}
-
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
-#[flutter_rust_bridge::frb(sync)]
-pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync_moi(
-    arg: &mut StructWithGoodAndOpaqueFieldTwinSyncMoi,
-) {
-    assert_eq!(&arg.good, "hello");
-    assert_eq!(arg.opaque.inner, 42);
-}
-
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
-#[flutter_rust_bridge::frb(sync)]
 pub fn rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync_moi(
 ) -> StructWithGoodAndOpaqueFieldTwinSyncMoi {
     StructWithGoodAndOpaqueFieldTwinSyncMoi {
         good: "hello".to_string(),
         opaque: NonCloneSimpleTwinSyncMoi { inner: 42 },
     }
+}
+
+// ================ vec of opaque ===================
+
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_arg_vec_own_twin_sync_moi(
+    arg: Vec<NonCloneSimpleTwinSyncMoi>,
+    expect: Vec<i32>,
+) {
+    for i in 0..expect.len() {
+        assert_eq!(arg[i].inner, expect[i]);
+    }
+}
+
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_return_vec_own_twin_sync_moi() -> Vec<NonCloneSimpleTwinSyncMoi> {
+    vec![
+        NonCloneSimpleTwinSyncMoi { inner: 10 },
+        NonCloneSimpleTwinSyncMoi { inner: 20 },
+    ]
 }
 
 // ================ use explicit type ===================
@@ -361,8 +364,11 @@ pub fn rust_auto_opaque_explicit_return_twin_sync_moi(
 // ================ misc ===================
 
 // #1577 - this should generate valid Dart code without name collisions
+#[frb(opaque)]
 pub struct OpaqueOneTwinSyncMoi(PathBuf);
+#[frb(opaque)]
 pub struct OpaqueTwoTwinSyncMoi(PathBuf);
+
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
 #[flutter_rust_bridge::frb(sync)]
 pub fn rust_auto_opaque_return_opaque_one_and_two_twin_sync_moi(

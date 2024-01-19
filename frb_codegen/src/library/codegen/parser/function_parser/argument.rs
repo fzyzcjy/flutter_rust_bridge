@@ -2,7 +2,6 @@ use crate::codegen::ir::field::{IrField, IrFieldSettings};
 use crate::codegen::ir::func::{IrFuncMode, IrFuncOwnerInfo};
 use crate::codegen::ir::ident::IrIdent;
 use crate::codegen::ir::ty::boxed::IrTypeBoxed;
-use crate::codegen::ir::ty::ownership::{IrTypeOwnership, IrTypeOwnershipMode};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::Boxed;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
@@ -10,7 +9,7 @@ use crate::codegen::parser::function_parser::{
     FunctionParser, FunctionPartialInfo, STREAM_SINK_IDENT,
 };
 use crate::codegen::parser::type_parser::misc::parse_comments;
-use crate::codegen::parser::type_parser::{TypeParser, TypeParserParsingContext};
+use crate::codegen::parser::type_parser::TypeParserParsingContext;
 use crate::if_then_some;
 use anyhow::{bail, Context};
 use syn::*;
@@ -57,20 +56,29 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let method = if_then_some!(let IrFuncOwnerInfo::Method(method) = owner, method)
             .context("`self` must happen within methods")?;
 
-        let ty: Type = parse_str(&method.enum_or_struct_name.name)?;
+        let ty_raw =
+            self.parse_fn_arg_receiver_attempt(&method.enum_or_struct_name.name, context)?;
+        let ty = match ty_raw {
+            IrType::RustAutoOpaque(ty_raw) => self.type_parser.transform_rust_auto_opaque(
+                &ty_raw,
+                |raw| generate_ref_type_considering_reference(raw, receiver),
+                context,
+            )?,
+            _ => ty_raw,
+        };
 
         let name = "that".to_owned();
 
-        partial_info_for_normal_type_raw(
-            parse_receiver_ownership(
-                self.type_parser.parse_type(&ty, context)?,
-                receiver,
-                self.type_parser,
-                context,
-            ),
-            &receiver.attrs,
-            name,
-        )
+        partial_info_for_normal_type_raw(ty, &receiver.attrs, name)
+    }
+
+    fn parse_fn_arg_receiver_attempt(
+        &mut self,
+        ty: &str,
+        context: &TypeParserParsingContext,
+    ) -> anyhow::Result<IrType> {
+        let ty: Type = parse_str(ty)?;
+        self.type_parser.parse_type(&ty, context)
     }
 
     fn parse_fn_arg_type_stream_sink(
@@ -166,26 +174,14 @@ fn parse_name_from_pat_type(pat_type: &PatType) -> anyhow::Result<String> {
     }
 }
 
-fn parse_receiver_ownership(
-    inner: IrType,
-    receiver: &Receiver,
-    type_parser: &mut TypeParser,
-    context: &TypeParserParsingContext,
-) -> IrType {
-    let should_parse_ownership = type_parser.check_candidate_rust_auto_opaque(&inner, context);
-
-    if receiver.reference.is_none() || !should_parse_ownership {
-        return inner;
-    }
-
-    let mode = if receiver.mutability.is_some() {
-        IrTypeOwnershipMode::RefMut
+fn generate_ref_type_considering_reference(raw: &str, receiver: &Receiver) -> String {
+    if receiver.reference.is_some() {
+        if receiver.mutability.is_some() {
+            format!("&mut {raw}")
+        } else {
+            format!("&{raw}")
+        }
     } else {
-        IrTypeOwnershipMode::Ref
-    };
-
-    IrType::Ownership(IrTypeOwnership {
-        mode,
-        inner: Box::new(inner),
-    })
+        raw.to_owned()
+    }
 }

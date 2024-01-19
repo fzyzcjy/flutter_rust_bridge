@@ -16,14 +16,12 @@ macro_rules! codegen_generator_structs {
             EnumRef,
             GeneralList,
             Optional,
-            Ownership,
             Primitive,
             PrimitiveList,
             Record,
             RustAutoOpaque,
             RustOpaque,
             StructRef,
-            Unencodable,
         );
     );
     (@private $(#[$attribute:meta])* $generator_name:ident ; $($name:ident),*,) => (
@@ -36,14 +34,12 @@ macro_rules! codegen_generator_structs {
         use $crate::codegen::ir::ty::enumeration::IrTypeEnumRef;
         use $crate::codegen::ir::ty::general_list::IrTypeGeneralList;
         use $crate::codegen::ir::ty::optional::IrTypeOptional;
-        use $crate::codegen::ir::ty::ownership::IrTypeOwnership;
         use $crate::codegen::ir::ty::primitive::IrTypePrimitive;
         use $crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
         use $crate::codegen::ir::ty::record::IrTypeRecord;
         use $crate::codegen::ir::ty::rust_auto_opaque::IrTypeRustAutoOpaque;
         use $crate::codegen::ir::ty::rust_opaque::IrTypeRustOpaque;
         use $crate::codegen::ir::ty::structure::IrTypeStructRef;
-        use $crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
         use $crate::codegen::ir::ty::IrType;
         // cargo fix wrongly removes this import
         #[allow(unused_imports)]

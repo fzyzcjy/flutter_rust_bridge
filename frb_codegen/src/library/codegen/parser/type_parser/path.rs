@@ -1,7 +1,5 @@
 use crate::codegen::ir::ty::IrType;
-use crate::codegen::parser::type_parser::unencodable::{
-    parse_path_type_to_unencodable, splay_segments,
-};
+use crate::codegen::parser::type_parser::unencodable::splay_segments;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use anyhow::bail;
 use quote::ToTokens;
@@ -37,14 +35,10 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             if let Some(ans) = self.parse_type_path_data_primitive(last_segment)? {
                 return Ok(ans);
             }
-            if let Some(ans) =
-                self.parse_type_path_data_struct(type_path, &splayed_segments, last_segment)?
-            {
+            if let Some(ans) = self.parse_type_path_data_struct(type_path, last_segment)? {
                 return Ok(ans);
             }
-            if let Some(ans) =
-                self.parse_type_path_data_enum(type_path, &splayed_segments, last_segment)?
-            {
+            if let Some(ans) = self.parse_type_path_data_enum(type_path, last_segment)? {
                 return Ok(ans);
             }
             if let Some(ans) = self.parse_type_path_data_rust_opaque(last_segment)? {
@@ -62,6 +56,6 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         }
         // frb-coverage:ignore-end
 
-        Ok(parse_path_type_to_unencodable(type_path, &splayed_segments))
+        self.parse_type_rust_auto_opaque(None, &syn::Type::Path(type_path.to_owned()))
     }
 }

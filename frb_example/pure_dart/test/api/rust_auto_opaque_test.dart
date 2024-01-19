@@ -239,14 +239,24 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('types with both encodable and opaque fields', () async {
     final obj =
         await rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinNormal();
+    expect(obj.good, 'hello');
     await futurizeVoidTwinNormal(
-        rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinNormal(
-            arg: obj));
-    await futurizeVoidTwinNormal(
-        rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinNormal(
-            arg: obj));
+        rustAutoOpaqueArgBorrowTwinNormal(arg: obj.opaque, expect: 42));
     await futurizeVoidTwinNormal(
         rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinNormal(arg: obj));
+  });
+
+  test('vec of opaque', () async {
+    final vec = await rustAutoOpaqueReturnVecOwnTwinNormal();
+
+    expect(vec.length, 2);
+    await futurizeVoidTwinNormal(
+        rustAutoOpaqueArgBorrowTwinNormal(arg: vec[0], expect: 10));
+    await futurizeVoidTwinNormal(
+        rustAutoOpaqueArgBorrowTwinNormal(arg: vec[1], expect: 20));
+
+    await futurizeVoidTwinNormal(
+        rustAutoOpaqueArgVecOwnTwinNormal(arg: vec, expect: [10, 20]));
   });
 
   group('Explicit rust-auto-opaque types', () {

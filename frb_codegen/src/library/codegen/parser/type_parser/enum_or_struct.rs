@@ -1,16 +1,13 @@
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
-use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::source_graph::modules::StructOrEnumWrapper;
-use crate::codegen::parser::type_parser::unencodable::{
-    parse_path_type_to_unencodable, SplayedSegment,
-};
+use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use log::debug;
 use std::collections::{HashMap, HashSet};
 use std::fmt::Debug;
 use std::hash::Hash;
-use syn::{Ident, TypePath};
+use syn::{Ident, Type, TypePath};
 
 pub(super) trait EnumOrStructParser<Id, Obj, SrcObj, Item>
 where
@@ -20,7 +17,6 @@ where
     fn parse(
         &mut self,
         type_path: &TypePath,
-        splayed_segments: &[SplayedSegment],
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
         let (name, _) = last_segment;
@@ -33,11 +29,10 @@ where
             let attrs = FrbAttributes::parse(src_object.attrs())?;
             if attrs.opaque() {
                 debug!("Recognize {name} has opaque attribute");
-                return Ok(Some(IrType::Unencodable(IrTypeUnencodable {
-                    namespace: Some(namespaced_name.namespace),
-                    string: namespaced_name.name,
-                    segments: vec![],
-                })));
+                return Ok(Some(self.parse_type_rust_auto_opaque(
+                    Some(namespaced_name.namespace),
+                    &syn::parse_str(&namespaced_name.name)?,
+                )?));
             }
 
             let ident: Id = namespaced_name.clone().into();
@@ -54,10 +49,10 @@ where
                         (self.parser_info().object_pool).insert(ident.clone(), parsed_object)
                     }
                     None => {
-                        return Ok(Some(parse_path_type_to_unencodable(
-                            type_path,
-                            splayed_segments,
-                        )))
+                        return Ok(Some(self.parse_type_rust_auto_opaque(
+                            None,
+                            &Type::Path(type_path.to_owned()),
+                        )?))
                     }
                 };
             }
@@ -80,6 +75,12 @@ where
     fn src_objects(&self) -> &HashMap<String, &SrcObj>;
 
     fn parser_info(&mut self) -> &mut EnumOrStructParserInfo<Id, Obj>;
+
+    fn parse_type_rust_auto_opaque(
+        &mut self,
+        namespace: Option<Namespace>,
+        ty: &Type,
+    ) -> anyhow::Result<IrType>;
 }
 
 fn pop_last(mut v: Vec<String>) -> Vec<String> {

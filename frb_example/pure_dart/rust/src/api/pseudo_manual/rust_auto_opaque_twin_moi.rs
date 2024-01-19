@@ -239,7 +239,6 @@ impl NonCloneSimpleTwinMoi {
 
 // ================ types with both encodable and opaque fields ===================
 
-#[frb(opaque)]
 pub struct StructWithGoodAndOpaqueFieldTwinMoi {
     pub good: String,
     pub opaque: NonCloneSimpleTwinMoi,
@@ -254,28 +253,29 @@ pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_moi(
 }
 
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
-pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_moi(
-    arg: &StructWithGoodAndOpaqueFieldTwinMoi,
-) {
-    assert_eq!(&arg.good, "hello");
-    assert_eq!(arg.opaque.inner, 42);
-}
-
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
-pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_moi(
-    arg: &mut StructWithGoodAndOpaqueFieldTwinMoi,
-) {
-    assert_eq!(&arg.good, "hello");
-    assert_eq!(arg.opaque.inner, 42);
-}
-
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
 pub fn rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_moi(
 ) -> StructWithGoodAndOpaqueFieldTwinMoi {
     StructWithGoodAndOpaqueFieldTwinMoi {
         good: "hello".to_string(),
         opaque: NonCloneSimpleTwinMoi { inner: 42 },
     }
+}
+
+// ================ vec of opaque ===================
+
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+pub fn rust_auto_opaque_arg_vec_own_twin_moi(arg: Vec<NonCloneSimpleTwinMoi>, expect: Vec<i32>) {
+    for i in 0..expect.len() {
+        assert_eq!(arg[i].inner, expect[i]);
+    }
+}
+
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+pub fn rust_auto_opaque_return_vec_own_twin_moi() -> Vec<NonCloneSimpleTwinMoi> {
+    vec![
+        NonCloneSimpleTwinMoi { inner: 10 },
+        NonCloneSimpleTwinMoi { inner: 20 },
+    ]
 }
 
 // ================ use explicit type ===================
@@ -310,8 +310,11 @@ pub fn rust_auto_opaque_explicit_return_twin_moi(
 // ================ misc ===================
 
 // #1577 - this should generate valid Dart code without name collisions
+#[frb(opaque)]
 pub struct OpaqueOneTwinMoi(PathBuf);
+#[frb(opaque)]
 pub struct OpaqueTwoTwinMoi(PathBuf);
+
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
 pub fn rust_auto_opaque_return_opaque_one_and_two_twin_moi() -> (OpaqueOneTwinMoi, OpaqueTwoTwinMoi)
 {

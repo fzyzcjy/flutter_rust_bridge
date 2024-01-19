@@ -19,16 +19,15 @@ use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use std::collections::HashMap;
-use syn::{Attribute, Field, Ident, ItemEnum, TypePath, Variant};
+use syn::{Attribute, Field, Ident, ItemEnum, Type, TypePath, Variant};
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_enum(
         &mut self,
         type_path: &TypePath,
-        splayed_segments: &[SplayedSegment],
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
-        EnumOrStructParserEnum(self).parse(type_path, splayed_segments, last_segment)
+        EnumOrStructParserEnum(self).parse(type_path, last_segment)
     }
 
     fn parse_enum(
@@ -156,6 +155,14 @@ impl EnumOrStructParser<IrEnumIdent, IrEnum, Enum, ItemEnum>
 
     fn parser_info(&mut self) -> &mut EnumOrStructParserInfo<IrEnumIdent, IrEnum> {
         &mut self.0.inner.enum_parser_info
+    }
+
+    fn parse_type_rust_auto_opaque(
+        &mut self,
+        namespace: Option<Namespace>,
+        ty: &Type,
+    ) -> anyhow::Result<IrType> {
+        self.0.parse_type_rust_auto_opaque(namespace, ty)
     }
 }
 

@@ -5,13 +5,12 @@ use crate::codegen::ir::ty::delegate::{
 };
 use crate::codegen::ir::ty::dynamic::IrTypeDynamic;
 use crate::codegen::ir::ty::general_list::ir_list;
-use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
-use crate::codegen::ir::ty::IrType::{Boxed, DartOpaque, Delegate, Dynamic, Unencodable};
-use crate::codegen::parser::type_parser::unencodable::ArgsRefs::Generic;
+use crate::codegen::ir::ty::IrType::{Boxed, DartOpaque, Delegate, Dynamic};
 use crate::codegen::parser::type_parser::unencodable::{splay_segments, SplayedSegment};
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use anyhow::bail;
+use syn::Type;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_concrete(
@@ -19,18 +18,18 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
         Ok(Some(match last_segment {
-            ("Duration", None) => Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Duration)),
-            ("NaiveDateTime", None) => Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Naive)),
-            ("DateTime", Some(Generic(args))) => parse_datetime(args)?,
+            ("Duration", []) => Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Duration)),
+            ("NaiveDateTime", []) => Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Naive)),
+            ("DateTime", args) => self.parse_datetime(args)?,
 
-            ("Uuid", None) => Delegate(IrTypeDelegate::Uuid),
-            ("String", None) => Delegate(IrTypeDelegate::String),
-            ("Backtrace", None) => Delegate(IrTypeDelegate::Backtrace),
+            ("Uuid", []) => Delegate(IrTypeDelegate::Uuid),
+            ("String", []) => Delegate(IrTypeDelegate::String),
+            ("Backtrace", []) => Delegate(IrTypeDelegate::Backtrace),
 
-            ("DartAbi", None) => Dynamic(IrTypeDynamic),
-            ("DartDynamic", None) => Dynamic(IrTypeDynamic),
+            ("DartAbi", []) => Dynamic(IrTypeDynamic),
+            ("DartDynamic", []) => Dynamic(IrTypeDynamic),
 
-            ("DartOpaque", None) => DartOpaque(IrTypeDartOpaque {}),
+            ("DartOpaque", []) => DartOpaque(IrTypeDartOpaque {}),
 
             ("ZeroCopyBuffer", _) => bail!("`ZeroCopyBuffer<T>` is no longer needed, since zero-copy is automatically utilized, just directly use `T` instead."),
             // (
@@ -40,43 +39,54 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             //     primitive.clone(),
             // )),
 
-            ("Box", Some(Generic([inner]))) => Boxed(IrTypeBoxed {
-                exist_in_real_api: true,
-                inner: Box::new(inner.clone()),
-            }),
+            ("Box", [inner]) => {
+                let inner = self.parse_type(inner)?;
+                match inner {
+                    IrType::RustAutoOpaque(ty_raw) => self.transform_rust_auto_opaque(
+                        &ty_raw,
+                        |raw| format!("Box<{raw}>"),
+                    )?,
+                    _ => Boxed(IrTypeBoxed {
+                        exist_in_real_api: true,
+                        inner: Box::new(inner),
+                    })
+                }
+            },
 
-            ("Vec", Some(Generic([element]))) => ir_list(element.to_owned(), true),
+            ("Vec", [element]) => ir_list(self.parse_type(element)?, true),
 
-            ("HashMap", Some(Generic([key, value]))) => Delegate(IrTypeDelegate::Map(IrTypeDelegateMap {
-                key: Box::new(key.clone()),
-                value: Box::new(value.clone()),
-                element_delegate: self.create_ir_record(vec![
-                    key.clone(),
-                    value.clone(),
-                ]),
-            })),
-            ("HashSet", Some(Generic([inner]))) => Delegate(IrTypeDelegate::Set(IrTypeDelegateSet {
-                inner: Box::new(inner.clone()),
+            ("HashMap", [key, value]) => {
+                let key  = self.parse_type(key)?;
+                let value  = self.parse_type(value)?;
+                Delegate(IrTypeDelegate::Map(IrTypeDelegateMap {
+                    key: Box::new(key.clone()),
+                    value: Box::new(value.clone()),
+                    element_delegate: self.create_ir_record(vec![key, value]),
+                }))
+            },
+            ("HashSet", [inner]) => Delegate(IrTypeDelegate::Set(IrTypeDelegateSet {
+                inner: Box::new(self.parse_type(inner)?),
             })),
 
             _ => return Ok(None),
         }))
     }
-}
 
-// the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
-// frb-coverage:ignore-start
-fn parse_datetime(args: &[IrType]) -> anyhow::Result<IrType> {
-    // frb-coverage:ignore-end
-    if let [Unencodable(IrTypeUnencodable { segments, .. })] = args {
-        return Ok(match splay_segments(segments).last().unwrap() {
-            ("Utc", None) => Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Utc)),
-            ("Local", None) => Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Local)),
-            // This will stop the whole generator and tell the users, so we do not care about testing it
-            // frb-coverage:ignore-start
-            _ => bail!("Invalid DateTime generic: {args:?}"),
-        });
+    // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
+    // frb-coverage:ignore-start
+    fn parse_datetime(&mut self, args: &[Type]) -> anyhow::Result<IrType> {
+        // frb-coverage:ignore-end
+        let inner = self.parse_type(&args[0])?;
+        if let IrType::RustAutoOpaque(inner) = &inner {
+            return Ok(match splay_segments(&inner.raw.segments).last().unwrap() {
+                ("Utc", []) => Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Utc)),
+                ("Local", []) => Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Local)),
+                // This will stop the whole generator and tell the users, so we do not care about testing it
+                // frb-coverage:ignore-start
+                _ => bail!("Invalid DateTime generic: {args:?}"),
+            });
+        }
+        bail!("Invalid DateTime generic: {args:?}")
+        // frb-coverage:ignore-end
     }
-    bail!("Invalid DateTime generic: {args:?}")
-    // frb-coverage:ignore-end
 }
