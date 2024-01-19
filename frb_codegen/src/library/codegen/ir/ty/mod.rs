@@ -6,14 +6,12 @@ pub(crate) mod dynamic;
 pub(crate) mod enumeration;
 pub(crate) mod general_list;
 pub(crate) mod optional;
-pub(crate) mod ownership;
 pub(crate) mod primitive;
 pub(crate) mod primitive_list;
 pub(crate) mod record;
 pub(crate) mod rust_auto_opaque;
 pub(crate) mod rust_opaque;
 pub(crate) mod structure;
-pub(crate) mod unencodable;
 
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::{IrEnumPool, IrPack, IrStructPool};
@@ -37,14 +35,12 @@ pub enum IrType {
     EnumRef(enumeration::IrTypeEnumRef),
     GeneralList(general_list::IrTypeGeneralList),
     Optional(optional::IrTypeOptional),
-    Ownership(ownership::IrTypeOwnership),
     Primitive(primitive::IrTypePrimitive),
     PrimitiveList(primitive_list::IrTypePrimitiveList),
     Record(record::IrTypeRecord),
     RustAutoOpaque(rust_auto_opaque::IrTypeRustAutoOpaque),
     RustOpaque(rust_opaque::IrTypeRustOpaque),
     StructRef(structure::IrTypeStructRef),
-    Unencodable(unencodable::IrTypeUnencodable),
 }
 }
 
@@ -134,14 +130,12 @@ impl Serialize for IrType {
             IrType::EnumRef(inner) => ser::<S, _>(&mut state, "EnumRef", inner),
             IrType::GeneralList(inner) => ser::<S, _>(&mut state, "GeneralList", inner),
             IrType::Optional(inner) => ser::<S, _>(&mut state, "Optional", inner),
-            IrType::Ownership(inner) => ser::<S, _>(&mut state, "Ownership", inner),
             IrType::Primitive(inner) => ser::<S, _>(&mut state, "Primitive", inner),
             IrType::PrimitiveList(inner) => ser::<S, _>(&mut state, "PrimitiveList", inner),
             IrType::Record(inner) => ser::<S, _>(&mut state, "Record", inner),
             IrType::RustAutoOpaque(inner) => ser::<S, _>(&mut state, "RustAutoOpaque", inner),
             IrType::RustOpaque(inner) => ser::<S, _>(&mut state, "RustOpaque", inner),
             IrType::StructRef(inner) => ser::<S, _>(&mut state, "StructRef", inner),
-            IrType::Unencodable(inner) => ser::<S, _>(&mut state, "Unencodable", inner),
         }?;
 
         state.end()

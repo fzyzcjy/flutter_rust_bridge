@@ -236,16 +236,48 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(await obj.instanceMethodGetterTwinSync, 42);
   });
 
-  test('types with both encodable and opaque fields', () async {
+  test('structs with both encodable and opaque fields', () async {
     final obj =
         await rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSync();
+    expect(obj.good, 'hello');
     await futurizeVoidTwinSync(
-        rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinSync(arg: obj));
-    await futurizeVoidTwinSync(
-        rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinSync(
-            arg: obj));
+        rustAutoOpaqueArgBorrowTwinSync(arg: obj.opaque, expect: 42));
     await futurizeVoidTwinSync(
         rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSync(arg: obj));
+  });
+
+  test('enums with both encodable and opaque', () async {
+    final good =
+        (await rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinSync());
+    final opaque =
+        (await rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinSync());
+
+    await futurizeVoidTwinSync(
+        rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinSync(arg: good));
+    await futurizeVoidTwinSync(
+        rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinSync(arg: opaque));
+
+    await futurizeVoidTwinSync(
+        rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinSync(
+            arg: EnumWithGoodAndOpaqueTwinSync.good('hello')));
+  });
+
+  test('enum opaque type', () async {
+    final obj = await rustAutoOpaqueEnumReturnOwnTwinSync();
+    await futurizeVoidTwinSync(rustAutoOpaqueEnumArgBorrowTwinSync(arg: obj));
+  });
+
+  test('vec of opaque', () async {
+    final vec = await rustAutoOpaqueReturnVecOwnTwinSync();
+
+    expect(vec.length, 2);
+    await futurizeVoidTwinSync(
+        rustAutoOpaqueArgBorrowTwinSync(arg: vec[0], expect: 10));
+    await futurizeVoidTwinSync(
+        rustAutoOpaqueArgBorrowTwinSync(arg: vec[1], expect: 20));
+
+    await futurizeVoidTwinSync(
+        rustAutoOpaqueArgVecOwnTwinSync(arg: vec, expect: [10, 20]));
   });
 
   group('Explicit rust-auto-opaque types', () {

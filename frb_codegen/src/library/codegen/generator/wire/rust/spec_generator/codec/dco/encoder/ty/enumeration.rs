@@ -1,10 +1,10 @@
 use crate::codegen::generator::codec::sse::lang::rust::RustLang;
 use crate::codegen::generator::codec::sse::lang::Lang;
 use crate::codegen::generator::codec::sse::ty::enumeration::generate_enum_encode_rust_general;
-use crate::codegen::generator::codec::structs::CodecMode;
-use crate::codegen::generator::misc::comments::generate_codec_comments;
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::base::*;
-use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::misc::generate_impl_into_into_dart;
+use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::misc::{
+    generate_impl_into_dart, generate_impl_into_into_dart,
+};
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::ty::WireRustCodecDcoGeneratorEncoderTrait;
 use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::ir::pack::IrPack;
@@ -41,21 +41,10 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for EnumRefWireRustCodecDcoGenera
             },
         );
 
-        let into_into_dart = generate_impl_into_into_dart(&src.name, &src.wrapper_name);
-
-        let codec_comments = generate_codec_comments(CodecMode::Dco);
-
-        Some(format!(
-            "{codec_comments}
-            impl flutter_rust_bridge::IntoDart for {name} {{
-                fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {{
-                    {body}
-                }}
-            }}
-            impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for {name} {{}}
-            {into_into_dart}
-            ",
-        ))
+        Some(
+            generate_impl_into_dart(&name, &body)
+                + &generate_impl_into_into_dart(&src.name.rust_style(), &src.wrapper_name),
+        )
     }
 }
 

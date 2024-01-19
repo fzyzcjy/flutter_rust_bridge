@@ -236,16 +236,47 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(await obj.instanceMethodGetterTwinSse, 42);
   });
 
-  test('types with both encodable and opaque fields', () async {
+  test('structs with both encodable and opaque fields', () async {
     final obj =
         await rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSse();
+    expect(obj.good, 'hello');
     await futurizeVoidTwinSse(
-        rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinSse(arg: obj));
-    await futurizeVoidTwinSse(
-        rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinSse(
-            arg: obj));
+        rustAutoOpaqueArgBorrowTwinSse(arg: obj.opaque, expect: 42));
     await futurizeVoidTwinSse(
         rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSse(arg: obj));
+  });
+
+  test('enums with both encodable and opaque', () async {
+    final good =
+        (await rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinSse());
+    final opaque =
+        (await rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinSse());
+
+    await futurizeVoidTwinSse(
+        rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinSse(arg: good));
+    await futurizeVoidTwinSse(
+        rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinSse(arg: opaque));
+
+    await futurizeVoidTwinSse(rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinSse(
+        arg: EnumWithGoodAndOpaqueTwinSse.good('hello')));
+  });
+
+  test('enum opaque type', () async {
+    final obj = await rustAutoOpaqueEnumReturnOwnTwinSse();
+    await futurizeVoidTwinSse(rustAutoOpaqueEnumArgBorrowTwinSse(arg: obj));
+  });
+
+  test('vec of opaque', () async {
+    final vec = await rustAutoOpaqueReturnVecOwnTwinSse();
+
+    expect(vec.length, 2);
+    await futurizeVoidTwinSse(
+        rustAutoOpaqueArgBorrowTwinSse(arg: vec[0], expect: 10));
+    await futurizeVoidTwinSse(
+        rustAutoOpaqueArgBorrowTwinSse(arg: vec[1], expect: 20));
+
+    await futurizeVoidTwinSse(
+        rustAutoOpaqueArgVecOwnTwinSse(arg: vec, expect: [10, 20]));
   });
 
   group('Explicit rust-auto-opaque types', () {

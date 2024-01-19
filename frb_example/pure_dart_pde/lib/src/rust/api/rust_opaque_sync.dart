@@ -22,7 +22,7 @@ NonCloneDataTwinNormal syncCreateNonCloneTwinNormal({dynamic hint}) =>
 FrbOpaqueSyncReturnTwinNormal frbSyncGeneratorTestTwinNormal({dynamic hint}) =>
     RustLib.instance.api.frbSyncGeneratorTestTwinNormal(hint: hint);
 
-// Rust type: RustOpaqueMoi<crate::api::rust_opaque_sync::FrbOpaqueSyncReturnTwinNormal>
+// Rust type: RustOpaqueMoi<FrbOpaqueSyncReturnTwinNormal>
 @sealed
 class FrbOpaqueSyncReturnTwinNormal extends RustOpaque {
   FrbOpaqueSyncReturnTwinNormal.dcoDecode(List<dynamic> wire)
@@ -41,7 +41,7 @@ class FrbOpaqueSyncReturnTwinNormal extends RustOpaque {
   );
 }
 
-// Rust type: RustOpaqueMoi<crate::api::rust_opaque_sync::HideDataAnotherTwinNormal>
+// Rust type: RustOpaqueMoi<HideDataAnotherTwinNormal>
 @sealed
 class HideDataAnotherTwinNormal extends RustOpaque {
   HideDataAnotherTwinNormal.dcoDecode(List<dynamic> wire)

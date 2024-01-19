@@ -259,18 +259,50 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(await obj.instanceMethodGetterTwinRustAsyncMoi, 42);
   });
 
-  test('types with both encodable and opaque fields', () async {
+  test('structs with both encodable and opaque fields', () async {
     final obj =
         await rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinRustAsyncMoi();
+    expect(obj.good, 'hello');
     await futurizeVoidTwinRustAsyncMoi(
-        rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinRustAsyncMoi(
-            arg: obj));
-    await futurizeVoidTwinRustAsyncMoi(
-        rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinRustAsyncMoi(
-            arg: obj));
+        rustAutoOpaqueArgBorrowTwinRustAsyncMoi(arg: obj.opaque, expect: 42));
     await futurizeVoidTwinRustAsyncMoi(
         rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinRustAsyncMoi(
             arg: obj));
+  });
+
+  test('enums with both encodable and opaque', () async {
+    final good =
+        (await rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinRustAsyncMoi());
+    final opaque =
+        (await rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinRustAsyncMoi());
+
+    await futurizeVoidTwinRustAsyncMoi(
+        rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinRustAsyncMoi(arg: good));
+    await futurizeVoidTwinRustAsyncMoi(
+        rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinRustAsyncMoi(arg: opaque));
+
+    await futurizeVoidTwinRustAsyncMoi(
+        rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinRustAsyncMoi(
+            arg: EnumWithGoodAndOpaqueTwinRustAsyncMoi.good('hello')));
+  });
+
+  test('enum opaque type', () async {
+    final obj = await rustAutoOpaqueEnumReturnOwnTwinRustAsyncMoi();
+    await futurizeVoidTwinRustAsyncMoi(
+        rustAutoOpaqueEnumArgBorrowTwinRustAsyncMoi(arg: obj));
+  });
+
+  test('vec of opaque', () async {
+    final vec = await rustAutoOpaqueReturnVecOwnTwinRustAsyncMoi();
+
+    expect(vec.length, 2);
+    await futurizeVoidTwinRustAsyncMoi(
+        rustAutoOpaqueArgBorrowTwinRustAsyncMoi(arg: vec[0], expect: 10));
+    await futurizeVoidTwinRustAsyncMoi(
+        rustAutoOpaqueArgBorrowTwinRustAsyncMoi(arg: vec[1], expect: 20));
+
+    await futurizeVoidTwinRustAsyncMoi(
+        rustAutoOpaqueArgVecOwnTwinRustAsyncMoi(arg: vec, expect: [10, 20]));
   });
 
   group('Explicit rust-auto-opaque types', () {

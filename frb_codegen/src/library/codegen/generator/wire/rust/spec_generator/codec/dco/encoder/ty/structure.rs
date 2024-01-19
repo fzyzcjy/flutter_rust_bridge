@@ -1,7 +1,7 @@
-use crate::codegen::generator::codec::structs::CodecMode;
-use crate::codegen::generator::misc::comments::generate_codec_comments;
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::base::*;
-use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::misc::generate_impl_into_into_dart;
+use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::misc::{
+    generate_impl_into_dart, generate_impl_into_into_dart,
+};
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::ty::enumeration::parse_wrapper_name_into_dart_name_and_self_path;
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::ty::WireRustCodecDcoGeneratorEncoderTrait;
 use crate::codegen::ir::pack::IrPack;
@@ -40,7 +40,7 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for StructRefWireRustCodecDcoGene
         let (name, _) =
             parse_wrapper_name_into_dart_name_and_self_path(&src.name, &src.wrapper_name);
 
-        let vec = if src.is_empty() {
+        let body = if src.is_empty() {
             "Vec::<u8>::new().into_dart()".to_string()
         } else {
             format!(
@@ -50,20 +50,9 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for StructRefWireRustCodecDcoGene
             )
         };
 
-        let into_into_dart = generate_impl_into_into_dart(&src.name, &src.wrapper_name);
-
-        let codec_comments = generate_codec_comments(CodecMode::Dco);
-
-        Some(format!(
-            "{codec_comments}
-            impl flutter_rust_bridge::IntoDart for {name} {{
-                fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {{
-                    {vec}
-                }}
-            }}
-            impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for {name} {{}}
-            {into_into_dart}
-            "
-        ))
+        Some(
+            generate_impl_into_dart(&name, &body)
+                + &generate_impl_into_into_dart(&src.name.rust_style(), &src.wrapper_name),
+        )
     }
 }

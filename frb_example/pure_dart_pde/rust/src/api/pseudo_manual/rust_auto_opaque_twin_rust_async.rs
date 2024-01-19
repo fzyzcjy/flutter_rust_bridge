@@ -19,6 +19,13 @@ pub struct NonCloneSimpleTwinRustAsync {
     inner: i32,
 }
 
+#[frb(opaque)]
+// Do *NOT* make it Clone or serializable
+pub enum NonCloneSimpleEnumTwinRustAsync {
+    Apple,
+    Orange,
+}
+
 // ==================================== simple =======================================
 
 pub async fn rust_auto_opaque_arg_own_twin_rust_async(
@@ -235,9 +242,8 @@ impl NonCloneSimpleTwinRustAsync {
     }
 }
 
-// ================ types with both encodable and opaque fields ===================
+// ================ struct with both encodable and opaque fields ===================
 
-#[frb(opaque)]
 pub struct StructWithGoodAndOpaqueFieldTwinRustAsync {
     pub good: String,
     pub opaque: NonCloneSimpleTwinRustAsync,
@@ -250,26 +256,68 @@ pub async fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rus
     assert_eq!(arg.opaque.inner, 42);
 }
 
-pub async fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_rust_async(
-    arg: &StructWithGoodAndOpaqueFieldTwinRustAsync,
-) {
-    assert_eq!(&arg.good, "hello");
-    assert_eq!(arg.opaque.inner, 42);
-}
-
-pub async fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_rust_async(
-    arg: &mut StructWithGoodAndOpaqueFieldTwinRustAsync,
-) {
-    assert_eq!(&arg.good, "hello");
-    assert_eq!(arg.opaque.inner, 42);
-}
-
 pub async fn rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_rust_async(
 ) -> StructWithGoodAndOpaqueFieldTwinRustAsync {
     StructWithGoodAndOpaqueFieldTwinRustAsync {
         good: "hello".to_string(),
         opaque: NonCloneSimpleTwinRustAsync { inner: 42 },
     }
+}
+
+// ================ enum with both encodable and opaque fields ===================
+
+pub enum EnumWithGoodAndOpaqueTwinRustAsync {
+    Good(String),
+    Opaque(NonCloneSimpleTwinRustAsync),
+}
+
+pub async fn rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async(
+    arg: EnumWithGoodAndOpaqueTwinRustAsync,
+) {
+    match arg {
+        EnumWithGoodAndOpaqueTwinRustAsync::Good(inner) => assert_eq!(&inner, "hello"),
+        EnumWithGoodAndOpaqueTwinRustAsync::Opaque(inner) => assert_eq!(inner.inner, 42),
+    }
+}
+
+pub async fn rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async(
+) -> EnumWithGoodAndOpaqueTwinRustAsync {
+    EnumWithGoodAndOpaqueTwinRustAsync::Good("hello".to_owned())
+}
+
+pub async fn rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async(
+) -> EnumWithGoodAndOpaqueTwinRustAsync {
+    EnumWithGoodAndOpaqueTwinRustAsync::Opaque(NonCloneSimpleTwinRustAsync { inner: 42 })
+}
+
+// ================ enum opaque type ===================
+
+pub async fn rust_auto_opaque_enum_arg_borrow_twin_rust_async(
+    arg: &NonCloneSimpleEnumTwinRustAsync,
+) {
+    assert!(matches!(arg, NonCloneSimpleEnumTwinRustAsync::Orange));
+}
+
+pub async fn rust_auto_opaque_enum_return_own_twin_rust_async() -> NonCloneSimpleEnumTwinRustAsync {
+    NonCloneSimpleEnumTwinRustAsync::Orange
+}
+
+// ================ vec of opaque ===================
+
+pub async fn rust_auto_opaque_arg_vec_own_twin_rust_async(
+    arg: Vec<NonCloneSimpleTwinRustAsync>,
+    expect: Vec<i32>,
+) {
+    for i in 0..expect.len() {
+        assert_eq!(arg[i].inner, expect[i]);
+    }
+}
+
+pub async fn rust_auto_opaque_return_vec_own_twin_rust_async() -> Vec<NonCloneSimpleTwinRustAsync> {
+    vec![
+        NonCloneSimpleTwinRustAsync { inner: 10 },
+        NonCloneSimpleTwinRustAsync { inner: 20 },
+    ]
 }
 
 // ================ use explicit type ===================
@@ -301,8 +349,11 @@ pub async fn rust_auto_opaque_explicit_return_twin_rust_async(
 // ================ misc ===================
 
 // #1577 - this should generate valid Dart code without name collisions
+#[frb(opaque)]
 pub struct OpaqueOneTwinRustAsync(PathBuf);
+#[frb(opaque)]
 pub struct OpaqueTwoTwinRustAsync(PathBuf);
+
 pub async fn rust_auto_opaque_return_opaque_one_and_two_twin_rust_async(
 ) -> (OpaqueOneTwinRustAsync, OpaqueTwoTwinRustAsync) {
     unimplemented!()
