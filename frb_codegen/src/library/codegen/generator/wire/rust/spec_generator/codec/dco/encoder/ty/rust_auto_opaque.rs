@@ -18,7 +18,7 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for RustAutoOpaqueWireRustCodecDc
                 generate_encode_rust_auto_opaque(&self.ir, "self.0")
             );
             Some(
-                format!("struct {local_struct_type}({rust_api_type});\n")
+                format!("pub struct {local_struct_type}({rust_api_type});\n")
                     + &generate_impl_into_dart(&local_struct_type, &body)
                     + &generate_impl_into_into_dart(&rust_api_type, &Some(local_struct_type)),
             )
