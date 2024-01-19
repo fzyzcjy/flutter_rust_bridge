@@ -64,9 +64,23 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
+  Future<Uint8List> undurchsichtigerRead(
+      {required Undurchsichtiger that, dynamic hint});
+
+  Stream<Undurchsichtiger> anyhowTest({dynamic hint});
+
   Future<void> initApp({dynamic hint});
 
   Future<int> minimalAdder({required int a, required int b, dynamic hint});
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_Undurchsichtiger;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_Undurchsichtiger;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_UndurchsichtigerPtr;
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -76,6 +90,58 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     required super.generalizedFrbRustBinding,
     required super.portManager,
   });
+
+  @override
+  Future<Uint8List> undurchsichtigerRead(
+      {required Undurchsichtiger that, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockUndurchsichtiger(
+            that, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 4, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_u_8_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kUndurchsichtigerReadConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kUndurchsichtigerReadConstMeta => const TaskConstMeta(
+        debugName: "Undurchsichtiger_read",
+        argNames: ["that"],
+      );
+
+  @override
+  Stream<Undurchsichtiger> anyhowTest({dynamic hint}) {
+    return handler.executeStream(StreamTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 3, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockUndurchsichtiger,
+        decodeErrorData: null,
+      ),
+      constMeta: kAnyhowTestConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kAnyhowTestConstMeta => const TaskConstMeta(
+        debugName: "anyhow_test",
+        argNames: [],
+      );
 
   @override
   Future<void> initApp({dynamic hint}) {
@@ -127,8 +193,52 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         argNames: ["a", "b"],
       );
 
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_Undurchsichtiger => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockUndurchsichtiger;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_Undurchsichtiger => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockUndurchsichtiger;
+
+  @protected
+  Undurchsichtiger
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockUndurchsichtiger(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return Undurchsichtiger.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  Undurchsichtiger
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockUndurchsichtiger(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return Undurchsichtiger.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  Undurchsichtiger
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockUndurchsichtiger(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return Undurchsichtiger.dcoDecode(raw as List<dynamic>);
+  }
+
   @protected
   int dco_decode_i_32(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return raw as int;
+  }
+
+  @protected
+  Uint8List dco_decode_list_prim_u_8_strict(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return raw as Uint8List;
+  }
+
+  @protected
+  int dco_decode_u_8(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw as int;
   }
@@ -140,14 +250,66 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int dco_decode_usize(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dcoDecodeI64OrU64(raw);
+  }
+
+  @protected
+  Undurchsichtiger
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockUndurchsichtiger(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return Undurchsichtiger.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  Undurchsichtiger
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockUndurchsichtiger(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return Undurchsichtiger.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  Undurchsichtiger
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockUndurchsichtiger(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return Undurchsichtiger.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   int sse_decode_i_32(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return deserializer.buffer.getInt32();
   }
 
   @protected
+  Uint8List sse_decode_list_prim_u_8_strict(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var len_ = sse_decode_i_32(deserializer);
+    return deserializer.buffer.getUint8List(len_);
+  }
+
+  @protected
+  int sse_decode_u_8(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return deserializer.buffer.getUint8();
+  }
+
+  @protected
   void sse_decode_unit(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
+  }
+
+  @protected
+  int sse_decode_usize(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return deserializer.buffer.getUint64();
   }
 
   @protected
@@ -157,14 +319,58 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockUndurchsichtiger(
+          Undurchsichtiger self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockUndurchsichtiger(
+          Undurchsichtiger self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockUndurchsichtiger(
+          Undurchsichtiger self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
   void sse_encode_i_32(int self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     serializer.buffer.putInt32(self);
   }
 
   @protected
+  void sse_encode_list_prim_u_8_strict(
+      Uint8List self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_i_32(self.length, serializer);
+    serializer.buffer.putUint8List(self);
+  }
+
+  @protected
+  void sse_encode_u_8(int self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    serializer.buffer.putUint8(self);
+  }
+
+  @protected
   void sse_encode_unit(void self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
+  }
+
+  @protected
+  void sse_encode_usize(int self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    serializer.buffer.putUint64(self);
   }
 
   @protected

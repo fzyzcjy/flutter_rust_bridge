@@ -17,26 +17,103 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     required super.portManager,
   });
 
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_UndurchsichtigerPtr => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockUndurchsichtiger;
+
+  @protected
+  Undurchsichtiger
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockUndurchsichtiger(
+          dynamic raw);
+
+  @protected
+  Undurchsichtiger
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockUndurchsichtiger(
+          dynamic raw);
+
+  @protected
+  Undurchsichtiger
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockUndurchsichtiger(
+          dynamic raw);
+
   @protected
   int dco_decode_i_32(dynamic raw);
+
+  @protected
+  Uint8List dco_decode_list_prim_u_8_strict(dynamic raw);
+
+  @protected
+  int dco_decode_u_8(dynamic raw);
 
   @protected
   void dco_decode_unit(dynamic raw);
 
   @protected
+  int dco_decode_usize(dynamic raw);
+
+  @protected
+  Undurchsichtiger
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockUndurchsichtiger(
+          SseDeserializer deserializer);
+
+  @protected
+  Undurchsichtiger
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockUndurchsichtiger(
+          SseDeserializer deserializer);
+
+  @protected
+  Undurchsichtiger
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockUndurchsichtiger(
+          SseDeserializer deserializer);
+
+  @protected
   int sse_decode_i_32(SseDeserializer deserializer);
+
+  @protected
+  Uint8List sse_decode_list_prim_u_8_strict(SseDeserializer deserializer);
+
+  @protected
+  int sse_decode_u_8(SseDeserializer deserializer);
 
   @protected
   void sse_decode_unit(SseDeserializer deserializer);
 
   @protected
+  int sse_decode_usize(SseDeserializer deserializer);
+
+  @protected
   bool sse_decode_bool(SseDeserializer deserializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockUndurchsichtiger(
+          Undurchsichtiger self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockUndurchsichtiger(
+          Undurchsichtiger self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockUndurchsichtiger(
+          Undurchsichtiger self, SseSerializer serializer);
 
   @protected
   void sse_encode_i_32(int self, SseSerializer serializer);
 
   @protected
+  void sse_encode_list_prim_u_8_strict(
+      Uint8List self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_u_8(int self, SseSerializer serializer);
+
+  @protected
   void sse_encode_unit(void self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_usize(int self, SseSerializer serializer);
 
   @protected
   void sse_encode_bool(bool self, SseSerializer serializer);
@@ -46,6 +123,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
 class RustLibWire implements BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
+
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockUndurchsichtiger(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockUndurchsichtiger(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockUndurchsichtiger(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockUndurchsichtiger(
+              ptr);
 }
 
 @JS('wasm_bindgen')
@@ -59,4 +148,12 @@ class RustLibWasmModule implements WasmModule {
 
   @override
   external RustLibWasmModule bind(dynamic thisArg, String moduleName);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockUndurchsichtiger(
+          dynamic ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockUndurchsichtiger(
+          dynamic ptr);
 }
