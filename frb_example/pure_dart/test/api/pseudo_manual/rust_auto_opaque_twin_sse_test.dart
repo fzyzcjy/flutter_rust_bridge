@@ -258,7 +258,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
         rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinSse(arg: opaque));
 
     await futurizeVoidTwinSse(rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinSse(
-        arg: EnumWithGoodAndOpaqueTwinSse.good('good')));
+        arg: EnumWithGoodAndOpaqueTwinSse.good('hello')));
   });
 
   test('vec of opaque', () async {

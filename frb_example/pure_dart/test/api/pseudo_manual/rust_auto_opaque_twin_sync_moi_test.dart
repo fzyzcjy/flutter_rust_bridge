@@ -266,7 +266,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
     await futurizeVoidTwinSyncMoi(
         rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinSyncMoi(
-            arg: EnumWithGoodAndOpaqueTwinSyncMoi.good('good')));
+            arg: EnumWithGoodAndOpaqueTwinSyncMoi.good('hello')));
   });
 
   test('vec of opaque', () async {

@@ -259,7 +259,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
     await futurizeVoidTwinNormal(
         rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinNormal(
-            arg: EnumWithGoodAndOpaqueTwinNormal.good('good')));
+            arg: EnumWithGoodAndOpaqueTwinNormal.good('hello')));
   });
 
   test('vec of opaque', () async {
