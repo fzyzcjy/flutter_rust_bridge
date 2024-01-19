@@ -45,34 +45,14 @@ fn wire_anyhow_test_impl(
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "anyhow_test",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end();
-            move |context| {
-                transform_result_sse((move || {
-                    Result::<_, ()>::Ok(crate::api::minimal::anyhow_test(StreamSink::new(
-                        context
-                            .rust2dart_context()
-                            .stream_sink::<_, Undurchsichtiger>(),
-                    )))
-                })())
-            }
-        },
-    )
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "anyhow_test", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            deserializer.end(); move |context|  {
+                    transform_result_sse((move ||  {
+                         Result::<_,()>::Ok(crate::api::minimal::anyhow_test(StreamSink::new(context.rust2dart_context().stream_sink::<_,Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockUndurchsichtiger>())))
+                    })())
+                } })
 }
 fn wire_init_app_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
