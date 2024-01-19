@@ -16,7 +16,7 @@ where
 {
     fn parse(
         &mut self,
-        type_path: &TypePath,
+        _type_path: &TypePath,
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
         let (name, _) = last_segment;
