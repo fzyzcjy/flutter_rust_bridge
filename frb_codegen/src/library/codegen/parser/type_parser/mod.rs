@@ -21,7 +21,7 @@ use crate::codegen::ir::ty::enumeration::{IrEnum, IrEnumIdent};
 use crate::codegen::ir::ty::rust_auto_opaque::IrTypeRustAutoOpaque;
 use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::ty::structure::{IrStruct, IrStructIdent};
-use crate::codegen::ir::ty::{IrContext, IrType};
+use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::source_graph::modules::{Enum, Struct};
 use crate::codegen::parser::type_parser::array::ArrayParserInfo;
@@ -102,12 +102,13 @@ pub(crate) struct TypeParserParsingContext {
     pub(crate) default_rust_opaque_codec: RustOpaqueCodecMode,
 }
 
-impl IrContext for TypeParser<'_> {
-    fn struct_pool(&self) -> &IrStructPool {
-        &self.struct_parser_info.object_pool
-    }
-
-    fn enum_pool(&self) -> &IrEnumPool {
-        &self.enum_parser_info.object_pool
-    }
-}
+// TODO rm
+// impl IrContext for TypeParser<'_> {
+//     fn struct_pool(&self) -> &IrStructPool {
+//         &self.struct_parser_info.object_pool
+//     }
+//
+//     fn enum_pool(&self) -> &IrEnumPool {
+//         &self.enum_parser_info.object_pool
+//     }
+// }
