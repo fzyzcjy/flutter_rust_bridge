@@ -15,11 +15,11 @@ pub fn anyhow_test(a: StreamSink<Undurchsichtiger>) {
 }
 
 #[frb(opaque)]
-pub struct Undurchsichtiger {
-    a: std::fs::File,
-}
-impl Undurchsichtiger {
-    pub fn read(&self) -> Vec<u8> {
-        todo!()
-    }
-}
+pub struct Undurchsichtiger;
+
+// TODO temp rm to make it minimal
+// impl Undurchsichtiger {
+//     pub fn read(&self) -> Vec<u8> {
+//         todo!()
+//     }
+// }

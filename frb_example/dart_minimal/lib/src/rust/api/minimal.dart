@@ -29,9 +29,4 @@ class Undurchsichtiger extends RustOpaque {
     rustArcDecrementStrongCountPtr: RustLib
         .instance.api.rust_arc_decrement_strong_count_UndurchsichtigerPtr,
   );
-
-  Future<Uint8List> read({dynamic hint}) =>
-      RustLib.instance.api.undurchsichtigerRead(
-        that: this,
-      );
 }

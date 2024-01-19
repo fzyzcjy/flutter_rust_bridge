@@ -39,41 +39,6 @@ flutter_rust_bridge::frb_generated_default_handler!();
 
 // Section: wire_funcs
 
-fn wire_Undurchsichtiger_read_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "Undurchsichtiger_read",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_that = <RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::rust_async::RwLock<Undurchsichtiger>,
-            >>::sse_decode(&mut deserializer);
-            deserializer.end();
-            move |context| {
-                transform_result_sse((move || {
-                    let api_that = api_that.rust_auto_opaque_decode_ref();
-                    Result::<_, ()>::Ok(crate::api::minimal::Undurchsichtiger::read(&api_that))
-                })())
-            }
-        },
-    )
-}
 fn wire_anyhow_test_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -209,25 +174,6 @@ impl SseDecode for i32 {
     }
 }
 
-impl SseDecode for Vec<u8> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
-        for idx_ in 0..len_ {
-            ans_.push(<u8>::sse_decode(deserializer));
-        }
-        return ans_;
-    }
-}
-
-impl SseDecode for u8 {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        deserializer.cursor.read_u8().unwrap()
-    }
-}
-
 impl SseDecode for () {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {}
@@ -255,7 +201,6 @@ fn pde_ffi_dispatcher_primary_impl(
     data_len: i32,
 ) {
     match func_id {
-        4 => wire_Undurchsichtiger_read_impl(port, ptr, rust_vec_len, data_len),
         3 => wire_anyhow_test_impl(port, ptr, rust_vec_len, data_len),
         1 => wire_init_app_impl(port, ptr, rust_vec_len, data_len),
         2 => wire_minimal_adder_impl(port, ptr, rust_vec_len, data_len),
@@ -320,23 +265,6 @@ impl SseEncode for i32 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         serializer.cursor.write_i32::<NativeEndian>(self).unwrap();
-    }
-}
-
-impl SseEncode for Vec<u8> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <i32>::sse_encode(self.len() as _, serializer);
-        for item in self {
-            <u8>::sse_encode(item, serializer);
-        }
-    }
-}
-
-impl SseEncode for u8 {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        serializer.cursor.write_u8(self).unwrap();
     }
 }
 
