@@ -31,7 +31,10 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for RustAutoOpaqueWireRustCodecDc
         if self.ir.ownership_mode == OwnershipMode::Owned {
             rust_auto_opaque_local_struct_type(&self.ir)
         } else {
-            self.ir.rust_api_type()
+            // We do not generate IntoDart for this, so this should not be called
+            // frb-coverage:ignore-start
+            unreachable!()
+            // frb-coverage:ignore-end
         }
     }
 }
