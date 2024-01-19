@@ -38,7 +38,9 @@ pub struct _ApplicationEnvTwinNormal {
 }
 
 #[frb(mirror(HashMapValue))]
-pub struct _HashMapValue {}
+pub struct _HashMapValue {
+    pub inner: String,
+}
 
 #[frb(mirror(StructWithHashMap))]
 pub struct _StructWithHashMap {
