@@ -211,7 +211,7 @@ impl NonCloneSimpleTwinNormal {
     }
 }
 
-// ================ types with both encodable and opaque fields ===================
+// ================ struct with both encodable and opaque fields ===================
 
 pub struct StructWithGoodAndOpaqueFieldTwinNormal {
     pub good: String,
@@ -231,6 +231,32 @@ pub fn rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal
         good: "hello".to_string(),
         opaque: NonCloneSimpleTwinNormal { inner: 42 },
     }
+}
+
+// ================ enum with both encodable and opaque fields ===================
+
+pub enum EnumWithGoodAndOpaqueTwinNormal {
+    Good(String),
+    Opaque(NonCloneSimpleTwinNormal),
+}
+
+pub fn rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_normal(
+    arg: EnumWithGoodAndOpaqueTwinNormal,
+) {
+    match arg {
+        EnumWithGoodAndOpaqueTwinNormal::Good(inner) => assert_eq!(&inner, "hello"),
+        EnumWithGoodAndOpaqueTwinNormal::Opaque(inner) => assert_eq!(inner.inner, 42),
+    }
+}
+
+pub fn rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_normal(
+) -> EnumWithGoodAndOpaqueTwinNormal {
+    EnumWithGoodAndOpaqueTwinNormal::Good("hello".to_owned())
+}
+
+pub fn rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_normal(
+) -> EnumWithGoodAndOpaqueTwinNormal {
+    EnumWithGoodAndOpaqueTwinNormal::Opaque(NonCloneSimpleTwinNormal { inner: 42 })
 }
 
 // ================ vec of opaque ===================

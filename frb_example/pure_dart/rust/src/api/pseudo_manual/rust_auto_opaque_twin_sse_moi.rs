@@ -274,7 +274,7 @@ impl NonCloneSimpleTwinSseMoi {
     }
 }
 
-// ================ types with both encodable and opaque fields ===================
+// ================ struct with both encodable and opaque fields ===================
 
 pub struct StructWithGoodAndOpaqueFieldTwinSseMoi {
     pub good: String,
@@ -298,6 +298,38 @@ pub fn rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sse_mo
         good: "hello".to_string(),
         opaque: NonCloneSimpleTwinSseMoi { inner: 42 },
     }
+}
+
+// ================ enum with both encodable and opaque fields ===================
+
+pub enum EnumWithGoodAndOpaqueTwinSseMoi {
+    Good(String),
+    Opaque(NonCloneSimpleTwinSseMoi),
+}
+
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(serialize)]
+pub fn rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sse_moi(
+    arg: EnumWithGoodAndOpaqueTwinSseMoi,
+) {
+    match arg {
+        EnumWithGoodAndOpaqueTwinSseMoi::Good(inner) => assert_eq!(&inner, "hello"),
+        EnumWithGoodAndOpaqueTwinSseMoi::Opaque(inner) => assert_eq!(inner.inner, 42),
+    }
+}
+
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(serialize)]
+pub fn rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sse_moi(
+) -> EnumWithGoodAndOpaqueTwinSseMoi {
+    EnumWithGoodAndOpaqueTwinSseMoi::Good("hello".to_owned())
+}
+
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(serialize)]
+pub fn rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sse_moi(
+) -> EnumWithGoodAndOpaqueTwinSseMoi {
+    EnumWithGoodAndOpaqueTwinSseMoi::Opaque(NonCloneSimpleTwinSseMoi { inner: 42 })
 }
 
 // ================ vec of opaque ===================

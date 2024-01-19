@@ -5,7 +5,9 @@
 
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'rust_auto_opaque_twin_moi.dart';
+part 'rust_auto_opaque_twin_sync_moi.freezed.dart';
 
 void rustAutoOpaqueArgOwnTwinSyncMoi(
         {required NonCloneSimpleTwinSyncMoi arg,
@@ -112,6 +114,25 @@ StructWithGoodAndOpaqueFieldTwinSyncMoi
             {dynamic hint}) =>
         RustLib.instance.api
             .rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSyncMoi(
+                hint: hint);
+
+void rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinSyncMoi(
+        {required EnumWithGoodAndOpaqueTwinSyncMoi arg, dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinSyncMoi(
+        arg: arg, hint: hint);
+
+EnumWithGoodAndOpaqueTwinSyncMoi
+    rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinSyncMoi(
+            {dynamic hint}) =>
+        RustLib.instance.api
+            .rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinSyncMoi(
+                hint: hint);
+
+EnumWithGoodAndOpaqueTwinSyncMoi
+    rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinSyncMoi(
+            {dynamic hint}) =>
+        RustLib.instance.api
+            .rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinSyncMoi(
                 hint: hint);
 
 void rustAutoOpaqueArgVecOwnTwinSyncMoi(
@@ -325,6 +346,17 @@ class OpaqueTwoTwinSyncMoi extends RustOpaque {
     rustArcDecrementStrongCountPtr: RustLib
         .instance.api.rust_arc_decrement_strong_count_OpaqueTwoTwinSyncMoiPtr,
   );
+}
+
+@freezed
+sealed class EnumWithGoodAndOpaqueTwinSyncMoi
+    with _$EnumWithGoodAndOpaqueTwinSyncMoi {
+  const factory EnumWithGoodAndOpaqueTwinSyncMoi.good(
+    String field0,
+  ) = EnumWithGoodAndOpaqueTwinSyncMoi_Good;
+  const factory EnumWithGoodAndOpaqueTwinSyncMoi.opaque(
+    NonCloneSimpleTwinSyncMoi field0,
+  ) = EnumWithGoodAndOpaqueTwinSyncMoi_Opaque;
 }
 
 class StructWithExplicitAutoOpaqueFieldTwinSyncMoi {

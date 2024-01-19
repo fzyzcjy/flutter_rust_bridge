@@ -3219,6 +3219,62 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  EnumWithGoodAndOpaqueTwinMoi
+      dco_decode_box_autoadd_enum_with_good_and_opaque_twin_moi(dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinNormal
+      dco_decode_box_autoadd_enum_with_good_and_opaque_twin_normal(dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinRustAsync
+      dco_decode_box_autoadd_enum_with_good_and_opaque_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinRustAsyncMoi
+      dco_decode_box_autoadd_enum_with_good_and_opaque_twin_rust_async_moi(
+          dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinRustAsyncSse
+      dco_decode_box_autoadd_enum_with_good_and_opaque_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinRustAsyncSseMoi
+      dco_decode_box_autoadd_enum_with_good_and_opaque_twin_rust_async_sse_moi(
+          dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSse
+      dco_decode_box_autoadd_enum_with_good_and_opaque_twin_sse(dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSseMoi
+      dco_decode_box_autoadd_enum_with_good_and_opaque_twin_sse_moi(
+          dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSync
+      dco_decode_box_autoadd_enum_with_good_and_opaque_twin_sync(dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSyncMoi
+      dco_decode_box_autoadd_enum_with_good_and_opaque_twin_sync_moi(
+          dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSyncSse
+      dco_decode_box_autoadd_enum_with_good_and_opaque_twin_sync_sse(
+          dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSyncSseMoi
+      dco_decode_box_autoadd_enum_with_good_and_opaque_twin_sync_sse_moi(
+          dynamic raw);
+
+  @protected
   EnumWithItemMixedTwinNormal
       dco_decode_box_autoadd_enum_with_item_mixed_twin_normal(dynamic raw);
 
@@ -4785,6 +4841,54 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   EnumWithDiscriminantTwinSyncSse
       dco_decode_enum_with_discriminant_twin_sync_sse(dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinMoi dco_decode_enum_with_good_and_opaque_twin_moi(
+      dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinNormal
+      dco_decode_enum_with_good_and_opaque_twin_normal(dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinRustAsync
+      dco_decode_enum_with_good_and_opaque_twin_rust_async(dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinRustAsyncMoi
+      dco_decode_enum_with_good_and_opaque_twin_rust_async_moi(dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinRustAsyncSse
+      dco_decode_enum_with_good_and_opaque_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinRustAsyncSseMoi
+      dco_decode_enum_with_good_and_opaque_twin_rust_async_sse_moi(dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSse dco_decode_enum_with_good_and_opaque_twin_sse(
+      dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSseMoi
+      dco_decode_enum_with_good_and_opaque_twin_sse_moi(dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSync dco_decode_enum_with_good_and_opaque_twin_sync(
+      dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSyncMoi
+      dco_decode_enum_with_good_and_opaque_twin_sync_moi(dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSyncSse
+      dco_decode_enum_with_good_and_opaque_twin_sync_sse(dynamic raw);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSyncSseMoi
+      dco_decode_enum_with_good_and_opaque_twin_sync_sse_moi(dynamic raw);
 
   @protected
   EnumWithItemMixedTwinNormal dco_decode_enum_with_item_mixed_twin_normal(
@@ -9860,6 +9964,66 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  EnumWithGoodAndOpaqueTwinMoi
+      sse_decode_box_autoadd_enum_with_good_and_opaque_twin_moi(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinNormal
+      sse_decode_box_autoadd_enum_with_good_and_opaque_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinRustAsync
+      sse_decode_box_autoadd_enum_with_good_and_opaque_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinRustAsyncMoi
+      sse_decode_box_autoadd_enum_with_good_and_opaque_twin_rust_async_moi(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinRustAsyncSse
+      sse_decode_box_autoadd_enum_with_good_and_opaque_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinRustAsyncSseMoi
+      sse_decode_box_autoadd_enum_with_good_and_opaque_twin_rust_async_sse_moi(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSse
+      sse_decode_box_autoadd_enum_with_good_and_opaque_twin_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSseMoi
+      sse_decode_box_autoadd_enum_with_good_and_opaque_twin_sse_moi(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSync
+      sse_decode_box_autoadd_enum_with_good_and_opaque_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSyncMoi
+      sse_decode_box_autoadd_enum_with_good_and_opaque_twin_sync_moi(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSyncSse
+      sse_decode_box_autoadd_enum_with_good_and_opaque_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSyncSseMoi
+      sse_decode_box_autoadd_enum_with_good_and_opaque_twin_sync_sse_moi(
+          SseDeserializer deserializer);
+
+  @protected
   EnumWithItemMixedTwinNormal
       sse_decode_box_autoadd_enum_with_item_mixed_twin_normal(
           SseDeserializer deserializer);
@@ -11648,6 +11812,63 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   EnumWithDiscriminantTwinSyncSse
       sse_decode_enum_with_discriminant_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinMoi sse_decode_enum_with_good_and_opaque_twin_moi(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinNormal
+      sse_decode_enum_with_good_and_opaque_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinRustAsync
+      sse_decode_enum_with_good_and_opaque_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinRustAsyncMoi
+      sse_decode_enum_with_good_and_opaque_twin_rust_async_moi(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinRustAsyncSse
+      sse_decode_enum_with_good_and_opaque_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinRustAsyncSseMoi
+      sse_decode_enum_with_good_and_opaque_twin_rust_async_sse_moi(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSse sse_decode_enum_with_good_and_opaque_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSseMoi
+      sse_decode_enum_with_good_and_opaque_twin_sse_moi(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSync sse_decode_enum_with_good_and_opaque_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSyncMoi
+      sse_decode_enum_with_good_and_opaque_twin_sync_moi(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSyncSse
+      sse_decode_enum_with_good_and_opaque_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithGoodAndOpaqueTwinSyncSseMoi
+      sse_decode_enum_with_good_and_opaque_twin_sync_sse_moi(
           SseDeserializer deserializer);
 
   @protected
@@ -15839,6 +16060,50 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> cst_encode_box_autoadd_enum_with_good_and_opaque_twin_moi(
+      EnumWithGoodAndOpaqueTwinMoi raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_enum_with_good_and_opaque_twin_moi(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_enum_with_good_and_opaque_twin_normal(
+      EnumWithGoodAndOpaqueTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_enum_with_good_and_opaque_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic>
+      cst_encode_box_autoadd_enum_with_good_and_opaque_twin_rust_async(
+          EnumWithGoodAndOpaqueTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_enum_with_good_and_opaque_twin_rust_async(raw);
+  }
+
+  @protected
+  List<dynamic>
+      cst_encode_box_autoadd_enum_with_good_and_opaque_twin_rust_async_moi(
+          EnumWithGoodAndOpaqueTwinRustAsyncMoi raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_enum_with_good_and_opaque_twin_rust_async_moi(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_enum_with_good_and_opaque_twin_sync(
+      EnumWithGoodAndOpaqueTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_enum_with_good_and_opaque_twin_sync(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_enum_with_good_and_opaque_twin_sync_moi(
+      EnumWithGoodAndOpaqueTwinSyncMoi raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_enum_with_good_and_opaque_twin_sync_moi(raw);
+  }
+
+  @protected
   List<dynamic> cst_encode_box_autoadd_enum_with_item_mixed_twin_normal(
       EnumWithItemMixedTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -17728,6 +17993,114 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       EnumOpaqueTwinSyncMoiArray5 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_enum_opaque_twin_sync_moi(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_enum_with_good_and_opaque_twin_moi(
+      EnumWithGoodAndOpaqueTwinMoi raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    if (raw is EnumWithGoodAndOpaqueTwinMoi_Good) {
+      return [0, cst_encode_String(raw.field0)];
+    }
+    if (raw is EnumWithGoodAndOpaqueTwinMoi_Opaque) {
+      return [
+        1,
+        cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoi(
+            raw.field0)
+      ];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> cst_encode_enum_with_good_and_opaque_twin_normal(
+      EnumWithGoodAndOpaqueTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    if (raw is EnumWithGoodAndOpaqueTwinNormal_Good) {
+      return [0, cst_encode_String(raw.field0)];
+    }
+    if (raw is EnumWithGoodAndOpaqueTwinNormal_Opaque) {
+      return [
+        1,
+        cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
+            raw.field0)
+      ];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> cst_encode_enum_with_good_and_opaque_twin_rust_async(
+      EnumWithGoodAndOpaqueTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    if (raw is EnumWithGoodAndOpaqueTwinRustAsync_Good) {
+      return [0, cst_encode_String(raw.field0)];
+    }
+    if (raw is EnumWithGoodAndOpaqueTwinRustAsync_Opaque) {
+      return [
+        1,
+        cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync(
+            raw.field0)
+      ];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> cst_encode_enum_with_good_and_opaque_twin_rust_async_moi(
+      EnumWithGoodAndOpaqueTwinRustAsyncMoi raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    if (raw is EnumWithGoodAndOpaqueTwinRustAsyncMoi_Good) {
+      return [0, cst_encode_String(raw.field0)];
+    }
+    if (raw is EnumWithGoodAndOpaqueTwinRustAsyncMoi_Opaque) {
+      return [
+        1,
+        cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+            raw.field0)
+      ];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> cst_encode_enum_with_good_and_opaque_twin_sync(
+      EnumWithGoodAndOpaqueTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    if (raw is EnumWithGoodAndOpaqueTwinSync_Good) {
+      return [0, cst_encode_String(raw.field0)];
+    }
+    if (raw is EnumWithGoodAndOpaqueTwinSync_Opaque) {
+      return [
+        1,
+        cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
+            raw.field0)
+      ];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> cst_encode_enum_with_good_and_opaque_twin_sync_moi(
+      EnumWithGoodAndOpaqueTwinSyncMoi raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    if (raw is EnumWithGoodAndOpaqueTwinSyncMoi_Good) {
+      return [0, cst_encode_String(raw.field0)];
+    }
+    if (raw is EnumWithGoodAndOpaqueTwinSyncMoi_Opaque) {
+      return [
+        1,
+        cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+            raw.field0)
+      ];
+    }
+
+    throw Exception('unreachable');
   }
 
   @protected
@@ -24282,6 +24655,54 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       EnumOpaqueTwinSyncSseMoi self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_enum_with_good_and_opaque_twin_moi(
+      EnumWithGoodAndOpaqueTwinMoi self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_good_and_opaque_twin_normal(
+      EnumWithGoodAndOpaqueTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_good_and_opaque_twin_rust_async(
+      EnumWithGoodAndOpaqueTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_good_and_opaque_twin_rust_async_moi(
+      EnumWithGoodAndOpaqueTwinRustAsyncMoi self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_good_and_opaque_twin_rust_async_sse(
+      EnumWithGoodAndOpaqueTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_good_and_opaque_twin_rust_async_sse_moi(
+      EnumWithGoodAndOpaqueTwinRustAsyncSseMoi self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_good_and_opaque_twin_sse(
+      EnumWithGoodAndOpaqueTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_good_and_opaque_twin_sse_moi(
+      EnumWithGoodAndOpaqueTwinSseMoi self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_good_and_opaque_twin_sync(
+      EnumWithGoodAndOpaqueTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_good_and_opaque_twin_sync_moi(
+      EnumWithGoodAndOpaqueTwinSyncMoi self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_good_and_opaque_twin_sync_sse(
+      EnumWithGoodAndOpaqueTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_good_and_opaque_twin_sync_sse_moi(
+      EnumWithGoodAndOpaqueTwinSyncSseMoi self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_enum_with_item_mixed_twin_normal(
       EnumWithItemMixedTwinNormal self, SseSerializer serializer);
 
@@ -25972,6 +26393,54 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_enum_with_discriminant_twin_sync_sse(
       EnumWithDiscriminantTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_good_and_opaque_twin_moi(
+      EnumWithGoodAndOpaqueTwinMoi self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_good_and_opaque_twin_normal(
+      EnumWithGoodAndOpaqueTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_good_and_opaque_twin_rust_async(
+      EnumWithGoodAndOpaqueTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_good_and_opaque_twin_rust_async_moi(
+      EnumWithGoodAndOpaqueTwinRustAsyncMoi self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_good_and_opaque_twin_rust_async_sse(
+      EnumWithGoodAndOpaqueTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_good_and_opaque_twin_rust_async_sse_moi(
+      EnumWithGoodAndOpaqueTwinRustAsyncSseMoi self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_good_and_opaque_twin_sse(
+      EnumWithGoodAndOpaqueTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_good_and_opaque_twin_sse_moi(
+      EnumWithGoodAndOpaqueTwinSseMoi self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_good_and_opaque_twin_sync(
+      EnumWithGoodAndOpaqueTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_good_and_opaque_twin_sync_moi(
+      EnumWithGoodAndOpaqueTwinSyncMoi self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_good_and_opaque_twin_sync_sse(
+      EnumWithGoodAndOpaqueTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_good_and_opaque_twin_sync_sse_moi(
+      EnumWithGoodAndOpaqueTwinSyncSseMoi self, SseSerializer serializer);
 
   @protected
   void sse_encode_enum_with_item_mixed_twin_normal(
@@ -37679,6 +38148,24 @@ class RustLibWire implements BaseWire {
   void wire_rust_auto_opaque_callable_return_twin_moi(NativePortType port_) =>
       wasmModule.wire_rust_auto_opaque_callable_return_twin_moi(port_);
 
+  void wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_moi(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule
+          .wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_moi(
+              port_, arg);
+
+  void wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_moi(
+          NativePortType port_) =>
+      wasmModule
+          .wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_moi(
+              port_);
+
+  void wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_moi(
+          NativePortType port_) =>
+      wasmModule
+          .wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_moi(
+              port_);
+
   void wire_rust_auto_opaque_explicit_arg_twin_moi(
           NativePortType port_, Object arg, int expect) =>
       wasmModule.wire_rust_auto_opaque_explicit_arg_twin_moi(
@@ -37872,6 +38359,24 @@ class RustLibWire implements BaseWire {
   void wire_rust_auto_opaque_callable_return_twin_rust_async(
           NativePortType port_) =>
       wasmModule.wire_rust_auto_opaque_callable_return_twin_rust_async(port_);
+
+  void wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule
+          .wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async(
+              port_, arg);
+
+  void wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async(
+              port_);
+
+  void wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async(
+              port_);
 
   void wire_rust_auto_opaque_explicit_arg_twin_rust_async(
           NativePortType port_, Object arg, int expect) =>
@@ -38082,6 +38587,24 @@ class RustLibWire implements BaseWire {
           NativePortType port_) =>
       wasmModule
           .wire_rust_auto_opaque_callable_return_twin_rust_async_moi(port_);
+
+  void wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async_moi(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule
+          .wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async_moi(
+              port_, arg);
+
+  void wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async_moi(
+          NativePortType port_) =>
+      wasmModule
+          .wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async_moi(
+              port_);
+
+  void wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async_moi(
+          NativePortType port_) =>
+      wasmModule
+          .wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async_moi(
+              port_);
 
   void wire_rust_auto_opaque_explicit_arg_twin_rust_async_moi(
           NativePortType port_, Object arg, int expect) =>
@@ -38361,6 +38884,33 @@ class RustLibWire implements BaseWire {
           int data_len_) =>
       wasmModule.wire_rust_auto_opaque_callable_return_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_rust_auto_opaque_explicit_arg_twin_rust_async_sse(
           NativePortType port_,
@@ -38697,6 +39247,33 @@ class RustLibWire implements BaseWire {
       wasmModule.wire_rust_auto_opaque_callable_return_twin_rust_async_sse_moi(
           port_, ptr_, rust_vec_len_, data_len_);
 
+  void wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async_sse_moi(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async_sse_moi(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async_sse_moi(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async_sse_moi(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async_sse_moi(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async_sse_moi(
+              port_, ptr_, rust_vec_len_, data_len_);
+
   void wire_rust_auto_opaque_explicit_arg_twin_rust_async_sse_moi(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
@@ -39021,6 +39598,33 @@ class RustLibWire implements BaseWire {
       wasmModule.wire_rust_auto_opaque_callable_return_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
+  void wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
   void wire_rust_auto_opaque_explicit_arg_twin_sse(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
@@ -39344,6 +39948,33 @@ class RustLibWire implements BaseWire {
       wasmModule.wire_rust_auto_opaque_callable_return_twin_sse_moi(
           port_, ptr_, rust_vec_len_, data_len_);
 
+  void wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sse_moi(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sse_moi(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sse_moi(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sse_moi(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sse_moi(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sse_moi(
+              port_, ptr_, rust_vec_len_, data_len_);
+
   void wire_rust_auto_opaque_explicit_arg_twin_sse_moi(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
@@ -39604,6 +40235,23 @@ class RustLibWire implements BaseWire {
           wasmModule.wire_rust_auto_opaque_callable_return_twin_sync();
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync(
+              List<dynamic> arg) =>
+          wasmModule
+              .wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync(
+                  arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync() =>
+          wasmModule
+              .wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync();
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync() =>
+          wasmModule
+              .wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync();
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_rust_auto_opaque_explicit_arg_twin_sync(Object arg, int expect) =>
           wasmModule.wire_rust_auto_opaque_explicit_arg_twin_sync(arg, expect);
 
@@ -39810,6 +40458,23 @@ class RustLibWire implements BaseWire {
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_rust_auto_opaque_callable_return_twin_sync_moi() =>
           wasmModule.wire_rust_auto_opaque_callable_return_twin_sync_moi();
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_moi(
+              List<dynamic> arg) =>
+          wasmModule
+              .wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_moi(
+                  arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_moi() =>
+          wasmModule
+              .wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_moi();
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_moi() =>
+          wasmModule
+              .wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_moi();
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_rust_auto_opaque_explicit_arg_twin_sync_moi(
@@ -40081,6 +40746,33 @@ class RustLibWire implements BaseWire {
               int data_len_) =>
           wasmModule.wire_rust_auto_opaque_callable_return_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_rust_auto_opaque_explicit_arg_twin_sync_sse(
@@ -40413,6 +41105,33 @@ class RustLibWire implements BaseWire {
               int data_len_) =>
           wasmModule.wire_rust_auto_opaque_callable_return_twin_sync_sse_moi(
               ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_sse_moi(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_sse_moi(
+                  ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_sse_moi(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_sse_moi(
+                  ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_sse_moi(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_sse_moi(
+                  ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_rust_auto_opaque_explicit_arg_twin_sync_sse_moi(
@@ -42232,6 +42951,24 @@ class RustLibWire implements BaseWire {
   void wire_rust_auto_opaque_callable_return_twin_normal(
           NativePortType port_) =>
       wasmModule.wire_rust_auto_opaque_callable_return_twin_normal(port_);
+
+  void wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_normal(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule
+          .wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_normal(
+              port_, arg);
+
+  void wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_normal(
+          NativePortType port_) =>
+      wasmModule
+          .wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_normal(
+              port_);
+
+  void wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_normal(
+          NativePortType port_) =>
+      wasmModule
+          .wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_normal(
+              port_);
 
   void wire_rust_auto_opaque_explicit_arg_twin_normal(
           NativePortType port_, Object arg, int expect) =>
@@ -50133,6 +50870,18 @@ class RustLibWasmModule implements WasmModule {
   external void wire_rust_auto_opaque_callable_return_twin_moi(
       NativePortType port_);
 
+  external void
+      wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_moi(
+          NativePortType port_, List<dynamic> arg);
+
+  external void
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_moi(
+          NativePortType port_);
+
+  external void
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_moi(
+          NativePortType port_);
+
   external void wire_rust_auto_opaque_explicit_arg_twin_moi(
       NativePortType port_, Object arg, int expect);
 
@@ -50262,6 +51011,18 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_rust_auto_opaque_callable_return_twin_rust_async(
       NativePortType port_);
+
+  external void
+      wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async(
+          NativePortType port_, List<dynamic> arg);
+
+  external void
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async(
+          NativePortType port_);
+
+  external void
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async(
+          NativePortType port_);
 
   external void wire_rust_auto_opaque_explicit_arg_twin_rust_async(
       NativePortType port_, Object arg, int expect);
@@ -50396,6 +51157,18 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_rust_auto_opaque_callable_return_twin_rust_async_moi(
       NativePortType port_);
+
+  external void
+      wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async_moi(
+          NativePortType port_, List<dynamic> arg);
+
+  external void
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async_moi(
+          NativePortType port_);
+
+  external void
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async_moi(
+          NativePortType port_);
 
   external void wire_rust_auto_opaque_explicit_arg_twin_rust_async_moi(
       NativePortType port_, Object arg, int expect);
@@ -50595,6 +51368,27 @@ class RustLibWasmModule implements WasmModule {
       PlatformGeneralizedUint8ListPtr ptr_,
       int rust_vec_len_,
       int data_len_);
+
+  external void
+      wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
 
   external void wire_rust_auto_opaque_explicit_arg_twin_rust_async_sse(
       NativePortType port_,
@@ -50851,6 +51645,27 @@ class RustLibWasmModule implements WasmModule {
       int rust_vec_len_,
       int data_len_);
 
+  external void
+      wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async_sse_moi(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async_sse_moi(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async_sse_moi(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
   external void wire_rust_auto_opaque_explicit_arg_twin_rust_async_sse_moi(
       NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_,
@@ -51083,6 +51898,27 @@ class RustLibWasmModule implements WasmModule {
       PlatformGeneralizedUint8ListPtr ptr_,
       int rust_vec_len_,
       int data_len_);
+
+  external void
+      wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
 
   external void wire_rust_auto_opaque_explicit_arg_twin_sse(
       NativePortType port_,
@@ -51320,6 +52156,27 @@ class RustLibWasmModule implements WasmModule {
       int rust_vec_len_,
       int data_len_);
 
+  external void
+      wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sse_moi(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sse_moi(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sse_moi(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
   external void wire_rust_auto_opaque_explicit_arg_twin_sse_moi(
       NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_,
@@ -51503,6 +52360,16 @@ class RustLibWasmModule implements WasmModule {
       wire_rust_auto_opaque_callable_return_twin_sync();
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync(
+          List<dynamic> arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync();
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync();
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_rust_auto_opaque_explicit_arg_twin_sync(Object arg, int expect);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
@@ -51633,6 +52500,16 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_rust_auto_opaque_callable_return_twin_sync_moi();
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_moi(
+          List<dynamic> arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_moi();
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_moi();
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_rust_auto_opaque_explicit_arg_twin_sync_moi(Object arg, int expect);
@@ -51815,6 +52692,24 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_rust_auto_opaque_callable_return_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
@@ -52049,6 +52944,24 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_rust_auto_opaque_callable_return_twin_sync_sse_moi(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_sse_moi(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_sse_moi(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
@@ -53204,6 +54117,18 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_rust_auto_opaque_callable_return_twin_normal(
       NativePortType port_);
+
+  external void
+      wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_normal(
+          NativePortType port_, List<dynamic> arg);
+
+  external void
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_normal(
+          NativePortType port_);
+
+  external void
+      wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_normal(
+          NativePortType port_);
 
   external void wire_rust_auto_opaque_explicit_arg_twin_normal(
       NativePortType port_, Object arg, int expect);

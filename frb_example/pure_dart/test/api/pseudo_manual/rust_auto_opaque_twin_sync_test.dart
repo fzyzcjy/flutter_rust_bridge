@@ -236,7 +236,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(await obj.instanceMethodGetterTwinSync, 42);
   });
 
-  test('types with both encodable and opaque fields', () async {
+  test('structs with both encodable and opaque fields', () async {
     final obj =
         await rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSync();
     expect(obj.good, 'hello');
@@ -244,6 +244,22 @@ Future<void> main({bool skipRustLibInit = false}) async {
         rustAutoOpaqueArgBorrowTwinSync(arg: obj.opaque, expect: 42));
     await futurizeVoidTwinSync(
         rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSync(arg: obj));
+  });
+
+  test('enums with both encodable and opaque', () async {
+    final good =
+        (await rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinSync());
+    final opaque =
+        (await rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinSync());
+
+    await futurizeVoidTwinSync(
+        rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinSync(arg: good));
+    await futurizeVoidTwinSync(
+        rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinSync(arg: opaque));
+
+    await futurizeVoidTwinSync(
+        rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinSync(
+            arg: EnumWithGoodAndOpaqueTwinSync.good('good')));
   });
 
   test('vec of opaque', () async {

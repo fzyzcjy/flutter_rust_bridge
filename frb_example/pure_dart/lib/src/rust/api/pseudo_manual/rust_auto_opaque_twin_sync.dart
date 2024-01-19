@@ -5,7 +5,9 @@
 
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'rust_auto_opaque_twin_moi.dart';
+part 'rust_auto_opaque_twin_sync.freezed.dart';
 
 void rustAutoOpaqueArgOwnTwinSync(
         {required NonCloneSimpleTwinSync arg,
@@ -109,6 +111,24 @@ StructWithGoodAndOpaqueFieldTwinSync
             {dynamic hint}) =>
         RustLib.instance.api
             .rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSync(
+                hint: hint);
+
+void rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinSync(
+        {required EnumWithGoodAndOpaqueTwinSync arg, dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinSync(
+        arg: arg, hint: hint);
+
+EnumWithGoodAndOpaqueTwinSync
+    rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinSync({dynamic hint}) =>
+        RustLib.instance.api
+            .rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinSync(
+                hint: hint);
+
+EnumWithGoodAndOpaqueTwinSync
+    rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinSync(
+            {dynamic hint}) =>
+        RustLib.instance.api
+            .rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinSync(
                 hint: hint);
 
 void rustAutoOpaqueArgVecOwnTwinSync(
@@ -316,6 +336,17 @@ class OpaqueTwoTwinSync extends RustOpaque {
     rustArcDecrementStrongCountPtr: RustLib
         .instance.api.rust_arc_decrement_strong_count_OpaqueTwoTwinSyncPtr,
   );
+}
+
+@freezed
+sealed class EnumWithGoodAndOpaqueTwinSync
+    with _$EnumWithGoodAndOpaqueTwinSync {
+  const factory EnumWithGoodAndOpaqueTwinSync.good(
+    String field0,
+  ) = EnumWithGoodAndOpaqueTwinSync_Good;
+  const factory EnumWithGoodAndOpaqueTwinSync.opaque(
+    NonCloneSimpleTwinSync field0,
+  ) = EnumWithGoodAndOpaqueTwinSync_Opaque;
 }
 
 class StructWithExplicitAutoOpaqueFieldTwinSync {

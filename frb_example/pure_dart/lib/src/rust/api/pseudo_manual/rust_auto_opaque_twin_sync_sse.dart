@@ -5,7 +5,9 @@
 
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'rust_auto_opaque_twin_moi.dart';
+part 'rust_auto_opaque_twin_sync_sse.freezed.dart';
 
 void rustAutoOpaqueArgOwnTwinSyncSse(
         {required NonCloneSimpleTwinSyncSse arg,
@@ -112,6 +114,25 @@ StructWithGoodAndOpaqueFieldTwinSyncSse
             {dynamic hint}) =>
         RustLib.instance.api
             .rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSyncSse(
+                hint: hint);
+
+void rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinSyncSse(
+        {required EnumWithGoodAndOpaqueTwinSyncSse arg, dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinSyncSse(
+        arg: arg, hint: hint);
+
+EnumWithGoodAndOpaqueTwinSyncSse
+    rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinSyncSse(
+            {dynamic hint}) =>
+        RustLib.instance.api
+            .rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinSyncSse(
+                hint: hint);
+
+EnumWithGoodAndOpaqueTwinSyncSse
+    rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinSyncSse(
+            {dynamic hint}) =>
+        RustLib.instance.api
+            .rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinSyncSse(
                 hint: hint);
 
 void rustAutoOpaqueArgVecOwnTwinSyncSse(
@@ -325,6 +346,17 @@ class OpaqueTwoTwinSyncSse extends RustOpaque {
     rustArcDecrementStrongCountPtr: RustLib
         .instance.api.rust_arc_decrement_strong_count_OpaqueTwoTwinSyncSsePtr,
   );
+}
+
+@freezed
+sealed class EnumWithGoodAndOpaqueTwinSyncSse
+    with _$EnumWithGoodAndOpaqueTwinSyncSse {
+  const factory EnumWithGoodAndOpaqueTwinSyncSse.good(
+    String field0,
+  ) = EnumWithGoodAndOpaqueTwinSyncSse_Good;
+  const factory EnumWithGoodAndOpaqueTwinSyncSse.opaque(
+    NonCloneSimpleTwinSyncSse field0,
+  ) = EnumWithGoodAndOpaqueTwinSyncSse_Opaque;
 }
 
 class StructWithExplicitAutoOpaqueFieldTwinSyncSse {

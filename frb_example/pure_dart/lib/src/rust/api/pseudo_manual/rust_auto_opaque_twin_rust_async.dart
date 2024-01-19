@@ -5,7 +5,9 @@
 
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'rust_auto_opaque_twin_moi.dart';
+part 'rust_auto_opaque_twin_rust_async.freezed.dart';
 
 Future<void> rustAutoOpaqueArgOwnTwinRustAsync(
         {required NonCloneSimpleTwinRustAsync arg,
@@ -116,6 +118,25 @@ Future<StructWithGoodAndOpaqueFieldTwinRustAsync>
             {dynamic hint}) =>
         RustLib.instance.api
             .rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinRustAsync(
+                hint: hint);
+
+Future<void> rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinRustAsync(
+        {required EnumWithGoodAndOpaqueTwinRustAsync arg, dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinRustAsync(
+        arg: arg, hint: hint);
+
+Future<EnumWithGoodAndOpaqueTwinRustAsync>
+    rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinRustAsync(
+            {dynamic hint}) =>
+        RustLib.instance.api
+            .rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinRustAsync(
+                hint: hint);
+
+Future<EnumWithGoodAndOpaqueTwinRustAsync>
+    rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinRustAsync(
+            {dynamic hint}) =>
+        RustLib.instance.api
+            .rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinRustAsync(
                 hint: hint);
 
 Future<void> rustAutoOpaqueArgVecOwnTwinRustAsync(
@@ -335,6 +356,17 @@ class OpaqueTwoTwinRustAsync extends RustOpaque {
     rustArcDecrementStrongCountPtr: RustLib
         .instance.api.rust_arc_decrement_strong_count_OpaqueTwoTwinRustAsyncPtr,
   );
+}
+
+@freezed
+sealed class EnumWithGoodAndOpaqueTwinRustAsync
+    with _$EnumWithGoodAndOpaqueTwinRustAsync {
+  const factory EnumWithGoodAndOpaqueTwinRustAsync.good(
+    String field0,
+  ) = EnumWithGoodAndOpaqueTwinRustAsync_Good;
+  const factory EnumWithGoodAndOpaqueTwinRustAsync.opaque(
+    NonCloneSimpleTwinRustAsync field0,
+  ) = EnumWithGoodAndOpaqueTwinRustAsync_Opaque;
 }
 
 class StructWithExplicitAutoOpaqueFieldTwinRustAsync {

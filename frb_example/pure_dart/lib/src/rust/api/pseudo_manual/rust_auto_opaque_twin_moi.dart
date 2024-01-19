@@ -5,6 +5,8 @@
 
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+part 'rust_auto_opaque_twin_moi.freezed.dart';
 
 Future<void> rustAutoOpaqueArgOwnTwinMoi(
         {required NonCloneSimpleTwinMoi arg,
@@ -106,6 +108,23 @@ Future<StructWithGoodAndOpaqueFieldTwinMoi>
             {dynamic hint}) =>
         RustLib.instance.api
             .rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinMoi(
+                hint: hint);
+
+Future<void> rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinMoi(
+        {required EnumWithGoodAndOpaqueTwinMoi arg, dynamic hint}) =>
+    RustLib.instance.api
+        .rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinMoi(arg: arg, hint: hint);
+
+Future<EnumWithGoodAndOpaqueTwinMoi>
+    rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinMoi({dynamic hint}) =>
+        RustLib.instance.api
+            .rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinMoi(
+                hint: hint);
+
+Future<EnumWithGoodAndOpaqueTwinMoi>
+    rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinMoi({dynamic hint}) =>
+        RustLib.instance.api
+            .rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinMoi(
                 hint: hint);
 
 Future<void> rustAutoOpaqueArgVecOwnTwinMoi(
@@ -332,6 +351,16 @@ class OpaqueTwoTwinMoi extends RustOpaque {
     rustArcDecrementStrongCountPtr: RustLib
         .instance.api.rust_arc_decrement_strong_count_OpaqueTwoTwinMoiPtr,
   );
+}
+
+@freezed
+sealed class EnumWithGoodAndOpaqueTwinMoi with _$EnumWithGoodAndOpaqueTwinMoi {
+  const factory EnumWithGoodAndOpaqueTwinMoi.good(
+    String field0,
+  ) = EnumWithGoodAndOpaqueTwinMoi_Good;
+  const factory EnumWithGoodAndOpaqueTwinMoi.opaque(
+    NonCloneSimpleTwinMoi field0,
+  ) = EnumWithGoodAndOpaqueTwinMoi_Opaque;
 }
 
 class StructWithExplicitAutoOpaqueFieldTwinMoi {

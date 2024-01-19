@@ -5,7 +5,9 @@
 
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'rust_auto_opaque_twin_moi.dart';
+part 'rust_auto_opaque_twin_rust_async_sse.freezed.dart';
 
 Future<void> rustAutoOpaqueArgOwnTwinRustAsyncSse(
         {required NonCloneSimpleTwinRustAsyncSse arg,
@@ -118,6 +120,26 @@ Future<StructWithGoodAndOpaqueFieldTwinRustAsyncSse>
             {dynamic hint}) =>
         RustLib.instance.api
             .rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinRustAsyncSse(
+                hint: hint);
+
+Future<void> rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinRustAsyncSse(
+        {required EnumWithGoodAndOpaqueTwinRustAsyncSse arg, dynamic hint}) =>
+    RustLib.instance.api
+        .rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinRustAsyncSse(
+            arg: arg, hint: hint);
+
+Future<EnumWithGoodAndOpaqueTwinRustAsyncSse>
+    rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinRustAsyncSse(
+            {dynamic hint}) =>
+        RustLib.instance.api
+            .rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinRustAsyncSse(
+                hint: hint);
+
+Future<EnumWithGoodAndOpaqueTwinRustAsyncSse>
+    rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinRustAsyncSse(
+            {dynamic hint}) =>
+        RustLib.instance.api
+            .rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinRustAsyncSse(
                 hint: hint);
 
 Future<void> rustAutoOpaqueArgVecOwnTwinRustAsyncSse(
@@ -343,6 +365,17 @@ class OpaqueTwoTwinRustAsyncSse extends RustOpaque {
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_OpaqueTwoTwinRustAsyncSsePtr,
   );
+}
+
+@freezed
+sealed class EnumWithGoodAndOpaqueTwinRustAsyncSse
+    with _$EnumWithGoodAndOpaqueTwinRustAsyncSse {
+  const factory EnumWithGoodAndOpaqueTwinRustAsyncSse.good(
+    String field0,
+  ) = EnumWithGoodAndOpaqueTwinRustAsyncSse_Good;
+  const factory EnumWithGoodAndOpaqueTwinRustAsyncSse.opaque(
+    NonCloneSimpleTwinRustAsyncSse field0,
+  ) = EnumWithGoodAndOpaqueTwinRustAsyncSse_Opaque;
 }
 
 class StructWithExplicitAutoOpaqueFieldTwinRustAsyncSse {

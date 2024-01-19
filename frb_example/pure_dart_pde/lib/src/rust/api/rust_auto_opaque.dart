@@ -5,7 +5,9 @@
 
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'pseudo_manual/rust_auto_opaque_twin_rust_async.dart';
+part 'rust_auto_opaque.freezed.dart';
 
 Future<void> rustAutoOpaqueArgOwnTwinNormal(
         {required NonCloneSimpleTwinNormal arg,
@@ -114,6 +116,25 @@ Future<StructWithGoodAndOpaqueFieldTwinNormal>
             {dynamic hint}) =>
         RustLib.instance.api
             .rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinNormal(
+                hint: hint);
+
+Future<void> rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinNormal(
+        {required EnumWithGoodAndOpaqueTwinNormal arg, dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinNormal(
+        arg: arg, hint: hint);
+
+Future<EnumWithGoodAndOpaqueTwinNormal>
+    rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinNormal(
+            {dynamic hint}) =>
+        RustLib.instance.api
+            .rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinNormal(
+                hint: hint);
+
+Future<EnumWithGoodAndOpaqueTwinNormal>
+    rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinNormal(
+            {dynamic hint}) =>
+        RustLib.instance.api
+            .rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinNormal(
                 hint: hint);
 
 Future<void> rustAutoOpaqueArgVecOwnTwinNormal(
@@ -329,6 +350,17 @@ class OpaqueTwoTwinNormal extends RustOpaque {
     rustArcDecrementStrongCountPtr: RustLib
         .instance.api.rust_arc_decrement_strong_count_OpaqueTwoTwinNormalPtr,
   );
+}
+
+@freezed
+sealed class EnumWithGoodAndOpaqueTwinNormal
+    with _$EnumWithGoodAndOpaqueTwinNormal {
+  const factory EnumWithGoodAndOpaqueTwinNormal.good(
+    String field0,
+  ) = EnumWithGoodAndOpaqueTwinNormal_Good;
+  const factory EnumWithGoodAndOpaqueTwinNormal.opaque(
+    NonCloneSimpleTwinNormal field0,
+  ) = EnumWithGoodAndOpaqueTwinNormal_Opaque;
 }
 
 class StructWithExplicitAutoOpaqueFieldTwinNormal {
