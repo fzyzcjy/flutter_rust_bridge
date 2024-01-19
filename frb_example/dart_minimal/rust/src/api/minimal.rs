@@ -9,17 +9,3 @@ pub fn init_app() {
 pub fn minimal_adder(a: i32, b: i32) -> i32 {
     a + b
 }
-
-pub fn anyhow_test(a: StreamSink<Undurchsichtiger>) {
-    todo!()
-}
-
-#[frb(opaque)]
-pub struct Undurchsichtiger;
-
-// TODO temp rm to make it minimal
-// impl Undurchsichtiger {
-//     pub fn read(&self) -> Vec<u8> {
-//         todo!()
-//     }
-// }
