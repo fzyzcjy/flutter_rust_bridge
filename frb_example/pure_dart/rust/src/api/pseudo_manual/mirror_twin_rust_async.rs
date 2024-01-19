@@ -12,9 +12,10 @@ use crate::frb_generated::StreamSink;
 use flutter_rust_bridge::frb;
 pub use frb_example_pure_dart_example_external_lib::{
     ApplicationEnv, ApplicationEnvVar, ApplicationMessage, ApplicationMode, ApplicationSettings,
-    ListOfNestedRawStringMirrored, NestedRawStringMirrored, Numbers, RawStringEnumMirrored,
-    RawStringMirrored, Sequences,
+    HashMapValue, ListOfNestedRawStringMirrored, NestedRawStringMirrored, Numbers,
+    RawStringEnumMirrored, RawStringMirrored, Sequences, StructWithHashMap,
 };
+use std::collections::HashMap;
 
 // To mirror an external struct, you need to define a placeholder type with the same definition
 #[frb(mirror(ApplicationSettings))]
@@ -38,6 +39,16 @@ pub struct _ApplicationEnvVarTwinRustAsync(pub String, pub bool);
 #[frb(mirror(ApplicationEnv))]
 pub struct _ApplicationEnvTwinRustAsync {
     pub vars: Vec<ApplicationEnvVar>,
+}
+
+#[frb(mirror(HashMapValue))]
+pub struct _HashMapValue {
+    pub inner: String,
+}
+
+#[frb(mirror(StructWithHashMap))]
+pub struct _StructWithHashMap {
+    pub map: HashMap<String, HashMapValue>,
 }
 
 // This function can directly return an object of the external type ApplicationSettings because it has a mirror
@@ -238,6 +249,20 @@ pub async fn test_contains_mirrored_sub_struct_twin_rust_async(
         },
         test2: AnotherTwinRustAsync {
             a: "test".to_owned(),
+        },
+    }
+}
+
+pub async fn test_hashmap_with_mirrored_value_twin_rust_async() -> StructWithHashMap {
+    StructWithHashMap {
+        map: {
+            [
+                "key".to_owned(),
+                HashMapValue {
+                    inner: "value".to_owned(),
+                },
+            ]
+            .into()
         },
     }
 }
