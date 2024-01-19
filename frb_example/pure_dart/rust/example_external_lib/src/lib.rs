@@ -62,7 +62,9 @@ pub struct Sequences(pub Vec<i32>);
 pub struct ApplicationEnvVar(pub String, pub bool);
 
 #[derive(Debug, Clone)]
-pub struct HashMapValue {}
+pub struct HashMapValue {
+    pub inner: String,
+}
 
 #[derive(Debug, Clone)]
 pub struct StructWithHashMap {
