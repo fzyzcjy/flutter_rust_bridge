@@ -17,6 +17,13 @@ pub struct NonCloneSimpleTwinRustAsyncSseMoi {
     inner: i32,
 }
 
+#[frb(opaque)]
+// Do *NOT* make it Clone or serializable
+pub enum NonCloneSimpleEnumTwinRustAsyncSseMoi {
+    Apple,
+    Orange,
+}
+
 // ==================================== simple =======================================
 
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
@@ -355,6 +362,23 @@ pub async fn rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_r
     EnumWithGoodAndOpaqueTwinRustAsyncSseMoi::Opaque(NonCloneSimpleTwinRustAsyncSseMoi {
         inner: 42,
     })
+}
+
+// ================ enum opaque type ===================
+
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn rust_auto_opaque_enum_arg_borrow_twin_rust_async_sse_moi(
+    arg: &NonCloneSimpleEnumTwinRustAsyncSseMoi,
+) {
+    assert_eq!(arg, NonCloneSimpleEnumTwinRustAsyncSseMoi::Orange);
+}
+
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn rust_auto_opaque_enum_return_own_twin_rust_async_sse_moi(
+) -> NonCloneSimpleEnumTwinRustAsyncSseMoi {
+    NonCloneSimpleEnumTwinRustAsyncSseMoi::Orange
 }
 
 // ================ vec of opaque ===================

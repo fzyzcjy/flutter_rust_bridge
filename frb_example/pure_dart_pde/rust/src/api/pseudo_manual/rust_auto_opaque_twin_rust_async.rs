@@ -19,6 +19,13 @@ pub struct NonCloneSimpleTwinRustAsync {
     inner: i32,
 }
 
+#[frb(opaque)]
+// Do *NOT* make it Clone or serializable
+pub enum NonCloneSimpleEnumTwinRustAsync {
+    Apple,
+    Orange,
+}
+
 // ==================================== simple =======================================
 
 pub async fn rust_auto_opaque_arg_own_twin_rust_async(
@@ -281,6 +288,18 @@ pub async fn rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rus
 pub async fn rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async(
 ) -> EnumWithGoodAndOpaqueTwinRustAsync {
     EnumWithGoodAndOpaqueTwinRustAsync::Opaque(NonCloneSimpleTwinRustAsync { inner: 42 })
+}
+
+// ================ enum opaque type ===================
+
+pub async fn rust_auto_opaque_enum_arg_borrow_twin_rust_async(
+    arg: &NonCloneSimpleEnumTwinRustAsync,
+) {
+    assert_eq!(arg, NonCloneSimpleEnumTwinRustAsync::Orange);
+}
+
+pub async fn rust_auto_opaque_enum_return_own_twin_rust_async() -> NonCloneSimpleEnumTwinRustAsync {
+    NonCloneSimpleEnumTwinRustAsync::Orange
 }
 
 // ================ vec of opaque ===================

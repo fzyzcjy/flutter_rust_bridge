@@ -269,6 +269,12 @@ Future<void> main({bool skipRustLibInit = false}) async {
             arg: EnumWithGoodAndOpaqueTwinSyncSse.good('hello')));
   });
 
+  test('enum opaque type', () async {
+    final obj = await rustAutoOpaqueEnumReturnOwnTwinSyncSse();
+    await futurizeVoidTwinSyncSse(
+        rustAutoOpaqueEnumArgBorrowTwinSyncSse(arg: obj));
+  });
+
   test('vec of opaque', () async {
     final vec = await rustAutoOpaqueReturnVecOwnTwinSyncSse();
 
