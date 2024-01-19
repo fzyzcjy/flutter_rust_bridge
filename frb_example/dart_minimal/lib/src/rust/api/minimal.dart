@@ -6,6 +6,9 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+Future<int> minimalAdder({required int a, required int b, dynamic hint}) =>
+    RustLib.instance.api.minimalAdder(a: a, b: b, hint: hint);
+
 Stream<Undurchsichtiger> anyhowTest({dynamic hint}) =>
     RustLib.instance.api.anyhowTest(hint: hint);
 
@@ -26,4 +29,9 @@ class Undurchsichtiger extends RustOpaque {
     rustArcDecrementStrongCountPtr: RustLib
         .instance.api.rust_arc_decrement_strong_count_UndurchsichtigerPtr,
   );
+
+  Future<Uint8List> read({dynamic hint}) =>
+      RustLib.instance.api.undurchsichtigerRead(
+        that: this,
+      );
 }
