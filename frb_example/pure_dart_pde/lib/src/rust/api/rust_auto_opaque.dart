@@ -5,7 +5,9 @@
 
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'pseudo_manual/rust_auto_opaque_twin_rust_async.dart';
+part 'rust_auto_opaque.freezed.dart';
 
 Future<void> rustAutoOpaqueArgOwnTwinNormal(
         {required NonCloneSimpleTwinNormal arg,
@@ -116,6 +118,34 @@ Future<StructWithGoodAndOpaqueFieldTwinNormal>
             .rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinNormal(
                 hint: hint);
 
+Future<void> rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinNormal(
+        {required EnumWithGoodAndOpaqueTwinNormal arg, dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinNormal(
+        arg: arg, hint: hint);
+
+Future<EnumWithGoodAndOpaqueTwinNormal>
+    rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinNormal(
+            {dynamic hint}) =>
+        RustLib.instance.api
+            .rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinNormal(
+                hint: hint);
+
+Future<EnumWithGoodAndOpaqueTwinNormal>
+    rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinNormal(
+            {dynamic hint}) =>
+        RustLib.instance.api
+            .rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinNormal(
+                hint: hint);
+
+Future<void> rustAutoOpaqueEnumArgBorrowTwinNormal(
+        {required NonCloneSimpleEnumTwinNormal arg, dynamic hint}) =>
+    RustLib.instance.api
+        .rustAutoOpaqueEnumArgBorrowTwinNormal(arg: arg, hint: hint);
+
+Future<NonCloneSimpleEnumTwinNormal> rustAutoOpaqueEnumReturnOwnTwinNormal(
+        {dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueEnumReturnOwnTwinNormal(hint: hint);
+
 Stream<NonCloneSimpleTwinNormal> rustAutoOpaqueStreamSinkTwinNormal(
         {dynamic hint}) =>
     RustLib.instance.api.rustAutoOpaqueStreamSinkTwinNormal(hint: hint);
@@ -207,6 +237,25 @@ class BoxMyTraitTwinNormal extends RustOpaque {
         .instance.api.rust_arc_decrement_strong_count_BoxMyTraitTwinNormal,
     rustArcDecrementStrongCountPtr: RustLib
         .instance.api.rust_arc_decrement_strong_count_BoxMyTraitTwinNormalPtr,
+  );
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleEnumTwinNormal>>
+@sealed
+class NonCloneSimpleEnumTwinNormal extends RustOpaque {
+  NonCloneSimpleEnumTwinNormal.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  NonCloneSimpleEnumTwinNormal.sseDecode(int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_NonCloneSimpleEnumTwinNormal,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_NonCloneSimpleEnumTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_NonCloneSimpleEnumTwinNormalPtr,
   );
 }
 
@@ -333,6 +382,17 @@ class OpaqueTwoTwinNormal extends RustOpaque {
     rustArcDecrementStrongCountPtr: RustLib
         .instance.api.rust_arc_decrement_strong_count_OpaqueTwoTwinNormalPtr,
   );
+}
+
+@freezed
+sealed class EnumWithGoodAndOpaqueTwinNormal
+    with _$EnumWithGoodAndOpaqueTwinNormal {
+  const factory EnumWithGoodAndOpaqueTwinNormal.good(
+    String field0,
+  ) = EnumWithGoodAndOpaqueTwinNormal_Good;
+  const factory EnumWithGoodAndOpaqueTwinNormal.opaque(
+    NonCloneSimpleTwinNormal field0,
+  ) = EnumWithGoodAndOpaqueTwinNormal_Opaque;
 }
 
 class StructWithExplicitAutoOpaqueFieldTwinNormal {

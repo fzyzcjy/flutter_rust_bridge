@@ -18,6 +18,13 @@ pub struct NonCloneSimpleTwinRustAsyncSseMoi {
     inner: i32,
 }
 
+#[frb(opaque)]
+// Do *NOT* make it Clone or serializable
+pub enum NonCloneSimpleEnumTwinRustAsyncSseMoi {
+    Apple,
+    Orange,
+}
+
 // ==================================== simple =======================================
 
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
@@ -298,7 +305,7 @@ impl NonCloneSimpleTwinRustAsyncSseMoi {
     }
 }
 
-// ================ types with both encodable and opaque fields ===================
+// ================ struct with both encodable and opaque fields ===================
 
 pub struct StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi {
     pub good: String,
@@ -322,6 +329,57 @@ pub async fn rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_
         good: "hello".to_string(),
         opaque: NonCloneSimpleTwinRustAsyncSseMoi { inner: 42 },
     }
+}
+
+// ================ enum with both encodable and opaque fields ===================
+
+pub enum EnumWithGoodAndOpaqueTwinRustAsyncSseMoi {
+    Good(String),
+    Opaque(NonCloneSimpleTwinRustAsyncSseMoi),
+}
+
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async_sse_moi(
+    arg: EnumWithGoodAndOpaqueTwinRustAsyncSseMoi,
+) {
+    match arg {
+        EnumWithGoodAndOpaqueTwinRustAsyncSseMoi::Good(inner) => assert_eq!(&inner, "hello"),
+        EnumWithGoodAndOpaqueTwinRustAsyncSseMoi::Opaque(inner) => assert_eq!(inner.inner, 42),
+    }
+}
+
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async_sse_moi(
+) -> EnumWithGoodAndOpaqueTwinRustAsyncSseMoi {
+    EnumWithGoodAndOpaqueTwinRustAsyncSseMoi::Good("hello".to_owned())
+}
+
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async_sse_moi(
+) -> EnumWithGoodAndOpaqueTwinRustAsyncSseMoi {
+    EnumWithGoodAndOpaqueTwinRustAsyncSseMoi::Opaque(NonCloneSimpleTwinRustAsyncSseMoi {
+        inner: 42,
+    })
+}
+
+// ================ enum opaque type ===================
+
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn rust_auto_opaque_enum_arg_borrow_twin_rust_async_sse_moi(
+    arg: &NonCloneSimpleEnumTwinRustAsyncSseMoi,
+) {
+    assert!(matches!(arg, NonCloneSimpleEnumTwinRustAsyncSseMoi::Orange));
+}
+
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn rust_auto_opaque_enum_return_own_twin_rust_async_sse_moi(
+) -> NonCloneSimpleEnumTwinRustAsyncSseMoi {
+    NonCloneSimpleEnumTwinRustAsyncSseMoi::Orange
 }
 
 // ================ stream sink ===================

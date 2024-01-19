@@ -5,6 +5,8 @@
 
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+part 'rust_auto_opaque_twin_rust_async.freezed.dart';
 
 Future<void> rustAutoOpaqueArgOwnTwinRustAsync(
         {required NonCloneSimpleTwinRustAsync arg,
@@ -117,6 +119,35 @@ Future<StructWithGoodAndOpaqueFieldTwinRustAsync>
             .rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinRustAsync(
                 hint: hint);
 
+Future<void> rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinRustAsync(
+        {required EnumWithGoodAndOpaqueTwinRustAsync arg, dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinRustAsync(
+        arg: arg, hint: hint);
+
+Future<EnumWithGoodAndOpaqueTwinRustAsync>
+    rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinRustAsync(
+            {dynamic hint}) =>
+        RustLib.instance.api
+            .rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinRustAsync(
+                hint: hint);
+
+Future<EnumWithGoodAndOpaqueTwinRustAsync>
+    rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinRustAsync(
+            {dynamic hint}) =>
+        RustLib.instance.api
+            .rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinRustAsync(
+                hint: hint);
+
+Future<void> rustAutoOpaqueEnumArgBorrowTwinRustAsync(
+        {required NonCloneSimpleEnumTwinRustAsync arg, dynamic hint}) =>
+    RustLib.instance.api
+        .rustAutoOpaqueEnumArgBorrowTwinRustAsync(arg: arg, hint: hint);
+
+Future<NonCloneSimpleEnumTwinRustAsync>
+    rustAutoOpaqueEnumReturnOwnTwinRustAsync({dynamic hint}) =>
+        RustLib.instance.api
+            .rustAutoOpaqueEnumReturnOwnTwinRustAsync(hint: hint);
+
 Stream<NonCloneSimpleTwinRustAsync> rustAutoOpaqueStreamSinkTwinRustAsync(
         {dynamic hint}) =>
     RustLib.instance.api.rustAutoOpaqueStreamSinkTwinRustAsync(hint: hint);
@@ -228,6 +259,25 @@ class BoxMyTraitTwinRustAsync extends RustOpaque {
         .instance.api.rust_arc_decrement_strong_count_BoxMyTraitTwinRustAsync,
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_BoxMyTraitTwinRustAsyncPtr,
+  );
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleEnumTwinRustAsync>>
+@sealed
+class NonCloneSimpleEnumTwinRustAsync extends RustOpaque {
+  NonCloneSimpleEnumTwinRustAsync.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  NonCloneSimpleEnumTwinRustAsync.sseDecode(int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_NonCloneSimpleEnumTwinRustAsync,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_NonCloneSimpleEnumTwinRustAsync,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_NonCloneSimpleEnumTwinRustAsyncPtr,
   );
 }
 
@@ -357,6 +407,17 @@ class OpaqueTwoTwinRustAsync extends RustOpaque {
     rustArcDecrementStrongCountPtr: RustLib
         .instance.api.rust_arc_decrement_strong_count_OpaqueTwoTwinRustAsyncPtr,
   );
+}
+
+@freezed
+sealed class EnumWithGoodAndOpaqueTwinRustAsync
+    with _$EnumWithGoodAndOpaqueTwinRustAsync {
+  const factory EnumWithGoodAndOpaqueTwinRustAsync.good(
+    String field0,
+  ) = EnumWithGoodAndOpaqueTwinRustAsync_Good;
+  const factory EnumWithGoodAndOpaqueTwinRustAsync.opaque(
+    NonCloneSimpleTwinRustAsync field0,
+  ) = EnumWithGoodAndOpaqueTwinRustAsync_Opaque;
 }
 
 class StructWithExplicitAutoOpaqueFieldTwinRustAsync {

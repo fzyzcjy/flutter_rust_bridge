@@ -274,7 +274,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     await futurizeVoidTwinNormal(
         rustAutoOpaqueArgBorrowTwinNormal(arg: obj, expect: 42));
   });
-  
+
   test('vec of opaque', () async {
     final vec = await rustAutoOpaqueReturnVecOwnTwinNormal();
 
