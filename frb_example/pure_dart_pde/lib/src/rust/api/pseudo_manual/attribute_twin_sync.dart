@@ -14,7 +14,7 @@ void handleCustomizedStructTwinSync(
     RustLib.instance.api.handleCustomizedStructTwinSync(val: val, hint: hint);
 
 UserIdTwinSync nextUserIdTwinSync(
-        {required UserIdTwinSync userId, dynamic hint}) =>
+        {UserIdTwinSync userId = const UserIdTwinSync(), dynamic hint}) =>
     RustLib.instance.api.nextUserIdTwinSync(userId: userId, hint: hint);
 
 class CustomizedTwinSync {

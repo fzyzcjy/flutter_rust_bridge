@@ -10,10 +10,10 @@ use proc_macro::*;
 // frb-coverage:ignore-start
 #[proc_macro_attribute]
 pub fn frb(attribute: TokenStream, item: TokenStream) -> TokenStream {
-    let mut attribute = format_frb_attribute(format!("#[frb({attribute})]"));
+    let mut output = format_frb_attribute(format!("#[frb({attribute})]"));
     let item = strip_frb_attr(item);
-    attribute.extend(item);
-    attribute
+    output.extend(item);
+    output
 }
 
 fn strip_frb_attr(item: TokenStream) -> TokenStream {
@@ -30,14 +30,16 @@ fn strip_frb_attr(item: TokenStream) -> TokenStream {
                     Some(format_frb_attribute(format!("#[{}]", group.stream())))
                 }
                 (_, T::Group(group)) => Some(
-                    pound
-                        .take()
-                        .into_iter()
-                        .chain(Some(T::Group(Group::new(
+                    [
+                        pound.take(),
+                        Some(T::Group(Group::new(
                             group.delimiter(),
                             strip_frb_attr(group.stream()),
-                        ))))
-                        .collect(),
+                        ))),
+                    ]
+                    .into_iter()
+                    .flatten()
+                    .collect(),
                 ),
                 _ => Some(tok.into()),
             }

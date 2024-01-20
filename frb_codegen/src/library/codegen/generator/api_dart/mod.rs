@@ -56,6 +56,12 @@ mod tests {
         body("library/codegen/generator/api_dart/mod/simple")
     }
 
+    #[test]
+    #[serial]
+    fn test_functions() -> anyhow::Result<()> {
+        body("library/codegen/generator/api_dart/mod/functions")
+    }
+
     fn body(fixture_name: &str) -> anyhow::Result<()> {
         configure_opinionated_test_logging();
         let test_fixture_dir = get_test_fixture_dir(fixture_name);

@@ -14,7 +14,7 @@ Future<void> handleCustomizedStructTwinNormal(
     RustLib.instance.api.handleCustomizedStructTwinNormal(val: val, hint: hint);
 
 Future<UserIdTwinNormal> nextUserIdTwinNormal(
-        {required UserIdTwinNormal userId, dynamic hint}) =>
+        {UserIdTwinNormal userId = const UserIdTwinNormal(), dynamic hint}) =>
     RustLib.instance.api.nextUserIdTwinNormal(userId: userId, hint: hint);
 
 class CustomizedTwinNormal {

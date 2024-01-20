@@ -55,6 +55,7 @@ notify = "6.1.1"
 notify-debouncer-mini = "0.4.1"
 
 [dev-dependencies]
+pretty_assertions = "1.4.0"
 semver = "1.0.12"
 
 [package.metadata.binstall]

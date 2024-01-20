@@ -38,7 +38,7 @@ macro_rules! command_run {
     }};
 }
 
-/// Formats a list of [`PathBuf`]s using the syntax detailed in [`run`].
+/// Formats a list of [`PathBuf`]s using the syntax detailed in [`command_run`].
 #[doc(hidden)]
 #[macro_export]
 macro_rules! command_args {
