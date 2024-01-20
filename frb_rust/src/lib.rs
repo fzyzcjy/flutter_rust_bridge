@@ -20,6 +20,8 @@ pub(crate) mod generalized_arc;
 pub(crate) mod internal_generated;
 #[doc(hidden)] // only to be used as `for_generated::rust_async`
 pub mod rust_async;
+#[cfg(feature = "rust-async")]
+pub(crate) mod rust_auto_opaque;
 pub(crate) mod rust_opaque;
 pub(crate) mod web_transfer;
 
@@ -40,6 +42,8 @@ pub use crate::rust2dart::sender::Rust2DartSendError;
 pub use crate::rust_async::spawn_blocking_with;
 #[cfg(feature = "rust-async")]
 pub use crate::rust_async::{spawn, spawn_local, JoinHandle};
+#[cfg(feature = "rust-async")]
+pub use crate::rust_auto_opaque::RustAutoOpaqueNom;
 #[allow(deprecated)]
 pub use crate::rust_opaque::{DartSafe, RustOpaqueNom};
 pub use flutter_rust_bridge_macros::frb;

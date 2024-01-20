@@ -1,6 +1,10 @@
 // FRB_INTERNAL_GENERATOR: {"enableAll": true}
 
+#[allow(unused_imports)]
+use crate::frb_generated::RustAutoOpaque;
+use crate::frb_generated::StreamSink;
 use flutter_rust_bridge::frb;
+use flutter_rust_bridge::rust_async::RwLock;
 use std::path::PathBuf;
 
 // TODO auto determine it is opaque or not later
@@ -8,6 +12,13 @@ use std::path::PathBuf;
 // Do *NOT* make it Clone or serializable
 pub struct NonCloneSimpleTwinNormal {
     inner: i32,
+}
+
+#[frb(opaque)]
+// Do *NOT* make it Clone or serializable
+pub enum NonCloneSimpleEnumTwinNormal {
+    Apple,
+    Orange,
 }
 
 // ==================================== simple =======================================
@@ -206,9 +217,8 @@ impl NonCloneSimpleTwinNormal {
     }
 }
 
-// ================ types with both encodable and opaque fields ===================
+// ================ struct with both encodable and opaque fields ===================
 
-#[frb(opaque)]
 pub struct StructWithGoodAndOpaqueFieldTwinNormal {
     pub good: String,
     pub opaque: NonCloneSimpleTwinNormal,
@@ -216,20 +226,6 @@ pub struct StructWithGoodAndOpaqueFieldTwinNormal {
 
 pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal(
     arg: StructWithGoodAndOpaqueFieldTwinNormal,
-) {
-    assert_eq!(&arg.good, "hello");
-    assert_eq!(arg.opaque.inner, 42);
-}
-
-pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_normal(
-    arg: &StructWithGoodAndOpaqueFieldTwinNormal,
-) {
-    assert_eq!(&arg.good, "hello");
-    assert_eq!(arg.opaque.inner, 42);
-}
-
-pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_normal(
-    arg: &mut StructWithGoodAndOpaqueFieldTwinNormal,
 ) {
     assert_eq!(&arg.good, "hello");
     assert_eq!(arg.opaque.inner, 42);
@@ -243,11 +239,100 @@ pub fn rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal
     }
 }
 
+// ================ enum with both encodable and opaque fields ===================
+
+pub enum EnumWithGoodAndOpaqueTwinNormal {
+    Good(String),
+    Opaque(NonCloneSimpleTwinNormal),
+}
+
+pub fn rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_normal(
+    arg: EnumWithGoodAndOpaqueTwinNormal,
+) {
+    match arg {
+        EnumWithGoodAndOpaqueTwinNormal::Good(inner) => assert_eq!(&inner, "hello"),
+        EnumWithGoodAndOpaqueTwinNormal::Opaque(inner) => assert_eq!(inner.inner, 42),
+    }
+}
+
+pub fn rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_normal(
+) -> EnumWithGoodAndOpaqueTwinNormal {
+    EnumWithGoodAndOpaqueTwinNormal::Good("hello".to_owned())
+}
+
+pub fn rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_normal(
+) -> EnumWithGoodAndOpaqueTwinNormal {
+    EnumWithGoodAndOpaqueTwinNormal::Opaque(NonCloneSimpleTwinNormal { inner: 42 })
+}
+
+// ================ enum opaque type ===================
+
+pub fn rust_auto_opaque_enum_arg_borrow_twin_normal(arg: &NonCloneSimpleEnumTwinNormal) {
+    assert!(matches!(arg, NonCloneSimpleEnumTwinNormal::Orange));
+}
+
+pub fn rust_auto_opaque_enum_return_own_twin_normal() -> NonCloneSimpleEnumTwinNormal {
+    NonCloneSimpleEnumTwinNormal::Orange
+}
+
+// ================ stream sink ===================
+
+pub fn rust_auto_opaque_stream_sink_twin_normal(sink: StreamSink<NonCloneSimpleTwinNormal>) {
+    sink.add(NonCloneSimpleTwinNormal { inner: 42 }).unwrap();
+}
+
+// ================ vec of opaque ===================
+
+pub fn rust_auto_opaque_arg_vec_own_twin_normal(
+    arg: Vec<NonCloneSimpleTwinNormal>,
+    expect: Vec<i32>,
+) {
+    for i in 0..expect.len() {
+        assert_eq!(arg[i].inner, expect[i]);
+    }
+}
+
+pub fn rust_auto_opaque_return_vec_own_twin_normal() -> Vec<NonCloneSimpleTwinNormal> {
+    vec![
+        NonCloneSimpleTwinNormal { inner: 10 },
+        NonCloneSimpleTwinNormal { inner: 20 },
+    ]
+}
+
+// ================ use explicit type ===================
+
+pub fn rust_auto_opaque_explicit_arg_twin_normal(
+    arg: RustAutoOpaque<NonCloneSimpleTwinNormal>,
+    expect: i32,
+) {
+    assert_eq!((*arg).try_read().unwrap().inner, expect);
+}
+
+pub struct StructWithExplicitAutoOpaqueFieldTwinNormal {
+    pub auto_opaque: RustAutoOpaque<NonCloneSimpleTwinNormal>,
+    pub normal: i32,
+}
+
+pub fn rust_auto_opaque_explicit_struct_twin_normal(
+    arg: StructWithExplicitAutoOpaqueFieldTwinNormal,
+) {
+    assert_eq!((*arg.auto_opaque).try_read().unwrap().inner, arg.normal);
+}
+
+pub fn rust_auto_opaque_explicit_return_twin_normal(
+    initial: i32,
+) -> RustAutoOpaque<NonCloneSimpleTwinNormal> {
+    RustAutoOpaque::new(RwLock::new(NonCloneSimpleTwinNormal { inner: initial }))
+}
+
 // ================ misc ===================
 
 // #1577 - this should generate valid Dart code without name collisions
+#[frb(opaque)]
 pub struct OpaqueOneTwinNormal(PathBuf);
+#[frb(opaque)]
 pub struct OpaqueTwoTwinNormal(PathBuf);
+
 pub fn rust_auto_opaque_return_opaque_one_and_two_twin_normal(
 ) -> (OpaqueOneTwinNormal, OpaqueTwoTwinNormal) {
     unimplemented!()

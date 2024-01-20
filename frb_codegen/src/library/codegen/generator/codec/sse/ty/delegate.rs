@@ -39,7 +39,22 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     "{ let boxed: Box<[_]> = Box::new(self); boxed.into_vec() }".to_owned()
                 }
                 IrTypeDelegate::String => "self.into_bytes()".to_owned(),
-                IrTypeDelegate::PrimitiveEnum(_) => "self as _".to_owned(),
+                IrTypeDelegate::PrimitiveEnum(ir) => {
+                    let src = ir.ir.get(self.context.ir_pack);
+                    let variants = (src.variants.iter().enumerate())
+                        .map(|(idx, variant)| {
+                            (
+                                format!("{}::{}", src.name.rust_style(), variant.name),
+                                format!("{idx}"),
+                            )
+                        })
+                        .collect_vec();
+                    lang.switch_expr(
+                        "self",
+                        &variants,
+                        Some(format!("{};", lang.throw_unimplemented(""))),
+                    )
+                }
                 IrTypeDelegate::Backtrace => r#"format!("{:?}", self)"#.to_owned(),
                 IrTypeDelegate::AnyhowException => r#"format!("{:?}", self)"#.to_owned(),
                 IrTypeDelegate::Map(_) => "self.into_iter().collect()".to_owned(),

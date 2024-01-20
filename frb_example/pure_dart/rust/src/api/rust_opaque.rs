@@ -28,6 +28,7 @@ pub enum EnumOpaqueTwinNormal {
     TraitObj(RustOpaque<Box<dyn DartDebugTwinNormal>>),
     Mutex(RustOpaque<Mutex<HideDataTwinNormal>>),
     RwLock(RustOpaque<RwLock<HideDataTwinNormal>>),
+    Nothing,
 }
 
 /// [`HideDataTwinNormal`] has private fields.
@@ -77,6 +78,7 @@ pub fn run_enum_opaque_twin_normal(opaque: EnumOpaqueTwinNormal) -> String {
         EnumOpaqueTwinNormal::RwLock(r) => {
             format!("{:?}", r.read().unwrap().0.hide_data())
         }
+        _ => "nothing".to_owned(),
     }
 }
 

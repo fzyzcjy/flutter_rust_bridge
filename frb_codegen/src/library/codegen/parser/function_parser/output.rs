@@ -1,10 +1,9 @@
 use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
-use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{EnumRef, StructRef};
 use crate::codegen::parser::function_parser::{FunctionParser, FunctionPartialInfo};
-use crate::codegen::parser::type_parser::unencodable::{splay_segments, ArgsRefs};
+use crate::codegen::parser::type_parser::unencodable::splay_segments;
 use crate::codegen::parser::type_parser::TypeParserParsingContext;
 use syn::*;
 
@@ -30,10 +29,14 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     ) -> anyhow::Result<FunctionPartialInfo> {
         let ir = self.type_parser.parse_type(ty, context)?;
 
-        if let IrType::Unencodable(IrTypeUnencodable { segments, .. }) = ir {
-            match splay_segments(&segments).last() {
-                Some(("Result", Some(ArgsRefs::Generic(args)))) => {
-                    return parse_fn_output_type_result(args);
+        if let IrType::RustAutoOpaque(inner) = ir {
+            match splay_segments(&inner.raw.segments).last() {
+                Some(("Result", args)) => {
+                    return parse_fn_output_type_result(
+                        &(args.iter())
+                            .map(|arg| self.type_parser.parse_type(arg, context))
+                            .collect::<anyhow::Result<Vec<_>>>()?,
+                    );
                 }
                 _ => {}
             }
@@ -50,9 +53,11 @@ fn parse_fn_output_type_result(args: &[IrType]) -> anyhow::Result<FunctionPartia
     let ok_output = args.first().unwrap();
 
     let is_anyhow = args.len() == 1
-        || args.iter().any(|x| match x {
-            IrType::Unencodable(IrTypeUnencodable { string, .. }) => string == "anyhow :: Error",
-            _ => false,
+        || args.iter().any(|x| {
+            if let IrType::RustAutoOpaque(inner) = x {
+                return inner.raw.string == "anyhow :: Error";
+            }
+            false
         });
 
     let error_output = if is_anyhow {

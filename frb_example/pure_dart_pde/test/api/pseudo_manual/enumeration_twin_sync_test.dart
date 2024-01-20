@@ -37,6 +37,11 @@ Future<void> main({bool skipRustLibInit = false}) async {
     EnumWithItemTupleTwinSync.b(Int32List.fromList([200])),
   ]);
 
+  addTestsIdentityFunctionCall(funcEnumWithDiscriminantTwinSync, [
+    EnumWithDiscriminantTwinSync.oneHundred,
+    EnumWithDiscriminantTwinSync.fifty,
+  ]);
+
   group('example-based tests', () {
     test('dart call handleReturnEnum', () async {
       expect(await handleReturnEnumTwinSync(input: "Tuesday"),

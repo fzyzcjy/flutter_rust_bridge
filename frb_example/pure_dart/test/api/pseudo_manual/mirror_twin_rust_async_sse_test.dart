@@ -146,6 +146,11 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(output.test.value, "test");
     expect(output.test2.a, "test");
   });
+
+  test('test_hashmap_with_mirrored_value', () async {
+    final output = await testHashmapWithMirroredValueTwinRustAsyncSse();
+    expect(output.map, {'key': HashMapValue(inner: 'value')});
+  });
 }
 
 int _createGarbage() {

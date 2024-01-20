@@ -2,6 +2,7 @@ use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::codec::structs::{
     BaseCodecEntrypointTrait, CodecMode, EncodeOrDecode,
 };
+use crate::codegen::generator::misc::comments::generate_codec_comments;
 use crate::codegen::generator::wire::misc::has_port_argument;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
 use crate::codegen::generator::wire::rust::spec_generator::codec::base::{
@@ -99,6 +100,7 @@ pub(crate) fn generate_ffi_dispatcher_raw(
                 ),
             };
             let variants = &variants[&mode];
+            let comments = generate_codec_comments(CodecMode::Pde);
 
             format!(
                 "
@@ -108,6 +110,7 @@ pub(crate) fn generate_ffi_dispatcher_raw(
                     rust_vec_len: i32,
                     data_len: i32,
                 ) {maybe_return} {{
+                    {comments}
                     match func_id {{
                         {variants}
                         _ => unreachable!(),

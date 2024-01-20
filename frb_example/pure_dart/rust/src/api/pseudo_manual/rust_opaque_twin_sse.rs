@@ -32,6 +32,7 @@ pub enum EnumOpaqueTwinSse {
     TraitObj(RustOpaque<Box<dyn DartDebugTwinSse>>),
     Mutex(RustOpaque<Mutex<HideDataTwinSse>>),
     RwLock(RustOpaque<RwLock<HideDataTwinSse>>),
+    Nothing,
 }
 
 /// [`HideDataTwinSse`] has private fields.
@@ -85,6 +86,7 @@ pub fn run_enum_opaque_twin_sse(opaque: EnumOpaqueTwinSse) -> String {
         EnumOpaqueTwinSse::RwLock(r) => {
             format!("{:?}", r.read().unwrap().0.hide_data())
         }
+        _ => "nothing".to_owned(),
     }
 }
 

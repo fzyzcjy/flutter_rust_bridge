@@ -6,7 +6,11 @@
 
 // FRB_INTERNAL_GENERATOR: {"enableAll": true}
 
+#[allow(unused_imports)]
+use crate::frb_generated::RustAutoOpaque;
+use crate::frb_generated::StreamSink;
 use flutter_rust_bridge::frb;
+use flutter_rust_bridge::rust_async::RwLock;
 use std::path::PathBuf;
 
 // TODO auto determine it is opaque or not later
@@ -14,6 +18,13 @@ use std::path::PathBuf;
 // Do *NOT* make it Clone or serializable
 pub struct NonCloneSimpleTwinSync {
     inner: i32,
+}
+
+#[frb(opaque)]
+// Do *NOT* make it Clone or serializable
+pub enum NonCloneSimpleEnumTwinSync {
+    Apple,
+    Orange,
 }
 
 // ==================================== simple =======================================
@@ -236,9 +247,8 @@ impl NonCloneSimpleTwinSync {
     }
 }
 
-// ================ types with both encodable and opaque fields ===================
+// ================ struct with both encodable and opaque fields ===================
 
-#[frb(opaque)]
 pub struct StructWithGoodAndOpaqueFieldTwinSync {
     pub good: String,
     pub opaque: NonCloneSimpleTwinSync,
@@ -253,22 +263,6 @@ pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync(
 }
 
 #[flutter_rust_bridge::frb(sync)]
-pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync(
-    arg: &StructWithGoodAndOpaqueFieldTwinSync,
-) {
-    assert_eq!(&arg.good, "hello");
-    assert_eq!(arg.opaque.inner, 42);
-}
-
-#[flutter_rust_bridge::frb(sync)]
-pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync(
-    arg: &mut StructWithGoodAndOpaqueFieldTwinSync,
-) {
-    assert_eq!(&arg.good, "hello");
-    assert_eq!(arg.opaque.inner, 42);
-}
-
-#[flutter_rust_bridge::frb(sync)]
 pub fn rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync(
 ) -> StructWithGoodAndOpaqueFieldTwinSync {
     StructWithGoodAndOpaqueFieldTwinSync {
@@ -277,11 +271,106 @@ pub fn rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync(
     }
 }
 
+// ================ enum with both encodable and opaque fields ===================
+
+pub enum EnumWithGoodAndOpaqueTwinSync {
+    Good(String),
+    Opaque(NonCloneSimpleTwinSync),
+}
+
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync(
+    arg: EnumWithGoodAndOpaqueTwinSync,
+) {
+    match arg {
+        EnumWithGoodAndOpaqueTwinSync::Good(inner) => assert_eq!(&inner, "hello"),
+        EnumWithGoodAndOpaqueTwinSync::Opaque(inner) => assert_eq!(inner.inner, 42),
+    }
+}
+
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync(
+) -> EnumWithGoodAndOpaqueTwinSync {
+    EnumWithGoodAndOpaqueTwinSync::Good("hello".to_owned())
+}
+
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync(
+) -> EnumWithGoodAndOpaqueTwinSync {
+    EnumWithGoodAndOpaqueTwinSync::Opaque(NonCloneSimpleTwinSync { inner: 42 })
+}
+
+// ================ enum opaque type ===================
+
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_enum_arg_borrow_twin_sync(arg: &NonCloneSimpleEnumTwinSync) {
+    assert!(matches!(arg, NonCloneSimpleEnumTwinSync::Orange));
+}
+
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_enum_return_own_twin_sync() -> NonCloneSimpleEnumTwinSync {
+    NonCloneSimpleEnumTwinSync::Orange
+}
+
+// ================ stream sink ===================
+
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_stream_sink_twin_sync(sink: StreamSink<NonCloneSimpleTwinSync>) {
+    sink.add(NonCloneSimpleTwinSync { inner: 42 }).unwrap();
+}
+
+// ================ vec of opaque ===================
+
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_arg_vec_own_twin_sync(arg: Vec<NonCloneSimpleTwinSync>, expect: Vec<i32>) {
+    for i in 0..expect.len() {
+        assert_eq!(arg[i].inner, expect[i]);
+    }
+}
+
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_return_vec_own_twin_sync() -> Vec<NonCloneSimpleTwinSync> {
+    vec![
+        NonCloneSimpleTwinSync { inner: 10 },
+        NonCloneSimpleTwinSync { inner: 20 },
+    ]
+}
+
+// ================ use explicit type ===================
+
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_explicit_arg_twin_sync(
+    arg: RustAutoOpaque<NonCloneSimpleTwinSync>,
+    expect: i32,
+) {
+    assert_eq!((*arg).try_read().unwrap().inner, expect);
+}
+
+pub struct StructWithExplicitAutoOpaqueFieldTwinSync {
+    pub auto_opaque: RustAutoOpaque<NonCloneSimpleTwinSync>,
+    pub normal: i32,
+}
+
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_explicit_struct_twin_sync(arg: StructWithExplicitAutoOpaqueFieldTwinSync) {
+    assert_eq!((*arg.auto_opaque).try_read().unwrap().inner, arg.normal);
+}
+
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_explicit_return_twin_sync(
+    initial: i32,
+) -> RustAutoOpaque<NonCloneSimpleTwinSync> {
+    RustAutoOpaque::new(RwLock::new(NonCloneSimpleTwinSync { inner: initial }))
+}
+
 // ================ misc ===================
 
 // #1577 - this should generate valid Dart code without name collisions
+#[frb(opaque)]
 pub struct OpaqueOneTwinSync(PathBuf);
+#[frb(opaque)]
 pub struct OpaqueTwoTwinSync(PathBuf);
+
 #[flutter_rust_bridge::frb(sync)]
 pub fn rust_auto_opaque_return_opaque_one_and_two_twin_sync(
 ) -> (OpaqueOneTwinSync, OpaqueTwoTwinSync) {

@@ -1,13 +1,30 @@
 use crate::codegen::ir::namespace::Namespace;
-use crate::codegen::ir::ty::ownership::IrTypeOwnershipMode;
-use crate::codegen::ir::ty::rust_opaque::IrTypeRustOpaque;
+use crate::codegen::ir::ty::rust_opaque::{IrTypeRustOpaque, NameComponent};
 use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
+use serde::Serialize;
 
 crate::ir! {
 pub struct IrTypeRustAutoOpaque {
-    pub ownership_mode: IrTypeOwnershipMode,
+    pub ownership_mode: OwnershipMode,
     pub inner: IrTypeRustOpaque,
+    pub raw: IrRustAutoOpaqueRaw,
 }
+
+/// Original type without any transformation
+pub struct IrRustAutoOpaqueRaw {
+    pub string: String,
+    pub segments: Vec<NameComponent>,
+}
+}
+
+#[derive(Debug, Clone, Hash, Eq, PartialEq, Serialize, strum_macros::Display)]
+pub enum OwnershipMode {
+    /// "T"
+    Owned,
+    /// "&T"
+    Ref,
+    /// "&mut T"
+    RefMut,
 }
 
 impl IrTypeTrait for IrTypeRustAutoOpaque {
@@ -24,7 +41,11 @@ impl IrTypeTrait for IrTypeRustAutoOpaque {
     }
 
     fn rust_api_type(&self) -> String {
-        self.inner.rust_api_type()
+        match self.ownership_mode {
+            // Different mechanisms for Owned vs Ref/RefMut
+            OwnershipMode::Owned => self.raw.string.clone(),
+            OwnershipMode::Ref | OwnershipMode::RefMut => self.inner.rust_api_type(),
+        }
     }
 
     fn self_namespace(&self) -> Option<Namespace> {
@@ -34,6 +55,6 @@ impl IrTypeTrait for IrTypeRustAutoOpaque {
 
 impl IrTypeRustAutoOpaque {
     pub(crate) fn needs_move(&self) -> bool {
-        self.ownership_mode == IrTypeOwnershipMode::Owned
+        self.ownership_mode == OwnershipMode::Owned
     }
 }

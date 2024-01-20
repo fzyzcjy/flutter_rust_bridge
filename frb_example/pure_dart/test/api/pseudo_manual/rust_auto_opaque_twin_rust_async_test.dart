@@ -247,18 +247,87 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(await obj.instanceMethodGetterTwinRustAsync, 42);
   });
 
-  test('types with both encodable and opaque fields', () async {
+  test('structs with both encodable and opaque fields', () async {
     final obj =
         await rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinRustAsync();
+    expect(obj.good, 'hello');
     await futurizeVoidTwinRustAsync(
-        rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinRustAsync(
-            arg: obj));
-    await futurizeVoidTwinRustAsync(
-        rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinRustAsync(
-            arg: obj));
+        rustAutoOpaqueArgBorrowTwinRustAsync(arg: obj.opaque, expect: 42));
     await futurizeVoidTwinRustAsync(
         rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinRustAsync(
             arg: obj));
+  });
+
+  test('enums with both encodable and opaque', () async {
+    final good =
+        (await rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinRustAsync());
+    final opaque =
+        (await rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinRustAsync());
+
+    await futurizeVoidTwinRustAsync(
+        rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinRustAsync(arg: good));
+    await futurizeVoidTwinRustAsync(
+        rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinRustAsync(arg: opaque));
+
+    await futurizeVoidTwinRustAsync(
+        rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinRustAsync(
+            arg: EnumWithGoodAndOpaqueTwinRustAsync.good('hello')));
+  });
+
+  test('enum opaque type', () async {
+    final obj = await rustAutoOpaqueEnumReturnOwnTwinRustAsync();
+    await futurizeVoidTwinRustAsync(
+        rustAutoOpaqueEnumArgBorrowTwinRustAsync(arg: obj));
+  });
+
+  test('stream sink', () async {
+    final stream = await rustAutoOpaqueStreamSinkTwinRustAsync();
+    final obj = (await stream.toList()).single;
+    await futurizeVoidTwinRustAsync(
+        rustAutoOpaqueArgBorrowTwinRustAsync(arg: obj, expect: 42));
+  });
+
+  test('vec of opaque', () async {
+    final vec = await rustAutoOpaqueReturnVecOwnTwinRustAsync();
+
+    expect(vec.length, 2);
+    await futurizeVoidTwinRustAsync(
+        rustAutoOpaqueArgBorrowTwinRustAsync(arg: vec[0], expect: 10));
+    await futurizeVoidTwinRustAsync(
+        rustAutoOpaqueArgBorrowTwinRustAsync(arg: vec[1], expect: 20));
+
+    await futurizeVoidTwinRustAsync(
+        rustAutoOpaqueArgVecOwnTwinRustAsync(arg: vec, expect: [10, 20]));
+  });
+
+  group('Explicit rust-auto-opaque types', () {
+    test('it can be created and used', () async {
+      final obj = await rustAutoOpaqueExplicitReturnTwinRustAsync(initial: 100);
+      await futurizeVoidTwinRustAsync(
+          rustAutoOpaqueExplicitArgTwinRustAsync(arg: obj, expect: 100));
+    });
+
+    test('it can be inside a struct', () async {
+      final obj = await rustAutoOpaqueExplicitReturnTwinRustAsync(initial: 100);
+      await futurizeVoidTwinRustAsync(rustAutoOpaqueExplicitStructTwinRustAsync(
+          arg: StructWithExplicitAutoOpaqueFieldTwinRustAsync(
+              autoOpaque: obj, normal: 100)));
+    });
+
+    group('it can be used with automatic (implicit) ones', () {
+      test('create by explicit, use by implicit', () async {
+        final obj =
+            await rustAutoOpaqueExplicitReturnTwinRustAsync(initial: 100);
+        await futurizeVoidTwinRustAsync(
+            rustAutoOpaqueArgOwnTwinRustAsync(arg: obj, expect: 100));
+      });
+
+      test('create by implicit, use by explicit', () async {
+        final obj = await rustAutoOpaqueReturnOwnTwinRustAsync(initial: 100);
+        await futurizeVoidTwinRustAsync(
+            rustAutoOpaqueExplicitArgTwinRustAsync(arg: obj, expect: 100));
+      });
+    });
   });
 
   group('borrow + mut borrow', () {

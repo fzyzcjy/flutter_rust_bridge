@@ -14,8 +14,7 @@ pub unsafe fn decode_rust_opaque_nom<T: Send + Sync>(ptr: usize) -> RustOpaqueNo
 #[macro_export]
 macro_rules! frb_generated_rust_opaque_dart2rust {
     () => {
-        use $crate::for_generated::{decode_rust_opaque_nom, StdArc};
-        use $crate::RustOpaqueNom;
+        use $crate::for_generated::decode_rust_opaque_nom;
 
         // This does not have `unsafe` keyword, thus is a separate function
         fn decode_rust_opaque_moi<T: MoiArcValue + Send + Sync>(ptr: usize) -> RustOpaqueMoi<T> {
