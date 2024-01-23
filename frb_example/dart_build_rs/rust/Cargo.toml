@@ -1,5 +1,5 @@
 [package]
-name = "frb_example_dart_minimal"
+name = "frb_example_dart_build_rs"
 version = "0.1.0"
 edition = "2021"
 
