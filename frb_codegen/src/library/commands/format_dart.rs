@@ -6,8 +6,8 @@ use log::debug;
 use std::path::{Path, PathBuf};
 
 #[allow(clippy::vec_init_then_push)]
-pub fn format_dart(path: &[PathBuf], base_path: &Path, line_length: u32) -> anyhow::Result<()> {
-    let path = normalize_windows_unc_paths(path)?;
+pub fn format_dart(paths: &[PathBuf], base_path: &Path, line_length: u32) -> anyhow::Result<()> {
+    let paths = normalize_windows_unc_paths(paths)?;
     debug!("execute format_dart path={path:?} line_length={line_length}");
 
     let res = command_run!(
@@ -16,7 +16,7 @@ pub fn format_dart(path: &[PathBuf], base_path: &Path, line_length: u32) -> anyh
         "format",
         "--line-length",
         line_length.to_string(),
-        *path
+        *paths
     )?;
     check_exit_code(&res)?;
     Ok(())
