@@ -113,7 +113,7 @@ pub(crate) fn execute_command<'a>(
 
     let result = cmd
         .output()
-        .with_context(|| format!("\"{bin}\" \"{args_display}\" failed"))?;
+        .with_context(|| format!(r#""{bin}" "{args_display}" failed (cmd={cmd:?})"#))?;
 
     let stdout = String::from_utf8_lossy(&result.stdout);
     if result.status.success() {
