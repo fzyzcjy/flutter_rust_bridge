@@ -15,10 +15,17 @@ use crate::codegen::dumper::internal_config::ConfigDumpContent::Config as Conten
 use crate::codegen::dumper::Dumper;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::codegen::parser::reader::CachedRustReader;
+use crate::utils::logs::configure_opinionated_logging;
 pub use config::config::{Config, MetaConfig};
 pub use config::config_parser::*;
 pub use dumper::internal_config::ConfigDumpContent;
 use log::debug;
+
+/// Execute the main code generator, with config automatically found
+pub fn generate_auto() -> anyhow::Result<()> {
+    configure_opinionated_logging()?;
+    TODO
+}
 
 /// Execute the main code generator
 pub fn generate(config: Config, meta_config: MetaConfig) -> anyhow::Result<()> {
