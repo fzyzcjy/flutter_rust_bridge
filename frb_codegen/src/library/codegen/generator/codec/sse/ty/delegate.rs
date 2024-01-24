@@ -131,7 +131,9 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                         }
                     }
                 }
-                IrTypeDelegate::Uuid => "uuid::Uuid::from_slice(&inner)".to_owned(),
+                IrTypeDelegate::Uuid => {
+                    r#"uuid::Uuid::from_slice(&inner).expect("fail to decode uuid")"#.to_owned()
+                }
             },
         };
 
