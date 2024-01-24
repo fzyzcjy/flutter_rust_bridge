@@ -60,7 +60,10 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     IrTypeDelegateTime::Utc
                     | IrTypeDelegateTime::Local
                     | IrTypeDelegateTime::Naive => "self.timestamp_micros()".to_owned(),
-                    IrTypeDelegateTime::Duration => "self.num_microseconds()".to_owned(),
+                    IrTypeDelegateTime::Duration => {
+                        r#"self.num_microseconds().expect("cannot get microseconds from time")"#
+                            .to_owned()
+                    }
                 },
                 IrTypeDelegate::Uuid => "self.as_bytes().to_vec()".to_owned(),
             },
