@@ -9,14 +9,7 @@ use std::path::{Path, PathBuf};
 
 #[allow(clippy::vec_init_then_push)]
 pub fn format_dart(paths: &[PathBuf], base_path: &Path, line_length: u32) -> anyhow::Result<()> {
-    let paths = (paths.iter())
-        .map(|path| {
-            let path: PathBuf =
-                (normalize_windows_unc_path(&path_to_string(path)?).to_owned()).into();
-            let path = diff_paths(path, base_path).context("diff path")?;
-            Ok(path)
-        })
-        .collect()?;
+    let paths = prepare_paths(paths, base_path)?;
     debug!("execute format_dart paths={paths:?} line_length={line_length}");
 
     let res = command_run!(
@@ -29,4 +22,15 @@ pub fn format_dart(paths: &[PathBuf], base_path: &Path, line_length: u32) -> any
     )?;
     check_exit_code(&res)?;
     Ok(())
+}
+
+pub(super) fn prepare_paths(paths: &[PathBuf], base_path: &Path) -> anyhow::Result<Vec<PathBuf>> {
+    (paths.iter())
+        .map(|path| {
+            let path: PathBuf =
+                (normalize_windows_unc_path(&path_to_string(path)?).to_owned()).into();
+            let path = diff_paths(path, base_path).context("diff path")?;
+            Ok(path)
+        })
+        .collect()
 }
