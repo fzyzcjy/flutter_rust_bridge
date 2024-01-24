@@ -129,9 +129,9 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     let naive = "chrono::NaiveDateTime::from_timestamp_millis(inner).expect(\"invalid or out-of-range datetime\")";
                     let utc = format!("chrono::DateTime::<chrono::Utc>::from_naive_utc_and_offset({naive}, chrono::Utc)");
                     match ir {
-                        IrTypeDelegateTime::Naive => naive,
+                        IrTypeDelegateTime::Naive => naive.to_owned(),
                         IrTypeDelegateTime::Utc => utc,
-                        IrTypeDelegateTime::Local => format!("chrono::DateTime::<chrono::Local>::from({codegen_utc})"),
+                        IrTypeDelegateTime::Local => format!("chrono::DateTime::<chrono::Local>::from({utc})"),
                         IrTypeDelegateTime::Duration => "chrono::Duration::milliseconds(self)".to_owned(),
                     }
                 },
