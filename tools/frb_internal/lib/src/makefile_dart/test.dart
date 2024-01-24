@@ -15,6 +15,7 @@ import 'package:flutter_rust_bridge_internal/src/utils/codecov_transformer.dart'
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 import 'package:meta/meta.dart';
 import 'package:retry/retry.dart';
+import 'package:yaml/yaml.dart';
 
 part 'test.g.dart';
 
@@ -161,12 +162,14 @@ class MimicQuickstartTester {
 
   static void _prepareDir() {
     Directory('${exec.pwd}frb_example').createSync(recursive: true);
-    final targetDir =
-        Directory('${exec.pwd}frb_example/$_kMimicQuickstartPackageName/');
+    final targetDir = Directory(_baseDir);
     if (targetDir.existsSync()) targetDir.deleteSync(recursive: true);
   }
 
   static const _kMimicQuickstartPackageName = 'my_app';
+
+  static String get _baseDir =>
+      '${exec.pwd}frb_example/$_kMimicQuickstartPackageName/';
 
   Future<void> _quickstartStepCreate() async {
     await executeFrbCodegen(
@@ -244,6 +247,11 @@ class MimicQuickstartTester {
 
 Future<void> testUpgrade() async {
   void checkVersion({required String expectVersion}) {
+    final baseDir = MimicQuickstartTester._baseDir;
+
+    final pubspecYaml =
+        loadYaml(File('${baseDir}pubspec.yaml').readAsStringSync());
+    final dartVersion = pubspecYaml['dependencies']['flutter_rust_bridge'];
     TODO;
   }
 
