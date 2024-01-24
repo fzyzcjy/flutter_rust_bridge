@@ -26,8 +26,8 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::Time(ir) => match ir {
                     IrTypeDelegateTime::Utc
                     | IrTypeDelegateTime::Local
-                    | IrTypeDelegateTime::Naive => "self.millisecondsSinceEpoch".to_owned(),
-                    IrTypeDelegateTime::Duration => "self.inMilliseconds".to_owned(),
+                    | IrTypeDelegateTime::Naive => "self.microsecondsSinceEpoch".to_owned(),
+                    IrTypeDelegateTime::Duration => "self.inMicroseconds".to_owned(),
                 },
                 IrTypeDelegate::Uuid => "self.toBytes()".to_owned(),
             },
@@ -59,8 +59,8 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::Time(ir) => match ir {
                     IrTypeDelegateTime::Utc
                     | IrTypeDelegateTime::Local
-                    | IrTypeDelegateTime::Naive => "self.timestamp_millis()".to_owned(),
-                    IrTypeDelegateTime::Duration => "self.num_milliseconds()".to_owned(),
+                    | IrTypeDelegateTime::Naive => "self.timestamp_micros()".to_owned(),
+                    IrTypeDelegateTime::Duration => "self.num_microseconds()".to_owned(),
                 },
                 IrTypeDelegate::Uuid => "self.as_bytes().to_vec()".to_owned(),
             },
@@ -99,12 +99,12 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     | IrTypeDelegateTime::Local
                     | IrTypeDelegateTime::Naive => {
                         format!(
-                            "DateTime.fromMillisecondsSinceEpoch(inner, isUtc: {is_utc})",
+                            "DateTime.fromMicrosecondsSinceEpoch(inner, isUtc: {is_utc})",
                             is_utc =
                                 matches!(ir, IrTypeDelegateTime::Naive | IrTypeDelegateTime::Utc),
                         )
                     }
-                    IrTypeDelegateTime::Duration => "Duration(milliseconds: inner)".to_owned(),
+                    IrTypeDelegateTime::Duration => "Duration(microseconds: inner)".to_owned(),
                 },
                 IrTypeDelegate::Uuid => "UuidValue.fromByteList(inner)".to_owned(),
             },
@@ -122,7 +122,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::Map(_) => "inner.into_iter().collect()".to_owned(),
                 IrTypeDelegate::Set(_) => "inner.into_iter().collect()".to_owned(),
                 IrTypeDelegate::Time(ir) => {
-                    let naive = "chrono::NaiveDateTime::from_timestamp_millis(inner).expect(\"invalid or out-of-range datetime\")";
+                    let naive = "chrono::NaiveDateTime::from_timestamp_micros(inner).expect(\"invalid or out-of-range datetime\")";
                     let utc = format!("chrono::DateTime::<chrono::Utc>::from_naive_utc_and_offset({naive}, chrono::Utc)");
                     match ir {
                         IrTypeDelegateTime::Naive => naive.to_owned(),
@@ -131,7 +131,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                             format!("chrono::DateTime::<chrono::Local>::from({utc})")
                         }
                         IrTypeDelegateTime::Duration => {
-                            "chrono::Duration::milliseconds(inner)".to_owned()
+                            "chrono::Duration::microseconds(inner)".to_owned()
                         }
                     }
                 }
