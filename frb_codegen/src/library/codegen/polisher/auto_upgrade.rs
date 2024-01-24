@@ -12,14 +12,15 @@ pub(super) fn execute(
     progress_bar_pack: &GeneratorProgressBarPack,
     dart_root: &Path,
     rust_crate_dir: &Path,
+    enable_local_dependency: bool,
 ) -> Result<()> {
     let _pb = progress_bar_pack.polish_upgrade.start();
-    DartUpgrader::execute(dart_root)?;
-    RustUpgrader::execute(rust_crate_dir)
+    DartUpgrader::execute(dart_root, enable_local_dependency)?;
+    RustUpgrader::execute(rust_crate_dir, enable_local_dependency)
 }
 
 trait Upgrader {
-    fn execute(base_dir: &Path) -> Result<()> {
+    fn execute(base_dir: &Path, enable_local_dependency: bool) -> Result<()> {
         if !Self::check(base_dir)? {
             Self::upgrade(base_dir)?;
         }
@@ -28,7 +29,7 @@ trait Upgrader {
 
     fn check(base_dir: &Path) -> Result<bool>;
 
-    fn upgrade(base_dir: &Path) -> Result<()>;
+    fn upgrade(base_dir: &Path, enable_local_dependency: bool) -> Result<()>;
 }
 
 struct DartUpgrader;
@@ -45,8 +46,8 @@ impl Upgrader for DartUpgrader {
             .is_ok())
     }
 
-    fn upgrade(base_dir: &Path) -> Result<()> {
-        pub_add_dependency_frb(false, Some(base_dir))
+    fn upgrade(base_dir: &Path, enable_local_dependency: bool) -> Result<()> {
+        pub_add_dependency_frb(enable_local_dependency, Some(base_dir))
     }
 }
 
@@ -59,7 +60,7 @@ impl Upgrader for RustUpgrader {
         Ok(dep.req() == format!("={}", env!("CARGO_PKG_VERSION")))
     }
 
-    fn upgrade(base_dir: &Path) -> Result<()> {
+    fn upgrade(base_dir: &Path, enable_local_dependency: bool) -> Result<()> {
         cargo_add(
             &format!("flutter_rust_bridge@={}", env!("CARGO_PKG_VERSION")),
             base_dir,

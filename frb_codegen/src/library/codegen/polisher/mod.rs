@@ -46,7 +46,12 @@ pub(super) fn polish(
     );
 
     warn_if_fail(
-        auto_upgrade::execute(progress_bar_pack, &config.dart_root, &config.rust_crate_dir),
+        auto_upgrade::execute(
+            progress_bar_pack,
+            &config.dart_root,
+            &config.rust_crate_dir,
+            config.enable_local_dependency,
+        ),
         "auto_upgrade",
     );
 
