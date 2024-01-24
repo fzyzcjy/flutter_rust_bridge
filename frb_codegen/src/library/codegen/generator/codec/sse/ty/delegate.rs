@@ -104,7 +104,9 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::Time(ir) => match ir {
                     IrTypeDelegateTime::Utc
                     | IrTypeDelegateTime::Local
-                    | IrTypeDelegateTime::Naive => "DateTime.fromMillisecondsSinceEpoch(inner, isUtc: TODO)".to_owned(),
+                    | IrTypeDelegateTime::Naive => {
+                        "DateTime.fromMillisecondsSinceEpoch(inner, isUtc: TODO)".to_owned()
+                    }
                     IrTypeDelegateTime::Duration => "Duration(milliseconds: inner)".to_owned(),
                 },
                 IrTypeDelegate::Uuid => "UuidValue.fromByteList(inner)".to_owned(),
@@ -131,15 +133,15 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     match ir {
                         IrTypeDelegateTime::Naive => naive.to_owned(),
                         IrTypeDelegateTime::Utc => utc,
-                        IrTypeDelegateTime::Local => format!("chrono::DateTime::<chrono::Local>::from({utc})"),
-                        IrTypeDelegateTime::Duration => "chrono::Duration::milliseconds(self)".to_owned(),
+                        IrTypeDelegateTime::Local => {
+                            format!("chrono::DateTime::<chrono::Local>::from({utc})")
+                        }
+                        IrTypeDelegateTime::Duration => {
+                            "chrono::Duration::milliseconds(self)".to_owned()
+                        }
                     }
-                },
-                IrTypeDelegate::Uuid => Acc::distribute(
-                    Some(
-                        "let single: Vec<u8> = self.cst_decode(); flutter_rust_bridge::for_generated::decode_uuid(single)".into(),
-                    ),
-                ),
+                }
+                IrTypeDelegate::Uuid => "uuid::Uuid::from_slice(&inner)".to_owned(),
                 // frb-coverage:ignore-start
                 _ => unreachable!(),
                 // frb-coverage:ignore-end
