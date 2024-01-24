@@ -1,7 +1,10 @@
+use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::codegen::generator::codec::sse::lang::*;
 use crate::codegen::generator::codec::sse::ty::*;
-use crate::codegen::ir::ty::delegate::{IrTypeDelegatePrimitiveEnum, IrTypeDelegateSet};
+use crate::codegen::ir::ty::delegate::{
+    IrTypeDelegatePrimitiveEnum, IrTypeDelegateSet, IrTypeDelegateTime,
+};
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use itertools::Itertools;
 
@@ -21,8 +24,18 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::Set(ir) => {
                     generate_set_to_list(ir, self.context.as_api_dart_context(), "self")
                 }
-                IrTypeDelegate::Time(_) => TODO,
-                IrTypeDelegate::Uuid => TODO,
+                IrTypeDelegate::Time(ir) => match ir {
+                    IrTypeDelegateTime::Utc
+                    | IrTypeDelegateTime::Local
+                    | IrTypeDelegateTime::Naive => {
+                        "return cst_encode_i_64(raw.millisecondsSinceEpoch);"
+                    }
+                    IrTypeDelegateTime::Duration => "return cst_encode_i_64(raw.inMilliseconds);",
+                },
+                IrTypeDelegate::Uuid => format!(
+                    "return cst_encode_{}(raw.toBytes());",
+                    uint8list_safe_ident(true)
+                ),
                 // frb-coverage:ignore-start
                 _ => unreachable!(),
                 // frb-coverage:ignore-end
@@ -88,8 +101,20 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     "Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)))".to_owned()
                 }
                 IrTypeDelegate::Set(_) => "Set.from(inner)".to_owned(),
-                IrTypeDelegate::Time(_) => TODO,
-                IrTypeDelegate::Uuid => TODO,
+                IrTypeDelegate::Time(ir) => {
+                    if ir == &IrTypeDelegateTime::Duration {
+                        "return dcoDecodeDuration(dco_decode_i_64(raw).toInt());".to_owned()
+                    } else {
+                        format!(
+                            "return dcoDecodeTimestamp(ts: dco_decode_i_64(raw).toInt(), isUtc: {is_utc});",
+                            is_utc = matches!(ir, IrTypeDelegateTime::Naive | IrTypeDelegateTime::Utc)
+                        )
+                    }
+                }
+                IrTypeDelegate::Uuid => {
+                    "return UuidValue.fromByteList(dco_decode_list_prim_u_8_strict(raw));"
+                        .to_owned()
+                }
                 // frb-coverage:ignore-start
                 _ => unreachable!(),
                 // frb-coverage:ignore-end
@@ -107,8 +132,34 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 }
                 IrTypeDelegate::Map(_) => "inner.into_iter().collect()".to_owned(),
                 IrTypeDelegate::Set(_) => "inner.into_iter().collect()".to_owned(),
-                IrTypeDelegate::Time(_) => TODO,
-                IrTypeDelegate::Uuid => TODO,
+                IrTypeDelegate::Time(ir) => {
+                    if ir == &IrTypeDelegateTime::Duration {
+                        return "chrono::Duration::milliseconds(self)".to_owned();
+                    }
+
+                    let codegen_timestamp = "let flutter_rust_bridge::for_generated::Timestamp { s, ns } = flutter_rust_bridge::for_generated::decode_timestamp(self);";
+                    let codegen_naive =
+                        "chrono::NaiveDateTime::from_timestamp_opt(s, ns).expect(\"invalid or out-of-range datetime\")";
+                    let codegen_utc = format!("chrono::DateTime::<chrono::Utc>::from_naive_utc_and_offset({codegen_naive}, chrono::Utc)");
+                    let codegen_local = format!("chrono::DateTime::<chrono::Local>::from({codegen_utc})");
+                    let codegen_conversion = match ir {
+                        IrTypeDelegateTime::Naive => codegen_naive,
+                        IrTypeDelegateTime::Utc => codegen_utc.as_str(),
+                        IrTypeDelegateTime::Local => codegen_local.as_str(),
+                        // frb-coverage:ignore-start
+                        IrTypeDelegateTime::Duration => unreachable!(),
+                        // frb-coverage:ignore-end
+                    };
+                    Acc {
+                        common: Some(format!("{codegen_timestamp}{codegen_conversion}")),
+                        ..Default::default()
+                    }
+                },
+                IrTypeDelegate::Uuid => Acc::distribute(
+                    Some(
+                        "let single: Vec<u8> = self.cst_decode(); flutter_rust_bridge::for_generated::decode_uuid(single)".into(),
+                    ),
+                ),
                 // frb-coverage:ignore-start
                 _ => unreachable!(),
                 // frb-coverage:ignore-end
