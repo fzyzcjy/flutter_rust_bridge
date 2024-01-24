@@ -25,7 +25,9 @@ pub fn format_dart(paths: &[PathBuf], base_path: &Path, line_length: u32) -> any
 }
 
 pub(super) fn prepare_paths(paths: &[PathBuf], base_path: &Path) -> anyhow::Result<Vec<PathBuf>> {
-    let normalized_base_path = normalize_windows_unc_path(&path_to_string(base_path)?);
+    let base_path_str = path_to_string(base_path)?;
+    let normalized_base_path = normalize_windows_unc_path(&base_path_str);
+
     (paths.iter())
         .map(|path| {
             let mut path: PathBuf =
