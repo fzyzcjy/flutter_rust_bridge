@@ -1,5 +1,6 @@
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::integration::integrator::pub_add_dependency_frb;
+use crate::library::commands::cargo::cargo_add;
 use crate::utils::dart_repository::dart_repo::{DartDependencyMode, DartRepository};
 use crate::utils::path_utils::path_to_string;
 use anyhow::Result;
@@ -59,6 +60,9 @@ impl Upgrader for RustUpgrader {
     }
 
     fn upgrade(base_dir: &Path) -> Result<()> {
-        format!("cargo add cargo_toml@={}", env!("CARGO_PKG_VERSION"));
+        cargo_add(
+            &format!("cargo_toml@={}", env!("CARGO_PKG_VERSION")),
+            base_dir,
+        )
     }
 }
