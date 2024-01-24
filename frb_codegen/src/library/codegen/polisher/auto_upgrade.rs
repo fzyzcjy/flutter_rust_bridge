@@ -22,7 +22,7 @@ pub(super) fn execute(
 trait Upgrader {
     fn execute(base_dir: &Path, enable_local_dependency: bool) -> Result<()> {
         if !Self::check(base_dir)? {
-            Self::upgrade(base_dir)?;
+            Self::upgrade(base_dir, enable_local_dependency)?;
         }
         Ok(())
     }
