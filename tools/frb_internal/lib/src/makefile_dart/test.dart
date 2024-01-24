@@ -242,7 +242,16 @@ class MimicQuickstartTester {
 }
 
 Future<void> testUpgrade() async {
-  throw UnimplementedError('TODO');
+  // This old-version can be bumped if needed
+  const kOldVersion = '2.0.0-dev.20';
+
+  // postRelease=true to use released binary
+  const tester = MimicQuickstartTester(postRelease: true);
+  tester._prepareDir();
+  await tester._quickstartStepCreate();
+  await tester._quickstartStepRun();
+
+  TODO;
 }
 
 Future<void> testRust(TestRustConfig config) async {
