@@ -7,10 +7,6 @@ use itertools::Itertools;
 
 impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
-        if let Some(value) = self.skip_unimplemented(lang) {
-            return Some(value);
-        }
-
         let inner_expr = match lang {
             Lang::DartLang(_) => match &self.ir {
                 IrTypeDelegate::Array(_) => "self.inner".to_owned(),
@@ -25,6 +21,12 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::Set(ir) => {
                     generate_set_to_list(ir, self.context.as_api_dart_context(), "self")
                 }
+                IrTypeDelegate::Time(_) | IrTypeDelegate::Uuid => Some(format!(
+                    "{};",
+                    lang.throw_unimplemented(&generate_unimplemented_in_sse_message(
+                        &self.ir.clone().into()
+                    ))
+                )),
                 // frb-coverage:ignore-start
                 _ => unreachable!(),
                 // frb-coverage:ignore-end
@@ -54,6 +56,12 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::AnyhowException => r#"format!("{:?}", self)"#.to_owned(),
                 IrTypeDelegate::Map(_) => "self.into_iter().collect()".to_owned(),
                 IrTypeDelegate::Set(_) => "self.into_iter().collect()".to_owned(),
+                IrTypeDelegate::Time(_) | IrTypeDelegate::Uuid => Some(format!(
+                    "{};",
+                    lang.throw_unimplemented(&generate_unimplemented_in_sse_message(
+                        &self.ir.clone().into()
+                    ))
+                )),
                 // frb-coverage:ignore-start
                 _ => unreachable!(),
                 // frb-coverage:ignore-end
@@ -67,10 +75,6 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
     }
 
     fn generate_decode(&self, lang: &Lang) -> Option<String> {
-        if let Some(value) = self.skip_unimplemented(lang) {
-            return Some(value);
-        }
-
         let wrapper_expr = match lang {
             Lang::DartLang(_) => match &self.ir {
                 IrTypeDelegate::Array(_) => format!(
@@ -92,6 +96,12 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     "Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)))".to_owned()
                 }
                 IrTypeDelegate::Set(_) => "Set.from(inner)".to_owned(),
+                IrTypeDelegate::Time(_) | IrTypeDelegate::Uuid => Some(format!(
+                    "{};",
+                    lang.throw_unimplemented(&generate_unimplemented_in_sse_message(
+                        &self.ir.clone().into()
+                    ))
+                )),
                 // frb-coverage:ignore-start
                 _ => unreachable!(),
                 // frb-coverage:ignore-end
@@ -109,6 +119,12 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 }
                 IrTypeDelegate::Map(_) => "inner.into_iter().collect()".to_owned(),
                 IrTypeDelegate::Set(_) => "inner.into_iter().collect()".to_owned(),
+                IrTypeDelegate::Time(_) | IrTypeDelegate::Uuid => Some(format!(
+                    "{};",
+                    lang.throw_unimplemented(&generate_unimplemented_in_sse_message(
+                        &self.ir.clone().into()
+                    ))
+                )),
                 // frb-coverage:ignore-start
                 _ => unreachable!(),
                 // frb-coverage:ignore-end
@@ -120,20 +136,6 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
             &self.ir.get_delegate(),
             &wrapper_expr,
         ))
-    }
-}
-
-impl<'a> DelegateCodecSseTy<'a> {
-    fn skip_unimplemented(&self, lang: &Lang) -> Option<String> {
-        match &self.ir {
-            IrTypeDelegate::Time(_) | IrTypeDelegate::Uuid => Some(format!(
-                "{};",
-                lang.throw_unimplemented(&generate_unimplemented_in_sse_message(
-                    &self.ir.clone().into()
-                ))
-            )),
-            _ => None,
-        }
     }
 }
 
