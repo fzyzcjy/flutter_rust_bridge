@@ -13,3 +13,4 @@ log = "0.4.19"
 
 [build-dependencies]
 flutter_rust_bridge_codegen = { path = "../../../frb_codegen" }
+anyhow = { version = "1.0.64", features = ["backtrace"] }
