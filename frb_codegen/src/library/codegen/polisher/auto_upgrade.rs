@@ -20,16 +20,16 @@ pub(super) fn execute(
 }
 
 trait Upgrader {
-    fn execute(base_dir: &Path, enable_local_dependency: bool) -> Result<()> {
+    fn execute(base_dir: &Path) -> Result<()> {
         if !Self::check(base_dir)? {
-            Self::upgrade(base_dir, enable_local_dependency)?;
+            Self::upgrade(base_dir)?;
         }
         Ok(())
     }
 
     fn check(base_dir: &Path) -> Result<bool>;
 
-    fn upgrade(base_dir: &Path, enable_local_dependency: bool) -> Result<()>;
+    fn upgrade(base_dir: &Path) -> Result<()>;
 }
 
 struct DartUpgrader;
@@ -46,8 +46,8 @@ impl Upgrader for DartUpgrader {
             .is_ok())
     }
 
-    fn upgrade(base_dir: &Path, enable_local_dependency: bool) -> Result<()> {
-        pub_add_dependency_frb(enable_local_dependency, Some(base_dir))
+    fn upgrade(base_dir: &Path) -> Result<()> {
+        pub_add_dependency_frb(false, Some(base_dir))
     }
 }
 
@@ -60,20 +60,12 @@ impl Upgrader for RustUpgrader {
         Ok(dep.req() == format!("={}", env!("CARGO_PKG_VERSION")))
     }
 
-    fn upgrade(base_dir: &Path, enable_local_dependency: bool) -> Result<()> {
+    fn upgrade(base_dir: &Path) -> Result<()> {
         cargo_add(
-            &if enable_local_dependency {
-                vec![
-                    "flutter_rust_bridge".to_owned(),
-                    "--path".to_owned(),
-                    "../../../frb_rust".to_owned(),
-                ]
-            } else {
-                vec![format!(
-                    "flutter_rust_bridge@={}",
-                    env!("CARGO_PKG_VERSION")
-                )]
-            },
+            &vec![format!(
+                "flutter_rust_bridge@={}",
+                env!("CARGO_PKG_VERSION")
+            )],
             base_dir,
         )
     }
