@@ -7,6 +7,7 @@ import 'package:build_cli_annotations/build_cli_annotations.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/misc.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/post_release.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
 import 'package:flutter_rust_bridge_internal/src/misc/dart_sanitizer_tester.dart'
     as dart_sanitizer_tester;
@@ -245,11 +246,15 @@ Future<void> testUpgrade() async {
   // This old-version can be bumped if needed
   const kOldVersion = '2.0.0-dev.20';
 
-  // postRelease=true to use released binary
-  const tester = MimicQuickstartTester(postRelease: true);
+  const tester = MimicQuickstartTester(
+    // postRelease=true to use released binary
+    postRelease: true,
+  );
+
+  await quickstartStepInstall(CodegenInstallMode.cargoInstall,
+      versionConstraint: kOldVersion);
 
   tester._prepareDir();
-
   await tester._quickstartStepCreate();
 
   TODO_execute_generate_and_should_auto_upgrade;
