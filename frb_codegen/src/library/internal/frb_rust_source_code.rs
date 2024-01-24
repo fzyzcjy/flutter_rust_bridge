@@ -32,7 +32,7 @@ pub(crate) fn generate_frb_rust_source_code(repo_base_dir: &Path) -> anyhow::Res
     );
 
     fs::write(&path_target, text)?;
-    format_rust(&[path_target.clone()], &path_target)?;
+    format_rust(&[path_target.clone()], &path_target.parent().unwrap())?;
 
     Ok(())
 }
