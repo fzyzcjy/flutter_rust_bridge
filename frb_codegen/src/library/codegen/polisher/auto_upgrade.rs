@@ -53,7 +53,9 @@ struct RustUpgrader;
 
 impl Upgrader for RustUpgrader {
     fn check(base_dir: &Path) -> Result<bool> {
-        todo!()
+        let manifest = cargo_toml::Manifest::from_path(base_dir.join("Cargo.toml"))?;
+        let dep = &manifest.dependencies["flutter_rust_bridge"];
+        Ok(dep.req() == format!("={}", env!("CARGO_PKG_VERSION")))
     }
 
     fn upgrade(base_dir: &Path) -> Result<()> {
