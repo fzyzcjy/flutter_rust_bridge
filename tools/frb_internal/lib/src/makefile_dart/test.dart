@@ -253,7 +253,8 @@ Future<void> testUpgrade() async {
 
   await const MimicQuickstartTester(postRelease: true)._quickstartStepCreate();
 
-  TODO_execute_generate_and_should_auto_upgrade;
+  await const MimicQuickstartTester(postRelease: false)
+      ._quickstartStepGenerate();
 
   TODO_verify_version_is_upgraded;
 }
