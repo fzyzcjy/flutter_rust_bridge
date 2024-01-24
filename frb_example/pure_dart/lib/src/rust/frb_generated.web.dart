@@ -75,7 +75,10 @@ import 'api/pseudo_manual/benchmark_api_twin_sse.dart';
 import 'api/pseudo_manual/benchmark_api_twin_sync.dart';
 import 'api/pseudo_manual/benchmark_api_twin_sync_sse.dart';
 import 'api/pseudo_manual/chrono_type_twin_rust_async.dart';
+import 'api/pseudo_manual/chrono_type_twin_rust_async_sse.dart';
+import 'api/pseudo_manual/chrono_type_twin_sse.dart';
 import 'api/pseudo_manual/chrono_type_twin_sync.dart';
+import 'api/pseudo_manual/chrono_type_twin_sync_sse.dart';
 import 'api/pseudo_manual/comment_twin_rust_async.dart';
 import 'api/pseudo_manual/comment_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/comment_twin_sse.dart';
@@ -215,7 +218,10 @@ import 'api/pseudo_manual/type_alias_twin_sse.dart';
 import 'api/pseudo_manual/type_alias_twin_sync.dart';
 import 'api/pseudo_manual/type_alias_twin_sync_sse.dart';
 import 'api/pseudo_manual/uuid_type_twin_rust_async.dart';
+import 'api/pseudo_manual/uuid_type_twin_rust_async_sse.dart';
+import 'api/pseudo_manual/uuid_type_twin_sse.dart';
 import 'api/pseudo_manual/uuid_type_twin_sync.dart';
+import 'api/pseudo_manual/uuid_type_twin_sync_sse.dart';
 import 'api/raw_string.dart';
 import 'api/rust_auto_opaque.dart';
 import 'api/rust_opaque.dart';
@@ -3632,7 +3638,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_box_autoadd_feature_chrono_twin_rust_async(dynamic raw);
 
   @protected
+  FeatureChronoTwinRustAsyncSse
+      dco_decode_box_autoadd_feature_chrono_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  FeatureChronoTwinSse dco_decode_box_autoadd_feature_chrono_twin_sse(
+      dynamic raw);
+
+  @protected
   FeatureChronoTwinSync dco_decode_box_autoadd_feature_chrono_twin_sync(
+      dynamic raw);
+
+  @protected
+  FeatureChronoTwinSyncSse dco_decode_box_autoadd_feature_chrono_twin_sync_sse(
       dynamic raw);
 
   @protected
@@ -3644,7 +3662,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  FeatureUuidTwinRustAsyncSse
+      dco_decode_box_autoadd_feature_uuid_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  FeatureUuidTwinSse dco_decode_box_autoadd_feature_uuid_twin_sse(dynamic raw);
+
+  @protected
   FeatureUuidTwinSync dco_decode_box_autoadd_feature_uuid_twin_sync(
+      dynamic raw);
+
+  @protected
+  FeatureUuidTwinSyncSse dco_decode_box_autoadd_feature_uuid_twin_sync_sse(
       dynamic raw);
 
   @protected
@@ -5244,7 +5273,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  FeatureChronoTwinRustAsyncSse dco_decode_feature_chrono_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  FeatureChronoTwinSse dco_decode_feature_chrono_twin_sse(dynamic raw);
+
+  @protected
   FeatureChronoTwinSync dco_decode_feature_chrono_twin_sync(dynamic raw);
+
+  @protected
+  FeatureChronoTwinSyncSse dco_decode_feature_chrono_twin_sync_sse(dynamic raw);
 
   @protected
   FeatureUuidTwinNormal dco_decode_feature_uuid_twin_normal(dynamic raw);
@@ -5253,7 +5292,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   FeatureUuidTwinRustAsync dco_decode_feature_uuid_twin_rust_async(dynamic raw);
 
   @protected
+  FeatureUuidTwinRustAsyncSse dco_decode_feature_uuid_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  FeatureUuidTwinSse dco_decode_feature_uuid_twin_sse(dynamic raw);
+
+  @protected
   FeatureUuidTwinSync dco_decode_feature_uuid_twin_sync(dynamic raw);
+
+  @protected
+  FeatureUuidTwinSyncSse dco_decode_feature_uuid_twin_sync_sse(dynamic raw);
 
   @protected
   FeedIdTwinNormal dco_decode_feed_id_twin_normal(dynamic raw);
@@ -7470,7 +7519,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   TestChronoTwinRustAsync dco_decode_test_chrono_twin_rust_async(dynamic raw);
 
   @protected
+  TestChronoTwinRustAsyncSse dco_decode_test_chrono_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  TestChronoTwinSse dco_decode_test_chrono_twin_sse(dynamic raw);
+
+  @protected
   TestChronoTwinSync dco_decode_test_chrono_twin_sync(dynamic raw);
+
+  @protected
+  TestChronoTwinSyncSse dco_decode_test_chrono_twin_sync_sse(dynamic raw);
 
   @protected
   TestIdTwinNormal dco_decode_test_id_twin_normal(dynamic raw);
@@ -10598,7 +10657,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  FeatureChronoTwinRustAsyncSse
+      sse_decode_box_autoadd_feature_chrono_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  FeatureChronoTwinSse sse_decode_box_autoadd_feature_chrono_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
   FeatureChronoTwinSync sse_decode_box_autoadd_feature_chrono_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  FeatureChronoTwinSyncSse sse_decode_box_autoadd_feature_chrono_twin_sync_sse(
       SseDeserializer deserializer);
 
   @protected
@@ -10610,7 +10682,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  FeatureUuidTwinRustAsyncSse
+      sse_decode_box_autoadd_feature_uuid_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  FeatureUuidTwinSse sse_decode_box_autoadd_feature_uuid_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
   FeatureUuidTwinSync sse_decode_box_autoadd_feature_uuid_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  FeatureUuidTwinSyncSse sse_decode_box_autoadd_feature_uuid_twin_sync_sse(
       SseDeserializer deserializer);
 
   @protected
@@ -12434,7 +12519,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  FeatureChronoTwinRustAsyncSse sse_decode_feature_chrono_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  FeatureChronoTwinSse sse_decode_feature_chrono_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
   FeatureChronoTwinSync sse_decode_feature_chrono_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  FeatureChronoTwinSyncSse sse_decode_feature_chrono_twin_sync_sse(
       SseDeserializer deserializer);
 
   @protected
@@ -12446,7 +12543,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  FeatureUuidTwinRustAsyncSse sse_decode_feature_uuid_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  FeatureUuidTwinSse sse_decode_feature_uuid_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
   FeatureUuidTwinSync sse_decode_feature_uuid_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  FeatureUuidTwinSyncSse sse_decode_feature_uuid_twin_sync_sse(
       SseDeserializer deserializer);
 
   @protected
@@ -14958,7 +15067,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  TestChronoTwinRustAsyncSse sse_decode_test_chrono_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  TestChronoTwinSse sse_decode_test_chrono_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
   TestChronoTwinSync sse_decode_test_chrono_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  TestChronoTwinSyncSse sse_decode_test_chrono_twin_sync_sse(
       SseDeserializer deserializer);
 
   @protected
@@ -25562,8 +25683,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       FeatureChronoTwinRustAsync self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_feature_chrono_twin_rust_async_sse(
+      FeatureChronoTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_feature_chrono_twin_sse(
+      FeatureChronoTwinSse self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_feature_chrono_twin_sync(
       FeatureChronoTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_feature_chrono_twin_sync_sse(
+      FeatureChronoTwinSyncSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_feature_uuid_twin_normal(
@@ -25574,8 +25707,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       FeatureUuidTwinRustAsync self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_feature_uuid_twin_rust_async_sse(
+      FeatureUuidTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_feature_uuid_twin_sse(
+      FeatureUuidTwinSse self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_feature_uuid_twin_sync(
       FeatureUuidTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_feature_uuid_twin_sync_sse(
+      FeatureUuidTwinSyncSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_feed_id_twin_normal(
@@ -27304,8 +27449,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       FeatureChronoTwinRustAsync self, SseSerializer serializer);
 
   @protected
+  void sse_encode_feature_chrono_twin_rust_async_sse(
+      FeatureChronoTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_feature_chrono_twin_sse(
+      FeatureChronoTwinSse self, SseSerializer serializer);
+
+  @protected
   void sse_encode_feature_chrono_twin_sync(
       FeatureChronoTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_feature_chrono_twin_sync_sse(
+      FeatureChronoTwinSyncSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_feature_uuid_twin_normal(
@@ -27316,8 +27473,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       FeatureUuidTwinRustAsync self, SseSerializer serializer);
 
   @protected
+  void sse_encode_feature_uuid_twin_rust_async_sse(
+      FeatureUuidTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_feature_uuid_twin_sse(
+      FeatureUuidTwinSse self, SseSerializer serializer);
+
+  @protected
   void sse_encode_feature_uuid_twin_sync(
       FeatureUuidTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_feature_uuid_twin_sync_sse(
+      FeatureUuidTwinSyncSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_feed_id_twin_normal(
@@ -29712,8 +29881,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       TestChronoTwinRustAsync self, SseSerializer serializer);
 
   @protected
+  void sse_encode_test_chrono_twin_rust_async_sse(
+      TestChronoTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_test_chrono_twin_sse(
+      TestChronoTwinSse self, SseSerializer serializer);
+
+  @protected
   void sse_encode_test_chrono_twin_sync(
       TestChronoTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_test_chrono_twin_sync_sse(
+      TestChronoTwinSyncSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_test_id_twin_normal(
@@ -34324,6 +34505,165 @@ class RustLibWire implements BaseWire {
   void wire_test_precise_chrono_twin_rust_async(NativePortType port_) =>
       wasmModule.wire_test_precise_chrono_twin_rust_async(port_);
 
+  void wire_datetime_local_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_datetime_local_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_datetime_utc_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_datetime_utc_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_duration_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_duration_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_handle_durations_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_handle_durations_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_handle_timestamps_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_handle_timestamps_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_how_long_does_it_take_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_how_long_does_it_take_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_naivedatetime_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_naivedatetime_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_optional_empty_datetime_utc_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_optional_empty_datetime_utc_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_test_chrono_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_test_chrono_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_test_precise_chrono_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_test_precise_chrono_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_datetime_local_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_datetime_local_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_datetime_utc_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_datetime_utc_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_duration_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_duration_twin_sse(port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_handle_durations_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_handle_durations_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_handle_timestamps_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_handle_timestamps_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_how_long_does_it_take_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_how_long_does_it_take_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_naivedatetime_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_naivedatetime_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_optional_empty_datetime_utc_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_optional_empty_datetime_utc_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_test_chrono_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_test_chrono_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_test_precise_chrono_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_test_precise_chrono_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_datetime_local_twin_sync(Object d) =>
           wasmModule.wire_datetime_local_twin_sync(d);
@@ -34363,6 +34703,72 @@ class RustLibWire implements BaseWire {
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_test_precise_chrono_twin_sync() =>
           wasmModule.wire_test_precise_chrono_twin_sync();
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_datetime_local_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_, int data_len_) =>
+          wasmModule.wire_datetime_local_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_datetime_utc_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_, int data_len_) =>
+          wasmModule.wire_datetime_utc_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_duration_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_, int data_len_) =>
+          wasmModule.wire_duration_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_handle_durations_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_, int data_len_) =>
+          wasmModule.wire_handle_durations_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_handle_timestamps_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_, int data_len_) =>
+          wasmModule.wire_handle_timestamps_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_how_long_does_it_take_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_how_long_does_it_take_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_naivedatetime_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_, int data_len_) =>
+          wasmModule.wire_naivedatetime_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_optional_empty_datetime_utc_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_optional_empty_datetime_utc_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_test_chrono_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_, int data_len_) =>
+          wasmModule.wire_test_chrono_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_test_precise_chrono_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_test_precise_chrono_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
 
   void wire_StructWithCommentsTwinRustAsync_instance_method_twin_rust_async(
           NativePortType port_, List<dynamic> that) =>
@@ -43814,6 +44220,38 @@ class RustLibWire implements BaseWire {
   void wire_handle_uuid_twin_rust_async(NativePortType port_, Uint8List id) =>
       wasmModule.wire_handle_uuid_twin_rust_async(port_, id);
 
+  void wire_handle_nested_uuids_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_handle_nested_uuids_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_handle_uuid_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_handle_uuid_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_handle_nested_uuids_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_handle_nested_uuids_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_handle_uuid_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_handle_uuid_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_handle_nested_uuids_twin_sync(List<dynamic> ids) =>
           wasmModule.wire_handle_nested_uuids_twin_sync(ids);
@@ -43821,6 +44259,20 @@ class RustLibWire implements BaseWire {
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_handle_uuid_twin_sync(Uint8List id) =>
           wasmModule.wire_handle_uuid_twin_sync(id);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_handle_nested_uuids_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_handle_nested_uuids_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_handle_uuid_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_, int data_len_) =>
+          wasmModule.wire_handle_uuid_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
 
   void wire_test_more_than_just_one_raw_string_struct_twin_normal(
           NativePortType port_) =>
@@ -49056,6 +49508,75 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_test_precise_chrono_twin_rust_async(NativePortType port_);
 
+  external void wire_datetime_local_twin_rust_async_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_datetime_utc_twin_rust_async_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_duration_twin_rust_async_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_handle_durations_twin_rust_async_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_handle_timestamps_twin_rust_async_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_how_long_does_it_take_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_naivedatetime_twin_rust_async_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_optional_empty_datetime_utc_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_test_chrono_twin_rust_async_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_test_precise_chrono_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_datetime_local_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_datetime_utc_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_duration_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_handle_durations_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_handle_timestamps_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_how_long_does_it_take_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_naivedatetime_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_optional_empty_datetime_utc_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_test_chrono_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_test_precise_chrono_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_datetime_local_twin_sync(Object d);
 
@@ -49085,6 +49606,52 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_test_precise_chrono_twin_sync();
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_datetime_local_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_, int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_datetime_utc_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_, int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_duration_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_, int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_handle_durations_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_, int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_handle_timestamps_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_, int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_how_long_does_it_take_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_naivedatetime_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_, int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_optional_empty_datetime_utc_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_test_chrono_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_, int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_test_precise_chrono_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
 
   external void
       wire_StructWithCommentsTwinRustAsync_instance_method_twin_rust_async(
@@ -55354,11 +55921,36 @@ class RustLibWasmModule implements WasmModule {
   external void wire_handle_uuid_twin_rust_async(
       NativePortType port_, Uint8List id);
 
+  external void wire_handle_nested_uuids_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_handle_uuid_twin_rust_async_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_handle_nested_uuids_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_handle_uuid_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_handle_nested_uuids_twin_sync(List<dynamic> ids);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_handle_uuid_twin_sync(Uint8List id);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_handle_nested_uuids_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_handle_uuid_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_, int data_len_);
 
   external void wire_test_more_than_just_one_raw_string_struct_twin_normal(
       NativePortType port_);
