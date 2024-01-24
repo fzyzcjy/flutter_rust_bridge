@@ -186,6 +186,7 @@ const sidebars = {
                         'guides/miscellaneous/ignoring-functions',
                         'guides/miscellaneous/default',
                         'guides/miscellaneous/pure-dart',
+                        'guides/miscellaneous/isolates',
                         'guides/miscellaneous/safety',
                         'guides/miscellaneous/compatibility',
                         'guides/miscellaneous/deployment',
