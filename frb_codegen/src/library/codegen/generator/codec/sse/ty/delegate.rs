@@ -101,20 +101,13 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     "Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)))".to_owned()
                 }
                 IrTypeDelegate::Set(_) => "Set.from(inner)".to_owned(),
-                IrTypeDelegate::Time(ir) => {
-                    if ir == &IrTypeDelegateTime::Duration {
-                        "return dcoDecodeDuration(dco_decode_i_64(raw).toInt());".to_owned()
-                    } else {
-                        format!(
-                            "return dcoDecodeTimestamp(ts: dco_decode_i_64(raw).toInt(), isUtc: {is_utc});",
-                            is_utc = matches!(ir, IrTypeDelegateTime::Naive | IrTypeDelegateTime::Utc)
-                        )
-                    }
-                }
-                IrTypeDelegate::Uuid => {
-                    "return UuidValue.fromByteList(dco_decode_list_prim_u_8_strict(raw));"
-                        .to_owned()
-                }
+                IrTypeDelegate::Time(ir) => match ir {
+                    IrTypeDelegateTime::Utc
+                    | IrTypeDelegateTime::Local
+                    | IrTypeDelegateTime::Naive => "DateTime.fromMillisecondsSinceEpoch(inner, isUtc: TODO)".to_owned(),
+                    IrTypeDelegateTime::Duration => "Duration(milliseconds: inner)".to_owned(),
+                },
+                IrTypeDelegate::Uuid => "UuidValue.fromByteList(inner)".to_owned(),
                 // frb-coverage:ignore-start
                 _ => unreachable!(),
                 // frb-coverage:ignore-end
