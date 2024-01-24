@@ -5,13 +5,6 @@
 
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:uuid/uuid.dart';
 
 Future<int> minimalAdder({required int a, required int b, dynamic hint}) =>
     RustLib.instance.api.minimalAdder(a: a, b: b, hint: hint);
-
-Future<UuidValue> genUuid({dynamic hint}) =>
-    RustLib.instance.api.genUuid(hint: hint);
-
-Future<DateTime> getNow({dynamic hint}) =>
-    RustLib.instance.api.getNow(hint: hint);
