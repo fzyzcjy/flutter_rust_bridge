@@ -23,7 +23,6 @@ use log::debug;
 
 /// Execute the main code generator, with config automatically found
 pub fn generate_auto() -> anyhow::Result<()> {
-    configure_opinionated_logging()?;
     TODO
 }
 
