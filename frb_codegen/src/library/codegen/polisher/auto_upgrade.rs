@@ -61,7 +61,7 @@ impl Upgrader for RustUpgrader {
 
     fn upgrade(base_dir: &Path) -> Result<()> {
         cargo_add(
-            &vec![format!(
+            &[format!(
                 "flutter_rust_bridge@={}",
                 env!("CARGO_PKG_VERSION")
             )],
