@@ -1,6 +1,10 @@
+use lib_flutter_rust_bridge_codegen::codegen;
+use lib_flutter_rust_bridge_codegen::codegen::Config;
+use lib_flutter_rust_bridge_codegen::utils::logs::configure_opinionated_logging;
+
 fn main() {
     // If you want to see logs
-    lib_flutter_rust_bridge::utils::logs::configure_opinionated_logging("./logs", true).unwrap();
+    configure_opinionated_logging("./logs", true).unwrap();
     // Execute code generator with auto-detected config
-    lib_flutter_rust_bridge::codegen::generate_auto().unwrap();
+    codegen::generate(Config::from_files_auto().unwrap(), Default::default()).unwrap();
 }

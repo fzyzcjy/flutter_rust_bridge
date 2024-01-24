@@ -21,11 +21,6 @@ pub use config::config_parser::*;
 pub use dumper::internal_config::ConfigDumpContent;
 use log::debug;
 
-/// Execute the main code generator, with config automatically found
-pub fn generate_auto() -> anyhow::Result<()> {
-    TODO
-}
-
 /// Execute the main code generator
 pub fn generate(config: Config, meta_config: MetaConfig) -> anyhow::Result<()> {
     debug!("config={config:?} meta_config={meta_config:?}");
