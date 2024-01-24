@@ -60,8 +60,13 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::AnyhowException => r#"format!("{:?}", self)"#.to_owned(),
                 IrTypeDelegate::Map(_) => "self.into_iter().collect()".to_owned(),
                 IrTypeDelegate::Set(_) => "self.into_iter().collect()".to_owned(),
-                IrTypeDelegate::Time(_) => TODO,
-                IrTypeDelegate::Uuid => TODO,
+                IrTypeDelegate::Time(ir) => match ir {
+                    IrTypeDelegateTime::Utc
+                    | IrTypeDelegateTime::Local
+                    | IrTypeDelegateTime::Naive => "self.timestamp_millis()".to_owned(),
+                    IrTypeDelegateTime::Duration => "self.num_milliseconds()".to_owned(),
+                },
+                IrTypeDelegate::Uuid => "self.as_bytes().to_vec()".to_owned(),
                 // frb-coverage:ignore-start
                 _ => unreachable!(),
                 // frb-coverage:ignore-end
