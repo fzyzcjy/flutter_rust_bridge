@@ -262,7 +262,7 @@ Future<void> testUpgrade() async {
         TomlDocument.parse(File('${baseDir}rust/Cargo.toml').readAsStringSync())
             .toMap();
     final rustVersion = cargoToml['dependencies']['flutter_rust_bridge'];
-    if (rustVersion != expectVersion) {
+    if (rustVersion != '=$expectVersion') {
       throw Exception('rustVersion=$rustVersion expectVersion=$expectVersion');
     }
   }
