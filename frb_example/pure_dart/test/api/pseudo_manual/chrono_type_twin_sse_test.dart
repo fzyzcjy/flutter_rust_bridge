@@ -3,7 +3,7 @@
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/chrono_type_twin_sync.dart';
+import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/chrono_type_twin_sse.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
@@ -14,7 +14,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('DateTime<Utc>', () async {
     final date = DateTime.utc(2022, 09, 10, 20, 48, 53, 123, 456);
-    final resp = await datetimeUtcTwinSync(d: date);
+    final resp = await datetimeUtcTwinSse(d: date);
     expect(resp.year, date.year);
     expect(resp.month, date.month);
     expect(resp.day, date.day);
@@ -27,7 +27,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('DateTime<Local>', () async {
     final date = DateTime(2022, 09, 10, 20, 48, 53, 123, 456);
-    final resp = await datetimeLocalTwinSync(d: date);
+    final resp = await datetimeLocalTwinSse(d: date);
     expect(resp.year, date.year);
     expect(resp.month, date.month);
     expect(resp.day, date.day);
@@ -40,7 +40,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('NaiveDateTime', () async {
     final date = DateTime.utc(2022, 09, 10, 20, 48, 53, 123, 456);
-    final resp = await naivedatetimeTwinSync(d: date);
+    final resp = await naivedatetimeTwinSse(d: date);
     expect(resp.year, date.year);
     expect(resp.month, date.month);
     expect(resp.day, date.day);
@@ -51,13 +51,13 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(resp.microsecondsSinceEpoch, date.microsecondsSinceEpoch);
   });
   test('Empty DateTime', () async {
-    final resp = await optionalEmptyDatetimeUtcTwinSync(d: null);
+    final resp = await optionalEmptyDatetimeUtcTwinSse(d: null);
     expect(resp, null);
   });
 
   test('Duration', () async {
     final d = Duration(hours: 4);
-    final resp = await durationTwinSync(d: d);
+    final resp = await durationTwinSse(d: d);
     expect(resp.inHours, d.inHours);
   });
 
@@ -70,7 +70,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
       if (!kIsWeb) Duration(microseconds: 333)
     ];
     final now = DateTime.now();
-    final durations = await handleTimestampsTwinSync(
+    final durations = await handleTimestampsTwinSse(
       timestamps: expected.map(now.subtract).toList(),
       epoch: now,
     );
@@ -87,12 +87,12 @@ Future<void> main({bool skipRustLibInit = false}) async {
     ];
     final now = DateTime.now();
     final result =
-        await handleDurationsTwinSync(durations: expected, since: now);
+        await handleDurationsTwinSse(durations: expected, since: now);
     expect(result, expected.map(now.subtract));
   });
 
   test('Combined Chrono types', () async {
-    final test = await testChronoTwinSync();
+    final test = await testChronoTwinSse();
     expect(castInt(test.dt!.millisecondsSinceEpoch), castInt(1631297333000));
     expect(castInt(test.dt2!.millisecondsSinceEpoch), castInt(1631297333000));
     expect(test.du, Duration(hours: 4));
@@ -103,7 +103,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final datetime_2 = DateTime.utc(1800, 01, 23, 12, 56, 25);
     final duration = Duration(hours: 4);
 
-    final result = await testPreciseChronoTwinSync();
+    final result = await testPreciseChronoTwinSse();
 
     expect(
         result.dt!.millisecondsSinceEpoch, datetime_1.millisecondsSinceEpoch);
@@ -117,8 +117,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final naive = DateTime.utc(2022, 09, 10, 20, 48, 53, 123, 456);
     final local = DateTime.now();
     final utc = DateTime.now().toUtc();
-    final difference = await howLongDoesItTakeTwinSync(
-        mine: FeatureChronoTwinSync(
+    final difference = await howLongDoesItTakeTwinSse(
+        mine: FeatureChronoTwinSse(
             utc: utc, local: local, duration: duration, naive: naive));
     debugPrint('$difference');
   });

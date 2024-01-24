@@ -2,8 +2,6 @@
 // and is auto-generated from `chrono_type.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
-// FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sse", "sync sse", "rustAsync sse"], "skipPde": true}
-
 #[flutter_rust_bridge::frb(sync)]
 pub fn datetime_utc_twin_sync(d: chrono::DateTime<chrono::Utc>) -> chrono::DateTime<chrono::Utc> {
     use chrono::Datelike;

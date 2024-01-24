@@ -2,9 +2,8 @@
 // and is auto-generated from `chrono_type.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
-pub async fn datetime_utc_twin_rust_async(
-    d: chrono::DateTime<chrono::Utc>,
-) -> chrono::DateTime<chrono::Utc> {
+#[flutter_rust_bridge::frb(serialize)]
+pub fn datetime_utc_twin_sse(d: chrono::DateTime<chrono::Utc>) -> chrono::DateTime<chrono::Utc> {
     use chrono::Datelike;
     use chrono::Timelike;
     assert_eq!(&d.year(), &2022);
@@ -20,7 +19,8 @@ pub async fn datetime_utc_twin_rust_async(
     d
 }
 
-pub async fn datetime_local_twin_rust_async(
+#[flutter_rust_bridge::frb(serialize)]
+pub fn datetime_local_twin_sse(
     d: chrono::DateTime<chrono::Local>,
 ) -> chrono::DateTime<chrono::Local> {
     use chrono::Datelike;
@@ -39,7 +39,8 @@ pub async fn datetime_local_twin_rust_async(
     d
 }
 
-pub async fn naivedatetime_twin_rust_async(d: chrono::NaiveDateTime) -> chrono::NaiveDateTime {
+#[flutter_rust_bridge::frb(serialize)]
+pub fn naivedatetime_twin_sse(d: chrono::NaiveDateTime) -> chrono::NaiveDateTime {
     use chrono::{Datelike, Timelike};
     assert_eq!(&d.year(), &2022);
     assert_eq!(&d.month(), &9);
@@ -54,19 +55,22 @@ pub async fn naivedatetime_twin_rust_async(d: chrono::NaiveDateTime) -> chrono::
     d
 }
 
-pub async fn optional_empty_datetime_utc_twin_rust_async(
+#[flutter_rust_bridge::frb(serialize)]
+pub fn optional_empty_datetime_utc_twin_sse(
     d: Option<chrono::DateTime<chrono::Utc>>,
 ) -> Option<chrono::DateTime<chrono::Utc>> {
     assert_eq!(&d, &None);
     d
 }
 
-pub async fn duration_twin_rust_async(d: chrono::Duration) -> chrono::Duration {
+#[flutter_rust_bridge::frb(serialize)]
+pub fn duration_twin_sse(d: chrono::Duration) -> chrono::Duration {
     assert_eq!(&d.num_hours(), &4);
     d
 }
 
-pub async fn handle_timestamps_twin_rust_async(
+#[flutter_rust_bridge::frb(serialize)]
+pub fn handle_timestamps_twin_sse(
     timestamps: Vec<chrono::NaiveDateTime>,
     epoch: chrono::NaiveDateTime,
 ) -> Vec<chrono::Duration> {
@@ -76,21 +80,23 @@ pub async fn handle_timestamps_twin_rust_async(
         .collect()
 }
 
-pub async fn handle_durations_twin_rust_async(
+#[flutter_rust_bridge::frb(serialize)]
+pub fn handle_durations_twin_sse(
     durations: Vec<chrono::Duration>,
     since: chrono::DateTime<chrono::Local>,
 ) -> Vec<chrono::DateTime<chrono::Local>> {
     durations.into_iter().map(|dur| since - dur).collect()
 }
 
-pub struct TestChronoTwinRustAsync {
+pub struct TestChronoTwinSse {
     pub dt: Option<chrono::DateTime<chrono::Utc>>,
     pub dt2: Option<chrono::NaiveDateTime>,
     pub du: Option<chrono::Duration>,
 }
 
-pub async fn test_chrono_twin_rust_async() -> TestChronoTwinRustAsync {
-    TestChronoTwinRustAsync {
+#[flutter_rust_bridge::frb(serialize)]
+pub fn test_chrono_twin_sse() -> TestChronoTwinSse {
+    TestChronoTwinSse {
         dt: Some(chrono::DateTime::from_naive_utc_and_offset(
             chrono::NaiveDateTime::from_timestamp_opt(1631297333, 0).unwrap(),
             chrono::Utc,
@@ -100,8 +106,9 @@ pub async fn test_chrono_twin_rust_async() -> TestChronoTwinRustAsync {
     }
 }
 
-pub async fn test_precise_chrono_twin_rust_async() -> TestChronoTwinRustAsync {
-    TestChronoTwinRustAsync {
+#[flutter_rust_bridge::frb(serialize)]
+pub fn test_precise_chrono_twin_sse() -> TestChronoTwinSse {
+    TestChronoTwinSse {
         dt: Some(chrono::DateTime::from_naive_utc_and_offset(
             chrono::NaiveDateTime::from_timestamp_opt(1014466435, 0).unwrap(),
             chrono::Utc,
@@ -112,15 +119,16 @@ pub async fn test_precise_chrono_twin_rust_async() -> TestChronoTwinRustAsync {
 }
 
 #[derive(Debug, Clone)]
-pub struct FeatureChronoTwinRustAsync {
+pub struct FeatureChronoTwinSse {
     pub utc: chrono::DateTime<chrono::Utc>,
     pub local: chrono::DateTime<chrono::Local>,
     pub duration: chrono::Duration,
     pub naive: chrono::NaiveDateTime,
 }
 
-pub async fn how_long_does_it_take_twin_rust_async(
-    mine: FeatureChronoTwinRustAsync,
+#[flutter_rust_bridge::frb(serialize)]
+pub fn how_long_does_it_take_twin_sse(
+    mine: FeatureChronoTwinSse,
 ) -> anyhow::Result<chrono::Duration> {
     use chrono::{Datelike, Timelike};
     let difference: chrono::Duration = chrono::Utc::now() - mine.utc;

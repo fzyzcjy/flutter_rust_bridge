@@ -2,6 +2,8 @@
 // and is auto-generated from `uuid_type.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
+// AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
+
 #[derive(Debug, Clone)]
 pub struct FeatureUuidTwinRustAsync {
     pub one: uuid::Uuid,

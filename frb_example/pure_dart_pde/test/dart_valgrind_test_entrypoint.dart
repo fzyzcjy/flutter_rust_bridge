@@ -11,6 +11,7 @@ import 'api/array_test.dart' as array_test;
 import 'api/async_misc_test.dart' as async_misc_test;
 import 'api/async_spawn_test.dart' as async_spawn_test;
 import 'api/attribute_test.dart' as attribute_test;
+import 'api/chrono_type_test.dart' as chrono_type_test;
 import 'api/comment_test.dart' as comment_test;
 import 'api/customization_test.dart' as customization_test;
 import 'api/dart_fn_test.dart' as dart_fn_test;
@@ -59,6 +60,10 @@ import 'api/pseudo_manual/basic_test.dart' as basic_test;
 import 'api/pseudo_manual/basic_twin_rust_async_test.dart'
     as basic_twin_rust_async_test;
 import 'api/pseudo_manual/basic_twin_sync_test.dart' as basic_twin_sync_test;
+import 'api/pseudo_manual/chrono_type_twin_rust_async_test.dart'
+    as chrono_type_twin_rust_async_test;
+import 'api/pseudo_manual/chrono_type_twin_sync_test.dart'
+    as chrono_type_twin_sync_test;
 import 'api/pseudo_manual/comment_twin_rust_async_test.dart'
     as comment_twin_rust_async_test;
 import 'api/pseudo_manual/comment_twin_sync_test.dart'
@@ -149,6 +154,10 @@ import 'api/pseudo_manual/type_alias_twin_rust_async_test.dart'
     as type_alias_twin_rust_async_test;
 import 'api/pseudo_manual/type_alias_twin_sync_test.dart'
     as type_alias_twin_sync_test;
+import 'api/pseudo_manual/uuid_type_twin_rust_async_test.dart'
+    as uuid_type_twin_rust_async_test;
+import 'api/pseudo_manual/uuid_type_twin_sync_test.dart'
+    as uuid_type_twin_sync_test;
 import 'api/raw_string_test.dart' as raw_string_test;
 import 'api/rust_auto_opaque_test.dart' as rust_auto_opaque_test;
 import 'api/rust_opaque_sync_test.dart' as rust_opaque_sync_test;
@@ -159,6 +168,7 @@ import 'api/stream_test.dart' as stream_test;
 import 'api/structure_test.dart' as structure_test;
 import 'api/tuple_test.dart' as tuple_test;
 import 'api/type_alias_test.dart' as type_alias_test;
+import 'api/uuid_type_test.dart' as uuid_type_test;
 
 Future<void> main() async {
   await RustLib.init();
@@ -182,6 +192,7 @@ Future<void> callFileEntrypoints() async {
   await async_misc_test.main(skipRustLibInit: true);
   await async_spawn_test.main(skipRustLibInit: true);
   await attribute_test.main(skipRustLibInit: true);
+  await chrono_type_test.main(skipRustLibInit: true);
   await comment_test.main(skipRustLibInit: true);
   await customization_test.main(skipRustLibInit: true);
   await dart_fn_test.main(skipRustLibInit: true);
@@ -220,6 +231,8 @@ Future<void> callFileEntrypoints() async {
   await basic_test.main(skipRustLibInit: true);
   await basic_twin_rust_async_test.main(skipRustLibInit: true);
   await basic_twin_sync_test.main(skipRustLibInit: true);
+  await chrono_type_twin_rust_async_test.main(skipRustLibInit: true);
+  await chrono_type_twin_sync_test.main(skipRustLibInit: true);
   await comment_twin_rust_async_test.main(skipRustLibInit: true);
   await comment_twin_sync_test.main(skipRustLibInit: true);
   await dart_fn_twin_rust_async_test.main(skipRustLibInit: true);
@@ -268,6 +281,8 @@ Future<void> callFileEntrypoints() async {
   await tuple_twin_sync_test.main(skipRustLibInit: true);
   await type_alias_twin_rust_async_test.main(skipRustLibInit: true);
   await type_alias_twin_sync_test.main(skipRustLibInit: true);
+  await uuid_type_twin_rust_async_test.main(skipRustLibInit: true);
+  await uuid_type_twin_sync_test.main(skipRustLibInit: true);
   await raw_string_test.main(skipRustLibInit: true);
   await rust_auto_opaque_test.main(skipRustLibInit: true);
   await rust_opaque_sync_test.main(skipRustLibInit: true);
@@ -278,4 +293,5 @@ Future<void> callFileEntrypoints() async {
   await structure_test.main(skipRustLibInit: true);
   await tuple_test.main(skipRustLibInit: true);
   await type_alias_test.main(skipRustLibInit: true);
+  await uuid_type_test.main(skipRustLibInit: true);
 }
