@@ -252,9 +252,9 @@ Future<void> testUpgrade() async {
 
   await tester._quickstartStepCreate();
 
-  TODO_execute_upgrade;
+  TODO_execute_generate_and_should_auto_upgrade;
 
-  await tester._quickstartStepRun();
+  TODO_verify_version_is_upgraded;
 }
 
 Future<void> testRust(TestRustConfig config) async {
