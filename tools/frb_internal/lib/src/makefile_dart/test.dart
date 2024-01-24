@@ -247,11 +247,14 @@ Future<void> testUpgrade() async {
 
   // postRelease=true to use released binary
   const tester = MimicQuickstartTester(postRelease: true);
-  tester._prepareDir();
-  await tester._quickstartStepCreate();
-  await tester._quickstartStepRun();
 
-  TODO;
+  tester._prepareDir();
+
+  await tester._quickstartStepCreate();
+
+  TODO_execute_upgrade;
+
+  await tester._quickstartStepRun();
 }
 
 Future<void> testRust(TestRustConfig config) async {
