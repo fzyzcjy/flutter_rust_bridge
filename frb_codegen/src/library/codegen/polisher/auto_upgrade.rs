@@ -1,4 +1,5 @@
 use crate::codegen::misc::GeneratorProgressBarPack;
+use crate::integration::integrator::pub_add_dependency_frb;
 use crate::utils::dart_repository::dart_repo::{DartDependencyMode, DartRepository};
 use crate::utils::path_utils::path_to_string;
 use semver::VersionReq;
@@ -25,7 +26,7 @@ fn handle_dart(dart_root: &Path) -> anyhow::Result<()> {
         )
         .is_ok();
     if !pass {
-        todo!()
+        pub_add_dependency_frb(false)?;
     }
     Ok(())
 }
