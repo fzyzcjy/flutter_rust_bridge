@@ -142,8 +142,12 @@ Future<void> testMimicQuickstart() async =>
 
 class MimicQuickstartTester {
   final bool postRelease;
+  final bool coverage;
 
-  const MimicQuickstartTester({required this.postRelease});
+  const MimicQuickstartTester({
+    required this.postRelease,
+    this.coverage = false,
+  });
 
   Future<void> test() async {
     _prepareDir();
@@ -176,7 +180,7 @@ class MimicQuickstartTester {
     await executeFrbCodegen(
       'create $_kMimicQuickstartPackageName ${postRelease ? "" : "--local"}',
       relativePwd: 'frb_example',
-      coverage: false,
+      coverage: coverage,
       postRelease: postRelease,
       coverageName: 'MimicQuickstartStepCreate',
     );
@@ -239,7 +243,7 @@ class MimicQuickstartTester {
     await executeFrbCodegen(
       'generate',
       relativePwd: 'frb_example/$_kMimicQuickstartPackageName',
-      coverage: false,
+      coverage: coverage,
       coverageName: 'MimicQuickstartStepGenerate',
       postRelease: postRelease,
     );
@@ -284,7 +288,7 @@ Future<void> testUpgrade() async {
   await const MimicQuickstartTester(postRelease: true)._quickstartStepCreate();
   checkVersion(expectVersion: oldVersion);
 
-  await const MimicQuickstartTester(postRelease: false)
+  await const MimicQuickstartTester(postRelease: false, coverage: true)
       ._quickstartStepGenerate();
   checkVersion(expectVersion: newVersion);
 }
