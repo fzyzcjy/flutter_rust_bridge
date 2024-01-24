@@ -106,6 +106,7 @@ fn execute_dart_format(
     let _pb = progress_bar_pack.polish_dart_formatter.start();
     format_dart(
         &filter_paths_by_extension(output_paths, "dart"),
+        &config.dart_root,
         config.dart_format_line_length,
     )
 }
