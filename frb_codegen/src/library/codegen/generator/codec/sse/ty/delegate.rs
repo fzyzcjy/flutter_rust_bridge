@@ -126,26 +126,13 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::Map(_) => "inner.into_iter().collect()".to_owned(),
                 IrTypeDelegate::Set(_) => "inner.into_iter().collect()".to_owned(),
                 IrTypeDelegate::Time(ir) => {
-                    if ir == &IrTypeDelegateTime::Duration {
-                        return "chrono::Duration::milliseconds(self)".to_owned();
-                    }
-
-                    let codegen_timestamp = "let flutter_rust_bridge::for_generated::Timestamp { s, ns } = flutter_rust_bridge::for_generated::decode_timestamp(self);";
-                    let codegen_naive =
-                        "chrono::NaiveDateTime::from_timestamp_opt(s, ns).expect(\"invalid or out-of-range datetime\")";
-                    let codegen_utc = format!("chrono::DateTime::<chrono::Utc>::from_naive_utc_and_offset({codegen_naive}, chrono::Utc)");
-                    let codegen_local = format!("chrono::DateTime::<chrono::Local>::from({codegen_utc})");
-                    let codegen_conversion = match ir {
-                        IrTypeDelegateTime::Naive => codegen_naive,
-                        IrTypeDelegateTime::Utc => codegen_utc.as_str(),
-                        IrTypeDelegateTime::Local => codegen_local.as_str(),
-                        // frb-coverage:ignore-start
-                        IrTypeDelegateTime::Duration => unreachable!(),
-                        // frb-coverage:ignore-end
-                    };
-                    Acc {
-                        common: Some(format!("{codegen_timestamp}{codegen_conversion}")),
-                        ..Default::default()
+                    let naive = "chrono::NaiveDateTime::from_timestamp_millis(inner).expect(\"invalid or out-of-range datetime\")";
+                    let utc = format!("chrono::DateTime::<chrono::Utc>::from_naive_utc_and_offset({naive}, chrono::Utc)");
+                    match ir {
+                        IrTypeDelegateTime::Naive => naive,
+                        IrTypeDelegateTime::Utc => utc,
+                        IrTypeDelegateTime::Local => format!("chrono::DateTime::<chrono::Local>::from({codegen_utc})"),
+                        IrTypeDelegateTime::Duration => "chrono::Duration::milliseconds(self)".to_owned(),
                     }
                 },
                 IrTypeDelegate::Uuid => Acc::distribute(
