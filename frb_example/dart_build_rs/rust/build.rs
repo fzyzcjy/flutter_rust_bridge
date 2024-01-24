@@ -4,7 +4,7 @@ use lib_flutter_rust_bridge_codegen::utils::logs::configure_opinionated_logging;
 
 fn main() -> anyhow::Result<()> {
     // If you want to see logs
-    configure_opinionated_logging("./logs", true)?;
+    configure_opinionated_logging("./logs/", true)?;
 
     // Execute code generator with auto-detected config
     codegen::generate(
