@@ -62,7 +62,18 @@ impl Upgrader for RustUpgrader {
 
     fn upgrade(base_dir: &Path, enable_local_dependency: bool) -> Result<()> {
         cargo_add(
-            &format!("flutter_rust_bridge@={}", env!("CARGO_PKG_VERSION")),
+            &if enable_local_dependency {
+                vec![
+                    "flutter_rust_bridge".to_owned(),
+                    "--path".to_owned(),
+                    "../../../frb_rust".to_owned(),
+                ]
+            } else {
+                vec![format!(
+                    "flutter_rust_bridge@={}",
+                    env!("CARGO_PKG_VERSION")
+                )]
+            },
             base_dir,
         )
     }
