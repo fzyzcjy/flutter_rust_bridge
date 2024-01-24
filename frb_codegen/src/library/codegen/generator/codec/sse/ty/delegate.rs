@@ -98,7 +98,11 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     IrTypeDelegateTime::Utc
                     | IrTypeDelegateTime::Local
                     | IrTypeDelegateTime::Naive => {
-                        "DateTime.fromMillisecondsSinceEpoch(inner, isUtc: TODO)".to_owned()
+                        format!(
+                            "DateTime.fromMillisecondsSinceEpoch(inner, isUtc: {is_utc})",
+                            is_utc =
+                                matches!(ir, IrTypeDelegateTime::Naive | IrTypeDelegateTime::Utc),
+                        )
                     }
                     IrTypeDelegateTime::Duration => "Duration(milliseconds: inner)".to_owned(),
                 },
