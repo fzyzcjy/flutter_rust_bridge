@@ -240,14 +240,7 @@ fn pub_add_dependencies(
     // frb-coverage:ignore-end
     flutter_pub_add(&["rust_builder".into(), "--path=rust_builder".into()])?;
 
-    flutter_pub_add(&if enable_local_dependency {
-        vec![
-            "flutter_rust_bridge".to_owned(),
-            "--path=../../frb_dart".to_owned(),
-        ]
-    } else {
-        vec![format!("flutter_rust_bridge:{}", env!("CARGO_PKG_VERSION"))]
-    })?;
+    pub_add_dependency_frb(enable_local_dependency)?;
 
     // // Temporarily avoid `^` before https://github.com/flutter/flutter/issues/84270 is fixed
     // flutter_pub_add(&["ffigen:8.0.2".into(), "--dev".into()])?;
@@ -264,4 +257,15 @@ fn pub_add_dependencies(
     // frb-coverage:ignore-end
 
     Ok(())
+}
+
+pub(crate) fn pub_add_dependency_frb(enable_local_dependency: bool) -> Result<()> {
+    flutter_pub_add(&if enable_local_dependency {
+        vec![
+            "flutter_rust_bridge".to_owned(),
+            "--path=../../frb_dart".to_owned(),
+        ]
+    } else {
+        vec![format!("flutter_rust_bridge:{}", env!("CARGO_PKG_VERSION"))]
+    })?;
 }
