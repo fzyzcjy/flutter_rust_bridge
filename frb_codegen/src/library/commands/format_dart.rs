@@ -25,11 +25,12 @@ pub fn format_dart(paths: &[PathBuf], base_path: &Path, line_length: u32) -> any
 }
 
 pub(super) fn prepare_paths(paths: &[PathBuf], base_path: &Path) -> anyhow::Result<Vec<PathBuf>> {
+    let normalized_base_path = normalize_windows_unc_path(&path_to_string(base_path)?);
     (paths.iter())
         .map(|path| {
             let mut path: PathBuf =
                 (normalize_windows_unc_path(&path_to_string(path)?).to_owned()).into();
-            path = diff_paths(path, base_path).context("diff path")?;
+            path = diff_paths(path, normalized_base_path).context("diff path")?;
             if path_to_string(&path)?.is_empty() {
                 path = ".".into();
             }
