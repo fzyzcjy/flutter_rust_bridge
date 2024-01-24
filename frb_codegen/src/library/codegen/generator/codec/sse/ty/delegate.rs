@@ -127,7 +127,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                             format!("chrono::DateTime::<chrono::Local>::from({utc})")
                         }
                         IrTypeDelegateTime::Duration => {
-                            "chrono::Duration::milliseconds(self)".to_owned()
+                            "chrono::Duration::milliseconds(inner)".to_owned()
                         }
                     }
                 }
