@@ -27,15 +27,10 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::Time(ir) => match ir {
                     IrTypeDelegateTime::Utc
                     | IrTypeDelegateTime::Local
-                    | IrTypeDelegateTime::Naive => {
-                        "return cst_encode_i_64(raw.millisecondsSinceEpoch);"
-                    }
-                    IrTypeDelegateTime::Duration => "return cst_encode_i_64(raw.inMilliseconds);",
+                    | IrTypeDelegateTime::Naive => "self.millisecondsSinceEpoch".to_owned(),
+                    IrTypeDelegateTime::Duration => "self.inMilliseconds".to_owned(),
                 },
-                IrTypeDelegate::Uuid => format!(
-                    "return cst_encode_{}(raw.toBytes());",
-                    uint8list_safe_ident(true)
-                ),
+                IrTypeDelegate::Uuid => "self.toBytes()".to_owned(),
                 // frb-coverage:ignore-start
                 _ => unreachable!(),
                 // frb-coverage:ignore-end
