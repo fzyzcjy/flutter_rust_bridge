@@ -34,11 +34,18 @@ struct DartUpgrader;
 
 impl Upgrader for DartUpgrader {
     fn check(base_dir: &Path) -> Result<bool> {
-        todo!()
+        let repo = DartRepository::from_str(&path_to_string(base_dir)?)?;
+        Ok(repo
+            .has_specified_and_installed(
+                "flutter_rust_bridge",
+                DartDependencyMode::Main,
+                &VersionReq::from_str(&format!("={}", env!("CARGO_PKG_VERSION")))?,
+            )
+            .is_ok())
     }
 
     fn upgrade(base_dir: &Path) -> Result<()> {
-        todo!()
+        pub_add_dependency_frb(false)
     }
 }
 
@@ -52,23 +59,4 @@ impl Upgrader for RustUpgrader {
     fn upgrade(base_dir: &Path) -> Result<()> {
         todo!()
     }
-}
-
-fn handle_dart(dart_root: &Path) -> anyhow::Result<()> {
-    let repo = DartRepository::from_str(&path_to_string(dart_root)?)?;
-    let pass = repo
-        .has_specified_and_installed(
-            "flutter_rust_bridge",
-            DartDependencyMode::Main,
-            &VersionReq::from_str(&format!("={}", env!("CARGO_PKG_VERSION")))?,
-        )
-        .is_ok();
-    if !pass {
-        pub_add_dependency_frb(false)?;
-    }
-    Ok(())
-}
-
-fn handle_rust(rust_crate_dir: &Path) -> anyhow::Result<()> {
-    todo!()
 }
