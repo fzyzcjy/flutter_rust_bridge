@@ -1,4 +1,3 @@
-use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::codegen::generator::codec::sse::lang::*;
 use crate::codegen::generator::codec::sse::ty::*;
@@ -31,9 +30,6 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     IrTypeDelegateTime::Duration => "self.inMilliseconds".to_owned(),
                 },
                 IrTypeDelegate::Uuid => "self.toBytes()".to_owned(),
-                // frb-coverage:ignore-start
-                _ => unreachable!(),
-                // frb-coverage:ignore-end
             },
             Lang::RustLang(_) => match &self.ir {
                 IrTypeDelegate::Array(_) => {
@@ -67,9 +63,6 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     IrTypeDelegateTime::Duration => "self.num_milliseconds()".to_owned(),
                 },
                 IrTypeDelegate::Uuid => "self.as_bytes().to_vec()".to_owned(),
-                // frb-coverage:ignore-start
-                _ => unreachable!(),
-                // frb-coverage:ignore-end
             },
         };
         Some(simple_delegate_encode(
@@ -110,9 +103,6 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     IrTypeDelegateTime::Duration => "Duration(milliseconds: inner)".to_owned(),
                 },
                 IrTypeDelegate::Uuid => "UuidValue.fromByteList(inner)".to_owned(),
-                // frb-coverage:ignore-start
-                _ => unreachable!(),
-                // frb-coverage:ignore-end
             },
             Lang::RustLang(_) => match &self.ir {
                 IrTypeDelegate::Array(_) => {
@@ -142,9 +132,6 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     }
                 }
                 IrTypeDelegate::Uuid => "uuid::Uuid::from_slice(&inner)".to_owned(),
-                // frb-coverage:ignore-start
-                _ => unreachable!(),
-                // frb-coverage:ignore-end
             },
         };
 
