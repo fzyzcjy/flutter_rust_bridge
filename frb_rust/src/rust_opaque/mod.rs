@@ -14,6 +14,8 @@ pub struct RustOpaqueBase<T: ?Sized + 'static, A: BaseArc<T>> {
 }
 
 /// Please refer to `RustOpaque` for doc.
+///
+/// For readers migrating from old versions: The new `RustOpaque` is at `crate::frb_generated::RustOpaque`.
 pub type RustOpaqueNom<T> = RustOpaqueBase<T, StdArc<T>>;
 
 #[doc(hidden)]
