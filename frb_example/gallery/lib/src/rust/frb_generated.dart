@@ -260,8 +260,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_AnyhowException(
       AnyhowException self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    throw UnimplementedError(
-        'The type Delegate(AnyhowException) is not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue');
+    throw UnimplementedError('Unreachable ((');
   }
 
   @protected
