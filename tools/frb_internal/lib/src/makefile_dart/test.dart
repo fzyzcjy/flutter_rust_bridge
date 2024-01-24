@@ -269,7 +269,8 @@ Future<void> testUpgrade() async {
   // This old-version can be bumped if needed
   const kOldVersion = '2.0.0-dev.20';
 
-  await cargoInstall(kOldVersion, extra: '--force');
+  await quickstartStepInstall(CodegenInstallMode.cargoInstall,
+      versionConstraint: kOldVersion);
 
   MimicQuickstartTester._prepareDir();
 

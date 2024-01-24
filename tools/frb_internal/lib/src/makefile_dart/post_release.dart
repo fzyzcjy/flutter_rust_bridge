@@ -26,7 +26,7 @@ class PostReleaseConfig {
 }
 
 Future<void> postReleaseMimicQuickstart(PostReleaseConfig config) async {
-  await _quickstartStepInstall(config.codegenInstallMode,
+  await quickstartStepInstall(config.codegenInstallMode,
       versionConstraint: '^2.0.0-dev.0');
   await const MimicQuickstartTester(postRelease: true).test();
 }
@@ -38,11 +38,12 @@ enum CodegenInstallMode {
   homebrew,
 }
 
-Future<void> _quickstartStepInstall(CodegenInstallMode mode,
+Future<void> quickstartStepInstall(CodegenInstallMode mode,
     {required String versionConstraint}) async {
   switch (mode) {
     case CodegenInstallMode.cargoInstall:
-      await cargoInstall(versionConstraint);
+      await exec(
+          "cargo install 'flutter_rust_bridge_codegen@$versionConstraint'");
     case CodegenInstallMode.cargoBinstall:
       await exec(
           "cargo binstall -y 'flutter_rust_bridge_codegen@$versionConstraint'");
@@ -53,9 +54,4 @@ Future<void> _quickstartStepInstall(CodegenInstallMode mode,
     case CodegenInstallMode.homebrew:
       await exec('brew install desdaemon/repo/flutter_rust_bridge_codegen');
   }
-}
-
-Future<void> cargoInstall(String versionConstraint, {String? extra}) async {
-  await exec(
-      "cargo install 'flutter_rust_bridge_codegen@$versionConstraint' $extra");
 }
