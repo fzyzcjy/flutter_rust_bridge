@@ -46,7 +46,7 @@ impl Upgrader for DartUpgrader {
     }
 
     fn upgrade(base_dir: &Path) -> Result<()> {
-        pub_add_dependency_frb(false)
+        pub_add_dependency_frb(false, Some(base_dir))
     }
 }
 
