@@ -270,7 +270,7 @@ Future<void> testUpgrade() async {
   // This old-version can be bumped if needed
   const oldVersion = '2.0.0-dev.20';
   final newVersion = computeVersionInfo().newVersion;
-  if (oldVersion != newVersion) {
+  if (oldVersion == newVersion) {
     throw Exception('This test requires oldVersion!=newVersion');
   }
 
