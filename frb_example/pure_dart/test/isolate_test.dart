@@ -14,10 +14,12 @@ Future<void> main() async {
 
     final isolateResults = await Isolate.run(() async {
       await RustLib.init();
-      return (
+      final ans = (
         await simpleAdderTwinNormal(a: 42, b: 100),
         simpleAdderTwinSync(a: 42, b: 100),
       );
+      RustLib.dispose();
+      return ans;
     });
     expect(isolateResults, (142, 142));
   });
