@@ -159,7 +159,7 @@ class MimicQuickstartTester {
     await _quickstartStepRun();
   }
 
-  void _prepareDir() {
+  static void _prepareDir() {
     Directory('${exec.pwd}frb_example').createSync(recursive: true);
     final targetDir =
         Directory('${exec.pwd}frb_example/$_kMimicQuickstartPackageName/');
@@ -246,16 +246,12 @@ Future<void> testUpgrade() async {
   // This old-version can be bumped if needed
   const kOldVersion = '2.0.0-dev.20';
 
-  const tester = MimicQuickstartTester(
-    // postRelease=true to use released binary
-    postRelease: true,
-  );
-
   await quickstartStepInstall(CodegenInstallMode.cargoInstall,
       versionConstraint: kOldVersion);
 
-  tester._prepareDir();
-  await tester._quickstartStepCreate();
+  MimicQuickstartTester._prepareDir();
+
+  await const MimicQuickstartTester(postRelease: true)._quickstartStepCreate();
 
   TODO_execute_generate_and_should_auto_upgrade;
 
