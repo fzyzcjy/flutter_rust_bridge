@@ -15,6 +15,7 @@ import 'package:flutter_rust_bridge_internal/src/utils/codecov_transformer.dart'
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 import 'package:meta/meta.dart';
 import 'package:retry/retry.dart';
+import 'package:toml/toml.dart';
 import 'package:yaml/yaml.dart';
 
 part 'test.g.dart';
@@ -252,7 +253,17 @@ Future<void> testUpgrade() async {
     final pubspecYaml =
         loadYaml(File('${baseDir}pubspec.yaml').readAsStringSync());
     final dartVersion = pubspecYaml['dependencies']['flutter_rust_bridge'];
-    TODO;
+    if (dartVersion != expectVersion) {
+      throw Exception('dartVersion=$dartVersion expectVersion=$expectVersion');
+    }
+
+    final cargoToml =
+        TomlDocument.parse(File('${baseDir}pubspec.yaml').readAsStringSync())
+            .toMap();
+    final rustVersion = cargoToml['dependencies']['flutter_rust_bridge'];
+    if (rustVersion != expectVersion) {
+      throw Exception('rustVersion=$rustVersion expectVersion=$expectVersion');
+    }
   }
 
   // This old-version can be bumped if needed
@@ -268,7 +279,7 @@ Future<void> testUpgrade() async {
 
   await const MimicQuickstartTester(postRelease: false)
       ._quickstartStepGenerate();
-  checkVersion(expectVersion: TODO);
+  checkVersion(expectVersion: computeVersionInfo().newVersion);
 }
 
 Future<void> testRust(TestRustConfig config) async {
