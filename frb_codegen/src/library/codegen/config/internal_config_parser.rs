@@ -167,7 +167,7 @@ impl InternalConfig {
                 rust_crate_dir,
                 rust_output_path,
                 c_output_path,
-                enable_local_dependency,
+                enable_auto_upgrade: enable_local_dependency,
             },
             dumper: DumperInternalConfig {
                 dump_contents: parse_dump_contents(config),

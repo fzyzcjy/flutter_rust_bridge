@@ -13,5 +13,5 @@ pub(crate) struct PolisherInternalConfig {
     pub rust_crate_dir: PathBuf,
     pub rust_output_path: TargetOrCommonMap<PathBuf>,
     pub c_output_path: Option<PathBuf>,
-    pub enable_local_dependency: bool,
+    pub enable_auto_upgrade: bool,
 }

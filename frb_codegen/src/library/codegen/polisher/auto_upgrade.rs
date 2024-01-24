@@ -12,11 +12,10 @@ pub(super) fn execute(
     progress_bar_pack: &GeneratorProgressBarPack,
     dart_root: &Path,
     rust_crate_dir: &Path,
-    enable_local_dependency: bool,
 ) -> Result<()> {
     let _pb = progress_bar_pack.polish_upgrade.start();
-    DartUpgrader::execute(dart_root, enable_local_dependency)?;
-    RustUpgrader::execute(rust_crate_dir, enable_local_dependency)
+    DartUpgrader::execute(dart_root)?;
+    RustUpgrader::execute(rust_crate_dir)
 }
 
 trait Upgrader {
