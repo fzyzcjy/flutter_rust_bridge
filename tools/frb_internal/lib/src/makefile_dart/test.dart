@@ -20,6 +20,7 @@ part 'test.g.dart';
 List<Command<void>> createCommands() {
   return [
     SimpleCommand('test-mimic-quickstart', testMimicQuickstart),
+    SimpleCommand('test-upgrade', testUpgrade),
     SimpleConfigCommand('test-rust', testRust, _$populateTestRustConfigParser,
         _$parseTestRustConfigResult),
     SimpleConfigCommand(
@@ -238,6 +239,10 @@ class MimicQuickstartTester {
       postRelease: postRelease,
     );
   }
+}
+
+Future<void> testUpgrade() async {
+  throw UnimplementedError('TODO');
 }
 
 Future<void> testRust(TestRustConfig config) async {
