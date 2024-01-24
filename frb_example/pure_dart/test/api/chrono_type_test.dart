@@ -63,7 +63,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
       Duration(days: 10),
       Duration(days: 100),
       Duration(milliseconds: 333),
-      // if (!kIsWeb) Duration(microseconds: 333)
+      if (!kIsWeb) Duration(microseconds: 333)
     ];
     final now = DateTime.now();
     final durations = await handleTimestampsTwinNormal(
@@ -79,7 +79,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
       Duration(hours: 2),
       Duration(seconds: 1),
       Duration(milliseconds: 500),
-      // if (!kIsWeb) Duration(microseconds: 400)
+      if (!kIsWeb) Duration(microseconds: 400)
     ];
     final now = DateTime.now();
     final result =
