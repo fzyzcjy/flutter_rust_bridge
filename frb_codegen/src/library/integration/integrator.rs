@@ -61,7 +61,7 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
 }
 
 fn modify_permissions(dart_root: &Path) -> Result<()> {
-    #[cfg(not(windows))]
+    #[allow(unused_variables)] // unused when in windows
     let dir_cargokit = dart_root.join("rust_builder").join("cargokit");
 
     #[cfg(not(windows))]
