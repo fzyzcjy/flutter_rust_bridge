@@ -257,11 +257,12 @@ Future<void> testUpgrade() async {
           'checkVersion failed. dartVersion=$dartVersion expectVersion=$expectVersion');
     }
 
-    final cargoToml = File('${baseDir}pubspec.yaml').readAsStringSync();
-    final expectCargoTomlSnippet = 'flutter_rust_bridge = "$expectVersion"';
-    if (!cargoToml.contains(expectCargoTomlSnippet)) {
-      throw Exception(
-          'checkVersion failed. cargoToml=$cargoToml expectCargoTomlSnippet=$expectCargoTomlSnippet');
+    final cargoToml =
+        TomlDocument.parse(File('${baseDir}pubspec.yaml').readAsStringSync())
+            .toMap();
+    final rustVersion = cargoToml['dependencies']['flutter_rust_bridge'];
+    if (rustVersion != expectVersion) {
+      throw Exception('rustVersion=$rustVersion expectVersion=$expectVersion');
     }
   }
 
