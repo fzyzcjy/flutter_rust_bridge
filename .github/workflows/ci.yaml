@@ -500,6 +500,12 @@ jobs:
       # execute
       - run: ./frb_internal test-mimic-quickstart
 
+      # report
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ github.job }}--${{ matrix.image }}--coverage
+          path: target/coverage
+
   test_rust:
     name: 'Test :: Rust'
     runs-on: ${{ matrix.info.image }}
@@ -944,6 +950,7 @@ jobs:
       - generate_run_frb_codegen_command_generate
       - generate_run_frb_codegen_command_integrate
       - generate_internal
+      - test_upgrade
       - test_rust
       - test_dart_native
       - test_flutter_web
