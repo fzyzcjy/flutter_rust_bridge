@@ -15,6 +15,7 @@ import 'package:flutter_rust_bridge_internal/src/utils/codecov_transformer.dart'
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 import 'package:meta/meta.dart';
 import 'package:retry/retry.dart';
+import 'package:toml/toml.dart';
 import 'package:yaml/yaml.dart';
 
 part 'test.g.dart';
@@ -258,7 +259,7 @@ Future<void> testUpgrade() async {
     }
 
     final cargoToml =
-        TomlDocument.parse(File('${baseDir}pubspec.yaml').readAsStringSync())
+        TomlDocument.parse(File('${baseDir}rust/Cargo.toml').readAsStringSync())
             .toMap();
     final rustVersion = cargoToml['dependencies']['flutter_rust_bridge'];
     if (rustVersion != expectVersion) {
