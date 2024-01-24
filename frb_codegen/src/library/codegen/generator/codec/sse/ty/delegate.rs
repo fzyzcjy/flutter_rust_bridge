@@ -17,12 +17,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::String => "utf8.encoder.convert(self)".to_owned(),
                 IrTypeDelegate::PrimitiveEnum(_) => "self.index".to_owned(),
                 IrTypeDelegate::Backtrace | IrTypeDelegate::AnyhowException => {
-                    return Some(format!(
-                        "{};",
-                        lang.throw_unimplemented(&generate_unimplemented_in_sse_message(
-                            &self.ir.clone().into()
-                        ))
-                    ));
+                    return Some(format!("{};", lang.throw_unreachable("")));
                 }
                 IrTypeDelegate::Map(_) => {
                     "self.entries.map((e) => (e.key, e.value)).toList()".to_owned()
@@ -110,12 +105,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     rust_decode_primitive_enum(inner, self.context.ir_pack, "inner")
                 }
                 IrTypeDelegate::Backtrace | IrTypeDelegate::AnyhowException => {
-                    return Some(format!(
-                        "{};",
-                        lang.throw_unimplemented(&generate_unimplemented_in_sse_message(
-                            &self.ir.clone().into()
-                        ))
-                    ));
+                    return Some(format!("{};", lang.throw_unreachable("")));
                 }
                 IrTypeDelegate::Map(_) => "inner.into_iter().collect()".to_owned(),
                 IrTypeDelegate::Set(_) => "inner.into_iter().collect()".to_owned(),
