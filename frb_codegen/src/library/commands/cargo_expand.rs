@@ -23,6 +23,7 @@ impl CachedCargoExpand {
         dumper: &Dumper,
     ) -> Result<String> {
         let manifest_dir = env::var("CARGO_MANIFEST_DIR").unwrap_or_default();
+        debug!("CachedCargoExpand execute manifest_dir={manifest_dir} rust_crate_dir={rust_crate_dir:?}");
 
         if !manifest_dir.is_empty() && rust_crate_dir == PathBuf::from(manifest_dir) {
             // We do not care about this warning message
