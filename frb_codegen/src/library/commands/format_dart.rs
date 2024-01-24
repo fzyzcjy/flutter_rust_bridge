@@ -7,7 +7,13 @@ use std::path::{Path, PathBuf};
 
 #[allow(clippy::vec_init_then_push)]
 pub fn format_dart(paths: &[PathBuf], base_path: &Path, line_length: u32) -> anyhow::Result<()> {
-    let paths = normalize_windows_unc_paths(paths)?;
+    let paths = (paths.iter())
+        .map(|p| {
+            Ok(normalize_windows_unc_path(&path_to_string(p)?)
+                .to_owned()
+                .into())
+        })
+        .collect()?;
     debug!("execute format_dart path={path:?} line_length={line_length}");
 
     let res = command_run!(
@@ -20,14 +26,4 @@ pub fn format_dart(paths: &[PathBuf], base_path: &Path, line_length: u32) -> any
     )?;
     check_exit_code(&res)?;
     Ok(())
-}
-
-pub(super) fn normalize_windows_unc_paths(paths: &[PathBuf]) -> anyhow::Result<Vec<PathBuf>> {
-    (paths.iter())
-        .map(|p| {
-            Ok(normalize_windows_unc_path(&path_to_string(p)?)
-                .to_owned()
-                .into())
-        })
-        .collect()
 }
