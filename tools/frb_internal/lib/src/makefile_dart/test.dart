@@ -248,6 +248,8 @@ class MimicQuickstartTester {
 
 Future<void> testUpgrade() async {
   void checkVersion({required String expectVersion}) {
+    print('checkVersion expectVersion=$expectVersion');
+
     final baseDir = MimicQuickstartTester._baseDir;
 
     final pubspecYaml =
