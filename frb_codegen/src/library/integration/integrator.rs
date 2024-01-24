@@ -141,6 +141,17 @@ fn modify_file(
         }
     }
 
+    if path
+        .iter()
+        .contains(&OsStr::new("flutter_rust_bridge.yaml"))
+    {
+        let mut ans = String::from_utf8(src)?;
+        if enable_local_dependency {
+            ans += "\nlocal: true\n";
+        }
+        return Some((path, ans.as_bytes().to_owned()));
+    }
+
     Some((path, src))
 }
 
