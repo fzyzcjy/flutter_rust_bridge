@@ -63,7 +63,11 @@ fn ensure_dependency_freezed(
             DartDependencyMode::Main,
             &ANY_REQUIREMENT,
         )?;
-        repo.has_specified_and_installed("build_runner", DartDependencyMode::Dev, &ANY_REQUIREMENT)?;
+        repo.has_specified_and_installed(
+            "build_runner",
+            DartDependencyMode::Dev,
+            &ANY_REQUIREMENT,
+        )?;
     }
     Ok(())
 }
