@@ -460,7 +460,7 @@ jobs:
         uses: pyvista/setup-headless-display-action@v1
 
       # execute
-      - run: ./frb_internal test-upgrade
+      - run: ./frb_internal test-mimic-quickstart
 
   test_upgrade:
     name: 'Test :: Upgrade'
@@ -499,7 +499,7 @@ jobs:
       - uses: taiki-e/install-action@cargo-llvm-cov
 
       # execute
-      - run: ./frb_internal test-mimic-quickstart
+      - run: ./frb_internal test-upgrade
 
       # report
       - uses: actions/upload-artifact@v4
