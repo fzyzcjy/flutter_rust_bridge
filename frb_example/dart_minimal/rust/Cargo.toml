@@ -10,5 +10,3 @@ crate-type = ["cdylib"]
 anyhow = { version = "1.0.64", features = ["backtrace"] }
 flutter_rust_bridge = { path = "../../../frb_rust" }
 log = "0.4.19"
-uuid = { version = "1.4.1", features = ["v4"] }
-chrono = "0.4.26"
