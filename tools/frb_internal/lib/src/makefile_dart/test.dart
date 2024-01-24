@@ -243,6 +243,10 @@ class MimicQuickstartTester {
 }
 
 Future<void> testUpgrade() async {
+  void checkVersion({required String expectVersion}) {
+    TODO;
+  }
+
   // This old-version can be bumped if needed
   const kOldVersion = '2.0.0-dev.20';
 
@@ -252,11 +256,11 @@ Future<void> testUpgrade() async {
   MimicQuickstartTester._prepareDir();
 
   await const MimicQuickstartTester(postRelease: true)._quickstartStepCreate();
+  checkVersion(expectVersion: kOldVersion);
 
   await const MimicQuickstartTester(postRelease: false)
       ._quickstartStepGenerate();
-
-  TODO_verify_version_is_upgraded;
+  checkVersion(expectVersion: TODO);
 }
 
 Future<void> testRust(TestRustConfig config) async {
