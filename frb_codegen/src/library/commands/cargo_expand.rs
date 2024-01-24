@@ -1,6 +1,7 @@
 use crate::codegen::dumper::Dumper;
 use crate::codegen::ConfigDumpContent;
 use crate::library::commands::command_runner::execute_command;
+use crate::utils::path_utils::{normalize_windows_unc_path, path_to_string};
 use anyhow::{bail, Context, Result};
 use itertools::Itertools;
 use log::{debug, info, warn};
@@ -25,7 +26,10 @@ impl CachedCargoExpand {
         let manifest_dir = env::var("CARGO_MANIFEST_DIR").unwrap_or_default();
         debug!("CachedCargoExpand execute manifest_dir={manifest_dir} rust_crate_dir={rust_crate_dir:?}");
 
-        if !manifest_dir.is_empty() && rust_crate_dir == PathBuf::from(manifest_dir) {
+        if !manifest_dir.is_empty()
+            && normalize_windows_unc_path(&path_to_string(rust_crate_dir)?)
+                == normalize_windows_unc_path(&manifest_dir)
+        {
             // We do not care about this warning message
             // frb-coverage:ignore-start
             warn!(
