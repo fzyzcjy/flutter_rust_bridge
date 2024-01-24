@@ -21760,28 +21760,43 @@ impl SseDecode for backtrace::Backtrace {
 impl SseDecode for chrono::Duration {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        unimplemented!("The type Delegate(Time(Duration)) is not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue");
+        let mut inner = <i64>::sse_decode(deserializer);
+        return chrono::Duration::microseconds(inner);
     }
 }
 
 impl SseDecode for chrono::DateTime<chrono::Local> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        unimplemented!("The type Delegate(Time(Local)) is not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue");
+        let mut inner = <i64>::sse_decode(deserializer);
+        return chrono::DateTime::<chrono::Local>::from(
+            chrono::DateTime::<chrono::Utc>::from_naive_utc_and_offset(
+                chrono::NaiveDateTime::from_timestamp_micros(inner)
+                    .expect("invalid or out-of-range datetime"),
+                chrono::Utc,
+            ),
+        );
     }
 }
 
 impl SseDecode for chrono::NaiveDateTime {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        unimplemented!("The type Delegate(Time(Naive)) is not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue");
+        let mut inner = <i64>::sse_decode(deserializer);
+        return chrono::NaiveDateTime::from_timestamp_micros(inner)
+            .expect("invalid or out-of-range datetime");
     }
 }
 
 impl SseDecode for chrono::DateTime<chrono::Utc> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        unimplemented!("The type Delegate(Time(Utc)) is not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue");
+        let mut inner = <i64>::sse_decode(deserializer);
+        return chrono::DateTime::<chrono::Utc>::from_naive_utc_and_offset(
+            chrono::NaiveDateTime::from_timestamp_micros(inner)
+                .expect("invalid or out-of-range datetime"),
+            chrono::Utc,
+        );
     }
 }
 
@@ -22668,7 +22683,8 @@ impl SseDecode for String {
 impl SseDecode for uuid::Uuid {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        unimplemented!("The type Delegate(Uuid) is not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue");
+        let mut inner = <Vec<u8>>::sse_decode(deserializer);
+        return uuid::Uuid::from_slice(&inner).expect("fail to decode uuid");
     }
 }
 
@@ -37792,28 +37808,32 @@ impl SseEncode for backtrace::Backtrace {
 impl SseEncode for chrono::Duration {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        unimplemented!("The type Delegate(Time(Duration)) is not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue");
+        <i64>::sse_encode(
+            self.num_microseconds()
+                .expect("cannot get microseconds from time"),
+            serializer,
+        );
     }
 }
 
 impl SseEncode for chrono::DateTime<chrono::Local> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        unimplemented!("The type Delegate(Time(Local)) is not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue");
+        <i64>::sse_encode(self.timestamp_micros(), serializer);
     }
 }
 
 impl SseEncode for chrono::NaiveDateTime {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        unimplemented!("The type Delegate(Time(Naive)) is not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue");
+        <i64>::sse_encode(self.timestamp_micros(), serializer);
     }
 }
 
 impl SseEncode for chrono::DateTime<chrono::Utc> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        unimplemented!("The type Delegate(Time(Utc)) is not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue");
+        <i64>::sse_encode(self.timestamp_micros(), serializer);
     }
 }
 
@@ -38729,7 +38749,7 @@ impl SseEncode for String {
 impl SseEncode for uuid::Uuid {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        unimplemented!("The type Delegate(Uuid) is not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue");
+        <Vec<u8>>::sse_encode(self.as_bytes().to_vec(), serializer);
     }
 }
 

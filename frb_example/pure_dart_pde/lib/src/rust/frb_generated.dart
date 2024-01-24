@@ -39522,29 +39522,29 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   Duration sse_decode_Chrono_Duration(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    throw UnimplementedError(
-        'The type Delegate(Time(Duration)) is not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue');
+    var inner = sse_decode_i_64(deserializer);
+    return Duration(microseconds: inner);
   }
 
   @protected
   DateTime sse_decode_Chrono_Local(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    throw UnimplementedError(
-        'The type Delegate(Time(Local)) is not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue');
+    var inner = sse_decode_i_64(deserializer);
+    return DateTime.fromMicrosecondsSinceEpoch(inner, isUtc: false);
   }
 
   @protected
   DateTime sse_decode_Chrono_Naive(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    throw UnimplementedError(
-        'The type Delegate(Time(Naive)) is not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue');
+    var inner = sse_decode_i_64(deserializer);
+    return DateTime.fromMicrosecondsSinceEpoch(inner, isUtc: true);
   }
 
   @protected
   DateTime sse_decode_Chrono_Utc(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    throw UnimplementedError(
-        'The type Delegate(Time(Utc)) is not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue');
+    var inner = sse_decode_i_64(deserializer);
+    return DateTime.fromMicrosecondsSinceEpoch(inner, isUtc: true);
   }
 
   @protected
@@ -40263,8 +40263,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   UuidValue sse_decode_Uuid(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    throw UnimplementedError(
-        'The type Delegate(Uuid) is not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue');
+    var inner = sse_decode_list_prim_u_8_strict(deserializer);
+    return UuidValue.fromByteList(inner);
   }
 
   @protected
@@ -48323,29 +48323,25 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void sse_encode_Chrono_Duration(Duration self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    throw UnimplementedError(
-        'The type Delegate(Time(Duration)) is not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue');
+    sse_encode_i_64(self.inMicroseconds, serializer);
   }
 
   @protected
   void sse_encode_Chrono_Local(DateTime self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    throw UnimplementedError(
-        'The type Delegate(Time(Local)) is not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue');
+    sse_encode_i_64(self.microsecondsSinceEpoch, serializer);
   }
 
   @protected
   void sse_encode_Chrono_Naive(DateTime self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    throw UnimplementedError(
-        'The type Delegate(Time(Naive)) is not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue');
+    sse_encode_i_64(self.microsecondsSinceEpoch, serializer);
   }
 
   @protected
   void sse_encode_Chrono_Utc(DateTime self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    throw UnimplementedError(
-        'The type Delegate(Time(Utc)) is not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue');
+    sse_encode_i_64(self.microsecondsSinceEpoch, serializer);
   }
 
   @protected
@@ -49085,8 +49081,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void sse_encode_Uuid(UuidValue self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    throw UnimplementedError(
-        'The type Delegate(Uuid) is not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue');
+    sse_encode_list_prim_u_8_strict(self.toBytes(), serializer);
   }
 
   @protected
