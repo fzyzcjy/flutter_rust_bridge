@@ -59,6 +59,6 @@ impl Upgrader for RustUpgrader {
     }
 
     fn upgrade(base_dir: &Path) -> Result<()> {
-        todo!()
+        format!("cargo add cargo_toml@={}", env!("CARGO_PKG_VERSION"));
     }
 }
