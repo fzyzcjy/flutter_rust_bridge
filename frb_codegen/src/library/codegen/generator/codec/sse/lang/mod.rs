@@ -29,6 +29,8 @@ pub(crate) trait LangTrait {
 
     fn throw_unimplemented(&self, message: &str) -> String;
 
+    fn throw_unreachable(&self, message: &str) -> String;
+
     fn for_loop(&self, lhs: &str, rhs: &str, body: &str) -> String;
 
     fn for_range_loop(&self, var: &str, limit: &str, body: &str) -> String;
