@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.0.0-dev.22
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Automatically upgrade flutter_rust_bridge Dart/Rust runtime versions when running generate #1704
+* Fix failure of formatting Dart code when path is too long #1702
+* Add checks when build_runner needs to be a dependency #1695
+* Fix generated code is breaking cargo test because of its doc-test contains a moved import #1706
+* Add uuid and chrono for SSE codec (the CST/DCO codec already supports it) #169
+* Add example using build.rs #1696
+* Add doc about movement of things like StreamSink #1703
+* Add tests and doc about multiple Dart Isolates #1699
+
 ## 2.0.0-dev.21
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
