@@ -9,6 +9,7 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/misc.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 import 'package:glob/glob.dart';
 import 'package:glob/list_local_fs.dart';
+import 'package:yaml/yaml.dart';
 
 List<Command<void>> createCommands() {
   return [
@@ -159,6 +160,9 @@ Future<void> releasePublishAll() async {
   await exec(
       'cd frb_dart && flutter pub publish --force --server=https://pub.dartlang.org');
 }
+
+String getFrbDartVersion() => loadYaml(
+    File('${exec.pwd}frb_dart/pubspec.yaml').readAsStringSync())['version'];
 
 VersionInfo computeVersionInfo() => _extractChangelog().$1;
 

@@ -141,6 +141,17 @@ fn modify_file(
         }
     }
 
+    if path
+        .iter()
+        .contains(&OsStr::new("flutter_rust_bridge.yaml"))
+    {
+        let mut ans = String::from_utf8(src).unwrap();
+        if enable_local_dependency {
+            ans += "\nlocal: true\n";
+        }
+        return Some((path, ans.as_bytes().to_owned()));
+    }
+
     Some((path, src))
 }
 
@@ -238,30 +249,44 @@ fn pub_add_dependencies(
     enable_local_dependency: bool,
 ) -> Result<()> {
     // frb-coverage:ignore-end
-    flutter_pub_add(&["rust_builder".into(), "--path=rust_builder".into()])?;
+    flutter_pub_add(&["rust_builder".into(), "--path=rust_builder".into()], None)?;
 
-    flutter_pub_add(&if enable_local_dependency {
-        vec![
-            "flutter_rust_bridge".to_owned(),
-            "--path=../../frb_dart".to_owned(),
-        ]
-    } else {
-        vec![format!("flutter_rust_bridge:{}", env!("CARGO_PKG_VERSION"))]
-    })?;
+    pub_add_dependency_frb(enable_local_dependency, None)?;
 
     // // Temporarily avoid `^` before https://github.com/flutter/flutter/issues/84270 is fixed
     // flutter_pub_add(&["ffigen:8.0.2".into(), "--dev".into()])?;
 
     if enable_integration_test {
-        flutter_pub_add(&[
-            "integration_test".into(),
-            "--dev".into(),
-            "--sdk=flutter".into(),
-        ])?;
+        flutter_pub_add(
+            &[
+                "integration_test".into(),
+                "--dev".into(),
+                "--sdk=flutter".into(),
+            ],
+            None,
+        )?;
         // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
         // frb-coverage:ignore-start
     }
     // frb-coverage:ignore-end
 
+    Ok(())
+}
+
+pub(crate) fn pub_add_dependency_frb(
+    enable_local_dependency: bool,
+    pwd: Option<&Path>,
+) -> Result<()> {
+    flutter_pub_add(
+        &if enable_local_dependency {
+            vec![
+                "flutter_rust_bridge".to_owned(),
+                "--path=../../frb_dart".to_owned(),
+            ]
+        } else {
+            vec![format!("flutter_rust_bridge:{}", env!("CARGO_PKG_VERSION"))]
+        },
+        pwd,
+    )?;
     Ok(())
 }
