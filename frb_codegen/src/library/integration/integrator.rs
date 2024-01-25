@@ -7,9 +7,9 @@ use anyhow::Result;
 use include_dir::{include_dir, Dir};
 use itertools::Itertools;
 use log::{debug, warn};
+use std::env;
 use std::ffi::OsStr;
 use std::path::{Path, PathBuf};
-use std::{env, fs};
 
 static INTEGRATION_TEMPLATE_DIR: Dir<'_> =
     include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template");
@@ -61,6 +61,7 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
 }
 
 fn modify_permissions(dart_root: &Path) -> Result<()> {
+    #[allow(unused_variables)] // unused when in windows
     let dir_cargokit = dart_root.join("rust_builder").join("cargokit");
 
     #[cfg(not(windows))]
@@ -86,9 +87,9 @@ fn setup_cargokit_dependencies(dart_root: &Path) -> Result<()> {
 fn set_permission_executable(path: &Path) -> Result<()> {
     use std::os::unix::fs::PermissionsExt;
 
-    let mut perms = fs::metadata(path)?.permissions();
+    let mut perms = std::fs::metadata(path)?.permissions();
     perms.set_mode(0o755);
-    fs::set_permissions(path, perms)?;
+    std::fs::set_permissions(path, perms)?;
     Ok(())
 }
 

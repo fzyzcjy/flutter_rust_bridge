@@ -182,6 +182,7 @@ jobs:
           - frb_example--dart_minimal
           - frb_example--pure_dart
           - frb_example--pure_dart_pde
+          - frb_example--dart_build_rs
           - frb_example--deliberate_bad
           - frb_example--flutter_via_create
           - frb_example--flutter_via_integrate
@@ -577,6 +578,7 @@ jobs:
           - frb_example--dart_minimal
           - frb_example--pure_dart
           - frb_example--pure_dart_pde
+          - frb_example--dart_build_rs
           - frb_example--deliberate_bad
         exclude:
           - {image: windows-2019, package: frb_utils}
@@ -624,7 +626,7 @@ jobs:
           - frb_example--dart_minimal
           - frb_example--pure_dart
           - frb_example--pure_dart_pde
-          # no need for `frb_example--deliberate_bad`
+          # no need for `frb_example--deliberate_bad`, `frb_example--dart_build_rs`
 
     steps:
       # setup
@@ -674,7 +676,7 @@ jobs:
           - frb_example--dart_minimal
           - frb_example--pure_dart
           - frb_example--pure_dart_pde
-          # no `frb_example--deliberate_bad`
+          # no need for `frb_example--deliberate_bad`, `frb_example--dart_build_rs`
 
     steps:
       # setup
@@ -715,6 +717,7 @@ jobs:
           - frb_example--pure_dart
           - frb_example--pure_dart_pde
           - frb_example--deliberate_bad
+          # no need for `frb_example--dart_build_rs`
 
     steps:
       # setup

@@ -32,7 +32,7 @@ pub struct Config {
     pub dump_all: Option<bool>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Default)]
 pub struct MetaConfig {
     pub watch: bool,
 }
