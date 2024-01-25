@@ -1,7 +1,7 @@
 //! Integrate Flutter with Rust
 
 mod creator;
-mod integrator;
+pub(crate) mod integrator;
 mod utils;
 
 pub use creator::{create, CreateConfig};

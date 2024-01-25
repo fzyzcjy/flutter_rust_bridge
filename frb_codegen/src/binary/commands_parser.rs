@@ -46,6 +46,7 @@ fn compute_codegen_config_from_naive_command_args(
         deps_check: Some(!args.no_deps_check),
         dart3: Some(!args.no_dart3),
         full_dep: Some(args.full_dep),
+        local: Some(args.local),
         default_external_library_loader_web_prefix: args.default_external_library_loader_web_prefix,
         dump: args.dump,
         dump_all: Some(args.dump_all),

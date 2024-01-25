@@ -17,6 +17,7 @@ use std::path::{Path, PathBuf};
 use std::str::FromStr;
 
 pub(crate) mod add_mod_to_lib;
+mod auto_upgrade;
 pub(crate) mod internal_config;
 
 pub(super) fn polish(
@@ -43,6 +44,13 @@ pub(super) fn polish(
         execute_rust_format(output_paths, &config.rust_crate_dir, progress_bar_pack),
         "execute_rust_format",
     );
+
+    if config.enable_auto_upgrade {
+        warn_if_fail(
+            auto_upgrade::execute(progress_bar_pack, &config.dart_root, &config.rust_crate_dir),
+            "auto_upgrade",
+        );
+    }
 
     Ok(())
 }
