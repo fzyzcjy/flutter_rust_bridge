@@ -11,6 +11,7 @@ pub(crate) struct GeneratorProgressBarPack {
     pub polish_dart_build_runner: SimpleProgressBar,
     pub polish_dart_formatter: SimpleProgressBar,
     pub polish_rust_formatter: SimpleProgressBar,
+    pub polish_upgrade: SimpleProgressBar,
 }
 
 impl GeneratorProgressBarPack {
@@ -26,6 +27,7 @@ impl GeneratorProgressBarPack {
             polish_dart_build_runner: SimpleProgressBar::new("Run Dart build_runner", 1),
             polish_dart_formatter: SimpleProgressBar::new("Run Dart formatter", 1),
             polish_rust_formatter: SimpleProgressBar::new("Run Rust formatter", 1),
+            polish_upgrade: SimpleProgressBar::new("Auto upgrade", 1),
         }
     }
 }

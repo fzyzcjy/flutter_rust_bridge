@@ -5,3 +5,5 @@ full_dep: true
 
 # dump debugging information (unneeded for normal users)
 dump_all: true
+# only for development of flutter_rust_bridge, not for normal users
+local: true

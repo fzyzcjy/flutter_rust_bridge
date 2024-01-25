@@ -462,6 +462,51 @@ jobs:
       # execute
       - run: ./frb_internal test-mimic-quickstart
 
+  test_upgrade:
+    name: 'Test :: Upgrade'
+    runs-on: ${{ matrix.image }}
+    strategy:
+      fail-fast: false
+      matrix:
+        image:
+          - windows-2019
+          # need macos-"13" because https://github.com/fzyzcjy/flutter_rust_bridge/issues/1225
+          - macos-13
+          - ubuntu-latest
+
+    steps:
+      # setup
+      - uses: catchpoint/workflow-telemetry-action@v1
+        with:
+          comment_on_pr: false
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
+          components: rustfmt
+      - uses: subosito/flutter-action@v2
+        with:
+          cache: true
+          flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
+          architecture: x64
+      # https://docs.flutter.dev/get-started/install/linux#linux-prerequisites
+      - if: runner.os == 'Linux'
+        run: sudo apt-get install clang cmake git ninja-build pkg-config libgtk-3-dev liblzma-dev libstdc++-12-dev
+      - if: runner.os == 'Linux'
+        uses: pyvista/setup-headless-display-action@v1
+      - uses: taiki-e/install-action@cargo-llvm-cov
+
+      # execute
+      - run: ./frb_internal test-upgrade
+
+      # report
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ github.job }}--${{ matrix.image }}--coverage
+          path: target/coverage
+
   test_rust:
     name: 'Test :: Rust'
     runs-on: ${{ matrix.info.image }}
@@ -906,6 +951,7 @@ jobs:
       - generate_run_frb_codegen_command_generate
       - generate_run_frb_codegen_command_integrate
       - generate_internal
+      - test_upgrade
       - test_rust
       - test_dart_native
       - test_flutter_web
