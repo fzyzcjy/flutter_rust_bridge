@@ -1,3 +1,4 @@
+pub(crate) mod cargo;
 pub(crate) mod cargo_expand;
 pub(crate) mod cargo_metadata;
 pub(crate) mod cbindgen;

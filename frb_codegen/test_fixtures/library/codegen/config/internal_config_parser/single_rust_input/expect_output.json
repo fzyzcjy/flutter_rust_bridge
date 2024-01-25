@@ -114,6 +114,7 @@
     "dart_format_line_length": 80,
     "dart_root": "{the-working-directory}",
     "duplicated_c_output_path": [],
+    "enable_auto_upgrade": true,
     "rust_crate_dir": "{the-working-directory}",
     "rust_output_path": {
       "common": "{the-working-directory}/src/frb_generated.rs",
