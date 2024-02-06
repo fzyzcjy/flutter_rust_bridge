@@ -11147,6 +11147,14 @@ pub fn wire_test_duplicated_module_names(
 }
 
 #[wasm_bindgen]
+pub fn wire_DroppableTwinNormal_create_stream(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_DroppableTwinNormal_create_stream_impl(port_, that)
+}
+
+#[wasm_bindgen]
 pub fn wire_DroppableTwinNormal_get_drop_count_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {

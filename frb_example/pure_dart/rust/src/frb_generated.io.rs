@@ -14477,6 +14477,14 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_test_duplicated_module_names
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_DroppableTwinNormal_create_stream(
+    port_: i64,
+    that: usize,
+) {
+    wire_DroppableTwinNormal_create_stream_impl(port_, that)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_DroppableTwinNormal_get_drop_count_twin_normal(
     port_: i64,
 ) {

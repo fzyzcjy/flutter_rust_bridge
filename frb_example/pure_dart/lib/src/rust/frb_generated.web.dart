@@ -1326,6 +1326,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  DroppableTwinNormal
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
+          dynamic raw);
+
+  @protected
   NonCloneSimpleTwinMoi
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoi(
           dynamic raw);
@@ -8202,6 +8207,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   BoxHelloTraitTwinSyncSseMoi
       sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSseMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  DroppableTwinNormal
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
           SseDeserializer deserializer);
 
   @protected
@@ -22303,6 +22313,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       BoxHelloTraitTwinSyncMoi raw);
 
   @protected
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
+      DroppableTwinNormal raw);
+
+  @protected
   int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoi(
       NonCloneSimpleTwinMoi raw);
 
@@ -23299,6 +23313,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSseMoi(
           BoxHelloTraitTwinSyncSseMoi self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
+          DroppableTwinNormal self, SseSerializer serializer);
 
   @protected
   void
@@ -30469,6 +30488,10 @@ class RustLibWire implements BaseWire {
   void wire_test_duplicated_module_names(
           NativePortType port_, List<dynamic> s) =>
       wasmModule.wire_test_duplicated_module_names(port_, s);
+
+  void wire_DroppableTwinNormal_create_stream(
+          NativePortType port_, Object that) =>
+      wasmModule.wire_DroppableTwinNormal_create_stream(port_, that);
 
   void wire_DroppableTwinNormal_get_drop_count_twin_normal(
           NativePortType port_) =>
@@ -46798,6 +46821,9 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_test_duplicated_module_names(
       NativePortType port_, List<dynamic> s);
+
+  external void wire_DroppableTwinNormal_create_stream(
+      NativePortType port_, Object that);
 
   external void wire_DroppableTwinNormal_get_drop_count_twin_normal(
       NativePortType port_);

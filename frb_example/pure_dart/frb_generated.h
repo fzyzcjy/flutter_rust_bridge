@@ -3274,6 +3274,9 @@ WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_unwrap_dart_opaque_twin_n
 void frbgen_frb_example_pure_dart_wire_test_duplicated_module_names(int64_t port_,
                                                                     struct wire_cst_struct_in_lower_level *s);
 
+void frbgen_frb_example_pure_dart_wire_DroppableTwinNormal_create_stream(int64_t port_,
+                                                                         uintptr_t that);
+
 void frbgen_frb_example_pure_dart_wire_DroppableTwinNormal_get_drop_count_twin_normal(int64_t port_);
 
 void frbgen_frb_example_pure_dart_wire_DroppableTwinNormal_new(int64_t port_);
@@ -13802,6 +13805,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_CustomStructTwinSync_nonstatic_return_custom_struct_ok_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_CustomStructTwinSync_static_return_custom_struct_error_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_CustomStructTwinSync_static_return_custom_struct_ok_twin_sync);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_DroppableTwinNormal_create_stream);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_DroppableTwinNormal_get_drop_count_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_DroppableTwinNormal_new);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_DroppableTwinNormal_simple_method_twin_normal);
