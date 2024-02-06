@@ -113,7 +113,7 @@ pub struct MyCallableTwinRustAsync {
 }
 
 impl MyCallableTwinRustAsync {
-    pub async fn call_twin_rust_async(&self, two: String) -> String {
+    pub async fn call(&self, two: String) -> String {
         self.one.clone() + &two
     }
 }

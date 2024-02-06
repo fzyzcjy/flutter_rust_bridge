@@ -125,7 +125,7 @@ pub struct MyCallableTwinSync {
 
 impl MyCallableTwinSync {
     #[flutter_rust_bridge::frb(sync)]
-    pub fn call_twin_sync(&self, two: String) -> String {
+    pub fn call(&self, two: String) -> String {
         self.one.clone() + &two
     }
 }

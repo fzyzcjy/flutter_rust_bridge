@@ -142,7 +142,7 @@ pub struct MyCallableTwinSyncSse {
 impl MyCallableTwinSyncSse {
     #[flutter_rust_bridge::frb(serialize)]
     #[flutter_rust_bridge::frb(sync)]
-    pub fn call_twin_sync_sse(&self, two: String) -> String {
+    pub fn call(&self, two: String) -> String {
         self.one.clone() + &two
     }
 }
