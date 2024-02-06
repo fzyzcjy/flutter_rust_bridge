@@ -114,8 +114,8 @@ class MandelbrotPageUI extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
+      child: Wrap(
+        alignment: WrapAlignment.center,
         children: [
           Padding(
             padding: const EdgeInsets.only(right: 64),
