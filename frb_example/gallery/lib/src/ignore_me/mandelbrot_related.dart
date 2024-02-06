@@ -113,21 +113,34 @@ class MandelbrotPageUI extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Wrap(
-        alignment: WrapAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(right: 64),
-            child: _buildLeft(),
-          ),
-          _buildRight(),
-        ],
+    return LayoutBuilder(
+      builder: (_, constraints) => Center(
+        child: constraints.maxWidth >= 600
+            ? Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 64),
+                    child: _buildControl(),
+                  ),
+                  _buildImage(),
+                ],
+              )
+            : Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 32),
+                    child: _buildControl(),
+                  ),
+                  _buildImage(),
+                ],
+              ),
       ),
     );
   }
 
-  Widget _buildLeft() {
+  Widget _buildControl() {
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -168,7 +181,7 @@ class MandelbrotPageUI extends StatelessWidget {
     );
   }
 
-  Widget _buildRight() {
+  Widget _buildImage() {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
