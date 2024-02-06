@@ -69,6 +69,15 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         let name = "that".to_owned();
 
+        if let IrType::StructRef(s) = &ty {
+            if s.get(context).ignore {
+                return Ok(FunctionPartialInfo {
+                    ignore_func: true,
+                    ..Default::default()
+                });
+            }
+        }
+
         partial_info_for_normal_type_raw(ty, &receiver.attrs, name)
     }
 
