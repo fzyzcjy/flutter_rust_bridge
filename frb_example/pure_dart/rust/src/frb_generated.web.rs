@@ -4583,6 +4583,25 @@ impl
         }
     }
 }
+impl CstDecode<crate::api::method::MyCallableTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> crate::api::method::MyCallableTwinNormal {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::method::MyCallableTwinNormal {
+            one: self_.get(0).cst_decode(),
+        }
+    }
+}
 impl CstDecode<crate::api::misc_example::MyNestedStructTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -11612,6 +11631,15 @@ pub fn wire_ConcatenateWithTwinNormal_simple_getter_twin_normal(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_ConcatenateWithTwinNormal_simple_getter_twin_normal_impl(port_, that)
+}
+
+#[wasm_bindgen]
+pub fn wire_MyCallableTwinNormal_call(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    two: String,
+) {
+    wire_MyCallableTwinNormal_call_impl(port_, that, two)
 }
 
 #[wasm_bindgen]

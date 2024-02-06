@@ -392,6 +392,10 @@ typedef struct wire_cst_concatenate_with_twin_normal {
   struct wire_cst_list_prim_u_8_strict *a;
 } wire_cst_concatenate_with_twin_normal;
 
+typedef struct wire_cst_my_callable_twin_normal {
+  struct wire_cst_list_prim_u_8_strict *one;
+} wire_cst_my_callable_twin_normal;
+
 typedef struct wire_cst_sum_with_twin_normal {
   uint32_t x;
 } wire_cst_sum_with_twin_normal;
@@ -3448,6 +3452,10 @@ void frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinNormal_new_twin_normal
 
 void frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinNormal_simple_getter_twin_normal(int64_t port_,
                                                                                            struct wire_cst_concatenate_with_twin_normal *that);
+
+void frbgen_frb_example_pure_dart_wire_MyCallableTwinNormal_call(int64_t port_,
+                                                                 struct wire_cst_my_callable_twin_normal *that,
+                                                                 struct wire_cst_list_prim_u_8_strict *two);
 
 void frbgen_frb_example_pure_dart_wire_SumWithTwinNormal_sum_twin_normal(int64_t port_,
                                                                          struct wire_cst_sum_with_twin_normal *that,
@@ -12550,6 +12558,8 @@ struct wire_cst_message_id_twin_rust_async *frbgen_frb_example_pure_dart_cst_new
 
 struct wire_cst_message_id_twin_sync *frbgen_frb_example_pure_dart_cst_new_box_autoadd_message_id_twin_sync(void);
 
+struct wire_cst_my_callable_twin_normal *frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_callable_twin_normal(void);
+
 struct wire_cst_my_nested_struct_twin_normal *frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_nested_struct_twin_normal(void);
 
 struct wire_cst_my_nested_struct_twin_rust_async *frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_nested_struct_twin_rust_async(void);
@@ -13158,6 +13168,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_message_id_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_message_id_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_message_id_twin_sync);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_callable_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_nested_struct_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_nested_struct_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_nested_struct_twin_sync);
@@ -13793,6 +13804,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_EventTwinRustAsyncSse_as_string_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_EventTwinRustAsync_as_string_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_EventTwinSse_as_string_twin_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_MyCallableTwinNormal_call);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinMoi_instance_method_arg_borrow_twin_moi);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinMoi_instance_method_arg_mut_borrow_twin_moi);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinMoi_instance_method_arg_own_twin_moi);

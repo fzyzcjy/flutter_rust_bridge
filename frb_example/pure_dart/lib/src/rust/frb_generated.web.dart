@@ -3784,6 +3784,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  MyCallableTwinNormal dco_decode_box_autoadd_my_callable_twin_normal(
+      dynamic raw);
+
+  @protected
   MyNestedStructTwinNormal dco_decode_box_autoadd_my_nested_struct_twin_normal(
       dynamic raw);
 
@@ -6191,6 +6195,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   MoreThanJustOneRawStringStructTwinSyncSse
       dco_decode_more_than_just_one_raw_string_struct_twin_sync_sse(
           dynamic raw);
+
+  @protected
+  MyCallableTwinNormal dco_decode_my_callable_twin_normal(dynamic raw);
 
   @protected
   MyEnum dco_decode_my_enum(dynamic raw);
@@ -10820,6 +10827,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  MyCallableTwinNormal sse_decode_box_autoadd_my_callable_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
   MyNestedStructTwinNormal sse_decode_box_autoadd_my_nested_struct_twin_normal(
       SseDeserializer deserializer);
 
@@ -13574,6 +13585,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   MoreThanJustOneRawStringStructTwinSyncSse
       sse_decode_more_than_just_one_raw_string_struct_twin_sync_sse(
           SseDeserializer deserializer);
+
+  @protected
+  MyCallableTwinNormal sse_decode_my_callable_twin_normal(
+      SseDeserializer deserializer);
 
   @protected
   MyEnum sse_decode_my_enum(SseDeserializer deserializer);
@@ -16952,6 +16967,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> cst_encode_box_autoadd_my_callable_twin_normal(
+      MyCallableTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_my_callable_twin_normal(raw);
+  }
+
+  @protected
   List<dynamic> cst_encode_box_autoadd_my_nested_struct_twin_normal(
       MyNestedStructTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -20140,6 +20162,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_bool(raw.async),
       cst_encode_String(raw.another)
     ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_my_callable_twin_normal(MyCallableTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_String(raw.one)];
   }
 
   @protected
@@ -25842,6 +25870,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       MessageIdTwinSyncSse self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_my_callable_twin_normal(
+      MyCallableTwinNormal self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_my_nested_struct_twin_normal(
       MyNestedStructTwinNormal self, SseSerializer serializer);
 
@@ -28482,6 +28514,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       MoreThanJustOneRawStringStructTwinSyncSse self, SseSerializer serializer);
 
   @protected
+  void sse_encode_my_callable_twin_normal(
+      MyCallableTwinNormal self, SseSerializer serializer);
+
+  @protected
   void sse_encode_my_enum(MyEnum self, SseSerializer serializer);
 
   @protected
@@ -30672,6 +30708,10 @@ class RustLibWire implements BaseWire {
           NativePortType port_, List<dynamic> that) =>
       wasmModule.wire_ConcatenateWithTwinNormal_simple_getter_twin_normal(
           port_, that);
+
+  void wire_MyCallableTwinNormal_call(
+          NativePortType port_, List<dynamic> that, String two) =>
+      wasmModule.wire_MyCallableTwinNormal_call(port_, that, two);
 
   void wire_SumWithTwinNormal_sum_twin_normal(
           NativePortType port_, List<dynamic> that, int y, int z) =>
@@ -46905,6 +46945,9 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_ConcatenateWithTwinNormal_simple_getter_twin_normal(
       NativePortType port_, List<dynamic> that);
+
+  external void wire_MyCallableTwinNormal_call(
+      NativePortType port_, List<dynamic> that, String two);
 
   external void wire_SumWithTwinNormal_sum_twin_normal(
       NativePortType port_, List<dynamic> that, int y, int z);
