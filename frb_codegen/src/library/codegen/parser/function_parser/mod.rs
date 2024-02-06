@@ -98,6 +98,10 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let codec_mode_pack = compute_codec_mode_pack(&attributes, force_codec_mode_pack);
         let mode = compute_func_mode(&attributes, &info);
 
+        if info.ignore_func {
+            return Ok(None);
+        }
+
         Ok(Some(IrFunc {
             name: NamespacedName::new(namespace, func_name),
             id: func_id,
@@ -194,6 +198,7 @@ struct FunctionPartialInfo {
     ok_output: Option<IrType>,
     error_output: Option<IrType>,
     mode: Option<IrFuncMode>,
+    ignore_func: bool,
 }
 
 impl FunctionPartialInfo {
@@ -204,6 +209,7 @@ impl FunctionPartialInfo {
             error_output: merge_option(self.error_output, other.error_output)
                 .context("error_output type")?,
             mode: merge_option(self.mode, other.mode).context("mode")?,
+            ignore_func: self.ignore_func || other.ignore_func,
         })
     }
 }
