@@ -70,7 +70,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let name = "that".to_owned();
 
         if let IrType::StructRef(s) = &ty {
-            if s.get(context).ignore {
+            if s.get(self.type_parser).ignore {
                 return Ok(FunctionPartialInfo {
                     ignore_func: true,
                     ..Default::default()
