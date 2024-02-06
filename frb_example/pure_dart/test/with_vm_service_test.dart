@@ -100,12 +100,24 @@ Future<void> main() async {
   });
 
   group('Rust object is dropped', () {
-    test('when call dispose, Rust object is dropped', () async {
+    test('when call dispose, Rust object should be dropped', () async {
       final object = await DroppableTwinNormal.newDroppableTwinNormal();
       final oldDropCount = await DroppableTwinNormal.getDropCountTwinNormal();
       object.dispose();
       expect(
           await DroppableTwinNormal.getDropCountTwinNormal(), oldDropCount + 1);
+    });
+
+    test('when Dart GC, Rust object should be dropped', () async {
+      DroppableTwinNormal? object =
+          await DroppableTwinNormal.newDroppableTwinNormal();
+      final oldDropCount = await DroppableTwinNormal.getDropCountTwinNormal();
+
+      object = null;
+      await vmService.gc();
+      expect(
+          await DroppableTwinNormal.getDropCountTwinNormal(), oldDropCount + 1);
+      expect(object, null);
     });
   });
 }
