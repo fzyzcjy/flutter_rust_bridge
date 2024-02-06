@@ -14,3 +14,11 @@ impl Drop for DroppableTwinNormal {
         DROP_COUNT.fetch_add(1, Ordering::SeqCst);
     }
 }
+
+impl DroppableTwinNormal {
+    pub fn get_drop_count_twin_normal() -> i32 {
+        DROP_COUNT.load(Ordering::SeqCst)
+    }
+
+    pub fn simple_method_twin_normal(&self) {}
+}
