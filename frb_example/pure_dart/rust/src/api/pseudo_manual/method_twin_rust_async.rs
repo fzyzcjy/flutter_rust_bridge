@@ -107,3 +107,13 @@ pub async fn get_sum_array_twin_rust_async(a: u32, b: u32, c: u32) -> [SumWithTw
         SumWithTwinRustAsync { x: c },
     ]
 }
+
+pub struct MyCallableTwinRustAsync {
+    pub one: String,
+}
+
+impl MyCallableTwinRustAsync {
+    pub async fn call_twin_rust_async(&self, two: String) -> String {
+        self.one.clone() + &two
+    }
+}

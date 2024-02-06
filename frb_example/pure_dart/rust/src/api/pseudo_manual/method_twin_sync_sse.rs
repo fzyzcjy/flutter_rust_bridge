@@ -134,3 +134,15 @@ pub fn get_sum_array_twin_sync_sse(a: u32, b: u32, c: u32) -> [SumWithTwinSyncSs
         SumWithTwinSyncSse { x: c },
     ]
 }
+
+pub struct MyCallableTwinSyncSse {
+    pub one: String,
+}
+
+impl MyCallableTwinSyncSse {
+    #[flutter_rust_bridge::frb(serialize)]
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn call_twin_sync_sse(&self, two: String) -> String {
+        self.one.clone() + &two
+    }
+}
