@@ -9,7 +9,7 @@ pub(crate) fn compute_codegen_config(args: GenerateCommandArgsPrimary) -> Result
         return Config::from_files_auto();
     }
 
-    if let Some(config_file) = args.config_file {
+    if let Some(config_file) = &args.config_file {
         debug!("compute_codegen_config: mode=config_file");
         ensure!(
             GenerateCommandArgsPrimary {
