@@ -113,8 +113,8 @@ class MyCallableTwinRustAsyncSse {
     required this.one,
   });
 
-  Future<String> callTwinRustAsyncSse({required String two, dynamic hint}) =>
-      RustLib.instance.api.myCallableTwinRustAsyncSseCallTwinRustAsyncSse(
+  Future<String> call({required String two, dynamic hint}) =>
+      RustLib.instance.api.myCallableTwinRustAsyncSseCall(
         that: this,
         two: two,
       );

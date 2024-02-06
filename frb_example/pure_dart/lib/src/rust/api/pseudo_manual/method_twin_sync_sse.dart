@@ -109,8 +109,8 @@ class MyCallableTwinSyncSse {
     required this.one,
   });
 
-  String callTwinSyncSse({required String two, dynamic hint}) =>
-      RustLib.instance.api.myCallableTwinSyncSseCallTwinSyncSse(
+  String call({required String two, dynamic hint}) =>
+      RustLib.instance.api.myCallableTwinSyncSseCall(
         that: this,
         two: two,
       );

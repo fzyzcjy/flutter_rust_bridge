@@ -58102,27 +58102,27 @@ class RustLibWire implements BaseWire {
               void Function(int,
                   ffi.Pointer<wire_cst_concatenate_with_twin_rust_async>)>();
 
-  void wire_MyCallableTwinRustAsync_call_twin_rust_async(
+  void wire_MyCallableTwinRustAsync_call(
     int port_,
     ffi.Pointer<wire_cst_my_callable_twin_rust_async> that,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> two,
   ) {
-    return _wire_MyCallableTwinRustAsync_call_twin_rust_async(
+    return _wire_MyCallableTwinRustAsync_call(
       port_,
       that,
       two,
     );
   }
 
-  late final _wire_MyCallableTwinRustAsync_call_twin_rust_asyncPtr = _lookup<
+  late final _wire_MyCallableTwinRustAsync_callPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(
                   ffi.Int64,
                   ffi.Pointer<wire_cst_my_callable_twin_rust_async>,
                   ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
-      'frbgen_frb_example_pure_dart_wire_MyCallableTwinRustAsync_call_twin_rust_async');
-  late final _wire_MyCallableTwinRustAsync_call_twin_rust_async =
-      _wire_MyCallableTwinRustAsync_call_twin_rust_asyncPtr.asFunction<
+      'frbgen_frb_example_pure_dart_wire_MyCallableTwinRustAsync_call');
+  late final _wire_MyCallableTwinRustAsync_call =
+      _wire_MyCallableTwinRustAsync_callPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_my_callable_twin_rust_async>,
               ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
@@ -58387,13 +58387,13 @@ class RustLibWire implements BaseWire {
       _wire_ConcatenateWithTwinRustAsyncSse_simple_getter_twin_rust_async_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
-  void wire_MyCallableTwinRustAsyncSse_call_twin_rust_async_sse(
+  void wire_MyCallableTwinRustAsyncSse_call(
     int port_,
     ffi.Pointer<ffi.Uint8> ptr_,
     int rust_vec_len_,
     int data_len_,
   ) {
-    return _wire_MyCallableTwinRustAsyncSse_call_twin_rust_async_sse(
+    return _wire_MyCallableTwinRustAsyncSse_call(
       port_,
       ptr_,
       rust_vec_len_,
@@ -58401,13 +58401,13 @@ class RustLibWire implements BaseWire {
     );
   }
 
-  late final _wire_MyCallableTwinRustAsyncSse_call_twin_rust_async_ssePtr = _lookup<
+  late final _wire_MyCallableTwinRustAsyncSse_callPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(
                   ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
-      'frbgen_frb_example_pure_dart_wire_MyCallableTwinRustAsyncSse_call_twin_rust_async_sse');
-  late final _wire_MyCallableTwinRustAsyncSse_call_twin_rust_async_sse =
-      _wire_MyCallableTwinRustAsyncSse_call_twin_rust_async_ssePtr
+      'frbgen_frb_example_pure_dart_wire_MyCallableTwinRustAsyncSse_call');
+  late final _wire_MyCallableTwinRustAsyncSse_call =
+      _wire_MyCallableTwinRustAsyncSse_callPtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_SumWithTwinRustAsyncSse_sum_twin_rust_async_sse(
@@ -58668,13 +58668,13 @@ class RustLibWire implements BaseWire {
       _wire_ConcatenateWithTwinSse_simple_getter_twin_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
-  void wire_MyCallableTwinSse_call_twin_sse(
+  void wire_MyCallableTwinSse_call(
     int port_,
     ffi.Pointer<ffi.Uint8> ptr_,
     int rust_vec_len_,
     int data_len_,
   ) {
-    return _wire_MyCallableTwinSse_call_twin_sse(
+    return _wire_MyCallableTwinSse_call(
       port_,
       ptr_,
       rust_vec_len_,
@@ -58682,14 +58682,13 @@ class RustLibWire implements BaseWire {
     );
   }
 
-  late final _wire_MyCallableTwinSse_call_twin_ssePtr = _lookup<
+  late final _wire_MyCallableTwinSse_callPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(
                   ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
-      'frbgen_frb_example_pure_dart_wire_MyCallableTwinSse_call_twin_sse');
-  late final _wire_MyCallableTwinSse_call_twin_sse =
-      _wire_MyCallableTwinSse_call_twin_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+      'frbgen_frb_example_pure_dart_wire_MyCallableTwinSse_call');
+  late final _wire_MyCallableTwinSse_call = _wire_MyCallableTwinSse_callPtr
+      .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_SumWithTwinSse_sum_twin_sse(
     int port_,
@@ -58931,24 +58930,24 @@ class RustLibWire implements BaseWire {
           WireSyncRust2DartDco Function(
               ffi.Pointer<wire_cst_concatenate_with_twin_sync>)>();
 
-  WireSyncRust2DartDco wire_MyCallableTwinSync_call_twin_sync(
+  WireSyncRust2DartDco wire_MyCallableTwinSync_call(
     ffi.Pointer<wire_cst_my_callable_twin_sync> that,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> two,
   ) {
-    return _wire_MyCallableTwinSync_call_twin_sync(
+    return _wire_MyCallableTwinSync_call(
       that,
       two,
     );
   }
 
-  late final _wire_MyCallableTwinSync_call_twin_syncPtr = _lookup<
+  late final _wire_MyCallableTwinSync_callPtr = _lookup<
           ffi.NativeFunction<
               WireSyncRust2DartDco Function(
                   ffi.Pointer<wire_cst_my_callable_twin_sync>,
                   ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
-      'frbgen_frb_example_pure_dart_wire_MyCallableTwinSync_call_twin_sync');
-  late final _wire_MyCallableTwinSync_call_twin_sync =
-      _wire_MyCallableTwinSync_call_twin_syncPtr.asFunction<
+      'frbgen_frb_example_pure_dart_wire_MyCallableTwinSync_call');
+  late final _wire_MyCallableTwinSync_call =
+      _wire_MyCallableTwinSync_callPtr.asFunction<
           WireSyncRust2DartDco Function(
               ffi.Pointer<wire_cst_my_callable_twin_sync>,
               ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
@@ -59200,25 +59199,25 @@ class RustLibWire implements BaseWire {
               WireSyncRust2DartSse Function(
                   ffi.Pointer<ffi.Uint8>, int, int)>();
 
-  WireSyncRust2DartSse wire_MyCallableTwinSyncSse_call_twin_sync_sse(
+  WireSyncRust2DartSse wire_MyCallableTwinSyncSse_call(
     ffi.Pointer<ffi.Uint8> ptr_,
     int rust_vec_len_,
     int data_len_,
   ) {
-    return _wire_MyCallableTwinSyncSse_call_twin_sync_sse(
+    return _wire_MyCallableTwinSyncSse_call(
       ptr_,
       rust_vec_len_,
       data_len_,
     );
   }
 
-  late final _wire_MyCallableTwinSyncSse_call_twin_sync_ssePtr = _lookup<
+  late final _wire_MyCallableTwinSyncSse_callPtr = _lookup<
           ffi.NativeFunction<
               WireSyncRust2DartSse Function(
                   ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
-      'frbgen_frb_example_pure_dart_wire_MyCallableTwinSyncSse_call_twin_sync_sse');
-  late final _wire_MyCallableTwinSyncSse_call_twin_sync_sse =
-      _wire_MyCallableTwinSyncSse_call_twin_sync_ssePtr.asFunction<
+      'frbgen_frb_example_pure_dart_wire_MyCallableTwinSyncSse_call');
+  late final _wire_MyCallableTwinSyncSse_call =
+      _wire_MyCallableTwinSyncSse_callPtr.asFunction<
           WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
   WireSyncRust2DartSse wire_SumWithTwinSyncSse_sum_twin_sync_sse(

@@ -105,8 +105,8 @@ class MyCallableTwinSse {
     required this.one,
   });
 
-  Future<String> callTwinSse({required String two, dynamic hint}) =>
-      RustLib.instance.api.myCallableTwinSseCallTwinSse(
+  Future<String> call({required String two, dynamic hint}) =>
+      RustLib.instance.api.myCallableTwinSseCall(
         that: this,
         two: two,
       );

@@ -25028,12 +25028,12 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinRustAsync
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire_MyCallableTwinRustAsync_call_twin_rust_async(
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_MyCallableTwinRustAsync_call(
     port_: i64,
     that: *mut wire_cst_my_callable_twin_rust_async,
     two: *mut wire_cst_list_prim_u_8_strict,
 ) {
-    wire_MyCallableTwinRustAsync_call_twin_rust_async_impl(port_, that, two)
+    wire_MyCallableTwinRustAsync_call_impl(port_, that, two)
 }
 
 #[no_mangle]
@@ -25177,18 +25177,13 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinRustAsync
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire_MyCallableTwinRustAsyncSse_call_twin_rust_async_sse(
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_MyCallableTwinRustAsyncSse_call(
     port_: i64,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    wire_MyCallableTwinRustAsyncSse_call_twin_rust_async_sse_impl(
-        port_,
-        ptr_,
-        rust_vec_len_,
-        data_len_,
-    )
+    wire_MyCallableTwinRustAsyncSse_call_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
@@ -25327,13 +25322,13 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinSse_simpl
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire_MyCallableTwinSse_call_twin_sse(
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_MyCallableTwinSse_call(
     port_: i64,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    wire_MyCallableTwinSse_call_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+    wire_MyCallableTwinSse_call_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
@@ -25431,11 +25426,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinSync_simp
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire_MyCallableTwinSync_call_twin_sync(
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_MyCallableTwinSync_call(
     that: *mut wire_cst_my_callable_twin_sync,
     two: *mut wire_cst_list_prim_u_8_strict,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_MyCallableTwinSync_call_twin_sync_impl(that, two)
+    wire_MyCallableTwinSync_call_impl(that, two)
 }
 
 #[no_mangle]
@@ -25563,12 +25558,12 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinSyncSse_s
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire_MyCallableTwinSyncSse_call_twin_sync_sse(
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_MyCallableTwinSyncSse_call(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_MyCallableTwinSyncSse_call_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+    wire_MyCallableTwinSyncSse_call_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]

@@ -2041,7 +2041,7 @@ abstract class RustLibApi extends BaseApi {
   Future<String> concatenateWithTwinRustAsyncSimpleGetterTwinRustAsync(
       {required ConcatenateWithTwinRustAsync that, dynamic hint});
 
-  Future<String> myCallableTwinRustAsyncCallTwinRustAsync(
+  Future<String> myCallableTwinRustAsyncCall(
       {required MyCallableTwinRustAsync that,
       required String two,
       dynamic hint});
@@ -2086,7 +2086,7 @@ abstract class RustLibApi extends BaseApi {
   String concatenateWithTwinSyncSimpleGetterTwinSync(
       {required ConcatenateWithTwinSync that, dynamic hint});
 
-  String myCallableTwinSyncCallTwinSync(
+  String myCallableTwinSyncCall(
       {required MyCallableTwinSync that, required String two, dynamic hint});
 
   int sumWithTwinSyncSumTwinSync(
@@ -20895,7 +20895,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  Future<String> myCallableTwinRustAsyncCallTwinRustAsync(
+  Future<String> myCallableTwinRustAsyncCall(
       {required MyCallableTwinRustAsync that,
       required String two,
       dynamic hint}) {
@@ -20911,16 +20911,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_String,
         decodeErrorData: null,
       ),
-      constMeta: kMyCallableTwinRustAsyncCallTwinRustAsyncConstMeta,
+      constMeta: kMyCallableTwinRustAsyncCallConstMeta,
       argValues: [that, two],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kMyCallableTwinRustAsyncCallTwinRustAsyncConstMeta =>
+  TaskConstMeta get kMyCallableTwinRustAsyncCallConstMeta =>
       const TaskConstMeta(
-        debugName: "MyCallableTwinRustAsync_call_twin_rust_async",
+        debugName: "MyCallableTwinRustAsync_call",
         argNames: ["that", "two"],
       );
 
@@ -21244,7 +21244,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  String myCallableTwinSyncCallTwinSync(
+  String myCallableTwinSyncCall(
       {required MyCallableTwinSync that, required String two, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -21257,16 +21257,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_String,
         decodeErrorData: null,
       ),
-      constMeta: kMyCallableTwinSyncCallTwinSyncConstMeta,
+      constMeta: kMyCallableTwinSyncCallConstMeta,
       argValues: [that, two],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kMyCallableTwinSyncCallTwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "MyCallableTwinSync_call_twin_sync",
+  TaskConstMeta get kMyCallableTwinSyncCallConstMeta => const TaskConstMeta(
+        debugName: "MyCallableTwinSync_call",
         argNames: ["that", "two"],
       );
 
