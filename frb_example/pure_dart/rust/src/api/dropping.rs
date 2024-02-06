@@ -1,3 +1,4 @@
+use crate::frb_generated::StreamSink;
 use flutter_rust_bridge::frb;
 use lazy_static::lazy_static;
 use std::sync::atomic::{AtomicI32, Ordering};
@@ -7,7 +8,9 @@ lazy_static! {
 }
 
 #[frb(opaque)]
-pub struct DroppableTwinNormal;
+pub struct DroppableTwinNormal {
+    sink: Option<StreamSink<i32>>,
+}
 
 impl Drop for DroppableTwinNormal {
     fn drop(&mut self) {
@@ -17,10 +20,15 @@ impl Drop for DroppableTwinNormal {
 
 impl DroppableTwinNormal {
     pub fn new() -> DroppableTwinNormal {
-        Self
+        Self { sink: None }
     }
 
     pub fn simple_method_twin_normal(&self) {}
+
+    // #1723
+    pub fn set_sink(&mut self, sink: StreamSink<i32>) {
+        self.sink = Some(sink);
+    }
 
     pub fn get_drop_count_twin_normal() -> i32 {
         DROP_COUNT.load(Ordering::SeqCst)
