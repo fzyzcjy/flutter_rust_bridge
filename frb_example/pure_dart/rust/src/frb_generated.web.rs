@@ -10719,6 +10719,14 @@ pub fn wire_simple_use_async_spawn_blocking(
 }
 
 #[wasm_bindgen]
+pub fn wire_simple_use_async_spawn_local(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: String,
+) {
+    wire_simple_use_async_spawn_local_impl(port_, arg)
+}
+
+#[wasm_bindgen]
 pub fn wire_handle_customized_struct_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     val: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,

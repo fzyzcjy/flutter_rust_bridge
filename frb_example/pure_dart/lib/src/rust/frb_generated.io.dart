@@ -33539,6 +33539,25 @@ class RustLibWire implements BaseWire {
       _wire_simple_use_async_spawn_blockingPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
+  void wire_simple_use_async_spawn_local(
+    int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> arg,
+  ) {
+    return _wire_simple_use_async_spawn_local(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_simple_use_async_spawn_localPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+      'frbgen_frb_example_pure_dart_wire_simple_use_async_spawn_local');
+  late final _wire_simple_use_async_spawn_local =
+      _wire_simple_use_async_spawn_localPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+
   void wire_handle_customized_struct_twin_normal(
     int port_,
     ffi.Pointer<wire_cst_customized_twin_normal> val,
