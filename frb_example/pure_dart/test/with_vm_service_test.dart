@@ -119,5 +119,20 @@ Future<void> main() async {
           await DroppableTwinNormal.getDropCountTwinNormal(), oldDropCount + 1);
       expect(object, null);
     });
+
+    // #1723
+    test('when holds StreamSink and Dart GC, Rust object should be dropped',
+        () async {
+      DroppableTwinNormal? object =
+          await DroppableTwinNormal.newDroppableTwinNormal();
+      object.createStream().listen((_) {});
+      final oldDropCount = await DroppableTwinNormal.getDropCountTwinNormal();
+
+      object = null;
+      await vmService.gc();
+      expect(
+          await DroppableTwinNormal.getDropCountTwinNormal(), oldDropCount + 1);
+      expect(object, null);
+    });
   });
 }
