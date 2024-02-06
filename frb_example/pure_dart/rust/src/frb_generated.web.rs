@@ -4,6 +4,7 @@
 // Section: imports
 
 use super::*;
+use crate::api::dropping::*;
 use crate::api::misc_no_twin_example_a::*;
 use crate::api::misc_no_twin_example_b::*;
 use crate::api::pseudo_manual::rust_auto_opaque_twin_moi::*;
@@ -7548,6 +7549,17 @@ impl CstDecode<Box<dyn MyTraitTwinSync + Send + Sync>>
         .rust_auto_opaque_decode_owned()
     }
 }
+impl CstDecode<DroppableTwinNormal> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> DroppableTwinNormal {
+        CstDecode::<
+            RustOpaqueNom<
+                flutter_rust_bridge::for_generated::rust_async::RwLock<DroppableTwinNormal>,
+            >,
+        >::cst_decode(self)
+        .rust_auto_opaque_decode_owned()
+    }
+}
 impl CstDecode<NonCloneSimpleEnumTwinMoi>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -9212,6 +9224,23 @@ impl
             Box<dyn MyTraitTwinSync + Send + Sync>,
         >,
     > {
+        #[cfg(target_pointer_width = "64")]
+        {
+            compile_error!("64-bit pointers are not supported.");
+        }
+        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
+    }
+}
+impl
+    CstDecode<
+        RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<DroppableTwinNormal>>,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<DroppableTwinNormal>>
+    {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
@@ -11115,6 +11144,26 @@ pub fn wire_test_duplicated_module_names(
     s: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_test_duplicated_module_names_impl(port_, s)
+}
+
+#[wasm_bindgen]
+pub fn wire_DroppableTwinNormal_get_drop_count_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire_DroppableTwinNormal_get_drop_count_twin_normal_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_DroppableTwinNormal_new(port_: flutter_rust_bridge::for_generated::MessagePort) {
+    wire_DroppableTwinNormal_new_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_DroppableTwinNormal_simple_method_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_DroppableTwinNormal_simple_method_twin_normal_impl(port_, that)
 }
 
 #[wasm_bindgen]
@@ -34122,6 +34171,24 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
                 Box<dyn MyTraitTwinSyncSse + Send + Sync>,
             >,
         >::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<DroppableTwinNormal>>::increment_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<DroppableTwinNormal>>::decrement_strong_count(ptr as _);
     }
 }
 

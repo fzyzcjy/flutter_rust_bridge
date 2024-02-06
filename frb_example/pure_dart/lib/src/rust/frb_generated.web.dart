@@ -16,6 +16,7 @@ import 'api/dart_fn.dart';
 import 'api/dart_opaque.dart';
 import 'api/dart_opaque_sync.dart';
 import 'api/deliberate_name_conflict.dart';
+import 'api/dropping.dart';
 import 'api/enumeration.dart';
 import 'api/event_listener.dart';
 import 'api/exception.dart';
@@ -673,6 +674,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSseSendSync;
 
   CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_DroppableTwinNormalPtr => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal;
+
+  CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_NonCloneSimpleEnumTwinMoiPtr => wire
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinMoi;
 
@@ -1008,6 +1013,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   BoxMyTraitTwinSyncSse
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
+          dynamic raw);
+
+  @protected
+  DroppableTwinNormal
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
           dynamic raw);
 
   @protected
@@ -1433,6 +1443,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   BoxHelloTraitTwinSyncSseMoi
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSseMoi(
+          dynamic raw);
+
+  @protected
+  DroppableTwinNormal
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
           dynamic raw);
 
   @protected
@@ -2309,6 +2324,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   BoxMyTraitTwinSyncSse
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
+          dynamic raw);
+
+  @protected
+  DroppableTwinNormal
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
           dynamic raw);
 
   @protected
@@ -7875,6 +7895,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  DroppableTwinNormal
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
   NonCloneSimpleEnumTwinMoi
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinMoi(
           SseDeserializer deserializer);
@@ -8297,6 +8322,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   BoxHelloTraitTwinSyncSseMoi
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSseMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  DroppableTwinNormal
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
           SseDeserializer deserializer);
 
   @protected
@@ -9177,6 +9207,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   BoxMyTraitTwinSyncSse
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
+          SseDeserializer deserializer);
+
+  @protected
+  DroppableTwinNormal
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
           SseDeserializer deserializer);
 
   @protected
@@ -22140,6 +22175,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       BoxMyTraitTwinSync raw);
 
   @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
+      DroppableTwinNormal raw);
+
+  @protected
   int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinMoi(
       NonCloneSimpleEnumTwinMoi raw);
 
@@ -22310,6 +22349,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncMoi(
       BoxHelloTraitTwinSyncMoi raw);
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
+      DroppableTwinNormal raw);
 
   @protected
   int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinMoi(
@@ -22616,6 +22659,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSendSync(
       BoxMyTraitTwinSync raw);
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
+      DroppableTwinNormal raw);
 
   @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinMoi(
@@ -22942,6 +22989,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
           BoxMyTraitTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
+          DroppableTwinNormal self, SseSerializer serializer);
 
   @protected
   void
@@ -23367,6 +23419,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSseMoi(
           BoxHelloTraitTwinSyncSseMoi self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
+          DroppableTwinNormal self, SseSerializer serializer);
 
   @protected
   void
@@ -24286,6 +24343,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
           BoxMyTraitTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
+          DroppableTwinNormal self, SseSerializer serializer);
 
   @protected
   void
@@ -30407,6 +30469,18 @@ class RustLibWire implements BaseWire {
   void wire_test_duplicated_module_names(
           NativePortType port_, List<dynamic> s) =>
       wasmModule.wire_test_duplicated_module_names(port_, s);
+
+  void wire_DroppableTwinNormal_get_drop_count_twin_normal(
+          NativePortType port_) =>
+      wasmModule.wire_DroppableTwinNormal_get_drop_count_twin_normal(port_);
+
+  void wire_DroppableTwinNormal_new(NativePortType port_) =>
+      wasmModule.wire_DroppableTwinNormal_new(port_);
+
+  void wire_DroppableTwinNormal_simple_method_twin_normal(
+          NativePortType port_, Object that) =>
+      wasmModule.wire_DroppableTwinNormal_simple_method_twin_normal(
+          port_, that);
 
   void wire_func_enum_simple_twin_normal(NativePortType port_, int arg) =>
       wasmModule.wire_func_enum_simple_twin_normal(port_, arg);
@@ -45887,6 +45961,18 @@ class RustLibWire implements BaseWire {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
               ptr);
 
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
+              ptr);
+
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinMoi(
           dynamic ptr) =>
       wasmModule
@@ -46712,6 +46798,14 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_test_duplicated_module_names(
       NativePortType port_, List<dynamic> s);
+
+  external void wire_DroppableTwinNormal_get_drop_count_twin_normal(
+      NativePortType port_);
+
+  external void wire_DroppableTwinNormal_new(NativePortType port_);
+
+  external void wire_DroppableTwinNormal_simple_method_twin_normal(
+      NativePortType port_, Object that);
 
   external void wire_func_enum_simple_twin_normal(
       NativePortType port_, int arg);
@@ -57031,6 +57125,14 @@ class RustLibWasmModule implements WasmModule {
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
+          dynamic ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
+          dynamic ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
           dynamic ptr);
 
   external void
