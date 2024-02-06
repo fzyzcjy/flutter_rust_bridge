@@ -1477,6 +1477,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   MessageIdTwinSync dco_decode_box_autoadd_message_id_twin_sync(dynamic raw);
 
   @protected
+  MyCallableTwinNormal dco_decode_box_autoadd_my_callable_twin_normal(
+      dynamic raw);
+
+  @protected
+  MyCallableTwinRustAsync dco_decode_box_autoadd_my_callable_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  MyCallableTwinSync dco_decode_box_autoadd_my_callable_twin_sync(dynamic raw);
+
+  @protected
   MyNestedStructTwinNormal dco_decode_box_autoadd_my_nested_struct_twin_normal(
       dynamic raw);
 
@@ -2691,6 +2702,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   MoreThanJustOneRawStringStructTwinSync
       dco_decode_more_than_just_one_raw_string_struct_twin_sync(dynamic raw);
+
+  @protected
+  MyCallableTwinNormal dco_decode_my_callable_twin_normal(dynamic raw);
+
+  @protected
+  MyCallableTwinRustAsync dco_decode_my_callable_twin_rust_async(dynamic raw);
+
+  @protected
+  MyCallableTwinSync dco_decode_my_callable_twin_sync(dynamic raw);
 
   @protected
   MyEnum dco_decode_my_enum(dynamic raw);
@@ -4739,6 +4759,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  MyCallableTwinNormal sse_decode_box_autoadd_my_callable_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  MyCallableTwinRustAsync sse_decode_box_autoadd_my_callable_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  MyCallableTwinSync sse_decode_box_autoadd_my_callable_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
   MyNestedStructTwinNormal sse_decode_box_autoadd_my_nested_struct_twin_normal(
       SseDeserializer deserializer);
 
@@ -6128,6 +6160,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   MoreThanJustOneRawStringStructTwinSync
       sse_decode_more_than_just_one_raw_string_struct_twin_sync(
           SseDeserializer deserializer);
+
+  @protected
+  MyCallableTwinNormal sse_decode_my_callable_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  MyCallableTwinRustAsync sse_decode_my_callable_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  MyCallableTwinSync sse_decode_my_callable_twin_sync(
+      SseDeserializer deserializer);
 
   @protected
   MyEnum sse_decode_my_enum(SseDeserializer deserializer);
@@ -8295,6 +8339,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       MessageIdTwinSync self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_my_callable_twin_normal(
+      MyCallableTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_my_callable_twin_rust_async(
+      MyCallableTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_my_callable_twin_sync(
+      MyCallableTwinSync self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_my_nested_struct_twin_normal(
       MyNestedStructTwinNormal self, SseSerializer serializer);
 
@@ -9651,6 +9707,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_more_than_just_one_raw_string_struct_twin_sync(
       MoreThanJustOneRawStringStructTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_callable_twin_normal(
+      MyCallableTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_callable_twin_rust_async(
+      MyCallableTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_callable_twin_sync(
+      MyCallableTwinSync self, SseSerializer serializer);
 
   @protected
   void sse_encode_my_enum(MyEnum self, SseSerializer serializer);

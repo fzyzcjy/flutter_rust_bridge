@@ -106,6 +106,30 @@ class Log2TwinRustAsyncSse {
           value == other.value;
 }
 
+class MyCallableTwinRustAsyncSse {
+  final String one;
+
+  const MyCallableTwinRustAsyncSse({
+    required this.one,
+  });
+
+  Future<String> callTwinRustAsyncSse({required String two, dynamic hint}) =>
+      RustLib.instance.api.myCallableTwinRustAsyncSseCallTwinRustAsyncSse(
+        that: this,
+        two: two,
+      );
+
+  @override
+  int get hashCode => one.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MyCallableTwinRustAsyncSse &&
+          runtimeType == other.runtimeType &&
+          one == other.one;
+}
+
 class SumWithTwinRustAsyncSse {
   final int x;
 

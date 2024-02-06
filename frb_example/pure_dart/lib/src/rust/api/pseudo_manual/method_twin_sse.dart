@@ -98,6 +98,30 @@ class Log2TwinSse {
           value == other.value;
 }
 
+class MyCallableTwinSse {
+  final String one;
+
+  const MyCallableTwinSse({
+    required this.one,
+  });
+
+  Future<String> callTwinSse({required String two, dynamic hint}) =>
+      RustLib.instance.api.myCallableTwinSseCallTwinSse(
+        that: this,
+        two: two,
+      );
+
+  @override
+  int get hashCode => one.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MyCallableTwinSse &&
+          runtimeType == other.runtimeType &&
+          one == other.one;
+}
+
 class SumWithTwinSse {
   final int x;
 
