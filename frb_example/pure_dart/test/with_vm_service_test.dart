@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_io.dart';
 import 'package:frb_example_pure_dart/src/rust/api/dart_opaque.dart';
 import 'package:frb_example_pure_dart/src/rust/api/dart_opaque_sync.dart';
+import 'package:frb_example_pure_dart/src/rust/api/dropping.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
@@ -95,6 +96,16 @@ Future<void> main() async {
         await Future<void>.delayed(const Duration(milliseconds: 10));
         expect(weakRef.target, isNull);
       });
+    });
+  });
+
+  group('Rust object is dropped', () {
+    test('when call dispose, Rust object is dropped', () async {
+      final object = await DroppableTwinNormal.newDroppableTwinNormal();
+      final oldDropCount = await DroppableTwinNormal.getDropCountTwinNormal();
+      object.dispose();
+      expect(
+          await DroppableTwinNormal.getDropCountTwinNormal(), oldDropCount + 1);
     });
   });
 }
