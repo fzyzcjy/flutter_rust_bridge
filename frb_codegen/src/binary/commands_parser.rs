@@ -1,5 +1,5 @@
 use crate::binary::commands::{GenerateCommandArgs, GenerateCommandArgsPrimary};
-use anyhow::{Context, Result};
+use anyhow::{ensure, Context, Result};
 use lib_flutter_rust_bridge_codegen::codegen::{Config, MetaConfig};
 use log::debug;
 
@@ -11,10 +11,27 @@ pub(crate) fn compute_codegen_config(args: GenerateCommandArgsPrimary) -> Result
 
     if let Some(config_file) = args.config_file {
         debug!("compute_codegen_config: mode=config_file");
+        ensure!(
+            GenerateCommandArgsPrimary {
+                config_file: None,
+                ..args.clone()
+            } == Default::default(),
+            // This will stop the whole generator and tell the users, so we do not care about testing it
+            // frb-coverage:ignore-start
+            "Cannot use command line args and config file at the same time",
+            // frb-coverage:ignore-end
+        );
         return Config::from_config_file(&config_file)?.context("Cannot find config_file");
     }
 
     debug!("compute_codegen_config: mode=from_naive_generate_command_args");
+    ensure!(
+        Config::from_files_auto().is_err(),
+        // This will stop the whole generator and tell the users, so we do not care about testing it
+        // frb-coverage:ignore-start
+        "Cannot use command line args and config file at the same time",
+        // frb-coverage:ignore-end
+    );
     compute_codegen_config_from_naive_command_args(args)
 }
 
