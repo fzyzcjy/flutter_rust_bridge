@@ -26,7 +26,7 @@ impl DroppableTwinNormal {
     pub fn simple_method_twin_normal(&self) {}
 
     // #1723
-    pub fn set_sink(&mut self, sink: StreamSink<i32>) {
+    pub fn create_stream(&mut self, sink: StreamSink<i32>) {
         self.sink = Some(sink);
     }
 
