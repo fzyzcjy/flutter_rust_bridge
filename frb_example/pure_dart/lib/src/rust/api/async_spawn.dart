@@ -12,3 +12,6 @@ Future<String> simpleUseAsyncSpawn({required String arg, dynamic hint}) =>
 Future<String> simpleUseAsyncSpawnBlocking(
         {required String arg, dynamic hint}) =>
     RustLib.instance.api.simpleUseAsyncSpawnBlocking(arg: arg, hint: hint);
+
+Stream<String> simpleUseAsyncSpawnLocal({required String arg, dynamic hint}) =>
+    RustLib.instance.api.simpleUseAsyncSpawnLocal(arg: arg, hint: hint);

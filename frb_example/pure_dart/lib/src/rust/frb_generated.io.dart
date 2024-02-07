@@ -16,6 +16,7 @@ import 'api/dart_fn.dart';
 import 'api/dart_opaque.dart';
 import 'api/dart_opaque_sync.dart';
 import 'api/deliberate_name_conflict.dart';
+import 'api/dropping.dart';
 import 'api/enumeration.dart';
 import 'api/event_listener.dart';
 import 'api/exception.dart';
@@ -95,6 +96,11 @@ import 'api/pseudo_manual/dart_opaque_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/dart_opaque_twin_sse.dart';
 import 'api/pseudo_manual/dart_opaque_twin_sync.dart';
 import 'api/pseudo_manual/dart_opaque_twin_sync_sse.dart';
+import 'api/pseudo_manual/dropping_twin_rust_async.dart';
+import 'api/pseudo_manual/dropping_twin_rust_async_sse.dart';
+import 'api/pseudo_manual/dropping_twin_sse.dart';
+import 'api/pseudo_manual/dropping_twin_sync.dart';
+import 'api/pseudo_manual/dropping_twin_sync_sse.dart';
 import 'api/pseudo_manual/enumeration_twin_rust_async.dart';
 import 'api/pseudo_manual/enumeration_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/enumeration_twin_sse.dart';
@@ -674,6 +680,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSseSendSyncPtr;
 
   CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_DroppableTwinNormalPtr => wire
+          ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormalPtr;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_DroppableTwinRustAsyncPtr => wire
+          ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsyncPtr;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_DroppableTwinRustAsyncSsePtr => wire
+          ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsyncSsePtr;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_DroppableTwinSsePtr => wire
+          ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSsePtr;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_DroppableTwinSyncPtr => wire
+          ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSyncPtr;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_DroppableTwinSyncSsePtr => wire
+          ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSyncSsePtr;
+
+  CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_NonCloneSimpleEnumTwinMoiPtr => wire
           ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinMoiPtr;
 
@@ -1012,6 +1042,36 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  DroppableTwinNormal
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
+          dynamic raw);
+
+  @protected
+  DroppableTwinRustAsync
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsync(
+          dynamic raw);
+
+  @protected
+  DroppableTwinRustAsyncSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsyncSse(
+          dynamic raw);
+
+  @protected
+  DroppableTwinSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSse(
+          dynamic raw);
+
+  @protected
+  DroppableTwinSync
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSync(
+          dynamic raw);
+
+  @protected
+  DroppableTwinSyncSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSyncSse(
+          dynamic raw);
+
+  @protected
   NonCloneSimpleEnumTwinMoi
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinMoi(
           dynamic raw);
@@ -1317,6 +1377,36 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  DroppableTwinNormal
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
+          dynamic raw);
+
+  @protected
+  DroppableTwinRustAsync
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsync(
+          dynamic raw);
+
+  @protected
+  DroppableTwinRustAsyncSse
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsyncSse(
+          dynamic raw);
+
+  @protected
+  DroppableTwinSse
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSse(
+          dynamic raw);
+
+  @protected
+  DroppableTwinSync
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSync(
+          dynamic raw);
+
+  @protected
+  DroppableTwinSyncSse
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSyncSse(
+          dynamic raw);
+
+  @protected
   NonCloneSimpleTwinMoi
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoi(
           dynamic raw);
@@ -1434,6 +1524,36 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   BoxHelloTraitTwinSyncSseMoi
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSseMoi(
+          dynamic raw);
+
+  @protected
+  DroppableTwinNormal
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
+          dynamic raw);
+
+  @protected
+  DroppableTwinRustAsync
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsync(
+          dynamic raw);
+
+  @protected
+  DroppableTwinRustAsyncSse
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsyncSse(
+          dynamic raw);
+
+  @protected
+  DroppableTwinSse
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSse(
+          dynamic raw);
+
+  @protected
+  DroppableTwinSync
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSync(
+          dynamic raw);
+
+  @protected
+  DroppableTwinSyncSse
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSyncSse(
           dynamic raw);
 
   @protected
@@ -2310,6 +2430,36 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   BoxMyTraitTwinSyncSse
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
+          dynamic raw);
+
+  @protected
+  DroppableTwinNormal
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
+          dynamic raw);
+
+  @protected
+  DroppableTwinRustAsync
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsync(
+          dynamic raw);
+
+  @protected
+  DroppableTwinRustAsyncSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsyncSse(
+          dynamic raw);
+
+  @protected
+  DroppableTwinSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSse(
+          dynamic raw);
+
+  @protected
+  DroppableTwinSync
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSync(
+          dynamic raw);
+
+  @protected
+  DroppableTwinSyncSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSyncSse(
           dynamic raw);
 
   @protected
@@ -3782,6 +3932,28 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   MessageIdTwinSyncSse dco_decode_box_autoadd_message_id_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  MyCallableTwinNormal dco_decode_box_autoadd_my_callable_twin_normal(
+      dynamic raw);
+
+  @protected
+  MyCallableTwinRustAsync dco_decode_box_autoadd_my_callable_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  MyCallableTwinRustAsyncSse
+      dco_decode_box_autoadd_my_callable_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  MyCallableTwinSse dco_decode_box_autoadd_my_callable_twin_sse(dynamic raw);
+
+  @protected
+  MyCallableTwinSync dco_decode_box_autoadd_my_callable_twin_sync(dynamic raw);
+
+  @protected
+  MyCallableTwinSyncSse dco_decode_box_autoadd_my_callable_twin_sync_sse(
       dynamic raw);
 
   @protected
@@ -6194,6 +6366,25 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  MyCallableTwinNormal dco_decode_my_callable_twin_normal(dynamic raw);
+
+  @protected
+  MyCallableTwinRustAsync dco_decode_my_callable_twin_rust_async(dynamic raw);
+
+  @protected
+  MyCallableTwinRustAsyncSse dco_decode_my_callable_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  MyCallableTwinSse dco_decode_my_callable_twin_sse(dynamic raw);
+
+  @protected
+  MyCallableTwinSync dco_decode_my_callable_twin_sync(dynamic raw);
+
+  @protected
+  MyCallableTwinSyncSse dco_decode_my_callable_twin_sync_sse(dynamic raw);
+
+  @protected
   MyEnum dco_decode_my_enum(dynamic raw);
 
   @protected
@@ -7876,6 +8067,36 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  DroppableTwinNormal
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  DroppableTwinRustAsync
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsync(
+          SseDeserializer deserializer);
+
+  @protected
+  DroppableTwinRustAsyncSse
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  DroppableTwinSse
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSse(
+          SseDeserializer deserializer);
+
+  @protected
+  DroppableTwinSync
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSync(
+          SseDeserializer deserializer);
+
+  @protected
+  DroppableTwinSyncSse
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSyncSse(
+          SseDeserializer deserializer);
+
+  @protected
   NonCloneSimpleEnumTwinMoi
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinMoi(
           SseDeserializer deserializer);
@@ -8181,6 +8402,36 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  DroppableTwinNormal
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  DroppableTwinRustAsync
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsync(
+          SseDeserializer deserializer);
+
+  @protected
+  DroppableTwinRustAsyncSse
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  DroppableTwinSse
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSse(
+          SseDeserializer deserializer);
+
+  @protected
+  DroppableTwinSync
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSync(
+          SseDeserializer deserializer);
+
+  @protected
+  DroppableTwinSyncSse
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSyncSse(
+          SseDeserializer deserializer);
+
+  @protected
   NonCloneSimpleTwinMoi
       sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoi(
           SseDeserializer deserializer);
@@ -8298,6 +8549,36 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   BoxHelloTraitTwinSyncSseMoi
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSseMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  DroppableTwinNormal
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  DroppableTwinRustAsync
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsync(
+          SseDeserializer deserializer);
+
+  @protected
+  DroppableTwinRustAsyncSse
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  DroppableTwinSse
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSse(
+          SseDeserializer deserializer);
+
+  @protected
+  DroppableTwinSync
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSync(
+          SseDeserializer deserializer);
+
+  @protected
+  DroppableTwinSyncSse
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSyncSse(
           SseDeserializer deserializer);
 
   @protected
@@ -9178,6 +9459,36 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   BoxMyTraitTwinSyncSse
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
+          SseDeserializer deserializer);
+
+  @protected
+  DroppableTwinNormal
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  DroppableTwinRustAsync
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsync(
+          SseDeserializer deserializer);
+
+  @protected
+  DroppableTwinRustAsyncSse
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  DroppableTwinSse
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSse(
+          SseDeserializer deserializer);
+
+  @protected
+  DroppableTwinSync
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSync(
+          SseDeserializer deserializer);
+
+  @protected
+  DroppableTwinSyncSse
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSyncSse(
           SseDeserializer deserializer);
 
   @protected
@@ -10818,6 +11129,31 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   MessageIdTwinSyncSse sse_decode_box_autoadd_message_id_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  MyCallableTwinNormal sse_decode_box_autoadd_my_callable_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  MyCallableTwinRustAsync sse_decode_box_autoadd_my_callable_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  MyCallableTwinRustAsyncSse
+      sse_decode_box_autoadd_my_callable_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  MyCallableTwinSse sse_decode_box_autoadd_my_callable_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  MyCallableTwinSync sse_decode_box_autoadd_my_callable_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  MyCallableTwinSyncSse sse_decode_box_autoadd_my_callable_twin_sync_sse(
       SseDeserializer deserializer);
 
   @protected
@@ -13575,6 +13911,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   MoreThanJustOneRawStringStructTwinSyncSse
       sse_decode_more_than_just_one_raw_string_struct_twin_sync_sse(
           SseDeserializer deserializer);
+
+  @protected
+  MyCallableTwinNormal sse_decode_my_callable_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  MyCallableTwinRustAsync sse_decode_my_callable_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  MyCallableTwinRustAsyncSse sse_decode_my_callable_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  MyCallableTwinSse sse_decode_my_callable_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  MyCallableTwinSync sse_decode_my_callable_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  MyCallableTwinSyncSse sse_decode_my_callable_twin_sync_sse(
+      SseDeserializer deserializer);
 
   @protected
   MyEnum sse_decode_my_enum(SseDeserializer deserializer);
@@ -16964,6 +17324,34 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     final ptr = wire.cst_new_box_autoadd_message_id_twin_sync();
     cst_api_fill_to_wire_message_id_twin_sync(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_my_callable_twin_normal>
+      cst_encode_box_autoadd_my_callable_twin_normal(MyCallableTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr = wire.cst_new_box_autoadd_my_callable_twin_normal();
+    cst_api_fill_to_wire_my_callable_twin_normal(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_my_callable_twin_rust_async>
+      cst_encode_box_autoadd_my_callable_twin_rust_async(
+          MyCallableTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr = wire.cst_new_box_autoadd_my_callable_twin_rust_async();
+    cst_api_fill_to_wire_my_callable_twin_rust_async(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_my_callable_twin_sync>
+      cst_encode_box_autoadd_my_callable_twin_sync(MyCallableTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr = wire.cst_new_box_autoadd_my_callable_twin_sync();
+    cst_api_fill_to_wire_my_callable_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -21525,6 +21913,27 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  void cst_api_fill_to_wire_box_autoadd_my_callable_twin_normal(
+      MyCallableTwinNormal apiObj,
+      ffi.Pointer<wire_cst_my_callable_twin_normal> wireObj) {
+    cst_api_fill_to_wire_my_callable_twin_normal(apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_my_callable_twin_rust_async(
+      MyCallableTwinRustAsync apiObj,
+      ffi.Pointer<wire_cst_my_callable_twin_rust_async> wireObj) {
+    cst_api_fill_to_wire_my_callable_twin_rust_async(apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_my_callable_twin_sync(
+      MyCallableTwinSync apiObj,
+      ffi.Pointer<wire_cst_my_callable_twin_sync> wireObj) {
+    cst_api_fill_to_wire_my_callable_twin_sync(apiObj, wireObj.ref);
+  }
+
+  @protected
   void cst_api_fill_to_wire_box_autoadd_my_nested_struct_twin_normal(
       MyNestedStructTwinNormal apiObj,
       ffi.Pointer<wire_cst_my_nested_struct_twin_normal> wireObj) {
@@ -23948,6 +24357,25 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  void cst_api_fill_to_wire_my_callable_twin_normal(
+      MyCallableTwinNormal apiObj, wire_cst_my_callable_twin_normal wireObj) {
+    wireObj.one = cst_encode_String(apiObj.one);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_my_callable_twin_rust_async(
+      MyCallableTwinRustAsync apiObj,
+      wire_cst_my_callable_twin_rust_async wireObj) {
+    wireObj.one = cst_encode_String(apiObj.one);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_my_callable_twin_sync(
+      MyCallableTwinSync apiObj, wire_cst_my_callable_twin_sync wireObj) {
+    wireObj.one = cst_encode_String(apiObj.one);
+  }
+
+  @protected
   void cst_api_fill_to_wire_my_nested_struct_twin_normal(
       MyNestedStructTwinNormal apiObj,
       wire_cst_my_nested_struct_twin_normal wireObj) {
@@ -25180,6 +25608,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       BoxMyTraitTwinSync raw);
 
   @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
+      DroppableTwinNormal raw);
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsync(
+      DroppableTwinRustAsync raw);
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSync(
+      DroppableTwinSync raw);
+
+  @protected
   int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinMoi(
       NonCloneSimpleEnumTwinMoi raw);
 
@@ -25304,6 +25744,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       BoxHelloTraitTwinSyncMoi raw);
 
   @protected
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
+      DroppableTwinNormal raw);
+
+  @protected
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsync(
+      DroppableTwinRustAsync raw);
+
+  @protected
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSync(
+      DroppableTwinSync raw);
+
+  @protected
   int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoi(
       NonCloneSimpleTwinMoi raw);
 
@@ -25350,6 +25802,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncMoi(
       BoxHelloTraitTwinSyncMoi raw);
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
+      DroppableTwinNormal raw);
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsync(
+      DroppableTwinRustAsync raw);
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSync(
+      DroppableTwinSync raw);
 
   @protected
   int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinMoi(
@@ -25656,6 +26120,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSendSync(
       BoxMyTraitTwinSync raw);
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
+      DroppableTwinNormal raw);
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsync(
+      DroppableTwinRustAsync raw);
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSync(
+      DroppableTwinSync raw);
 
   @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinMoi(
@@ -25985,6 +26461,36 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
+          DroppableTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsync(
+          DroppableTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsyncSse(
+          DroppableTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSse(
+          DroppableTwinSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSync(
+          DroppableTwinSync self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSyncSse(
+          DroppableTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinMoi(
           NonCloneSimpleEnumTwinMoi self, SseSerializer serializer);
 
@@ -26290,6 +26796,36 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
+          DroppableTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsync(
+          DroppableTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsyncSse(
+          DroppableTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSse(
+          DroppableTwinSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSync(
+          DroppableTwinSync self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSyncSse(
+          DroppableTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void
       sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoi(
           NonCloneSimpleTwinMoi self, SseSerializer serializer);
 
@@ -26407,6 +26943,36 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSseMoi(
           BoxHelloTraitTwinSyncSseMoi self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
+          DroppableTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsync(
+          DroppableTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsyncSse(
+          DroppableTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSse(
+          DroppableTwinSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSync(
+          DroppableTwinSync self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSyncSse(
+          DroppableTwinSyncSse self, SseSerializer serializer);
 
   @protected
   void
@@ -27326,6 +27892,36 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
           BoxMyTraitTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
+          DroppableTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsync(
+          DroppableTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsyncSse(
+          DroppableTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSse(
+          DroppableTwinSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSync(
+          DroppableTwinSync self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSyncSse(
+          DroppableTwinSyncSse self, SseSerializer serializer);
 
   @protected
   void
@@ -28880,6 +29476,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_box_autoadd_message_id_twin_sync_sse(
       MessageIdTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_my_callable_twin_normal(
+      MyCallableTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_my_callable_twin_rust_async(
+      MyCallableTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_my_callable_twin_rust_async_sse(
+      MyCallableTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_my_callable_twin_sse(
+      MyCallableTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_my_callable_twin_sync(
+      MyCallableTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_my_callable_twin_sync_sse(
+      MyCallableTwinSyncSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_my_nested_struct_twin_normal(
@@ -31522,6 +32142,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       MoreThanJustOneRawStringStructTwinSyncSse self, SseSerializer serializer);
 
   @protected
+  void sse_encode_my_callable_twin_normal(
+      MyCallableTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_callable_twin_rust_async(
+      MyCallableTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_callable_twin_rust_async_sse(
+      MyCallableTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_callable_twin_sse(
+      MyCallableTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_callable_twin_sync(
+      MyCallableTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_callable_twin_sync_sse(
+      MyCallableTwinSyncSse self, SseSerializer serializer);
+
+  @protected
   void sse_encode_my_enum(MyEnum self, SseSerializer serializer);
 
   @protected
@@ -33539,6 +34183,25 @@ class RustLibWire implements BaseWire {
       _wire_simple_use_async_spawn_blockingPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
+  void wire_simple_use_async_spawn_local(
+    int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> arg,
+  ) {
+    return _wire_simple_use_async_spawn_local(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_simple_use_async_spawn_localPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+      'frbgen_frb_example_pure_dart_wire_simple_use_async_spawn_local');
+  late final _wire_simple_use_async_spawn_local =
+      _wire_simple_use_async_spawn_localPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+
   void wire_handle_customized_struct_twin_normal(
     int port_,
     ffi.Pointer<wire_cst_customized_twin_normal> val,
@@ -34459,6 +35122,69 @@ class RustLibWire implements BaseWire {
   late final _wire_test_duplicated_module_names =
       _wire_test_duplicated_module_namesPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_struct_in_lower_level>)>();
+
+  void wire_DroppableTwinNormal_create_stream(
+    int port_,
+    int that,
+  ) {
+    return _wire_DroppableTwinNormal_create_stream(
+      port_,
+      that,
+    );
+  }
+
+  late final _wire_DroppableTwinNormal_create_streamPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
+      'frbgen_frb_example_pure_dart_wire_DroppableTwinNormal_create_stream');
+  late final _wire_DroppableTwinNormal_create_stream =
+      _wire_DroppableTwinNormal_create_streamPtr
+          .asFunction<void Function(int, int)>();
+
+  void wire_DroppableTwinNormal_get_drop_count_twin_normal(
+    int port_,
+  ) {
+    return _wire_DroppableTwinNormal_get_drop_count_twin_normal(
+      port_,
+    );
+  }
+
+  late final _wire_DroppableTwinNormal_get_drop_count_twin_normalPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      'frbgen_frb_example_pure_dart_wire_DroppableTwinNormal_get_drop_count_twin_normal');
+  late final _wire_DroppableTwinNormal_get_drop_count_twin_normal =
+      _wire_DroppableTwinNormal_get_drop_count_twin_normalPtr
+          .asFunction<void Function(int)>();
+
+  void wire_DroppableTwinNormal_new(
+    int port_,
+  ) {
+    return _wire_DroppableTwinNormal_new(
+      port_,
+    );
+  }
+
+  late final _wire_DroppableTwinNormal_newPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'frbgen_frb_example_pure_dart_wire_DroppableTwinNormal_new');
+  late final _wire_DroppableTwinNormal_new =
+      _wire_DroppableTwinNormal_newPtr.asFunction<void Function(int)>();
+
+  void wire_DroppableTwinNormal_simple_method_twin_normal(
+    int port_,
+    int that,
+  ) {
+    return _wire_DroppableTwinNormal_simple_method_twin_normal(
+      port_,
+      that,
+    );
+  }
+
+  late final _wire_DroppableTwinNormal_simple_method_twin_normalPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
+      'frbgen_frb_example_pure_dart_wire_DroppableTwinNormal_simple_method_twin_normal');
+  late final _wire_DroppableTwinNormal_simple_method_twin_normal =
+      _wire_DroppableTwinNormal_simple_method_twin_normalPtr
+          .asFunction<void Function(int, int)>();
 
   void wire_func_enum_simple_twin_normal(
     int port_,
@@ -35650,6 +36376,30 @@ class RustLibWire implements BaseWire {
       _wire_ConcatenateWithTwinNormal_simple_getter_twin_normalPtr.asFunction<
           void Function(
               int, ffi.Pointer<wire_cst_concatenate_with_twin_normal>)>();
+
+  void wire_MyCallableTwinNormal_call(
+    int port_,
+    ffi.Pointer<wire_cst_my_callable_twin_normal> that,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> two,
+  ) {
+    return _wire_MyCallableTwinNormal_call(
+      port_,
+      that,
+      two,
+    );
+  }
+
+  late final _wire_MyCallableTwinNormal_callPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64,
+                  ffi.Pointer<wire_cst_my_callable_twin_normal>,
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+      'frbgen_frb_example_pure_dart_wire_MyCallableTwinNormal_call');
+  late final _wire_MyCallableTwinNormal_call =
+      _wire_MyCallableTwinNormal_callPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_my_callable_twin_normal>,
+              ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_SumWithTwinNormal_sum_twin_normal(
     int port_,
@@ -52263,6 +53013,397 @@ class RustLibWire implements BaseWire {
       _wire_set_static_dart_opaque_twin_sync_ssePtr.asFunction<
           WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
+  void wire_DroppableTwinRustAsync_create_stream_twin_rust_async(
+    int port_,
+    int that,
+  ) {
+    return _wire_DroppableTwinRustAsync_create_stream_twin_rust_async(
+      port_,
+      that,
+    );
+  }
+
+  late final _wire_DroppableTwinRustAsync_create_stream_twin_rust_asyncPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
+          'frbgen_frb_example_pure_dart_wire_DroppableTwinRustAsync_create_stream_twin_rust_async');
+  late final _wire_DroppableTwinRustAsync_create_stream_twin_rust_async =
+      _wire_DroppableTwinRustAsync_create_stream_twin_rust_asyncPtr
+          .asFunction<void Function(int, int)>();
+
+  void wire_DroppableTwinRustAsync_get_drop_count_twin_rust_async(
+    int port_,
+  ) {
+    return _wire_DroppableTwinRustAsync_get_drop_count_twin_rust_async(
+      port_,
+    );
+  }
+
+  late final _wire_DroppableTwinRustAsync_get_drop_count_twin_rust_asyncPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'frbgen_frb_example_pure_dart_wire_DroppableTwinRustAsync_get_drop_count_twin_rust_async');
+  late final _wire_DroppableTwinRustAsync_get_drop_count_twin_rust_async =
+      _wire_DroppableTwinRustAsync_get_drop_count_twin_rust_asyncPtr
+          .asFunction<void Function(int)>();
+
+  void wire_DroppableTwinRustAsync_new_twin_rust_async(
+    int port_,
+  ) {
+    return _wire_DroppableTwinRustAsync_new_twin_rust_async(
+      port_,
+    );
+  }
+
+  late final _wire_DroppableTwinRustAsync_new_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      'frbgen_frb_example_pure_dart_wire_DroppableTwinRustAsync_new_twin_rust_async');
+  late final _wire_DroppableTwinRustAsync_new_twin_rust_async =
+      _wire_DroppableTwinRustAsync_new_twin_rust_asyncPtr
+          .asFunction<void Function(int)>();
+
+  void wire_DroppableTwinRustAsync_simple_method_twin_rust_async(
+    int port_,
+    int that,
+  ) {
+    return _wire_DroppableTwinRustAsync_simple_method_twin_rust_async(
+      port_,
+      that,
+    );
+  }
+
+  late final _wire_DroppableTwinRustAsync_simple_method_twin_rust_asyncPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
+          'frbgen_frb_example_pure_dart_wire_DroppableTwinRustAsync_simple_method_twin_rust_async');
+  late final _wire_DroppableTwinRustAsync_simple_method_twin_rust_async =
+      _wire_DroppableTwinRustAsync_simple_method_twin_rust_asyncPtr
+          .asFunction<void Function(int, int)>();
+
+  void wire_DroppableTwinRustAsyncSse_create_stream_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_DroppableTwinRustAsyncSse_create_stream_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_DroppableTwinRustAsyncSse_create_stream_twin_rust_async_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_DroppableTwinRustAsyncSse_create_stream_twin_rust_async_sse');
+  late final _wire_DroppableTwinRustAsyncSse_create_stream_twin_rust_async_sse =
+      _wire_DroppableTwinRustAsyncSse_create_stream_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_DroppableTwinRustAsyncSse_get_drop_count_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_DroppableTwinRustAsyncSse_get_drop_count_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_DroppableTwinRustAsyncSse_get_drop_count_twin_rust_async_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_DroppableTwinRustAsyncSse_get_drop_count_twin_rust_async_sse');
+  late final _wire_DroppableTwinRustAsyncSse_get_drop_count_twin_rust_async_sse =
+      _wire_DroppableTwinRustAsyncSse_get_drop_count_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_DroppableTwinRustAsyncSse_new_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_DroppableTwinRustAsyncSse_new_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_DroppableTwinRustAsyncSse_new_twin_rust_async_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_DroppableTwinRustAsyncSse_new_twin_rust_async_sse');
+  late final _wire_DroppableTwinRustAsyncSse_new_twin_rust_async_sse =
+      _wire_DroppableTwinRustAsyncSse_new_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_DroppableTwinRustAsyncSse_simple_method_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_DroppableTwinRustAsyncSse_simple_method_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_DroppableTwinRustAsyncSse_simple_method_twin_rust_async_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_DroppableTwinRustAsyncSse_simple_method_twin_rust_async_sse');
+  late final _wire_DroppableTwinRustAsyncSse_simple_method_twin_rust_async_sse =
+      _wire_DroppableTwinRustAsyncSse_simple_method_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_DroppableTwinSse_create_stream_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_DroppableTwinSse_create_stream_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_DroppableTwinSse_create_stream_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_DroppableTwinSse_create_stream_twin_sse');
+  late final _wire_DroppableTwinSse_create_stream_twin_sse =
+      _wire_DroppableTwinSse_create_stream_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_DroppableTwinSse_get_drop_count_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_DroppableTwinSse_get_drop_count_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_DroppableTwinSse_get_drop_count_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_DroppableTwinSse_get_drop_count_twin_sse');
+  late final _wire_DroppableTwinSse_get_drop_count_twin_sse =
+      _wire_DroppableTwinSse_get_drop_count_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_DroppableTwinSse_new_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_DroppableTwinSse_new_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_DroppableTwinSse_new_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_DroppableTwinSse_new_twin_sse');
+  late final _wire_DroppableTwinSse_new_twin_sse =
+      _wire_DroppableTwinSse_new_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_DroppableTwinSse_simple_method_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_DroppableTwinSse_simple_method_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_DroppableTwinSse_simple_method_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_DroppableTwinSse_simple_method_twin_sse');
+  late final _wire_DroppableTwinSse_simple_method_twin_sse =
+      _wire_DroppableTwinSse_simple_method_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_DroppableTwinSync_create_stream_twin_sync(
+    int port_,
+    int that,
+  ) {
+    return _wire_DroppableTwinSync_create_stream_twin_sync(
+      port_,
+      that,
+    );
+  }
+
+  late final _wire_DroppableTwinSync_create_stream_twin_syncPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
+      'frbgen_frb_example_pure_dart_wire_DroppableTwinSync_create_stream_twin_sync');
+  late final _wire_DroppableTwinSync_create_stream_twin_sync =
+      _wire_DroppableTwinSync_create_stream_twin_syncPtr
+          .asFunction<void Function(int, int)>();
+
+  WireSyncRust2DartDco wire_DroppableTwinSync_get_drop_count_twin_sync() {
+    return _wire_DroppableTwinSync_get_drop_count_twin_sync();
+  }
+
+  late final _wire_DroppableTwinSync_get_drop_count_twin_syncPtr = _lookup<
+          ffi.NativeFunction<WireSyncRust2DartDco Function()>>(
+      'frbgen_frb_example_pure_dart_wire_DroppableTwinSync_get_drop_count_twin_sync');
+  late final _wire_DroppableTwinSync_get_drop_count_twin_sync =
+      _wire_DroppableTwinSync_get_drop_count_twin_syncPtr
+          .asFunction<WireSyncRust2DartDco Function()>();
+
+  WireSyncRust2DartDco wire_DroppableTwinSync_new_twin_sync() {
+    return _wire_DroppableTwinSync_new_twin_sync();
+  }
+
+  late final _wire_DroppableTwinSync_new_twin_syncPtr =
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function()>>(
+          'frbgen_frb_example_pure_dart_wire_DroppableTwinSync_new_twin_sync');
+  late final _wire_DroppableTwinSync_new_twin_sync =
+      _wire_DroppableTwinSync_new_twin_syncPtr
+          .asFunction<WireSyncRust2DartDco Function()>();
+
+  WireSyncRust2DartDco wire_DroppableTwinSync_simple_method_twin_sync(
+    int that,
+  ) {
+    return _wire_DroppableTwinSync_simple_method_twin_sync(
+      that,
+    );
+  }
+
+  late final _wire_DroppableTwinSync_simple_method_twin_syncPtr = _lookup<
+          ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.UintPtr)>>(
+      'frbgen_frb_example_pure_dart_wire_DroppableTwinSync_simple_method_twin_sync');
+  late final _wire_DroppableTwinSync_simple_method_twin_sync =
+      _wire_DroppableTwinSync_simple_method_twin_syncPtr
+          .asFunction<WireSyncRust2DartDco Function(int)>();
+
+  void wire_DroppableTwinSyncSse_create_stream_twin_sync_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_DroppableTwinSyncSse_create_stream_twin_sync_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_DroppableTwinSyncSse_create_stream_twin_sync_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_DroppableTwinSyncSse_create_stream_twin_sync_sse');
+  late final _wire_DroppableTwinSyncSse_create_stream_twin_sync_sse =
+      _wire_DroppableTwinSyncSse_create_stream_twin_sync_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_DroppableTwinSyncSse_get_drop_count_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_DroppableTwinSyncSse_get_drop_count_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_DroppableTwinSyncSse_get_drop_count_twin_sync_ssePtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_DroppableTwinSyncSse_get_drop_count_twin_sync_sse');
+  late final _wire_DroppableTwinSyncSse_get_drop_count_twin_sync_sse =
+      _wire_DroppableTwinSyncSse_get_drop_count_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_DroppableTwinSyncSse_new_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_DroppableTwinSyncSse_new_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_DroppableTwinSyncSse_new_twin_sync_ssePtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_DroppableTwinSyncSse_new_twin_sync_sse');
+  late final _wire_DroppableTwinSyncSse_new_twin_sync_sse =
+      _wire_DroppableTwinSyncSse_new_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_DroppableTwinSyncSse_simple_method_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_DroppableTwinSyncSse_simple_method_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_DroppableTwinSyncSse_simple_method_twin_sync_ssePtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_DroppableTwinSyncSse_simple_method_twin_sync_sse');
+  late final _wire_DroppableTwinSyncSse_simple_method_twin_sync_sse =
+      _wire_DroppableTwinSyncSse_simple_method_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
   void wire_func_enum_simple_twin_rust_async(
     int port_,
     int arg,
@@ -57872,6 +59013,30 @@ class RustLibWire implements BaseWire {
               void Function(int,
                   ffi.Pointer<wire_cst_concatenate_with_twin_rust_async>)>();
 
+  void wire_MyCallableTwinRustAsync_call(
+    int port_,
+    ffi.Pointer<wire_cst_my_callable_twin_rust_async> that,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> two,
+  ) {
+    return _wire_MyCallableTwinRustAsync_call(
+      port_,
+      that,
+      two,
+    );
+  }
+
+  late final _wire_MyCallableTwinRustAsync_callPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64,
+                  ffi.Pointer<wire_cst_my_callable_twin_rust_async>,
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+      'frbgen_frb_example_pure_dart_wire_MyCallableTwinRustAsync_call');
+  late final _wire_MyCallableTwinRustAsync_call =
+      _wire_MyCallableTwinRustAsync_callPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_my_callable_twin_rust_async>,
+              ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+
   void wire_SumWithTwinRustAsync_sum_twin_rust_async(
     int port_,
     ffi.Pointer<wire_cst_sum_with_twin_rust_async> that,
@@ -58133,6 +59298,29 @@ class RustLibWire implements BaseWire {
       _wire_ConcatenateWithTwinRustAsyncSse_simple_getter_twin_rust_async_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
+  void wire_MyCallableTwinRustAsyncSse_call(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_MyCallableTwinRustAsyncSse_call(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_MyCallableTwinRustAsyncSse_callPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_MyCallableTwinRustAsyncSse_call');
+  late final _wire_MyCallableTwinRustAsyncSse_call =
+      _wire_MyCallableTwinRustAsyncSse_callPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
   void wire_SumWithTwinRustAsyncSse_sum_twin_rust_async_sse(
     int port_,
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -58391,6 +59579,28 @@ class RustLibWire implements BaseWire {
       _wire_ConcatenateWithTwinSse_simple_getter_twin_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
+  void wire_MyCallableTwinSse_call(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_MyCallableTwinSse_call(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_MyCallableTwinSse_callPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_MyCallableTwinSse_call');
+  late final _wire_MyCallableTwinSse_call = _wire_MyCallableTwinSse_callPtr
+      .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
   void wire_SumWithTwinSse_sum_twin_sse(
     int port_,
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -58630,6 +59840,28 @@ class RustLibWire implements BaseWire {
       _wire_ConcatenateWithTwinSync_simple_getter_twin_syncPtr.asFunction<
           WireSyncRust2DartDco Function(
               ffi.Pointer<wire_cst_concatenate_with_twin_sync>)>();
+
+  WireSyncRust2DartDco wire_MyCallableTwinSync_call(
+    ffi.Pointer<wire_cst_my_callable_twin_sync> that,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> two,
+  ) {
+    return _wire_MyCallableTwinSync_call(
+      that,
+      two,
+    );
+  }
+
+  late final _wire_MyCallableTwinSync_callPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_my_callable_twin_sync>,
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+      'frbgen_frb_example_pure_dart_wire_MyCallableTwinSync_call');
+  late final _wire_MyCallableTwinSync_call =
+      _wire_MyCallableTwinSync_callPtr.asFunction<
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_my_callable_twin_sync>,
+              ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   WireSyncRust2DartDco wire_SumWithTwinSync_sum_twin_sync(
     ffi.Pointer<wire_cst_sum_with_twin_sync> that,
@@ -58877,6 +60109,27 @@ class RustLibWire implements BaseWire {
           .asFunction<
               WireSyncRust2DartSse Function(
                   ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_MyCallableTwinSyncSse_call(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_MyCallableTwinSyncSse_call(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_MyCallableTwinSyncSse_callPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_MyCallableTwinSyncSse_call');
+  late final _wire_MyCallableTwinSyncSse_call =
+      _wire_MyCallableTwinSyncSse_callPtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
   WireSyncRust2DartSse wire_SumWithTwinSyncSse_sum_twin_sync_sse(
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -83903,6 +85156,198 @@ class RustLibWire implements BaseWire {
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal');
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal =
+      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormalPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal');
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal =
+      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormalPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsync(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsync(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsyncPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsync');
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsync =
+      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsyncPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsync(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsync(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsyncPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsync');
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsync =
+      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsyncPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsyncSse(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsyncSse(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsyncSsePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsyncSse');
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsyncSse =
+      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsyncSsePtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsyncSse(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsyncSse(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsyncSsePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsyncSse');
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsyncSse =
+      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsyncSsePtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSse(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSse(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSsePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSse');
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSse =
+      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSsePtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSse(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSse(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSsePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSse');
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSse =
+      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSsePtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSync(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSync(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSyncPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSync');
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSync =
+      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSyncPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSync(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSync(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSyncPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSync');
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSync =
+      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSyncPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSyncSse(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSyncSse(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSyncSsePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSyncSse');
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSyncSse =
+      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSyncSsePtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSyncSse(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSyncSse(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSyncSsePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSyncSse');
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSyncSse =
+      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSyncSsePtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinMoi(
     ffi.Pointer<ffi.Void> ptr,
   ) {
@@ -87404,6 +88849,45 @@ class RustLibWire implements BaseWire {
   late final _cst_new_box_autoadd_message_id_twin_sync =
       _cst_new_box_autoadd_message_id_twin_syncPtr
           .asFunction<ffi.Pointer<wire_cst_message_id_twin_sync> Function()>();
+
+  ffi.Pointer<wire_cst_my_callable_twin_normal>
+      cst_new_box_autoadd_my_callable_twin_normal() {
+    return _cst_new_box_autoadd_my_callable_twin_normal();
+  }
+
+  late final _cst_new_box_autoadd_my_callable_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<wire_cst_my_callable_twin_normal> Function()>>(
+      'frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_callable_twin_normal');
+  late final _cst_new_box_autoadd_my_callable_twin_normal =
+      _cst_new_box_autoadd_my_callable_twin_normalPtr.asFunction<
+          ffi.Pointer<wire_cst_my_callable_twin_normal> Function()>();
+
+  ffi.Pointer<wire_cst_my_callable_twin_rust_async>
+      cst_new_box_autoadd_my_callable_twin_rust_async() {
+    return _cst_new_box_autoadd_my_callable_twin_rust_async();
+  }
+
+  late final _cst_new_box_autoadd_my_callable_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<wire_cst_my_callable_twin_rust_async> Function()>>(
+      'frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_callable_twin_rust_async');
+  late final _cst_new_box_autoadd_my_callable_twin_rust_async =
+      _cst_new_box_autoadd_my_callable_twin_rust_asyncPtr.asFunction<
+          ffi.Pointer<wire_cst_my_callable_twin_rust_async> Function()>();
+
+  ffi.Pointer<wire_cst_my_callable_twin_sync>
+      cst_new_box_autoadd_my_callable_twin_sync() {
+    return _cst_new_box_autoadd_my_callable_twin_sync();
+  }
+
+  late final _cst_new_box_autoadd_my_callable_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<wire_cst_my_callable_twin_sync> Function()>>(
+      'frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_callable_twin_sync');
+  late final _cst_new_box_autoadd_my_callable_twin_sync =
+      _cst_new_box_autoadd_my_callable_twin_syncPtr
+          .asFunction<ffi.Pointer<wire_cst_my_callable_twin_sync> Function()>();
 
   ffi.Pointer<wire_cst_my_nested_struct_twin_normal>
       cst_new_box_autoadd_my_nested_struct_twin_normal() {
@@ -91685,6 +93169,10 @@ final class wire_cst_concatenate_with_twin_normal extends ffi.Struct {
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> a;
 }
 
+final class wire_cst_my_callable_twin_normal extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8_strict> one;
+}
+
 final class wire_cst_sum_with_twin_normal extends ffi.Struct {
   @ffi.Uint32()
   external int x;
@@ -93252,6 +94740,10 @@ final class wire_cst_concatenate_with_twin_rust_async extends ffi.Struct {
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> a;
 }
 
+final class wire_cst_my_callable_twin_rust_async extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8_strict> one;
+}
+
 final class wire_cst_sum_with_twin_rust_async extends ffi.Struct {
   @ffi.Uint32()
   external int x;
@@ -93259,6 +94751,10 @@ final class wire_cst_sum_with_twin_rust_async extends ffi.Struct {
 
 final class wire_cst_concatenate_with_twin_sync extends ffi.Struct {
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> a;
+}
+
+final class wire_cst_my_callable_twin_sync extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8_strict> one;
 }
 
 final class wire_cst_sum_with_twin_sync extends ffi.Struct {
