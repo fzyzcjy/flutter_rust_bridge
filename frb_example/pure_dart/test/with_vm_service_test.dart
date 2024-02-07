@@ -102,32 +102,15 @@ Future<void> main() async {
   group('Rust object is dropped', () {
     for (final dropApproach in _DropApproach.values) {
       group('dropApproach=$dropApproach', () {
-        test('Rust object should be dropped', () async {
-          DroppableTwinNormal? object =
-              await DroppableTwinNormal.newDroppableTwinNormal();
-          final oldDropCount =
-              await DroppableTwinNormal.getDropCountTwinNormal();
-
-          switch (dropApproach) {
-            case _DropApproach.auto:
-              object = null;
-              await vmService.gc();
-
-            case _DropApproach.manual:
-              object.dispose();
-          }
-
-          expect(await DroppableTwinNormal.getDropCountTwinNormal(),
-              oldDropCount + 1);
-        });
-
-        // #1723
-        test('when holds StreamSink, Rust object should be dropped', () async {
+        Future<void> _core({
+          Future<void> Function(DroppableTwinNormal)? extra,
+        }) async {
           DroppableTwinNormal? object =
               await DroppableTwinNormal.newDroppableTwinNormal();
           final weakRef = WeakReference(object);
 
-          object.createStream().listen((_) {});
+          await extra?.call(object);
+
           final oldDropCount =
               await DroppableTwinNormal.getDropCountTwinNormal();
 
@@ -145,6 +128,16 @@ Future<void> main() async {
 
           expect(await DroppableTwinNormal.getDropCountTwinNormal(),
               oldDropCount + 1);
+        }
+
+        test('Rust object should be dropped', () async {
+          await _core();
+        });
+
+        // #1723
+        test('when holds StreamSink, Rust object should be dropped', () async {
+          await _core(
+              extra: (object) async => object.createStream().listen((_) {}));
         });
       });
     }
