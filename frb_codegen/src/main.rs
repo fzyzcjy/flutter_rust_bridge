@@ -53,7 +53,7 @@ fn compute_rust_crate_name(config: &CreateOrIntegrateCommandCommonArgs) -> Strin
     config
         .rust_crate_name
         .clone()
-        .unwrap_or("rust_lib".to_owned())
+        .unwrap_or(format!("rust_lib_{}", TODO))
 }
 
 fn compute_rust_crate_dir(config: &CreateOrIntegrateCommandCommonArgs) -> String {
