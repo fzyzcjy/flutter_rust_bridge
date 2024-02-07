@@ -21,7 +21,7 @@ pub(crate) fn compute_codegen_config(args: GenerateCommandArgsPrimary) -> Result
             "Cannot use command line args and config file at the same time",
             // frb-coverage:ignore-end
         );
-        return Config::from_config_file(&config_file)?.context("Cannot find config_file");
+        return Config::from_config_file(config_file)?.context("Cannot find config_file");
     }
 
     debug!("compute_codegen_config: mode=from_naive_generate_command_args");
