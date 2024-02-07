@@ -209,7 +209,8 @@ mod tests {
     #[serial]
     fn test_error_non_opaque_mut() -> anyhow::Result<()> {
         let result = execute_parse("library/codegen/parser/mod/error_non_opaque_mut", None);
-        assert_eq!(result.err().unwrap().to_string(), "TODO");
+        assert!(format!("{:#?}", result.err().unwrap())
+            .contains("If you want to use `self`/`&mut self`"));
         Ok(())
     }
 
