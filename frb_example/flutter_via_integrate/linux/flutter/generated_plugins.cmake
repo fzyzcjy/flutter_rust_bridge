@@ -6,7 +6,7 @@ list(APPEND FLUTTER_PLUGIN_LIST
 )
 
 list(APPEND FLUTTER_FFI_PLUGIN_LIST
-  rust_builder
+  rust_builder_flutter_via_integrate
 )
 
 set(PLUGIN_BUNDLED_LIBRARIES)

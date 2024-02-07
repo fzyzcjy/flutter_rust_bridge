@@ -1,4 +1,4 @@
-name: rust_builder
+name: rust_builder_flutter_via_integrate
 description: "Utility to build Rust code"
 version: 0.0.1
 publish_to: none
