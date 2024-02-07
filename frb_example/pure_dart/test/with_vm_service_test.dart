@@ -120,27 +120,34 @@ Future<void> main() async {
           expect(await DroppableTwinNormal.getDropCountTwinNormal(),
               oldDropCount + 1);
         });
+
+        // #1723
+        test('when holds StreamSink, Rust object should be dropped', () async {
+          DroppableTwinNormal? object =
+              await DroppableTwinNormal.newDroppableTwinNormal();
+          final weakRef = WeakReference(object);
+
+          object.createStream().listen((_) {});
+          final oldDropCount =
+              await DroppableTwinNormal.getDropCountTwinNormal();
+
+          switch (dropApproach) {
+            case _DropApproach.auto:
+              object = null;
+              await vmService.gc();
+              expect(object, null);
+              expect(weakRef.target, null);
+
+            case _DropApproach.manual:
+              object.dispose();
+              expect(object, isNotNull);
+          }
+
+          expect(await DroppableTwinNormal.getDropCountTwinNormal(),
+              oldDropCount + 1);
+        });
       });
     }
-
-    // #1723
-    test('when holds StreamSink and Dart GC, Rust object should be dropped',
-        () async {
-      DroppableTwinNormal? object =
-          await DroppableTwinNormal.newDroppableTwinNormal();
-      final weakRef = WeakReference(object);
-
-      object.createStream().listen((_) {});
-      final oldDropCount = await DroppableTwinNormal.getDropCountTwinNormal();
-
-      object = null;
-      await vmService.gc();
-
-      expect(object, null);
-      expect(weakRef.target, null);
-      expect(
-          await DroppableTwinNormal.getDropCountTwinNormal(), oldDropCount + 1);
-    });
   });
 }
 
