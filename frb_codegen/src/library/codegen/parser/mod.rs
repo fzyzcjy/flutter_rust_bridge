@@ -204,8 +204,30 @@ mod tests {
         body("library/codegen/parser/mod/generics", None)
     }
 
+    #[test]
+    #[serial]
+    fn test_error_non_opaque_mut() -> anyhow::Result<()> {
+        let result = execute_parse("library/codegen/parser/mod/error_non_opaque_mut", None);
+        todo!()
+    }
+
     #[allow(clippy::type_complexity)]
     fn body(
+        fixture_name: &str,
+        rust_input_path_pack: Option<Box<dyn Fn(&Path) -> RustInputPathPack>>,
+    ) -> anyhow::Result<()> {
+        let actual_ir = execute_parse(fixture_name, rust_input_path_pack)?;
+        json_golden_test(
+            &serde_json::to_value(actual_ir)?,
+            &rust_crate_dir.join("expect_ir.json"),
+            &[],
+        )?;
+
+        Ok(())
+    }
+
+    #[allow(clippy::type_complexity)]
+    fn execute_parse(
         fixture_name: &str,
         rust_input_path_pack: Option<Box<dyn Fn(&Path) -> RustInputPathPack>>,
     ) -> anyhow::Result<()> {
@@ -225,7 +247,7 @@ mod tests {
             &create_path_sanitizers(&test_fixture_dir),
         )?;
 
-        let actual_ir = parse(
+        parse(
             &ParserInternalConfig {
                 rust_input_path_pack: rust_input_path_pack.map(|f| f(&rust_crate_dir)).unwrap_or(
                     RustInputPathPack {
@@ -239,13 +261,6 @@ mod tests {
             &mut CachedRustReader::default(),
             &Dumper(&Default::default()),
             &GeneratorProgressBarPack::new(),
-        )?;
-        json_golden_test(
-            &serde_json::to_value(actual_ir)?,
-            &rust_crate_dir.join("expect_ir.json"),
-            &[],
-        )?;
-
-        Ok(())
+        )
     }
 }
