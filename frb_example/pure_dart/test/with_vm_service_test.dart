@@ -125,14 +125,18 @@ Future<void> main() async {
         () async {
       DroppableTwinNormal? object =
           await DroppableTwinNormal.newDroppableTwinNormal();
+      final weakRef = WeakReference(object);
+
       object.createStream().listen((_) {});
       final oldDropCount = await DroppableTwinNormal.getDropCountTwinNormal();
 
       object = null;
       await vmService.gc();
+
+      expect(object, null);
+      expect(weakRef.target, null);
       expect(
           await DroppableTwinNormal.getDropCountTwinNormal(), oldDropCount + 1);
-      expect(object, null);
     });
   });
 }
