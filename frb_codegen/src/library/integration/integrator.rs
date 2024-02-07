@@ -17,7 +17,7 @@ static INTEGRATION_TEMPLATE_DIR: Dir<'_> =
 pub struct IntegrateConfig {
     pub enable_integration_test: bool,
     pub enable_local_dependency: bool,
-    pub rust_crate_name: String,
+    pub rust_crate_name: Option<String>,
     pub rust_crate_dir: String,
 }
 
