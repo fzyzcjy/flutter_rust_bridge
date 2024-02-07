@@ -262,10 +262,7 @@ fn pub_add_dependencies(
 ) -> Result<()> {
     // frb-coverage:ignore-end
     flutter_pub_add(
-        &[
-            dart_rust_builder_package_name,
-            format!("--path={dart_rust_builder_package_name}"),
-        ],
+        &[dart_rust_builder_package_name, "--path=rust_builder".into()],
         None,
     )?;
 
