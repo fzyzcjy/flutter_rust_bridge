@@ -1,11 +1,13 @@
 # Logging
 
-:::tip
+Since I have seen some questions asking how logging can be implemented with a Flutter + Rust application, here are some examples.
+
+## Approach 0: Use the default one
+
 If using the template by `flutter_rust_bridge_codegen create/integrate`, the "print logs to console" is configured by default,
 via the auto-generated call to `flutter_rust_bridge::setup_default_user_utils()`.
-:::
 
-Since I have seen some questions asking how logging can be implemented with a Flutter + Rust application, here are some examples.
+Thus, you do not need to do anything :)
 
 ## Example 1: Print logs to console
 
@@ -31,6 +33,10 @@ The *full* code related to logging in my app can be seen here: [#486](https://gi
 ## Example 3: Send Rust logs to Dart
 
 Let us implement a simple logging system (adapted from the logging system I use with `flutter_rust_bridge` in my app in production), where Rust code can send logs to Dart code.
+
+The following code is packaged into https://github.com/mnlphlp/flutter_logger as well,
+such that you can use things like `info!("my log")` directly.
+(See [#1740](https://github.com/fzyzcjy/flutter_rust_bridge/issues/1740) for more details.)
 
 The Rust `api.rs`:
 
