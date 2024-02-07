@@ -1,4 +1,4 @@
-name: REPLACE_ME_RUST_DART_RUST_BUILDER_PACKAGE_NAME
+name: REPLACE_ME_RUST_CRATE_NAME
 description: "Utility to build Rust code"
 version: 0.0.1
 publish_to: none
