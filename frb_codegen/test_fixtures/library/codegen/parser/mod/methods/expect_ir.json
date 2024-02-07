@@ -185,6 +185,7 @@
       "comments": [],
       "dart_metadata": [],
       "fields": [],
+      "ignore": false,
       "is_fields_named": true,
       "name": "crate::api/MyStruct",
       "wrapper_name": null
