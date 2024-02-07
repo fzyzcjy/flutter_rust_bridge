@@ -145,13 +145,14 @@ mod tests {
     use crate::codegen::parser::parse;
     use crate::codegen::parser::reader::CachedRustReader;
     use crate::codegen::parser::source_graph::crates::Crate;
+    use crate::codegen::parser::IrPack;
     use crate::utils::logs::configure_opinionated_test_logging;
     use crate::utils::test_utils::{
         create_path_sanitizers, get_test_fixture_dir, json_golden_test,
     };
     use log::info;
     use serial_test::serial;
-    use std::path::Path;
+    use std::path::{Path, PathBuf};
 
     #[test]
     #[serial]
@@ -209,6 +210,7 @@ mod tests {
     fn test_error_non_opaque_mut() -> anyhow::Result<()> {
         let result = execute_parse("library/codegen/parser/mod/error_non_opaque_mut", None);
         assert_eq!(result.err().unwrap().to_string(), "TODO");
+        Ok(())
     }
 
     #[allow(clippy::type_complexity)]
@@ -216,7 +218,7 @@ mod tests {
         fixture_name: &str,
         rust_input_path_pack: Option<Box<dyn Fn(&Path) -> RustInputPathPack>>,
     ) -> anyhow::Result<()> {
-        let actual_ir = execute_parse(fixture_name, rust_input_path_pack)?;
+        let (actual_ir, rust_crate_dir) = execute_parse(fixture_name, rust_input_path_pack)?;
         json_golden_test(
             &serde_json::to_value(actual_ir)?,
             &rust_crate_dir.join("expect_ir.json"),
@@ -230,7 +232,7 @@ mod tests {
     fn execute_parse(
         fixture_name: &str,
         rust_input_path_pack: Option<Box<dyn Fn(&Path) -> RustInputPathPack>>,
-    ) -> anyhow::Result<()> {
+    ) -> anyhow::Result<(IrPack, PathBuf)> {
         configure_opinionated_test_logging();
         let test_fixture_dir = get_test_fixture_dir(fixture_name);
         let rust_crate_dir = test_fixture_dir.clone();
@@ -247,7 +249,7 @@ mod tests {
             &create_path_sanitizers(&test_fixture_dir),
         )?;
 
-        parse(
+        let pack = parse(
             &ParserInternalConfig {
                 rust_input_path_pack: rust_input_path_pack.map(|f| f(&rust_crate_dir)).unwrap_or(
                     RustInputPathPack {
@@ -261,6 +263,8 @@ mod tests {
             &mut CachedRustReader::default(),
             &Dumper(&Default::default()),
             &GeneratorProgressBarPack::new(),
-        )
+        )?;
+
+        Ok((pack, rust_crate_dir))
     }
 }
