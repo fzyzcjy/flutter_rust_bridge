@@ -32,13 +32,13 @@ fn main_given_cli(cli: Cli) -> anyhow::Result<()> {
             name: args.name,
             org: args.org,
             enable_local_dependency: args.common.local,
-            rust_crate_name: args.common.rust_crate_name,
+            rust_crate_name: args.common.rust_crate_name.clone(),
             rust_crate_dir: compute_rust_crate_dir(&args.common),
         })?,
         Commands::Integrate(args) => integration::integrate(IntegrateConfig {
             enable_integration_test: !args.no_enable_integration_test,
             enable_local_dependency: args.common.local,
-            rust_crate_name: args.common.rust_crate_name,
+            rust_crate_name: args.common.rust_crate_name.clone(),
             rust_crate_dir: compute_rust_crate_dir(&args.common),
         })?,
         Commands::BuildWeb(args) => {
