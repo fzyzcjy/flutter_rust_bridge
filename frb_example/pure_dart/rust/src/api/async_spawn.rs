@@ -21,7 +21,7 @@ pub async fn simple_use_async_spawn_blocking(arg: String) -> String {
 pub async fn simple_use_async_spawn_local(arg: String, sink: StreamSink<String>) {
     let core = || async move {
         let handle = flutter_rust_bridge::spawn_local(async move { arg.repeat(2) });
-        sink.add(handle.await.unwrap())
+        sink.add(handle.await.unwrap()).unwrap();
     };
 
     // Usually you will not use like this. This is just a test to ensure the function works.
