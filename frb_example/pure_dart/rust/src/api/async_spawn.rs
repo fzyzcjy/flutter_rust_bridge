@@ -26,7 +26,7 @@ pub async fn simple_use_async_spawn_local(arg: String) -> String {
     // ref demo in https://docs.rs/tokio/latest/tokio/task/fn.spawn_local.html
     #[cfg(not(wasm))]
     return tokio::task::LocalSet::new()
-        .run_until(async move { core(arg) })
+        .run_until(async move { core(arg).await })
         .await;
 
     #[cfg(wasm)]
