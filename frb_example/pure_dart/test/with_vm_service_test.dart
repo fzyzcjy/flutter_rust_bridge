@@ -100,25 +100,28 @@ Future<void> main() async {
   });
 
   group('Rust object is dropped', () {
-    test('when call dispose, Rust object should be dropped', () async {
-      final object = await DroppableTwinNormal.newDroppableTwinNormal();
-      final oldDropCount = await DroppableTwinNormal.getDropCountTwinNormal();
-      object.dispose();
-      expect(
-          await DroppableTwinNormal.getDropCountTwinNormal(), oldDropCount + 1);
-    });
+    for (final dropApproach in _DropApproach.values) {
+      group('dropApproach=$dropApproach', () {
+        test('Rust object should be dropped', () async {
+          DroppableTwinNormal? object =
+              await DroppableTwinNormal.newDroppableTwinNormal();
+          final oldDropCount =
+              await DroppableTwinNormal.getDropCountTwinNormal();
 
-    test('when Dart GC, Rust object should be dropped', () async {
-      DroppableTwinNormal? object =
-          await DroppableTwinNormal.newDroppableTwinNormal();
-      final oldDropCount = await DroppableTwinNormal.getDropCountTwinNormal();
+          switch (dropApproach) {
+            case _DropApproach.auto:
+              object = null;
+              await vmService.gc();
 
-      object = null;
-      await vmService.gc();
-      expect(
-          await DroppableTwinNormal.getDropCountTwinNormal(), oldDropCount + 1);
-      expect(object, null);
-    });
+            case _DropApproach.manual:
+              object.dispose();
+          }
+
+          expect(await DroppableTwinNormal.getDropCountTwinNormal(),
+              oldDropCount + 1);
+        });
+      });
+    }
 
     // #1723
     test('when holds StreamSink and Dart GC, Rust object should be dropped',
@@ -140,3 +143,5 @@ Future<void> main() async {
     });
   });
 }
+
+enum _DropApproach { auto, manual }
