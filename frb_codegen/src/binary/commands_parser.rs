@@ -169,8 +169,10 @@ mod tests {
     }
 
     #[test]
+    #[serial]
     fn test_compute_codegen_config_mode_from_naive_generate_command_args() {
         configure_opinionated_test_logging();
+        set_cwd_test_fixture("binary/commands_parser").unwrap(); // use whatever folder without config file
 
         // bool flags
         let common_args = vec![
