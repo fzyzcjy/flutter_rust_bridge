@@ -51,6 +51,7 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
     pub_add_dependencies(
         config.enable_integration_test,
         config.enable_local_dependency,
+        &dart_package_name,
     )?;
 
     setup_cargokit_dependencies(&dart_root)?;
@@ -248,9 +249,16 @@ const CARGOKIT_PRELUDE: &[&str] = &[
 fn pub_add_dependencies(
     enable_integration_test: bool,
     enable_local_dependency: bool,
+    dart_package_name: &str,
 ) -> Result<()> {
     // frb-coverage:ignore-end
-    flutter_pub_add(&["rust_builder".into(), "--path=rust_builder".into()], None)?;
+    flutter_pub_add(
+        &[
+            format!("rust_builder_{dart_package_name}").into(),
+            "--path=rust_builder".into(),
+        ],
+        None,
+    )?;
 
     pub_add_dependency_frb(enable_local_dependency, None)?;
 
