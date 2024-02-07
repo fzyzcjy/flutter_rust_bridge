@@ -101,6 +101,30 @@ class Log2TwinNormal {
           value == other.value;
 }
 
+class MyCallableTwinNormal {
+  final String one;
+
+  const MyCallableTwinNormal({
+    required this.one,
+  });
+
+  Future<String> call({required String two, dynamic hint}) =>
+      RustLib.instance.api.myCallableTwinNormalCall(
+        that: this,
+        two: two,
+      );
+
+  @override
+  int get hashCode => one.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MyCallableTwinNormal &&
+          runtimeType == other.runtimeType &&
+          one == other.one;
+}
+
 class SumWithTwinNormal {
   final int x;
 

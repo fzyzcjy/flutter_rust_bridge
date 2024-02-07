@@ -1,4 +1,4 @@
-name: rust_builder
+name: rust_lib_flutter_via_create
 description: "Utility to build Rust code"
 version: 0.0.1
 publish_to: none

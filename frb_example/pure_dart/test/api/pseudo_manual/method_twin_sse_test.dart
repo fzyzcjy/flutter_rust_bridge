@@ -88,4 +88,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final concatenateWith = ConcatenateWithTwinSse(a: "apple");
     expect(await concatenateWith.simpleGetterTwinSse, equals("apple"));
   });
+
+  test('callable', () async {
+    final callable = MyCallableTwinSse(one: 'One');
+    expect(await callable(two: 'Two'), 'OneTwo');
+  });
 }

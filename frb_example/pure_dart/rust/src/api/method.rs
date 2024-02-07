@@ -103,3 +103,13 @@ pub fn get_sum_array_twin_normal(a: u32, b: u32, c: u32) -> [SumWithTwinNormal; 
         SumWithTwinNormal { x: c },
     ]
 }
+
+pub struct MyCallableTwinNormal {
+    pub one: String,
+}
+
+impl MyCallableTwinNormal {
+    pub fn call(&self, two: String) -> String {
+        self.one.clone() + &two
+    }
+}

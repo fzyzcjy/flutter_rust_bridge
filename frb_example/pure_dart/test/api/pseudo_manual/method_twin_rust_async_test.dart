@@ -89,4 +89,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final concatenateWith = ConcatenateWithTwinRustAsync(a: "apple");
     expect(await concatenateWith.simpleGetterTwinRustAsync, equals("apple"));
   });
+
+  test('callable', () async {
+    final callable = MyCallableTwinRustAsync(one: 'One');
+    expect(await callable(two: 'Two'), 'OneTwo');
+  });
 }
