@@ -29,7 +29,7 @@ pub async fn simple_use_async_spawn_local(arg: String, sink: StreamSink<String>)
     // Usually you will not use like this. This is just a test to ensure the function works.
     // ref tokio demo in https://docs.rs/tokio/latest/tokio/task/fn.spawn_local.html
     // and how tokio `LocalSet` is used https://docs.rs/tokio/latest/tokio/task/struct.LocalSet.html#use-inside-tokiospawn
-    #[cfg(not(wasm))]
+    #[cfg(not(target_family = "wasm"))]
     {
         use tokio::runtime::Builder;
         use tokio::task::LocalSet;
@@ -42,6 +42,6 @@ pub async fn simple_use_async_spawn_local(arg: String, sink: StreamSink<String>)
         });
     }
 
-    #[cfg(wasm)]
+    #[cfg(target_family = "wasm")]
     core().await;
 }
