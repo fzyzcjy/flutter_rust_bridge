@@ -254,7 +254,7 @@ fn pub_add_dependencies(
     // frb-coverage:ignore-end
     flutter_pub_add(
         &[
-            format!("rust_builder_{dart_package_name}").into(),
+            format!("rust_builder_{dart_package_name}"),
             "--path=rust_builder".into(),
         ],
         None,
