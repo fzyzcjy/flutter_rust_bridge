@@ -123,3 +123,14 @@ pub fn get_sum_array_twin_sse(a: u32, b: u32, c: u32) -> [SumWithTwinSse; 3] {
         SumWithTwinSse { x: c },
     ]
 }
+
+pub struct MyCallableTwinSse {
+    pub one: String,
+}
+
+impl MyCallableTwinSse {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub fn call(&self, two: String) -> String {
+        self.one.clone() + &two
+    }
+}

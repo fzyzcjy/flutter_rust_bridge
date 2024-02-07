@@ -99,6 +99,30 @@ class Log2TwinSync {
           value == other.value;
 }
 
+class MyCallableTwinSync {
+  final String one;
+
+  const MyCallableTwinSync({
+    required this.one,
+  });
+
+  String call({required String two, dynamic hint}) =>
+      RustLib.instance.api.myCallableTwinSyncCall(
+        that: this,
+        two: two,
+      );
+
+  @override
+  int get hashCode => one.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MyCallableTwinSync &&
+          runtimeType == other.runtimeType &&
+          one == other.one;
+}
+
 class SumWithTwinSync {
   final int x;
 

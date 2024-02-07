@@ -85,4 +85,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final concatenateWith = ConcatenateWithTwinNormal(a: "apple");
     expect(await concatenateWith.simpleGetterTwinNormal, equals("apple"));
   });
+
+  test('callable', () async {
+    final callable = MyCallableTwinNormal(one: 'One');
+    expect(await callable(two: 'Two'), 'OneTwo');
+  });
 }
