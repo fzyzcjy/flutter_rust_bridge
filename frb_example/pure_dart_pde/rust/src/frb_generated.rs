@@ -558,7 +558,7 @@ fn wire_simple_use_async_spawn_local_impl(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "simple_use_async_spawn_local",
             port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream,
         },
         move || {
             let message = unsafe {
@@ -576,7 +576,13 @@ fn wire_simple_use_async_spawn_local_impl(
                 transform_result_sse(
                     (move || async move {
                         Result::<_, ()>::Ok(
-                            crate::api::async_spawn::simple_use_async_spawn_local(api_arg).await,
+                            crate::api::async_spawn::simple_use_async_spawn_local(
+                                api_arg,
+                                StreamSink::new(
+                                    context.rust2dart_context().stream_sink::<_, String>(),
+                                ),
+                            )
+                            .await,
                         )
                     })()
                     .await,

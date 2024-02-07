@@ -222,7 +222,7 @@ abstract class RustLibApi extends BaseApi {
   Future<String> simpleUseAsyncSpawnBlocking(
       {required String arg, dynamic hint});
 
-  Future<String> simpleUseAsyncSpawnLocal({required String arg, dynamic hint});
+  Stream<String> simpleUseAsyncSpawnLocal({required String arg, dynamic hint});
 
   Future<void> handleCustomizedStructTwinNormal(
       {required CustomizedTwinNormal val, dynamic hint});
@@ -3912,8 +3912,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<String> simpleUseAsyncSpawnLocal({required String arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
+  Stream<String> simpleUseAsyncSpawnLocal({required String arg, dynamic hint}) {
+    return handler.executeStream(StreamTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_String(arg, serializer);
