@@ -4,6 +4,8 @@
 
 // AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
 
+#![allow(clippy::new_without_default)]
+
 use crate::frb_generated::StreamSink;
 use flutter_rust_bridge::frb;
 use lazy_static::lazy_static;
