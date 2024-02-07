@@ -28,6 +28,10 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
     debug!("integrate dart_root={dart_root:?}");
 
     let dart_package_name = get_dart_package_name(&dart_root)?;
+    let rust_crate_name = config
+        .rust_crate_name
+        .clone()
+        .unwrap_or(format!("rust_lib_{}", dart_package_name));
 
     extract_dir_and_modify(
         &INTEGRATION_TEMPLATE_DIR,
@@ -38,7 +42,7 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
                 src_raw,
                 existing_content,
                 &dart_package_name,
-                &config.rust_crate_name,
+                &rust_crate_name,
                 &config.rust_crate_dir,
                 config.enable_local_dependency,
             )
@@ -51,7 +55,7 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
     pub_add_dependencies(
         config.enable_integration_test,
         config.enable_local_dependency,
-        &config.rust_crate_name,
+        &rust_crate_name,
     )?;
 
     setup_cargokit_dependencies(&dart_root)?;
