@@ -45,7 +45,10 @@ class RustGenerator extends BaseGenerator {
     var ans = inputText
         .replaceAllMapped(
           RegExp(r'(pub (async )?fn) ([a-zA-Z0-9_-]+?)(_twin_normal)?\('),
-          (m) => '${prefix(m.group(1)!)} ${m.group(3)}${mode.postfix}(',
+          (m) {
+            final addPostfix = m.group(3) != 'call';
+            return '${prefix(m.group(1)!)} ${m.group(3)}${addPostfix ? mode.postfix : ""}(';
+          },
         )
         // struct name, etc
         .replaceAll('TwinNormal', ReCase(mode.postfix).pascalCase)
