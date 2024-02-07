@@ -1,13 +1,15 @@
 # Logging
 
-:::tip
-If using the template by `flutter_rust_bridge_codegen create/integrate`, the "print logs to console" is configured by default,
-via the auto-generated call to `flutter_rust_bridge::setup_default_user_utils()`.
-:::
-
 Since I have seen some questions asking how logging can be implemented with a Flutter + Rust application, here are some examples.
 
-## Example 1: Print logs to console
+## Approach 1: Use the default one
+
+If using the template by `flutter_rust_bridge_codegen create/integrate`, the "print logs to console" is configured by default,
+via the auto-generated call to `flutter_rust_bridge::setup_default_user_utils()`.
+
+Thus, you do not need to do anything :)
+
+## Example 2: Print logs to console
 
 ```rust
 fn setup_the_logger() {
@@ -22,13 +24,19 @@ fn setup_the_logger() {
 In other words, use the corresponding platform logger
 (https://crates.io/crates/android_logger and https://crates.io/crates/oslog).
 
-## Example 2: Logger in production
+## Example 3: My logger in production
 
 In my own app in production, I use the following strategy for Rust logging: Use normal Rust logging methods, such as `info!` and `debug!` macros. The logs are consumed in two places: They are printed via platform-specific methods (like android Logcat and iOS NSLog), and also use a Stream to send them to the Dart side such that my Dart code and further process are using the same pipeline as normal Dart logs (e.g. save to a file, send to server, etc).
 
 The *full* code related to logging in my app can be seen here: [#486](https://github.com/fzyzcjy/flutter_rust_bridge/issues/486).
 
-## Example 3: Send Rust logs to Dart
+## Example 4: Send Rust logs to Dart
+
+@MnlPhlp encapsulates the step-by-step example below into a small Rust package,
+such that you can setup Rust-logging-to-Dart in several lines.
+Please refer to https://github.com/mnlphlp/flutter_logger for details.
+
+## Example 5: A step-by-step guide to send Rust logs to Dart
 
 Let us implement a simple logging system (adapted from the logging system I use with `flutter_rust_bridge` in my app in production), where Rust code can send logs to Dart code.
 
