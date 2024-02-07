@@ -42,9 +42,13 @@ make the code clear and well designed, use strong checkers in CI, etc.
 I am happy to see that, nobody reported bugs related to this!
 
 The vast majority of the code are written in safe Rust and (safe) Dart.
-The `unsafe` code mainly happens when we need to leak a Rust Vec/Arc/Box into a raw pointer,
+The `unsafe` code mainly happens when we need to leak a Rust Vec into a raw pointer,
 and later assemble it back, in order to pass it to the Dart side.
 This is widely used pattern - there are official Rust doc, and answers on StackOverflow about this also have high votes.
+
+In terms of safety, there are two categories of codecs, and you can freely choose whichever you like.
+One category uses bare minimal unsafe code, and the other maximizes performance.
+Below, we only discuss the latter - since it is the harder case.
 
 The unsafe logic is made as separated as possible with other safe logic, with as clear semantics as possible.
 For example, instead of combining all logic into a single bigger `RustOpaque` Dart class,

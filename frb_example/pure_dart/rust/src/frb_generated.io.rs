@@ -14162,6 +14162,14 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_simple_use_async_spawn_block
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_simple_use_async_spawn_local(
+    port_: i64,
+    arg: *mut wire_cst_list_prim_u_8_strict,
+) {
+    wire_simple_use_async_spawn_local_impl(port_, arg)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_customized_struct_twin_normal(
     port_: i64,
     val: *mut wire_cst_customized_twin_normal,

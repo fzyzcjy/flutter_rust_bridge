@@ -3144,6 +3144,9 @@ void frbgen_frb_example_pure_dart_wire_simple_use_async_spawn(int64_t port_,
 void frbgen_frb_example_pure_dart_wire_simple_use_async_spawn_blocking(int64_t port_,
                                                                        struct wire_cst_list_prim_u_8_strict *arg);
 
+void frbgen_frb_example_pure_dart_wire_simple_use_async_spawn_local(int64_t port_,
+                                                                    struct wire_cst_list_prim_u_8_strict *arg);
+
 void frbgen_frb_example_pure_dart_wire_handle_customized_struct_twin_normal(int64_t port_,
                                                                             struct wire_cst_customized_twin_normal *val);
 
@@ -15942,6 +15945,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_simple_adder_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_simple_use_async_spawn);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_simple_use_async_spawn_blocking);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_simple_use_async_spawn_local);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_stream_sink_throw_anyhow_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_stream_sink_throw_anyhow_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_stream_sink_throw_anyhow_twin_rust_async_sse);
