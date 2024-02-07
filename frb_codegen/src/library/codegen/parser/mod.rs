@@ -208,7 +208,7 @@ mod tests {
     #[serial]
     fn test_error_non_opaque_mut() -> anyhow::Result<()> {
         let result = execute_parse("library/codegen/parser/mod/error_non_opaque_mut", None);
-        todo!()
+        assert_eq!(result.err().unwrap().to_string(), "TODO");
     }
 
     #[allow(clippy::type_complexity)]
