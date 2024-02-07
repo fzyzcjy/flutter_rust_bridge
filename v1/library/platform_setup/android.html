@@ -176,7 +176,7 @@
                         <h1 id="android"><a class="header" href="#android">Android</a></h1>
 <p>There are a few different ways to integrate with our Android binaries when building for Android. None are particularly outstanding:</p>
 <ul>
-<li>An &quot;Ivy Repository&quot;
+<li>An "Ivy Repository"
 <ul>
 <li>Works great, but impossible to test changes on an emulator locally or in CI :(</li>
 </ul>
@@ -205,8 +205,8 @@
 <em>not actually build anything</em>, which may come as a surprise.
 Instead, its sole purpose is to download &amp; extract our Android binaries
 in a cross-platform friendly way. Here is our android <code>CMakeLists.txt</code>:</p>
-<pre><code class="language-cmake">set(LibraryVersion &quot;library_name-v0.0.0&quot;) # generated; do not edit
-set(PROJECT_NAME &quot;project_name&quot;)
+<pre><code class="language-cmake">set(LibraryVersion "library_name-v0.0.0") # generated; do not edit
+set(PROJECT_NAME "project_name")
 
 # Unlike the Windows &amp; Linux CMakeLists.txt, this Android equivalent is just here
 # to download the Android binaries into src/main/jniLibs/ and does not build anything.
@@ -221,11 +221,11 @@ cmake_minimum_required(VERSION 3.10)
 project(PROJECT_NAME)
 
 # Download the binaries if they are not already present.
-set(LibRoot &quot;${CMAKE_CURRENT_SOURCE_DIR}/src/main/jniLibs&quot;)
-set(ArchivePath &quot;${CMAKE_CURRENT_SOURCE_DIR}/${LibraryVersion}.tar.gz&quot;)
+set(LibRoot "${CMAKE_CURRENT_SOURCE_DIR}/src/main/jniLibs")
+set(ArchivePath "${CMAKE_CURRENT_SOURCE_DIR}/${LibraryVersion}.tar.gz")
 if(NOT EXISTS ${ArchivePath})
   file(DOWNLOAD
-    &quot;https://github.com/YourGitHubAccount/repo_name/releases/download/${LibraryVersion}/android.tar.gz&quot;
+    "https://github.com/YourGitHubAccount/repo_name/releases/download/${LibraryVersion}/android.tar.gz"
     ${ArchivePath}
     TLS_VERIFY ON
   )
@@ -253,7 +253,7 @@ Also, replace other variables (i.e. <code>YourGitHubAccount</code> and <code>rep
     // Trigger the binary download/update over in CMakeLists.txt
     externalNativeBuild {
         cmake {
-            path &quot;CMakeLists.txt&quot;
+            path "CMakeLists.txt"
         }
     }
 }

@@ -178,7 +178,7 @@
 <p>Why? Flutter UI is single-threaded. If you use the intuitive synchronous approach, just like what you will (have to) do with plain-old Flutter bindings, your UI will be <em>stuck</em> as long as your Rust code is executing. If your Rust code run for 100ms for a heavy computation, your UI will fully freeze for 100ms and the users will not be happy.</p>
 <p>On the other hand, with the generated asynchronous bindings in Dart, you can simply call functions directly in main isolate (thread) of Dart/Flutter, and Rust code will not block the Flutter UI.</p>
 <p>Indeed async and <code>Future</code>s is almost everywhere in Flutter/Dart, and it has very good built-in support. So no worries about it ;)</p>
-<p>Remark: A common mistake is to call Rust code in <em>another</em> Dart isolate (i.e. &quot;thread&quot;) instead of the main isolate. That is completely not needed, and will only make your life harder. As is described above, even if your Rust code computes for 100ms, the async call will only take, say, 0.1ms, and will not block your UI.</p>
+<p>Remark: A common mistake is to call Rust code in <em>another</em> Dart isolate (i.e. "thread") instead of the main isolate. That is completely not needed, and will only make your life harder. As is described above, even if your Rust code computes for 100ms, the async call will only take, say, 0.1ms, and will not block your UI.</p>
 
                     </main>
 

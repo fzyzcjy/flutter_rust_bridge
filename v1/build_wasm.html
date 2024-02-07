@@ -176,7 +176,7 @@
                         <h1 id="building-a-wasm-binary-manually"><a class="header" href="#building-a-wasm-binary-manually">Building a WASM binary manually</a></h1>
 <p>Here are the complete commands for building a WASM binary with this library:</p>
 <pre><code class="language-bash">export RUSTUP_TOOLCHAIN=nightly
-export RUSTFLAGS=&quot;-C target-feature=+atomics,+bulk-memory,+mutable-globals&quot;
+export RUSTFLAGS="-C target-feature=+atomics,+bulk-memory,+mutable-globals"
 wasm-pack build \
     -t no-modules \
     -d &lt;WASM_OUTPUT_PATH&gt; \
@@ -214,7 +214,7 @@ import 'package:shelf/shelf_io.dart';
 import 'package:shelf_static/shelf_static.dart';
 
 void main() async {
-    final root = &quot;/* directory containing index.html */&quot;;
+    final root = "/* directory containing index.html */";
     final staticFilesHandler = createStaticHandler(root, defaultDocument: 'index.html');
     final handler = const Pipeline().addMiddleware((handler) {
         return (req) async {
@@ -230,7 +230,7 @@ void main() async {
 </code></pre>
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
 <p>When running Flutter Web, you may encounter issues with downloading Flutter
-support scripts which have not been marked as <code>crossorigin=&quot;anonymous&quot;</code> and
+support scripts which have not been marked as <code>crossorigin="anonymous"</code> and
 therefore cannot be loaded. For local testing, you can specify <code>credentialless</code>
 instead.</p>
 </div>

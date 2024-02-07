@@ -195,7 +195,7 @@
 </ul>
 <p>See below for an example.</p>
 <h2 id="freezed-dart-classes"><a class="header" href="#freezed-dart-classes"><code>freezed</code> Dart classes</a></h2>
-<p>If you want the generated Dart class to be <a href="https://pub.dev/packages/freezed"><code>freezed</code></a> (which is like data-classes in other languages like Kotlin), simply put <code>#[frb(dart_metadata=(&quot;freezed&quot;))]</code> and it will generate everything needed for you.</p>
+<p>If you want the generated Dart class to be <a href="https://pub.dev/packages/freezed"><code>freezed</code></a> (which is like data-classes in other languages like Kotlin), simply put <code>#[frb(dart_metadata=("freezed"))]</code> and it will generate everything needed for you.</p>
 <h2 id="example"><a class="header" href="#example">Example</a></h2>
 <h3 id="example-1-recursive-fields"><a class="header" href="#example-1-recursive-fields">Example 1: Recursive fields</a></h3>
 <pre><code class="language-rust noplayground">pub struct MyTreeNode {
@@ -211,7 +211,7 @@
 </code></pre>
 <p>Remark: If you are curious about <code>Future</code>, have a look at <a href="async_dart.html">this</a>.</p>
 <h3 id="example-2-metadata"><a class="header" href="#example-2-metadata">Example 2: Metadata</a></h3>
-<pre><code class="language-rust noplayground">#[frb(dart_metadata=(&quot;freezed&quot;, &quot;immutable&quot; import &quot;package:meta/meta.dart&quot; as meta))]
+<pre><code class="language-rust noplayground">#[frb(dart_metadata=("freezed", "immutable" import "package:meta/meta.dart" as meta))]
 pub struct UserId {
     pub value: u32,
 }</code></pre>

@@ -183,7 +183,7 @@ The following script assumes a bash shell, which you should make sure to use to 
 Also, the script generates some ffi convenience files in your Dart <code>src/</code> which you should
 check out after the script completes.</p>
 <p>After the script runs, change the <code>flutter_rust_bridge</code> dependency in <code>/packages/library_name/pubspec.yaml</code> to the following:</p>
-<pre><code class="language-yaml">  flutter_rust_bridge: &quot;1.62.1&quot;
+<pre><code class="language-yaml">  flutter_rust_bridge: "1.62.1"
 </code></pre>
 <p>Note: If you so choose, you can update the <code>flutter_rust_bridge</code> versions in
 <code>/packages/library_name/native/Cargo.toml</code> and <code>/packages/library_name/pubspec.yaml</code>
@@ -202,7 +202,7 @@ git init
 
 cat &lt;&lt; EOF &gt;&gt; Cargo.toml
 [workspace]
-members = [&quot;packages/$LIBNAME/native&quot;]
+members = ["packages/$LIBNAME/native"]
 EOF
 
 cat &lt;&lt; EOF &gt;&gt; analysis_options.yaml
@@ -423,7 +423,7 @@ $DART_CLASS_NAME createWrapper(ExternalLibrary lib) {
 }
 EOF
 
-echo &quot;export 'src/ffi.dart';&quot; &gt;&gt; lib/$LIBNAME.dart
+echo "export 'src/ffi.dart';" &gt;&gt; lib/$LIBNAME.dart
 )
 
 # Rust setup
@@ -435,15 +435,15 @@ use lib_flutter_rust_bridge_codegen::{
     config_parse, frb_codegen, get_symbols_if_no_duplicates, RawOpts,
 };
 
-const RUST_INPUT: &amp;str = &quot;src/api.rs&quot;;
-const DART_OUTPUT: &amp;str = &quot;../lib/src/bridge_generated.dart&quot;;
+const RUST_INPUT: &amp;str = "src/api.rs";
+const DART_OUTPUT: &amp;str = "../lib/src/bridge_generated.dart";
 
-const IOS_C_OUTPUT: &amp;str = &quot;../../flutter_$LIBNAME/ios/Classes/frb.h&quot;;
-const MACOS_C_OUTPUT_DIR: &amp;str = &quot;../../flutter_$LIBNAME/macos/Classes/&quot;;
+const IOS_C_OUTPUT: &amp;str = "../../flutter_$LIBNAME/ios/Classes/frb.h";
+const MACOS_C_OUTPUT_DIR: &amp;str = "../../flutter_$LIBNAME/macos/Classes/";
 
 fn main() {
     // Tell Cargo that if the input Rust code changes, rerun this build script
-    println!(&quot;cargo:rerun-if-changed={}&quot;, RUST_INPUT);
+    println!("cargo:rerun-if-changed={}", RUST_INPUT);
 
     // Options for frb_codegen
     let raw_opts = RawOpts {
@@ -464,9 +464,9 @@ fn main() {
     }
 
     // Format the generated Dart code
-    _ = std::process::Command::new(&quot;flutter&quot;)
-        .arg(&quot;format&quot;)
-        .arg(&quot;..&quot;)
+    _ = std::process::Command::new("flutter")
+        .arg("format")
+        .arg("..")
         .spawn();
 }
 EOF
@@ -479,18 +479,18 @@ EOF
 
 cat &lt;&lt; EOF &gt;&gt; $RUST_BASE/Cargo.toml
 [package]
-name = &quot;$LIBNAME&quot;
-version = &quot;0.0.0&quot;
-edition = &quot;2018&quot;
+name = "$LIBNAME"
+version = "0.0.0"
+edition = "2018"
 
 [lib]
-crate-type = [&quot;staticlib&quot;, &quot;cdylib&quot;]
+crate-type = ["staticlib", "cdylib"]
 
 [build-dependencies]
-flutter_rust_bridge_codegen = &quot;1.62.*&quot;
+flutter_rust_bridge_codegen = "1.62.*"
 
 [dependencies]
-flutter_rust_bridge = &quot;1.62.*&quot;
+flutter_rust_bridge = "1.62.*"
 EOF
 
 touch $RUST_BASE/src/api.rs

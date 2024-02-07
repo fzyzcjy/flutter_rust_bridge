@@ -224,7 +224,7 @@ flutter pub add freezed_annotation
 <p>Similar to Dart, Rust requires the <code>flutter_rust_bridge</code> runtime component for support.</p>
 <p>Add these lines to <code>Cargo.toml</code>:</p>
 <pre><code class="language-diff">+[dependencies]
-+flutter_rust_bridge = &quot;1&quot;
++flutter_rust_bridge = "1"
 </code></pre>
 <h2 id="system-dependencies"><a class="header" href="#system-dependencies">System dependencies</a></h2>
 <h3 id="non-debian-linux"><a class="header" href="#non-debian-linux">Non-Debian Linux</a></h3>
@@ -237,7 +237,7 @@ flutter pub add freezed_annotation
 </ul>
 <p>Restarting system may be required.</p>
 <p>Secondly, set the environment variable in your shell profile (<code>.bashrc</code>, <code>.zshrc</code>, etc):</p>
-<pre><code class="language-bash">export CPATH=&quot;$(clang -v 2&gt;&amp;1 | grep &quot;Selected GCC installation&quot; | rev | cut -d' ' -f1 | rev)/include&quot;
+<pre><code class="language-bash">export CPATH="$(clang -v 2&gt;&amp;1 | grep "Selected GCC installation" | rev | cut -d' ' -f1 | rev)/include"
 </code></pre>
 
                     </main>

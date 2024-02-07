@@ -203,9 +203,9 @@ impl Executor for MyExecutor {
 impl MyExecutor {
     fn log_around&lt;F, R&gt;(debug_name: &amp;str, f: F) -&gt; R where F: FnOnce() -&gt; R {
         let start = Instant::now();
-        debug!(&quot;(Rust) execute [{}] start&quot;, debug_name);
+        debug!("(Rust) execute [{}] start", debug_name);
         let ret = f();
-        debug!(&quot;(Rust) execute [{}] end delta_time={}ms&quot;, debug_name, start.elapsed().as_millis());
+        debug!("(Rust) execute [{}] end delta_time={}ms", debug_name, start.elapsed().as_millis());
         ret
     }
 }</code></pre>

@@ -179,7 +179,7 @@ application. If you just created your crate a few moments ago, go ahead and
 add a new file at <code>$crate/src/api.rs</code> and replace its contents with this snippet or
 whatever suits your fancy:</p>
 <pre><code class="language-rust ignore">pub fn greet() -&gt; String {
-    &quot;Hello from Rust! 🦀&quot;.into()
+    "Hello from Rust! 🦀".into()
 }</code></pre>
 <p>then in <code>$crate/src/lib.rs</code>:</p>
 <pre><code class="language-diff">+mod api;

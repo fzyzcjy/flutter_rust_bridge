@@ -197,15 +197,15 @@ of it! Here is an example of what you can do with freezed enums.</p>
 + );
 </code></pre>
 <p>In <code>native/src/api.rs</code>:</p>
-<pre><code class="language-diff">     } else if cfg!(target_os = &quot;ios&quot;) {
+<pre><code class="language-diff">     } else if cfg!(target_os = "ios") {
          Platform::Ios
-     } else if cfg!(all(target_os = &quot;macos&quot;, target_arch = &quot;aarch64&quot;)) {
+     } else if cfg!(all(target_os = "macos", target_arch = "aarch64")) {
 -        Platform::MacApple
-+        Platform::MacOs(&quot;Apple Silicon&quot;.into())
-     } else if cfg!(target_os = &quot;macos&quot;) {
++        Platform::MacOs("Apple Silicon".into())
+     } else if cfg!(target_os = "macos") {
 -        Platform::MacIntel
-+        Platform::MacOs(&quot;Intel&quot;.into())
-     } else if cfg!(target_family = &quot;wasm&quot;) {
++        Platform::MacOs("Intel".into())
+     } else if cfg!(target_family = "wasm") {
          Platform::Wasm
      } else if cfg!(unix) {
 </code></pre>

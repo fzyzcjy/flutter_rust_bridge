@@ -176,8 +176,8 @@
                         <h1 id="parameter-defaults"><a class="header" href="#parameter-defaults">Parameter defaults</a></h1>
 <p>Dart allows default values for function and constructor parameters, and you can achieve the same effect using <code>#[frb(default)]</code>. The syntax is as follows:</p>
 <ul>
-<li>If the parameter is a <code>String</code> or any other primitive, <code>#[frb(default = &quot;..&quot; | 0 | true | ..)]</code> annotates its default value.</li>
-<li>If the parameter is a class or an enum, <code>#[frb(default = &quot;..&quot;)]</code> annotates the <em>Dart code</em> to initialize the parameter.
+<li>If the parameter is a <code>String</code> or any other primitive, <code>#[frb(default = ".." | 0 | true | ..)]</code> annotates its default value.</li>
+<li>If the parameter is a class or an enum, <code>#[frb(default = "..")]</code> annotates the <em>Dart code</em> to initialize the parameter.
 Note that this is run in the <em>constant context</em>, so classes can only be constructed if they are preceded with <code>const</code>.</li>
 </ul>
 <p>This will be translated to either a default value annotation, or Freezed's <code>@Default</code> in the case of enum constructor parameters.</p>
@@ -186,9 +186,9 @@ pub struct Point(pub f64, pub f64);
 
 #[frb]
 pub fn defaults(
-    #[frb(default = &quot;Answer.Yes&quot;)]
+    #[frb(default = "Answer.Yes")]
     answer: Answer,
-    #[frb(default = &quot;const Point(field0: 2, field1: 3)&quot;)]
+    #[frb(default = "const Point(field0: 2, field1: 3)")]
     point: Point,
 );</code></pre>
 

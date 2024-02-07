@@ -226,13 +226,13 @@ src/ir -- src/generator --&gt; rd[Rust &amp; Dart]
 <p>Let us see what happens when a function is called.</p>
 <p>Suppose a user calls a (generated) Dart function <code>func({required String str})</code>. Then, the following happens:</p>
 <ol>
-<li>The generated Dart function, <code>func({required String str})</code>, convert &quot;<em>Dart api data</em>&quot; (i.e. the data that user really provides) into &quot;<em>Dart wire data</em>&quot; (i.e. the data that will really pass between Dart and Rust). More specifically, it calls <code>_api2wire_String(str)</code> and get a <code>ffi.Pointer&lt;wire_uint_8_list&gt;</code> (because <code>String</code>s use <code>pub struct wire_uint_8_list { ptr: *mut u8, len: i32 }</code> under the hood).</li>
+<li>The generated Dart function, <code>func({required String str})</code>, convert "<em>Dart api data</em>" (i.e. the data that user really provides) into "<em>Dart wire data</em>" (i.e. the data that will really pass between Dart and Rust). More specifically, it calls <code>_api2wire_String(str)</code> and get a <code>ffi.Pointer&lt;wire_uint_8_list&gt;</code> (because <code>String</code>s use <code>pub struct wire_uint_8_list { ptr: *mut u8, len: i32 }</code> under the hood).</li>
 <li>Now we call the Dart version of <code>wire_func</code>, with low-level data like <code>wire_uint_8_list</code>. We have used our codegen to create a Rust <code>wire_func</code> function, and use <code>cbindgen</code> to generate the corresponding C function, and use <code>ffigen</code> to get the corresponding Dart function. Here, we call the Dart version of <code>wire_func</code>. Since Dart FFI and Rust FFI is C-compatible, it seamlessly calls the Rust version of <code>wire_func</code>. Notice that, since we are utilizing C-compatible functions (and it is the only feasible way), we can only pass around low-level things like pointers, instead of high-level and safe things.</li>
-<li>Surely, the Rust <code>wire_func</code> is called. The function uses <code>.wire2api()</code> to convert &quot;<em>Rust wire data</em>&quot; (<code>wire_uint_8_list</code> here) into &quot;<em>Rust api data</em>&quot; (<code>String</code> here, i.e. data that users really use).</li>
-<li>The <code>FLUTTER_RUST_BRIDGE_HANDLER</code> is called with &quot;<em>Rust api data</em>&quot;. That handler is user-customizable, so users may provide their own implementation other than the default thread-pool, etc. By default, we use a thread pool, and we call the user-written <code>func</code> Rust function in <code>api.rs</code>.</li>
+<li>Surely, the Rust <code>wire_func</code> is called. The function uses <code>.wire2api()</code> to convert "<em>Rust wire data</em>" (<code>wire_uint_8_list</code> here) into "<em>Rust api data</em>" (<code>String</code> here, i.e. data that users really use).</li>
+<li>The <code>FLUTTER_RUST_BRIDGE_HANDLER</code> is called with "<em>Rust api data</em>". That handler is user-customizable, so users may provide their own implementation other than the default thread-pool, etc. By default, we use a thread pool, and we call the user-written <code>func</code> Rust function in <code>api.rs</code>.</li>
 <li>The user-written <code>fn func(str: String) -&gt; String { ... }</code> is called, and we get a return value.</li>
 <li>The return value, a <code>String</code>, is posted to the Dart side. It is done by the Dart-provided API, <a href="https://github.com/dart-lang/sdk/blob/fd0d3b254690007d0ebc84175f30fa7d7491ec3e/runtime/include/dart_native_api.h#L124"><code>Dart_PostCObject</code></a>, which let us provide C structs and it will automatically become Dart data on the other side. We use the Rust-safe wrapper <code>allo-isolate</code> for it. We deliberately choose this, because this enables Dart code to be <em>async</em> instead of sync.</li>
-<li>On the Dart side, we now see some Dart objects (indeed &quot;<em>Dart wire data</em>&quot;). We use functions like <code>_wire2api_SomeType</code> to convert it to the final &quot;<em>Dart api data</em>&quot;. Notice this &quot;wire2api&quot; is on <em>Dart</em> side, so it means &quot;<em>Dart</em> wire data to <em>Dart</em> api data&quot;, and is different from the one above which is for Rust. For example, since <code>Dart_PostCObject</code> does not provide a way to construct arbitrary structs(classes), we have to pass Rust structs as lists, and use the <code>wire2api</code> to convert them to corresponding Dart classes.</li>
+<li>On the Dart side, we now see some Dart objects (indeed "<em>Dart wire data</em>"). We use functions like <code>_wire2api_SomeType</code> to convert it to the final "<em>Dart api data</em>". Notice this "wire2api" is on <em>Dart</em> side, so it means "<em>Dart</em> wire data to <em>Dart</em> api data", and is different from the one above which is for Rust. For example, since <code>Dart_PostCObject</code> does not provide a way to construct arbitrary structs(classes), we have to pass Rust structs as lists, and use the <code>wire2api</code> to convert them to corresponding Dart classes.</li>
 <li>The final result value is provided as return value of the Dart function, <code>func</code>, that the user called just now. A function call finishes!</li>
 </ol>
 <h2 id="type-mappings"><a class="header" href="#type-mappings">Type Mappings</a></h2>
@@ -349,15 +349,20 @@ to accomplish with GeneralList.</li>
 <h2 id="want-to-know-more-tell-me"><a class="header" href="#want-to-know-more-tell-me">Want to know more? Tell me</a></h2>
 <p>What do you want to know? Feel free to create an issue in GitHub, and I will tell more :)</p>
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
-<p>When behind a <code>ffi.Pointer</code>, they are their respective types from <code>dart:ffi</code>: <code>ffi.Int8</code>, <code>ffi.Int16</code>, etc.
-<sup class="footnote-reference"><a href="#2">2</a></sup>:
-These types are unsupported on Web by <code>dart:typed_list</code>, so this library provides a barebores shim over the JS native types.
+<p>When behind a <code>ffi.Pointer</code>, they are their respective types from <code>dart:ffi</code>: <code>ffi.Int8</code>, <code>ffi.Int16</code>, etc.</p>
+</div>
+<div class="footnote-definition" id="2"><sup class="footnote-definition-label">2</sup>
+<p>These types are unsupported on Web by <code>dart:typed_list</code>, so this library provides a barebores shim over the JS native types.
 If you wish to use these types, replace all <code>dart:typed_list</code> imports with this library.</p>
 </div>
 <div class="footnote-definition" id="3"><sup class="footnote-definition-label">3</sup>
-<p>Refers to C-style enums only (no fields).
-<sup class="footnote-reference"><a href="#4">5</a></sup>: This is currently implemented as a monotonically-increasing index.
-<sup class="footnote-reference"><a href="#5">4</a></sup>: Enums may also specify a <code>#[repr]</code>, which is planned to be implemented.</p>
+<p>Refers to C-style enums only (no fields).</p>
+</div>
+<div class="footnote-definition" id="4"><sup class="footnote-definition-label">5</sup>
+<p>This is currently implemented as a monotonically-increasing index.</p>
+</div>
+<div class="footnote-definition" id="5"><sup class="footnote-definition-label">4</sup>
+<p>Enums may also specify a <code>#[repr]</code>, which is planned to be implemented.</p>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 <script>

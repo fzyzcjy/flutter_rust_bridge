@@ -203,23 +203,23 @@ your dependencies fall out of date.</p>
 enable-beta-ecosystems: true
 updates:
   - package-ecosystem: pub
-    directory: &quot;/packages/library_name&quot;
+    directory: "/packages/library_name"
     schedule:
       interval: weekly
   - package-ecosystem: pub
-    directory: &quot;/packages/library_name/example&quot;
+    directory: "/packages/library_name/example"
     schedule:
       interval: weekly
   - package-ecosystem: pub
-    directory: &quot;/packages/flutter_library_name&quot;
+    directory: "/packages/flutter_library_name"
     schedule:
       interval: weekly
   - package-ecosystem: pub
-    directory: &quot;/packages/flutter_library_name/example&quot;
+    directory: "/packages/flutter_library_name/example"
     schedule:
       interval: weekly
   - package-ecosystem: cargo
-    directory: &quot;/packages/library_name/native&quot;
+    directory: "/packages/library_name/native"
     schedule:
       interval: weekly
 </code></pre>
@@ -234,7 +234,7 @@ on:
       - main
   schedule:
     # runs the CI everyday at 10AM
-    - cron: &quot;0 10 * * *&quot;
+    - cron: "0 10 * * *"
 
 jobs:
   # General build, check, and test steps
@@ -303,7 +303,7 @@ jobs:
       - uses: goto-bus-stop/setup-zig@v2
       - uses: KyleMayes/install-llvm-action@v1
         with:
-          version: &quot;15&quot;
+          version: "15"
       - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: stable
@@ -334,7 +334,7 @@ jobs:
       - uses: goto-bus-stop/setup-zig@v2
       - uses: KyleMayes/install-llvm-action@v1
         with:
-          version: &quot;15&quot;
+          version: "15"
       - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: stable
@@ -365,7 +365,7 @@ jobs:
       - name: Start iOS Simulator
         run: |
           DEVICE_ID=$(xcrun xctrace list devices | grep iPhone | head -1 | awk '{print $NF}' | tr -d '()')
-          echo &quot;DEVICE_ID=$DEVICE_ID&quot; &gt;&gt; $GITHUB_ENV
+          echo "DEVICE_ID=$DEVICE_ID" &gt;&gt; $GITHUB_ENV
           xcrun simctl boot $DEVICE_ID
 
       - name: Build the XCFramework
@@ -396,7 +396,7 @@ jobs:
       - uses: actions/setup-java@v3
         with:
           distribution: zulu
-          java-version: &quot;11.x&quot;
+          java-version: "11.x"
 
       - name: Build the binaries
         run: melos run build:android
@@ -427,7 +427,7 @@ jobs:
 </ol>
 <h3 id="create-new-versions-with-melos-githubworkflowscreate-releaseyml"><a class="header" href="#create-new-versions-with-melos-githubworkflowscreate-releaseyml">Create new versions with Melos (<code>/.github/workflows/create-release.yml</code>)</a></h3>
 <p>You can create new releases of your library with this workflow by going to the
-&quot;Actions&quot; tab in your GitHub repo and manually starting this workflow with an
+"Actions" tab in your GitHub repo and manually starting this workflow with an
 appropriate option. The options are:</p>
 <ul>
 <li><code>--</code> -&gt; call <code>melos version</code> with no additional parameters</li>
@@ -443,14 +443,14 @@ on:
   workflow_dispatch:
     inputs:
       version_parameters:
-        description: 'Parameters to pass to &quot;melos version&quot;'
+        description: 'Parameters to pass to "melos version"'
         required: true
-        default: &quot; &quot;
+        default: " "
         type: choice
         options:
-          - &quot;--&quot;
-          - &quot;--prerelease&quot;
-          - &quot;--graduate&quot;
+          - "--"
+          - "--prerelease"
+          - "--graduate"
 
 jobs:
   create_release:
@@ -463,8 +463,8 @@ jobs:
           fetch-depth: 0
       - name: Setup git
         run: |
-          git config user.name &quot;YourName&quot;
-          git config user.email &quot;your-email@example.com&quot;
+          git config user.name "YourName"
+          git config user.email "your-email@example.com"
       - uses: subosito/flutter-action@v2
       - uses: bluefireteam/melos-action@v2
 
@@ -494,7 +494,7 @@ running the following command: <code>dart pub login</code>.</p>
 on:
   push:
     tags:
-      - &quot;*&quot;
+      - "*"
 
 jobs:
   publish_github_release:
@@ -508,7 +508,7 @@ jobs:
       - uses: goto-bus-stop/setup-zig@v2
       - uses: KyleMayes/install-llvm-action@v1
         with:
-          version: &quot;15&quot;
+          version: "15"
       - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: stable

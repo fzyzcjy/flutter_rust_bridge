@@ -183,12 +183,12 @@
 <h2 id="example"><a class="header" href="#example">Example</a></h2>
 <h3 id="example-1-anyhow-result"><a class="header" href="#example-1-anyhow-result">Example 1: Anyhow Result</a></h3>
 <p>For example, the following code, when called by Dart code, will throw Dart exceptions.</p>
-<pre><code class="language-rust noplayground">pub fn f() -&gt; anyhow::Result&lt;i32&gt; { bail!(&quot;oops I failed&quot;) }</code></pre>
+<pre><code class="language-rust noplayground">pub fn f() -&gt; anyhow::Result&lt;i32&gt; { bail!("oops I failed") }</code></pre>
 <h3 id="example-2-panic"><a class="header" href="#example-2-panic">Example 2: Panic</a></h3>
 <p>All functions below, when called, will throw Dart exceptions at the Dart side due to the <code>panic</code>.</p>
-<pre><code class="language-rust noplayground">pub fn g1() -&gt; i32 { panic!(&quot;oops I failed&quot;) }
-pub fn g2() -&gt; anyhow::Result&lt;String&gt; { panic!(&quot;oops I failed&quot;) }
-pub fn g3() -&gt; Result&lt;Vec&lt;u8&gt;, CustomError&gt; { panic!(&quot;oops I failed&quot;) }</code></pre>
+<pre><code class="language-rust noplayground">pub fn g1() -&gt; i32 { panic!("oops I failed") }
+pub fn g2() -&gt; anyhow::Result&lt;String&gt; { panic!("oops I failed") }
+pub fn g3() -&gt; Result&lt;Vec&lt;u8&gt;, CustomError&gt; { panic!("oops I failed") }</code></pre>
 <h3 id="example-3-custom-error-without-backtrace"><a class="header" href="#example-3-custom-error-without-backtrace">Example 3: Custom Error Without backtrace</a></h3>
 <pre><code class="language-rust noplayground">pub enum CustomError {
     Error0(String),
@@ -201,7 +201,7 @@ pub fn return_err_custom_error() -&gt; Result&lt;u32, CustomError&gt; {
 <p>Becomes something that can be used like this:</p>
 <pre><code class="language-Dart">try {
     final r = await api.returnErrCustomError();
-    print(&quot;received $r&quot;);
+    print("received $r");
 } catch (e) {
     print('dart catch e: $e');
     expect(e, isA&lt;CustomError&gt;());

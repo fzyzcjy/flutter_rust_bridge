@@ -174,8 +174,8 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="stack-traces"><a class="header" href="#stack-traces">Stack Traces</a></h1>
-<p>To pass Rust stack traces to flutter, you need to set <code>RUST_BACKTRACE</code> in the running application. For that simply add <code>env::set_var(&quot;RUST_BACKTRACE&quot;, &quot;1&quot;);</code> before initialising the bridge.</p>
-<p>Note: The <code>--dart-define</code> will not work, you <strong>must</strong> use <code>env::set_var</code>, because the former does not set the &quot;environment variable&quot; in the common sense, but instead a special thing only visible to Dart.</p>
+<p>To pass Rust stack traces to flutter, you need to set <code>RUST_BACKTRACE</code> in the running application. For that simply add <code>env::set_var("RUST_BACKTRACE", "1");</code> before initialising the bridge.</p>
+<p>Note: The <code>--dart-define</code> will not work, you <strong>must</strong> use <code>env::set_var</code>, because the former does not set the "environment variable" in the common sense, but instead a special thing only visible to Dart.</p>
 
                     </main>
 

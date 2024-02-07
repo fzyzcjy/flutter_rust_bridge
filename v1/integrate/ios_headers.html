@@ -179,12 +179,12 @@ exported symbols from our library, then uses it so that Xcode won't strip
 the symbols.</p>
 <p>Add <code>ios/Runner/bridge_generated.h</code> (or <code>macos/Runner/bridge_generated.h</code>)
 to the project, either by dragging it onto the project tree or
-via the <strong>Add Files to &quot;Runner&quot;...</strong> menu option.</p>
+via the <strong>Add Files to "Runner"...</strong> menu option.</p>
 <p>Switch to the <strong>Build Phases</strong> tab and drag the <code>bridge_generated.h</code> file over
 to the <strong>Copy Bundle Resources</strong> section, if it isn't already present.</p>
 <h2 id="ios"><a class="header" href="#ios">iOS</a></h2>
 <p>Next, add this line to <code>ios/Runner/Runner-Bridging-Header.h</code>:</p>
-<pre><code class="language-diff">+#import &quot;bridge_generated.h&quot;
+<pre><code class="language-diff">+#import "bridge_generated.h"
 </code></pre>
 <p>and in <code>ios/Runner/AppDelegate.swift</code>:</p>
 <pre><code class="language-diff"> override func application(

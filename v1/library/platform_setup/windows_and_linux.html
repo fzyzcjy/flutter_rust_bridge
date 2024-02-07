@@ -184,7 +184,7 @@ of of all the Flutter supported platforms.</p>
 <p>Replace all instances of <code>library_name</code> below with your library name.
 Also, replace other variables (i.e. <code>YourGitHubAccount</code> and <code>repo_name</code>) as needed.</p>
 <h3 id="linux-cmakeliststxt-packagesflutter_library_namelinuxcmakeliststxt"><a class="header" href="#linux-cmakeliststxt-packagesflutter_library_namelinuxcmakeliststxt">Linux CMakeLists.txt (<code>/packages/flutter_library_name/linux/CMakeLists.txt</code>)</a></h3>
-<pre><code class="language-cmake">set(LibraryVersion &quot;library_name-v0.0.0&quot;) # generated; do not edit
+<pre><code class="language-cmake">set(LibraryVersion "library_name-v0.0.0") # generated; do not edit
 
 # The Flutter tooling requires that developers have CMake 3.10 or later
 # installed. You should not increase this version, as doing so will cause
@@ -192,15 +192,15 @@ Also, replace other variables (i.e. <code>YourGitHubAccount</code> and <code>rep
 cmake_minimum_required(VERSION 3.10)
 
 # Project-level configuration.
-set(PROJECT_NAME &quot;flutter_library_name&quot;)
+set(PROJECT_NAME "flutter_library_name")
 project(${PROJECT_NAME} LANGUAGES CXX)
 
 # Download the binaries if they are not already present.
-set(LibRoot &quot;${CMAKE_CURRENT_SOURCE_DIR}/${LibraryVersion}&quot;)
-set(ArchivePath &quot;${LibRoot}.tar.gz&quot;)
+set(LibRoot "${CMAKE_CURRENT_SOURCE_DIR}/${LibraryVersion}")
+set(ArchivePath "${LibRoot}.tar.gz")
 if(NOT EXISTS ${ArchivePath})
   file(DOWNLOAD
-    &quot;https://github.com/YourGitHubAccount/repo_name/releases/download/${LibraryVersion}/other.tar.gz&quot;
+    "https://github.com/YourGitHubAccount/repo_name/releases/download/${LibraryVersion}/other.tar.gz"
     ${ArchivePath}
     TLS_VERIFY ON
   )
@@ -218,12 +218,12 @@ execute_process(
 # This list could contain prebuilt libraries, or libraries created by an
 # external build triggered from this build file.
 set(flutter_library_name_bundled_libraries
-  &quot;${LibRoot}/${FLUTTER_TARGET_PLATFORM}/liblibrary_name.so&quot;
+  "${LibRoot}/${FLUTTER_TARGET_PLATFORM}/liblibrary_name.so"
   PARENT_SCOPE
 )
 </code></pre>
 <h3 id="windows-cmakeliststxt-packagesflutter_library_namewindowscmakeliststxt"><a class="header" href="#windows-cmakeliststxt-packagesflutter_library_namewindowscmakeliststxt">Windows CMakeLists.txt (<code>/packages/flutter_library_name/windows/CMakeLists.txt</code>)</a></h3>
-<pre><code class="language-cmake">set(LibraryVersion &quot;library_name-v0.0.0&quot;) # generated; do not edit
+<pre><code class="language-cmake">set(LibraryVersion "library_name-v0.0.0") # generated; do not edit
 
 # TODO Remove this workaround once Flutter supports Windows ARM.
 # https://github.com/flutter/flutter/issues/116196
@@ -236,15 +236,15 @@ set(FLUTTER_TARGET_PLATFORM windows-x64)
 cmake_minimum_required(VERSION 3.14)
 
 # Project-level configuration.
-set(PROJECT_NAME &quot;flutter_library_name&quot;)
+set(PROJECT_NAME "flutter_library_name")
 project(${PROJECT_NAME} LANGUAGES CXX)
 
 # Download the binaries if they are not already present.
-set(LibRoot &quot;${CMAKE_CURRENT_SOURCE_DIR}/${LibraryVersion}&quot;)
-set(ArchivePath &quot;${LibRoot}.tar.gz&quot;)
+set(LibRoot "${CMAKE_CURRENT_SOURCE_DIR}/${LibraryVersion}")
+set(ArchivePath "${LibRoot}.tar.gz")
 if(NOT EXISTS ${ArchivePath})
   file(DOWNLOAD
-    &quot;https://github.com/YourGitHubAccount/repo_name/releases/download/${LibraryVersion}/other.tar.gz&quot;
+    "https://github.com/YourGitHubAccount/repo_name/releases/download/${LibraryVersion}/other.tar.gz"
     ${ArchivePath}
     TLS_VERIFY ON
   )
@@ -262,7 +262,7 @@ execute_process(
 # This list could contain prebuilt libraries, or libraries created by an
 # external build triggered from this build file.
 set(flutter_library_name_bundled_libraries
-  &quot;${LibRoot}/${FLUTTER_TARGET_PLATFORM}/library_name.dll&quot;
+  "${LibRoot}/${FLUTTER_TARGET_PLATFORM}/library_name.dll"
   PARENT_SCOPE
 )
 </code></pre>
@@ -296,23 +296,23 @@ cargo install cargo-zigbuild
 cargo install cargo-xwin
 
 zig_build () {
-    local TARGET=&quot;$1&quot;
-    local PLATFORM_NAME=&quot;$2&quot;
-    local LIBNAME=&quot;$3&quot;
-    rustup target add &quot;$TARGET&quot;
-    cargo zigbuild --target &quot;$TARGET&quot; -r
-    mkdir &quot;$PLATFORM_NAME&quot;
-    cp &quot;../target/$TARGET/release/$LIBNAME&quot; &quot;$PLATFORM_NAME/&quot;
+    local TARGET="$1"
+    local PLATFORM_NAME="$2"
+    local LIBNAME="$3"
+    rustup target add "$TARGET"
+    cargo zigbuild --target "$TARGET" -r
+    mkdir "$PLATFORM_NAME"
+    cp "../target/$TARGET/release/$LIBNAME" "$PLATFORM_NAME/"
 }
 
 win_build () {
-    local TARGET=&quot;$1&quot;
-    local PLATFORM_NAME=&quot;$2&quot;
-    local LIBNAME=&quot;$3&quot;
-    rustup target add &quot;$TARGET&quot;
-    cargo xwin build --target &quot;$TARGET&quot; -r
-    mkdir &quot;$PLATFORM_NAME&quot;
-    cp &quot;../target/$TARGET/release/$LIBNAME&quot; &quot;$PLATFORM_NAME/&quot;
+    local TARGET="$1"
+    local PLATFORM_NAME="$2"
+    local LIBNAME="$3"
+    rustup target add "$TARGET"
+    cargo xwin build --target "$TARGET" -r
+    mkdir "$PLATFORM_NAME"
+    cp "../target/$TARGET/release/$LIBNAME" "$PLATFORM_NAME/"
 }
 
 # Build all the dynamic libraries

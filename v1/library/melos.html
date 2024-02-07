@@ -231,20 +231,20 @@ scripts:
     description: Run all Dart &amp; Flutter tests in this project.
 
   test:dart:
-    run: melos exec -c 1 --fail-fast -- &quot;dart test test&quot;
+    run: melos exec -c 1 --fail-fast -- "dart test test"
     description: Run Dart tests for a specific package in this project.
     select-package:
       flutter: false
       dir-exists: test
 
   test:flutter:
-    run: melos exec -c 1 --fail-fast -- &quot;flutter test test&quot;
+    run: melos exec -c 1 --fail-fast -- "flutter test test"
     description: Run Flutter tests for a specific package in this project.
     select-package:
       flutter: true
       dir-exists: test
 </code></pre>
-<p>You can run the melos &quot;scripts&quot; defined in this file with <code>melos run ...</code>,
+<p>You can run the melos "scripts" defined in this file with <code>melos run ...</code>,
 e.g. <code>melos run build:android</code> to build a .tar.gz for Android devices.
 Also, when you first setup your Melos repo, you will need to run <code>melos bootstrap</code> (or <code>melos bs</code> for short).
 To clean your repo in the future, you can run <code>melos clean &amp;&amp; melos bs</code>.</p>
@@ -253,7 +253,7 @@ To clean your repo in the future, you can run <code>melos clean &amp;&amp; melos
 Melos creates new versions via the simple command, <code>melos version</code>.
 <code>melos version</code> creates and manages git tags, in addition to automatically incrementing the version numbers appropriately.</p>
 <p>Since we are distributing our binaries separately from the Dart/Flutter packages on pub.dev, we take advantage of
-a special &quot;melos script&quot; defined in the configuration file, named &quot;version&quot;.
+a special "melos script" defined in the configuration file, named "version".
 In this versioning script, we change the version numbers for our Flutter build process so that consumers of our library
 will always get the binaries associated with their version.</p>
 <p>Replace all instances of <code>library_name</code> below with your library name.</p>
@@ -262,16 +262,16 @@ will always get the binaries associated with their version.</p>
 CURR_VERSION=library_name-v`awk '/^version: /{print $2}' packages/library_name/pubspec.yaml`
 
 # iOS &amp; macOS
-APPLE_HEADER=&quot;release_tag_name = '$CURR_VERSION' # generated; do not edit&quot;
-sed -i.bak &quot;1 s/.*/$APPLE_HEADER/&quot; packages/flutter_library_name/ios/flutter_library_name.podspec
-sed -i.bak &quot;1 s/.*/$APPLE_HEADER/&quot; packages/flutter_library_name/macos/flutter_library_name.podspec
+APPLE_HEADER="release_tag_name = '$CURR_VERSION' # generated; do not edit"
+sed -i.bak "1 s/.*/$APPLE_HEADER/" packages/flutter_library_name/ios/flutter_library_name.podspec
+sed -i.bak "1 s/.*/$APPLE_HEADER/" packages/flutter_library_name/macos/flutter_library_name.podspec
 rm packages/flutter_library_name/macos/*.bak packages/flutter_library_name/ios/*.bak
 
 # CMake platforms (Linux, Windows, and Android)
-CMAKE_HEADER=&quot;set(LibraryVersion \&quot;$CURR_VERSION\&quot;) # generated; do not edit&quot;
+CMAKE_HEADER="set(LibraryVersion \"$CURR_VERSION\") # generated; do not edit"
 for CMAKE_PLATFORM in android linux windows
 do
-    sed -i.bak &quot;1 s/.*/$CMAKE_HEADER/&quot; packages/flutter_library_name/$CMAKE_PLATFORM/CMakeLists.txt
+    sed -i.bak "1 s/.*/$CMAKE_HEADER/" packages/flutter_library_name/$CMAKE_PLATFORM/CMakeLists.txt
     rm packages/flutter_library_name/$CMAKE_PLATFORM/*.bak
 done
 
@@ -279,7 +279,7 @@ git add packages/flutter_library_name/
 </code></pre>
 <h2 id="conventional-commits"><a class="header" href="#conventional-commits">Conventional Commits</a></h2>
 <p>For Melos versioning to work, which our monorepo relies on to distribute binaries properly,
-you need to use &quot;conventional commits.&quot;
+you need to use "conventional commits."
 If you are not familiar with conventional commits, that is ok.
 Simply read up on conventional commits in the <a href="https://melos.invertase.dev/guides/automated-releases#versioning">Melos guide</a>.</p>
 

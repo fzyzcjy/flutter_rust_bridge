@@ -192,7 +192,7 @@ you can put the declarations file at <code>lib/bridge_definitions.dart</code></p
 using <a href="https://lib.rs/crates/console_error_panic_hook"><code>console_error_panic_hook</code></a>.
 If you would like to run some initialization code for WASM, e.g. to set up logging libraries,
 specify <code>default-features = false</code> in Cargo.toml:</p>
-<pre><code class="language-toml">flutter_rust_bridge = { version = &quot;..&quot;, default-features = false, features = [..] }
+<pre><code class="language-toml">flutter_rust_bridge = { version = "..", default-features = false, features = [..] }
 </code></pre>
 <p>The <code>wasm-start</code> feature governs this behavior and is enabled by default.</p>
 <h2 id="logging-for-developers"><a class="header" href="#logging-for-developers">Logging for developers</a></h2>
@@ -200,7 +200,7 @@ specify <code>default-features = false</code> in Cargo.toml:</p>
 <p>When the code in <code>frb_codegen</code> is modified, usually developers want to build and run it locally for testing. Now with the <code>init_logger</code> in <code>logs.rs</code> from <code>frb_codegen</code>, it is easy to do so.  Take <code>frb_example/pure_dart</code> as an example, in <code>./rust/build.rs</code>, with:</p>
 <pre><pre class="playground"><code class="language-rust">use lib_flutter_rust_bridge_codegen::init_logger;
 fn main() {
-    init_logger(&quot;./logs/&quot;).unwrap();
+    init_logger("./logs/").unwrap();
 ...
 }</code></pre></pre>
 <p>Then, all information from standard panic, <code>log::info!()</code>,<code> log::debug()!</code>...  of <code>frb_codegen</code> would be recorded to  <code>./logs/</code> with a file name of date, like <code>2023-02-01.log</code> in <code>frb_example/pure_dart/rust</code> as long as the example is built through <code>build.rs</code>. Note, the data from the same day would be appended to the same file.</p>

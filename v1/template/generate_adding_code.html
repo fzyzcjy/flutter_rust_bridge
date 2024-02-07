@@ -188,14 +188,14 @@ single <code>MacOs(String)</code> that contains the current CPU architecture. Go
  }
 </code></pre>
 <p>Now run <code>just</code> and see that your binding code now has changed.</p>
-<h2 id="troubleshooting-please-supply-one-or-more-pathtollvm"><a class="header" href="#troubleshooting-please-supply-one-or-more-pathtollvm">Troubleshooting: &quot;Please supply one or more path/to/llvm...&quot;</a></h2>
+<h2 id="troubleshooting-please-supply-one-or-more-pathtollvm"><a class="header" href="#troubleshooting-please-supply-one-or-more-pathtollvm">Troubleshooting: "Please supply one or more path/to/llvm..."</a></h2>
 <p>A common issue with <code>ffigen</code> is that its detection of the LLVM installation is not reliable
 across platforms. Especially for MacOS and the split between x86-64 and arm64 binaries,
 you might have to modify <code>justfile</code> to explicitly point to its location:</p>
-<pre><code>llvm_path := if os() == &quot;macos&quot; {
-    &quot;--llvm-path /opt/homebrew/opt/llvm&quot;
+<pre><code>llvm_path := if os() == "macos" {
+    "--llvm-path /opt/homebrew/opt/llvm"
 } else {
-    &quot;&quot;
+    ""
 }
 </code></pre>
 

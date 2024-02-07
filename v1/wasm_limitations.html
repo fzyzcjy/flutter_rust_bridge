@@ -179,7 +179,7 @@
 one with multithreading and one without, and serve Safari users the single-threaded variant.
 For a more general solution, check out <a href="https://github.com/GoogleChromeLabs/wasm-feature-detect">wasm-feature-detect</a>
 or <a href="https://github.com/johanholmerin/nested-worker">nested-worker</a>.</li>
-<li><code>std::thread::spawn</code> is unimplemented and replacements (e.g. <code>wasm_thread</code>) are not fully supported. 
+<li><code>std::thread::spawn</code> is unimplemented and replacements (e.g. <code>wasm_thread</code>) are not fully supported.
 If you must use them, consider wrapping your return type in a <code>SyncReturn&lt;_&gt;</code> to
 avoid the internal thread pool interfering with your threads.
 This library includes a <code>spawn!</code> macro which spawns a new thread using the internal thread pool.</li>

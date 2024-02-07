@@ -179,7 +179,7 @@
 <p>If you don't want to wrap <code>Vec&lt;u8&gt;</code> and its friends with <code>ZeroCopyBuffer</code> over and over again to avoid copying memory, you can alternatively provide a cargo feature called <code>zero-copy</code>. With this feature enabled, <code>Vec&lt;u8&gt;</code> and its friends will be zero-copied by default.</p>
 <pre><code class="language-toml"># Cargo.toml
 [dependencies]
-flutter_rust_bridge = { version = &quot;...&quot;, features = [&quot;zero-copy&quot;] }
+flutter_rust_bridge = { version = "...", features = ["zero-copy"] }
 </code></pre>
 <h2 id="example"><a class="header" href="#example">Example</a></h2>
 <pre><code class="language-rust noplayground">pub fn draw_tree(tree: Vec&lt;TreeNode&gt;) -&gt; ZeroCopyBuffer&lt;Vec&lt;u8&gt;&gt; { ... }</code></pre>

@@ -176,7 +176,7 @@
                         <h1 id="troubleshooting"><a class="header" href="#troubleshooting">Troubleshooting</a></h1>
 <h2 id="the-generated-store_dart_post_cobject-has-the-wrong-signature--stdargh-file-not-found-in-linux--stdboolh--"><a class="header" href="#the-generated-store_dart_post_cobject-has-the-wrong-signature--stdargh-file-not-found-in-linux--stdboolh--">The generated store_dart_post_cobject() has the wrong signature / <code>'stdarg.h' file not found</code> in Linux / <code>stdbool.h</code> / ...</a></h2>
 <p>Try to run code generator with working directory at <code>/</code>, or set the environment variable:</p>
-<pre><code class="language-bash">export CPATH=&quot;$(clang -v 2&gt;&amp;1 | grep &quot;Selected GCC installation&quot; | rev | cut -d' ' -f1 | rev)/include&quot;
+<pre><code class="language-bash">export CPATH="$(clang -v 2&gt;&amp;1 | grep "Selected GCC installation" | rev | cut -d' ' -f1 | rev)/include"
 </code></pre>
 <p>as described in <a href="https://github.com/dart-lang/ffigen/issues/257">ffigen #257</a>, or add include path as is described in <a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/108">#108</a>. This is a problem with Rust's builtin <code>Command</code>. See also: <a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/472">#472</a> &amp; <a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/494">#494</a>.</p>
 <h2 id="issue-with-store_dart_post_cobject"><a class="header" href="#issue-with-store_dart_post_cobject">Issue with <code>store_dart_post_cobject</code></a></h2>
@@ -185,7 +185,7 @@
 </code></pre>
 <h2 id="error-running-cargo-ndk-ld-error-unable-to-find-library--lgcc"><a class="header" href="#error-running-cargo-ndk-ld-error-unable-to-find-library--lgcc">Error running <code>cargo ndk</code>: <code>ld: error: unable to find library -lgcc</code></a></h2>
 <p>Downgrade Android NDK to version 22. This is an <a href="https://github.com/bbqsrc/cargo-ndk/issues/22">ongoing issue</a> with <code>cargo-ndk</code>, a library unrelated to flutter_rust_bridge but solely used to build the examples, when using Android NDK version 23. (See <a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/149">#149</a>)</p>
-<h2 id="fail-to-run-flutter_rust_bridge_codegen-on-macos-please-supply-one-or-more-pathtollvm"><a class="header" href="#fail-to-run-flutter_rust_bridge_codegen-on-macos-please-supply-one-or-more-pathtollvm">Fail to run <code>flutter_rust_bridge_codegen</code> on MacOS, &quot;Please supply one or more path/to/llvm...&quot;</a></h2>
+<h2 id="fail-to-run-flutter_rust_bridge_codegen-on-macos-please-supply-one-or-more-pathtollvm"><a class="header" href="#fail-to-run-flutter_rust_bridge_codegen-on-macos-please-supply-one-or-more-pathtollvm">Fail to run <code>flutter_rust_bridge_codegen</code> on MacOS, "Please supply one or more path/to/llvm..."</a></h2>
 <p>If you are running macOS, you will need to specify a path to your llvm:</p>
 <pre><code class="language-shell">flutter_rust_bridge_codegen --rust-input path/to/your/api.rs --dart-output path/to/file/being/bridge_generated.dart --llvm-path /usr/local/homebrew/opt/llvm/
 </code></pre>
@@ -204,11 +204,11 @@
 <h2 id="generated-code-is-so-long"><a class="header" href="#generated-code-is-so-long">Generated code is so long</a></h2>
 <p>Indeed all generated code are necessary (if you find something that can be simplified, file an issue). Moreover, other code generation tools also generate long code - for example, when using Google protobuf, a very popular serialization library, I see &gt;10k lines of Java code generated for a quite simple source proto file.</p>
 <h2 id="why-need-dart-2170"><a class="header" href="#why-need-dart-2170">Why need Dart <code>2.17.0</code></a></h2>
-<p>Dart SDK <code>&gt;=2.15.0</code> is supported by this library, but by the latest version of the <code>ffigen</code> tool requires <code>&gt;=2.17.0</code>. Therefore, write <code>sdk: &quot;&gt;=2.17.0 &lt;3.0.0&quot;</code> in the <code>environment</code> section of <code>pubspec.yaml</code>. If you do not want that, consider installing a older version of the <code>ffigen</code> tool.</p>
+<p>Dart SDK <code>&gt;=2.15.0</code> is supported by this library, but by the latest version of the <code>ffigen</code> tool requires <code>&gt;=2.17.0</code>. Therefore, write <code>sdk: "&gt;=2.17.0 &lt;3.0.0"</code> in the <code>environment</code> section of <code>pubspec.yaml</code>. If you do not want that, consider installing a older version of the <code>ffigen</code> tool.</p>
 <h2 id="why-doesnt-flutter_rust_bridge_serve-work-on-firefox"><a class="header" href="#why-doesnt-flutter_rust_bridge_serve-work-on-firefox">Why doesn't <code>flutter_rust_bridge_serve</code> work on Firefox?</a></h2>
 <p>This is a known issue stemming from Firefox's stricter rules regarding cross-origin requests. Use Chromium for testing, and check out
 <a href="https://web.dev/cross-origin-isolation-guide/">this guide on enabling <code>crossOriginIsolated</code></a> for your production servers.</p>
-<h2 id="android-context-was-not-initialized-or-ndk_context-initialization"><a class="header" href="#android-context-was-not-initialized-or-ndk_context-initialization">&quot;android context was not initialized&quot;, or <code>ndk_context</code> initialization.</a></h2>
+<h2 id="android-context-was-not-initialized-or-ndk_context-initialization"><a class="header" href="#android-context-was-not-initialized-or-ndk_context-initialization">"android context was not initialized", or <code>ndk_context</code> initialization.</a></h2>
 <p>Related issue: <a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/1323">#1323</a>.</p>
 <p>On android, when attempting to use crates that interact with the JavaVM through the JNI (like oboe-rs via cpal), you may get panics that typically have this message:</p>
 <pre><code>[ERROR:flutter/runtime/dart_vm_initializer.cc(41)] Unhandled Exception: FfiException(PANIC_ERROR, android context was not initialized, null)
@@ -222,26 +222,26 @@ import io.flutter.embedding.android.FlutterActivity
 
 // https://github.com/dart-lang/sdk/issues/46027
 class MainActivity : FlutterActivity() {
-    // this `init` block, where &quot;foo&quot; is the name of your library
-    // ex: if it's libfoo.so, then use &quot;foo&quot;
+    // this `init` block, where "foo" is the name of your library
+    // ex: if it's libfoo.so, then use "foo"
     init {
-        System.loadLibrary(&quot;foo&quot;)
+        System.loadLibrary("foo")
     }
 }
 </code></pre>
 <p>This handles loading the library before Dart does, and also executes the JNI related initialization.</p>
 <h3 id="rust"><a class="header" href="#rust">Rust</a></h3>
 <h4 id="cargotoml"><a class="header" href="#cargotoml">Cargo.toml</a></h4>
-<pre><code class="language-toml">[target.'cfg(target_os = &quot;android&quot;)'.dependencies]
-jni = &quot;0.21&quot;
-ndk-context = &quot;0.1&quot;
+<pre><code class="language-toml">[target.'cfg(target_os = "android")'.dependencies]
+jni = "0.21"
+ndk-context = "0.1"
 </code></pre>
 <h4 id="librs"><a class="header" href="#librs">lib.rs</a></h4>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>#[cfg(target_os = &quot;android&quot;)]
+</span>#[cfg(target_os = "android")]
 #[no_mangle]
-pub extern &quot;C&quot; fn JNI_OnLoad(vm: jni::JavaVM, res: *mut std::os::raw::c_void) -&gt; jni::sys::jint {
+pub extern "C" fn JNI_OnLoad(vm: jni::JavaVM, res: *mut std::os::raw::c_void) -&gt; jni::sys::jint {
     use std::ffi::c_void;
 
     let vm = vm.get_java_vm_pointer() as *mut c_void;
@@ -252,12 +252,12 @@ pub extern &quot;C&quot; fn JNI_OnLoad(vm: jni::JavaVM, res: *mut std::os::raw::
 }
 <span class="boring">}</span></code></pre></pre>
 <p>This is the bit of JNI glue that allows for <code>ndk_context</code> to be initialized.</p>
-<h2 id="could-not-resolve-symbol-__cxa_pure_virtual-or-libc_shared-issues"><a class="header" href="#could-not-resolve-symbol-__cxa_pure_virtual-or-libc_shared-issues">&quot;Could not resolve symbol __cxa_pure_virtual&quot;, or libc++_shared issues.</a></h2>
+<h2 id="could-not-resolve-symbol-__cxa_pure_virtual-or-libc_shared-issues"><a class="header" href="#could-not-resolve-symbol-__cxa_pure_virtual-or-libc_shared-issues">"Could not resolve symbol __cxa_pure_virtual", or libc++_shared issues.</a></h2>
 <p>At the time of writing this, linking with <code>libc++_static</code> or not linking at all may lead to symbol resolution errors when launching the flutter application, after loading your dynamic library. Adding a fix is quite easy, create a build.rs script in the root of your Rust code:</p>
 <h3 id="buildrs"><a class="header" href="#buildrs">build.rs</a></h3>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    #[cfg(target_os = &quot;android&quot;)]
-    println!(&quot;cargo:rustc-link-lib=c++_shared&quot;);
+    #[cfg(target_os = "android")]
+    println!("cargo:rustc-link-lib=c++_shared");
 }</code></pre></pre>
 <p>Then, in each <code>jniLibs</code> architecture directory, put the corresponding <code>libc++_shared.so</code> from the Android NDK. <code>libc++_shared.so</code> is typically located in <code>$ANDROID_NDK/toolchains/llvm/prebuilt/</code>. You will have to search for it, as it's different for each operating system.</p>
 <ul>

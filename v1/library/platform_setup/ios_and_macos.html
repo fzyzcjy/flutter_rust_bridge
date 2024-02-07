@@ -180,7 +180,7 @@ so this page will walk you through setting that up with FRB.</p>
 Apple platforms (iOS, iOS Simulator, and macOS) is to create an XCFramework.
 While you don't need to know what an XCFramework is to follow this guide, if you
 want to understand how this all works behind the scenes,
-I'd recommend doing a quick Google search on &quot;What is an XCFramework?&quot;.</p>
+I'd recommend doing a quick Google search on "What is an XCFramework?".</p>
 <p>Also, this page will introduce the iOS &amp; macOS build script (<code>build-apple.sh</code>)
 to compile your Rust library for all Apple platforms. Note: unlike all of the other build scripts
 presented in this guide (which we can run on any host OS), <code>build-apple.sh</code> must be run on macOS.</p>
@@ -188,7 +188,7 @@ presented in this guide (which we can run on any host OS), <code>build-apple.sh<
 <p>We will need to create several files for both iOS and macOS to:</p>
 <ul>
 <li>Prevent our Rust symbols from being accidentally stripped</li>
-<li>Bundle our &quot;XCFramework&quot; with our Flutter library</li>
+<li>Bundle our "XCFramework" with our Flutter library</li>
 </ul>
 <h3 id="iosclassesenforcebundlingswift-and-macosclassesenforcebundlingswift"><a class="header" href="#iosclassesenforcebundlingswift-and-macosclassesenforcebundlingswift"><code>ios/Classes/EnforceBundling.swift</code> and <code>macos/Classes/EnforceBundling.swift</code></a></h3>
 <pre><code class="language-swift">public func dummyMethodToEnforceBundling() -&gt; Int64 {
@@ -224,9 +224,9 @@ you can thank the <code>XCFramework</code> for this simplicity.</p>
 # We cannot distribute the XCFramework alongside the library directly,
 # so we have to fetch the correct version here.
 framework_name = 'LibraryName.xcframework'
-remote_zip_name = &quot;#{framework_name}.zip&quot;
-url = &quot;https://github.com/YourGitHubAccount/repo_name/releases/download/#{release_tag_name}/#{remote_zip_name}&quot;
-local_zip_name = &quot;#{release_tag_name}.zip&quot;
+remote_zip_name = "#{framework_name}.zip"
+url = "https://github.com/YourGitHubAccount/repo_name/releases/download/#{release_tag_name}/#{remote_zip_name}"
+local_zip_name = "#{release_tag_name}.zip"
 `
 cd Frameworks
 rm -rf #{framework_name}
@@ -251,7 +251,7 @@ Pod::Spec.new do |spec|
   spec.source              = { :path =&gt; '.' }
   spec.source_files        = 'Classes/**/*'
   spec.public_header_files = 'Classes/**/*.h'
-  spec.vendored_frameworks = &quot;Frameworks/#{framework_name}&quot;
+  spec.vendored_frameworks = "Frameworks/#{framework_name}"
 
   spec.ios.deployment_target = '11.0'
   spec.osx.deployment_target = '10.11'
@@ -276,7 +276,7 @@ do
 done
 
 # Create XCFramework zip
-FRAMEWORK=&quot;LibraryName.xcframework&quot;
+FRAMEWORK="LibraryName.xcframework"
 LIBNAME=liblibrary_name.a
 mkdir mac-lipo ios-sim-lipo
 IOS_SIM_LIPO=ios-sim-lipo/$LIBNAME

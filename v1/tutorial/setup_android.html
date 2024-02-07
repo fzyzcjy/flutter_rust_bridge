@@ -195,7 +195,7 @@ languages to be run on the JVM via the <a href="https://docs.oracle.com/javase/7
 <li>on Linux: set via the environment variable <code>ANDROID_HOME</code>, or <code>~/Android/sdk</code></li>
 </ul>
 <h2 id="android_ndk-gradle-property"><a class="header" href="#android_ndk-gradle-property"><code>ANDROID_NDK</code> Gradle property</a></h2>
-<pre><code class="language-shell">echo &quot;ANDROID_NDK=(path to NDK)&quot; &gt;&gt; ~/.gradle/gradle.properties
+<pre><code class="language-shell">echo "ANDROID_NDK=(path to NDK)" &gt;&gt; ~/.gradle/gradle.properties
 </code></pre>
 <p>Next, you need to make this NDK visible to Gradle. The way to do this depends on your current system and is unlikely to be portable, but generally you can add a <code>gradle.properties</code> in your <code>~/.gradle</code> folder like this:</p>
 <pre><code>ANDROID_NDK=(path to NDK)

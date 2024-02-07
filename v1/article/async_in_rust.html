@@ -185,13 +185,13 @@
 <p>Many utility types, macros and functions are provided by the futures crate. They can be used in any async Rust application.</p>
 </blockquote>
 <blockquote>
-<p>Execution of async code, IO and task spawning are provided by &quot;async runtimes&quot;, such as Tokio and async-std. Most async applications, and some async crates, depend on a specific runtime.</p>
+<p>Execution of async code, IO and task spawning are provided by "async runtimes", such as Tokio and async-std. Most async applications, and some async crates, depend on a specific runtime.</p>
 </blockquote>
 <p>While the futures crate provides an executor called <code>futures::executor::block_on</code>, libraries that use Tokio runtime cannot use this executor. According to <a href="https://runrust.miraheze.org/wiki/Async_crate_comparison">Rust-lang community wiki</a>, crates like Tokio that provide both a runtime and IO abstractions often have their IO depend on the runtime. This can make it difficult to write runtime-agnostic code. First, we demonstrate a common use case of async programming in Rust by attempting to fetch the content of a file from the internet using the popular HTTP Client <a href="https://docs.rs/reqwest/0.11.6/reqwest/">Reqwest</a>:</p>
 <pre><code class="language-rust ignore">use anyhow;
 
 async fn get() -&gt; anyhow::Result&lt;String&gt; {
-    let url = &quot;https://link/to/file/download&quot;;
+    let url = "https://link/to/file/download";
     let data = reqwest::get(url).await?.text().await?;
     Ok(data)
 }</code></pre>
@@ -203,27 +203,27 @@ use futures::executor::block_on;
 
 fn get() -&gt; anyhow::Result&lt;String&gt; {
     block_on(async {
-        let url = &quot;https://link/to/file/download&quot;;
+        let url = "https://link/to/file/download";
         let data = reqwest::get(url).await?.text().await?;
         Ok(data)
     })
 }</code></pre>
-<p>Since Reqwest uses the Tokio runtime instead of the futures runtime, our code panicked with the error &quot;there is no reactor running, must be called from the context of a Tokio 1.x runtime&quot;. To fix this error, we have two ways to execute async codes using the Tokio runtime. Approach 1 is the simplest and uses the convenient <a href="https://docs.rs/tokio/1.14.0/tokio/attr.main.html"><code>tokio::main</code></a> macro to turn an async function to a synchronous one. Approach 2 requires you to explicitly create a new Tokio runtime and use its block_on function to run the future to completion.</p>
+<p>Since Reqwest uses the Tokio runtime instead of the futures runtime, our code panicked with the error "there is no reactor running, must be called from the context of a Tokio 1.x runtime". To fix this error, we have two ways to execute async codes using the Tokio runtime. Approach 1 is the simplest and uses the convenient <a href="https://docs.rs/tokio/1.14.0/tokio/attr.main.html"><code>tokio::main</code></a> macro to turn an async function to a synchronous one. Approach 2 requires you to explicitly create a new Tokio runtime and use its block_on function to run the future to completion.</p>
 <h2 id="approach-1-macro"><a class="header" href="#approach-1-macro">Approach 1 (macro)</a></h2>
 <pre><code class="language-rust ignore">use anyhow;
 
-#[tokio::main(flavor = &quot;current_thread&quot;)]
+#[tokio::main(flavor = "current_thread")]
 async fn get() -&gt; anyhow::Result&lt;String&gt; {
-    let url = &quot;https://link/to/file/download&quot;;
+    let url = "https://link/to/file/download";
     let data = reqwest::get(url).await?.text().await?;
     Ok(data)
 }</code></pre>
 <p>It has the following dependencies:</p>
 <pre><code class="language-toml">[dependencies]
-futures = &quot;0.3&quot;
-reqwest = &quot;0.11.6&quot;
-tokio = { version = &quot;1.14.0&quot;, features = [&quot;rt&quot;, &quot;macros&quot;] }
-anyhow = { version = &quot;1.0.49&quot; }
+futures = "0.3"
+reqwest = "0.11.6"
+tokio = { version = "1.14.0", features = ["rt", "macros"] }
+anyhow = { version = "1.0.49" }
 </code></pre>
 <h2 id="approach-2-runtime"><a class="header" href="#approach-2-runtime">Approach 2 (runtime)</a></h2>
 <pre><code class="language-rust ignore">use anyhow;
@@ -232,24 +232,24 @@ use tokio::runtime::Runtime;
 fn get() -&gt; anyhow::Result&lt;String&gt; {
     let rt = Runtime::new().unwrap();
     rt.block_on(async {
-        let url = &quot;https://link/to/file/download&quot;;
+        let url = "https://link/to/file/download";
         let data = reqwest::get(url).await?.text().await?;
         Ok(data)
     })
 }</code></pre>
 <p>It has the following dependencies:</p>
 <pre><code class="language-toml">[dependencies]
-futures = &quot;0.3&quot;
-reqwest = &quot;0.11.6&quot;
-tokio = { version = &quot;1.14.0&quot;, features = [&quot;rt-multi-thread&quot;] }
-anyhow = { version = &quot;1.0.49&quot; }
+futures = "0.3"
+reqwest = "0.11.6"
+tokio = { version = "1.14.0", features = ["rt-multi-thread"] }
+anyhow = { version = "1.0.49" }
 </code></pre>
 <h2 id="plain-futures"><a class="header" href="#plain-futures">Plain futures</a></h2>
 <p>If you are using the plain futures crate without runtimes like Tokio, you should be safe to wrap the asynchronous code in an async block and use the <a href="https://docs.rs/futures/0.3.18/futures/executor/fn.block_on.html"><code>futures::executor::block_on</code></a> to run the future to completion:</p>
 <pre><code class="language-rust ignore">use futures::executor::block_on;
 
 async fn hello_world() -&gt; String {
-    &quot;hello, world!&quot;.to_string()
+    "hello, world!".to_string()
 }
 
 fn get() -&gt; String {
@@ -259,7 +259,7 @@ fn get() -&gt; String {
 }
 
 fn main() {
-    println!(&quot;{}&quot;, get()); // prints &quot;hello, world!&quot;
+    println!("{}", get()); // prints "hello, world!"
 }</code></pre>
 <h2 id="avoid-async"><a class="header" href="#avoid-async">Avoid async</a></h2>
 <p>Lastly, you can avoid async code all together by using synchronously/blocking version of the functions if they are available. In Reqwest, there's a module called <code>reqwest::blocking</code> designed specifically for this purpose. So you can achieve the same thing above without using async.</p>
@@ -267,15 +267,15 @@ fn main() {
 use reqwest;
 
 fn get() -&gt; anyhow::Result&lt;String&gt; {
-    let url = &quot;https://link/to/file/download&quot;;
+    let url = "https://link/to/file/download";
     let data = reqwest::blocking::get(url)?.text()?;
     Ok(data)
 }</code></pre>
 <p>It has the following dependencies:</p>
 <pre><code class="language-toml">[dependencies]
-futures = &quot;0.3&quot;
-reqwest = { version = &quot;0.11.6&quot;, features = [&quot;blocking&quot;] }
-anyhow = { version = &quot;1.0.49&quot; }
+futures = "0.3"
+reqwest = { version = "0.11.6", features = ["blocking"] }
+anyhow = { version = "1.0.49" }
 </code></pre>
 
                     </main>

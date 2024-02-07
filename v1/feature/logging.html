@@ -209,7 +209,7 @@ To fix this error you should just rerun <code>flutter_rust_bridge_codegen</code>
 }
 </code></pre>
 <p>And now we can happily log anything in Rust:</p>
-<pre><code class="language-rust noplayground">log_stream_sink.add(LogEntry { msg: &quot;hello I am a log from Rust&quot;, ... })</code></pre>
+<pre><code class="language-rust noplayground">log_stream_sink.add(LogEntry { msg: "hello I am a log from Rust", ... })</code></pre>
 <p>Of course, you can implement a logger following the Rust's <code>log</code> crate wrapping this raw stream sink, then you can use standard Rust logging mechanisms like <code>info!</code>. I did exactly that in my project.</p>
 <h3 id="example-simple-timer"><a class="header" href="#example-simple-timer">Example: Simple timer</a></h3>
 <p>Credits: <a href="https://gist.github.com/Desdaemon/be5da0a1c6b4724f20093ef434959744">this</a> and <a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/347">#347</a>.</p>
@@ -283,7 +283,7 @@ class _MyHomePageState extends State&lt;MyHomePage&gt; {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: &lt;Widget&gt;[
-            const Text(&quot;Time since starting Rust stream&quot;),
+            const Text("Time since starting Rust stream"),
             StreamBuilder&lt;int&gt;(
               stream: ticks,
               builder: (context, snap) {

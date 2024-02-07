@@ -198,7 +198,7 @@ expect(fn(), 'Test_String');
 <p>Rust <code>api.rs</code>:</p>
 <pre><code class="language-rust noplayground">pub fn sync_accept_dart_opaque(opaque: DartOpaque) -&gt; SyncReturn&lt;String&gt; {
     drop(opaque);
-    SyncReturn(&quot;test&quot;.to_owned())
+    SyncReturn("test".to_owned())
 }
 
 pub fn async_accept_dart_opaque(opaque: DartOpaque) {
@@ -215,7 +215,7 @@ api.syncAcceptDartOpaque(opaque: () =&gt; 'Test_String');
 <pre><code class="language-rust noplayground">/// [DartWrapObject] can be safely retrieved on a dart thread.
 pub fn unwrap_dart_opaque(opaque: DartOpaque) -&gt; SyncReturn&lt;String&gt; {
     let handle = opaque.try_unwrap().unwrap();
-    SyncReturn(&quot;Test&quot;.to_owned())
+    SyncReturn("Test".to_owned())
 }
 
 /// [DartWrapObject] cannot be obtained 

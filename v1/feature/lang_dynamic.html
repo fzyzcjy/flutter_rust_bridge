@@ -208,14 +208,14 @@ Dart values, which can be obtained from Rust types that implement
     vec![
         ().into_dart(),
         0i32.into_dart(),
-        format!(&quot;Hello there!&quot;).into_dart()
+        format!("Hello there!").into_dart()
     ].into_dart()
 }</code></pre>
 <pre><code class="language-dart">final dynamic values = await api.returnDynamic();
 assert(values is List&lt;dynamic&gt;);
 assert(values[0] == null);
 assert(values[1] == 0);
-assert(values[2] == &quot;Hello there!&quot;);
+assert(values[2] == "Hello there!");
 </code></pre>
 <p><a href="https://docs.rs/flutter_rust_bridge/latest/flutter_rust_bridge/ffi/type.DartAbi.html"><code>DartAbi</code></a> is not supported as parameters, and structs that transitively include them may not be used in parameter positions either.
 If you only care about accepting or returning an opaque Dart object without interacting with it, consider <a href="./lang_dart_opaque.html"><code>DartOpaque</code></a>.</p>

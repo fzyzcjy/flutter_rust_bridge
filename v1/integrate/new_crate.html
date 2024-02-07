@@ -193,11 +193,11 @@ folders for ease of config, e.g.:</p>
 and the crate name will be used interchangeably.</p>
 <p>Next, add these two lines to your <code>Cargo.toml</code>:</p>
 <pre><code class="language-diff">+[lib]
-+crate-type = [&quot;staticlib&quot;, &quot;cdylib&quot;]
++crate-type = ["staticlib", "cdylib"]
 </code></pre>
 <p>This configures your crate to be output as a static library for MacOS and iOS,
 and a dynamic library on other platforms. Configure this to your needs.
-If you would like to write tests or benchmarks, append <code>&quot;rlib&quot;</code> to the list
+If you would like to write tests or benchmarks, append <code>"rlib"</code> to the list
 as well.</p>
 
                     </main>
