@@ -24,7 +24,18 @@
           "scope": {
             "enums": [],
             "modules": [],
-            "structs": [],
+            "structs": [
+              {
+                "ident": "MyStruct",
+                "mirror": false,
+                "path": [
+                  "crate",
+                  "api",
+                  "MyStruct"
+                ],
+                "visibility": "Public"
+              }
+            ],
             "type_alias": []
           }
         }

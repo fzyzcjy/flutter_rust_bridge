@@ -247,7 +247,8 @@ mod tests {
             &serde_json::to_value(crate_map)?,
             &rust_crate_dir.join("expect_source_graph.json"),
             &create_path_sanitizers(&test_fixture_dir),
-        )?;
+        )
+        .unwrap();
 
         let pack = parse(
             &ParserInternalConfig {
