@@ -11,7 +11,7 @@ use crate::codegen::parser::function_parser::{
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::TypeParserParsingContext;
 use crate::if_then_some;
-use anyhow::{bail, Context};
+use anyhow::{bail, ensure, Context};
 use syn::*;
 
 impl<'a, 'b> FunctionParser<'a, 'b> {
@@ -76,6 +76,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     ..Default::default()
                 });
             }
+
+            ensure!(TODO, "TODO");
         }
 
         partial_info_for_normal_type_raw(ty, &receiver.attrs, name)
