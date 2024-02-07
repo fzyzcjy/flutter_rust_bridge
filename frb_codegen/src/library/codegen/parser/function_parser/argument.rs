@@ -78,7 +78,10 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                 });
             }
 
-            ensure!(TODO, "TODO");
+            ensure!(
+                parse_receiver_ownership_mode(receiver) == OwnershipMode::Ref,
+                "If you want to use `self`/`&mut self`, please make the struct opaque (by adding `#[frb(opaque)]` on the struct)."
+            );
         }
 
         partial_info_for_normal_type_raw(ty, &receiver.attrs, name)
