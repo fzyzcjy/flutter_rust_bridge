@@ -28,6 +28,7 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
     debug!("integrate dart_root={dart_root:?}");
 
     let dart_package_name = get_dart_package_name(&dart_root)?;
+    let dart_rust_builder_package_name = format!("rust_builder_{dart_package_name}");
 
     extract_dir_and_modify(
         &INTEGRATION_TEMPLATE_DIR,
@@ -38,6 +39,7 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
                 src_raw,
                 existing_content,
                 &dart_package_name,
+                &dart_rust_builder_package_name,
                 &config.rust_crate_name,
                 &config.rust_crate_dir,
                 config.enable_local_dependency,
@@ -51,7 +53,7 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
     pub_add_dependencies(
         config.enable_integration_test,
         config.enable_local_dependency,
-        &dart_package_name,
+        &dart_rust_builder_package_name,
     )?;
 
     setup_cargokit_dependencies(&dart_root)?;
@@ -99,12 +101,14 @@ fn modify_file(
     src_raw: &[u8],
     existing_content: Option<Vec<u8>>,
     dart_package_name: &str,
+    dart_rust_builder_package_name: &str,
     rust_crate_name: &str,
     rust_crate_dir: &str,
     enable_local_dependency: bool,
 ) -> Option<(PathBuf, Vec<u8>)> {
     let replace_content_config = ReplaceContentConfig {
         dart_package_name,
+        dart_rust_builder_package_name,
         rust_crate_name,
         rust_crate_dir,
         enable_local_dependency,
@@ -175,6 +179,7 @@ fn replace_file_content(raw: &[u8], config: &ReplaceContentConfig) -> Vec<u8> {
 
 struct ReplaceContentConfig<'a> {
     dart_package_name: &'a str,
+    dart_rust_builder_package_name: &'a str,
     rust_crate_name: &'a str,
     rust_crate_dir: &'a str,
     enable_local_dependency: bool,
@@ -182,6 +187,10 @@ struct ReplaceContentConfig<'a> {
 
 fn replace_string_content(raw: &str, config: &ReplaceContentConfig) -> String {
     raw.replace("REPLACE_ME_DART_PACKAGE_NAME", config.dart_package_name)
+        .replace(
+            "REPLACE_ME_RUST_DART_RUST_BUILDER_PACKAGE_NAME",
+            config.dart_rust_builder_package_name,
+        )
         .replace("REPLACE_ME_RUST_CRATE_NAME", config.rust_crate_name)
         .replace("REPLACE_ME_RUST_CRATE_DIR", config.rust_crate_dir)
         .replace("REPLACE_ME_FRB_VERSION", env!("CARGO_PKG_VERSION"))
@@ -249,13 +258,13 @@ const CARGOKIT_PRELUDE: &[&str] = &[
 fn pub_add_dependencies(
     enable_integration_test: bool,
     enable_local_dependency: bool,
-    dart_package_name: &str,
+    dart_rust_builder_package_name: &str,
 ) -> Result<()> {
     // frb-coverage:ignore-end
     flutter_pub_add(
         &[
-            format!("rust_builder_{dart_package_name}"),
-            "--path=rust_builder".into(),
+            dart_rust_builder_package_name,
+            format!("--path={dart_rust_builder_package_name}"),
         ],
         None,
     )?;
