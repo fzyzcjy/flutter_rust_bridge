@@ -22,7 +22,7 @@ pub struct EmptyTwinRustAsyncSse;
 impl EmptyTwinRustAsyncSse {
     #[frb(ignore)]
     #[flutter_rust_bridge::frb(serialize)]
-    pub async fn method_should_not_exist_in_dart_twin_rust_async_sse() {}
+    pub async fn method_should_not_exist_in_dart_twin_rust_async_sse(&self) {}
 }
 
 #[flutter_rust_bridge::frb(serialize)]
@@ -48,3 +48,13 @@ pub async fn next_user_id_twin_rust_async_sse(
 
 // Note: Some attributes are put on `KitchenSinkTwinRustAsyncSse` currently
 // (but we can add more tests in this file later)
+
+#[frb(ignore)]
+pub struct IgnoredStructTwinRustAsyncSse {
+    pub value: u32,
+}
+
+impl IgnoredStructTwinRustAsyncSse {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub async fn method_should_not_exist_in_dart_twin_rust_async_sse(&self) {}
+}

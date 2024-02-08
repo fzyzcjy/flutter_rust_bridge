@@ -18,7 +18,7 @@ pub struct EmptyTwinNormal;
 
 impl EmptyTwinNormal {
     #[frb(ignore)]
-    pub fn method_should_not_exist_in_dart_twin_normal() {}
+    pub fn method_should_not_exist_in_dart_twin_normal(&self) {}
 }
 
 pub fn handle_customized_struct_twin_normal(val: CustomizedTwinNormal) {
@@ -40,3 +40,12 @@ pub fn next_user_id_twin_normal(user_id: UserIdTwinNormal) -> UserIdTwinNormal {
 
 // Note: Some attributes are put on `KitchenSinkTwinNormal` currently
 // (but we can add more tests in this file later)
+
+#[frb(ignore)]
+pub struct IgnoredStructTwinNormal {
+    pub value: u32,
+}
+
+impl IgnoredStructTwinNormal {
+    pub fn method_should_not_exist_in_dart_twin_normal(&self) {}
+}

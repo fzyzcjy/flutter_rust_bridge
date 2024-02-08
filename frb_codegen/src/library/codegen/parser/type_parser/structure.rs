@@ -57,6 +57,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             fields,
             is_fields_named,
             dart_metadata,
+            ignore: attributes.ignore(),
             comments,
         })
     }
