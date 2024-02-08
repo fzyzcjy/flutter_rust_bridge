@@ -12,5 +12,6 @@ flutter_rust_bridge = { path = "../../../frb_rust" }
 log = "0.4.19"
 
 [build-dependencies]
+// Please use flutter_rust_bridge_codegen = "2.x.x" for your app.
 flutter_rust_bridge_codegen = { path = "../../../frb_codegen" }
 anyhow = { version = "1.0.64", features = ["backtrace"] }
