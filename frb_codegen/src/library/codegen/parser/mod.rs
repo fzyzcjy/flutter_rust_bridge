@@ -145,13 +145,14 @@ mod tests {
     use crate::codegen::parser::parse;
     use crate::codegen::parser::reader::CachedRustReader;
     use crate::codegen::parser::source_graph::crates::Crate;
+    use crate::codegen::parser::IrPack;
     use crate::utils::logs::configure_opinionated_test_logging;
     use crate::utils::test_utils::{
         create_path_sanitizers, get_test_fixture_dir, json_golden_test,
     };
     use log::info;
     use serial_test::serial;
-    use std::path::Path;
+    use std::path::{Path, PathBuf};
 
     #[test]
     #[serial]
@@ -204,11 +205,35 @@ mod tests {
         body("library/codegen/parser/mod/generics", None)
     }
 
+    #[test]
+    #[serial]
+    fn test_error_non_opaque_mut() -> anyhow::Result<()> {
+        let result = execute_parse("library/codegen/parser/mod/error_non_opaque_mut", None);
+        assert!(format!("{:#?}", result.err().unwrap())
+            .contains("If you want to use `self`/`&mut self`"));
+        Ok(())
+    }
+
     #[allow(clippy::type_complexity)]
     fn body(
         fixture_name: &str,
         rust_input_path_pack: Option<Box<dyn Fn(&Path) -> RustInputPathPack>>,
     ) -> anyhow::Result<()> {
+        let (actual_ir, rust_crate_dir) = execute_parse(fixture_name, rust_input_path_pack)?;
+        json_golden_test(
+            &serde_json::to_value(actual_ir)?,
+            &rust_crate_dir.join("expect_ir.json"),
+            &[],
+        )?;
+
+        Ok(())
+    }
+
+    #[allow(clippy::type_complexity)]
+    fn execute_parse(
+        fixture_name: &str,
+        rust_input_path_pack: Option<Box<dyn Fn(&Path) -> RustInputPathPack>>,
+    ) -> anyhow::Result<(IrPack, PathBuf)> {
         configure_opinionated_test_logging();
         let test_fixture_dir = get_test_fixture_dir(fixture_name);
         let rust_crate_dir = test_fixture_dir.clone();
@@ -223,9 +248,10 @@ mod tests {
             &serde_json::to_value(crate_map)?,
             &rust_crate_dir.join("expect_source_graph.json"),
             &create_path_sanitizers(&test_fixture_dir),
-        )?;
+        )
+        .unwrap();
 
-        let actual_ir = parse(
+        let pack = parse(
             &ParserInternalConfig {
                 rust_input_path_pack: rust_input_path_pack.map(|f| f(&rust_crate_dir)).unwrap_or(
                     RustInputPathPack {
@@ -240,12 +266,7 @@ mod tests {
             &Dumper(&Default::default()),
             &GeneratorProgressBarPack::new(),
         )?;
-        json_golden_test(
-            &serde_json::to_value(actual_ir)?,
-            &rust_crate_dir.join("expect_ir.json"),
-            &[],
-        )?;
 
-        Ok(())
+        Ok((pack, rust_crate_dir))
     }
 }

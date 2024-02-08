@@ -2,6 +2,7 @@ use crate::codegen::ir::field::{IrField, IrFieldSettings};
 use crate::codegen::ir::func::{IrFuncMode, IrFuncOwnerInfo};
 use crate::codegen::ir::ident::IrIdent;
 use crate::codegen::ir::ty::boxed::IrTypeBoxed;
+use crate::codegen::ir::ty::rust_auto_opaque::OwnershipMode;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::Boxed;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
@@ -11,7 +12,7 @@ use crate::codegen::parser::function_parser::{
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::TypeParserParsingContext;
 use crate::if_then_some;
-use anyhow::{bail, Context};
+use anyhow::{bail, ensure, Context};
 use syn::*;
 
 impl<'a, 'b> FunctionParser<'a, 'b> {
@@ -76,6 +77,11 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     ..Default::default()
                 });
             }
+
+            ensure!(
+                parse_receiver_ownership_mode(receiver) == OwnershipMode::Ref,
+                "If you want to use `self`/`&mut self`, please make the struct opaque (by adding `#[frb(opaque)]` on the struct)."
+            );
         }
 
         partial_info_for_normal_type_raw(ty, &receiver.attrs, name)
@@ -184,13 +190,21 @@ fn parse_name_from_pat_type(pat_type: &PatType) -> anyhow::Result<String> {
 }
 
 fn generate_ref_type_considering_reference(raw: &str, receiver: &Receiver) -> String {
+    match parse_receiver_ownership_mode(receiver) {
+        OwnershipMode::Owned => raw.to_owned(),
+        OwnershipMode::RefMut => format!("&mut {raw}"),
+        OwnershipMode::Ref => format!("&{raw}"),
+    }
+}
+
+fn parse_receiver_ownership_mode(receiver: &Receiver) -> OwnershipMode {
     if receiver.reference.is_some() {
         if receiver.mutability.is_some() {
-            format!("&mut {raw}")
+            OwnershipMode::RefMut
         } else {
-            format!("&{raw}")
+            OwnershipMode::Ref
         }
     } else {
-        raw.to_owned()
+        OwnershipMode::Owned
     }
 }
