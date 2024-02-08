@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.0.0-dev.24
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Support ignoring all methods of a struct #1730
+* Allow Rust structs to become Dart callable objects #1728
+* Improve hints when using non-meaningful `&mut` #1739
+* Allow Dart GC to collect when a Stream is created but not closed #1737
+* Make rust_builder has unique name to avoid conflicts #1738
+* Inform users when both config file and command line arguments are used #1731
+
 ## 2.0.0-dev.23
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
