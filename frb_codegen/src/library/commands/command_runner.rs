@@ -21,15 +21,15 @@ use std::process::Output;
 #[doc(hidden)]
 #[macro_export]
 macro_rules! command_run {
-    ($binary:literal, $($rest:tt)*) => {{
+    ($binary:ident, $($rest:tt)*) => {{
         let args = $crate::command_args!($($rest)*);
         $crate::library::commands::command_runner::execute_command($binary, args.iter(), None, None)
     }};
-    ($binary:literal in $pwd:expr, envs = $envs:expr, $($rest:tt)*) => {{
+    ($binary:ident in $pwd:expr, envs = $envs:expr, $($rest:tt)*) => {{
         let args = $crate::command_args!($($rest)*);
         $crate::library::commands::command_runner::execute_command($binary, args.iter(), $pwd, $envs)
     }};
-    ($binary:literal in $pwd:expr, $($rest:tt)*) => {{
+    ($binary:ident in $pwd:expr, $($rest:tt)*) => {{
         $crate::command_run!($binary in $pwd, envs = None, $($rest)*)
     }};
     ($command:path $([ $($args:expr),* ])?, $($rest:tt)*) => {{
