@@ -84,8 +84,8 @@ pub(crate) fn call_shell(
 }
 
 pub(crate) struct CommandInfo {
-    program: String,
-    args: Vec<String>,
+    pub program: String,
+    pub args: Vec<String>,
 }
 
 pub(crate) fn call_shell_info(cmd: &[PathBuf]) -> CommandInfo {
