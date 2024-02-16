@@ -79,6 +79,7 @@ pub(crate) fn call_shell(
     envs: Option<HashMap<String, String>>,
 ) -> anyhow::Result<Output> {
     let CommandInfo { program, args } = call_shell_info(cmd);
+    let program = &program;
     command_run!(program in pwd, envs = envs, *args)
 }
 

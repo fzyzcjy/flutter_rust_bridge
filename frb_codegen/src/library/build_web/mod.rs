@@ -72,18 +72,19 @@ fn dart_run(
     args: Vec<String>,
 ) -> anyhow::Result<ExitStatus> {
     let handle = {
-        let mut args: Vec<PathBuf> = vec!["dart".into()];
-        args.extend(repo.command_extra_args().into_iter().map_into());
-        args.push("run".into());
+        let mut cmd_args: Vec<PathBuf> = vec!["dart".into()];
+        cmd_args.extend(repo.command_extra_args().into_iter().map_into());
+        cmd_args.push("run".into());
         if dart_coverage {
-            args.extend([
+            cmd_args.extend([
                 "--pause-isolates-on-exit".into(),
                 "--disable-service-auth-codes".into(),
                 "--enable-vm-service=8181".into(),
             ]);
         }
+        cmd_args.extend(args.into_iter().map_into());
 
-        let info = call_shell_info(&args);
+        let info = call_shell_info(&cmd_args);
         Command::new(info.program)
             .args(info.args)
             .current_dir(current_dir)
