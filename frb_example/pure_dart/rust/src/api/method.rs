@@ -113,3 +113,17 @@ impl MyCallableTwinNormal {
         self.one.clone() + &two
     }
 }
+
+pub struct SimpleStructTwinNormal {
+    pub one: String,
+}
+
+impl SimpleStructTwinNormal {
+    pub fn return_self_twin_normal(one: String) -> Self {
+        Self { one }
+    }
+
+    pub fn arg_self_twin_normal(a: Self, b: Self) -> String {
+        a.one + b.one
+    }
+}
