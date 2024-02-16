@@ -94,4 +94,19 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final callable = MyCallableTwinRustAsync(one: 'One');
     expect(await callable(two: 'Two'), 'OneTwo');
   });
+
+  group('SimpleStruct', () {
+    test('returnSelf', () async {
+      expect(
+          await SimpleStructTwinRustAsync.returnSelfTwinRustAsync(one: 'One'),
+          'One');
+    });
+
+    test('argSelf', () async {
+      final a = SimpleStructTwinRustAsync(one: 'a');
+      final b = SimpleStructTwinRustAsync(one: 'b');
+      expect(await SimpleStructTwinRustAsync.argSelfTwinRustAsync(a: a, b: b),
+          'ab');
+    });
+  });
 }

@@ -134,3 +134,19 @@ impl MyCallableTwinSse {
         self.one.clone() + &two
     }
 }
+
+pub struct SimpleStructTwinSse {
+    pub one: String,
+}
+
+impl SimpleStructTwinSse {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub fn return_self_twin_sse(one: String) -> Self {
+        Self { one }
+    }
+
+    #[flutter_rust_bridge::frb(serialize)]
+    pub fn arg_self_twin_sse(a: Self, b: Self) -> String {
+        a.one + b.one
+    }
+}
