@@ -78,9 +78,8 @@ pub(crate) fn call_shell(
     pwd: Option<&Path>,
     envs: Option<HashMap<String, String>>,
 ) -> anyhow::Result<Output> {
-    let info = call_shell_info(cmd);
-    #[cfg(not(windows))]
-    command_run!(info.program in pwd, envs = envs, *info.args)
+    let CommandInfo { program, args } = call_shell_info(cmd);
+    command_run!(program in pwd, envs = envs, *args)
 }
 
 pub(crate) struct CommandInfo {

@@ -5,6 +5,7 @@ use crate::library::commands::command_runner::{call_shell, call_shell_info, chec
 use crate::utils::dart_repository::dart_repo::DartRepository;
 use crate::utils::path_utils::{find_dart_package_dir, path_to_string};
 use anyhow::{bail, Context};
+use itertools::Itertools;
 use log::debug;
 use std::path::{Path, PathBuf};
 use std::process::{Command, ExitStatus};
@@ -71,18 +72,18 @@ fn dart_run(
     args: Vec<String>,
 ) -> anyhow::Result<ExitStatus> {
     let handle = {
-        let mut args = vec!["dart".to_owned()];
-        args.extend(repo.command_extra_args());
-        args.push("run".to_owned());
+        let mut args: Vec<PathBuf> = vec!["dart".into()];
+        args.extend(repo.command_extra_args().into_iter().map_into());
+        args.push("run".into());
         if dart_coverage {
             args.extend([
-                "--pause-isolates-on-exit".to_owned(),
-                "--disable-service-auth-codes".to_owned(),
-                "--enable-vm-service=8181".to_owned(),
+                "--pause-isolates-on-exit".into(),
+                "--disable-service-auth-codes".into(),
+                "--enable-vm-service=8181".into(),
             ]);
         }
 
-        let info = call_shell_info(args);
+        let info = call_shell_info(&args);
         Command::new(info.program)
             .args(info.args)
             .current_dir(current_dir)
