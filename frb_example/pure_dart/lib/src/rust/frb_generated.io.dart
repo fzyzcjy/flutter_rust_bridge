@@ -18742,7 +18742,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     final ans = wire.cst_new_list_Uuid(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      cst_api_fill_to_wire_Uuid(raw[i], ans.ref.ptr[i]);
+      ans.ref.ptr[i] = cst_encode_Uuid(raw[i]);
     }
     return ans;
   }
