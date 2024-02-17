@@ -10,6 +10,7 @@ pub(crate) mod type_parser;
 
 use crate::codegen::dumper::Dumper;
 use crate::codegen::ir::pack::IrPack;
+use crate::codegen::ir::ty::IrType;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::codegen::parser::function_extractor::extract_generalized_functions_from_file;
 use crate::codegen::parser::function_parser::FunctionParser;
@@ -20,9 +21,9 @@ use crate::codegen::parser::source_graph::modules::{Enum, Struct};
 use crate::codegen::parser::type_alias_resolver::resolve_type_aliases;
 use crate::codegen::parser::type_parser::TypeParser;
 use crate::codegen::ConfigDumpContent;
-use itertools::Itertools;
-use log::trace;
-use std::collections::HashMap;
+use itertools::{concat, Itertools};
+use log::{trace, warn};
+use std::collections::{HashMap, HashSet};
 use std::path::{Path, PathBuf};
 use syn::File;
 use ConfigDumpContent::SourceGraph;
@@ -145,7 +146,22 @@ fn sanity_check_unused_struct_enum(
     src_structs: &HashMap<String, &Struct>,
     src_enums: &HashMap<String, &Enum>,
 ) {
-    todo!()
+    let all_types: HashSet<String> = [src_structs.keys(), src_enums.keys()].concat();
+    let used_types: HashSet<String> = pack
+        .distinct_types(None)
+        .into_iter()
+        .filter_map(|ty| match ty {
+            IrType::StructRef(ty) => Some(ty.ident.0.name.clone()),
+            IrType::EnumRef(ty) => Some(ty.ident.0.name.clone()),
+            _ => None,
+        })
+        .collect();
+    if all_types != used_types {
+        warn!(
+            "Some structs/enums are exported as `pub`, but are never used in any `pub` functions, thus they are ignored: {:?}",
+            all_types.difference(&used_types),
+        )
+    }
 }
 
 #[cfg(test)]
