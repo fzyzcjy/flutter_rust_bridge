@@ -18,6 +18,8 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
         Ok(Some(match last_segment {
+            ("Self", []) => self.parse_type_self(),
+
             ("Duration", []) => Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Duration)),
             ("NaiveDateTime", []) => Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Naive)),
             ("DateTime", args) => self.parse_datetime(args)?,
@@ -70,6 +72,10 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
             _ => return Ok(None),
         }))
+    }
+
+    fn parse_type_self(&mut self) -> anyhow::Result<IrType> {
+        todo!()
     }
 
     // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
