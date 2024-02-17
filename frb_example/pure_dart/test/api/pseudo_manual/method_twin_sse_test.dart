@@ -104,5 +104,11 @@ Future<void> main({bool skipRustLibInit = false}) async {
       final b = SimpleStructTwinSse(one: 'b');
       expect(await SimpleStructTwinSse.argSelfTwinSse(a: a, b: b), 'ab');
     });
+
+    test('vecSelf', () async {
+      final a = SimpleStructTwinSse(one: 'a');
+      final b = SimpleStructTwinSse(one: 'b');
+      expect(await SimpleStructTwinSse.vecSelfTwinSse(arg: [a, b]), ['a', 'b']);
+    });
   });
 }

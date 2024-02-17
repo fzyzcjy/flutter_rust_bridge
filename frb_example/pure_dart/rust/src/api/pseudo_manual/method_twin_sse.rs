@@ -147,6 +147,11 @@ impl SimpleStructTwinSse {
 
     #[flutter_rust_bridge::frb(serialize)]
     pub fn arg_self_twin_sse(a: Self, b: Self) -> String {
-        a.one + b.one
+        a.one + &b.one
+    }
+
+    #[flutter_rust_bridge::frb(serialize)]
+    pub fn vec_self_twin_sse(arg: Vec<Self>) -> Vec<String> {
+        arg.into_iter().map(|x| x.one).collect()
     }
 }

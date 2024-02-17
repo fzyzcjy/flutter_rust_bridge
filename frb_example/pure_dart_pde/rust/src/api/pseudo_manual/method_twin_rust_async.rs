@@ -130,6 +130,10 @@ impl SimpleStructTwinRustAsync {
     }
 
     pub async fn arg_self_twin_rust_async(a: Self, b: Self) -> String {
-        a.one + b.one
+        a.one + &b.one
+    }
+
+    pub async fn vec_self_twin_rust_async(arg: Vec<Self>) -> Vec<String> {
+        arg.into_iter().map(|x| x.one).collect()
     }
 }

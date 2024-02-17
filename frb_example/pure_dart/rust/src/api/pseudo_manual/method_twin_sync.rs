@@ -142,6 +142,11 @@ impl SimpleStructTwinSync {
 
     #[flutter_rust_bridge::frb(sync)]
     pub fn arg_self_twin_sync(a: Self, b: Self) -> String {
-        a.one + b.one
+        a.one + &b.one
+    }
+
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn vec_self_twin_sync(arg: Vec<Self>) -> Vec<String> {
+        arg.into_iter().map(|x| x.one).collect()
     }
 }

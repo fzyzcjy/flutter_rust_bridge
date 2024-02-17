@@ -151,6 +151,11 @@ impl SimpleStructTwinRustAsyncSse {
 
     #[flutter_rust_bridge::frb(serialize)]
     pub async fn arg_self_twin_rust_async_sse(a: Self, b: Self) -> String {
-        a.one + b.one
+        a.one + &b.one
+    }
+
+    #[flutter_rust_bridge::frb(serialize)]
+    pub async fn vec_self_twin_rust_async_sse(arg: Vec<Self>) -> Vec<String> {
+        arg.into_iter().map(|x| x.one).collect()
     }
 }

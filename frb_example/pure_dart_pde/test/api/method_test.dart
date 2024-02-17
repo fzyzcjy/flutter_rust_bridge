@@ -104,5 +104,12 @@ Future<void> main({bool skipRustLibInit = false}) async {
       final b = SimpleStructTwinNormal(one: 'b');
       expect(await SimpleStructTwinNormal.argSelfTwinNormal(a: a, b: b), 'ab');
     });
+
+    test('vecSelf', () async {
+      final a = SimpleStructTwinNormal(one: 'a');
+      final b = SimpleStructTwinNormal(one: 'b');
+      expect(await SimpleStructTwinNormal.vecSelfTwinNormal(arg: [a, b]),
+          ['a', 'b']);
+    });
   });
 }

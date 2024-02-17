@@ -108,5 +108,12 @@ Future<void> main({bool skipRustLibInit = false}) async {
       expect(await SimpleStructTwinRustAsync.argSelfTwinRustAsync(a: a, b: b),
           'ab');
     });
+
+    test('vecSelf', () async {
+      final a = SimpleStructTwinRustAsync(one: 'a');
+      final b = SimpleStructTwinRustAsync(one: 'b');
+      expect(await SimpleStructTwinRustAsync.vecSelfTwinRustAsync(arg: [a, b]),
+          ['a', 'b']);
+    });
   });
 }
