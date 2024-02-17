@@ -8,15 +8,13 @@ impl<'a> WireDartCodecDcoGeneratorDecoderTrait for GeneralListWireDartCodecDcoGe
     fn generate_impl_decode_body(&self) -> String {
         if let IrType::Delegate(delegate) = &*self.ir.inner {
             if let IrTypeDelegate::Uuid = delegate {
-                return "
-                    const kUuidSizeInBytes = 16;
+                return "const kUuidSizeInBytes = 16;
                     final bytes = dco_decode_list_prim_u_8(raw);
                     return List.generate(
                       bytes.lengthInBytes ~/ kUuidSizeInBytes,
                       (i) => UuidValue.fromByteList(Uint8List.view(bytes.buffer, i * kUuidSizeInBytes, kUuidSizeInBytes)),
                       growable: false,
-                    );
-                ".to_owned();
+                    );".to_owned();
             }
         }
 
