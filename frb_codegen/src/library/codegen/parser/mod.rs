@@ -21,7 +21,7 @@ use crate::codegen::parser::source_graph::modules::{Enum, Struct};
 use crate::codegen::parser::type_alias_resolver::resolve_type_aliases;
 use crate::codegen::parser::type_parser::TypeParser;
 use crate::codegen::ConfigDumpContent;
-use itertools::{concat, Itertools};
+use itertools::Itertools;
 use log::{trace, warn};
 use std::collections::{HashMap, HashSet};
 use std::path::{Path, PathBuf};
@@ -66,7 +66,7 @@ pub(crate) fn parse(
     let src_enums = crate_map.root_module().collect_enums();
     let src_types = resolve_type_aliases(crate_map.root_module().collect_types());
 
-    let mut type_parser = TypeParser::new(src_structs, src_enums, src_types);
+    let mut type_parser = TypeParser::new(src_structs.clone(), src_enums.clone(), src_types);
     let mut function_parser = FunctionParser::new(&mut type_parser);
 
     let ir_funcs = src_fns
@@ -146,7 +146,14 @@ fn sanity_check_unused_struct_enum(
     src_structs: &HashMap<String, &Struct>,
     src_enums: &HashMap<String, &Enum>,
 ) {
-    let all_types: HashSet<String> = [src_structs.keys(), src_enums.keys()].concat();
+    let all_types: HashSet<String> = [
+        src_structs.keys().map_into().collect_vec(),
+        src_enums.keys().map_into().collect_vec(),
+    ]
+    .concat()
+    .into_iter()
+    .collect();
+
     let used_types: HashSet<String> = pack
         .distinct_types(None)
         .into_iter()
@@ -156,6 +163,7 @@ fn sanity_check_unused_struct_enum(
             _ => None,
         })
         .collect();
+
     if all_types != used_types {
         warn!(
             "Some structs/enums are exported as `pub`, but are never used in any `pub` functions, thus they are ignored: {:?}",
