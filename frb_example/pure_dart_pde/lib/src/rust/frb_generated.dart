@@ -36437,7 +36437,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   List<UuidValue> dco_decode_list_Uuid(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     const kUuidSizeInBytes = 16;
-    final bytes = dco_decode_list_prim_u_8(raw);
+    final bytes = dco_decode_list_prim_u_8_strict(raw);
     return List.generate(
       bytes.lengthInBytes ~/ kUuidSizeInBytes,
       (i) => UuidValue.fromByteList(
