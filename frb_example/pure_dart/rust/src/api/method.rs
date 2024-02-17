@@ -124,6 +124,10 @@ impl SimpleStructTwinNormal {
     }
 
     pub fn arg_self_twin_normal(a: Self, b: Self) -> String {
-        a.one + b.one
+        a.one + &b.one
+    }
+
+    pub fn vec_self_twin_normal(arg: Vec<Self>) -> Vec<String> {
+        arg.into_iter().map(|x| x.one).collect()
     }
 }
