@@ -16,11 +16,13 @@ use crate::codegen::parser::function_parser::FunctionParser;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::parser::misc::parse_has_executor;
 use crate::codegen::parser::reader::CachedRustReader;
+use crate::codegen::parser::source_graph::modules::{Enum, Struct};
 use crate::codegen::parser::type_alias_resolver::resolve_type_aliases;
 use crate::codegen::parser::type_parser::TypeParser;
 use crate::codegen::ConfigDumpContent;
 use itertools::Itertools;
 use log::trace;
+use std::collections::HashMap;
 use std::path::{Path, PathBuf};
 use syn::File;
 use ConfigDumpContent::SourceGraph;
@@ -90,12 +92,16 @@ pub(crate) fn parse(
 
     let (struct_pool, enum_pool) = type_parser.consume();
 
-    Ok(IrPack {
+    let ans = IrPack {
         funcs: ir_funcs,
         struct_pool,
         enum_pool,
         has_executor,
-    })
+    };
+
+    sanity_check_unused_struct_enum(&ans, &src_structs, &src_enums);
+
+    Ok(ans)
 }
 
 struct FileData {
@@ -132,6 +138,14 @@ fn read_files(
             })
         })
         .collect()
+}
+
+fn sanity_check_unused_struct_enum(
+    pack: &IrPack,
+    src_structs: &HashMap<String, &Struct>,
+    src_enums: &HashMap<String, &Enum>,
+) {
+    todo!()
 }
 
 #[cfg(test)]
