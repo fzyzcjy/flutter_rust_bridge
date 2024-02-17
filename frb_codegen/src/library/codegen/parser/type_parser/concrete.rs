@@ -1,3 +1,4 @@
+use crate::codegen::ir::func::IrFuncOwnerInfo;
 use crate::codegen::ir::ty::boxed::IrTypeBoxed;
 use crate::codegen::ir::ty::dart_opaque::IrTypeDartOpaque;
 use crate::codegen::ir::ty::delegate::{
@@ -9,8 +10,9 @@ use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{Boxed, DartOpaque, Delegate, Dynamic};
 use crate::codegen::parser::type_parser::unencodable::{splay_segments, SplayedSegment};
 use crate::codegen::parser::type_parser::TypeParserWithContext;
+use crate::if_then_some;
 use anyhow::bail;
-use syn::Type;
+use syn::{parse_str, Type};
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_concrete(
@@ -18,6 +20,8 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
         Ok(Some(match last_segment {
+            ("Self", []) => self.parse_type_self()?,
+
             ("Duration", []) => Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Duration)),
             ("NaiveDateTime", []) => Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Naive)),
             ("DateTime", args) => self.parse_datetime(args)?,
@@ -70,6 +74,11 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
             _ => return Ok(None),
         }))
+    }
+
+    fn parse_type_self(&mut self) -> anyhow::Result<IrType> {
+        let enum_or_struct_name = if_then_some!(let IrFuncOwnerInfo::Method(info) = self.context.owner.as_ref().unwrap(), info.enum_or_struct_name.name.clone()).unwrap();
+        self.parse_type(&parse_str::<Type>(&enum_or_struct_name)?)
     }
 
     // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool

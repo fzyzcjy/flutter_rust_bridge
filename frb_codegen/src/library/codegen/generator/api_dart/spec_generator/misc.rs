@@ -73,9 +73,7 @@ pub(crate) fn generate_imports_which_types_and_funcs_use(
             (types.iter()).for_each(|x| x.visit_types(&mut |ty| gatherer.add(ty), context.ir_pack));
         }
         if let Some(funcs) = seed_funcs {
-            (funcs.iter()).for_each(|x| {
-                x.visit_types(&mut |ty| gatherer.add(ty), true, true, context.ir_pack)
-            });
+            (funcs.iter()).for_each(|x| x.visit_types(&mut |ty| gatherer.add(ty), context.ir_pack));
         }
         gatherer.gather()
     };

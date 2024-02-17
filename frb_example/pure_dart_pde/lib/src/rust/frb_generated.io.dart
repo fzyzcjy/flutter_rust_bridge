@@ -1651,6 +1651,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Sequences dco_decode_box_autoadd_sequences(dynamic raw);
 
   @protected
+  SimpleStructTwinNormal dco_decode_box_autoadd_simple_struct_twin_normal(
+      dynamic raw);
+
+  @protected
+  SimpleStructTwinRustAsync
+      dco_decode_box_autoadd_simple_struct_twin_rust_async(dynamic raw);
+
+  @protected
+  SimpleStructTwinSync dco_decode_box_autoadd_simple_struct_twin_sync(
+      dynamic raw);
+
+  @protected
   SomeStructTwinNormal dco_decode_box_autoadd_some_struct_twin_normal(
       dynamic raw);
 
@@ -2694,6 +2706,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<(String, String)> dco_decode_list_record_string_string(dynamic raw);
 
   @protected
+  List<SimpleStructTwinNormal> dco_decode_list_simple_struct_twin_normal(
+      dynamic raw);
+
+  @protected
+  List<SimpleStructTwinRustAsync> dco_decode_list_simple_struct_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  List<SimpleStructTwinSync> dco_decode_list_simple_struct_twin_sync(
+      dynamic raw);
+
+  @protected
   List<SumWithTwinNormal> dco_decode_list_sum_with_twin_normal(dynamic raw);
 
   @protected
@@ -3336,6 +3360,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   Sequences dco_decode_sequences(dynamic raw);
+
+  @protected
+  SimpleStructTwinNormal dco_decode_simple_struct_twin_normal(dynamic raw);
+
+  @protected
+  SimpleStructTwinRustAsync dco_decode_simple_struct_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  SimpleStructTwinSync dco_decode_simple_struct_twin_sync(dynamic raw);
 
   @protected
   SomeStructTwinNormal dco_decode_some_struct_twin_normal(dynamic raw);
@@ -5008,6 +5042,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Sequences sse_decode_box_autoadd_sequences(SseDeserializer deserializer);
 
   @protected
+  SimpleStructTwinNormal sse_decode_box_autoadd_simple_struct_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  SimpleStructTwinRustAsync
+      sse_decode_box_autoadd_simple_struct_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  SimpleStructTwinSync sse_decode_box_autoadd_simple_struct_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
   SomeStructTwinNormal sse_decode_box_autoadd_some_struct_twin_normal(
       SseDeserializer deserializer);
 
@@ -6199,6 +6246,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  List<SimpleStructTwinNormal> sse_decode_list_simple_struct_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  List<SimpleStructTwinRustAsync> sse_decode_list_simple_struct_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  List<SimpleStructTwinSync> sse_decode_list_simple_struct_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
   List<SumWithTwinNormal> sse_decode_list_sum_with_twin_normal(
       SseDeserializer deserializer);
 
@@ -6924,6 +6983,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   Sequences sse_decode_sequences(SseDeserializer deserializer);
+
+  @protected
+  SimpleStructTwinNormal sse_decode_simple_struct_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  SimpleStructTwinRustAsync sse_decode_simple_struct_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  SimpleStructTwinSync sse_decode_simple_struct_twin_sync(
+      SseDeserializer deserializer);
 
   @protected
   SomeStructTwinNormal sse_decode_some_struct_twin_normal(
@@ -8651,6 +8722,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       Sequences self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_simple_struct_twin_normal(
+      SimpleStructTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_simple_struct_twin_rust_async(
+      SimpleStructTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_simple_struct_twin_sync(
+      SimpleStructTwinSync self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_some_struct_twin_normal(
       SomeStructTwinNormal self, SseSerializer serializer);
 
@@ -9808,6 +9891,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       List<(String, String)> self, SseSerializer serializer);
 
   @protected
+  void sse_encode_list_simple_struct_twin_normal(
+      List<SimpleStructTwinNormal> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_simple_struct_twin_rust_async(
+      List<SimpleStructTwinRustAsync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_simple_struct_twin_sync(
+      List<SimpleStructTwinSync> self, SseSerializer serializer);
+
+  @protected
   void sse_encode_list_sum_with_twin_normal(
       List<SumWithTwinNormal> self, SseSerializer serializer);
 
@@ -10513,6 +10608,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_sequences(Sequences self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_simple_struct_twin_normal(
+      SimpleStructTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_simple_struct_twin_rust_async(
+      SimpleStructTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_simple_struct_twin_sync(
+      SimpleStructTwinSync self, SseSerializer serializer);
 
   @protected
   void sse_encode_some_struct_twin_normal(
