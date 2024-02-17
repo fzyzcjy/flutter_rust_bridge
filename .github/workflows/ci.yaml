@@ -10,8 +10,8 @@ on:
 env:
   CARGO_TERM_COLOR: always
   FRB_MAIN_RUST_VERSION: 1.74.0
-  FRB_MAIN_DART_VERSION: 3.2.0
-  FRB_MAIN_FLUTTER_VERSION: 3.16.0
+  FRB_MAIN_DART_VERSION: 3.3.0
+  FRB_MAIN_FLUTTER_VERSION: 3.19.0
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -147,7 +147,7 @@ jobs:
   # we avoid a ci dependency to cargo-msrv.
   # However, the code is left commented here in case this decission changes.
   # msrv:
-  #   name: 'Test :: FRB Codegen :: MSRV'    
+  #   name: 'Test :: FRB Codegen :: MSRV'
   #   runs-on: ubuntu-latest
   #   steps:
   #   - uses: actions/checkout@v2
@@ -210,7 +210,7 @@ jobs:
           flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
           architecture: x64
       - uses: taiki-e/install-action@cargo-llvm-cov
-      
+
       # execute
       - run: ./frb_internal generate-run-frb-codegen-command-generate --set-exit-if-changed --package ${{ matrix.package }} --coverage
 
@@ -559,8 +559,8 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: ${{ github.job }}--${{ matrix.info.image }}--${{ matrix.info.version }}--coverage
-          path: target/coverage  
-    
+          path: target/coverage
+
   test_dart_native:
     name: 'Test :: Dart :: Native'
     runs-on: ${{ matrix.image }}
