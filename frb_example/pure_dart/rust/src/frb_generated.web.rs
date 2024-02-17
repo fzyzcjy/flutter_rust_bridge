@@ -4129,6 +4129,44 @@ impl CstDecode<Vec<(String, String)>>
             .collect()
     }
 }
+impl CstDecode<Vec<crate::api::method::SimpleStructTwinNormal>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> Vec<crate::api::method::SimpleStructTwinNormal> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::method_twin_rust_async::SimpleStructTwinRustAsync>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> Vec<crate::api::pseudo_manual::method_twin_rust_async::SimpleStructTwinRustAsync> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::method_twin_sync::SimpleStructTwinSync>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> Vec<crate::api::pseudo_manual::method_twin_sync::SimpleStructTwinSync> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
 impl CstDecode<Vec<crate::api::method::SumWithTwinNormal>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -6259,6 +6297,65 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::Sequences>
             self_.length()
         );
         crate::api::pseudo_manual::mirror_twin_sync_sse::Sequences(self_.get(0).cst_decode())
+    }
+}
+impl CstDecode<crate::api::method::SimpleStructTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> crate::api::method::SimpleStructTwinNormal {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::method::SimpleStructTwinNormal {
+            one: self_.get(0).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::method_twin_rust_async::SimpleStructTwinRustAsync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::method_twin_rust_async::SimpleStructTwinRustAsync {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::method_twin_rust_async::SimpleStructTwinRustAsync {
+            one: self_.get(0).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::method_twin_sync::SimpleStructTwinSync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> crate::api::pseudo_manual::method_twin_sync::SimpleStructTwinSync {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::method_twin_sync::SimpleStructTwinSync {
+            one: self_.get(0).cst_decode(),
+        }
     }
 }
 impl CstDecode<crate::api::exception::SomeStructTwinNormal>
@@ -11810,6 +11907,31 @@ pub fn wire_MyCallableTwinNormal_call(
     two: String,
 ) {
     wire_MyCallableTwinNormal_call_impl(port_, that, two)
+}
+
+#[wasm_bindgen]
+pub fn wire_SimpleStructTwinNormal_arg_self_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    b: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_SimpleStructTwinNormal_arg_self_twin_normal_impl(port_, a, b)
+}
+
+#[wasm_bindgen]
+pub fn wire_SimpleStructTwinNormal_return_self_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    one: String,
+) {
+    wire_SimpleStructTwinNormal_return_self_twin_normal_impl(port_, one)
+}
+
+#[wasm_bindgen]
+pub fn wire_SimpleStructTwinNormal_vec_self_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_SimpleStructTwinNormal_vec_self_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
@@ -22014,6 +22136,31 @@ pub fn wire_MyCallableTwinRustAsync_call(
 }
 
 #[wasm_bindgen]
+pub fn wire_SimpleStructTwinRustAsync_arg_self_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    b: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_SimpleStructTwinRustAsync_arg_self_twin_rust_async_impl(port_, a, b)
+}
+
+#[wasm_bindgen]
+pub fn wire_SimpleStructTwinRustAsync_return_self_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    one: String,
+) {
+    wire_SimpleStructTwinRustAsync_return_self_twin_rust_async_impl(port_, one)
+}
+
+#[wasm_bindgen]
+pub fn wire_SimpleStructTwinRustAsync_vec_self_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_SimpleStructTwinRustAsync_vec_self_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
 pub fn wire_SumWithTwinRustAsync_sum_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
@@ -22164,6 +22311,51 @@ pub fn wire_MyCallableTwinRustAsyncSse_call(
 }
 
 #[wasm_bindgen]
+pub fn wire_SimpleStructTwinRustAsyncSse_arg_self_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_SimpleStructTwinRustAsyncSse_arg_self_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire_SimpleStructTwinRustAsyncSse_return_self_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_SimpleStructTwinRustAsyncSse_return_self_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire_SimpleStructTwinRustAsyncSse_vec_self_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_SimpleStructTwinRustAsyncSse_vec_self_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
 pub fn wire_SumWithTwinRustAsyncSse_sum_twin_rust_async_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -22309,6 +22501,36 @@ pub fn wire_MyCallableTwinSse_call(
 }
 
 #[wasm_bindgen]
+pub fn wire_SimpleStructTwinSse_arg_self_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_SimpleStructTwinSse_arg_self_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_SimpleStructTwinSse_return_self_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_SimpleStructTwinSse_return_self_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_SimpleStructTwinSse_vec_self_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_SimpleStructTwinSse_vec_self_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
 pub fn wire_SumWithTwinSse_sum_twin_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -22408,6 +22630,28 @@ pub fn wire_MyCallableTwinSync_call(
     two: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_MyCallableTwinSync_call_impl(that, two)
+}
+
+#[wasm_bindgen]
+pub fn wire_SimpleStructTwinSync_arg_self_twin_sync(
+    a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    b: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_SimpleStructTwinSync_arg_self_twin_sync_impl(a, b)
+}
+
+#[wasm_bindgen]
+pub fn wire_SimpleStructTwinSync_return_self_twin_sync(
+    one: String,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_SimpleStructTwinSync_return_self_twin_sync_impl(one)
+}
+
+#[wasm_bindgen]
+pub fn wire_SimpleStructTwinSync_vec_self_twin_sync(
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_SimpleStructTwinSync_vec_self_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
@@ -22540,6 +22784,33 @@ pub fn wire_MyCallableTwinSyncSse_call(
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_MyCallableTwinSyncSse_call_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_SimpleStructTwinSyncSse_arg_self_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_SimpleStructTwinSyncSse_arg_self_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_SimpleStructTwinSyncSse_return_self_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_SimpleStructTwinSyncSse_return_self_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_SimpleStructTwinSyncSse_vec_self_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_SimpleStructTwinSyncSse_vec_self_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]

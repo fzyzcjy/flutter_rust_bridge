@@ -117,3 +117,21 @@ impl MyCallableTwinRustAsync {
         self.one.clone() + &two
     }
 }
+
+pub struct SimpleStructTwinRustAsync {
+    pub one: String,
+}
+
+impl SimpleStructTwinRustAsync {
+    pub async fn return_self_twin_rust_async(one: String) -> Self {
+        Self { one }
+    }
+
+    pub async fn arg_self_twin_rust_async(a: Self, b: Self) -> String {
+        a.one + &b.one
+    }
+
+    pub async fn vec_self_twin_rust_async(arg: Vec<Self>) -> Vec<String> {
+        arg.into_iter().map(|x| x.one).collect()
+    }
+}

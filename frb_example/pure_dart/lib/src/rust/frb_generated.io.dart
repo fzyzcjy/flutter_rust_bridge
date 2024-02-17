@@ -4134,6 +4134,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Sequences dco_decode_box_autoadd_sequences(dynamic raw);
 
   @protected
+  SimpleStructTwinNormal dco_decode_box_autoadd_simple_struct_twin_normal(
+      dynamic raw);
+
+  @protected
+  SimpleStructTwinRustAsync
+      dco_decode_box_autoadd_simple_struct_twin_rust_async(dynamic raw);
+
+  @protected
+  SimpleStructTwinRustAsyncSse
+      dco_decode_box_autoadd_simple_struct_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  SimpleStructTwinSse dco_decode_box_autoadd_simple_struct_twin_sse(
+      dynamic raw);
+
+  @protected
+  SimpleStructTwinSync dco_decode_box_autoadd_simple_struct_twin_sync(
+      dynamic raw);
+
+  @protected
+  SimpleStructTwinSyncSse dco_decode_box_autoadd_simple_struct_twin_sync_sse(
+      dynamic raw);
+
+  @protected
   SomeStructTwinNormal dco_decode_box_autoadd_some_struct_twin_normal(
       dynamic raw);
 
@@ -6189,6 +6213,29 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<(String, String)> dco_decode_list_record_string_string(dynamic raw);
 
   @protected
+  List<SimpleStructTwinNormal> dco_decode_list_simple_struct_twin_normal(
+      dynamic raw);
+
+  @protected
+  List<SimpleStructTwinRustAsync> dco_decode_list_simple_struct_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  List<SimpleStructTwinRustAsyncSse>
+      dco_decode_list_simple_struct_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  List<SimpleStructTwinSse> dco_decode_list_simple_struct_twin_sse(dynamic raw);
+
+  @protected
+  List<SimpleStructTwinSync> dco_decode_list_simple_struct_twin_sync(
+      dynamic raw);
+
+  @protected
+  List<SimpleStructTwinSyncSse> dco_decode_list_simple_struct_twin_sync_sse(
+      dynamic raw);
+
+  @protected
   List<SumWithTwinNormal> dco_decode_list_sum_with_twin_normal(dynamic raw);
 
   @protected
@@ -7392,6 +7439,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   Sequences dco_decode_sequences(dynamic raw);
+
+  @protected
+  SimpleStructTwinNormal dco_decode_simple_struct_twin_normal(dynamic raw);
+
+  @protected
+  SimpleStructTwinRustAsync dco_decode_simple_struct_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  SimpleStructTwinRustAsyncSse dco_decode_simple_struct_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  SimpleStructTwinSse dco_decode_simple_struct_twin_sse(dynamic raw);
+
+  @protected
+  SimpleStructTwinSync dco_decode_simple_struct_twin_sync(dynamic raw);
+
+  @protected
+  SimpleStructTwinSyncSse dco_decode_simple_struct_twin_sync_sse(dynamic raw);
 
   @protected
   SomeStructTwinNormal dco_decode_some_struct_twin_normal(dynamic raw);
@@ -11359,6 +11426,32 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Sequences sse_decode_box_autoadd_sequences(SseDeserializer deserializer);
 
   @protected
+  SimpleStructTwinNormal sse_decode_box_autoadd_simple_struct_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  SimpleStructTwinRustAsync
+      sse_decode_box_autoadd_simple_struct_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  SimpleStructTwinRustAsyncSse
+      sse_decode_box_autoadd_simple_struct_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  SimpleStructTwinSse sse_decode_box_autoadd_simple_struct_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  SimpleStructTwinSync sse_decode_box_autoadd_simple_struct_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  SimpleStructTwinSyncSse sse_decode_box_autoadd_simple_struct_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
   SomeStructTwinNormal sse_decode_box_autoadd_some_struct_twin_normal(
       SseDeserializer deserializer);
 
@@ -13706,6 +13799,31 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  List<SimpleStructTwinNormal> sse_decode_list_simple_struct_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  List<SimpleStructTwinRustAsync> sse_decode_list_simple_struct_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  List<SimpleStructTwinRustAsyncSse>
+      sse_decode_list_simple_struct_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  List<SimpleStructTwinSse> sse_decode_list_simple_struct_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  List<SimpleStructTwinSync> sse_decode_list_simple_struct_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  List<SimpleStructTwinSyncSse> sse_decode_list_simple_struct_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
   List<SumWithTwinNormal> sse_decode_list_sum_with_twin_normal(
       SseDeserializer deserializer);
 
@@ -15066,6 +15184,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   Sequences sse_decode_sequences(SseDeserializer deserializer);
+
+  @protected
+  SimpleStructTwinNormal sse_decode_simple_struct_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  SimpleStructTwinRustAsync sse_decode_simple_struct_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  SimpleStructTwinRustAsyncSse sse_decode_simple_struct_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  SimpleStructTwinSse sse_decode_simple_struct_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  SimpleStructTwinSync sse_decode_simple_struct_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  SimpleStructTwinSyncSse sse_decode_simple_struct_twin_sync_sse(
+      SseDeserializer deserializer);
 
   @protected
   SomeStructTwinNormal sse_decode_some_struct_twin_normal(
@@ -17619,6 +17761,35 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  ffi.Pointer<wire_cst_simple_struct_twin_normal>
+      cst_encode_box_autoadd_simple_struct_twin_normal(
+          SimpleStructTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr = wire.cst_new_box_autoadd_simple_struct_twin_normal();
+    cst_api_fill_to_wire_simple_struct_twin_normal(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_simple_struct_twin_rust_async>
+      cst_encode_box_autoadd_simple_struct_twin_rust_async(
+          SimpleStructTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr = wire.cst_new_box_autoadd_simple_struct_twin_rust_async();
+    cst_api_fill_to_wire_simple_struct_twin_rust_async(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_simple_struct_twin_sync>
+      cst_encode_box_autoadd_simple_struct_twin_sync(SimpleStructTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr = wire.cst_new_box_autoadd_simple_struct_twin_sync();
+    cst_api_fill_to_wire_simple_struct_twin_sync(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
   ffi.Pointer<wire_cst_some_struct_twin_normal>
       cst_encode_box_autoadd_some_struct_twin_normal(SomeStructTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -19853,6 +20024,42 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     final ans = wire.cst_new_list_record_string_string(raw.length);
     for (var i = 0; i < raw.length; ++i) {
       cst_api_fill_to_wire_record_string_string(raw[i], ans.ref.ptr[i]);
+    }
+    return ans;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_simple_struct_twin_normal>
+      cst_encode_list_simple_struct_twin_normal(
+          List<SimpleStructTwinNormal> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ans = wire.cst_new_list_simple_struct_twin_normal(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      cst_api_fill_to_wire_simple_struct_twin_normal(raw[i], ans.ref.ptr[i]);
+    }
+    return ans;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_simple_struct_twin_rust_async>
+      cst_encode_list_simple_struct_twin_rust_async(
+          List<SimpleStructTwinRustAsync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ans = wire.cst_new_list_simple_struct_twin_rust_async(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      cst_api_fill_to_wire_simple_struct_twin_rust_async(
+          raw[i], ans.ref.ptr[i]);
+    }
+    return ans;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_simple_struct_twin_sync>
+      cst_encode_list_simple_struct_twin_sync(List<SimpleStructTwinSync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ans = wire.cst_new_list_simple_struct_twin_sync(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      cst_api_fill_to_wire_simple_struct_twin_sync(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -22120,6 +22327,27 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void cst_api_fill_to_wire_box_autoadd_sequences(
       Sequences apiObj, ffi.Pointer<wire_cst_sequences> wireObj) {
     cst_api_fill_to_wire_sequences(apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_simple_struct_twin_normal(
+      SimpleStructTwinNormal apiObj,
+      ffi.Pointer<wire_cst_simple_struct_twin_normal> wireObj) {
+    cst_api_fill_to_wire_simple_struct_twin_normal(apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_simple_struct_twin_rust_async(
+      SimpleStructTwinRustAsync apiObj,
+      ffi.Pointer<wire_cst_simple_struct_twin_rust_async> wireObj) {
+    cst_api_fill_to_wire_simple_struct_twin_rust_async(apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_simple_struct_twin_sync(
+      SimpleStructTwinSync apiObj,
+      ffi.Pointer<wire_cst_simple_struct_twin_sync> wireObj) {
+    cst_api_fill_to_wire_simple_struct_twin_sync(apiObj, wireObj.ref);
   }
 
   @protected
@@ -25035,6 +25263,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void cst_api_fill_to_wire_sequences(
       Sequences apiObj, wire_cst_sequences wireObj) {
     wireObj.field0 = cst_encode_list_prim_i_32_strict(apiObj.field0);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_simple_struct_twin_normal(
+      SimpleStructTwinNormal apiObj,
+      wire_cst_simple_struct_twin_normal wireObj) {
+    wireObj.one = cst_encode_String(apiObj.one);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_simple_struct_twin_rust_async(
+      SimpleStructTwinRustAsync apiObj,
+      wire_cst_simple_struct_twin_rust_async wireObj) {
+    wireObj.one = cst_encode_String(apiObj.one);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_simple_struct_twin_sync(
+      SimpleStructTwinSync apiObj, wire_cst_simple_struct_twin_sync wireObj) {
+    wireObj.one = cst_encode_String(apiObj.one);
   }
 
   @protected
@@ -29696,6 +29944,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       Sequences self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_simple_struct_twin_normal(
+      SimpleStructTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_simple_struct_twin_rust_async(
+      SimpleStructTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_simple_struct_twin_rust_async_sse(
+      SimpleStructTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_simple_struct_twin_sse(
+      SimpleStructTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_simple_struct_twin_sync(
+      SimpleStructTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_simple_struct_twin_sync_sse(
+      SimpleStructTwinSyncSse self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_some_struct_twin_normal(
       SomeStructTwinNormal self, SseSerializer serializer);
 
@@ -31933,6 +32205,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       List<(String, String)> self, SseSerializer serializer);
 
   @protected
+  void sse_encode_list_simple_struct_twin_normal(
+      List<SimpleStructTwinNormal> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_simple_struct_twin_rust_async(
+      List<SimpleStructTwinRustAsync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_simple_struct_twin_rust_async_sse(
+      List<SimpleStructTwinRustAsyncSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_simple_struct_twin_sse(
+      List<SimpleStructTwinSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_simple_struct_twin_sync(
+      List<SimpleStructTwinSync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_simple_struct_twin_sync_sse(
+      List<SimpleStructTwinSyncSse> self, SseSerializer serializer);
+
+  @protected
   void sse_encode_list_sum_with_twin_normal(
       List<SumWithTwinNormal> self, SseSerializer serializer);
 
@@ -33219,6 +33515,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_sequences(Sequences self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_simple_struct_twin_normal(
+      SimpleStructTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_simple_struct_twin_rust_async(
+      SimpleStructTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_simple_struct_twin_rust_async_sse(
+      SimpleStructTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_simple_struct_twin_sse(
+      SimpleStructTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_simple_struct_twin_sync(
+      SimpleStructTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_simple_struct_twin_sync_sse(
+      SimpleStructTwinSyncSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_some_struct_twin_normal(
@@ -36400,6 +36720,69 @@ class RustLibWire implements BaseWire {
       _wire_MyCallableTwinNormal_callPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_my_callable_twin_normal>,
               ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+
+  void wire_SimpleStructTwinNormal_arg_self_twin_normal(
+    int port_,
+    ffi.Pointer<wire_cst_simple_struct_twin_normal> a,
+    ffi.Pointer<wire_cst_simple_struct_twin_normal> b,
+  ) {
+    return _wire_SimpleStructTwinNormal_arg_self_twin_normal(
+      port_,
+      a,
+      b,
+    );
+  }
+
+  late final _wire_SimpleStructTwinNormal_arg_self_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64,
+                  ffi.Pointer<wire_cst_simple_struct_twin_normal>,
+                  ffi.Pointer<wire_cst_simple_struct_twin_normal>)>>(
+      'frbgen_frb_example_pure_dart_wire_SimpleStructTwinNormal_arg_self_twin_normal');
+  late final _wire_SimpleStructTwinNormal_arg_self_twin_normal =
+      _wire_SimpleStructTwinNormal_arg_self_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_simple_struct_twin_normal>,
+              ffi.Pointer<wire_cst_simple_struct_twin_normal>)>();
+
+  void wire_SimpleStructTwinNormal_return_self_twin_normal(
+    int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> one,
+  ) {
+    return _wire_SimpleStructTwinNormal_return_self_twin_normal(
+      port_,
+      one,
+    );
+  }
+
+  late final _wire_SimpleStructTwinNormal_return_self_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+      'frbgen_frb_example_pure_dart_wire_SimpleStructTwinNormal_return_self_twin_normal');
+  late final _wire_SimpleStructTwinNormal_return_self_twin_normal =
+      _wire_SimpleStructTwinNormal_return_self_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+
+  void wire_SimpleStructTwinNormal_vec_self_twin_normal(
+    int port_,
+    ffi.Pointer<wire_cst_list_simple_struct_twin_normal> arg,
+  ) {
+    return _wire_SimpleStructTwinNormal_vec_self_twin_normal(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_SimpleStructTwinNormal_vec_self_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64,
+                  ffi.Pointer<wire_cst_list_simple_struct_twin_normal>)>>(
+      'frbgen_frb_example_pure_dart_wire_SimpleStructTwinNormal_vec_self_twin_normal');
+  late final _wire_SimpleStructTwinNormal_vec_self_twin_normal =
+      _wire_SimpleStructTwinNormal_vec_self_twin_normalPtr.asFunction<
+          void Function(
+              int, ffi.Pointer<wire_cst_list_simple_struct_twin_normal>)>();
 
   void wire_SumWithTwinNormal_sum_twin_normal(
     int port_,
@@ -59037,6 +59420,72 @@ class RustLibWire implements BaseWire {
           void Function(int, ffi.Pointer<wire_cst_my_callable_twin_rust_async>,
               ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
+  void wire_SimpleStructTwinRustAsync_arg_self_twin_rust_async(
+    int port_,
+    ffi.Pointer<wire_cst_simple_struct_twin_rust_async> a,
+    ffi.Pointer<wire_cst_simple_struct_twin_rust_async> b,
+  ) {
+    return _wire_SimpleStructTwinRustAsync_arg_self_twin_rust_async(
+      port_,
+      a,
+      b,
+    );
+  }
+
+  late final _wire_SimpleStructTwinRustAsync_arg_self_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64,
+                  ffi.Pointer<wire_cst_simple_struct_twin_rust_async>,
+                  ffi.Pointer<wire_cst_simple_struct_twin_rust_async>)>>(
+      'frbgen_frb_example_pure_dart_wire_SimpleStructTwinRustAsync_arg_self_twin_rust_async');
+  late final _wire_SimpleStructTwinRustAsync_arg_self_twin_rust_async =
+      _wire_SimpleStructTwinRustAsync_arg_self_twin_rust_asyncPtr.asFunction<
+          void Function(
+              int,
+              ffi.Pointer<wire_cst_simple_struct_twin_rust_async>,
+              ffi.Pointer<wire_cst_simple_struct_twin_rust_async>)>();
+
+  void wire_SimpleStructTwinRustAsync_return_self_twin_rust_async(
+    int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> one,
+  ) {
+    return _wire_SimpleStructTwinRustAsync_return_self_twin_rust_async(
+      port_,
+      one,
+    );
+  }
+
+  late final _wire_SimpleStructTwinRustAsync_return_self_twin_rust_asyncPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(
+                      ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+          'frbgen_frb_example_pure_dart_wire_SimpleStructTwinRustAsync_return_self_twin_rust_async');
+  late final _wire_SimpleStructTwinRustAsync_return_self_twin_rust_async =
+      _wire_SimpleStructTwinRustAsync_return_self_twin_rust_asyncPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+
+  void wire_SimpleStructTwinRustAsync_vec_self_twin_rust_async(
+    int port_,
+    ffi.Pointer<wire_cst_list_simple_struct_twin_rust_async> arg,
+  ) {
+    return _wire_SimpleStructTwinRustAsync_vec_self_twin_rust_async(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_SimpleStructTwinRustAsync_vec_self_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64,
+                  ffi.Pointer<wire_cst_list_simple_struct_twin_rust_async>)>>(
+      'frbgen_frb_example_pure_dart_wire_SimpleStructTwinRustAsync_vec_self_twin_rust_async');
+  late final _wire_SimpleStructTwinRustAsync_vec_self_twin_rust_async =
+      _wire_SimpleStructTwinRustAsync_vec_self_twin_rust_asyncPtr.asFunction<
+          void Function(
+              int, ffi.Pointer<wire_cst_list_simple_struct_twin_rust_async>)>();
+
   void wire_SumWithTwinRustAsync_sum_twin_rust_async(
     int port_,
     ffi.Pointer<wire_cst_sum_with_twin_rust_async> that,
@@ -59321,6 +59770,78 @@ class RustLibWire implements BaseWire {
       _wire_MyCallableTwinRustAsyncSse_callPtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
+  void wire_SimpleStructTwinRustAsyncSse_arg_self_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_SimpleStructTwinRustAsyncSse_arg_self_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_SimpleStructTwinRustAsyncSse_arg_self_twin_rust_async_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_SimpleStructTwinRustAsyncSse_arg_self_twin_rust_async_sse');
+  late final _wire_SimpleStructTwinRustAsyncSse_arg_self_twin_rust_async_sse =
+      _wire_SimpleStructTwinRustAsyncSse_arg_self_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_SimpleStructTwinRustAsyncSse_return_self_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_SimpleStructTwinRustAsyncSse_return_self_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_SimpleStructTwinRustAsyncSse_return_self_twin_rust_async_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_SimpleStructTwinRustAsyncSse_return_self_twin_rust_async_sse');
+  late final _wire_SimpleStructTwinRustAsyncSse_return_self_twin_rust_async_sse =
+      _wire_SimpleStructTwinRustAsyncSse_return_self_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_SimpleStructTwinRustAsyncSse_vec_self_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_SimpleStructTwinRustAsyncSse_vec_self_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_SimpleStructTwinRustAsyncSse_vec_self_twin_rust_async_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_SimpleStructTwinRustAsyncSse_vec_self_twin_rust_async_sse');
+  late final _wire_SimpleStructTwinRustAsyncSse_vec_self_twin_rust_async_sse =
+      _wire_SimpleStructTwinRustAsyncSse_vec_self_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
   void wire_SumWithTwinRustAsyncSse_sum_twin_rust_async_sse(
     int port_,
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -59601,6 +60122,75 @@ class RustLibWire implements BaseWire {
   late final _wire_MyCallableTwinSse_call = _wire_MyCallableTwinSse_callPtr
       .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
+  void wire_SimpleStructTwinSse_arg_self_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_SimpleStructTwinSse_arg_self_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_SimpleStructTwinSse_arg_self_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_SimpleStructTwinSse_arg_self_twin_sse');
+  late final _wire_SimpleStructTwinSse_arg_self_twin_sse =
+      _wire_SimpleStructTwinSse_arg_self_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_SimpleStructTwinSse_return_self_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_SimpleStructTwinSse_return_self_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_SimpleStructTwinSse_return_self_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_SimpleStructTwinSse_return_self_twin_sse');
+  late final _wire_SimpleStructTwinSse_return_self_twin_sse =
+      _wire_SimpleStructTwinSse_return_self_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_SimpleStructTwinSse_vec_self_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_SimpleStructTwinSse_vec_self_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_SimpleStructTwinSse_vec_self_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_SimpleStructTwinSse_vec_self_twin_sse');
+  late final _wire_SimpleStructTwinSse_vec_self_twin_sse =
+      _wire_SimpleStructTwinSse_vec_self_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
   void wire_SumWithTwinSse_sum_twin_sse(
     int port_,
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -59862,6 +60452,64 @@ class RustLibWire implements BaseWire {
           WireSyncRust2DartDco Function(
               ffi.Pointer<wire_cst_my_callable_twin_sync>,
               ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+
+  WireSyncRust2DartDco wire_SimpleStructTwinSync_arg_self_twin_sync(
+    ffi.Pointer<wire_cst_simple_struct_twin_sync> a,
+    ffi.Pointer<wire_cst_simple_struct_twin_sync> b,
+  ) {
+    return _wire_SimpleStructTwinSync_arg_self_twin_sync(
+      a,
+      b,
+    );
+  }
+
+  late final _wire_SimpleStructTwinSync_arg_self_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_simple_struct_twin_sync>,
+                  ffi.Pointer<wire_cst_simple_struct_twin_sync>)>>(
+      'frbgen_frb_example_pure_dart_wire_SimpleStructTwinSync_arg_self_twin_sync');
+  late final _wire_SimpleStructTwinSync_arg_self_twin_sync =
+      _wire_SimpleStructTwinSync_arg_self_twin_syncPtr.asFunction<
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_simple_struct_twin_sync>,
+              ffi.Pointer<wire_cst_simple_struct_twin_sync>)>();
+
+  WireSyncRust2DartDco wire_SimpleStructTwinSync_return_self_twin_sync(
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> one,
+  ) {
+    return _wire_SimpleStructTwinSync_return_self_twin_sync(
+      one,
+    );
+  }
+
+  late final _wire_SimpleStructTwinSync_return_self_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+      'frbgen_frb_example_pure_dart_wire_SimpleStructTwinSync_return_self_twin_sync');
+  late final _wire_SimpleStructTwinSync_return_self_twin_sync =
+      _wire_SimpleStructTwinSync_return_self_twin_syncPtr.asFunction<
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+
+  WireSyncRust2DartDco wire_SimpleStructTwinSync_vec_self_twin_sync(
+    ffi.Pointer<wire_cst_list_simple_struct_twin_sync> arg,
+  ) {
+    return _wire_SimpleStructTwinSync_vec_self_twin_sync(
+      arg,
+    );
+  }
+
+  late final _wire_SimpleStructTwinSync_vec_self_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_list_simple_struct_twin_sync>)>>(
+      'frbgen_frb_example_pure_dart_wire_SimpleStructTwinSync_vec_self_twin_sync');
+  late final _wire_SimpleStructTwinSync_vec_self_twin_sync =
+      _wire_SimpleStructTwinSync_vec_self_twin_syncPtr.asFunction<
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_list_simple_struct_twin_sync>)>();
 
   WireSyncRust2DartDco wire_SumWithTwinSync_sum_twin_sync(
     ffi.Pointer<wire_cst_sum_with_twin_sync> that,
@@ -60129,6 +60777,69 @@ class RustLibWire implements BaseWire {
       'frbgen_frb_example_pure_dart_wire_MyCallableTwinSyncSse_call');
   late final _wire_MyCallableTwinSyncSse_call =
       _wire_MyCallableTwinSyncSse_callPtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_SimpleStructTwinSyncSse_arg_self_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_SimpleStructTwinSyncSse_arg_self_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_SimpleStructTwinSyncSse_arg_self_twin_sync_ssePtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_SimpleStructTwinSyncSse_arg_self_twin_sync_sse');
+  late final _wire_SimpleStructTwinSyncSse_arg_self_twin_sync_sse =
+      _wire_SimpleStructTwinSyncSse_arg_self_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_SimpleStructTwinSyncSse_return_self_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_SimpleStructTwinSyncSse_return_self_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_SimpleStructTwinSyncSse_return_self_twin_sync_ssePtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_SimpleStructTwinSyncSse_return_self_twin_sync_sse');
+  late final _wire_SimpleStructTwinSyncSse_return_self_twin_sync_sse =
+      _wire_SimpleStructTwinSyncSse_return_self_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_SimpleStructTwinSyncSse_vec_self_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_SimpleStructTwinSyncSse_vec_self_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_SimpleStructTwinSyncSse_vec_self_twin_sync_ssePtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_SimpleStructTwinSyncSse_vec_self_twin_sync_sse');
+  late final _wire_SimpleStructTwinSyncSse_vec_self_twin_sync_sse =
+      _wire_SimpleStructTwinSyncSse_vec_self_twin_sync_ssePtr.asFunction<
           WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
   WireSyncRust2DartSse wire_SumWithTwinSyncSse_sum_twin_sync_sse(
@@ -89241,6 +89952,45 @@ class RustLibWire implements BaseWire {
   late final _cst_new_box_autoadd_sequences = _cst_new_box_autoadd_sequencesPtr
       .asFunction<ffi.Pointer<wire_cst_sequences> Function()>();
 
+  ffi.Pointer<wire_cst_simple_struct_twin_normal>
+      cst_new_box_autoadd_simple_struct_twin_normal() {
+    return _cst_new_box_autoadd_simple_struct_twin_normal();
+  }
+
+  late final _cst_new_box_autoadd_simple_struct_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<wire_cst_simple_struct_twin_normal> Function()>>(
+      'frbgen_frb_example_pure_dart_cst_new_box_autoadd_simple_struct_twin_normal');
+  late final _cst_new_box_autoadd_simple_struct_twin_normal =
+      _cst_new_box_autoadd_simple_struct_twin_normalPtr.asFunction<
+          ffi.Pointer<wire_cst_simple_struct_twin_normal> Function()>();
+
+  ffi.Pointer<wire_cst_simple_struct_twin_rust_async>
+      cst_new_box_autoadd_simple_struct_twin_rust_async() {
+    return _cst_new_box_autoadd_simple_struct_twin_rust_async();
+  }
+
+  late final _cst_new_box_autoadd_simple_struct_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<wire_cst_simple_struct_twin_rust_async> Function()>>(
+      'frbgen_frb_example_pure_dart_cst_new_box_autoadd_simple_struct_twin_rust_async');
+  late final _cst_new_box_autoadd_simple_struct_twin_rust_async =
+      _cst_new_box_autoadd_simple_struct_twin_rust_asyncPtr.asFunction<
+          ffi.Pointer<wire_cst_simple_struct_twin_rust_async> Function()>();
+
+  ffi.Pointer<wire_cst_simple_struct_twin_sync>
+      cst_new_box_autoadd_simple_struct_twin_sync() {
+    return _cst_new_box_autoadd_simple_struct_twin_sync();
+  }
+
+  late final _cst_new_box_autoadd_simple_struct_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<wire_cst_simple_struct_twin_sync> Function()>>(
+      'frbgen_frb_example_pure_dart_cst_new_box_autoadd_simple_struct_twin_sync');
+  late final _cst_new_box_autoadd_simple_struct_twin_sync =
+      _cst_new_box_autoadd_simple_struct_twin_syncPtr.asFunction<
+          ffi.Pointer<wire_cst_simple_struct_twin_sync> Function()>();
+
   ffi.Pointer<wire_cst_some_struct_twin_normal>
       cst_new_box_autoadd_some_struct_twin_normal() {
     return _cst_new_box_autoadd_some_struct_twin_normal();
@@ -92511,6 +93261,61 @@ class RustLibWire implements BaseWire {
       _cst_new_list_record_string_stringPtr.asFunction<
           ffi.Pointer<wire_cst_list_record_string_string> Function(int)>();
 
+  ffi.Pointer<wire_cst_list_simple_struct_twin_normal>
+      cst_new_list_simple_struct_twin_normal(
+    int len,
+  ) {
+    return _cst_new_list_simple_struct_twin_normal(
+      len,
+    );
+  }
+
+  late final _cst_new_list_simple_struct_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<wire_cst_list_simple_struct_twin_normal> Function(
+                  ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_cst_new_list_simple_struct_twin_normal');
+  late final _cst_new_list_simple_struct_twin_normal =
+      _cst_new_list_simple_struct_twin_normalPtr.asFunction<
+          ffi.Pointer<wire_cst_list_simple_struct_twin_normal> Function(int)>();
+
+  ffi.Pointer<wire_cst_list_simple_struct_twin_rust_async>
+      cst_new_list_simple_struct_twin_rust_async(
+    int len,
+  ) {
+    return _cst_new_list_simple_struct_twin_rust_async(
+      len,
+    );
+  }
+
+  late final _cst_new_list_simple_struct_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<wire_cst_list_simple_struct_twin_rust_async> Function(
+                  ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_cst_new_list_simple_struct_twin_rust_async');
+  late final _cst_new_list_simple_struct_twin_rust_async =
+      _cst_new_list_simple_struct_twin_rust_asyncPtr.asFunction<
+          ffi.Pointer<wire_cst_list_simple_struct_twin_rust_async> Function(
+              int)>();
+
+  ffi.Pointer<wire_cst_list_simple_struct_twin_sync>
+      cst_new_list_simple_struct_twin_sync(
+    int len,
+  ) {
+    return _cst_new_list_simple_struct_twin_sync(
+      len,
+    );
+  }
+
+  late final _cst_new_list_simple_struct_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<wire_cst_list_simple_struct_twin_sync> Function(
+                  ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_cst_new_list_simple_struct_twin_sync');
+  late final _cst_new_list_simple_struct_twin_sync =
+      _cst_new_list_simple_struct_twin_syncPtr.asFunction<
+          ffi.Pointer<wire_cst_list_simple_struct_twin_sync> Function(int)>();
+
   ffi.Pointer<wire_cst_list_sum_with_twin_normal>
       cst_new_list_sum_with_twin_normal(
     int len,
@@ -93171,6 +93976,17 @@ final class wire_cst_concatenate_with_twin_normal extends ffi.Struct {
 
 final class wire_cst_my_callable_twin_normal extends ffi.Struct {
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> one;
+}
+
+final class wire_cst_simple_struct_twin_normal extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8_strict> one;
+}
+
+final class wire_cst_list_simple_struct_twin_normal extends ffi.Struct {
+  external ffi.Pointer<wire_cst_simple_struct_twin_normal> ptr;
+
+  @ffi.Int32()
+  external int len;
 }
 
 final class wire_cst_sum_with_twin_normal extends ffi.Struct {
@@ -94744,6 +95560,17 @@ final class wire_cst_my_callable_twin_rust_async extends ffi.Struct {
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> one;
 }
 
+final class wire_cst_simple_struct_twin_rust_async extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8_strict> one;
+}
+
+final class wire_cst_list_simple_struct_twin_rust_async extends ffi.Struct {
+  external ffi.Pointer<wire_cst_simple_struct_twin_rust_async> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
 final class wire_cst_sum_with_twin_rust_async extends ffi.Struct {
   @ffi.Uint32()
   external int x;
@@ -94755,6 +95582,17 @@ final class wire_cst_concatenate_with_twin_sync extends ffi.Struct {
 
 final class wire_cst_my_callable_twin_sync extends ffi.Struct {
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> one;
+}
+
+final class wire_cst_simple_struct_twin_sync extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8_strict> one;
+}
+
+final class wire_cst_list_simple_struct_twin_sync extends ffi.Struct {
+  external ffi.Pointer<wire_cst_simple_struct_twin_sync> ptr;
+
+  @ffi.Int32()
+  external int len;
 }
 
 final class wire_cst_sum_with_twin_sync extends ffi.Struct {

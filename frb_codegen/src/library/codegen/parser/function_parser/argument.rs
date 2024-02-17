@@ -57,8 +57,10 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let method = if_then_some!(let IrFuncOwnerInfo::Method(method) = owner, method)
             .context("`self` must happen within methods")?;
 
-        let ty_raw =
-            self.parse_fn_arg_receiver_attempt(&method.enum_or_struct_name.name, context)?;
+        let ty_raw = self.type_parser.parse_type(
+            &parse_str::<Type>(&method.enum_or_struct_name.name)?,
+            context,
+        )?;
         let ty = match ty_raw {
             IrType::RustAutoOpaque(ty_raw) => self.type_parser.transform_rust_auto_opaque(
                 &ty_raw,
@@ -85,15 +87,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         }
 
         partial_info_for_normal_type_raw(ty, &receiver.attrs, name)
-    }
-
-    fn parse_fn_arg_receiver_attempt(
-        &mut self,
-        ty: &str,
-        context: &TypeParserParsingContext,
-    ) -> anyhow::Result<IrType> {
-        let ty: Type = parse_str(ty)?;
-        self.type_parser.parse_type(&ty, context)
     }
 
     fn parse_fn_arg_type_stream_sink(

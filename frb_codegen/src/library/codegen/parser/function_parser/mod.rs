@@ -70,13 +70,15 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let namespace = Namespace::new_from_rust_crate_path(file_path, rust_crate_dir)?;
         let src_lineno = func.span().start().line;
         let attributes = FrbAttributes::parse(func.attrs())?;
-        let context = TypeParserParsingContext {
+
+        let create_context = |owner: Option<IrFuncOwnerInfo>| TypeParserParsingContext {
             initiated_namespace: namespace.clone(),
             func_attributes: attributes.clone(),
             default_rust_opaque_codec,
+            owner,
         };
 
-        let owner = if let Some(owner) = self.parse_owner(func, &context)? {
+        let owner = if let Some(owner) = self.parse_owner(func, &create_context(None))? {
             owner
         } else {
             return Ok(None);
@@ -88,6 +90,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             return Ok(None);
         }
 
+        let context = create_context(Some(owner.clone()));
         let mut info = FunctionPartialInfo::default();
         for (i, sig_input) in sig.inputs.iter().enumerate() {
             info = info.merge(self.parse_fn_arg(i, sig_input, &owner, &context)?)?;

@@ -123,6 +123,41 @@ class MyCallableTwinSync {
           one == other.one;
 }
 
+class SimpleStructTwinSync {
+  final String one;
+
+  const SimpleStructTwinSync({
+    required this.one,
+  });
+
+  static String argSelfTwinSync(
+          {required SimpleStructTwinSync a,
+          required SimpleStructTwinSync b,
+          dynamic hint}) =>
+      RustLib.instance.api
+          .simpleStructTwinSyncArgSelfTwinSync(a: a, b: b, hint: hint);
+
+  static SimpleStructTwinSync returnSelfTwinSync(
+          {required String one, dynamic hint}) =>
+      RustLib.instance.api
+          .simpleStructTwinSyncReturnSelfTwinSync(one: one, hint: hint);
+
+  static List<String> vecSelfTwinSync(
+          {required List<SimpleStructTwinSync> arg, dynamic hint}) =>
+      RustLib.instance.api
+          .simpleStructTwinSyncVecSelfTwinSync(arg: arg, hint: hint);
+
+  @override
+  int get hashCode => one.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SimpleStructTwinSync &&
+          runtimeType == other.runtimeType &&
+          one == other.one;
+}
+
 class SumWithTwinSync {
   final int x;
 

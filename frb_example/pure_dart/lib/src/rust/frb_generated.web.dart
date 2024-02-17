@@ -4133,6 +4133,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Sequences dco_decode_box_autoadd_sequences(dynamic raw);
 
   @protected
+  SimpleStructTwinNormal dco_decode_box_autoadd_simple_struct_twin_normal(
+      dynamic raw);
+
+  @protected
+  SimpleStructTwinRustAsync
+      dco_decode_box_autoadd_simple_struct_twin_rust_async(dynamic raw);
+
+  @protected
+  SimpleStructTwinRustAsyncSse
+      dco_decode_box_autoadd_simple_struct_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  SimpleStructTwinSse dco_decode_box_autoadd_simple_struct_twin_sse(
+      dynamic raw);
+
+  @protected
+  SimpleStructTwinSync dco_decode_box_autoadd_simple_struct_twin_sync(
+      dynamic raw);
+
+  @protected
+  SimpleStructTwinSyncSse dco_decode_box_autoadd_simple_struct_twin_sync_sse(
+      dynamic raw);
+
+  @protected
   SomeStructTwinNormal dco_decode_box_autoadd_some_struct_twin_normal(
       dynamic raw);
 
@@ -6188,6 +6212,29 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<(String, String)> dco_decode_list_record_string_string(dynamic raw);
 
   @protected
+  List<SimpleStructTwinNormal> dco_decode_list_simple_struct_twin_normal(
+      dynamic raw);
+
+  @protected
+  List<SimpleStructTwinRustAsync> dco_decode_list_simple_struct_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  List<SimpleStructTwinRustAsyncSse>
+      dco_decode_list_simple_struct_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  List<SimpleStructTwinSse> dco_decode_list_simple_struct_twin_sse(dynamic raw);
+
+  @protected
+  List<SimpleStructTwinSync> dco_decode_list_simple_struct_twin_sync(
+      dynamic raw);
+
+  @protected
+  List<SimpleStructTwinSyncSse> dco_decode_list_simple_struct_twin_sync_sse(
+      dynamic raw);
+
+  @protected
   List<SumWithTwinNormal> dco_decode_list_sum_with_twin_normal(dynamic raw);
 
   @protected
@@ -7391,6 +7438,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   Sequences dco_decode_sequences(dynamic raw);
+
+  @protected
+  SimpleStructTwinNormal dco_decode_simple_struct_twin_normal(dynamic raw);
+
+  @protected
+  SimpleStructTwinRustAsync dco_decode_simple_struct_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  SimpleStructTwinRustAsyncSse dco_decode_simple_struct_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  SimpleStructTwinSse dco_decode_simple_struct_twin_sse(dynamic raw);
+
+  @protected
+  SimpleStructTwinSync dco_decode_simple_struct_twin_sync(dynamic raw);
+
+  @protected
+  SimpleStructTwinSyncSse dco_decode_simple_struct_twin_sync_sse(dynamic raw);
 
   @protected
   SomeStructTwinNormal dco_decode_some_struct_twin_normal(dynamic raw);
@@ -11358,6 +11425,32 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Sequences sse_decode_box_autoadd_sequences(SseDeserializer deserializer);
 
   @protected
+  SimpleStructTwinNormal sse_decode_box_autoadd_simple_struct_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  SimpleStructTwinRustAsync
+      sse_decode_box_autoadd_simple_struct_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  SimpleStructTwinRustAsyncSse
+      sse_decode_box_autoadd_simple_struct_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  SimpleStructTwinSse sse_decode_box_autoadd_simple_struct_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  SimpleStructTwinSync sse_decode_box_autoadd_simple_struct_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  SimpleStructTwinSyncSse sse_decode_box_autoadd_simple_struct_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
   SomeStructTwinNormal sse_decode_box_autoadd_some_struct_twin_normal(
       SseDeserializer deserializer);
 
@@ -13705,6 +13798,31 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  List<SimpleStructTwinNormal> sse_decode_list_simple_struct_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  List<SimpleStructTwinRustAsync> sse_decode_list_simple_struct_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  List<SimpleStructTwinRustAsyncSse>
+      sse_decode_list_simple_struct_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  List<SimpleStructTwinSse> sse_decode_list_simple_struct_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  List<SimpleStructTwinSync> sse_decode_list_simple_struct_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  List<SimpleStructTwinSyncSse> sse_decode_list_simple_struct_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
   List<SumWithTwinNormal> sse_decode_list_sum_with_twin_normal(
       SseDeserializer deserializer);
 
@@ -15065,6 +15183,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   Sequences sse_decode_sequences(SseDeserializer deserializer);
+
+  @protected
+  SimpleStructTwinNormal sse_decode_simple_struct_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  SimpleStructTwinRustAsync sse_decode_simple_struct_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  SimpleStructTwinRustAsyncSse sse_decode_simple_struct_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  SimpleStructTwinSse sse_decode_simple_struct_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  SimpleStructTwinSync sse_decode_simple_struct_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  SimpleStructTwinSyncSse sse_decode_simple_struct_twin_sync_sse(
+      SseDeserializer deserializer);
 
   @protected
   SomeStructTwinNormal sse_decode_some_struct_twin_normal(
@@ -17518,6 +17660,27 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic> cst_encode_box_autoadd_sequences(Sequences raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_sequences(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_simple_struct_twin_normal(
+      SimpleStructTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_simple_struct_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_simple_struct_twin_rust_async(
+      SimpleStructTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_simple_struct_twin_rust_async(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_simple_struct_twin_sync(
+      SimpleStructTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_simple_struct_twin_sync(raw);
   }
 
   @protected
@@ -20299,6 +20462,27 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> cst_encode_list_simple_struct_twin_normal(
+      List<SimpleStructTwinNormal> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw.map(cst_encode_simple_struct_twin_normal).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_simple_struct_twin_rust_async(
+      List<SimpleStructTwinRustAsync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw.map(cst_encode_simple_struct_twin_rust_async).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_simple_struct_twin_sync(
+      List<SimpleStructTwinSync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw.map(cst_encode_simple_struct_twin_sync).toList();
+  }
+
+  @protected
   List<dynamic> cst_encode_list_sum_with_twin_normal(
       List<SumWithTwinNormal> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -21851,6 +22035,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic> cst_encode_sequences(Sequences raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_list_prim_i_32_strict(raw.field0)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_simple_struct_twin_normal(
+      SimpleStructTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_String(raw.one)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_simple_struct_twin_rust_async(
+      SimpleStructTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_String(raw.one)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_simple_struct_twin_sync(SimpleStructTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_String(raw.one)];
   }
 
   @protected
@@ -26628,6 +26832,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       Sequences self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_simple_struct_twin_normal(
+      SimpleStructTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_simple_struct_twin_rust_async(
+      SimpleStructTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_simple_struct_twin_rust_async_sse(
+      SimpleStructTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_simple_struct_twin_sse(
+      SimpleStructTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_simple_struct_twin_sync(
+      SimpleStructTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_simple_struct_twin_sync_sse(
+      SimpleStructTwinSyncSse self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_some_struct_twin_normal(
       SomeStructTwinNormal self, SseSerializer serializer);
 
@@ -28865,6 +29093,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       List<(String, String)> self, SseSerializer serializer);
 
   @protected
+  void sse_encode_list_simple_struct_twin_normal(
+      List<SimpleStructTwinNormal> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_simple_struct_twin_rust_async(
+      List<SimpleStructTwinRustAsync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_simple_struct_twin_rust_async_sse(
+      List<SimpleStructTwinRustAsyncSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_simple_struct_twin_sse(
+      List<SimpleStructTwinSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_simple_struct_twin_sync(
+      List<SimpleStructTwinSync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_simple_struct_twin_sync_sse(
+      List<SimpleStructTwinSyncSse> self, SseSerializer serializer);
+
+  @protected
   void sse_encode_list_sum_with_twin_normal(
       List<SumWithTwinNormal> self, SseSerializer serializer);
 
@@ -30153,6 +30405,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_sequences(Sequences self, SseSerializer serializer);
 
   @protected
+  void sse_encode_simple_struct_twin_normal(
+      SimpleStructTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_simple_struct_twin_rust_async(
+      SimpleStructTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_simple_struct_twin_rust_async_sse(
+      SimpleStructTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_simple_struct_twin_sse(
+      SimpleStructTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_simple_struct_twin_sync(
+      SimpleStructTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_simple_struct_twin_sync_sse(
+      SimpleStructTwinSyncSse self, SseSerializer serializer);
+
+  @protected
   void sse_encode_some_struct_twin_normal(
       SomeStructTwinNormal self, SseSerializer serializer);
 
@@ -31311,6 +31587,19 @@ class RustLibWire implements BaseWire {
   void wire_MyCallableTwinNormal_call(
           NativePortType port_, List<dynamic> that, String two) =>
       wasmModule.wire_MyCallableTwinNormal_call(port_, that, two);
+
+  void wire_SimpleStructTwinNormal_arg_self_twin_normal(
+          NativePortType port_, List<dynamic> a, List<dynamic> b) =>
+      wasmModule.wire_SimpleStructTwinNormal_arg_self_twin_normal(port_, a, b);
+
+  void wire_SimpleStructTwinNormal_return_self_twin_normal(
+          NativePortType port_, String one) =>
+      wasmModule.wire_SimpleStructTwinNormal_return_self_twin_normal(
+          port_, one);
+
+  void wire_SimpleStructTwinNormal_vec_self_twin_normal(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule.wire_SimpleStructTwinNormal_vec_self_twin_normal(port_, arg);
 
   void wire_SumWithTwinNormal_sum_twin_normal(
           NativePortType port_, List<dynamic> that, int y, int z) =>
@@ -38222,6 +38511,21 @@ class RustLibWire implements BaseWire {
           NativePortType port_, List<dynamic> that, String two) =>
       wasmModule.wire_MyCallableTwinRustAsync_call(port_, that, two);
 
+  void wire_SimpleStructTwinRustAsync_arg_self_twin_rust_async(
+          NativePortType port_, List<dynamic> a, List<dynamic> b) =>
+      wasmModule.wire_SimpleStructTwinRustAsync_arg_self_twin_rust_async(
+          port_, a, b);
+
+  void wire_SimpleStructTwinRustAsync_return_self_twin_rust_async(
+          NativePortType port_, String one) =>
+      wasmModule.wire_SimpleStructTwinRustAsync_return_self_twin_rust_async(
+          port_, one);
+
+  void wire_SimpleStructTwinRustAsync_vec_self_twin_rust_async(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule.wire_SimpleStructTwinRustAsync_vec_self_twin_rust_async(
+          port_, arg);
+
   void wire_SumWithTwinRustAsync_sum_twin_rust_async(
           NativePortType port_, List<dynamic> that, int y, int z) =>
       wasmModule.wire_SumWithTwinRustAsync_sum_twin_rust_async(
@@ -38311,6 +38615,31 @@ class RustLibWire implements BaseWire {
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_MyCallableTwinRustAsyncSse_call(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_SimpleStructTwinRustAsyncSse_arg_self_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_SimpleStructTwinRustAsyncSse_arg_self_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_SimpleStructTwinRustAsyncSse_return_self_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire_SimpleStructTwinRustAsyncSse_return_self_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_SimpleStructTwinRustAsyncSse_vec_self_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_SimpleStructTwinRustAsyncSse_vec_self_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_SumWithTwinRustAsyncSse_sum_twin_rust_async_sse(
@@ -38412,6 +38741,30 @@ class RustLibWire implements BaseWire {
       wasmModule.wire_MyCallableTwinSse_call(
           port_, ptr_, rust_vec_len_, data_len_);
 
+  void wire_SimpleStructTwinSse_arg_self_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_SimpleStructTwinSse_arg_self_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_SimpleStructTwinSse_return_self_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_SimpleStructTwinSse_return_self_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_SimpleStructTwinSse_vec_self_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_SimpleStructTwinSse_vec_self_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
   void wire_SumWithTwinSse_sum_twin_sse(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
@@ -38483,6 +38836,19 @@ class RustLibWire implements BaseWire {
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_MyCallableTwinSync_call(List<dynamic> that, String two) =>
           wasmModule.wire_MyCallableTwinSync_call(that, two);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_SimpleStructTwinSync_arg_self_twin_sync(
+              List<dynamic> a, List<dynamic> b) =>
+          wasmModule.wire_SimpleStructTwinSync_arg_self_twin_sync(a, b);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_SimpleStructTwinSync_return_self_twin_sync(String one) =>
+          wasmModule.wire_SimpleStructTwinSync_return_self_twin_sync(one);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_SimpleStructTwinSync_vec_self_twin_sync(List<dynamic> arg) =>
+          wasmModule.wire_SimpleStructTwinSync_vec_self_twin_sync(arg);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_SumWithTwinSync_sum_twin_sync(List<dynamic> that, int y, int z) =>
@@ -38570,6 +38936,30 @@ class RustLibWire implements BaseWire {
       wire_MyCallableTwinSyncSse_call(PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_, int data_len_) =>
           wasmModule.wire_MyCallableTwinSyncSse_call(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_SimpleStructTwinSyncSse_arg_self_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_SimpleStructTwinSyncSse_arg_self_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_SimpleStructTwinSyncSse_return_self_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_SimpleStructTwinSyncSse_return_self_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_SimpleStructTwinSyncSse_vec_self_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_SimpleStructTwinSyncSse_vec_self_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
@@ -47797,6 +48187,15 @@ class RustLibWasmModule implements WasmModule {
   external void wire_MyCallableTwinNormal_call(
       NativePortType port_, List<dynamic> that, String two);
 
+  external void wire_SimpleStructTwinNormal_arg_self_twin_normal(
+      NativePortType port_, List<dynamic> a, List<dynamic> b);
+
+  external void wire_SimpleStructTwinNormal_return_self_twin_normal(
+      NativePortType port_, String one);
+
+  external void wire_SimpleStructTwinNormal_vec_self_twin_normal(
+      NativePortType port_, List<dynamic> arg);
+
   external void wire_SumWithTwinNormal_sum_twin_normal(
       NativePortType port_, List<dynamic> that, int y, int z);
 
@@ -52384,6 +52783,15 @@ class RustLibWasmModule implements WasmModule {
   external void wire_MyCallableTwinRustAsync_call(
       NativePortType port_, List<dynamic> that, String two);
 
+  external void wire_SimpleStructTwinRustAsync_arg_self_twin_rust_async(
+      NativePortType port_, List<dynamic> a, List<dynamic> b);
+
+  external void wire_SimpleStructTwinRustAsync_return_self_twin_rust_async(
+      NativePortType port_, String one);
+
+  external void wire_SimpleStructTwinRustAsync_vec_self_twin_rust_async(
+      NativePortType port_, List<dynamic> arg);
+
   external void wire_SumWithTwinRustAsync_sum_twin_rust_async(
       NativePortType port_, List<dynamic> that, int y, int z);
 
@@ -52450,6 +52858,25 @@ class RustLibWasmModule implements WasmModule {
   external void wire_MyCallableTwinRustAsyncSse_call(NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
+  external void wire_SimpleStructTwinRustAsyncSse_arg_self_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void
+      wire_SimpleStructTwinRustAsyncSse_return_self_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void wire_SimpleStructTwinRustAsyncSse_vec_self_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
   external void wire_SumWithTwinRustAsyncSse_sum_twin_rust_async_sse(
       NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_,
@@ -52513,6 +52940,18 @@ class RustLibWasmModule implements WasmModule {
   external void wire_MyCallableTwinSse_call(NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
+  external void wire_SimpleStructTwinSse_arg_self_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_SimpleStructTwinSse_return_self_twin_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_SimpleStructTwinSse_vec_self_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
   external void wire_SumWithTwinSse_sum_twin_sse(NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
@@ -52553,6 +52992,16 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_MyCallableTwinSync_call(List<dynamic> that, String two);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_SimpleStructTwinSync_arg_self_twin_sync(
+          List<dynamic> a, List<dynamic> b);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_SimpleStructTwinSync_return_self_twin_sync(String one);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_SimpleStructTwinSync_vec_self_twin_sync(List<dynamic> arg);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_SumWithTwinSync_sum_twin_sync(List<dynamic> that, int y, int z);
@@ -52618,6 +53067,24 @@ class RustLibWasmModule implements WasmModule {
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_MyCallableTwinSyncSse_call(PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_, int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_SimpleStructTwinSyncSse_arg_self_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_SimpleStructTwinSyncSse_return_self_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_SimpleStructTwinSyncSse_vec_self_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_SumWithTwinSyncSse_sum_twin_sync_sse(
