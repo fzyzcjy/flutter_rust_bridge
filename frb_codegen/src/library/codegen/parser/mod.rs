@@ -10,17 +10,20 @@ pub(crate) mod type_parser;
 
 use crate::codegen::dumper::Dumper;
 use crate::codegen::ir::pack::IrPack;
+use crate::codegen::ir::ty::IrType;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::codegen::parser::function_extractor::extract_generalized_functions_from_file;
 use crate::codegen::parser::function_parser::FunctionParser;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::parser::misc::parse_has_executor;
 use crate::codegen::parser::reader::CachedRustReader;
+use crate::codegen::parser::source_graph::modules::{Enum, Struct};
 use crate::codegen::parser::type_alias_resolver::resolve_type_aliases;
 use crate::codegen::parser::type_parser::TypeParser;
 use crate::codegen::ConfigDumpContent;
 use itertools::Itertools;
-use log::trace;
+use log::{trace, warn};
+use std::collections::{HashMap, HashSet};
 use std::path::{Path, PathBuf};
 use syn::File;
 use ConfigDumpContent::SourceGraph;
@@ -63,7 +66,7 @@ pub(crate) fn parse(
     let src_enums = crate_map.root_module().collect_enums();
     let src_types = resolve_type_aliases(crate_map.root_module().collect_types());
 
-    let mut type_parser = TypeParser::new(src_structs, src_enums, src_types);
+    let mut type_parser = TypeParser::new(src_structs.clone(), src_enums.clone(), src_types);
     let mut function_parser = FunctionParser::new(&mut type_parser);
 
     let ir_funcs = src_fns
@@ -90,12 +93,16 @@ pub(crate) fn parse(
 
     let (struct_pool, enum_pool) = type_parser.consume();
 
-    Ok(IrPack {
+    let ans = IrPack {
         funcs: ir_funcs,
         struct_pool,
         enum_pool,
         has_executor,
-    })
+    };
+
+    sanity_check_unused_struct_enum(&ans, &src_structs, &src_enums);
+
+    Ok(ans)
 }
 
 struct FileData {
@@ -132,6 +139,37 @@ fn read_files(
             })
         })
         .collect()
+}
+
+fn sanity_check_unused_struct_enum(
+    pack: &IrPack,
+    src_structs: &HashMap<String, &Struct>,
+    src_enums: &HashMap<String, &Enum>,
+) {
+    let all_types: HashSet<String> = [
+        src_structs.keys().map_into().collect_vec(),
+        src_enums.keys().map_into().collect_vec(),
+    ]
+    .concat()
+    .into_iter()
+    .collect();
+
+    let used_types: HashSet<String> = pack
+        .distinct_types(None)
+        .into_iter()
+        .filter_map(|ty| match ty {
+            IrType::StructRef(ty) => Some(ty.ident.0.name.clone()),
+            IrType::EnumRef(ty) => Some(ty.ident.0.name.clone()),
+            _ => None,
+        })
+        .collect();
+
+    if all_types != used_types {
+        warn!(
+            "Some structs/enums are exported as `pub`, but are never used in any `pub` functions, thus they are ignored: {:?}",
+            all_types.difference(&used_types),
+        )
+    }
 }
 
 #[cfg(test)]
@@ -203,6 +241,12 @@ mod tests {
     #[serial]
     fn test_generics() -> anyhow::Result<()> {
         body("library/codegen/parser/mod/generics", None)
+    }
+
+    #[test]
+    #[serial]
+    fn test_unused_struct_enum() -> anyhow::Result<()> {
+        body("library/codegen/parser/mod/unused_struct_enum", None)
     }
 
     #[test]
