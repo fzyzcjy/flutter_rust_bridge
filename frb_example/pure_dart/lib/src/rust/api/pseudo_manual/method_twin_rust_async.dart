@@ -126,6 +126,41 @@ class MyCallableTwinRustAsync {
           one == other.one;
 }
 
+class SimpleStructTwinRustAsync {
+  final String one;
+
+  const SimpleStructTwinRustAsync({
+    required this.one,
+  });
+
+  static Future<String> argSelfTwinRustAsync(
+          {required SimpleStructTwinRustAsync a,
+          required SimpleStructTwinRustAsync b,
+          dynamic hint}) =>
+      RustLib.instance.api.simpleStructTwinRustAsyncArgSelfTwinRustAsync(
+          a: a, b: b, hint: hint);
+
+  static Future<SimpleStructTwinRustAsync> returnSelfTwinRustAsync(
+          {required String one, dynamic hint}) =>
+      RustLib.instance.api.simpleStructTwinRustAsyncReturnSelfTwinRustAsync(
+          one: one, hint: hint);
+
+  static Future<List<String>> vecSelfTwinRustAsync(
+          {required List<SimpleStructTwinRustAsync> arg, dynamic hint}) =>
+      RustLib.instance.api
+          .simpleStructTwinRustAsyncVecSelfTwinRustAsync(arg: arg, hint: hint);
+
+  @override
+  int get hashCode => one.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SimpleStructTwinRustAsync &&
+          runtimeType == other.runtimeType &&
+          one == other.one;
+}
+
 class SumWithTwinRustAsync {
   final int x;
 

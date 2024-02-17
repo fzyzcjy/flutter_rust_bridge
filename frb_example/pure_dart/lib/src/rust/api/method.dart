@@ -125,6 +125,41 @@ class MyCallableTwinNormal {
           one == other.one;
 }
 
+class SimpleStructTwinNormal {
+  final String one;
+
+  const SimpleStructTwinNormal({
+    required this.one,
+  });
+
+  static Future<String> argSelfTwinNormal(
+          {required SimpleStructTwinNormal a,
+          required SimpleStructTwinNormal b,
+          dynamic hint}) =>
+      RustLib.instance.api
+          .simpleStructTwinNormalArgSelfTwinNormal(a: a, b: b, hint: hint);
+
+  static Future<SimpleStructTwinNormal> returnSelfTwinNormal(
+          {required String one, dynamic hint}) =>
+      RustLib.instance.api
+          .simpleStructTwinNormalReturnSelfTwinNormal(one: one, hint: hint);
+
+  static Future<List<String>> vecSelfTwinNormal(
+          {required List<SimpleStructTwinNormal> arg, dynamic hint}) =>
+      RustLib.instance.api
+          .simpleStructTwinNormalVecSelfTwinNormal(arg: arg, hint: hint);
+
+  @override
+  int get hashCode => one.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SimpleStructTwinNormal &&
+          runtimeType == other.runtimeType &&
+          one == other.one;
+}
+
 class SumWithTwinNormal {
   final int x;
 

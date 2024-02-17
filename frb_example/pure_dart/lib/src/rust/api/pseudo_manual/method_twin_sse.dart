@@ -122,6 +122,41 @@ class MyCallableTwinSse {
           one == other.one;
 }
 
+class SimpleStructTwinSse {
+  final String one;
+
+  const SimpleStructTwinSse({
+    required this.one,
+  });
+
+  static Future<String> argSelfTwinSse(
+          {required SimpleStructTwinSse a,
+          required SimpleStructTwinSse b,
+          dynamic hint}) =>
+      RustLib.instance.api
+          .simpleStructTwinSseArgSelfTwinSse(a: a, b: b, hint: hint);
+
+  static Future<SimpleStructTwinSse> returnSelfTwinSse(
+          {required String one, dynamic hint}) =>
+      RustLib.instance.api
+          .simpleStructTwinSseReturnSelfTwinSse(one: one, hint: hint);
+
+  static Future<List<String>> vecSelfTwinSse(
+          {required List<SimpleStructTwinSse> arg, dynamic hint}) =>
+      RustLib.instance.api
+          .simpleStructTwinSseVecSelfTwinSse(arg: arg, hint: hint);
+
+  @override
+  int get hashCode => one.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SimpleStructTwinSse &&
+          runtimeType == other.runtimeType &&
+          one == other.one;
+}
+
 class SumWithTwinSse {
   final int x;
 
