@@ -102,7 +102,7 @@ pub(crate) struct TypeParserParsingContext {
     pub(crate) initiated_namespace: Namespace,
     pub(crate) func_attributes: FrbAttributes,
     pub(crate) default_rust_opaque_codec: RustOpaqueCodecMode,
-    pub(crate) owner: IrFuncOwnerInfo,
+    pub(crate) owner: Option<IrFuncOwnerInfo>,
 }
 
 impl IrContext for TypeParser<'_> {
