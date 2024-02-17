@@ -101,8 +101,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
   group('SimpleStruct', () {
     test('returnSelf', () async {
       expect(
-          await SimpleStructTwinRustAsyncSse.returnSelfTwinRustAsyncSse(
-              one: 'One'),
+          (await SimpleStructTwinRustAsyncSse.returnSelfTwinRustAsyncSse(
+                  one: 'One'))
+              .one,
           'One');
     });
 
