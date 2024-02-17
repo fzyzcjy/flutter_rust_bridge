@@ -2254,7 +2254,7 @@ typedef struct wire_cst_feature_uuid_twin_rust_async {
 } wire_cst_feature_uuid_twin_rust_async;
 
 typedef struct wire_cst_list_Uuid {
-  struct wire_cst_list_prim_u_8_strict *ptr;
+  struct wire_cst_list_prim_u_8_strict **ptr;
   int32_t len;
 } wire_cst_list_Uuid;
 
