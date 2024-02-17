@@ -207,6 +207,12 @@ mod tests {
 
     #[test]
     #[serial]
+    fn test_unused_struct_enum() -> anyhow::Result<()> {
+        body("library/codegen/parser/mod/unused_struct_enum", None)
+    }
+
+    #[test]
+    #[serial]
     fn test_error_non_opaque_mut() -> anyhow::Result<()> {
         let result = execute_parse("library/codegen/parser/mod/error_non_opaque_mut", None);
         assert!(format!("{:#?}", result.err().unwrap())
