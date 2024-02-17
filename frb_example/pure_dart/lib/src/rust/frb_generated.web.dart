@@ -5656,6 +5656,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<String> dco_decode_list_String(dynamic raw);
 
   @protected
+  List<UuidValue> dco_decode_list_Uuid(dynamic raw);
+
+  @protected
   List<ApplicationEnvVar> dco_decode_list_application_env_var(dynamic raw);
 
   @protected
@@ -13088,6 +13091,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<String> sse_decode_list_String(SseDeserializer deserializer);
 
   @protected
+  List<UuidValue> sse_decode_list_Uuid(SseDeserializer deserializer);
+
+  @protected
   List<ApplicationEnvVar> sse_decode_list_application_env_var(
       SseDeserializer deserializer);
 
@@ -19622,6 +19628,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic> cst_encode_list_String(List<String> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_String).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_Uuid(List<UuidValue> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw.map(cst_encode_Uuid).toList();
   }
 
   @protected
@@ -28275,6 +28287,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_list_String(List<String> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_Uuid(List<UuidValue> self, SseSerializer serializer);
 
   @protected
   void sse_encode_list_application_env_var(
@@ -45022,6 +45037,10 @@ class RustLibWire implements BaseWire {
   void wire_handle_uuid_twin_rust_async(NativePortType port_, Uint8List id) =>
       wasmModule.wire_handle_uuid_twin_rust_async(port_, id);
 
+  void wire_handle_uuids_twin_rust_async(
+          NativePortType port_, List<dynamic> ids) =>
+      wasmModule.wire_handle_uuids_twin_rust_async(port_, ids);
+
   void wire_handle_nested_uuids_twin_rust_async_sse(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
@@ -45036,6 +45055,14 @@ class RustLibWire implements BaseWire {
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_handle_uuid_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_handle_uuids_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_handle_uuids_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_nested_uuids_twin_sse(
@@ -45054,6 +45081,14 @@ class RustLibWire implements BaseWire {
       wasmModule.wire_handle_uuid_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
+  void wire_handle_uuids_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_handle_uuids_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_handle_nested_uuids_twin_sync(List<dynamic> ids) =>
           wasmModule.wire_handle_nested_uuids_twin_sync(ids);
@@ -45061,6 +45096,10 @@ class RustLibWire implements BaseWire {
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_handle_uuid_twin_sync(Uint8List id) =>
           wasmModule.wire_handle_uuid_twin_sync(id);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_handle_uuids_twin_sync(List<dynamic> ids) =>
+          wasmModule.wire_handle_uuids_twin_sync(ids);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_handle_nested_uuids_twin_sync_sse(
@@ -45074,6 +45113,12 @@ class RustLibWire implements BaseWire {
       wire_handle_uuid_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_, int data_len_) =>
           wasmModule.wire_handle_uuid_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_handle_uuids_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_, int data_len_) =>
+          wasmModule.wire_handle_uuids_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   void wire_test_more_than_just_one_raw_string_struct_twin_normal(
@@ -45452,6 +45497,9 @@ class RustLibWire implements BaseWire {
 
   void wire_handle_uuid_twin_normal(NativePortType port_, Uint8List id) =>
       wasmModule.wire_handle_uuid_twin_normal(port_, id);
+
+  void wire_handle_uuids_twin_normal(NativePortType port_, List<dynamic> ids) =>
+      wasmModule.wire_handle_uuids_twin_normal(port_, ids);
 
   void rust_arc_increment_strong_count_RustOpaque_BoxdynDartDebugTwinMoi(
           dynamic ptr) =>
@@ -56924,6 +56972,9 @@ class RustLibWasmModule implements WasmModule {
   external void wire_handle_uuid_twin_rust_async(
       NativePortType port_, Uint8List id);
 
+  external void wire_handle_uuids_twin_rust_async(
+      NativePortType port_, List<dynamic> ids);
+
   external void wire_handle_nested_uuids_twin_rust_async_sse(
       NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_,
@@ -56933,10 +56984,16 @@ class RustLibWasmModule implements WasmModule {
   external void wire_handle_uuid_twin_rust_async_sse(NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
+  external void wire_handle_uuids_twin_rust_async_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
   external void wire_handle_nested_uuids_twin_sse(NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_handle_uuid_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_handle_uuids_twin_sse(NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
@@ -56944,6 +57001,9 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_handle_uuid_twin_sync(Uint8List id);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_handle_uuids_twin_sync(List<dynamic> ids);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_handle_nested_uuids_twin_sync_sse(
@@ -56953,6 +57013,10 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_handle_uuid_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_, int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_handle_uuids_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_, int data_len_);
 
   external void wire_test_more_than_just_one_raw_string_struct_twin_normal(
@@ -57219,6 +57283,9 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_handle_uuid_twin_normal(
       NativePortType port_, Uint8List id);
+
+  external void wire_handle_uuids_twin_normal(
+      NativePortType port_, List<dynamic> ids);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_BoxdynDartDebugTwinMoi(

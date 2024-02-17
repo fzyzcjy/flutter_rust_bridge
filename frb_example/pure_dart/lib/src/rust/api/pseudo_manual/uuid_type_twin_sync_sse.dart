@@ -10,6 +10,10 @@ import 'package:uuid/uuid.dart';
 UuidValue handleUuidTwinSyncSse({required UuidValue id, dynamic hint}) =>
     RustLib.instance.api.handleUuidTwinSyncSse(id: id, hint: hint);
 
+List<UuidValue> handleUuidsTwinSyncSse(
+        {required List<UuidValue> ids, dynamic hint}) =>
+    RustLib.instance.api.handleUuidsTwinSyncSse(ids: ids, hint: hint);
+
 FeatureUuidTwinSyncSse handleNestedUuidsTwinSyncSse(
         {required FeatureUuidTwinSyncSse ids, dynamic hint}) =>
     RustLib.instance.api.handleNestedUuidsTwinSyncSse(ids: ids, hint: hint);
