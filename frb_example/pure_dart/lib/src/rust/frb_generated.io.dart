@@ -5681,6 +5681,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<String> dco_decode_list_String(dynamic raw);
 
   @protected
+  List<UuidValue> dco_decode_list_Uuid(dynamic raw);
+
+  @protected
   List<ApplicationEnvVar> dco_decode_list_application_env_var(dynamic raw);
 
   @protected
@@ -13182,6 +13185,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<String> sse_decode_list_String(SseDeserializer deserializer);
 
   @protected
+  List<UuidValue> sse_decode_list_Uuid(SseDeserializer deserializer);
+
+  @protected
   List<ApplicationEnvVar> sse_decode_list_application_env_var(
       SseDeserializer deserializer);
 
@@ -18898,6 +18904,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     final ans = wire.cst_new_list_String(raw.length);
     for (var i = 0; i < raw.length; ++i) {
       ans.ref.ptr[i] = cst_encode_String(raw[i]);
+    }
+    return ans;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_Uuid> cst_encode_list_Uuid(List<UuidValue> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ans = wire.cst_new_list_Uuid(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      ans.ref.ptr[i] = cst_encode_Uuid(raw[i]);
     }
     return ans;
   }
@@ -31615,6 +31631,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_list_String(List<String> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_Uuid(List<UuidValue> self, SseSerializer serializer);
 
   @protected
   void sse_encode_list_application_env_var(
@@ -80936,6 +80955,24 @@ class RustLibWire implements BaseWire {
       _wire_handle_uuid_twin_rust_asyncPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
+  void wire_handle_uuids_twin_rust_async(
+    int port_,
+    ffi.Pointer<wire_cst_list_Uuid> ids,
+  ) {
+    return _wire_handle_uuids_twin_rust_async(
+      port_,
+      ids,
+    );
+  }
+
+  late final _wire_handle_uuids_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_list_Uuid>)>>(
+      'frbgen_frb_example_pure_dart_wire_handle_uuids_twin_rust_async');
+  late final _wire_handle_uuids_twin_rust_async =
+      _wire_handle_uuids_twin_rust_asyncPtr
+          .asFunction<void Function(int, ffi.Pointer<wire_cst_list_Uuid>)>();
+
   void wire_handle_nested_uuids_twin_rust_async_sse(
     int port_,
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -80980,6 +81017,29 @@ class RustLibWire implements BaseWire {
       'frbgen_frb_example_pure_dart_wire_handle_uuid_twin_rust_async_sse');
   late final _wire_handle_uuid_twin_rust_async_sse =
       _wire_handle_uuid_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_handle_uuids_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_handle_uuids_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_handle_uuids_twin_rust_async_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_handle_uuids_twin_rust_async_sse');
+  late final _wire_handle_uuids_twin_rust_async_sse =
+      _wire_handle_uuids_twin_rust_async_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_handle_nested_uuids_twin_sse(
@@ -81027,6 +81087,28 @@ class RustLibWire implements BaseWire {
   late final _wire_handle_uuid_twin_sse = _wire_handle_uuid_twin_ssePtr
       .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
+  void wire_handle_uuids_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_handle_uuids_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_handle_uuids_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_handle_uuids_twin_sse');
+  late final _wire_handle_uuids_twin_sse = _wire_handle_uuids_twin_ssePtr
+      .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
   WireSyncRust2DartDco wire_handle_nested_uuids_twin_sync(
     ffi.Pointer<wire_cst_feature_uuid_twin_sync> ids,
   ) {
@@ -81062,6 +81144,22 @@ class RustLibWire implements BaseWire {
       _wire_handle_uuid_twin_syncPtr.asFunction<
           WireSyncRust2DartDco Function(
               ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+
+  WireSyncRust2DartDco wire_handle_uuids_twin_sync(
+    ffi.Pointer<wire_cst_list_Uuid> ids,
+  ) {
+    return _wire_handle_uuids_twin_sync(
+      ids,
+    );
+  }
+
+  late final _wire_handle_uuids_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_list_Uuid>)>>(
+      'frbgen_frb_example_pure_dart_wire_handle_uuids_twin_sync');
+  late final _wire_handle_uuids_twin_sync =
+      _wire_handle_uuids_twin_syncPtr.asFunction<
+          WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_list_Uuid>)>();
 
   WireSyncRust2DartSse wire_handle_nested_uuids_twin_sync_sse(
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -81103,6 +81201,27 @@ class RustLibWire implements BaseWire {
       'frbgen_frb_example_pure_dart_wire_handle_uuid_twin_sync_sse');
   late final _wire_handle_uuid_twin_sync_sse =
       _wire_handle_uuid_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_handle_uuids_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_handle_uuids_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_handle_uuids_twin_sync_ssePtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_handle_uuids_twin_sync_sse');
+  late final _wire_handle_uuids_twin_sync_sse =
+      _wire_handle_uuids_twin_sync_ssePtr.asFunction<
           WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_test_more_than_just_one_raw_string_struct_twin_normal(
@@ -82643,6 +82762,23 @@ class RustLibWire implements BaseWire {
   late final _wire_handle_uuid_twin_normal =
       _wire_handle_uuid_twin_normalPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+
+  void wire_handle_uuids_twin_normal(
+    int port_,
+    ffi.Pointer<wire_cst_list_Uuid> ids,
+  ) {
+    return _wire_handle_uuids_twin_normal(
+      port_,
+      ids,
+    );
+  }
+
+  late final _wire_handle_uuids_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_list_Uuid>)>>(
+      'frbgen_frb_example_pure_dart_wire_handle_uuids_twin_normal');
+  late final _wire_handle_uuids_twin_normal = _wire_handle_uuids_twin_normalPtr
+      .asFunction<void Function(int, ffi.Pointer<wire_cst_list_Uuid>)>();
 
   void rust_arc_increment_strong_count_RustOpaque_BoxdynDartDebugTwinMoi(
     ffi.Pointer<ffi.Void> ptr,
@@ -91555,6 +91691,21 @@ class RustLibWire implements BaseWire {
   late final _cst_new_list_String = _cst_new_list_StringPtr
       .asFunction<ffi.Pointer<wire_cst_list_String> Function(int)>();
 
+  ffi.Pointer<wire_cst_list_Uuid> cst_new_list_Uuid(
+    int len,
+  ) {
+    return _cst_new_list_Uuid(
+      len,
+    );
+  }
+
+  late final _cst_new_list_UuidPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Pointer<wire_cst_list_Uuid> Function(ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_cst_new_list_Uuid');
+  late final _cst_new_list_Uuid = _cst_new_list_UuidPtr
+      .asFunction<ffi.Pointer<wire_cst_list_Uuid> Function(int)>();
+
   ffi.Pointer<wire_cst_list_application_env_var>
       cst_new_list_application_env_var(
     int len,
@@ -96545,6 +96696,13 @@ final class wire_cst_list_record_string_i_32 extends ffi.Struct {
 
 final class wire_cst_feature_uuid_twin_rust_async extends ffi.Struct {
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> one;
+}
+
+final class wire_cst_list_Uuid extends ffi.Struct {
+  external ffi.Pointer<ffi.Pointer<wire_cst_list_prim_u_8_strict>> ptr;
+
+  @ffi.Int32()
+  external int len;
 }
 
 final class wire_cst_feature_uuid_twin_sync extends ffi.Struct {

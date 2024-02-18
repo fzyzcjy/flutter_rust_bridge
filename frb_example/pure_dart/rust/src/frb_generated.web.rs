@@ -2943,6 +2943,16 @@ impl CstDecode<Vec<String>> for flutter_rust_bridge::for_generated::wasm_bindgen
             .collect()
     }
 }
+impl CstDecode<Vec<uuid::Uuid>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> Vec<uuid::Uuid> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
 impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnvVar>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -32295,6 +32305,14 @@ pub fn wire_handle_uuid_twin_rust_async(
 }
 
 #[wasm_bindgen]
+pub fn wire_handle_uuids_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ids: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_handle_uuids_twin_rust_async_impl(port_, ids)
+}
+
+#[wasm_bindgen]
 pub fn wire_handle_nested_uuids_twin_rust_async_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -32312,6 +32330,16 @@ pub fn wire_handle_uuid_twin_rust_async_sse(
     data_len_: i32,
 ) {
     wire_handle_uuid_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_uuids_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_handle_uuids_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -32335,6 +32363,16 @@ pub fn wire_handle_uuid_twin_sse(
 }
 
 #[wasm_bindgen]
+pub fn wire_handle_uuids_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_handle_uuids_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
 pub fn wire_handle_nested_uuids_twin_sync(
     ids: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
@@ -32346,6 +32384,13 @@ pub fn wire_handle_uuid_twin_sync(
     id: Box<[u8]>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_handle_uuid_twin_sync_impl(id)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_uuids_twin_sync(
+    ids: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_handle_uuids_twin_sync_impl(ids)
 }
 
 #[wasm_bindgen]
@@ -32364,6 +32409,15 @@ pub fn wire_handle_uuid_twin_sync_sse(
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_handle_uuid_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_uuids_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_handle_uuids_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -33035,6 +33089,14 @@ pub fn wire_handle_uuid_twin_normal(
     id: Box<[u8]>,
 ) {
     wire_handle_uuid_twin_normal_impl(port_, id)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_uuids_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ids: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_handle_uuids_twin_normal_impl(port_, ids)
 }
 
 #[wasm_bindgen]

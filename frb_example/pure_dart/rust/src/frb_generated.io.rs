@@ -7026,6 +7026,16 @@ impl CstDecode<Vec<String>> for *mut wire_cst_list_String {
         vec.into_iter().map(CstDecode::cst_decode).collect()
     }
 }
+impl CstDecode<Vec<uuid::Uuid>> for *mut wire_cst_list_Uuid {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> Vec<uuid::Uuid> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
 impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnvVar>>
     for *mut wire_cst_list_application_env_var
 {
@@ -35657,6 +35667,14 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_uuid_twin_rust_async(
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_uuids_twin_rust_async(
+    port_: i64,
+    ids: *mut wire_cst_list_Uuid,
+) {
+    wire_handle_uuids_twin_rust_async_impl(port_, ids)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_nested_uuids_twin_rust_async_sse(
     port_: i64,
     ptr_: *mut u8,
@@ -35674,6 +35692,16 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_uuid_twin_rust_async_
     data_len_: i32,
 ) {
     wire_handle_uuid_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_uuids_twin_rust_async_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_handle_uuids_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
@@ -35697,6 +35725,16 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_uuid_twin_sse(
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_uuids_twin_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_handle_uuids_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_nested_uuids_twin_sync(
     ids: *mut wire_cst_feature_uuid_twin_sync,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
@@ -35708,6 +35746,13 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_uuid_twin_sync(
     id: *mut wire_cst_list_prim_u_8_strict,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_handle_uuid_twin_sync_impl(id)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_uuids_twin_sync(
+    ids: *mut wire_cst_list_Uuid,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_handle_uuids_twin_sync_impl(ids)
 }
 
 #[no_mangle]
@@ -35726,6 +35771,15 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_uuid_twin_sync_sse(
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_handle_uuid_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_uuids_twin_sync_sse(
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_handle_uuids_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
@@ -36395,6 +36449,14 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_uuid_twin_normal(
     id: *mut wire_cst_list_prim_u_8_strict,
 ) {
     wire_handle_uuid_twin_normal_impl(port_, id)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_uuids_twin_normal(
+    port_: i64,
+    ids: *mut wire_cst_list_Uuid,
+) {
+    wire_handle_uuids_twin_normal_impl(port_, ids)
 }
 
 #[no_mangle]
@@ -41297,6 +41359,20 @@ pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_String(
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_Uuid(
+    len: i32,
+) -> *mut wire_cst_list_Uuid {
+    let wrap = wire_cst_list_Uuid {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <*mut wire_cst_list_prim_u_8_strict>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_application_env_var(
     len: i32,
 ) -> *mut wire_cst_list_application_env_var {
@@ -44767,6 +44843,12 @@ pub struct wire_cst_list_RustOpaque_HideDataTwinSyncMoi {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_list_String {
+    ptr: *mut *mut wire_cst_list_prim_u_8_strict,
+    len: i32,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_list_Uuid {
     ptr: *mut *mut wire_cst_list_prim_u_8_strict,
     len: i32,
 }

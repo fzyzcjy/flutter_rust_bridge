@@ -12,10 +12,9 @@ pub async fn handle_uuid_twin_rust_async(id: uuid::Uuid) -> anyhow::Result<uuid:
     Ok(id)
 }
 
-// TODO: For simplicity, `Vec<Uuid>` is supported using SSE (serializer)
-// pub async fn handle_uuids_twin_rust_async(ids: Vec<uuid::Uuid>) -> anyhow::Result<Vec<uuid::Uuid>> {
-//     Ok(ids)
-// }
+pub async fn handle_uuids_twin_rust_async(ids: Vec<uuid::Uuid>) -> anyhow::Result<Vec<uuid::Uuid>> {
+    Ok(ids)
+}
 
 pub async fn handle_nested_uuids_twin_rust_async(
     ids: FeatureUuidTwinRustAsync,

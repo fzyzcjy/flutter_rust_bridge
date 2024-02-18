@@ -61,7 +61,10 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for GeneralListWireRustCodecCstGe
 fn general_list_maybe_extra_pointer_indirection(ir: &IrTypeGeneralList) -> &'static str {
     if matches!(
         *ir.inner,
-        Optional(_) | Delegate(IrTypeDelegate::String) | IrType::PrimitiveList(_)
+        Optional(_)
+            | Delegate(IrTypeDelegate::String)
+            | Delegate(IrTypeDelegate::Uuid)
+            | IrType::PrimitiveList(_)
     ) {
         "*mut "
     } else {

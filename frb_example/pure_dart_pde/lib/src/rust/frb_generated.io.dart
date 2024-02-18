@@ -2372,6 +2372,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<String> dco_decode_list_String(dynamic raw);
 
   @protected
+  List<UuidValue> dco_decode_list_Uuid(dynamic raw);
+
+  @protected
   List<ApplicationEnvVar> dco_decode_list_application_env_var(dynamic raw);
 
   @protected
@@ -5853,6 +5856,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<String> sse_decode_list_String(SseDeserializer deserializer);
+
+  @protected
+  List<UuidValue> sse_decode_list_Uuid(SseDeserializer deserializer);
 
   @protected
   List<ApplicationEnvVar> sse_decode_list_application_env_var(
@@ -9501,6 +9507,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_list_String(List<String> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_Uuid(List<UuidValue> self, SseSerializer serializer);
 
   @protected
   void sse_encode_list_application_env_var(

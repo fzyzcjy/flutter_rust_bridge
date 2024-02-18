@@ -10,6 +10,10 @@ import 'package:uuid/uuid.dart';
 Future<UuidValue> handleUuidTwinSse({required UuidValue id, dynamic hint}) =>
     RustLib.instance.api.handleUuidTwinSse(id: id, hint: hint);
 
+Future<List<UuidValue>> handleUuidsTwinSse(
+        {required List<UuidValue> ids, dynamic hint}) =>
+    RustLib.instance.api.handleUuidsTwinSse(ids: ids, hint: hint);
+
 Future<FeatureUuidTwinSse> handleNestedUuidsTwinSse(
         {required FeatureUuidTwinSse ids, dynamic hint}) =>
     RustLib.instance.api.handleNestedUuidsTwinSse(ids: ids, hint: hint);

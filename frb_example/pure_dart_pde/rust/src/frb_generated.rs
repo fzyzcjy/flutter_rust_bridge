@@ -19180,6 +19180,21 @@ fn wire_handle_uuid_twin_rust_async_impl(
                     })().await)
                 } })
 }
+fn wire_handle_uuids_twin_rust_async_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_uuids_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_ids = <Vec<uuid::Uuid>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+                    transform_result_sse((move || async move {
+                         crate::api::pseudo_manual::uuid_type_twin_rust_async::handle_uuids_twin_rust_async(api_ids).await
+                    })().await)
+                } })
+}
 fn wire_handle_nested_uuids_twin_sync_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
@@ -19239,6 +19254,35 @@ fn wire_handle_uuid_twin_sync_impl(
             deserializer.end();
             transform_result_sse((move || {
                 crate::api::pseudo_manual::uuid_type_twin_sync::handle_uuid_twin_sync(api_id)
+            })())
+        },
+    )
+}
+fn wire_handle_uuids_twin_sync_impl(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "handle_uuids_twin_sync",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_ids = <Vec<uuid::Uuid>>::sse_decode(&mut deserializer);
+            deserializer.end();
+            transform_result_sse((move || {
+                crate::api::pseudo_manual::uuid_type_twin_sync::handle_uuids_twin_sync(api_ids)
             })())
         },
     )
@@ -21683,6 +21727,38 @@ fn wire_handle_uuid_twin_normal_impl(
             move |context| {
                 transform_result_sse((move || {
                     crate::api::uuid_type::handle_uuid_twin_normal(api_id)
+                })())
+            }
+        },
+    )
+}
+fn wire_handle_uuids_twin_normal_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "handle_uuids_twin_normal",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_ids = <Vec<uuid::Uuid>>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| {
+                transform_result_sse((move || {
+                    crate::api::uuid_type::handle_uuids_twin_normal(api_ids)
                 })())
             }
         },
@@ -26237,6 +26313,18 @@ impl SseDecode for Vec<String> {
         let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<String>::sse_decode(deserializer));
+        }
+        return ans_;
+    }
+}
+
+impl SseDecode for Vec<uuid::Uuid> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut len_ = <i32>::sse_decode(deserializer);
+        let mut ans_ = vec![];
+        for idx_ in 0..len_ {
+            ans_.push(<uuid::Uuid>::sse_decode(deserializer));
         }
         return ans_;
     }
@@ -31384,91 +31472,93 @@ fn pde_ffi_dispatcher_primary_impl(
 933 => wire_handle_type_alias_id_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
 935 => wire_handle_type_alias_model_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
 934 => wire_handle_type_nest_alias_id_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-940 => wire_handle_nested_uuids_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+941 => wire_handle_nested_uuids_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
 939 => wire_handle_uuid_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-944 => wire_test_more_than_just_one_raw_string_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-943 => wire_test_raw_string_item_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-986 => wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-987 => wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-985 => wire_NonCloneSimpleTwinNormal_instance_method_arg_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-989 => wire_NonCloneSimpleTwinNormal_instance_method_getter_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-988 => wire_NonCloneSimpleTwinNormal_instance_method_return_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-983 => wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-982 => wire_NonCloneSimpleTwinNormal_new_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-984 => wire_NonCloneSimpleTwinNormal_new_with_result_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-979 => wire_NonCloneSimpleTwinNormal_static_method_arg_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-980 => wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-978 => wire_NonCloneSimpleTwinNormal_static_method_arg_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-981 => wire_NonCloneSimpleTwinNormal_static_method_return_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-946 => wire_rust_auto_opaque_arg_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-947 => wire_rust_auto_opaque_arg_mut_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-949 => wire_rust_auto_opaque_arg_own_and_return_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-945 => wire_rust_auto_opaque_arg_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-969 => wire_rust_auto_opaque_arg_vec_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-977 => wire_rust_auto_opaque_borrow_and_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-976 => wire_rust_auto_opaque_borrow_and_mut_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-954 => wire_rust_auto_opaque_callable_arg_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-955 => wire_rust_auto_opaque_callable_return_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-966 => wire_rust_auto_opaque_enum_arg_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-967 => wire_rust_auto_opaque_enum_return_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-963 => wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-964 => wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-965 => wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-971 => wire_rust_auto_opaque_explicit_arg_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-973 => wire_rust_auto_opaque_explicit_return_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-972 => wire_rust_auto_opaque_explicit_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-951 => wire_rust_auto_opaque_normal_and_opaque_arg_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-952 => wire_rust_auto_opaque_plus_sign_arg_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-953 => wire_rust_auto_opaque_plus_sign_return_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-974 => wire_rust_auto_opaque_return_opaque_one_and_two_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-975 => wire_rust_auto_opaque_return_opaque_two_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-948 => wire_rust_auto_opaque_return_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-970 => wire_rust_auto_opaque_return_vec_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-968 => wire_rust_auto_opaque_stream_sink_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-961 => wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-962 => wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-957 => wire_rust_auto_opaque_trait_object_arg_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-958 => wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-956 => wire_rust_auto_opaque_trait_object_arg_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-959 => wire_rust_auto_opaque_trait_object_return_own_one_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-960 => wire_rust_auto_opaque_trait_object_return_own_two_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-950 => wire_rust_auto_opaque_two_args_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-992 => wire_create_array_opaque_enum_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1001 => wire_create_nested_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-990 => wire_create_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-991 => wire_create_option_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1004 => wire_frb_generator_test_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-998 => wire_opaque_array_run_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-996 => wire_opaque_array_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1000 => wire_opaque_vec_run_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-999 => wire_opaque_vec_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-993 => wire_run_enum_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1002 => wire_run_nested_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-997 => wire_run_non_clone_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-994 => wire_run_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-995 => wire_run_opaque_with_delay_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1003 => wire_unwrap_rust_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1009 => wire_simple_adder_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1010 => wire_func_stream_return_error_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1011 => wire_func_stream_return_panic_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1012 => wire_func_stream_sink_arg_position_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1013 => wire_handle_stream_of_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1014 => wire_handle_stream_sink_at_1_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1015 => wire_handle_stream_sink_at_2_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1016 => wire_handle_stream_sink_at_3_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1017 => wire_func_stream_realistic_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1019 => wire_func_struct_with_one_field_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1020 => wire_func_struct_with_two_field_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1018 => wire_func_struct_with_zero_field_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1021 => wire_func_tuple_struct_with_one_field_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1022 => wire_func_tuple_struct_with_two_field_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1024 => wire_test_tuple_2_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1023 => wire_test_tuple_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1025 => wire_handle_type_alias_id_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1027 => wire_handle_type_alias_model_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1026 => wire_handle_type_nest_alias_id_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1029 => wire_handle_nested_uuids_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1028 => wire_handle_uuid_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+940 => wire_handle_uuids_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+946 => wire_test_more_than_just_one_raw_string_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+945 => wire_test_raw_string_item_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+988 => wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+989 => wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+987 => wire_NonCloneSimpleTwinNormal_instance_method_arg_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+991 => wire_NonCloneSimpleTwinNormal_instance_method_getter_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+990 => wire_NonCloneSimpleTwinNormal_instance_method_return_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+985 => wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+984 => wire_NonCloneSimpleTwinNormal_new_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+986 => wire_NonCloneSimpleTwinNormal_new_with_result_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+981 => wire_NonCloneSimpleTwinNormal_static_method_arg_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+982 => wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+980 => wire_NonCloneSimpleTwinNormal_static_method_arg_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+983 => wire_NonCloneSimpleTwinNormal_static_method_return_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+948 => wire_rust_auto_opaque_arg_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+949 => wire_rust_auto_opaque_arg_mut_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+951 => wire_rust_auto_opaque_arg_own_and_return_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+947 => wire_rust_auto_opaque_arg_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+971 => wire_rust_auto_opaque_arg_vec_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+979 => wire_rust_auto_opaque_borrow_and_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+978 => wire_rust_auto_opaque_borrow_and_mut_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+956 => wire_rust_auto_opaque_callable_arg_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+957 => wire_rust_auto_opaque_callable_return_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+968 => wire_rust_auto_opaque_enum_arg_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+969 => wire_rust_auto_opaque_enum_return_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+965 => wire_rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+966 => wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+967 => wire_rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+973 => wire_rust_auto_opaque_explicit_arg_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+975 => wire_rust_auto_opaque_explicit_return_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+974 => wire_rust_auto_opaque_explicit_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+953 => wire_rust_auto_opaque_normal_and_opaque_arg_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+954 => wire_rust_auto_opaque_plus_sign_arg_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+955 => wire_rust_auto_opaque_plus_sign_return_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+976 => wire_rust_auto_opaque_return_opaque_one_and_two_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+977 => wire_rust_auto_opaque_return_opaque_two_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+950 => wire_rust_auto_opaque_return_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+972 => wire_rust_auto_opaque_return_vec_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+970 => wire_rust_auto_opaque_stream_sink_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+963 => wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+964 => wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+959 => wire_rust_auto_opaque_trait_object_arg_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+960 => wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+958 => wire_rust_auto_opaque_trait_object_arg_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+961 => wire_rust_auto_opaque_trait_object_return_own_one_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+962 => wire_rust_auto_opaque_trait_object_return_own_two_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+952 => wire_rust_auto_opaque_two_args_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+994 => wire_create_array_opaque_enum_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1003 => wire_create_nested_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+992 => wire_create_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+993 => wire_create_option_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1006 => wire_frb_generator_test_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1000 => wire_opaque_array_run_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+998 => wire_opaque_array_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1002 => wire_opaque_vec_run_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1001 => wire_opaque_vec_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+995 => wire_run_enum_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1004 => wire_run_nested_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+999 => wire_run_non_clone_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+996 => wire_run_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+997 => wire_run_opaque_with_delay_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1005 => wire_unwrap_rust_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1011 => wire_simple_adder_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1012 => wire_func_stream_return_error_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1013 => wire_func_stream_return_panic_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1014 => wire_func_stream_sink_arg_position_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1015 => wire_handle_stream_of_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1016 => wire_handle_stream_sink_at_1_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1017 => wire_handle_stream_sink_at_2_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1018 => wire_handle_stream_sink_at_3_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1019 => wire_func_stream_realistic_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1021 => wire_func_struct_with_one_field_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1022 => wire_func_struct_with_two_field_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1020 => wire_func_struct_with_zero_field_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1023 => wire_func_tuple_struct_with_one_field_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1024 => wire_func_tuple_struct_with_two_field_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1026 => wire_test_tuple_2_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1025 => wire_test_tuple_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1027 => wire_handle_type_alias_id_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1029 => wire_handle_type_alias_model_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1028 => wire_handle_type_nest_alias_id_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1032 => wire_handle_nested_uuids_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1030 => wire_handle_uuid_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1031 => wire_handle_uuids_twin_normal_impl(port, ptr, rust_vec_len, data_len),
                         _ => unreachable!(),
                     }
 }
@@ -31998,12 +32088,13 @@ fn pde_ffi_dispatcher_sync_impl(
         936 => wire_handle_type_alias_id_twin_sync_impl(ptr, rust_vec_len, data_len),
         938 => wire_handle_type_alias_model_twin_sync_impl(ptr, rust_vec_len, data_len),
         937 => wire_handle_type_nest_alias_id_twin_sync_impl(ptr, rust_vec_len, data_len),
-        942 => wire_handle_nested_uuids_twin_sync_impl(ptr, rust_vec_len, data_len),
-        941 => wire_handle_uuid_twin_sync_impl(ptr, rust_vec_len, data_len),
-        1008 => wire_frb_sync_generator_test_twin_normal_impl(ptr, rust_vec_len, data_len),
-        1007 => wire_sync_create_non_clone_twin_normal_impl(ptr, rust_vec_len, data_len),
-        1006 => wire_sync_create_opaque_twin_normal_impl(ptr, rust_vec_len, data_len),
-        1005 => wire_sync_option_rust_opaque_twin_normal_impl(ptr, rust_vec_len, data_len),
+        944 => wire_handle_nested_uuids_twin_sync_impl(ptr, rust_vec_len, data_len),
+        942 => wire_handle_uuid_twin_sync_impl(ptr, rust_vec_len, data_len),
+        943 => wire_handle_uuids_twin_sync_impl(ptr, rust_vec_len, data_len),
+        1010 => wire_frb_sync_generator_test_twin_normal_impl(ptr, rust_vec_len, data_len),
+        1009 => wire_sync_create_non_clone_twin_normal_impl(ptr, rust_vec_len, data_len),
+        1008 => wire_sync_create_opaque_twin_normal_impl(ptr, rust_vec_len, data_len),
+        1007 => wire_sync_option_rust_opaque_twin_normal_impl(ptr, rust_vec_len, data_len),
         _ => unreachable!(),
     }
 }
@@ -42052,6 +42143,16 @@ impl SseEncode for Vec<String> {
         <i32>::sse_encode(self.len() as _, serializer);
         for item in self {
             <String>::sse_encode(item, serializer);
+        }
+    }
+}
+
+impl SseEncode for Vec<uuid::Uuid> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self.len() as _, serializer);
+        for item in self {
+            <uuid::Uuid>::sse_encode(item, serializer);
         }
     }
 }

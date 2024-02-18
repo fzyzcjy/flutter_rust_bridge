@@ -11,6 +11,10 @@ Future<UuidValue> handleUuidTwinRustAsyncSse(
         {required UuidValue id, dynamic hint}) =>
     RustLib.instance.api.handleUuidTwinRustAsyncSse(id: id, hint: hint);
 
+Future<List<UuidValue>> handleUuidsTwinRustAsyncSse(
+        {required List<UuidValue> ids, dynamic hint}) =>
+    RustLib.instance.api.handleUuidsTwinRustAsyncSse(ids: ids, hint: hint);
+
 Future<FeatureUuidTwinRustAsyncSse> handleNestedUuidsTwinRustAsyncSse(
         {required FeatureUuidTwinRustAsyncSse ids, dynamic hint}) =>
     RustLib.instance.api
