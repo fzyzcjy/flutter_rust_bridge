@@ -43,7 +43,7 @@ typedef struct WireSyncRust2DartSse {
 } WireSyncRust2DartSse;
 
 typedef int64_t DartPort;
-typedef bool (*DartPostCObjectFnType)(DartPort port_id, struct DartCObject *message);
+typedef bool (*DartPostCObjectFnType)(DartPort port_id, void *message);
 void store_dart_post_cobject(DartPostCObjectFnType ptr);
 // EXTRA END
 ";
