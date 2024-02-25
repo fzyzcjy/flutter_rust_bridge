@@ -76,10 +76,6 @@ fn generate_end_api_text(
 
     header += item.imports.clone();
 
-    header += item.unused_types.iter()
-        .map(|t| format!("// The type `{t}` is exported as `pub` but never used by any `pub` functions, thus it is ignored.").into())
-        .collect();
-
     for f in &item.funcs {
         header += f.header.clone();
     }
@@ -89,9 +85,15 @@ fn generate_end_api_text(
 
     let header = header.all_code();
 
+    let unused_types = item.unused_types.iter()
+        .map(|t| format!("// The type `{t}` is exported as `pub` but never used by any `pub` functions, thus it is ignored.\n"))
+        .join("");
+
     format!(
         "
         {header}
+
+        {unused_types}
 
         {funcs}
 
