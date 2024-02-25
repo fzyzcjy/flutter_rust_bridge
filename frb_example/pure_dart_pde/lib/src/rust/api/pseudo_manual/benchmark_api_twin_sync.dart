@@ -6,6 +6,9 @@
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+// The type `BINARY_TREES` is exported as `pub` but never used by any `pub` functions, thus it is ignored.
+// The type `BINARY_TREES_PROTOBUF` is exported as `pub` but never used by any `pub` functions, thus it is ignored.
+
 void benchmarkVoidTwinSync({dynamic hint}) =>
     RustLib.instance.api.benchmarkVoidTwinSync(hint: hint);
 

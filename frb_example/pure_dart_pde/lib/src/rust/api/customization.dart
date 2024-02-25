@@ -6,5 +6,8 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+// The type `INIT_TWO_DONE` is exported as `pub` but never used by any `pub` functions, thus it is ignored.
+// The type `INIT_ONE_DONE` is exported as `pub` but never used by any `pub` functions, thus it is ignored.
+
 Future<bool> checkInitDone({dynamic hint}) =>
     RustLib.instance.api.checkInitDone(hint: hint);

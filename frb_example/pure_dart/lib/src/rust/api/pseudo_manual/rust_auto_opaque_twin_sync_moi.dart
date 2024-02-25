@@ -9,6 +9,9 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'rust_auto_opaque_twin_moi.dart';
 part 'rust_auto_opaque_twin_sync_moi.freezed.dart';
 
+// The type `HelloOneStructTwinSyncMoi` is exported as `pub` but never used by any `pub` functions, thus it is ignored.
+// The type `HelloTwoEnumTwinSyncMoi` is exported as `pub` but never used by any `pub` functions, thus it is ignored.
+
 void rustAutoOpaqueArgOwnTwinSyncMoi(
         {required NonCloneSimpleTwinSyncMoi arg,
         required int expect,

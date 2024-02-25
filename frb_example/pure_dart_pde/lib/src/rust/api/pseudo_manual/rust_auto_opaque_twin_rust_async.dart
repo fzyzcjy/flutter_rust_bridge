@@ -8,6 +8,9 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'rust_auto_opaque_twin_rust_async.freezed.dart';
 
+// The type `HelloOneStructTwinRustAsync` is exported as `pub` but never used by any `pub` functions, thus it is ignored.
+// The type `HelloTwoEnumTwinRustAsync` is exported as `pub` but never used by any `pub` functions, thus it is ignored.
+
 Future<void> rustAutoOpaqueArgOwnTwinRustAsync(
         {required NonCloneSimpleTwinRustAsync arg,
         required int expect,

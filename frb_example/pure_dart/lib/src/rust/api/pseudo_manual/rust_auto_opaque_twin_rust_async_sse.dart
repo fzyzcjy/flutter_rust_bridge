@@ -9,6 +9,9 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'rust_auto_opaque_twin_moi.dart';
 part 'rust_auto_opaque_twin_rust_async_sse.freezed.dart';
 
+// The type `HelloOneStructTwinRustAsyncSse` is exported as `pub` but never used by any `pub` functions, thus it is ignored.
+// The type `HelloTwoEnumTwinRustAsyncSse` is exported as `pub` but never used by any `pub` functions, thus it is ignored.
+
 Future<void> rustAutoOpaqueArgOwnTwinRustAsyncSse(
         {required NonCloneSimpleTwinRustAsyncSse arg,
         required int expect,
