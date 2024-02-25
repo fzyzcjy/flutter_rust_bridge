@@ -10,6 +10,6 @@ Future<void> main() async {
     final tt = Stopwatch()..start();
     await renderImage(width: 3000, height: 3000);
     tt.stop();
-    print(' => IN FLUTTER: ${tt.elapsedMilliseconds} ms');
+    print(' => IN FLUTTER: ${tt.elapsedMicroseconds} us');
   }
 }
