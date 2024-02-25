@@ -714,7 +714,7 @@ fn wire_datetime_local_twin_normal_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_d = <crate::auxiliary::sample_types::DateTime>::sse_decode(&mut deserializer);
+            let api_d = <chrono::DateTime<chrono::Local>>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
@@ -746,7 +746,7 @@ fn wire_datetime_utc_twin_normal_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_d = <crate::auxiliary::sample_types::DateTime>::sse_decode(&mut deserializer);
+            let api_d = <chrono::DateTime<chrono::Utc>>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
@@ -811,8 +811,7 @@ fn wire_handle_durations_twin_normal_impl(
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_durations = <Vec<chrono::Duration>>::sse_decode(&mut deserializer);
-            let api_since =
-                <crate::auxiliary::sample_types::DateTime>::sse_decode(&mut deserializer);
+            let api_since = <chrono::DateTime<chrono::Local>>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
@@ -948,8 +947,7 @@ fn wire_optional_empty_datetime_utc_twin_normal_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_d =
-                <Option<crate::auxiliary::sample_types::DateTime>>::sse_decode(&mut deserializer);
+            let api_d = <Option<chrono::DateTime<chrono::Utc>>>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
@@ -11216,7 +11214,7 @@ fn wire_datetime_local_twin_rust_async_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "datetime_local_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_d = <crate::auxiliary::sample_types::DateTime>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+            let api_d = <chrono::DateTime::<chrono::Local>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::chrono_type_twin_rust_async::datetime_local_twin_rust_async(api_d).await)
                     })().await)
@@ -11231,7 +11229,7 @@ fn wire_datetime_utc_twin_rust_async_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "datetime_utc_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_d = <crate::auxiliary::sample_types::DateTime>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+            let api_d = <chrono::DateTime::<chrono::Utc>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::chrono_type_twin_rust_async::datetime_utc_twin_rust_async(api_d).await)
                     })().await)
@@ -11262,7 +11260,7 @@ fn wire_handle_durations_twin_rust_async_impl(
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_durations = <Vec<chrono::Duration>>::sse_decode(&mut deserializer);
-let api_since = <crate::auxiliary::sample_types::DateTime>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+let api_since = <chrono::DateTime::<chrono::Local>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::chrono_type_twin_rust_async::handle_durations_twin_rust_async(api_durations, api_since).await)
                     })().await)
@@ -11323,7 +11321,7 @@ fn wire_optional_empty_datetime_utc_twin_rust_async_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "optional_empty_datetime_utc_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_d = <Option<crate::auxiliary::sample_types::DateTime>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+            let api_d = <Option<chrono::DateTime::<chrono::Utc>>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::chrono_type_twin_rust_async::optional_empty_datetime_utc_twin_rust_async(api_d).await)
                     })().await)
@@ -11380,7 +11378,7 @@ fn wire_datetime_local_twin_sync_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_d = <crate::auxiliary::sample_types::DateTime>::sse_decode(&mut deserializer);
+            let api_d = <chrono::DateTime<chrono::Local>>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse((move || {
                 Result::<_, ()>::Ok(
@@ -11413,7 +11411,7 @@ fn wire_datetime_utc_twin_sync_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_d = <crate::auxiliary::sample_types::DateTime>::sse_decode(&mut deserializer);
+            let api_d = <chrono::DateTime<chrono::Utc>>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse((move || {
                 Result::<_, ()>::Ok(
@@ -11476,8 +11474,7 @@ fn wire_handle_durations_twin_sync_impl(
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_durations = <Vec<chrono::Duration>>::sse_decode(&mut deserializer);
-            let api_since =
-                <crate::auxiliary::sample_types::DateTime>::sse_decode(&mut deserializer);
+            let api_since = <chrono::DateTime<chrono::Local>>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse((move || {
                 Result::<_, ()>::Ok(
@@ -11579,7 +11576,7 @@ fn wire_optional_empty_datetime_utc_twin_sync_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "optional_empty_datetime_utc_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_d = <Option<crate::auxiliary::sample_types::DateTime>>::sse_decode(&mut deserializer);deserializer.end();
+            let api_d = <Option<chrono::DateTime::<chrono::Utc>>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse((move || {
                      Result::<_,()>::Ok(crate::api::pseudo_manual::chrono_type_twin_sync::optional_empty_datetime_utc_twin_sync(api_d))
                 })()) })
@@ -22571,12 +22568,38 @@ impl SseDecode for chrono::Duration {
     }
 }
 
+impl SseDecode for chrono::DateTime<chrono::Local> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <i64>::sse_decode(deserializer);
+        return chrono::DateTime::<chrono::Local>::from(
+            chrono::DateTime::<chrono::Utc>::from_naive_utc_and_offset(
+                chrono::NaiveDateTime::from_timestamp_micros(inner)
+                    .expect("invalid or out-of-range datetime"),
+                chrono::Utc,
+            ),
+        );
+    }
+}
+
 impl SseDecode for chrono::NaiveDateTime {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <i64>::sse_decode(deserializer);
         return chrono::NaiveDateTime::from_timestamp_micros(inner)
             .expect("invalid or out-of-range datetime");
+    }
+}
+
+impl SseDecode for chrono::DateTime<chrono::Utc> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <i64>::sse_decode(deserializer);
+        return chrono::DateTime::<chrono::Utc>::from_naive_utc_and_offset(
+            chrono::NaiveDateTime::from_timestamp_micros(inner)
+                .expect("invalid or out-of-range datetime"),
+            chrono::Utc,
+        );
     }
 }
 
@@ -25972,8 +25995,8 @@ impl SseDecode for [f64; 16] {
 impl SseDecode for crate::api::chrono_type::FeatureChronoTwinNormal {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_utc = <crate::auxiliary::sample_types::DateTime>::sse_decode(deserializer);
-        let mut var_local = <crate::auxiliary::sample_types::DateTime>::sse_decode(deserializer);
+        let mut var_utc = <chrono::DateTime<chrono::Utc>>::sse_decode(deserializer);
+        let mut var_local = <chrono::DateTime<chrono::Local>>::sse_decode(deserializer);
         let mut var_duration = <chrono::Duration>::sse_decode(deserializer);
         let mut var_naive = <chrono::NaiveDateTime>::sse_decode(deserializer);
         return crate::api::chrono_type::FeatureChronoTwinNormal {
@@ -25990,8 +26013,8 @@ impl SseDecode
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_utc = <crate::auxiliary::sample_types::DateTime>::sse_decode(deserializer);
-        let mut var_local = <crate::auxiliary::sample_types::DateTime>::sse_decode(deserializer);
+        let mut var_utc = <chrono::DateTime<chrono::Utc>>::sse_decode(deserializer);
+        let mut var_local = <chrono::DateTime<chrono::Local>>::sse_decode(deserializer);
         let mut var_duration = <chrono::Duration>::sse_decode(deserializer);
         let mut var_naive = <chrono::NaiveDateTime>::sse_decode(deserializer);
         return crate::api::pseudo_manual::chrono_type_twin_rust_async::FeatureChronoTwinRustAsync{utc: var_utc, local: var_local, duration: var_duration, naive: var_naive};
@@ -26001,8 +26024,8 @@ impl SseDecode
 impl SseDecode for crate::api::pseudo_manual::chrono_type_twin_sync::FeatureChronoTwinSync {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_utc = <crate::auxiliary::sample_types::DateTime>::sse_decode(deserializer);
-        let mut var_local = <crate::auxiliary::sample_types::DateTime>::sse_decode(deserializer);
+        let mut var_utc = <chrono::DateTime<chrono::Utc>>::sse_decode(deserializer);
+        let mut var_local = <chrono::DateTime<chrono::Local>>::sse_decode(deserializer);
         let mut var_duration = <chrono::Duration>::sse_decode(deserializer);
         let mut var_naive = <chrono::NaiveDateTime>::sse_decode(deserializer);
         return crate::api::pseudo_manual::chrono_type_twin_sync::FeatureChronoTwinSync {
@@ -26291,6 +26314,18 @@ impl SseDecode for Vec<chrono::Duration> {
         let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<chrono::Duration>::sse_decode(deserializer));
+        }
+        return ans_;
+    }
+}
+
+impl SseDecode for Vec<chrono::DateTime<chrono::Local>> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut len_ = <i32>::sse_decode(deserializer);
+        let mut ans_ = vec![];
+        for idx_ in 0..len_ {
+            ans_.push(<chrono::DateTime<chrono::Local>>::sse_decode(deserializer));
         }
         return ans_;
     }
@@ -26597,20 +26632,6 @@ impl SseDecode for Vec<bool> {
         let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<bool>::sse_decode(deserializer));
-        }
-        return ans_;
-    }
-}
-
-impl SseDecode for Vec<crate::auxiliary::sample_types::DateTime> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
-        for idx_ in 0..len_ {
-            ans_.push(<crate::auxiliary::sample_types::DateTime>::sse_decode(
-                deserializer,
-            ));
         }
         return ans_;
     }
@@ -28478,6 +28499,17 @@ impl SseDecode for Option<chrono::NaiveDateTime> {
     }
 }
 
+impl SseDecode for Option<chrono::DateTime<chrono::Utc>> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        if (<bool>::sse_decode(deserializer)) {
+            return Some(<chrono::DateTime<chrono::Utc>>::sse_decode(deserializer));
+        } else {
+            return None;
+        }
+    }
+}
+
 impl SseDecode for Option<flutter_rust_bridge::DartOpaque> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -28723,19 +28755,6 @@ impl SseDecode for Option<bool> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         if (<bool>::sse_decode(deserializer)) {
             return Some(<bool>::sse_decode(deserializer));
-        } else {
-            return None;
-        }
-    }
-}
-
-impl SseDecode for Option<crate::auxiliary::sample_types::DateTime> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        if (<bool>::sse_decode(deserializer)) {
-            return Some(<crate::auxiliary::sample_types::DateTime>::sse_decode(
-                deserializer,
-            ));
         } else {
             return None;
         }
@@ -30473,8 +30492,7 @@ impl SseDecode for [crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync
 impl SseDecode for crate::api::chrono_type::TestChronoTwinNormal {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_dt =
-            <Option<crate::auxiliary::sample_types::DateTime>>::sse_decode(deserializer);
+        let mut var_dt = <Option<chrono::DateTime<chrono::Utc>>>::sse_decode(deserializer);
         let mut var_dt2 = <Option<chrono::NaiveDateTime>>::sse_decode(deserializer);
         let mut var_du = <Option<chrono::Duration>>::sse_decode(deserializer);
         return crate::api::chrono_type::TestChronoTwinNormal {
@@ -30488,8 +30506,7 @@ impl SseDecode for crate::api::chrono_type::TestChronoTwinNormal {
 impl SseDecode for crate::api::pseudo_manual::chrono_type_twin_rust_async::TestChronoTwinRustAsync {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_dt =
-            <Option<crate::auxiliary::sample_types::DateTime>>::sse_decode(deserializer);
+        let mut var_dt = <Option<chrono::DateTime<chrono::Utc>>>::sse_decode(deserializer);
         let mut var_dt2 = <Option<chrono::NaiveDateTime>>::sse_decode(deserializer);
         let mut var_du = <Option<chrono::Duration>>::sse_decode(deserializer);
         return crate::api::pseudo_manual::chrono_type_twin_rust_async::TestChronoTwinRustAsync {
@@ -30503,8 +30520,7 @@ impl SseDecode for crate::api::pseudo_manual::chrono_type_twin_rust_async::TestC
 impl SseDecode for crate::api::pseudo_manual::chrono_type_twin_sync::TestChronoTwinSync {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_dt =
-            <Option<crate::auxiliary::sample_types::DateTime>>::sse_decode(deserializer);
+        let mut var_dt = <Option<chrono::DateTime<chrono::Utc>>>::sse_decode(deserializer);
         let mut var_dt2 = <Option<chrono::NaiveDateTime>>::sse_decode(deserializer);
         let mut var_du = <Option<chrono::Duration>>::sse_decode(deserializer);
         return crate::api::pseudo_manual::chrono_type_twin_sync::TestChronoTwinSync {
@@ -38991,7 +39007,21 @@ impl SseEncode for chrono::Duration {
     }
 }
 
+impl SseEncode for chrono::DateTime<chrono::Local> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i64>::sse_encode(self.timestamp_micros(), serializer);
+    }
+}
+
 impl SseEncode for chrono::NaiveDateTime {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i64>::sse_encode(self.timestamp_micros(), serializer);
+    }
+}
+
+impl SseEncode for chrono::DateTime<chrono::Utc> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <i64>::sse_encode(self.timestamp_micros(), serializer);
@@ -41876,8 +41906,8 @@ impl SseEncode for [f64; 16] {
 impl SseEncode for crate::api::chrono_type::FeatureChronoTwinNormal {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <crate::auxiliary::sample_types::DateTime>::sse_encode(self.utc, serializer);
-        <crate::auxiliary::sample_types::DateTime>::sse_encode(self.local, serializer);
+        <chrono::DateTime<chrono::Utc>>::sse_encode(self.utc, serializer);
+        <chrono::DateTime<chrono::Local>>::sse_encode(self.local, serializer);
         <chrono::Duration>::sse_encode(self.duration, serializer);
         <chrono::NaiveDateTime>::sse_encode(self.naive, serializer);
     }
@@ -41888,8 +41918,8 @@ impl SseEncode
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <crate::auxiliary::sample_types::DateTime>::sse_encode(self.utc, serializer);
-        <crate::auxiliary::sample_types::DateTime>::sse_encode(self.local, serializer);
+        <chrono::DateTime<chrono::Utc>>::sse_encode(self.utc, serializer);
+        <chrono::DateTime<chrono::Local>>::sse_encode(self.local, serializer);
         <chrono::Duration>::sse_encode(self.duration, serializer);
         <chrono::NaiveDateTime>::sse_encode(self.naive, serializer);
     }
@@ -41898,8 +41928,8 @@ impl SseEncode
 impl SseEncode for crate::api::pseudo_manual::chrono_type_twin_sync::FeatureChronoTwinSync {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <crate::auxiliary::sample_types::DateTime>::sse_encode(self.utc, serializer);
-        <crate::auxiliary::sample_types::DateTime>::sse_encode(self.local, serializer);
+        <chrono::DateTime<chrono::Utc>>::sse_encode(self.utc, serializer);
+        <chrono::DateTime<chrono::Local>>::sse_encode(self.local, serializer);
         <chrono::Duration>::sse_encode(self.duration, serializer);
         <chrono::NaiveDateTime>::sse_encode(self.naive, serializer);
     }
@@ -42161,6 +42191,16 @@ impl SseEncode for Vec<chrono::Duration> {
     }
 }
 
+impl SseEncode for Vec<chrono::DateTime<chrono::Local>> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self.len() as _, serializer);
+        for item in self {
+            <chrono::DateTime<chrono::Local>>::sse_encode(item, serializer);
+        }
+    }
+}
+
 impl SseEncode for Vec<chrono::NaiveDateTime> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -42399,16 +42439,6 @@ impl SseEncode for Vec<bool> {
         <i32>::sse_encode(self.len() as _, serializer);
         for item in self {
             <bool>::sse_encode(item, serializer);
-        }
-    }
-}
-
-impl SseEncode for Vec<crate::auxiliary::sample_types::DateTime> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <i32>::sse_encode(self.len() as _, serializer);
-        for item in self {
-            <crate::auxiliary::sample_types::DateTime>::sse_encode(item, serializer);
         }
     }
 }
@@ -43872,6 +43902,16 @@ impl SseEncode for Option<chrono::NaiveDateTime> {
     }
 }
 
+impl SseEncode for Option<chrono::DateTime<chrono::Utc>> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <bool>::sse_encode(self.is_some(), serializer);
+        if let Some(value) = self {
+            <chrono::DateTime<chrono::Utc>>::sse_encode(value, serializer);
+        }
+    }
+}
+
 impl SseEncode for Option<flutter_rust_bridge::DartOpaque> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -44082,16 +44122,6 @@ impl SseEncode for Option<bool> {
         <bool>::sse_encode(self.is_some(), serializer);
         if let Some(value) = self {
             <bool>::sse_encode(value, serializer);
-        }
-    }
-}
-
-impl SseEncode for Option<crate::auxiliary::sample_types::DateTime> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <bool>::sse_encode(self.is_some(), serializer);
-        if let Some(value) = self {
-            <crate::auxiliary::sample_types::DateTime>::sse_encode(value, serializer);
         }
     }
 }
@@ -45589,7 +45619,7 @@ impl SseEncode for [crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync
 impl SseEncode for crate::api::chrono_type::TestChronoTwinNormal {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <Option<crate::auxiliary::sample_types::DateTime>>::sse_encode(self.dt, serializer);
+        <Option<chrono::DateTime<chrono::Utc>>>::sse_encode(self.dt, serializer);
         <Option<chrono::NaiveDateTime>>::sse_encode(self.dt2, serializer);
         <Option<chrono::Duration>>::sse_encode(self.du, serializer);
     }
@@ -45598,7 +45628,7 @@ impl SseEncode for crate::api::chrono_type::TestChronoTwinNormal {
 impl SseEncode for crate::api::pseudo_manual::chrono_type_twin_rust_async::TestChronoTwinRustAsync {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <Option<crate::auxiliary::sample_types::DateTime>>::sse_encode(self.dt, serializer);
+        <Option<chrono::DateTime<chrono::Utc>>>::sse_encode(self.dt, serializer);
         <Option<chrono::NaiveDateTime>>::sse_encode(self.dt2, serializer);
         <Option<chrono::Duration>>::sse_encode(self.du, serializer);
     }
@@ -45607,7 +45637,7 @@ impl SseEncode for crate::api::pseudo_manual::chrono_type_twin_rust_async::TestC
 impl SseEncode for crate::api::pseudo_manual::chrono_type_twin_sync::TestChronoTwinSync {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <Option<crate::auxiliary::sample_types::DateTime>>::sse_encode(self.dt, serializer);
+        <Option<chrono::DateTime<chrono::Utc>>>::sse_encode(self.dt, serializer);
         <Option<chrono::NaiveDateTime>>::sse_encode(self.dt2, serializer);
         <Option<chrono::Duration>>::sse_encode(self.du, serializer);
     }

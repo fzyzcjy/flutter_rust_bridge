@@ -2842,6 +2842,18 @@ impl CstDecode<Vec<chrono::Duration>>
             .collect()
     }
 }
+impl CstDecode<Vec<chrono::DateTime<chrono::Local>>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> Vec<chrono::DateTime<chrono::Local>> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
 impl CstDecode<Vec<chrono::NaiveDateTime>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -3146,18 +3158,6 @@ impl CstDecode<Vec<crate::api::pseudo_manual::basic_twin_sync::BasicStructTwinSy
 impl CstDecode<Vec<bool>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<bool> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
-impl CstDecode<Vec<crate::auxiliary::sample_types::DateTime>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> Vec<crate::auxiliary::sample_types::DateTime> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
@@ -8099,11 +8099,27 @@ impl CstDecode<chrono::Duration> for flutter_rust_bridge::for_generated::wasm_bi
         CstDecode::<i64>::cst_decode(self).cst_decode()
     }
 }
+impl CstDecode<chrono::DateTime<chrono::Local>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> chrono::DateTime<chrono::Local> {
+        CstDecode::<i64>::cst_decode(self).cst_decode()
+    }
+}
 impl CstDecode<chrono::NaiveDateTime>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> chrono::NaiveDateTime {
+        CstDecode::<i64>::cst_decode(self).cst_decode()
+    }
+}
+impl CstDecode<chrono::DateTime<chrono::Utc>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> chrono::DateTime<chrono::Utc> {
         CstDecode::<i64>::cst_decode(self).cst_decode()
     }
 }
@@ -11012,7 +11028,7 @@ pub fn wire_benchmark_void_semi_serialize(
 #[wasm_bindgen]
 pub fn wire_datetime_local_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    d: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    d: i64,
 ) {
     wire_datetime_local_twin_normal_impl(port_, d)
 }
@@ -11020,7 +11036,7 @@ pub fn wire_datetime_local_twin_normal(
 #[wasm_bindgen]
 pub fn wire_datetime_utc_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    d: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    d: i64,
 ) {
     wire_datetime_utc_twin_normal_impl(port_, d)
 }
@@ -11034,7 +11050,7 @@ pub fn wire_duration_twin_normal(port_: flutter_rust_bridge::for_generated::Mess
 pub fn wire_handle_durations_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     durations: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    since: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    since: i64,
 ) {
     wire_handle_durations_twin_normal_impl(port_, durations, since)
 }
@@ -17680,7 +17696,7 @@ pub fn wire_benchmark_void_twin_sync_sse(
 #[wasm_bindgen]
 pub fn wire_datetime_local_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    d: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    d: i64,
 ) {
     wire_datetime_local_twin_rust_async_impl(port_, d)
 }
@@ -17688,7 +17704,7 @@ pub fn wire_datetime_local_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_datetime_utc_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    d: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    d: i64,
 ) {
     wire_datetime_utc_twin_rust_async_impl(port_, d)
 }
@@ -17705,7 +17721,7 @@ pub fn wire_duration_twin_rust_async(
 pub fn wire_handle_durations_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     durations: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    since: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    since: i64,
 ) {
     wire_handle_durations_twin_rust_async_impl(port_, durations, since)
 }
@@ -17957,14 +17973,14 @@ pub fn wire_test_precise_chrono_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_datetime_local_twin_sync(
-    d: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    d: i64,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_datetime_local_twin_sync_impl(d)
 }
 
 #[wasm_bindgen]
 pub fn wire_datetime_utc_twin_sync(
-    d: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    d: i64,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_datetime_utc_twin_sync_impl(d)
 }
@@ -17977,7 +17993,7 @@ pub fn wire_duration_twin_sync(d: i64) -> flutter_rust_bridge::for_generated::Wi
 #[wasm_bindgen]
 pub fn wire_handle_durations_twin_sync(
     durations: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    since: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    since: i64,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_handle_durations_twin_sync_impl(durations, since)
 }
