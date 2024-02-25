@@ -3238,13 +3238,6 @@ impl CstDecode<crate::api::pseudo_manual::dart_opaque_twin_sync::DartOpaqueNeste
         CstDecode::<crate::api::pseudo_manual::dart_opaque_twin_sync::DartOpaqueNestedTwinSync>::cst_decode(*wrap).into()
     }
 }
-impl CstDecode<crate::auxiliary::sample_types::DateTime> for *mut wire_cst_date_time {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> crate::auxiliary::sample_types::DateTime {
-        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-        CstDecode::<crate::auxiliary::sample_types::DateTime>::cst_decode(*wrap).into()
-    }
-}
 impl CstDecode<crate::api::optional::ElementTwinNormal> for *mut wire_cst_element_twin_normal {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::optional::ElementTwinNormal {
@@ -5705,12 +5698,6 @@ impl CstDecode<crate::api::pseudo_manual::dart_opaque_twin_sync::DartOpaqueNeste
             first: self.first.cst_decode(),
             second: self.second.cst_decode(),
         }
-    }
-}
-impl CstDecode<crate::auxiliary::sample_types::DateTime> for wire_cst_date_time {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> crate::auxiliary::sample_types::DateTime {
-        crate::auxiliary::sample_types::DateTime {}
     }
 }
 impl CstDecode<crate::api::dart_fn::DemoStructForRustCallDartTwinNormal>
@@ -11434,16 +11421,6 @@ impl Default for wire_cst_dart_opaque_nested_twin_sync {
         Self::new_with_null_ptr()
     }
 }
-impl NewWithNullPtr for wire_cst_date_time {
-    fn new_with_null_ptr() -> Self {
-        Self {}
-    }
-}
-impl Default for wire_cst_date_time {
-    fn default() -> Self {
-        Self::new_with_null_ptr()
-    }
-}
 impl NewWithNullPtr for wire_cst_demo_struct_for_rust_call_dart_twin_normal {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -15568,14 +15545,6 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_list_of_primitive_enums_twin
     weekdays: *mut wire_cst_list_weekdays_twin_normal,
 ) {
     wire_list_of_primitive_enums_twin_normal_impl(port_, weekdays)
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire_name_conflict_twin_normal(
-    port_: i64,
-    arg: *mut wire_cst_date_time,
-) {
-    wire_name_conflict_twin_normal_impl(port_, arg)
 }
 
 #[no_mangle]
@@ -27206,14 +27175,6 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_list_of_primitive_enums_twin
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire_name_conflict_twin_rust_async(
-    port_: i64,
-    arg: *mut wire_cst_date_time,
-) {
-    wire_name_conflict_twin_rust_async_impl(port_, arg)
-}
-
-#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_test_abc_enum_twin_rust_async(
     port_: i64,
     abc: *mut wire_cst_abc_twin_rust_async,
@@ -27297,16 +27258,6 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_list_of_primitive_enums_twin
     data_len_: i32,
 ) {
     wire_list_of_primitive_enums_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire_name_conflict_twin_rust_async_sse(
-    port_: i64,
-    ptr_: *mut u8,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_name_conflict_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
@@ -27400,16 +27351,6 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_list_of_primitive_enums_twin
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire_name_conflict_twin_sse(
-    port_: i64,
-    ptr_: *mut u8,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_name_conflict_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_test_abc_enum_twin_sse(
     port_: i64,
     ptr_: *mut u8,
@@ -27476,13 +27417,6 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_list_of_primitive_enums_twin
     weekdays: *mut wire_cst_list_weekdays_twin_sync,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_list_of_primitive_enums_twin_sync_impl(weekdays)
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire_name_conflict_twin_sync(
-    arg: *mut wire_cst_date_time,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_name_conflict_twin_sync_impl(arg)
 }
 
 #[no_mangle]
@@ -27560,15 +27494,6 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_list_of_primitive_enums_twin
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_list_of_primitive_enums_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire_name_conflict_twin_sync_sse(
-    ptr_: *mut u8,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_name_conflict_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
@@ -39895,12 +39820,6 @@ pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_dart_opaque_n
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_date_time(
-) -> *mut wire_cst_date_time {
-    flutter_rust_bridge::for_generated::new_leak_box_ptr(wire_cst_date_time::new_with_null_ptr())
-}
-
-#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_element_twin_normal(
 ) -> *mut wire_cst_element_twin_normal {
     flutter_rust_bridge::for_generated::new_leak_box_ptr(
@@ -43805,9 +43724,6 @@ pub struct wire_cst_dart_opaque_nested_twin_sync {
     first: *const std::ffi::c_void,
     second: *const std::ffi::c_void,
 }
-#[repr(C)]
-#[derive(Clone, Copy)]
-pub struct wire_cst_date_time {}
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_demo_struct_for_rust_call_dart_twin_normal {

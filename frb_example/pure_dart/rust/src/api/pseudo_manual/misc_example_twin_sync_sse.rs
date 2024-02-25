@@ -166,12 +166,3 @@ pub struct MySizeFreezedTwinSyncSse {
 // To test parsing of `pub(super)`
 #[allow(dead_code)]
 pub(super) fn visibility_restricted_func_twin_sync_sse() {}
-
-// #1768
-#[flutter_rust_bridge::frb(serialize)]
-#[flutter_rust_bridge::frb(sync)]
-pub fn name_conflict_twin_sync_sse(
-    arg: crate::auxiliary::sample_types::DateTime,
-) -> crate::auxiliary::sample_types::DateTime {
-    arg
-}

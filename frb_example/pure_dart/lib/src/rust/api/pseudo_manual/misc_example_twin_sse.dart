@@ -44,9 +44,6 @@ Future<MySize> handleStructTwinSse(
     RustLib.instance.api
         .handleStructTwinSse(arg: arg, boxed: boxed, hint: hint);
 
-Future<DateTime> nameConflictTwinSse({required DateTime arg, dynamic hint}) =>
-    RustLib.instance.api.nameConflictTwinSse(arg: arg, hint: hint);
-
 class ATwinSse {
   final String a;
 

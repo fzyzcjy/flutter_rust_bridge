@@ -1672,23 +1672,6 @@ impl CstDecode<crate::api::pseudo_manual::dart_opaque_twin_sync::DartOpaqueNeste
         }
     }
 }
-impl CstDecode<crate::auxiliary::sample_types::DateTime>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> crate::auxiliary::sample_types::DateTime {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            0,
-            "Expected 0 elements, got {}",
-            self_.length()
-        );
-        crate::auxiliary::sample_types::DateTime {}
-    }
-}
 impl CstDecode<crate::api::dart_fn::DemoStructForRustCallDartTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -12182,14 +12165,6 @@ pub fn wire_list_of_primitive_enums_twin_normal(
     weekdays: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_list_of_primitive_enums_twin_normal_impl(port_, weekdays)
-}
-
-#[wasm_bindgen]
-pub fn wire_name_conflict_twin_normal(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_name_conflict_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
@@ -23827,14 +23802,6 @@ pub fn wire_list_of_primitive_enums_twin_rust_async(
 }
 
 #[wasm_bindgen]
-pub fn wire_name_conflict_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_name_conflict_twin_rust_async_impl(port_, arg)
-}
-
-#[wasm_bindgen]
 pub fn wire_test_abc_enum_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     abc: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
@@ -23918,16 +23885,6 @@ pub fn wire_list_of_primitive_enums_twin_rust_async_sse(
     data_len_: i32,
 ) {
     wire_list_of_primitive_enums_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_name_conflict_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_name_conflict_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -24021,16 +23978,6 @@ pub fn wire_list_of_primitive_enums_twin_sse(
 }
 
 #[wasm_bindgen]
-pub fn wire_name_conflict_twin_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_name_conflict_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
 pub fn wire_test_abc_enum_twin_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -24097,13 +24044,6 @@ pub fn wire_list_of_primitive_enums_twin_sync(
     weekdays: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_list_of_primitive_enums_twin_sync_impl(weekdays)
-}
-
-#[wasm_bindgen]
-pub fn wire_name_conflict_twin_sync(
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_name_conflict_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
@@ -24181,15 +24121,6 @@ pub fn wire_list_of_primitive_enums_twin_sync_sse(
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_list_of_primitive_enums_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_name_conflict_twin_sync_sse(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_name_conflict_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]

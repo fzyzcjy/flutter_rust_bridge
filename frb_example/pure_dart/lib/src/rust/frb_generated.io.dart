@@ -3499,9 +3499,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_box_autoadd_dart_opaque_nested_twin_sync_sse(dynamic raw);
 
   @protected
-  DateTime dco_decode_box_autoadd_date_time(dynamic raw);
-
-  @protected
   ElementTwinNormal dco_decode_box_autoadd_element_twin_normal(dynamic raw);
 
   @protected
@@ -5080,9 +5077,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   dynamic dco_decode_dartabi(dynamic raw);
-
-  @protected
-  DateTime dco_decode_date_time(dynamic raw);
 
   @protected
   DemoStructForRustCallDartTwinNormal
@@ -10713,9 +10707,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
-  DateTime sse_decode_box_autoadd_date_time(SseDeserializer deserializer);
-
-  @protected
   ElementTwinNormal sse_decode_box_autoadd_element_twin_normal(
       SseDeserializer deserializer);
 
@@ -12508,9 +12499,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   dynamic sse_decode_dartabi(SseDeserializer deserializer);
-
-  @protected
-  DateTime sse_decode_date_time(SseDeserializer deserializer);
 
   @protected
   DemoStructForRustCallDartTwinNormal
@@ -16907,15 +16895,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     final ptr = wire.cst_new_box_autoadd_dart_opaque_nested_twin_sync();
     cst_api_fill_to_wire_dart_opaque_nested_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_cst_date_time> cst_encode_box_autoadd_date_time(
-      DateTime raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    final ptr = wire.cst_new_box_autoadd_date_time();
-
     return ptr;
   }
 
@@ -23422,10 +23401,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  void cst_api_fill_to_wire_date_time(
-      DateTime apiObj, wire_cst_date_time wireObj) {}
-
-  @protected
   void cst_api_fill_to_wire_demo_struct_for_rust_call_dart_twin_normal(
       DemoStructForRustCallDartTwinNormal apiObj,
       wire_cst_demo_struct_for_rust_call_dart_twin_normal wireObj) {
@@ -29314,10 +29289,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       DartOpaqueNestedTwinSyncSse self, SseSerializer serializer);
 
   @protected
-  void sse_encode_box_autoadd_date_time(
-      DateTime self, SseSerializer serializer);
-
-  @protected
   void sse_encode_box_autoadd_element_twin_normal(
       ElementTwinNormal self, SseSerializer serializer);
 
@@ -30994,9 +30965,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_dartabi(dynamic self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_date_time(DateTime self, SseSerializer serializer);
 
   @protected
   void sse_encode_demo_struct_for_rust_call_dart_twin_normal(
@@ -37348,24 +37316,6 @@ class RustLibWire implements BaseWire {
       _wire_list_of_primitive_enums_twin_normalPtr.asFunction<
           void Function(
               int, ffi.Pointer<wire_cst_list_weekdays_twin_normal>)>();
-
-  void wire_name_conflict_twin_normal(
-    int port_,
-    ffi.Pointer<wire_cst_date_time> arg,
-  ) {
-    return _wire_name_conflict_twin_normal(
-      port_,
-      arg,
-    );
-  }
-
-  late final _wire_name_conflict_twin_normalPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_date_time>)>>(
-      'frbgen_frb_example_pure_dart_wire_name_conflict_twin_normal');
-  late final _wire_name_conflict_twin_normal =
-      _wire_name_conflict_twin_normalPtr
-          .asFunction<void Function(int, ffi.Pointer<wire_cst_date_time>)>();
 
   void wire_test_abc_enum_twin_normal(
     int port_,
@@ -63046,24 +62996,6 @@ class RustLibWire implements BaseWire {
           void Function(
               int, ffi.Pointer<wire_cst_list_weekdays_twin_rust_async>)>();
 
-  void wire_name_conflict_twin_rust_async(
-    int port_,
-    ffi.Pointer<wire_cst_date_time> arg,
-  ) {
-    return _wire_name_conflict_twin_rust_async(
-      port_,
-      arg,
-    );
-  }
-
-  late final _wire_name_conflict_twin_rust_asyncPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_date_time>)>>(
-      'frbgen_frb_example_pure_dart_wire_name_conflict_twin_rust_async');
-  late final _wire_name_conflict_twin_rust_async =
-      _wire_name_conflict_twin_rust_asyncPtr
-          .asFunction<void Function(int, ffi.Pointer<wire_cst_date_time>)>();
-
   void wire_test_abc_enum_twin_rust_async(
     int port_,
     ffi.Pointer<wire_cst_abc_twin_rust_async> abc,
@@ -63262,29 +63194,6 @@ class RustLibWire implements BaseWire {
       'frbgen_frb_example_pure_dart_wire_list_of_primitive_enums_twin_rust_async_sse');
   late final _wire_list_of_primitive_enums_twin_rust_async_sse =
       _wire_list_of_primitive_enums_twin_rust_async_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
-
-  void wire_name_conflict_twin_rust_async_sse(
-    int port_,
-    ffi.Pointer<ffi.Uint8> ptr_,
-    int rust_vec_len_,
-    int data_len_,
-  ) {
-    return _wire_name_conflict_twin_rust_async_sse(
-      port_,
-      ptr_,
-      rust_vec_len_,
-      data_len_,
-    );
-  }
-
-  late final _wire_name_conflict_twin_rust_async_ssePtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
-      'frbgen_frb_example_pure_dart_wire_name_conflict_twin_rust_async_sse');
-  late final _wire_name_conflict_twin_rust_async_sse =
-      _wire_name_conflict_twin_rust_async_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_test_abc_enum_twin_rust_async_sse(
@@ -63491,28 +63400,6 @@ class RustLibWire implements BaseWire {
       _wire_list_of_primitive_enums_twin_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
-  void wire_name_conflict_twin_sse(
-    int port_,
-    ffi.Pointer<ffi.Uint8> ptr_,
-    int rust_vec_len_,
-    int data_len_,
-  ) {
-    return _wire_name_conflict_twin_sse(
-      port_,
-      ptr_,
-      rust_vec_len_,
-      data_len_,
-    );
-  }
-
-  late final _wire_name_conflict_twin_ssePtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
-      'frbgen_frb_example_pure_dart_wire_name_conflict_twin_sse');
-  late final _wire_name_conflict_twin_sse = _wire_name_conflict_twin_ssePtr
-      .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
-
   void wire_test_abc_enum_twin_sse(
     int port_,
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -63678,22 +63565,6 @@ class RustLibWire implements BaseWire {
       _wire_list_of_primitive_enums_twin_syncPtr.asFunction<
           WireSyncRust2DartDco Function(
               ffi.Pointer<wire_cst_list_weekdays_twin_sync>)>();
-
-  WireSyncRust2DartDco wire_name_conflict_twin_sync(
-    ffi.Pointer<wire_cst_date_time> arg,
-  ) {
-    return _wire_name_conflict_twin_sync(
-      arg,
-    );
-  }
-
-  late final _wire_name_conflict_twin_syncPtr = _lookup<
-          ffi.NativeFunction<
-              WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_date_time>)>>(
-      'frbgen_frb_example_pure_dart_wire_name_conflict_twin_sync');
-  late final _wire_name_conflict_twin_sync =
-      _wire_name_conflict_twin_syncPtr.asFunction<
-          WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_date_time>)>();
 
   WireSyncRust2DartDco wire_test_abc_enum_twin_sync(
     ffi.Pointer<wire_cst_abc_twin_sync> abc,
@@ -63875,27 +63746,6 @@ class RustLibWire implements BaseWire {
       'frbgen_frb_example_pure_dart_wire_list_of_primitive_enums_twin_sync_sse');
   late final _wire_list_of_primitive_enums_twin_sync_sse =
       _wire_list_of_primitive_enums_twin_sync_ssePtr.asFunction<
-          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
-
-  WireSyncRust2DartSse wire_name_conflict_twin_sync_sse(
-    ffi.Pointer<ffi.Uint8> ptr_,
-    int rust_vec_len_,
-    int data_len_,
-  ) {
-    return _wire_name_conflict_twin_sync_sse(
-      ptr_,
-      rust_vec_len_,
-      data_len_,
-    );
-  }
-
-  late final _wire_name_conflict_twin_sync_ssePtr = _lookup<
-          ffi.NativeFunction<
-              WireSyncRust2DartSse Function(
-                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
-      'frbgen_frb_example_pure_dart_wire_name_conflict_twin_sync_sse');
-  late final _wire_name_conflict_twin_sync_sse =
-      _wire_name_conflict_twin_sync_ssePtr.asFunction<
           WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
   WireSyncRust2DartSse wire_test_abc_enum_twin_sync_sse(
@@ -89000,16 +88850,6 @@ class RustLibWire implements BaseWire {
       _cst_new_box_autoadd_dart_opaque_nested_twin_syncPtr.asFunction<
           ffi.Pointer<wire_cst_dart_opaque_nested_twin_sync> Function()>();
 
-  ffi.Pointer<wire_cst_date_time> cst_new_box_autoadd_date_time() {
-    return _cst_new_box_autoadd_date_time();
-  }
-
-  late final _cst_new_box_autoadd_date_timePtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_cst_date_time> Function()>>(
-          'frbgen_frb_example_pure_dart_cst_new_box_autoadd_date_time');
-  late final _cst_new_box_autoadd_date_time = _cst_new_box_autoadd_date_timePtr
-      .asFunction<ffi.Pointer<wire_cst_date_time> Function()>();
-
   ffi.Pointer<wire_cst_element_twin_normal>
       cst_new_box_autoadd_element_twin_normal() {
     return _cst_new_box_autoadd_element_twin_normal();
@@ -94383,8 +94223,6 @@ final class wire_cst_list_weekdays_twin_normal extends ffi.Struct {
   @ffi.Int32()
   external int len;
 }
-
-final class wire_cst_date_time extends ffi.Opaque {}
 
 final class wire_cst_a_twin_normal extends ffi.Struct {
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> a;

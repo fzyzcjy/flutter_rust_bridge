@@ -3498,9 +3498,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_box_autoadd_dart_opaque_nested_twin_sync_sse(dynamic raw);
 
   @protected
-  DateTime dco_decode_box_autoadd_date_time(dynamic raw);
-
-  @protected
   ElementTwinNormal dco_decode_box_autoadd_element_twin_normal(dynamic raw);
 
   @protected
@@ -5079,9 +5076,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   dynamic dco_decode_dartabi(dynamic raw);
-
-  @protected
-  DateTime dco_decode_date_time(dynamic raw);
 
   @protected
   DemoStructForRustCallDartTwinNormal
@@ -10712,9 +10706,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
-  DateTime sse_decode_box_autoadd_date_time(SseDeserializer deserializer);
-
-  @protected
   ElementTwinNormal sse_decode_box_autoadd_element_twin_normal(
       SseDeserializer deserializer);
 
@@ -12507,9 +12498,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   dynamic sse_decode_dartabi(SseDeserializer deserializer);
-
-  @protected
-  DateTime sse_decode_date_time(SseDeserializer deserializer);
 
   @protected
   DemoStructForRustCallDartTwinNormal
@@ -17050,12 +17038,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_date_time(DateTime raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_date_time(raw);
-  }
-
-  @protected
   List<dynamic> cst_encode_box_autoadd_element_twin_normal(
       ElementTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -18780,12 +18762,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_DartOpaque(raw.first),
       cst_encode_DartOpaque(raw.second)
     ];
-  }
-
-  @protected
-  List<dynamic> cst_encode_date_time(DateTime raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    return [];
   }
 
   @protected
@@ -26197,10 +26173,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       DartOpaqueNestedTwinSyncSse self, SseSerializer serializer);
 
   @protected
-  void sse_encode_box_autoadd_date_time(
-      DateTime self, SseSerializer serializer);
-
-  @protected
   void sse_encode_box_autoadd_element_twin_normal(
       ElementTwinNormal self, SseSerializer serializer);
 
@@ -27877,9 +27849,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_dartabi(dynamic self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_date_time(DateTime self, SseSerializer serializer);
 
   @protected
   void sse_encode_demo_struct_for_rust_call_dart_twin_normal(
@@ -31754,10 +31723,6 @@ class RustLibWire implements BaseWire {
   void wire_list_of_primitive_enums_twin_normal(
           NativePortType port_, List<dynamic> weekdays) =>
       wasmModule.wire_list_of_primitive_enums_twin_normal(port_, weekdays);
-
-  void wire_name_conflict_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
-      wasmModule.wire_name_conflict_twin_normal(port_, arg);
 
   void wire_test_abc_enum_twin_normal(
           NativePortType port_, List<dynamic> abc) =>
@@ -39674,10 +39639,6 @@ class RustLibWire implements BaseWire {
           NativePortType port_, List<dynamic> weekdays) =>
       wasmModule.wire_list_of_primitive_enums_twin_rust_async(port_, weekdays);
 
-  void wire_name_conflict_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
-      wasmModule.wire_name_conflict_twin_rust_async(port_, arg);
-
   void wire_test_abc_enum_twin_rust_async(
           NativePortType port_, List<dynamic> abc) =>
       wasmModule.wire_test_abc_enum_twin_rust_async(port_, abc);
@@ -39740,14 +39701,6 @@ class RustLibWire implements BaseWire {
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_list_of_primitive_enums_twin_rust_async_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_name_conflict_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_name_conflict_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_test_abc_enum_twin_rust_async_sse(
@@ -39822,14 +39775,6 @@ class RustLibWire implements BaseWire {
       wasmModule.wire_list_of_primitive_enums_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_name_conflict_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_name_conflict_twin_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
   void wire_test_abc_enum_twin_sse(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
@@ -39873,10 +39818,6 @@ class RustLibWire implements BaseWire {
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_list_of_primitive_enums_twin_sync(List<dynamic> weekdays) =>
           wasmModule.wire_list_of_primitive_enums_twin_sync(weekdays);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_name_conflict_twin_sync(List<dynamic> arg) =>
-          wasmModule.wire_name_conflict_twin_sync(arg);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_test_abc_enum_twin_sync(List<dynamic> abc) =>
@@ -39934,12 +39875,6 @@ class RustLibWire implements BaseWire {
               int rust_vec_len_,
               int data_len_) =>
           wasmModule.wire_list_of_primitive_enums_twin_sync_sse(
-              ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_name_conflict_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_, int data_len_) =>
-          wasmModule.wire_name_conflict_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
@@ -48389,9 +48324,6 @@ class RustLibWasmModule implements WasmModule {
   external void wire_list_of_primitive_enums_twin_normal(
       NativePortType port_, List<dynamic> weekdays);
 
-  external void wire_name_conflict_twin_normal(
-      NativePortType port_, List<dynamic> arg);
-
   external void wire_test_abc_enum_twin_normal(
       NativePortType port_, List<dynamic> abc);
 
@@ -53622,9 +53554,6 @@ class RustLibWasmModule implements WasmModule {
   external void wire_list_of_primitive_enums_twin_rust_async(
       NativePortType port_, List<dynamic> weekdays);
 
-  external void wire_name_conflict_twin_rust_async(
-      NativePortType port_, List<dynamic> arg);
-
   external void wire_test_abc_enum_twin_rust_async(
       NativePortType port_, List<dynamic> abc);
 
@@ -53664,9 +53593,6 @@ class RustLibWasmModule implements WasmModule {
       int rust_vec_len_,
       int data_len_);
 
-  external void wire_name_conflict_twin_rust_async_sse(NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
-
   external void wire_test_abc_enum_twin_rust_async_sse(NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
@@ -53697,9 +53623,6 @@ class RustLibWasmModule implements WasmModule {
   external void wire_list_of_primitive_enums_twin_sse(NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
-  external void wire_name_conflict_twin_sse(NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
-
   external void wire_test_abc_enum_twin_sse(NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
@@ -53726,9 +53649,6 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_list_of_primitive_enums_twin_sync(List<dynamic> weekdays);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_name_conflict_twin_sync(List<dynamic> arg);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_test_abc_enum_twin_sync(List<dynamic> abc);
@@ -53771,10 +53691,6 @@ class RustLibWasmModule implements WasmModule {
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_name_conflict_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_test_abc_enum_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,

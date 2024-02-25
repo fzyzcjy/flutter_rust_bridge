@@ -45,10 +45,6 @@ Future<MySize> handleStructTwinRustAsync(
     RustLib.instance.api
         .handleStructTwinRustAsync(arg: arg, boxed: boxed, hint: hint);
 
-Future<DateTime> nameConflictTwinRustAsync(
-        {required DateTime arg, dynamic hint}) =>
-    RustLib.instance.api.nameConflictTwinRustAsync(arg: arg, hint: hint);
-
 class ATwinRustAsync {
   final String a;
 

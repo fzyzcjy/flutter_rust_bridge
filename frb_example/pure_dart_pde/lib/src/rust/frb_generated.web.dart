@@ -1348,9 +1348,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
-  DateTime dco_decode_box_autoadd_date_time(dynamic raw);
-
-  @protected
   ElementTwinNormal dco_decode_box_autoadd_element_twin_normal(dynamic raw);
 
   @protected
@@ -2111,9 +2108,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   DartOpaqueNestedTwinSync dco_decode_dart_opaque_nested_twin_sync(dynamic raw);
-
-  @protected
-  DateTime dco_decode_date_time(dynamic raw);
 
   @protected
   DemoStructForRustCallDartTwinNormal
@@ -4705,9 +4699,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
-  DateTime sse_decode_box_autoadd_date_time(SseDeserializer deserializer);
-
-  @protected
   ElementTwinNormal sse_decode_box_autoadd_element_twin_normal(
       SseDeserializer deserializer);
 
@@ -5571,9 +5562,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   DartOpaqueNestedTwinSync sse_decode_dart_opaque_nested_twin_sync(
       SseDeserializer deserializer);
-
-  @protected
-  DateTime sse_decode_date_time(SseDeserializer deserializer);
 
   @protected
   DemoStructForRustCallDartTwinNormal
@@ -8406,10 +8394,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       DartOpaqueNestedTwinSync self, SseSerializer serializer);
 
   @protected
-  void sse_encode_box_autoadd_date_time(
-      DateTime self, SseSerializer serializer);
-
-  @protected
   void sse_encode_box_autoadd_element_twin_normal(
       ElementTwinNormal self, SseSerializer serializer);
 
@@ -9228,9 +9212,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_dart_opaque_nested_twin_sync(
       DartOpaqueNestedTwinSync self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_date_time(DateTime self, SseSerializer serializer);
 
   @protected
   void sse_encode_demo_struct_for_rust_call_dart_twin_normal(

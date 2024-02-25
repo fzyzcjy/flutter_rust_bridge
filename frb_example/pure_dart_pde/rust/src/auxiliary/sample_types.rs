@@ -73,6 +73,3 @@ pub type Id = u64;
 pub type UserIdAlias = Id;
 pub type EnumAlias = MyEnum;
 pub type StructAlias = MyStruct;
-
-// #1768
-pub struct DateTime {}

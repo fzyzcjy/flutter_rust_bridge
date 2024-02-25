@@ -44,9 +44,6 @@ MySize handleStructTwinSyncSse(
     RustLib.instance.api
         .handleStructTwinSyncSse(arg: arg, boxed: boxed, hint: hint);
 
-DateTime nameConflictTwinSyncSse({required DateTime arg, dynamic hint}) =>
-    RustLib.instance.api.nameConflictTwinSyncSse(arg: arg, hint: hint);
-
 class ATwinSyncSse {
   final String a;
 
