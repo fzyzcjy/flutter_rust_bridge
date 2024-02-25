@@ -8,3 +8,31 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<int> minimalAdder({required int a, required int b, dynamic hint}) =>
     RustLib.instance.api.minimalAdder(a: a, b: b, hint: hint);
+
+Future<BMPimage> renderImage(
+        {required int width, required int height, dynamic hint}) =>
+    RustLib.instance.api.renderImage(width: width, height: height, hint: hint);
+
+class BMPimage {
+  final int width;
+  final int height;
+  final Uint8List bmp;
+
+  const BMPimage({
+    required this.width,
+    required this.height,
+    required this.bmp,
+  });
+
+  @override
+  int get hashCode => width.hashCode ^ height.hashCode ^ bmp.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is BMPimage &&
+          runtimeType == other.runtimeType &&
+          width == other.width &&
+          height == other.height &&
+          bmp == other.bmp;
+}
