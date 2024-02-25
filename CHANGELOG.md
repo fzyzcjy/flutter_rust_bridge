@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Generate decl of `store_dart_post_cobject` when full_dep enabled #1773 (thanks @Berrysoft)
+* TODO: document others
+
 ## 2.0.0-dev.24
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
