@@ -6,8 +6,11 @@ Future<void> main() async {
   await RustLib.init();
   print('Call Rust and get: 100+200 = ${await minimalAdder(a: 100, b: 200)}');
 
+  print('dart: new');
   final client = Mqtt.newMqtt();
+  print('dart: call connect');
   client.connect().listen((_) {
+    print('dart: inside connect callback, call send');
     client.send();
   });
 }
