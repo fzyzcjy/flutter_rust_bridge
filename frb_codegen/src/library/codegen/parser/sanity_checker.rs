@@ -76,21 +76,18 @@ fn get_potential_struct_or_enum_names(ty: &IrType) -> anyhow::Result<Vec<String>
 
 fn get_potential_struct_or_enum_names_from_syn_type(ty: &Type) -> anyhow::Result<Vec<String>> {
     Ok(match ty {
-        Type::Path(path) => extract_path_data(&path.path)?
-            .into_iter()
-            .map(|item| -> anyhow::Result<Vec<String>> {
-                Ok([
-                    vec![item.ident.to_owned()],
-                    item.args
-                        .iter()
-                        .map(get_potential_struct_or_enum_names_from_syn_type)
-                        .flatten_ok()
-                        .collect::<anyhow::Result<Vec<_>>>()?,
-                ]
-                .concat())
-            })
-            .flatten_ok()
-            .collect::<anyhow::Result<Vec<_>>>()?,
+        Type::Path(path) => {
+            let segments = extract_path_data(&path.path)?;
+            let segment = segments.last().unwrap();
+            [
+                vec![segment.ident.to_owned()],
+                (segment.args.iter())
+                    .map(get_potential_struct_or_enum_names_from_syn_type)
+                    .flatten_ok()
+                    .collect::<anyhow::Result<Vec<_>>>()?,
+            ]
+            .concat()
+        }
         // ... maybe more ...
         _ => vec![],
     })
