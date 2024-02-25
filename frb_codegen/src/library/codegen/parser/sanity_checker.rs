@@ -32,11 +32,11 @@ pub(super) fn sanity_check_unused_struct_enum(
     .into_iter()
     .collect();
 
-    let used_types: HashSet<String> = pack
+    let used_types = pack
         .distinct_types(None)
         .into_iter()
-        .flat_map(|ty| get_potential_struct_or_enum_names(&ty))
-        .collect();
+        .filter_map_ok(|ty| get_potential_struct_or_enum_names(&ty))
+        .collect::<anyhow::Result<HashSet<String>>>()?;
 
     let unused_types = all_types.difference(&used_types).collect_vec();
 
