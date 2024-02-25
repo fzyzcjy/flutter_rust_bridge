@@ -91,6 +91,12 @@ fn get_potential_struct_or_enum_names_from_syn_type(ty: &Type) -> anyhow::Result
         Type::Reference(reference) => {
             get_potential_struct_or_enum_names_from_syn_type(&*reference.elem)?
         }
+        Type::TraitObject(obj) => obj
+            .bounds
+            .iter()
+            .map(|b| get_potential_struct_or_enum_names_from_syn_type(b))
+            .flatten_ok()
+            .collect::<anyhow::Result<Vec<_>>>()?,
         // ... maybe more ...
         _ => vec![],
     })
