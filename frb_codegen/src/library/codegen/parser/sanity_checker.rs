@@ -1,7 +1,6 @@
 use crate::codegen::config::internal_config::RustInputPathPack;
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::IrPack;
-use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::source_graph::modules::{Enum, Struct, StructOrEnumWrapper};
 use crate::codegen::parser::type_parser::path_data::extract_path_data;
@@ -9,7 +8,7 @@ use itertools::Itertools;
 use log::warn;
 use std::collections::{HashMap, HashSet};
 use std::path::PathBuf;
-use syn::{GenericArgument, PathArguments, Type};
+use syn::Type;
 
 pub(super) fn sanity_check_unused_struct_enum(
     pack: &IrPack,
@@ -35,7 +34,8 @@ pub(super) fn sanity_check_unused_struct_enum(
     let used_types = pack
         .distinct_types(None)
         .into_iter()
-        .filter_map_ok(|ty| get_potential_struct_or_enum_names(&ty))
+        .map(|ty| get_potential_struct_or_enum_names(&ty))
+        .flatten_ok()
         .collect::<anyhow::Result<HashSet<String>>>()?;
 
     let unused_types = all_types.difference(&used_types).collect_vec();
@@ -62,36 +62,38 @@ fn extract_interest_src_types<T: StructOrEnumWrapper<I>, I>(
 }
 
 fn get_potential_struct_or_enum_names(ty: &IrType) -> anyhow::Result<Vec<String>> {
-    match ty {
+    Ok(match ty {
         IrType::StructRef(ty) => vec![ty.ident.0.name.clone()],
         IrType::EnumRef(ty) => vec![ty.ident.0.name.clone()],
         IrType::RustOpaque(ty) => {
-            get_potential_struct_or_enum_names_from_syn_type(&syn::parse_str(ty.inner.0)?)
+            get_potential_struct_or_enum_names_from_syn_type(&syn::parse_str(&ty.inner.0)?)?
         }
         // TODO rm?
         // IrType::Delegate(IrTypeDelegate::PrimitiveEnum(ty)) => vec![ty.ir.ident.0.name.clone()],
-        _ => None,
-    }
+        _ => vec![],
+    })
 }
 
 fn get_potential_struct_or_enum_names_from_syn_type(ty: &Type) -> anyhow::Result<Vec<String>> {
-    match ty {
-        Type::Path(path) => extract_path_data(path.path)?
+    Ok(match ty {
+        Type::Path(path) => extract_path_data(&path.path)?
             .into_iter()
-            .flat_map(|item| {
-                [
+            .map(|item| -> anyhow::Result<Vec<String>> {
+                Ok([
                     vec![item.ident.to_owned()],
                     item.args
                         .iter()
                         .map(get_potential_struct_or_enum_names_from_syn_type)
-                        .collect_vec(),
+                        .flatten_ok()
+                        .collect::<anyhow::Result<Vec<_>>>()?,
                 ]
-                .concat()
+                .concat())
             })
-            .collect_vec(),
+            .flatten_ok()
+            .collect::<anyhow::Result<Vec<_>>>()?,
         // ... maybe more ...
         _ => vec![],
-    }
+    })
 }
 
 #[cfg(test)]
@@ -102,8 +104,9 @@ mod tests {
     fn test_get_potential_struct_or_enum_names_from_syn_type() {
         fn body(s: &str, matcher: Vec<&str>) {
             assert_eq!(
-                get_potential_struct_or_enum_names_from_syn_type(syn::parse_str(s).unwrap()),
-                matcher.into_iter().map_into().collect_vec(),
+                get_potential_struct_or_enum_names_from_syn_type(&syn::parse_str(s).unwrap())
+                    .unwrap(),
+                matcher.into_iter().map(|x| x.to_owned()).collect_vec(),
             );
         }
 
