@@ -73,4 +73,4 @@ pub type EnumAlias = MyEnum;
 pub type StructAlias = MyStruct;
 
 // #1768
-pub(crate) struct DateTime {}
+pub struct DateTime {}
