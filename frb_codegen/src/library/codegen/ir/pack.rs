@@ -1,5 +1,6 @@
 use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::ir::func::IrFunc;
+use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::ir::ty::enumeration::{IrEnum, IrEnumIdent};
 use crate::codegen::ir::ty::structure::{IrStruct, IrStructIdent};
 use crate::codegen::ir::ty::IrType;
@@ -17,6 +18,7 @@ pub struct IrPack {
     pub struct_pool: IrStructPool,
     pub enum_pool: IrEnumPool,
     pub has_executor: bool,
+    pub unused_types: Vec<NamespacedName>,
 }
 
 impl IrPack {

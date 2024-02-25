@@ -4,10 +4,10 @@ pub(crate) mod function_parser;
 pub(crate) mod internal_config;
 pub(crate) mod misc;
 pub(crate) mod reader;
-mod sanity_checker;
 pub(crate) mod source_graph;
 pub(crate) mod type_alias_resolver;
 pub(crate) mod type_parser;
+mod unused_checker;
 
 use crate::codegen::dumper::Dumper;
 use crate::codegen::ir::pack::IrPack;
@@ -17,9 +17,9 @@ use crate::codegen::parser::function_parser::FunctionParser;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::parser::misc::parse_has_executor;
 use crate::codegen::parser::reader::CachedRustReader;
-use crate::codegen::parser::sanity_checker::sanity_check_unused_struct_enum;
 use crate::codegen::parser::type_alias_resolver::resolve_type_aliases;
 use crate::codegen::parser::type_parser::TypeParser;
+use crate::codegen::parser::unused_checker::{get_unused_types, sanity_check_unused_struct_enum};
 use crate::codegen::ConfigDumpContent;
 use itertools::Itertools;
 use log::trace;
@@ -92,14 +92,15 @@ pub(crate) fn parse(
 
     let (struct_pool, enum_pool) = type_parser.consume();
 
-    let ans = IrPack {
+    let mut ans = IrPack {
         funcs: ir_funcs,
         struct_pool,
         enum_pool,
         has_executor,
+        unused_types: vec![],
     };
 
-    sanity_check_unused_struct_enum(
+    ans.unused_types = get_unused_types(
         &ans,
         &src_structs,
         &src_enums,
