@@ -5,6 +5,7 @@
 use crate::auxiliary::sample_types::MySize;
 use flutter_rust_bridge::frb;
 use log::info;
+use std::hint::black_box;
 
 #[derive(Debug, Clone)]
 pub struct MyTreeNodeTwinRustAsyncSse {
@@ -159,3 +160,11 @@ pub struct MySizeFreezedTwinRustAsyncSse {
 // To test parsing of `pub(super)`
 #[allow(dead_code)]
 pub(super) fn visibility_restricted_func_twin_rust_async_sse() {}
+
+// #1768
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn name_conflict_twin_rust_async_sse(
+    arg: crate::auxiliary::sample_types::DateTime,
+) -> crate::auxiliary::sample_types::DateTime {
+    arg
+}

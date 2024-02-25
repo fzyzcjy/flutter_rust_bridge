@@ -3,6 +3,7 @@
 use crate::auxiliary::sample_types::MySize;
 use flutter_rust_bridge::frb;
 use log::info;
+use std::hint::black_box;
 
 #[derive(Debug, Clone)]
 pub struct MyTreeNodeTwinNormal {
@@ -142,3 +143,10 @@ pub struct MySizeFreezedTwinNormal {
 // To test parsing of `pub(super)`
 #[allow(dead_code)]
 pub(super) fn visibility_restricted_func_twin_normal() {}
+
+// #1768
+pub fn name_conflict_twin_normal(
+    arg: crate::auxiliary::sample_types::DateTime,
+) -> crate::auxiliary::sample_types::DateTime {
+    arg
+}

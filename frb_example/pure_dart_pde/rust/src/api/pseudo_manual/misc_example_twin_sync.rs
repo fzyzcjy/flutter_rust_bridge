@@ -7,6 +7,7 @@
 use crate::auxiliary::sample_types::MySize;
 use flutter_rust_bridge::frb;
 use log::info;
+use std::hint::black_box;
 
 #[derive(Debug, Clone)]
 pub struct MyTreeNodeTwinSync {
@@ -153,3 +154,11 @@ pub struct MySizeFreezedTwinSync {
 // To test parsing of `pub(super)`
 #[allow(dead_code)]
 pub(super) fn visibility_restricted_func_twin_sync() {}
+
+// #1768
+#[flutter_rust_bridge::frb(sync)]
+pub fn name_conflict_twin_sync(
+    arg: crate::auxiliary::sample_types::DateTime,
+) -> crate::auxiliary::sample_types::DateTime {
+    arg
+}
