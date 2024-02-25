@@ -4,6 +4,7 @@ use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::source_graph::modules::{Enum, Struct, StructOrEnumWrapper};
+use clap::builder::Str;
 use itertools::Itertools;
 use log::warn;
 use std::collections::{HashMap, HashSet};
@@ -16,17 +17,6 @@ pub(super) fn sanity_check_unused_struct_enum(
     rust_input_path_pack: &RustInputPathPack,
     rust_crate_dir: &PathBuf,
 ) -> anyhow::Result<()> {
-    fn extract_interest_src_types<T: StructOrEnumWrapper<I>, I>(
-        src_items: &HashMap<String, &T>,
-        interest_input_paths: &[Namespace],
-    ) -> Vec<String> {
-        src_items
-            .iter()
-            .filter(|(_, v)| interest_input_paths.contains(&v.inner().namespace()))
-            .map(|(k, _)| k.to_owned())
-            .collect_vec()
-    }
-
     let interest_input_paths = rust_input_path_pack
         .rust_input_paths
         .iter()
@@ -44,7 +34,7 @@ pub(super) fn sanity_check_unused_struct_enum(
     let used_types: HashSet<String> = pack
         .distinct_types(None)
         .into_iter()
-        .filter_map(|ty| get_struct_or_enum_name(&ty))
+        .flat_map(|ty| get_potential_struct_or_enum_names(&ty))
         .collect();
 
     let unused_types = all_types.difference(&used_types).collect_vec();
@@ -59,12 +49,28 @@ pub(super) fn sanity_check_unused_struct_enum(
     Ok(())
 }
 
-fn get_struct_or_enum_name(ty: &IrType) -> Option<String> {
+fn extract_interest_src_types<T: StructOrEnumWrapper<I>, I>(
+    src_items: &HashMap<String, &T>,
+    interest_input_paths: &[Namespace],
+) -> Vec<String> {
+    src_items
+        .iter()
+        .filter(|(_, v)| interest_input_paths.contains(&v.inner().namespace()))
+        .map(|(k, _)| k.to_owned())
+        .collect_vec()
+}
+
+fn get_potential_struct_or_enum_names(ty: &IrType) -> Vec<String> {
     match ty {
-        IrType::StructRef(ty) => Some(ty.ident.0.name.clone()),
-        IrType::EnumRef(ty) => Some(ty.ident.0.name.clone()),
-        IrType::Delegate(IrTypeDelegate::PrimitiveEnum(ty)) => Some(ty.ir.ident.0.name.clone()),
-        IrType::RustOpaque(ty) => TODO,
+        IrType::StructRef(ty) => vec![ty.ident.0.name.clone()],
+        IrType::EnumRef(ty) => vec![ty.ident.0.name.clone()],
+        IrType::RustOpaque(ty) => get_potential_struct_or_enum_names_from_str(&ty.inner.0),
+        // TODO rm?
+        // IrType::Delegate(IrTypeDelegate::PrimitiveEnum(ty)) => vec![ty.ir.ident.0.name.clone()],
         _ => None,
     }
+}
+
+fn get_potential_struct_or_enum_names_from_str(ty: &str) -> Vec<Str> {
+    todo!()
 }
