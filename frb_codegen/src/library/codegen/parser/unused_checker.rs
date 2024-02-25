@@ -52,7 +52,7 @@ fn extract_interest_src_types<T: StructOrEnumWrapper<I>, I>(
         .filter_map(|(k, v)| {
             let namespace = v.inner().namespace();
             if interest_input_paths.contains(&namespace) {
-                Some(NamespacedName::new(namespace, k))
+                Some(NamespacedName::new(namespace, k.to_owned()))
             } else {
                 None
             }
