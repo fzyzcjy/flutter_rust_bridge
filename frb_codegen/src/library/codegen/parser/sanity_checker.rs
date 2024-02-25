@@ -8,7 +8,7 @@ use itertools::Itertools;
 use log::warn;
 use std::collections::{HashMap, HashSet};
 use std::path::PathBuf;
-use syn::Type;
+use syn::{GenericArgument, PathArguments, Type};
 
 pub(super) fn sanity_check_unused_struct_enum(
     pack: &IrPack,
@@ -75,9 +75,22 @@ fn get_potential_struct_or_enum_names(ty: &IrType) -> Vec<String> {
 
 fn get_potential_struct_or_enum_names_from_syn_type(ty: &Type) -> Vec<String> {
     match ty {
-        Type::Path(path) => path.path,
+        Type::Path(path) => (path.path.segments.iter())
+            .flat_map(|segment| {
+                let mut ans = vec![segment.ident.to_string()];
+                if let PathArguments::AngleBracketed(args) = &segment.arguments {
+                    ans += (args.args.iter())
+                        .filter_map(
+                            |arg| if_then_some!(let GenericArgument::Type(ty) = arg, ty.to_owned()),
+                        )
+                        .collect();
+                }
+                ans
+            })
+            .collect_vec(),
+        // ... maybe more ...
+        _ => vec![],
     }
-    todo!()
 }
 
 #[cfg(test)]
