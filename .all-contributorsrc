@@ -809,6 +809,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "Berrysoft",
+      "name": "王宇逸",
+      "avatar_url": "https://avatars.githubusercontent.com/u/37586447?v=4",
+      "profile": "https://berrysoft.github.io/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
