@@ -23,7 +23,7 @@ where
         if let Some(src_object) = self.src_objects().get(*name) {
             let src_object = (*src_object).clone();
 
-            let namespace = Namespace::new(pop_last(src_object.inner().path.clone()));
+            let namespace = src_object.inner().namespace();
             let namespaced_name = NamespacedName::new(namespace, name.to_string());
 
             let attrs = FrbAttributes::parse(src_object.attrs())?;
@@ -71,11 +71,6 @@ where
         namespace: Option<Namespace>,
         ty: &Type,
     ) -> anyhow::Result<IrType>;
-}
-
-fn pop_last(mut v: Vec<String>) -> Vec<String> {
-    v.pop();
-    v
 }
 
 #[derive(Clone, Debug, Default)]
