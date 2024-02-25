@@ -120,7 +120,7 @@ fn generate_item(
         .unwrap_or_default();
 
     let unused_types = (context.ir_pack.unused_types.iter())
-        .filter(|t| t.namespace == TODO)
+        .filter(|t| &t.namespace == namespace)
         .map(|t| t.name.to_owned())
         .collect_vec();
 
