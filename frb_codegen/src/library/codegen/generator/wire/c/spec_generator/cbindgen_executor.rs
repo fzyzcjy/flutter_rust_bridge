@@ -34,12 +34,16 @@ pub(crate) fn execute(
     Ok(ans)
 }
 
-// Please keep in sync with frb_rust
+// Please keep in sync with frb_rust and allo-isolate
 const EXTRA_CODE: &str = "// EXTRA BEGIN
 typedef struct DartCObject *WireSyncRust2DartDco;
 typedef struct WireSyncRust2DartSse {
   uint8_t *ptr;
   int32_t len;
 } WireSyncRust2DartSse;
+
+typedef int64_t DartPort;
+typedef bool (*DartPostCObjectFnType)(DartPort port_id, void *message);
+void store_dart_post_cobject(DartPostCObjectFnType ptr);
 // EXTRA END
 ";
