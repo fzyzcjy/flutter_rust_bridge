@@ -205,6 +205,7 @@ fn get_struct_or_enum_name(ty: &IrType) -> Option<String> {
         IrType::StructRef(ty) => Some(ty.ident.0.name.clone()),
         IrType::EnumRef(ty) => Some(ty.ident.0.name.clone()),
         IrType::Delegate(IrTypeDelegate::PrimitiveEnum(ty)) => Some(ty.ir.ident.0.name.clone()),
+        IrType::RustOpaque(ty) => TODO,
         _ => None,
     }
 }
