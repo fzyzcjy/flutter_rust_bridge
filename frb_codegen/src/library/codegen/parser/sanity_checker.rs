@@ -88,6 +88,9 @@ fn get_potential_struct_or_enum_names_from_syn_type(ty: &Type) -> anyhow::Result
             ]
             .concat()
         }
+        Type::Reference(reference) => {
+            get_potential_struct_or_enum_names_from_syn_type(&*reference.elem)?
+        }
         // ... maybe more ...
         _ => vec![],
     })
