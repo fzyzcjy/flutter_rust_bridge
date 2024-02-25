@@ -7,7 +7,7 @@ use crate::codegen::parser::source_graph::modules::{Enum, Struct, StructOrEnumWr
 use crate::codegen::parser::type_parser::path_data::extract_path_data;
 use itertools::Itertools;
 use std::collections::{HashMap, HashSet};
-use std::path::PathBuf;
+use std::path::Path;
 use syn::Type;
 
 pub(super) fn get_unused_types(
@@ -15,7 +15,7 @@ pub(super) fn get_unused_types(
     src_structs: &HashMap<String, &Struct>,
     src_enums: &HashMap<String, &Enum>,
     rust_input_path_pack: &RustInputPathPack,
-    rust_crate_dir: &PathBuf,
+    rust_crate_dir: &Path,
 ) -> anyhow::Result<Vec<NamespacedName>> {
     let interest_input_paths = rust_input_path_pack
         .rust_input_paths
