@@ -38,6 +38,7 @@ pub(crate) struct ApiDartOutputSpecItem {
     pub funcs: Vec<ApiDartGeneratedFunction>,
     pub classes: Vec<ApiDartGeneratedClass>,
     pub imports: DartBasicHeaderCode,
+    pub unused_types: Vec<String>,
     pub needs_freezed: bool,
 }
 
