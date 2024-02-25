@@ -164,10 +164,12 @@ fn sanity_check_unused_struct_enum(
         })
         .collect();
 
-    if all_types != used_types {
+    let unused_types = all_types.difference(&used_types).collect_vec();
+
+    if !unused_types.is_empty() {
         warn!(
             "Some structs/enums are exported as `pub`, but are never used in any `pub` functions, thus they are ignored: {:?}",
-            all_types.difference(&used_types),
+            unused_types,
         )
     }
 }
