@@ -8,6 +8,7 @@ use itertools::Itertools;
 use log::warn;
 use std::collections::{HashMap, HashSet};
 use std::path::PathBuf;
+use syn::Type;
 
 pub(super) fn sanity_check_unused_struct_enum(
     pack: &IrPack,
@@ -63,14 +64,15 @@ fn get_potential_struct_or_enum_names(ty: &IrType) -> Vec<String> {
     match ty {
         IrType::StructRef(ty) => vec![ty.ident.0.name.clone()],
         IrType::EnumRef(ty) => vec![ty.ident.0.name.clone()],
-        IrType::RustOpaque(ty) => get_potential_struct_or_enum_names_from_str(&ty.inner.0),
+        IrType::RustOpaque(ty) => {
+            get_potential_struct_or_enum_names_from_syn_type(&syn::parse_str(ty.inner.0).unwrap())
+        }
         // TODO rm?
         // IrType::Delegate(IrTypeDelegate::PrimitiveEnum(ty)) => vec![ty.ir.ident.0.name.clone()],
         _ => None,
     }
 }
 
-fn get_potential_struct_or_enum_names_from_str(ty: &str) -> Vec<String> {
-    let ty: syn::Type = syn::parse_str(ty).unwrap();
+fn get_potential_struct_or_enum_names_from_syn_type(ty: &Type) -> Vec<String> {
     todo!()
 }
