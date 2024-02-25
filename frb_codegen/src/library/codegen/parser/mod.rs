@@ -9,29 +9,23 @@ pub(crate) mod source_graph;
 pub(crate) mod type_alias_resolver;
 pub(crate) mod type_parser;
 
-use crate::codegen::config::internal_config::RustInputPathPack;
 use crate::codegen::dumper::Dumper;
-use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::IrPack;
-use crate::codegen::ir::ty::delegate::IrTypeDelegate;
-use crate::codegen::ir::ty::IrType;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::codegen::parser::function_extractor::extract_generalized_functions_from_file;
 use crate::codegen::parser::function_parser::FunctionParser;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::parser::misc::parse_has_executor;
 use crate::codegen::parser::reader::CachedRustReader;
-use crate::codegen::parser::source_graph::modules::{Enum, Struct, StructOrEnumWrapper};
+use crate::codegen::parser::sanity_checker::sanity_check_unused_struct_enum;
 use crate::codegen::parser::type_alias_resolver::resolve_type_aliases;
 use crate::codegen::parser::type_parser::TypeParser;
 use crate::codegen::ConfigDumpContent;
 use itertools::Itertools;
-use log::{trace, warn};
-use std::collections::{HashMap, HashSet};
+use log::trace;
 use std::path::{Path, PathBuf};
 use syn::File;
 use ConfigDumpContent::SourceGraph;
-use crate::codegen::parser::sanity_checker::sanity_check_unused_struct_enum;
 
 pub(crate) fn parse(
     config: &ParserInternalConfig,

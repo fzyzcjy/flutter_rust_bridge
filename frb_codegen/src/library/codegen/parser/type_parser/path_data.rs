@@ -1,5 +1,4 @@
 use crate::codegen::ir::ty::rust_opaque::NameComponent;
-use crate::codegen::parser::type_parser::TypeParserWithContext;
 use crate::if_then_some;
 use anyhow::Result;
 use syn::{
