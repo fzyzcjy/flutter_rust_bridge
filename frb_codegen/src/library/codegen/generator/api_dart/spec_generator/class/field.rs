@@ -51,7 +51,14 @@ fn default_value_maybe_to_dart_style(value: &str, enable: bool) -> Cow<str> {
 }
 
 fn default_value_to_dart_style(value: &str) -> String {
-    let mut split = value.split('.');
+    const SEP: char = '.';
+
+    // #1767
+    if !value.contains(SEP) {
+        return value.to_owned();
+    }
+
+    let mut split = value.split(SEP);
     let enum_name = split.next().unwrap();
 
     let variant_name = split.next().unwrap().to_string();
