@@ -18,6 +18,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_concrete(
         &mut self,
         last_segment: &SplayedSegment,
+        splayed_segments: &[SplayedSegment],
     ) -> anyhow::Result<Option<IrType>> {
         Ok(Some(match last_segment {
             ("Self", []) => self.parse_type_self()?,
