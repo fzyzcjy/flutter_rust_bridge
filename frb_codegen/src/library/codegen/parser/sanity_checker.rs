@@ -9,6 +9,7 @@ use log::warn;
 use std::collections::{HashMap, HashSet};
 use std::path::PathBuf;
 use syn::Type;
+use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 
 pub(super) fn sanity_check_unused_struct_enum(
     pack: &IrPack,
@@ -68,8 +69,7 @@ fn get_potential_struct_or_enum_names(ty: &IrType) -> anyhow::Result<Vec<String>
         IrType::RustOpaque(ty) => {
             get_potential_struct_or_enum_names_from_syn_type(&syn::parse_str(&ty.inner.0)?)?
         }
-        // TODO rm?
-        // IrType::Delegate(IrTypeDelegate::PrimitiveEnum(ty)) => vec![ty.ir.ident.0.name.clone()],
+        IrType::Delegate(IrTypeDelegate::PrimitiveEnum(ty)) => vec![ty.ir.ident.0.name.clone()],
         _ => vec![],
     })
 }
