@@ -162,7 +162,7 @@ fn sanity_check_unused_struct_enum(
     ) -> Vec<String> {
         src_items
             .iter()
-            .filter(|(k, v)| interest_input_paths.contains(&v.inner().namespace()))
+            .filter(|(_, v)| interest_input_paths.contains(&v.inner().namespace()))
             .map(|(k, _)| k.to_owned())
             .collect_vec()
     }
