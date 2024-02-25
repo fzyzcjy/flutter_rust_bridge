@@ -1,6 +1,7 @@
 use crate::codegen::config::internal_config::RustInputPathPack;
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::IrPack;
+use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::source_graph::modules::{Enum, Struct, StructOrEnumWrapper};
 use crate::codegen::parser::type_parser::path_data::extract_path_data;
@@ -9,7 +10,6 @@ use log::warn;
 use std::collections::{HashMap, HashSet};
 use std::path::PathBuf;
 use syn::Type;
-use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 
 pub(super) fn sanity_check_unused_struct_enum(
     pack: &IrPack,
@@ -115,5 +115,7 @@ mod tests {
         body("a::b::One<c::d::Two>", vec!["One", "Two"]);
         body("&One", vec!["One"]);
         body("&mut One", vec!["One"]);
+        body("&mut One", vec!["One"]);
+        body("Box<dyn One>", vec!["One"]);
     }
 }
