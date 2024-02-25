@@ -1,4 +1,5 @@
 use crate::codegen::ir::ty::IrType;
+use crate::codegen::parser::type_parser::path_data::extract_path_data;
 use crate::codegen::parser::type_parser::unencodable::splay_segments;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use anyhow::bail;
@@ -28,7 +29,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         type_path: &TypePath,
         path: &Path,
     ) -> anyhow::Result<IrType> {
-        let segments = self.extract_path_data(path)?;
+        let segments = extract_path_data(path)?;
         let splayed_segments = splay_segments(&segments);
 
         if let Some(last_segment) = splayed_segments.last() {
