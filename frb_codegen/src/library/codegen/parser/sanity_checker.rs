@@ -4,11 +4,12 @@ use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::source_graph::modules::{Enum, Struct, StructOrEnumWrapper};
+use itertools::Itertools;
 use log::warn;
 use std::collections::{HashMap, HashSet};
 use std::path::PathBuf;
 
-fn sanity_check_unused_struct_enum(
+pub(super) fn sanity_check_unused_struct_enum(
     pack: &IrPack,
     src_structs: &HashMap<String, &Struct>,
     src_enums: &HashMap<String, &Enum>,

@@ -31,6 +31,7 @@ use std::collections::{HashMap, HashSet};
 use std::path::{Path, PathBuf};
 use syn::File;
 use ConfigDumpContent::SourceGraph;
+use crate::codegen::parser::sanity_checker::sanity_check_unused_struct_enum;
 
 pub(crate) fn parse(
     config: &ParserInternalConfig,
