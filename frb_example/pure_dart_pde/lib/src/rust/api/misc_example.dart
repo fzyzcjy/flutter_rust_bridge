@@ -44,6 +44,10 @@ Future<MySize> handleStructTwinNormal(
     RustLib.instance.api
         .handleStructTwinNormal(arg: arg, boxed: boxed, hint: hint);
 
+Future<DateTime> nameConflictTwinNormal(
+        {required DateTime arg, dynamic hint}) =>
+    RustLib.instance.api.nameConflictTwinNormal(arg: arg, hint: hint);
+
 class ATwinNormal {
   final String a;
 

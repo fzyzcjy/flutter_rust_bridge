@@ -6,6 +6,18 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+class DateTime {
+  const DateTime();
+
+  @override
+  int get hashCode => 0;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is DateTime && runtimeType == other.runtimeType;
+}
+
 enum MyEnum {
   False,
   True,

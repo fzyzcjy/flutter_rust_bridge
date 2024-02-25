@@ -564,13 +564,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Duration dco_decode_Chrono_Duration(dynamic raw);
 
   @protected
-  DateTime dco_decode_Chrono_Local(dynamic raw);
-
-  @protected
   DateTime dco_decode_Chrono_Naive(dynamic raw);
-
-  @protected
-  DateTime dco_decode_Chrono_Utc(dynamic raw);
 
   @protected
   FutureOr<void> Function(Object)
@@ -1115,9 +1109,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   DateTime dco_decode_box_autoadd_Chrono_Naive(dynamic raw);
 
   @protected
-  DateTime dco_decode_box_autoadd_Chrono_Utc(dynamic raw);
-
-  @protected
   Object dco_decode_box_autoadd_DartOpaque(dynamic raw);
 
   @protected
@@ -1347,6 +1338,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   DartOpaqueNestedTwinSync dco_decode_box_autoadd_dart_opaque_nested_twin_sync(
       dynamic raw);
+
+  @protected
+  DateTime dco_decode_box_autoadd_date_time(dynamic raw);
 
   @protected
   ElementTwinNormal dco_decode_box_autoadd_element_twin_normal(dynamic raw);
@@ -2111,6 +2105,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   DartOpaqueNestedTwinSync dco_decode_dart_opaque_nested_twin_sync(dynamic raw);
 
   @protected
+  DateTime dco_decode_date_time(dynamic raw);
+
+  @protected
   DemoStructForRustCallDartTwinNormal
       dco_decode_demo_struct_for_rust_call_dart_twin_normal(dynamic raw);
 
@@ -2348,9 +2345,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<Duration> dco_decode_list_Chrono_Duration(dynamic raw);
 
   @protected
-  List<DateTime> dco_decode_list_Chrono_Local(dynamic raw);
-
-  @protected
   List<DateTime> dco_decode_list_Chrono_Naive(dynamic raw);
 
   @protected
@@ -2427,6 +2421,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<bool> dco_decode_list_bool(dynamic raw);
+
+  @protected
+  List<DateTime> dco_decode_list_date_time(dynamic raw);
 
   @protected
   List<ElementTwinNormal> dco_decode_list_element_twin_normal(dynamic raw);
@@ -2900,9 +2897,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   DateTime? dco_decode_opt_box_autoadd_Chrono_Naive(dynamic raw);
 
   @protected
-  DateTime? dco_decode_opt_box_autoadd_Chrono_Utc(dynamic raw);
-
-  @protected
   Object? dco_decode_opt_box_autoadd_DartOpaque(dynamic raw);
 
   @protected
@@ -2977,6 +2971,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   bool? dco_decode_opt_box_autoadd_bool(dynamic raw);
+
+  @protected
+  DateTime? dco_decode_opt_box_autoadd_date_time(dynamic raw);
 
   @protected
   ElementTwinNormal? dco_decode_opt_box_autoadd_element_twin_normal(
@@ -3877,13 +3874,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Duration sse_decode_Chrono_Duration(SseDeserializer deserializer);
 
   @protected
-  DateTime sse_decode_Chrono_Local(SseDeserializer deserializer);
-
-  @protected
   DateTime sse_decode_Chrono_Naive(SseDeserializer deserializer);
-
-  @protected
-  DateTime sse_decode_Chrono_Utc(SseDeserializer deserializer);
 
   @protected
   Object sse_decode_DartOpaque(SseDeserializer deserializer);
@@ -4428,9 +4419,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   DateTime sse_decode_box_autoadd_Chrono_Naive(SseDeserializer deserializer);
 
   @protected
-  DateTime sse_decode_box_autoadd_Chrono_Utc(SseDeserializer deserializer);
-
-  @protected
   Object sse_decode_box_autoadd_DartOpaque(SseDeserializer deserializer);
 
   @protected
@@ -4698,6 +4686,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   DartOpaqueNestedTwinSync sse_decode_box_autoadd_dart_opaque_nested_twin_sync(
       SseDeserializer deserializer);
+
+  @protected
+  DateTime sse_decode_box_autoadd_date_time(SseDeserializer deserializer);
 
   @protected
   ElementTwinNormal sse_decode_box_autoadd_element_twin_normal(
@@ -5565,6 +5556,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  DateTime sse_decode_date_time(SseDeserializer deserializer);
+
+  @protected
   DemoStructForRustCallDartTwinNormal
       sse_decode_demo_struct_for_rust_call_dart_twin_normal(
           SseDeserializer deserializer);
@@ -5834,9 +5828,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<Duration> sse_decode_list_Chrono_Duration(SseDeserializer deserializer);
 
   @protected
-  List<DateTime> sse_decode_list_Chrono_Local(SseDeserializer deserializer);
-
-  @protected
   List<DateTime> sse_decode_list_Chrono_Naive(SseDeserializer deserializer);
 
   @protected
@@ -5923,6 +5914,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<bool> sse_decode_list_bool(SseDeserializer deserializer);
+
+  @protected
+  List<DateTime> sse_decode_list_date_time(SseDeserializer deserializer);
 
   @protected
   List<ElementTwinNormal> sse_decode_list_element_twin_normal(
@@ -6474,9 +6468,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
-  DateTime? sse_decode_opt_box_autoadd_Chrono_Utc(SseDeserializer deserializer);
-
-  @protected
   Object? sse_decode_opt_box_autoadd_DartOpaque(SseDeserializer deserializer);
 
   @protected
@@ -6558,6 +6549,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   bool? sse_decode_opt_box_autoadd_bool(SseDeserializer deserializer);
+
+  @protected
+  DateTime? sse_decode_opt_box_autoadd_date_time(SseDeserializer deserializer);
 
   @protected
   ElementTwinNormal? sse_decode_opt_box_autoadd_element_twin_normal(
@@ -7545,13 +7539,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_Chrono_Duration(Duration self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Chrono_Local(DateTime self, SseSerializer serializer);
-
-  @protected
   void sse_encode_Chrono_Naive(DateTime self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_Chrono_Utc(DateTime self, SseSerializer serializer);
 
   @protected
   void sse_encode_DartFn_Inputs_DartOpaque_Output_unit(
@@ -8145,10 +8133,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       DateTime self, SseSerializer serializer);
 
   @protected
-  void sse_encode_box_autoadd_Chrono_Utc(
-      DateTime self, SseSerializer serializer);
-
-  @protected
   void sse_encode_box_autoadd_DartOpaque(Object self, SseSerializer serializer);
 
   @protected
@@ -8393,6 +8377,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_box_autoadd_dart_opaque_nested_twin_sync(
       DartOpaqueNestedTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_date_time(
+      DateTime self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_element_twin_normal(
@@ -9215,6 +9203,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       DartOpaqueNestedTwinSync self, SseSerializer serializer);
 
   @protected
+  void sse_encode_date_time(DateTime self, SseSerializer serializer);
+
+  @protected
   void sse_encode_demo_struct_for_rust_call_dart_twin_normal(
       DemoStructForRustCallDartTwinNormal self, SseSerializer serializer);
 
@@ -9483,10 +9474,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       List<Duration> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_list_Chrono_Local(
-      List<DateTime> self, SseSerializer serializer);
-
-  @protected
   void sse_encode_list_Chrono_Naive(
       List<DateTime> self, SseSerializer serializer);
 
@@ -9569,6 +9556,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_list_bool(List<bool> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_date_time(List<DateTime> self, SseSerializer serializer);
 
   @protected
   void sse_encode_list_element_twin_normal(
@@ -10123,10 +10113,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       DateTime? self, SseSerializer serializer);
 
   @protected
-  void sse_encode_opt_box_autoadd_Chrono_Utc(
-      DateTime? self, SseSerializer serializer);
-
-  @protected
   void sse_encode_opt_box_autoadd_DartOpaque(
       Object? self, SseSerializer serializer);
 
@@ -10200,6 +10186,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_opt_box_autoadd_bool(bool? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_date_time(
+      DateTime? self, SseSerializer serializer);
 
   @protected
   void sse_encode_opt_box_autoadd_element_twin_normal(
