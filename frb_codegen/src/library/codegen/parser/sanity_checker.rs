@@ -74,5 +74,29 @@ fn get_potential_struct_or_enum_names(ty: &IrType) -> Vec<String> {
 }
 
 fn get_potential_struct_or_enum_names_from_syn_type(ty: &Type) -> Vec<String> {
+    match ty {
+        Type::Path(path) => path.path,
+    }
     todo!()
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_get_potential_struct_or_enum_names_from_syn_type() {
+        fn body(s: &str, matcher: Vec<&str>) {
+            assert_eq!(
+                get_potential_struct_or_enum_names_from_syn_type(syn::parse_str(s).unwrap()),
+                matcher.into_iter().map_into().collect_vec(),
+            );
+        }
+
+        body("Something", vec!["Something"]);
+        body("One<Two>", vec!["One", "Two"]);
+        body("a::b::One<c::d::Two>", vec!["One", "Two"]);
+        body("&One", vec!["One"]);
+        body("&mut One", vec!["One"]);
+    }
 }
