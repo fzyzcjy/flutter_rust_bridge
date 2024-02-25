@@ -13,3 +13,88 @@ use flutter_rust_bridge::{Handler, IntoIntoDart};
 // Section: boilerplate
 
 flutter_rust_bridge::frb_generated_boilerplate_web!();
+
+// Section: dart2rust
+
+impl CstDecode<crate::api::minimal::BMPimage>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> crate::api::minimal::BMPimage {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            3,
+            "Expected 3 elements, got {}",
+            self_.length()
+        );
+        crate::api::minimal::BMPimage {
+            width: self_.get(0).cst_decode(),
+            height: self_.get(1).cst_decode(),
+            bmp: self_.get(2).cst_decode(),
+        }
+    }
+}
+impl CstDecode<Vec<u8>> for Box<[u8]> {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> Vec<u8> {
+        self.into_vec()
+    }
+}
+impl CstDecode<i32> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> i32 {
+        self.unchecked_into_f64() as _
+    }
+}
+impl CstDecode<i64> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> i64 {
+        ::std::convert::TryInto::try_into(
+            self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::BigInt>()
+                .unwrap(),
+        )
+        .unwrap()
+    }
+}
+impl CstDecode<Vec<u8>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> Vec<u8> {
+        self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Uint8Array>()
+            .to_vec()
+            .into()
+    }
+}
+impl CstDecode<u32> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> u32 {
+        self.unchecked_into_f64() as _
+    }
+}
+impl CstDecode<u8> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> u8 {
+        self.unchecked_into_f64() as _
+    }
+}
+
+#[wasm_bindgen]
+pub fn wire_init_app(port_: flutter_rust_bridge::for_generated::MessagePort) {
+    wire_init_app_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_minimal_adder(port_: flutter_rust_bridge::for_generated::MessagePort, a: i32, b: i32) {
+    wire_minimal_adder_impl(port_, a, b)
+}
+
+#[wasm_bindgen]
+pub fn wire_render_image(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    width: i64,
+    height: i64,
+) {
+    wire_render_image_impl(port_, width, height)
+}

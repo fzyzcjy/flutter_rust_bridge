@@ -63,6 +63,40 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
+  List<dynamic> cst_encode_bm_pimage(BMPimage raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [
+      cst_encode_u_32(raw.width),
+      cst_encode_u_32(raw.height),
+      cst_encode_list_prim_u_8_strict(raw.bmp)
+    ];
+  }
+
+  @protected
+  Object cst_encode_i_64(int raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return castNativeBigInt(raw);
+  }
+
+  @protected
+  Uint8List cst_encode_list_prim_u_8_strict(Uint8List raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw;
+  }
+
+  @protected
+  int cst_encode_i_32(int raw);
+
+  @protected
+  int cst_encode_u_32(int raw);
+
+  @protected
+  int cst_encode_u_8(int raw);
+
+  @protected
+  void cst_encode_unit(void raw);
+
+  @protected
   void sse_encode_bm_pimage(BMPimage self, SseSerializer serializer);
 
   @protected
@@ -92,6 +126,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
 class RustLibWire implements BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
+
+  void wire_init_app(NativePortType port_) => wasmModule.wire_init_app(port_);
+
+  void wire_minimal_adder(NativePortType port_, int a, int b) =>
+      wasmModule.wire_minimal_adder(port_, a, b);
+
+  void wire_render_image(NativePortType port_, Object width, Object height) =>
+      wasmModule.wire_render_image(port_, width, height);
 }
 
 @JS('wasm_bindgen')
@@ -105,4 +147,11 @@ class RustLibWasmModule implements WasmModule {
 
   @override
   external RustLibWasmModule bind(dynamic thisArg, String moduleName);
+
+  external void wire_init_app(NativePortType port_);
+
+  external void wire_minimal_adder(NativePortType port_, int a, int b);
+
+  external void wire_render_image(
+      NativePortType port_, Object width, Object height);
 }
