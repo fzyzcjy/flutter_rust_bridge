@@ -10,16 +10,16 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn extract_path_data(&mut self, path: &Path) -> Result<Vec<NameComponent>> {
         path.segments
             .iter()
-            .map(|segment| self.parse_path_segment(segment))
+            .map(|segment| parse_path_segment(segment))
             .collect()
     }
 
-    fn parse_path_segment(&mut self, segment: &PathSegment) -> Result<NameComponent> {
+    fn parse_path_segment(segment: &PathSegment) -> Result<NameComponent> {
         let ident = segment.ident.to_string();
         let args = match &segment.arguments {
             PathArguments::None => vec![],
             PathArguments::AngleBracketed(args) => {
-                self.parse_angle_bracketed_generic_arguments(args)
+                parse_angle_bracketed_generic_arguments(args)
                 // .with_context(|| {
                 //     // This will stop the whole generator and tell the users, so we do not care about testing it
                 //     // frb-coverage:ignore-start
@@ -42,14 +42,10 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         Ok(NameComponent { ident, args })
     }
 
-    fn parse_angle_bracketed_generic_arguments(
-        &mut self,
-        args: &AngleBracketedGenericArguments,
-    ) -> Vec<Type> {
+    fn parse_angle_bracketed_generic_arguments(args: &AngleBracketedGenericArguments) -> Vec<Type> {
         args.args
             .iter()
             .filter_map(|arg| if_then_some!(let GenericArgument::Type(ty) = arg, ty.to_owned()))
-            // .map(|ty| self.parse_type(ty))
             .collect()
     }
 
