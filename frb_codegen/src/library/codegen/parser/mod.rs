@@ -162,16 +162,16 @@ fn sanity_check_unused_struct_enum(
     ) -> Vec<String> {
         src_items
             .iter()
-            .filter(|(k, v)| interest_input_paths.contains(v.inner().namespace()))
+            .filter(|(k, v)| interest_input_paths.contains(&v.inner().namespace()))
             .map(|(k, _)| k.to_owned())
             .collect_vec()
     }
 
-    let interest_input_paths: Vec<_> = rust_input_path_pack
+    let interest_input_paths = rust_input_path_pack
         .rust_input_paths
         .iter()
         .map(|p| Namespace::new_from_rust_crate_path(p, rust_crate_dir))
-        .collect()?;
+        .collect::<anyhow::Result<Vec<_>>>()?;
 
     let all_types: HashSet<String> = [
         extract_interest_src_types(src_structs, &interest_input_paths),
@@ -199,6 +199,8 @@ fn sanity_check_unused_struct_enum(
             unused_types,
         )
     }
+
+    Ok(())
 }
 
 #[cfg(test)]
