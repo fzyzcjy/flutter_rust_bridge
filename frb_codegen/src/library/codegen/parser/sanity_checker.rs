@@ -4,7 +4,6 @@ use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::source_graph::modules::{Enum, Struct, StructOrEnumWrapper};
-use clap::builder::Str;
 use itertools::Itertools;
 use log::warn;
 use std::collections::{HashMap, HashSet};
@@ -71,6 +70,7 @@ fn get_potential_struct_or_enum_names(ty: &IrType) -> Vec<String> {
     }
 }
 
-fn get_potential_struct_or_enum_names_from_str(ty: &str) -> Vec<Str> {
+fn get_potential_struct_or_enum_names_from_str(ty: &str) -> Vec<String> {
+    let ty: syn::Type = syn::parse_str(ty).unwrap();
     todo!()
 }
