@@ -17,7 +17,7 @@ use crate::codegen::parser::function_parser::FunctionParser;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::parser::misc::parse_has_executor;
 use crate::codegen::parser::reader::CachedRustReader;
-use crate::codegen::parser::source_graph::modules::{Enum, Struct};
+use crate::codegen::parser::source_graph::modules::{Enum, Struct, StructOrEnumWrapper};
 use crate::codegen::parser::type_alias_resolver::resolve_type_aliases;
 use crate::codegen::parser::type_parser::TypeParser;
 use crate::codegen::ConfigDumpContent;
@@ -146,9 +146,19 @@ fn sanity_check_unused_struct_enum(
     src_structs: &HashMap<String, &Struct>,
     src_enums: &HashMap<String, &Enum>,
 ) {
+    fn extract_interest_src_types<T: StructOrEnumWrapper<I>, I>(
+        src_items: &HashMap<String, &T>,
+    ) -> Vec<String> {
+        src_items
+            .iter()
+            .filter(|(k, v)| v.inner().path.TODO)
+            .map(|(k, _)| k.to_owned())
+            .collect_vec()
+    }
+
     let all_types: HashSet<String> = [
-        src_structs.keys().map_into().collect_vec(),
-        src_enums.keys().map_into().collect_vec(),
+        extract_interest_src_types(src_structs),
+        extract_interest_src_types(src_enums),
     ]
     .concat()
     .into_iter()
