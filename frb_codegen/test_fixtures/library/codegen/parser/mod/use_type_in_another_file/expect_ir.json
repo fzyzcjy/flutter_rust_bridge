@@ -111,5 +111,6 @@
       "name": "crate::another_file/StructInAnotherFile",
       "wrapper_name": null
     }
-  }
+  },
+  "unused_types": []
 }

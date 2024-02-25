@@ -8,7 +8,7 @@ use syn::{
 pub(crate) fn extract_path_data(path: &Path) -> Result<Vec<NameComponent>> {
     path.segments
         .iter()
-        .map(|segment| parse_path_segment(segment))
+        .map(parse_path_segment)
         .collect()
 }
 

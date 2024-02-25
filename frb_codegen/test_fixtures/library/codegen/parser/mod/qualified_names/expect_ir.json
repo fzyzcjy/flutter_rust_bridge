@@ -130,5 +130,6 @@
     }
   ],
   "has_executor": false,
-  "struct_pool": {}
+  "struct_pool": {},
+  "unused_types": []
 }
