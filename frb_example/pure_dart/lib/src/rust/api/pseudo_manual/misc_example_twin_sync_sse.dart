@@ -9,7 +9,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'misc_example_twin_sync_sse.freezed.dart';
 
-// The type `MySizeFreezedTwinSyncSse` is exported as `pub` but never used by any `pub` functions, thus it is ignored.
+// The type `MySizeFreezedTwinSyncSse` is not used by any `pub` functions, thus it is ignored.
 
 MyTreeNodeTwinSyncSse handleComplexStructTwinSyncSse(
         {required MyTreeNodeTwinSyncSse s, dynamic hint}) =>

@@ -9,7 +9,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'misc_example_twin_rust_async.freezed.dart';
 
-// The type `MySizeFreezedTwinRustAsync` is exported as `pub` but never used by any `pub` functions, thus it is ignored.
+// The type `MySizeFreezedTwinRustAsync` is not used by any `pub` functions, thus it is ignored.
 
 Future<MyTreeNodeTwinRustAsync> handleComplexStructTwinRustAsync(
         {required MyTreeNodeTwinRustAsync s, dynamic hint}) =>

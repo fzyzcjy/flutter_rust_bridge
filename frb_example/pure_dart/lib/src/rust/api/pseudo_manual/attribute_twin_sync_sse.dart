@@ -9,7 +9,7 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'package:meta/meta.dart' as meta;
 part 'attribute_twin_sync_sse.freezed.dart';
 
-// The type `IgnoredStructTwinSyncSse` is exported as `pub` but never used by any `pub` functions, thus it is ignored.
+// The type `IgnoredStructTwinSyncSse` is not used by any `pub` functions, thus it is ignored.
 
 void handleCustomizedStructTwinSyncSse(
         {required CustomizedTwinSyncSse val, dynamic hint}) =>

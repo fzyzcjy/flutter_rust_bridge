@@ -9,8 +9,8 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'pseudo_manual/rust_auto_opaque_twin_rust_async.dart';
 part 'rust_auto_opaque.freezed.dart';
 
-// The type `HelloOneStructTwinNormal` is exported as `pub` but never used by any `pub` functions, thus it is ignored.
-// The type `HelloTwoEnumTwinNormal` is exported as `pub` but never used by any `pub` functions, thus it is ignored.
+// The type `HelloOneStructTwinNormal` is not used by any `pub` functions, thus it is ignored.
+// The type `HelloTwoEnumTwinNormal` is not used by any `pub` functions, thus it is ignored.
 
 Future<void> rustAutoOpaqueArgOwnTwinNormal(
         {required NonCloneSimpleTwinNormal arg,

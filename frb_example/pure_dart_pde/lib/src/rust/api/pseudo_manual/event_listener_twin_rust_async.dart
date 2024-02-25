@@ -8,7 +8,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'event_listener_twin_rust_async.freezed.dart';
 
-// The type `EVENTS` is exported as `pub` but never used by any `pub` functions, thus it is ignored.
+// The type `EVENTS` is not used by any `pub` functions, thus it is ignored.
 
 Stream<EventTwinRustAsync> registerEventListenerTwinRustAsync({dynamic hint}) =>
     RustLib.instance.api.registerEventListenerTwinRustAsync(hint: hint);

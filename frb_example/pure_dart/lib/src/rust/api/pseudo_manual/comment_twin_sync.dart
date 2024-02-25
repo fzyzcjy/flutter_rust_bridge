@@ -6,8 +6,8 @@
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// The type `SimpleEnumWithCommentsTwinSync` is exported as `pub` but never used by any `pub` functions, thus it is ignored.
-// The type `ComplexEnumWithCommentsTwinSync` is exported as `pub` but never used by any `pub` functions, thus it is ignored.
+// The type `ComplexEnumWithCommentsTwinSync` is not used by any `pub` functions, thus it is ignored.
+// The type `SimpleEnumWithCommentsTwinSync` is not used by any `pub` functions, thus it is ignored.
 
 /// This is single line comment
 void functionWithCommentsTripleSlashSingleLineTwinSync({dynamic hint}) =>
