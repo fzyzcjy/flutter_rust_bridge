@@ -8,7 +8,9 @@ pub(crate) mod source_graph;
 pub(crate) mod type_alias_resolver;
 pub(crate) mod type_parser;
 
+use crate::codegen::config::internal_config::RustInputPathPack;
 use crate::codegen::dumper::Dumper;
+use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::misc::GeneratorProgressBarPack;
@@ -100,7 +102,13 @@ pub(crate) fn parse(
         has_executor,
     };
 
-    sanity_check_unused_struct_enum(&ans, &src_structs, &src_enums);
+    sanity_check_unused_struct_enum(
+        &ans,
+        &src_structs,
+        &src_enums,
+        &config.rust_input_path_pack,
+        &config.rust_crate_dir,
+    )?;
 
     Ok(ans)
 }
@@ -145,20 +153,29 @@ fn sanity_check_unused_struct_enum(
     pack: &IrPack,
     src_structs: &HashMap<String, &Struct>,
     src_enums: &HashMap<String, &Enum>,
-) {
+    rust_input_path_pack: &RustInputPathPack,
+    rust_crate_dir: &PathBuf,
+) -> anyhow::Result<()> {
     fn extract_interest_src_types<T: StructOrEnumWrapper<I>, I>(
         src_items: &HashMap<String, &T>,
+        interest_input_paths: &[Namespace],
     ) -> Vec<String> {
         src_items
             .iter()
-            .filter(|(k, v)| v.inner().path.TODO)
+            .filter(|(k, v)| interest_input_paths.contains(v.inner().namespace()))
             .map(|(k, _)| k.to_owned())
             .collect_vec()
     }
 
+    let interest_input_paths: Vec<_> = rust_input_path_pack
+        .rust_input_paths
+        .iter()
+        .map(|p| Namespace::new_from_rust_crate_path(p, rust_crate_dir))
+        .collect()?;
+
     let all_types: HashSet<String> = [
-        extract_interest_src_types(src_structs),
-        extract_interest_src_types(src_enums),
+        extract_interest_src_types(src_structs, &interest_input_paths),
+        extract_interest_src_types(src_enums, &interest_input_paths),
     ]
     .concat()
     .into_iter()
