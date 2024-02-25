@@ -4,6 +4,7 @@ use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::source_graph::modules::{Enum, Struct, StructOrEnumWrapper};
+use crate::codegen::parser::type_parser::path_data::extract_path_data;
 use itertools::Itertools;
 use log::warn;
 use std::collections::{HashMap, HashSet};
@@ -60,12 +61,12 @@ fn extract_interest_src_types<T: StructOrEnumWrapper<I>, I>(
         .collect_vec()
 }
 
-fn get_potential_struct_or_enum_names(ty: &IrType) -> Vec<String> {
+fn get_potential_struct_or_enum_names(ty: &IrType) -> anyhow::Result<Vec<String>> {
     match ty {
         IrType::StructRef(ty) => vec![ty.ident.0.name.clone()],
         IrType::EnumRef(ty) => vec![ty.ident.0.name.clone()],
         IrType::RustOpaque(ty) => {
-            get_potential_struct_or_enum_names_from_syn_type(&syn::parse_str(ty.inner.0).unwrap())
+            get_potential_struct_or_enum_names_from_syn_type(&syn::parse_str(ty.inner.0)?)
         }
         // TODO rm?
         // IrType::Delegate(IrTypeDelegate::PrimitiveEnum(ty)) => vec![ty.ir.ident.0.name.clone()],
@@ -73,21 +74,9 @@ fn get_potential_struct_or_enum_names(ty: &IrType) -> Vec<String> {
     }
 }
 
-fn get_potential_struct_or_enum_names_from_syn_type(ty: &Type) -> Vec<String> {
+fn get_potential_struct_or_enum_names_from_syn_type(ty: &Type) -> anyhow::Result<Vec<String>> {
     match ty {
-        Type::Path(path) => (path.path.segments.iter())
-            .flat_map(|segment| {
-                let mut ans = vec![segment.ident.to_string()];
-                if let PathArguments::AngleBracketed(args) = &segment.arguments {
-                    ans += (args.args.iter())
-                        .filter_map(
-                            |arg| if_then_some!(let GenericArgument::Type(ty) = arg, ty.to_owned()),
-                        )
-                        .collect();
-                }
-                ans
-            })
-            .collect_vec(),
+        Type::Path(path) => extract_path_data(path.path)?,
         // ... maybe more ...
         _ => vec![],
     }
