@@ -185,12 +185,7 @@ fn sanity_check_unused_struct_enum(
     let used_types: HashSet<String> = pack
         .distinct_types(None)
         .into_iter()
-        .filter_map(|ty| match ty {
-            IrType::StructRef(ty) => Some(ty.ident.0.name.clone()),
-            IrType::EnumRef(ty) => Some(ty.ident.0.name.clone()),
-            IrType::Delegate(IrTypeDelegate::PrimitiveEnum(ty)) => Some(ty.ir.ident.0.name.clone()),
-            _ => None,
-        })
+        .filter_map(|ty| get_struct_or_enum_name(&ty))
         .collect();
 
     let unused_types = all_types.difference(&used_types).collect_vec();
@@ -203,6 +198,15 @@ fn sanity_check_unused_struct_enum(
     }
 
     Ok(())
+}
+
+fn get_struct_or_enum_name(ty: &IrType) -> Option<String> {
+    match ty {
+        IrType::StructRef(ty) => Some(ty.ident.0.name.clone()),
+        IrType::EnumRef(ty) => Some(ty.ident.0.name.clone()),
+        IrType::Delegate(IrTypeDelegate::PrimitiveEnum(ty)) => Some(ty.ir.ident.0.name.clone()),
+        _ => None,
+    }
 }
 
 #[cfg(test)]
