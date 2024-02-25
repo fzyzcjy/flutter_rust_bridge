@@ -5,7 +5,6 @@
 use crate::auxiliary::sample_types::MySize;
 use flutter_rust_bridge::frb;
 use log::info;
-use std::hint::black_box;
 
 #[derive(Debug, Clone)]
 pub struct MyTreeNodeTwinRustAsyncSse {
