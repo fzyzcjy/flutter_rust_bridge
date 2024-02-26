@@ -9,6 +9,8 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'package:meta/meta.dart' as meta;
 part 'attribute_twin_rust_async.freezed.dart';
 
+// The type `IgnoredStructTwinRustAsync` is not used by any `pub` functions, thus it is ignored.
+
 Future<void> handleCustomizedStructTwinRustAsync(
         {required CustomizedTwinRustAsync val, dynamic hint}) =>
     RustLib.instance.api

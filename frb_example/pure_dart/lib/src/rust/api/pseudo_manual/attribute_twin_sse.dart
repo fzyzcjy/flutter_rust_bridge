@@ -9,6 +9,8 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'package:meta/meta.dart' as meta;
 part 'attribute_twin_sse.freezed.dart';
 
+// The type `IgnoredStructTwinSse` is not used by any `pub` functions, thus it is ignored.
+
 Future<void> handleCustomizedStructTwinSse(
         {required CustomizedTwinSse val, dynamic hint}) =>
     RustLib.instance.api.handleCustomizedStructTwinSse(val: val, hint: hint);

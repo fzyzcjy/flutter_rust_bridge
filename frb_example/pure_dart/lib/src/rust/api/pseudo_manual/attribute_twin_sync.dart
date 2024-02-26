@@ -9,6 +9,8 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'package:meta/meta.dart' as meta;
 part 'attribute_twin_sync.freezed.dart';
 
+// The type `IgnoredStructTwinSync` is not used by any `pub` functions, thus it is ignored.
+
 void handleCustomizedStructTwinSync(
         {required CustomizedTwinSync val, dynamic hint}) =>
     RustLib.instance.api.handleCustomizedStructTwinSync(val: val, hint: hint);

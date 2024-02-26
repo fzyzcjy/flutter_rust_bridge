@@ -8,6 +8,8 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'event_listener_twin_sse.freezed.dart';
 
+// The type `EVENTS` is not used by any `pub` functions, thus it is ignored.
+
 Stream<EventTwinSse> registerEventListenerTwinSse({dynamic hint}) =>
     RustLib.instance.api.registerEventListenerTwinSse(hint: hint);
 

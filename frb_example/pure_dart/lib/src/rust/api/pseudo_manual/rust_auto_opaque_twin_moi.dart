@@ -8,6 +8,9 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'rust_auto_opaque_twin_moi.freezed.dart';
 
+// The type `HelloOneStructTwinMoi` is not used by any `pub` functions, thus it is ignored.
+// The type `HelloTwoEnumTwinMoi` is not used by any `pub` functions, thus it is ignored.
+
 Future<void> rustAutoOpaqueArgOwnTwinMoi(
         {required NonCloneSimpleTwinMoi arg,
         required int expect,

@@ -9,6 +9,8 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'misc_example_twin_sync.freezed.dart';
 
+// The type `MySizeFreezedTwinSync` is not used by any `pub` functions, thus it is ignored.
+
 MyTreeNodeTwinSync handleComplexStructTwinSync(
         {required MyTreeNodeTwinSync s, dynamic hint}) =>
     RustLib.instance.api.handleComplexStructTwinSync(s: s, hint: hint);

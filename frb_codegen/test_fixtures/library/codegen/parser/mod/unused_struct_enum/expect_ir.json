@@ -2,5 +2,9 @@
   "enum_pool": {},
   "funcs": [],
   "has_executor": false,
-  "struct_pool": {}
+  "struct_pool": {},
+  "unused_types": [
+    "crate::api/UnusedStruct",
+    "crate::api/UnusedEnum"
+  ]
 }

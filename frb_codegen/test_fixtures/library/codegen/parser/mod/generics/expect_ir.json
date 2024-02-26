@@ -425,5 +425,6 @@
       "name": "crate::api/MyGenericStruct",
       "wrapper_name": null
     }
-  }
+  },
+  "unused_types": []
 }

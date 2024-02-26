@@ -6,6 +6,7 @@ use crate::codegen::ir::ty::rust_opaque::{
     IrRustOpaqueInner, IrTypeRustOpaque, RustOpaqueCodecMode,
 };
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
+use crate::codegen::parser::type_parser::path_data::extract_path_data;
 use crate::codegen::parser::type_parser::rust_opaque::{
     GeneralizedRustOpaqueParserInfo, RustOpaqueParserTypeInfo,
 };
@@ -38,7 +39,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         let info = self.get_or_insert_rust_auto_opaque_info(&inner_str, namespace, None);
 
         let raw_segments = match inner {
-            Type::Path(inner) => self.extract_path_data(&inner.path)?,
+            Type::Path(inner) => extract_path_data(&inner.path)?,
             _ => vec![],
         };
 

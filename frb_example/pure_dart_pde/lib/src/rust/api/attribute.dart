@@ -9,6 +9,8 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'package:meta/meta.dart' as meta;
 part 'attribute.freezed.dart';
 
+// The type `IgnoredStructTwinNormal` is not used by any `pub` functions, thus it is ignored.
+
 Future<void> handleCustomizedStructTwinNormal(
         {required CustomizedTwinNormal val, dynamic hint}) =>
     RustLib.instance.api.handleCustomizedStructTwinNormal(val: val, hint: hint);

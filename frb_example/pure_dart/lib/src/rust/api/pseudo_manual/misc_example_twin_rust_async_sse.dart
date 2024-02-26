@@ -9,6 +9,8 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'misc_example_twin_rust_async_sse.freezed.dart';
 
+// The type `MySizeFreezedTwinRustAsyncSse` is not used by any `pub` functions, thus it is ignored.
+
 Future<MyTreeNodeTwinRustAsyncSse> handleComplexStructTwinRustAsyncSse(
         {required MyTreeNodeTwinRustAsyncSse s, dynamic hint}) =>
     RustLib.instance.api.handleComplexStructTwinRustAsyncSse(s: s, hint: hint);
