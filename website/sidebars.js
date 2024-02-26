@@ -229,6 +229,7 @@ const sidebars = {
                         'guides/how-to/protobuf-json',
                         'guides/how-to/regression',
                         'guides/how-to/object-pool',
+                        'guides/how-to/gitignore',
                     ],
                 },
                 'guides/users',
