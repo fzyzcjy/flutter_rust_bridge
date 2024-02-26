@@ -224,7 +224,7 @@ function makeMutClosure(arg0, arg1, dtor, f) {
     return real;
 }
 function __wbg_adapter_34(arg0, arg1, arg2) {
-    wasm.wasm_bindgen__convert__closures__invoke1_mut__h6260e277186082a3(arg0, arg1, addHeapObject(arg2));
+    wasm.wasm_bindgen__convert__closures__invoke1_mut__h47fca151210e351e(arg0, arg1, addHeapObject(arg2));
 }
 
 function __wbg_adapter_39(arg0, arg1, arg2) {
@@ -482,10 +482,10 @@ function __wbg_get_imports() {
         const ret = !getObject(arg0);
         return ret;
     };
-    imports.wbg.__wbg_postMessage_abc854026f298be3 = function() { return handleError(function (arg0, arg1) {
+    imports.wbg.__wbg_postMessage_f4da7a8756a18a75 = function() { return handleError(function (arg0, arg1) {
         getObject(arg0).postMessage(getObject(arg1));
     }, arguments) };
-    imports.wbg.__wbg_error_c276faa2b299380c = function(arg0, arg1) {
+    imports.wbg.__wbg_error_744ced334b00380c = function(arg0, arg1) {
         console.error(getStringFromWasm0(arg0, arg1));
     };
     imports.wbg.__wbindgen_number_new = function(arg0) {
