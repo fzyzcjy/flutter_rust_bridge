@@ -51,11 +51,32 @@ fn default_value_maybe_to_dart_style(value: &str, enable: bool) -> Cow<str> {
 }
 
 fn default_value_to_dart_style(value: &str) -> String {
-    let mut split = value.split('.');
+    const SEP: char = '.';
+
+    // #1767
+    if !value.contains(SEP) {
+        return value.to_owned();
+    }
+
+    let mut split = value.split(SEP);
     let enum_name = split.next().unwrap();
 
     let variant_name = split.next().unwrap().to_string();
     let variant_name = make_string_keyword_safe(variant_name.to_case(Case::Camel));
 
     format!("{enum_name}.{variant_name}")
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    pub fn test_default_value_to_dart_style() {
+        assert_eq!(&default_value_to_dart_style("something"), "something");
+        assert_eq!(
+            &default_value_to_dart_style("OneTwo.ThreeFour"),
+            "OneTwo.threeFour"
+        );
+    }
 }
