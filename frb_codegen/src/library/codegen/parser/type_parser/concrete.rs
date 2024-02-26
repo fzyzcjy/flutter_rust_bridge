@@ -12,21 +12,29 @@ use crate::codegen::parser::type_parser::unencodable::{splay_segments, SplayedSe
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use crate::if_then_some;
 use anyhow::bail;
+use itertools::Itertools;
 use syn::{parse_str, Type};
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_concrete(
         &mut self,
         last_segment: &SplayedSegment,
+        splayed_segments: &[SplayedSegment],
     ) -> anyhow::Result<Option<IrType>> {
+        let non_last_segments = (splayed_segments.split_last().unwrap().1.iter())
+            .map(|segment| segment.0)
+            .join("::");
+        let check_prefix =
+            |matcher: &str| non_last_segments == matcher || non_last_segments.is_empty();
+
         Ok(Some(match last_segment {
             ("Self", []) => self.parse_type_self()?,
 
-            ("Duration", []) => Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Duration)),
-            ("NaiveDateTime", []) => Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Naive)),
-            ("DateTime", args) => self.parse_datetime(args)?,
+            ("Duration", []) if check_prefix("chrono") => Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Duration)),
+            ("NaiveDateTime", []) if check_prefix("chrono") => Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Naive)),
+            ("DateTime", args) if check_prefix("chrono") => self.parse_datetime(args)?,
 
-            ("Uuid", []) => Delegate(IrTypeDelegate::Uuid),
+            ("Uuid", []) if check_prefix("uuid") => Delegate(IrTypeDelegate::Uuid),
             ("String", []) => Delegate(IrTypeDelegate::String),
             ("Backtrace", []) => Delegate(IrTypeDelegate::Backtrace),
 
