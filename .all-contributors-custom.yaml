@@ -44,6 +44,7 @@
 - phlip9: Fix no-serde compilation.
 - aran: Fix map + mirror. Fix pubspec. Bump version. Fix typo.
 - Berrysoft: Fix missing symbols.
+- HalidOdat: Hint build.rs.
 - bus710: Add a case in troubleshooting.
 - Demezy: Mention troubleshooting.
 - gutenfries: Bump proc-macros.
