@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 2.0.0-dev.26
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
 * Allow specifying pubspec.yaml location in build.rs #1797 (thanks @HalidOdat)
