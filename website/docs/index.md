@@ -246,8 +246,8 @@ Secondly, thanks goes to these wonderful contributors ([emoji key](https://allco
       <td align="center" valign="top" width="14.28%"><a href="https://patrick.mukherjee.de"><img src="https://avatars.githubusercontent.com/u/2045440?v=4?s=100" width="100px;" alt="Patrick Mukherjee"/><br /><sub><b>Patrick Mukherjee</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=patmuk" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://phlip9.com"><img src="https://avatars.githubusercontent.com/u/918989?v=4?s=100" width="100px;" alt="Philip Kannegaard Hayes"/><br /><sub><b>Philip Kannegaard Hayes</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=phlip9" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/aran"><img src="https://avatars.githubusercontent.com/u/5295?v=4?s=100" width="100px;" alt="Aran Donohue"/><br /><sub><b>Aran Donohue</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=aran" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://berrysoft.github.io/"><img src="https://avatars.githubusercontent.com/u/37586447?v=4?s=100" width="100px;" alt="王宇逸"/><br /><sub><b>王宇逸</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=Berrysoft" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/HalidOdat"><img src="https://avatars.githubusercontent.com/u/8566042?v=4?s=100" width="100px;" alt="Haled Odat"/><br /><sub><b>Haled Odat</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=HalidOdat" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://berrysoft.github.io/"><img src="https://avatars.githubusercontent.com/u/37586447?v=4?s=100" width="100px;" alt="王宇逸"/><br /><sub><b>王宇逸</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=Berrysoft" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://bus710.net"><img src="https://avatars.githubusercontent.com/u/8920680?v=4?s=100" width="100px;" alt="bus710"/><br /><sub><b>bus710</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=bus710" title="Documentation">📖</a></td>
     </tr>
     <tr>
@@ -359,8 +359,8 @@ More specifically, thanks for all these contributions:
 * [patmuk](https://github.com/patmuk): Set MSRV. Fail fast. Improve message. Improve docs.
 * [phlip9](https://github.com/phlip9): Fix no-serde compilation.
 * [aran](https://github.com/aran): Fix map + mirror. Fix pubspec. Bump version. Fix typo.
+* [HalidOdat](https://github.com/HalidOdat): Improve config method. Hint build.rs.
 * [Berrysoft](https://github.com/Berrysoft): Fix missing symbols.
-* [HalidOdat](https://github.com/HalidOdat): Hint build.rs.
 * [bus710](https://github.com/bus710): Add a case in troubleshooting.
 * [Demezy](https://github.com/Demezy): Mention troubleshooting.
 * [gutenfries](https://github.com/gutenfries): Bump proc-macros.
