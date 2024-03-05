@@ -52,10 +52,9 @@ impl Config {
         Ok(None)
     }
 
-    /// Loads the [`Config`] from a spicified `pubspec.yaml` file.
+    /// Loads the [`Config`] from a specified `pubspec.yaml` file.
     ///
-    /// Returns [`None`] if the file does not contain the `flutter_rust_bridge`
-    /// section somewhere in the file.
+    /// Returns [`None`] if it doesn't contain the `flutter_rust_bridge` section somewhere in the file.
     pub fn from_pubspec_yaml(location: &str) -> Result<Option<Self>, Error> {
         #[derive(serde::Deserialize)]
         struct Needle {
