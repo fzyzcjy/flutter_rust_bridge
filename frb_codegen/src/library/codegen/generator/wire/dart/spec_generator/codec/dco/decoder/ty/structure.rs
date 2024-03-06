@@ -28,10 +28,11 @@ impl<'a> WireDartCodecDcoGeneratorDecoderTrait for StructRefWireDartCodecDcoGene
         let inner = inner.join("\n");
         let cast = "final arr = raw as List<dynamic>;".to_string();
         let safe_check = format!("if (arr.length != {}) throw Exception('unexpected arr length: expect {} but see ${{arr.length}}');", s.fields.len(), s.fields.len());
+        let dotted_ctor_name = TODO;
         format!(
             "{cast}
                 {safe_check}
-                return {name}({inner});",
+                return {name}{dotted_ctor_name}({inner});",
             name = s.name.name,
         )
     }
