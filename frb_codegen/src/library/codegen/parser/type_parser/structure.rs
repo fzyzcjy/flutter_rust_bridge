@@ -117,7 +117,7 @@ impl EnumOrStructParser<IrStructIdent, IrStruct, Struct, ItemStruct>
         self.0.parse_type_rust_auto_opaque(namespace, ty)
     }
 
-    fn compute_default_opaque(&mut self, obj: &IrStruct) -> bool {
+    fn compute_default_opaque(obj: &IrStruct) -> bool {
         structure_compute_default_opaque(obj)
     }
 }
