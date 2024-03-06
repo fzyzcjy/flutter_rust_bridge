@@ -107,3 +107,31 @@ pub async fn get_sum_array_twin_rust_async(a: u32, b: u32, c: u32) -> [SumWithTw
         SumWithTwinRustAsync { x: c },
     ]
 }
+
+pub struct MyCallableTwinRustAsync {
+    pub one: String,
+}
+
+impl MyCallableTwinRustAsync {
+    pub async fn call(&self, two: String) -> String {
+        self.one.clone() + &two
+    }
+}
+
+pub struct SimpleStructTwinRustAsync {
+    pub one: String,
+}
+
+impl SimpleStructTwinRustAsync {
+    pub async fn return_self_twin_rust_async(one: String) -> Self {
+        Self { one }
+    }
+
+    pub async fn arg_self_twin_rust_async(a: Self, b: Self) -> String {
+        a.one + &b.one
+    }
+
+    pub async fn vec_self_twin_rust_async(arg: Vec<Self>) -> Vec<String> {
+        arg.into_iter().map(|x| x.one).collect()
+    }
+}

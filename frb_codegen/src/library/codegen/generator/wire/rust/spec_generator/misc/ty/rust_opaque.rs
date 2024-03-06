@@ -1,4 +1,5 @@
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::codec::sse::ty::rust_opaque::generate_maybe_unsafe;
 use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::rust::spec_generator::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
@@ -6,7 +7,8 @@ use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
 };
 use crate::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
-use crate::codegen::ir::ty::{IrType, IrTypeTrait};
+use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
+use crate::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 
 impl<'a> WireRustGeneratorMiscTrait for RustOpaqueWireRustGenerator<'a> {
@@ -16,36 +18,49 @@ impl<'a> WireRustGeneratorMiscTrait for RustOpaqueWireRustGenerator<'a> {
     }
 
     fn generate_related_funcs(&self) -> Acc<WireRustOutputCode> {
-        generate_rust_arc_functions(self.ir.clone().into(), &self.ir.inner)
-    }
-}
+        let generate_io_web_impl = |target| -> WireRustOutputCode {
+            ["increment", "decrement"]
+                .iter()
+                .map(|op| ExternFunc {
+                    partial_func_name: format!(
+                        "rust_arc_{op}_strong_count_{}",
+                        self.ir.safe_ident()
+                    ),
+                    params: vec![ExternFuncParam {
+                        name: "ptr".to_owned(),
+                        rust_type: "*const std::ffi::c_void".to_owned(),
+                        dart_type: "dynamic".into(),
+                    }
+                    .clone()],
+                    return_type: None,
+                    body: generate_maybe_unsafe(
+                        &format!(
+                            "{}::<{}>::{op}_strong_count(ptr as _);",
+                            self.ir.codec.arc_ty(),
+                            &self.ir.inner.0,
+                        ),
+                        self.ir.codec.needs_unsafe_block(),
+                    ),
+                    target,
+                    needs_ffigen: false,
+                })
+                .collect_vec()
+                .into()
+        };
 
-pub(super) fn generate_rust_arc_functions(ir: IrType, inner: &IrType) -> Acc<WireRustOutputCode> {
-    let generate_impl = |target| -> WireRustOutputCode {
-        ["increment", "decrement"].iter()
-            .map(|op|
-                     ExternFunc {
-                         partial_func_name: format!("rust_arc_{op}_strong_count_{}", ir.safe_ident()),
-                         params: vec![ExternFuncParam {
-                             name: "ptr".to_owned(),
-                             rust_type: "*const std::ffi::c_void".to_owned(),
-                             dart_type: "dynamic".into(),
-                         }.clone()],
-                         return_type: None,
-                         body: format!(
-                             "unsafe {{ flutter_rust_bridge::for_generated::rust_arc_{op}_strong_count::<{}>(ptr); }}",
-                             inner.rust_api_type()
-                         ),
-                         target,
-                     },
+        let common = if self.ir.codec == RustOpaqueCodecMode::Moi {
+            format!(
+                "flutter_rust_bridge::frb_generated_moi_arc_impl_value!({});\n",
+                self.ir.inner.0
             )
-            .collect_vec()
-            .into()
-    };
+        } else {
+            "".to_owned()
+        };
 
-    Acc {
-        io: generate_impl(Target::Io),
-        web: generate_impl(Target::Web),
-        ..Default::default()
+        Acc {
+            io: generate_io_web_impl(Target::Io),
+            web: generate_io_web_impl(Target::Web),
+            common: common.into(),
+        }
     }
 }

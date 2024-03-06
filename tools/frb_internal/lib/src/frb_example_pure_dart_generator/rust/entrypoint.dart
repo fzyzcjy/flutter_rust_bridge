@@ -4,7 +4,11 @@ import 'package:flutter_rust_bridge_internal/src/utils/execute_process.dart';
 import 'package:recase/recase.dart';
 
 class RustGenerator extends BaseGenerator {
-  RustGenerator({required super.packageRootDir, required super.interestDir});
+  RustGenerator({
+    required super.packageRootDir,
+    required super.interestDir,
+    required super.package,
+  });
 
   @override
   Future<void> executeFormat() =>
@@ -21,20 +25,30 @@ class RustGenerator extends BaseGenerator {
 
   @override
   String generateDuplicateCode(String inputText, DuplicatorMode mode) {
-    const sse = '#[flutter_rust_bridge::frb(serialize)]';
-    String prefix(String raw) => switch (mode) {
-          DuplicatorMode.sync => '#[flutter_rust_bridge::frb(sync)] $raw',
-          DuplicatorMode.rustAsync => 'pub async fn',
-          DuplicatorMode.sse => '$sse $raw',
-          DuplicatorMode.syncSse =>
-            '$sse #[flutter_rust_bridge::frb(sync)] $raw',
-          DuplicatorMode.rustAsyncSse => '$sse pub async fn',
-        };
+    String prefix(String raw) {
+      var ans = raw;
+      for (final component in mode.components) {
+        switch (component) {
+          case DuplicatorComponentMode.sync:
+            ans = '#[flutter_rust_bridge::frb(sync)] $ans';
+          case DuplicatorComponentMode.rustAsync:
+            ans = 'pub async fn';
+          case DuplicatorComponentMode.sse:
+            ans = '#[flutter_rust_bridge::frb(serialize)] $ans';
+          case DuplicatorComponentMode.moi:
+            ans = '#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] $ans';
+        }
+      }
+      return ans;
+    }
 
     var ans = inputText
         .replaceAllMapped(
           RegExp(r'(pub (async )?fn) ([a-zA-Z0-9_-]+?)(_twin_normal)?\('),
-          (m) => '${prefix(m.group(1)!)} ${m.group(3)}${mode.postfix}(',
+          (m) {
+            final addPostfix = m.group(3) != 'call';
+            return '${prefix(m.group(1)!)} ${m.group(3)}${addPostfix ? mode.postfix : ""}(';
+          },
         )
         // struct name, etc
         .replaceAll('TwinNormal', ReCase(mode.postfix).pascalCase)
@@ -42,8 +56,12 @@ class RustGenerator extends BaseGenerator {
         .replaceAllMapped(
             RegExp(r'use crate::api::([a-zA-Z0-9_]+)::'),
             (m) =>
-                'use crate::api::pseudo_manual::${m.group(1)}${mode.postfix}::');
-    if (mode.enableSse) {
+                'use crate::api::pseudo_manual::${m.group(1)}${mode.postfix}::')
+        .replaceAll(
+            'super::rust_opaque::', 'super::rust_opaque${mode.postfix}::')
+        .replaceAll('super::basic::', 'super::basic${mode.postfix}::');
+
+    if (mode.components.any((e) => e == DuplicatorComponentMode.sse)) {
       // quick hack, since we are merely generating tests
       ans = ans
           .replaceAllMapped(
@@ -56,6 +74,18 @@ class RustGenerator extends BaseGenerator {
                   ? m.group(0)!
                   : 'StreamSink<${m.group(1)}, flutter_rust_bridge::SseCodec>');
     }
+
+    if (mode.components.any((e) => e == DuplicatorComponentMode.moi)) {
+      // hack, otherwise `i32` is considered as Nom, and will ignore requests of using Moi codec
+      // anyway this hack only affects how tests are auto generated, so no problem
+      ans = ans.replaceAll(RegExp(r'RustOpaque<i32>'),
+          'crate::frb_generated::RustOpaqueMoi<i16>');
+      ans = ans.replaceAllMapped(
+          RegExp(r'Rust(Auto)?Opaque(Nom)?(<|::)'),
+          (m) =>
+              'crate::frb_generated::Rust${m.group(1) ?? ""}OpaqueMoi${m.group(3)}');
+    }
+
     return ans;
   }
 

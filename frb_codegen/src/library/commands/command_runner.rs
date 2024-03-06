@@ -21,15 +21,15 @@ use std::process::Output;
 #[doc(hidden)]
 #[macro_export]
 macro_rules! command_run {
-    ($binary:literal, $($rest:tt)*) => {{
+    ($binary:ident, $($rest:tt)*) => {{
         let args = $crate::command_args!($($rest)*);
         $crate::library::commands::command_runner::execute_command($binary, args.iter(), None, None)
     }};
-    ($binary:literal in $pwd:expr, envs = $envs:expr, $($rest:tt)*) => {{
+    ($binary:ident in $pwd:expr, envs = $envs:expr, $($rest:tt)*) => {{
         let args = $crate::command_args!($($rest)*);
         $crate::library::commands::command_runner::execute_command($binary, args.iter(), $pwd, $envs)
     }};
-    ($binary:literal in $pwd:expr, $($rest:tt)*) => {{
+    ($binary:ident in $pwd:expr, $($rest:tt)*) => {{
         $crate::command_run!($binary in $pwd, envs = None, $($rest)*)
     }};
     ($command:path $([ $($args:expr),* ])?, $($rest:tt)*) => {{
@@ -78,14 +78,34 @@ pub(crate) fn call_shell(
     pwd: Option<&Path>,
     envs: Option<HashMap<String, String>>,
 ) -> anyhow::Result<Output> {
+    let CommandInfo { program, args } = call_shell_info(cmd);
+    let program = &program;
+    command_run!(program in pwd, envs = envs, *args)
+}
+
+pub(crate) struct CommandInfo {
+    pub program: String,
+    pub args: Vec<String>,
+}
+
+pub(crate) fn call_shell_info(cmd: &[PathBuf]) -> CommandInfo {
     let cmd = cmd.iter().map(|section| format!("{section:?}")).join(" ");
+
     #[cfg(windows)]
-    {
-        command_run!("powershell" in pwd, envs = envs, "-noprofile", "-command", format!("& {}", cmd))
-    }
+    return CommandInfo {
+        program: "powershell".to_owned(),
+        args: vec![
+            "-noprofile".to_owned(),
+            "-command".to_owned(),
+            format!("& {}", cmd),
+        ],
+    };
 
     #[cfg(not(windows))]
-    command_run!("sh" in pwd, envs = envs, "-c", cmd)
+    return CommandInfo {
+        program: "sh".to_owned(),
+        args: vec!["-c".to_owned(), cmd],
+    };
 }
 
 pub(crate) fn execute_command<'a>(
@@ -113,7 +133,7 @@ pub(crate) fn execute_command<'a>(
 
     let result = cmd
         .output()
-        .with_context(|| format!("\"{bin}\" \"{args_display}\" failed"))?;
+        .with_context(|| format!(r#""{bin}" "{args_display}" failed (cmd={cmd:?})"#))?;
 
     let stdout = String::from_utf8_lossy(&result.stdout);
     if result.status.success() {

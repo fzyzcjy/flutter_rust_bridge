@@ -6,14 +6,12 @@ mod dynamic;
 pub(crate) mod enumeration;
 mod general_list;
 mod optional;
-mod ownership;
 mod primitive;
 mod primitive_list;
 mod record;
-mod rust_auto_opaque;
-mod rust_opaque;
+pub(crate) mod rust_auto_opaque;
+pub(crate) mod rust_opaque;
 mod structure;
-mod unencodable;
 
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
 use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGeneratorContext;

@@ -1,6 +1,7 @@
 import 'dart:ffi' as ffi;
 
 import 'package:flutter_rust_bridge/src/ffigen_generated/multi_package.dart';
+import 'package:flutter_rust_bridge/src/generalized_uint8list/generalized_uint8list.dart';
 import 'package:flutter_rust_bridge/src/platform_types/_io.dart';
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 
@@ -27,6 +28,39 @@ class GeneralizedFrbRustBinding {
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void initFrbDartApiDl() =>
       _binding.init_frb_dart_api_dl(ffi.NativeApi.initializeApiDLData);
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  void pdeFfiDispatcherPrimary({
+    required int funcId,
+    required NativePortType port,
+    required PlatformGeneralizedUint8ListPtr ptr,
+    required int rustVecLen,
+    required int dataLen,
+  }) {
+    _binding.frb_pde_ffi_dispatcher_primary(
+        funcId, port, ptr, rustVecLen, dataLen);
+  }
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  WireSyncRust2DartSse pdeFfiDispatcherSync({
+    required int funcId,
+    required PlatformGeneralizedUint8ListPtr ptr,
+    required int rustVecLen,
+    required int dataLen,
+  }) {
+    return _binding.frb_pde_ffi_dispatcher_sync(
+        funcId, ptr, rustVecLen, dataLen);
+  }
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  void dartFnDeliverOutput({
+    required int callId,
+    required ffi.Pointer<ffi.Uint8> ptr,
+    required int rustVecLen,
+    required int dataLen,
+  }) {
+    return _binding.dart_fn_deliver_output(callId, ptr, rustVecLen, dataLen);
+  }
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   PlatformPointer dartOpaqueDart2RustEncode(

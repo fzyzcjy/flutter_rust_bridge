@@ -30,6 +30,7 @@
       "comments": [],
       "error_output": null,
       "getter": false,
+      "id": 4,
       "initializer": false,
       "inputs": [
         {
@@ -79,6 +80,7 @@
       "comments": [],
       "error_output": null,
       "getter": false,
+      "id": 3,
       "initializer": false,
       "inputs": [],
       "mode": "Normal",
@@ -105,6 +107,7 @@
       "comments": [],
       "error_output": null,
       "getter": false,
+      "id": 2,
       "initializer": false,
       "inputs": [
         {
@@ -156,6 +159,7 @@
       "comments": [],
       "error_output": null,
       "getter": false,
+      "id": 1,
       "initializer": false,
       "inputs": [],
       "mode": "Normal",
@@ -181,9 +185,11 @@
       "comments": [],
       "dart_metadata": [],
       "fields": [],
+      "ignore": false,
       "is_fields_named": true,
       "name": "crate::api/MyStruct",
       "wrapper_name": null
     }
-  }
+  },
+  "unused_types": []
 }

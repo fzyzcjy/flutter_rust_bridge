@@ -5,4 +5,5 @@ use std::path::PathBuf;
 pub(crate) struct PreparerInternalConfig {
     pub dart_root: PathBuf,
     pub deps_check: bool,
+    pub needs_ffigen: bool,
 }

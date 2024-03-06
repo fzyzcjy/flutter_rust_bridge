@@ -7,6 +7,7 @@ pub(crate) mod reader;
 pub(crate) mod source_graph;
 pub(crate) mod type_alias_resolver;
 pub(crate) mod type_parser;
+mod unused_checker;
 
 use crate::codegen::dumper::Dumper;
 use crate::codegen::ir::pack::IrPack;
@@ -18,6 +19,7 @@ use crate::codegen::parser::misc::parse_has_executor;
 use crate::codegen::parser::reader::CachedRustReader;
 use crate::codegen::parser::type_alias_resolver::resolve_type_aliases;
 use crate::codegen::parser::type_parser::TypeParser;
+use crate::codegen::parser::unused_checker::get_unused_types;
 use crate::codegen::ConfigDumpContent;
 use itertools::Itertools;
 use log::trace;
@@ -63,13 +65,21 @@ pub(crate) fn parse(
     let src_enums = crate_map.root_module().collect_enums();
     let src_types = resolve_type_aliases(crate_map.root_module().collect_types());
 
-    let mut type_parser = TypeParser::new(src_structs, src_enums, src_types);
+    let mut type_parser = TypeParser::new(src_structs.clone(), src_enums.clone(), src_types);
     let mut function_parser = FunctionParser::new(&mut type_parser);
 
     let ir_funcs = src_fns
         .iter()
-        .map(|f| {
-            function_parser.parse_function(&f.generalized_item_fn, &f.path, &config.rust_crate_dir)
+        .enumerate()
+        .map(|(index, f)| {
+            function_parser.parse_function(
+                &f.generalized_item_fn,
+                &f.path,
+                &config.rust_crate_dir,
+                &config.force_codec_mode_pack,
+                (index + 1) as i32,
+                config.default_rust_opaque_codec,
+            )
         })
         .collect::<anyhow::Result<Vec<_>>>()?
         .into_iter()
@@ -82,12 +92,23 @@ pub(crate) fn parse(
 
     let (struct_pool, enum_pool) = type_parser.consume();
 
-    Ok(IrPack {
+    let mut ans = IrPack {
         funcs: ir_funcs,
         struct_pool,
         enum_pool,
         has_executor,
-    })
+        unused_types: vec![],
+    };
+
+    ans.unused_types = get_unused_types(
+        &ans,
+        &src_structs,
+        &src_enums,
+        &config.rust_input_path_pack,
+        &config.rust_crate_dir,
+    )?;
+
+    Ok(ans)
 }
 
 struct FileData {
@@ -129,19 +150,22 @@ fn read_files(
 #[cfg(test)]
 mod tests {
     use crate::codegen::config::internal_config::RustInputPathPack;
+    use crate::codegen::config::internal_config_parser::compute_force_codec_mode_pack;
     use crate::codegen::dumper::Dumper;
+    use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
     use crate::codegen::misc::GeneratorProgressBarPack;
     use crate::codegen::parser::internal_config::ParserInternalConfig;
     use crate::codegen::parser::parse;
     use crate::codegen::parser::reader::CachedRustReader;
     use crate::codegen::parser::source_graph::crates::Crate;
+    use crate::codegen::parser::IrPack;
     use crate::utils::logs::configure_opinionated_test_logging;
     use crate::utils::test_utils::{
         create_path_sanitizers, get_test_fixture_dir, json_golden_test,
     };
     use log::info;
     use serial_test::serial;
-    use std::path::Path;
+    use std::path::{Path, PathBuf};
 
     #[test]
     #[serial]
@@ -194,11 +218,41 @@ mod tests {
         body("library/codegen/parser/mod/generics", None)
     }
 
+    #[test]
+    #[serial]
+    fn test_unused_struct_enum() -> anyhow::Result<()> {
+        body("library/codegen/parser/mod/unused_struct_enum", None)
+    }
+
+    #[test]
+    #[serial]
+    fn test_error_non_opaque_mut() -> anyhow::Result<()> {
+        let result = execute_parse("library/codegen/parser/mod/error_non_opaque_mut", None);
+        assert!(format!("{:#?}", result.err().unwrap())
+            .contains("If you want to use `self`/`&mut self`"));
+        Ok(())
+    }
+
     #[allow(clippy::type_complexity)]
     fn body(
         fixture_name: &str,
         rust_input_path_pack: Option<Box<dyn Fn(&Path) -> RustInputPathPack>>,
     ) -> anyhow::Result<()> {
+        let (actual_ir, rust_crate_dir) = execute_parse(fixture_name, rust_input_path_pack)?;
+        json_golden_test(
+            &serde_json::to_value(actual_ir)?,
+            &rust_crate_dir.join("expect_ir.json"),
+            &[],
+        )?;
+
+        Ok(())
+    }
+
+    #[allow(clippy::type_complexity)]
+    fn execute_parse(
+        fixture_name: &str,
+        rust_input_path_pack: Option<Box<dyn Fn(&Path) -> RustInputPathPack>>,
+    ) -> anyhow::Result<(IrPack, PathBuf)> {
         configure_opinionated_test_logging();
         let test_fixture_dir = get_test_fixture_dir(fixture_name);
         let rust_crate_dir = test_fixture_dir.clone();
@@ -213,9 +267,10 @@ mod tests {
             &serde_json::to_value(crate_map)?,
             &rust_crate_dir.join("expect_source_graph.json"),
             &create_path_sanitizers(&test_fixture_dir),
-        )?;
+        )
+        .unwrap();
 
-        let actual_ir = parse(
+        let pack = parse(
             &ParserInternalConfig {
                 rust_input_path_pack: rust_input_path_pack.map(|f| f(&rust_crate_dir)).unwrap_or(
                     RustInputPathPack {
@@ -223,17 +278,14 @@ mod tests {
                     },
                 ),
                 rust_crate_dir: rust_crate_dir.clone(),
+                force_codec_mode_pack: compute_force_codec_mode_pack(true),
+                default_rust_opaque_codec: RustOpaqueCodecMode::Nom,
             },
             &mut CachedRustReader::default(),
             &Dumper(&Default::default()),
             &GeneratorProgressBarPack::new(),
         )?;
-        json_golden_test(
-            &serde_json::to_value(actual_ir)?,
-            &rust_crate_dir.join("expect_ir.json"),
-            &[],
-        )?;
 
-        Ok(())
+        Ok((pack, rust_crate_dir))
     }
 }

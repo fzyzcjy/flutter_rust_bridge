@@ -8,7 +8,6 @@ pub(crate) mod optional;
 pub(crate) mod path;
 pub(crate) mod path_data;
 pub(crate) mod primitive;
-pub(crate) mod reference;
 pub(crate) mod rust_auto_opaque;
 mod rust_opaque;
 pub(crate) mod structure;
@@ -16,11 +15,16 @@ pub(crate) mod tuple;
 pub(crate) mod ty;
 pub(crate) mod unencodable;
 
+use crate::codegen::ir::func::IrFuncOwnerInfo;
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::{IrEnumPool, IrStructPool};
 use crate::codegen::ir::ty::enumeration::{IrEnum, IrEnumIdent};
+use crate::codegen::ir::ty::rust_auto_opaque::IrTypeRustAutoOpaque;
+use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::ty::structure::{IrStruct, IrStructIdent};
-use crate::codegen::ir::ty::{IrContext, IrType};
+use crate::codegen::ir::ty::IrContext;
+use crate::codegen::ir::ty::IrType;
+use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::source_graph::modules::{Enum, Struct};
 use crate::codegen::parser::type_parser::array::ArrayParserInfo;
 use crate::codegen::parser::type_parser::enum_or_struct::EnumOrStructParserInfo;
@@ -73,20 +77,13 @@ impl<'a> TypeParser<'a> {
         TypeParserWithContext::new(self, context).parse_type(ty)
     }
 
-    pub(crate) fn transform_type_rust_auto_opaque(
+    pub(crate) fn transform_rust_auto_opaque(
         &mut self,
-        ty: &IrType,
+        ty_raw: &IrTypeRustAutoOpaque,
+        transform: impl FnOnce(&str) -> String,
         context: &TypeParserParsingContext,
-    ) -> IrType {
-        TypeParserWithContext::new(self, context).transform_type_rust_auto_opaque(ty)
-    }
-
-    pub(crate) fn check_candidate_rust_auto_opaque(
-        &mut self,
-        ty: &IrType,
-        context: &TypeParserParsingContext,
-    ) -> bool {
-        TypeParserWithContext::new(self, context).check_candidate_rust_auto_opaque(ty)
+    ) -> anyhow::Result<IrType> {
+        TypeParserWithContext::new(self, context).transform_rust_auto_opaque(ty_raw, transform)
     }
 }
 
@@ -103,6 +100,9 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
 pub(crate) struct TypeParserParsingContext {
     pub(crate) initiated_namespace: Namespace,
+    pub(crate) func_attributes: FrbAttributes,
+    pub(crate) default_rust_opaque_codec: RustOpaqueCodecMode,
+    pub(crate) owner: Option<IrFuncOwnerInfo>,
 }
 
 impl IrContext for TypeParser<'_> {

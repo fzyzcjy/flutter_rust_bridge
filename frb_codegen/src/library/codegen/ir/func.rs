@@ -8,6 +8,7 @@ use crate::codegen::ir::ty::{IrContext, IrType};
 crate::ir! {
 pub struct IrFunc {
     pub name: NamespacedName,
+    pub id: i32,
     pub inputs: Vec<IrField>,
     pub output: IrType,
     pub error_output: Option<IrType>,
@@ -59,21 +60,17 @@ impl IrFunc {
     pub(crate) fn visit_types<F: FnMut(&IrType) -> bool>(
         &self,
         f: &mut F,
-        include_inputs: bool,
-        include_output: bool,
         ir_context: &impl IrContext,
     ) {
-        if include_inputs {
-            for field in &self.inputs {
-                field.ty.visit_types(f, ir_context);
-            }
+        // inputs
+        for field in &self.inputs {
+            field.ty.visit_types(f, ir_context);
         }
-        if include_output {
-            self.output.visit_types(f, ir_context);
 
-            let error_output = (self.error_output.as_ref().cloned())
-                .unwrap_or(IrType::Primitive(IrTypePrimitive::Unit));
-            error_output.visit_types(f, ir_context);
-        }
+        // output
+        self.output.visit_types(f, ir_context);
+        let error_output = (self.error_output.as_ref().cloned())
+            .unwrap_or(IrType::Primitive(IrTypePrimitive::Unit));
+        error_output.visit_types(f, ir_context);
     }
 }

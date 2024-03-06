@@ -4,6 +4,7 @@ use std::path::PathBuf;
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
 pub(crate) struct GeneratorWireDartInternalConfig {
+    pub(crate) has_ffigen: bool,
     pub web_enabled: bool,
     pub llvm_path: Vec<PathBuf>,
     pub llvm_compiler_opts: String,

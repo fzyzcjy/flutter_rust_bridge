@@ -5,10 +5,6 @@
 use crate::auxiliary::sample_types::MySize;
 use log::info;
 
-pub async fn func_string_twin_rust_async(arg: String) -> String {
-    arg
-}
-
 #[allow(clippy::unused_unit)]
 pub async fn func_return_unit_twin_rust_async() -> () {}
 

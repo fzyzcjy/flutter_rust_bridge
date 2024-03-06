@@ -7,7 +7,7 @@ pub(crate) mod dart;
 pub(crate) mod rust;
 
 #[enum_dispatch]
-#[derive(Clone, Debug)]
+#[derive(Clone, Copy, Debug)]
 pub(crate) enum Lang {
     DartLang,
     RustLang,
@@ -28,6 +28,8 @@ pub(crate) trait LangTrait {
     ) -> String;
 
     fn throw_unimplemented(&self, message: &str) -> String;
+
+    fn throw_unreachable(&self, message: &str) -> String;
 
     fn for_loop(&self, lhs: &str, rhs: &str, body: &str) -> String;
 

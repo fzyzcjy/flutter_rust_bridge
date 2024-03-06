@@ -5,12 +5,6 @@
 use crate::auxiliary::sample_types::MySize;
 use log::info;
 
-#[flutter_rust_bridge::frb(serialize)]
-#[flutter_rust_bridge::frb(sync)]
-pub fn func_string_twin_sync_sse(arg: String) -> String {
-    arg
-}
-
 #[allow(clippy::unused_unit)]
 #[flutter_rust_bridge::frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]

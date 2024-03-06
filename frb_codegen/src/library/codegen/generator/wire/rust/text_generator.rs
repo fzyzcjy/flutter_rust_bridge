@@ -21,12 +21,20 @@ pub(super) fn generate(
     spec: &WireRustOutputSpec,
     config: &GeneratorWireRustInternalConfig,
 ) -> anyhow::Result<WireRustOutputText> {
-    let merged_code = generate_merged_code(spec);
+    let merged_code_raw = generate_merged_code(spec);
+    let merged_code = merged_code_raw.map(|code, _| WireRustOutputCode {
+        body: code.body,
+        extern_funcs: (code.extern_funcs.into_iter())
+            .filter(|f| config.has_ffigen || !f.needs_ffigen)
+            .collect(),
+        extern_classes: (code.extern_classes.into_iter())
+            .filter(|f| config.has_ffigen || !f.needs_ffigen)
+            .collect(),
+    });
+
     let text = generate_text_from_merged_code(
         config,
-        &merged_code
-            .clone()
-            .map(|code, _| code.all_code(&config.c_symbol_prefix)),
+        &(merged_code.clone()).map(|code, _| code.all_code(&config.c_symbol_prefix)),
     )?;
     let extern_funcs = compute_extern_funcs(merged_code);
 

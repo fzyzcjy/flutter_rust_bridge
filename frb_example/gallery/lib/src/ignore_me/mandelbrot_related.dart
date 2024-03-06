@@ -113,85 +113,104 @@ class MandelbrotPageUI extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(right: 64),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                if (kDebugMode)
+    return LayoutBuilder(
+      builder: (_, constraints) => Center(
+        child: constraints.maxWidth >= 600
+            ? Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
                   Padding(
-                    padding: const EdgeInsets.only(bottom: 8),
-                    child: Text(
-                      '(NOTE: Please use release build for fast Rust)',
-                      style: TextStyle(
-                          color: Colors.orange.shade700, fontSize: 11),
-                    ),
+                    padding: const EdgeInsets.only(right: 64),
+                    child: _buildControl(),
                   ),
-                _buildSlider(
-                  label: 'Num threads',
-                  value: numThreads.toDouble(),
-                  onChanged: (newValue) => setNumThreads(newValue.round()),
-                  min: 1,
-                  max: 4,
-                  divisions: 3,
-                ),
-                _buildSlider(
-                  label: 'Image size',
-                  value: size,
-                  onChanged: setSize,
-                  min: 100,
-                  max: 400,
-                ),
-                const SizedBox(height: 32),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    TextButton(onPressed: start, child: const Text('Start')),
-                    const SizedBox(width: 32),
-                    TextButton(onPressed: stop, child: const Text('Stop')),
-                  ],
-                ),
-              ],
+                  _buildImage(),
+                ],
+              )
+            : Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 32),
+                    child: _buildControl(),
+                  ),
+                  _buildImage(),
+                ],
+              ),
+      ),
+    );
+  }
+
+  Widget _buildControl() {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        if (kDebugMode)
+          Padding(
+            padding: const EdgeInsets.only(bottom: 8),
+            child: Text(
+              '(NOTE: Please use release build for fast Rust)',
+              style: TextStyle(color: Colors.orange.shade700, fontSize: 11),
             ),
           ),
-          Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              if (computeTime != null)
-                Text('Time: ${computeTime!.inMilliseconds}ms'),
-              const SizedBox(height: 8),
-              SizedBox.square(
-                dimension: size,
-                child: image != null
-                    ? AnimatedReplaceableImage(
-                        image: MemoryImage(image!),
-                      )
-                    : Material(
-                        color: Colors.grey.shade100,
-                        child: InkWell(
-                          onTap: start,
-                          child: const Padding(
-                            padding: EdgeInsets.all(16),
-                            child: Center(
-                              child: Text(
-                                'Tap to start',
-                                style: TextStyle(color: Colors.grey),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          ),
+        _buildSlider(
+          label: 'Num threads',
+          value: numThreads.toDouble(),
+          onChanged: (newValue) => setNumThreads(newValue.round()),
+          min: 1,
+          max: 4,
+          divisions: 3,
+        ),
+        _buildSlider(
+          label: 'Image size',
+          value: size,
+          onChanged: setSize,
+          min: 100,
+          max: 400,
+        ),
+        const SizedBox(height: 32),
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TextButton(onPressed: start, child: const Text('Start')),
+            const SizedBox(width: 32),
+            TextButton(onPressed: stop, child: const Text('Stop')),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _buildImage() {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        if (computeTime != null) Text('Time: ${computeTime!.inMilliseconds}ms'),
+        const SizedBox(height: 8),
+        SizedBox.square(
+          dimension: size,
+          child: image != null
+              ? AnimatedReplaceableImage(
+                  image: MemoryImage(image!),
+                )
+              : Material(
+                  color: Colors.grey.shade100,
+                  child: InkWell(
+                    onTap: start,
+                    child: const Padding(
+                      padding: EdgeInsets.all(16),
+                      child: Center(
+                        child: Text(
+                          'Tap to start',
+                          style: TextStyle(color: Colors.grey),
+                          textAlign: TextAlign.center,
                         ),
                       ),
-              ),
-            ],
-          ),
-        ],
-      ),
+                    ),
+                  ),
+                ),
+        ),
+      ],
     );
   }
 

@@ -11,7 +11,11 @@ lazy_static! {
         VersionReq::parse(">= 8.0.0, < 10.0.0").unwrap();
 }
 
-pub fn ensure_tools_available(dart_root: &Path, enable_deps_check: bool) -> anyhow::Result<()> {
+pub fn ensure_tools_available(
+    dart_root: &Path,
+    enable_deps_check: bool,
+    needs_ffigen: bool,
+) -> anyhow::Result<()> {
     let repo = DartRepository::from_str(&path_to_string(dart_root)?)?;
     if !repo.toolchain_available() {
         // This will stop the whole generator and tell the users, so we do not care about testing it
@@ -20,7 +24,7 @@ pub fn ensure_tools_available(dart_root: &Path, enable_deps_check: bool) -> anyh
         // frb-coverage:ignore-end
     }
 
-    if enable_deps_check {
+    if enable_deps_check && needs_ffigen {
         repo.has_specified_and_installed("ffigen", DartDependencyMode::Dev, &FFIGEN_REQUIREMENT)?;
         // This empty bracket ("}") is weirdly not covered, while lines above and below it are
         // frb-coverage:ignore-start

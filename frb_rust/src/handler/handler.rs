@@ -1,11 +1,9 @@
 use crate::codec::sse::Dart2RustMessageSse;
 use crate::codec::BaseCodec;
 use crate::codec::Rust2DartMessageTrait;
-use crate::dart_fn::DartFnFuture;
 use crate::platform_types::DartAbi;
 use crate::platform_types::MessagePort;
 use crate::rust2dart::context::TaskRust2DartContext;
-use crate::DartOpaque;
 use std::future::Future;
 
 /// Provide your own handler to customize how to execute your function calls, etc.
@@ -23,6 +21,7 @@ pub trait Handler {
     ///
     /// If a Rust function is marked `sync`, it must be called with
     /// [`wrap_sync`](Handler::wrap_sync) instead.
+    #[cfg(feature = "thread-pool")]
     fn wrap_normal<Rust2DartCodec, PrepareFn, TaskFn>(
         &self,
         task_info: TaskInfo,
@@ -60,12 +59,14 @@ pub trait Handler {
             + TaskRetFutTrait,
         Rust2DartCodec: BaseCodec;
 
+    #[cfg(all(feature = "rust-async", feature = "dart-opaque"))]
     fn dart_fn_invoke(
         &self,
-        dart_fn: DartOpaque,
+        dart_fn: crate::dart_opaque::DartOpaque,
         args: Vec<DartAbi>,
-    ) -> DartFnFuture<Dart2RustMessageSse>;
+    ) -> crate::dart_fn::DartFnFuture<Dart2RustMessageSse>;
 
+    #[cfg(all(feature = "rust-async", feature = "dart-opaque"))]
     fn dart_fn_handle_output(&self, call_id: i32, message: Dart2RustMessageSse);
 }
 

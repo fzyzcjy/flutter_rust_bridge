@@ -40,6 +40,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 wrapper_name: None,
                 is_fields_named: true,
                 dart_metadata: vec![],
+                ignore: false,
                 comments: vec![],
                 fields: values
                     .iter()

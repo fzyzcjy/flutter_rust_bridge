@@ -132,6 +132,14 @@ pub(crate) struct GenerateCommandArgsPrimary {
     #[arg(long)]
     pub no_dart3: bool,
 
+    /// Enable full dependencies
+    #[arg(long)]
+    pub full_dep: bool,
+
+    /// Use local version instead of the release version
+    #[arg(long, hide = true)]
+    pub local: bool,
+
     /// A list of data to be dumped. If specified without a value, defaults to all.
     #[arg(long, value_enum, num_args = 0.., default_missing_values = ["config", "ir"])]
     pub dump: Option<Vec<ConfigDumpContent>>,
@@ -145,6 +153,10 @@ pub(crate) struct GenerateCommandArgsPrimary {
 pub(crate) struct CreateCommandArgs {
     /// Name of the new project
     pub(crate) name: String,
+
+    /// The organization responsible for your new Flutter project, in reverse domain name notation.
+    #[clap(long)]
+    pub(crate) org: Option<String>,
 
     #[clap(flatten)]
     pub common: CreateOrIntegrateCommandCommonArgs,

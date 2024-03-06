@@ -2,23 +2,28 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/utils/preludes.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:glob/glob.dart';
 import 'package:glob/list_local_fs.dart';
-import 'package:meta/meta.dart';
 import 'package:path/path.dart' as path;
 import 'package:recase/recase.dart';
+
+part 'generator_utils.freezed.dart';
 
 abstract class BaseGenerator {
   final Uri packageRootDir;
   final Uri interestDir;
+  final Package package;
 
-  BaseGenerator({required this.packageRootDir, required String interestDir})
-      : interestDir = packageRootDir.resolve(interestDir);
+  BaseGenerator({
+    required this.packageRootDir,
+    required String interestDir,
+    required this.package,
+  }) : interestDir = packageRootDir.resolve(interestDir);
 
   Future<void> generate() async {
     _writeCodeFiles(generateDirectSources());
     _Duplicator(this)._generate();
-    await executeFormat();
   }
 
   @protected
@@ -47,25 +52,40 @@ abstract class BaseGenerator {
   }
 }
 
-enum DuplicatorMode {
+enum DuplicatorComponentMode {
   sync,
   rustAsync,
   sse,
-  syncSse,
-  rustAsyncSse,
-  ;
+  moi,
+}
 
-  String get postfix => '_twin_${ReCase(name).snakeCase}';
+@freezed
+class DuplicatorMode with _$DuplicatorMode {
+  const factory DuplicatorMode(List<DuplicatorComponentMode> components) =
+      _DuplicatorMode;
 
-  bool get enableSse {
-    return switch (this) {
-      DuplicatorMode.sync || DuplicatorMode.rustAsync => false,
-      DuplicatorMode.sse ||
-      DuplicatorMode.syncSse ||
-      DuplicatorMode.rustAsyncSse =>
-        true,
-    };
-  }
+  const DuplicatorMode._();
+
+  static DuplicatorMode parse(String raw) => DuplicatorMode(
+      raw.split(' ').map(DuplicatorComponentMode.values.byName).toList());
+
+  static const defaultValues = [
+    DuplicatorMode([DuplicatorComponentMode.sync]),
+    DuplicatorMode([DuplicatorComponentMode.rustAsync]),
+    DuplicatorMode([DuplicatorComponentMode.sse]),
+    DuplicatorMode([DuplicatorComponentMode.sync, DuplicatorComponentMode.sse]),
+    DuplicatorMode(
+        [DuplicatorComponentMode.rustAsync, DuplicatorComponentMode.sse]),
+  ];
+
+  static final allValues = [
+    ...defaultValues,
+    ...[const DuplicatorMode([]), ...defaultValues].map(
+        (e) => DuplicatorMode([...e.components, DuplicatorComponentMode.moi])),
+  ];
+
+  String get postfix =>
+      '_twin_${components.map((c) => ReCase(c.name).snakeCase).join('_')}';
 }
 
 class _Duplicator {
@@ -82,15 +102,17 @@ class _Duplicator {
       if (file is! File ||
           path.extension(file.path) != '.${generator.extension}') continue;
       if (generator.duplicatorBlacklistNames.contains(fileName)) continue;
-      if (DuplicatorMode.values
+      if (DuplicatorMode.allValues
           .any((mode) => fileStem.contains(mode.postfix))) {
         continue;
       }
 
       final fileContent = (file as File).readAsStringSync();
-      final annotation = _parseAnnotation(fileContent);
+      final annotation = Annotation.parse(fileContent);
 
-      for (final mode in DuplicatorMode.values) {
+      final chosenModes = _computeModes(annotation);
+
+      for (final mode in chosenModes) {
         if (annotation.forbiddenDuplicatorModes.contains(mode)) continue;
 
         var outputText = computeDuplicatorPrelude(' from `$fileName`') +
@@ -109,35 +131,72 @@ class _Duplicator {
       }
     }
   }
+
+  List<DuplicatorMode> _computeModes(Annotation annotation) {
+    var modes = annotation.enableAll
+        ? DuplicatorMode.allValues
+        : DuplicatorMode.defaultValues;
+
+    // In PDE mode, we use SSE by default, so cannot annotate it
+    if (generator.package == Package.pureDartPde) {
+      modes = modes
+          .where((m) =>
+              !m.components.contains(DuplicatorComponentMode.sse) &&
+              !m.components.contains(DuplicatorComponentMode.moi))
+          .toList();
+    }
+
+    return modes;
+  }
 }
 
-_Annotation _parseAnnotation(String fileContent) {
-  const kPrefix = '// FRB_INTERNAL_GENERATOR:';
-  if (!fileContent.startsWith(kPrefix)) return const _Annotation();
-
-  final data = jsonDecode(
-          fileContent.substring(kPrefix.length, fileContent.indexOf('\n')))
-      as Map<String, Object?>;
-  return _Annotation(
-    forbiddenDuplicatorModes:
-        ((data['forbiddenDuplicatorModes'] as List<dynamic>?) ?? [])
-            .map((x) => DuplicatorMode.values.byName(x))
-            .toList(),
-    addCode: data['addCode'] as String?,
-    removeCode: ((data['removeCode'] as List<dynamic>?) ?? <String>[])
-        .map((x) => x as String)
-        .toList(),
-  );
-}
-
-class _Annotation {
+class Annotation {
   final List<DuplicatorMode> forbiddenDuplicatorModes;
   final String? addCode;
   final List<String> removeCode;
+  final bool enableAll;
+  final bool skipPde;
 
-  const _Annotation({
+  const Annotation({
     this.forbiddenDuplicatorModes = const [],
     this.addCode,
     this.removeCode = const [],
+    this.enableAll = false,
+    this.skipPde = false,
   });
+
+  static Annotation parse(String fileContent) {
+    const kPrefix = '// FRB_INTERNAL_GENERATOR:';
+
+    final line = fileContent
+        .split('\n')
+        .where((line) => line.startsWith(kPrefix))
+        .firstOrNull;
+    if (line == null) return const Annotation();
+
+    final data =
+        jsonDecode(line.substring(kPrefix.length)) as Map<String, Object?>;
+    return Annotation(
+      forbiddenDuplicatorModes:
+          ((data['forbiddenDuplicatorModes'] as List<dynamic>?) ?? [])
+              .map((x) => DuplicatorMode.parse(x as String))
+              .toList(),
+      addCode: data['addCode'] as String?,
+      removeCode: ((data['removeCode'] as List<dynamic>?) ?? <String>[])
+          .map((x) => x as String)
+          .toList(),
+      enableAll: data['enableAll'] as bool? ?? false,
+      skipPde: data['skipPde'] as bool? ?? false,
+    );
+  }
+}
+
+enum Package {
+  pureDart,
+  pureDartPde;
+
+  String get dartPackageName => switch (this) {
+        Package.pureDart => 'frb_example_pure_dart',
+        Package.pureDartPde => 'frb_example_pure_dart_pde',
+      };
 }

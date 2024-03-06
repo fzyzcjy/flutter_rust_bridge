@@ -2,7 +2,7 @@
 // and is auto-generated from `dart_opaque_sync.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
-// FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "rustAsync", "syncSse", "rustAsyncSse"]}
+// FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "rustAsync", "sync sse", "rustAsync sse"]}
 
 use flutter_rust_bridge::{frb, DartOpaque};
 

@@ -1,6 +1,6 @@
 use crate::platform_types::DartAbi;
-use backtrace::Backtrace;
 use std::any::Any;
+use std::backtrace::Backtrace;
 
 pub(crate) mod cst;
 pub(crate) mod dco;

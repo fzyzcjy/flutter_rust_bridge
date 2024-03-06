@@ -26,6 +26,7 @@
       "c": {
         "c_output_path": "{the-working-directory}/frb_generated.h",
         "c_symbol_prefix": "frbgen_fake_dart_package_",
+        "enable": false,
         "rust_crate_dir": "{the-working-directory}",
         "rust_output_path": {
           "common": "{the-working-directory}/src/frb_generated.rs",
@@ -55,6 +56,7 @@
           "web_prefix": "pkg/"
         },
         "extra_headers": "",
+        "has_ffigen": false,
         "llvm_compiler_opts": "",
         "llvm_path": [
           "/opt/homebrew/opt/llvm",
@@ -74,6 +76,9 @@
       },
       "rust": {
         "c_symbol_prefix": "frbgen_fake_dart_package_",
+        "default_rust_opaque_codec": "Moi",
+        "default_stream_sink_codec": "Sse",
+        "has_ffigen": false,
         "rust_crate_dir": "{the-working-directory}",
         "rust_input_path_pack": {
           "rust_input_paths": [
@@ -91,6 +96,11 @@
     }
   },
   "parser": {
+    "default_rust_opaque_codec": "Moi",
+    "force_codec_mode_pack": {
+      "dart2rust": "Pde",
+      "rust2dart": "Pde"
+    },
     "rust_crate_dir": "{the-working-directory}",
     "rust_input_path_pack": {
       "rust_input_paths": [
@@ -106,6 +116,7 @@
     "dart_format_line_length": 80,
     "dart_root": "{the-working-directory}",
     "duplicated_c_output_path": [],
+    "enable_auto_upgrade": true,
     "rust_crate_dir": "{the-working-directory}",
     "rust_output_path": {
       "common": "{the-working-directory}/src/frb_generated.rs",
@@ -116,6 +127,7 @@
   },
   "preparer": {
     "dart_root": "{the-working-directory}",
-    "deps_check": true
+    "deps_check": true,
+    "needs_ffigen": false
   }
 }

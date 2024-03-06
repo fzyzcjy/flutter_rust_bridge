@@ -1,7 +1,7 @@
-use crate::dart_opaque::DartOpaque;
+use crate::for_generated::BaseArc;
 use crate::generalized_isolate::ZeroCopyBuffer;
 use crate::platform_types::DartAbi;
-use crate::rust_opaque::RustOpaque;
+use crate::rust_opaque::RustOpaqueBase;
 use js_sys::{Array, BigInt64Array, BigUint64Array, Int32Array};
 use std::collections::{HashMap, HashSet};
 use std::iter::FromIterator;
@@ -13,8 +13,9 @@ pub trait IntoDart {
 
 pub trait IntoDartExceptPrimitive: IntoDart {}
 impl IntoDartExceptPrimitive for JsValue {}
-impl<T> IntoDartExceptPrimitive for RustOpaque<T> {}
-impl IntoDartExceptPrimitive for DartOpaque {}
+impl<T, A: BaseArc<T>> IntoDartExceptPrimitive for RustOpaqueBase<T, A> {}
+#[cfg(feature = "dart-opaque")]
+impl IntoDartExceptPrimitive for crate::dart_opaque::DartOpaque {}
 impl IntoDartExceptPrimitive for String {}
 impl IntoDartExceptPrimitive for bool {}
 impl<T: IntoDart> IntoDartExceptPrimitive for Option<T> {}
@@ -96,6 +97,7 @@ impl IntoDart for Vec<uuid::Uuid> {
     }
 }
 
+#[cfg(feature = "backtrace")]
 impl IntoDart for backtrace::Backtrace {
     fn into_dart(self) -> DartAbi {
         format!("{:?}", self).into_dart()
@@ -128,12 +130,16 @@ macro_rules! delegate_buffer {
             }
         }
 
+        impl IntoDartExceptPrimitive for Vec<$ty> {}
+
         impl IntoDart for HashSet<$ty> {
             #[inline]
             fn into_dart(self) -> DartAbi {
                 self.into_iter().collect::<Vec<_>>().into_dart()
             }
         }
+
+        impl IntoDartExceptPrimitive for HashSet<$ty> {}
     )*};
 }
 // Orphan rules disallow blanket implementations, so we have to manually delegate here.
@@ -215,14 +221,15 @@ impl<T> IntoDart for *mut T {
     }
 }
 
-impl<T> IntoDart for RustOpaque<T> {
+impl<T, A: BaseArc<T>> IntoDart for RustOpaqueBase<T, A> {
     #[inline]
     fn into_dart(self) -> DartAbi {
         self.into()
     }
 }
 
-impl IntoDart for DartOpaque {
+#[cfg(feature = "dart-opaque")]
+impl IntoDart for crate::dart_opaque::DartOpaque {
     #[inline]
     fn into_dart(self) -> DartAbi {
         self.into()
@@ -306,6 +313,7 @@ impl IntoDart for ZeroCopyBuffer<Vec<u64>> {
     }
 }
 
+#[cfg(feature = "anyhow")]
 impl IntoDart for anyhow::Error {
     fn into_dart(self) -> DartAbi {
         format!("{:?}", self).into_dart()

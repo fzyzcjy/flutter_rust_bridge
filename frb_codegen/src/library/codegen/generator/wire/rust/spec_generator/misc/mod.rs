@@ -1,25 +1,21 @@
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::generator::misc::generate_code_header;
 use crate::codegen::generator::misc::target::TargetOrCommon;
 use crate::codegen::generator::wire::rust::spec_generator::base::{
     WireRustGenerator, WireRustGeneratorContext,
 };
-use crate::codegen::generator::wire::rust::spec_generator::codec::sse::entrypoint::generate_platform_generalized_uint8list_params;
-use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
-    ExternFunc, ExternFuncParam,
-};
 use crate::codegen::generator::wire::rust::spec_generator::misc::wire_func::generate_wire_func;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::generator::wire::rust::IrPackComputedCache;
 use crate::codegen::ir::pack::IrPack;
+use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
-use crate::misc::consts::HANDLER_NAME;
 use itertools::Itertools;
 use serde::Serialize;
 use std::collections::HashSet;
-use std::convert::TryInto;
 
 pub(crate) mod ty;
 pub(crate) mod wire_func;
@@ -46,7 +42,10 @@ pub(crate) fn generate(
         file_attributes: Acc::new_common(vec![FILE_ATTRIBUTES.to_string().into()]),
         imports: generate_imports(&cache.distinct_types, context),
         executor: Acc::new_common(vec![generate_executor(context.ir_pack).into()]),
-        boilerplate: generate_boilerplate(),
+        boilerplate: generate_boilerplate(
+            context.config.default_stream_sink_codec,
+            context.config.default_rust_opaque_codec,
+        ),
         wire_funcs: (context.ir_pack.funcs.iter())
             .map(|f| generate_wire_func(f, context))
             .collect(),
@@ -79,7 +78,8 @@ clippy::unit_arg,
 clippy::unused_unit,
 clippy::double_parens,
 clippy::let_and_return,
-clippy::too_many_arguments
+clippy::too_many_arguments,
+clippy::match_single_binding
 )]"#;
 
 fn generate_imports(
@@ -148,18 +148,36 @@ fn generate_static_checks(types: &[IrType], context: WireRustGeneratorContext) -
     lines.join("\n")
 }
 
-fn generate_boilerplate() -> Acc<Vec<WireRustOutputCode>> {
-    Acc::new(|target| match target {
-        TargetOrCommon::Io | TargetOrCommon::Web => {
-            vec![
-                // generate_boilerplate_frb_initialize_rust(target).into(),
-                generate_boilerplate_dart_fn_deliver_output(target).into(),
-            ]
+fn generate_boilerplate(
+    default_stream_sink_codec: CodecMode,
+    default_rust_opaque_codec: RustOpaqueCodecMode,
+) -> Acc<Vec<WireRustOutputCode>> {
+    Acc::new(|target| {
+        match target {
+            TargetOrCommon::Io | TargetOrCommon::Web => {
+                vec![
+                    // generate_boilerplate_frb_initialize_rust(target).into(),
+                    // generate_boilerplate_dart_fn_deliver_output(target).into(),
+                    format!(
+                        "flutter_rust_bridge::frb_generated_boilerplate_{}!();",
+                        target.to_string().to_lowercase()
+                    )
+                    .into(),
+                ]
+            }
+            TargetOrCommon::Common => vec![format!(
+                r#"
+                flutter_rust_bridge::frb_generated_boilerplate!(
+                    default_stream_sink_codec = {default_stream_sink_codec}Codec,
+                    default_rust_opaque = RustOpaque{default_rust_opaque_codec},
+                    default_rust_auto_opaque = RustAutoOpaque{default_rust_opaque_codec},
+                );
+                const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "{version}";
+            "#,
+                version = env!("CARGO_PKG_VERSION"),
+            )
+            .into()],
         }
-        TargetOrCommon::Common => vec!["
-            flutter_rust_bridge::frb_generated_boilerplate!();
-            "
-        .into()],
     })
 }
 
@@ -199,29 +217,6 @@ fn generate_boilerplate() -> Acc<Vec<WireRustOutputCode>> {
 //         target: target.try_into().unwrap(),
 //     }
 // }
-
-fn generate_boilerplate_dart_fn_deliver_output(target: TargetOrCommon) -> ExternFunc {
-    let params = {
-        let mut ans = vec![ExternFuncParam {
-            name: "call_id".to_owned(),
-            rust_type: "i32".to_owned(),
-            dart_type: "int".to_owned(),
-        }];
-        ans.extend(generate_platform_generalized_uint8list_params(target));
-        ans
-    };
-
-    ExternFunc {
-        partial_func_name: "dart_fn_deliver_output".into(),
-        params,
-        return_type: None,
-        body: format!(
-            "let message = unsafe {{ flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) }};
-            {HANDLER_NAME}.dart_fn_handle_output(call_id, message)"
-        ),
-        target: target.try_into().unwrap(),
-    }
-}
 
 fn generate_executor(ir_pack: &IrPack) -> String {
     if ir_pack.has_executor {

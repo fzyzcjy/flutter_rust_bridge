@@ -38,6 +38,7 @@ pub(crate) struct ApiDartOutputSpecItem {
     pub funcs: Vec<ApiDartGeneratedFunction>,
     pub classes: Vec<ApiDartGeneratedClass>,
     pub imports: DartBasicHeaderCode,
+    pub unused_types: Vec<String>,
     pub needs_freezed: bool,
 }
 
@@ -118,12 +119,18 @@ fn generate_item(
         })
         .unwrap_or_default();
 
+    let unused_types = (context.ir_pack.unused_types.iter())
+        .filter(|t| &t.namespace == namespace)
+        .map(|t| t.name.to_owned())
+        .collect_vec();
+
     let needs_freezed = classes.iter().any(|class| class.needs_freezed);
 
     Ok(ApiDartOutputSpecItem {
         funcs,
         classes,
         imports,
+        unused_types,
         needs_freezed,
     })
 }

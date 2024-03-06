@@ -11,7 +11,7 @@ use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRust
 use crate::codegen::ir::func::IrFuncOwnerInfoMethodMode::Instance;
 use crate::codegen::ir::func::{IrFunc, IrFuncMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod};
 use crate::codegen::ir::pack::IrPack;
-use crate::codegen::ir::ty::ownership::IrTypeOwnershipMode;
+use crate::codegen::ir::ty::rust_auto_opaque::OwnershipMode;
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::ty::WireRustCodecDcoGeneratorEncoderTrait;
 use crate::misc::consts::HANDLER_NAME;
@@ -49,6 +49,7 @@ pub(crate) fn generate_wire_func(
             return_type: return_type.clone(),
             body: generate_redirect_body(func, &params.common),
             target: target.try_into().unwrap(),
+            needs_ffigen: true,
         }
         .into(),
         TargetOrCommon::Common => format!(
@@ -82,8 +83,8 @@ fn generate_inner_func_args(
             let mut ans = format!("api_{}", field.name.rust_style());
             if let IrType::RustAutoOpaque(o) = &field.ty {
                 ans = match o.ownership_mode {
-                    IrTypeOwnershipMode::Ref => format!("&{ans}"),
-                    IrTypeOwnershipMode::RefMut => format!("&mut {ans}"),
+                    OwnershipMode::Ref => format!("&{ans}"),
+                    OwnershipMode::RefMut => format!("&mut {ans}"),
                     _ => ans,
                 };
             } else if index == 0 && matches!(&func.owner, IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod { mode, .. }) if mode == &Instance) {
@@ -128,18 +129,20 @@ fn generate_code_inner_decode(func: &IrFunc) -> String {
         .iter()
         .filter_map(|field| {
             if let IrType::RustAutoOpaque(o) = &field.ty {
-                let mode = o.ownership_mode.to_string().to_case(Case::Snake);
-                let mutability = if o.ownership_mode == IrTypeOwnershipMode::RefMut {
-                    "mut "
+                if o.ownership_mode != OwnershipMode::Owned {
+                    let mode = o.ownership_mode.to_string().to_case(Case::Snake);
+                    let mutability = if o.ownership_mode == OwnershipMode::RefMut {
+                        "mut "
+                    } else {
+                        ""
+                    };
+                    Some(format!(
+                        "let {mutability}api_{name} = api_{name}.rust_auto_opaque_decode_{mode}();\n",
+                        name = field.name.rust_style()
+                    ))
                 } else {
-                    ""
-                };
-                let asyncness = if func.rust_async { "async" } else { "sync" };
-                let maybe_await =if func.rust_async { ".await" } else { "" }; 
-                Some(format!(
-                    "let {mutability}api_{name} = api_{name}.rust_auto_opaque_decode_{asyncness}_{mode}(){maybe_await};\n",
-                    name = field.name.rust_style()
-                ))
+                    None
+                }
             } else {
                 None
             }
@@ -166,22 +169,8 @@ fn generate_code_call_inner_func_result(func: &IrFunc, inner_func_args: Vec<Stri
         ans = format!("{ans}.await");
     }
 
-    if matches!(&func.output, IrType::RustAutoOpaque(_)) {
-        if func.fallible() {
-            ans = format!("Result::<_,flutter_rust_bridge::for_generated::anyhow::Error>::Ok(flutter_rust_bridge::for_generated::rust_auto_opaque_encode({ans}?))");
-        } else {
-            ans = format!("flutter_rust_bridge::for_generated::rust_auto_opaque_encode({ans})");
-        }
-    }
-
     if !func.fallible() {
-        let error_type = if (func.inputs.iter()).any(|x| matches!(x.ty, IrType::RustAutoOpaque(_)))
-        {
-            "flutter_rust_bridge::for_generated::anyhow::Error"
-        } else {
-            "()"
-        };
-        ans = format!("Result::<_,{error_type}>::Ok({ans})");
+        ans = format!("Result::<_,()>::Ok({ans})");
     }
 
     ans
@@ -194,7 +183,7 @@ fn generate_handler_func_name(
 ) -> String {
     let codec = format!(
         "flutter_rust_bridge::for_generated::{}Codec",
-        &func.codec_mode_pack.rust2dart
+        func.codec_mode_pack.rust2dart.delegate_or_self()
     );
 
     match func.mode {
@@ -231,7 +220,7 @@ fn generate_return_type(func: &IrFunc) -> Option<String> {
     match func.mode {
         IrFuncMode::Sync => Some(format!(
             "flutter_rust_bridge::for_generated::WireSyncRust2Dart{}",
-            func.codec_mode_pack.rust2dart,
+            func.codec_mode_pack.rust2dart.delegate_or_self(),
         )),
         IrFuncMode::Normal | IrFuncMode::Stream { .. } => None,
     }
@@ -243,14 +232,9 @@ fn generate_code_closure(
     code_inner_decode: &str,
     code_call_inner_func_result: &str,
 ) -> String {
-    let codec = (func.codec_mode_pack.rust2dart.to_string()).to_case(Case::Snake);
-
-    // TODO rm
-    // let maybe_result = if matches!(&func.output, IrType::RustAutoOpaque(_)) && func.fallible() {
-    //     "-> Result::<_,flutter_rust_bridge::for_generated::anyhow::Error>".to_string()
-    // } else {
-    //     "".to_string()
-    // };
+    let codec = (func.codec_mode_pack.rust2dart.delegate_or_self())
+        .to_string()
+        .to_case(Case::Snake);
 
     match func.mode {
         IrFuncMode::Sync => {

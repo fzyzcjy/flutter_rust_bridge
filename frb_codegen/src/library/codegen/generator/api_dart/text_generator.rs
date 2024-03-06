@@ -88,9 +88,20 @@ fn generate_end_api_text(
 
     let header = header.all_code();
 
+    let unused_types = item
+        .unused_types
+        .iter()
+        .sorted()
+        .map(|t| {
+            format!("// The type `{t}` is not used by any `pub` functions, thus it is ignored.\n")
+        })
+        .join("");
+
     format!(
         "
         {header}
+
+        {unused_types}
 
         {funcs}
 

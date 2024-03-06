@@ -7,9 +7,9 @@ use anyhow::Result;
 use include_dir::{include_dir, Dir};
 use itertools::Itertools;
 use log::{debug, warn};
+use std::env;
 use std::ffi::OsStr;
 use std::path::{Path, PathBuf};
-use std::{env, fs};
 
 static INTEGRATION_TEMPLATE_DIR: Dir<'_> =
     include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template");
@@ -17,7 +17,7 @@ static INTEGRATION_TEMPLATE_DIR: Dir<'_> =
 pub struct IntegrateConfig {
     pub enable_integration_test: bool,
     pub enable_local_dependency: bool,
-    pub rust_crate_name: String,
+    pub rust_crate_name: Option<String>,
     pub rust_crate_dir: String,
 }
 
@@ -28,6 +28,10 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
     debug!("integrate dart_root={dart_root:?}");
 
     let dart_package_name = get_dart_package_name(&dart_root)?;
+    let rust_crate_name = config
+        .rust_crate_name
+        .clone()
+        .unwrap_or(format!("rust_lib_{}", dart_package_name));
 
     extract_dir_and_modify(
         &INTEGRATION_TEMPLATE_DIR,
@@ -38,7 +42,7 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
                 src_raw,
                 existing_content,
                 &dart_package_name,
-                &config.rust_crate_name,
+                &rust_crate_name,
                 &config.rust_crate_dir,
                 config.enable_local_dependency,
             )
@@ -51,16 +55,18 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
     pub_add_dependencies(
         config.enable_integration_test,
         config.enable_local_dependency,
+        &rust_crate_name,
     )?;
 
     setup_cargokit_dependencies(&dart_root)?;
 
-    format_dart(&[dart_root], 80)?;
+    format_dart(&[dart_root.clone()], &dart_root, 80)?;
 
     Ok(())
 }
 
 fn modify_permissions(dart_root: &Path) -> Result<()> {
+    #[allow(unused_variables)] // unused when in windows
     let dir_cargokit = dart_root.join("rust_builder").join("cargokit");
 
     #[cfg(not(windows))]
@@ -86,9 +92,9 @@ fn setup_cargokit_dependencies(dart_root: &Path) -> Result<()> {
 fn set_permission_executable(path: &Path) -> Result<()> {
     use std::os::unix::fs::PermissionsExt;
 
-    let mut perms = fs::metadata(path)?.permissions();
+    let mut perms = std::fs::metadata(path)?.permissions();
     perms.set_mode(0o755);
-    fs::set_permissions(path, perms)?;
+    std::fs::set_permissions(path, perms)?;
     Ok(())
 }
 
@@ -141,6 +147,17 @@ fn modify_file(
         }
     }
 
+    if path
+        .iter()
+        .contains(&OsStr::new("flutter_rust_bridge.yaml"))
+    {
+        let mut ans = String::from_utf8(src).unwrap();
+        if enable_local_dependency {
+            ans += "\nlocal: true\n";
+        }
+        return Some((path, ans.as_bytes().to_owned()));
+    }
+
     Some((path, src))
 }
 
@@ -171,6 +188,7 @@ fn replace_string_content(raw: &str, config: &ReplaceContentConfig) -> String {
     raw.replace("REPLACE_ME_DART_PACKAGE_NAME", config.dart_package_name)
         .replace("REPLACE_ME_RUST_CRATE_NAME", config.rust_crate_name)
         .replace("REPLACE_ME_RUST_CRATE_DIR", config.rust_crate_dir)
+        .replace("REPLACE_ME_FRB_VERSION", env!("CARGO_PKG_VERSION"))
         .replace(
             "REPLACE_ME_RUST_FRB_DEPENDENCY",
             &if config.enable_local_dependency {
@@ -235,31 +253,50 @@ const CARGOKIT_PRELUDE: &[&str] = &[
 fn pub_add_dependencies(
     enable_integration_test: bool,
     enable_local_dependency: bool,
+    rust_crate_name: &str,
 ) -> Result<()> {
     // frb-coverage:ignore-end
-    flutter_pub_add(&["rust_builder".into(), "--path=rust_builder".into()])?;
+    flutter_pub_add(
+        &[rust_crate_name.into(), "--path=rust_builder".into()],
+        None,
+    )?;
 
-    flutter_pub_add(&if enable_local_dependency {
-        vec![
-            "flutter_rust_bridge".to_owned(),
-            "--path=../../frb_dart".to_owned(),
-        ]
-    } else {
-        vec![format!("flutter_rust_bridge:{}", env!("CARGO_PKG_VERSION"))]
-    })?;
+    pub_add_dependency_frb(enable_local_dependency, None)?;
 
-    // Temporarily avoid `^` before https://github.com/flutter/flutter/issues/84270 is fixed
-    flutter_pub_add(&["ffigen:8.0.2".into(), "--dev".into()])?;
+    // // Temporarily avoid `^` before https://github.com/flutter/flutter/issues/84270 is fixed
+    // flutter_pub_add(&["ffigen:8.0.2".into(), "--dev".into()])?;
+
     if enable_integration_test {
-        flutter_pub_add(&[
-            "integration_test".into(),
-            "--dev".into(),
-            "--sdk=flutter".into(),
-        ])?;
+        flutter_pub_add(
+            &[
+                "integration_test".into(),
+                "--dev".into(),
+                "--sdk=flutter".into(),
+            ],
+            None,
+        )?;
         // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
         // frb-coverage:ignore-start
     }
     // frb-coverage:ignore-end
 
+    Ok(())
+}
+
+pub(crate) fn pub_add_dependency_frb(
+    enable_local_dependency: bool,
+    pwd: Option<&Path>,
+) -> Result<()> {
+    flutter_pub_add(
+        &if enable_local_dependency {
+            vec![
+                "flutter_rust_bridge".to_owned(),
+                "--path=../../frb_dart".to_owned(),
+            ]
+        } else {
+            vec![format!("flutter_rust_bridge:{}", env!("CARGO_PKG_VERSION"))]
+        },
+        pwd,
+    )?;
     Ok(())
 }

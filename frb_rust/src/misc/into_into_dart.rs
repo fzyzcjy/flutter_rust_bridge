@@ -1,6 +1,6 @@
-use crate::dart_opaque::DartOpaque;
+use crate::for_generated::BaseArc;
 use crate::generalized_isolate::{IntoDart, ZeroCopyBuffer};
-use crate::rust_opaque::RustOpaque;
+use crate::rust_opaque::RustOpaqueBase;
 use std::collections::{HashMap, HashSet};
 
 /// Basically the Into trait.
@@ -35,9 +35,9 @@ where
     }
 }
 
-impl<T> IntoIntoDart<RustOpaque<T>> for RustOpaque<T> {
+impl<T, A: BaseArc<T>> IntoIntoDart<RustOpaqueBase<T, A>> for RustOpaqueBase<T, A> {
     #[inline(always)]
-    fn into_into_dart(self) -> RustOpaque<T> {
+    fn into_into_dart(self) -> RustOpaqueBase<T, A> {
         self
     }
 }
@@ -75,14 +75,19 @@ where
     }
 }
 
-impl<K, V> IntoIntoDart<HashMap<K, V>> for HashMap<K, V>
+impl<KT, KD, VT, VD> IntoIntoDart<HashMap<KD, VD>> for HashMap<KT, VT>
 where
-    K: IntoDart,
-    V: IntoDart,
+    KT: IntoIntoDart<KD>,
+    VT: IntoIntoDart<VD>,
+    HashMap<KD, VD>: IntoDart,
+    KD: IntoDart + std::cmp::Eq + std::hash::Hash,
+    VD: IntoDart,
 {
     #[inline(always)]
-    fn into_into_dart(self) -> Self {
-        self
+    fn into_into_dart(self) -> HashMap<KD, VD> {
+        self.into_iter()
+            .map(|(k, v)| (k.into_into_dart(), v.into_into_dart()))
+            .collect()
     }
 }
 
@@ -160,14 +165,18 @@ impl_into_into_dart_by_self!(());
 impl_into_into_dart_by_self!(usize);
 impl_into_into_dart_by_self!(isize);
 impl_into_into_dart_by_self!(String);
-impl_into_into_dart_by_self!(DartOpaque);
+#[cfg(feature = "dart-opaque")]
+impl_into_into_dart_by_self!(crate::dart_opaque::DartOpaque);
 #[cfg(not(target_family = "wasm"))]
 impl_into_into_dart_by_self!(allo_isolate::ffi::DartCObject);
 #[cfg(target_family = "wasm")]
 impl_into_into_dart_by_self!(wasm_bindgen::JsValue);
 #[cfg(feature = "uuid")]
 impl_into_into_dart_by_self!(uuid::Uuid);
+#[cfg(feature = "backtrace")]
 impl_into_into_dart_by_self!(backtrace::Backtrace);
+// TODO await upstream
+// impl_into_into_dart_by_self!(std::backtrace::Backtrace);
 
 #[cfg(feature = "chrono")]
 mod chrono_impls {

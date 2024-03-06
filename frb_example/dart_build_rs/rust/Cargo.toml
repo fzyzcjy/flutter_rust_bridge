@@ -1,0 +1,17 @@
+[package]
+name = "frb_example_dart_build_rs"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+anyhow = { version = "1.0.64", features = ["backtrace"] }
+flutter_rust_bridge = { path = "../../../frb_rust" }
+log = "0.4.19"
+
+[build-dependencies]
+# Please use `flutter_rust_bridge_codegen = "2.x.x"` for your app (here we use `path` to depend on non-released version)
+flutter_rust_bridge_codegen = { path = "../../../frb_codegen" }
+anyhow = { version = "1.0.64", features = ["backtrace"] }

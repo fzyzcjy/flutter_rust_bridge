@@ -2,12 +2,14 @@ pub(crate) mod argument;
 pub(crate) mod output;
 mod transformer;
 
+use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::func::{
     IrFunc, IrFuncMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode,
 };
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
+use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::function_extractor::GeneralizedItemFn;
@@ -16,7 +18,7 @@ use crate::codegen::parser::type_parser::{TypeParser, TypeParserParsingContext};
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use anyhow::{bail, Context};
 use itertools::concat;
-use log::debug;
+use log::{debug, warn};
 use std::fmt::Debug;
 use std::path::Path;
 use syn::*;
@@ -38,9 +40,19 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         func: &GeneralizedItemFn,
         file_path: &Path,
         rust_crate_dir: &Path,
+        force_codec_mode_pack: &Option<CodecModePack>,
+        func_id: i32,
+        default_rust_opaque_codec: RustOpaqueCodecMode,
     ) -> anyhow::Result<Option<IrFunc>> {
-        self.parse_function_inner(func, file_path, rust_crate_dir)
-            .with_context(|| format!("function={:?}", func.sig().ident))
+        self.parse_function_inner(
+            func,
+            file_path,
+            rust_crate_dir,
+            force_codec_mode_pack,
+            func_id,
+            default_rust_opaque_codec,
+        )
+        .with_context(|| format!("function={:?}", func.sig().ident))
     }
 
     fn parse_function_inner(
@@ -48,41 +60,54 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         func: &GeneralizedItemFn,
         file_path: &Path,
         rust_crate_dir: &Path,
+        force_codec_mode_pack: &Option<CodecModePack>,
+        func_id: i32,
+        default_rust_opaque_codec: RustOpaqueCodecMode,
     ) -> anyhow::Result<Option<IrFunc>> {
         debug!("parse_function function name: {:?}", func.sig().ident);
 
         let sig = func.sig();
         let namespace = Namespace::new_from_rust_crate_path(file_path, rust_crate_dir)?;
         let src_lineno = func.span().start().line;
-        let context = TypeParserParsingContext {
+        let attributes = FrbAttributes::parse(func.attrs())?;
+
+        let create_context = |owner: Option<IrFuncOwnerInfo>| TypeParserParsingContext {
             initiated_namespace: namespace.clone(),
+            func_attributes: attributes.clone(),
+            default_rust_opaque_codec,
+            owner,
         };
 
-        let owner = if let Some(owner) = self.parse_owner(func, &context)? {
+        let owner = if let Some(owner) = self.parse_owner(func, &create_context(None))? {
             owner
         } else {
             return Ok(None);
         };
 
         let func_name = parse_name(sig, &owner);
-        let attributes = FrbAttributes::parse(func.attrs())?;
 
         if attributes.ignore() {
             return Ok(None);
         }
 
+        let context = create_context(Some(owner.clone()));
         let mut info = FunctionPartialInfo::default();
         for (i, sig_input) in sig.inputs.iter().enumerate() {
             info = info.merge(self.parse_fn_arg(i, sig_input, &owner, &context)?)?;
         }
         info = info.merge(self.parse_fn_output(sig, &context)?)?;
-        info = self.transform_fn_info(info, &context);
+        info = self.transform_fn_info(info);
 
-        let codec_mode_pack = attributes.codec_mode_pack();
+        let codec_mode_pack = compute_codec_mode_pack(&attributes, force_codec_mode_pack);
         let mode = compute_func_mode(&attributes, &info);
+
+        if info.ignore_func {
+            return Ok(None);
+        }
 
         Ok(Some(IrFunc {
             name: NamespacedName::new(namespace, func_name),
+            id: func_id,
             inputs: info.inputs,
             output: info.ok_output.unwrap_or(Primitive(IrTypePrimitive::Unit)),
             error_output: info.error_output,
@@ -176,6 +201,7 @@ struct FunctionPartialInfo {
     ok_output: Option<IrType>,
     error_output: Option<IrType>,
     mode: Option<IrFuncMode>,
+    ignore_func: bool,
 }
 
 impl FunctionPartialInfo {
@@ -186,6 +212,7 @@ impl FunctionPartialInfo {
             error_output: merge_option(self.error_output, other.error_output)
                 .context("error_output type")?,
             mode: merge_option(self.mode, other.mode).context("mode")?,
+            ignore_func: self.ignore_func || other.ignore_func,
         })
     }
 }
@@ -198,4 +225,21 @@ fn merge_option<T: Debug>(a: Option<T>, b: Option<T>) -> anyhow::Result<Option<T
         // frb-coverage:ignore-end
     }
     Ok(a.or(b))
+}
+
+fn compute_codec_mode_pack(
+    attributes: &FrbAttributes,
+    force_ans: &Option<CodecModePack>,
+) -> CodecModePack {
+    const DEFAULT_ANS: CodecModePack = CodecModePack {
+        dart2rust: CodecMode::Cst,
+        rust2dart: CodecMode::Dco,
+    };
+    let attr_ans = attributes.codec_mode_pack();
+
+    if force_ans.is_some() && attr_ans.is_some() {
+        warn!("Ignore attributes setting codec mode (e.g. when full_dep=false)");
+    }
+
+    force_ans.to_owned().or(attr_ans).unwrap_or(DEFAULT_ANS)
 }

@@ -3,9 +3,27 @@
 #[doc(hidden)]
 #[macro_export]
 macro_rules! frb_generated_boilerplate {
-    () => {
-        // -------------------------- CstCodec ------------------------
+    (
+        default_stream_sink_codec = $default_stream_sink_codec:ident,
+        default_rust_opaque = $default_rust_opaque:ident,
+        default_rust_auto_opaque = $default_rust_auto_opaque:ident,
+    ) => {
+        $crate::frb_generated_moi_arc_def!();
+        $crate::frb_generated_rust_opaque_dart2rust!();
+        $crate::frb_generated_rust_opaque_def!(default_rust_opaque = $default_rust_opaque);
+        $crate::frb_generated_rust_auto_opaque_def!(
+            default_rust_auto_opaque = $default_rust_auto_opaque
+        );
+        $crate::frb_generated_cst_codec!();
+        $crate::frb_generated_sse_codec!();
+        $crate::frb_generated_stream_sink!(default_stream_sink_codec = $default_stream_sink_codec);
+    };
+}
 
+#[doc(hidden)]
+#[macro_export]
+macro_rules! frb_generated_cst_codec {
+    () => {
         pub trait CstDecode<T> {
             fn cst_decode(self) -> T;
         }
@@ -18,9 +36,13 @@ macro_rules! frb_generated_boilerplate {
                 (!self.is_null()).then(|| self.cst_decode())
             }
         }
+    };
+}
 
-        // -------------------------- SseCodec ------------------------
-
+#[doc(hidden)]
+#[macro_export]
+macro_rules! frb_generated_sse_codec {
+    () => {
         pub trait SseDecode {
             fn sse_decode(deserializer: &mut $crate::for_generated::SseDeserializer) -> Self;
 
@@ -61,13 +83,17 @@ macro_rules! frb_generated_boilerplate {
                 })),
             }
         }
+    };
+}
 
-        // -------------------------- StreamSink ------------------------
-
+#[doc(hidden)]
+#[macro_export]
+macro_rules! frb_generated_stream_sink {
+    (default_stream_sink_codec = $default_stream_sink_codec:ident) => {
         #[derive(Clone)]
         pub struct StreamSink<
             T,
-            Rust2DartCodec: $crate::for_generated::BaseCodec = $crate::for_generated::DcoCodec,
+            Rust2DartCodec: $crate::for_generated::BaseCodec = $crate::for_generated::$default_stream_sink_codec,
         > {
             base: $crate::for_generated::StreamSinkBase<T, Rust2DartCodec>,
         }
@@ -79,7 +105,7 @@ macro_rules! frb_generated_boilerplate {
         }
 
         impl<T> StreamSink<T, $crate::for_generated::DcoCodec> {
-            pub fn add<T2>(&self, value: T) -> $crate::for_generated::anyhow::Result<()>
+            pub fn add<T2>(&self, value: T) -> Result<(), $crate::Rust2DartSendError>
             where
                 T: $crate::IntoIntoDart<T2>,
                 T2: $crate::IntoDart,
@@ -95,7 +121,7 @@ macro_rules! frb_generated_boilerplate {
         where
             T: SseEncode,
         {
-            pub fn add(&self, value: T) -> $crate::for_generated::anyhow::Result<()> {
+            pub fn add(&self, value: T) -> Result<(), $crate::Rust2DartSendError> {
                 self.base.add($crate::for_generated::SseCodec::encode(
                     $crate::for_generated::Rust2DartAction::Success,
                     |serializer| value.sse_encode(serializer),
@@ -111,9 +137,17 @@ macro_rules! frb_generated_default_handler {
     () => {
         #[cfg(not(target_family = "wasm"))]
         $crate::for_generated::lazy_static! {
-            pub static ref FLUTTER_RUST_BRIDGE_HANDLER:
-            $crate::DefaultHandler<$crate::for_generated::SimpleThreadPool>
-            = $crate::DefaultHandler::new_simple(Default::default());
+            pub static ref FLUTTER_RUST_BRIDGE_HANDLER:$crate::DefaultHandler<$crate::for_generated::SimpleThreadPool> = {
+                assert_eq!(
+                    FLUTTER_RUST_BRIDGE_CODEGEN_VERSION,
+                    flutter_rust_bridge::for_generated::FLUTTER_RUST_BRIDGE_RUNTIME_VERSION,
+                    "Please ensure flutter_rust_bridge's codegen ({}) and runtime ({}) versions are the same",
+                    FLUTTER_RUST_BRIDGE_CODEGEN_VERSION,
+                    flutter_rust_bridge::for_generated::FLUTTER_RUST_BRIDGE_RUNTIME_VERSION,
+                );
+
+                $crate::DefaultHandler::new_simple(Default::default())
+            };
         }
 
         #[cfg(target_family = "wasm")]

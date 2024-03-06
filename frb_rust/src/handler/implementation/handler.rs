@@ -1,8 +1,6 @@
 use crate::codec::sse::Dart2RustMessageSse;
 use crate::codec::BaseCodec;
 use crate::codec::Rust2DartMessageTrait;
-use crate::dart_fn::handler::DartFnHandler;
-use crate::dart_fn::DartFnFuture;
 use crate::handler::error::Error;
 use crate::handler::error_listener::ErrorListener;
 use crate::handler::executor::Executor;
@@ -15,7 +13,6 @@ use crate::misc::panic_backtrace::PanicBacktrace;
 use crate::platform_types::DartAbi;
 use crate::rust_async::SimpleAsyncRuntime;
 use crate::thread_pool::BaseThreadPool;
-use crate::DartOpaque;
 use std::future::Future;
 use std::panic;
 use std::panic::AssertUnwindSafe;
@@ -41,7 +38,8 @@ impl<TP: BaseThreadPool> DefaultHandler<TP> {
 pub struct SimpleHandler<E: Executor, EL: ErrorListener> {
     executor: E,
     error_listener: EL,
-    dart_fn_handler: DartFnHandler,
+    #[cfg(all(feature = "rust-async", feature = "dart-opaque"))]
+    dart_fn_handler: crate::dart_fn::handler::DartFnHandler,
 }
 
 impl<E: Executor, H: ErrorListener> SimpleHandler<E, H> {
@@ -50,12 +48,14 @@ impl<E: Executor, H: ErrorListener> SimpleHandler<E, H> {
         SimpleHandler {
             executor,
             error_listener,
-            dart_fn_handler: DartFnHandler::new(),
+            #[cfg(all(feature = "rust-async", feature = "dart-opaque"))]
+            dart_fn_handler: crate::dart_fn::handler::DartFnHandler::new(),
         }
     }
 }
 
 impl<E: Executor, EL: ErrorListener> Handler for SimpleHandler<E, EL> {
+    #[cfg(feature = "thread-pool")]
     fn wrap_normal<Rust2DartCodec, PrepareFn, TaskFn>(
         &self,
         task_info: TaskInfo,
@@ -130,14 +130,16 @@ impl<E: Executor, EL: ErrorListener> Handler for SimpleHandler<E, EL> {
         )
     }
 
+    #[cfg(all(feature = "rust-async", feature = "dart-opaque"))]
     fn dart_fn_invoke(
         &self,
-        dart_fn: DartOpaque,
+        dart_fn: crate::dart_opaque::DartOpaque,
         args: Vec<DartAbi>,
-    ) -> DartFnFuture<Dart2RustMessageSse> {
+    ) -> crate::dart_fn::DartFnFuture<Dart2RustMessageSse> {
         self.dart_fn_handler.invoke(dart_fn, args)
     }
 
+    #[cfg(all(feature = "rust-async", feature = "dart-opaque"))]
     fn dart_fn_handle_output(&self, call_id: i32, message: Dart2RustMessageSse) {
         self.dart_fn_handler.handle_output(call_id, message)
     }

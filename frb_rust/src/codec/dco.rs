@@ -4,8 +4,8 @@ use crate::handler::error::error_to_string;
 use crate::misc::into_into_dart::IntoIntoDart;
 use crate::platform_types::{DartAbi, WireSyncRust2DartDco};
 use crate::rust2dart::action::Rust2DartAction;
-use backtrace::Backtrace;
 use std::any::Any;
+use std::backtrace::Backtrace;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct DcoCodec;

@@ -2,6 +2,7 @@ use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
 use crate::codegen::ir::annotation::IrDartAnnotation;
 use crate::codegen::ir::default::IrDefaultValue;
 use crate::codegen::ir::import::IrDartImport;
+use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::if_then_some;
 use anyhow::Context;
 use itertools::Itertools;
@@ -12,7 +13,7 @@ use syn::*;
 
 const METADATA_IDENT: &str = "frb";
 
-#[derive(PartialEq, Eq, Debug)]
+#[derive(PartialEq, Eq, Debug, Clone)]
 pub(crate) struct FrbAttributes(Vec<FrbAttribute>);
 
 impl FrbAttributes {
@@ -77,22 +78,27 @@ impl FrbAttributes {
         self.any_eq(&FrbAttribute::Opaque)
     }
 
-    pub(crate) fn codec_mode_pack(&self) -> CodecModePack {
+    pub(crate) fn rust_opaque_codec(&self) -> Option<RustOpaqueCodecMode> {
+        if self.any_eq(&FrbAttribute::RustOpaqueCodecMoi) {
+            Some(RustOpaqueCodecMode::Moi)
+        } else {
+            None
+        }
+    }
+
+    pub(crate) fn codec_mode_pack(&self) -> Option<CodecModePack> {
         if self.any_eq(&FrbAttribute::Serialize) {
-            CodecModePack {
+            Some(CodecModePack {
                 dart2rust: CodecMode::Sse,
                 rust2dart: CodecMode::Sse,
-            }
+            })
         } else if self.any_eq(&FrbAttribute::SemiSerialize) {
-            CodecModePack {
+            Some(CodecModePack {
                 dart2rust: CodecMode::Cst,
                 rust2dart: CodecMode::Sse,
-            }
+            })
         } else {
-            CodecModePack {
-                dart2rust: CodecMode::Cst,
-                rust2dart: CodecMode::Dco,
-            }
+            None
         }
     }
 
@@ -129,6 +135,7 @@ mod frb_keyword {
     syn::custom_keyword!(init);
     syn::custom_keyword!(ignore);
     syn::custom_keyword!(opaque);
+    syn::custom_keyword!(rust_opaque_codec_moi);
     syn::custom_keyword!(serialize);
     syn::custom_keyword!(semi_serialize);
     syn::custom_keyword!(dart_metadata);
@@ -147,7 +154,7 @@ impl Parse for FrbAttributesInner {
     }
 }
 
-#[derive(Eq, PartialEq, Debug)]
+#[derive(Eq, PartialEq, Debug, Clone)]
 enum FrbAttribute {
     Mirror(FrbAttributeMirror),
     NonFinal,
@@ -156,6 +163,7 @@ enum FrbAttribute {
     Init,
     Ignore,
     Opaque,
+    RustOpaqueCodecMoi,
     Serialize,
     // NOTE: Undocumented, since this name may be suboptimal and is subject to change
     SemiSerialize,
@@ -193,6 +201,10 @@ impl Parse for FrbAttribute {
             input
                 .parse::<frb_keyword::opaque>()
                 .map(|_| FrbAttribute::Opaque)?
+        } else if lookahead.peek(frb_keyword::rust_opaque_codec_moi) {
+            input
+                .parse::<frb_keyword::rust_opaque_codec_moi>()
+                .map(|_| FrbAttribute::RustOpaqueCodecMoi)?
         } else if lookahead.peek(frb_keyword::serialize) {
             input
                 .parse::<frb_keyword::serialize>()
@@ -421,7 +433,7 @@ mod tests {
     #[test]
     fn test_error() -> anyhow::Result<()> {
         let result = parse("#[frb(what_is_this)]");
-        assert_eq!(result.err().is_some(), true);
+        assert!(result.err().is_some());
         Ok(())
     }
 
@@ -502,6 +514,23 @@ mod tests {
     fn test_ignore() -> anyhow::Result<()> {
         let parsed = parse("#[frb(ignore)]")?;
         assert_eq!(parsed, FrbAttributes(vec![FrbAttribute::Ignore]));
+        Ok(())
+    }
+
+    #[test]
+    fn test_opaque() -> anyhow::Result<()> {
+        let parsed = parse("#[frb(opaque)]")?;
+        assert_eq!(parsed, FrbAttributes(vec![FrbAttribute::Opaque]));
+        Ok(())
+    }
+
+    #[test]
+    fn test_rust_opaque_codec_moi() -> anyhow::Result<()> {
+        let parsed = parse("#[frb(rust_opaque_codec_moi)]")?;
+        assert_eq!(
+            parsed,
+            FrbAttributes(vec![FrbAttribute::RustOpaqueCodecMoi])
+        );
         Ok(())
     }
 

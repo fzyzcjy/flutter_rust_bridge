@@ -68,15 +68,7 @@ impl<'a> WireDartCodecDcoGeneratorDecoderTrait for DelegateWireDartCodecDcoGener
             IrTypeDelegate::Uuid => {
                 "return UuidValue.fromByteList(dco_decode_list_prim_u_8_strict(raw));".to_owned()
             }
-            // IrTypeDelegate::Uuids =>
-            //     "const kUuidSizeInBytes = 16;
-            //     final bytes = dco_decode_list_prim_u_8(raw);
-            //     return List.generate(
-            //       bytes.lengthInBytes ~/ kUuidSizeInBytes,
-            //       (i) => UuidValue.fromByteList(Uint8List.view(bytes.buffer, i * kUuidSizeInBytes, kUuidSizeInBytes)),
-            //       growable: false,
-            //     );
-            //     ".to_owned(),
+            // IrTypeDelegate::Uuids => ...,
             IrTypeDelegate::AnyhowException => "return AnyhowException(raw as String);".to_owned(),
             IrTypeDelegate::Map(_) => format!(
                 "return Map.fromEntries(dco_decode_{}(raw).map((e) => MapEntry(e.$1, e.$2)));",

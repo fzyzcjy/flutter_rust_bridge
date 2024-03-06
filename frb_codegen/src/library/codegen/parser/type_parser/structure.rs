@@ -1,6 +1,6 @@
 use crate::codegen::ir::field::{IrField, IrFieldSettings};
 use crate::codegen::ir::ident::IrIdent;
-use crate::codegen::ir::namespace::NamespacedName;
+use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::ty::structure::{IrStruct, IrStructIdent, IrTypeStructRef};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::StructRef;
@@ -12,17 +12,17 @@ use crate::codegen::parser::type_parser::enum_or_struct::{
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
+use anyhow::bail;
 use std::collections::HashMap;
-use syn::{Field, Fields, FieldsNamed, FieldsUnnamed, ItemStruct, TypePath};
+use syn::{Field, Fields, FieldsNamed, FieldsUnnamed, ItemStruct, Type, TypePath};
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_struct(
         &mut self,
         type_path: &TypePath,
-        splayed_segments: &[SplayedSegment],
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
-        EnumOrStructParserStruct(self).parse(type_path, splayed_segments, last_segment)
+        EnumOrStructParserStruct(self).parse(type_path, last_segment)
     }
 
     fn parse_struct(
@@ -30,11 +30,14 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         src_struct: &Struct,
         name: NamespacedName,
         wrapper_name: Option<String>,
-    ) -> anyhow::Result<Option<IrStruct>> {
+    ) -> anyhow::Result<IrStruct> {
         let (is_fields_named, struct_fields) = match &src_struct.0.src.fields {
             Fields::Named(FieldsNamed { named, .. }) => (true, named),
             Fields::Unnamed(FieldsUnnamed { unnamed, .. }) => (false, unnamed),
-            _ => return Ok(None),
+            // This will stop the whole generator and tell the users, so we do not care about testing it
+            // frb-coverage:ignore-start
+            Fields::Unit => bail!("struct with unit fields are not supported yet, what about using `struct {} {{}}` instead", src_struct.0.ident),
+            // frb-coverage:ignore-end
         };
 
         let fields = struct_fields
@@ -48,14 +51,15 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         let attributes = FrbAttributes::parse(&src_struct.0.src.attrs)?;
         let dart_metadata = attributes.dart_metadata();
 
-        Ok(Some(IrStruct {
+        Ok(IrStruct {
             name,
             wrapper_name,
             fields,
             is_fields_named,
             dart_metadata,
+            ignore: attributes.ignore(),
             comments,
-        }))
+        })
     }
 
     fn parse_struct_field(&mut self, idx: usize, field: &Field) -> anyhow::Result<IrField> {
@@ -86,7 +90,7 @@ impl EnumOrStructParser<IrStructIdent, IrStruct, Struct, ItemStruct>
         src_object: &Struct,
         name: NamespacedName,
         wrapper_name: Option<String>,
-    ) -> anyhow::Result<Option<IrStruct>> {
+    ) -> anyhow::Result<IrStruct> {
         self.0.parse_struct(src_object, name, wrapper_name)
     }
 
@@ -103,5 +107,13 @@ impl EnumOrStructParser<IrStructIdent, IrStruct, Struct, ItemStruct>
 
     fn parser_info(&mut self) -> &mut EnumOrStructParserInfo<IrStructIdent, IrStruct> {
         &mut self.0.inner.struct_parser_info
+    }
+
+    fn parse_type_rust_auto_opaque(
+        &mut self,
+        namespace: Option<Namespace>,
+        ty: &Type,
+    ) -> anyhow::Result<IrType> {
+        self.0.parse_type_rust_auto_opaque(namespace, ty)
     }
 }

@@ -64,8 +64,8 @@ jobs:
 
   # ----------------------------------- lint -----------------------------------
 
-  lint_rust:
-    name: 'Lint :: Rust'
+  lint_rust_primary:
+    name: 'Lint :: Rust :: Primary'
     runs-on: ubuntu-latest
 
     steps:
@@ -92,8 +92,8 @@ jobs:
       # execute
       - run: ./frb_internal lint-rust
 
-  lint_dart:
-    name: 'Lint :: Dart'
+  lint_dart_primary:
+    name: 'Lint :: Dart :: Primary'
     runs-on: ubuntu-latest
 
     steps:
@@ -111,6 +111,35 @@ jobs:
 
       # execute
       - run: ./frb_internal lint-dart
+
+  lint_rust_feature_flag:
+    name: 'Lint :: Rust :: Feature flag'
+    runs-on: ubuntu-latest
+
+    steps:
+      # setup
+      - uses: catchpoint/workflow-telemetry-action@v1
+        with:
+          comment_on_pr: false
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: ${{ env.FRB_MAIN_DART_VERSION }}
+          architecture: x64
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
+          components: rustfmt, clippy
+      - uses: taiki-e/install-action@cargo-hack
+      - run: |-
+          rustup toolchain install nightly
+          rustup component add rustfmt --toolchain nightly-x86_64-unknown-linux-gnu
+          rustup target add wasm32-unknown-unknown
+
+      # execute
+      - run: ./frb_internal lint-rust-feature-flag
 
   # ----------------------------------- codegen -----------------------------------
   # instead of running this explicit test for frb_codegen and frb_rust only, we run the test for
@@ -152,6 +181,8 @@ jobs:
         package:
           - frb_example--dart_minimal
           - frb_example--pure_dart
+          - frb_example--pure_dart_pde
+          - frb_example--dart_build_rs
           - frb_example--deliberate_bad
           - frb_example--flutter_via_create
           - frb_example--flutter_via_integrate
@@ -376,7 +407,7 @@ jobs:
           submodules: recursive
       # https://docs.flutter.dev/get-started/install/linux#linux-prerequisites
       - if: runner.os == 'Linux'
-        run: sudo apt-get install clang cmake git ninja-build pkg-config libgtk-3-dev liblzma-dev libstdc++-12-dev
+        run: sudo apt-get update && sudo apt-get install clang cmake git ninja-build pkg-config libgtk-3-dev liblzma-dev libstdc++-12-dev
       - uses: subosito/flutter-action@v2
         with:
           cache: true
@@ -425,12 +456,57 @@ jobs:
           architecture: x64
       # https://docs.flutter.dev/get-started/install/linux#linux-prerequisites
       - if: runner.os == 'Linux'
-        run: sudo apt-get install clang cmake git ninja-build pkg-config libgtk-3-dev liblzma-dev libstdc++-12-dev
+        run: sudo apt-get update && sudo apt-get install clang cmake git ninja-build pkg-config libgtk-3-dev liblzma-dev libstdc++-12-dev
       - if: runner.os == 'Linux'
         uses: pyvista/setup-headless-display-action@v1
 
       # execute
       - run: ./frb_internal test-mimic-quickstart
+
+  test_upgrade:
+    name: 'Test :: Upgrade'
+    runs-on: ${{ matrix.image }}
+    strategy:
+      fail-fast: false
+      matrix:
+        image:
+          - windows-2019
+          # need macos-"13" because https://github.com/fzyzcjy/flutter_rust_bridge/issues/1225
+          - macos-13
+          - ubuntu-latest
+
+    steps:
+      # setup
+      - uses: catchpoint/workflow-telemetry-action@v1
+        with:
+          comment_on_pr: false
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
+          components: rustfmt
+      - uses: subosito/flutter-action@v2
+        with:
+          cache: true
+          flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
+          architecture: x64
+      # https://docs.flutter.dev/get-started/install/linux#linux-prerequisites
+      - if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install clang cmake git ninja-build pkg-config libgtk-3-dev liblzma-dev libstdc++-12-dev
+      - if: runner.os == 'Linux'
+        uses: pyvista/setup-headless-display-action@v1
+      - uses: taiki-e/install-action@cargo-llvm-cov
+
+      # execute
+      - run: ./frb_internal test-upgrade
+
+      # report
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ github.job }}--${{ matrix.image }}--coverage
+          path: target/coverage
 
   test_rust:
     name: 'Test :: Rust'
@@ -501,6 +577,8 @@ jobs:
           - tools--frb_internal
           - frb_example--dart_minimal
           - frb_example--pure_dart
+          - frb_example--pure_dart_pde
+          - frb_example--dart_build_rs
           - frb_example--deliberate_bad
         exclude:
           - {image: windows-2019, package: frb_utils}
@@ -547,7 +625,8 @@ jobs:
           - frb_dart
           - frb_example--dart_minimal
           - frb_example--pure_dart
-          # no need for `frb_example--deliberate_bad`
+          - frb_example--pure_dart_pde
+          # no need for `frb_example--deliberate_bad`, `frb_example--dart_build_rs`
 
     steps:
       # setup
@@ -596,7 +675,8 @@ jobs:
         package:
           - frb_example--dart_minimal
           - frb_example--pure_dart
-          # no `frb_example--deliberate_bad`
+          - frb_example--pure_dart_pde
+          # no need for `frb_example--deliberate_bad`, `frb_example--dart_build_rs`
 
     steps:
       # setup
@@ -614,6 +694,7 @@ jobs:
         with:
           sdk: stable
           architecture: x64
+      - run: sudo apt-get update
 
       # execute
       - run: ./frb_internal test-dart-valgrind --package ${{ matrix.package }}
@@ -634,7 +715,9 @@ jobs:
         package:
           - frb_example--dart_minimal
           - frb_example--pure_dart
+          - frb_example--pure_dart_pde
           - frb_example--deliberate_bad
+          # no need for `frb_example--dart_build_rs`
 
     steps:
       # setup
@@ -795,7 +878,7 @@ jobs:
           submodules: recursive
       # https://docs.flutter.dev/get-started/install/linux#linux-prerequisites
       - if: runner.os == 'Linux'
-        run: sudo apt-get install clang cmake git ninja-build pkg-config libgtk-3-dev liblzma-dev libstdc++-12-dev
+        run: sudo apt-get update && sudo apt-get install clang cmake git ninja-build pkg-config libgtk-3-dev liblzma-dev libstdc++-12-dev
       - if: runner.os == 'Linux'
         uses: pyvista/setup-headless-display-action@v1
       - uses: subosito/flutter-action@v2
@@ -871,6 +954,7 @@ jobs:
       - generate_run_frb_codegen_command_generate
       - generate_run_frb_codegen_command_integrate
       - generate_internal
+      - test_upgrade
       - test_rust
       - test_dart_native
       - test_flutter_web

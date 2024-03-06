@@ -9,6 +9,7 @@
       "comments": [],
       "error_output": null,
       "getter": false,
+      "id": 1,
       "initializer": false,
       "inputs": [],
       "mode": "Normal",
@@ -23,5 +24,6 @@
     }
   ],
   "has_executor": false,
-  "struct_pool": {}
+  "struct_pool": {},
+  "unused_types": []
 }

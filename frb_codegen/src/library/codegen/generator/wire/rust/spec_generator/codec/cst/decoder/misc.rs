@@ -20,6 +20,7 @@ pub(crate) fn generate_class_from_fields(
             name: struct_name,
             mode: ExternClassMode::Struct,
             body: fields.join(",\n"),
+            needs_ffigen: true,
         }],
         ..Default::default()
     }

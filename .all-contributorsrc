@@ -414,6 +414,24 @@
       ]
     },
     {
+      "login": "patmuk",
+      "name": "Patrick Mukherjee",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2045440?v=4",
+      "profile": "https://patrick.mukherjee.de",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "aran",
+      "name": "Aran Donohue",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5295?v=4",
+      "profile": "https://github.com/aran",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "phlip9",
       "name": "Philip Kannegaard Hayes",
       "avatar_url": "https://avatars.githubusercontent.com/u/918989?v=4",
@@ -423,10 +441,19 @@
       ]
     },
     {
-      "login": "patmuk",
-      "name": "Patrick Mukherjee",
-      "avatar_url": "https://avatars.githubusercontent.com/u/2045440?v=4",
-      "profile": "https://patrick.mukherjee.de",
+      "login": "HalidOdat",
+      "name": "Haled Odat",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8566042?v=4",
+      "profile": "https://github.com/HalidOdat",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Berrysoft",
+      "name": "王宇逸",
+      "avatar_url": "https://avatars.githubusercontent.com/u/37586447?v=4",
+      "profile": "https://berrysoft.github.io/",
       "contributions": [
         "code"
       ]
@@ -463,15 +490,6 @@
       "name": "Andrii Stadnik",
       "avatar_url": "https://avatars.githubusercontent.com/u/40110937?v=4",
       "profile": "https://github.com/anstadnik",
-      "contributions": [
-        "code"
-      ]
-    },
-    {
-      "login": "aran",
-      "name": "Aran Donohue",
-      "avatar_url": "https://avatars.githubusercontent.com/u/5295?v=4",
-      "profile": "https://github.com/aran",
       "contributions": [
         "code"
       ]
@@ -547,6 +565,42 @@
       "profile": "https://matrix.to/#/@vincentherl:matrix.org",
       "contributions": [
         "code"
+      ]
+    },
+    {
+      "login": "wxitcode",
+      "name": "wxitcode",
+      "avatar_url": "https://avatars.githubusercontent.com/u/37947163?v=4",
+      "profile": "https://github.com/wxitcode",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "pixelshot91",
+      "name": "pixelshot91",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19229808?v=4",
+      "profile": "https://github.com/pixelshot91",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "TrackerSB",
+      "name": "TrackerSB",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6358523?v=4",
+      "profile": "https://steinbrecher-bayern.de",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Dampfwalze",
+      "name": "Dampfwalze",
+      "avatar_url": "https://avatars.githubusercontent.com/u/46897578?v=4",
+      "profile": "https://github.com/Dampfwalze",
+      "contributions": [
+        "doc"
       ]
     },
     {
@@ -685,15 +739,6 @@
       ]
     },
     {
-      "login": "pixelshot91",
-      "name": "pixelshot91",
-      "avatar_url": "https://avatars.githubusercontent.com/u/19229808?v=4",
-      "profile": "https://github.com/pixelshot91",
-      "contributions": [
-        "doc"
-      ]
-    },
-    {
       "login": "vimaxwell",
       "name": "max",
       "avatar_url": "https://avatars.githubusercontent.com/u/19898639?v=4",
@@ -743,15 +788,6 @@
       "name": "Damien Wise",
       "avatar_url": "https://avatars.githubusercontent.com/u/25608913?v=4",
       "profile": "https://github.com/damywise",
-      "contributions": [
-        "doc"
-      ]
-    },
-    {
-      "login": "wxitcode",
-      "name": "wxitcode",
-      "avatar_url": "https://avatars.githubusercontent.com/u/37947163?v=4",
-      "profile": "https://github.com/wxitcode",
       "contributions": [
         "doc"
       ]

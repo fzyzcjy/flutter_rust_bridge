@@ -10,6 +10,7 @@ use std::ops::Add;
 use std::path::PathBuf;
 use strum::IntoEnumIterator;
 
+pub(crate) mod comments;
 pub(crate) mod structs_macro;
 pub(crate) mod target;
 pub(crate) mod text_generator_utils;
@@ -32,7 +33,7 @@ pub fn is_js_value(ty: &IrType) -> bool {
         IrType::Optional(inner) => is_js_value(&inner.inner),
         IrType::Primitive(_) | IrType::PrimitiveList(_) => false,
         // frb-coverage:ignore-start
-        IrType::Dynamic(_) | IrType::Ownership(_) | IrType::Unencodable(_) => unreachable!(),
+        IrType::Dynamic(_) => unreachable!(),
         // frb-coverage:ignore-end
     }
 }

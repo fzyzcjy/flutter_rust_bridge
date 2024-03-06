@@ -6,7 +6,7 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::base::{
 use crate::codegen::ir::func::IrFunc;
 use crate::codegen::ir::ty::IrType;
 
-pub(crate) struct DcoWireDartCodecEntrypoint {}
+pub(crate) struct DcoWireDartCodecEntrypoint;
 
 impl BaseCodecEntrypointTrait<WireDartGeneratorContext<'_>, WireDartCodecOutputSpec>
     for DcoWireDartCodecEntrypoint

@@ -19,16 +19,15 @@ use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use std::collections::HashMap;
-use syn::{Attribute, Field, Ident, ItemEnum, TypePath, Variant};
+use syn::{Attribute, Field, Ident, ItemEnum, Type, TypePath, Variant};
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_enum(
         &mut self,
         type_path: &TypePath,
-        splayed_segments: &[SplayedSegment],
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
-        EnumOrStructParserEnum(self).parse(type_path, splayed_segments, last_segment)
+        EnumOrStructParserEnum(self).parse(type_path, last_segment)
     }
 
     fn parse_enum(
@@ -83,11 +82,13 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     ) -> anyhow::Result<IrVariantKind> {
         let variant_ident = variant.ident.to_string();
         let namespace = Namespace::new(src_enum.0.path.clone());
+        let attributes = FrbAttributes::parse(attrs)?;
         Ok(IrVariantKind::Struct(IrStruct {
             name: NamespacedName::new(namespace, variant_ident),
             wrapper_name: None,
             is_fields_named: field_ident.is_some(),
-            dart_metadata: FrbAttributes::parse(attrs)?.dart_metadata(),
+            dart_metadata: attributes.dart_metadata(),
+            ignore: attributes.ignore(),
             comments: parse_comments(attrs),
             fields: variant
                 .fields
@@ -126,8 +127,8 @@ impl EnumOrStructParser<IrEnumIdent, IrEnum, Enum, ItemEnum>
         src_object: &Enum,
         name: NamespacedName,
         wrapper_name: Option<String>,
-    ) -> anyhow::Result<Option<IrEnum>> {
-        Ok(Some(self.0.parse_enum(src_object, name, wrapper_name)?))
+    ) -> anyhow::Result<IrEnum> {
+        self.0.parse_enum(src_object, name, wrapper_name)
     }
 
     fn construct_output(&self, ident: IrEnumIdent) -> anyhow::Result<IrType> {
@@ -156,6 +157,14 @@ impl EnumOrStructParser<IrEnumIdent, IrEnum, Enum, ItemEnum>
 
     fn parser_info(&mut self) -> &mut EnumOrStructParserInfo<IrEnumIdent, IrEnum> {
         &mut self.0.inner.enum_parser_info
+    }
+
+    fn parse_type_rust_auto_opaque(
+        &mut self,
+        namespace: Option<Namespace>,
+        ty: &Type,
+    ) -> anyhow::Result<IrType> {
+        self.0.parse_type_rust_auto_opaque(namespace, ty)
     }
 }
 

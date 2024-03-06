@@ -31,7 +31,7 @@ fn generate_wire_class(
         .join("\n\n");
 
     format!(
-        "class {wire_class_name} extends BaseWire {{
+        "class {wire_class_name} implements BaseWire {{
             {wire_class_name}.fromExternalLibrary(ExternalLibrary lib);
 
             {body}

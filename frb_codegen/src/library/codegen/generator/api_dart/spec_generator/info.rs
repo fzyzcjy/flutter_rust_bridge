@@ -140,16 +140,6 @@ impl<'a> ApiDartGeneratorInfoTrait for OptionalApiDartGenerator<'a> {
     }
 }
 
-impl<'a> ApiDartGeneratorInfoTrait for OwnershipApiDartGenerator<'a> {
-    // frb-coverage:ignore-start
-    fn dart_api_type(&self) -> String {
-        unreachable!()
-        // let inner = ApiDartGenerator::new(self.ir.inner.clone(), self.context);
-        // format!("{}_{}", self.ir.mode, inner.dart_api_type())
-    }
-    // frb-coverage:ignore-end
-}
-
 impl<'a> ApiDartGeneratorInfoTrait for PrimitiveApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
         match &self.ir {
@@ -222,7 +212,7 @@ impl<'a> ApiDartGeneratorInfoTrait for RustAutoOpaqueApiDartGenerator<'a> {
 
 impl<'a> ApiDartGeneratorInfoTrait for RustOpaqueApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
-        rust_type_to_dart_type(&self.ir.inner.rust_api_type(), self.ir.brief_name)
+        rust_type_to_dart_type(&self.ir.inner.0, self.ir.brief_name)
     }
 }
 
@@ -241,15 +231,6 @@ impl<'a> ApiDartGeneratorInfoTrait for StructRefApiDartGenerator<'a> {
                 .join("\n"),
         )
     }
-}
-
-impl<'a> ApiDartGeneratorInfoTrait for UnencodableApiDartGenerator<'a> {
-    // frb-coverage:ignore-start
-    fn dart_api_type(&self) -> String {
-        // Do not throw error, since when dumping we may call this function
-        "NOT_IMPLEMENTED".into()
-    }
-    // frb-coverage:ignore-end
 }
 
 fn rust_type_to_dart_type(rust: &str, brief_name: bool) -> String {

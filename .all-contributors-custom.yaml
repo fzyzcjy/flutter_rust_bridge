@@ -16,7 +16,7 @@
 - SoLongAndThanksForAllThePizza: Refactor and enhance SyncReturn to support more types. Refactor post-release CI.
 - hsfzxjy: Fix SyncReturn use-after-free bug.
 - Cupnfish: Support arrays as function parameters. Allow multi mirror.
-- alanlzhang: Add generation for Dart metadata. Enhance module parser. Fix enum in struct. Fix linter.
+- alanlzhang: Add generation for Dart metadata. Enhance and fix module parser. Fix enum in struct. Fix linter. Improve hints.
 - erikas-taroza: Support list of primitive enums. Make enum camelCase. Warn wrong path. Fix cargo expand.
 - SiongSng: Finish implementing exception hierarchy. Fix SyncReturn bug.
 - JustSimplyKyle: Also finish implementing exception hierarchy. Allow ignore function.
@@ -40,13 +40,15 @@
 - MateusHBR: Add pub get.
 - codercengiz: Fix mirroring bug.
 - Michael-F-Bryan: Detect broken bindings.
+- patmuk: Set MSRV. Fail fast. Improve message. Improve docs.
+- aran: Fix map + mirror. Fix pubspec. Upgrde ffigen. Bump version. Fix typo.
 - phlip9: Fix no-serde compilation.
-- patmuk: Set MSRV. Fail fast. Improve message. Add doc.
+- HalidOdat: Improve config method. Hint build.rs.
+- Berrysoft: Fix missing symbols.
 - bus710: Add a case in troubleshooting.
 - Demezy: Mention troubleshooting.
 - gutenfries: Bump proc-macros.
 - anstadnik: Check keywords.
-- aran: Fix pubspec. Bump version.
 - syndim: Add a bracket to box.
 - TENX-S: Improve doc. Reproduce a bug.
 - polypixeldev: Improve doc.
@@ -55,6 +57,10 @@
 - akashgurava: Partial fix.
 - w1th0utnam3: Improve message.
 - vincent-herlemont: Loosen version.
+- wxitcode: Add org option. Fix a typo.
+- pixelshot91: Update cargokit. Fix doc link.
+- TrackerSB: Bump allo-isolate.
+- Dampfwalze: Improve doc.
 - samuel-cavalcanti: Improve doc.
 - zaynetro: Improve doc.
 - raphaelrobert: Remove oudated doc.
@@ -70,14 +76,12 @@
 - Stonks3141: Fix doc credit.
 - mattiasgronlund: Bump version.
 - adsouza: Fix doc grammar.
-- pixelshot91: Fix doc link.
 - vimaxwell: Fix doc link.
 - lker-dev: Fix doc link.
 - jaiakash: Fix doc link.
 - feber: Fix doc link.
 - satvikpendem: 'Little co-work #989.'
 - damywise: Fix a typo.
-- wxitcode: Fix a typo.
 - rustui: Fix a typo.
 - escwxyz: Fix a typo.
 - eltociear: Fix a typo.

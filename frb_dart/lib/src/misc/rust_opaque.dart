@@ -1,4 +1,3 @@
-import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 import 'package:flutter_rust_bridge/src/rust_arc/_common.dart';
 import 'package:meta/meta.dart';
 
@@ -44,7 +43,7 @@ abstract class RustOpaque {
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @internal
-  PlatformPointer cstEncode({bool? move}) {
+  int cstEncode({bool? move}) {
     assert(move == null || _move == null,
         'Cannot specify move semantics in two places');
     final effectiveMoveMode = move ?? _move ?? false;
@@ -55,8 +54,7 @@ abstract class RustOpaque {
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @internal
-  int sseEncode({bool? move}) =>
-      PlatformPointerUtil.ptrToInt(cstEncode(move: move));
+  int sseEncode({bool? move}) => cstEncode(move: move);
 
   /// Dispose the underlying `Arc`.
   void dispose() => _arc.dispose();

@@ -239,7 +239,7 @@ packages:
       path: "../../frb_dart"
       relative: true
     source: path
-    version: "2.0.0-dev.15"
+    version: "2.0.0-dev.26"
   flutter_rust_bridge_internal:
     dependency: "direct main"
     description:
@@ -254,6 +254,14 @@ packages:
       relative: true
     source: path
     version: "1.0.0"
+  freezed_annotation:
+    dependency: transitive
+    description:
+      name: freezed_annotation
+      sha256: c3fd9336eb55a38cc1bbd79ab17573113a8deccd0ecbbf926cca3c62803b5c2d
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.4.1"
   frontend_server_client:
     dependency: transitive
     description:
@@ -598,6 +606,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.1"
+  toml:
+    dependency: transitive
+    description:
+      name: toml
+      sha256: "9968de24e45b632bf1a654fe1ac7b6fe5261c349243df83fd262397799c45a2d"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.15.0"
   typed_data:
     dependency: transitive
     description:

@@ -73,7 +73,7 @@ brew install desdaemon/repo/flutter_rust_bridge_codegen
 
 <TabItem value="Create new">
 
-Suppose your app is to be named `my_app`, then execute:
+Suppose your app is to be named `my_app`, then execute this. <small>(Use `--help` to see more options, e.g. package name)</small>
 
 ```shell
 flutter_rust_bridge_codegen create my_app
@@ -93,14 +93,7 @@ flutter_rust_bridge_codegen integrate
 
 <TabItem value="Pure dart">
 
-If you want to use Rust with Dart (without Flutter),
-one way is to start with
-[this minimal example](https://github.com/fzyzcjy/flutter_rust_bridge/tree/master/frb_example/dart_minimal)
-and modify according to your needs.
-
-Alternatively, 
-[this example](https://github.com/fzyzcjy/flutter_rust_bridge/tree/master/frb_example/pure_dart)
-may be useful (it indeed contains a lot of tests of this library).
+Please refer to [this page](guides/miscellaneous/pure-dart).
 
 </TabItem>
 
@@ -186,10 +179,6 @@ or use `--watch` to automatically re-generate when code changes:
 ```shell
 flutter_rust_bridge_codegen generate --watch
 ```
-
-If you need to install LLVM,
-which is required by the popular Google official package `ffigen`,
-please refer to [this doc](manual/ffigen-troubleshooting).
 
 ## What's next
 

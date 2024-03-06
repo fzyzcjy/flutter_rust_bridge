@@ -92,6 +92,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for PrimitiveListWireRustCodecCst
                     self.rust_wire_type(Target::Io),
                 ),
                 target: Target::Io,
+                needs_ffigen: true,
             }.into(),
             ..Default::default()
         }
