@@ -5,7 +5,6 @@
 // AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
 
 use crate::auxiliary::sample_types::MySize;
-use crate::DeclaredAboveApiFolder;
 use flutter_rust_bridge::frb;
 use log::info;
 
@@ -153,9 +152,3 @@ pub struct MySizeFreezedTwinRustAsync {
 // To test parsing of `pub(super)`
 #[allow(dead_code)]
 pub(super) fn visibility_restricted_func_twin_rust_async() {}
-
-pub async fn handle_declarations_above_api_folder_twin_rust_async(
-    my_struct: DeclaredAboveApiFolder,
-) -> DeclaredAboveApiFolder {
-    my_struct
-}

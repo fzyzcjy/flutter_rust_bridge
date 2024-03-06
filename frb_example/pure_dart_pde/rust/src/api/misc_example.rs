@@ -1,7 +1,6 @@
 // AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
 
 use crate::auxiliary::sample_types::MySize;
-use crate::DeclaredAboveApiFolder;
 use flutter_rust_bridge::frb;
 use log::info;
 
@@ -143,9 +142,3 @@ pub struct MySizeFreezedTwinNormal {
 // To test parsing of `pub(super)`
 #[allow(dead_code)]
 pub(super) fn visibility_restricted_func_twin_normal() {}
-
-pub fn handle_declarations_above_api_folder_twin_normal(
-    my_struct: DeclaredAboveApiFolder,
-) -> DeclaredAboveApiFolder {
-    my_struct
-}
