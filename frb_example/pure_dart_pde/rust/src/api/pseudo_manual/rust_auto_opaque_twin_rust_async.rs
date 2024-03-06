@@ -245,6 +245,7 @@ impl NonCloneSimpleTwinRustAsync {
 
 // ================ struct with both encodable and opaque fields ===================
 
+#[frb(non_opaque)]
 pub struct StructWithGoodAndOpaqueFieldTwinRustAsync {
     pub good: String,
     pub opaque: NonCloneSimpleTwinRustAsync,
@@ -267,6 +268,7 @@ pub async fn rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_
 
 // ================ enum with both encodable and opaque fields ===================
 
+#[frb(non_opaque)]
 pub enum EnumWithGoodAndOpaqueTwinRustAsync {
     Good(String),
     Opaque(NonCloneSimpleTwinRustAsync),
@@ -289,6 +291,25 @@ pub async fn rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rus
 pub async fn rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async(
 ) -> EnumWithGoodAndOpaqueTwinRustAsync {
     EnumWithGoodAndOpaqueTwinRustAsync::Opaque(NonCloneSimpleTwinRustAsync { inner: 42 })
+}
+
+// ================ struct/enum with both encodable and opaque fields, without non_opaque option ===================
+
+pub struct StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync {
+    pub good: String,
+    pub opaque: NonCloneSimpleTwinRustAsync,
+}
+
+pub enum EnumWithGoodAndOpaqueWithoutOptionTwinRustAsync {
+    Good(String),
+    Opaque(NonCloneSimpleTwinRustAsync),
+}
+
+#[allow(unused_variables)]
+pub async fn rust_auto_opaque_dummy_twin_rust_async(
+    a: StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync,
+    b: EnumWithGoodAndOpaqueWithoutOptionTwinRustAsync,
+) {
 }
 
 // ================ enum opaque type ===================

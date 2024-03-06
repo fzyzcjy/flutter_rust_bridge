@@ -320,6 +320,7 @@ impl NonCloneSimpleTwinSyncSseMoi {
 
 // ================ struct with both encodable and opaque fields ===================
 
+#[frb(non_opaque)]
 pub struct StructWithGoodAndOpaqueFieldTwinSyncSseMoi {
     pub good: String,
     pub opaque: NonCloneSimpleTwinSyncSseMoi,
@@ -348,6 +349,7 @@ pub fn rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync_s
 
 // ================ enum with both encodable and opaque fields ===================
 
+#[frb(non_opaque)]
 pub enum EnumWithGoodAndOpaqueTwinSyncSseMoi {
     Good(String),
     Opaque(NonCloneSimpleTwinSyncSseMoi),
@@ -379,6 +381,28 @@ pub fn rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_sse_
 pub fn rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_sse_moi(
 ) -> EnumWithGoodAndOpaqueTwinSyncSseMoi {
     EnumWithGoodAndOpaqueTwinSyncSseMoi::Opaque(NonCloneSimpleTwinSyncSseMoi { inner: 42 })
+}
+
+// ================ struct/enum with both encodable and opaque fields, without non_opaque option ===================
+
+pub struct StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi {
+    pub good: String,
+    pub opaque: NonCloneSimpleTwinSyncSseMoi,
+}
+
+pub enum EnumWithGoodAndOpaqueWithoutOptionTwinSyncSseMoi {
+    Good(String),
+    Opaque(NonCloneSimpleTwinSyncSseMoi),
+}
+
+#[allow(unused_variables)]
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_dummy_twin_sync_sse_moi(
+    a: StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi,
+    b: EnumWithGoodAndOpaqueWithoutOptionTwinSyncSseMoi,
+) {
 }
 
 // ================ enum opaque type ===================
