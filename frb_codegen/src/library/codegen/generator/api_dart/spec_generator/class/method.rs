@@ -14,9 +14,9 @@ use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartG
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 
-pub(super) struct GeneratedApiMethods {
-    methods: Vec<String>,
-    has_default_dart_constructor: bool,
+pub(crate) struct GeneratedApiMethods {
+    pub methods: Vec<String>,
+    pub has_default_dart_constructor: bool,
 }
 
 pub(crate) fn generate_api_methods(
