@@ -133,3 +133,15 @@ impl SimpleStructTwinNormal {
         arg.into_iter().map(|x| x.one).collect()
     }
 }
+
+pub struct ConstructorStructTwinNormal {
+    pub one: String,
+}
+
+impl ConstructorStructTwinNormal {
+    pub fn new() -> Self {
+        Self {
+            one: "hello".to_owned(),
+        }
+    }
+}

@@ -155,3 +155,16 @@ impl SimpleStructTwinSse {
         arg.into_iter().map(|x| x.one).collect()
     }
 }
+
+pub struct ConstructorStructTwinSse {
+    pub one: String,
+}
+
+impl ConstructorStructTwinSse {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub fn new_twin_sse() -> Self {
+        Self {
+            one: "hello".to_owned(),
+        }
+    }
+}

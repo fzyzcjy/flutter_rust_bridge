@@ -137,3 +137,15 @@ impl SimpleStructTwinRustAsync {
         arg.into_iter().map(|x| x.one).collect()
     }
 }
+
+pub struct ConstructorStructTwinRustAsync {
+    pub one: String,
+}
+
+impl ConstructorStructTwinRustAsync {
+    pub async fn new_twin_rust_async() -> Self {
+        Self {
+            one: "hello".to_owned(),
+        }
+    }
+}

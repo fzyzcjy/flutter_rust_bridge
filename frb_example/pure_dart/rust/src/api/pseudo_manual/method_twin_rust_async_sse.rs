@@ -159,3 +159,16 @@ impl SimpleStructTwinRustAsyncSse {
         arg.into_iter().map(|x| x.one).collect()
     }
 }
+
+pub struct ConstructorStructTwinRustAsyncSse {
+    pub one: String,
+}
+
+impl ConstructorStructTwinRustAsyncSse {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub async fn new_twin_rust_async_sse() -> Self {
+        Self {
+            one: "hello".to_owned(),
+        }
+    }
+}

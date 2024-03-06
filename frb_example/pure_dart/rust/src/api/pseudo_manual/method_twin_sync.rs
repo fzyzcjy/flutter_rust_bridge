@@ -150,3 +150,16 @@ impl SimpleStructTwinSync {
         arg.into_iter().map(|x| x.one).collect()
     }
 }
+
+pub struct ConstructorStructTwinSync {
+    pub one: String,
+}
+
+impl ConstructorStructTwinSync {
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn new_twin_sync() -> Self {
+        Self {
+            one: "hello".to_owned(),
+        }
+    }
+}
