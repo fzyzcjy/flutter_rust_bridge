@@ -15082,11 +15082,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_register_event_listener_twin
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire_CustomStructTwinNormal_new_twin_normal(
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_CustomStructTwinNormal_new(
     port_: i64,
     message: *mut wire_cst_list_prim_u_8_strict,
 ) {
-    wire_CustomStructTwinNormal_new_twin_normal_impl(port_, message)
+    wire_CustomStructTwinNormal_new_impl(port_, message)
 }
 
 #[no_mangle]
@@ -15120,11 +15120,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_CustomStructTwinNormal_stati
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire_SomeStructTwinNormal_new_twin_normal(
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_SomeStructTwinNormal_new(
     port_: i64,
     value: u32,
 ) {
-    wire_SomeStructTwinNormal_new_twin_normal_impl(port_, value)
+    wire_SomeStructTwinNormal_new_impl(port_, value)
 }
 
 #[no_mangle]
@@ -15444,11 +15444,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinNormal_ha
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinNormal_new_twin_normal(
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinNormal_new(
     port_: i64,
     a: *mut wire_cst_list_prim_u_8_strict,
 ) {
-    wire_ConcatenateWithTwinNormal_new_twin_normal_impl(port_, a)
+    wire_ConcatenateWithTwinNormal_new_impl(port_, a)
 }
 
 #[no_mangle]
@@ -36174,17 +36174,15 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinNormal_ins
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinNormal_new(port_: i64) {
+    wire_NonCloneSimpleTwinNormal_new_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normal(
     port_: i64,
 ) {
     wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normal_impl(port_)
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinNormal_new_twin_normal(
-    port_: i64,
-) {
-    wire_NonCloneSimpleTwinNormal_new_twin_normal_impl(port_)
 }
 
 #[no_mangle]

@@ -87,10 +87,9 @@ class ConcatenateWithTwinNormal {
         max: max,
       );
 
-  static Future<ConcatenateWithTwinNormal> newTwinNormal(
+  static Future<ConcatenateWithTwinNormal> newInstance(
           {required String a, dynamic hint}) =>
-      RustLib.instance.api
-          .concatenateWithTwinNormalNewTwinNormal(a: a, hint: hint);
+      RustLib.instance.api.concatenateWithTwinNormalNew(a: a, hint: hint);
 
   Future<String> get simpleGetterTwinNormal =>
       RustLib.instance.api.concatenateWithTwinNormalSimpleGetterTwinNormal(

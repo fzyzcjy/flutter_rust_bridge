@@ -192,10 +192,10 @@ class CustomStructTwinNormal {
     required this.message,
   });
 
-  static Future<CustomStructTwinNormal> newTwinNormal(
+  static Future<CustomStructTwinNormal> newInstance(
           {required String message, dynamic hint}) =>
       RustLib.instance.api
-          .customStructTwinNormalNewTwinNormal(message: message, hint: hint);
+          .customStructTwinNormalNew(message: message, hint: hint);
 
   Future<void> nonstaticReturnCustomStructErrorTwinNormal({dynamic hint}) =>
       RustLib.instance.api
@@ -237,10 +237,9 @@ class SomeStructTwinNormal {
     required this.value,
   });
 
-  static Future<SomeStructTwinNormal> newTwinNormal(
+  static Future<SomeStructTwinNormal> newInstance(
           {required int value, dynamic hint}) =>
-      RustLib.instance.api
-          .someStructTwinNormalNewTwinNormal(value: value, hint: hint);
+      RustLib.instance.api.someStructTwinNormalNew(value: value, hint: hint);
 
   Future<int> nonStaticReturnErrCustomErrorTwinNormal({dynamic hint}) =>
       RustLib.instance.api

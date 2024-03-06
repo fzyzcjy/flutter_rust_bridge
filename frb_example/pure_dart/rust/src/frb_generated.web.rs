@@ -11690,11 +11690,11 @@ pub fn wire_register_event_listener_twin_normal(
 }
 
 #[wasm_bindgen]
-pub fn wire_CustomStructTwinNormal_new_twin_normal(
+pub fn wire_CustomStructTwinNormal_new(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     message: String,
 ) {
-    wire_CustomStructTwinNormal_new_twin_normal_impl(port_, message)
+    wire_CustomStructTwinNormal_new_impl(port_, message)
 }
 
 #[wasm_bindgen]
@@ -11728,11 +11728,11 @@ pub fn wire_CustomStructTwinNormal_static_return_custom_struct_ok_twin_normal(
 }
 
 #[wasm_bindgen]
-pub fn wire_SomeStructTwinNormal_new_twin_normal(
+pub fn wire_SomeStructTwinNormal_new(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     value: u32,
 ) {
-    wire_SomeStructTwinNormal_new_twin_normal_impl(port_, value)
+    wire_SomeStructTwinNormal_new_impl(port_, value)
 }
 
 #[wasm_bindgen]
@@ -12060,11 +12060,11 @@ pub fn wire_ConcatenateWithTwinNormal_handle_some_stream_sink_twin_normal(
 }
 
 #[wasm_bindgen]
-pub fn wire_ConcatenateWithTwinNormal_new_twin_normal(
+pub fn wire_ConcatenateWithTwinNormal_new(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     a: String,
 ) {
-    wire_ConcatenateWithTwinNormal_new_twin_normal_impl(port_, a)
+    wire_ConcatenateWithTwinNormal_new_impl(port_, a)
 }
 
 #[wasm_bindgen]
@@ -32814,17 +32814,15 @@ pub fn wire_NonCloneSimpleTwinNormal_instance_method_return_own_twin_normal(
 }
 
 #[wasm_bindgen]
+pub fn wire_NonCloneSimpleTwinNormal_new(port_: flutter_rust_bridge::for_generated::MessagePort) {
+    wire_NonCloneSimpleTwinNormal_new_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normal_impl(port_)
-}
-
-#[wasm_bindgen]
-pub fn wire_NonCloneSimpleTwinNormal_new_twin_normal(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-) {
-    wire_NonCloneSimpleTwinNormal_new_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]

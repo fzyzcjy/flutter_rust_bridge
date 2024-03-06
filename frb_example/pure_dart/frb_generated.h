@@ -3387,8 +3387,8 @@ void frbgen_frb_example_pure_dart_wire_create_event_twin_normal(int64_t port_,
 
 void frbgen_frb_example_pure_dart_wire_register_event_listener_twin_normal(int64_t port_);
 
-void frbgen_frb_example_pure_dart_wire_CustomStructTwinNormal_new_twin_normal(int64_t port_,
-                                                                              struct wire_cst_list_prim_u_8_strict *message);
+void frbgen_frb_example_pure_dart_wire_CustomStructTwinNormal_new(int64_t port_,
+                                                                  struct wire_cst_list_prim_u_8_strict *message);
 
 void frbgen_frb_example_pure_dart_wire_CustomStructTwinNormal_nonstatic_return_custom_struct_error_twin_normal(int64_t port_,
                                                                                                                struct wire_cst_custom_struct_twin_normal *that);
@@ -3400,8 +3400,7 @@ void frbgen_frb_example_pure_dart_wire_CustomStructTwinNormal_static_return_cust
 
 void frbgen_frb_example_pure_dart_wire_CustomStructTwinNormal_static_return_custom_struct_ok_twin_normal(int64_t port_);
 
-void frbgen_frb_example_pure_dart_wire_SomeStructTwinNormal_new_twin_normal(int64_t port_,
-                                                                            uint32_t value);
+void frbgen_frb_example_pure_dart_wire_SomeStructTwinNormal_new(int64_t port_, uint32_t value);
 
 void frbgen_frb_example_pure_dart_wire_SomeStructTwinNormal_non_static_return_err_custom_error_twin_normal(int64_t port_,
                                                                                                            struct wire_cst_some_struct_twin_normal *that);
@@ -3516,8 +3515,8 @@ void frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinNormal_handle_some_str
                                                                                                      uint32_t key,
                                                                                                      uint32_t max);
 
-void frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinNormal_new_twin_normal(int64_t port_,
-                                                                                 struct wire_cst_list_prim_u_8_strict *a);
+void frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinNormal_new(int64_t port_,
+                                                                     struct wire_cst_list_prim_u_8_strict *a);
 
 void frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinNormal_simple_getter_twin_normal(int64_t port_,
                                                                                            struct wire_cst_concatenate_with_twin_normal *that);
@@ -11751,9 +11750,9 @@ void frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinNormal_instance_method_
 void frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinNormal_instance_method_return_own_twin_normal(int64_t port_,
                                                                                                        uintptr_t that);
 
-void frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normal(int64_t port_);
+void frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinNormal_new(int64_t port_);
 
-void frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinNormal_new_twin_normal(int64_t port_);
+void frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normal(int64_t port_);
 
 void frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinNormal_new_with_result_twin_normal(int64_t port_);
 
@@ -14145,7 +14144,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinNormal_handle_some_static_stream_sink_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinNormal_handle_some_stream_sink_at_1_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinNormal_handle_some_stream_sink_twin_normal);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinNormal_new_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinNormal_new);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinNormal_simple_getter_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinRustAsyncSse_concatenate_static_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinRustAsyncSse_concatenate_twin_rust_async_sse);
@@ -14205,7 +14204,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_ConstructorTranslatableStructTwinSse_new_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_ConstructorTranslatableStructTwinSyncSse_new_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_ConstructorTranslatableStructTwinSync_new_twin_sync);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_CustomStructTwinNormal_new_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_CustomStructTwinNormal_new);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_CustomStructTwinNormal_nonstatic_return_custom_struct_error_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_CustomStructTwinNormal_nonstatic_return_custom_struct_ok_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_CustomStructTwinNormal_static_return_custom_struct_error_twin_normal);
@@ -14286,8 +14285,8 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinNormal_instance_method_arg_own_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinNormal_instance_method_getter_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinNormal_instance_method_return_own_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinNormal_new);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normal);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinNormal_new_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinNormal_new_with_result_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinNormal_static_method_arg_borrow_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_twin_normal);
@@ -14431,7 +14430,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_SimpleStructTwinSync_arg_self_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_SimpleStructTwinSync_return_self_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_SimpleStructTwinSync_vec_self_twin_sync);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_SomeStructTwinNormal_new_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_SomeStructTwinNormal_new);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_SomeStructTwinNormal_non_static_return_err_custom_error_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_SomeStructTwinNormal_non_static_return_ok_custom_error_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_SomeStructTwinNormal_static_return_err_custom_error_twin_normal);

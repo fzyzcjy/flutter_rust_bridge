@@ -36233,23 +36233,23 @@ class RustLibWire implements BaseWire {
       _wire_register_event_listener_twin_normalPtr
           .asFunction<void Function(int)>();
 
-  void wire_CustomStructTwinNormal_new_twin_normal(
+  void wire_CustomStructTwinNormal_new(
     int port_,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> message,
   ) {
-    return _wire_CustomStructTwinNormal_new_twin_normal(
+    return _wire_CustomStructTwinNormal_new(
       port_,
       message,
     );
   }
 
-  late final _wire_CustomStructTwinNormal_new_twin_normalPtr = _lookup<
+  late final _wire_CustomStructTwinNormal_newPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(
                   ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
-      'frbgen_frb_example_pure_dart_wire_CustomStructTwinNormal_new_twin_normal');
-  late final _wire_CustomStructTwinNormal_new_twin_normal =
-      _wire_CustomStructTwinNormal_new_twin_normalPtr.asFunction<
+      'frbgen_frb_example_pure_dart_wire_CustomStructTwinNormal_new');
+  late final _wire_CustomStructTwinNormal_new =
+      _wire_CustomStructTwinNormal_newPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void
@@ -36329,22 +36329,21 @@ class RustLibWire implements BaseWire {
       _wire_CustomStructTwinNormal_static_return_custom_struct_ok_twin_normalPtr
           .asFunction<void Function(int)>();
 
-  void wire_SomeStructTwinNormal_new_twin_normal(
+  void wire_SomeStructTwinNormal_new(
     int port_,
     int value,
   ) {
-    return _wire_SomeStructTwinNormal_new_twin_normal(
+    return _wire_SomeStructTwinNormal_new(
       port_,
       value,
     );
   }
 
-  late final _wire_SomeStructTwinNormal_new_twin_normalPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32)>>(
-      'frbgen_frb_example_pure_dart_wire_SomeStructTwinNormal_new_twin_normal');
-  late final _wire_SomeStructTwinNormal_new_twin_normal =
-      _wire_SomeStructTwinNormal_new_twin_normalPtr
-          .asFunction<void Function(int, int)>();
+  late final _wire_SomeStructTwinNormal_newPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32)>>(
+          'frbgen_frb_example_pure_dart_wire_SomeStructTwinNormal_new');
+  late final _wire_SomeStructTwinNormal_new =
+      _wire_SomeStructTwinNormal_newPtr.asFunction<void Function(int, int)>();
 
   void wire_SomeStructTwinNormal_non_static_return_err_custom_error_twin_normal(
     int port_,
@@ -37126,23 +37125,23 @@ class RustLibWire implements BaseWire {
                   int,
                   int)>();
 
-  void wire_ConcatenateWithTwinNormal_new_twin_normal(
+  void wire_ConcatenateWithTwinNormal_new(
     int port_,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> a,
   ) {
-    return _wire_ConcatenateWithTwinNormal_new_twin_normal(
+    return _wire_ConcatenateWithTwinNormal_new(
       port_,
       a,
     );
   }
 
-  late final _wire_ConcatenateWithTwinNormal_new_twin_normalPtr = _lookup<
+  late final _wire_ConcatenateWithTwinNormal_newPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(
                   ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
-      'frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinNormal_new_twin_normal');
-  late final _wire_ConcatenateWithTwinNormal_new_twin_normal =
-      _wire_ConcatenateWithTwinNormal_new_twin_normalPtr.asFunction<
+      'frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinNormal_new');
+  late final _wire_ConcatenateWithTwinNormal_new =
+      _wire_ConcatenateWithTwinNormal_newPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_ConcatenateWithTwinNormal_simple_getter_twin_normal(
@@ -82135,6 +82134,20 @@ class RustLibWire implements BaseWire {
       _wire_NonCloneSimpleTwinNormal_instance_method_return_own_twin_normalPtr
           .asFunction<void Function(int, int)>();
 
+  void wire_NonCloneSimpleTwinNormal_new(
+    int port_,
+  ) {
+    return _wire_NonCloneSimpleTwinNormal_new(
+      port_,
+    );
+  }
+
+  late final _wire_NonCloneSimpleTwinNormal_newPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinNormal_new');
+  late final _wire_NonCloneSimpleTwinNormal_new =
+      _wire_NonCloneSimpleTwinNormal_newPtr.asFunction<void Function(int)>();
+
   void wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normal(
     int port_,
   ) {
@@ -82148,21 +82161,6 @@ class RustLibWire implements BaseWire {
           'frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normal');
   late final _wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normal =
       _wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normalPtr
-          .asFunction<void Function(int)>();
-
-  void wire_NonCloneSimpleTwinNormal_new_twin_normal(
-    int port_,
-  ) {
-    return _wire_NonCloneSimpleTwinNormal_new_twin_normal(
-      port_,
-    );
-  }
-
-  late final _wire_NonCloneSimpleTwinNormal_new_twin_normalPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-      'frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinNormal_new_twin_normal');
-  late final _wire_NonCloneSimpleTwinNormal_new_twin_normal =
-      _wire_NonCloneSimpleTwinNormal_new_twin_normalPtr
           .asFunction<void Function(int)>();
 
   void wire_NonCloneSimpleTwinNormal_new_with_result_twin_normal(

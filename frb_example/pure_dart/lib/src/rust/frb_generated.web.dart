@@ -31821,9 +31821,8 @@ class RustLibWire implements BaseWire {
   void wire_register_event_listener_twin_normal(NativePortType port_) =>
       wasmModule.wire_register_event_listener_twin_normal(port_);
 
-  void wire_CustomStructTwinNormal_new_twin_normal(
-          NativePortType port_, String message) =>
-      wasmModule.wire_CustomStructTwinNormal_new_twin_normal(port_, message);
+  void wire_CustomStructTwinNormal_new(NativePortType port_, String message) =>
+      wasmModule.wire_CustomStructTwinNormal_new(port_, message);
 
   void wire_CustomStructTwinNormal_nonstatic_return_custom_struct_error_twin_normal(
           NativePortType port_, List<dynamic> that) =>
@@ -31849,9 +31848,8 @@ class RustLibWire implements BaseWire {
           .wire_CustomStructTwinNormal_static_return_custom_struct_ok_twin_normal(
               port_);
 
-  void wire_SomeStructTwinNormal_new_twin_normal(
-          NativePortType port_, int value) =>
-      wasmModule.wire_SomeStructTwinNormal_new_twin_normal(port_, value);
+  void wire_SomeStructTwinNormal_new(NativePortType port_, int value) =>
+      wasmModule.wire_SomeStructTwinNormal_new(port_, value);
 
   void wire_SomeStructTwinNormal_non_static_return_err_custom_error_twin_normal(
           NativePortType port_, List<dynamic> that) =>
@@ -32025,9 +32023,8 @@ class RustLibWire implements BaseWire {
           .wire_ConcatenateWithTwinNormal_handle_some_stream_sink_twin_normal(
               port_, that, key, max);
 
-  void wire_ConcatenateWithTwinNormal_new_twin_normal(
-          NativePortType port_, String a) =>
-      wasmModule.wire_ConcatenateWithTwinNormal_new_twin_normal(port_, a);
+  void wire_ConcatenateWithTwinNormal_new(NativePortType port_, String a) =>
+      wasmModule.wire_ConcatenateWithTwinNormal_new(port_, a);
 
   void wire_ConcatenateWithTwinNormal_simple_getter_twin_normal(
           NativePortType port_, List<dynamic> that) =>
@@ -46100,13 +46097,13 @@ class RustLibWire implements BaseWire {
           .wire_NonCloneSimpleTwinNormal_instance_method_return_own_twin_normal(
               port_, that);
 
+  void wire_NonCloneSimpleTwinNormal_new(NativePortType port_) =>
+      wasmModule.wire_NonCloneSimpleTwinNormal_new(port_);
+
   void wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normal(
           NativePortType port_) =>
       wasmModule
           .wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normal(port_);
-
-  void wire_NonCloneSimpleTwinNormal_new_twin_normal(NativePortType port_) =>
-      wasmModule.wire_NonCloneSimpleTwinNormal_new_twin_normal(port_);
 
   void wire_NonCloneSimpleTwinNormal_new_with_result_twin_normal(
           NativePortType port_) =>
@@ -48702,7 +48699,7 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_register_event_listener_twin_normal(NativePortType port_);
 
-  external void wire_CustomStructTwinNormal_new_twin_normal(
+  external void wire_CustomStructTwinNormal_new(
       NativePortType port_, String message);
 
   external void
@@ -48721,8 +48718,7 @@ class RustLibWasmModule implements WasmModule {
       wire_CustomStructTwinNormal_static_return_custom_struct_ok_twin_normal(
           NativePortType port_);
 
-  external void wire_SomeStructTwinNormal_new_twin_normal(
-      NativePortType port_, int value);
+  external void wire_SomeStructTwinNormal_new(NativePortType port_, int value);
 
   external void
       wire_SomeStructTwinNormal_non_static_return_err_custom_error_twin_normal(
@@ -48849,7 +48845,7 @@ class RustLibWasmModule implements WasmModule {
       wire_ConcatenateWithTwinNormal_handle_some_stream_sink_twin_normal(
           NativePortType port_, List<dynamic> that, int key, int max);
 
-  external void wire_ConcatenateWithTwinNormal_new_twin_normal(
+  external void wire_ConcatenateWithTwinNormal_new(
       NativePortType port_, String a);
 
   external void wire_ConcatenateWithTwinNormal_simple_getter_twin_normal(
@@ -58220,10 +58216,9 @@ class RustLibWasmModule implements WasmModule {
       wire_NonCloneSimpleTwinNormal_instance_method_return_own_twin_normal(
           NativePortType port_, Object that);
 
-  external void wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normal(
-      NativePortType port_);
+  external void wire_NonCloneSimpleTwinNormal_new(NativePortType port_);
 
-  external void wire_NonCloneSimpleTwinNormal_new_twin_normal(
+  external void wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normal(
       NativePortType port_);
 
   external void wire_NonCloneSimpleTwinNormal_new_with_result_twin_normal(
