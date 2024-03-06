@@ -91,6 +91,10 @@ fn generate_signature(
         &ApiDartGenerator::new(func.output.clone(), context).dart_api_type(),
     );
 
+    if method_info.default_constructor && func.mode == IrFuncMode::Sync {
+        return format!("factory {return_type}({func_params})");
+    }
+
     let is_static_method = method_info.mode == IrFuncOwnerInfoMethodMode::Static;
     let maybe_static = if is_static_method { "static" } else { "" };
     let method_name = if method_info.default_constructor {
