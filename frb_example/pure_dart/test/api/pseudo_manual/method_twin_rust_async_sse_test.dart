@@ -6,8 +6,6 @@ import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/method_twin_rus
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
-import '../../test_utils.dart';
-
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
@@ -125,26 +123,6 @@ Future<void> main({bool skipRustLibInit = false}) async {
           await SimpleStructTwinRustAsyncSse.vecSelfTwinRustAsyncSse(
               arg: [a, b]),
           ['a', 'b']);
-    });
-  });
-
-  group('constructor', () {
-    group('ConstructorTranslatableStructTwinRustAsyncSse', () {
-      test('call Rust constructor', () async {
-        expect(ConstructorTranslatableStructTwinRustAsyncSse().one, 'hello');
-      });
-
-      test('call Dart native constructor', () async {
-        expect(ConstructorTranslatableStructTwinRustAsyncSse.raw(one: 'a').one,
-            'a');
-      });
-    });
-
-    group('ConstructorOpaqueStructTwinRustAsyncSse', () {
-      test('call Rust constructor', () async {
-        final object = ConstructorOpaqueStructTwinRustAsyncSse();
-        await futurizeVoidTwinRustAsyncSse(object.check());
-      });
     });
   });
 }

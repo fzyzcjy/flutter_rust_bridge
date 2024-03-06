@@ -6,8 +6,6 @@ import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/method_twin_syn
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
-import '../../test_utils.dart';
-
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
@@ -116,25 +114,6 @@ Future<void> main({bool skipRustLibInit = false}) async {
       final b = SimpleStructTwinSyncSse(one: 'b');
       expect(await SimpleStructTwinSyncSse.vecSelfTwinSyncSse(arg: [a, b]),
           ['a', 'b']);
-    });
-  });
-
-  group('constructor', () {
-    group('ConstructorTranslatableStructTwinSyncSse', () {
-      test('call Rust constructor', () async {
-        expect(ConstructorTranslatableStructTwinSyncSse().one, 'hello');
-      });
-
-      test('call Dart native constructor', () async {
-        expect(ConstructorTranslatableStructTwinSyncSse.raw(one: 'a').one, 'a');
-      });
-    });
-
-    group('ConstructorOpaqueStructTwinSyncSse', () {
-      test('call Rust constructor', () async {
-        final object = ConstructorOpaqueStructTwinSyncSse();
-        await futurizeVoidTwinSyncSse(object.check());
-      });
     });
   });
 }

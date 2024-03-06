@@ -8,8 +8,6 @@ import 'package:frb_example_pure_dart_pde/src/rust/api/pseudo_manual/method_twin
 import 'package:frb_example_pure_dart_pde/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
-import '../../test_utils.dart';
-
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
@@ -119,26 +117,6 @@ Future<void> main({bool skipRustLibInit = false}) async {
       final b = SimpleStructTwinRustAsync(one: 'b');
       expect(await SimpleStructTwinRustAsync.vecSelfTwinRustAsync(arg: [a, b]),
           ['a', 'b']);
-    });
-  });
-
-  group('constructor', () {
-    group('ConstructorTranslatableStructTwinRustAsync', () {
-      test('call Rust constructor', () async {
-        expect(ConstructorTranslatableStructTwinRustAsync().one, 'hello');
-      });
-
-      test('call Dart native constructor', () async {
-        expect(
-            ConstructorTranslatableStructTwinRustAsync.raw(one: 'a').one, 'a');
-      });
-    });
-
-    group('ConstructorOpaqueStructTwinRustAsync', () {
-      test('call Rust constructor', () async {
-        final object = ConstructorOpaqueStructTwinRustAsync();
-        await futurizeVoidTwinRustAsync(object.check());
-      });
     });
   });
 }
