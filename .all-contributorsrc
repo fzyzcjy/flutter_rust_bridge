@@ -827,6 +827,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "h3x4d3c1m4l",
+      "name": "Sander in 't Hout",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2611894?v=4",
+      "profile": "https://github.com/h3x4d3c1m4l",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
