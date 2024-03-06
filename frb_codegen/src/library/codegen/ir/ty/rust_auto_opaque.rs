@@ -1,4 +1,6 @@
+use super::rust_opaque::RUST_OPAQUE_AS_PRIMITIVE;
 use crate::codegen::ir::namespace::Namespace;
+use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::rust_opaque::{IrTypeRustOpaque, NameComponent};
 use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
 use serde::Serialize;
@@ -50,6 +52,10 @@ impl IrTypeTrait for IrTypeRustAutoOpaque {
 
     fn self_namespace(&self) -> Option<Namespace> {
         Some(self.inner.namespace.clone())
+    }
+
+    fn as_primitive(&self) -> Option<&IrTypePrimitive> {
+        Some(&RUST_OPAQUE_AS_PRIMITIVE)
     }
 }
 
