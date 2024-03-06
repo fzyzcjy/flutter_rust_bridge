@@ -7,8 +7,7 @@ use std::path::Path;
 use std::str::FromStr;
 
 lazy_static! {
-    pub(crate) static ref FFIGEN_REQUIREMENT: VersionReq =
-        VersionReq::parse(">= 8.0.0").unwrap();
+    pub(crate) static ref FFIGEN_REQUIREMENT: VersionReq = VersionReq::parse(">= 8.0.0").unwrap();
 }
 
 pub fn ensure_tools_available(
