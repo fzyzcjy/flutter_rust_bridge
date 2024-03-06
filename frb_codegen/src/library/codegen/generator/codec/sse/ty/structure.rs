@@ -35,8 +35,8 @@ pub(crate) struct GeneralizedStructGenerator<'a> {
     context: CodecSseTyContext<'a>,
 }
 
-impl GeneralizedStructGenerator<'_> {
-    pub(crate) fn new(st: IrStruct, context: CodecSseTyContext, mode: StructOrRecord) -> Self {
+impl<'a> GeneralizedStructGenerator<'a> {
+    pub(crate) fn new(st: IrStruct, context: CodecSseTyContext<'a>, mode: StructOrRecord) -> Self {
         Self { st, mode, context }
     }
 

@@ -5,7 +5,7 @@ use crate::codegen::generator::api_dart::spec_generator::misc::{
     generate_dart_comments, generate_function_dart_return_type,
 };
 use crate::codegen::ir::func::{
-    IrFunc, IrFuncDefaultConstructorMode, IrFuncMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod,
+    IrFunc, IrFuncDefaultConstructorMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod,
     IrFuncOwnerInfoMethodMode,
 };
 use crate::codegen::ir::namespace::NamespacedName;
