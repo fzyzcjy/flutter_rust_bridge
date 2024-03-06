@@ -39,12 +39,21 @@ fn generate_api_method(func: &IrFunc, context: ApiDartGeneratorContext) -> Strin
     let skip_count = usize::from(!is_static_method);
 
     let params = generate_params(func, context, is_static_method, skip_count);
-    let comments = generate_dart_comments(&func.comments);
+    let comments = generate_comments(func, method_info);
     let signature = generate_signature(func, context, method_info, params);
     let arg_names = generate_arg_names(func, is_static_method, skip_count).concat();
     let implementation = generate_implementation(func, context, is_static_method, arg_names);
 
     format!("{comments}{signature}=>{implementation};\n\n")
+}
+
+fn generate_comments(func: &IrFunc, method_info: &IrFuncOwnerInfoMethod) -> String {
+    let mut ans = "";
+    if method_info.default_constructor {
+        ans += "// HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.\n";
+    }
+    ans += generate_dart_comments(&func.comments);
+    ans
 }
 
 fn generate_params(
