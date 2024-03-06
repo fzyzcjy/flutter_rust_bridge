@@ -16,7 +16,7 @@ pub struct ConcatenateWithTwinNormal {
 }
 
 impl ConcatenateWithTwinNormal {
-    pub fn new(a: String) -> ConcatenateWithTwinNormal {
+    pub fn new_twin_normal(a: String) -> ConcatenateWithTwinNormal {
         ConcatenateWithTwinNormal { a }
     }
 

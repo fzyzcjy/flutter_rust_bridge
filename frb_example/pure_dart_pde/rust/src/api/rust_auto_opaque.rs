@@ -183,7 +183,7 @@ impl NonCloneSimpleTwinNormal {
 
 impl NonCloneSimpleTwinNormal {
     /// unnamed constructor
-    pub fn new() -> NonCloneSimpleTwinNormal {
+    pub fn new_twin_normal() -> NonCloneSimpleTwinNormal {
         Self { inner: 42 }
     }
 
