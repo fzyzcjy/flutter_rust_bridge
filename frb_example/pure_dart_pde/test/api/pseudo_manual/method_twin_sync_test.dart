@@ -90,4 +90,29 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final concatenateWith = ConcatenateWithTwinSync(a: "apple");
     expect(await concatenateWith.simpleGetterTwinSync, equals("apple"));
   });
+
+  test('callable', () async {
+    final callable = MyCallableTwinSync(one: 'One');
+    expect(await callable(two: 'Two'), 'OneTwo');
+  });
+
+  group('SimpleStruct', () {
+    test('returnSelf', () async {
+      expect((await SimpleStructTwinSync.returnSelfTwinSync(one: 'One')).one,
+          'One');
+    });
+
+    test('argSelf', () async {
+      final a = SimpleStructTwinSync(one: 'a');
+      final b = SimpleStructTwinSync(one: 'b');
+      expect(await SimpleStructTwinSync.argSelfTwinSync(a: a, b: b), 'ab');
+    });
+
+    test('vecSelf', () async {
+      final a = SimpleStructTwinSync(one: 'a');
+      final b = SimpleStructTwinSync(one: 'b');
+      expect(
+          await SimpleStructTwinSync.vecSelfTwinSync(arg: [a, b]), ['a', 'b']);
+    });
+  });
 }

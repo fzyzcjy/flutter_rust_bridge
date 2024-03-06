@@ -44,6 +44,10 @@ impl LangTrait for RustLang {
         format!(r#"unimplemented!("{message}")"#)
     }
 
+    fn throw_unreachable(&self, message: &str) -> String {
+        format!(r#"unreachable!("{message}")"#)
+    }
+
     fn for_loop(&self, lhs: &str, rhs: &str, body: &str) -> String {
         format!("for {lhs} in {rhs} {{ {body} }}")
     }

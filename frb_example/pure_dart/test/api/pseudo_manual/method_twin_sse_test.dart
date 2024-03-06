@@ -88,4 +88,28 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final concatenateWith = ConcatenateWithTwinSse(a: "apple");
     expect(await concatenateWith.simpleGetterTwinSse, equals("apple"));
   });
+
+  test('callable', () async {
+    final callable = MyCallableTwinSse(one: 'One');
+    expect(await callable(two: 'Two'), 'OneTwo');
+  });
+
+  group('SimpleStruct', () {
+    test('returnSelf', () async {
+      expect(
+          (await SimpleStructTwinSse.returnSelfTwinSse(one: 'One')).one, 'One');
+    });
+
+    test('argSelf', () async {
+      final a = SimpleStructTwinSse(one: 'a');
+      final b = SimpleStructTwinSse(one: 'b');
+      expect(await SimpleStructTwinSse.argSelfTwinSse(a: a, b: b), 'ab');
+    });
+
+    test('vecSelf', () async {
+      final a = SimpleStructTwinSse(one: 'a');
+      final b = SimpleStructTwinSse(one: 'b');
+      expect(await SimpleStructTwinSse.vecSelfTwinSse(arg: [a, b]), ['a', 'b']);
+    });
+  });
 }

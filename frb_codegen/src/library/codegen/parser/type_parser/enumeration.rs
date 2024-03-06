@@ -82,11 +82,13 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     ) -> anyhow::Result<IrVariantKind> {
         let variant_ident = variant.ident.to_string();
         let namespace = Namespace::new(src_enum.0.path.clone());
+        let attributes = FrbAttributes::parse(attrs)?;
         Ok(IrVariantKind::Struct(IrStruct {
             name: NamespacedName::new(namespace, variant_ident),
             wrapper_name: None,
             is_fields_named: field_ident.is_some(),
-            dart_metadata: FrbAttributes::parse(attrs)?.dart_metadata(),
+            dart_metadata: attributes.dart_metadata(),
+            ignore: attributes.ignore(),
             comments: parse_comments(attrs),
             fields: variant
                 .fields

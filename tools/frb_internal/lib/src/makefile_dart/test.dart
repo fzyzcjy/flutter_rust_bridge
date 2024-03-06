@@ -7,6 +7,7 @@ import 'package:build_cli_annotations/build_cli_annotations.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/misc.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/post_release.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
 import 'package:flutter_rust_bridge_internal/src/misc/dart_sanitizer_tester.dart'
     as dart_sanitizer_tester;
@@ -14,12 +15,15 @@ import 'package:flutter_rust_bridge_internal/src/utils/codecov_transformer.dart'
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 import 'package:meta/meta.dart';
 import 'package:retry/retry.dart';
+import 'package:toml/toml.dart';
+import 'package:yaml/yaml.dart';
 
 part 'test.g.dart';
 
 List<Command<void>> createCommands() {
   return [
     SimpleCommand('test-mimic-quickstart', testMimicQuickstart),
+    SimpleCommand('test-upgrade', testUpgrade),
     SimpleConfigCommand('test-rust', testRust, _$populateTestRustConfigParser,
         _$parseTestRustConfigResult),
     SimpleConfigCommand(
@@ -138,8 +142,12 @@ Future<void> testMimicQuickstart() async =>
 
 class MimicQuickstartTester {
   final bool postRelease;
+  final bool coverage;
 
-  const MimicQuickstartTester({required this.postRelease});
+  const MimicQuickstartTester({
+    required this.postRelease,
+    this.coverage = false,
+  });
 
   Future<void> test() async {
     _prepareDir();
@@ -157,20 +165,22 @@ class MimicQuickstartTester {
     await _quickstartStepRun();
   }
 
-  void _prepareDir() {
+  static void _prepareDir() {
     Directory('${exec.pwd}frb_example').createSync(recursive: true);
-    final targetDir =
-        Directory('${exec.pwd}frb_example/$_kMimicQuickstartPackageName/');
+    final targetDir = Directory(_baseDir);
     if (targetDir.existsSync()) targetDir.deleteSync(recursive: true);
   }
 
   static const _kMimicQuickstartPackageName = 'my_app';
 
+  static String get _baseDir =>
+      '${exec.pwd}frb_example/$_kMimicQuickstartPackageName/';
+
   Future<void> _quickstartStepCreate() async {
     await executeFrbCodegen(
       'create $_kMimicQuickstartPackageName ${postRelease ? "" : "--local"}',
       relativePwd: 'frb_example',
-      coverage: false,
+      coverage: coverage,
       postRelease: postRelease,
       coverageName: 'MimicQuickstartStepCreate',
     );
@@ -233,11 +243,54 @@ class MimicQuickstartTester {
     await executeFrbCodegen(
       'generate',
       relativePwd: 'frb_example/$_kMimicQuickstartPackageName',
-      coverage: false,
+      coverage: coverage,
       coverageName: 'MimicQuickstartStepGenerate',
       postRelease: postRelease,
     );
   }
+}
+
+Future<void> testUpgrade() async {
+  void checkVersion({required String expectVersion}) {
+    print('checkVersion expectVersion=$expectVersion');
+
+    final baseDir = MimicQuickstartTester._baseDir;
+
+    final pubspecYaml =
+        loadYaml(File('${baseDir}pubspec.yaml').readAsStringSync());
+    final dartVersion = pubspecYaml['dependencies']['flutter_rust_bridge'];
+    if (dartVersion != expectVersion) {
+      throw Exception(
+          'checkVersion failed. dartVersion=$dartVersion expectVersion=$expectVersion');
+    }
+
+    final cargoToml =
+        TomlDocument.parse(File('${baseDir}rust/Cargo.toml').readAsStringSync())
+            .toMap();
+    final rustVersion = cargoToml['dependencies']['flutter_rust_bridge'];
+    if (rustVersion != '=$expectVersion') {
+      throw Exception('rustVersion=$rustVersion expectVersion=$expectVersion');
+    }
+  }
+
+  // This old-version can be bumped if needed
+  const oldVersion = '2.0.0-dev.20';
+  final newVersion = getFrbDartVersion();
+  if (oldVersion == newVersion) {
+    throw Exception('This test requires oldVersion!=newVersion');
+  }
+
+  await quickstartStepInstall(CodegenInstallMode.cargoInstall,
+      versionConstraint: oldVersion);
+
+  MimicQuickstartTester._prepareDir();
+
+  await const MimicQuickstartTester(postRelease: true)._quickstartStepCreate();
+  checkVersion(expectVersion: oldVersion);
+
+  await const MimicQuickstartTester(postRelease: false, coverage: true)
+      ._quickstartStepGenerate();
+  checkVersion(expectVersion: newVersion);
 }
 
 Future<void> testRust(TestRustConfig config) async {

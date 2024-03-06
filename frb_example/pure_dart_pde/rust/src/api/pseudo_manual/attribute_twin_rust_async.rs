@@ -22,7 +22,7 @@ pub struct EmptyTwinRustAsync;
 
 impl EmptyTwinRustAsync {
     #[frb(ignore)]
-    pub async fn method_should_not_exist_in_dart_twin_rust_async() {}
+    pub async fn method_should_not_exist_in_dart_twin_rust_async(&self) {}
 }
 
 pub async fn handle_customized_struct_twin_rust_async(val: CustomizedTwinRustAsync) {
@@ -47,3 +47,12 @@ pub async fn next_user_id_twin_rust_async(
 
 // Note: Some attributes are put on `KitchenSinkTwinRustAsync` currently
 // (but we can add more tests in this file later)
+
+#[frb(ignore)]
+pub struct IgnoredStructTwinRustAsync {
+    pub value: u32,
+}
+
+impl IgnoredStructTwinRustAsync {
+    pub async fn method_should_not_exist_in_dart_twin_rust_async(&self) {}
+}

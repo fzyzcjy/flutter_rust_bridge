@@ -414,15 +414,6 @@
       ]
     },
     {
-      "login": "phlip9",
-      "name": "Philip Kannegaard Hayes",
-      "avatar_url": "https://avatars.githubusercontent.com/u/918989?v=4",
-      "profile": "https://phlip9.com",
-      "contributions": [
-        "code"
-      ]
-    },
-    {
       "login": "patmuk",
       "name": "Patrick Mukherjee",
       "avatar_url": "https://avatars.githubusercontent.com/u/2045440?v=4",
@@ -436,6 +427,33 @@
       "name": "Aran Donohue",
       "avatar_url": "https://avatars.githubusercontent.com/u/5295?v=4",
       "profile": "https://github.com/aran",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "phlip9",
+      "name": "Philip Kannegaard Hayes",
+      "avatar_url": "https://avatars.githubusercontent.com/u/918989?v=4",
+      "profile": "https://phlip9.com",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "HalidOdat",
+      "name": "Haled Odat",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8566042?v=4",
+      "profile": "https://github.com/HalidOdat",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Berrysoft",
+      "name": "王宇逸",
+      "avatar_url": "https://avatars.githubusercontent.com/u/37586447?v=4",
+      "profile": "https://berrysoft.github.io/",
       "contributions": [
         "code"
       ]
@@ -574,6 +592,15 @@
       "profile": "https://steinbrecher-bayern.de",
       "contributions": [
         "code"
+      ]
+    },
+    {
+      "login": "Dampfwalze",
+      "name": "Dampfwalze",
+      "avatar_url": "https://avatars.githubusercontent.com/u/46897578?v=4",
+      "profile": "https://github.com/Dampfwalze",
+      "contributions": [
+        "doc"
       ]
     },
     {

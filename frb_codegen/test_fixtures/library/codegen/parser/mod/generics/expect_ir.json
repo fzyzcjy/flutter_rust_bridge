@@ -44,6 +44,7 @@
                   }
                 }
               ],
+              "ignore": false,
               "is_fields_named": false,
               "name": "crate::api::MyGenericEnum/One",
               "wrapper_name": null
@@ -91,6 +92,7 @@
                   }
                 }
               ],
+              "ignore": false,
               "is_fields_named": false,
               "name": "crate::api::MyGenericEnum/Two",
               "wrapper_name": null
@@ -418,9 +420,11 @@
           }
         }
       ],
+      "ignore": false,
       "is_fields_named": true,
       "name": "crate::api/MyGenericStruct",
       "wrapper_name": null
     }
-  }
+  },
+  "unused_types": []
 }

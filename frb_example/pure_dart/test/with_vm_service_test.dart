@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_io.dart';
 import 'package:frb_example_pure_dart/src/rust/api/dart_opaque.dart';
 import 'package:frb_example_pure_dart/src/rust/api/dart_opaque_sync.dart';
+import 'package:frb_example_pure_dart/src/rust/api/dropping.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
@@ -97,4 +98,50 @@ Future<void> main() async {
       });
     });
   });
+
+  group('Rust object is dropped', () {
+    for (final dropApproach in _DropApproach.values) {
+      group('dropApproach=$dropApproach', () {
+        Future<void> _core({
+          Future<void> Function(DroppableTwinNormal)? extra,
+        }) async {
+          DroppableTwinNormal? object =
+              await DroppableTwinNormal.newDroppableTwinNormal();
+          final weakRef = WeakReference(object);
+
+          await extra?.call(object);
+
+          final oldDropCount =
+              await DroppableTwinNormal.getDropCountTwinNormal();
+
+          switch (dropApproach) {
+            case _DropApproach.auto:
+              object = null;
+              await vmService.gc();
+              expect(object, null);
+              expect(weakRef.target, null);
+
+            case _DropApproach.manual:
+              object.dispose();
+              expect(object, isNotNull);
+          }
+
+          expect(await DroppableTwinNormal.getDropCountTwinNormal(),
+              oldDropCount + 1);
+        }
+
+        test('Rust object should be dropped', () async {
+          await _core();
+        });
+
+        // #1723
+        test('when holds StreamSink, Rust object should be dropped', () async {
+          await _core(
+              extra: (object) async => object.createStream().listen((_) {}));
+        });
+      });
+    }
+  });
 }
+
+enum _DropApproach { auto, manual }

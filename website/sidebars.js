@@ -179,6 +179,7 @@ const sidebars = {
                     items: [
                         'guides/miscellaneous/directory',
                         'guides/miscellaneous/methods',
+                        'guides/miscellaneous/callables',
                         'guides/miscellaneous/properties',
                         'guides/miscellaneous/codec',
                         'guides/miscellaneous/build-rs',
@@ -186,6 +187,7 @@ const sidebars = {
                         'guides/miscellaneous/ignoring-functions',
                         'guides/miscellaneous/default',
                         'guides/miscellaneous/pure-dart',
+                        'guides/miscellaneous/isolates',
                         'guides/miscellaneous/safety',
                         'guides/miscellaneous/compatibility',
                         'guides/miscellaneous/deployment',
@@ -227,6 +229,7 @@ const sidebars = {
                         'guides/how-to/protobuf-json',
                         'guides/how-to/regression',
                         'guides/how-to/object-pool',
+                        'guides/how-to/gitignore',
                     ],
                 },
                 'guides/users',

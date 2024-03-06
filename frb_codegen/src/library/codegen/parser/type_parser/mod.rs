@@ -15,12 +15,14 @@ pub(crate) mod tuple;
 pub(crate) mod ty;
 pub(crate) mod unencodable;
 
+use crate::codegen::ir::func::IrFuncOwnerInfo;
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::{IrEnumPool, IrStructPool};
 use crate::codegen::ir::ty::enumeration::{IrEnum, IrEnumIdent};
 use crate::codegen::ir::ty::rust_auto_opaque::IrTypeRustAutoOpaque;
 use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::ty::structure::{IrStruct, IrStructIdent};
+use crate::codegen::ir::ty::IrContext;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::source_graph::modules::{Enum, Struct};
@@ -100,15 +102,15 @@ pub(crate) struct TypeParserParsingContext {
     pub(crate) initiated_namespace: Namespace,
     pub(crate) func_attributes: FrbAttributes,
     pub(crate) default_rust_opaque_codec: RustOpaqueCodecMode,
+    pub(crate) owner: Option<IrFuncOwnerInfo>,
 }
 
-// TODO rm
-// impl IrContext for TypeParser<'_> {
-//     fn struct_pool(&self) -> &IrStructPool {
-//         &self.struct_parser_info.object_pool
-//     }
-//
-//     fn enum_pool(&self) -> &IrEnumPool {
-//         &self.enum_parser_info.object_pool
-//     }
-// }
+impl IrContext for TypeParser<'_> {
+    fn struct_pool(&self) -> &IrStructPool {
+        &self.struct_parser_info.object_pool
+    }
+
+    fn enum_pool(&self) -> &IrEnumPool {
+        &self.enum_parser_info.object_pool
+    }
+}

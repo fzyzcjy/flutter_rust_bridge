@@ -13,10 +13,11 @@ use itertools::Itertools;
 use lazy_static::lazy_static;
 use log::warn;
 use std::fs;
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 use std::str::FromStr;
 
 pub(crate) mod add_mod_to_lib;
+mod auto_upgrade;
 pub(crate) mod internal_config;
 
 pub(super) fn polish(
@@ -40,9 +41,16 @@ pub(super) fn polish(
         "execute_dart_format",
     );
     warn_if_fail(
-        execute_rust_format(output_paths, progress_bar_pack),
+        execute_rust_format(output_paths, &config.rust_crate_dir, progress_bar_pack),
         "execute_rust_format",
     );
+
+    if config.enable_auto_upgrade {
+        warn_if_fail(
+            auto_upgrade::execute(progress_bar_pack, &config.dart_root, &config.rust_crate_dir),
+            "auto_upgrade",
+        );
+    }
 
     Ok(())
 }
@@ -61,6 +69,11 @@ fn ensure_dependency_freezed(
         repo.has_specified_and_installed(
             "freezed_annotation",
             DartDependencyMode::Main,
+            &ANY_REQUIREMENT,
+        )?;
+        repo.has_specified_and_installed(
+            "build_runner",
+            DartDependencyMode::Dev,
             &ANY_REQUIREMENT,
         )?;
     }
@@ -101,16 +114,18 @@ fn execute_dart_format(
     let _pb = progress_bar_pack.polish_dart_formatter.start();
     format_dart(
         &filter_paths_by_extension(output_paths, "dart"),
+        &config.dart_root,
         config.dart_format_line_length,
     )
 }
 
 fn execute_rust_format(
     output_paths: &[PathBuf],
+    base_path: &Path,
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<()> {
     let _pb = progress_bar_pack.polish_rust_formatter.start();
-    format_rust(&filter_paths_by_extension(output_paths, "rs"))
+    format_rust(&filter_paths_by_extension(output_paths, "rs"), base_path)
 }
 
 fn filter_paths_by_extension(paths: &[PathBuf], extension: &str) -> Vec<PathBuf> {

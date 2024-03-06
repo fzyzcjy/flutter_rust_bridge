@@ -11,6 +11,7 @@ exclude = [
   "frb_example/deliberate_bad/rust",
   "frb_example/flutter_via_create/rust",
   "frb_example/flutter_via_integrate/rust",
+  "frb_example/dart_build_rs/rust",
   "frb_example/gallery/rust",
   "frb_example/pure_dart/rust",
   "frb_example/pure_dart_pde/rust",
@@ -18,7 +19,7 @@ exclude = [
 resolver = "2"
 
 [workspace.package]
-version = "2.0.0-dev.21"
+version = "2.0.0-dev.26"
 edition = "2021"
 license = "MIT"
 description = "High-level memory-safe binding generator for Flutter/Dart <-> Rust"
@@ -36,9 +37,9 @@ uuid = "1.1.2"
 thiserror = "1.0"
 backtrace = "0.3.68"
 
-flutter_rust_bridge_macros = { path = "frb_macros", version = "=2.0.0-dev.21" }
-flutter_rust_bridge = { path = "frb_rust", default-features = false, version = "=2.0.0-dev.21" }
-flutter_rust_bridge_codegen = { path = "frb_codegen", version = "=2.0.0-dev.21" }
+flutter_rust_bridge_macros = { path = "frb_macros", version = "=2.0.0-dev.26" }
+flutter_rust_bridge = { path = "frb_rust", default-features = false, version = "=2.0.0-dev.26" }
+flutter_rust_bridge_codegen = { path = "frb_codegen", version = "=2.0.0-dev.26" }
 
 [profile.release.package.flutter_rust_bridge_codegen]
 strip = "debuginfo"

@@ -1,5 +1,6 @@
 use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::ir::func::IrFunc;
+use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::ir::ty::enumeration::{IrEnum, IrEnumIdent};
 use crate::codegen::ir::ty::structure::{IrStruct, IrStructIdent};
 use crate::codegen::ir::ty::IrType;
@@ -17,23 +18,14 @@ pub struct IrPack {
     pub struct_pool: IrStructPool,
     pub enum_pool: IrEnumPool,
     pub has_executor: bool,
+    pub unused_types: Vec<NamespacedName>,
 }
 
 impl IrPack {
     #[allow(clippy::type_complexity)]
-    fn distinct_types(
-        &self,
-        include_func_inputs: bool,
-        include_func_output: bool,
-        filter_func: Option<Box<dyn Fn(&IrFunc) -> bool>>,
-    ) -> Vec<IrType> {
+    pub fn distinct_types(&self, filter_func: Option<Box<dyn Fn(&IrFunc) -> bool>>) -> Vec<IrType> {
         let mut gatherer = DistinctTypeGatherer::new();
-        self.visit_types(
-            &mut |ty| gatherer.add(ty),
-            include_func_inputs,
-            include_func_output,
-            &filter_func,
-        );
+        self.visit_types(&mut |ty| gatherer.add(ty), &filter_func);
         gatherer.gather()
     }
 
@@ -41,15 +33,13 @@ impl IrPack {
     fn visit_types<F: FnMut(&IrType) -> bool>(
         &self,
         f: &mut F,
-        include_func_inputs: bool,
-        include_func_output: bool,
         filter_func: &Option<impl Fn(&IrFunc) -> bool>,
     ) {
         for func in &self.funcs {
             if filter_func.is_some() && !filter_func.as_ref().unwrap()(func) {
                 continue;
             }
-            func.visit_types(f, include_func_inputs, include_func_output, self)
+            func.visit_types(f, self)
         }
     }
 }
@@ -67,18 +57,14 @@ impl IrPackComputedCache {
     pub fn compute(ir_pack: &IrPack) -> Self {
         // let distinct_input_types = ir_pack.distinct_types(true, false);
         // let distinct_output_types = ir_pack.distinct_types(false, true);
-        let distinct_types = ir_pack.distinct_types(true, true, None);
+        let distinct_types = ir_pack.distinct_types(None);
         let distinct_types_for_codec = CodecMode::iter()
             .map(|codec| {
                 (
                     codec,
-                    ir_pack.distinct_types(
-                        true,
-                        true,
-                        Some(Box::new(move |f: &IrFunc| {
-                            (f.codec_mode_pack.all().iter()).any(|c| *c == codec)
-                        })),
-                    ),
+                    ir_pack.distinct_types(Some(Box::new(move |f: &IrFunc| {
+                        (f.codec_mode_pack.all().iter()).any(|c| *c == codec)
+                    }))),
                 )
             })
             .collect();

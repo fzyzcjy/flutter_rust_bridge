@@ -67,3 +67,17 @@ fn default_value_to_dart_style(value: &str) -> String {
         _ => value.to_string(),
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    pub fn test_default_value_to_dart_style() {
+        assert_eq!(&default_value_to_dart_style("something"), "something");
+        assert_eq!(
+            &default_value_to_dart_style("OneTwo.ThreeFour"),
+            "OneTwo.threeFour"
+        );
+    }
+}

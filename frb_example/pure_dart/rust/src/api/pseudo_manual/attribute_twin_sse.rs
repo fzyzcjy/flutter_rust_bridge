@@ -22,7 +22,7 @@ pub struct EmptyTwinSse;
 impl EmptyTwinSse {
     #[frb(ignore)]
     #[flutter_rust_bridge::frb(serialize)]
-    pub fn method_should_not_exist_in_dart_twin_sse() {}
+    pub fn method_should_not_exist_in_dart_twin_sse(&self) {}
 }
 
 #[flutter_rust_bridge::frb(serialize)]
@@ -49,3 +49,13 @@ pub fn next_user_id_twin_sse(
 
 // Note: Some attributes are put on `KitchenSinkTwinSse` currently
 // (but we can add more tests in this file later)
+
+#[frb(ignore)]
+pub struct IgnoredStructTwinSse {
+    pub value: u32,
+}
+
+impl IgnoredStructTwinSse {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub fn method_should_not_exist_in_dart_twin_sse(&self) {}
+}

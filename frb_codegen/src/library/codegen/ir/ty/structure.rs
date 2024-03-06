@@ -21,6 +21,7 @@ pub struct IrStruct {
     pub fields: Vec<IrField>,
     pub is_fields_named: bool,
     pub dart_metadata: Vec<IrDartAnnotation>,
+    pub ignore: bool,
     pub comments: Vec<IrComment>,
 }
 }

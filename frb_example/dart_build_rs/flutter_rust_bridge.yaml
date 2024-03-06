@@ -1,0 +1,4 @@
+# See `pure_dart` example for comments on the configs
+rust_input: rust/src/api/**/*.rs
+dart_output: lib/src/rust
+local: true

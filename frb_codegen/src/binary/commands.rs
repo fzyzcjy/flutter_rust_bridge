@@ -136,6 +136,10 @@ pub(crate) struct GenerateCommandArgsPrimary {
     #[arg(long)]
     pub full_dep: bool,
 
+    /// Use local version instead of the release version
+    #[arg(long, hide = true)]
+    pub local: bool,
+
     /// A list of data to be dumped. If specified without a value, defaults to all.
     #[arg(long, value_enum, num_args = 0.., default_missing_values = ["config", "ir"])]
     pub dump: Option<Vec<ConfigDumpContent>>,

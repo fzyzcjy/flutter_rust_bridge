@@ -1,4 +1,5 @@
 use crate::codegen::ir::ty::IrType;
+use crate::codegen::parser::type_parser::path_data::extract_path_data;
 use crate::codegen::parser::type_parser::unencodable::splay_segments;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use anyhow::bail;
@@ -28,11 +29,16 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         type_path: &TypePath,
         path: &Path,
     ) -> anyhow::Result<IrType> {
-        let segments = self.extract_path_data(path)?;
+        let segments = extract_path_data(path)?;
         let splayed_segments = splay_segments(&segments);
 
         if let Some(last_segment) = splayed_segments.last() {
             if let Some(ans) = self.parse_type_path_data_primitive(last_segment)? {
+                return Ok(ans);
+            }
+            if let Some(ans) =
+                self.parse_type_path_data_concrete(last_segment, &splayed_segments)?
+            {
                 return Ok(ans);
             }
             if let Some(ans) = self.parse_type_path_data_struct(type_path, last_segment)? {
@@ -42,9 +48,6 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 return Ok(ans);
             }
             if let Some(ans) = self.parse_type_path_data_rust_opaque(last_segment)? {
-                return Ok(ans);
-            }
-            if let Some(ans) = self.parse_type_path_data_concrete(last_segment)? {
                 return Ok(ans);
             }
             if let Some(ans) = self.parse_type_path_data_optional(type_path, last_segment)? {

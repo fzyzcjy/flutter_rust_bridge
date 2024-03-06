@@ -127,3 +127,35 @@ pub async fn get_sum_array_twin_rust_async_sse(
         SumWithTwinRustAsyncSse { x: c },
     ]
 }
+
+pub struct MyCallableTwinRustAsyncSse {
+    pub one: String,
+}
+
+impl MyCallableTwinRustAsyncSse {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub async fn call(&self, two: String) -> String {
+        self.one.clone() + &two
+    }
+}
+
+pub struct SimpleStructTwinRustAsyncSse {
+    pub one: String,
+}
+
+impl SimpleStructTwinRustAsyncSse {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub async fn return_self_twin_rust_async_sse(one: String) -> Self {
+        Self { one }
+    }
+
+    #[flutter_rust_bridge::frb(serialize)]
+    pub async fn arg_self_twin_rust_async_sse(a: Self, b: Self) -> String {
+        a.one + &b.one
+    }
+
+    #[flutter_rust_bridge::frb(serialize)]
+    pub async fn vec_self_twin_rust_async_sse(arg: Vec<Self>) -> Vec<String> {
+        arg.into_iter().map(|x| x.one).collect()
+    }
+}

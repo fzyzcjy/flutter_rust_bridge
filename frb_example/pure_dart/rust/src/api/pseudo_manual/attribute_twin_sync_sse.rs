@@ -24,7 +24,7 @@ impl EmptyTwinSyncSse {
     #[frb(ignore)]
     #[flutter_rust_bridge::frb(serialize)]
     #[flutter_rust_bridge::frb(sync)]
-    pub fn method_should_not_exist_in_dart_twin_sync_sse() {}
+    pub fn method_should_not_exist_in_dart_twin_sync_sse(&self) {}
 }
 
 #[flutter_rust_bridge::frb(serialize)]
@@ -53,3 +53,14 @@ pub fn next_user_id_twin_sync_sse(
 
 // Note: Some attributes are put on `KitchenSinkTwinSyncSse` currently
 // (but we can add more tests in this file later)
+
+#[frb(ignore)]
+pub struct IgnoredStructTwinSyncSse {
+    pub value: u32,
+}
+
+impl IgnoredStructTwinSyncSse {
+    #[flutter_rust_bridge::frb(serialize)]
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn method_should_not_exist_in_dart_twin_sync_sse(&self) {}
+}

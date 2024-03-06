@@ -10,7 +10,7 @@ pub struct CreateConfig {
     pub name: String,
     pub org: Option<String>,
     pub enable_local_dependency: bool,
-    pub rust_crate_name: String,
+    pub rust_crate_name: Option<String>,
     pub rust_crate_dir: String,
 }
 

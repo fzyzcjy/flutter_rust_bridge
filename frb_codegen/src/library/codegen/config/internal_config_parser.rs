@@ -90,6 +90,7 @@ impl InternalConfig {
         let full_dep = config.full_dep.unwrap_or(false);
         let default_stream_sink_codec = generate_default_stream_sink_codec(full_dep);
         let default_rust_opaque_codec = generate_default_rust_opaque_codec(full_dep);
+        let enable_local_dependency = config.local.unwrap_or_default();
 
         Ok(InternalConfig {
             controller: ControllerInternalConfig {
@@ -166,6 +167,7 @@ impl InternalConfig {
                 rust_crate_dir,
                 rust_output_path,
                 c_output_path,
+                enable_auto_upgrade: !enable_local_dependency,
             },
             dumper: DumperInternalConfig {
                 dump_contents: parse_dump_contents(config),

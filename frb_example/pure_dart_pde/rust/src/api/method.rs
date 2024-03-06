@@ -105,3 +105,31 @@ pub fn get_sum_array_twin_normal(a: u32, b: u32, c: u32) -> [SumWithTwinNormal; 
         SumWithTwinNormal { x: c },
     ]
 }
+
+pub struct MyCallableTwinNormal {
+    pub one: String,
+}
+
+impl MyCallableTwinNormal {
+    pub fn call(&self, two: String) -> String {
+        self.one.clone() + &two
+    }
+}
+
+pub struct SimpleStructTwinNormal {
+    pub one: String,
+}
+
+impl SimpleStructTwinNormal {
+    pub fn return_self_twin_normal(one: String) -> Self {
+        Self { one }
+    }
+
+    pub fn arg_self_twin_normal(a: Self, b: Self) -> String {
+        a.one + &b.one
+    }
+
+    pub fn vec_self_twin_normal(arg: Vec<Self>) -> Vec<String> {
+        arg.into_iter().map(|x| x.one).collect()
+    }
+}

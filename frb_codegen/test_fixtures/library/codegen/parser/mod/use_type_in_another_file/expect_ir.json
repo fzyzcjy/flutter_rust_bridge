@@ -106,9 +106,11 @@
           }
         }
       ],
+      "ignore": false,
       "is_fields_named": true,
       "name": "crate::another_file/StructInAnotherFile",
       "wrapper_name": null
     }
-  }
+  },
+  "unused_types": []
 }

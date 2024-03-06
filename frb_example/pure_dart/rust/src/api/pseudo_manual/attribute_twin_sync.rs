@@ -22,7 +22,7 @@ pub struct EmptyTwinSync;
 impl EmptyTwinSync {
     #[frb(ignore)]
     #[flutter_rust_bridge::frb(sync)]
-    pub fn method_should_not_exist_in_dart_twin_sync() {}
+    pub fn method_should_not_exist_in_dart_twin_sync(&self) {}
 }
 
 #[flutter_rust_bridge::frb(sync)]
@@ -49,3 +49,13 @@ pub fn next_user_id_twin_sync(
 
 // Note: Some attributes are put on `KitchenSinkTwinSync` currently
 // (but we can add more tests in this file later)
+
+#[frb(ignore)]
+pub struct IgnoredStructTwinSync {
+    pub value: u32,
+}
+
+impl IgnoredStructTwinSync {
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn method_should_not_exist_in_dart_twin_sync(&self) {}
+}
