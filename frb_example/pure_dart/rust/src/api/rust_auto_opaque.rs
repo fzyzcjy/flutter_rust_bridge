@@ -279,6 +279,13 @@ pub enum EnumWithGoodAndOpaqueWithoutOptionTwinNormal {
     Opaque(NonCloneSimpleTwinNormal),
 }
 
+#[allow(unused_variables)]
+pub fn rust_auto_opaque_dummy_twin_normal(
+    a: StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal,
+    b: EnumWithGoodAndOpaqueWithoutOptionTwinNormal,
+) {
+}
+
 // ================ enum opaque type ===================
 
 pub fn rust_auto_opaque_enum_arg_borrow_twin_normal(arg: &NonCloneSimpleEnumTwinNormal) {
