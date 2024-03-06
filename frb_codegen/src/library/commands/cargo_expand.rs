@@ -8,7 +8,6 @@ use itertools::Itertools;
 use lazy_static::lazy_static;
 use log::{debug, info, warn};
 use regex::Regex;
-
 use std::borrow::Cow;
 use std::collections::hash_map::Entry::{Occupied, Vacant};
 use std::collections::HashMap;

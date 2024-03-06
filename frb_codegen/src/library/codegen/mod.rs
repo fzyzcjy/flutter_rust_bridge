@@ -16,7 +16,6 @@ use crate::codegen::dumper::Dumper;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::codegen::parser::reader::CachedRustReader;
 pub use config::config::{Config, MetaConfig};
-
 pub use dumper::internal_config::ConfigDumpContent;
 use log::debug;
 
