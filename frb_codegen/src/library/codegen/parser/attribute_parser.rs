@@ -74,8 +74,14 @@ impl FrbAttributes {
         self.any_eq(&FrbAttribute::Ignore)
     }
 
-    pub(crate) fn opaque(&self) -> bool {
-        self.any_eq(&FrbAttribute::Opaque)
+    pub(crate) fn opaque(&self) -> Option<bool> {
+        if self.any_eq(&FrbAttribute::Opaque) {
+            Some(true)
+        } else if self.any_eq(&FrbAttribute::NonOpaque) {
+            Some(false)
+        } else {
+            None
+        }
     }
 
     pub(crate) fn rust_opaque_codec(&self) -> Option<RustOpaqueCodecMode> {
@@ -135,6 +141,7 @@ mod frb_keyword {
     syn::custom_keyword!(init);
     syn::custom_keyword!(ignore);
     syn::custom_keyword!(opaque);
+    syn::custom_keyword!(non_opaque);
     syn::custom_keyword!(rust_opaque_codec_moi);
     syn::custom_keyword!(serialize);
     syn::custom_keyword!(semi_serialize);
@@ -163,6 +170,7 @@ enum FrbAttribute {
     Init,
     Ignore,
     Opaque,
+    NonOpaque,
     RustOpaqueCodecMoi,
     Serialize,
     // NOTE: Undocumented, since this name may be suboptimal and is subject to change
@@ -201,6 +209,10 @@ impl Parse for FrbAttribute {
             input
                 .parse::<frb_keyword::opaque>()
                 .map(|_| FrbAttribute::Opaque)?
+        } else if lookahead.peek(frb_keyword::non_opaque) {
+            input
+                .parse::<frb_keyword::non_opaque>()
+                .map(|_| FrbAttribute::NonOpaque)?
         } else if lookahead.peek(frb_keyword::rust_opaque_codec_moi) {
             input
                 .parse::<frb_keyword::rust_opaque_codec_moi>()
@@ -521,6 +533,13 @@ mod tests {
     fn test_opaque() -> anyhow::Result<()> {
         let parsed = parse("#[frb(opaque)]")?;
         assert_eq!(parsed, FrbAttributes(vec![FrbAttribute::Opaque]));
+        Ok(())
+    }
+
+    #[test]
+    fn test_non_opaque() -> anyhow::Result<()> {
+        let parsed = parse("#[frb(non_opaque)]")?;
+        assert_eq!(parsed, FrbAttributes(vec![FrbAttribute::NonOpaque]));
         Ok(())
     }
 
