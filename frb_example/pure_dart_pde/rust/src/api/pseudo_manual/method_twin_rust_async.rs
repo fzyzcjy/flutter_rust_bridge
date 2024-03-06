@@ -138,14 +138,31 @@ impl SimpleStructTwinRustAsync {
     }
 }
 
-pub struct ConstructorStructTwinRustAsync {
+pub struct ConstructorTranslatableStructTwinRustAsync {
     pub one: String,
 }
 
-impl ConstructorStructTwinRustAsync {
+impl ConstructorTranslatableStructTwinRustAsync {
     pub async fn new_twin_rust_async() -> Self {
         Self {
             one: "hello".to_owned(),
         }
+    }
+}
+
+#[frb(opaque)]
+pub struct ConstructorOpaqueStructTwinRustAsync {
+    pub one: String,
+}
+
+impl ConstructorOpaqueStructTwinRustAsync {
+    pub async fn new_twin_rust_async() -> Self {
+        Self {
+            one: "hello".to_owned(),
+        }
+    }
+
+    pub async fn check_twin_rust_async(&self) {
+        assert_eq!(self.one, "hello");
     }
 }

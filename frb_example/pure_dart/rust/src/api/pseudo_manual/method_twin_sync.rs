@@ -151,15 +151,34 @@ impl SimpleStructTwinSync {
     }
 }
 
-pub struct ConstructorStructTwinSync {
+pub struct ConstructorTranslatableStructTwinSync {
     pub one: String,
 }
 
-impl ConstructorStructTwinSync {
+impl ConstructorTranslatableStructTwinSync {
     #[flutter_rust_bridge::frb(sync)]
     pub fn new_twin_sync() -> Self {
         Self {
             one: "hello".to_owned(),
         }
+    }
+}
+
+#[frb(opaque)]
+pub struct ConstructorOpaqueStructTwinSync {
+    pub one: String,
+}
+
+impl ConstructorOpaqueStructTwinSync {
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn new_twin_sync() -> Self {
+        Self {
+            one: "hello".to_owned(),
+        }
+    }
+
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn check_twin_sync(&self) {
+        assert_eq!(self.one, "hello");
     }
 }

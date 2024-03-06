@@ -160,15 +160,34 @@ impl SimpleStructTwinRustAsyncSse {
     }
 }
 
-pub struct ConstructorStructTwinRustAsyncSse {
+pub struct ConstructorTranslatableStructTwinRustAsyncSse {
     pub one: String,
 }
 
-impl ConstructorStructTwinRustAsyncSse {
+impl ConstructorTranslatableStructTwinRustAsyncSse {
     #[flutter_rust_bridge::frb(serialize)]
     pub async fn new_twin_rust_async_sse() -> Self {
         Self {
             one: "hello".to_owned(),
         }
+    }
+}
+
+#[frb(opaque)]
+pub struct ConstructorOpaqueStructTwinRustAsyncSse {
+    pub one: String,
+}
+
+impl ConstructorOpaqueStructTwinRustAsyncSse {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub async fn new_twin_rust_async_sse() -> Self {
+        Self {
+            one: "hello".to_owned(),
+        }
+    }
+
+    #[flutter_rust_bridge::frb(serialize)]
+    pub async fn check_twin_rust_async_sse(&self) {
+        assert_eq!(self.one, "hello");
     }
 }

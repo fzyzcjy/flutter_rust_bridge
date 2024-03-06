@@ -6,6 +6,8 @@ import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/method_twin_sse
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
+import '../../test_utils.dart';
+
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
@@ -110,6 +112,25 @@ Future<void> main({bool skipRustLibInit = false}) async {
       final a = SimpleStructTwinSse(one: 'a');
       final b = SimpleStructTwinSse(one: 'b');
       expect(await SimpleStructTwinSse.vecSelfTwinSse(arg: [a, b]), ['a', 'b']);
+    });
+  });
+
+  group('constructor', () {
+    group('ConstructorTranslatableStructTwinSse', () {
+      test('call Rust constructor', () async {
+        expect(ConstructorTranslatableStructTwinSse().one, 'hello');
+      });
+
+      test('call Dart native constructor', () async {
+        expect(ConstructorTranslatableStructTwinSse.raw(one: 'a').one, 'a');
+      });
+    });
+
+    group('ConstructorOpaqueStructTwinSse', () {
+      test('call Rust constructor', () async {
+        final object = ConstructorOpaqueStructTwinSse();
+        await futurizeVoidTwinSse(object.check());
+      });
     });
   });
 }
