@@ -192,11 +192,10 @@ class CustomStructTwinNormal {
     required this.message,
   });
 
-  // HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.
-  static Future<CustomStructTwinNormal> newInstance(
+  static Future<CustomStructTwinNormal> newTwinNormal(
           {required String message, dynamic hint}) =>
       RustLib.instance.api
-          .customStructTwinNormalNew(message: message, hint: hint);
+          .customStructTwinNormalNewTwinNormal(message: message, hint: hint);
 
   Future<void> nonstaticReturnCustomStructErrorTwinNormal({dynamic hint}) =>
       RustLib.instance.api
@@ -238,10 +237,10 @@ class SomeStructTwinNormal {
     required this.value,
   });
 
-  // HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.
-  static Future<SomeStructTwinNormal> newInstance(
+  static Future<SomeStructTwinNormal> newTwinNormal(
           {required int value, dynamic hint}) =>
-      RustLib.instance.api.someStructTwinNormalNew(value: value, hint: hint);
+      RustLib.instance.api
+          .someStructTwinNormalNewTwinNormal(value: value, hint: hint);
 
   Future<int> nonStaticReturnErrCustomErrorTwinNormal({dynamic hint}) =>
       RustLib.instance.api

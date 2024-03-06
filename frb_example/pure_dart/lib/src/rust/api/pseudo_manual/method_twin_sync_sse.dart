@@ -14,35 +14,6 @@ SumWithTwinSyncSseArray3 getSumArrayTwinSyncSse(
         {required int a, required int b, required int c, dynamic hint}) =>
     RustLib.instance.api.getSumArrayTwinSyncSse(a: a, b: b, c: c, hint: hint);
 
-// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<ConstructorOpaqueStructTwinSyncSse>>
-@sealed
-class ConstructorOpaqueStructTwinSyncSse extends RustOpaque {
-  ConstructorOpaqueStructTwinSyncSse.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
-
-  ConstructorOpaqueStructTwinSyncSse.sseDecode(
-      int ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_ConstructorOpaqueStructTwinSyncSse,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_ConstructorOpaqueStructTwinSyncSse,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_ConstructorOpaqueStructTwinSyncSsePtr,
-  );
-
-  void checkTwinSyncSse({dynamic hint}) =>
-      RustLib.instance.api.constructorOpaqueStructTwinSyncSseCheckTwinSyncSse(
-        that: this,
-      );
-
-  static ConstructorOpaqueStructTwinSyncSse newTwinSyncSse({dynamic hint}) =>
-      RustLib.instance.api
-          .constructorOpaqueStructTwinSyncSseNewTwinSyncSse(hint: hint);
-}
-
 class ConcatenateWithTwinSyncSse {
   final String a;
 
@@ -108,29 +79,6 @@ class ConcatenateWithTwinSyncSse {
       other is ConcatenateWithTwinSyncSse &&
           runtimeType == other.runtimeType &&
           a == other.a;
-}
-
-class ConstructorTranslatableStructTwinSyncSse {
-  final String one;
-
-  const ConstructorTranslatableStructTwinSyncSse({
-    required this.one,
-  });
-
-  static ConstructorTranslatableStructTwinSyncSse newTwinSyncSse(
-          {dynamic hint}) =>
-      RustLib.instance.api
-          .constructorTranslatableStructTwinSyncSseNewTwinSyncSse(hint: hint);
-
-  @override
-  int get hashCode => one.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ConstructorTranslatableStructTwinSyncSse &&
-          runtimeType == other.runtimeType &&
-          one == other.one;
 }
 
 class Log2TwinSyncSse {

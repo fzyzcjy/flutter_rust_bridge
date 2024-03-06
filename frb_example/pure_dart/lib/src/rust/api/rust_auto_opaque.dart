@@ -310,16 +310,15 @@ class NonCloneSimpleTwinNormal extends RustOpaque {
         that: this,
       );
 
-  // HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.
-  /// unnamed constructor
-  static Future<NonCloneSimpleTwinNormal> newInstance({dynamic hint}) =>
-      RustLib.instance.api.nonCloneSimpleTwinNormalNew(hint: hint);
-
   /// named constructor
   static Future<NonCloneSimpleTwinNormal> newCustomNameTwinNormal(
           {dynamic hint}) =>
       RustLib.instance.api
           .nonCloneSimpleTwinNormalNewCustomNameTwinNormal(hint: hint);
+
+  /// unnamed constructor
+  static Future<NonCloneSimpleTwinNormal> newTwinNormal({dynamic hint}) =>
+      RustLib.instance.api.nonCloneSimpleTwinNormalNewTwinNormal(hint: hint);
 
   /// constructor with Result
   static Future<NonCloneSimpleTwinNormal> newWithResultTwinNormal(

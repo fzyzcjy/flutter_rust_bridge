@@ -14,33 +14,6 @@ Future<SumWithTwinSseArray3> getSumArrayTwinSse(
         {required int a, required int b, required int c, dynamic hint}) =>
     RustLib.instance.api.getSumArrayTwinSse(a: a, b: b, c: c, hint: hint);
 
-// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<ConstructorOpaqueStructTwinSse>>
-@sealed
-class ConstructorOpaqueStructTwinSse extends RustOpaque {
-  ConstructorOpaqueStructTwinSse.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
-
-  ConstructorOpaqueStructTwinSse.sseDecode(int ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_ConstructorOpaqueStructTwinSse,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_ConstructorOpaqueStructTwinSse,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_ConstructorOpaqueStructTwinSsePtr,
-  );
-
-  Future<void> checkTwinSse({dynamic hint}) =>
-      RustLib.instance.api.constructorOpaqueStructTwinSseCheckTwinSse(
-        that: this,
-      );
-
-  static Future<ConstructorOpaqueStructTwinSse> newTwinSse({dynamic hint}) =>
-      RustLib.instance.api.constructorOpaqueStructTwinSseNewTwinSse(hint: hint);
-}
-
 class ConcatenateWithTwinSse {
   final String a;
 
@@ -102,29 +75,6 @@ class ConcatenateWithTwinSse {
       other is ConcatenateWithTwinSse &&
           runtimeType == other.runtimeType &&
           a == other.a;
-}
-
-class ConstructorTranslatableStructTwinSse {
-  final String one;
-
-  const ConstructorTranslatableStructTwinSse({
-    required this.one,
-  });
-
-  static Future<ConstructorTranslatableStructTwinSse> newTwinSse(
-          {dynamic hint}) =>
-      RustLib.instance.api
-          .constructorTranslatableStructTwinSseNewTwinSse(hint: hint);
-
-  @override
-  int get hashCode => one.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ConstructorTranslatableStructTwinSse &&
-          runtimeType == other.runtimeType &&
-          one == other.one;
 }
 
 class Log2TwinSse {

@@ -10,6 +10,7 @@ import 'api/attribute.dart';
 import 'api/benchmark_misc.dart';
 import 'api/chrono_type.dart';
 import 'api/comment.dart';
+import 'api/constructor.dart';
 import 'api/customization.dart';
 import 'api/dart_dynamic.dart';
 import 'api/dart_fn.dart';
@@ -85,6 +86,7 @@ import 'api/pseudo_manual/comment_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/comment_twin_sse.dart';
 import 'api/pseudo_manual/comment_twin_sync.dart';
 import 'api/pseudo_manual/comment_twin_sync_sse.dart';
+import 'api/pseudo_manual/constructor_twin_sse.dart';
 import 'api/pseudo_manual/dart_dynamic_twin_rust_async.dart';
 import 'api/pseudo_manual/dart_dynamic_twin_sync.dart';
 import 'api/pseudo_manual/dart_fn_twin_rust_async.dart';
@@ -684,24 +686,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinNormalPtr;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_ConstructorOpaqueStructTwinRustAsyncPtr =>
-          wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsyncPtr;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_ConstructorOpaqueStructTwinRustAsyncSsePtr =>
-          wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsyncSsePtr;
-
-  CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_ConstructorOpaqueStructTwinSsePtr => wire
           ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSsePtr;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_ConstructorOpaqueStructTwinSyncPtr =>
-          wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSyncPtr;
+      get rust_arc_decrement_strong_count_ConstructorOpaqueSyncStructTwinNormalPtr =>
+          wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinNormalPtr;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_ConstructorOpaqueStructTwinSyncSsePtr =>
-          wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSyncSsePtr;
+      get rust_arc_decrement_strong_count_ConstructorOpaqueSyncStructTwinSsePtr =>
+          wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinSsePtr;
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_DroppableTwinNormalPtr => wire
@@ -1071,28 +1065,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
-  ConstructorOpaqueStructTwinRustAsync
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsync(
-          dynamic raw);
-
-  @protected
-  ConstructorOpaqueStructTwinRustAsyncSse
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsyncSse(
-          dynamic raw);
-
-  @protected
   ConstructorOpaqueStructTwinSse
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSse(
           dynamic raw);
 
   @protected
-  ConstructorOpaqueStructTwinSync
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSync(
+  ConstructorOpaqueSyncStructTwinNormal
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinNormal(
           dynamic raw);
 
   @protected
-  ConstructorOpaqueStructTwinSyncSse
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSyncSse(
+  ConstructorOpaqueSyncStructTwinSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinSse(
           dynamic raw);
 
   @protected
@@ -1586,28 +1570,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
-  ConstructorOpaqueStructTwinRustAsync
-      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsync(
-          dynamic raw);
-
-  @protected
-  ConstructorOpaqueStructTwinRustAsyncSse
-      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsyncSse(
-          dynamic raw);
-
-  @protected
   ConstructorOpaqueStructTwinSse
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSse(
           dynamic raw);
 
   @protected
-  ConstructorOpaqueStructTwinSync
-      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSync(
+  ConstructorOpaqueSyncStructTwinNormal
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinNormal(
           dynamic raw);
 
   @protected
-  ConstructorOpaqueStructTwinSyncSse
-      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSyncSse(
+  ConstructorOpaqueSyncStructTwinSse
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinSse(
           dynamic raw);
 
   @protected
@@ -2522,28 +2496,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
-  ConstructorOpaqueStructTwinRustAsync
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsync(
-          dynamic raw);
-
-  @protected
-  ConstructorOpaqueStructTwinRustAsyncSse
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsyncSse(
-          dynamic raw);
-
-  @protected
   ConstructorOpaqueStructTwinSse
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSse(
           dynamic raw);
 
   @protected
-  ConstructorOpaqueStructTwinSync
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSync(
+  ConstructorOpaqueSyncStructTwinNormal
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinNormal(
           dynamic raw);
 
   @protected
-  ConstructorOpaqueStructTwinSyncSse
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSyncSse(
+  ConstructorOpaqueSyncStructTwinSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinSse(
           dynamic raw);
 
   @protected
@@ -4925,25 +4889,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_constructor_translatable_struct_twin_normal(dynamic raw);
 
   @protected
-  ConstructorTranslatableStructTwinRustAsync
-      dco_decode_constructor_translatable_struct_twin_rust_async(dynamic raw);
-
-  @protected
-  ConstructorTranslatableStructTwinRustAsyncSse
-      dco_decode_constructor_translatable_struct_twin_rust_async_sse(
-          dynamic raw);
-
-  @protected
   ConstructorTranslatableStructTwinSse
       dco_decode_constructor_translatable_struct_twin_sse(dynamic raw);
 
   @protected
-  ConstructorTranslatableStructTwinSync
-      dco_decode_constructor_translatable_struct_twin_sync(dynamic raw);
+  ConstructorTranslatableSyncStructTwinNormal
+      dco_decode_constructor_translatable_sync_struct_twin_normal(dynamic raw);
 
   @protected
-  ConstructorTranslatableStructTwinSyncSse
-      dco_decode_constructor_translatable_struct_twin_sync_sse(dynamic raw);
+  ConstructorTranslatableSyncStructTwinSse
+      dco_decode_constructor_translatable_sync_struct_twin_sse(dynamic raw);
 
   @protected
   ContainsMirroredSubStructTwinNormal
@@ -8281,28 +8236,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
-  ConstructorOpaqueStructTwinRustAsync
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsync(
-          SseDeserializer deserializer);
-
-  @protected
-  ConstructorOpaqueStructTwinRustAsyncSse
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsyncSse(
-          SseDeserializer deserializer);
-
-  @protected
   ConstructorOpaqueStructTwinSse
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSse(
           SseDeserializer deserializer);
 
   @protected
-  ConstructorOpaqueStructTwinSync
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSync(
+  ConstructorOpaqueSyncStructTwinNormal
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinNormal(
           SseDeserializer deserializer);
 
   @protected
-  ConstructorOpaqueStructTwinSyncSse
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSyncSse(
+  ConstructorOpaqueSyncStructTwinSse
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinSse(
           SseDeserializer deserializer);
 
   @protected
@@ -8796,28 +8741,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
-  ConstructorOpaqueStructTwinRustAsync
-      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsync(
-          SseDeserializer deserializer);
-
-  @protected
-  ConstructorOpaqueStructTwinRustAsyncSse
-      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsyncSse(
-          SseDeserializer deserializer);
-
-  @protected
   ConstructorOpaqueStructTwinSse
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSse(
           SseDeserializer deserializer);
 
   @protected
-  ConstructorOpaqueStructTwinSync
-      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSync(
+  ConstructorOpaqueSyncStructTwinNormal
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinNormal(
           SseDeserializer deserializer);
 
   @protected
-  ConstructorOpaqueStructTwinSyncSse
-      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSyncSse(
+  ConstructorOpaqueSyncStructTwinSse
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinSse(
           SseDeserializer deserializer);
 
   @protected
@@ -9736,28 +9671,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
-  ConstructorOpaqueStructTwinRustAsync
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsync(
-          SseDeserializer deserializer);
-
-  @protected
-  ConstructorOpaqueStructTwinRustAsyncSse
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsyncSse(
-          SseDeserializer deserializer);
-
-  @protected
   ConstructorOpaqueStructTwinSse
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSse(
           SseDeserializer deserializer);
 
   @protected
-  ConstructorOpaqueStructTwinSync
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSync(
+  ConstructorOpaqueSyncStructTwinNormal
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinNormal(
           SseDeserializer deserializer);
 
   @protected
-  ConstructorOpaqueStructTwinSyncSse
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSyncSse(
+  ConstructorOpaqueSyncStructTwinSse
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinSse(
           SseDeserializer deserializer);
 
   @protected
@@ -12417,28 +12342,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
-  ConstructorTranslatableStructTwinRustAsync
-      sse_decode_constructor_translatable_struct_twin_rust_async(
-          SseDeserializer deserializer);
-
-  @protected
-  ConstructorTranslatableStructTwinRustAsyncSse
-      sse_decode_constructor_translatable_struct_twin_rust_async_sse(
-          SseDeserializer deserializer);
-
-  @protected
   ConstructorTranslatableStructTwinSse
       sse_decode_constructor_translatable_struct_twin_sse(
           SseDeserializer deserializer);
 
   @protected
-  ConstructorTranslatableStructTwinSync
-      sse_decode_constructor_translatable_struct_twin_sync(
+  ConstructorTranslatableSyncStructTwinNormal
+      sse_decode_constructor_translatable_sync_struct_twin_normal(
           SseDeserializer deserializer);
 
   @protected
-  ConstructorTranslatableStructTwinSyncSse
-      sse_decode_constructor_translatable_struct_twin_sync_sse(
+  ConstructorTranslatableSyncStructTwinSse
+      sse_decode_constructor_translatable_sync_struct_twin_sse(
           SseDeserializer deserializer);
 
   @protected
@@ -23179,16 +23094,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  void cst_api_fill_to_wire_constructor_translatable_struct_twin_rust_async(
-      ConstructorTranslatableStructTwinRustAsync apiObj,
-      wire_cst_constructor_translatable_struct_twin_rust_async wireObj) {
-    wireObj.one = cst_encode_String(apiObj.one);
-  }
-
-  @protected
-  void cst_api_fill_to_wire_constructor_translatable_struct_twin_sync(
-      ConstructorTranslatableStructTwinSync apiObj,
-      wire_cst_constructor_translatable_struct_twin_sync wireObj) {
+  void cst_api_fill_to_wire_constructor_translatable_sync_struct_twin_normal(
+      ConstructorTranslatableSyncStructTwinNormal apiObj,
+      wire_cst_constructor_translatable_sync_struct_twin_normal wireObj) {
     wireObj.one = cst_encode_String(apiObj.one);
   }
 
@@ -26156,12 +26064,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       ConstructorOpaqueStructTwinNormal raw);
 
   @protected
-  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsync(
-      ConstructorOpaqueStructTwinRustAsync raw);
-
-  @protected
-  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSync(
-      ConstructorOpaqueStructTwinSync raw);
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinNormal(
+      ConstructorOpaqueSyncStructTwinNormal raw);
 
   @protected
   int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
@@ -26364,12 +26268,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       ConstructorOpaqueStructTwinNormal raw);
 
   @protected
-  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsync(
-      ConstructorOpaqueStructTwinRustAsync raw);
-
-  @protected
-  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSync(
-      ConstructorOpaqueStructTwinSync raw);
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinNormal(
+      ConstructorOpaqueSyncStructTwinNormal raw);
 
   @protected
   int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
@@ -26694,12 +26594,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       ConstructorOpaqueStructTwinNormal raw);
 
   @protected
-  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsync(
-      ConstructorOpaqueStructTwinRustAsync raw);
-
-  @protected
-  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSync(
-      ConstructorOpaqueStructTwinSync raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinNormal(
+      ConstructorOpaqueSyncStructTwinNormal raw);
 
   @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
@@ -27046,29 +26942,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsync(
-          ConstructorOpaqueStructTwinRustAsync self, SseSerializer serializer);
-
-  @protected
-  void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsyncSse(
-          ConstructorOpaqueStructTwinRustAsyncSse self,
-          SseSerializer serializer);
-
-  @protected
-  void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSse(
           ConstructorOpaqueStructTwinSse self, SseSerializer serializer);
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSync(
-          ConstructorOpaqueStructTwinSync self, SseSerializer serializer);
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinNormal(
+          ConstructorOpaqueSyncStructTwinNormal self, SseSerializer serializer);
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSyncSse(
-          ConstructorOpaqueStructTwinSyncSse self, SseSerializer serializer);
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinSse(
+          ConstructorOpaqueSyncStructTwinSse self, SseSerializer serializer);
 
   @protected
   void
@@ -27562,29 +27447,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
-      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsync(
-          ConstructorOpaqueStructTwinRustAsync self, SseSerializer serializer);
-
-  @protected
-  void
-      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsyncSse(
-          ConstructorOpaqueStructTwinRustAsyncSse self,
-          SseSerializer serializer);
-
-  @protected
-  void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSse(
           ConstructorOpaqueStructTwinSse self, SseSerializer serializer);
 
   @protected
   void
-      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSync(
-          ConstructorOpaqueStructTwinSync self, SseSerializer serializer);
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinNormal(
+          ConstructorOpaqueSyncStructTwinNormal self, SseSerializer serializer);
 
   @protected
   void
-      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSyncSse(
-          ConstructorOpaqueStructTwinSyncSse self, SseSerializer serializer);
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinSse(
+          ConstructorOpaqueSyncStructTwinSse self, SseSerializer serializer);
 
   @protected
   void
@@ -28542,29 +28416,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsync(
-          ConstructorOpaqueStructTwinRustAsync self, SseSerializer serializer);
-
-  @protected
-  void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsyncSse(
-          ConstructorOpaqueStructTwinRustAsyncSse self,
-          SseSerializer serializer);
-
-  @protected
-  void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSse(
           ConstructorOpaqueStructTwinSse self, SseSerializer serializer);
 
   @protected
   void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSync(
-          ConstructorOpaqueStructTwinSync self, SseSerializer serializer);
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinNormal(
+          ConstructorOpaqueSyncStructTwinNormal self, SseSerializer serializer);
 
   @protected
   void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSyncSse(
-          ConstructorOpaqueStructTwinSyncSse self, SseSerializer serializer);
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinSse(
+          ConstructorOpaqueSyncStructTwinSse self, SseSerializer serializer);
 
   @protected
   void
@@ -31089,26 +30952,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       ConstructorTranslatableStructTwinNormal self, SseSerializer serializer);
 
   @protected
-  void sse_encode_constructor_translatable_struct_twin_rust_async(
-      ConstructorTranslatableStructTwinRustAsync self,
-      SseSerializer serializer);
-
-  @protected
-  void sse_encode_constructor_translatable_struct_twin_rust_async_sse(
-      ConstructorTranslatableStructTwinRustAsyncSse self,
-      SseSerializer serializer);
-
-  @protected
   void sse_encode_constructor_translatable_struct_twin_sse(
       ConstructorTranslatableStructTwinSse self, SseSerializer serializer);
 
   @protected
-  void sse_encode_constructor_translatable_struct_twin_sync(
-      ConstructorTranslatableStructTwinSync self, SseSerializer serializer);
+  void sse_encode_constructor_translatable_sync_struct_twin_normal(
+      ConstructorTranslatableSyncStructTwinNormal self,
+      SseSerializer serializer);
 
   @protected
-  void sse_encode_constructor_translatable_struct_twin_sync_sse(
-      ConstructorTranslatableStructTwinSyncSse self, SseSerializer serializer);
+  void sse_encode_constructor_translatable_sync_struct_twin_sse(
+      ConstructorTranslatableSyncStructTwinSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_contains_mirrored_sub_struct_twin_normal(
@@ -35294,6 +35148,88 @@ class RustLibWire implements BaseWire {
       _wire_function_with_comments_triple_slash_single_line_twin_normalPtr
           .asFunction<void Function(int)>();
 
+  WireSyncRust2DartDco wire_ConstructorOpaqueStructTwinNormal_check(
+    int that,
+  ) {
+    return _wire_ConstructorOpaqueStructTwinNormal_check(
+      that,
+    );
+  }
+
+  late final _wire_ConstructorOpaqueStructTwinNormal_checkPtr = _lookup<
+          ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.UintPtr)>>(
+      'frbgen_frb_example_pure_dart_wire_ConstructorOpaqueStructTwinNormal_check');
+  late final _wire_ConstructorOpaqueStructTwinNormal_check =
+      _wire_ConstructorOpaqueStructTwinNormal_checkPtr
+          .asFunction<WireSyncRust2DartDco Function(int)>();
+
+  void wire_ConstructorOpaqueStructTwinNormal_new(
+    int port_,
+  ) {
+    return _wire_ConstructorOpaqueStructTwinNormal_new(
+      port_,
+    );
+  }
+
+  late final _wire_ConstructorOpaqueStructTwinNormal_newPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      'frbgen_frb_example_pure_dart_wire_ConstructorOpaqueStructTwinNormal_new');
+  late final _wire_ConstructorOpaqueStructTwinNormal_new =
+      _wire_ConstructorOpaqueStructTwinNormal_newPtr
+          .asFunction<void Function(int)>();
+
+  WireSyncRust2DartDco wire_ConstructorOpaqueSyncStructTwinNormal_check(
+    int that,
+  ) {
+    return _wire_ConstructorOpaqueSyncStructTwinNormal_check(
+      that,
+    );
+  }
+
+  late final _wire_ConstructorOpaqueSyncStructTwinNormal_checkPtr = _lookup<
+          ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.UintPtr)>>(
+      'frbgen_frb_example_pure_dart_wire_ConstructorOpaqueSyncStructTwinNormal_check');
+  late final _wire_ConstructorOpaqueSyncStructTwinNormal_check =
+      _wire_ConstructorOpaqueSyncStructTwinNormal_checkPtr
+          .asFunction<WireSyncRust2DartDco Function(int)>();
+
+  WireSyncRust2DartDco wire_ConstructorOpaqueSyncStructTwinNormal_new() {
+    return _wire_ConstructorOpaqueSyncStructTwinNormal_new();
+  }
+
+  late final _wire_ConstructorOpaqueSyncStructTwinNormal_newPtr = _lookup<
+          ffi.NativeFunction<WireSyncRust2DartDco Function()>>(
+      'frbgen_frb_example_pure_dart_wire_ConstructorOpaqueSyncStructTwinNormal_new');
+  late final _wire_ConstructorOpaqueSyncStructTwinNormal_new =
+      _wire_ConstructorOpaqueSyncStructTwinNormal_newPtr
+          .asFunction<WireSyncRust2DartDco Function()>();
+
+  void wire_ConstructorTranslatableStructTwinNormal_new(
+    int port_,
+  ) {
+    return _wire_ConstructorTranslatableStructTwinNormal_new(
+      port_,
+    );
+  }
+
+  late final _wire_ConstructorTranslatableStructTwinNormal_newPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      'frbgen_frb_example_pure_dart_wire_ConstructorTranslatableStructTwinNormal_new');
+  late final _wire_ConstructorTranslatableStructTwinNormal_new =
+      _wire_ConstructorTranslatableStructTwinNormal_newPtr
+          .asFunction<void Function(int)>();
+
+  WireSyncRust2DartDco wire_ConstructorTranslatableSyncStructTwinNormal_new() {
+    return _wire_ConstructorTranslatableSyncStructTwinNormal_new();
+  }
+
+  late final _wire_ConstructorTranslatableSyncStructTwinNormal_newPtr = _lookup<
+          ffi.NativeFunction<WireSyncRust2DartDco Function()>>(
+      'frbgen_frb_example_pure_dart_wire_ConstructorTranslatableSyncStructTwinNormal_new');
+  late final _wire_ConstructorTranslatableSyncStructTwinNormal_new =
+      _wire_ConstructorTranslatableSyncStructTwinNormal_newPtr
+          .asFunction<WireSyncRust2DartDco Function()>();
+
   void wire_check_init_done(
     int port_,
   ) {
@@ -35943,19 +35879,20 @@ class RustLibWire implements BaseWire {
       _wire_DroppableTwinNormal_get_drop_count_twin_normalPtr
           .asFunction<void Function(int)>();
 
-  void wire_DroppableTwinNormal_new(
+  void wire_DroppableTwinNormal_new_twin_normal(
     int port_,
   ) {
-    return _wire_DroppableTwinNormal_new(
+    return _wire_DroppableTwinNormal_new_twin_normal(
       port_,
     );
   }
 
-  late final _wire_DroppableTwinNormal_newPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'frbgen_frb_example_pure_dart_wire_DroppableTwinNormal_new');
-  late final _wire_DroppableTwinNormal_new =
-      _wire_DroppableTwinNormal_newPtr.asFunction<void Function(int)>();
+  late final _wire_DroppableTwinNormal_new_twin_normalPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      'frbgen_frb_example_pure_dart_wire_DroppableTwinNormal_new_twin_normal');
+  late final _wire_DroppableTwinNormal_new_twin_normal =
+      _wire_DroppableTwinNormal_new_twin_normalPtr
+          .asFunction<void Function(int)>();
 
   void wire_DroppableTwinNormal_simple_method_twin_normal(
     int port_,
@@ -36233,23 +36170,23 @@ class RustLibWire implements BaseWire {
       _wire_register_event_listener_twin_normalPtr
           .asFunction<void Function(int)>();
 
-  void wire_CustomStructTwinNormal_new(
+  void wire_CustomStructTwinNormal_new_twin_normal(
     int port_,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> message,
   ) {
-    return _wire_CustomStructTwinNormal_new(
+    return _wire_CustomStructTwinNormal_new_twin_normal(
       port_,
       message,
     );
   }
 
-  late final _wire_CustomStructTwinNormal_newPtr = _lookup<
+  late final _wire_CustomStructTwinNormal_new_twin_normalPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(
                   ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
-      'frbgen_frb_example_pure_dart_wire_CustomStructTwinNormal_new');
-  late final _wire_CustomStructTwinNormal_new =
-      _wire_CustomStructTwinNormal_newPtr.asFunction<
+      'frbgen_frb_example_pure_dart_wire_CustomStructTwinNormal_new_twin_normal');
+  late final _wire_CustomStructTwinNormal_new_twin_normal =
+      _wire_CustomStructTwinNormal_new_twin_normalPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void
@@ -36329,21 +36266,22 @@ class RustLibWire implements BaseWire {
       _wire_CustomStructTwinNormal_static_return_custom_struct_ok_twin_normalPtr
           .asFunction<void Function(int)>();
 
-  void wire_SomeStructTwinNormal_new(
+  void wire_SomeStructTwinNormal_new_twin_normal(
     int port_,
     int value,
   ) {
-    return _wire_SomeStructTwinNormal_new(
+    return _wire_SomeStructTwinNormal_new_twin_normal(
       port_,
       value,
     );
   }
 
-  late final _wire_SomeStructTwinNormal_newPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32)>>(
-          'frbgen_frb_example_pure_dart_wire_SomeStructTwinNormal_new');
-  late final _wire_SomeStructTwinNormal_new =
-      _wire_SomeStructTwinNormal_newPtr.asFunction<void Function(int, int)>();
+  late final _wire_SomeStructTwinNormal_new_twin_normalPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32)>>(
+      'frbgen_frb_example_pure_dart_wire_SomeStructTwinNormal_new_twin_normal');
+  late final _wire_SomeStructTwinNormal_new_twin_normal =
+      _wire_SomeStructTwinNormal_new_twin_normalPtr
+          .asFunction<void Function(int, int)>();
 
   void wire_SomeStructTwinNormal_non_static_return_err_custom_error_twin_normal(
     int port_,
@@ -37125,23 +37063,23 @@ class RustLibWire implements BaseWire {
                   int,
                   int)>();
 
-  void wire_ConcatenateWithTwinNormal_new(
+  void wire_ConcatenateWithTwinNormal_new_twin_normal(
     int port_,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> a,
   ) {
-    return _wire_ConcatenateWithTwinNormal_new(
+    return _wire_ConcatenateWithTwinNormal_new_twin_normal(
       port_,
       a,
     );
   }
 
-  late final _wire_ConcatenateWithTwinNormal_newPtr = _lookup<
+  late final _wire_ConcatenateWithTwinNormal_new_twin_normalPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(
                   ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
-      'frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinNormal_new');
-  late final _wire_ConcatenateWithTwinNormal_new =
-      _wire_ConcatenateWithTwinNormal_newPtr.asFunction<
+      'frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinNormal_new_twin_normal');
+  late final _wire_ConcatenateWithTwinNormal_new_twin_normal =
+      _wire_ConcatenateWithTwinNormal_new_twin_normalPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_ConcatenateWithTwinNormal_simple_getter_twin_normal(
@@ -37163,53 +37101,6 @@ class RustLibWire implements BaseWire {
       _wire_ConcatenateWithTwinNormal_simple_getter_twin_normalPtr.asFunction<
           void Function(
               int, ffi.Pointer<wire_cst_concatenate_with_twin_normal>)>();
-
-  void wire_ConstructorOpaqueStructTwinNormal_check(
-    int port_,
-    int that,
-  ) {
-    return _wire_ConstructorOpaqueStructTwinNormal_check(
-      port_,
-      that,
-    );
-  }
-
-  late final _wire_ConstructorOpaqueStructTwinNormal_checkPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
-      'frbgen_frb_example_pure_dart_wire_ConstructorOpaqueStructTwinNormal_check');
-  late final _wire_ConstructorOpaqueStructTwinNormal_check =
-      _wire_ConstructorOpaqueStructTwinNormal_checkPtr
-          .asFunction<void Function(int, int)>();
-
-  void wire_ConstructorOpaqueStructTwinNormal_new(
-    int port_,
-  ) {
-    return _wire_ConstructorOpaqueStructTwinNormal_new(
-      port_,
-    );
-  }
-
-  late final _wire_ConstructorOpaqueStructTwinNormal_newPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-      'frbgen_frb_example_pure_dart_wire_ConstructorOpaqueStructTwinNormal_new');
-  late final _wire_ConstructorOpaqueStructTwinNormal_new =
-      _wire_ConstructorOpaqueStructTwinNormal_newPtr
-          .asFunction<void Function(int)>();
-
-  void wire_ConstructorTranslatableStructTwinNormal_new(
-    int port_,
-  ) {
-    return _wire_ConstructorTranslatableStructTwinNormal_new(
-      port_,
-    );
-  }
-
-  late final _wire_ConstructorTranslatableStructTwinNormal_newPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-      'frbgen_frb_example_pure_dart_wire_ConstructorTranslatableStructTwinNormal_new');
-  late final _wire_ConstructorTranslatableStructTwinNormal_new =
-      _wire_ConstructorTranslatableStructTwinNormal_newPtr
-          .asFunction<void Function(int)>();
 
   void wire_MyCallableTwinNormal_call(
     int port_,
@@ -51623,6 +51514,138 @@ class RustLibWire implements BaseWire {
               WireSyncRust2DartSse Function(
                   ffi.Pointer<ffi.Uint8>, int, int)>();
 
+  WireSyncRust2DartSse wire_ConstructorOpaqueStructTwinSse_check_twin_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_ConstructorOpaqueStructTwinSse_check_twin_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_ConstructorOpaqueStructTwinSse_check_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_ConstructorOpaqueStructTwinSse_check_twin_sse');
+  late final _wire_ConstructorOpaqueStructTwinSse_check_twin_sse =
+      _wire_ConstructorOpaqueStructTwinSse_check_twin_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_ConstructorOpaqueStructTwinSse_new_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_ConstructorOpaqueStructTwinSse_new_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_ConstructorOpaqueStructTwinSse_new_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_ConstructorOpaqueStructTwinSse_new_twin_sse');
+  late final _wire_ConstructorOpaqueStructTwinSse_new_twin_sse =
+      _wire_ConstructorOpaqueStructTwinSse_new_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_ConstructorOpaqueSyncStructTwinSse_check_twin_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_ConstructorOpaqueSyncStructTwinSse_check_twin_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_ConstructorOpaqueSyncStructTwinSse_check_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_ConstructorOpaqueSyncStructTwinSse_check_twin_sse');
+  late final _wire_ConstructorOpaqueSyncStructTwinSse_check_twin_sse =
+      _wire_ConstructorOpaqueSyncStructTwinSse_check_twin_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_ConstructorOpaqueSyncStructTwinSse_new_twin_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_ConstructorOpaqueSyncStructTwinSse_new_twin_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_ConstructorOpaqueSyncStructTwinSse_new_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_ConstructorOpaqueSyncStructTwinSse_new_twin_sse');
+  late final _wire_ConstructorOpaqueSyncStructTwinSse_new_twin_sse =
+      _wire_ConstructorOpaqueSyncStructTwinSse_new_twin_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_ConstructorTranslatableStructTwinSse_new_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_ConstructorTranslatableStructTwinSse_new_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_ConstructorTranslatableStructTwinSse_new_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_ConstructorTranslatableStructTwinSse_new_twin_sse');
+  late final _wire_ConstructorTranslatableStructTwinSse_new_twin_sse =
+      _wire_ConstructorTranslatableStructTwinSse_new_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse
+      wire_ConstructorTranslatableSyncStructTwinSse_new_twin_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_ConstructorTranslatableSyncStructTwinSse_new_twin_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_ConstructorTranslatableSyncStructTwinSse_new_twin_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  WireSyncRust2DartSse Function(
+                      ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_ConstructorTranslatableSyncStructTwinSse_new_twin_sse');
+  late final _wire_ConstructorTranslatableSyncStructTwinSse_new_twin_sse =
+      _wire_ConstructorTranslatableSyncStructTwinSse_new_twin_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
   void wire_return_dart_dynamic_twin_rust_async(
     int port_,
   ) {
@@ -59910,53 +59933,6 @@ class RustLibWire implements BaseWire {
               void Function(int,
                   ffi.Pointer<wire_cst_concatenate_with_twin_rust_async>)>();
 
-  void wire_ConstructorOpaqueStructTwinRustAsync_check_twin_rust_async(
-    int port_,
-    int that,
-  ) {
-    return _wire_ConstructorOpaqueStructTwinRustAsync_check_twin_rust_async(
-      port_,
-      that,
-    );
-  }
-
-  late final _wire_ConstructorOpaqueStructTwinRustAsync_check_twin_rust_asyncPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
-          'frbgen_frb_example_pure_dart_wire_ConstructorOpaqueStructTwinRustAsync_check_twin_rust_async');
-  late final _wire_ConstructorOpaqueStructTwinRustAsync_check_twin_rust_async =
-      _wire_ConstructorOpaqueStructTwinRustAsync_check_twin_rust_asyncPtr
-          .asFunction<void Function(int, int)>();
-
-  void wire_ConstructorOpaqueStructTwinRustAsync_new_twin_rust_async(
-    int port_,
-  ) {
-    return _wire_ConstructorOpaqueStructTwinRustAsync_new_twin_rust_async(
-      port_,
-    );
-  }
-
-  late final _wire_ConstructorOpaqueStructTwinRustAsync_new_twin_rust_asyncPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'frbgen_frb_example_pure_dart_wire_ConstructorOpaqueStructTwinRustAsync_new_twin_rust_async');
-  late final _wire_ConstructorOpaqueStructTwinRustAsync_new_twin_rust_async =
-      _wire_ConstructorOpaqueStructTwinRustAsync_new_twin_rust_asyncPtr
-          .asFunction<void Function(int)>();
-
-  void wire_ConstructorTranslatableStructTwinRustAsync_new_twin_rust_async(
-    int port_,
-  ) {
-    return _wire_ConstructorTranslatableStructTwinRustAsync_new_twin_rust_async(
-      port_,
-    );
-  }
-
-  late final _wire_ConstructorTranslatableStructTwinRustAsync_new_twin_rust_asyncPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'frbgen_frb_example_pure_dart_wire_ConstructorTranslatableStructTwinRustAsync_new_twin_rust_async');
-  late final _wire_ConstructorTranslatableStructTwinRustAsync_new_twin_rust_async =
-      _wire_ConstructorTranslatableStructTwinRustAsync_new_twin_rust_asyncPtr
-          .asFunction<void Function(int)>();
-
   void wire_MyCallableTwinRustAsync_call(
     int port_,
     ffi.Pointer<wire_cst_my_callable_twin_rust_async> that,
@@ -60306,79 +60282,6 @@ class RustLibWire implements BaseWire {
           'frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinRustAsyncSse_simple_getter_twin_rust_async_sse');
   late final _wire_ConcatenateWithTwinRustAsyncSse_simple_getter_twin_rust_async_sse =
       _wire_ConcatenateWithTwinRustAsyncSse_simple_getter_twin_rust_async_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
-
-  void wire_ConstructorOpaqueStructTwinRustAsyncSse_check_twin_rust_async_sse(
-    int port_,
-    ffi.Pointer<ffi.Uint8> ptr_,
-    int rust_vec_len_,
-    int data_len_,
-  ) {
-    return _wire_ConstructorOpaqueStructTwinRustAsyncSse_check_twin_rust_async_sse(
-      port_,
-      ptr_,
-      rust_vec_len_,
-      data_len_,
-    );
-  }
-
-  late final _wire_ConstructorOpaqueStructTwinRustAsyncSse_check_twin_rust_async_ssePtr =
-      _lookup<
-              ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
-                      ffi.Int32, ffi.Int32)>>(
-          'frbgen_frb_example_pure_dart_wire_ConstructorOpaqueStructTwinRustAsyncSse_check_twin_rust_async_sse');
-  late final _wire_ConstructorOpaqueStructTwinRustAsyncSse_check_twin_rust_async_sse =
-      _wire_ConstructorOpaqueStructTwinRustAsyncSse_check_twin_rust_async_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
-
-  void wire_ConstructorOpaqueStructTwinRustAsyncSse_new_twin_rust_async_sse(
-    int port_,
-    ffi.Pointer<ffi.Uint8> ptr_,
-    int rust_vec_len_,
-    int data_len_,
-  ) {
-    return _wire_ConstructorOpaqueStructTwinRustAsyncSse_new_twin_rust_async_sse(
-      port_,
-      ptr_,
-      rust_vec_len_,
-      data_len_,
-    );
-  }
-
-  late final _wire_ConstructorOpaqueStructTwinRustAsyncSse_new_twin_rust_async_ssePtr =
-      _lookup<
-              ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
-                      ffi.Int32, ffi.Int32)>>(
-          'frbgen_frb_example_pure_dart_wire_ConstructorOpaqueStructTwinRustAsyncSse_new_twin_rust_async_sse');
-  late final _wire_ConstructorOpaqueStructTwinRustAsyncSse_new_twin_rust_async_sse =
-      _wire_ConstructorOpaqueStructTwinRustAsyncSse_new_twin_rust_async_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
-
-  void
-      wire_ConstructorTranslatableStructTwinRustAsyncSse_new_twin_rust_async_sse(
-    int port_,
-    ffi.Pointer<ffi.Uint8> ptr_,
-    int rust_vec_len_,
-    int data_len_,
-  ) {
-    return _wire_ConstructorTranslatableStructTwinRustAsyncSse_new_twin_rust_async_sse(
-      port_,
-      ptr_,
-      rust_vec_len_,
-      data_len_,
-    );
-  }
-
-  late final _wire_ConstructorTranslatableStructTwinRustAsyncSse_new_twin_rust_async_ssePtr =
-      _lookup<
-              ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
-                      ffi.Int32, ffi.Int32)>>(
-          'frbgen_frb_example_pure_dart_wire_ConstructorTranslatableStructTwinRustAsyncSse_new_twin_rust_async_sse');
-  late final _wire_ConstructorTranslatableStructTwinRustAsyncSse_new_twin_rust_async_sse =
-      _wire_ConstructorTranslatableStructTwinRustAsyncSse_new_twin_rust_async_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_MyCallableTwinRustAsyncSse_call(
@@ -60734,75 +60637,6 @@ class RustLibWire implements BaseWire {
       _wire_ConcatenateWithTwinSse_simple_getter_twin_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
-  void wire_ConstructorOpaqueStructTwinSse_check_twin_sse(
-    int port_,
-    ffi.Pointer<ffi.Uint8> ptr_,
-    int rust_vec_len_,
-    int data_len_,
-  ) {
-    return _wire_ConstructorOpaqueStructTwinSse_check_twin_sse(
-      port_,
-      ptr_,
-      rust_vec_len_,
-      data_len_,
-    );
-  }
-
-  late final _wire_ConstructorOpaqueStructTwinSse_check_twin_ssePtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
-      'frbgen_frb_example_pure_dart_wire_ConstructorOpaqueStructTwinSse_check_twin_sse');
-  late final _wire_ConstructorOpaqueStructTwinSse_check_twin_sse =
-      _wire_ConstructorOpaqueStructTwinSse_check_twin_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
-
-  void wire_ConstructorOpaqueStructTwinSse_new_twin_sse(
-    int port_,
-    ffi.Pointer<ffi.Uint8> ptr_,
-    int rust_vec_len_,
-    int data_len_,
-  ) {
-    return _wire_ConstructorOpaqueStructTwinSse_new_twin_sse(
-      port_,
-      ptr_,
-      rust_vec_len_,
-      data_len_,
-    );
-  }
-
-  late final _wire_ConstructorOpaqueStructTwinSse_new_twin_ssePtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
-      'frbgen_frb_example_pure_dart_wire_ConstructorOpaqueStructTwinSse_new_twin_sse');
-  late final _wire_ConstructorOpaqueStructTwinSse_new_twin_sse =
-      _wire_ConstructorOpaqueStructTwinSse_new_twin_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
-
-  void wire_ConstructorTranslatableStructTwinSse_new_twin_sse(
-    int port_,
-    ffi.Pointer<ffi.Uint8> ptr_,
-    int rust_vec_len_,
-    int data_len_,
-  ) {
-    return _wire_ConstructorTranslatableStructTwinSse_new_twin_sse(
-      port_,
-      ptr_,
-      rust_vec_len_,
-      data_len_,
-    );
-  }
-
-  late final _wire_ConstructorTranslatableStructTwinSse_new_twin_ssePtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
-      'frbgen_frb_example_pure_dart_wire_ConstructorTranslatableStructTwinSse_new_twin_sse');
-  late final _wire_ConstructorTranslatableStructTwinSse_new_twin_sse =
-      _wire_ConstructorTranslatableStructTwinSse_new_twin_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
-
   void wire_MyCallableTwinSse_call(
     int port_,
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -61134,44 +60968,6 @@ class RustLibWire implements BaseWire {
           WireSyncRust2DartDco Function(
               ffi.Pointer<wire_cst_concatenate_with_twin_sync>)>();
 
-  WireSyncRust2DartDco wire_ConstructorOpaqueStructTwinSync_check_twin_sync(
-    int that,
-  ) {
-    return _wire_ConstructorOpaqueStructTwinSync_check_twin_sync(
-      that,
-    );
-  }
-
-  late final _wire_ConstructorOpaqueStructTwinSync_check_twin_syncPtr = _lookup<
-          ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.UintPtr)>>(
-      'frbgen_frb_example_pure_dart_wire_ConstructorOpaqueStructTwinSync_check_twin_sync');
-  late final _wire_ConstructorOpaqueStructTwinSync_check_twin_sync =
-      _wire_ConstructorOpaqueStructTwinSync_check_twin_syncPtr
-          .asFunction<WireSyncRust2DartDco Function(int)>();
-
-  WireSyncRust2DartDco wire_ConstructorOpaqueStructTwinSync_new_twin_sync() {
-    return _wire_ConstructorOpaqueStructTwinSync_new_twin_sync();
-  }
-
-  late final _wire_ConstructorOpaqueStructTwinSync_new_twin_syncPtr = _lookup<
-          ffi.NativeFunction<WireSyncRust2DartDco Function()>>(
-      'frbgen_frb_example_pure_dart_wire_ConstructorOpaqueStructTwinSync_new_twin_sync');
-  late final _wire_ConstructorOpaqueStructTwinSync_new_twin_sync =
-      _wire_ConstructorOpaqueStructTwinSync_new_twin_syncPtr
-          .asFunction<WireSyncRust2DartDco Function()>();
-
-  WireSyncRust2DartDco
-      wire_ConstructorTranslatableStructTwinSync_new_twin_sync() {
-    return _wire_ConstructorTranslatableStructTwinSync_new_twin_sync();
-  }
-
-  late final _wire_ConstructorTranslatableStructTwinSync_new_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function()>>(
-          'frbgen_frb_example_pure_dart_wire_ConstructorTranslatableStructTwinSync_new_twin_sync');
-  late final _wire_ConstructorTranslatableStructTwinSync_new_twin_sync =
-      _wire_ConstructorTranslatableStructTwinSync_new_twin_syncPtr
-          .asFunction<WireSyncRust2DartDco Function()>();
-
   WireSyncRust2DartDco wire_MyCallableTwinSync_call(
     ffi.Pointer<wire_cst_my_callable_twin_sync> that,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> two,
@@ -61495,79 +61291,6 @@ class RustLibWire implements BaseWire {
           'frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinSyncSse_simple_getter_twin_sync_sse');
   late final _wire_ConcatenateWithTwinSyncSse_simple_getter_twin_sync_sse =
       _wire_ConcatenateWithTwinSyncSse_simple_getter_twin_sync_ssePtr
-          .asFunction<
-              WireSyncRust2DartSse Function(
-                  ffi.Pointer<ffi.Uint8>, int, int)>();
-
-  WireSyncRust2DartSse
-      wire_ConstructorOpaqueStructTwinSyncSse_check_twin_sync_sse(
-    ffi.Pointer<ffi.Uint8> ptr_,
-    int rust_vec_len_,
-    int data_len_,
-  ) {
-    return _wire_ConstructorOpaqueStructTwinSyncSse_check_twin_sync_sse(
-      ptr_,
-      rust_vec_len_,
-      data_len_,
-    );
-  }
-
-  late final _wire_ConstructorOpaqueStructTwinSyncSse_check_twin_sync_ssePtr =
-      _lookup<
-              ffi.NativeFunction<
-                  WireSyncRust2DartSse Function(
-                      ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
-          'frbgen_frb_example_pure_dart_wire_ConstructorOpaqueStructTwinSyncSse_check_twin_sync_sse');
-  late final _wire_ConstructorOpaqueStructTwinSyncSse_check_twin_sync_sse =
-      _wire_ConstructorOpaqueStructTwinSyncSse_check_twin_sync_ssePtr
-          .asFunction<
-              WireSyncRust2DartSse Function(
-                  ffi.Pointer<ffi.Uint8>, int, int)>();
-
-  WireSyncRust2DartSse
-      wire_ConstructorOpaqueStructTwinSyncSse_new_twin_sync_sse(
-    ffi.Pointer<ffi.Uint8> ptr_,
-    int rust_vec_len_,
-    int data_len_,
-  ) {
-    return _wire_ConstructorOpaqueStructTwinSyncSse_new_twin_sync_sse(
-      ptr_,
-      rust_vec_len_,
-      data_len_,
-    );
-  }
-
-  late final _wire_ConstructorOpaqueStructTwinSyncSse_new_twin_sync_ssePtr =
-      _lookup<
-              ffi.NativeFunction<
-                  WireSyncRust2DartSse Function(
-                      ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
-          'frbgen_frb_example_pure_dart_wire_ConstructorOpaqueStructTwinSyncSse_new_twin_sync_sse');
-  late final _wire_ConstructorOpaqueStructTwinSyncSse_new_twin_sync_sse =
-      _wire_ConstructorOpaqueStructTwinSyncSse_new_twin_sync_ssePtr.asFunction<
-          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
-
-  WireSyncRust2DartSse
-      wire_ConstructorTranslatableStructTwinSyncSse_new_twin_sync_sse(
-    ffi.Pointer<ffi.Uint8> ptr_,
-    int rust_vec_len_,
-    int data_len_,
-  ) {
-    return _wire_ConstructorTranslatableStructTwinSyncSse_new_twin_sync_sse(
-      ptr_,
-      rust_vec_len_,
-      data_len_,
-    );
-  }
-
-  late final _wire_ConstructorTranslatableStructTwinSyncSse_new_twin_sync_ssePtr =
-      _lookup<
-              ffi.NativeFunction<
-                  WireSyncRust2DartSse Function(
-                      ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
-          'frbgen_frb_example_pure_dart_wire_ConstructorTranslatableStructTwinSyncSse_new_twin_sync_sse');
-  late final _wire_ConstructorTranslatableStructTwinSyncSse_new_twin_sync_sse =
-      _wire_ConstructorTranslatableStructTwinSyncSse_new_twin_sync_ssePtr
           .asFunction<
               WireSyncRust2DartSse Function(
                   ffi.Pointer<ffi.Uint8>, int, int)>();
@@ -82134,20 +81857,6 @@ class RustLibWire implements BaseWire {
       _wire_NonCloneSimpleTwinNormal_instance_method_return_own_twin_normalPtr
           .asFunction<void Function(int, int)>();
 
-  void wire_NonCloneSimpleTwinNormal_new(
-    int port_,
-  ) {
-    return _wire_NonCloneSimpleTwinNormal_new(
-      port_,
-    );
-  }
-
-  late final _wire_NonCloneSimpleTwinNormal_newPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinNormal_new');
-  late final _wire_NonCloneSimpleTwinNormal_new =
-      _wire_NonCloneSimpleTwinNormal_newPtr.asFunction<void Function(int)>();
-
   void wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normal(
     int port_,
   ) {
@@ -82161,6 +81870,21 @@ class RustLibWire implements BaseWire {
           'frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normal');
   late final _wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normal =
       _wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normalPtr
+          .asFunction<void Function(int)>();
+
+  void wire_NonCloneSimpleTwinNormal_new_twin_normal(
+    int port_,
+  ) {
+    return _wire_NonCloneSimpleTwinNormal_new_twin_normal(
+      port_,
+    );
+  }
+
+  late final _wire_NonCloneSimpleTwinNormal_new_twin_normalPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      'frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinNormal_new_twin_normal');
+  late final _wire_NonCloneSimpleTwinNormal_new_twin_normal =
+      _wire_NonCloneSimpleTwinNormal_new_twin_normalPtr
           .asFunction<void Function(int)>();
 
   void wire_NonCloneSimpleTwinNormal_new_with_result_twin_normal(
@@ -86829,70 +86553,6 @@ class RustLibWire implements BaseWire {
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void
-      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsync(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsync(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsyncPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsync');
-  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsync =
-      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsyncPtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void
-      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsync(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsync(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsyncPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsync');
-  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsync =
-      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsyncPtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void
-      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsyncSse(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsyncSse(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsyncSsePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsyncSse');
-  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsyncSse =
-      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsyncSsePtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void
-      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsyncSse(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsyncSse(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsyncSsePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsyncSse');
-  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsyncSse =
-      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinRustAsyncSsePtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSse(
     ffi.Pointer<ffi.Void> ptr,
   ) {
@@ -86925,67 +86585,67 @@ class RustLibWire implements BaseWire {
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void
-      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSync(
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinNormal(
     ffi.Pointer<ffi.Void> ptr,
   ) {
-    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSync(
+    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinNormal(
       ptr,
     );
   }
 
-  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSyncPtr =
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinNormalPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSync');
-  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSync =
-      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSyncPtr
+          'frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinNormal');
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinNormal =
+      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinNormalPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void
-      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSync(
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinNormal(
     ffi.Pointer<ffi.Void> ptr,
   ) {
-    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSync(
+    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinNormal(
       ptr,
     );
   }
 
-  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSyncPtr =
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinNormalPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSync');
-  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSync =
-      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSyncPtr
+          'frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinNormal');
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinNormal =
+      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinNormalPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void
-      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSyncSse(
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinSse(
     ffi.Pointer<ffi.Void> ptr,
   ) {
-    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSyncSse(
+    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinSse(
       ptr,
     );
   }
 
-  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSyncSsePtr =
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinSsePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSyncSse');
-  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSyncSse =
-      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSyncSsePtr
+          'frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinSse');
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinSse =
+      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinSsePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void
-      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSyncSse(
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinSse(
     ffi.Pointer<ffi.Void> ptr,
   ) {
-    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSyncSse(
+    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinSse(
       ptr,
     );
   }
 
-  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSyncSsePtr =
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinSsePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSyncSse');
-  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSyncSse =
-      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinSyncSsePtr
+          'frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinSse');
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinSse =
+      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinSsePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void
@@ -98261,12 +97921,7 @@ final class wire_cst_constructor_translatable_struct_twin_normal
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> one;
 }
 
-final class wire_cst_constructor_translatable_struct_twin_rust_async
-    extends ffi.Struct {
-  external ffi.Pointer<wire_cst_list_prim_u_8_strict> one;
-}
-
-final class wire_cst_constructor_translatable_struct_twin_sync
+final class wire_cst_constructor_translatable_sync_struct_twin_normal
     extends ffi.Struct {
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> one;
 }

@@ -14,34 +14,6 @@ SumWithTwinSyncArray3 getSumArrayTwinSync(
         {required int a, required int b, required int c, dynamic hint}) =>
     RustLib.instance.api.getSumArrayTwinSync(a: a, b: b, c: c, hint: hint);
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<ConstructorOpaqueStructTwinSync>>
-@sealed
-class ConstructorOpaqueStructTwinSync extends RustOpaque {
-  ConstructorOpaqueStructTwinSync.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
-
-  ConstructorOpaqueStructTwinSync.sseDecode(int ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_ConstructorOpaqueStructTwinSync,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_ConstructorOpaqueStructTwinSync,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_ConstructorOpaqueStructTwinSyncPtr,
-  );
-
-  void checkTwinSync({dynamic hint}) =>
-      RustLib.instance.api.constructorOpaqueStructTwinSyncCheckTwinSync(
-        that: this,
-      );
-
-  static ConstructorOpaqueStructTwinSync newTwinSync({dynamic hint}) =>
-      RustLib.instance.api
-          .constructorOpaqueStructTwinSyncNewTwinSync(hint: hint);
-}
-
 class ConcatenateWithTwinSync {
   final String a;
 
@@ -104,28 +76,6 @@ class ConcatenateWithTwinSync {
       other is ConcatenateWithTwinSync &&
           runtimeType == other.runtimeType &&
           a == other.a;
-}
-
-class ConstructorTranslatableStructTwinSync {
-  final String one;
-
-  const ConstructorTranslatableStructTwinSync({
-    required this.one,
-  });
-
-  static ConstructorTranslatableStructTwinSync newTwinSync({dynamic hint}) =>
-      RustLib.instance.api
-          .constructorTranslatableStructTwinSyncNewTwinSync(hint: hint);
-
-  @override
-  int get hashCode => one.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ConstructorTranslatableStructTwinSync &&
-          runtimeType == other.runtimeType &&
-          one == other.one;
 }
 
 class Log2TwinSync {

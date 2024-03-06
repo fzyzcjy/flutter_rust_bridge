@@ -14,35 +14,6 @@ Future<SumWithTwinNormalArray3> getSumArrayTwinNormal(
         {required int a, required int b, required int c, dynamic hint}) =>
     RustLib.instance.api.getSumArrayTwinNormal(a: a, b: b, c: c, hint: hint);
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<ConstructorOpaqueStructTwinNormal>>
-@sealed
-class ConstructorOpaqueStructTwinNormal extends RustOpaque {
-  ConstructorOpaqueStructTwinNormal.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
-
-  ConstructorOpaqueStructTwinNormal.sseDecode(int ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_ConstructorOpaqueStructTwinNormal,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_ConstructorOpaqueStructTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_ConstructorOpaqueStructTwinNormalPtr,
-  );
-
-  Future<void> check({dynamic hint}) =>
-      RustLib.instance.api.constructorOpaqueStructTwinNormalCheck(
-        that: this,
-      );
-
-  // HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.
-  static Future<ConstructorOpaqueStructTwinNormal> newInstance(
-          {dynamic hint}) =>
-      RustLib.instance.api.constructorOpaqueStructTwinNormalNew(hint: hint);
-}
-
 class ConcatenateWithTwinNormal {
   final String a;
 
@@ -107,30 +78,6 @@ class ConcatenateWithTwinNormal {
       other is ConcatenateWithTwinNormal &&
           runtimeType == other.runtimeType &&
           a == other.a;
-}
-
-class ConstructorTranslatableStructTwinNormal {
-  final String one;
-
-  const ConstructorTranslatableStructTwinNormal({
-    required this.one,
-  });
-
-  // HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.
-  static Future<ConstructorTranslatableStructTwinNormal> newInstance(
-          {dynamic hint}) =>
-      RustLib.instance.api
-          .constructorTranslatableStructTwinNormalNew(hint: hint);
-
-  @override
-  int get hashCode => one.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ConstructorTranslatableStructTwinNormal &&
-          runtimeType == other.runtimeType &&
-          one == other.one;
 }
 
 class Log2TwinNormal {
