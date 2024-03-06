@@ -14,12 +14,20 @@ impl<'a> ApiDartGeneratorClassTrait for StructRefApiDartGenerator<'a> {
 
         let methods = generate_api_methods(&src.name, self.context);
 
+        let constructor_postfix = TODO;
+
         Some(ApiDartGeneratedClass {
             namespace: src.name.namespace.clone(),
             code: if src.using_freezed() {
-                self.generate_mode_freezed(src, &comments, &metadata, &methods)
+                self.generate_mode_freezed(src, &comments, &metadata, &methods, constructor_postfix)
             } else {
-                self.generate_mode_non_freezed(src, &comments, &metadata, &methods)
+                self.generate_mode_non_freezed(
+                    src,
+                    &comments,
+                    &metadata,
+                    &methods,
+                    constructor_postfix,
+                )
             },
             needs_freezed: src.using_freezed(),
             ..Default::default()

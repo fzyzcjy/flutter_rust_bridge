@@ -17,6 +17,7 @@ impl<'a> StructRefApiDartGenerator<'a> {
         comments: &str,
         metadata: &str,
         methods: &[String],
+        constructor_postfix: &str,
     ) -> String {
         let field_declarations = self.generate_field_declarations(src);
         let constructor_params = self.generate_mode_non_freezed_constructor_params(src);
@@ -34,7 +35,7 @@ impl<'a> StructRefApiDartGenerator<'a> {
             "{comments}{metadata}class {name_str} {implements_exception} {{
                 {field_declarations}
 
-                {maybe_const}{name_str}({constructor_params});
+                {maybe_const}{name_str}{constructor_postfix}({constructor_params});
 
                 {methods_str}
 
