@@ -21761,54 +21761,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  void
-      cst_api_fill_to_wire_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoi(
-          NonCloneSimpleTwinMoi apiObj, ffi.Pointer<int> wireObj) {
-    cst_api_fill_to_wire_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoi(
-        apiObj, wireObj.ref);
-  }
-
-  @protected
-  void
-      cst_api_fill_to_wire_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
-          NonCloneSimpleTwinNormal apiObj, ffi.Pointer<int> wireObj) {
-    cst_api_fill_to_wire_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
-        apiObj, wireObj.ref);
-  }
-
-  @protected
-  void
-      cst_api_fill_to_wire_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync(
-          NonCloneSimpleTwinRustAsync apiObj, ffi.Pointer<int> wireObj) {
-    cst_api_fill_to_wire_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync(
-        apiObj, wireObj.ref);
-  }
-
-  @protected
-  void
-      cst_api_fill_to_wire_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
-          NonCloneSimpleTwinRustAsyncMoi apiObj, ffi.Pointer<int> wireObj) {
-    cst_api_fill_to_wire_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
-        apiObj, wireObj.ref);
-  }
-
-  @protected
-  void
-      cst_api_fill_to_wire_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
-          NonCloneSimpleTwinSync apiObj, ffi.Pointer<int> wireObj) {
-    cst_api_fill_to_wire_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
-        apiObj, wireObj.ref);
-  }
-
-  @protected
-  void
-      cst_api_fill_to_wire_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
-          NonCloneSimpleTwinSyncMoi apiObj, ffi.Pointer<int> wireObj) {
-    cst_api_fill_to_wire_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
-        apiObj, wireObj.ref);
-  }
-
-  @protected
   void cst_api_fill_to_wire_box_autoadd_a_twin_normal(
       ATwinNormal apiObj, ffi.Pointer<wire_cst_a_twin_normal> wireObj) {
     cst_api_fill_to_wire_a_twin_normal(apiObj, wireObj.ref);
