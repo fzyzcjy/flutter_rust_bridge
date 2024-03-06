@@ -4,8 +4,10 @@ use crate::codegen::generator::misc::target::TargetOrCommon;
 use crate::codegen::generator::misc::PathTexts;
 use crate::utils::file_utils::create_dir_all_and_write;
 use crate::utils::path_utils::path_to_string;
+use anyhow::Context;
 use convert_case::{Case, Casing};
 use log::debug;
+use pathdiff::diff_paths;
 use serde::Serialize;
 use std::path::Path;
 use strum::IntoEnumIterator;
@@ -44,7 +46,9 @@ impl Dumper<'_> {
                 content,
                 &format!(
                     "{partial_name}/{}",
-                    path_to_string(path_text.path.strip_prefix(base_dir)?)?
+                    path_to_string(
+                        &diff_paths(&path_text.path, base_dir).context("cannot diff path")?
+                    )?
                 ),
                 &path_text.text,
             )?;
