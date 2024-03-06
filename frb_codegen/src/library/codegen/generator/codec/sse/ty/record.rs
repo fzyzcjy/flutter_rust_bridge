@@ -19,6 +19,7 @@ impl<'a> RecordCodecSseTy<'a> {
     fn new_generalized_generator(&self) -> GeneralizedStructGenerator {
         GeneralizedStructGenerator::new(
             self.ir.inner.get(self.context.ir_pack).clone(),
+            self.context,
             StructOrRecord::Record,
         )
     }
