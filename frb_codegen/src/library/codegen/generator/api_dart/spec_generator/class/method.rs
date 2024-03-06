@@ -24,10 +24,8 @@ pub(crate) fn generate_api_methods(
     generalized_class_name: &NamespacedName,
     context: ApiDartGeneratorContext,
 ) -> GeneratedApiMethods {
-    let infos = (context.ir_pack.funcs.iter())
-        .filter(|f| {
-            matches!(&f.owner, IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod{ enum_or_struct_name, .. }) if enum_or_struct_name == generalized_class_name)
-        })
+    let infos = get_methods_of_enum_or_struct(&context.ir_pack.funcs)
+        .into_iter()
         .map(|func| generate_api_method(func, context))
         .collect_vec();
 
@@ -38,6 +36,19 @@ pub(crate) fn generate_api_methods(
         methods,
         has_default_dart_constructor,
     }
+}
+
+// TODO move
+pub(crate) fn get_methods_of_enum_or_struct(
+    all_funcs: &[IrFunc],
+    name: &NamespacedName,
+) -> Vec<IrFunc> {
+    (all_funcs.iter())
+        .filter(|f| {
+            matches!(&f.owner, IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod{ enum_or_struct_name, .. }) if enum_or_struct_name == name)
+        })
+        .cloned()
+        .collect_vec()
 }
 
 fn generate_api_method(
