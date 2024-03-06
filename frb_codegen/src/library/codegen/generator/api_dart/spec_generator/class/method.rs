@@ -35,15 +35,7 @@ fn generate_api_method(func: &IrFunc, context: ApiDartGeneratorContext) -> Strin
     };
     let is_static_method = method_info.mode == IrFuncOwnerInfoMethodMode::Static;
 
-    let default_constructor_mode = if method_info.actual_method_name == "new" {
-        if is_static_method && func.mode == IrFuncMode::Sync {
-            DefaultConstructorMode::DartConstructor
-        } else {
-            DefaultConstructorMode::StaticMethod
-        }
-    } else {
-        None
-    };
+    let default_constructor_mode = DefaultConstructorMode::parse(func, method_info);
 
     // skip the first as it's the method 'self'
     let skip_count = usize::from(!is_static_method);
@@ -161,4 +153,20 @@ fn generate_implementation(
 enum DefaultConstructorMode {
     DartConstructor,
     StaticMethod,
+}
+
+impl DefaultConstructorMode {
+    fn parse(func: &IrFunc, method_info: &IrFuncOwnerInfoMethod) -> Option<Self> {
+        if method_info.actual_method_name == "new" {
+            if method_info.mode == IrFuncOwnerInfoMethodMode::Static
+                && func.mode == IrFuncMode::Sync
+            {
+                Some(Self::DartConstructor)
+            } else {
+                Some(Self::StaticMethod)
+            }
+        } else {
+            None
+        }
+    }
 }
