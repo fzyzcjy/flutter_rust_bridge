@@ -29,7 +29,7 @@ where
             let attrs = FrbAttributes::parse(src_object.attrs())?;
             let attrs_opaque = attrs.opaque();
             if attrs_opaque == Some(true) {
-                debug!("Recognize {name} as opaque");
+                debug!("Treat {name} as opaque since attribute says so");
                 return Ok(Some(self.parse_opaque(&namespaced_name)?));
             }
 
@@ -43,6 +43,11 @@ where
                 );
                 let parsed_object = self.parse_inner(&src_object, name, wrapper_name)?;
                 (self.parser_info().object_pool).insert(ident.clone(), parsed_object);
+            }
+
+            if attrs_opaque.is_none() && TODO {
+                debug!("Treat {name} as opaque by default");
+                return Ok(Some(self.parse_opaque(&namespaced_name)?));
             }
 
             return Ok(Some(self.construct_output(ident)?));
