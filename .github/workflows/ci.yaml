@@ -4,14 +4,14 @@ on:
   push:
     branches:
       - master
-  pull_request: {}
-  workflow_dispatch: {}
+  pull_request: { }
+  workflow_dispatch: { }
 
 env:
   CARGO_TERM_COLOR: always
   FRB_MAIN_RUST_VERSION: 1.74.0
   FRB_MAIN_DART_VERSION: 3.3.0
-  FRB_MAIN_FLUTTER_VERSION: 3.19.0
+  FRB_MAIN_FLUTTER_VERSION: 3.19.2
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -187,10 +187,10 @@ jobs:
           - frb_example--flutter_via_create
           - frb_example--flutter_via_integrate
         exclude:
-          - {image: windows-2019, package: frb_example--deliberate_bad}
-          - {image: macos-11, package: frb_example--deliberate_bad}
-          - {image: windows-2019, package: frb_example--flutter_via_integrate}
-          - {image: macos-11, package: frb_example--flutter_via_integrate}
+          - { image: windows-2019, package: frb_example--deliberate_bad }
+          - { image: macos-11, package: frb_example--deliberate_bad }
+          - { image: windows-2019, package: frb_example--flutter_via_integrate }
+          - { image: macos-11, package: frb_example--flutter_via_integrate }
 
     steps:
       # setup
@@ -530,7 +530,7 @@ jobs:
           # tests the MSRV
           # run on all rust packages, though only needed for frb_rust and frb_codegen
           - image: ubuntu-latest
-          # update this, if a later MSRV is needed
+            # update this, if a later MSRV is needed
             version: 1.74.0
 
     steps:
@@ -581,12 +581,12 @@ jobs:
           - frb_example--dart_build_rs
           - frb_example--deliberate_bad
         exclude:
-          - {image: windows-2019, package: frb_utils}
-          - {image: macos-11, package: frb_utils}
-          - {image: windows-2019, package: tools--frb_internal}
-          - {image: macos-11, package: tools--frb_internal}
-          - {image: windows-2019, package: frb_example--deliberate_bad}
-          - {image: macos-11, package: frb_example--deliberate_bad}
+          - { image: windows-2019, package: frb_utils }
+          - { image: macos-11, package: frb_utils }
+          - { image: windows-2019, package: tools--frb_internal }
+          - { image: macos-11, package: tools--frb_internal }
+          - { image: windows-2019, package: frb_example--deliberate_bad }
+          - { image: macos-11, package: frb_example--deliberate_bad }
 
     steps:
       # setup
@@ -756,7 +756,7 @@ jobs:
         device:
           - "pixel"
           - "Nexus 6"
-        api-level: [29]
+        api-level: [ 29 ]
 
     steps:
       # setup
