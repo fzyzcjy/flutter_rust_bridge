@@ -37,9 +37,9 @@ class ConstructorOpaqueStructTwinNormal extends RustOpaque {
         that: this,
       );
 
-  static Future<ConstructorOpaqueStructTwinNormal>
-      newConstructorOpaqueStructTwinNormal({dynamic hint}) =>
-          RustLib.instance.api.constructorOpaqueStructTwinNormalNew(hint: hint);
+  static Future<ConstructorOpaqueStructTwinNormal> newInstance(
+          {dynamic hint}) =>
+      RustLib.instance.api.constructorOpaqueStructTwinNormalNew(hint: hint);
 }
 
 class ConcatenateWithTwinNormal {
@@ -115,10 +115,10 @@ class ConstructorTranslatableStructTwinNormal {
     required this.one,
   });
 
-  static Future<ConstructorTranslatableStructTwinNormal>
-      newConstructorTranslatableStructTwinNormal({dynamic hint}) =>
-          RustLib.instance.api
-              .constructorTranslatableStructTwinNormalNew(hint: hint);
+  static Future<ConstructorTranslatableStructTwinNormal> newInstance(
+          {dynamic hint}) =>
+      RustLib.instance.api
+          .constructorTranslatableStructTwinNormalNew(hint: hint);
 
   @override
   int get hashCode => one.hashCode;
