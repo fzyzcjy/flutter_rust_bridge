@@ -49,8 +49,13 @@ impl CachedCargoExpand {
         let expanded = match self.cache.entry(rust_crate_dir.to_owned()) {
             Occupied(entry) => entry.into_mut(),
             Vacant(entry) => entry.insert(
-                unwrap_frb_attrs_in_doc(&run_cargo_expand(rust_crate_dir, dumper, true)?)
-                    .into_owned(),
+                unwrap_frb_attrs_in_doc(&run_cargo_expand(
+                    rust_crate_dir,
+                    r#"build.rustflags="--cfg frb_expand""#,
+                    dumper,
+                    true,
+                )?)
+                .into_owned(),
             ),
         };
 
@@ -91,6 +96,7 @@ fn extract_module(raw_expanded: &str, module: Option<String>) -> Result<String> 
 
 fn run_cargo_expand(
     rust_crate_dir: &Path,
+    extra_args: &str,
     dumper: &Dumper,
     allow_auto_install: bool,
 ) -> Result<String> {
@@ -103,7 +109,7 @@ fn run_cargo_expand(
         "--theme=none",
         "--ugly",
         "--config",
-        r#"build.rustflags="--cfg frb_expand""#
+        extra_args
     );
 
     let output = execute_command("cargo", &args, Some(rust_crate_dir), None)
@@ -116,7 +122,7 @@ fn run_cargo_expand(
         if stderr.contains("no such command: `expand`") && allow_auto_install {
             info!("Cargo expand is not installed. Automatically install and re-run.");
             install_cargo_expand()?;
-            return run_cargo_expand(rust_crate_dir, dumper, false);
+            return run_cargo_expand(rust_crate_dir, extra_args, dumper, false);
         }
         // This will stop the whole generator and tell the users, so we do not care about testing it
         // frb-coverage:ignore-start
