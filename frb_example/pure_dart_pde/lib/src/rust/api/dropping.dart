@@ -33,6 +33,7 @@ class DroppableTwinNormal extends RustOpaque {
       RustLib.instance.api
           .droppableTwinNormalGetDropCountTwinNormal(hint: hint);
 
+// HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.
   static Future<DroppableTwinNormal> newInstance({dynamic hint}) =>
       RustLib.instance.api.droppableTwinNormalNew(hint: hint);
 

@@ -37,6 +37,7 @@ class ConstructorOpaqueStructTwinNormal extends RustOpaque {
         that: this,
       );
 
+// HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.
   static Future<ConstructorOpaqueStructTwinNormal> newInstance(
           {dynamic hint}) =>
       RustLib.instance.api.constructorOpaqueStructTwinNormalNew(hint: hint);
@@ -115,6 +116,7 @@ class ConstructorTranslatableStructTwinNormal {
     required this.one,
   });
 
+  // HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.
   static Future<ConstructorTranslatableStructTwinNormal> newInstance(
           {dynamic hint}) =>
       RustLib.instance.api
