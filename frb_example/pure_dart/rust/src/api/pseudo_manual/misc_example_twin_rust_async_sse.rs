@@ -3,6 +3,7 @@
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
 use crate::auxiliary::sample_types::MySize;
+use crate::DeclaredAboveApiFolder;
 use flutter_rust_bridge::frb;
 use log::info;
 
@@ -159,3 +160,10 @@ pub struct MySizeFreezedTwinRustAsyncSse {
 // To test parsing of `pub(super)`
 #[allow(dead_code)]
 pub(super) fn visibility_restricted_func_twin_rust_async_sse() {}
+
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn handle_declarations_above_api_folder_twin_rust_async_sse(
+    my_struct: DeclaredAboveApiFolder,
+) -> DeclaredAboveApiFolder {
+    my_struct
+}
