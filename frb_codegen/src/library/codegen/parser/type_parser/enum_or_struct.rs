@@ -45,7 +45,7 @@ where
                 (self.parser_info().object_pool).insert(ident.clone(), parsed_object);
             }
 
-            if attrs_opaque.is_none() && compute_default_opaque() {
+            if attrs_opaque.is_none() && self.compute_default_opaque(ident) {
                 debug!("Treat {name} as opaque by default");
                 return Ok(Some(self.parse_opaque(&namespaced_name)?));
             }
@@ -56,7 +56,7 @@ where
         Ok(None)
     }
 
-    fn parse_opaque(&mut self, namespaced_name: &NamespacedName) -> Result<IrType, Error> {
+    fn parse_opaque(&mut self, namespaced_name: &NamespacedName) -> anyhow::Result<IrType> {
         self.parse_type_rust_auto_opaque(
             Some(namespaced_name.namespace),
             &syn::parse_str(&namespaced_name.name)?,
@@ -82,7 +82,7 @@ where
         ty: &Type,
     ) -> anyhow::Result<IrType>;
 
-    fn compute_default_opaque(&mut self) -> bool;
+    fn compute_default_opaque(&mut self, ident: Id) -> bool;
 }
 
 #[derive(Clone, Debug, Default)]
