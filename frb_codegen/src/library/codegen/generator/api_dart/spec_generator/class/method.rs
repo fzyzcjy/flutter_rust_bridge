@@ -26,7 +26,15 @@ pub(crate) fn generate_api_methods(
 }
 
 // TODO move
-pub(crate) fn has_default_dart_constructor(name: &NamespacedName, all_funcs: &[IrFunc]) -> bool {
+pub(crate) fn dart_constructor_postfix(name: &NamespacedName, all_funcs: &[IrFunc]) -> String {
+    if has_default_dart_constructor(name, all_funcs) {
+        ".raw"
+    } else {
+        ""
+    };
+}
+
+fn has_default_dart_constructor(name: &NamespacedName, all_funcs: &[IrFunc]) -> bool {
     get_methods_of_enum_or_struct(name, all_funcs)
         .iter()
         .any(|m| {

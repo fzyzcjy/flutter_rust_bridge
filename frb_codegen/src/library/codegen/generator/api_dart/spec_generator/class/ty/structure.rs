@@ -1,5 +1,5 @@
 use crate::codegen::generator::api_dart::spec_generator::class::method::{
-    generate_api_methods, has_default_dart_constructor,
+    dart_constructor_postfix, generate_api_methods, has_default_dart_constructor,
 };
 use crate::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
@@ -16,12 +16,7 @@ impl<'a> ApiDartGeneratorClassTrait for StructRefApiDartGenerator<'a> {
 
         let methods = generate_api_methods(&src.name, self.context);
 
-        let constructor_postfix =
-            if has_default_dart_constructor(&src.name, &self.context.ir_pack.funcs) {
-                ".raw"
-            } else {
-                ""
-            };
+        let constructor_postfix = dart_constructor_postfix(&src.name, &self.context.ir_pack.funcs);
 
         Some(ApiDartGeneratedClass {
             namespace: src.name.namespace.clone(),
