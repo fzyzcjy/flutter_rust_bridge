@@ -142,6 +142,8 @@ pub struct MySizeFreezedTwinNormal {
 #[allow(dead_code)]
 pub(super) fn visibility_restricted_func_twin_normal() {}
 
-pub fn handle_declarations_above_api_folder(my_struct: DeclaredAboveApiFolder) -> DeclaredAboveApiFolder {
+pub fn handle_declarations_above_api_folder_twin_normal(
+    my_struct: DeclaredAboveApiFolder,
+) -> DeclaredAboveApiFolder {
     my_struct
 }
