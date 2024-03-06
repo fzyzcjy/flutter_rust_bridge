@@ -92,7 +92,7 @@ fn extract_module(raw_expanded: &str, module: Option<String>) -> Result<String> 
 fn run_cargo_expand(
     rust_crate_dir: &Path,
     dumper: &Dumper,
-    _allow_auto_install: bool,
+    allow_auto_install: bool,
 ) -> Result<String> {
     // let _pb = simple_progress("Run cargo-expand".to_owned(), 1);
     debug!("Running cargo expand in '{rust_crate_dir:?}'");
@@ -113,7 +113,7 @@ fn run_cargo_expand(
     let stderr = String::from_utf8(output.stderr)?;
 
     if stdout.is_empty() {
-        if stderr.contains("no such command: `expand`") {
+        if stderr.contains("no such command: `expand`") && allow_auto_install {
             info!("Cargo expand is not installed. Automatically install and re-run.");
             install_cargo_expand()?;
             return run_cargo_expand(rust_crate_dir, dumper, false);
