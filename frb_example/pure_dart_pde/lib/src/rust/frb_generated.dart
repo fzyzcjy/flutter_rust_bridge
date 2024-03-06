@@ -35418,7 +35418,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-    return ConstructorTranslatableSyncStructTwinNormal(
+    return ConstructorTranslatableSyncStructTwinNormal.raw(
       one: dco_decode_String(arr[0]),
     );
   }
@@ -44064,7 +44064,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_one = sse_decode_String(deserializer);
-    return ConstructorTranslatableSyncStructTwinNormal(one: var_one);
+    return ConstructorTranslatableSyncStructTwinNormal.raw(one: var_one);
   }
 
   @protected
