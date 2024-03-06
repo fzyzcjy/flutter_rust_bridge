@@ -2,6 +2,8 @@
 
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "rustAsync", "sse", "sync sse", "rustAsync sse"]}
 
+#![allow(clippy::new_without_default)]
+
 use flutter_rust_bridge::frb;
 
 pub struct ConstructorTranslatableStructTwinNormal {
