@@ -51,7 +51,10 @@ fn generate_end_api_text(
     let path_chunks_len = namespace.path().len();
     ensure!(
         path_chunks_len >= 2,
-        "Please do not put structs in `lib.rs`"
+        // This will stop the whole generator and tell the users, so we do not care about testing it
+        // frb-coverage:ignore-start
+        "Please do not put structs in `lib.rs`",
+        // frb-coverage:ignore-end
     );
     // TODO use relative path calculation
     let path_frb_generated = "../".repeat(path_chunks_len - 2) + "frb_generated.dart";
