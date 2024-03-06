@@ -1,5 +1,5 @@
 use crate::codegen::generator::api_dart::spec_generator::class::method::{
-    generate_api_methods, has_default_dart_constructor, GeneratedApiMethods,
+    generate_api_methods, has_default_dart_constructor,
 };
 use crate::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;

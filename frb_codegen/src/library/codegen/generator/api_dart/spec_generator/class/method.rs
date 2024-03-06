@@ -20,26 +20,28 @@ pub(crate) fn generate_api_methods(
     context: ApiDartGeneratorContext,
 ) -> Vec<String> {
     get_methods_of_enum_or_struct(generalized_class_name, &context.ir_pack.funcs)
-        .into_iter()
+        .iter()
         .map(|func| generate_api_method(func, context))
         .collect_vec()
 }
 
 // TODO move
 pub(crate) fn has_default_dart_constructor(name: &NamespacedName, all_funcs: &[IrFunc]) -> bool {
-    get_methods_of_enum_or_struct(generalized_class_name, &context.ir_pack.funcs)
+    get_methods_of_enum_or_struct(name, all_funcs)
         .iter()
         .any(|m| {
             m.default_constructor_mode() == Some(IrFuncDefaultConstructorMode::DartConstructor)
         })
 }
 
-fn get_methods_of_enum_or_struct(name: &NamespacedName, all_funcs: &[IrFunc]) -> Vec<IrFunc> {
+fn get_methods_of_enum_or_struct<'a>(
+    name: &NamespacedName,
+    all_funcs: &'a [IrFunc],
+) -> Vec<&'a IrFunc> {
     (all_funcs.iter())
         .filter(|f| {
             matches!(&f.owner, IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod{ enum_or_struct_name, .. }) if enum_or_struct_name == name)
         })
-        .cloned()
         .collect_vec()
 }
 
