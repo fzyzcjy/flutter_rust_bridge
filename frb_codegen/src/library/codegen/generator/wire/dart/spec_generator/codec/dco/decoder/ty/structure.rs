@@ -1,3 +1,4 @@
+use crate::codegen::generator::api_dart::spec_generator::class::method::dart_constructor_postfix;
 use crate::codegen::generator::wire::dart::spec_generator::codec::dco::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::dco::decoder::ty::WireDartCodecDcoGeneratorDecoderTrait;
 use crate::codegen::ir::func::IrFuncOwnerInfo;
@@ -25,7 +26,7 @@ impl<'a> WireDartCodecDcoGeneratorDecoderTrait for StructRefWireDartCodecDcoGene
         let inner = inner.join("\n");
         let cast = "final arr = raw as List<dynamic>;".to_string();
         let safe_check = format!("if (arr.length != {}) throw Exception('unexpected arr length: expect {} but see ${{arr.length}}');", s.fields.len(), s.fields.len());
-        let dotted_ctor_name = TODO;
+        let ctor_postfix = dart_constructor_postfix(&s.name, &self.context.ir_pack.funcs);
         format!(
             "{cast}
                 {safe_check}

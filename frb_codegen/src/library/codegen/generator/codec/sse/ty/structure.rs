@@ -1,3 +1,4 @@
+use crate::codegen::generator::api_dart::spec_generator::class::method::dart_constructor_postfix;
 use crate::codegen::generator::codec::sse::ty::*;
 use crate::codegen::generator::misc::StructOrRecord;
 use crate::codegen::generator::misc::StructOrRecord::Struct;
@@ -72,7 +73,7 @@ impl GeneralizedStructGenerator {
         let ctor = match self.mode {
             Struct => lang.call_constructor(
                 &override_struct_name.unwrap_or_else(|| self.st.name.style(lang)),
-                TODO,
+                dart_constructor_postfix(&src.name, TODO),
                 &(self.st.fields.iter())
                     .map(|x| x.name.style(lang))
                     .collect_vec(),
