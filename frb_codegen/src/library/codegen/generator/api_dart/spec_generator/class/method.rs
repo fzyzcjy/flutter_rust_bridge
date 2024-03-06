@@ -86,17 +86,12 @@ fn generate_signature(
     method_info: &IrFuncOwnerInfoMethod,
     func_params: Vec<String>,
 ) -> String {
+    let is_static_method = method_info.mode == IrFuncOwnerInfoMethodMode::Static;
+    let maybe_static = if is_static_method { "static" } else { "" };
     let return_type = generate_function_dart_return_type(
         &func.mode,
         &ApiDartGenerator::new(func.output.clone(), context).dart_api_type(),
     );
-
-    if method_info.default_constructor && func.mode == IrFuncMode::Sync {
-        return format!("factory {return_type}({func_params})");
-    }
-
-    let is_static_method = method_info.mode == IrFuncOwnerInfoMethodMode::Static;
-    let maybe_static = if is_static_method { "static" } else { "" };
     let method_name = if method_info.default_constructor {
         format!("newInstance")
     } else {
@@ -107,6 +102,10 @@ fn generate_signature(
     } else {
         (format!("({{ {} }})", func_params.join(",")), "")
     };
+
+    if method_info.default_constructor && func.mode == IrFuncMode::Sync {
+        return format!("factory {return_type}({func_params})");
+    }
 
     format!("{maybe_static} {return_type} {maybe_getter} {method_name}{func_params}")
 }
