@@ -46,7 +46,8 @@ where
             }
 
             if attrs_opaque.is_none()
-                && Self::compute_default_opaque(&self.parser_info().object_pool[&ident])
+                && &(self.parser_info().object_pool.get(&ident))
+                    .map_or(false, |obj| Self::compute_default_opaque(obj))
             {
                 debug!("Treat {name} as opaque by default");
                 return Ok(Some(self.parse_opaque(&namespaced_name)?));
