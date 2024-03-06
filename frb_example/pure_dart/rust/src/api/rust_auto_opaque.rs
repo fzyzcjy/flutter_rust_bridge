@@ -267,6 +267,18 @@ pub fn rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_normal(
     EnumWithGoodAndOpaqueTwinNormal::Opaque(NonCloneSimpleTwinNormal { inner: 42 })
 }
 
+// ================ struct/enum with both encodable and opaque fields, without non_opaque option ===================
+
+pub struct StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal {
+    pub good: String,
+    pub opaque: NonCloneSimpleTwinNormal,
+}
+
+pub enum EnumWithGoodAndOpaqueWithoutOptionTwinNormal {
+    Good(String),
+    Opaque(NonCloneSimpleTwinNormal),
+}
+
 // ================ enum opaque type ===================
 
 pub fn rust_auto_opaque_enum_arg_borrow_twin_normal(arg: &NonCloneSimpleEnumTwinNormal) {
