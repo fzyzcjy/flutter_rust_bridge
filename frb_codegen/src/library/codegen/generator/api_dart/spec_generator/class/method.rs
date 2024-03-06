@@ -162,25 +162,3 @@ fn generate_implementation(
         format!("{dart_api_instance}.{func_name}({extra_arg_name}: this, {arg_names})")
     }
 }
-
-#[derive(Clone, Copy, Eq, PartialEq)]
-enum DefaultConstructorMode {
-    DartConstructor,
-    StaticMethod,
-}
-
-impl DefaultConstructorMode {
-    fn parse(func: &IrFunc, method_info: &IrFuncOwnerInfoMethod) -> Option<Self> {
-        if method_info.actual_method_name == "new" {
-            if method_info.mode == IrFuncOwnerInfoMethodMode::Static
-                && func.mode == IrFuncMode::Sync
-            {
-                Some(Self::DartConstructor)
-            } else {
-                Some(Self::StaticMethod)
-            }
-        } else {
-            None
-        }
-    }
-}
