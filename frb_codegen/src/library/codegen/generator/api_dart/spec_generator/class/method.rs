@@ -150,7 +150,7 @@ enum DefaultConstructorMode {
 }
 
 impl DefaultConstructorMode {
-    fn parse(func: &IrFunc) -> Option<Self> {
+    fn parse(func: &IrFunc, method_info: &IrFuncOwnerInfoMethod) -> Option<Self> {
         if_then_some!(let IrFuncOwnerInfo::Method(info) = &func.owner, info).and_then(
             |method_info| {
                 if method_info.actual_method_name == "new" {
