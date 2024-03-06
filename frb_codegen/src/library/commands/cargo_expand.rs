@@ -103,7 +103,11 @@ fn unwrap_frb_attrs_in_doc(code: &str) -> Cow<str> {
         static ref PATTERN: Regex =
             Regex::new(r####"#\[doc =[\s\n]*r###"frb_marker: ([\s\S]*?)"###]"####).unwrap();
     }
-    PATTERN.replace_all(code, "$1")
+    // TODO rm this log
+    info!("hi unwrap_frb_attrs_in_doc input={code}");
+    let ans = PATTERN.replace_all(code, "$1");
+    info!("hi unwrap_frb_attrs_in_doc output={}", ans.to_string());
+    ans
 }
 
 fn run_cargo_expand(
