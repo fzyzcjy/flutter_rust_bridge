@@ -8,9 +8,6 @@ impl<'a> WireDartCodecDcoGeneratorDecoderTrait for StructRefWireDartCodecDcoGene
     fn generate_impl_decode_body(&self) -> String {
         let s = self.ir.get(self.context.ir_pack);
 
-        let _has_methods = (self.context.ir_pack.funcs.iter())
-            .any(|f| matches!(&f.owner, IrFuncOwnerInfo::Method(_)));
-
         let inner = s
             .fields
             .iter()
