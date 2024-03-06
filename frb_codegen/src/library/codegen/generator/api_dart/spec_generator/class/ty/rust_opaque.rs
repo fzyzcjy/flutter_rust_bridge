@@ -24,7 +24,6 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
             ),
             self.context,
         )
-        .methods
         .join("\n");
 
         Some(ApiDartGeneratedClass {

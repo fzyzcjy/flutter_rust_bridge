@@ -15,34 +15,26 @@ use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartG
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 
-pub(crate) struct GeneratedApiMethods {
-    pub methods: Vec<String>,
-    pub has_default_dart_constructor: bool,
-}
-
 pub(crate) fn generate_api_methods(
     generalized_class_name: &NamespacedName,
     context: ApiDartGeneratorContext,
-) -> GeneratedApiMethods {
-    let infos = get_methods_of_enum_or_struct(&context.ir_pack.funcs)
+) -> Vec<String> {
+    get_methods_of_enum_or_struct(generalized_class_name, &context.ir_pack.funcs)
         .into_iter()
         .map(|func| generate_api_method(func, context))
-        .collect_vec();
-
-    let has_default_dart_constructor =
-        (infos.iter()).any(|x| x.1 == Some(IrFuncDefaultConstructorMode::DartConstructor));
-    let methods = infos.into_iter().map(|x| x.0).collect_vec();
-    GeneratedApiMethods {
-        methods,
-        has_default_dart_constructor,
-    }
+        .collect_vec()
 }
 
 // TODO move
-pub(crate) fn get_methods_of_enum_or_struct(
-    all_funcs: &[IrFunc],
-    name: &NamespacedName,
-) -> Vec<IrFunc> {
+pub(crate) fn has_default_dart_constructor(name: &NamespacedName, all_funcs: &[IrFunc]) -> bool {
+    get_methods_of_enum_or_struct(generalized_class_name, &context.ir_pack.funcs)
+        .iter()
+        .any(|m| {
+            m.default_constructor_mode() == Some(IrFuncDefaultConstructorMode::DartConstructor)
+        })
+}
+
+fn get_methods_of_enum_or_struct(name: &NamespacedName, all_funcs: &[IrFunc]) -> Vec<IrFunc> {
     (all_funcs.iter())
         .filter(|f| {
             matches!(&f.owner, IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod{ enum_or_struct_name, .. }) if enum_or_struct_name == name)
@@ -51,14 +43,10 @@ pub(crate) fn get_methods_of_enum_or_struct(
         .collect_vec()
 }
 
-fn generate_api_method(
-    func: &IrFunc,
-    context: ApiDartGeneratorContext,
-) -> (String, Option<IrFuncDefaultConstructorMode>) {
+fn generate_api_method(func: &IrFunc, context: ApiDartGeneratorContext) -> String {
     let method_info =
         if_then_some!(let IrFuncOwnerInfo::Method(info) = &func.owner , info).unwrap();
     let is_static_method = method_info.mode == IrFuncOwnerInfoMethodMode::Static;
-
     let default_constructor_mode = func.default_constructor_mode();
 
     // skip the first as it's the method 'self'
@@ -71,10 +59,7 @@ fn generate_api_method(
     let arg_names = generate_arg_names(func, is_static_method, skip_count).concat();
     let implementation = generate_implementation(func, context, is_static_method, arg_names);
 
-    (
-        format!("{comments}{signature}=>{implementation};\n\n"),
-        default_constructor_mode,
-    )
+    format!("{comments}{signature}=>{implementation};\n\n")
 }
 
 fn generate_comments(
