@@ -45,7 +45,6 @@ pub(crate) fn text_golden_test(actual: String, matcher_path: &Path) -> anyhow::R
         // Otherwise tests in macos/linux passes but fails on windows
         |x| Ok(x.replace("\r\n", "\n")),
         Some(|expect, actual| {
-            #[cfg(test)]
             use pretty_assertions::assert_str_eq as assert_eq;
             assert_eq!(expect, actual);
         }),
@@ -63,7 +62,6 @@ where
     T: Eq + Debug,
     F: Fn(String) -> anyhow::Result<T>,
 {
-    #[cfg(test)]
     use pretty_assertions::assert_eq;
     // This is *test* utils, not a part of real codegen, so no need to consider coverage
     // frb-coverage:ignore-start
