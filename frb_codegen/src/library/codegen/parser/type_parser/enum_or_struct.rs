@@ -45,7 +45,7 @@ where
                 (self.parser_info().object_pool).insert(ident.clone(), parsed_object);
             }
 
-            if attrs_opaque.is_none() && TODO {
+            if attrs_opaque.is_none() && compute_default_opaque() {
                 debug!("Treat {name} as opaque by default");
                 return Ok(Some(self.parse_opaque(&namespaced_name)?));
             }
@@ -81,6 +81,8 @@ where
         namespace: Option<Namespace>,
         ty: &Type,
     ) -> anyhow::Result<IrType>;
+
+    fn compute_default_opaque(&mut self) -> bool;
 }
 
 #[derive(Clone, Debug, Default)]
@@ -110,8 +112,4 @@ fn compute_name_and_wrapper_name(
         None
     };
     (NamespacedName::new(namespace.clone(), name), wrapper_name)
-}
-
-fn compute_default_opaque() -> bool {
-    TODO
 }
