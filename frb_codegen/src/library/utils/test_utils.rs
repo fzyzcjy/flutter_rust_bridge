@@ -45,8 +45,7 @@ pub(crate) fn text_golden_test(actual: String, matcher_path: &Path) -> anyhow::R
         // Otherwise tests in macos/linux passes but fails on windows
         |x| Ok(x.replace("\r\n", "\n")),
         Some(|expect, actual| {
-            use pretty_assertions::assert_str_eq as assert_eq;
-            assert_eq!(expect, actual);
+            pretty_assertions::assert_str_eq!(expect, actual);
         }),
     )
 }
@@ -62,7 +61,6 @@ where
     T: Eq + Debug,
     F: Fn(String) -> anyhow::Result<T>,
 {
-    use pretty_assertions::assert_eq;
     // This is *test* utils, not a part of real codegen, so no need to consider coverage
     // frb-coverage:ignore-start
     let expect = deserializer(if matcher_path.exists() {
@@ -77,7 +75,8 @@ where
             fs::write(matcher_path, actual_str)?;
         }
     } else {
-        let asserter = asserter.unwrap_or(|expect, actual| assert_eq!(expect, actual));
+        let asserter =
+            asserter.unwrap_or(|expect, actual| pretty_assertions::assert_eq!(expect, actual));
         asserter(&expect, &actual);
     }
 
