@@ -52,7 +52,6 @@ fn generate_api_method(func: &IrFunc, context: ApiDartGeneratorContext) -> Strin
 
 fn generate_comments(
     func: &IrFunc,
-    method_info: &IrFuncOwnerInfoMethod,
     default_constructor_mode: Option<DefaultConstructorMode>,
 ) -> String {
     let mut ans = String::new();
