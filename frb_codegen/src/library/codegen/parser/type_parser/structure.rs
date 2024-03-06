@@ -123,5 +123,5 @@ impl EnumOrStructParser<IrStructIdent, IrStruct, Struct, ItemStruct>
 }
 
 pub(super) fn structure_compute_default_opaque(s: &IrStruct) -> bool {
-    (s.fields.iter()).any(|f| matches!(f.ty, IrType::RustOpaque(_) | IrType::RustAutoOpaque(_)))
+    (s.fields.iter()).any(|f| matches!(f.ty, IrType::RustAutoOpaque(_)))
 }
