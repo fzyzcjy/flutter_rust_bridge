@@ -125,7 +125,7 @@ fn generate_signature(
     };
 
     if default_constructor_mode == Some(DefaultConstructorMode::DartConstructor) {
-        return format!("factory {return_type}({func_params})");
+        return format!("factory {return_type}{func_params}");
     }
 
     format!("{maybe_static} {return_type} {maybe_getter} {method_name}{func_params}")
