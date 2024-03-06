@@ -27,11 +27,10 @@ pub(crate) fn generate_api_methods(
 }
 
 fn generate_api_method(func: &IrFunc, context: ApiDartGeneratorContext) -> String {
-    let method_info =
-        if_then_some!(let IrFuncOwnerInfo::Method(info) = &func.owner , info).unwrap();
+    let method_info = if_then_some!(let IrFuncOwnerInfo::Method(info) = &func.owner, info).unwrap();
     let is_static_method = method_info.mode == IrFuncOwnerInfoMethodMode::Static;
 
-    let default_constructor_mode = DefaultConstructorMode::parse(func, method_info);
+    let default_constructor_mode = DefaultConstructorMode::parse(func);
 
     // skip the first as it's the method 'self'
     let skip_count = usize::from(!is_static_method);
@@ -152,16 +151,20 @@ enum DefaultConstructorMode {
 
 impl DefaultConstructorMode {
     fn parse(func: &IrFunc, method_info: &IrFuncOwnerInfoMethod) -> Option<Self> {
-        if method_info.actual_method_name == "new" {
-            if method_info.mode == IrFuncOwnerInfoMethodMode::Static
-                && func.mode == IrFuncMode::Sync
-            {
-                Some(Self::DartConstructor)
-            } else {
-                Some(Self::StaticMethod)
-            }
-        } else {
-            None
-        }
+        if_then_some!(let IrFuncOwnerInfo::Method(info) = &func.owner, info).and_then(
+            |method_info| {
+                if method_info.actual_method_name == "new" {
+                    if method_info.mode == IrFuncOwnerInfoMethodMode::Static
+                        && func.mode == IrFuncMode::Sync
+                    {
+                        Some(Self::DartConstructor)
+                    } else {
+                        Some(Self::StaticMethod)
+                    }
+                } else {
+                    None
+                }
+            },
+        )
     }
 }
