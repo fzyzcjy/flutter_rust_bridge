@@ -82,9 +82,9 @@ impl IrFunc {
             if method_info.mode == IrFuncOwnerInfoMethodMode::Static
                 && self.mode == IrFuncMode::Sync
             {
-                Some(Self::DartConstructor)
+                Some(IrFuncDefaultConstructorMode::DartConstructor)
             } else {
-                Some(Self::StaticMethod)
+                Some(IrFuncDefaultConstructorMode::StaticMethod)
             }
         } else {
             None
