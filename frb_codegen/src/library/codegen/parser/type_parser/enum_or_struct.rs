@@ -27,8 +27,9 @@ where
             let namespaced_name = NamespacedName::new(namespace, name.to_string());
 
             let attrs = FrbAttributes::parse(src_object.attrs())?;
-            if attrs.opaque() {
-                debug!("Recognize {name} has opaque attribute");
+            let opaque = attrs.opaque().unwrap_or_else(|| compute_default_opaque());
+            if opaque {
+                debug!("Recognize {name} as opaque");
                 return Ok(Some(self.parse_type_rust_auto_opaque(
                     Some(namespaced_name.namespace),
                     &syn::parse_str(&namespaced_name.name)?,
@@ -100,4 +101,8 @@ fn compute_name_and_wrapper_name(
         None
     };
     (NamespacedName::new(namespace.clone(), name), wrapper_name)
+}
+
+fn compute_default_opaque() -> bool {
+    TODO
 }
