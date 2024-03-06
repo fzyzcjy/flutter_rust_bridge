@@ -48,15 +48,9 @@ impl CachedCargoExpand {
 
         let expanded = match self.cache.entry(rust_crate_dir.to_owned()) {
             Occupied(entry) => entry.into_mut(),
-            Vacant(entry) => entry.insert(
-                unwrap_frb_attrs_in_doc(&run_cargo_expand(
-                    rust_crate_dir,
-                    r#"build.rustflags="--cfg frb_expand""#,
-                    dumper,
-                    true,
-                )?)
-                .into_owned(),
-            ),
+            Vacant(entry) => {
+                entry.insert(&run_cargo_expand_with_frb_aware(rust_crate_dir, dumper)?)
+            }
         };
 
         extract_module(expanded, module)
@@ -92,6 +86,27 @@ fn extract_module(raw_expanded: &str, module: Option<String>) -> Result<String> 
         return Ok(expanded.to_owned());
     }
     Ok(raw_expanded.to_owned())
+}
+
+fn run_cargo_expand_with_frb_aware(rust_crate_dir: &Path, dumper: &Dumper) -> Result<String> {
+    Ok(unwrap_frb_attrs_in_doc(&run_cargo_expand(
+        rust_crate_dir,
+        r#"build.rustflags="--cfg frb_expand""#,
+        dumper,
+        true,
+    )?)?
+    .into_owned())
+}
+
+/// Turns `#[doc = "frb_marker: .."]` back into `#[frb(..)]`, usually produced
+/// as a side-effect of cargo-expand.
+// NOTE: The amount of pounds must match exactly with the implementation in frb_macros
+fn unwrap_frb_attrs_in_doc(code: &str) -> Cow<str> {
+    lazy_static! {
+        static ref PATTERN: Regex =
+            Regex::new(r####"#\[doc =[\s\n]*r###"frb_marker: ([\s\S]*?)"###]"####).unwrap();
+    }
+    PATTERN.replace_all(code, "$1")
 }
 
 fn run_cargo_expand(
@@ -133,17 +148,6 @@ fn run_cargo_expand(
     let ans = stdout.lines().skip(1).join("\n");
     dumper.dump_str(ConfigDumpContent::Source, "cargo_expand.rs", &ans)?;
     Ok(ans)
-}
-
-/// Turns `#[doc = "frb_marker: .."]` back into `#[frb(..)]`, usually produced
-/// as a side-effect of cargo-expand.
-// NOTE: The amount of pounds must match exactly with the implementation in frb_macros
-fn unwrap_frb_attrs_in_doc(code: &str) -> Cow<str> {
-    lazy_static! {
-        static ref PATTERN: Regex =
-            Regex::new(r####"#\[doc =[\s\n]*r###"frb_marker: ([\s\S]*?)"###]"####).unwrap();
-    }
-    PATTERN.replace_all(code, "$1")
 }
 
 fn install_cargo_expand() -> Result<()> {
