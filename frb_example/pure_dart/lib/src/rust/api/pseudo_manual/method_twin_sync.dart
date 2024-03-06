@@ -78,6 +78,27 @@ class ConcatenateWithTwinSync {
           a == other.a;
 }
 
+class ConstructorStructTwinSync {
+  final String one;
+
+  const ConstructorStructTwinSync({
+    required this.one,
+  });
+
+  static ConstructorStructTwinSync newTwinSync({dynamic hint}) =>
+      RustLib.instance.api.constructorStructTwinSyncNewTwinSync(hint: hint);
+
+  @override
+  int get hashCode => one.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ConstructorStructTwinSync &&
+          runtimeType == other.runtimeType &&
+          one == other.one;
+}
+
 class Log2TwinSync {
   final int key;
   final String value;

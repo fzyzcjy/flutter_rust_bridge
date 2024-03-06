@@ -1977,6 +1977,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ConcatenateWithTwinSync dco_decode_concatenate_with_twin_sync(dynamic raw);
 
   @protected
+  ConstructorStructTwinNormal dco_decode_constructor_struct_twin_normal(
+      dynamic raw);
+
+  @protected
+  ConstructorStructTwinRustAsync dco_decode_constructor_struct_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  ConstructorStructTwinSync dco_decode_constructor_struct_twin_sync(
+      dynamic raw);
+
+  @protected
   ContainsMirroredSubStructTwinNormal
       dco_decode_contains_mirrored_sub_struct_twin_normal(dynamic raw);
 
@@ -5406,6 +5418,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   ConcatenateWithTwinSync sse_decode_concatenate_with_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  ConstructorStructTwinNormal sse_decode_constructor_struct_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  ConstructorStructTwinRustAsync sse_decode_constructor_struct_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  ConstructorStructTwinSync sse_decode_constructor_struct_twin_sync(
       SseDeserializer deserializer);
 
   @protected
@@ -9069,6 +9093,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_concatenate_with_twin_sync(
       ConcatenateWithTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_constructor_struct_twin_normal(
+      ConstructorStructTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_constructor_struct_twin_rust_async(
+      ConstructorStructTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_constructor_struct_twin_sync(
+      ConstructorStructTwinSync self, SseSerializer serializer);
 
   @protected
   void sse_encode_contains_mirrored_sub_struct_twin_normal(

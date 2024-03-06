@@ -5092,6 +5092,38 @@ impl CstDecode<crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinS
         }
     }
 }
+impl CstDecode<crate::api::method::ConstructorStructTwinNormal>
+    for wire_cst_constructor_struct_twin_normal
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> crate::api::method::ConstructorStructTwinNormal {
+        crate::api::method::ConstructorStructTwinNormal {
+            one: self.one.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::method_twin_rust_async::ConstructorStructTwinRustAsync>
+    for wire_cst_constructor_struct_twin_rust_async
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::method_twin_rust_async::ConstructorStructTwinRustAsync {
+        crate::api::pseudo_manual::method_twin_rust_async::ConstructorStructTwinRustAsync {
+            one: self.one.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::method_twin_sync::ConstructorStructTwinSync>
+    for wire_cst_constructor_struct_twin_sync
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> crate::api::pseudo_manual::method_twin_sync::ConstructorStructTwinSync {
+        crate::api::pseudo_manual::method_twin_sync::ConstructorStructTwinSync {
+            one: self.one.cst_decode(),
+        }
+    }
+}
 impl CstDecode<crate::api::mirror::ContainsMirroredSubStructTwinNormal>
     for wire_cst_contains_mirrored_sub_struct_twin_normal
 {
@@ -10962,6 +10994,42 @@ impl Default for wire_cst_concatenate_with_twin_sync {
         Self::new_with_null_ptr()
     }
 }
+impl NewWithNullPtr for wire_cst_constructor_struct_twin_normal {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            one: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_constructor_struct_twin_normal {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_constructor_struct_twin_rust_async {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            one: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_constructor_struct_twin_rust_async {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_constructor_struct_twin_sync {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            one: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_constructor_struct_twin_sync {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
 impl NewWithNullPtr for wire_cst_contains_mirrored_sub_struct_twin_normal {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -15294,6 +15362,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinNormal_si
     that: *mut wire_cst_concatenate_with_twin_normal,
 ) {
     wire_ConcatenateWithTwinNormal_simple_getter_twin_normal_impl(port_, that)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConstructorStructTwinNormal_new(port_: i64) {
+    wire_ConstructorStructTwinNormal_new_impl(port_)
 }
 
 #[no_mangle]
@@ -25514,6 +25587,13 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinRustAsync
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConstructorStructTwinRustAsync_new_twin_rust_async(
+    port_: i64,
+) {
+    wire_ConstructorStructTwinRustAsync_new_twin_rust_async_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_MyCallableTwinRustAsync_call(
     port_: i64,
     that: *mut wire_cst_my_callable_twin_rust_async,
@@ -25680,6 +25760,21 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinRustAsync
     data_len_: i32,
 ) {
     wire_ConcatenateWithTwinRustAsyncSse_simple_getter_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConstructorStructTwinRustAsyncSse_new_twin_rust_async_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_ConstructorStructTwinRustAsyncSse_new_twin_rust_async_sse_impl(
         port_,
         ptr_,
         rust_vec_len_,
@@ -25878,6 +25973,16 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinSse_simpl
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConstructorStructTwinSse_new_twin_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_ConstructorStructTwinSse_new_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_MyCallableTwinSse_call(
     port_: i64,
     ptr_: *mut u8,
@@ -26009,6 +26114,12 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinSync_simp
     that: *mut wire_cst_concatenate_with_twin_sync,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_ConcatenateWithTwinSync_simple_getter_twin_sync_impl(that)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConstructorStructTwinSync_new_twin_sync(
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_ConstructorStructTwinSync_new_twin_sync_impl()
 }
 
 #[no_mangle]
@@ -26163,6 +26274,15 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinSyncSse_s
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_ConcatenateWithTwinSyncSse_simple_getter_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConstructorStructTwinSyncSse_new_twin_sync_sse(
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_ConstructorStructTwinSyncSse_new_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
@@ -43198,6 +43318,21 @@ pub struct wire_cst_concatenate_with_twin_rust_async {
 #[derive(Clone, Copy)]
 pub struct wire_cst_concatenate_with_twin_sync {
     a: *mut wire_cst_list_prim_u_8_strict,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_constructor_struct_twin_normal {
+    one: *mut wire_cst_list_prim_u_8_strict,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_constructor_struct_twin_rust_async {
+    one: *mut wire_cst_list_prim_u_8_strict,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_constructor_struct_twin_sync {
+    one: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]

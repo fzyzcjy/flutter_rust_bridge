@@ -81,6 +81,29 @@ class ConcatenateWithTwinRustAsync {
           a == other.a;
 }
 
+class ConstructorStructTwinRustAsync {
+  final String one;
+
+  const ConstructorStructTwinRustAsync({
+    required this.one,
+  });
+
+  static Future<ConstructorStructTwinRustAsync> newTwinRustAsync(
+          {dynamic hint}) =>
+      RustLib.instance.api
+          .constructorStructTwinRustAsyncNewTwinRustAsync(hint: hint);
+
+  @override
+  int get hashCode => one.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ConstructorStructTwinRustAsync &&
+          runtimeType == other.runtimeType &&
+          one == other.one;
+}
+
 class Log2TwinRustAsync {
   final int key;
   final String value;

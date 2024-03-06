@@ -80,6 +80,28 @@ class ConcatenateWithTwinNormal {
           a == other.a;
 }
 
+class ConstructorStructTwinNormal {
+  final String one;
+
+  const ConstructorStructTwinNormal({
+    required this.one,
+  });
+
+  static Future<ConstructorStructTwinNormal> newConstructorStructTwinNormal(
+          {dynamic hint}) =>
+      RustLib.instance.api.constructorStructTwinNormalNew(hint: hint);
+
+  @override
+  int get hashCode => one.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ConstructorStructTwinNormal &&
+          runtimeType == other.runtimeType &&
+          one == other.one;
+}
+
 class Log2TwinNormal {
   final int key;
   final String value;

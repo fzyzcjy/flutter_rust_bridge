@@ -81,6 +81,28 @@ class ConcatenateWithTwinSyncSse {
           a == other.a;
 }
 
+class ConstructorStructTwinSyncSse {
+  final String one;
+
+  const ConstructorStructTwinSyncSse({
+    required this.one,
+  });
+
+  static ConstructorStructTwinSyncSse newTwinSyncSse({dynamic hint}) =>
+      RustLib.instance.api
+          .constructorStructTwinSyncSseNewTwinSyncSse(hint: hint);
+
+  @override
+  int get hashCode => one.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ConstructorStructTwinSyncSse &&
+          runtimeType == other.runtimeType &&
+          one == other.one;
+}
+
 class Log2TwinSyncSse {
   final int key;
   final String value;
