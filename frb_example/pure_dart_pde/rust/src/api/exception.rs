@@ -115,7 +115,7 @@ pub struct SomeStructTwinNormal {
 }
 
 impl SomeStructTwinNormal {
-    pub fn new_twin_normal(value: u32) -> SomeStructTwinNormal {
+    pub fn new(value: u32) -> SomeStructTwinNormal {
         SomeStructTwinNormal { value }
     }
 
@@ -193,7 +193,7 @@ pub struct CustomStructTwinNormal {
 }
 
 impl CustomStructTwinNormal {
-    pub fn new_twin_normal(message: String) -> CustomStructTwinNormal {
+    pub fn new(message: String) -> CustomStructTwinNormal {
         CustomStructTwinNormal { message }
     }
 
