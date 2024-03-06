@@ -18,7 +18,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for BoxedWireDartCodecCstGenerato
                 if self.ir.inner.is_primitive()
                     || matches!(
                         *self.ir.inner,
-                        IrType::RustOpaque(_) | IrType::DartOpaque(_)
+                        IrType::RustOpaque(_) | IrType::RustAutoOpaque(_) | IrType::DartOpaque(_)
                     )
                 {
                     format!(
