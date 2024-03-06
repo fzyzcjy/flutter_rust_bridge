@@ -7,7 +7,6 @@ use crate::codegen::ir::ty::enumeration::{
     IrEnum, IrEnumIdent, IrEnumMode, IrTypeEnumRef, IrVariant, IrVariantKind,
 };
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
-use crate::codegen::ir::ty::structure::IrStruct;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{Delegate, EnumRef};
 use crate::codegen::parser::attribute_parser::FrbAttributes;
@@ -16,8 +15,10 @@ use crate::codegen::parser::type_parser::enum_or_struct::{
     EnumOrStructParser, EnumOrStructParserInfo,
 };
 use crate::codegen::parser::type_parser::misc::parse_comments;
+use crate::codegen::parser::type_parser::structure::structure_compute_default_opaque;
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
+use crate::if_then_some;
 use std::collections::HashMap;
 use syn::{Attribute, Field, Ident, ItemEnum, Type, TypePath, Variant};
 
@@ -165,6 +166,13 @@ impl EnumOrStructParser<IrEnumIdent, IrEnum, Enum, ItemEnum>
         ty: &Type,
     ) -> anyhow::Result<IrType> {
         self.0.parse_type_rust_auto_opaque(namespace, ty)
+    }
+
+    fn compute_default_opaque(&mut self, obj: &IrEnum) -> bool {
+        obj.variants
+            .iter()
+            .filter_map(|variant| if_then_some!(variant.kind, IrVariantKind::Struct(s), s))
+            .any(|s| structure_compute_default_opaque(s))
     }
 }
 

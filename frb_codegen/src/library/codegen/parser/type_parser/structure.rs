@@ -118,6 +118,10 @@ impl EnumOrStructParser<IrStructIdent, IrStruct, Struct, ItemStruct>
     }
 
     fn compute_default_opaque(&mut self, obj: &IrStruct) -> bool {
-        TODO
+        structure_compute_default_opaque(obj)
     }
+}
+
+pub(super) fn structure_compute_default_opaque(s: &IrStruct) -> bool {
+    (s.fields.iter()).any(|f| matches!(f.ty, IrType::RustOpaque(_) | IrType::RustAutoOpaque(_)))
 }
