@@ -5,7 +5,7 @@ use crate::codegen::generator::api_dart::spec_generator::misc::{
     generate_dart_comments, generate_function_dart_return_type,
 };
 use crate::codegen::ir::func::{
-    IrFunc, IrFuncOwnerInfo, IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode,
+    IrFunc, IrFuncMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode,
 };
 use crate::codegen::ir::namespace::NamespacedName;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
@@ -50,7 +50,7 @@ fn generate_api_method(func: &IrFunc, context: ApiDartGeneratorContext) -> Strin
 fn generate_comments(func: &IrFunc, method_info: &IrFuncOwnerInfoMethod) -> String {
     let mut ans = String::new();
     if method_info.default_constructor {
-        ans += "// HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.\n";
+        ans += "  // HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.\n";
     }
     ans += &generate_dart_comments(&func.comments);
     ans
@@ -86,12 +86,13 @@ fn generate_signature(
     method_info: &IrFuncOwnerInfoMethod,
     func_params: Vec<String>,
 ) -> String {
-    let is_static_method = method_info.mode == IrFuncOwnerInfoMethodMode::Static;
-    let maybe_static = if is_static_method { "static" } else { "" };
     let return_type = generate_function_dart_return_type(
         &func.mode,
         &ApiDartGenerator::new(func.output.clone(), context).dart_api_type(),
     );
+
+    let is_static_method = method_info.mode == IrFuncOwnerInfoMethodMode::Static;
+    let maybe_static = if is_static_method { "static" } else { "" };
     let method_name = if method_info.default_constructor {
         format!("newInstance")
     } else {
