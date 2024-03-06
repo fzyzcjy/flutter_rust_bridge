@@ -16495,7 +16495,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<int>
+  ffi.Pointer<ffi.UintPtr>
       cst_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoi(
           NonCloneSimpleTwinMoi raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -16506,7 +16506,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<int>
+  ffi.Pointer<ffi.UintPtr>
       cst_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
           NonCloneSimpleTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -16517,7 +16517,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<int>
+  ffi.Pointer<ffi.UintPtr>
       cst_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync(
           NonCloneSimpleTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -16528,7 +16528,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<int>
+  ffi.Pointer<ffi.UintPtr>
       cst_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
           NonCloneSimpleTwinRustAsyncMoi raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -16539,7 +16539,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<int>
+  ffi.Pointer<ffi.UintPtr>
       cst_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
           NonCloneSimpleTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -16550,7 +16550,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<int>
+  ffi.Pointer<ffi.UintPtr>
       cst_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
           NonCloneSimpleTwinSyncMoi raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -20494,7 +20494,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<int>
+  ffi.Pointer<ffi.UintPtr>
       cst_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoi(
           NonCloneSimpleTwinMoi? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -20505,7 +20505,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<int>
+  ffi.Pointer<ffi.UintPtr>
       cst_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
           NonCloneSimpleTwinNormal? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -20516,7 +20516,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<int>
+  ffi.Pointer<ffi.UintPtr>
       cst_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync(
           NonCloneSimpleTwinRustAsync? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -20527,7 +20527,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<int>
+  ffi.Pointer<ffi.UintPtr>
       cst_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
           NonCloneSimpleTwinRustAsyncMoi? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -20538,7 +20538,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<int>
+  ffi.Pointer<ffi.UintPtr>
       cst_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
           NonCloneSimpleTwinSync? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -20549,7 +20549,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<int>
+  ffi.Pointer<ffi.UintPtr>
       cst_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
           NonCloneSimpleTwinSyncMoi? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
