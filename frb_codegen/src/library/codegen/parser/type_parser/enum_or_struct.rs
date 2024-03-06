@@ -45,7 +45,9 @@ where
                 (self.parser_info().object_pool).insert(ident.clone(), parsed_object);
             }
 
-            if attrs_opaque.is_none() && self.compute_default_opaque(ident) {
+            if attrs_opaque.is_none()
+                && self.compute_default_opaque(&self.parser_info().object_pool[&ident])
+            {
                 debug!("Treat {name} as opaque by default");
                 return Ok(Some(self.parse_opaque(&namespaced_name)?));
             }
@@ -82,7 +84,7 @@ where
         ty: &Type,
     ) -> anyhow::Result<IrType>;
 
-    fn compute_default_opaque(&mut self, ident: Id) -> bool;
+    fn compute_default_opaque(&mut self, obj: &Obj) -> bool;
 }
 
 #[derive(Clone, Debug, Default)]
