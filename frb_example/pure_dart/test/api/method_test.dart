@@ -111,4 +111,14 @@ Future<void> main({bool skipRustLibInit = false}) async {
           ['a', 'b']);
     });
   });
+
+  group('ConstructorStructTwinNormal', () {
+    test('call Rust constructor', () async {
+      expect(ConstructorStructTwinNormal().one, 'hello');
+    });
+
+    test('call Dart native constructor', () async {
+      expect(ConstructorStructTwinNormal.raw(one: 'a').one, 'a');
+    });
+  });
 }
