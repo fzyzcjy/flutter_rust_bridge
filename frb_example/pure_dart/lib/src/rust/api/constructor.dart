@@ -90,7 +90,7 @@ class ConstructorTranslatableStructTwinNormal {
 class ConstructorTranslatableSyncStructTwinNormal {
   final String one;
 
-  const ConstructorTranslatableSyncStructTwinNormal({
+  const ConstructorTranslatableSyncStructTwinNormal.raw({
     required this.one,
   });
 
