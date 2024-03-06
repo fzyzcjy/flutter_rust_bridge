@@ -29,10 +29,10 @@ impl<'a> WireDartCodecDcoGeneratorDecoderTrait for StructRefWireDartCodecDcoGene
         let cast = "final arr = raw as List<dynamic>;".to_string();
         let safe_check = format!("if (arr.length != {}) throw Exception('unexpected arr length: expect {} but see ${{arr.length}}');", s.fields.len(), s.fields.len());
         format!(
-            "{}
-                {}
-                return {}({});",
-            cast, safe_check, s.name.name, inner,
+            "{cast}
+                {safe_check}
+                return {name}({inner});",
+            name = s.name.name,
         )
     }
 }
