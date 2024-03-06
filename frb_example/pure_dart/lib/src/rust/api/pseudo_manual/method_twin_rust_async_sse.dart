@@ -15,6 +15,37 @@ Future<SumWithTwinRustAsyncSseArray3> getSumArrayTwinRustAsyncSse(
     RustLib.instance.api
         .getSumArrayTwinRustAsyncSse(a: a, b: b, c: c, hint: hint);
 
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<ConstructorOpaqueStructTwinRustAsyncSse>>
+@sealed
+class ConstructorOpaqueStructTwinRustAsyncSse extends RustOpaque {
+  ConstructorOpaqueStructTwinRustAsyncSse.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  ConstructorOpaqueStructTwinRustAsyncSse.sseDecode(
+      int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_ConstructorOpaqueStructTwinRustAsyncSse,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_ConstructorOpaqueStructTwinRustAsyncSse,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_ConstructorOpaqueStructTwinRustAsyncSsePtr,
+  );
+
+  Future<void> checkTwinRustAsyncSse({dynamic hint}) => RustLib.instance.api
+          .constructorOpaqueStructTwinRustAsyncSseCheckTwinRustAsyncSse(
+        that: this,
+      );
+
+  static Future<ConstructorOpaqueStructTwinRustAsyncSse> newTwinRustAsyncSse(
+          {dynamic hint}) =>
+      RustLib.instance.api
+          .constructorOpaqueStructTwinRustAsyncSseNewTwinRustAsyncSse(
+              hint: hint);
+}
+
 class ConcatenateWithTwinRustAsyncSse {
   final String a;
 
@@ -85,17 +116,17 @@ class ConcatenateWithTwinRustAsyncSse {
           a == other.a;
 }
 
-class ConstructorStructTwinRustAsyncSse {
+class ConstructorTranslatableStructTwinRustAsyncSse {
   final String one;
 
-  const ConstructorStructTwinRustAsyncSse({
+  const ConstructorTranslatableStructTwinRustAsyncSse({
     required this.one,
   });
 
-  static Future<ConstructorStructTwinRustAsyncSse> newTwinRustAsyncSse(
-          {dynamic hint}) =>
-      RustLib.instance.api
-          .constructorStructTwinRustAsyncSseNewTwinRustAsyncSse(hint: hint);
+  static Future<ConstructorTranslatableStructTwinRustAsyncSse>
+      newTwinRustAsyncSse({dynamic hint}) => RustLib.instance.api
+          .constructorTranslatableStructTwinRustAsyncSseNewTwinRustAsyncSse(
+              hint: hint);
 
   @override
   int get hashCode => one.hashCode;
@@ -103,7 +134,7 @@ class ConstructorStructTwinRustAsyncSse {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ConstructorStructTwinRustAsyncSse &&
+      other is ConstructorTranslatableStructTwinRustAsyncSse &&
           runtimeType == other.runtimeType &&
           one == other.one;
 }

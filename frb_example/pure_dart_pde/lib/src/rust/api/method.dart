@@ -14,6 +14,34 @@ Future<SumWithTwinNormalArray3> getSumArrayTwinNormal(
         {required int a, required int b, required int c, dynamic hint}) =>
     RustLib.instance.api.getSumArrayTwinNormal(a: a, b: b, c: c, hint: hint);
 
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<ConstructorOpaqueStructTwinNormal>>
+@sealed
+class ConstructorOpaqueStructTwinNormal extends RustOpaque {
+  ConstructorOpaqueStructTwinNormal.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  ConstructorOpaqueStructTwinNormal.sseDecode(int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_ConstructorOpaqueStructTwinNormal,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_ConstructorOpaqueStructTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_ConstructorOpaqueStructTwinNormalPtr,
+  );
+
+  Future<void> check({dynamic hint}) =>
+      RustLib.instance.api.constructorOpaqueStructTwinNormalCheck(
+        that: this,
+      );
+
+  static Future<ConstructorOpaqueStructTwinNormal>
+      newConstructorOpaqueStructTwinNormal({dynamic hint}) =>
+          RustLib.instance.api.constructorOpaqueStructTwinNormalNew(hint: hint);
+}
+
 class ConcatenateWithTwinNormal {
   final String a;
 
@@ -80,16 +108,17 @@ class ConcatenateWithTwinNormal {
           a == other.a;
 }
 
-class ConstructorStructTwinNormal {
+class ConstructorTranslatableStructTwinNormal {
   final String one;
 
-  const ConstructorStructTwinNormal({
+  const ConstructorTranslatableStructTwinNormal({
     required this.one,
   });
 
-  static Future<ConstructorStructTwinNormal> newConstructorStructTwinNormal(
-          {dynamic hint}) =>
-      RustLib.instance.api.constructorStructTwinNormalNew(hint: hint);
+  static Future<ConstructorTranslatableStructTwinNormal>
+      newConstructorTranslatableStructTwinNormal({dynamic hint}) =>
+          RustLib.instance.api
+              .constructorTranslatableStructTwinNormalNew(hint: hint);
 
   @override
   int get hashCode => one.hashCode;
@@ -97,7 +126,7 @@ class ConstructorStructTwinNormal {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ConstructorStructTwinNormal &&
+      other is ConstructorTranslatableStructTwinNormal &&
           runtimeType == other.runtimeType &&
           one == other.one;
 }
