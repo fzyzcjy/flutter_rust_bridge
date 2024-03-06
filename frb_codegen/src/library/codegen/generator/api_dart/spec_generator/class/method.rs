@@ -21,15 +21,11 @@ pub(crate) fn generate_api_methods(
         .filter(|f| {
             matches!(&f.owner, IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod{ enum_or_struct_name, .. }) if enum_or_struct_name == generalized_class_name)
         })
-        .map(|func| generate_api_method(func, &generalized_class_name.name, context))
+        .map(|func| generate_api_method(func, context))
         .collect_vec()
 }
 
-fn generate_api_method(
-    func: &IrFunc,
-    generalized_class_name: &str,
-    context: ApiDartGeneratorContext,
-) -> String {
+fn generate_api_method(func: &IrFunc, context: ApiDartGeneratorContext) -> String {
     let method_info = if let IrFuncOwnerInfo::Method(info) = &func.owner {
         info
     } else {
@@ -44,7 +40,7 @@ fn generate_api_method(
 
     let params = generate_params(func, context, is_static_method, skip_count);
     let comments = generate_dart_comments(&func.comments);
-    let signature = generate_signature(func, generalized_class_name, context, method_info, params);
+    let signature = generate_signature(func, context, method_info, params);
     let arg_names = generate_arg_names(func, is_static_method, skip_count).concat();
     let implementation = generate_implementation(func, context, is_static_method, arg_names);
 
@@ -77,7 +73,6 @@ fn generate_params(
 
 fn generate_signature(
     func: &IrFunc,
-    generalized_class_name: &str,
     context: ApiDartGeneratorContext,
     method_info: &IrFuncOwnerInfoMethod,
     func_params: Vec<String>,
