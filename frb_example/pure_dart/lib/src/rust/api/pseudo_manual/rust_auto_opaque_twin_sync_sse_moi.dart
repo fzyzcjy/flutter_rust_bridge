@@ -427,14 +427,16 @@ class StructWithExplicitAutoOpaqueFieldTwinSyncSseMoi {
 class StructWithGoodAndOpaqueFieldTwinSyncSseMoi {
   final String good;
   final NonCloneSimpleTwinSyncSseMoi opaque;
+  final NonCloneSimpleTwinSyncSseMoi? optionOpaque;
 
   const StructWithGoodAndOpaqueFieldTwinSyncSseMoi({
     required this.good,
     required this.opaque,
+    this.optionOpaque,
   });
 
   @override
-  int get hashCode => good.hashCode ^ opaque.hashCode;
+  int get hashCode => good.hashCode ^ opaque.hashCode ^ optionOpaque.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -442,5 +444,6 @@ class StructWithGoodAndOpaqueFieldTwinSyncSseMoi {
       other is StructWithGoodAndOpaqueFieldTwinSyncSseMoi &&
           runtimeType == other.runtimeType &&
           good == other.good &&
-          opaque == other.opaque;
+          opaque == other.opaque &&
+          optionOpaque == other.optionOpaque;
 }

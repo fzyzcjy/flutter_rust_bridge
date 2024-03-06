@@ -222,6 +222,8 @@ impl NonCloneSimpleTwinNormal {
 pub struct StructWithGoodAndOpaqueFieldTwinNormal {
     pub good: String,
     pub opaque: NonCloneSimpleTwinNormal,
+    // Reproduce https://github.com/fzyzcjy/flutter_rust_bridge/issues/1792#issuecomment-1972804379
+    pub option_opaque: Option<NonCloneSimpleTwinNormal>,
 }
 
 pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal(
@@ -229,6 +231,7 @@ pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal(
 ) {
     assert_eq!(&arg.good, "hello");
     assert_eq!(arg.opaque.inner, 42);
+    assert_eq!(arg.option_opaque.unwrap().inner, 42);
 }
 
 pub fn rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal(
@@ -236,6 +239,7 @@ pub fn rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal
     StructWithGoodAndOpaqueFieldTwinNormal {
         good: "hello".to_string(),
         opaque: NonCloneSimpleTwinNormal { inner: 42 },
+        option_opaque: Some(NonCloneSimpleTwinNormal { inner: 42 }),
     }
 }
 

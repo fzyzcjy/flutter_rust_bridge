@@ -252,6 +252,8 @@ impl NonCloneSimpleTwinSync {
 pub struct StructWithGoodAndOpaqueFieldTwinSync {
     pub good: String,
     pub opaque: NonCloneSimpleTwinSync,
+    // Reproduce https://github.com/fzyzcjy/flutter_rust_bridge/issues/1792#issuecomment-1972804379
+    pub option_opaque: Option<NonCloneSimpleTwinSync>,
 }
 
 #[flutter_rust_bridge::frb(sync)]
@@ -260,6 +262,7 @@ pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync(
 ) {
     assert_eq!(&arg.good, "hello");
     assert_eq!(arg.opaque.inner, 42);
+    assert_eq!(arg.option_opaque.unwrap().inner, 42);
 }
 
 #[flutter_rust_bridge::frb(sync)]
@@ -268,6 +271,7 @@ pub fn rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync(
     StructWithGoodAndOpaqueFieldTwinSync {
         good: "hello".to_string(),
         opaque: NonCloneSimpleTwinSync { inner: 42 },
+        option_opaque: Some(NonCloneSimpleTwinSync { inner: 42 }),
     }
 }
 

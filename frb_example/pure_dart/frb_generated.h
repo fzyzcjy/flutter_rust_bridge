@@ -1877,6 +1877,7 @@ typedef struct wire_cst_struct_with_explicit_auto_opaque_field_twin_moi {
 typedef struct wire_cst_struct_with_good_and_opaque_field_twin_moi {
   struct wire_cst_list_prim_u_8_strict *good;
   uintptr_t opaque;
+  uintptr_t *option_opaque;
 } wire_cst_struct_with_good_and_opaque_field_twin_moi;
 
 typedef struct wire_cst_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync {
@@ -1910,6 +1911,7 @@ typedef struct wire_cst_struct_with_explicit_auto_opaque_field_twin_rust_async {
 typedef struct wire_cst_struct_with_good_and_opaque_field_twin_rust_async {
   struct wire_cst_list_prim_u_8_strict *good;
   uintptr_t opaque;
+  uintptr_t *option_opaque;
 } wire_cst_struct_with_good_and_opaque_field_twin_rust_async;
 
 typedef struct wire_cst_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi {
@@ -1943,6 +1945,7 @@ typedef struct wire_cst_struct_with_explicit_auto_opaque_field_twin_rust_async_m
 typedef struct wire_cst_struct_with_good_and_opaque_field_twin_rust_async_moi {
   struct wire_cst_list_prim_u_8_strict *good;
   uintptr_t opaque;
+  uintptr_t *option_opaque;
 } wire_cst_struct_with_good_and_opaque_field_twin_rust_async_moi;
 
 typedef struct wire_cst_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync {
@@ -1976,6 +1979,7 @@ typedef struct wire_cst_struct_with_explicit_auto_opaque_field_twin_sync {
 typedef struct wire_cst_struct_with_good_and_opaque_field_twin_sync {
   struct wire_cst_list_prim_u_8_strict *good;
   uintptr_t opaque;
+  uintptr_t *option_opaque;
 } wire_cst_struct_with_good_and_opaque_field_twin_sync;
 
 typedef struct wire_cst_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi {
@@ -2009,6 +2013,7 @@ typedef struct wire_cst_struct_with_explicit_auto_opaque_field_twin_sync_moi {
 typedef struct wire_cst_struct_with_good_and_opaque_field_twin_sync_moi {
   struct wire_cst_list_prim_u_8_strict *good;
   uintptr_t opaque;
+  uintptr_t *option_opaque;
 } wire_cst_struct_with_good_and_opaque_field_twin_sync_moi;
 
 typedef struct wire_cst_list_RustOpaque_HideDataTwinMoi {
@@ -2324,6 +2329,7 @@ typedef struct wire_cst_struct_with_explicit_auto_opaque_field_twin_normal {
 typedef struct wire_cst_struct_with_good_and_opaque_field_twin_normal {
   struct wire_cst_list_prim_u_8_strict *good;
   uintptr_t opaque;
+  uintptr_t *option_opaque;
 } wire_cst_struct_with_good_and_opaque_field_twin_normal;
 
 typedef struct wire_cst_list_RustOpaque_HideDataTwinNormal {
@@ -12565,6 +12571,18 @@ void frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_i32
 
 struct wire_cst_application_env *frbgen_frb_example_pure_dart_cst_new_box_application_env(void);
 
+uintptr_t *frbgen_frb_example_pure_dart_cst_new_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoi(uintptr_t value);
+
+uintptr_t *frbgen_frb_example_pure_dart_cst_new_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(uintptr_t value);
+
+uintptr_t *frbgen_frb_example_pure_dart_cst_new_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync(uintptr_t value);
+
+uintptr_t *frbgen_frb_example_pure_dart_cst_new_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(uintptr_t value);
+
+uintptr_t *frbgen_frb_example_pure_dart_cst_new_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(uintptr_t value);
+
+uintptr_t *frbgen_frb_example_pure_dart_cst_new_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(uintptr_t value);
+
 int64_t *frbgen_frb_example_pure_dart_cst_new_box_autoadd_Chrono_Duration(int64_t value);
 
 int64_t *frbgen_frb_example_pure_dart_cst_new_box_autoadd_Chrono_Naive(int64_t value);
@@ -13323,6 +13341,12 @@ struct wire_cst_list_weekdays_twin_sync *frbgen_frb_example_pure_dart_cst_new_li
 static int64_t dummy_method_to_enforce_bundling(void) {
     int64_t dummy_var = 0;
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_application_env);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoi);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_Chrono_Duration);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_Chrono_Naive);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_Chrono_Utc);
