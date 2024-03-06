@@ -4,6 +4,7 @@
 // Section: imports
 
 use super::*;
+use crate::api::constructor::*;
 use crate::api::dropping::*;
 use crate::api::misc_no_twin_example_a::*;
 use crate::api::misc_no_twin_example_b::*;
@@ -983,6 +984,44 @@ impl CstDecode<crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinS
         );
         crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync {
             a: self_.get(0).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::constructor::ConstructorTranslatableStructTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> crate::api::constructor::ConstructorTranslatableStructTwinNormal {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::constructor::ConstructorTranslatableStructTwinNormal {
+            one: self_.get(0).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::constructor::ConstructorTranslatableSyncStructTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> crate::api::constructor::ConstructorTranslatableSyncStructTwinNormal {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::constructor::ConstructorTranslatableSyncStructTwinNormal {
+            one: self_.get(0).cst_decode(),
         }
     }
 }
@@ -7722,6 +7761,36 @@ impl CstDecode<Box<dyn MyTraitTwinSync + Send + Sync>>
         .rust_auto_opaque_decode_owned()
     }
 }
+impl CstDecode<ConstructorOpaqueStructTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> ConstructorOpaqueStructTwinNormal {
+        CstDecode::<
+            RustOpaqueNom<
+                flutter_rust_bridge::for_generated::rust_async::RwLock<
+                    ConstructorOpaqueStructTwinNormal,
+                >,
+            >,
+        >::cst_decode(self)
+        .rust_auto_opaque_decode_owned()
+    }
+}
+impl CstDecode<ConstructorOpaqueSyncStructTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> ConstructorOpaqueSyncStructTwinNormal {
+        CstDecode::<
+            RustOpaqueNom<
+                flutter_rust_bridge::for_generated::rust_async::RwLock<
+                    ConstructorOpaqueSyncStructTwinNormal,
+                >,
+            >,
+        >::cst_decode(self)
+        .rust_auto_opaque_decode_owned()
+    }
+}
 impl CstDecode<DroppableTwinNormal> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> DroppableTwinNormal {
@@ -9430,6 +9499,52 @@ impl
 }
 impl
     CstDecode<
+        RustOpaqueNom<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<
+                ConstructorOpaqueStructTwinNormal,
+            >,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> RustOpaqueNom<
+        flutter_rust_bridge::for_generated::rust_async::RwLock<ConstructorOpaqueStructTwinNormal>,
+    > {
+        #[cfg(target_pointer_width = "64")]
+        {
+            compile_error!("64-bit pointers are not supported.");
+        }
+        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
+    }
+}
+impl
+    CstDecode<
+        RustOpaqueNom<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<
+                ConstructorOpaqueSyncStructTwinNormal,
+            >,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> RustOpaqueNom<
+        flutter_rust_bridge::for_generated::rust_async::RwLock<
+            ConstructorOpaqueSyncStructTwinNormal,
+        >,
+    > {
+        #[cfg(target_pointer_width = "64")]
+        {
+            compile_error!("64-bit pointers are not supported.");
+        }
+        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
+    }
+}
+impl
+    CstDecode<
         RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<DroppableTwinNormal>>,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -11122,6 +11237,46 @@ pub fn wire_function_with_comments_triple_slash_single_line_twin_normal(
 }
 
 #[wasm_bindgen]
+pub fn wire_ConstructorOpaqueStructTwinNormal_check(
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_ConstructorOpaqueStructTwinNormal_check_impl(that)
+}
+
+#[wasm_bindgen]
+pub fn wire_ConstructorOpaqueStructTwinNormal_new(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire_ConstructorOpaqueStructTwinNormal_new_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_ConstructorOpaqueSyncStructTwinNormal_check(
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_ConstructorOpaqueSyncStructTwinNormal_check_impl(that)
+}
+
+#[wasm_bindgen]
+pub fn wire_ConstructorOpaqueSyncStructTwinNormal_new(
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_ConstructorOpaqueSyncStructTwinNormal_new_impl()
+}
+
+#[wasm_bindgen]
+pub fn wire_ConstructorTranslatableStructTwinNormal_new(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire_ConstructorTranslatableStructTwinNormal_new_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_ConstructorTranslatableSyncStructTwinNormal_new(
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_ConstructorTranslatableSyncStructTwinNormal_new_impl()
+}
+
+#[wasm_bindgen]
 pub fn wire_check_init_done(port_: flutter_rust_bridge::for_generated::MessagePort) {
     wire_check_init_done_impl(port_)
 }
@@ -11403,8 +11558,10 @@ pub fn wire_DroppableTwinNormal_get_drop_count_twin_normal(
 }
 
 #[wasm_bindgen]
-pub fn wire_DroppableTwinNormal_new(port_: flutter_rust_bridge::for_generated::MessagePort) {
-    wire_DroppableTwinNormal_new_impl(port_)
+pub fn wire_DroppableTwinNormal_new_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire_DroppableTwinNormal_new_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
@@ -34898,6 +35055,58 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
         StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinSyncSse + Send + Sync>,
+            >,
+        >::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<
+                ConstructorOpaqueStructTwinNormal,
+            >,
+        >::increment_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<
+                ConstructorOpaqueStructTwinNormal,
+            >,
+        >::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<
+                ConstructorOpaqueSyncStructTwinNormal,
+            >,
+        >::increment_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<
+                ConstructorOpaqueSyncStructTwinNormal,
             >,
         >::decrement_strong_count(ptr as _);
     }

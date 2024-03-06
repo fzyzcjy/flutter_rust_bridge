@@ -21,7 +21,7 @@ impl Drop for DroppableTwinNormal {
 }
 
 impl DroppableTwinNormal {
-    pub fn new() -> DroppableTwinNormal {
+    pub fn new_twin_normal() -> DroppableTwinNormal {
         Self { sink: None }
     }
 

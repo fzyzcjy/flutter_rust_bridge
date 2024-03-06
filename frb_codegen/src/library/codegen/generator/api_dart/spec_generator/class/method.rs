@@ -5,9 +5,11 @@ use crate::codegen::generator::api_dart::spec_generator::misc::{
     generate_dart_comments, generate_function_dart_return_type,
 };
 use crate::codegen::ir::func::{
-    IrFunc, IrFuncOwnerInfo, IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode,
+    IrFunc, IrFuncDefaultConstructorMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod,
+    IrFuncOwnerInfoMethodMode,
 };
 use crate::codegen::ir::namespace::NamespacedName;
+use crate::if_then_some;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use convert_case::{Case, Casing};
@@ -17,44 +19,77 @@ pub(crate) fn generate_api_methods(
     generalized_class_name: &NamespacedName,
     context: ApiDartGeneratorContext,
 ) -> Vec<String> {
-    (context.ir_pack.funcs.iter())
-        .filter(|f| {
-            matches!(&f.owner, IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod{ enum_or_struct_name, .. }) if enum_or_struct_name == generalized_class_name)
-        })
-        .map(|func| generate_api_method(func, &generalized_class_name.name, context))
+    get_methods_of_enum_or_struct(generalized_class_name, &context.ir_pack.funcs)
+        .iter()
+        .map(|func| generate_api_method(func, context))
         .collect_vec()
 }
 
-fn generate_api_method(
-    func: &IrFunc,
-    generalized_class_name: &str,
-    context: ApiDartGeneratorContext,
-) -> String {
-    let method_info = if let IrFuncOwnerInfo::Method(info) = &func.owner {
-        info
+// TODO move
+pub(crate) fn dart_constructor_postfix(
+    name: &NamespacedName,
+    all_funcs: &[IrFunc],
+) -> &'static str {
+    if has_default_dart_constructor(name, all_funcs) {
+        ".raw"
     } else {
-        // frb-coverage:ignore-start
-        unreachable!()
-        // frb-coverage:ignore-end
-    };
+        ""
+    }
+}
+
+fn has_default_dart_constructor(name: &NamespacedName, all_funcs: &[IrFunc]) -> bool {
+    get_methods_of_enum_or_struct(name, all_funcs)
+        .iter()
+        .any(|m| {
+            m.default_constructor_mode() == Some(IrFuncDefaultConstructorMode::DartConstructor)
+        })
+}
+
+fn get_methods_of_enum_or_struct<'a>(
+    name: &NamespacedName,
+    all_funcs: &'a [IrFunc],
+) -> Vec<&'a IrFunc> {
+    (all_funcs.iter())
+        .filter(|f| {
+            matches!(&f.owner, IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod{ enum_or_struct_name, .. }) if enum_or_struct_name == name)
+        })
+        .collect_vec()
+}
+
+fn generate_api_method(func: &IrFunc, context: ApiDartGeneratorContext) -> String {
+    let method_info =
+        if_then_some!(let IrFuncOwnerInfo::Method(info) = &func.owner , info).unwrap();
     let is_static_method = method_info.mode == IrFuncOwnerInfoMethodMode::Static;
+    let default_constructor_mode = func.default_constructor_mode();
 
     // skip the first as it's the method 'self'
     let skip_count = usize::from(!is_static_method);
 
-    let params = generate_params(func, context, is_static_method, skip_count);
-    let comments = generate_dart_comments(&func.comments);
-    let signature = generate_signature(func, generalized_class_name, context, method_info, params);
+    let params = generate_params(func, context, skip_count);
+    let comments = generate_comments(func, default_constructor_mode);
+    let signature =
+        generate_signature(func, context, method_info, params, default_constructor_mode);
     let arg_names = generate_arg_names(func, is_static_method, skip_count).concat();
     let implementation = generate_implementation(func, context, is_static_method, arg_names);
 
     format!("{comments}{signature}=>{implementation};\n\n")
 }
 
+fn generate_comments(
+    func: &IrFunc,
+    default_constructor_mode: Option<IrFuncDefaultConstructorMode>,
+) -> String {
+    let mut ans = String::new();
+    if default_constructor_mode == Some(IrFuncDefaultConstructorMode::StaticMethod) {
+        ans += "  // HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.\n";
+    }
+    ans += &generate_dart_comments(&func.comments);
+    ans
+}
+
 fn generate_params(
     func: &IrFunc,
     context: ApiDartGeneratorContext,
-    _is_static_method: bool,
     skip_count: usize,
 ) -> Vec<String> {
     let mut ans = func
@@ -77,10 +112,10 @@ fn generate_params(
 
 fn generate_signature(
     func: &IrFunc,
-    generalized_class_name: &str,
     context: ApiDartGeneratorContext,
     method_info: &IrFuncOwnerInfoMethod,
     func_params: Vec<String>,
+    default_constructor_mode: Option<IrFuncDefaultConstructorMode>,
 ) -> String {
     let is_static_method = method_info.mode == IrFuncOwnerInfoMethodMode::Static;
     let maybe_static = if is_static_method { "static" } else { "" };
@@ -88,8 +123,8 @@ fn generate_signature(
         &func.mode,
         &ApiDartGenerator::new(func.output.clone(), context).dart_api_type(),
     );
-    let method_name = if is_static_method && method_info.actual_method_name == "new" {
-        format!("new{}", generalized_class_name)
+    let method_name = if default_constructor_mode.is_some() {
+        "newInstance".to_owned()
     } else {
         method_info.actual_method_name.to_case(Case::Camel)
     };
@@ -98,6 +133,10 @@ fn generate_signature(
     } else {
         (format!("({{ {} }})", func_params.join(",")), "")
     };
+
+    if default_constructor_mode == Some(IrFuncDefaultConstructorMode::DartConstructor) {
+        return format!("factory {return_type}{func_params}");
+    }
 
     format!("{maybe_static} {return_type} {maybe_getter} {method_name}{func_params}")
 }

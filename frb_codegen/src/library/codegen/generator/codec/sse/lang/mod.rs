@@ -22,6 +22,7 @@ pub(crate) trait LangTrait {
     fn call_constructor(
         &self,
         class_name: &str,
+        ctor_postfix: &str,
         field_names: &[String],
         var_names: &[String],
         keyword_args: bool,

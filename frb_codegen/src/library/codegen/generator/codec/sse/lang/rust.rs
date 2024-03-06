@@ -23,6 +23,7 @@ impl LangTrait for RustLang {
     fn call_constructor(
         &self,
         class_name: &str,
+        _ctor_postfix: &str,
         field_names: &[String],
         var_names: &[String],
         keyword_args: bool,

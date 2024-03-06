@@ -1,15 +1,12 @@
+use crate::codegen::generator::api_dart::spec_generator::class::method::dart_constructor_postfix;
 use crate::codegen::generator::wire::dart::spec_generator::codec::dco::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::dco::decoder::ty::WireDartCodecDcoGeneratorDecoderTrait;
-use crate::codegen::ir::func::IrFuncOwnerInfo;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 
 impl<'a> WireDartCodecDcoGeneratorDecoderTrait for StructRefWireDartCodecDcoGenerator<'a> {
     fn generate_impl_decode_body(&self) -> String {
         let s = self.ir.get(self.context.ir_pack);
-
-        let _has_methods = (self.context.ir_pack.funcs.iter())
-            .any(|f| matches!(&f.owner, IrFuncOwnerInfo::Method(_)));
 
         let inner = s
             .fields
@@ -28,11 +25,12 @@ impl<'a> WireDartCodecDcoGeneratorDecoderTrait for StructRefWireDartCodecDcoGene
         let inner = inner.join("\n");
         let cast = "final arr = raw as List<dynamic>;".to_string();
         let safe_check = format!("if (arr.length != {}) throw Exception('unexpected arr length: expect {} but see ${{arr.length}}');", s.fields.len(), s.fields.len());
+        let ctor_postfix = dart_constructor_postfix(&s.name, &self.context.ir_pack.funcs);
         format!(
-            "{}
-                {}
-                return {}({});",
-            cast, safe_check, s.name.name, inner,
+            "{cast}
+                {safe_check}
+                return {name}{ctor_postfix}({inner});",
+            name = s.name.name,
         )
     }
 }

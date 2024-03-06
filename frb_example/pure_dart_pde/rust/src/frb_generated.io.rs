@@ -4,6 +4,7 @@
 // Section: imports
 
 use super::*;
+use crate::api::constructor::*;
 use crate::api::dropping::*;
 use crate::api::misc_no_twin_example_a::*;
 use crate::api::misc_no_twin_example_b::*;
@@ -434,6 +435,46 @@ pub extern "C" fn frbgen_frb_example_pure_dart_pde_rust_arc_decrement_strong_cou
     MoiArc::<
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             Box<dyn MyTraitTwinSync + Send + Sync>,
+        >,
+    >::decrement_strong_count(ptr as _);
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_pde_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<
+        flutter_rust_bridge::for_generated::rust_async::RwLock<ConstructorOpaqueStructTwinNormal>,
+    >::increment_strong_count(ptr as _);
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_pde_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<
+        flutter_rust_bridge::for_generated::rust_async::RwLock<ConstructorOpaqueStructTwinNormal>,
+    >::decrement_strong_count(ptr as _);
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_pde_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<
+        flutter_rust_bridge::for_generated::rust_async::RwLock<
+            ConstructorOpaqueSyncStructTwinNormal,
+        >,
+    >::increment_strong_count(ptr as _);
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_pde_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<
+        flutter_rust_bridge::for_generated::rust_async::RwLock<
+            ConstructorOpaqueSyncStructTwinNormal,
         >,
     >::decrement_strong_count(ptr as _);
 }

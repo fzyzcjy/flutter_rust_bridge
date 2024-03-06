@@ -4,6 +4,7 @@ use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::{IrContext, IrType};
+use crate::if_then_some;
 
 crate::ir! {
 pub struct IrFunc {
@@ -73,4 +74,26 @@ impl IrFunc {
             .unwrap_or(IrType::Primitive(IrTypePrimitive::Unit));
         error_output.visit_types(f, ir_context);
     }
+
+    pub(crate) fn default_constructor_mode(&self) -> Option<IrFuncDefaultConstructorMode> {
+        let method_info =
+            if_then_some!(let IrFuncOwnerInfo::Method(info) = &self.owner , info).unwrap();
+        if method_info.actual_method_name == "new" {
+            if method_info.mode == IrFuncOwnerInfoMethodMode::Static
+                && self.mode == IrFuncMode::Sync
+            {
+                Some(IrFuncDefaultConstructorMode::DartConstructor)
+            } else {
+                Some(IrFuncDefaultConstructorMode::StaticMethod)
+            }
+        } else {
+            None
+        }
+    }
+}
+
+#[derive(Clone, Copy, Eq, PartialEq)]
+pub(crate) enum IrFuncDefaultConstructorMode {
+    DartConstructor,
+    StaticMethod,
 }

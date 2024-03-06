@@ -106,7 +106,7 @@ Future<void> main() async {
           Future<void> Function(DroppableTwinNormal)? extra,
         }) async {
           DroppableTwinNormal? object =
-              await DroppableTwinNormal.newDroppableTwinNormal();
+              await DroppableTwinNormal.newTwinNormal();
           final weakRef = WeakReference(object);
 
           await extra?.call(object);
