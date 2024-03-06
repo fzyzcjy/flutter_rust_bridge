@@ -14,7 +14,7 @@ impl<'a> ApiDartGeneratorClassTrait for StructRefApiDartGenerator<'a> {
 
         let methods = generate_api_methods(&src.name, self.context);
 
-        let constructor_postfix = TODO;
+        let constructor_postfix = if TODO { ".raw" } else { "" };
 
         Some(ApiDartGeneratedClass {
             namespace: src.name.namespace.clone(),
