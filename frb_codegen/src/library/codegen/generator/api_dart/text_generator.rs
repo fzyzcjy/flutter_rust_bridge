@@ -6,6 +6,7 @@ use crate::codegen::generator::api_dart::spec_generator::{
 use crate::codegen::generator::misc::{generate_code_header, PathText, PathTexts};
 use crate::codegen::ir::namespace::Namespace;
 use crate::utils::basic_code::DartBasicHeaderCode;
+use anyhow::ensure;
 use itertools::Itertools;
 use std::path::{Path, PathBuf};
 
@@ -47,10 +48,13 @@ fn generate_end_api_text(
         .join("\n\n");
     let classes = item.classes.iter().map(|c| c.code.clone()).join("\n\n");
 
-    let path_frb_generated = match namespace.path().len() {
-        1 => "rust/".to_string(),
-        len => "../".repeat(len - 2),
-    } + "frb_generated.dart";
+    let path_chunks_len = namespace.path().len();
+    ensure!(
+        path_chunks_len >= 2,
+        "Please do not put structs in `lib.rs`"
+    );
+    // TODO use relative path calculation
+    let path_frb_generated = "../".repeat(path_chunks_len - 2) + "frb_generated.dart";
 
     let mut header = DartBasicHeaderCode {
         file_top: generate_code_header()
