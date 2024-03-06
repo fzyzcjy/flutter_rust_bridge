@@ -8,6 +8,7 @@ use crate::codegen::ir::func::{
     IrFunc, IrFuncMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode,
 };
 use crate::codegen::ir::namespace::NamespacedName;
+use crate::if_then_some;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use convert_case::{Case, Casing};
@@ -26,13 +27,8 @@ pub(crate) fn generate_api_methods(
 }
 
 fn generate_api_method(func: &IrFunc, context: ApiDartGeneratorContext) -> String {
-    let method_info = if let IrFuncOwnerInfo::Method(info) = &func.owner {
-        info
-    } else {
-        // frb-coverage:ignore-start
-        unreachable!()
-        // frb-coverage:ignore-end
-    };
+    let method_info =
+        if_then_some!(let IrFuncOwnerInfo::Method(info) = &func.owner , info).unwrap();
     let is_static_method = method_info.mode == IrFuncOwnerInfoMethodMode::Static;
 
     let default_constructor_mode = DefaultConstructorMode::parse(func, method_info);
@@ -110,7 +106,7 @@ fn generate_signature(
     };
 
     if default_constructor_mode == Some(DefaultConstructorMode::DartConstructor) {
-        return format!("factory {return_type}{func_params}");
+        return format!("factory {return_type}({func_params})");
     }
 
     format!("{maybe_static} {return_type} {maybe_getter} {method_name}{func_params}")
