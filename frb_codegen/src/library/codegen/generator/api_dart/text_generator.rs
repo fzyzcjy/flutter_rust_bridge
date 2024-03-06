@@ -6,6 +6,7 @@ use crate::codegen::generator::api_dart::spec_generator::{
 use crate::codegen::generator::misc::{generate_code_header, PathText, PathTexts};
 use crate::codegen::ir::namespace::Namespace;
 use crate::utils::basic_code::DartBasicHeaderCode;
+use anyhow::ensure;
 use itertools::Itertools;
 use std::path::{Path, PathBuf};
 
@@ -23,10 +24,10 @@ pub(super) fn generate(
             .map(|(namespace, item)| {
                 let dart_output_path =
                     compute_path_from_namespace(&config.dart_decl_base_output_path, namespace);
-                let text = generate_end_api_text(namespace, &dart_output_path, item);
-                PathText::new(dart_output_path, text)
+                let text = generate_end_api_text(namespace, &dart_output_path, item)?;
+                Ok(PathText::new(dart_output_path, text))
             })
-            .collect_vec(),
+            .collect::<anyhow::Result<Vec<_>>>()?,
     );
 
     Ok(ApiDartOutputText {
@@ -38,7 +39,7 @@ fn generate_end_api_text(
     namespace: &Namespace,
     dart_output_path: &Path,
     item: &ApiDartOutputSpecItem,
-) -> String {
+) -> anyhow::Result<String> {
     let funcs = item
         .funcs
         .iter()
@@ -47,8 +48,16 @@ fn generate_end_api_text(
         .join("\n\n");
     let classes = item.classes.iter().map(|c| c.code.clone()).join("\n\n");
 
+    let path_chunks_len = namespace.path().len();
+    ensure!(
+        path_chunks_len >= 2,
+        // This will stop the whole generator and tell the users, so we do not care about testing it
+        // frb-coverage:ignore-start
+        "Please do not put structs in `lib.rs`",
+        // frb-coverage:ignore-end
+    );
     // TODO use relative path calculation
-    let path_frb_generated = "../".repeat(namespace.path().len() - 2) + "frb_generated.dart";
+    let path_frb_generated = "../".repeat(path_chunks_len - 2) + "frb_generated.dart";
 
     let mut header = DartBasicHeaderCode {
         file_top: generate_code_header()
@@ -94,7 +103,7 @@ fn generate_end_api_text(
         })
         .join("");
 
-    format!(
+    Ok(format!(
         "
         {header}
 
@@ -104,7 +113,7 @@ fn generate_end_api_text(
 
         {classes}
         ",
-    )
+    ))
 }
 
 fn generate_function(func: &ApiDartGeneratedFunction) -> String {

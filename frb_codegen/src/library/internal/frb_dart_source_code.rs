@@ -155,6 +155,8 @@ fn ffigen(repo_base_dir: &Path) -> anyhow::Result<()> {
                 format!("-I{}", &path_to_string(&dir_dart_api)?),
                 format!("-I{}", &path_to_string(&dir_intermediate)?),
             ],
+            // same reason as is discussed in ffigen.rs
+            ignore_source_errors: true,
             ..Default::default()
         },
         &repo_base_dir.join("frb_dart"),

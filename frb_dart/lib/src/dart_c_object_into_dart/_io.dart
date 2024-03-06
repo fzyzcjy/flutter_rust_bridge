@@ -30,6 +30,7 @@ dynamic dartCObjectIntoDart(Dart_CObject object) {
       // See [allo-isolate's String::into_dart](https://github.com/sunshine-protocol/allo-isolate/blob/71b9760993d64ef46794176ca276d1cc637b2599/src/into_dart.rs#L106)
       // and [std::ffi::CString](https://doc.rust-lang.org/nightly/std/ffi/struct.CString.html)
       int len = 0;
+      // ignore: deprecated_member_use
       while (object.value.as_string.elementAt(len).value != 0) {
         len++;
       }
@@ -38,8 +39,8 @@ dynamic dartCObjectIntoDart(Dart_CObject object) {
 
     case Dart_CObject_Type.Dart_CObject_kArray:
       return List.generate(
-          object.value.as_array.length,
-          (i) => dartCObjectIntoDart(
+          object.value.as_array.length, (i) => dartCObjectIntoDart(
+              // ignore: deprecated_member_use
               object.value.as_array.values.elementAt(i).value.ref));
 
     case Dart_CObject_Type.Dart_CObject_kTypedData:
