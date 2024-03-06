@@ -250,6 +250,8 @@ impl NonCloneSimpleTwinSse {
 pub struct StructWithGoodAndOpaqueFieldTwinSse {
     pub good: String,
     pub opaque: NonCloneSimpleTwinSse,
+    // Reproduce https://github.com/fzyzcjy/flutter_rust_bridge/issues/1792#issuecomment-1972804379
+    pub option_opaque: Option<NonCloneSimpleTwinSse>,
 }
 
 #[flutter_rust_bridge::frb(serialize)]
@@ -258,6 +260,7 @@ pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sse(
 ) {
     assert_eq!(&arg.good, "hello");
     assert_eq!(arg.opaque.inner, 42);
+    assert_eq!(arg.option_opaque.unwrap().inner, 42);
 }
 
 #[flutter_rust_bridge::frb(serialize)]
@@ -266,6 +269,7 @@ pub fn rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sse(
     StructWithGoodAndOpaqueFieldTwinSse {
         good: "hello".to_string(),
         opaque: NonCloneSimpleTwinSse { inner: 42 },
+        option_opaque: Some(NonCloneSimpleTwinSse { inner: 42 }),
     }
 }
 

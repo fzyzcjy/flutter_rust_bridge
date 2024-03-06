@@ -84,9 +84,11 @@ impl IrTypeTrait for IrTypeRustOpaque {
 
     // Because we are using usize on the wirre
     fn as_primitive(&self) -> Option<&IrTypePrimitive> {
-        Some(&IrTypePrimitive::Usize)
+        Some(&RUST_OPAQUE_AS_PRIMITIVE)
     }
 }
+
+pub(super) const RUST_OPAQUE_AS_PRIMITIVE: IrTypePrimitive = IrTypePrimitive::Usize;
 
 impl IrRustOpaqueInner {
     pub(crate) fn safe_ident(&self) -> String {

@@ -421,14 +421,16 @@ class StructWithExplicitAutoOpaqueFieldTwinMoi {
 class StructWithGoodAndOpaqueFieldTwinMoi {
   final String good;
   final NonCloneSimpleTwinMoi opaque;
+  final NonCloneSimpleTwinMoi? optionOpaque;
 
   const StructWithGoodAndOpaqueFieldTwinMoi({
     required this.good,
     required this.opaque,
+    this.optionOpaque,
   });
 
   @override
-  int get hashCode => good.hashCode ^ opaque.hashCode;
+  int get hashCode => good.hashCode ^ opaque.hashCode ^ optionOpaque.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -436,5 +438,6 @@ class StructWithGoodAndOpaqueFieldTwinMoi {
       other is StructWithGoodAndOpaqueFieldTwinMoi &&
           runtimeType == other.runtimeType &&
           good == other.good &&
-          opaque == other.opaque;
+          opaque == other.opaque &&
+          optionOpaque == other.optionOpaque;
 }
