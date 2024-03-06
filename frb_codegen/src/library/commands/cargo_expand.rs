@@ -1,10 +1,15 @@
 use crate::codegen::dumper::Dumper;
 use crate::codegen::ConfigDumpContent;
+use crate::command_args;
 use crate::library::commands::command_runner::execute_command;
 use crate::utils::path_utils::{normalize_windows_unc_path, path_to_string};
 use anyhow::{bail, Context, Result};
 use itertools::Itertools;
+use lazy_static::lazy_static;
 use log::{debug, info, warn};
+use regex::Regex;
+
+use std::borrow::Cow;
 use std::collections::hash_map::Entry::{Occupied, Vacant};
 use std::collections::HashMap;
 use std::path::{Path, PathBuf};
@@ -43,7 +48,10 @@ impl CachedCargoExpand {
 
         let expanded = match self.cache.entry(rust_crate_dir.to_owned()) {
             Occupied(entry) => entry.into_mut(),
-            Vacant(entry) => entry.insert(run_cargo_expand(rust_crate_dir, dumper, true)?),
+            Vacant(entry) => entry.insert(
+                unwrap_frb_attrs_in_doc(&run_cargo_expand(rust_crate_dir, dumper, true)?)
+                    .into_owned(),
+            ),
         };
 
         extract_module(expanded, module)
@@ -89,12 +97,14 @@ fn run_cargo_expand(
     // let _pb = simple_progress("Run cargo-expand".to_owned(), 1);
     debug!("Running cargo expand in '{rust_crate_dir:?}'");
 
-    let args = vec![
-        PathBuf::from("expand"),
-        PathBuf::from("--lib"),
-        PathBuf::from("--theme=none"),
-        PathBuf::from("--ugly"),
-    ];
+    let args = command_args!(
+        "expand",
+        "--lib",
+        "--theme=none",
+        "--ugly",
+        "--config",
+        r#"build.rustflags="--cfg frb_expand""#
+    );
 
     let output = execute_command("cargo", &args, Some(rust_crate_dir), None)
         .with_context(|| format!("Could not expand rust code at path {rust_crate_dir:?}"))?;
@@ -114,13 +124,20 @@ fn run_cargo_expand(
         // frb-coverage:ignore-end
     }
 
-    let mut stdout_lines = stdout.lines();
-    stdout_lines.next();
-    let ans = stdout_lines.join("\n").replace("/// frb_marker: ", "");
-
+    let ans = stdout.lines().skip(1).join("\n");
     dumper.dump_str(ConfigDumpContent::Source, "cargo_expand.rs", &ans)?;
-
     Ok(ans)
+}
+
+/// Turns `#[doc = "frb_marker: .."]` back into `#[frb(..)]`, usually produced
+/// as a side-effect of cargo-expand.
+// NOTE: The amount of pounds must match exactly with the implementation in frb_macros
+fn unwrap_frb_attrs_in_doc(code: &str) -> Cow<str> {
+    lazy_static! {
+        static ref PATTERN: Regex =
+            Regex::new(r####"#\[doc =[\s\n]*r###"frb_marker: ([\s\S]*?)"###]"####).unwrap();
+    }
+    PATTERN.replace_all(code, "$1")
 }
 
 fn install_cargo_expand() -> Result<()> {

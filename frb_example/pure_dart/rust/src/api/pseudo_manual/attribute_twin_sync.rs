@@ -37,8 +37,11 @@ pub struct UserIdTwinSync {
     pub value: u32,
 }
 
+#[frb]
 #[flutter_rust_bridge::frb(sync)]
-pub fn next_user_id_twin_sync(user_id: UserIdTwinSync) -> UserIdTwinSync {
+pub fn next_user_id_twin_sync(
+    #[frb(default = "const UserIdTwinSync()")] user_id: UserIdTwinSync,
+) -> UserIdTwinSync {
     UserIdTwinSync {
         value: user_id.value + 1,
     }

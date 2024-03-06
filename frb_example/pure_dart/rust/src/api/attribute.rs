@@ -30,7 +30,10 @@ pub struct UserIdTwinNormal {
     pub value: u32,
 }
 
-pub fn next_user_id_twin_normal(user_id: UserIdTwinNormal) -> UserIdTwinNormal {
+#[frb]
+pub fn next_user_id_twin_normal(
+    #[frb(default = "const UserIdTwinNormal()")] user_id: UserIdTwinNormal,
+) -> UserIdTwinNormal {
     UserIdTwinNormal {
         value: user_id.value + 1,
     }

@@ -34,7 +34,10 @@ pub struct UserIdTwinRustAsync {
     pub value: u32,
 }
 
-pub async fn next_user_id_twin_rust_async(user_id: UserIdTwinRustAsync) -> UserIdTwinRustAsync {
+#[frb]
+pub async fn next_user_id_twin_rust_async(
+    #[frb(default = "const UserIdTwinRustAsync()")] user_id: UserIdTwinRustAsync,
+) -> UserIdTwinRustAsync {
     UserIdTwinRustAsync {
         value: user_id.value + 1,
     }

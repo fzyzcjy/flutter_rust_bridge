@@ -51,20 +51,21 @@ fn default_value_maybe_to_dart_style(value: &str, enable: bool) -> Cow<str> {
 }
 
 fn default_value_to_dart_style(value: &str) -> String {
-    const SEP: char = '.';
-
-    // #1767
-    if !value.contains(SEP) {
-        return value.to_owned();
+    match value.split_once('.') {
+        // If the user is explicitly calling an enum variant's constructor
+        // i.e. `const Foo.bar()` instead of `Foo.Bar`, we trust that they
+        // really mean it and don't convert.
+        Some((enum_name, variant_name))
+            if !enum_name.starts_with("const ") && !variant_name.contains('(') =>
+        {
+            format!(
+                "{}.{}",
+                enum_name,
+                make_string_keyword_safe(variant_name.to_string()).to_case(Case::Camel)
+            )
+        }
+        _ => value.to_string(),
     }
-
-    let mut split = value.split(SEP);
-    let enum_name = split.next().unwrap();
-
-    let variant_name = split.next().unwrap().to_string();
-    let variant_name = make_string_keyword_safe(variant_name.to_case(Case::Camel));
-
-    format!("{enum_name}.{variant_name}")
 }
 
 #[cfg(test)]
