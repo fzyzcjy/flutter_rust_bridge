@@ -129,3 +129,24 @@ impl MyCallableTwinSync {
         self.one.clone() + &two
     }
 }
+
+pub struct SimpleStructTwinSync {
+    pub one: String,
+}
+
+impl SimpleStructTwinSync {
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn return_self_twin_sync(one: String) -> Self {
+        Self { one }
+    }
+
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn arg_self_twin_sync(a: Self, b: Self) -> String {
+        a.one + &b.one
+    }
+
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn vec_self_twin_sync(arg: Vec<Self>) -> Vec<String> {
+        arg.into_iter().map(|x| x.one).collect()
+    }
+}

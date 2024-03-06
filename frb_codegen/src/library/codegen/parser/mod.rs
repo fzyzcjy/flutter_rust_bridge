@@ -7,6 +7,7 @@ pub(crate) mod reader;
 pub(crate) mod source_graph;
 pub(crate) mod type_alias_resolver;
 pub(crate) mod type_parser;
+mod unused_checker;
 
 use crate::codegen::dumper::Dumper;
 use crate::codegen::ir::pack::IrPack;
@@ -18,6 +19,7 @@ use crate::codegen::parser::misc::parse_has_executor;
 use crate::codegen::parser::reader::CachedRustReader;
 use crate::codegen::parser::type_alias_resolver::resolve_type_aliases;
 use crate::codegen::parser::type_parser::TypeParser;
+use crate::codegen::parser::unused_checker::get_unused_types;
 use crate::codegen::ConfigDumpContent;
 use itertools::Itertools;
 use log::trace;
@@ -63,7 +65,7 @@ pub(crate) fn parse(
     let src_enums = crate_map.root_module().collect_enums();
     let src_types = resolve_type_aliases(crate_map.root_module().collect_types());
 
-    let mut type_parser = TypeParser::new(src_structs, src_enums, src_types);
+    let mut type_parser = TypeParser::new(src_structs.clone(), src_enums.clone(), src_types);
     let mut function_parser = FunctionParser::new(&mut type_parser);
 
     let ir_funcs = src_fns
@@ -90,12 +92,23 @@ pub(crate) fn parse(
 
     let (struct_pool, enum_pool) = type_parser.consume();
 
-    Ok(IrPack {
+    let mut ans = IrPack {
         funcs: ir_funcs,
         struct_pool,
         enum_pool,
         has_executor,
-    })
+        unused_types: vec![],
+    };
+
+    ans.unused_types = get_unused_types(
+        &ans,
+        &src_structs,
+        &src_enums,
+        &config.rust_input_path_pack,
+        &config.rust_crate_dir,
+    )?;
+
+    Ok(ans)
 }
 
 struct FileData {
@@ -203,6 +216,12 @@ mod tests {
     #[serial]
     fn test_generics() -> anyhow::Result<()> {
         body("library/codegen/parser/mod/generics", None)
+    }
+
+    #[test]
+    #[serial]
+    fn test_unused_struct_enum() -> anyhow::Result<()> {
+        body("library/codegen/parser/mod/unused_struct_enum", None)
     }
 
     #[test]

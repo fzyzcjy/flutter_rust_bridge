@@ -90,4 +90,25 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final callable = MyCallableTwinNormal(one: 'One');
     expect(await callable(two: 'Two'), 'OneTwo');
   });
+
+  group('SimpleStruct', () {
+    test('returnSelf', () async {
+      expect(
+          (await SimpleStructTwinNormal.returnSelfTwinNormal(one: 'One')).one,
+          'One');
+    });
+
+    test('argSelf', () async {
+      final a = SimpleStructTwinNormal(one: 'a');
+      final b = SimpleStructTwinNormal(one: 'b');
+      expect(await SimpleStructTwinNormal.argSelfTwinNormal(a: a, b: b), 'ab');
+    });
+
+    test('vecSelf', () async {
+      final a = SimpleStructTwinNormal(one: 'a');
+      final b = SimpleStructTwinNormal(one: 'b');
+      expect(await SimpleStructTwinNormal.vecSelfTwinNormal(arg: [a, b]),
+          ['a', 'b']);
+    });
+  });
 }

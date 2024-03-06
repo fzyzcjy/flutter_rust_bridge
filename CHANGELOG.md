@@ -1,5 +1,23 @@
 # Changelog
 
+## 2.0.0-dev.26
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Allow specifying pubspec.yaml location in build.rs #1797 (thanks @HalidOdat)
+* Hint how to only run build.rs if api directory changes #1794 (thanks @HalidOdat)
+
+## 2.0.0-dev.25
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Generate decl of `store_dart_post_cobject` when full_dep enabled #1773 (thanks @Berrysoft)
+* Support type Self (originally needs to specify the concrete type, now can use this shortcut) #160
+* Provide hints when struct/enum is never used #1763
+* Improve hints when types are exported but not used #1779
+* Auto understand when user structs have name conflict with builtin types #1782
+* Fix when non-enum + specify default value + dart_enums_style being true #1780
+* Fix `Vec<Uuid>` error when using CST codec (the SSE codec does not have this bug) #1762
+* Fix build-web cannot find Dart program in some platforms #1758
+
 ## 2.0.0-dev.24
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
@@ -169,17 +187,21 @@
 ## 2.0.0-dev.2
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
-* This is again a separate version, because I need to trigger the `release` CI to fix the binary for `cargo binstall` (that CI did not checkout recursive submodule before).
+* This is again a separate version, because I need to trigger the `release` CI to fix the binary for `cargo binstall` (
+  that CI did not checkout recursive submodule before).
 
 ## 2.0.0-dev.1
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
-* This is a separate version, because cargo publish seems not to understand frb_codegen's template Cargo.toml files, so need to publish version to test.
+* This is a separate version, because cargo publish seems not to understand frb_codegen's template Cargo.toml files, so
+  need to publish version to test.
 
 ## 2.0.0-dev.0
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
-* The 2.0.0-dev.0 will contain bugs and missing features, because I have to have a real (pre-)release before I can start working on the last part of tests and functionalities. So it is a chicken-and-egg problem ;) But I expect 2.0.0-dev.2 (or -dev.3) to be stable.
+* The 2.0.0-dev.0 will contain bugs and missing features, because I have to have a real (pre-)release before I can start
+  working on the last part of tests and functionalities. So it is a chicken-and-egg problem ;) But I expect
+  2.0.0-dev.2 (or -dev.3) to be stable.
 
 ## 1.82.6
 
@@ -308,7 +330,8 @@
 
 * Add tests to gen, build, run pure_dart #1106 (thanks @coder0xff)
 * Generate Dart enum variants in camelCase #1112 (thanks @erikas-taroza)
-* General CLI improvements: dumping, upgrade clap, yaml config, serialize IR, bump versions, etc #1119 (thanks @Desdaemon)
+* General CLI improvements: dumping, upgrade clap, yaml config, serialize IR, bump versions, etc #1119 (thanks
+  @Desdaemon)
 * Fixes for serde-yml #1122 (thanks @Desdaemon)
 
 ## 1.69.0
@@ -372,7 +395,9 @@
 
 ## 1.60.0
 
-* Refactors for `Boxed` and `Option` (Refactors `EnumRef` to make `Option<FieldlessEnum>` work; `Box<primitive>` and `Option<Box<primitive>>` on WASM no longer allocates a Box, but receives a (nullable) value directly from Dart) #949 thanks @Desdaemon
+* Refactors for `Boxed` and `Option` (Refactors `EnumRef` to make `Option<FieldlessEnum>` work; `Box<primitive>`
+  and `Option<Box<primitive>>` on WASM no longer allocates a Box, but receives a (nullable) value directly from Dart)
+  #949 thanks @Desdaemon
 
 ## 1.59.0
 
@@ -436,7 +461,8 @@
 
 ## 1.50.0
 
-* Implement opaque types, enabling arbitrary Rust structs to be used as opaque Dart objects, by generating wrappers and raw Arc pointers #795 (thanks @rogurotus)
+* Implement opaque types, enabling arbitrary Rust structs to be used as opaque Dart objects, by generating wrappers and
+  raw Arc pointers #795 (thanks @rogurotus)
 
 ## 1.49.2
 
@@ -474,7 +500,8 @@
 
 ## 1.45.0
 
-* Add support for the Web platform, parallel to the existing mobile/desktop platforms, via WASM and JavaScript as intermediate values #589 (thanks @Desdaemon)
+* Add support for the Web platform, parallel to the existing mobile/desktop platforms, via WASM and JavaScript as
+  intermediate values #589 (thanks @Desdaemon)
 
 ## 1.44.0
 
@@ -569,7 +596,8 @@
 
 ## 1.31.0
 
-* Support `#[frb(metadata=("freezed", "immutable" import "package:meta/meta.dart" as meta))]` for structs #463 (thanks @alanlzhang)
+* Support `#[frb(metadata=("freezed", "immutable" import "package:meta/meta.dart" as meta))]` for structs #463 (thanks
+  @alanlzhang)
 
 ## 1.30.0
 
@@ -577,7 +605,8 @@
 
 ## 1.29.0
 
-* Make code generator a lib to be used in build.rs; add error types for codegen; depend on cbindgen directly; update docs #434 (thanks @sagudev)
+* Make code generator a lib to be used in build.rs; add error types for codegen; depend on cbindgen directly; update
+  docs #434 (thanks @sagudev)
 * Update dep in locks #441 (thanks @sagudev)
 * Add support for usize and [T;N] #442 (thanks @trobanga)
 
@@ -631,7 +660,8 @@
 
 ## 1.22.0
 
-* Make mirroring work for more use cases: tuple structs, enum variants, wrapping in Vec and Optional #359 (thanks @Unoqwy)
+* Make mirroring work for more use cases: tuple structs, enum variants, wrapping in Vec and Optional #359 (thanks
+  @Unoqwy)
 * Bump dependency versions
 
 ## 1.21.1
@@ -700,7 +730,8 @@
 ## 1.11.0
 
 * Marker attributes for expressiveness #261 (thanks @Desdaemon)
-* Improvements #267 (thanks @Desdaemon): Resolve #265, Resolve #266, Fix attributes not working on enum variants, Add comments on enum variants and fields, (Internal) unify tuple and normal enum structs
+* Improvements #267 (thanks @Desdaemon): Resolve #265, Resolve #266, Fix attributes not working on enum variants, Add
+  comments on enum variants and fields, (Internal) unify tuple and normal enum structs
 * Avoid user parameter collision in wire functions #270 (thanks @Desdaemon)
 
 ## 1.10.0
@@ -754,8 +785,10 @@
 
 ## 1.3.0
 
-* Support more types of the form`Vec<primitive_type>` and `ZeroCopyBuffer<Vec<primitive_type>>`, such as `Vec<f32>` and `ZeroCopyBuffer<Vec<f32>>` to be transformed into `Float32List` in Dart. (#162, #153)
-* Do not generate unnecessary Dart to Rust wire code to fix bugs such as when `Vec<ZeroCopyBuffer<Vec<u8>>>` is in output argument.
+* Support more types of the form`Vec<primitive_type>` and `ZeroCopyBuffer<Vec<primitive_type>>`, such as `Vec<f32>`
+  and `ZeroCopyBuffer<Vec<f32>>` to be transformed into `Float32List` in Dart. (#162, #153)
+* Do not generate unnecessary Dart to Rust wire code to fix bugs such as when `Vec<ZeroCopyBuffer<Vec<u8>>>` is in
+  output argument.
 * Warn when `ffigen` emits any `[SEVERE]` log messages.
 * Make outputs change less when input of codegen changes.
 * Simplify `Wire2Api<Option<T>>` generated code.
@@ -778,13 +811,16 @@
 
 * Enable `Option<T>` types to be transformed (thanks @Desdaemon)
 * Support `Stream`s: call function once, "return" multiple times with different data.
-* Add `FlutterRustBridgeSetupMixin` (an optional helper class), which allows custom setup hooks before ffi can be executed.
-* Add `hint` parameter in generated Dart code, allowing users to pass custom data to the Dart executor, thus increasing flexibility.
+* Add `FlutterRustBridgeSetupMixin` (an optional helper class), which allows custom setup hooks before ffi can be
+  executed.
+* Add `hint` parameter in generated Dart code, allowing users to pass custom data to the Dart executor, thus increasing
+  flexibility.
 * Improve panic handling in extreme cases (avoid panic across languages, which is undefined behavior).
 * Refactored `Handler`, now it is much easier to customize your own handler functionality.
 * Remove one `Box::new(FnOnce)`, thus enables better inlining for ffi function calls.
 * Fix bug: Dart struct(class) is not generated if the struct only appears in the return type #98.
-* Add `FlutterRustBridgeTimeoutMixin`. If used, a timeout exception will be thrown for ffi calls that do not return within time limit.
+* Add `FlutterRustBridgeTimeoutMixin`. If used, a timeout exception will be thrown for ffi calls that do not return
+  within time limit.
 
 ## 1.1.0
 

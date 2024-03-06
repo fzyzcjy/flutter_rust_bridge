@@ -14,10 +14,11 @@ pub fn handle_uuid_twin_sync_sse(id: uuid::Uuid) -> anyhow::Result<uuid::Uuid> {
     Ok(id)
 }
 
-// TODO: For simplicity, `Vec<Uuid>` is supported using SSE (serializer)
-// #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn handle_uuids_twin_sync_sse(ids: Vec<uuid::Uuid>) -> anyhow::Result<Vec<uuid::Uuid>> {
-//     Ok(ids)
-// }
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn handle_uuids_twin_sync_sse(ids: Vec<uuid::Uuid>) -> anyhow::Result<Vec<uuid::Uuid>> {
+    Ok(ids)
+}
 
 #[flutter_rust_bridge::frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]

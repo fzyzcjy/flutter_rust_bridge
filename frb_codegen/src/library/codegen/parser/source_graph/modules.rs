@@ -1,3 +1,4 @@
+use crate::codegen::ir::namespace::Namespace;
 use derivative::Derivative;
 use quote::ToTokens;
 use serde::{Serialize, Serializer};
@@ -58,6 +59,14 @@ pub struct StructOrEnum<Item> {
     pub(crate) mirror: bool,
 }
 // frb-coverage:ignore-end
+
+impl<Item> StructOrEnum<Item> {
+    pub(crate) fn namespace(&self) -> Namespace {
+        let mut p = self.path.clone();
+        p.pop();
+        Namespace::new(p)
+    }
+}
 
 #[derive(Clone, Debug, Serialize)]
 pub struct Struct(pub StructOrEnum<ItemStruct>);
