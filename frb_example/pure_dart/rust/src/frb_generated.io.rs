@@ -39351,38 +39351,44 @@ pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_application_env(
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoi(
+    value: usize,
 ) -> *mut usize {
-    flutter_rust_bridge::for_generated::new_leak_box_ptr(usize::new_with_null_ptr())
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(value)
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
+    value: usize,
 ) -> *mut usize {
-    flutter_rust_bridge::for_generated::new_leak_box_ptr(usize::new_with_null_ptr())
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(value)
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync(
+    value: usize,
 ) -> *mut usize {
-    flutter_rust_bridge::for_generated::new_leak_box_ptr(usize::new_with_null_ptr())
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(value)
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+    value: usize,
 ) -> *mut usize {
-    flutter_rust_bridge::for_generated::new_leak_box_ptr(usize::new_with_null_ptr())
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(value)
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
+    value: usize,
 ) -> *mut usize {
-    flutter_rust_bridge::for_generated::new_leak_box_ptr(usize::new_with_null_ptr())
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(value)
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+    value: usize,
 ) -> *mut usize {
-    flutter_rust_bridge::for_generated::new_leak_box_ptr(usize::new_with_null_ptr())
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(value)
 }
 
 #[no_mangle]
