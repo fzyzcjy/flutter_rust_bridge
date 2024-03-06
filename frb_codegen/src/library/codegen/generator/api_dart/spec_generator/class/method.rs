@@ -25,6 +25,8 @@ pub(crate) fn generate_api_methods(
         .collect_vec()
 }
 
+const METHOD_NAME_DEFAULT_CONSTRUCTOR: &str = "new";
+
 fn generate_api_method(func: &IrFunc, context: ApiDartGeneratorContext) -> String {
     let method_info = if let IrFuncOwnerInfo::Method(info) = &func.owner {
         info
@@ -83,11 +85,12 @@ fn generate_signature(
         &func.mode,
         &ApiDartGenerator::new(func.output.clone(), context).dart_api_type(),
     );
-    let method_name = if is_static_method && method_info.actual_method_name == "new" {
-        format!("newInstance")
-    } else {
-        method_info.actual_method_name.to_case(Case::Camel)
-    };
+    let method_name =
+        if is_static_method && method_info.actual_method_name == METHOD_NAME_DEFAULT_CONSTRUCTOR {
+            format!("newInstance")
+        } else {
+            method_info.actual_method_name.to_case(Case::Camel)
+        };
     let (func_params, maybe_getter) = if func.getter {
         ("".to_owned(), "get")
     } else {
