@@ -2,6 +2,8 @@ import 'package:frb_example_pure_dart/src/rust/api/method.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
+import '../test_utils.dart';
+
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
@@ -112,13 +114,22 @@ Future<void> main({bool skipRustLibInit = false}) async {
     });
   });
 
-  group('ConstructorStructTwinNormal', () {
-    test('call Rust constructor', () async {
-      expect(ConstructorStructTwinNormal().one, 'hello');
+  group('constructor', () {
+    group('ConstructorTranslatableStructTwinNormal', () {
+      test('call Rust constructor', () async {
+        expect(ConstructorTranslatableStructTwinNormal().one, 'hello');
+      });
+
+      test('call Dart native constructor', () async {
+        expect(ConstructorTranslatableStructTwinNormal.raw(one: 'a').one, 'a');
+      });
     });
 
-    test('call Dart native constructor', () async {
-      expect(ConstructorStructTwinNormal.raw(one: 'a').one, 'a');
+    group('ConstructorOpaqueStructTwinNormal', () {
+      test('call Rust constructor', () async {
+        final object = ConstructorOpaqueStructTwinNormal();
+        await futurizeVoidTwinNormal(object.check());
+      });
     });
   });
 }
