@@ -48,9 +48,9 @@ fn generate_end_api_text(
     let classes = item.classes.iter().map(|c| c.code.clone()).join("\n\n");
 
     let path_frb_generated = match namespace.path().len() {
-        1 => "rust/frb_generated.dart".to_string(),
-        len => "../".repeat(len - 2) + "frb_generated.dart",
-    };
+        1 => "rust/".to_string(),
+        len => "../".repeat(len - 2),
+    } + "frb_generated.dart";
 
     let mut header = DartBasicHeaderCode {
         file_top: generate_code_header()
