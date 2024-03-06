@@ -25,9 +25,9 @@ pub(super) fn generate(
                 let dart_output_path =
                     compute_path_from_namespace(&config.dart_decl_base_output_path, namespace);
                 let text = generate_end_api_text(namespace, &dart_output_path, item)?;
-                PathText::new(dart_output_path, text)
+                Ok(PathText::new(dart_output_path, text))
             })
-            .collect_vec(),
+            .collect::<anyhow::Result<Vec<_>>>()?,
     );
 
     Ok(ApiDartOutputText {
