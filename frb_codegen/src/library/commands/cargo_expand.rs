@@ -48,9 +48,7 @@ impl CachedCargoExpand {
 
         let expanded = match self.cache.entry(rust_crate_dir.to_owned()) {
             Occupied(entry) => entry.into_mut(),
-            Vacant(entry) => {
-                entry.insert(&run_cargo_expand_with_frb_aware(rust_crate_dir, dumper)?)
-            }
+            Vacant(entry) => entry.insert(run_cargo_expand_with_frb_aware(rust_crate_dir, dumper)?),
         };
 
         extract_module(expanded, module)
@@ -94,7 +92,7 @@ fn run_cargo_expand_with_frb_aware(rust_crate_dir: &Path, dumper: &Dumper) -> Re
         r#"build.rustflags="--cfg frb_expand""#,
         dumper,
         true,
-    )?)?
+    )?)
     .into_owned())
 }
 
