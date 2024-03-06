@@ -219,6 +219,7 @@ impl NonCloneSimpleTwinNormal {
 
 // ================ struct with both encodable and opaque fields ===================
 
+#[frb(non_opaque)]
 pub struct StructWithGoodAndOpaqueFieldTwinNormal {
     pub good: String,
     pub opaque: NonCloneSimpleTwinNormal,
@@ -241,6 +242,7 @@ pub fn rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal
 
 // ================ enum with both encodable and opaque fields ===================
 
+#[frb(non_opaque)]
 pub enum EnumWithGoodAndOpaqueTwinNormal {
     Good(String),
     Opaque(NonCloneSimpleTwinNormal),
