@@ -48,11 +48,11 @@ fn generate_api_method(func: &IrFunc, context: ApiDartGeneratorContext) -> Strin
 }
 
 fn generate_comments(func: &IrFunc, method_info: &IrFuncOwnerInfoMethod) -> String {
-    let mut ans = "";
+    let mut ans = String::new();
     if method_info.default_constructor {
         ans += "// HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.\n";
     }
-    ans += generate_dart_comments(&func.comments);
+    ans += &generate_dart_comments(&func.comments);
     ans
 }
 
