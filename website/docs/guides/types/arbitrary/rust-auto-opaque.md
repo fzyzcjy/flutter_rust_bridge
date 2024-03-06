@@ -68,15 +68,15 @@ pub struct MyTempDir {
 
 impl MyTempDir {
     pub fn new() -> Self { ... }
-    
+
     pub fn directory_path(&self) -> String {
         self.dir.path()
     }
-    
+
     pub fn read_text(&self, filename: String) -> String {
         fs::read_to_string(self.dir.path().join(filename))
     }
-    
+
     // ...
 }
 ```
@@ -132,10 +132,14 @@ and you do not want to transfer it between Dart and Rust over and over again.
 For example:
 
 ```rust
-struct A { name: String }
+struct A {
+    name: String
+}
 
 #[frb(opaque)]
-struct B { name: String }
+struct B {
+    name: String
+}
 ```
 
 Will generate different Dart code:
@@ -147,6 +151,10 @@ class A { String name; ... }
 // A Dart class without data fields, you should pass it to Rust to manipulate it
 class B extends RustAutoOpaque {}
 ```
+
+## Force an opaque type to be non-opaque
+
+Similarly, you can use `#[frb(non_opaque)]` on a struct that is auto recognized as opaque.
 
 ## Implementation details
 
