@@ -41,7 +41,7 @@ fn generate_api_method(func: &IrFunc, context: ApiDartGeneratorContext) -> Strin
     let skip_count = usize::from(!is_static_method);
 
     let params = generate_params(func, context, skip_count);
-    let comments = generate_comments(func, method_info, default_constructor_mode);
+    let comments = generate_comments(func, default_constructor_mode);
     let signature =
         generate_signature(func, context, method_info, params, default_constructor_mode);
     let arg_names = generate_arg_names(func, is_static_method, skip_count).concat();
