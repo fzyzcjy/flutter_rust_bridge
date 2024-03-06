@@ -155,35 +155,3 @@ impl SimpleStructTwinSse {
         arg.into_iter().map(|x| x.one).collect()
     }
 }
-
-pub struct ConstructorTranslatableStructTwinSse {
-    pub one: String,
-}
-
-impl ConstructorTranslatableStructTwinSse {
-    #[flutter_rust_bridge::frb(serialize)]
-    pub fn new_twin_sse() -> Self {
-        Self {
-            one: "hello".to_owned(),
-        }
-    }
-}
-
-#[frb(opaque)]
-pub struct ConstructorOpaqueStructTwinSse {
-    pub one: String,
-}
-
-impl ConstructorOpaqueStructTwinSse {
-    #[flutter_rust_bridge::frb(serialize)]
-    pub fn new_twin_sse() -> Self {
-        Self {
-            one: "hello".to_owned(),
-        }
-    }
-
-    #[flutter_rust_bridge::frb(serialize)]
-    pub fn check_twin_sse(&self) {
-        assert_eq!(self.one, "hello");
-    }
-}

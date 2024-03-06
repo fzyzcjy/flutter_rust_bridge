@@ -170,38 +170,3 @@ impl SimpleStructTwinSyncSse {
         arg.into_iter().map(|x| x.one).collect()
     }
 }
-
-pub struct ConstructorTranslatableStructTwinSyncSse {
-    pub one: String,
-}
-
-impl ConstructorTranslatableStructTwinSyncSse {
-    #[flutter_rust_bridge::frb(serialize)]
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn new_twin_sync_sse() -> Self {
-        Self {
-            one: "hello".to_owned(),
-        }
-    }
-}
-
-#[frb(opaque)]
-pub struct ConstructorOpaqueStructTwinSyncSse {
-    pub one: String,
-}
-
-impl ConstructorOpaqueStructTwinSyncSse {
-    #[flutter_rust_bridge::frb(serialize)]
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn new_twin_sync_sse() -> Self {
-        Self {
-            one: "hello".to_owned(),
-        }
-    }
-
-    #[flutter_rust_bridge::frb(serialize)]
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn check_twin_sync_sse(&self) {
-        assert_eq!(self.one, "hello");
-    }
-}
