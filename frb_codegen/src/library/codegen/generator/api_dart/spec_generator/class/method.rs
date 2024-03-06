@@ -41,7 +41,7 @@ fn generate_api_method(func: &IrFunc, context: ApiDartGeneratorContext) -> Strin
     // skip the first as it's the method 'self'
     let skip_count = usize::from(!is_static_method);
 
-    let params = generate_params(func, context, is_static_method, skip_count);
+    let params = generate_params(func, context, skip_count);
     let comments = generate_comments(func, method_info, is_default_constructor);
     let signature = generate_signature(func, context, method_info, params, is_default_constructor);
     let arg_names = generate_arg_names(func, is_static_method, skip_count).concat();
@@ -66,7 +66,6 @@ fn generate_comments(
 fn generate_params(
     func: &IrFunc,
     context: ApiDartGeneratorContext,
-    _is_static_method: bool,
     skip_count: usize,
 ) -> Vec<String> {
     let mut ans = func
