@@ -27,13 +27,10 @@ where
             let namespaced_name = NamespacedName::new(namespace, name.to_string());
 
             let attrs = FrbAttributes::parse(src_object.attrs())?;
-            let opaque = attrs.opaque().unwrap_or_else(|| compute_default_opaque());
-            if opaque {
+            let attrs_opaque = attrs.opaque();
+            if attrs_opaque == Some(true) {
                 debug!("Recognize {name} as opaque");
-                return Ok(Some(self.parse_type_rust_auto_opaque(
-                    Some(namespaced_name.namespace),
-                    &syn::parse_str(&namespaced_name.name)?,
-                )?));
+                return Ok(Some(self.parse_opaque(&namespaced_name)?));
             }
 
             let ident: Id = namespaced_name.clone().into();
@@ -52,6 +49,13 @@ where
         }
 
         Ok(None)
+    }
+
+    fn parse_opaque(&mut self, namespaced_name: &NamespacedName) -> Result<IrType, Error> {
+        self.parse_type_rust_auto_opaque(
+            Some(namespaced_name.namespace),
+            &syn::parse_str(&namespaced_name.name)?,
+        )
     }
 
     fn parse_inner(
