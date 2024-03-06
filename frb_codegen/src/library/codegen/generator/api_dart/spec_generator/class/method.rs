@@ -34,16 +34,24 @@ fn generate_api_method(func: &IrFunc, context: ApiDartGeneratorContext) -> Strin
         // frb-coverage:ignore-end
     };
     let is_static_method = method_info.mode == IrFuncOwnerInfoMethodMode::Static;
-    let is_default_constructor = is_static_method
-        && func.mode == IrFuncMode::Sync
-        && method_info.actual_method_name == "new";
+
+    let default_constructor_mode = if method_info.actual_method_name == "new" {
+        if is_static_method && func.mode == IrFuncMode::Sync {
+            DefaultConstructorMode::DartConstructor
+        } else {
+            DefaultConstructorMode::StaticMethod
+        }
+    } else {
+        None
+    };
 
     // skip the first as it's the method 'self'
     let skip_count = usize::from(!is_static_method);
 
     let params = generate_params(func, context, skip_count);
-    let comments = generate_comments(func, method_info, is_default_constructor);
-    let signature = generate_signature(func, context, method_info, params, is_default_constructor);
+    let comments = generate_comments(func, method_info, default_constructor_mode);
+    let signature =
+        generate_signature(func, context, method_info, params, default_constructor_mode);
     let arg_names = generate_arg_names(func, is_static_method, skip_count).concat();
     let implementation = generate_implementation(func, context, is_static_method, arg_names);
 
@@ -53,10 +61,10 @@ fn generate_api_method(func: &IrFunc, context: ApiDartGeneratorContext) -> Strin
 fn generate_comments(
     func: &IrFunc,
     method_info: &IrFuncOwnerInfoMethod,
-    is_default_constructor: bool,
+    default_constructor_mode: Option<DefaultConstructorMode>,
 ) -> String {
     let mut ans = String::new();
-    if is_default_constructor {
+    if default_constructor_mode == Some(DefaultConstructorMode::StaticMethod) {
         ans += "  // HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.\n";
     }
     ans += &generate_dart_comments(&func.comments);
@@ -91,7 +99,7 @@ fn generate_signature(
     context: ApiDartGeneratorContext,
     method_info: &IrFuncOwnerInfoMethod,
     func_params: Vec<String>,
-    is_default_constructor: bool,
+    default_constructor_mode: Option<DefaultConstructorMode>,
 ) -> String {
     let is_static_method = method_info.mode == IrFuncOwnerInfoMethodMode::Static;
     let maybe_static = if is_static_method { "static" } else { "" };
@@ -99,7 +107,7 @@ fn generate_signature(
         &func.mode,
         &ApiDartGenerator::new(func.output.clone(), context).dart_api_type(),
     );
-    let method_name = if method_info.actual_method_name == "new" {
+    let method_name = if default_constructor_mode.is_some() {
         format!("newInstance")
     } else {
         method_info.actual_method_name.to_case(Case::Camel)
@@ -110,7 +118,7 @@ fn generate_signature(
         (format!("({{ {} }})", func_params.join(",")), "")
     };
 
-    if is_default_constructor {
+    if default_constructor_mode == Some(DefaultConstructorMode::DartConstructor) {
         return format!("factory {return_type}({func_params})");
     }
 
@@ -147,4 +155,10 @@ fn generate_implementation(
         let extra_arg_name = func.inputs[0].name.dart_style();
         format!("{dart_api_instance}.{func_name}({extra_arg_name}: this, {arg_names})")
     }
+}
+
+#[derive(Clone, Copy, Eq, PartialEq)]
+enum DefaultConstructorMode {
+    DartConstructor,
+    StaticMethod,
 }
