@@ -32,10 +32,10 @@ For example:
 impl MyStruct {
     pub fn new_with_name(name: String) -> Self { ... }
 
-    pub async fn new_from_pieces(a: String, b: i32, c: Vec<u8>) -> Self { ... }
-
     #[frb(sync)]
-    pub fn whatever_you_like(x: (String, String)) -> Self { ... }
+    pub fn new_from_pieces(a: String, b: i32, c: Vec<u8>) -> Self { ... }
+
+    pub async fn whatever_you_like(x: (String, String)) -> Self { ... }
 }
 ```
 
@@ -43,6 +43,6 @@ can be used as:
 
 ```dart
 var a = await MyStruct.newWithName(...);
-var b = await MyStruct.newFromPieces(...);
-var c = MyStruct.whateverYouLike(...);
+var b = MyStruct.newFromPieces(...);
+var c = await MyStruct.whateverYouLike(...);
 ```
