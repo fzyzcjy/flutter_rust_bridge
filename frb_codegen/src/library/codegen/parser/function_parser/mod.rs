@@ -146,10 +146,15 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                         return Ok(None);
                     };
 
+                let actual_method_name = impl_item_fn.sig.ident.to_string();
+                let default_constructor =
+                    mode == IrFuncOwnerInfoMethodMode::Static && actual_method_name == "new";
+
                 IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod {
                     enum_or_struct_name,
-                    actual_method_name: impl_item_fn.sig.ident.to_string(),
+                    actual_method_name,
                     mode,
+                    default_constructor,
                 })
             }
         }))
