@@ -44,6 +44,7 @@ pub struct IrFuncOwnerInfoMethod {
     pub(crate) enum_or_struct_name: NamespacedName,
     pub(crate) actual_method_name: String,
     pub(crate) mode: IrFuncOwnerInfoMethodMode,
+    pub(crate) default_constructor: bool,
 }
 
 pub enum IrFuncOwnerInfoMethodMode {
