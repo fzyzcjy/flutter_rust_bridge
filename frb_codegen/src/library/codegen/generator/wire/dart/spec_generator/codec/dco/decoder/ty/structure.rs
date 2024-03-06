@@ -30,7 +30,7 @@ impl<'a> WireDartCodecDcoGeneratorDecoderTrait for StructRefWireDartCodecDcoGene
         format!(
             "{cast}
                 {safe_check}
-                return {name}{dotted_ctor_name}({inner});",
+                return {name}{ctor_postfix}({inner});",
             name = s.name.name,
         )
     }

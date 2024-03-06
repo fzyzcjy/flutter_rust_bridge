@@ -26,12 +26,15 @@ pub(crate) fn generate_api_methods(
 }
 
 // TODO move
-pub(crate) fn dart_constructor_postfix(name: &NamespacedName, all_funcs: &[IrFunc]) -> String {
+pub(crate) fn dart_constructor_postfix(
+    name: &NamespacedName,
+    all_funcs: &[IrFunc],
+) -> &'static str {
     if has_default_dart_constructor(name, all_funcs) {
         ".raw"
     } else {
         ""
-    };
+    }
 }
 
 fn has_default_dart_constructor(name: &NamespacedName, all_funcs: &[IrFunc]) -> bool {

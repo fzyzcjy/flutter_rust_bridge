@@ -1,5 +1,5 @@
 use crate::codegen::generator::api_dart::spec_generator::class::method::{
-    dart_constructor_postfix, generate_api_methods, has_default_dart_constructor,
+    dart_constructor_postfix, generate_api_methods,
 };
 use crate::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
@@ -21,14 +21,20 @@ impl<'a> ApiDartGeneratorClassTrait for StructRefApiDartGenerator<'a> {
         Some(ApiDartGeneratedClass {
             namespace: src.name.namespace.clone(),
             code: if src.using_freezed() {
-                self.generate_mode_freezed(src, &comments, &metadata, &methods, constructor_postfix)
+                self.generate_mode_freezed(
+                    src,
+                    &comments,
+                    &metadata,
+                    &methods,
+                    &constructor_postfix,
+                )
             } else {
                 self.generate_mode_non_freezed(
                     src,
                     &comments,
                     &metadata,
                     &methods,
-                    constructor_postfix,
+                    &constructor_postfix,
                 )
             },
             needs_freezed: src.using_freezed(),
