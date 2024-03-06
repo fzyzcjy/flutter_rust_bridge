@@ -2561,6 +2561,48 @@ impl CstDecode<Box<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationE
         .into()
     }
 }
+impl CstDecode<NonCloneSimpleTwinMoi> for *mut usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> NonCloneSimpleTwinMoi {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<NonCloneSimpleTwinMoi>::cst_decode(*wrap).into()
+    }
+}
+impl CstDecode<NonCloneSimpleTwinNormal> for *mut usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> NonCloneSimpleTwinNormal {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<NonCloneSimpleTwinNormal>::cst_decode(*wrap).into()
+    }
+}
+impl CstDecode<NonCloneSimpleTwinRustAsync> for *mut usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> NonCloneSimpleTwinRustAsync {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<NonCloneSimpleTwinRustAsync>::cst_decode(*wrap).into()
+    }
+}
+impl CstDecode<NonCloneSimpleTwinRustAsyncMoi> for *mut usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> NonCloneSimpleTwinRustAsyncMoi {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<NonCloneSimpleTwinRustAsyncMoi>::cst_decode(*wrap).into()
+    }
+}
+impl CstDecode<NonCloneSimpleTwinSync> for *mut usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> NonCloneSimpleTwinSync {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<NonCloneSimpleTwinSync>::cst_decode(*wrap).into()
+    }
+}
+impl CstDecode<NonCloneSimpleTwinSyncMoi> for *mut usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> NonCloneSimpleTwinSyncMoi {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<NonCloneSimpleTwinSyncMoi>::cst_decode(*wrap).into()
+    }
+}
 impl CstDecode<chrono::Duration> for *mut i64 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> chrono::Duration {
@@ -9840,6 +9882,7 @@ impl
         crate::api::pseudo_manual::rust_auto_opaque_twin_moi::StructWithGoodAndOpaqueFieldTwinMoi {
             good: self.good.cst_decode(),
             opaque: self.opaque.cst_decode(),
+            option_opaque: self.option_opaque.cst_decode(),
         }
     }
 }
@@ -9851,19 +9894,20 @@ impl CstDecode<crate::api::rust_auto_opaque::StructWithGoodAndOpaqueFieldTwinNor
         crate::api::rust_auto_opaque::StructWithGoodAndOpaqueFieldTwinNormal {
             good: self.good.cst_decode(),
             opaque: self.opaque.cst_decode(),
+            option_opaque: self.option_opaque.cst_decode(),
         }
     }
 }
 impl CstDecode<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::StructWithGoodAndOpaqueFieldTwinRustAsync> for wire_cst_struct_with_good_and_opaque_field_twin_rust_async {
             // Codec=Cst (C-struct based), see doc to use other codecs
             fn cst_decode(self) -> crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::StructWithGoodAndOpaqueFieldTwinRustAsync {
-                crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::StructWithGoodAndOpaqueFieldTwinRustAsync{good:  self.good.cst_decode(),opaque:  self.opaque.cst_decode()}
+                crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::StructWithGoodAndOpaqueFieldTwinRustAsync{good:  self.good.cst_decode(),opaque:  self.opaque.cst_decode(),option_opaque:  self.option_opaque.cst_decode()}
             }
         }
 impl CstDecode<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_moi::StructWithGoodAndOpaqueFieldTwinRustAsyncMoi> for wire_cst_struct_with_good_and_opaque_field_twin_rust_async_moi {
             // Codec=Cst (C-struct based), see doc to use other codecs
             fn cst_decode(self) -> crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_moi::StructWithGoodAndOpaqueFieldTwinRustAsyncMoi {
-                crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_moi::StructWithGoodAndOpaqueFieldTwinRustAsyncMoi{good:  self.good.cst_decode(),opaque:  self.opaque.cst_decode()}
+                crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_moi::StructWithGoodAndOpaqueFieldTwinRustAsyncMoi{good:  self.good.cst_decode(),opaque:  self.opaque.cst_decode(),option_opaque:  self.option_opaque.cst_decode()}
             }
         }
 impl
@@ -9876,13 +9920,13 @@ impl
         self,
     ) -> crate::api::pseudo_manual::rust_auto_opaque_twin_sync::StructWithGoodAndOpaqueFieldTwinSync
     {
-        crate::api::pseudo_manual::rust_auto_opaque_twin_sync::StructWithGoodAndOpaqueFieldTwinSync{good:  self.good.cst_decode(),opaque:  self.opaque.cst_decode()}
+        crate::api::pseudo_manual::rust_auto_opaque_twin_sync::StructWithGoodAndOpaqueFieldTwinSync{good:  self.good.cst_decode(),opaque:  self.opaque.cst_decode(),option_opaque:  self.option_opaque.cst_decode()}
     }
 }
 impl CstDecode<crate::api::pseudo_manual::rust_auto_opaque_twin_sync_moi::StructWithGoodAndOpaqueFieldTwinSyncMoi> for wire_cst_struct_with_good_and_opaque_field_twin_sync_moi {
             // Codec=Cst (C-struct based), see doc to use other codecs
             fn cst_decode(self) -> crate::api::pseudo_manual::rust_auto_opaque_twin_sync_moi::StructWithGoodAndOpaqueFieldTwinSyncMoi {
-                crate::api::pseudo_manual::rust_auto_opaque_twin_sync_moi::StructWithGoodAndOpaqueFieldTwinSyncMoi{good:  self.good.cst_decode(),opaque:  self.opaque.cst_decode()}
+                crate::api::pseudo_manual::rust_auto_opaque_twin_sync_moi::StructWithGoodAndOpaqueFieldTwinSyncMoi{good:  self.good.cst_decode(),opaque:  self.opaque.cst_decode(),option_opaque:  self.option_opaque.cst_decode()}
             }
         }
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::StructWithHashMap>
@@ -13748,6 +13792,7 @@ impl NewWithNullPtr for wire_cst_struct_with_good_and_opaque_field_twin_moi {
         Self {
             good: core::ptr::null_mut(),
             opaque: Default::default(),
+            option_opaque: core::ptr::null_mut(),
         }
     }
 }
@@ -13761,6 +13806,7 @@ impl NewWithNullPtr for wire_cst_struct_with_good_and_opaque_field_twin_normal {
         Self {
             good: core::ptr::null_mut(),
             opaque: Default::default(),
+            option_opaque: core::ptr::null_mut(),
         }
     }
 }
@@ -13774,6 +13820,7 @@ impl NewWithNullPtr for wire_cst_struct_with_good_and_opaque_field_twin_rust_asy
         Self {
             good: core::ptr::null_mut(),
             opaque: Default::default(),
+            option_opaque: core::ptr::null_mut(),
         }
     }
 }
@@ -13787,6 +13834,7 @@ impl NewWithNullPtr for wire_cst_struct_with_good_and_opaque_field_twin_rust_asy
         Self {
             good: core::ptr::null_mut(),
             opaque: Default::default(),
+            option_opaque: core::ptr::null_mut(),
         }
     }
 }
@@ -13800,6 +13848,7 @@ impl NewWithNullPtr for wire_cst_struct_with_good_and_opaque_field_twin_sync {
         Self {
             good: core::ptr::null_mut(),
             opaque: Default::default(),
+            option_opaque: core::ptr::null_mut(),
         }
     }
 }
@@ -13813,6 +13862,7 @@ impl NewWithNullPtr for wire_cst_struct_with_good_and_opaque_field_twin_sync_moi
         Self {
             good: core::ptr::null_mut(),
             opaque: Default::default(),
+            option_opaque: core::ptr::null_mut(),
         }
     }
 }
@@ -39300,6 +39350,42 @@ pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_application_env(
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoi(
+) -> *mut usize {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(usize::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
+) -> *mut usize {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(usize::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync(
+) -> *mut usize {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(usize::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+) -> *mut usize {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(usize::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
+) -> *mut usize {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(usize::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+) -> *mut usize {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(usize::new_with_null_ptr())
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_Chrono_Duration(
     value: i64,
 ) -> *mut i64 {
@@ -46370,36 +46456,42 @@ pub struct wire_cst_struct_with_explicit_auto_opaque_field_twin_sync_moi {
 pub struct wire_cst_struct_with_good_and_opaque_field_twin_moi {
     good: *mut wire_cst_list_prim_u_8_strict,
     opaque: usize,
+    option_opaque: *mut usize,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_struct_with_good_and_opaque_field_twin_normal {
     good: *mut wire_cst_list_prim_u_8_strict,
     opaque: usize,
+    option_opaque: *mut usize,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_struct_with_good_and_opaque_field_twin_rust_async {
     good: *mut wire_cst_list_prim_u_8_strict,
     opaque: usize,
+    option_opaque: *mut usize,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_struct_with_good_and_opaque_field_twin_rust_async_moi {
     good: *mut wire_cst_list_prim_u_8_strict,
     opaque: usize,
+    option_opaque: *mut usize,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_struct_with_good_and_opaque_field_twin_sync {
     good: *mut wire_cst_list_prim_u_8_strict,
     opaque: usize,
+    option_opaque: *mut usize,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_struct_with_good_and_opaque_field_twin_sync_moi {
     good: *mut wire_cst_list_prim_u_8_strict,
     opaque: usize,
+    option_opaque: *mut usize,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
