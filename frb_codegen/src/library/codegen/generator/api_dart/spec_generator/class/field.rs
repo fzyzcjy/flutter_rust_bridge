@@ -79,5 +79,9 @@ mod tests {
             &default_value_to_dart_style("OneTwo.ThreeFour"),
             "OneTwo.threeFour"
         );
+        assert_eq!(
+            &default_value_to_dart_style("const Foo.bar()"),
+            "const Foo.bar()"
+        );
     }
 }
