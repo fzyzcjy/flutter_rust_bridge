@@ -115,7 +115,7 @@ fn run_cargo_expand(
     // let _pb = simple_progress("Run cargo-expand".to_owned(), 1);
     debug!("Running cargo expand in '{rust_crate_dir:?}'");
 
-    let args = command_args!("expand", "--lib", "--theme=none", "--ugly", "--config",);
+    let args = command_args!("expand", "--lib", "--theme=none", "--ugly");
 
     let output = execute_command(
         "cargo",
