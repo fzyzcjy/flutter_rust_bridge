@@ -138,6 +138,12 @@ EnumWithGoodAndOpaqueTwinSyncMoi
             .rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinSyncMoi(
                 hint: hint);
 
+void rustAutoOpaqueDummyTwinSyncMoi(
+        {required StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi a,
+        required EnumWithGoodAndOpaqueWithoutOptionTwinSyncMoi b,
+        dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueDummyTwinSyncMoi(a: a, b: b, hint: hint);
+
 void rustAutoOpaqueEnumArgBorrowTwinSyncMoi(
         {required NonCloneSimpleEnumTwinSyncMoi arg, dynamic hint}) =>
     RustLib.instance.api
@@ -237,6 +243,26 @@ class BoxMyTraitTwinSyncMoi extends RustOpaque {
         .instance.api.rust_arc_decrement_strong_count_BoxMyTraitTwinSyncMoi,
     rustArcDecrementStrongCountPtr: RustLib
         .instance.api.rust_arc_decrement_strong_count_BoxMyTraitTwinSyncMoiPtr,
+  );
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<EnumWithGoodAndOpaqueWithoutOptionTwinSyncMoi>>
+@sealed
+class EnumWithGoodAndOpaqueWithoutOptionTwinSyncMoi extends RustOpaque {
+  EnumWithGoodAndOpaqueWithoutOptionTwinSyncMoi.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  EnumWithGoodAndOpaqueWithoutOptionTwinSyncMoi.sseDecode(
+      int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_EnumWithGoodAndOpaqueWithoutOptionTwinSyncMoi,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_EnumWithGoodAndOpaqueWithoutOptionTwinSyncMoi,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_EnumWithGoodAndOpaqueWithoutOptionTwinSyncMoiPtr,
   );
 }
 
@@ -380,6 +406,27 @@ class OpaqueTwoTwinSyncMoi extends RustOpaque {
         .instance.api.rust_arc_decrement_strong_count_OpaqueTwoTwinSyncMoi,
     rustArcDecrementStrongCountPtr: RustLib
         .instance.api.rust_arc_decrement_strong_count_OpaqueTwoTwinSyncMoiPtr,
+  );
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi>>
+@sealed
+class StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi extends RustOpaque {
+  StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi.dcoDecode(
+      List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi.sseDecode(
+      int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoiPtr,
   );
 }
 

@@ -27,12 +27,10 @@ where
             let namespaced_name = NamespacedName::new(namespace, name.to_string());
 
             let attrs = FrbAttributes::parse(src_object.attrs())?;
-            if attrs.opaque() {
-                debug!("Recognize {name} has opaque attribute");
-                return Ok(Some(self.parse_type_rust_auto_opaque(
-                    Some(namespaced_name.namespace),
-                    &syn::parse_str(&namespaced_name.name)?,
-                )?));
+            let attrs_opaque = attrs.opaque();
+            if attrs_opaque == Some(true) {
+                debug!("Treat {name} as opaque since attribute says so");
+                return Ok(Some(self.parse_opaque(&namespaced_name)?));
             }
 
             let ident: Id = namespaced_name.clone().into();
@@ -47,10 +45,25 @@ where
                 (self.parser_info().object_pool).insert(ident.clone(), parsed_object);
             }
 
+            if attrs_opaque.is_none()
+                && (self.parser_info().object_pool.get(&ident))
+                    .map_or(false, |obj| Self::compute_default_opaque(obj))
+            {
+                debug!("Treat {name} as opaque by compute_default_opaque");
+                return Ok(Some(self.parse_opaque(&namespaced_name)?));
+            }
+
             return Ok(Some(self.construct_output(ident)?));
         }
 
         Ok(None)
+    }
+
+    fn parse_opaque(&mut self, namespaced_name: &NamespacedName) -> anyhow::Result<IrType> {
+        self.parse_type_rust_auto_opaque(
+            Some(namespaced_name.namespace.clone()),
+            &syn::parse_str(&namespaced_name.name)?,
+        )
     }
 
     fn parse_inner(
@@ -71,6 +84,8 @@ where
         namespace: Option<Namespace>,
         ty: &Type,
     ) -> anyhow::Result<IrType>;
+
+    fn compute_default_opaque(obj: &Obj) -> bool;
 }
 
 #[derive(Clone, Debug, Default)]

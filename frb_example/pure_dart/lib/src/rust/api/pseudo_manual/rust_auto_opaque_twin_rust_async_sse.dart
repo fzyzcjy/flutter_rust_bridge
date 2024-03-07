@@ -145,6 +145,13 @@ Future<EnumWithGoodAndOpaqueTwinRustAsyncSse>
             .rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinRustAsyncSse(
                 hint: hint);
 
+Future<void> rustAutoOpaqueDummyTwinRustAsyncSse(
+        {required StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse a,
+        required EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncSse b,
+        dynamic hint}) =>
+    RustLib.instance.api
+        .rustAutoOpaqueDummyTwinRustAsyncSse(a: a, b: b, hint: hint);
+
 Future<void> rustAutoOpaqueEnumArgBorrowTwinRustAsyncSse(
         {required NonCloneSimpleEnumTwinRustAsyncSse arg, dynamic hint}) =>
     RustLib.instance.api
@@ -249,6 +256,27 @@ class BoxMyTraitTwinRustAsyncSse extends RustOpaque {
         .rust_arc_decrement_strong_count_BoxMyTraitTwinRustAsyncSse,
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_BoxMyTraitTwinRustAsyncSsePtr,
+  );
+}
+
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncSse>>
+@sealed
+class EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncSse extends RustOpaque {
+  EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncSse.dcoDecode(
+      List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncSse.sseDecode(
+      int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncSse,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncSse,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncSsePtr,
   );
 }
 
@@ -401,6 +429,28 @@ class OpaqueTwoTwinRustAsyncSse extends RustOpaque {
         .instance.api.rust_arc_decrement_strong_count_OpaqueTwoTwinRustAsyncSse,
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_OpaqueTwoTwinRustAsyncSsePtr,
+  );
+}
+
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse>>
+@sealed
+class StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse
+    extends RustOpaque {
+  StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse.dcoDecode(
+      List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse.sseDecode(
+      int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSsePtr,
   );
 }
 
