@@ -127,18 +127,25 @@
           },
           "ty": {
             "data": {
-              "exist_in_real_api": false,
               "inner": {
-                "data": {
-                  "ident": "crate::api/MyGenericEnum",
-                  "is_exception": false
-                },
-                "safe_ident": "my_generic_enum",
-                "type": "EnumRef"
+                "brief_name": true,
+                "codec": "Nom",
+                "inner": "flutter_rust_bridge::for_generated::rust_async::RwLock<MyGenericEnum>",
+                "namespace": "crate::api"
+              },
+              "ownership_mode": "Owned",
+              "raw": {
+                "segments": [
+                  {
+                    "args": "",
+                    "ident": "MyGenericEnum"
+                  }
+                ],
+                "string": "MyGenericEnum"
               }
             },
-            "safe_ident": "box_autoadd_my_generic_enum",
-            "type": "Boxed"
+            "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyGenericEnum",
+            "type": "RustAutoOpaque"
           }
         }
       ],
@@ -173,18 +180,25 @@
           },
           "ty": {
             "data": {
-              "exist_in_real_api": false,
               "inner": {
-                "data": {
-                  "ident": "crate::api/MyGenericEnum",
-                  "is_exception": false
-                },
-                "safe_ident": "my_generic_enum",
-                "type": "EnumRef"
+                "brief_name": true,
+                "codec": "Nom",
+                "inner": "flutter_rust_bridge::for_generated::rust_async::RwLock<MyGenericEnum>",
+                "namespace": "crate::api"
+              },
+              "ownership_mode": "Owned",
+              "raw": {
+                "segments": [
+                  {
+                    "args": "",
+                    "ident": "MyGenericEnum"
+                  }
+                ],
+                "string": "MyGenericEnum"
               }
             },
-            "safe_ident": "box_autoadd_my_generic_enum",
-            "type": "Boxed"
+            "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyGenericEnum",
+            "type": "RustAutoOpaque"
           }
         }
       ],
@@ -219,18 +233,25 @@
           },
           "ty": {
             "data": {
-              "exist_in_real_api": false,
               "inner": {
-                "data": {
-                  "ident": "crate::api/MyGenericStruct",
-                  "is_exception": false
-                },
-                "safe_ident": "my_generic_struct",
-                "type": "StructRef"
+                "brief_name": true,
+                "codec": "Nom",
+                "inner": "flutter_rust_bridge::for_generated::rust_async::RwLock<MyGenericStruct>",
+                "namespace": "crate::api"
+              },
+              "ownership_mode": "Owned",
+              "raw": {
+                "segments": [
+                  {
+                    "args": "",
+                    "ident": "MyGenericStruct"
+                  }
+                ],
+                "string": "MyGenericStruct"
               }
             },
-            "safe_ident": "box_autoadd_my_generic_struct",
-            "type": "Boxed"
+            "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyGenericStruct",
+            "type": "RustAutoOpaque"
           }
         }
       ],
@@ -265,18 +286,25 @@
           },
           "ty": {
             "data": {
-              "exist_in_real_api": false,
               "inner": {
-                "data": {
-                  "ident": "crate::api/MyGenericStruct",
-                  "is_exception": false
-                },
-                "safe_ident": "my_generic_struct",
-                "type": "StructRef"
+                "brief_name": true,
+                "codec": "Nom",
+                "inner": "flutter_rust_bridge::for_generated::rust_async::RwLock<MyGenericStruct>",
+                "namespace": "crate::api"
+              },
+              "ownership_mode": "Owned",
+              "raw": {
+                "segments": [
+                  {
+                    "args": "",
+                    "ident": "MyGenericStruct"
+                  }
+                ],
+                "string": "MyGenericStruct"
               }
             },
-            "safe_ident": "box_autoadd_my_generic_struct",
-            "type": "Boxed"
+            "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyGenericStruct",
+            "type": "RustAutoOpaque"
           }
         }
       ],
@@ -311,18 +339,25 @@
           },
           "ty": {
             "data": {
-              "exist_in_real_api": false,
               "inner": {
-                "data": {
-                  "ident": "crate::api/MyGenericStruct",
-                  "is_exception": false
-                },
-                "safe_ident": "my_generic_struct",
-                "type": "StructRef"
+                "brief_name": true,
+                "codec": "Nom",
+                "inner": "flutter_rust_bridge::for_generated::rust_async::RwLock<MyGenericStruct>",
+                "namespace": "crate::api"
+              },
+              "ownership_mode": "Owned",
+              "raw": {
+                "segments": [
+                  {
+                    "args": "",
+                    "ident": "MyGenericStruct"
+                  }
+                ],
+                "string": "MyGenericStruct"
               }
             },
-            "safe_ident": "box_autoadd_my_generic_struct",
-            "type": "Boxed"
+            "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyGenericStruct",
+            "type": "RustAutoOpaque"
           }
         }
       ],

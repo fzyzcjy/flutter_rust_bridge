@@ -41,7 +41,7 @@ impl<'a> CodecSseTyTrait for EnumRefCodecSseTy<'a> {
             .map(|(idx, variant)| {
                 (
                     format!("{idx}"),
-                    generate_decode_variant(variant, &src.name, lang),
+                    generate_decode_variant(variant, &src.name, lang, self.context),
                 )
             })
             .collect_vec();
@@ -61,7 +61,12 @@ impl<'a> CodecSseTyTrait for EnumRefCodecSseTy<'a> {
     }
 }
 
-fn generate_decode_variant(variant: &IrVariant, enum_name: &NamespacedName, lang: &Lang) -> String {
+fn generate_decode_variant(
+    variant: &IrVariant,
+    enum_name: &NamespacedName,
+    lang: &Lang,
+    context: CodecSseTyContext,
+) -> String {
     let enum_name_str = enum_name.style(lang);
     let enum_sep = enum_sep(lang);
     match &variant.kind {
@@ -76,11 +81,12 @@ fn generate_decode_variant(variant: &IrVariant, enum_name: &NamespacedName, lang
             )
         }
         IrVariantKind::Struct(st) => {
-            GeneralizedStructGenerator::new(st.clone(), StructOrRecord::Struct).generate_decode(
-                lang,
-                Some(format!("{enum_name_str}{enum_sep}{}", st.name.name)),
-                false,
-            )
+            GeneralizedStructGenerator::new(st.clone(), context, StructOrRecord::Struct)
+                .generate_decode(
+                    lang,
+                    Some(format!("{enum_name_str}{enum_sep}{}", st.name.name)),
+                    false,
+                )
         }
     }
 }

@@ -138,6 +138,12 @@ EnumWithGoodAndOpaqueTwinSyncSse
             .rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinSyncSse(
                 hint: hint);
 
+void rustAutoOpaqueDummyTwinSyncSse(
+        {required StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse a,
+        required EnumWithGoodAndOpaqueWithoutOptionTwinSyncSse b,
+        dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueDummyTwinSyncSse(a: a, b: b, hint: hint);
+
 void rustAutoOpaqueEnumArgBorrowTwinSyncSse(
         {required NonCloneSimpleEnumTwinSyncSse arg, dynamic hint}) =>
     RustLib.instance.api
@@ -237,6 +243,26 @@ class BoxMyTraitTwinSyncSse extends RustOpaque {
         .instance.api.rust_arc_decrement_strong_count_BoxMyTraitTwinSyncSse,
     rustArcDecrementStrongCountPtr: RustLib
         .instance.api.rust_arc_decrement_strong_count_BoxMyTraitTwinSyncSsePtr,
+  );
+}
+
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<EnumWithGoodAndOpaqueWithoutOptionTwinSyncSse>>
+@sealed
+class EnumWithGoodAndOpaqueWithoutOptionTwinSyncSse extends RustOpaque {
+  EnumWithGoodAndOpaqueWithoutOptionTwinSyncSse.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  EnumWithGoodAndOpaqueWithoutOptionTwinSyncSse.sseDecode(
+      int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_EnumWithGoodAndOpaqueWithoutOptionTwinSyncSse,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_EnumWithGoodAndOpaqueWithoutOptionTwinSyncSse,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_EnumWithGoodAndOpaqueWithoutOptionTwinSyncSsePtr,
   );
 }
 
@@ -383,6 +409,27 @@ class OpaqueTwoTwinSyncSse extends RustOpaque {
   );
 }
 
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse>>
+@sealed
+class StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse extends RustOpaque {
+  StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse.dcoDecode(
+      List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse.sseDecode(
+      int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSsePtr,
+  );
+}
+
 @freezed
 sealed class EnumWithGoodAndOpaqueTwinSyncSse
     with _$EnumWithGoodAndOpaqueTwinSyncSse {
@@ -418,14 +465,16 @@ class StructWithExplicitAutoOpaqueFieldTwinSyncSse {
 class StructWithGoodAndOpaqueFieldTwinSyncSse {
   final String good;
   final NonCloneSimpleTwinSyncSse opaque;
+  final NonCloneSimpleTwinSyncSse? optionOpaque;
 
   const StructWithGoodAndOpaqueFieldTwinSyncSse({
     required this.good,
     required this.opaque,
+    this.optionOpaque,
   });
 
   @override
-  int get hashCode => good.hashCode ^ opaque.hashCode;
+  int get hashCode => good.hashCode ^ opaque.hashCode ^ optionOpaque.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -433,5 +482,6 @@ class StructWithGoodAndOpaqueFieldTwinSyncSse {
       other is StructWithGoodAndOpaqueFieldTwinSyncSse &&
           runtimeType == other.runtimeType &&
           good == other.good &&
-          opaque == other.opaque;
+          opaque == other.opaque &&
+          optionOpaque == other.optionOpaque;
 }

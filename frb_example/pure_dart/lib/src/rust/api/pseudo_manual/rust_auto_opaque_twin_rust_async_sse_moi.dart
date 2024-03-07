@@ -152,6 +152,14 @@ Future<EnumWithGoodAndOpaqueTwinRustAsyncSseMoi>
             .rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinRustAsyncSseMoi(
                 hint: hint);
 
+Future<void> rustAutoOpaqueDummyTwinRustAsyncSseMoi(
+        {required StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi
+            a,
+        required EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncSseMoi b,
+        dynamic hint}) =>
+    RustLib.instance.api
+        .rustAutoOpaqueDummyTwinRustAsyncSseMoi(a: a, b: b, hint: hint);
+
 Future<void> rustAutoOpaqueEnumArgBorrowTwinRustAsyncSseMoi(
         {required NonCloneSimpleEnumTwinRustAsyncSseMoi arg, dynamic hint}) =>
     RustLib.instance.api
@@ -257,6 +265,27 @@ class BoxMyTraitTwinRustAsyncSseMoi extends RustOpaque {
         .rust_arc_decrement_strong_count_BoxMyTraitTwinRustAsyncSseMoi,
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_BoxMyTraitTwinRustAsyncSseMoiPtr,
+  );
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncSseMoi>>
+@sealed
+class EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncSseMoi extends RustOpaque {
+  EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncSseMoi.dcoDecode(
+      List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncSseMoi.sseDecode(
+      int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncSseMoi,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncSseMoi,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncSseMoiPtr,
   );
 }
 
@@ -410,6 +439,28 @@ class OpaqueTwoTwinRustAsyncSseMoi extends RustOpaque {
   );
 }
 
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi>>
+@sealed
+class StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi
+    extends RustOpaque {
+  StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi.dcoDecode(
+      List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi.sseDecode(
+      int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoiPtr,
+  );
+}
+
 @freezed
 sealed class EnumWithGoodAndOpaqueTwinRustAsyncSseMoi
     with _$EnumWithGoodAndOpaqueTwinRustAsyncSseMoi {
@@ -445,14 +496,16 @@ class StructWithExplicitAutoOpaqueFieldTwinRustAsyncSseMoi {
 class StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi {
   final String good;
   final NonCloneSimpleTwinRustAsyncSseMoi opaque;
+  final NonCloneSimpleTwinRustAsyncSseMoi? optionOpaque;
 
   const StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi({
     required this.good,
     required this.opaque,
+    this.optionOpaque,
   });
 
   @override
-  int get hashCode => good.hashCode ^ opaque.hashCode;
+  int get hashCode => good.hashCode ^ opaque.hashCode ^ optionOpaque.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -460,5 +513,6 @@ class StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi {
       other is StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi &&
           runtimeType == other.runtimeType &&
           good == other.good &&
-          opaque == other.opaque;
+          opaque == other.opaque &&
+          optionOpaque == other.optionOpaque;
 }

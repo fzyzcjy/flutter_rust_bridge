@@ -116,4 +116,12 @@ impl EnumOrStructParser<IrStructIdent, IrStruct, Struct, ItemStruct>
     ) -> anyhow::Result<IrType> {
         self.0.parse_type_rust_auto_opaque(namespace, ty)
     }
+
+    fn compute_default_opaque(obj: &IrStruct) -> bool {
+        structure_compute_default_opaque(obj)
+    }
+}
+
+pub(super) fn structure_compute_default_opaque(s: &IrStruct) -> bool {
+    (s.fields.iter()).any(|f| matches!(f.ty, IrType::RustAutoOpaque(_)))
 }

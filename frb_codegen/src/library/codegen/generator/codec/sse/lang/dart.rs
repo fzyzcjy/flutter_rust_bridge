@@ -22,12 +22,13 @@ impl LangTrait for DartLang {
     fn call_constructor(
         &self,
         class_name: &str,
+        ctor_postfix: &str,
         field_names: &[String],
         var_names: &[String],
         keyword_args: bool,
     ) -> String {
         format!(
-            "{class_name}({})",
+            "{class_name}{ctor_postfix}({})",
             multizip((field_names, var_names))
                 .map(|(x, y)| if keyword_args {
                     format!("{x}: {y}")

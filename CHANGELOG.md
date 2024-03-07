@@ -5,6 +5,12 @@
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
 * Allow specifying pubspec.yaml location in build.rs #1797 (thanks @HalidOdat)
 * Hint how to only run build.rs if api directory changes #1794 (thanks @HalidOdat)
+* Improve procedure macros #1800 #1676 (thanks @Desdaemon)
+* Add support for ffigen upgrades #1799 #1757 (thanks @aran)
+* Improve hints when structs are in lib.rs #1802 #1579 (thanks @h3x4d3c1m4l)
+* Improve scenarios when opaque-by-default is more natural #1805
+* Improve behavior of constructor #1804
+* Fix when using non-opaque struct + option + opaque inner type #1803
 
 ## 2.0.0-dev.25
 

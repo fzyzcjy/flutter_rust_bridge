@@ -9,10 +9,7 @@ use std::sync::Arc;
 /// support custom DSTs on stable.
 ///
 /// Example:
-/// ```rust
-/// use std::fmt::Debug;
-/// use flutter_rust_bridge::*;
-///
+/// ```rust,ignore
 /// let opaque: RustOpaque<Box<dyn Debug>> = opaque_dyn!("foobar");
 /// ```
 #[macro_export]

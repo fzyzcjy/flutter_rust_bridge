@@ -14,6 +14,7 @@ impl<'a> StructRefApiDartGenerator<'a> {
         comments: &str,
         metadata: &str,
         methods: &[String],
+        constructor_postfix: &str,
     ) -> String {
         let private_constructor = if !methods.is_empty() {
             format!("const {}._();", self.ir.ident.0.name)
@@ -30,7 +31,7 @@ impl<'a> StructRefApiDartGenerator<'a> {
         format!(
             "{comments}{metadata}class {name_str} with _${name_str} {implements_exception} {{
                 {private_constructor}
-                const factory {name_str}({{{constructor_params}}}) = _{name_str};
+                const factory {name_str}{constructor_postfix}({{{constructor_params}}}) = _{name_str};
                 {methods_str}
             }}",
         )

@@ -145,6 +145,13 @@ Future<EnumWithGoodAndOpaqueTwinRustAsyncMoi>
             .rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinRustAsyncMoi(
                 hint: hint);
 
+Future<void> rustAutoOpaqueDummyTwinRustAsyncMoi(
+        {required StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi a,
+        required EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncMoi b,
+        dynamic hint}) =>
+    RustLib.instance.api
+        .rustAutoOpaqueDummyTwinRustAsyncMoi(a: a, b: b, hint: hint);
+
 Future<void> rustAutoOpaqueEnumArgBorrowTwinRustAsyncMoi(
         {required NonCloneSimpleEnumTwinRustAsyncMoi arg, dynamic hint}) =>
     RustLib.instance.api
@@ -249,6 +256,27 @@ class BoxMyTraitTwinRustAsyncMoi extends RustOpaque {
         .rust_arc_decrement_strong_count_BoxMyTraitTwinRustAsyncMoi,
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_BoxMyTraitTwinRustAsyncMoiPtr,
+  );
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncMoi>>
+@sealed
+class EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncMoi extends RustOpaque {
+  EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncMoi.dcoDecode(
+      List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncMoi.sseDecode(
+      int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncMoi,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncMoi,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncMoiPtr,
   );
 }
 
@@ -404,6 +432,28 @@ class OpaqueTwoTwinRustAsyncMoi extends RustOpaque {
   );
 }
 
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi>>
+@sealed
+class StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi
+    extends RustOpaque {
+  StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi.dcoDecode(
+      List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi.sseDecode(
+      int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoiPtr,
+  );
+}
+
 @freezed
 sealed class EnumWithGoodAndOpaqueTwinRustAsyncMoi
     with _$EnumWithGoodAndOpaqueTwinRustAsyncMoi {
@@ -439,14 +489,16 @@ class StructWithExplicitAutoOpaqueFieldTwinRustAsyncMoi {
 class StructWithGoodAndOpaqueFieldTwinRustAsyncMoi {
   final String good;
   final NonCloneSimpleTwinRustAsyncMoi opaque;
+  final NonCloneSimpleTwinRustAsyncMoi? optionOpaque;
 
   const StructWithGoodAndOpaqueFieldTwinRustAsyncMoi({
     required this.good,
     required this.opaque,
+    this.optionOpaque,
   });
 
   @override
-  int get hashCode => good.hashCode ^ opaque.hashCode;
+  int get hashCode => good.hashCode ^ opaque.hashCode ^ optionOpaque.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -454,5 +506,6 @@ class StructWithGoodAndOpaqueFieldTwinRustAsyncMoi {
       other is StructWithGoodAndOpaqueFieldTwinRustAsyncMoi &&
           runtimeType == other.runtimeType &&
           good == other.good &&
-          opaque == other.opaque;
+          opaque == other.opaque &&
+          optionOpaque == other.optionOpaque;
 }
