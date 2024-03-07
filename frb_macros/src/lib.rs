@@ -12,7 +12,7 @@ use proc_macro::*;
 pub fn frb(attribute: TokenStream, item: TokenStream) -> TokenStream {
     println!("hi frb macro START attribute={attribute} item={item}");
     let mut output = format_frb_attribute(format!("#[frb({attribute})]"));
-    let item = strip_frb_attr(item);
+    // let item = strip_frb_attr(item); // TODO rm?
     output.extend(item);
     println!("hi frb macro END output={output}");
     output
