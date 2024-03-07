@@ -10,10 +10,11 @@ use proc_macro::*;
 // frb-coverage:ignore-start
 #[proc_macro_attribute]
 pub fn frb(attribute: TokenStream, item: TokenStream) -> TokenStream {
+    println!("hi frb macro START attribute={attribute} item={item}");
     let mut output = format_frb_attribute(format!("#[frb({attribute})]"));
     let item = strip_frb_attr(item);
     output.extend(item);
-    println!("hi frb macro attribute={attribute} item={item} output={output}");
+    println!("hi frb macro END output={output}");
     output
 }
 
