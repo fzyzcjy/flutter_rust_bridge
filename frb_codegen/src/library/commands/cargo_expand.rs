@@ -106,6 +106,7 @@ fn unwrap_frb_attrs_in_doc(code: &str) -> Cow<str> {
     PATTERN.replace_all(code, "$1")
 }
 
+#[allow(clippy::vec_init_then_push)]
 fn run_cargo_expand(
     rust_crate_dir: &Path,
     extra_rustflags: &str,
