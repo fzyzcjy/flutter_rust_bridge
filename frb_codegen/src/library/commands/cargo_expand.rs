@@ -116,20 +116,14 @@ fn run_cargo_expand(
     debug!("Running cargo expand in '{rust_crate_dir:?}'");
 
     let args = command_args!("expand", "--lib", "--theme=none", "--ugly");
+    let extra_env = [(
+        "RUSTFLAGS".to_owned(),
+        env::var("RUSTFLAGS").map(|x| x + " ").unwrap_or_default() + extra_rustflags,
+    )]
+    .into();
 
-    let output = execute_command(
-        "cargo",
-        &args,
-        Some(rust_crate_dir),
-        Some(
-            [(
-                "RUSTFLAGS".to_owned(),
-                env::var("RUSTFLAGS").map(|x| x + " ").unwrap_or_default() + extra_rustflags,
-            )]
-            .into(),
-        ),
-    )
-    .with_context(|| format!("Could not expand rust code at path {rust_crate_dir:?}"))?;
+    let output = execute_command("cargo", &args, Some(rust_crate_dir), Some(extra_env))
+        .with_context(|| format!("Could not expand rust code at path {rust_crate_dir:?}"))?;
 
     let stdout = String::from_utf8(output.stdout)?;
     let stderr = String::from_utf8(output.stderr)?;
