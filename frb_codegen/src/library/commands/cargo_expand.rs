@@ -122,10 +122,10 @@ fn run_cargo_expand(
         &args,
         Some(rust_crate_dir),
         Some(
-            [
+            [(
                 "RUSTFLAGS".to_owned(),
                 env::var("RUSTFLAGS").map(|x| x + " ").unwrap_or_default() + extra_rustflags,
-            ]
+            )]
             .into(),
         ),
     )
@@ -138,7 +138,7 @@ fn run_cargo_expand(
         if stderr.contains("no such command: `expand`") && allow_auto_install {
             info!("Cargo expand is not installed. Automatically install and re-run.");
             install_cargo_expand()?;
-            return run_cargo_expand(rust_crate_dir, extra_args, dumper, false);
+            return run_cargo_expand(rust_crate_dir, extra_rustflags, dumper, false);
         }
         // This will stop the whole generator and tell the users, so we do not care about testing it
         // frb-coverage:ignore-start
