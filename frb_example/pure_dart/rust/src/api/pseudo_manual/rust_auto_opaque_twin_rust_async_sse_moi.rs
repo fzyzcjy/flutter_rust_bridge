@@ -311,6 +311,8 @@ impl NonCloneSimpleTwinRustAsyncSseMoi {
 pub struct StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi {
     pub good: String,
     pub opaque: NonCloneSimpleTwinRustAsyncSseMoi,
+    // Reproduce https://github.com/fzyzcjy/flutter_rust_bridge/issues/1792#issuecomment-1972804379
+    pub option_opaque: Option<NonCloneSimpleTwinRustAsyncSseMoi>,
 }
 
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
@@ -320,6 +322,7 @@ pub async fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rus
 ) {
     assert_eq!(&arg.good, "hello");
     assert_eq!(arg.opaque.inner, 42);
+    assert_eq!(arg.option_opaque.unwrap().inner, 42);
 }
 
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
@@ -329,6 +332,7 @@ pub async fn rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_
     StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi {
         good: "hello".to_string(),
         opaque: NonCloneSimpleTwinRustAsyncSseMoi { inner: 42 },
+        option_opaque: Some(NonCloneSimpleTwinRustAsyncSseMoi { inner: 42 }),
     }
 }
 

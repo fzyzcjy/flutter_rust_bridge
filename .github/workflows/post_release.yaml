@@ -5,15 +5,15 @@
 name: Post-Release
 
 on:
-  workflow_dispatch: {}
+  workflow_dispatch: { }
   schedule:
     - cron: "0,30 * * * *"
 
 env:
   CARGO_TERM_COLOR: always
   FRB_MAIN_RUST_VERSION: 1.74.0
-  FRB_MAIN_DART_VERSION: 3.2.0
-  FRB_MAIN_FLUTTER_VERSION: 3.16.0
+  FRB_MAIN_DART_VERSION: 3.3.0
+  FRB_MAIN_FLUTTER_VERSION: 3.19.2
 
 jobs:
   test_mimic_quickstart:
@@ -33,10 +33,10 @@ jobs:
           # - scoop # TODO enable after 2.0.0 stable release
           # - homebrew # TODO enable after 2.0.0 stable release
         exclude:
-          - {image: windows-2019, codegen_install_mode: homebrew}
-          - {image: macos-11, codegen_install_mode: scoop}
-          - {image: ubuntu-20.04, codegen_install_mode: homebrew}
-          - {image: ubuntu-20.04, codegen_install_mode: scoop}
+          - { image: windows-2019, codegen_install_mode: homebrew }
+          - { image: macos-11, codegen_install_mode: scoop }
+          - { image: ubuntu-20.04, codegen_install_mode: homebrew }
+          - { image: ubuntu-20.04, codegen_install_mode: scoop }
 
     steps:
       # setup

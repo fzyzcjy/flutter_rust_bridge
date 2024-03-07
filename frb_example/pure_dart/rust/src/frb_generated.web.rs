@@ -6753,13 +6753,14 @@ impl
             .unwrap();
         assert_eq!(
             self_.length(),
-            2,
-            "Expected 2 elements, got {}",
+            3,
+            "Expected 3 elements, got {}",
             self_.length()
         );
         crate::api::pseudo_manual::rust_auto_opaque_twin_moi::StructWithGoodAndOpaqueFieldTwinMoi {
             good: self_.get(0).cst_decode(),
             opaque: self_.get(1).cst_decode(),
+            option_opaque: self_.get(2).cst_decode(),
         }
     }
 }
@@ -6773,13 +6774,14 @@ impl CstDecode<crate::api::rust_auto_opaque::StructWithGoodAndOpaqueFieldTwinNor
             .unwrap();
         assert_eq!(
             self_.length(),
-            2,
-            "Expected 2 elements, got {}",
+            3,
+            "Expected 3 elements, got {}",
             self_.length()
         );
         crate::api::rust_auto_opaque::StructWithGoodAndOpaqueFieldTwinNormal {
             good: self_.get(0).cst_decode(),
             opaque: self_.get(1).cst_decode(),
+            option_opaque: self_.get(2).cst_decode(),
         }
     }
 }
@@ -6787,16 +6789,16 @@ impl CstDecode<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::Stru
             // Codec=Cst (C-struct based), see doc to use other codecs
             fn cst_decode(self) -> crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::StructWithGoodAndOpaqueFieldTwinRustAsync {
                 let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
-                assert_eq!(self_.length(), 2, "Expected 2 elements, got {}", self_.length());
-                crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::StructWithGoodAndOpaqueFieldTwinRustAsync{good:  self_.get(0).cst_decode(),opaque:  self_.get(1).cst_decode()}
+                assert_eq!(self_.length(), 3, "Expected 3 elements, got {}", self_.length());
+                crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::StructWithGoodAndOpaqueFieldTwinRustAsync{good:  self_.get(0).cst_decode(),opaque:  self_.get(1).cst_decode(),option_opaque:  self_.get(2).cst_decode()}
             }
         }
 impl CstDecode<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_moi::StructWithGoodAndOpaqueFieldTwinRustAsyncMoi> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
             // Codec=Cst (C-struct based), see doc to use other codecs
             fn cst_decode(self) -> crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_moi::StructWithGoodAndOpaqueFieldTwinRustAsyncMoi {
                 let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
-                assert_eq!(self_.length(), 2, "Expected 2 elements, got {}", self_.length());
-                crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_moi::StructWithGoodAndOpaqueFieldTwinRustAsyncMoi{good:  self_.get(0).cst_decode(),opaque:  self_.get(1).cst_decode()}
+                assert_eq!(self_.length(), 3, "Expected 3 elements, got {}", self_.length());
+                crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_moi::StructWithGoodAndOpaqueFieldTwinRustAsyncMoi{good:  self_.get(0).cst_decode(),opaque:  self_.get(1).cst_decode(),option_opaque:  self_.get(2).cst_decode()}
             }
         }
 impl
@@ -6814,19 +6816,19 @@ impl
             .unwrap();
         assert_eq!(
             self_.length(),
-            2,
-            "Expected 2 elements, got {}",
+            3,
+            "Expected 3 elements, got {}",
             self_.length()
         );
-        crate::api::pseudo_manual::rust_auto_opaque_twin_sync::StructWithGoodAndOpaqueFieldTwinSync{good:  self_.get(0).cst_decode(),opaque:  self_.get(1).cst_decode()}
+        crate::api::pseudo_manual::rust_auto_opaque_twin_sync::StructWithGoodAndOpaqueFieldTwinSync{good:  self_.get(0).cst_decode(),opaque:  self_.get(1).cst_decode(),option_opaque:  self_.get(2).cst_decode()}
     }
 }
 impl CstDecode<crate::api::pseudo_manual::rust_auto_opaque_twin_sync_moi::StructWithGoodAndOpaqueFieldTwinSyncMoi> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
             // Codec=Cst (C-struct based), see doc to use other codecs
             fn cst_decode(self) -> crate::api::pseudo_manual::rust_auto_opaque_twin_sync_moi::StructWithGoodAndOpaqueFieldTwinSyncMoi {
                 let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
-                assert_eq!(self_.length(), 2, "Expected 2 elements, got {}", self_.length());
-                crate::api::pseudo_manual::rust_auto_opaque_twin_sync_moi::StructWithGoodAndOpaqueFieldTwinSyncMoi{good:  self_.get(0).cst_decode(),opaque:  self_.get(1).cst_decode()}
+                assert_eq!(self_.length(), 3, "Expected 3 elements, got {}", self_.length());
+                crate::api::pseudo_manual::rust_auto_opaque_twin_sync_moi::StructWithGoodAndOpaqueFieldTwinSyncMoi{good:  self_.get(0).cst_decode(),opaque:  self_.get(1).cst_decode(),option_opaque:  self_.get(2).cst_decode()}
             }
         }
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::StructWithHashMap>

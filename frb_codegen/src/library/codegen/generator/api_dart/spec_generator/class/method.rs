@@ -124,7 +124,7 @@ fn generate_signature(
         &ApiDartGenerator::new(func.output.clone(), context).dart_api_type(),
     );
     let method_name = if default_constructor_mode.is_some() {
-        format!("newInstance")
+        "newInstance".to_owned()
     } else {
         method_info.actual_method_name.to_case(Case::Camel)
     };

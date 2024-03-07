@@ -169,6 +169,10 @@ fn parse_config(args: &FfigenToFileArgs) -> FfigenCommandConfig {
         functions: FfigenCommandConfigFunctions {
             rename: args.function_rename.cloned(),
         },
+        // Otherwise, e.g. on MacOS, we see a ton of warnings like:
+        // `/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/stdlib.h:239:6: warning: pointer is missing a nullability type specifier (_Nonnull, _Nullable, or _Null_unspecified) [Nullability Issue]`
+        // Indeed, we have our own sanity checks to detect errors.
+        ignore_source_errors: true,
     }
 }
 
@@ -185,6 +189,7 @@ pub(crate) struct FfigenCommandConfig {
     pub llvm_path: Vec<PathBuf>,
     pub compiler_opts: Vec<String>,
     pub functions: FfigenCommandConfigFunctions,
+    pub ignore_source_errors: bool,
 }
 
 #[derive(Default, Clone, Serialize, Deserialize)]

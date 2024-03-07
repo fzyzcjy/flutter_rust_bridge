@@ -525,6 +525,7 @@ final class UnnamedStruct1 extends ffi.Struct {
 
 /// A port is used to send or receive inter-isolate messages
 typedef Dart_Port = ffi.Int64;
+typedef DartDart_Port = int;
 
 final class UnnamedStruct2 extends ffi.Struct {
   @ffi.Int64()
@@ -581,10 +582,12 @@ final class UnnamedStruct5 extends ffi.Struct {
   external Dart_HandleFinalizer callback;
 }
 
-typedef Dart_HandleFinalizer = ffi.Pointer<
-    ffi.NativeFunction<
-        ffi.Void Function(ffi.Pointer<ffi.Void> isolate_callback_data,
-            ffi.Pointer<ffi.Void> peer)>>;
+typedef Dart_HandleFinalizer
+    = ffi.Pointer<ffi.NativeFunction<Dart_HandleFinalizerFunction>>;
+typedef Dart_HandleFinalizerFunction = ffi.Void Function(
+    ffi.Pointer<ffi.Void> isolate_callback_data, ffi.Pointer<ffi.Void> peer);
+typedef DartDart_HandleFinalizerFunction = void Function(
+    ffi.Pointer<ffi.Void> isolate_callback_data, ffi.Pointer<ffi.Void> peer);
 
 final class UnnamedStruct6 extends ffi.Struct {
   @ffi.IntPtr()
@@ -607,10 +610,12 @@ typedef Dart_CObject = _Dart_CObject;
 /// lifetime of the message data is controlled by the caller. All the
 /// data references from the message are allocated by the caller and
 /// will be reclaimed when returning to it.
-typedef Dart_NativeMessageHandler = ffi.Pointer<
-    ffi.NativeFunction<
-        ffi.Void Function(
-            Dart_Port dest_port_id, ffi.Pointer<Dart_CObject> message)>>;
+typedef Dart_NativeMessageHandler
+    = ffi.Pointer<ffi.NativeFunction<Dart_NativeMessageHandlerFunction>>;
+typedef Dart_NativeMessageHandlerFunction = ffi.Void Function(
+    Dart_Port dest_port_id, ffi.Pointer<Dart_CObject> message);
+typedef DartDart_NativeMessageHandlerFunction = void Function(
+    DartDart_Port dest_port_id, ffi.Pointer<Dart_CObject> message);
 
 final class _Dart_Handle extends ffi.Opaque {}
 
@@ -629,12 +634,16 @@ final class DartCObject extends ffi.Opaque {}
 /// `message` The message to send.
 ///
 /// return true if the message was posted.
-typedef DartPostCObjectFnType = ffi.Pointer<
-    ffi.NativeFunction<
-        ffi.Bool Function(DartPort port_id, ffi.Pointer<DartCObject> message)>>;
+typedef DartPostCObjectFnType
+    = ffi.Pointer<ffi.NativeFunction<DartPostCObjectFnTypeFunction>>;
+typedef DartPostCObjectFnTypeFunction = ffi.Bool Function(
+    DartPort port_id, ffi.Pointer<DartCObject> message);
+typedef DartDartPostCObjectFnTypeFunction = bool Function(
+    DartDartPort port_id, ffi.Pointer<DartCObject> message);
 
 /// A port is used to send or receive inter-isolate messages
 typedef DartPort = ffi.Int64;
+typedef DartDartPort = int;
 
 final class WireSyncRust2DartSse extends ffi.Struct {
   external ffi.Pointer<ffi.Uint8> ptr;
@@ -644,6 +653,7 @@ final class WireSyncRust2DartSse extends ffi.Struct {
 }
 
 typedef MessagePort = ffi.Int64;
+typedef DartMessagePort = int;
 typedef WireSyncRust2DartDco = ffi.Pointer<Dart_CObject>;
 
 // coverage:ignore-end
