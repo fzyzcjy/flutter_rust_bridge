@@ -13,7 +13,6 @@ pub fn frb(attribute: TokenStream, item: TokenStream) -> TokenStream {
     let mut output = format_frb_attribute(format!("#[frb({attribute})]"));
     let item = strip_frb_attr(item);
     output.extend(item);
-    println!("hi frb macro output={output:?}");
     output
 }
 
