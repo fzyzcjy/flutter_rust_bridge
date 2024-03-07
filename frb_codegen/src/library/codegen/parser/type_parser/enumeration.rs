@@ -173,7 +173,7 @@ impl EnumOrStructParser<IrEnumIdent, IrEnum, Enum, ItemEnum>
         obj.variants
             .iter()
             .filter_map(|variant| if_then_some!(let IrVariantKind::Struct(s) = &variant.kind, s))
-            .any(|s| structure_compute_default_opaque(s))
+            .any(structure_compute_default_opaque)
     }
 }
 
