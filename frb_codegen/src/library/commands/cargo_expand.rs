@@ -88,7 +88,7 @@ fn extract_module(raw_expanded: &str, module: Option<String>) -> Result<String> 
 fn run_cargo_expand_with_frb_aware(rust_crate_dir: &Path, dumper: &Dumper) -> Result<String> {
     Ok(unwrap_frb_attrs_in_doc(&run_cargo_expand(
         rust_crate_dir,
-        r#"build.rustflags="--cfg frb_expand""#,
+        "--cfg frb_expand",
         dumper,
         true,
     )?)
@@ -108,24 +108,28 @@ fn unwrap_frb_attrs_in_doc(code: &str) -> Cow<str> {
 
 fn run_cargo_expand(
     rust_crate_dir: &Path,
-    extra_args: &str,
+    extra_rustflags: &str,
     dumper: &Dumper,
     allow_auto_install: bool,
 ) -> Result<String> {
     // let _pb = simple_progress("Run cargo-expand".to_owned(), 1);
     debug!("Running cargo expand in '{rust_crate_dir:?}'");
 
-    let args = command_args!(
-        "expand",
-        "--lib",
-        "--theme=none",
-        "--ugly",
-        "--config",
-        extra_args
-    );
+    let args = command_args!("expand", "--lib", "--theme=none", "--ugly", "--config",);
 
-    let output = execute_command("cargo", &args, Some(rust_crate_dir), None)
-        .with_context(|| format!("Could not expand rust code at path {rust_crate_dir:?}"))?;
+    let output = execute_command(
+        "cargo",
+        &args,
+        Some(rust_crate_dir),
+        Some(
+            [
+                "RUSTFLAGS".to_owned(),
+                env::var("RUSTFLAGS").map(|x| x + " ").unwrap_or_default() + extra_rustflags,
+            ]
+            .into(),
+        ),
+    )
+    .with_context(|| format!("Could not expand rust code at path {rust_crate_dir:?}"))?;
 
     let stdout = String::from_utf8(output.stdout)?;
     let stderr = String::from_utf8(output.stderr)?;
