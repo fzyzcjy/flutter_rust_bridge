@@ -28,16 +28,26 @@ pub(crate) fn json_golden_test(
     let actual: Value = serde_json::from_str(&actual_str)?;
     debug!("json_golden_test sanitizers={sanitizers:?} actual:\n{actual_str}");
 
-    raw_golden_test(actual, &actual_str, matcher_path, |x| {
-        Ok(serde_json::from_str(&x)?)
-    })
+    raw_golden_test(
+        actual,
+        &actual_str,
+        matcher_path,
+        |x| Ok(serde_json::from_str(&x)?),
+        None,
+    )
 }
 
 pub(crate) fn text_golden_test(actual: String, matcher_path: &Path) -> anyhow::Result<()> {
-    raw_golden_test(actual.clone(), &actual, matcher_path, |x| {
+    raw_golden_test(
+        actual.clone(),
+        &actual,
+        matcher_path,
         // Otherwise tests in macos/linux passes but fails on windows
-        Ok(x.replace("\r\n", "\n"))
-    })
+        |x| Ok(x.replace("\r\n", "\n")),
+        Some(|expect, actual| {
+            pretty_assertions::assert_str_eq!(expect, actual);
+        }),
+    )
 }
 
 fn raw_golden_test<T, F>(
@@ -45,6 +55,7 @@ fn raw_golden_test<T, F>(
     actual_str: &str,
     matcher_path: &Path,
     deserializer: F,
+    asserter: Option<fn(&T, &T)>,
 ) -> anyhow::Result<()>
 where
     T: Eq + Debug,
@@ -64,7 +75,9 @@ where
             fs::write(matcher_path, actual_str)?;
         }
     } else {
-        assert_eq!(actual, expect);
+        let asserter =
+            asserter.unwrap_or(|expect, actual| pretty_assertions::assert_eq!(expect, actual));
+        asserter(&expect, &actual);
     }
 
     Ok(())

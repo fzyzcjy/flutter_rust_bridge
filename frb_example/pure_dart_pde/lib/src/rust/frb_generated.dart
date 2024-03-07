@@ -232,7 +232,7 @@ abstract class RustLibApi extends BaseApi {
       {required CustomizedTwinNormal val, dynamic hint});
 
   Future<UserIdTwinNormal> nextUserIdTwinNormal(
-      {required UserIdTwinNormal userId, dynamic hint});
+      {UserIdTwinNormal userId = const UserIdTwinNormal(), dynamic hint});
 
   void benchmarkVoidSemiSerialize({dynamic hint});
 
@@ -824,13 +824,13 @@ abstract class RustLibApi extends BaseApi {
       {required CustomizedTwinRustAsync val, dynamic hint});
 
   Future<UserIdTwinRustAsync> nextUserIdTwinRustAsync(
-      {required UserIdTwinRustAsync userId, dynamic hint});
+      {UserIdTwinRustAsync userId = const UserIdTwinRustAsync(), dynamic hint});
 
   void handleCustomizedStructTwinSync(
       {required CustomizedTwinSync val, dynamic hint});
 
   UserIdTwinSync nextUserIdTwinSync(
-      {required UserIdTwinSync userId, dynamic hint});
+      {UserIdTwinSync userId = const UserIdTwinSync(), dynamic hint});
 
   Future<BasicGeneralEnumTwinNormal>
       exampleBasicTypeBasicGeneralEnumTwinNormalTwinNormal(
@@ -4186,7 +4186,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<UserIdTwinNormal> nextUserIdTwinNormal(
-      {required UserIdTwinNormal userId, dynamic hint}) {
+      {UserIdTwinNormal userId = const UserIdTwinNormal(), dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -9663,7 +9663,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<UserIdTwinRustAsync> nextUserIdTwinRustAsync(
-      {required UserIdTwinRustAsync userId, dynamic hint}) {
+      {UserIdTwinRustAsync userId = const UserIdTwinRustAsync(),
+      dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -9715,7 +9716,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   UserIdTwinSync nextUserIdTwinSync(
-      {required UserIdTwinSync userId, dynamic hint}) {
+      {UserIdTwinSync userId = const UserIdTwinSync(), dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
