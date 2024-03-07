@@ -489,14 +489,16 @@ class StructWithExplicitAutoOpaqueFieldTwinRustAsyncMoi {
 class StructWithGoodAndOpaqueFieldTwinRustAsyncMoi {
   final String good;
   final NonCloneSimpleTwinRustAsyncMoi opaque;
+  final NonCloneSimpleTwinRustAsyncMoi? optionOpaque;
 
   const StructWithGoodAndOpaqueFieldTwinRustAsyncMoi({
     required this.good,
     required this.opaque,
+    this.optionOpaque,
   });
 
   @override
-  int get hashCode => good.hashCode ^ opaque.hashCode;
+  int get hashCode => good.hashCode ^ opaque.hashCode ^ optionOpaque.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -504,5 +506,6 @@ class StructWithGoodAndOpaqueFieldTwinRustAsyncMoi {
       other is StructWithGoodAndOpaqueFieldTwinRustAsyncMoi &&
           runtimeType == other.runtimeType &&
           good == other.good &&
-          opaque == other.opaque;
+          opaque == other.opaque &&
+          optionOpaque == other.optionOpaque;
 }

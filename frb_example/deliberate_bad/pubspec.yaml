@@ -15,4 +15,4 @@ dependencies:
 dev_dependencies:
   test: ^1.21.4
   build_runner: ^2.4.4
-  ffigen: ^8.0.0
+  ffigen: ^11.0.0

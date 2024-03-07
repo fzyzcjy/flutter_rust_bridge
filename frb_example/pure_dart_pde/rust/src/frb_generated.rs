@@ -28903,6 +28903,39 @@ impl SseDecode for Option<String> {
     }
 }
 
+impl SseDecode for Option<NonCloneSimpleTwinNormal> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        if (<bool>::sse_decode(deserializer)) {
+            return Some(<NonCloneSimpleTwinNormal>::sse_decode(deserializer));
+        } else {
+            return None;
+        }
+    }
+}
+
+impl SseDecode for Option<NonCloneSimpleTwinRustAsync> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        if (<bool>::sse_decode(deserializer)) {
+            return Some(<NonCloneSimpleTwinRustAsync>::sse_decode(deserializer));
+        } else {
+            return None;
+        }
+    }
+}
+
+impl SseDecode for Option<NonCloneSimpleTwinSync> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        if (<bool>::sse_decode(deserializer)) {
+            return Some(<NonCloneSimpleTwinSync>::sse_decode(deserializer));
+        } else {
+            return None;
+        }
+    }
+}
+
 impl SseDecode for Option<chrono::Duration> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -30741,9 +30774,11 @@ impl SseDecode for crate::api::rust_auto_opaque::StructWithGoodAndOpaqueFieldTwi
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut var_good = <String>::sse_decode(deserializer);
         let mut var_opaque = <NonCloneSimpleTwinNormal>::sse_decode(deserializer);
+        let mut var_optionOpaque = <Option<NonCloneSimpleTwinNormal>>::sse_decode(deserializer);
         return crate::api::rust_auto_opaque::StructWithGoodAndOpaqueFieldTwinNormal {
             good: var_good,
             opaque: var_opaque,
+            option_opaque: var_optionOpaque,
         };
     }
 }
@@ -30752,7 +30787,8 @@ impl SseDecode for crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::
                     // Codec=Sse (Serialization based), see doc to use other codecs
                     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {let mut var_good = <String>::sse_decode(deserializer);
 let mut var_opaque = <NonCloneSimpleTwinRustAsync>::sse_decode(deserializer);
-return crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::StructWithGoodAndOpaqueFieldTwinRustAsync{good: var_good, opaque: var_opaque};}
+let mut var_optionOpaque = <Option<NonCloneSimpleTwinRustAsync>>::sse_decode(deserializer);
+return crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::StructWithGoodAndOpaqueFieldTwinRustAsync{good: var_good, opaque: var_opaque, option_opaque: var_optionOpaque};}
                 }
 
 impl SseDecode
@@ -30762,7 +30798,8 @@ impl SseDecode
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut var_good = <String>::sse_decode(deserializer);
         let mut var_opaque = <NonCloneSimpleTwinSync>::sse_decode(deserializer);
-        return crate::api::pseudo_manual::rust_auto_opaque_twin_sync::StructWithGoodAndOpaqueFieldTwinSync{good: var_good, opaque: var_opaque};
+        let mut var_optionOpaque = <Option<NonCloneSimpleTwinSync>>::sse_decode(deserializer);
+        return crate::api::pseudo_manual::rust_auto_opaque_twin_sync::StructWithGoodAndOpaqueFieldTwinSync{good: var_good, opaque: var_opaque, option_opaque: var_optionOpaque};
     }
 }
 
@@ -38373,6 +38410,7 @@ impl flutter_rust_bridge::IntoDart
         [
             self.good.into_into_dart().into_dart(),
             self.opaque.into_into_dart().into_dart(),
+            self.option_opaque.into_into_dart().into_dart(),
         ]
         .into_dart()
     }
@@ -38397,7 +38435,8 @@ impl flutter_rust_bridge::IntoDart for crate::api::pseudo_manual::rust_auto_opaq
                 fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
                     [
                     self.good.into_into_dart().into_dart(),
-self.opaque.into_into_dart().into_dart()
+self.opaque.into_into_dart().into_dart(),
+self.option_opaque.into_into_dart().into_dart()
                 ].into_dart()
                 }
             }
@@ -38415,6 +38454,7 @@ impl flutter_rust_bridge::IntoDart
         [
             self.good.into_into_dart().into_dart(),
             self.opaque.into_into_dart().into_dart(),
+            self.option_opaque.into_into_dart().into_dart(),
         ]
         .into_dart()
     }
@@ -44702,6 +44742,36 @@ impl SseEncode for Option<String> {
     }
 }
 
+impl SseEncode for Option<NonCloneSimpleTwinNormal> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <bool>::sse_encode(self.is_some(), serializer);
+        if let Some(value) = self {
+            <NonCloneSimpleTwinNormal>::sse_encode(value, serializer);
+        }
+    }
+}
+
+impl SseEncode for Option<NonCloneSimpleTwinRustAsync> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <bool>::sse_encode(self.is_some(), serializer);
+        if let Some(value) = self {
+            <NonCloneSimpleTwinRustAsync>::sse_encode(value, serializer);
+        }
+    }
+}
+
+impl SseEncode for Option<NonCloneSimpleTwinSync> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <bool>::sse_encode(self.is_some(), serializer);
+        if let Some(value) = self {
+            <NonCloneSimpleTwinSync>::sse_encode(value, serializer);
+        }
+    }
+}
+
 impl SseEncode for Option<chrono::Duration> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -46281,13 +46351,15 @@ impl SseEncode for crate::api::rust_auto_opaque::StructWithGoodAndOpaqueFieldTwi
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <String>::sse_encode(self.good, serializer);
         <NonCloneSimpleTwinNormal>::sse_encode(self.opaque, serializer);
+        <Option<NonCloneSimpleTwinNormal>>::sse_encode(self.option_opaque, serializer);
     }
 }
 
 impl SseEncode for crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::StructWithGoodAndOpaqueFieldTwinRustAsync {
                     // Codec=Sse (Serialization based), see doc to use other codecs
                     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {<String>::sse_encode(self.good, serializer);
-<NonCloneSimpleTwinRustAsync>::sse_encode(self.opaque, serializer);}
+<NonCloneSimpleTwinRustAsync>::sse_encode(self.opaque, serializer);
+<Option<NonCloneSimpleTwinRustAsync>>::sse_encode(self.option_opaque, serializer);}
                 }
 
 impl SseEncode
@@ -46297,6 +46369,7 @@ impl SseEncode
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <String>::sse_encode(self.good, serializer);
         <NonCloneSimpleTwinSync>::sse_encode(self.opaque, serializer);
+        <Option<NonCloneSimpleTwinSync>>::sse_encode(self.option_opaque, serializer);
     }
 }
 

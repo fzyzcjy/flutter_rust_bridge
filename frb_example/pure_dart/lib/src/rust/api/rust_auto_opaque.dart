@@ -469,14 +469,16 @@ class StructWithExplicitAutoOpaqueFieldTwinNormal {
 class StructWithGoodAndOpaqueFieldTwinNormal {
   final String good;
   final NonCloneSimpleTwinNormal opaque;
+  final NonCloneSimpleTwinNormal? optionOpaque;
 
   const StructWithGoodAndOpaqueFieldTwinNormal({
     required this.good,
     required this.opaque,
+    this.optionOpaque,
   });
 
   @override
-  int get hashCode => good.hashCode ^ opaque.hashCode;
+  int get hashCode => good.hashCode ^ opaque.hashCode ^ optionOpaque.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -484,5 +486,6 @@ class StructWithGoodAndOpaqueFieldTwinNormal {
       other is StructWithGoodAndOpaqueFieldTwinNormal &&
           runtimeType == other.runtimeType &&
           good == other.good &&
-          opaque == other.opaque;
+          opaque == other.opaque &&
+          optionOpaque == other.optionOpaque;
 }
