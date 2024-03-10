@@ -398,15 +398,14 @@ Future<void> _wrapMaybeSetExitIfChanged(
     GenerateConfig config, Future<void> Function() inner,
     {String? extraArgs}) async {
   // Before actually executing anything, check whether git repository is already dirty
-  await _maybeSetExitIfChanged(config, extraArgs: extraArgs);
+  await _maybeSetExitIfChanged(config.setExitIfChanged, extraArgs: extraArgs);
   await inner();
   // The real check
-  await _maybeSetExitIfChanged(config, extraArgs: extraArgs);
+  await _maybeSetExitIfChanged(config.setExitIfChanged, extraArgs: extraArgs);
 }
 
-Future<void> _maybeSetExitIfChanged(GenerateConfig config,
-    {String? extraArgs}) async {
-  if (config.setExitIfChanged) {
+Future<void> _maybeSetExitIfChanged(bool enable, {String? extraArgs}) async {
+  if (enable) {
     await exec('git diff --exit-code ${extraArgs ?? ""}');
   }
 }
