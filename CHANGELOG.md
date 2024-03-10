@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.0-dev.28
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Fix error when using build.rs instead of standard way to trigger code generation #1809
+
 ## 2.0.0-dev.27
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
