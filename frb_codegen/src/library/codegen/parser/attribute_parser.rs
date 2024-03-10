@@ -24,7 +24,7 @@ impl FrbAttributes {
                 .iter()
                 .filter(|attr| {
                     info!("hi attr {:?}", attr);
-                    attr.path().is_ident(METADATA_IDENT)
+                    attr.path().segments.last().unwrap().ident == METADATA_IDENT
                         // exclude the `#[frb]` case
                         && !matches!(attr.meta, Meta::Path(_))
                 })
