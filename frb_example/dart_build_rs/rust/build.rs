@@ -3,6 +3,8 @@ use lib_flutter_rust_bridge_codegen::codegen::Config;
 use lib_flutter_rust_bridge_codegen::utils::logs::configure_opinionated_logging;
 
 fn main() -> anyhow::Result<()> {
+    panic!("hi deliberate panic");
+
     // Uncomment the line below, if you only want to generate bindings on api directory change.
     //
     // NOTE: This accelerates the build process, but you will need to manually trigger binding
