@@ -1,3 +1,5 @@
 rust_input: rust/src/api/**/*.rs
 dart_output: lib/src/rust
 local: true
+# dump debugging information (unneeded for normal users)
+dump_all: true
