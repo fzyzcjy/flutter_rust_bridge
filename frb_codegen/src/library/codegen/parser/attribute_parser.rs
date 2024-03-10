@@ -22,7 +22,7 @@ impl FrbAttributes {
             attrs
                 .iter()
                 .filter(|attr| {
-                    attr.path().is_ident(METADATA_IDENT)
+                    attr.path().segments.last().unwrap().ident == METADATA_IDENT
                         // exclude the `#[frb]` case
                         && !matches!(attr.meta, Meta::Path(_))
                 })
@@ -446,6 +446,13 @@ mod tests {
     fn test_error() -> anyhow::Result<()> {
         let result = parse("#[frb(what_is_this)]");
         assert!(result.err().is_some());
+        Ok(())
+    }
+
+    #[test]
+    fn test_double_colon() -> anyhow::Result<()> {
+        let parsed = parse("#[flutter_rust_bridge::frb(sync)]")?;
+        assert_eq!(parsed.0, vec![FrbAttribute::Sync]);
         Ok(())
     }
 

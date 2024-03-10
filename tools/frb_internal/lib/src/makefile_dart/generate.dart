@@ -397,16 +397,24 @@ Future<void> _renameDirIfExists(String src, String dst) async {
 Future<void> _wrapMaybeSetExitIfChanged(
     GenerateConfig config, Future<void> Function() inner,
     {String? extraArgs}) async {
-  // Before actually executing anything, check whether git repository is already dirty
-  await _maybeSetExitIfChanged(config, extraArgs: extraArgs);
-  await inner();
-  // The real check
-  await _maybeSetExitIfChanged(config, extraArgs: extraArgs);
+  await wrapMaybeSetExitIfChangedRaw(config.setExitIfChanged, inner,
+      extraArgs: extraArgs);
 }
 
-Future<void> _maybeSetExitIfChanged(GenerateConfig config,
-    {String? extraArgs}) async {
-  if (config.setExitIfChanged) {
+Future<void> wrapMaybeSetExitIfChangedRaw(
+  bool enable,
+  Future<void> Function() inner, {
+  String? extraArgs,
+}) async {
+  // Before actually executing anything, check whether git repository is already dirty
+  await _maybeSetExitIfChanged(enable, extraArgs: extraArgs);
+  await inner();
+  // The real check
+  await _maybeSetExitIfChanged(enable, extraArgs: extraArgs);
+}
+
+Future<void> _maybeSetExitIfChanged(bool enable, {String? extraArgs}) async {
+  if (enable) {
     await exec('git diff --exit-code ${extraArgs ?? ""}');
   }
 }
