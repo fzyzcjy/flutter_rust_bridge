@@ -6,7 +6,6 @@ use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::if_then_some;
 use anyhow::Context;
 use itertools::Itertools;
-use log::info;
 use serde::{Serialize, Serializer};
 use syn::parse::{Parse, ParseStream};
 use syn::punctuated::Punctuated;
@@ -23,7 +22,6 @@ impl FrbAttributes {
             attrs
                 .iter()
                 .filter(|attr| {
-                    info!("hi attr {:?}", attr);
                     attr.path().segments.last().unwrap().ident == METADATA_IDENT
                         // exclude the `#[frb]` case
                         && !matches!(attr.meta, Meta::Path(_))
