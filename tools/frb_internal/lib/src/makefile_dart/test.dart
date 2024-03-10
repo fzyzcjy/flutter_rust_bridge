@@ -354,15 +354,18 @@ Future<void> testDartNative(TestDartNativeConfig config) async {
         extraFlags += '--enable-vm-service ';
       }
 
-      await exec(
-        '${dartMode.name} $extraFlags test ${config.coverage ? ' --coverage="coverage"' : ""}',
-        relativePwd: config.package,
-        extraEnv: {
-          // Deliberately do not provide backtrace env to see whether the test_utils work
-          // ...kEnvEnableRustBacktrace,
-          ...rustEnvMap,
-        },
-      );
+      // extra check for e.g. #1807
+      await wrapMaybeSetExitIfChangedRaw(true, () async {
+        await exec(
+          '${dartMode.name} $extraFlags test ${config.coverage ? ' --coverage="coverage"' : ""}',
+          relativePwd: config.package,
+          extraEnv: {
+            // Deliberately do not provide backtrace env to see whether the test_utils work
+            // ...kEnvEnableRustBacktrace,
+            ...rustEnvMap,
+          },
+        );
+      });
     },
   );
 
