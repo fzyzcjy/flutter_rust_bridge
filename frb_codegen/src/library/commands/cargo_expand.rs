@@ -42,7 +42,9 @@ impl CachedCargoExpand {
              This might cause errors if your api contains macros."
             );
             // frb-coverage:ignore-end
-            return Ok(fs::read_to_string(rust_file_path)?);
+            let ans = fs::read_to_string(rust_file_path)?;
+            info!("hi ans={ans}");
+            return Ok(ans);
         }
 
         let expanded = match self.cache.entry(rust_crate_dir.to_owned()) {
