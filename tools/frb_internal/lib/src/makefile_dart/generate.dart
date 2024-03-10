@@ -397,11 +397,20 @@ Future<void> _renameDirIfExists(String src, String dst) async {
 Future<void> _wrapMaybeSetExitIfChanged(
     GenerateConfig config, Future<void> Function() inner,
     {String? extraArgs}) async {
+  await wrapMaybeSetExitIfChangedRaw(config.setExitIfChanged, inner,
+      extraArgs: extraArgs);
+}
+
+Future<void> wrapMaybeSetExitIfChangedRaw(
+  bool enable,
+  Future<void> Function() inner, {
+  String? extraArgs,
+}) async {
   // Before actually executing anything, check whether git repository is already dirty
-  await _maybeSetExitIfChanged(config.setExitIfChanged, extraArgs: extraArgs);
+  await _maybeSetExitIfChanged(enable, extraArgs: extraArgs);
   await inner();
   // The real check
-  await _maybeSetExitIfChanged(config.setExitIfChanged, extraArgs: extraArgs);
+  await _maybeSetExitIfChanged(enable, extraArgs: extraArgs);
 }
 
 Future<void> _maybeSetExitIfChanged(bool enable, {String? extraArgs}) async {
