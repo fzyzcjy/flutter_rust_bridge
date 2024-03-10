@@ -452,6 +452,13 @@ mod tests {
     }
 
     #[test]
+    fn test_double_colon() -> anyhow::Result<()> {
+        let parsed = parse("#[flutter_rust_bridge::frb(sync)]")?;
+        assert_eq!(parsed.0, vec![FrbAttribute::Sync]);
+        Ok(())
+    }
+
+    #[test]
     fn test_multiple_via_comma() -> anyhow::Result<()> {
         let parsed = parse("#[frb(sync, non_final)]")?;
         assert_eq!(parsed.0, vec![FrbAttribute::Sync, FrbAttribute::NonFinal]);
