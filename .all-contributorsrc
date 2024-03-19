@@ -836,6 +836,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "rhian-cs",
+      "name": "Rhian Moraes",
+      "avatar_url": "https://avatars.githubusercontent.com/u/72531802?v=4",
+      "profile": "http://rhian-cs.dev",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
