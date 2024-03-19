@@ -513,6 +513,15 @@
       ]
     },
     {
+      "login": "rhian-cs",
+      "name": "Rhian Moraes",
+      "avatar_url": "https://avatars.githubusercontent.com/u/72531802?v=4",
+      "profile": "https://rhian-cs.dev",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
       "login": "TENX-S",
       "name": "Ares Andrew",
       "avatar_url": "https://avatars.githubusercontent.com/u/40336192?v=4",
@@ -833,15 +842,6 @@
       "name": "thesimplekid",
       "avatar_url": "https://avatars.githubusercontent.com/u/8606367?v=4",
       "profile": "https://thesimplekid.com",
-      "contributions": [
-        "doc"
-      ]
-    },
-    {
-      "login": "rhian-cs",
-      "name": "Rhian Moraes",
-      "avatar_url": "https://avatars.githubusercontent.com/u/72531802?v=4",
-      "profile": "http://rhian-cs.dev",
       "contributions": [
         "doc"
       ]
