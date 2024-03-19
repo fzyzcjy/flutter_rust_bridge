@@ -231,6 +231,7 @@ const sidebars = {
                         'guides/how-to/regression',
                         'guides/how-to/object-pool',
                         'guides/how-to/gitignore',
+                        'guides/how-to/cargo-workspaces',
                     ],
                 },
                 'guides/users',
