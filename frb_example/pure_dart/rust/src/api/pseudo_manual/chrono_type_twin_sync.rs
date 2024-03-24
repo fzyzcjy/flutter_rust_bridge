@@ -45,10 +45,6 @@ pub fn naivedate_twin_sync(d: chrono::NaiveDate) -> chrono::NaiveDate {
     assert_eq!(&d.year(), &2022);
     assert_eq!(&d.month(), &9);
     assert_eq!(&d.day(), &10);
-    #[cfg(target_arch = "wasm32")]
-    assert_eq!(&d.nanosecond(), &123_000_000);
-    #[cfg(not(target_arch = "wasm32"))]
-    assert_eq!(&d.nanosecond(), &123_456_000);
     d
 }
 
