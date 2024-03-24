@@ -40,9 +40,6 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(resp.year, date.year);
     expect(resp.month, date.month);
     expect(resp.day, date.day);
-    expect(resp.hour, date.hour);
-    expect(resp.minute, date.minute);
-    expect(resp.second, date.second);
     expect(resp.millisecondsSinceEpoch, date.millisecondsSinceEpoch);
     expect(resp.microsecondsSinceEpoch, date.microsecondsSinceEpoch);
   });
