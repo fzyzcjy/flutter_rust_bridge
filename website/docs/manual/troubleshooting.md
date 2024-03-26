@@ -21,6 +21,8 @@ Or other libraries that you need (e.g. `-framework SystemConfiguration`, `-frame
 Please refer to these issues for more
 details: [cargokit#52](https://github.com/irondash/cargokit/issues/52), [bridge#1610](https://github.com/fzyzcjy/flutter_rust_bridge/issues/1610).
 
+Another example, which solves the error when using `cpal`, can be found in [#1835](https://github.com/fzyzcjy/flutter_rust_bridge/issues/1835#issuecomment-2020299630).
+
 ## Issues with glibc (e.g. `version GLIBC_2.33 not found`)
 
 As is discussed in [this issue](https://github.com/fzyzcjy/flutter_rust_bridge/issues/1753#issuecomment-1948241309)
