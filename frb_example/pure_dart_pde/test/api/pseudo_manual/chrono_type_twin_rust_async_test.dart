@@ -40,6 +40,16 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(resp.microsecondsSinceEpoch, date.microsecondsSinceEpoch);
   });
 
+  test('NaiveDate', () async {
+    final date = DateTime.utc(2022, 09, 10, 20, 48, 53, 123, 456);
+    final resp = await naivedateTwinRustAsync(d: date);
+    expect(resp.year, date.year);
+    expect(resp.month, date.month);
+    expect(resp.day, date.day);
+    expect(resp.millisecondsSinceEpoch, date.millisecondsSinceEpoch);
+    expect(resp.microsecondsSinceEpoch, date.microsecondsSinceEpoch);
+  });
+
   test('NaiveDateTime', () async {
     final date = DateTime.utc(2022, 09, 10, 20, 48, 53, 123, 456);
     final resp = await naivedatetimeTwinRustAsync(d: date);
