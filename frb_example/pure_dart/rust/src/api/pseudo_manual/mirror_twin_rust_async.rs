@@ -266,3 +266,14 @@ pub async fn test_hashmap_with_mirrored_value_twin_rust_async() -> StructWithHas
         },
     }
 }
+
+pub async fn mirror_enum_stream_twin_rust_async(sink: StreamSink<ApplicationMode>) {
+    sink.add(ApplicationMode::Embedded).unwrap();
+    sink.add(ApplicationMode::Standalone).unwrap();
+}
+
+pub async fn mirror_option_enum_stream_twin_rust_async(sink: StreamSink<Option<ApplicationMode>>) {
+    sink.add(Some(ApplicationMode::Embedded)).unwrap();
+    sink.add(None).unwrap();
+    sink.add(Some(ApplicationMode::Standalone)).unwrap();
+}

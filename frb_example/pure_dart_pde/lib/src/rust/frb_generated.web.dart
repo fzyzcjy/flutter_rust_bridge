@@ -1295,6 +1295,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ApplicationEnv dco_decode_box_autoadd_application_env(dynamic raw);
 
   @protected
+  ApplicationMode dco_decode_box_autoadd_application_mode(dynamic raw);
+
+  @protected
   ApplicationSettings dco_decode_box_autoadd_application_settings(dynamic raw);
 
   @protected
@@ -3086,6 +3089,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ApplicationEnv? dco_decode_opt_box_autoadd_application_env(dynamic raw);
 
   @protected
+  ApplicationMode? dco_decode_opt_box_autoadd_application_mode(dynamic raw);
+
+  @protected
   AttributeTwinNormal? dco_decode_opt_box_autoadd_attribute_twin_normal(
       dynamic raw);
 
@@ -4740,6 +4746,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   ApplicationEnv sse_decode_box_autoadd_application_env(
+      SseDeserializer deserializer);
+
+  @protected
+  ApplicationMode sse_decode_box_autoadd_application_mode(
       SseDeserializer deserializer);
 
   @protected
@@ -6792,6 +6802,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  ApplicationMode? sse_decode_opt_box_autoadd_application_mode(
+      SseDeserializer deserializer);
+
+  @protected
   AttributeTwinNormal? sse_decode_opt_box_autoadd_attribute_twin_normal(
       SseDeserializer deserializer);
 
@@ -8601,6 +8615,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_box_autoadd_application_env(
       ApplicationEnv self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_application_mode(
+      ApplicationMode self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_application_settings(
@@ -10580,6 +10598,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_opt_box_autoadd_application_env(
       ApplicationEnv? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_application_mode(
+      ApplicationMode? self, SseSerializer serializer);
 
   @protected
   void sse_encode_opt_box_autoadd_attribute_twin_normal(

@@ -149,6 +149,21 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final output = await testHashmapWithMirroredValueTwinRustAsync();
     expect(output.map, {'key': HashMapValue(inner: 'value')});
   });
+
+  test('mirror_enum_stream_twin_normal', () async {
+    final output = await mirrorEnumStreamTwinRustAsync().toList();
+    expect(output.length, 2);
+    expect(output[0], ApplicationMode.embedded);
+    expect(output[1], ApplicationMode.standalone);
+  });
+
+  test('mirror_option_enum_stream_twin_normal', () async {
+    final output = await mirrorOptionEnumStreamTwinRustAsync().toList();
+    expect(output.length, 3);
+    expect(output[0], ApplicationMode.embedded);
+    expect(output[1], null);
+    expect(output[2], ApplicationMode.standalone);
+  });
 }
 
 int _createGarbage() {

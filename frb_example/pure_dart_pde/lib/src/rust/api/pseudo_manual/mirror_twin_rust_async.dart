@@ -90,6 +90,12 @@ Future<StructWithHashMap> testHashmapWithMirroredValueTwinRustAsync(
         {dynamic hint}) =>
     RustLib.instance.api.testHashmapWithMirroredValueTwinRustAsync(hint: hint);
 
+Stream<ApplicationMode> mirrorEnumStreamTwinRustAsync({dynamic hint}) =>
+    RustLib.instance.api.mirrorEnumStreamTwinRustAsync(hint: hint);
+
+Stream<ApplicationMode?> mirrorOptionEnumStreamTwinRustAsync({dynamic hint}) =>
+    RustLib.instance.api.mirrorOptionEnumStreamTwinRustAsync(hint: hint);
+
 class AnotherTwinRustAsync {
   final String a;
 

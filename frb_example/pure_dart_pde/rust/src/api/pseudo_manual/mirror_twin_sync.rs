@@ -285,3 +285,16 @@ pub fn test_hashmap_with_mirrored_value_twin_sync() -> StructWithHashMap {
         },
     }
 }
+
+#[flutter_rust_bridge::frb(sync)]
+pub fn mirror_enum_stream_twin_sync(sink: StreamSink<ApplicationMode>) {
+    sink.add(ApplicationMode::Embedded).unwrap();
+    sink.add(ApplicationMode::Standalone).unwrap();
+}
+
+#[flutter_rust_bridge::frb(sync)]
+pub fn mirror_option_enum_stream_twin_sync(sink: StreamSink<Option<ApplicationMode>>) {
+    sink.add(Some(ApplicationMode::Embedded)).unwrap();
+    sink.add(None).unwrap();
+    sink.add(Some(ApplicationMode::Standalone)).unwrap();
+}
