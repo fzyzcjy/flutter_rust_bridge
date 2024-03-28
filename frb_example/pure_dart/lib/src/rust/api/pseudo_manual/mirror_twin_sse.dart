@@ -82,6 +82,12 @@ Future<ContainsMirroredSubStructTwinSse> testContainsMirroredSubStructTwinSse(
 Future<StructWithHashMap> testHashmapWithMirroredValueTwinSse({dynamic hint}) =>
     RustLib.instance.api.testHashmapWithMirroredValueTwinSse(hint: hint);
 
+Stream<ApplicationMode> mirrorEnumStreamTwinSse({dynamic hint}) =>
+    RustLib.instance.api.mirrorEnumStreamTwinSse(hint: hint);
+
+Stream<ApplicationMode?> mirrorOptionEnumStreamTwinSse({dynamic hint}) =>
+    RustLib.instance.api.mirrorOptionEnumStreamTwinSse(hint: hint);
+
 class AnotherTwinSse {
   final String a;
 

@@ -3581,6 +3581,10 @@ void frbgen_frb_example_pure_dart_wire_get_message_twin_normal(int64_t port_);
 void frbgen_frb_example_pure_dart_wire_is_app_embedded_twin_normal(int64_t port_,
                                                                    struct wire_cst_application_settings *app_settings);
 
+void frbgen_frb_example_pure_dart_wire_mirror_enum_stream_twin_normal(int64_t port_);
+
+void frbgen_frb_example_pure_dart_wire_mirror_option_enum_stream_twin_normal(int64_t port_);
+
 void frbgen_frb_example_pure_dart_wire_mirror_struct_stream_twin_normal(int64_t port_);
 
 void frbgen_frb_example_pure_dart_wire_mirror_tuple_stream_twin_normal(int64_t port_);
@@ -7950,6 +7954,10 @@ void frbgen_frb_example_pure_dart_wire_get_message_twin_rust_async(int64_t port_
 void frbgen_frb_example_pure_dart_wire_is_app_embedded_twin_rust_async(int64_t port_,
                                                                        struct wire_cst_application_settings *app_settings);
 
+void frbgen_frb_example_pure_dart_wire_mirror_enum_stream_twin_rust_async(int64_t port_);
+
+void frbgen_frb_example_pure_dart_wire_mirror_option_enum_stream_twin_rust_async(int64_t port_);
+
 void frbgen_frb_example_pure_dart_wire_mirror_struct_stream_twin_rust_async(int64_t port_);
 
 void frbgen_frb_example_pure_dart_wire_mirror_tuple_stream_twin_rust_async(int64_t port_);
@@ -8018,6 +8026,16 @@ void frbgen_frb_example_pure_dart_wire_is_app_embedded_twin_rust_async_sse(int64
                                                                            uint8_t *ptr_,
                                                                            int32_t rust_vec_len_,
                                                                            int32_t data_len_);
+
+void frbgen_frb_example_pure_dart_wire_mirror_enum_stream_twin_rust_async_sse(int64_t port_,
+                                                                              uint8_t *ptr_,
+                                                                              int32_t rust_vec_len_,
+                                                                              int32_t data_len_);
+
+void frbgen_frb_example_pure_dart_wire_mirror_option_enum_stream_twin_rust_async_sse(int64_t port_,
+                                                                                     uint8_t *ptr_,
+                                                                                     int32_t rust_vec_len_,
+                                                                                     int32_t data_len_);
 
 void frbgen_frb_example_pure_dart_wire_mirror_struct_stream_twin_rust_async_sse(int64_t port_,
                                                                                 uint8_t *ptr_,
@@ -8119,6 +8137,16 @@ void frbgen_frb_example_pure_dart_wire_is_app_embedded_twin_sse(int64_t port_,
                                                                 int32_t rust_vec_len_,
                                                                 int32_t data_len_);
 
+void frbgen_frb_example_pure_dart_wire_mirror_enum_stream_twin_sse(int64_t port_,
+                                                                   uint8_t *ptr_,
+                                                                   int32_t rust_vec_len_,
+                                                                   int32_t data_len_);
+
+void frbgen_frb_example_pure_dart_wire_mirror_option_enum_stream_twin_sse(int64_t port_,
+                                                                          uint8_t *ptr_,
+                                                                          int32_t rust_vec_len_,
+                                                                          int32_t data_len_);
+
 void frbgen_frb_example_pure_dart_wire_mirror_struct_stream_twin_sse(int64_t port_,
                                                                      uint8_t *ptr_,
                                                                      int32_t rust_vec_len_,
@@ -8195,6 +8223,10 @@ WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_get_message_twin_sync(voi
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_is_app_embedded_twin_sync(struct wire_cst_application_settings *app_settings);
 
+void frbgen_frb_example_pure_dart_wire_mirror_enum_stream_twin_sync(int64_t port_);
+
+void frbgen_frb_example_pure_dart_wire_mirror_option_enum_stream_twin_sync(int64_t port_);
+
 void frbgen_frb_example_pure_dart_wire_mirror_struct_stream_twin_sync(int64_t port_);
 
 void frbgen_frb_example_pure_dart_wire_mirror_tuple_stream_twin_sync(int64_t port_);
@@ -8254,6 +8286,16 @@ WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire_get_message_twin_sync_sse
 WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire_is_app_embedded_twin_sync_sse(uint8_t *ptr_,
                                                                                      int32_t rust_vec_len_,
                                                                                      int32_t data_len_);
+
+void frbgen_frb_example_pure_dart_wire_mirror_enum_stream_twin_sync_sse(int64_t port_,
+                                                                        uint8_t *ptr_,
+                                                                        int32_t rust_vec_len_,
+                                                                        int32_t data_len_);
+
+void frbgen_frb_example_pure_dart_wire_mirror_option_enum_stream_twin_sync_sse(int64_t port_,
+                                                                               uint8_t *ptr_,
+                                                                               int32_t rust_vec_len_,
+                                                                               int32_t data_len_);
 
 void frbgen_frb_example_pure_dart_wire_mirror_struct_stream_twin_sync_sse(int64_t port_,
                                                                           uint8_t *ptr_,
@@ -12795,6 +12837,8 @@ struct wire_cst_abc_twin_sync *frbgen_frb_example_pure_dart_cst_new_box_autoadd_
 
 struct wire_cst_application_env *frbgen_frb_example_pure_dart_cst_new_box_autoadd_application_env(void);
 
+int32_t *frbgen_frb_example_pure_dart_cst_new_box_autoadd_application_mode(int32_t value);
+
 struct wire_cst_application_settings *frbgen_frb_example_pure_dart_cst_new_box_autoadd_application_settings(void);
 
 struct wire_cst_attribute_twin_normal *frbgen_frb_example_pure_dart_cst_new_box_autoadd_attribute_twin_normal(void);
@@ -13540,6 +13584,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_abc_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_abc_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_application_env);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_application_mode);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_application_settings);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_attribute_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_attribute_twin_rust_async);
@@ -15803,6 +15848,18 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_loop_back_vec_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_loop_back_vec_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_loop_back_vec_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_mirror_enum_stream_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_mirror_enum_stream_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_mirror_enum_stream_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_mirror_enum_stream_twin_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_mirror_enum_stream_twin_sync);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_mirror_enum_stream_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_mirror_option_enum_stream_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_mirror_option_enum_stream_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_mirror_option_enum_stream_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_mirror_option_enum_stream_twin_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_mirror_option_enum_stream_twin_sync);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_mirror_option_enum_stream_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_mirror_struct_stream_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_mirror_struct_stream_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_mirror_struct_stream_twin_rust_async_sse);

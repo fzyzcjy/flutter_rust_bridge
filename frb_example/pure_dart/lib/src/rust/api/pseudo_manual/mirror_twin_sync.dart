@@ -82,6 +82,12 @@ ContainsMirroredSubStructTwinSync testContainsMirroredSubStructTwinSync(
 StructWithHashMap testHashmapWithMirroredValueTwinSync({dynamic hint}) =>
     RustLib.instance.api.testHashmapWithMirroredValueTwinSync(hint: hint);
 
+Stream<ApplicationMode> mirrorEnumStreamTwinSync({dynamic hint}) =>
+    RustLib.instance.api.mirrorEnumStreamTwinSync(hint: hint);
+
+Stream<ApplicationMode?> mirrorOptionEnumStreamTwinSync({dynamic hint}) =>
+    RustLib.instance.api.mirrorOptionEnumStreamTwinSync(hint: hint);
+
 class AnotherTwinSync {
   final String a;
 

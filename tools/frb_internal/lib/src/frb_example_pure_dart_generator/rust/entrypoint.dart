@@ -69,8 +69,13 @@ class RustGenerator extends BaseGenerator {
               (m) =>
                   'StreamSink<Vec<${m.group(1)}>, flutter_rust_bridge::SseCodec>')
           .replaceAllMapped(
+              RegExp(r'StreamSink<Option<(.*?)>>'),
+              (m) =>
+                  'StreamSink<Option<${m.group(1)}>, flutter_rust_bridge::SseCodec>')
+          .replaceAllMapped(
               RegExp(r'StreamSink<(.*?)>'),
-              (m) => m.group(1)!.startsWith('Vec')
+              (m) => m.group(1)!.startsWith('Vec') ||
+                      m.group(1)!.startsWith('Option')
                   ? m.group(0)!
                   : 'StreamSink<${m.group(1)}, flutter_rust_bridge::SseCodec>');
     }

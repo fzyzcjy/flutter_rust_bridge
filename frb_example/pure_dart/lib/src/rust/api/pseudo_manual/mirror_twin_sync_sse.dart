@@ -85,6 +85,12 @@ ContainsMirroredSubStructTwinSyncSse testContainsMirroredSubStructTwinSyncSse(
 StructWithHashMap testHashmapWithMirroredValueTwinSyncSse({dynamic hint}) =>
     RustLib.instance.api.testHashmapWithMirroredValueTwinSyncSse(hint: hint);
 
+Stream<ApplicationMode> mirrorEnumStreamTwinSyncSse({dynamic hint}) =>
+    RustLib.instance.api.mirrorEnumStreamTwinSyncSse(hint: hint);
+
+Stream<ApplicationMode?> mirrorOptionEnumStreamTwinSyncSse({dynamic hint}) =>
+    RustLib.instance.api.mirrorOptionEnumStreamTwinSyncSse(hint: hint);
+
 class AnotherTwinSyncSse {
   final String a;
 

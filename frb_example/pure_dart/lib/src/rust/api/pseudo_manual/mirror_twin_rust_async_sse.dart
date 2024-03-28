@@ -95,6 +95,13 @@ Future<StructWithHashMap> testHashmapWithMirroredValueTwinRustAsyncSse(
     RustLib.instance.api
         .testHashmapWithMirroredValueTwinRustAsyncSse(hint: hint);
 
+Stream<ApplicationMode> mirrorEnumStreamTwinRustAsyncSse({dynamic hint}) =>
+    RustLib.instance.api.mirrorEnumStreamTwinRustAsyncSse(hint: hint);
+
+Stream<ApplicationMode?> mirrorOptionEnumStreamTwinRustAsyncSse(
+        {dynamic hint}) =>
+    RustLib.instance.api.mirrorOptionEnumStreamTwinRustAsyncSse(hint: hint);
+
 class AnotherTwinRustAsyncSse {
   final String a;
 

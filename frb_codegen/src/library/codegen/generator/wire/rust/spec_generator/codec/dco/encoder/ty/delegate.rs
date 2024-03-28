@@ -7,9 +7,21 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::
 };
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::ty::WireRustCodecDcoGeneratorEncoderTrait;
 use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegatePrimitiveEnum};
+use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 use itertools::Itertools;
 
 impl<'a> WireRustCodecDcoGeneratorEncoderTrait for DelegateWireRustCodecDcoGenerator<'a> {
+    fn intodart_type(&self, ir_pack: &crate::codegen::ir::pack::IrPack) -> String {
+        match &self.ir {
+            IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum { ir, .. }) => {
+                let inner = WireRustCodecDcoGenerator::new(IrType::from(ir.clone()), self.context);
+                inner.intodart_type(ir_pack)
+            }
+            // default trait implementation
+            _ => self.ir.rust_api_type(),
+        }
+    }
+
     // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
     // frb-coverage:ignore-start
     fn generate_impl_into_dart(&self) -> Option<String> {

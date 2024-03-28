@@ -86,6 +86,12 @@ Future<StructWithHashMap> testHashmapWithMirroredValueTwinNormal(
         {dynamic hint}) =>
     RustLib.instance.api.testHashmapWithMirroredValueTwinNormal(hint: hint);
 
+Stream<ApplicationMode> mirrorEnumStreamTwinNormal({dynamic hint}) =>
+    RustLib.instance.api.mirrorEnumStreamTwinNormal(hint: hint);
+
+Stream<ApplicationMode?> mirrorOptionEnumStreamTwinNormal({dynamic hint}) =>
+    RustLib.instance.api.mirrorOptionEnumStreamTwinNormal(hint: hint);
+
 class AnotherTwinNormal {
   final String a;
 

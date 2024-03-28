@@ -289,3 +289,20 @@ pub fn test_hashmap_with_mirrored_value_twin_sse() -> StructWithHashMap {
         },
     }
 }
+
+#[flutter_rust_bridge::frb(serialize)]
+pub fn mirror_enum_stream_twin_sse(
+    sink: StreamSink<ApplicationMode, flutter_rust_bridge::SseCodec>,
+) {
+    sink.add(ApplicationMode::Embedded).unwrap();
+    sink.add(ApplicationMode::Standalone).unwrap();
+}
+
+#[flutter_rust_bridge::frb(serialize)]
+pub fn mirror_option_enum_stream_twin_sse(
+    sink: StreamSink<Option<ApplicationMode>, flutter_rust_bridge::SseCodec>,
+) {
+    sink.add(Some(ApplicationMode::Embedded)).unwrap();
+    sink.add(None).unwrap();
+    sink.add(Some(ApplicationMode::Standalone)).unwrap();
+}

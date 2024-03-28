@@ -3550,6 +3550,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ApplicationEnv dco_decode_box_autoadd_application_env(dynamic raw);
 
   @protected
+  ApplicationMode dco_decode_box_autoadd_application_mode(dynamic raw);
+
+  @protected
   ApplicationSettings dco_decode_box_autoadd_application_settings(dynamic raw);
 
   @protected
@@ -7176,6 +7179,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   ApplicationEnv? dco_decode_opt_box_autoadd_application_env(dynamic raw);
+
+  @protected
+  ApplicationMode? dco_decode_opt_box_autoadd_application_mode(dynamic raw);
 
   @protected
   AttributeTwinNormal? dco_decode_opt_box_autoadd_attribute_twin_normal(
@@ -11097,6 +11103,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   ApplicationEnv sse_decode_box_autoadd_application_env(
+      SseDeserializer deserializer);
+
+  @protected
+  ApplicationMode sse_decode_box_autoadd_application_mode(
       SseDeserializer deserializer);
 
   @protected
@@ -15240,6 +15250,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  ApplicationMode? sse_decode_opt_box_autoadd_application_mode(
+      SseDeserializer deserializer);
+
+  @protected
   AttributeTwinNormal? sse_decode_opt_box_autoadd_attribute_twin_normal(
       SseDeserializer deserializer);
 
@@ -17378,6 +17392,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     final ptr = wire.cst_new_box_autoadd_application_env();
     cst_api_fill_to_wire_application_env(raw, ptr.ref);
     return ptr;
+  }
+
+  @protected
+  ffi.Pointer<ffi.Int32> cst_encode_box_autoadd_application_mode(
+      ApplicationMode raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return wire
+        .cst_new_box_autoadd_application_mode(cst_encode_application_mode(raw));
   }
 
   @protected
@@ -21338,6 +21360,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     return raw == null
         ? ffi.nullptr
         : cst_encode_box_autoadd_application_env(raw);
+  }
+
+  @protected
+  ffi.Pointer<ffi.Int32> cst_encode_opt_box_autoadd_application_mode(
+      ApplicationMode? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw == null
+        ? ffi.nullptr
+        : cst_encode_box_autoadd_application_mode(raw);
   }
 
   @protected
@@ -30463,6 +30494,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       ApplicationEnv self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_application_mode(
+      ApplicationMode self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_application_settings(
       ApplicationSettings self, SseSerializer serializer);
 
@@ -34382,6 +34417,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_opt_box_autoadd_application_env(
       ApplicationEnv? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_application_mode(
+      ApplicationMode? self, SseSerializer serializer);
 
   @protected
   void sse_encode_opt_box_autoadd_attribute_twin_normal(
@@ -38723,6 +38762,35 @@ class RustLibWire implements BaseWire {
   late final _wire_is_app_embedded_twin_normal =
       _wire_is_app_embedded_twin_normalPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_application_settings>)>();
+
+  void wire_mirror_enum_stream_twin_normal(
+    int port_,
+  ) {
+    return _wire_mirror_enum_stream_twin_normal(
+      port_,
+    );
+  }
+
+  late final _wire_mirror_enum_stream_twin_normalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'frbgen_frb_example_pure_dart_wire_mirror_enum_stream_twin_normal');
+  late final _wire_mirror_enum_stream_twin_normal =
+      _wire_mirror_enum_stream_twin_normalPtr.asFunction<void Function(int)>();
+
+  void wire_mirror_option_enum_stream_twin_normal(
+    int port_,
+  ) {
+    return _wire_mirror_option_enum_stream_twin_normal(
+      port_,
+    );
+  }
+
+  late final _wire_mirror_option_enum_stream_twin_normalPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      'frbgen_frb_example_pure_dart_wire_mirror_option_enum_stream_twin_normal');
+  late final _wire_mirror_option_enum_stream_twin_normal =
+      _wire_mirror_option_enum_stream_twin_normalPtr
+          .asFunction<void Function(int)>();
 
   void wire_mirror_struct_stream_twin_normal(
     int port_,
@@ -62784,6 +62852,36 @@ class RustLibWire implements BaseWire {
       _wire_is_app_embedded_twin_rust_asyncPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_application_settings>)>();
 
+  void wire_mirror_enum_stream_twin_rust_async(
+    int port_,
+  ) {
+    return _wire_mirror_enum_stream_twin_rust_async(
+      port_,
+    );
+  }
+
+  late final _wire_mirror_enum_stream_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      'frbgen_frb_example_pure_dart_wire_mirror_enum_stream_twin_rust_async');
+  late final _wire_mirror_enum_stream_twin_rust_async =
+      _wire_mirror_enum_stream_twin_rust_asyncPtr
+          .asFunction<void Function(int)>();
+
+  void wire_mirror_option_enum_stream_twin_rust_async(
+    int port_,
+  ) {
+    return _wire_mirror_option_enum_stream_twin_rust_async(
+      port_,
+    );
+  }
+
+  late final _wire_mirror_option_enum_stream_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      'frbgen_frb_example_pure_dart_wire_mirror_option_enum_stream_twin_rust_async');
+  late final _wire_mirror_option_enum_stream_twin_rust_async =
+      _wire_mirror_option_enum_stream_twin_rust_asyncPtr
+          .asFunction<void Function(int)>();
+
   void wire_mirror_struct_stream_twin_rust_async(
     int port_,
   ) {
@@ -63158,6 +63256,52 @@ class RustLibWire implements BaseWire {
       'frbgen_frb_example_pure_dart_wire_is_app_embedded_twin_rust_async_sse');
   late final _wire_is_app_embedded_twin_rust_async_sse =
       _wire_is_app_embedded_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_mirror_enum_stream_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_mirror_enum_stream_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_mirror_enum_stream_twin_rust_async_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_mirror_enum_stream_twin_rust_async_sse');
+  late final _wire_mirror_enum_stream_twin_rust_async_sse =
+      _wire_mirror_enum_stream_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_mirror_option_enum_stream_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_mirror_option_enum_stream_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_mirror_option_enum_stream_twin_rust_async_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_mirror_option_enum_stream_twin_rust_async_sse');
+  late final _wire_mirror_option_enum_stream_twin_rust_async_sse =
+      _wire_mirror_option_enum_stream_twin_rust_async_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_mirror_struct_stream_twin_rust_async_sse(
@@ -63621,6 +63765,52 @@ class RustLibWire implements BaseWire {
   late final _wire_is_app_embedded_twin_sse = _wire_is_app_embedded_twin_ssePtr
       .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
+  void wire_mirror_enum_stream_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_mirror_enum_stream_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_mirror_enum_stream_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_mirror_enum_stream_twin_sse');
+  late final _wire_mirror_enum_stream_twin_sse =
+      _wire_mirror_enum_stream_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_mirror_option_enum_stream_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_mirror_option_enum_stream_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_mirror_option_enum_stream_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_mirror_option_enum_stream_twin_sse');
+  late final _wire_mirror_option_enum_stream_twin_sse =
+      _wire_mirror_option_enum_stream_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
   void wire_mirror_struct_stream_twin_sse(
     int port_,
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -64006,6 +64196,35 @@ class RustLibWire implements BaseWire {
           WireSyncRust2DartDco Function(
               ffi.Pointer<wire_cst_application_settings>)>();
 
+  void wire_mirror_enum_stream_twin_sync(
+    int port_,
+  ) {
+    return _wire_mirror_enum_stream_twin_sync(
+      port_,
+    );
+  }
+
+  late final _wire_mirror_enum_stream_twin_syncPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'frbgen_frb_example_pure_dart_wire_mirror_enum_stream_twin_sync');
+  late final _wire_mirror_enum_stream_twin_sync =
+      _wire_mirror_enum_stream_twin_syncPtr.asFunction<void Function(int)>();
+
+  void wire_mirror_option_enum_stream_twin_sync(
+    int port_,
+  ) {
+    return _wire_mirror_option_enum_stream_twin_sync(
+      port_,
+    );
+  }
+
+  late final _wire_mirror_option_enum_stream_twin_syncPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      'frbgen_frb_example_pure_dart_wire_mirror_option_enum_stream_twin_sync');
+  late final _wire_mirror_option_enum_stream_twin_sync =
+      _wire_mirror_option_enum_stream_twin_syncPtr
+          .asFunction<void Function(int)>();
+
   void wire_mirror_struct_stream_twin_sync(
     int port_,
   ) {
@@ -64333,6 +64552,52 @@ class RustLibWire implements BaseWire {
   late final _wire_is_app_embedded_twin_sync_sse =
       _wire_is_app_embedded_twin_sync_ssePtr.asFunction<
           WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_mirror_enum_stream_twin_sync_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_mirror_enum_stream_twin_sync_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_mirror_enum_stream_twin_sync_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_mirror_enum_stream_twin_sync_sse');
+  late final _wire_mirror_enum_stream_twin_sync_sse =
+      _wire_mirror_enum_stream_twin_sync_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_mirror_option_enum_stream_twin_sync_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_mirror_option_enum_stream_twin_sync_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_mirror_option_enum_stream_twin_sync_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_mirror_option_enum_stream_twin_sync_sse');
+  late final _wire_mirror_option_enum_stream_twin_sync_sse =
+      _wire_mirror_option_enum_stream_twin_sync_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_mirror_struct_stream_twin_sync_sse(
     int port_,
@@ -91082,6 +91347,21 @@ class RustLibWire implements BaseWire {
   late final _cst_new_box_autoadd_application_env =
       _cst_new_box_autoadd_application_envPtr
           .asFunction<ffi.Pointer<wire_cst_application_env> Function()>();
+
+  ffi.Pointer<ffi.Int32> cst_new_box_autoadd_application_mode(
+    int value,
+  ) {
+    return _cst_new_box_autoadd_application_mode(
+      value,
+    );
+  }
+
+  late final _cst_new_box_autoadd_application_modePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int32> Function(ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_cst_new_box_autoadd_application_mode');
+  late final _cst_new_box_autoadd_application_mode =
+      _cst_new_box_autoadd_application_modePtr
+          .asFunction<ffi.Pointer<ffi.Int32> Function(int)>();
 
   ffi.Pointer<wire_cst_application_settings>
       cst_new_box_autoadd_application_settings() {
