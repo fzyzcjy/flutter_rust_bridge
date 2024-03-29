@@ -6,7 +6,10 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::
     generate_enum_access_object_core, parse_wrapper_name_into_dart_name_and_self_path,
 };
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::ty::WireRustCodecDcoGeneratorEncoderTrait;
-use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegatePrimitiveEnum};
+use crate::codegen::ir::ty::delegate::{
+    IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegateMap, IrTypeDelegatePrimitiveEnum,
+    IrTypeDelegateSet,
+};
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 use itertools::Itertools;
 
@@ -16,6 +19,36 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for DelegateWireRustCodecDcoGener
             IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum { ir, .. }) => {
                 let inner = WireRustCodecDcoGenerator::new(IrType::from(ir.clone()), self.context);
                 inner.intodart_type(ir_pack)
+            }
+            IrTypeDelegate::Set(IrTypeDelegateSet { inner }) => {
+                let inner =
+                    WireRustCodecDcoGenerator::new(IrType::from(inner.clone()), self.context);
+                format!(
+                    "std::collections::HashSet<{}>",
+                    inner.intodart_type(ir_pack)
+                )
+            }
+            IrTypeDelegate::Array(IrTypeDelegateArray { mode, length, .. }) => {
+                let inner = match mode {
+                    crate::codegen::ir::ty::delegate::IrTypeDelegateArrayMode::General(inner) => {
+                        WireRustCodecDcoGenerator::new(IrType::from(inner.clone()), self.context)
+                    }
+                    crate::codegen::ir::ty::delegate::IrTypeDelegateArrayMode::Primitive(inner) => {
+                        WireRustCodecDcoGenerator::new(IrType::from(inner.clone()), self.context)
+                    }
+                };
+                format!("[{}; {}]", inner.intodart_type(ir_pack), length)
+            }
+            IrTypeDelegate::Map(IrTypeDelegateMap { key, value, .. }) => {
+                let key_inner =
+                    WireRustCodecDcoGenerator::new(IrType::from(key.clone()), self.context);
+                let value_inner =
+                    WireRustCodecDcoGenerator::new(IrType::from(value.clone()), self.context);
+                format!(
+                    "std::collections::HashMap<{}, {}>",
+                    key_inner.intodart_type(ir_pack),
+                    value_inner.intodart_type(ir_pack)
+                )
             }
             // default trait implementation
             _ => self.ir.rust_api_type(),

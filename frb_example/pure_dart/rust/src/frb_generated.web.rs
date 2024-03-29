@@ -3004,6 +3004,18 @@ impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationE
             .collect()
     }
 }
+impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
 impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -4171,6 +4183,28 @@ impl CstDecode<Vec<(String, String)>>
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(String, String)> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl
+    CstDecode<
+        Vec<(
+            u8,
+            crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+        )>,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> Vec<(
+        u8,
+        crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+    )> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
@@ -6319,6 +6353,31 @@ impl CstDecode<(String, crate::auxiliary::sample_types::MySize)>
 impl CstDecode<(String, String)> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (String, String) {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        (self_.get(0).cst_decode(), self_.get(1).cst_decode())
+    }
+}
+impl
+    CstDecode<(
+        u8,
+        crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+    )> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> (
+        u8,
+        crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+    ) {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap();
@@ -8851,6 +8910,28 @@ impl CstDecode<std::collections::HashMap<i32, usize>>
         vec.into_iter().collect()
     }
 }
+impl
+    CstDecode<
+        std::collections::HashMap<
+            u8,
+            crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> std::collections::HashMap<
+        u8,
+        crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+    > {
+        let vec: Vec<(
+            u8,
+            crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+        )> = self.cst_decode();
+        vec.into_iter().collect()
+    }
+}
 impl CstDecode<RustOpaqueMoi<Box<dyn DartDebugTwinMoi>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -10607,6 +10688,21 @@ impl CstDecode<std::collections::HashSet<String>>
         vec.into_iter().collect()
     }
 }
+impl
+    CstDecode<
+        std::collections::HashSet<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> std::collections::HashSet<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>
+    {
+        let vec: Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode> =
+            self.cst_decode();
+        vec.into_iter().collect()
+    }
+}
 impl CstDecode<std::collections::HashSet<i32>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -10637,6 +10733,16 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode {
         (self.unchecked_into_f64() as i32).cst_decode()
+    }
+}
+impl CstDecode<[crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode; 2]>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> [crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode; 2] {
+        let vec: Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode> =
+            self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
 impl CstDecode<crate::api::pseudo_manual::basic::BasicPrimitiveEnumTwinNormal>
@@ -12652,8 +12758,22 @@ pub fn wire_is_app_embedded_twin_normal(
 }
 
 #[wasm_bindgen]
+pub fn wire_mirror_array_enum_stream_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire_mirror_array_enum_stream_twin_normal_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_mirror_enum_stream_twin_normal(port_: flutter_rust_bridge::for_generated::MessagePort) {
     wire_mirror_enum_stream_twin_normal_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_mirror_map_enum_stream_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire_mirror_map_enum_stream_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
@@ -12661,6 +12781,13 @@ pub fn wire_mirror_option_enum_stream_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire_mirror_option_enum_stream_twin_normal_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_mirror_set_enum_stream_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire_mirror_set_enum_stream_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
@@ -12675,6 +12802,13 @@ pub fn wire_mirror_tuple_stream_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire_mirror_tuple_stream_twin_normal_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_mirror_vec_enum_stream_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire_mirror_vec_enum_stream_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
@@ -23547,6 +23681,13 @@ pub fn wire_is_app_embedded_twin_rust_async(
 }
 
 #[wasm_bindgen]
+pub fn wire_mirror_array_enum_stream_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire_mirror_array_enum_stream_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_mirror_enum_stream_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
@@ -23554,10 +23695,24 @@ pub fn wire_mirror_enum_stream_twin_rust_async(
 }
 
 #[wasm_bindgen]
+pub fn wire_mirror_map_enum_stream_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire_mirror_map_enum_stream_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_mirror_option_enum_stream_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire_mirror_option_enum_stream_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_mirror_set_enum_stream_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire_mirror_set_enum_stream_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
@@ -23572,6 +23727,13 @@ pub fn wire_mirror_tuple_stream_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire_mirror_tuple_stream_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_mirror_vec_enum_stream_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire_mirror_vec_enum_stream_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
@@ -23730,6 +23892,16 @@ pub fn wire_is_app_embedded_twin_rust_async_sse(
 }
 
 #[wasm_bindgen]
+pub fn wire_mirror_array_enum_stream_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_mirror_array_enum_stream_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
 pub fn wire_mirror_enum_stream_twin_rust_async_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -23740,6 +23912,16 @@ pub fn wire_mirror_enum_stream_twin_rust_async_sse(
 }
 
 #[wasm_bindgen]
+pub fn wire_mirror_map_enum_stream_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_mirror_map_enum_stream_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
 pub fn wire_mirror_option_enum_stream_twin_rust_async_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -23747,6 +23929,16 @@ pub fn wire_mirror_option_enum_stream_twin_rust_async_sse(
     data_len_: i32,
 ) {
     wire_mirror_option_enum_stream_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_mirror_set_enum_stream_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_mirror_set_enum_stream_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -23767,6 +23959,16 @@ pub fn wire_mirror_tuple_stream_twin_rust_async_sse(
     data_len_: i32,
 ) {
     wire_mirror_tuple_stream_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_mirror_vec_enum_stream_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_mirror_vec_enum_stream_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -23985,6 +24187,16 @@ pub fn wire_is_app_embedded_twin_sse(
 }
 
 #[wasm_bindgen]
+pub fn wire_mirror_array_enum_stream_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_mirror_array_enum_stream_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
 pub fn wire_mirror_enum_stream_twin_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -23995,6 +24207,16 @@ pub fn wire_mirror_enum_stream_twin_sse(
 }
 
 #[wasm_bindgen]
+pub fn wire_mirror_map_enum_stream_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_mirror_map_enum_stream_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
 pub fn wire_mirror_option_enum_stream_twin_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -24002,6 +24224,16 @@ pub fn wire_mirror_option_enum_stream_twin_sse(
     data_len_: i32,
 ) {
     wire_mirror_option_enum_stream_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_mirror_set_enum_stream_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_mirror_set_enum_stream_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -24022,6 +24254,16 @@ pub fn wire_mirror_tuple_stream_twin_sse(
     data_len_: i32,
 ) {
     wire_mirror_tuple_stream_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_mirror_vec_enum_stream_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_mirror_vec_enum_stream_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -24180,8 +24422,22 @@ pub fn wire_is_app_embedded_twin_sync(
 }
 
 #[wasm_bindgen]
+pub fn wire_mirror_array_enum_stream_twin_sync(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire_mirror_array_enum_stream_twin_sync_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_mirror_enum_stream_twin_sync(port_: flutter_rust_bridge::for_generated::MessagePort) {
     wire_mirror_enum_stream_twin_sync_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_mirror_map_enum_stream_twin_sync(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire_mirror_map_enum_stream_twin_sync_impl(port_)
 }
 
 #[wasm_bindgen]
@@ -24192,6 +24448,13 @@ pub fn wire_mirror_option_enum_stream_twin_sync(
 }
 
 #[wasm_bindgen]
+pub fn wire_mirror_set_enum_stream_twin_sync(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire_mirror_set_enum_stream_twin_sync_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_mirror_struct_stream_twin_sync(port_: flutter_rust_bridge::for_generated::MessagePort) {
     wire_mirror_struct_stream_twin_sync_impl(port_)
 }
@@ -24199,6 +24462,13 @@ pub fn wire_mirror_struct_stream_twin_sync(port_: flutter_rust_bridge::for_gener
 #[wasm_bindgen]
 pub fn wire_mirror_tuple_stream_twin_sync(port_: flutter_rust_bridge::for_generated::MessagePort) {
     wire_mirror_tuple_stream_twin_sync_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_mirror_vec_enum_stream_twin_sync(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire_mirror_vec_enum_stream_twin_sync_impl(port_)
 }
 
 #[wasm_bindgen]
@@ -24341,6 +24611,16 @@ pub fn wire_is_app_embedded_twin_sync_sse(
 }
 
 #[wasm_bindgen]
+pub fn wire_mirror_array_enum_stream_twin_sync_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_mirror_array_enum_stream_twin_sync_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
 pub fn wire_mirror_enum_stream_twin_sync_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -24351,6 +24631,16 @@ pub fn wire_mirror_enum_stream_twin_sync_sse(
 }
 
 #[wasm_bindgen]
+pub fn wire_mirror_map_enum_stream_twin_sync_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_mirror_map_enum_stream_twin_sync_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
 pub fn wire_mirror_option_enum_stream_twin_sync_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -24358,6 +24648,16 @@ pub fn wire_mirror_option_enum_stream_twin_sync_sse(
     data_len_: i32,
 ) {
     wire_mirror_option_enum_stream_twin_sync_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_mirror_set_enum_stream_twin_sync_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_mirror_set_enum_stream_twin_sync_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -24378,6 +24678,16 @@ pub fn wire_mirror_tuple_stream_twin_sync_sse(
     data_len_: i32,
 ) {
     wire_mirror_tuple_stream_twin_sync_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_mirror_vec_enum_stream_twin_sync_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_mirror_vec_enum_stream_twin_sync_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]

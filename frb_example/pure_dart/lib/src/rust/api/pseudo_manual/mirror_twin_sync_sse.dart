@@ -5,6 +5,7 @@
 
 import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
+import '../mirror.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'mirror_twin_sync_sse.freezed.dart';
@@ -90,6 +91,20 @@ Stream<ApplicationMode> mirrorEnumStreamTwinSyncSse({dynamic hint}) =>
 
 Stream<ApplicationMode?> mirrorOptionEnumStreamTwinSyncSse({dynamic hint}) =>
     RustLib.instance.api.mirrorOptionEnumStreamTwinSyncSse(hint: hint);
+
+Stream<List<ApplicationMode>> mirrorVecEnumStreamTwinSyncSse({dynamic hint}) =>
+    RustLib.instance.api.mirrorVecEnumStreamTwinSyncSse(hint: hint);
+
+Stream<Map<int, ApplicationMode>> mirrorMapEnumStreamTwinSyncSse(
+        {dynamic hint}) =>
+    RustLib.instance.api.mirrorMapEnumStreamTwinSyncSse(hint: hint);
+
+Stream<Set<ApplicationMode>> mirrorSetEnumStreamTwinSyncSse({dynamic hint}) =>
+    RustLib.instance.api.mirrorSetEnumStreamTwinSyncSse(hint: hint);
+
+Stream<ApplicationModeArray2> mirrorArrayEnumStreamTwinSyncSse(
+        {dynamic hint}) =>
+    RustLib.instance.api.mirrorArrayEnumStreamTwinSyncSse(hint: hint);
 
 class AnotherTwinSyncSse {
   final String a;

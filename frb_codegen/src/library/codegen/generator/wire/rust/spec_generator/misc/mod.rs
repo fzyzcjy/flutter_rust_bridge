@@ -8,7 +8,11 @@ use crate::codegen::generator::wire::rust::spec_generator::base::{
 use crate::codegen::generator::wire::rust::spec_generator::misc::wire_func::generate_wire_func;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::generator::wire::rust::IrPackComputedCache;
+use crate::codegen::ir::func::IrFuncMode;
 use crate::codegen::ir::pack::IrPack;
+use crate::codegen::ir::ty::delegate::{
+    IrTypeDelegate, IrTypeDelegatePrimitiveEnum, IrTypeDelegateSet,
+};
 use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
@@ -115,15 +119,39 @@ use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, WriteBytesExt,
 }
 
 fn generate_wrapper_struct(ty: &IrType, context: WireRustGeneratorContext) -> Option<String> {
+    let rust_api_type = ty.rust_api_type();
+    let requires_hash = !context
+        .ir_pack
+        .distinct_types(Some(Box::new(move |func| {
+            matches!(func.mode, IrFuncMode::Stream { .. })
+                && match &func.output {
+                    IrType::Delegate(IrTypeDelegate::Set(IrTypeDelegateSet { inner, .. })) => {
+                        match inner.as_ref() {
+                            IrType::Delegate(IrTypeDelegate::PrimitiveEnum(
+                                IrTypeDelegatePrimitiveEnum { ir, .. },
+                            )) => ir.rust_api_type() == rust_api_type,
+                            _ => false,
+                        }
+                    }
+                    _ => false,
+                }
+        })))
+        .is_empty();
+    let additional_derives = if requires_hash {
+        ",PartialEq,Eq,Hash"
+    } else {
+        ""
+    };
     // the generated wrapper structs need to be public for the StreamSinkTrait impl to work
     WireRustGenerator::new(ty.clone(), context)
         .wrapper_struct_name()
         .map(|wrapper_struct_name| {
             format!(
                 r###"
-                #[derive(Clone)]
+                #[derive(Clone{})]
                 pub struct {}({});
                 "###,
+                additional_derives,
                 wrapper_struct_name,
                 ty.rust_api_type(),
             )

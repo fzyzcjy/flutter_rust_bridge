@@ -63,21 +63,48 @@ class RustGenerator extends BaseGenerator {
 
     if (mode.components.any((e) => e == DuplicatorComponentMode.sse)) {
       // quick hack, since we are merely generating tests
-      ans = ans
-          .replaceAllMapped(
-              RegExp(r'StreamSink<Vec<(.*?)>>'),
-              (m) =>
-                  'StreamSink<Vec<${m.group(1)}>, flutter_rust_bridge::SseCodec>')
-          .replaceAllMapped(
-              RegExp(r'StreamSink<Option<(.*?)>>'),
-              (m) =>
-                  'StreamSink<Option<${m.group(1)}>, flutter_rust_bridge::SseCodec>')
-          .replaceAllMapped(
-              RegExp(r'StreamSink<(.*?)>'),
-              (m) => m.group(1)!.startsWith('Vec') ||
-                      m.group(1)!.startsWith('Option')
-                  ? m.group(0)!
-                  : 'StreamSink<${m.group(1)}, flutter_rust_bridge::SseCodec>');
+      var cursor = 0;
+      while (cursor < ans.length) {
+        cursor = ans.indexOf('StreamSink<', cursor);
+        // There is no more `StreamSink<` to replace
+        if (cursor == -1) break;
+        cursor += 'StreamSink<'.length;
+        final innerTypeStart = cursor;
+
+        var openBrackets = 1;
+
+        // Iterate until we find the matching closing bracket of StreamSink<...>
+        while (openBrackets > 0 && cursor < ans.length) {
+          if (ans[cursor] == '<') {
+            openBrackets++;
+          } else if (ans[cursor] == '>') {
+            openBrackets--;
+          }
+          cursor++;
+          if (openBrackets == 0) break;
+        }
+
+        final innerTypeEnd = cursor - 1;
+        final sinkInnerType = ans.substring(innerTypeStart, innerTypeEnd);
+        final newInnerType = '$sinkInnerType, flutter_rust_bridge::SseCodec';
+        ans = ans.replaceRange(innerTypeStart, innerTypeEnd, newInnerType);
+        cursor = innerTypeStart + newInnerType.length;
+      }
+      // ans = ans
+      //     .replaceAllMapped(
+      //         RegExp(r'StreamSink<Vec<(.*?)>>'),
+      //         (m) =>
+      //             'StreamSink<Vec<${m.group(1)}>, flutter_rust_bridge::SseCodec>')
+      //     .replaceAllMapped(
+      //         RegExp(r'StreamSink<Option<(.*?)>>'),
+      //         (m) =>
+      //             'StreamSink<Option<${m.group(1)}>, flutter_rust_bridge::SseCodec>')
+      //     .replaceAllMapped(
+      //         RegExp(r'StreamSink<(.*?)>'),
+      //         (m) => m.group(1)!.startsWith('Vec') ||
+      //                 m.group(1)!.startsWith('Option')
+      //             ? m.group(0)!
+      //             : 'StreamSink<${m.group(1)}, flutter_rust_bridge::SseCodec>');
     }
 
     if (mode.components.any((e) => e == DuplicatorComponentMode.moi)) {

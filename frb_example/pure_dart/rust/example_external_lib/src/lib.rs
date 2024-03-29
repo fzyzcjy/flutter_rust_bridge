@@ -34,7 +34,7 @@ pub struct ApplicationSettings {
     pub env_optional: Option<ApplicationEnv>,
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq, Eq, Hash)]
 pub enum ApplicationMode {
     Standalone,
     Embedded,

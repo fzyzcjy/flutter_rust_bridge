@@ -54,14 +54,15 @@ where
     }
 }
 
-impl<T, const C: usize> IntoIntoDart<[T; C]> for [T; C]
+impl<T, D, const C: usize> IntoIntoDart<[D; C]> for [T; C]
 where
-    T: IntoDart,
-    [T; C]: IntoDart,
+    T: IntoIntoDart<D>,
+    [D; C]: IntoDart,
+    D: IntoDart,
 {
     #[inline(always)]
-    fn into_into_dart(self) -> [T; C] {
-        self
+    fn into_into_dart(self) -> [D; C] {
+        self.map(|e| e.into_into_dart())
     }
 }
 
@@ -91,13 +92,15 @@ where
     }
 }
 
-impl<T> IntoIntoDart<HashSet<T>> for HashSet<T>
+impl<T, D> IntoIntoDart<HashSet<D>> for HashSet<T>
 where
-    HashSet<T>: IntoDart,
+    T: IntoIntoDart<D>,
+    HashSet<D>: IntoDart,
+    D: IntoDart + Eq + std::hash::Hash,
 {
     #[inline(always)]
-    fn into_into_dart(self) -> Self {
-        self
+    fn into_into_dart(self) -> HashSet<D> {
+        self.into_iter().map(|e| e.into_into_dart()).collect()
     }
 }
 

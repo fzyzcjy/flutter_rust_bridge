@@ -15,7 +15,7 @@ pub use frb_example_pure_dart_example_external_lib::{
     HashMapValue, ListOfNestedRawStringMirrored, NestedRawStringMirrored, Numbers,
     RawStringEnumMirrored, RawStringMirrored, Sequences, StructWithHashMap,
 };
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 
 // To mirror an external struct, you need to define a placeholder type with the same definition
 #[frb(mirror(ApplicationSettings))]
@@ -28,6 +28,7 @@ pub struct _ApplicationSettingsTwinRustAsync {
 }
 
 #[frb(mirror(ApplicationMode))]
+#[derive(PartialEq, Eq, Hash)]
 pub enum _ApplicationModeTwinRustAsync {
     Standalone,
     Embedded,
@@ -276,4 +277,32 @@ pub async fn mirror_option_enum_stream_twin_rust_async(sink: StreamSink<Option<A
     sink.add(Some(ApplicationMode::Embedded)).unwrap();
     sink.add(None).unwrap();
     sink.add(Some(ApplicationMode::Standalone)).unwrap();
+}
+
+pub async fn mirror_vec_enum_stream_twin_rust_async(sink: StreamSink<Vec<ApplicationMode>>) {
+    sink.add(vec![ApplicationMode::Embedded]).unwrap();
+    sink.add(vec![ApplicationMode::Standalone]).unwrap();
+}
+
+pub async fn mirror_map_enum_stream_twin_rust_async(
+    sink: StreamSink<HashMap<u8, ApplicationMode>>,
+) {
+    sink.add(HashMap::from([
+        (0, ApplicationMode::Embedded),
+        (1, ApplicationMode::Standalone),
+    ]))
+    .unwrap();
+}
+
+pub async fn mirror_set_enum_stream_twin_rust_async(sink: StreamSink<HashSet<ApplicationMode>>) {
+    sink.add(HashSet::from([
+        ApplicationMode::Embedded,
+        ApplicationMode::Standalone,
+    ]))
+    .unwrap();
+}
+
+pub async fn mirror_array_enum_stream_twin_rust_async(sink: StreamSink<[ApplicationMode; 2]>) {
+    sink.add([ApplicationMode::Embedded, ApplicationMode::Standalone])
+        .unwrap();
 }
