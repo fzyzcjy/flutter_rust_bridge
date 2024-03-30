@@ -10933,6 +10933,13 @@ impl CstDecode<[u8; 1600]> for *mut wire_cst_list_prim_u_8_strict {
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
+impl CstDecode<[u8; 2]> for *mut wire_cst_list_prim_u_8_strict {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> [u8; 2] {
+        let vec: Vec<u8> = self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
 impl CstDecode<[u8; 32]> for *mut wire_cst_list_prim_u_8_strict {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [u8; 32] {
@@ -36160,6 +36167,13 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_stream_sink_at_3_twin
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_stream_sink_fixed_sized_primitive_array_twin_rust_async(
+    port_: i64,
+) {
+    wire_stream_sink_fixed_sized_primitive_array_twin_rust_async_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_stream_return_error_twin_rust_async_sse(
     port_: i64,
     ptr_: *mut u8,
@@ -36235,6 +36249,21 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_stream_sink_at_3_twin
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_stream_sink_fixed_sized_primitive_array_twin_rust_async_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_stream_sink_fixed_sized_primitive_array_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_stream_return_error_twin_sse(
     port_: i64,
     ptr_: *mut u8,
@@ -36302,6 +36331,21 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_stream_sink_at_3_twin
     data_len_: i32,
 ) {
     wire_handle_stream_sink_at_3_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_stream_sink_fixed_sized_primitive_array_twin_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_stream_sink_fixed_sized_primitive_array_twin_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
 }
 
 #[no_mangle]
@@ -37458,6 +37502,13 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_stream_sink_at_3_twin
     max: u32,
 ) {
     wire_handle_stream_sink_at_3_twin_normal_impl(port_, key, max)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_stream_sink_fixed_sized_primitive_array_twin_normal(
+    port_: i64,
+) {
+    wire_stream_sink_fixed_sized_primitive_array_twin_normal_impl(port_)
 }
 
 #[no_mangle]

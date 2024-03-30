@@ -27,17 +27,27 @@ macro_rules! frb_generated_wrapper_types {
     () => {
         #[doc(hidden)]
         pub(crate) struct frb_wrapper<T>(T);
+
+        // This is a blanket implementation to match previous behavior
+        // where codegen is putting #[derive(Clone)] on all concrete wrapper types
+        // this is surely used in the same way previous #[derive(Clone)] was used
+        // frb-coverage:ignore-start
         impl<T: Clone> Clone for frb_wrapper<T> {
             fn clone(&self) -> Self {
                 frb_wrapper(self.0.clone())
             }
         }
+        // frb-coverage:ignore-end
 
+        // PartialEq is required to implement Eq, and HashSet requires both Eq and Hash
+        // It looks like HashSet is not calling Eq during the test suite
+        // frb-coverage:ignore-start
         impl<T: PartialEq> PartialEq for frb_wrapper<T> {
             fn eq(&self, other: &Self) -> bool {
                 self.0.eq(&other.0)
             }
         }
+        // frb-coverage:ignore-end
 
         impl<T: Eq> Eq for frb_wrapper<T> {}
 

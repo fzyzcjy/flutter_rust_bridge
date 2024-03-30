@@ -8461,6 +8461,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   U8Array1600 dco_decode_u_8_array_1600(dynamic raw);
 
   @protected
+  U8Array2 dco_decode_u_8_array_2(dynamic raw);
+
+  @protected
   U8Array32 dco_decode_u_8_array_32(dynamic raw);
 
   @protected
@@ -16718,6 +16721,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   U8Array1600 sse_decode_u_8_array_1600(SseDeserializer deserializer);
 
   @protected
+  U8Array2 sse_decode_u_8_array_2(SseDeserializer deserializer);
+
+  @protected
   U8Array32 sse_decode_u_8_array_32(SseDeserializer deserializer);
 
   @protected
@@ -23764,6 +23770,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   Uint8List cst_encode_u_8_array_1600(U8Array1600 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return Uint8List.fromList(raw);
+  }
+
+  @protected
+  Uint8List cst_encode_u_8_array_2(U8Array2 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return Uint8List.fromList(raw);
   }
@@ -32718,6 +32730,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_u_8_array_1600(U8Array1600 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_u_8_array_2(U8Array2 self, SseSerializer serializer);
 
   @protected
   void sse_encode_u_8_array_32(U8Array32 self, SseSerializer serializer);
@@ -47035,6 +47050,11 @@ class RustLibWire implements BaseWire {
           NativePortType port_, int key, int max) =>
       wasmModule.wire_handle_stream_sink_at_3_twin_rust_async(port_, key, max);
 
+  void wire_stream_sink_fixed_sized_primitive_array_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire_stream_sink_fixed_sized_primitive_array_twin_rust_async(port_);
+
   void wire_func_stream_return_error_twin_rust_async_sse(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
@@ -47091,6 +47111,15 @@ class RustLibWire implements BaseWire {
       wasmModule.wire_handle_stream_sink_at_3_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
+  void wire_stream_sink_fixed_sized_primitive_array_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire_stream_sink_fixed_sized_primitive_array_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
   void wire_func_stream_return_error_twin_sse(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
@@ -47145,6 +47174,14 @@ class RustLibWire implements BaseWire {
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_handle_stream_sink_at_3_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_stream_sink_fixed_sized_primitive_array_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_stream_sink_fixed_sized_primitive_array_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_func_struct_with_one_field_twin_rust_async(
@@ -47885,6 +47922,11 @@ class RustLibWire implements BaseWire {
   void wire_handle_stream_sink_at_3_twin_normal(
           NativePortType port_, int key, int max) =>
       wasmModule.wire_handle_stream_sink_at_3_twin_normal(port_, key, max);
+
+  void wire_stream_sink_fixed_sized_primitive_array_twin_normal(
+          NativePortType port_) =>
+      wasmModule
+          .wire_stream_sink_fixed_sized_primitive_array_twin_normal(port_);
 
   void wire_func_stream_realistic_twin_normal(
           NativePortType port_, String arg) =>
@@ -59705,6 +59747,9 @@ class RustLibWasmModule implements WasmModule {
   external void wire_handle_stream_sink_at_3_twin_rust_async(
       NativePortType port_, int key, int max);
 
+  external void wire_stream_sink_fixed_sized_primitive_array_twin_rust_async(
+      NativePortType port_);
+
   external void wire_func_stream_return_error_twin_rust_async_sse(
       NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_,
@@ -59747,6 +59792,13 @@ class RustLibWasmModule implements WasmModule {
       int rust_vec_len_,
       int data_len_);
 
+  external void
+      wire_stream_sink_fixed_sized_primitive_array_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
   external void wire_func_stream_return_error_twin_sse(NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
@@ -59770,6 +59822,12 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_handle_stream_sink_at_3_twin_sse(NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_stream_sink_fixed_sized_primitive_array_twin_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
 
   external void wire_func_struct_with_one_field_twin_rust_async(
       NativePortType port_, List<dynamic> arg);
@@ -60258,6 +60316,9 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_handle_stream_sink_at_3_twin_normal(
       NativePortType port_, int key, int max);
+
+  external void wire_stream_sink_fixed_sized_primitive_array_twin_normal(
+      NativePortType port_);
 
   external void wire_func_stream_realistic_twin_normal(
       NativePortType port_, String arg);

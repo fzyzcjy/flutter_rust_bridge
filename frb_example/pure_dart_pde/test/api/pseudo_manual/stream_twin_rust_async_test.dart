@@ -70,4 +70,20 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('dart call handle_stream_sink_at_3', () {
     testHandleStream(handleStreamSinkAt3TwinRustAsync);
   });
+
+  test('stream_sink_fixed_sized_primitive_array_twin_normal', () async {
+    final stream =
+        await streamSinkFixedSizedPrimitiveArrayTwinRustAsync().toList();
+    expect(stream.length, 2);
+
+    final first = stream[0];
+    expect(first.length, 2);
+    expect(first[0], 1);
+    expect(first[1], 2);
+
+    final second = stream[1];
+    expect(second.length, 2);
+    expect(second[0], 3);
+    expect(second[1], 4);
+  });
 }

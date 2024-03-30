@@ -11554,6 +11554,8 @@ void frbgen_frb_example_pure_dart_wire_handle_stream_sink_at_3_twin_rust_async(i
                                                                                uint32_t key,
                                                                                uint32_t max);
 
+void frbgen_frb_example_pure_dart_wire_stream_sink_fixed_sized_primitive_array_twin_rust_async(int64_t port_);
+
 void frbgen_frb_example_pure_dart_wire_func_stream_return_error_twin_rust_async_sse(int64_t port_,
                                                                                     uint8_t *ptr_,
                                                                                     int32_t rust_vec_len_,
@@ -11589,6 +11591,11 @@ void frbgen_frb_example_pure_dart_wire_handle_stream_sink_at_3_twin_rust_async_s
                                                                                    int32_t rust_vec_len_,
                                                                                    int32_t data_len_);
 
+void frbgen_frb_example_pure_dart_wire_stream_sink_fixed_sized_primitive_array_twin_rust_async_sse(int64_t port_,
+                                                                                                   uint8_t *ptr_,
+                                                                                                   int32_t rust_vec_len_,
+                                                                                                   int32_t data_len_);
+
 void frbgen_frb_example_pure_dart_wire_func_stream_return_error_twin_sse(int64_t port_,
                                                                          uint8_t *ptr_,
                                                                          int32_t rust_vec_len_,
@@ -11623,6 +11630,11 @@ void frbgen_frb_example_pure_dart_wire_handle_stream_sink_at_3_twin_sse(int64_t 
                                                                         uint8_t *ptr_,
                                                                         int32_t rust_vec_len_,
                                                                         int32_t data_len_);
+
+void frbgen_frb_example_pure_dart_wire_stream_sink_fixed_sized_primitive_array_twin_sse(int64_t port_,
+                                                                                        uint8_t *ptr_,
+                                                                                        int32_t rust_vec_len_,
+                                                                                        int32_t data_len_);
 
 void frbgen_frb_example_pure_dart_wire_func_struct_with_one_field_twin_rust_async(int64_t port_,
                                                                                   struct wire_cst_struct_with_one_field_twin_rust_async *arg);
@@ -12081,6 +12093,8 @@ void frbgen_frb_example_pure_dart_wire_handle_stream_sink_at_2_twin_normal(int64
 void frbgen_frb_example_pure_dart_wire_handle_stream_sink_at_3_twin_normal(int64_t port_,
                                                                            uint32_t key,
                                                                            uint32_t max);
+
+void frbgen_frb_example_pure_dart_wire_stream_sink_fixed_sized_primitive_array_twin_normal(int64_t port_);
 
 void frbgen_frb_example_pure_dart_wire_func_stream_realistic_twin_normal(int64_t port_,
                                                                          struct wire_cst_list_prim_u_8_strict *arg);
@@ -16717,6 +16731,10 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_simple_use_async_spawn);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_simple_use_async_spawn_blocking);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_simple_use_async_spawn_local);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_stream_sink_fixed_sized_primitive_array_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_stream_sink_fixed_sized_primitive_array_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_stream_sink_fixed_sized_primitive_array_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_stream_sink_fixed_sized_primitive_array_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_stream_sink_throw_anyhow_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_stream_sink_throw_anyhow_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_stream_sink_throw_anyhow_twin_rust_async_sse);

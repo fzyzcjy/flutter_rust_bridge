@@ -91,3 +91,11 @@ fn handle_stream_inner(
         sink.add(LogTwinSse { key, value: i }).unwrap();
     }
 }
+
+#[flutter_rust_bridge::frb(serialize)]
+pub fn stream_sink_fixed_sized_primitive_array_twin_sse(
+    sink: StreamSink<[u8; 2], flutter_rust_bridge::SseCodec>,
+) {
+    sink.add([1, 2]).unwrap();
+    sink.add([3, 4]).unwrap();
+}

@@ -7473,6 +7473,13 @@ impl CstDecode<[u8; 1600]> for Box<[u8]> {
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
+impl CstDecode<[u8; 2]> for Box<[u8]> {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> [u8; 2] {
+        let vec: Vec<u8> = self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
 impl CstDecode<[u8; 32]> for Box<[u8]> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [u8; 32] {
@@ -11499,6 +11506,13 @@ impl CstDecode<u8> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 impl CstDecode<[u8; 1600]> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [u8; 1600] {
+        let vec: Vec<u8> = self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
+impl CstDecode<[u8; 2]> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> [u8; 2] {
         let vec: Vec<u8> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
@@ -32830,6 +32844,13 @@ pub fn wire_handle_stream_sink_at_3_twin_rust_async(
 }
 
 #[wasm_bindgen]
+pub fn wire_stream_sink_fixed_sized_primitive_array_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire_stream_sink_fixed_sized_primitive_array_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_func_stream_return_error_twin_rust_async_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -32905,6 +32926,21 @@ pub fn wire_handle_stream_sink_at_3_twin_rust_async_sse(
 }
 
 #[wasm_bindgen]
+pub fn wire_stream_sink_fixed_sized_primitive_array_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_stream_sink_fixed_sized_primitive_array_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
 pub fn wire_func_stream_return_error_twin_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -32972,6 +33008,21 @@ pub fn wire_handle_stream_sink_at_3_twin_sse(
     data_len_: i32,
 ) {
     wire_handle_stream_sink_at_3_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_stream_sink_fixed_sized_primitive_array_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_stream_sink_fixed_sized_primitive_array_twin_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
 }
 
 #[wasm_bindgen]
@@ -34130,6 +34181,13 @@ pub fn wire_handle_stream_sink_at_3_twin_normal(
     max: u32,
 ) {
     wire_handle_stream_sink_at_3_twin_normal_impl(port_, key, max)
+}
+
+#[wasm_bindgen]
+pub fn wire_stream_sink_fixed_sized_primitive_array_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire_stream_sink_fixed_sized_primitive_array_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
