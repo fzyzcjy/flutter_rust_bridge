@@ -8,15 +8,10 @@ use crate::codegen::generator::wire::rust::spec_generator::base::{
 use crate::codegen::generator::wire::rust::spec_generator::misc::wire_func::generate_wire_func;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::generator::wire::rust::IrPackComputedCache;
-use crate::codegen::ir::func::IrFuncMode;
 use crate::codegen::ir::pack::IrPack;
-use crate::codegen::ir::ty::delegate::{
-    IrTypeDelegate, IrTypeDelegatePrimitiveEnum, IrTypeDelegateSet,
-};
 use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
-use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 use serde::Serialize;
 use std::collections::HashSet;
