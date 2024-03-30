@@ -62,7 +62,7 @@ class RustGenerator extends BaseGenerator {
         .replaceAll('super::basic::', 'super::basic${mode.postfix}::');
 
     if (mode.components.any((e) => e == DuplicatorComponentMode.sse)) {
-      // quick hack, since we are merely generating tests
+      // Find matching StreamSink<...> and add `flutter_rust_bridge::SseCodec` to it
       var cursor = 0;
       while (cursor < ans.length) {
         cursor = ans.indexOf('StreamSink<', cursor);
@@ -90,21 +90,6 @@ class RustGenerator extends BaseGenerator {
         ans = ans.replaceRange(innerTypeStart, innerTypeEnd, newInnerType);
         cursor = innerTypeStart + newInnerType.length;
       }
-      // ans = ans
-      //     .replaceAllMapped(
-      //         RegExp(r'StreamSink<Vec<(.*?)>>'),
-      //         (m) =>
-      //             'StreamSink<Vec<${m.group(1)}>, flutter_rust_bridge::SseCodec>')
-      //     .replaceAllMapped(
-      //         RegExp(r'StreamSink<Option<(.*?)>>'),
-      //         (m) =>
-      //             'StreamSink<Option<${m.group(1)}>, flutter_rust_bridge::SseCodec>')
-      //     .replaceAllMapped(
-      //         RegExp(r'StreamSink<(.*?)>'),
-      //         (m) => m.group(1)!.startsWith('Vec') ||
-      //                 m.group(1)!.startsWith('Option')
-      //             ? m.group(0)!
-      //             : 'StreamSink<${m.group(1)}, flutter_rust_bridge::SseCodec>');
     }
 
     if (mode.components.any((e) => e == DuplicatorComponentMode.moi)) {
