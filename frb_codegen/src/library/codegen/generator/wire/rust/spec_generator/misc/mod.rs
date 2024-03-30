@@ -118,44 +118,8 @@ use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, WriteBytesExt,
     })
 }
 
-fn generate_wrapper_struct(ty: &IrType, context: WireRustGeneratorContext) -> Option<String> {
-    let rust_api_type = ty.rust_api_type();
-    let requires_hash = !context
-        .ir_pack
-        .distinct_types(Some(Box::new(move |func| {
-            matches!(func.mode, IrFuncMode::Stream { .. })
-                && match &func.output {
-                    IrType::Delegate(IrTypeDelegate::Set(IrTypeDelegateSet { inner, .. })) => {
-                        match inner.as_ref() {
-                            IrType::Delegate(IrTypeDelegate::PrimitiveEnum(
-                                IrTypeDelegatePrimitiveEnum { ir, .. },
-                            )) => ir.rust_api_type() == rust_api_type,
-                            _ => false,
-                        }
-                    }
-                    _ => false,
-                }
-        })))
-        .is_empty();
-    let additional_derives = if requires_hash {
-        ",PartialEq,Eq,Hash"
-    } else {
-        ""
-    };
-    // the generated wrapper structs need to be public for the StreamSinkTrait impl to work
-    WireRustGenerator::new(ty.clone(), context)
-        .wrapper_struct_name()
-        .map(|wrapper_struct_name| {
-            format!(
-                r###"
-                #[derive(Clone{})]
-                pub struct {}({});
-                "###,
-                additional_derives,
-                wrapper_struct_name,
-                ty.rust_api_type(),
-            )
-        })
+fn generate_wrapper_struct(_ty: &IrType, _context: WireRustGeneratorContext) -> Option<String> {
+    None
 }
 
 fn generate_static_checks(types: &[IrType], context: WireRustGeneratorContext) -> String {

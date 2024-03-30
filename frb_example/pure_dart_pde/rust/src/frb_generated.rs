@@ -4764,11 +4764,9 @@ fn wire_app_settings_stream_twin_normal_impl(
             move |context| {
                 transform_result_sse((move || {
                     Result::<_, ()>::Ok(crate::api::mirror::app_settings_stream_twin_normal(
-                        StreamSink::new(
-                            context
-                                .rust2dart_context()
-                                .stream_sink::<_, mirror_ApplicationSettings>(),
-                        ),
+                        StreamSink::new(context.rust2dart_context().stream_sink::<_, frb_wrapper<
+                            crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings,
+                        >>()),
                     ))
                 })())
             }
@@ -4801,11 +4799,11 @@ fn wire_app_settings_vec_stream_twin_normal_impl(
             move |context| {
                 transform_result_sse((move || {
                     Result::<_, ()>::Ok(crate::api::mirror::app_settings_vec_stream_twin_normal(
-                        StreamSink::new(
-                            context
-                                .rust2dart_context()
-                                .stream_sink::<_, Vec<mirror_ApplicationSettings>>(),
-                        ),
+                        StreamSink::new(context.rust2dart_context().stream_sink::<_, Vec<
+                            frb_wrapper<
+                                crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings,
+                            >,
+                        >>()),
                     ))
                 })())
             }
@@ -5037,9 +5035,9 @@ fn wire_mirror_array_enum_stream_twin_normal_impl(
                 transform_result_sse((move || {
                     Result::<_, ()>::Ok(crate::api::mirror::mirror_array_enum_stream_twin_normal(
                         StreamSink::new(
-                            context
-                                .rust2dart_context()
-                                .stream_sink::<_, [mirror_ApplicationMode; 2]>(),
+                            context.rust2dart_context().stream_sink::<_, [frb_wrapper<
+                                crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode,
+                            >; 2]>(),
                         ),
                     ))
                 })())
@@ -5073,11 +5071,9 @@ fn wire_mirror_enum_stream_twin_normal_impl(
             move |context| {
                 transform_result_sse((move || {
                     Result::<_, ()>::Ok(crate::api::mirror::mirror_enum_stream_twin_normal(
-                        StreamSink::new(
-                            context
-                                .rust2dart_context()
-                                .stream_sink::<_, mirror_ApplicationMode>(),
-                        ),
+                        StreamSink::new(context.rust2dart_context().stream_sink::<_, frb_wrapper<
+                            crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode,
+                        >>()),
                     ))
                 })())
             }
@@ -5090,14 +5086,41 @@ fn wire_mirror_map_enum_stream_twin_normal_impl(
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "mirror_map_enum_stream_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
-            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
-            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end(); move |context|  {
-                    transform_result_sse((move ||  {
-                         Result::<_,()>::Ok(crate::api::mirror::mirror_map_enum_stream_twin_normal(StreamSink::new(context.rust2dart_context().stream_sink::<_,std::collections::HashMap<u8, mirror_ApplicationMode>>())))
-                    })())
-                } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "mirror_map_enum_stream_twin_normal",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            deserializer.end();
+            move |context| {
+                transform_result_sse((move || {
+                    Result::<_, ()>::Ok(crate::api::mirror::mirror_map_enum_stream_twin_normal(
+                        StreamSink::new(
+                            context
+                                .rust2dart_context()
+                                .stream_sink::<_, std::collections::HashMap<
+                                u8,
+                                frb_wrapper<
+                                    crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode,
+                                >,
+                            >>(),
+                        ),
+                    ))
+                })())
+            }
+        },
+    )
 }
 fn wire_mirror_option_enum_stream_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
@@ -5125,11 +5148,11 @@ fn wire_mirror_option_enum_stream_twin_normal_impl(
             move |context| {
                 transform_result_sse((move || {
                     Result::<_, ()>::Ok(crate::api::mirror::mirror_option_enum_stream_twin_normal(
-                        StreamSink::new(
-                            context
-                                .rust2dart_context()
-                                .stream_sink::<_, Option<mirror_ApplicationMode>>(),
-                        ),
+                        StreamSink::new(context.rust2dart_context().stream_sink::<_, Option<
+                            frb_wrapper<
+                                crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode,
+                            >,
+                        >>()),
                     ))
                 })())
             }
@@ -5142,14 +5165,40 @@ fn wire_mirror_set_enum_stream_twin_normal_impl(
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "mirror_set_enum_stream_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
-            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
-            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end(); move |context|  {
-                    transform_result_sse((move ||  {
-                         Result::<_,()>::Ok(crate::api::mirror::mirror_set_enum_stream_twin_normal(StreamSink::new(context.rust2dart_context().stream_sink::<_,std::collections::HashSet<mirror_ApplicationMode>>())))
-                    })())
-                } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "mirror_set_enum_stream_twin_normal",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            deserializer.end();
+            move |context| {
+                transform_result_sse((move || {
+                    Result::<_, ()>::Ok(crate::api::mirror::mirror_set_enum_stream_twin_normal(
+                        StreamSink::new(
+                            context
+                                .rust2dart_context()
+                                .stream_sink::<_, std::collections::HashSet<
+                                frb_wrapper<
+                                    crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode,
+                                >,
+                            >>(),
+                        ),
+                    ))
+                })())
+            }
+        },
+    )
 }
 fn wire_mirror_struct_stream_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
@@ -5213,15 +5262,16 @@ fn wire_mirror_tuple_stream_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
-                    Result::<_, ()>::Ok(
-                        crate::api::mirror::mirror_tuple_stream_twin_normal(
-                            StreamSink::new(context.rust2dart_context().stream_sink::<_, (
-                                mirror_ApplicationSettings,
-                                mirror_RawStringEnumMirrored,
-                            )>(
-                            )),
-                        ),
-                    )
+                    Result::<_, ()>::Ok(crate::api::mirror::mirror_tuple_stream_twin_normal(
+                        StreamSink::new(context.rust2dart_context().stream_sink::<_, (
+                            frb_wrapper<
+                                crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings,
+                            >,
+                            frb_wrapper<
+                                crate::api::pseudo_manual::mirror_twin_sync::RawStringEnumMirrored,
+                            >,
+                        )>()),
+                    ))
                 })())
             }
         },
@@ -5253,11 +5303,11 @@ fn wire_mirror_vec_enum_stream_twin_normal_impl(
             move |context| {
                 transform_result_sse((move || {
                     Result::<_, ()>::Ok(crate::api::mirror::mirror_vec_enum_stream_twin_normal(
-                        StreamSink::new(
-                            context
-                                .rust2dart_context()
-                                .stream_sink::<_, Vec<mirror_ApplicationMode>>(),
-                        ),
+                        StreamSink::new(context.rust2dart_context().stream_sink::<_, Vec<
+                            frb_wrapper<
+                                crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode,
+                            >,
+                        >>()),
                     ))
                 })())
             }
@@ -15266,7 +15316,7 @@ fn wire_app_settings_stream_twin_rust_async_impl(
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::app_settings_stream_twin_rust_async(StreamSink::new(context.rust2dart_context().stream_sink::<_,mirror_ApplicationSettings>())).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::app_settings_stream_twin_rust_async(StreamSink::new(context.rust2dart_context().stream_sink::<_,frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>>())).await)
                     })().await)
                 } })
 }
@@ -15281,7 +15331,7 @@ fn wire_app_settings_vec_stream_twin_rust_async_impl(
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::app_settings_vec_stream_twin_rust_async(StreamSink::new(context.rust2dart_context().stream_sink::<_,Vec<mirror_ApplicationSettings>>())).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::app_settings_vec_stream_twin_rust_async(StreamSink::new(context.rust2dart_context().stream_sink::<_,Vec<frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>>>())).await)
                     })().await)
                 } })
 }
@@ -15386,7 +15436,7 @@ fn wire_mirror_array_enum_stream_twin_rust_async_impl(
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::mirror_array_enum_stream_twin_rust_async(StreamSink::new(context.rust2dart_context().stream_sink::<_,[mirror_ApplicationMode; 2]>())).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::mirror_array_enum_stream_twin_rust_async(StreamSink::new(context.rust2dart_context().stream_sink::<_,[frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>; 2]>())).await)
                     })().await)
                 } })
 }
@@ -15401,7 +15451,7 @@ fn wire_mirror_enum_stream_twin_rust_async_impl(
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::mirror_enum_stream_twin_rust_async(StreamSink::new(context.rust2dart_context().stream_sink::<_,mirror_ApplicationMode>())).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::mirror_enum_stream_twin_rust_async(StreamSink::new(context.rust2dart_context().stream_sink::<_,frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>>())).await)
                     })().await)
                 } })
 }
@@ -15416,7 +15466,7 @@ fn wire_mirror_map_enum_stream_twin_rust_async_impl(
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::mirror_map_enum_stream_twin_rust_async(StreamSink::new(context.rust2dart_context().stream_sink::<_,std::collections::HashMap<u8, mirror_ApplicationMode>>())).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::mirror_map_enum_stream_twin_rust_async(StreamSink::new(context.rust2dart_context().stream_sink::<_,std::collections::HashMap<u8, frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>>>())).await)
                     })().await)
                 } })
 }
@@ -15431,7 +15481,7 @@ fn wire_mirror_option_enum_stream_twin_rust_async_impl(
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::mirror_option_enum_stream_twin_rust_async(StreamSink::new(context.rust2dart_context().stream_sink::<_,Option<mirror_ApplicationMode>>())).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::mirror_option_enum_stream_twin_rust_async(StreamSink::new(context.rust2dart_context().stream_sink::<_,Option<frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>>>())).await)
                     })().await)
                 } })
 }
@@ -15446,7 +15496,7 @@ fn wire_mirror_set_enum_stream_twin_rust_async_impl(
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::mirror_set_enum_stream_twin_rust_async(StreamSink::new(context.rust2dart_context().stream_sink::<_,std::collections::HashSet<mirror_ApplicationMode>>())).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::mirror_set_enum_stream_twin_rust_async(StreamSink::new(context.rust2dart_context().stream_sink::<_,std::collections::HashSet<frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>>>())).await)
                     })().await)
                 } })
 }
@@ -15476,7 +15526,7 @@ fn wire_mirror_tuple_stream_twin_rust_async_impl(
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::mirror_tuple_stream_twin_rust_async(StreamSink::new(context.rust2dart_context().stream_sink::<_,(mirror_ApplicationSettings,mirror_RawStringEnumMirrored,)>())).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::mirror_tuple_stream_twin_rust_async(StreamSink::new(context.rust2dart_context().stream_sink::<_,(frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>,frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::RawStringEnumMirrored>,)>())).await)
                     })().await)
                 } })
 }
@@ -15491,7 +15541,7 @@ fn wire_mirror_vec_enum_stream_twin_rust_async_impl(
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::mirror_vec_enum_stream_twin_rust_async(StreamSink::new(context.rust2dart_context().stream_sink::<_,Vec<mirror_ApplicationMode>>())).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::mirror_vec_enum_stream_twin_rust_async(StreamSink::new(context.rust2dart_context().stream_sink::<_,Vec<frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>>>())).await)
                     })().await)
                 } })
 }
@@ -15653,38 +15703,14 @@ fn wire_app_settings_stream_twin_sync_impl(
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "app_settings_stream_twin_sync",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end();
-            move |context| {
-                transform_result_sse((move || {
-                    Result::<_, ()>::Ok(
-                        crate::api::pseudo_manual::mirror_twin_sync::app_settings_stream_twin_sync(
-                            StreamSink::new(
-                                context
-                                    .rust2dart_context()
-                                    .stream_sink::<_, mirror_ApplicationSettings>(),
-                            ),
-                        ),
-                    )
-                })())
-            }
-        },
-    )
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "app_settings_stream_twin_sync", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            deserializer.end(); move |context|  {
+                    transform_result_sse((move ||  {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_sync::app_settings_stream_twin_sync(StreamSink::new(context.rust2dart_context().stream_sink::<_,frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>>())))
+                    })())
+                } })
 }
 fn wire_app_settings_vec_stream_twin_sync_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
@@ -15697,7 +15723,7 @@ fn wire_app_settings_vec_stream_twin_sync_impl(
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context|  {
                     transform_result_sse((move ||  {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_sync::app_settings_vec_stream_twin_sync(StreamSink::new(context.rust2dart_context().stream_sink::<_,Vec<mirror_ApplicationSettings>>())))
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_sync::app_settings_vec_stream_twin_sync(StreamSink::new(context.rust2dart_context().stream_sink::<_,Vec<frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>>>())))
                     })())
                 } })
 }
@@ -15902,7 +15928,7 @@ fn wire_mirror_array_enum_stream_twin_sync_impl(
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context|  {
                     transform_result_sse((move ||  {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_sync::mirror_array_enum_stream_twin_sync(StreamSink::new(context.rust2dart_context().stream_sink::<_,[mirror_ApplicationMode; 2]>())))
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_sync::mirror_array_enum_stream_twin_sync(StreamSink::new(context.rust2dart_context().stream_sink::<_,[frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>; 2]>())))
                     })())
                 } })
 }
@@ -15934,9 +15960,9 @@ fn wire_mirror_enum_stream_twin_sync_impl(
                     Result::<_, ()>::Ok(
                         crate::api::pseudo_manual::mirror_twin_sync::mirror_enum_stream_twin_sync(
                             StreamSink::new(
-                                context
-                                    .rust2dart_context()
-                                    .stream_sink::<_, mirror_ApplicationMode>(),
+                                context.rust2dart_context().stream_sink::<_, frb_wrapper<
+                                    crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode,
+                                >>(),
                             ),
                         ),
                     )
@@ -15956,7 +15982,7 @@ fn wire_mirror_map_enum_stream_twin_sync_impl(
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context|  {
                     transform_result_sse((move ||  {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_sync::mirror_map_enum_stream_twin_sync(StreamSink::new(context.rust2dart_context().stream_sink::<_,std::collections::HashMap<u8, mirror_ApplicationMode>>())))
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_sync::mirror_map_enum_stream_twin_sync(StreamSink::new(context.rust2dart_context().stream_sink::<_,std::collections::HashMap<u8, frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>>>())))
                     })())
                 } })
 }
@@ -15971,7 +15997,7 @@ fn wire_mirror_option_enum_stream_twin_sync_impl(
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context|  {
                     transform_result_sse((move ||  {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_sync::mirror_option_enum_stream_twin_sync(StreamSink::new(context.rust2dart_context().stream_sink::<_,Option<mirror_ApplicationMode>>())))
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_sync::mirror_option_enum_stream_twin_sync(StreamSink::new(context.rust2dart_context().stream_sink::<_,Option<frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>>>())))
                     })())
                 } })
 }
@@ -15986,7 +16012,7 @@ fn wire_mirror_set_enum_stream_twin_sync_impl(
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context|  {
                     transform_result_sse((move ||  {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_sync::mirror_set_enum_stream_twin_sync(StreamSink::new(context.rust2dart_context().stream_sink::<_,std::collections::HashSet<mirror_ApplicationMode>>())))
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_sync::mirror_set_enum_stream_twin_sync(StreamSink::new(context.rust2dart_context().stream_sink::<_,std::collections::HashSet<frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>>>())))
                     })())
                 } })
 }
@@ -16011,38 +16037,14 @@ fn wire_mirror_tuple_stream_twin_sync_impl(
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "mirror_tuple_stream_twin_sync",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end();
-            move |context| {
-                transform_result_sse((move || {
-                    Result::<_, ()>::Ok(
-                        crate::api::pseudo_manual::mirror_twin_sync::mirror_tuple_stream_twin_sync(
-                            StreamSink::new(context.rust2dart_context().stream_sink::<_, (
-                                mirror_ApplicationSettings,
-                                mirror_RawStringEnumMirrored,
-                            )>(
-                            )),
-                        ),
-                    )
-                })())
-            }
-        },
-    )
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "mirror_tuple_stream_twin_sync", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            deserializer.end(); move |context|  {
+                    transform_result_sse((move ||  {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_sync::mirror_tuple_stream_twin_sync(StreamSink::new(context.rust2dart_context().stream_sink::<_,(frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>,frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::RawStringEnumMirrored>,)>())))
+                    })())
+                } })
 }
 fn wire_mirror_vec_enum_stream_twin_sync_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
@@ -16055,7 +16057,7 @@ fn wire_mirror_vec_enum_stream_twin_sync_impl(
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context|  {
                     transform_result_sse((move ||  {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_sync::mirror_vec_enum_stream_twin_sync(StreamSink::new(context.rust2dart_context().stream_sink::<_,Vec<mirror_ApplicationMode>>())))
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_sync::mirror_vec_enum_stream_twin_sync(StreamSink::new(context.rust2dart_context().stream_sink::<_,Vec<frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>>>())))
                     })())
                 } })
 }
@@ -17883,7 +17885,7 @@ fn wire_rust_auto_opaque_stream_sink_twin_rust_async_impl(
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_stream_sink_twin_rust_async(StreamSink::new(context.rust2dart_context().stream_sink::<_,Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync>())).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_stream_sink_twin_rust_async(StreamSink::new(context.rust2dart_context().stream_sink::<_,frb_wrapper<NonCloneSimpleTwinRustAsync>>())).await)
                     })().await)
                 } })
 }
@@ -18528,7 +18530,7 @@ fn wire_rust_auto_opaque_stream_sink_twin_sync_impl(
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context|  {
                     transform_result_sse((move ||  {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_stream_sink_twin_sync(StreamSink::new(context.rust2dart_context().stream_sink::<_,Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync>())))
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_stream_sink_twin_sync(StreamSink::new(context.rust2dart_context().stream_sink::<_,frb_wrapper<NonCloneSimpleTwinSync>>())))
                     })())
                 } })
 }
@@ -20856,14 +20858,38 @@ fn wire_rust_auto_opaque_stream_sink_twin_normal_impl(
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_stream_sink_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
-            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
-            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end(); move |context|  {
-                    transform_result_sse((move ||  {
-                         Result::<_,()>::Ok(crate::api::rust_auto_opaque::rust_auto_opaque_stream_sink_twin_normal(StreamSink::new(context.rust2dart_context().stream_sink::<_,Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal>())))
-                    })())
-                } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "rust_auto_opaque_stream_sink_twin_normal",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            deserializer.end();
+            move |context| {
+                transform_result_sse((move || {
+                    Result::<_, ()>::Ok(
+                        crate::api::rust_auto_opaque::rust_auto_opaque_stream_sink_twin_normal(
+                            StreamSink::new(
+                                context
+                                    .rust2dart_context()
+                                    .stream_sink::<_, frb_wrapper<NonCloneSimpleTwinNormal>>(),
+                            ),
+                        ),
+                    )
+                })())
+            }
+        },
+    )
 }
 fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
@@ -22401,57 +22427,6 @@ fn wire_handle_uuids_twin_normal_impl(
         },
     )
 }
-
-// Section: wrapper_structs
-
-#[derive(Clone)]
-pub struct mirror_ApplicationEnv(crate::api::pseudo_manual::mirror_twin_sync::ApplicationEnv);
-
-#[derive(Clone)]
-pub struct mirror_ApplicationEnvVar(crate::api::pseudo_manual::mirror_twin_sync::ApplicationEnvVar);
-
-#[derive(Clone)]
-pub struct mirror_ApplicationMessage(
-    crate::api::pseudo_manual::mirror_twin_sync::ApplicationMessage,
-);
-
-#[derive(Clone, PartialEq, Eq, Hash)]
-pub struct mirror_ApplicationMode(crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode);
-
-#[derive(Clone)]
-pub struct mirror_ApplicationSettings(
-    crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings,
-);
-
-#[derive(Clone)]
-pub struct mirror_HashMapValue(crate::api::pseudo_manual::mirror_twin_sync::HashMapValue);
-
-#[derive(Clone)]
-pub struct mirror_ListOfNestedRawStringMirrored(
-    crate::api::pseudo_manual::mirror_twin_sync::ListOfNestedRawStringMirrored,
-);
-
-#[derive(Clone)]
-pub struct mirror_NestedRawStringMirrored(
-    crate::api::pseudo_manual::mirror_twin_sync::NestedRawStringMirrored,
-);
-
-#[derive(Clone)]
-pub struct mirror_Numbers(crate::api::pseudo_manual::mirror_twin_sync::Numbers);
-
-#[derive(Clone)]
-pub struct mirror_RawStringEnumMirrored(
-    crate::api::pseudo_manual::mirror_twin_sync::RawStringEnumMirrored,
-);
-
-#[derive(Clone)]
-pub struct mirror_RawStringMirrored(crate::api::pseudo_manual::mirror_twin_sync::RawStringMirrored);
-
-#[derive(Clone)]
-pub struct mirror_Sequences(crate::api::pseudo_manual::mirror_twin_sync::Sequences);
-
-#[derive(Clone)]
-pub struct mirror_StructWithHashMap(crate::api::pseudo_manual::mirror_twin_sync::StructWithHashMap);
 
 // Section: static_checks
 
@@ -33169,471 +33144,628 @@ fn pde_ffi_dispatcher_sync_impl(
 
 // Section: rust2dart
 
-pub struct Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynFnStringStringSendSync(
-    Box<dyn Fn(String) -> String + Send + Sync>,
-);
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynFnStringStringSendSync {
-                fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-                    flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0).into_dart()
-                }
-            }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynFnStringStringSendSync {}
-impl flutter_rust_bridge::IntoIntoDart<Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynFnStringStringSendSync> for Box < dyn Fn (String) -> String + Send + Sync > {
-            fn into_into_dart(self) -> Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynFnStringStringSendSync {
-                Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynFnStringStringSendSync(self)
-            }
-        }
-pub struct Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinNormal(
-    Box<dyn HelloTraitTwinNormal>,
-);
+impl flutter_rust_bridge::IntoDart for frb_wrapper<Box<dyn Fn(String) -> String + Send + Sync>> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for frb_wrapper<Box<dyn Fn(String) -> String + Send + Sync>>
+{
+}
+
+impl flutter_rust_bridge::IntoIntoDart<frb_wrapper<Box<dyn Fn(String) -> String + Send + Sync>>>
+    for Box<dyn Fn(String) -> String + Send + Sync>
+{
+    fn into_into_dart(self) -> frb_wrapper<Box<dyn Fn(String) -> String + Send + Sync>> {
+        self.into()
+    }
+}
+
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinNormal {
-                fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-                    flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0).into_dart()
-                }
-            }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinNormal {}
-impl flutter_rust_bridge::IntoIntoDart<Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinNormal> for Box < dyn HelloTraitTwinNormal > {
-            fn into_into_dart(self) -> Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinNormal {
-                Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinNormal(self)
-            }
-        }
-pub struct Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsync(
-    Box<dyn HelloTraitTwinRustAsync>,
-);
+impl flutter_rust_bridge::IntoDart for frb_wrapper<Box<dyn HelloTraitTwinNormal>> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for frb_wrapper<Box<dyn HelloTraitTwinNormal>>
+{
+}
+
+impl flutter_rust_bridge::IntoIntoDart<frb_wrapper<Box<dyn HelloTraitTwinNormal>>>
+    for Box<dyn HelloTraitTwinNormal>
+{
+    fn into_into_dart(self) -> frb_wrapper<Box<dyn HelloTraitTwinNormal>> {
+        self.into()
+    }
+}
+
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsync {
-                fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-                    flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0).into_dart()
-                }
-            }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsync {}
-impl flutter_rust_bridge::IntoIntoDart<Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsync> for Box < dyn HelloTraitTwinRustAsync > {
-            fn into_into_dart(self) -> Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsync {
-                Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsync(self)
-            }
-        }
-pub struct Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync(
-    Box<dyn HelloTraitTwinSync>,
-);
+impl flutter_rust_bridge::IntoDart for frb_wrapper<Box<dyn HelloTraitTwinRustAsync>> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for frb_wrapper<Box<dyn HelloTraitTwinRustAsync>>
+{
+}
+
+impl flutter_rust_bridge::IntoIntoDart<frb_wrapper<Box<dyn HelloTraitTwinRustAsync>>>
+    for Box<dyn HelloTraitTwinRustAsync>
+{
+    fn into_into_dart(self) -> frb_wrapper<Box<dyn HelloTraitTwinRustAsync>> {
+        self.into()
+    }
+}
+
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync {
-                fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-                    flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0).into_dart()
-                }
-            }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync {}
-impl flutter_rust_bridge::IntoIntoDart<Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync> for Box < dyn HelloTraitTwinSync > {
-            fn into_into_dart(self) -> Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync {
-                Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync(self)
-            }
-        }
-pub struct Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinNormalSendSync(
-    Box<dyn MyTraitTwinNormal + Send + Sync>,
-);
+impl flutter_rust_bridge::IntoDart for frb_wrapper<Box<dyn HelloTraitTwinSync>> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for frb_wrapper<Box<dyn HelloTraitTwinSync>>
+{
+}
+
+impl flutter_rust_bridge::IntoIntoDart<frb_wrapper<Box<dyn HelloTraitTwinSync>>>
+    for Box<dyn HelloTraitTwinSync>
+{
+    fn into_into_dart(self) -> frb_wrapper<Box<dyn HelloTraitTwinSync>> {
+        self.into()
+    }
+}
+
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinNormalSendSync {
-                fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-                    flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0).into_dart()
-                }
-            }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinNormalSendSync {}
-impl flutter_rust_bridge::IntoIntoDart<Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinNormalSendSync> for Box < dyn MyTraitTwinNormal + Send + Sync > {
-            fn into_into_dart(self) -> Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinNormalSendSync {
-                Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinNormalSendSync(self)
-            }
-        }
-pub struct Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
-    Box<dyn MyTraitTwinRustAsync + Send + Sync>,
-);
+impl flutter_rust_bridge::IntoDart for frb_wrapper<Box<dyn MyTraitTwinNormal + Send + Sync>> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for frb_wrapper<Box<dyn MyTraitTwinNormal + Send + Sync>>
+{
+}
+
+impl flutter_rust_bridge::IntoIntoDart<frb_wrapper<Box<dyn MyTraitTwinNormal + Send + Sync>>>
+    for Box<dyn MyTraitTwinNormal + Send + Sync>
+{
+    fn into_into_dart(self) -> frb_wrapper<Box<dyn MyTraitTwinNormal + Send + Sync>> {
+        self.into()
+    }
+}
+
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSendSync {
-                fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-                    flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0).into_dart()
-                }
-            }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSendSync {}
-impl flutter_rust_bridge::IntoIntoDart<Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSendSync> for Box < dyn MyTraitTwinRustAsync + Send + Sync > {
-            fn into_into_dart(self) -> Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSendSync {
-                Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(self)
-            }
-        }
-pub struct Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSendSync(
-    Box<dyn MyTraitTwinSync + Send + Sync>,
-);
+impl flutter_rust_bridge::IntoDart for frb_wrapper<Box<dyn MyTraitTwinRustAsync + Send + Sync>> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for frb_wrapper<Box<dyn MyTraitTwinRustAsync + Send + Sync>>
+{
+}
+
+impl flutter_rust_bridge::IntoIntoDart<frb_wrapper<Box<dyn MyTraitTwinRustAsync + Send + Sync>>>
+    for Box<dyn MyTraitTwinRustAsync + Send + Sync>
+{
+    fn into_into_dart(self) -> frb_wrapper<Box<dyn MyTraitTwinRustAsync + Send + Sync>> {
+        self.into()
+    }
+}
+
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSendSync {
-                fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-                    flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0).into_dart()
-                }
-            }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSendSync {}
-impl flutter_rust_bridge::IntoIntoDart<Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSendSync> for Box < dyn MyTraitTwinSync + Send + Sync > {
-            fn into_into_dart(self) -> Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSendSync {
-                Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSendSync(self)
-            }
-        }
-pub struct Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinNormal(
-    ConstructorOpaqueStructTwinNormal,
-);
+impl flutter_rust_bridge::IntoDart for frb_wrapper<Box<dyn MyTraitTwinSync + Send + Sync>> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for frb_wrapper<Box<dyn MyTraitTwinSync + Send + Sync>>
+{
+}
+
+impl flutter_rust_bridge::IntoIntoDart<frb_wrapper<Box<dyn MyTraitTwinSync + Send + Sync>>>
+    for Box<dyn MyTraitTwinSync + Send + Sync>
+{
+    fn into_into_dart(self) -> frb_wrapper<Box<dyn MyTraitTwinSync + Send + Sync>> {
+        self.into()
+    }
+}
+
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinNormal {
-                fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-                    flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0).into_dart()
-                }
-            }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinNormal {}
-impl flutter_rust_bridge::IntoIntoDart<Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinNormal> for ConstructorOpaqueStructTwinNormal {
-            fn into_into_dart(self) -> Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinNormal {
-                Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueStructTwinNormal(self)
-            }
-        }
-pub struct Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinNormal(
-    ConstructorOpaqueSyncStructTwinNormal,
-);
+impl flutter_rust_bridge::IntoDart for frb_wrapper<ConstructorOpaqueStructTwinNormal> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for frb_wrapper<ConstructorOpaqueStructTwinNormal>
+{
+}
+
+impl flutter_rust_bridge::IntoIntoDart<frb_wrapper<ConstructorOpaqueStructTwinNormal>>
+    for ConstructorOpaqueStructTwinNormal
+{
+    fn into_into_dart(self) -> frb_wrapper<ConstructorOpaqueStructTwinNormal> {
+        self.into()
+    }
+}
+
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinNormal {
-                fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-                    flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0).into_dart()
-                }
-            }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinNormal {}
-impl flutter_rust_bridge::IntoIntoDart<Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinNormal> for ConstructorOpaqueSyncStructTwinNormal {
-            fn into_into_dart(self) -> Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinNormal {
-                Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockConstructorOpaqueSyncStructTwinNormal(self)
-            }
-        }
-pub struct Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
-    DroppableTwinNormal,
-);
+impl flutter_rust_bridge::IntoDart for frb_wrapper<ConstructorOpaqueSyncStructTwinNormal> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for frb_wrapper<ConstructorOpaqueSyncStructTwinNormal>
+{
+}
+
+impl flutter_rust_bridge::IntoIntoDart<frb_wrapper<ConstructorOpaqueSyncStructTwinNormal>>
+    for ConstructorOpaqueSyncStructTwinNormal
+{
+    fn into_into_dart(self) -> frb_wrapper<ConstructorOpaqueSyncStructTwinNormal> {
+        self.into()
+    }
+}
+
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal {
-                fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-                    flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0).into_dart()
-                }
-            }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal {}
-impl flutter_rust_bridge::IntoIntoDart<Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal> for DroppableTwinNormal {
-            fn into_into_dart(self) -> Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal {
-                Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(self)
-            }
-        }
-pub struct Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsync(
-    DroppableTwinRustAsync,
-);
+impl flutter_rust_bridge::IntoDart for frb_wrapper<DroppableTwinNormal> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for frb_wrapper<DroppableTwinNormal>
+{
+}
+
+impl flutter_rust_bridge::IntoIntoDart<frb_wrapper<DroppableTwinNormal>> for DroppableTwinNormal {
+    fn into_into_dart(self) -> frb_wrapper<DroppableTwinNormal> {
+        self.into()
+    }
+}
+
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsync {
-                fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-                    flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0).into_dart()
-                }
-            }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsync {}
-impl flutter_rust_bridge::IntoIntoDart<Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsync> for DroppableTwinRustAsync {
-            fn into_into_dart(self) -> Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsync {
-                Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsync(self)
-            }
-        }
-pub struct Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSync(
-    DroppableTwinSync,
-);
+impl flutter_rust_bridge::IntoDart for frb_wrapper<DroppableTwinRustAsync> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for frb_wrapper<DroppableTwinRustAsync>
+{
+}
+
+impl flutter_rust_bridge::IntoIntoDart<frb_wrapper<DroppableTwinRustAsync>>
+    for DroppableTwinRustAsync
+{
+    fn into_into_dart(self) -> frb_wrapper<DroppableTwinRustAsync> {
+        self.into()
+    }
+}
+
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSync {
-                fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-                    flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0).into_dart()
-                }
-            }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSync {}
-impl flutter_rust_bridge::IntoIntoDart<Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSync> for DroppableTwinSync {
-            fn into_into_dart(self) -> Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSync {
-                Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSync(self)
-            }
-        }
-pub struct Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockEnumWithGoodAndOpaqueWithoutOptionTwinNormal(
-    EnumWithGoodAndOpaqueWithoutOptionTwinNormal,
-);
+impl flutter_rust_bridge::IntoDart for frb_wrapper<DroppableTwinSync> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for frb_wrapper<DroppableTwinSync>
+{
+}
+
+impl flutter_rust_bridge::IntoIntoDart<frb_wrapper<DroppableTwinSync>> for DroppableTwinSync {
+    fn into_into_dart(self) -> frb_wrapper<DroppableTwinSync> {
+        self.into()
+    }
+}
+
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockEnumWithGoodAndOpaqueWithoutOptionTwinNormal {
-                fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-                    flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0).into_dart()
-                }
-            }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockEnumWithGoodAndOpaqueWithoutOptionTwinNormal {}
-impl flutter_rust_bridge::IntoIntoDart<Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockEnumWithGoodAndOpaqueWithoutOptionTwinNormal> for EnumWithGoodAndOpaqueWithoutOptionTwinNormal {
-            fn into_into_dart(self) -> Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockEnumWithGoodAndOpaqueWithoutOptionTwinNormal {
-                Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockEnumWithGoodAndOpaqueWithoutOptionTwinNormal(self)
-            }
-        }
-pub struct Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockEnumWithGoodAndOpaqueWithoutOptionTwinRustAsync(
-    EnumWithGoodAndOpaqueWithoutOptionTwinRustAsync,
-);
+impl flutter_rust_bridge::IntoDart for frb_wrapper<EnumWithGoodAndOpaqueWithoutOptionTwinNormal> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for frb_wrapper<EnumWithGoodAndOpaqueWithoutOptionTwinNormal>
+{
+}
+
+impl flutter_rust_bridge::IntoIntoDart<frb_wrapper<EnumWithGoodAndOpaqueWithoutOptionTwinNormal>>
+    for EnumWithGoodAndOpaqueWithoutOptionTwinNormal
+{
+    fn into_into_dart(self) -> frb_wrapper<EnumWithGoodAndOpaqueWithoutOptionTwinNormal> {
+        self.into()
+    }
+}
+
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockEnumWithGoodAndOpaqueWithoutOptionTwinRustAsync {
-                fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-                    flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0).into_dart()
-                }
-            }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockEnumWithGoodAndOpaqueWithoutOptionTwinRustAsync {}
-impl flutter_rust_bridge::IntoIntoDart<Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockEnumWithGoodAndOpaqueWithoutOptionTwinRustAsync> for EnumWithGoodAndOpaqueWithoutOptionTwinRustAsync {
-            fn into_into_dart(self) -> Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockEnumWithGoodAndOpaqueWithoutOptionTwinRustAsync {
-                Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockEnumWithGoodAndOpaqueWithoutOptionTwinRustAsync(self)
-            }
-        }
-pub struct Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockEnumWithGoodAndOpaqueWithoutOptionTwinSync(
-    EnumWithGoodAndOpaqueWithoutOptionTwinSync,
-);
+impl flutter_rust_bridge::IntoDart
+    for frb_wrapper<EnumWithGoodAndOpaqueWithoutOptionTwinRustAsync>
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for frb_wrapper<EnumWithGoodAndOpaqueWithoutOptionTwinRustAsync>
+{
+}
+
+impl flutter_rust_bridge::IntoIntoDart<frb_wrapper<EnumWithGoodAndOpaqueWithoutOptionTwinRustAsync>>
+    for EnumWithGoodAndOpaqueWithoutOptionTwinRustAsync
+{
+    fn into_into_dart(self) -> frb_wrapper<EnumWithGoodAndOpaqueWithoutOptionTwinRustAsync> {
+        self.into()
+    }
+}
+
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockEnumWithGoodAndOpaqueWithoutOptionTwinSync {
-                fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-                    flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0).into_dart()
-                }
-            }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockEnumWithGoodAndOpaqueWithoutOptionTwinSync {}
-impl flutter_rust_bridge::IntoIntoDart<Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockEnumWithGoodAndOpaqueWithoutOptionTwinSync> for EnumWithGoodAndOpaqueWithoutOptionTwinSync {
-            fn into_into_dart(self) -> Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockEnumWithGoodAndOpaqueWithoutOptionTwinSync {
-                Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockEnumWithGoodAndOpaqueWithoutOptionTwinSync(self)
-            }
-        }
-pub struct Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinNormal(
-    NonCloneSimpleEnumTwinNormal,
-);
+impl flutter_rust_bridge::IntoDart for frb_wrapper<EnumWithGoodAndOpaqueWithoutOptionTwinSync> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for frb_wrapper<EnumWithGoodAndOpaqueWithoutOptionTwinSync>
+{
+}
+
+impl flutter_rust_bridge::IntoIntoDart<frb_wrapper<EnumWithGoodAndOpaqueWithoutOptionTwinSync>>
+    for EnumWithGoodAndOpaqueWithoutOptionTwinSync
+{
+    fn into_into_dart(self) -> frb_wrapper<EnumWithGoodAndOpaqueWithoutOptionTwinSync> {
+        self.into()
+    }
+}
+
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinNormal {
-                fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-                    flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0).into_dart()
-                }
-            }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinNormal {}
-impl flutter_rust_bridge::IntoIntoDart<Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinNormal> for NonCloneSimpleEnumTwinNormal {
-            fn into_into_dart(self) -> Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinNormal {
-                Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinNormal(self)
-            }
-        }
-pub struct Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsync(
-    NonCloneSimpleEnumTwinRustAsync,
-);
+impl flutter_rust_bridge::IntoDart for frb_wrapper<NonCloneSimpleEnumTwinNormal> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for frb_wrapper<NonCloneSimpleEnumTwinNormal>
+{
+}
+
+impl flutter_rust_bridge::IntoIntoDart<frb_wrapper<NonCloneSimpleEnumTwinNormal>>
+    for NonCloneSimpleEnumTwinNormal
+{
+    fn into_into_dart(self) -> frb_wrapper<NonCloneSimpleEnumTwinNormal> {
+        self.into()
+    }
+}
+
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsync {
-                fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-                    flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0).into_dart()
-                }
-            }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsync {}
-impl flutter_rust_bridge::IntoIntoDart<Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsync> for NonCloneSimpleEnumTwinRustAsync {
-            fn into_into_dart(self) -> Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsync {
-                Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinRustAsync(self)
-            }
-        }
-pub struct Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSync(
-    NonCloneSimpleEnumTwinSync,
-);
+impl flutter_rust_bridge::IntoDart for frb_wrapper<NonCloneSimpleEnumTwinRustAsync> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for frb_wrapper<NonCloneSimpleEnumTwinRustAsync>
+{
+}
+
+impl flutter_rust_bridge::IntoIntoDart<frb_wrapper<NonCloneSimpleEnumTwinRustAsync>>
+    for NonCloneSimpleEnumTwinRustAsync
+{
+    fn into_into_dart(self) -> frb_wrapper<NonCloneSimpleEnumTwinRustAsync> {
+        self.into()
+    }
+}
+
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSync {
-                fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-                    flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0).into_dart()
-                }
-            }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSync {}
-impl flutter_rust_bridge::IntoIntoDart<Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSync> for NonCloneSimpleEnumTwinSync {
-            fn into_into_dart(self) -> Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSync {
-                Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinSync(self)
-            }
-        }
-pub struct Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
-    NonCloneSimpleTwinNormal,
-);
+impl flutter_rust_bridge::IntoDart for frb_wrapper<NonCloneSimpleEnumTwinSync> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for frb_wrapper<NonCloneSimpleEnumTwinSync>
+{
+}
+
+impl flutter_rust_bridge::IntoIntoDart<frb_wrapper<NonCloneSimpleEnumTwinSync>>
+    for NonCloneSimpleEnumTwinSync
+{
+    fn into_into_dart(self) -> frb_wrapper<NonCloneSimpleEnumTwinSync> {
+        self.into()
+    }
+}
+
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal {
-                fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-                    flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0).into_dart()
-                }
-            }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal {}
-impl flutter_rust_bridge::IntoIntoDart<Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal> for NonCloneSimpleTwinNormal {
-            fn into_into_dart(self) -> Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal {
-                Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(self)
-            }
-        }
-pub struct Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync(
-    NonCloneSimpleTwinRustAsync,
-);
+impl flutter_rust_bridge::IntoDart for frb_wrapper<NonCloneSimpleTwinNormal> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for frb_wrapper<NonCloneSimpleTwinNormal>
+{
+}
+
+impl flutter_rust_bridge::IntoIntoDart<frb_wrapper<NonCloneSimpleTwinNormal>>
+    for NonCloneSimpleTwinNormal
+{
+    fn into_into_dart(self) -> frb_wrapper<NonCloneSimpleTwinNormal> {
+        self.into()
+    }
+}
+
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync {
-                fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-                    flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0).into_dart()
-                }
-            }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync {}
-impl flutter_rust_bridge::IntoIntoDart<Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync> for NonCloneSimpleTwinRustAsync {
-            fn into_into_dart(self) -> Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync {
-                Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync(self)
-            }
-        }
-pub struct Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
-    NonCloneSimpleTwinSync,
-);
+impl flutter_rust_bridge::IntoDart for frb_wrapper<NonCloneSimpleTwinRustAsync> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for frb_wrapper<NonCloneSimpleTwinRustAsync>
+{
+}
+
+impl flutter_rust_bridge::IntoIntoDart<frb_wrapper<NonCloneSimpleTwinRustAsync>>
+    for NonCloneSimpleTwinRustAsync
+{
+    fn into_into_dart(self) -> frb_wrapper<NonCloneSimpleTwinRustAsync> {
+        self.into()
+    }
+}
+
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync {
-                fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-                    flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0).into_dart()
-                }
-            }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync {}
-impl flutter_rust_bridge::IntoIntoDart<Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync> for NonCloneSimpleTwinSync {
-            fn into_into_dart(self) -> Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync {
-                Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(self)
-            }
-        }
-pub struct Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueOneTwinNormal(
-    OpaqueOneTwinNormal,
-);
+impl flutter_rust_bridge::IntoDart for frb_wrapper<NonCloneSimpleTwinSync> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for frb_wrapper<NonCloneSimpleTwinSync>
+{
+}
+
+impl flutter_rust_bridge::IntoIntoDart<frb_wrapper<NonCloneSimpleTwinSync>>
+    for NonCloneSimpleTwinSync
+{
+    fn into_into_dart(self) -> frb_wrapper<NonCloneSimpleTwinSync> {
+        self.into()
+    }
+}
+
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueOneTwinNormal {
-                fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-                    flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0).into_dart()
-                }
-            }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueOneTwinNormal {}
-impl flutter_rust_bridge::IntoIntoDart<Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueOneTwinNormal> for OpaqueOneTwinNormal {
-            fn into_into_dart(self) -> Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueOneTwinNormal {
-                Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueOneTwinNormal(self)
-            }
-        }
-pub struct Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueOneTwinRustAsync(
-    OpaqueOneTwinRustAsync,
-);
+impl flutter_rust_bridge::IntoDart for frb_wrapper<OpaqueOneTwinNormal> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for frb_wrapper<OpaqueOneTwinNormal>
+{
+}
+
+impl flutter_rust_bridge::IntoIntoDart<frb_wrapper<OpaqueOneTwinNormal>> for OpaqueOneTwinNormal {
+    fn into_into_dart(self) -> frb_wrapper<OpaqueOneTwinNormal> {
+        self.into()
+    }
+}
+
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueOneTwinRustAsync {
-                fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-                    flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0).into_dart()
-                }
-            }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueOneTwinRustAsync {}
-impl flutter_rust_bridge::IntoIntoDart<Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueOneTwinRustAsync> for OpaqueOneTwinRustAsync {
-            fn into_into_dart(self) -> Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueOneTwinRustAsync {
-                Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueOneTwinRustAsync(self)
-            }
-        }
-pub struct Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueOneTwinSync(
-    OpaqueOneTwinSync,
-);
+impl flutter_rust_bridge::IntoDart for frb_wrapper<OpaqueOneTwinRustAsync> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for frb_wrapper<OpaqueOneTwinRustAsync>
+{
+}
+
+impl flutter_rust_bridge::IntoIntoDart<frb_wrapper<OpaqueOneTwinRustAsync>>
+    for OpaqueOneTwinRustAsync
+{
+    fn into_into_dart(self) -> frb_wrapper<OpaqueOneTwinRustAsync> {
+        self.into()
+    }
+}
+
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueOneTwinSync {
-                fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-                    flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0).into_dart()
-                }
-            }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueOneTwinSync {}
-impl flutter_rust_bridge::IntoIntoDart<Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueOneTwinSync> for OpaqueOneTwinSync {
-            fn into_into_dart(self) -> Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueOneTwinSync {
-                Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueOneTwinSync(self)
-            }
-        }
-pub struct Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueTwoTwinNormal(
-    OpaqueTwoTwinNormal,
-);
+impl flutter_rust_bridge::IntoDart for frb_wrapper<OpaqueOneTwinSync> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for frb_wrapper<OpaqueOneTwinSync>
+{
+}
+
+impl flutter_rust_bridge::IntoIntoDart<frb_wrapper<OpaqueOneTwinSync>> for OpaqueOneTwinSync {
+    fn into_into_dart(self) -> frb_wrapper<OpaqueOneTwinSync> {
+        self.into()
+    }
+}
+
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueTwoTwinNormal {
-                fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-                    flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0).into_dart()
-                }
-            }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueTwoTwinNormal {}
-impl flutter_rust_bridge::IntoIntoDart<Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueTwoTwinNormal> for OpaqueTwoTwinNormal {
-            fn into_into_dart(self) -> Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueTwoTwinNormal {
-                Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueTwoTwinNormal(self)
-            }
-        }
-pub struct Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueTwoTwinRustAsync(
-    OpaqueTwoTwinRustAsync,
-);
+impl flutter_rust_bridge::IntoDart for frb_wrapper<OpaqueTwoTwinNormal> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for frb_wrapper<OpaqueTwoTwinNormal>
+{
+}
+
+impl flutter_rust_bridge::IntoIntoDart<frb_wrapper<OpaqueTwoTwinNormal>> for OpaqueTwoTwinNormal {
+    fn into_into_dart(self) -> frb_wrapper<OpaqueTwoTwinNormal> {
+        self.into()
+    }
+}
+
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueTwoTwinRustAsync {
-                fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-                    flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0).into_dart()
-                }
-            }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueTwoTwinRustAsync {}
-impl flutter_rust_bridge::IntoIntoDart<Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueTwoTwinRustAsync> for OpaqueTwoTwinRustAsync {
-            fn into_into_dart(self) -> Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueTwoTwinRustAsync {
-                Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueTwoTwinRustAsync(self)
-            }
-        }
-pub struct Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueTwoTwinSync(
-    OpaqueTwoTwinSync,
-);
+impl flutter_rust_bridge::IntoDart for frb_wrapper<OpaqueTwoTwinRustAsync> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for frb_wrapper<OpaqueTwoTwinRustAsync>
+{
+}
+
+impl flutter_rust_bridge::IntoIntoDart<frb_wrapper<OpaqueTwoTwinRustAsync>>
+    for OpaqueTwoTwinRustAsync
+{
+    fn into_into_dart(self) -> frb_wrapper<OpaqueTwoTwinRustAsync> {
+        self.into()
+    }
+}
+
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueTwoTwinSync {
-                fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-                    flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0).into_dart()
-                }
-            }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueTwoTwinSync {}
-impl flutter_rust_bridge::IntoIntoDart<Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueTwoTwinSync> for OpaqueTwoTwinSync {
-            fn into_into_dart(self) -> Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueTwoTwinSync {
-                Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueTwoTwinSync(self)
-            }
-        }
-pub struct Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
-    StructInMiscNoTwinExampleA,
-);
+impl flutter_rust_bridge::IntoDart for frb_wrapper<OpaqueTwoTwinSync> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for frb_wrapper<OpaqueTwoTwinSync>
+{
+}
+
+impl flutter_rust_bridge::IntoIntoDart<frb_wrapper<OpaqueTwoTwinSync>> for OpaqueTwoTwinSync {
+    fn into_into_dart(self) -> frb_wrapper<OpaqueTwoTwinSync> {
+        self.into()
+    }
+}
+
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA {
-                fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-                    flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0).into_dart()
-                }
-            }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA {}
-impl flutter_rust_bridge::IntoIntoDart<Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA> for StructInMiscNoTwinExampleA {
-            fn into_into_dart(self) -> Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA {
-                Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(self)
-            }
-        }
-pub struct Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldWithoutOptionTwinNormal(
-    StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal,
-);
+impl flutter_rust_bridge::IntoDart for frb_wrapper<StructInMiscNoTwinExampleA> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for frb_wrapper<StructInMiscNoTwinExampleA>
+{
+}
+
+impl flutter_rust_bridge::IntoIntoDart<frb_wrapper<StructInMiscNoTwinExampleA>>
+    for StructInMiscNoTwinExampleA
+{
+    fn into_into_dart(self) -> frb_wrapper<StructInMiscNoTwinExampleA> {
+        self.into()
+    }
+}
+
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldWithoutOptionTwinNormal {
-                fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-                    flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0).into_dart()
-                }
-            }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldWithoutOptionTwinNormal {}
-impl flutter_rust_bridge::IntoIntoDart<Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldWithoutOptionTwinNormal> for StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal {
-            fn into_into_dart(self) -> Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldWithoutOptionTwinNormal {
-                Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldWithoutOptionTwinNormal(self)
-            }
-        }
-pub struct Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync(
-    StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync,
-);
+impl flutter_rust_bridge::IntoDart
+    for frb_wrapper<StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal>
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for frb_wrapper<StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal>
+{
+}
+
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        frb_wrapper<StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal>,
+    > for StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal
+{
+    fn into_into_dart(self) -> frb_wrapper<StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal> {
+        self.into()
+    }
+}
+
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync {
-                fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-                    flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0).into_dart()
-                }
-            }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync {}
-impl flutter_rust_bridge::IntoIntoDart<Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync> for StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync {
-            fn into_into_dart(self) -> Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync {
-                Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync(self)
-            }
-        }
-pub struct Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldWithoutOptionTwinSync(
-    StructWithGoodAndOpaqueFieldWithoutOptionTwinSync,
-);
+impl flutter_rust_bridge::IntoDart
+    for frb_wrapper<StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync>
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for frb_wrapper<StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync>
+{
+}
+
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        frb_wrapper<StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync>,
+    > for StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync
+{
+    fn into_into_dart(self) -> frb_wrapper<StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync> {
+        self.into()
+    }
+}
+
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldWithoutOptionTwinSync {
-                fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-                    flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0).into_dart()
-                }
-            }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldWithoutOptionTwinSync {}
-impl flutter_rust_bridge::IntoIntoDart<Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldWithoutOptionTwinSync> for StructWithGoodAndOpaqueFieldWithoutOptionTwinSync {
-            fn into_into_dart(self) -> Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldWithoutOptionTwinSync {
-                Local_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldWithoutOptionTwinSync(self)
-            }
-        }
+impl flutter_rust_bridge::IntoDart
+    for frb_wrapper<StructWithGoodAndOpaqueFieldWithoutOptionTwinSync>
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for frb_wrapper<StructWithGoodAndOpaqueFieldWithoutOptionTwinSync>
+{
+}
+
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        frb_wrapper<StructWithGoodAndOpaqueFieldWithoutOptionTwinSync>,
+    > for StructWithGoodAndOpaqueFieldWithoutOptionTwinSync
+{
+    fn into_into_dart(self) -> frb_wrapper<StructWithGoodAndOpaqueFieldWithoutOptionTwinSync> {
+        self.into()
+    }
+}
+
 // Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for crate::api::misc_example::ATwinNormal {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
@@ -33874,21 +34006,32 @@ impl flutter_rust_bridge::IntoIntoDart<crate::api::pseudo_manual::mirror_twin_sy
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for mirror_ApplicationEnv {
+impl flutter_rust_bridge::IntoDart
+    for frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationEnv>
+{
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [self.0.vars.into_into_dart().into_dart()].into_dart()
     }
 }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for mirror_ApplicationEnv {}
-impl flutter_rust_bridge::IntoIntoDart<mirror_ApplicationEnv>
-    for crate::api::pseudo_manual::mirror_twin_sync::ApplicationEnv
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationEnv>
 {
-    fn into_into_dart(self) -> mirror_ApplicationEnv {
-        mirror_ApplicationEnv(self)
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationEnv>,
+    > for crate::api::pseudo_manual::mirror_twin_sync::ApplicationEnv
+{
+    fn into_into_dart(
+        self,
+    ) -> frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationEnv> {
+        self.into()
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for mirror_ApplicationEnvVar {
+impl flutter_rust_bridge::IntoDart
+    for frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationEnvVar>
+{
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [
             self.0 .0.into_into_dart().into_dart(),
@@ -33897,16 +34040,25 @@ impl flutter_rust_bridge::IntoDart for mirror_ApplicationEnvVar {
         .into_dart()
     }
 }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for mirror_ApplicationEnvVar {}
-impl flutter_rust_bridge::IntoIntoDart<mirror_ApplicationEnvVar>
-    for crate::api::pseudo_manual::mirror_twin_sync::ApplicationEnvVar
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationEnvVar>
 {
-    fn into_into_dart(self) -> mirror_ApplicationEnvVar {
-        mirror_ApplicationEnvVar(self)
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationEnvVar>,
+    > for crate::api::pseudo_manual::mirror_twin_sync::ApplicationEnvVar
+{
+    fn into_into_dart(
+        self,
+    ) -> frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationEnvVar> {
+        self.into()
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for mirror_ApplicationMessage {
+impl flutter_rust_bridge::IntoDart
+    for frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMessage>
+{
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self.0 {
             crate::api::pseudo_manual::mirror_twin_sync::ApplicationMessage::DisplayMessage(
@@ -33927,16 +34079,25 @@ impl flutter_rust_bridge::IntoDart for mirror_ApplicationMessage {
         }
     }
 }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for mirror_ApplicationMessage {}
-impl flutter_rust_bridge::IntoIntoDart<mirror_ApplicationMessage>
-    for crate::api::pseudo_manual::mirror_twin_sync::ApplicationMessage
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMessage>
 {
-    fn into_into_dart(self) -> mirror_ApplicationMessage {
-        mirror_ApplicationMessage(self)
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMessage>,
+    > for crate::api::pseudo_manual::mirror_twin_sync::ApplicationMessage
+{
+    fn into_into_dart(
+        self,
+    ) -> frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMessage> {
+        self.into()
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for mirror_ApplicationMode {
+impl flutter_rust_bridge::IntoDart
+    for frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>
+{
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self.0 {
             crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode::Standalone => {
@@ -33946,16 +34107,25 @@ impl flutter_rust_bridge::IntoDart for mirror_ApplicationMode {
         }
     }
 }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for mirror_ApplicationMode {}
-impl flutter_rust_bridge::IntoIntoDart<mirror_ApplicationMode>
-    for crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>
 {
-    fn into_into_dart(self) -> mirror_ApplicationMode {
-        mirror_ApplicationMode(self)
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>,
+    > for crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode
+{
+    fn into_into_dart(
+        self,
+    ) -> frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode> {
+        self.into()
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for mirror_ApplicationSettings {
+impl flutter_rust_bridge::IntoDart
+    for frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>
+{
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [
             self.0.name.into_into_dart().into_dart(),
@@ -33967,12 +34137,19 @@ impl flutter_rust_bridge::IntoDart for mirror_ApplicationSettings {
         .into_dart()
     }
 }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for mirror_ApplicationSettings {}
-impl flutter_rust_bridge::IntoIntoDart<mirror_ApplicationSettings>
-    for crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>
 {
-    fn into_into_dart(self) -> mirror_ApplicationSettings {
-        mirror_ApplicationSettings(self)
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>,
+    > for crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings
+{
+    fn into_into_dart(
+        self,
+    ) -> frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings> {
+        self.into()
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -37011,17 +37188,26 @@ impl flutter_rust_bridge::IntoIntoDart<crate::api::pseudo_manual::array_twin_syn
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for mirror_HashMapValue {
+impl flutter_rust_bridge::IntoDart
+    for frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::HashMapValue>
+{
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [self.0.inner.into_into_dart().into_dart()].into_dart()
     }
 }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for mirror_HashMapValue {}
-impl flutter_rust_bridge::IntoIntoDart<mirror_HashMapValue>
-    for crate::api::pseudo_manual::mirror_twin_sync::HashMapValue
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::HashMapValue>
 {
-    fn into_into_dart(self) -> mirror_HashMapValue {
-        mirror_HashMapValue(self)
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::HashMapValue>,
+    > for crate::api::pseudo_manual::mirror_twin_sync::HashMapValue
+{
+    fn into_into_dart(
+        self,
+    ) -> frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::HashMapValue> {
+        self.into()
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -37173,20 +37359,27 @@ impl
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for mirror_ListOfNestedRawStringMirrored {
+impl flutter_rust_bridge::IntoDart
+    for frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::ListOfNestedRawStringMirrored>
+{
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [self.0.raw.into_into_dart().into_dart()].into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for mirror_ListOfNestedRawStringMirrored
+    for frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::ListOfNestedRawStringMirrored>
 {
 }
-impl flutter_rust_bridge::IntoIntoDart<mirror_ListOfNestedRawStringMirrored>
-    for crate::api::pseudo_manual::mirror_twin_sync::ListOfNestedRawStringMirrored
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::ListOfNestedRawStringMirrored>,
+    > for crate::api::pseudo_manual::mirror_twin_sync::ListOfNestedRawStringMirrored
 {
-    fn into_into_dart(self) -> mirror_ListOfNestedRawStringMirrored {
-        mirror_ListOfNestedRawStringMirrored(self)
+    fn into_into_dart(
+        self,
+    ) -> frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::ListOfNestedRawStringMirrored>
+    {
+        self.into()
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -37929,20 +38122,26 @@ impl
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for mirror_NestedRawStringMirrored {
+impl flutter_rust_bridge::IntoDart
+    for frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::NestedRawStringMirrored>
+{
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [self.0.raw.into_into_dart().into_dart()].into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for mirror_NestedRawStringMirrored
+    for frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::NestedRawStringMirrored>
 {
 }
-impl flutter_rust_bridge::IntoIntoDart<mirror_NestedRawStringMirrored>
-    for crate::api::pseudo_manual::mirror_twin_sync::NestedRawStringMirrored
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::NestedRawStringMirrored>,
+    > for crate::api::pseudo_manual::mirror_twin_sync::NestedRawStringMirrored
 {
-    fn into_into_dart(self) -> mirror_NestedRawStringMirrored {
-        mirror_NestedRawStringMirrored(self)
+    fn into_into_dart(
+        self,
+    ) -> frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::NestedRawStringMirrored> {
+        self.into()
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -38103,17 +38302,24 @@ impl
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for mirror_Numbers {
+impl flutter_rust_bridge::IntoDart
+    for frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::Numbers>
+{
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [self.0 .0.into_into_dart().into_dart()].into_dart()
     }
 }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for mirror_Numbers {}
-impl flutter_rust_bridge::IntoIntoDart<mirror_Numbers>
-    for crate::api::pseudo_manual::mirror_twin_sync::Numbers
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::Numbers>
 {
-    fn into_into_dart(self) -> mirror_Numbers {
-        mirror_Numbers(self)
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::Numbers>,
+    > for crate::api::pseudo_manual::mirror_twin_sync::Numbers
+{
+    fn into_into_dart(self) -> frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::Numbers> {
+        self.into()
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -38361,7 +38567,9 @@ impl flutter_rust_bridge::IntoIntoDart<crate::api::pseudo_manual::array_twin_syn
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for mirror_RawStringEnumMirrored {
+impl flutter_rust_bridge::IntoDart
+    for frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::RawStringEnumMirrored>
+{
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self.0 {
             crate::api::pseudo_manual::mirror_twin_sync::RawStringEnumMirrored::Raw(field0) => {
@@ -38376,12 +38584,19 @@ impl flutter_rust_bridge::IntoDart for mirror_RawStringEnumMirrored {
         }
     }
 }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for mirror_RawStringEnumMirrored {}
-impl flutter_rust_bridge::IntoIntoDart<mirror_RawStringEnumMirrored>
-    for crate::api::pseudo_manual::mirror_twin_sync::RawStringEnumMirrored
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::RawStringEnumMirrored>
 {
-    fn into_into_dart(self) -> mirror_RawStringEnumMirrored {
-        mirror_RawStringEnumMirrored(self)
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::RawStringEnumMirrored>,
+    > for crate::api::pseudo_manual::mirror_twin_sync::RawStringEnumMirrored
+{
+    fn into_into_dart(
+        self,
+    ) -> frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::RawStringEnumMirrored> {
+        self.into()
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -38449,31 +38664,47 @@ impl
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for mirror_RawStringMirrored {
+impl flutter_rust_bridge::IntoDart
+    for frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::RawStringMirrored>
+{
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [self.0.value.into_into_dart().into_dart()].into_dart()
     }
 }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for mirror_RawStringMirrored {}
-impl flutter_rust_bridge::IntoIntoDart<mirror_RawStringMirrored>
-    for crate::api::pseudo_manual::mirror_twin_sync::RawStringMirrored
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::RawStringMirrored>
 {
-    fn into_into_dart(self) -> mirror_RawStringMirrored {
-        mirror_RawStringMirrored(self)
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::RawStringMirrored>,
+    > for crate::api::pseudo_manual::mirror_twin_sync::RawStringMirrored
+{
+    fn into_into_dart(
+        self,
+    ) -> frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::RawStringMirrored> {
+        self.into()
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for mirror_Sequences {
+impl flutter_rust_bridge::IntoDart
+    for frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::Sequences>
+{
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [self.0 .0.into_into_dart().into_dart()].into_dart()
     }
 }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for mirror_Sequences {}
-impl flutter_rust_bridge::IntoIntoDart<mirror_Sequences>
-    for crate::api::pseudo_manual::mirror_twin_sync::Sequences
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::Sequences>
 {
-    fn into_into_dart(self) -> mirror_Sequences {
-        mirror_Sequences(self)
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::Sequences>,
+    > for crate::api::pseudo_manual::mirror_twin_sync::Sequences
+{
+    fn into_into_dart(self) -> frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::Sequences> {
+        self.into()
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -38982,17 +39213,26 @@ impl
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for mirror_StructWithHashMap {
+impl flutter_rust_bridge::IntoDart
+    for frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::StructWithHashMap>
+{
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [self.0.map.into_into_dart().into_dart()].into_dart()
     }
 }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for mirror_StructWithHashMap {}
-impl flutter_rust_bridge::IntoIntoDart<mirror_StructWithHashMap>
-    for crate::api::pseudo_manual::mirror_twin_sync::StructWithHashMap
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::StructWithHashMap>
 {
-    fn into_into_dart(self) -> mirror_StructWithHashMap {
-        mirror_StructWithHashMap(self)
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::StructWithHashMap>,
+    > for crate::api::pseudo_manual::mirror_twin_sync::StructWithHashMap
+{
+    fn into_into_dart(
+        self,
+    ) -> frb_wrapper<crate::api::pseudo_manual::mirror_twin_sync::StructWithHashMap> {
+        self.into()
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs

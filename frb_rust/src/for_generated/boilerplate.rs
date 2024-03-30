@@ -8,6 +8,7 @@ macro_rules! frb_generated_boilerplate {
         default_rust_opaque = $default_rust_opaque:ident,
         default_rust_auto_opaque = $default_rust_auto_opaque:ident,
     ) => {
+        $crate::frb_generated_wrapper_types!();
         $crate::frb_generated_moi_arc_def!();
         $crate::frb_generated_rust_opaque_dart2rust!();
         $crate::frb_generated_rust_opaque_def!(default_rust_opaque = $default_rust_opaque);
@@ -17,6 +18,40 @@ macro_rules! frb_generated_boilerplate {
         $crate::frb_generated_cst_codec!();
         $crate::frb_generated_sse_codec!();
         $crate::frb_generated_stream_sink!(default_stream_sink_codec = $default_stream_sink_codec);
+    };
+}
+
+#[doc(hidden)]
+#[macro_export]
+macro_rules! frb_generated_wrapper_types {
+    () => {
+        #[doc(hidden)]
+        pub(crate) struct frb_wrapper<T>(T);
+        impl<T: Clone> Clone for frb_wrapper<T> {
+            fn clone(&self) -> Self {
+                frb_wrapper(self.0.clone())
+            }
+        }
+
+        impl<T: PartialEq> PartialEq for frb_wrapper<T> {
+            fn eq(&self, other: &Self) -> bool {
+                self.0.eq(&other.0)
+            }
+        }
+
+        impl<T: Eq> Eq for frb_wrapper<T> {}
+
+        impl<T: std::hash::Hash> std::hash::Hash for frb_wrapper<T> {
+            fn hash<H: std::hash::Hasher>(&self, state: &mut H) {
+                self.0.hash(state)
+            }
+        }
+
+        impl<T> From<T> for frb_wrapper<T> {
+            fn from(t: T) -> Self {
+                frb_wrapper(t)
+            }
+        }
     };
 }
 
