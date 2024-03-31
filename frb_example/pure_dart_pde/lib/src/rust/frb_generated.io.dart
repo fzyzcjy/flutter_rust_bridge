@@ -821,6 +821,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Map<int, int> dco_decode_Map_i_32_usize(dynamic raw);
 
   @protected
+  Map<int, ApplicationMode> dco_decode_Map_u_8_application_mode(dynamic raw);
+
+  @protected
   BoxDartDebugTwinNormal dco_decode_RustOpaque_BoxdynDartDebugTwinNormal(
       dynamic raw);
 
@@ -1081,6 +1084,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Set<String> dco_decode_Set_String(dynamic raw);
 
   @protected
+  Set<ApplicationMode> dco_decode_Set_application_mode(dynamic raw);
+
+  @protected
   Set<int> dco_decode_Set_i_32(dynamic raw);
 
   @protected
@@ -1131,6 +1137,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   ApplicationMode dco_decode_application_mode(dynamic raw);
+
+  @protected
+  ApplicationModeArray2 dco_decode_application_mode_array_2(dynamic raw);
 
   @protected
   ApplicationSettings dco_decode_application_settings(dynamic raw);
@@ -1294,6 +1303,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   ApplicationEnv dco_decode_box_autoadd_application_env(dynamic raw);
+
+  @protected
+  ApplicationMode dco_decode_box_autoadd_application_mode(dynamic raw);
 
   @protected
   ApplicationSettings dco_decode_box_autoadd_application_settings(dynamic raw);
@@ -2524,6 +2536,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<ApplicationEnvVar> dco_decode_list_application_env_var(dynamic raw);
 
   @protected
+  List<ApplicationMode> dco_decode_list_application_mode(dynamic raw);
+
+  @protected
   List<ApplicationSettings> dco_decode_list_application_settings(dynamic raw);
 
   @protected
@@ -2852,6 +2867,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<(String, String)> dco_decode_list_record_string_string(dynamic raw);
 
   @protected
+  List<(int, ApplicationMode)> dco_decode_list_record_u_8_application_mode(
+      dynamic raw);
+
+  @protected
   List<SimpleStructTwinNormal> dco_decode_list_simple_struct_twin_normal(
       dynamic raw);
 
@@ -3085,6 +3104,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   ApplicationEnv? dco_decode_opt_box_autoadd_application_env(dynamic raw);
+
+  @protected
+  ApplicationMode? dco_decode_opt_box_autoadd_application_mode(dynamic raw);
 
   @protected
   AttributeTwinNormal? dco_decode_opt_box_autoadd_attribute_twin_normal(
@@ -3520,6 +3542,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   (String, String) dco_decode_record_string_string(dynamic raw);
 
   @protected
+  (int, ApplicationMode) dco_decode_record_u_8_application_mode(dynamic raw);
+
+  @protected
   Sequences dco_decode_sequences(dynamic raw);
 
   @protected
@@ -3747,6 +3772,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   U8Array1600 dco_decode_u_8_array_1600(dynamic raw);
+
+  @protected
+  U8Array2 dco_decode_u_8_array_2(dynamic raw);
 
   @protected
   U8Array32 dco_decode_u_8_array_32(dynamic raw);
@@ -4236,6 +4264,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Map<int, int> sse_decode_Map_i_32_usize(SseDeserializer deserializer);
 
   @protected
+  Map<int, ApplicationMode> sse_decode_Map_u_8_application_mode(
+      SseDeserializer deserializer);
+
+  @protected
   BoxDartDebugTwinNormal sse_decode_RustOpaque_BoxdynDartDebugTwinNormal(
       SseDeserializer deserializer);
 
@@ -4502,6 +4534,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Set<String> sse_decode_Set_String(SseDeserializer deserializer);
 
   @protected
+  Set<ApplicationMode> sse_decode_Set_application_mode(
+      SseDeserializer deserializer);
+
+  @protected
   Set<int> sse_decode_Set_i_32(SseDeserializer deserializer);
 
   @protected
@@ -4556,6 +4592,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   ApplicationMode sse_decode_application_mode(SseDeserializer deserializer);
+
+  @protected
+  ApplicationModeArray2 sse_decode_application_mode_array_2(
+      SseDeserializer deserializer);
 
   @protected
   ApplicationSettings sse_decode_application_settings(
@@ -4741,6 +4781,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   ApplicationEnv sse_decode_box_autoadd_application_env(
+      SseDeserializer deserializer);
+
+  @protected
+  ApplicationMode sse_decode_box_autoadd_application_mode(
       SseDeserializer deserializer);
 
   @protected
@@ -6141,6 +6185,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  List<ApplicationMode> sse_decode_list_application_mode(
+      SseDeserializer deserializer);
+
+  @protected
   List<ApplicationSettings> sse_decode_list_application_settings(
       SseDeserializer deserializer);
 
@@ -6522,6 +6570,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  List<(int, ApplicationMode)> sse_decode_list_record_u_8_application_mode(
+      SseDeserializer deserializer);
+
+  @protected
   List<SimpleStructTwinNormal> sse_decode_list_simple_struct_twin_normal(
       SseDeserializer deserializer);
 
@@ -6790,6 +6842,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   ApplicationEnv? sse_decode_opt_box_autoadd_application_env(
+      SseDeserializer deserializer);
+
+  @protected
+  ApplicationMode? sse_decode_opt_box_autoadd_application_mode(
       SseDeserializer deserializer);
 
   @protected
@@ -7273,6 +7329,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  (int, ApplicationMode) sse_decode_record_u_8_application_mode(
+      SseDeserializer deserializer);
+
+  @protected
   Sequences sse_decode_sequences(SseDeserializer deserializer);
 
   @protected
@@ -7540,6 +7600,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   U8Array1600 sse_decode_u_8_array_1600(SseDeserializer deserializer);
+
+  @protected
+  U8Array2 sse_decode_u_8_array_2(SseDeserializer deserializer);
 
   @protected
   U8Array32 sse_decode_u_8_array_32(SseDeserializer deserializer);
@@ -8084,6 +8147,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_Map_i_32_usize(Map<int, int> self, SseSerializer serializer);
 
   @protected
+  void sse_encode_Map_u_8_application_mode(
+      Map<int, ApplicationMode> self, SseSerializer serializer);
+
+  @protected
   void sse_encode_RustOpaque_BoxdynDartDebugTwinNormal(
       BoxDartDebugTwinNormal self, SseSerializer serializer);
 
@@ -8353,6 +8420,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_Set_String(Set<String> self, SseSerializer serializer);
 
   @protected
+  void sse_encode_Set_application_mode(
+      Set<ApplicationMode> self, SseSerializer serializer);
+
+  @protected
   void sse_encode_Set_i_32(Set<int> self, SseSerializer serializer);
 
   @protected
@@ -8412,6 +8483,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_application_mode(
       ApplicationMode self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_application_mode_array_2(
+      ApplicationModeArray2 self, SseSerializer serializer);
 
   @protected
   void sse_encode_application_settings(
@@ -8602,6 +8677,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_box_autoadd_application_env(
       ApplicationEnv self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_application_mode(
+      ApplicationMode self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_application_settings(
@@ -9933,6 +10012,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       List<ApplicationEnvVar> self, SseSerializer serializer);
 
   @protected
+  void sse_encode_list_application_mode(
+      List<ApplicationMode> self, SseSerializer serializer);
+
+  @protected
   void sse_encode_list_application_settings(
       List<ApplicationSettings> self, SseSerializer serializer);
 
@@ -10308,6 +10391,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       List<(String, String)> self, SseSerializer serializer);
 
   @protected
+  void sse_encode_list_record_u_8_application_mode(
+      List<(int, ApplicationMode)> self, SseSerializer serializer);
+
+  @protected
   void sse_encode_list_simple_struct_twin_normal(
       List<SimpleStructTwinNormal> self, SseSerializer serializer);
 
@@ -10581,6 +10668,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_opt_box_autoadd_application_env(
       ApplicationEnv? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_application_mode(
+      ApplicationMode? self, SseSerializer serializer);
 
   @protected
   void sse_encode_opt_box_autoadd_attribute_twin_normal(
@@ -11039,6 +11130,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       (String, String) self, SseSerializer serializer);
 
   @protected
+  void sse_encode_record_u_8_application_mode(
+      (int, ApplicationMode) self, SseSerializer serializer);
+
+  @protected
   void sse_encode_sequences(Sequences self, SseSerializer serializer);
 
   @protected
@@ -11296,6 +11391,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_u_8_array_1600(U8Array1600 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_u_8_array_2(U8Array2 self, SseSerializer serializer);
 
   @protected
   void sse_encode_u_8_array_32(U8Array32 self, SseSerializer serializer);

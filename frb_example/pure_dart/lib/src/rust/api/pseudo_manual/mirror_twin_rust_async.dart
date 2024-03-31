@@ -5,6 +5,7 @@
 
 import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
+import '../mirror.dart';
 import 'mirror_twin_sync_sse.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
@@ -89,6 +90,27 @@ Future<ContainsMirroredSubStructTwinRustAsync>
 Future<StructWithHashMap> testHashmapWithMirroredValueTwinRustAsync(
         {dynamic hint}) =>
     RustLib.instance.api.testHashmapWithMirroredValueTwinRustAsync(hint: hint);
+
+Stream<ApplicationMode> mirrorEnumStreamTwinRustAsync({dynamic hint}) =>
+    RustLib.instance.api.mirrorEnumStreamTwinRustAsync(hint: hint);
+
+Stream<ApplicationMode?> mirrorOptionEnumStreamTwinRustAsync({dynamic hint}) =>
+    RustLib.instance.api.mirrorOptionEnumStreamTwinRustAsync(hint: hint);
+
+Stream<List<ApplicationMode>> mirrorVecEnumStreamTwinRustAsync(
+        {dynamic hint}) =>
+    RustLib.instance.api.mirrorVecEnumStreamTwinRustAsync(hint: hint);
+
+Stream<Map<int, ApplicationMode>> mirrorMapEnumStreamTwinRustAsync(
+        {dynamic hint}) =>
+    RustLib.instance.api.mirrorMapEnumStreamTwinRustAsync(hint: hint);
+
+Stream<Set<ApplicationMode>> mirrorSetEnumStreamTwinRustAsync({dynamic hint}) =>
+    RustLib.instance.api.mirrorSetEnumStreamTwinRustAsync(hint: hint);
+
+Stream<ApplicationModeArray2> mirrorArrayEnumStreamTwinRustAsync(
+        {dynamic hint}) =>
+    RustLib.instance.api.mirrorArrayEnumStreamTwinRustAsync(hint: hint);
 
 class AnotherTwinRustAsync {
   final String a;

@@ -5,6 +5,7 @@
 
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'stream_twin_rust_async.dart';
 
 Stream<String> funcStreamReturnErrorTwinSse({dynamic hint}) =>
     RustLib.instance.api.funcStreamReturnErrorTwinSse(hint: hint);
@@ -34,6 +35,9 @@ Stream<LogTwinSse> handleStreamSinkAt3TwinSse(
         {required int key, required int max, dynamic hint}) =>
     RustLib.instance.api
         .handleStreamSinkAt3TwinSse(key: key, max: max, hint: hint);
+
+Stream<U8Array2> streamSinkFixedSizedPrimitiveArrayTwinSse({dynamic hint}) =>
+    RustLib.instance.api.streamSinkFixedSizedPrimitiveArrayTwinSse(hint: hint);
 
 class LogTwinSse {
   final int key;

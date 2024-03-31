@@ -5,6 +5,7 @@
 
 import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
+import '../mirror.dart';
 import 'mirror_twin_sync_sse.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
@@ -81,6 +82,24 @@ ContainsMirroredSubStructTwinSync testContainsMirroredSubStructTwinSync(
 
 StructWithHashMap testHashmapWithMirroredValueTwinSync({dynamic hint}) =>
     RustLib.instance.api.testHashmapWithMirroredValueTwinSync(hint: hint);
+
+Stream<ApplicationMode> mirrorEnumStreamTwinSync({dynamic hint}) =>
+    RustLib.instance.api.mirrorEnumStreamTwinSync(hint: hint);
+
+Stream<ApplicationMode?> mirrorOptionEnumStreamTwinSync({dynamic hint}) =>
+    RustLib.instance.api.mirrorOptionEnumStreamTwinSync(hint: hint);
+
+Stream<List<ApplicationMode>> mirrorVecEnumStreamTwinSync({dynamic hint}) =>
+    RustLib.instance.api.mirrorVecEnumStreamTwinSync(hint: hint);
+
+Stream<Map<int, ApplicationMode>> mirrorMapEnumStreamTwinSync({dynamic hint}) =>
+    RustLib.instance.api.mirrorMapEnumStreamTwinSync(hint: hint);
+
+Stream<Set<ApplicationMode>> mirrorSetEnumStreamTwinSync({dynamic hint}) =>
+    RustLib.instance.api.mirrorSetEnumStreamTwinSync(hint: hint);
+
+Stream<ApplicationModeArray2> mirrorArrayEnumStreamTwinSync({dynamic hint}) =>
+    RustLib.instance.api.mirrorArrayEnumStreamTwinSync(hint: hint);
 
 class AnotherTwinSync {
   final String a;

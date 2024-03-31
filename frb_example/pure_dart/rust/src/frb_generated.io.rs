@@ -1202,6 +1202,28 @@ impl CstDecode<std::collections::HashMap<i32, usize>> for *mut wire_cst_list_rec
         vec.into_iter().collect()
     }
 }
+impl
+    CstDecode<
+        std::collections::HashMap<
+            u8,
+            crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+        >,
+    > for *mut wire_cst_list_record_u_8_application_mode
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> std::collections::HashMap<
+        u8,
+        crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+    > {
+        let vec: Vec<(
+            u8,
+            crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+        )> = self.cst_decode();
+        vec.into_iter().collect()
+    }
+}
 impl CstDecode<RustOpaqueMoi<Box<dyn DartDebugTwinMoi>>> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueMoi<Box<dyn DartDebugTwinMoi>> {
@@ -2480,6 +2502,21 @@ impl CstDecode<std::collections::HashSet<String>> for *mut wire_cst_list_String 
         vec.into_iter().collect()
     }
 }
+impl
+    CstDecode<
+        std::collections::HashSet<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
+    > for *mut wire_cst_list_application_mode
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> std::collections::HashSet<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>
+    {
+        let vec: Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode> =
+            self.cst_decode();
+        vec.into_iter().collect()
+    }
+}
 impl CstDecode<std::collections::HashSet<i32>> for *mut wire_cst_list_prim_i_32_strict {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> std::collections::HashSet<i32> {
@@ -2705,6 +2742,16 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMessa
             2 => crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMessage::Exit,
             _ => unreachable!(),
         }
+    }
+}
+impl CstDecode<[crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode; 2]>
+    for *mut wire_cst_list_application_mode
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> [crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode; 2] {
+        let vec: Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode> =
+            self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings>
@@ -3211,6 +3258,16 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnv>
     fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnv {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnv>::cst_decode(
+            *wrap,
+        )
+        .into()
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode> for *mut i32 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>::cst_decode(
             *wrap,
         )
         .into()
@@ -7571,6 +7628,18 @@ impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationE
         vec.into_iter().map(CstDecode::cst_decode).collect()
     }
 }
+impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>>
+    for *mut wire_cst_list_application_mode
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
 impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings>>
     for *mut wire_cst_list_application_settings
 {
@@ -8819,6 +8888,28 @@ impl CstDecode<Vec<(String, crate::auxiliary::sample_types::MySize)>>
 impl CstDecode<Vec<(String, String)>> for *mut wire_cst_list_record_string_string {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(String, String)> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl
+    CstDecode<
+        Vec<(
+            u8,
+            crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+        )>,
+    > for *mut wire_cst_list_record_u_8_application_mode
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> Vec<(
+        u8,
+        crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+    )> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
             flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -10099,6 +10190,22 @@ impl CstDecode<(String, String)> for wire_cst_record_string_string {
         (self.field0.cst_decode(), self.field1.cst_decode())
     }
 }
+impl
+    CstDecode<(
+        u8,
+        crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+    )> for wire_cst_record_u_8_application_mode
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> (
+        u8,
+        crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+    ) {
+        (self.field0.cst_decode(), self.field1.cst_decode())
+    }
+}
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::Sequences> for wire_cst_sequences {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::Sequences {
@@ -10822,6 +10929,13 @@ impl CstDecode<crate::api::pseudo_manual::structure_twin_sync::TupleStructWithTw
 impl CstDecode<[u8; 1600]> for *mut wire_cst_list_prim_u_8_strict {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [u8; 1600] {
+        let vec: Vec<u8> = self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
+impl CstDecode<[u8; 2]> for *mut wire_cst_list_prim_u_8_strict {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> [u8; 2] {
         let vec: Vec<u8> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
@@ -13992,6 +14106,19 @@ impl Default for wire_cst_record_string_string {
         Self::new_with_null_ptr()
     }
 }
+impl NewWithNullPtr for wire_cst_record_u_8_application_mode {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            field0: Default::default(),
+            field1: Default::default(),
+        }
+    }
+}
+impl Default for wire_cst_record_u_8_application_mode {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
 impl NewWithNullPtr for wire_cst_sequences {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -16006,6 +16133,35 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_is_app_embedded_twin_normal(
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_array_enum_stream_twin_normal(
+    port_: i64,
+) {
+    wire_mirror_array_enum_stream_twin_normal_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_enum_stream_twin_normal(port_: i64) {
+    wire_mirror_enum_stream_twin_normal_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_map_enum_stream_twin_normal(port_: i64) {
+    wire_mirror_map_enum_stream_twin_normal_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_option_enum_stream_twin_normal(
+    port_: i64,
+) {
+    wire_mirror_option_enum_stream_twin_normal_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_set_enum_stream_twin_normal(port_: i64) {
+    wire_mirror_set_enum_stream_twin_normal_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_struct_stream_twin_normal(port_: i64) {
     wire_mirror_struct_stream_twin_normal_impl(port_)
 }
@@ -16013,6 +16169,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_struct_stream_twin_no
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_tuple_stream_twin_normal(port_: i64) {
     wire_mirror_tuple_stream_twin_normal_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_vec_enum_stream_twin_normal(port_: i64) {
+    wire_mirror_vec_enum_stream_twin_normal_impl(port_)
 }
 
 #[no_mangle]
@@ -26881,6 +27042,39 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_is_app_embedded_twin_rust_as
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_array_enum_stream_twin_rust_async(
+    port_: i64,
+) {
+    wire_mirror_array_enum_stream_twin_rust_async_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_enum_stream_twin_rust_async(port_: i64) {
+    wire_mirror_enum_stream_twin_rust_async_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_map_enum_stream_twin_rust_async(
+    port_: i64,
+) {
+    wire_mirror_map_enum_stream_twin_rust_async_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_option_enum_stream_twin_rust_async(
+    port_: i64,
+) {
+    wire_mirror_option_enum_stream_twin_rust_async_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_set_enum_stream_twin_rust_async(
+    port_: i64,
+) {
+    wire_mirror_set_enum_stream_twin_rust_async_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_struct_stream_twin_rust_async(
     port_: i64,
 ) {
@@ -26892,6 +27086,13 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_tuple_stream_twin_rus
     port_: i64,
 ) {
     wire_mirror_tuple_stream_twin_rust_async_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_vec_enum_stream_twin_rust_async(
+    port_: i64,
+) {
+    wire_mirror_vec_enum_stream_twin_rust_async_impl(port_)
 }
 
 #[no_mangle]
@@ -27050,6 +27251,56 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_is_app_embedded_twin_rust_as
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_array_enum_stream_twin_rust_async_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_mirror_array_enum_stream_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_enum_stream_twin_rust_async_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_mirror_enum_stream_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_map_enum_stream_twin_rust_async_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_mirror_map_enum_stream_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_option_enum_stream_twin_rust_async_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_mirror_option_enum_stream_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_set_enum_stream_twin_rust_async_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_mirror_set_enum_stream_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_struct_stream_twin_rust_async_sse(
     port_: i64,
     ptr_: *mut u8,
@@ -27067,6 +27318,16 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_tuple_stream_twin_rus
     data_len_: i32,
 ) {
     wire_mirror_tuple_stream_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_vec_enum_stream_twin_rust_async_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_mirror_vec_enum_stream_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
@@ -27285,6 +27546,56 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_is_app_embedded_twin_sse(
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_array_enum_stream_twin_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_mirror_array_enum_stream_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_enum_stream_twin_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_mirror_enum_stream_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_map_enum_stream_twin_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_mirror_map_enum_stream_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_option_enum_stream_twin_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_mirror_option_enum_stream_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_set_enum_stream_twin_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_mirror_set_enum_stream_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_struct_stream_twin_sse(
     port_: i64,
     ptr_: *mut u8,
@@ -27302,6 +27613,16 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_tuple_stream_twin_sse
     data_len_: i32,
 ) {
     wire_mirror_tuple_stream_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_vec_enum_stream_twin_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_mirror_vec_enum_stream_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
@@ -27459,6 +27780,33 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_is_app_embedded_twin_sync(
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_array_enum_stream_twin_sync(port_: i64) {
+    wire_mirror_array_enum_stream_twin_sync_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_enum_stream_twin_sync(port_: i64) {
+    wire_mirror_enum_stream_twin_sync_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_map_enum_stream_twin_sync(port_: i64) {
+    wire_mirror_map_enum_stream_twin_sync_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_option_enum_stream_twin_sync(
+    port_: i64,
+) {
+    wire_mirror_option_enum_stream_twin_sync_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_set_enum_stream_twin_sync(port_: i64) {
+    wire_mirror_set_enum_stream_twin_sync_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_struct_stream_twin_sync(port_: i64) {
     wire_mirror_struct_stream_twin_sync_impl(port_)
 }
@@ -27466,6 +27814,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_struct_stream_twin_sy
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_tuple_stream_twin_sync(port_: i64) {
     wire_mirror_tuple_stream_twin_sync_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_vec_enum_stream_twin_sync(port_: i64) {
+    wire_mirror_vec_enum_stream_twin_sync_impl(port_)
 }
 
 #[no_mangle]
@@ -27608,6 +27961,56 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_is_app_embedded_twin_sync_ss
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_array_enum_stream_twin_sync_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_mirror_array_enum_stream_twin_sync_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_enum_stream_twin_sync_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_mirror_enum_stream_twin_sync_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_map_enum_stream_twin_sync_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_mirror_map_enum_stream_twin_sync_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_option_enum_stream_twin_sync_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_mirror_option_enum_stream_twin_sync_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_set_enum_stream_twin_sync_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_mirror_set_enum_stream_twin_sync_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_struct_stream_twin_sync_sse(
     port_: i64,
     ptr_: *mut u8,
@@ -27625,6 +28028,16 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_tuple_stream_twin_syn
     data_len_: i32,
 ) {
     wire_mirror_tuple_stream_twin_sync_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_mirror_vec_enum_stream_twin_sync_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_mirror_vec_enum_stream_twin_sync_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
@@ -35754,6 +36167,13 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_stream_sink_at_3_twin
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_stream_sink_fixed_sized_primitive_array_twin_rust_async(
+    port_: i64,
+) {
+    wire_stream_sink_fixed_sized_primitive_array_twin_rust_async_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_stream_return_error_twin_rust_async_sse(
     port_: i64,
     ptr_: *mut u8,
@@ -35829,6 +36249,21 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_stream_sink_at_3_twin
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_stream_sink_fixed_sized_primitive_array_twin_rust_async_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_stream_sink_fixed_sized_primitive_array_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_stream_return_error_twin_sse(
     port_: i64,
     ptr_: *mut u8,
@@ -35896,6 +36331,21 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_stream_sink_at_3_twin
     data_len_: i32,
 ) {
     wire_handle_stream_sink_at_3_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_stream_sink_fixed_sized_primitive_array_twin_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_stream_sink_fixed_sized_primitive_array_twin_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
 }
 
 #[no_mangle]
@@ -37052,6 +37502,13 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_stream_sink_at_3_twin
     max: u32,
 ) {
     wire_handle_stream_sink_at_3_twin_normal_impl(port_, key, max)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_stream_sink_fixed_sized_primitive_array_twin_normal(
+    port_: i64,
+) {
+    wire_stream_sink_fixed_sized_primitive_array_twin_normal_impl(port_)
 }
 
 #[no_mangle]
@@ -40811,6 +41268,13 @@ pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_application_e
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_application_mode(
+    value: i32,
+) -> *mut i32 {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_application_settings(
 ) -> *mut wire_cst_application_settings {
     flutter_rust_bridge::for_generated::new_leak_box_ptr(
@@ -42764,6 +43228,17 @@ pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_application_env_var(
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_application_mode(
+    len: i32,
+) -> *mut wire_cst_list_application_mode {
+    let wrap = wire_cst_list_application_mode {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_application_settings(
     len: i32,
 ) -> *mut wire_cst_list_application_settings {
@@ -44018,6 +44493,20 @@ pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_record_string_string
     let wrap = wire_cst_list_record_string_string {
         ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
             <wire_cst_record_string_string>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_record_u_8_application_mode(
+    len: i32,
+) -> *mut wire_cst_list_record_u_8_application_mode {
+    let wrap = wire_cst_list_record_u_8_application_mode {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_record_u_8_application_mode>::new_with_null_ptr(),
             len,
         ),
         len,
@@ -46247,6 +46736,12 @@ pub struct wire_cst_list_application_env_var {
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
+pub struct wire_cst_list_application_mode {
+    ptr: *mut i32,
+    len: i32,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
 pub struct wire_cst_list_application_settings {
     ptr: *mut wire_cst_application_settings,
     len: i32,
@@ -46830,6 +47325,12 @@ pub struct wire_cst_list_record_string_my_size {
 #[derive(Clone, Copy)]
 pub struct wire_cst_list_record_string_string {
     ptr: *mut wire_cst_record_string_string,
+    len: i32,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_list_record_u_8_application_mode {
+    ptr: *mut wire_cst_record_u_8_application_mode,
     len: i32,
 }
 #[repr(C)]
@@ -47586,6 +48087,12 @@ pub struct wire_cst_record_string_my_size {
 pub struct wire_cst_record_string_string {
     field0: *mut wire_cst_list_prim_u_8_strict,
     field1: *mut wire_cst_list_prim_u_8_strict,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_record_u_8_application_mode {
+    field0: u8,
+    field1: i32,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]

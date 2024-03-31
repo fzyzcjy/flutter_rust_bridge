@@ -5,6 +5,7 @@
 
 import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
+import '../mirror.dart';
 import 'mirror_twin_sync_sse.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
@@ -81,6 +82,24 @@ Future<ContainsMirroredSubStructTwinSse> testContainsMirroredSubStructTwinSse(
 
 Future<StructWithHashMap> testHashmapWithMirroredValueTwinSse({dynamic hint}) =>
     RustLib.instance.api.testHashmapWithMirroredValueTwinSse(hint: hint);
+
+Stream<ApplicationMode> mirrorEnumStreamTwinSse({dynamic hint}) =>
+    RustLib.instance.api.mirrorEnumStreamTwinSse(hint: hint);
+
+Stream<ApplicationMode?> mirrorOptionEnumStreamTwinSse({dynamic hint}) =>
+    RustLib.instance.api.mirrorOptionEnumStreamTwinSse(hint: hint);
+
+Stream<List<ApplicationMode>> mirrorVecEnumStreamTwinSse({dynamic hint}) =>
+    RustLib.instance.api.mirrorVecEnumStreamTwinSse(hint: hint);
+
+Stream<Map<int, ApplicationMode>> mirrorMapEnumStreamTwinSse({dynamic hint}) =>
+    RustLib.instance.api.mirrorMapEnumStreamTwinSse(hint: hint);
+
+Stream<Set<ApplicationMode>> mirrorSetEnumStreamTwinSse({dynamic hint}) =>
+    RustLib.instance.api.mirrorSetEnumStreamTwinSse(hint: hint);
+
+Stream<ApplicationModeArray2> mirrorArrayEnumStreamTwinSse({dynamic hint}) =>
+    RustLib.instance.api.mirrorArrayEnumStreamTwinSse(hint: hint);
 
 class AnotherTwinSse {
   final String a;

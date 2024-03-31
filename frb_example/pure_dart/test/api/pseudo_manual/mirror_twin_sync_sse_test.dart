@@ -149,6 +149,67 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final output = await testHashmapWithMirroredValueTwinSyncSse();
     expect(output.map, {'key': HashMapValue(inner: 'value')});
   });
+
+  test('mirror_enum_stream_twin_normal', () async {
+    final output = await mirrorEnumStreamTwinSyncSse().toList();
+    expect(
+      output,
+      orderedEquals([
+        ApplicationMode.embedded,
+        ApplicationMode.standalone,
+      ]),
+    );
+  });
+
+  test('mirror_option_enum_stream_twin_normal', () async {
+    final output = await mirrorOptionEnumStreamTwinSyncSse().toList();
+    expect(
+      output,
+      orderedEquals([
+        ApplicationMode.embedded,
+        null,
+        ApplicationMode.standalone,
+      ]),
+    );
+  });
+
+  test('mirror_vec_enum_stream_twin_normal', () async {
+    final output = await mirrorVecEnumStreamTwinSyncSse().toList();
+    expect(output, [
+      orderedEquals([ApplicationMode.embedded]),
+      orderedEquals([ApplicationMode.standalone]),
+    ]);
+  });
+
+  test('mirror_map_enum_stream_twin_normal', () async {
+    final output = await mirrorMapEnumStreamTwinSyncSse().toList();
+    expect(output, [
+      allOf(
+        containsPair(0, ApplicationMode.embedded),
+        containsPair(1, ApplicationMode.standalone),
+      )
+    ]);
+  });
+
+  test('mirror_set_enum_stream_twin_normal', () async {
+    final output = await mirrorSetEnumStreamTwinSyncSse().toList();
+    expect(output, [
+      unorderedEquals([
+        ApplicationMode.embedded,
+        ApplicationMode.standalone,
+      ])
+    ]);
+  });
+
+  test('mirror_array_enum_stream_twin_normal', () async {
+    final output = await mirrorArrayEnumStreamTwinSyncSse().toList();
+    expect(output, [
+      orderedEquals([
+        ApplicationMode.embedded,
+        ApplicationMode.standalone,
+      ])
+    ]);
+  });
 }
 
 int _createGarbage() {

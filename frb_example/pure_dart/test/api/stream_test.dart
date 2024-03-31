@@ -64,4 +64,13 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('dart call handle_stream_sink_at_3', () {
     testHandleStream(handleStreamSinkAt3TwinNormal);
   });
+
+  test('stream_sink_fixed_sized_primitive_array_twin_normal', () async {
+    final output =
+        await streamSinkFixedSizedPrimitiveArrayTwinNormal().toList();
+    expect(output, [
+      orderedEquals([1, 2]),
+      orderedEquals([3, 4]),
+    ]);
+  });
 }

@@ -12,7 +12,6 @@ use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
-use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 use serde::Serialize;
 use std::collections::HashSet;
@@ -49,10 +48,7 @@ pub(crate) fn generate(
         wire_funcs: (context.ir_pack.funcs.iter())
             .map(|f| generate_wire_func(f, context))
             .collect(),
-        wrapper_structs: (cache.distinct_types.iter())
-            .filter_map(|ty| generate_wrapper_struct(ty, context))
-            .map(|x| Acc::<WireRustOutputCode>::new_common(x.into()))
-            .collect(),
+        wrapper_structs: Acc::default(),
         static_checks: Acc::new_common(vec![generate_static_checks(
             &cache.distinct_types,
             context,
@@ -112,22 +108,6 @@ use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, WriteBytesExt,
 
         vec![(imports_from_types.clone() + static_imports + platform_imports).into()]
     })
-}
-
-fn generate_wrapper_struct(ty: &IrType, context: WireRustGeneratorContext) -> Option<String> {
-    // the generated wrapper structs need to be public for the StreamSinkTrait impl to work
-    WireRustGenerator::new(ty.clone(), context)
-        .wrapper_struct_name()
-        .map(|wrapper_struct_name| {
-            format!(
-                r###"
-                #[derive(Clone)]
-                pub struct {}({});
-                "###,
-                wrapper_struct_name,
-                ty.rust_api_type(),
-            )
-        })
 }
 
 fn generate_static_checks(types: &[IrType], context: WireRustGeneratorContext) -> String {
