@@ -26,7 +26,6 @@ pub struct _ApplicationSettingsTwinNormal {
 }
 
 #[frb(mirror(ApplicationMode))]
-#[derive(PartialEq, Eq, Hash)]
 pub enum _ApplicationModeTwinNormal {
     Standalone,
     Embedded,

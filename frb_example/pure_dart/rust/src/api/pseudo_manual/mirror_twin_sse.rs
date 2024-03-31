@@ -28,7 +28,6 @@ pub struct _ApplicationSettingsTwinSse {
 }
 
 #[frb(mirror(ApplicationMode))]
-#[derive(PartialEq, Eq, Hash)]
 pub enum _ApplicationModeTwinSse {
     Standalone,
     Embedded,

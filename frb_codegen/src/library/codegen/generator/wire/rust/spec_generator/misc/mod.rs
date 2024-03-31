@@ -48,10 +48,7 @@ pub(crate) fn generate(
         wire_funcs: (context.ir_pack.funcs.iter())
             .map(|f| generate_wire_func(f, context))
             .collect(),
-        wrapper_structs: (cache.distinct_types.iter())
-            .filter_map(|ty| generate_wrapper_struct(ty, context))
-            .map(|x| Acc::<WireRustOutputCode>::new_common(x.into()))
-            .collect(),
+        wrapper_structs: Acc::default(),
         static_checks: Acc::new_common(vec![generate_static_checks(
             &cache.distinct_types,
             context,
@@ -111,10 +108,6 @@ use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, WriteBytesExt,
 
         vec![(imports_from_types.clone() + static_imports + platform_imports).into()]
     })
-}
-
-fn generate_wrapper_struct(_ty: &IrType, _context: WireRustGeneratorContext) -> Option<String> {
-    None
 }
 
 fn generate_static_checks(types: &[IrType], context: WireRustGeneratorContext) -> String {

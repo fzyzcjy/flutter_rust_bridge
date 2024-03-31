@@ -44,5 +44,5 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for RustAutoOpaqueWireRustCodecDc
 
 // Similar to "mirror"
 fn rust_auto_opaque_local_struct_type(ir: &IrTypeRustAutoOpaque) -> String {
-    format!("frb_wrapper<{}>", ir.rust_api_type())
+    format!("FrbWrapper<{}>", ir.rust_api_type())
 }

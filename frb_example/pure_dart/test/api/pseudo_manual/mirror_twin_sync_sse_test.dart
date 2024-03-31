@@ -152,61 +152,63 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('mirror_enum_stream_twin_normal', () async {
     final output = await mirrorEnumStreamTwinSyncSse().toList();
-    expect(output.length, 2);
-    expect(output[0], ApplicationMode.embedded);
-    expect(output[1], ApplicationMode.standalone);
+    expect(
+      output,
+      orderedEquals([
+        ApplicationMode.embedded,
+        ApplicationMode.standalone,
+      ]),
+    );
   });
 
   test('mirror_option_enum_stream_twin_normal', () async {
     final output = await mirrorOptionEnumStreamTwinSyncSse().toList();
-    expect(output.length, 3);
-    expect(output[0], ApplicationMode.embedded);
-    expect(output[1], null);
-    expect(output[2], ApplicationMode.standalone);
+    expect(
+      output,
+      orderedEquals([
+        ApplicationMode.embedded,
+        null,
+        ApplicationMode.standalone,
+      ]),
+    );
   });
 
   test('mirror_vec_enum_stream_twin_normal', () async {
     final output = await mirrorVecEnumStreamTwinSyncSse().toList();
-    expect(output.length, 2);
-
-    final first = output[0];
-    expect(first.length, 1);
-    expect(first[0], ApplicationMode.embedded);
-
-    final second = output[1];
-    expect(second.length, 1);
-    expect(second[0], ApplicationMode.standalone);
+    expect(output, [
+      orderedEquals([ApplicationMode.embedded]),
+      orderedEquals([ApplicationMode.standalone]),
+    ]);
   });
 
   test('mirror_map_enum_stream_twin_normal', () async {
     final output = await mirrorMapEnumStreamTwinSyncSse().toList();
-    expect(output.length, 1);
-
-    final map = output[0];
-    expect(map.length, 2);
-    expect(map[0], ApplicationMode.embedded);
-    expect(map[1], ApplicationMode.standalone);
+    expect(output, [
+      allOf(
+        containsPair(0, ApplicationMode.embedded),
+        containsPair(1, ApplicationMode.standalone),
+      )
+    ]);
   });
 
   test('mirror_set_enum_stream_twin_normal', () async {
     final output = await mirrorSetEnumStreamTwinSyncSse().toList();
-    expect(output.length, 1);
-
-    final hashSet = output[0];
-    expect(hashSet.length, 2);
-    // hashset do not have guaranteed order
-    expect(hashSet.any((e) => e == ApplicationMode.embedded), true);
-    expect(hashSet.any((e) => e == ApplicationMode.standalone), true);
+    expect(output, [
+      unorderedEquals([
+        ApplicationMode.embedded,
+        ApplicationMode.standalone,
+      ])
+    ]);
   });
 
   test('mirror_array_enum_stream_twin_normal', () async {
     final output = await mirrorArrayEnumStreamTwinSyncSse().toList();
-    expect(output.length, 1);
-
-    final array = output[0];
-    expect(array.length, 2);
-    expect(array[0], ApplicationMode.embedded);
-    expect(array[1], ApplicationMode.standalone);
+    expect(output, [
+      orderedEquals([
+        ApplicationMode.embedded,
+        ApplicationMode.standalone,
+      ])
+    ]);
   });
 }
 

@@ -28,7 +28,6 @@ pub struct _ApplicationSettingsTwinRustAsyncSse {
 }
 
 #[frb(mirror(ApplicationMode))]
-#[derive(PartialEq, Eq, Hash)]
 pub enum _ApplicationModeTwinRustAsyncSse {
     Standalone,
     Embedded,

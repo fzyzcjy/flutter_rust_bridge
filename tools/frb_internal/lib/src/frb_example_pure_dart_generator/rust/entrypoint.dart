@@ -63,33 +63,11 @@ class RustGenerator extends BaseGenerator {
 
     if (mode.components.any((e) => e == DuplicatorComponentMode.sse)) {
       // Find matching StreamSink<...> and add `flutter_rust_bridge::SseCodec` to it
-      var cursor = 0;
-      while (cursor < ans.length) {
-        cursor = ans.indexOf('StreamSink<', cursor);
-        // There is no more `StreamSink<` to replace
-        if (cursor == -1) break;
-        cursor += 'StreamSink<'.length;
-        final innerTypeStart = cursor;
-
-        var openBrackets = 1;
-
-        // Iterate until we find the matching closing bracket of StreamSink<...>
-        while (openBrackets > 0 && cursor < ans.length) {
-          if (ans[cursor] == '<') {
-            openBrackets++;
-          } else if (ans[cursor] == '>') {
-            openBrackets--;
-          }
-          cursor++;
-          if (openBrackets == 0) break;
-        }
-
-        final innerTypeEnd = cursor - 1;
-        final sinkInnerType = ans.substring(innerTypeStart, innerTypeEnd);
-        final newInnerType = '$sinkInnerType, flutter_rust_bridge::SseCodec';
-        ans = ans.replaceRange(innerTypeStart, innerTypeEnd, newInnerType);
-        cursor = innerTypeStart + newInnerType.length;
-      }
+      ans = replaceAllGenericInnerTypeMapped(
+        ans,
+        'StreamSink',
+        (innerType) => '$innerType, flutter_rust_bridge::SseCodec',
+      );
     }
 
     if (mode.components.any((e) => e == DuplicatorComponentMode.moi)) {
@@ -109,4 +87,45 @@ class RustGenerator extends BaseGenerator {
   @override
   String generateDuplicateFileStem(String inputStem, DuplicatorMode mode) =>
       inputStem + mode.postfix;
+}
+
+/// Find matching [genericType]<[innerType]> and call [mapper] to
+/// transform the [innerType] to a new type.
+///
+/// Returns the transformed string.
+String replaceAllGenericInnerTypeMapped(
+  String input,
+  String genericType,
+  String Function(String innerType) mapper,
+) {
+  var cursor = 0;
+  final genericTypeSearch = '$genericType<';
+  while (cursor < input.length) {
+    cursor = input.indexOf(genericTypeSearch, cursor);
+    // There is no more `StreamSink<` to replace
+    if (cursor == -1) break;
+    cursor += genericTypeSearch.length;
+    final innerTypeStart = cursor;
+
+    var openBrackets = 1;
+
+    // Iterate until we find the matching closing bracket of StreamSink<...>
+    while (openBrackets > 0 && cursor < input.length) {
+      if (input[cursor] == '<') {
+        openBrackets++;
+      } else if (input[cursor] == '>') {
+        openBrackets--;
+      }
+      cursor++;
+      if (openBrackets == 0) break;
+    }
+
+    final innerTypeEnd = cursor - 1;
+    final innerType = input.substring(innerTypeStart, innerTypeEnd);
+    final newInnerType = mapper(innerType);
+    input = input.replaceRange(innerTypeStart, innerTypeEnd, newInnerType);
+    cursor = innerTypeStart + newInnerType.length;
+  }
+
+  return input;
 }
