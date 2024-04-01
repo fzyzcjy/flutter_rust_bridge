@@ -102,7 +102,7 @@ Future<void> pubGetAll() async {
 
 Future<void> cargoFetchAll() async {
   for (final package in kRustPackages) {
-    await exec('cargo fetch', relativePwd: package);
+    await exec('cargo generate-lockfile', relativePwd: package);
   }
 }
 

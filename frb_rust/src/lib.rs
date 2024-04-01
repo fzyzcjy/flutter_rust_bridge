@@ -45,6 +45,10 @@ pub use crate::misc::panic_backtrace::{CatchUnwindWithBacktrace, PanicBacktrace}
 pub use crate::misc::user_utils::setup_default_user_utils;
 pub use crate::platform_types::DartAbi;
 pub use crate::rust2dart::sender::Rust2DartSendError;
+#[cfg(all(feature = "rust-async", feature = "thread-pool"))]
+pub use crate::rust_async::spawn_blocking_with;
+#[cfg(feature = "rust-async")]
+pub use crate::rust_async::{spawn, spawn_local, JoinHandle};
 #[cfg(feature = "rust-async")]
 pub use crate::rust_async::BaseAsyncRuntime;
 #[cfg(feature = "rust-async")]

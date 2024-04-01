@@ -1,7 +1,6 @@
 #[cfg(feature = "rust-async")]
 #[cfg(not(target_family = "wasm"))]
 mod io;
-use futures::Future;
 #[cfg(feature = "rust-async")]
 #[cfg(not(target_family = "wasm"))]
 pub use io::*;
@@ -9,6 +8,7 @@ pub use io::*;
 #[cfg(feature = "rust-async")]
 #[cfg(target_family = "wasm")]
 mod web;
+use futures::Future;
 #[cfg(feature = "rust-async")]
 #[cfg(target_family = "wasm")]
 pub use web::*;
