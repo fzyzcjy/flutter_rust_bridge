@@ -1,9 +1,9 @@
-#[cfg(feature = "tokio-runtime")]
+#[cfg(feature = "rust-async-tokio")]
 mod tokio;
-#[cfg(feature = "tokio-runtime")]
+#[cfg(feature = "rust-async-tokio")]
 pub use tokio::*;
 
-#[cfg(feature = "async-std-runtime")]
+#[cfg(feature = "rust-async-async-std")]
 mod async_std;
-#[cfg(feature = "async-std-runtime")]
+#[cfg(feature = "rust-async-async-std")]
 pub use async_std::*;

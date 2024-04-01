@@ -37,3 +37,35 @@ impl BaseAsyncRuntime for SimpleAsyncRuntime {
         self.0.block_on(future)
     }
 }
+
+pub fn spawn<F>(future: F) -> JoinHandle<F::Output>
+where
+    F: Future + Send + 'static,
+    F::Output: Send + 'static,
+{
+    tokio::spawn(future)
+}
+
+pub fn spawn_local<F>(future: F) -> JoinHandle<F::Output>
+where
+    F: Future + 'static,
+    F::Output: 'static,
+{
+    tokio::task::spawn_local(future)
+}
+
+pub fn spawn_blocking<F>(func: F) -> JoinHandle<F::Output>
+where
+    F: FnOnce() + Send + 'static,
+    F::Output: Send + 'static,
+{
+    tokio::task::spawn_blocking(func)
+}
+
+pub fn spawn_blocking_with<F, R, TP>(f: F, _thread_pool_on_web: TP) -> JoinHandle<R>
+where
+    F: FnOnce() -> R + Send + 'static,
+    R: Send + 'static,
+{
+    tokio::task::spawn_blocking(f)
+}
