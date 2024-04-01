@@ -310,5 +310,10 @@ packages:
     source: hosted
     version: "3.0.4"
 sdks:
+<<<<<<< HEAD
   dart: ">=3.6.2 <4.0.0"
   flutter: ">=3.18.0-18.0.pre.54"
+=======
+  dart: ">=3.3.2 <4.0.0"
+  flutter: ">=3.3.0"
+>>>>>>> 1414487e21 (fix: update cargo lock)

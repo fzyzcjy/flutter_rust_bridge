@@ -10,7 +10,7 @@ pub struct SimpleAsyncRuntime(pub AssertUnwindSafe<tokio::runtime::Runtime>);
 
 impl Default for SimpleAsyncRuntime {
     fn default() -> Self {
-        return Self(AssertUnwindSafe(tokio::runtime::Runtime::new().unwrap()));
+        Self(AssertUnwindSafe(tokio::runtime::Runtime::new().unwrap()))
     }
 }
 
