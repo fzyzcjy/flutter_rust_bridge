@@ -34,7 +34,7 @@ pub fn datetime_local_twin_normal(
 }
 
 pub fn naivedate_twin_normal(d: chrono::NaiveDate) -> chrono::NaiveDate {
-    use chrono::{Datelike, Timelike};
+    use chrono::Datelike;
     assert_eq!(&d.year(), &2022);
     assert_eq!(&d.month(), &9);
     assert_eq!(&d.day(), &10);
