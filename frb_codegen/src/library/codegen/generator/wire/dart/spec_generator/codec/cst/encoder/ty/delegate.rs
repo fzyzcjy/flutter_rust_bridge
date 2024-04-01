@@ -75,13 +75,14 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
                 format!("return cst_encode_{}(raw.index);", repr.safe_ident()).into()
             }
             IrTypeDelegate::Time(ir) => match ir {
-                IrTypeDelegateTime::Utc | IrTypeDelegateTime::Local | IrTypeDelegateTime::NaiveDate | IrTypeDelegateTime::NaiveDateTime => {
-                    Acc {
-                        io: Some("return cst_encode_i_64(raw.microsecondsSinceEpoch);".into()),
-                        web: Some("return cst_encode_i_64(raw.millisecondsSinceEpoch);".into()),
-                        ..Default::default()
-                    }
-                }
+                IrTypeDelegateTime::Utc
+                | IrTypeDelegateTime::Local
+                | IrTypeDelegateTime::NaiveDate
+                | IrTypeDelegateTime::NaiveDateTime => Acc {
+                    io: Some("return cst_encode_i_64(raw.microsecondsSinceEpoch);".into()),
+                    web: Some("return cst_encode_i_64(raw.millisecondsSinceEpoch);".into()),
+                    ..Default::default()
+                },
                 IrTypeDelegateTime::Duration => Acc {
                     io: Some("return cst_encode_i_64(raw.inMicroseconds);".into()),
                     web: Some("return cst_encode_i_64(raw.inMilliseconds);".into()),
