@@ -613,9 +613,10 @@ abstract class RustLibApi extends BaseApi {
   Future<List<String>> simpleStructTwinNormalVecSelfTwinNormal(
       {required List<SimpleStructTwinNormal> arg, dynamic hint});
 
-  Future<int> staticGetterOnlyTwinNormalStaticGetter({dynamic hint});
+  Future<int> staticGetterOnlyTwinNormalStaticGetterTwinNormal({dynamic hint});
 
-  Future<int> staticOnlyTwinNormalStaticMethod({required int a, dynamic hint});
+  Future<int> staticOnlyTwinNormalStaticMethodTwinNormal(
+      {required int a, dynamic hint});
 
   Future<int> sumWithTwinNormalSumTwinNormal(
       {required SumWithTwinNormal that,
@@ -7832,7 +7833,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<int> staticGetterOnlyTwinNormalStaticGetter({dynamic hint}) {
+  Future<int> staticGetterOnlyTwinNormalStaticGetterTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -7843,21 +7844,23 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_i_32,
         decodeErrorData: null,
       ),
-      constMeta: kStaticGetterOnlyTwinNormalStaticGetterConstMeta,
+      constMeta: kStaticGetterOnlyTwinNormalStaticGetterTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kStaticGetterOnlyTwinNormalStaticGetterConstMeta =>
-      const TaskConstMeta(
-        debugName: "StaticGetterOnlyTwinNormal_static_getter",
-        argNames: [],
-      );
+  TaskConstMeta
+      get kStaticGetterOnlyTwinNormalStaticGetterTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName: "StaticGetterOnlyTwinNormal_static_getter_twin_normal",
+            argNames: [],
+          );
 
   @override
-  Future<int> staticOnlyTwinNormalStaticMethod({required int a, dynamic hint}) {
+  Future<int> staticOnlyTwinNormalStaticMethodTwinNormal(
+      {required int a, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -7869,16 +7872,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_i_32,
         decodeErrorData: null,
       ),
-      constMeta: kStaticOnlyTwinNormalStaticMethodConstMeta,
+      constMeta: kStaticOnlyTwinNormalStaticMethodTwinNormalConstMeta,
       argValues: [a],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kStaticOnlyTwinNormalStaticMethodConstMeta =>
+  TaskConstMeta get kStaticOnlyTwinNormalStaticMethodTwinNormalConstMeta =>
       const TaskConstMeta(
-        debugName: "StaticOnlyTwinNormal_static_method",
+        debugName: "StaticOnlyTwinNormal_static_method_twin_normal",
         argNames: ["a"],
       );
 

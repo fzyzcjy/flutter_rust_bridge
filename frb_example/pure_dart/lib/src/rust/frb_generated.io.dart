@@ -39334,36 +39334,36 @@ class RustLibWire implements BaseWire {
           void Function(
               int, ffi.Pointer<wire_cst_list_simple_struct_twin_normal>)>();
 
-  void wire_StaticGetterOnlyTwinNormal_static_getter(
+  void wire_StaticGetterOnlyTwinNormal_static_getter_twin_normal(
     int port_,
   ) {
-    return _wire_StaticGetterOnlyTwinNormal_static_getter(
+    return _wire_StaticGetterOnlyTwinNormal_static_getter_twin_normal(
       port_,
     );
   }
 
-  late final _wire_StaticGetterOnlyTwinNormal_static_getterPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-      'frbgen_frb_example_pure_dart_wire_StaticGetterOnlyTwinNormal_static_getter');
-  late final _wire_StaticGetterOnlyTwinNormal_static_getter =
-      _wire_StaticGetterOnlyTwinNormal_static_getterPtr
+  late final _wire_StaticGetterOnlyTwinNormal_static_getter_twin_normalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'frbgen_frb_example_pure_dart_wire_StaticGetterOnlyTwinNormal_static_getter_twin_normal');
+  late final _wire_StaticGetterOnlyTwinNormal_static_getter_twin_normal =
+      _wire_StaticGetterOnlyTwinNormal_static_getter_twin_normalPtr
           .asFunction<void Function(int)>();
 
-  void wire_StaticOnlyTwinNormal_static_method(
+  void wire_StaticOnlyTwinNormal_static_method_twin_normal(
     int port_,
     int a,
   ) {
-    return _wire_StaticOnlyTwinNormal_static_method(
+    return _wire_StaticOnlyTwinNormal_static_method_twin_normal(
       port_,
       a,
     );
   }
 
-  late final _wire_StaticOnlyTwinNormal_static_methodPtr = _lookup<
+  late final _wire_StaticOnlyTwinNormal_static_method_twin_normalPtr = _lookup<
           ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
-      'frbgen_frb_example_pure_dart_wire_StaticOnlyTwinNormal_static_method');
-  late final _wire_StaticOnlyTwinNormal_static_method =
-      _wire_StaticOnlyTwinNormal_static_methodPtr
+      'frbgen_frb_example_pure_dart_wire_StaticOnlyTwinNormal_static_method_twin_normal');
+  late final _wire_StaticOnlyTwinNormal_static_method_twin_normal =
+      _wire_StaticOnlyTwinNormal_static_method_twin_normalPtr
           .asFunction<void Function(int, int)>();
 
   void wire_SumWithTwinNormal_sum_twin_normal(

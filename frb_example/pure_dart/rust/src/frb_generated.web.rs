@@ -12949,18 +12949,18 @@ pub fn wire_SimpleStructTwinNormal_vec_self_twin_normal(
 }
 
 #[wasm_bindgen]
-pub fn wire_StaticGetterOnlyTwinNormal_static_getter(
+pub fn wire_StaticGetterOnlyTwinNormal_static_getter_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    wire_StaticGetterOnlyTwinNormal_static_getter_impl(port_)
+    wire_StaticGetterOnlyTwinNormal_static_getter_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_StaticOnlyTwinNormal_static_method(
+pub fn wire_StaticOnlyTwinNormal_static_method_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     a: i32,
 ) {
-    wire_StaticOnlyTwinNormal_static_method_impl(port_, a)
+    wire_StaticOnlyTwinNormal_static_method_twin_normal_impl(port_, a)
 }
 
 #[wasm_bindgen]

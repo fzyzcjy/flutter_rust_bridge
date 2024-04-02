@@ -4709,7 +4709,7 @@ fn wire_SimpleStructTwinNormal_vec_self_twin_normal_impl(
         },
     )
 }
-fn wire_StaticGetterOnlyTwinNormal_static_getter_impl(
+fn wire_StaticGetterOnlyTwinNormal_static_getter_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
@@ -4717,7 +4717,7 @@ fn wire_StaticGetterOnlyTwinNormal_static_getter_impl(
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "StaticGetterOnlyTwinNormal_static_getter",
+            debug_name: "StaticGetterOnlyTwinNormal_static_getter_twin_normal",
             port: Some(port_),
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
@@ -4735,14 +4735,14 @@ fn wire_StaticGetterOnlyTwinNormal_static_getter_impl(
             move |context| {
                 transform_result_sse((move || {
                     Result::<_, ()>::Ok(
-                        crate::api::method::StaticGetterOnlyTwinNormal::static_getter(),
+                        crate::api::method::StaticGetterOnlyTwinNormal::static_getter_twin_normal(),
                     )
                 })())
             }
         },
     )
 }
-fn wire_StaticOnlyTwinNormal_static_method_impl(
+fn wire_StaticOnlyTwinNormal_static_method_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
@@ -4750,7 +4750,7 @@ fn wire_StaticOnlyTwinNormal_static_method_impl(
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "StaticOnlyTwinNormal_static_method",
+            debug_name: "StaticOnlyTwinNormal_static_method_twin_normal",
             port: Some(port_),
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
@@ -4768,9 +4768,9 @@ fn wire_StaticOnlyTwinNormal_static_method_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
-                    Result::<_, ()>::Ok(crate::api::method::StaticOnlyTwinNormal::static_method(
-                        api_a,
-                    ))
+                    Result::<_, ()>::Ok(
+                        crate::api::method::StaticOnlyTwinNormal::static_method_twin_normal(api_a),
+                    )
                 })())
             }
         },
@@ -32500,8 +32500,8 @@ fn pde_ffi_dispatcher_primary_impl(
 152 => wire_SimpleStructTwinNormal_arg_self_twin_normal_impl(port, ptr, rust_vec_len, data_len),
 151 => wire_SimpleStructTwinNormal_return_self_twin_normal_impl(port, ptr, rust_vec_len, data_len),
 153 => wire_SimpleStructTwinNormal_vec_self_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-157 => wire_StaticGetterOnlyTwinNormal_static_getter_impl(port, ptr, rust_vec_len, data_len),
-156 => wire_StaticOnlyTwinNormal_static_method_impl(port, ptr, rust_vec_len, data_len),
+157 => wire_StaticGetterOnlyTwinNormal_static_getter_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+156 => wire_StaticOnlyTwinNormal_static_method_twin_normal_impl(port, ptr, rust_vec_len, data_len),
 149 => wire_SumWithTwinNormal_sum_twin_normal_impl(port, ptr, rust_vec_len, data_len),
 140 => wire_get_sum_array_twin_normal_impl(port, ptr, rust_vec_len, data_len),
 139 => wire_get_sum_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),

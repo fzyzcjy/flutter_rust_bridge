@@ -34,8 +34,8 @@ class StaticGetterOnlyTwinNormal extends RustOpaque {
         .rust_arc_decrement_strong_count_StaticGetterOnlyTwinNormalPtr,
   );
 
-  static Future<int> get staticGetter =>
-      RustLib.instance.api.staticGetterOnlyTwinNormalStaticGetter();
+  static Future<int> get staticGetterTwinNormal =>
+      RustLib.instance.api.staticGetterOnlyTwinNormalStaticGetterTwinNormal();
 }
 
 class ConcatenateWithTwinNormal {
@@ -234,8 +234,8 @@ class StaticOnlyTwinNormal {
     required this.one,
   });
 
-  static Future<int> staticMethod({required int a, dynamic hint}) =>
-      RustLib.instance.api.staticOnlyTwinNormalStaticMethod(
+  static Future<int> staticMethodTwinNormal({required int a, dynamic hint}) =>
+      RustLib.instance.api.staticOnlyTwinNormalStaticMethodTwinNormal(
         a: a,
         hint: hint,
       );

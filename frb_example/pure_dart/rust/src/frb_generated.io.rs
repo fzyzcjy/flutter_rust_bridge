@@ -16368,18 +16368,18 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_SimpleStructTwinNormal_vec_s
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire_StaticGetterOnlyTwinNormal_static_getter(
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_StaticGetterOnlyTwinNormal_static_getter_twin_normal(
     port_: i64,
 ) {
-    wire_StaticGetterOnlyTwinNormal_static_getter_impl(port_)
+    wire_StaticGetterOnlyTwinNormal_static_getter_twin_normal_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire_StaticOnlyTwinNormal_static_method(
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_StaticOnlyTwinNormal_static_method_twin_normal(
     port_: i64,
     a: i32,
 ) {
-    wire_StaticOnlyTwinNormal_static_method_impl(port_, a)
+    wire_StaticOnlyTwinNormal_static_method_twin_normal_impl(port_, a)
 }
 
 #[no_mangle]

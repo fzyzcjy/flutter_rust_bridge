@@ -3622,9 +3622,10 @@ void frbgen_frb_example_pure_dart_wire_SimpleStructTwinNormal_return_self_twin_n
 void frbgen_frb_example_pure_dart_wire_SimpleStructTwinNormal_vec_self_twin_normal(int64_t port_,
                                                                                    struct wire_cst_list_simple_struct_twin_normal *arg);
 
-void frbgen_frb_example_pure_dart_wire_StaticGetterOnlyTwinNormal_static_getter(int64_t port_);
+void frbgen_frb_example_pure_dart_wire_StaticGetterOnlyTwinNormal_static_getter_twin_normal(int64_t port_);
 
-void frbgen_frb_example_pure_dart_wire_StaticOnlyTwinNormal_static_method(int64_t port_, int32_t a);
+void frbgen_frb_example_pure_dart_wire_StaticOnlyTwinNormal_static_method_twin_normal(int64_t port_,
+                                                                                      int32_t a);
 
 void frbgen_frb_example_pure_dart_wire_SumWithTwinNormal_sum_twin_normal(int64_t port_,
                                                                          struct wire_cst_sum_with_twin_normal *that,
@@ -14946,13 +14947,13 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_SomeStructTwinSync_non_static_return_ok_custom_error_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_SomeStructTwinSync_static_return_err_custom_error_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_SomeStructTwinSync_static_return_ok_custom_error_twin_sync);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_StaticGetterOnlyTwinNormal_static_getter);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_StaticGetterOnlyTwinNormal_static_getter_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_StaticGetterOnlyTwinRustAsyncSse_static_getter_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_StaticGetterOnlyTwinRustAsync_static_getter_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_StaticGetterOnlyTwinSse_static_getter_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_StaticGetterOnlyTwinSyncSse_static_getter_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_StaticGetterOnlyTwinSync_static_getter_twin_sync);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_StaticOnlyTwinNormal_static_method);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_StaticOnlyTwinNormal_static_method_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_StaticOnlyTwinRustAsyncSse_static_method_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_StaticOnlyTwinRustAsync_static_method_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_StaticOnlyTwinSse_static_method_twin_sse);

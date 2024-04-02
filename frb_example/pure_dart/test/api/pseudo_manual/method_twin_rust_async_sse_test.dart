@@ -133,10 +133,12 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('StaticOnly', () async {
-    expect(await StaticOnlyTwinRustAsyncSse.staticMethod(a: 42), 42);
+    expect(await StaticOnlyTwinRustAsyncSse.staticMethodTwinRustAsyncSse(a: 42),
+        42);
   });
 
   test('StaticGetterOnly', () async {
-    expect(await StaticGetterOnlyTwinRustAsyncSse.staticGetter, 42);
+    expect(await StaticGetterOnlyTwinRustAsyncSse.staticGetterTwinRustAsyncSse,
+        42);
   });
 }
