@@ -132,6 +132,25 @@ impl SimpleStructTwinNormal {
     }
 }
 
+// #1818
+pub enum SimpleEnumTwinNormal {
+    First,
+    Second(String),
+}
+
+impl SimpleEnumTwinNormal {
+    pub fn return_self_twin_normal(one: String) -> Self {
+        Self::Second(one)
+    }
+
+    pub fn simple_method_twin_normal(&self) -> String {
+        match self {
+            SimpleEnumTwinNormal::First => "".to_owned(),
+            SimpleEnumTwinNormal::Second(inner) => inner.to_owned(),
+        }
+    }
+}
+
 // #1838
 pub struct StaticOnlyTwinNormal {
     pub one: String,
