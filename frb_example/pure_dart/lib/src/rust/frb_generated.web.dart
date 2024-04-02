@@ -33410,6 +33410,13 @@ class RustLibWire implements BaseWire {
           NativePortType port_, List<dynamic> arg) =>
       wasmModule.wire_SimpleStructTwinNormal_vec_self_twin_normal(port_, arg);
 
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_StaticGetterOnlyTwinNormal_static_getter() =>
+          wasmModule.wire_StaticGetterOnlyTwinNormal_static_getter();
+
+  void wire_StaticOnlyTwinNormal_static_method(NativePortType port_, int a) =>
+      wasmModule.wire_StaticOnlyTwinNormal_static_method(port_, a);
+
   void wire_SumWithTwinNormal_sum_twin_normal(
           NativePortType port_, List<dynamic> that, int y, int z) =>
       wasmModule.wire_SumWithTwinNormal_sum_twin_normal(port_, that, y, z);
@@ -50664,6 +50671,12 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_SimpleStructTwinNormal_vec_self_twin_normal(
       NativePortType port_, List<dynamic> arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_StaticGetterOnlyTwinNormal_static_getter();
+
+  external void wire_StaticOnlyTwinNormal_static_method(
+      NativePortType port_, int a);
 
   external void wire_SumWithTwinNormal_sum_twin_normal(
       NativePortType port_, List<dynamic> that, int y, int z);

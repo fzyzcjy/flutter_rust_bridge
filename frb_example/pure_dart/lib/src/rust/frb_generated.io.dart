@@ -38711,6 +38711,34 @@ class RustLibWire implements BaseWire {
           void Function(
               int, ffi.Pointer<wire_cst_list_simple_struct_twin_normal>)>();
 
+  WireSyncRust2DartDco wire_StaticGetterOnlyTwinNormal_static_getter() {
+    return _wire_StaticGetterOnlyTwinNormal_static_getter();
+  }
+
+  late final _wire_StaticGetterOnlyTwinNormal_static_getterPtr = _lookup<
+          ffi.NativeFunction<WireSyncRust2DartDco Function()>>(
+      'frbgen_frb_example_pure_dart_wire_StaticGetterOnlyTwinNormal_static_getter');
+  late final _wire_StaticGetterOnlyTwinNormal_static_getter =
+      _wire_StaticGetterOnlyTwinNormal_static_getterPtr
+          .asFunction<WireSyncRust2DartDco Function()>();
+
+  void wire_StaticOnlyTwinNormal_static_method(
+    int port_,
+    int a,
+  ) {
+    return _wire_StaticOnlyTwinNormal_static_method(
+      port_,
+      a,
+    );
+  }
+
+  late final _wire_StaticOnlyTwinNormal_static_methodPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_StaticOnlyTwinNormal_static_method');
+  late final _wire_StaticOnlyTwinNormal_static_method =
+      _wire_StaticOnlyTwinNormal_static_methodPtr
+          .asFunction<void Function(int, int)>();
+
   void wire_SumWithTwinNormal_sum_twin_normal(
     int port_,
     ffi.Pointer<wire_cst_sum_with_twin_normal> that,

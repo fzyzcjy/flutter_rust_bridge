@@ -7,6 +7,9 @@ import '../frb_generated.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+// The type `StaticGetterOnlyTwinNormal` is not used by any `pub` functions, thus it is ignored.
+// The type `StaticOnlyTwinNormal` is not used by any `pub` functions, thus it is ignored.
+
 Future<SumWithTwinNormal> getSumStructTwinNormal({dynamic hint}) =>
     RustLib.instance.api.getSumStructTwinNormal(hint: hint);
 
