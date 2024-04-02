@@ -11,6 +11,7 @@ use crate::codegen::ir::ty::structure::IrStruct;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use itertools::Itertools;
+use crate::codegen::generator::api_dart::spec_generator::class::method::generate_api_methods;
 
 const BACKTRACE_IDENT: &str = "backtrace";
 
@@ -31,6 +32,8 @@ impl<'a> EnumRefApiDartGenerator<'a> {
         let maybe_implements_exception =
             generate_dart_maybe_implements_exception(self.ir.is_exception);
 
+        let methods_str = generate_api_methods(&src.name, self.context).join("\n");
+
         Some(ApiDartGeneratedClass {
             namespace: src.name.namespace.clone(),
             code: format!(
@@ -39,6 +42,8 @@ impl<'a> EnumRefApiDartGenerator<'a> {
                     const {name}._();
 
                     {variants}
+
+                    {methods_str}
                 }}",
             ),
             needs_freezed: true,
