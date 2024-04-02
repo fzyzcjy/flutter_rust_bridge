@@ -316,17 +316,20 @@ class NonCloneSimpleTwinMoi extends RustOpaque {
   Future<void> instanceMethodArgBorrowTwinMoi({dynamic hint}) =>
       RustLib.instance.api.nonCloneSimpleTwinMoiInstanceMethodArgBorrowTwinMoi(
         that: this,
+        hint: hint,
       );
 
   Future<void> instanceMethodArgMutBorrowTwinMoi({dynamic hint}) =>
       RustLib.instance.api
           .nonCloneSimpleTwinMoiInstanceMethodArgMutBorrowTwinMoi(
         that: this,
+        hint: hint,
       );
 
   Future<void> instanceMethodArgOwnTwinMoi({dynamic hint}) =>
       RustLib.instance.api.nonCloneSimpleTwinMoiInstanceMethodArgOwnTwinMoi(
         that: this,
+        hint: hint,
       );
 
   Future<int> get instanceMethodGetterTwinMoi =>
@@ -338,41 +341,53 @@ class NonCloneSimpleTwinMoi extends RustOpaque {
           {dynamic hint}) =>
       RustLib.instance.api.nonCloneSimpleTwinMoiInstanceMethodReturnOwnTwinMoi(
         that: this,
+        hint: hint,
       );
 
   /// named constructor
   static Future<NonCloneSimpleTwinMoi> newCustomNameTwinMoi({dynamic hint}) =>
-      RustLib.instance.api
-          .nonCloneSimpleTwinMoiNewCustomNameTwinMoi(hint: hint);
+      RustLib.instance.api.nonCloneSimpleTwinMoiNewCustomNameTwinMoi(
+        hint: hint,
+      );
 
   /// unnamed constructor
   static Future<NonCloneSimpleTwinMoi> newTwinMoi({dynamic hint}) =>
-      RustLib.instance.api.nonCloneSimpleTwinMoiNewTwinMoi(hint: hint);
+      RustLib.instance.api.nonCloneSimpleTwinMoiNewTwinMoi(
+        hint: hint,
+      );
 
   /// constructor with Result
   static Future<NonCloneSimpleTwinMoi> newWithResultTwinMoi({dynamic hint}) =>
-      RustLib.instance.api
-          .nonCloneSimpleTwinMoiNewWithResultTwinMoi(hint: hint);
+      RustLib.instance.api.nonCloneSimpleTwinMoiNewWithResultTwinMoi(
+        hint: hint,
+      );
 
   static Future<void> staticMethodArgBorrowTwinMoi(
           {required NonCloneSimpleTwinMoi arg, dynamic hint}) =>
       RustLib.instance.api.nonCloneSimpleTwinMoiStaticMethodArgBorrowTwinMoi(
-          arg: arg, hint: hint);
+        arg: arg,
+        hint: hint,
+      );
 
   static Future<void> staticMethodArgMutBorrowTwinMoi(
           {required NonCloneSimpleTwinMoi arg, dynamic hint}) =>
       RustLib.instance.api.nonCloneSimpleTwinMoiStaticMethodArgMutBorrowTwinMoi(
-          arg: arg, hint: hint);
+        arg: arg,
+        hint: hint,
+      );
 
   static Future<void> staticMethodArgOwnTwinMoi(
           {required NonCloneSimpleTwinMoi arg, dynamic hint}) =>
-      RustLib.instance.api
-          .nonCloneSimpleTwinMoiStaticMethodArgOwnTwinMoi(arg: arg, hint: hint);
+      RustLib.instance.api.nonCloneSimpleTwinMoiStaticMethodArgOwnTwinMoi(
+        arg: arg,
+        hint: hint,
+      );
 
   static Future<NonCloneSimpleTwinMoi> staticMethodReturnOwnTwinMoi(
           {dynamic hint}) =>
-      RustLib.instance.api
-          .nonCloneSimpleTwinMoiStaticMethodReturnOwnTwinMoi(hint: hint);
+      RustLib.instance.api.nonCloneSimpleTwinMoiStaticMethodReturnOwnTwinMoi(
+        hint: hint,
+      );
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinMoi>>

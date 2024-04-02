@@ -33,7 +33,7 @@ class StaticGetterOnlyTwinNormal extends RustOpaque {
   );
 
   static int get staticGetter =>
-      RustLib.instance.api.staticGetterOnlyTwinNormalStaticGetter(hint: hint);
+      RustLib.instance.api.staticGetterOnlyTwinNormalStaticGetter();
 }
 
 class ConcatenateWithTwinNormal {
@@ -46,30 +46,39 @@ class ConcatenateWithTwinNormal {
   static Future<String> concatenateStaticTwinNormal(
           {required String a, required String b, dynamic hint}) =>
       RustLib.instance.api.concatenateWithTwinNormalConcatenateStaticTwinNormal(
-          a: a, b: b, hint: hint);
+        a: a,
+        b: b,
+        hint: hint,
+      );
 
   Future<String> concatenateTwinNormal({required String b, dynamic hint}) =>
       RustLib.instance.api.concatenateWithTwinNormalConcatenateTwinNormal(
         that: this,
         b: b,
+        hint: hint,
       );
 
   static Stream<int> handleSomeStaticStreamSinkSingleArgTwinNormal(
           {dynamic hint}) =>
       RustLib.instance.api
           .concatenateWithTwinNormalHandleSomeStaticStreamSinkSingleArgTwinNormal(
-              hint: hint);
+        hint: hint,
+      );
 
   static Stream<Log2TwinNormal> handleSomeStaticStreamSinkTwinNormal(
           {required int key, required int max, dynamic hint}) =>
       RustLib.instance.api
           .concatenateWithTwinNormalHandleSomeStaticStreamSinkTwinNormal(
-              key: key, max: max, hint: hint);
+        key: key,
+        max: max,
+        hint: hint,
+      );
 
   Stream<int> handleSomeStreamSinkAt1TwinNormal({dynamic hint}) =>
       RustLib.instance.api
           .concatenateWithTwinNormalHandleSomeStreamSinkAt1TwinNormal(
         that: this,
+        hint: hint,
       );
 
   Stream<Log2TwinNormal> handleSomeStreamSinkTwinNormal(
@@ -79,12 +88,15 @@ class ConcatenateWithTwinNormal {
         that: this,
         key: key,
         max: max,
+        hint: hint,
       );
 
   static Future<ConcatenateWithTwinNormal> newTwinNormal(
           {required String a, dynamic hint}) =>
-      RustLib.instance.api
-          .concatenateWithTwinNormalNewTwinNormal(a: a, hint: hint);
+      RustLib.instance.api.concatenateWithTwinNormalNewTwinNormal(
+        a: a,
+        hint: hint,
+      );
 
   Future<String> get simpleGetterTwinNormal =>
       RustLib.instance.api.concatenateWithTwinNormalSimpleGetterTwinNormal(
@@ -134,6 +146,7 @@ class MyCallableTwinNormal {
       RustLib.instance.api.myCallableTwinNormalCall(
         that: this,
         two: two,
+        hint: hint,
       );
 
   @override
@@ -158,18 +171,25 @@ class SimpleStructTwinNormal {
           {required SimpleStructTwinNormal a,
           required SimpleStructTwinNormal b,
           dynamic hint}) =>
-      RustLib.instance.api
-          .simpleStructTwinNormalArgSelfTwinNormal(a: a, b: b, hint: hint);
+      RustLib.instance.api.simpleStructTwinNormalArgSelfTwinNormal(
+        a: a,
+        b: b,
+        hint: hint,
+      );
 
   static Future<SimpleStructTwinNormal> returnSelfTwinNormal(
           {required String one, dynamic hint}) =>
-      RustLib.instance.api
-          .simpleStructTwinNormalReturnSelfTwinNormal(one: one, hint: hint);
+      RustLib.instance.api.simpleStructTwinNormalReturnSelfTwinNormal(
+        one: one,
+        hint: hint,
+      );
 
   static Future<List<String>> vecSelfTwinNormal(
           {required List<SimpleStructTwinNormal> arg, dynamic hint}) =>
-      RustLib.instance.api
-          .simpleStructTwinNormalVecSelfTwinNormal(arg: arg, hint: hint);
+      RustLib.instance.api.simpleStructTwinNormalVecSelfTwinNormal(
+        arg: arg,
+        hint: hint,
+      );
 
   @override
   int get hashCode => one.hashCode;
@@ -190,7 +210,10 @@ class StaticOnlyTwinNormal {
   });
 
   static Future<int> staticMethod({required int a, dynamic hint}) =>
-      RustLib.instance.api.staticOnlyTwinNormalStaticMethod(a: a, hint: hint);
+      RustLib.instance.api.staticOnlyTwinNormalStaticMethod(
+        a: a,
+        hint: hint,
+      );
 
   @override
   int get hashCode => one.hashCode;
@@ -215,6 +238,7 @@ class SumWithTwinNormal {
         that: this,
         y: y,
         z: z,
+        hint: hint,
       );
 
   @override

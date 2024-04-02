@@ -191,28 +191,36 @@ class CustomStructTwinSync {
 
   static CustomStructTwinSync newTwinSync(
           {required String message, dynamic hint}) =>
-      RustLib.instance.api
-          .customStructTwinSyncNewTwinSync(message: message, hint: hint);
+      RustLib.instance.api.customStructTwinSyncNewTwinSync(
+        message: message,
+        hint: hint,
+      );
 
   void nonstaticReturnCustomStructErrorTwinSync({dynamic hint}) =>
       RustLib.instance.api
           .customStructTwinSyncNonstaticReturnCustomStructErrorTwinSync(
         that: this,
+        hint: hint,
       );
 
   int nonstaticReturnCustomStructOkTwinSync({dynamic hint}) =>
       RustLib.instance.api
           .customStructTwinSyncNonstaticReturnCustomStructOkTwinSync(
         that: this,
+        hint: hint,
       );
 
-  static void staticReturnCustomStructErrorTwinSync({dynamic hint}) => RustLib
-      .instance.api
-      .customStructTwinSyncStaticReturnCustomStructErrorTwinSync(hint: hint);
+  static void staticReturnCustomStructErrorTwinSync({dynamic hint}) =>
+      RustLib.instance.api
+          .customStructTwinSyncStaticReturnCustomStructErrorTwinSync(
+        hint: hint,
+      );
 
   static int staticReturnCustomStructOkTwinSync({dynamic hint}) =>
       RustLib.instance.api
-          .customStructTwinSyncStaticReturnCustomStructOkTwinSync(hint: hint);
+          .customStructTwinSyncStaticReturnCustomStructOkTwinSync(
+        hint: hint,
+      );
 
   @override
   int get hashCode => message.hashCode;
@@ -233,28 +241,34 @@ class SomeStructTwinSync {
   });
 
   static SomeStructTwinSync newTwinSync({required int value, dynamic hint}) =>
-      RustLib.instance.api
-          .someStructTwinSyncNewTwinSync(value: value, hint: hint);
+      RustLib.instance.api.someStructTwinSyncNewTwinSync(
+        value: value,
+        hint: hint,
+      );
 
   int nonStaticReturnErrCustomErrorTwinSync({dynamic hint}) =>
       RustLib.instance.api
           .someStructTwinSyncNonStaticReturnErrCustomErrorTwinSync(
         that: this,
+        hint: hint,
       );
 
   int nonStaticReturnOkCustomErrorTwinSync({dynamic hint}) =>
       RustLib.instance.api
           .someStructTwinSyncNonStaticReturnOkCustomErrorTwinSync(
         that: this,
+        hint: hint,
       );
 
   static int staticReturnErrCustomErrorTwinSync({dynamic hint}) =>
-      RustLib.instance.api
-          .someStructTwinSyncStaticReturnErrCustomErrorTwinSync(hint: hint);
+      RustLib.instance.api.someStructTwinSyncStaticReturnErrCustomErrorTwinSync(
+        hint: hint,
+      );
 
   static int staticReturnOkCustomErrorTwinSync({dynamic hint}) =>
-      RustLib.instance.api
-          .someStructTwinSyncStaticReturnOkCustomErrorTwinSync(hint: hint);
+      RustLib.instance.api.someStructTwinSyncStaticReturnOkCustomErrorTwinSync(
+        hint: hint,
+      );
 
   @override
   int get hashCode => value.hashCode;

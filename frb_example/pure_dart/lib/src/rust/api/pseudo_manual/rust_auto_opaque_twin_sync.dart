@@ -302,17 +302,20 @@ class NonCloneSimpleTwinSync extends RustOpaque {
   void instanceMethodArgBorrowTwinSync({dynamic hint}) => RustLib.instance.api
           .nonCloneSimpleTwinSyncInstanceMethodArgBorrowTwinSync(
         that: this,
+        hint: hint,
       );
 
   void instanceMethodArgMutBorrowTwinSync({dynamic hint}) =>
       RustLib.instance.api
           .nonCloneSimpleTwinSyncInstanceMethodArgMutBorrowTwinSync(
         that: this,
+        hint: hint,
       );
 
   void instanceMethodArgOwnTwinSync({dynamic hint}) =>
       RustLib.instance.api.nonCloneSimpleTwinSyncInstanceMethodArgOwnTwinSync(
         that: this,
+        hint: hint,
       );
 
   int get instanceMethodGetterTwinSync =>
@@ -324,41 +327,53 @@ class NonCloneSimpleTwinSync extends RustOpaque {
       RustLib.instance.api
           .nonCloneSimpleTwinSyncInstanceMethodReturnOwnTwinSync(
         that: this,
+        hint: hint,
       );
 
   /// named constructor
   static NonCloneSimpleTwinSync newCustomNameTwinSync({dynamic hint}) =>
-      RustLib.instance.api
-          .nonCloneSimpleTwinSyncNewCustomNameTwinSync(hint: hint);
+      RustLib.instance.api.nonCloneSimpleTwinSyncNewCustomNameTwinSync(
+        hint: hint,
+      );
 
   /// unnamed constructor
   static NonCloneSimpleTwinSync newTwinSync({dynamic hint}) =>
-      RustLib.instance.api.nonCloneSimpleTwinSyncNewTwinSync(hint: hint);
+      RustLib.instance.api.nonCloneSimpleTwinSyncNewTwinSync(
+        hint: hint,
+      );
 
   /// constructor with Result
   static NonCloneSimpleTwinSync newWithResultTwinSync({dynamic hint}) =>
-      RustLib.instance.api
-          .nonCloneSimpleTwinSyncNewWithResultTwinSync(hint: hint);
+      RustLib.instance.api.nonCloneSimpleTwinSyncNewWithResultTwinSync(
+        hint: hint,
+      );
 
   static void staticMethodArgBorrowTwinSync(
           {required NonCloneSimpleTwinSync arg, dynamic hint}) =>
       RustLib.instance.api.nonCloneSimpleTwinSyncStaticMethodArgBorrowTwinSync(
-          arg: arg, hint: hint);
+        arg: arg,
+        hint: hint,
+      );
 
   static void staticMethodArgMutBorrowTwinSync(
           {required NonCloneSimpleTwinSync arg, dynamic hint}) =>
       RustLib.instance.api
           .nonCloneSimpleTwinSyncStaticMethodArgMutBorrowTwinSync(
-              arg: arg, hint: hint);
+        arg: arg,
+        hint: hint,
+      );
 
   static void staticMethodArgOwnTwinSync(
           {required NonCloneSimpleTwinSync arg, dynamic hint}) =>
       RustLib.instance.api.nonCloneSimpleTwinSyncStaticMethodArgOwnTwinSync(
-          arg: arg, hint: hint);
+        arg: arg,
+        hint: hint,
+      );
 
   static NonCloneSimpleTwinSync staticMethodReturnOwnTwinSync({dynamic hint}) =>
-      RustLib.instance.api
-          .nonCloneSimpleTwinSyncStaticMethodReturnOwnTwinSync(hint: hint);
+      RustLib.instance.api.nonCloneSimpleTwinSyncStaticMethodReturnOwnTwinSync(
+        hint: hint,
+      );
 }
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinSync>>
