@@ -126,6 +126,6 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('StaticGetterOnly', () async {
-    expect(StaticGetterOnlyTwinSync.staticGetter, 42);
+    expect(await StaticGetterOnlyTwinSync.staticGetter, 42);
   });
 }

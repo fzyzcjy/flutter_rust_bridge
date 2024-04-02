@@ -4710,15 +4710,16 @@ fn wire_SimpleStructTwinNormal_vec_self_twin_normal_impl(
     )
 }
 fn wire_StaticGetterOnlyTwinNormal_static_getter_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "StaticGetterOnlyTwinNormal_static_getter",
-            port: None,
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
             let message = unsafe {
@@ -4731,9 +4732,13 @@ fn wire_StaticGetterOnlyTwinNormal_static_getter_impl(
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
-            transform_result_sse((move || {
-                Result::<_, ()>::Ok(crate::api::method::StaticGetterOnlyTwinNormal::static_getter())
-            })())
+            move |context| {
+                transform_result_sse((move || {
+                    Result::<_, ()>::Ok(
+                        crate::api::method::StaticGetterOnlyTwinNormal::static_getter(),
+                    )
+                })())
+            }
         },
     )
 }
@@ -15126,17 +15131,19 @@ fn wire_SimpleStructTwinRustAsync_vec_self_twin_rust_async_impl(
                 } })
 }
 fn wire_StaticGetterOnlyTwinRustAsync_static_getter_twin_rust_async_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "StaticGetterOnlyTwinRustAsync_static_getter_twin_rust_async", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "StaticGetterOnlyTwinRustAsync_static_getter_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end();
-                transform_result_sse((move || {
-                     Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_rust_async::StaticGetterOnlyTwinRustAsync::static_getter_twin_rust_async().await)
-                })()) })
+            deserializer.end(); move |context| async move {
+                    transform_result_sse((move || async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_rust_async::StaticGetterOnlyTwinRustAsync::static_getter_twin_rust_async().await)
+                    })().await)
+                } })
 }
 fn wire_StaticOnlyTwinRustAsync_static_method_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
@@ -32493,6 +32500,7 @@ fn pde_ffi_dispatcher_primary_impl(
 152 => wire_SimpleStructTwinNormal_arg_self_twin_normal_impl(port, ptr, rust_vec_len, data_len),
 151 => wire_SimpleStructTwinNormal_return_self_twin_normal_impl(port, ptr, rust_vec_len, data_len),
 153 => wire_SimpleStructTwinNormal_vec_self_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+157 => wire_StaticGetterOnlyTwinNormal_static_getter_impl(port, ptr, rust_vec_len, data_len),
 156 => wire_StaticOnlyTwinNormal_static_method_impl(port, ptr, rust_vec_len, data_len),
 149 => wire_SumWithTwinNormal_sum_twin_normal_impl(port, ptr, rust_vec_len, data_len),
 140 => wire_get_sum_array_twin_normal_impl(port, ptr, rust_vec_len, data_len),
@@ -32849,6 +32857,7 @@ fn pde_ffi_dispatcher_primary_impl(
 697 => wire_SimpleStructTwinRustAsync_arg_self_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
 696 => wire_SimpleStructTwinRustAsync_return_self_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
 698 => wire_SimpleStructTwinRustAsync_vec_self_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+702 => wire_StaticGetterOnlyTwinRustAsync_static_getter_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
 701 => wire_StaticOnlyTwinRustAsync_static_method_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
 694 => wire_SumWithTwinRustAsync_sum_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
 685 => wire_get_sum_array_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
@@ -33113,7 +33122,6 @@ fn pde_ffi_dispatcher_sync_impl(
         76 => wire_sync_option_dart_opaque_twin_normal_impl(ptr, rust_vec_len, data_len),
         73 => wire_sync_option_loopback_twin_normal_impl(ptr, rust_vec_len, data_len),
         75 => wire_unwrap_dart_opaque_twin_normal_impl(ptr, rust_vec_len, data_len),
-        157 => wire_StaticGetterOnlyTwinNormal_static_getter_impl(ptr, rust_vec_len, data_len),
         228 => wire_boxed_blob_twin_sync_impl(ptr, rust_vec_len, data_len),
         232 => wire_func_test_id_twin_sync_impl(ptr, rust_vec_len, data_len),
         224 => wire_get_array_twin_sync_impl(ptr, rust_vec_len, data_len),
@@ -33400,11 +33408,6 @@ fn pde_ffi_dispatcher_sync_impl(
         681 => wire_func_hash_map_string_struct_twin_sync_impl(ptr, rust_vec_len, data_len),
         677 => wire_func_hash_set_i32_twin_sync_impl(ptr, rust_vec_len, data_len),
         679 => wire_func_hash_set_string_twin_sync_impl(ptr, rust_vec_len, data_len),
-        702 => wire_StaticGetterOnlyTwinRustAsync_static_getter_twin_rust_async_impl(
-            ptr,
-            rust_vec_len,
-            data_len,
-        ),
         707 => wire_ConcatenateWithTwinSync_concatenate_static_twin_sync_impl(
             ptr,
             rust_vec_len,

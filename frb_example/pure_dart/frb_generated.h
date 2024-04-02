@@ -3622,7 +3622,7 @@ void frbgen_frb_example_pure_dart_wire_SimpleStructTwinNormal_return_self_twin_n
 void frbgen_frb_example_pure_dart_wire_SimpleStructTwinNormal_vec_self_twin_normal(int64_t port_,
                                                                                    struct wire_cst_list_simple_struct_twin_normal *arg);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_StaticGetterOnlyTwinNormal_static_getter(void);
+void frbgen_frb_example_pure_dart_wire_StaticGetterOnlyTwinNormal_static_getter(int64_t port_);
 
 void frbgen_frb_example_pure_dart_wire_StaticOnlyTwinNormal_static_method(int64_t port_, int32_t a);
 
@@ -7755,7 +7755,7 @@ void frbgen_frb_example_pure_dart_wire_SimpleStructTwinRustAsync_return_self_twi
 void frbgen_frb_example_pure_dart_wire_SimpleStructTwinRustAsync_vec_self_twin_rust_async(int64_t port_,
                                                                                           struct wire_cst_list_simple_struct_twin_rust_async *arg);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_StaticGetterOnlyTwinRustAsync_static_getter_twin_rust_async(void);
+void frbgen_frb_example_pure_dart_wire_StaticGetterOnlyTwinRustAsync_static_getter_twin_rust_async(int64_t port_);
 
 void frbgen_frb_example_pure_dart_wire_StaticOnlyTwinRustAsync_static_method_twin_rust_async(int64_t port_,
                                                                                              int32_t a);
@@ -7842,9 +7842,10 @@ void frbgen_frb_example_pure_dart_wire_SimpleStructTwinRustAsyncSse_vec_self_twi
                                                                                                  int32_t rust_vec_len_,
                                                                                                  int32_t data_len_);
 
-WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire_StaticGetterOnlyTwinRustAsyncSse_static_getter_twin_rust_async_sse(uint8_t *ptr_,
-                                                                                                                          int32_t rust_vec_len_,
-                                                                                                                          int32_t data_len_);
+void frbgen_frb_example_pure_dart_wire_StaticGetterOnlyTwinRustAsyncSse_static_getter_twin_rust_async_sse(int64_t port_,
+                                                                                                          uint8_t *ptr_,
+                                                                                                          int32_t rust_vec_len_,
+                                                                                                          int32_t data_len_);
 
 void frbgen_frb_example_pure_dart_wire_StaticOnlyTwinRustAsyncSse_static_method_twin_rust_async_sse(int64_t port_,
                                                                                                     uint8_t *ptr_,
@@ -7936,9 +7937,10 @@ void frbgen_frb_example_pure_dart_wire_SimpleStructTwinSse_vec_self_twin_sse(int
                                                                              int32_t rust_vec_len_,
                                                                              int32_t data_len_);
 
-WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire_StaticGetterOnlyTwinSse_static_getter_twin_sse(uint8_t *ptr_,
-                                                                                                      int32_t rust_vec_len_,
-                                                                                                      int32_t data_len_);
+void frbgen_frb_example_pure_dart_wire_StaticGetterOnlyTwinSse_static_getter_twin_sse(int64_t port_,
+                                                                                      uint8_t *ptr_,
+                                                                                      int32_t rust_vec_len_,
+                                                                                      int32_t data_len_);
 
 void frbgen_frb_example_pure_dart_wire_StaticOnlyTwinSse_static_method_twin_sse(int64_t port_,
                                                                                 uint8_t *ptr_,

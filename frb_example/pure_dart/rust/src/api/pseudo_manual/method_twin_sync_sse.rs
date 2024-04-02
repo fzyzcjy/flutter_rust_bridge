@@ -212,7 +212,7 @@ impl StaticOnlyTwinSyncSse {
 pub struct StaticGetterOnlyTwinSyncSse {}
 
 impl StaticGetterOnlyTwinSyncSse {
-    #[frb(sync, getter)]
+    #[frb(getter)]
     #[flutter_rust_bridge::frb(serialize)]
     #[flutter_rust_bridge::frb(sync)]
     pub fn static_getter_twin_sync_sse() -> i32 {

@@ -16369,8 +16369,9 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_SimpleStructTwinNormal_vec_s
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_StaticGetterOnlyTwinNormal_static_getter(
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_StaticGetterOnlyTwinNormal_static_getter_impl()
+    port_: i64,
+) {
+    wire_StaticGetterOnlyTwinNormal_static_getter_impl(port_)
 }
 
 #[no_mangle]
@@ -26650,8 +26651,9 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_SimpleStructTwinRustAsync_ve
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_StaticGetterOnlyTwinRustAsync_static_getter_twin_rust_async(
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_StaticGetterOnlyTwinRustAsync_static_getter_twin_rust_async_impl()
+    port_: i64,
+) {
+    wire_StaticGetterOnlyTwinRustAsync_static_getter_twin_rust_async_impl(port_)
 }
 
 #[no_mangle]
@@ -26889,11 +26891,13 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_SimpleStructTwinRustAsyncSse
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_StaticGetterOnlyTwinRustAsyncSse_static_getter_twin_rust_async_sse(
+    port_: i64,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+) {
     wire_StaticGetterOnlyTwinRustAsyncSse_static_getter_twin_rust_async_sse_impl(
+        port_,
         ptr_,
         rust_vec_len_,
         data_len_,
@@ -27112,11 +27116,12 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_SimpleStructTwinSse_vec_self
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_StaticGetterOnlyTwinSse_static_getter_twin_sse(
+    port_: i64,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_StaticGetterOnlyTwinSse_static_getter_twin_sse_impl(ptr_, rust_vec_len_, data_len_)
+) {
+    wire_StaticGetterOnlyTwinSse_static_getter_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]

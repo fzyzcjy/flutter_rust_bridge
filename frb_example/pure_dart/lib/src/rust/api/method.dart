@@ -34,7 +34,7 @@ class StaticGetterOnlyTwinNormal extends RustOpaque {
         .rust_arc_decrement_strong_count_StaticGetterOnlyTwinNormalPtr,
   );
 
-  static int get staticGetter =>
+  static Future<int> get staticGetter =>
       RustLib.instance.api.staticGetterOnlyTwinNormalStaticGetter();
 }
 

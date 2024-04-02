@@ -34,7 +34,7 @@ class StaticGetterOnlyTwinSse extends RustOpaque {
         .rust_arc_decrement_strong_count_StaticGetterOnlyTwinSsePtr,
   );
 
-  static int get staticGetterTwinSse =>
+  static Future<int> get staticGetterTwinSse =>
       RustLib.instance.api.staticGetterOnlyTwinSseStaticGetterTwinSse();
 }
 

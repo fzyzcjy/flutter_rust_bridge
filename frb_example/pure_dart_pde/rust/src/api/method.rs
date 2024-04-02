@@ -169,7 +169,7 @@ impl StaticOnlyTwinNormal {
 pub struct StaticGetterOnlyTwinNormal {}
 
 impl StaticGetterOnlyTwinNormal {
-    #[frb(sync, getter)]
+    #[frb(getter)]
     pub fn static_getter() -> i32 {
         42
     }

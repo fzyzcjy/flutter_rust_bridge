@@ -35,7 +35,7 @@ class StaticGetterOnlyTwinRustAsyncSse extends RustOpaque {
         .rust_arc_decrement_strong_count_StaticGetterOnlyTwinRustAsyncSsePtr,
   );
 
-  static int get staticGetterTwinRustAsyncSse => RustLib.instance.api
+  static Future<int> get staticGetterTwinRustAsyncSse => RustLib.instance.api
       .staticGetterOnlyTwinRustAsyncSseStaticGetterTwinRustAsyncSse();
 }
 

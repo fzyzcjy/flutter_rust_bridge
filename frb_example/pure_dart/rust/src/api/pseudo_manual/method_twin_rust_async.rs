@@ -171,7 +171,7 @@ impl StaticOnlyTwinRustAsync {
 pub struct StaticGetterOnlyTwinRustAsync {}
 
 impl StaticGetterOnlyTwinRustAsync {
-    #[frb(sync, getter)]
+    #[frb(getter)]
     pub async fn static_getter_twin_rust_async() -> i32 {
         42
     }

@@ -613,7 +613,7 @@ abstract class RustLibApi extends BaseApi {
   Future<List<String>> simpleStructTwinNormalVecSelfTwinNormal(
       {required List<SimpleStructTwinNormal> arg, dynamic hint});
 
-  int staticGetterOnlyTwinNormalStaticGetter({dynamic hint});
+  Future<int> staticGetterOnlyTwinNormalStaticGetter({dynamic hint});
 
   Future<int> staticOnlyTwinNormalStaticMethod({required int a, dynamic hint});
 
@@ -2154,7 +2154,8 @@ abstract class RustLibApi extends BaseApi {
   Future<List<String>> simpleStructTwinRustAsyncVecSelfTwinRustAsync(
       {required List<SimpleStructTwinRustAsync> arg, dynamic hint});
 
-  int staticGetterOnlyTwinRustAsyncStaticGetterTwinRustAsync({dynamic hint});
+  Future<int> staticGetterOnlyTwinRustAsyncStaticGetterTwinRustAsync(
+      {dynamic hint});
 
   Future<int> staticOnlyTwinRustAsyncStaticMethodTwinRustAsync(
       {required int a, dynamic hint});
@@ -7831,11 +7832,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  int staticGetterOnlyTwinNormalStaticGetter({dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
+  Future<int> staticGetterOnlyTwinNormalStaticGetter({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 157)!;
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 157, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
@@ -22227,11 +22229,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  int staticGetterOnlyTwinRustAsyncStaticGetterTwinRustAsync({dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
+  Future<int> staticGetterOnlyTwinRustAsyncStaticGetterTwinRustAsync(
+      {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 702)!;
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 702, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,

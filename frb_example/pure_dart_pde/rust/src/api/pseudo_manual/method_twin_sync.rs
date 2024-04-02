@@ -191,7 +191,7 @@ impl StaticOnlyTwinSync {
 pub struct StaticGetterOnlyTwinSync {}
 
 impl StaticGetterOnlyTwinSync {
-    #[frb(sync, getter)]
+    #[frb(getter)]
     #[flutter_rust_bridge::frb(sync)]
     pub fn static_getter_twin_sync() -> i32 {
         42
