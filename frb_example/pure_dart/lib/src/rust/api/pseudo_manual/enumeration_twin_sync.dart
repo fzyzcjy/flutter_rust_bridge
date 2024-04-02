@@ -51,6 +51,8 @@ KitchenSinkTwinSync handleEnumStructTwinSync(
 
 @freezed
 sealed class DistanceTwinSync with _$DistanceTwinSync {
+  const DistanceTwinSync._();
+
   const factory DistanceTwinSync.unknown() = DistanceTwinSync_Unknown;
   const factory DistanceTwinSync.map(
     double field0,
@@ -69,6 +71,8 @@ enum EnumWithDiscriminantTwinSync {
 
 @freezed
 sealed class EnumWithItemMixedTwinSync with _$EnumWithItemMixedTwinSync {
+  const EnumWithItemMixedTwinSync._();
+
   const factory EnumWithItemMixedTwinSync.a() = EnumWithItemMixedTwinSync_A;
   const factory EnumWithItemMixedTwinSync.b(
     Uint8List field0,
@@ -80,6 +84,8 @@ sealed class EnumWithItemMixedTwinSync with _$EnumWithItemMixedTwinSync {
 
 @freezed
 sealed class EnumWithItemStructTwinSync with _$EnumWithItemStructTwinSync {
+  const EnumWithItemStructTwinSync._();
+
   const factory EnumWithItemStructTwinSync.a({
     required Uint8List aField,
   }) = EnumWithItemStructTwinSync_A;
@@ -90,6 +96,8 @@ sealed class EnumWithItemStructTwinSync with _$EnumWithItemStructTwinSync {
 
 @freezed
 sealed class EnumWithItemTupleTwinSync with _$EnumWithItemTupleTwinSync {
+  const EnumWithItemTupleTwinSync._();
+
   const factory EnumWithItemTupleTwinSync.a(
     Uint8List field0,
   ) = EnumWithItemTupleTwinSync_A;
@@ -100,6 +108,8 @@ sealed class EnumWithItemTupleTwinSync with _$EnumWithItemTupleTwinSync {
 
 @freezed
 sealed class KitchenSinkTwinSync with _$KitchenSinkTwinSync {
+  const KitchenSinkTwinSync._();
+
   /// Comment on variant
   const factory KitchenSinkTwinSync.empty() = KitchenSinkTwinSync_Empty;
   const factory KitchenSinkTwinSync.primitives({
@@ -127,6 +137,8 @@ sealed class KitchenSinkTwinSync with _$KitchenSinkTwinSync {
 
 @freezed
 sealed class MeasureTwinSync with _$MeasureTwinSync {
+  const MeasureTwinSync._();
+
   const factory MeasureTwinSync.speed(
     SpeedTwinSync field0,
   ) = MeasureTwinSync_Speed;
@@ -158,6 +170,8 @@ class NoteTwinSync {
 
 @freezed
 sealed class SpeedTwinSync with _$SpeedTwinSync {
+  const SpeedTwinSync._();
+
   const factory SpeedTwinSync.unknown() = SpeedTwinSync_Unknown;
   const factory SpeedTwinSync.gps(
     double field0,

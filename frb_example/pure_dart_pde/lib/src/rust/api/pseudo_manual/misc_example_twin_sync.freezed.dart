@@ -120,8 +120,8 @@ class __$$AbcTwinSync_AImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AbcTwinSync_AImpl implements AbcTwinSync_A {
-  const _$AbcTwinSync_AImpl(this.field0);
+class _$AbcTwinSync_AImpl extends AbcTwinSync_A {
+  const _$AbcTwinSync_AImpl(this.field0) : super._();
 
   @override
   final ATwinSync field0;
@@ -223,8 +223,9 @@ class _$AbcTwinSync_AImpl implements AbcTwinSync_A {
   }
 }
 
-abstract class AbcTwinSync_A implements AbcTwinSync {
+abstract class AbcTwinSync_A extends AbcTwinSync {
   const factory AbcTwinSync_A(final ATwinSync field0) = _$AbcTwinSync_AImpl;
+  const AbcTwinSync_A._() : super._();
 
   @override
   ATwinSync get field0;
@@ -266,8 +267,8 @@ class __$$AbcTwinSync_BImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AbcTwinSync_BImpl implements AbcTwinSync_B {
-  const _$AbcTwinSync_BImpl(this.field0);
+class _$AbcTwinSync_BImpl extends AbcTwinSync_B {
+  const _$AbcTwinSync_BImpl(this.field0) : super._();
 
   @override
   final BTwinSync field0;
@@ -369,8 +370,9 @@ class _$AbcTwinSync_BImpl implements AbcTwinSync_B {
   }
 }
 
-abstract class AbcTwinSync_B implements AbcTwinSync {
+abstract class AbcTwinSync_B extends AbcTwinSync {
   const factory AbcTwinSync_B(final BTwinSync field0) = _$AbcTwinSync_BImpl;
+  const AbcTwinSync_B._() : super._();
 
   @override
   BTwinSync get field0;
@@ -412,8 +414,8 @@ class __$$AbcTwinSync_CImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AbcTwinSync_CImpl implements AbcTwinSync_C {
-  const _$AbcTwinSync_CImpl(this.field0);
+class _$AbcTwinSync_CImpl extends AbcTwinSync_C {
+  const _$AbcTwinSync_CImpl(this.field0) : super._();
 
   @override
   final CTwinSync field0;
@@ -515,8 +517,9 @@ class _$AbcTwinSync_CImpl implements AbcTwinSync_C {
   }
 }
 
-abstract class AbcTwinSync_C implements AbcTwinSync {
+abstract class AbcTwinSync_C extends AbcTwinSync {
   const factory AbcTwinSync_C(final CTwinSync field0) = _$AbcTwinSync_CImpl;
+  const AbcTwinSync_C._() : super._();
 
   @override
   CTwinSync get field0;
@@ -558,8 +561,8 @@ class __$$AbcTwinSync_JustIntImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AbcTwinSync_JustIntImpl implements AbcTwinSync_JustInt {
-  const _$AbcTwinSync_JustIntImpl(this.field0);
+class _$AbcTwinSync_JustIntImpl extends AbcTwinSync_JustInt {
+  const _$AbcTwinSync_JustIntImpl(this.field0) : super._();
 
   @override
   final int field0;
@@ -662,9 +665,10 @@ class _$AbcTwinSync_JustIntImpl implements AbcTwinSync_JustInt {
   }
 }
 
-abstract class AbcTwinSync_JustInt implements AbcTwinSync {
+abstract class AbcTwinSync_JustInt extends AbcTwinSync {
   const factory AbcTwinSync_JustInt(final int field0) =
       _$AbcTwinSync_JustIntImpl;
+  const AbcTwinSync_JustInt._() : super._();
 
   @override
   int get field0;

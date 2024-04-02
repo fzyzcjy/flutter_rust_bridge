@@ -64,6 +64,8 @@ class ATwinNormal {
 
 @freezed
 sealed class AbcTwinNormal with _$AbcTwinNormal {
+  const AbcTwinNormal._();
+
   const factory AbcTwinNormal.a(
     ATwinNormal field0,
   ) = AbcTwinNormal_A;

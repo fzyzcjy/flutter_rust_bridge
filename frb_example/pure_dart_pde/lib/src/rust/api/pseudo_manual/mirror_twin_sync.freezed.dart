@@ -118,8 +118,8 @@ class __$$ApplicationMessage_DisplayMessageImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ApplicationMessage_DisplayMessageImpl
-    implements ApplicationMessage_DisplayMessage {
-  const _$ApplicationMessage_DisplayMessageImpl(this.field0);
+    extends ApplicationMessage_DisplayMessage {
+  const _$ApplicationMessage_DisplayMessageImpl(this.field0) : super._();
 
   @override
   final String field0;
@@ -218,9 +218,10 @@ class _$ApplicationMessage_DisplayMessageImpl
   }
 }
 
-abstract class ApplicationMessage_DisplayMessage implements ApplicationMessage {
+abstract class ApplicationMessage_DisplayMessage extends ApplicationMessage {
   const factory ApplicationMessage_DisplayMessage(final String field0) =
       _$ApplicationMessage_DisplayMessageImpl;
+  const ApplicationMessage_DisplayMessage._() : super._();
 
   String get field0;
   @JsonKey(ignore: true)
@@ -271,9 +272,9 @@ class __$$ApplicationMessage_RenderPixelImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ApplicationMessage_RenderPixelImpl
-    implements ApplicationMessage_RenderPixel {
-  const _$ApplicationMessage_RenderPixelImpl(
-      {required this.x, required this.y});
+    extends ApplicationMessage_RenderPixel {
+  const _$ApplicationMessage_RenderPixelImpl({required this.x, required this.y})
+      : super._();
 
   @override
   final int x;
@@ -375,10 +376,11 @@ class _$ApplicationMessage_RenderPixelImpl
   }
 }
 
-abstract class ApplicationMessage_RenderPixel implements ApplicationMessage {
+abstract class ApplicationMessage_RenderPixel extends ApplicationMessage {
   const factory ApplicationMessage_RenderPixel(
       {required final int x,
       required final int y}) = _$ApplicationMessage_RenderPixelImpl;
+  const ApplicationMessage_RenderPixel._() : super._();
 
   int get x;
   int get y;
@@ -409,8 +411,8 @@ class __$$ApplicationMessage_ExitImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ApplicationMessage_ExitImpl implements ApplicationMessage_Exit {
-  const _$ApplicationMessage_ExitImpl();
+class _$ApplicationMessage_ExitImpl extends ApplicationMessage_Exit {
+  const _$ApplicationMessage_ExitImpl() : super._();
 
   @override
   String toString() {
@@ -497,8 +499,9 @@ class _$ApplicationMessage_ExitImpl implements ApplicationMessage_Exit {
   }
 }
 
-abstract class ApplicationMessage_Exit implements ApplicationMessage {
+abstract class ApplicationMessage_Exit extends ApplicationMessage {
   const factory ApplicationMessage_Exit() = _$ApplicationMessage_ExitImpl;
+  const ApplicationMessage_Exit._() : super._();
 }
 
 /// @nodoc
@@ -607,8 +610,8 @@ class __$$RawStringEnumMirrored_RawImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$RawStringEnumMirrored_RawImpl implements RawStringEnumMirrored_Raw {
-  const _$RawStringEnumMirrored_RawImpl(this.field0);
+class _$RawStringEnumMirrored_RawImpl extends RawStringEnumMirrored_Raw {
+  const _$RawStringEnumMirrored_RawImpl(this.field0) : super._();
 
   @override
   final RawStringMirrored field0;
@@ -707,9 +710,10 @@ class _$RawStringEnumMirrored_RawImpl implements RawStringEnumMirrored_Raw {
   }
 }
 
-abstract class RawStringEnumMirrored_Raw implements RawStringEnumMirrored {
+abstract class RawStringEnumMirrored_Raw extends RawStringEnumMirrored {
   const factory RawStringEnumMirrored_Raw(final RawStringMirrored field0) =
       _$RawStringEnumMirrored_RawImpl;
+  const RawStringEnumMirrored_Raw._() : super._();
 
   @override
   RawStringMirrored get field0;
@@ -754,9 +758,8 @@ class __$$RawStringEnumMirrored_NestedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$RawStringEnumMirrored_NestedImpl
-    implements RawStringEnumMirrored_Nested {
-  const _$RawStringEnumMirrored_NestedImpl(this.field0);
+class _$RawStringEnumMirrored_NestedImpl extends RawStringEnumMirrored_Nested {
+  const _$RawStringEnumMirrored_NestedImpl(this.field0) : super._();
 
   @override
   final NestedRawStringMirrored field0;
@@ -856,10 +859,11 @@ class _$RawStringEnumMirrored_NestedImpl
   }
 }
 
-abstract class RawStringEnumMirrored_Nested implements RawStringEnumMirrored {
+abstract class RawStringEnumMirrored_Nested extends RawStringEnumMirrored {
   const factory RawStringEnumMirrored_Nested(
           final NestedRawStringMirrored field0) =
       _$RawStringEnumMirrored_NestedImpl;
+  const RawStringEnumMirrored_Nested._() : super._();
 
   @override
   NestedRawStringMirrored get field0;
@@ -906,8 +910,8 @@ class __$$RawStringEnumMirrored_ListOfNestedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$RawStringEnumMirrored_ListOfNestedImpl
-    implements RawStringEnumMirrored_ListOfNested {
-  const _$RawStringEnumMirrored_ListOfNestedImpl(this.field0);
+    extends RawStringEnumMirrored_ListOfNested {
+  const _$RawStringEnumMirrored_ListOfNestedImpl(this.field0) : super._();
 
   @override
   final ListOfNestedRawStringMirrored field0;
@@ -1008,10 +1012,11 @@ class _$RawStringEnumMirrored_ListOfNestedImpl
 }
 
 abstract class RawStringEnumMirrored_ListOfNested
-    implements RawStringEnumMirrored {
+    extends RawStringEnumMirrored {
   const factory RawStringEnumMirrored_ListOfNested(
           final ListOfNestedRawStringMirrored field0) =
       _$RawStringEnumMirrored_ListOfNestedImpl;
+  const RawStringEnumMirrored_ListOfNested._() : super._();
 
   @override
   ListOfNestedRawStringMirrored get field0;

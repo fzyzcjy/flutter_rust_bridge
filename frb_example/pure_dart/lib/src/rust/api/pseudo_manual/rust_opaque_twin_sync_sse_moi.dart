@@ -205,6 +205,8 @@ class RwLockHideDataTwinSyncSseMoi extends RustOpaque {
 
 @freezed
 sealed class EnumOpaqueTwinSyncSseMoi with _$EnumOpaqueTwinSyncSseMoi {
+  const EnumOpaqueTwinSyncSseMoi._();
+
   const factory EnumOpaqueTwinSyncSseMoi.struct(
     HideDataTwinSyncSseMoi field0,
   ) = EnumOpaqueTwinSyncSseMoi_Struct;

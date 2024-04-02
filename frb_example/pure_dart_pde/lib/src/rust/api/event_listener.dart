@@ -29,5 +29,6 @@ class EventTwinNormal with _$EventTwinNormal {
   Future<String> asStringTwinNormal({dynamic hint}) =>
       RustLib.instance.api.eventTwinNormalAsStringTwinNormal(
         that: this,
+        hint: hint,
       );
 }

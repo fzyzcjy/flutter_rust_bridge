@@ -125,4 +125,20 @@ Future<void> main({bool skipRustLibInit = false}) async {
           ['a', 'b']);
     });
   });
+
+  test('SimpleEnum', () async {
+    final obj =
+        await SimpleEnumTwinRustAsyncSse.returnSelfTwinRustAsyncSse(one: 'A');
+    expect(await obj.simpleMethodTwinRustAsyncSse(), 'A');
+  });
+
+  test('StaticOnly', () async {
+    expect(await StaticOnlyTwinRustAsyncSse.staticMethodTwinRustAsyncSse(a: 42),
+        42);
+  });
+
+  test('StaticGetterOnly', () async {
+    expect(await StaticGetterOnlyTwinRustAsyncSse.staticGetterTwinRustAsyncSse,
+        42);
+  });
 }

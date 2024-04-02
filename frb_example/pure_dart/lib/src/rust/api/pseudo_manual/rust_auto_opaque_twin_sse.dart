@@ -298,17 +298,20 @@ class NonCloneSimpleTwinSse extends RustOpaque {
   Future<void> instanceMethodArgBorrowTwinSse({dynamic hint}) =>
       RustLib.instance.api.nonCloneSimpleTwinSseInstanceMethodArgBorrowTwinSse(
         that: this,
+        hint: hint,
       );
 
   Future<void> instanceMethodArgMutBorrowTwinSse({dynamic hint}) =>
       RustLib.instance.api
           .nonCloneSimpleTwinSseInstanceMethodArgMutBorrowTwinSse(
         that: this,
+        hint: hint,
       );
 
   Future<void> instanceMethodArgOwnTwinSse({dynamic hint}) =>
       RustLib.instance.api.nonCloneSimpleTwinSseInstanceMethodArgOwnTwinSse(
         that: this,
+        hint: hint,
       );
 
   Future<int> get instanceMethodGetterTwinSse =>
@@ -320,41 +323,53 @@ class NonCloneSimpleTwinSse extends RustOpaque {
           {dynamic hint}) =>
       RustLib.instance.api.nonCloneSimpleTwinSseInstanceMethodReturnOwnTwinSse(
         that: this,
+        hint: hint,
       );
 
   /// named constructor
   static Future<NonCloneSimpleTwinSse> newCustomNameTwinSse({dynamic hint}) =>
-      RustLib.instance.api
-          .nonCloneSimpleTwinSseNewCustomNameTwinSse(hint: hint);
+      RustLib.instance.api.nonCloneSimpleTwinSseNewCustomNameTwinSse(
+        hint: hint,
+      );
 
   /// unnamed constructor
   static Future<NonCloneSimpleTwinSse> newTwinSse({dynamic hint}) =>
-      RustLib.instance.api.nonCloneSimpleTwinSseNewTwinSse(hint: hint);
+      RustLib.instance.api.nonCloneSimpleTwinSseNewTwinSse(
+        hint: hint,
+      );
 
   /// constructor with Result
   static Future<NonCloneSimpleTwinSse> newWithResultTwinSse({dynamic hint}) =>
-      RustLib.instance.api
-          .nonCloneSimpleTwinSseNewWithResultTwinSse(hint: hint);
+      RustLib.instance.api.nonCloneSimpleTwinSseNewWithResultTwinSse(
+        hint: hint,
+      );
 
   static Future<void> staticMethodArgBorrowTwinSse(
           {required NonCloneSimpleTwinSse arg, dynamic hint}) =>
       RustLib.instance.api.nonCloneSimpleTwinSseStaticMethodArgBorrowTwinSse(
-          arg: arg, hint: hint);
+        arg: arg,
+        hint: hint,
+      );
 
   static Future<void> staticMethodArgMutBorrowTwinSse(
           {required NonCloneSimpleTwinSse arg, dynamic hint}) =>
       RustLib.instance.api.nonCloneSimpleTwinSseStaticMethodArgMutBorrowTwinSse(
-          arg: arg, hint: hint);
+        arg: arg,
+        hint: hint,
+      );
 
   static Future<void> staticMethodArgOwnTwinSse(
           {required NonCloneSimpleTwinSse arg, dynamic hint}) =>
-      RustLib.instance.api
-          .nonCloneSimpleTwinSseStaticMethodArgOwnTwinSse(arg: arg, hint: hint);
+      RustLib.instance.api.nonCloneSimpleTwinSseStaticMethodArgOwnTwinSse(
+        arg: arg,
+        hint: hint,
+      );
 
   static Future<NonCloneSimpleTwinSse> staticMethodReturnOwnTwinSse(
           {dynamic hint}) =>
-      RustLib.instance.api
-          .nonCloneSimpleTwinSseStaticMethodReturnOwnTwinSse(hint: hint);
+      RustLib.instance.api.nonCloneSimpleTwinSseStaticMethodReturnOwnTwinSse(
+        hint: hint,
+      );
 }
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinSse>>
@@ -417,6 +432,8 @@ class StructWithGoodAndOpaqueFieldWithoutOptionTwinSse extends RustOpaque {
 
 @freezed
 sealed class EnumWithGoodAndOpaqueTwinSse with _$EnumWithGoodAndOpaqueTwinSse {
+  const EnumWithGoodAndOpaqueTwinSse._();
+
   const factory EnumWithGoodAndOpaqueTwinSse.good(
     String field0,
   ) = EnumWithGoodAndOpaqueTwinSse_Good;

@@ -69,6 +69,8 @@ class ATwinRustAsyncSse {
 
 @freezed
 sealed class AbcTwinRustAsyncSse with _$AbcTwinRustAsyncSse {
+  const AbcTwinRustAsyncSse._();
+
   const factory AbcTwinRustAsyncSse.a(
     ATwinRustAsyncSse field0,
   ) = AbcTwinRustAsyncSse_A;

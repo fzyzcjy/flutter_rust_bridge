@@ -134,8 +134,8 @@ class __$$EnumOpaqueTwinSse_StructImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumOpaqueTwinSse_StructImpl implements EnumOpaqueTwinSse_Struct {
-  const _$EnumOpaqueTwinSse_StructImpl(this.field0);
+class _$EnumOpaqueTwinSse_StructImpl extends EnumOpaqueTwinSse_Struct {
+  const _$EnumOpaqueTwinSse_StructImpl(this.field0) : super._();
 
   @override
   final HideDataTwinSse field0;
@@ -250,9 +250,10 @@ class _$EnumOpaqueTwinSse_StructImpl implements EnumOpaqueTwinSse_Struct {
   }
 }
 
-abstract class EnumOpaqueTwinSse_Struct implements EnumOpaqueTwinSse {
+abstract class EnumOpaqueTwinSse_Struct extends EnumOpaqueTwinSse {
   const factory EnumOpaqueTwinSse_Struct(final HideDataTwinSse field0) =
       _$EnumOpaqueTwinSse_StructImpl;
+  const EnumOpaqueTwinSse_Struct._() : super._();
 
   HideDataTwinSse get field0;
   @JsonKey(ignore: true)
@@ -296,8 +297,8 @@ class __$$EnumOpaqueTwinSse_PrimitiveImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumOpaqueTwinSse_PrimitiveImpl implements EnumOpaqueTwinSse_Primitive {
-  const _$EnumOpaqueTwinSse_PrimitiveImpl(this.field0);
+class _$EnumOpaqueTwinSse_PrimitiveImpl extends EnumOpaqueTwinSse_Primitive {
+  const _$EnumOpaqueTwinSse_PrimitiveImpl(this.field0) : super._();
 
   @override
   final I32 field0;
@@ -412,9 +413,10 @@ class _$EnumOpaqueTwinSse_PrimitiveImpl implements EnumOpaqueTwinSse_Primitive {
   }
 }
 
-abstract class EnumOpaqueTwinSse_Primitive implements EnumOpaqueTwinSse {
+abstract class EnumOpaqueTwinSse_Primitive extends EnumOpaqueTwinSse {
   const factory EnumOpaqueTwinSse_Primitive(final I32 field0) =
       _$EnumOpaqueTwinSse_PrimitiveImpl;
+  const EnumOpaqueTwinSse_Primitive._() : super._();
 
   I32 get field0;
   @JsonKey(ignore: true)
@@ -458,8 +460,8 @@ class __$$EnumOpaqueTwinSse_TraitObjImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumOpaqueTwinSse_TraitObjImpl implements EnumOpaqueTwinSse_TraitObj {
-  const _$EnumOpaqueTwinSse_TraitObjImpl(this.field0);
+class _$EnumOpaqueTwinSse_TraitObjImpl extends EnumOpaqueTwinSse_TraitObj {
+  const _$EnumOpaqueTwinSse_TraitObjImpl(this.field0) : super._();
 
   @override
   final BoxDartDebugTwinSse field0;
@@ -574,9 +576,10 @@ class _$EnumOpaqueTwinSse_TraitObjImpl implements EnumOpaqueTwinSse_TraitObj {
   }
 }
 
-abstract class EnumOpaqueTwinSse_TraitObj implements EnumOpaqueTwinSse {
+abstract class EnumOpaqueTwinSse_TraitObj extends EnumOpaqueTwinSse {
   const factory EnumOpaqueTwinSse_TraitObj(final BoxDartDebugTwinSse field0) =
       _$EnumOpaqueTwinSse_TraitObjImpl;
+  const EnumOpaqueTwinSse_TraitObj._() : super._();
 
   BoxDartDebugTwinSse get field0;
   @JsonKey(ignore: true)
@@ -619,8 +622,8 @@ class __$$EnumOpaqueTwinSse_MutexImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumOpaqueTwinSse_MutexImpl implements EnumOpaqueTwinSse_Mutex {
-  const _$EnumOpaqueTwinSse_MutexImpl(this.field0);
+class _$EnumOpaqueTwinSse_MutexImpl extends EnumOpaqueTwinSse_Mutex {
+  const _$EnumOpaqueTwinSse_MutexImpl(this.field0) : super._();
 
   @override
   final MutexHideDataTwinSse field0;
@@ -735,9 +738,10 @@ class _$EnumOpaqueTwinSse_MutexImpl implements EnumOpaqueTwinSse_Mutex {
   }
 }
 
-abstract class EnumOpaqueTwinSse_Mutex implements EnumOpaqueTwinSse {
+abstract class EnumOpaqueTwinSse_Mutex extends EnumOpaqueTwinSse {
   const factory EnumOpaqueTwinSse_Mutex(final MutexHideDataTwinSse field0) =
       _$EnumOpaqueTwinSse_MutexImpl;
+  const EnumOpaqueTwinSse_Mutex._() : super._();
 
   MutexHideDataTwinSse get field0;
   @JsonKey(ignore: true)
@@ -781,8 +785,8 @@ class __$$EnumOpaqueTwinSse_RwLockImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumOpaqueTwinSse_RwLockImpl implements EnumOpaqueTwinSse_RwLock {
-  const _$EnumOpaqueTwinSse_RwLockImpl(this.field0);
+class _$EnumOpaqueTwinSse_RwLockImpl extends EnumOpaqueTwinSse_RwLock {
+  const _$EnumOpaqueTwinSse_RwLockImpl(this.field0) : super._();
 
   @override
   final RwLockHideDataTwinSse field0;
@@ -897,9 +901,10 @@ class _$EnumOpaqueTwinSse_RwLockImpl implements EnumOpaqueTwinSse_RwLock {
   }
 }
 
-abstract class EnumOpaqueTwinSse_RwLock implements EnumOpaqueTwinSse {
+abstract class EnumOpaqueTwinSse_RwLock extends EnumOpaqueTwinSse {
   const factory EnumOpaqueTwinSse_RwLock(final RwLockHideDataTwinSse field0) =
       _$EnumOpaqueTwinSse_RwLockImpl;
+  const EnumOpaqueTwinSse_RwLock._() : super._();
 
   RwLockHideDataTwinSse get field0;
   @JsonKey(ignore: true)
@@ -928,8 +933,8 @@ class __$$EnumOpaqueTwinSse_NothingImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumOpaqueTwinSse_NothingImpl implements EnumOpaqueTwinSse_Nothing {
-  const _$EnumOpaqueTwinSse_NothingImpl();
+class _$EnumOpaqueTwinSse_NothingImpl extends EnumOpaqueTwinSse_Nothing {
+  const _$EnumOpaqueTwinSse_NothingImpl() : super._();
 
   @override
   String toString() {
@@ -1033,6 +1038,7 @@ class _$EnumOpaqueTwinSse_NothingImpl implements EnumOpaqueTwinSse_Nothing {
   }
 }
 
-abstract class EnumOpaqueTwinSse_Nothing implements EnumOpaqueTwinSse {
+abstract class EnumOpaqueTwinSse_Nothing extends EnumOpaqueTwinSse {
   const factory EnumOpaqueTwinSse_Nothing() = _$EnumOpaqueTwinSse_NothingImpl;
+  const EnumOpaqueTwinSse_Nothing._() : super._();
 }

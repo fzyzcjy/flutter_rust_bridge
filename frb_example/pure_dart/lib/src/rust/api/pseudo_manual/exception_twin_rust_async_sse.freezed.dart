@@ -142,9 +142,10 @@ class __$$CustomEnumErrorTwinRustAsyncSse_OneImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$CustomEnumErrorTwinRustAsyncSse_OneImpl
-    implements CustomEnumErrorTwinRustAsyncSse_One {
+    extends CustomEnumErrorTwinRustAsyncSse_One {
   const _$CustomEnumErrorTwinRustAsyncSse_OneImpl(
-      {required this.message, required this.backtrace});
+      {required this.message, required this.backtrace})
+      : super._();
 
   @override
   final String message;
@@ -241,10 +242,11 @@ class _$CustomEnumErrorTwinRustAsyncSse_OneImpl
 }
 
 abstract class CustomEnumErrorTwinRustAsyncSse_One
-    implements CustomEnumErrorTwinRustAsyncSse, FrbBacktracedException {
+    extends CustomEnumErrorTwinRustAsyncSse implements FrbBacktracedException {
   const factory CustomEnumErrorTwinRustAsyncSse_One(
           {required final String message, required final String backtrace}) =
       _$CustomEnumErrorTwinRustAsyncSse_OneImpl;
+  const CustomEnumErrorTwinRustAsyncSse_One._() : super._();
 
   @override
   String get message;
@@ -301,9 +303,10 @@ class __$$CustomEnumErrorTwinRustAsyncSse_TwoImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$CustomEnumErrorTwinRustAsyncSse_TwoImpl
-    implements CustomEnumErrorTwinRustAsyncSse_Two {
+    extends CustomEnumErrorTwinRustAsyncSse_Two {
   const _$CustomEnumErrorTwinRustAsyncSse_TwoImpl(
-      {required this.message, required this.backtrace});
+      {required this.message, required this.backtrace})
+      : super._();
 
   @override
   final int message;
@@ -400,10 +403,11 @@ class _$CustomEnumErrorTwinRustAsyncSse_TwoImpl
 }
 
 abstract class CustomEnumErrorTwinRustAsyncSse_Two
-    implements CustomEnumErrorTwinRustAsyncSse, FrbBacktracedException {
+    extends CustomEnumErrorTwinRustAsyncSse implements FrbBacktracedException {
   const factory CustomEnumErrorTwinRustAsyncSse_Two(
           {required final int message, required final String backtrace}) =
       _$CustomEnumErrorTwinRustAsyncSse_TwoImpl;
+  const CustomEnumErrorTwinRustAsyncSse_Two._() : super._();
 
   @override
   int get message;
@@ -544,9 +548,10 @@ class __$$CustomErrorTwinRustAsyncSse_Error0ImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$CustomErrorTwinRustAsyncSse_Error0Impl
-    implements CustomErrorTwinRustAsyncSse_Error0 {
+    extends CustomErrorTwinRustAsyncSse_Error0 {
   const _$CustomErrorTwinRustAsyncSse_Error0Impl(
-      {required this.e, required this.backtrace});
+      {required this.e, required this.backtrace})
+      : super._();
 
   @override
   final String e;
@@ -643,10 +648,11 @@ class _$CustomErrorTwinRustAsyncSse_Error0Impl
 }
 
 abstract class CustomErrorTwinRustAsyncSse_Error0
-    implements CustomErrorTwinRustAsyncSse, FrbBacktracedException {
+    extends CustomErrorTwinRustAsyncSse implements FrbBacktracedException {
   const factory CustomErrorTwinRustAsyncSse_Error0(
           {required final String e, required final String backtrace}) =
       _$CustomErrorTwinRustAsyncSse_Error0Impl;
+  const CustomErrorTwinRustAsyncSse_Error0._() : super._();
 
   @override
   String get e;
@@ -703,9 +709,10 @@ class __$$CustomErrorTwinRustAsyncSse_Error1ImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$CustomErrorTwinRustAsyncSse_Error1Impl
-    implements CustomErrorTwinRustAsyncSse_Error1 {
+    extends CustomErrorTwinRustAsyncSse_Error1 {
   const _$CustomErrorTwinRustAsyncSse_Error1Impl(
-      {required this.e, required this.backtrace});
+      {required this.e, required this.backtrace})
+      : super._();
 
   @override
   final int e;
@@ -802,10 +809,11 @@ class _$CustomErrorTwinRustAsyncSse_Error1Impl
 }
 
 abstract class CustomErrorTwinRustAsyncSse_Error1
-    implements CustomErrorTwinRustAsyncSse, FrbBacktracedException {
+    extends CustomErrorTwinRustAsyncSse implements FrbBacktracedException {
   const factory CustomErrorTwinRustAsyncSse_Error1(
           {required final int e, required final String backtrace}) =
       _$CustomErrorTwinRustAsyncSse_Error1Impl;
+  const CustomErrorTwinRustAsyncSse_Error1._() : super._();
 
   @override
   int get e;
@@ -933,8 +941,9 @@ class __$$CustomNestedError1TwinRustAsyncSse_CustomNested1ImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$CustomNestedError1TwinRustAsyncSse_CustomNested1Impl
-    implements CustomNestedError1TwinRustAsyncSse_CustomNested1 {
-  const _$CustomNestedError1TwinRustAsyncSse_CustomNested1Impl(this.field0);
+    extends CustomNestedError1TwinRustAsyncSse_CustomNested1 {
+  const _$CustomNestedError1TwinRustAsyncSse_CustomNested1Impl(this.field0)
+      : super._();
 
   @override
   final String field0;
@@ -1038,10 +1047,11 @@ class _$CustomNestedError1TwinRustAsyncSse_CustomNested1Impl
 }
 
 abstract class CustomNestedError1TwinRustAsyncSse_CustomNested1
-    implements CustomNestedError1TwinRustAsyncSse {
+    extends CustomNestedError1TwinRustAsyncSse {
   const factory CustomNestedError1TwinRustAsyncSse_CustomNested1(
           final String field0) =
       _$CustomNestedError1TwinRustAsyncSse_CustomNested1Impl;
+  const CustomNestedError1TwinRustAsyncSse_CustomNested1._() : super._();
 
   @override
   String get field0;
@@ -1102,8 +1112,9 @@ class __$$CustomNestedError1TwinRustAsyncSse_ErrorNestedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$CustomNestedError1TwinRustAsyncSse_ErrorNestedImpl
-    implements CustomNestedError1TwinRustAsyncSse_ErrorNested {
-  const _$CustomNestedError1TwinRustAsyncSse_ErrorNestedImpl(this.field0);
+    extends CustomNestedError1TwinRustAsyncSse_ErrorNested {
+  const _$CustomNestedError1TwinRustAsyncSse_ErrorNestedImpl(this.field0)
+      : super._();
 
   @override
   final CustomNestedError2TwinRustAsyncSse field0;
@@ -1207,10 +1218,11 @@ class _$CustomNestedError1TwinRustAsyncSse_ErrorNestedImpl
 }
 
 abstract class CustomNestedError1TwinRustAsyncSse_ErrorNested
-    implements CustomNestedError1TwinRustAsyncSse {
+    extends CustomNestedError1TwinRustAsyncSse {
   const factory CustomNestedError1TwinRustAsyncSse_ErrorNested(
           final CustomNestedError2TwinRustAsyncSse field0) =
       _$CustomNestedError1TwinRustAsyncSse_ErrorNestedImpl;
+  const CustomNestedError1TwinRustAsyncSse_ErrorNested._() : super._();
 
   @override
   CustomNestedError2TwinRustAsyncSse get field0;
@@ -1336,8 +1348,9 @@ class __$$CustomNestedError2TwinRustAsyncSse_CustomNested2ImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$CustomNestedError2TwinRustAsyncSse_CustomNested2Impl
-    implements CustomNestedError2TwinRustAsyncSse_CustomNested2 {
-  const _$CustomNestedError2TwinRustAsyncSse_CustomNested2Impl(this.field0);
+    extends CustomNestedError2TwinRustAsyncSse_CustomNested2 {
+  const _$CustomNestedError2TwinRustAsyncSse_CustomNested2Impl(this.field0)
+      : super._();
 
   @override
   final String field0;
@@ -1442,10 +1455,11 @@ class _$CustomNestedError2TwinRustAsyncSse_CustomNested2Impl
 }
 
 abstract class CustomNestedError2TwinRustAsyncSse_CustomNested2
-    implements CustomNestedError2TwinRustAsyncSse {
+    extends CustomNestedError2TwinRustAsyncSse {
   const factory CustomNestedError2TwinRustAsyncSse_CustomNested2(
           final String field0) =
       _$CustomNestedError2TwinRustAsyncSse_CustomNested2Impl;
+  const CustomNestedError2TwinRustAsyncSse_CustomNested2._() : super._();
 
   @override
   String get field0;
@@ -1501,9 +1515,10 @@ class __$$CustomNestedError2TwinRustAsyncSse_CustomNested2NumberImplCopyWithImpl
 /// @nodoc
 
 class _$CustomNestedError2TwinRustAsyncSse_CustomNested2NumberImpl
-    implements CustomNestedError2TwinRustAsyncSse_CustomNested2Number {
+    extends CustomNestedError2TwinRustAsyncSse_CustomNested2Number {
   const _$CustomNestedError2TwinRustAsyncSse_CustomNested2NumberImpl(
-      this.field0);
+      this.field0)
+      : super._();
 
   @override
   final int field0;
@@ -1609,10 +1624,11 @@ class _$CustomNestedError2TwinRustAsyncSse_CustomNested2NumberImpl
 }
 
 abstract class CustomNestedError2TwinRustAsyncSse_CustomNested2Number
-    implements CustomNestedError2TwinRustAsyncSse {
+    extends CustomNestedError2TwinRustAsyncSse {
   const factory CustomNestedError2TwinRustAsyncSse_CustomNested2Number(
           final int field0) =
       _$CustomNestedError2TwinRustAsyncSse_CustomNested2NumberImpl;
+  const CustomNestedError2TwinRustAsyncSse_CustomNested2Number._() : super._();
 
   @override
   int get field0;
@@ -1730,8 +1746,9 @@ class __$$CustomNestedErrorInnerTwinRustAsyncSse_ThreeImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$CustomNestedErrorInnerTwinRustAsyncSse_ThreeImpl
-    implements CustomNestedErrorInnerTwinRustAsyncSse_Three {
-  const _$CustomNestedErrorInnerTwinRustAsyncSse_ThreeImpl(this.field0);
+    extends CustomNestedErrorInnerTwinRustAsyncSse_Three {
+  const _$CustomNestedErrorInnerTwinRustAsyncSse_ThreeImpl(this.field0)
+      : super._();
 
   @override
   final String field0;
@@ -1830,9 +1847,10 @@ class _$CustomNestedErrorInnerTwinRustAsyncSse_ThreeImpl
 }
 
 abstract class CustomNestedErrorInnerTwinRustAsyncSse_Three
-    implements CustomNestedErrorInnerTwinRustAsyncSse {
+    extends CustomNestedErrorInnerTwinRustAsyncSse {
   const factory CustomNestedErrorInnerTwinRustAsyncSse_Three(
       final String field0) = _$CustomNestedErrorInnerTwinRustAsyncSse_ThreeImpl;
+  const CustomNestedErrorInnerTwinRustAsyncSse_Three._() : super._();
 
   @override
   String get field0;
@@ -1882,8 +1900,9 @@ class __$$CustomNestedErrorInnerTwinRustAsyncSse_FourImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$CustomNestedErrorInnerTwinRustAsyncSse_FourImpl
-    implements CustomNestedErrorInnerTwinRustAsyncSse_Four {
-  const _$CustomNestedErrorInnerTwinRustAsyncSse_FourImpl(this.field0);
+    extends CustomNestedErrorInnerTwinRustAsyncSse_Four {
+  const _$CustomNestedErrorInnerTwinRustAsyncSse_FourImpl(this.field0)
+      : super._();
 
   @override
   final int field0;
@@ -1982,9 +2001,10 @@ class _$CustomNestedErrorInnerTwinRustAsyncSse_FourImpl
 }
 
 abstract class CustomNestedErrorInnerTwinRustAsyncSse_Four
-    implements CustomNestedErrorInnerTwinRustAsyncSse {
+    extends CustomNestedErrorInnerTwinRustAsyncSse {
   const factory CustomNestedErrorInnerTwinRustAsyncSse_Four(final int field0) =
       _$CustomNestedErrorInnerTwinRustAsyncSse_FourImpl;
+  const CustomNestedErrorInnerTwinRustAsyncSse_Four._() : super._();
 
   @override
   int get field0;
@@ -2099,8 +2119,9 @@ class __$$CustomNestedErrorOuterTwinRustAsyncSse_OneImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$CustomNestedErrorOuterTwinRustAsyncSse_OneImpl
-    implements CustomNestedErrorOuterTwinRustAsyncSse_One {
-  const _$CustomNestedErrorOuterTwinRustAsyncSse_OneImpl(this.field0);
+    extends CustomNestedErrorOuterTwinRustAsyncSse_One {
+  const _$CustomNestedErrorOuterTwinRustAsyncSse_OneImpl(this.field0)
+      : super._();
 
   @override
   final String field0;
@@ -2198,9 +2219,10 @@ class _$CustomNestedErrorOuterTwinRustAsyncSse_OneImpl
 }
 
 abstract class CustomNestedErrorOuterTwinRustAsyncSse_One
-    implements CustomNestedErrorOuterTwinRustAsyncSse {
+    extends CustomNestedErrorOuterTwinRustAsyncSse {
   const factory CustomNestedErrorOuterTwinRustAsyncSse_One(
       final String field0) = _$CustomNestedErrorOuterTwinRustAsyncSse_OneImpl;
+  const CustomNestedErrorOuterTwinRustAsyncSse_One._() : super._();
 
   @override
   String get field0;
@@ -2259,8 +2281,9 @@ class __$$CustomNestedErrorOuterTwinRustAsyncSse_TwoImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$CustomNestedErrorOuterTwinRustAsyncSse_TwoImpl
-    implements CustomNestedErrorOuterTwinRustAsyncSse_Two {
-  const _$CustomNestedErrorOuterTwinRustAsyncSse_TwoImpl(this.field0);
+    extends CustomNestedErrorOuterTwinRustAsyncSse_Two {
+  const _$CustomNestedErrorOuterTwinRustAsyncSse_TwoImpl(this.field0)
+      : super._();
 
   @override
   final CustomNestedErrorInnerTwinRustAsyncSse field0;
@@ -2358,10 +2381,11 @@ class _$CustomNestedErrorOuterTwinRustAsyncSse_TwoImpl
 }
 
 abstract class CustomNestedErrorOuterTwinRustAsyncSse_Two
-    implements CustomNestedErrorOuterTwinRustAsyncSse {
+    extends CustomNestedErrorOuterTwinRustAsyncSse {
   const factory CustomNestedErrorOuterTwinRustAsyncSse_Two(
           final CustomNestedErrorInnerTwinRustAsyncSse field0) =
       _$CustomNestedErrorOuterTwinRustAsyncSse_TwoImpl;
+  const CustomNestedErrorOuterTwinRustAsyncSse_Two._() : super._();
 
   @override
   CustomNestedErrorInnerTwinRustAsyncSse get field0;

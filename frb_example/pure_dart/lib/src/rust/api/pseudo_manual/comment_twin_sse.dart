@@ -39,12 +39,14 @@ class StructWithCommentsTwinSse {
   Future<void> instanceMethodTwinSse({dynamic hint}) =>
       RustLib.instance.api.structWithCommentsTwinSseInstanceMethodTwinSse(
         that: this,
+        hint: hint,
       );
 
   /// Documentation on a static method
   static Future<void> staticMethodTwinSse({dynamic hint}) =>
-      RustLib.instance.api
-          .structWithCommentsTwinSseStaticMethodTwinSse(hint: hint);
+      RustLib.instance.api.structWithCommentsTwinSseStaticMethodTwinSse(
+        hint: hint,
+      );
 
   @override
   int get hashCode => fieldWithComments.hashCode;

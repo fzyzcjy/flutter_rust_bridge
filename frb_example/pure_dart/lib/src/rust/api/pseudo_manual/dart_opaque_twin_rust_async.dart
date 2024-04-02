@@ -108,6 +108,8 @@ class DartOpaqueNestedTwinRustAsync {
 
 @freezed
 sealed class EnumDartOpaqueTwinRustAsync with _$EnumDartOpaqueTwinRustAsync {
+  const EnumDartOpaqueTwinRustAsync._();
+
   const factory EnumDartOpaqueTwinRustAsync.primitive(
     int field0,
   ) = EnumDartOpaqueTwinRustAsync_Primitive;

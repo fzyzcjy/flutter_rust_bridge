@@ -39,11 +39,14 @@ class StructWithCommentsTwinSync {
   void instanceMethodTwinSync({dynamic hint}) =>
       RustLib.instance.api.structWithCommentsTwinSyncInstanceMethodTwinSync(
         that: this,
+        hint: hint,
       );
 
   /// Documentation on a static method
-  static void staticMethodTwinSync({dynamic hint}) => RustLib.instance.api
-      .structWithCommentsTwinSyncStaticMethodTwinSync(hint: hint);
+  static void staticMethodTwinSync({dynamic hint}) =>
+      RustLib.instance.api.structWithCommentsTwinSyncStaticMethodTwinSync(
+        hint: hint,
+      );
 
   @override
   int get hashCode => fieldWithComments.hashCode;

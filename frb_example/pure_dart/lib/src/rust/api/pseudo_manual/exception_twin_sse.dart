@@ -74,6 +74,8 @@ Stream<String> streamSinkThrowAnyhowTwinSse({dynamic hint}) =>
 sealed class CustomEnumErrorTwinSse
     with _$CustomEnumErrorTwinSse
     implements FrbException {
+  const CustomEnumErrorTwinSse._();
+
   @Implements<FrbBacktracedException>()
   const factory CustomEnumErrorTwinSse.one({
     required String message,
@@ -90,6 +92,8 @@ sealed class CustomEnumErrorTwinSse
 sealed class CustomErrorTwinSse
     with _$CustomErrorTwinSse
     implements FrbException {
+  const CustomErrorTwinSse._();
+
   @Implements<FrbBacktracedException>()
   const factory CustomErrorTwinSse.error0({
     required String e,
@@ -106,6 +110,8 @@ sealed class CustomErrorTwinSse
 sealed class CustomNestedError1TwinSse
     with _$CustomNestedError1TwinSse
     implements FrbException {
+  const CustomNestedError1TwinSse._();
+
   const factory CustomNestedError1TwinSse.customNested1(
     String field0,
   ) = CustomNestedError1TwinSse_CustomNested1;
@@ -116,6 +122,8 @@ sealed class CustomNestedError1TwinSse
 
 @freezed
 sealed class CustomNestedError2TwinSse with _$CustomNestedError2TwinSse {
+  const CustomNestedError2TwinSse._();
+
   const factory CustomNestedError2TwinSse.customNested2(
     String field0,
   ) = CustomNestedError2TwinSse_CustomNested2;
@@ -127,6 +135,8 @@ sealed class CustomNestedError2TwinSse with _$CustomNestedError2TwinSse {
 @freezed
 sealed class CustomNestedErrorInnerTwinSse
     with _$CustomNestedErrorInnerTwinSse {
+  const CustomNestedErrorInnerTwinSse._();
+
   const factory CustomNestedErrorInnerTwinSse.three(
     String field0,
   ) = CustomNestedErrorInnerTwinSse_Three;
@@ -138,6 +148,8 @@ sealed class CustomNestedErrorInnerTwinSse
 @freezed
 sealed class CustomNestedErrorOuterTwinSse
     with _$CustomNestedErrorOuterTwinSse {
+  const CustomNestedErrorOuterTwinSse._();
+
   const factory CustomNestedErrorOuterTwinSse.one(
     String field0,
   ) = CustomNestedErrorOuterTwinSse_One;
@@ -191,28 +203,35 @@ class CustomStructTwinSse {
 
   static Future<CustomStructTwinSse> newTwinSse(
           {required String message, dynamic hint}) =>
-      RustLib.instance.api
-          .customStructTwinSseNewTwinSse(message: message, hint: hint);
+      RustLib.instance.api.customStructTwinSseNewTwinSse(
+        message: message,
+        hint: hint,
+      );
 
   Future<void> nonstaticReturnCustomStructErrorTwinSse({dynamic hint}) =>
       RustLib.instance.api
           .customStructTwinSseNonstaticReturnCustomStructErrorTwinSse(
         that: this,
+        hint: hint,
       );
 
   Future<int> nonstaticReturnCustomStructOkTwinSse({dynamic hint}) =>
       RustLib.instance.api
           .customStructTwinSseNonstaticReturnCustomStructOkTwinSse(
         that: this,
+        hint: hint,
       );
 
   static Future<void> staticReturnCustomStructErrorTwinSse({dynamic hint}) =>
       RustLib.instance.api
-          .customStructTwinSseStaticReturnCustomStructErrorTwinSse(hint: hint);
+          .customStructTwinSseStaticReturnCustomStructErrorTwinSse(
+        hint: hint,
+      );
 
   static Future<int> staticReturnCustomStructOkTwinSse({dynamic hint}) =>
-      RustLib.instance.api
-          .customStructTwinSseStaticReturnCustomStructOkTwinSse(hint: hint);
+      RustLib.instance.api.customStructTwinSseStaticReturnCustomStructOkTwinSse(
+        hint: hint,
+      );
 
   @override
   int get hashCode => message.hashCode;
@@ -234,27 +253,33 @@ class SomeStructTwinSse {
 
   static Future<SomeStructTwinSse> newTwinSse(
           {required int value, dynamic hint}) =>
-      RustLib.instance.api
-          .someStructTwinSseNewTwinSse(value: value, hint: hint);
+      RustLib.instance.api.someStructTwinSseNewTwinSse(
+        value: value,
+        hint: hint,
+      );
 
   Future<int> nonStaticReturnErrCustomErrorTwinSse({dynamic hint}) =>
       RustLib.instance.api
           .someStructTwinSseNonStaticReturnErrCustomErrorTwinSse(
         that: this,
+        hint: hint,
       );
 
   Future<int> nonStaticReturnOkCustomErrorTwinSse({dynamic hint}) =>
       RustLib.instance.api.someStructTwinSseNonStaticReturnOkCustomErrorTwinSse(
         that: this,
+        hint: hint,
       );
 
   static Future<int> staticReturnErrCustomErrorTwinSse({dynamic hint}) =>
-      RustLib.instance.api
-          .someStructTwinSseStaticReturnErrCustomErrorTwinSse(hint: hint);
+      RustLib.instance.api.someStructTwinSseStaticReturnErrCustomErrorTwinSse(
+        hint: hint,
+      );
 
   static Future<int> staticReturnOkCustomErrorTwinSse({dynamic hint}) =>
-      RustLib.instance.api
-          .someStructTwinSseStaticReturnOkCustomErrorTwinSse(hint: hint);
+      RustLib.instance.api.someStructTwinSseStaticReturnOkCustomErrorTwinSse(
+        hint: hint,
+      );
 
   @override
   int get hashCode => value.hashCode;

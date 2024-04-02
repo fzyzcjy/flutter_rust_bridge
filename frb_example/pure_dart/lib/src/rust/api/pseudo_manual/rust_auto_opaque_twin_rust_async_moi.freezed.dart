@@ -121,8 +121,9 @@ class __$$EnumWithGoodAndOpaqueTwinRustAsyncMoi_GoodImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_GoodImpl
-    implements EnumWithGoodAndOpaqueTwinRustAsyncMoi_Good {
-  const _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_GoodImpl(this.field0);
+    extends EnumWithGoodAndOpaqueTwinRustAsyncMoi_Good {
+  const _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_GoodImpl(this.field0)
+      : super._();
 
   @override
   final String field0;
@@ -222,9 +223,10 @@ class _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_GoodImpl
 }
 
 abstract class EnumWithGoodAndOpaqueTwinRustAsyncMoi_Good
-    implements EnumWithGoodAndOpaqueTwinRustAsyncMoi {
+    extends EnumWithGoodAndOpaqueTwinRustAsyncMoi {
   const factory EnumWithGoodAndOpaqueTwinRustAsyncMoi_Good(
       final String field0) = _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_GoodImpl;
+  const EnumWithGoodAndOpaqueTwinRustAsyncMoi_Good._() : super._();
 
   @override
   String get field0;
@@ -274,8 +276,9 @@ class __$$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImpl
-    implements EnumWithGoodAndOpaqueTwinRustAsyncMoi_Opaque {
-  const _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImpl(this.field0);
+    extends EnumWithGoodAndOpaqueTwinRustAsyncMoi_Opaque {
+  const _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImpl(this.field0)
+      : super._();
 
   @override
   final NonCloneSimpleTwinRustAsyncMoi field0;
@@ -375,10 +378,11 @@ class _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImpl
 }
 
 abstract class EnumWithGoodAndOpaqueTwinRustAsyncMoi_Opaque
-    implements EnumWithGoodAndOpaqueTwinRustAsyncMoi {
+    extends EnumWithGoodAndOpaqueTwinRustAsyncMoi {
   const factory EnumWithGoodAndOpaqueTwinRustAsyncMoi_Opaque(
           final NonCloneSimpleTwinRustAsyncMoi field0) =
       _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImpl;
+  const EnumWithGoodAndOpaqueTwinRustAsyncMoi_Opaque._() : super._();
 
   @override
   NonCloneSimpleTwinRustAsyncMoi get field0;
