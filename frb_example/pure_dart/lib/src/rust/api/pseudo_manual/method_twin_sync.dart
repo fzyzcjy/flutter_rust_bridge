@@ -6,6 +6,8 @@
 import '../../frb_generated.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+part 'method_twin_sync.freezed.dart';
 
 SumWithTwinSync getSumStructTwinSync({dynamic hint}) =>
     RustLib.instance.api.getSumStructTwinSync(hint: hint);
@@ -13,6 +15,28 @@ SumWithTwinSync getSumStructTwinSync({dynamic hint}) =>
 SumWithTwinSyncArray3 getSumArrayTwinSync(
         {required int a, required int b, required int c, dynamic hint}) =>
     RustLib.instance.api.getSumArrayTwinSync(a: a, b: b, c: c, hint: hint);
+
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<StaticGetterOnlyTwinSync>>
+@sealed
+class StaticGetterOnlyTwinSync extends RustOpaque {
+  StaticGetterOnlyTwinSync.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  StaticGetterOnlyTwinSync.sseDecode(int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_StaticGetterOnlyTwinSync,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_StaticGetterOnlyTwinSync,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_StaticGetterOnlyTwinSyncPtr,
+  );
+
+  static int get staticGetterTwinSync =>
+      RustLib.instance.api.staticGetterOnlyTwinSyncStaticGetterTwinSync();
+}
 
 class ConcatenateWithTwinSync {
   final String a;
@@ -137,6 +161,29 @@ class MyCallableTwinSync {
           one == other.one;
 }
 
+@freezed
+sealed class SimpleEnumTwinSync with _$SimpleEnumTwinSync {
+  const SimpleEnumTwinSync._();
+
+  const factory SimpleEnumTwinSync.first() = SimpleEnumTwinSync_First;
+  const factory SimpleEnumTwinSync.second(
+    String field0,
+  ) = SimpleEnumTwinSync_Second;
+
+  static SimpleEnumTwinSync returnSelfTwinSync(
+          {required String one, dynamic hint}) =>
+      RustLib.instance.api.simpleEnumTwinSyncReturnSelfTwinSync(
+        one: one,
+        hint: hint,
+      );
+
+  String simpleMethodTwinSync({dynamic hint}) =>
+      RustLib.instance.api.simpleEnumTwinSyncSimpleMethodTwinSync(
+        that: this,
+        hint: hint,
+      );
+}
+
 class SimpleStructTwinSync {
   final String one;
 
@@ -175,6 +222,30 @@ class SimpleStructTwinSync {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is SimpleStructTwinSync &&
+          runtimeType == other.runtimeType &&
+          one == other.one;
+}
+
+class StaticOnlyTwinSync {
+  final String one;
+
+  const StaticOnlyTwinSync({
+    required this.one,
+  });
+
+  static int staticMethodTwinSync({required int a, dynamic hint}) =>
+      RustLib.instance.api.staticOnlyTwinSyncStaticMethodTwinSync(
+        a: a,
+        hint: hint,
+      );
+
+  @override
+  int get hashCode => one.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StaticOnlyTwinSync &&
           runtimeType == other.runtimeType &&
           one == other.one;
 }

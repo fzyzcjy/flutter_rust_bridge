@@ -6,6 +6,8 @@
 import '../../frb_generated.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+part 'method_twin_rust_async_sse.freezed.dart';
 
 Future<SumWithTwinRustAsyncSse> getSumStructTwinRustAsyncSse({dynamic hint}) =>
     RustLib.instance.api.getSumStructTwinRustAsyncSse(hint: hint);
@@ -14,6 +16,28 @@ Future<SumWithTwinRustAsyncSseArray3> getSumArrayTwinRustAsyncSse(
         {required int a, required int b, required int c, dynamic hint}) =>
     RustLib.instance.api
         .getSumArrayTwinRustAsyncSse(a: a, b: b, c: c, hint: hint);
+
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<StaticGetterOnlyTwinRustAsyncSse>>
+@sealed
+class StaticGetterOnlyTwinRustAsyncSse extends RustOpaque {
+  StaticGetterOnlyTwinRustAsyncSse.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  StaticGetterOnlyTwinRustAsyncSse.sseDecode(int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_StaticGetterOnlyTwinRustAsyncSse,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_StaticGetterOnlyTwinRustAsyncSse,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_StaticGetterOnlyTwinRustAsyncSsePtr,
+  );
+
+  static int get staticGetterTwinRustAsyncSse => RustLib.instance.api
+      .staticGetterOnlyTwinRustAsyncSseStaticGetterTwinRustAsyncSse();
+}
 
 class ConcatenateWithTwinRustAsyncSse {
   final String a;
@@ -143,6 +167,31 @@ class MyCallableTwinRustAsyncSse {
           one == other.one;
 }
 
+@freezed
+sealed class SimpleEnumTwinRustAsyncSse with _$SimpleEnumTwinRustAsyncSse {
+  const SimpleEnumTwinRustAsyncSse._();
+
+  const factory SimpleEnumTwinRustAsyncSse.first() =
+      SimpleEnumTwinRustAsyncSse_First;
+  const factory SimpleEnumTwinRustAsyncSse.second(
+    String field0,
+  ) = SimpleEnumTwinRustAsyncSse_Second;
+
+  static Future<SimpleEnumTwinRustAsyncSse> returnSelfTwinRustAsyncSse(
+          {required String one, dynamic hint}) =>
+      RustLib.instance.api.simpleEnumTwinRustAsyncSseReturnSelfTwinRustAsyncSse(
+        one: one,
+        hint: hint,
+      );
+
+  Future<String> simpleMethodTwinRustAsyncSse({dynamic hint}) =>
+      RustLib.instance.api
+          .simpleEnumTwinRustAsyncSseSimpleMethodTwinRustAsyncSse(
+        that: this,
+        hint: hint,
+      );
+}
+
 class SimpleStructTwinRustAsyncSse {
   final String one;
 
@@ -182,6 +231,32 @@ class SimpleStructTwinRustAsyncSse {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is SimpleStructTwinRustAsyncSse &&
+          runtimeType == other.runtimeType &&
+          one == other.one;
+}
+
+class StaticOnlyTwinRustAsyncSse {
+  final String one;
+
+  const StaticOnlyTwinRustAsyncSse({
+    required this.one,
+  });
+
+  static Future<int> staticMethodTwinRustAsyncSse(
+          {required int a, dynamic hint}) =>
+      RustLib.instance.api
+          .staticOnlyTwinRustAsyncSseStaticMethodTwinRustAsyncSse(
+        a: a,
+        hint: hint,
+      );
+
+  @override
+  int get hashCode => one.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StaticOnlyTwinRustAsyncSse &&
           runtimeType == other.runtimeType &&
           one == other.one;
 }

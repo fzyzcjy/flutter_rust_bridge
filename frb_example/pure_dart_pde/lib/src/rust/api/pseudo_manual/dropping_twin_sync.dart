@@ -29,16 +29,22 @@ class DroppableTwinSync extends RustOpaque {
   Stream<int> createStreamTwinSync({dynamic hint}) =>
       RustLib.instance.api.droppableTwinSyncCreateStreamTwinSync(
         that: this,
+        hint: hint,
       );
 
   static int getDropCountTwinSync({dynamic hint}) =>
-      RustLib.instance.api.droppableTwinSyncGetDropCountTwinSync(hint: hint);
+      RustLib.instance.api.droppableTwinSyncGetDropCountTwinSync(
+        hint: hint,
+      );
 
   static DroppableTwinSync newTwinSync({dynamic hint}) =>
-      RustLib.instance.api.droppableTwinSyncNewTwinSync(hint: hint);
+      RustLib.instance.api.droppableTwinSyncNewTwinSync(
+        hint: hint,
+      );
 
   void simpleMethodTwinSync({dynamic hint}) =>
       RustLib.instance.api.droppableTwinSyncSimpleMethodTwinSync(
         that: this,
+        hint: hint,
       );
 }

@@ -115,4 +115,17 @@ Future<void> main({bool skipRustLibInit = false}) async {
           await SimpleStructTwinSync.vecSelfTwinSync(arg: [a, b]), ['a', 'b']);
     });
   });
+
+  test('SimpleEnum', () async {
+    final obj = await SimpleEnumTwinSync.returnSelfTwinSync(one: 'A');
+    expect(await obj.simpleMethodTwinSync(), 'A');
+  });
+
+  test('StaticOnly', () async {
+    expect(await StaticOnlyTwinSync.staticMethod(a: 42), 42);
+  });
+
+  test('StaticGetterOnly', () async {
+    expect(StaticGetterOnlyTwinSync.staticGetter, 42);
+  });
 }

@@ -135,3 +135,44 @@ impl SimpleStructTwinRustAsync {
         arg.into_iter().map(|x| x.one).collect()
     }
 }
+
+// #1818
+pub enum SimpleEnumTwinRustAsync {
+    First,
+    Second(String),
+}
+
+impl SimpleEnumTwinRustAsync {
+    pub async fn return_self_twin_rust_async(one: String) -> Self {
+        Self::Second(one)
+    }
+
+    pub async fn simple_method_twin_rust_async(&self) -> String {
+        match self {
+            SimpleEnumTwinRustAsync::First => "".to_owned(),
+            SimpleEnumTwinRustAsync::Second(inner) => inner.to_owned(),
+        }
+    }
+}
+
+// #1838
+pub struct StaticOnlyTwinRustAsync {
+    pub one: String,
+}
+
+impl StaticOnlyTwinRustAsync {
+    pub async fn static_method_twin_rust_async(a: i32) -> i32 {
+        a
+    }
+}
+
+// #1838
+#[frb(opaque)]
+pub struct StaticGetterOnlyTwinRustAsync {}
+
+impl StaticGetterOnlyTwinRustAsync {
+    #[frb(sync, getter)]
+    pub async fn static_getter_twin_rust_async() -> i32 {
+        42
+    }
+}

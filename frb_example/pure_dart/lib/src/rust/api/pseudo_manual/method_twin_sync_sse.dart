@@ -6,6 +6,8 @@
 import '../../frb_generated.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+part 'method_twin_sync_sse.freezed.dart';
 
 SumWithTwinSyncSse getSumStructTwinSyncSse({dynamic hint}) =>
     RustLib.instance.api.getSumStructTwinSyncSse(hint: hint);
@@ -13,6 +15,28 @@ SumWithTwinSyncSse getSumStructTwinSyncSse({dynamic hint}) =>
 SumWithTwinSyncSseArray3 getSumArrayTwinSyncSse(
         {required int a, required int b, required int c, dynamic hint}) =>
     RustLib.instance.api.getSumArrayTwinSyncSse(a: a, b: b, c: c, hint: hint);
+
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<StaticGetterOnlyTwinSyncSse>>
+@sealed
+class StaticGetterOnlyTwinSyncSse extends RustOpaque {
+  StaticGetterOnlyTwinSyncSse.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  StaticGetterOnlyTwinSyncSse.sseDecode(int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_StaticGetterOnlyTwinSyncSse,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_StaticGetterOnlyTwinSyncSse,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_StaticGetterOnlyTwinSyncSsePtr,
+  );
+
+  static int get staticGetterTwinSyncSse =>
+      RustLib.instance.api.staticGetterOnlyTwinSyncSseStaticGetterTwinSyncSse();
+}
 
 class ConcatenateWithTwinSyncSse {
   final String a;
@@ -139,6 +163,29 @@ class MyCallableTwinSyncSse {
           one == other.one;
 }
 
+@freezed
+sealed class SimpleEnumTwinSyncSse with _$SimpleEnumTwinSyncSse {
+  const SimpleEnumTwinSyncSse._();
+
+  const factory SimpleEnumTwinSyncSse.first() = SimpleEnumTwinSyncSse_First;
+  const factory SimpleEnumTwinSyncSse.second(
+    String field0,
+  ) = SimpleEnumTwinSyncSse_Second;
+
+  static SimpleEnumTwinSyncSse returnSelfTwinSyncSse(
+          {required String one, dynamic hint}) =>
+      RustLib.instance.api.simpleEnumTwinSyncSseReturnSelfTwinSyncSse(
+        one: one,
+        hint: hint,
+      );
+
+  String simpleMethodTwinSyncSse({dynamic hint}) =>
+      RustLib.instance.api.simpleEnumTwinSyncSseSimpleMethodTwinSyncSse(
+        that: this,
+        hint: hint,
+      );
+}
+
 class SimpleStructTwinSyncSse {
   final String one;
 
@@ -177,6 +224,30 @@ class SimpleStructTwinSyncSse {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is SimpleStructTwinSyncSse &&
+          runtimeType == other.runtimeType &&
+          one == other.one;
+}
+
+class StaticOnlyTwinSyncSse {
+  final String one;
+
+  const StaticOnlyTwinSyncSse({
+    required this.one,
+  });
+
+  static int staticMethodTwinSyncSse({required int a, dynamic hint}) =>
+      RustLib.instance.api.staticOnlyTwinSyncSseStaticMethodTwinSyncSse(
+        a: a,
+        hint: hint,
+      );
+
+  @override
+  int get hashCode => one.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StaticOnlyTwinSyncSse &&
           runtimeType == other.runtimeType &&
           one == other.one;
 }

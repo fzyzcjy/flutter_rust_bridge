@@ -114,8 +114,8 @@ class __$$EnumDartOpaqueTwinNormal_PrimitiveImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EnumDartOpaqueTwinNormal_PrimitiveImpl
-    implements EnumDartOpaqueTwinNormal_Primitive {
-  const _$EnumDartOpaqueTwinNormal_PrimitiveImpl(this.field0);
+    extends EnumDartOpaqueTwinNormal_Primitive {
+  const _$EnumDartOpaqueTwinNormal_PrimitiveImpl(this.field0) : super._();
 
   @override
   final int field0;
@@ -209,9 +209,10 @@ class _$EnumDartOpaqueTwinNormal_PrimitiveImpl
 }
 
 abstract class EnumDartOpaqueTwinNormal_Primitive
-    implements EnumDartOpaqueTwinNormal {
+    extends EnumDartOpaqueTwinNormal {
   const factory EnumDartOpaqueTwinNormal_Primitive(final int field0) =
       _$EnumDartOpaqueTwinNormal_PrimitiveImpl;
+  const EnumDartOpaqueTwinNormal_Primitive._() : super._();
 
   @override
   int get field0;
@@ -255,8 +256,8 @@ class __$$EnumDartOpaqueTwinNormal_OpaqueImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EnumDartOpaqueTwinNormal_OpaqueImpl
-    implements EnumDartOpaqueTwinNormal_Opaque {
-  const _$EnumDartOpaqueTwinNormal_OpaqueImpl(this.field0);
+    extends EnumDartOpaqueTwinNormal_Opaque {
+  const _$EnumDartOpaqueTwinNormal_OpaqueImpl(this.field0) : super._();
 
   @override
   final Object field0;
@@ -351,9 +352,10 @@ class _$EnumDartOpaqueTwinNormal_OpaqueImpl
 }
 
 abstract class EnumDartOpaqueTwinNormal_Opaque
-    implements EnumDartOpaqueTwinNormal {
+    extends EnumDartOpaqueTwinNormal {
   const factory EnumDartOpaqueTwinNormal_Opaque(final Object field0) =
       _$EnumDartOpaqueTwinNormal_OpaqueImpl;
+  const EnumDartOpaqueTwinNormal_Opaque._() : super._();
 
   @override
   Object get field0;

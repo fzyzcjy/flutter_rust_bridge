@@ -112,4 +112,17 @@ Future<void> main({bool skipRustLibInit = false}) async {
       expect(await SimpleStructTwinSse.vecSelfTwinSse(arg: [a, b]), ['a', 'b']);
     });
   });
+
+  test('SimpleEnum', () async {
+    final obj = await SimpleEnumTwinSse.returnSelfTwinSse(one: 'A');
+    expect(await obj.simpleMethodTwinSse(), 'A');
+  });
+
+  test('StaticOnly', () async {
+    expect(await StaticOnlyTwinSse.staticMethod(a: 42), 42);
+  });
+
+  test('StaticGetterOnly', () async {
+    expect(StaticGetterOnlyTwinSse.staticGetter, 42);
+  });
 }

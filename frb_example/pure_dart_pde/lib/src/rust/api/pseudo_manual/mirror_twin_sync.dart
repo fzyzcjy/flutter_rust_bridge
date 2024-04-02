@@ -161,6 +161,8 @@ class ApplicationEnvVar {
 
 @freezed
 sealed class ApplicationMessage with _$ApplicationMessage {
+  const ApplicationMessage._();
+
   const factory ApplicationMessage.displayMessage(
     String field0,
   ) = ApplicationMessage_DisplayMessage;
@@ -333,6 +335,8 @@ class Numbers {
 
 @freezed
 sealed class RawStringEnumMirrored with _$RawStringEnumMirrored {
+  const RawStringEnumMirrored._();
+
   const factory RawStringEnumMirrored.raw(
     RawStringMirrored field0,
   ) = RawStringEnumMirrored_Raw;

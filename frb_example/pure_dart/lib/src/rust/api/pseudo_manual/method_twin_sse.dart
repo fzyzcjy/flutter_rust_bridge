@@ -6,6 +6,8 @@
 import '../../frb_generated.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+part 'method_twin_sse.freezed.dart';
 
 Future<SumWithTwinSse> getSumStructTwinSse({dynamic hint}) =>
     RustLib.instance.api.getSumStructTwinSse(hint: hint);
@@ -13,6 +15,28 @@ Future<SumWithTwinSse> getSumStructTwinSse({dynamic hint}) =>
 Future<SumWithTwinSseArray3> getSumArrayTwinSse(
         {required int a, required int b, required int c, dynamic hint}) =>
     RustLib.instance.api.getSumArrayTwinSse(a: a, b: b, c: c, hint: hint);
+
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<StaticGetterOnlyTwinSse>>
+@sealed
+class StaticGetterOnlyTwinSse extends RustOpaque {
+  StaticGetterOnlyTwinSse.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  StaticGetterOnlyTwinSse.sseDecode(int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_StaticGetterOnlyTwinSse,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_StaticGetterOnlyTwinSse,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_StaticGetterOnlyTwinSsePtr,
+  );
+
+  static int get staticGetterTwinSse =>
+      RustLib.instance.api.staticGetterOnlyTwinSseStaticGetterTwinSse();
+}
 
 class ConcatenateWithTwinSse {
   final String a;
@@ -136,6 +160,29 @@ class MyCallableTwinSse {
           one == other.one;
 }
 
+@freezed
+sealed class SimpleEnumTwinSse with _$SimpleEnumTwinSse {
+  const SimpleEnumTwinSse._();
+
+  const factory SimpleEnumTwinSse.first() = SimpleEnumTwinSse_First;
+  const factory SimpleEnumTwinSse.second(
+    String field0,
+  ) = SimpleEnumTwinSse_Second;
+
+  static Future<SimpleEnumTwinSse> returnSelfTwinSse(
+          {required String one, dynamic hint}) =>
+      RustLib.instance.api.simpleEnumTwinSseReturnSelfTwinSse(
+        one: one,
+        hint: hint,
+      );
+
+  Future<String> simpleMethodTwinSse({dynamic hint}) =>
+      RustLib.instance.api.simpleEnumTwinSseSimpleMethodTwinSse(
+        that: this,
+        hint: hint,
+      );
+}
+
 class SimpleStructTwinSse {
   final String one;
 
@@ -174,6 +221,30 @@ class SimpleStructTwinSse {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is SimpleStructTwinSse &&
+          runtimeType == other.runtimeType &&
+          one == other.one;
+}
+
+class StaticOnlyTwinSse {
+  final String one;
+
+  const StaticOnlyTwinSse({
+    required this.one,
+  });
+
+  static Future<int> staticMethodTwinSse({required int a, dynamic hint}) =>
+      RustLib.instance.api.staticOnlyTwinSseStaticMethodTwinSse(
+        a: a,
+        hint: hint,
+      );
+
+  @override
+  int get hashCode => one.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StaticOnlyTwinSse &&
           runtimeType == other.runtimeType &&
           one == other.one;
 }

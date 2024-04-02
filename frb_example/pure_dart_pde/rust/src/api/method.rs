@@ -133,3 +133,44 @@ impl SimpleStructTwinNormal {
         arg.into_iter().map(|x| x.one).collect()
     }
 }
+
+// #1818
+pub enum SimpleEnumTwinNormal {
+    First,
+    Second(String),
+}
+
+impl SimpleEnumTwinNormal {
+    pub fn return_self_twin_normal(one: String) -> Self {
+        Self::Second(one)
+    }
+
+    pub fn simple_method_twin_normal(&self) -> String {
+        match self {
+            SimpleEnumTwinNormal::First => "".to_owned(),
+            SimpleEnumTwinNormal::Second(inner) => inner.to_owned(),
+        }
+    }
+}
+
+// #1838
+pub struct StaticOnlyTwinNormal {
+    pub one: String,
+}
+
+impl StaticOnlyTwinNormal {
+    pub fn static_method(a: i32) -> i32 {
+        a
+    }
+}
+
+// #1838
+#[frb(opaque)]
+pub struct StaticGetterOnlyTwinNormal {}
+
+impl StaticGetterOnlyTwinNormal {
+    #[frb(sync, getter)]
+    pub fn static_getter() -> i32 {
+        42
+    }
+}
