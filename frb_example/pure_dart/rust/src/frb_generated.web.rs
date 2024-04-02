@@ -6,6 +6,7 @@
 use super::*;
 use crate::api::constructor::*;
 use crate::api::dropping::*;
+use crate::api::method::*;
 use crate::api::misc_no_twin_example_a::*;
 use crate::api::misc_no_twin_example_b::*;
 use crate::api::pseudo_manual::dropping_twin_rust_async::*;
@@ -6572,6 +6573,25 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::SpeedTwinSync>
         }
     }
 }
+impl CstDecode<crate::api::method::StaticOnlyTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> crate::api::method::StaticOnlyTwinNormal {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::method::StaticOnlyTwinNormal {
+            one: self_.get(0).cst_decode(),
+        }
+    }
+}
 impl CstDecode<crate::api::deliberate_name_conflict::StructInLowerLevel>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -8284,6 +8304,19 @@ impl CstDecode<OpaqueTwoTwinSyncMoi> for flutter_rust_bridge::for_generated::was
         .rust_auto_opaque_decode_owned()
     }
 }
+impl CstDecode<StaticGetterOnlyTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> StaticGetterOnlyTwinNormal {
+        CstDecode::<
+            RustOpaqueNom<
+                flutter_rust_bridge::for_generated::rust_async::RwLock<StaticGetterOnlyTwinNormal>,
+            >,
+        >::cst_decode(self)
+        .rust_auto_opaque_decode_owned()
+    }
+}
 impl CstDecode<StructInMiscNoTwinExampleA>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -8292,6 +8325,19 @@ impl CstDecode<StructInMiscNoTwinExampleA>
         CstDecode::<
             RustOpaqueNom<
                 flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleA>,
+            >,
+        >::cst_decode(self)
+        .rust_auto_opaque_decode_owned()
+    }
+}
+impl CstDecode<StructInMiscNoTwinExampleB>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> StructInMiscNoTwinExampleB {
+        CstDecode::<
+            RustOpaqueNom<
+                flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleB>,
             >,
         >::cst_decode(self)
         .rust_auto_opaque_decode_owned()
@@ -8381,6 +8427,21 @@ impl CstDecode<StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi>
             RustOpaqueMoi<
                 flutter_rust_bridge::for_generated::rust_async::RwLock<
                     StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi,
+                >,
+            >,
+        >::cst_decode(self)
+        .rust_auto_opaque_decode_owned()
+    }
+}
+impl CstDecode<StructWithImplBlockInMultiFile>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> StructWithImplBlockInMultiFile {
+        CstDecode::<
+            RustOpaqueNom<
+                flutter_rust_bridge::for_generated::rust_async::RwLock<
+                    StructWithImplBlockInMultiFile,
                 >,
             >,
         >::cst_decode(self)
@@ -10460,6 +10521,26 @@ impl
             compile_error!("64-bit pointers are not supported.");
         }
         decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
+    }
+}
+impl
+    CstDecode<
+        RustOpaqueNom<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<StaticGetterOnlyTwinNormal>,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> RustOpaqueNom<
+        flutter_rust_bridge::for_generated::rust_async::RwLock<StaticGetterOnlyTwinNormal>,
+    > {
+        #[cfg(target_pointer_width = "64")]
+        {
+            compile_error!("64-bit pointers are not supported.");
+        }
+        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
     }
 }
 impl
@@ -37376,6 +37457,24 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     MoiArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueTwoTwinSyncSseMoi>>::decrement_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStaticGetterOnlyTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<StaticGetterOnlyTwinNormal>>::increment_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStaticGetterOnlyTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<StaticGetterOnlyTwinNormal>>::decrement_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]

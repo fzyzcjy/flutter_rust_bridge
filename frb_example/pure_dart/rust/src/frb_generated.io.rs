@@ -6,6 +6,7 @@
 use super::*;
 use crate::api::constructor::*;
 use crate::api::dropping::*;
+use crate::api::method::*;
 use crate::api::misc_no_twin_example_a::*;
 use crate::api::misc_no_twin_example_b::*;
 use crate::api::pseudo_manual::dropping_twin_rust_async::*;
@@ -631,12 +632,34 @@ impl CstDecode<OpaqueTwoTwinSyncMoi> for usize {
         .rust_auto_opaque_decode_owned()
     }
 }
+impl CstDecode<StaticGetterOnlyTwinNormal> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> StaticGetterOnlyTwinNormal {
+        CstDecode::<
+            RustOpaqueNom<
+                flutter_rust_bridge::for_generated::rust_async::RwLock<StaticGetterOnlyTwinNormal>,
+            >,
+        >::cst_decode(self)
+        .rust_auto_opaque_decode_owned()
+    }
+}
 impl CstDecode<StructInMiscNoTwinExampleA> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> StructInMiscNoTwinExampleA {
         CstDecode::<
             RustOpaqueNom<
                 flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleA>,
+            >,
+        >::cst_decode(self)
+        .rust_auto_opaque_decode_owned()
+    }
+}
+impl CstDecode<StructInMiscNoTwinExampleB> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> StructInMiscNoTwinExampleB {
+        CstDecode::<
+            RustOpaqueNom<
+                flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleB>,
             >,
         >::cst_decode(self)
         .rust_auto_opaque_decode_owned()
@@ -714,6 +737,19 @@ impl CstDecode<StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi> for usize {
             RustOpaqueMoi<
                 flutter_rust_bridge::for_generated::rust_async::RwLock<
                     StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi,
+                >,
+            >,
+        >::cst_decode(self)
+        .rust_auto_opaque_decode_owned()
+    }
+}
+impl CstDecode<StructWithImplBlockInMultiFile> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> StructWithImplBlockInMultiFile {
+        CstDecode::<
+            RustOpaqueNom<
+                flutter_rust_bridge::for_generated::rust_async::RwLock<
+                    StructWithImplBlockInMultiFile,
                 >,
             >,
         >::cst_decode(self)
@@ -2313,6 +2349,22 @@ impl
     ) -> RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueTwoTwinSyncMoi>>
     {
         decode_rust_opaque_moi(self as _)
+    }
+}
+impl
+    CstDecode<
+        RustOpaqueNom<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<StaticGetterOnlyTwinNormal>,
+        >,
+    > for usize
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> RustOpaqueNom<
+        flutter_rust_bridge::for_generated::rust_async::RwLock<StaticGetterOnlyTwinNormal>,
+    > {
+        unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
@@ -10323,6 +10375,14 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::SpeedTwinSync>
         }
     }
 }
+impl CstDecode<crate::api::method::StaticOnlyTwinNormal> for wire_cst_static_only_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> crate::api::method::StaticOnlyTwinNormal {
+        crate::api::method::StaticOnlyTwinNormal {
+            one: self.one.cst_decode(),
+        }
+    }
+}
 impl CstDecode<crate::api::deliberate_name_conflict::StructInLowerLevel>
     for wire_cst_struct_in_lower_level
 {
@@ -14238,6 +14298,18 @@ impl NewWithNullPtr for wire_cst_speed_twin_sync {
     }
 }
 impl Default for wire_cst_speed_twin_sync {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_static_only_twin_normal {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            one: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_static_only_twin_normal {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
@@ -40720,6 +40792,24 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStaticGetterOnlyTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<StaticGetterOnlyTwinNormal>>::increment_strong_count(ptr as _);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStaticGetterOnlyTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<StaticGetterOnlyTwinNormal>>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
     ptr: *const std::ffi::c_void,
 ) {
@@ -48193,6 +48283,11 @@ pub union SpeedTwinSyncKind {
 #[derive(Clone, Copy)]
 pub struct wire_cst_SpeedTwinSync_GPS {
     field0: f64,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_static_only_twin_normal {
+    one: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]

@@ -7,15 +7,34 @@ import '../frb_generated.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// The type `StaticGetterOnlyTwinNormal` is not used by any `pub` functions, thus it is ignored.
-// The type `StaticOnlyTwinNormal` is not used by any `pub` functions, thus it is ignored.
-
 Future<SumWithTwinNormal> getSumStructTwinNormal({dynamic hint}) =>
     RustLib.instance.api.getSumStructTwinNormal(hint: hint);
 
 Future<SumWithTwinNormalArray3> getSumArrayTwinNormal(
         {required int a, required int b, required int c, dynamic hint}) =>
     RustLib.instance.api.getSumArrayTwinNormal(a: a, b: b, c: c, hint: hint);
+
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<StaticGetterOnlyTwinNormal>>
+@sealed
+class StaticGetterOnlyTwinNormal extends RustOpaque {
+  StaticGetterOnlyTwinNormal.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  StaticGetterOnlyTwinNormal.sseDecode(int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_StaticGetterOnlyTwinNormal,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_StaticGetterOnlyTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_StaticGetterOnlyTwinNormalPtr,
+  );
+
+  static int get staticGetter =>
+      RustLib.instance.api.staticGetterOnlyTwinNormalStaticGetter(hint: hint);
+}
 
 class ConcatenateWithTwinNormal {
   final String a;
@@ -159,6 +178,27 @@ class SimpleStructTwinNormal {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is SimpleStructTwinNormal &&
+          runtimeType == other.runtimeType &&
+          one == other.one;
+}
+
+class StaticOnlyTwinNormal {
+  final String one;
+
+  const StaticOnlyTwinNormal({
+    required this.one,
+  });
+
+  static Future<int> staticMethod({required int a, dynamic hint}) =>
+      RustLib.instance.api.staticOnlyTwinNormalStaticMethod(a: a, hint: hint);
+
+  @override
+  int get hashCode => one.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StaticOnlyTwinNormal &&
           runtimeType == other.runtimeType &&
           one == other.one;
 }
