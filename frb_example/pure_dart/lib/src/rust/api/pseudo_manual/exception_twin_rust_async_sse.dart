@@ -78,6 +78,8 @@ Stream<String> streamSinkThrowAnyhowTwinRustAsyncSse({dynamic hint}) =>
 sealed class CustomEnumErrorTwinRustAsyncSse
     with _$CustomEnumErrorTwinRustAsyncSse
     implements FrbException {
+  const CustomEnumErrorTwinRustAsyncSse._();
+
   @Implements<FrbBacktracedException>()
   const factory CustomEnumErrorTwinRustAsyncSse.one({
     required String message,
@@ -94,6 +96,8 @@ sealed class CustomEnumErrorTwinRustAsyncSse
 sealed class CustomErrorTwinRustAsyncSse
     with _$CustomErrorTwinRustAsyncSse
     implements FrbException {
+  const CustomErrorTwinRustAsyncSse._();
+
   @Implements<FrbBacktracedException>()
   const factory CustomErrorTwinRustAsyncSse.error0({
     required String e,
@@ -110,6 +114,8 @@ sealed class CustomErrorTwinRustAsyncSse
 sealed class CustomNestedError1TwinRustAsyncSse
     with _$CustomNestedError1TwinRustAsyncSse
     implements FrbException {
+  const CustomNestedError1TwinRustAsyncSse._();
+
   const factory CustomNestedError1TwinRustAsyncSse.customNested1(
     String field0,
   ) = CustomNestedError1TwinRustAsyncSse_CustomNested1;
@@ -121,6 +127,8 @@ sealed class CustomNestedError1TwinRustAsyncSse
 @freezed
 sealed class CustomNestedError2TwinRustAsyncSse
     with _$CustomNestedError2TwinRustAsyncSse {
+  const CustomNestedError2TwinRustAsyncSse._();
+
   const factory CustomNestedError2TwinRustAsyncSse.customNested2(
     String field0,
   ) = CustomNestedError2TwinRustAsyncSse_CustomNested2;
@@ -132,6 +140,8 @@ sealed class CustomNestedError2TwinRustAsyncSse
 @freezed
 sealed class CustomNestedErrorInnerTwinRustAsyncSse
     with _$CustomNestedErrorInnerTwinRustAsyncSse {
+  const CustomNestedErrorInnerTwinRustAsyncSse._();
+
   const factory CustomNestedErrorInnerTwinRustAsyncSse.three(
     String field0,
   ) = CustomNestedErrorInnerTwinRustAsyncSse_Three;
@@ -143,6 +153,8 @@ sealed class CustomNestedErrorInnerTwinRustAsyncSse
 @freezed
 sealed class CustomNestedErrorOuterTwinRustAsyncSse
     with _$CustomNestedErrorOuterTwinRustAsyncSse {
+  const CustomNestedErrorOuterTwinRustAsyncSse._();
+
   const factory CustomNestedErrorOuterTwinRustAsyncSse.one(
     String field0,
   ) = CustomNestedErrorOuterTwinRustAsyncSse_One;

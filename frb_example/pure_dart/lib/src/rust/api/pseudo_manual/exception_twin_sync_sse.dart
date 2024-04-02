@@ -76,6 +76,8 @@ Stream<String> streamSinkThrowAnyhowTwinSyncSse({dynamic hint}) =>
 sealed class CustomEnumErrorTwinSyncSse
     with _$CustomEnumErrorTwinSyncSse
     implements FrbException {
+  const CustomEnumErrorTwinSyncSse._();
+
   @Implements<FrbBacktracedException>()
   const factory CustomEnumErrorTwinSyncSse.one({
     required String message,
@@ -92,6 +94,8 @@ sealed class CustomEnumErrorTwinSyncSse
 sealed class CustomErrorTwinSyncSse
     with _$CustomErrorTwinSyncSse
     implements FrbException {
+  const CustomErrorTwinSyncSse._();
+
   @Implements<FrbBacktracedException>()
   const factory CustomErrorTwinSyncSse.error0({
     required String e,
@@ -108,6 +112,8 @@ sealed class CustomErrorTwinSyncSse
 sealed class CustomNestedError1TwinSyncSse
     with _$CustomNestedError1TwinSyncSse
     implements FrbException {
+  const CustomNestedError1TwinSyncSse._();
+
   const factory CustomNestedError1TwinSyncSse.customNested1(
     String field0,
   ) = CustomNestedError1TwinSyncSse_CustomNested1;
@@ -119,6 +125,8 @@ sealed class CustomNestedError1TwinSyncSse
 @freezed
 sealed class CustomNestedError2TwinSyncSse
     with _$CustomNestedError2TwinSyncSse {
+  const CustomNestedError2TwinSyncSse._();
+
   const factory CustomNestedError2TwinSyncSse.customNested2(
     String field0,
   ) = CustomNestedError2TwinSyncSse_CustomNested2;
@@ -130,6 +138,8 @@ sealed class CustomNestedError2TwinSyncSse
 @freezed
 sealed class CustomNestedErrorInnerTwinSyncSse
     with _$CustomNestedErrorInnerTwinSyncSse {
+  const CustomNestedErrorInnerTwinSyncSse._();
+
   const factory CustomNestedErrorInnerTwinSyncSse.three(
     String field0,
   ) = CustomNestedErrorInnerTwinSyncSse_Three;
@@ -141,6 +151,8 @@ sealed class CustomNestedErrorInnerTwinSyncSse
 @freezed
 sealed class CustomNestedErrorOuterTwinSyncSse
     with _$CustomNestedErrorOuterTwinSyncSse {
+  const CustomNestedErrorOuterTwinSyncSse._();
+
   const factory CustomNestedErrorOuterTwinSyncSse.one(
     String field0,
   ) = CustomNestedErrorOuterTwinSyncSse_One;

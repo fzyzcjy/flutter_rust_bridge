@@ -453,6 +453,8 @@ class StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi extends RustOpaque {
 @freezed
 sealed class EnumWithGoodAndOpaqueTwinSseMoi
     with _$EnumWithGoodAndOpaqueTwinSseMoi {
+  const EnumWithGoodAndOpaqueTwinSseMoi._();
+
   const factory EnumWithGoodAndOpaqueTwinSseMoi.good(
     String field0,
   ) = EnumWithGoodAndOpaqueTwinSseMoi_Good;

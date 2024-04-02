@@ -121,8 +121,8 @@ class __$$AbcTwinRustAsyncSse_AImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AbcTwinRustAsyncSse_AImpl implements AbcTwinRustAsyncSse_A {
-  const _$AbcTwinRustAsyncSse_AImpl(this.field0);
+class _$AbcTwinRustAsyncSse_AImpl extends AbcTwinRustAsyncSse_A {
+  const _$AbcTwinRustAsyncSse_AImpl(this.field0) : super._();
 
   @override
   final ATwinRustAsyncSse field0;
@@ -225,9 +225,10 @@ class _$AbcTwinRustAsyncSse_AImpl implements AbcTwinRustAsyncSse_A {
   }
 }
 
-abstract class AbcTwinRustAsyncSse_A implements AbcTwinRustAsyncSse {
+abstract class AbcTwinRustAsyncSse_A extends AbcTwinRustAsyncSse {
   const factory AbcTwinRustAsyncSse_A(final ATwinRustAsyncSse field0) =
       _$AbcTwinRustAsyncSse_AImpl;
+  const AbcTwinRustAsyncSse_A._() : super._();
 
   @override
   ATwinRustAsyncSse get field0;
@@ -270,8 +271,8 @@ class __$$AbcTwinRustAsyncSse_BImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AbcTwinRustAsyncSse_BImpl implements AbcTwinRustAsyncSse_B {
-  const _$AbcTwinRustAsyncSse_BImpl(this.field0);
+class _$AbcTwinRustAsyncSse_BImpl extends AbcTwinRustAsyncSse_B {
+  const _$AbcTwinRustAsyncSse_BImpl(this.field0) : super._();
 
   @override
   final BTwinRustAsyncSse field0;
@@ -374,9 +375,10 @@ class _$AbcTwinRustAsyncSse_BImpl implements AbcTwinRustAsyncSse_B {
   }
 }
 
-abstract class AbcTwinRustAsyncSse_B implements AbcTwinRustAsyncSse {
+abstract class AbcTwinRustAsyncSse_B extends AbcTwinRustAsyncSse {
   const factory AbcTwinRustAsyncSse_B(final BTwinRustAsyncSse field0) =
       _$AbcTwinRustAsyncSse_BImpl;
+  const AbcTwinRustAsyncSse_B._() : super._();
 
   @override
   BTwinRustAsyncSse get field0;
@@ -419,8 +421,8 @@ class __$$AbcTwinRustAsyncSse_CImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AbcTwinRustAsyncSse_CImpl implements AbcTwinRustAsyncSse_C {
-  const _$AbcTwinRustAsyncSse_CImpl(this.field0);
+class _$AbcTwinRustAsyncSse_CImpl extends AbcTwinRustAsyncSse_C {
+  const _$AbcTwinRustAsyncSse_CImpl(this.field0) : super._();
 
   @override
   final CTwinRustAsyncSse field0;
@@ -523,9 +525,10 @@ class _$AbcTwinRustAsyncSse_CImpl implements AbcTwinRustAsyncSse_C {
   }
 }
 
-abstract class AbcTwinRustAsyncSse_C implements AbcTwinRustAsyncSse {
+abstract class AbcTwinRustAsyncSse_C extends AbcTwinRustAsyncSse {
   const factory AbcTwinRustAsyncSse_C(final CTwinRustAsyncSse field0) =
       _$AbcTwinRustAsyncSse_CImpl;
+  const AbcTwinRustAsyncSse_C._() : super._();
 
   @override
   CTwinRustAsyncSse get field0;
@@ -570,8 +573,8 @@ class __$$AbcTwinRustAsyncSse_JustIntImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AbcTwinRustAsyncSse_JustIntImpl implements AbcTwinRustAsyncSse_JustInt {
-  const _$AbcTwinRustAsyncSse_JustIntImpl(this.field0);
+class _$AbcTwinRustAsyncSse_JustIntImpl extends AbcTwinRustAsyncSse_JustInt {
+  const _$AbcTwinRustAsyncSse_JustIntImpl(this.field0) : super._();
 
   @override
   final int field0;
@@ -674,9 +677,10 @@ class _$AbcTwinRustAsyncSse_JustIntImpl implements AbcTwinRustAsyncSse_JustInt {
   }
 }
 
-abstract class AbcTwinRustAsyncSse_JustInt implements AbcTwinRustAsyncSse {
+abstract class AbcTwinRustAsyncSse_JustInt extends AbcTwinRustAsyncSse {
   const factory AbcTwinRustAsyncSse_JustInt(final int field0) =
       _$AbcTwinRustAsyncSse_JustIntImpl;
+  const AbcTwinRustAsyncSse_JustInt._() : super._();
 
   @override
   int get field0;

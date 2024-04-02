@@ -432,6 +432,8 @@ class StructWithGoodAndOpaqueFieldWithoutOptionTwinSse extends RustOpaque {
 
 @freezed
 sealed class EnumWithGoodAndOpaqueTwinSse with _$EnumWithGoodAndOpaqueTwinSse {
+  const EnumWithGoodAndOpaqueTwinSse._();
+
   const factory EnumWithGoodAndOpaqueTwinSse.good(
     String field0,
   ) = EnumWithGoodAndOpaqueTwinSse_Good;

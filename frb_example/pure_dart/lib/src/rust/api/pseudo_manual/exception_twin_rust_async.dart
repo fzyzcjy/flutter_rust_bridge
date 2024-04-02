@@ -78,6 +78,8 @@ Stream<String> streamSinkThrowAnyhowTwinRustAsync({dynamic hint}) =>
 sealed class CustomEnumErrorTwinRustAsync
     with _$CustomEnumErrorTwinRustAsync
     implements FrbException {
+  const CustomEnumErrorTwinRustAsync._();
+
   @Implements<FrbBacktracedException>()
   const factory CustomEnumErrorTwinRustAsync.one({
     required String message,
@@ -94,6 +96,8 @@ sealed class CustomEnumErrorTwinRustAsync
 sealed class CustomErrorTwinRustAsync
     with _$CustomErrorTwinRustAsync
     implements FrbException {
+  const CustomErrorTwinRustAsync._();
+
   @Implements<FrbBacktracedException>()
   const factory CustomErrorTwinRustAsync.error0({
     required String e,
@@ -110,6 +114,8 @@ sealed class CustomErrorTwinRustAsync
 sealed class CustomNestedError1TwinRustAsync
     with _$CustomNestedError1TwinRustAsync
     implements FrbException {
+  const CustomNestedError1TwinRustAsync._();
+
   const factory CustomNestedError1TwinRustAsync.customNested1(
     String field0,
   ) = CustomNestedError1TwinRustAsync_CustomNested1;
@@ -121,6 +127,8 @@ sealed class CustomNestedError1TwinRustAsync
 @freezed
 sealed class CustomNestedError2TwinRustAsync
     with _$CustomNestedError2TwinRustAsync {
+  const CustomNestedError2TwinRustAsync._();
+
   const factory CustomNestedError2TwinRustAsync.customNested2(
     String field0,
   ) = CustomNestedError2TwinRustAsync_CustomNested2;
@@ -132,6 +140,8 @@ sealed class CustomNestedError2TwinRustAsync
 @freezed
 sealed class CustomNestedErrorInnerTwinRustAsync
     with _$CustomNestedErrorInnerTwinRustAsync {
+  const CustomNestedErrorInnerTwinRustAsync._();
+
   const factory CustomNestedErrorInnerTwinRustAsync.three(
     String field0,
   ) = CustomNestedErrorInnerTwinRustAsync_Three;
@@ -143,6 +153,8 @@ sealed class CustomNestedErrorInnerTwinRustAsync
 @freezed
 sealed class CustomNestedErrorOuterTwinRustAsync
     with _$CustomNestedErrorOuterTwinRustAsync {
+  const CustomNestedErrorOuterTwinRustAsync._();
+
   const factory CustomNestedErrorOuterTwinRustAsync.one(
     String field0,
   ) = CustomNestedErrorOuterTwinRustAsync_One;

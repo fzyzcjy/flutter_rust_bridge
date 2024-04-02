@@ -126,8 +126,9 @@ class __$$EnumWithGoodAndOpaqueTwinRustAsyncSseMoi_GoodImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EnumWithGoodAndOpaqueTwinRustAsyncSseMoi_GoodImpl
-    implements EnumWithGoodAndOpaqueTwinRustAsyncSseMoi_Good {
-  const _$EnumWithGoodAndOpaqueTwinRustAsyncSseMoi_GoodImpl(this.field0);
+    extends EnumWithGoodAndOpaqueTwinRustAsyncSseMoi_Good {
+  const _$EnumWithGoodAndOpaqueTwinRustAsyncSseMoi_GoodImpl(this.field0)
+      : super._();
 
   @override
   final String field0;
@@ -229,10 +230,11 @@ class _$EnumWithGoodAndOpaqueTwinRustAsyncSseMoi_GoodImpl
 }
 
 abstract class EnumWithGoodAndOpaqueTwinRustAsyncSseMoi_Good
-    implements EnumWithGoodAndOpaqueTwinRustAsyncSseMoi {
+    extends EnumWithGoodAndOpaqueTwinRustAsyncSseMoi {
   const factory EnumWithGoodAndOpaqueTwinRustAsyncSseMoi_Good(
           final String field0) =
       _$EnumWithGoodAndOpaqueTwinRustAsyncSseMoi_GoodImpl;
+  const EnumWithGoodAndOpaqueTwinRustAsyncSseMoi_Good._() : super._();
 
   @override
   String get field0;
@@ -283,8 +285,9 @@ class __$$EnumWithGoodAndOpaqueTwinRustAsyncSseMoi_OpaqueImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EnumWithGoodAndOpaqueTwinRustAsyncSseMoi_OpaqueImpl
-    implements EnumWithGoodAndOpaqueTwinRustAsyncSseMoi_Opaque {
-  const _$EnumWithGoodAndOpaqueTwinRustAsyncSseMoi_OpaqueImpl(this.field0);
+    extends EnumWithGoodAndOpaqueTwinRustAsyncSseMoi_Opaque {
+  const _$EnumWithGoodAndOpaqueTwinRustAsyncSseMoi_OpaqueImpl(this.field0)
+      : super._();
 
   @override
   final NonCloneSimpleTwinRustAsyncSseMoi field0;
@@ -386,10 +389,11 @@ class _$EnumWithGoodAndOpaqueTwinRustAsyncSseMoi_OpaqueImpl
 }
 
 abstract class EnumWithGoodAndOpaqueTwinRustAsyncSseMoi_Opaque
-    implements EnumWithGoodAndOpaqueTwinRustAsyncSseMoi {
+    extends EnumWithGoodAndOpaqueTwinRustAsyncSseMoi {
   const factory EnumWithGoodAndOpaqueTwinRustAsyncSseMoi_Opaque(
           final NonCloneSimpleTwinRustAsyncSseMoi field0) =
       _$EnumWithGoodAndOpaqueTwinRustAsyncSseMoi_OpaqueImpl;
+  const EnumWithGoodAndOpaqueTwinRustAsyncSseMoi_Opaque._() : super._();
 
   @override
   NonCloneSimpleTwinRustAsyncSseMoi get field0;

@@ -76,6 +76,8 @@ BasicStructTwinSyncSse exampleBasicTypeBasicStructTwinSyncSseTwinSyncSse(
 
 @freezed
 sealed class BasicGeneralEnumTwinSyncSse with _$BasicGeneralEnumTwinSyncSse {
+  const BasicGeneralEnumTwinSyncSse._();
+
   const factory BasicGeneralEnumTwinSyncSse.apple({
     required String field,
   }) = BasicGeneralEnumTwinSyncSse_Apple;

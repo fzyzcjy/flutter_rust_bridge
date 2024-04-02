@@ -107,6 +107,8 @@ Future<BasicStructTwinRustAsyncSse>
 @freezed
 sealed class BasicGeneralEnumTwinRustAsyncSse
     with _$BasicGeneralEnumTwinRustAsyncSse {
+  const BasicGeneralEnumTwinRustAsyncSse._();
+
   const factory BasicGeneralEnumTwinRustAsyncSse.apple({
     required String field,
   }) = BasicGeneralEnumTwinRustAsyncSse_Apple;

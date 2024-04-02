@@ -164,10 +164,25 @@ class MyCallableTwinNormal {
 
 @freezed
 sealed class SimpleEnumTwinNormal with _$SimpleEnumTwinNormal {
+  const SimpleEnumTwinNormal._();
+
   const factory SimpleEnumTwinNormal.first() = SimpleEnumTwinNormal_First;
   const factory SimpleEnumTwinNormal.second(
     String field0,
   ) = SimpleEnumTwinNormal_Second;
+
+  static Future<SimpleEnumTwinNormal> returnSelfTwinNormal(
+          {required String one, dynamic hint}) =>
+      RustLib.instance.api.simpleEnumTwinNormalReturnSelfTwinNormal(
+        one: one,
+        hint: hint,
+      );
+
+  Future<String> simpleMethodTwinNormal({dynamic hint}) =>
+      RustLib.instance.api.simpleEnumTwinNormalSimpleMethodTwinNormal(
+        that: this,
+        hint: hint,
+      );
 }
 
 class SimpleStructTwinNormal {

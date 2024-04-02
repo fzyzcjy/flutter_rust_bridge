@@ -460,6 +460,8 @@ class StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi
 @freezed
 sealed class EnumWithGoodAndOpaqueTwinSyncSseMoi
     with _$EnumWithGoodAndOpaqueTwinSyncSseMoi {
+  const EnumWithGoodAndOpaqueTwinSyncSseMoi._();
+
   const factory EnumWithGoodAndOpaqueTwinSyncSseMoi.good(
     String field0,
   ) = EnumWithGoodAndOpaqueTwinSyncSseMoi_Good;

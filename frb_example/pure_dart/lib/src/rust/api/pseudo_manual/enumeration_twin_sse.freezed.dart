@@ -94,8 +94,8 @@ class __$$DistanceTwinSse_UnknownImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$DistanceTwinSse_UnknownImpl implements DistanceTwinSse_Unknown {
-  const _$DistanceTwinSse_UnknownImpl();
+class _$DistanceTwinSse_UnknownImpl extends DistanceTwinSse_Unknown {
+  const _$DistanceTwinSse_UnknownImpl() : super._();
 
   @override
   String toString() {
@@ -175,8 +175,9 @@ class _$DistanceTwinSse_UnknownImpl implements DistanceTwinSse_Unknown {
   }
 }
 
-abstract class DistanceTwinSse_Unknown implements DistanceTwinSse {
+abstract class DistanceTwinSse_Unknown extends DistanceTwinSse {
   const factory DistanceTwinSse_Unknown() = _$DistanceTwinSse_UnknownImpl;
+  const DistanceTwinSse_Unknown._() : super._();
 }
 
 /// @nodoc
@@ -212,8 +213,8 @@ class __$$DistanceTwinSse_MapImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$DistanceTwinSse_MapImpl implements DistanceTwinSse_Map {
-  const _$DistanceTwinSse_MapImpl(this.field0);
+class _$DistanceTwinSse_MapImpl extends DistanceTwinSse_Map {
+  const _$DistanceTwinSse_MapImpl(this.field0) : super._();
 
   @override
   final double field0;
@@ -304,9 +305,10 @@ class _$DistanceTwinSse_MapImpl implements DistanceTwinSse_Map {
   }
 }
 
-abstract class DistanceTwinSse_Map implements DistanceTwinSse {
+abstract class DistanceTwinSse_Map extends DistanceTwinSse {
   const factory DistanceTwinSse_Map(final double field0) =
       _$DistanceTwinSse_MapImpl;
+  const DistanceTwinSse_Map._() : super._();
 
   double get field0;
   @JsonKey(ignore: true)
@@ -402,8 +404,8 @@ class __$$EnumWithItemMixedTwinSse_AImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumWithItemMixedTwinSse_AImpl implements EnumWithItemMixedTwinSse_A {
-  const _$EnumWithItemMixedTwinSse_AImpl();
+class _$EnumWithItemMixedTwinSse_AImpl extends EnumWithItemMixedTwinSse_A {
+  const _$EnumWithItemMixedTwinSse_AImpl() : super._();
 
   @override
   String toString() {
@@ -489,8 +491,9 @@ class _$EnumWithItemMixedTwinSse_AImpl implements EnumWithItemMixedTwinSse_A {
   }
 }
 
-abstract class EnumWithItemMixedTwinSse_A implements EnumWithItemMixedTwinSse {
+abstract class EnumWithItemMixedTwinSse_A extends EnumWithItemMixedTwinSse {
   const factory EnumWithItemMixedTwinSse_A() = _$EnumWithItemMixedTwinSse_AImpl;
+  const EnumWithItemMixedTwinSse_A._() : super._();
 }
 
 /// @nodoc
@@ -529,8 +532,8 @@ class __$$EnumWithItemMixedTwinSse_BImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumWithItemMixedTwinSse_BImpl implements EnumWithItemMixedTwinSse_B {
-  const _$EnumWithItemMixedTwinSse_BImpl(this.field0);
+class _$EnumWithItemMixedTwinSse_BImpl extends EnumWithItemMixedTwinSse_B {
+  const _$EnumWithItemMixedTwinSse_BImpl(this.field0) : super._();
 
   @override
   final Uint8List field0;
@@ -628,9 +631,10 @@ class _$EnumWithItemMixedTwinSse_BImpl implements EnumWithItemMixedTwinSse_B {
   }
 }
 
-abstract class EnumWithItemMixedTwinSse_B implements EnumWithItemMixedTwinSse {
+abstract class EnumWithItemMixedTwinSse_B extends EnumWithItemMixedTwinSse {
   const factory EnumWithItemMixedTwinSse_B(final Uint8List field0) =
       _$EnumWithItemMixedTwinSse_BImpl;
+  const EnumWithItemMixedTwinSse_B._() : super._();
 
   Uint8List get field0;
   @JsonKey(ignore: true)
@@ -674,8 +678,8 @@ class __$$EnumWithItemMixedTwinSse_CImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumWithItemMixedTwinSse_CImpl implements EnumWithItemMixedTwinSse_C {
-  const _$EnumWithItemMixedTwinSse_CImpl({required this.cField});
+class _$EnumWithItemMixedTwinSse_CImpl extends EnumWithItemMixedTwinSse_C {
+  const _$EnumWithItemMixedTwinSse_CImpl({required this.cField}) : super._();
 
   @override
   final String cField;
@@ -772,9 +776,10 @@ class _$EnumWithItemMixedTwinSse_CImpl implements EnumWithItemMixedTwinSse_C {
   }
 }
 
-abstract class EnumWithItemMixedTwinSse_C implements EnumWithItemMixedTwinSse {
+abstract class EnumWithItemMixedTwinSse_C extends EnumWithItemMixedTwinSse {
   const factory EnumWithItemMixedTwinSse_C({required final String cField}) =
       _$EnumWithItemMixedTwinSse_CImpl;
+  const EnumWithItemMixedTwinSse_C._() : super._();
 
   String get cField;
   @JsonKey(ignore: true)
@@ -879,8 +884,8 @@ class __$$EnumWithItemStructTwinSse_AImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumWithItemStructTwinSse_AImpl implements EnumWithItemStructTwinSse_A {
-  const _$EnumWithItemStructTwinSse_AImpl({required this.aField});
+class _$EnumWithItemStructTwinSse_AImpl extends EnumWithItemStructTwinSse_A {
+  const _$EnumWithItemStructTwinSse_AImpl({required this.aField}) : super._();
 
   @override
   final Uint8List aField;
@@ -972,10 +977,10 @@ class _$EnumWithItemStructTwinSse_AImpl implements EnumWithItemStructTwinSse_A {
   }
 }
 
-abstract class EnumWithItemStructTwinSse_A
-    implements EnumWithItemStructTwinSse {
+abstract class EnumWithItemStructTwinSse_A extends EnumWithItemStructTwinSse {
   const factory EnumWithItemStructTwinSse_A({required final Uint8List aField}) =
       _$EnumWithItemStructTwinSse_AImpl;
+  const EnumWithItemStructTwinSse_A._() : super._();
 
   Uint8List get aField;
   @JsonKey(ignore: true)
@@ -1019,8 +1024,8 @@ class __$$EnumWithItemStructTwinSse_BImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumWithItemStructTwinSse_BImpl implements EnumWithItemStructTwinSse_B {
-  const _$EnumWithItemStructTwinSse_BImpl({required this.bField});
+class _$EnumWithItemStructTwinSse_BImpl extends EnumWithItemStructTwinSse_B {
+  const _$EnumWithItemStructTwinSse_BImpl({required this.bField}) : super._();
 
   @override
   final Int32List bField;
@@ -1112,10 +1117,10 @@ class _$EnumWithItemStructTwinSse_BImpl implements EnumWithItemStructTwinSse_B {
   }
 }
 
-abstract class EnumWithItemStructTwinSse_B
-    implements EnumWithItemStructTwinSse {
+abstract class EnumWithItemStructTwinSse_B extends EnumWithItemStructTwinSse {
   const factory EnumWithItemStructTwinSse_B({required final Int32List bField}) =
       _$EnumWithItemStructTwinSse_BImpl;
+  const EnumWithItemStructTwinSse_B._() : super._();
 
   Int32List get bField;
   @JsonKey(ignore: true)
@@ -1221,8 +1226,8 @@ class __$$EnumWithItemTupleTwinSse_AImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumWithItemTupleTwinSse_AImpl implements EnumWithItemTupleTwinSse_A {
-  const _$EnumWithItemTupleTwinSse_AImpl(this.field0);
+class _$EnumWithItemTupleTwinSse_AImpl extends EnumWithItemTupleTwinSse_A {
+  const _$EnumWithItemTupleTwinSse_AImpl(this.field0) : super._();
 
   @override
   final Uint8List field0;
@@ -1314,9 +1319,10 @@ class _$EnumWithItemTupleTwinSse_AImpl implements EnumWithItemTupleTwinSse_A {
   }
 }
 
-abstract class EnumWithItemTupleTwinSse_A implements EnumWithItemTupleTwinSse {
+abstract class EnumWithItemTupleTwinSse_A extends EnumWithItemTupleTwinSse {
   const factory EnumWithItemTupleTwinSse_A(final Uint8List field0) =
       _$EnumWithItemTupleTwinSse_AImpl;
+  const EnumWithItemTupleTwinSse_A._() : super._();
 
   @override
   Uint8List get field0;
@@ -1361,8 +1367,8 @@ class __$$EnumWithItemTupleTwinSse_BImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumWithItemTupleTwinSse_BImpl implements EnumWithItemTupleTwinSse_B {
-  const _$EnumWithItemTupleTwinSse_BImpl(this.field0);
+class _$EnumWithItemTupleTwinSse_BImpl extends EnumWithItemTupleTwinSse_B {
+  const _$EnumWithItemTupleTwinSse_BImpl(this.field0) : super._();
 
   @override
   final Int32List field0;
@@ -1454,9 +1460,10 @@ class _$EnumWithItemTupleTwinSse_BImpl implements EnumWithItemTupleTwinSse_B {
   }
 }
 
-abstract class EnumWithItemTupleTwinSse_B implements EnumWithItemTupleTwinSse {
+abstract class EnumWithItemTupleTwinSse_B extends EnumWithItemTupleTwinSse {
   const factory EnumWithItemTupleTwinSse_B(final Int32List field0) =
       _$EnumWithItemTupleTwinSse_BImpl;
+  const EnumWithItemTupleTwinSse_B._() : super._();
 
   @override
   Int32List get field0;
@@ -1571,8 +1578,8 @@ class __$$KitchenSinkTwinSse_EmptyImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$KitchenSinkTwinSse_EmptyImpl implements KitchenSinkTwinSse_Empty {
-  const _$KitchenSinkTwinSse_EmptyImpl();
+class _$KitchenSinkTwinSse_EmptyImpl extends KitchenSinkTwinSse_Empty {
+  const _$KitchenSinkTwinSse_EmptyImpl() : super._();
 
   @override
   String toString() {
@@ -1677,8 +1684,9 @@ class _$KitchenSinkTwinSse_EmptyImpl implements KitchenSinkTwinSse_Empty {
   }
 }
 
-abstract class KitchenSinkTwinSse_Empty implements KitchenSinkTwinSse {
+abstract class KitchenSinkTwinSse_Empty extends KitchenSinkTwinSse {
   const factory KitchenSinkTwinSse_Empty() = _$KitchenSinkTwinSse_EmptyImpl;
+  const KitchenSinkTwinSse_Empty._() : super._();
 }
 
 /// @nodoc
@@ -1728,9 +1736,10 @@ class __$$KitchenSinkTwinSse_PrimitivesImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$KitchenSinkTwinSse_PrimitivesImpl
-    implements KitchenSinkTwinSse_Primitives {
+    extends KitchenSinkTwinSse_Primitives {
   const _$KitchenSinkTwinSse_PrimitivesImpl(
-      {this.int32 = -1, required this.float64, required this.boolean});
+      {this.int32 = -1, required this.float64, required this.boolean})
+      : super._();
 
   /// Dart field comment
   @override
@@ -1855,11 +1864,12 @@ class _$KitchenSinkTwinSse_PrimitivesImpl
   }
 }
 
-abstract class KitchenSinkTwinSse_Primitives implements KitchenSinkTwinSse {
+abstract class KitchenSinkTwinSse_Primitives extends KitchenSinkTwinSse {
   const factory KitchenSinkTwinSse_Primitives(
       {final int int32,
       required final double float64,
       required final bool boolean}) = _$KitchenSinkTwinSse_PrimitivesImpl;
+  const KitchenSinkTwinSse_Primitives._() : super._();
 
   /// Dart field comment
   int get int32;
@@ -1922,9 +1932,10 @@ class __$$KitchenSinkTwinSse_NestedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$KitchenSinkTwinSse_NestedImpl implements KitchenSinkTwinSse_Nested {
+class _$KitchenSinkTwinSse_NestedImpl extends KitchenSinkTwinSse_Nested {
   const _$KitchenSinkTwinSse_NestedImpl(this.field0,
-      [this.field1 = const KitchenSinkTwinSse.empty()]);
+      [this.field1 = const KitchenSinkTwinSse.empty()])
+      : super._();
 
   @override
   final int field0;
@@ -2044,9 +2055,10 @@ class _$KitchenSinkTwinSse_NestedImpl implements KitchenSinkTwinSse_Nested {
   }
 }
 
-abstract class KitchenSinkTwinSse_Nested implements KitchenSinkTwinSse {
+abstract class KitchenSinkTwinSse_Nested extends KitchenSinkTwinSse {
   const factory KitchenSinkTwinSse_Nested(final int field0,
       [final KitchenSinkTwinSse field1]) = _$KitchenSinkTwinSse_NestedImpl;
+  const KitchenSinkTwinSse_Nested._() : super._();
 
   int get field0;
   KitchenSinkTwinSse get field1;
@@ -2096,8 +2108,9 @@ class __$$KitchenSinkTwinSse_OptionalImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$KitchenSinkTwinSse_OptionalImpl implements KitchenSinkTwinSse_Optional {
-  const _$KitchenSinkTwinSse_OptionalImpl([this.field0 = -1, this.field1]);
+class _$KitchenSinkTwinSse_OptionalImpl extends KitchenSinkTwinSse_Optional {
+  const _$KitchenSinkTwinSse_OptionalImpl([this.field0 = -1, this.field1])
+      : super._();
 
   /// Comment on anonymous field
   @override
@@ -2218,10 +2231,11 @@ class _$KitchenSinkTwinSse_OptionalImpl implements KitchenSinkTwinSse_Optional {
   }
 }
 
-abstract class KitchenSinkTwinSse_Optional implements KitchenSinkTwinSse {
+abstract class KitchenSinkTwinSse_Optional extends KitchenSinkTwinSse {
   const factory KitchenSinkTwinSse_Optional(
       [final int? field0,
       final int? field1]) = _$KitchenSinkTwinSse_OptionalImpl;
+  const KitchenSinkTwinSse_Optional._() : super._();
 
   /// Comment on anonymous field
   int? get field0;
@@ -2267,8 +2281,8 @@ class __$$KitchenSinkTwinSse_BufferImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$KitchenSinkTwinSse_BufferImpl implements KitchenSinkTwinSse_Buffer {
-  const _$KitchenSinkTwinSse_BufferImpl(this.field0);
+class _$KitchenSinkTwinSse_BufferImpl extends KitchenSinkTwinSse_Buffer {
+  const _$KitchenSinkTwinSse_BufferImpl(this.field0) : super._();
 
   @override
   final Uint8List field0;
@@ -2385,9 +2399,10 @@ class _$KitchenSinkTwinSse_BufferImpl implements KitchenSinkTwinSse_Buffer {
   }
 }
 
-abstract class KitchenSinkTwinSse_Buffer implements KitchenSinkTwinSse {
+abstract class KitchenSinkTwinSse_Buffer extends KitchenSinkTwinSse {
   const factory KitchenSinkTwinSse_Buffer(final Uint8List field0) =
       _$KitchenSinkTwinSse_BufferImpl;
+  const KitchenSinkTwinSse_Buffer._() : super._();
 
   Uint8List get field0;
   @JsonKey(ignore: true)
@@ -2431,8 +2446,9 @@ class __$$KitchenSinkTwinSse_EnumsImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$KitchenSinkTwinSse_EnumsImpl implements KitchenSinkTwinSse_Enums {
-  const _$KitchenSinkTwinSse_EnumsImpl([this.field0 = WeekdaysTwinSse.sunday]);
+class _$KitchenSinkTwinSse_EnumsImpl extends KitchenSinkTwinSse_Enums {
+  const _$KitchenSinkTwinSse_EnumsImpl([this.field0 = WeekdaysTwinSse.sunday])
+      : super._();
 
   @override
   @JsonKey()
@@ -2549,9 +2565,10 @@ class _$KitchenSinkTwinSse_EnumsImpl implements KitchenSinkTwinSse_Enums {
   }
 }
 
-abstract class KitchenSinkTwinSse_Enums implements KitchenSinkTwinSse {
+abstract class KitchenSinkTwinSse_Enums extends KitchenSinkTwinSse {
   const factory KitchenSinkTwinSse_Enums([final WeekdaysTwinSse field0]) =
       _$KitchenSinkTwinSse_EnumsImpl;
+  const KitchenSinkTwinSse_Enums._() : super._();
 
   WeekdaysTwinSse get field0;
   @JsonKey(ignore: true)
@@ -2663,8 +2680,8 @@ class __$$MeasureTwinSse_SpeedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$MeasureTwinSse_SpeedImpl implements MeasureTwinSse_Speed {
-  const _$MeasureTwinSse_SpeedImpl(this.field0);
+class _$MeasureTwinSse_SpeedImpl extends MeasureTwinSse_Speed {
+  const _$MeasureTwinSse_SpeedImpl(this.field0) : super._();
 
   @override
   final SpeedTwinSse field0;
@@ -2756,9 +2773,10 @@ class _$MeasureTwinSse_SpeedImpl implements MeasureTwinSse_Speed {
   }
 }
 
-abstract class MeasureTwinSse_Speed implements MeasureTwinSse {
+abstract class MeasureTwinSse_Speed extends MeasureTwinSse {
   const factory MeasureTwinSse_Speed(final SpeedTwinSse field0) =
       _$MeasureTwinSse_SpeedImpl;
+  const MeasureTwinSse_Speed._() : super._();
 
   @override
   SpeedTwinSse get field0;
@@ -2812,8 +2830,8 @@ class __$$MeasureTwinSse_DistanceImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$MeasureTwinSse_DistanceImpl implements MeasureTwinSse_Distance {
-  const _$MeasureTwinSse_DistanceImpl(this.field0);
+class _$MeasureTwinSse_DistanceImpl extends MeasureTwinSse_Distance {
+  const _$MeasureTwinSse_DistanceImpl(this.field0) : super._();
 
   @override
   final DistanceTwinSse field0;
@@ -2904,9 +2922,10 @@ class _$MeasureTwinSse_DistanceImpl implements MeasureTwinSse_Distance {
   }
 }
 
-abstract class MeasureTwinSse_Distance implements MeasureTwinSse {
+abstract class MeasureTwinSse_Distance extends MeasureTwinSse {
   const factory MeasureTwinSse_Distance(final DistanceTwinSse field0) =
       _$MeasureTwinSse_DistanceImpl;
+  const MeasureTwinSse_Distance._() : super._();
 
   @override
   DistanceTwinSse get field0;
@@ -2993,8 +3012,8 @@ class __$$SpeedTwinSse_UnknownImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SpeedTwinSse_UnknownImpl implements SpeedTwinSse_Unknown {
-  const _$SpeedTwinSse_UnknownImpl();
+class _$SpeedTwinSse_UnknownImpl extends SpeedTwinSse_Unknown {
+  const _$SpeedTwinSse_UnknownImpl() : super._();
 
   @override
   String toString() {
@@ -3074,8 +3093,9 @@ class _$SpeedTwinSse_UnknownImpl implements SpeedTwinSse_Unknown {
   }
 }
 
-abstract class SpeedTwinSse_Unknown implements SpeedTwinSse {
+abstract class SpeedTwinSse_Unknown extends SpeedTwinSse {
   const factory SpeedTwinSse_Unknown() = _$SpeedTwinSse_UnknownImpl;
+  const SpeedTwinSse_Unknown._() : super._();
 }
 
 /// @nodoc
@@ -3111,8 +3131,8 @@ class __$$SpeedTwinSse_GPSImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SpeedTwinSse_GPSImpl implements SpeedTwinSse_GPS {
-  const _$SpeedTwinSse_GPSImpl(this.field0);
+class _$SpeedTwinSse_GPSImpl extends SpeedTwinSse_GPS {
+  const _$SpeedTwinSse_GPSImpl(this.field0) : super._();
 
   @override
   final double field0;
@@ -3203,8 +3223,9 @@ class _$SpeedTwinSse_GPSImpl implements SpeedTwinSse_GPS {
   }
 }
 
-abstract class SpeedTwinSse_GPS implements SpeedTwinSse {
+abstract class SpeedTwinSse_GPS extends SpeedTwinSse {
   const factory SpeedTwinSse_GPS(final double field0) = _$SpeedTwinSse_GPSImpl;
+  const SpeedTwinSse_GPS._() : super._();
 
   double get field0;
   @JsonKey(ignore: true)

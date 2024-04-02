@@ -453,6 +453,8 @@ class StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal extends RustOpaque {
 @freezed
 sealed class EnumWithGoodAndOpaqueTwinNormal
     with _$EnumWithGoodAndOpaqueTwinNormal {
+  const EnumWithGoodAndOpaqueTwinNormal._();
+
   const factory EnumWithGoodAndOpaqueTwinNormal.good(
     String field0,
   ) = EnumWithGoodAndOpaqueTwinNormal_Good;

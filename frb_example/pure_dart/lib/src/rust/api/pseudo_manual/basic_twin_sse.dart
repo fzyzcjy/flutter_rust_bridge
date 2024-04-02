@@ -75,6 +75,8 @@ Future<BasicStructTwinSse> exampleBasicTypeBasicStructTwinSseTwinSse(
 
 @freezed
 sealed class BasicGeneralEnumTwinSse with _$BasicGeneralEnumTwinSse {
+  const BasicGeneralEnumTwinSse._();
+
   const factory BasicGeneralEnumTwinSse.apple({
     required String field,
   }) = BasicGeneralEnumTwinSse_Apple;

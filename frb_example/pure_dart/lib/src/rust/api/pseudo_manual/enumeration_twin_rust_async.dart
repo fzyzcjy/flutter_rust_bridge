@@ -58,6 +58,8 @@ Future<KitchenSinkTwinRustAsync> handleEnumStructTwinRustAsync(
 
 @freezed
 sealed class DistanceTwinRustAsync with _$DistanceTwinRustAsync {
+  const DistanceTwinRustAsync._();
+
   const factory DistanceTwinRustAsync.unknown() = DistanceTwinRustAsync_Unknown;
   const factory DistanceTwinRustAsync.map(
     double field0,
@@ -77,6 +79,8 @@ enum EnumWithDiscriminantTwinRustAsync {
 @freezed
 sealed class EnumWithItemMixedTwinRustAsync
     with _$EnumWithItemMixedTwinRustAsync {
+  const EnumWithItemMixedTwinRustAsync._();
+
   const factory EnumWithItemMixedTwinRustAsync.a() =
       EnumWithItemMixedTwinRustAsync_A;
   const factory EnumWithItemMixedTwinRustAsync.b(
@@ -90,6 +94,8 @@ sealed class EnumWithItemMixedTwinRustAsync
 @freezed
 sealed class EnumWithItemStructTwinRustAsync
     with _$EnumWithItemStructTwinRustAsync {
+  const EnumWithItemStructTwinRustAsync._();
+
   const factory EnumWithItemStructTwinRustAsync.a({
     required Uint8List aField,
   }) = EnumWithItemStructTwinRustAsync_A;
@@ -101,6 +107,8 @@ sealed class EnumWithItemStructTwinRustAsync
 @freezed
 sealed class EnumWithItemTupleTwinRustAsync
     with _$EnumWithItemTupleTwinRustAsync {
+  const EnumWithItemTupleTwinRustAsync._();
+
   const factory EnumWithItemTupleTwinRustAsync.a(
     Uint8List field0,
   ) = EnumWithItemTupleTwinRustAsync_A;
@@ -111,6 +119,8 @@ sealed class EnumWithItemTupleTwinRustAsync
 
 @freezed
 sealed class KitchenSinkTwinRustAsync with _$KitchenSinkTwinRustAsync {
+  const KitchenSinkTwinRustAsync._();
+
   /// Comment on variant
   const factory KitchenSinkTwinRustAsync.empty() =
       KitchenSinkTwinRustAsync_Empty;
@@ -139,6 +149,8 @@ sealed class KitchenSinkTwinRustAsync with _$KitchenSinkTwinRustAsync {
 
 @freezed
 sealed class MeasureTwinRustAsync with _$MeasureTwinRustAsync {
+  const MeasureTwinRustAsync._();
+
   const factory MeasureTwinRustAsync.speed(
     SpeedTwinRustAsync field0,
   ) = MeasureTwinRustAsync_Speed;
@@ -170,6 +182,8 @@ class NoteTwinRustAsync {
 
 @freezed
 sealed class SpeedTwinRustAsync with _$SpeedTwinRustAsync {
+  const SpeedTwinRustAsync._();
+
   const factory SpeedTwinRustAsync.unknown() = SpeedTwinRustAsync_Unknown;
   const factory SpeedTwinRustAsync.gps(
     double field0,

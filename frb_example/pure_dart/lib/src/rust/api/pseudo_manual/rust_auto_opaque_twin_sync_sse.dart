@@ -448,6 +448,8 @@ class StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse extends RustOpaque {
 @freezed
 sealed class EnumWithGoodAndOpaqueTwinSyncSse
     with _$EnumWithGoodAndOpaqueTwinSyncSse {
+  const EnumWithGoodAndOpaqueTwinSyncSse._();
+
   const factory EnumWithGoodAndOpaqueTwinSyncSse.good(
     String field0,
   ) = EnumWithGoodAndOpaqueTwinSyncSse_Good;

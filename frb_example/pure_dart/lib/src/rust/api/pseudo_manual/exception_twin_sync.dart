@@ -74,6 +74,8 @@ Stream<String> streamSinkThrowAnyhowTwinSync({dynamic hint}) =>
 sealed class CustomEnumErrorTwinSync
     with _$CustomEnumErrorTwinSync
     implements FrbException {
+  const CustomEnumErrorTwinSync._();
+
   @Implements<FrbBacktracedException>()
   const factory CustomEnumErrorTwinSync.one({
     required String message,
@@ -90,6 +92,8 @@ sealed class CustomEnumErrorTwinSync
 sealed class CustomErrorTwinSync
     with _$CustomErrorTwinSync
     implements FrbException {
+  const CustomErrorTwinSync._();
+
   @Implements<FrbBacktracedException>()
   const factory CustomErrorTwinSync.error0({
     required String e,
@@ -106,6 +110,8 @@ sealed class CustomErrorTwinSync
 sealed class CustomNestedError1TwinSync
     with _$CustomNestedError1TwinSync
     implements FrbException {
+  const CustomNestedError1TwinSync._();
+
   const factory CustomNestedError1TwinSync.customNested1(
     String field0,
   ) = CustomNestedError1TwinSync_CustomNested1;
@@ -116,6 +122,8 @@ sealed class CustomNestedError1TwinSync
 
 @freezed
 sealed class CustomNestedError2TwinSync with _$CustomNestedError2TwinSync {
+  const CustomNestedError2TwinSync._();
+
   const factory CustomNestedError2TwinSync.customNested2(
     String field0,
   ) = CustomNestedError2TwinSync_CustomNested2;
@@ -127,6 +135,8 @@ sealed class CustomNestedError2TwinSync with _$CustomNestedError2TwinSync {
 @freezed
 sealed class CustomNestedErrorInnerTwinSync
     with _$CustomNestedErrorInnerTwinSync {
+  const CustomNestedErrorInnerTwinSync._();
+
   const factory CustomNestedErrorInnerTwinSync.three(
     String field0,
   ) = CustomNestedErrorInnerTwinSync_Three;
@@ -138,6 +148,8 @@ sealed class CustomNestedErrorInnerTwinSync
 @freezed
 sealed class CustomNestedErrorOuterTwinSync
     with _$CustomNestedErrorOuterTwinSync {
+  const CustomNestedErrorOuterTwinSync._();
+
   const factory CustomNestedErrorOuterTwinSync.one(
     String field0,
   ) = CustomNestedErrorOuterTwinSync_One;

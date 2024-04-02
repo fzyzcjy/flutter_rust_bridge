@@ -96,8 +96,8 @@ class __$$SimpleEnumTwinNormal_FirstImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SimpleEnumTwinNormal_FirstImpl implements SimpleEnumTwinNormal_First {
-  const _$SimpleEnumTwinNormal_FirstImpl();
+class _$SimpleEnumTwinNormal_FirstImpl extends SimpleEnumTwinNormal_First {
+  const _$SimpleEnumTwinNormal_FirstImpl() : super._();
 
   @override
   String toString() {
@@ -177,8 +177,9 @@ class _$SimpleEnumTwinNormal_FirstImpl implements SimpleEnumTwinNormal_First {
   }
 }
 
-abstract class SimpleEnumTwinNormal_First implements SimpleEnumTwinNormal {
+abstract class SimpleEnumTwinNormal_First extends SimpleEnumTwinNormal {
   const factory SimpleEnumTwinNormal_First() = _$SimpleEnumTwinNormal_FirstImpl;
+  const SimpleEnumTwinNormal_First._() : super._();
 }
 
 /// @nodoc
@@ -217,8 +218,8 @@ class __$$SimpleEnumTwinNormal_SecondImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SimpleEnumTwinNormal_SecondImpl implements SimpleEnumTwinNormal_Second {
-  const _$SimpleEnumTwinNormal_SecondImpl(this.field0);
+class _$SimpleEnumTwinNormal_SecondImpl extends SimpleEnumTwinNormal_Second {
+  const _$SimpleEnumTwinNormal_SecondImpl(this.field0) : super._();
 
   @override
   final String field0;
@@ -309,9 +310,10 @@ class _$SimpleEnumTwinNormal_SecondImpl implements SimpleEnumTwinNormal_Second {
   }
 }
 
-abstract class SimpleEnumTwinNormal_Second implements SimpleEnumTwinNormal {
+abstract class SimpleEnumTwinNormal_Second extends SimpleEnumTwinNormal {
   const factory SimpleEnumTwinNormal_Second(final String field0) =
       _$SimpleEnumTwinNormal_SecondImpl;
+  const SimpleEnumTwinNormal_Second._() : super._();
 
   String get field0;
   @JsonKey(ignore: true)

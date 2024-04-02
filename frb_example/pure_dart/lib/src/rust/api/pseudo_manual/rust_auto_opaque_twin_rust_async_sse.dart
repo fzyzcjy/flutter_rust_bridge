@@ -472,6 +472,8 @@ class StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse
 @freezed
 sealed class EnumWithGoodAndOpaqueTwinRustAsyncSse
     with _$EnumWithGoodAndOpaqueTwinRustAsyncSse {
+  const EnumWithGoodAndOpaqueTwinRustAsyncSse._();
+
   const factory EnumWithGoodAndOpaqueTwinRustAsyncSse.good(
     String field0,
   ) = EnumWithGoodAndOpaqueTwinRustAsyncSse_Good;

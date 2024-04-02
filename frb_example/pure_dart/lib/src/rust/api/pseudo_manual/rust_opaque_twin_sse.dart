@@ -180,6 +180,8 @@ class RwLockHideDataTwinSse extends RustOpaque {
 
 @freezed
 sealed class EnumOpaqueTwinSse with _$EnumOpaqueTwinSse {
+  const EnumOpaqueTwinSse._();
+
   const factory EnumOpaqueTwinSse.struct(
     HideDataTwinSse field0,
   ) = EnumOpaqueTwinSse_Struct;

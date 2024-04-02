@@ -135,8 +135,8 @@ class __$$EnumOpaqueTwinNormal_StructImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumOpaqueTwinNormal_StructImpl implements EnumOpaqueTwinNormal_Struct {
-  const _$EnumOpaqueTwinNormal_StructImpl(this.field0);
+class _$EnumOpaqueTwinNormal_StructImpl extends EnumOpaqueTwinNormal_Struct {
+  const _$EnumOpaqueTwinNormal_StructImpl(this.field0) : super._();
 
   @override
   final HideDataTwinNormal field0;
@@ -251,9 +251,10 @@ class _$EnumOpaqueTwinNormal_StructImpl implements EnumOpaqueTwinNormal_Struct {
   }
 }
 
-abstract class EnumOpaqueTwinNormal_Struct implements EnumOpaqueTwinNormal {
+abstract class EnumOpaqueTwinNormal_Struct extends EnumOpaqueTwinNormal {
   const factory EnumOpaqueTwinNormal_Struct(final HideDataTwinNormal field0) =
       _$EnumOpaqueTwinNormal_StructImpl;
+  const EnumOpaqueTwinNormal_Struct._() : super._();
 
   HideDataTwinNormal get field0;
   @JsonKey(ignore: true)
@@ -298,8 +299,8 @@ class __$$EnumOpaqueTwinNormal_PrimitiveImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EnumOpaqueTwinNormal_PrimitiveImpl
-    implements EnumOpaqueTwinNormal_Primitive {
-  const _$EnumOpaqueTwinNormal_PrimitiveImpl(this.field0);
+    extends EnumOpaqueTwinNormal_Primitive {
+  const _$EnumOpaqueTwinNormal_PrimitiveImpl(this.field0) : super._();
 
   @override
   final I32 field0;
@@ -415,9 +416,10 @@ class _$EnumOpaqueTwinNormal_PrimitiveImpl
   }
 }
 
-abstract class EnumOpaqueTwinNormal_Primitive implements EnumOpaqueTwinNormal {
+abstract class EnumOpaqueTwinNormal_Primitive extends EnumOpaqueTwinNormal {
   const factory EnumOpaqueTwinNormal_Primitive(final I32 field0) =
       _$EnumOpaqueTwinNormal_PrimitiveImpl;
+  const EnumOpaqueTwinNormal_Primitive._() : super._();
 
   I32 get field0;
   @JsonKey(ignore: true)
@@ -463,8 +465,8 @@ class __$$EnumOpaqueTwinNormal_TraitObjImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EnumOpaqueTwinNormal_TraitObjImpl
-    implements EnumOpaqueTwinNormal_TraitObj {
-  const _$EnumOpaqueTwinNormal_TraitObjImpl(this.field0);
+    extends EnumOpaqueTwinNormal_TraitObj {
+  const _$EnumOpaqueTwinNormal_TraitObjImpl(this.field0) : super._();
 
   @override
   final BoxDartDebugTwinNormal field0;
@@ -580,10 +582,11 @@ class _$EnumOpaqueTwinNormal_TraitObjImpl
   }
 }
 
-abstract class EnumOpaqueTwinNormal_TraitObj implements EnumOpaqueTwinNormal {
+abstract class EnumOpaqueTwinNormal_TraitObj extends EnumOpaqueTwinNormal {
   const factory EnumOpaqueTwinNormal_TraitObj(
           final BoxDartDebugTwinNormal field0) =
       _$EnumOpaqueTwinNormal_TraitObjImpl;
+  const EnumOpaqueTwinNormal_TraitObj._() : super._();
 
   BoxDartDebugTwinNormal get field0;
   @JsonKey(ignore: true)
@@ -628,8 +631,8 @@ class __$$EnumOpaqueTwinNormal_MutexImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumOpaqueTwinNormal_MutexImpl implements EnumOpaqueTwinNormal_Mutex {
-  const _$EnumOpaqueTwinNormal_MutexImpl(this.field0);
+class _$EnumOpaqueTwinNormal_MutexImpl extends EnumOpaqueTwinNormal_Mutex {
+  const _$EnumOpaqueTwinNormal_MutexImpl(this.field0) : super._();
 
   @override
   final MutexHideDataTwinNormal field0;
@@ -744,9 +747,10 @@ class _$EnumOpaqueTwinNormal_MutexImpl implements EnumOpaqueTwinNormal_Mutex {
   }
 }
 
-abstract class EnumOpaqueTwinNormal_Mutex implements EnumOpaqueTwinNormal {
+abstract class EnumOpaqueTwinNormal_Mutex extends EnumOpaqueTwinNormal {
   const factory EnumOpaqueTwinNormal_Mutex(
       final MutexHideDataTwinNormal field0) = _$EnumOpaqueTwinNormal_MutexImpl;
+  const EnumOpaqueTwinNormal_Mutex._() : super._();
 
   MutexHideDataTwinNormal get field0;
   @JsonKey(ignore: true)
@@ -790,8 +794,8 @@ class __$$EnumOpaqueTwinNormal_RwLockImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumOpaqueTwinNormal_RwLockImpl implements EnumOpaqueTwinNormal_RwLock {
-  const _$EnumOpaqueTwinNormal_RwLockImpl(this.field0);
+class _$EnumOpaqueTwinNormal_RwLockImpl extends EnumOpaqueTwinNormal_RwLock {
+  const _$EnumOpaqueTwinNormal_RwLockImpl(this.field0) : super._();
 
   @override
   final RwLockHideDataTwinNormal field0;
@@ -906,10 +910,11 @@ class _$EnumOpaqueTwinNormal_RwLockImpl implements EnumOpaqueTwinNormal_RwLock {
   }
 }
 
-abstract class EnumOpaqueTwinNormal_RwLock implements EnumOpaqueTwinNormal {
+abstract class EnumOpaqueTwinNormal_RwLock extends EnumOpaqueTwinNormal {
   const factory EnumOpaqueTwinNormal_RwLock(
           final RwLockHideDataTwinNormal field0) =
       _$EnumOpaqueTwinNormal_RwLockImpl;
+  const EnumOpaqueTwinNormal_RwLock._() : super._();
 
   RwLockHideDataTwinNormal get field0;
   @JsonKey(ignore: true)
@@ -938,9 +943,8 @@ class __$$EnumOpaqueTwinNormal_NothingImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumOpaqueTwinNormal_NothingImpl
-    implements EnumOpaqueTwinNormal_Nothing {
-  const _$EnumOpaqueTwinNormal_NothingImpl();
+class _$EnumOpaqueTwinNormal_NothingImpl extends EnumOpaqueTwinNormal_Nothing {
+  const _$EnumOpaqueTwinNormal_NothingImpl() : super._();
 
   @override
   String toString() {
@@ -1044,7 +1048,8 @@ class _$EnumOpaqueTwinNormal_NothingImpl
   }
 }
 
-abstract class EnumOpaqueTwinNormal_Nothing implements EnumOpaqueTwinNormal {
+abstract class EnumOpaqueTwinNormal_Nothing extends EnumOpaqueTwinNormal {
   const factory EnumOpaqueTwinNormal_Nothing() =
       _$EnumOpaqueTwinNormal_NothingImpl;
+  const EnumOpaqueTwinNormal_Nothing._() : super._();
 }

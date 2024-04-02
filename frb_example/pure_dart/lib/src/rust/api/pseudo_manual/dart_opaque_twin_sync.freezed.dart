@@ -113,8 +113,8 @@ class __$$EnumDartOpaqueTwinSync_PrimitiveImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EnumDartOpaqueTwinSync_PrimitiveImpl
-    implements EnumDartOpaqueTwinSync_Primitive {
-  const _$EnumDartOpaqueTwinSync_PrimitiveImpl(this.field0);
+    extends EnumDartOpaqueTwinSync_Primitive {
+  const _$EnumDartOpaqueTwinSync_PrimitiveImpl(this.field0) : super._();
 
   @override
   final int field0;
@@ -206,10 +206,10 @@ class _$EnumDartOpaqueTwinSync_PrimitiveImpl
   }
 }
 
-abstract class EnumDartOpaqueTwinSync_Primitive
-    implements EnumDartOpaqueTwinSync {
+abstract class EnumDartOpaqueTwinSync_Primitive extends EnumDartOpaqueTwinSync {
   const factory EnumDartOpaqueTwinSync_Primitive(final int field0) =
       _$EnumDartOpaqueTwinSync_PrimitiveImpl;
+  const EnumDartOpaqueTwinSync_Primitive._() : super._();
 
   @override
   int get field0;
@@ -253,8 +253,8 @@ class __$$EnumDartOpaqueTwinSync_OpaqueImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EnumDartOpaqueTwinSync_OpaqueImpl
-    implements EnumDartOpaqueTwinSync_Opaque {
-  const _$EnumDartOpaqueTwinSync_OpaqueImpl(this.field0);
+    extends EnumDartOpaqueTwinSync_Opaque {
+  const _$EnumDartOpaqueTwinSync_OpaqueImpl(this.field0) : super._();
 
   @override
   final Object field0;
@@ -347,9 +347,10 @@ class _$EnumDartOpaqueTwinSync_OpaqueImpl
   }
 }
 
-abstract class EnumDartOpaqueTwinSync_Opaque implements EnumDartOpaqueTwinSync {
+abstract class EnumDartOpaqueTwinSync_Opaque extends EnumDartOpaqueTwinSync {
   const factory EnumDartOpaqueTwinSync_Opaque(final Object field0) =
       _$EnumDartOpaqueTwinSync_OpaqueImpl;
+  const EnumDartOpaqueTwinSync_Opaque._() : super._();
 
   @override
   Object get field0;
