@@ -157,7 +157,7 @@ pub struct StaticOnlyTwinNormal {
 }
 
 impl StaticOnlyTwinNormal {
-    pub fn static_method(a: i32) -> i32 {
+    pub fn static_method_twin_normal(a: i32) -> i32 {
         a
     }
 }
@@ -168,7 +168,7 @@ pub struct StaticGetterOnlyTwinNormal {}
 
 impl StaticGetterOnlyTwinNormal {
     #[frb(getter)]
-    pub fn static_getter() -> i32 {
+    pub fn static_getter_twin_normal() -> i32 {
         42
     }
 }
