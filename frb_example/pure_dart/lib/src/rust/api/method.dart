@@ -6,6 +6,8 @@
 import '../frb_generated.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+part 'method.freezed.dart';
 
 Future<SumWithTwinNormal> getSumStructTwinNormal({dynamic hint}) =>
     RustLib.instance.api.getSumStructTwinNormal(hint: hint);
@@ -158,6 +160,14 @@ class MyCallableTwinNormal {
       other is MyCallableTwinNormal &&
           runtimeType == other.runtimeType &&
           one == other.one;
+}
+
+@freezed
+sealed class SimpleEnumTwinNormal with _$SimpleEnumTwinNormal {
+  const factory SimpleEnumTwinNormal.first() = SimpleEnumTwinNormal_First;
+  const factory SimpleEnumTwinNormal.second(
+    String field0,
+  ) = SimpleEnumTwinNormal_Second;
 }
 
 class SimpleStructTwinNormal {

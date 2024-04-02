@@ -4604,6 +4604,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Sequences dco_decode_box_autoadd_sequences(dynamic raw);
 
   @protected
+  SimpleEnumTwinNormal dco_decode_box_autoadd_simple_enum_twin_normal(
+      dynamic raw);
+
+  @protected
   SimpleStructTwinNormal dco_decode_box_autoadd_simple_struct_twin_normal(
       dynamic raw);
 
@@ -7993,6 +7997,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   Sequences dco_decode_sequences(dynamic raw);
+
+  @protected
+  SimpleEnumTwinNormal dco_decode_simple_enum_twin_normal(dynamic raw);
 
   @protected
   SimpleStructTwinNormal dco_decode_simple_struct_twin_normal(dynamic raw);
@@ -12352,6 +12359,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Sequences sse_decode_box_autoadd_sequences(SseDeserializer deserializer);
 
   @protected
+  SimpleEnumTwinNormal sse_decode_box_autoadd_simple_enum_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
   SimpleStructTwinNormal sse_decode_box_autoadd_simple_struct_twin_normal(
       SseDeserializer deserializer);
 
@@ -16201,6 +16212,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Sequences sse_decode_sequences(SseDeserializer deserializer);
 
   @protected
+  SimpleEnumTwinNormal sse_decode_simple_enum_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
   SimpleStructTwinNormal sse_decode_simple_struct_twin_normal(
       SseDeserializer deserializer);
 
@@ -18763,6 +18778,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic> cst_encode_box_autoadd_sequences(Sequences raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_sequences(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_simple_enum_twin_normal(
+      SimpleEnumTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_simple_enum_twin_normal(raw);
   }
 
   @protected
@@ -23250,6 +23272,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic> cst_encode_sequences(Sequences raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_list_prim_i_32_strict(raw.field0)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_simple_enum_twin_normal(SimpleEnumTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    if (raw is SimpleEnumTwinNormal_First) {
+      return [0];
+    }
+    if (raw is SimpleEnumTwinNormal_Second) {
+      return [1, cst_encode_String(raw.field0)];
+    }
+
+    throw Exception('unreachable');
   }
 
   @protected
@@ -28621,6 +28656,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       Sequences self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_simple_enum_twin_normal(
+      SimpleEnumTwinNormal self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_simple_struct_twin_normal(
       SimpleStructTwinNormal self, SseSerializer serializer);
 
@@ -32282,6 +32321,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_sequences(Sequences self, SseSerializer serializer);
 
   @protected
+  void sse_encode_simple_enum_twin_normal(
+      SimpleEnumTwinNormal self, SseSerializer serializer);
+
+  @protected
   void sse_encode_simple_struct_twin_normal(
       SimpleStructTwinNormal self, SseSerializer serializer);
 
@@ -33493,6 +33536,15 @@ class RustLibWire implements BaseWire {
   void wire_MyCallableTwinNormal_call(
           NativePortType port_, List<dynamic> that, String two) =>
       wasmModule.wire_MyCallableTwinNormal_call(port_, that, two);
+
+  void wire_SimpleEnumTwinNormal_return_self_twin_normal(
+          NativePortType port_, String one) =>
+      wasmModule.wire_SimpleEnumTwinNormal_return_self_twin_normal(port_, one);
+
+  void wire_SimpleEnumTwinNormal_simple_method_twin_normal(
+          NativePortType port_, List<dynamic> that) =>
+      wasmModule.wire_SimpleEnumTwinNormal_simple_method_twin_normal(
+          port_, that);
 
   void wire_SimpleStructTwinNormal_arg_self_twin_normal(
           NativePortType port_, List<dynamic> a, List<dynamic> b) =>
@@ -50771,6 +50823,12 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_MyCallableTwinNormal_call(
       NativePortType port_, List<dynamic> that, String two);
+
+  external void wire_SimpleEnumTwinNormal_return_self_twin_normal(
+      NativePortType port_, String one);
+
+  external void wire_SimpleEnumTwinNormal_simple_method_twin_normal(
+      NativePortType port_, List<dynamic> that);
 
   external void wire_SimpleStructTwinNormal_arg_self_twin_normal(
       NativePortType port_, List<dynamic> a, List<dynamic> b);

@@ -6408,6 +6408,19 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::Sequences>
         crate::api::pseudo_manual::mirror_twin_sync_sse::Sequences(self_.get(0).cst_decode())
     }
 }
+impl CstDecode<crate::api::method::SimpleEnumTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> crate::api::method::SimpleEnumTwinNormal {
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => crate::api::method::SimpleEnumTwinNormal::First,
+            1 => crate::api::method::SimpleEnumTwinNormal::Second(self_.get(1).cst_decode()),
+            _ => unreachable!(),
+        }
+    }
+}
 impl CstDecode<crate::api::method::SimpleStructTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -12745,6 +12758,22 @@ pub fn wire_MyCallableTwinNormal_call(
     two: String,
 ) {
     wire_MyCallableTwinNormal_call_impl(port_, that, two)
+}
+
+#[wasm_bindgen]
+pub fn wire_SimpleEnumTwinNormal_return_self_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    one: String,
+) {
+    wire_SimpleEnumTwinNormal_return_self_twin_normal_impl(port_, one)
+}
+
+#[wasm_bindgen]
+pub fn wire_SimpleEnumTwinNormal_simple_method_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_SimpleEnumTwinNormal_simple_method_twin_normal_impl(port_, that)
 }
 
 #[wasm_bindgen]

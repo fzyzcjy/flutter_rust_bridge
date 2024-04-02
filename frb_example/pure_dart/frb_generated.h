@@ -400,6 +400,19 @@ typedef struct wire_cst_my_callable_twin_normal {
   struct wire_cst_list_prim_u_8_strict *one;
 } wire_cst_my_callable_twin_normal;
 
+typedef struct wire_cst_SimpleEnumTwinNormal_Second {
+  struct wire_cst_list_prim_u_8_strict *field0;
+} wire_cst_SimpleEnumTwinNormal_Second;
+
+typedef union SimpleEnumTwinNormalKind {
+  struct wire_cst_SimpleEnumTwinNormal_Second Second;
+} SimpleEnumTwinNormalKind;
+
+typedef struct wire_cst_simple_enum_twin_normal {
+  int32_t tag;
+  union SimpleEnumTwinNormalKind kind;
+} wire_cst_simple_enum_twin_normal;
+
 typedef struct wire_cst_simple_struct_twin_normal {
   struct wire_cst_list_prim_u_8_strict *one;
 } wire_cst_simple_struct_twin_normal;
@@ -3558,6 +3571,12 @@ void frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinNormal_simple_getter_t
 void frbgen_frb_example_pure_dart_wire_MyCallableTwinNormal_call(int64_t port_,
                                                                  struct wire_cst_my_callable_twin_normal *that,
                                                                  struct wire_cst_list_prim_u_8_strict *two);
+
+void frbgen_frb_example_pure_dart_wire_SimpleEnumTwinNormal_return_self_twin_normal(int64_t port_,
+                                                                                    struct wire_cst_list_prim_u_8_strict *one);
+
+void frbgen_frb_example_pure_dart_wire_SimpleEnumTwinNormal_simple_method_twin_normal(int64_t port_,
+                                                                                      struct wire_cst_simple_enum_twin_normal *that);
 
 void frbgen_frb_example_pure_dart_wire_SimpleStructTwinNormal_arg_self_twin_normal(int64_t port_,
                                                                                    struct wire_cst_simple_struct_twin_normal *a,
@@ -13250,6 +13269,8 @@ struct wire_cst_record_string_i_32 *frbgen_frb_example_pure_dart_cst_new_box_aut
 
 struct wire_cst_sequences *frbgen_frb_example_pure_dart_cst_new_box_autoadd_sequences(void);
 
+struct wire_cst_simple_enum_twin_normal *frbgen_frb_example_pure_dart_cst_new_box_autoadd_simple_enum_twin_normal(void);
+
 struct wire_cst_simple_struct_twin_normal *frbgen_frb_example_pure_dart_cst_new_box_autoadd_simple_struct_twin_normal(void);
 
 struct wire_cst_simple_struct_twin_rust_async *frbgen_frb_example_pure_dart_cst_new_box_autoadd_simple_struct_twin_rust_async(void);
@@ -13857,6 +13878,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_raw_string_mirrored);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_record_string_i_32);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_sequences);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_simple_enum_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_simple_struct_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_simple_struct_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_simple_struct_twin_sync);
@@ -14719,6 +14741,8 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinSync_static_method_arg_mut_borrow_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinSync_static_method_arg_own_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinSync_static_method_return_own_twin_sync);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_SimpleEnumTwinNormal_return_self_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_SimpleEnumTwinNormal_simple_method_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_SimpleStructTwinNormal_arg_self_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_SimpleStructTwinNormal_return_self_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_SimpleStructTwinNormal_vec_self_twin_normal);

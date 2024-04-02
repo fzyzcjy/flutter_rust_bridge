@@ -4605,6 +4605,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Sequences dco_decode_box_autoadd_sequences(dynamic raw);
 
   @protected
+  SimpleEnumTwinNormal dco_decode_box_autoadd_simple_enum_twin_normal(
+      dynamic raw);
+
+  @protected
   SimpleStructTwinNormal dco_decode_box_autoadd_simple_struct_twin_normal(
       dynamic raw);
 
@@ -7994,6 +7998,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   Sequences dco_decode_sequences(dynamic raw);
+
+  @protected
+  SimpleEnumTwinNormal dco_decode_simple_enum_twin_normal(dynamic raw);
 
   @protected
   SimpleStructTwinNormal dco_decode_simple_struct_twin_normal(dynamic raw);
@@ -12353,6 +12360,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Sequences sse_decode_box_autoadd_sequences(SseDeserializer deserializer);
 
   @protected
+  SimpleEnumTwinNormal sse_decode_box_autoadd_simple_enum_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
   SimpleStructTwinNormal sse_decode_box_autoadd_simple_struct_twin_normal(
       SseDeserializer deserializer);
 
@@ -16202,6 +16213,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Sequences sse_decode_sequences(SseDeserializer deserializer);
 
   @protected
+  SimpleEnumTwinNormal sse_decode_simple_enum_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
   SimpleStructTwinNormal sse_decode_simple_struct_twin_normal(
       SseDeserializer deserializer);
 
@@ -18876,6 +18891,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     final ptr = wire.cst_new_box_autoadd_sequences();
     cst_api_fill_to_wire_sequences(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_simple_enum_twin_normal>
+      cst_encode_box_autoadd_simple_enum_twin_normal(SimpleEnumTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr = wire.cst_new_box_autoadd_simple_enum_twin_normal();
+    cst_api_fill_to_wire_simple_enum_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -23566,6 +23590,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  void cst_api_fill_to_wire_box_autoadd_simple_enum_twin_normal(
+      SimpleEnumTwinNormal apiObj,
+      ffi.Pointer<wire_cst_simple_enum_twin_normal> wireObj) {
+    cst_api_fill_to_wire_simple_enum_twin_normal(apiObj, wireObj.ref);
+  }
+
+  @protected
   void cst_api_fill_to_wire_box_autoadd_simple_struct_twin_normal(
       SimpleStructTwinNormal apiObj,
       ffi.Pointer<wire_cst_simple_struct_twin_normal> wireObj) {
@@ -26521,6 +26552,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void cst_api_fill_to_wire_sequences(
       Sequences apiObj, wire_cst_sequences wireObj) {
     wireObj.field0 = cst_encode_list_prim_i_32_strict(apiObj.field0);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_simple_enum_twin_normal(
+      SimpleEnumTwinNormal apiObj, wire_cst_simple_enum_twin_normal wireObj) {
+    if (apiObj is SimpleEnumTwinNormal_First) {
+      wireObj.tag = 0;
+      return;
+    }
+    if (apiObj is SimpleEnumTwinNormal_Second) {
+      var pre_field0 = cst_encode_String(apiObj.field0);
+      wireObj.tag = 1;
+      wireObj.kind.Second.field0 = pre_field0;
+      return;
+    }
   }
 
   @protected
@@ -31776,6 +31822,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       Sequences self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_simple_enum_twin_normal(
+      SimpleEnumTwinNormal self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_simple_struct_twin_normal(
       SimpleStructTwinNormal self, SseSerializer serializer);
 
@@ -35437,6 +35487,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_sequences(Sequences self, SseSerializer serializer);
 
   @protected
+  void sse_encode_simple_enum_twin_normal(
+      SimpleEnumTwinNormal self, SseSerializer serializer);
+
+  @protected
   void sse_encode_simple_struct_twin_normal(
       SimpleStructTwinNormal self, SseSerializer serializer);
 
@@ -38744,6 +38798,44 @@ class RustLibWire implements BaseWire {
       _wire_MyCallableTwinNormal_callPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_my_callable_twin_normal>,
               ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+
+  void wire_SimpleEnumTwinNormal_return_self_twin_normal(
+    int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> one,
+  ) {
+    return _wire_SimpleEnumTwinNormal_return_self_twin_normal(
+      port_,
+      one,
+    );
+  }
+
+  late final _wire_SimpleEnumTwinNormal_return_self_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+      'frbgen_frb_example_pure_dart_wire_SimpleEnumTwinNormal_return_self_twin_normal');
+  late final _wire_SimpleEnumTwinNormal_return_self_twin_normal =
+      _wire_SimpleEnumTwinNormal_return_self_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+
+  void wire_SimpleEnumTwinNormal_simple_method_twin_normal(
+    int port_,
+    ffi.Pointer<wire_cst_simple_enum_twin_normal> that,
+  ) {
+    return _wire_SimpleEnumTwinNormal_simple_method_twin_normal(
+      port_,
+      that,
+    );
+  }
+
+  late final _wire_SimpleEnumTwinNormal_simple_method_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_simple_enum_twin_normal>)>>(
+      'frbgen_frb_example_pure_dart_wire_SimpleEnumTwinNormal_simple_method_twin_normal');
+  late final _wire_SimpleEnumTwinNormal_simple_method_twin_normal =
+      _wire_SimpleEnumTwinNormal_simple_method_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_simple_enum_twin_normal>)>();
 
   void wire_SimpleStructTwinNormal_arg_self_twin_normal(
     int port_,
@@ -94117,6 +94209,19 @@ class RustLibWire implements BaseWire {
   late final _cst_new_box_autoadd_sequences = _cst_new_box_autoadd_sequencesPtr
       .asFunction<ffi.Pointer<wire_cst_sequences> Function()>();
 
+  ffi.Pointer<wire_cst_simple_enum_twin_normal>
+      cst_new_box_autoadd_simple_enum_twin_normal() {
+    return _cst_new_box_autoadd_simple_enum_twin_normal();
+  }
+
+  late final _cst_new_box_autoadd_simple_enum_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<wire_cst_simple_enum_twin_normal> Function()>>(
+      'frbgen_frb_example_pure_dart_cst_new_box_autoadd_simple_enum_twin_normal');
+  late final _cst_new_box_autoadd_simple_enum_twin_normal =
+      _cst_new_box_autoadd_simple_enum_twin_normalPtr.asFunction<
+          ffi.Pointer<wire_cst_simple_enum_twin_normal> Function()>();
+
   ffi.Pointer<wire_cst_simple_struct_twin_normal>
       cst_new_box_autoadd_simple_struct_twin_normal() {
     return _cst_new_box_autoadd_simple_struct_twin_normal();
@@ -98199,6 +98304,21 @@ final class wire_cst_concatenate_with_twin_normal extends ffi.Struct {
 
 final class wire_cst_my_callable_twin_normal extends ffi.Struct {
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> one;
+}
+
+final class wire_cst_SimpleEnumTwinNormal_Second extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8_strict> field0;
+}
+
+final class SimpleEnumTwinNormalKind extends ffi.Union {
+  external wire_cst_SimpleEnumTwinNormal_Second Second;
+}
+
+final class wire_cst_simple_enum_twin_normal extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external SimpleEnumTwinNormalKind kind;
 }
 
 final class wire_cst_simple_struct_twin_normal extends ffi.Struct {
