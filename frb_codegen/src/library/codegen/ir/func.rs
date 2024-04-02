@@ -76,7 +76,10 @@ impl IrFunc {
         error_output.visit_types(f, ir_context);
 
         // extra (#1838)
-        if let IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod { enum_or_struct_ty, ..}) = &self.owner {
+        if let IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod {
+            enum_or_struct_ty, ..
+        }) = &self.owner
+        {
             enum_or_struct_ty.visit_types(f, ir_context);
         }
     }
