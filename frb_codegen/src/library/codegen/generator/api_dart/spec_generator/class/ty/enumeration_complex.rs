@@ -36,6 +36,8 @@ impl<'a> EnumRefApiDartGenerator<'a> {
             code: format!(
                 "@freezed
                 {sealed} class {name} with _${name} {maybe_implements_exception} {{
+                    const {name}._();
+
                     {variants}
                 }}",
             ),
