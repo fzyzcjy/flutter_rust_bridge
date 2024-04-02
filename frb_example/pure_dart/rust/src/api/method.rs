@@ -131,3 +131,25 @@ impl SimpleStructTwinNormal {
         arg.into_iter().map(|x| x.one).collect()
     }
 }
+
+// #1838
+pub struct StaticOnlyTwinNormal {
+    pub one: String,
+}
+
+impl StaticOnlyTwinNormal {
+    pub fn static_method(a: i32) -> i32 {
+        a
+    }
+}
+
+// #1838
+#[frb(opaque)]
+pub struct StaticGetterOnlyTwinNormal {}
+
+impl StaticGetterOnlyTwinNormal {
+    #[frb(sync, getter)]
+    pub fn static_getter() -> i32 {
+        42
+    }
+}
