@@ -69,7 +69,7 @@ fn generate_api_method(func: &IrFunc, context: ApiDartGeneratorContext) -> Strin
     let comments = generate_comments(func, default_constructor_mode);
     let signature =
         generate_signature(func, context, method_info, params, default_constructor_mode);
-    let arg_names = generate_arg_names(func, is_static_method, skip_count).concat();
+    let arg_names = generate_arg_names(func, skip_count).concat();
     let implementation = generate_implementation(func, context, is_static_method, arg_names);
 
     format!("{comments}{signature}=>{implementation};\n\n")
@@ -141,14 +141,14 @@ fn generate_signature(
     format!("{maybe_static} {return_type} {maybe_getter} {method_name}{func_params}")
 }
 
-fn generate_arg_names(func: &IrFunc, is_static_method: bool, skip_count: usize) -> Vec<String> {
+fn generate_arg_names(func: &IrFunc, skip_count: usize) -> Vec<String> {
     let mut ans = func
         .inputs
         .iter()
         .skip(skip_count)
         .map(|input| format!("{}:{},", input.name.dart_style(), input.name.dart_style()))
         .collect_vec();
-    if is_static_method {
+    if !func.getter {
         ans.push("hint: hint".to_string());
     }
     ans
