@@ -149,7 +149,7 @@ fn generate_arg_names(func: &IrFunc, skip_count: usize) -> Vec<String> {
         .map(|input| format!("{}:{},", input.name.dart_style(), input.name.dart_style()))
         .collect_vec();
     if !func.getter {
-        ans.push("hint: hint".to_string());
+        ans.push("hint: hint,".to_string());
     }
     ans
 }
