@@ -17,11 +17,14 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for RustAutoOpaqueWireRustCodecDc
                 "{}.into_dart()",
                 generate_encode_rust_auto_opaque(&self.ir, "self.0")
             );
-            Some(
-                format!("pub struct {local_struct_type}({rust_api_type});\n")
-                    + &generate_impl_into_dart(&local_struct_type, &body)
-                    + &generate_impl_into_into_dart(&rust_api_type, &Some(local_struct_type)),
-            )
+            Some(format!(
+                r###"
+                {}
+                {}
+                "###,
+                generate_impl_into_dart(&local_struct_type, &body),
+                generate_impl_into_into_dart(&rust_api_type, &Some(local_struct_type))
+            ))
         } else {
             None
         }
@@ -41,5 +44,5 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for RustAutoOpaqueWireRustCodecDc
 
 // Similar to "mirror"
 fn rust_auto_opaque_local_struct_type(ir: &IrTypeRustAutoOpaque) -> String {
-    format!("Local_{}", ir.safe_ident())
+    format!("FrbWrapper<{}>", ir.rust_api_type())
 }

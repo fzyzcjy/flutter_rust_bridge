@@ -97,8 +97,8 @@ class __$$DistanceTwinRustAsync_UnknownImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$DistanceTwinRustAsync_UnknownImpl
-    implements DistanceTwinRustAsync_Unknown {
-  const _$DistanceTwinRustAsync_UnknownImpl();
+    extends DistanceTwinRustAsync_Unknown {
+  const _$DistanceTwinRustAsync_UnknownImpl() : super._();
 
   @override
   String toString() {
@@ -178,9 +178,10 @@ class _$DistanceTwinRustAsync_UnknownImpl
   }
 }
 
-abstract class DistanceTwinRustAsync_Unknown implements DistanceTwinRustAsync {
+abstract class DistanceTwinRustAsync_Unknown extends DistanceTwinRustAsync {
   const factory DistanceTwinRustAsync_Unknown() =
       _$DistanceTwinRustAsync_UnknownImpl;
+  const DistanceTwinRustAsync_Unknown._() : super._();
 }
 
 /// @nodoc
@@ -219,8 +220,8 @@ class __$$DistanceTwinRustAsync_MapImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$DistanceTwinRustAsync_MapImpl implements DistanceTwinRustAsync_Map {
-  const _$DistanceTwinRustAsync_MapImpl(this.field0);
+class _$DistanceTwinRustAsync_MapImpl extends DistanceTwinRustAsync_Map {
+  const _$DistanceTwinRustAsync_MapImpl(this.field0) : super._();
 
   @override
   final double field0;
@@ -311,9 +312,10 @@ class _$DistanceTwinRustAsync_MapImpl implements DistanceTwinRustAsync_Map {
   }
 }
 
-abstract class DistanceTwinRustAsync_Map implements DistanceTwinRustAsync {
+abstract class DistanceTwinRustAsync_Map extends DistanceTwinRustAsync {
   const factory DistanceTwinRustAsync_Map(final double field0) =
       _$DistanceTwinRustAsync_MapImpl;
+  const DistanceTwinRustAsync_Map._() : super._();
 
   double get field0;
   @JsonKey(ignore: true)
@@ -412,8 +414,8 @@ class __$$EnumWithItemMixedTwinRustAsync_AImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EnumWithItemMixedTwinRustAsync_AImpl
-    implements EnumWithItemMixedTwinRustAsync_A {
-  const _$EnumWithItemMixedTwinRustAsync_AImpl();
+    extends EnumWithItemMixedTwinRustAsync_A {
+  const _$EnumWithItemMixedTwinRustAsync_AImpl() : super._();
 
   @override
   String toString() {
@@ -500,9 +502,10 @@ class _$EnumWithItemMixedTwinRustAsync_AImpl
 }
 
 abstract class EnumWithItemMixedTwinRustAsync_A
-    implements EnumWithItemMixedTwinRustAsync {
+    extends EnumWithItemMixedTwinRustAsync {
   const factory EnumWithItemMixedTwinRustAsync_A() =
       _$EnumWithItemMixedTwinRustAsync_AImpl;
+  const EnumWithItemMixedTwinRustAsync_A._() : super._();
 }
 
 /// @nodoc
@@ -542,8 +545,8 @@ class __$$EnumWithItemMixedTwinRustAsync_BImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EnumWithItemMixedTwinRustAsync_BImpl
-    implements EnumWithItemMixedTwinRustAsync_B {
-  const _$EnumWithItemMixedTwinRustAsync_BImpl(this.field0);
+    extends EnumWithItemMixedTwinRustAsync_B {
+  const _$EnumWithItemMixedTwinRustAsync_BImpl(this.field0) : super._();
 
   @override
   final Uint8List field0;
@@ -643,9 +646,10 @@ class _$EnumWithItemMixedTwinRustAsync_BImpl
 }
 
 abstract class EnumWithItemMixedTwinRustAsync_B
-    implements EnumWithItemMixedTwinRustAsync {
+    extends EnumWithItemMixedTwinRustAsync {
   const factory EnumWithItemMixedTwinRustAsync_B(final Uint8List field0) =
       _$EnumWithItemMixedTwinRustAsync_BImpl;
+  const EnumWithItemMixedTwinRustAsync_B._() : super._();
 
   Uint8List get field0;
   @JsonKey(ignore: true)
@@ -691,8 +695,9 @@ class __$$EnumWithItemMixedTwinRustAsync_CImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EnumWithItemMixedTwinRustAsync_CImpl
-    implements EnumWithItemMixedTwinRustAsync_C {
-  const _$EnumWithItemMixedTwinRustAsync_CImpl({required this.cField});
+    extends EnumWithItemMixedTwinRustAsync_C {
+  const _$EnumWithItemMixedTwinRustAsync_CImpl({required this.cField})
+      : super._();
 
   @override
   final String cField;
@@ -791,9 +796,10 @@ class _$EnumWithItemMixedTwinRustAsync_CImpl
 }
 
 abstract class EnumWithItemMixedTwinRustAsync_C
-    implements EnumWithItemMixedTwinRustAsync {
+    extends EnumWithItemMixedTwinRustAsync {
   const factory EnumWithItemMixedTwinRustAsync_C(
       {required final String cField}) = _$EnumWithItemMixedTwinRustAsync_CImpl;
+  const EnumWithItemMixedTwinRustAsync_C._() : super._();
 
   String get cField;
   @JsonKey(ignore: true)
@@ -902,8 +908,9 @@ class __$$EnumWithItemStructTwinRustAsync_AImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EnumWithItemStructTwinRustAsync_AImpl
-    implements EnumWithItemStructTwinRustAsync_A {
-  const _$EnumWithItemStructTwinRustAsync_AImpl({required this.aField});
+    extends EnumWithItemStructTwinRustAsync_A {
+  const _$EnumWithItemStructTwinRustAsync_AImpl({required this.aField})
+      : super._();
 
   @override
   final Uint8List aField;
@@ -997,10 +1004,11 @@ class _$EnumWithItemStructTwinRustAsync_AImpl
 }
 
 abstract class EnumWithItemStructTwinRustAsync_A
-    implements EnumWithItemStructTwinRustAsync {
+    extends EnumWithItemStructTwinRustAsync {
   const factory EnumWithItemStructTwinRustAsync_A(
           {required final Uint8List aField}) =
       _$EnumWithItemStructTwinRustAsync_AImpl;
+  const EnumWithItemStructTwinRustAsync_A._() : super._();
 
   Uint8List get aField;
   @JsonKey(ignore: true)
@@ -1046,8 +1054,9 @@ class __$$EnumWithItemStructTwinRustAsync_BImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EnumWithItemStructTwinRustAsync_BImpl
-    implements EnumWithItemStructTwinRustAsync_B {
-  const _$EnumWithItemStructTwinRustAsync_BImpl({required this.bField});
+    extends EnumWithItemStructTwinRustAsync_B {
+  const _$EnumWithItemStructTwinRustAsync_BImpl({required this.bField})
+      : super._();
 
   @override
   final Int32List bField;
@@ -1141,10 +1150,11 @@ class _$EnumWithItemStructTwinRustAsync_BImpl
 }
 
 abstract class EnumWithItemStructTwinRustAsync_B
-    implements EnumWithItemStructTwinRustAsync {
+    extends EnumWithItemStructTwinRustAsync {
   const factory EnumWithItemStructTwinRustAsync_B(
           {required final Int32List bField}) =
       _$EnumWithItemStructTwinRustAsync_BImpl;
+  const EnumWithItemStructTwinRustAsync_B._() : super._();
 
   Int32List get bField;
   @JsonKey(ignore: true)
@@ -1254,8 +1264,8 @@ class __$$EnumWithItemTupleTwinRustAsync_AImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EnumWithItemTupleTwinRustAsync_AImpl
-    implements EnumWithItemTupleTwinRustAsync_A {
-  const _$EnumWithItemTupleTwinRustAsync_AImpl(this.field0);
+    extends EnumWithItemTupleTwinRustAsync_A {
+  const _$EnumWithItemTupleTwinRustAsync_AImpl(this.field0) : super._();
 
   @override
   final Uint8List field0;
@@ -1349,9 +1359,10 @@ class _$EnumWithItemTupleTwinRustAsync_AImpl
 }
 
 abstract class EnumWithItemTupleTwinRustAsync_A
-    implements EnumWithItemTupleTwinRustAsync {
+    extends EnumWithItemTupleTwinRustAsync {
   const factory EnumWithItemTupleTwinRustAsync_A(final Uint8List field0) =
       _$EnumWithItemTupleTwinRustAsync_AImpl;
+  const EnumWithItemTupleTwinRustAsync_A._() : super._();
 
   @override
   Uint8List get field0;
@@ -1398,8 +1409,8 @@ class __$$EnumWithItemTupleTwinRustAsync_BImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EnumWithItemTupleTwinRustAsync_BImpl
-    implements EnumWithItemTupleTwinRustAsync_B {
-  const _$EnumWithItemTupleTwinRustAsync_BImpl(this.field0);
+    extends EnumWithItemTupleTwinRustAsync_B {
+  const _$EnumWithItemTupleTwinRustAsync_BImpl(this.field0) : super._();
 
   @override
   final Int32List field0;
@@ -1493,9 +1504,10 @@ class _$EnumWithItemTupleTwinRustAsync_BImpl
 }
 
 abstract class EnumWithItemTupleTwinRustAsync_B
-    implements EnumWithItemTupleTwinRustAsync {
+    extends EnumWithItemTupleTwinRustAsync {
   const factory EnumWithItemTupleTwinRustAsync_B(final Int32List field0) =
       _$EnumWithItemTupleTwinRustAsync_BImpl;
+  const EnumWithItemTupleTwinRustAsync_B._() : super._();
 
   @override
   Int32List get field0;
@@ -1615,8 +1627,8 @@ class __$$KitchenSinkTwinRustAsync_EmptyImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$KitchenSinkTwinRustAsync_EmptyImpl
-    implements KitchenSinkTwinRustAsync_Empty {
-  const _$KitchenSinkTwinRustAsync_EmptyImpl();
+    extends KitchenSinkTwinRustAsync_Empty {
+  const _$KitchenSinkTwinRustAsync_EmptyImpl() : super._();
 
   @override
   String toString() {
@@ -1723,10 +1735,10 @@ class _$KitchenSinkTwinRustAsync_EmptyImpl
   }
 }
 
-abstract class KitchenSinkTwinRustAsync_Empty
-    implements KitchenSinkTwinRustAsync {
+abstract class KitchenSinkTwinRustAsync_Empty extends KitchenSinkTwinRustAsync {
   const factory KitchenSinkTwinRustAsync_Empty() =
       _$KitchenSinkTwinRustAsync_EmptyImpl;
+  const KitchenSinkTwinRustAsync_Empty._() : super._();
 }
 
 /// @nodoc
@@ -1776,9 +1788,10 @@ class __$$KitchenSinkTwinRustAsync_PrimitivesImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$KitchenSinkTwinRustAsync_PrimitivesImpl
-    implements KitchenSinkTwinRustAsync_Primitives {
+    extends KitchenSinkTwinRustAsync_Primitives {
   const _$KitchenSinkTwinRustAsync_PrimitivesImpl(
-      {this.int32 = -1, required this.float64, required this.boolean});
+      {this.int32 = -1, required this.float64, required this.boolean})
+      : super._();
 
   /// Dart field comment
   @override
@@ -1906,11 +1919,12 @@ class _$KitchenSinkTwinRustAsync_PrimitivesImpl
 }
 
 abstract class KitchenSinkTwinRustAsync_Primitives
-    implements KitchenSinkTwinRustAsync {
+    extends KitchenSinkTwinRustAsync {
   const factory KitchenSinkTwinRustAsync_Primitives(
       {final int int32,
       required final double float64,
       required final bool boolean}) = _$KitchenSinkTwinRustAsync_PrimitivesImpl;
+  const KitchenSinkTwinRustAsync_Primitives._() : super._();
 
   /// Dart field comment
   int get int32;
@@ -1974,9 +1988,10 @@ class __$$KitchenSinkTwinRustAsync_NestedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$KitchenSinkTwinRustAsync_NestedImpl
-    implements KitchenSinkTwinRustAsync_Nested {
+    extends KitchenSinkTwinRustAsync_Nested {
   const _$KitchenSinkTwinRustAsync_NestedImpl(this.field0,
-      [this.field1 = const KitchenSinkTwinRustAsync.empty()]);
+      [this.field1 = const KitchenSinkTwinRustAsync.empty()])
+      : super._();
 
   @override
   final int field0;
@@ -2100,10 +2115,11 @@ class _$KitchenSinkTwinRustAsync_NestedImpl
 }
 
 abstract class KitchenSinkTwinRustAsync_Nested
-    implements KitchenSinkTwinRustAsync {
+    extends KitchenSinkTwinRustAsync {
   const factory KitchenSinkTwinRustAsync_Nested(final int field0,
           [final KitchenSinkTwinRustAsync field1]) =
       _$KitchenSinkTwinRustAsync_NestedImpl;
+  const KitchenSinkTwinRustAsync_Nested._() : super._();
 
   int get field0;
   KitchenSinkTwinRustAsync get field1;
@@ -2155,9 +2171,9 @@ class __$$KitchenSinkTwinRustAsync_OptionalImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$KitchenSinkTwinRustAsync_OptionalImpl
-    implements KitchenSinkTwinRustAsync_Optional {
-  const _$KitchenSinkTwinRustAsync_OptionalImpl(
-      [this.field0 = -1, this.field1]);
+    extends KitchenSinkTwinRustAsync_Optional {
+  const _$KitchenSinkTwinRustAsync_OptionalImpl([this.field0 = -1, this.field1])
+      : super._();
 
   /// Comment on anonymous field
   @override
@@ -2282,10 +2298,11 @@ class _$KitchenSinkTwinRustAsync_OptionalImpl
 }
 
 abstract class KitchenSinkTwinRustAsync_Optional
-    implements KitchenSinkTwinRustAsync {
+    extends KitchenSinkTwinRustAsync {
   const factory KitchenSinkTwinRustAsync_Optional(
       [final int? field0,
       final int? field1]) = _$KitchenSinkTwinRustAsync_OptionalImpl;
+  const KitchenSinkTwinRustAsync_Optional._() : super._();
 
   /// Comment on anonymous field
   int? get field0;
@@ -2333,8 +2350,8 @@ class __$$KitchenSinkTwinRustAsync_BufferImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$KitchenSinkTwinRustAsync_BufferImpl
-    implements KitchenSinkTwinRustAsync_Buffer {
-  const _$KitchenSinkTwinRustAsync_BufferImpl(this.field0);
+    extends KitchenSinkTwinRustAsync_Buffer {
+  const _$KitchenSinkTwinRustAsync_BufferImpl(this.field0) : super._();
 
   @override
   final Uint8List field0;
@@ -2455,9 +2472,10 @@ class _$KitchenSinkTwinRustAsync_BufferImpl
 }
 
 abstract class KitchenSinkTwinRustAsync_Buffer
-    implements KitchenSinkTwinRustAsync {
+    extends KitchenSinkTwinRustAsync {
   const factory KitchenSinkTwinRustAsync_Buffer(final Uint8List field0) =
       _$KitchenSinkTwinRustAsync_BufferImpl;
+  const KitchenSinkTwinRustAsync_Buffer._() : super._();
 
   Uint8List get field0;
   @JsonKey(ignore: true)
@@ -2503,9 +2521,10 @@ class __$$KitchenSinkTwinRustAsync_EnumsImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$KitchenSinkTwinRustAsync_EnumsImpl
-    implements KitchenSinkTwinRustAsync_Enums {
+    extends KitchenSinkTwinRustAsync_Enums {
   const _$KitchenSinkTwinRustAsync_EnumsImpl(
-      [this.field0 = WeekdaysTwinRustAsync.sunday]);
+      [this.field0 = WeekdaysTwinRustAsync.sunday])
+      : super._();
 
   @override
   @JsonKey()
@@ -2625,11 +2644,11 @@ class _$KitchenSinkTwinRustAsync_EnumsImpl
   }
 }
 
-abstract class KitchenSinkTwinRustAsync_Enums
-    implements KitchenSinkTwinRustAsync {
+abstract class KitchenSinkTwinRustAsync_Enums extends KitchenSinkTwinRustAsync {
   const factory KitchenSinkTwinRustAsync_Enums(
           [final WeekdaysTwinRustAsync field0]) =
       _$KitchenSinkTwinRustAsync_EnumsImpl;
+  const KitchenSinkTwinRustAsync_Enums._() : super._();
 
   WeekdaysTwinRustAsync get field0;
   @JsonKey(ignore: true)
@@ -2746,8 +2765,8 @@ class __$$MeasureTwinRustAsync_SpeedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$MeasureTwinRustAsync_SpeedImpl implements MeasureTwinRustAsync_Speed {
-  const _$MeasureTwinRustAsync_SpeedImpl(this.field0);
+class _$MeasureTwinRustAsync_SpeedImpl extends MeasureTwinRustAsync_Speed {
+  const _$MeasureTwinRustAsync_SpeedImpl(this.field0) : super._();
 
   @override
   final SpeedTwinRustAsync field0;
@@ -2838,9 +2857,10 @@ class _$MeasureTwinRustAsync_SpeedImpl implements MeasureTwinRustAsync_Speed {
   }
 }
 
-abstract class MeasureTwinRustAsync_Speed implements MeasureTwinRustAsync {
+abstract class MeasureTwinRustAsync_Speed extends MeasureTwinRustAsync {
   const factory MeasureTwinRustAsync_Speed(final SpeedTwinRustAsync field0) =
       _$MeasureTwinRustAsync_SpeedImpl;
+  const MeasureTwinRustAsync_Speed._() : super._();
 
   @override
   SpeedTwinRustAsync get field0;
@@ -2896,8 +2916,8 @@ class __$$MeasureTwinRustAsync_DistanceImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$MeasureTwinRustAsync_DistanceImpl
-    implements MeasureTwinRustAsync_Distance {
-  const _$MeasureTwinRustAsync_DistanceImpl(this.field0);
+    extends MeasureTwinRustAsync_Distance {
+  const _$MeasureTwinRustAsync_DistanceImpl(this.field0) : super._();
 
   @override
   final DistanceTwinRustAsync field0;
@@ -2989,9 +3009,10 @@ class _$MeasureTwinRustAsync_DistanceImpl
   }
 }
 
-abstract class MeasureTwinRustAsync_Distance implements MeasureTwinRustAsync {
+abstract class MeasureTwinRustAsync_Distance extends MeasureTwinRustAsync {
   const factory MeasureTwinRustAsync_Distance(
       final DistanceTwinRustAsync field0) = _$MeasureTwinRustAsync_DistanceImpl;
+  const MeasureTwinRustAsync_Distance._() : super._();
 
   @override
   DistanceTwinRustAsync get field0;
@@ -3082,8 +3103,8 @@ class __$$SpeedTwinRustAsync_UnknownImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SpeedTwinRustAsync_UnknownImpl implements SpeedTwinRustAsync_Unknown {
-  const _$SpeedTwinRustAsync_UnknownImpl();
+class _$SpeedTwinRustAsync_UnknownImpl extends SpeedTwinRustAsync_Unknown {
+  const _$SpeedTwinRustAsync_UnknownImpl() : super._();
 
   @override
   String toString() {
@@ -3163,8 +3184,9 @@ class _$SpeedTwinRustAsync_UnknownImpl implements SpeedTwinRustAsync_Unknown {
   }
 }
 
-abstract class SpeedTwinRustAsync_Unknown implements SpeedTwinRustAsync {
+abstract class SpeedTwinRustAsync_Unknown extends SpeedTwinRustAsync {
   const factory SpeedTwinRustAsync_Unknown() = _$SpeedTwinRustAsync_UnknownImpl;
+  const SpeedTwinRustAsync_Unknown._() : super._();
 }
 
 /// @nodoc
@@ -3202,8 +3224,8 @@ class __$$SpeedTwinRustAsync_GPSImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SpeedTwinRustAsync_GPSImpl implements SpeedTwinRustAsync_GPS {
-  const _$SpeedTwinRustAsync_GPSImpl(this.field0);
+class _$SpeedTwinRustAsync_GPSImpl extends SpeedTwinRustAsync_GPS {
+  const _$SpeedTwinRustAsync_GPSImpl(this.field0) : super._();
 
   @override
   final double field0;
@@ -3294,9 +3316,10 @@ class _$SpeedTwinRustAsync_GPSImpl implements SpeedTwinRustAsync_GPS {
   }
 }
 
-abstract class SpeedTwinRustAsync_GPS implements SpeedTwinRustAsync {
+abstract class SpeedTwinRustAsync_GPS extends SpeedTwinRustAsync {
   const factory SpeedTwinRustAsync_GPS(final double field0) =
       _$SpeedTwinRustAsync_GPSImpl;
+  const SpeedTwinRustAsync_GPS._() : super._();
 
   double get field0;
   @JsonKey(ignore: true)

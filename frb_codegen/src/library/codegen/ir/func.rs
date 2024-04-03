@@ -42,7 +42,8 @@ pub enum IrFuncOwnerInfo {
 }
 
 pub struct IrFuncOwnerInfoMethod {
-    pub(crate) enum_or_struct_name: NamespacedName,
+    pub(crate) enum_or_struct_ty: IrType,
+    pub(crate) enum_or_struct_name: NamespacedName, // TODO use info in `enum_or_struct_ty`
     pub(crate) actual_method_name: String,
     pub(crate) mode: IrFuncOwnerInfoMethodMode,
 }
@@ -73,6 +74,14 @@ impl IrFunc {
         let error_output = (self.error_output.as_ref().cloned())
             .unwrap_or(IrType::Primitive(IrTypePrimitive::Unit));
         error_output.visit_types(f, ir_context);
+
+        // extra (#1838)
+        if let IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod {
+            enum_or_struct_ty, ..
+        }) = &self.owner
+        {
+            enum_or_struct_ty.visit_types(f, ir_context);
+        }
     }
 
     pub(crate) fn default_constructor_mode(&self) -> Option<IrFuncDefaultConstructorMode> {

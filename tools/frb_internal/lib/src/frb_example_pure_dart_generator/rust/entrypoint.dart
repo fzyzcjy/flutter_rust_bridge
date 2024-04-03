@@ -62,17 +62,12 @@ class RustGenerator extends BaseGenerator {
         .replaceAll('super::basic::', 'super::basic${mode.postfix}::');
 
     if (mode.components.any((e) => e == DuplicatorComponentMode.sse)) {
-      // quick hack, since we are merely generating tests
-      ans = ans
-          .replaceAllMapped(
-              RegExp(r'StreamSink<Vec<(.*?)>>'),
-              (m) =>
-                  'StreamSink<Vec<${m.group(1)}>, flutter_rust_bridge::SseCodec>')
-          .replaceAllMapped(
-              RegExp(r'StreamSink<(.*?)>'),
-              (m) => m.group(1)!.startsWith('Vec')
-                  ? m.group(0)!
-                  : 'StreamSink<${m.group(1)}, flutter_rust_bridge::SseCodec>');
+      // Find matching StreamSink<...> and add `flutter_rust_bridge::SseCodec` to it
+      ans = replaceAllGenericInnerTypeMapped(
+        ans,
+        'StreamSink',
+        (innerType) => '$innerType, flutter_rust_bridge::SseCodec',
+      );
     }
 
     if (mode.components.any((e) => e == DuplicatorComponentMode.moi)) {
@@ -92,4 +87,45 @@ class RustGenerator extends BaseGenerator {
   @override
   String generateDuplicateFileStem(String inputStem, DuplicatorMode mode) =>
       inputStem + mode.postfix;
+}
+
+/// Find matching [genericType]<[innerType]> and call [mapper] to
+/// transform the [innerType] to a new type.
+///
+/// Returns the transformed string.
+String replaceAllGenericInnerTypeMapped(
+  String input,
+  String genericType,
+  String Function(String innerType) mapper,
+) {
+  var cursor = 0;
+  final genericTypeSearch = '$genericType<';
+  while (cursor < input.length) {
+    cursor = input.indexOf(genericTypeSearch, cursor);
+    // There is no more `StreamSink<` to replace
+    if (cursor == -1) break;
+    cursor += genericTypeSearch.length;
+    final innerTypeStart = cursor;
+
+    var openBrackets = 1;
+
+    // Iterate until we find the matching closing bracket of StreamSink<...>
+    while (openBrackets > 0 && cursor < input.length) {
+      if (input[cursor] == '<') {
+        openBrackets++;
+      } else if (input[cursor] == '>') {
+        openBrackets--;
+      }
+      cursor++;
+      if (openBrackets == 0) break;
+    }
+
+    final innerTypeEnd = cursor - 1;
+    final innerType = input.substring(innerTypeStart, innerTypeEnd);
+    final newInnerType = mapper(innerType);
+    input = input.replaceRange(innerTypeStart, innerTypeEnd, newInnerType);
+    cursor = innerTypeStart + newInnerType.length;
+  }
+
+  return input;
 }

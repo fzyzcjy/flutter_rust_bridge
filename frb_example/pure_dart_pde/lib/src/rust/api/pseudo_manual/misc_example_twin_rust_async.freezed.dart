@@ -120,8 +120,8 @@ class __$$AbcTwinRustAsync_AImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AbcTwinRustAsync_AImpl implements AbcTwinRustAsync_A {
-  const _$AbcTwinRustAsync_AImpl(this.field0);
+class _$AbcTwinRustAsync_AImpl extends AbcTwinRustAsync_A {
+  const _$AbcTwinRustAsync_AImpl(this.field0) : super._();
 
   @override
   final ATwinRustAsync field0;
@@ -224,9 +224,10 @@ class _$AbcTwinRustAsync_AImpl implements AbcTwinRustAsync_A {
   }
 }
 
-abstract class AbcTwinRustAsync_A implements AbcTwinRustAsync {
+abstract class AbcTwinRustAsync_A extends AbcTwinRustAsync {
   const factory AbcTwinRustAsync_A(final ATwinRustAsync field0) =
       _$AbcTwinRustAsync_AImpl;
+  const AbcTwinRustAsync_A._() : super._();
 
   @override
   ATwinRustAsync get field0;
@@ -268,8 +269,8 @@ class __$$AbcTwinRustAsync_BImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AbcTwinRustAsync_BImpl implements AbcTwinRustAsync_B {
-  const _$AbcTwinRustAsync_BImpl(this.field0);
+class _$AbcTwinRustAsync_BImpl extends AbcTwinRustAsync_B {
+  const _$AbcTwinRustAsync_BImpl(this.field0) : super._();
 
   @override
   final BTwinRustAsync field0;
@@ -372,9 +373,10 @@ class _$AbcTwinRustAsync_BImpl implements AbcTwinRustAsync_B {
   }
 }
 
-abstract class AbcTwinRustAsync_B implements AbcTwinRustAsync {
+abstract class AbcTwinRustAsync_B extends AbcTwinRustAsync {
   const factory AbcTwinRustAsync_B(final BTwinRustAsync field0) =
       _$AbcTwinRustAsync_BImpl;
+  const AbcTwinRustAsync_B._() : super._();
 
   @override
   BTwinRustAsync get field0;
@@ -416,8 +418,8 @@ class __$$AbcTwinRustAsync_CImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AbcTwinRustAsync_CImpl implements AbcTwinRustAsync_C {
-  const _$AbcTwinRustAsync_CImpl(this.field0);
+class _$AbcTwinRustAsync_CImpl extends AbcTwinRustAsync_C {
+  const _$AbcTwinRustAsync_CImpl(this.field0) : super._();
 
   @override
   final CTwinRustAsync field0;
@@ -520,9 +522,10 @@ class _$AbcTwinRustAsync_CImpl implements AbcTwinRustAsync_C {
   }
 }
 
-abstract class AbcTwinRustAsync_C implements AbcTwinRustAsync {
+abstract class AbcTwinRustAsync_C extends AbcTwinRustAsync {
   const factory AbcTwinRustAsync_C(final CTwinRustAsync field0) =
       _$AbcTwinRustAsync_CImpl;
+  const AbcTwinRustAsync_C._() : super._();
 
   @override
   CTwinRustAsync get field0;
@@ -566,8 +569,8 @@ class __$$AbcTwinRustAsync_JustIntImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AbcTwinRustAsync_JustIntImpl implements AbcTwinRustAsync_JustInt {
-  const _$AbcTwinRustAsync_JustIntImpl(this.field0);
+class _$AbcTwinRustAsync_JustIntImpl extends AbcTwinRustAsync_JustInt {
+  const _$AbcTwinRustAsync_JustIntImpl(this.field0) : super._();
 
   @override
   final int field0;
@@ -670,9 +673,10 @@ class _$AbcTwinRustAsync_JustIntImpl implements AbcTwinRustAsync_JustInt {
   }
 }
 
-abstract class AbcTwinRustAsync_JustInt implements AbcTwinRustAsync {
+abstract class AbcTwinRustAsync_JustInt extends AbcTwinRustAsync {
   const factory AbcTwinRustAsync_JustInt(final int field0) =
       _$AbcTwinRustAsync_JustIntImpl;
+  const AbcTwinRustAsync_JustInt._() : super._();
 
   @override
   int get field0;

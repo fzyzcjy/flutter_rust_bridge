@@ -159,3 +159,48 @@ impl SimpleStructTwinRustAsyncSse {
         arg.into_iter().map(|x| x.one).collect()
     }
 }
+
+// #1818
+pub enum SimpleEnumTwinRustAsyncSse {
+    First,
+    Second(String),
+}
+
+impl SimpleEnumTwinRustAsyncSse {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub async fn return_self_twin_rust_async_sse(one: String) -> Self {
+        Self::Second(one)
+    }
+
+    #[flutter_rust_bridge::frb(serialize)]
+    pub async fn simple_method_twin_rust_async_sse(&self) -> String {
+        match self {
+            SimpleEnumTwinRustAsyncSse::First => "".to_owned(),
+            SimpleEnumTwinRustAsyncSse::Second(inner) => inner.to_owned(),
+        }
+    }
+}
+
+// #1838
+pub struct StaticOnlyTwinRustAsyncSse {
+    pub one: String,
+}
+
+impl StaticOnlyTwinRustAsyncSse {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub async fn static_method_twin_rust_async_sse(a: i32) -> i32 {
+        a
+    }
+}
+
+// #1838
+#[frb(opaque)]
+pub struct StaticGetterOnlyTwinRustAsyncSse {}
+
+impl StaticGetterOnlyTwinRustAsyncSse {
+    #[frb(getter)]
+    #[flutter_rust_bridge::frb(serialize)]
+    pub async fn static_getter_twin_rust_async_sse() -> i32 {
+        42
+    }
+}

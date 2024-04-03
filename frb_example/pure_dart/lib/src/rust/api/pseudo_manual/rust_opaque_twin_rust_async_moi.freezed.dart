@@ -139,8 +139,8 @@ class __$$EnumOpaqueTwinRustAsyncMoi_StructImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EnumOpaqueTwinRustAsyncMoi_StructImpl
-    implements EnumOpaqueTwinRustAsyncMoi_Struct {
-  const _$EnumOpaqueTwinRustAsyncMoi_StructImpl(this.field0);
+    extends EnumOpaqueTwinRustAsyncMoi_Struct {
+  const _$EnumOpaqueTwinRustAsyncMoi_StructImpl(this.field0) : super._();
 
   @override
   final HideDataTwinRustAsyncMoi field0;
@@ -259,10 +259,11 @@ class _$EnumOpaqueTwinRustAsyncMoi_StructImpl
 }
 
 abstract class EnumOpaqueTwinRustAsyncMoi_Struct
-    implements EnumOpaqueTwinRustAsyncMoi {
+    extends EnumOpaqueTwinRustAsyncMoi {
   const factory EnumOpaqueTwinRustAsyncMoi_Struct(
           final HideDataTwinRustAsyncMoi field0) =
       _$EnumOpaqueTwinRustAsyncMoi_StructImpl;
+  const EnumOpaqueTwinRustAsyncMoi_Struct._() : super._();
 
   HideDataTwinRustAsyncMoi get field0;
   @JsonKey(ignore: true)
@@ -308,8 +309,8 @@ class __$$EnumOpaqueTwinRustAsyncMoi_PrimitiveImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EnumOpaqueTwinRustAsyncMoi_PrimitiveImpl
-    implements EnumOpaqueTwinRustAsyncMoi_Primitive {
-  const _$EnumOpaqueTwinRustAsyncMoi_PrimitiveImpl(this.field0);
+    extends EnumOpaqueTwinRustAsyncMoi_Primitive {
+  const _$EnumOpaqueTwinRustAsyncMoi_PrimitiveImpl(this.field0) : super._();
 
   @override
   final I16 field0;
@@ -428,9 +429,10 @@ class _$EnumOpaqueTwinRustAsyncMoi_PrimitiveImpl
 }
 
 abstract class EnumOpaqueTwinRustAsyncMoi_Primitive
-    implements EnumOpaqueTwinRustAsyncMoi {
+    extends EnumOpaqueTwinRustAsyncMoi {
   const factory EnumOpaqueTwinRustAsyncMoi_Primitive(final I16 field0) =
       _$EnumOpaqueTwinRustAsyncMoi_PrimitiveImpl;
+  const EnumOpaqueTwinRustAsyncMoi_Primitive._() : super._();
 
   I16 get field0;
   @JsonKey(ignore: true)
@@ -476,8 +478,8 @@ class __$$EnumOpaqueTwinRustAsyncMoi_TraitObjImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EnumOpaqueTwinRustAsyncMoi_TraitObjImpl
-    implements EnumOpaqueTwinRustAsyncMoi_TraitObj {
-  const _$EnumOpaqueTwinRustAsyncMoi_TraitObjImpl(this.field0);
+    extends EnumOpaqueTwinRustAsyncMoi_TraitObj {
+  const _$EnumOpaqueTwinRustAsyncMoi_TraitObjImpl(this.field0) : super._();
 
   @override
   final BoxDartDebugTwinRustAsyncMoi field0;
@@ -596,10 +598,11 @@ class _$EnumOpaqueTwinRustAsyncMoi_TraitObjImpl
 }
 
 abstract class EnumOpaqueTwinRustAsyncMoi_TraitObj
-    implements EnumOpaqueTwinRustAsyncMoi {
+    extends EnumOpaqueTwinRustAsyncMoi {
   const factory EnumOpaqueTwinRustAsyncMoi_TraitObj(
           final BoxDartDebugTwinRustAsyncMoi field0) =
       _$EnumOpaqueTwinRustAsyncMoi_TraitObjImpl;
+  const EnumOpaqueTwinRustAsyncMoi_TraitObj._() : super._();
 
   BoxDartDebugTwinRustAsyncMoi get field0;
   @JsonKey(ignore: true)
@@ -645,8 +648,8 @@ class __$$EnumOpaqueTwinRustAsyncMoi_MutexImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EnumOpaqueTwinRustAsyncMoi_MutexImpl
-    implements EnumOpaqueTwinRustAsyncMoi_Mutex {
-  const _$EnumOpaqueTwinRustAsyncMoi_MutexImpl(this.field0);
+    extends EnumOpaqueTwinRustAsyncMoi_Mutex {
+  const _$EnumOpaqueTwinRustAsyncMoi_MutexImpl(this.field0) : super._();
 
   @override
   final MutexHideDataTwinRustAsyncMoi field0;
@@ -765,10 +768,11 @@ class _$EnumOpaqueTwinRustAsyncMoi_MutexImpl
 }
 
 abstract class EnumOpaqueTwinRustAsyncMoi_Mutex
-    implements EnumOpaqueTwinRustAsyncMoi {
+    extends EnumOpaqueTwinRustAsyncMoi {
   const factory EnumOpaqueTwinRustAsyncMoi_Mutex(
           final MutexHideDataTwinRustAsyncMoi field0) =
       _$EnumOpaqueTwinRustAsyncMoi_MutexImpl;
+  const EnumOpaqueTwinRustAsyncMoi_Mutex._() : super._();
 
   MutexHideDataTwinRustAsyncMoi get field0;
   @JsonKey(ignore: true)
@@ -814,8 +818,8 @@ class __$$EnumOpaqueTwinRustAsyncMoi_RwLockImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EnumOpaqueTwinRustAsyncMoi_RwLockImpl
-    implements EnumOpaqueTwinRustAsyncMoi_RwLock {
-  const _$EnumOpaqueTwinRustAsyncMoi_RwLockImpl(this.field0);
+    extends EnumOpaqueTwinRustAsyncMoi_RwLock {
+  const _$EnumOpaqueTwinRustAsyncMoi_RwLockImpl(this.field0) : super._();
 
   @override
   final RwLockHideDataTwinRustAsyncMoi field0;
@@ -934,10 +938,11 @@ class _$EnumOpaqueTwinRustAsyncMoi_RwLockImpl
 }
 
 abstract class EnumOpaqueTwinRustAsyncMoi_RwLock
-    implements EnumOpaqueTwinRustAsyncMoi {
+    extends EnumOpaqueTwinRustAsyncMoi {
   const factory EnumOpaqueTwinRustAsyncMoi_RwLock(
           final RwLockHideDataTwinRustAsyncMoi field0) =
       _$EnumOpaqueTwinRustAsyncMoi_RwLockImpl;
+  const EnumOpaqueTwinRustAsyncMoi_RwLock._() : super._();
 
   RwLockHideDataTwinRustAsyncMoi get field0;
   @JsonKey(ignore: true)
@@ -968,8 +973,8 @@ class __$$EnumOpaqueTwinRustAsyncMoi_NothingImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EnumOpaqueTwinRustAsyncMoi_NothingImpl
-    implements EnumOpaqueTwinRustAsyncMoi_Nothing {
-  const _$EnumOpaqueTwinRustAsyncMoi_NothingImpl();
+    extends EnumOpaqueTwinRustAsyncMoi_Nothing {
+  const _$EnumOpaqueTwinRustAsyncMoi_NothingImpl() : super._();
 
   @override
   String toString() {
@@ -1076,7 +1081,8 @@ class _$EnumOpaqueTwinRustAsyncMoi_NothingImpl
 }
 
 abstract class EnumOpaqueTwinRustAsyncMoi_Nothing
-    implements EnumOpaqueTwinRustAsyncMoi {
+    extends EnumOpaqueTwinRustAsyncMoi {
   const factory EnumOpaqueTwinRustAsyncMoi_Nothing() =
       _$EnumOpaqueTwinRustAsyncMoi_NothingImpl;
+  const EnumOpaqueTwinRustAsyncMoi_Nothing._() : super._();
 }

@@ -114,8 +114,9 @@ class __$$BasicGeneralEnumTwinSyncSse_AppleImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$BasicGeneralEnumTwinSyncSse_AppleImpl
-    implements BasicGeneralEnumTwinSyncSse_Apple {
-  const _$BasicGeneralEnumTwinSyncSse_AppleImpl({required this.field});
+    extends BasicGeneralEnumTwinSyncSse_Apple {
+  const _$BasicGeneralEnumTwinSyncSse_AppleImpl({required this.field})
+      : super._();
 
   @override
   final String field;
@@ -208,9 +209,10 @@ class _$BasicGeneralEnumTwinSyncSse_AppleImpl
 }
 
 abstract class BasicGeneralEnumTwinSyncSse_Apple
-    implements BasicGeneralEnumTwinSyncSse {
+    extends BasicGeneralEnumTwinSyncSse {
   const factory BasicGeneralEnumTwinSyncSse_Apple(
       {required final String field}) = _$BasicGeneralEnumTwinSyncSse_AppleImpl;
+  const BasicGeneralEnumTwinSyncSse_Apple._() : super._();
 
   String get field;
   @JsonKey(ignore: true)
@@ -241,8 +243,8 @@ class __$$BasicGeneralEnumTwinSyncSse_OrangeImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$BasicGeneralEnumTwinSyncSse_OrangeImpl
-    implements BasicGeneralEnumTwinSyncSse_Orange {
-  const _$BasicGeneralEnumTwinSyncSse_OrangeImpl();
+    extends BasicGeneralEnumTwinSyncSse_Orange {
+  const _$BasicGeneralEnumTwinSyncSse_OrangeImpl() : super._();
 
   @override
   String toString() {
@@ -323,7 +325,8 @@ class _$BasicGeneralEnumTwinSyncSse_OrangeImpl
 }
 
 abstract class BasicGeneralEnumTwinSyncSse_Orange
-    implements BasicGeneralEnumTwinSyncSse {
+    extends BasicGeneralEnumTwinSyncSse {
   const factory BasicGeneralEnumTwinSyncSse_Orange() =
       _$BasicGeneralEnumTwinSyncSse_OrangeImpl;
+  const BasicGeneralEnumTwinSyncSse_Orange._() : super._();
 }

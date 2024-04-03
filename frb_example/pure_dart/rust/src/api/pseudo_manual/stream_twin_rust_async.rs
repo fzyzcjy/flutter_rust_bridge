@@ -75,3 +75,8 @@ fn handle_stream_inner(key: u32, max: u32, sink: StreamSink<LogTwinRustAsync>) {
         sink.add(LogTwinRustAsync { key, value: i }).unwrap();
     }
 }
+
+pub async fn stream_sink_fixed_sized_primitive_array_twin_rust_async(sink: StreamSink<[u8; 2]>) {
+    sink.add([1, 2]).unwrap();
+    sink.add([3, 4]).unwrap();
+}

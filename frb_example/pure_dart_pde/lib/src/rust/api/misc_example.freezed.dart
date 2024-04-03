@@ -120,8 +120,8 @@ class __$$AbcTwinNormal_AImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AbcTwinNormal_AImpl implements AbcTwinNormal_A {
-  const _$AbcTwinNormal_AImpl(this.field0);
+class _$AbcTwinNormal_AImpl extends AbcTwinNormal_A {
+  const _$AbcTwinNormal_AImpl(this.field0) : super._();
 
   @override
   final ATwinNormal field0;
@@ -224,9 +224,10 @@ class _$AbcTwinNormal_AImpl implements AbcTwinNormal_A {
   }
 }
 
-abstract class AbcTwinNormal_A implements AbcTwinNormal {
+abstract class AbcTwinNormal_A extends AbcTwinNormal {
   const factory AbcTwinNormal_A(final ATwinNormal field0) =
       _$AbcTwinNormal_AImpl;
+  const AbcTwinNormal_A._() : super._();
 
   @override
   ATwinNormal get field0;
@@ -268,8 +269,8 @@ class __$$AbcTwinNormal_BImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AbcTwinNormal_BImpl implements AbcTwinNormal_B {
-  const _$AbcTwinNormal_BImpl(this.field0);
+class _$AbcTwinNormal_BImpl extends AbcTwinNormal_B {
+  const _$AbcTwinNormal_BImpl(this.field0) : super._();
 
   @override
   final BTwinNormal field0;
@@ -372,9 +373,10 @@ class _$AbcTwinNormal_BImpl implements AbcTwinNormal_B {
   }
 }
 
-abstract class AbcTwinNormal_B implements AbcTwinNormal {
+abstract class AbcTwinNormal_B extends AbcTwinNormal {
   const factory AbcTwinNormal_B(final BTwinNormal field0) =
       _$AbcTwinNormal_BImpl;
+  const AbcTwinNormal_B._() : super._();
 
   @override
   BTwinNormal get field0;
@@ -416,8 +418,8 @@ class __$$AbcTwinNormal_CImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AbcTwinNormal_CImpl implements AbcTwinNormal_C {
-  const _$AbcTwinNormal_CImpl(this.field0);
+class _$AbcTwinNormal_CImpl extends AbcTwinNormal_C {
+  const _$AbcTwinNormal_CImpl(this.field0) : super._();
 
   @override
   final CTwinNormal field0;
@@ -520,9 +522,10 @@ class _$AbcTwinNormal_CImpl implements AbcTwinNormal_C {
   }
 }
 
-abstract class AbcTwinNormal_C implements AbcTwinNormal {
+abstract class AbcTwinNormal_C extends AbcTwinNormal {
   const factory AbcTwinNormal_C(final CTwinNormal field0) =
       _$AbcTwinNormal_CImpl;
+  const AbcTwinNormal_C._() : super._();
 
   @override
   CTwinNormal get field0;
@@ -565,8 +568,8 @@ class __$$AbcTwinNormal_JustIntImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AbcTwinNormal_JustIntImpl implements AbcTwinNormal_JustInt {
-  const _$AbcTwinNormal_JustIntImpl(this.field0);
+class _$AbcTwinNormal_JustIntImpl extends AbcTwinNormal_JustInt {
+  const _$AbcTwinNormal_JustIntImpl(this.field0) : super._();
 
   @override
   final int field0;
@@ -669,9 +672,10 @@ class _$AbcTwinNormal_JustIntImpl implements AbcTwinNormal_JustInt {
   }
 }
 
-abstract class AbcTwinNormal_JustInt implements AbcTwinNormal {
+abstract class AbcTwinNormal_JustInt extends AbcTwinNormal {
   const factory AbcTwinNormal_JustInt(final int field0) =
       _$AbcTwinNormal_JustIntImpl;
+  const AbcTwinNormal_JustInt._() : super._();
 
   @override
   int get field0;

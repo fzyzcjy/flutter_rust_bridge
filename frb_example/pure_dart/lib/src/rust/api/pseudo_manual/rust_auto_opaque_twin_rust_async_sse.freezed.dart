@@ -121,8 +121,9 @@ class __$$EnumWithGoodAndOpaqueTwinRustAsyncSse_GoodImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EnumWithGoodAndOpaqueTwinRustAsyncSse_GoodImpl
-    implements EnumWithGoodAndOpaqueTwinRustAsyncSse_Good {
-  const _$EnumWithGoodAndOpaqueTwinRustAsyncSse_GoodImpl(this.field0);
+    extends EnumWithGoodAndOpaqueTwinRustAsyncSse_Good {
+  const _$EnumWithGoodAndOpaqueTwinRustAsyncSse_GoodImpl(this.field0)
+      : super._();
 
   @override
   final String field0;
@@ -222,9 +223,10 @@ class _$EnumWithGoodAndOpaqueTwinRustAsyncSse_GoodImpl
 }
 
 abstract class EnumWithGoodAndOpaqueTwinRustAsyncSse_Good
-    implements EnumWithGoodAndOpaqueTwinRustAsyncSse {
+    extends EnumWithGoodAndOpaqueTwinRustAsyncSse {
   const factory EnumWithGoodAndOpaqueTwinRustAsyncSse_Good(
       final String field0) = _$EnumWithGoodAndOpaqueTwinRustAsyncSse_GoodImpl;
+  const EnumWithGoodAndOpaqueTwinRustAsyncSse_Good._() : super._();
 
   @override
   String get field0;
@@ -274,8 +276,9 @@ class __$$EnumWithGoodAndOpaqueTwinRustAsyncSse_OpaqueImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EnumWithGoodAndOpaqueTwinRustAsyncSse_OpaqueImpl
-    implements EnumWithGoodAndOpaqueTwinRustAsyncSse_Opaque {
-  const _$EnumWithGoodAndOpaqueTwinRustAsyncSse_OpaqueImpl(this.field0);
+    extends EnumWithGoodAndOpaqueTwinRustAsyncSse_Opaque {
+  const _$EnumWithGoodAndOpaqueTwinRustAsyncSse_OpaqueImpl(this.field0)
+      : super._();
 
   @override
   final NonCloneSimpleTwinRustAsyncSse field0;
@@ -375,10 +378,11 @@ class _$EnumWithGoodAndOpaqueTwinRustAsyncSse_OpaqueImpl
 }
 
 abstract class EnumWithGoodAndOpaqueTwinRustAsyncSse_Opaque
-    implements EnumWithGoodAndOpaqueTwinRustAsyncSse {
+    extends EnumWithGoodAndOpaqueTwinRustAsyncSse {
   const factory EnumWithGoodAndOpaqueTwinRustAsyncSse_Opaque(
           final NonCloneSimpleTwinRustAsyncSse field0) =
       _$EnumWithGoodAndOpaqueTwinRustAsyncSse_OpaqueImpl;
+  const EnumWithGoodAndOpaqueTwinRustAsyncSse_Opaque._() : super._();
 
   @override
   NonCloneSimpleTwinRustAsyncSse get field0;

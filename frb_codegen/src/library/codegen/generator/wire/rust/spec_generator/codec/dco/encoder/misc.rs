@@ -16,8 +16,8 @@ pub(crate) fn generate_impl_into_dart(name: &str, body: &str) -> String {
 }
 
 pub(crate) fn generate_impl_into_into_dart(name: &str, wrapper_name: &Option<String>) -> String {
-    let body = if let Some(wrapper_name) = wrapper_name {
-        format!("{wrapper_name}(self)")
+    let body = if wrapper_name.is_some() {
+        "self.into()".into()
     } else {
         "self".to_owned()
     };

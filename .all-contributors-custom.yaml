@@ -43,6 +43,7 @@
 - patmuk: Set MSRV. Fail fast. Improve message. Improve docs.
 - aran: Fix map + mirror. Fix pubspec. Upgrde ffigen. Bump version. Fix typo.
 - phlip9: Fix no-serde compilation.
+- SilverMira: Fix StreamSink.
 - h3x4d3c1m4l: Fix when outside folder.
 - HalidOdat: Improve config method. Hint build.rs.
 - Berrysoft: Fix missing symbols.

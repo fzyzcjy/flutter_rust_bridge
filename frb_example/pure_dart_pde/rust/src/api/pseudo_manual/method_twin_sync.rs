@@ -152,3 +152,48 @@ impl SimpleStructTwinSync {
         arg.into_iter().map(|x| x.one).collect()
     }
 }
+
+// #1818
+pub enum SimpleEnumTwinSync {
+    First,
+    Second(String),
+}
+
+impl SimpleEnumTwinSync {
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn return_self_twin_sync(one: String) -> Self {
+        Self::Second(one)
+    }
+
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn simple_method_twin_sync(&self) -> String {
+        match self {
+            SimpleEnumTwinSync::First => "".to_owned(),
+            SimpleEnumTwinSync::Second(inner) => inner.to_owned(),
+        }
+    }
+}
+
+// #1838
+pub struct StaticOnlyTwinSync {
+    pub one: String,
+}
+
+impl StaticOnlyTwinSync {
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn static_method_twin_sync(a: i32) -> i32 {
+        a
+    }
+}
+
+// #1838
+#[frb(opaque)]
+pub struct StaticGetterOnlyTwinSync {}
+
+impl StaticGetterOnlyTwinSync {
+    #[frb(getter)]
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn static_getter_twin_sync() -> i32 {
+        42
+    }
+}
