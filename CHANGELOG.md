@@ -1,10 +1,11 @@
 # Changelog
 
-## Unreleased
+## 2.0.0-dev.30
 
 * Fix class is not generated when having only static methods #1851
 * Fix passing non-existent variable to getter causing compilation error #1851
 * Fix missing code generation when using enum and methods #1851
+* Fix sh permission #1842 (thanks @canxin121)
 
 ## 2.0.0-dev.29
 
