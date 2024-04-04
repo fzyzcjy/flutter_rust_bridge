@@ -67,6 +67,19 @@
         "Method": {
           "actual_method_name": "example_instance_method",
           "enum_or_struct_name": "crate::api/MyEnum",
+          "enum_or_struct_ty": {
+            "data": {
+              "PrimitiveEnum": {
+                "ir": {
+                  "ident": "crate::api/MyEnum",
+                  "is_exception": false
+                },
+                "repr": "I32"
+              }
+            },
+            "safe_ident": "my_enum",
+            "type": "Delegate"
+          },
           "mode": "Instance"
         }
       },
@@ -94,6 +107,19 @@
         "Method": {
           "actual_method_name": "example_static_method",
           "enum_or_struct_name": "crate::api/MyEnum",
+          "enum_or_struct_ty": {
+            "data": {
+              "PrimitiveEnum": {
+                "ir": {
+                  "ident": "crate::api/MyEnum",
+                  "is_exception": false
+                },
+                "repr": "I32"
+              }
+            },
+            "safe_ident": "my_enum",
+            "type": "Delegate"
+          },
           "mode": "Static"
         }
       },
@@ -146,6 +172,14 @@
         "Method": {
           "actual_method_name": "example_instance_method",
           "enum_or_struct_name": "crate::api/MyStruct",
+          "enum_or_struct_ty": {
+            "data": {
+              "ident": "crate::api/MyStruct",
+              "is_exception": false
+            },
+            "safe_ident": "my_struct",
+            "type": "StructRef"
+          },
           "mode": "Instance"
         }
       },
@@ -173,6 +207,14 @@
         "Method": {
           "actual_method_name": "example_static_method",
           "enum_or_struct_name": "crate::api/MyStruct",
+          "enum_or_struct_ty": {
+            "data": {
+              "ident": "crate::api/MyStruct",
+              "is_exception": false
+            },
+            "safe_ident": "my_struct",
+            "type": "StructRef"
+          },
           "mode": "Static"
         }
       },

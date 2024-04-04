@@ -27,6 +27,7 @@ class StructInMiscNoTwinExampleA extends RustOpaque {
   Future<void> sampleFunctionA({dynamic hint}) =>
       RustLib.instance.api.structInMiscNoTwinExampleASampleFunctionA(
         that: this,
+        hint: hint,
       );
 }
 
@@ -51,10 +52,12 @@ class StructWithImplBlockInMultiFile extends RustOpaque {
   Future<void> methodInA({dynamic hint}) =>
       RustLib.instance.api.structWithImplBlockInMultiFileMethodInA(
         that: this,
+        hint: hint,
       );
 
   Future<void> methodInB({dynamic hint}) =>
       RustLib.instance.api.structWithImplBlockInMultiFileMethodInB(
         that: this,
+        hint: hint,
       );
 }

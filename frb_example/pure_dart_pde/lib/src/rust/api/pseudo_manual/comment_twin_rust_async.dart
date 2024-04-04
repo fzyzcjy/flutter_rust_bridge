@@ -43,12 +43,15 @@ class StructWithCommentsTwinRustAsync {
       RustLib.instance.api
           .structWithCommentsTwinRustAsyncInstanceMethodTwinRustAsync(
         that: this,
+        hint: hint,
       );
 
   /// Documentation on a static method
   static Future<void> staticMethodTwinRustAsync({dynamic hint}) =>
       RustLib.instance.api
-          .structWithCommentsTwinRustAsyncStaticMethodTwinRustAsync(hint: hint);
+          .structWithCommentsTwinRustAsyncStaticMethodTwinRustAsync(
+        hint: hint,
+      );
 
   @override
   int get hashCode => fieldWithComments.hashCode;

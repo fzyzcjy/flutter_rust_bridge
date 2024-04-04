@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+* Fix class is not generated when having only static methods #1851
+* Fix passing non-existent variable to getter causing compilation error #1851
+* Fix missing code generation when using enum and methods #1851
+
 ## 2.0.0-dev.29
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.

@@ -120,8 +120,8 @@ class __$$AbcTwinSse_AImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AbcTwinSse_AImpl implements AbcTwinSse_A {
-  const _$AbcTwinSse_AImpl(this.field0);
+class _$AbcTwinSse_AImpl extends AbcTwinSse_A {
+  const _$AbcTwinSse_AImpl(this.field0) : super._();
 
   @override
   final ATwinSse field0;
@@ -223,8 +223,9 @@ class _$AbcTwinSse_AImpl implements AbcTwinSse_A {
   }
 }
 
-abstract class AbcTwinSse_A implements AbcTwinSse {
+abstract class AbcTwinSse_A extends AbcTwinSse {
   const factory AbcTwinSse_A(final ATwinSse field0) = _$AbcTwinSse_AImpl;
+  const AbcTwinSse_A._() : super._();
 
   @override
   ATwinSse get field0;
@@ -266,8 +267,8 @@ class __$$AbcTwinSse_BImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AbcTwinSse_BImpl implements AbcTwinSse_B {
-  const _$AbcTwinSse_BImpl(this.field0);
+class _$AbcTwinSse_BImpl extends AbcTwinSse_B {
+  const _$AbcTwinSse_BImpl(this.field0) : super._();
 
   @override
   final BTwinSse field0;
@@ -369,8 +370,9 @@ class _$AbcTwinSse_BImpl implements AbcTwinSse_B {
   }
 }
 
-abstract class AbcTwinSse_B implements AbcTwinSse {
+abstract class AbcTwinSse_B extends AbcTwinSse {
   const factory AbcTwinSse_B(final BTwinSse field0) = _$AbcTwinSse_BImpl;
+  const AbcTwinSse_B._() : super._();
 
   @override
   BTwinSse get field0;
@@ -412,8 +414,8 @@ class __$$AbcTwinSse_CImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AbcTwinSse_CImpl implements AbcTwinSse_C {
-  const _$AbcTwinSse_CImpl(this.field0);
+class _$AbcTwinSse_CImpl extends AbcTwinSse_C {
+  const _$AbcTwinSse_CImpl(this.field0) : super._();
 
   @override
   final CTwinSse field0;
@@ -515,8 +517,9 @@ class _$AbcTwinSse_CImpl implements AbcTwinSse_C {
   }
 }
 
-abstract class AbcTwinSse_C implements AbcTwinSse {
+abstract class AbcTwinSse_C extends AbcTwinSse {
   const factory AbcTwinSse_C(final CTwinSse field0) = _$AbcTwinSse_CImpl;
+  const AbcTwinSse_C._() : super._();
 
   @override
   CTwinSse get field0;
@@ -558,8 +561,8 @@ class __$$AbcTwinSse_JustIntImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AbcTwinSse_JustIntImpl implements AbcTwinSse_JustInt {
-  const _$AbcTwinSse_JustIntImpl(this.field0);
+class _$AbcTwinSse_JustIntImpl extends AbcTwinSse_JustInt {
+  const _$AbcTwinSse_JustIntImpl(this.field0) : super._();
 
   @override
   final int field0;
@@ -662,8 +665,9 @@ class _$AbcTwinSse_JustIntImpl implements AbcTwinSse_JustInt {
   }
 }
 
-abstract class AbcTwinSse_JustInt implements AbcTwinSse {
+abstract class AbcTwinSse_JustInt extends AbcTwinSse {
   const factory AbcTwinSse_JustInt(final int field0) = _$AbcTwinSse_JustIntImpl;
+  const AbcTwinSse_JustInt._() : super._();
 
   @override
   int get field0;

@@ -95,8 +95,8 @@ class __$$DistanceTwinNormal_UnknownImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$DistanceTwinNormal_UnknownImpl implements DistanceTwinNormal_Unknown {
-  const _$DistanceTwinNormal_UnknownImpl();
+class _$DistanceTwinNormal_UnknownImpl extends DistanceTwinNormal_Unknown {
+  const _$DistanceTwinNormal_UnknownImpl() : super._();
 
   @override
   String toString() {
@@ -176,8 +176,9 @@ class _$DistanceTwinNormal_UnknownImpl implements DistanceTwinNormal_Unknown {
   }
 }
 
-abstract class DistanceTwinNormal_Unknown implements DistanceTwinNormal {
+abstract class DistanceTwinNormal_Unknown extends DistanceTwinNormal {
   const factory DistanceTwinNormal_Unknown() = _$DistanceTwinNormal_UnknownImpl;
+  const DistanceTwinNormal_Unknown._() : super._();
 }
 
 /// @nodoc
@@ -215,8 +216,8 @@ class __$$DistanceTwinNormal_MapImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$DistanceTwinNormal_MapImpl implements DistanceTwinNormal_Map {
-  const _$DistanceTwinNormal_MapImpl(this.field0);
+class _$DistanceTwinNormal_MapImpl extends DistanceTwinNormal_Map {
+  const _$DistanceTwinNormal_MapImpl(this.field0) : super._();
 
   @override
   final double field0;
@@ -307,9 +308,10 @@ class _$DistanceTwinNormal_MapImpl implements DistanceTwinNormal_Map {
   }
 }
 
-abstract class DistanceTwinNormal_Map implements DistanceTwinNormal {
+abstract class DistanceTwinNormal_Map extends DistanceTwinNormal {
   const factory DistanceTwinNormal_Map(final double field0) =
       _$DistanceTwinNormal_MapImpl;
+  const DistanceTwinNormal_Map._() : super._();
 
   double get field0;
   @JsonKey(ignore: true)
@@ -408,8 +410,8 @@ class __$$EnumWithItemMixedTwinNormal_AImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EnumWithItemMixedTwinNormal_AImpl
-    implements EnumWithItemMixedTwinNormal_A {
-  const _$EnumWithItemMixedTwinNormal_AImpl();
+    extends EnumWithItemMixedTwinNormal_A {
+  const _$EnumWithItemMixedTwinNormal_AImpl() : super._();
 
   @override
   String toString() {
@@ -496,9 +498,10 @@ class _$EnumWithItemMixedTwinNormal_AImpl
 }
 
 abstract class EnumWithItemMixedTwinNormal_A
-    implements EnumWithItemMixedTwinNormal {
+    extends EnumWithItemMixedTwinNormal {
   const factory EnumWithItemMixedTwinNormal_A() =
       _$EnumWithItemMixedTwinNormal_AImpl;
+  const EnumWithItemMixedTwinNormal_A._() : super._();
 }
 
 /// @nodoc
@@ -538,8 +541,8 @@ class __$$EnumWithItemMixedTwinNormal_BImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EnumWithItemMixedTwinNormal_BImpl
-    implements EnumWithItemMixedTwinNormal_B {
-  const _$EnumWithItemMixedTwinNormal_BImpl(this.field0);
+    extends EnumWithItemMixedTwinNormal_B {
+  const _$EnumWithItemMixedTwinNormal_BImpl(this.field0) : super._();
 
   @override
   final Uint8List field0;
@@ -639,9 +642,10 @@ class _$EnumWithItemMixedTwinNormal_BImpl
 }
 
 abstract class EnumWithItemMixedTwinNormal_B
-    implements EnumWithItemMixedTwinNormal {
+    extends EnumWithItemMixedTwinNormal {
   const factory EnumWithItemMixedTwinNormal_B(final Uint8List field0) =
       _$EnumWithItemMixedTwinNormal_BImpl;
+  const EnumWithItemMixedTwinNormal_B._() : super._();
 
   Uint8List get field0;
   @JsonKey(ignore: true)
@@ -687,8 +691,8 @@ class __$$EnumWithItemMixedTwinNormal_CImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EnumWithItemMixedTwinNormal_CImpl
-    implements EnumWithItemMixedTwinNormal_C {
-  const _$EnumWithItemMixedTwinNormal_CImpl({required this.cField});
+    extends EnumWithItemMixedTwinNormal_C {
+  const _$EnumWithItemMixedTwinNormal_CImpl({required this.cField}) : super._();
 
   @override
   final String cField;
@@ -787,9 +791,10 @@ class _$EnumWithItemMixedTwinNormal_CImpl
 }
 
 abstract class EnumWithItemMixedTwinNormal_C
-    implements EnumWithItemMixedTwinNormal {
+    extends EnumWithItemMixedTwinNormal {
   const factory EnumWithItemMixedTwinNormal_C({required final String cField}) =
       _$EnumWithItemMixedTwinNormal_CImpl;
+  const EnumWithItemMixedTwinNormal_C._() : super._();
 
   String get cField;
   @JsonKey(ignore: true)
@@ -898,8 +903,9 @@ class __$$EnumWithItemStructTwinNormal_AImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EnumWithItemStructTwinNormal_AImpl
-    implements EnumWithItemStructTwinNormal_A {
-  const _$EnumWithItemStructTwinNormal_AImpl({required this.aField});
+    extends EnumWithItemStructTwinNormal_A {
+  const _$EnumWithItemStructTwinNormal_AImpl({required this.aField})
+      : super._();
 
   @override
   final Uint8List aField;
@@ -993,9 +999,10 @@ class _$EnumWithItemStructTwinNormal_AImpl
 }
 
 abstract class EnumWithItemStructTwinNormal_A
-    implements EnumWithItemStructTwinNormal {
+    extends EnumWithItemStructTwinNormal {
   const factory EnumWithItemStructTwinNormal_A(
       {required final Uint8List aField}) = _$EnumWithItemStructTwinNormal_AImpl;
+  const EnumWithItemStructTwinNormal_A._() : super._();
 
   Uint8List get aField;
   @JsonKey(ignore: true)
@@ -1041,8 +1048,9 @@ class __$$EnumWithItemStructTwinNormal_BImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EnumWithItemStructTwinNormal_BImpl
-    implements EnumWithItemStructTwinNormal_B {
-  const _$EnumWithItemStructTwinNormal_BImpl({required this.bField});
+    extends EnumWithItemStructTwinNormal_B {
+  const _$EnumWithItemStructTwinNormal_BImpl({required this.bField})
+      : super._();
 
   @override
   final Int32List bField;
@@ -1136,9 +1144,10 @@ class _$EnumWithItemStructTwinNormal_BImpl
 }
 
 abstract class EnumWithItemStructTwinNormal_B
-    implements EnumWithItemStructTwinNormal {
+    extends EnumWithItemStructTwinNormal {
   const factory EnumWithItemStructTwinNormal_B(
       {required final Int32List bField}) = _$EnumWithItemStructTwinNormal_BImpl;
+  const EnumWithItemStructTwinNormal_B._() : super._();
 
   Int32List get bField;
   @JsonKey(ignore: true)
@@ -1248,8 +1257,8 @@ class __$$EnumWithItemTupleTwinNormal_AImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EnumWithItemTupleTwinNormal_AImpl
-    implements EnumWithItemTupleTwinNormal_A {
-  const _$EnumWithItemTupleTwinNormal_AImpl(this.field0);
+    extends EnumWithItemTupleTwinNormal_A {
+  const _$EnumWithItemTupleTwinNormal_AImpl(this.field0) : super._();
 
   @override
   final Uint8List field0;
@@ -1343,9 +1352,10 @@ class _$EnumWithItemTupleTwinNormal_AImpl
 }
 
 abstract class EnumWithItemTupleTwinNormal_A
-    implements EnumWithItemTupleTwinNormal {
+    extends EnumWithItemTupleTwinNormal {
   const factory EnumWithItemTupleTwinNormal_A(final Uint8List field0) =
       _$EnumWithItemTupleTwinNormal_AImpl;
+  const EnumWithItemTupleTwinNormal_A._() : super._();
 
   @override
   Uint8List get field0;
@@ -1392,8 +1402,8 @@ class __$$EnumWithItemTupleTwinNormal_BImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EnumWithItemTupleTwinNormal_BImpl
-    implements EnumWithItemTupleTwinNormal_B {
-  const _$EnumWithItemTupleTwinNormal_BImpl(this.field0);
+    extends EnumWithItemTupleTwinNormal_B {
+  const _$EnumWithItemTupleTwinNormal_BImpl(this.field0) : super._();
 
   @override
   final Int32List field0;
@@ -1487,9 +1497,10 @@ class _$EnumWithItemTupleTwinNormal_BImpl
 }
 
 abstract class EnumWithItemTupleTwinNormal_B
-    implements EnumWithItemTupleTwinNormal {
+    extends EnumWithItemTupleTwinNormal {
   const factory EnumWithItemTupleTwinNormal_B(final Int32List field0) =
       _$EnumWithItemTupleTwinNormal_BImpl;
+  const EnumWithItemTupleTwinNormal_B._() : super._();
 
   @override
   Int32List get field0;
@@ -1607,8 +1618,8 @@ class __$$KitchenSinkTwinNormal_EmptyImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$KitchenSinkTwinNormal_EmptyImpl implements KitchenSinkTwinNormal_Empty {
-  const _$KitchenSinkTwinNormal_EmptyImpl();
+class _$KitchenSinkTwinNormal_EmptyImpl extends KitchenSinkTwinNormal_Empty {
+  const _$KitchenSinkTwinNormal_EmptyImpl() : super._();
 
   @override
   String toString() {
@@ -1714,9 +1725,10 @@ class _$KitchenSinkTwinNormal_EmptyImpl implements KitchenSinkTwinNormal_Empty {
   }
 }
 
-abstract class KitchenSinkTwinNormal_Empty implements KitchenSinkTwinNormal {
+abstract class KitchenSinkTwinNormal_Empty extends KitchenSinkTwinNormal {
   const factory KitchenSinkTwinNormal_Empty() =
       _$KitchenSinkTwinNormal_EmptyImpl;
+  const KitchenSinkTwinNormal_Empty._() : super._();
 }
 
 /// @nodoc
@@ -1766,9 +1778,10 @@ class __$$KitchenSinkTwinNormal_PrimitivesImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$KitchenSinkTwinNormal_PrimitivesImpl
-    implements KitchenSinkTwinNormal_Primitives {
+    extends KitchenSinkTwinNormal_Primitives {
   const _$KitchenSinkTwinNormal_PrimitivesImpl(
-      {this.int32 = -1, required this.float64, required this.boolean});
+      {this.int32 = -1, required this.float64, required this.boolean})
+      : super._();
 
   /// Dart field comment
   @override
@@ -1894,12 +1907,12 @@ class _$KitchenSinkTwinNormal_PrimitivesImpl
   }
 }
 
-abstract class KitchenSinkTwinNormal_Primitives
-    implements KitchenSinkTwinNormal {
+abstract class KitchenSinkTwinNormal_Primitives extends KitchenSinkTwinNormal {
   const factory KitchenSinkTwinNormal_Primitives(
       {final int int32,
       required final double float64,
       required final bool boolean}) = _$KitchenSinkTwinNormal_PrimitivesImpl;
+  const KitchenSinkTwinNormal_Primitives._() : super._();
 
   /// Dart field comment
   int get int32;
@@ -1962,10 +1975,10 @@ class __$$KitchenSinkTwinNormal_NestedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$KitchenSinkTwinNormal_NestedImpl
-    implements KitchenSinkTwinNormal_Nested {
+class _$KitchenSinkTwinNormal_NestedImpl extends KitchenSinkTwinNormal_Nested {
   const _$KitchenSinkTwinNormal_NestedImpl(this.field0,
-      [this.field1 = const KitchenSinkTwinNormal.empty()]);
+      [this.field1 = const KitchenSinkTwinNormal.empty()])
+      : super._();
 
   @override
   final int field0;
@@ -2087,10 +2100,11 @@ class _$KitchenSinkTwinNormal_NestedImpl
   }
 }
 
-abstract class KitchenSinkTwinNormal_Nested implements KitchenSinkTwinNormal {
+abstract class KitchenSinkTwinNormal_Nested extends KitchenSinkTwinNormal {
   const factory KitchenSinkTwinNormal_Nested(final int field0,
           [final KitchenSinkTwinNormal field1]) =
       _$KitchenSinkTwinNormal_NestedImpl;
+  const KitchenSinkTwinNormal_Nested._() : super._();
 
   int get field0;
   KitchenSinkTwinNormal get field1;
@@ -2142,8 +2156,9 @@ class __$$KitchenSinkTwinNormal_OptionalImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$KitchenSinkTwinNormal_OptionalImpl
-    implements KitchenSinkTwinNormal_Optional {
-  const _$KitchenSinkTwinNormal_OptionalImpl([this.field0 = -1, this.field1]);
+    extends KitchenSinkTwinNormal_Optional {
+  const _$KitchenSinkTwinNormal_OptionalImpl([this.field0 = -1, this.field1])
+      : super._();
 
   /// Comment on anonymous field
   @override
@@ -2266,10 +2281,11 @@ class _$KitchenSinkTwinNormal_OptionalImpl
   }
 }
 
-abstract class KitchenSinkTwinNormal_Optional implements KitchenSinkTwinNormal {
+abstract class KitchenSinkTwinNormal_Optional extends KitchenSinkTwinNormal {
   const factory KitchenSinkTwinNormal_Optional(
       [final int? field0,
       final int? field1]) = _$KitchenSinkTwinNormal_OptionalImpl;
+  const KitchenSinkTwinNormal_Optional._() : super._();
 
   /// Comment on anonymous field
   int? get field0;
@@ -2316,9 +2332,8 @@ class __$$KitchenSinkTwinNormal_BufferImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$KitchenSinkTwinNormal_BufferImpl
-    implements KitchenSinkTwinNormal_Buffer {
-  const _$KitchenSinkTwinNormal_BufferImpl(this.field0);
+class _$KitchenSinkTwinNormal_BufferImpl extends KitchenSinkTwinNormal_Buffer {
+  const _$KitchenSinkTwinNormal_BufferImpl(this.field0) : super._();
 
   @override
   final Uint8List field0;
@@ -2437,9 +2452,10 @@ class _$KitchenSinkTwinNormal_BufferImpl
   }
 }
 
-abstract class KitchenSinkTwinNormal_Buffer implements KitchenSinkTwinNormal {
+abstract class KitchenSinkTwinNormal_Buffer extends KitchenSinkTwinNormal {
   const factory KitchenSinkTwinNormal_Buffer(final Uint8List field0) =
       _$KitchenSinkTwinNormal_BufferImpl;
+  const KitchenSinkTwinNormal_Buffer._() : super._();
 
   Uint8List get field0;
   @JsonKey(ignore: true)
@@ -2484,9 +2500,10 @@ class __$$KitchenSinkTwinNormal_EnumsImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$KitchenSinkTwinNormal_EnumsImpl implements KitchenSinkTwinNormal_Enums {
+class _$KitchenSinkTwinNormal_EnumsImpl extends KitchenSinkTwinNormal_Enums {
   const _$KitchenSinkTwinNormal_EnumsImpl(
-      [this.field0 = WeekdaysTwinNormal.sunday]);
+      [this.field0 = WeekdaysTwinNormal.sunday])
+      : super._();
 
   @override
   @JsonKey()
@@ -2604,9 +2621,10 @@ class _$KitchenSinkTwinNormal_EnumsImpl implements KitchenSinkTwinNormal_Enums {
   }
 }
 
-abstract class KitchenSinkTwinNormal_Enums implements KitchenSinkTwinNormal {
+abstract class KitchenSinkTwinNormal_Enums extends KitchenSinkTwinNormal {
   const factory KitchenSinkTwinNormal_Enums([final WeekdaysTwinNormal field0]) =
       _$KitchenSinkTwinNormal_EnumsImpl;
+  const KitchenSinkTwinNormal_Enums._() : super._();
 
   WeekdaysTwinNormal get field0;
   @JsonKey(ignore: true)
@@ -2720,8 +2738,8 @@ class __$$MeasureTwinNormal_SpeedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$MeasureTwinNormal_SpeedImpl implements MeasureTwinNormal_Speed {
-  const _$MeasureTwinNormal_SpeedImpl(this.field0);
+class _$MeasureTwinNormal_SpeedImpl extends MeasureTwinNormal_Speed {
+  const _$MeasureTwinNormal_SpeedImpl(this.field0) : super._();
 
   @override
   final SpeedTwinNormal field0;
@@ -2812,9 +2830,10 @@ class _$MeasureTwinNormal_SpeedImpl implements MeasureTwinNormal_Speed {
   }
 }
 
-abstract class MeasureTwinNormal_Speed implements MeasureTwinNormal {
+abstract class MeasureTwinNormal_Speed extends MeasureTwinNormal {
   const factory MeasureTwinNormal_Speed(final SpeedTwinNormal field0) =
       _$MeasureTwinNormal_SpeedImpl;
+  const MeasureTwinNormal_Speed._() : super._();
 
   @override
   SpeedTwinNormal get field0;
@@ -2869,8 +2888,8 @@ class __$$MeasureTwinNormal_DistanceImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$MeasureTwinNormal_DistanceImpl implements MeasureTwinNormal_Distance {
-  const _$MeasureTwinNormal_DistanceImpl(this.field0);
+class _$MeasureTwinNormal_DistanceImpl extends MeasureTwinNormal_Distance {
+  const _$MeasureTwinNormal_DistanceImpl(this.field0) : super._();
 
   @override
   final DistanceTwinNormal field0;
@@ -2961,9 +2980,10 @@ class _$MeasureTwinNormal_DistanceImpl implements MeasureTwinNormal_Distance {
   }
 }
 
-abstract class MeasureTwinNormal_Distance implements MeasureTwinNormal {
+abstract class MeasureTwinNormal_Distance extends MeasureTwinNormal {
   const factory MeasureTwinNormal_Distance(final DistanceTwinNormal field0) =
       _$MeasureTwinNormal_DistanceImpl;
+  const MeasureTwinNormal_Distance._() : super._();
 
   @override
   DistanceTwinNormal get field0;
@@ -3052,8 +3072,8 @@ class __$$SpeedTwinNormal_UnknownImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SpeedTwinNormal_UnknownImpl implements SpeedTwinNormal_Unknown {
-  const _$SpeedTwinNormal_UnknownImpl();
+class _$SpeedTwinNormal_UnknownImpl extends SpeedTwinNormal_Unknown {
+  const _$SpeedTwinNormal_UnknownImpl() : super._();
 
   @override
   String toString() {
@@ -3133,8 +3153,9 @@ class _$SpeedTwinNormal_UnknownImpl implements SpeedTwinNormal_Unknown {
   }
 }
 
-abstract class SpeedTwinNormal_Unknown implements SpeedTwinNormal {
+abstract class SpeedTwinNormal_Unknown extends SpeedTwinNormal {
   const factory SpeedTwinNormal_Unknown() = _$SpeedTwinNormal_UnknownImpl;
+  const SpeedTwinNormal_Unknown._() : super._();
 }
 
 /// @nodoc
@@ -3170,8 +3191,8 @@ class __$$SpeedTwinNormal_GPSImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SpeedTwinNormal_GPSImpl implements SpeedTwinNormal_GPS {
-  const _$SpeedTwinNormal_GPSImpl(this.field0);
+class _$SpeedTwinNormal_GPSImpl extends SpeedTwinNormal_GPS {
+  const _$SpeedTwinNormal_GPSImpl(this.field0) : super._();
 
   @override
   final double field0;
@@ -3262,9 +3283,10 @@ class _$SpeedTwinNormal_GPSImpl implements SpeedTwinNormal_GPS {
   }
 }
 
-abstract class SpeedTwinNormal_GPS implements SpeedTwinNormal {
+abstract class SpeedTwinNormal_GPS extends SpeedTwinNormal {
   const factory SpeedTwinNormal_GPS(final double field0) =
       _$SpeedTwinNormal_GPSImpl;
+  const SpeedTwinNormal_GPS._() : super._();
 
   double get field0;
   @JsonKey(ignore: true)

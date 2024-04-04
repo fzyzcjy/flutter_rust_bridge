@@ -61,6 +61,8 @@ Future<KitchenSinkTwinRustAsyncSse> handleEnumStructTwinRustAsyncSse(
 
 @freezed
 sealed class DistanceTwinRustAsyncSse with _$DistanceTwinRustAsyncSse {
+  const DistanceTwinRustAsyncSse._();
+
   const factory DistanceTwinRustAsyncSse.unknown() =
       DistanceTwinRustAsyncSse_Unknown;
   const factory DistanceTwinRustAsyncSse.map(
@@ -81,6 +83,8 @@ enum EnumWithDiscriminantTwinRustAsyncSse {
 @freezed
 sealed class EnumWithItemMixedTwinRustAsyncSse
     with _$EnumWithItemMixedTwinRustAsyncSse {
+  const EnumWithItemMixedTwinRustAsyncSse._();
+
   const factory EnumWithItemMixedTwinRustAsyncSse.a() =
       EnumWithItemMixedTwinRustAsyncSse_A;
   const factory EnumWithItemMixedTwinRustAsyncSse.b(
@@ -94,6 +98,8 @@ sealed class EnumWithItemMixedTwinRustAsyncSse
 @freezed
 sealed class EnumWithItemStructTwinRustAsyncSse
     with _$EnumWithItemStructTwinRustAsyncSse {
+  const EnumWithItemStructTwinRustAsyncSse._();
+
   const factory EnumWithItemStructTwinRustAsyncSse.a({
     required Uint8List aField,
   }) = EnumWithItemStructTwinRustAsyncSse_A;
@@ -105,6 +111,8 @@ sealed class EnumWithItemStructTwinRustAsyncSse
 @freezed
 sealed class EnumWithItemTupleTwinRustAsyncSse
     with _$EnumWithItemTupleTwinRustAsyncSse {
+  const EnumWithItemTupleTwinRustAsyncSse._();
+
   const factory EnumWithItemTupleTwinRustAsyncSse.a(
     Uint8List field0,
   ) = EnumWithItemTupleTwinRustAsyncSse_A;
@@ -115,6 +123,8 @@ sealed class EnumWithItemTupleTwinRustAsyncSse
 
 @freezed
 sealed class KitchenSinkTwinRustAsyncSse with _$KitchenSinkTwinRustAsyncSse {
+  const KitchenSinkTwinRustAsyncSse._();
+
   /// Comment on variant
   const factory KitchenSinkTwinRustAsyncSse.empty() =
       KitchenSinkTwinRustAsyncSse_Empty;
@@ -144,6 +154,8 @@ sealed class KitchenSinkTwinRustAsyncSse with _$KitchenSinkTwinRustAsyncSse {
 
 @freezed
 sealed class MeasureTwinRustAsyncSse with _$MeasureTwinRustAsyncSse {
+  const MeasureTwinRustAsyncSse._();
+
   const factory MeasureTwinRustAsyncSse.speed(
     SpeedTwinRustAsyncSse field0,
   ) = MeasureTwinRustAsyncSse_Speed;
@@ -175,6 +187,8 @@ class NoteTwinRustAsyncSse {
 
 @freezed
 sealed class SpeedTwinRustAsyncSse with _$SpeedTwinRustAsyncSse {
+  const SpeedTwinRustAsyncSse._();
+
   const factory SpeedTwinRustAsyncSse.unknown() = SpeedTwinRustAsyncSse_Unknown;
   const factory SpeedTwinRustAsyncSse.gps(
     double field0,

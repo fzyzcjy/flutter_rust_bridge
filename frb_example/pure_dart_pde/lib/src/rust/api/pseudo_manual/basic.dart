@@ -79,6 +79,8 @@ Future<BasicStructTwinNormal> exampleBasicTypeBasicStructTwinNormalTwinNormal(
 
 @freezed
 sealed class BasicGeneralEnumTwinNormal with _$BasicGeneralEnumTwinNormal {
+  const BasicGeneralEnumTwinNormal._();
+
   const factory BasicGeneralEnumTwinNormal.apple({
     required String field,
   }) = BasicGeneralEnumTwinNormal_Apple;

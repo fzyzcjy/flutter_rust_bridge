@@ -315,18 +315,21 @@ class NonCloneSimpleTwinRustAsync extends RustOpaque {
       RustLib.instance.api
           .nonCloneSimpleTwinRustAsyncInstanceMethodArgBorrowTwinRustAsync(
         that: this,
+        hint: hint,
       );
 
   Future<void> instanceMethodArgMutBorrowTwinRustAsync({dynamic hint}) =>
       RustLib.instance.api
           .nonCloneSimpleTwinRustAsyncInstanceMethodArgMutBorrowTwinRustAsync(
         that: this,
+        hint: hint,
       );
 
   Future<void> instanceMethodArgOwnTwinRustAsync({dynamic hint}) =>
       RustLib.instance.api
           .nonCloneSimpleTwinRustAsyncInstanceMethodArgOwnTwinRustAsync(
         that: this,
+        hint: hint,
       );
 
   Future<int> get instanceMethodGetterTwinRustAsync => RustLib.instance.api
@@ -339,48 +342,61 @@ class NonCloneSimpleTwinRustAsync extends RustOpaque {
       RustLib.instance.api
           .nonCloneSimpleTwinRustAsyncInstanceMethodReturnOwnTwinRustAsync(
         that: this,
+        hint: hint,
       );
 
   /// named constructor
   static Future<NonCloneSimpleTwinRustAsync> newCustomNameTwinRustAsync(
           {dynamic hint}) =>
       RustLib.instance.api
-          .nonCloneSimpleTwinRustAsyncNewCustomNameTwinRustAsync(hint: hint);
+          .nonCloneSimpleTwinRustAsyncNewCustomNameTwinRustAsync(
+        hint: hint,
+      );
 
   /// unnamed constructor
   static Future<NonCloneSimpleTwinRustAsync> newTwinRustAsync({dynamic hint}) =>
-      RustLib.instance.api
-          .nonCloneSimpleTwinRustAsyncNewTwinRustAsync(hint: hint);
+      RustLib.instance.api.nonCloneSimpleTwinRustAsyncNewTwinRustAsync(
+        hint: hint,
+      );
 
   /// constructor with Result
   static Future<NonCloneSimpleTwinRustAsync> newWithResultTwinRustAsync(
           {dynamic hint}) =>
       RustLib.instance.api
-          .nonCloneSimpleTwinRustAsyncNewWithResultTwinRustAsync(hint: hint);
+          .nonCloneSimpleTwinRustAsyncNewWithResultTwinRustAsync(
+        hint: hint,
+      );
 
   static Future<void> staticMethodArgBorrowTwinRustAsync(
           {required NonCloneSimpleTwinRustAsync arg, dynamic hint}) =>
       RustLib.instance.api
           .nonCloneSimpleTwinRustAsyncStaticMethodArgBorrowTwinRustAsync(
-              arg: arg, hint: hint);
+        arg: arg,
+        hint: hint,
+      );
 
   static Future<void> staticMethodArgMutBorrowTwinRustAsync(
           {required NonCloneSimpleTwinRustAsync arg, dynamic hint}) =>
       RustLib.instance.api
           .nonCloneSimpleTwinRustAsyncStaticMethodArgMutBorrowTwinRustAsync(
-              arg: arg, hint: hint);
+        arg: arg,
+        hint: hint,
+      );
 
   static Future<void> staticMethodArgOwnTwinRustAsync(
           {required NonCloneSimpleTwinRustAsync arg, dynamic hint}) =>
       RustLib.instance.api
           .nonCloneSimpleTwinRustAsyncStaticMethodArgOwnTwinRustAsync(
-              arg: arg, hint: hint);
+        arg: arg,
+        hint: hint,
+      );
 
   static Future<NonCloneSimpleTwinRustAsync> staticMethodReturnOwnTwinRustAsync(
           {dynamic hint}) =>
       RustLib.instance.api
           .nonCloneSimpleTwinRustAsyncStaticMethodReturnOwnTwinRustAsync(
-              hint: hint);
+        hint: hint,
+      );
 }
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinRustAsync>>
@@ -446,6 +462,8 @@ class StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync
 @freezed
 sealed class EnumWithGoodAndOpaqueTwinRustAsync
     with _$EnumWithGoodAndOpaqueTwinRustAsync {
+  const EnumWithGoodAndOpaqueTwinRustAsync._();
+
   const factory EnumWithGoodAndOpaqueTwinRustAsync.good(
     String field0,
   ) = EnumWithGoodAndOpaqueTwinRustAsync_Good;

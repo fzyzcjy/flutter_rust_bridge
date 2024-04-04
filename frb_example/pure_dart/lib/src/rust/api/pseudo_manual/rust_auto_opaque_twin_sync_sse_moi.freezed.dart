@@ -117,8 +117,8 @@ class __$$EnumWithGoodAndOpaqueTwinSyncSseMoi_GoodImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EnumWithGoodAndOpaqueTwinSyncSseMoi_GoodImpl
-    implements EnumWithGoodAndOpaqueTwinSyncSseMoi_Good {
-  const _$EnumWithGoodAndOpaqueTwinSyncSseMoi_GoodImpl(this.field0);
+    extends EnumWithGoodAndOpaqueTwinSyncSseMoi_Good {
+  const _$EnumWithGoodAndOpaqueTwinSyncSseMoi_GoodImpl(this.field0) : super._();
 
   @override
   final String field0;
@@ -214,9 +214,10 @@ class _$EnumWithGoodAndOpaqueTwinSyncSseMoi_GoodImpl
 }
 
 abstract class EnumWithGoodAndOpaqueTwinSyncSseMoi_Good
-    implements EnumWithGoodAndOpaqueTwinSyncSseMoi {
+    extends EnumWithGoodAndOpaqueTwinSyncSseMoi {
   const factory EnumWithGoodAndOpaqueTwinSyncSseMoi_Good(final String field0) =
       _$EnumWithGoodAndOpaqueTwinSyncSseMoi_GoodImpl;
+  const EnumWithGoodAndOpaqueTwinSyncSseMoi_Good._() : super._();
 
   @override
   String get field0;
@@ -264,8 +265,9 @@ class __$$EnumWithGoodAndOpaqueTwinSyncSseMoi_OpaqueImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EnumWithGoodAndOpaqueTwinSyncSseMoi_OpaqueImpl
-    implements EnumWithGoodAndOpaqueTwinSyncSseMoi_Opaque {
-  const _$EnumWithGoodAndOpaqueTwinSyncSseMoi_OpaqueImpl(this.field0);
+    extends EnumWithGoodAndOpaqueTwinSyncSseMoi_Opaque {
+  const _$EnumWithGoodAndOpaqueTwinSyncSseMoi_OpaqueImpl(this.field0)
+      : super._();
 
   @override
   final NonCloneSimpleTwinSyncSseMoi field0;
@@ -362,10 +364,11 @@ class _$EnumWithGoodAndOpaqueTwinSyncSseMoi_OpaqueImpl
 }
 
 abstract class EnumWithGoodAndOpaqueTwinSyncSseMoi_Opaque
-    implements EnumWithGoodAndOpaqueTwinSyncSseMoi {
+    extends EnumWithGoodAndOpaqueTwinSyncSseMoi {
   const factory EnumWithGoodAndOpaqueTwinSyncSseMoi_Opaque(
           final NonCloneSimpleTwinSyncSseMoi field0) =
       _$EnumWithGoodAndOpaqueTwinSyncSseMoi_OpaqueImpl;
+  const EnumWithGoodAndOpaqueTwinSyncSseMoi_Opaque._() : super._();
 
   @override
   NonCloneSimpleTwinSyncSseMoi get field0;

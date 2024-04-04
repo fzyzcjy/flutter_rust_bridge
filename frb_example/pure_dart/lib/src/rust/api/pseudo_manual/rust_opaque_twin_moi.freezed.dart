@@ -134,8 +134,8 @@ class __$$EnumOpaqueTwinMoi_StructImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumOpaqueTwinMoi_StructImpl implements EnumOpaqueTwinMoi_Struct {
-  const _$EnumOpaqueTwinMoi_StructImpl(this.field0);
+class _$EnumOpaqueTwinMoi_StructImpl extends EnumOpaqueTwinMoi_Struct {
+  const _$EnumOpaqueTwinMoi_StructImpl(this.field0) : super._();
 
   @override
   final HideDataTwinMoi field0;
@@ -250,9 +250,10 @@ class _$EnumOpaqueTwinMoi_StructImpl implements EnumOpaqueTwinMoi_Struct {
   }
 }
 
-abstract class EnumOpaqueTwinMoi_Struct implements EnumOpaqueTwinMoi {
+abstract class EnumOpaqueTwinMoi_Struct extends EnumOpaqueTwinMoi {
   const factory EnumOpaqueTwinMoi_Struct(final HideDataTwinMoi field0) =
       _$EnumOpaqueTwinMoi_StructImpl;
+  const EnumOpaqueTwinMoi_Struct._() : super._();
 
   HideDataTwinMoi get field0;
   @JsonKey(ignore: true)
@@ -296,8 +297,8 @@ class __$$EnumOpaqueTwinMoi_PrimitiveImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumOpaqueTwinMoi_PrimitiveImpl implements EnumOpaqueTwinMoi_Primitive {
-  const _$EnumOpaqueTwinMoi_PrimitiveImpl(this.field0);
+class _$EnumOpaqueTwinMoi_PrimitiveImpl extends EnumOpaqueTwinMoi_Primitive {
+  const _$EnumOpaqueTwinMoi_PrimitiveImpl(this.field0) : super._();
 
   @override
   final I16 field0;
@@ -412,9 +413,10 @@ class _$EnumOpaqueTwinMoi_PrimitiveImpl implements EnumOpaqueTwinMoi_Primitive {
   }
 }
 
-abstract class EnumOpaqueTwinMoi_Primitive implements EnumOpaqueTwinMoi {
+abstract class EnumOpaqueTwinMoi_Primitive extends EnumOpaqueTwinMoi {
   const factory EnumOpaqueTwinMoi_Primitive(final I16 field0) =
       _$EnumOpaqueTwinMoi_PrimitiveImpl;
+  const EnumOpaqueTwinMoi_Primitive._() : super._();
 
   I16 get field0;
   @JsonKey(ignore: true)
@@ -458,8 +460,8 @@ class __$$EnumOpaqueTwinMoi_TraitObjImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumOpaqueTwinMoi_TraitObjImpl implements EnumOpaqueTwinMoi_TraitObj {
-  const _$EnumOpaqueTwinMoi_TraitObjImpl(this.field0);
+class _$EnumOpaqueTwinMoi_TraitObjImpl extends EnumOpaqueTwinMoi_TraitObj {
+  const _$EnumOpaqueTwinMoi_TraitObjImpl(this.field0) : super._();
 
   @override
   final BoxDartDebugTwinMoi field0;
@@ -574,9 +576,10 @@ class _$EnumOpaqueTwinMoi_TraitObjImpl implements EnumOpaqueTwinMoi_TraitObj {
   }
 }
 
-abstract class EnumOpaqueTwinMoi_TraitObj implements EnumOpaqueTwinMoi {
+abstract class EnumOpaqueTwinMoi_TraitObj extends EnumOpaqueTwinMoi {
   const factory EnumOpaqueTwinMoi_TraitObj(final BoxDartDebugTwinMoi field0) =
       _$EnumOpaqueTwinMoi_TraitObjImpl;
+  const EnumOpaqueTwinMoi_TraitObj._() : super._();
 
   BoxDartDebugTwinMoi get field0;
   @JsonKey(ignore: true)
@@ -619,8 +622,8 @@ class __$$EnumOpaqueTwinMoi_MutexImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumOpaqueTwinMoi_MutexImpl implements EnumOpaqueTwinMoi_Mutex {
-  const _$EnumOpaqueTwinMoi_MutexImpl(this.field0);
+class _$EnumOpaqueTwinMoi_MutexImpl extends EnumOpaqueTwinMoi_Mutex {
+  const _$EnumOpaqueTwinMoi_MutexImpl(this.field0) : super._();
 
   @override
   final MutexHideDataTwinMoi field0;
@@ -735,9 +738,10 @@ class _$EnumOpaqueTwinMoi_MutexImpl implements EnumOpaqueTwinMoi_Mutex {
   }
 }
 
-abstract class EnumOpaqueTwinMoi_Mutex implements EnumOpaqueTwinMoi {
+abstract class EnumOpaqueTwinMoi_Mutex extends EnumOpaqueTwinMoi {
   const factory EnumOpaqueTwinMoi_Mutex(final MutexHideDataTwinMoi field0) =
       _$EnumOpaqueTwinMoi_MutexImpl;
+  const EnumOpaqueTwinMoi_Mutex._() : super._();
 
   MutexHideDataTwinMoi get field0;
   @JsonKey(ignore: true)
@@ -781,8 +785,8 @@ class __$$EnumOpaqueTwinMoi_RwLockImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumOpaqueTwinMoi_RwLockImpl implements EnumOpaqueTwinMoi_RwLock {
-  const _$EnumOpaqueTwinMoi_RwLockImpl(this.field0);
+class _$EnumOpaqueTwinMoi_RwLockImpl extends EnumOpaqueTwinMoi_RwLock {
+  const _$EnumOpaqueTwinMoi_RwLockImpl(this.field0) : super._();
 
   @override
   final RwLockHideDataTwinMoi field0;
@@ -897,9 +901,10 @@ class _$EnumOpaqueTwinMoi_RwLockImpl implements EnumOpaqueTwinMoi_RwLock {
   }
 }
 
-abstract class EnumOpaqueTwinMoi_RwLock implements EnumOpaqueTwinMoi {
+abstract class EnumOpaqueTwinMoi_RwLock extends EnumOpaqueTwinMoi {
   const factory EnumOpaqueTwinMoi_RwLock(final RwLockHideDataTwinMoi field0) =
       _$EnumOpaqueTwinMoi_RwLockImpl;
+  const EnumOpaqueTwinMoi_RwLock._() : super._();
 
   RwLockHideDataTwinMoi get field0;
   @JsonKey(ignore: true)
@@ -928,8 +933,8 @@ class __$$EnumOpaqueTwinMoi_NothingImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumOpaqueTwinMoi_NothingImpl implements EnumOpaqueTwinMoi_Nothing {
-  const _$EnumOpaqueTwinMoi_NothingImpl();
+class _$EnumOpaqueTwinMoi_NothingImpl extends EnumOpaqueTwinMoi_Nothing {
+  const _$EnumOpaqueTwinMoi_NothingImpl() : super._();
 
   @override
   String toString() {
@@ -1033,6 +1038,7 @@ class _$EnumOpaqueTwinMoi_NothingImpl implements EnumOpaqueTwinMoi_Nothing {
   }
 }
 
-abstract class EnumOpaqueTwinMoi_Nothing implements EnumOpaqueTwinMoi {
+abstract class EnumOpaqueTwinMoi_Nothing extends EnumOpaqueTwinMoi {
   const factory EnumOpaqueTwinMoi_Nothing() = _$EnumOpaqueTwinMoi_NothingImpl;
+  const EnumOpaqueTwinMoi_Nothing._() : super._();
 }

@@ -201,6 +201,8 @@ class RwLockHideDataTwinNormal extends RustOpaque {
 
 @freezed
 sealed class EnumOpaqueTwinNormal with _$EnumOpaqueTwinNormal {
+  const EnumOpaqueTwinNormal._();
+
   const factory EnumOpaqueTwinNormal.struct(
     HideDataTwinNormal field0,
   ) = EnumOpaqueTwinNormal_Struct;

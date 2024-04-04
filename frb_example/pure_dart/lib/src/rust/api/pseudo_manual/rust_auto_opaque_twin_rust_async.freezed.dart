@@ -117,8 +117,8 @@ class __$$EnumWithGoodAndOpaqueTwinRustAsync_GoodImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EnumWithGoodAndOpaqueTwinRustAsync_GoodImpl
-    implements EnumWithGoodAndOpaqueTwinRustAsync_Good {
-  const _$EnumWithGoodAndOpaqueTwinRustAsync_GoodImpl(this.field0);
+    extends EnumWithGoodAndOpaqueTwinRustAsync_Good {
+  const _$EnumWithGoodAndOpaqueTwinRustAsync_GoodImpl(this.field0) : super._();
 
   @override
   final String field0;
@@ -214,9 +214,10 @@ class _$EnumWithGoodAndOpaqueTwinRustAsync_GoodImpl
 }
 
 abstract class EnumWithGoodAndOpaqueTwinRustAsync_Good
-    implements EnumWithGoodAndOpaqueTwinRustAsync {
+    extends EnumWithGoodAndOpaqueTwinRustAsync {
   const factory EnumWithGoodAndOpaqueTwinRustAsync_Good(final String field0) =
       _$EnumWithGoodAndOpaqueTwinRustAsync_GoodImpl;
+  const EnumWithGoodAndOpaqueTwinRustAsync_Good._() : super._();
 
   @override
   String get field0;
@@ -263,8 +264,9 @@ class __$$EnumWithGoodAndOpaqueTwinRustAsync_OpaqueImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EnumWithGoodAndOpaqueTwinRustAsync_OpaqueImpl
-    implements EnumWithGoodAndOpaqueTwinRustAsync_Opaque {
-  const _$EnumWithGoodAndOpaqueTwinRustAsync_OpaqueImpl(this.field0);
+    extends EnumWithGoodAndOpaqueTwinRustAsync_Opaque {
+  const _$EnumWithGoodAndOpaqueTwinRustAsync_OpaqueImpl(this.field0)
+      : super._();
 
   @override
   final NonCloneSimpleTwinRustAsync field0;
@@ -361,10 +363,11 @@ class _$EnumWithGoodAndOpaqueTwinRustAsync_OpaqueImpl
 }
 
 abstract class EnumWithGoodAndOpaqueTwinRustAsync_Opaque
-    implements EnumWithGoodAndOpaqueTwinRustAsync {
+    extends EnumWithGoodAndOpaqueTwinRustAsync {
   const factory EnumWithGoodAndOpaqueTwinRustAsync_Opaque(
           final NonCloneSimpleTwinRustAsync field0) =
       _$EnumWithGoodAndOpaqueTwinRustAsync_OpaqueImpl;
+  const EnumWithGoodAndOpaqueTwinRustAsync_Opaque._() : super._();
 
   @override
   NonCloneSimpleTwinRustAsync get field0;

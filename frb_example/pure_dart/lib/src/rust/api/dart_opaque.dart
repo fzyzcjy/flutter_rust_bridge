@@ -117,6 +117,8 @@ class DartOpaqueNestedTwinNormal {
 
 @freezed
 sealed class EnumDartOpaqueTwinNormal with _$EnumDartOpaqueTwinNormal {
+  const EnumDartOpaqueTwinNormal._();
+
   const factory EnumDartOpaqueTwinNormal.primitive(
     int field0,
   ) = EnumDartOpaqueTwinNormal_Primitive;

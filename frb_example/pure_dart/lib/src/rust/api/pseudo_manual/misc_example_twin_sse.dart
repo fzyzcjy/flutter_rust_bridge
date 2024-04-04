@@ -64,6 +64,8 @@ class ATwinSse {
 
 @freezed
 sealed class AbcTwinSse with _$AbcTwinSse {
+  const AbcTwinSse._();
+
   const factory AbcTwinSse.a(
     ATwinSse field0,
   ) = AbcTwinSse_A;

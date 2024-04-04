@@ -77,6 +77,8 @@ Stream<String> streamSinkThrowAnyhowTwinNormal({dynamic hint}) =>
 sealed class CustomEnumErrorTwinNormal
     with _$CustomEnumErrorTwinNormal
     implements FrbException {
+  const CustomEnumErrorTwinNormal._();
+
   @Implements<FrbBacktracedException>()
   const factory CustomEnumErrorTwinNormal.one({
     required String message,
@@ -93,6 +95,8 @@ sealed class CustomEnumErrorTwinNormal
 sealed class CustomErrorTwinNormal
     with _$CustomErrorTwinNormal
     implements FrbException {
+  const CustomErrorTwinNormal._();
+
   @Implements<FrbBacktracedException>()
   const factory CustomErrorTwinNormal.error0({
     required String e,
@@ -109,6 +113,8 @@ sealed class CustomErrorTwinNormal
 sealed class CustomNestedError1TwinNormal
     with _$CustomNestedError1TwinNormal
     implements FrbException {
+  const CustomNestedError1TwinNormal._();
+
   const factory CustomNestedError1TwinNormal.customNested1(
     String field0,
   ) = CustomNestedError1TwinNormal_CustomNested1;
@@ -119,6 +125,8 @@ sealed class CustomNestedError1TwinNormal
 
 @freezed
 sealed class CustomNestedError2TwinNormal with _$CustomNestedError2TwinNormal {
+  const CustomNestedError2TwinNormal._();
+
   const factory CustomNestedError2TwinNormal.customNested2(
     String field0,
   ) = CustomNestedError2TwinNormal_CustomNested2;
@@ -130,6 +138,8 @@ sealed class CustomNestedError2TwinNormal with _$CustomNestedError2TwinNormal {
 @freezed
 sealed class CustomNestedErrorInnerTwinNormal
     with _$CustomNestedErrorInnerTwinNormal {
+  const CustomNestedErrorInnerTwinNormal._();
+
   const factory CustomNestedErrorInnerTwinNormal.three(
     String field0,
   ) = CustomNestedErrorInnerTwinNormal_Three;
@@ -141,6 +151,8 @@ sealed class CustomNestedErrorInnerTwinNormal
 @freezed
 sealed class CustomNestedErrorOuterTwinNormal
     with _$CustomNestedErrorOuterTwinNormal {
+  const CustomNestedErrorOuterTwinNormal._();
+
   const factory CustomNestedErrorOuterTwinNormal.one(
     String field0,
   ) = CustomNestedErrorOuterTwinNormal_One;
@@ -194,30 +206,36 @@ class CustomStructTwinNormal {
 
   static Future<CustomStructTwinNormal> newTwinNormal(
           {required String message, dynamic hint}) =>
-      RustLib.instance.api
-          .customStructTwinNormalNewTwinNormal(message: message, hint: hint);
+      RustLib.instance.api.customStructTwinNormalNewTwinNormal(
+        message: message,
+        hint: hint,
+      );
 
   Future<void> nonstaticReturnCustomStructErrorTwinNormal({dynamic hint}) =>
       RustLib.instance.api
           .customStructTwinNormalNonstaticReturnCustomStructErrorTwinNormal(
         that: this,
+        hint: hint,
       );
 
   Future<int> nonstaticReturnCustomStructOkTwinNormal({dynamic hint}) =>
       RustLib.instance.api
           .customStructTwinNormalNonstaticReturnCustomStructOkTwinNormal(
         that: this,
+        hint: hint,
       );
 
   static Future<void> staticReturnCustomStructErrorTwinNormal({dynamic hint}) =>
       RustLib.instance.api
           .customStructTwinNormalStaticReturnCustomStructErrorTwinNormal(
-              hint: hint);
+        hint: hint,
+      );
 
   static Future<int> staticReturnCustomStructOkTwinNormal({dynamic hint}) =>
       RustLib.instance.api
           .customStructTwinNormalStaticReturnCustomStructOkTwinNormal(
-              hint: hint);
+        hint: hint,
+      );
 
   @override
   int get hashCode => message.hashCode;
@@ -239,28 +257,36 @@ class SomeStructTwinNormal {
 
   static Future<SomeStructTwinNormal> newTwinNormal(
           {required int value, dynamic hint}) =>
-      RustLib.instance.api
-          .someStructTwinNormalNewTwinNormal(value: value, hint: hint);
+      RustLib.instance.api.someStructTwinNormalNewTwinNormal(
+        value: value,
+        hint: hint,
+      );
 
   Future<int> nonStaticReturnErrCustomErrorTwinNormal({dynamic hint}) =>
       RustLib.instance.api
           .someStructTwinNormalNonStaticReturnErrCustomErrorTwinNormal(
         that: this,
+        hint: hint,
       );
 
   Future<int> nonStaticReturnOkCustomErrorTwinNormal({dynamic hint}) =>
       RustLib.instance.api
           .someStructTwinNormalNonStaticReturnOkCustomErrorTwinNormal(
         that: this,
+        hint: hint,
       );
 
   static Future<int> staticReturnErrCustomErrorTwinNormal({dynamic hint}) =>
       RustLib.instance.api
-          .someStructTwinNormalStaticReturnErrCustomErrorTwinNormal(hint: hint);
+          .someStructTwinNormalStaticReturnErrCustomErrorTwinNormal(
+        hint: hint,
+      );
 
   static Future<int> staticReturnOkCustomErrorTwinNormal({dynamic hint}) =>
       RustLib.instance.api
-          .someStructTwinNormalStaticReturnOkCustomErrorTwinNormal(hint: hint);
+          .someStructTwinNormalStaticReturnOkCustomErrorTwinNormal(
+        hint: hint,
+      );
 
   @override
   int get hashCode => value.hashCode;

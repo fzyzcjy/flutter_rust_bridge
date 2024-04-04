@@ -64,6 +64,8 @@ class ATwinSyncSse {
 
 @freezed
 sealed class AbcTwinSyncSse with _$AbcTwinSyncSse {
+  const AbcTwinSyncSse._();
+
   const factory AbcTwinSyncSse.a(
     ATwinSyncSse field0,
   ) = AbcTwinSyncSse_A;

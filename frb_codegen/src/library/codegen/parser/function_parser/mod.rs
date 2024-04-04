@@ -139,7 +139,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     IrFuncOwnerInfoMethodMode::Static
                 };
 
-                let enum_or_struct_name =
+                let (enum_or_struct_ty, enum_or_struct_name) =
                     if let Some(x) = self.parse_enum_or_struct_name(item_impl, context)? {
                         x
                     } else {
@@ -149,6 +149,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                 let actual_method_name = impl_item_fn.sig.ident.to_string();
 
                 IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod {
+                    enum_or_struct_ty,
                     enum_or_struct_name,
                     actual_method_name,
                     mode,
@@ -161,7 +162,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         &mut self,
         item_impl: &ItemImpl,
         context: &TypeParserParsingContext,
-    ) -> anyhow::Result<Option<NamespacedName>> {
+    ) -> anyhow::Result<Option<(IrType, NamespacedName)>> {
         let self_ty_path = if let Type::Path(self_ty_path) = item_impl.self_ty.as_ref() {
             self_ty_path
         } else {
@@ -173,7 +174,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let ty = self.type_parser.parse_type(&syn_ty, context)?;
 
         let namespace: Option<Namespace> = ty.self_namespace();
-        Ok(namespace.map(|namespace| NamespacedName::new(namespace, enum_or_struct_name)))
+        Ok(namespace.map(|namespace| (ty, NamespacedName::new(namespace, enum_or_struct_name))))
     }
 }
 

@@ -99,6 +99,8 @@ class DartOpaqueNestedTwinSse {
 
 @freezed
 sealed class EnumDartOpaqueTwinSse with _$EnumDartOpaqueTwinSse {
+  const EnumDartOpaqueTwinSse._();
+
   const factory EnumDartOpaqueTwinSse.primitive(
     int field0,
   ) = EnumDartOpaqueTwinSse_Primitive;

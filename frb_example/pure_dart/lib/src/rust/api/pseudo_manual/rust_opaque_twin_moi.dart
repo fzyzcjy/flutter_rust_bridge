@@ -197,6 +197,8 @@ class I16 extends RustOpaque {
 
 @freezed
 sealed class EnumOpaqueTwinMoi with _$EnumOpaqueTwinMoi {
+  const EnumOpaqueTwinMoi._();
+
   const factory EnumOpaqueTwinMoi.struct(
     HideDataTwinMoi field0,
   ) = EnumOpaqueTwinMoi_Struct;

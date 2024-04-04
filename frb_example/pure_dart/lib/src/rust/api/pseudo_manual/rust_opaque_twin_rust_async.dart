@@ -223,6 +223,8 @@ class I32 extends RustOpaque {
 
 @freezed
 sealed class EnumOpaqueTwinRustAsync with _$EnumOpaqueTwinRustAsync {
+  const EnumOpaqueTwinRustAsync._();
+
   const factory EnumOpaqueTwinRustAsync.struct(
     HideDataTwinRustAsync field0,
   ) = EnumOpaqueTwinRustAsync_Struct;

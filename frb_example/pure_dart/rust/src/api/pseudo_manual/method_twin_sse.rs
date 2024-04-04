@@ -155,3 +155,48 @@ impl SimpleStructTwinSse {
         arg.into_iter().map(|x| x.one).collect()
     }
 }
+
+// #1818
+pub enum SimpleEnumTwinSse {
+    First,
+    Second(String),
+}
+
+impl SimpleEnumTwinSse {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub fn return_self_twin_sse(one: String) -> Self {
+        Self::Second(one)
+    }
+
+    #[flutter_rust_bridge::frb(serialize)]
+    pub fn simple_method_twin_sse(&self) -> String {
+        match self {
+            SimpleEnumTwinSse::First => "".to_owned(),
+            SimpleEnumTwinSse::Second(inner) => inner.to_owned(),
+        }
+    }
+}
+
+// #1838
+pub struct StaticOnlyTwinSse {
+    pub one: String,
+}
+
+impl StaticOnlyTwinSse {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub fn static_method_twin_sse(a: i32) -> i32 {
+        a
+    }
+}
+
+// #1838
+#[frb(opaque)]
+pub struct StaticGetterOnlyTwinSse {}
+
+impl StaticGetterOnlyTwinSse {
+    #[frb(getter)]
+    #[flutter_rust_bridge::frb(serialize)]
+    pub fn static_getter_twin_sse() -> i32 {
+        42
+    }
+}
