@@ -58,7 +58,13 @@ abstract class CargoKitBuildTask extends DefaultTask {
         def manifestDir = Paths.get(project.buildscript.sourceFile.parent, project.cargokit.manifestDir)
 
         def rootProjectDir = project.rootProject.projectDir
-
+        
+        if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
+            project.exec {
+                commandLine 'chmod', '+x', path
+            }
+        }
+        
         project.exec {
             executable path
             args "build-gradle"
