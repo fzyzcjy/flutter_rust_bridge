@@ -19,6 +19,11 @@ Future<void> createEventTwinNormal(
     RustLib.instance.api
         .createEventTwinNormal(address: address, payload: payload, hint: hint);
 
+void createEventSyncTwinNormal(
+        {required String address, required String payload, dynamic hint}) =>
+    RustLib.instance.api.createEventSyncTwinNormal(
+        address: address, payload: payload, hint: hint);
+
 @freezed
 class EventTwinNormal with _$EventTwinNormal {
   const EventTwinNormal._();
