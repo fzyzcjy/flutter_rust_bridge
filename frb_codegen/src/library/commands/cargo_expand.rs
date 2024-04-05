@@ -71,7 +71,8 @@ fn extract_module(raw_expanded: &str, module: Option<String>) -> Result<String> 
             .unwrap();
             let start = match searched.find(expanded) {
                 Some(m) => m.end() + 1,
-                None => bail!("Module not found: {}", module),
+                // #1830
+                None => "".to_owned(),
             };
             let end = expanded[start..]
                 .find(&format!("\n{}}}", indent))
