@@ -203,8 +203,8 @@ mod another {}";
         // some code
     }
 }";
-        let extracted = extract_module(src, Some(String::from("another")));
-        assert!(extracted.is_err());
+        let extracted = extract_module(src, Some(String::from("another"))).unwrap();
+        assert_eq!(String::from(""), extracted);
     }
 
     #[test]
