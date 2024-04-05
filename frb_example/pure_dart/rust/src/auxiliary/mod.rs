@@ -6,4 +6,3 @@ pub mod sample_types;
 
 #[cfg(target_os = "non_existent_os")]
 pub mod conditionally_compiled_module;
-mod conditionally_compiled_module;
