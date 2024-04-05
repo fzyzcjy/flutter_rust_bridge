@@ -6,6 +6,8 @@ pub mod attribute;
 pub mod benchmark_misc;
 pub mod chrono_type;
 pub mod comment;
+#[cfg(target_os = "non_existent_os")]
+pub mod conditionally_compiled_module;
 pub mod constructor;
 pub mod customization;
 pub mod dart_dynamic;
