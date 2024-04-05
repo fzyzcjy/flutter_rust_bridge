@@ -17,6 +17,16 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   // #1836
+  test('when Rust send event after Dart close stream, should work', () async {
+    final stream = registerEventListenerTwinNormal();
+    await Future.delayed(Duration.zero);
+    final subscription = stream.listen((_) {});
+    await Future.delayed(Duration.zero);
+    await subscription.cancel();
+    createEventSyncTwinNormal(address: 'hello', payload: '');
+  });
+
+  // #1836
   test('when send event before async gap, should receive it', () async {
     final logs = <String>[];
 
