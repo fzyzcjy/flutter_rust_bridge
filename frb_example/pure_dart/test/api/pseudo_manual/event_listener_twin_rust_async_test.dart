@@ -20,4 +20,32 @@ Future<void> main({bool skipRustLibInit = false}) async {
     await createEventTwinRustAsync(address: 'foo', payload: 'bar');
     await closeEventListenerTwinRustAsync();
   });
+
+  // #1836
+  test('when send event before async gap, should receive it', () async {
+    final logs = <String>[];
+
+    final stream = registerEventListenerTwinRustAsync();
+    stream.listen((event) => logs.add(event.address));
+
+    // main call to test #1836
+    createEventSyncTwinRustAsync(address: 'one', payload: '');
+
+    await Future.delayed(Duration.zero);
+    createEventSyncTwinRustAsync(address: 'two', payload: '');
+
+    await closeEventListenerTwinRustAsync();
+
+    expect(logs, ['one', 'two']);
+  });
+
+  // #1836
+  test('when Rust send event after Dart close stream', () async {
+    final stream = registerEventListenerTwinRustAsync();
+    await Future.delayed(Duration.zero);
+    final subscription = stream.listen((_) {});
+    await Future.delayed(Duration.zero);
+    unawaited(subscription.cancel());
+    createEventSyncTwinRustAsync(address: '1', payload: '');
+  });
 }

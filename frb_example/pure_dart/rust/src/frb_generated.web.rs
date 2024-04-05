@@ -21100,6 +21100,14 @@ pub fn wire_close_event_listener_twin_rust_async(
 }
 
 #[wasm_bindgen]
+pub fn wire_create_event_sync_twin_rust_async(
+    address: String,
+    payload: String,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_create_event_sync_twin_rust_async_impl(address, payload)
+}
+
+#[wasm_bindgen]
 pub fn wire_create_event_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     address: String,
@@ -21141,6 +21149,15 @@ pub fn wire_close_event_listener_twin_rust_async_sse(
 }
 
 #[wasm_bindgen]
+pub fn wire_create_event_sync_twin_rust_async_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_create_event_sync_twin_rust_async_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
 pub fn wire_create_event_twin_rust_async_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -21178,6 +21195,15 @@ pub fn wire_close_event_listener_twin_sse(
     data_len_: i32,
 ) {
     wire_close_event_listener_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_create_event_sync_twin_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_create_event_sync_twin_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]

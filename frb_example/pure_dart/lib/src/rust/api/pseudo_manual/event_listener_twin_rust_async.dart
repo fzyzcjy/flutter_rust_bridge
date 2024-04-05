@@ -19,6 +19,11 @@ Future<void> createEventTwinRustAsync(
     RustLib.instance.api.createEventTwinRustAsync(
         address: address, payload: payload, hint: hint);
 
+void createEventSyncTwinRustAsync(
+        {required String address, required String payload, dynamic hint}) =>
+    RustLib.instance.api.createEventSyncTwinRustAsync(
+        address: address, payload: payload, hint: hint);
+
 @freezed
 class EventTwinRustAsync with _$EventTwinRustAsync {
   const EventTwinRustAsync._();

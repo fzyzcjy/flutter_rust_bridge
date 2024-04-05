@@ -57543,6 +57543,28 @@ class RustLibWire implements BaseWire {
       _wire_close_event_listener_twin_rust_asyncPtr
           .asFunction<void Function(int)>();
 
+  WireSyncRust2DartDco wire_create_event_sync_twin_rust_async(
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> address,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> payload,
+  ) {
+    return _wire_create_event_sync_twin_rust_async(
+      address,
+      payload,
+    );
+  }
+
+  late final _wire_create_event_sync_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>,
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+      'frbgen_frb_example_pure_dart_wire_create_event_sync_twin_rust_async');
+  late final _wire_create_event_sync_twin_rust_async =
+      _wire_create_event_sync_twin_rust_asyncPtr.asFunction<
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_list_prim_u_8_strict>,
+              ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+
   void wire_create_event_twin_rust_async(
     int port_,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> address,
@@ -57627,6 +57649,27 @@ class RustLibWire implements BaseWire {
   late final _wire_close_event_listener_twin_rust_async_sse =
       _wire_close_event_listener_twin_rust_async_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_create_event_sync_twin_rust_async_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_create_event_sync_twin_rust_async_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_create_event_sync_twin_rust_async_ssePtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_create_event_sync_twin_rust_async_sse');
+  late final _wire_create_event_sync_twin_rust_async_sse =
+      _wire_create_event_sync_twin_rust_async_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_create_event_twin_rust_async_sse(
     int port_,
@@ -57719,6 +57762,27 @@ class RustLibWire implements BaseWire {
   late final _wire_close_event_listener_twin_sse =
       _wire_close_event_listener_twin_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_create_event_sync_twin_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_create_event_sync_twin_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_create_event_sync_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_create_event_sync_twin_sse');
+  late final _wire_create_event_sync_twin_sse =
+      _wire_create_event_sync_twin_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_create_event_twin_sse(
     int port_,
