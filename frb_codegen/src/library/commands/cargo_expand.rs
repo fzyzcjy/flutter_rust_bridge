@@ -71,7 +71,8 @@ fn extract_module(raw_expanded: &str, module: Option<String>) -> Result<String> 
             .unwrap();
             let start = match searched.find(expanded) {
                 Some(m) => m.end() + 1,
-                None => bail!("Module not found: {}", module),
+                // #1830
+                None => return Ok("".to_owned()),
             };
             let end = expanded[start..]
                 .find(&format!("\n{}}}", indent))
@@ -202,8 +203,8 @@ mod another {}";
         // some code
     }
 }";
-        let extracted = extract_module(src, Some(String::from("another")));
-        assert!(extracted.is_err());
+        let extracted = extract_module(src, Some(String::from("another"))).unwrap();
+        assert_eq!(String::from(""), extracted);
     }
 
     #[test]
