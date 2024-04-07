@@ -2,8 +2,6 @@ use anyhow::Result;
 use syn::{parse_str, Path, Type, visit_mut, visit_mut::VisitMut};
 
 pub(crate) fn parse_type(mut ty: Type) -> Result<Type> {
-    println!("parse_type {ty:?}");
-
     struct Visitor;
     impl VisitMut for Visitor {
         fn visit_path_mut(&mut self, node: &mut Path) {
