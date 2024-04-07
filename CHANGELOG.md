@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Support cases when using Rust conditional compilation #1856
+
 ## 2.0.0-dev.30
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
