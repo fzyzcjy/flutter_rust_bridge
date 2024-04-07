@@ -533,75 +533,59 @@ mod tests {
         Ok(())
     }
 
-    #[test]
-    fn test_non_final() -> anyhow::Result<()> {
-        assert_eq!(
-            parse("#[frb(non_final)]")?,
-            FrbAttributes(vec![FrbAttribute::NonFinal]),
-        );
-        Ok(())
+    fn simple_keyword_tester(keyword_name: &str, attribute: FrbAttribute) {
+        let parsed = parse(format!("#[frb({keyword_name})]")).unwrap();
+        assert_eq!(parsed, FrbAttributes(vec![attribute]));
     }
 
     #[test]
-    fn test_sync() -> anyhow::Result<()> {
-        assert_eq!(
-            parse("#[frb(sync)]")?,
-            FrbAttributes(vec![FrbAttribute::Sync]),
-        );
-        Ok(())
+    fn test_non_final() {
+        simple_keyword_tester("non_final", FrbAttribute::NonFinal);
     }
 
     #[test]
-    fn test_getter() -> anyhow::Result<()> {
-        assert_eq!(
-            parse("#[frb(getter)]")?,
-            FrbAttributes(vec![FrbAttribute::Getter]),
-        );
-        Ok(())
+    fn test_sync() {
+        simple_keyword_tester("sync", FrbAttribute::Sync);
     }
 
     #[test]
-    fn test_init() -> anyhow::Result<()> {
-        assert_eq!(
-            parse("#[frb(init)]")?,
-            FrbAttributes(vec![FrbAttribute::Init]),
-        );
-        Ok(())
+    fn test_getter() {
+        simple_keyword_tester("getter", FrbAttribute::Getter);
     }
 
     #[test]
-    fn test_ignore() -> anyhow::Result<()> {
-        let parsed = parse("#[frb(ignore)]")?;
-        assert_eq!(parsed, FrbAttributes(vec![FrbAttribute::Ignore]));
-        Ok(())
+    fn test_init() {
+        simple_keyword_tester("init", FrbAttribute::Init);
     }
 
     #[test]
-    fn test_opaque() -> anyhow::Result<()> {
-        let parsed = parse("#[frb(opaque)]")?;
-        assert_eq!(parsed, FrbAttributes(vec![FrbAttribute::Opaque]));
-        Ok(())
+    fn test_ignore() {
+        simple_keyword_tester("ignore", FrbAttribute::Ignore);
     }
 
     #[test]
-    fn test_non_opaque() -> anyhow::Result<()> {
-        let parsed = parse("#[frb(non_opaque)]")?;
-        assert_eq!(parsed, FrbAttributes(vec![FrbAttribute::NonOpaque]));
-        Ok(())
+    fn test_opaque() {
+        simple_keyword_tester("opaque", FrbAttribute::Opaque);
     }
 
     #[test]
-    fn test_non_hash() -> anyhow::Result<()> {
-        let parsed = parse("#[frb(non_hash)]")?;
-        assert_eq!(parsed, FrbAttributes(vec![FrbAttribute::NonHash]));
-        Ok(())
+    fn test_non_opaque() {
+        simple_keyword_tester("non_opaque", FrbAttribute::NonOpaque);
     }
 
     #[test]
-    fn test_non_eq() -> anyhow::Result<()> {
-        let parsed = parse("#[frb(non_eq)]")?;
-        assert_eq!(parsed, FrbAttributes(vec![FrbAttribute::NonEq]));
-        Ok(())
+    fn test_non_hash() {
+        simple_keyword_tester("non_hash", FrbAttribute::NonHash);
+    }
+
+    #[test]
+    fn test_non_eq() {
+        simple_keyword_tester("non_eq", FrbAttribute::NonEq);
+    }
+
+    #[test]
+    fn test_rust_opaque_codec_moi() {
+        simple_keyword_tester("rust_opaque_codec_moi", FrbAttribute::RustOpaqueCodecMoi);
     }
 
     #[test]
@@ -612,16 +596,6 @@ mod tests {
             FrbAttributes(vec![FrbAttribute::DartCode(FrbAttributeDartCode(
                 "a\nb\nc".to_owned()
             ))])
-        );
-        Ok(())
-    }
-
-    #[test]
-    fn test_rust_opaque_codec_moi() -> anyhow::Result<()> {
-        let parsed = parse("#[frb(rust_opaque_codec_moi)]")?;
-        assert_eq!(
-            parsed,
-            FrbAttributes(vec![FrbAttribute::RustOpaqueCodecMoi])
         );
         Ok(())
     }
