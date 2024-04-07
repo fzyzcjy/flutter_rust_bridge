@@ -58,13 +58,18 @@ fn handle_external_impl(attribute: TokenStream, item: TokenStream) -> TokenStrea
         return item;
     }
 
-    let item: ItemImpl = syn::parse(item).unwrap();
+    let mut item: ItemImpl = syn::parse(item).unwrap();
 
-    let self_ty = &item.self_ty;
-    let self_ty_string = quote!(#self_ty).to_string();
-    let dummy_struct_name = format!("{DUMMY_STRUCT_PREFIX}{}", hex::encode(&self_ty_string));
+    let original_self_ty = &item.self_ty;
+    let original_self_ty_string = quote!(#original_self_ty).to_string();
+    let dummy_struct_name = format!(
+        "{DUMMY_STRUCT_PREFIX}{}",
+        hex::encode(&original_self_ty_string)
+    );
 
-    eprintln!("attribute={attribute:?} self_ty_string={self_ty_string} item={item:#?}");
+    item.self_ty = syn::parse_str(&dummy_struct_name).unwrap();
+
+    eprintln!("attribute={attribute:?} self_ty_string={original_self_ty_string} dummy_struct_name={dummy_struct_name} item={item:#?}");
     item.to_token_stream().into()
 }
 
