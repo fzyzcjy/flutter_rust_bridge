@@ -8,9 +8,9 @@ pub(crate) fn parse_type(mut ty: Type) -> Result<Type> {
     impl VisitMut for Visitor {
         fn visit_path_mut(&mut self, node: &mut Path) {
             if node.segments.len() == 1 {
-                let ident =& node.segments[0].ident;
+                let ident = &node.segments[0].ident;
                 if let Some(reconstructed_name) = parse_name(&ident.to_string()).unwrap() {
-                    println!("hi {node:?} {reconstructed_name}");
+                    // println!("hi {node:?} {reconstructed_name}");
                     *node = parse_str(&reconstructed_name).unwrap();
                 }
             }
