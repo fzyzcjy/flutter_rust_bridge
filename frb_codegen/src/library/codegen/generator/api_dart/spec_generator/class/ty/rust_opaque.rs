@@ -8,6 +8,7 @@ use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartG
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use lazy_static::lazy_static;
 use regex::Regex;
+use crate::codegen::generator::api_dart::spec_generator::class::misc::generate_class_extra_body;
 
 impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
     fn generate_class(&self) -> Option<ApiDartGeneratedClass> {
@@ -25,6 +26,7 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
             self.context,
         )
         .join("\n");
+        let extra_body = generate_class_extra_body();
 
         Some(ApiDartGeneratedClass {
             namespace: self.ir.namespace.clone(),
@@ -44,6 +46,7 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
                 );
 
                 {methods}
+                {extra_body}
             }}"
             ),
             needs_freezed: false,
