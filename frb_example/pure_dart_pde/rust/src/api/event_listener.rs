@@ -42,7 +42,11 @@ pub fn close_event_listener_twin_normal() {
 }
 
 pub fn create_event_twin_normal(address: String, payload: String) {
-    create_event_sync_twin_normal(address, payload)
+    if let Ok(mut guard) = EVENTS.lock() {
+        if let Some(sink) = guard.as_mut() {
+            sink.add(EventTwinNormal { address, payload }).unwrap();
+        }
+    }
 }
 
 // FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_START

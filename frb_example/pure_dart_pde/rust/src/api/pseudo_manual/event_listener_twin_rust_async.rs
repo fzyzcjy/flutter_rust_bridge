@@ -48,5 +48,9 @@ pub async fn close_event_listener_twin_rust_async() {
 }
 
 pub async fn create_event_twin_rust_async(address: String, payload: String) {
-    create_event_sync_twin_rust_async(address, payload)
+    if let Ok(mut guard) = EVENTS.lock() {
+        if let Some(sink) = guard.as_mut() {
+            sink.add(EventTwinRustAsync { address, payload }).unwrap();
+        }
+    }
 }
