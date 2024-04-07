@@ -2,6 +2,9 @@
 
 use proc_macro::*;
 
+use quote::ToTokens;
+use syn::ItemImpl;
+
 /// Attribute to guide code generation.
 ///
 /// For what it can do, have a look at the documentation website.
@@ -53,8 +56,9 @@ fn handle_external_impl(attribute: TokenStream, item: TokenStream) -> TokenStrea
         return item;
     }
 
+    let item: ItemImpl = syn::parse(item).unwrap();
     eprintln!("attribute={attribute:?} item={item:?}");
-    todo!()
+    item.to_token_stream().into()
 }
 
 fn is_frb_bracket(group: &Group) -> bool {
