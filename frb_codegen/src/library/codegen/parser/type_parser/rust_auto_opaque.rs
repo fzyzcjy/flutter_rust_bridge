@@ -12,6 +12,7 @@ use crate::codegen::ir::ty::rust_auto_opaque::{
 use crate::codegen::ir::ty::rust_opaque::{
     IrRustOpaqueInner, IrTypeRustOpaque, RustOpaqueCodecMode,
 };
+use crate::codegen::parser::type_parser::external_impl;
 use crate::codegen::parser::type_parser::path_data::extract_path_data;
 use crate::codegen::parser::type_parser::rust_opaque::{
     GeneralizedRustOpaqueParserInfo, RustOpaqueParserTypeInfo,
@@ -35,7 +36,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             ),
             _ => (OwnershipMode::Owned, ty.clone()),
         };
-        println!("hi {inner:?}");
+        let inner = external_impl::parse_type(inner)?;
 
         let inner_str = inner.to_token_stream().to_string();
 
