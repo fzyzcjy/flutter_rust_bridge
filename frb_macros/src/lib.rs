@@ -3,7 +3,7 @@
 use proc_macro::*;
 
 use quote::{quote, ToTokens};
-use syn::ItemImpl;
+use syn::{ImplItem, ItemImpl};
 
 /// Attribute to guide code generation.
 ///
@@ -75,8 +75,13 @@ fn handle_external_impl(attribute: TokenStream, item: TokenStream) -> TokenStrea
     .into();
 
     item.self_ty = dummy_struct_ty;
+    for inner_item in &mut item.items {
+        if let ImplItem::Fn(inner_item) = inner_item {
+            inner_item.block = syn::parse_str("{ unreachable!() }").unwrap();
+        }
+    }
 
-    // eprintln!("attribute={attribute:?} self_ty_string={original_self_ty_string} dummy_struct_name={dummy_struct_name} item={item:#?}");
+    eprintln!("attribute={attribute:?} self_ty_string={original_self_ty_string} dummy_struct_name={dummy_struct_name} item={item:#?}");
 
     let mut output: TokenStream = item.to_token_stream().into();
     output.extend(dummy_struct_def);
