@@ -81,7 +81,7 @@ fn handle_external_impl(attribute: TokenStream, item: TokenStream) -> TokenStrea
         }
     }
 
-    eprintln!("attribute={attribute:?} self_ty_string={original_self_ty_string} dummy_struct_name={dummy_struct_name} item={item:#?}");
+    // eprintln!("attribute={attribute:?} self_ty_string={original_self_ty_string} dummy_struct_name={dummy_struct_name} item={item:#?}");
 
     let mut output: TokenStream = item.to_token_stream().into();
     output.extend(dummy_struct_def);
