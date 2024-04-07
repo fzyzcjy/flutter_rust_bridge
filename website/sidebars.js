@@ -182,6 +182,8 @@ const sidebars = {
                         'guides/miscellaneous/callables',
                         'guides/miscellaneous/properties',
                         'guides/miscellaneous/constructors',
+                        'guides/miscellaneous/dart-code',
+                        'guides/miscellaneous/eq-hash',
                         'guides/miscellaneous/codec',
                         'guides/miscellaneous/build-rs',
                         'guides/miscellaneous/expanding-macros',
