@@ -9,6 +9,7 @@ use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::source_graph::modules::StructOrEnumWrapper;
+use crate::codegen::parser::type_parser::external_impl::parse_external_impl_dummy_struct_name;
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 
 pub(super) trait EnumOrStructParser<Id, Obj, SrcObj, Item>
@@ -23,10 +24,7 @@ where
     ) -> anyhow::Result<Option<IrType>> {
         let (name, _) = last_segment;
 
-        // Do not generate anything for dummy struct
-        if parse_external_impl_dummy_struct_name(name)?.is_some() {
-            return Ok(None);
-        }
+        let name = parse_external_impl_dummy_struct_name(name)?.unwrap_or(name.to_owned());
 
         if let Some(src_object) = self.src_objects().get(*name) {
             let src_object = (*src_object).clone();
