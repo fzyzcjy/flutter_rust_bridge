@@ -1,3 +1,8 @@
+use std::convert::TryInto;
+
+use convert_case::{Case, Casing};
+use itertools::Itertools;
+
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::target::TargetOrCommon;
 use crate::codegen::generator::wire::misc::has_port_argument;
@@ -8,16 +13,13 @@ use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
     ExternFunc, ExternFuncParam,
 };
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
-use crate::codegen::ir::func::IrFuncOwnerInfoMethodMode::Instance;
 use crate::codegen::ir::func::{IrFunc, IrFuncMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod};
+use crate::codegen::ir::func::IrFuncOwnerInfoMethodMode::Instance;
 use crate::codegen::ir::pack::IrPack;
-use crate::codegen::ir::ty::rust_auto_opaque::OwnershipMode;
 use crate::codegen::ir::ty::IrType;
+use crate::codegen::ir::ty::rust_auto_opaque::OwnershipMode;
 use crate::library::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::ty::WireRustCodecDcoGeneratorEncoderTrait;
 use crate::misc::consts::HANDLER_NAME;
-use convert_case::{Case, Casing};
-use itertools::Itertools;
-use std::convert::TryInto;
 
 pub(crate) fn generate_wire_func(
     func: &IrFunc,
@@ -56,6 +58,7 @@ pub(crate) fn generate_wire_func(
             "fn {func_name}_impl({params}) {return_type} {{
                 {HANDLER_NAME}.{handler_func_name}({wrap_info_obj}, move || {{ {code_closure} }})
             }}",
+            HANDLER_NAME = HANDLER_NAME,
             params = params
                 .common
                 .iter()
@@ -158,7 +161,7 @@ fn generate_code_call_inner_func_result(func: &IrFunc, inner_func_args: Vec<Stri
         IrFuncOwnerInfo::Method(method) => {
             format!(
                 r"{}::{}({})",
-                method.enum_or_struct_name.rust_style(),
+                method.enum_or_struct_name().rust_style(),
                 method.actual_method_name,
                 inner_func_args.join(", ")
             )

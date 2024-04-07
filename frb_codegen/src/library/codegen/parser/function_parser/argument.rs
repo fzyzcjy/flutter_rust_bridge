@@ -1,10 +1,13 @@
+use anyhow::{bail, Context, ensure};
+use syn::*;
+
 use crate::codegen::ir::field::{IrField, IrFieldSettings};
 use crate::codegen::ir::func::{IrFuncMode, IrFuncOwnerInfo};
 use crate::codegen::ir::ident::IrIdent;
 use crate::codegen::ir::ty::boxed::IrTypeBoxed;
-use crate::codegen::ir::ty::rust_auto_opaque::OwnershipMode;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::Boxed;
+use crate::codegen::ir::ty::rust_auto_opaque::OwnershipMode;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::function_parser::{
     FunctionParser, FunctionPartialInfo, STREAM_SINK_IDENT,
@@ -12,8 +15,6 @@ use crate::codegen::parser::function_parser::{
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::TypeParserParsingContext;
 use crate::if_then_some;
-use anyhow::{bail, ensure, Context};
-use syn::*;
 
 impl<'a, 'b> FunctionParser<'a, 'b> {
     pub(super) fn parse_fn_arg(
@@ -58,7 +59,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             .context("`self` must happen within methods")?;
 
         let ty_raw = self.type_parser.parse_type(
-            &parse_str::<Type>(&method.enum_or_struct_name.name)?,
+            &parse_str::<Type>(&method.enum_or_struct_name().name)?,
             context,
         )?;
         let ty = match ty_raw {

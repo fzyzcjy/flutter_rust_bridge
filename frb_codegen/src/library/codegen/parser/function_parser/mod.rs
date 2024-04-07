@@ -14,13 +14,13 @@ use crate::codegen::ir::func::{
     IrFunc, IrFuncMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode,
 };
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
-use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
+use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::function_extractor::GeneralizedItemFn;
-use crate::codegen::parser::type_parser::{external_impl, TypeParser, TypeParserParsingContext};
 use crate::codegen::parser::type_parser::misc::parse_comments;
+use crate::codegen::parser::type_parser::{external_impl, TypeParser, TypeParserParsingContext};
 use crate::library::codegen::ir::ty::IrTypeTrait;
 
 pub(crate) mod argument;
@@ -153,7 +153,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
                 IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod {
                     enum_or_struct_ty,
-                    enum_or_struct_name,
                     actual_method_name,
                     mode,
                 })
@@ -197,7 +196,8 @@ fn parse_name(sig: &Signature, owner: &IrFuncOwnerInfo) -> String {
         IrFuncOwnerInfo::Method(method) => {
             format!(
                 "{}_{}",
-                method.enum_or_struct_name.name, method.actual_method_name
+                method.enum_or_struct_name().name,
+                method.actual_method_name
             )
         }
     }

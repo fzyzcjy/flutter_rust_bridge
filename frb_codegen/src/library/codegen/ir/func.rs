@@ -2,8 +2,8 @@ use crate::codegen::generator::codec::structs::CodecModePack;
 use crate::codegen::ir::comment::IrComment;
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::namespace::NamespacedName;
-use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::{IrContext, IrType};
+use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::if_then_some;
 
 crate::ir! {
@@ -43,7 +43,6 @@ pub enum IrFuncOwnerInfo {
 
 pub struct IrFuncOwnerInfoMethod {
     pub(crate) enum_or_struct_ty: IrType,
-    pub(crate) enum_or_struct_name: NamespacedName, // TODO use info in `enum_or_struct_ty`
     pub(crate) actual_method_name: String,
     pub(crate) mode: IrFuncOwnerInfoMethodMode,
 }
@@ -97,6 +96,16 @@ impl IrFunc {
             }
         } else {
             None
+        }
+    }
+}
+
+impl IrFuncOwnerInfoMethod {
+    pub(crate) fn enum_or_struct_name(&self) -> NamespacedName {
+        match &self.enum_or_struct_ty {
+            IrType::StructRef(ty) => ty.ident.0.clone(),
+            IrType::EnumRef(ty) => ty.ident.0.clone(),
+            ty => unimplemented!("enum_or_struct_name does not know {ty:?}"),
         }
     }
 }
