@@ -20,7 +20,8 @@ class BaseHandler {
   }
 
   /// Similar to [executeNormal], except that this will return synchronously
-  S executeSync<S, E extends Object, WireSyncType>(SyncTask<S, E, WireSyncType> task) {
+  S executeSync<S, E extends Object, WireSyncType>(
+      SyncTask<S, E, WireSyncType> task) {
     final WireSyncType syncReturn;
     try {
       syncReturn = task.callFfi();
@@ -34,15 +35,18 @@ class BaseHandler {
     try {
       return task.codec.decodeWireSyncType(syncReturn);
     } finally {
-      task.codec.freeWireSyncRust2Dart(syncReturn, task.apiImpl.generalizedFrbRustBinding);
+      task.codec.freeWireSyncRust2Dart(
+          syncReturn, task.apiImpl.generalizedFrbRustBinding);
     }
   }
 
   /// Similar to [executeNormal], except that this will return a [Stream] instead of a [Future].
-  Stream<S> executeStream<S, E extends Object>(StreamTask<S, E> task) => _executeStreamInner(task);
+  Stream<S> executeStream<S, E extends Object>(StreamTask<S, E> task) =>
+      _executeStreamInner(task);
 
   Stream<S> _executeStreamInner<S, E extends Object>(StreamTask<S, E>? task) {
-    final portName = ExecuteStreamPortGenerator.create(task!.constMeta.debugName);
+    final portName =
+        ExecuteStreamPortGenerator.create(task!.constMeta.debugName);
     final receivePort = broadcastPort(portName);
 
     task.callFfi(receivePort.sendPort.nativePort);
@@ -69,9 +73,12 @@ class BaseHandler {
   }
 
   /// When Rust invokes a Dart function
-  void dartFnInvoke(List<dynamic> message, GeneralizedFrbRustBinding generalizedFrbRustBinding) {
+  void dartFnInvoke(List<dynamic> message,
+      GeneralizedFrbRustBinding generalizedFrbRustBinding) {
     final [closureDartOpaque, ...args] = message;
-    final closureDartObject = decodeDartOpaque(closureDartOpaque, generalizedFrbRustBinding) as Function;
+    final closureDartObject =
+        decodeDartOpaque(closureDartOpaque, generalizedFrbRustBinding)
+            as Function;
     Function.apply(closureDartObject, args);
   }
 }

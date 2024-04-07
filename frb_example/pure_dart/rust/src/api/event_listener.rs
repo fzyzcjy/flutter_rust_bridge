@@ -2,14 +2,11 @@
 
 // event listener test
 
-use std::sync::Mutex;
-
-use anyhow::{anyhow, Result};
-use lazy_static::lazy_static;
-
-use flutter_rust_bridge::frb;
-
 use crate::frb_generated::StreamSink;
+use anyhow::{anyhow, Result};
+use flutter_rust_bridge::frb;
+use lazy_static::lazy_static;
+use std::sync::Mutex;
 
 lazy_static! {
     static ref EVENTS: Mutex<Option<StreamSink<EventTwinNormal>>> = Default::default();
