@@ -142,12 +142,13 @@ mod frb_keyword {
     syn::custom_keyword!(ignore);
     syn::custom_keyword!(opaque);
     syn::custom_keyword!(non_opaque);
-    syn::custom_keyword!(dart_code);
     syn::custom_keyword!(rust_opaque_codec_moi);
     syn::custom_keyword!(serialize);
     syn::custom_keyword!(semi_serialize);
     syn::custom_keyword!(dart_metadata);
     syn::custom_keyword!(import);
+    syn::custom_keyword!(default);
+    syn::custom_keyword!(dart_code);
 }
 
 struct FrbAttributesInner(Vec<FrbAttribute>);
@@ -172,13 +173,13 @@ enum FrbAttribute {
     Ignore,
     Opaque,
     NonOpaque,
-    DartCode,
     RustOpaqueCodecMoi,
     Serialize,
     // NOTE: Undocumented, since this name may be suboptimal and is subject to change
     SemiSerialize,
     Metadata(NamedOption<frb_keyword::dart_metadata, FrbAttributeDartMetadata>),
     Default(FrbAttributeDefaultValue),
+    DartCode(FrbAttributeDartCode),
 }
 
 impl Parse for FrbAttribute {
@@ -195,7 +196,6 @@ impl Parse for FrbAttribute {
             .or_else(|| parse_keyword::<ignore, _>(input, &lookahead, ignore, Ignore))
             .or_else(|| parse_keyword::<opaque, _>(input, &lookahead, opaque, Opaque))
             .or_else(|| parse_keyword::<non_opaque, _>(input, &lookahead, non_opaque, NonOpaque))
-            .or_else(|| parse_keyword::<dart_code, _>(input, &lookahead, dart_code, DartCode))
             .or_else(|| {
                 parse_keyword::<rust_opaque_codec_moi, _>(
                     input,
@@ -217,10 +217,14 @@ impl Parse for FrbAttribute {
             input.parse().map(FrbAttribute::Mirror)?
         } else if lookahead.peek(frb_keyword::dart_metadata) {
             input.parse().map(FrbAttribute::Metadata)?
-        } else if lookahead.peek(Token![default]) {
-            input.parse::<Token![default]>()?;
+        } else if lookahead.peek(default) {
+            input.parse::<default>()?;
             input.parse::<Token![=]>()?;
             input.parse().map(FrbAttribute::Default)?
+        } else if lookahead.peek(dart_code) {
+            input.parse::<dart_code>()?;
+            input.parse::<Token![=]>()?;
+            input.parse().map(FrbAttribute::DartCode)?
         } else {
             return Err(lookahead.error());
         })
@@ -433,12 +437,19 @@ fn serialize_punctuated<S: Serializer>(
     lit.into_iter().collect_vec().serialize(s)
 }
 
+#[derive(Clone, Serialize, Eq, PartialEq, Debug)]
+struct FrbAttributeDartCode(String);
+
+impl Parse for FrbAttributeDartCode {
+    fn parse(input: ParseStream) -> Result<Self> {
+        input.parse::<syn::LitStr>().map(|x| Self(x.value()))
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use crate::codegen::ir::default::IrDefaultValue;
-    use crate::codegen::parser::attribute_parser::{
-        FrbAttribute, FrbAttributeDefaultValue, FrbAttributeMirror, FrbAttributes, NamedOption,
-    };
+    use crate::codegen::parser::attribute_parser::{FrbAttribute, FrbAttributeDartCode, FrbAttributeDefaultValue, FrbAttributeMirror, FrbAttributes, NamedOption};
     use crate::if_then_some;
     use quote::quote;
     use syn::ItemFn;
@@ -553,8 +564,11 @@ mod tests {
 
     #[test]
     fn test_dart_code() -> anyhow::Result<()> {
-        let parsed = parse("#[frb(dart_code)]")?;
-        assert_eq!(parsed, FrbAttributes(vec![FrbAttribute::DartCode]));
+        let parsed = parse(r###"#[frb(dart_code="a\nb\nc")]"###)?;
+        assert_eq!(
+            parsed,
+            FrbAttributes(vec![FrbAttribute::DartCode(FrbAttributeDartCode("a\nb\nc".to_owned()))])
+        );
         Ok(())
     }
 
