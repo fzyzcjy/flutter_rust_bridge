@@ -175,7 +175,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             &(self_ty_path.path.segments.first().unwrap().ident).to_string(),
         )?;
         let syn_ty: Type = parse_str(&enum_or_struct_name)?;
-        self.type_parser.parse_type(&syn_ty, context)
+        Ok(Some(self.type_parser.parse_type(&syn_ty, context)?))
     }
 }
 
