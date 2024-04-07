@@ -45,6 +45,7 @@ pub fn create_event_twin_normal(address: String, payload: String) {
     create_event_sync_twin_normal(address, payload)
 }
 
+// FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_START
 // #1836
 #[frb(sync)]
 pub fn create_event_sync_twin_normal(address: String, payload: String) {
@@ -54,3 +55,4 @@ pub fn create_event_sync_twin_normal(address: String, payload: String) {
         }
     }
 }
+// FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_END

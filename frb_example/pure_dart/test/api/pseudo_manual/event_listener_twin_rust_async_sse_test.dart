@@ -29,23 +29,12 @@ Future<void> main({bool skipRustLibInit = false}) async {
     stream.listen((event) => logs.add(event.address));
 
     // main call to test #1836
-    createEventSyncTwinRustAsyncSse(address: 'one', payload: '');
+    await createEventTwinRustAsyncSse(address: 'one', payload: '');
 
-    await Future.delayed(Duration.zero);
-    createEventSyncTwinRustAsyncSse(address: 'two', payload: '');
+    await createEventTwinRustAsyncSse(address: 'two', payload: '');
 
     await closeEventListenerTwinRustAsyncSse();
 
     expect(logs, ['one', 'two']);
-  });
-
-  // #1836
-  test('when Rust send event after Dart close stream', () async {
-    final stream = registerEventListenerTwinRustAsyncSse();
-    await Future.delayed(Duration.zero);
-    final subscription = stream.listen((_) {});
-    await Future.delayed(Duration.zero);
-    unawaited(subscription.cancel());
-    createEventSyncTwinRustAsyncSse(address: '1', payload: '');
   });
 }

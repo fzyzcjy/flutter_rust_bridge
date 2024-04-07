@@ -53,14 +53,3 @@ pub fn close_event_listener_twin_sse() {
 pub fn create_event_twin_sse(address: String, payload: String) {
     create_event_sync_twin_sse(address, payload)
 }
-
-// #1836
-#[frb(sync)]
-#[flutter_rust_bridge::frb(serialize)]
-pub fn create_event_sync_twin_sse(address: String, payload: String) {
-    if let Ok(mut guard) = EVENTS.lock() {
-        if let Some(sink) = guard.as_mut() {
-            sink.add(EventTwinSse { address, payload }).unwrap();
-        }
-    }
-}
