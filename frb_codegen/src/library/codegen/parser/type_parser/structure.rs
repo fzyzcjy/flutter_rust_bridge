@@ -109,8 +109,8 @@ impl EnumOrStructParser<IrStructIdent, IrStruct, Struct, ItemStruct>
         &mut self.0.inner.struct_parser_info
     }
 
-    fn type_parser(&mut self) -> &mut TypeParser {
-        &mut self.0.inner
+    fn dart_code_of_type(&mut self) -> &mut HashMap<String, String>{
+        &mut self.0.inner.dart_code_of_type
     }
 
     fn parse_type_rust_auto_opaque(

@@ -80,7 +80,7 @@ where
 
     fn parser_info(&mut self) -> &mut EnumOrStructParserInfo<Id, Obj>;
 
-    fn type_parser(&mut self) -> &mut TypeParser;
+    fn dart_code_of_type(&mut self) -> &mut HashMap<String, String>;
 
     fn parse_type_rust_auto_opaque(
         &mut self,
