@@ -7,7 +7,7 @@ use crate::if_then_some;
 use anyhow::Context;
 use itertools::Itertools;
 use serde::{Serialize, Serializer};
-use syn::parse::{Parse, ParseStream};
+use syn::parse::{Lookahead1, Parse, ParseStream, Peek};
 use syn::punctuated::Punctuated;
 use syn::*;
 
@@ -182,50 +182,35 @@ enum FrbAttribute {
 impl Parse for FrbAttribute {
     fn parse(input: ParseStream<'_>) -> Result<Self> {
         let lookahead = input.lookahead1();
-        Ok(if lookahead.peek(frb_keyword::mirror) {
-            input.parse::<frb_keyword::mirror>()?;
-            input.parse().map(FrbAttribute::Mirror)?
-        } else if lookahead.peek(frb_keyword::non_final) {
-            input
-                .parse::<frb_keyword::non_final>()
-                .map(|_| FrbAttribute::NonFinal)?
-        } else if lookahead.peek(frb_keyword::sync) {
-            input
-                .parse::<frb_keyword::sync>()
-                .map(|_| FrbAttribute::Sync)?
-        } else if lookahead.peek(frb_keyword::getter) {
-            input
-                .parse::<frb_keyword::getter>()
-                .map(|_| FrbAttribute::Getter)?
-        } else if lookahead.peek(frb_keyword::init) {
-            input
-                .parse::<frb_keyword::init>()
-                .map(|_| FrbAttribute::Init)?
-        } else if lookahead.peek(frb_keyword::ignore) {
-            input
-                .parse::<frb_keyword::ignore>()
-                .map(|_| FrbAttribute::Ignore)?
-        } else if lookahead.peek(frb_keyword::opaque) {
-            input
-                .parse::<frb_keyword::opaque>()
-                .map(|_| FrbAttribute::Opaque)?
-        } else if lookahead.peek(frb_keyword::non_opaque) {
-            input
-                .parse::<frb_keyword::non_opaque>()
-                .map(|_| FrbAttribute::NonOpaque)?
-        } else if lookahead.peek(frb_keyword::rust_opaque_codec_moi) {
-            input
-                .parse::<frb_keyword::rust_opaque_codec_moi>()
-                .map(|_| FrbAttribute::RustOpaqueCodecMoi)?
-        } else if lookahead.peek(frb_keyword::serialize) {
-            input
-                .parse::<frb_keyword::serialize>()
-                .map(|_| FrbAttribute::Serialize)?
-        } else if lookahead.peek(frb_keyword::semi_serialize) {
-            input
-                .parse::<frb_keyword::semi_serialize>()
-                .map(|_| FrbAttribute::SemiSerialize)?
-        } else if lookahead.peek(frb_keyword::dart_metadata) {
+
+        let keyword_output = parse_keyword(&lookahead, frb_keyword::mirror, FrbAttribute::Mirror)
+            .or_else(|| parse_keyword(&lookahead, frb_keyword::non_final, FrbAttribute::NonFinal))
+            .or_else(|| parse_keyword(&lookahead, frb_keyword::sync, FrbAttribute::Sync))
+            .or_else(|| parse_keyword(&lookahead, frb_keyword::getter, FrbAttribute::Getter))
+            .or_else(|| parse_keyword(&lookahead, frb_keyword::init, FrbAttribute::Init))
+            .or_else(|| parse_keyword(&lookahead, frb_keyword::ignore, FrbAttribute::Ignore))
+            .or_else(|| parse_keyword(&lookahead, frb_keyword::opaque, FrbAttribute::Opaque))
+            .or_else(|| parse_keyword(&lookahead, frb_keyword::non_opaque, FrbAttribute::NonOpaque))
+            .or_else(|| {
+                parse_keyword(
+                    &lookahead,
+                    frb_keyword::rust_opaque_codec_moi,
+                    FrbAttribute::RustOpaqueCodecMoi,
+                )
+            })
+            .or_else(|| parse_keyword(&lookahead, frb_keyword::serialize, FrbAttribute::Serialize))
+            .or_else(|| {
+                parse_keyword(
+                    &lookahead,
+                    frb_keyword::semi_serialize,
+                    FrbAttribute::SemiSerialize,
+                )
+            });
+        if let Some(keyword_output) = keyword_output {
+            return keyword_output;
+        }
+
+        Ok(if lookahead.peek(frb_keyword::dart_metadata) {
             input.parse().map(FrbAttribute::Metadata)?
         } else if lookahead.peek(Token![default]) {
             input.parse::<Token![default]>()?;
@@ -234,6 +219,19 @@ impl Parse for FrbAttribute {
         } else {
             return Err(lookahead.error());
         })
+    }
+}
+
+fn parse_keyword<T: Peek>(
+    lookahead: &Lookahead1,
+    token: T,
+    attribute: FrbAttribute,
+) -> Option<Result<FrbAttribute>> {
+    if lookahead.peek(token) {
+        input.parse::<T>()?;
+        Some(input.parse().map(attribute)?)
+    } else {
+        None
     }
 }
 
