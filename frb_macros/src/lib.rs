@@ -57,7 +57,7 @@ fn handle_external_impl(attribute: TokenStream, item: TokenStream) -> TokenStrea
     }
 
     let item: ItemImpl = syn::parse(item).unwrap();
-    eprintln!("attribute={attribute:?} item={item:?}");
+    eprintln!("attribute={attribute:?} item={item:#?}");
     item.to_token_stream().into()
 }
 
