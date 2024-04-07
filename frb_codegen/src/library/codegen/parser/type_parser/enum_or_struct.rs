@@ -6,6 +6,7 @@ use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use log::debug;
 use std::collections::{HashMap, HashSet};
 use std::fmt::Debug;
+use crate::library::codegen::ir::ty::IrTypeTrait;
 use std::hash::Hash;
 use syn::{Ident, Type, TypePath};
 use crate::codegen::parser::type_parser::TypeParser;

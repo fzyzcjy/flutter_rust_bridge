@@ -64,7 +64,7 @@ impl<'a> TypeParser<'a> {
         }
     }
 
-    pub(crate) fn consume(self) -> (IrStructPool, IrEnumPool) {
+    pub(crate) fn consume(self) -> (IrStructPool, IrEnumPool, HashMap<String, String>) {
         (
             self.struct_parser_info.object_pool,
             self.enum_parser_info.object_pool,
