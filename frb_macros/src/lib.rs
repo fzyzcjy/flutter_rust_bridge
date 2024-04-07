@@ -2,7 +2,8 @@
 
 use proc_macro::*;
 
-use quote::ToTokens;
+use base64::prelude::*;
+use quote::{quote, ToTokens};
 use syn::ItemImpl;
 
 /// Attribute to guide code generation.
@@ -52,12 +53,20 @@ fn strip_frb_attr(item: TokenStream) -> TokenStream {
 
 fn handle_external_impl(attribute: TokenStream, item: TokenStream) -> TokenStream {
     const ATTR_KEYWORD: &str = "external";
+    const DUMMY_STRUCT_PREFIX: &str = "__external_impl__";
+
     if &attribute.to_string() != ATTR_KEYWORD {
         return item;
     }
 
     let item: ItemImpl = syn::parse(item).unwrap();
-    eprintln!("attribute={attribute:?} item={item:#?}");
+
+    let self_ty = &item.self_ty;
+    let self_ty_string = quote!(#self_ty).to_string();
+    let self_ty_base64 = BASE64_STANDARD;
+    let dummy_struct_name = format!("{DUMMY_STRUCT_PREFIX}{}", self_ty_string);
+
+    eprintln!("attribute={attribute:?} self_ty_string={self_ty_string} item={item:#?}");
     item.to_token_stream().into()
 }
 

@@ -11,6 +11,6 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 
 // TODO temporary
 #[frb(external)]
-impl Hello {
+impl One<Two, Three> {
     pub fn simple_external_method(&self) -> String {}
 }
