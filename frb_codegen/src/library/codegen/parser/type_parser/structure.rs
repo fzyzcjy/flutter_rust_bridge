@@ -14,7 +14,6 @@ use crate::codegen::parser::source_graph::modules::Struct;
 use crate::codegen::parser::type_parser::enum_or_struct::{
     EnumOrStructParser, EnumOrStructParserInfo,
 };
-use crate::codegen::parser::type_parser::external_impl::parse_external_impl_dummy_struct_name;
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
@@ -34,10 +33,6 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         name: NamespacedName,
         wrapper_name: Option<String>,
     ) -> anyhow::Result<IrStruct> {
-        if parse_external_impl_dummy_struct_name(&name.name)?.is_some() {
-            panic!("TODO {name:?}");
-        }
-
         let (is_fields_named, struct_fields) = match &src_struct.0.src.fields {
             Fields::Named(FieldsNamed { named, .. }) => (true, named),
             Fields::Unnamed(FieldsUnnamed { unnamed, .. }) => (false, unnamed),
