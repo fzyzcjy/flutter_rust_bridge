@@ -105,6 +105,7 @@ impl IrFuncOwnerInfoMethod {
         match &self.enum_or_struct_ty {
             IrType::StructRef(ty) => ty.ident.0.clone(),
             IrType::EnumRef(ty) => ty.ident.0.clone(),
+            IrType::RustAutoOpaque(ty) => TODO,
             ty => unimplemented!("enum_or_struct_name does not know {ty:?}"),
         }
     }
