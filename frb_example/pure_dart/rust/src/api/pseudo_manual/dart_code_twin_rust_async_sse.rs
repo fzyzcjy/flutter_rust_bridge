@@ -34,6 +34,6 @@ pub struct OpaqueStructWithDartCodeTwinRustAsyncSse;
 impl OpaqueStructWithDartCodeTwinRustAsyncSse {
     #[flutter_rust_bridge::frb(serialize)]
     pub async fn normal_method_twin_rust_async_sse(&self) -> i32 {
-        self.a * 2
+        100
     }
 }

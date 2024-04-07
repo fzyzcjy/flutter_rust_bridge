@@ -34,6 +34,6 @@ pub struct OpaqueStructWithDartCodeTwinRustAsync;
 
 impl OpaqueStructWithDartCodeTwinRustAsync {
     pub async fn normal_method_twin_rust_async(&self) -> i32 {
-        self.a * 2
+        100
     }
 }

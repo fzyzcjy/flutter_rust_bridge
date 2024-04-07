@@ -36,6 +36,6 @@ pub struct OpaqueStructWithDartCodeTwinSync;
 impl OpaqueStructWithDartCodeTwinSync {
     #[flutter_rust_bridge::frb(sync)]
     pub fn normal_method_twin_sync(&self) -> i32 {
-        self.a * 2
+        100
     }
 }

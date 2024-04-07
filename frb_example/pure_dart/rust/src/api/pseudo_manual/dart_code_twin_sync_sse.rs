@@ -36,6 +36,6 @@ impl OpaqueStructWithDartCodeTwinSyncSse {
     #[flutter_rust_bridge::frb(serialize)]
     #[flutter_rust_bridge::frb(sync)]
     pub fn normal_method_twin_sync_sse(&self) -> i32 {
-        self.a * 2
+        100
     }
 }
