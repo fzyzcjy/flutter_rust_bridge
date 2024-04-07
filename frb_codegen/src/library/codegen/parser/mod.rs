@@ -90,12 +90,13 @@ pub(crate) fn parse(
 
     let has_executor = (file_data_arr.iter()).any(|file| parse_has_executor(&file.content));
 
-    let (struct_pool, enum_pool) = type_parser.consume();
+    let (struct_pool, enum_pool, dart_code_of_type) = type_parser.consume();
 
     let mut ans = IrPack {
         funcs: ir_funcs,
         struct_pool,
         enum_pool,
+        dart_code_of_type,
         has_executor,
         unused_types: vec![],
     };

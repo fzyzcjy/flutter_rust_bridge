@@ -17,6 +17,7 @@ pub struct IrPack {
     pub funcs: Vec<IrFunc>,
     pub struct_pool: IrStructPool,
     pub enum_pool: IrEnumPool,
+    pub dart_code_of_type: HashMap<String, String>,
     pub has_executor: bool,
     pub unused_types: Vec<NamespacedName>,
 }

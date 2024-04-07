@@ -68,6 +68,7 @@ impl<'a> TypeParser<'a> {
         (
             self.struct_parser_info.object_pool,
             self.enum_parser_info.object_pool,
+            self.dart_code_of_type,
         )
     }
 
