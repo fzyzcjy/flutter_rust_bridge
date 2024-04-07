@@ -42,6 +42,7 @@ pub mod simple;
 pub mod stream;
 pub mod stream_misc;
 pub mod structure;
+pub mod stub;
 pub mod tuple;
 pub mod type_alias;
 pub mod uuid_type;
