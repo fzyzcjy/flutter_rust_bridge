@@ -7,6 +7,7 @@ pub(crate) fn parse_type(mut ty: Type) -> Result<Type> {
     impl VisitMut for Visitor {
         fn visit_ident_mut(&mut self, node: &mut Ident) {
             if let Some(name) = parse_name(&node.to_string()).unwrap() {
+                println!("hi {node:?} {name}");
                 *node = parse_str(&name).unwrap();
             }
 
