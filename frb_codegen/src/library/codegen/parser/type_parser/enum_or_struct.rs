@@ -23,7 +23,7 @@ where
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
         let (name, _) = last_segment;
-        let name = external_impl::parse_name(name)?;
+        let name = external_impl::parse_name(name)?.unwrap_or(name.to_string());
 
         if let Some(src_object) = self.src_objects().get(&name) {
             let src_object = (*src_object).clone();
