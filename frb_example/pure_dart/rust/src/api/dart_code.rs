@@ -28,6 +28,6 @@ pub struct OpaqueStructWithDartCodeTwinNormal;
 
 impl OpaqueStructWithDartCodeTwinNormal {
     pub fn normal_method_twin_normal(&self) -> i32 {
-        self.a * 2
+        100
     }
 }
