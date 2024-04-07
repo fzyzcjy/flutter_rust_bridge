@@ -1,6 +1,12 @@
-pub(crate) mod argument;
-pub(crate) mod output;
-mod transformer;
+use std::fmt::Debug;
+use std::path::Path;
+
+use anyhow::{bail, Context};
+use itertools::concat;
+use log::{debug, warn};
+use syn::*;
+
+use IrType::Primitive;
 
 use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
 use crate::codegen::ir::field::IrField;
@@ -8,21 +14,18 @@ use crate::codegen::ir::func::{
     IrFunc, IrFuncMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode,
 };
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
+use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
-use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::function_extractor::GeneralizedItemFn;
+use crate::codegen::parser::type_parser::{external_impl, TypeParser, TypeParserParsingContext};
 use crate::codegen::parser::type_parser::misc::parse_comments;
-use crate::codegen::parser::type_parser::{TypeParser, TypeParserParsingContext};
 use crate::library::codegen::ir::ty::IrTypeTrait;
-use anyhow::{bail, Context};
-use itertools::concat;
-use log::{debug, warn};
-use std::fmt::Debug;
-use std::path::Path;
-use syn::*;
-use IrType::Primitive;
+
+pub(crate) mod argument;
+pub(crate) mod output;
+mod transformer;
 
 const STREAM_SINK_IDENT: &str = "StreamSink";
 
@@ -169,7 +172,9 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             return Ok(None);
         };
 
-        let enum_or_struct_name = (self_ty_path.path.segments.first().unwrap().ident).to_string();
+        let enum_or_struct_name = external_impl::parse_name_or_original(
+            &(self_ty_path.path.segments.first().unwrap().ident).to_string(),
+        )?;
         let syn_ty: Type = parse_str(&enum_or_struct_name)?;
         let ty = self.type_parser.parse_type(&syn_ty, context)?;
 
