@@ -11,7 +11,7 @@ use proc_macro::*;
 #[proc_macro_attribute]
 pub fn frb(attribute: TokenStream, item: TokenStream) -> TokenStream {
     let mut output = format_frb_attribute(format!("#[frb({attribute})]"));
-    let item = strip_frb_attr(item);
+    let item = strip_frb_attr(handle_external_impl(item));
     output.extend(item);
     output
 }
@@ -45,6 +45,10 @@ fn strip_frb_attr(item: TokenStream) -> TokenStream {
             }
         })
         .collect()
+}
+
+fn handle_external_impl(item: TokenStream) -> TokenStream {
+    todo!()
 }
 
 fn is_frb_bracket(group: &Group) -> bool {
