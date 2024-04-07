@@ -1,16 +1,18 @@
 use anyhow::Result;
-use proc_macro2::Ident;
-use syn::{parse_str, Type, visit_mut, visit_mut::VisitMut};
+use syn::{parse_str, visit_mut, visit_mut::VisitMut, Path, Type};
 
 pub(crate) fn parse_type(mut ty: Type) -> Result<Type> {
     println!("parse_type {ty:?}");
 
     struct Visitor;
     impl VisitMut for Visitor {
-        fn visit_ident_mut(&mut self, node: &mut Ident) {
-            if let Some(name) = parse_name(&node.to_string()).unwrap() {
-                println!("hi {node:?} {name}");
-                *node = parse_str(&name).unwrap();
+        fn visit_path_mut(&mut self, node: &mut Path) {
+            if node.segments.len() == 1 && {
+                let ident = node.segments[0].ident;
+                if let Some(reconstructed_name)= parse_name(&ident.to_string()).unwrap() {
+                    println!("hi {node:?} {reconstructed_name}");
+                    *node = parse_str(&reconstructed_name).unwrap();
+                }
             }
 
             visit_mut::visit_ident_mut(self, node);
