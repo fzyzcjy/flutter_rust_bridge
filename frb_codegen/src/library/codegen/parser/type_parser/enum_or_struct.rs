@@ -1,3 +1,4 @@
+use crate::codegen::ir::func::VirtualMethod;
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
@@ -27,6 +28,9 @@ where
             let namespaced_name = NamespacedName::new(namespace, name.to_string());
 
             let attrs = FrbAttributes::parse(src_object.attrs())?;
+
+            self.parse_virtual_methods(attrs.virtual_methods());
+
             let attrs_opaque = attrs.opaque();
             if attrs_opaque == Some(true) {
                 debug!("Treat {name} as opaque since attribute says so");
@@ -57,6 +61,10 @@ where
         }
 
         Ok(None)
+    }
+
+    fn parse_virtual_methods(&mut self, virtual_methods: Vec<VirtualMethod>) {
+        TODO
     }
 
     fn parse_opaque(&mut self, namespaced_name: &NamespacedName) -> anyhow::Result<IrType> {

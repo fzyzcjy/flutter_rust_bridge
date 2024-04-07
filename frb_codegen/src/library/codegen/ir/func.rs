@@ -106,3 +106,9 @@ pub(crate) enum IrFuncDefaultConstructorMode {
     DartConstructor,
     StaticMethod,
 }
+
+#[derive(Clone, Copy, Eq, PartialEq)]
+pub(crate) enum VirtualMethod {
+    Eq,
+    Hash,
+}

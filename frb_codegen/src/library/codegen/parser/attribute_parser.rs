@@ -1,6 +1,7 @@
 use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
 use crate::codegen::ir::annotation::IrDartAnnotation;
 use crate::codegen::ir::default::IrDefaultValue;
+use crate::codegen::ir::func::VirtualMethod;
 use crate::codegen::ir::import::IrDartImport;
 use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::if_then_some;
@@ -82,6 +83,17 @@ impl FrbAttributes {
         } else {
             None
         }
+    }
+
+    pub(crate) fn virtual_methods(&self) -> Vec<VirtualMethod> {
+        [
+            (FrbAttribute::Eq, VirtualMethod::Eq),
+            (FrbAttribute::Hash, VirtualMethod::Hash),
+        ]
+        .iter()
+        .filter(|(attribute, _)| self.any_eq(attribute))
+        .map(|(_, virtual_method)| *virtual_method)
+        .collect_vec()
     }
 
     pub(crate) fn rust_opaque_codec(&self) -> Option<RustOpaqueCodecMode> {
