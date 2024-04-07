@@ -66,11 +66,21 @@ fn handle_external_impl(attribute: TokenStream, item: TokenStream) -> TokenStrea
         "{DUMMY_STRUCT_PREFIX}{}",
         hex::encode(&original_self_ty_string)
     );
+    let dummy_struct_ty = syn::parse_str(&dummy_struct_name).unwrap();
 
-    item.self_ty = syn::parse_str(&dummy_struct_name).unwrap();
+    let dummy_struct_def: TokenStream = quote! {
+        pub struct #dummy_struct_ty;
+    }
+    .to_token_stream()
+    .into();
 
-    eprintln!("attribute={attribute:?} self_ty_string={original_self_ty_string} dummy_struct_name={dummy_struct_name} item={item:#?}");
-    item.to_token_stream().into()
+    item.self_ty = dummy_struct_ty;
+
+    // eprintln!("attribute={attribute:?} self_ty_string={original_self_ty_string} dummy_struct_name={dummy_struct_name} item={item:#?}");
+
+    let mut output: TokenStream = item.to_token_stream().into();
+    output.extend(dummy_struct_def);
+    output
 }
 
 fn is_frb_bracket(group: &Group) -> bool {
