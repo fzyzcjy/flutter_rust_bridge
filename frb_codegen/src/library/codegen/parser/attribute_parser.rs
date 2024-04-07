@@ -498,7 +498,7 @@ mod tests {
     }
 
     fn simple_keyword_tester(keyword_name: &str, attribute: FrbAttribute) {
-        let parsed = parse(format!("#[frb({keyword_name})]")).unwrap();
+        let parsed = parse(&format!("#[frb({keyword_name})]")).unwrap();
         assert_eq!(parsed, FrbAttributes(vec![attribute]));
     }
 
@@ -549,12 +549,17 @@ mod tests {
 
     #[test]
     fn test_rust_opaque_codec_moi() {
-        let parsed = parse("#[frb(rust_opaque_codec_moi)]")?;
-        assert_eq!(
-            parsed,
-            FrbAttributes(vec![FrbAttribute::RustOpaqueCodecMoi])
-        );
-        Ok(())
+        simple_keyword_tester("rust_opaque_codec_moi", FrbAttribute::RustOpaqueCodecMoi);
+    }
+
+    #[test]
+    fn test_serialize() {
+        simple_keyword_tester("serialize", FrbAttribute::Serialize);
+    }
+
+    #[test]
+    fn test_semi_serialize() {
+        simple_keyword_tester("semi_serialize", FrbAttribute::SemiSerialize);
     }
 
     #[test]
