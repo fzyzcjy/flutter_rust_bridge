@@ -2,11 +2,14 @@
 
 // event listener test
 
-use crate::frb_generated::StreamSink;
-use anyhow::{anyhow, Result};
-use flutter_rust_bridge::frb;
-use lazy_static::lazy_static;
 use std::sync::Mutex;
+
+use anyhow::{anyhow, Result};
+use lazy_static::lazy_static;
+
+use flutter_rust_bridge::frb;
+
+use crate::frb_generated::StreamSink;
 
 lazy_static! {
     static ref EVENTS: Mutex<Option<StreamSink<EventTwinNormal>>> = Default::default();
@@ -40,7 +43,11 @@ pub fn close_event_listener_twin_normal() {
 }
 
 pub fn create_event_twin_normal(address: String, payload: String) {
-    create_event_sync_twin_normal(address, payload)
+    if let Ok(mut guard) = EVENTS.lock() {
+        if let Some(sink) = guard.as_mut() {
+            sink.add(EventTwinNormal { address, payload }).unwrap();
+        }
+    }
 }
 
 // FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_START
