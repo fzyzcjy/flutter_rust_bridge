@@ -54,6 +54,7 @@ impl FrbAttributes {
         candidates.last().map(|item| item.to_ir_default_value())
     }
 
+
     pub(crate) fn non_final(&self) -> bool {
         self.any_eq(&FrbAttribute::NonFinal)
     }
@@ -127,6 +128,16 @@ impl FrbAttributes {
             .iter()
             .filter_map(
                 |item| if_then_some!(let FrbAttribute::Metadata(metadata) = item, metadata.value.0.clone()),
+            )
+            .flatten()
+            .collect()
+    }
+
+    pub(crate) fn dart_code(&self) -> String {
+        self.0
+            .iter()
+            .filter_map(
+                |item| if_then_some!(let FrbAttribute::DartCode(inner) = item, inner.0.clone()),
             )
             .flatten()
             .collect()
