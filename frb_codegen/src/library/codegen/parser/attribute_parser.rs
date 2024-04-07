@@ -181,31 +181,25 @@ enum FrbAttribute {
 
 impl Parse for FrbAttribute {
     fn parse(input: ParseStream<'_>) -> Result<Self> {
+        use frb_keyword::*;
+        use FrbAttribute::*;
+
         let lookahead = input.lookahead1();
 
-        let keyword_output = parse_keyword(&lookahead, frb_keyword::mirror, FrbAttribute::Mirror)
-            .or_else(|| parse_keyword(&lookahead, frb_keyword::non_final, FrbAttribute::NonFinal))
-            .or_else(|| parse_keyword(&lookahead, frb_keyword::sync, FrbAttribute::Sync))
-            .or_else(|| parse_keyword(&lookahead, frb_keyword::getter, FrbAttribute::Getter))
-            .or_else(|| parse_keyword(&lookahead, frb_keyword::init, FrbAttribute::Init))
-            .or_else(|| parse_keyword(&lookahead, frb_keyword::ignore, FrbAttribute::Ignore))
-            .or_else(|| parse_keyword(&lookahead, frb_keyword::opaque, FrbAttribute::Opaque))
-            .or_else(|| parse_keyword(&lookahead, frb_keyword::non_opaque, FrbAttribute::NonOpaque))
-            .or_else(|| {
-                parse_keyword(
-                    &lookahead,
-                    frb_keyword::rust_opaque_codec_moi,
-                    FrbAttribute::RustOpaqueCodecMoi,
-                )
-            })
-            .or_else(|| parse_keyword(&lookahead, frb_keyword::serialize, FrbAttribute::Serialize))
-            .or_else(|| {
-                parse_keyword(
-                    &lookahead,
-                    frb_keyword::semi_serialize,
-                    FrbAttribute::SemiSerialize,
-                )
-            });
+        let keyword_output =
+            parse_keyword(input, &lookahead, frb_keyword::mirror, FrbAttribute::Mirror)
+                .or_else(|| parse_keyword(input, &lookahead, non_final, NonFinal))
+                .or_else(|| parse_keyword(input, &lookahead, sync, Sync))
+                .or_else(|| parse_keyword(input, &lookahead, getter, Getter))
+                .or_else(|| parse_keyword(input, &lookahead, init, Init))
+                .or_else(|| parse_keyword(input, &lookahead, ignore, Ignore))
+                .or_else(|| parse_keyword(input, &lookahead, opaque, Opaque))
+                .or_else(|| parse_keyword(input, &lookahead, non_opaque, NonOpaque))
+                .or_else(|| {
+                    parse_keyword(input, &lookahead, rust_opaque_codec_moi, RustOpaqueCodecMoi)
+                })
+                .or_else(|| parse_keyword(input, &lookahead, serialize, Serialize))
+                .or_else(|| parse_keyword(input, &lookahead, semi_serialize, SemiSerialize));
         if let Some(keyword_output) = keyword_output {
             return keyword_output;
         }
@@ -223,6 +217,7 @@ impl Parse for FrbAttribute {
 }
 
 fn parse_keyword<T: Peek>(
+    input: ParseStream,
     lookahead: &Lookahead1,
     token: T,
     attribute: FrbAttribute,
