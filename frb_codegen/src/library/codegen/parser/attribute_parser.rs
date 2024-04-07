@@ -1,15 +1,16 @@
+use anyhow::Context;
+use itertools::Itertools;
+use serde::{Serialize, Serializer};
+use syn::*;
+use syn::parse::{Lookahead1, Parse, ParseStream, Peek};
+use syn::punctuated::Punctuated;
+
 use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
 use crate::codegen::ir::annotation::IrDartAnnotation;
 use crate::codegen::ir::default::IrDefaultValue;
 use crate::codegen::ir::import::IrDartImport;
 use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::if_then_some;
-use anyhow::Context;
-use itertools::Itertools;
-use serde::{Serialize, Serializer};
-use syn::parse::{Lookahead1, Parse, ParseStream, Peek};
-use syn::punctuated::Punctuated;
-use syn::*;
 
 const METADATA_IDENT: &str = "frb";
 
@@ -54,7 +55,6 @@ impl FrbAttributes {
         candidates.last().map(|item| item.to_ir_default_value())
     }
 
-
     pub(crate) fn non_final(&self) -> bool {
         self.any_eq(&FrbAttribute::NonFinal)
     }
@@ -83,6 +83,14 @@ impl FrbAttributes {
         } else {
             None
         }
+    }
+
+    pub(crate) fn generate_hash(&self) -> bool {
+        !self.any_eq(&FrbAttribute::NonHash)
+    }
+
+    pub(crate) fn generate_eq(&self) -> bool {
+        !self.any_eq(&FrbAttribute::NonEq)
     }
 
     pub(crate) fn rust_opaque_codec(&self) -> Option<RustOpaqueCodecMode> {
@@ -152,6 +160,8 @@ mod frb_keyword {
     syn::custom_keyword!(ignore);
     syn::custom_keyword!(opaque);
     syn::custom_keyword!(non_opaque);
+    syn::custom_keyword!(non_hash);
+    syn::custom_keyword!(non_eq);
     syn::custom_keyword!(rust_opaque_codec_moi);
     syn::custom_keyword!(serialize);
     syn::custom_keyword!(semi_serialize);
@@ -183,6 +193,8 @@ enum FrbAttribute {
     Ignore,
     Opaque,
     NonOpaque,
+    NonHash,
+    NonEq,
     RustOpaqueCodecMoi,
     Serialize,
     // NOTE: Undocumented, since this name may be suboptimal and is subject to change
@@ -206,6 +218,8 @@ impl Parse for FrbAttribute {
             .or_else(|| parse_keyword::<ignore, _>(input, &lookahead, ignore, Ignore))
             .or_else(|| parse_keyword::<opaque, _>(input, &lookahead, opaque, Opaque))
             .or_else(|| parse_keyword::<non_opaque, _>(input, &lookahead, non_opaque, NonOpaque))
+            .or_else(|| parse_keyword::<non_hash, _>(input, &lookahead, non_hash, NonHash))
+            .or_else(|| parse_keyword::<non_eq, _>(input, &lookahead, non_eq, NonEq))
             .or_else(|| {
                 parse_keyword::<rust_opaque_codec_moi, _>(
                     input,
@@ -458,11 +472,15 @@ impl Parse for FrbAttributeDartCode {
 
 #[cfg(test)]
 mod tests {
-    use crate::codegen::ir::default::IrDefaultValue;
-    use crate::codegen::parser::attribute_parser::{FrbAttribute, FrbAttributeDartCode, FrbAttributeDefaultValue, FrbAttributeMirror, FrbAttributes, NamedOption};
-    use crate::if_then_some;
     use quote::quote;
     use syn::ItemFn;
+
+    use crate::codegen::ir::default::IrDefaultValue;
+    use crate::codegen::parser::attribute_parser::{
+        FrbAttribute, FrbAttributeDartCode, FrbAttributeDefaultValue, FrbAttributeMirror,
+        FrbAttributes, NamedOption,
+    };
+    use crate::if_then_some;
 
     #[test]
     fn test_error() -> anyhow::Result<()> {
@@ -573,11 +591,27 @@ mod tests {
     }
 
     #[test]
+    fn test_non_hash() -> anyhow::Result<()> {
+        let parsed = parse("#[frb(non_hash)]")?;
+        assert_eq!(parsed, FrbAttributes(vec![FrbAttribute::NonHash]));
+        Ok(())
+    }
+
+    #[test]
+    fn test_non_eq() -> anyhow::Result<()> {
+        let parsed = parse("#[frb(non_eq)]")?;
+        assert_eq!(parsed, FrbAttributes(vec![FrbAttribute::NonEq]));
+        Ok(())
+    }
+
+    #[test]
     fn test_dart_code() -> anyhow::Result<()> {
         let parsed = parse(r###"#[frb(dart_code="a\nb\nc")]"###)?;
         assert_eq!(
             parsed,
-            FrbAttributes(vec![FrbAttribute::DartCode(FrbAttributeDartCode("a\nb\nc".to_owned()))])
+            FrbAttributes(vec![FrbAttribute::DartCode(FrbAttributeDartCode(
+                "a\nb\nc".to_owned()
+            ))])
         );
         Ok(())
     }
