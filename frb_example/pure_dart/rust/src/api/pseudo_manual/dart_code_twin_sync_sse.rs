@@ -1,0 +1,29 @@
+// NOTE: This file is mimicking how a human developer writes tests,
+// and is auto-generated from `dart_code.rs` by frb_internal
+// Please do not modify manually, but modify the origin and re-run frb_internal generator
+
+use flutter_rust_bridge::frb;
+
+#[frb(dart_code = "
+  @override
+  bool operator ==(StructWithDartCodeTwinSyncSse other) => a == other.a;
+
+  @override
+  int get hashCode => a.hashCode;
+
+  int dartCodeMethod() => a * 2;
+")]
+pub struct TranslatableStructWithDartCodeTwinSyncSse {
+    pub a: i32,
+}
+
+impl TranslatableStructWithDartCodeTwinSyncSse {
+    #[flutter_rust_bridge::frb(serialize)]
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn normal_method_twin_sync_sse(&self) -> i32 {
+        self.a * 2
+    }
+}
+
+#[frb(opaque, dart_code = "static int dartCodeGetter => 123;")]
+pub struct OpaqueStructWithDartCodeTwinSyncSse;

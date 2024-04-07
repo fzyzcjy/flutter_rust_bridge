@@ -10,6 +10,7 @@ pub mod comment;
 pub mod conditionally_compiled_module;
 pub mod constructor;
 pub mod customization;
+pub mod dart_code;
 pub mod dart_fn;
 pub mod dart_opaque;
 pub mod dart_opaque_sync;
