@@ -2,7 +2,6 @@
 
 use proc_macro::*;
 
-use base64::prelude::*;
 use quote::{quote, ToTokens};
 use syn::ItemImpl;
 
@@ -63,8 +62,7 @@ fn handle_external_impl(attribute: TokenStream, item: TokenStream) -> TokenStrea
 
     let self_ty = &item.self_ty;
     let self_ty_string = quote!(#self_ty).to_string();
-    let self_ty_base64 = BASE64_STANDARD;
-    let dummy_struct_name = format!("{DUMMY_STRUCT_PREFIX}{}", self_ty_string);
+    let dummy_struct_name = format!("{DUMMY_STRUCT_PREFIX}{}", hex::encode(&self_ty_string));
 
     eprintln!("attribute={attribute:?} self_ty_string={self_ty_string} item={item:#?}");
     item.to_token_stream().into()
