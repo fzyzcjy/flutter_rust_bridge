@@ -9,12 +9,15 @@ use flutter_rust_bridge::frb;
 
   int dartCodeMethod() => a * 2;
 ")]
-pub struct StructWithDartCodeTwinNormal {
+pub struct TranslatableStructWithDartCodeTwinNormal {
     pub a: i32,
 }
 
-impl StructWithDartCodeTwinNormal {
-    pub fn normal_method(&self) -> i32 {
+impl TranslatableStructWithDartCodeTwinNormal {
+    pub fn normal_method_twin_normal(&self) -> i32 {
         self.a * 2
     }
 }
+
+#[frb(opaque, dart_code = "static int dartCodeGetter => 123;")]
+pub struct OpaqueStructWithDartCodeTwinNormal;
