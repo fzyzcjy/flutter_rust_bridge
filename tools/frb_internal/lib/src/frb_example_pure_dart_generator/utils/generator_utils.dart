@@ -154,8 +154,10 @@ class _Duplicator {
 String _handleFileContent(String content) {
   return content.replaceAll(
       RegExp(
-          r'FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_START.*FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_END',
-          multiLine: true),
+        r'// FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_START.*// FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_END',
+        multiLine: true,
+        dotAll: true,
+      ),
       '');
 }
 
