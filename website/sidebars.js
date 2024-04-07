@@ -179,6 +179,7 @@ const sidebars = {
                     items: [
                         'guides/miscellaneous/directory',
                         'guides/miscellaneous/methods',
+                        'guides/miscellaneous/eq_hash',
                         'guides/miscellaneous/callables',
                         'guides/miscellaneous/properties',
                         'guides/miscellaneous/constructors',
