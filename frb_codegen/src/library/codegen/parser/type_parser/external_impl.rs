@@ -1,8 +1,10 @@
 use anyhow::Result;
-use syn::token::Type;
+use syn::Type;
 
 pub(crate) fn parse_type(ty: Type) -> Result<Type> {
-    todo!()
+    match ty {
+        // TODO
+    }
 }
 
 pub(crate) fn parse_name(raw_name: &str) -> Result<String> {
