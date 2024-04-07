@@ -48,7 +48,7 @@ fn strip_frb_attr(item: TokenStream) -> TokenStream {
 }
 
 fn handle_external_impl(item: TokenStream) -> TokenStream {
-    todo!()
+    todo!("item={:?}", item)
 }
 
 fn is_frb_bracket(group: &Group) -> bool {
