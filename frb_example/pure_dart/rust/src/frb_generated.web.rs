@@ -5,10 +5,16 @@
 
 use super::*;
 use crate::api::constructor::*;
+use crate::api::dart_code::*;
 use crate::api::dropping::*;
 use crate::api::method::*;
 use crate::api::misc_no_twin_example_a::*;
 use crate::api::misc_no_twin_example_b::*;
+use crate::api::pseudo_manual::dart_code_twin_rust_async::*;
+use crate::api::pseudo_manual::dart_code_twin_rust_async_sse::*;
+use crate::api::pseudo_manual::dart_code_twin_sse::*;
+use crate::api::pseudo_manual::dart_code_twin_sync::*;
+use crate::api::pseudo_manual::dart_code_twin_sync_sse::*;
 use crate::api::pseudo_manual::dropping_twin_rust_async::*;
 use crate::api::pseudo_manual::dropping_twin_rust_async_sse::*;
 use crate::api::pseudo_manual::dropping_twin_sse::*;
@@ -7449,6 +7455,57 @@ impl CstDecode<crate::api::pseudo_manual::type_alias_twin_sync::TestModelTwinSyn
         }
     }
 }
+impl CstDecode<crate::api::dart_code::TranslatableStructWithDartCodeTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> crate::api::dart_code::TranslatableStructWithDartCodeTwinNormal {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::dart_code::TranslatableStructWithDartCodeTwinNormal {
+            a: self_.get(0).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::dart_code_twin_rust_async::TranslatableStructWithDartCodeTwinRustAsync> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+            // Codec=Cst (C-struct based), see doc to use other codecs
+            fn cst_decode(self) -> crate::api::pseudo_manual::dart_code_twin_rust_async::TranslatableStructWithDartCodeTwinRustAsync {
+                let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
+                assert_eq!(self_.length(), 1, "Expected 1 elements, got {}", self_.length());
+                crate::api::pseudo_manual::dart_code_twin_rust_async::TranslatableStructWithDartCodeTwinRustAsync{a:  self_.get(0).cst_decode()}
+            }
+        }
+impl
+    CstDecode<
+        crate::api::pseudo_manual::dart_code_twin_sync::TranslatableStructWithDartCodeTwinSync,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::dart_code_twin_sync::TranslatableStructWithDartCodeTwinSync
+    {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::dart_code_twin_sync::TranslatableStructWithDartCodeTwinSync {
+            a: self_.get(0).cst_decode(),
+        }
+    }
+}
 impl CstDecode<crate::api::structure::TupleStructWithOneFieldTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -8323,6 +8380,51 @@ impl CstDecode<OpaqueOneTwinSyncMoi> for flutter_rust_bridge::for_generated::was
         CstDecode::<
             RustOpaqueMoi<
                 flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinSyncMoi>,
+            >,
+        >::cst_decode(self)
+        .rust_auto_opaque_decode_owned()
+    }
+}
+impl CstDecode<OpaqueStructWithDartCodeTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> OpaqueStructWithDartCodeTwinNormal {
+        CstDecode::<
+            RustOpaqueNom<
+                flutter_rust_bridge::for_generated::rust_async::RwLock<
+                    OpaqueStructWithDartCodeTwinNormal,
+                >,
+            >,
+        >::cst_decode(self)
+        .rust_auto_opaque_decode_owned()
+    }
+}
+impl CstDecode<OpaqueStructWithDartCodeTwinRustAsync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> OpaqueStructWithDartCodeTwinRustAsync {
+        CstDecode::<
+            RustOpaqueNom<
+                flutter_rust_bridge::for_generated::rust_async::RwLock<
+                    OpaqueStructWithDartCodeTwinRustAsync,
+                >,
+            >,
+        >::cst_decode(self)
+        .rust_auto_opaque_decode_owned()
+    }
+}
+impl CstDecode<OpaqueStructWithDartCodeTwinSync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> OpaqueStructWithDartCodeTwinSync {
+        CstDecode::<
+            RustOpaqueNom<
+                flutter_rust_bridge::for_generated::rust_async::RwLock<
+                    OpaqueStructWithDartCodeTwinSync,
+                >,
             >,
         >::cst_decode(self)
         .rust_auto_opaque_decode_owned()
@@ -10538,6 +10640,74 @@ impl
 }
 impl
     CstDecode<
+        RustOpaqueNom<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<
+                OpaqueStructWithDartCodeTwinNormal,
+            >,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> RustOpaqueNom<
+        flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueStructWithDartCodeTwinNormal>,
+    > {
+        #[cfg(target_pointer_width = "64")]
+        {
+            compile_error!("64-bit pointers are not supported.");
+        }
+        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
+    }
+}
+impl
+    CstDecode<
+        RustOpaqueNom<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<
+                OpaqueStructWithDartCodeTwinRustAsync,
+            >,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> RustOpaqueNom<
+        flutter_rust_bridge::for_generated::rust_async::RwLock<
+            OpaqueStructWithDartCodeTwinRustAsync,
+        >,
+    > {
+        #[cfg(target_pointer_width = "64")]
+        {
+            compile_error!("64-bit pointers are not supported.");
+        }
+        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
+    }
+}
+impl
+    CstDecode<
+        RustOpaqueNom<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<
+                OpaqueStructWithDartCodeTwinSync,
+            >,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> RustOpaqueNom<
+        flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueStructWithDartCodeTwinSync>,
+    > {
+        #[cfg(target_pointer_width = "64")]
+        {
+            compile_error!("64-bit pointers are not supported.");
+        }
+        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
+    }
+}
+impl
+    CstDecode<
         RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueTwoTwinMoi>>,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -12123,6 +12293,22 @@ pub fn wire_my_init_one(port_: flutter_rust_bridge::for_generated::MessagePort) 
 #[wasm_bindgen]
 pub fn wire_my_init_two(port_: flutter_rust_bridge::for_generated::MessagePort) {
     wire_my_init_two_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_OpaqueStructWithDartCodeTwinNormal_normal_method_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_OpaqueStructWithDartCodeTwinNormal_normal_method_twin_normal_impl(port_, that)
+}
+
+#[wasm_bindgen]
+pub fn wire_TranslatableStructWithDartCodeTwinNormal_normal_method_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_TranslatableStructWithDartCodeTwinNormal_normal_method_twin_normal_impl(port_, that)
 }
 
 #[wasm_bindgen]
@@ -19429,6 +19615,122 @@ pub fn wire_function_with_comments_triple_slash_single_line_twin_sync_sse(
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_function_with_comments_triple_slash_single_line_twin_sync_sse_impl(
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire_OpaqueStructWithDartCodeTwinRustAsync_normal_method_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_OpaqueStructWithDartCodeTwinRustAsync_normal_method_twin_rust_async_impl(port_, that)
+}
+
+#[wasm_bindgen]
+pub fn wire_TranslatableStructWithDartCodeTwinRustAsync_normal_method_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_TranslatableStructWithDartCodeTwinRustAsync_normal_method_twin_rust_async_impl(port_, that)
+}
+
+#[wasm_bindgen]
+pub fn wire_OpaqueStructWithDartCodeTwinRustAsyncSse_normal_method_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_OpaqueStructWithDartCodeTwinRustAsyncSse_normal_method_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire_TranslatableStructWithDartCodeTwinRustAsyncSse_normal_method_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_TranslatableStructWithDartCodeTwinRustAsyncSse_normal_method_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire_OpaqueStructWithDartCodeTwinSse_normal_method_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_OpaqueStructWithDartCodeTwinSse_normal_method_twin_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire_TranslatableStructWithDartCodeTwinSse_normal_method_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_TranslatableStructWithDartCodeTwinSse_normal_method_twin_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire_OpaqueStructWithDartCodeTwinSync_normal_method_twin_sync(
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_OpaqueStructWithDartCodeTwinSync_normal_method_twin_sync_impl(that)
+}
+
+#[wasm_bindgen]
+pub fn wire_TranslatableStructWithDartCodeTwinSync_normal_method_twin_sync(
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_TranslatableStructWithDartCodeTwinSync_normal_method_twin_sync_impl(that)
+}
+
+#[wasm_bindgen]
+pub fn wire_OpaqueStructWithDartCodeTwinSyncSse_normal_method_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_OpaqueStructWithDartCodeTwinSyncSse_normal_method_twin_sync_sse_impl(
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire_TranslatableStructWithDartCodeTwinSyncSse_normal_method_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_TranslatableStructWithDartCodeTwinSyncSse_normal_method_twin_sync_sse_impl(
         ptr_,
         rust_vec_len_,
         data_len_,
@@ -37640,6 +37942,158 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     MoiArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinSyncSseMoi>>::decrement_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<
+                OpaqueStructWithDartCodeTwinNormal,
+            >,
+        >::increment_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<
+                OpaqueStructWithDartCodeTwinNormal,
+            >,
+        >::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinRustAsync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<
+                OpaqueStructWithDartCodeTwinRustAsync,
+            >,
+        >::increment_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinRustAsync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<
+                OpaqueStructWithDartCodeTwinRustAsync,
+            >,
+        >::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinRustAsyncSse(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<
+                OpaqueStructWithDartCodeTwinRustAsyncSse,
+            >,
+        >::increment_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinRustAsyncSse(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<
+                OpaqueStructWithDartCodeTwinRustAsyncSse,
+            >,
+        >::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinSse(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueStructWithDartCodeTwinSse>,
+        >::increment_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinSse(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueStructWithDartCodeTwinSse>,
+        >::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinSync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<
+                OpaqueStructWithDartCodeTwinSync,
+            >,
+        >::increment_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinSync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<
+                OpaqueStructWithDartCodeTwinSync,
+            >,
+        >::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinSyncSse(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<
+                OpaqueStructWithDartCodeTwinSyncSse,
+            >,
+        >::increment_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinSyncSse(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<
+                OpaqueStructWithDartCodeTwinSyncSse,
+            >,
+        >::decrement_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]
