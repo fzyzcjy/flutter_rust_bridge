@@ -53,7 +53,8 @@ fn handle_external_impl(attribute: TokenStream, item: TokenStream) -> TokenStrea
         return item;
     }
 
-    todo!("attribute={attribute:?} item={item:?}")
+    eprintln!("attribute={attribute:?} item={item:?}");
+    todo!()
 }
 
 fn is_frb_bracket(group: &Group) -> bool {
