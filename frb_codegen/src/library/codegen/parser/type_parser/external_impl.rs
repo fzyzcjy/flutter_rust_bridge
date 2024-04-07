@@ -22,6 +22,10 @@ pub(crate) fn parse_type(mut ty: Type) -> Result<Type> {
     Ok(ty)
 }
 
+pub(crate) fn parse_name_or_original(raw_name: &str) -> Result<String> {
+    Some(parse_name(raw_name)?.unwrap_or_else(|| raw_name.to_string()))
+}
+
 pub(crate) fn parse_name(raw_name: &str) -> Result<Option<String>> {
     const DUMMY_STRUCT_PREFIX: &str = "__external_impl__";
     Ok(if raw_name.starts_with(DUMMY_STRUCT_PREFIX) {
