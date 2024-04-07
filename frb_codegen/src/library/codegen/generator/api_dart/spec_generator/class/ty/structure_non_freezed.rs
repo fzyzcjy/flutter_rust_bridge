@@ -1,3 +1,5 @@
+use itertools::Itertools;
+
 use crate::codegen::generator::api_dart::spec_generator::class::field::{
     generate_field_default, generate_field_required_modifier,
 };
@@ -8,7 +10,6 @@ use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::ty::structure::IrStruct;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
-use itertools::Itertools;
 
 impl<'a> StructRefApiDartGenerator<'a> {
     pub(crate) fn generate_mode_non_freezed(
@@ -29,8 +30,16 @@ impl<'a> StructRefApiDartGenerator<'a> {
         let implements_exception = generate_dart_maybe_implements_exception(self.ir.is_exception);
         let methods_str = methods.join("\n");
 
-        let hashcode = generate_hashcode(&src.fields);
-        let equals = generate_equals(&src.fields, name_str);
+        let hashcode = if src.generate_hash {
+            generate_hashcode(&src.fields)
+        } else {
+            "".to_owned()
+        };
+        let equals = if src.generate_eq {
+            generate_equals(&src.fields, name_str)
+        } else {
+            "".to_owned()
+        };
 
         format!(
             "{comments}{metadata}class {name_str} {implements_exception} {{
