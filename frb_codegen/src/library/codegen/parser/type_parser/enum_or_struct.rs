@@ -42,7 +42,7 @@ where
                     &src_object.inner().ident,
                     src_object.inner().mirror,
                 );
-                let parsed_object = self.parse_inner(&src_object, name, wrapper_name)?;
+                let parsed_object = self.parse_inner_impl(&src_object, name, wrapper_name)?;
                 (self.parser_info().object_pool).insert(ident.clone(), parsed_object);
             }
 
@@ -67,7 +67,7 @@ where
         )
     }
 
-    fn parse_inner(
+    fn parse_inner_impl(
         &mut self,
         src_object: &SrcObj,
         name: NamespacedName,

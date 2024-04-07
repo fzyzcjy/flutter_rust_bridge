@@ -124,7 +124,7 @@ struct EnumOrStructParserEnum<'a, 'b, 'c, 'd>(&'d mut TypeParserWithContext<'a, 
 impl EnumOrStructParser<IrEnumIdent, IrEnum, Enum, ItemEnum>
     for EnumOrStructParserEnum<'_, '_, '_, '_>
 {
-    fn parse_inner(
+    fn parse_inner_impl(
         &mut self,
         src_object: &Enum,
         name: NamespacedName,

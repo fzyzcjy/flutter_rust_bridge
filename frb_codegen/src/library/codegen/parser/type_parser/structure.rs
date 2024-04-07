@@ -85,7 +85,7 @@ struct EnumOrStructParserStruct<'a, 'b, 'c, 'd>(&'d mut TypeParserWithContext<'a
 impl EnumOrStructParser<IrStructIdent, IrStruct, Struct, ItemStruct>
     for EnumOrStructParserStruct<'_, '_, '_, '_>
 {
-    fn parse_inner(
+    fn parse_inner_impl(
         &mut self,
         src_object: &Struct,
         name: NamespacedName,
