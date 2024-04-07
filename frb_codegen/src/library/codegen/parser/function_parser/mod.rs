@@ -14,13 +14,13 @@ use crate::codegen::ir::func::{
     IrFunc, IrFuncMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode,
 };
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
+use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
-use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::function_extractor::GeneralizedItemFn;
-use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::{external_impl, TypeParser, TypeParserParsingContext};
+use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 
 pub(crate) mod argument;
@@ -142,8 +142,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     IrFuncOwnerInfoMethodMode::Static
                 };
 
-                let (enum_or_struct_ty, enum_or_struct_name) =
-                    if let Some(x) = self.parse_enum_or_struct_name(item_impl, context)? {
+                let enum_or_struct_ty =
+                    if let Some(x) = self.parse_enum_or_struct_ty(item_impl, context)? {
                         x
                     } else {
                         return Ok(None);
@@ -160,11 +160,11 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         }))
     }
 
-    fn parse_enum_or_struct_name(
+    fn parse_enum_or_struct_ty(
         &mut self,
         item_impl: &ItemImpl,
         context: &TypeParserParsingContext,
-    ) -> anyhow::Result<Option<(IrType, NamespacedName)>> {
+    ) -> anyhow::Result<Option<IrType>> {
         let self_ty_path = if let Type::Path(self_ty_path) = item_impl.self_ty.as_ref() {
             self_ty_path
         } else {
@@ -175,10 +175,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             &(self_ty_path.path.segments.first().unwrap().ident).to_string(),
         )?;
         let syn_ty: Type = parse_str(&enum_or_struct_name)?;
-        let ty = self.type_parser.parse_type(&syn_ty, context)?;
-
-        let namespace: Option<Namespace> = ty.self_namespace();
-        Ok(namespace.map(|namespace| (ty, NamespacedName::new(namespace, enum_or_struct_name))))
+        self.type_parser.parse_type(&syn_ty, context)
     }
 }
 
