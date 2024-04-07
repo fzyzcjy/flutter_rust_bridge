@@ -357,6 +357,10 @@ dependencies = [
 [[package]]
 name = "flutter_rust_bridge_macros"
 version = "2.0.0-dev.30"
+dependencies = [
+ "quote",
+ "syn",
+]
 
 [[package]]
 name = "futures"
