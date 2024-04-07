@@ -1,19 +1,6 @@
-pub(crate) mod array;
-pub(crate) mod concrete;
-mod dart_fn;
-mod enum_or_struct;
-pub(crate) mod enumeration;
-pub(crate) mod misc;
-pub(crate) mod optional;
-pub(crate) mod path;
-pub(crate) mod path_data;
-pub(crate) mod primitive;
-pub(crate) mod rust_auto_opaque;
-mod rust_opaque;
-pub(crate) mod structure;
-pub(crate) mod tuple;
-pub(crate) mod ty;
-pub(crate) mod unencodable;
+use std::collections::HashMap;
+
+use syn::Type;
 
 use crate::codegen::ir::func::IrFuncOwnerInfo;
 use crate::codegen::ir::namespace::Namespace;
@@ -30,8 +17,24 @@ use crate::codegen::parser::type_parser::array::ArrayParserInfo;
 use crate::codegen::parser::type_parser::enum_or_struct::EnumOrStructParserInfo;
 use crate::codegen::parser::type_parser::rust_auto_opaque::RustAutoOpaqueParserInfo;
 use crate::codegen::parser::type_parser::rust_opaque::RustOpaqueParserInfo;
-use std::collections::HashMap;
-use syn::Type;
+
+pub(crate) mod array;
+pub(crate) mod concrete;
+mod dart_fn;
+mod enum_or_struct;
+pub(crate) mod enumeration;
+pub(crate) mod external_impl;
+pub(crate) mod misc;
+pub(crate) mod optional;
+pub(crate) mod path;
+pub(crate) mod path_data;
+pub(crate) mod primitive;
+pub(crate) mod rust_auto_opaque;
+mod rust_opaque;
+pub(crate) mod structure;
+pub(crate) mod tuple;
+pub(crate) mod ty;
+pub(crate) mod unencodable;
 
 pub(crate) struct TypeParser<'a> {
     src_structs: HashMap<String, &'a Struct>,
