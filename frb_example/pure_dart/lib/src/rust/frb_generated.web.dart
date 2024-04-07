@@ -39441,10 +39441,6 @@ class RustLibWire implements BaseWire {
   void wire_close_event_listener_twin_rust_async(NativePortType port_) =>
       wasmModule.wire_close_event_listener_twin_rust_async(port_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_create_event_sync_twin_rust_async(String address, String payload) =>
-          wasmModule.wire_create_event_sync_twin_rust_async(address, payload);
-
   void wire_create_event_twin_rust_async(
           NativePortType port_, String address, String payload) =>
       wasmModule.wire_create_event_twin_rust_async(port_, address, payload);
@@ -39467,14 +39463,6 @@ class RustLibWire implements BaseWire {
           int data_len_) =>
       wasmModule.wire_close_event_listener_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_create_event_sync_twin_rust_async_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule.wire_create_event_sync_twin_rust_async_sse(
-              ptr_, rust_vec_len_, data_len_);
 
   void wire_create_event_twin_rust_async_sse(
           NativePortType port_,
@@ -39507,12 +39495,6 @@ class RustLibWire implements BaseWire {
           int data_len_) =>
       wasmModule.wire_close_event_listener_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_create_event_sync_twin_sse(PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_, int data_len_) =>
-          wasmModule.wire_create_event_sync_twin_sse(
-              ptr_, rust_vec_len_, data_len_);
 
   void wire_create_event_twin_sse(
           NativePortType port_,
@@ -55104,9 +55086,6 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_close_event_listener_twin_rust_async(NativePortType port_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_create_event_sync_twin_rust_async(String address, String payload);
-
   external void wire_create_event_twin_rust_async(
       NativePortType port_, String address, String payload);
 
@@ -55125,12 +55104,6 @@ class RustLibWasmModule implements WasmModule {
       int rust_vec_len_,
       int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_create_event_sync_twin_rust_async_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
   external void wire_create_event_twin_rust_async_sse(NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
@@ -55145,10 +55118,6 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_close_event_listener_twin_sse(NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_create_event_sync_twin_sse(PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_, int data_len_);
 
   external void wire_create_event_twin_sse(NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);

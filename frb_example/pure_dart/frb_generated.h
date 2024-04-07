@@ -6906,9 +6906,6 @@ void frbgen_frb_example_pure_dart_wire_EventTwinRustAsync_as_string_twin_rust_as
 
 void frbgen_frb_example_pure_dart_wire_close_event_listener_twin_rust_async(int64_t port_);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_create_event_sync_twin_rust_async(struct wire_cst_list_prim_u_8_strict *address,
-                                                                                         struct wire_cst_list_prim_u_8_strict *payload);
-
 void frbgen_frb_example_pure_dart_wire_create_event_twin_rust_async(int64_t port_,
                                                                     struct wire_cst_list_prim_u_8_strict *address,
                                                                     struct wire_cst_list_prim_u_8_strict *payload);
@@ -6924,10 +6921,6 @@ void frbgen_frb_example_pure_dart_wire_close_event_listener_twin_rust_async_sse(
                                                                                 uint8_t *ptr_,
                                                                                 int32_t rust_vec_len_,
                                                                                 int32_t data_len_);
-
-WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire_create_event_sync_twin_rust_async_sse(uint8_t *ptr_,
-                                                                                             int32_t rust_vec_len_,
-                                                                                             int32_t data_len_);
 
 void frbgen_frb_example_pure_dart_wire_create_event_twin_rust_async_sse(int64_t port_,
                                                                         uint8_t *ptr_,
@@ -6948,10 +6941,6 @@ void frbgen_frb_example_pure_dart_wire_close_event_listener_twin_sse(int64_t por
                                                                      uint8_t *ptr_,
                                                                      int32_t rust_vec_len_,
                                                                      int32_t data_len_);
-
-WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire_create_event_sync_twin_sse(uint8_t *ptr_,
-                                                                                  int32_t rust_vec_len_,
-                                                                                  int32_t data_len_);
 
 void frbgen_frb_example_pure_dart_wire_create_event_twin_sse(int64_t port_,
                                                              uint8_t *ptr_,
@@ -15154,9 +15143,6 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_create_enum_dart_opaque_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_create_enum_dart_opaque_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_create_event_sync_twin_normal);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_create_event_sync_twin_rust_async);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_create_event_sync_twin_rust_async_sse);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_create_event_sync_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_create_event_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_create_event_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_create_event_twin_rust_async_sse);

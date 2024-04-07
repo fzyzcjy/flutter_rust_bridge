@@ -21,11 +21,6 @@ Future<void> createEventTwinSse(
     RustLib.instance.api
         .createEventTwinSse(address: address, payload: payload, hint: hint);
 
-void createEventSyncTwinSse(
-        {required String address, required String payload, dynamic hint}) =>
-    RustLib.instance.api
-        .createEventSyncTwinSse(address: address, payload: payload, hint: hint);
-
 @freezed
 class EventTwinSse with _$EventTwinSse {
   const EventTwinSse._();
