@@ -26,7 +26,7 @@ mod tests {
                 "__external_impl__4f6e65203c2054776f2c205468726565203e"
             )
             .unwrap(),
-            Some("One<Two,Three>".to_owned()),
+            Some("One < Two, Three >".to_owned()),
         );
     }
 }
