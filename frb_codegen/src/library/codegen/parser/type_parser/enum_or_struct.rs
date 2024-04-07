@@ -20,14 +20,7 @@ where
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
         let output = self.parse_impl(last_segment)?;
-
-        if let Some((ty, attrs)) = &output {
-            let dart_code = attrs.dart_code();
-            if !dart_code.is_empty() {
-                self.dart_code_of_type().insert(ty.safe_ident(), dart_code);
-            }
-        }
-
+        self.handle_dart_code(&output);
         Ok(output.map(|(ty, _)| ty))
     }
 
@@ -73,6 +66,15 @@ where
         }
 
         Ok(None)
+    }
+
+    fn handle_dart_code(&mut self, raw_output: &Option<(IrType, FrbAttributes)>) {
+        if let Some((ty, attrs)) = &raw_output {
+            let dart_code = attrs.dart_code();
+            if !dart_code.is_empty() {
+                self.dart_code_of_type().insert(ty.safe_ident(), dart_code);
+            }
+        }
     }
 
     fn parse_opaque(&mut self, namespaced_name: &NamespacedName) -> anyhow::Result<IrType> {
