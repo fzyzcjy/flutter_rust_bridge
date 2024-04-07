@@ -9,12 +9,12 @@ pub struct _SimpleTranslatableExternalStructWithMethod {
     pub a: String,
 }
 
-#[frb(stub)]
+#[frb(external)]
 impl SimpleTranslatableExternalStructWithMethod {
     pub fn simple_external_method(&self) -> String {}
 }
 
-#[frb(stub)]
+#[frb(external)]
 impl SimpleOpaqueExternalStructWithMethod {
     pub fn simple_external_method(&self) -> String {}
 }
