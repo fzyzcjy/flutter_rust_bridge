@@ -1,10 +1,27 @@
 use anyhow::Result;
-use syn::Type;
+use syn::{Type, visit_mut::VisitMut};
 
 pub(crate) fn parse_type(ty: Type) -> Result<Type> {
-    match ty {
-        // TODO
+    struct Visitor;
+    impl VisitMut for Visitor {
+        fn visit_expr_mut(&mut self, node: &mut Expr) {
+            if let Expr::Lit(expr) = &node {
+                if let Lit::Int(int) = &expr.lit {
+                    if int.suffix() == "u256" {
+                        let digits = int.base10_digits();
+                        let unsuffixed: LitInt = syn::parse_str(digits).unwrap();
+                        *node = parse_quote!(bigint::u256!(#unsuffixed));
+                        return;
+                    }
+                }
+            }
+
+            // Delegate to the default impl to visit nested expressions.
+            visit_mut::visit_expr_mut(self, node);
+        }
     }
+    Visitor.visit_type_mut(ty);
+    ty
 }
 
 pub(crate) fn parse_name(raw_name: &str) -> Result<String> {
