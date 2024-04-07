@@ -139,7 +139,7 @@ impl FrbAttributes {
             .filter_map(
                 |item| if_then_some!(let FrbAttribute::DartCode(inner) = item, inner.0.clone()),
             )
-            .collect()
+            .join("\n\n")
     }
 }
 

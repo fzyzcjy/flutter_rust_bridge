@@ -26,10 +26,9 @@ use syn::{Attribute, Field, Ident, ItemEnum, Type, TypePath, Variant};
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_enum(
         &mut self,
-        type_path: &TypePath,
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
-        EnumOrStructParserEnum(self).parse(type_path, last_segment)
+        EnumOrStructParserEnum(self).parse(last_segment)
     }
 
     fn parse_enum(

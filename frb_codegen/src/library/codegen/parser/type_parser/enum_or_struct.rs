@@ -17,9 +17,24 @@ where
 {
     fn parse(
         &mut self,
-        _type_path: &TypePath,
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
+        let output = self.parse_impl(last_segment)?;
+
+        if let Some((ty, attrs)) = &output {
+            let dart_code = attrs.dart_code();
+            if !dart_code.is_empty() {
+                self.dart_code_of_type().insert(ty.safe_ident(), dart_code);
+            }
+        }
+
+        Ok(output.map(|(ty, _)| ty))
+    }
+
+    fn parse_impl(
+        &mut self,
+        last_segment: &SplayedSegment,
+    ) -> anyhow::Result<Option<(IrType, FrbAttributes)>> {
         let (name, _) = last_segment;
         if let Some(src_object) = self.src_objects().get(*name) {
             let src_object = (*src_object).clone();
@@ -31,7 +46,7 @@ where
             let attrs_opaque = attrs.opaque();
             if attrs_opaque == Some(true) {
                 debug!("Treat {name} as opaque since attribute says so");
-                return Ok(Some(self.parse_opaque(&namespaced_name)?));
+                return Ok(Some((self.parse_opaque(&namespaced_name)?, attrs)));
             }
 
             let ident: Id = namespaced_name.clone().into();
@@ -51,10 +66,10 @@ where
                     .map_or(false, |obj| Self::compute_default_opaque(obj))
             {
                 debug!("Treat {name} as opaque by compute_default_opaque");
-                return Ok(Some(self.parse_opaque(&namespaced_name)?));
+                return Ok(Some((self.parse_opaque(&namespaced_name)?, attrs)));
             }
 
-            return Ok(Some(self.construct_output(ident)?));
+            return Ok(Some((self.construct_output(ident)?, attrs)));
         }
 
         Ok(None)

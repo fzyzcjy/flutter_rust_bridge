@@ -19,10 +19,9 @@ use syn::{Field, Fields, FieldsNamed, FieldsUnnamed, ItemStruct, Type, TypePath}
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_struct(
         &mut self,
-        type_path: &TypePath,
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
-        EnumOrStructParserStruct(self).parse(type_path, last_segment)
+        EnumOrStructParserStruct(self).parse(last_segment)
     }
 
     fn parse_struct(
