@@ -24,13 +24,13 @@ where
     ) -> anyhow::Result<Option<IrType>> {
         let (name, _) = last_segment;
 
-        let name = parse_external_impl_dummy_struct_name(name)?.unwrap_or(name.to_owned());
+        let name = parse_external_impl_dummy_struct_name(name)?.unwrap_or(name.to_string());
 
-        if let Some(src_object) = self.src_objects().get(*name) {
+        if let Some(src_object) = self.src_objects().get(&name) {
             let src_object = (*src_object).clone();
 
             let namespace = src_object.inner().namespace();
-            let namespaced_name = NamespacedName::new(namespace, name.to_string());
+            let namespaced_name = NamespacedName::new(namespace, name.clone());
 
             let attrs = FrbAttributes::parse(src_object.attrs())?;
             let attrs_opaque = attrs.opaque();
