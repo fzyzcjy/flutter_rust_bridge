@@ -142,6 +142,7 @@ mod frb_keyword {
     syn::custom_keyword!(ignore);
     syn::custom_keyword!(opaque);
     syn::custom_keyword!(non_opaque);
+    syn::custom_keyword!(dart_code);
     syn::custom_keyword!(rust_opaque_codec_moi);
     syn::custom_keyword!(serialize);
     syn::custom_keyword!(semi_serialize);
@@ -171,6 +172,7 @@ enum FrbAttribute {
     Ignore,
     Opaque,
     NonOpaque,
+    DartCode,
     RustOpaqueCodecMoi,
     Serialize,
     // NOTE: Undocumented, since this name may be suboptimal and is subject to change
@@ -193,6 +195,7 @@ impl Parse for FrbAttribute {
             .or_else(|| parse_keyword::<ignore, _>(input, &lookahead, ignore, Ignore))
             .or_else(|| parse_keyword::<opaque, _>(input, &lookahead, opaque, Opaque))
             .or_else(|| parse_keyword::<non_opaque, _>(input, &lookahead, non_opaque, NonOpaque))
+            .or_else(|| parse_keyword::<dart_code, _>(input, &lookahead, dart_code, DartCode))
             .or_else(|| {
                 parse_keyword::<rust_opaque_codec_moi, _>(
                     input,
@@ -545,6 +548,13 @@ mod tests {
     fn test_non_opaque() -> anyhow::Result<()> {
         let parsed = parse("#[frb(non_opaque)]")?;
         assert_eq!(parsed, FrbAttributes(vec![FrbAttribute::NonOpaque]));
+        Ok(())
+    }
+
+    #[test]
+    fn test_dart_code() -> anyhow::Result<()> {
+        let parsed = parse("#[frb(dart_code)]")?;
+        assert_eq!(parsed, FrbAttributes(vec![FrbAttribute::DartCode]));
         Ok(())
     }
 
