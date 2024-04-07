@@ -23,7 +23,7 @@ pub(crate) fn parse_type(mut ty: Type) -> Result<Type> {
 }
 
 pub(crate) fn parse_name_or_original(raw_name: &str) -> Result<String> {
-    Some(parse_name(raw_name)?.unwrap_or_else(|| raw_name.to_string()))
+    Ok(parse_name(raw_name)?.unwrap_or_else(|| raw_name.to_string()))
 }
 
 pub(crate) fn parse_name(raw_name: &str) -> Result<Option<String>> {
