@@ -1,5 +1,5 @@
 use anyhow::Result;
-use syn::{parse_str, visit_mut, visit_mut::VisitMut, Path, Type};
+use syn::{parse_str, Path, Type, visit_mut, visit_mut::VisitMut};
 
 pub(crate) fn parse_type(mut ty: Type) -> Result<Type> {
     println!("parse_type {ty:?}");
@@ -7,15 +7,15 @@ pub(crate) fn parse_type(mut ty: Type) -> Result<Type> {
     struct Visitor;
     impl VisitMut for Visitor {
         fn visit_path_mut(&mut self, node: &mut Path) {
-            if node.segments.len() == 1 && {
-                let ident = node.segments[0].ident;
-                if let Some(reconstructed_name)= parse_name(&ident.to_string()).unwrap() {
+            if node.segments.len() == 1 {
+                let ident =& node.segments[0].ident;
+                if let Some(reconstructed_name) = parse_name(&ident.to_string()).unwrap() {
                     println!("hi {node:?} {reconstructed_name}");
                     *node = parse_str(&reconstructed_name).unwrap();
                 }
             }
 
-            visit_mut::visit_ident_mut(self, node);
+            visit_mut::visit_path_mut(self, node);
         }
     }
     Visitor.visit_type_mut(&mut ty);
