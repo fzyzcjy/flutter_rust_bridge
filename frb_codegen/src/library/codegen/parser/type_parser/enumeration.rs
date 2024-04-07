@@ -1,3 +1,7 @@
+use std::collections::HashMap;
+
+use syn::{Attribute, Field, Ident, ItemEnum, Type, Variant};
+
 use crate::codegen::ir::field::{IrField, IrFieldSettings};
 use crate::codegen::ir::ident::IrIdent;
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
@@ -18,10 +22,8 @@ use crate::codegen::parser::type_parser::enum_or_struct::{
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::structure::structure_compute_default_opaque;
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
-use crate::codegen::parser::type_parser::{TypeParser, TypeParserWithContext};
+use crate::codegen::parser::type_parser::TypeParserWithContext;
 use crate::if_then_some;
-use std::collections::HashMap;
-use syn::{Attribute, Field, Ident, ItemEnum, Type, TypePath, Variant};
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_enum(
@@ -90,6 +92,8 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             is_fields_named: field_ident.is_some(),
             dart_metadata: attributes.dart_metadata(),
             ignore: attributes.ignore(),
+            generate_hash: true,
+            generate_eq: true,
             comments: parse_comments(attrs),
             fields: variant
                 .fields
@@ -160,7 +164,7 @@ impl EnumOrStructParser<IrEnumIdent, IrEnum, Enum, ItemEnum>
         &mut self.0.inner.enum_parser_info
     }
 
-    fn dart_code_of_type(&mut self) -> &mut HashMap<String, String>{
+    fn dart_code_of_type(&mut self) -> &mut HashMap<String, String> {
         &mut self.0.inner.dart_code_of_type
     }
 
