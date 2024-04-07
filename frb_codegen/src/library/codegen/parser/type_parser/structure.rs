@@ -1,20 +1,23 @@
+use std::collections::HashMap;
+
+use anyhow::bail;
+use syn::{Field, Fields, FieldsNamed, FieldsUnnamed, ItemStruct, Type, TypePath};
+
 use crate::codegen::ir::field::{IrField, IrFieldSettings};
 use crate::codegen::ir::ident::IrIdent;
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
-use crate::codegen::ir::ty::structure::{IrStruct, IrStructIdent, IrTypeStructRef};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::StructRef;
+use crate::codegen::ir::ty::structure::{IrStruct, IrStructIdent, IrTypeStructRef};
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::source_graph::modules::Struct;
 use crate::codegen::parser::type_parser::enum_or_struct::{
     EnumOrStructParser, EnumOrStructParserInfo,
 };
+use crate::codegen::parser::type_parser::external_impl::parse_external_impl_dummy_struct_name;
 use crate::codegen::parser::type_parser::misc::parse_comments;
-use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
-use anyhow::bail;
-use std::collections::HashMap;
-use syn::{Field, Fields, FieldsNamed, FieldsUnnamed, ItemStruct, Type, TypePath};
+use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_struct(
@@ -31,6 +34,10 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         name: NamespacedName,
         wrapper_name: Option<String>,
     ) -> anyhow::Result<IrStruct> {
+        if parse_external_impl_dummy_struct_name(&name.name)?.is_some() {
+            panic!("TODO {name:?}");
+        }
+
         let (is_fields_named, struct_fields) = match &src_struct.0.src.fields {
             Fields::Named(FieldsNamed { named, .. }) => (true, named),
             Fields::Unnamed(FieldsUnnamed { unnamed, .. }) => (false, unnamed),
