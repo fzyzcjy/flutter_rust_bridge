@@ -18,7 +18,7 @@ use crate::codegen::parser::type_parser::enum_or_struct::{
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::structure::structure_compute_default_opaque;
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
-use crate::codegen::parser::type_parser::TypeParserWithContext;
+use crate::codegen::parser::type_parser::{TypeParser, TypeParserWithContext};
 use crate::if_then_some;
 use std::collections::HashMap;
 use syn::{Attribute, Field, Ident, ItemEnum, Type, TypePath, Variant};
@@ -159,6 +159,10 @@ impl EnumOrStructParser<IrEnumIdent, IrEnum, Enum, ItemEnum>
 
     fn parser_info(&mut self) -> &mut EnumOrStructParserInfo<IrEnumIdent, IrEnum> {
         &mut self.0.inner.enum_parser_info
+    }
+
+    fn type_parser(&mut self) -> &mut TypeParser {
+        &mut self.0.inner
     }
 
     fn parse_type_rust_auto_opaque(

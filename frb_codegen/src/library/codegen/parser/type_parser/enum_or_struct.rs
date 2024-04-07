@@ -8,6 +8,7 @@ use std::collections::{HashMap, HashSet};
 use std::fmt::Debug;
 use std::hash::Hash;
 use syn::{Ident, Type, TypePath};
+use crate::codegen::parser::type_parser::TypeParser;
 
 pub(super) trait EnumOrStructParser<Id, Obj, SrcObj, Item>
 where
@@ -78,6 +79,8 @@ where
     fn src_objects(&self) -> &HashMap<String, &SrcObj>;
 
     fn parser_info(&mut self) -> &mut EnumOrStructParserInfo<Id, Obj>;
+
+    fn type_parser(&mut self) -> &mut TypeParser;
 
     fn parse_type_rust_auto_opaque(
         &mut self,
