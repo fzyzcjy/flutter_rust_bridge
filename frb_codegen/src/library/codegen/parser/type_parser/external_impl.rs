@@ -1,5 +1,7 @@
 pub(crate) fn parse_external_impl_dummy_struct_name(raw_name: &str) -> Option<String> {
-    todo!()
+    const DUMMY_STRUCT_PREFIX: &str = "__external_impl__";
+    (raw_name.starts_with(DUMMY_STRUCT_PREFIX))
+        .then(|| hex::decode(raw_name[DUMMY_STRUCT_PREFIX.len()..]))
 }
 
 #[cfg(test)]
