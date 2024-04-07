@@ -34,7 +34,7 @@ impl<'a> EnumRefApiDartGenerator<'a> {
             generate_dart_maybe_implements_exception(self.ir.is_exception);
 
         let methods_str = generate_api_methods(&src.name, self.context).join("\n");
-        let extra_body = generate_class_extra_body();
+        let extra_body = generate_class_extra_body(&self.context.ir_pack.dart_code_of_type);
 
         Some(ApiDartGeneratedClass {
             namespace: src.name.namespace.clone(),

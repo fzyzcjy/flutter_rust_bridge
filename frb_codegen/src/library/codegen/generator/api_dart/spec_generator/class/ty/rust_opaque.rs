@@ -26,7 +26,7 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
             self.context,
         )
         .join("\n");
-        let extra_body = generate_class_extra_body();
+        let extra_body = generate_class_extra_body(&self.context.ir_pack.dart_code_of_type);
 
         Some(ApiDartGeneratedClass {
             namespace: self.ir.namespace.clone(),
