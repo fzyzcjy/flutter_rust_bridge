@@ -534,7 +534,7 @@ mod tests {
     }
 
     fn simple_keyword_tester(keyword_name: &str, attribute: FrbAttribute) {
-        let parsed = parse(format!("#[frb({keyword_name})]")).unwrap();
+        let parsed = parse(&format!("#[frb({keyword_name})]")).unwrap();
         assert_eq!(parsed, FrbAttributes(vec![attribute]));
     }
 
