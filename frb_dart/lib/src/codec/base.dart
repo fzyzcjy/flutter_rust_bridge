@@ -20,10 +20,6 @@ abstract class BaseCodec<S, E extends Object, WireSyncType> {
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 class CloseStreamException implements Exception {}
 
-// Maybe let `decode` return freezed enum instead of throwing such errors
-/// {@macro flutter_rust_bridge.only_for_generated_code}
-class StreamReadyException implements Exception {}
-
 /// {@macro flutter_rust_bridge.internal}
 abstract class SimpleDecoder<S, E extends Object> {
   /// {@macro flutter_rust_bridge.internal}
@@ -40,9 +36,6 @@ abstract class SimpleDecoder<S, E extends Object> {
 
       case _Rust2DartAction.closeStream:
         throw CloseStreamException();
-
-      case _Rust2DartAction.streamReady:
-        throw StreamReadyException();
 
       // coverage:ignore-start
       default:
@@ -71,5 +64,4 @@ class _Rust2DartAction {
   static const error = 1;
   static const closeStream = 2;
   static const panic = 3;
-  static const streamReady = 4;
 }
