@@ -102,7 +102,7 @@ pub(crate) fn parse(
         funcs: ir_funcs,
         struct_pool,
         enum_pool,
-        existing_handler,
+        existing_handler: existing_handlers.first(),
         unused_types: vec![],
     };
 
