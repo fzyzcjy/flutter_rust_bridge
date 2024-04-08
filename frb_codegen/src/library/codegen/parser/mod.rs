@@ -26,6 +26,7 @@ use crate::library::misc::consts::HANDLER_NAME;
 use itertools::Itertools;
 use log::trace;
 use std::path::{Path, PathBuf};
+use anyhow::ensure;
 use syn::File;
 use ConfigDumpContent::SourceGraph;
 
@@ -94,7 +95,7 @@ pub(crate) fn parse(
         .filter(|file| parse_has_executor(&file.content))
         .map(|file| {
             NamespacedName::new(
-                Namespace::new_from_rust_crate_path(file.path, &config.rust_crate_dir).unwrap(),
+                Namespace::new_from_rust_crate_path(&file.path, &config.rust_crate_dir).unwrap(),
                 HANDLER_NAME.to_owned(),
             )
         })
@@ -113,7 +114,7 @@ pub(crate) fn parse(
         funcs: ir_funcs,
         struct_pool,
         enum_pool,
-        existing_handler: existing_handlers.first(),
+        existing_handler: existing_handlers.first().cloned(),
         unused_types: vec![],
     };
 
