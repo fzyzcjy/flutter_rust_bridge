@@ -81,7 +81,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<RustStreamSink<int>> helloStream({dynamic hint}) {
-    return handler.executeNormal(NormalTask(
+    final sink = RustStreamSink();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_StreamSink_i_32(sink, serializer);
@@ -97,6 +98,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kHelloStreamConstMeta => const TaskConstMeta(
