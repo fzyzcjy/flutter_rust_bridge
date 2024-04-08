@@ -59,17 +59,18 @@ pub fn stream_sink_fixed_sized_primitive_array_twin_normal(sink: StreamSink<[u8;
     sink.add([3, 4]).unwrap();
 }
 
-pub fn stream_sink_inside_vec_twin_normal(sink: Vec<StreamSink<i32>>) {
-    sink.add(100).unwrap();
-    sink.add(200).unwrap();
+pub fn stream_sink_inside_vec_twin_normal(arg: Vec<StreamSink<i32>>) {
+    for sink in arg {
+        sink.add(100).unwrap();
+        sink.add(200).unwrap();
+    }
 }
 
 pub struct MyStructContainingStreamSinkTwinNormal {
-    a: String,
+    a: i32,
     b: StreamSink<i32>,
 }
 
 pub fn stream_sink_inside_struct_twin_normal(arg: MyStructContainingStreamSinkTwinNormal) {
-    arg.b.add(100).unwrap();
-    arg.b.add(200).unwrap();
+    arg.b.add(arg.a).unwrap();
 }

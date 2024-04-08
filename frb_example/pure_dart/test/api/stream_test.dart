@@ -40,7 +40,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   Future<void> testHandleStream(
-      Stream<FutureOr<LogTwinNormal>> Function(
+      Stream<FutureOt<LogTwinNormal>> Function(
               {dynamic hint, required int key, required int max})
           handleStreamFunction) async {
     final max = 5;
@@ -74,5 +74,19 @@ Future<void> main({bool skipRustLibInit = false}) async {
       orderedEquals([1, 2]),
       orderedEquals([3, 4]),
     ]);
+  });
+
+  test('stream_sink_inside_vec_twin_normal', () async {
+    final sinks = [RustStreamSink<int>(), RustStreamSink<int>()];
+    await streamSinkInsideVecTwinNormal(arg: sinks);
+    expect(await sinks[0].stream.toList(), [100, 200]);
+    expect(await sinks[1].stream.toList(), [100, 200]);
+  });
+
+  test('stream_sink_inside_struct_twin_normal', () async {
+    final arg = MyStructContainingStreamSinkTwinNormal(
+        a: 1000, b: RustStreamSink<int>());
+    await streamSinkInsideStructTwinNormal(arg: arg);
+    expect(await arg.b.stream.toList(), [1000]);
   });
 }
