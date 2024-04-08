@@ -40,12 +40,12 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   Future<void> testHandleStream(
-      Stream<FutureOr<LogTwinNormal>> Function(
+      FutureOr<Stream<LogTwinNormal>> Function(
               {dynamic hint, required int key, required int max})
           handleStreamFunction) async {
     final max = 5;
     final key = 8;
-    final stream = handleStreamFunction(key: key, max: max);
+    final stream = await handleStreamFunction(key: key, max: max);
     var cnt = 0;
     await for (final value in stream) {
       print("output from handle_stream_x's stream: $value");
