@@ -2,6 +2,7 @@
 
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "rustAsync", "sse", "sync sse", "rustAsync sse"]}
 
+#[allow(unused_imports)]
 use crate::frb_generated::FLUTTER_RUST_BRIDGE_CODEGEN_VERSION;
 
 // This file demonstrates how to use a custom handler.
