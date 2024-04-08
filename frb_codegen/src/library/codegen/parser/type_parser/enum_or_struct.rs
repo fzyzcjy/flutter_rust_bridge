@@ -68,8 +68,17 @@ where
     fn handle_dart_code(&mut self, raw_output: &Option<(IrType, FrbAttributes)>) {
         if let Some((ty, attrs)) = &raw_output {
             let dart_code = attrs.dart_code();
-            if !dart_code.is_empty() {
-                self.dart_code_of_type().insert(ty.safe_ident(), dart_code);
+            if dart_code.is_empty() {
+                return;
+            }
+
+            let keys = match ty {
+                IrType::RustAutoOpaque(ty) => vec![ty.safe_ident(), ty.inner.safe_ident()],
+                ty => vec![ty.safe_ident()],
+            };
+
+            for key in keys {
+                self.dart_code_of_type().insert(key, dart_code);
             }
         }
     }
