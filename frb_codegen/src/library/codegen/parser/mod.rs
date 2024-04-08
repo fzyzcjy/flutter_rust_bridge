@@ -26,6 +26,8 @@ use log::trace;
 use std::path::{Path, PathBuf};
 use syn::File;
 use ConfigDumpContent::SourceGraph;
+use crate::codegen::ir::namespace::NamespacedName;
+use crate::library::misc::consts::HANDLER_NAME;
 
 pub(crate) fn parse(
     config: &ParserInternalConfig,
@@ -90,7 +92,7 @@ pub(crate) fn parse(
 
     let existing_handlers = (file_data_arr.iter())
         .filter(|file| parse_has_executor(&file.content))
-        .map(|file| TODO)
+        .map(|file| NamespacedName::new(TODO, HANDLER_NAME.to_owned()))
         .collect_vec();
     ensure!(existing_handlers.len() <= 1, "Should have at most one custom handler");
 
