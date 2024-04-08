@@ -53,7 +53,7 @@ fn handle_external_impl(attribute: TokenStream, item: TokenStream) -> TokenStrea
     const ATTR_KEYWORD: &str = "external";
     const DUMMY_STRUCT_PREFIX: &str = "__external_impl__";
 
-    if &attribute.to_string() != ATTR_KEYWORD {
+    if attribute.to_string() != ATTR_KEYWORD {
         return item;
     }
 
@@ -63,7 +63,7 @@ fn handle_external_impl(attribute: TokenStream, item: TokenStream) -> TokenStrea
     let original_self_ty_string = quote!(#original_self_ty).to_string();
     let dummy_struct_name = format!(
         "{DUMMY_STRUCT_PREFIX}{}",
-        hex::encode(&original_self_ty_string)
+        hex::encode(original_self_ty_string)
     );
     let dummy_struct_ty = syn::parse_str(&dummy_struct_name).unwrap();
 
