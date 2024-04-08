@@ -38,7 +38,7 @@ pub(crate) struct FunctionBody {
 
 impl Display for FunctionBody {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
-        let code = self.code;
+        let code = &self.code;
         if self.block {
             write!(f, "{{ {code} }}")
         } else {
@@ -88,7 +88,7 @@ fn compute_return_stream(func: &IrFunc) -> Option<IrField> {
         .filter(|input| matches!(input.ty, IrType::Delegate(IrTypeDelegate::StreamSink(_))))
         .collect_vec();
     if stream_sink_vars.len() == 1 {
-        Some(stream_sink_vars[0])
+        Some(stream_sink_vars[0].to_owned())
     } else {
         None
     }
