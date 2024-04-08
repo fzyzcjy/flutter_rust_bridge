@@ -12,6 +12,7 @@ import 'api/chrono_type.dart';
 import 'api/comment.dart';
 import 'api/constructor.dart';
 import 'api/customization.dart';
+import 'api/dart_code.dart';
 import 'api/dart_dynamic.dart';
 import 'api/dart_fn.dart';
 import 'api/dart_opaque.dart';
@@ -906,6 +907,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueOneTwinSyncSseMoiPtr;
 
   CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_OpaqueStructWithDartCodeTwinNormalPtr =>
+          wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinNormalPtr;
+
+  CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_OpaqueTwoTwinMoiPtr => wire
           ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueTwoTwinMoiPtr;
 
@@ -1456,6 +1461,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  OpaqueStructWithDartCodeTwinNormal
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinNormal(
+          dynamic raw);
+
+  @protected
   OpaqueTwoTwinMoi
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueTwoTwinMoi(
           dynamic raw);
@@ -1993,6 +2003,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   NonCloneSimpleTwinSyncSseMoi
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueStructWithDartCodeTwinNormal
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinNormal(
           dynamic raw);
 
   @protected
@@ -3037,6 +3052,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   OpaqueOneTwinSyncSseMoi
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueOneTwinSyncSseMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueStructWithDartCodeTwinNormal
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinNormal(
           dynamic raw);
 
   @protected
@@ -5054,6 +5074,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   TestIdTwinSyncSse dco_decode_box_autoadd_test_id_twin_sync_sse(dynamic raw);
+
+  @protected
+  TranslatableStructWithDartCodeTwinNormal
+      dco_decode_box_autoadd_translatable_struct_with_dart_code_twin_normal(
+          dynamic raw);
 
   @protected
   TupleStructWithOneFieldTwinNormal
@@ -8582,6 +8607,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   TestModelTwinSyncSse dco_decode_test_model_twin_sync_sse(dynamic raw);
 
   @protected
+  TranslatableStructWithDartCodeTwinNormal
+      dco_decode_translatable_struct_with_dart_code_twin_normal(dynamic raw);
+
+  @protected
   TupleStructWithOneFieldTwinNormal
       dco_decode_tuple_struct_with_one_field_twin_normal(dynamic raw);
 
@@ -9131,6 +9160,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  OpaqueStructWithDartCodeTwinNormal
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
   OpaqueTwoTwinMoi
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueTwoTwinMoi(
           SseDeserializer deserializer);
@@ -9668,6 +9702,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   NonCloneSimpleTwinSyncSseMoi
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueStructWithDartCodeTwinNormal
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinNormal(
           SseDeserializer deserializer);
 
   @protected
@@ -10717,6 +10756,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   OpaqueOneTwinSyncSseMoi
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueOneTwinSyncSseMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueStructWithDartCodeTwinNormal
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinNormal(
           SseDeserializer deserializer);
 
   @protected
@@ -12972,6 +13016,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   TestIdTwinSyncSse sse_decode_box_autoadd_test_id_twin_sync_sse(
       SseDeserializer deserializer);
+
+  @protected
+  TranslatableStructWithDartCodeTwinNormal
+      sse_decode_box_autoadd_translatable_struct_with_dart_code_twin_normal(
+          SseDeserializer deserializer);
 
   @protected
   TupleStructWithOneFieldTwinNormal
@@ -16998,6 +17047,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  TranslatableStructWithDartCodeTwinNormal
+      sse_decode_translatable_struct_with_dart_code_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
   TupleStructWithOneFieldTwinNormal
       sse_decode_tuple_struct_with_one_field_twin_normal(
           SseDeserializer deserializer);
@@ -19635,6 +19689,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     final ptr = wire.cst_new_box_autoadd_test_id_twin_sync();
     cst_api_fill_to_wire_test_id_twin_sync(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_translatable_struct_with_dart_code_twin_normal>
+      cst_encode_box_autoadd_translatable_struct_with_dart_code_twin_normal(
+          TranslatableStructWithDartCodeTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr = wire
+        .cst_new_box_autoadd_translatable_struct_with_dart_code_twin_normal();
+    cst_api_fill_to_wire_translatable_struct_with_dart_code_twin_normal(
+        raw, ptr.ref);
     return ptr;
   }
 
@@ -24237,6 +24303,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  void
+      cst_api_fill_to_wire_box_autoadd_translatable_struct_with_dart_code_twin_normal(
+          TranslatableStructWithDartCodeTwinNormal apiObj,
+          ffi.Pointer<wire_cst_translatable_struct_with_dart_code_twin_normal>
+              wireObj) {
+    cst_api_fill_to_wire_translatable_struct_with_dart_code_twin_normal(
+        apiObj, wireObj.ref);
+  }
+
+  @protected
   void cst_api_fill_to_wire_box_autoadd_tuple_struct_with_one_field_twin_normal(
       TupleStructWithOneFieldTwinNormal apiObj,
       ffi.Pointer<wire_cst_tuple_struct_with_one_field_twin_normal> wireObj) {
@@ -27409,6 +27485,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  void cst_api_fill_to_wire_translatable_struct_with_dart_code_twin_normal(
+      TranslatableStructWithDartCodeTwinNormal apiObj,
+      wire_cst_translatable_struct_with_dart_code_twin_normal wireObj) {
+    wireObj.a = cst_encode_i_32(apiObj.a);
+  }
+
+  @protected
   void cst_api_fill_to_wire_tuple_struct_with_one_field_twin_normal(
       TupleStructWithOneFieldTwinNormal apiObj,
       wire_cst_tuple_struct_with_one_field_twin_normal wireObj) {
@@ -27691,6 +27774,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       OpaqueOneTwinSyncMoi raw);
 
   @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinNormal(
+      OpaqueStructWithDartCodeTwinNormal raw);
+
+  @protected
   int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueTwoTwinMoi(
       OpaqueTwoTwinMoi raw);
 
@@ -27917,6 +28004,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
       NonCloneSimpleTwinSyncMoi raw);
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinNormal(
+      OpaqueStructWithDartCodeTwinNormal raw);
 
   @protected
   int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockSimpleOpaqueExternalStructWithMethod(
@@ -28295,6 +28386,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueOneTwinSyncMoi(
       OpaqueOneTwinSyncMoi raw);
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinNormal(
+      OpaqueStructWithDartCodeTwinNormal raw);
 
   @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueTwoTwinMoi(
@@ -28884,6 +28979,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinNormal(
+          OpaqueStructWithDartCodeTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueTwoTwinMoi(
           OpaqueTwoTwinMoi self, SseSerializer serializer);
 
@@ -29433,6 +29533,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
           NonCloneSimpleTwinSyncSseMoi self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinNormal(
+          OpaqueStructWithDartCodeTwinNormal self, SseSerializer serializer);
 
   @protected
   void
@@ -30533,6 +30638,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueOneTwinSyncSseMoi(
           OpaqueOneTwinSyncSseMoi self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinNormal(
+          OpaqueStructWithDartCodeTwinNormal self, SseSerializer serializer);
 
   @protected
   void
@@ -32675,6 +32785,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_box_autoadd_test_id_twin_sync_sse(
       TestIdTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_translatable_struct_with_dart_code_twin_normal(
+      TranslatableStructWithDartCodeTwinNormal self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_tuple_struct_with_one_field_twin_normal(
@@ -36529,6 +36643,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       TestModelTwinSyncSse self, SseSerializer serializer);
 
   @protected
+  void sse_encode_translatable_struct_with_dart_code_twin_normal(
+      TranslatableStructWithDartCodeTwinNormal self, SseSerializer serializer);
+
+  @protected
   void sse_encode_tuple_struct_with_one_field_twin_normal(
       TupleStructWithOneFieldTwinNormal self, SseSerializer serializer);
 
@@ -37513,6 +37631,50 @@ class RustLibWire implements BaseWire {
           'frbgen_frb_example_pure_dart_wire_my_init_two');
   late final _wire_my_init_two =
       _wire_my_init_twoPtr.asFunction<void Function(int)>();
+
+  void wire_OpaqueStructWithDartCodeTwinNormal_normal_method_twin_normal(
+    int port_,
+    int that,
+  ) {
+    return _wire_OpaqueStructWithDartCodeTwinNormal_normal_method_twin_normal(
+      port_,
+      that,
+    );
+  }
+
+  late final _wire_OpaqueStructWithDartCodeTwinNormal_normal_method_twin_normalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
+          'frbgen_frb_example_pure_dart_wire_OpaqueStructWithDartCodeTwinNormal_normal_method_twin_normal');
+  late final _wire_OpaqueStructWithDartCodeTwinNormal_normal_method_twin_normal =
+      _wire_OpaqueStructWithDartCodeTwinNormal_normal_method_twin_normalPtr
+          .asFunction<void Function(int, int)>();
+
+  void
+      wire_translatable_struct_with_dart_code_twin_normal_normal_method_twin_normal(
+    int port_,
+    ffi.Pointer<wire_cst_translatable_struct_with_dart_code_twin_normal> that,
+  ) {
+    return _wire_translatable_struct_with_dart_code_twin_normal_normal_method_twin_normal(
+      port_,
+      that,
+    );
+  }
+
+  late final _wire_translatable_struct_with_dart_code_twin_normal_normal_method_twin_normalPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(
+                      ffi.Int64,
+                      ffi.Pointer<
+                          wire_cst_translatable_struct_with_dart_code_twin_normal>)>>(
+          'frbgen_frb_example_pure_dart_wire_translatable_struct_with_dart_code_twin_normal_normal_method_twin_normal');
+  late final _wire_translatable_struct_with_dart_code_twin_normal_normal_method_twin_normal =
+      _wire_translatable_struct_with_dart_code_twin_normal_normal_method_twin_normalPtr
+          .asFunction<
+              void Function(
+                  int,
+                  ffi.Pointer<
+                      wire_cst_translatable_struct_with_dart_code_twin_normal>)>();
 
   void wire_return_dart_dynamic_twin_normal(
     int port_,
@@ -92022,6 +92184,38 @@ class RustLibWire implements BaseWire {
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinNormal(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinNormal(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinNormalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinNormal');
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinNormal =
+      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinNormalPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinNormal(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinNormal(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinNormalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinNormal');
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinNormal =
+      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinNormalPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueTwoTwinMoi(
     ffi.Pointer<ffi.Void> ptr,
   ) {
@@ -96163,6 +96357,25 @@ class RustLibWire implements BaseWire {
       _cst_new_box_autoadd_test_id_twin_syncPtr
           .asFunction<ffi.Pointer<wire_cst_test_id_twin_sync> Function()>();
 
+  ffi.Pointer<wire_cst_translatable_struct_with_dart_code_twin_normal>
+      cst_new_box_autoadd_translatable_struct_with_dart_code_twin_normal() {
+    return _cst_new_box_autoadd_translatable_struct_with_dart_code_twin_normal();
+  }
+
+  late final _cst_new_box_autoadd_translatable_struct_with_dart_code_twin_normalPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Pointer<
+                          wire_cst_translatable_struct_with_dart_code_twin_normal>
+                      Function()>>(
+          'frbgen_frb_example_pure_dart_cst_new_box_autoadd_translatable_struct_with_dart_code_twin_normal');
+  late final _cst_new_box_autoadd_translatable_struct_with_dart_code_twin_normal =
+      _cst_new_box_autoadd_translatable_struct_with_dart_code_twin_normalPtr
+          .asFunction<
+              ffi.Pointer<
+                      wire_cst_translatable_struct_with_dart_code_twin_normal>
+                  Function()>();
+
   ffi.Pointer<wire_cst_tuple_struct_with_one_field_twin_normal>
       cst_new_box_autoadd_tuple_struct_with_one_field_twin_normal() {
     return _cst_new_box_autoadd_tuple_struct_with_one_field_twin_normal();
@@ -99237,6 +99450,12 @@ final class wire_cst_feature_chrono_twin_normal extends ffi.Struct {
 final class wire_cst_struct_with_comments_twin_normal extends ffi.Struct {
   @ffi.Int32()
   external int field_with_comments;
+}
+
+final class wire_cst_translatable_struct_with_dart_code_twin_normal
+    extends ffi.Struct {
+  @ffi.Int32()
+  external int a;
 }
 
 final class wire_cst_EnumDartOpaqueTwinNormal_Primitive extends ffi.Struct {

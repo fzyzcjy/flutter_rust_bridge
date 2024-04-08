@@ -15696,11 +15696,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_OpaqueStructWithDartCodeTwin
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire_TranslatableStructWithDartCodeTwinNormal_normal_method_twin_normal(
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_translatable_struct_with_dart_code_twin_normal_normal_method_twin_normal(
     port_: i64,
     that: *mut wire_cst_translatable_struct_with_dart_code_twin_normal,
 ) {
-    wire_TranslatableStructWithDartCodeTwinNormal_normal_method_twin_normal_impl(port_, that)
+    wire_translatable_struct_with_dart_code_twin_normal_normal_method_twin_normal_impl(port_, that)
 }
 
 #[no_mangle]

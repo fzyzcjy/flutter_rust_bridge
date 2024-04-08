@@ -12250,11 +12250,11 @@ pub fn wire_OpaqueStructWithDartCodeTwinNormal_normal_method_twin_normal(
 }
 
 #[wasm_bindgen]
-pub fn wire_TranslatableStructWithDartCodeTwinNormal_normal_method_twin_normal(
+pub fn wire_translatable_struct_with_dart_code_twin_normal_normal_method_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_TranslatableStructWithDartCodeTwinNormal_normal_method_twin_normal_impl(port_, that)
+    wire_translatable_struct_with_dart_code_twin_normal_normal_method_twin_normal_impl(port_, that)
 }
 
 #[wasm_bindgen]
