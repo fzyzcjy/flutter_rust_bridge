@@ -24,6 +24,7 @@ pub mod rust_async;
 pub(crate) mod rust_auto_opaque;
 pub(crate) mod rust_opaque;
 pub(crate) mod web_transfer;
+pub(crate) mod stream;
 
 pub use crate::codec::sse::SseCodec;
 #[cfg(all(feature = "rust-async", feature = "dart-opaque"))]
