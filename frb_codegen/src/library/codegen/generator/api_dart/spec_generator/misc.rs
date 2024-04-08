@@ -61,7 +61,7 @@ pub(crate) fn generate_function_dart_return_type(
     context: ApiDartGeneratorContext,
 ) -> String {
     let inner = return_stream.as_ref()
-        .map(|info| ApiDartGenerator::new(info.field.ty.clone(), context).dart_api_type())
+        .map(|info| ApiDartGenerator::new(info.ty.inner.clone(), context).dart_api_type())
         .unwrap_or(raw_inner.to_owned());
 
     match func_mode {
