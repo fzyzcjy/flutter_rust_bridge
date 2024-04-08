@@ -62,7 +62,6 @@ fn generate_execute_func_name(func: &IrFunc) -> &str {
     match func.mode {
         IrFuncMode::Normal => "executeNormal",
         IrFuncMode::Sync => "executeSync",
-        IrFuncMode::Stream { .. } => "executeStream",
     }
 }
 
@@ -70,7 +69,6 @@ fn generate_task_class(func: &IrFunc) -> &str {
     match func.mode {
         IrFuncMode::Normal => "NormalTask",
         IrFuncMode::Sync => "SyncTask",
-        IrFuncMode::Stream { .. } => "StreamTask",
     }
 }
 

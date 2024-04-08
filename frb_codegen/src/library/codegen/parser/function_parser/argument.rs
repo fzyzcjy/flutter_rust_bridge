@@ -115,17 +115,6 @@ fn auto_add_boxed(ty: IrType) -> IrType {
     }
 }
 
-fn partial_info_for_stream_sink_type(
-    ty: IrType,
-    argument_index: usize,
-) -> anyhow::Result<FunctionPartialInfo> {
-    Ok(FunctionPartialInfo {
-        ok_output: Some(ty),
-        mode: Some(IrFuncMode::Stream { argument_index }),
-        ..Default::default()
-    })
-}
-
 fn parse_name_from_pat_type(pat_type: &PatType) -> anyhow::Result<String> {
     if let Pat::Ident(ref pat_ident) = *pat_type.pat {
         Ok(format!("{}", pat_ident.ident))

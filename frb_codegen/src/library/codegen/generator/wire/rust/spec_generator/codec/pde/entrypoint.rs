@@ -75,7 +75,7 @@ pub(crate) enum FfiDispatcherMode {
 impl From<&IrFuncMode> for FfiDispatcherMode {
     fn from(value: &IrFuncMode) -> Self {
         match value {
-            IrFuncMode::Normal | IrFuncMode::Stream { .. } => Self::Primary,
+            IrFuncMode::Normal => Self::Primary,
             IrFuncMode::Sync => Self::Sync,
         }
     }

@@ -94,19 +94,20 @@ fn generate_inner_func_args(
         })
         .collect_vec();
 
-    if let IrFuncMode::Stream { argument_index } = func.mode {
-        ans.insert(
-            argument_index,
-            format!(
-                "StreamSink::new(context.rust2dart_context().stream_sink::<_,{}>())",
-                WireRustCodecDcoGenerator::new(
-                    func.output.clone(),
-                    context.as_wire_rust_codec_dco_context()
-                )
-                .intodart_type(ir_pack)
-            ),
-        );
-    }
+    // TODO rm
+    // if let IrFuncMode::Stream { argument_index } = func.mode {
+    //     ans.insert(
+    //         argument_index,
+    //         format!(
+    //             "StreamSink::new(context.rust2dart_context().stream_sink::<_,{}>())",
+    //             WireRustCodecDcoGenerator::new(
+    //                 func.output.clone(),
+    //                 context.as_wire_rust_codec_dco_context()
+    //             )
+    //             .intodart_type(ir_pack)
+    //         ),
+    //     );
+    // }
 
     ans
 }
@@ -188,7 +189,7 @@ fn generate_handler_func_name(
 
     match func.mode {
         IrFuncMode::Sync => format!("wrap_sync::<{codec},_>"),
-        IrFuncMode::Normal | IrFuncMode::Stream { .. } => {
+        IrFuncMode::Normal => {
             let name = if func.rust_async {
                 "wrap_async"
             } else {
@@ -222,7 +223,7 @@ fn generate_return_type(func: &IrFunc) -> Option<String> {
             "flutter_rust_bridge::for_generated::WireSyncRust2Dart{}",
             func.codec_mode_pack.rust2dart.delegate_or_self(),
         )),
-        IrFuncMode::Normal | IrFuncMode::Stream { .. } => None,
+        IrFuncMode::Normal => None,
     }
 }
 
@@ -245,7 +246,7 @@ fn generate_code_closure(
                 }})())"
             )
         }
-        IrFuncMode::Normal | IrFuncMode::Stream { .. } => {
+        IrFuncMode::Normal => {
             let maybe_async_move = if func.rust_async { "async move" } else { "" };
             let maybe_await = if func.rust_async { ".await" } else { "" };
             format!(
@@ -275,6 +276,5 @@ fn ffi_call_mode(mode: IrFuncMode) -> &'static str {
     match mode {
         IrFuncMode::Normal => "Normal",
         IrFuncMode::Sync => "Sync",
-        IrFuncMode::Stream { .. } => "Stream",
     }
 }

@@ -57,7 +57,6 @@ pub(crate) fn generate_function_dart_return_type(func_mode: &IrFuncMode, inner: 
     match func_mode {
         IrFuncMode::Normal => format!("Future<{inner}>"),
         IrFuncMode::Sync => inner.to_string(),
-        IrFuncMode::Stream { .. } => format!("Stream<{inner}>"),
     }
 }
 
