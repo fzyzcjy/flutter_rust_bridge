@@ -3,7 +3,6 @@ use crate::codegen::generator::api_dart::spec_generator::base::{
 };
 use crate::codegen::ir::annotation::IrDartAnnotation;
 use crate::codegen::ir::comment::IrComment;
-use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::func::{IrFunc, IrFuncMode};
 use crate::codegen::ir::import::IrDartImport;
 use crate::codegen::ir::namespace::Namespace;

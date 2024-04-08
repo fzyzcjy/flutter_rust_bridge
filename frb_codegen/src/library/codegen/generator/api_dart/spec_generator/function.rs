@@ -9,7 +9,7 @@ use crate::codegen::generator::api_dart::spec_generator::misc::{
     generate_imports_which_types_and_funcs_use,
 };
 use crate::codegen::ir::field::IrField;
-use crate::codegen::ir::func::{IrFunc, IrFuncMode};
+use crate::codegen::ir::func::IrFunc;
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegateStreamSink};
 use crate::codegen::ir::ty::IrType;
@@ -19,7 +19,6 @@ use crate::utils::basic_code::DartBasicHeaderCode;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 use serde::Serialize;
-use std::fmt::{Display, Formatter};
 
 #[derive(Debug, Serialize)]
 pub(crate) struct ApiDartGeneratedFunction {
@@ -77,10 +76,13 @@ pub(crate) struct ReturnStreamInfo {
 
 fn compute_return_stream(func: &IrFunc) -> Option<ReturnStreamInfo> {
     let stream_sink_vars = (func.inputs.iter())
-        .filter_map(|input| if_then_some!(let IrType::Delegate(IrTypeDelegate::StreamSink(ir)) = input.ty, (input.to_owned(), ir)))
+        .filter_map(|input| if_then_some!(
+            let IrType::Delegate(IrTypeDelegate::StreamSink(ty)) = &input.ty,
+            ReturnStreamInfo { field:input.to_owned(), ty: ty.clone() }
+        ))
         .collect_vec();
     if stream_sink_vars.len() == 1 {
-        Some(stream_sink_vars[0])
+        Some(stream_sink_vars.into_iter().next().unwrap())
     } else {
         None
     }
