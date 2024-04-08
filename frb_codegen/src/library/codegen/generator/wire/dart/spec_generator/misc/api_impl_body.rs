@@ -50,7 +50,7 @@ pub(crate) fn generate_api_impl_normal_function(
             {maybe_await}{call_handler};
             return {return_stream_name}.stream;
             ",
-            return_stream_name = return_stream.name.raw,
+            return_stream_name = return_stream.field.name.raw,
             maybe_await = if func.mode == IrFuncMode::Sync {
                 ""
             } else {

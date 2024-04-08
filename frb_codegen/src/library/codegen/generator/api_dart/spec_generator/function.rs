@@ -71,6 +71,7 @@ pub(crate) fn generate(
     })
 }
 
+#[derive(Debug, Serialize)]
 pub(crate) struct ReturnStreamInfo {
     pub field: IrField,
     pub ty: IrTypeDelegateStreamSink,
