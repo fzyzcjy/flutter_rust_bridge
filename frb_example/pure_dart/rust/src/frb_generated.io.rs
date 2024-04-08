@@ -2612,27 +2612,27 @@ impl CstDecode<StreamSink<NonCloneSimpleTwinNormal>> for *mut wire_cst_list_prim
         todo!()
     }
 }
-impl CstDecode<StreamSink<NonCloneSimpleTwinRustAsync>> for *mut wire_cst_list_prim_u_8_strict {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinRustAsync> {
-        todo!()
-    }
-}
 impl CstDecode<StreamSink<NonCloneSimpleTwinRustAsyncMoi>> for *mut wire_cst_list_prim_u_8_strict {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinRustAsyncMoi> {
         todo!()
     }
 }
-impl CstDecode<StreamSink<NonCloneSimpleTwinSync>> for *mut wire_cst_list_prim_u_8_strict {
+impl CstDecode<StreamSink<NonCloneSimpleTwinRustAsync>> for *mut wire_cst_list_prim_u_8_strict {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinSync> {
+    fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinRustAsync> {
         todo!()
     }
 }
 impl CstDecode<StreamSink<NonCloneSimpleTwinSyncMoi>> for *mut wire_cst_list_prim_u_8_strict {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinSyncMoi> {
+        todo!()
+    }
+}
+impl CstDecode<StreamSink<NonCloneSimpleTwinSync>> for *mut wire_cst_list_prim_u_8_strict {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinSync> {
         todo!()
     }
 }

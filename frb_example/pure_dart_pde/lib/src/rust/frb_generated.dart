@@ -4264,7 +4264,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_String(arg, serializer);
-        sse_encode_StreamSink_String(sink, serializer);
+        sse_encode_StreamSink_String_None(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 16, port: port_);
       },
@@ -5833,7 +5833,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
             that, serializer);
-        sse_encode_StreamSink_i_32(sink, serializer);
+        sse_encode_StreamSink_i_32_None(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 80, port: port_);
       },
@@ -6314,7 +6314,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_event_twin_normal(listener, serializer);
+        sse_encode_StreamSink_event_twin_normal_None(listener, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 92, port: port_);
       },
@@ -7065,7 +7065,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_String(sink, serializer);
+        sse_encode_StreamSink_String_None(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 115, port: port_);
       },
@@ -7551,7 +7551,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_u_32(sink, serializer);
+        sse_encode_StreamSink_u_32_None(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 149, port: port_);
       },
@@ -7586,7 +7586,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_32(key, serializer);
         sse_encode_u_32(max, serializer);
-        sse_encode_StreamSink_log_2_twin_normal(sink, serializer);
+        sse_encode_StreamSink_log_2_twin_normal_None(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 148, port: port_);
       },
@@ -7620,7 +7620,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_box_autoadd_concatenate_with_twin_normal(that, serializer);
-        sse_encode_StreamSink_u_32(sink, serializer);
+        sse_encode_StreamSink_u_32_None(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 147, port: port_);
       },
@@ -7659,7 +7659,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_box_autoadd_concatenate_with_twin_normal(that, serializer);
         sse_encode_u_32(key, serializer);
         sse_encode_u_32(max, serializer);
-        sse_encode_StreamSink_log_2_twin_normal(sink, serializer);
+        sse_encode_StreamSink_log_2_twin_normal_None(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 146, port: port_);
       },
@@ -8047,7 +8047,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_application_settings(sink, serializer);
+        sse_encode_StreamSink_application_settings_None(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 162, port: port_);
       },
@@ -8076,7 +8076,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_list_application_settings(sink, serializer);
+        sse_encode_StreamSink_list_application_settings_None(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 163, port: port_);
       },
@@ -8255,7 +8255,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_application_mode_array_2(sink, serializer);
+        sse_encode_StreamSink_application_mode_array_2_None(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 184, port: port_);
       },
@@ -8284,7 +8284,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_application_mode(sink, serializer);
+        sse_encode_StreamSink_application_mode_None(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 179, port: port_);
       },
@@ -8312,7 +8312,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_Map_u_8_application_mode(sink, serializer);
+        sse_encode_StreamSink_Map_u_8_application_mode_None(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 182, port: port_);
       },
@@ -8341,7 +8341,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_opt_box_autoadd_application_mode(
+        sse_encode_StreamSink_opt_box_autoadd_application_mode_None(
             sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 180, port: port_);
@@ -8371,7 +8371,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_Set_application_mode(sink, serializer);
+        sse_encode_StreamSink_Set_application_mode_None(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 183, port: port_);
       },
@@ -8400,7 +8400,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_mirror_struct_twin_normal(sink, serializer);
+        sse_encode_StreamSink_mirror_struct_twin_normal_None(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 164, port: port_);
       },
@@ -8429,7 +8429,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_record_application_settings_raw_string_enum_mirrored(
+        sse_encode_StreamSink_record_application_settings_raw_string_enum_mirrored_None(
             sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 165, port: port_);
@@ -8459,7 +8459,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_list_application_mode(sink, serializer);
+        sse_encode_StreamSink_list_application_mode_None(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 181, port: port_);
       },
@@ -18945,7 +18945,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsync(
             that, serializer);
-        sse_encode_StreamSink_i_32(sink, serializer);
+        sse_encode_StreamSink_i_32_None(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 573, port: port_);
       },
@@ -19056,7 +19056,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSync(
             that, serializer);
-        sse_encode_StreamSink_i_32(sink, serializer);
+        sse_encode_StreamSink_i_32_None(sink, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 577)!;
       },
       codec: SseCodec(
@@ -19765,7 +19765,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_event_twin_rust_async(listener, serializer);
+        sse_encode_StreamSink_event_twin_rust_async_None(listener, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 599, port: port_);
       },
@@ -20522,7 +20522,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_String(sink, serializer);
+        sse_encode_StreamSink_String_None(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 621, port: port_);
       },
@@ -21262,7 +21262,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_String(sink, serializer);
+        sse_encode_StreamSink_String_None(sink, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 650)!;
       },
       codec: SseCodec(
@@ -22000,7 +22000,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_u_32(sink, serializer);
+        sse_encode_StreamSink_u_32_None(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 694, port: port_);
       },
@@ -22035,7 +22035,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_32(key, serializer);
         sse_encode_u_32(max, serializer);
-        sse_encode_StreamSink_log_2_twin_rust_async(sink, serializer);
+        sse_encode_StreamSink_log_2_twin_rust_async_None(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 693, port: port_);
       },
@@ -22070,7 +22070,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_box_autoadd_concatenate_with_twin_rust_async(
             that, serializer);
-        sse_encode_StreamSink_u_32(sink, serializer);
+        sse_encode_StreamSink_u_32_None(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 692, port: port_);
       },
@@ -22110,7 +22110,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             that, serializer);
         sse_encode_u_32(key, serializer);
         sse_encode_u_32(max, serializer);
-        sse_encode_StreamSink_log_2_twin_rust_async(sink, serializer);
+        sse_encode_StreamSink_log_2_twin_rust_async_None(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 691, port: port_);
       },
@@ -22572,7 +22572,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_u_32(sink, serializer);
+        sse_encode_StreamSink_u_32_None(sink, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 713)!;
       },
       codec: SseCodec(
@@ -22606,7 +22606,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_32(key, serializer);
         sse_encode_u_32(max, serializer);
-        sse_encode_StreamSink_log_2_twin_sync(sink, serializer);
+        sse_encode_StreamSink_log_2_twin_sync_None(sink, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 712)!;
       },
       codec: SseCodec(
@@ -22638,7 +22638,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_box_autoadd_concatenate_with_twin_sync(that, serializer);
-        sse_encode_StreamSink_u_32(sink, serializer);
+        sse_encode_StreamSink_u_32_None(sink, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 711)!;
       },
       codec: SseCodec(
@@ -22675,7 +22675,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_box_autoadd_concatenate_with_twin_sync(that, serializer);
         sse_encode_u_32(key, serializer);
         sse_encode_u_32(max, serializer);
-        sse_encode_StreamSink_log_2_twin_sync(sink, serializer);
+        sse_encode_StreamSink_log_2_twin_sync_None(sink, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 710)!;
       },
       codec: SseCodec(
@@ -23045,7 +23045,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_application_settings(sink, serializer);
+        sse_encode_StreamSink_application_settings_None(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 726, port: port_);
       },
@@ -23074,7 +23074,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_list_application_settings(sink, serializer);
+        sse_encode_StreamSink_list_application_settings_None(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 727, port: port_);
       },
@@ -23255,7 +23255,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_application_mode_array_2(sink, serializer);
+        sse_encode_StreamSink_application_mode_array_2_None(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 748, port: port_);
       },
@@ -23284,7 +23284,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_application_mode(sink, serializer);
+        sse_encode_StreamSink_application_mode_None(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 743, port: port_);
       },
@@ -23313,7 +23313,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_Map_u_8_application_mode(sink, serializer);
+        sse_encode_StreamSink_Map_u_8_application_mode_None(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 746, port: port_);
       },
@@ -23342,7 +23342,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_opt_box_autoadd_application_mode(
+        sse_encode_StreamSink_opt_box_autoadd_application_mode_None(
             sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 744, port: port_);
@@ -23372,7 +23372,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_Set_application_mode(sink, serializer);
+        sse_encode_StreamSink_Set_application_mode_None(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 747, port: port_);
       },
@@ -23401,7 +23401,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_mirror_struct_twin_rust_async(sink, serializer);
+        sse_encode_StreamSink_mirror_struct_twin_rust_async_None(
+            sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 728, port: port_);
       },
@@ -23430,7 +23431,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_record_application_settings_raw_string_enum_mirrored(
+        sse_encode_StreamSink_record_application_settings_raw_string_enum_mirrored_None(
             sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 729, port: port_);
@@ -23460,7 +23461,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_list_application_mode(sink, serializer);
+        sse_encode_StreamSink_list_application_mode_None(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 745, port: port_);
       },
@@ -23752,7 +23753,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_application_settings(sink, serializer);
+        sse_encode_StreamSink_application_settings_None(sink, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 752)!;
       },
       codec: SseCodec(
@@ -23779,7 +23780,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_list_application_settings(sink, serializer);
+        sse_encode_StreamSink_list_application_settings_None(sink, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 753)!;
       },
       codec: SseCodec(
@@ -23949,7 +23950,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_application_mode_array_2(sink, serializer);
+        sse_encode_StreamSink_application_mode_array_2_None(sink, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 774)!;
       },
       codec: SseCodec(
@@ -23976,7 +23977,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_application_mode(sink, serializer);
+        sse_encode_StreamSink_application_mode_None(sink, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 769)!;
       },
       codec: SseCodec(
@@ -24003,7 +24004,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_Map_u_8_application_mode(sink, serializer);
+        sse_encode_StreamSink_Map_u_8_application_mode_None(sink, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 772)!;
       },
       codec: SseCodec(
@@ -24030,7 +24031,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_opt_box_autoadd_application_mode(
+        sse_encode_StreamSink_opt_box_autoadd_application_mode_None(
             sink, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 770)!;
       },
@@ -24058,7 +24059,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_Set_application_mode(sink, serializer);
+        sse_encode_StreamSink_Set_application_mode_None(sink, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 773)!;
       },
       codec: SseCodec(
@@ -24085,7 +24086,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_mirror_struct_twin_sync(sink, serializer);
+        sse_encode_StreamSink_mirror_struct_twin_sync_None(sink, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 754)!;
       },
       codec: SseCodec(
@@ -24112,7 +24113,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_record_application_settings_raw_string_enum_mirrored(
+        sse_encode_StreamSink_record_application_settings_raw_string_enum_mirrored_None(
             sink, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 755)!;
       },
@@ -24139,7 +24140,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_list_application_mode(sink, serializer);
+        sse_encode_StreamSink_list_application_mode_None(sink, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 771)!;
       },
       codec: SseCodec(
@@ -26933,7 +26934,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync(
+        sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync_None(
             sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 851, port: port_);
@@ -28253,7 +28254,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
+        sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync_None(
             sink, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 897)!;
       },
@@ -29324,7 +29325,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_String(sink, serializer);
+        sse_encode_StreamSink_String_None(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 951, port: port_);
       },
@@ -29353,7 +29354,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_String(sink, serializer);
+        sse_encode_StreamSink_String_None(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 952, port: port_);
       },
@@ -29384,7 +29385,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_32(a, serializer);
         sse_encode_u_32(b, serializer);
-        sse_encode_StreamSink_u_32(c, serializer);
+        sse_encode_StreamSink_u_32_None(c, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 953, port: port_);
       },
@@ -29413,7 +29414,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_my_stream_entry_twin_rust_async(sink, serializer);
+        sse_encode_StreamSink_my_stream_entry_twin_rust_async_None(
+            sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 954, port: port_);
       },
@@ -29444,7 +29446,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_32(key, serializer);
         sse_encode_u_32(max, serializer);
-        sse_encode_StreamSink_log_twin_rust_async(sink, serializer);
+        sse_encode_StreamSink_log_twin_rust_async_None(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 955, port: port_);
       },
@@ -29474,7 +29476,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_32(key, serializer);
-        sse_encode_StreamSink_log_twin_rust_async(sink, serializer);
+        sse_encode_StreamSink_log_twin_rust_async_None(sink, serializer);
         sse_encode_u_32(max, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 956, port: port_);
@@ -29504,7 +29506,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_log_twin_rust_async(sink, serializer);
+        sse_encode_StreamSink_log_twin_rust_async_None(sink, serializer);
         sse_encode_u_32(key, serializer);
         sse_encode_u_32(max, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
@@ -29535,7 +29537,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_u_8_array_2(sink, serializer);
+        sse_encode_StreamSink_u_8_array_2_None(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 958, port: port_);
       },
@@ -31395,7 +31397,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
+        sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal_None(
             sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1011, port: port_);
@@ -32173,7 +32175,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_String(sink, serializer);
+        sse_encode_StreamSink_String_None(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1053, port: port_);
       },
@@ -32201,7 +32203,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_String(sink, serializer);
+        sse_encode_StreamSink_String_None(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1054, port: port_);
       },
@@ -32232,7 +32234,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_32(a, serializer);
         sse_encode_u_32(b, serializer);
-        sse_encode_StreamSink_u_32(c, serializer);
+        sse_encode_StreamSink_u_32_None(c, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1055, port: port_);
       },
@@ -32261,7 +32263,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_my_stream_entry_twin_normal(sink, serializer);
+        sse_encode_StreamSink_my_stream_entry_twin_normal_None(
+            sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1056, port: port_);
       },
@@ -32292,7 +32295,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_32(key, serializer);
         sse_encode_u_32(max, serializer);
-        sse_encode_StreamSink_log_twin_normal(sink, serializer);
+        sse_encode_StreamSink_log_twin_normal_None(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1057, port: port_);
       },
@@ -32322,7 +32325,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_32(key, serializer);
-        sse_encode_StreamSink_log_twin_normal(sink, serializer);
+        sse_encode_StreamSink_log_twin_normal_None(sink, serializer);
         sse_encode_u_32(max, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1058, port: port_);
@@ -32352,7 +32355,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_log_twin_normal(sink, serializer);
+        sse_encode_StreamSink_log_twin_normal_None(sink, serializer);
         sse_encode_u_32(key, serializer);
         sse_encode_u_32(max, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
@@ -32383,7 +32386,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_u_8_array_2(sink, serializer);
+        sse_encode_StreamSink_u_8_array_2_None(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1060, port: port_);
       },
@@ -32412,7 +32415,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_String(sink, serializer);
+        sse_encode_StreamSink_String_None(sink, serializer);
         sse_encode_String(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1061, port: port_);
@@ -34806,7 +34809,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   RustStreamSink<NonCloneSimpleTwinNormal>
-      dco_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
+      dco_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal_None(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError();
@@ -34814,7 +34817,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   RustStreamSink<NonCloneSimpleTwinRustAsync>
-      dco_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync(
+      dco_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync_None(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError();
@@ -34822,7 +34825,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   RustStreamSink<NonCloneSimpleTwinSync>
-      dco_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
+      dco_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync_None(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError();
@@ -34830,26 +34833,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   RustStreamSink<Map<int, ApplicationMode>>
-      dco_decode_StreamSink_Map_u_8_application_mode(dynamic raw) {
+      dco_decode_StreamSink_Map_u_8_application_mode_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError();
   }
 
   @protected
   RustStreamSink<Set<ApplicationMode>>
-      dco_decode_StreamSink_Set_application_mode(dynamic raw) {
+      dco_decode_StreamSink_Set_application_mode_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError();
   }
 
   @protected
-  RustStreamSink<String> dco_decode_StreamSink_String(dynamic raw) {
+  RustStreamSink<String> dco_decode_StreamSink_String_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError();
   }
 
   @protected
-  RustStreamSink<ApplicationMode> dco_decode_StreamSink_application_mode(
+  RustStreamSink<ApplicationMode> dco_decode_StreamSink_application_mode_None(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError();
@@ -34857,20 +34860,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   RustStreamSink<ApplicationModeArray2>
-      dco_decode_StreamSink_application_mode_array_2(dynamic raw) {
+      dco_decode_StreamSink_application_mode_array_2_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError();
   }
 
   @protected
   RustStreamSink<ApplicationSettings>
-      dco_decode_StreamSink_application_settings(dynamic raw) {
+      dco_decode_StreamSink_application_settings_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError();
   }
 
   @protected
-  RustStreamSink<EventTwinNormal> dco_decode_StreamSink_event_twin_normal(
+  RustStreamSink<EventTwinNormal> dco_decode_StreamSink_event_twin_normal_None(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError();
@@ -34878,124 +34881,124 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   RustStreamSink<EventTwinRustAsync>
-      dco_decode_StreamSink_event_twin_rust_async(dynamic raw) {
+      dco_decode_StreamSink_event_twin_rust_async_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError();
   }
 
   @protected
-  RustStreamSink<int> dco_decode_StreamSink_i_32(dynamic raw) {
+  RustStreamSink<int> dco_decode_StreamSink_i_32_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError();
   }
 
   @protected
   RustStreamSink<List<ApplicationMode>>
-      dco_decode_StreamSink_list_application_mode(dynamic raw) {
+      dco_decode_StreamSink_list_application_mode_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError();
   }
 
   @protected
   RustStreamSink<List<ApplicationSettings>>
-      dco_decode_StreamSink_list_application_settings(dynamic raw) {
+      dco_decode_StreamSink_list_application_settings_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError();
   }
 
   @protected
-  RustStreamSink<Log2TwinNormal> dco_decode_StreamSink_log_2_twin_normal(
+  RustStreamSink<Log2TwinNormal> dco_decode_StreamSink_log_2_twin_normal_None(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError();
   }
 
   @protected
-  RustStreamSink<Log2TwinRustAsync> dco_decode_StreamSink_log_2_twin_rust_async(
+  RustStreamSink<Log2TwinRustAsync>
+      dco_decode_StreamSink_log_2_twin_rust_async_None(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    throw UnimplementedError();
+  }
+
+  @protected
+  RustStreamSink<Log2TwinSync> dco_decode_StreamSink_log_2_twin_sync_None(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError();
   }
 
   @protected
-  RustStreamSink<Log2TwinSync> dco_decode_StreamSink_log_2_twin_sync(
+  RustStreamSink<LogTwinNormal> dco_decode_StreamSink_log_twin_normal_None(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError();
   }
 
   @protected
-  RustStreamSink<LogTwinNormal> dco_decode_StreamSink_log_twin_normal(
-      dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    throw UnimplementedError();
-  }
-
-  @protected
-  RustStreamSink<LogTwinRustAsync> dco_decode_StreamSink_log_twin_rust_async(
-      dynamic raw) {
+  RustStreamSink<LogTwinRustAsync>
+      dco_decode_StreamSink_log_twin_rust_async_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError();
   }
 
   @protected
   RustStreamSink<MirrorStructTwinNormal>
-      dco_decode_StreamSink_mirror_struct_twin_normal(dynamic raw) {
+      dco_decode_StreamSink_mirror_struct_twin_normal_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError();
   }
 
   @protected
   RustStreamSink<MirrorStructTwinRustAsync>
-      dco_decode_StreamSink_mirror_struct_twin_rust_async(dynamic raw) {
+      dco_decode_StreamSink_mirror_struct_twin_rust_async_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError();
   }
 
   @protected
   RustStreamSink<MirrorStructTwinSync>
-      dco_decode_StreamSink_mirror_struct_twin_sync(dynamic raw) {
+      dco_decode_StreamSink_mirror_struct_twin_sync_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError();
   }
 
   @protected
   RustStreamSink<MyStreamEntryTwinNormal>
-      dco_decode_StreamSink_my_stream_entry_twin_normal(dynamic raw) {
+      dco_decode_StreamSink_my_stream_entry_twin_normal_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError();
   }
 
   @protected
   RustStreamSink<MyStreamEntryTwinRustAsync>
-      dco_decode_StreamSink_my_stream_entry_twin_rust_async(dynamic raw) {
+      dco_decode_StreamSink_my_stream_entry_twin_rust_async_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError();
   }
 
   @protected
   RustStreamSink<ApplicationMode?>
-      dco_decode_StreamSink_opt_box_autoadd_application_mode(dynamic raw) {
+      dco_decode_StreamSink_opt_box_autoadd_application_mode_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError();
   }
 
   @protected
   RustStreamSink<(ApplicationSettings, RawStringEnumMirrored)>
-      dco_decode_StreamSink_record_application_settings_raw_string_enum_mirrored(
+      dco_decode_StreamSink_record_application_settings_raw_string_enum_mirrored_None(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError();
   }
 
   @protected
-  RustStreamSink<int> dco_decode_StreamSink_u_32(dynamic raw) {
+  RustStreamSink<int> dco_decode_StreamSink_u_32_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError();
   }
 
   @protected
-  RustStreamSink<U8Array2> dco_decode_StreamSink_u_8_array_2(dynamic raw) {
+  RustStreamSink<U8Array2> dco_decode_StreamSink_u_8_array_2_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError();
   }
@@ -43837,7 +43840,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   RustStreamSink<NonCloneSimpleTwinNormal>
-      sse_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
+      sse_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal_None(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     throw UnimplementedError('Unreachable ()');
@@ -43845,7 +43848,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   RustStreamSink<NonCloneSimpleTwinRustAsync>
-      sse_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync(
+      sse_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync_None(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     throw UnimplementedError('Unreachable ()');
@@ -43853,7 +43856,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   RustStreamSink<NonCloneSimpleTwinSync>
-      sse_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
+      sse_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync_None(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     throw UnimplementedError('Unreachable ()');
@@ -43861,7 +43864,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   RustStreamSink<Map<int, ApplicationMode>>
-      sse_decode_StreamSink_Map_u_8_application_mode(
+      sse_decode_StreamSink_Map_u_8_application_mode_None(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     throw UnimplementedError('Unreachable ()');
@@ -43869,20 +43872,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   RustStreamSink<Set<ApplicationMode>>
-      sse_decode_StreamSink_Set_application_mode(SseDeserializer deserializer) {
+      sse_decode_StreamSink_Set_application_mode_None(
+          SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     throw UnimplementedError('Unreachable ()');
   }
 
   @protected
-  RustStreamSink<String> sse_decode_StreamSink_String(
+  RustStreamSink<String> sse_decode_StreamSink_String_None(
       SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     throw UnimplementedError('Unreachable ()');
   }
 
   @protected
-  RustStreamSink<ApplicationMode> sse_decode_StreamSink_application_mode(
+  RustStreamSink<ApplicationMode> sse_decode_StreamSink_application_mode_None(
       SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     throw UnimplementedError('Unreachable ()');
@@ -43890,7 +43894,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   RustStreamSink<ApplicationModeArray2>
-      sse_decode_StreamSink_application_mode_array_2(
+      sse_decode_StreamSink_application_mode_array_2_None(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     throw UnimplementedError('Unreachable ()');
@@ -43898,13 +43902,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   RustStreamSink<ApplicationSettings>
-      sse_decode_StreamSink_application_settings(SseDeserializer deserializer) {
+      sse_decode_StreamSink_application_settings_None(
+          SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     throw UnimplementedError('Unreachable ()');
   }
 
   @protected
-  RustStreamSink<EventTwinNormal> sse_decode_StreamSink_event_twin_normal(
+  RustStreamSink<EventTwinNormal> sse_decode_StreamSink_event_twin_normal_None(
       SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     throw UnimplementedError('Unreachable ()');
@@ -43912,21 +43917,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   RustStreamSink<EventTwinRustAsync>
-      sse_decode_StreamSink_event_twin_rust_async(
+      sse_decode_StreamSink_event_twin_rust_async_None(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     throw UnimplementedError('Unreachable ()');
   }
 
   @protected
-  RustStreamSink<int> sse_decode_StreamSink_i_32(SseDeserializer deserializer) {
+  RustStreamSink<int> sse_decode_StreamSink_i_32_None(
+      SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     throw UnimplementedError('Unreachable ()');
   }
 
   @protected
   RustStreamSink<List<ApplicationMode>>
-      sse_decode_StreamSink_list_application_mode(
+      sse_decode_StreamSink_list_application_mode_None(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     throw UnimplementedError('Unreachable ()');
@@ -43934,50 +43940,52 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   RustStreamSink<List<ApplicationSettings>>
-      sse_decode_StreamSink_list_application_settings(
+      sse_decode_StreamSink_list_application_settings_None(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     throw UnimplementedError('Unreachable ()');
   }
 
   @protected
-  RustStreamSink<Log2TwinNormal> sse_decode_StreamSink_log_2_twin_normal(
+  RustStreamSink<Log2TwinNormal> sse_decode_StreamSink_log_2_twin_normal_None(
       SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     throw UnimplementedError('Unreachable ()');
   }
 
   @protected
-  RustStreamSink<Log2TwinRustAsync> sse_decode_StreamSink_log_2_twin_rust_async(
+  RustStreamSink<Log2TwinRustAsync>
+      sse_decode_StreamSink_log_2_twin_rust_async_None(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    throw UnimplementedError('Unreachable ()');
+  }
+
+  @protected
+  RustStreamSink<Log2TwinSync> sse_decode_StreamSink_log_2_twin_sync_None(
       SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     throw UnimplementedError('Unreachable ()');
   }
 
   @protected
-  RustStreamSink<Log2TwinSync> sse_decode_StreamSink_log_2_twin_sync(
+  RustStreamSink<LogTwinNormal> sse_decode_StreamSink_log_twin_normal_None(
       SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     throw UnimplementedError('Unreachable ()');
   }
 
   @protected
-  RustStreamSink<LogTwinNormal> sse_decode_StreamSink_log_twin_normal(
-      SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    throw UnimplementedError('Unreachable ()');
-  }
-
-  @protected
-  RustStreamSink<LogTwinRustAsync> sse_decode_StreamSink_log_twin_rust_async(
-      SseDeserializer deserializer) {
+  RustStreamSink<LogTwinRustAsync>
+      sse_decode_StreamSink_log_twin_rust_async_None(
+          SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     throw UnimplementedError('Unreachable ()');
   }
 
   @protected
   RustStreamSink<MirrorStructTwinNormal>
-      sse_decode_StreamSink_mirror_struct_twin_normal(
+      sse_decode_StreamSink_mirror_struct_twin_normal_None(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     throw UnimplementedError('Unreachable ()');
@@ -43985,7 +43993,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   RustStreamSink<MirrorStructTwinRustAsync>
-      sse_decode_StreamSink_mirror_struct_twin_rust_async(
+      sse_decode_StreamSink_mirror_struct_twin_rust_async_None(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     throw UnimplementedError('Unreachable ()');
@@ -43993,7 +44001,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   RustStreamSink<MirrorStructTwinSync>
-      sse_decode_StreamSink_mirror_struct_twin_sync(
+      sse_decode_StreamSink_mirror_struct_twin_sync_None(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     throw UnimplementedError('Unreachable ()');
@@ -44001,7 +44009,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   RustStreamSink<MyStreamEntryTwinNormal>
-      sse_decode_StreamSink_my_stream_entry_twin_normal(
+      sse_decode_StreamSink_my_stream_entry_twin_normal_None(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     throw UnimplementedError('Unreachable ()');
@@ -44009,7 +44017,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   RustStreamSink<MyStreamEntryTwinRustAsync>
-      sse_decode_StreamSink_my_stream_entry_twin_rust_async(
+      sse_decode_StreamSink_my_stream_entry_twin_rust_async_None(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     throw UnimplementedError('Unreachable ()');
@@ -44017,7 +44025,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   RustStreamSink<ApplicationMode?>
-      sse_decode_StreamSink_opt_box_autoadd_application_mode(
+      sse_decode_StreamSink_opt_box_autoadd_application_mode_None(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     throw UnimplementedError('Unreachable ()');
@@ -44025,20 +44033,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   RustStreamSink<(ApplicationSettings, RawStringEnumMirrored)>
-      sse_decode_StreamSink_record_application_settings_raw_string_enum_mirrored(
+      sse_decode_StreamSink_record_application_settings_raw_string_enum_mirrored_None(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     throw UnimplementedError('Unreachable ()');
   }
 
   @protected
-  RustStreamSink<int> sse_decode_StreamSink_u_32(SseDeserializer deserializer) {
+  RustStreamSink<int> sse_decode_StreamSink_u_32_None(
+      SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     throw UnimplementedError('Unreachable ()');
   }
 
   @protected
-  RustStreamSink<U8Array2> sse_decode_StreamSink_u_8_array_2(
+  RustStreamSink<U8Array2> sse_decode_StreamSink_u_8_array_2_None(
       SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     throw UnimplementedError('Unreachable ()');
@@ -53392,7 +53401,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-      sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
+      sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal_None(
           RustStreamSink<NonCloneSimpleTwinNormal> self,
           SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -53407,7 +53416,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-      sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync(
+      sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync_None(
           RustStreamSink<NonCloneSimpleTwinRustAsync> self,
           SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -53422,7 +53431,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-      sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
+      sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync_None(
           RustStreamSink<NonCloneSimpleTwinSync> self,
           SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -53436,7 +53445,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_StreamSink_Map_u_8_application_mode(
+  void sse_encode_StreamSink_Map_u_8_application_mode_None(
       RustStreamSink<Map<int, ApplicationMode>> self,
       SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -53449,7 +53458,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_StreamSink_Set_application_mode(
+  void sse_encode_StreamSink_Set_application_mode_None(
       RustStreamSink<Set<ApplicationMode>> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(
@@ -53461,7 +53470,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_StreamSink_String(
+  void sse_encode_StreamSink_String_None(
       RustStreamSink<String> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(
@@ -53472,7 +53481,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_StreamSink_application_mode(
+  void sse_encode_StreamSink_application_mode_None(
       RustStreamSink<ApplicationMode> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(
@@ -53484,7 +53493,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_StreamSink_application_mode_array_2(
+  void sse_encode_StreamSink_application_mode_array_2_None(
       RustStreamSink<ApplicationModeArray2> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(
@@ -53496,7 +53505,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_StreamSink_application_settings(
+  void sse_encode_StreamSink_application_settings_None(
       RustStreamSink<ApplicationSettings> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(
@@ -53508,7 +53517,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_StreamSink_event_twin_normal(
+  void sse_encode_StreamSink_event_twin_normal_None(
       RustStreamSink<EventTwinNormal> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(
@@ -53520,7 +53529,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_StreamSink_event_twin_rust_async(
+  void sse_encode_StreamSink_event_twin_rust_async_None(
       RustStreamSink<EventTwinRustAsync> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(
@@ -53532,7 +53541,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_StreamSink_i_32(
+  void sse_encode_StreamSink_i_32_None(
       RustStreamSink<int> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(
@@ -53543,7 +53552,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_StreamSink_list_application_mode(
+  void sse_encode_StreamSink_list_application_mode_None(
       RustStreamSink<List<ApplicationMode>> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(
@@ -53555,7 +53564,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_StreamSink_list_application_settings(
+  void sse_encode_StreamSink_list_application_settings_None(
       RustStreamSink<List<ApplicationSettings>> self,
       SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -53568,7 +53577,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_StreamSink_log_2_twin_normal(
+  void sse_encode_StreamSink_log_2_twin_normal_None(
       RustStreamSink<Log2TwinNormal> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(
@@ -53580,7 +53589,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_StreamSink_log_2_twin_rust_async(
+  void sse_encode_StreamSink_log_2_twin_rust_async_None(
       RustStreamSink<Log2TwinRustAsync> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(
@@ -53592,7 +53601,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_StreamSink_log_2_twin_sync(
+  void sse_encode_StreamSink_log_2_twin_sync_None(
       RustStreamSink<Log2TwinSync> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(
@@ -53604,7 +53613,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_StreamSink_log_twin_normal(
+  void sse_encode_StreamSink_log_twin_normal_None(
       RustStreamSink<LogTwinNormal> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(
@@ -53616,7 +53625,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_StreamSink_log_twin_rust_async(
+  void sse_encode_StreamSink_log_twin_rust_async_None(
       RustStreamSink<LogTwinRustAsync> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(
@@ -53628,7 +53637,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_StreamSink_mirror_struct_twin_normal(
+  void sse_encode_StreamSink_mirror_struct_twin_normal_None(
       RustStreamSink<MirrorStructTwinNormal> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(
@@ -53640,7 +53649,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_StreamSink_mirror_struct_twin_rust_async(
+  void sse_encode_StreamSink_mirror_struct_twin_rust_async_None(
       RustStreamSink<MirrorStructTwinRustAsync> self,
       SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -53653,7 +53662,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_StreamSink_mirror_struct_twin_sync(
+  void sse_encode_StreamSink_mirror_struct_twin_sync_None(
       RustStreamSink<MirrorStructTwinSync> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(
@@ -53665,7 +53674,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_StreamSink_my_stream_entry_twin_normal(
+  void sse_encode_StreamSink_my_stream_entry_twin_normal_None(
       RustStreamSink<MyStreamEntryTwinNormal> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(
@@ -53677,7 +53686,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_StreamSink_my_stream_entry_twin_rust_async(
+  void sse_encode_StreamSink_my_stream_entry_twin_rust_async_None(
       RustStreamSink<MyStreamEntryTwinRustAsync> self,
       SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -53690,7 +53699,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_StreamSink_opt_box_autoadd_application_mode(
+  void sse_encode_StreamSink_opt_box_autoadd_application_mode_None(
       RustStreamSink<ApplicationMode?> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(
@@ -53703,7 +53712,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-      sse_encode_StreamSink_record_application_settings_raw_string_enum_mirrored(
+      sse_encode_StreamSink_record_application_settings_raw_string_enum_mirrored_None(
           RustStreamSink<(ApplicationSettings, RawStringEnumMirrored)> self,
           SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -53717,7 +53726,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_StreamSink_u_32(
+  void sse_encode_StreamSink_u_32_None(
       RustStreamSink<int> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(
@@ -53728,7 +53737,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_StreamSink_u_8_array_2(
+  void sse_encode_StreamSink_u_8_array_2_None(
       RustStreamSink<U8Array2> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(

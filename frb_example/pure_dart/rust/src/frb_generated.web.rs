@@ -104,27 +104,27 @@ impl CstDecode<StreamSink<NonCloneSimpleTwinNormal>> for String {
         todo!()
     }
 }
-impl CstDecode<StreamSink<NonCloneSimpleTwinRustAsync>> for String {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinRustAsync> {
-        todo!()
-    }
-}
 impl CstDecode<StreamSink<NonCloneSimpleTwinRustAsyncMoi>> for String {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinRustAsyncMoi> {
         todo!()
     }
 }
-impl CstDecode<StreamSink<NonCloneSimpleTwinSync>> for String {
+impl CstDecode<StreamSink<NonCloneSimpleTwinRustAsync>> for String {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinSync> {
+    fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinRustAsync> {
         todo!()
     }
 }
 impl CstDecode<StreamSink<NonCloneSimpleTwinSyncMoi>> for String {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinSyncMoi> {
+        todo!()
+    }
+}
+impl CstDecode<StreamSink<NonCloneSimpleTwinSync>> for String {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinSync> {
         todo!()
     }
 }
@@ -10898,14 +10898,6 @@ impl CstDecode<StreamSink<NonCloneSimpleTwinNormal>>
         todo!()
     }
 }
-impl CstDecode<StreamSink<NonCloneSimpleTwinRustAsync>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinRustAsync> {
-        todo!()
-    }
-}
 impl CstDecode<StreamSink<NonCloneSimpleTwinRustAsyncMoi>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -10914,11 +10906,11 @@ impl CstDecode<StreamSink<NonCloneSimpleTwinRustAsyncMoi>>
         todo!()
     }
 }
-impl CstDecode<StreamSink<NonCloneSimpleTwinSync>>
+impl CstDecode<StreamSink<NonCloneSimpleTwinRustAsync>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinSync> {
+    fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinRustAsync> {
         todo!()
     }
 }
@@ -10927,6 +10919,14 @@ impl CstDecode<StreamSink<NonCloneSimpleTwinSyncMoi>>
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinSyncMoi> {
+        todo!()
+    }
+}
+impl CstDecode<StreamSink<NonCloneSimpleTwinSync>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinSync> {
         todo!()
     }
 }
