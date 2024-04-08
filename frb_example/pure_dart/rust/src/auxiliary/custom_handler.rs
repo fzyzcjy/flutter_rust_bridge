@@ -1,3 +1,5 @@
+/// This file mainly serves as compilation test
+
 #![allow(unused_variables)]
 
 use flutter_rust_bridge::for_generated::*;
@@ -9,9 +11,9 @@ pub type MyUnmodifiedHandler = SimpleHandler<
     NoOpErrorListener,
 >;
 
-pub struct MyCustomHandler;
+pub struct MyFullyCustomHandler;
 
-impl Handler for MyCustomHandler {
+impl Handler for MyFullyCustomHandler {
     fn wrap_normal<Rust2DartCodec, PrepareFn, TaskFn>(
         &self,
         task_info: TaskInfo,
