@@ -2,7 +2,6 @@
 
 use crate::frb_generated::FLUTTER_RUST_BRIDGE_CODEGEN_VERSION;
 
-
 // This file demonstrates how to use a custom handler.
 // Usually there is no need for this, and the default handler is used.
 //
