@@ -3,8 +3,8 @@ use crate::codegen::generator::wire::rust::spec_generator::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::ir::ty::IrTypeTrait;
-use itertools::Itertools;
 use crate::library::misc::consts::HANDLER_NAME;
+use itertools::Itertools;
 
 impl<'a> WireRustGeneratorMiscTrait for DartFnWireRustGenerator<'a> {
     fn generate_related_funcs(&self) -> Acc<WireRustOutputCode> {

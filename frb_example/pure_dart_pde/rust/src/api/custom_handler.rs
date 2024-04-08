@@ -3,7 +3,7 @@
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "rustAsync", "sse", "sync sse", "rustAsync sse"]}
 
 use crate::frb_generated::FLUTTER_RUST_BRIDGE_CODEGEN_VERSION;
-use lazy_static::lazy_static;
+
 
 // This file demonstrates how to use a custom handler.
 // Usually there is no need for this, and the default handler is used.

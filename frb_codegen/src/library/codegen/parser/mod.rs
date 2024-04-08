@@ -23,10 +23,10 @@ use crate::codegen::parser::type_parser::TypeParser;
 use crate::codegen::parser::unused_checker::get_unused_types;
 use crate::codegen::ConfigDumpContent;
 use crate::library::misc::consts::HANDLER_NAME;
+use anyhow::ensure;
 use itertools::Itertools;
 use log::trace;
 use std::path::{Path, PathBuf};
-use anyhow::ensure;
 use syn::File;
 use ConfigDumpContent::SourceGraph;
 
