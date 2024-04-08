@@ -26,25 +26,8 @@ pub(crate) struct ApiDartGeneratedFunction {
     pub(crate) header: DartBasicHeaderCode,
     pub(crate) func_comments: String,
     pub(crate) func_expr: String,
-    pub(crate) func_impl: FunctionBody,
+    pub(crate) func_impl: String,
     pub(crate) src_lineno: usize,
-}
-
-#[derive(Debug, Serialize)]
-pub(crate) struct FunctionBody {
-    pub(crate) code: String,
-    pub(crate) block: bool,
-}
-
-impl Display for FunctionBody {
-    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
-        let code = &self.code;
-        if self.block {
-            write!(f, "{{ {code} }}")
-        } else {
-            write!(f, "=> {code};")
-        }
-    }
 }
 
 pub(crate) fn generate(
@@ -72,11 +55,7 @@ pub(crate) fn generate(
 
     let func_comments = generate_dart_comments(&func.comments);
 
-    let func_impl = generate_func_impl(
-        func,
-        &context.config.dart_entrypoint_class_name,
-        &return_stream,
-    );
+    let func_impl = generate_func_impl(func, &context.config.dart_entrypoint_class_name);
 
     let header = generate_header(func, context)?;
 
@@ -126,11 +105,7 @@ fn generate_params(
     params
 }
 
-fn generate_func_impl(
-    func: &IrFunc,
-    dart_entrypoint_class_name: &str,
-    return_stream: &Option<IrField>,
-) -> FunctionBody {
+fn generate_func_impl(func: &IrFunc, dart_entrypoint_class_name: &str) -> String {
     let func_name = &func.name.name.to_case(Case::Camel);
     let param_names: Vec<String> = [
         (func.inputs.iter().map(|input| input.name.dart_style())).collect_vec(),
@@ -141,32 +116,7 @@ fn generate_func_impl(
         .iter()
         .map(|name| format!("{name}: {name}"))
         .join(", ");
-    let main_call =
-        format!("{dart_entrypoint_class_name}.instance.api.{func_name}({param_forwards})");
-
-    if let Some(return_stream) = return_stream {
-        FunctionBody {
-            code: format!(
-                "
-                final {return_stream_name} = RustStreamSink();
-                {maybe_await}{main_call};
-                return {return_stream_name}.stream;
-                ",
-                return_stream_name = return_stream.name.raw,
-                maybe_await = if func.mode == IrFuncMode::Sync {
-                    ""
-                } else {
-                    "await "
-                },
-            ),
-            block: true,
-        }
-    } else {
-        FunctionBody {
-            code: main_call,
-            block: false,
-        }
-    }
+    format!("{dart_entrypoint_class_name}.instance.api.{func_name}({param_forwards})")
 }
 
 fn generate_header(
