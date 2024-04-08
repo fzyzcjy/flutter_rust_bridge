@@ -22,6 +22,7 @@
       "wrapper_name": null
     }
   },
+  "existing_handler": null,
   "funcs": [
     {
       "codec_mode_pack": {
@@ -222,7 +223,6 @@
       "rust_async": false
     }
   ],
-  "has_executor": false,
   "struct_pool": {
     "crate::api/MyStruct": {
       "comments": [],

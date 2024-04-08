@@ -1,6 +1,7 @@
 {
   "dart_code_of_type": {},
   "enum_pool": {},
+  "existing_handler": null,
   "funcs": [
     {
       "codec_mode_pack": {
@@ -45,7 +46,6 @@
       "rust_async": false
     }
   ],
-  "has_executor": false,
   "struct_pool": {},
   "unused_types": []
 }
