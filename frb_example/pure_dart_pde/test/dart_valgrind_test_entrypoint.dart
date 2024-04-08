@@ -21,6 +21,7 @@ import 'api/dart_opaque_test.dart' as dart_opaque_test;
 import 'api/enumeration_test.dart' as enumeration_test;
 import 'api/event_listener_test.dart' as event_listener_test;
 import 'api/exception_test.dart' as exception_test;
+import 'api/external_impl_test.dart' as external_impl_test;
 import 'api/external_type_in_crate_test.dart' as external_type_in_crate_test;
 import 'api/inside_macro_test.dart' as inside_macro_test;
 import 'api/map_and_set_test.dart' as map_and_set_test;
@@ -85,6 +86,10 @@ import 'api/pseudo_manual/exception_twin_rust_async_test.dart'
     as exception_twin_rust_async_test;
 import 'api/pseudo_manual/exception_twin_sync_test.dart'
     as exception_twin_sync_test;
+import 'api/pseudo_manual/external_impl_twin_rust_async_test.dart'
+    as external_impl_twin_rust_async_test;
+import 'api/pseudo_manual/external_impl_twin_sync_test.dart'
+    as external_impl_twin_sync_test;
 import 'api/pseudo_manual/external_type_in_crate_twin_rust_async_test.dart'
     as external_type_in_crate_twin_rust_async_test;
 import 'api/pseudo_manual/external_type_in_crate_twin_sync_test.dart'
@@ -203,6 +208,7 @@ Future<void> callFileEntrypoints() async {
   await enumeration_test.main(skipRustLibInit: true);
   await event_listener_test.main(skipRustLibInit: true);
   await exception_test.main(skipRustLibInit: true);
+  await external_impl_test.main(skipRustLibInit: true);
   await external_type_in_crate_test.main(skipRustLibInit: true);
   await inside_macro_test.main(skipRustLibInit: true);
   await map_and_set_test.main(skipRustLibInit: true);
@@ -245,6 +251,8 @@ Future<void> callFileEntrypoints() async {
   await event_listener_twin_rust_async_test.main(skipRustLibInit: true);
   await exception_twin_rust_async_test.main(skipRustLibInit: true);
   await exception_twin_sync_test.main(skipRustLibInit: true);
+  await external_impl_twin_rust_async_test.main(skipRustLibInit: true);
+  await external_impl_twin_sync_test.main(skipRustLibInit: true);
   await external_type_in_crate_twin_rust_async_test.main(skipRustLibInit: true);
   await external_type_in_crate_twin_sync_test.main(skipRustLibInit: true);
   await map_and_set_twin_rust_async_test.main(skipRustLibInit: true);

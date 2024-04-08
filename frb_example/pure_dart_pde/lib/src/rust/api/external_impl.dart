@@ -26,6 +26,13 @@ class SimpleOpaqueExternalStructWithMethod extends RustOpaque {
         .rust_arc_decrement_strong_count_SimpleOpaqueExternalStructWithMethodPtr,
   );
 
+  factory SimpleOpaqueExternalStructWithMethod(
+          {required String a, dynamic hint}) =>
+      RustLib.instance.api.simpleOpaqueExternalStructWithMethodNew(
+        a: a,
+        hint: hint,
+      );
+
   Future<String> simpleExternalMethod({dynamic hint}) => RustLib.instance.api
           .simpleOpaqueExternalStructWithMethodSimpleExternalMethod(
         that: this,

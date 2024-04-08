@@ -137,6 +137,10 @@ pub struct SimpleOpaqueExternalStructWithMethod {
 }
 
 impl SimpleOpaqueExternalStructWithMethod {
+    pub fn new(a: String) -> Self {
+        Self { a: Mutex::new(a) }
+    }
+
     pub fn simple_external_method(&self) -> String {
         (*self.a.lock().unwrap()).to_string()
     }

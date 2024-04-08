@@ -1,8 +1,16 @@
 # Methods
 
 There is support for structs with methods. Both static methods, and non-static methods are supported.
+No special syntax is needed, and just write normal `impl YourStruct { pub fn your_method() {} }`.
+
+## Methods in external crates
+
+For methods that are not defined in the `rust_input` folders in the current crate,
+the following syntax is needed to make flutter_rust_bridge aware of the methods.
 
 ## Example
+
+### Example 1
 
 ```rust
 pub struct SumWith { pub x: u32 }
