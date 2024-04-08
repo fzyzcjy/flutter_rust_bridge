@@ -4,22 +4,28 @@ use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::source_graph::modules::StructOrEnumWrapper;
 use crate::codegen::parser::type_parser::external_impl;
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
+use crate::library::codegen::ir::ty::IrTypeTrait;
 use log::debug;
 use std::collections::{HashMap, HashSet};
 use std::fmt::Debug;
 use std::hash::Hash;
-use syn::{Ident, Type, TypePath};
+use syn::{Ident, Type};
 
 pub(super) trait EnumOrStructParser<Id, Obj, SrcObj, Item>
 where
     Id: From<NamespacedName> + Clone + PartialEq + Eq + Hash,
     SrcObj: StructOrEnumWrapper<Item> + Clone + Debug,
 {
-    fn parse(
+    fn parse(&mut self, last_segment: &SplayedSegment) -> anyhow::Result<Option<IrType>> {
+        let output = self.parse_impl(last_segment)?;
+        self.handle_dart_code(&output);
+        Ok(output.map(|(ty, _)| ty))
+    }
+
+    fn parse_impl(
         &mut self,
-        _type_path: &TypePath,
         last_segment: &SplayedSegment,
-    ) -> anyhow::Result<Option<IrType>> {
+    ) -> anyhow::Result<Option<(IrType, FrbAttributes)>> {
         let (name, _) = last_segment;
         let name = external_impl::parse_name_or_original(name)?;
 
@@ -33,7 +39,7 @@ where
             let attrs_opaque = attrs.opaque();
             if attrs_opaque == Some(true) {
                 debug!("Treat {name} as opaque since attribute says so");
-                return Ok(Some(self.parse_opaque(&namespaced_name)?));
+                return Ok(Some((self.parse_opaque(&namespaced_name)?, attrs)));
             }
 
             let ident: Id = namespaced_name.clone().into();
@@ -44,7 +50,7 @@ where
                     &src_object.inner().ident,
                     src_object.inner().mirror,
                 );
-                let parsed_object = self.parse_inner(&src_object, name, wrapper_name)?;
+                let parsed_object = self.parse_inner_impl(&src_object, name, wrapper_name)?;
                 (self.parser_info().object_pool).insert(ident.clone(), parsed_object);
             }
 
@@ -53,13 +59,31 @@ where
                     .map_or(false, |obj| Self::compute_default_opaque(obj))
             {
                 debug!("Treat {name} as opaque by compute_default_opaque");
-                return Ok(Some(self.parse_opaque(&namespaced_name)?));
+                return Ok(Some((self.parse_opaque(&namespaced_name)?, attrs)));
             }
 
-            return Ok(Some(self.construct_output(ident)?));
+            return Ok(Some((self.construct_output(ident)?, attrs)));
         }
 
         Ok(None)
+    }
+
+    fn handle_dart_code(&mut self, raw_output: &Option<(IrType, FrbAttributes)>) {
+        if let Some((ty, attrs)) = &raw_output {
+            let dart_code = attrs.dart_code();
+            if dart_code.is_empty() {
+                return;
+            }
+
+            let keys = match ty {
+                IrType::RustAutoOpaque(ty) => vec![ty.safe_ident(), ty.inner.safe_ident()],
+                ty => vec![ty.safe_ident()],
+            };
+
+            for key in keys {
+                self.dart_code_of_type().insert(key, dart_code.clone());
+            }
+        }
     }
 
     fn parse_opaque(&mut self, namespaced_name: &NamespacedName) -> anyhow::Result<IrType> {
@@ -69,7 +93,7 @@ where
         )
     }
 
-    fn parse_inner(
+    fn parse_inner_impl(
         &mut self,
         src_object: &SrcObj,
         name: NamespacedName,
@@ -81,6 +105,8 @@ where
     fn src_objects(&self) -> &HashMap<String, &SrcObj>;
 
     fn parser_info(&mut self) -> &mut EnumOrStructParserInfo<Id, Obj>;
+
+    fn dart_code_of_type(&mut self) -> &mut HashMap<String, String>;
 
     fn parse_type_rust_auto_opaque(
         &mut self,

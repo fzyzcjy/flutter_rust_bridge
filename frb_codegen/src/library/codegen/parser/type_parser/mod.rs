@@ -38,6 +38,7 @@ pub(crate) struct TypeParser<'a> {
     src_structs: HashMap<String, &'a Struct>,
     src_enums: HashMap<String, &'a Enum>,
     src_types: HashMap<String, Type>,
+    dart_code_of_type: HashMap<String, String>,
     struct_parser_info: EnumOrStructParserInfo<IrStructIdent, IrStruct>,
     enum_parser_info: EnumOrStructParserInfo<IrEnumIdent, IrEnum>,
     rust_opaque_parser_info: RustOpaqueParserInfo,
@@ -55,6 +56,7 @@ impl<'a> TypeParser<'a> {
             src_structs,
             src_enums,
             src_types,
+            dart_code_of_type: HashMap::new(),
             struct_parser_info: EnumOrStructParserInfo::new(),
             enum_parser_info: EnumOrStructParserInfo::new(),
             rust_opaque_parser_info: RustOpaqueParserInfo::default(),
@@ -63,10 +65,11 @@ impl<'a> TypeParser<'a> {
         }
     }
 
-    pub(crate) fn consume(self) -> (IrStructPool, IrEnumPool) {
+    pub(crate) fn consume(self) -> (IrStructPool, IrEnumPool, HashMap<String, String>) {
         (
             self.struct_parser_info.object_pool,
             self.enum_parser_info.object_pool,
+            self.dart_code_of_type,
         )
     }
 

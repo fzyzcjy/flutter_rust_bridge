@@ -108,12 +108,13 @@ pub(crate) fn parse(
     );
     // frb-coverage:ignore-end
 
-    let (struct_pool, enum_pool) = type_parser.consume();
+    let (struct_pool, enum_pool, dart_code_of_type) = type_parser.consume();
 
     let mut ans = IrPack {
         funcs: ir_funcs,
         struct_pool,
         enum_pool,
+        dart_code_of_type,
         existing_handler: existing_handlers.first().cloned(),
         unused_types: vec![],
     };

@@ -14,15 +14,14 @@ use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use anyhow::bail;
 use std::collections::HashMap;
-use syn::{Field, Fields, FieldsNamed, FieldsUnnamed, ItemStruct, Type, TypePath};
+use syn::{Field, Fields, FieldsNamed, FieldsUnnamed, ItemStruct, Type};
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_struct(
         &mut self,
-        type_path: &TypePath,
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
-        EnumOrStructParserStruct(self).parse(type_path, last_segment)
+        EnumOrStructParserStruct(self).parse(last_segment)
     }
 
     fn parse_struct(
@@ -58,6 +57,8 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             is_fields_named,
             dart_metadata,
             ignore: attributes.ignore(),
+            generate_hash: attributes.generate_hash(),
+            generate_eq: attributes.generate_eq(),
             comments,
         })
     }
@@ -85,7 +86,7 @@ struct EnumOrStructParserStruct<'a, 'b, 'c, 'd>(&'d mut TypeParserWithContext<'a
 impl EnumOrStructParser<IrStructIdent, IrStruct, Struct, ItemStruct>
     for EnumOrStructParserStruct<'_, '_, '_, '_>
 {
-    fn parse_inner(
+    fn parse_inner_impl(
         &mut self,
         src_object: &Struct,
         name: NamespacedName,
@@ -107,6 +108,10 @@ impl EnumOrStructParser<IrStructIdent, IrStruct, Struct, ItemStruct>
 
     fn parser_info(&mut self) -> &mut EnumOrStructParserInfo<IrStructIdent, IrStruct> {
         &mut self.0.inner.struct_parser_info
+    }
+
+    fn dart_code_of_type(&mut self) -> &mut HashMap<String, String> {
+        &mut self.0.inner.dart_code_of_type
     }
 
     fn parse_type_rust_auto_opaque(

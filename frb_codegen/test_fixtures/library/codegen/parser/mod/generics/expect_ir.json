@@ -1,4 +1,5 @@
 {
+  "dart_code_of_type": {},
   "enum_pool": {
     "crate::api/MyGenericEnum": {
       "comments": [],
@@ -44,6 +45,8 @@
                   }
                 }
               ],
+              "generate_eq": true,
+              "generate_hash": true,
               "ignore": false,
               "is_fields_named": false,
               "name": "crate::api::MyGenericEnum/One",
@@ -92,6 +95,8 @@
                   }
                 }
               ],
+              "generate_eq": true,
+              "generate_hash": true,
               "ignore": false,
               "is_fields_named": false,
               "name": "crate::api::MyGenericEnum/Two",
@@ -455,6 +460,8 @@
           }
         }
       ],
+      "generate_eq": true,
+      "generate_hash": true,
       "ignore": false,
       "is_fields_named": true,
       "name": "crate::api/MyGenericStruct",

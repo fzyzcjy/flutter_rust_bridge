@@ -18,6 +18,7 @@ impl<'a> StructRefApiDartGenerator<'a> {
         metadata: &str,
         methods: &[String],
         constructor_postfix: &str,
+        extra_body: &str,
     ) -> String {
         let field_declarations = self.generate_field_declarations(src);
         let constructor_params = self.generate_mode_non_freezed_constructor_params(src);
@@ -28,8 +29,16 @@ impl<'a> StructRefApiDartGenerator<'a> {
         let implements_exception = generate_dart_maybe_implements_exception(self.ir.is_exception);
         let methods_str = methods.join("\n");
 
-        let hashcode = generate_hashcode(&src.fields);
-        let equals = generate_equals(&src.fields, name_str);
+        let hashcode = if src.generate_hash {
+            generate_hashcode(&src.fields)
+        } else {
+            "".to_owned()
+        };
+        let equals = if src.generate_eq {
+            generate_equals(&src.fields, name_str)
+        } else {
+            "".to_owned()
+        };
 
         format!(
             "{comments}{metadata}class {name_str} {implements_exception} {{
@@ -38,6 +47,7 @@ impl<'a> StructRefApiDartGenerator<'a> {
                 {maybe_const}{name_str}{constructor_postfix}({constructor_params});
 
                 {methods_str}
+                {extra_body}
 
                 {hashcode}
 

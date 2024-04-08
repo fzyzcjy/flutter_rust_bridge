@@ -1,4 +1,5 @@
 {
+  "dart_code_of_type": {},
   "enum_pool": {
     "crate::api/MyEnum": {
       "comments": [],
@@ -223,6 +224,8 @@
       "comments": [],
       "dart_metadata": [],
       "fields": [],
+      "generate_eq": true,
+      "generate_hash": true,
       "ignore": false,
       "is_fields_named": true,
       "name": "crate::api/MyStruct",
