@@ -16,7 +16,6 @@ use crate::codegen::parser::type_parser::TypeParserWithContext;
 use crate::if_then_some;
 use anyhow::bail;
 use itertools::Itertools;
-use quote::quote;
 use syn::{parse_str, Type};
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
@@ -123,7 +122,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
 fn parse_stream_sink_codec(codec: &Type) -> anyhow::Result<CodecMode> {
     let path = if_then_some!(let Type::Path(path) = codec, path).unwrap();
-    let segments = extract_path_data(path)?;
-    let ident = segments.last().unwrap().ident;
+    let segments = extract_path_data(&path.path)?;
+    let ident = &segments.last().unwrap().ident;
     Ok(ident.parse()?)
 }
