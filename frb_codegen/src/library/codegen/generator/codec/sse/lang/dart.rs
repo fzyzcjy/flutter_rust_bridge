@@ -44,7 +44,7 @@ impl LangTrait for DartLang {
     }
 
     fn throw_unreachable(&self, message: &str) -> String {
-        format!("throw UnimplementedError('Unreachable ({message}(')")
+        format!("throw UnimplementedError('Unreachable ({message})')")
     }
 
     fn for_loop(&self, lhs: &str, rhs: &str, body: &str) -> String {
