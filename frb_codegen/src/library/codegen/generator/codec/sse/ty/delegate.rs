@@ -30,7 +30,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     IrTypeDelegateTime::Duration => "self.inMicroseconds".to_owned(),
                 },
                 IrTypeDelegate::Uuid => "self.toBytes()".to_owned(),
-                IrTypeDelegate::StreamSink(ir) => "self.serialize()".to_owned(),
+                IrTypeDelegate::StreamSink(_) => "self.serialize()".to_owned(),
             },
             Lang::RustLang(_) => match &self.ir {
                 IrTypeDelegate::Array(_) => {
@@ -67,7 +67,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     }
                 },
                 IrTypeDelegate::Uuid => "self.as_bytes().to_vec()".to_owned(),
-                IrTypeDelegate::StreamSink(ir) => "self.serialize()".to_owned(),
+                IrTypeDelegate::StreamSink(_) => "self.serialize()".to_owned(),
             },
         };
         Some(simple_delegate_encode(
@@ -112,7 +112,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     IrTypeDelegateTime::Duration => "Duration(microseconds: inner)".to_owned(),
                 },
                 IrTypeDelegate::Uuid => "UuidValue.fromByteList(inner)".to_owned(),
-                IrTypeDelegate::StreamSink(ir) => "RustStreamSink.deserialize(inner)".to_owned(),
+                IrTypeDelegate::StreamSink(_) => "RustStreamSink.deserialize(inner)".to_owned(),
             },
             Lang::RustLang(_) => match &self.ir {
                 IrTypeDelegate::Array(_) => {
@@ -144,7 +144,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::Uuid => {
                     r#"uuid::Uuid::from_slice(&inner).expect("fail to decode uuid")"#.to_owned()
                 }
-                IrTypeDelegate::StreamSink(ir) => "RustStreamSink::deserialize(inner)".to_owned(),
+                IrTypeDelegate::StreamSink(_) => "RustStreamSink::deserialize(inner)".to_owned(),
             },
         };
 
