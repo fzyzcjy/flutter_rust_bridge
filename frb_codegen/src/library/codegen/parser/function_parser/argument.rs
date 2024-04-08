@@ -1,5 +1,5 @@
 use crate::codegen::ir::field::{IrField, IrFieldSettings};
-use crate::codegen::ir::func::{IrFuncMode, IrFuncOwnerInfo};
+use crate::codegen::ir::func::IrFuncOwnerInfo;
 use crate::codegen::ir::ident::IrIdent;
 use crate::codegen::ir::ty::boxed::IrTypeBoxed;
 use crate::codegen::ir::ty::rust_auto_opaque::OwnershipMode;

@@ -3,7 +3,6 @@ use crate::codegen::generator::misc::target::TargetOrCommon;
 use crate::codegen::generator::wire::misc::has_port_argument;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
 use crate::codegen::generator::wire::rust::spec_generator::codec::base::WireRustCodecEntrypoint;
-use crate::codegen::generator::wire::rust::spec_generator::codec::dco::base::WireRustCodecDcoGenerator;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
     ExternFunc, ExternFuncParam,
 };
@@ -13,7 +12,6 @@ use crate::codegen::ir::func::{IrFunc, IrFuncMode, IrFuncOwnerInfo, IrFuncOwnerI
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::rust_auto_opaque::OwnershipMode;
 use crate::codegen::ir::ty::IrType;
-use crate::library::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::ty::WireRustCodecDcoGeneratorEncoderTrait;
 use crate::misc::consts::HANDLER_NAME;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
@@ -75,7 +73,7 @@ fn generate_inner_func_args(
     ir_pack: &IrPack,
     context: WireRustGeneratorContext,
 ) -> Vec<String> {
-    let mut ans = func
+    let ans = func
         .inputs
         .iter()
         .enumerate()
