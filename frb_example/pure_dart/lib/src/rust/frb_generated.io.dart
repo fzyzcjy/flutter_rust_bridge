@@ -38878,6 +38878,28 @@ class RustLibWire implements BaseWire {
       _wire_close_event_listener_twin_normalPtr
           .asFunction<void Function(int)>();
 
+  WireSyncRust2DartDco wire_create_event_sync_twin_normal(
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> address,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> payload,
+  ) {
+    return _wire_create_event_sync_twin_normal(
+      address,
+      payload,
+    );
+  }
+
+  late final _wire_create_event_sync_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>,
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+      'frbgen_frb_example_pure_dart_wire_create_event_sync_twin_normal');
+  late final _wire_create_event_sync_twin_normal =
+      _wire_create_event_sync_twin_normalPtr.asFunction<
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_list_prim_u_8_strict>,
+              ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+
   void wire_create_event_twin_normal(
     int port_,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> address,
