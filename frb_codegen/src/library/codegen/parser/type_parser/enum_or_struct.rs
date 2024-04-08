@@ -78,7 +78,7 @@ where
             };
 
             for key in keys {
-                self.dart_code_of_type().insert(key, dart_code);
+                self.dart_code_of_type().insert(key, dart_code.clone());
             }
         }
     }
