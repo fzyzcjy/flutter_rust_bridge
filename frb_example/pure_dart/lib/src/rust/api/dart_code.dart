@@ -30,6 +30,8 @@ class OpaqueStructWithDartCodeTwinNormal extends RustOpaque {
         that: this,
         hint: hint,
       );
+
+  static int get dartCodeGetter => 123;
 }
 
 class TranslatableStructWithDartCodeTwinNormal {
