@@ -88,7 +88,10 @@ pub(crate) fn parse(
         .sorted_by_cached_key(|func| func.name.clone())
         .collect_vec();
 
-    let has_handler = (file_data_arr.iter()).any(|file| parse_has_executor(&file.content));
+    let existing_handlers = (file_data_arr.iter())
+        .filter(|file| parse_has_executor(&file.content))
+        .collect_vec();
+    ensure!(existing_handlers.len() <= 1, "Should have at most one custom handler");
 
     let (struct_pool, enum_pool) = type_parser.consume();
 
@@ -96,7 +99,7 @@ pub(crate) fn parse(
         funcs: ir_funcs,
         struct_pool,
         enum_pool,
-        has_handler,
+        existing_handler,
         unused_types: vec![],
     };
 
