@@ -1,6 +1,7 @@
 use crate::codegen::generator::api_dart::spec_generator::base::{
     ApiDartGenerator, ApiDartGeneratorContext,
 };
+use crate::codegen::generator::api_dart::spec_generator::function::ReturnStreamInfo;
 use crate::codegen::ir::annotation::IrDartAnnotation;
 use crate::codegen::ir::comment::IrComment;
 use crate::codegen::ir::func::{IrFunc, IrFuncMode};
@@ -14,7 +15,6 @@ use crate::utils::path_utils::path_to_string;
 use anyhow::Context;
 use itertools::Itertools;
 use pathdiff::diff_paths;
-use crate::codegen::generator::api_dart::spec_generator::function::ReturnStreamInfo;
 
 /// A trailing newline is included if comments is not empty.
 pub(crate) fn generate_dart_comments(comments: &[IrComment]) -> String {
@@ -60,8 +60,14 @@ pub(crate) fn generate_function_dart_return_type(
     return_stream: &Option<ReturnStreamInfo>,
     context: ApiDartGeneratorContext,
 ) -> String {
-    let inner = return_stream.as_ref()
-        .map(|info| ApiDartGenerator::new(info.ty.inner.clone(), context).dart_api_type())
+    let inner = return_stream
+        .as_ref()
+        .map(|info| {
+            format!(
+                "Stream<{}>",
+                ApiDartGenerator::new(info.ty.inner.clone(), context).dart_api_type()
+            )
+        })
         .unwrap_or(raw_inner.to_owned());
 
     match func_mode {

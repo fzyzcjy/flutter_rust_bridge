@@ -1,9 +1,11 @@
 use crate::codegen::generator::api_dart;
+use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::dart::spec_generator::codec::base::WireDartCodecEntrypoint;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::misc::wire_func::wire_func_name;
 use crate::codegen::ir::func::{IrFunc, IrFuncMode};
+use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
@@ -46,11 +48,16 @@ pub(crate) fn generate_api_impl_normal_function(
     let function_implementation_body = if let Some(return_stream) = &api_dart_func.return_stream {
         format!(
             "
-            final {return_stream_name} = RustStreamSink();
+            final {return_stream_name} = {return_stream_type}();
             {maybe_await}{call_handler};
             return {return_stream_name}.stream;
             ",
             return_stream_name = return_stream.field.name.raw,
+            return_stream_type = ApiDartGenerator::new(
+                return_stream.field.ty.clone(),
+                context.as_api_dart_context()
+            )
+            .dart_api_type(),
             maybe_await = if func.mode != IrFuncMode::Sync {
                 "await "
             } else {
