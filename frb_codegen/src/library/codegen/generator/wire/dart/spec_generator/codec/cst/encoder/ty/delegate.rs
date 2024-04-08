@@ -116,6 +116,10 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
                 self.ir.get_delegate().safe_ident(),
                 generate_set_to_list(ir, self.context.as_api_dart_context(), "raw"),
             ))),
+            IrTypeDelegate::StreamSink(_) => Acc::distribute(Some(format!(
+                "return cst_encode_{}(raw.serialize());",
+                self.ir.get_delegate().safe_ident()
+            ))),
         }
     }
 

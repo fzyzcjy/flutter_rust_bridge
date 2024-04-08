@@ -82,6 +82,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
             },
             IrTypeDelegate::Map(ir) => self.generate_skip_web_if_jsvalue(generate_decode_map(ir)),
             IrTypeDelegate::Set(ir) => self.generate_skip_web_if_jsvalue(generate_decode_set(ir)),
+            IrTypeDelegate::StreamSink(_) => Acc::distribute(Some("todo!()".into())),
         }
     }
 
@@ -110,6 +111,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
                 .into(),
             IrTypeDelegate::Map(ir) => generate_decode_map(ir).into(),
             IrTypeDelegate::Set(ir) => generate_decode_set(ir).into(),
+            IrTypeDelegate::StreamSink(_) => "todo!()".into(),
         })
     }
 

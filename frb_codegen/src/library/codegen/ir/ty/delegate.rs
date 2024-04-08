@@ -22,6 +22,7 @@ pub enum IrTypeDelegate {
     AnyhowException,
     Map(IrTypeDelegateMap),
     Set(IrTypeDelegateSet),
+    StreamSink(IrTypeDelegateStreamSink),
 }
 
 pub struct IrTypeDelegateArray {
@@ -56,6 +57,10 @@ pub struct IrTypeDelegateMap {
 }
 
 pub struct IrTypeDelegateSet {
+    pub inner: Box<IrType>,
+}
+
+pub struct IrTypeDelegateStreamSink {
     pub inner: Box<IrType>,
 }
 }
@@ -94,6 +99,7 @@ impl IrTypeTrait for IrTypeDelegate {
                 format!("Map_{}_{}", ir.key.safe_ident(), ir.value.safe_ident())
             }
             IrTypeDelegate::Set(ir) => format!("Set_{}", ir.inner.safe_ident()),
+            IrTypeDelegate::StreamSink(ir) => format!("StreamSink_{}", ir.inner.safe_ident()),
         }
     }
 
@@ -140,6 +146,9 @@ impl IrTypeTrait for IrTypeDelegate {
             ),
             IrTypeDelegate::Set(ir) => {
                 format!("std::collections::HashSet<{}>", ir.inner.rust_api_type())
+            }
+            IrTypeDelegate::StreamSink(ir) => {
+                format!("flutter_rust_bridge::for_generated::StreamSink<{}>", ir.inner.rust_api_type())
             }
         }
     }
@@ -191,6 +200,7 @@ impl IrTypeDelegate {
             IrTypeDelegate::AnyhowException => IrType::Delegate(IrTypeDelegate::String),
             IrTypeDelegate::Map(ir) => ir_list(IrType::Record(ir.element_delegate.clone()), true),
             IrTypeDelegate::Set(ir) => ir_list(*ir.inner.to_owned(), true),
+            IrTypeDelegate::StreamSink(_) => IrType::Delegate(IrTypeDelegate::String),
         }
     }
 }
