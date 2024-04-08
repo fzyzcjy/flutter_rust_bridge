@@ -2,7 +2,7 @@ use crate::codegen::generator::codec::structs::CodecModePack;
 use crate::codegen::ir::comment::IrComment;
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::namespace::NamespacedName;
-use crate::codegen::ir::ty::{IrContext, IrType};
+use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::if_then_some;
 
@@ -105,7 +105,9 @@ impl IrFuncOwnerInfoMethod {
         match &self.enum_or_struct_ty {
             IrType::StructRef(ty) => ty.ident.0.clone(),
             IrType::EnumRef(ty) => ty.ident.0.clone(),
-            IrType::RustAutoOpaque(ty) => TODO,
+            IrType::RustAutoOpaque(ty) => {
+                NamespacedName::new(ty.self_namespace().unwrap(), ty.rust_api_type())
+            }
             ty => unimplemented!("enum_or_struct_name does not know {ty:?}"),
         }
     }
