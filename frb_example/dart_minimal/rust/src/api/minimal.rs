@@ -10,4 +10,7 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
     a + b
 }
 
-pub fn hello_stream(sink: StreamSink<i32>) {}
+pub fn hello_stream(sink: StreamSink<i32>) {
+    sink.add(100).unwrap();
+    sink.add(200).unwrap();
+}
