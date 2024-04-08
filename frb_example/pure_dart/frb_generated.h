@@ -2284,7 +2284,7 @@ typedef struct wire_cst_my_struct_containing_stream_sink_twin_rust_async {
 } wire_cst_my_struct_containing_stream_sink_twin_rust_async;
 
 typedef struct wire_cst_list_StreamSink_i_32_None {
-  struct wire_cst_list_prim_u_8_strict *ptr;
+  struct wire_cst_list_prim_u_8_strict **ptr;
   int32_t len;
 } wire_cst_list_StreamSink_i_32_None;
 

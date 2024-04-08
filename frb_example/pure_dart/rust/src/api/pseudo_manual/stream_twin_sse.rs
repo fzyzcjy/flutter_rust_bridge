@@ -109,8 +109,8 @@ pub fn stream_sink_inside_vec_twin_sse(arg: Vec<StreamSink<i32, flutter_rust_bri
 }
 
 pub struct MyStructContainingStreamSinkTwinSse {
-    a: i32,
-    b: StreamSink<i32, flutter_rust_bridge::SseCodec>,
+    pub a: i32,
+    pub b: StreamSink<i32, flutter_rust_bridge::SseCodec>,
 }
 
 #[flutter_rust_bridge::frb(serialize)]

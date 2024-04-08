@@ -89,8 +89,8 @@ pub async fn stream_sink_inside_vec_twin_rust_async(arg: Vec<StreamSink<i32>>) {
 }
 
 pub struct MyStructContainingStreamSinkTwinRustAsync {
-    a: i32,
-    b: StreamSink<i32>,
+    pub a: i32,
+    pub b: StreamSink<i32>,
 }
 
 pub async fn stream_sink_inside_struct_twin_rust_async(

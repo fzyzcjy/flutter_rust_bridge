@@ -21425,7 +21425,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     final ans = wire.cst_new_list_StreamSink_i_32_None(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      cst_api_fill_to_wire_StreamSink_i_32_None(raw[i], ans.ref.ptr[i]);
+      ans.ref.ptr[i] = cst_encode_StreamSink_i_32_None(raw[i]);
     }
     return ans;
   }
@@ -104301,7 +104301,7 @@ final class wire_cst_my_struct_containing_stream_sink_twin_rust_async
 }
 
 final class wire_cst_list_StreamSink_i_32_None extends ffi.Struct {
-  external ffi.Pointer<wire_cst_list_prim_u_8_strict> ptr;
+  external ffi.Pointer<ffi.Pointer<wire_cst_list_prim_u_8_strict>> ptr;
 
   @ffi.Int32()
   external int len;

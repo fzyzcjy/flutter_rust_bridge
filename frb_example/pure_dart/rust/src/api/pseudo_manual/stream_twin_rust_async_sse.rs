@@ -111,8 +111,8 @@ pub async fn stream_sink_inside_vec_twin_rust_async_sse(
 }
 
 pub struct MyStructContainingStreamSinkTwinRustAsyncSse {
-    a: i32,
-    b: StreamSink<i32, flutter_rust_bridge::SseCodec>,
+    pub a: i32,
+    pub b: StreamSink<i32, flutter_rust_bridge::SseCodec>,
 }
 
 #[flutter_rust_bridge::frb(serialize)]
