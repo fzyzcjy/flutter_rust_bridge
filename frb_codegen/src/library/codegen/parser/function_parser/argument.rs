@@ -18,14 +18,13 @@ use syn::*;
 impl<'a, 'b> FunctionParser<'a, 'b> {
     pub(super) fn parse_fn_arg(
         &mut self,
-        argument_index: usize,
         sig_input: &FnArg,
         owner: &IrFuncOwnerInfo,
         context: &TypeParserParsingContext,
     ) -> anyhow::Result<FunctionPartialInfo> {
         match sig_input {
             FnArg::Typed(ref pat_type) => {
-                self.parse_fn_arg_typed(argument_index, context, pat_type)
+                self.parse_fn_arg_typed(context, pat_type)
             }
             FnArg::Receiver(ref receiver) => self.parse_fn_arg_receiver(owner, context, receiver),
         }
@@ -33,7 +32,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
     fn parse_fn_arg_typed(
         &mut self,
-        argument_index: usize,
         context: &TypeParserParsingContext,
         pat_type: &PatType,
     ) -> anyhow::Result<FunctionPartialInfo> {

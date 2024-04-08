@@ -90,8 +90,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         let context = create_context(Some(owner.clone()));
         let mut info = FunctionPartialInfo::default();
-        for (i, sig_input) in sig.inputs.iter().enumerate() {
-            info = info.merge(self.parse_fn_arg(i, sig_input, &owner, &context)?)?;
+        for sig_input in sig.inputs.iter() {
+            info = info.merge(self.parse_fn_arg(sig_input, &owner, &context)?)?;
         }
         info = info.merge(self.parse_fn_output(sig, &context)?)?;
         info = self.transform_fn_info(info);
