@@ -10,6 +10,8 @@ use crate::codegen::generator::api_dart::spec_generator::misc::{
 };
 use crate::codegen::ir::func::IrFunc;
 use crate::codegen::ir::namespace::Namespace;
+use crate::codegen::ir::ty::delegate::IrTypeDelegate;
+use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::utils::basic_code::DartBasicHeaderCode;
 use convert_case::{Case, Casing};
@@ -49,6 +51,7 @@ pub(crate) fn generate(
     context: ApiDartGeneratorContext,
 ) -> anyhow::Result<ApiDartGeneratedFunction> {
     let params = generate_params(func, context, context.config.dart_enums_style);
+    let stream_sink_name = compute_stream_sink_name(func);
 
     let func_expr = format!(
         "{func_return_type} {func_name}({params})",
@@ -61,7 +64,11 @@ pub(crate) fn generate(
 
     let func_comments = generate_dart_comments(&func.comments);
 
-    let func_impl = generate_func_impl(func, &context.config.dart_entrypoint_class_name);
+    let func_impl = generate_func_impl(
+        func,
+        &context.config.dart_entrypoint_class_name,
+        &stream_sink_name,
+    );
 
     let header = generate_header(func, context)?;
 
@@ -73,6 +80,17 @@ pub(crate) fn generate(
         func_impl,
         src_lineno: func.src_lineno,
     })
+}
+
+fn compute_stream_sink_name(func: &IrFunc) -> Option<String> {
+    let stream_sink_vars = (func.inputs.iter())
+        .filter(|input| matches!(input.ty, IrType::Delegate(IrTypeDelegate::StreamSink(_))))
+        .collect_vec();
+    if stream_sink_vars.len() == 1 {
+        Some(stream_sink_vars[0].name.raw.to_owned())
+    } else {
+        None
+    }
 }
 
 fn generate_params(
