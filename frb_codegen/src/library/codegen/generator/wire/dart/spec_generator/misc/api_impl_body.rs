@@ -13,7 +13,6 @@ pub(crate) fn generate_api_impl_normal_function(
     context: WireDartGeneratorContext,
 ) -> anyhow::Result<WireDartOutputCode> {
     let dart2rust_codec = WireDartCodecEntrypoint::from(func.codec_mode_pack.dart2rust);
-    let _rust2dart_codec = WireDartCodecEntrypoint::from(func.codec_mode_pack.rust2dart);
 
     let api_dart_func =
         api_dart::spec_generator::function::generate(func, context.as_api_dart_context())?;
