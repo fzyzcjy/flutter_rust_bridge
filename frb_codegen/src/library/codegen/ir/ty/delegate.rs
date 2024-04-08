@@ -1,3 +1,4 @@
+use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::ty::enumeration::IrTypeEnumRef;
 use crate::codegen::ir::ty::general_list::{ir_list, IrTypeGeneralList};
@@ -5,6 +6,7 @@ use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
 use crate::codegen::ir::ty::record::IrTypeRecord;
 use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
+use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 
 crate::ir! {
 /// types that delegate to another type
@@ -62,6 +64,7 @@ pub struct IrTypeDelegateSet {
 
 pub struct IrTypeDelegateStreamSink {
     pub inner: Box<IrType>,
+    pub codec: Option<RustOpaqueCodecMode>,
 }
 }
 

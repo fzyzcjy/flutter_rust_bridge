@@ -11,6 +11,7 @@ use crate::codegen::parser::type_parser::TypeParserWithContext;
 use crate::if_then_some;
 use anyhow::bail;
 use itertools::Itertools;
+use quote::quote;
 use syn::{parse_str, Type};
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
@@ -78,8 +79,13 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 inner: Box::new(self.parse_type(inner)?),
             })),
 
-            ("StreamSink", [inner, ..]) => Delegate(IrTypeDelegate::StreamSink(IrTypeDelegateStreamSink {
+            ("StreamSink", [inner ]) => Delegate(IrTypeDelegate::StreamSink(IrTypeDelegateStreamSink {
                 inner: Box::new(self.parse_type(inner)?),
+                codec: None,
+            })),
+            ("StreamSink", [inner, codec ]) => Delegate(IrTypeDelegate::StreamSink(IrTypeDelegateStreamSink {
+                inner: Box::new(self.parse_type(inner)?),
+                codec: Some(quote!(#codec).to_string().into()),
             })),
 
             _ => return Ok(None),
