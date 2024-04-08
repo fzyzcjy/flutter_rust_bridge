@@ -54,9 +54,7 @@ pub struct MyCustomExecutor;
 impl Executor for MyCustomExecutor {
     fn execute_normal<Rust2DartCodec, TaskFn>(&self, task_info: TaskInfo, task: TaskFn)
     where
-        TaskFn: FnOnce(
-                TaskContext,
-            ) -> Result<Rust2DartCodec::Message, Rust2DartCodec::Message>
+        TaskFn: FnOnce(TaskContext) -> Result<Rust2DartCodec::Message, Rust2DartCodec::Message>
             + Send
             + 'static,
         Rust2DartCodec: BaseCodec,
@@ -98,9 +96,7 @@ impl Handler for MyFullyCustomHandler {
         prepare: PrepareFn,
     ) where
         PrepareFn: FnOnce() -> TaskFn,
-        TaskFn: FnOnce(
-                TaskContext,
-            ) -> Result<Rust2DartCodec::Message, Rust2DartCodec::Message>
+        TaskFn: FnOnce(TaskContext) -> Result<Rust2DartCodec::Message, Rust2DartCodec::Message>
             + Send
             + 'static,
         Rust2DartCodec: BaseCodec,
