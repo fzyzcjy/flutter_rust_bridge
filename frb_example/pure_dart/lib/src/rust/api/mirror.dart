@@ -3,11 +3,11 @@
 
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
+import '../auxiliary/sample_types.dart';
 import '../frb_generated.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'pseudo_manual/mirror_twin_sync_sse.dart';
-
-// The type `MirrorStructTwinNormal` is not used by any `pub` functions, thus it is ignored.
 
 Future<ApplicationSettings> getAppSettingsTwinNormal({dynamic hint}) =>
     RustLib.instance.api.getAppSettingsTwinNormal(hint: hint);
@@ -130,6 +130,21 @@ class AnotherTwinNormal {
           a == other.a;
 }
 
+class ApplicationModeArray2 extends NonGrowableListView<ApplicationMode> {
+  static const arraySize = 2;
+
+  @internal
+  List<ApplicationMode> get inner => _inner;
+  final List<ApplicationMode> _inner;
+
+  ApplicationModeArray2(this._inner)
+      : assert(_inner.length == arraySize),
+        super(_inner);
+
+  ApplicationModeArray2.init(ApplicationMode fill)
+      : this(List<ApplicationMode>.filled(arraySize, fill));
+}
+
 class ContainsMirroredSubStructTwinNormal {
   final RawStringMirrored test;
   final AnotherTwinNormal test2;
@@ -149,4 +164,31 @@ class ContainsMirroredSubStructTwinNormal {
           runtimeType == other.runtimeType &&
           test == other.test &&
           test2 == other.test2;
+}
+
+class MirrorStructTwinNormal {
+  final ApplicationSettings a;
+  final MyStruct b;
+  final List<MyEnum> c;
+  final List<ApplicationSettings> d;
+
+  const MirrorStructTwinNormal({
+    required this.a,
+    required this.b,
+    required this.c,
+    required this.d,
+  });
+
+  @override
+  int get hashCode => a.hashCode ^ b.hashCode ^ c.hashCode ^ d.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MirrorStructTwinNormal &&
+          runtimeType == other.runtimeType &&
+          a == other.a &&
+          b == other.b &&
+          c == other.c &&
+          d == other.d;
 }

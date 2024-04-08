@@ -9,8 +9,6 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'method_twin_sync_sse.freezed.dart';
 
-// The type `Log2TwinSyncSse` is not used by any `pub` functions, thus it is ignored.
-
 SumWithTwinSyncSse getSumStructTwinSyncSse({dynamic hint}) =>
     RustLib.instance.api.getSumStructTwinSyncSse(hint: hint);
 
@@ -128,6 +126,27 @@ class ConcatenateWithTwinSyncSse {
       other is ConcatenateWithTwinSyncSse &&
           runtimeType == other.runtimeType &&
           a == other.a;
+}
+
+class Log2TwinSyncSse {
+  final int key;
+  final String value;
+
+  const Log2TwinSyncSse({
+    required this.key,
+    required this.value,
+  });
+
+  @override
+  int get hashCode => key.hashCode ^ value.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Log2TwinSyncSse &&
+          runtimeType == other.runtimeType &&
+          key == other.key &&
+          value == other.value;
 }
 
 class MyCallableTwinSyncSse {

@@ -9,8 +9,6 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'method_twin_rust_async_sse.freezed.dart';
 
-// The type `Log2TwinRustAsyncSse` is not used by any `pub` functions, thus it is ignored.
-
 Future<SumWithTwinRustAsyncSse> getSumStructTwinRustAsyncSse({dynamic hint}) =>
     RustLib.instance.api.getSumStructTwinRustAsyncSse(hint: hint);
 
@@ -131,6 +129,27 @@ class ConcatenateWithTwinRustAsyncSse {
       other is ConcatenateWithTwinRustAsyncSse &&
           runtimeType == other.runtimeType &&
           a == other.a;
+}
+
+class Log2TwinRustAsyncSse {
+  final int key;
+  final String value;
+
+  const Log2TwinRustAsyncSse({
+    required this.key,
+    required this.value,
+  });
+
+  @override
+  int get hashCode => key.hashCode ^ value.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Log2TwinRustAsyncSse &&
+          runtimeType == other.runtimeType &&
+          key == other.key &&
+          value == other.value;
 }
 
 class MyCallableTwinRustAsyncSse {

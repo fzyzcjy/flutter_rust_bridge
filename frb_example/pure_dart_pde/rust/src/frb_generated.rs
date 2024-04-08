@@ -24162,6 +24162,19 @@ impl SseDecode for std::collections::HashMap<i32, usize> {
     }
 }
 
+impl SseDecode
+    for std::collections::HashMap<u8, crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <Vec<(
+            u8,
+            crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode,
+        )>>::sse_decode(deserializer);
+        return inner.into_iter().collect();
+    }
+}
+
 impl SseDecode for RustOpaqueMoi<Box<dyn DartDebugTwinNormal>> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -24804,6 +24817,19 @@ impl SseDecode for std::collections::HashSet<String> {
     }
 }
 
+impl SseDecode
+    for std::collections::HashSet<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner =
+            <Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>>::sse_decode(
+                deserializer,
+            );
+        return inner.into_iter().collect();
+    }
+}
+
 impl SseDecode for std::collections::HashSet<i32> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -25300,6 +25326,17 @@ impl SseDecode for crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode 
             1 => crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode::Embedded,
             _ => unreachable!("Invalid variant for ApplicationMode: {}", inner),
         };
+    }
+}
+
+impl SseDecode for [crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode; 2] {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner =
+            <Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>>::sse_decode(
+                deserializer,
+            );
+        return flutter_rust_bridge::for_generated::from_vec_to_array(inner);
     }
 }
 
@@ -28000,6 +28037,38 @@ impl SseDecode for Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationE
     }
 }
 
+impl SseDecode for Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut len_ = <i32>::sse_decode(deserializer);
+        let mut ans_ = vec![];
+        for idx_ in 0..len_ {
+            ans_.push(
+                <crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>::sse_decode(
+                    deserializer,
+                ),
+            );
+        }
+        return ans_;
+    }
+}
+
+impl SseDecode for Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut len_ = <i32>::sse_decode(deserializer);
+        let mut ans_ = vec![];
+        for idx_ in 0..len_ {
+            ans_.push(
+                <crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>::sse_decode(
+                    deserializer,
+                ),
+            );
+        }
+        return ans_;
+    }
+}
+
 impl SseDecode for Vec<crate::api::optional::AttributeTwinNormal> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -28279,6 +28348,20 @@ impl SseDecode for Vec<Vec<u8>> {
         let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<Vec<u8>>::sse_decode(deserializer));
+        }
+        return ans_;
+    }
+}
+
+impl SseDecode for Vec<crate::auxiliary::sample_types::MyEnum> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut len_ = <i32>::sse_decode(deserializer);
+        let mut ans_ = vec![];
+        for idx_ in 0..len_ {
+            ans_.push(<crate::auxiliary::sample_types::MyEnum>::sse_decode(
+                deserializer,
+            ));
         }
         return ans_;
     }
@@ -29226,6 +29309,26 @@ impl SseDecode for Vec<(String, String)> {
     }
 }
 
+impl SseDecode
+    for Vec<(
+        u8,
+        crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode,
+    )>
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut len_ = <i32>::sse_decode(deserializer);
+        let mut ans_ = vec![];
+        for idx_ in 0..len_ {
+            ans_.push(<(
+                u8,
+                crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode,
+            )>::sse_decode(deserializer));
+        }
+        return ans_;
+    }
+}
+
 impl SseDecode for Vec<crate::api::method::SimpleStructTwinNormal> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -29402,6 +29505,66 @@ impl SseDecode for Vec<crate::api::pseudo_manual::misc_example_twin_sync::Weekda
     }
 }
 
+impl SseDecode for crate::api::method::Log2TwinNormal {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_key = <u32>::sse_decode(deserializer);
+        let mut var_value = <String>::sse_decode(deserializer);
+        return crate::api::method::Log2TwinNormal {
+            key: var_key,
+            value: var_value,
+        };
+    }
+}
+
+impl SseDecode for crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_key = <u32>::sse_decode(deserializer);
+        let mut var_value = <String>::sse_decode(deserializer);
+        return crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync {
+            key: var_key,
+            value: var_value,
+        };
+    }
+}
+
+impl SseDecode for crate::api::pseudo_manual::method_twin_sync::Log2TwinSync {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_key = <u32>::sse_decode(deserializer);
+        let mut var_value = <String>::sse_decode(deserializer);
+        return crate::api::pseudo_manual::method_twin_sync::Log2TwinSync {
+            key: var_key,
+            value: var_value,
+        };
+    }
+}
+
+impl SseDecode for crate::api::stream::LogTwinNormal {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_key = <u32>::sse_decode(deserializer);
+        let mut var_value = <u32>::sse_decode(deserializer);
+        return crate::api::stream::LogTwinNormal {
+            key: var_key,
+            value: var_value,
+        };
+    }
+}
+
+impl SseDecode for crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_key = <u32>::sse_decode(deserializer);
+        let mut var_value = <u32>::sse_decode(deserializer);
+        return crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync {
+            key: var_key,
+            value: var_value,
+        };
+    }
+}
+
 impl SseDecode for crate::api::inside_macro::MacroStruct {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -29507,6 +29670,72 @@ impl SseDecode for crate::api::pseudo_manual::array_twin_sync::MessageIdTwinSync
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut var_field0 = <[u8; 32]>::sse_decode(deserializer);
         return crate::api::pseudo_manual::array_twin_sync::MessageIdTwinSync(var_field0);
+    }
+}
+
+impl SseDecode for crate::api::mirror::MirrorStructTwinNormal {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_a =
+            <crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>::sse_decode(
+                deserializer,
+            );
+        let mut var_b = <crate::auxiliary::sample_types::MyStruct>::sse_decode(deserializer);
+        let mut var_c = <Vec<crate::auxiliary::sample_types::MyEnum>>::sse_decode(deserializer);
+        let mut var_d =
+            <Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>>::sse_decode(
+                deserializer,
+            );
+        return crate::api::mirror::MirrorStructTwinNormal {
+            a: var_a,
+            b: var_b,
+            c: var_c,
+            d: var_d,
+        };
+    }
+}
+
+impl SseDecode for crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_a =
+            <crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>::sse_decode(
+                deserializer,
+            );
+        let mut var_b = <crate::auxiliary::sample_types::MyStruct>::sse_decode(deserializer);
+        let mut var_c = <Vec<crate::auxiliary::sample_types::MyEnum>>::sse_decode(deserializer);
+        let mut var_d =
+            <Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>>::sse_decode(
+                deserializer,
+            );
+        return crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync {
+            a: var_a,
+            b: var_b,
+            c: var_c,
+            d: var_d,
+        };
+    }
+}
+
+impl SseDecode for crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_a =
+            <crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>::sse_decode(
+                deserializer,
+            );
+        let mut var_b = <crate::auxiliary::sample_types::MyStruct>::sse_decode(deserializer);
+        let mut var_c = <Vec<crate::auxiliary::sample_types::MyEnum>>::sse_decode(deserializer);
+        let mut var_d =
+            <Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>>::sse_decode(
+                deserializer,
+            );
+        return crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync {
+            a: var_a,
+            b: var_b,
+            c: var_c,
+            d: var_d,
+        };
     }
 }
 
@@ -29637,6 +29866,24 @@ impl SseDecode for crate::auxiliary::sample_types::MySize {
         return crate::auxiliary::sample_types::MySize {
             width: var_width,
             height: var_height,
+        };
+    }
+}
+
+impl SseDecode for crate::api::stream::MyStreamEntryTwinNormal {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_hello = <String>::sse_decode(deserializer);
+        return crate::api::stream::MyStreamEntryTwinNormal { hello: var_hello };
+    }
+}
+
+impl SseDecode for crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_hello = <String>::sse_decode(deserializer);
+        return crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync {
+            hello: var_hello,
         };
     }
 }
@@ -30001,6 +30248,21 @@ impl SseDecode for Option<crate::api::pseudo_manual::mirror_twin_sync::Applicati
         if (<bool>::sse_decode(deserializer)) {
             return Some(
                 <crate::api::pseudo_manual::mirror_twin_sync::ApplicationEnv>::sse_decode(
+                    deserializer,
+                ),
+            );
+        } else {
+            return None;
+        }
+    }
+}
+
+impl SseDecode for Option<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        if (<bool>::sse_decode(deserializer)) {
+            return Some(
+                <crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>::sse_decode(
                     deserializer,
                 ),
             );
@@ -31039,6 +31301,26 @@ impl SseDecode for crate::api::pseudo_manual::mirror_twin_sync::RawStringMirrore
     }
 }
 
+impl SseDecode
+    for (
+        crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings,
+        crate::api::pseudo_manual::mirror_twin_sync::RawStringEnumMirrored,
+    )
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_field0 =
+            <crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>::sse_decode(
+                deserializer,
+            );
+        let mut var_field1 =
+            <crate::api::pseudo_manual::mirror_twin_sync::RawStringEnumMirrored>::sse_decode(
+                deserializer,
+            );
+        return (var_field0, var_field1);
+    }
+}
+
 impl SseDecode for (OpaqueOneTwinNormal, OpaqueTwoTwinNormal) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -31467,6 +31749,23 @@ impl SseDecode for (String, String) {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut var_field0 = <String>::sse_decode(deserializer);
         let mut var_field1 = <String>::sse_decode(deserializer);
+        return (var_field0, var_field1);
+    }
+}
+
+impl SseDecode
+    for (
+        u8,
+        crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode,
+    )
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_field0 = <u8>::sse_decode(deserializer);
+        let mut var_field1 =
+            <crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>::sse_decode(
+                deserializer,
+            );
         return (var_field0, var_field1);
     }
 }
@@ -32241,6 +32540,14 @@ impl SseDecode for u8 {
 }
 
 impl SseDecode for [u8; 1600] {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <Vec<u8>>::sse_decode(deserializer);
+        return flutter_rust_bridge::for_generated::from_vec_to_array(inner);
+    }
+}
+
+impl SseDecode for [u8; 2] {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <Vec<u8>>::sse_decode(deserializer);
@@ -38074,6 +38381,121 @@ impl
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for crate::api::method::Log2TwinNormal {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.key.into_into_dart().into_dart(),
+            self.value.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::method::Log2TwinNormal
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::method::Log2TwinNormal>
+    for crate::api::method::Log2TwinNormal
+{
+    fn into_into_dart(self) -> crate::api::method::Log2TwinNormal {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart
+    for crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.key.into_into_dart().into_dart(),
+            self.value.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync,
+    > for crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync
+{
+    fn into_into_dart(
+        self,
+    ) -> crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for crate::api::pseudo_manual::method_twin_sync::Log2TwinSync {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.key.into_into_dart().into_dart(),
+            self.value.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::method_twin_sync::Log2TwinSync
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::pseudo_manual::method_twin_sync::Log2TwinSync>
+    for crate::api::pseudo_manual::method_twin_sync::Log2TwinSync
+{
+    fn into_into_dart(self) -> crate::api::pseudo_manual::method_twin_sync::Log2TwinSync {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for crate::api::stream::LogTwinNormal {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.key.into_into_dart().into_dart(),
+            self.value.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::stream::LogTwinNormal
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::stream::LogTwinNormal>
+    for crate::api::stream::LogTwinNormal
+{
+    fn into_into_dart(self) -> crate::api::stream::LogTwinNormal {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart
+    for crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.key.into_into_dart().into_dart(),
+            self.value.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync,
+    > for crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync
+{
+    fn into_into_dart(self) -> crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for crate::api::inside_macro::MacroStruct {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [self.data.into_into_dart().into_dart()].into_dart()
@@ -38226,6 +38648,85 @@ impl
     for crate::api::pseudo_manual::array_twin_sync::MessageIdTwinSync
 {
     fn into_into_dart(self) -> crate::api::pseudo_manual::array_twin_sync::MessageIdTwinSync {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for crate::api::mirror::MirrorStructTwinNormal {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.a.into_into_dart().into_dart(),
+            self.b.into_into_dart().into_dart(),
+            self.c.into_into_dart().into_dart(),
+            self.d.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::mirror::MirrorStructTwinNormal
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::mirror::MirrorStructTwinNormal>
+    for crate::api::mirror::MirrorStructTwinNormal
+{
+    fn into_into_dart(self) -> crate::api::mirror::MirrorStructTwinNormal {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart
+    for crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.a.into_into_dart().into_dart(),
+            self.b.into_into_dart().into_dart(),
+            self.c.into_into_dart().into_dart(),
+            self.d.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync,
+    > for crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync
+{
+    fn into_into_dart(
+        self,
+    ) -> crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart
+    for crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.a.into_into_dart().into_dart(),
+            self.b.into_into_dart().into_dart(),
+            self.c.into_into_dart().into_dart(),
+            self.d.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync,
+    > for crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync
+{
+    fn into_into_dart(self) -> crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync {
         self
     }
 }
@@ -38477,6 +38978,46 @@ impl flutter_rust_bridge::IntoIntoDart<crate::auxiliary::sample_types::MySize>
     for crate::auxiliary::sample_types::MySize
 {
     fn into_into_dart(self) -> crate::auxiliary::sample_types::MySize {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for crate::api::stream::MyStreamEntryTwinNormal {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [self.hello.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::stream::MyStreamEntryTwinNormal
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::stream::MyStreamEntryTwinNormal>
+    for crate::api::stream::MyStreamEntryTwinNormal
+{
+    fn into_into_dart(self) -> crate::api::stream::MyStreamEntryTwinNormal {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart
+    for crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [self.hello.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync,
+    > for crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync
+{
+    fn into_into_dart(
+        self,
+    ) -> crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync {
         self
     }
 }
@@ -41538,6 +42079,18 @@ impl SseEncode for std::collections::HashMap<i32, usize> {
     }
 }
 
+impl SseEncode
+    for std::collections::HashMap<u8, crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <Vec<(
+            u8,
+            crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode,
+        )>>::sse_encode(self.into_iter().collect(), serializer);
+    }
+}
+
 impl SseEncode for RustOpaqueMoi<Box<dyn DartDebugTwinNormal>> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -42251,6 +42804,18 @@ impl SseEncode for std::collections::HashSet<String> {
     }
 }
 
+impl SseEncode
+    for std::collections::HashSet<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>>::sse_encode(
+            self.into_iter().collect(),
+            serializer,
+        );
+    }
+}
+
 impl SseEncode for std::collections::HashSet<i32> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -42681,6 +43246,19 @@ impl SseEncode for crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode 
                 _ => {
                     unimplemented!("");
                 }
+            },
+            serializer,
+        );
+    }
+}
+
+impl SseEncode for [crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode; 2] {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>>::sse_encode(
+            {
+                let boxed: Box<[_]> = Box::new(self);
+                boxed.into_vec()
             },
             serializer,
         );
@@ -44806,6 +45384,30 @@ impl SseEncode for Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationE
     }
 }
 
+impl SseEncode for Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self.len() as _, serializer);
+        for item in self {
+            <crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>::sse_encode(
+                item, serializer,
+            );
+        }
+    }
+}
+
+impl SseEncode for Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self.len() as _, serializer);
+        for item in self {
+            <crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>::sse_encode(
+                item, serializer,
+            );
+        }
+    }
+}
+
 impl SseEncode for Vec<crate::api::optional::AttributeTwinNormal> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -45028,6 +45630,16 @@ impl SseEncode for Vec<Vec<u8>> {
         <i32>::sse_encode(self.len() as _, serializer);
         for item in self {
             <Vec<u8>>::sse_encode(item, serializer);
+        }
+    }
+}
+
+impl SseEncode for Vec<crate::auxiliary::sample_types::MyEnum> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self.len() as _, serializer);
+        for item in self {
+            <crate::auxiliary::sample_types::MyEnum>::sse_encode(item, serializer);
         }
     }
 }
@@ -45811,6 +46423,24 @@ impl SseEncode for Vec<(String, String)> {
     }
 }
 
+impl SseEncode
+    for Vec<(
+        u8,
+        crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode,
+    )>
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self.len() as _, serializer);
+        for item in self {
+            <(
+                u8,
+                crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode,
+            )>::sse_encode(item, serializer);
+        }
+    }
+}
+
 impl SseEncode for Vec<crate::api::method::SimpleStructTwinNormal> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -45947,6 +46577,46 @@ impl SseEncode for Vec<crate::api::pseudo_manual::misc_example_twin_sync::Weekda
     }
 }
 
+impl SseEncode for crate::api::method::Log2TwinNormal {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <u32>::sse_encode(self.key, serializer);
+        <String>::sse_encode(self.value, serializer);
+    }
+}
+
+impl SseEncode for crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <u32>::sse_encode(self.key, serializer);
+        <String>::sse_encode(self.value, serializer);
+    }
+}
+
+impl SseEncode for crate::api::pseudo_manual::method_twin_sync::Log2TwinSync {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <u32>::sse_encode(self.key, serializer);
+        <String>::sse_encode(self.value, serializer);
+    }
+}
+
+impl SseEncode for crate::api::stream::LogTwinNormal {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <u32>::sse_encode(self.key, serializer);
+        <u32>::sse_encode(self.value, serializer);
+    }
+}
+
+impl SseEncode for crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <u32>::sse_encode(self.key, serializer);
+        <u32>::sse_encode(self.value, serializer);
+    }
+}
+
 impl SseEncode for crate::api::inside_macro::MacroStruct {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -46017,6 +46687,48 @@ impl SseEncode for crate::api::pseudo_manual::array_twin_sync::MessageIdTwinSync
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <[u8; 32]>::sse_encode(self.0, serializer);
+    }
+}
+
+impl SseEncode for crate::api::mirror::MirrorStructTwinNormal {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>::sse_encode(
+            self.a, serializer,
+        );
+        <crate::auxiliary::sample_types::MyStruct>::sse_encode(self.b, serializer);
+        <Vec<crate::auxiliary::sample_types::MyEnum>>::sse_encode(self.c, serializer);
+        <Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>>::sse_encode(
+            self.d, serializer,
+        );
+    }
+}
+
+impl SseEncode for crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>::sse_encode(
+            self.a, serializer,
+        );
+        <crate::auxiliary::sample_types::MyStruct>::sse_encode(self.b, serializer);
+        <Vec<crate::auxiliary::sample_types::MyEnum>>::sse_encode(self.c, serializer);
+        <Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>>::sse_encode(
+            self.d, serializer,
+        );
+    }
+}
+
+impl SseEncode for crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>::sse_encode(
+            self.a, serializer,
+        );
+        <crate::auxiliary::sample_types::MyStruct>::sse_encode(self.b, serializer);
+        <Vec<crate::auxiliary::sample_types::MyEnum>>::sse_encode(self.c, serializer);
+        <Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>>::sse_encode(
+            self.d, serializer,
+        );
     }
 }
 
@@ -46124,6 +46836,20 @@ impl SseEncode for crate::auxiliary::sample_types::MySize {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <i32>::sse_encode(self.width, serializer);
         <i32>::sse_encode(self.height, serializer);
+    }
+}
+
+impl SseEncode for crate::api::stream::MyStreamEntryTwinNormal {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(self.hello, serializer);
+    }
+}
+
+impl SseEncode for crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(self.hello, serializer);
     }
 }
 
@@ -46403,6 +47129,18 @@ impl SseEncode for Option<crate::api::pseudo_manual::mirror_twin_sync::Applicati
         <bool>::sse_encode(self.is_some(), serializer);
         if let Some(value) = self {
             <crate::api::pseudo_manual::mirror_twin_sync::ApplicationEnv>::sse_encode(
+                value, serializer,
+            );
+        }
+    }
+}
+
+impl SseEncode for Option<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <bool>::sse_encode(self.is_some(), serializer);
+        if let Some(value) = self {
+            <crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>::sse_encode(
                 value, serializer,
             );
         }
@@ -47300,6 +48038,23 @@ impl SseEncode for crate::api::pseudo_manual::mirror_twin_sync::RawStringMirrore
     }
 }
 
+impl SseEncode
+    for (
+        crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings,
+        crate::api::pseudo_manual::mirror_twin_sync::RawStringEnumMirrored,
+    )
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>::sse_encode(
+            self.0, serializer,
+        );
+        <crate::api::pseudo_manual::mirror_twin_sync::RawStringEnumMirrored>::sse_encode(
+            self.1, serializer,
+        );
+    }
+}
+
 impl SseEncode for (OpaqueOneTwinNormal, OpaqueTwoTwinNormal) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -47682,6 +48437,21 @@ impl SseEncode for (String, String) {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <String>::sse_encode(self.0, serializer);
         <String>::sse_encode(self.1, serializer);
+    }
+}
+
+impl SseEncode
+    for (
+        u8,
+        crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode,
+    )
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <u8>::sse_encode(self.0, serializer);
+        <crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>::sse_encode(
+            self.1, serializer,
+        );
     }
 }
 
@@ -48339,6 +49109,19 @@ impl SseEncode for u8 {
 }
 
 impl SseEncode for [u8; 1600] {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <Vec<u8>>::sse_encode(
+            {
+                let boxed: Box<[_]> = Box::new(self);
+                boxed.into_vec()
+            },
+            serializer,
+        );
+    }
+}
+
+impl SseEncode for [u8; 2] {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <Vec<u8>>::sse_encode(

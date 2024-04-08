@@ -5,9 +5,7 @@
 
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-
-// The type `LogTwinSse` is not used by any `pub` functions, thus it is ignored.
-// The type `MyStreamEntryTwinSse` is not used by any `pub` functions, thus it is ignored.
+import 'stream_twin_rust_async.dart';
 
 Future<Stream<String>> funcStreamReturnErrorTwinSse({dynamic hint}) =>
     RustLib.instance.api.funcStreamReturnErrorTwinSse(hint: hint);
@@ -42,3 +40,42 @@ Future<Stream<LogTwinSse>> handleStreamSinkAt3TwinSse(
 Future<Stream<U8Array2>> streamSinkFixedSizedPrimitiveArrayTwinSse(
         {dynamic hint}) =>
     RustLib.instance.api.streamSinkFixedSizedPrimitiveArrayTwinSse(hint: hint);
+
+class LogTwinSse {
+  final int key;
+  final int value;
+
+  const LogTwinSse({
+    required this.key,
+    required this.value,
+  });
+
+  @override
+  int get hashCode => key.hashCode ^ value.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is LogTwinSse &&
+          runtimeType == other.runtimeType &&
+          key == other.key &&
+          value == other.value;
+}
+
+class MyStreamEntryTwinSse {
+  final String hello;
+
+  const MyStreamEntryTwinSse({
+    required this.hello,
+  });
+
+  @override
+  int get hashCode => hello.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MyStreamEntryTwinSse &&
+          runtimeType == other.runtimeType &&
+          hello == other.hello;
+}

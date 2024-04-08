@@ -4,10 +4,8 @@
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
 import '../../frb_generated.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-
-// The type `LogTwinRustAsync` is not used by any `pub` functions, thus it is ignored.
-// The type `MyStreamEntryTwinRustAsync` is not used by any `pub` functions, thus it is ignored.
 
 Future<Stream<String>> funcStreamReturnErrorTwinRustAsync({dynamic hint}) =>
     RustLib.instance.api.funcStreamReturnErrorTwinRustAsync(hint: hint);
@@ -43,3 +41,56 @@ Future<Stream<U8Array2>> streamSinkFixedSizedPrimitiveArrayTwinRustAsync(
         {dynamic hint}) =>
     RustLib.instance.api
         .streamSinkFixedSizedPrimitiveArrayTwinRustAsync(hint: hint);
+
+class LogTwinRustAsync {
+  final int key;
+  final int value;
+
+  const LogTwinRustAsync({
+    required this.key,
+    required this.value,
+  });
+
+  @override
+  int get hashCode => key.hashCode ^ value.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is LogTwinRustAsync &&
+          runtimeType == other.runtimeType &&
+          key == other.key &&
+          value == other.value;
+}
+
+class MyStreamEntryTwinRustAsync {
+  final String hello;
+
+  const MyStreamEntryTwinRustAsync({
+    required this.hello,
+  });
+
+  @override
+  int get hashCode => hello.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MyStreamEntryTwinRustAsync &&
+          runtimeType == other.runtimeType &&
+          hello == other.hello;
+}
+
+class U8Array2 extends NonGrowableListView<int> {
+  static const arraySize = 2;
+
+  @internal
+  Uint8List get inner => _inner;
+  final Uint8List _inner;
+
+  U8Array2(this._inner)
+      : assert(_inner.length == arraySize),
+        super(_inner);
+
+  U8Array2.init() : this(Uint8List(arraySize));
+}

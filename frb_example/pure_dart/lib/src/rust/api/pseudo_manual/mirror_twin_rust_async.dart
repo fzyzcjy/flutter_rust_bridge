@@ -3,11 +3,11 @@
 
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
+import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
+import '../mirror.dart';
 import 'mirror_twin_sync_sse.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-
-// The type `MirrorStructTwinRustAsync` is not used by any `pub` functions, thus it is ignored.
 
 Future<ApplicationSettings> getAppSettingsTwinRustAsync({dynamic hint}) =>
     RustLib.instance.api.getAppSettingsTwinRustAsync(hint: hint);
@@ -152,4 +152,31 @@ class ContainsMirroredSubStructTwinRustAsync {
           runtimeType == other.runtimeType &&
           test == other.test &&
           test2 == other.test2;
+}
+
+class MirrorStructTwinRustAsync {
+  final ApplicationSettings a;
+  final MyStruct b;
+  final List<MyEnum> c;
+  final List<ApplicationSettings> d;
+
+  const MirrorStructTwinRustAsync({
+    required this.a,
+    required this.b,
+    required this.c,
+    required this.d,
+  });
+
+  @override
+  int get hashCode => a.hashCode ^ b.hashCode ^ c.hashCode ^ d.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MirrorStructTwinRustAsync &&
+          runtimeType == other.runtimeType &&
+          a == other.a &&
+          b == other.b &&
+          c == other.c &&
+          d == other.d;
 }

@@ -5,9 +5,7 @@
 
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-
-// The type `LogTwinRustAsyncSse` is not used by any `pub` functions, thus it is ignored.
-// The type `MyStreamEntryTwinRustAsyncSse` is not used by any `pub` functions, thus it is ignored.
+import 'stream_twin_rust_async.dart';
 
 Future<Stream<String>> funcStreamReturnErrorTwinRustAsyncSse({dynamic hint}) =>
     RustLib.instance.api.funcStreamReturnErrorTwinRustAsyncSse(hint: hint);
@@ -43,3 +41,42 @@ Future<Stream<U8Array2>> streamSinkFixedSizedPrimitiveArrayTwinRustAsyncSse(
         {dynamic hint}) =>
     RustLib.instance.api
         .streamSinkFixedSizedPrimitiveArrayTwinRustAsyncSse(hint: hint);
+
+class LogTwinRustAsyncSse {
+  final int key;
+  final int value;
+
+  const LogTwinRustAsyncSse({
+    required this.key,
+    required this.value,
+  });
+
+  @override
+  int get hashCode => key.hashCode ^ value.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is LogTwinRustAsyncSse &&
+          runtimeType == other.runtimeType &&
+          key == other.key &&
+          value == other.value;
+}
+
+class MyStreamEntryTwinRustAsyncSse {
+  final String hello;
+
+  const MyStreamEntryTwinRustAsyncSse({
+    required this.hello,
+  });
+
+  @override
+  int get hashCode => hello.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MyStreamEntryTwinRustAsyncSse &&
+          runtimeType == other.runtimeType &&
+          hello == other.hello;
+}

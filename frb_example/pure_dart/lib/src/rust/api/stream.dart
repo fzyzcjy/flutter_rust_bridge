@@ -5,9 +5,7 @@
 
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-
-// The type `LogTwinNormal` is not used by any `pub` functions, thus it is ignored.
-// The type `MyStreamEntryTwinNormal` is not used by any `pub` functions, thus it is ignored.
+import 'pseudo_manual/stream_twin_rust_async.dart';
 
 Future<Stream<String>> funcStreamReturnErrorTwinNormal({dynamic hint}) =>
     RustLib.instance.api.funcStreamReturnErrorTwinNormal(hint: hint);
@@ -43,3 +41,42 @@ Future<Stream<U8Array2>> streamSinkFixedSizedPrimitiveArrayTwinNormal(
         {dynamic hint}) =>
     RustLib.instance.api
         .streamSinkFixedSizedPrimitiveArrayTwinNormal(hint: hint);
+
+class LogTwinNormal {
+  final int key;
+  final int value;
+
+  const LogTwinNormal({
+    required this.key,
+    required this.value,
+  });
+
+  @override
+  int get hashCode => key.hashCode ^ value.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is LogTwinNormal &&
+          runtimeType == other.runtimeType &&
+          key == other.key &&
+          value == other.value;
+}
+
+class MyStreamEntryTwinNormal {
+  final String hello;
+
+  const MyStreamEntryTwinNormal({
+    required this.hello,
+  });
+
+  @override
+  int get hashCode => hello.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MyStreamEntryTwinNormal &&
+          runtimeType == other.runtimeType &&
+          hello == other.hello;
+}

@@ -34331,6 +34331,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  Map<int, ApplicationMode> dco_decode_Map_u_8_application_mode(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return Map.fromEntries(dco_decode_list_record_u_8_application_mode(raw)
+        .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
   BoxDartDebugTwinNormal dco_decode_RustOpaque_BoxdynDartDebugTwinNormal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -34802,6 +34809,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  Set<ApplicationMode> dco_decode_Set_application_mode(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return Set.from(dco_decode_list_application_mode(raw));
+  }
+
+  @protected
   Set<int> dco_decode_Set_i_32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return Set.from(dco_decode_list_prim_i_32_strict(raw));
@@ -35216,6 +35229,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   ApplicationMode dco_decode_application_mode(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return ApplicationMode.values[raw as int];
+  }
+
+  @protected
+  ApplicationModeArray2 dco_decode_application_mode_array_2(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return ApplicationModeArray2(
+        (raw as List<dynamic>).map(dco_decode_application_mode).toList());
   }
 
   @protected
@@ -35690,6 +35710,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   ApplicationEnv dco_decode_box_autoadd_application_env(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return dco_decode_application_env(raw);
+  }
+
+  @protected
+  ApplicationMode dco_decode_box_autoadd_application_mode(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_application_mode(raw);
   }
 
   @protected
@@ -38896,6 +38922,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  List<ApplicationMode> dco_decode_list_application_mode(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return (raw as List<dynamic>).map(dco_decode_application_mode).toList();
+  }
+
+  @protected
+  List<ApplicationSettings> dco_decode_list_application_settings(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return (raw as List<dynamic>).map(dco_decode_application_settings).toList();
+  }
+
+  @protected
   List<AttributeTwinNormal> dco_decode_list_attribute_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return (raw as List<dynamic>)
@@ -39056,6 +39094,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   List<Uint8List> dco_decode_list_list_prim_u_8_strict(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return (raw as List<dynamic>).map(dco_decode_list_prim_u_8_strict).toList();
+  }
+
+  @protected
+  List<MyEnum> dco_decode_list_my_enum(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return (raw as List<dynamic>).map(dco_decode_my_enum).toList();
   }
 
   @protected
@@ -39598,6 +39642,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  List<(int, ApplicationMode)> dco_decode_list_record_u_8_application_mode(
+      dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_u_8_application_mode)
+        .toList();
+  }
+
+  @protected
   List<SimpleStructTwinNormal> dco_decode_list_simple_struct_twin_normal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -39685,6 +39738,66 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   List<WeekdaysTwinSync> dco_decode_list_weekdays_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return (raw as List<dynamic>).map(dco_decode_weekdays_twin_sync).toList();
+  }
+
+  @protected
+  Log2TwinNormal dco_decode_log_2_twin_normal(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return Log2TwinNormal(
+      key: dco_decode_u_32(arr[0]),
+      value: dco_decode_String(arr[1]),
+    );
+  }
+
+  @protected
+  Log2TwinRustAsync dco_decode_log_2_twin_rust_async(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return Log2TwinRustAsync(
+      key: dco_decode_u_32(arr[0]),
+      value: dco_decode_String(arr[1]),
+    );
+  }
+
+  @protected
+  Log2TwinSync dco_decode_log_2_twin_sync(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return Log2TwinSync(
+      key: dco_decode_u_32(arr[0]),
+      value: dco_decode_String(arr[1]),
+    );
+  }
+
+  @protected
+  LogTwinNormal dco_decode_log_twin_normal(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return LogTwinNormal(
+      key: dco_decode_u_32(arr[0]),
+      value: dco_decode_u_32(arr[1]),
+    );
+  }
+
+  @protected
+  LogTwinRustAsync dco_decode_log_twin_rust_async(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return LogTwinRustAsync(
+      key: dco_decode_u_32(arr[0]),
+      value: dco_decode_u_32(arr[1]),
+    );
   }
 
   @protected
@@ -39779,6 +39892,49 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return MessageIdTwinSync(
       field0: dco_decode_u_8_array_32(arr[0]),
+    );
+  }
+
+  @protected
+  MirrorStructTwinNormal dco_decode_mirror_struct_twin_normal(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return MirrorStructTwinNormal(
+      a: dco_decode_application_settings(arr[0]),
+      b: dco_decode_my_struct(arr[1]),
+      c: dco_decode_list_my_enum(arr[2]),
+      d: dco_decode_list_application_settings(arr[3]),
+    );
+  }
+
+  @protected
+  MirrorStructTwinRustAsync dco_decode_mirror_struct_twin_rust_async(
+      dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return MirrorStructTwinRustAsync(
+      a: dco_decode_application_settings(arr[0]),
+      b: dco_decode_my_struct(arr[1]),
+      c: dco_decode_list_my_enum(arr[2]),
+      d: dco_decode_list_application_settings(arr[3]),
+    );
+  }
+
+  @protected
+  MirrorStructTwinSync dco_decode_mirror_struct_twin_sync(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return MirrorStructTwinSync(
+      a: dco_decode_application_settings(arr[0]),
+      b: dco_decode_my_struct(arr[1]),
+      c: dco_decode_list_my_enum(arr[2]),
+      d: dco_decode_list_application_settings(arr[3]),
     );
   }
 
@@ -39914,6 +40070,29 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return MySize(
       width: dco_decode_i_32(arr[0]),
       height: dco_decode_i_32(arr[1]),
+    );
+  }
+
+  @protected
+  MyStreamEntryTwinNormal dco_decode_my_stream_entry_twin_normal(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return MyStreamEntryTwinNormal(
+      hello: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  MyStreamEntryTwinRustAsync dco_decode_my_stream_entry_twin_rust_async(
+      dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return MyStreamEntryTwinRustAsync(
+      hello: dco_decode_String(arr[0]),
     );
   }
 
@@ -40224,6 +40403,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   ApplicationEnv? dco_decode_opt_box_autoadd_application_env(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw == null ? null : dco_decode_box_autoadd_application_env(raw);
+  }
+
+  @protected
+  ApplicationMode? dco_decode_opt_box_autoadd_application_mode(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return raw == null ? null : dco_decode_box_autoadd_application_mode(raw);
   }
 
   @protected
@@ -40896,6 +41081,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  (ApplicationSettings, RawStringEnumMirrored)
+      dco_decode_record_application_settings_raw_string_enum_mirrored(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_application_settings(arr[0]),
+      dco_decode_raw_string_enum_mirrored(arr[1]),
+    );
+  }
+
+  @protected
   (
     OpaqueOneTwinNormal,
     OpaqueTwoTwinNormal
@@ -41420,6 +41620,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return (
       dco_decode_String(arr[0]),
       dco_decode_String(arr[1]),
+    );
+  }
+
+  @protected
+  (int, ApplicationMode) dco_decode_record_u_8_application_mode(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_u_8(arr[0]),
+      dco_decode_application_mode(arr[1]),
     );
   }
 
@@ -42257,6 +42470,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   U8Array1600 dco_decode_u_8_array_1600(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return U8Array1600(dco_decode_list_prim_u_8_strict(raw));
+  }
+
+  @protected
+  U8Array2 dco_decode_u_8_array_2(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return U8Array2(dco_decode_list_prim_u_8_strict(raw));
   }
 
   @protected
@@ -43307,6 +43526,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  Map<int, ApplicationMode> sse_decode_Map_u_8_application_mode(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var inner = sse_decode_list_record_u_8_application_mode(deserializer);
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
   BoxDartDebugTwinNormal sse_decode_RustOpaque_BoxdynDartDebugTwinNormal(
       SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -43832,6 +44059,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  Set<ApplicationMode> sse_decode_Set_application_mode(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var inner = sse_decode_list_application_mode(deserializer);
+    return Set.from(inner);
+  }
+
+  @protected
   Set<int> sse_decode_Set_i_32(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_list_prim_i_32_strict(deserializer);
@@ -44233,6 +44468,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_i_32(deserializer);
     return ApplicationMode.values[inner];
+  }
+
+  @protected
+  ApplicationModeArray2 sse_decode_application_mode_array_2(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var inner = sse_decode_list_application_mode(deserializer);
+    return ApplicationModeArray2(inner);
   }
 
   @protected
@@ -44665,6 +44908,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return (sse_decode_application_env(deserializer));
+  }
+
+  @protected
+  ApplicationMode sse_decode_box_autoadd_application_mode(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_application_mode(deserializer));
   }
 
   @protected
@@ -48006,6 +48256,32 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  List<ApplicationMode> sse_decode_list_application_mode(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <ApplicationMode>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_application_mode(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<ApplicationSettings> sse_decode_list_application_settings(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <ApplicationSettings>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_application_settings(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
   List<AttributeTwinNormal> sse_decode_list_attribute_twin_normal(
       SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -48265,6 +48541,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var ans_ = <Uint8List>[];
     for (var idx_ = 0; idx_ < len_; ++idx_) {
       ans_.add(sse_decode_list_prim_u_8_strict(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<MyEnum> sse_decode_list_my_enum(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <MyEnum>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_my_enum(deserializer));
     }
     return ans_;
   }
@@ -49134,6 +49422,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  List<(int, ApplicationMode)> sse_decode_list_record_u_8_application_mode(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(int, ApplicationMode)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_record_u_8_application_mode(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
   List<SimpleStructTwinNormal> sse_decode_list_simple_struct_twin_normal(
       SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -49290,6 +49591,48 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  Log2TwinNormal sse_decode_log_2_twin_normal(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_key = sse_decode_u_32(deserializer);
+    var var_value = sse_decode_String(deserializer);
+    return Log2TwinNormal(key: var_key, value: var_value);
+  }
+
+  @protected
+  Log2TwinRustAsync sse_decode_log_2_twin_rust_async(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_key = sse_decode_u_32(deserializer);
+    var var_value = sse_decode_String(deserializer);
+    return Log2TwinRustAsync(key: var_key, value: var_value);
+  }
+
+  @protected
+  Log2TwinSync sse_decode_log_2_twin_sync(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_key = sse_decode_u_32(deserializer);
+    var var_value = sse_decode_String(deserializer);
+    return Log2TwinSync(key: var_key, value: var_value);
+  }
+
+  @protected
+  LogTwinNormal sse_decode_log_twin_normal(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_key = sse_decode_u_32(deserializer);
+    var var_value = sse_decode_u_32(deserializer);
+    return LogTwinNormal(key: var_key, value: var_value);
+  }
+
+  @protected
+  LogTwinRustAsync sse_decode_log_twin_rust_async(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_key = sse_decode_u_32(deserializer);
+    var var_value = sse_decode_u_32(deserializer);
+    return LogTwinRustAsync(key: var_key, value: var_value);
+  }
+
+  @protected
   MacroStruct sse_decode_macro_struct(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_data = sse_decode_i_32(deserializer);
@@ -49371,6 +49714,39 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_field0 = sse_decode_u_8_array_32(deserializer);
     return MessageIdTwinSync(field0: var_field0);
+  }
+
+  @protected
+  MirrorStructTwinNormal sse_decode_mirror_struct_twin_normal(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_a = sse_decode_application_settings(deserializer);
+    var var_b = sse_decode_my_struct(deserializer);
+    var var_c = sse_decode_list_my_enum(deserializer);
+    var var_d = sse_decode_list_application_settings(deserializer);
+    return MirrorStructTwinNormal(a: var_a, b: var_b, c: var_c, d: var_d);
+  }
+
+  @protected
+  MirrorStructTwinRustAsync sse_decode_mirror_struct_twin_rust_async(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_a = sse_decode_application_settings(deserializer);
+    var var_b = sse_decode_my_struct(deserializer);
+    var var_c = sse_decode_list_my_enum(deserializer);
+    var var_d = sse_decode_list_application_settings(deserializer);
+    return MirrorStructTwinRustAsync(a: var_a, b: var_b, c: var_c, d: var_d);
+  }
+
+  @protected
+  MirrorStructTwinSync sse_decode_mirror_struct_twin_sync(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_a = sse_decode_application_settings(deserializer);
+    var var_b = sse_decode_my_struct(deserializer);
+    var var_c = sse_decode_list_my_enum(deserializer);
+    var var_d = sse_decode_list_application_settings(deserializer);
+    return MirrorStructTwinSync(a: var_a, b: var_b, c: var_c, d: var_d);
   }
 
   @protected
@@ -49487,6 +49863,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var var_width = sse_decode_i_32(deserializer);
     var var_height = sse_decode_i_32(deserializer);
     return MySize(width: var_width, height: var_height);
+  }
+
+  @protected
+  MyStreamEntryTwinNormal sse_decode_my_stream_entry_twin_normal(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_hello = sse_decode_String(deserializer);
+    return MyStreamEntryTwinNormal(hello: var_hello);
+  }
+
+  @protected
+  MyStreamEntryTwinRustAsync sse_decode_my_stream_entry_twin_rust_async(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_hello = sse_decode_String(deserializer);
+    return MyStreamEntryTwinRustAsync(hello: var_hello);
   }
 
   @protected
@@ -49807,6 +50199,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
     if (sse_decode_bool(deserializer)) {
       return (sse_decode_box_autoadd_application_env(deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
+  ApplicationMode? sse_decode_opt_box_autoadd_application_mode(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_autoadd_application_mode(deserializer));
     } else {
       return null;
     }
@@ -50782,6 +51186,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  (ApplicationSettings, RawStringEnumMirrored)
+      sse_decode_record_application_settings_raw_string_enum_mirrored(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_field0 = sse_decode_application_settings(deserializer);
+    var var_field1 = sse_decode_raw_string_enum_mirrored(deserializer);
+    return (var_field0, var_field1);
+  }
+
+  @protected
   (
     OpaqueOneTwinNormal,
     OpaqueTwoTwinNormal
@@ -51139,6 +51553,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_field0 = sse_decode_String(deserializer);
     var var_field1 = sse_decode_String(deserializer);
+    return (var_field0, var_field1);
+  }
+
+  @protected
+  (int, ApplicationMode) sse_decode_record_u_8_application_mode(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_field0 = sse_decode_u_8(deserializer);
+    var var_field1 = sse_decode_application_mode(deserializer);
     return (var_field0, var_field1);
   }
 
@@ -51843,6 +52266,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_list_prim_u_8_strict(deserializer);
     return U8Array1600(inner);
+  }
+
+  @protected
+  U8Array2 sse_decode_u_8_array_2(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var inner = sse_decode_list_prim_u_8_strict(deserializer);
+    return U8Array2(inner);
   }
 
   @protected
@@ -52925,6 +53355,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_Map_u_8_application_mode(
+      Map<int, ApplicationMode> self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_list_record_u_8_application_mode(
+        self.entries.map((e) => (e.key, e.value)).toList(), serializer);
+  }
+
+  @protected
   void sse_encode_RustOpaque_BoxdynDartDebugTwinNormal(
       BoxDartDebugTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -53390,6 +53828,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_Set_String(Set<String> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_String(self.toList(), serializer);
+  }
+
+  @protected
+  void sse_encode_Set_application_mode(
+      Set<ApplicationMode> self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_list_application_mode(self.toList(), serializer);
   }
 
   @protected
@@ -53907,6 +54352,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_application_mode_array_2(
+      ApplicationModeArray2 self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_list_application_mode(self.inner, serializer);
+  }
+
+  @protected
   void sse_encode_application_settings(
       ApplicationSettings self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -54288,6 +54740,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       ApplicationEnv self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_application_env(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_application_mode(
+      ApplicationMode self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_application_mode(self, serializer);
   }
 
   @protected
@@ -57238,6 +57697,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_list_application_mode(
+      List<ApplicationMode> self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_application_mode(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_application_settings(
+      List<ApplicationSettings> self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_application_settings(item, serializer);
+    }
+  }
+
+  @protected
   void sse_encode_list_attribute_twin_normal(
       List<AttributeTwinNormal> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -57433,6 +57912,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     sse_encode_i_32(self.length, serializer);
     for (final item in self) {
       sse_encode_list_prim_u_8_strict(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_my_enum(List<MyEnum> self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_my_enum(item, serializer);
     }
   }
 
@@ -58140,6 +58628,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_list_record_u_8_application_mode(
+      List<(int, ApplicationMode)> self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_u_8_application_mode(item, serializer);
+    }
+  }
+
+  @protected
   void sse_encode_list_simple_struct_twin_normal(
       List<SimpleStructTwinNormal> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -58260,6 +58758,45 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_log_2_twin_normal(
+      Log2TwinNormal self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_u_32(self.key, serializer);
+    sse_encode_String(self.value, serializer);
+  }
+
+  @protected
+  void sse_encode_log_2_twin_rust_async(
+      Log2TwinRustAsync self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_u_32(self.key, serializer);
+    sse_encode_String(self.value, serializer);
+  }
+
+  @protected
+  void sse_encode_log_2_twin_sync(Log2TwinSync self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_u_32(self.key, serializer);
+    sse_encode_String(self.value, serializer);
+  }
+
+  @protected
+  void sse_encode_log_twin_normal(
+      LogTwinNormal self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_u_32(self.key, serializer);
+    sse_encode_u_32(self.value, serializer);
+  }
+
+  @protected
+  void sse_encode_log_twin_rust_async(
+      LogTwinRustAsync self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_u_32(self.key, serializer);
+    sse_encode_u_32(self.value, serializer);
+  }
+
+  @protected
   void sse_encode_macro_struct(MacroStruct self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_i_32(self.data, serializer);
@@ -58326,6 +58863,36 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       MessageIdTwinSync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_u_8_array_32(self.field0, serializer);
+  }
+
+  @protected
+  void sse_encode_mirror_struct_twin_normal(
+      MirrorStructTwinNormal self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_application_settings(self.a, serializer);
+    sse_encode_my_struct(self.b, serializer);
+    sse_encode_list_my_enum(self.c, serializer);
+    sse_encode_list_application_settings(self.d, serializer);
+  }
+
+  @protected
+  void sse_encode_mirror_struct_twin_rust_async(
+      MirrorStructTwinRustAsync self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_application_settings(self.a, serializer);
+    sse_encode_my_struct(self.b, serializer);
+    sse_encode_list_my_enum(self.c, serializer);
+    sse_encode_list_application_settings(self.d, serializer);
+  }
+
+  @protected
+  void sse_encode_mirror_struct_twin_sync(
+      MirrorStructTwinSync self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_application_settings(self.a, serializer);
+    sse_encode_my_struct(self.b, serializer);
+    sse_encode_list_my_enum(self.c, serializer);
+    sse_encode_list_application_settings(self.d, serializer);
   }
 
   @protected
@@ -58415,6 +58982,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_i_32(self.width, serializer);
     sse_encode_i_32(self.height, serializer);
+  }
+
+  @protected
+  void sse_encode_my_stream_entry_twin_normal(
+      MyStreamEntryTwinNormal self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(self.hello, serializer);
+  }
+
+  @protected
+  void sse_encode_my_stream_entry_twin_rust_async(
+      MyStreamEntryTwinRustAsync self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(self.hello, serializer);
   }
 
   @protected
@@ -58694,6 +59275,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     sse_encode_bool(self != null, serializer);
     if (self != null) {
       sse_encode_box_autoadd_application_env(self, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_opt_box_autoadd_application_mode(
+      ApplicationMode? self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_autoadd_application_mode(self, serializer);
     }
   }
 
@@ -59542,6 +60134,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_record_application_settings_raw_string_enum_mirrored(
+      (ApplicationSettings, RawStringEnumMirrored) self,
+      SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_application_settings(self.$1, serializer);
+    sse_encode_raw_string_enum_mirrored(self.$2, serializer);
+  }
+
+  @protected
   void
       sse_encode_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generatedrust_async_rw_lock_opaque_one_twin_normal_auto_owned_rust_opaque_flutter_rust_bridgefor_generatedrust_async_rw_lock_opaque_two_twin_normal(
           (OpaqueOneTwinNormal, OpaqueTwoTwinNormal) self,
@@ -59844,6 +60445,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(self.$1, serializer);
     sse_encode_String(self.$2, serializer);
+  }
+
+  @protected
+  void sse_encode_record_u_8_application_mode(
+      (int, ApplicationMode) self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_u_8(self.$1, serializer);
+    sse_encode_application_mode(self.$2, serializer);
   }
 
   @protected
@@ -60419,6 +61028,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void sse_encode_u_8_array_1600(U8Array1600 self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_list_prim_u_8_strict(self.inner, serializer);
+  }
+
+  @protected
+  void sse_encode_u_8_array_2(U8Array2 self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_prim_u_8_strict(self.inner, serializer);
   }

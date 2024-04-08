@@ -2263,6 +2263,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Map<int, int> dco_decode_Map_i_32_usize(dynamic raw);
 
   @protected
+  Map<int, ApplicationMode> dco_decode_Map_u_8_application_mode(dynamic raw);
+
+  @protected
   BoxDartDebugTwinMoi dco_decode_RustOpaque_BoxdynDartDebugTwinMoi(dynamic raw);
 
   @protected
@@ -3196,6 +3199,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Set<String> dco_decode_Set_String(dynamic raw);
 
   @protected
+  Set<ApplicationMode> dco_decode_Set_application_mode(dynamic raw);
+
+  @protected
   Set<int> dco_decode_Set_i_32(dynamic raw);
 
   @protected
@@ -3528,6 +3534,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   ApplicationMode dco_decode_application_mode(dynamic raw);
+
+  @protected
+  ApplicationModeArray2 dco_decode_application_mode_array_2(dynamic raw);
 
   @protected
   ApplicationSettings dco_decode_application_settings(dynamic raw);
@@ -3897,6 +3906,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   ApplicationEnv dco_decode_box_autoadd_application_env(dynamic raw);
+
+  @protected
+  ApplicationMode dco_decode_box_autoadd_application_mode(dynamic raw);
 
   @protected
   ApplicationSettings dco_decode_box_autoadd_application_settings(dynamic raw);
@@ -6501,6 +6513,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<ApplicationEnvVar> dco_decode_list_application_env_var(dynamic raw);
 
   @protected
+  List<ApplicationMode> dco_decode_list_application_mode(dynamic raw);
+
+  @protected
+  List<ApplicationSettings> dco_decode_list_application_settings(dynamic raw);
+
+  @protected
   List<AttributeTwinNormal> dco_decode_list_attribute_twin_normal(dynamic raw);
 
   @protected
@@ -6661,6 +6679,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<Uint8List> dco_decode_list_list_prim_u_8_strict(dynamic raw);
+
+  @protected
+  List<MyEnum> dco_decode_list_my_enum(dynamic raw);
 
   @protected
   List<MySize> dco_decode_list_my_size(dynamic raw);
@@ -7024,6 +7045,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<(String, String)> dco_decode_list_record_string_string(dynamic raw);
 
   @protected
+  List<(int, ApplicationMode)> dco_decode_list_record_u_8_application_mode(
+      dynamic raw);
+
+  @protected
   List<SimpleStructTwinNormal> dco_decode_list_simple_struct_twin_normal(
       dynamic raw);
 
@@ -7107,6 +7132,36 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<WeekdaysTwinSyncSse> dco_decode_list_weekdays_twin_sync_sse(dynamic raw);
 
   @protected
+  Log2TwinNormal dco_decode_log_2_twin_normal(dynamic raw);
+
+  @protected
+  Log2TwinRustAsync dco_decode_log_2_twin_rust_async(dynamic raw);
+
+  @protected
+  Log2TwinRustAsyncSse dco_decode_log_2_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  Log2TwinSse dco_decode_log_2_twin_sse(dynamic raw);
+
+  @protected
+  Log2TwinSync dco_decode_log_2_twin_sync(dynamic raw);
+
+  @protected
+  Log2TwinSyncSse dco_decode_log_2_twin_sync_sse(dynamic raw);
+
+  @protected
+  LogTwinNormal dco_decode_log_twin_normal(dynamic raw);
+
+  @protected
+  LogTwinRustAsync dco_decode_log_twin_rust_async(dynamic raw);
+
+  @protected
+  LogTwinRustAsyncSse dco_decode_log_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  LogTwinSse dco_decode_log_twin_sse(dynamic raw);
+
+  @protected
   MacroStruct dco_decode_macro_struct(dynamic raw);
 
   @protected
@@ -7145,6 +7200,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   MessageIdTwinSyncSse dco_decode_message_id_twin_sync_sse(dynamic raw);
+
+  @protected
+  MirrorStructTwinNormal dco_decode_mirror_struct_twin_normal(dynamic raw);
+
+  @protected
+  MirrorStructTwinRustAsync dco_decode_mirror_struct_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  MirrorStructTwinRustAsyncSse dco_decode_mirror_struct_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  MirrorStructTwinSse dco_decode_mirror_struct_twin_sse(dynamic raw);
+
+  @protected
+  MirrorStructTwinSync dco_decode_mirror_struct_twin_sync(dynamic raw);
+
+  @protected
+  MirrorStructTwinSyncSse dco_decode_mirror_struct_twin_sync_sse(dynamic raw);
 
   @protected
   MoreThanJustOneRawStringStructTwinNormal
@@ -7218,6 +7293,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   MySize dco_decode_my_size(dynamic raw);
+
+  @protected
+  MyStreamEntryTwinNormal dco_decode_my_stream_entry_twin_normal(dynamic raw);
+
+  @protected
+  MyStreamEntryTwinRustAsync dco_decode_my_stream_entry_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  MyStreamEntryTwinRustAsyncSse dco_decode_my_stream_entry_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  MyStreamEntryTwinSse dco_decode_my_stream_entry_twin_sse(dynamic raw);
 
   @protected
   MyStruct dco_decode_my_struct(dynamic raw);
@@ -7477,6 +7566,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   ApplicationEnv? dco_decode_opt_box_autoadd_application_env(dynamic raw);
+
+  @protected
+  ApplicationMode? dco_decode_opt_box_autoadd_application_mode(dynamic raw);
 
   @protected
   AttributeTwinNormal? dco_decode_opt_box_autoadd_attribute_twin_normal(
@@ -7972,6 +8064,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   RawStringMirrored dco_decode_raw_string_mirrored(dynamic raw);
 
   @protected
+  (ApplicationSettings, RawStringEnumMirrored)
+      dco_decode_record_application_settings_raw_string_enum_mirrored(
+          dynamic raw);
+
+  @protected
   (
     OpaqueOneTwinMoi,
     OpaqueTwoTwinMoi
@@ -8238,6 +8335,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   (String, String) dco_decode_record_string_string(dynamic raw);
+
+  @protected
+  (int, ApplicationMode) dco_decode_record_u_8_application_mode(dynamic raw);
 
   @protected
   Sequences dco_decode_sequences(dynamic raw);
@@ -8769,6 +8869,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   U8Array1600 dco_decode_u_8_array_1600(dynamic raw);
+
+  @protected
+  U8Array2 dco_decode_u_8_array_2(dynamic raw);
 
   @protected
   U8Array32 dco_decode_u_8_array_32(dynamic raw);
@@ -10030,6 +10133,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Map<int, int> sse_decode_Map_i_32_usize(SseDeserializer deserializer);
 
   @protected
+  Map<int, ApplicationMode> sse_decode_Map_u_8_application_mode(
+      SseDeserializer deserializer);
+
+  @protected
   BoxDartDebugTwinMoi sse_decode_RustOpaque_BoxdynDartDebugTwinMoi(
       SseDeserializer deserializer);
 
@@ -11003,6 +11110,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Set<String> sse_decode_Set_String(SseDeserializer deserializer);
 
   @protected
+  Set<ApplicationMode> sse_decode_Set_application_mode(
+      SseDeserializer deserializer);
+
+  @protected
   Set<int> sse_decode_Set_i_32(SseDeserializer deserializer);
 
   @protected
@@ -11380,6 +11491,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   ApplicationMode sse_decode_application_mode(SseDeserializer deserializer);
+
+  @protected
+  ApplicationModeArray2 sse_decode_application_mode_array_2(
+      SseDeserializer deserializer);
 
   @protected
   ApplicationSettings sse_decode_application_settings(
@@ -11793,6 +11908,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   ApplicationEnv sse_decode_box_autoadd_application_env(
+      SseDeserializer deserializer);
+
+  @protected
+  ApplicationMode sse_decode_box_autoadd_application_mode(
       SseDeserializer deserializer);
 
   @protected
@@ -14756,6 +14875,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  List<ApplicationMode> sse_decode_list_application_mode(
+      SseDeserializer deserializer);
+
+  @protected
+  List<ApplicationSettings> sse_decode_list_application_settings(
+      SseDeserializer deserializer);
+
+  @protected
   List<AttributeTwinNormal> sse_decode_list_attribute_twin_normal(
       SseDeserializer deserializer);
 
@@ -14942,6 +15069,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<Uint8List> sse_decode_list_list_prim_u_8_strict(
       SseDeserializer deserializer);
+
+  @protected
+  List<MyEnum> sse_decode_list_my_enum(SseDeserializer deserializer);
 
   @protected
   List<MySize> sse_decode_list_my_size(SseDeserializer deserializer);
@@ -15362,6 +15492,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  List<(int, ApplicationMode)> sse_decode_list_record_u_8_application_mode(
+      SseDeserializer deserializer);
+
+  @protected
   List<SimpleStructTwinNormal> sse_decode_list_simple_struct_twin_normal(
       SseDeserializer deserializer);
 
@@ -15459,6 +15593,39 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  Log2TwinNormal sse_decode_log_2_twin_normal(SseDeserializer deserializer);
+
+  @protected
+  Log2TwinRustAsync sse_decode_log_2_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  Log2TwinRustAsyncSse sse_decode_log_2_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  Log2TwinSse sse_decode_log_2_twin_sse(SseDeserializer deserializer);
+
+  @protected
+  Log2TwinSync sse_decode_log_2_twin_sync(SseDeserializer deserializer);
+
+  @protected
+  Log2TwinSyncSse sse_decode_log_2_twin_sync_sse(SseDeserializer deserializer);
+
+  @protected
+  LogTwinNormal sse_decode_log_twin_normal(SseDeserializer deserializer);
+
+  @protected
+  LogTwinRustAsync sse_decode_log_twin_rust_async(SseDeserializer deserializer);
+
+  @protected
+  LogTwinRustAsyncSse sse_decode_log_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  LogTwinSse sse_decode_log_twin_sse(SseDeserializer deserializer);
+
+  @protected
   MacroStruct sse_decode_macro_struct(SseDeserializer deserializer);
 
   @protected
@@ -15504,6 +15671,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   MessageIdTwinSyncSse sse_decode_message_id_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  MirrorStructTwinNormal sse_decode_mirror_struct_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  MirrorStructTwinRustAsync sse_decode_mirror_struct_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  MirrorStructTwinRustAsyncSse sse_decode_mirror_struct_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  MirrorStructTwinSse sse_decode_mirror_struct_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  MirrorStructTwinSync sse_decode_mirror_struct_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  MirrorStructTwinSyncSse sse_decode_mirror_struct_twin_sync_sse(
       SseDeserializer deserializer);
 
   @protected
@@ -15590,6 +15781,22 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   MySize sse_decode_my_size(SseDeserializer deserializer);
+
+  @protected
+  MyStreamEntryTwinNormal sse_decode_my_stream_entry_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  MyStreamEntryTwinRustAsync sse_decode_my_stream_entry_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  MyStreamEntryTwinRustAsyncSse sse_decode_my_stream_entry_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  MyStreamEntryTwinSse sse_decode_my_stream_entry_twin_sse(
+      SseDeserializer deserializer);
 
   @protected
   MyStruct sse_decode_my_struct(SseDeserializer deserializer);
@@ -15878,6 +16085,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   ApplicationEnv? sse_decode_opt_box_autoadd_application_env(
+      SseDeserializer deserializer);
+
+  @protected
+  ApplicationMode? sse_decode_opt_box_autoadd_application_mode(
       SseDeserializer deserializer);
 
   @protected
@@ -16436,6 +16647,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  (ApplicationSettings, RawStringEnumMirrored)
+      sse_decode_record_application_settings_raw_string_enum_mirrored(
+          SseDeserializer deserializer);
+
+  @protected
   (
     OpaqueOneTwinMoi,
     OpaqueTwoTwinMoi
@@ -16725,6 +16941,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   (String, String) sse_decode_record_string_string(
+      SseDeserializer deserializer);
+
+  @protected
+  (int, ApplicationMode) sse_decode_record_u_8_application_mode(
       SseDeserializer deserializer);
 
   @protected
@@ -17346,6 +17566,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   U8Array1600 sse_decode_u_8_array_1600(SseDeserializer deserializer);
 
   @protected
+  U8Array2 sse_decode_u_8_array_2(SseDeserializer deserializer);
+
+  @protected
   U8Array32 sse_decode_u_8_array_32(SseDeserializer deserializer);
 
   @protected
@@ -17761,6 +17984,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  ffi.Pointer<wire_cst_list_record_u_8_application_mode>
+      cst_encode_Map_u_8_application_mode(Map<int, ApplicationMode> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_list_record_u_8_application_mode(
+        raw.entries.map((e) => (e.key, e.value)).toList());
+  }
+
+  @protected
   ffi.Pointer<wire_cst_list_RustOpaque_HideDataTwinMoi>
       cst_encode_RustOpaque_HideDataTwinMoi_array_2(HideDataTwinMoiArray2 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -17811,6 +18042,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_list_String> cst_encode_Set_String(Set<String> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_String(raw.toList());
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_application_mode> cst_encode_Set_application_mode(
+      Set<ApplicationMode> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_list_application_mode(raw.toList());
   }
 
   @protected
@@ -18173,6 +18411,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  ffi.Pointer<wire_cst_list_application_mode>
+      cst_encode_application_mode_array_2(ApplicationModeArray2 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_list_application_mode(raw);
+  }
+
+  @protected
   ffi.Pointer<wire_cst_application_env> cst_encode_box_application_env(
       ApplicationEnv raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -18402,6 +18647,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     final ptr = wire.cst_new_box_autoadd_application_env();
     cst_api_fill_to_wire_application_env(raw, ptr.ref);
     return ptr;
+  }
+
+  @protected
+  ffi.Pointer<ffi.Int32> cst_encode_box_autoadd_application_mode(
+      ApplicationMode raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return wire
+        .cst_new_box_autoadd_application_mode(cst_encode_application_mode(raw));
   }
 
   @protected
@@ -20951,6 +21204,28 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  ffi.Pointer<wire_cst_list_application_mode> cst_encode_list_application_mode(
+      List<ApplicationMode> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ans = wire.cst_new_list_application_mode(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      ans.ref.ptr[i] = cst_encode_application_mode(raw[i]);
+    }
+    return ans;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_application_settings>
+      cst_encode_list_application_settings(List<ApplicationSettings> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ans = wire.cst_new_list_application_settings(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      cst_api_fill_to_wire_application_settings(raw[i], ans.ref.ptr[i]);
+    }
+    return ans;
+  }
+
+  @protected
   ffi.Pointer<wire_cst_list_attribute_twin_normal>
       cst_encode_list_attribute_twin_normal(List<AttributeTwinNormal> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -21215,6 +21490,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     final ans = wire.cst_new_list_list_prim_u_8_strict(raw.length);
     for (var i = 0; i < raw.length; ++i) {
       ans.ref.ptr[i] = cst_encode_list_prim_u_8_strict(raw[i]);
+    }
+    return ans;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_my_enum> cst_encode_list_my_enum(List<MyEnum> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ans = wire.cst_new_list_my_enum(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      ans.ref.ptr[i] = cst_encode_my_enum(raw[i]);
     }
     return ans;
   }
@@ -22045,6 +22330,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  ffi.Pointer<wire_cst_list_record_u_8_application_mode>
+      cst_encode_list_record_u_8_application_mode(
+          List<(int, ApplicationMode)> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ans = wire.cst_new_list_record_u_8_application_mode(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      cst_api_fill_to_wire_record_u_8_application_mode(raw[i], ans.ref.ptr[i]);
+    }
+    return ans;
+  }
+
+  @protected
   ffi.Pointer<wire_cst_list_simple_struct_twin_normal>
       cst_encode_list_simple_struct_twin_normal(
           List<SimpleStructTwinNormal> raw) {
@@ -22369,6 +22666,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     return raw == null
         ? ffi.nullptr
         : cst_encode_box_autoadd_application_env(raw);
+  }
+
+  @protected
+  ffi.Pointer<ffi.Int32> cst_encode_opt_box_autoadd_application_mode(
+      ApplicationMode? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw == null
+        ? ffi.nullptr
+        : cst_encode_box_autoadd_application_mode(raw);
   }
 
   @protected
@@ -23031,6 +23337,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     final ans = wire.cst_new_list_prim_u_8_strict(1600);
     ans.ref.ptr.asTypedList(1600).setAll(0, raw);
+    return ans;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_prim_u_8_strict> cst_encode_u_8_array_2(
+      U8Array2 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ans = wire.cst_new_list_prim_u_8_strict(2);
+    ans.ref.ptr.asTypedList(2).setAll(0, raw);
     return ans;
   }
 
@@ -26530,6 +26845,41 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  void cst_api_fill_to_wire_log_2_twin_normal(
+      Log2TwinNormal apiObj, wire_cst_log_2_twin_normal wireObj) {
+    wireObj.key = cst_encode_u_32(apiObj.key);
+    wireObj.value = cst_encode_String(apiObj.value);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_log_2_twin_rust_async(
+      Log2TwinRustAsync apiObj, wire_cst_log_2_twin_rust_async wireObj) {
+    wireObj.key = cst_encode_u_32(apiObj.key);
+    wireObj.value = cst_encode_String(apiObj.value);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_log_2_twin_sync(
+      Log2TwinSync apiObj, wire_cst_log_2_twin_sync wireObj) {
+    wireObj.key = cst_encode_u_32(apiObj.key);
+    wireObj.value = cst_encode_String(apiObj.value);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_log_twin_normal(
+      LogTwinNormal apiObj, wire_cst_log_twin_normal wireObj) {
+    wireObj.key = cst_encode_u_32(apiObj.key);
+    wireObj.value = cst_encode_u_32(apiObj.value);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_log_twin_rust_async(
+      LogTwinRustAsync apiObj, wire_cst_log_twin_rust_async wireObj) {
+    wireObj.key = cst_encode_u_32(apiObj.key);
+    wireObj.value = cst_encode_u_32(apiObj.value);
+  }
+
+  @protected
   void cst_api_fill_to_wire_macro_struct(
       MacroStruct apiObj, wire_cst_macro_struct wireObj) {
     wireObj.data = cst_encode_i_32(apiObj.data);
@@ -26603,6 +26953,35 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void cst_api_fill_to_wire_message_id_twin_sync(
       MessageIdTwinSync apiObj, wire_cst_message_id_twin_sync wireObj) {
     wireObj.field0 = cst_encode_u_8_array_32(apiObj.field0);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_mirror_struct_twin_normal(
+      MirrorStructTwinNormal apiObj,
+      wire_cst_mirror_struct_twin_normal wireObj) {
+    cst_api_fill_to_wire_application_settings(apiObj.a, wireObj.a);
+    cst_api_fill_to_wire_my_struct(apiObj.b, wireObj.b);
+    wireObj.c = cst_encode_list_my_enum(apiObj.c);
+    wireObj.d = cst_encode_list_application_settings(apiObj.d);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_mirror_struct_twin_rust_async(
+      MirrorStructTwinRustAsync apiObj,
+      wire_cst_mirror_struct_twin_rust_async wireObj) {
+    cst_api_fill_to_wire_application_settings(apiObj.a, wireObj.a);
+    cst_api_fill_to_wire_my_struct(apiObj.b, wireObj.b);
+    wireObj.c = cst_encode_list_my_enum(apiObj.c);
+    wireObj.d = cst_encode_list_application_settings(apiObj.d);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_mirror_struct_twin_sync(
+      MirrorStructTwinSync apiObj, wire_cst_mirror_struct_twin_sync wireObj) {
+    cst_api_fill_to_wire_application_settings(apiObj.a, wireObj.a);
+    cst_api_fill_to_wire_my_struct(apiObj.b, wireObj.b);
+    wireObj.c = cst_encode_list_my_enum(apiObj.c);
+    wireObj.d = cst_encode_list_application_settings(apiObj.d);
   }
 
   @protected
@@ -26687,6 +27066,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void cst_api_fill_to_wire_my_size(MySize apiObj, wire_cst_my_size wireObj) {
     wireObj.width = cst_encode_i_32(apiObj.width);
     wireObj.height = cst_encode_i_32(apiObj.height);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_my_stream_entry_twin_normal(
+      MyStreamEntryTwinNormal apiObj,
+      wire_cst_my_stream_entry_twin_normal wireObj) {
+    wireObj.hello = cst_encode_String(apiObj.hello);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_my_stream_entry_twin_rust_async(
+      MyStreamEntryTwinRustAsync apiObj,
+      wire_cst_my_stream_entry_twin_rust_async wireObj) {
+    wireObj.hello = cst_encode_String(apiObj.hello);
   }
 
   @protected
@@ -26940,6 +27333,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void cst_api_fill_to_wire_raw_string_mirrored(
       RawStringMirrored apiObj, wire_cst_raw_string_mirrored wireObj) {
     wireObj.value = cst_encode_String(apiObj.value);
+  }
+
+  @protected
+  void
+      cst_api_fill_to_wire_record_application_settings_raw_string_enum_mirrored(
+          (ApplicationSettings, RawStringEnumMirrored) apiObj,
+          wire_cst_record_application_settings_raw_string_enum_mirrored
+              wireObj) {
+    cst_api_fill_to_wire_application_settings(apiObj.$1, wireObj.field0);
+    cst_api_fill_to_wire_raw_string_enum_mirrored(apiObj.$2, wireObj.field1);
   }
 
   @protected
@@ -27286,6 +27689,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       (String, String) apiObj, wire_cst_record_string_string wireObj) {
     wireObj.field0 = cst_encode_String(apiObj.$1);
     wireObj.field1 = cst_encode_String(apiObj.$2);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_record_u_8_application_mode(
+      (int, ApplicationMode) apiObj,
+      wire_cst_record_u_8_application_mode wireObj) {
+    wireObj.field0 = cst_encode_u_8(apiObj.$1);
+    wireObj.field1 = cst_encode_application_mode(apiObj.$2);
   }
 
   @protected
@@ -30117,6 +30528,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_Map_i_32_usize(Map<int, int> self, SseSerializer serializer);
 
   @protected
+  void sse_encode_Map_u_8_application_mode(
+      Map<int, ApplicationMode> self, SseSerializer serializer);
+
+  @protected
   void sse_encode_RustOpaque_BoxdynDartDebugTwinMoi(
       BoxDartDebugTwinMoi self, SseSerializer serializer);
 
@@ -31088,6 +31503,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_Set_String(Set<String> self, SseSerializer serializer);
 
   @protected
+  void sse_encode_Set_application_mode(
+      Set<ApplicationMode> self, SseSerializer serializer);
+
+  @protected
   void sse_encode_Set_i_32(Set<int> self, SseSerializer serializer);
 
   @protected
@@ -31457,6 +31876,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_application_mode(
       ApplicationMode self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_application_mode_array_2(
+      ApplicationModeArray2 self, SseSerializer serializer);
 
   @protected
   void sse_encode_application_settings(
@@ -31869,6 +32292,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_box_autoadd_application_env(
       ApplicationEnv self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_application_mode(
+      ApplicationMode self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_application_settings(
@@ -34646,6 +35073,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       List<ApplicationEnvVar> self, SseSerializer serializer);
 
   @protected
+  void sse_encode_list_application_mode(
+      List<ApplicationMode> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_application_settings(
+      List<ApplicationSettings> self, SseSerializer serializer);
+
+  @protected
   void sse_encode_list_attribute_twin_normal(
       List<AttributeTwinNormal> self, SseSerializer serializer);
 
@@ -34819,6 +35254,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_list_list_prim_u_8_strict(
       List<Uint8List> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_my_enum(List<MyEnum> self, SseSerializer serializer);
 
   @protected
   void sse_encode_list_my_size(List<MySize> self, SseSerializer serializer);
@@ -35223,6 +35661,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       List<(String, String)> self, SseSerializer serializer);
 
   @protected
+  void sse_encode_list_record_u_8_application_mode(
+      List<(int, ApplicationMode)> self, SseSerializer serializer);
+
+  @protected
   void sse_encode_list_simple_struct_twin_normal(
       List<SimpleStructTwinNormal> self, SseSerializer serializer);
 
@@ -35319,6 +35761,42 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       List<WeekdaysTwinSyncSse> self, SseSerializer serializer);
 
   @protected
+  void sse_encode_log_2_twin_normal(
+      Log2TwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_log_2_twin_rust_async(
+      Log2TwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_log_2_twin_rust_async_sse(
+      Log2TwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_log_2_twin_sse(Log2TwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_log_2_twin_sync(Log2TwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_log_2_twin_sync_sse(
+      Log2TwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_log_twin_normal(LogTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_log_twin_rust_async(
+      LogTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_log_twin_rust_async_sse(
+      LogTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_log_twin_sse(LogTwinSse self, SseSerializer serializer);
+
+  @protected
   void sse_encode_macro_struct(MacroStruct self, SseSerializer serializer);
 
   @protected
@@ -35368,6 +35846,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_message_id_twin_sync_sse(
       MessageIdTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_mirror_struct_twin_normal(
+      MirrorStructTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_mirror_struct_twin_rust_async(
+      MirrorStructTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_mirror_struct_twin_rust_async_sse(
+      MirrorStructTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_mirror_struct_twin_sse(
+      MirrorStructTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_mirror_struct_twin_sync(
+      MirrorStructTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_mirror_struct_twin_sync_sse(
+      MirrorStructTwinSyncSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_more_than_just_one_raw_string_struct_twin_normal(
@@ -35448,6 +35950,22 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_my_size(MySize self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_stream_entry_twin_normal(
+      MyStreamEntryTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_stream_entry_twin_rust_async(
+      MyStreamEntryTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_stream_entry_twin_rust_async_sse(
+      MyStreamEntryTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_stream_entry_twin_sse(
+      MyStreamEntryTwinSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_my_struct(MyStruct self, SseSerializer serializer);
@@ -35731,6 +36249,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_opt_box_autoadd_application_env(
       ApplicationEnv? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_application_mode(
+      ApplicationMode? self, SseSerializer serializer);
 
   @protected
   void sse_encode_opt_box_autoadd_attribute_twin_normal(
@@ -36252,6 +36774,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       RawStringMirrored self, SseSerializer serializer);
 
   @protected
+  void sse_encode_record_application_settings_raw_string_enum_mirrored(
+      (ApplicationSettings, RawStringEnumMirrored) self,
+      SseSerializer serializer);
+
+  @protected
   void
       sse_encode_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generatedrust_async_rw_lock_opaque_one_twin_moi_auto_owned_rust_opaque_flutter_rust_bridgefor_generatedrust_async_rw_lock_opaque_two_twin_moi(
           (OpaqueOneTwinMoi, OpaqueTwoTwinMoi) self, SseSerializer serializer);
@@ -36509,6 +37036,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_record_string_string(
       (String, String) self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_record_u_8_application_mode(
+      (int, ApplicationMode) self, SseSerializer serializer);
 
   @protected
   void sse_encode_sequences(Sequences self, SseSerializer serializer);
@@ -37103,6 +37634,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_u_8_array_1600(U8Array1600 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_u_8_array_2(U8Array2 self, SseSerializer serializer);
 
   @protected
   void sse_encode_u_8_array_32(U8Array32 self, SseSerializer serializer);
@@ -94210,6 +94744,21 @@ class RustLibWire implements BaseWire {
       _cst_new_box_autoadd_application_envPtr
           .asFunction<ffi.Pointer<wire_cst_application_env> Function()>();
 
+  ffi.Pointer<ffi.Int32> cst_new_box_autoadd_application_mode(
+    int value,
+  ) {
+    return _cst_new_box_autoadd_application_mode(
+      value,
+    );
+  }
+
+  late final _cst_new_box_autoadd_application_modePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int32> Function(ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_cst_new_box_autoadd_application_mode');
+  late final _cst_new_box_autoadd_application_mode =
+      _cst_new_box_autoadd_application_modePtr
+          .asFunction<ffi.Pointer<ffi.Int32> Function(int)>();
+
   ffi.Pointer<wire_cst_application_settings>
       cst_new_box_autoadd_application_settings() {
     return _cst_new_box_autoadd_application_settings();
@@ -97811,6 +98360,39 @@ class RustLibWire implements BaseWire {
       _cst_new_list_application_env_varPtr.asFunction<
           ffi.Pointer<wire_cst_list_application_env_var> Function(int)>();
 
+  ffi.Pointer<wire_cst_list_application_mode> cst_new_list_application_mode(
+    int len,
+  ) {
+    return _cst_new_list_application_mode(
+      len,
+    );
+  }
+
+  late final _cst_new_list_application_modePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<wire_cst_list_application_mode> Function(ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_cst_new_list_application_mode');
+  late final _cst_new_list_application_mode = _cst_new_list_application_modePtr
+      .asFunction<ffi.Pointer<wire_cst_list_application_mode> Function(int)>();
+
+  ffi.Pointer<wire_cst_list_application_settings>
+      cst_new_list_application_settings(
+    int len,
+  ) {
+    return _cst_new_list_application_settings(
+      len,
+    );
+  }
+
+  late final _cst_new_list_application_settingsPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<wire_cst_list_application_settings> Function(
+                  ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_cst_new_list_application_settings');
+  late final _cst_new_list_application_settings =
+      _cst_new_list_application_settingsPtr.asFunction<
+          ffi.Pointer<wire_cst_list_application_settings> Function(int)>();
+
   ffi.Pointer<wire_cst_list_attribute_twin_normal>
       cst_new_list_attribute_twin_normal(
     int len,
@@ -98229,6 +98811,21 @@ class RustLibWire implements BaseWire {
   late final _cst_new_list_list_prim_u_8_strict =
       _cst_new_list_list_prim_u_8_strictPtr.asFunction<
           ffi.Pointer<wire_cst_list_list_prim_u_8_strict> Function(int)>();
+
+  ffi.Pointer<wire_cst_list_my_enum> cst_new_list_my_enum(
+    int len,
+  ) {
+    return _cst_new_list_my_enum(
+      len,
+    );
+  }
+
+  late final _cst_new_list_my_enumPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_cst_list_my_enum> Function(
+              ffi.Int32)>>('frbgen_frb_example_pure_dart_cst_new_list_my_enum');
+  late final _cst_new_list_my_enum = _cst_new_list_my_enumPtr
+      .asFunction<ffi.Pointer<wire_cst_list_my_enum> Function(int)>();
 
   ffi.Pointer<wire_cst_list_my_size> cst_new_list_my_size(
     int len,
@@ -99465,6 +100062,25 @@ class RustLibWire implements BaseWire {
   late final _cst_new_list_record_string_string =
       _cst_new_list_record_string_stringPtr.asFunction<
           ffi.Pointer<wire_cst_list_record_string_string> Function(int)>();
+
+  ffi.Pointer<wire_cst_list_record_u_8_application_mode>
+      cst_new_list_record_u_8_application_mode(
+    int len,
+  ) {
+    return _cst_new_list_record_u_8_application_mode(
+      len,
+    );
+  }
+
+  late final _cst_new_list_record_u_8_application_modePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<wire_cst_list_record_u_8_application_mode> Function(
+                  ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_cst_new_list_record_u_8_application_mode');
+  late final _cst_new_list_record_u_8_application_mode =
+      _cst_new_list_record_u_8_application_modePtr.asFunction<
+          ffi.Pointer<wire_cst_list_record_u_8_application_mode> Function(
+              int)>();
 
   ffi.Pointer<wire_cst_list_simple_struct_twin_normal>
       cst_new_list_simple_struct_twin_normal(
@@ -103121,6 +103737,20 @@ final class wire_cst_list_Chrono_Local extends ffi.Struct {
   external int len;
 }
 
+final class wire_cst_list_application_mode extends ffi.Struct {
+  external ffi.Pointer<ffi.Int32> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+final class wire_cst_list_application_settings extends ffi.Struct {
+  external ffi.Pointer<wire_cst_application_settings> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
 final class wire_cst_list_enum_opaque_twin_moi extends ffi.Struct {
   external ffi.Pointer<wire_cst_enum_opaque_twin_moi> ptr;
 
@@ -103158,6 +103788,13 @@ final class wire_cst_list_enum_opaque_twin_sync extends ffi.Struct {
 
 final class wire_cst_list_enum_opaque_twin_sync_moi extends ffi.Struct {
   external ffi.Pointer<wire_cst_enum_opaque_twin_sync_moi> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+final class wire_cst_list_my_enum extends ffi.Struct {
+  external ffi.Pointer<ffi.Int32> ptr;
 
   @ffi.Int32()
   external int len;
@@ -103282,6 +103919,21 @@ final class wire_cst_record_string_hash_map_value extends ffi.Struct {
 
 final class wire_cst_list_record_string_hash_map_value extends ffi.Struct {
   external ffi.Pointer<wire_cst_record_string_hash_map_value> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+final class wire_cst_record_u_8_application_mode extends ffi.Struct {
+  @ffi.Uint8()
+  external int field0;
+
+  @ffi.Int32()
+  external int field1;
+}
+
+final class wire_cst_list_record_u_8_application_mode extends ffi.Struct {
+  external ffi.Pointer<wire_cst_record_u_8_application_mode> ptr;
 
   @ffi.Int32()
   external int len;
@@ -103649,6 +104301,73 @@ final class wire_cst_demo_struct_for_rust_call_dart_twin_rust_async
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> name;
 }
 
+final class wire_cst_log_2_twin_normal extends ffi.Struct {
+  @ffi.Uint32()
+  external int key;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8_strict> value;
+}
+
+final class wire_cst_log_2_twin_rust_async extends ffi.Struct {
+  @ffi.Uint32()
+  external int key;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8_strict> value;
+}
+
+final class wire_cst_log_2_twin_sync extends ffi.Struct {
+  @ffi.Uint32()
+  external int key;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8_strict> value;
+}
+
+final class wire_cst_log_twin_normal extends ffi.Struct {
+  @ffi.Uint32()
+  external int key;
+
+  @ffi.Uint32()
+  external int value;
+}
+
+final class wire_cst_log_twin_rust_async extends ffi.Struct {
+  @ffi.Uint32()
+  external int key;
+
+  @ffi.Uint32()
+  external int value;
+}
+
+final class wire_cst_mirror_struct_twin_normal extends ffi.Struct {
+  external wire_cst_application_settings a;
+
+  external wire_cst_my_struct b;
+
+  external ffi.Pointer<wire_cst_list_my_enum> c;
+
+  external ffi.Pointer<wire_cst_list_application_settings> d;
+}
+
+final class wire_cst_mirror_struct_twin_rust_async extends ffi.Struct {
+  external wire_cst_application_settings a;
+
+  external wire_cst_my_struct b;
+
+  external ffi.Pointer<wire_cst_list_my_enum> c;
+
+  external ffi.Pointer<wire_cst_list_application_settings> d;
+}
+
+final class wire_cst_mirror_struct_twin_sync extends ffi.Struct {
+  external wire_cst_application_settings a;
+
+  external wire_cst_my_struct b;
+
+  external ffi.Pointer<wire_cst_list_my_enum> c;
+
+  external ffi.Pointer<wire_cst_list_application_settings> d;
+}
+
 final class wire_cst_more_than_just_one_raw_string_struct_twin_normal
     extends ffi.Struct {
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> regular;
@@ -103685,6 +104404,14 @@ final class wire_cst_more_than_just_one_raw_string_struct_twin_sync
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> another;
 }
 
+final class wire_cst_my_stream_entry_twin_normal extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8_strict> hello;
+}
+
+final class wire_cst_my_stream_entry_twin_rust_async extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8_strict> hello;
+}
+
 final class wire_cst_new_simple_struct extends ffi.Struct {
   @ffi.Int32()
   external int field;
@@ -103705,6 +104432,13 @@ final class wire_cst_raw_string_item_struct_twin_rust_async extends ffi.Struct {
 
 final class wire_cst_raw_string_item_struct_twin_sync extends ffi.Struct {
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> type;
+}
+
+final class wire_cst_record_application_settings_raw_string_enum_mirrored
+    extends ffi.Struct {
+  external wire_cst_application_settings field0;
+
+  external wire_cst_raw_string_enum_mirrored field1;
 }
 
 final class wire_cst_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generatedrust_async_rw_lock_opaque_one_twin_moi_auto_owned_rust_opaque_flutter_rust_bridgefor_generatedrust_async_rw_lock_opaque_two_twin_moi
