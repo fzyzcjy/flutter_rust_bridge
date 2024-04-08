@@ -199,8 +199,8 @@ fn generate_boilerplate(
 // }
 
 fn generate_handler(ir_pack: &IrPack) -> String {
-    if ir_pack.has_handler {
-        "/* nothing since handler detected */".to_owned()
+    if let Some(existing_handler ) = &ir_pack.existing_handler {
+        format!("use {};", existing_handler.rust_style());
     } else {
         r#"flutter_rust_bridge::frb_generated_default_handler!();"#.to_owned()
     }
