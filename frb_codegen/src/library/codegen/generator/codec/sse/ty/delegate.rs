@@ -1,11 +1,13 @@
+use convert_case::{Case, Casing};
 use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::codegen::generator::codec::sse::lang::*;
 use crate::codegen::generator::codec::sse::ty::*;
 use crate::codegen::ir::ty::delegate::{
-    IrTypeDelegatePrimitiveEnum, IrTypeDelegateSet, IrTypeDelegateTime,
+    IrTypeDelegatePrimitiveEnum, IrTypeDelegateSet, IrTypeDelegateStreamSink, IrTypeDelegateTime,
 };
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use itertools::Itertools;
+use crate::codegen::generator::codec::structs::CodecMode;
 
 impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
@@ -30,7 +32,9 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     IrTypeDelegateTime::Duration => "self.inMicroseconds".to_owned(),
                 },
                 IrTypeDelegate::Uuid => "self.toBytes()".to_owned(),
-                IrTypeDelegate::StreamSink(_) => "self.serialize()".to_owned(),
+                IrTypeDelegate::StreamSink(ir) => {
+                    generate_stream_sink_setup_and_serialize(ir, CodecMode::Sse, "self")
+                }
             },
             Lang::RustLang(_) => match &self.ir {
                 IrTypeDelegate::Array(_) => {
@@ -210,4 +214,18 @@ pub(crate) fn generate_set_to_list(
         );
     }
     ans
+}
+
+pub(crate) fn generate_stream_sink_setup_and_serialize(
+    ir: &IrTypeDelegateStreamSink,
+    codec: CodecMode,
+    var_name: &str,
+) -> String {
+    let codec_lower = codec.to_string().to_case(Case::Snake);
+    let inner_ty = ir.inner.safe_ident();
+    return format!(
+        "{var_name}.setupAndSerialize(
+            codec: {codec}Codec(decodeSuccessData: {codec_lower}_decode_{inner_ty}, decodeErrorData: null)
+        )"
+    );
 }
