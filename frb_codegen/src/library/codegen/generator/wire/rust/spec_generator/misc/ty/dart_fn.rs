@@ -4,6 +4,7 @@ use crate::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGen
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
+use crate::library::misc::consts::HANDLER_NAME;
 
 impl<'a> WireRustGeneratorMiscTrait for DartFnWireRustGenerator<'a> {
     fn generate_related_funcs(&self) -> Acc<WireRustOutputCode> {
@@ -32,7 +33,7 @@ impl<'a> WireRustGeneratorMiscTrait for DartFnWireRustGenerator<'a> {
 
                     async fn body(dart_opaque: flutter_rust_bridge::DartOpaque, {parameter_names_and_types}) -> {return_type} {{
                         let args = vec![{into_dart_expressions}];
-                        let message = FLUTTER_RUST_BRIDGE_HANDLER.dart_fn_invoke(dart_opaque, args).await;
+                        let message = {HANDLER_NAME}.dart_fn_invoke(dart_opaque, args).await;
                         <{return_type}>::sse_decode_single(message)
                     }}
 
