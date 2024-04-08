@@ -12,6 +12,8 @@ pub trait BaseCodec: Clone + Copy + Send + Sync {
     fn encode_panic(error: &Box<dyn Any + Send>, backtrace: &Option<Backtrace>) -> Self::Message;
 
     fn encode_close_stream() -> Self::Message;
+
+    fn encode_stream_ready() -> Self::Message;
 }
 
 /// An encoded message
