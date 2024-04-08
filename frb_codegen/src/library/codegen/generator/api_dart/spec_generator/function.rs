@@ -51,15 +51,21 @@ pub(crate) fn generate(
     func: &IrFunc,
     context: ApiDartGeneratorContext,
 ) -> anyhow::Result<ApiDartGeneratedFunction> {
-    let params = generate_params(func, context, context.config.dart_enums_style);
     let return_stream = compute_return_stream(func);
+    let params = generate_params(
+        func,
+        context,
+        context.config.dart_enums_style,
+        &return_stream,
+    );
 
     let func_expr = format!(
         "{func_return_type} {func_name}({params})",
         func_name = func.name.name.to_case(Case::Camel),
         func_return_type = generate_function_dart_return_type(
             &func.mode,
-            &ApiDartGenerator::new(func.output.clone(), context).dart_api_type()
+            &ApiDartGenerator::new(func.output.clone(), context).dart_api_type(),
+            &return_stream
         ),
     );
 
@@ -98,10 +104,10 @@ fn generate_params(
     func: &IrFunc,
     context: ApiDartGeneratorContext,
     dart_enums_style: bool,
+    return_stream: &Option<IrField>,
 ) -> String {
-    let mut params = func
-        .inputs
-        .iter()
+    let mut params = (func.inputs.iter())
+        .filter(|field| Some(field.name) != return_stream.map(|s| s.name))
         .map(|input| {
             let required = generate_field_required_modifier(input);
             let r#default = generate_field_default(input, false, dart_enums_style);
