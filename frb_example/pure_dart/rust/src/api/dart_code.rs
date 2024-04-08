@@ -26,7 +26,7 @@ impl TranslatableStructWithDartCodeTwinNormal {
     }
 }
 
-#[frb(opaque, dart_code = "static int dartCodeGetter => 123;")]
+#[frb(opaque, dart_code = "static int get dartCodeGetter => 123;")]
 pub struct OpaqueStructWithDartCodeTwinNormal;
 
 impl OpaqueStructWithDartCodeTwinNormal {
