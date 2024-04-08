@@ -24,9 +24,11 @@ class DroppableTwinSync extends RustOpaque {
         .instance.api.rust_arc_decrement_strong_count_DroppableTwinSyncPtr,
   );
 
-  Stream<int> createStreamTwinSync({dynamic hint}) =>
+  void createStreamTwinSync(
+          {required RustStreamSink<int> sink, dynamic hint}) =>
       RustLib.instance.api.droppableTwinSyncCreateStreamTwinSync(
         that: this,
+        sink: sink,
         hint: hint,
       );
 

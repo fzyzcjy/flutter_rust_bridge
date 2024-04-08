@@ -69,8 +69,10 @@ void throwAnyhowTwinSyncSse({dynamic hint}) =>
 void panicWithCustomResultTwinSyncSse({dynamic hint}) =>
     RustLib.instance.api.panicWithCustomResultTwinSyncSse(hint: hint);
 
-Stream<String> streamSinkThrowAnyhowTwinSyncSse({dynamic hint}) =>
-    RustLib.instance.api.streamSinkThrowAnyhowTwinSyncSse(hint: hint);
+void streamSinkThrowAnyhowTwinSyncSse(
+        {required StreamSink sink, dynamic hint}) =>
+    RustLib.instance.api
+        .streamSinkThrowAnyhowTwinSyncSse(sink: sink, hint: hint);
 
 @freezed
 sealed class CustomEnumErrorTwinSyncSse

@@ -8,7 +8,8 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'event_listener.freezed.dart';
 
-Stream<EventTwinNormal> registerEventListenerTwinNormal({dynamic hint}) =>
+Future<Stream<EventTwinNormal>> registerEventListenerTwinNormal(
+        {dynamic hint}) =>
     RustLib.instance.api.registerEventListenerTwinNormal(hint: hint);
 
 Future<void> closeEventListenerTwinNormal({dynamic hint}) =>

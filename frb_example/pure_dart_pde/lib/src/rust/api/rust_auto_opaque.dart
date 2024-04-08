@@ -155,7 +155,7 @@ Future<NonCloneSimpleEnumTwinNormal> rustAutoOpaqueEnumReturnOwnTwinNormal(
         {dynamic hint}) =>
     RustLib.instance.api.rustAutoOpaqueEnumReturnOwnTwinNormal(hint: hint);
 
-Stream<NonCloneSimpleTwinNormal> rustAutoOpaqueStreamSinkTwinNormal(
+Future<Stream<NonCloneSimpleTwinNormal>> rustAutoOpaqueStreamSinkTwinNormal(
         {dynamic hint}) =>
     RustLib.instance.api.rustAutoOpaqueStreamSinkTwinNormal(hint: hint);
 

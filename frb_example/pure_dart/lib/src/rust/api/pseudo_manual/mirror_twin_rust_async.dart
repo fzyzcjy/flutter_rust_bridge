@@ -3,11 +3,11 @@
 
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
-import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
-import '../mirror.dart';
 import 'mirror_twin_sync_sse.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+
+// The type `MirrorStructTwinRustAsync` is not used by any `pub` functions, thus it is ignored.
 
 Future<ApplicationSettings> getAppSettingsTwinRustAsync({dynamic hint}) =>
     RustLib.instance.api.getAppSettingsTwinRustAsync(hint: hint);
@@ -21,18 +21,19 @@ Future<bool> isAppEmbeddedTwinRustAsync(
     RustLib.instance.api
         .isAppEmbeddedTwinRustAsync(appSettings: appSettings, hint: hint);
 
-Stream<ApplicationSettings> appSettingsStreamTwinRustAsync({dynamic hint}) =>
+Future<Stream<ApplicationSettings>> appSettingsStreamTwinRustAsync(
+        {dynamic hint}) =>
     RustLib.instance.api.appSettingsStreamTwinRustAsync(hint: hint);
 
-Stream<List<ApplicationSettings>> appSettingsVecStreamTwinRustAsync(
+Future<Stream<List<ApplicationSettings>>> appSettingsVecStreamTwinRustAsync(
         {dynamic hint}) =>
     RustLib.instance.api.appSettingsVecStreamTwinRustAsync(hint: hint);
 
-Stream<MirrorStructTwinRustAsync> mirrorStructStreamTwinRustAsync(
+Future<Stream<MirrorStructTwinRustAsync>> mirrorStructStreamTwinRustAsync(
         {dynamic hint}) =>
     RustLib.instance.api.mirrorStructStreamTwinRustAsync(hint: hint);
 
-Stream<(ApplicationSettings, RawStringEnumMirrored)>
+Future<Stream<(ApplicationSettings, RawStringEnumMirrored)>>
     mirrorTupleStreamTwinRustAsync({dynamic hint}) =>
         RustLib.instance.api.mirrorTupleStreamTwinRustAsync(hint: hint);
 
@@ -91,24 +92,26 @@ Future<StructWithHashMap> testHashmapWithMirroredValueTwinRustAsync(
         {dynamic hint}) =>
     RustLib.instance.api.testHashmapWithMirroredValueTwinRustAsync(hint: hint);
 
-Stream<ApplicationMode> mirrorEnumStreamTwinRustAsync({dynamic hint}) =>
+Future<Stream<ApplicationMode>> mirrorEnumStreamTwinRustAsync({dynamic hint}) =>
     RustLib.instance.api.mirrorEnumStreamTwinRustAsync(hint: hint);
 
-Stream<ApplicationMode?> mirrorOptionEnumStreamTwinRustAsync({dynamic hint}) =>
+Future<Stream<ApplicationMode?>> mirrorOptionEnumStreamTwinRustAsync(
+        {dynamic hint}) =>
     RustLib.instance.api.mirrorOptionEnumStreamTwinRustAsync(hint: hint);
 
-Stream<List<ApplicationMode>> mirrorVecEnumStreamTwinRustAsync(
+Future<Stream<List<ApplicationMode>>> mirrorVecEnumStreamTwinRustAsync(
         {dynamic hint}) =>
     RustLib.instance.api.mirrorVecEnumStreamTwinRustAsync(hint: hint);
 
-Stream<Map<int, ApplicationMode>> mirrorMapEnumStreamTwinRustAsync(
+Future<Stream<Map<int, ApplicationMode>>> mirrorMapEnumStreamTwinRustAsync(
         {dynamic hint}) =>
     RustLib.instance.api.mirrorMapEnumStreamTwinRustAsync(hint: hint);
 
-Stream<Set<ApplicationMode>> mirrorSetEnumStreamTwinRustAsync({dynamic hint}) =>
+Future<Stream<Set<ApplicationMode>>> mirrorSetEnumStreamTwinRustAsync(
+        {dynamic hint}) =>
     RustLib.instance.api.mirrorSetEnumStreamTwinRustAsync(hint: hint);
 
-Stream<ApplicationModeArray2> mirrorArrayEnumStreamTwinRustAsync(
+Future<Stream<ApplicationModeArray2>> mirrorArrayEnumStreamTwinRustAsync(
         {dynamic hint}) =>
     RustLib.instance.api.mirrorArrayEnumStreamTwinRustAsync(hint: hint);
 
@@ -149,31 +152,4 @@ class ContainsMirroredSubStructTwinRustAsync {
           runtimeType == other.runtimeType &&
           test == other.test &&
           test2 == other.test2;
-}
-
-class MirrorStructTwinRustAsync {
-  final ApplicationSettings a;
-  final MyStruct b;
-  final List<MyEnum> c;
-  final List<ApplicationSettings> d;
-
-  const MirrorStructTwinRustAsync({
-    required this.a,
-    required this.b,
-    required this.c,
-    required this.d,
-  });
-
-  @override
-  int get hashCode => a.hashCode ^ b.hashCode ^ c.hashCode ^ d.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is MirrorStructTwinRustAsync &&
-          runtimeType == other.runtimeType &&
-          a == other.a &&
-          b == other.b &&
-          c == other.c &&
-          d == other.d;
 }

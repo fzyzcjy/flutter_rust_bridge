@@ -170,10 +170,10 @@ Future<NonCloneSimpleEnumTwinRustAsyncSseMoi>
         RustLib.instance.api
             .rustAutoOpaqueEnumReturnOwnTwinRustAsyncSseMoi(hint: hint);
 
-Stream<NonCloneSimpleTwinRustAsyncSseMoi>
-    rustAutoOpaqueStreamSinkTwinRustAsyncSseMoi({dynamic hint}) =>
-        RustLib.instance.api
-            .rustAutoOpaqueStreamSinkTwinRustAsyncSseMoi(hint: hint);
+Future<void> rustAutoOpaqueStreamSinkTwinRustAsyncSseMoi(
+        {required StreamSink sink, dynamic hint}) =>
+    RustLib.instance.api
+        .rustAutoOpaqueStreamSinkTwinRustAsyncSseMoi(sink: sink, hint: hint);
 
 Future<void> rustAutoOpaqueArgVecOwnTwinRustAsyncSseMoi(
         {required List<NonCloneSimpleTwinRustAsyncSseMoi> arg,

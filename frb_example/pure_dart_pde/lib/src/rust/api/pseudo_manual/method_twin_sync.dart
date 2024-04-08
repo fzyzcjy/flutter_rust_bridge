@@ -9,6 +9,8 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'method_twin_sync.freezed.dart';
 
+// The type `Log2TwinSync` is not used by any `pub` functions, thus it is ignored.
+
 SumWithTwinSync getSumStructTwinSync({dynamic hint}) =>
     RustLib.instance.api.getSumStructTwinSync(hint: hint);
 
@@ -60,35 +62,46 @@ class ConcatenateWithTwinSync {
         hint: hint,
       );
 
-  static Stream<int> handleSomeStaticStreamSinkSingleArgTwinSync(
-          {dynamic hint}) =>
+  static void handleSomeStaticStreamSinkSingleArgTwinSync(
+          {required RustStreamSink<int> sink, dynamic hint}) =>
       RustLib.instance.api
           .concatenateWithTwinSyncHandleSomeStaticStreamSinkSingleArgTwinSync(
+        sink: sink,
         hint: hint,
       );
 
-  static Stream<Log2TwinSync> handleSomeStaticStreamSinkTwinSync(
-          {required int key, required int max, dynamic hint}) =>
+  static void handleSomeStaticStreamSinkTwinSync(
+          {required int key,
+          required int max,
+          required RustStreamSink<Log2TwinSync> sink,
+          dynamic hint}) =>
       RustLib.instance.api
           .concatenateWithTwinSyncHandleSomeStaticStreamSinkTwinSync(
         key: key,
         max: max,
+        sink: sink,
         hint: hint,
       );
 
-  Stream<int> handleSomeStreamSinkAt1TwinSync({dynamic hint}) =>
+  void handleSomeStreamSinkAt1TwinSync(
+          {required RustStreamSink<int> sink, dynamic hint}) =>
       RustLib.instance.api
           .concatenateWithTwinSyncHandleSomeStreamSinkAt1TwinSync(
         that: this,
+        sink: sink,
         hint: hint,
       );
 
-  Stream<Log2TwinSync> handleSomeStreamSinkTwinSync(
-          {required int key, required int max, dynamic hint}) =>
+  void handleSomeStreamSinkTwinSync(
+          {required int key,
+          required int max,
+          required RustStreamSink<Log2TwinSync> sink,
+          dynamic hint}) =>
       RustLib.instance.api.concatenateWithTwinSyncHandleSomeStreamSinkTwinSync(
         that: this,
         key: key,
         max: max,
+        sink: sink,
         hint: hint,
       );
 
@@ -113,27 +126,6 @@ class ConcatenateWithTwinSync {
       other is ConcatenateWithTwinSync &&
           runtimeType == other.runtimeType &&
           a == other.a;
-}
-
-class Log2TwinSync {
-  final int key;
-  final String value;
-
-  const Log2TwinSync({
-    required this.key,
-    required this.value,
-  });
-
-  @override
-  int get hashCode => key.hashCode ^ value.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Log2TwinSync &&
-          runtimeType == other.runtimeType &&
-          key == other.key &&
-          value == other.value;
 }
 
 class MyCallableTwinSync {

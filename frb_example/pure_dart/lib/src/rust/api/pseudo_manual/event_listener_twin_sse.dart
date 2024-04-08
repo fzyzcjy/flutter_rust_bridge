@@ -10,8 +10,10 @@ part 'event_listener_twin_sse.freezed.dart';
 
 // The type `EVENTS` is not used by any `pub` functions, thus it is ignored.
 
-Stream<EventTwinSse> registerEventListenerTwinSse({dynamic hint}) =>
-    RustLib.instance.api.registerEventListenerTwinSse(hint: hint);
+Future<void> registerEventListenerTwinSse(
+        {required StreamSink listener, dynamic hint}) =>
+    RustLib.instance.api
+        .registerEventListenerTwinSse(listener: listener, hint: hint);
 
 Future<void> closeEventListenerTwinSse({dynamic hint}) =>
     RustLib.instance.api.closeEventListenerTwinSse(hint: hint);

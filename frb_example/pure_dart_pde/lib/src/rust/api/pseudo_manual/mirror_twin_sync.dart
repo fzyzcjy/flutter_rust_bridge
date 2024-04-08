@@ -3,12 +3,12 @@
 
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
-import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
-import '../mirror.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'mirror_twin_sync.freezed.dart';
+
+// The type `MirrorStructTwinSync` is not used by any `pub` functions, thus it is ignored.
 
 ApplicationSettings getAppSettingsTwinSync({dynamic hint}) =>
     RustLib.instance.api.getAppSettingsTwinSync(hint: hint);
@@ -268,33 +268,6 @@ class ListOfNestedRawStringMirrored {
       other is ListOfNestedRawStringMirrored &&
           runtimeType == other.runtimeType &&
           raw == other.raw;
-}
-
-class MirrorStructTwinSync {
-  final ApplicationSettings a;
-  final MyStruct b;
-  final List<MyEnum> c;
-  final List<ApplicationSettings> d;
-
-  const MirrorStructTwinSync({
-    required this.a,
-    required this.b,
-    required this.c,
-    required this.d,
-  });
-
-  @override
-  int get hashCode => a.hashCode ^ b.hashCode ^ c.hashCode ^ d.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is MirrorStructTwinSync &&
-          runtimeType == other.runtimeType &&
-          a == other.a &&
-          b == other.b &&
-          c == other.c &&
-          d == other.d;
 }
 
 class NestedRawStringMirrored {

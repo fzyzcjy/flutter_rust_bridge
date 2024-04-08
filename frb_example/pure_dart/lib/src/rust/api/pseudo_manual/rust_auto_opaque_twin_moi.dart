@@ -145,7 +145,8 @@ Future<NonCloneSimpleEnumTwinMoi> rustAutoOpaqueEnumReturnOwnTwinMoi(
         {dynamic hint}) =>
     RustLib.instance.api.rustAutoOpaqueEnumReturnOwnTwinMoi(hint: hint);
 
-Stream<NonCloneSimpleTwinMoi> rustAutoOpaqueStreamSinkTwinMoi({dynamic hint}) =>
+Future<Stream<NonCloneSimpleTwinMoi>> rustAutoOpaqueStreamSinkTwinMoi(
+        {dynamic hint}) =>
     RustLib.instance.api.rustAutoOpaqueStreamSinkTwinMoi(hint: hint);
 
 Future<void> rustAutoOpaqueArgVecOwnTwinMoi(

@@ -3,12 +3,12 @@
 
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
-import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
-import '../mirror.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'mirror_twin_sync_sse.freezed.dart';
+
+// The type `MirrorStructTwinSyncSse` is not used by any `pub` functions, thus it is ignored.
 
 ApplicationSettings getAppSettingsTwinSyncSse({dynamic hint}) =>
     RustLib.instance.api.getAppSettingsTwinSyncSse(hint: hint);
@@ -21,19 +21,19 @@ bool isAppEmbeddedTwinSyncSse(
     RustLib.instance.api
         .isAppEmbeddedTwinSyncSse(appSettings: appSettings, hint: hint);
 
-Stream<ApplicationSettings> appSettingsStreamTwinSyncSse({dynamic hint}) =>
-    RustLib.instance.api.appSettingsStreamTwinSyncSse(hint: hint);
+void appSettingsStreamTwinSyncSse({required StreamSink sink, dynamic hint}) =>
+    RustLib.instance.api.appSettingsStreamTwinSyncSse(sink: sink, hint: hint);
 
-Stream<List<ApplicationSettings>> appSettingsVecStreamTwinSyncSse(
-        {dynamic hint}) =>
-    RustLib.instance.api.appSettingsVecStreamTwinSyncSse(hint: hint);
+void appSettingsVecStreamTwinSyncSse(
+        {required StreamSink sink, dynamic hint}) =>
+    RustLib.instance.api
+        .appSettingsVecStreamTwinSyncSse(sink: sink, hint: hint);
 
-Stream<MirrorStructTwinSyncSse> mirrorStructStreamTwinSyncSse({dynamic hint}) =>
-    RustLib.instance.api.mirrorStructStreamTwinSyncSse(hint: hint);
+void mirrorStructStreamTwinSyncSse({required StreamSink sink, dynamic hint}) =>
+    RustLib.instance.api.mirrorStructStreamTwinSyncSse(sink: sink, hint: hint);
 
-Stream<(ApplicationSettings, RawStringEnumMirrored)>
-    mirrorTupleStreamTwinSyncSse({dynamic hint}) =>
-        RustLib.instance.api.mirrorTupleStreamTwinSyncSse(hint: hint);
+void mirrorTupleStreamTwinSyncSse({required StreamSink sink, dynamic hint}) =>
+    RustLib.instance.api.mirrorTupleStreamTwinSyncSse(sink: sink, hint: hint);
 
 ApplicationMessage getMessageTwinSyncSse({dynamic hint}) =>
     RustLib.instance.api.getMessageTwinSyncSse(hint: hint);
@@ -86,25 +86,27 @@ ContainsMirroredSubStructTwinSyncSse testContainsMirroredSubStructTwinSyncSse(
 StructWithHashMap testHashmapWithMirroredValueTwinSyncSse({dynamic hint}) =>
     RustLib.instance.api.testHashmapWithMirroredValueTwinSyncSse(hint: hint);
 
-Stream<ApplicationMode> mirrorEnumStreamTwinSyncSse({dynamic hint}) =>
-    RustLib.instance.api.mirrorEnumStreamTwinSyncSse(hint: hint);
+void mirrorEnumStreamTwinSyncSse({required StreamSink sink, dynamic hint}) =>
+    RustLib.instance.api.mirrorEnumStreamTwinSyncSse(sink: sink, hint: hint);
 
-Stream<ApplicationMode?> mirrorOptionEnumStreamTwinSyncSse({dynamic hint}) =>
-    RustLib.instance.api.mirrorOptionEnumStreamTwinSyncSse(hint: hint);
+void mirrorOptionEnumStreamTwinSyncSse(
+        {required StreamSink sink, dynamic hint}) =>
+    RustLib.instance.api
+        .mirrorOptionEnumStreamTwinSyncSse(sink: sink, hint: hint);
 
-Stream<List<ApplicationMode>> mirrorVecEnumStreamTwinSyncSse({dynamic hint}) =>
-    RustLib.instance.api.mirrorVecEnumStreamTwinSyncSse(hint: hint);
+void mirrorVecEnumStreamTwinSyncSse({required StreamSink sink, dynamic hint}) =>
+    RustLib.instance.api.mirrorVecEnumStreamTwinSyncSse(sink: sink, hint: hint);
 
-Stream<Map<int, ApplicationMode>> mirrorMapEnumStreamTwinSyncSse(
-        {dynamic hint}) =>
-    RustLib.instance.api.mirrorMapEnumStreamTwinSyncSse(hint: hint);
+void mirrorMapEnumStreamTwinSyncSse({required StreamSink sink, dynamic hint}) =>
+    RustLib.instance.api.mirrorMapEnumStreamTwinSyncSse(sink: sink, hint: hint);
 
-Stream<Set<ApplicationMode>> mirrorSetEnumStreamTwinSyncSse({dynamic hint}) =>
-    RustLib.instance.api.mirrorSetEnumStreamTwinSyncSse(hint: hint);
+void mirrorSetEnumStreamTwinSyncSse({required StreamSink sink, dynamic hint}) =>
+    RustLib.instance.api.mirrorSetEnumStreamTwinSyncSse(sink: sink, hint: hint);
 
-Stream<ApplicationModeArray2> mirrorArrayEnumStreamTwinSyncSse(
-        {dynamic hint}) =>
-    RustLib.instance.api.mirrorArrayEnumStreamTwinSyncSse(hint: hint);
+void mirrorArrayEnumStreamTwinSyncSse(
+        {required StreamSink sink, dynamic hint}) =>
+    RustLib.instance.api
+        .mirrorArrayEnumStreamTwinSyncSse(sink: sink, hint: hint);
 
 class AnotherTwinSyncSse {
   final String a;
@@ -272,33 +274,6 @@ class ListOfNestedRawStringMirrored {
       other is ListOfNestedRawStringMirrored &&
           runtimeType == other.runtimeType &&
           raw == other.raw;
-}
-
-class MirrorStructTwinSyncSse {
-  final ApplicationSettings a;
-  final MyStruct b;
-  final List<MyEnum> c;
-  final List<ApplicationSettings> d;
-
-  const MirrorStructTwinSyncSse({
-    required this.a,
-    required this.b,
-    required this.c,
-    required this.d,
-  });
-
-  @override
-  int get hashCode => a.hashCode ^ b.hashCode ^ c.hashCode ^ d.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is MirrorStructTwinSyncSse &&
-          runtimeType == other.runtimeType &&
-          a == other.a &&
-          b == other.b &&
-          c == other.c &&
-          d == other.d;
 }
 
 class NestedRawStringMirrored {

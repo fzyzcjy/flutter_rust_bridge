@@ -9,6 +9,8 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'method_twin_sse.freezed.dart';
 
+// The type `Log2TwinSse` is not used by any `pub` functions, thus it is ignored.
+
 Future<SumWithTwinSse> getSumStructTwinSse({dynamic hint}) =>
     RustLib.instance.api.getSumStructTwinSse(hint: hint);
 
@@ -60,34 +62,45 @@ class ConcatenateWithTwinSse {
         hint: hint,
       );
 
-  static Stream<int> handleSomeStaticStreamSinkSingleArgTwinSse(
-          {dynamic hint}) =>
+  static Future<void> handleSomeStaticStreamSinkSingleArgTwinSse(
+          {required StreamSink sink, dynamic hint}) =>
       RustLib.instance.api
           .concatenateWithTwinSseHandleSomeStaticStreamSinkSingleArgTwinSse(
+        sink: sink,
         hint: hint,
       );
 
-  static Stream<Log2TwinSse> handleSomeStaticStreamSinkTwinSse(
-          {required int key, required int max, dynamic hint}) =>
+  static Future<void> handleSomeStaticStreamSinkTwinSse(
+          {required int key,
+          required int max,
+          required StreamSink sink,
+          dynamic hint}) =>
       RustLib.instance.api
           .concatenateWithTwinSseHandleSomeStaticStreamSinkTwinSse(
         key: key,
         max: max,
+        sink: sink,
         hint: hint,
       );
 
-  Stream<int> handleSomeStreamSinkAt1TwinSse({dynamic hint}) =>
+  Future<void> handleSomeStreamSinkAt1TwinSse(
+          {required StreamSink sink, dynamic hint}) =>
       RustLib.instance.api.concatenateWithTwinSseHandleSomeStreamSinkAt1TwinSse(
         that: this,
+        sink: sink,
         hint: hint,
       );
 
-  Stream<Log2TwinSse> handleSomeStreamSinkTwinSse(
-          {required int key, required int max, dynamic hint}) =>
+  Future<void> handleSomeStreamSinkTwinSse(
+          {required int key,
+          required int max,
+          required StreamSink sink,
+          dynamic hint}) =>
       RustLib.instance.api.concatenateWithTwinSseHandleSomeStreamSinkTwinSse(
         that: this,
         key: key,
         max: max,
+        sink: sink,
         hint: hint,
       );
 
@@ -112,27 +125,6 @@ class ConcatenateWithTwinSse {
       other is ConcatenateWithTwinSse &&
           runtimeType == other.runtimeType &&
           a == other.a;
-}
-
-class Log2TwinSse {
-  final int key;
-  final String value;
-
-  const Log2TwinSse({
-    required this.key,
-    required this.value,
-  });
-
-  @override
-  int get hashCode => key.hashCode ^ value.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Log2TwinSse &&
-          runtimeType == other.runtimeType &&
-          key == other.key &&
-          value == other.value;
 }
 
 class MyCallableTwinSse {

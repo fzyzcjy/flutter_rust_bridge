@@ -8,7 +8,8 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'event_listener_twin_rust_async.freezed.dart';
 
-Stream<EventTwinRustAsync> registerEventListenerTwinRustAsync({dynamic hint}) =>
+Future<Stream<EventTwinRustAsync>> registerEventListenerTwinRustAsync(
+        {dynamic hint}) =>
     RustLib.instance.api.registerEventListenerTwinRustAsync(hint: hint);
 
 Future<void> closeEventListenerTwinRustAsync({dynamic hint}) =>

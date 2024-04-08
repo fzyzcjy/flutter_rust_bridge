@@ -3,11 +3,11 @@
 
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
-import '../auxiliary/sample_types.dart';
 import '../frb_generated.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'pseudo_manual/mirror_twin_sync.dart';
+
+// The type `MirrorStructTwinNormal` is not used by any `pub` functions, thus it is ignored.
 
 Future<ApplicationSettings> getAppSettingsTwinNormal({dynamic hint}) =>
     RustLib.instance.api.getAppSettingsTwinNormal(hint: hint);
@@ -20,17 +20,19 @@ Future<bool> isAppEmbeddedTwinNormal(
     RustLib.instance.api
         .isAppEmbeddedTwinNormal(appSettings: appSettings, hint: hint);
 
-Stream<ApplicationSettings> appSettingsStreamTwinNormal({dynamic hint}) =>
+Future<Stream<ApplicationSettings>> appSettingsStreamTwinNormal(
+        {dynamic hint}) =>
     RustLib.instance.api.appSettingsStreamTwinNormal(hint: hint);
 
-Stream<List<ApplicationSettings>> appSettingsVecStreamTwinNormal(
+Future<Stream<List<ApplicationSettings>>> appSettingsVecStreamTwinNormal(
         {dynamic hint}) =>
     RustLib.instance.api.appSettingsVecStreamTwinNormal(hint: hint);
 
-Stream<MirrorStructTwinNormal> mirrorStructStreamTwinNormal({dynamic hint}) =>
+Future<Stream<MirrorStructTwinNormal>> mirrorStructStreamTwinNormal(
+        {dynamic hint}) =>
     RustLib.instance.api.mirrorStructStreamTwinNormal(hint: hint);
 
-Stream<(ApplicationSettings, RawStringEnumMirrored)>
+Future<Stream<(ApplicationSettings, RawStringEnumMirrored)>>
     mirrorTupleStreamTwinNormal({dynamic hint}) =>
         RustLib.instance.api.mirrorTupleStreamTwinNormal(hint: hint);
 
@@ -87,23 +89,27 @@ Future<StructWithHashMap> testHashmapWithMirroredValueTwinNormal(
         {dynamic hint}) =>
     RustLib.instance.api.testHashmapWithMirroredValueTwinNormal(hint: hint);
 
-Stream<ApplicationMode> mirrorEnumStreamTwinNormal({dynamic hint}) =>
+Future<Stream<ApplicationMode>> mirrorEnumStreamTwinNormal({dynamic hint}) =>
     RustLib.instance.api.mirrorEnumStreamTwinNormal(hint: hint);
 
-Stream<ApplicationMode?> mirrorOptionEnumStreamTwinNormal({dynamic hint}) =>
+Future<Stream<ApplicationMode?>> mirrorOptionEnumStreamTwinNormal(
+        {dynamic hint}) =>
     RustLib.instance.api.mirrorOptionEnumStreamTwinNormal(hint: hint);
 
-Stream<List<ApplicationMode>> mirrorVecEnumStreamTwinNormal({dynamic hint}) =>
+Future<Stream<List<ApplicationMode>>> mirrorVecEnumStreamTwinNormal(
+        {dynamic hint}) =>
     RustLib.instance.api.mirrorVecEnumStreamTwinNormal(hint: hint);
 
-Stream<Map<int, ApplicationMode>> mirrorMapEnumStreamTwinNormal(
+Future<Stream<Map<int, ApplicationMode>>> mirrorMapEnumStreamTwinNormal(
         {dynamic hint}) =>
     RustLib.instance.api.mirrorMapEnumStreamTwinNormal(hint: hint);
 
-Stream<Set<ApplicationMode>> mirrorSetEnumStreamTwinNormal({dynamic hint}) =>
+Future<Stream<Set<ApplicationMode>>> mirrorSetEnumStreamTwinNormal(
+        {dynamic hint}) =>
     RustLib.instance.api.mirrorSetEnumStreamTwinNormal(hint: hint);
 
-Stream<ApplicationModeArray2> mirrorArrayEnumStreamTwinNormal({dynamic hint}) =>
+Future<Stream<ApplicationModeArray2>> mirrorArrayEnumStreamTwinNormal(
+        {dynamic hint}) =>
     RustLib.instance.api.mirrorArrayEnumStreamTwinNormal(hint: hint);
 
 class AnotherTwinNormal {
@@ -122,21 +128,6 @@ class AnotherTwinNormal {
       other is AnotherTwinNormal &&
           runtimeType == other.runtimeType &&
           a == other.a;
-}
-
-class ApplicationModeArray2 extends NonGrowableListView<ApplicationMode> {
-  static const arraySize = 2;
-
-  @internal
-  List<ApplicationMode> get inner => _inner;
-  final List<ApplicationMode> _inner;
-
-  ApplicationModeArray2(this._inner)
-      : assert(_inner.length == arraySize),
-        super(_inner);
-
-  ApplicationModeArray2.init(ApplicationMode fill)
-      : this(List<ApplicationMode>.filled(arraySize, fill));
 }
 
 class ContainsMirroredSubStructTwinNormal {
@@ -158,31 +149,4 @@ class ContainsMirroredSubStructTwinNormal {
           runtimeType == other.runtimeType &&
           test == other.test &&
           test2 == other.test2;
-}
-
-class MirrorStructTwinNormal {
-  final ApplicationSettings a;
-  final MyStruct b;
-  final List<MyEnum> c;
-  final List<ApplicationSettings> d;
-
-  const MirrorStructTwinNormal({
-    required this.a,
-    required this.b,
-    required this.c,
-    required this.d,
-  });
-
-  @override
-  int get hashCode => a.hashCode ^ b.hashCode ^ c.hashCode ^ d.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is MirrorStructTwinNormal &&
-          runtimeType == other.runtimeType &&
-          a == other.a &&
-          b == other.b &&
-          c == other.c &&
-          d == other.d;
 }

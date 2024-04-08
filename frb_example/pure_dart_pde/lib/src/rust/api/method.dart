@@ -9,6 +9,8 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'method.freezed.dart';
 
+// The type `Log2TwinNormal` is not used by any `pub` functions, thus it is ignored.
+
 Future<SumWithTwinNormal> getSumStructTwinNormal({dynamic hint}) =>
     RustLib.instance.api.getSumStructTwinNormal(hint: hint);
 
@@ -60,36 +62,47 @@ class ConcatenateWithTwinNormal {
         hint: hint,
       );
 
-  static Stream<int> handleSomeStaticStreamSinkSingleArgTwinNormal(
-          {dynamic hint}) =>
+  static Future<void> handleSomeStaticStreamSinkSingleArgTwinNormal(
+          {required RustStreamSink<int> sink, dynamic hint}) =>
       RustLib.instance.api
           .concatenateWithTwinNormalHandleSomeStaticStreamSinkSingleArgTwinNormal(
+        sink: sink,
         hint: hint,
       );
 
-  static Stream<Log2TwinNormal> handleSomeStaticStreamSinkTwinNormal(
-          {required int key, required int max, dynamic hint}) =>
+  static Future<void> handleSomeStaticStreamSinkTwinNormal(
+          {required int key,
+          required int max,
+          required RustStreamSink<Log2TwinNormal> sink,
+          dynamic hint}) =>
       RustLib.instance.api
           .concatenateWithTwinNormalHandleSomeStaticStreamSinkTwinNormal(
         key: key,
         max: max,
+        sink: sink,
         hint: hint,
       );
 
-  Stream<int> handleSomeStreamSinkAt1TwinNormal({dynamic hint}) =>
+  Future<void> handleSomeStreamSinkAt1TwinNormal(
+          {required RustStreamSink<int> sink, dynamic hint}) =>
       RustLib.instance.api
           .concatenateWithTwinNormalHandleSomeStreamSinkAt1TwinNormal(
         that: this,
+        sink: sink,
         hint: hint,
       );
 
-  Stream<Log2TwinNormal> handleSomeStreamSinkTwinNormal(
-          {required int key, required int max, dynamic hint}) =>
+  Future<void> handleSomeStreamSinkTwinNormal(
+          {required int key,
+          required int max,
+          required RustStreamSink<Log2TwinNormal> sink,
+          dynamic hint}) =>
       RustLib.instance.api
           .concatenateWithTwinNormalHandleSomeStreamSinkTwinNormal(
         that: this,
         key: key,
         max: max,
+        sink: sink,
         hint: hint,
       );
 
@@ -114,27 +127,6 @@ class ConcatenateWithTwinNormal {
       other is ConcatenateWithTwinNormal &&
           runtimeType == other.runtimeType &&
           a == other.a;
-}
-
-class Log2TwinNormal {
-  final int key;
-  final String value;
-
-  const Log2TwinNormal({
-    required this.key,
-    required this.value,
-  });
-
-  @override
-  int get hashCode => key.hashCode ^ value.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Log2TwinNormal &&
-          runtimeType == other.runtimeType &&
-          key == other.key &&
-          value == other.value;
 }
 
 class MyCallableTwinNormal {

@@ -565,7 +565,7 @@ fn wire_simple_use_async_spawn_local_impl(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "simple_use_async_spawn_local",
             port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
             let message = unsafe {
@@ -578,16 +578,14 @@ fn wire_simple_use_async_spawn_local_impl(
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <String>::sse_decode(&mut deserializer);
+            let api_sink = <StreamSink<String>>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| async move {
                 transform_result_sse(
                     (move || async move {
                         Result::<_, ()>::Ok(
                             crate::api::async_spawn::simple_use_async_spawn_local(
-                                api_arg,
-                                StreamSink::new(
-                                    context.rust2dart_context().stream_sink::<_, String>(),
-                                ),
+                                api_arg, api_sink,
                             )
                             .await,
                         )
@@ -2458,7 +2456,7 @@ fn wire_DroppableTwinNormal_create_stream_impl(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "DroppableTwinNormal_create_stream",
             port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
             let message = unsafe {
@@ -2473,13 +2471,14 @@ fn wire_DroppableTwinNormal_create_stream_impl(
             let api_that = <RustOpaqueMoi<
                 flutter_rust_bridge::for_generated::rust_async::RwLock<DroppableTwinNormal>,
             >>::sse_decode(&mut deserializer);
+            let api_sink = <StreamSink<i32>>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
                     let mut api_that = api_that.rust_auto_opaque_decode_ref_mut();
                     Result::<_, ()>::Ok(crate::api::dropping::DroppableTwinNormal::create_stream(
                         &mut api_that,
-                        StreamSink::new(context.rust2dart_context().stream_sink::<_, i32>()),
+                        api_sink,
                     ))
                 })())
             }
@@ -3072,7 +3071,7 @@ fn wire_register_event_listener_twin_normal_impl(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "register_event_listener_twin_normal",
             port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
             let message = unsafe {
@@ -3084,16 +3083,14 @@ fn wire_register_event_listener_twin_normal_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_listener =
+                <StreamSink<crate::api::event_listener::EventTwinNormal>>::sse_decode(
+                    &mut deserializer,
+                );
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
-                    crate::api::event_listener::register_event_listener_twin_normal(
-                        StreamSink::new(
-                            context
-                                .rust2dart_context()
-                                .stream_sink::<_, crate::api::event_listener::EventTwinNormal>(),
-                        ),
-                    )
+                    crate::api::event_listener::register_event_listener_twin_normal(api_listener)
                 })())
             }
         },
@@ -3833,7 +3830,7 @@ fn wire_stream_sink_throw_anyhow_twin_normal_impl(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "stream_sink_throw_anyhow_twin_normal",
             port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
             let message = unsafe {
@@ -3845,12 +3842,11 @@ fn wire_stream_sink_throw_anyhow_twin_normal_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api__sink = <StreamSink<String>>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
-                    crate::api::exception::stream_sink_throw_anyhow_twin_normal(StreamSink::new(
-                        context.rust2dart_context().stream_sink::<_, String>(),
-                    ))
+                    crate::api::exception::stream_sink_throw_anyhow_twin_normal(api__sink)
                 })())
             }
         },
@@ -4399,12 +4395,12 @@ fn wire_ConcatenateWithTwinNormal_handle_some_static_stream_sink_single_arg_twin
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinNormal_handle_some_static_stream_sink_single_arg_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinNormal_handle_some_static_stream_sink_single_arg_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end(); move |context|  {
+            let api_sink = <StreamSink<u32>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse((move ||  {
-                         Result::<_,()>::Ok(crate::api::method::ConcatenateWithTwinNormal::handle_some_static_stream_sink_single_arg_twin_normal(StreamSink::new(context.rust2dart_context().stream_sink::<_,u32>())))
+                         Result::<_,()>::Ok(crate::api::method::ConcatenateWithTwinNormal::handle_some_static_stream_sink_single_arg_twin_normal(api_sink))
                     })())
                 } })
 }
@@ -4414,13 +4410,14 @@ fn wire_ConcatenateWithTwinNormal_handle_some_static_stream_sink_twin_normal_imp
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinNormal_handle_some_static_stream_sink_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinNormal_handle_some_static_stream_sink_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_key = <u32>::sse_decode(&mut deserializer);
-let api_max = <u32>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+let api_max = <u32>::sse_decode(&mut deserializer);
+let api_sink = <StreamSink<crate::api::method::Log2TwinNormal>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse((move ||  {
-                         Result::<_,()>::Ok(crate::api::method::ConcatenateWithTwinNormal::handle_some_static_stream_sink_twin_normal(api_key, api_max, StreamSink::new(context.rust2dart_context().stream_sink::<_,crate::api::method::Log2TwinNormal>())))
+                         Result::<_,()>::Ok(crate::api::method::ConcatenateWithTwinNormal::handle_some_static_stream_sink_twin_normal(api_key, api_max, api_sink))
                     })())
                 } })
 }
@@ -4430,12 +4427,13 @@ fn wire_ConcatenateWithTwinNormal_handle_some_stream_sink_at_1_twin_normal_impl(
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinNormal_handle_some_stream_sink_at_1_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinNormal_handle_some_stream_sink_at_1_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_that = <crate::api::method::ConcatenateWithTwinNormal>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+            let api_that = <crate::api::method::ConcatenateWithTwinNormal>::sse_decode(&mut deserializer);
+let api_sink = <StreamSink<u32>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse((move ||  {
-                         Result::<_,()>::Ok(crate::api::method::ConcatenateWithTwinNormal::handle_some_stream_sink_at_1_twin_normal(&api_that, StreamSink::new(context.rust2dart_context().stream_sink::<_,u32>())))
+                         Result::<_,()>::Ok(crate::api::method::ConcatenateWithTwinNormal::handle_some_stream_sink_at_1_twin_normal(&api_that, api_sink))
                     })())
                 } })
 }
@@ -4445,14 +4443,15 @@ fn wire_ConcatenateWithTwinNormal_handle_some_stream_sink_twin_normal_impl(
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinNormal_handle_some_stream_sink_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinNormal_handle_some_stream_sink_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <crate::api::method::ConcatenateWithTwinNormal>::sse_decode(&mut deserializer);
 let api_key = <u32>::sse_decode(&mut deserializer);
-let api_max = <u32>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+let api_max = <u32>::sse_decode(&mut deserializer);
+let api_sink = <StreamSink<crate::api::method::Log2TwinNormal>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse((move ||  {
-                         Result::<_,()>::Ok(crate::api::method::ConcatenateWithTwinNormal::handle_some_stream_sink_twin_normal(&api_that, api_key, api_max, StreamSink::new(context.rust2dart_context().stream_sink::<_,crate::api::method::Log2TwinNormal>())))
+                         Result::<_,()>::Ok(crate::api::method::ConcatenateWithTwinNormal::handle_some_stream_sink_twin_normal(&api_that, api_key, api_max, api_sink))
                     })())
                 } })
 }
@@ -4922,7 +4921,7 @@ fn wire_app_settings_stream_twin_normal_impl(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "app_settings_stream_twin_normal",
             port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
             let message = unsafe {
@@ -4934,13 +4933,14 @@ fn wire_app_settings_stream_twin_normal_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_sink = <StreamSink<
+                crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings,
+            >>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
                     Result::<_, ()>::Ok(crate::api::mirror::app_settings_stream_twin_normal(
-                        StreamSink::new(context.rust2dart_context().stream_sink::<_, FrbWrapper<
-                            crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings,
-                        >>()),
+                        api_sink,
                     ))
                 })())
             }
@@ -4957,7 +4957,7 @@ fn wire_app_settings_vec_stream_twin_normal_impl(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "app_settings_vec_stream_twin_normal",
             port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
             let message = unsafe {
@@ -4969,15 +4969,14 @@ fn wire_app_settings_vec_stream_twin_normal_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_sink = <StreamSink<
+                Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>,
+            >>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
                     Result::<_, ()>::Ok(crate::api::mirror::app_settings_vec_stream_twin_normal(
-                        StreamSink::new(context.rust2dart_context().stream_sink::<_, Vec<
-                            FrbWrapper<
-                                crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings,
-                            >,
-                        >>()),
+                        api_sink,
                     ))
                 })())
             }
@@ -5192,7 +5191,7 @@ fn wire_mirror_array_enum_stream_twin_normal_impl(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "mirror_array_enum_stream_twin_normal",
             port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
             let message = unsafe {
@@ -5204,15 +5203,14 @@ fn wire_mirror_array_enum_stream_twin_normal_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_sink = <StreamSink<
+                [crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode; 2],
+            >>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
                     Result::<_, ()>::Ok(crate::api::mirror::mirror_array_enum_stream_twin_normal(
-                        StreamSink::new(
-                            context.rust2dart_context().stream_sink::<_, [FrbWrapper<
-                                crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode,
-                            >; 2]>(),
-                        ),
+                        api_sink,
                     ))
                 })())
             }
@@ -5225,34 +5223,14 @@ fn wire_mirror_enum_stream_twin_normal_impl(
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "mirror_enum_stream_twin_normal",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end();
-            move |context| {
-                transform_result_sse((move || {
-                    Result::<_, ()>::Ok(crate::api::mirror::mirror_enum_stream_twin_normal(
-                        StreamSink::new(context.rust2dart_context().stream_sink::<_, FrbWrapper<
-                            crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode,
-                        >>()),
-                    ))
-                })())
-            }
-        },
-    )
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "mirror_enum_stream_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_sink = <StreamSink<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+                    transform_result_sse((move ||  {
+                         Result::<_,()>::Ok(crate::api::mirror::mirror_enum_stream_twin_normal(api_sink))
+                    })())
+                } })
 }
 fn wire_mirror_map_enum_stream_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
@@ -5264,7 +5242,7 @@ fn wire_mirror_map_enum_stream_twin_normal_impl(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "mirror_map_enum_stream_twin_normal",
             port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
             let message = unsafe {
@@ -5276,20 +5254,17 @@ fn wire_mirror_map_enum_stream_twin_normal_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_sink = <StreamSink<
+                std::collections::HashMap<
+                    u8,
+                    crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode,
+                >,
+            >>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
                     Result::<_, ()>::Ok(crate::api::mirror::mirror_map_enum_stream_twin_normal(
-                        StreamSink::new(
-                            context
-                                .rust2dart_context()
-                                .stream_sink::<_, std::collections::HashMap<
-                                u8,
-                                FrbWrapper<
-                                    crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode,
-                                >,
-                            >>(),
-                        ),
+                        api_sink,
                     ))
                 })())
             }
@@ -5306,7 +5281,7 @@ fn wire_mirror_option_enum_stream_twin_normal_impl(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "mirror_option_enum_stream_twin_normal",
             port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
             let message = unsafe {
@@ -5318,15 +5293,14 @@ fn wire_mirror_option_enum_stream_twin_normal_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_sink = <StreamSink<
+                Option<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>,
+            >>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
                     Result::<_, ()>::Ok(crate::api::mirror::mirror_option_enum_stream_twin_normal(
-                        StreamSink::new(context.rust2dart_context().stream_sink::<_, Option<
-                            FrbWrapper<
-                                crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode,
-                            >,
-                        >>()),
+                        api_sink,
                     ))
                 })())
             }
@@ -5343,7 +5317,7 @@ fn wire_mirror_set_enum_stream_twin_normal_impl(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "mirror_set_enum_stream_twin_normal",
             port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
             let message = unsafe {
@@ -5355,19 +5329,16 @@ fn wire_mirror_set_enum_stream_twin_normal_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_sink = <StreamSink<
+                std::collections::HashSet<
+                    crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode,
+                >,
+            >>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
                     Result::<_, ()>::Ok(crate::api::mirror::mirror_set_enum_stream_twin_normal(
-                        StreamSink::new(
-                            context
-                                .rust2dart_context()
-                                .stream_sink::<_, std::collections::HashSet<
-                                FrbWrapper<
-                                    crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode,
-                                >,
-                            >>(),
-                        ),
+                        api_sink,
                     ))
                 })())
             }
@@ -5384,7 +5355,7 @@ fn wire_mirror_struct_stream_twin_normal_impl(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "mirror_struct_stream_twin_normal",
             port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
             let message = unsafe {
@@ -5396,15 +5367,14 @@ fn wire_mirror_struct_stream_twin_normal_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_sink = <StreamSink<crate::api::mirror::MirrorStructTwinNormal>>::sse_decode(
+                &mut deserializer,
+            );
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
                     Result::<_, ()>::Ok(crate::api::mirror::mirror_struct_stream_twin_normal(
-                        StreamSink::new(
-                            context
-                                .rust2dart_context()
-                                .stream_sink::<_, crate::api::mirror::MirrorStructTwinNormal>(),
-                        ),
+                        api_sink,
                     ))
                 })())
             }
@@ -5421,7 +5391,7 @@ fn wire_mirror_tuple_stream_twin_normal_impl(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "mirror_tuple_stream_twin_normal",
             port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
             let message = unsafe {
@@ -5433,18 +5403,15 @@ fn wire_mirror_tuple_stream_twin_normal_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_sink = <StreamSink<(
+                crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings,
+                crate::api::pseudo_manual::mirror_twin_sync::RawStringEnumMirrored,
+            )>>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
                     Result::<_, ()>::Ok(crate::api::mirror::mirror_tuple_stream_twin_normal(
-                        StreamSink::new(context.rust2dart_context().stream_sink::<_, (
-                            FrbWrapper<
-                                crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings,
-                            >,
-                            FrbWrapper<
-                                crate::api::pseudo_manual::mirror_twin_sync::RawStringEnumMirrored,
-                            >,
-                        )>()),
+                        api_sink,
                     ))
                 })())
             }
@@ -5461,7 +5428,7 @@ fn wire_mirror_vec_enum_stream_twin_normal_impl(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "mirror_vec_enum_stream_twin_normal",
             port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
             let message = unsafe {
@@ -5473,15 +5440,14 @@ fn wire_mirror_vec_enum_stream_twin_normal_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_sink = <StreamSink<
+                Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>,
+            >>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
                     Result::<_, ()>::Ok(crate::api::mirror::mirror_vec_enum_stream_twin_normal(
-                        StreamSink::new(context.rust2dart_context().stream_sink::<_, Vec<
-                            FrbWrapper<
-                                crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode,
-                            >,
-                        >>()),
+                        api_sink,
                     ))
                 })())
             }
@@ -13055,13 +13021,14 @@ fn wire_DroppableTwinRustAsync_create_stream_twin_rust_async_impl(
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "DroppableTwinRustAsync_create_stream_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "DroppableTwinRustAsync_create_stream_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_that = <RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<DroppableTwinRustAsync>>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+            let api_that = <RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<DroppableTwinRustAsync>>>::sse_decode(&mut deserializer);
+let api_sink = <StreamSink<i32>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
                         let mut api_that = api_that.rust_auto_opaque_decode_ref_mut();
- Result::<_,()>::Ok(crate::api::pseudo_manual::dropping_twin_rust_async::DroppableTwinRustAsync::create_stream_twin_rust_async(&mut api_that, StreamSink::new(context.rust2dart_context().stream_sink::<_,i32>())).await)
+ Result::<_,()>::Ok(crate::api::pseudo_manual::dropping_twin_rust_async::DroppableTwinRustAsync::create_stream_twin_rust_async(&mut api_that, api_sink).await)
                     })().await)
                 } })
 }
@@ -13112,20 +13079,19 @@ fn wire_DroppableTwinRustAsync_simple_method_twin_rust_async_impl(
                 } })
 }
 fn wire_DroppableTwinSync_create_stream_twin_sync_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "DroppableTwinSync_create_stream_twin_sync", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "DroppableTwinSync_create_stream_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_that = <RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<DroppableTwinSync>>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
-                    transform_result_sse((move ||  {
-                        let mut api_that = api_that.rust_auto_opaque_decode_ref_mut();
- Result::<_,()>::Ok(crate::api::pseudo_manual::dropping_twin_sync::DroppableTwinSync::create_stream_twin_sync(&mut api_that, StreamSink::new(context.rust2dart_context().stream_sink::<_,i32>())))
-                    })())
-                } })
+            let api_that = <RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<DroppableTwinSync>>>::sse_decode(&mut deserializer);
+let api_sink = <StreamSink<i32>>::sse_decode(&mut deserializer);deserializer.end();
+                transform_result_sse((move || {
+                    let mut api_that = api_that.rust_auto_opaque_decode_ref_mut();
+ Result::<_,()>::Ok(crate::api::pseudo_manual::dropping_twin_sync::DroppableTwinSync::create_stream_twin_sync(&mut api_that, api_sink))
+                })()) })
 }
 fn wire_DroppableTwinSync_get_drop_count_twin_sync_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -13629,12 +13595,12 @@ fn wire_register_event_listener_twin_rust_async_impl(
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "register_event_listener_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "register_event_listener_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end(); move |context| async move {
+            let api_listener = <StreamSink<crate::api::pseudo_manual::event_listener_twin_rust_async::EventTwinRustAsync>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         crate::api::pseudo_manual::event_listener_twin_rust_async::register_event_listener_twin_rust_async(StreamSink::new(context.rust2dart_context().stream_sink::<_,crate::api::pseudo_manual::event_listener_twin_rust_async::EventTwinRustAsync>())).await
+                         crate::api::pseudo_manual::event_listener_twin_rust_async::register_event_listener_twin_rust_async(api_listener).await
                     })().await)
                 } })
 }
@@ -14049,12 +14015,12 @@ fn wire_stream_sink_throw_anyhow_twin_rust_async_impl(
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "stream_sink_throw_anyhow_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "stream_sink_throw_anyhow_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end(); move |context| async move {
+            let api__sink = <StreamSink<String>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         crate::api::pseudo_manual::exception_twin_rust_async::stream_sink_throw_anyhow_twin_rust_async(StreamSink::new(context.rust2dart_context().stream_sink::<_,String>())).await
+                         crate::api::pseudo_manual::exception_twin_rust_async::stream_sink_throw_anyhow_twin_rust_async(api__sink).await
                     })().await)
                 } })
 }
@@ -14548,19 +14514,35 @@ fn wire_return_ok_custom_error_twin_sync_impl(
     )
 }
 fn wire_stream_sink_throw_anyhow_twin_sync_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "stream_sink_throw_anyhow_twin_sync", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
-            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
-            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end(); move |context|  {
-                    transform_result_sse((move ||  {
-                         crate::api::pseudo_manual::exception_twin_sync::stream_sink_throw_anyhow_twin_sync(StreamSink::new(context.rust2dart_context().stream_sink::<_,String>()))
-                    })())
-                } })
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "stream_sink_throw_anyhow_twin_sync",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api__sink = <StreamSink<String>>::sse_decode(&mut deserializer);
+            deserializer.end();
+            transform_result_sse((move || {
+                crate::api::pseudo_manual::exception_twin_sync::stream_sink_throw_anyhow_twin_sync(
+                    api__sink,
+                )
+            })())
+        },
+    )
 }
 fn wire_throw_anyhow_twin_sync_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -14984,12 +14966,12 @@ fn wire_ConcatenateWithTwinRustAsync_handle_some_static_stream_sink_single_arg_t
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinRustAsync_handle_some_static_stream_sink_single_arg_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinRustAsync_handle_some_static_stream_sink_single_arg_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end(); move |context| async move {
+            let api_sink = <StreamSink<u32>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync::handle_some_static_stream_sink_single_arg_twin_rust_async(StreamSink::new(context.rust2dart_context().stream_sink::<_,u32>())).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync::handle_some_static_stream_sink_single_arg_twin_rust_async(api_sink).await)
                     })().await)
                 } })
 }
@@ -14999,13 +14981,14 @@ fn wire_ConcatenateWithTwinRustAsync_handle_some_static_stream_sink_twin_rust_as
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinRustAsync_handle_some_static_stream_sink_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinRustAsync_handle_some_static_stream_sink_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_key = <u32>::sse_decode(&mut deserializer);
-let api_max = <u32>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+let api_max = <u32>::sse_decode(&mut deserializer);
+let api_sink = <StreamSink<crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync::handle_some_static_stream_sink_twin_rust_async(api_key, api_max, StreamSink::new(context.rust2dart_context().stream_sink::<_,crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync>())).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync::handle_some_static_stream_sink_twin_rust_async(api_key, api_max, api_sink).await)
                     })().await)
                 } })
 }
@@ -15015,12 +14998,13 @@ fn wire_ConcatenateWithTwinRustAsync_handle_some_stream_sink_at_1_twin_rust_asyn
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinRustAsync_handle_some_stream_sink_at_1_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinRustAsync_handle_some_stream_sink_at_1_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_that = <crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+            let api_that = <crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync>::sse_decode(&mut deserializer);
+let api_sink = <StreamSink<u32>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync::handle_some_stream_sink_at_1_twin_rust_async(&api_that, StreamSink::new(context.rust2dart_context().stream_sink::<_,u32>())).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync::handle_some_stream_sink_at_1_twin_rust_async(&api_that, api_sink).await)
                     })().await)
                 } })
 }
@@ -15030,14 +15014,15 @@ fn wire_ConcatenateWithTwinRustAsync_handle_some_stream_sink_twin_rust_async_imp
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinRustAsync_handle_some_stream_sink_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinRustAsync_handle_some_stream_sink_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync>::sse_decode(&mut deserializer);
 let api_key = <u32>::sse_decode(&mut deserializer);
-let api_max = <u32>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+let api_max = <u32>::sse_decode(&mut deserializer);
+let api_sink = <StreamSink<crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync::handle_some_stream_sink_twin_rust_async(&api_that, api_key, api_max, StreamSink::new(context.rust2dart_context().stream_sink::<_,crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync>())).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync::handle_some_stream_sink_twin_rust_async(&api_that, api_key, api_max, api_sink).await)
                     })().await)
                 } })
 }
@@ -15271,67 +15256,62 @@ let api_b = <String>::sse_decode(&mut deserializer);deserializer.end();
                 })()) })
 }
 fn wire_ConcatenateWithTwinSync_handle_some_static_stream_sink_single_arg_twin_sync_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinSync_handle_some_static_stream_sink_single_arg_twin_sync", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinSync_handle_some_static_stream_sink_single_arg_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end(); move |context|  {
-                    transform_result_sse((move ||  {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync::handle_some_static_stream_sink_single_arg_twin_sync(StreamSink::new(context.rust2dart_context().stream_sink::<_,u32>())))
-                    })())
-                } })
+            let api_sink = <StreamSink<u32>>::sse_decode(&mut deserializer);deserializer.end();
+                transform_result_sse((move || {
+                     Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync::handle_some_static_stream_sink_single_arg_twin_sync(api_sink))
+                })()) })
 }
 fn wire_ConcatenateWithTwinSync_handle_some_static_stream_sink_twin_sync_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinSync_handle_some_static_stream_sink_twin_sync", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinSync_handle_some_static_stream_sink_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_key = <u32>::sse_decode(&mut deserializer);
-let api_max = <u32>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
-                    transform_result_sse((move ||  {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync::handle_some_static_stream_sink_twin_sync(api_key, api_max, StreamSink::new(context.rust2dart_context().stream_sink::<_,crate::api::pseudo_manual::method_twin_sync::Log2TwinSync>())))
-                    })())
-                } })
+let api_max = <u32>::sse_decode(&mut deserializer);
+let api_sink = <StreamSink<crate::api::pseudo_manual::method_twin_sync::Log2TwinSync>>::sse_decode(&mut deserializer);deserializer.end();
+                transform_result_sse((move || {
+                     Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync::handle_some_static_stream_sink_twin_sync(api_key, api_max, api_sink))
+                })()) })
 }
 fn wire_ConcatenateWithTwinSync_handle_some_stream_sink_at_1_twin_sync_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinSync_handle_some_stream_sink_at_1_twin_sync", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinSync_handle_some_stream_sink_at_1_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_that = <crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
-                    transform_result_sse((move ||  {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync::handle_some_stream_sink_at_1_twin_sync(&api_that, StreamSink::new(context.rust2dart_context().stream_sink::<_,u32>())))
-                    })())
-                } })
+            let api_that = <crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync>::sse_decode(&mut deserializer);
+let api_sink = <StreamSink<u32>>::sse_decode(&mut deserializer);deserializer.end();
+                transform_result_sse((move || {
+                     Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync::handle_some_stream_sink_at_1_twin_sync(&api_that, api_sink))
+                })()) })
 }
 fn wire_ConcatenateWithTwinSync_handle_some_stream_sink_twin_sync_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinSync_handle_some_stream_sink_twin_sync", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinSync_handle_some_stream_sink_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync>::sse_decode(&mut deserializer);
 let api_key = <u32>::sse_decode(&mut deserializer);
-let api_max = <u32>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
-                    transform_result_sse((move ||  {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync::handle_some_stream_sink_twin_sync(&api_that, api_key, api_max, StreamSink::new(context.rust2dart_context().stream_sink::<_,crate::api::pseudo_manual::method_twin_sync::Log2TwinSync>())))
-                    })())
-                } })
+let api_max = <u32>::sse_decode(&mut deserializer);
+let api_sink = <StreamSink<crate::api::pseudo_manual::method_twin_sync::Log2TwinSync>>::sse_decode(&mut deserializer);deserializer.end();
+                transform_result_sse((move || {
+                     Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync::handle_some_stream_sink_twin_sync(&api_that, api_key, api_max, api_sink))
+                })()) })
 }
 fn wire_ConcatenateWithTwinSync_new_twin_sync_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -15597,12 +15577,12 @@ fn wire_app_settings_stream_twin_rust_async_impl(
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "app_settings_stream_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "app_settings_stream_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end(); move |context| async move {
+            let api_sink = <StreamSink<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::app_settings_stream_twin_rust_async(StreamSink::new(context.rust2dart_context().stream_sink::<_,FrbWrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>>())).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::app_settings_stream_twin_rust_async(api_sink).await)
                     })().await)
                 } })
 }
@@ -15612,12 +15592,12 @@ fn wire_app_settings_vec_stream_twin_rust_async_impl(
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "app_settings_vec_stream_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "app_settings_vec_stream_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end(); move |context| async move {
+            let api_sink = <StreamSink<Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::app_settings_vec_stream_twin_rust_async(StreamSink::new(context.rust2dart_context().stream_sink::<_,Vec<FrbWrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>>>())).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::app_settings_vec_stream_twin_rust_async(api_sink).await)
                     })().await)
                 } })
 }
@@ -15717,12 +15697,12 @@ fn wire_mirror_array_enum_stream_twin_rust_async_impl(
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "mirror_array_enum_stream_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "mirror_array_enum_stream_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end(); move |context| async move {
+            let api_sink = <StreamSink<[crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode; 2]>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::mirror_array_enum_stream_twin_rust_async(StreamSink::new(context.rust2dart_context().stream_sink::<_,[FrbWrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>; 2]>())).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::mirror_array_enum_stream_twin_rust_async(api_sink).await)
                     })().await)
                 } })
 }
@@ -15732,12 +15712,12 @@ fn wire_mirror_enum_stream_twin_rust_async_impl(
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "mirror_enum_stream_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "mirror_enum_stream_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end(); move |context| async move {
+            let api_sink = <StreamSink<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::mirror_enum_stream_twin_rust_async(StreamSink::new(context.rust2dart_context().stream_sink::<_,FrbWrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>>())).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::mirror_enum_stream_twin_rust_async(api_sink).await)
                     })().await)
                 } })
 }
@@ -15747,12 +15727,12 @@ fn wire_mirror_map_enum_stream_twin_rust_async_impl(
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "mirror_map_enum_stream_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "mirror_map_enum_stream_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end(); move |context| async move {
+            let api_sink = <StreamSink<std::collections::HashMap<u8, crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::mirror_map_enum_stream_twin_rust_async(StreamSink::new(context.rust2dart_context().stream_sink::<_,std::collections::HashMap<u8, FrbWrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>>>())).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::mirror_map_enum_stream_twin_rust_async(api_sink).await)
                     })().await)
                 } })
 }
@@ -15762,12 +15742,12 @@ fn wire_mirror_option_enum_stream_twin_rust_async_impl(
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "mirror_option_enum_stream_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "mirror_option_enum_stream_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end(); move |context| async move {
+            let api_sink = <StreamSink<Option<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::mirror_option_enum_stream_twin_rust_async(StreamSink::new(context.rust2dart_context().stream_sink::<_,Option<FrbWrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>>>())).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::mirror_option_enum_stream_twin_rust_async(api_sink).await)
                     })().await)
                 } })
 }
@@ -15777,12 +15757,12 @@ fn wire_mirror_set_enum_stream_twin_rust_async_impl(
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "mirror_set_enum_stream_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "mirror_set_enum_stream_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end(); move |context| async move {
+            let api_sink = <StreamSink<std::collections::HashSet<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::mirror_set_enum_stream_twin_rust_async(StreamSink::new(context.rust2dart_context().stream_sink::<_,std::collections::HashSet<FrbWrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>>>())).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::mirror_set_enum_stream_twin_rust_async(api_sink).await)
                     })().await)
                 } })
 }
@@ -15792,12 +15772,12 @@ fn wire_mirror_struct_stream_twin_rust_async_impl(
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "mirror_struct_stream_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "mirror_struct_stream_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end(); move |context| async move {
+            let api_sink = <StreamSink<crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::mirror_struct_stream_twin_rust_async(StreamSink::new(context.rust2dart_context().stream_sink::<_,crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync>())).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::mirror_struct_stream_twin_rust_async(api_sink).await)
                     })().await)
                 } })
 }
@@ -15807,12 +15787,12 @@ fn wire_mirror_tuple_stream_twin_rust_async_impl(
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "mirror_tuple_stream_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "mirror_tuple_stream_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end(); move |context| async move {
+            let api_sink = <StreamSink<(crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings,crate::api::pseudo_manual::mirror_twin_sync::RawStringEnumMirrored,)>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::mirror_tuple_stream_twin_rust_async(StreamSink::new(context.rust2dart_context().stream_sink::<_,(FrbWrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>,FrbWrapper<crate::api::pseudo_manual::mirror_twin_sync::RawStringEnumMirrored>,)>())).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::mirror_tuple_stream_twin_rust_async(api_sink).await)
                     })().await)
                 } })
 }
@@ -15822,12 +15802,12 @@ fn wire_mirror_vec_enum_stream_twin_rust_async_impl(
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "mirror_vec_enum_stream_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "mirror_vec_enum_stream_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end(); move |context| async move {
+            let api_sink = <StreamSink<Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::mirror_vec_enum_stream_twin_rust_async(StreamSink::new(context.rust2dart_context().stream_sink::<_,Vec<FrbWrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>>>())).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::mirror_vec_enum_stream_twin_rust_async(api_sink).await)
                     })().await)
                 } })
 }
@@ -15984,34 +15964,74 @@ fn wire_test_raw_string_mirrored_twin_rust_async_impl(
                 } })
 }
 fn wire_app_settings_stream_twin_sync_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "app_settings_stream_twin_sync", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
-            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
-            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end(); move |context|  {
-                    transform_result_sse((move ||  {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_sync::app_settings_stream_twin_sync(StreamSink::new(context.rust2dart_context().stream_sink::<_,FrbWrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>>())))
-                    })())
-                } })
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "app_settings_stream_twin_sync",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_sink = <StreamSink<
+                crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings,
+            >>::sse_decode(&mut deserializer);
+            deserializer.end();
+            transform_result_sse((move || {
+                Result::<_, ()>::Ok(
+                    crate::api::pseudo_manual::mirror_twin_sync::app_settings_stream_twin_sync(
+                        api_sink,
+                    ),
+                )
+            })())
+        },
+    )
 }
 fn wire_app_settings_vec_stream_twin_sync_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "app_settings_vec_stream_twin_sync", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
-            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
-            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end(); move |context|  {
-                    transform_result_sse((move ||  {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_sync::app_settings_vec_stream_twin_sync(StreamSink::new(context.rust2dart_context().stream_sink::<_,Vec<FrbWrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>>>())))
-                    })())
-                } })
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "app_settings_vec_stream_twin_sync",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_sink = <StreamSink<
+                Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>,
+            >>::sse_decode(&mut deserializer);
+            deserializer.end();
+            transform_result_sse((move || {
+                Result::<_, ()>::Ok(
+                    crate::api::pseudo_manual::mirror_twin_sync::app_settings_vec_stream_twin_sync(
+                        api_sink,
+                    ),
+                )
+            })())
+        },
+    )
 }
 fn wire_first_number_twin_sync_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -16204,31 +16224,15 @@ fn wire_is_app_embedded_twin_sync_impl(
     )
 }
 fn wire_mirror_array_enum_stream_twin_sync_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "mirror_array_enum_stream_twin_sync", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
-            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
-            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end(); move |context|  {
-                    transform_result_sse((move ||  {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_sync::mirror_array_enum_stream_twin_sync(StreamSink::new(context.rust2dart_context().stream_sink::<_,[FrbWrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>; 2]>())))
-                    })())
-                } })
-}
-fn wire_mirror_enum_stream_twin_sync_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "mirror_enum_stream_twin_sync",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream,
+            debug_name: "mirror_array_enum_stream_twin_sync",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
         move || {
             let message = unsafe {
@@ -16240,112 +16244,226 @@ fn wire_mirror_enum_stream_twin_sync_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_sink = <StreamSink<
+                [crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode; 2],
+            >>::sse_decode(&mut deserializer);
             deserializer.end();
-            move |context| {
-                transform_result_sse((move || {
-                    Result::<_, ()>::Ok(
-                        crate::api::pseudo_manual::mirror_twin_sync::mirror_enum_stream_twin_sync(
-                            StreamSink::new(
-                                context.rust2dart_context().stream_sink::<_, FrbWrapper<
-                                    crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode,
-                                >>(),
-                            ),
-                        ),
-                    )
-                })())
-            }
+            transform_result_sse((move || {
+                Result::<_, ()>::Ok(
+                    crate::api::pseudo_manual::mirror_twin_sync::mirror_array_enum_stream_twin_sync(
+                        api_sink,
+                    ),
+                )
+            })())
         },
     )
 }
-fn wire_mirror_map_enum_stream_twin_sync_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+fn wire_mirror_enum_stream_twin_sync_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "mirror_map_enum_stream_twin_sync", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "mirror_enum_stream_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end(); move |context|  {
-                    transform_result_sse((move ||  {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_sync::mirror_map_enum_stream_twin_sync(StreamSink::new(context.rust2dart_context().stream_sink::<_,std::collections::HashMap<u8, FrbWrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>>>())))
-                    })())
-                } })
+            let api_sink = <StreamSink<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>>::sse_decode(&mut deserializer);deserializer.end();
+                transform_result_sse((move || {
+                     Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_sync::mirror_enum_stream_twin_sync(api_sink))
+                })()) })
+}
+fn wire_mirror_map_enum_stream_twin_sync_impl(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "mirror_map_enum_stream_twin_sync",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_sink = <StreamSink<
+                std::collections::HashMap<
+                    u8,
+                    crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode,
+                >,
+            >>::sse_decode(&mut deserializer);
+            deserializer.end();
+            transform_result_sse((move || {
+                Result::<_, ()>::Ok(
+                    crate::api::pseudo_manual::mirror_twin_sync::mirror_map_enum_stream_twin_sync(
+                        api_sink,
+                    ),
+                )
+            })())
+        },
+    )
 }
 fn wire_mirror_option_enum_stream_twin_sync_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "mirror_option_enum_stream_twin_sync", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "mirror_option_enum_stream_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end(); move |context|  {
-                    transform_result_sse((move ||  {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_sync::mirror_option_enum_stream_twin_sync(StreamSink::new(context.rust2dart_context().stream_sink::<_,Option<FrbWrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>>>())))
-                    })())
-                } })
+            let api_sink = <StreamSink<Option<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>>>::sse_decode(&mut deserializer);deserializer.end();
+                transform_result_sse((move || {
+                     Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_sync::mirror_option_enum_stream_twin_sync(api_sink))
+                })()) })
 }
 fn wire_mirror_set_enum_stream_twin_sync_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "mirror_set_enum_stream_twin_sync", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
-            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
-            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end(); move |context|  {
-                    transform_result_sse((move ||  {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_sync::mirror_set_enum_stream_twin_sync(StreamSink::new(context.rust2dart_context().stream_sink::<_,std::collections::HashSet<FrbWrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>>>())))
-                    })())
-                } })
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "mirror_set_enum_stream_twin_sync",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_sink = <StreamSink<
+                std::collections::HashSet<
+                    crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode,
+                >,
+            >>::sse_decode(&mut deserializer);
+            deserializer.end();
+            transform_result_sse((move || {
+                Result::<_, ()>::Ok(
+                    crate::api::pseudo_manual::mirror_twin_sync::mirror_set_enum_stream_twin_sync(
+                        api_sink,
+                    ),
+                )
+            })())
+        },
+    )
 }
 fn wire_mirror_struct_stream_twin_sync_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "mirror_struct_stream_twin_sync", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
-            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
-            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end(); move |context|  {
-                    transform_result_sse((move ||  {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_sync::mirror_struct_stream_twin_sync(StreamSink::new(context.rust2dart_context().stream_sink::<_,crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync>())))
-                    })())
-                } })
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "mirror_struct_stream_twin_sync",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_sink = <StreamSink<
+                crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync,
+            >>::sse_decode(&mut deserializer);
+            deserializer.end();
+            transform_result_sse((move || {
+                Result::<_, ()>::Ok(
+                    crate::api::pseudo_manual::mirror_twin_sync::mirror_struct_stream_twin_sync(
+                        api_sink,
+                    ),
+                )
+            })())
+        },
+    )
 }
 fn wire_mirror_tuple_stream_twin_sync_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "mirror_tuple_stream_twin_sync", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
-            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
-            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end(); move |context|  {
-                    transform_result_sse((move ||  {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_sync::mirror_tuple_stream_twin_sync(StreamSink::new(context.rust2dart_context().stream_sink::<_,(FrbWrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>,FrbWrapper<crate::api::pseudo_manual::mirror_twin_sync::RawStringEnumMirrored>,)>())))
-                    })())
-                } })
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "mirror_tuple_stream_twin_sync",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_sink = <StreamSink<(
+                crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings,
+                crate::api::pseudo_manual::mirror_twin_sync::RawStringEnumMirrored,
+            )>>::sse_decode(&mut deserializer);
+            deserializer.end();
+            transform_result_sse((move || {
+                Result::<_, ()>::Ok(
+                    crate::api::pseudo_manual::mirror_twin_sync::mirror_tuple_stream_twin_sync(
+                        api_sink,
+                    ),
+                )
+            })())
+        },
+    )
 }
 fn wire_mirror_vec_enum_stream_twin_sync_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "mirror_vec_enum_stream_twin_sync", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
-            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
-            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end(); move |context|  {
-                    transform_result_sse((move ||  {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_sync::mirror_vec_enum_stream_twin_sync(StreamSink::new(context.rust2dart_context().stream_sink::<_,Vec<FrbWrapper<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>>>())))
-                    })())
-                } })
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "mirror_vec_enum_stream_twin_sync",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_sink = <StreamSink<
+                Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>,
+            >>::sse_decode(&mut deserializer);
+            deserializer.end();
+            transform_result_sse((move || {
+                Result::<_, ()>::Ok(
+                    crate::api::pseudo_manual::mirror_twin_sync::mirror_vec_enum_stream_twin_sync(
+                        api_sink,
+                    ),
+                )
+            })())
+        },
+    )
 }
 fn wire_repeat_number_twin_sync_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -18166,12 +18284,12 @@ fn wire_rust_auto_opaque_stream_sink_twin_rust_async_impl(
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_stream_sink_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_stream_sink_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end(); move |context| async move {
+            let api_sink = <StreamSink<NonCloneSimpleTwinRustAsync>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_stream_sink_twin_rust_async(StreamSink::new(context.rust2dart_context().stream_sink::<_,FrbWrapper<NonCloneSimpleTwinRustAsync>>())).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_stream_sink_twin_rust_async(api_sink).await)
                     })().await)
                 } })
 }
@@ -18806,19 +18924,17 @@ fn wire_rust_auto_opaque_return_vec_own_twin_sync_impl(
                 })()) })
 }
 fn wire_rust_auto_opaque_stream_sink_twin_sync_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_stream_sink_twin_sync", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_stream_sink_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end(); move |context|  {
-                    transform_result_sse((move ||  {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_stream_sink_twin_sync(StreamSink::new(context.rust2dart_context().stream_sink::<_,FrbWrapper<NonCloneSimpleTwinSync>>())))
-                    })())
-                } })
+            let api_sink = <StreamSink<NonCloneSimpleTwinSync>>::sse_decode(&mut deserializer);deserializer.end();
+                transform_result_sse((move || {
+                     Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_stream_sink_twin_sync(api_sink))
+                })()) })
 }
 fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -19596,12 +19712,12 @@ fn wire_func_stream_return_error_twin_rust_async_impl(
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_stream_return_error_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_stream_return_error_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end(); move |context| async move {
+            let api__sink = <StreamSink<String>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         crate::api::pseudo_manual::stream_twin_rust_async::func_stream_return_error_twin_rust_async(StreamSink::new(context.rust2dart_context().stream_sink::<_,String>())).await
+                         crate::api::pseudo_manual::stream_twin_rust_async::func_stream_return_error_twin_rust_async(api__sink).await
                     })().await)
                 } })
 }
@@ -19611,12 +19727,12 @@ fn wire_func_stream_return_panic_twin_rust_async_impl(
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_stream_return_panic_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_stream_return_panic_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end(); move |context| async move {
+            let api__sink = <StreamSink<String>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         crate::api::pseudo_manual::stream_twin_rust_async::func_stream_return_panic_twin_rust_async(StreamSink::new(context.rust2dart_context().stream_sink::<_,String>())).await
+                         crate::api::pseudo_manual::stream_twin_rust_async::func_stream_return_panic_twin_rust_async(api__sink).await
                     })().await)
                 } })
 }
@@ -19626,13 +19742,14 @@ fn wire_func_stream_sink_arg_position_twin_rust_async_impl(
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_stream_sink_arg_position_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_stream_sink_arg_position_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_a = <u32>::sse_decode(&mut deserializer);
-let api_b = <u32>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+let api_b = <u32>::sse_decode(&mut deserializer);
+let api_c = <StreamSink<u32>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::stream_twin_rust_async::func_stream_sink_arg_position_twin_rust_async(api_a, api_b, StreamSink::new(context.rust2dart_context().stream_sink::<_,u32>())).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::stream_twin_rust_async::func_stream_sink_arg_position_twin_rust_async(api_a, api_b, api_c).await)
                     })().await)
                 } })
 }
@@ -19642,12 +19759,12 @@ fn wire_handle_stream_of_struct_twin_rust_async_impl(
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_stream_of_struct_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_stream_of_struct_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end(); move |context| async move {
+            let api__sink = <StreamSink<crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::stream_twin_rust_async::handle_stream_of_struct_twin_rust_async(StreamSink::new(context.rust2dart_context().stream_sink::<_,crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync>())).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::stream_twin_rust_async::handle_stream_of_struct_twin_rust_async(api__sink).await)
                     })().await)
                 } })
 }
@@ -19657,13 +19774,14 @@ fn wire_handle_stream_sink_at_1_twin_rust_async_impl(
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_stream_sink_at_1_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_stream_sink_at_1_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_key = <u32>::sse_decode(&mut deserializer);
-let api_max = <u32>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+let api_max = <u32>::sse_decode(&mut deserializer);
+let api_sink = <StreamSink<crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::stream_twin_rust_async::handle_stream_sink_at_1_twin_rust_async(api_key, api_max, StreamSink::new(context.rust2dart_context().stream_sink::<_,crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync>())).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::stream_twin_rust_async::handle_stream_sink_at_1_twin_rust_async(api_key, api_max, api_sink).await)
                     })().await)
                 } })
 }
@@ -19673,13 +19791,14 @@ fn wire_handle_stream_sink_at_2_twin_rust_async_impl(
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_stream_sink_at_2_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_stream_sink_at_2_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_key = <u32>::sse_decode(&mut deserializer);
+let api_sink = <StreamSink<crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync>>::sse_decode(&mut deserializer);
 let api_max = <u32>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::stream_twin_rust_async::handle_stream_sink_at_2_twin_rust_async(api_key, StreamSink::new(context.rust2dart_context().stream_sink::<_,crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync>()), api_max).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::stream_twin_rust_async::handle_stream_sink_at_2_twin_rust_async(api_key, api_sink, api_max).await)
                     })().await)
                 } })
 }
@@ -19689,13 +19808,14 @@ fn wire_handle_stream_sink_at_3_twin_rust_async_impl(
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_stream_sink_at_3_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_stream_sink_at_3_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_key = <u32>::sse_decode(&mut deserializer);
+            let api_sink = <StreamSink<crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync>>::sse_decode(&mut deserializer);
+let api_key = <u32>::sse_decode(&mut deserializer);
 let api_max = <u32>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::stream_twin_rust_async::handle_stream_sink_at_3_twin_rust_async(StreamSink::new(context.rust2dart_context().stream_sink::<_,crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync>()), api_key, api_max).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::stream_twin_rust_async::handle_stream_sink_at_3_twin_rust_async(api_sink, api_key, api_max).await)
                     })().await)
                 } })
 }
@@ -19705,12 +19825,12 @@ fn wire_stream_sink_fixed_sized_primitive_array_twin_rust_async_impl(
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "stream_sink_fixed_sized_primitive_array_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { 
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "stream_sink_fixed_sized_primitive_array_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end(); move |context| async move {
+            let api_sink = <StreamSink<[u8; 2]>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::stream_twin_rust_async::stream_sink_fixed_sized_primitive_array_twin_rust_async(StreamSink::new(context.rust2dart_context().stream_sink::<_,[u8; 2]>())).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::stream_twin_rust_async::stream_sink_fixed_sized_primitive_array_twin_rust_async(api_sink).await)
                     })().await)
                 } })
 }
@@ -21163,7 +21283,7 @@ fn wire_rust_auto_opaque_stream_sink_twin_normal_impl(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "rust_auto_opaque_stream_sink_twin_normal",
             port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
             let message = unsafe {
@@ -21175,16 +21295,13 @@ fn wire_rust_auto_opaque_stream_sink_twin_normal_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_sink = <StreamSink<NonCloneSimpleTwinNormal>>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
                     Result::<_, ()>::Ok(
                         crate::api::rust_auto_opaque::rust_auto_opaque_stream_sink_twin_normal(
-                            StreamSink::new(
-                                context
-                                    .rust2dart_context()
-                                    .stream_sink::<_, FrbWrapper<NonCloneSimpleTwinNormal>>(),
-                            ),
+                            api_sink,
                         ),
                     )
                 })())
@@ -21991,7 +22108,7 @@ fn wire_func_stream_return_error_twin_normal_impl(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "func_stream_return_error_twin_normal",
             port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
             let message = unsafe {
@@ -22003,12 +22120,11 @@ fn wire_func_stream_return_error_twin_normal_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api__sink = <StreamSink<String>>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
-                    crate::api::stream::func_stream_return_error_twin_normal(StreamSink::new(
-                        context.rust2dart_context().stream_sink::<_, String>(),
-                    ))
+                    crate::api::stream::func_stream_return_error_twin_normal(api__sink)
                 })())
             }
         },
@@ -22024,7 +22140,7 @@ fn wire_func_stream_return_panic_twin_normal_impl(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "func_stream_return_panic_twin_normal",
             port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
             let message = unsafe {
@@ -22036,12 +22152,11 @@ fn wire_func_stream_return_panic_twin_normal_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api__sink = <StreamSink<String>>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
-                    crate::api::stream::func_stream_return_panic_twin_normal(StreamSink::new(
-                        context.rust2dart_context().stream_sink::<_, String>(),
-                    ))
+                    crate::api::stream::func_stream_return_panic_twin_normal(api__sink)
                 })())
             }
         },
@@ -22057,7 +22172,7 @@ fn wire_func_stream_sink_arg_position_twin_normal_impl(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "func_stream_sink_arg_position_twin_normal",
             port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
             let message = unsafe {
@@ -22071,14 +22186,13 @@ fn wire_func_stream_sink_arg_position_twin_normal_impl(
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_a = <u32>::sse_decode(&mut deserializer);
             let api_b = <u32>::sse_decode(&mut deserializer);
+            let api_c = <StreamSink<u32>>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
                     Result::<_, ()>::Ok(
                         crate::api::stream::func_stream_sink_arg_position_twin_normal(
-                            api_a,
-                            api_b,
-                            StreamSink::new(context.rust2dart_context().stream_sink::<_, u32>()),
+                            api_a, api_b, api_c,
                         ),
                     )
                 })())
@@ -22096,7 +22210,7 @@ fn wire_handle_stream_of_struct_twin_normal_impl(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "handle_stream_of_struct_twin_normal",
             port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
             let message = unsafe {
@@ -22108,15 +22222,14 @@ fn wire_handle_stream_of_struct_twin_normal_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api__sink = <StreamSink<crate::api::stream::MyStreamEntryTwinNormal>>::sse_decode(
+                &mut deserializer,
+            );
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
                     Result::<_, ()>::Ok(crate::api::stream::handle_stream_of_struct_twin_normal(
-                        StreamSink::new(
-                            context
-                                .rust2dart_context()
-                                .stream_sink::<_, crate::api::stream::MyStreamEntryTwinNormal>(),
-                        ),
+                        api__sink,
                     ))
                 })())
             }
@@ -22133,7 +22246,7 @@ fn wire_handle_stream_sink_at_1_twin_normal_impl(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "handle_stream_sink_at_1_twin_normal",
             port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
             let message = unsafe {
@@ -22147,17 +22260,13 @@ fn wire_handle_stream_sink_at_1_twin_normal_impl(
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_key = <u32>::sse_decode(&mut deserializer);
             let api_max = <u32>::sse_decode(&mut deserializer);
+            let api_sink =
+                <StreamSink<crate::api::stream::LogTwinNormal>>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
                     Result::<_, ()>::Ok(crate::api::stream::handle_stream_sink_at_1_twin_normal(
-                        api_key,
-                        api_max,
-                        StreamSink::new(
-                            context
-                                .rust2dart_context()
-                                .stream_sink::<_, crate::api::stream::LogTwinNormal>(),
-                        ),
+                        api_key, api_max, api_sink,
                     ))
                 })())
             }
@@ -22174,7 +22283,7 @@ fn wire_handle_stream_sink_at_2_twin_normal_impl(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "handle_stream_sink_at_2_twin_normal",
             port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
             let message = unsafe {
@@ -22187,18 +22296,14 @@ fn wire_handle_stream_sink_at_2_twin_normal_impl(
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_key = <u32>::sse_decode(&mut deserializer);
+            let api_sink =
+                <StreamSink<crate::api::stream::LogTwinNormal>>::sse_decode(&mut deserializer);
             let api_max = <u32>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
                     Result::<_, ()>::Ok(crate::api::stream::handle_stream_sink_at_2_twin_normal(
-                        api_key,
-                        StreamSink::new(
-                            context
-                                .rust2dart_context()
-                                .stream_sink::<_, crate::api::stream::LogTwinNormal>(),
-                        ),
-                        api_max,
+                        api_key, api_sink, api_max,
                     ))
                 })())
             }
@@ -22215,7 +22320,7 @@ fn wire_handle_stream_sink_at_3_twin_normal_impl(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "handle_stream_sink_at_3_twin_normal",
             port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
             let message = unsafe {
@@ -22227,19 +22332,15 @@ fn wire_handle_stream_sink_at_3_twin_normal_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_sink =
+                <StreamSink<crate::api::stream::LogTwinNormal>>::sse_decode(&mut deserializer);
             let api_key = <u32>::sse_decode(&mut deserializer);
             let api_max = <u32>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
                     Result::<_, ()>::Ok(crate::api::stream::handle_stream_sink_at_3_twin_normal(
-                        StreamSink::new(
-                            context
-                                .rust2dart_context()
-                                .stream_sink::<_, crate::api::stream::LogTwinNormal>(),
-                        ),
-                        api_key,
-                        api_max,
+                        api_sink, api_key, api_max,
                     ))
                 })())
             }
@@ -22256,7 +22357,7 @@ fn wire_stream_sink_fixed_sized_primitive_array_twin_normal_impl(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "stream_sink_fixed_sized_primitive_array_twin_normal",
             port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
             let message = unsafe {
@@ -22268,14 +22369,13 @@ fn wire_stream_sink_fixed_sized_primitive_array_twin_normal_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_sink = <StreamSink<[u8; 2]>>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
                     Result::<_, ()>::Ok(
                         crate::api::stream::stream_sink_fixed_sized_primitive_array_twin_normal(
-                            StreamSink::new(
-                                context.rust2dart_context().stream_sink::<_, [u8; 2]>(),
-                            ),
+                            api_sink,
                         ),
                     )
                 })())
@@ -22293,7 +22393,7 @@ fn wire_func_stream_realistic_twin_normal_impl(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "func_stream_realistic_twin_normal",
             port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
             let message = unsafe {
@@ -22305,13 +22405,13 @@ fn wire_func_stream_realistic_twin_normal_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_sink = <StreamSink<String>>::sse_decode(&mut deserializer);
             let api_arg = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
                     Result::<_, ()>::Ok(crate::api::stream_misc::func_stream_realistic_twin_normal(
-                        StreamSink::new(context.rust2dart_context().stream_sink::<_, String>()),
-                        api_arg,
+                        api_sink, api_arg,
                     ))
                 })())
             }
@@ -24062,19 +24162,6 @@ impl SseDecode for std::collections::HashMap<i32, usize> {
     }
 }
 
-impl SseDecode
-    for std::collections::HashMap<u8, crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>
-{
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <Vec<(
-            u8,
-            crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode,
-        )>>::sse_decode(deserializer);
-        return inner.into_iter().collect();
-    }
-}
-
 impl SseDecode for RustOpaqueMoi<Box<dyn DartDebugTwinNormal>> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -24717,24 +24804,260 @@ impl SseDecode for std::collections::HashSet<String> {
     }
 }
 
-impl SseDecode
-    for std::collections::HashSet<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>
-{
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner =
-            <Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>>::sse_decode(
-                deserializer,
-            );
-        return inner.into_iter().collect();
-    }
-}
-
 impl SseDecode for std::collections::HashSet<i32> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <Vec<i32>>::sse_decode(deserializer);
         return inner.into_iter().collect();
+    }
+}
+
+impl SseDecode for StreamSink<NonCloneSimpleTwinNormal> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <String>::sse_decode(deserializer);
+        return StreamSink::deserialize(inner);
+    }
+}
+
+impl SseDecode for StreamSink<NonCloneSimpleTwinRustAsync> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <String>::sse_decode(deserializer);
+        return StreamSink::deserialize(inner);
+    }
+}
+
+impl SseDecode for StreamSink<NonCloneSimpleTwinSync> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <String>::sse_decode(deserializer);
+        return StreamSink::deserialize(inner);
+    }
+}
+
+impl SseDecode
+    for StreamSink<
+        std::collections::HashMap<u8, crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>,
+    >
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <String>::sse_decode(deserializer);
+        return StreamSink::deserialize(inner);
+    }
+}
+
+impl SseDecode
+    for StreamSink<
+        std::collections::HashSet<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>,
+    >
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <String>::sse_decode(deserializer);
+        return StreamSink::deserialize(inner);
+    }
+}
+
+impl SseDecode for StreamSink<String> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <String>::sse_decode(deserializer);
+        return StreamSink::deserialize(inner);
+    }
+}
+
+impl SseDecode for StreamSink<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <String>::sse_decode(deserializer);
+        return StreamSink::deserialize(inner);
+    }
+}
+
+impl SseDecode for StreamSink<[crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode; 2]> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <String>::sse_decode(deserializer);
+        return StreamSink::deserialize(inner);
+    }
+}
+
+impl SseDecode for StreamSink<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <String>::sse_decode(deserializer);
+        return StreamSink::deserialize(inner);
+    }
+}
+
+impl SseDecode for StreamSink<crate::api::event_listener::EventTwinNormal> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <String>::sse_decode(deserializer);
+        return StreamSink::deserialize(inner);
+    }
+}
+
+impl SseDecode
+    for StreamSink<crate::api::pseudo_manual::event_listener_twin_rust_async::EventTwinRustAsync>
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <String>::sse_decode(deserializer);
+        return StreamSink::deserialize(inner);
+    }
+}
+
+impl SseDecode for StreamSink<i32> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <String>::sse_decode(deserializer);
+        return StreamSink::deserialize(inner);
+    }
+}
+
+impl SseDecode for StreamSink<Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <String>::sse_decode(deserializer);
+        return StreamSink::deserialize(inner);
+    }
+}
+
+impl SseDecode
+    for StreamSink<Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>>
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <String>::sse_decode(deserializer);
+        return StreamSink::deserialize(inner);
+    }
+}
+
+impl SseDecode for StreamSink<crate::api::method::Log2TwinNormal> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <String>::sse_decode(deserializer);
+        return StreamSink::deserialize(inner);
+    }
+}
+
+impl SseDecode
+    for StreamSink<crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync>
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <String>::sse_decode(deserializer);
+        return StreamSink::deserialize(inner);
+    }
+}
+
+impl SseDecode for StreamSink<crate::api::pseudo_manual::method_twin_sync::Log2TwinSync> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <String>::sse_decode(deserializer);
+        return StreamSink::deserialize(inner);
+    }
+}
+
+impl SseDecode for StreamSink<crate::api::stream::LogTwinNormal> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <String>::sse_decode(deserializer);
+        return StreamSink::deserialize(inner);
+    }
+}
+
+impl SseDecode for StreamSink<crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <String>::sse_decode(deserializer);
+        return StreamSink::deserialize(inner);
+    }
+}
+
+impl SseDecode for StreamSink<crate::api::mirror::MirrorStructTwinNormal> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <String>::sse_decode(deserializer);
+        return StreamSink::deserialize(inner);
+    }
+}
+
+impl SseDecode
+    for StreamSink<crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync>
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <String>::sse_decode(deserializer);
+        return StreamSink::deserialize(inner);
+    }
+}
+
+impl SseDecode for StreamSink<crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <String>::sse_decode(deserializer);
+        return StreamSink::deserialize(inner);
+    }
+}
+
+impl SseDecode for StreamSink<crate::api::stream::MyStreamEntryTwinNormal> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <String>::sse_decode(deserializer);
+        return StreamSink::deserialize(inner);
+    }
+}
+
+impl SseDecode
+    for StreamSink<crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync>
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <String>::sse_decode(deserializer);
+        return StreamSink::deserialize(inner);
+    }
+}
+
+impl SseDecode
+    for StreamSink<Option<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>>
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <String>::sse_decode(deserializer);
+        return StreamSink::deserialize(inner);
+    }
+}
+
+impl SseDecode
+    for StreamSink<(
+        crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings,
+        crate::api::pseudo_manual::mirror_twin_sync::RawStringEnumMirrored,
+    )>
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <String>::sse_decode(deserializer);
+        return StreamSink::deserialize(inner);
+    }
+}
+
+impl SseDecode for StreamSink<u32> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <String>::sse_decode(deserializer);
+        return StreamSink::deserialize(inner);
+    }
+}
+
+impl SseDecode for StreamSink<[u8; 2]> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <String>::sse_decode(deserializer);
+        return StreamSink::deserialize(inner);
     }
 }
 
@@ -24977,17 +25300,6 @@ impl SseDecode for crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode 
             1 => crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode::Embedded,
             _ => unreachable!("Invalid variant for ApplicationMode: {}", inner),
         };
-    }
-}
-
-impl SseDecode for [crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode; 2] {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner =
-            <Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>>::sse_decode(
-                deserializer,
-            );
-        return flutter_rust_bridge::for_generated::from_vec_to_array(inner);
     }
 }
 
@@ -27688,38 +28000,6 @@ impl SseDecode for Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationE
     }
 }
 
-impl SseDecode for Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
-        for idx_ in 0..len_ {
-            ans_.push(
-                <crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>::sse_decode(
-                    deserializer,
-                ),
-            );
-        }
-        return ans_;
-    }
-}
-
-impl SseDecode for Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
-        for idx_ in 0..len_ {
-            ans_.push(
-                <crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>::sse_decode(
-                    deserializer,
-                ),
-            );
-        }
-        return ans_;
-    }
-}
-
 impl SseDecode for Vec<crate::api::optional::AttributeTwinNormal> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -27999,20 +28279,6 @@ impl SseDecode for Vec<Vec<u8>> {
         let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<Vec<u8>>::sse_decode(deserializer));
-        }
-        return ans_;
-    }
-}
-
-impl SseDecode for Vec<crate::auxiliary::sample_types::MyEnum> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
-        for idx_ in 0..len_ {
-            ans_.push(<crate::auxiliary::sample_types::MyEnum>::sse_decode(
-                deserializer,
-            ));
         }
         return ans_;
     }
@@ -28960,26 +29226,6 @@ impl SseDecode for Vec<(String, String)> {
     }
 }
 
-impl SseDecode
-    for Vec<(
-        u8,
-        crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode,
-    )>
-{
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
-        for idx_ in 0..len_ {
-            ans_.push(<(
-                u8,
-                crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode,
-            )>::sse_decode(deserializer));
-        }
-        return ans_;
-    }
-}
-
 impl SseDecode for Vec<crate::api::method::SimpleStructTwinNormal> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -29156,66 +29402,6 @@ impl SseDecode for Vec<crate::api::pseudo_manual::misc_example_twin_sync::Weekda
     }
 }
 
-impl SseDecode for crate::api::method::Log2TwinNormal {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_key = <u32>::sse_decode(deserializer);
-        let mut var_value = <String>::sse_decode(deserializer);
-        return crate::api::method::Log2TwinNormal {
-            key: var_key,
-            value: var_value,
-        };
-    }
-}
-
-impl SseDecode for crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_key = <u32>::sse_decode(deserializer);
-        let mut var_value = <String>::sse_decode(deserializer);
-        return crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync {
-            key: var_key,
-            value: var_value,
-        };
-    }
-}
-
-impl SseDecode for crate::api::pseudo_manual::method_twin_sync::Log2TwinSync {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_key = <u32>::sse_decode(deserializer);
-        let mut var_value = <String>::sse_decode(deserializer);
-        return crate::api::pseudo_manual::method_twin_sync::Log2TwinSync {
-            key: var_key,
-            value: var_value,
-        };
-    }
-}
-
-impl SseDecode for crate::api::stream::LogTwinNormal {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_key = <u32>::sse_decode(deserializer);
-        let mut var_value = <u32>::sse_decode(deserializer);
-        return crate::api::stream::LogTwinNormal {
-            key: var_key,
-            value: var_value,
-        };
-    }
-}
-
-impl SseDecode for crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_key = <u32>::sse_decode(deserializer);
-        let mut var_value = <u32>::sse_decode(deserializer);
-        return crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync {
-            key: var_key,
-            value: var_value,
-        };
-    }
-}
-
 impl SseDecode for crate::api::inside_macro::MacroStruct {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -29321,72 +29507,6 @@ impl SseDecode for crate::api::pseudo_manual::array_twin_sync::MessageIdTwinSync
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut var_field0 = <[u8; 32]>::sse_decode(deserializer);
         return crate::api::pseudo_manual::array_twin_sync::MessageIdTwinSync(var_field0);
-    }
-}
-
-impl SseDecode for crate::api::mirror::MirrorStructTwinNormal {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_a =
-            <crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>::sse_decode(
-                deserializer,
-            );
-        let mut var_b = <crate::auxiliary::sample_types::MyStruct>::sse_decode(deserializer);
-        let mut var_c = <Vec<crate::auxiliary::sample_types::MyEnum>>::sse_decode(deserializer);
-        let mut var_d =
-            <Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>>::sse_decode(
-                deserializer,
-            );
-        return crate::api::mirror::MirrorStructTwinNormal {
-            a: var_a,
-            b: var_b,
-            c: var_c,
-            d: var_d,
-        };
-    }
-}
-
-impl SseDecode for crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_a =
-            <crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>::sse_decode(
-                deserializer,
-            );
-        let mut var_b = <crate::auxiliary::sample_types::MyStruct>::sse_decode(deserializer);
-        let mut var_c = <Vec<crate::auxiliary::sample_types::MyEnum>>::sse_decode(deserializer);
-        let mut var_d =
-            <Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>>::sse_decode(
-                deserializer,
-            );
-        return crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync {
-            a: var_a,
-            b: var_b,
-            c: var_c,
-            d: var_d,
-        };
-    }
-}
-
-impl SseDecode for crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_a =
-            <crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>::sse_decode(
-                deserializer,
-            );
-        let mut var_b = <crate::auxiliary::sample_types::MyStruct>::sse_decode(deserializer);
-        let mut var_c = <Vec<crate::auxiliary::sample_types::MyEnum>>::sse_decode(deserializer);
-        let mut var_d =
-            <Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>>::sse_decode(
-                deserializer,
-            );
-        return crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync {
-            a: var_a,
-            b: var_b,
-            c: var_c,
-            d: var_d,
-        };
     }
 }
 
@@ -29517,24 +29637,6 @@ impl SseDecode for crate::auxiliary::sample_types::MySize {
         return crate::auxiliary::sample_types::MySize {
             width: var_width,
             height: var_height,
-        };
-    }
-}
-
-impl SseDecode for crate::api::stream::MyStreamEntryTwinNormal {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_hello = <String>::sse_decode(deserializer);
-        return crate::api::stream::MyStreamEntryTwinNormal { hello: var_hello };
-    }
-}
-
-impl SseDecode for crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_hello = <String>::sse_decode(deserializer);
-        return crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync {
-            hello: var_hello,
         };
     }
 }
@@ -29899,21 +30001,6 @@ impl SseDecode for Option<crate::api::pseudo_manual::mirror_twin_sync::Applicati
         if (<bool>::sse_decode(deserializer)) {
             return Some(
                 <crate::api::pseudo_manual::mirror_twin_sync::ApplicationEnv>::sse_decode(
-                    deserializer,
-                ),
-            );
-        } else {
-            return None;
-        }
-    }
-}
-
-impl SseDecode for Option<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        if (<bool>::sse_decode(deserializer)) {
-            return Some(
-                <crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>::sse_decode(
                     deserializer,
                 ),
             );
@@ -30952,26 +31039,6 @@ impl SseDecode for crate::api::pseudo_manual::mirror_twin_sync::RawStringMirrore
     }
 }
 
-impl SseDecode
-    for (
-        crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings,
-        crate::api::pseudo_manual::mirror_twin_sync::RawStringEnumMirrored,
-    )
-{
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_field0 =
-            <crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>::sse_decode(
-                deserializer,
-            );
-        let mut var_field1 =
-            <crate::api::pseudo_manual::mirror_twin_sync::RawStringEnumMirrored>::sse_decode(
-                deserializer,
-            );
-        return (var_field0, var_field1);
-    }
-}
-
 impl SseDecode for (OpaqueOneTwinNormal, OpaqueTwoTwinNormal) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -31400,23 +31467,6 @@ impl SseDecode for (String, String) {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut var_field0 = <String>::sse_decode(deserializer);
         let mut var_field1 = <String>::sse_decode(deserializer);
-        return (var_field0, var_field1);
-    }
-}
-
-impl SseDecode
-    for (
-        u8,
-        crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode,
-    )
-{
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_field0 = <u8>::sse_decode(deserializer);
-        let mut var_field1 =
-            <crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>::sse_decode(
-                deserializer,
-            );
         return (var_field0, var_field1);
     }
 }
@@ -32198,14 +32248,6 @@ impl SseDecode for [u8; 1600] {
     }
 }
 
-impl SseDecode for [u8; 2] {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <Vec<u8>>::sse_decode(deserializer);
-        return flutter_rust_bridge::for_generated::from_vec_to_array(inner);
-    }
-}
-
 impl SseDecode for [u8; 32] {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -32819,7 +32861,6 @@ fn pde_ffi_dispatcher_primary_impl(
 574 => wire_DroppableTwinRustAsync_get_drop_count_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
 571 => wire_DroppableTwinRustAsync_new_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
 572 => wire_DroppableTwinRustAsync_simple_method_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-577 => wire_DroppableTwinSync_create_stream_twin_sync_impl(port, ptr, rust_vec_len, data_len),
 579 => wire_func_enum_simple_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
 583 => wire_func_enum_with_discriminant_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
 580 => wire_func_enum_with_item_mixed_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
@@ -32863,7 +32904,6 @@ fn pde_ffi_dispatcher_primary_impl(
 612 => wire_return_ok_custom_error_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
 621 => wire_stream_sink_throw_anyhow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
 619 => wire_throw_anyhow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-650 => wire_stream_sink_throw_anyhow_twin_sync_impl(port, ptr, rust_vec_len, data_len),
 664 => wire_call_new_module_system_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
 663 => wire_call_old_module_system_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
 662 => wire_use_imported_enum_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
@@ -32895,10 +32935,6 @@ fn pde_ffi_dispatcher_primary_impl(
 695 => wire_SumWithTwinRustAsync_sum_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
 686 => wire_get_sum_array_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
 685 => wire_get_sum_struct_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-713 => wire_ConcatenateWithTwinSync_handle_some_static_stream_sink_single_arg_twin_sync_impl(port, ptr, rust_vec_len, data_len),
-712 => wire_ConcatenateWithTwinSync_handle_some_static_stream_sink_twin_sync_impl(port, ptr, rust_vec_len, data_len),
-711 => wire_ConcatenateWithTwinSync_handle_some_stream_sink_at_1_twin_sync_impl(port, ptr, rust_vec_len, data_len),
-710 => wire_ConcatenateWithTwinSync_handle_some_stream_sink_twin_sync_impl(port, ptr, rust_vec_len, data_len),
 726 => wire_app_settings_stream_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
 727 => wire_app_settings_vec_stream_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
 733 => wire_first_number_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
@@ -32925,16 +32961,6 @@ fn pde_ffi_dispatcher_primary_impl(
 736 => wire_test_nested_raw_string_mirrored_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
 737 => wire_test_raw_string_enum_mirrored_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
 735 => wire_test_raw_string_mirrored_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-752 => wire_app_settings_stream_twin_sync_impl(port, ptr, rust_vec_len, data_len),
-753 => wire_app_settings_vec_stream_twin_sync_impl(port, ptr, rust_vec_len, data_len),
-774 => wire_mirror_array_enum_stream_twin_sync_impl(port, ptr, rust_vec_len, data_len),
-769 => wire_mirror_enum_stream_twin_sync_impl(port, ptr, rust_vec_len, data_len),
-772 => wire_mirror_map_enum_stream_twin_sync_impl(port, ptr, rust_vec_len, data_len),
-770 => wire_mirror_option_enum_stream_twin_sync_impl(port, ptr, rust_vec_len, data_len),
-773 => wire_mirror_set_enum_stream_twin_sync_impl(port, ptr, rust_vec_len, data_len),
-754 => wire_mirror_struct_stream_twin_sync_impl(port, ptr, rust_vec_len, data_len),
-755 => wire_mirror_tuple_stream_twin_sync_impl(port, ptr, rust_vec_len, data_len),
-771 => wire_mirror_vec_enum_stream_twin_sync_impl(port, ptr, rust_vec_len, data_len),
 778 => wire_handle_big_buffers_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
 775 => wire_handle_complex_struct_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
 777 => wire_handle_nested_struct_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
@@ -33007,7 +33033,6 @@ fn pde_ffi_dispatcher_primary_impl(
 841 => wire_rust_auto_opaque_trait_object_return_own_one_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
 842 => wire_rust_auto_opaque_trait_object_return_own_two_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
 832 => wire_rust_auto_opaque_two_args_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-897 => wire_rust_auto_opaque_stream_sink_twin_sync_impl(port, ptr, rust_vec_len, data_len),
 921 => wire_create_array_opaque_enum_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
 930 => wire_create_nested_opaque_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
 919 => wire_create_opaque_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
@@ -33355,6 +33380,7 @@ fn pde_ffi_dispatcher_sync_impl(
         559 => wire_loop_back_vec_twin_sync_impl(ptr, rust_vec_len, data_len),
         563 => wire_panic_unwrap_dart_opaque_twin_sync_impl(ptr, rust_vec_len, data_len),
         568 => wire_set_static_dart_opaque_twin_sync_impl(ptr, rust_vec_len, data_len),
+        577 => wire_DroppableTwinSync_create_stream_twin_sync_impl(ptr, rust_vec_len, data_len),
         578 => wire_DroppableTwinSync_get_drop_count_twin_sync_impl(ptr, rust_vec_len, data_len),
         575 => wire_DroppableTwinSync_new_twin_sync_impl(ptr, rust_vec_len, data_len),
         576 => wire_DroppableTwinSync_simple_method_twin_sync_impl(ptr, rust_vec_len, data_len),
@@ -33429,6 +33455,7 @@ fn pde_ffi_dispatcher_sync_impl(
         640 => wire_return_err_custom_error_twin_sync_impl(ptr, rust_vec_len, data_len),
         642 => wire_return_error_variant_twin_sync_impl(ptr, rust_vec_len, data_len),
         641 => wire_return_ok_custom_error_twin_sync_impl(ptr, rust_vec_len, data_len),
+        650 => wire_stream_sink_throw_anyhow_twin_sync_impl(ptr, rust_vec_len, data_len),
         648 => wire_throw_anyhow_twin_sync_impl(ptr, rust_vec_len, data_len),
         668 => wire_call_new_module_system_twin_sync_impl(ptr, rust_vec_len, data_len),
         667 => wire_call_old_module_system_twin_sync_impl(ptr, rust_vec_len, data_len),
@@ -33448,6 +33475,28 @@ fn pde_ffi_dispatcher_sync_impl(
             data_len,
         ),
         707 => wire_ConcatenateWithTwinSync_concatenate_twin_sync_impl(ptr, rust_vec_len, data_len),
+        713 => {
+            wire_ConcatenateWithTwinSync_handle_some_static_stream_sink_single_arg_twin_sync_impl(
+                ptr,
+                rust_vec_len,
+                data_len,
+            )
+        }
+        712 => wire_ConcatenateWithTwinSync_handle_some_static_stream_sink_twin_sync_impl(
+            ptr,
+            rust_vec_len,
+            data_len,
+        ),
+        711 => wire_ConcatenateWithTwinSync_handle_some_stream_sink_at_1_twin_sync_impl(
+            ptr,
+            rust_vec_len,
+            data_len,
+        ),
+        710 => wire_ConcatenateWithTwinSync_handle_some_stream_sink_twin_sync_impl(
+            ptr,
+            rust_vec_len,
+            data_len,
+        ),
         706 => wire_ConcatenateWithTwinSync_new_twin_sync_impl(ptr, rust_vec_len, data_len),
         709 => {
             wire_ConcatenateWithTwinSync_simple_getter_twin_sync_impl(ptr, rust_vec_len, data_len)
@@ -33465,12 +33514,22 @@ fn pde_ffi_dispatcher_sync_impl(
         714 => wire_SumWithTwinSync_sum_twin_sync_impl(ptr, rust_vec_len, data_len),
         705 => wire_get_sum_array_twin_sync_impl(ptr, rust_vec_len, data_len),
         704 => wire_get_sum_struct_twin_sync_impl(ptr, rust_vec_len, data_len),
+        752 => wire_app_settings_stream_twin_sync_impl(ptr, rust_vec_len, data_len),
+        753 => wire_app_settings_vec_stream_twin_sync_impl(ptr, rust_vec_len, data_len),
         759 => wire_first_number_twin_sync_impl(ptr, rust_vec_len, data_len),
         760 => wire_first_sequence_twin_sync_impl(ptr, rust_vec_len, data_len),
         749 => wire_get_app_settings_twin_sync_impl(ptr, rust_vec_len, data_len),
         750 => wire_get_fallible_app_settings_twin_sync_impl(ptr, rust_vec_len, data_len),
         756 => wire_get_message_twin_sync_impl(ptr, rust_vec_len, data_len),
         751 => wire_is_app_embedded_twin_sync_impl(ptr, rust_vec_len, data_len),
+        774 => wire_mirror_array_enum_stream_twin_sync_impl(ptr, rust_vec_len, data_len),
+        769 => wire_mirror_enum_stream_twin_sync_impl(ptr, rust_vec_len, data_len),
+        772 => wire_mirror_map_enum_stream_twin_sync_impl(ptr, rust_vec_len, data_len),
+        770 => wire_mirror_option_enum_stream_twin_sync_impl(ptr, rust_vec_len, data_len),
+        773 => wire_mirror_set_enum_stream_twin_sync_impl(ptr, rust_vec_len, data_len),
+        754 => wire_mirror_struct_stream_twin_sync_impl(ptr, rust_vec_len, data_len),
+        755 => wire_mirror_tuple_stream_twin_sync_impl(ptr, rust_vec_len, data_len),
+        771 => wire_mirror_vec_enum_stream_twin_sync_impl(ptr, rust_vec_len, data_len),
         757 => wire_repeat_number_twin_sync_impl(ptr, rust_vec_len, data_len),
         758 => wire_repeat_sequence_twin_sync_impl(ptr, rust_vec_len, data_len),
         767 => wire_test_contains_mirrored_sub_struct_twin_sync_impl(ptr, rust_vec_len, data_len),
@@ -33614,6 +33673,7 @@ fn pde_ffi_dispatcher_sync_impl(
         904 => wire_rust_auto_opaque_return_opaque_two_twin_sync_impl(ptr, rust_vec_len, data_len),
         876 => wire_rust_auto_opaque_return_own_twin_sync_impl(ptr, rust_vec_len, data_len),
         899 => wire_rust_auto_opaque_return_vec_own_twin_sync_impl(ptr, rust_vec_len, data_len),
+        897 => wire_rust_auto_opaque_stream_sink_twin_sync_impl(ptr, rust_vec_len, data_len),
         889 => wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_impl(
             ptr,
             rust_vec_len,
@@ -38014,121 +38074,6 @@ impl
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for crate::api::method::Log2TwinNormal {
-    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        [
-            self.key.into_into_dart().into_dart(),
-            self.value.into_into_dart().into_dart(),
-        ]
-        .into_dart()
-    }
-}
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for crate::api::method::Log2TwinNormal
-{
-}
-impl flutter_rust_bridge::IntoIntoDart<crate::api::method::Log2TwinNormal>
-    for crate::api::method::Log2TwinNormal
-{
-    fn into_into_dart(self) -> crate::api::method::Log2TwinNormal {
-        self
-    }
-}
-// Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart
-    for crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync
-{
-    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        [
-            self.key.into_into_dart().into_dart(),
-            self.value.into_into_dart().into_dart(),
-        ]
-        .into_dart()
-    }
-}
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync
-{
-}
-impl
-    flutter_rust_bridge::IntoIntoDart<
-        crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync,
-    > for crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync
-{
-    fn into_into_dart(
-        self,
-    ) -> crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync {
-        self
-    }
-}
-// Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for crate::api::pseudo_manual::method_twin_sync::Log2TwinSync {
-    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        [
-            self.key.into_into_dart().into_dart(),
-            self.value.into_into_dart().into_dart(),
-        ]
-        .into_dart()
-    }
-}
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for crate::api::pseudo_manual::method_twin_sync::Log2TwinSync
-{
-}
-impl flutter_rust_bridge::IntoIntoDart<crate::api::pseudo_manual::method_twin_sync::Log2TwinSync>
-    for crate::api::pseudo_manual::method_twin_sync::Log2TwinSync
-{
-    fn into_into_dart(self) -> crate::api::pseudo_manual::method_twin_sync::Log2TwinSync {
-        self
-    }
-}
-// Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for crate::api::stream::LogTwinNormal {
-    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        [
-            self.key.into_into_dart().into_dart(),
-            self.value.into_into_dart().into_dart(),
-        ]
-        .into_dart()
-    }
-}
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for crate::api::stream::LogTwinNormal
-{
-}
-impl flutter_rust_bridge::IntoIntoDart<crate::api::stream::LogTwinNormal>
-    for crate::api::stream::LogTwinNormal
-{
-    fn into_into_dart(self) -> crate::api::stream::LogTwinNormal {
-        self
-    }
-}
-// Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart
-    for crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync
-{
-    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        [
-            self.key.into_into_dart().into_dart(),
-            self.value.into_into_dart().into_dart(),
-        ]
-        .into_dart()
-    }
-}
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync
-{
-}
-impl
-    flutter_rust_bridge::IntoIntoDart<
-        crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync,
-    > for crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync
-{
-    fn into_into_dart(self) -> crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync {
-        self
-    }
-}
-// Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for crate::api::inside_macro::MacroStruct {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [self.data.into_into_dart().into_dart()].into_dart()
@@ -38281,85 +38226,6 @@ impl
     for crate::api::pseudo_manual::array_twin_sync::MessageIdTwinSync
 {
     fn into_into_dart(self) -> crate::api::pseudo_manual::array_twin_sync::MessageIdTwinSync {
-        self
-    }
-}
-// Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for crate::api::mirror::MirrorStructTwinNormal {
-    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        [
-            self.a.into_into_dart().into_dart(),
-            self.b.into_into_dart().into_dart(),
-            self.c.into_into_dart().into_dart(),
-            self.d.into_into_dart().into_dart(),
-        ]
-        .into_dart()
-    }
-}
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for crate::api::mirror::MirrorStructTwinNormal
-{
-}
-impl flutter_rust_bridge::IntoIntoDart<crate::api::mirror::MirrorStructTwinNormal>
-    for crate::api::mirror::MirrorStructTwinNormal
-{
-    fn into_into_dart(self) -> crate::api::mirror::MirrorStructTwinNormal {
-        self
-    }
-}
-// Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart
-    for crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync
-{
-    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        [
-            self.a.into_into_dart().into_dart(),
-            self.b.into_into_dart().into_dart(),
-            self.c.into_into_dart().into_dart(),
-            self.d.into_into_dart().into_dart(),
-        ]
-        .into_dart()
-    }
-}
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync
-{
-}
-impl
-    flutter_rust_bridge::IntoIntoDart<
-        crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync,
-    > for crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync
-{
-    fn into_into_dart(
-        self,
-    ) -> crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync {
-        self
-    }
-}
-// Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart
-    for crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync
-{
-    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        [
-            self.a.into_into_dart().into_dart(),
-            self.b.into_into_dart().into_dart(),
-            self.c.into_into_dart().into_dart(),
-            self.d.into_into_dart().into_dart(),
-        ]
-        .into_dart()
-    }
-}
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync
-{
-}
-impl
-    flutter_rust_bridge::IntoIntoDart<
-        crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync,
-    > for crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync
-{
-    fn into_into_dart(self) -> crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync {
         self
     }
 }
@@ -38611,46 +38477,6 @@ impl flutter_rust_bridge::IntoIntoDart<crate::auxiliary::sample_types::MySize>
     for crate::auxiliary::sample_types::MySize
 {
     fn into_into_dart(self) -> crate::auxiliary::sample_types::MySize {
-        self
-    }
-}
-// Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for crate::api::stream::MyStreamEntryTwinNormal {
-    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        [self.hello.into_into_dart().into_dart()].into_dart()
-    }
-}
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for crate::api::stream::MyStreamEntryTwinNormal
-{
-}
-impl flutter_rust_bridge::IntoIntoDart<crate::api::stream::MyStreamEntryTwinNormal>
-    for crate::api::stream::MyStreamEntryTwinNormal
-{
-    fn into_into_dart(self) -> crate::api::stream::MyStreamEntryTwinNormal {
-        self
-    }
-}
-// Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart
-    for crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync
-{
-    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        [self.hello.into_into_dart().into_dart()].into_dart()
-    }
-}
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync
-{
-}
-impl
-    flutter_rust_bridge::IntoIntoDart<
-        crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync,
-    > for crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync
-{
-    fn into_into_dart(
-        self,
-    ) -> crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync {
         self
     }
 }
@@ -41712,18 +41538,6 @@ impl SseEncode for std::collections::HashMap<i32, usize> {
     }
 }
 
-impl SseEncode
-    for std::collections::HashMap<u8, crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>
-{
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <Vec<(
-            u8,
-            crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode,
-        )>>::sse_encode(self.into_iter().collect(), serializer);
-    }
-}
-
 impl SseEncode for RustOpaqueMoi<Box<dyn DartDebugTwinNormal>> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -42437,22 +42251,231 @@ impl SseEncode for std::collections::HashSet<String> {
     }
 }
 
-impl SseEncode
-    for std::collections::HashSet<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>
-{
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>>::sse_encode(
-            self.into_iter().collect(),
-            serializer,
-        );
-    }
-}
-
 impl SseEncode for std::collections::HashSet<i32> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <Vec<i32>>::sse_encode(self.into_iter().collect(), serializer);
+    }
+}
+
+impl SseEncode for StreamSink<NonCloneSimpleTwinNormal> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(unimplemented!(""), serializer);
+    }
+}
+
+impl SseEncode for StreamSink<NonCloneSimpleTwinRustAsync> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(unimplemented!(""), serializer);
+    }
+}
+
+impl SseEncode for StreamSink<NonCloneSimpleTwinSync> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(unimplemented!(""), serializer);
+    }
+}
+
+impl SseEncode
+    for StreamSink<
+        std::collections::HashMap<u8, crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>,
+    >
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(unimplemented!(""), serializer);
+    }
+}
+
+impl SseEncode
+    for StreamSink<
+        std::collections::HashSet<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>,
+    >
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(unimplemented!(""), serializer);
+    }
+}
+
+impl SseEncode for StreamSink<String> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(unimplemented!(""), serializer);
+    }
+}
+
+impl SseEncode for StreamSink<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(unimplemented!(""), serializer);
+    }
+}
+
+impl SseEncode for StreamSink<[crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode; 2]> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(unimplemented!(""), serializer);
+    }
+}
+
+impl SseEncode for StreamSink<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(unimplemented!(""), serializer);
+    }
+}
+
+impl SseEncode for StreamSink<crate::api::event_listener::EventTwinNormal> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(unimplemented!(""), serializer);
+    }
+}
+
+impl SseEncode
+    for StreamSink<crate::api::pseudo_manual::event_listener_twin_rust_async::EventTwinRustAsync>
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(unimplemented!(""), serializer);
+    }
+}
+
+impl SseEncode for StreamSink<i32> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(unimplemented!(""), serializer);
+    }
+}
+
+impl SseEncode for StreamSink<Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(unimplemented!(""), serializer);
+    }
+}
+
+impl SseEncode
+    for StreamSink<Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>>
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(unimplemented!(""), serializer);
+    }
+}
+
+impl SseEncode for StreamSink<crate::api::method::Log2TwinNormal> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(unimplemented!(""), serializer);
+    }
+}
+
+impl SseEncode
+    for StreamSink<crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync>
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(unimplemented!(""), serializer);
+    }
+}
+
+impl SseEncode for StreamSink<crate::api::pseudo_manual::method_twin_sync::Log2TwinSync> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(unimplemented!(""), serializer);
+    }
+}
+
+impl SseEncode for StreamSink<crate::api::stream::LogTwinNormal> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(unimplemented!(""), serializer);
+    }
+}
+
+impl SseEncode for StreamSink<crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(unimplemented!(""), serializer);
+    }
+}
+
+impl SseEncode for StreamSink<crate::api::mirror::MirrorStructTwinNormal> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(unimplemented!(""), serializer);
+    }
+}
+
+impl SseEncode
+    for StreamSink<crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync>
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(unimplemented!(""), serializer);
+    }
+}
+
+impl SseEncode for StreamSink<crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(unimplemented!(""), serializer);
+    }
+}
+
+impl SseEncode for StreamSink<crate::api::stream::MyStreamEntryTwinNormal> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(unimplemented!(""), serializer);
+    }
+}
+
+impl SseEncode
+    for StreamSink<crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync>
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(unimplemented!(""), serializer);
+    }
+}
+
+impl SseEncode
+    for StreamSink<Option<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>>
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(unimplemented!(""), serializer);
+    }
+}
+
+impl SseEncode
+    for StreamSink<(
+        crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings,
+        crate::api::pseudo_manual::mirror_twin_sync::RawStringEnumMirrored,
+    )>
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(unimplemented!(""), serializer);
+    }
+}
+
+impl SseEncode for StreamSink<u32> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(unimplemented!(""), serializer);
+    }
+}
+
+impl SseEncode for StreamSink<[u8; 2]> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(unimplemented!(""), serializer);
     }
 }
 
@@ -42658,19 +42681,6 @@ impl SseEncode for crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode 
                 _ => {
                     unimplemented!("");
                 }
-            },
-            serializer,
-        );
-    }
-}
-
-impl SseEncode for [crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode; 2] {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>>::sse_encode(
-            {
-                let boxed: Box<[_]> = Box::new(self);
-                boxed.into_vec()
             },
             serializer,
         );
@@ -44796,30 +44806,6 @@ impl SseEncode for Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationE
     }
 }
 
-impl SseEncode for Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <i32>::sse_encode(self.len() as _, serializer);
-        for item in self {
-            <crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>::sse_encode(
-                item, serializer,
-            );
-        }
-    }
-}
-
-impl SseEncode for Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <i32>::sse_encode(self.len() as _, serializer);
-        for item in self {
-            <crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>::sse_encode(
-                item, serializer,
-            );
-        }
-    }
-}
-
 impl SseEncode for Vec<crate::api::optional::AttributeTwinNormal> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -45042,16 +45028,6 @@ impl SseEncode for Vec<Vec<u8>> {
         <i32>::sse_encode(self.len() as _, serializer);
         for item in self {
             <Vec<u8>>::sse_encode(item, serializer);
-        }
-    }
-}
-
-impl SseEncode for Vec<crate::auxiliary::sample_types::MyEnum> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <i32>::sse_encode(self.len() as _, serializer);
-        for item in self {
-            <crate::auxiliary::sample_types::MyEnum>::sse_encode(item, serializer);
         }
     }
 }
@@ -45835,24 +45811,6 @@ impl SseEncode for Vec<(String, String)> {
     }
 }
 
-impl SseEncode
-    for Vec<(
-        u8,
-        crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode,
-    )>
-{
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <i32>::sse_encode(self.len() as _, serializer);
-        for item in self {
-            <(
-                u8,
-                crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode,
-            )>::sse_encode(item, serializer);
-        }
-    }
-}
-
 impl SseEncode for Vec<crate::api::method::SimpleStructTwinNormal> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -45989,46 +45947,6 @@ impl SseEncode for Vec<crate::api::pseudo_manual::misc_example_twin_sync::Weekda
     }
 }
 
-impl SseEncode for crate::api::method::Log2TwinNormal {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <u32>::sse_encode(self.key, serializer);
-        <String>::sse_encode(self.value, serializer);
-    }
-}
-
-impl SseEncode for crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <u32>::sse_encode(self.key, serializer);
-        <String>::sse_encode(self.value, serializer);
-    }
-}
-
-impl SseEncode for crate::api::pseudo_manual::method_twin_sync::Log2TwinSync {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <u32>::sse_encode(self.key, serializer);
-        <String>::sse_encode(self.value, serializer);
-    }
-}
-
-impl SseEncode for crate::api::stream::LogTwinNormal {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <u32>::sse_encode(self.key, serializer);
-        <u32>::sse_encode(self.value, serializer);
-    }
-}
-
-impl SseEncode for crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <u32>::sse_encode(self.key, serializer);
-        <u32>::sse_encode(self.value, serializer);
-    }
-}
-
 impl SseEncode for crate::api::inside_macro::MacroStruct {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -46099,48 +46017,6 @@ impl SseEncode for crate::api::pseudo_manual::array_twin_sync::MessageIdTwinSync
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <[u8; 32]>::sse_encode(self.0, serializer);
-    }
-}
-
-impl SseEncode for crate::api::mirror::MirrorStructTwinNormal {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>::sse_encode(
-            self.a, serializer,
-        );
-        <crate::auxiliary::sample_types::MyStruct>::sse_encode(self.b, serializer);
-        <Vec<crate::auxiliary::sample_types::MyEnum>>::sse_encode(self.c, serializer);
-        <Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>>::sse_encode(
-            self.d, serializer,
-        );
-    }
-}
-
-impl SseEncode for crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>::sse_encode(
-            self.a, serializer,
-        );
-        <crate::auxiliary::sample_types::MyStruct>::sse_encode(self.b, serializer);
-        <Vec<crate::auxiliary::sample_types::MyEnum>>::sse_encode(self.c, serializer);
-        <Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>>::sse_encode(
-            self.d, serializer,
-        );
-    }
-}
-
-impl SseEncode for crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>::sse_encode(
-            self.a, serializer,
-        );
-        <crate::auxiliary::sample_types::MyStruct>::sse_encode(self.b, serializer);
-        <Vec<crate::auxiliary::sample_types::MyEnum>>::sse_encode(self.c, serializer);
-        <Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>>::sse_encode(
-            self.d, serializer,
-        );
     }
 }
 
@@ -46248,20 +46124,6 @@ impl SseEncode for crate::auxiliary::sample_types::MySize {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <i32>::sse_encode(self.width, serializer);
         <i32>::sse_encode(self.height, serializer);
-    }
-}
-
-impl SseEncode for crate::api::stream::MyStreamEntryTwinNormal {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <String>::sse_encode(self.hello, serializer);
-    }
-}
-
-impl SseEncode for crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <String>::sse_encode(self.hello, serializer);
     }
 }
 
@@ -46541,18 +46403,6 @@ impl SseEncode for Option<crate::api::pseudo_manual::mirror_twin_sync::Applicati
         <bool>::sse_encode(self.is_some(), serializer);
         if let Some(value) = self {
             <crate::api::pseudo_manual::mirror_twin_sync::ApplicationEnv>::sse_encode(
-                value, serializer,
-            );
-        }
-    }
-}
-
-impl SseEncode for Option<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <bool>::sse_encode(self.is_some(), serializer);
-        if let Some(value) = self {
-            <crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>::sse_encode(
                 value, serializer,
             );
         }
@@ -47450,23 +47300,6 @@ impl SseEncode for crate::api::pseudo_manual::mirror_twin_sync::RawStringMirrore
     }
 }
 
-impl SseEncode
-    for (
-        crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings,
-        crate::api::pseudo_manual::mirror_twin_sync::RawStringEnumMirrored,
-    )
-{
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>::sse_encode(
-            self.0, serializer,
-        );
-        <crate::api::pseudo_manual::mirror_twin_sync::RawStringEnumMirrored>::sse_encode(
-            self.1, serializer,
-        );
-    }
-}
-
 impl SseEncode for (OpaqueOneTwinNormal, OpaqueTwoTwinNormal) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -47849,21 +47682,6 @@ impl SseEncode for (String, String) {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <String>::sse_encode(self.0, serializer);
         <String>::sse_encode(self.1, serializer);
-    }
-}
-
-impl SseEncode
-    for (
-        u8,
-        crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode,
-    )
-{
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <u8>::sse_encode(self.0, serializer);
-        <crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>::sse_encode(
-            self.1, serializer,
-        );
     }
 }
 
@@ -48521,19 +48339,6 @@ impl SseEncode for u8 {
 }
 
 impl SseEncode for [u8; 1600] {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <Vec<u8>>::sse_encode(
-            {
-                let boxed: Box<[_]> = Box::new(self);
-                boxed.into_vec()
-            },
-            serializer,
-        );
-    }
-}
-
-impl SseEncode for [u8; 2] {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <Vec<u8>>::sse_encode(

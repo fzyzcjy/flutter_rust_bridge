@@ -5,78 +5,58 @@
 
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'stream_twin_rust_async.dart';
 
-Stream<String> funcStreamReturnErrorTwinRustAsyncSse({dynamic hint}) =>
-    RustLib.instance.api.funcStreamReturnErrorTwinRustAsyncSse(hint: hint);
+// The type `LogTwinRustAsyncSse` is not used by any `pub` functions, thus it is ignored.
+// The type `MyStreamEntryTwinRustAsyncSse` is not used by any `pub` functions, thus it is ignored.
 
-Stream<String> funcStreamReturnPanicTwinRustAsyncSse({dynamic hint}) =>
-    RustLib.instance.api.funcStreamReturnPanicTwinRustAsyncSse(hint: hint);
-
-Stream<int> funcStreamSinkArgPositionTwinRustAsyncSse(
-        {required int a, required int b, dynamic hint}) =>
+Future<void> funcStreamReturnErrorTwinRustAsyncSse(
+        {required StreamSink sink, dynamic hint}) =>
     RustLib.instance.api
-        .funcStreamSinkArgPositionTwinRustAsyncSse(a: a, b: b, hint: hint);
+        .funcStreamReturnErrorTwinRustAsyncSse(sink: sink, hint: hint);
 
-Stream<MyStreamEntryTwinRustAsyncSse> handleStreamOfStructTwinRustAsyncSse(
-        {dynamic hint}) =>
-    RustLib.instance.api.handleStreamOfStructTwinRustAsyncSse(hint: hint);
-
-Stream<LogTwinRustAsyncSse> handleStreamSinkAt1TwinRustAsyncSse(
-        {required int key, required int max, dynamic hint}) =>
+Future<void> funcStreamReturnPanicTwinRustAsyncSse(
+        {required StreamSink sink, dynamic hint}) =>
     RustLib.instance.api
-        .handleStreamSinkAt1TwinRustAsyncSse(key: key, max: max, hint: hint);
+        .funcStreamReturnPanicTwinRustAsyncSse(sink: sink, hint: hint);
 
-Stream<LogTwinRustAsyncSse> handleStreamSinkAt2TwinRustAsyncSse(
-        {required int key, required int max, dynamic hint}) =>
+Future<void> funcStreamSinkArgPositionTwinRustAsyncSse(
+        {required int a,
+        required int b,
+        required StreamSink c,
+        dynamic hint}) =>
+    RustLib.instance.api.funcStreamSinkArgPositionTwinRustAsyncSse(
+        a: a, b: b, c: c, hint: hint);
+
+Future<void> handleStreamOfStructTwinRustAsyncSse(
+        {required StreamSink sink, dynamic hint}) =>
     RustLib.instance.api
-        .handleStreamSinkAt2TwinRustAsyncSse(key: key, max: max, hint: hint);
+        .handleStreamOfStructTwinRustAsyncSse(sink: sink, hint: hint);
 
-Stream<LogTwinRustAsyncSse> handleStreamSinkAt3TwinRustAsyncSse(
-        {required int key, required int max, dynamic hint}) =>
-    RustLib.instance.api
-        .handleStreamSinkAt3TwinRustAsyncSse(key: key, max: max, hint: hint);
+Future<void> handleStreamSinkAt1TwinRustAsyncSse(
+        {required int key,
+        required int max,
+        required StreamSink sink,
+        dynamic hint}) =>
+    RustLib.instance.api.handleStreamSinkAt1TwinRustAsyncSse(
+        key: key, max: max, sink: sink, hint: hint);
 
-Stream<U8Array2> streamSinkFixedSizedPrimitiveArrayTwinRustAsyncSse(
-        {dynamic hint}) =>
-    RustLib.instance.api
-        .streamSinkFixedSizedPrimitiveArrayTwinRustAsyncSse(hint: hint);
+Future<void> handleStreamSinkAt2TwinRustAsyncSse(
+        {required int key,
+        required StreamSink sink,
+        required int max,
+        dynamic hint}) =>
+    RustLib.instance.api.handleStreamSinkAt2TwinRustAsyncSse(
+        key: key, sink: sink, max: max, hint: hint);
 
-class LogTwinRustAsyncSse {
-  final int key;
-  final int value;
+Future<void> handleStreamSinkAt3TwinRustAsyncSse(
+        {required StreamSink sink,
+        required int key,
+        required int max,
+        dynamic hint}) =>
+    RustLib.instance.api.handleStreamSinkAt3TwinRustAsyncSse(
+        sink: sink, key: key, max: max, hint: hint);
 
-  const LogTwinRustAsyncSse({
-    required this.key,
-    required this.value,
-  });
-
-  @override
-  int get hashCode => key.hashCode ^ value.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is LogTwinRustAsyncSse &&
-          runtimeType == other.runtimeType &&
-          key == other.key &&
-          value == other.value;
-}
-
-class MyStreamEntryTwinRustAsyncSse {
-  final String hello;
-
-  const MyStreamEntryTwinRustAsyncSse({
-    required this.hello,
-  });
-
-  @override
-  int get hashCode => hello.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is MyStreamEntryTwinRustAsyncSse &&
-          runtimeType == other.runtimeType &&
-          hello == other.hello;
-}
+Future<void> streamSinkFixedSizedPrimitiveArrayTwinRustAsyncSse(
+        {required StreamSink sink, dynamic hint}) =>
+    RustLib.instance.api.streamSinkFixedSizedPrimitiveArrayTwinRustAsyncSse(
+        sink: sink, hint: hint);
