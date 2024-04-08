@@ -13,6 +13,7 @@ pub use crate::codec::dco::{transform_result_dco, Rust2DartMessageDco};
 pub use crate::codec::sse::{
     Dart2RustMessageSse, Rust2DartMessageSse, SseDeserializer, SseSerializer,
 };
+pub use crate::codec::Rust2DartMessageTrait;
 pub use crate::codec::{cst::CstCodec, dco::DcoCodec, sse::SseCodec, BaseCodec};
 #[cfg(feature = "dart-opaque")]
 pub use crate::dart_opaque::dart2rust::{cst_decode_dart_opaque, sse_decode_dart_opaque};
@@ -21,6 +22,7 @@ pub use crate::generalized_arc::std_arc::StdArc; // TODO temp
 pub use crate::generalized_isolate::Channel;
 pub use crate::generalized_isolate::IntoDartExceptPrimitive;
 pub use crate::handler::handler::{FfiCallMode, TaskInfo};
+pub use crate::handler::handler::{TaskContext, TaskRetFutTrait};
 pub use crate::handler::implementation::error_listener::NoOpErrorListener;
 pub use crate::handler::implementation::executor::SimpleExecutor;
 pub use crate::handler::implementation::handler::SimpleHandler;
