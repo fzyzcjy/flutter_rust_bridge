@@ -57,7 +57,7 @@
         }
       ],
       "mode": "Normal",
-      "name": "crate::api/MyEnum_example_instance_method",
+      "name": "crate::api/my_enum_example_instance_method",
       "output": {
         "data": "Unit",
         "safe_ident": "unit",
@@ -66,8 +66,8 @@
       "owner": {
         "Method": {
           "actual_method_name": "example_instance_method",
-          "enum_or_struct_name": "crate::api/MyEnum",
-          "enum_or_struct_ty": {
+          "mode": "Instance",
+          "owner_ty": {
             "data": {
               "PrimitiveEnum": {
                 "ir": {
@@ -79,8 +79,7 @@
             },
             "safe_ident": "my_enum",
             "type": "Delegate"
-          },
-          "mode": "Instance"
+          }
         }
       },
       "rust_async": false
@@ -97,7 +96,7 @@
       "initializer": false,
       "inputs": [],
       "mode": "Normal",
-      "name": "crate::api/MyEnum_example_static_method",
+      "name": "crate::api/my_enum_example_static_method",
       "output": {
         "data": "Unit",
         "safe_ident": "unit",
@@ -106,8 +105,8 @@
       "owner": {
         "Method": {
           "actual_method_name": "example_static_method",
-          "enum_or_struct_name": "crate::api/MyEnum",
-          "enum_or_struct_ty": {
+          "mode": "Static",
+          "owner_ty": {
             "data": {
               "PrimitiveEnum": {
                 "ir": {
@@ -119,8 +118,7 @@
             },
             "safe_ident": "my_enum",
             "type": "Delegate"
-          },
-          "mode": "Static"
+          }
         }
       },
       "rust_async": false
@@ -162,7 +160,7 @@
         }
       ],
       "mode": "Normal",
-      "name": "crate::api/MyStruct_example_instance_method",
+      "name": "crate::api/my_struct_example_instance_method",
       "output": {
         "data": "Unit",
         "safe_ident": "unit",
@@ -171,16 +169,15 @@
       "owner": {
         "Method": {
           "actual_method_name": "example_instance_method",
-          "enum_or_struct_name": "crate::api/MyStruct",
-          "enum_or_struct_ty": {
+          "mode": "Instance",
+          "owner_ty": {
             "data": {
               "ident": "crate::api/MyStruct",
               "is_exception": false
             },
             "safe_ident": "my_struct",
             "type": "StructRef"
-          },
-          "mode": "Instance"
+          }
         }
       },
       "rust_async": false
@@ -197,7 +194,7 @@
       "initializer": false,
       "inputs": [],
       "mode": "Normal",
-      "name": "crate::api/MyStruct_example_static_method",
+      "name": "crate::api/my_struct_example_static_method",
       "output": {
         "data": "Unit",
         "safe_ident": "unit",
@@ -206,16 +203,15 @@
       "owner": {
         "Method": {
           "actual_method_name": "example_static_method",
-          "enum_or_struct_name": "crate::api/MyStruct",
-          "enum_or_struct_ty": {
+          "mode": "Static",
+          "owner_ty": {
             "data": {
               "ident": "crate::api/MyStruct",
               "is_exception": false
             },
             "safe_ident": "my_struct",
             "type": "StructRef"
-          },
-          "mode": "Static"
+          }
         }
       },
       "rust_async": false
