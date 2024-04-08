@@ -32,20 +32,22 @@ pub(crate) fn generate_api_impl_normal_function(
 
     let func_expr = api_dart_func.func_expr;
 
-    let function_implementation = format!(
-        "@override {func_expr} {{
-            return handler.{execute_func_name}({task_class}(
-                callFfi: ({call_ffi_args}) {{
-                  {inner_func_stmt}
-                }},
-                codec: {codec},
-                constMeta: {const_meta_field_name},
-                argValues: [{arg_values}],
-                apiImpl: this,
-                hint: hint,
-            ));
-        }}",
+    let call_handler = format!(
+        "handler.{execute_func_name}({task_class}(
+            callFfi: ({call_ffi_args}) {{
+              {inner_func_stmt}
+            }},
+            codec: {codec},
+            constMeta: {const_meta_field_name},
+            argValues: [{arg_values}],
+            apiImpl: this,
+            hint: hint,
+        ))",
     );
+    let function_implementation_body = format!(
+        "return {call_handler};"
+    );
+    let function_implementation = format!("@override {func_expr} {{ {function_implementation_body} }}");
 
     let companion_field_implementation = generate_companion_field(func, &const_meta_field_name);
 
