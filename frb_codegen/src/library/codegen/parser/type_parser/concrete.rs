@@ -124,5 +124,6 @@ fn parse_stream_sink_codec(codec: &Type) -> anyhow::Result<CodecMode> {
     let path = if_then_some!(let Type::Path(path) = codec, path).unwrap();
     let segments = extract_path_data(&path.path)?;
     let ident = &segments.last().unwrap().ident;
-    Ok(ident.parse()?)
+    let ident_stripped = ident.strip_suffix("Codec").unwrap();
+    Ok(ident_stripped.parse()?)
 }
