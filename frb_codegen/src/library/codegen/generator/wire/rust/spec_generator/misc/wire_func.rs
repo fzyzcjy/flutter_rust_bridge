@@ -23,7 +23,6 @@ pub(crate) fn generate_wire_func(
 ) -> Acc<WireRustOutputCode> {
     let dart2rust_codec = WireRustCodecEntrypoint::from(func.codec_mode_pack.dart2rust);
 
-    let ir_pack = context.ir_pack;
     let params = dart2rust_codec.generate_func_params(func, context);
     let inner_func_args = generate_inner_func_args(func);
     let wrap_info_obj = generate_wrap_info_obj(func);
