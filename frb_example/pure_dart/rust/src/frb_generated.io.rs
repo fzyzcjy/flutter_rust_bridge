@@ -4976,6 +4976,23 @@ impl CstDecode<crate::auxiliary::sample_types::MyStruct> for *mut wire_cst_my_st
         CstDecode::<crate::auxiliary::sample_types::MyStruct>::cst_decode(*wrap).into()
     }
 }
+impl CstDecode<crate::api::stream::MyStructContainingStreamSinkTwinNormal>
+    for *mut wire_cst_my_struct_containing_stream_sink_twin_normal
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> crate::api::stream::MyStructContainingStreamSinkTwinNormal {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<crate::api::stream::MyStructContainingStreamSinkTwinNormal>::cst_decode(*wrap)
+            .into()
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::stream_twin_rust_async::MyStructContainingStreamSinkTwinRustAsync> for *mut wire_cst_my_struct_containing_stream_sink_twin_rust_async {
+            // Codec=Cst (C-struct based), see doc to use other codecs
+            fn cst_decode(self) -> crate::api::pseudo_manual::stream_twin_rust_async::MyStructContainingStreamSinkTwinRustAsync {
+                let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+                CstDecode::<crate::api::pseudo_manual::stream_twin_rust_async::MyStructContainingStreamSinkTwinRustAsync>::cst_decode(*wrap).into()
+            }
+        }
 impl CstDecode<crate::api::misc_example::MyTreeNodeTwinNormal>
     for *mut wire_cst_my_tree_node_twin_normal
 {
@@ -8122,6 +8139,16 @@ impl CstDecode<Vec<RustOpaqueMoi<HideDataTwinSyncMoi>>>
         vec.into_iter().map(CstDecode::cst_decode).collect()
     }
 }
+impl CstDecode<Vec<StreamSink<i32>>> for *mut wire_cst_list_StreamSink_i_32_None {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> Vec<StreamSink<i32>> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
 impl CstDecode<Vec<String>> for *mut wire_cst_list_String {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<String> {
@@ -9924,6 +9951,23 @@ impl CstDecode<crate::auxiliary::sample_types::MyStruct> for wire_cst_my_struct 
         }
     }
 }
+impl CstDecode<crate::api::stream::MyStructContainingStreamSinkTwinNormal>
+    for wire_cst_my_struct_containing_stream_sink_twin_normal
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> crate::api::stream::MyStructContainingStreamSinkTwinNormal {
+        crate::api::stream::MyStructContainingStreamSinkTwinNormal {
+            a: self.a.cst_decode(),
+            b: self.b.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::stream_twin_rust_async::MyStructContainingStreamSinkTwinRustAsync> for wire_cst_my_struct_containing_stream_sink_twin_rust_async {
+            // Codec=Cst (C-struct based), see doc to use other codecs
+            fn cst_decode(self) -> crate::api::pseudo_manual::stream_twin_rust_async::MyStructContainingStreamSinkTwinRustAsync {
+                crate::api::pseudo_manual::stream_twin_rust_async::MyStructContainingStreamSinkTwinRustAsync{a:  self.a.cst_decode(),b:  self.b.cst_decode()}
+            }
+        }
 impl CstDecode<crate::api::misc_example::MyTreeNodeTwinNormal>
     for wire_cst_my_tree_node_twin_normal
 {
@@ -13802,6 +13846,32 @@ impl NewWithNullPtr for wire_cst_my_struct {
     }
 }
 impl Default for wire_cst_my_struct {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_my_struct_containing_stream_sink_twin_normal {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            a: Default::default(),
+            b: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_my_struct_containing_stream_sink_twin_normal {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_my_struct_containing_stream_sink_twin_rust_async {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            a: Default::default(),
+            b: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_my_struct_containing_stream_sink_twin_rust_async {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
@@ -37239,6 +37309,22 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_stream_sink_fixed_sized_prim
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_stream_sink_inside_struct_twin_rust_async(
+    port_: i64,
+    arg: *mut wire_cst_my_struct_containing_stream_sink_twin_rust_async,
+) {
+    wire_stream_sink_inside_struct_twin_rust_async_impl(port_, arg)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_stream_sink_inside_vec_twin_rust_async(
+    port_: i64,
+    arg: *mut wire_cst_list_StreamSink_i_32_None,
+) {
+    wire_stream_sink_inside_vec_twin_rust_async_impl(port_, arg)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_stream_return_error_twin_rust_async_sse(
     port_: i64,
     ptr_: *mut u8,
@@ -37329,6 +37415,26 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_stream_sink_fixed_sized_prim
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_stream_sink_inside_struct_twin_rust_async_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_stream_sink_inside_struct_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_stream_sink_inside_vec_twin_rust_async_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_stream_sink_inside_vec_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_stream_return_error_twin_sse(
     port_: i64,
     ptr_: *mut u8,
@@ -37411,6 +37517,26 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_stream_sink_fixed_sized_prim
         rust_vec_len_,
         data_len_,
     )
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_stream_sink_inside_struct_twin_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_stream_sink_inside_struct_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_stream_sink_inside_vec_twin_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_stream_sink_inside_vec_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
@@ -38583,6 +38709,22 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_stream_sink_fixed_sized_prim
     sink: *mut wire_cst_list_prim_u_8_strict,
 ) {
     wire_stream_sink_fixed_sized_primitive_array_twin_normal_impl(port_, sink)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_stream_sink_inside_struct_twin_normal(
+    port_: i64,
+    arg: *mut wire_cst_my_struct_containing_stream_sink_twin_normal,
+) {
+    wire_stream_sink_inside_struct_twin_normal_impl(port_, arg)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_stream_sink_inside_vec_twin_normal(
+    port_: i64,
+    arg: *mut wire_cst_list_StreamSink_i_32_None,
+) {
+    wire_stream_sink_inside_vec_twin_normal_impl(port_, arg)
 }
 
 #[no_mangle]
@@ -43443,6 +43585,22 @@ pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_struct(
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_struct_containing_stream_sink_twin_normal(
+) -> *mut wire_cst_my_struct_containing_stream_sink_twin_normal {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_my_struct_containing_stream_sink_twin_normal::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_struct_containing_stream_sink_twin_rust_async(
+) -> *mut wire_cst_my_struct_containing_stream_sink_twin_rust_async {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_my_struct_containing_stream_sink_twin_rust_async::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_tree_node_twin_normal(
 ) -> *mut wire_cst_my_tree_node_twin_normal {
     flutter_rust_bridge::for_generated::new_leak_box_ptr(
@@ -44467,6 +44625,20 @@ pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_RustOpaque_HideDataT
 ) -> *mut wire_cst_list_RustOpaque_HideDataTwinSyncMoi {
     let wrap = wire_cst_list_RustOpaque_HideDataTwinSyncMoi {
         ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_StreamSink_i_32_None(
+    len: i32,
+) -> *mut wire_cst_list_StreamSink_i_32_None {
+    let wrap = wire_cst_list_StreamSink_i_32_None {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_list_prim_u_8_strict>::new_with_null_ptr(),
+            len,
+        ),
         len,
     };
     flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
@@ -48005,6 +48177,12 @@ pub struct wire_cst_list_RustOpaque_HideDataTwinSyncMoi {
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
+pub struct wire_cst_list_StreamSink_i_32_None {
+    ptr: *mut wire_cst_list_prim_u_8_strict,
+    len: i32,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
 pub struct wire_cst_list_String {
     ptr: *mut *mut wire_cst_list_prim_u_8_strict,
     len: i32,
@@ -48912,6 +49090,18 @@ pub struct wire_cst_my_stream_entry_twin_rust_async {
 #[derive(Clone, Copy)]
 pub struct wire_cst_my_struct {
     content: bool,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_my_struct_containing_stream_sink_twin_normal {
+    a: i32,
+    b: *mut wire_cst_list_prim_u_8_strict,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_my_struct_containing_stream_sink_twin_rust_async {
+    a: i32,
+    b: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]

@@ -42,6 +42,16 @@ Future<Stream<U8Array2>> streamSinkFixedSizedPrimitiveArrayTwinRustAsync(
     RustLib.instance.api
         .streamSinkFixedSizedPrimitiveArrayTwinRustAsync(hint: hint);
 
+Future<void> streamSinkInsideVecTwinRustAsync(
+        {required List<RustStreamSink<int>> arg, dynamic hint}) =>
+    RustLib.instance.api.streamSinkInsideVecTwinRustAsync(arg: arg, hint: hint);
+
+Future<void> streamSinkInsideStructTwinRustAsync(
+        {required MyStructContainingStreamSinkTwinRustAsync arg,
+        dynamic hint}) =>
+    RustLib.instance.api
+        .streamSinkInsideStructTwinRustAsync(arg: arg, hint: hint);
+
 class LogTwinRustAsync {
   final int key;
   final int value;
@@ -79,6 +89,27 @@ class MyStreamEntryTwinRustAsync {
       other is MyStreamEntryTwinRustAsync &&
           runtimeType == other.runtimeType &&
           hello == other.hello;
+}
+
+class MyStructContainingStreamSinkTwinRustAsync {
+  final int a;
+  final RustStreamSink<int> b;
+
+  const MyStructContainingStreamSinkTwinRustAsync({
+    required this.a,
+    required this.b,
+  });
+
+  @override
+  int get hashCode => a.hashCode ^ b.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MyStructContainingStreamSinkTwinRustAsync &&
+          runtimeType == other.runtimeType &&
+          a == other.a &&
+          b == other.b;
 }
 
 class U8Array2 extends NonGrowableListView<int> {

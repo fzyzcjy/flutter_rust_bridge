@@ -42,6 +42,14 @@ Future<Stream<U8Array2>> streamSinkFixedSizedPrimitiveArrayTwinNormal(
     RustLib.instance.api
         .streamSinkFixedSizedPrimitiveArrayTwinNormal(hint: hint);
 
+Future<void> streamSinkInsideVecTwinNormal(
+        {required List<RustStreamSink<int>> arg, dynamic hint}) =>
+    RustLib.instance.api.streamSinkInsideVecTwinNormal(arg: arg, hint: hint);
+
+Future<void> streamSinkInsideStructTwinNormal(
+        {required MyStructContainingStreamSinkTwinNormal arg, dynamic hint}) =>
+    RustLib.instance.api.streamSinkInsideStructTwinNormal(arg: arg, hint: hint);
+
 class LogTwinNormal {
   final int key;
   final int value;
@@ -79,4 +87,25 @@ class MyStreamEntryTwinNormal {
       other is MyStreamEntryTwinNormal &&
           runtimeType == other.runtimeType &&
           hello == other.hello;
+}
+
+class MyStructContainingStreamSinkTwinNormal {
+  final int a;
+  final RustStreamSink<int> b;
+
+  const MyStructContainingStreamSinkTwinNormal({
+    required this.a,
+    required this.b,
+  });
+
+  @override
+  int get hashCode => a.hashCode ^ b.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MyStructContainingStreamSinkTwinNormal &&
+          runtimeType == other.runtimeType &&
+          a == other.a &&
+          b == other.b;
 }

@@ -3264,6 +3264,16 @@ impl CstDecode<Vec<RustOpaqueMoi<HideDataTwinSyncMoi>>>
             .collect()
     }
 }
+impl CstDecode<Vec<StreamSink<i32>>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> Vec<StreamSink<i32>> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
 impl CstDecode<Vec<String>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<String> {
@@ -5204,6 +5214,34 @@ impl CstDecode<crate::auxiliary::sample_types::MyStruct>
         }
     }
 }
+impl CstDecode<crate::api::stream::MyStructContainingStreamSinkTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> crate::api::stream::MyStructContainingStreamSinkTwinNormal {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::stream::MyStructContainingStreamSinkTwinNormal {
+            a: self_.get(0).cst_decode(),
+            b: self_.get(1).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::stream_twin_rust_async::MyStructContainingStreamSinkTwinRustAsync> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+            // Codec=Cst (C-struct based), see doc to use other codecs
+            fn cst_decode(self) -> crate::api::pseudo_manual::stream_twin_rust_async::MyStructContainingStreamSinkTwinRustAsync {
+                let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
+                assert_eq!(self_.length(), 2, "Expected 2 elements, got {}", self_.length());
+                crate::api::pseudo_manual::stream_twin_rust_async::MyStructContainingStreamSinkTwinRustAsync{a:  self_.get(0).cst_decode(),b:  self_.get(1).cst_decode()}
+            }
+        }
 impl CstDecode<crate::api::misc_example::MyTreeNodeTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -34115,6 +34153,22 @@ pub fn wire_stream_sink_fixed_sized_primitive_array_twin_rust_async(
 }
 
 #[wasm_bindgen]
+pub fn wire_stream_sink_inside_struct_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_stream_sink_inside_struct_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_stream_sink_inside_vec_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_stream_sink_inside_vec_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
 pub fn wire_func_stream_return_error_twin_rust_async_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -34205,6 +34259,26 @@ pub fn wire_stream_sink_fixed_sized_primitive_array_twin_rust_async_sse(
 }
 
 #[wasm_bindgen]
+pub fn wire_stream_sink_inside_struct_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_stream_sink_inside_struct_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_stream_sink_inside_vec_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_stream_sink_inside_vec_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
 pub fn wire_func_stream_return_error_twin_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -34287,6 +34361,26 @@ pub fn wire_stream_sink_fixed_sized_primitive_array_twin_sse(
         rust_vec_len_,
         data_len_,
     )
+}
+
+#[wasm_bindgen]
+pub fn wire_stream_sink_inside_struct_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_stream_sink_inside_struct_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_stream_sink_inside_vec_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_stream_sink_inside_vec_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -35461,6 +35555,22 @@ pub fn wire_stream_sink_fixed_sized_primitive_array_twin_normal(
     sink: String,
 ) {
     wire_stream_sink_fixed_sized_primitive_array_twin_normal_impl(port_, sink)
+}
+
+#[wasm_bindgen]
+pub fn wire_stream_sink_inside_struct_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_stream_sink_inside_struct_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_stream_sink_inside_vec_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_stream_sink_inside_vec_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]

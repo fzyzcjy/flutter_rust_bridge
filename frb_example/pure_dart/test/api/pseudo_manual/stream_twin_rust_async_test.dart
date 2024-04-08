@@ -44,12 +44,12 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   Future<void> testHandleStream(
-      Stream<FutureOr<LogTwinRustAsync>> Function(
+      FutureOr<Stream<LogTwinRustAsync>> Function(
               {dynamic hint, required int key, required int max})
           handleStreamFunction) async {
     final max = 5;
     final key = 8;
-    final stream = handleStreamFunction(key: key, max: max);
+    final stream = await handleStreamFunction(key: key, max: max);
     var cnt = 0;
     await for (final value in stream) {
       print("output from handle_stream_x's stream: $value");
@@ -78,5 +78,19 @@ Future<void> main({bool skipRustLibInit = false}) async {
       orderedEquals([1, 2]),
       orderedEquals([3, 4]),
     ]);
+  });
+
+  test('stream_sink_inside_vec_twin_normal', () async {
+    final sinks = [RustStreamSink<int>(), RustStreamSink<int>()];
+    await streamSinkInsideVecTwinRustAsync(arg: sinks);
+    expect(await sinks[0].stream.toList(), [100, 200]);
+    expect(await sinks[1].stream.toList(), [100, 200]);
+  });
+
+  test('stream_sink_inside_struct_twin_normal', () async {
+    final arg = MyStructContainingStreamSinkTwinRustAsync(
+        a: 1000, b: RustStreamSink<int>());
+    await streamSinkInsideStructTwinRustAsync(arg: arg);
+    expect(await arg.b.stream.toList(), [1000]);
   });
 }

@@ -4822,6 +4822,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   MyStruct dco_decode_box_autoadd_my_struct(dynamic raw);
 
   @protected
+  MyStructContainingStreamSinkTwinNormal
+      dco_decode_box_autoadd_my_struct_containing_stream_sink_twin_normal(
+          dynamic raw);
+
+  @protected
+  MyStructContainingStreamSinkTwinRustAsync
+      dco_decode_box_autoadd_my_struct_containing_stream_sink_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  MyStructContainingStreamSinkTwinRustAsyncSse
+      dco_decode_box_autoadd_my_struct_containing_stream_sink_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  MyStructContainingStreamSinkTwinSse
+      dco_decode_box_autoadd_my_struct_containing_stream_sink_twin_sse(
+          dynamic raw);
+
+  @protected
   MyTreeNodeTwinNormal dco_decode_box_autoadd_my_tree_node_twin_normal(
       dynamic raw);
 
@@ -6553,6 +6573,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_list_RustOpaque_HideDataTwinSyncSseMoi(dynamic raw);
 
   @protected
+  List<RustStreamSink<int>> dco_decode_list_StreamSink_i_32_None(dynamic raw);
+
+  @protected
+  List<RustStreamSink<int>> dco_decode_list_StreamSink_i_32_Sse(dynamic raw);
+
+  @protected
   List<String> dco_decode_list_String(dynamic raw);
 
   @protected
@@ -7359,6 +7385,23 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   MyStruct dco_decode_my_struct(dynamic raw);
+
+  @protected
+  MyStructContainingStreamSinkTwinNormal
+      dco_decode_my_struct_containing_stream_sink_twin_normal(dynamic raw);
+
+  @protected
+  MyStructContainingStreamSinkTwinRustAsync
+      dco_decode_my_struct_containing_stream_sink_twin_rust_async(dynamic raw);
+
+  @protected
+  MyStructContainingStreamSinkTwinRustAsyncSse
+      dco_decode_my_struct_containing_stream_sink_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  MyStructContainingStreamSinkTwinSse
+      dco_decode_my_struct_containing_stream_sink_twin_sse(dynamic raw);
 
   @protected
   MyTreeNodeTwinNormal dco_decode_my_tree_node_twin_normal(dynamic raw);
@@ -12995,6 +13038,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   MyStruct sse_decode_box_autoadd_my_struct(SseDeserializer deserializer);
 
   @protected
+  MyStructContainingStreamSinkTwinNormal
+      sse_decode_box_autoadd_my_struct_containing_stream_sink_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  MyStructContainingStreamSinkTwinRustAsync
+      sse_decode_box_autoadd_my_struct_containing_stream_sink_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  MyStructContainingStreamSinkTwinRustAsyncSse
+      sse_decode_box_autoadd_my_struct_containing_stream_sink_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  MyStructContainingStreamSinkTwinSse
+      sse_decode_box_autoadd_my_struct_containing_stream_sink_twin_sse(
+          SseDeserializer deserializer);
+
+  @protected
   MyTreeNodeTwinNormal sse_decode_box_autoadd_my_tree_node_twin_normal(
       SseDeserializer deserializer);
 
@@ -14962,6 +15025,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  List<RustStreamSink<int>> sse_decode_list_StreamSink_i_32_None(
+      SseDeserializer deserializer);
+
+  @protected
+  List<RustStreamSink<int>> sse_decode_list_StreamSink_i_32_Sse(
+      SseDeserializer deserializer);
+
+  @protected
   List<String> sse_decode_list_String(SseDeserializer deserializer);
 
   @protected
@@ -15897,6 +15968,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   MyStruct sse_decode_my_struct(SseDeserializer deserializer);
+
+  @protected
+  MyStructContainingStreamSinkTwinNormal
+      sse_decode_my_struct_containing_stream_sink_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  MyStructContainingStreamSinkTwinRustAsync
+      sse_decode_my_struct_containing_stream_sink_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  MyStructContainingStreamSinkTwinRustAsyncSse
+      sse_decode_my_struct_containing_stream_sink_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  MyStructContainingStreamSinkTwinSse
+      sse_decode_my_struct_containing_stream_sink_twin_sse(
+          SseDeserializer deserializer);
 
   @protected
   MyTreeNodeTwinNormal sse_decode_my_tree_node_twin_normal(
@@ -19828,6 +19919,22 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic>
+      cst_encode_box_autoadd_my_struct_containing_stream_sink_twin_normal(
+          MyStructContainingStreamSinkTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_my_struct_containing_stream_sink_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic>
+      cst_encode_box_autoadd_my_struct_containing_stream_sink_twin_rust_async(
+          MyStructContainingStreamSinkTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_my_struct_containing_stream_sink_twin_rust_async(raw);
+  }
+
+  @protected
   List<dynamic> cst_encode_box_autoadd_my_tree_node_twin_normal(
       MyTreeNodeTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -22153,6 +22260,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> cst_encode_list_StreamSink_i_32_None(
+      List<RustStreamSink<int>> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw.map(cst_encode_StreamSink_i_32_None).toList();
+  }
+
+  @protected
   List<dynamic> cst_encode_list_String(List<String> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_String).toList();
@@ -23170,6 +23284,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic> cst_encode_my_struct(MyStruct raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_bool(raw.content)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_my_struct_containing_stream_sink_twin_normal(
+      MyStructContainingStreamSinkTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_i_32(raw.a), cst_encode_StreamSink_i_32_None(raw.b)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_my_struct_containing_stream_sink_twin_rust_async(
+      MyStructContainingStreamSinkTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_i_32(raw.a), cst_encode_StreamSink_i_32_None(raw.b)];
   }
 
   @protected
@@ -30176,6 +30304,24 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       MyStruct self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_my_struct_containing_stream_sink_twin_normal(
+      MyStructContainingStreamSinkTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_my_struct_containing_stream_sink_twin_rust_async(
+      MyStructContainingStreamSinkTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_box_autoadd_my_struct_containing_stream_sink_twin_rust_async_sse(
+          MyStructContainingStreamSinkTwinRustAsyncSse self,
+          SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_my_struct_containing_stream_sink_twin_sse(
+      MyStructContainingStreamSinkTwinSse self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_my_tree_node_twin_normal(
       MyTreeNodeTwinNormal self, SseSerializer serializer);
 
@@ -32051,6 +32197,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       List<HideDataTwinSyncSseMoi> self, SseSerializer serializer);
 
   @protected
+  void sse_encode_list_StreamSink_i_32_None(
+      List<RustStreamSink<int>> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_StreamSink_i_32_Sse(
+      List<RustStreamSink<int>> self, SseSerializer serializer);
+
+  @protected
   void sse_encode_list_String(List<String> self, SseSerializer serializer);
 
   @protected
@@ -32957,6 +33111,23 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_my_struct(MyStruct self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_struct_containing_stream_sink_twin_normal(
+      MyStructContainingStreamSinkTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_struct_containing_stream_sink_twin_rust_async(
+      MyStructContainingStreamSinkTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_struct_containing_stream_sink_twin_rust_async_sse(
+      MyStructContainingStreamSinkTwinRustAsyncSse self,
+      SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_struct_containing_stream_sink_twin_sse(
+      MyStructContainingStreamSinkTwinSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_my_tree_node_twin_normal(
@@ -49225,6 +49396,14 @@ class RustLibWire implements BaseWire {
       wasmModule.wire_stream_sink_fixed_sized_primitive_array_twin_rust_async(
           port_, sink);
 
+  void wire_stream_sink_inside_struct_twin_rust_async(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule.wire_stream_sink_inside_struct_twin_rust_async(port_, arg);
+
+  void wire_stream_sink_inside_vec_twin_rust_async(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule.wire_stream_sink_inside_vec_twin_rust_async(port_, arg);
+
   void wire_func_stream_return_error_twin_rust_async_sse(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
@@ -49290,6 +49469,22 @@ class RustLibWire implements BaseWire {
           .wire_stream_sink_fixed_sized_primitive_array_twin_rust_async_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
+  void wire_stream_sink_inside_struct_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_stream_sink_inside_struct_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_stream_sink_inside_vec_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_stream_sink_inside_vec_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
   void wire_func_stream_return_error_twin_sse(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
@@ -49352,6 +49547,22 @@ class RustLibWire implements BaseWire {
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_stream_sink_fixed_sized_primitive_array_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_stream_sink_inside_struct_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_stream_sink_inside_struct_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_stream_sink_inside_vec_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_stream_sink_inside_vec_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_func_struct_with_one_field_twin_rust_async(
@@ -50104,6 +50315,14 @@ class RustLibWire implements BaseWire {
           NativePortType port_, String sink) =>
       wasmModule.wire_stream_sink_fixed_sized_primitive_array_twin_normal(
           port_, sink);
+
+  void wire_stream_sink_inside_struct_twin_normal(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule.wire_stream_sink_inside_struct_twin_normal(port_, arg);
+
+  void wire_stream_sink_inside_vec_twin_normal(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule.wire_stream_sink_inside_vec_twin_normal(port_, arg);
 
   void wire_func_stream_realistic_twin_normal(
           NativePortType port_, String sink, String arg) =>
@@ -62232,6 +62451,12 @@ class RustLibWasmModule implements WasmModule {
   external void wire_stream_sink_fixed_sized_primitive_array_twin_rust_async(
       NativePortType port_, String sink);
 
+  external void wire_stream_sink_inside_struct_twin_rust_async(
+      NativePortType port_, List<dynamic> arg);
+
+  external void wire_stream_sink_inside_vec_twin_rust_async(
+      NativePortType port_, List<dynamic> arg);
+
   external void wire_func_stream_return_error_twin_rust_async_sse(
       NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_,
@@ -62281,6 +62506,18 @@ class RustLibWasmModule implements WasmModule {
           int rust_vec_len_,
           int data_len_);
 
+  external void wire_stream_sink_inside_struct_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_stream_sink_inside_vec_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
   external void wire_func_stream_return_error_twin_sse(NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
@@ -62310,6 +62547,12 @@ class RustLibWasmModule implements WasmModule {
       PlatformGeneralizedUint8ListPtr ptr_,
       int rust_vec_len_,
       int data_len_);
+
+  external void wire_stream_sink_inside_struct_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_stream_sink_inside_vec_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_func_struct_with_one_field_twin_rust_async(
       NativePortType port_, List<dynamic> arg);
@@ -62804,6 +63047,12 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_stream_sink_fixed_sized_primitive_array_twin_normal(
       NativePortType port_, String sink);
+
+  external void wire_stream_sink_inside_struct_twin_normal(
+      NativePortType port_, List<dynamic> arg);
+
+  external void wire_stream_sink_inside_vec_twin_normal(
+      NativePortType port_, List<dynamic> arg);
 
   external void wire_func_stream_realistic_twin_normal(
       NativePortType port_, String sink, String arg);

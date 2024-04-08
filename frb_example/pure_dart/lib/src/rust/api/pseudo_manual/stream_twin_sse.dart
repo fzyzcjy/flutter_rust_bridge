@@ -41,6 +41,14 @@ Future<Stream<U8Array2>> streamSinkFixedSizedPrimitiveArrayTwinSse(
         {dynamic hint}) =>
     RustLib.instance.api.streamSinkFixedSizedPrimitiveArrayTwinSse(hint: hint);
 
+Future<void> streamSinkInsideVecTwinSse(
+        {required List<RustStreamSink<int>> arg, dynamic hint}) =>
+    RustLib.instance.api.streamSinkInsideVecTwinSse(arg: arg, hint: hint);
+
+Future<void> streamSinkInsideStructTwinSse(
+        {required MyStructContainingStreamSinkTwinSse arg, dynamic hint}) =>
+    RustLib.instance.api.streamSinkInsideStructTwinSse(arg: arg, hint: hint);
+
 class LogTwinSse {
   final int key;
   final int value;
@@ -78,4 +86,25 @@ class MyStreamEntryTwinSse {
       other is MyStreamEntryTwinSse &&
           runtimeType == other.runtimeType &&
           hello == other.hello;
+}
+
+class MyStructContainingStreamSinkTwinSse {
+  final int a;
+  final RustStreamSink<int> b;
+
+  const MyStructContainingStreamSinkTwinSse({
+    required this.a,
+    required this.b,
+  });
+
+  @override
+  int get hashCode => a.hashCode ^ b.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MyStructContainingStreamSinkTwinSse &&
+          runtimeType == other.runtimeType &&
+          a == other.a &&
+          b == other.b;
 }

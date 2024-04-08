@@ -1936,6 +1936,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   MyStruct dco_decode_box_autoadd_my_struct(dynamic raw);
 
   @protected
+  MyStructContainingStreamSinkTwinNormal
+      dco_decode_box_autoadd_my_struct_containing_stream_sink_twin_normal(
+          dynamic raw);
+
+  @protected
+  MyStructContainingStreamSinkTwinRustAsync
+      dco_decode_box_autoadd_my_struct_containing_stream_sink_twin_rust_async(
+          dynamic raw);
+
+  @protected
   MyTreeNodeTwinNormal dco_decode_box_autoadd_my_tree_node_twin_normal(
       dynamic raw);
 
@@ -2752,6 +2762,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  List<RustStreamSink<int>> dco_decode_list_StreamSink_i_32_None(dynamic raw);
+
+  @protected
   List<String> dco_decode_list_String(dynamic raw);
 
   @protected
@@ -3230,6 +3243,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   MyStruct dco_decode_my_struct(dynamic raw);
+
+  @protected
+  MyStructContainingStreamSinkTwinNormal
+      dco_decode_my_struct_containing_stream_sink_twin_normal(dynamic raw);
+
+  @protected
+  MyStructContainingStreamSinkTwinRustAsync
+      dco_decode_my_struct_containing_stream_sink_twin_rust_async(dynamic raw);
 
   @protected
   MyTreeNodeTwinNormal dco_decode_my_tree_node_twin_normal(dynamic raw);
@@ -5725,6 +5746,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   MyStruct sse_decode_box_autoadd_my_struct(SseDeserializer deserializer);
 
   @protected
+  MyStructContainingStreamSinkTwinNormal
+      sse_decode_box_autoadd_my_struct_containing_stream_sink_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  MyStructContainingStreamSinkTwinRustAsync
+      sse_decode_box_autoadd_my_struct_containing_stream_sink_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
   MyTreeNodeTwinNormal sse_decode_box_autoadd_my_tree_node_twin_normal(
       SseDeserializer deserializer);
 
@@ -6649,6 +6680,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  List<RustStreamSink<int>> sse_decode_list_StreamSink_i_32_None(
+      SseDeserializer deserializer);
+
+  @protected
   List<String> sse_decode_list_String(SseDeserializer deserializer);
 
   @protected
@@ -7204,6 +7239,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   MyStruct sse_decode_my_struct(SseDeserializer deserializer);
+
+  @protected
+  MyStructContainingStreamSinkTwinNormal
+      sse_decode_my_struct_containing_stream_sink_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  MyStructContainingStreamSinkTwinRustAsync
+      sse_decode_my_struct_containing_stream_sink_twin_rust_async(
+          SseDeserializer deserializer);
 
   @protected
   MyTreeNodeTwinNormal sse_decode_my_tree_node_twin_normal(
@@ -9829,6 +9874,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       MyStruct self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_my_struct_containing_stream_sink_twin_normal(
+      MyStructContainingStreamSinkTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_my_struct_containing_stream_sink_twin_rust_async(
+      MyStructContainingStreamSinkTwinRustAsync self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_my_tree_node_twin_normal(
       MyTreeNodeTwinNormal self, SseSerializer serializer);
 
@@ -10722,6 +10775,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       List<HideDataTwinSync> self, SseSerializer serializer);
 
   @protected
+  void sse_encode_list_StreamSink_i_32_None(
+      List<RustStreamSink<int>> self, SseSerializer serializer);
+
+  @protected
   void sse_encode_list_String(List<String> self, SseSerializer serializer);
 
   @protected
@@ -11272,6 +11329,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_my_struct(MyStruct self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_struct_containing_stream_sink_twin_normal(
+      MyStructContainingStreamSinkTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_struct_containing_stream_sink_twin_rust_async(
+      MyStructContainingStreamSinkTwinRustAsync self, SseSerializer serializer);
 
   @protected
   void sse_encode_my_tree_node_twin_normal(

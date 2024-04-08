@@ -42,6 +42,17 @@ Future<Stream<U8Array2>> streamSinkFixedSizedPrimitiveArrayTwinRustAsyncSse(
     RustLib.instance.api
         .streamSinkFixedSizedPrimitiveArrayTwinRustAsyncSse(hint: hint);
 
+Future<void> streamSinkInsideVecTwinRustAsyncSse(
+        {required List<RustStreamSink<int>> arg, dynamic hint}) =>
+    RustLib.instance.api
+        .streamSinkInsideVecTwinRustAsyncSse(arg: arg, hint: hint);
+
+Future<void> streamSinkInsideStructTwinRustAsyncSse(
+        {required MyStructContainingStreamSinkTwinRustAsyncSse arg,
+        dynamic hint}) =>
+    RustLib.instance.api
+        .streamSinkInsideStructTwinRustAsyncSse(arg: arg, hint: hint);
+
 class LogTwinRustAsyncSse {
   final int key;
   final int value;
@@ -79,4 +90,25 @@ class MyStreamEntryTwinRustAsyncSse {
       other is MyStreamEntryTwinRustAsyncSse &&
           runtimeType == other.runtimeType &&
           hello == other.hello;
+}
+
+class MyStructContainingStreamSinkTwinRustAsyncSse {
+  final int a;
+  final RustStreamSink<int> b;
+
+  const MyStructContainingStreamSinkTwinRustAsyncSse({
+    required this.a,
+    required this.b,
+  });
+
+  @override
+  int get hashCode => a.hashCode ^ b.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MyStructContainingStreamSinkTwinRustAsyncSse &&
+          runtimeType == other.runtimeType &&
+          a == other.a &&
+          b == other.b;
 }

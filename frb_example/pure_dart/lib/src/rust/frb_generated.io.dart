@@ -4823,6 +4823,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   MyStruct dco_decode_box_autoadd_my_struct(dynamic raw);
 
   @protected
+  MyStructContainingStreamSinkTwinNormal
+      dco_decode_box_autoadd_my_struct_containing_stream_sink_twin_normal(
+          dynamic raw);
+
+  @protected
+  MyStructContainingStreamSinkTwinRustAsync
+      dco_decode_box_autoadd_my_struct_containing_stream_sink_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  MyStructContainingStreamSinkTwinRustAsyncSse
+      dco_decode_box_autoadd_my_struct_containing_stream_sink_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  MyStructContainingStreamSinkTwinSse
+      dco_decode_box_autoadd_my_struct_containing_stream_sink_twin_sse(
+          dynamic raw);
+
+  @protected
   MyTreeNodeTwinNormal dco_decode_box_autoadd_my_tree_node_twin_normal(
       dynamic raw);
 
@@ -6554,6 +6574,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_list_RustOpaque_HideDataTwinSyncSseMoi(dynamic raw);
 
   @protected
+  List<RustStreamSink<int>> dco_decode_list_StreamSink_i_32_None(dynamic raw);
+
+  @protected
+  List<RustStreamSink<int>> dco_decode_list_StreamSink_i_32_Sse(dynamic raw);
+
+  @protected
   List<String> dco_decode_list_String(dynamic raw);
 
   @protected
@@ -7360,6 +7386,23 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   MyStruct dco_decode_my_struct(dynamic raw);
+
+  @protected
+  MyStructContainingStreamSinkTwinNormal
+      dco_decode_my_struct_containing_stream_sink_twin_normal(dynamic raw);
+
+  @protected
+  MyStructContainingStreamSinkTwinRustAsync
+      dco_decode_my_struct_containing_stream_sink_twin_rust_async(dynamic raw);
+
+  @protected
+  MyStructContainingStreamSinkTwinRustAsyncSse
+      dco_decode_my_struct_containing_stream_sink_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  MyStructContainingStreamSinkTwinSse
+      dco_decode_my_struct_containing_stream_sink_twin_sse(dynamic raw);
 
   @protected
   MyTreeNodeTwinNormal dco_decode_my_tree_node_twin_normal(dynamic raw);
@@ -12996,6 +13039,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   MyStruct sse_decode_box_autoadd_my_struct(SseDeserializer deserializer);
 
   @protected
+  MyStructContainingStreamSinkTwinNormal
+      sse_decode_box_autoadd_my_struct_containing_stream_sink_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  MyStructContainingStreamSinkTwinRustAsync
+      sse_decode_box_autoadd_my_struct_containing_stream_sink_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  MyStructContainingStreamSinkTwinRustAsyncSse
+      sse_decode_box_autoadd_my_struct_containing_stream_sink_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  MyStructContainingStreamSinkTwinSse
+      sse_decode_box_autoadd_my_struct_containing_stream_sink_twin_sse(
+          SseDeserializer deserializer);
+
+  @protected
   MyTreeNodeTwinNormal sse_decode_box_autoadd_my_tree_node_twin_normal(
       SseDeserializer deserializer);
 
@@ -14963,6 +15026,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  List<RustStreamSink<int>> sse_decode_list_StreamSink_i_32_None(
+      SseDeserializer deserializer);
+
+  @protected
+  List<RustStreamSink<int>> sse_decode_list_StreamSink_i_32_Sse(
+      SseDeserializer deserializer);
+
+  @protected
   List<String> sse_decode_list_String(SseDeserializer deserializer);
 
   @protected
@@ -15898,6 +15969,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   MyStruct sse_decode_my_struct(SseDeserializer deserializer);
+
+  @protected
+  MyStructContainingStreamSinkTwinNormal
+      sse_decode_my_struct_containing_stream_sink_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  MyStructContainingStreamSinkTwinRustAsync
+      sse_decode_my_struct_containing_stream_sink_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  MyStructContainingStreamSinkTwinRustAsyncSse
+      sse_decode_my_struct_containing_stream_sink_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  MyStructContainingStreamSinkTwinSse
+      sse_decode_my_struct_containing_stream_sink_twin_sse(
+          SseDeserializer deserializer);
 
   @protected
   MyTreeNodeTwinNormal sse_decode_my_tree_node_twin_normal(
@@ -19905,6 +19996,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  ffi.Pointer<wire_cst_my_struct_containing_stream_sink_twin_normal>
+      cst_encode_box_autoadd_my_struct_containing_stream_sink_twin_normal(
+          MyStructContainingStreamSinkTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr =
+        wire.cst_new_box_autoadd_my_struct_containing_stream_sink_twin_normal();
+    cst_api_fill_to_wire_my_struct_containing_stream_sink_twin_normal(
+        raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_my_struct_containing_stream_sink_twin_rust_async>
+      cst_encode_box_autoadd_my_struct_containing_stream_sink_twin_rust_async(
+          MyStructContainingStreamSinkTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr = wire
+        .cst_new_box_autoadd_my_struct_containing_stream_sink_twin_rust_async();
+    cst_api_fill_to_wire_my_struct_containing_stream_sink_twin_rust_async(
+        raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
   ffi.Pointer<wire_cst_my_tree_node_twin_normal>
       cst_encode_box_autoadd_my_tree_node_twin_normal(
           MyTreeNodeTwinNormal raw) {
@@ -21300,6 +21415,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     final ans = wire.cst_new_list_RustOpaque_HideDataTwinSyncMoi(raw.length);
     for (var i = 0; i < raw.length; ++i) {
       ans.ref.ptr[i] = cst_encode_RustOpaque_HideDataTwinSyncMoi(raw[i]);
+    }
+    return ans;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_StreamSink_i_32_None>
+      cst_encode_list_StreamSink_i_32_None(List<RustStreamSink<int>> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ans = wire.cst_new_list_StreamSink_i_32_None(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      cst_api_fill_to_wire_StreamSink_i_32_None(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -24703,6 +24829,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  void
+      cst_api_fill_to_wire_box_autoadd_my_struct_containing_stream_sink_twin_normal(
+          MyStructContainingStreamSinkTwinNormal apiObj,
+          ffi.Pointer<wire_cst_my_struct_containing_stream_sink_twin_normal>
+              wireObj) {
+    cst_api_fill_to_wire_my_struct_containing_stream_sink_twin_normal(
+        apiObj, wireObj.ref);
+  }
+
+  @protected
+  void
+      cst_api_fill_to_wire_box_autoadd_my_struct_containing_stream_sink_twin_rust_async(
+          MyStructContainingStreamSinkTwinRustAsync apiObj,
+          ffi.Pointer<wire_cst_my_struct_containing_stream_sink_twin_rust_async>
+              wireObj) {
+    cst_api_fill_to_wire_my_struct_containing_stream_sink_twin_rust_async(
+        apiObj, wireObj.ref);
+  }
+
+  @protected
   void cst_api_fill_to_wire_box_autoadd_my_tree_node_twin_normal(
       MyTreeNodeTwinNormal apiObj,
       ffi.Pointer<wire_cst_my_tree_node_twin_normal> wireObj) {
@@ -27238,6 +27384,22 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void cst_api_fill_to_wire_my_struct(
       MyStruct apiObj, wire_cst_my_struct wireObj) {
     wireObj.content = cst_encode_bool(apiObj.content);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_my_struct_containing_stream_sink_twin_normal(
+      MyStructContainingStreamSinkTwinNormal apiObj,
+      wire_cst_my_struct_containing_stream_sink_twin_normal wireObj) {
+    wireObj.a = cst_encode_i_32(apiObj.a);
+    wireObj.b = cst_encode_StreamSink_i_32_None(apiObj.b);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_my_struct_containing_stream_sink_twin_rust_async(
+      MyStructContainingStreamSinkTwinRustAsync apiObj,
+      wire_cst_my_struct_containing_stream_sink_twin_rust_async wireObj) {
+    wireObj.a = cst_encode_i_32(apiObj.a);
+    wireObj.b = cst_encode_StreamSink_i_32_None(apiObj.b);
   }
 
   @protected
@@ -33417,6 +33579,24 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       MyStruct self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_my_struct_containing_stream_sink_twin_normal(
+      MyStructContainingStreamSinkTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_my_struct_containing_stream_sink_twin_rust_async(
+      MyStructContainingStreamSinkTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_box_autoadd_my_struct_containing_stream_sink_twin_rust_async_sse(
+          MyStructContainingStreamSinkTwinRustAsyncSse self,
+          SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_my_struct_containing_stream_sink_twin_sse(
+      MyStructContainingStreamSinkTwinSse self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_my_tree_node_twin_normal(
       MyTreeNodeTwinNormal self, SseSerializer serializer);
 
@@ -35292,6 +35472,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       List<HideDataTwinSyncSseMoi> self, SseSerializer serializer);
 
   @protected
+  void sse_encode_list_StreamSink_i_32_None(
+      List<RustStreamSink<int>> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_StreamSink_i_32_Sse(
+      List<RustStreamSink<int>> self, SseSerializer serializer);
+
+  @protected
   void sse_encode_list_String(List<String> self, SseSerializer serializer);
 
   @protected
@@ -36198,6 +36386,23 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_my_struct(MyStruct self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_struct_containing_stream_sink_twin_normal(
+      MyStructContainingStreamSinkTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_struct_containing_stream_sink_twin_rust_async(
+      MyStructContainingStreamSinkTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_struct_containing_stream_sink_twin_rust_async_sse(
+      MyStructContainingStreamSinkTwinRustAsyncSse self,
+      SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_struct_containing_stream_sink_twin_sse(
+      MyStructContainingStreamSinkTwinSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_my_tree_node_twin_normal(
@@ -85256,6 +85461,50 @@ class RustLibWire implements BaseWire {
           .asFunction<
               void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
+  void wire_stream_sink_inside_struct_twin_rust_async(
+    int port_,
+    ffi.Pointer<wire_cst_my_struct_containing_stream_sink_twin_rust_async> arg,
+  ) {
+    return _wire_stream_sink_inside_struct_twin_rust_async(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_stream_sink_inside_struct_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64,
+                  ffi.Pointer<
+                      wire_cst_my_struct_containing_stream_sink_twin_rust_async>)>>(
+      'frbgen_frb_example_pure_dart_wire_stream_sink_inside_struct_twin_rust_async');
+  late final _wire_stream_sink_inside_struct_twin_rust_async =
+      _wire_stream_sink_inside_struct_twin_rust_asyncPtr.asFunction<
+          void Function(
+              int,
+              ffi.Pointer<
+                  wire_cst_my_struct_containing_stream_sink_twin_rust_async>)>();
+
+  void wire_stream_sink_inside_vec_twin_rust_async(
+    int port_,
+    ffi.Pointer<wire_cst_list_StreamSink_i_32_None> arg,
+  ) {
+    return _wire_stream_sink_inside_vec_twin_rust_async(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_stream_sink_inside_vec_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_StreamSink_i_32_None>)>>(
+      'frbgen_frb_example_pure_dart_wire_stream_sink_inside_vec_twin_rust_async');
+  late final _wire_stream_sink_inside_vec_twin_rust_async =
+      _wire_stream_sink_inside_vec_twin_rust_asyncPtr.asFunction<
+          void Function(
+              int, ffi.Pointer<wire_cst_list_StreamSink_i_32_None>)>();
+
   void wire_func_stream_return_error_twin_rust_async_sse(
     int port_,
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -85441,6 +85690,52 @@ class RustLibWire implements BaseWire {
       _wire_stream_sink_fixed_sized_primitive_array_twin_rust_async_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
+  void wire_stream_sink_inside_struct_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_stream_sink_inside_struct_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_stream_sink_inside_struct_twin_rust_async_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_stream_sink_inside_struct_twin_rust_async_sse');
+  late final _wire_stream_sink_inside_struct_twin_rust_async_sse =
+      _wire_stream_sink_inside_struct_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_stream_sink_inside_vec_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_stream_sink_inside_vec_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_stream_sink_inside_vec_twin_rust_async_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_stream_sink_inside_vec_twin_rust_async_sse');
+  late final _wire_stream_sink_inside_vec_twin_rust_async_sse =
+      _wire_stream_sink_inside_vec_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
   void wire_func_stream_return_error_twin_sse(
     int port_,
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -85623,6 +85918,52 @@ class RustLibWire implements BaseWire {
       'frbgen_frb_example_pure_dart_wire_stream_sink_fixed_sized_primitive_array_twin_sse');
   late final _wire_stream_sink_fixed_sized_primitive_array_twin_sse =
       _wire_stream_sink_fixed_sized_primitive_array_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_stream_sink_inside_struct_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_stream_sink_inside_struct_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_stream_sink_inside_struct_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_stream_sink_inside_struct_twin_sse');
+  late final _wire_stream_sink_inside_struct_twin_sse =
+      _wire_stream_sink_inside_struct_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_stream_sink_inside_vec_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_stream_sink_inside_vec_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_stream_sink_inside_vec_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_stream_sink_inside_vec_twin_sse');
+  late final _wire_stream_sink_inside_vec_twin_sse =
+      _wire_stream_sink_inside_vec_twin_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_func_struct_with_one_field_twin_rust_async(
@@ -88341,6 +88682,50 @@ class RustLibWire implements BaseWire {
   late final _wire_stream_sink_fixed_sized_primitive_array_twin_normal =
       _wire_stream_sink_fixed_sized_primitive_array_twin_normalPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+
+  void wire_stream_sink_inside_struct_twin_normal(
+    int port_,
+    ffi.Pointer<wire_cst_my_struct_containing_stream_sink_twin_normal> arg,
+  ) {
+    return _wire_stream_sink_inside_struct_twin_normal(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_stream_sink_inside_struct_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64,
+                  ffi.Pointer<
+                      wire_cst_my_struct_containing_stream_sink_twin_normal>)>>(
+      'frbgen_frb_example_pure_dart_wire_stream_sink_inside_struct_twin_normal');
+  late final _wire_stream_sink_inside_struct_twin_normal =
+      _wire_stream_sink_inside_struct_twin_normalPtr.asFunction<
+          void Function(
+              int,
+              ffi.Pointer<
+                  wire_cst_my_struct_containing_stream_sink_twin_normal>)>();
+
+  void wire_stream_sink_inside_vec_twin_normal(
+    int port_,
+    ffi.Pointer<wire_cst_list_StreamSink_i_32_None> arg,
+  ) {
+    return _wire_stream_sink_inside_vec_twin_normal(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_stream_sink_inside_vec_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_StreamSink_i_32_None>)>>(
+      'frbgen_frb_example_pure_dart_wire_stream_sink_inside_vec_twin_normal');
+  late final _wire_stream_sink_inside_vec_twin_normal =
+      _wire_stream_sink_inside_vec_twin_normalPtr.asFunction<
+          void Function(
+              int, ffi.Pointer<wire_cst_list_StreamSink_i_32_None>)>();
 
   void wire_func_stream_realistic_twin_normal(
     int port_,
@@ -96841,6 +97226,43 @@ class RustLibWire implements BaseWire {
   late final _cst_new_box_autoadd_my_struct = _cst_new_box_autoadd_my_structPtr
       .asFunction<ffi.Pointer<wire_cst_my_struct> Function()>();
 
+  ffi.Pointer<wire_cst_my_struct_containing_stream_sink_twin_normal>
+      cst_new_box_autoadd_my_struct_containing_stream_sink_twin_normal() {
+    return _cst_new_box_autoadd_my_struct_containing_stream_sink_twin_normal();
+  }
+
+  late final _cst_new_box_autoadd_my_struct_containing_stream_sink_twin_normalPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Pointer<
+                          wire_cst_my_struct_containing_stream_sink_twin_normal>
+                      Function()>>(
+          'frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_struct_containing_stream_sink_twin_normal');
+  late final _cst_new_box_autoadd_my_struct_containing_stream_sink_twin_normal =
+      _cst_new_box_autoadd_my_struct_containing_stream_sink_twin_normalPtr
+          .asFunction<
+              ffi.Pointer<wire_cst_my_struct_containing_stream_sink_twin_normal>
+                  Function()>();
+
+  ffi.Pointer<wire_cst_my_struct_containing_stream_sink_twin_rust_async>
+      cst_new_box_autoadd_my_struct_containing_stream_sink_twin_rust_async() {
+    return _cst_new_box_autoadd_my_struct_containing_stream_sink_twin_rust_async();
+  }
+
+  late final _cst_new_box_autoadd_my_struct_containing_stream_sink_twin_rust_asyncPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Pointer<
+                          wire_cst_my_struct_containing_stream_sink_twin_rust_async>
+                      Function()>>(
+          'frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_struct_containing_stream_sink_twin_rust_async');
+  late final _cst_new_box_autoadd_my_struct_containing_stream_sink_twin_rust_async =
+      _cst_new_box_autoadd_my_struct_containing_stream_sink_twin_rust_asyncPtr
+          .asFunction<
+              ffi.Pointer<
+                      wire_cst_my_struct_containing_stream_sink_twin_rust_async>
+                  Function()>();
+
   ffi.Pointer<wire_cst_my_tree_node_twin_normal>
       cst_new_box_autoadd_my_tree_node_twin_normal() {
     return _cst_new_box_autoadd_my_tree_node_twin_normal();
@@ -98797,6 +99219,24 @@ class RustLibWire implements BaseWire {
       _cst_new_list_RustOpaque_HideDataTwinSyncMoiPtr.asFunction<
           ffi.Pointer<wire_cst_list_RustOpaque_HideDataTwinSyncMoi> Function(
               int)>();
+
+  ffi.Pointer<wire_cst_list_StreamSink_i_32_None>
+      cst_new_list_StreamSink_i_32_None(
+    int len,
+  ) {
+    return _cst_new_list_StreamSink_i_32_None(
+      len,
+    );
+  }
+
+  late final _cst_new_list_StreamSink_i_32_NonePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<wire_cst_list_StreamSink_i_32_None> Function(
+                  ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_cst_new_list_StreamSink_i_32_None');
+  late final _cst_new_list_StreamSink_i_32_None =
+      _cst_new_list_StreamSink_i_32_NonePtr.asFunction<
+          ffi.Pointer<wire_cst_list_StreamSink_i_32_None> Function(int)>();
 
   ffi.Pointer<wire_cst_list_String> cst_new_list_String(
     int len,
@@ -103852,6 +104292,21 @@ final class wire_cst_opaque_nested_twin_sync_moi extends ffi.Struct {
   external int second;
 }
 
+final class wire_cst_my_struct_containing_stream_sink_twin_rust_async
+    extends ffi.Struct {
+  @ffi.Int32()
+  external int a;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8_strict> b;
+}
+
+final class wire_cst_list_StreamSink_i_32_None extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8_strict> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
 final class wire_cst_struct_with_one_field_twin_rust_async extends ffi.Struct {
   @ffi.Int32()
   external int a;
@@ -104046,6 +104501,14 @@ final class wire_cst_opaque_nested_twin_normal extends ffi.Struct {
 
   @ffi.UintPtr()
   external int second;
+}
+
+final class wire_cst_my_struct_containing_stream_sink_twin_normal
+    extends ffi.Struct {
+  @ffi.Int32()
+  external int a;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8_strict> b;
 }
 
 final class wire_cst_struct_with_one_field_twin_normal extends ffi.Struct {
