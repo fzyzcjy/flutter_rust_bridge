@@ -40,38 +40,6 @@ class BaseHandler {
     }
   }
 
-  /// Similar to [executeNormal], except that this will return a [Stream] instead of a [Future].
-  Stream<S> executeStream<S, E extends Object>(StreamTask<S, E> task) =>
-      _executeStreamInner(task);
-
-  Stream<S> _executeStreamInner<S, E extends Object>(StreamTask<S, E>? task) {
-    final portName =
-        ExecuteStreamPortGenerator.create(task!.constMeta.debugName);
-    final receivePort = broadcastPort(portName);
-
-    task.callFfi(receivePort.sendPort.nativePort);
-
-    final codec = task.codec;
-    task = null;
-
-    return _executeStreamInnerAsyncStar(receivePort, codec);
-  }
-
-  Stream<S> _executeStreamInnerAsyncStar<S, E extends Object>(
-      ReceivePort receivePort, BaseCodec<S, E, dynamic> codec) async* {
-    try {
-      await for (final raw in receivePort) {
-        try {
-          yield codec.decodeObject(raw);
-        } on CloseStreamException {
-          break;
-        }
-      }
-    } finally {
-      receivePort.close();
-    }
-  }
-
   /// When Rust invokes a Dart function
   void dartFnInvoke(List<dynamic> message,
       GeneralizedFrbRustBinding generalizedFrbRustBinding) {
