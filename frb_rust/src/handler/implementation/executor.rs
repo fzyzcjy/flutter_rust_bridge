@@ -4,10 +4,9 @@ use crate::generalized_isolate::Channel;
 use crate::handler::error::Error;
 use crate::handler::error_listener::ErrorListener;
 use crate::handler::executor::Executor;
-use crate::handler::handler::{FfiCallMode, TaskContext, TaskInfo, TaskRetFutTrait};
+use crate::handler::handler::{TaskContext, TaskInfo, TaskRetFutTrait};
 use crate::handler::implementation::error_listener::handle_non_sync_panic_error;
 use crate::misc::panic_backtrace::{CatchUnwindWithBacktrace, PanicBacktrace};
-use crate::platform_types::MessagePort;
 use crate::rust2dart::sender::Rust2DartSender;
 use crate::rust_async::BaseAsyncRuntime;
 use crate::thread_pool::BaseThreadPool;
@@ -107,7 +106,7 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
         let el2 = self.error_listener;
 
         self.async_runtime.spawn(async move {
-            let TaskInfo { port, mode, .. } = task_info;
+            let TaskInfo { port, .. } = task_info;
             let port = port.unwrap();
             #[allow(clippy::clone_on_copy)]
             let port2 = port.clone();
