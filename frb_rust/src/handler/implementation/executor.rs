@@ -54,7 +54,7 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
         let el = self.error_listener;
         let el2 = self.error_listener;
 
-        let TaskInfo { port, mode, .. } = task_info;
+        let TaskInfo { port, .. } = task_info;
         let port = port.unwrap();
 
         self.thread_pool.execute(transfer!(|port: MessagePort| {
