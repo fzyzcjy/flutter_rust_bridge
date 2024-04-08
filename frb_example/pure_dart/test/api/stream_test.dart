@@ -40,7 +40,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   Future<void> testHandleStream(
-      Stream<FutureOt<LogTwinNormal>> Function(
+      Stream<FutureOr<LogTwinNormal>> Function(
               {dynamic hint, required int key, required int max})
           handleStreamFunction) async {
     final max = 5;
