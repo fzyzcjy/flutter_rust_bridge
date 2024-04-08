@@ -11,7 +11,6 @@ use crate::stream::closer::StreamSinkCloser;
 use std::marker::PhantomData;
 use std::sync::Arc;
 use allo_isolate::IntoDart;
-use crate::dart_opaque::action::DartHandlerPortAction;
 use crate::for_generated::DartAbi;
 
 /// A sink to send asynchronous data back to Dart.
