@@ -171,7 +171,7 @@ impl ExecuteNormalOrAsyncUtils {
                         sender.send_or_warn(result.into_dart_abi());
                     }
                     FfiCallMode::Stream => {
-                        // nothing - ignore the return value of a Stream-typed function
+                        sender.send_or_warn(TODO);
                     }
                     // frb-coverage:ignore-start
                     _ => unreachable!(),
