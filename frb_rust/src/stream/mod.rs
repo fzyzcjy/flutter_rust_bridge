@@ -1,2 +1,2 @@
-mod stream_sink;
 mod closer;
+pub(crate) mod stream_sink;

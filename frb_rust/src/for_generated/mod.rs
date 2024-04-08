@@ -62,3 +62,4 @@ pub use misc_rust_async::*;
 pub use pointer::*;
 #[cfg(wasm)]
 pub use wasm_bindgen;
+pub use crate::stream::stream_sink::StreamSinkBase;
