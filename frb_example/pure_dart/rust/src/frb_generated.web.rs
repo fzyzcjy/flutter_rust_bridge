@@ -12497,6 +12497,14 @@ pub fn wire_close_event_listener_twin_normal(
 }
 
 #[wasm_bindgen]
+pub fn wire_create_event_sync_twin_normal(
+    address: String,
+    payload: String,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_create_event_sync_twin_normal_impl(address, payload)
+}
+
+#[wasm_bindgen]
 pub fn wire_create_event_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     address: String,

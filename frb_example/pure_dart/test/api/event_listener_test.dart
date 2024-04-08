@@ -16,4 +16,33 @@ Future<void> main({bool skipRustLibInit = false}) async {
     await createEventTwinNormal(address: 'foo', payload: 'bar');
     await closeEventListenerTwinNormal();
   });
+
+  // #1836
+  test('when send event before async gap, should receive it', () async {
+    final logs = <String>[];
+
+    final stream = registerEventListenerTwinNormal();
+    stream.listen((event) => logs.add(event.address));
+
+    // main call to test #1836
+    await createEventTwinNormal(address: 'one', payload: '');
+
+    await createEventTwinNormal(address: 'two', payload: '');
+
+    await closeEventListenerTwinNormal();
+
+    expect(logs, ['one', 'two']);
+  });
+
+  // FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_START
+  // #1836
+  test('when Rust send event after Dart close stream', () async {
+    final stream = registerEventListenerTwinNormal();
+    await Future.delayed(Duration.zero);
+    final subscription = stream.listen((_) {});
+    await Future.delayed(Duration.zero);
+    unawaited(subscription.cancel());
+    createEventSyncTwinNormal(address: '1', payload: '');
+  });
+  // FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_END
 }
