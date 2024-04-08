@@ -101,8 +101,11 @@ pub(crate) fn parse(
         .collect_vec();
     ensure!(
         existing_handlers.len() <= 1,
+        // frb-coverage:ignore-start
+        // This will stop the whole generator and tell the users, so we do not care about testing it
         "Should have at most one custom handler"
     );
+    // frb-coverage:ignore-end
 
     let (struct_pool, enum_pool) = type_parser.consume();
 
