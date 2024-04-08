@@ -58,9 +58,10 @@ pub(crate) fn generate_function_dart_return_type(
     func_mode: &IrFuncMode,
     raw_inner: &str,
     return_stream: &Option<IrField>,
+    context: ApiDartGeneratorContext,
 ) -> String {
-    let inner = return_stream
-        .map(|field| field.ty.dart_api_type())
+    let inner = return_stream.as_ref()
+        .map(|field| ApiDartGenerator::new(field.ty.clone(), context).dart_api_type())
         .unwrap_or(raw_inner.to_owned());
 
     match func_mode {

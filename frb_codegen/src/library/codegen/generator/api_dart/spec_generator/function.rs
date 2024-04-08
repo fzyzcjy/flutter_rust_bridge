@@ -65,7 +65,8 @@ pub(crate) fn generate(
         func_return_type = generate_function_dart_return_type(
             &func.mode,
             &ApiDartGenerator::new(func.output.clone(), context).dart_api_type(),
-            &return_stream
+            &return_stream,
+            context,
         ),
     );
 
@@ -107,7 +108,7 @@ fn generate_params(
     return_stream: &Option<IrField>,
 ) -> String {
     let mut params = (func.inputs.iter())
-        .filter(|field| Some(field.name) != return_stream.map(|s| s.name))
+        .filter(|field| Some(&field.name) != return_stream.as_ref().map(|s| &s.name))
         .map(|input| {
             let required = generate_field_required_modifier(input);
             let r#default = generate_field_default(input, false, dart_enums_style);

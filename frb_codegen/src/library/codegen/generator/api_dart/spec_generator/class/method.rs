@@ -122,7 +122,8 @@ fn generate_signature(
     let return_type = generate_function_dart_return_type(
         &func.mode,
         &ApiDartGenerator::new(func.output.clone(), context).dart_api_type(),
-        None,
+        &None,
+        context,
     );
     let method_name = if default_constructor_mode.is_some() {
         "newInstance".to_owned()
