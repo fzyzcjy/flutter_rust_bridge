@@ -1,6 +1,6 @@
 use flutter_rust_bridge::for_generated::*;
 
-pub type MyHandler = SimpleHandler<
+pub type MyUnmodifiedHandler = SimpleHandler<
     SimpleExecutor<NoOpErrorListener, SimpleThreadPool, SimpleAsyncRuntime>,
     NoOpErrorListener,
 >;
@@ -11,6 +11,6 @@ mod tests {
 
     #[test]
     pub fn test_create_custom_handlers() {
-        TODO;
+        MyUnmodifiedHandler::new_simple(Default::default());
     }
 }
