@@ -8,7 +8,8 @@ use crate::codegen::generator::api_dart::spec_generator::misc::{
     generate_dart_comments, generate_function_dart_return_type,
     generate_imports_which_types_and_funcs_use,
 };
-use crate::codegen::ir::func::IrFunc;
+use crate::codegen::ir::field::IrField;
+use crate::codegen::ir::func::{IrFunc, IrFuncMode};
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::IrType;
@@ -51,7 +52,7 @@ pub(crate) fn generate(
     context: ApiDartGeneratorContext,
 ) -> anyhow::Result<ApiDartGeneratedFunction> {
     let params = generate_params(func, context, context.config.dart_enums_style);
-    let stream_sink_name = compute_stream_sink_name(func);
+    let return_stream = compute_return_stream(func);
 
     let func_expr = format!(
         "{func_return_type} {func_name}({params})",
@@ -67,7 +68,7 @@ pub(crate) fn generate(
     let func_impl = generate_func_impl(
         func,
         &context.config.dart_entrypoint_class_name,
-        &stream_sink_name,
+        &return_stream,
     );
 
     let header = generate_header(func, context)?;
@@ -82,12 +83,12 @@ pub(crate) fn generate(
     })
 }
 
-fn compute_stream_sink_name(func: &IrFunc) -> Option<String> {
+fn compute_return_stream(func: &IrFunc) -> Option<IrField> {
     let stream_sink_vars = (func.inputs.iter())
         .filter(|input| matches!(input.ty, IrType::Delegate(IrTypeDelegate::StreamSink(_))))
         .collect_vec();
     if stream_sink_vars.len() == 1 {
-        Some(stream_sink_vars[0].name.raw.to_owned())
+        Some(stream_sink_vars[0])
     } else {
         None
     }
@@ -121,7 +122,7 @@ fn generate_params(
 fn generate_func_impl(
     func: &IrFunc,
     dart_entrypoint_class_name: &str,
-    stream_sink_name: &Option<String>,
+    return_stream: &Option<IrField>,
 ) -> FunctionBody {
     let func_name = &func.name.name.to_case(Case::Camel);
     let param_names: Vec<String> = [
@@ -136,13 +137,20 @@ fn generate_func_impl(
     let main_call =
         format!("{dart_entrypoint_class_name}.instance.api.{func_name}({param_forwards})");
 
-    if let Some(stream_sink_name) = stream_sink_name {
+    if let Some(return_stream) = return_stream {
         FunctionBody {
             code: format!(
                 "
-                final {stream_sink_name} = RustStreamSink();
-                return {main_call};
-                "
+                final {return_stream_name} = RustStreamSink();
+                {maybe_await}{main_call};
+                return {return_stream_name}.stream;
+                ",
+                return_stream_name = return_stream.name.raw,
+                maybe_await = if func.mode == IrFuncMode::Sync {
+                    ""
+                } else {
+                    "await "
+                },
             ),
             block: true,
         }
