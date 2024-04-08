@@ -64,7 +64,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  Future<RustStreamSink<int>> helloStream({dynamic hint});
+  Future<int> helloStream({dynamic hint});
 
   Future<void> initApp({dynamic hint});
 
@@ -80,7 +80,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
-  Future<RustStreamSink<int>> helloStream({dynamic hint}) {
+  Future<int> helloStream({dynamic hint}) {
     final sink = RustStreamSink();
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
