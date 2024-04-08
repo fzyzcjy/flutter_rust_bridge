@@ -37,15 +37,9 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         context: &TypeParserParsingContext,
         pat_type: &PatType,
     ) -> anyhow::Result<FunctionPartialInfo> {
-        let ty = pat_type.ty.as_ref();
-
-        if let Type::Path(TypePath { path, .. }) = &ty {
-            if let Some(ans) = self.parse_fn_arg_type_stream_sink(path, argument_index, context)? {
-                return Ok(ans);
-            }
-        }
-
-        partial_info_for_normal_type(self.type_parser.parse_type(ty, context)?, pat_type)
+        let ty_raw = self.type_parser.parse_type(pat_type.ty.as_ref(), context)?;
+        let name = parse_name_from_pat_type(pat_type)?;
+        partial_info_for_normal_type_raw(ty_raw, &pat_type.attrs, name)
     }
 
     fn parse_fn_arg_receiver(
@@ -88,42 +82,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         partial_info_for_normal_type_raw(ty, &receiver.attrs, name)
     }
-
-    fn parse_fn_arg_type_stream_sink(
-        &mut self,
-        path: &Path,
-        argument_index: usize,
-        context: &TypeParserParsingContext,
-    ) -> anyhow::Result<Option<FunctionPartialInfo>> {
-        let last_segment = path.segments.last().unwrap();
-        Ok(if last_segment.ident == STREAM_SINK_IDENT {
-            match &last_segment.arguments {
-                PathArguments::AngleBracketed(AngleBracketedGenericArguments { args, .. })
-                    if !args.is_empty() =>
-                {
-                    // Unwrap is safe here because args.len() >= 1
-                    match args.first().unwrap() {
-                        GenericArgument::Type(t) => Some(partial_info_for_stream_sink_type(
-                            self.type_parser.parse_type(t, context)?,
-                            argument_index,
-                        )?),
-                        _ => None,
-                    }
-                }
-                _ => None,
-            }
-        } else {
-            None
-        })
-    }
-}
-
-fn partial_info_for_normal_type(
-    ty_raw: IrType,
-    pat_type: &PatType,
-) -> anyhow::Result<FunctionPartialInfo> {
-    let name = parse_name_from_pat_type(pat_type)?;
-    partial_info_for_normal_type_raw(ty_raw, &pat_type.attrs, name)
 }
 
 fn partial_info_for_normal_type_raw(
