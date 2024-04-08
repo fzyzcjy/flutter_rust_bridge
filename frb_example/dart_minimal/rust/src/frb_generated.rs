@@ -34,7 +34,7 @@ pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.0.0-dev.30";
 
 // Section: executor
 
-use crate::api::minimal::FLUTTER_RUST_BRIDGE_HANDLER;
+pub use crate::api::minimal::FLUTTER_RUST_BRIDGE_HANDLER;
 
 // Section: wire_funcs
 

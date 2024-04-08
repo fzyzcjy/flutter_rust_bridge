@@ -200,7 +200,7 @@ fn generate_boilerplate(
 
 fn generate_handler(ir_pack: &IrPack) -> String {
     if let Some(existing_handler ) = &ir_pack.existing_handler {
-        format!("use {};", existing_handler.rust_style())
+        format!("pub use {};", existing_handler.rust_style())
     } else {
         r#"flutter_rust_bridge::frb_generated_default_handler!();"#.to_owned()
     }
