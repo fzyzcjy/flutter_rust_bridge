@@ -24,8 +24,6 @@ pub(crate) mod argument;
 pub(crate) mod output;
 mod transformer;
 
-const STREAM_SINK_IDENT: &str = "StreamSink";
-
 pub(crate) struct FunctionParser<'a, 'b> {
     type_parser: &'a mut TypeParser<'b>,
 }
