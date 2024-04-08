@@ -34,6 +34,6 @@ impl<T, Rust2DartCodec: BaseCodec> StreamSinkBase<T, Rust2DartCodec> {
     }
 }
 
-fn sender(sendable_channel_handle: &SendableChannelHandle) -> Rust2DartSender {
+pub(super) fn sender(sendable_channel_handle: &SendableChannelHandle) -> Rust2DartSender {
     Rust2DartSender::new(handle_to_channel(sendable_channel_handle))
 }

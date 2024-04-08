@@ -21,7 +21,7 @@ pub fn handle_to_message_port(handle: &SendableMessagePortHandle) -> MessagePort
 }
 
 pub fn deserialize_sendable_message_port_handle(raw: String) -> SendableMessagePortHandle {
-    i64::from_str(&raw)
+    raw.parse()
 }
 
 pub type PlatformGeneralizedUint8ListPtr = *mut u8;

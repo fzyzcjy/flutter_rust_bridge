@@ -2,7 +2,6 @@ use crate::codec::BaseCodec;
 use crate::generalized_isolate::IntoDart;
 use crate::misc::into_into_dart::IntoIntoDart;
 use crate::rust2dart::sender::Rust2DartSender;
-use crate::rust2dart::stream_sink::{StreamSinkBase, StreamSinkCloser};
 use std::marker::PhantomData;
 use std::sync::Arc;
 

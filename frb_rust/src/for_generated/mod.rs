@@ -36,7 +36,6 @@ pub use crate::platform_types::{
     WireSyncRust2DartSse,
 };
 pub use crate::rust2dart::action::Rust2DartAction;
-pub use crate::rust2dart::stream_sink::StreamSinkBase;
 pub use crate::rust_async;
 pub use crate::rust_async::{BaseAsyncRuntime, SimpleAsyncRuntime};
 #[cfg(feature = "rust-async")]
