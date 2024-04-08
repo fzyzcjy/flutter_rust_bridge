@@ -2,6 +2,7 @@ use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::source_graph::modules::StructOrEnumWrapper;
+use crate::codegen::parser::type_parser::external_impl;
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use log::debug;
@@ -26,11 +27,13 @@ where
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<(IrType, FrbAttributes)>> {
         let (name, _) = last_segment;
-        if let Some(src_object) = self.src_objects().get(*name) {
+        let name = external_impl::parse_name_or_original(name)?;
+
+        if let Some(src_object) = self.src_objects().get(&name) {
             let src_object = (*src_object).clone();
 
             let namespace = src_object.inner().namespace();
-            let namespaced_name = NamespacedName::new(namespace, name.to_string());
+            let namespaced_name = NamespacedName::new(namespace, name.clone());
 
             let attrs = FrbAttributes::parse(src_object.attrs())?;
             let attrs_opaque = attrs.opaque();

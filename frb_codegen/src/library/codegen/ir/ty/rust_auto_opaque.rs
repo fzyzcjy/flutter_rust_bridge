@@ -63,4 +63,8 @@ impl IrTypeRustAutoOpaque {
     pub(crate) fn needs_move(&self) -> bool {
         self.ownership_mode == OwnershipMode::Owned
     }
+
+    pub(crate) fn sanitized_type(&self) -> String {
+        self.inner.sanitized_type()
+    }
 }

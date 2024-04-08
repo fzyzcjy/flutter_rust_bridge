@@ -2,8 +2,9 @@ use crate::codegen::generator::codec::structs::CodecModePack;
 use crate::codegen::ir::comment::IrComment;
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::namespace::NamespacedName;
+use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegatePrimitiveEnum};
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
-use crate::codegen::ir::ty::{IrContext, IrType};
+use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
 use crate::if_then_some;
 
 crate::ir! {
@@ -42,8 +43,7 @@ pub enum IrFuncOwnerInfo {
 }
 
 pub struct IrFuncOwnerInfoMethod {
-    pub(crate) enum_or_struct_ty: IrType,
-    pub(crate) enum_or_struct_name: NamespacedName, // TODO use info in `enum_or_struct_ty`
+    pub(crate) owner_ty: IrType,
     pub(crate) actual_method_name: String,
     pub(crate) mode: IrFuncOwnerInfoMethodMode,
 }
@@ -77,7 +77,8 @@ impl IrFunc {
 
         // extra (#1838)
         if let IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod {
-            enum_or_struct_ty, ..
+            owner_ty: enum_or_struct_ty,
+            ..
         }) = &self.owner
         {
             enum_or_struct_ty.visit_types(f, ir_context);
@@ -97,6 +98,23 @@ impl IrFunc {
             }
         } else {
             None
+        }
+    }
+}
+
+impl IrFuncOwnerInfoMethod {
+    pub(crate) fn owner_ty_name(&self) -> NamespacedName {
+        match &self.owner_ty {
+            IrType::StructRef(ty) => ty.ident.0.clone(),
+            IrType::EnumRef(ty) => ty.ident.0.clone(),
+            IrType::Delegate(IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum {
+                ir,
+                ..
+            })) => ir.ident.0.clone(),
+            IrType::RustAutoOpaque(ty) => {
+                NamespacedName::new(ty.self_namespace().unwrap(), ty.rust_api_type())
+            }
+            ty => unimplemented!("enum_or_struct_name does not know {ty:?}"),
         }
     }
 }

@@ -57,10 +57,9 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let method = if_then_some!(let IrFuncOwnerInfo::Method(method) = owner, method)
             .context("`self` must happen within methods")?;
 
-        let ty_raw = self.type_parser.parse_type(
-            &parse_str::<Type>(&method.enum_or_struct_name.name)?,
-            context,
-        )?;
+        let ty_raw = self
+            .type_parser
+            .parse_type(&parse_str::<Type>(&method.owner_ty_name().name)?, context)?;
         let ty = match ty_raw {
             IrType::RustAutoOpaque(ty_raw) => self.type_parser.transform_rust_auto_opaque(
                 &ty_raw,
