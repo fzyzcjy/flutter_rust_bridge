@@ -142,7 +142,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
 ### Stream object inside arbitrary types
 
-For example, we can place it as a field of a struct inside a vector:
+For example, we can place it as a field of a struct or inside a vector:
 
 ```rust
 pub struct MyStruct {
@@ -150,5 +150,5 @@ pub struct MyStruct {
     b: StreamSink<i32>,
 }
 
-pub fn f(arr: Vec<MyStruct>) {}
+pub fn f(arr: Vec<StreamSink<i32>>, st: MyStruct) {}
 ```
