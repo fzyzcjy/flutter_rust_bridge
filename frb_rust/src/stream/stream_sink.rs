@@ -7,10 +7,6 @@ pub(crate) struct StreamSink<T> {
 }
 
 impl<T> StreamSink<T> {
-    pub fn serialize(self) -> String {
-        todo!()
-    }
-
     pub fn deserialize() -> Self {
         todo!()
     }
