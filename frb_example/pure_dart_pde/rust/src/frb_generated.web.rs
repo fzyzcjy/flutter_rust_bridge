@@ -5,6 +5,7 @@
 
 use super::*;
 use crate::api::constructor::*;
+use crate::api::dart_code::*;
 use crate::api::dropping::*;
 use crate::api::method::*;
 use crate::api::misc_no_twin_example_a::*;
@@ -708,6 +709,24 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     MoiArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinSync>>::decrement_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<
+        flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueStructWithDartCodeTwinNormal>,
+    >::increment_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<
+        flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueStructWithDartCodeTwinNormal>,
+    >::decrement_strong_count(ptr as _);
 }
 
 #[wasm_bindgen]

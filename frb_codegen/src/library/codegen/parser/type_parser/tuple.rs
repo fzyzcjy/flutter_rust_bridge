@@ -41,6 +41,8 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 is_fields_named: true,
                 dart_metadata: vec![],
                 ignore: false,
+                generate_hash: true,
+                generate_eq: true,
                 comments: vec![],
                 fields: values
                     .iter()

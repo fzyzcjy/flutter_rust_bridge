@@ -1,4 +1,5 @@
 use crate::codegen::generator::api_dart::spec_generator::class::method::generate_api_methods;
+use crate::codegen::generator::api_dart::spec_generator::class::misc::generate_class_extra_body;
 use crate::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
 use crate::codegen::ir::namespace::NamespacedName;
@@ -25,6 +26,8 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
             self.context,
         )
         .join("\n");
+        let extra_body =
+            generate_class_extra_body(self.ir_type(), &self.context.ir_pack.dart_code_of_type);
 
         Some(ApiDartGeneratedClass {
             namespace: self.ir.namespace.clone(),
@@ -44,6 +47,7 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
                 );
 
                 {methods}
+                {extra_body}
             }}"
             ),
             needs_freezed: false,

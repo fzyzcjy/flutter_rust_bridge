@@ -7,7 +7,7 @@ use crate::if_then_some;
 use anyhow::Context;
 use itertools::Itertools;
 use serde::{Serialize, Serializer};
-use syn::parse::{Parse, ParseStream};
+use syn::parse::{Lookahead1, Parse, ParseStream, Peek};
 use syn::punctuated::Punctuated;
 use syn::*;
 
@@ -84,6 +84,14 @@ impl FrbAttributes {
         }
     }
 
+    pub(crate) fn generate_hash(&self) -> bool {
+        !self.any_eq(&FrbAttribute::NonHash)
+    }
+
+    pub(crate) fn generate_eq(&self) -> bool {
+        !self.any_eq(&FrbAttribute::NonEq)
+    }
+
     pub(crate) fn rust_opaque_codec(&self) -> Option<RustOpaqueCodecMode> {
         if self.any_eq(&FrbAttribute::RustOpaqueCodecMoi) {
             Some(RustOpaqueCodecMode::Moi)
@@ -131,6 +139,15 @@ impl FrbAttributes {
             .flatten()
             .collect()
     }
+
+    pub(crate) fn dart_code(&self) -> String {
+        self.0
+            .iter()
+            .filter_map(
+                |item| if_then_some!(let FrbAttribute::DartCode(inner) = item, inner.0.clone()),
+            )
+            .join("\n\n")
+    }
 }
 
 mod frb_keyword {
@@ -142,11 +159,15 @@ mod frb_keyword {
     syn::custom_keyword!(ignore);
     syn::custom_keyword!(opaque);
     syn::custom_keyword!(non_opaque);
+    syn::custom_keyword!(non_hash);
+    syn::custom_keyword!(non_eq);
     syn::custom_keyword!(rust_opaque_codec_moi);
     syn::custom_keyword!(serialize);
     syn::custom_keyword!(semi_serialize);
     syn::custom_keyword!(dart_metadata);
     syn::custom_keyword!(import);
+    syn::custom_keyword!(default);
+    syn::custom_keyword!(dart_code);
 }
 
 struct FrbAttributesInner(Vec<FrbAttribute>);
@@ -171,70 +192,77 @@ enum FrbAttribute {
     Ignore,
     Opaque,
     NonOpaque,
+    NonHash,
+    NonEq,
     RustOpaqueCodecMoi,
     Serialize,
     // NOTE: Undocumented, since this name may be suboptimal and is subject to change
     SemiSerialize,
     Metadata(NamedOption<frb_keyword::dart_metadata, FrbAttributeDartMetadata>),
     Default(FrbAttributeDefaultValue),
+    DartCode(FrbAttributeDartCode),
 }
 
 impl Parse for FrbAttribute {
     fn parse(input: ParseStream<'_>) -> Result<Self> {
+        use frb_keyword::*;
+        use FrbAttribute::*;
+
         let lookahead = input.lookahead1();
+
+        let keyword_output = parse_keyword::<non_final, _>(input, &lookahead, non_final, NonFinal)
+            .or_else(|| parse_keyword::<sync, _>(input, &lookahead, sync, Sync))
+            .or_else(|| parse_keyword::<getter, _>(input, &lookahead, getter, Getter))
+            .or_else(|| parse_keyword::<init, _>(input, &lookahead, init, Init))
+            .or_else(|| parse_keyword::<ignore, _>(input, &lookahead, ignore, Ignore))
+            .or_else(|| parse_keyword::<opaque, _>(input, &lookahead, opaque, Opaque))
+            .or_else(|| parse_keyword::<non_opaque, _>(input, &lookahead, non_opaque, NonOpaque))
+            .or_else(|| parse_keyword::<non_hash, _>(input, &lookahead, non_hash, NonHash))
+            .or_else(|| parse_keyword::<non_eq, _>(input, &lookahead, non_eq, NonEq))
+            .or_else(|| {
+                parse_keyword::<rust_opaque_codec_moi, _>(
+                    input,
+                    &lookahead,
+                    rust_opaque_codec_moi,
+                    RustOpaqueCodecMoi,
+                )
+            })
+            .or_else(|| parse_keyword::<serialize, _>(input, &lookahead, serialize, Serialize))
+            .or_else(|| {
+                parse_keyword::<semi_serialize, _>(input, &lookahead, semi_serialize, SemiSerialize)
+            });
+        if let Some(keyword_output) = keyword_output {
+            return keyword_output;
+        }
+
         Ok(if lookahead.peek(frb_keyword::mirror) {
             input.parse::<frb_keyword::mirror>()?;
             input.parse().map(FrbAttribute::Mirror)?
-        } else if lookahead.peek(frb_keyword::non_final) {
-            input
-                .parse::<frb_keyword::non_final>()
-                .map(|_| FrbAttribute::NonFinal)?
-        } else if lookahead.peek(frb_keyword::sync) {
-            input
-                .parse::<frb_keyword::sync>()
-                .map(|_| FrbAttribute::Sync)?
-        } else if lookahead.peek(frb_keyword::getter) {
-            input
-                .parse::<frb_keyword::getter>()
-                .map(|_| FrbAttribute::Getter)?
-        } else if lookahead.peek(frb_keyword::init) {
-            input
-                .parse::<frb_keyword::init>()
-                .map(|_| FrbAttribute::Init)?
-        } else if lookahead.peek(frb_keyword::ignore) {
-            input
-                .parse::<frb_keyword::ignore>()
-                .map(|_| FrbAttribute::Ignore)?
-        } else if lookahead.peek(frb_keyword::opaque) {
-            input
-                .parse::<frb_keyword::opaque>()
-                .map(|_| FrbAttribute::Opaque)?
-        } else if lookahead.peek(frb_keyword::non_opaque) {
-            input
-                .parse::<frb_keyword::non_opaque>()
-                .map(|_| FrbAttribute::NonOpaque)?
-        } else if lookahead.peek(frb_keyword::rust_opaque_codec_moi) {
-            input
-                .parse::<frb_keyword::rust_opaque_codec_moi>()
-                .map(|_| FrbAttribute::RustOpaqueCodecMoi)?
-        } else if lookahead.peek(frb_keyword::serialize) {
-            input
-                .parse::<frb_keyword::serialize>()
-                .map(|_| FrbAttribute::Serialize)?
-        } else if lookahead.peek(frb_keyword::semi_serialize) {
-            input
-                .parse::<frb_keyword::semi_serialize>()
-                .map(|_| FrbAttribute::SemiSerialize)?
         } else if lookahead.peek(frb_keyword::dart_metadata) {
             input.parse().map(FrbAttribute::Metadata)?
-        } else if lookahead.peek(Token![default]) {
-            input.parse::<Token![default]>()?;
+        } else if lookahead.peek(default) {
+            input.parse::<default>()?;
             input.parse::<Token![=]>()?;
             input.parse().map(FrbAttribute::Default)?
+        } else if lookahead.peek(dart_code) {
+            input.parse::<dart_code>()?;
+            input.parse::<Token![=]>()?;
+            input.parse().map(FrbAttribute::DartCode)?
         } else {
             return Err(lookahead.error());
         })
     }
+}
+
+fn parse_keyword<T: Parse, S: Peek>(
+    input: ParseStream,
+    lookahead: &Lookahead1,
+    token: S,
+    attribute: FrbAttribute,
+) -> Option<Result<FrbAttribute>> {
+    lookahead
+        .peek(token)
+        .then(|| input.parse::<T>().map(|_| attribute))
 }
 
 #[derive(Clone, Debug, Eq, PartialEq)]
@@ -432,11 +460,21 @@ fn serialize_punctuated<S: Serializer>(
     lit.into_iter().collect_vec().serialize(s)
 }
 
+#[derive(Clone, Serialize, Eq, PartialEq, Debug)]
+struct FrbAttributeDartCode(String);
+
+impl Parse for FrbAttributeDartCode {
+    fn parse(input: ParseStream) -> Result<Self> {
+        input.parse::<syn::LitStr>().map(|x| Self(x.value()))
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use crate::codegen::ir::default::IrDefaultValue;
     use crate::codegen::parser::attribute_parser::{
-        FrbAttribute, FrbAttributeDefaultValue, FrbAttributeMirror, FrbAttributes, NamedOption,
+        FrbAttribute, FrbAttributeDartCode, FrbAttributeDefaultValue, FrbAttributeMirror,
+        FrbAttributes, NamedOption,
     };
     use crate::if_then_some;
     use quote::quote;
@@ -493,69 +531,69 @@ mod tests {
         Ok(())
     }
 
-    #[test]
-    fn test_non_final() -> anyhow::Result<()> {
-        assert_eq!(
-            parse("#[frb(non_final)]")?,
-            FrbAttributes(vec![FrbAttribute::NonFinal]),
-        );
-        Ok(())
+    fn simple_keyword_tester(keyword_name: &str, attribute: FrbAttribute) {
+        let parsed = parse(&format!("#[frb({keyword_name})]")).unwrap();
+        assert_eq!(parsed, FrbAttributes(vec![attribute]));
     }
 
     #[test]
-    fn test_sync() -> anyhow::Result<()> {
-        assert_eq!(
-            parse("#[frb(sync)]")?,
-            FrbAttributes(vec![FrbAttribute::Sync]),
-        );
-        Ok(())
+    fn test_non_final() {
+        simple_keyword_tester("non_final", FrbAttribute::NonFinal);
     }
 
     #[test]
-    fn test_getter() -> anyhow::Result<()> {
-        assert_eq!(
-            parse("#[frb(getter)]")?,
-            FrbAttributes(vec![FrbAttribute::Getter]),
-        );
-        Ok(())
+    fn test_sync() {
+        simple_keyword_tester("sync", FrbAttribute::Sync);
     }
 
     #[test]
-    fn test_init() -> anyhow::Result<()> {
-        assert_eq!(
-            parse("#[frb(init)]")?,
-            FrbAttributes(vec![FrbAttribute::Init]),
-        );
-        Ok(())
+    fn test_getter() {
+        simple_keyword_tester("getter", FrbAttribute::Getter);
     }
 
     #[test]
-    fn test_ignore() -> anyhow::Result<()> {
-        let parsed = parse("#[frb(ignore)]")?;
-        assert_eq!(parsed, FrbAttributes(vec![FrbAttribute::Ignore]));
-        Ok(())
+    fn test_init() {
+        simple_keyword_tester("init", FrbAttribute::Init);
     }
 
     #[test]
-    fn test_opaque() -> anyhow::Result<()> {
-        let parsed = parse("#[frb(opaque)]")?;
-        assert_eq!(parsed, FrbAttributes(vec![FrbAttribute::Opaque]));
-        Ok(())
+    fn test_ignore() {
+        simple_keyword_tester("ignore", FrbAttribute::Ignore);
     }
 
     #[test]
-    fn test_non_opaque() -> anyhow::Result<()> {
-        let parsed = parse("#[frb(non_opaque)]")?;
-        assert_eq!(parsed, FrbAttributes(vec![FrbAttribute::NonOpaque]));
-        Ok(())
+    fn test_opaque() {
+        simple_keyword_tester("opaque", FrbAttribute::Opaque);
     }
 
     #[test]
-    fn test_rust_opaque_codec_moi() -> anyhow::Result<()> {
-        let parsed = parse("#[frb(rust_opaque_codec_moi)]")?;
+    fn test_non_opaque() {
+        simple_keyword_tester("non_opaque", FrbAttribute::NonOpaque);
+    }
+
+    #[test]
+    fn test_non_hash() {
+        simple_keyword_tester("non_hash", FrbAttribute::NonHash);
+    }
+
+    #[test]
+    fn test_non_eq() {
+        simple_keyword_tester("non_eq", FrbAttribute::NonEq);
+    }
+
+    #[test]
+    fn test_rust_opaque_codec_moi() {
+        simple_keyword_tester("rust_opaque_codec_moi", FrbAttribute::RustOpaqueCodecMoi);
+    }
+
+    #[test]
+    fn test_dart_code() -> anyhow::Result<()> {
+        let parsed = parse(r###"#[frb(dart_code="a\nb\nc")]"###)?;
         assert_eq!(
             parsed,
-            FrbAttributes(vec![FrbAttribute::RustOpaqueCodecMoi])
+            FrbAttributes(vec![FrbAttribute::DartCode(FrbAttributeDartCode(
+                "a\nb\nc".to_owned()
+            ))])
         );
         Ok(())
     }
