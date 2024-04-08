@@ -15981,6 +15981,14 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_close_event_listener_twin_no
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_create_event_sync_twin_normal(
+    address: *mut wire_cst_list_prim_u_8_strict,
+    payload: *mut wire_cst_list_prim_u_8_strict,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_create_event_sync_twin_normal_impl(address, payload)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_create_event_twin_normal(
     port_: i64,
     address: *mut wire_cst_list_prim_u_8_strict,

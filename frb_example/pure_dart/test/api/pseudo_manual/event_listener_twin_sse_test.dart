@@ -20,4 +20,21 @@ Future<void> main({bool skipRustLibInit = false}) async {
     await createEventTwinSse(address: 'foo', payload: 'bar');
     await closeEventListenerTwinSse();
   });
+
+  // #1836
+  test('when send event before async gap, should receive it', () async {
+    final logs = <String>[];
+
+    final stream = registerEventListenerTwinSse();
+    stream.listen((event) => logs.add(event.address));
+
+    // main call to test #1836
+    await createEventTwinSse(address: 'one', payload: '');
+
+    await createEventTwinSse(address: 'two', payload: '');
+
+    await closeEventListenerTwinSse();
+
+    expect(logs, ['one', 'two']);
+  });
 }

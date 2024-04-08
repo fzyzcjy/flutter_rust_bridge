@@ -33829,6 +33829,10 @@ class RustLibWire implements BaseWire {
   void wire_close_event_listener_twin_normal(NativePortType port_) =>
       wasmModule.wire_close_event_listener_twin_normal(port_);
 
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_create_event_sync_twin_normal(String address, String payload) =>
+          wasmModule.wire_create_event_sync_twin_normal(address, payload);
+
   void wire_create_event_twin_normal(
           NativePortType port_, String address, String payload) =>
       wasmModule.wire_create_event_twin_normal(port_, address, payload);
@@ -51428,6 +51432,9 @@ class RustLibWasmModule implements WasmModule {
       NativePortType port_, List<dynamic> note);
 
   external void wire_close_event_listener_twin_normal(NativePortType port_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_create_event_sync_twin_normal(String address, String payload);
 
   external void wire_create_event_twin_normal(
       NativePortType port_, String address, String payload);
