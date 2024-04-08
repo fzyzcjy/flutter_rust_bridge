@@ -4,4 +4,9 @@ class RustStreamSink<T> {
   String serialize() {
     return TODO;
   }
+
+  /// The Dart stream for the Rust sink
+  Stream<T> get stream {
+    return TODO;
+  }
 }
