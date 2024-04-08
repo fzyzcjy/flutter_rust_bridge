@@ -25,12 +25,12 @@ pub(crate) fn generate_wire_func(
 
     let ir_pack = context.ir_pack;
     let params = dart2rust_codec.generate_func_params(func, context);
-    let inner_func_args = generate_inner_func_args(func, ir_pack, context);
+    let inner_func_args = generate_inner_func_args(func);
     let wrap_info_obj = generate_wrap_info_obj(func);
     let code_decode = dart2rust_codec.generate_func_call_decode(func, context);
     let code_inner_decode = generate_code_inner_decode(func);
     let code_call_inner_func_result = generate_code_call_inner_func_result(func, inner_func_args);
-    let handler_func_name = generate_handler_func_name(func, ir_pack, context);
+    let handler_func_name = generate_handler_func_name(func);
     let return_type = generate_return_type(func);
     let code_closure = generate_code_closure(
         func,
@@ -68,11 +68,7 @@ pub(crate) fn generate_wire_func(
     })
 }
 
-fn generate_inner_func_args(
-    func: &IrFunc,
-    ir_pack: &IrPack,
-    context: WireRustGeneratorContext,
-) -> Vec<String> {
+fn generate_inner_func_args(func: &IrFunc) -> Vec<String> {
     let ans = func
         .inputs
         .iter()
@@ -160,11 +156,7 @@ fn generate_code_call_inner_func_result(func: &IrFunc, inner_func_args: Vec<Stri
     ans
 }
 
-fn generate_handler_func_name(
-    func: &IrFunc,
-    _ir_pack: &IrPack,
-    _context: WireRustGeneratorContext,
-) -> String {
+fn generate_handler_func_name(func: &IrFunc) -> String {
     let codec = format!(
         "flutter_rust_bridge::for_generated::{}Codec",
         func.codec_mode_pack.rust2dart.delegate_or_self()
@@ -178,16 +170,6 @@ fn generate_handler_func_name(
             } else {
                 "wrap_normal"
             };
-
-            // let output = if matches!(func.mode, IrFuncMode::Stream { .. }) {
-            //     "()".to_owned()
-            // } else {
-            //     WireRustCodecDcoGenerator::new(
-            //         func.output.clone(),
-            //         context.as_wire_rust_codec_dco_context(),
-            //     )
-            //     .intodart_type(ir_pack)
-            // };
 
             let generic_args = if func.rust_async {
                 format!("<{codec},_,_,_>")
