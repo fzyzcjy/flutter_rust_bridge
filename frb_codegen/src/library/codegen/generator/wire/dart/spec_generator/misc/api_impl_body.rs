@@ -51,17 +51,23 @@ pub(crate) fn generate_api_impl_normal_function(
             return {return_stream_name}.stream;
             ",
             return_stream_name = return_stream.field.name.raw,
-            maybe_await = if func.mode == IrFuncMode::Sync {
-                ""
-            } else {
+            maybe_await = if func.mode != IrFuncMode::Sync {
                 "await "
+            } else {
+                ""
             },
         )
     } else {
         format!("return {call_handler};")
     };
-    let function_implementation =
-        format!("@override {func_expr} {{ {function_implementation_body} }}");
+    let function_implementation = format!(
+        "@override {func_expr} {maybe_async} {{ {function_implementation_body} }}",
+        maybe_async = if func.mode != IrFuncMode::Sync && api_dart_func.return_stream.is_some() {
+            "async "
+        } else {
+            ""
+        },
+    );
 
     let companion_field_implementation = generate_companion_field(func, &const_meta_field_name);
 

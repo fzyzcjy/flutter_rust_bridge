@@ -80,7 +80,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
-  Future<int> helloStream({dynamic hint}) {
+  Future<int> helloStream({dynamic hint}) async {
     final sink = RustStreamSink();
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
