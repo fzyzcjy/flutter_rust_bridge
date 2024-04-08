@@ -33,6 +33,10 @@ impl BaseCodec for SseCodec {
     fn encode_close_stream() -> Self::Message {
         Self::encode(Rust2DartAction::CloseStream, |_| {})
     }
+
+    fn encode_stream_ready() -> Self::Message {
+        Self::encode(Rust2DartAction::StreamReady, |_| {})
+    }
 }
 
 impl SseCodec {

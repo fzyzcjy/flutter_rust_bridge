@@ -20,6 +20,10 @@ impl BaseCodec for DcoCodec {
     fn encode_close_stream() -> Self::Message {
         Rust2DartMessageDco(vec![Rust2DartAction::CloseStream.into_dart()].into_dart())
     }
+
+    fn encode_stream_ready() -> Self::Message {
+        Rust2DartMessageDco(vec![Rust2DartAction::StreamReady.into_dart()].into_dart())
+    }
 }
 
 impl DcoCodec {
