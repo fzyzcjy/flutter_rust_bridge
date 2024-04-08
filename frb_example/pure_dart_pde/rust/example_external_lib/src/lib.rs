@@ -4,6 +4,7 @@
 //!
 
 use std::collections::HashMap;
+use std::sync::Mutex;
 
 #[derive(Debug, Clone)]
 pub struct RawStringMirrored {
@@ -118,4 +119,25 @@ pub fn repeat_number(num: i32, times: usize) -> Numbers {
 
 pub fn repeat_sequences(seq: i32, times: usize) -> Sequences {
     Sequences(vec![seq; times])
+}
+
+pub struct SimpleTranslatableExternalStructWithMethod {
+    pub a: String,
+}
+
+impl SimpleTranslatableExternalStructWithMethod {
+    pub fn simple_external_method(&self) -> String {
+        self.a.to_owned()
+    }
+}
+
+pub struct SimpleOpaqueExternalStructWithMethod {
+    // Use `Mutex` thus it is never translatable
+    pub a: Mutex<String>,
+}
+
+impl SimpleOpaqueExternalStructWithMethod {
+    pub fn simple_external_method(&self) -> String {
+        (*self.a.lock().unwrap()).to_string()
+    }
 }

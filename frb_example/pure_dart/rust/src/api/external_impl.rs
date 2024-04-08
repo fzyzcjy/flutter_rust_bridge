@@ -1,8 +1,7 @@
+use flutter_rust_bridge::frb;
 pub use frb_example_pure_dart_example_external_lib::{
     SimpleOpaqueExternalStructWithMethod, SimpleTranslatableExternalStructWithMethod,
 };
-
-use flutter_rust_bridge::frb;
 
 #[frb(mirror(SimpleTranslatableExternalStructWithMethod))]
 pub struct _SimpleTranslatableExternalStructWithMethod {

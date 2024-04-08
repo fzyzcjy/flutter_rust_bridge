@@ -116,6 +116,11 @@ import 'api/pseudo_manual/exception_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/exception_twin_sse.dart';
 import 'api/pseudo_manual/exception_twin_sync.dart';
 import 'api/pseudo_manual/exception_twin_sync_sse.dart';
+import 'api/pseudo_manual/external_impl_twin_rust_async.dart';
+import 'api/pseudo_manual/external_impl_twin_rust_async_sse.dart';
+import 'api/pseudo_manual/external_impl_twin_sse.dart';
+import 'api/pseudo_manual/external_impl_twin_sync.dart';
+import 'api/pseudo_manual/external_impl_twin_sync_sse.dart';
 import 'api/pseudo_manual/external_type_in_crate_twin_rust_async.dart';
 import 'api/pseudo_manual/external_type_in_crate_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/external_type_in_crate_twin_sse.dart';
@@ -60818,6 +60823,240 @@ class RustLibWire implements BaseWire {
   late final _wire_throw_anyhow_twin_sync_sse =
       _wire_throw_anyhow_twin_sync_ssePtr.asFunction<
           WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void
+      wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_rust_async(
+    int port_,
+    int that,
+  ) {
+    return _wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_rust_async(
+      port_,
+      that,
+    );
+  }
+
+  late final _wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_rust_asyncPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
+          'frbgen_frb_example_pure_dart_wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_rust_async');
+  late final _wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_rust_async =
+      _wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_rust_asyncPtr
+          .asFunction<void Function(int, int)>();
+
+  void
+      wire_simple_translatable_external_struct_with_method_simple_external_method_twin_rust_async(
+    int port_,
+    ffi.Pointer<wire_cst_simple_translatable_external_struct_with_method> that,
+  ) {
+    return _wire_simple_translatable_external_struct_with_method_simple_external_method_twin_rust_async(
+      port_,
+      that,
+    );
+  }
+
+  late final _wire_simple_translatable_external_struct_with_method_simple_external_method_twin_rust_asyncPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(
+                      ffi.Int64,
+                      ffi.Pointer<
+                          wire_cst_simple_translatable_external_struct_with_method>)>>(
+          'frbgen_frb_example_pure_dart_wire_simple_translatable_external_struct_with_method_simple_external_method_twin_rust_async');
+  late final _wire_simple_translatable_external_struct_with_method_simple_external_method_twin_rust_async =
+      _wire_simple_translatable_external_struct_with_method_simple_external_method_twin_rust_asyncPtr
+          .asFunction<
+              void Function(
+                  int,
+                  ffi.Pointer<
+                      wire_cst_simple_translatable_external_struct_with_method>)>();
+
+  void
+      wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_rust_async_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_rust_async_sse');
+  late final _wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_rust_async_sse =
+      _wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void
+      wire_simple_translatable_external_struct_with_method_simple_external_method_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_simple_translatable_external_struct_with_method_simple_external_method_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_simple_translatable_external_struct_with_method_simple_external_method_twin_rust_async_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_simple_translatable_external_struct_with_method_simple_external_method_twin_rust_async_sse');
+  late final _wire_simple_translatable_external_struct_with_method_simple_external_method_twin_rust_async_sse =
+      _wire_simple_translatable_external_struct_with_method_simple_external_method_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void
+      wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_sse');
+  late final _wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_sse =
+      _wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void
+      wire_simple_translatable_external_struct_with_method_simple_external_method_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_simple_translatable_external_struct_with_method_simple_external_method_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_simple_translatable_external_struct_with_method_simple_external_method_twin_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_simple_translatable_external_struct_with_method_simple_external_method_twin_sse');
+  late final _wire_simple_translatable_external_struct_with_method_simple_external_method_twin_sse =
+      _wire_simple_translatable_external_struct_with_method_simple_external_method_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartDco
+      wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_sync(
+    int that,
+  ) {
+    return _wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_sync(
+      that,
+    );
+  }
+
+  late final _wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_syncPtr =
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.UintPtr)>>(
+          'frbgen_frb_example_pure_dart_wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_sync');
+  late final _wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_sync =
+      _wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_syncPtr
+          .asFunction<WireSyncRust2DartDco Function(int)>();
+
+  WireSyncRust2DartDco
+      wire_simple_translatable_external_struct_with_method_simple_external_method_twin_sync(
+    ffi.Pointer<wire_cst_simple_translatable_external_struct_with_method> that,
+  ) {
+    return _wire_simple_translatable_external_struct_with_method_simple_external_method_twin_sync(
+      that,
+    );
+  }
+
+  late final _wire_simple_translatable_external_struct_with_method_simple_external_method_twin_syncPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  WireSyncRust2DartDco Function(
+                      ffi.Pointer<
+                          wire_cst_simple_translatable_external_struct_with_method>)>>(
+          'frbgen_frb_example_pure_dart_wire_simple_translatable_external_struct_with_method_simple_external_method_twin_sync');
+  late final _wire_simple_translatable_external_struct_with_method_simple_external_method_twin_sync =
+      _wire_simple_translatable_external_struct_with_method_simple_external_method_twin_syncPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<
+                      wire_cst_simple_translatable_external_struct_with_method>)>();
+
+  WireSyncRust2DartSse
+      wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_sync_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  WireSyncRust2DartSse Function(
+                      ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_sync_sse');
+  late final _wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_sync_sse =
+      _wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_sync_ssePtr
+          .asFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse
+      wire_simple_translatable_external_struct_with_method_simple_external_method_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_simple_translatable_external_struct_with_method_simple_external_method_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_simple_translatable_external_struct_with_method_simple_external_method_twin_sync_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  WireSyncRust2DartSse Function(
+                      ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_simple_translatable_external_struct_with_method_simple_external_method_twin_sync_sse');
+  late final _wire_simple_translatable_external_struct_with_method_simple_external_method_twin_sync_sse =
+      _wire_simple_translatable_external_struct_with_method_simple_external_method_twin_sync_ssePtr
+          .asFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_call_new_module_system_twin_rust_async(
     int port_,

@@ -4944,15 +4944,13 @@ impl CstDecode<crate::api::pseudo_manual::method_twin_sync::SimpleStructTwinSync
         .into()
     }
 }
-impl CstDecode<crate::api::external_impl::SimpleTranslatableExternalStructWithMethod>
-    for *mut wire_cst_simple_translatable_external_struct_with_method
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> crate::api::external_impl::SimpleTranslatableExternalStructWithMethod {
-        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-        CstDecode::<crate::api::external_impl::SimpleTranslatableExternalStructWithMethod>::cst_decode(*wrap).into()
-    }
-}
+impl CstDecode<crate::api::pseudo_manual::external_impl_twin_sync_sse::SimpleTranslatableExternalStructWithMethod> for *mut wire_cst_simple_translatable_external_struct_with_method {
+            // Codec=Cst (C-struct based), see doc to use other codecs
+            fn cst_decode(self) -> crate::api::pseudo_manual::external_impl_twin_sync_sse::SimpleTranslatableExternalStructWithMethod {
+                let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+                CstDecode::<crate::api::pseudo_manual::external_impl_twin_sync_sse::SimpleTranslatableExternalStructWithMethod>::cst_decode(*wrap).into()
+            }
+        }
 impl CstDecode<crate::api::exception::SomeStructTwinNormal>
     for *mut wire_cst_some_struct_twin_normal
 {
@@ -10477,16 +10475,12 @@ impl CstDecode<crate::api::pseudo_manual::method_twin_sync::SimpleStructTwinSync
         }
     }
 }
-impl CstDecode<crate::api::external_impl::SimpleTranslatableExternalStructWithMethod>
-    for wire_cst_simple_translatable_external_struct_with_method
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> crate::api::external_impl::SimpleTranslatableExternalStructWithMethod {
-        crate::api::external_impl::SimpleTranslatableExternalStructWithMethod {
-            a: self.a.cst_decode(),
+impl CstDecode<crate::api::pseudo_manual::external_impl_twin_sync_sse::SimpleTranslatableExternalStructWithMethod> for wire_cst_simple_translatable_external_struct_with_method {
+            // Codec=Cst (C-struct based), see doc to use other codecs
+            fn cst_decode(self) -> crate::api::pseudo_manual::external_impl_twin_sync_sse::SimpleTranslatableExternalStructWithMethod {
+                crate::api::pseudo_manual::external_impl_twin_sync_sse::SimpleTranslatableExternalStructWithMethod{a:  self.a.cst_decode()}
+            }
         }
-    }
-}
 impl CstDecode<crate::api::exception::SomeStructTwinNormal> for wire_cst_some_struct_twin_normal {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::exception::SomeStructTwinNormal {
@@ -26065,6 +26059,121 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_throw_anyhow_twin_sync_sse(
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_throw_anyhow_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_rust_async(
+    port_: i64,
+    that: usize,
+) {
+    wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_rust_async_impl(
+        port_, that,
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_simple_translatable_external_struct_with_method_simple_external_method_twin_rust_async(
+    port_: i64,
+    that: *mut wire_cst_simple_translatable_external_struct_with_method,
+) {
+    wire_simple_translatable_external_struct_with_method_simple_external_method_twin_rust_async_impl(
+        port_, that,
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_rust_async_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_simple_translatable_external_struct_with_method_simple_external_method_twin_rust_async_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_simple_translatable_external_struct_with_method_simple_external_method_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_simple_translatable_external_struct_with_method_simple_external_method_twin_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_simple_translatable_external_struct_with_method_simple_external_method_twin_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_sync(
+    that: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_sync_impl(that)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_simple_translatable_external_struct_with_method_simple_external_method_twin_sync(
+    that: *mut wire_cst_simple_translatable_external_struct_with_method,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_simple_translatable_external_struct_with_method_simple_external_method_twin_sync_impl(that)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_sync_sse(
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_sync_sse_impl(
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_simple_translatable_external_struct_with_method_simple_external_method_twin_sync_sse(
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_simple_translatable_external_struct_with_method_simple_external_method_twin_sync_sse_impl(
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
 }
 
 #[no_mangle]

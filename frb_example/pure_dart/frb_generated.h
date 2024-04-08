@@ -7492,6 +7492,44 @@ WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire_throw_anyhow_twin_sync_ss
                                                                                   int32_t rust_vec_len_,
                                                                                   int32_t data_len_);
 
+void frbgen_frb_example_pure_dart_wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_rust_async(int64_t port_,
+                                                                                                                   uintptr_t that);
+
+void frbgen_frb_example_pure_dart_wire_simple_translatable_external_struct_with_method_simple_external_method_twin_rust_async(int64_t port_,
+                                                                                                                              struct wire_cst_simple_translatable_external_struct_with_method *that);
+
+void frbgen_frb_example_pure_dart_wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_rust_async_sse(int64_t port_,
+                                                                                                                       uint8_t *ptr_,
+                                                                                                                       int32_t rust_vec_len_,
+                                                                                                                       int32_t data_len_);
+
+void frbgen_frb_example_pure_dart_wire_simple_translatable_external_struct_with_method_simple_external_method_twin_rust_async_sse(int64_t port_,
+                                                                                                                                  uint8_t *ptr_,
+                                                                                                                                  int32_t rust_vec_len_,
+                                                                                                                                  int32_t data_len_);
+
+void frbgen_frb_example_pure_dart_wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_sse(int64_t port_,
+                                                                                                            uint8_t *ptr_,
+                                                                                                            int32_t rust_vec_len_,
+                                                                                                            int32_t data_len_);
+
+void frbgen_frb_example_pure_dart_wire_simple_translatable_external_struct_with_method_simple_external_method_twin_sse(int64_t port_,
+                                                                                                                       uint8_t *ptr_,
+                                                                                                                       int32_t rust_vec_len_,
+                                                                                                                       int32_t data_len_);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_sync(uintptr_t that);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_simple_translatable_external_struct_with_method_simple_external_method_twin_sync(struct wire_cst_simple_translatable_external_struct_with_method *that);
+
+WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_sync_sse(uint8_t *ptr_,
+                                                                                                                                 int32_t rust_vec_len_,
+                                                                                                                                 int32_t data_len_);
+
+WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire_simple_translatable_external_struct_with_method_simple_external_method_twin_sync_sse(uint8_t *ptr_,
+                                                                                                                                            int32_t rust_vec_len_,
+                                                                                                                                            int32_t data_len_);
+
 void frbgen_frb_example_pure_dart_wire_call_new_module_system_twin_rust_async(int64_t port_);
 
 void frbgen_frb_example_pure_dart_wire_call_old_module_system_twin_rust_async(int64_t port_);
@@ -14817,6 +14855,11 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinSync_static_method_arg_own_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinSync_static_method_return_own_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_SimpleOpaqueExternalStructWithMethod_simple_external_method);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_sync);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_StaticGetterOnlyTwinNormal_static_getter_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_StaticGetterOnlyTwinRustAsyncSse_static_getter_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_StaticGetterOnlyTwinRustAsync_static_getter_twin_rust_async);
@@ -16901,6 +16944,11 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_simple_struct_twin_sync_sse_vec_self_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_simple_struct_twin_sync_vec_self_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_simple_translatable_external_struct_with_method_simple_external_method);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_simple_translatable_external_struct_with_method_simple_external_method_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_simple_translatable_external_struct_with_method_simple_external_method_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_simple_translatable_external_struct_with_method_simple_external_method_twin_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_simple_translatable_external_struct_with_method_simple_external_method_twin_sync);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_simple_translatable_external_struct_with_method_simple_external_method_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_simple_use_async_spawn);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_simple_use_async_spawn_blocking);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_simple_use_async_spawn_local);

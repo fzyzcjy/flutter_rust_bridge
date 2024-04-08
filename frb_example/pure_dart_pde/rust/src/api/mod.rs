@@ -18,6 +18,7 @@ pub mod dropping;
 pub mod enumeration;
 pub mod event_listener;
 pub mod exception;
+pub mod external_impl;
 pub mod external_type_in_crate;
 pub mod inside_macro;
 pub mod map_and_set;

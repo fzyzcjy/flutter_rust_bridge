@@ -116,6 +116,11 @@ import 'api/pseudo_manual/exception_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/exception_twin_sse.dart';
 import 'api/pseudo_manual/exception_twin_sync.dart';
 import 'api/pseudo_manual/exception_twin_sync_sse.dart';
+import 'api/pseudo_manual/external_impl_twin_rust_async.dart';
+import 'api/pseudo_manual/external_impl_twin_rust_async_sse.dart';
+import 'api/pseudo_manual/external_impl_twin_sse.dart';
+import 'api/pseudo_manual/external_impl_twin_sync.dart';
+import 'api/pseudo_manual/external_impl_twin_sync_sse.dart';
 import 'api/pseudo_manual/external_type_in_crate_twin_rust_async.dart';
 import 'api/pseudo_manual/external_type_in_crate_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/external_type_in_crate_twin_sse.dart';
@@ -40609,6 +40614,86 @@ class RustLibWire implements BaseWire {
           wasmModule.wire_throw_anyhow_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
+  void wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_rust_async(
+          NativePortType port_, Object that) =>
+      wasmModule
+          .wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_rust_async(
+              port_, that);
+
+  void wire_simple_translatable_external_struct_with_method_simple_external_method_twin_rust_async(
+          NativePortType port_, List<dynamic> that) =>
+      wasmModule
+          .wire_simple_translatable_external_struct_with_method_simple_external_method_twin_rust_async(
+              port_, that);
+
+  void wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_simple_translatable_external_struct_with_method_simple_external_method_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire_simple_translatable_external_struct_with_method_simple_external_method_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_simple_translatable_external_struct_with_method_simple_external_method_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire_simple_translatable_external_struct_with_method_simple_external_method_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_sync(
+              Object that) =>
+          wasmModule
+              .wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_sync(
+                  that);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_simple_translatable_external_struct_with_method_simple_external_method_twin_sync(
+              List<dynamic> that) =>
+          wasmModule
+              .wire_simple_translatable_external_struct_with_method_simple_external_method_twin_sync(
+                  that);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_simple_translatable_external_struct_with_method_simple_external_method_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire_simple_translatable_external_struct_with_method_simple_external_method_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
   void wire_call_new_module_system_twin_rust_async(NativePortType port_) =>
       wasmModule.wire_call_new_module_system_twin_rust_async(port_);
 
@@ -55940,6 +56025,62 @@ class RustLibWasmModule implements WasmModule {
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_throw_anyhow_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_, int data_len_);
+
+  external void
+      wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_rust_async(
+          NativePortType port_, Object that);
+
+  external void
+      wire_simple_translatable_external_struct_with_method_simple_external_method_twin_rust_async(
+          NativePortType port_, List<dynamic> that);
+
+  external void
+      wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire_simple_translatable_external_struct_with_method_simple_external_method_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire_simple_translatable_external_struct_with_method_simple_external_method_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_sync(
+          Object that);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_simple_translatable_external_struct_with_method_simple_external_method_twin_sync(
+          List<dynamic> that);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_SimpleOpaqueExternalStructWithMethod_simple_external_method_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_simple_translatable_external_struct_with_method_simple_external_method_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
 
   external void wire_call_new_module_system_twin_rust_async(
       NativePortType port_);
