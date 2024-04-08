@@ -1,7 +1,3 @@
-pub(crate) mod argument;
-pub(crate) mod output;
-mod transformer;
-
 use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::func::{
@@ -14,7 +10,7 @@ use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::function_extractor::GeneralizedItemFn;
 use crate::codegen::parser::type_parser::misc::parse_comments;
-use crate::codegen::parser::type_parser::{TypeParser, TypeParserParsingContext};
+use crate::codegen::parser::type_parser::{external_impl, TypeParser, TypeParserParsingContext};
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use anyhow::{bail, Context};
 use itertools::concat;
@@ -23,6 +19,12 @@ use std::fmt::Debug;
 use std::path::Path;
 use syn::*;
 use IrType::Primitive;
+
+pub(crate) mod argument;
+pub(crate) mod output;
+mod transformer;
+
+const STREAM_SINK_IDENT: &str = "StreamSink";
 
 pub(crate) struct FunctionParser<'a, 'b> {
     type_parser: &'a mut TypeParser<'b>,
@@ -137,18 +139,16 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     IrFuncOwnerInfoMethodMode::Static
                 };
 
-                let (enum_or_struct_ty, enum_or_struct_name) =
-                    if let Some(x) = self.parse_enum_or_struct_name(item_impl, context)? {
-                        x
-                    } else {
-                        return Ok(None);
-                    };
+                let owner_ty = if let Some(x) = self.parse_method_owner_ty(item_impl, context)? {
+                    x
+                } else {
+                    return Ok(None);
+                };
 
                 let actual_method_name = impl_item_fn.sig.ident.to_string();
 
                 IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod {
-                    enum_or_struct_ty,
-                    enum_or_struct_name,
+                    owner_ty,
                     actual_method_name,
                     mode,
                 })
@@ -156,23 +156,22 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         }))
     }
 
-    fn parse_enum_or_struct_name(
+    fn parse_method_owner_ty(
         &mut self,
         item_impl: &ItemImpl,
         context: &TypeParserParsingContext,
-    ) -> anyhow::Result<Option<(IrType, NamespacedName)>> {
+    ) -> anyhow::Result<Option<IrType>> {
         let self_ty_path = if let Type::Path(self_ty_path) = item_impl.self_ty.as_ref() {
             self_ty_path
         } else {
             return Ok(None);
         };
 
-        let enum_or_struct_name = (self_ty_path.path.segments.first().unwrap().ident).to_string();
-        let syn_ty: Type = parse_str(&enum_or_struct_name)?;
-        let ty = self.type_parser.parse_type(&syn_ty, context)?;
-
-        let namespace: Option<Namespace> = ty.self_namespace();
-        Ok(namespace.map(|namespace| (ty, NamespacedName::new(namespace, enum_or_struct_name))))
+        let owner_ty_name = external_impl::parse_name_or_original(
+            &(self_ty_path.path.segments.first().unwrap().ident).to_string(),
+        )?;
+        let syn_ty: Type = parse_str(&owner_ty_name)?;
+        Ok(Some(self.type_parser.parse_type(&syn_ty, context)?))
     }
 }
 
@@ -188,10 +187,11 @@ fn parse_name(sig: &Signature, owner: &IrFuncOwnerInfo) -> String {
     match owner {
         IrFuncOwnerInfo::Function => sig.ident.to_string(),
         IrFuncOwnerInfo::Method(method) => {
-            format!(
-                "{}_{}",
-                method.enum_or_struct_name.name, method.actual_method_name
-            )
+            let owner_name = match &method.owner_ty {
+                IrType::RustAutoOpaque(ty) => ty.sanitized_type(),
+                ty => ty.safe_ident(),
+            };
+            format!("{owner_name}_{}", method.actual_method_name)
         }
     }
 }
