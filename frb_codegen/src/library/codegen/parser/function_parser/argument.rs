@@ -59,7 +59,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             .context("`self` must happen within methods")?;
 
         let ty_raw = self.type_parser.parse_type(
-            &parse_str::<Type>(&method.enum_or_struct_name().name)?,
+            &parse_str::<Type>(&method.owner_ty_name().name)?,
             context,
         )?;
         let ty = match ty_raw {

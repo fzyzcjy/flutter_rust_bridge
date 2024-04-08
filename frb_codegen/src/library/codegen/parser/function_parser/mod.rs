@@ -142,8 +142,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     IrFuncOwnerInfoMethodMode::Static
                 };
 
-                let enum_or_struct_ty =
-                    if let Some(x) = self.parse_enum_or_struct_ty(item_impl, context)? {
+                let owner_ty =
+                    if let Some(x) = self.parse_method_owner_ty(item_impl, context)? {
                         x
                     } else {
                         return Ok(None);
@@ -152,7 +152,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                 let actual_method_name = impl_item_fn.sig.ident.to_string();
 
                 IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod {
-                    enum_or_struct_ty,
+                    owner_ty,
                     actual_method_name,
                     mode,
                 })
@@ -160,7 +160,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         }))
     }
 
-    fn parse_enum_or_struct_ty(
+    fn parse_method_owner_ty(
         &mut self,
         item_impl: &ItemImpl,
         context: &TypeParserParsingContext,
@@ -171,10 +171,10 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             return Ok(None);
         };
 
-        let enum_or_struct_name = external_impl::parse_name_or_original(
+        let owner_ty_name = external_impl::parse_name_or_original(
             &(self_ty_path.path.segments.first().unwrap().ident).to_string(),
         )?;
-        let syn_ty: Type = parse_str(&enum_or_struct_name)?;
+        let syn_ty: Type = parse_str(&owner_ty_name)?;
         Ok(Some(self.type_parser.parse_type(&syn_ty, context)?))
     }
 }
@@ -193,7 +193,7 @@ fn parse_name(sig: &Signature, owner: &IrFuncOwnerInfo) -> String {
         IrFuncOwnerInfo::Method(method) => {
             format!(
                 "{}_{}",
-                method.enum_or_struct_ty.safe_ident(),
+                method.owner_ty.safe_ident(),
                 method.actual_method_name
             )
         }
