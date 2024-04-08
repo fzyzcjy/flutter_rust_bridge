@@ -100,7 +100,7 @@ fn generate_params(
     params
 }
 
-fn generate_func_impl(func: &IrFunc, dart_entrypoint_class_name: &str) -> String {
+fn generate_func_impl(func: &IrFunc, dart_entrypoint_class_name: &str) -> FunctionBody {
     let func_name = &func.name.name.to_case(Case::Camel);
     let param_names: Vec<String> = [
         (func.inputs.iter().map(|input| input.name.dart_style())).collect_vec(),
@@ -111,7 +111,10 @@ fn generate_func_impl(func: &IrFunc, dart_entrypoint_class_name: &str) -> String
         .iter()
         .map(|name| format!("{name}: {name}"))
         .join(", ");
-    format!("{dart_entrypoint_class_name}.instance.api.{func_name}({param_forwards})")
+    FunctionBody {
+        code: format!("{dart_entrypoint_class_name}.instance.api.{func_name}({param_forwards})"),
+        block: false,
+    }
 }
 
 fn generate_header(
