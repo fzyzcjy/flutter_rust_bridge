@@ -6,11 +6,11 @@ No special syntax is needed, and just write normal `impl YourStruct { pub fn you
 ## Methods in external crates
 
 For methods that are not defined in the `rust_input` folders in the current crate,
-the following syntax is needed to make flutter_rust_bridge aware of the methods.
+the `#[frb(external)]` syntax (see example below) is needed to make flutter_rust_bridge aware of the methods.
 
 ## Example
 
-### Example 1
+### Example 1: Methods in same crate
 
 ```rust
 pub struct SumWith { pub x: u32 }
@@ -38,3 +38,32 @@ class SumWith {
 ```
 
 Remark: If you are curious about `Future`, have a look at [this](../concurrency/async-dart).
+
+### Example 2: Methods in external crates
+
+Suppose we have these in external crates:
+
+```rust
+pub struct MyExternalStruct {
+    ...
+}
+
+impl MyExternalStruct {
+    pub fn simple_external_method(&self) -> String {
+        // ... some long implementations ...
+    }
+}
+```
+
+Then, we only need to repeat the function signatures in our main crate as follows:
+
+```rust
+#[frb(external)]
+impl MyExternalStruct {
+    pub fn simple_external_method(&self) -> String {}
+}
+```
+
+Remark: Just leave the function body empty (i.e. `{}`), no need to put anything there.
+
+This feature is compatible with the [mirroring](../types/translatable/external/diff-crate) feature as well.
