@@ -171,7 +171,7 @@ impl ExecuteNormalOrAsyncUtils {
                         sender.send_or_warn(result.into_dart_abi());
                     }
                     FfiCallMode::Stream => {
-                        sender.send_or_warn(Rust2DartCodec::encode_stream_ready().into_dart_abi());
+                        sender.send_or_warn(TODO);
                     }
                     // frb-coverage:ignore-start
                     _ => unreachable!(),
