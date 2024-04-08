@@ -4,7 +4,7 @@ use crate::generalized_isolate::{
     channel_to_handle, handle_to_channel, Channel, SendableChannelHandle,
 };
 use crate::platform_types::{
-    deserialize_sendable_message_port_handle, handle_to_message_port, MessagePort,
+    deserialize_sendable_message_port_handle, handle_to_message_port,
 };
 use crate::rust2dart::sender::{Rust2DartSendError, Rust2DartSender};
 use crate::stream::closer::StreamSinkCloser;

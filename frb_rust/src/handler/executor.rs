@@ -13,7 +13,7 @@ pub trait Executor {
     fn execute_normal<Rust2DartCodec, TaskFn>(&self, task_info: TaskInfo, task: TaskFn)
     where
         TaskFn: FnOnce(
-                TaskContext<Rust2DartCodec>,
+                TaskContext,
             ) -> Result<Rust2DartCodec::Message, Rust2DartCodec::Message>
             + Send
             + 'static,
@@ -32,7 +32,7 @@ pub trait Executor {
     #[cfg(feature = "rust-async")]
     fn execute_async<Rust2DartCodec, TaskFn, TaskRetFut>(&self, task_info: TaskInfo, task: TaskFn)
     where
-        TaskFn: FnOnce(TaskContext<Rust2DartCodec>) -> TaskRetFut + Send + 'static,
+        TaskFn: FnOnce(TaskContext) -> TaskRetFut + Send + 'static,
         TaskRetFut: Future<Output = Result<Rust2DartCodec::Message, Rust2DartCodec::Message>>
             + TaskRetFutTrait,
         Rust2DartCodec: BaseCodec;

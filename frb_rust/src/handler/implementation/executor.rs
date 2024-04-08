@@ -1,6 +1,6 @@
 use crate::codec::BaseCodec;
 use crate::codec::Rust2DartMessageTrait;
-use crate::generalized_isolate::{channel_to_handle, Channel};
+use crate::generalized_isolate::Channel;
 use crate::handler::error::Error;
 use crate::handler::error_listener::ErrorListener;
 use crate::handler::executor::Executor;
@@ -8,7 +8,6 @@ use crate::handler::handler::{FfiCallMode, TaskContext, TaskInfo, TaskRetFutTrai
 use crate::handler::implementation::error_listener::handle_non_sync_panic_error;
 use crate::misc::panic_backtrace::{CatchUnwindWithBacktrace, PanicBacktrace};
 use crate::platform_types::MessagePort;
-use crate::rust2dart::context::TaskRust2DartContext;
 use crate::rust2dart::sender::Rust2DartSender;
 use crate::rust_async::BaseAsyncRuntime;
 use crate::thread_pool::BaseThreadPool;
@@ -17,7 +16,6 @@ use crate::transfer;
 use futures::FutureExt;
 use std::future::Future;
 use std::panic::AssertUnwindSafe;
-use std::sync::Arc;
 
 /// The default executor used.
 /// It creates an internal thread pool, and each call to a Rust function is
@@ -49,9 +47,7 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
     #[cfg(feature = "thread-pool")]
     fn execute_normal<Rust2DartCodec, TaskFn>(&self, task_info: TaskInfo, task: TaskFn)
     where
-        TaskFn: FnOnce(
-                TaskContext<Rust2DartCodec>,
-            ) -> Result<Rust2DartCodec::Message, Rust2DartCodec::Message>
+        TaskFn: FnOnce(TaskContext) -> Result<Rust2DartCodec::Message, Rust2DartCodec::Message>
             + Send
             + 'static,
         Rust2DartCodec: BaseCodec,
@@ -68,13 +64,11 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
             let thread_result = PanicBacktrace::catch_unwind(AssertUnwindSafe(|| {
                 #[allow(clippy::clone_on_copy)]
                 let sender = Rust2DartSender::new(Channel::new(port2.clone()));
-                let task_context = TaskContext::new(TaskRust2DartContext::new(sender.clone()));
+                let task_context = TaskContext::new();
 
                 let ret = task(task_context);
 
-                ExecuteNormalOrAsyncUtils::handle_result::<Rust2DartCodec, _>(
-                    ret, mode, sender, el2, port2,
-                );
+                ExecuteNormalOrAsyncUtils::handle_result::<Rust2DartCodec, _>(ret, sender, el2);
             }));
 
             if let Err(error) = thread_result {
@@ -104,7 +98,7 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
     #[cfg(feature = "rust-async")]
     fn execute_async<Rust2DartCodec, TaskFn, TaskRetFut>(&self, task_info: TaskInfo, task: TaskFn)
     where
-        TaskFn: FnOnce(TaskContext<Rust2DartCodec>) -> TaskRetFut + Send + 'static,
+        TaskFn: FnOnce(TaskContext) -> TaskRetFut + Send + 'static,
         TaskRetFut: Future<Output = Result<Rust2DartCodec::Message, Rust2DartCodec::Message>>
             + TaskRetFutTrait,
         Rust2DartCodec: BaseCodec,
@@ -121,13 +115,11 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
             let async_result = AssertUnwindSafe(async {
                 #[allow(clippy::clone_on_copy)]
                 let sender = Rust2DartSender::new(Channel::new(port2.clone()));
-                let task_context = TaskContext::new(TaskRust2DartContext::new(sender.clone()));
+                let task_context = TaskContext::new();
 
                 let ret = task(task_context).await;
 
-                ExecuteNormalOrAsyncUtils::handle_result::<Rust2DartCodec, _>(
-                    ret, mode, sender, el2, port2,
-                );
+                ExecuteNormalOrAsyncUtils::handle_result::<Rust2DartCodec, _>(ret, sender, el2);
             })
             .catch_unwind()
             .await;
@@ -145,10 +137,8 @@ struct ExecuteNormalOrAsyncUtils;
 impl ExecuteNormalOrAsyncUtils {
     fn handle_result<Rust2DartCodec, EL>(
         ret: Result<Rust2DartCodec::Message, Rust2DartCodec::Message>,
-        mode: FfiCallMode,
         sender: Rust2DartSender,
         el: EL,
-        _port: MessagePort,
     ) where
         EL: ErrorListener + Sync,
         Rust2DartCodec: BaseCodec,
