@@ -43,10 +43,25 @@ pub(crate) fn generate_api_impl_normal_function(
             hint: hint,
         ))",
     );
-    let function_implementation_body = format!(
-        "return {call_handler};"
-    );
-    let function_implementation = format!("@override {func_expr} {{ {function_implementation_body} }}");
+    let function_implementation_body = if let Some(return_stream) = &api_dart_func.return_stream {
+        format!(
+            "
+            final {return_stream_name} = RustStreamSink();
+            {maybe_await}{call_handler};
+            return {return_stream_name}.stream;
+            ",
+            return_stream_name = return_stream.name.raw,
+            maybe_await = if func.mode == IrFuncMode::Sync {
+                ""
+            } else {
+                "await "
+            },
+        )
+    } else {
+        format!("return {call_handler};")
+    };
+    let function_implementation =
+        format!("@override {func_expr} {{ {function_implementation_body} }}");
 
     let companion_field_implementation = generate_companion_field(func, &const_meta_field_name);
 

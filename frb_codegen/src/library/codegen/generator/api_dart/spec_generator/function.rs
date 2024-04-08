@@ -28,6 +28,7 @@ pub(crate) struct ApiDartGeneratedFunction {
     pub(crate) func_expr: String,
     pub(crate) func_impl: String,
     pub(crate) src_lineno: usize,
+    pub(crate) return_stream: Option<ReturnStreamInfo>,
 }
 
 pub(crate) fn generate(
@@ -66,6 +67,7 @@ pub(crate) fn generate(
         func_expr,
         func_impl,
         src_lineno: func.src_lineno,
+        return_stream,
     })
 }
 
