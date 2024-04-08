@@ -63,17 +63,12 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
         let port = port.unwrap();
 
         self.thread_pool.execute(transfer!(|port: MessagePort| {
-            let stream_sink_closer = maybe_create_stream_sink_closer(&port, mode);
-
             #[allow(clippy::clone_on_copy)]
             let port2 = port.clone();
             let thread_result = PanicBacktrace::catch_unwind(AssertUnwindSafe(|| {
                 #[allow(clippy::clone_on_copy)]
                 let sender = Rust2DartSender::new(Channel::new(port2.clone()));
-                let task_context = TaskContext::new(TaskRust2DartContext::new(
-                    sender.clone(),
-                    stream_sink_closer.clone(),
-                ));
+                let task_context = TaskContext::new(TaskRust2DartContext::new(sender.clone()));
 
                 let ret = task(task_context);
 
@@ -123,15 +118,10 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
             #[allow(clippy::clone_on_copy)]
             let port2 = port.clone();
 
-            let stream_sink_closer = maybe_create_stream_sink_closer(&port, mode);
-
             let async_result = AssertUnwindSafe(async {
                 #[allow(clippy::clone_on_copy)]
                 let sender = Rust2DartSender::new(Channel::new(port2.clone()));
-                let task_context = TaskContext::new(TaskRust2DartContext::new(
-                    sender.clone(),
-                    stream_sink_closer.clone(),
-                ));
+                let task_context = TaskContext::new(TaskRust2DartContext::new(sender.clone()));
 
                 let ret = task(task_context).await;
 
@@ -165,17 +155,7 @@ impl ExecuteNormalOrAsyncUtils {
     {
         match ret {
             Ok(result) => {
-                match mode {
-                    FfiCallMode::Normal => {
-                        sender.send_or_warn(result.into_dart_abi());
-                    }
-                    FfiCallMode::Stream => {
-                        // nothing - ignore the return value of a Stream-typed function
-                    }
-                    // frb-coverage:ignore-start
-                    _ => unreachable!(),
-                    // frb-coverage:ignore-start
-                }
+                sender.send_or_warn(result.into_dart_abi());
             }
             Err(error) => {
                 el.on_error(Error::CustomError);
@@ -183,15 +163,4 @@ impl ExecuteNormalOrAsyncUtils {
             }
         };
     }
-}
-
-fn maybe_create_stream_sink_closer<Rust2DartCodec: BaseCodec>(
-    port: &MessagePort,
-    mode: FfiCallMode,
-) -> Option<Arc<StreamSinkCloser<Rust2DartCodec>>> {
-    (mode == FfiCallMode::Stream).then(|| {
-        #[allow(clippy::clone_on_copy)]
-        let handle = channel_to_handle(&Channel::new(port.clone()));
-        Arc::new(StreamSinkCloser::new(handle))
-    })
 }

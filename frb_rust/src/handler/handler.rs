@@ -88,8 +88,6 @@ pub enum FfiCallMode {
     Normal,
     /// Used by `SyncReturn<T>` to skip spawning workers.
     Sync,
-    /// Returns a Dart `Stream<T>`.
-    Stream,
 }
 
 #[cfg(not(wasm))]
