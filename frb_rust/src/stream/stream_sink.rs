@@ -17,7 +17,7 @@ pub struct StreamSinkBase<T, Rust2DartCodec: BaseCodec> {
 }
 
 impl<T, Rust2DartCodec: BaseCodec> StreamSinkBase<T, Rust2DartCodec> {
-    pub fn deserialize() -> Self {
+    pub fn deserialize(raw: String) -> Self {
         todo!()
     }
 
