@@ -15,6 +15,7 @@ use crate::utils::path_utils::path_to_string;
 use anyhow::Context;
 use itertools::Itertools;
 use pathdiff::diff_paths;
+use crate::codegen::generator::api_dart::spec_generator::function::ReturnStreamInfo;
 
 /// A trailing newline is included if comments is not empty.
 pub(crate) fn generate_dart_comments(comments: &[IrComment]) -> String {
@@ -57,11 +58,11 @@ pub(crate) fn generate_dart_maybe_implements_exception(is_exception: bool) -> &'
 pub(crate) fn generate_function_dart_return_type(
     func_mode: &IrFuncMode,
     raw_inner: &str,
-    return_stream: &Option<IrField>,
+    return_stream: &Option<ReturnStreamInfo>,
     context: ApiDartGeneratorContext,
 ) -> String {
     let inner = return_stream.as_ref()
-        .map(|field| ApiDartGenerator::new(field.ty.clone(), context).dart_api_type())
+        .map(|info| ApiDartGenerator::new(info.field.ty.clone(), context).dart_api_type())
         .unwrap_or(raw_inner.to_owned());
 
     match func_mode {

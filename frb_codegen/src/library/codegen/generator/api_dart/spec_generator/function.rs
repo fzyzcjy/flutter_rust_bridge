@@ -11,8 +11,9 @@ use crate::codegen::generator::api_dart::spec_generator::misc::{
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::func::{IrFunc, IrFuncMode};
 use crate::codegen::ir::namespace::Namespace;
-use crate::codegen::ir::ty::delegate::IrTypeDelegate;
+use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegateStreamSink};
 use crate::codegen::ir::ty::IrType;
+use crate::if_then_some;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::utils::basic_code::DartBasicHeaderCode;
 use convert_case::{Case, Casing};
@@ -69,12 +70,17 @@ pub(crate) fn generate(
     })
 }
 
-fn compute_return_stream(func: &IrFunc) -> Option<IrField> {
+pub(crate) struct ReturnStreamInfo {
+    pub field: IrField,
+    pub ty: IrTypeDelegateStreamSink,
+}
+
+fn compute_return_stream(func: &IrFunc) -> Option<ReturnStreamInfo> {
     let stream_sink_vars = (func.inputs.iter())
-        .filter(|input| matches!(input.ty, IrType::Delegate(IrTypeDelegate::StreamSink(_))))
+        .filter_map(|input| if_then_some!(let IrType::Delegate(IrTypeDelegate::StreamSink(ir)) = input.ty, (input.to_owned(), ir)))
         .collect_vec();
     if stream_sink_vars.len() == 1 {
-        Some(stream_sink_vars[0].to_owned())
+        Some(stream_sink_vars[0])
     } else {
         None
     }
@@ -84,10 +90,10 @@ fn generate_params(
     func: &IrFunc,
     context: ApiDartGeneratorContext,
     dart_enums_style: bool,
-    return_stream: &Option<IrField>,
+    return_stream: &Option<ReturnStreamInfo>,
 ) -> String {
     let mut params = (func.inputs.iter())
-        .filter(|field| Some(&field.name) != return_stream.as_ref().map(|s| &s.name))
+        .filter(|field| Some(&field.name) != return_stream.as_ref().map(|s| &s.field.name))
         .map(|input| {
             let required = generate_field_required_modifier(input);
             let r#default = generate_field_default(input, false, dart_enums_style);
