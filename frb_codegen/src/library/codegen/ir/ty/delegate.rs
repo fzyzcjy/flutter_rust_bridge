@@ -6,7 +6,6 @@ use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
 use crate::codegen::ir::ty::record::IrTypeRecord;
 use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
-use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 
 crate::ir! {
 /// types that delegate to another type
@@ -64,7 +63,7 @@ pub struct IrTypeDelegateSet {
 
 pub struct IrTypeDelegateStreamSink {
     pub inner: Box<IrType>,
-    pub codec: Option<RustOpaqueCodecMode>,
+    pub codec: Option<CodecMode>,
 }
 }
 
@@ -102,7 +101,11 @@ impl IrTypeTrait for IrTypeDelegate {
                 format!("Map_{}_{}", ir.key.safe_ident(), ir.value.safe_ident())
             }
             IrTypeDelegate::Set(ir) => format!("Set_{}", ir.inner.safe_ident()),
-            IrTypeDelegate::StreamSink(ir) => format!("StreamSink_{}", ir.inner.safe_ident()),
+            IrTypeDelegate::StreamSink(ir) => format!(
+                "StreamSink_{}_{}",
+                ir.inner.safe_ident(),
+                ir.codec.map(|x| x.to_string()).unwrap_or("None")
+            ),
         }
     }
 
@@ -151,7 +154,13 @@ impl IrTypeTrait for IrTypeDelegate {
                 format!("std::collections::HashSet<{}>", ir.inner.rust_api_type())
             }
             IrTypeDelegate::StreamSink(ir) => {
-                format!("StreamSink<{}>", ir.inner.rust_api_type())
+                format!("StreamSink<{}{}>", ir.inner.rust_api_type(),
+                    if let Some(codec) = ir.codec {
+                        format!(",flutter_rust_bridge::{codec}Codec")
+                    } else {
+                        "".to_owned()
+                    }
+                )
             }
         }
     }
