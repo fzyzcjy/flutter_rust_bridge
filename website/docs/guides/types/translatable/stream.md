@@ -12,11 +12,16 @@ Notice that, you can hold that `StreamSink` forever, and use it freely even *aft
 
 The `StreamSink` can be placed at any location. For example, `fn f(a: i32, b: StreamSink<String>)` and `fn f(a: StreamSink<String>, b: i32)` are both valid.
 
+### Stream argument in arbitrary types
+
+The `StreamSink` type can also be placed in arbitrary types, such as inside structs, enums, vectors, ...
+See example 3 below for more details.
+
 ## Examples
 
 See [logging examples](../../how-to/logging) which uses streams extensively.
 
-## Streaming from Dart/Flutter to Rust
+### Streaming from Dart/Flutter to Rust
 
 Simply iterate through your Dart stream, and call a normal Rust function for each item.
 For example:
@@ -31,7 +36,7 @@ While on the Rust side:
 fn my_rust_function(data: WhateverType) { ... }
 ```
 
-## Simple timer
+### Simple timer
 
 Credits: [this](https://gist.github.com/Desdaemon/be5da0a1c6b4724f20093ef434959744) and [#347](https://github.com/fzyzcjy/flutter_rust_bridge/issues/347).
 
@@ -133,4 +138,17 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+```
+
+### Stream object inside arbitrary types
+
+For example, we can place it as a field of a struct inside a vector:
+
+```rust
+pub struct MyStruct {
+    a: String,
+    b: StreamSink<i32>,
+}
+
+pub fn f(arr: Vec<MyStruct>) {}
 ```
