@@ -1,7 +1,6 @@
-use std::collections::HashMap;
-
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::ir::ty::IrTypeTrait;
+use std::collections::HashMap;
 
 pub(crate) fn generate_class_extra_body(
     ir_type: IrType,

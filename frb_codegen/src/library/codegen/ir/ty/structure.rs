@@ -1,12 +1,11 @@
 // Name "structure" not "struct", since the latter is a keyword
 
-use convert_case::{Case, Casing};
-
 use crate::codegen::ir::annotation::IrDartAnnotation;
 use crate::codegen::ir::comment::IrComment;
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
+use convert_case::{Case, Casing};
 
 crate::ir! {
 pub struct IrTypeStructRef {

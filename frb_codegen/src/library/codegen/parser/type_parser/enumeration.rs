@@ -1,7 +1,3 @@
-use std::collections::HashMap;
-
-use syn::{Attribute, Field, Ident, ItemEnum, Type, Variant};
-
 use crate::codegen::ir::field::{IrField, IrFieldSettings};
 use crate::codegen::ir::ident::IrIdent;
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
@@ -24,6 +20,8 @@ use crate::codegen::parser::type_parser::structure::structure_compute_default_op
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use crate::if_then_some;
+use std::collections::HashMap;
+use syn::{Attribute, Field, Ident, ItemEnum, Type, Variant};
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_enum(

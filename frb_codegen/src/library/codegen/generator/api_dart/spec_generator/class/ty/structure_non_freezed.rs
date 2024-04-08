@@ -1,5 +1,3 @@
-use itertools::Itertools;
-
 use crate::codegen::generator::api_dart::spec_generator::class::field::{
     generate_field_default, generate_field_required_modifier,
 };
@@ -10,6 +8,7 @@ use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::ty::structure::IrStruct;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
+use itertools::Itertools;
 
 impl<'a> StructRefApiDartGenerator<'a> {
     pub(crate) fn generate_mode_non_freezed(

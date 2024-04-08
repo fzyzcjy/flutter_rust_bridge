@@ -1,16 +1,14 @@
-use std::collections::{HashMap, HashSet};
-use std::fmt::Debug;
-use std::hash::Hash;
-
-use log::debug;
-use syn::{Ident, Type};
-
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::source_graph::modules::StructOrEnumWrapper;
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::library::codegen::ir::ty::IrTypeTrait;
+use log::debug;
+use std::collections::{HashMap, HashSet};
+use std::fmt::Debug;
+use std::hash::Hash;
+use syn::{Ident, Type};
 
 pub(super) trait EnumOrStructParser<Id, Obj, SrcObj, Item>
 where

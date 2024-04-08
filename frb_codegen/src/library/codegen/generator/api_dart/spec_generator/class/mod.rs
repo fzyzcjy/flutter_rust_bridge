@@ -4,8 +4,8 @@ use serde::Serialize;
 
 pub(crate) mod field;
 pub(crate) mod method;
-pub(crate) mod ty;
 pub(super) mod misc;
+pub(crate) mod ty;
 
 #[derive(Debug, Serialize, Default)]
 pub(crate) struct ApiDartGeneratedClass {

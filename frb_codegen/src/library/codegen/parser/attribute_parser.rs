@@ -1,16 +1,15 @@
-use anyhow::Context;
-use itertools::Itertools;
-use serde::{Serialize, Serializer};
-use syn::*;
-use syn::parse::{Lookahead1, Parse, ParseStream, Peek};
-use syn::punctuated::Punctuated;
-
 use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
 use crate::codegen::ir::annotation::IrDartAnnotation;
 use crate::codegen::ir::default::IrDefaultValue;
 use crate::codegen::ir::import::IrDartImport;
 use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::if_then_some;
+use anyhow::Context;
+use itertools::Itertools;
+use serde::{Serialize, Serializer};
+use syn::parse::{Lookahead1, Parse, ParseStream, Peek};
+use syn::punctuated::Punctuated;
+use syn::*;
 
 const METADATA_IDENT: &str = "frb";
 
@@ -472,15 +471,14 @@ impl Parse for FrbAttributeDartCode {
 
 #[cfg(test)]
 mod tests {
-    use quote::quote;
-    use syn::ItemFn;
-
     use crate::codegen::ir::default::IrDefaultValue;
     use crate::codegen::parser::attribute_parser::{
         FrbAttribute, FrbAttributeDartCode, FrbAttributeDefaultValue, FrbAttributeMirror,
         FrbAttributes, NamedOption,
     };
     use crate::if_then_some;
+    use quote::quote;
+    use syn::ItemFn;
 
     #[test]
     fn test_error() -> anyhow::Result<()> {

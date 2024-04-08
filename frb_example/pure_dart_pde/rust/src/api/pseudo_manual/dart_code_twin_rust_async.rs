@@ -11,7 +11,8 @@ use flutter_rust_bridge::frb;
     non_eq,
     dart_code = "
   @override
-  bool operator ==(TranslatableStructWithDartCodeTwinRustAsync other) => a == other.a;
+  bool operator ==(Object other) =>
+    other is TranslatableStructWithDartCodeTwinRustAsync && a == other.a;
 
   @override
   int get hashCode => a.hashCode;

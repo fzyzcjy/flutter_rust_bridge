@@ -15,7 +15,7 @@ impl<'a> StructRefApiDartGenerator<'a> {
         metadata: &str,
         methods: &[String],
         constructor_postfix: &str,
-        extra_body :&str,
+        extra_body: &str,
     ) -> String {
         let private_constructor = if !methods.is_empty() {
             format!("const {}._();", self.ir.ident.0.name)
