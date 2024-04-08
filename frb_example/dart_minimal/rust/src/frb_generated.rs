@@ -60,9 +60,7 @@ fn wire_hello_stream_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_sink = <flutter_rust_bridge::for_generated::StreamSink<i32>>::sse_decode(
-                &mut deserializer,
-            );
+            let api_sink = <StreamSink<i32>>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
@@ -139,7 +137,7 @@ fn wire_minimal_adder_impl(
 
 // Section: dart2rust
 
-impl SseDecode for flutter_rust_bridge::for_generated::StreamSink<i32> {
+impl SseDecode for StreamSink<i32> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <String>::sse_decode(deserializer);
@@ -223,7 +221,7 @@ fn pde_ffi_dispatcher_sync_impl(
 
 // Section: rust2dart
 
-impl SseEncode for flutter_rust_bridge::for_generated::StreamSink<i32> {
+impl SseEncode for StreamSink<i32> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <String>::sse_encode(unimplemented!(""), serializer);

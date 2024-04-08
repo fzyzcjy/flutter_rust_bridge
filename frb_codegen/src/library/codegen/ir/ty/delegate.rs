@@ -148,7 +148,7 @@ impl IrTypeTrait for IrTypeDelegate {
                 format!("std::collections::HashSet<{}>", ir.inner.rust_api_type())
             }
             IrTypeDelegate::StreamSink(ir) => {
-                format!("flutter_rust_bridge::for_generated::StreamSink<{}>", ir.inner.rust_api_type())
+                format!("StreamSink<{}>", ir.inner.rust_api_type())
             }
         }
     }
