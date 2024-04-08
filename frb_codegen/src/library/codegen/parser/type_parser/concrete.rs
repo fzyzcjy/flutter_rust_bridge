@@ -78,7 +78,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 inner: Box::new(self.parse_type(inner)?),
             })),
 
-            ("StreamSink", [inner]) => Delegate(IrTypeDelegate::StreamSink(IrTypeDelegateStreamSink {
+            ("StreamSink", [inner, ..]) => Delegate(IrTypeDelegate::StreamSink(IrTypeDelegateStreamSink {
                 inner: Box::new(self.parse_type(inner)?),
             })),
 
