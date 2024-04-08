@@ -10,6 +10,9 @@ use crate::rust2dart::sender::{Rust2DartSendError, Rust2DartSender};
 use crate::stream::closer::StreamSinkCloser;
 use std::marker::PhantomData;
 use std::sync::Arc;
+use allo_isolate::IntoDart;
+use crate::dart_opaque::action::DartHandlerPortAction;
+use crate::for_generated::DartAbi;
 
 /// A sink to send asynchronous data back to Dart.
 /// Represented as a Dart
@@ -42,4 +45,10 @@ impl<T, Rust2DartCodec: BaseCodec> StreamSinkBase<T, Rust2DartCodec> {
 
 pub(super) fn sender(sendable_channel_handle: &SendableChannelHandle) -> Rust2DartSender {
     Rust2DartSender::new(handle_to_channel(sendable_channel_handle))
+}
+
+impl<T, Rust2DartCodec: BaseCodec> IntoDart for StreamSinkBase<T, Rust2DartCodec> {
+    fn into_dart(self) -> DartAbi {
+        unreachable!()
+    }
 }
