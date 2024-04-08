@@ -35,10 +35,7 @@ class RustStreamSink<T> {
   RustStreamSink._(this._receivePort, this._stream);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  String serialize() {
-    // TODO serialize in web
-    return _receivePort.sendPort.nativePort;
-  }
+  String serialize() => serializeNativePort(_receivePort.sendPort.nativePort);
 
   /// The Dart stream for the Rust sink
   Stream<T> get stream => _stream;
