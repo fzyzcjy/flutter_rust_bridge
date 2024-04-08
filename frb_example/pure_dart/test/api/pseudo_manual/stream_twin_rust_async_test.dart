@@ -4,6 +4,8 @@
 
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "sync sse"]}
 
+import 'dart:async';
+
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/stream_twin_rust_async.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
@@ -23,7 +25,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('call funcStreamReturnErrorTwinRustAsync', () async {
     await expectLater(
       () async {
-        await for (final _ in funcStreamReturnErrorTwinRustAsync()) {}
+        await for (final _ in await funcStreamReturnErrorTwinRustAsync()) {}
       },
       throwsA(isA<AnyhowException>()
           .having((x) => x.message, 'message', startsWith('deliberate error'))),
@@ -34,7 +36,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('call funcStreamReturnPanicTwinRustAsync', skip: kIsWeb, () async {
     await expectRustPanic(
       () async {
-        await for (final _ in funcStreamReturnPanicTwinRustAsync()) {}
+        await for (final _ in await funcStreamReturnPanicTwinRustAsync()) {}
       },
       'TwinRustAsync',
       messageOnNative: 'deliberate panic',
@@ -42,7 +44,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   Future<void> testHandleStream(
-      Stream<LogTwinRustAsync> Function(
+      Stream<FutureOr<LogTwinRustAsync>> Function(
               {dynamic hint, required int key, required int max})
           handleStreamFunction) async {
     final max = 5;

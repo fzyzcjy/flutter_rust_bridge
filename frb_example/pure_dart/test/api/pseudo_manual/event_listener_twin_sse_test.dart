@@ -25,7 +25,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('when send event before async gap, should receive it', () async {
     final logs = <String>[];
 
-    final stream = registerEventListenerTwinSse();
+    final stream = await registerEventListenerTwinSse();
     stream.listen((event) => logs.add(event.address));
 
     // main call to test #1836
