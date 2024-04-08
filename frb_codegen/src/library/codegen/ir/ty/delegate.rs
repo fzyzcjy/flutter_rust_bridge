@@ -80,6 +80,10 @@ impl IrTypeTrait for IrTypeDelegate {
         // if let Self::TimeList(ir) = self {
         //     IrType::Delegate(IrTypeDelegate::Time(*ir)).visit_types(f, ir_context);
         // }
+        match self {
+            Self::StreamSink(ir) => ir.inner.visit_types(f, ir_context),
+            _ => {}
+        }
     }
 
     fn safe_ident(&self) -> String {
@@ -154,7 +158,9 @@ impl IrTypeTrait for IrTypeDelegate {
                 format!("std::collections::HashSet<{}>", ir.inner.rust_api_type())
             }
             IrTypeDelegate::StreamSink(ir) => {
-                format!("StreamSink<{}{}>", ir.inner.rust_api_type(),
+                format!(
+                    "StreamSink<{}{}>",
+                    ir.inner.rust_api_type(),
                     if let Some(codec) = ir.codec {
                         format!(",flutter_rust_bridge::{codec}Codec")
                     } else {
