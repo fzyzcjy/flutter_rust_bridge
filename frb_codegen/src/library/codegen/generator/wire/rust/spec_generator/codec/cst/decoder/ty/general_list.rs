@@ -63,6 +63,7 @@ fn general_list_maybe_extra_pointer_indirection(ir: &IrTypeGeneralList) -> &'sta
         *ir.inner,
         Optional(_)
             | Delegate(IrTypeDelegate::String)
+            | Delegate(IrTypeDelegate::StreamSink(_))
             | Delegate(IrTypeDelegate::Uuid)
             | IrType::PrimitiveList(_)
     ) {
