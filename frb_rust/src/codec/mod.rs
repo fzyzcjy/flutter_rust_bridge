@@ -22,6 +22,9 @@ pub trait Rust2DartMessageTrait {
 
     fn into_dart_abi(self) -> DartAbi;
 
+    /// # Safety
+    ///
+    /// This should never be called manually.
     unsafe fn from_raw_wire_sync(raw: Self::WireSyncRust2DartType) -> Self;
 
     fn into_raw_wire_sync(self) -> Self::WireSyncRust2DartType;
