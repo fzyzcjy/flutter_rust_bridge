@@ -1,11 +1,15 @@
 use crate::codec::BaseCodec;
 use crate::codec::Rust2DartMessageTrait;
-use crate::generalized_isolate::{channel_to_handle, handle_to_channel, SendableChannelHandle};
-use crate::platform_types::{deserialize_sendable_message_port_handle, MessagePort};
+use crate::generalized_isolate::{
+    channel_to_handle, handle_to_channel, Channel, SendableChannelHandle,
+};
+use crate::platform_types::{
+    deserialize_sendable_message_port_handle, handle_to_message_port, MessagePort,
+};
 use crate::rust2dart::sender::{Rust2DartSendError, Rust2DartSender};
+use crate::stream::closer::StreamSinkCloser;
 use std::marker::PhantomData;
 use std::sync::Arc;
-use crate::stream::closer::StreamSinkCloser;
 
 /// A sink to send asynchronous data back to Dart.
 /// Represented as a Dart
@@ -19,7 +23,9 @@ pub struct StreamSinkBase<T, Rust2DartCodec: BaseCodec> {
 
 impl<T, Rust2DartCodec: BaseCodec> StreamSinkBase<T, Rust2DartCodec> {
     pub fn deserialize(raw: String) -> Self {
-        let sendable_channel_handle = deserialize_sendable_message_port_handle(raw);
+        let sendable_channel_handle = channel_to_handle(&Channel::new(handle_to_message_port(
+            &deserialize_sendable_message_port_handle(raw),
+        )));
         Self {
             sendable_channel_handle,
             _closer: Arc::new(StreamSinkCloser::new(sendable_channel_handle)),
