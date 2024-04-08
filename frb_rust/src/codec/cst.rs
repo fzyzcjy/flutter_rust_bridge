@@ -19,10 +19,6 @@ impl BaseCodec for CstCodec {
     fn encode_close_stream() -> Self::Message {
         unreachable!()
     }
-
-    fn encode_stream_ready() -> Self::Message {
-        unreachable!()
-    }
     // frb-coverage:ignore-end
 }
 

@@ -7,7 +7,6 @@ pub enum Rust2DartAction {
     Error = 1, // TODO rename?
     CloseStream = 2,
     Panic = 3,
-    StreamReady = 4,
 }
 
 impl IntoDart for Rust2DartAction {
