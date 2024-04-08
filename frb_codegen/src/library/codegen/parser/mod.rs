@@ -88,7 +88,7 @@ pub(crate) fn parse(
         .sorted_by_cached_key(|func| func.name.clone())
         .collect_vec();
 
-    let has_executor = (file_data_arr.iter()).any(|file| parse_has_executor(&file.content));
+    let has_handler = (file_data_arr.iter()).any(|file| parse_has_executor(&file.content));
 
     let (struct_pool, enum_pool) = type_parser.consume();
 
@@ -96,7 +96,7 @@ pub(crate) fn parse(
         funcs: ir_funcs,
         struct_pool,
         enum_pool,
-        has_executor,
+        has_handler,
         unused_types: vec![],
     };
 

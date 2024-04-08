@@ -40,7 +40,7 @@ pub(crate) fn generate(
         code_header: Acc::new(|_| vec![(generate_code_header() + "\n\n").into()]),
         file_attributes: Acc::new_common(vec![FILE_ATTRIBUTES.to_string().into()]),
         imports: generate_imports(&cache.distinct_types, context),
-        executor: Acc::new_common(vec![generate_executor(context.ir_pack).into()]),
+        executor: Acc::new_common(vec![generate_handler(context.ir_pack).into()]),
         boilerplate: generate_boilerplate(
             context.config.default_stream_sink_codec,
             context.config.default_rust_opaque_codec,
@@ -198,9 +198,9 @@ fn generate_boilerplate(
 //     }
 // }
 
-fn generate_executor(ir_pack: &IrPack) -> String {
-    if ir_pack.has_executor {
-        "/* nothing since executor detected */".to_owned()
+fn generate_handler(ir_pack: &IrPack) -> String {
+    if ir_pack.has_handler {
+        "/* nothing since handler detected */".to_owned()
     } else {
         r#"flutter_rust_bridge::frb_generated_default_handler!();"#.to_owned()
     }
