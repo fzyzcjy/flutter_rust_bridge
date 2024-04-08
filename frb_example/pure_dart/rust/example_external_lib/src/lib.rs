@@ -136,6 +136,6 @@ pub struct SimpleOpaqueExternalStructWithMethod {
 
 impl SimpleOpaqueExternalStructWithMethod {
     pub fn simple_external_method(&self) -> String {
-        *self.a.lock().unwrap().clone()
+        (*self.a.lock().unwrap()).to_string()
     }
 }
