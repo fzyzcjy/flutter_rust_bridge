@@ -10,7 +10,7 @@ use crate::rust2dart::sender::{Rust2DartSendError, Rust2DartSender};
 use crate::stream::closer::StreamSinkCloser;
 use std::marker::PhantomData;
 use std::sync::Arc;
-use allo_isolate::IntoDart;
+use crate::generalized_isolate::IntoDart;
 use crate::for_generated::DartAbi;
 
 /// A sink to send asynchronous data back to Dart.

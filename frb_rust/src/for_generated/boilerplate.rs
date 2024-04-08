@@ -173,6 +173,18 @@ macro_rules! frb_generated_stream_sink {
                 ))
             }
         }
+
+        impl<T, Rust2DartCodec: $crate::for_generated::BaseCodec> $crate::IntoIntoDart<StreamSink<T, Rust2DartCodec>> for StreamSink<T, Rust2DartCodec> {
+            fn into_into_dart(self) -> StreamSink<T, Rust2DartCodec> {
+                unreachable!()
+            }
+        }
+
+        impl<T, Rust2DartCodec: $crate::for_generated::BaseCodec> $crate::IntoDart for StreamSink<T, Rust2DartCodec> {
+            fn into_dart(self) -> $crate::for_generated::DartAbi {
+                unreachable!()
+            }
+        }
     };
 }
 
