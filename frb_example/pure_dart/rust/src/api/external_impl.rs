@@ -1,3 +1,5 @@
+// FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "rustAsync", "sse", "sync sse", "rustAsync sse"]}
+
 use flutter_rust_bridge::frb;
 pub use frb_example_pure_dart_example_external_lib::{
     SimpleOpaqueExternalStructWithMethod, SimpleTranslatableExternalStructWithMethod,
