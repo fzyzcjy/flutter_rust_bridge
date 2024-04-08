@@ -123,7 +123,7 @@ fn generate_function(func: &ApiDartGeneratedFunction) -> String {
         func_impl,
         ..
     } = &func;
-    format!("{func_comments}{func_expr} => {func_impl};")
+    format!("{func_comments}{func_expr} {func_impl}")
 }
 
 fn compute_path_from_namespace(

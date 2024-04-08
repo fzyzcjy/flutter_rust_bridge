@@ -15,6 +15,7 @@ use crate::utils::basic_code::DartBasicHeaderCode;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 use serde::Serialize;
+use std::fmt::{Display, Formatter};
 
 #[derive(Debug, Serialize)]
 pub(crate) struct ApiDartGeneratedFunction {
@@ -22,8 +23,25 @@ pub(crate) struct ApiDartGeneratedFunction {
     pub(crate) header: DartBasicHeaderCode,
     pub(crate) func_comments: String,
     pub(crate) func_expr: String,
-    pub(crate) func_impl: String,
+    pub(crate) func_impl: FunctionBody,
     pub(crate) src_lineno: usize,
+}
+
+#[derive(Debug, Serialize)]
+pub(crate) struct FunctionBody {
+    pub(crate) code: String,
+    pub(crate) block: bool,
+}
+
+impl Display for FunctionBody {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        let code = self.code;
+        if self.block {
+            write!(f, "{{ {code} }}")
+        } else {
+            write!(f, "=> {code};")
+        }
+    }
 }
 
 pub(crate) fn generate(
