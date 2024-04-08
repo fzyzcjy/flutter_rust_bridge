@@ -56,7 +56,11 @@ pub(crate) fn generate(
 
     let func_comments = generate_dart_comments(&func.comments);
 
-    let func_impl = generate_func_impl(func, &context.config.dart_entrypoint_class_name);
+    let func_impl = generate_func_impl(
+        func,
+        &context.config.dart_entrypoint_class_name,
+        &return_stream,
+    );
 
     let header = generate_header(func, context)?;
 
@@ -79,10 +83,12 @@ pub(crate) struct ReturnStreamInfo {
 
 fn compute_return_stream(func: &IrFunc) -> Option<ReturnStreamInfo> {
     let stream_sink_vars = (func.inputs.iter())
-        .filter_map(|input| if_then_some!(
-            let IrType::Delegate(IrTypeDelegate::StreamSink(ty)) = &input.ty,
-            ReturnStreamInfo { field:input.to_owned(), ty: ty.clone() }
-        ))
+        .filter_map(|input| {
+            if_then_some!(
+                let IrType::Delegate(IrTypeDelegate::StreamSink(ty)) = &input.ty,
+                ReturnStreamInfo { field:input.to_owned(), ty: ty.clone() }
+            )
+        })
         .collect_vec();
     if stream_sink_vars.len() == 1 {
         Some(stream_sink_vars.into_iter().next().unwrap())
@@ -116,10 +122,17 @@ fn generate_params(
     params
 }
 
-fn generate_func_impl(func: &IrFunc, dart_entrypoint_class_name: &str) -> String {
+fn generate_func_impl(
+    func: &IrFunc,
+    dart_entrypoint_class_name: &str,
+    return_stream: &Option<ReturnStreamInfo>,
+) -> String {
     let func_name = &func.name.name.to_case(Case::Camel);
     let param_names: Vec<String> = [
-        (func.inputs.iter().map(|input| input.name.dart_style())).collect_vec(),
+        ((func.inputs.iter())
+            .filter(|field| Some(&field.name) != return_stream.as_ref().map(|s| &s.field.name))
+            .map(|input| input.name.dart_style()))
+        .collect_vec(),
         vec!["hint".to_owned()],
     ]
     .concat();
