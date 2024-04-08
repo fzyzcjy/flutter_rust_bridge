@@ -116,7 +116,9 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     IrTypeDelegateTime::Duration => "Duration(microseconds: inner)".to_owned(),
                 },
                 IrTypeDelegate::Uuid => "UuidValue.fromByteList(inner)".to_owned(),
-                IrTypeDelegate::StreamSink(_) => format!("{};", lang.throw_unreachable("")),
+                IrTypeDelegate::StreamSink(_) => {
+                    return Some(format!("{};", lang.throw_unreachable("")));
+                }
             },
             Lang::RustLang(_) => match &self.ir {
                 IrTypeDelegate::Array(_) => {

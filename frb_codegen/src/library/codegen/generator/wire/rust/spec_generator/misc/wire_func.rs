@@ -9,7 +9,6 @@ use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::ir::func::IrFuncOwnerInfoMethodMode::Instance;
 use crate::codegen::ir::func::{IrFunc, IrFuncMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod};
-use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::rust_auto_opaque::OwnershipMode;
 use crate::codegen::ir::ty::IrType;
 use crate::misc::consts::HANDLER_NAME;

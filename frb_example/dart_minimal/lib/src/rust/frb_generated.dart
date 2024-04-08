@@ -195,9 +195,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   RustStreamSink<int> sse_decode_StreamSink_i_32(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    var inner = sse_decode_String(deserializer);
-    return throw UnimplementedError('Unreachable ((');
-    ;
+    throw UnimplementedError('Unreachable ()');
   }
 
   @protected
