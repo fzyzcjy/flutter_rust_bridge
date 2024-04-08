@@ -63,8 +63,6 @@ class BaseHandler {
       await for (final raw in receivePort) {
         try {
           yield codec.decodeObject(raw);
-        } on StreamReadyException {
-          TODO;
         } on CloseStreamException {
           break;
         }
