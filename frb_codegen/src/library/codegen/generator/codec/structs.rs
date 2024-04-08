@@ -1,9 +1,9 @@
 use crate::codegen::ir::pack::IrPackComputedCache;
 use crate::codegen::ir::ty::IrType;
 use serde::{Deserialize, Serialize};
-use strum_macros::{Display, EnumIter};
+use strum_macros::{Display, EnumIter, EnumString};
 
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize, Hash, Display, EnumIter)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize, Hash, Display, EnumIter, EnumString)]
 pub(crate) enum CodecMode {
     Cst,
     Dco,

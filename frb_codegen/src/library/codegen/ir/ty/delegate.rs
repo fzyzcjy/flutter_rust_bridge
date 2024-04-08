@@ -104,7 +104,7 @@ impl IrTypeTrait for IrTypeDelegate {
             IrTypeDelegate::StreamSink(ir) => format!(
                 "StreamSink_{}_{}",
                 ir.inner.safe_ident(),
-                ir.codec.map(|x| x.to_string()).unwrap_or("None")
+                ir.codec.map(|x| x.to_string()).unwrap_or("None".to_owned())
             ),
         }
     }
