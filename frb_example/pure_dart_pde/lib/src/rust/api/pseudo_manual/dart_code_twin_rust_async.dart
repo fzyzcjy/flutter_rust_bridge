@@ -46,7 +46,8 @@ class TranslatableStructWithDartCodeTwinRustAsync {
       );
 
   @override
-  bool operator ==(StructWithDartCodeTwinRustAsync other) => a == other.a;
+  bool operator ==(TranslatableStructWithDartCodeTwinRustAsync other) =>
+      a == other.a;
 
   @override
   int get hashCode => a.hashCode;

@@ -46,7 +46,8 @@ class TranslatableStructWithDartCodeTwinNormal {
       );
 
   @override
-  bool operator ==(StructWithDartCodeTwinNormal other) => a == other.a;
+  bool operator ==(TranslatableStructWithDartCodeTwinNormal other) =>
+      a == other.a;
 
   @override
   int get hashCode => a.hashCode;

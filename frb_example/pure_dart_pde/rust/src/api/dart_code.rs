@@ -7,7 +7,7 @@ use flutter_rust_bridge::frb;
     non_eq,
     dart_code = "
   @override
-  bool operator ==(StructWithDartCodeTwinNormal other) => a == other.a;
+  bool operator ==(TranslatableStructWithDartCodeTwinNormal other) => a == other.a;
 
   @override
   int get hashCode => a.hashCode;
