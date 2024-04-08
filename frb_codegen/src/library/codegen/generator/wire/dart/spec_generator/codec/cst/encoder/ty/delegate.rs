@@ -120,7 +120,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
             IrTypeDelegate::StreamSink(ir) => Acc::distribute(Some(format!(
                 "return cst_encode_{}({});",
                 self.ir.get_delegate().safe_ident(),
-                generate_stream_sink_setup_and_serialize(ir, CodecMode::Cst "raw")
+                generate_stream_sink_setup_and_serialize(ir, CodecMode::Cst, "raw")
             ))),
         }
     }
