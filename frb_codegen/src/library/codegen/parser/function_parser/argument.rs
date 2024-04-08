@@ -7,7 +7,7 @@ use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::Boxed;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::function_parser::{
-    FunctionParser, FunctionPartialInfo, STREAM_SINK_IDENT,
+    FunctionParser, FunctionPartialInfo,
 };
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::TypeParserParsingContext;

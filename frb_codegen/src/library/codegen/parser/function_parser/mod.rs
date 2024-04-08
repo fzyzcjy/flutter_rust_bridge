@@ -24,8 +24,6 @@ use std::path::Path;
 use syn::*;
 use IrType::Primitive;
 
-const STREAM_SINK_IDENT: &str = "StreamSink";
-
 pub(crate) struct FunctionParser<'a, 'b> {
     type_parser: &'a mut TypeParser<'b>,
 }
