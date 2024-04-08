@@ -90,6 +90,7 @@ pub(crate) fn parse(
 
     let existing_handlers = (file_data_arr.iter())
         .filter(|file| parse_has_executor(&file.content))
+        .map(|file| TODO)
         .collect_vec();
     ensure!(existing_handlers.len() <= 1, "Should have at most one custom handler");
 
