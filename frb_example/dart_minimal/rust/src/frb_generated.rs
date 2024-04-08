@@ -34,7 +34,7 @@ pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.0.0-dev.30";
 
 // Section: executor
 
-flutter_rust_bridge::frb_generated_default_handler!();
+/* nothing since executor detected */
 
 // Section: wire_funcs
 
