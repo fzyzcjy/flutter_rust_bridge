@@ -94,21 +94,6 @@ fn generate_inner_func_args(
         })
         .collect_vec();
 
-    // TODO rm
-    // if let IrFuncMode::Stream { argument_index } = func.mode {
-    //     ans.insert(
-    //         argument_index,
-    //         format!(
-    //             "StreamSink::new(context.rust2dart_context().stream_sink::<_,{}>())",
-    //             WireRustCodecDcoGenerator::new(
-    //                 func.output.clone(),
-    //                 context.as_wire_rust_codec_dco_context()
-    //             )
-    //             .intodart_type(ir_pack)
-    //         ),
-    //     );
-    // }
-
     ans
 }
 
