@@ -46,8 +46,7 @@ class RustGenerator extends BaseGenerator {
         .replaceAllMapped(
           RegExp(r'(pub (async )?fn) ([a-zA-Z0-9_-]+?)(_twin_normal)?\('),
           (m) {
-            final addPostfix =
-                !['call', 'simple_external_method'].contains(m.group(3));
+            final addPostfix = m.group(3) != 'call';
             return '${prefix(m.group(1)!)} ${m.group(3)}${addPostfix ? mode.postfix : ""}(';
           },
         )
