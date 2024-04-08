@@ -26,13 +26,13 @@ pub(crate) fn parse_name_or_original(raw_name: &str) -> Result<String> {
 
 pub(crate) fn parse_name(raw_name: &str) -> Result<Option<String>> {
     const DUMMY_STRUCT_PREFIX: &str = "__external_impl__";
-    Ok(if raw_name.starts_with(DUMMY_STRUCT_PREFIX) {
-        Some(String::from_utf8(hex::decode(
-            &raw_name[DUMMY_STRUCT_PREFIX.len()..],
-        )?)?)
-    } else {
-        None
-    })
+    Ok(
+        if let Some(stripped_name) = raw_name.strip_prefix(DUMMY_STRUCT_PREFIX) {
+            Some(String::from_utf8(hex::decode(stripped_name)?)?)
+        } else {
+            None
+        },
+    )
 }
 
 #[cfg(test)]

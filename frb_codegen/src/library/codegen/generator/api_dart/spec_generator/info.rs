@@ -9,8 +9,6 @@ use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 use convert_case::{Case, Casing};
 use enum_dispatch::enum_dispatch;
 use itertools::Itertools;
-use lazy_static::lazy_static;
-use regex::Regex;
 
 #[enum_dispatch]
 pub(crate) trait ApiDartGeneratorInfoTrait {
