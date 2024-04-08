@@ -52,6 +52,7 @@ pub(crate) fn generate_wire_func(
             "fn {func_name}_impl({params}) {return_type} {{
                 {HANDLER_NAME}.{handler_func_name}({wrap_info_obj}, move || {{ {code_closure} }})
             }}",
+            HANDLER_NAME = HANDLER_NAME,
             params = params
                 .common
                 .iter()
@@ -136,7 +137,7 @@ fn generate_code_call_inner_func_result(func: &IrFunc, inner_func_args: Vec<Stri
         IrFuncOwnerInfo::Method(method) => {
             format!(
                 r"{}::{}({})",
-                method.enum_or_struct_name.rust_style(),
+                method.owner_ty_name().rust_style(),
                 method.actual_method_name,
                 inner_func_args.join(", ")
             )

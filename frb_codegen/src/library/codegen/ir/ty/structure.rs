@@ -22,6 +22,8 @@ pub struct IrStruct {
     pub is_fields_named: bool,
     pub dart_metadata: Vec<IrDartAnnotation>,
     pub ignore: bool,
+    pub generate_hash: bool,
+    pub generate_eq: bool,
     pub comments: Vec<IrComment>,
 }
 }

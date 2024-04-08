@@ -1,20 +1,3 @@
-pub(crate) mod array;
-pub(crate) mod concrete;
-mod dart_fn;
-mod enum_or_struct;
-pub(crate) mod enumeration;
-pub(crate) mod misc;
-pub(crate) mod optional;
-pub(crate) mod path;
-pub(crate) mod path_data;
-pub(crate) mod primitive;
-pub(crate) mod rust_auto_opaque;
-mod rust_opaque;
-pub(crate) mod structure;
-pub(crate) mod tuple;
-pub(crate) mod ty;
-pub(crate) mod unencodable;
-
 use crate::codegen::ir::func::IrFuncOwnerInfo;
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::{IrEnumPool, IrStructPool};
@@ -33,10 +16,29 @@ use crate::codegen::parser::type_parser::rust_opaque::RustOpaqueParserInfo;
 use std::collections::HashMap;
 use syn::Type;
 
+pub(crate) mod array;
+pub(crate) mod concrete;
+mod dart_fn;
+mod enum_or_struct;
+pub(crate) mod enumeration;
+pub(crate) mod external_impl;
+pub(crate) mod misc;
+pub(crate) mod optional;
+pub(crate) mod path;
+pub(crate) mod path_data;
+pub(crate) mod primitive;
+pub(crate) mod rust_auto_opaque;
+mod rust_opaque;
+pub(crate) mod structure;
+pub(crate) mod tuple;
+pub(crate) mod ty;
+pub(crate) mod unencodable;
+
 pub(crate) struct TypeParser<'a> {
     src_structs: HashMap<String, &'a Struct>,
     src_enums: HashMap<String, &'a Enum>,
     src_types: HashMap<String, Type>,
+    dart_code_of_type: HashMap<String, String>,
     struct_parser_info: EnumOrStructParserInfo<IrStructIdent, IrStruct>,
     enum_parser_info: EnumOrStructParserInfo<IrEnumIdent, IrEnum>,
     rust_opaque_parser_info: RustOpaqueParserInfo,
@@ -54,6 +56,7 @@ impl<'a> TypeParser<'a> {
             src_structs,
             src_enums,
             src_types,
+            dart_code_of_type: HashMap::new(),
             struct_parser_info: EnumOrStructParserInfo::new(),
             enum_parser_info: EnumOrStructParserInfo::new(),
             rust_opaque_parser_info: RustOpaqueParserInfo::default(),
@@ -62,10 +65,11 @@ impl<'a> TypeParser<'a> {
         }
     }
 
-    pub(crate) fn consume(self) -> (IrStructPool, IrEnumPool) {
+    pub(crate) fn consume(self) -> (IrStructPool, IrEnumPool, HashMap<String, String>) {
         (
             self.struct_parser_info.object_pool,
             self.enum_parser_info.object_pool,
+            self.dart_code_of_type,
         )
     }
 

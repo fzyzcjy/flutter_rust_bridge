@@ -97,7 +97,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     }
 
     fn parse_type_self(&mut self) -> anyhow::Result<IrType> {
-        let enum_or_struct_name = if_then_some!(let IrFuncOwnerInfo::Method(info) = self.context.owner.as_ref().unwrap(), info.enum_or_struct_name.name.clone()).unwrap();
+        let enum_or_struct_name = if_then_some!(let IrFuncOwnerInfo::Method(info) = self.context.owner.as_ref().unwrap(), info.owner_ty_name().name.clone()).unwrap();
         self.parse_type(&parse_str::<Type>(&enum_or_struct_name)?)
     }
 

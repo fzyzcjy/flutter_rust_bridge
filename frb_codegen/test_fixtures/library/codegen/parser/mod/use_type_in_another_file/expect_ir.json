@@ -1,4 +1,5 @@
 {
+  "dart_code_of_type": {},
   "enum_pool": {
     "crate::another_file/EnumInAnotherFile": {
       "comments": [],
@@ -106,6 +107,8 @@
           }
         }
       ],
+      "generate_eq": true,
+      "generate_hash": true,
       "ignore": false,
       "is_fields_named": true,
       "name": "crate::another_file/StructInAnotherFile",

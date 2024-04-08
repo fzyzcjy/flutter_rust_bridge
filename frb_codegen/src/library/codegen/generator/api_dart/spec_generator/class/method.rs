@@ -50,9 +50,7 @@ fn get_methods_of_enum_or_struct<'a>(
     all_funcs: &'a [IrFunc],
 ) -> Vec<&'a IrFunc> {
     (all_funcs.iter())
-        .filter(|f| {
-            matches!(&f.owner, IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod{ enum_or_struct_name, .. }) if enum_or_struct_name == name)
-        })
+        .filter(|f| matches!(&f.owner, IrFuncOwnerInfo::Method(m) if &m.owner_ty_name() == name))
         .collect_vec()
 }
 
