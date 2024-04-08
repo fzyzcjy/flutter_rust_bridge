@@ -1,3 +1,10 @@
+use flutter_rust_bridge::for_generated::*;
+
+pub type MyHandler = SimpleHandler<
+    SimpleExecutor<NoOpErrorListener, SimpleThreadPool, SimpleAsyncRuntime>,
+    NoOpErrorListener,
+>;
+
 #[cfg(test)]
 mod tests {
     use super::*;
