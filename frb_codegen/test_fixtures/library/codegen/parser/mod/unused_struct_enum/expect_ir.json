@@ -1,7 +1,7 @@
 {
   "enum_pool": {},
+  "existing_handler": null,
   "funcs": [],
-  "has_executor": false,
   "struct_pool": {},
   "unused_types": [
     "crate::api/UnusedStruct",

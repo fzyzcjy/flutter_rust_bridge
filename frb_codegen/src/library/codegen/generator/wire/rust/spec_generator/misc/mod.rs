@@ -40,7 +40,7 @@ pub(crate) fn generate(
         code_header: Acc::new(|_| vec![(generate_code_header() + "\n\n").into()]),
         file_attributes: Acc::new_common(vec![FILE_ATTRIBUTES.to_string().into()]),
         imports: generate_imports(&cache.distinct_types, context),
-        executor: Acc::new_common(vec![generate_executor(context.ir_pack).into()]),
+        executor: Acc::new_common(vec![generate_handler(context.ir_pack).into()]),
         boilerplate: generate_boilerplate(
             context.config.default_stream_sink_codec,
             context.config.default_rust_opaque_codec,
@@ -152,7 +152,7 @@ fn generate_boilerplate(
                     default_rust_opaque = RustOpaque{default_rust_opaque_codec},
                     default_rust_auto_opaque = RustAutoOpaque{default_rust_opaque_codec},
                 );
-                const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "{version}";
+                pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "{version}";
             "#,
                 version = env!("CARGO_PKG_VERSION"),
             )
@@ -198,9 +198,9 @@ fn generate_boilerplate(
 //     }
 // }
 
-fn generate_executor(ir_pack: &IrPack) -> String {
-    if ir_pack.has_executor {
-        "/* nothing since executor detected */".to_owned()
+fn generate_handler(ir_pack: &IrPack) -> String {
+    if let Some(existing_handler) = &ir_pack.existing_handler {
+        format!("pub use {};", existing_handler.rust_style())
     } else {
         r#"flutter_rust_bridge::frb_generated_default_handler!();"#.to_owned()
     }
