@@ -14,13 +14,13 @@ use crate::codegen::ir::func::{
     IrFunc, IrFuncMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode,
 };
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
-use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
+use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::function_extractor::GeneralizedItemFn;
-use crate::codegen::parser::type_parser::{external_impl, TypeParser, TypeParserParsingContext};
 use crate::codegen::parser::type_parser::misc::parse_comments;
+use crate::codegen::parser::type_parser::{external_impl, TypeParser, TypeParserParsingContext};
 use crate::library::codegen::ir::ty::IrTypeTrait;
 
 pub(crate) mod argument;
@@ -142,12 +142,11 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     IrFuncOwnerInfoMethodMode::Static
                 };
 
-                let owner_ty =
-                    if let Some(x) = self.parse_method_owner_ty(item_impl, context)? {
-                        x
-                    } else {
-                        return Ok(None);
-                    };
+                let owner_ty = if let Some(x) = self.parse_method_owner_ty(item_impl, context)? {
+                    x
+                } else {
+                    return Ok(None);
+                };
 
                 let actual_method_name = impl_item_fn.sig.ident.to_string();
 
@@ -191,11 +190,11 @@ fn parse_name(sig: &Signature, owner: &IrFuncOwnerInfo) -> String {
     match owner {
         IrFuncOwnerInfo::Function => sig.ident.to_string(),
         IrFuncOwnerInfo::Method(method) => {
-            format!(
-                "{}_{}",
-                method.owner_ty.safe_ident(),
-                method.actual_method_name
-            )
+            let owner_name = match &method.owner_ty {
+                IrType::RustAutoOpaque(ty) => ty.sanitized_type(),
+                ty => ty.safe_ident(),
+            };
+            format!("{owner_name}_{}", method.actual_method_name)
         }
     }
 }
