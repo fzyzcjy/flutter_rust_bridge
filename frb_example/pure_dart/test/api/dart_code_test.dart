@@ -12,8 +12,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final two = TranslatableStructWithDartCodeTwinNormal(a: 100);
     expect(one.hashCode, two.hashCode);
     expect(one == two, true);
-    expect(one.dartExtraMethod(), 200);
-    expect(await one.normalMethod(), 200);
+    expect(one.dartCodeMethod(), 200);
+    expect(await one.normalMethodTwinNormal(), 200);
   });
 
   test('OpaqueStructWithDartCodeTwinNormal', () async {
