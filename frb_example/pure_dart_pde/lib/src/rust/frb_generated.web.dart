@@ -68,8 +68,6 @@ import 'api/pseudo_manual/enumeration_twin_sync.dart';
 import 'api/pseudo_manual/event_listener_twin_rust_async.dart';
 import 'api/pseudo_manual/exception_twin_rust_async.dart';
 import 'api/pseudo_manual/exception_twin_sync.dart';
-import 'api/pseudo_manual/external_impl_twin_rust_async.dart';
-import 'api/pseudo_manual/external_impl_twin_sync.dart';
 import 'api/pseudo_manual/external_type_in_crate_twin_rust_async.dart';
 import 'api/pseudo_manual/external_type_in_crate_twin_sync.dart';
 import 'api/pseudo_manual/map_and_set_twin_rust_async.dart';

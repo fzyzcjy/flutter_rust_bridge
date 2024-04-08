@@ -165,16 +165,6 @@ import 'api/pseudo_manual/exception_twin_sync_sse_test.dart'
     as exception_twin_sync_sse_test;
 import 'api/pseudo_manual/exception_twin_sync_test.dart'
     as exception_twin_sync_test;
-import 'api/pseudo_manual/external_impl_twin_rust_async_sse_test.dart'
-    as external_impl_twin_rust_async_sse_test;
-import 'api/pseudo_manual/external_impl_twin_rust_async_test.dart'
-    as external_impl_twin_rust_async_test;
-import 'api/pseudo_manual/external_impl_twin_sse_test.dart'
-    as external_impl_twin_sse_test;
-import 'api/pseudo_manual/external_impl_twin_sync_sse_test.dart'
-    as external_impl_twin_sync_sse_test;
-import 'api/pseudo_manual/external_impl_twin_sync_test.dart'
-    as external_impl_twin_sync_test;
 import 'api/pseudo_manual/external_type_in_crate_twin_rust_async_sse_test.dart'
     as external_type_in_crate_twin_rust_async_sse_test;
 import 'api/pseudo_manual/external_type_in_crate_twin_rust_async_test.dart'
@@ -523,11 +513,6 @@ Future<void> callFileEntrypoints() async {
   await exception_twin_sse_test.main(skipRustLibInit: true);
   await exception_twin_sync_sse_test.main(skipRustLibInit: true);
   await exception_twin_sync_test.main(skipRustLibInit: true);
-  await external_impl_twin_rust_async_sse_test.main(skipRustLibInit: true);
-  await external_impl_twin_rust_async_test.main(skipRustLibInit: true);
-  await external_impl_twin_sse_test.main(skipRustLibInit: true);
-  await external_impl_twin_sync_sse_test.main(skipRustLibInit: true);
-  await external_impl_twin_sync_test.main(skipRustLibInit: true);
   await external_type_in_crate_twin_rust_async_sse_test.main(
       skipRustLibInit: true);
   await external_type_in_crate_twin_rust_async_test.main(skipRustLibInit: true);
