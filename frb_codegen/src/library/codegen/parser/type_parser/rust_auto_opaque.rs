@@ -1,23 +1,21 @@
-use anyhow::Result;
-use quote::ToTokens;
-use syn::Type;
-
-use IrType::RustAutoOpaque;
-
 use crate::codegen::ir::namespace::Namespace;
-use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 use crate::codegen::ir::ty::rust_auto_opaque::{
     IrRustAutoOpaqueRaw, IrTypeRustAutoOpaque, OwnershipMode,
 };
 use crate::codegen::ir::ty::rust_opaque::{
     IrRustOpaqueInner, IrTypeRustOpaque, RustOpaqueCodecMode,
 };
+use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 use crate::codegen::parser::type_parser::external_impl;
 use crate::codegen::parser::type_parser::path_data::extract_path_data;
 use crate::codegen::parser::type_parser::rust_opaque::{
     GeneralizedRustOpaqueParserInfo, RustOpaqueParserTypeInfo,
 };
 use crate::codegen::parser::type_parser::TypeParserWithContext;
+use anyhow::Result;
+use quote::ToTokens;
+use syn::Type;
+use IrType::RustAutoOpaque;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_rust_auto_opaque(

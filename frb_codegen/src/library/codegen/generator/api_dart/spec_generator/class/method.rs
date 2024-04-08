@@ -1,6 +1,3 @@
-use convert_case::{Case, Casing};
-use itertools::Itertools;
-
 use crate::codegen::generator::api_dart::spec_generator::class::field::{
     generate_field_default, generate_field_required_modifier,
 };
@@ -15,6 +12,8 @@ use crate::codegen::ir::namespace::NamespacedName;
 use crate::if_then_some;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
+use convert_case::{Case, Casing};
+use itertools::Itertools;
 
 pub(crate) fn generate_api_methods(
     generalized_class_name: &NamespacedName,
@@ -51,9 +50,7 @@ fn get_methods_of_enum_or_struct<'a>(
     all_funcs: &'a [IrFunc],
 ) -> Vec<&'a IrFunc> {
     (all_funcs.iter())
-        .filter(
-            |f| matches!(&f.owner, IrFuncOwnerInfo::Method(m) if &m.owner_ty_name() == name),
-        )
+        .filter(|f| matches!(&f.owner, IrFuncOwnerInfo::Method(m) if &m.owner_ty_name() == name))
         .collect_vec()
 }
 

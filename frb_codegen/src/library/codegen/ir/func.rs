@@ -2,8 +2,8 @@ use crate::codegen::generator::codec::structs::CodecModePack;
 use crate::codegen::ir::comment::IrComment;
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::namespace::NamespacedName;
-use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
+use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
 use crate::if_then_some;
 
 crate::ir! {
@@ -76,7 +76,8 @@ impl IrFunc {
 
         // extra (#1838)
         if let IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod {
-                                           owner_ty: enum_or_struct_ty, ..
+            owner_ty: enum_or_struct_ty,
+            ..
         }) = &self.owner
         {
             enum_or_struct_ty.visit_types(f, ir_context);

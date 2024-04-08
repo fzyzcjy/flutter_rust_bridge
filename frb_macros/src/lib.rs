@@ -1,7 +1,6 @@
 //! Main documentation is in https://github.com/fzyzcjy/flutter_rust_bridge
 
 use proc_macro::*;
-
 use quote::{quote, ToTokens};
 use syn::{ImplItem, ItemImpl};
 

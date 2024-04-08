@@ -1,7 +1,3 @@
-use std::collections::HashMap;
-
-use syn::Type;
-
 use crate::codegen::ir::func::IrFuncOwnerInfo;
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::{IrEnumPool, IrStructPool};
@@ -17,6 +13,8 @@ use crate::codegen::parser::type_parser::array::ArrayParserInfo;
 use crate::codegen::parser::type_parser::enum_or_struct::EnumOrStructParserInfo;
 use crate::codegen::parser::type_parser::rust_auto_opaque::RustAutoOpaqueParserInfo;
 use crate::codegen::parser::type_parser::rust_opaque::RustOpaqueParserInfo;
+use std::collections::HashMap;
+use syn::Type;
 
 pub(crate) mod array;
 pub(crate) mod concrete;

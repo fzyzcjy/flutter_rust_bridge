@@ -1,7 +1,7 @@
-use convert_case::{Case, Casing};
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
+use convert_case::{Case, Casing};
 use itertools::Itertools;
 use lazy_static::lazy_static;
 use quote::ToTokens;
@@ -130,7 +130,8 @@ fn rust_type_to_sanitized_type(rust: &str, brief_name: bool) -> String {
     if brief_name {
         rust = OPAQUE_BRIEF_NAME_FILTER.replace_all(&rust, "").to_string();
     }
-    rust.replace(char_not_alphanumeric, "_").to_case(Case::Pascal)
+    rust.replace(char_not_alphanumeric, "_")
+        .to_case(Case::Pascal)
 }
 
 fn char_not_alphanumeric(c: char) -> bool {

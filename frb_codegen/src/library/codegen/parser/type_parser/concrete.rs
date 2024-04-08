@@ -1,7 +1,3 @@
-use anyhow::bail;
-use itertools::Itertools;
-use syn::{parse_str, Type};
-
 use crate::codegen::ir::func::IrFuncOwnerInfo;
 use crate::codegen::ir::ty::boxed::IrTypeBoxed;
 use crate::codegen::ir::ty::dart_opaque::IrTypeDartOpaque;
@@ -12,9 +8,12 @@ use crate::codegen::ir::ty::dynamic::IrTypeDynamic;
 use crate::codegen::ir::ty::general_list::ir_list;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{Boxed, DartOpaque, Delegate, Dynamic};
-use crate::codegen::parser::type_parser::TypeParserWithContext;
 use crate::codegen::parser::type_parser::unencodable::{splay_segments, SplayedSegment};
+use crate::codegen::parser::type_parser::TypeParserWithContext;
 use crate::if_then_some;
+use anyhow::bail;
+use itertools::Itertools;
+use syn::{parse_str, Type};
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_concrete(

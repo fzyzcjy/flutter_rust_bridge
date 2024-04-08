@@ -1,13 +1,3 @@
-use std::fmt::Debug;
-use std::path::Path;
-
-use anyhow::{bail, Context};
-use itertools::concat;
-use log::{debug, warn};
-use syn::*;
-
-use IrType::Primitive;
-
 use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::func::{
@@ -22,6 +12,13 @@ use crate::codegen::parser::function_extractor::GeneralizedItemFn;
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::{external_impl, TypeParser, TypeParserParsingContext};
 use crate::library::codegen::ir::ty::IrTypeTrait;
+use anyhow::{bail, Context};
+use itertools::concat;
+use log::{debug, warn};
+use std::fmt::Debug;
+use std::path::Path;
+use syn::*;
+use IrType::Primitive;
 
 pub(crate) mod argument;
 pub(crate) mod output;
