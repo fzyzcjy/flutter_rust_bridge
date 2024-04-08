@@ -35,28 +35,6 @@ impl<T, Rust2DartCodec: BaseCodec> StreamSinkBase<T, Rust2DartCodec> {
     }
 }
 
-// *NOT* cloneable, since it invokes stream-close when dropped
-pub(crate) struct StreamSinkCloser<Rust2DartCodec: BaseCodec> {
-    sendable_channel_handle: SendableChannelHandle,
-    _phantom_data: PhantomData<Rust2DartCodec>,
-}
-
-impl<Rust2DartCodec: BaseCodec> StreamSinkCloser<Rust2DartCodec> {
-    pub fn new(sendable_channel_handle: SendableChannelHandle) -> Self {
-        Self {
-            sendable_channel_handle,
-            _phantom_data: PhantomData,
-        }
-    }
-}
-
-impl<Rust2DartCodec: BaseCodec> Drop for StreamSinkCloser<Rust2DartCodec> {
-    fn drop(&mut self) {
-        sender(&self.sendable_channel_handle)
-            .send_or_warn(Rust2DartCodec::encode_close_stream().into_dart_abi())
-    }
-}
-
 fn sender(sendable_channel_handle: &SendableChannelHandle) -> Rust2DartSender {
     Rust2DartSender::new(handle_to_channel(sendable_channel_handle))
 }
