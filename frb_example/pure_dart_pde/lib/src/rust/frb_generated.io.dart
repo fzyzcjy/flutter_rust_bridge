@@ -58,8 +58,6 @@ import 'api/pseudo_manual/chrono_type_twin_rust_async.dart';
 import 'api/pseudo_manual/chrono_type_twin_sync.dart';
 import 'api/pseudo_manual/comment_twin_rust_async.dart';
 import 'api/pseudo_manual/comment_twin_sync.dart';
-import 'api/pseudo_manual/dart_code_twin_rust_async.dart';
-import 'api/pseudo_manual/dart_code_twin_sync.dart';
 import 'api/pseudo_manual/dart_fn_twin_rust_async.dart';
 import 'api/pseudo_manual/dart_opaque_twin_rust_async.dart';
 import 'api/pseudo_manual/dart_opaque_twin_sync.dart';
@@ -321,14 +319,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinNormalPtr;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_OpaqueStructWithDartCodeTwinRustAsyncPtr =>
-          wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinRustAsyncPtr;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_OpaqueStructWithDartCodeTwinSyncPtr =>
-          wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinSyncPtr;
-
-  CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_OpaqueTwoTwinNormalPtr => wire
           ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueTwoTwinNormalPtr;
 
@@ -505,16 +495,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   OpaqueStructWithDartCodeTwinNormal
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinNormal(
-          dynamic raw);
-
-  @protected
-  OpaqueStructWithDartCodeTwinRustAsync
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinRustAsync(
-          dynamic raw);
-
-  @protected
-  OpaqueStructWithDartCodeTwinSync
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinSync(
           dynamic raw);
 
   @protected
@@ -695,16 +675,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   OpaqueStructWithDartCodeTwinNormal
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinNormal(
-          dynamic raw);
-
-  @protected
-  OpaqueStructWithDartCodeTwinRustAsync
-      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinRustAsync(
-          dynamic raw);
-
-  @protected
-  OpaqueStructWithDartCodeTwinSync
-      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinSync(
           dynamic raw);
 
   @protected
@@ -1117,16 +1087,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   OpaqueStructWithDartCodeTwinNormal
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinNormal(
-          dynamic raw);
-
-  @protected
-  OpaqueStructWithDartCodeTwinRustAsync
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinRustAsync(
-          dynamic raw);
-
-  @protected
-  OpaqueStructWithDartCodeTwinSync
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinSync(
           dynamic raw);
 
   @protected
@@ -2063,16 +2023,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   TranslatableStructWithDartCodeTwinNormal
       dco_decode_box_autoadd_translatable_struct_with_dart_code_twin_normal(
-          dynamic raw);
-
-  @protected
-  TranslatableStructWithDartCodeTwinRustAsync
-      dco_decode_box_autoadd_translatable_struct_with_dart_code_twin_rust_async(
-          dynamic raw);
-
-  @protected
-  TranslatableStructWithDartCodeTwinSync
-      dco_decode_box_autoadd_translatable_struct_with_dart_code_twin_sync(
           dynamic raw);
 
   @protected
@@ -3895,15 +3845,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_translatable_struct_with_dart_code_twin_normal(dynamic raw);
 
   @protected
-  TranslatableStructWithDartCodeTwinRustAsync
-      dco_decode_translatable_struct_with_dart_code_twin_rust_async(
-          dynamic raw);
-
-  @protected
-  TranslatableStructWithDartCodeTwinSync
-      dco_decode_translatable_struct_with_dart_code_twin_sync(dynamic raw);
-
-  @protected
   TupleStructWithOneFieldTwinNormal
       dco_decode_tuple_struct_with_one_field_twin_normal(dynamic raw);
 
@@ -4119,16 +4060,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
-  OpaqueStructWithDartCodeTwinRustAsync
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinRustAsync(
-          SseDeserializer deserializer);
-
-  @protected
-  OpaqueStructWithDartCodeTwinSync
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinSync(
-          SseDeserializer deserializer);
-
-  @protected
   OpaqueTwoTwinNormal
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueTwoTwinNormal(
           SseDeserializer deserializer);
@@ -4306,16 +4237,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   OpaqueStructWithDartCodeTwinNormal
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinNormal(
-          SseDeserializer deserializer);
-
-  @protected
-  OpaqueStructWithDartCodeTwinRustAsync
-      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinRustAsync(
-          SseDeserializer deserializer);
-
-  @protected
-  OpaqueStructWithDartCodeTwinSync
-      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinSync(
           SseDeserializer deserializer);
 
   @protected
@@ -4709,16 +4630,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   OpaqueStructWithDartCodeTwinNormal
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinNormal(
-          SseDeserializer deserializer);
-
-  @protected
-  OpaqueStructWithDartCodeTwinRustAsync
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinRustAsync(
-          SseDeserializer deserializer);
-
-  @protected
-  OpaqueStructWithDartCodeTwinSync
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinSync(
           SseDeserializer deserializer);
 
   @protected
@@ -5776,16 +5687,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   TranslatableStructWithDartCodeTwinNormal
       sse_decode_box_autoadd_translatable_struct_with_dart_code_twin_normal(
-          SseDeserializer deserializer);
-
-  @protected
-  TranslatableStructWithDartCodeTwinRustAsync
-      sse_decode_box_autoadd_translatable_struct_with_dart_code_twin_rust_async(
-          SseDeserializer deserializer);
-
-  @protected
-  TranslatableStructWithDartCodeTwinSync
-      sse_decode_box_autoadd_translatable_struct_with_dart_code_twin_sync(
           SseDeserializer deserializer);
 
   @protected
@@ -7867,16 +7768,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
-  TranslatableStructWithDartCodeTwinRustAsync
-      sse_decode_translatable_struct_with_dart_code_twin_rust_async(
-          SseDeserializer deserializer);
-
-  @protected
-  TranslatableStructWithDartCodeTwinSync
-      sse_decode_translatable_struct_with_dart_code_twin_sync(
-          SseDeserializer deserializer);
-
-  @protected
   TupleStructWithOneFieldTwinNormal
       sse_decode_tuple_struct_with_one_field_twin_normal(
           SseDeserializer deserializer);
@@ -8107,16 +7998,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinRustAsync(
-          OpaqueStructWithDartCodeTwinRustAsync self, SseSerializer serializer);
-
-  @protected
-  void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinSync(
-          OpaqueStructWithDartCodeTwinSync self, SseSerializer serializer);
-
-  @protected
-  void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueTwoTwinNormal(
           OpaqueTwoTwinNormal self, SseSerializer serializer);
 
@@ -8297,16 +8178,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinNormal(
           OpaqueStructWithDartCodeTwinNormal self, SseSerializer serializer);
-
-  @protected
-  void
-      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinRustAsync(
-          OpaqueStructWithDartCodeTwinRustAsync self, SseSerializer serializer);
-
-  @protected
-  void
-      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinSync(
-          OpaqueStructWithDartCodeTwinSync self, SseSerializer serializer);
 
   @protected
   void
@@ -8744,16 +8615,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinNormal(
           OpaqueStructWithDartCodeTwinNormal self, SseSerializer serializer);
-
-  @protected
-  void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinRustAsync(
-          OpaqueStructWithDartCodeTwinRustAsync self, SseSerializer serializer);
-
-  @protected
-  void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinSync(
-          OpaqueStructWithDartCodeTwinSync self, SseSerializer serializer);
 
   @protected
   void
@@ -9768,16 +9629,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_box_autoadd_translatable_struct_with_dart_code_twin_normal(
       TranslatableStructWithDartCodeTwinNormal self, SseSerializer serializer);
-
-  @protected
-  void
-      sse_encode_box_autoadd_translatable_struct_with_dart_code_twin_rust_async(
-          TranslatableStructWithDartCodeTwinRustAsync self,
-          SseSerializer serializer);
-
-  @protected
-  void sse_encode_box_autoadd_translatable_struct_with_dart_code_twin_sync(
-      TranslatableStructWithDartCodeTwinSync self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_tuple_struct_with_one_field_twin_normal(
@@ -11813,15 +11664,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       TranslatableStructWithDartCodeTwinNormal self, SseSerializer serializer);
 
   @protected
-  void sse_encode_translatable_struct_with_dart_code_twin_rust_async(
-      TranslatableStructWithDartCodeTwinRustAsync self,
-      SseSerializer serializer);
-
-  @protected
-  void sse_encode_translatable_struct_with_dart_code_twin_sync(
-      TranslatableStructWithDartCodeTwinSync self, SseSerializer serializer);
-
-  @protected
   void sse_encode_tuple_struct_with_one_field_twin_normal(
       TupleStructWithOneFieldTwinNormal self, SseSerializer serializer);
 
@@ -13327,70 +13169,6 @@ class RustLibWire implements BaseWire {
           'frbgen_frb_example_pure_dart_pde_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinNormal');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinNormal =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinNormalPtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void
-      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinRustAsync(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinRustAsync(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinRustAsyncPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_frb_example_pure_dart_pde_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinRustAsync');
-  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinRustAsync =
-      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinRustAsyncPtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void
-      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinRustAsync(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinRustAsync(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinRustAsyncPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_frb_example_pure_dart_pde_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinRustAsync');
-  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinRustAsync =
-      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinRustAsyncPtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void
-      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinSync(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinSync(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinSyncPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_frb_example_pure_dart_pde_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinSync');
-  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinSync =
-      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinSyncPtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void
-      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinSync(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinSync(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinSyncPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_frb_example_pure_dart_pde_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinSync');
-  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinSync =
-      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockOpaqueStructWithDartCodeTwinSyncPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void

@@ -22,8 +22,6 @@ pub mod chrono_type_twin_rust_async;
 pub mod chrono_type_twin_sync;
 pub mod comment_twin_rust_async;
 pub mod comment_twin_sync;
-pub mod dart_code_twin_rust_async;
-pub mod dart_code_twin_sync;
 pub mod dart_fn_twin_rust_async;
 pub mod dart_opaque_twin_rust_async;
 pub mod dart_opaque_twin_sync;

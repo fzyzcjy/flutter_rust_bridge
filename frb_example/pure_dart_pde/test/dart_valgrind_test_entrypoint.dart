@@ -70,10 +70,6 @@ import 'api/pseudo_manual/comment_twin_rust_async_test.dart'
     as comment_twin_rust_async_test;
 import 'api/pseudo_manual/comment_twin_sync_test.dart'
     as comment_twin_sync_test;
-import 'api/pseudo_manual/dart_code_twin_rust_async_test.dart'
-    as dart_code_twin_rust_async_test;
-import 'api/pseudo_manual/dart_code_twin_sync_test.dart'
-    as dart_code_twin_sync_test;
 import 'api/pseudo_manual/dart_fn_twin_rust_async_test.dart'
     as dart_fn_twin_rust_async_test;
 import 'api/pseudo_manual/dart_opaque_twin_rust_async_test.dart'
@@ -243,8 +239,6 @@ Future<void> callFileEntrypoints() async {
   await chrono_type_twin_sync_test.main(skipRustLibInit: true);
   await comment_twin_rust_async_test.main(skipRustLibInit: true);
   await comment_twin_sync_test.main(skipRustLibInit: true);
-  await dart_code_twin_rust_async_test.main(skipRustLibInit: true);
-  await dart_code_twin_sync_test.main(skipRustLibInit: true);
   await dart_fn_twin_rust_async_test.main(skipRustLibInit: true);
   await dart_opaque_twin_rust_async_test.main(skipRustLibInit: true);
   await dart_opaque_twin_sync_test.main(skipRustLibInit: true);
