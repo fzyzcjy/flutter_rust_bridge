@@ -144,8 +144,8 @@ macro_rules! frb_generated_stream_sink {
         }
 
         impl<T, Rust2DartCodec: $crate::for_generated::BaseCodec> StreamSink<T, Rust2DartCodec> {
-            pub fn new(base: $crate::for_generated::StreamSinkBase<T, Rust2DartCodec>) -> Self {
-                Self { base }
+            pub fn deserialize(raw: String) -> Self {
+                Self { base: $crate::for_generated::StreamSinkBase::deserialize(raw) }
             }
         }
 
