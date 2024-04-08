@@ -46,11 +46,11 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_opaque = RustOpaqueMoi,
     default_rust_auto_opaque = RustAutoOpaqueMoi,
 );
-const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.0.0-dev.30";
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.0.0-dev.30";
 
 // Section: executor
 
-flutter_rust_bridge::frb_generated_default_handler!();
+pub use crate::api::custom_handler::FLUTTER_RUST_BRIDGE_HANDLER;
 
 // Section: wire_funcs
 

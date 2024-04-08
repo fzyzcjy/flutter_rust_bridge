@@ -10,6 +10,7 @@ pub(crate) mod type_parser;
 mod unused_checker;
 
 use crate::codegen::dumper::Dumper;
+use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::codegen::parser::function_extractor::extract_generalized_functions_from_file;
@@ -21,6 +22,8 @@ use crate::codegen::parser::type_alias_resolver::resolve_type_aliases;
 use crate::codegen::parser::type_parser::TypeParser;
 use crate::codegen::parser::unused_checker::get_unused_types;
 use crate::codegen::ConfigDumpContent;
+use crate::library::misc::consts::HANDLER_NAME;
+use anyhow::ensure;
 use itertools::Itertools;
 use log::trace;
 use std::path::{Path, PathBuf};
@@ -88,7 +91,22 @@ pub(crate) fn parse(
         .sorted_by_cached_key(|func| func.name.clone())
         .collect_vec();
 
-    let has_executor = (file_data_arr.iter()).any(|file| parse_has_executor(&file.content));
+    let existing_handlers = (file_data_arr.iter())
+        .filter(|file| parse_has_executor(&file.content))
+        .map(|file| {
+            NamespacedName::new(
+                Namespace::new_from_rust_crate_path(&file.path, &config.rust_crate_dir).unwrap(),
+                HANDLER_NAME.to_owned(),
+            )
+        })
+        .collect_vec();
+    ensure!(
+        existing_handlers.len() <= 1,
+        // frb-coverage:ignore-start
+        // This will stop the whole generator and tell the users, so we do not care about testing it
+        "Should have at most one custom handler"
+    );
+    // frb-coverage:ignore-end
 
     let (struct_pool, enum_pool) = type_parser.consume();
 
@@ -96,7 +114,7 @@ pub(crate) fn parse(
         funcs: ir_funcs,
         struct_pool,
         enum_pool,
-        has_executor,
+        existing_handler: existing_handlers.first().cloned(),
         unused_types: vec![],
     };
 
