@@ -67,7 +67,7 @@ class ConcatenateWithTwinRustAsyncSse {
       );
 
   static Future<void> handleSomeStaticStreamSinkSingleArgTwinRustAsyncSse(
-          {required StreamSink sink, dynamic hint}) =>
+          {required RustStreamSink<int> sink, dynamic hint}) =>
       RustLib.instance.api
           .concatenateWithTwinRustAsyncSseHandleSomeStaticStreamSinkSingleArgTwinRustAsyncSse(
         sink: sink,
@@ -77,7 +77,7 @@ class ConcatenateWithTwinRustAsyncSse {
   static Future<void> handleSomeStaticStreamSinkTwinRustAsyncSse(
           {required int key,
           required int max,
-          required StreamSink sink,
+          required RustStreamSink<Log2TwinRustAsyncSse> sink,
           dynamic hint}) =>
       RustLib.instance.api
           .concatenateWithTwinRustAsyncSseHandleSomeStaticStreamSinkTwinRustAsyncSse(
@@ -88,7 +88,7 @@ class ConcatenateWithTwinRustAsyncSse {
       );
 
   Future<void> handleSomeStreamSinkAt1TwinRustAsyncSse(
-          {required StreamSink sink, dynamic hint}) =>
+          {required RustStreamSink<int> sink, dynamic hint}) =>
       RustLib.instance.api
           .concatenateWithTwinRustAsyncSseHandleSomeStreamSinkAt1TwinRustAsyncSse(
         that: this,
@@ -99,7 +99,7 @@ class ConcatenateWithTwinRustAsyncSse {
   Future<void> handleSomeStreamSinkTwinRustAsyncSse(
           {required int key,
           required int max,
-          required StreamSink sink,
+          required RustStreamSink<Log2TwinRustAsyncSse> sink,
           dynamic hint}) =>
       RustLib.instance.api
           .concatenateWithTwinRustAsyncSseHandleSomeStreamSinkTwinRustAsyncSse(

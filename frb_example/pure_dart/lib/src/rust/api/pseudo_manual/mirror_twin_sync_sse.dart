@@ -21,19 +21,19 @@ bool isAppEmbeddedTwinSyncSse(
     RustLib.instance.api
         .isAppEmbeddedTwinSyncSse(appSettings: appSettings, hint: hint);
 
-void appSettingsStreamTwinSyncSse({required StreamSink sink, dynamic hint}) =>
-    RustLib.instance.api.appSettingsStreamTwinSyncSse(sink: sink, hint: hint);
+Stream<ApplicationSettings> appSettingsStreamTwinSyncSse({dynamic hint}) =>
+    RustLib.instance.api.appSettingsStreamTwinSyncSse(hint: hint);
 
-void appSettingsVecStreamTwinSyncSse(
-        {required StreamSink sink, dynamic hint}) =>
-    RustLib.instance.api
-        .appSettingsVecStreamTwinSyncSse(sink: sink, hint: hint);
+Stream<List<ApplicationSettings>> appSettingsVecStreamTwinSyncSse(
+        {dynamic hint}) =>
+    RustLib.instance.api.appSettingsVecStreamTwinSyncSse(hint: hint);
 
-void mirrorStructStreamTwinSyncSse({required StreamSink sink, dynamic hint}) =>
-    RustLib.instance.api.mirrorStructStreamTwinSyncSse(sink: sink, hint: hint);
+Stream<MirrorStructTwinSyncSse> mirrorStructStreamTwinSyncSse({dynamic hint}) =>
+    RustLib.instance.api.mirrorStructStreamTwinSyncSse(hint: hint);
 
-void mirrorTupleStreamTwinSyncSse({required StreamSink sink, dynamic hint}) =>
-    RustLib.instance.api.mirrorTupleStreamTwinSyncSse(sink: sink, hint: hint);
+Stream<(ApplicationSettings, RawStringEnumMirrored)>
+    mirrorTupleStreamTwinSyncSse({dynamic hint}) =>
+        RustLib.instance.api.mirrorTupleStreamTwinSyncSse(hint: hint);
 
 ApplicationMessage getMessageTwinSyncSse({dynamic hint}) =>
     RustLib.instance.api.getMessageTwinSyncSse(hint: hint);
@@ -86,27 +86,25 @@ ContainsMirroredSubStructTwinSyncSse testContainsMirroredSubStructTwinSyncSse(
 StructWithHashMap testHashmapWithMirroredValueTwinSyncSse({dynamic hint}) =>
     RustLib.instance.api.testHashmapWithMirroredValueTwinSyncSse(hint: hint);
 
-void mirrorEnumStreamTwinSyncSse({required StreamSink sink, dynamic hint}) =>
-    RustLib.instance.api.mirrorEnumStreamTwinSyncSse(sink: sink, hint: hint);
+Stream<ApplicationMode> mirrorEnumStreamTwinSyncSse({dynamic hint}) =>
+    RustLib.instance.api.mirrorEnumStreamTwinSyncSse(hint: hint);
 
-void mirrorOptionEnumStreamTwinSyncSse(
-        {required StreamSink sink, dynamic hint}) =>
-    RustLib.instance.api
-        .mirrorOptionEnumStreamTwinSyncSse(sink: sink, hint: hint);
+Stream<ApplicationMode?> mirrorOptionEnumStreamTwinSyncSse({dynamic hint}) =>
+    RustLib.instance.api.mirrorOptionEnumStreamTwinSyncSse(hint: hint);
 
-void mirrorVecEnumStreamTwinSyncSse({required StreamSink sink, dynamic hint}) =>
-    RustLib.instance.api.mirrorVecEnumStreamTwinSyncSse(sink: sink, hint: hint);
+Stream<List<ApplicationMode>> mirrorVecEnumStreamTwinSyncSse({dynamic hint}) =>
+    RustLib.instance.api.mirrorVecEnumStreamTwinSyncSse(hint: hint);
 
-void mirrorMapEnumStreamTwinSyncSse({required StreamSink sink, dynamic hint}) =>
-    RustLib.instance.api.mirrorMapEnumStreamTwinSyncSse(sink: sink, hint: hint);
+Stream<Map<int, ApplicationMode>> mirrorMapEnumStreamTwinSyncSse(
+        {dynamic hint}) =>
+    RustLib.instance.api.mirrorMapEnumStreamTwinSyncSse(hint: hint);
 
-void mirrorSetEnumStreamTwinSyncSse({required StreamSink sink, dynamic hint}) =>
-    RustLib.instance.api.mirrorSetEnumStreamTwinSyncSse(sink: sink, hint: hint);
+Stream<Set<ApplicationMode>> mirrorSetEnumStreamTwinSyncSse({dynamic hint}) =>
+    RustLib.instance.api.mirrorSetEnumStreamTwinSyncSse(hint: hint);
 
-void mirrorArrayEnumStreamTwinSyncSse(
-        {required StreamSink sink, dynamic hint}) =>
-    RustLib.instance.api
-        .mirrorArrayEnumStreamTwinSyncSse(sink: sink, hint: hint);
+Stream<ApplicationModeArray2> mirrorArrayEnumStreamTwinSyncSse(
+        {dynamic hint}) =>
+    RustLib.instance.api.mirrorArrayEnumStreamTwinSyncSse(hint: hint);
 
 class AnotherTwinSyncSse {
   final String a;

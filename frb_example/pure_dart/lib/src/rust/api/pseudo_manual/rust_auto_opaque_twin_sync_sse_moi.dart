@@ -157,10 +157,9 @@ NonCloneSimpleEnumTwinSyncSseMoi rustAutoOpaqueEnumReturnOwnTwinSyncSseMoi(
         {dynamic hint}) =>
     RustLib.instance.api.rustAutoOpaqueEnumReturnOwnTwinSyncSseMoi(hint: hint);
 
-void rustAutoOpaqueStreamSinkTwinSyncSseMoi(
-        {required StreamSink sink, dynamic hint}) =>
-    RustLib.instance.api
-        .rustAutoOpaqueStreamSinkTwinSyncSseMoi(sink: sink, hint: hint);
+Stream<NonCloneSimpleTwinSyncSseMoi> rustAutoOpaqueStreamSinkTwinSyncSseMoi(
+        {dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueStreamSinkTwinSyncSseMoi(hint: hint);
 
 void rustAutoOpaqueArgVecOwnTwinSyncSseMoi(
         {required List<NonCloneSimpleTwinSyncSseMoi> arg,

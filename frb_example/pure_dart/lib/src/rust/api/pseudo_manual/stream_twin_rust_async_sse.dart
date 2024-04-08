@@ -9,54 +9,37 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 // The type `LogTwinRustAsyncSse` is not used by any `pub` functions, thus it is ignored.
 // The type `MyStreamEntryTwinRustAsyncSse` is not used by any `pub` functions, thus it is ignored.
 
-Future<void> funcStreamReturnErrorTwinRustAsyncSse(
-        {required StreamSink sink, dynamic hint}) =>
+Future<Stream<String>> funcStreamReturnErrorTwinRustAsyncSse({dynamic hint}) =>
+    RustLib.instance.api.funcStreamReturnErrorTwinRustAsyncSse(hint: hint);
+
+Future<Stream<String>> funcStreamReturnPanicTwinRustAsyncSse({dynamic hint}) =>
+    RustLib.instance.api.funcStreamReturnPanicTwinRustAsyncSse(hint: hint);
+
+Future<Stream<int>> funcStreamSinkArgPositionTwinRustAsyncSse(
+        {required int a, required int b, dynamic hint}) =>
     RustLib.instance.api
-        .funcStreamReturnErrorTwinRustAsyncSse(sink: sink, hint: hint);
+        .funcStreamSinkArgPositionTwinRustAsyncSse(a: a, b: b, hint: hint);
 
-Future<void> funcStreamReturnPanicTwinRustAsyncSse(
-        {required StreamSink sink, dynamic hint}) =>
+Future<Stream<MyStreamEntryTwinRustAsyncSse>>
+    handleStreamOfStructTwinRustAsyncSse({dynamic hint}) =>
+        RustLib.instance.api.handleStreamOfStructTwinRustAsyncSse(hint: hint);
+
+Future<Stream<LogTwinRustAsyncSse>> handleStreamSinkAt1TwinRustAsyncSse(
+        {required int key, required int max, dynamic hint}) =>
     RustLib.instance.api
-        .funcStreamReturnPanicTwinRustAsyncSse(sink: sink, hint: hint);
+        .handleStreamSinkAt1TwinRustAsyncSse(key: key, max: max, hint: hint);
 
-Future<void> funcStreamSinkArgPositionTwinRustAsyncSse(
-        {required int a,
-        required int b,
-        required StreamSink c,
-        dynamic hint}) =>
-    RustLib.instance.api.funcStreamSinkArgPositionTwinRustAsyncSse(
-        a: a, b: b, c: c, hint: hint);
-
-Future<void> handleStreamOfStructTwinRustAsyncSse(
-        {required StreamSink sink, dynamic hint}) =>
+Future<Stream<LogTwinRustAsyncSse>> handleStreamSinkAt2TwinRustAsyncSse(
+        {required int key, required int max, dynamic hint}) =>
     RustLib.instance.api
-        .handleStreamOfStructTwinRustAsyncSse(sink: sink, hint: hint);
+        .handleStreamSinkAt2TwinRustAsyncSse(key: key, max: max, hint: hint);
 
-Future<void> handleStreamSinkAt1TwinRustAsyncSse(
-        {required int key,
-        required int max,
-        required StreamSink sink,
-        dynamic hint}) =>
-    RustLib.instance.api.handleStreamSinkAt1TwinRustAsyncSse(
-        key: key, max: max, sink: sink, hint: hint);
+Future<Stream<LogTwinRustAsyncSse>> handleStreamSinkAt3TwinRustAsyncSse(
+        {required int key, required int max, dynamic hint}) =>
+    RustLib.instance.api
+        .handleStreamSinkAt3TwinRustAsyncSse(key: key, max: max, hint: hint);
 
-Future<void> handleStreamSinkAt2TwinRustAsyncSse(
-        {required int key,
-        required StreamSink sink,
-        required int max,
-        dynamic hint}) =>
-    RustLib.instance.api.handleStreamSinkAt2TwinRustAsyncSse(
-        key: key, sink: sink, max: max, hint: hint);
-
-Future<void> handleStreamSinkAt3TwinRustAsyncSse(
-        {required StreamSink sink,
-        required int key,
-        required int max,
-        dynamic hint}) =>
-    RustLib.instance.api.handleStreamSinkAt3TwinRustAsyncSse(
-        sink: sink, key: key, max: max, hint: hint);
-
-Future<void> streamSinkFixedSizedPrimitiveArrayTwinRustAsyncSse(
-        {required StreamSink sink, dynamic hint}) =>
-    RustLib.instance.api.streamSinkFixedSizedPrimitiveArrayTwinRustAsyncSse(
-        sink: sink, hint: hint);
+Future<Stream<U8Array2>> streamSinkFixedSizedPrimitiveArrayTwinRustAsyncSse(
+        {dynamic hint}) =>
+    RustLib.instance.api
+        .streamSinkFixedSizedPrimitiveArrayTwinRustAsyncSse(hint: hint);

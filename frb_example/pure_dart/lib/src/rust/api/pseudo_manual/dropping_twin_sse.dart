@@ -24,7 +24,8 @@ class DroppableTwinSse extends RustOpaque {
         .instance.api.rust_arc_decrement_strong_count_DroppableTwinSsePtr,
   );
 
-  Future<void> createStreamTwinSse({required StreamSink sink, dynamic hint}) =>
+  Future<void> createStreamTwinSse(
+          {required RustStreamSink<int> sink, dynamic hint}) =>
       RustLib.instance.api.droppableTwinSseCreateStreamTwinSse(
         that: this,
         sink: sink,

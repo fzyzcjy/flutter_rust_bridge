@@ -975,9 +975,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       get rust_arc_decrement_strong_count_StaticGetterOnlyTwinSyncSsePtr => wire
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStaticGetterOnlyTwinSyncSse;
 
-  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_StreamSinkPtr =>
-      wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStreamSink;
-
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_StructInMiscNoTwinExampleAPtr => wire
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA;
@@ -1540,11 +1537,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StaticGetterOnlyTwinSyncSse
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStaticGetterOnlyTwinSyncSse(
-          dynamic raw);
-
-  @protected
-  StreamSink
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStreamSink(
           dynamic raw);
 
   @protected
@@ -3119,11 +3111,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
-  StreamSink
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStreamSink(
-          dynamic raw);
-
-  @protected
   StructInMiscNoTwinExampleA
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
           dynamic raw);
@@ -3231,6 +3218,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  RustStreamSink<NonCloneSimpleTwinRustAsyncSse>
+      dco_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse(
+          dynamic raw);
+
+  @protected
+  RustStreamSink<NonCloneSimpleTwinRustAsyncSseMoi>
+      dco_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+          dynamic raw);
+
+  @protected
+  RustStreamSink<NonCloneSimpleTwinSse>
+      dco_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSse(
+          dynamic raw);
+
+  @protected
+  RustStreamSink<NonCloneSimpleTwinSseMoi>
+      dco_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+          dynamic raw);
+
+  @protected
   RustStreamSink<NonCloneSimpleTwinSync>
       dco_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
           dynamic raw);
@@ -3238,6 +3245,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   RustStreamSink<NonCloneSimpleTwinSyncMoi>
       dco_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+          dynamic raw);
+
+  @protected
+  RustStreamSink<NonCloneSimpleTwinSyncSse>
+      dco_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
+          dynamic raw);
+
+  @protected
+  RustStreamSink<NonCloneSimpleTwinSyncSseMoi>
+      dco_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
           dynamic raw);
 
   @protected
@@ -3272,6 +3289,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_StreamSink_event_twin_rust_async(dynamic raw);
 
   @protected
+  RustStreamSink<EventTwinRustAsyncSse>
+      dco_decode_StreamSink_event_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  RustStreamSink<EventTwinSse> dco_decode_StreamSink_event_twin_sse(
+      dynamic raw);
+
+  @protected
   RustStreamSink<int> dco_decode_StreamSink_i_32(dynamic raw);
 
   @protected
@@ -3291,7 +3316,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  RustStreamSink<Log2TwinRustAsyncSse>
+      dco_decode_StreamSink_log_2_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  RustStreamSink<Log2TwinSse> dco_decode_StreamSink_log_2_twin_sse(dynamic raw);
+
+  @protected
   RustStreamSink<Log2TwinSync> dco_decode_StreamSink_log_2_twin_sync(
+      dynamic raw);
+
+  @protected
+  RustStreamSink<Log2TwinSyncSse> dco_decode_StreamSink_log_2_twin_sync_sse(
       dynamic raw);
 
   @protected
@@ -3303,6 +3339,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  RustStreamSink<LogTwinRustAsyncSse>
+      dco_decode_StreamSink_log_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  RustStreamSink<LogTwinSse> dco_decode_StreamSink_log_twin_sse(dynamic raw);
+
+  @protected
   RustStreamSink<MirrorStructTwinNormal>
       dco_decode_StreamSink_mirror_struct_twin_normal(dynamic raw);
 
@@ -3311,8 +3354,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_StreamSink_mirror_struct_twin_rust_async(dynamic raw);
 
   @protected
+  RustStreamSink<MirrorStructTwinRustAsyncSse>
+      dco_decode_StreamSink_mirror_struct_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  RustStreamSink<MirrorStructTwinSse>
+      dco_decode_StreamSink_mirror_struct_twin_sse(dynamic raw);
+
+  @protected
   RustStreamSink<MirrorStructTwinSync>
       dco_decode_StreamSink_mirror_struct_twin_sync(dynamic raw);
+
+  @protected
+  RustStreamSink<MirrorStructTwinSyncSse>
+      dco_decode_StreamSink_mirror_struct_twin_sync_sse(dynamic raw);
 
   @protected
   RustStreamSink<MyStreamEntryTwinNormal>
@@ -3321,6 +3376,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   RustStreamSink<MyStreamEntryTwinRustAsync>
       dco_decode_StreamSink_my_stream_entry_twin_rust_async(dynamic raw);
+
+  @protected
+  RustStreamSink<MyStreamEntryTwinRustAsyncSse>
+      dco_decode_StreamSink_my_stream_entry_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  RustStreamSink<MyStreamEntryTwinSse>
+      dco_decode_StreamSink_my_stream_entry_twin_sse(dynamic raw);
 
   @protected
   RustStreamSink<ApplicationMode?>
@@ -9228,11 +9291,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
-  StreamSink
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStreamSink(
-          SseDeserializer deserializer);
-
-  @protected
   StructInMiscNoTwinExampleA
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
           SseDeserializer deserializer);
@@ -10808,11 +10866,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
-  StreamSink
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStreamSink(
-          SseDeserializer deserializer);
-
-  @protected
   StructInMiscNoTwinExampleA
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
           SseDeserializer deserializer);
@@ -10920,6 +10973,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  RustStreamSink<NonCloneSimpleTwinRustAsyncSse>
+      sse_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<NonCloneSimpleTwinRustAsyncSseMoi>
+      sse_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<NonCloneSimpleTwinSse>
+      sse_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSse(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<NonCloneSimpleTwinSseMoi>
+      sse_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+          SseDeserializer deserializer);
+
+  @protected
   RustStreamSink<NonCloneSimpleTwinSync>
       sse_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
           SseDeserializer deserializer);
@@ -10927,6 +11000,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   RustStreamSink<NonCloneSimpleTwinSyncMoi>
       sse_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<NonCloneSimpleTwinSyncSse>
+      sse_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<NonCloneSimpleTwinSyncSseMoi>
+      sse_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
           SseDeserializer deserializer);
 
   @protected
@@ -10964,6 +11047,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       sse_decode_StreamSink_event_twin_rust_async(SseDeserializer deserializer);
 
   @protected
+  RustStreamSink<EventTwinRustAsyncSse>
+      sse_decode_StreamSink_event_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<EventTwinSse> sse_decode_StreamSink_event_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
   RustStreamSink<int> sse_decode_StreamSink_i_32(SseDeserializer deserializer);
 
   @protected
@@ -10984,7 +11076,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  RustStreamSink<Log2TwinRustAsyncSse>
+      sse_decode_StreamSink_log_2_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<Log2TwinSse> sse_decode_StreamSink_log_2_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
   RustStreamSink<Log2TwinSync> sse_decode_StreamSink_log_2_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<Log2TwinSyncSse> sse_decode_StreamSink_log_2_twin_sync_sse(
       SseDeserializer deserializer);
 
   @protected
@@ -10993,6 +11098,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   RustStreamSink<LogTwinRustAsync> sse_decode_StreamSink_log_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<LogTwinRustAsyncSse>
+      sse_decode_StreamSink_log_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<LogTwinSse> sse_decode_StreamSink_log_twin_sse(
       SseDeserializer deserializer);
 
   @protected
@@ -11006,8 +11120,23 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  RustStreamSink<MirrorStructTwinRustAsyncSse>
+      sse_decode_StreamSink_mirror_struct_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<MirrorStructTwinSse>
+      sse_decode_StreamSink_mirror_struct_twin_sse(
+          SseDeserializer deserializer);
+
+  @protected
   RustStreamSink<MirrorStructTwinSync>
       sse_decode_StreamSink_mirror_struct_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<MirrorStructTwinSyncSse>
+      sse_decode_StreamSink_mirror_struct_twin_sync_sse(
           SseDeserializer deserializer);
 
   @protected
@@ -11018,6 +11147,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   RustStreamSink<MyStreamEntryTwinRustAsync>
       sse_decode_StreamSink_my_stream_entry_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<MyStreamEntryTwinRustAsyncSse>
+      sse_decode_StreamSink_my_stream_entry_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<MyStreamEntryTwinSse>
+      sse_decode_StreamSink_my_stream_entry_twin_sse(
           SseDeserializer deserializer);
 
   @protected
@@ -25911,11 +26050,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStreamSink(
-          StreamSink self, SseSerializer serializer);
-
-  @protected
-  void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
           StructInMiscNoTwinExampleA self, SseSerializer serializer);
 
@@ -27554,11 +27688,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStreamSink(
-          StreamSink self, SseSerializer serializer);
-
-  @protected
-  void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
           StructInMiscNoTwinExampleA self, SseSerializer serializer);
 
@@ -27681,6 +27810,29 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
+      sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse(
+          RustStreamSink<NonCloneSimpleTwinRustAsyncSse> self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+          RustStreamSink<NonCloneSimpleTwinRustAsyncSseMoi> self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSse(
+          RustStreamSink<NonCloneSimpleTwinSse> self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+          RustStreamSink<NonCloneSimpleTwinSseMoi> self,
+          SseSerializer serializer);
+
+  @protected
+  void
       sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
           RustStreamSink<NonCloneSimpleTwinSync> self,
           SseSerializer serializer);
@@ -27689,6 +27841,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
           RustStreamSink<NonCloneSimpleTwinSyncMoi> self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
+          RustStreamSink<NonCloneSimpleTwinSyncSse> self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
+          RustStreamSink<NonCloneSimpleTwinSyncSseMoi> self,
           SseSerializer serializer);
 
   @protected
@@ -27724,6 +27888,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       RustStreamSink<EventTwinRustAsync> self, SseSerializer serializer);
 
   @protected
+  void sse_encode_StreamSink_event_twin_rust_async_sse(
+      RustStreamSink<EventTwinRustAsyncSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_event_twin_sse(
+      RustStreamSink<EventTwinSse> self, SseSerializer serializer);
+
+  @protected
   void sse_encode_StreamSink_i_32(
       RustStreamSink<int> self, SseSerializer serializer);
 
@@ -27744,8 +27916,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       RustStreamSink<Log2TwinRustAsync> self, SseSerializer serializer);
 
   @protected
+  void sse_encode_StreamSink_log_2_twin_rust_async_sse(
+      RustStreamSink<Log2TwinRustAsyncSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_log_2_twin_sse(
+      RustStreamSink<Log2TwinSse> self, SseSerializer serializer);
+
+  @protected
   void sse_encode_StreamSink_log_2_twin_sync(
       RustStreamSink<Log2TwinSync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_log_2_twin_sync_sse(
+      RustStreamSink<Log2TwinSyncSse> self, SseSerializer serializer);
 
   @protected
   void sse_encode_StreamSink_log_twin_normal(
@@ -27756,6 +27940,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       RustStreamSink<LogTwinRustAsync> self, SseSerializer serializer);
 
   @protected
+  void sse_encode_StreamSink_log_twin_rust_async_sse(
+      RustStreamSink<LogTwinRustAsyncSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_log_twin_sse(
+      RustStreamSink<LogTwinSse> self, SseSerializer serializer);
+
+  @protected
   void sse_encode_StreamSink_mirror_struct_twin_normal(
       RustStreamSink<MirrorStructTwinNormal> self, SseSerializer serializer);
 
@@ -27764,8 +27956,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       RustStreamSink<MirrorStructTwinRustAsync> self, SseSerializer serializer);
 
   @protected
+  void sse_encode_StreamSink_mirror_struct_twin_rust_async_sse(
+      RustStreamSink<MirrorStructTwinRustAsyncSse> self,
+      SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_mirror_struct_twin_sse(
+      RustStreamSink<MirrorStructTwinSse> self, SseSerializer serializer);
+
+  @protected
   void sse_encode_StreamSink_mirror_struct_twin_sync(
       RustStreamSink<MirrorStructTwinSync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_mirror_struct_twin_sync_sse(
+      RustStreamSink<MirrorStructTwinSyncSse> self, SseSerializer serializer);
 
   @protected
   void sse_encode_StreamSink_my_stream_entry_twin_normal(
@@ -27775,6 +27980,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_StreamSink_my_stream_entry_twin_rust_async(
       RustStreamSink<MyStreamEntryTwinRustAsync> self,
       SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_my_stream_entry_twin_rust_async_sse(
+      RustStreamSink<MyStreamEntryTwinRustAsyncSse> self,
+      SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_my_stream_entry_twin_sse(
+      RustStreamSink<MyStreamEntryTwinSse> self, SseSerializer serializer);
 
   @protected
   void sse_encode_StreamSink_opt_box_autoadd_application_mode(
@@ -51129,18 +51343,6 @@ class RustLibWire implements BaseWire {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStaticGetterOnlyTwinSyncSse(
               ptr);
 
-  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStreamSink(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStreamSink(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStreamSink(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStreamSink(
-              ptr);
-
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
           dynamic ptr) =>
       wasmModule
@@ -63048,14 +63250,6 @@ class RustLibWasmModule implements WasmModule {
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStaticGetterOnlyTwinSyncSse(
-          dynamic ptr);
-
-  external void
-      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStreamSink(
-          dynamic ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStreamSink(
           dynamic ptr);
 
   external void

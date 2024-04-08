@@ -25,7 +25,7 @@ class DroppableTwinRustAsyncSse extends RustOpaque {
   );
 
   Future<void> createStreamTwinRustAsyncSse(
-          {required StreamSink sink, dynamic hint}) =>
+          {required RustStreamSink<int> sink, dynamic hint}) =>
       RustLib.instance.api
           .droppableTwinRustAsyncSseCreateStreamTwinRustAsyncSse(
         that: this,

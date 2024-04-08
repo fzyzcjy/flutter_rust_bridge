@@ -64,7 +64,7 @@ class ConcatenateWithTwinSyncSse {
       );
 
   static void handleSomeStaticStreamSinkSingleArgTwinSyncSse(
-          {required StreamSink sink, dynamic hint}) =>
+          {required RustStreamSink<int> sink, dynamic hint}) =>
       RustLib.instance.api
           .concatenateWithTwinSyncSseHandleSomeStaticStreamSinkSingleArgTwinSyncSse(
         sink: sink,
@@ -74,7 +74,7 @@ class ConcatenateWithTwinSyncSse {
   static void handleSomeStaticStreamSinkTwinSyncSse(
           {required int key,
           required int max,
-          required StreamSink sink,
+          required RustStreamSink<Log2TwinSyncSse> sink,
           dynamic hint}) =>
       RustLib.instance.api
           .concatenateWithTwinSyncSseHandleSomeStaticStreamSinkTwinSyncSse(
@@ -85,7 +85,7 @@ class ConcatenateWithTwinSyncSse {
       );
 
   void handleSomeStreamSinkAt1TwinSyncSse(
-          {required StreamSink sink, dynamic hint}) =>
+          {required RustStreamSink<int> sink, dynamic hint}) =>
       RustLib.instance.api
           .concatenateWithTwinSyncSseHandleSomeStreamSinkAt1TwinSyncSse(
         that: this,
@@ -96,7 +96,7 @@ class ConcatenateWithTwinSyncSse {
   void handleSomeStreamSinkTwinSyncSse(
           {required int key,
           required int max,
-          required StreamSink sink,
+          required RustStreamSink<Log2TwinSyncSse> sink,
           dynamic hint}) =>
       RustLib.instance.api
           .concatenateWithTwinSyncSseHandleSomeStreamSinkTwinSyncSse(
