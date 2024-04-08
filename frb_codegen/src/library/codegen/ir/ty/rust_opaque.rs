@@ -1,3 +1,4 @@
+use convert_case::{Case, Casing};
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
@@ -59,6 +60,10 @@ impl IrTypeRustOpaque {
     }
 
     pub(crate) const DELEGATE_TYPE: IrType = IrType::Primitive(IrTypePrimitive::Usize);
+
+    pub(crate) fn sanitized_type(&self) -> String {
+        rust_type_to_sanitized_type(&self.inner.0, self.brief_name)
+    }
 }
 
 impl IrTypeTrait for IrTypeRustOpaque {
@@ -113,4 +118,39 @@ fn serialize_vec_syn<T: ToTokens, S: Serializer>(values: &[T], s: S) -> Result<S
         .map(|value| quote::quote!(#value).to_string())
         .join(", ");
     str.serialize(s)
+}
+
+fn rust_type_to_sanitized_type(rust: &str, brief_name: bool) -> String {
+    lazy_static! {
+        static ref OPAQUE_FILTER: Regex =Regex::new(r"((\bdyn|'static|\bDartSafe|\bAssertUnwindSafe|\+ (Send|Sync|UnwindSafe|RefUnwindSafe))\b)|([a-zA-Z0-9_]+::)").unwrap();
+        static ref OPAQUE_BRIEF_NAME_FILTER: Regex =Regex::new(r"(\bRwLock)\b").unwrap();
+    }
+
+    let mut rust = OPAQUE_FILTER.replace_all(rust, "").to_string();
+    if brief_name {
+        rust = OPAQUE_BRIEF_NAME_FILTER.replace_all(&rust, "").to_string();
+    }
+    rust.replace(char_not_alphanumeric, "_").to_case(Case::Pascal)
+}
+
+fn char_not_alphanumeric(c: char) -> bool {
+    !c.is_alphanumeric()
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    pub fn test_rust_type_to_sanitized_type() {
+        assert_eq!(&rust_type_to_sanitized_type("SomeType", true), "SomeType");
+        assert_eq!(
+            &rust_type_to_sanitized_type(
+                "flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::simple::AnotherOpaqueType>",
+                true
+            ),
+            "AnotherOpaqueType"
+        );
+        assert_eq!(&rust_type_to_sanitized_type("flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::simple::MyOpaqueType,crate::api::simple::AnotherOpaqueType,)>", true), "MyOpaqueTypeAnotherOpaqueType");
+    }
 }
