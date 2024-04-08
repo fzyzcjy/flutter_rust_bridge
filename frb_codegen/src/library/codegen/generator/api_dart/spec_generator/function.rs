@@ -100,7 +100,11 @@ fn generate_params(
     params
 }
 
-fn generate_func_impl(func: &IrFunc, dart_entrypoint_class_name: &str) -> FunctionBody {
+fn generate_func_impl(
+    func: &IrFunc,
+    dart_entrypoint_class_name: &str,
+    stream_sink_name: &Option<String>,
+) -> FunctionBody {
     let func_name = &func.name.name.to_case(Case::Camel);
     let param_names: Vec<String> = [
         (func.inputs.iter().map(|input| input.name.dart_style())).collect_vec(),
@@ -111,9 +115,24 @@ fn generate_func_impl(func: &IrFunc, dart_entrypoint_class_name: &str) -> Functi
         .iter()
         .map(|name| format!("{name}: {name}"))
         .join(", ");
-    FunctionBody {
-        code: format!("{dart_entrypoint_class_name}.instance.api.{func_name}({param_forwards})"),
-        block: false,
+    let main_call =
+        format!("{dart_entrypoint_class_name}.instance.api.{func_name}({param_forwards})");
+
+    if let Some(stream_sink_name) = stream_sink_name {
+        FunctionBody {
+            code: format!(
+                "
+                final {stream_sink_name} = RustStreamSink();
+                return {main_call};
+                "
+            ),
+            block: true,
+        }
+    } else {
+        FunctionBody {
+            code: main_call,
+            block: false,
+        }
     }
 }
 
