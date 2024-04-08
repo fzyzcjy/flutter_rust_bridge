@@ -150,7 +150,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::Uuid => {
                     r#"uuid::Uuid::from_slice(&inner).expect("fail to decode uuid")"#.to_owned()
                 }
-                IrTypeDelegate::StreamSink(_) => "RustStreamSink::deserialize(inner)".to_owned(),
+                IrTypeDelegate::StreamSink(_) => "StreamSink::deserialize(inner)".to_owned(),
             },
         };
 

@@ -141,7 +141,7 @@ impl SseDecode for StreamSink<i32> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <String>::sse_decode(deserializer);
-        return RustStreamSink::deserialize(inner);
+        return StreamSink::deserialize(inner);
     }
 }
 
