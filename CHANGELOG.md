@@ -1,9 +1,17 @@
 # Changelog
 
-## Unreleased
+## 2.0.0-dev.31
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Support methods in external crates #1861
+* Support inserting arbitrary Dart code #1860
+* Support disabling default Hash/Eq generation #1860
+* Support passing stream object at arbitrary location and arbitrary amount #1867
+* Let Rust function finish execution before returning stream object #1867
 * Support cases when using Rust conditional compilation #1856
+* Fix not exporting some struct types needed for customizing handlers #1865
+* Fix ignoring user-provided custom handler objects #1865
+* Fix ReceivePort is not closed when subscription is cancelled before Rust closes the stream #1857
 
 ## 2.0.0-dev.30
 
