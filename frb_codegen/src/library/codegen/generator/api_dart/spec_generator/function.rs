@@ -27,9 +27,17 @@ pub(crate) struct ApiDartGeneratedFunction {
     pub(crate) func_comments: String,
     pub(crate) func_expr: String,
     pub(crate) func_impl: String,
+    pub(crate) func_params: Vec<ApiDartGeneratedFunctionParam>,
     pub(crate) func_return_type: String,
     pub(crate) src_lineno: usize,
     pub(crate) return_stream: Option<ReturnStreamInfo>,
+}
+
+#[derive(Debug, Serialize)]
+pub(crate) struct ApiDartGeneratedFunctionParam {
+    pub(crate) full: String,
+    pub(crate) type_str: String,
+    pub(crate) name_str: String,
 }
 
 pub(crate) fn generate(
@@ -37,7 +45,7 @@ pub(crate) fn generate(
     context: ApiDartGeneratorContext,
 ) -> anyhow::Result<ApiDartGeneratedFunction> {
     let return_stream = compute_return_stream(func);
-    let params = generate_params(
+    let (func_params, func_params_str) = generate_params(
         func,
         context,
         context.config.dart_enums_style,
@@ -51,7 +59,7 @@ pub(crate) fn generate(
     );
 
     let func_expr = format!(
-        "{func_return_type} {func_name}({params})",
+        "{func_return_type} {func_name}({func_params_str})",
         func_name = func.name.name.to_case(Case::Camel),
     );
 
@@ -71,6 +79,7 @@ pub(crate) fn generate(
         func_comments,
         func_expr,
         func_impl,
+        func_params,
         func_return_type,
         src_lineno: func.src_lineno,
         return_stream,
@@ -104,7 +113,7 @@ fn generate_params(
     context: ApiDartGeneratorContext,
     dart_enums_style: bool,
     return_stream: &Option<ReturnStreamInfo>,
-) -> String {
+) -> (Vec<ApiDartGeneratedFunctionParam>, String) {
     let mut params = (func.inputs.iter())
         .filter(|field| Some(&field.name) != return_stream.as_ref().map(|s| &s.field.name))
         .map(|input| {
@@ -112,16 +121,24 @@ fn generate_params(
             let r#default = generate_field_default(input, false, dart_enums_style);
             let type_str = ApiDartGenerator::new(input.ty.clone(), context).dart_api_type();
             let name_str = input.name.dart_style();
-            format!("{required}{type_str} {name_str} {default}")
+            ApiDartGeneratedFunctionParam {
+                full: format!("{required}{type_str} {name_str} {default}"),
+                type_str,
+                name_str,
+            }
         })
         .collect_vec();
-    params.push("dynamic hint".to_owned());
+    params.push(ApiDartGeneratedFunctionParam {
+        full: "dynamic hint".to_string(),
+        type_str: "dynamic".to_string(),
+        name_str: "hint".to_string(),
+    });
 
-    let mut params = params.join(", ");
-    if !params.is_empty() {
-        params = format!("{{{params}}}");
+    let mut params_str = params.join(", ");
+    if !params_str.is_empty() {
+        params_str = format!("{{{params_str}}}");
     }
-    params
+    (params, params_str)
 }
 
 fn generate_func_impl(

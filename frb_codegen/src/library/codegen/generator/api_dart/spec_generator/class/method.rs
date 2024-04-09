@@ -2,6 +2,7 @@ use crate::codegen::generator::api_dart;
 use crate::codegen::generator::api_dart::spec_generator::class::field::{
     generate_field_default, generate_field_required_modifier,
 };
+use crate::codegen::generator::api_dart::spec_generator::function::ApiDartGeneratedFunction;
 use crate::codegen::generator::api_dart::spec_generator::misc::{
     generate_dart_comments, generate_function_dart_return_type,
 };
@@ -15,7 +16,6 @@ use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
-use crate::codegen::generator::api_dart::spec_generator::function::ApiDartGeneratedFunction;
 
 pub(crate) fn generate_api_methods(
     generalized_class_name: &NamespacedName,
@@ -64,20 +64,33 @@ fn generate_api_method(func: &IrFunc, context: ApiDartGeneratorContext) -> Strin
     let is_static_method = method_info.mode == IrFuncOwnerInfoMethodMode::Static;
     let default_constructor_mode = func.default_constructor_mode();
 
-    let skip_names = if is_static_method {
-        vec![]
-    } else {
-        vec!["that"]
-    };
+    let skip_names = compute_skip_names(func, method_info);
 
     let params = generate_params(func, context, skip_count);
     let comments = generate_comments(func, default_constructor_mode);
-    let signature =
-        generate_signature(func, context, method_info, params, default_constructor_mode, &api_dart_func);
-    let arg_names = generate_arg_names(func, skip_count).concat();
+    let signature = generate_signature(
+        func,
+        context,
+        method_info,
+        params,
+        default_constructor_mode,
+        &api_dart_func,
+    );
+    let arg_names = generate_arg_names(func, &api_dart_func, &skip_names).concat();
     let implementation = generate_implementation(func, context, is_static_method, arg_names);
 
     format!("{comments}{signature}=>{implementation};\n\n")
+}
+
+fn compute_skip_names(func: &IrFunc, method_info: &IrFuncOwnerInfoMethod) -> Vec<&str> {
+    let mut ans = vec![];
+    if method_info.mode != IrFuncOwnerInfoMethodMode::Static {
+        ans.push("that");
+    }
+    if func.getter {
+        ans.push("hint");
+    }
+    ans
 }
 
 fn generate_comments(
@@ -144,12 +157,13 @@ fn generate_signature(
     format!("{maybe_static} {return_type} {maybe_getter} {method_name}{func_params}")
 }
 
-fn generate_arg_names(func: &IrFunc, skip_count: usize) -> Vec<String> {
-    let mut ans = func
-        .inputs
-        .iter()
-        .skip(skip_count)
-        .map(|input| format!("{}:{},", input.name.dart_style(), input.name.dart_style()))
+fn generate_arg_names(
+    func: &IrFunc,
+    api_dart_func: &ApiDartGeneratedFunction,
+    skip_names: &[&str],
+) -> Vec<String> {
+    let mut ans = (api_dart_func.func_params.iter())
+        .filter(|param| !skip_names.contains(param.name_str))
         .collect_vec();
     if !func.getter {
         ans.push("hint: hint,".to_string());
