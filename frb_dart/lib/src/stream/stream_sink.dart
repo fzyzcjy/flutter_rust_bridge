@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:async/async.dart';
 import 'package:flutter_rust_bridge/src/codec/base.dart';
 import 'package:flutter_rust_bridge/src/generalized_isolate/generalized_isolate.dart';
 import 'package:flutter_rust_bridge/src/utils/port_generator.dart';
@@ -27,7 +30,7 @@ _State<T> _setup<T>(BaseCodec<T, dynamic, dynamic> codec) {
   final portName = ExecuteStreamPortGenerator.create('RustStreamSink');
   final receivePort = broadcastPort(portName);
 
-  final Stream<T> stream = () async* {
+  final Stream<T> rawStream = () async* {
     try {
       print('hi RustStreamSink async* start');
       await for (final raw in receivePort) {
@@ -44,6 +47,8 @@ _State<T> _setup<T>(BaseCodec<T, dynamic, dynamic> codec) {
       receivePort.close();
     }
   }();
+
+  final stream = rawStream.listenAndBuffer();
 
   return _State(receivePort, stream);
 }
