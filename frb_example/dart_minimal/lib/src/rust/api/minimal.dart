@@ -4,30 +4,7 @@
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
 import '../frb_generated.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<int> minimalAdder({required int a, required int b, dynamic hint}) =>
     RustLib.instance.api.minimalAdder(a: a, b: b, hint: hint);
-
-Future<Stream<int>> helloStream({dynamic hint}) =>
-    RustLib.instance.api.helloStream(hint: hint);
-
-Future<Stream<U8Array2>> streamSinkFixedSizedPrimitiveArrayTwinRustAsyncSse(
-        {dynamic hint}) =>
-    RustLib.instance.api
-        .streamSinkFixedSizedPrimitiveArrayTwinRustAsyncSse(hint: hint);
-
-class U8Array2 extends NonGrowableListView<int> {
-  static const arraySize = 2;
-
-  @internal
-  Uint8List get inner => _inner;
-  final Uint8List _inner;
-
-  U8Array2(this._inner)
-      : assert(_inner.length == arraySize),
-        super(_inner);
-
-  U8Array2.init() : this(Uint8List(arraySize));
-}
