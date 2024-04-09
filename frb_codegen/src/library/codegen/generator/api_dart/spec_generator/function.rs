@@ -134,7 +134,7 @@ fn generate_params(
         name_str: "hint".to_string(),
     });
 
-    let mut params_str = params.iter().map(|x| x.full).join(", ");
+    let mut params_str = params.iter().map(|x| &x.full).join(", ");
     if !params_str.is_empty() {
         params_str = format!("{{{params_str}}}");
     }

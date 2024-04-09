@@ -63,7 +63,6 @@ fn generate_api_method(func: &IrFunc, context: ApiDartGeneratorContext) -> Strin
 
     let method_info =
         if_then_some!(let IrFuncOwnerInfo::Method(info) = &func.owner , info).unwrap();
-    let is_static_method = method_info.mode == IrFuncOwnerInfoMethodMode::Static;
     let default_constructor_mode = func.default_constructor_mode();
 
     let skip_names = compute_skip_names(func, method_info);
@@ -74,7 +73,6 @@ fn generate_api_method(func: &IrFunc, context: ApiDartGeneratorContext) -> Strin
     let comments = generate_comments(func, default_constructor_mode);
     let signature = generate_signature(
         func,
-        context,
         method_info,
         &params,
         default_constructor_mode,
@@ -110,7 +108,6 @@ fn generate_comments(
 
 fn generate_signature(
     func: &IrFunc,
-    context: ApiDartGeneratorContext,
     method_info: &IrFuncOwnerInfoMethod,
     func_params: &[&ApiDartGeneratedFunctionParam],
     default_constructor_mode: Option<IrFuncDefaultConstructorMode>,
@@ -118,7 +115,7 @@ fn generate_signature(
 ) -> String {
     let is_static_method = method_info.mode == IrFuncOwnerInfoMethodMode::Static;
     let maybe_static = if is_static_method { "static" } else { "" };
-    let return_type = api_dart_func.func_return_type;
+    let return_type = &api_dart_func.func_return_type;
     let method_name = if default_constructor_mode.is_some() {
         "newInstance".to_owned()
     } else {
@@ -128,7 +125,7 @@ fn generate_signature(
         ("".to_owned(), "get")
     } else {
         (
-            format!("({{ {} }})", func_params.iter().map(|x| x.full).join(",")),
+            format!("({{ {} }})", func_params.iter().map(|x| &x.full).join(",")),
             "",
         )
     };
