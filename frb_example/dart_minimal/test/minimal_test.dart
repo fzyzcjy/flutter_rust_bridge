@@ -15,9 +15,13 @@ Future<void> main() async {
   });
   print('Action: Configure tests (end)');
 
-  test('hi', () async {
-    final stream = await helloStream();
-    stream.listen((event) => print(event));
-    await Future.delayed(Duration(seconds: 1));
+  test('stream_sink_fixed_sized_primitive_array_twin_normal', () async {
+    final output =
+        await (await streamSinkFixedSizedPrimitiveArrayTwinRustAsyncSse())
+            .toList();
+    expect(output, [
+      orderedEquals([1, 2]),
+      orderedEquals([3, 4]),
+    ]);
   });
 }
