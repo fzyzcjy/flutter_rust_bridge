@@ -157,7 +157,7 @@ impl IrTypeTrait for IrTypeDelegate {
             }
             IrTypeDelegate::StreamSink(ir) => {
                 format!(
-                    "StreamSink<{},flutter_rust_bridge::{codec}Codec>",
+                    "StreamSink<{},flutter_rust_bridge::for_generated::{codec}Codec>",
                     ir.inner.rust_api_type(),
                     codec = ir.codec,
                 )
