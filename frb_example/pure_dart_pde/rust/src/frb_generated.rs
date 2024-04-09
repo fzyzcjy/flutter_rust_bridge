@@ -43524,7 +43524,7 @@ impl SseEncode
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <String>::sse_encode(unimplemented!(""), serializer);
+        unimplemented!("")
     }
 }
 
@@ -43533,7 +43533,7 @@ impl SseEncode
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <String>::sse_encode(unimplemented!(""), serializer);
+        unimplemented!("")
     }
 }
 
@@ -43542,7 +43542,7 @@ impl SseEncode
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <String>::sse_encode(unimplemented!(""), serializer);
+        unimplemented!("")
     }
 }
 
@@ -43554,7 +43554,7 @@ impl SseEncode
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <String>::sse_encode(unimplemented!(""), serializer);
+        unimplemented!("")
     }
 }
 
@@ -43566,14 +43566,14 @@ impl SseEncode
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <String>::sse_encode(unimplemented!(""), serializer);
+        unimplemented!("")
     }
 }
 
 impl SseEncode for StreamSink<String, flutter_rust_bridge::for_generated::SseCodec> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <String>::sse_encode(unimplemented!(""), serializer);
+        unimplemented!("")
     }
 }
 
@@ -43585,7 +43585,7 @@ impl SseEncode
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <String>::sse_encode(unimplemented!(""), serializer);
+        unimplemented!("")
     }
 }
 
@@ -43597,7 +43597,7 @@ impl SseEncode
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <String>::sse_encode(unimplemented!(""), serializer);
+        unimplemented!("")
     }
 }
 
@@ -43609,7 +43609,7 @@ impl SseEncode
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <String>::sse_encode(unimplemented!(""), serializer);
+        unimplemented!("")
     }
 }
 
@@ -43621,7 +43621,7 @@ impl SseEncode
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <String>::sse_encode(unimplemented!(""), serializer);
+        unimplemented!("")
     }
 }
 
@@ -43633,14 +43633,14 @@ impl SseEncode
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <String>::sse_encode(unimplemented!(""), serializer);
+        unimplemented!("")
     }
 }
 
 impl SseEncode for StreamSink<i32, flutter_rust_bridge::for_generated::SseCodec> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <String>::sse_encode(unimplemented!(""), serializer);
+        unimplemented!("")
     }
 }
 
@@ -43652,7 +43652,7 @@ impl SseEncode
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <String>::sse_encode(unimplemented!(""), serializer);
+        unimplemented!("")
     }
 }
 
@@ -43664,7 +43664,7 @@ impl SseEncode
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <String>::sse_encode(unimplemented!(""), serializer);
+        unimplemented!("")
     }
 }
 
@@ -43673,7 +43673,7 @@ impl SseEncode
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <String>::sse_encode(unimplemented!(""), serializer);
+        unimplemented!("")
     }
 }
 
@@ -43685,7 +43685,7 @@ impl SseEncode
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <String>::sse_encode(unimplemented!(""), serializer);
+        unimplemented!("")
     }
 }
 
@@ -43697,7 +43697,7 @@ impl SseEncode
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <String>::sse_encode(unimplemented!(""), serializer);
+        unimplemented!("")
     }
 }
 
@@ -43706,7 +43706,7 @@ impl SseEncode
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <String>::sse_encode(unimplemented!(""), serializer);
+        unimplemented!("")
     }
 }
 
@@ -43718,7 +43718,7 @@ impl SseEncode
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <String>::sse_encode(unimplemented!(""), serializer);
+        unimplemented!("")
     }
 }
 
@@ -43730,7 +43730,7 @@ impl SseEncode
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <String>::sse_encode(unimplemented!(""), serializer);
+        unimplemented!("")
     }
 }
 
@@ -43742,7 +43742,7 @@ impl SseEncode
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <String>::sse_encode(unimplemented!(""), serializer);
+        unimplemented!("")
     }
 }
 
@@ -43754,7 +43754,7 @@ impl SseEncode
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <String>::sse_encode(unimplemented!(""), serializer);
+        unimplemented!("")
     }
 }
 
@@ -43766,7 +43766,7 @@ impl SseEncode
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <String>::sse_encode(unimplemented!(""), serializer);
+        unimplemented!("")
     }
 }
 
@@ -43778,7 +43778,7 @@ impl SseEncode
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <String>::sse_encode(unimplemented!(""), serializer);
+        unimplemented!("")
     }
 }
 
@@ -43790,7 +43790,7 @@ impl SseEncode
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <String>::sse_encode(unimplemented!(""), serializer);
+        unimplemented!("")
     }
 }
 
@@ -43805,21 +43805,21 @@ impl SseEncode
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <String>::sse_encode(unimplemented!(""), serializer);
+        unimplemented!("")
     }
 }
 
 impl SseEncode for StreamSink<u32, flutter_rust_bridge::for_generated::SseCodec> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <String>::sse_encode(unimplemented!(""), serializer);
+        unimplemented!("")
     }
 }
 
 impl SseEncode for StreamSink<[u8; 2], flutter_rust_bridge::for_generated::SseCodec> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <String>::sse_encode(unimplemented!(""), serializer);
+        unimplemented!("")
     }
 }
 
