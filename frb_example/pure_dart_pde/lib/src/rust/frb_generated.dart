@@ -7171,7 +7171,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<Stream<String>> streamSinkThrowAnyhowTwinNormal({dynamic hint}) async {
-    final _sink = RustStreamSink<String>();
+    final sink = RustStreamSink<String>();
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -7188,7 +7188,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       apiImpl: this,
       hint: hint,
     ));
-    return _sink.stream;
+    return sink.stream;
   }
 
   TaskConstMeta get kStreamSinkThrowAnyhowTwinNormalConstMeta =>
@@ -20719,7 +20719,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<Stream<String>> streamSinkThrowAnyhowTwinRustAsync(
       {dynamic hint}) async {
-    final _sink = RustStreamSink<String>();
+    final sink = RustStreamSink<String>();
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -20736,7 +20736,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       apiImpl: this,
       hint: hint,
     ));
-    return _sink.stream;
+    return sink.stream;
   }
 
   TaskConstMeta get kStreamSinkThrowAnyhowTwinRustAsyncConstMeta =>
@@ -21459,7 +21459,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Stream<String> streamSinkThrowAnyhowTwinSync({dynamic hint}) {
-    final _sink = RustStreamSink<String>();
+    final sink = RustStreamSink<String>();
     handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -21475,7 +21475,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       apiImpl: this,
       hint: hint,
     ));
-    return _sink.stream;
+    return sink.stream;
   }
 
   TaskConstMeta get kStreamSinkThrowAnyhowTwinSyncConstMeta =>
@@ -29526,7 +29526,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<Stream<String>> funcStreamReturnErrorTwinRustAsync(
       {dynamic hint}) async {
-    final _sink = RustStreamSink<String>();
+    final sink = RustStreamSink<String>();
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -29543,7 +29543,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       apiImpl: this,
       hint: hint,
     ));
-    return _sink.stream;
+    return sink.stream;
   }
 
   TaskConstMeta get kFuncStreamReturnErrorTwinRustAsyncConstMeta =>
@@ -29555,7 +29555,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<Stream<String>> funcStreamReturnPanicTwinRustAsync(
       {dynamic hint}) async {
-    final _sink = RustStreamSink<String>();
+    final sink = RustStreamSink<String>();
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -29572,7 +29572,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       apiImpl: this,
       hint: hint,
     ));
-    return _sink.stream;
+    return sink.stream;
   }
 
   TaskConstMeta get kFuncStreamReturnPanicTwinRustAsyncConstMeta =>
@@ -29615,7 +29615,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<Stream<MyStreamEntryTwinRustAsync>> handleStreamOfStructTwinRustAsync(
       {dynamic hint}) async {
-    final _sink = RustStreamSink<MyStreamEntryTwinRustAsync>();
+    final sink = RustStreamSink<MyStreamEntryTwinRustAsync>();
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -29633,7 +29633,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       apiImpl: this,
       hint: hint,
     ));
-    return _sink.stream;
+    return sink.stream;
   }
 
   TaskConstMeta get kHandleStreamOfStructTwinRustAsyncConstMeta =>
@@ -32431,7 +32431,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<Stream<String>> funcStreamReturnErrorTwinNormal({dynamic hint}) async {
-    final _sink = RustStreamSink<String>();
+    final sink = RustStreamSink<String>();
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -32448,7 +32448,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       apiImpl: this,
       hint: hint,
     ));
-    return _sink.stream;
+    return sink.stream;
   }
 
   TaskConstMeta get kFuncStreamReturnErrorTwinNormalConstMeta =>
@@ -32459,7 +32459,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<Stream<String>> funcStreamReturnPanicTwinNormal({dynamic hint}) async {
-    final _sink = RustStreamSink<String>();
+    final sink = RustStreamSink<String>();
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -32476,7 +32476,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       apiImpl: this,
       hint: hint,
     ));
-    return _sink.stream;
+    return sink.stream;
   }
 
   TaskConstMeta get kFuncStreamReturnPanicTwinNormalConstMeta =>
@@ -32519,7 +32519,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<Stream<MyStreamEntryTwinNormal>> handleStreamOfStructTwinNormal(
       {dynamic hint}) async {
-    final _sink = RustStreamSink<MyStreamEntryTwinNormal>();
+    final sink = RustStreamSink<MyStreamEntryTwinNormal>();
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -32537,7 +32537,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       apiImpl: this,
       hint: hint,
     ));
-    return _sink.stream;
+    return sink.stream;
   }
 
   TaskConstMeta get kHandleStreamOfStructTwinNormalConstMeta =>
