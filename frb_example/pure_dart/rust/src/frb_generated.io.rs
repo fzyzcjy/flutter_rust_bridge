@@ -2706,37 +2706,43 @@ impl CstDecode<std::collections::HashSet<i32>> for *mut wire_cst_list_prim_i_32_
 impl CstDecode<StreamSink<NonCloneSimpleTwinMoi>> for *mut wire_cst_list_prim_u_8_strict {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinMoi> {
-        todo!()
+        let raw: String = self.cst_decode();
+        StreamSink::deserialize(raw)
     }
 }
 impl CstDecode<StreamSink<NonCloneSimpleTwinNormal>> for *mut wire_cst_list_prim_u_8_strict {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinNormal> {
-        todo!()
+        let raw: String = self.cst_decode();
+        StreamSink::deserialize(raw)
     }
 }
 impl CstDecode<StreamSink<NonCloneSimpleTwinRustAsyncMoi>> for *mut wire_cst_list_prim_u_8_strict {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinRustAsyncMoi> {
-        todo!()
+        let raw: String = self.cst_decode();
+        StreamSink::deserialize(raw)
     }
 }
 impl CstDecode<StreamSink<NonCloneSimpleTwinRustAsync>> for *mut wire_cst_list_prim_u_8_strict {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinRustAsync> {
-        todo!()
+        let raw: String = self.cst_decode();
+        StreamSink::deserialize(raw)
     }
 }
 impl CstDecode<StreamSink<NonCloneSimpleTwinSyncMoi>> for *mut wire_cst_list_prim_u_8_strict {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinSyncMoi> {
-        todo!()
+        let raw: String = self.cst_decode();
+        StreamSink::deserialize(raw)
     }
 }
 impl CstDecode<StreamSink<NonCloneSimpleTwinSync>> for *mut wire_cst_list_prim_u_8_strict {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinSync> {
-        todo!()
+        let raw: String = self.cst_decode();
+        StreamSink::deserialize(raw)
     }
 }
 impl
@@ -2758,7 +2764,8 @@ impl
             crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
         >,
     > {
-        todo!()
+        let raw: String = self.cst_decode();
+        StreamSink::deserialize(raw)
     }
 }
 impl
@@ -2776,13 +2783,15 @@ impl
     ) -> StreamSink<
         std::collections::HashSet<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
     > {
-        todo!()
+        let raw: String = self.cst_decode();
+        StreamSink::deserialize(raw)
     }
 }
 impl CstDecode<StreamSink<String>> for *mut wire_cst_list_prim_u_8_strict {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> StreamSink<String> {
-        todo!()
+        let raw: String = self.cst_decode();
+        StreamSink::deserialize(raw)
     }
 }
 impl CstDecode<StreamSink<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>>
@@ -2792,7 +2801,8 @@ impl CstDecode<StreamSink<crate::api::pseudo_manual::mirror_twin_sync_sse::Appli
     fn cst_decode(
         self,
     ) -> StreamSink<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode> {
-        todo!()
+        let raw: String = self.cst_decode();
+        StreamSink::deserialize(raw)
     }
 }
 impl CstDecode<StreamSink<[crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode; 2]>>
@@ -2802,7 +2812,8 @@ impl CstDecode<StreamSink<[crate::api::pseudo_manual::mirror_twin_sync_sse::Appl
     fn cst_decode(
         self,
     ) -> StreamSink<[crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode; 2]> {
-        todo!()
+        let raw: String = self.cst_decode();
+        StreamSink::deserialize(raw)
     }
 }
 impl CstDecode<StreamSink<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings>>
@@ -2812,7 +2823,8 @@ impl CstDecode<StreamSink<crate::api::pseudo_manual::mirror_twin_sync_sse::Appli
     fn cst_decode(
         self,
     ) -> StreamSink<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings> {
-        todo!()
+        let raw: String = self.cst_decode();
+        StreamSink::deserialize(raw)
     }
 }
 impl CstDecode<StreamSink<crate::api::event_listener::EventTwinNormal>>
@@ -2820,7 +2832,8 @@ impl CstDecode<StreamSink<crate::api::event_listener::EventTwinNormal>>
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> StreamSink<crate::api::event_listener::EventTwinNormal> {
-        todo!()
+        let raw: String = self.cst_decode();
+        StreamSink::deserialize(raw)
     }
 }
 impl
@@ -2833,13 +2846,15 @@ impl
         self,
     ) -> StreamSink<crate::api::pseudo_manual::event_listener_twin_rust_async::EventTwinRustAsync>
     {
-        todo!()
+        let raw: String = self.cst_decode();
+        StreamSink::deserialize(raw)
     }
 }
 impl CstDecode<StreamSink<i32>> for *mut wire_cst_list_prim_u_8_strict {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> StreamSink<i32> {
-        todo!()
+        let raw: String = self.cst_decode();
+        StreamSink::deserialize(raw)
     }
 }
 impl CstDecode<StreamSink<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>>>
@@ -2849,7 +2864,8 @@ impl CstDecode<StreamSink<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::A
     fn cst_decode(
         self,
     ) -> StreamSink<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>> {
-        todo!()
+        let raw: String = self.cst_decode();
+        StreamSink::deserialize(raw)
     }
 }
 impl
@@ -2860,7 +2876,8 @@ impl
     fn cst_decode(
         self,
     ) -> StreamSink<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings>> {
-        todo!()
+        let raw: String = self.cst_decode();
+        StreamSink::deserialize(raw)
     }
 }
 impl CstDecode<StreamSink<crate::api::method::Log2TwinNormal>>
@@ -2868,7 +2885,8 @@ impl CstDecode<StreamSink<crate::api::method::Log2TwinNormal>>
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> StreamSink<crate::api::method::Log2TwinNormal> {
-        todo!()
+        let raw: String = self.cst_decode();
+        StreamSink::deserialize(raw)
     }
 }
 impl CstDecode<StreamSink<crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync>>
@@ -2878,7 +2896,8 @@ impl CstDecode<StreamSink<crate::api::pseudo_manual::method_twin_rust_async::Log
     fn cst_decode(
         self,
     ) -> StreamSink<crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync> {
-        todo!()
+        let raw: String = self.cst_decode();
+        StreamSink::deserialize(raw)
     }
 }
 impl CstDecode<StreamSink<crate::api::pseudo_manual::method_twin_sync::Log2TwinSync>>
@@ -2886,7 +2905,8 @@ impl CstDecode<StreamSink<crate::api::pseudo_manual::method_twin_sync::Log2TwinS
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> StreamSink<crate::api::pseudo_manual::method_twin_sync::Log2TwinSync> {
-        todo!()
+        let raw: String = self.cst_decode();
+        StreamSink::deserialize(raw)
     }
 }
 impl CstDecode<StreamSink<crate::api::stream::LogTwinNormal>>
@@ -2894,7 +2914,8 @@ impl CstDecode<StreamSink<crate::api::stream::LogTwinNormal>>
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> StreamSink<crate::api::stream::LogTwinNormal> {
-        todo!()
+        let raw: String = self.cst_decode();
+        StreamSink::deserialize(raw)
     }
 }
 impl CstDecode<StreamSink<crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync>>
@@ -2904,7 +2925,8 @@ impl CstDecode<StreamSink<crate::api::pseudo_manual::stream_twin_rust_async::Log
     fn cst_decode(
         self,
     ) -> StreamSink<crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync> {
-        todo!()
+        let raw: String = self.cst_decode();
+        StreamSink::deserialize(raw)
     }
 }
 impl CstDecode<StreamSink<crate::api::mirror::MirrorStructTwinNormal>>
@@ -2912,7 +2934,8 @@ impl CstDecode<StreamSink<crate::api::mirror::MirrorStructTwinNormal>>
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> StreamSink<crate::api::mirror::MirrorStructTwinNormal> {
-        todo!()
+        let raw: String = self.cst_decode();
+        StreamSink::deserialize(raw)
     }
 }
 impl
@@ -2925,7 +2948,8 @@ impl
         self,
     ) -> StreamSink<crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync>
     {
-        todo!()
+        let raw: String = self.cst_decode();
+        StreamSink::deserialize(raw)
     }
 }
 impl CstDecode<StreamSink<crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync>>
@@ -2935,7 +2959,8 @@ impl CstDecode<StreamSink<crate::api::pseudo_manual::mirror_twin_sync::MirrorStr
     fn cst_decode(
         self,
     ) -> StreamSink<crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync> {
-        todo!()
+        let raw: String = self.cst_decode();
+        StreamSink::deserialize(raw)
     }
 }
 impl CstDecode<StreamSink<crate::api::stream::MyStreamEntryTwinNormal>>
@@ -2943,7 +2968,8 @@ impl CstDecode<StreamSink<crate::api::stream::MyStreamEntryTwinNormal>>
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> StreamSink<crate::api::stream::MyStreamEntryTwinNormal> {
-        todo!()
+        let raw: String = self.cst_decode();
+        StreamSink::deserialize(raw)
     }
 }
 impl
@@ -2956,7 +2982,8 @@ impl
         self,
     ) -> StreamSink<crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync>
     {
-        todo!()
+        let raw: String = self.cst_decode();
+        StreamSink::deserialize(raw)
     }
 }
 impl CstDecode<StreamSink<Option<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>>>
@@ -2966,7 +2993,8 @@ impl CstDecode<StreamSink<Option<crate::api::pseudo_manual::mirror_twin_sync_sse
     fn cst_decode(
         self,
     ) -> StreamSink<Option<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>> {
-        todo!()
+        let raw: String = self.cst_decode();
+        StreamSink::deserialize(raw)
     }
 }
 impl
@@ -2984,19 +3012,22 @@ impl
         crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings,
         crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored,
     )> {
-        todo!()
+        let raw: String = self.cst_decode();
+        StreamSink::deserialize(raw)
     }
 }
 impl CstDecode<StreamSink<u32>> for *mut wire_cst_list_prim_u_8_strict {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> StreamSink<u32> {
-        todo!()
+        let raw: String = self.cst_decode();
+        StreamSink::deserialize(raw)
     }
 }
 impl CstDecode<StreamSink<[u8; 2]>> for *mut wire_cst_list_prim_u_8_strict {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> StreamSink<[u8; 2]> {
-        todo!()
+        let raw: String = self.cst_decode();
+        StreamSink::deserialize(raw)
     }
 }
 impl CstDecode<String> for *mut wire_cst_list_prim_u_8_strict {
