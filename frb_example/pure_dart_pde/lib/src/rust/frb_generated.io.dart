@@ -1183,115 +1183,115 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   RustStreamSink<NonCloneSimpleTwinNormal>
-      dco_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal_None(
+      dco_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal_Sse(
           dynamic raw);
 
   @protected
   RustStreamSink<NonCloneSimpleTwinRustAsync>
-      dco_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync_None(
+      dco_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync_Sse(
           dynamic raw);
 
   @protected
   RustStreamSink<NonCloneSimpleTwinSync>
-      dco_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync_None(
+      dco_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync_Sse(
           dynamic raw);
 
   @protected
   RustStreamSink<Map<int, ApplicationMode>>
-      dco_decode_StreamSink_Map_u_8_application_mode_None(dynamic raw);
+      dco_decode_StreamSink_Map_u_8_application_mode_Sse(dynamic raw);
 
   @protected
   RustStreamSink<Set<ApplicationMode>>
-      dco_decode_StreamSink_Set_application_mode_None(dynamic raw);
+      dco_decode_StreamSink_Set_application_mode_Sse(dynamic raw);
 
   @protected
-  RustStreamSink<String> dco_decode_StreamSink_String_None(dynamic raw);
+  RustStreamSink<String> dco_decode_StreamSink_String_Sse(dynamic raw);
 
   @protected
-  RustStreamSink<ApplicationMode> dco_decode_StreamSink_application_mode_None(
+  RustStreamSink<ApplicationMode> dco_decode_StreamSink_application_mode_Sse(
       dynamic raw);
 
   @protected
   RustStreamSink<ApplicationModeArray2>
-      dco_decode_StreamSink_application_mode_array_2_None(dynamic raw);
+      dco_decode_StreamSink_application_mode_array_2_Sse(dynamic raw);
 
   @protected
   RustStreamSink<ApplicationSettings>
-      dco_decode_StreamSink_application_settings_None(dynamic raw);
+      dco_decode_StreamSink_application_settings_Sse(dynamic raw);
 
   @protected
-  RustStreamSink<EventTwinNormal> dco_decode_StreamSink_event_twin_normal_None(
+  RustStreamSink<EventTwinNormal> dco_decode_StreamSink_event_twin_normal_Sse(
       dynamic raw);
 
   @protected
   RustStreamSink<EventTwinRustAsync>
-      dco_decode_StreamSink_event_twin_rust_async_None(dynamic raw);
+      dco_decode_StreamSink_event_twin_rust_async_Sse(dynamic raw);
 
   @protected
-  RustStreamSink<int> dco_decode_StreamSink_i_32_None(dynamic raw);
+  RustStreamSink<int> dco_decode_StreamSink_i_32_Sse(dynamic raw);
 
   @protected
   RustStreamSink<List<ApplicationMode>>
-      dco_decode_StreamSink_list_application_mode_None(dynamic raw);
+      dco_decode_StreamSink_list_application_mode_Sse(dynamic raw);
 
   @protected
   RustStreamSink<List<ApplicationSettings>>
-      dco_decode_StreamSink_list_application_settings_None(dynamic raw);
+      dco_decode_StreamSink_list_application_settings_Sse(dynamic raw);
 
   @protected
-  RustStreamSink<Log2TwinNormal> dco_decode_StreamSink_log_2_twin_normal_None(
+  RustStreamSink<Log2TwinNormal> dco_decode_StreamSink_log_2_twin_normal_Sse(
       dynamic raw);
 
   @protected
   RustStreamSink<Log2TwinRustAsync>
-      dco_decode_StreamSink_log_2_twin_rust_async_None(dynamic raw);
+      dco_decode_StreamSink_log_2_twin_rust_async_Sse(dynamic raw);
 
   @protected
-  RustStreamSink<Log2TwinSync> dco_decode_StreamSink_log_2_twin_sync_None(
+  RustStreamSink<Log2TwinSync> dco_decode_StreamSink_log_2_twin_sync_Sse(
       dynamic raw);
 
   @protected
-  RustStreamSink<LogTwinNormal> dco_decode_StreamSink_log_twin_normal_None(
+  RustStreamSink<LogTwinNormal> dco_decode_StreamSink_log_twin_normal_Sse(
       dynamic raw);
 
   @protected
   RustStreamSink<LogTwinRustAsync>
-      dco_decode_StreamSink_log_twin_rust_async_None(dynamic raw);
+      dco_decode_StreamSink_log_twin_rust_async_Sse(dynamic raw);
 
   @protected
   RustStreamSink<MirrorStructTwinNormal>
-      dco_decode_StreamSink_mirror_struct_twin_normal_None(dynamic raw);
+      dco_decode_StreamSink_mirror_struct_twin_normal_Sse(dynamic raw);
 
   @protected
   RustStreamSink<MirrorStructTwinRustAsync>
-      dco_decode_StreamSink_mirror_struct_twin_rust_async_None(dynamic raw);
+      dco_decode_StreamSink_mirror_struct_twin_rust_async_Sse(dynamic raw);
 
   @protected
   RustStreamSink<MirrorStructTwinSync>
-      dco_decode_StreamSink_mirror_struct_twin_sync_None(dynamic raw);
+      dco_decode_StreamSink_mirror_struct_twin_sync_Sse(dynamic raw);
 
   @protected
   RustStreamSink<MyStreamEntryTwinNormal>
-      dco_decode_StreamSink_my_stream_entry_twin_normal_None(dynamic raw);
+      dco_decode_StreamSink_my_stream_entry_twin_normal_Sse(dynamic raw);
 
   @protected
   RustStreamSink<MyStreamEntryTwinRustAsync>
-      dco_decode_StreamSink_my_stream_entry_twin_rust_async_None(dynamic raw);
+      dco_decode_StreamSink_my_stream_entry_twin_rust_async_Sse(dynamic raw);
 
   @protected
   RustStreamSink<ApplicationMode?>
-      dco_decode_StreamSink_opt_box_autoadd_application_mode_None(dynamic raw);
+      dco_decode_StreamSink_opt_box_autoadd_application_mode_Sse(dynamic raw);
 
   @protected
   RustStreamSink<(ApplicationSettings, RawStringEnumMirrored)>
-      dco_decode_StreamSink_record_application_settings_raw_string_enum_mirrored_None(
+      dco_decode_StreamSink_record_application_settings_raw_string_enum_mirrored_Sse(
           dynamic raw);
 
   @protected
-  RustStreamSink<int> dco_decode_StreamSink_u_32_None(dynamic raw);
+  RustStreamSink<int> dco_decode_StreamSink_u_32_Sse(dynamic raw);
 
   @protected
-  RustStreamSink<U8Array2> dco_decode_StreamSink_u_8_array_2_None(dynamic raw);
+  RustStreamSink<U8Array2> dco_decode_StreamSink_u_8_array_2_Sse(dynamic raw);
 
   @protected
   String dco_decode_String(dynamic raw);
@@ -2762,7 +2762,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
-  List<RustStreamSink<int>> dco_decode_list_StreamSink_i_32_None(dynamic raw);
+  List<RustStreamSink<int>> dco_decode_list_StreamSink_i_32_Sse(dynamic raw);
 
   @protected
   List<String> dco_decode_list_String(dynamic raw);
@@ -4884,133 +4884,133 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   RustStreamSink<NonCloneSimpleTwinNormal>
-      sse_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal_None(
+      sse_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal_Sse(
           SseDeserializer deserializer);
 
   @protected
   RustStreamSink<NonCloneSimpleTwinRustAsync>
-      sse_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync_None(
+      sse_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync_Sse(
           SseDeserializer deserializer);
 
   @protected
   RustStreamSink<NonCloneSimpleTwinSync>
-      sse_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync_None(
+      sse_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync_Sse(
           SseDeserializer deserializer);
 
   @protected
   RustStreamSink<Map<int, ApplicationMode>>
-      sse_decode_StreamSink_Map_u_8_application_mode_None(
+      sse_decode_StreamSink_Map_u_8_application_mode_Sse(
           SseDeserializer deserializer);
 
   @protected
   RustStreamSink<Set<ApplicationMode>>
-      sse_decode_StreamSink_Set_application_mode_None(
+      sse_decode_StreamSink_Set_application_mode_Sse(
           SseDeserializer deserializer);
 
   @protected
-  RustStreamSink<String> sse_decode_StreamSink_String_None(
+  RustStreamSink<String> sse_decode_StreamSink_String_Sse(
       SseDeserializer deserializer);
 
   @protected
-  RustStreamSink<ApplicationMode> sse_decode_StreamSink_application_mode_None(
+  RustStreamSink<ApplicationMode> sse_decode_StreamSink_application_mode_Sse(
       SseDeserializer deserializer);
 
   @protected
   RustStreamSink<ApplicationModeArray2>
-      sse_decode_StreamSink_application_mode_array_2_None(
+      sse_decode_StreamSink_application_mode_array_2_Sse(
           SseDeserializer deserializer);
 
   @protected
   RustStreamSink<ApplicationSettings>
-      sse_decode_StreamSink_application_settings_None(
+      sse_decode_StreamSink_application_settings_Sse(
           SseDeserializer deserializer);
 
   @protected
-  RustStreamSink<EventTwinNormal> sse_decode_StreamSink_event_twin_normal_None(
+  RustStreamSink<EventTwinNormal> sse_decode_StreamSink_event_twin_normal_Sse(
       SseDeserializer deserializer);
 
   @protected
   RustStreamSink<EventTwinRustAsync>
-      sse_decode_StreamSink_event_twin_rust_async_None(
+      sse_decode_StreamSink_event_twin_rust_async_Sse(
           SseDeserializer deserializer);
 
   @protected
-  RustStreamSink<int> sse_decode_StreamSink_i_32_None(
+  RustStreamSink<int> sse_decode_StreamSink_i_32_Sse(
       SseDeserializer deserializer);
 
   @protected
   RustStreamSink<List<ApplicationMode>>
-      sse_decode_StreamSink_list_application_mode_None(
+      sse_decode_StreamSink_list_application_mode_Sse(
           SseDeserializer deserializer);
 
   @protected
   RustStreamSink<List<ApplicationSettings>>
-      sse_decode_StreamSink_list_application_settings_None(
+      sse_decode_StreamSink_list_application_settings_Sse(
           SseDeserializer deserializer);
 
   @protected
-  RustStreamSink<Log2TwinNormal> sse_decode_StreamSink_log_2_twin_normal_None(
+  RustStreamSink<Log2TwinNormal> sse_decode_StreamSink_log_2_twin_normal_Sse(
       SseDeserializer deserializer);
 
   @protected
   RustStreamSink<Log2TwinRustAsync>
-      sse_decode_StreamSink_log_2_twin_rust_async_None(
+      sse_decode_StreamSink_log_2_twin_rust_async_Sse(
           SseDeserializer deserializer);
 
   @protected
-  RustStreamSink<Log2TwinSync> sse_decode_StreamSink_log_2_twin_sync_None(
+  RustStreamSink<Log2TwinSync> sse_decode_StreamSink_log_2_twin_sync_Sse(
       SseDeserializer deserializer);
 
   @protected
-  RustStreamSink<LogTwinNormal> sse_decode_StreamSink_log_twin_normal_None(
+  RustStreamSink<LogTwinNormal> sse_decode_StreamSink_log_twin_normal_Sse(
       SseDeserializer deserializer);
 
   @protected
   RustStreamSink<LogTwinRustAsync>
-      sse_decode_StreamSink_log_twin_rust_async_None(
+      sse_decode_StreamSink_log_twin_rust_async_Sse(
           SseDeserializer deserializer);
 
   @protected
   RustStreamSink<MirrorStructTwinNormal>
-      sse_decode_StreamSink_mirror_struct_twin_normal_None(
+      sse_decode_StreamSink_mirror_struct_twin_normal_Sse(
           SseDeserializer deserializer);
 
   @protected
   RustStreamSink<MirrorStructTwinRustAsync>
-      sse_decode_StreamSink_mirror_struct_twin_rust_async_None(
+      sse_decode_StreamSink_mirror_struct_twin_rust_async_Sse(
           SseDeserializer deserializer);
 
   @protected
   RustStreamSink<MirrorStructTwinSync>
-      sse_decode_StreamSink_mirror_struct_twin_sync_None(
+      sse_decode_StreamSink_mirror_struct_twin_sync_Sse(
           SseDeserializer deserializer);
 
   @protected
   RustStreamSink<MyStreamEntryTwinNormal>
-      sse_decode_StreamSink_my_stream_entry_twin_normal_None(
+      sse_decode_StreamSink_my_stream_entry_twin_normal_Sse(
           SseDeserializer deserializer);
 
   @protected
   RustStreamSink<MyStreamEntryTwinRustAsync>
-      sse_decode_StreamSink_my_stream_entry_twin_rust_async_None(
+      sse_decode_StreamSink_my_stream_entry_twin_rust_async_Sse(
           SseDeserializer deserializer);
 
   @protected
   RustStreamSink<ApplicationMode?>
-      sse_decode_StreamSink_opt_box_autoadd_application_mode_None(
+      sse_decode_StreamSink_opt_box_autoadd_application_mode_Sse(
           SseDeserializer deserializer);
 
   @protected
   RustStreamSink<(ApplicationSettings, RawStringEnumMirrored)>
-      sse_decode_StreamSink_record_application_settings_raw_string_enum_mirrored_None(
+      sse_decode_StreamSink_record_application_settings_raw_string_enum_mirrored_Sse(
           SseDeserializer deserializer);
 
   @protected
-  RustStreamSink<int> sse_decode_StreamSink_u_32_None(
+  RustStreamSink<int> sse_decode_StreamSink_u_32_Sse(
       SseDeserializer deserializer);
 
   @protected
-  RustStreamSink<U8Array2> sse_decode_StreamSink_u_8_array_2_None(
+  RustStreamSink<U8Array2> sse_decode_StreamSink_u_8_array_2_Sse(
       SseDeserializer deserializer);
 
   @protected
@@ -6680,7 +6680,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
-  List<RustStreamSink<int>> sse_decode_list_StreamSink_i_32_None(
+  List<RustStreamSink<int>> sse_decode_list_StreamSink_i_32_Sse(
       SseDeserializer deserializer);
 
   @protected
@@ -9051,123 +9051,123 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
-      sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal_None(
+      sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal_Sse(
           RustStreamSink<NonCloneSimpleTwinNormal> self,
           SseSerializer serializer);
 
   @protected
   void
-      sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync_None(
+      sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync_Sse(
           RustStreamSink<NonCloneSimpleTwinRustAsync> self,
           SseSerializer serializer);
 
   @protected
   void
-      sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync_None(
+      sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync_Sse(
           RustStreamSink<NonCloneSimpleTwinSync> self,
           SseSerializer serializer);
 
   @protected
-  void sse_encode_StreamSink_Map_u_8_application_mode_None(
+  void sse_encode_StreamSink_Map_u_8_application_mode_Sse(
       RustStreamSink<Map<int, ApplicationMode>> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_StreamSink_Set_application_mode_None(
+  void sse_encode_StreamSink_Set_application_mode_Sse(
       RustStreamSink<Set<ApplicationMode>> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_StreamSink_String_None(
+  void sse_encode_StreamSink_String_Sse(
       RustStreamSink<String> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_StreamSink_application_mode_None(
+  void sse_encode_StreamSink_application_mode_Sse(
       RustStreamSink<ApplicationMode> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_StreamSink_application_mode_array_2_None(
+  void sse_encode_StreamSink_application_mode_array_2_Sse(
       RustStreamSink<ApplicationModeArray2> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_StreamSink_application_settings_None(
+  void sse_encode_StreamSink_application_settings_Sse(
       RustStreamSink<ApplicationSettings> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_StreamSink_event_twin_normal_None(
+  void sse_encode_StreamSink_event_twin_normal_Sse(
       RustStreamSink<EventTwinNormal> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_StreamSink_event_twin_rust_async_None(
+  void sse_encode_StreamSink_event_twin_rust_async_Sse(
       RustStreamSink<EventTwinRustAsync> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_StreamSink_i_32_None(
+  void sse_encode_StreamSink_i_32_Sse(
       RustStreamSink<int> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_StreamSink_list_application_mode_None(
+  void sse_encode_StreamSink_list_application_mode_Sse(
       RustStreamSink<List<ApplicationMode>> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_StreamSink_list_application_settings_None(
+  void sse_encode_StreamSink_list_application_settings_Sse(
       RustStreamSink<List<ApplicationSettings>> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_StreamSink_log_2_twin_normal_None(
+  void sse_encode_StreamSink_log_2_twin_normal_Sse(
       RustStreamSink<Log2TwinNormal> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_StreamSink_log_2_twin_rust_async_None(
+  void sse_encode_StreamSink_log_2_twin_rust_async_Sse(
       RustStreamSink<Log2TwinRustAsync> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_StreamSink_log_2_twin_sync_None(
+  void sse_encode_StreamSink_log_2_twin_sync_Sse(
       RustStreamSink<Log2TwinSync> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_StreamSink_log_twin_normal_None(
+  void sse_encode_StreamSink_log_twin_normal_Sse(
       RustStreamSink<LogTwinNormal> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_StreamSink_log_twin_rust_async_None(
+  void sse_encode_StreamSink_log_twin_rust_async_Sse(
       RustStreamSink<LogTwinRustAsync> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_StreamSink_mirror_struct_twin_normal_None(
+  void sse_encode_StreamSink_mirror_struct_twin_normal_Sse(
       RustStreamSink<MirrorStructTwinNormal> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_StreamSink_mirror_struct_twin_rust_async_None(
+  void sse_encode_StreamSink_mirror_struct_twin_rust_async_Sse(
       RustStreamSink<MirrorStructTwinRustAsync> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_StreamSink_mirror_struct_twin_sync_None(
+  void sse_encode_StreamSink_mirror_struct_twin_sync_Sse(
       RustStreamSink<MirrorStructTwinSync> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_StreamSink_my_stream_entry_twin_normal_None(
+  void sse_encode_StreamSink_my_stream_entry_twin_normal_Sse(
       RustStreamSink<MyStreamEntryTwinNormal> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_StreamSink_my_stream_entry_twin_rust_async_None(
+  void sse_encode_StreamSink_my_stream_entry_twin_rust_async_Sse(
       RustStreamSink<MyStreamEntryTwinRustAsync> self,
       SseSerializer serializer);
 
   @protected
-  void sse_encode_StreamSink_opt_box_autoadd_application_mode_None(
+  void sse_encode_StreamSink_opt_box_autoadd_application_mode_Sse(
       RustStreamSink<ApplicationMode?> self, SseSerializer serializer);
 
   @protected
   void
-      sse_encode_StreamSink_record_application_settings_raw_string_enum_mirrored_None(
+      sse_encode_StreamSink_record_application_settings_raw_string_enum_mirrored_Sse(
           RustStreamSink<(ApplicationSettings, RawStringEnumMirrored)> self,
           SseSerializer serializer);
 
   @protected
-  void sse_encode_StreamSink_u_32_None(
+  void sse_encode_StreamSink_u_32_Sse(
       RustStreamSink<int> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_StreamSink_u_8_array_2_None(
+  void sse_encode_StreamSink_u_8_array_2_Sse(
       RustStreamSink<U8Array2> self, SseSerializer serializer);
 
   @protected
@@ -10775,7 +10775,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       List<HideDataTwinSync> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_list_StreamSink_i_32_None(
+  void sse_encode_list_StreamSink_i_32_Sse(
       List<RustStreamSink<int>> self, SseSerializer serializer);
 
   @protected

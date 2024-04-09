@@ -94,39 +94,43 @@ impl CstDecode<std::collections::HashSet<i32>> for Box<[i32]> {
         vec.into_iter().collect()
     }
 }
-impl CstDecode<StreamSink<NonCloneSimpleTwinMoi>> for String {
+impl CstDecode<StreamSink<NonCloneSimpleTwinMoi, flutter_rust_bridge::DcoCodec>> for String {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinMoi> {
+    fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinMoi, flutter_rust_bridge::DcoCodec> {
         todo!()
     }
 }
-impl CstDecode<StreamSink<NonCloneSimpleTwinNormal>> for String {
+impl CstDecode<StreamSink<NonCloneSimpleTwinNormal, flutter_rust_bridge::DcoCodec>> for String {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinNormal> {
+    fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinNormal, flutter_rust_bridge::DcoCodec> {
         todo!()
     }
 }
-impl CstDecode<StreamSink<NonCloneSimpleTwinRustAsyncMoi>> for String {
+impl CstDecode<StreamSink<NonCloneSimpleTwinRustAsyncMoi, flutter_rust_bridge::DcoCodec>>
+    for String
+{
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinRustAsyncMoi> {
+    fn cst_decode(
+        self,
+    ) -> StreamSink<NonCloneSimpleTwinRustAsyncMoi, flutter_rust_bridge::DcoCodec> {
         todo!()
     }
 }
-impl CstDecode<StreamSink<NonCloneSimpleTwinRustAsync>> for String {
+impl CstDecode<StreamSink<NonCloneSimpleTwinRustAsync, flutter_rust_bridge::DcoCodec>> for String {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinRustAsync> {
+    fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinRustAsync, flutter_rust_bridge::DcoCodec> {
         todo!()
     }
 }
-impl CstDecode<StreamSink<NonCloneSimpleTwinSyncMoi>> for String {
+impl CstDecode<StreamSink<NonCloneSimpleTwinSyncMoi, flutter_rust_bridge::DcoCodec>> for String {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinSyncMoi> {
+    fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinSyncMoi, flutter_rust_bridge::DcoCodec> {
         todo!()
     }
 }
-impl CstDecode<StreamSink<NonCloneSimpleTwinSync>> for String {
+impl CstDecode<StreamSink<NonCloneSimpleTwinSync, flutter_rust_bridge::DcoCodec>> for String {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinSync> {
+    fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinSync, flutter_rust_bridge::DcoCodec> {
         todo!()
     }
 }
@@ -137,6 +141,7 @@ impl
                 u8,
                 crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
             >,
+            flutter_rust_bridge::DcoCodec,
         >,
     > for String
 {
@@ -148,6 +153,7 @@ impl
             u8,
             crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
         >,
+        flutter_rust_bridge::DcoCodec,
     > {
         todo!()
     }
@@ -158,6 +164,7 @@ impl
             std::collections::HashSet<
                 crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
             >,
+            flutter_rust_bridge::DcoCodec,
         >,
     > for String
 {
@@ -166,215 +173,347 @@ impl
         self,
     ) -> StreamSink<
         std::collections::HashSet<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
+        flutter_rust_bridge::DcoCodec,
     > {
         todo!()
     }
 }
-impl CstDecode<StreamSink<String>> for String {
+impl CstDecode<StreamSink<String, flutter_rust_bridge::DcoCodec>> for String {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<String> {
-        todo!()
-    }
-}
-impl CstDecode<StreamSink<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>>
-    for String
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> StreamSink<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode> {
-        todo!()
-    }
-}
-impl CstDecode<StreamSink<[crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode; 2]>>
-    for String
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> StreamSink<[crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode; 2]> {
-        todo!()
-    }
-}
-impl CstDecode<StreamSink<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings>>
-    for String
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> StreamSink<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings> {
-        todo!()
-    }
-}
-impl CstDecode<StreamSink<crate::api::event_listener::EventTwinNormal>> for String {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<crate::api::event_listener::EventTwinNormal> {
+    fn cst_decode(self) -> StreamSink<String, flutter_rust_bridge::DcoCodec> {
         todo!()
     }
 }
 impl
     CstDecode<
-        StreamSink<crate::api::pseudo_manual::event_listener_twin_rust_async::EventTwinRustAsync>,
+        StreamSink<
+            crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+            flutter_rust_bridge::DcoCodec,
+        >,
     > for String
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
-    ) -> StreamSink<crate::api::pseudo_manual::event_listener_twin_rust_async::EventTwinRustAsync>
-    {
-        todo!()
-    }
-}
-impl CstDecode<StreamSink<i32>> for String {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<i32> {
-        todo!()
-    }
-}
-impl CstDecode<StreamSink<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>>>
-    for String
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> StreamSink<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>> {
-        todo!()
-    }
-}
-impl
-    CstDecode<StreamSink<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings>>>
-    for String
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> StreamSink<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings>> {
-        todo!()
-    }
-}
-impl CstDecode<StreamSink<crate::api::method::Log2TwinNormal>> for String {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<crate::api::method::Log2TwinNormal> {
-        todo!()
-    }
-}
-impl CstDecode<StreamSink<crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync>>
-    for String
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> StreamSink<crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync> {
-        todo!()
-    }
-}
-impl CstDecode<StreamSink<crate::api::pseudo_manual::method_twin_sync::Log2TwinSync>> for String {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<crate::api::pseudo_manual::method_twin_sync::Log2TwinSync> {
-        todo!()
-    }
-}
-impl CstDecode<StreamSink<crate::api::stream::LogTwinNormal>> for String {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<crate::api::stream::LogTwinNormal> {
-        todo!()
-    }
-}
-impl CstDecode<StreamSink<crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync>>
-    for String
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> StreamSink<crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync> {
-        todo!()
-    }
-}
-impl CstDecode<StreamSink<crate::api::mirror::MirrorStructTwinNormal>> for String {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<crate::api::mirror::MirrorStructTwinNormal> {
+    ) -> StreamSink<
+        crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+        flutter_rust_bridge::DcoCodec,
+    > {
         todo!()
     }
 }
 impl
     CstDecode<
-        StreamSink<crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync>,
+        StreamSink<
+            [crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode; 2],
+            flutter_rust_bridge::DcoCodec,
+        >,
     > for String
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
-    ) -> StreamSink<crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync>
-    {
-        todo!()
-    }
-}
-impl CstDecode<StreamSink<crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync>>
-    for String
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> StreamSink<crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync> {
-        todo!()
-    }
-}
-impl CstDecode<StreamSink<crate::api::stream::MyStreamEntryTwinNormal>> for String {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<crate::api::stream::MyStreamEntryTwinNormal> {
+    ) -> StreamSink<
+        [crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode; 2],
+        flutter_rust_bridge::DcoCodec,
+    > {
         todo!()
     }
 }
 impl
     CstDecode<
-        StreamSink<crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync>,
+        StreamSink<
+            crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings,
+            flutter_rust_bridge::DcoCodec,
+        >,
     > for String
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
-    ) -> StreamSink<crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync>
-    {
-        todo!()
-    }
-}
-impl CstDecode<StreamSink<Option<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>>>
-    for String
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> StreamSink<Option<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>> {
+    ) -> StreamSink<
+        crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings,
+        flutter_rust_bridge::DcoCodec,
+    > {
         todo!()
     }
 }
 impl
     CstDecode<
-        StreamSink<(
+        StreamSink<crate::api::event_listener::EventTwinNormal, flutter_rust_bridge::DcoCodec>,
+    > for String
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<crate::api::event_listener::EventTwinNormal, flutter_rust_bridge::DcoCodec>
+    {
+        todo!()
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            crate::api::pseudo_manual::event_listener_twin_rust_async::EventTwinRustAsync,
+            flutter_rust_bridge::DcoCodec,
+        >,
+    > for String
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        crate::api::pseudo_manual::event_listener_twin_rust_async::EventTwinRustAsync,
+        flutter_rust_bridge::DcoCodec,
+    > {
+        todo!()
+    }
+}
+impl CstDecode<StreamSink<i32, flutter_rust_bridge::DcoCodec>> for String {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> StreamSink<i32, flutter_rust_bridge::DcoCodec> {
+        todo!()
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
+            flutter_rust_bridge::DcoCodec,
+        >,
+    > for String
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
+        flutter_rust_bridge::DcoCodec,
+    > {
+        todo!()
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings>,
+            flutter_rust_bridge::DcoCodec,
+        >,
+    > for String
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings>,
+        flutter_rust_bridge::DcoCodec,
+    > {
+        todo!()
+    }
+}
+impl CstDecode<StreamSink<crate::api::method::Log2TwinNormal, flutter_rust_bridge::DcoCodec>>
+    for String
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<crate::api::method::Log2TwinNormal, flutter_rust_bridge::DcoCodec> {
+        todo!()
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync,
+            flutter_rust_bridge::DcoCodec,
+        >,
+    > for String
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync,
+        flutter_rust_bridge::DcoCodec,
+    > {
+        todo!()
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            crate::api::pseudo_manual::method_twin_sync::Log2TwinSync,
+            flutter_rust_bridge::DcoCodec,
+        >,
+    > for String
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        crate::api::pseudo_manual::method_twin_sync::Log2TwinSync,
+        flutter_rust_bridge::DcoCodec,
+    > {
+        todo!()
+    }
+}
+impl CstDecode<StreamSink<crate::api::stream::LogTwinNormal, flutter_rust_bridge::DcoCodec>>
+    for String
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<crate::api::stream::LogTwinNormal, flutter_rust_bridge::DcoCodec> {
+        todo!()
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync,
+            flutter_rust_bridge::DcoCodec,
+        >,
+    > for String
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync,
+        flutter_rust_bridge::DcoCodec,
+    > {
+        todo!()
+    }
+}
+impl
+    CstDecode<StreamSink<crate::api::mirror::MirrorStructTwinNormal, flutter_rust_bridge::DcoCodec>>
+    for String
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<crate::api::mirror::MirrorStructTwinNormal, flutter_rust_bridge::DcoCodec> {
+        todo!()
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync,
+            flutter_rust_bridge::DcoCodec,
+        >,
+    > for String
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync,
+        flutter_rust_bridge::DcoCodec,
+    > {
+        todo!()
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync,
+            flutter_rust_bridge::DcoCodec,
+        >,
+    > for String
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync,
+        flutter_rust_bridge::DcoCodec,
+    > {
+        todo!()
+    }
+}
+impl
+    CstDecode<
+        StreamSink<crate::api::stream::MyStreamEntryTwinNormal, flutter_rust_bridge::DcoCodec>,
+    > for String
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<crate::api::stream::MyStreamEntryTwinNormal, flutter_rust_bridge::DcoCodec>
+    {
+        todo!()
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync,
+            flutter_rust_bridge::DcoCodec,
+        >,
+    > for String
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync,
+        flutter_rust_bridge::DcoCodec,
+    > {
+        todo!()
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            Option<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
+            flutter_rust_bridge::DcoCodec,
+        >,
+    > for String
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        Option<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
+        flutter_rust_bridge::DcoCodec,
+    > {
+        todo!()
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            (
+                crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings,
+                crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored,
+            ),
+            flutter_rust_bridge::DcoCodec,
+        >,
+    > for String
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        (
             crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings,
             crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored,
-        )>,
-    > for String
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> StreamSink<(
-        crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings,
-        crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored,
-    )> {
+        ),
+        flutter_rust_bridge::DcoCodec,
+    > {
         todo!()
     }
 }
-impl CstDecode<StreamSink<u32>> for String {
+impl CstDecode<StreamSink<u32, flutter_rust_bridge::DcoCodec>> for String {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<u32> {
+    fn cst_decode(self) -> StreamSink<u32, flutter_rust_bridge::DcoCodec> {
         todo!()
     }
 }
-impl CstDecode<StreamSink<[u8; 2]>> for String {
+impl CstDecode<StreamSink<[u8; 2], flutter_rust_bridge::DcoCodec>> for String {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<[u8; 2]> {
+    fn cst_decode(self) -> StreamSink<[u8; 2], flutter_rust_bridge::DcoCodec> {
         todo!()
     }
 }
@@ -3264,9 +3403,11 @@ impl CstDecode<Vec<RustOpaqueMoi<HideDataTwinSyncMoi>>>
             .collect()
     }
 }
-impl CstDecode<Vec<StreamSink<i32>>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+impl CstDecode<Vec<StreamSink<i32, flutter_rust_bridge::DcoCodec>>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> Vec<StreamSink<i32>> {
+    fn cst_decode(self) -> Vec<StreamSink<i32, flutter_rust_bridge::DcoCodec>> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
@@ -11398,51 +11539,53 @@ impl CstDecode<std::collections::HashSet<i32>>
         vec.into_iter().collect()
     }
 }
-impl CstDecode<StreamSink<NonCloneSimpleTwinMoi>>
+impl CstDecode<StreamSink<NonCloneSimpleTwinMoi, flutter_rust_bridge::DcoCodec>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinMoi> {
+    fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinMoi, flutter_rust_bridge::DcoCodec> {
         todo!()
     }
 }
-impl CstDecode<StreamSink<NonCloneSimpleTwinNormal>>
+impl CstDecode<StreamSink<NonCloneSimpleTwinNormal, flutter_rust_bridge::DcoCodec>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinNormal> {
+    fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinNormal, flutter_rust_bridge::DcoCodec> {
         todo!()
     }
 }
-impl CstDecode<StreamSink<NonCloneSimpleTwinRustAsyncMoi>>
+impl CstDecode<StreamSink<NonCloneSimpleTwinRustAsyncMoi, flutter_rust_bridge::DcoCodec>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinRustAsyncMoi> {
+    fn cst_decode(
+        self,
+    ) -> StreamSink<NonCloneSimpleTwinRustAsyncMoi, flutter_rust_bridge::DcoCodec> {
         todo!()
     }
 }
-impl CstDecode<StreamSink<NonCloneSimpleTwinRustAsync>>
+impl CstDecode<StreamSink<NonCloneSimpleTwinRustAsync, flutter_rust_bridge::DcoCodec>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinRustAsync> {
+    fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinRustAsync, flutter_rust_bridge::DcoCodec> {
         todo!()
     }
 }
-impl CstDecode<StreamSink<NonCloneSimpleTwinSyncMoi>>
+impl CstDecode<StreamSink<NonCloneSimpleTwinSyncMoi, flutter_rust_bridge::DcoCodec>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinSyncMoi> {
+    fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinSyncMoi, flutter_rust_bridge::DcoCodec> {
         todo!()
     }
 }
-impl CstDecode<StreamSink<NonCloneSimpleTwinSync>>
+impl CstDecode<StreamSink<NonCloneSimpleTwinSync, flutter_rust_bridge::DcoCodec>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinSync> {
+    fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinSync, flutter_rust_bridge::DcoCodec> {
         todo!()
     }
 }
@@ -11453,6 +11596,7 @@ impl
                 u8,
                 crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
             >,
+            flutter_rust_bridge::DcoCodec,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -11464,6 +11608,7 @@ impl
             u8,
             crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
         >,
+        flutter_rust_bridge::DcoCodec,
     > {
         todo!()
     }
@@ -11474,6 +11619,7 @@ impl
             std::collections::HashSet<
                 crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
             >,
+            flutter_rust_bridge::DcoCodec,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -11482,227 +11628,355 @@ impl
         self,
     ) -> StreamSink<
         std::collections::HashSet<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
+        flutter_rust_bridge::DcoCodec,
     > {
         todo!()
     }
 }
-impl CstDecode<StreamSink<String>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<String> {
-        todo!()
-    }
-}
-impl CstDecode<StreamSink<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>>
+impl CstDecode<StreamSink<String, flutter_rust_bridge::DcoCodec>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> StreamSink<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode> {
-        todo!()
-    }
-}
-impl CstDecode<StreamSink<[crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode; 2]>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> StreamSink<[crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode; 2]> {
-        todo!()
-    }
-}
-impl CstDecode<StreamSink<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> StreamSink<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings> {
-        todo!()
-    }
-}
-impl CstDecode<StreamSink<crate::api::event_listener::EventTwinNormal>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<crate::api::event_listener::EventTwinNormal> {
+    fn cst_decode(self) -> StreamSink<String, flutter_rust_bridge::DcoCodec> {
         todo!()
     }
 }
 impl
     CstDecode<
-        StreamSink<crate::api::pseudo_manual::event_listener_twin_rust_async::EventTwinRustAsync>,
+        StreamSink<
+            crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+            flutter_rust_bridge::DcoCodec,
+        >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
-    ) -> StreamSink<crate::api::pseudo_manual::event_listener_twin_rust_async::EventTwinRustAsync>
-    {
-        todo!()
-    }
-}
-impl CstDecode<StreamSink<i32>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<i32> {
-        todo!()
-    }
-}
-impl CstDecode<StreamSink<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> StreamSink<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>> {
-        todo!()
-    }
-}
-impl
-    CstDecode<StreamSink<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings>>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> StreamSink<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings>> {
-        todo!()
-    }
-}
-impl CstDecode<StreamSink<crate::api::method::Log2TwinNormal>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<crate::api::method::Log2TwinNormal> {
-        todo!()
-    }
-}
-impl CstDecode<StreamSink<crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> StreamSink<crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync> {
-        todo!()
-    }
-}
-impl CstDecode<StreamSink<crate::api::pseudo_manual::method_twin_sync::Log2TwinSync>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<crate::api::pseudo_manual::method_twin_sync::Log2TwinSync> {
-        todo!()
-    }
-}
-impl CstDecode<StreamSink<crate::api::stream::LogTwinNormal>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<crate::api::stream::LogTwinNormal> {
-        todo!()
-    }
-}
-impl CstDecode<StreamSink<crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> StreamSink<crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync> {
-        todo!()
-    }
-}
-impl CstDecode<StreamSink<crate::api::mirror::MirrorStructTwinNormal>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<crate::api::mirror::MirrorStructTwinNormal> {
+    ) -> StreamSink<
+        crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+        flutter_rust_bridge::DcoCodec,
+    > {
         todo!()
     }
 }
 impl
     CstDecode<
-        StreamSink<crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync>,
+        StreamSink<
+            [crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode; 2],
+            flutter_rust_bridge::DcoCodec,
+        >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
-    ) -> StreamSink<crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync>
-    {
-        todo!()
-    }
-}
-impl CstDecode<StreamSink<crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> StreamSink<crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync> {
-        todo!()
-    }
-}
-impl CstDecode<StreamSink<crate::api::stream::MyStreamEntryTwinNormal>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<crate::api::stream::MyStreamEntryTwinNormal> {
+    ) -> StreamSink<
+        [crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode; 2],
+        flutter_rust_bridge::DcoCodec,
+    > {
         todo!()
     }
 }
 impl
     CstDecode<
-        StreamSink<crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync>,
+        StreamSink<
+            crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings,
+            flutter_rust_bridge::DcoCodec,
+        >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
-    ) -> StreamSink<crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync>
-    {
-        todo!()
-    }
-}
-impl CstDecode<StreamSink<Option<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> StreamSink<Option<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>> {
+    ) -> StreamSink<
+        crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings,
+        flutter_rust_bridge::DcoCodec,
+    > {
         todo!()
     }
 }
 impl
     CstDecode<
-        StreamSink<(
+        StreamSink<crate::api::event_listener::EventTwinNormal, flutter_rust_bridge::DcoCodec>,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<crate::api::event_listener::EventTwinNormal, flutter_rust_bridge::DcoCodec>
+    {
+        todo!()
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            crate::api::pseudo_manual::event_listener_twin_rust_async::EventTwinRustAsync,
+            flutter_rust_bridge::DcoCodec,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        crate::api::pseudo_manual::event_listener_twin_rust_async::EventTwinRustAsync,
+        flutter_rust_bridge::DcoCodec,
+    > {
+        todo!()
+    }
+}
+impl CstDecode<StreamSink<i32, flutter_rust_bridge::DcoCodec>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> StreamSink<i32, flutter_rust_bridge::DcoCodec> {
+        todo!()
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
+            flutter_rust_bridge::DcoCodec,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
+        flutter_rust_bridge::DcoCodec,
+    > {
+        todo!()
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings>,
+            flutter_rust_bridge::DcoCodec,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings>,
+        flutter_rust_bridge::DcoCodec,
+    > {
+        todo!()
+    }
+}
+impl CstDecode<StreamSink<crate::api::method::Log2TwinNormal, flutter_rust_bridge::DcoCodec>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<crate::api::method::Log2TwinNormal, flutter_rust_bridge::DcoCodec> {
+        todo!()
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync,
+            flutter_rust_bridge::DcoCodec,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync,
+        flutter_rust_bridge::DcoCodec,
+    > {
+        todo!()
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            crate::api::pseudo_manual::method_twin_sync::Log2TwinSync,
+            flutter_rust_bridge::DcoCodec,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        crate::api::pseudo_manual::method_twin_sync::Log2TwinSync,
+        flutter_rust_bridge::DcoCodec,
+    > {
+        todo!()
+    }
+}
+impl CstDecode<StreamSink<crate::api::stream::LogTwinNormal, flutter_rust_bridge::DcoCodec>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<crate::api::stream::LogTwinNormal, flutter_rust_bridge::DcoCodec> {
+        todo!()
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync,
+            flutter_rust_bridge::DcoCodec,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync,
+        flutter_rust_bridge::DcoCodec,
+    > {
+        todo!()
+    }
+}
+impl
+    CstDecode<StreamSink<crate::api::mirror::MirrorStructTwinNormal, flutter_rust_bridge::DcoCodec>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<crate::api::mirror::MirrorStructTwinNormal, flutter_rust_bridge::DcoCodec> {
+        todo!()
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync,
+            flutter_rust_bridge::DcoCodec,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync,
+        flutter_rust_bridge::DcoCodec,
+    > {
+        todo!()
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync,
+            flutter_rust_bridge::DcoCodec,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync,
+        flutter_rust_bridge::DcoCodec,
+    > {
+        todo!()
+    }
+}
+impl
+    CstDecode<
+        StreamSink<crate::api::stream::MyStreamEntryTwinNormal, flutter_rust_bridge::DcoCodec>,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<crate::api::stream::MyStreamEntryTwinNormal, flutter_rust_bridge::DcoCodec>
+    {
+        todo!()
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync,
+            flutter_rust_bridge::DcoCodec,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync,
+        flutter_rust_bridge::DcoCodec,
+    > {
+        todo!()
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            Option<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
+            flutter_rust_bridge::DcoCodec,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        Option<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
+        flutter_rust_bridge::DcoCodec,
+    > {
+        todo!()
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            (
+                crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings,
+                crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored,
+            ),
+            flutter_rust_bridge::DcoCodec,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        (
             crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings,
             crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored,
-        )>,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+        ),
+        flutter_rust_bridge::DcoCodec,
+    > {
+        todo!()
+    }
+}
+impl CstDecode<StreamSink<u32, flutter_rust_bridge::DcoCodec>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> StreamSink<(
-        crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings,
-        crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored,
-    )> {
+    fn cst_decode(self) -> StreamSink<u32, flutter_rust_bridge::DcoCodec> {
         todo!()
     }
 }
-impl CstDecode<StreamSink<u32>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+impl CstDecode<StreamSink<[u8; 2], flutter_rust_bridge::DcoCodec>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<u32> {
-        todo!()
-    }
-}
-impl CstDecode<StreamSink<[u8; 2]>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<[u8; 2]> {
+    fn cst_decode(self) -> StreamSink<[u8; 2], flutter_rust_bridge::DcoCodec> {
         todo!()
     }
 }
