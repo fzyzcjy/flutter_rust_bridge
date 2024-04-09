@@ -174,6 +174,8 @@ macro_rules! frb_generated_stream_sink {
             }
         }
 
+        // Ignore coverage since unreachable
+        // frb-coverage:ignore-start
         impl<T, Rust2DartCodec: $crate::for_generated::BaseCodec> $crate::IntoIntoDart<StreamSink<T, Rust2DartCodec>> for StreamSink<T, Rust2DartCodec> {
             fn into_into_dart(self) -> StreamSink<T, Rust2DartCodec> {
                 unreachable!()
@@ -185,6 +187,7 @@ macro_rules! frb_generated_stream_sink {
                 unreachable!()
             }
         }
+        // frb-coverage:ignore-end
     };
 }
 

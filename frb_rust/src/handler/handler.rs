@@ -101,11 +101,13 @@ impl<T> TaskRetFutTrait for T {}
 /// A context for task execution
 pub struct TaskContext {}
 
+// frb-coverage:ignore-start
 impl Default for TaskContext {
     fn default() -> Self {
         Self::new()
     }
 }
+// frb-coverage:ignore-end
 
 impl TaskContext {
     pub fn new() -> Self {

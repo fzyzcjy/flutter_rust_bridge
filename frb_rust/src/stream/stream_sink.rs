@@ -45,8 +45,10 @@ pub(super) fn sender(sendable_channel_handle: &SendableChannelHandle) -> Rust2Da
     Rust2DartSender::new(handle_to_channel(sendable_channel_handle))
 }
 
+// frb-coverage:ignore-start
 impl<T, Rust2DartCodec: BaseCodec> IntoDart for StreamSinkBase<T, Rust2DartCodec> {
     fn into_dart(self) -> DartAbi {
         unreachable!()
     }
 }
+// frb-coverage:ignore-end

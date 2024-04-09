@@ -105,6 +105,7 @@ where
     }
 }
 
+// frb-coverage:ignore-start
 impl<T, Rust2DartCodec: BaseCodec> IntoIntoDart<StreamSinkBase<T, Rust2DartCodec>>
     for StreamSinkBase<T, Rust2DartCodec>
 {
@@ -112,6 +113,7 @@ impl<T, Rust2DartCodec: BaseCodec> IntoIntoDart<StreamSinkBase<T, Rust2DartCodec
         unreachable!()
     }
 }
+// frb-coverage:ignore-end
 
 // ref: into_dart.rs
 macro_rules! impl_into_into_dart_for_tuple {
