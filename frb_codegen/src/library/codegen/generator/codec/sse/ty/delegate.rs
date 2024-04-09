@@ -33,7 +33,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 },
                 IrTypeDelegate::Uuid => "self.toBytes()".to_owned(),
                 IrTypeDelegate::StreamSink(ir) => {
-                    generate_stream_sink_setup_and_serialize(ir, CodecMode::Sse, "self")
+                    generate_stream_sink_setup_and_serialize(ir, "self")
                 }
             },
             Lang::RustLang(_) => match &self.ir {
@@ -220,10 +220,9 @@ pub(crate) fn generate_set_to_list(
 
 pub(crate) fn generate_stream_sink_setup_and_serialize(
     ir: &IrTypeDelegateStreamSink,
-    codec: CodecMode,
     var_name: &str,
 ) -> String {
-    let codec_lower = codec.to_string().to_case(Case::Snake);
+    let codec_lower = ir.codec.to_string().to_case(Case::Snake);
     let inner_ty = ir.inner.safe_ident();
 
     let codec_code = format!(
