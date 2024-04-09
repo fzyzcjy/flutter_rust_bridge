@@ -12,7 +12,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   test('dart register event listener & create event with delay', () async {
-    unawaited(expectLater(registerEventListenerTwinNormal(),
+    unawaited(expectLater(await registerEventListenerTwinNormal(),
         emits(EventTwinNormal(address: 'foo', payload: 'bar'))));
     await Future.delayed(const Duration(milliseconds: 20));
     await createEventTwinNormal(address: 'foo', payload: 'bar');
