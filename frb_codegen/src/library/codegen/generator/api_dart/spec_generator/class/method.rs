@@ -1,3 +1,4 @@
+use crate::codegen::generator::api_dart;
 use crate::codegen::generator::api_dart::spec_generator::class::field::{
     generate_field_default, generate_field_required_modifier,
 };
@@ -55,6 +56,8 @@ fn get_methods_of_enum_or_struct<'a>(
 }
 
 fn generate_api_method(func: &IrFunc, context: ApiDartGeneratorContext) -> String {
+    let api_dart_func = api_dart::spec_generator::function::generate(func, context)?;
+
     let method_info =
         if_then_some!(let IrFuncOwnerInfo::Method(info) = &func.owner , info).unwrap();
     let is_static_method = method_info.mode == IrFuncOwnerInfoMethodMode::Static;
