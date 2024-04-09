@@ -70,7 +70,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     }
                 },
                 IrTypeDelegate::Uuid => "self.as_bytes().to_vec()".to_owned(),
-                IrTypeDelegate::StreamSink(_) => lang.throw_unimplemented(""),
+                IrTypeDelegate::StreamSink(_) => return Some(lang.throw_unimplemented("")),
             },
         };
         Some(simple_delegate_encode(
