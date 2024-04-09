@@ -2,7 +2,9 @@ use crate::codegen::generator::api_dart;
 use crate::codegen::generator::api_dart::spec_generator::class::field::{
     generate_field_default, generate_field_required_modifier,
 };
-use crate::codegen::generator::api_dart::spec_generator::function::ApiDartGeneratedFunction;
+use crate::codegen::generator::api_dart::spec_generator::function::{
+    ApiDartGeneratedFunction, ApiDartGeneratedFunctionParam,
+};
 use crate::codegen::generator::api_dart::spec_generator::misc::{
     generate_dart_comments, generate_function_dart_return_type,
 };
@@ -65,19 +67,20 @@ fn generate_api_method(func: &IrFunc, context: ApiDartGeneratorContext) -> Strin
     let default_constructor_mode = func.default_constructor_mode();
 
     let skip_names = compute_skip_names(func, method_info);
+    let params = (api_dart_func.func_params.iter())
+        .filter(|param| !skip_names.contains(param.name_str))
+        .collect_vec();
 
-    let params = generate_params(func, context, skip_count);
     let comments = generate_comments(func, default_constructor_mode);
     let signature = generate_signature(
         func,
         context,
         method_info,
-        params,
+        &params,
         default_constructor_mode,
         &api_dart_func,
     );
-    let arg_names = generate_arg_names(func, &api_dart_func, &skip_names).concat();
-    let implementation = generate_implementation(func, context, is_static_method, arg_names);
+    let implementation = generate_implementation(func, context, is_static_method);
 
     format!("{comments}{signature}=>{implementation};\n\n")
 }
@@ -105,34 +108,11 @@ fn generate_comments(
     ans
 }
 
-fn generate_params(
-    func: &IrFunc,
-    context: ApiDartGeneratorContext,
-    skip_count: usize,
-) -> Vec<String> {
-    let mut ans = func
-        .inputs
-        .iter()
-        .skip(skip_count)
-        .map(|input| {
-            let required = generate_field_required_modifier(input);
-            let default = generate_field_default(input, false, context.config.dart_enums_style);
-            let type_str = ApiDartGenerator::new(input.ty.clone(), context).dart_api_type();
-            let name_str = input.name.dart_style();
-            format!("{required}{type_str} {name_str} {default}")
-        })
-        .collect_vec();
-
-    ans.push("dynamic hint".to_string());
-
-    ans
-}
-
 fn generate_signature(
     func: &IrFunc,
     context: ApiDartGeneratorContext,
     method_info: &IrFuncOwnerInfoMethod,
-    func_params: Vec<String>,
+    func_params: &[&ApiDartGeneratedFunctionParam],
     default_constructor_mode: Option<IrFuncDefaultConstructorMode>,
     api_dart_func: &ApiDartGeneratedFunction,
 ) -> String {
@@ -147,7 +127,10 @@ fn generate_signature(
     let (func_params, maybe_getter) = if func.getter {
         ("".to_owned(), "get")
     } else {
-        (format!("({{ {} }})", func_params.join(",")), "")
+        (
+            format!("({{ {} }})", func_params.iter().map(|x| x.full).join(",")),
+            "",
+        )
     };
 
     if default_constructor_mode == Some(IrFuncDefaultConstructorMode::DartConstructor) {
@@ -155,20 +138,6 @@ fn generate_signature(
     }
 
     format!("{maybe_static} {return_type} {maybe_getter} {method_name}{func_params}")
-}
-
-fn generate_arg_names(
-    func: &IrFunc,
-    api_dart_func: &ApiDartGeneratedFunction,
-    skip_names: &[&str],
-) -> Vec<String> {
-    let mut ans = (api_dart_func.func_params.iter())
-        .filter(|param| !skip_names.contains(param.name_str))
-        .collect_vec();
-    if !func.getter {
-        ans.push("hint: hint,".to_string());
-    }
-    ans
 }
 
 fn generate_implementation(
