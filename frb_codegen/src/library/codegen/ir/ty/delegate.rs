@@ -63,7 +63,7 @@ pub struct IrTypeDelegateSet {
 
 pub struct IrTypeDelegateStreamSink {
     pub inner: Box<IrType>,
-    pub codec: Option<CodecMode>,
+    pub codec: CodecMode,
 }
 }
 
@@ -105,11 +105,9 @@ impl IrTypeTrait for IrTypeDelegate {
                 format!("Map_{}_{}", ir.key.safe_ident(), ir.value.safe_ident())
             }
             IrTypeDelegate::Set(ir) => format!("Set_{}", ir.inner.safe_ident()),
-            IrTypeDelegate::StreamSink(ir) => format!(
-                "StreamSink_{}_{}",
-                ir.inner.safe_ident(),
-                ir.codec.map(|x| x.to_string()).unwrap_or("None".to_owned())
-            ),
+            IrTypeDelegate::StreamSink(ir) => {
+                format!("StreamSink_{}_{}", ir.inner.safe_ident(), ir.codec)
+            }
         }
     }
 
@@ -159,13 +157,9 @@ impl IrTypeTrait for IrTypeDelegate {
             }
             IrTypeDelegate::StreamSink(ir) => {
                 format!(
-                    "StreamSink<{}{}>",
+                    "StreamSink<{},flutter_rust_bridge::{codec}Codec>",
                     ir.inner.rust_api_type(),
-                    if let Some(codec) = ir.codec {
-                        format!(",flutter_rust_bridge::{codec}Codec")
-                    } else {
-                        "".to_owned()
-                    }
+                    codec = ir.codec,
                 )
             }
         }

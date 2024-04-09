@@ -85,11 +85,11 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
             ("StreamSink", [inner ]) => Delegate(IrTypeDelegate::StreamSink(IrTypeDelegateStreamSink {
                 inner: Box::new(self.parse_type(inner)?),
-                codec: None,
+                codec: TODO,
             })),
             ("StreamSink", [inner, codec ]) => Delegate(IrTypeDelegate::StreamSink(IrTypeDelegateStreamSink {
                 inner: Box::new(self.parse_type(inner)?),
-                codec: Some(parse_stream_sink_codec(codec)?),
+                codec: parse_stream_sink_codec(codec)?,
             })),
 
             _ => return Ok(None),

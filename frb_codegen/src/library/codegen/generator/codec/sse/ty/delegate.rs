@@ -222,7 +222,8 @@ pub(crate) fn generate_stream_sink_setup_and_serialize(
     ir: &IrTypeDelegateStreamSink,
     var_name: &str,
 ) -> String {
-    let codec_lower = ir.codec.to_string().to_case(Case::Snake);
+    let codec = ir.codec;
+    let codec_lower = codec.to_string().to_case(Case::Snake);
     let inner_ty = ir.inner.safe_ident();
 
     let codec_code = format!(
