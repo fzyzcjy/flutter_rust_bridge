@@ -5,6 +5,7 @@ import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized
 // coverage:ignore-start
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 class CstCodec<S, E extends Object> extends BaseCodec<S, E, dynamic> {
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
   const CstCodec();
 
   @override

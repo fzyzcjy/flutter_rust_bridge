@@ -1,3 +1,4 @@
+use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::ir::func::IrFuncOwnerInfo;
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::{IrEnumPool, IrStructPool};
@@ -15,7 +16,6 @@ use crate::codegen::parser::type_parser::rust_auto_opaque::RustAutoOpaqueParserI
 use crate::codegen::parser::type_parser::rust_opaque::RustOpaqueParserInfo;
 use std::collections::HashMap;
 use syn::Type;
-use crate::codegen::generator::codec::structs::CodecMode;
 
 pub(crate) mod array;
 pub(crate) mod concrete;
