@@ -80,7 +80,7 @@ fn generate_api_method(func: &IrFunc, context: ApiDartGeneratorContext) -> Strin
         default_constructor_mode,
         &api_dart_func,
     );
-    let implementation = generate_implementation(func, context, method_info);
+    let implementation = generate_implementation(func, context, method_info, &params);
 
     format!("{comments}{signature}=>{implementation};\n\n")
 }
@@ -144,11 +144,16 @@ fn generate_implementation(
     func: &IrFunc,
     context: ApiDartGeneratorContext,
     method_info: &IrFuncOwnerInfoMethod,
+    params: &[&ApiDartGeneratedFunctionParam],
 ) -> String {
     let dart_entrypoint_class_name = &context.config.dart_entrypoint_class_name;
     let dart_api_instance = format!("{dart_entrypoint_class_name}.instance.api");
 
     let func_name = func.name.name.clone().to_case(Case::Camel);
+
+    let arg_names = params.iter()
+        .map(|x| format!("{name}: {name}", name = x.name_str))
+        .join(", ");
 
     if method_info.mode == IrFuncOwnerInfoMethodMode::Static {
         format!("{dart_api_instance}.{func_name}({arg_names})")
