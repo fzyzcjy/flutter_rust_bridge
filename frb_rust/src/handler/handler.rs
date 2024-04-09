@@ -101,6 +101,14 @@ impl<T> TaskRetFutTrait for T {}
 /// A context for task execution
 pub struct TaskContext {}
 
+impl Default for TaskContext {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl TaskContext {
-    pub fn new() -> Self { Self {}}
+    pub fn new() -> Self {
+        Self {}
+    }
 }

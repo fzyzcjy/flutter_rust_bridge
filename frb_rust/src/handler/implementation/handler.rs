@@ -62,9 +62,7 @@ impl<E: Executor, EL: ErrorListener> Handler for SimpleHandler<E, EL> {
         prepare: PrepareFn,
     ) where
         PrepareFn: FnOnce() -> TaskFn,
-        TaskFn: FnOnce(
-                TaskContext,
-            ) -> Result<Rust2DartCodec::Message, Rust2DartCodec::Message>
+        TaskFn: FnOnce(TaskContext) -> Result<Rust2DartCodec::Message, Rust2DartCodec::Message>
             + Send
             + 'static,
         Rust2DartCodec: BaseCodec,

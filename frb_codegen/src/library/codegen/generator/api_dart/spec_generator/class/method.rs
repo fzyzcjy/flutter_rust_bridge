@@ -2,9 +2,7 @@ use crate::codegen::generator::api_dart;
 use crate::codegen::generator::api_dart::spec_generator::function::{
     ApiDartGeneratedFunction, ApiDartGeneratedFunctionParam,
 };
-use crate::codegen::generator::api_dart::spec_generator::misc::{
-    generate_dart_comments,
-};
+use crate::codegen::generator::api_dart::spec_generator::misc::generate_dart_comments;
 use crate::codegen::ir::func::{
     IrFunc, IrFuncDefaultConstructorMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod,
     IrFuncOwnerInfoMethodMode,
@@ -144,7 +142,8 @@ fn generate_implementation(
 
     let func_name = func.name.name.clone().to_case(Case::Camel);
 
-    let arg_names = params.iter()
+    let arg_names = params
+        .iter()
         .map(|x| format!("{name}: {name}", name = x.name_str))
         .join(", ");
 

@@ -6,9 +6,7 @@ use crate::codegen::ir::ty::rust_auto_opaque::OwnershipMode;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::Boxed;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
-use crate::codegen::parser::function_parser::{
-    FunctionParser, FunctionPartialInfo,
-};
+use crate::codegen::parser::function_parser::{FunctionParser, FunctionPartialInfo};
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::TypeParserParsingContext;
 use crate::if_then_some;
@@ -23,9 +21,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         context: &TypeParserParsingContext,
     ) -> anyhow::Result<FunctionPartialInfo> {
         match sig_input {
-            FnArg::Typed(ref pat_type) => {
-                self.parse_fn_arg_typed(context, pat_type)
-            }
+            FnArg::Typed(ref pat_type) => self.parse_fn_arg_typed(context, pat_type),
             FnArg::Receiver(ref receiver) => self.parse_fn_arg_receiver(owner, context, receiver),
         }
     }

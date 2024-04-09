@@ -1,13 +1,13 @@
-use convert_case::{Case, Casing};
 use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::codegen::generator::codec::sse::lang::*;
 use crate::codegen::generator::codec::sse::ty::*;
+use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::ir::ty::delegate::{
     IrTypeDelegatePrimitiveEnum, IrTypeDelegateSet, IrTypeDelegateStreamSink, IrTypeDelegateTime,
 };
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
+use convert_case::{Case, Casing};
 use itertools::Itertools;
-use crate::codegen::generator::codec::structs::CodecMode;
 
 impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
