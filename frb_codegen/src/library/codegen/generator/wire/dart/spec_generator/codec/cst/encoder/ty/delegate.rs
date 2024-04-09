@@ -2,7 +2,6 @@ use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::codec::sse::ty::delegate::{
     generate_set_to_list, generate_stream_sink_setup_and_serialize,
 };
-use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;

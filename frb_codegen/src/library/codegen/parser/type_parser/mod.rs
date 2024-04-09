@@ -15,6 +15,7 @@ use crate::codegen::parser::type_parser::rust_auto_opaque::RustAutoOpaqueParserI
 use crate::codegen::parser::type_parser::rust_opaque::RustOpaqueParserInfo;
 use std::collections::HashMap;
 use syn::Type;
+use crate::codegen::generator::codec::structs::CodecMode;
 
 pub(crate) mod array;
 pub(crate) mod concrete;
@@ -105,6 +106,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 pub(crate) struct TypeParserParsingContext {
     pub(crate) initiated_namespace: Namespace,
     pub(crate) func_attributes: FrbAttributes,
+    pub(crate) default_stream_sink_codec: CodecMode,
     pub(crate) default_rust_opaque_codec: RustOpaqueCodecMode,
     pub(crate) owner: Option<IrFuncOwnerInfo>,
 }

@@ -81,6 +81,7 @@ pub(crate) fn parse(
                 &config.rust_crate_dir,
                 &config.force_codec_mode_pack,
                 (index + 1) as i32,
+                config.default_stream_sink_codec,
                 config.default_rust_opaque_codec,
             )
         })
@@ -185,6 +186,7 @@ mod tests {
     use log::info;
     use serial_test::serial;
     use std::path::{Path, PathBuf};
+    use crate::codegen::generator::codec::structs::CodecMode;
 
     #[test]
     #[serial]
@@ -298,6 +300,7 @@ mod tests {
                 ),
                 rust_crate_dir: rust_crate_dir.clone(),
                 force_codec_mode_pack: compute_force_codec_mode_pack(true),
+                default_stream_sink_codec: CodecMode::Dco,
                 default_rust_opaque_codec: RustOpaqueCodecMode::Nom,
             },
             &mut CachedRustReader::default(),

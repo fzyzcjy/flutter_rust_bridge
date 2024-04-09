@@ -40,6 +40,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         rust_crate_dir: &Path,
         force_codec_mode_pack: &Option<CodecModePack>,
         func_id: i32,
+        default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
     ) -> anyhow::Result<Option<IrFunc>> {
         self.parse_function_inner(
@@ -48,6 +49,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             rust_crate_dir,
             force_codec_mode_pack,
             func_id,
+            default_stream_sink_codec,
             default_rust_opaque_codec,
         )
         .with_context(|| format!("function={:?}", func.sig().ident))
@@ -60,6 +62,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         rust_crate_dir: &Path,
         force_codec_mode_pack: &Option<CodecModePack>,
         func_id: i32,
+        default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
     ) -> anyhow::Result<Option<IrFunc>> {
         debug!("parse_function function name: {:?}", func.sig().ident);
@@ -72,6 +75,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let create_context = |owner: Option<IrFuncOwnerInfo>| TypeParserParsingContext {
             initiated_namespace: namespace.clone(),
             func_attributes: attributes.clone(),
+            default_stream_sink_codec,
             default_rust_opaque_codec,
             owner,
         };
