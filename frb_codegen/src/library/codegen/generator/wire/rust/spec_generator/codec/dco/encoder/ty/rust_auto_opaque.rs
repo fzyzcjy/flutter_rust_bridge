@@ -4,7 +4,6 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::
     generate_impl_into_dart, generate_impl_into_into_dart,
 };
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::ty::WireRustCodecDcoGeneratorEncoderTrait;
-use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::rust_auto_opaque::{IrTypeRustAutoOpaque, OwnershipMode};
 use crate::codegen::ir::ty::IrTypeTrait;
 

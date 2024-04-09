@@ -14,8 +14,6 @@ mod rust_opaque;
 mod structure;
 
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::base::*;
-use crate::codegen::ir::pack::IrPack;
-use crate::library::codegen::ir::ty::IrTypeTrait;
 use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
