@@ -1,10 +1,10 @@
-use itertools::Itertools;
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::misc::{
     generate_impl_into_dart, generate_impl_into_into_dart,
 };
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::ty::enumeration::parse_wrapper_name_into_dart_name_and_self_path;
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::ty::WireRustCodecDcoGeneratorEncoderTrait;
+use itertools::Itertools;
 
 impl<'a> WireRustCodecDcoGeneratorEncoderTrait for StructRefWireRustCodecDcoGenerator<'a> {
     fn generate_impl_into_dart(&self) -> Option<String> {
