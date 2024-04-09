@@ -226,10 +226,9 @@ pub(crate) fn generate_stream_sink_setup_and_serialize(
     let codec_lower = codec.to_string().to_case(Case::Snake);
     let inner_ty = ir.inner.safe_ident();
 
-    let codec_code = match codec {
-        CodecMode::Cst => "const CstCodec()".to_owned(),
-        _ => format!("{codec}Codec(decodeSuccessData: {codec_lower}_decode_{inner_ty}, decodeErrorData: null)"),
-    };
+    let codec_code = format!(
+        "{codec}Codec(decodeSuccessData: {codec_lower}_decode_{inner_ty}, decodeErrorData: null)"
+    );
 
     format!("{var_name}.setupAndSerialize(codec: {codec_code})")
 }
