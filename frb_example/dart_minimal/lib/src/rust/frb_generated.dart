@@ -70,7 +70,7 @@ abstract class RustLibApi extends BaseApi {
 
   Future<int> minimalAdder({required int a, required int b, dynamic hint});
 
-  Future<Stream<U8Array2>> streamSinkFixedSizedPrimitiveArrayTwinNormal(
+  Future<Stream<U8Array2>> streamSinkFixedSizedPrimitiveArrayTwinRustAsyncSse(
       {dynamic hint});
 }
 
@@ -160,7 +160,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<Stream<U8Array2>> streamSinkFixedSizedPrimitiveArrayTwinNormal(
+  Future<Stream<U8Array2>> streamSinkFixedSizedPrimitiveArrayTwinRustAsyncSse(
       {dynamic hint}) async {
     final sink = RustStreamSink<U8Array2>();
     await handler.executeNormal(NormalTask(
@@ -174,7 +174,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kStreamSinkFixedSizedPrimitiveArrayTwinNormalConstMeta,
+      constMeta: kStreamSinkFixedSizedPrimitiveArrayTwinRustAsyncSseConstMeta,
       argValues: [sink],
       apiImpl: this,
       hint: hint,
@@ -182,11 +182,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return sink.stream;
   }
 
-  TaskConstMeta get kStreamSinkFixedSizedPrimitiveArrayTwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "stream_sink_fixed_sized_primitive_array_twin_normal",
-        argNames: ["sink"],
-      );
+  TaskConstMeta
+      get kStreamSinkFixedSizedPrimitiveArrayTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "stream_sink_fixed_sized_primitive_array_twin_rust_async_sse",
+            argNames: ["sink"],
+          );
 
   @protected
   RustStreamSink<int> dco_decode_StreamSink_i_32_Sse(dynamic raw) {

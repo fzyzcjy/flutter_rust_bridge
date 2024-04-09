@@ -15,7 +15,11 @@ pub fn hello_stream(sink: crate::frb_generated::StreamSink<i32>) {
     sink.add(200).unwrap();
 }
 
-pub fn stream_sink_fixed_sized_primitive_array_twin_normal(sink: StreamSink<[u8; 2]>) {
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn stream_sink_fixed_sized_primitive_array_twin_rust_async_sse(
+    sink: StreamSink<[u8; 2], flutter_rust_bridge::SseCodec>,
+) {
     sink.add([1, 2]).unwrap();
     sink.add([3, 4]).unwrap();
 }
+

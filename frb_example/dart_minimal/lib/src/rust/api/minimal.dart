@@ -13,10 +13,10 @@ Future<int> minimalAdder({required int a, required int b, dynamic hint}) =>
 Future<Stream<int>> helloStream({dynamic hint}) =>
     RustLib.instance.api.helloStream(hint: hint);
 
-Future<Stream<U8Array2>> streamSinkFixedSizedPrimitiveArrayTwinNormal(
+Future<Stream<U8Array2>> streamSinkFixedSizedPrimitiveArrayTwinRustAsyncSse(
         {dynamic hint}) =>
     RustLib.instance.api
-        .streamSinkFixedSizedPrimitiveArrayTwinNormal(hint: hint);
+        .streamSinkFixedSizedPrimitiveArrayTwinRustAsyncSse(hint: hint);
 
 class U8Array2 extends NonGrowableListView<int> {
   static const arraySize = 2;
