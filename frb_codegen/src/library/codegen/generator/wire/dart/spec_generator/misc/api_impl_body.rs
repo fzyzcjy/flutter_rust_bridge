@@ -52,7 +52,7 @@ pub(crate) fn generate_api_impl_normal_function(
             {maybe_await}{call_handler};
             return {return_stream_name}.stream;
             ",
-            return_stream_name = return_stream.field.name.raw,
+            return_stream_name = return_stream.field.name.dart_style(),
             return_stream_type = ApiDartGenerator::new(
                 return_stream.field.ty.clone(),
                 context.as_api_dart_context()
