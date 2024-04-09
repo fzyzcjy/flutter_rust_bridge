@@ -96,11 +96,8 @@ fn handle_stream_inner(
 pub async fn stream_sink_fixed_sized_primitive_array_twin_rust_async_sse(
     sink: StreamSink<[u8; 2], flutter_rust_bridge::SseCodec>,
 ) {
-    log::info!("hi stream_sink_fixed_sized_primitive_array_twin_rust_async_sse start");
     sink.add([1, 2]).unwrap();
-    log::info!("hi stream_sink_fixed_sized_primitive_array_twin_rust_async_sse after sink.add a");
     sink.add([3, 4]).unwrap();
-    log::info!("hi stream_sink_fixed_sized_primitive_array_twin_rust_async_sse after sink.add b");
 }
 
 #[flutter_rust_bridge::frb(serialize)]

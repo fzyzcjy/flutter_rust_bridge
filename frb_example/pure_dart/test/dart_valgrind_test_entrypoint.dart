@@ -415,12 +415,6 @@ Future<void> main() async {
 }
 
 Future<void> callFileEntrypoints() async {
-  await stream_twin_rust_async_sse_test.main(skipRustLibInit: true);
-  // await stream_twin_rust_async_test.main(skipRustLibInit: true);
-  // await stream_twin_sse_test.main(skipRustLibInit: true);
-  // await stream_test.main(skipRustLibInit: true);
-  return;
-
   await array_test.main(skipRustLibInit: true);
   await async_misc_test.main(skipRustLibInit: true);
   await async_spawn_test.main(skipRustLibInit: true);

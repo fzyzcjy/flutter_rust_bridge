@@ -73,11 +73,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('stream_sink_fixed_sized_primitive_array_twin_normal', () async {
-    print('hi start');
-    final stream = await streamSinkFixedSizedPrimitiveArrayTwinRustAsyncSse();
-    print('hi stream=$stream');
-    final output = await stream.toList();
-    print('hi output=$output');
+    final output =
+        await (await streamSinkFixedSizedPrimitiveArrayTwinRustAsyncSse())
+            .toList();
     expect(output, [
       orderedEquals([1, 2]),
       orderedEquals([3, 4]),
