@@ -27,7 +27,7 @@ impl<T, Rust2DartCodec: BaseCodec> StreamSinkBase<T, Rust2DartCodec> {
             &deserialize_sendable_message_port_handle(raw),
         )));
         Self {
-            sendable_channel_handle,
+            sendable_channel_handle: sendable_channel_handle.clone(),
             _closer: Arc::new(StreamSinkCloser::new(sendable_channel_handle)),
             _phantom_data: Default::default(),
         }
