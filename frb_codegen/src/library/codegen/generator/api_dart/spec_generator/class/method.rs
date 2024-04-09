@@ -1,12 +1,9 @@
 use crate::codegen::generator::api_dart;
-use crate::codegen::generator::api_dart::spec_generator::class::field::{
-    generate_field_default, generate_field_required_modifier,
-};
 use crate::codegen::generator::api_dart::spec_generator::function::{
     ApiDartGeneratedFunction, ApiDartGeneratedFunctionParam,
 };
 use crate::codegen::generator::api_dart::spec_generator::misc::{
-    generate_dart_comments, generate_function_dart_return_type,
+    generate_dart_comments,
 };
 use crate::codegen::ir::func::{
     IrFunc, IrFuncDefaultConstructorMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod,
@@ -15,7 +12,6 @@ use crate::codegen::ir::func::{
 use crate::codegen::ir::namespace::NamespacedName;
 use crate::if_then_some;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
-use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 
