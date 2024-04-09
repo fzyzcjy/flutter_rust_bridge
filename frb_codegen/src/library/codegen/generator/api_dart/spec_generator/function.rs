@@ -27,6 +27,7 @@ pub(crate) struct ApiDartGeneratedFunction {
     pub(crate) func_comments: String,
     pub(crate) func_expr: String,
     pub(crate) func_impl: String,
+    pub(crate) func_return_type: String,
     pub(crate) src_lineno: usize,
     pub(crate) return_stream: Option<ReturnStreamInfo>,
 }
@@ -42,16 +43,16 @@ pub(crate) fn generate(
         context.config.dart_enums_style,
         &return_stream,
     );
+    let func_return_type = generate_function_dart_return_type(
+        &func.mode,
+        &ApiDartGenerator::new(func.output.clone(), context).dart_api_type(),
+        &return_stream,
+        context,
+    );
 
     let func_expr = format!(
         "{func_return_type} {func_name}({params})",
         func_name = func.name.name.to_case(Case::Camel),
-        func_return_type = generate_function_dart_return_type(
-            &func.mode,
-            &ApiDartGenerator::new(func.output.clone(), context).dart_api_type(),
-            &return_stream,
-            context,
-        ),
     );
 
     let func_comments = generate_dart_comments(&func.comments);
@@ -70,6 +71,7 @@ pub(crate) fn generate(
         func_comments,
         func_expr,
         func_impl,
+        func_return_type,
         src_lineno: func.src_lineno,
         return_stream,
     })

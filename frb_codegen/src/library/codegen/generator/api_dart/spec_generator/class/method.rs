@@ -15,6 +15,7 @@ use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
+use crate::codegen::generator::api_dart::spec_generator::function::ApiDartGeneratedFunction;
 
 pub(crate) fn generate_api_methods(
     generalized_class_name: &NamespacedName,
@@ -63,13 +64,16 @@ fn generate_api_method(func: &IrFunc, context: ApiDartGeneratorContext) -> Strin
     let is_static_method = method_info.mode == IrFuncOwnerInfoMethodMode::Static;
     let default_constructor_mode = func.default_constructor_mode();
 
-    // skip the first as it's the method 'self'
-    let skip_count = usize::from(!is_static_method);
+    let skip_names = if is_static_method {
+        vec![]
+    } else {
+        vec!["that"]
+    };
 
     let params = generate_params(func, context, skip_count);
     let comments = generate_comments(func, default_constructor_mode);
     let signature =
-        generate_signature(func, context, method_info, params, default_constructor_mode);
+        generate_signature(func, context, method_info, params, default_constructor_mode, &api_dart_func);
     let arg_names = generate_arg_names(func, skip_count).concat();
     let implementation = generate_implementation(func, context, is_static_method, arg_names);
 
@@ -117,15 +121,11 @@ fn generate_signature(
     method_info: &IrFuncOwnerInfoMethod,
     func_params: Vec<String>,
     default_constructor_mode: Option<IrFuncDefaultConstructorMode>,
+    api_dart_func: &ApiDartGeneratedFunction,
 ) -> String {
     let is_static_method = method_info.mode == IrFuncOwnerInfoMethodMode::Static;
     let maybe_static = if is_static_method { "static" } else { "" };
-    let return_type = generate_function_dart_return_type(
-        &func.mode,
-        &ApiDartGenerator::new(func.output.clone(), context).dart_api_type(),
-        &None,
-        context,
-    );
+    let return_type = api_dart_func.func_return_type;
     let method_name = if default_constructor_mode.is_some() {
         "newInstance".to_owned()
     } else {
