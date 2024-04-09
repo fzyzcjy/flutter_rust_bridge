@@ -14,7 +14,6 @@ impl Channel {
     }
 
     pub fn post(&self, msg: impl IntoDart) -> bool {
-        log::info!("hi Channel.post");
         self.port
             .post_message(&msg.into_dart())
             .map_err(|err| {
