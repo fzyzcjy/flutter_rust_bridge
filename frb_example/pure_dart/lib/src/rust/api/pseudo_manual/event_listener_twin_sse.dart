@@ -29,8 +29,5 @@ class EventTwinSse with _$EventTwinSse {
     required String payload,
   }) = _EventTwinSse;
   Future<String> asStringTwinSse({dynamic hint}) =>
-      RustLib.instance.api.eventTwinSseAsStringTwinSse(
-        that: this,
-        hint: hint,
-      );
+      RustLib.instance.api.eventTwinSseAsStringTwinSse(that: this, hint: hint);
 }

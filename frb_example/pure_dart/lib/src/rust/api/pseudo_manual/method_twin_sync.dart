@@ -48,67 +48,37 @@ class ConcatenateWithTwinSync {
   static String concatenateStaticTwinSync(
           {required String a, required String b, dynamic hint}) =>
       RustLib.instance.api.concatenateWithTwinSyncConcatenateStaticTwinSync(
-        a: a,
-        b: b,
-        hint: hint,
-      );
+          a: a, b: b, hint: hint);
 
-  String concatenateTwinSync({required String b, dynamic hint}) =>
-      RustLib.instance.api.concatenateWithTwinSyncConcatenateTwinSync(
-        that: this,
-        b: b,
-        hint: hint,
-      );
+  String concatenateTwinSync({required String b, dynamic hint}) => RustLib
+      .instance.api
+      .concatenateWithTwinSyncConcatenateTwinSync(that: this, b: b, hint: hint);
 
-  static void handleSomeStaticStreamSinkSingleArgTwinSync(
-          {required RustStreamSink<int> sink, dynamic hint}) =>
+  static Stream<int> handleSomeStaticStreamSinkSingleArgTwinSync(
+          {dynamic hint}) =>
       RustLib.instance.api
           .concatenateWithTwinSyncHandleSomeStaticStreamSinkSingleArgTwinSync(
-        sink: sink,
-        hint: hint,
-      );
+              hint: hint);
 
-  static void handleSomeStaticStreamSinkTwinSync(
-          {required int key,
-          required int max,
-          required RustStreamSink<Log2TwinSync> sink,
-          dynamic hint}) =>
+  static Stream<Log2TwinSync> handleSomeStaticStreamSinkTwinSync(
+          {required int key, required int max, dynamic hint}) =>
       RustLib.instance.api
           .concatenateWithTwinSyncHandleSomeStaticStreamSinkTwinSync(
-        key: key,
-        max: max,
-        sink: sink,
-        hint: hint,
-      );
+              key: key, max: max, hint: hint);
 
-  void handleSomeStreamSinkAt1TwinSync(
-          {required RustStreamSink<int> sink, dynamic hint}) =>
+  Stream<int> handleSomeStreamSinkAt1TwinSync({dynamic hint}) =>
       RustLib.instance.api
           .concatenateWithTwinSyncHandleSomeStreamSinkAt1TwinSync(
-        that: this,
-        sink: sink,
-        hint: hint,
-      );
+              that: this, hint: hint);
 
-  void handleSomeStreamSinkTwinSync(
-          {required int key,
-          required int max,
-          required RustStreamSink<Log2TwinSync> sink,
-          dynamic hint}) =>
+  Stream<Log2TwinSync> handleSomeStreamSinkTwinSync(
+          {required int key, required int max, dynamic hint}) =>
       RustLib.instance.api.concatenateWithTwinSyncHandleSomeStreamSinkTwinSync(
-        that: this,
-        key: key,
-        max: max,
-        sink: sink,
-        hint: hint,
-      );
+          that: this, key: key, max: max, hint: hint);
 
   static ConcatenateWithTwinSync newTwinSync(
           {required String a, dynamic hint}) =>
-      RustLib.instance.api.concatenateWithTwinSyncNewTwinSync(
-        a: a,
-        hint: hint,
-      );
+      RustLib.instance.api.concatenateWithTwinSyncNewTwinSync(a: a, hint: hint);
 
   String get simpleGetterTwinSync =>
       RustLib.instance.api.concatenateWithTwinSyncSimpleGetterTwinSync(
@@ -154,12 +124,8 @@ class MyCallableTwinSync {
     required this.one,
   });
 
-  String call({required String two, dynamic hint}) =>
-      RustLib.instance.api.myCallableTwinSyncCall(
-        that: this,
-        two: two,
-        hint: hint,
-      );
+  String call({required String two, dynamic hint}) => RustLib.instance.api
+      .myCallableTwinSyncCall(that: this, two: two, hint: hint);
 
   @override
   int get hashCode => one.hashCode;
@@ -183,16 +149,11 @@ sealed class SimpleEnumTwinSync with _$SimpleEnumTwinSync {
 
   static SimpleEnumTwinSync returnSelfTwinSync(
           {required String one, dynamic hint}) =>
-      RustLib.instance.api.simpleEnumTwinSyncReturnSelfTwinSync(
-        one: one,
-        hint: hint,
-      );
+      RustLib.instance.api
+          .simpleEnumTwinSyncReturnSelfTwinSync(one: one, hint: hint);
 
-  String simpleMethodTwinSync({dynamic hint}) =>
-      RustLib.instance.api.simpleEnumTwinSyncSimpleMethodTwinSync(
-        that: this,
-        hint: hint,
-      );
+  String simpleMethodTwinSync({dynamic hint}) => RustLib.instance.api
+      .simpleEnumTwinSyncSimpleMethodTwinSync(that: this, hint: hint);
 }
 
 class SimpleStructTwinSync {
@@ -206,25 +167,18 @@ class SimpleStructTwinSync {
           {required SimpleStructTwinSync a,
           required SimpleStructTwinSync b,
           dynamic hint}) =>
-      RustLib.instance.api.simpleStructTwinSyncArgSelfTwinSync(
-        a: a,
-        b: b,
-        hint: hint,
-      );
+      RustLib.instance.api
+          .simpleStructTwinSyncArgSelfTwinSync(a: a, b: b, hint: hint);
 
   static SimpleStructTwinSync returnSelfTwinSync(
           {required String one, dynamic hint}) =>
-      RustLib.instance.api.simpleStructTwinSyncReturnSelfTwinSync(
-        one: one,
-        hint: hint,
-      );
+      RustLib.instance.api
+          .simpleStructTwinSyncReturnSelfTwinSync(one: one, hint: hint);
 
   static List<String> vecSelfTwinSync(
           {required List<SimpleStructTwinSync> arg, dynamic hint}) =>
-      RustLib.instance.api.simpleStructTwinSyncVecSelfTwinSync(
-        arg: arg,
-        hint: hint,
-      );
+      RustLib.instance.api
+          .simpleStructTwinSyncVecSelfTwinSync(arg: arg, hint: hint);
 
   @override
   int get hashCode => one.hashCode;
@@ -245,10 +199,8 @@ class StaticOnlyTwinSync {
   });
 
   static int staticMethodTwinSync({required int a, dynamic hint}) =>
-      RustLib.instance.api.staticOnlyTwinSyncStaticMethodTwinSync(
-        a: a,
-        hint: hint,
-      );
+      RustLib.instance.api
+          .staticOnlyTwinSyncStaticMethodTwinSync(a: a, hint: hint);
 
   @override
   int get hashCode => one.hashCode;
@@ -269,12 +221,8 @@ class SumWithTwinSync {
   });
 
   int sumTwinSync({required int y, required int z, dynamic hint}) =>
-      RustLib.instance.api.sumWithTwinSyncSumTwinSync(
-        that: this,
-        y: y,
-        z: z,
-        hint: hint,
-      );
+      RustLib.instance.api
+          .sumWithTwinSyncSumTwinSync(that: this, y: y, z: z, hint: hint);
 
   @override
   int get hashCode => x.hashCode;

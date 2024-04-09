@@ -24,27 +24,16 @@ class DroppableTwinSse extends RustOpaque {
         .instance.api.rust_arc_decrement_strong_count_DroppableTwinSsePtr,
   );
 
-  Future<void> createStreamTwinSse(
-          {required RustStreamSink<int> sink, dynamic hint}) =>
-      RustLib.instance.api.droppableTwinSseCreateStreamTwinSse(
-        that: this,
-        sink: sink,
-        hint: hint,
-      );
+  Future<Stream<int>> createStreamTwinSse({dynamic hint}) =>
+      RustLib.instance.api
+          .droppableTwinSseCreateStreamTwinSse(that: this, hint: hint);
 
   static Future<int> getDropCountTwinSse({dynamic hint}) =>
-      RustLib.instance.api.droppableTwinSseGetDropCountTwinSse(
-        hint: hint,
-      );
+      RustLib.instance.api.droppableTwinSseGetDropCountTwinSse(hint: hint);
 
   static Future<DroppableTwinSse> newTwinSse({dynamic hint}) =>
-      RustLib.instance.api.droppableTwinSseNewTwinSse(
-        hint: hint,
-      );
+      RustLib.instance.api.droppableTwinSseNewTwinSse(hint: hint);
 
-  Future<void> simpleMethodTwinSse({dynamic hint}) =>
-      RustLib.instance.api.droppableTwinSseSimpleMethodTwinSse(
-        that: this,
-        hint: hint,
-      );
+  Future<void> simpleMethodTwinSse({dynamic hint}) => RustLib.instance.api
+      .droppableTwinSseSimpleMethodTwinSse(that: this, hint: hint);
 }

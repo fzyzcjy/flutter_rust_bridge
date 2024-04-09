@@ -24,18 +24,13 @@ class ConstructorOpaqueStructTwinNormal extends RustOpaque {
         .rust_arc_decrement_strong_count_ConstructorOpaqueStructTwinNormalPtr,
   );
 
-  void check({dynamic hint}) =>
-      RustLib.instance.api.constructorOpaqueStructTwinNormalCheck(
-        that: this,
-        hint: hint,
-      );
+  void check({dynamic hint}) => RustLib.instance.api
+      .constructorOpaqueStructTwinNormalCheck(that: this, hint: hint);
 
   // HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.
   static Future<ConstructorOpaqueStructTwinNormal> newInstance(
           {dynamic hint}) =>
-      RustLib.instance.api.constructorOpaqueStructTwinNormalNew(
-        hint: hint,
-      );
+      RustLib.instance.api.constructorOpaqueStructTwinNormalNew(hint: hint);
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<ConstructorOpaqueSyncStructTwinNormal>>
@@ -57,16 +52,11 @@ class ConstructorOpaqueSyncStructTwinNormal extends RustOpaque {
         .rust_arc_decrement_strong_count_ConstructorOpaqueSyncStructTwinNormalPtr,
   );
 
-  void check({dynamic hint}) =>
-      RustLib.instance.api.constructorOpaqueSyncStructTwinNormalCheck(
-        that: this,
-        hint: hint,
-      );
+  void check({dynamic hint}) => RustLib.instance.api
+      .constructorOpaqueSyncStructTwinNormalCheck(that: this, hint: hint);
 
   factory ConstructorOpaqueSyncStructTwinNormal({dynamic hint}) =>
-      RustLib.instance.api.constructorOpaqueSyncStructTwinNormalNew(
-        hint: hint,
-      );
+      RustLib.instance.api.constructorOpaqueSyncStructTwinNormalNew(hint: hint);
 }
 
 class ConstructorTranslatableStructTwinNormal {
@@ -79,9 +69,8 @@ class ConstructorTranslatableStructTwinNormal {
   // HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.
   static Future<ConstructorTranslatableStructTwinNormal> newInstance(
           {dynamic hint}) =>
-      RustLib.instance.api.constructorTranslatableStructTwinNormalNew(
-        hint: hint,
-      );
+      RustLib.instance.api
+          .constructorTranslatableStructTwinNormalNew(hint: hint);
 
   @override
   int get hashCode => one.hashCode;
@@ -102,9 +91,8 @@ class ConstructorTranslatableSyncStructTwinNormal {
   });
 
   factory ConstructorTranslatableSyncStructTwinNormal({dynamic hint}) =>
-      RustLib.instance.api.constructorTranslatableSyncStructTwinNormalNew(
-        hint: hint,
-      );
+      RustLib.instance.api
+          .constructorTranslatableSyncStructTwinNormalNew(hint: hint);
 
   @override
   int get hashCode => one.hashCode;

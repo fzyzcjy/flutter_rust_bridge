@@ -27,9 +27,7 @@ class EventTwinRustAsyncSse with _$EventTwinRustAsyncSse {
     required String address,
     required String payload,
   }) = _EventTwinRustAsyncSse;
-  Future<String> asStringTwinRustAsyncSse({dynamic hint}) =>
-      RustLib.instance.api.eventTwinRustAsyncSseAsStringTwinRustAsyncSse(
-        that: this,
-        hint: hint,
-      );
+  Future<String> asStringTwinRustAsyncSse({dynamic hint}) => RustLib
+      .instance.api
+      .eventTwinRustAsyncSseAsStringTwinRustAsyncSse(that: this, hint: hint);
 }

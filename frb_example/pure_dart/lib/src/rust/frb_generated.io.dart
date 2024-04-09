@@ -18262,11 +18262,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoi_None(
           RustStreamSink<NonCloneSimpleTwinMoi> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_String(raw.setupAndSerialize(
-        codec: CstCodec(
-            decodeSuccessData:
-                cst_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoi,
-            decodeErrorData: null)));
+    return cst_encode_String(raw.setupAndSerialize(codec: const CstCodec()));
   }
 
   @protected
@@ -18274,11 +18270,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal_None(
           RustStreamSink<NonCloneSimpleTwinNormal> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_String(raw.setupAndSerialize(
-        codec: CstCodec(
-            decodeSuccessData:
-                cst_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal,
-            decodeErrorData: null)));
+    return cst_encode_String(raw.setupAndSerialize(codec: const CstCodec()));
   }
 
   @protected
@@ -18286,11 +18278,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi_None(
           RustStreamSink<NonCloneSimpleTwinRustAsyncMoi> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_String(raw.setupAndSerialize(
-        codec: CstCodec(
-            decodeSuccessData:
-                cst_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi,
-            decodeErrorData: null)));
+    return cst_encode_String(raw.setupAndSerialize(codec: const CstCodec()));
   }
 
   @protected
@@ -18298,11 +18286,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync_None(
           RustStreamSink<NonCloneSimpleTwinRustAsync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_String(raw.setupAndSerialize(
-        codec: CstCodec(
-            decodeSuccessData:
-                cst_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync,
-            decodeErrorData: null)));
+    return cst_encode_String(raw.setupAndSerialize(codec: const CstCodec()));
   }
 
   @protected
@@ -18310,11 +18294,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi_None(
           RustStreamSink<NonCloneSimpleTwinSyncMoi> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_String(raw.setupAndSerialize(
-        codec: CstCodec(
-            decodeSuccessData:
-                cst_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi,
-            decodeErrorData: null)));
+    return cst_encode_String(raw.setupAndSerialize(codec: const CstCodec()));
   }
 
   @protected
@@ -18322,11 +18302,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync_None(
           RustStreamSink<NonCloneSimpleTwinSync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_String(raw.setupAndSerialize(
-        codec: CstCodec(
-            decodeSuccessData:
-                cst_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync,
-            decodeErrorData: null)));
+    return cst_encode_String(raw.setupAndSerialize(codec: const CstCodec()));
   }
 
   @protected
@@ -18334,10 +18310,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_StreamSink_Map_u_8_application_mode_None(
           RustStreamSink<Map<int, ApplicationMode>> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_String(raw.setupAndSerialize(
-        codec: CstCodec(
-            decodeSuccessData: cst_decode_Map_u_8_application_mode,
-            decodeErrorData: null)));
+    return cst_encode_String(raw.setupAndSerialize(codec: const CstCodec()));
   }
 
   @protected
@@ -18345,19 +18318,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_StreamSink_Set_application_mode_None(
           RustStreamSink<Set<ApplicationMode>> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_String(raw.setupAndSerialize(
-        codec: CstCodec(
-            decodeSuccessData: cst_decode_Set_application_mode,
-            decodeErrorData: null)));
+    return cst_encode_String(raw.setupAndSerialize(codec: const CstCodec()));
   }
 
   @protected
   ffi.Pointer<wire_cst_list_prim_u_8_strict> cst_encode_StreamSink_String_None(
       RustStreamSink<String> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_String(raw.setupAndSerialize(
-        codec: CstCodec(
-            decodeSuccessData: cst_decode_String, decodeErrorData: null)));
+    return cst_encode_String(raw.setupAndSerialize(codec: const CstCodec()));
   }
 
   @protected
@@ -18365,10 +18333,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_StreamSink_application_mode_None(
           RustStreamSink<ApplicationMode> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_String(raw.setupAndSerialize(
-        codec: CstCodec(
-            decodeSuccessData: cst_decode_application_mode,
-            decodeErrorData: null)));
+    return cst_encode_String(raw.setupAndSerialize(codec: const CstCodec()));
   }
 
   @protected
@@ -18376,10 +18341,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_StreamSink_application_mode_array_2_None(
           RustStreamSink<ApplicationModeArray2> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_String(raw.setupAndSerialize(
-        codec: CstCodec(
-            decodeSuccessData: cst_decode_application_mode_array_2,
-            decodeErrorData: null)));
+    return cst_encode_String(raw.setupAndSerialize(codec: const CstCodec()));
   }
 
   @protected
@@ -18387,10 +18349,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_StreamSink_application_settings_None(
           RustStreamSink<ApplicationSettings> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_String(raw.setupAndSerialize(
-        codec: CstCodec(
-            decodeSuccessData: cst_decode_application_settings,
-            decodeErrorData: null)));
+    return cst_encode_String(raw.setupAndSerialize(codec: const CstCodec()));
   }
 
   @protected
@@ -18398,10 +18357,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_StreamSink_event_twin_normal_None(
           RustStreamSink<EventTwinNormal> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_String(raw.setupAndSerialize(
-        codec: CstCodec(
-            decodeSuccessData: cst_decode_event_twin_normal,
-            decodeErrorData: null)));
+    return cst_encode_String(raw.setupAndSerialize(codec: const CstCodec()));
   }
 
   @protected
@@ -18409,19 +18365,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_StreamSink_event_twin_rust_async_None(
           RustStreamSink<EventTwinRustAsync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_String(raw.setupAndSerialize(
-        codec: CstCodec(
-            decodeSuccessData: cst_decode_event_twin_rust_async,
-            decodeErrorData: null)));
+    return cst_encode_String(raw.setupAndSerialize(codec: const CstCodec()));
   }
 
   @protected
   ffi.Pointer<wire_cst_list_prim_u_8_strict> cst_encode_StreamSink_i_32_None(
       RustStreamSink<int> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_String(raw.setupAndSerialize(
-        codec: CstCodec(
-            decodeSuccessData: cst_decode_i_32, decodeErrorData: null)));
+    return cst_encode_String(raw.setupAndSerialize(codec: const CstCodec()));
   }
 
   @protected
@@ -18429,10 +18380,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_StreamSink_list_application_mode_None(
           RustStreamSink<List<ApplicationMode>> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_String(raw.setupAndSerialize(
-        codec: CstCodec(
-            decodeSuccessData: cst_decode_list_application_mode,
-            decodeErrorData: null)));
+    return cst_encode_String(raw.setupAndSerialize(codec: const CstCodec()));
   }
 
   @protected
@@ -18440,10 +18388,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_StreamSink_list_application_settings_None(
           RustStreamSink<List<ApplicationSettings>> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_String(raw.setupAndSerialize(
-        codec: CstCodec(
-            decodeSuccessData: cst_decode_list_application_settings,
-            decodeErrorData: null)));
+    return cst_encode_String(raw.setupAndSerialize(codec: const CstCodec()));
   }
 
   @protected
@@ -18451,10 +18396,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_StreamSink_log_2_twin_normal_None(
           RustStreamSink<Log2TwinNormal> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_String(raw.setupAndSerialize(
-        codec: CstCodec(
-            decodeSuccessData: cst_decode_log_2_twin_normal,
-            decodeErrorData: null)));
+    return cst_encode_String(raw.setupAndSerialize(codec: const CstCodec()));
   }
 
   @protected
@@ -18462,10 +18404,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_StreamSink_log_2_twin_rust_async_None(
           RustStreamSink<Log2TwinRustAsync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_String(raw.setupAndSerialize(
-        codec: CstCodec(
-            decodeSuccessData: cst_decode_log_2_twin_rust_async,
-            decodeErrorData: null)));
+    return cst_encode_String(raw.setupAndSerialize(codec: const CstCodec()));
   }
 
   @protected
@@ -18473,10 +18412,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_StreamSink_log_2_twin_sync_None(
           RustStreamSink<Log2TwinSync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_String(raw.setupAndSerialize(
-        codec: CstCodec(
-            decodeSuccessData: cst_decode_log_2_twin_sync,
-            decodeErrorData: null)));
+    return cst_encode_String(raw.setupAndSerialize(codec: const CstCodec()));
   }
 
   @protected
@@ -18484,10 +18420,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_StreamSink_log_twin_normal_None(
           RustStreamSink<LogTwinNormal> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_String(raw.setupAndSerialize(
-        codec: CstCodec(
-            decodeSuccessData: cst_decode_log_twin_normal,
-            decodeErrorData: null)));
+    return cst_encode_String(raw.setupAndSerialize(codec: const CstCodec()));
   }
 
   @protected
@@ -18495,10 +18428,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_StreamSink_log_twin_rust_async_None(
           RustStreamSink<LogTwinRustAsync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_String(raw.setupAndSerialize(
-        codec: CstCodec(
-            decodeSuccessData: cst_decode_log_twin_rust_async,
-            decodeErrorData: null)));
+    return cst_encode_String(raw.setupAndSerialize(codec: const CstCodec()));
   }
 
   @protected
@@ -18506,10 +18436,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_StreamSink_mirror_struct_twin_normal_None(
           RustStreamSink<MirrorStructTwinNormal> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_String(raw.setupAndSerialize(
-        codec: CstCodec(
-            decodeSuccessData: cst_decode_mirror_struct_twin_normal,
-            decodeErrorData: null)));
+    return cst_encode_String(raw.setupAndSerialize(codec: const CstCodec()));
   }
 
   @protected
@@ -18517,10 +18444,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_StreamSink_mirror_struct_twin_rust_async_None(
           RustStreamSink<MirrorStructTwinRustAsync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_String(raw.setupAndSerialize(
-        codec: CstCodec(
-            decodeSuccessData: cst_decode_mirror_struct_twin_rust_async,
-            decodeErrorData: null)));
+    return cst_encode_String(raw.setupAndSerialize(codec: const CstCodec()));
   }
 
   @protected
@@ -18528,10 +18452,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_StreamSink_mirror_struct_twin_sync_None(
           RustStreamSink<MirrorStructTwinSync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_String(raw.setupAndSerialize(
-        codec: CstCodec(
-            decodeSuccessData: cst_decode_mirror_struct_twin_sync,
-            decodeErrorData: null)));
+    return cst_encode_String(raw.setupAndSerialize(codec: const CstCodec()));
   }
 
   @protected
@@ -18539,10 +18460,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_StreamSink_my_stream_entry_twin_normal_None(
           RustStreamSink<MyStreamEntryTwinNormal> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_String(raw.setupAndSerialize(
-        codec: CstCodec(
-            decodeSuccessData: cst_decode_my_stream_entry_twin_normal,
-            decodeErrorData: null)));
+    return cst_encode_String(raw.setupAndSerialize(codec: const CstCodec()));
   }
 
   @protected
@@ -18550,10 +18468,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_StreamSink_my_stream_entry_twin_rust_async_None(
           RustStreamSink<MyStreamEntryTwinRustAsync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_String(raw.setupAndSerialize(
-        codec: CstCodec(
-            decodeSuccessData: cst_decode_my_stream_entry_twin_rust_async,
-            decodeErrorData: null)));
+    return cst_encode_String(raw.setupAndSerialize(codec: const CstCodec()));
   }
 
   @protected
@@ -18561,10 +18476,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_StreamSink_opt_box_autoadd_application_mode_None(
           RustStreamSink<ApplicationMode?> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_String(raw.setupAndSerialize(
-        codec: CstCodec(
-            decodeSuccessData: cst_decode_opt_box_autoadd_application_mode,
-            decodeErrorData: null)));
+    return cst_encode_String(raw.setupAndSerialize(codec: const CstCodec()));
   }
 
   @protected
@@ -18572,29 +18484,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_StreamSink_record_application_settings_raw_string_enum_mirrored_None(
           RustStreamSink<(ApplicationSettings, RawStringEnumMirrored)> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_String(raw.setupAndSerialize(
-        codec: CstCodec(
-            decodeSuccessData:
-                cst_decode_record_application_settings_raw_string_enum_mirrored,
-            decodeErrorData: null)));
+    return cst_encode_String(raw.setupAndSerialize(codec: const CstCodec()));
   }
 
   @protected
   ffi.Pointer<wire_cst_list_prim_u_8_strict> cst_encode_StreamSink_u_32_None(
       RustStreamSink<int> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_String(raw.setupAndSerialize(
-        codec: CstCodec(
-            decodeSuccessData: cst_decode_u_32, decodeErrorData: null)));
+    return cst_encode_String(raw.setupAndSerialize(codec: const CstCodec()));
   }
 
   @protected
   ffi.Pointer<wire_cst_list_prim_u_8_strict>
       cst_encode_StreamSink_u_8_array_2_None(RustStreamSink<U8Array2> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_String(raw.setupAndSerialize(
-        codec: CstCodec(
-            decodeSuccessData: cst_decode_u_8_array_2, decodeErrorData: null)));
+    return cst_encode_String(raw.setupAndSerialize(codec: const CstCodec()));
   }
 
   @protected

@@ -30,16 +30,12 @@ class SimpleOpaqueExternalStructWithMethod extends RustOpaque {
 
   factory SimpleOpaqueExternalStructWithMethod(
           {required String a, dynamic hint}) =>
-      RustLib.instance.api.simpleOpaqueExternalStructWithMethodNew(
-        a: a,
-        hint: hint,
-      );
+      RustLib.instance.api
+          .simpleOpaqueExternalStructWithMethodNew(a: a, hint: hint);
 
   Future<String> simpleExternalMethod({dynamic hint}) => RustLib.instance.api
-          .simpleOpaqueExternalStructWithMethodSimpleExternalMethod(
-        that: this,
-        hint: hint,
-      );
+      .simpleOpaqueExternalStructWithMethodSimpleExternalMethod(
+          that: this, hint: hint);
 }
 
 class SimpleTranslatableExternalStructWithMethod {
@@ -50,10 +46,8 @@ class SimpleTranslatableExternalStructWithMethod {
   });
 
   Future<String> simpleExternalMethod({dynamic hint}) => RustLib.instance.api
-          .simpleTranslatableExternalStructWithMethodSimpleExternalMethod(
-        that: this,
-        hint: hint,
-      );
+      .simpleTranslatableExternalStructWithMethodSimpleExternalMethod(
+          that: this, hint: hint);
 
   @override
   int get hashCode => a.hashCode;

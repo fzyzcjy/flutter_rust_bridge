@@ -26,10 +26,8 @@ class OpaqueStructWithDartCodeTwinNormal extends RustOpaque {
   );
 
   Future<int> normalMethodTwinNormal({dynamic hint}) => RustLib.instance.api
-          .opaqueStructWithDartCodeTwinNormalNormalMethodTwinNormal(
-        that: this,
-        hint: hint,
-      );
+      .opaqueStructWithDartCodeTwinNormalNormalMethodTwinNormal(
+          that: this, hint: hint);
 
   static int get dartCodeGetter => 123;
 }
@@ -42,10 +40,8 @@ class TranslatableStructWithDartCodeTwinNormal {
   });
 
   Future<int> normalMethodTwinNormal({dynamic hint}) => RustLib.instance.api
-          .translatableStructWithDartCodeTwinNormalNormalMethodTwinNormal(
-        that: this,
-        hint: hint,
-      );
+      .translatableStructWithDartCodeTwinNormalNormalMethodTwinNormal(
+          that: this, hint: hint);
 
   @override
   bool operator ==(Object other) =>

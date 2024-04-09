@@ -206,36 +206,28 @@ class CustomStructTwinNormal {
 
   static Future<CustomStructTwinNormal> newTwinNormal(
           {required String message, dynamic hint}) =>
-      RustLib.instance.api.customStructTwinNormalNewTwinNormal(
-        message: message,
-        hint: hint,
-      );
+      RustLib.instance.api
+          .customStructTwinNormalNewTwinNormal(message: message, hint: hint);
 
   Future<void> nonstaticReturnCustomStructErrorTwinNormal({dynamic hint}) =>
       RustLib.instance.api
           .customStructTwinNormalNonstaticReturnCustomStructErrorTwinNormal(
-        that: this,
-        hint: hint,
-      );
+              that: this, hint: hint);
 
   Future<int> nonstaticReturnCustomStructOkTwinNormal({dynamic hint}) =>
       RustLib.instance.api
           .customStructTwinNormalNonstaticReturnCustomStructOkTwinNormal(
-        that: this,
-        hint: hint,
-      );
+              that: this, hint: hint);
 
   static Future<void> staticReturnCustomStructErrorTwinNormal({dynamic hint}) =>
       RustLib.instance.api
           .customStructTwinNormalStaticReturnCustomStructErrorTwinNormal(
-        hint: hint,
-      );
+              hint: hint);
 
   static Future<int> staticReturnCustomStructOkTwinNormal({dynamic hint}) =>
       RustLib.instance.api
           .customStructTwinNormalStaticReturnCustomStructOkTwinNormal(
-        hint: hint,
-      );
+              hint: hint);
 
   @override
   int get hashCode => message.hashCode;
@@ -257,36 +249,26 @@ class SomeStructTwinNormal {
 
   static Future<SomeStructTwinNormal> newTwinNormal(
           {required int value, dynamic hint}) =>
-      RustLib.instance.api.someStructTwinNormalNewTwinNormal(
-        value: value,
-        hint: hint,
-      );
+      RustLib.instance.api
+          .someStructTwinNormalNewTwinNormal(value: value, hint: hint);
 
   Future<int> nonStaticReturnErrCustomErrorTwinNormal({dynamic hint}) =>
       RustLib.instance.api
           .someStructTwinNormalNonStaticReturnErrCustomErrorTwinNormal(
-        that: this,
-        hint: hint,
-      );
+              that: this, hint: hint);
 
   Future<int> nonStaticReturnOkCustomErrorTwinNormal({dynamic hint}) =>
       RustLib.instance.api
           .someStructTwinNormalNonStaticReturnOkCustomErrorTwinNormal(
-        that: this,
-        hint: hint,
-      );
+              that: this, hint: hint);
 
   static Future<int> staticReturnErrCustomErrorTwinNormal({dynamic hint}) =>
       RustLib.instance.api
-          .someStructTwinNormalStaticReturnErrCustomErrorTwinNormal(
-        hint: hint,
-      );
+          .someStructTwinNormalStaticReturnErrCustomErrorTwinNormal(hint: hint);
 
   static Future<int> staticReturnOkCustomErrorTwinNormal({dynamic hint}) =>
       RustLib.instance.api
-          .someStructTwinNormalStaticReturnOkCustomErrorTwinNormal(
-        hint: hint,
-      );
+          .someStructTwinNormalStaticReturnOkCustomErrorTwinNormal(hint: hint);
 
   @override
   int get hashCode => value.hashCode;

@@ -29,13 +29,8 @@ class StructInMiscNoTwinExampleB extends RustOpaque {
           {dynamic hint}) =>
       RustLib.instance.api
           .structInMiscNoTwinExampleBGetStructInMiscNoTwinExampleA(
-        that: this,
-        hint: hint,
-      );
+              that: this, hint: hint);
 
-  Future<void> sampleFunctionB({dynamic hint}) =>
-      RustLib.instance.api.structInMiscNoTwinExampleBSampleFunctionB(
-        that: this,
-        hint: hint,
-      );
+  Future<void> sampleFunctionB({dynamic hint}) => RustLib.instance.api
+      .structInMiscNoTwinExampleBSampleFunctionB(that: this, hint: hint);
 }

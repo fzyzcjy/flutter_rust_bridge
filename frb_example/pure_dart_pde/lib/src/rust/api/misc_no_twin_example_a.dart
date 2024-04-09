@@ -24,11 +24,8 @@ class StructInMiscNoTwinExampleA extends RustOpaque {
         .rust_arc_decrement_strong_count_StructInMiscNoTwinExampleAPtr,
   );
 
-  Future<void> sampleFunctionA({dynamic hint}) =>
-      RustLib.instance.api.structInMiscNoTwinExampleASampleFunctionA(
-        that: this,
-        hint: hint,
-      );
+  Future<void> sampleFunctionA({dynamic hint}) => RustLib.instance.api
+      .structInMiscNoTwinExampleASampleFunctionA(that: this, hint: hint);
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithImplBlockInMultiFile>>
@@ -49,15 +46,9 @@ class StructWithImplBlockInMultiFile extends RustOpaque {
         .rust_arc_decrement_strong_count_StructWithImplBlockInMultiFilePtr,
   );
 
-  Future<void> methodInA({dynamic hint}) =>
-      RustLib.instance.api.structWithImplBlockInMultiFileMethodInA(
-        that: this,
-        hint: hint,
-      );
+  Future<void> methodInA({dynamic hint}) => RustLib.instance.api
+      .structWithImplBlockInMultiFileMethodInA(that: this, hint: hint);
 
-  Future<void> methodInB({dynamic hint}) =>
-      RustLib.instance.api.structWithImplBlockInMultiFileMethodInB(
-        that: this,
-        hint: hint,
-      );
+  Future<void> methodInB({dynamic hint}) => RustLib.instance.api
+      .structWithImplBlockInMultiFileMethodInB(that: this, hint: hint);
 }

@@ -24,31 +24,22 @@ class DroppableTwinRustAsyncSse extends RustOpaque {
         .rust_arc_decrement_strong_count_DroppableTwinRustAsyncSsePtr,
   );
 
-  Future<void> createStreamTwinRustAsyncSse(
-          {required RustStreamSink<int> sink, dynamic hint}) =>
+  Future<Stream<int>> createStreamTwinRustAsyncSse({dynamic hint}) =>
       RustLib.instance.api
           .droppableTwinRustAsyncSseCreateStreamTwinRustAsyncSse(
-        that: this,
-        sink: sink,
-        hint: hint,
-      );
+              that: this, hint: hint);
 
   static Future<int> getDropCountTwinRustAsyncSse({dynamic hint}) =>
       RustLib.instance.api
-          .droppableTwinRustAsyncSseGetDropCountTwinRustAsyncSse(
-        hint: hint,
-      );
+          .droppableTwinRustAsyncSseGetDropCountTwinRustAsyncSse(hint: hint);
 
   static Future<DroppableTwinRustAsyncSse> newTwinRustAsyncSse(
           {dynamic hint}) =>
-      RustLib.instance.api.droppableTwinRustAsyncSseNewTwinRustAsyncSse(
-        hint: hint,
-      );
+      RustLib.instance.api
+          .droppableTwinRustAsyncSseNewTwinRustAsyncSse(hint: hint);
 
   Future<void> simpleMethodTwinRustAsyncSse({dynamic hint}) =>
       RustLib.instance.api
           .droppableTwinRustAsyncSseSimpleMethodTwinRustAsyncSse(
-        that: this,
-        hint: hint,
-      );
+              that: this, hint: hint);
 }
