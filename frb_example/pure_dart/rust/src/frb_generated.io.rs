@@ -2703,58 +2703,72 @@ impl CstDecode<std::collections::HashSet<i32>> for *mut wire_cst_list_prim_i_32_
         vec.into_iter().collect()
     }
 }
-impl CstDecode<StreamSink<NonCloneSimpleTwinMoi, flutter_rust_bridge::DcoCodec>>
-    for *mut wire_cst_list_prim_u_8_strict
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinMoi, flutter_rust_bridge::DcoCodec> {
-        let raw: String = self.cst_decode();
-        StreamSink::deserialize(raw)
-    }
-}
-impl CstDecode<StreamSink<NonCloneSimpleTwinNormal, flutter_rust_bridge::DcoCodec>>
-    for *mut wire_cst_list_prim_u_8_strict
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinNormal, flutter_rust_bridge::DcoCodec> {
-        let raw: String = self.cst_decode();
-        StreamSink::deserialize(raw)
-    }
-}
-impl CstDecode<StreamSink<NonCloneSimpleTwinRustAsyncMoi, flutter_rust_bridge::DcoCodec>>
+impl CstDecode<StreamSink<NonCloneSimpleTwinMoi, flutter_rust_bridge::for_generated::DcoCodec>>
     for *mut wire_cst_list_prim_u_8_strict
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
-    ) -> StreamSink<NonCloneSimpleTwinRustAsyncMoi, flutter_rust_bridge::DcoCodec> {
+    ) -> StreamSink<NonCloneSimpleTwinMoi, flutter_rust_bridge::for_generated::DcoCodec> {
         let raw: String = self.cst_decode();
         StreamSink::deserialize(raw)
     }
 }
-impl CstDecode<StreamSink<NonCloneSimpleTwinRustAsync, flutter_rust_bridge::DcoCodec>>
+impl CstDecode<StreamSink<NonCloneSimpleTwinNormal, flutter_rust_bridge::for_generated::DcoCodec>>
     for *mut wire_cst_list_prim_u_8_strict
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinRustAsync, flutter_rust_bridge::DcoCodec> {
+    fn cst_decode(
+        self,
+    ) -> StreamSink<NonCloneSimpleTwinNormal, flutter_rust_bridge::for_generated::DcoCodec> {
         let raw: String = self.cst_decode();
         StreamSink::deserialize(raw)
     }
 }
-impl CstDecode<StreamSink<NonCloneSimpleTwinSyncMoi, flutter_rust_bridge::DcoCodec>>
-    for *mut wire_cst_list_prim_u_8_strict
+impl
+    CstDecode<
+        StreamSink<NonCloneSimpleTwinRustAsyncMoi, flutter_rust_bridge::for_generated::DcoCodec>,
+    > for *mut wire_cst_list_prim_u_8_strict
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinSyncMoi, flutter_rust_bridge::DcoCodec> {
+    fn cst_decode(
+        self,
+    ) -> StreamSink<NonCloneSimpleTwinRustAsyncMoi, flutter_rust_bridge::for_generated::DcoCodec>
+    {
         let raw: String = self.cst_decode();
         StreamSink::deserialize(raw)
     }
 }
-impl CstDecode<StreamSink<NonCloneSimpleTwinSync, flutter_rust_bridge::DcoCodec>>
+impl
+    CstDecode<StreamSink<NonCloneSimpleTwinRustAsync, flutter_rust_bridge::for_generated::DcoCodec>>
     for *mut wire_cst_list_prim_u_8_strict
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<NonCloneSimpleTwinSync, flutter_rust_bridge::DcoCodec> {
+    fn cst_decode(
+        self,
+    ) -> StreamSink<NonCloneSimpleTwinRustAsync, flutter_rust_bridge::for_generated::DcoCodec> {
+        let raw: String = self.cst_decode();
+        StreamSink::deserialize(raw)
+    }
+}
+impl CstDecode<StreamSink<NonCloneSimpleTwinSyncMoi, flutter_rust_bridge::for_generated::DcoCodec>>
+    for *mut wire_cst_list_prim_u_8_strict
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<NonCloneSimpleTwinSyncMoi, flutter_rust_bridge::for_generated::DcoCodec> {
+        let raw: String = self.cst_decode();
+        StreamSink::deserialize(raw)
+    }
+}
+impl CstDecode<StreamSink<NonCloneSimpleTwinSync, flutter_rust_bridge::for_generated::DcoCodec>>
+    for *mut wire_cst_list_prim_u_8_strict
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<NonCloneSimpleTwinSync, flutter_rust_bridge::for_generated::DcoCodec> {
         let raw: String = self.cst_decode();
         StreamSink::deserialize(raw)
     }
@@ -2766,7 +2780,7 @@ impl
                 u8,
                 crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
             >,
-            flutter_rust_bridge::DcoCodec,
+            flutter_rust_bridge::for_generated::DcoCodec,
         >,
     > for *mut wire_cst_list_prim_u_8_strict
 {
@@ -2778,7 +2792,7 @@ impl
             u8,
             crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
         >,
-        flutter_rust_bridge::DcoCodec,
+        flutter_rust_bridge::for_generated::DcoCodec,
     > {
         let raw: String = self.cst_decode();
         StreamSink::deserialize(raw)
@@ -2790,7 +2804,7 @@ impl
             std::collections::HashSet<
                 crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
             >,
-            flutter_rust_bridge::DcoCodec,
+            flutter_rust_bridge::for_generated::DcoCodec,
         >,
     > for *mut wire_cst_list_prim_u_8_strict
 {
@@ -2799,17 +2813,17 @@ impl
         self,
     ) -> StreamSink<
         std::collections::HashSet<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
-        flutter_rust_bridge::DcoCodec,
+        flutter_rust_bridge::for_generated::DcoCodec,
     > {
         let raw: String = self.cst_decode();
         StreamSink::deserialize(raw)
     }
 }
-impl CstDecode<StreamSink<String, flutter_rust_bridge::DcoCodec>>
+impl CstDecode<StreamSink<String, flutter_rust_bridge::for_generated::DcoCodec>>
     for *mut wire_cst_list_prim_u_8_strict
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<String, flutter_rust_bridge::DcoCodec> {
+    fn cst_decode(self) -> StreamSink<String, flutter_rust_bridge::for_generated::DcoCodec> {
         let raw: String = self.cst_decode();
         StreamSink::deserialize(raw)
     }
@@ -2818,7 +2832,7 @@ impl
     CstDecode<
         StreamSink<
             crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
-            flutter_rust_bridge::DcoCodec,
+            flutter_rust_bridge::for_generated::DcoCodec,
         >,
     > for *mut wire_cst_list_prim_u_8_strict
 {
@@ -2827,7 +2841,7 @@ impl
         self,
     ) -> StreamSink<
         crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
-        flutter_rust_bridge::DcoCodec,
+        flutter_rust_bridge::for_generated::DcoCodec,
     > {
         let raw: String = self.cst_decode();
         StreamSink::deserialize(raw)
@@ -2837,7 +2851,7 @@ impl
     CstDecode<
         StreamSink<
             [crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode; 2],
-            flutter_rust_bridge::DcoCodec,
+            flutter_rust_bridge::for_generated::DcoCodec,
         >,
     > for *mut wire_cst_list_prim_u_8_strict
 {
@@ -2846,7 +2860,7 @@ impl
         self,
     ) -> StreamSink<
         [crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode; 2],
-        flutter_rust_bridge::DcoCodec,
+        flutter_rust_bridge::for_generated::DcoCodec,
     > {
         let raw: String = self.cst_decode();
         StreamSink::deserialize(raw)
@@ -2856,7 +2870,7 @@ impl
     CstDecode<
         StreamSink<
             crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings,
-            flutter_rust_bridge::DcoCodec,
+            flutter_rust_bridge::for_generated::DcoCodec,
         >,
     > for *mut wire_cst_list_prim_u_8_strict
 {
@@ -2865,7 +2879,7 @@ impl
         self,
     ) -> StreamSink<
         crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings,
-        flutter_rust_bridge::DcoCodec,
+        flutter_rust_bridge::for_generated::DcoCodec,
     > {
         let raw: String = self.cst_decode();
         StreamSink::deserialize(raw)
@@ -2873,14 +2887,19 @@ impl
 }
 impl
     CstDecode<
-        StreamSink<crate::api::event_listener::EventTwinNormal, flutter_rust_bridge::DcoCodec>,
+        StreamSink<
+            crate::api::event_listener::EventTwinNormal,
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
     > for *mut wire_cst_list_prim_u_8_strict
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
-    ) -> StreamSink<crate::api::event_listener::EventTwinNormal, flutter_rust_bridge::DcoCodec>
-    {
+    ) -> StreamSink<
+        crate::api::event_listener::EventTwinNormal,
+        flutter_rust_bridge::for_generated::DcoCodec,
+    > {
         let raw: String = self.cst_decode();
         StreamSink::deserialize(raw)
     }
@@ -2889,7 +2908,7 @@ impl
     CstDecode<
         StreamSink<
             crate::api::pseudo_manual::event_listener_twin_rust_async::EventTwinRustAsync,
-            flutter_rust_bridge::DcoCodec,
+            flutter_rust_bridge::for_generated::DcoCodec,
         >,
     > for *mut wire_cst_list_prim_u_8_strict
 {
@@ -2898,17 +2917,17 @@ impl
         self,
     ) -> StreamSink<
         crate::api::pseudo_manual::event_listener_twin_rust_async::EventTwinRustAsync,
-        flutter_rust_bridge::DcoCodec,
+        flutter_rust_bridge::for_generated::DcoCodec,
     > {
         let raw: String = self.cst_decode();
         StreamSink::deserialize(raw)
     }
 }
-impl CstDecode<StreamSink<i32, flutter_rust_bridge::DcoCodec>>
+impl CstDecode<StreamSink<i32, flutter_rust_bridge::for_generated::DcoCodec>>
     for *mut wire_cst_list_prim_u_8_strict
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<i32, flutter_rust_bridge::DcoCodec> {
+    fn cst_decode(self) -> StreamSink<i32, flutter_rust_bridge::for_generated::DcoCodec> {
         let raw: String = self.cst_decode();
         StreamSink::deserialize(raw)
     }
@@ -2917,7 +2936,7 @@ impl
     CstDecode<
         StreamSink<
             Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
-            flutter_rust_bridge::DcoCodec,
+            flutter_rust_bridge::for_generated::DcoCodec,
         >,
     > for *mut wire_cst_list_prim_u_8_strict
 {
@@ -2926,7 +2945,7 @@ impl
         self,
     ) -> StreamSink<
         Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
-        flutter_rust_bridge::DcoCodec,
+        flutter_rust_bridge::for_generated::DcoCodec,
     > {
         let raw: String = self.cst_decode();
         StreamSink::deserialize(raw)
@@ -2936,7 +2955,7 @@ impl
     CstDecode<
         StreamSink<
             Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings>,
-            flutter_rust_bridge::DcoCodec,
+            flutter_rust_bridge::for_generated::DcoCodec,
         >,
     > for *mut wire_cst_list_prim_u_8_strict
 {
@@ -2945,19 +2964,25 @@ impl
         self,
     ) -> StreamSink<
         Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings>,
-        flutter_rust_bridge::DcoCodec,
+        flutter_rust_bridge::for_generated::DcoCodec,
     > {
         let raw: String = self.cst_decode();
         StreamSink::deserialize(raw)
     }
 }
-impl CstDecode<StreamSink<crate::api::method::Log2TwinNormal, flutter_rust_bridge::DcoCodec>>
-    for *mut wire_cst_list_prim_u_8_strict
+impl
+    CstDecode<
+        StreamSink<
+            crate::api::method::Log2TwinNormal,
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
+    > for *mut wire_cst_list_prim_u_8_strict
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
-    ) -> StreamSink<crate::api::method::Log2TwinNormal, flutter_rust_bridge::DcoCodec> {
+    ) -> StreamSink<crate::api::method::Log2TwinNormal, flutter_rust_bridge::for_generated::DcoCodec>
+    {
         let raw: String = self.cst_decode();
         StreamSink::deserialize(raw)
     }
@@ -2966,7 +2991,7 @@ impl
     CstDecode<
         StreamSink<
             crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync,
-            flutter_rust_bridge::DcoCodec,
+            flutter_rust_bridge::for_generated::DcoCodec,
         >,
     > for *mut wire_cst_list_prim_u_8_strict
 {
@@ -2975,7 +3000,7 @@ impl
         self,
     ) -> StreamSink<
         crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync,
-        flutter_rust_bridge::DcoCodec,
+        flutter_rust_bridge::for_generated::DcoCodec,
     > {
         let raw: String = self.cst_decode();
         StreamSink::deserialize(raw)
@@ -2985,7 +3010,7 @@ impl
     CstDecode<
         StreamSink<
             crate::api::pseudo_manual::method_twin_sync::Log2TwinSync,
-            flutter_rust_bridge::DcoCodec,
+            flutter_rust_bridge::for_generated::DcoCodec,
         >,
     > for *mut wire_cst_list_prim_u_8_strict
 {
@@ -2994,19 +3019,22 @@ impl
         self,
     ) -> StreamSink<
         crate::api::pseudo_manual::method_twin_sync::Log2TwinSync,
-        flutter_rust_bridge::DcoCodec,
+        flutter_rust_bridge::for_generated::DcoCodec,
     > {
         let raw: String = self.cst_decode();
         StreamSink::deserialize(raw)
     }
 }
-impl CstDecode<StreamSink<crate::api::stream::LogTwinNormal, flutter_rust_bridge::DcoCodec>>
-    for *mut wire_cst_list_prim_u_8_strict
+impl
+    CstDecode<
+        StreamSink<crate::api::stream::LogTwinNormal, flutter_rust_bridge::for_generated::DcoCodec>,
+    > for *mut wire_cst_list_prim_u_8_strict
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
-    ) -> StreamSink<crate::api::stream::LogTwinNormal, flutter_rust_bridge::DcoCodec> {
+    ) -> StreamSink<crate::api::stream::LogTwinNormal, flutter_rust_bridge::for_generated::DcoCodec>
+    {
         let raw: String = self.cst_decode();
         StreamSink::deserialize(raw)
     }
@@ -3015,7 +3043,7 @@ impl
     CstDecode<
         StreamSink<
             crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync,
-            flutter_rust_bridge::DcoCodec,
+            flutter_rust_bridge::for_generated::DcoCodec,
         >,
     > for *mut wire_cst_list_prim_u_8_strict
 {
@@ -3024,20 +3052,27 @@ impl
         self,
     ) -> StreamSink<
         crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync,
-        flutter_rust_bridge::DcoCodec,
+        flutter_rust_bridge::for_generated::DcoCodec,
     > {
         let raw: String = self.cst_decode();
         StreamSink::deserialize(raw)
     }
 }
 impl
-    CstDecode<StreamSink<crate::api::mirror::MirrorStructTwinNormal, flutter_rust_bridge::DcoCodec>>
-    for *mut wire_cst_list_prim_u_8_strict
+    CstDecode<
+        StreamSink<
+            crate::api::mirror::MirrorStructTwinNormal,
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
+    > for *mut wire_cst_list_prim_u_8_strict
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
-    ) -> StreamSink<crate::api::mirror::MirrorStructTwinNormal, flutter_rust_bridge::DcoCodec> {
+    ) -> StreamSink<
+        crate::api::mirror::MirrorStructTwinNormal,
+        flutter_rust_bridge::for_generated::DcoCodec,
+    > {
         let raw: String = self.cst_decode();
         StreamSink::deserialize(raw)
     }
@@ -3046,7 +3081,7 @@ impl
     CstDecode<
         StreamSink<
             crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync,
-            flutter_rust_bridge::DcoCodec,
+            flutter_rust_bridge::for_generated::DcoCodec,
         >,
     > for *mut wire_cst_list_prim_u_8_strict
 {
@@ -3055,7 +3090,7 @@ impl
         self,
     ) -> StreamSink<
         crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync,
-        flutter_rust_bridge::DcoCodec,
+        flutter_rust_bridge::for_generated::DcoCodec,
     > {
         let raw: String = self.cst_decode();
         StreamSink::deserialize(raw)
@@ -3065,7 +3100,7 @@ impl
     CstDecode<
         StreamSink<
             crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync,
-            flutter_rust_bridge::DcoCodec,
+            flutter_rust_bridge::for_generated::DcoCodec,
         >,
     > for *mut wire_cst_list_prim_u_8_strict
 {
@@ -3074,7 +3109,7 @@ impl
         self,
     ) -> StreamSink<
         crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync,
-        flutter_rust_bridge::DcoCodec,
+        flutter_rust_bridge::for_generated::DcoCodec,
     > {
         let raw: String = self.cst_decode();
         StreamSink::deserialize(raw)
@@ -3082,14 +3117,19 @@ impl
 }
 impl
     CstDecode<
-        StreamSink<crate::api::stream::MyStreamEntryTwinNormal, flutter_rust_bridge::DcoCodec>,
+        StreamSink<
+            crate::api::stream::MyStreamEntryTwinNormal,
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
     > for *mut wire_cst_list_prim_u_8_strict
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
-    ) -> StreamSink<crate::api::stream::MyStreamEntryTwinNormal, flutter_rust_bridge::DcoCodec>
-    {
+    ) -> StreamSink<
+        crate::api::stream::MyStreamEntryTwinNormal,
+        flutter_rust_bridge::for_generated::DcoCodec,
+    > {
         let raw: String = self.cst_decode();
         StreamSink::deserialize(raw)
     }
@@ -3098,7 +3138,7 @@ impl
     CstDecode<
         StreamSink<
             crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync,
-            flutter_rust_bridge::DcoCodec,
+            flutter_rust_bridge::for_generated::DcoCodec,
         >,
     > for *mut wire_cst_list_prim_u_8_strict
 {
@@ -3107,7 +3147,7 @@ impl
         self,
     ) -> StreamSink<
         crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync,
-        flutter_rust_bridge::DcoCodec,
+        flutter_rust_bridge::for_generated::DcoCodec,
     > {
         let raw: String = self.cst_decode();
         StreamSink::deserialize(raw)
@@ -3117,7 +3157,7 @@ impl
     CstDecode<
         StreamSink<
             Option<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
-            flutter_rust_bridge::DcoCodec,
+            flutter_rust_bridge::for_generated::DcoCodec,
         >,
     > for *mut wire_cst_list_prim_u_8_strict
 {
@@ -3126,7 +3166,7 @@ impl
         self,
     ) -> StreamSink<
         Option<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
-        flutter_rust_bridge::DcoCodec,
+        flutter_rust_bridge::for_generated::DcoCodec,
     > {
         let raw: String = self.cst_decode();
         StreamSink::deserialize(raw)
@@ -3139,7 +3179,7 @@ impl
                 crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings,
                 crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored,
             ),
-            flutter_rust_bridge::DcoCodec,
+            flutter_rust_bridge::for_generated::DcoCodec,
         >,
     > for *mut wire_cst_list_prim_u_8_strict
 {
@@ -3151,26 +3191,26 @@ impl
             crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings,
             crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored,
         ),
-        flutter_rust_bridge::DcoCodec,
+        flutter_rust_bridge::for_generated::DcoCodec,
     > {
         let raw: String = self.cst_decode();
         StreamSink::deserialize(raw)
     }
 }
-impl CstDecode<StreamSink<u32, flutter_rust_bridge::DcoCodec>>
+impl CstDecode<StreamSink<u32, flutter_rust_bridge::for_generated::DcoCodec>>
     for *mut wire_cst_list_prim_u_8_strict
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<u32, flutter_rust_bridge::DcoCodec> {
+    fn cst_decode(self) -> StreamSink<u32, flutter_rust_bridge::for_generated::DcoCodec> {
         let raw: String = self.cst_decode();
         StreamSink::deserialize(raw)
     }
 }
-impl CstDecode<StreamSink<[u8; 2], flutter_rust_bridge::DcoCodec>>
+impl CstDecode<StreamSink<[u8; 2], flutter_rust_bridge::for_generated::DcoCodec>>
     for *mut wire_cst_list_prim_u_8_strict
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> StreamSink<[u8; 2], flutter_rust_bridge::DcoCodec> {
+    fn cst_decode(self) -> StreamSink<[u8; 2], flutter_rust_bridge::for_generated::DcoCodec> {
         let raw: String = self.cst_decode();
         StreamSink::deserialize(raw)
     }
@@ -8315,11 +8355,11 @@ impl CstDecode<Vec<RustOpaqueMoi<HideDataTwinSyncMoi>>>
         vec.into_iter().map(CstDecode::cst_decode).collect()
     }
 }
-impl CstDecode<Vec<StreamSink<i32, flutter_rust_bridge::DcoCodec>>>
+impl CstDecode<Vec<StreamSink<i32, flutter_rust_bridge::for_generated::DcoCodec>>>
     for *mut wire_cst_list_StreamSink_i_32_Dco
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> Vec<StreamSink<i32, flutter_rust_bridge::DcoCodec>> {
+    fn cst_decode(self) -> Vec<StreamSink<i32, flutter_rust_bridge::for_generated::DcoCodec>> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
             flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
