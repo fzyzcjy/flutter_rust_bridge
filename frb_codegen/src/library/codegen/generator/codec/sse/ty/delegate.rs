@@ -227,7 +227,7 @@ pub(crate) fn generate_stream_sink_setup_and_serialize(
     let inner_ty = ir.inner.safe_ident();
 
     let codec_code = match codec {
-        CodecMode::Cst => "const CstCodec()",
+        CodecMode::Cst => "const CstCodec()".to_owned(),
         _ => format!("{codec}Codec(decodeSuccessData: {codec_lower}_decode_{inner_ty}, decodeErrorData: null)"),
     };
 

@@ -59,7 +59,7 @@ fn get_methods_of_enum_or_struct<'a>(
 }
 
 fn generate_api_method(func: &IrFunc, context: ApiDartGeneratorContext) -> String {
-    let api_dart_func = api_dart::spec_generator::function::generate(func, context)?;
+    let api_dart_func = api_dart::spec_generator::function::generate(func, context).unwrap();
 
     let method_info =
         if_then_some!(let IrFuncOwnerInfo::Method(info) = &func.owner , info).unwrap();
@@ -68,7 +68,7 @@ fn generate_api_method(func: &IrFunc, context: ApiDartGeneratorContext) -> Strin
 
     let skip_names = compute_skip_names(func, method_info);
     let params = (api_dart_func.func_params.iter())
-        .filter(|param| !skip_names.contains(param.name_str))
+        .filter(|param| !skip_names.contains(&&param.name_str[..]))
         .collect_vec();
 
     let comments = generate_comments(func, default_constructor_mode);
@@ -80,12 +80,12 @@ fn generate_api_method(func: &IrFunc, context: ApiDartGeneratorContext) -> Strin
         default_constructor_mode,
         &api_dart_func,
     );
-    let implementation = generate_implementation(func, context, is_static_method);
+    let implementation = generate_implementation(func, context, method_info);
 
     format!("{comments}{signature}=>{implementation};\n\n")
 }
 
-fn compute_skip_names(func: &IrFunc, method_info: &IrFuncOwnerInfoMethod) -> Vec<&str> {
+fn compute_skip_names(func: &IrFunc, method_info: &IrFuncOwnerInfoMethod) -> Vec<&'static str> {
     let mut ans = vec![];
     if method_info.mode != IrFuncOwnerInfoMethodMode::Static {
         ans.push("that");
@@ -143,15 +143,14 @@ fn generate_signature(
 fn generate_implementation(
     func: &IrFunc,
     context: ApiDartGeneratorContext,
-    is_static_method: bool,
-    arg_names: String,
+    method_info: &IrFuncOwnerInfoMethod,
 ) -> String {
     let dart_entrypoint_class_name = &context.config.dart_entrypoint_class_name;
     let dart_api_instance = format!("{dart_entrypoint_class_name}.instance.api");
 
     let func_name = func.name.name.clone().to_case(Case::Camel);
 
-    if is_static_method {
+    if method_info.mode == IrFuncOwnerInfoMethodMode::Static {
         format!("{dart_api_instance}.{func_name}({arg_names})")
     } else {
         let extra_arg_name = func.inputs[0].name.dart_style();
