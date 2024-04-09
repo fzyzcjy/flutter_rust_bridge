@@ -94,6 +94,479 @@ impl CstDecode<std::collections::HashSet<i32>> for Box<[i32]> {
         vec.into_iter().collect()
     }
 }
+impl CstDecode<StreamSink<NonCloneSimpleTwinMoi, flutter_rust_bridge::for_generated::DcoCodec>>
+    for String
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<NonCloneSimpleTwinMoi, flutter_rust_bridge::for_generated::DcoCodec> {
+        StreamSink::deserialize(self)
+    }
+}
+impl CstDecode<StreamSink<NonCloneSimpleTwinNormal, flutter_rust_bridge::for_generated::DcoCodec>>
+    for String
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<NonCloneSimpleTwinNormal, flutter_rust_bridge::for_generated::DcoCodec> {
+        StreamSink::deserialize(self)
+    }
+}
+impl
+    CstDecode<
+        StreamSink<NonCloneSimpleTwinRustAsyncMoi, flutter_rust_bridge::for_generated::DcoCodec>,
+    > for String
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<NonCloneSimpleTwinRustAsyncMoi, flutter_rust_bridge::for_generated::DcoCodec>
+    {
+        StreamSink::deserialize(self)
+    }
+}
+impl
+    CstDecode<StreamSink<NonCloneSimpleTwinRustAsync, flutter_rust_bridge::for_generated::DcoCodec>>
+    for String
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<NonCloneSimpleTwinRustAsync, flutter_rust_bridge::for_generated::DcoCodec> {
+        StreamSink::deserialize(self)
+    }
+}
+impl CstDecode<StreamSink<NonCloneSimpleTwinSyncMoi, flutter_rust_bridge::for_generated::DcoCodec>>
+    for String
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<NonCloneSimpleTwinSyncMoi, flutter_rust_bridge::for_generated::DcoCodec> {
+        StreamSink::deserialize(self)
+    }
+}
+impl CstDecode<StreamSink<NonCloneSimpleTwinSync, flutter_rust_bridge::for_generated::DcoCodec>>
+    for String
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<NonCloneSimpleTwinSync, flutter_rust_bridge::for_generated::DcoCodec> {
+        StreamSink::deserialize(self)
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            std::collections::HashMap<
+                u8,
+                crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+            >,
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
+    > for String
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        std::collections::HashMap<
+            u8,
+            crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+        >,
+        flutter_rust_bridge::for_generated::DcoCodec,
+    > {
+        StreamSink::deserialize(self)
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            std::collections::HashSet<
+                crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+            >,
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
+    > for String
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        std::collections::HashSet<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
+        flutter_rust_bridge::for_generated::DcoCodec,
+    > {
+        StreamSink::deserialize(self)
+    }
+}
+impl CstDecode<StreamSink<String, flutter_rust_bridge::for_generated::DcoCodec>> for String {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> StreamSink<String, flutter_rust_bridge::for_generated::DcoCodec> {
+        StreamSink::deserialize(self)
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
+    > for String
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+        flutter_rust_bridge::for_generated::DcoCodec,
+    > {
+        StreamSink::deserialize(self)
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            [crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode; 2],
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
+    > for String
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        [crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode; 2],
+        flutter_rust_bridge::for_generated::DcoCodec,
+    > {
+        StreamSink::deserialize(self)
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings,
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
+    > for String
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings,
+        flutter_rust_bridge::for_generated::DcoCodec,
+    > {
+        StreamSink::deserialize(self)
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            crate::api::event_listener::EventTwinNormal,
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
+    > for String
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        crate::api::event_listener::EventTwinNormal,
+        flutter_rust_bridge::for_generated::DcoCodec,
+    > {
+        StreamSink::deserialize(self)
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            crate::api::pseudo_manual::event_listener_twin_rust_async::EventTwinRustAsync,
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
+    > for String
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        crate::api::pseudo_manual::event_listener_twin_rust_async::EventTwinRustAsync,
+        flutter_rust_bridge::for_generated::DcoCodec,
+    > {
+        StreamSink::deserialize(self)
+    }
+}
+impl CstDecode<StreamSink<i32, flutter_rust_bridge::for_generated::DcoCodec>> for String {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> StreamSink<i32, flutter_rust_bridge::for_generated::DcoCodec> {
+        StreamSink::deserialize(self)
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
+    > for String
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
+        flutter_rust_bridge::for_generated::DcoCodec,
+    > {
+        StreamSink::deserialize(self)
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings>,
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
+    > for String
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings>,
+        flutter_rust_bridge::for_generated::DcoCodec,
+    > {
+        StreamSink::deserialize(self)
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            crate::api::method::Log2TwinNormal,
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
+    > for String
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<crate::api::method::Log2TwinNormal, flutter_rust_bridge::for_generated::DcoCodec>
+    {
+        StreamSink::deserialize(self)
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync,
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
+    > for String
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync,
+        flutter_rust_bridge::for_generated::DcoCodec,
+    > {
+        StreamSink::deserialize(self)
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            crate::api::pseudo_manual::method_twin_sync::Log2TwinSync,
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
+    > for String
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        crate::api::pseudo_manual::method_twin_sync::Log2TwinSync,
+        flutter_rust_bridge::for_generated::DcoCodec,
+    > {
+        StreamSink::deserialize(self)
+    }
+}
+impl
+    CstDecode<
+        StreamSink<crate::api::stream::LogTwinNormal, flutter_rust_bridge::for_generated::DcoCodec>,
+    > for String
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<crate::api::stream::LogTwinNormal, flutter_rust_bridge::for_generated::DcoCodec>
+    {
+        StreamSink::deserialize(self)
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync,
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
+    > for String
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync,
+        flutter_rust_bridge::for_generated::DcoCodec,
+    > {
+        StreamSink::deserialize(self)
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            crate::api::mirror::MirrorStructTwinNormal,
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
+    > for String
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        crate::api::mirror::MirrorStructTwinNormal,
+        flutter_rust_bridge::for_generated::DcoCodec,
+    > {
+        StreamSink::deserialize(self)
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync,
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
+    > for String
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync,
+        flutter_rust_bridge::for_generated::DcoCodec,
+    > {
+        StreamSink::deserialize(self)
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync,
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
+    > for String
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync,
+        flutter_rust_bridge::for_generated::DcoCodec,
+    > {
+        StreamSink::deserialize(self)
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            crate::api::stream::MyStreamEntryTwinNormal,
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
+    > for String
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        crate::api::stream::MyStreamEntryTwinNormal,
+        flutter_rust_bridge::for_generated::DcoCodec,
+    > {
+        StreamSink::deserialize(self)
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync,
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
+    > for String
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync,
+        flutter_rust_bridge::for_generated::DcoCodec,
+    > {
+        StreamSink::deserialize(self)
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            Option<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
+    > for String
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        Option<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
+        flutter_rust_bridge::for_generated::DcoCodec,
+    > {
+        StreamSink::deserialize(self)
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            (
+                crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings,
+                crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored,
+            ),
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
+    > for String
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        (
+            crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings,
+            crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored,
+        ),
+        flutter_rust_bridge::for_generated::DcoCodec,
+    > {
+        StreamSink::deserialize(self)
+    }
+}
+impl CstDecode<StreamSink<u32, flutter_rust_bridge::for_generated::DcoCodec>> for String {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> StreamSink<u32, flutter_rust_bridge::for_generated::DcoCodec> {
+        StreamSink::deserialize(self)
+    }
+}
+impl CstDecode<StreamSink<[u8; 2], flutter_rust_bridge::for_generated::DcoCodec>> for String {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> StreamSink<[u8; 2], flutter_rust_bridge::for_generated::DcoCodec> {
+        StreamSink::deserialize(self)
+    }
+}
 impl CstDecode<String> for String {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> String {
@@ -2980,6 +3453,18 @@ impl CstDecode<Vec<RustOpaqueMoi<HideDataTwinSyncMoi>>>
             .collect()
     }
 }
+impl CstDecode<Vec<StreamSink<i32, flutter_rust_bridge::for_generated::DcoCodec>>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> Vec<StreamSink<i32, flutter_rust_bridge::for_generated::DcoCodec>> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
 impl CstDecode<Vec<String>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<String> {
@@ -4920,6 +5405,34 @@ impl CstDecode<crate::auxiliary::sample_types::MyStruct>
         }
     }
 }
+impl CstDecode<crate::api::stream::MyStructContainingStreamSinkTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> crate::api::stream::MyStructContainingStreamSinkTwinNormal {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::stream::MyStructContainingStreamSinkTwinNormal {
+            a: self_.get(0).cst_decode(),
+            b: self_.get(1).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::stream_twin_rust_async::MyStructContainingStreamSinkTwinRustAsync> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+            // Codec=Cst (C-struct based), see doc to use other codecs
+            fn cst_decode(self) -> crate::api::pseudo_manual::stream_twin_rust_async::MyStructContainingStreamSinkTwinRustAsync {
+                let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
+                assert_eq!(self_.length(), 2, "Expected 2 elements, got {}", self_.length());
+                crate::api::pseudo_manual::stream_twin_rust_async::MyStructContainingStreamSinkTwinRustAsync{a:  self_.get(0).cst_decode(),b:  self_.get(1).cst_decode()}
+            }
+        }
 impl CstDecode<crate::api::misc_example::MyTreeNodeTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -11076,6 +11589,487 @@ impl CstDecode<std::collections::HashSet<i32>>
         vec.into_iter().collect()
     }
 }
+impl CstDecode<StreamSink<NonCloneSimpleTwinMoi, flutter_rust_bridge::for_generated::DcoCodec>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<NonCloneSimpleTwinMoi, flutter_rust_bridge::for_generated::DcoCodec> {
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
+    }
+}
+impl CstDecode<StreamSink<NonCloneSimpleTwinNormal, flutter_rust_bridge::for_generated::DcoCodec>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<NonCloneSimpleTwinNormal, flutter_rust_bridge::for_generated::DcoCodec> {
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
+    }
+}
+impl
+    CstDecode<
+        StreamSink<NonCloneSimpleTwinRustAsyncMoi, flutter_rust_bridge::for_generated::DcoCodec>,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<NonCloneSimpleTwinRustAsyncMoi, flutter_rust_bridge::for_generated::DcoCodec>
+    {
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
+    }
+}
+impl
+    CstDecode<StreamSink<NonCloneSimpleTwinRustAsync, flutter_rust_bridge::for_generated::DcoCodec>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<NonCloneSimpleTwinRustAsync, flutter_rust_bridge::for_generated::DcoCodec> {
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
+    }
+}
+impl CstDecode<StreamSink<NonCloneSimpleTwinSyncMoi, flutter_rust_bridge::for_generated::DcoCodec>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<NonCloneSimpleTwinSyncMoi, flutter_rust_bridge::for_generated::DcoCodec> {
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
+    }
+}
+impl CstDecode<StreamSink<NonCloneSimpleTwinSync, flutter_rust_bridge::for_generated::DcoCodec>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<NonCloneSimpleTwinSync, flutter_rust_bridge::for_generated::DcoCodec> {
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            std::collections::HashMap<
+                u8,
+                crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+            >,
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        std::collections::HashMap<
+            u8,
+            crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+        >,
+        flutter_rust_bridge::for_generated::DcoCodec,
+    > {
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            std::collections::HashSet<
+                crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+            >,
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        std::collections::HashSet<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
+        flutter_rust_bridge::for_generated::DcoCodec,
+    > {
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
+    }
+}
+impl CstDecode<StreamSink<String, flutter_rust_bridge::for_generated::DcoCodec>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> StreamSink<String, flutter_rust_bridge::for_generated::DcoCodec> {
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+        flutter_rust_bridge::for_generated::DcoCodec,
+    > {
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            [crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode; 2],
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        [crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode; 2],
+        flutter_rust_bridge::for_generated::DcoCodec,
+    > {
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings,
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings,
+        flutter_rust_bridge::for_generated::DcoCodec,
+    > {
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            crate::api::event_listener::EventTwinNormal,
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        crate::api::event_listener::EventTwinNormal,
+        flutter_rust_bridge::for_generated::DcoCodec,
+    > {
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            crate::api::pseudo_manual::event_listener_twin_rust_async::EventTwinRustAsync,
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        crate::api::pseudo_manual::event_listener_twin_rust_async::EventTwinRustAsync,
+        flutter_rust_bridge::for_generated::DcoCodec,
+    > {
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
+    }
+}
+impl CstDecode<StreamSink<i32, flutter_rust_bridge::for_generated::DcoCodec>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> StreamSink<i32, flutter_rust_bridge::for_generated::DcoCodec> {
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
+        flutter_rust_bridge::for_generated::DcoCodec,
+    > {
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings>,
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings>,
+        flutter_rust_bridge::for_generated::DcoCodec,
+    > {
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            crate::api::method::Log2TwinNormal,
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<crate::api::method::Log2TwinNormal, flutter_rust_bridge::for_generated::DcoCodec>
+    {
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync,
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync,
+        flutter_rust_bridge::for_generated::DcoCodec,
+    > {
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            crate::api::pseudo_manual::method_twin_sync::Log2TwinSync,
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        crate::api::pseudo_manual::method_twin_sync::Log2TwinSync,
+        flutter_rust_bridge::for_generated::DcoCodec,
+    > {
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
+    }
+}
+impl
+    CstDecode<
+        StreamSink<crate::api::stream::LogTwinNormal, flutter_rust_bridge::for_generated::DcoCodec>,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<crate::api::stream::LogTwinNormal, flutter_rust_bridge::for_generated::DcoCodec>
+    {
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync,
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync,
+        flutter_rust_bridge::for_generated::DcoCodec,
+    > {
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            crate::api::mirror::MirrorStructTwinNormal,
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        crate::api::mirror::MirrorStructTwinNormal,
+        flutter_rust_bridge::for_generated::DcoCodec,
+    > {
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync,
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync,
+        flutter_rust_bridge::for_generated::DcoCodec,
+    > {
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync,
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync,
+        flutter_rust_bridge::for_generated::DcoCodec,
+    > {
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            crate::api::stream::MyStreamEntryTwinNormal,
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        crate::api::stream::MyStreamEntryTwinNormal,
+        flutter_rust_bridge::for_generated::DcoCodec,
+    > {
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync,
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync,
+        flutter_rust_bridge::for_generated::DcoCodec,
+    > {
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            Option<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        Option<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
+        flutter_rust_bridge::for_generated::DcoCodec,
+    > {
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
+    }
+}
+impl
+    CstDecode<
+        StreamSink<
+            (
+                crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings,
+                crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored,
+            ),
+            flutter_rust_bridge::for_generated::DcoCodec,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> StreamSink<
+        (
+            crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings,
+            crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored,
+        ),
+        flutter_rust_bridge::for_generated::DcoCodec,
+    > {
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
+    }
+}
+impl CstDecode<StreamSink<u32, flutter_rust_bridge::for_generated::DcoCodec>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> StreamSink<u32, flutter_rust_bridge::for_generated::DcoCodec> {
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
+    }
+}
+impl CstDecode<StreamSink<[u8; 2], flutter_rust_bridge::for_generated::DcoCodec>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> StreamSink<[u8; 2], flutter_rust_bridge::for_generated::DcoCodec> {
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
+    }
+}
 impl CstDecode<String> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> String {
@@ -12044,8 +13038,9 @@ pub fn wire_simple_use_async_spawn_blocking(
 pub fn wire_simple_use_async_spawn_local(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: String,
+    sink: String,
 ) {
-    wire_simple_use_async_spawn_local_impl(port_, arg)
+    wire_simple_use_async_spawn_local_impl(port_, arg, sink)
 }
 
 #[wasm_bindgen]
@@ -12507,8 +13502,9 @@ pub fn wire_test_duplicated_module_names(
 pub fn wire_DroppableTwinNormal_create_stream(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    sink: String,
 ) {
-    wire_DroppableTwinNormal_create_stream_impl(port_, that)
+    wire_DroppableTwinNormal_create_stream_impl(port_, that, sink)
 }
 
 #[wasm_bindgen]
@@ -12648,8 +13644,9 @@ pub fn wire_event_twin_normal_as_string_twin_normal(
 #[wasm_bindgen]
 pub fn wire_register_event_listener_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    listener: String,
 ) {
-    wire_register_event_listener_twin_normal_impl(port_)
+    wire_register_event_listener_twin_normal_impl(port_, listener)
 }
 
 #[wasm_bindgen]
@@ -12854,8 +13851,9 @@ pub fn wire_some_struct_twin_normal_static_return_ok_custom_error_twin_normal(
 #[wasm_bindgen]
 pub fn wire_stream_sink_throw_anyhow_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    _sink: String,
 ) {
-    wire_stream_sink_throw_anyhow_twin_normal_impl(port_)
+    wire_stream_sink_throw_anyhow_twin_normal_impl(port_, _sink)
 }
 
 #[wasm_bindgen]
@@ -13023,9 +14021,10 @@ pub fn wire_concatenate_with_twin_normal_concatenate_twin_normal(
 #[wasm_bindgen]
 pub fn wire_concatenate_with_twin_normal_handle_some_static_stream_sink_single_arg_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    sink: String,
 ) {
     wire_concatenate_with_twin_normal_handle_some_static_stream_sink_single_arg_twin_normal_impl(
-        port_,
+        port_, sink,
     )
 }
 
@@ -13034,9 +14033,10 @@ pub fn wire_concatenate_with_twin_normal_handle_some_static_stream_sink_twin_nor
     port_: flutter_rust_bridge::for_generated::MessagePort,
     key: u32,
     max: u32,
+    sink: String,
 ) {
     wire_concatenate_with_twin_normal_handle_some_static_stream_sink_twin_normal_impl(
-        port_, key, max,
+        port_, key, max, sink,
     )
 }
 
@@ -13044,8 +14044,11 @@ pub fn wire_concatenate_with_twin_normal_handle_some_static_stream_sink_twin_nor
 pub fn wire_concatenate_with_twin_normal_handle_some_stream_sink_at_1_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    sink: String,
 ) {
-    wire_concatenate_with_twin_normal_handle_some_stream_sink_at_1_twin_normal_impl(port_, that)
+    wire_concatenate_with_twin_normal_handle_some_stream_sink_at_1_twin_normal_impl(
+        port_, that, sink,
+    )
 }
 
 #[wasm_bindgen]
@@ -13054,9 +14057,10 @@ pub fn wire_concatenate_with_twin_normal_handle_some_stream_sink_twin_normal(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     key: u32,
     max: u32,
+    sink: String,
 ) {
     wire_concatenate_with_twin_normal_handle_some_stream_sink_twin_normal_impl(
-        port_, that, key, max,
+        port_, that, key, max, sink,
     )
 }
 
@@ -13162,15 +14166,17 @@ pub fn wire_sum_with_twin_normal_sum_twin_normal(
 #[wasm_bindgen]
 pub fn wire_app_settings_stream_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    sink: String,
 ) {
-    wire_app_settings_stream_twin_normal_impl(port_)
+    wire_app_settings_stream_twin_normal_impl(port_, sink)
 }
 
 #[wasm_bindgen]
 pub fn wire_app_settings_vec_stream_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    sink: String,
 ) {
-    wire_app_settings_vec_stream_twin_normal_impl(port_)
+    wire_app_settings_vec_stream_twin_normal_impl(port_, sink)
 }
 
 #[wasm_bindgen]
@@ -13217,55 +14223,65 @@ pub fn wire_is_app_embedded_twin_normal(
 #[wasm_bindgen]
 pub fn wire_mirror_array_enum_stream_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    sink: String,
 ) {
-    wire_mirror_array_enum_stream_twin_normal_impl(port_)
+    wire_mirror_array_enum_stream_twin_normal_impl(port_, sink)
 }
 
 #[wasm_bindgen]
-pub fn wire_mirror_enum_stream_twin_normal(port_: flutter_rust_bridge::for_generated::MessagePort) {
-    wire_mirror_enum_stream_twin_normal_impl(port_)
+pub fn wire_mirror_enum_stream_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    sink: String,
+) {
+    wire_mirror_enum_stream_twin_normal_impl(port_, sink)
 }
 
 #[wasm_bindgen]
 pub fn wire_mirror_map_enum_stream_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    sink: String,
 ) {
-    wire_mirror_map_enum_stream_twin_normal_impl(port_)
+    wire_mirror_map_enum_stream_twin_normal_impl(port_, sink)
 }
 
 #[wasm_bindgen]
 pub fn wire_mirror_option_enum_stream_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    sink: String,
 ) {
-    wire_mirror_option_enum_stream_twin_normal_impl(port_)
+    wire_mirror_option_enum_stream_twin_normal_impl(port_, sink)
 }
 
 #[wasm_bindgen]
 pub fn wire_mirror_set_enum_stream_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    sink: String,
 ) {
-    wire_mirror_set_enum_stream_twin_normal_impl(port_)
+    wire_mirror_set_enum_stream_twin_normal_impl(port_, sink)
 }
 
 #[wasm_bindgen]
 pub fn wire_mirror_struct_stream_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    sink: String,
 ) {
-    wire_mirror_struct_stream_twin_normal_impl(port_)
+    wire_mirror_struct_stream_twin_normal_impl(port_, sink)
 }
 
 #[wasm_bindgen]
 pub fn wire_mirror_tuple_stream_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    sink: String,
 ) {
-    wire_mirror_tuple_stream_twin_normal_impl(port_)
+    wire_mirror_tuple_stream_twin_normal_impl(port_, sink)
 }
 
 #[wasm_bindgen]
 pub fn wire_mirror_vec_enum_stream_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    sink: String,
 ) {
-    wire_mirror_vec_enum_stream_twin_normal_impl(port_)
+    wire_mirror_vec_enum_stream_twin_normal_impl(port_, sink)
 }
 
 #[wasm_bindgen]
@@ -20612,8 +21628,9 @@ pub fn wire_set_static_dart_opaque_twin_sync_sse(
 pub fn wire_DroppableTwinRustAsync_create_stream_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    sink: String,
 ) {
-    wire_DroppableTwinRustAsync_create_stream_twin_rust_async_impl(port_, that)
+    wire_DroppableTwinRustAsync_create_stream_twin_rust_async_impl(port_, that, sink)
 }
 
 #[wasm_bindgen]
@@ -20740,10 +21757,10 @@ pub fn wire_DroppableTwinSse_simple_method_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_DroppableTwinSync_create_stream_twin_sync(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_DroppableTwinSync_create_stream_twin_sync_impl(port_, that)
+    sink: String,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_DroppableTwinSync_create_stream_twin_sync_impl(that, sink)
 }
 
 #[wasm_bindgen]
@@ -20767,17 +21784,11 @@ pub fn wire_DroppableTwinSync_simple_method_twin_sync(
 
 #[wasm_bindgen]
 pub fn wire_DroppableTwinSyncSse_create_stream_twin_sync_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) {
-    wire_DroppableTwinSyncSse_create_stream_twin_sync_sse_impl(
-        port_,
-        ptr_,
-        rust_vec_len_,
-        data_len_,
-    )
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_DroppableTwinSyncSse_create_stream_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -21274,8 +22285,9 @@ pub fn wire_event_twin_rust_async_as_string_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_register_event_listener_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    listener: String,
 ) {
-    wire_register_event_listener_twin_rust_async_impl(port_)
+    wire_register_event_listener_twin_rust_async_impl(port_, listener)
 }
 
 #[wasm_bindgen]
@@ -21573,8 +22585,9 @@ pub fn wire_some_struct_twin_rust_async_static_return_ok_custom_error_twin_rust_
 #[wasm_bindgen]
 pub fn wire_stream_sink_throw_anyhow_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    _sink: String,
 ) {
-    wire_stream_sink_throw_anyhow_twin_rust_async_impl(port_)
+    wire_stream_sink_throw_anyhow_twin_rust_async_impl(port_, _sink)
 }
 
 #[wasm_bindgen]
@@ -22441,9 +23454,9 @@ pub fn wire_some_struct_twin_sync_static_return_ok_custom_error_twin_sync(
 
 #[wasm_bindgen]
 pub fn wire_stream_sink_throw_anyhow_twin_sync(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-) {
-    wire_stream_sink_throw_anyhow_twin_sync_impl(port_)
+    _sink: String,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_stream_sink_throw_anyhow_twin_sync_impl(_sink)
 }
 
 #[wasm_bindgen]
@@ -22728,12 +23741,11 @@ pub fn wire_some_struct_twin_sync_sse_static_return_ok_custom_error_twin_sync_ss
 
 #[wasm_bindgen]
 pub fn wire_stream_sink_throw_anyhow_twin_sync_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) {
-    wire_stream_sink_throw_anyhow_twin_sync_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_stream_sink_throw_anyhow_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -23307,8 +24319,9 @@ pub fn wire_concatenate_with_twin_rust_async_concatenate_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_concatenate_with_twin_rust_async_handle_some_static_stream_sink_single_arg_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    sink: String,
 ) {
-    wire_concatenate_with_twin_rust_async_handle_some_static_stream_sink_single_arg_twin_rust_async_impl(port_)
+    wire_concatenate_with_twin_rust_async_handle_some_static_stream_sink_single_arg_twin_rust_async_impl(port_, sink)
 }
 
 #[wasm_bindgen]
@@ -23316,9 +24329,10 @@ pub fn wire_concatenate_with_twin_rust_async_handle_some_static_stream_sink_twin
     port_: flutter_rust_bridge::for_generated::MessagePort,
     key: u32,
     max: u32,
+    sink: String,
 ) {
     wire_concatenate_with_twin_rust_async_handle_some_static_stream_sink_twin_rust_async_impl(
-        port_, key, max,
+        port_, key, max, sink,
     )
 }
 
@@ -23326,9 +24340,10 @@ pub fn wire_concatenate_with_twin_rust_async_handle_some_static_stream_sink_twin
 pub fn wire_concatenate_with_twin_rust_async_handle_some_stream_sink_at_1_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    sink: String,
 ) {
     wire_concatenate_with_twin_rust_async_handle_some_stream_sink_at_1_twin_rust_async_impl(
-        port_, that,
+        port_, that, sink,
     )
 }
 
@@ -23338,9 +24353,10 @@ pub fn wire_concatenate_with_twin_rust_async_handle_some_stream_sink_twin_rust_a
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     key: u32,
     max: u32,
+    sink: String,
 ) {
     wire_concatenate_with_twin_rust_async_handle_some_stream_sink_twin_rust_async_impl(
-        port_, that, key, max,
+        port_, that, key, max, sink,
     )
 }
 
@@ -23947,36 +24963,36 @@ pub fn wire_concatenate_with_twin_sync_concatenate_twin_sync(
 
 #[wasm_bindgen]
 pub fn wire_concatenate_with_twin_sync_handle_some_static_stream_sink_single_arg_twin_sync(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-) {
-    wire_concatenate_with_twin_sync_handle_some_static_stream_sink_single_arg_twin_sync_impl(port_)
+    sink: String,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_concatenate_with_twin_sync_handle_some_static_stream_sink_single_arg_twin_sync_impl(sink)
 }
 
 #[wasm_bindgen]
 pub fn wire_concatenate_with_twin_sync_handle_some_static_stream_sink_twin_sync(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     key: u32,
     max: u32,
-) {
-    wire_concatenate_with_twin_sync_handle_some_static_stream_sink_twin_sync_impl(port_, key, max)
+    sink: String,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_concatenate_with_twin_sync_handle_some_static_stream_sink_twin_sync_impl(key, max, sink)
 }
 
 #[wasm_bindgen]
 pub fn wire_concatenate_with_twin_sync_handle_some_stream_sink_at_1_twin_sync(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_concatenate_with_twin_sync_handle_some_stream_sink_at_1_twin_sync_impl(port_, that)
+    sink: String,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_concatenate_with_twin_sync_handle_some_stream_sink_at_1_twin_sync_impl(that, sink)
 }
 
 #[wasm_bindgen]
 pub fn wire_concatenate_with_twin_sync_handle_some_stream_sink_twin_sync(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     key: u32,
     max: u32,
-) {
-    wire_concatenate_with_twin_sync_handle_some_stream_sink_twin_sync_impl(port_, that, key, max)
+    sink: String,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_concatenate_with_twin_sync_handle_some_stream_sink_twin_sync_impl(that, key, max, sink)
 }
 
 #[wasm_bindgen]
@@ -24108,13 +25124,11 @@ pub fn wire_concatenate_with_twin_sync_sse_concatenate_twin_sync_sse(
 
 #[wasm_bindgen]
 pub fn wire_concatenate_with_twin_sync_sse_handle_some_static_stream_sink_single_arg_twin_sync_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_concatenate_with_twin_sync_sse_handle_some_static_stream_sink_single_arg_twin_sync_sse_impl(
-        port_,
         ptr_,
         rust_vec_len_,
         data_len_,
@@ -24123,13 +25137,11 @@ pub fn wire_concatenate_with_twin_sync_sse_handle_some_static_stream_sink_single
 
 #[wasm_bindgen]
 pub fn wire_concatenate_with_twin_sync_sse_handle_some_static_stream_sink_twin_sync_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_concatenate_with_twin_sync_sse_handle_some_static_stream_sink_twin_sync_sse_impl(
-        port_,
         ptr_,
         rust_vec_len_,
         data_len_,
@@ -24138,13 +25150,11 @@ pub fn wire_concatenate_with_twin_sync_sse_handle_some_static_stream_sink_twin_s
 
 #[wasm_bindgen]
 pub fn wire_concatenate_with_twin_sync_sse_handle_some_stream_sink_at_1_twin_sync_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_concatenate_with_twin_sync_sse_handle_some_stream_sink_at_1_twin_sync_sse_impl(
-        port_,
         ptr_,
         rust_vec_len_,
         data_len_,
@@ -24153,13 +25163,11 @@ pub fn wire_concatenate_with_twin_sync_sse_handle_some_stream_sink_at_1_twin_syn
 
 #[wasm_bindgen]
 pub fn wire_concatenate_with_twin_sync_sse_handle_some_stream_sink_twin_sync_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_concatenate_with_twin_sync_sse_handle_some_stream_sink_twin_sync_sse_impl(
-        port_,
         ptr_,
         rust_vec_len_,
         data_len_,
@@ -24281,15 +25289,17 @@ pub fn wire_sum_with_twin_sync_sse_sum_twin_sync_sse(
 #[wasm_bindgen]
 pub fn wire_app_settings_stream_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    sink: String,
 ) {
-    wire_app_settings_stream_twin_rust_async_impl(port_)
+    wire_app_settings_stream_twin_rust_async_impl(port_, sink)
 }
 
 #[wasm_bindgen]
 pub fn wire_app_settings_vec_stream_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    sink: String,
 ) {
-    wire_app_settings_vec_stream_twin_rust_async_impl(port_)
+    wire_app_settings_vec_stream_twin_rust_async_impl(port_, sink)
 }
 
 #[wasm_bindgen]
@@ -24338,57 +25348,65 @@ pub fn wire_is_app_embedded_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_mirror_array_enum_stream_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    sink: String,
 ) {
-    wire_mirror_array_enum_stream_twin_rust_async_impl(port_)
+    wire_mirror_array_enum_stream_twin_rust_async_impl(port_, sink)
 }
 
 #[wasm_bindgen]
 pub fn wire_mirror_enum_stream_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    sink: String,
 ) {
-    wire_mirror_enum_stream_twin_rust_async_impl(port_)
+    wire_mirror_enum_stream_twin_rust_async_impl(port_, sink)
 }
 
 #[wasm_bindgen]
 pub fn wire_mirror_map_enum_stream_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    sink: String,
 ) {
-    wire_mirror_map_enum_stream_twin_rust_async_impl(port_)
+    wire_mirror_map_enum_stream_twin_rust_async_impl(port_, sink)
 }
 
 #[wasm_bindgen]
 pub fn wire_mirror_option_enum_stream_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    sink: String,
 ) {
-    wire_mirror_option_enum_stream_twin_rust_async_impl(port_)
+    wire_mirror_option_enum_stream_twin_rust_async_impl(port_, sink)
 }
 
 #[wasm_bindgen]
 pub fn wire_mirror_set_enum_stream_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    sink: String,
 ) {
-    wire_mirror_set_enum_stream_twin_rust_async_impl(port_)
+    wire_mirror_set_enum_stream_twin_rust_async_impl(port_, sink)
 }
 
 #[wasm_bindgen]
 pub fn wire_mirror_struct_stream_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    sink: String,
 ) {
-    wire_mirror_struct_stream_twin_rust_async_impl(port_)
+    wire_mirror_struct_stream_twin_rust_async_impl(port_, sink)
 }
 
 #[wasm_bindgen]
 pub fn wire_mirror_tuple_stream_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    sink: String,
 ) {
-    wire_mirror_tuple_stream_twin_rust_async_impl(port_)
+    wire_mirror_tuple_stream_twin_rust_async_impl(port_, sink)
 }
 
 #[wasm_bindgen]
 pub fn wire_mirror_vec_enum_stream_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    sink: String,
 ) {
-    wire_mirror_vec_enum_stream_twin_rust_async_impl(port_)
+    wire_mirror_vec_enum_stream_twin_rust_async_impl(port_, sink)
 }
 
 #[wasm_bindgen]
@@ -25027,15 +26045,17 @@ pub fn wire_test_raw_string_mirrored_twin_sse(
 }
 
 #[wasm_bindgen]
-pub fn wire_app_settings_stream_twin_sync(port_: flutter_rust_bridge::for_generated::MessagePort) {
-    wire_app_settings_stream_twin_sync_impl(port_)
+pub fn wire_app_settings_stream_twin_sync(
+    sink: String,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_app_settings_stream_twin_sync_impl(sink)
 }
 
 #[wasm_bindgen]
 pub fn wire_app_settings_vec_stream_twin_sync(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-) {
-    wire_app_settings_vec_stream_twin_sync_impl(port_)
+    sink: String,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_app_settings_vec_stream_twin_sync_impl(sink)
 }
 
 #[wasm_bindgen]
@@ -25078,52 +26098,58 @@ pub fn wire_is_app_embedded_twin_sync(
 
 #[wasm_bindgen]
 pub fn wire_mirror_array_enum_stream_twin_sync(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-) {
-    wire_mirror_array_enum_stream_twin_sync_impl(port_)
+    sink: String,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_mirror_array_enum_stream_twin_sync_impl(sink)
 }
 
 #[wasm_bindgen]
-pub fn wire_mirror_enum_stream_twin_sync(port_: flutter_rust_bridge::for_generated::MessagePort) {
-    wire_mirror_enum_stream_twin_sync_impl(port_)
+pub fn wire_mirror_enum_stream_twin_sync(
+    sink: String,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_mirror_enum_stream_twin_sync_impl(sink)
 }
 
 #[wasm_bindgen]
 pub fn wire_mirror_map_enum_stream_twin_sync(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-) {
-    wire_mirror_map_enum_stream_twin_sync_impl(port_)
+    sink: String,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_mirror_map_enum_stream_twin_sync_impl(sink)
 }
 
 #[wasm_bindgen]
 pub fn wire_mirror_option_enum_stream_twin_sync(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-) {
-    wire_mirror_option_enum_stream_twin_sync_impl(port_)
+    sink: String,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_mirror_option_enum_stream_twin_sync_impl(sink)
 }
 
 #[wasm_bindgen]
 pub fn wire_mirror_set_enum_stream_twin_sync(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-) {
-    wire_mirror_set_enum_stream_twin_sync_impl(port_)
+    sink: String,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_mirror_set_enum_stream_twin_sync_impl(sink)
 }
 
 #[wasm_bindgen]
-pub fn wire_mirror_struct_stream_twin_sync(port_: flutter_rust_bridge::for_generated::MessagePort) {
-    wire_mirror_struct_stream_twin_sync_impl(port_)
+pub fn wire_mirror_struct_stream_twin_sync(
+    sink: String,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_mirror_struct_stream_twin_sync_impl(sink)
 }
 
 #[wasm_bindgen]
-pub fn wire_mirror_tuple_stream_twin_sync(port_: flutter_rust_bridge::for_generated::MessagePort) {
-    wire_mirror_tuple_stream_twin_sync_impl(port_)
+pub fn wire_mirror_tuple_stream_twin_sync(
+    sink: String,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_mirror_tuple_stream_twin_sync_impl(sink)
 }
 
 #[wasm_bindgen]
 pub fn wire_mirror_vec_enum_stream_twin_sync(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-) {
-    wire_mirror_vec_enum_stream_twin_sync_impl(port_)
+    sink: String,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_mirror_vec_enum_stream_twin_sync_impl(sink)
 }
 
 #[wasm_bindgen]
@@ -25193,22 +26219,20 @@ pub fn wire_test_raw_string_mirrored_twin_sync(
 
 #[wasm_bindgen]
 pub fn wire_app_settings_stream_twin_sync_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) {
-    wire_app_settings_stream_twin_sync_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_app_settings_stream_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
 pub fn wire_app_settings_vec_stream_twin_sync_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) {
-    wire_app_settings_vec_stream_twin_sync_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_app_settings_vec_stream_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -25267,82 +26291,74 @@ pub fn wire_is_app_embedded_twin_sync_sse(
 
 #[wasm_bindgen]
 pub fn wire_mirror_array_enum_stream_twin_sync_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) {
-    wire_mirror_array_enum_stream_twin_sync_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_mirror_array_enum_stream_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
 pub fn wire_mirror_enum_stream_twin_sync_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) {
-    wire_mirror_enum_stream_twin_sync_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_mirror_enum_stream_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
 pub fn wire_mirror_map_enum_stream_twin_sync_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) {
-    wire_mirror_map_enum_stream_twin_sync_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_mirror_map_enum_stream_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
 pub fn wire_mirror_option_enum_stream_twin_sync_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) {
-    wire_mirror_option_enum_stream_twin_sync_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_mirror_option_enum_stream_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
 pub fn wire_mirror_set_enum_stream_twin_sync_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) {
-    wire_mirror_set_enum_stream_twin_sync_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_mirror_set_enum_stream_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
 pub fn wire_mirror_struct_stream_twin_sync_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) {
-    wire_mirror_struct_stream_twin_sync_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_mirror_struct_stream_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
 pub fn wire_mirror_tuple_stream_twin_sync_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) {
-    wire_mirror_tuple_stream_twin_sync_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_mirror_tuple_stream_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
 pub fn wire_mirror_vec_enum_stream_twin_sync_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) {
-    wire_mirror_vec_enum_stream_twin_sync_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_mirror_vec_enum_stream_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -26919,8 +27935,9 @@ pub fn wire_rust_auto_opaque_return_vec_own_twin_moi(
 #[wasm_bindgen]
 pub fn wire_rust_auto_opaque_stream_sink_twin_moi(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    sink: String,
 ) {
-    wire_rust_auto_opaque_stream_sink_twin_moi_impl(port_)
+    wire_rust_auto_opaque_stream_sink_twin_moi_impl(port_, sink)
 }
 
 #[wasm_bindgen]
@@ -27287,8 +28304,9 @@ pub fn wire_rust_auto_opaque_return_vec_own_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_rust_auto_opaque_stream_sink_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    sink: String,
 ) {
-    wire_rust_auto_opaque_stream_sink_twin_rust_async_impl(port_)
+    wire_rust_auto_opaque_stream_sink_twin_rust_async_impl(port_, sink)
 }
 
 #[wasm_bindgen]
@@ -27667,8 +28685,9 @@ pub fn wire_rust_auto_opaque_return_vec_own_twin_rust_async_moi(
 #[wasm_bindgen]
 pub fn wire_rust_auto_opaque_stream_sink_twin_rust_async_moi(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    sink: String,
 ) {
-    wire_rust_auto_opaque_stream_sink_twin_rust_async_moi_impl(port_)
+    wire_rust_auto_opaque_stream_sink_twin_rust_async_moi_impl(port_, sink)
 }
 
 #[wasm_bindgen]
@@ -30489,9 +31508,9 @@ pub fn wire_rust_auto_opaque_return_vec_own_twin_sync(
 
 #[wasm_bindgen]
 pub fn wire_rust_auto_opaque_stream_sink_twin_sync(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-) {
-    wire_rust_auto_opaque_stream_sink_twin_sync_impl(port_)
+    sink: String,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_rust_auto_opaque_stream_sink_twin_sync_impl(sink)
 }
 
 #[wasm_bindgen]
@@ -30810,9 +31829,9 @@ pub fn wire_rust_auto_opaque_return_vec_own_twin_sync_moi(
 
 #[wasm_bindgen]
 pub fn wire_rust_auto_opaque_stream_sink_twin_sync_moi(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-) {
-    wire_rust_auto_opaque_stream_sink_twin_sync_moi_impl(port_)
+    sink: String,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_rust_auto_opaque_stream_sink_twin_sync_moi_impl(sink)
 }
 
 #[wasm_bindgen]
@@ -31267,12 +32286,11 @@ pub fn wire_rust_auto_opaque_return_vec_own_twin_sync_sse(
 
 #[wasm_bindgen]
 pub fn wire_rust_auto_opaque_stream_sink_twin_sync_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) {
-    wire_rust_auto_opaque_stream_sink_twin_sync_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_rust_auto_opaque_stream_sink_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -31774,12 +32792,11 @@ pub fn wire_rust_auto_opaque_return_vec_own_twin_sync_sse_moi(
 
 #[wasm_bindgen]
 pub fn wire_rust_auto_opaque_stream_sink_twin_sync_sse_moi(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) {
-    wire_rust_auto_opaque_stream_sink_twin_sync_sse_moi_impl(port_, ptr_, rust_vec_len_, data_len_)
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_rust_auto_opaque_stream_sink_twin_sync_sse_moi_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -33430,15 +34447,17 @@ pub fn wire_func_stream_realistic_twin_sse(
 #[wasm_bindgen]
 pub fn wire_func_stream_return_error_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    _sink: String,
 ) {
-    wire_func_stream_return_error_twin_rust_async_impl(port_)
+    wire_func_stream_return_error_twin_rust_async_impl(port_, _sink)
 }
 
 #[wasm_bindgen]
 pub fn wire_func_stream_return_panic_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    _sink: String,
 ) {
-    wire_func_stream_return_panic_twin_rust_async_impl(port_)
+    wire_func_stream_return_panic_twin_rust_async_impl(port_, _sink)
 }
 
 #[wasm_bindgen]
@@ -33446,15 +34465,17 @@ pub fn wire_func_stream_sink_arg_position_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     a: u32,
     b: u32,
+    c: String,
 ) {
-    wire_func_stream_sink_arg_position_twin_rust_async_impl(port_, a, b)
+    wire_func_stream_sink_arg_position_twin_rust_async_impl(port_, a, b, c)
 }
 
 #[wasm_bindgen]
 pub fn wire_handle_stream_of_struct_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    _sink: String,
 ) {
-    wire_handle_stream_of_struct_twin_rust_async_impl(port_)
+    wire_handle_stream_of_struct_twin_rust_async_impl(port_, _sink)
 }
 
 #[wasm_bindgen]
@@ -33462,33 +34483,53 @@ pub fn wire_handle_stream_sink_at_1_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     key: u32,
     max: u32,
+    sink: String,
 ) {
-    wire_handle_stream_sink_at_1_twin_rust_async_impl(port_, key, max)
+    wire_handle_stream_sink_at_1_twin_rust_async_impl(port_, key, max, sink)
 }
 
 #[wasm_bindgen]
 pub fn wire_handle_stream_sink_at_2_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     key: u32,
+    sink: String,
     max: u32,
 ) {
-    wire_handle_stream_sink_at_2_twin_rust_async_impl(port_, key, max)
+    wire_handle_stream_sink_at_2_twin_rust_async_impl(port_, key, sink, max)
 }
 
 #[wasm_bindgen]
 pub fn wire_handle_stream_sink_at_3_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    sink: String,
     key: u32,
     max: u32,
 ) {
-    wire_handle_stream_sink_at_3_twin_rust_async_impl(port_, key, max)
+    wire_handle_stream_sink_at_3_twin_rust_async_impl(port_, sink, key, max)
 }
 
 #[wasm_bindgen]
 pub fn wire_stream_sink_fixed_sized_primitive_array_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    sink: String,
 ) {
-    wire_stream_sink_fixed_sized_primitive_array_twin_rust_async_impl(port_)
+    wire_stream_sink_fixed_sized_primitive_array_twin_rust_async_impl(port_, sink)
+}
+
+#[wasm_bindgen]
+pub fn wire_stream_sink_inside_struct_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_stream_sink_inside_struct_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_stream_sink_inside_vec_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_stream_sink_inside_vec_twin_rust_async_impl(port_, arg)
 }
 
 #[wasm_bindgen]
@@ -33582,6 +34623,26 @@ pub fn wire_stream_sink_fixed_sized_primitive_array_twin_rust_async_sse(
 }
 
 #[wasm_bindgen]
+pub fn wire_stream_sink_inside_struct_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_stream_sink_inside_struct_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_stream_sink_inside_vec_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_stream_sink_inside_vec_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
 pub fn wire_func_stream_return_error_twin_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -33664,6 +34725,26 @@ pub fn wire_stream_sink_fixed_sized_primitive_array_twin_sse(
         rust_vec_len_,
         data_len_,
     )
+}
+
+#[wasm_bindgen]
+pub fn wire_stream_sink_inside_struct_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_stream_sink_inside_struct_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_stream_sink_inside_vec_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_stream_sink_inside_vec_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -34559,8 +35640,9 @@ pub fn wire_rust_auto_opaque_return_vec_own_twin_normal(
 #[wasm_bindgen]
 pub fn wire_rust_auto_opaque_stream_sink_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    sink: String,
 ) {
-    wire_rust_auto_opaque_stream_sink_twin_normal_impl(port_)
+    wire_rust_auto_opaque_stream_sink_twin_normal_impl(port_, sink)
 }
 
 #[wasm_bindgen]
@@ -34770,15 +35852,17 @@ pub fn wire_simple_adder_twin_normal(
 #[wasm_bindgen]
 pub fn wire_func_stream_return_error_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    _sink: String,
 ) {
-    wire_func_stream_return_error_twin_normal_impl(port_)
+    wire_func_stream_return_error_twin_normal_impl(port_, _sink)
 }
 
 #[wasm_bindgen]
 pub fn wire_func_stream_return_panic_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    _sink: String,
 ) {
-    wire_func_stream_return_panic_twin_normal_impl(port_)
+    wire_func_stream_return_panic_twin_normal_impl(port_, _sink)
 }
 
 #[wasm_bindgen]
@@ -34786,15 +35870,17 @@ pub fn wire_func_stream_sink_arg_position_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     a: u32,
     b: u32,
+    c: String,
 ) {
-    wire_func_stream_sink_arg_position_twin_normal_impl(port_, a, b)
+    wire_func_stream_sink_arg_position_twin_normal_impl(port_, a, b, c)
 }
 
 #[wasm_bindgen]
 pub fn wire_handle_stream_of_struct_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    _sink: String,
 ) {
-    wire_handle_stream_of_struct_twin_normal_impl(port_)
+    wire_handle_stream_of_struct_twin_normal_impl(port_, _sink)
 }
 
 #[wasm_bindgen]
@@ -34802,41 +35888,62 @@ pub fn wire_handle_stream_sink_at_1_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     key: u32,
     max: u32,
+    sink: String,
 ) {
-    wire_handle_stream_sink_at_1_twin_normal_impl(port_, key, max)
+    wire_handle_stream_sink_at_1_twin_normal_impl(port_, key, max, sink)
 }
 
 #[wasm_bindgen]
 pub fn wire_handle_stream_sink_at_2_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     key: u32,
+    sink: String,
     max: u32,
 ) {
-    wire_handle_stream_sink_at_2_twin_normal_impl(port_, key, max)
+    wire_handle_stream_sink_at_2_twin_normal_impl(port_, key, sink, max)
 }
 
 #[wasm_bindgen]
 pub fn wire_handle_stream_sink_at_3_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    sink: String,
     key: u32,
     max: u32,
 ) {
-    wire_handle_stream_sink_at_3_twin_normal_impl(port_, key, max)
+    wire_handle_stream_sink_at_3_twin_normal_impl(port_, sink, key, max)
 }
 
 #[wasm_bindgen]
 pub fn wire_stream_sink_fixed_sized_primitive_array_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    sink: String,
 ) {
-    wire_stream_sink_fixed_sized_primitive_array_twin_normal_impl(port_)
+    wire_stream_sink_fixed_sized_primitive_array_twin_normal_impl(port_, sink)
+}
+
+#[wasm_bindgen]
+pub fn wire_stream_sink_inside_struct_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_stream_sink_inside_struct_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_stream_sink_inside_vec_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_stream_sink_inside_vec_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_func_stream_realistic_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    sink: String,
     arg: String,
 ) {
-    wire_func_stream_realistic_twin_normal_impl(port_, arg)
+    wire_func_stream_realistic_twin_normal_impl(port_, sink, arg)
 }
 
 #[wasm_bindgen]

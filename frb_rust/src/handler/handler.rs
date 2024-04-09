@@ -3,7 +3,6 @@ use crate::codec::BaseCodec;
 use crate::codec::Rust2DartMessageTrait;
 use crate::platform_types::DartAbi;
 use crate::platform_types::MessagePort;
-use crate::rust2dart::context::TaskRust2DartContext;
 use std::future::Future;
 
 /// Provide your own handler to customize how to execute your function calls, etc.
@@ -28,9 +27,7 @@ pub trait Handler {
         prepare: PrepareFn,
     ) where
         PrepareFn: FnOnce() -> TaskFn,
-        TaskFn: FnOnce(
-                TaskContext<Rust2DartCodec>,
-            ) -> Result<Rust2DartCodec::Message, Rust2DartCodec::Message>
+        TaskFn: FnOnce(TaskContext) -> Result<Rust2DartCodec::Message, Rust2DartCodec::Message>
             + Send
             + 'static,
         Rust2DartCodec: BaseCodec;
@@ -54,7 +51,7 @@ pub trait Handler {
         prepare: PrepareFn,
     ) where
         PrepareFn: FnOnce() -> TaskFn,
-        TaskFn: FnOnce(TaskContext<Rust2DartCodec>) -> TaskRetFut + Send + 'static,
+        TaskFn: FnOnce(TaskContext) -> TaskRetFut + Send + 'static,
         TaskRetFut: Future<Output = Result<Rust2DartCodec::Message, Rust2DartCodec::Message>>
             + TaskRetFutTrait,
         Rust2DartCodec: BaseCodec;
@@ -88,8 +85,6 @@ pub enum FfiCallMode {
     Normal,
     /// Used by `SyncReturn<T>` to skip spawning workers.
     Sync,
-    /// Returns a Dart `Stream<T>`.
-    Stream,
 }
 
 #[cfg(not(wasm))]
@@ -102,17 +97,20 @@ pub trait TaskRetFutTrait {}
 #[cfg(wasm)]
 impl<T> TaskRetFutTrait for T {}
 
+// Originally there were things for StreamSink, but it was moved, so now it is empty
 /// A context for task execution
-pub struct TaskContext<Rust2DartCodec: BaseCodec> {
-    rust2dart_context: TaskRust2DartContext<Rust2DartCodec>,
-}
+pub struct TaskContext {}
 
-impl<Rust2DartCodec: BaseCodec> TaskContext<Rust2DartCodec> {
-    pub fn new(rust2dart_context: TaskRust2DartContext<Rust2DartCodec>) -> Self {
-        Self { rust2dart_context }
+// frb-coverage:ignore-start
+impl Default for TaskContext {
+    fn default() -> Self {
+        Self::new()
     }
+}
+// frb-coverage:ignore-end
 
-    pub fn rust2dart_context(&self) -> &TaskRust2DartContext<Rust2DartCodec> {
-        &self.rust2dart_context
+impl TaskContext {
+    pub fn new() -> Self {
+        Self {}
     }
 }

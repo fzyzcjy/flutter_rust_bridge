@@ -14,7 +14,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   test('dart register event listener & create event with delay', () async {
-    unawaited(expectLater(registerEventListenerTwinSse(),
+    unawaited(expectLater(await registerEventListenerTwinSse(),
         emits(EventTwinSse(address: 'foo', payload: 'bar'))));
     await Future.delayed(const Duration(milliseconds: 20));
     await createEventTwinSse(address: 'foo', payload: 'bar');
@@ -25,7 +25,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('when send event before async gap, should receive it', () async {
     final logs = <String>[];
 
-    final stream = registerEventListenerTwinSse();
+    final stream = await registerEventListenerTwinSse();
     stream.listen((event) => logs.add(event.address));
 
     // main call to test #1836

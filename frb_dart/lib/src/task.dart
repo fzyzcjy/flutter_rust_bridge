@@ -81,25 +81,6 @@ class SyncTask<S, E extends Object, WireSyncType>
   });
 }
 
-/// A task to call FFI function.
-///
-/// {@macro flutter_rust_bridge.not_manually_create}
-@immutable
-class StreamTask<S, E extends Object> extends BaseTask<S, E, dynamic> {
-  /// The underlying function to call FFI function, usually the generated wire function
-  final void Function(NativePortType port) callFfi;
-
-  /// Create a new task.
-  const StreamTask({
-    required this.callFfi,
-    required super.codec,
-    required super.constMeta,
-    required super.argValues,
-    required super.apiImpl,
-    required super.hint,
-  });
-}
-
 /// Metadata that does not change across different method calls. Thus it is made `const` to save memory and speed up
 @immutable
 class TaskConstMeta {

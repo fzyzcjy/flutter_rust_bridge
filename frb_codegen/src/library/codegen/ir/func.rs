@@ -31,10 +31,6 @@ pub struct IrFunc {
 pub enum IrFuncMode {
     Normal,
     Sync,
-    Stream {
-        // The index of StreamSink in the function arguments
-        argument_index: usize,
-    },
 }
 
 pub enum IrFuncOwnerInfo {

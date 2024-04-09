@@ -206,7 +206,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
       test('Stream sink throw anyhow error', () async {
         expect(
           () async {
-            await for (final _ in streamSinkThrowAnyhowTwinSyncSse()) {}
+            await for (final _ in await streamSinkThrowAnyhowTwinSyncSse()) {}
           },
           throwsA(isA<AnyhowException>().having((e) => e.toString(), 'toString',
               startsWith('AnyhowException(anyhow error'))),

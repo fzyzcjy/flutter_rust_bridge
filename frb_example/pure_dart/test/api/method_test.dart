@@ -49,8 +49,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
         ConcatenateWithTwinNormal(a: "hello ");
     final int key = 10;
     final int max = 5;
-    final stream =
-        concatenateWith.handleSomeStreamSinkTwinNormal(key: key, max: max);
+    final stream = await concatenateWith.handleSomeStreamSinkTwinNormal(
+        key: key, max: max);
     int cnt = 0;
     await for (final value in stream) {
       print("output from ConcatenateWith's stream: $value");
@@ -64,7 +64,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final int key = 10;
     final int max = 5;
     final stream =
-        ConcatenateWithTwinNormal.handleSomeStaticStreamSinkTwinNormal(
+        await ConcatenateWithTwinNormal.handleSomeStaticStreamSinkTwinNormal(
             key: key, max: max);
     int cnt = 0;
     await for (final value in stream) {
@@ -76,7 +76,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('ConcatenateWith static stream sink at 1 test', () async {
-    final stream = ConcatenateWithTwinNormal
+    final stream = await ConcatenateWithTwinNormal
         .handleSomeStaticStreamSinkSingleArgTwinNormal();
     expect(stream.toList(), completion([0, 1, 2, 3, 4]));
   });

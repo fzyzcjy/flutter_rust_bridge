@@ -96,6 +96,7 @@
   },
   "parser": {
     "default_rust_opaque_codec": "Moi",
+    "default_stream_sink_codec": "Sse",
     "force_codec_mode_pack": {
       "dart2rust": "Pde",
       "rust2dart": "Pde"

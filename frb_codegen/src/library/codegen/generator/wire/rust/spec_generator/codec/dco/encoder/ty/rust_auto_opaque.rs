@@ -4,7 +4,6 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::
     generate_impl_into_dart, generate_impl_into_into_dart,
 };
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::ty::WireRustCodecDcoGeneratorEncoderTrait;
-use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::rust_auto_opaque::{IrTypeRustAutoOpaque, OwnershipMode};
 use crate::codegen::ir::ty::IrTypeTrait;
 
@@ -27,17 +26,6 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for RustAutoOpaqueWireRustCodecDc
             ))
         } else {
             None
-        }
-    }
-
-    fn intodart_type(&self, _ir_pack: &IrPack) -> String {
-        if self.ir.ownership_mode == OwnershipMode::Owned {
-            rust_auto_opaque_local_struct_type(&self.ir)
-        } else {
-            // We do not generate IntoDart for this, so this should not be called
-            // frb-coverage:ignore-start
-            unreachable!()
-            // frb-coverage:ignore-end
         }
     }
 }

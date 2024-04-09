@@ -4,16 +4,9 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::
 };
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::ty::enumeration::parse_wrapper_name_into_dart_name_and_self_path;
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::ty::WireRustCodecDcoGeneratorEncoderTrait;
-use crate::codegen::ir::pack::IrPack;
-use crate::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 
 impl<'a> WireRustCodecDcoGeneratorEncoderTrait for StructRefWireRustCodecDcoGenerator<'a> {
-    fn intodart_type(&self, ir_pack: &IrPack) -> String {
-        let wrapper = &self.ir.get(ir_pack).wrapper_name;
-        wrapper.clone().unwrap_or(self.ir.rust_api_type())
-    }
-
     fn generate_impl_into_dart(&self) -> Option<String> {
         let src = self.ir.get(self.context.ir_pack);
 

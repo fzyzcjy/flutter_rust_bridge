@@ -10,7 +10,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   test('dart register event listener & create event with delay', () async {
-    unawaited(expectLater(registerEventListenerTwinNormal(),
+    unawaited(expectLater(await registerEventListenerTwinNormal(),
         emits(EventTwinNormal(address: 'foo', payload: 'bar'))));
     await Future.delayed(const Duration(milliseconds: 20));
     await createEventTwinNormal(address: 'foo', payload: 'bar');
@@ -21,7 +21,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('when send event before async gap, should receive it', () async {
     final logs = <String>[];
 
-    final stream = registerEventListenerTwinNormal();
+    final stream = await registerEventListenerTwinNormal();
     stream.listen((event) => logs.add(event.address));
 
     // main call to test #1836
@@ -37,7 +37,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   // FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_START
   // #1836
   test('when Rust send event after Dart close stream', () async {
-    final stream = registerEventListenerTwinNormal();
+    final stream = await registerEventListenerTwinNormal();
     await Future.delayed(Duration.zero);
     final subscription = stream.listen((_) {});
     await Future.delayed(Duration.zero);

@@ -2,9 +2,10 @@ use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::codegen::generator::codec::sse::lang::*;
 use crate::codegen::generator::codec::sse::ty::*;
 use crate::codegen::ir::ty::delegate::{
-    IrTypeDelegatePrimitiveEnum, IrTypeDelegateSet, IrTypeDelegateTime,
+    IrTypeDelegatePrimitiveEnum, IrTypeDelegateSet, IrTypeDelegateStreamSink, IrTypeDelegateTime,
 };
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
+use convert_case::{Case, Casing};
 use itertools::Itertools;
 
 impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
@@ -30,6 +31,9 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     IrTypeDelegateTime::Duration => "self.inMicroseconds".to_owned(),
                 },
                 IrTypeDelegate::Uuid => "self.toBytes()".to_owned(),
+                IrTypeDelegate::StreamSink(ir) => {
+                    generate_stream_sink_setup_and_serialize(ir, "self")
+                }
             },
             Lang::RustLang(_) => match &self.ir {
                 IrTypeDelegate::Array(_) => {
@@ -66,6 +70,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     }
                 },
                 IrTypeDelegate::Uuid => "self.as_bytes().to_vec()".to_owned(),
+                IrTypeDelegate::StreamSink(_) => return Some(lang.throw_unimplemented("")),
             },
         };
         Some(simple_delegate_encode(
@@ -110,6 +115,9 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     IrTypeDelegateTime::Duration => "Duration(microseconds: inner)".to_owned(),
                 },
                 IrTypeDelegate::Uuid => "UuidValue.fromByteList(inner)".to_owned(),
+                IrTypeDelegate::StreamSink(_) => {
+                    return Some(format!("{};", lang.throw_unreachable("")));
+                }
             },
             Lang::RustLang(_) => match &self.ir {
                 IrTypeDelegate::Array(_) => {
@@ -141,6 +149,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::Uuid => {
                     r#"uuid::Uuid::from_slice(&inner).expect("fail to decode uuid")"#.to_owned()
                 }
+                IrTypeDelegate::StreamSink(_) => "StreamSink::deserialize(inner)".to_owned(),
             },
         };
 
@@ -206,4 +215,19 @@ pub(crate) fn generate_set_to_list(
         );
     }
     ans
+}
+
+pub(crate) fn generate_stream_sink_setup_and_serialize(
+    ir: &IrTypeDelegateStreamSink,
+    var_name: &str,
+) -> String {
+    let codec = ir.codec;
+    let codec_lower = codec.to_string().to_case(Case::Snake);
+    let inner_ty = ir.inner.safe_ident();
+
+    let codec_code = format!(
+        "{codec}Codec(decodeSuccessData: {codec_lower}_decode_{inner_ty}, decodeErrorData: null)"
+    );
+
+    format!("{var_name}.setupAndSerialize(codec: {codec_code})")
 }

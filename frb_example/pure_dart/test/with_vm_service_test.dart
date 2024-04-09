@@ -137,7 +137,8 @@ Future<void> main() async {
         // #1723
         test('when holds StreamSink, Rust object should be dropped', () async {
           await _core(
-              extra: (object) async => object.createStream().listen((_) {}));
+              extra: (object) async =>
+                  (await object.createStream()).listen((_) {}));
         });
       });
     }

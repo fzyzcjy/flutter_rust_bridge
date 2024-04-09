@@ -26,25 +26,15 @@ class DroppableTwinSyncSse extends RustOpaque {
         .instance.api.rust_arc_decrement_strong_count_DroppableTwinSyncSsePtr,
   );
 
-  Stream<int> createStreamTwinSyncSse({dynamic hint}) =>
-      RustLib.instance.api.droppableTwinSyncSseCreateStreamTwinSyncSse(
-        that: this,
-        hint: hint,
-      );
+  Stream<int> createStreamTwinSyncSse({dynamic hint}) => RustLib.instance.api
+      .droppableTwinSyncSseCreateStreamTwinSyncSse(that: this, hint: hint);
 
-  static int getDropCountTwinSyncSse({dynamic hint}) =>
-      RustLib.instance.api.droppableTwinSyncSseGetDropCountTwinSyncSse(
-        hint: hint,
-      );
+  static int getDropCountTwinSyncSse({dynamic hint}) => RustLib.instance.api
+      .droppableTwinSyncSseGetDropCountTwinSyncSse(hint: hint);
 
   static DroppableTwinSyncSse newTwinSyncSse({dynamic hint}) =>
-      RustLib.instance.api.droppableTwinSyncSseNewTwinSyncSse(
-        hint: hint,
-      );
+      RustLib.instance.api.droppableTwinSyncSseNewTwinSyncSse(hint: hint);
 
-  void simpleMethodTwinSyncSse({dynamic hint}) =>
-      RustLib.instance.api.droppableTwinSyncSseSimpleMethodTwinSyncSse(
-        that: this,
-        hint: hint,
-      );
+  void simpleMethodTwinSyncSse({dynamic hint}) => RustLib.instance.api
+      .droppableTwinSyncSseSimpleMethodTwinSyncSse(that: this, hint: hint);
 }

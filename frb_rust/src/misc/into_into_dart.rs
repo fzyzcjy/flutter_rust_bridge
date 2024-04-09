@@ -1,4 +1,5 @@
-use crate::for_generated::BaseArc;
+use crate::codec::BaseCodec;
+use crate::for_generated::{BaseArc, StreamSinkBase};
 use crate::generalized_isolate::{IntoDart, ZeroCopyBuffer};
 use crate::rust_opaque::RustOpaqueBase;
 use std::collections::{HashMap, HashSet};
@@ -103,6 +104,16 @@ where
         self.into_iter().map(|e| e.into_into_dart()).collect()
     }
 }
+
+// frb-coverage:ignore-start
+impl<T, Rust2DartCodec: BaseCodec> IntoIntoDart<StreamSinkBase<T, Rust2DartCodec>>
+    for StreamSinkBase<T, Rust2DartCodec>
+{
+    fn into_into_dart(self) -> StreamSinkBase<T, Rust2DartCodec> {
+        unreachable!()
+    }
+}
+// frb-coverage:ignore-end
 
 // ref: into_dart.rs
 macro_rules! impl_into_into_dart_for_tuple {

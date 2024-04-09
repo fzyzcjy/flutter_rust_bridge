@@ -1,14 +1,12 @@
 use crate::codegen::ir::field::{IrField, IrFieldSettings};
-use crate::codegen::ir::func::{IrFuncMode, IrFuncOwnerInfo};
+use crate::codegen::ir::func::IrFuncOwnerInfo;
 use crate::codegen::ir::ident::IrIdent;
 use crate::codegen::ir::ty::boxed::IrTypeBoxed;
 use crate::codegen::ir::ty::rust_auto_opaque::OwnershipMode;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::Boxed;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
-use crate::codegen::parser::function_parser::{
-    FunctionParser, FunctionPartialInfo, STREAM_SINK_IDENT,
-};
+use crate::codegen::parser::function_parser::{FunctionParser, FunctionPartialInfo};
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::TypeParserParsingContext;
 use crate::if_then_some;
@@ -18,34 +16,24 @@ use syn::*;
 impl<'a, 'b> FunctionParser<'a, 'b> {
     pub(super) fn parse_fn_arg(
         &mut self,
-        argument_index: usize,
         sig_input: &FnArg,
         owner: &IrFuncOwnerInfo,
         context: &TypeParserParsingContext,
     ) -> anyhow::Result<FunctionPartialInfo> {
         match sig_input {
-            FnArg::Typed(ref pat_type) => {
-                self.parse_fn_arg_typed(argument_index, context, pat_type)
-            }
+            FnArg::Typed(ref pat_type) => self.parse_fn_arg_typed(context, pat_type),
             FnArg::Receiver(ref receiver) => self.parse_fn_arg_receiver(owner, context, receiver),
         }
     }
 
     fn parse_fn_arg_typed(
         &mut self,
-        argument_index: usize,
         context: &TypeParserParsingContext,
         pat_type: &PatType,
     ) -> anyhow::Result<FunctionPartialInfo> {
-        let ty = pat_type.ty.as_ref();
-
-        if let Type::Path(TypePath { path, .. }) = &ty {
-            if let Some(ans) = self.parse_fn_arg_type_stream_sink(path, argument_index, context)? {
-                return Ok(ans);
-            }
-        }
-
-        partial_info_for_normal_type(self.type_parser.parse_type(ty, context)?, pat_type)
+        let ty_raw = self.type_parser.parse_type(pat_type.ty.as_ref(), context)?;
+        let name = parse_name_from_pat_type(pat_type)?;
+        partial_info_for_normal_type_raw(ty_raw, &pat_type.attrs, name)
     }
 
     fn parse_fn_arg_receiver(
@@ -87,42 +75,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         partial_info_for_normal_type_raw(ty, &receiver.attrs, name)
     }
-
-    fn parse_fn_arg_type_stream_sink(
-        &mut self,
-        path: &Path,
-        argument_index: usize,
-        context: &TypeParserParsingContext,
-    ) -> anyhow::Result<Option<FunctionPartialInfo>> {
-        let last_segment = path.segments.last().unwrap();
-        Ok(if last_segment.ident == STREAM_SINK_IDENT {
-            match &last_segment.arguments {
-                PathArguments::AngleBracketed(AngleBracketedGenericArguments { args, .. })
-                    if !args.is_empty() =>
-                {
-                    // Unwrap is safe here because args.len() >= 1
-                    match args.first().unwrap() {
-                        GenericArgument::Type(t) => Some(partial_info_for_stream_sink_type(
-                            self.type_parser.parse_type(t, context)?,
-                            argument_index,
-                        )?),
-                        _ => None,
-                    }
-                }
-                _ => None,
-            }
-        } else {
-            None
-        })
-    }
-}
-
-fn partial_info_for_normal_type(
-    ty_raw: IrType,
-    pat_type: &PatType,
-) -> anyhow::Result<FunctionPartialInfo> {
-    let name = parse_name_from_pat_type(pat_type)?;
-    partial_info_for_normal_type_raw(ty_raw, &pat_type.attrs, name)
 }
 
 fn partial_info_for_normal_type_raw(
@@ -154,17 +106,6 @@ fn auto_add_boxed(ty: IrType) -> IrType {
     } else {
         ty
     }
-}
-
-fn partial_info_for_stream_sink_type(
-    ty: IrType,
-    argument_index: usize,
-) -> anyhow::Result<FunctionPartialInfo> {
-    Ok(FunctionPartialInfo {
-        ok_output: Some(ty),
-        mode: Some(IrFuncMode::Stream { argument_index }),
-        ..Default::default()
-    })
 }
 
 fn parse_name_from_pat_type(pat_type: &PatType) -> anyhow::Result<String> {

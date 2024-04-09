@@ -24,8 +24,6 @@ pub(crate) mod argument;
 pub(crate) mod output;
 mod transformer;
 
-const STREAM_SINK_IDENT: &str = "StreamSink";
-
 pub(crate) struct FunctionParser<'a, 'b> {
     type_parser: &'a mut TypeParser<'b>,
 }
@@ -35,6 +33,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         Self { type_parser }
     }
 
+    #[allow(clippy::too_many_arguments)]
     pub(crate) fn parse_function(
         &mut self,
         func: &GeneralizedItemFn,
@@ -42,6 +41,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         rust_crate_dir: &Path,
         force_codec_mode_pack: &Option<CodecModePack>,
         func_id: i32,
+        default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
     ) -> anyhow::Result<Option<IrFunc>> {
         self.parse_function_inner(
@@ -50,11 +50,13 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             rust_crate_dir,
             force_codec_mode_pack,
             func_id,
+            default_stream_sink_codec,
             default_rust_opaque_codec,
         )
         .with_context(|| format!("function={:?}", func.sig().ident))
     }
 
+    #[allow(clippy::too_many_arguments)]
     fn parse_function_inner(
         &mut self,
         func: &GeneralizedItemFn,
@@ -62,6 +64,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         rust_crate_dir: &Path,
         force_codec_mode_pack: &Option<CodecModePack>,
         func_id: i32,
+        default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
     ) -> anyhow::Result<Option<IrFunc>> {
         debug!("parse_function function name: {:?}", func.sig().ident);
@@ -74,6 +77,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let create_context = |owner: Option<IrFuncOwnerInfo>| TypeParserParsingContext {
             initiated_namespace: namespace.clone(),
             func_attributes: attributes.clone(),
+            default_stream_sink_codec,
             default_rust_opaque_codec,
             owner,
         };
@@ -92,8 +96,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         let context = create_context(Some(owner.clone()));
         let mut info = FunctionPartialInfo::default();
-        for (i, sig_input) in sig.inputs.iter().enumerate() {
-            info = info.merge(self.parse_fn_arg(i, sig_input, &owner, &context)?)?;
+        for sig_input in sig.inputs.iter() {
+            info = info.merge(self.parse_fn_arg(sig_input, &owner, &context)?)?;
         }
         info = info.merge(self.parse_fn_output(sig, &context)?)?;
         info = self.transform_fn_info(info);

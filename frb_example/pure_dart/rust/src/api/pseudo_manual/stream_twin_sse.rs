@@ -99,3 +99,21 @@ pub fn stream_sink_fixed_sized_primitive_array_twin_sse(
     sink.add([1, 2]).unwrap();
     sink.add([3, 4]).unwrap();
 }
+
+#[flutter_rust_bridge::frb(serialize)]
+pub fn stream_sink_inside_vec_twin_sse(arg: Vec<StreamSink<i32, flutter_rust_bridge::SseCodec>>) {
+    for sink in arg {
+        sink.add(100).unwrap();
+        sink.add(200).unwrap();
+    }
+}
+
+pub struct MyStructContainingStreamSinkTwinSse {
+    pub a: i32,
+    pub b: StreamSink<i32, flutter_rust_bridge::SseCodec>,
+}
+
+#[flutter_rust_bridge::frb(serialize)]
+pub fn stream_sink_inside_struct_twin_sse(arg: MyStructContainingStreamSinkTwinSse) {
+    arg.b.add(arg.a).unwrap();
+}

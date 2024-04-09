@@ -155,7 +155,7 @@ Future<NonCloneSimpleEnumTwinNormal> rustAutoOpaqueEnumReturnOwnTwinNormal(
         {dynamic hint}) =>
     RustLib.instance.api.rustAutoOpaqueEnumReturnOwnTwinNormal(hint: hint);
 
-Stream<NonCloneSimpleTwinNormal> rustAutoOpaqueStreamSinkTwinNormal(
+Future<Stream<NonCloneSimpleTwinNormal>> rustAutoOpaqueStreamSinkTwinNormal(
         {dynamic hint}) =>
     RustLib.instance.api.rustAutoOpaqueStreamSinkTwinNormal(hint: hint);
 
@@ -309,23 +309,17 @@ class NonCloneSimpleTwinNormal extends RustOpaque {
   Future<void> instanceMethodArgBorrowTwinNormal({dynamic hint}) =>
       RustLib.instance.api
           .nonCloneSimpleTwinNormalInstanceMethodArgBorrowTwinNormal(
-        that: this,
-        hint: hint,
-      );
+              that: this, hint: hint);
 
   Future<void> instanceMethodArgMutBorrowTwinNormal({dynamic hint}) =>
       RustLib.instance.api
           .nonCloneSimpleTwinNormalInstanceMethodArgMutBorrowTwinNormal(
-        that: this,
-        hint: hint,
-      );
+              that: this, hint: hint);
 
   Future<void> instanceMethodArgOwnTwinNormal({dynamic hint}) =>
       RustLib.instance.api
           .nonCloneSimpleTwinNormalInstanceMethodArgOwnTwinNormal(
-        that: this,
-        hint: hint,
-      );
+              that: this, hint: hint);
 
   Future<int> get instanceMethodGetterTwinNormal => RustLib.instance.api
           .nonCloneSimpleTwinNormalInstanceMethodGetterTwinNormal(
@@ -336,59 +330,45 @@ class NonCloneSimpleTwinNormal extends RustOpaque {
           {dynamic hint}) =>
       RustLib.instance.api
           .nonCloneSimpleTwinNormalInstanceMethodReturnOwnTwinNormal(
-        that: this,
-        hint: hint,
-      );
+              that: this, hint: hint);
 
   /// named constructor
   static Future<NonCloneSimpleTwinNormal> newCustomNameTwinNormal(
           {dynamic hint}) =>
-      RustLib.instance.api.nonCloneSimpleTwinNormalNewCustomNameTwinNormal(
-        hint: hint,
-      );
+      RustLib.instance.api
+          .nonCloneSimpleTwinNormalNewCustomNameTwinNormal(hint: hint);
 
   /// unnamed constructor
   static Future<NonCloneSimpleTwinNormal> newTwinNormal({dynamic hint}) =>
-      RustLib.instance.api.nonCloneSimpleTwinNormalNewTwinNormal(
-        hint: hint,
-      );
+      RustLib.instance.api.nonCloneSimpleTwinNormalNewTwinNormal(hint: hint);
 
   /// constructor with Result
   static Future<NonCloneSimpleTwinNormal> newWithResultTwinNormal(
           {dynamic hint}) =>
-      RustLib.instance.api.nonCloneSimpleTwinNormalNewWithResultTwinNormal(
-        hint: hint,
-      );
+      RustLib.instance.api
+          .nonCloneSimpleTwinNormalNewWithResultTwinNormal(hint: hint);
 
   static Future<void> staticMethodArgBorrowTwinNormal(
           {required NonCloneSimpleTwinNormal arg, dynamic hint}) =>
       RustLib.instance.api
           .nonCloneSimpleTwinNormalStaticMethodArgBorrowTwinNormal(
-        arg: arg,
-        hint: hint,
-      );
+              arg: arg, hint: hint);
 
   static Future<void> staticMethodArgMutBorrowTwinNormal(
           {required NonCloneSimpleTwinNormal arg, dynamic hint}) =>
       RustLib.instance.api
           .nonCloneSimpleTwinNormalStaticMethodArgMutBorrowTwinNormal(
-        arg: arg,
-        hint: hint,
-      );
+              arg: arg, hint: hint);
 
   static Future<void> staticMethodArgOwnTwinNormal(
           {required NonCloneSimpleTwinNormal arg, dynamic hint}) =>
       RustLib.instance.api.nonCloneSimpleTwinNormalStaticMethodArgOwnTwinNormal(
-        arg: arg,
-        hint: hint,
-      );
+          arg: arg, hint: hint);
 
   static Future<NonCloneSimpleTwinNormal> staticMethodReturnOwnTwinNormal(
           {dynamic hint}) =>
       RustLib.instance.api
-          .nonCloneSimpleTwinNormalStaticMethodReturnOwnTwinNormal(
-        hint: hint,
-      );
+          .nonCloneSimpleTwinNormalStaticMethodReturnOwnTwinNormal(hint: hint);
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinNormal>>

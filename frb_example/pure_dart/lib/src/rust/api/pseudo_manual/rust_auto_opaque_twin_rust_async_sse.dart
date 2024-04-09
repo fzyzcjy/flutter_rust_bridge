@@ -162,9 +162,10 @@ Future<NonCloneSimpleEnumTwinRustAsyncSse>
         RustLib.instance.api
             .rustAutoOpaqueEnumReturnOwnTwinRustAsyncSse(hint: hint);
 
-Stream<NonCloneSimpleTwinRustAsyncSse> rustAutoOpaqueStreamSinkTwinRustAsyncSse(
-        {dynamic hint}) =>
-    RustLib.instance.api.rustAutoOpaqueStreamSinkTwinRustAsyncSse(hint: hint);
+Future<Stream<NonCloneSimpleTwinRustAsyncSse>>
+    rustAutoOpaqueStreamSinkTwinRustAsyncSse({dynamic hint}) =>
+        RustLib.instance.api
+            .rustAutoOpaqueStreamSinkTwinRustAsyncSse(hint: hint);
 
 Future<void> rustAutoOpaqueArgVecOwnTwinRustAsyncSse(
         {required List<NonCloneSimpleTwinRustAsyncSse> arg,
@@ -321,92 +322,72 @@ class NonCloneSimpleTwinRustAsyncSse extends RustOpaque {
   Future<void> instanceMethodArgBorrowTwinRustAsyncSse({dynamic hint}) =>
       RustLib.instance.api
           .nonCloneSimpleTwinRustAsyncSseInstanceMethodArgBorrowTwinRustAsyncSse(
-        that: this,
-        hint: hint,
-      );
+              that: this, hint: hint);
 
   Future<void> instanceMethodArgMutBorrowTwinRustAsyncSse({dynamic hint}) =>
       RustLib.instance.api
           .nonCloneSimpleTwinRustAsyncSseInstanceMethodArgMutBorrowTwinRustAsyncSse(
-        that: this,
-        hint: hint,
-      );
+              that: this, hint: hint);
 
   Future<void> instanceMethodArgOwnTwinRustAsyncSse({dynamic hint}) =>
       RustLib.instance.api
           .nonCloneSimpleTwinRustAsyncSseInstanceMethodArgOwnTwinRustAsyncSse(
-        that: this,
-        hint: hint,
-      );
+              that: this, hint: hint);
 
   Future<int> get instanceMethodGetterTwinRustAsyncSse => RustLib.instance.api
           .nonCloneSimpleTwinRustAsyncSseInstanceMethodGetterTwinRustAsyncSse(
         that: this,
       );
 
-  Future<
-      NonCloneSimpleTwinRustAsyncSse> instanceMethodReturnOwnTwinRustAsyncSse(
-          {dynamic hint}) =>
-      RustLib.instance.api
+  Future<NonCloneSimpleTwinRustAsyncSse>
+      instanceMethodReturnOwnTwinRustAsyncSse({dynamic hint}) => RustLib
+          .instance.api
           .nonCloneSimpleTwinRustAsyncSseInstanceMethodReturnOwnTwinRustAsyncSse(
-        that: this,
-        hint: hint,
-      );
+              that: this, hint: hint);
 
   /// named constructor
   static Future<NonCloneSimpleTwinRustAsyncSse> newCustomNameTwinRustAsyncSse(
           {dynamic hint}) =>
       RustLib.instance.api
           .nonCloneSimpleTwinRustAsyncSseNewCustomNameTwinRustAsyncSse(
-        hint: hint,
-      );
+              hint: hint);
 
   /// unnamed constructor
   static Future<NonCloneSimpleTwinRustAsyncSse> newTwinRustAsyncSse(
           {dynamic hint}) =>
-      RustLib.instance.api.nonCloneSimpleTwinRustAsyncSseNewTwinRustAsyncSse(
-        hint: hint,
-      );
+      RustLib.instance.api
+          .nonCloneSimpleTwinRustAsyncSseNewTwinRustAsyncSse(hint: hint);
 
   /// constructor with Result
   static Future<NonCloneSimpleTwinRustAsyncSse> newWithResultTwinRustAsyncSse(
           {dynamic hint}) =>
       RustLib.instance.api
           .nonCloneSimpleTwinRustAsyncSseNewWithResultTwinRustAsyncSse(
-        hint: hint,
-      );
+              hint: hint);
 
   static Future<void> staticMethodArgBorrowTwinRustAsyncSse(
           {required NonCloneSimpleTwinRustAsyncSse arg, dynamic hint}) =>
       RustLib.instance.api
           .nonCloneSimpleTwinRustAsyncSseStaticMethodArgBorrowTwinRustAsyncSse(
-        arg: arg,
-        hint: hint,
-      );
+              arg: arg, hint: hint);
 
   static Future<void> staticMethodArgMutBorrowTwinRustAsyncSse(
           {required NonCloneSimpleTwinRustAsyncSse arg, dynamic hint}) =>
       RustLib.instance.api
           .nonCloneSimpleTwinRustAsyncSseStaticMethodArgMutBorrowTwinRustAsyncSse(
-        arg: arg,
-        hint: hint,
-      );
+              arg: arg, hint: hint);
 
   static Future<void> staticMethodArgOwnTwinRustAsyncSse(
           {required NonCloneSimpleTwinRustAsyncSse arg, dynamic hint}) =>
       RustLib.instance.api
           .nonCloneSimpleTwinRustAsyncSseStaticMethodArgOwnTwinRustAsyncSse(
-        arg: arg,
-        hint: hint,
-      );
+              arg: arg, hint: hint);
 
-  static Future<
-      NonCloneSimpleTwinRustAsyncSse> staticMethodReturnOwnTwinRustAsyncSse(
-          {dynamic hint}) =>
-      RustLib.instance.api
+  static Future<NonCloneSimpleTwinRustAsyncSse>
+      staticMethodReturnOwnTwinRustAsyncSse({dynamic hint}) => RustLib
+          .instance.api
           .nonCloneSimpleTwinRustAsyncSseStaticMethodReturnOwnTwinRustAsyncSse(
-        hint: hint,
-      );
+              hint: hint);
 }
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinRustAsyncSse>>

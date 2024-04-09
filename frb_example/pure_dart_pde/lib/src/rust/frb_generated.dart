@@ -228,7 +228,8 @@ abstract class RustLibApi extends BaseApi {
   Future<String> simpleUseAsyncSpawnBlocking(
       {required String arg, dynamic hint});
 
-  Stream<String> simpleUseAsyncSpawnLocal({required String arg, dynamic hint});
+  Future<Stream<String>> simpleUseAsyncSpawnLocal(
+      {required String arg, dynamic hint});
 
   Future<void> handleCustomizedStructTwinNormal(
       {required CustomizedTwinNormal val, dynamic hint});
@@ -405,7 +406,7 @@ abstract class RustLibApi extends BaseApi {
   Future<StructInUpperLevel> testDuplicatedModuleNames(
       {required StructInLowerLevel s, dynamic hint});
 
-  Stream<int> droppableTwinNormalCreateStream(
+  Future<Stream<int>> droppableTwinNormalCreateStream(
       {required DroppableTwinNormal that, dynamic hint});
 
   Future<int> droppableTwinNormalGetDropCountTwinNormal({dynamic hint});
@@ -456,7 +457,8 @@ abstract class RustLibApi extends BaseApi {
   Future<String> eventTwinNormalAsStringTwinNormal(
       {required EventTwinNormal that, dynamic hint});
 
-  Stream<EventTwinNormal> registerEventListenerTwinNormal({dynamic hint});
+  Future<Stream<EventTwinNormal>> registerEventListenerTwinNormal(
+      {dynamic hint});
 
   Future<void> customEnumErrorPanicTwinNormal({dynamic hint});
 
@@ -526,7 +528,7 @@ abstract class RustLibApi extends BaseApi {
   Future<int> someStructTwinNormalStaticReturnOkCustomErrorTwinNormal(
       {dynamic hint});
 
-  Stream<String> streamSinkThrowAnyhowTwinNormal({dynamic hint});
+  Future<Stream<String>> streamSinkThrowAnyhowTwinNormal({dynamic hint});
 
   Future<void> throwAnyhowTwinNormal({dynamic hint});
 
@@ -591,18 +593,19 @@ abstract class RustLibApi extends BaseApi {
       required String b,
       dynamic hint});
 
-  Stream<int>
+  Future<Stream<int>>
       concatenateWithTwinNormalHandleSomeStaticStreamSinkSingleArgTwinNormal(
           {dynamic hint});
 
-  Stream<Log2TwinNormal>
+  Future<Stream<Log2TwinNormal>>
       concatenateWithTwinNormalHandleSomeStaticStreamSinkTwinNormal(
           {required int key, required int max, dynamic hint});
 
-  Stream<int> concatenateWithTwinNormalHandleSomeStreamSinkAt1TwinNormal(
-      {required ConcatenateWithTwinNormal that, dynamic hint});
+  Future<Stream<int>>
+      concatenateWithTwinNormalHandleSomeStreamSinkAt1TwinNormal(
+          {required ConcatenateWithTwinNormal that, dynamic hint});
 
-  Stream<Log2TwinNormal>
+  Future<Stream<Log2TwinNormal>>
       concatenateWithTwinNormalHandleSomeStreamSinkTwinNormal(
           {required ConcatenateWithTwinNormal that,
           required int key,
@@ -649,9 +652,10 @@ abstract class RustLibApi extends BaseApi {
       required int z,
       dynamic hint});
 
-  Stream<ApplicationSettings> appSettingsStreamTwinNormal({dynamic hint});
+  Future<Stream<ApplicationSettings>> appSettingsStreamTwinNormal(
+      {dynamic hint});
 
-  Stream<List<ApplicationSettings>> appSettingsVecStreamTwinNormal(
+  Future<Stream<List<ApplicationSettings>>> appSettingsVecStreamTwinNormal(
       {dynamic hint});
 
   Future<int?> firstNumberTwinNormal({required Numbers nums, dynamic hint});
@@ -667,23 +671,28 @@ abstract class RustLibApi extends BaseApi {
   Future<bool> isAppEmbeddedTwinNormal(
       {required ApplicationSettings appSettings, dynamic hint});
 
-  Stream<ApplicationModeArray2> mirrorArrayEnumStreamTwinNormal({dynamic hint});
-
-  Stream<ApplicationMode> mirrorEnumStreamTwinNormal({dynamic hint});
-
-  Stream<Map<int, ApplicationMode>> mirrorMapEnumStreamTwinNormal(
+  Future<Stream<ApplicationModeArray2>> mirrorArrayEnumStreamTwinNormal(
       {dynamic hint});
 
-  Stream<ApplicationMode?> mirrorOptionEnumStreamTwinNormal({dynamic hint});
+  Future<Stream<ApplicationMode>> mirrorEnumStreamTwinNormal({dynamic hint});
 
-  Stream<Set<ApplicationMode>> mirrorSetEnumStreamTwinNormal({dynamic hint});
+  Future<Stream<Map<int, ApplicationMode>>> mirrorMapEnumStreamTwinNormal(
+      {dynamic hint});
 
-  Stream<MirrorStructTwinNormal> mirrorStructStreamTwinNormal({dynamic hint});
+  Future<Stream<ApplicationMode?>> mirrorOptionEnumStreamTwinNormal(
+      {dynamic hint});
 
-  Stream<(ApplicationSettings, RawStringEnumMirrored)>
+  Future<Stream<Set<ApplicationMode>>> mirrorSetEnumStreamTwinNormal(
+      {dynamic hint});
+
+  Future<Stream<MirrorStructTwinNormal>> mirrorStructStreamTwinNormal(
+      {dynamic hint});
+
+  Future<Stream<(ApplicationSettings, RawStringEnumMirrored)>>
       mirrorTupleStreamTwinNormal({dynamic hint});
 
-  Stream<List<ApplicationMode>> mirrorVecEnumStreamTwinNormal({dynamic hint});
+  Future<Stream<List<ApplicationMode>>> mirrorVecEnumStreamTwinNormal(
+      {dynamic hint});
 
   Future<Numbers> repeatNumberTwinNormal(
       {required int num, required int times, dynamic hint});
@@ -1818,7 +1827,7 @@ abstract class RustLibApi extends BaseApi {
   void setStaticDartOpaqueTwinSync(
       {required int id, required Object opaque, dynamic hint});
 
-  Stream<int> droppableTwinRustAsyncCreateStreamTwinRustAsync(
+  Future<Stream<int>> droppableTwinRustAsyncCreateStreamTwinRustAsync(
       {required DroppableTwinRustAsync that, dynamic hint});
 
   Future<int> droppableTwinRustAsyncGetDropCountTwinRustAsync({dynamic hint});
@@ -1907,7 +1916,8 @@ abstract class RustLibApi extends BaseApi {
   Future<String> eventTwinRustAsyncAsStringTwinRustAsync(
       {required EventTwinRustAsync that, dynamic hint});
 
-  Stream<EventTwinRustAsync> registerEventListenerTwinRustAsync({dynamic hint});
+  Future<Stream<EventTwinRustAsync>> registerEventListenerTwinRustAsync(
+      {dynamic hint});
 
   Future<void> customEnumErrorPanicTwinRustAsync({dynamic hint});
 
@@ -1980,7 +1990,7 @@ abstract class RustLibApi extends BaseApi {
   Future<int> someStructTwinRustAsyncStaticReturnOkCustomErrorTwinRustAsync(
       {dynamic hint});
 
-  Stream<String> streamSinkThrowAnyhowTwinRustAsync({dynamic hint});
+  Future<Stream<String>> streamSinkThrowAnyhowTwinRustAsync({dynamic hint});
 
   Future<void> throwAnyhowTwinRustAsync({dynamic hint});
 
@@ -2129,18 +2139,19 @@ abstract class RustLibApi extends BaseApi {
       required String b,
       dynamic hint});
 
-  Stream<int>
+  Future<Stream<int>>
       concatenateWithTwinRustAsyncHandleSomeStaticStreamSinkSingleArgTwinRustAsync(
           {dynamic hint});
 
-  Stream<Log2TwinRustAsync>
+  Future<Stream<Log2TwinRustAsync>>
       concatenateWithTwinRustAsyncHandleSomeStaticStreamSinkTwinRustAsync(
           {required int key, required int max, dynamic hint});
 
-  Stream<int> concatenateWithTwinRustAsyncHandleSomeStreamSinkAt1TwinRustAsync(
-      {required ConcatenateWithTwinRustAsync that, dynamic hint});
+  Future<Stream<int>>
+      concatenateWithTwinRustAsyncHandleSomeStreamSinkAt1TwinRustAsync(
+          {required ConcatenateWithTwinRustAsync that, dynamic hint});
 
-  Stream<Log2TwinRustAsync>
+  Future<Stream<Log2TwinRustAsync>>
       concatenateWithTwinRustAsyncHandleSomeStreamSinkTwinRustAsync(
           {required ConcatenateWithTwinRustAsync that,
           required int key,
@@ -2256,9 +2267,10 @@ abstract class RustLibApi extends BaseApi {
       required int z,
       dynamic hint});
 
-  Stream<ApplicationSettings> appSettingsStreamTwinRustAsync({dynamic hint});
+  Future<Stream<ApplicationSettings>> appSettingsStreamTwinRustAsync(
+      {dynamic hint});
 
-  Stream<List<ApplicationSettings>> appSettingsVecStreamTwinRustAsync(
+  Future<Stream<List<ApplicationSettings>>> appSettingsVecStreamTwinRustAsync(
       {dynamic hint});
 
   Future<int?> firstNumberTwinRustAsync({required Numbers nums, dynamic hint});
@@ -2276,25 +2288,27 @@ abstract class RustLibApi extends BaseApi {
   Future<bool> isAppEmbeddedTwinRustAsync(
       {required ApplicationSettings appSettings, dynamic hint});
 
-  Stream<ApplicationModeArray2> mirrorArrayEnumStreamTwinRustAsync(
+  Future<Stream<ApplicationModeArray2>> mirrorArrayEnumStreamTwinRustAsync(
       {dynamic hint});
 
-  Stream<ApplicationMode> mirrorEnumStreamTwinRustAsync({dynamic hint});
+  Future<Stream<ApplicationMode>> mirrorEnumStreamTwinRustAsync({dynamic hint});
 
-  Stream<Map<int, ApplicationMode>> mirrorMapEnumStreamTwinRustAsync(
+  Future<Stream<Map<int, ApplicationMode>>> mirrorMapEnumStreamTwinRustAsync(
       {dynamic hint});
 
-  Stream<ApplicationMode?> mirrorOptionEnumStreamTwinRustAsync({dynamic hint});
-
-  Stream<Set<ApplicationMode>> mirrorSetEnumStreamTwinRustAsync({dynamic hint});
-
-  Stream<MirrorStructTwinRustAsync> mirrorStructStreamTwinRustAsync(
+  Future<Stream<ApplicationMode?>> mirrorOptionEnumStreamTwinRustAsync(
       {dynamic hint});
 
-  Stream<(ApplicationSettings, RawStringEnumMirrored)>
+  Future<Stream<Set<ApplicationMode>>> mirrorSetEnumStreamTwinRustAsync(
+      {dynamic hint});
+
+  Future<Stream<MirrorStructTwinRustAsync>> mirrorStructStreamTwinRustAsync(
+      {dynamic hint});
+
+  Future<Stream<(ApplicationSettings, RawStringEnumMirrored)>>
       mirrorTupleStreamTwinRustAsync({dynamic hint});
 
-  Stream<List<ApplicationMode>> mirrorVecEnumStreamTwinRustAsync(
+  Future<Stream<List<ApplicationMode>>> mirrorVecEnumStreamTwinRustAsync(
       {dynamic hint});
 
   Future<Numbers> repeatNumberTwinRustAsync(
@@ -2691,8 +2705,8 @@ abstract class RustLibApi extends BaseApi {
   Future<List<NonCloneSimpleTwinRustAsync>>
       rustAutoOpaqueReturnVecOwnTwinRustAsync({dynamic hint});
 
-  Stream<NonCloneSimpleTwinRustAsync> rustAutoOpaqueStreamSinkTwinRustAsync(
-      {dynamic hint});
+  Future<Stream<NonCloneSimpleTwinRustAsync>>
+      rustAutoOpaqueStreamSinkTwinRustAsync({dynamic hint});
 
   Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinRustAsync(
       {required StructWithGoodAndOpaqueFieldTwinRustAsync arg, dynamic hint});
@@ -2967,27 +2981,33 @@ abstract class RustLibApi extends BaseApi {
 
   int simpleAdderTwinSync({required int a, required int b, dynamic hint});
 
-  Stream<String> funcStreamReturnErrorTwinRustAsync({dynamic hint});
+  Future<Stream<String>> funcStreamReturnErrorTwinRustAsync({dynamic hint});
 
-  Stream<String> funcStreamReturnPanicTwinRustAsync({dynamic hint});
+  Future<Stream<String>> funcStreamReturnPanicTwinRustAsync({dynamic hint});
 
-  Stream<int> funcStreamSinkArgPositionTwinRustAsync(
+  Future<Stream<int>> funcStreamSinkArgPositionTwinRustAsync(
       {required int a, required int b, dynamic hint});
 
-  Stream<MyStreamEntryTwinRustAsync> handleStreamOfStructTwinRustAsync(
+  Future<Stream<MyStreamEntryTwinRustAsync>> handleStreamOfStructTwinRustAsync(
       {dynamic hint});
 
-  Stream<LogTwinRustAsync> handleStreamSinkAt1TwinRustAsync(
+  Future<Stream<LogTwinRustAsync>> handleStreamSinkAt1TwinRustAsync(
       {required int key, required int max, dynamic hint});
 
-  Stream<LogTwinRustAsync> handleStreamSinkAt2TwinRustAsync(
+  Future<Stream<LogTwinRustAsync>> handleStreamSinkAt2TwinRustAsync(
       {required int key, required int max, dynamic hint});
 
-  Stream<LogTwinRustAsync> handleStreamSinkAt3TwinRustAsync(
+  Future<Stream<LogTwinRustAsync>> handleStreamSinkAt3TwinRustAsync(
       {required int key, required int max, dynamic hint});
 
-  Stream<U8Array2> streamSinkFixedSizedPrimitiveArrayTwinRustAsync(
+  Future<Stream<U8Array2>> streamSinkFixedSizedPrimitiveArrayTwinRustAsync(
       {dynamic hint});
+
+  Future<void> streamSinkInsideStructTwinRustAsync(
+      {required MyStructContainingStreamSinkTwinRustAsync arg, dynamic hint});
+
+  Future<void> streamSinkInsideVecTwinRustAsync(
+      {required List<RustStreamSink<int>> arg, dynamic hint});
 
   Future<StructWithOneFieldTwinRustAsync> funcStructWithOneFieldTwinRustAsync(
       {required StructWithOneFieldTwinRustAsync arg, dynamic hint});
@@ -3201,7 +3221,7 @@ abstract class RustLibApi extends BaseApi {
   Future<List<NonCloneSimpleTwinNormal>> rustAutoOpaqueReturnVecOwnTwinNormal(
       {dynamic hint});
 
-  Stream<NonCloneSimpleTwinNormal> rustAutoOpaqueStreamSinkTwinNormal(
+  Future<Stream<NonCloneSimpleTwinNormal>> rustAutoOpaqueStreamSinkTwinNormal(
       {dynamic hint});
 
   Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinNormal(
@@ -3288,28 +3308,35 @@ abstract class RustLibApi extends BaseApi {
   Future<int> simpleAdderTwinNormal(
       {required int a, required int b, dynamic hint});
 
-  Stream<String> funcStreamReturnErrorTwinNormal({dynamic hint});
+  Future<Stream<String>> funcStreamReturnErrorTwinNormal({dynamic hint});
 
-  Stream<String> funcStreamReturnPanicTwinNormal({dynamic hint});
+  Future<Stream<String>> funcStreamReturnPanicTwinNormal({dynamic hint});
 
-  Stream<int> funcStreamSinkArgPositionTwinNormal(
+  Future<Stream<int>> funcStreamSinkArgPositionTwinNormal(
       {required int a, required int b, dynamic hint});
 
-  Stream<MyStreamEntryTwinNormal> handleStreamOfStructTwinNormal(
+  Future<Stream<MyStreamEntryTwinNormal>> handleStreamOfStructTwinNormal(
       {dynamic hint});
 
-  Stream<LogTwinNormal> handleStreamSinkAt1TwinNormal(
+  Future<Stream<LogTwinNormal>> handleStreamSinkAt1TwinNormal(
       {required int key, required int max, dynamic hint});
 
-  Stream<LogTwinNormal> handleStreamSinkAt2TwinNormal(
+  Future<Stream<LogTwinNormal>> handleStreamSinkAt2TwinNormal(
       {required int key, required int max, dynamic hint});
 
-  Stream<LogTwinNormal> handleStreamSinkAt3TwinNormal(
+  Future<Stream<LogTwinNormal>> handleStreamSinkAt3TwinNormal(
       {required int key, required int max, dynamic hint});
 
-  Stream<U8Array2> streamSinkFixedSizedPrimitiveArrayTwinNormal({dynamic hint});
+  Future<Stream<U8Array2>> streamSinkFixedSizedPrimitiveArrayTwinNormal(
+      {dynamic hint});
 
-  Stream<String> funcStreamRealisticTwinNormal(
+  Future<void> streamSinkInsideStructTwinNormal(
+      {required MyStructContainingStreamSinkTwinNormal arg, dynamic hint});
+
+  Future<void> streamSinkInsideVecTwinNormal(
+      {required List<RustStreamSink<int>> arg, dynamic hint});
+
+  Future<Stream<String>> funcStreamRealisticTwinNormal(
       {required String arg, dynamic hint});
 
   Future<StructWithOneFieldTwinNormal> funcStructWithOneFieldTwinNormal(
@@ -4277,28 +4304,32 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Stream<String> simpleUseAsyncSpawnLocal({required String arg, dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<String>> simpleUseAsyncSpawnLocal(
+      {required String arg, dynamic hint}) async {
+    final sink = RustStreamSink<String>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_String(arg, serializer);
+        sse_encode_StreamSink_String_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 16, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_String,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kSimpleUseAsyncSpawnLocalConstMeta,
-      argValues: [arg],
+      argValues: [arg, sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kSimpleUseAsyncSpawnLocalConstMeta => const TaskConstMeta(
         debugName: "simple_use_async_spawn_local",
-        argNames: ["arg"],
+        argNames: ["arg", "sink"],
       );
 
   @override
@@ -5904,31 +5935,34 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Stream<int> droppableTwinNormalCreateStream(
-      {required DroppableTwinNormal that, dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<int>> droppableTwinNormalCreateStream(
+      {required DroppableTwinNormal that, dynamic hint}) async {
+    final sink = RustStreamSink<int>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
             that, serializer);
+        sse_encode_StreamSink_i_32_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 82, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kDroppableTwinNormalCreateStreamConstMeta,
-      argValues: [that],
+      argValues: [that, sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kDroppableTwinNormalCreateStreamConstMeta =>
       const TaskConstMeta(
         debugName: "DroppableTwinNormal_create_stream",
-        argNames: ["that"],
+        argNames: ["that", "sink"],
       );
 
   @override
@@ -6384,28 +6418,32 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Stream<EventTwinNormal> registerEventListenerTwinNormal({dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<EventTwinNormal>> registerEventListenerTwinNormal(
+      {dynamic hint}) async {
+    final listener = RustStreamSink<EventTwinNormal>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_event_twin_normal_Sse(listener, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 94, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_event_twin_normal,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: sse_decode_AnyhowException,
       ),
       constMeta: kRegisterEventListenerTwinNormalConstMeta,
-      argValues: [],
+      argValues: [listener],
       apiImpl: this,
       hint: hint,
     ));
+    return listener.stream;
   }
 
   TaskConstMeta get kRegisterEventListenerTwinNormalConstMeta =>
       const TaskConstMeta(
         debugName: "register_event_listener_twin_normal",
-        argNames: [],
+        argNames: ["listener"],
       );
 
   @override
@@ -7132,28 +7170,31 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  Stream<String> streamSinkThrowAnyhowTwinNormal({dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<String>> streamSinkThrowAnyhowTwinNormal({dynamic hint}) async {
+    final sink = RustStreamSink<String>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_String_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 117, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_String,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: sse_decode_AnyhowException,
       ),
       constMeta: kStreamSinkThrowAnyhowTwinNormalConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kStreamSinkThrowAnyhowTwinNormalConstMeta =>
       const TaskConstMeta(
         debugName: "stream_sink_throw_anyhow_twin_normal",
-        argNames: [],
+        argNames: ["sink"],
       );
 
   @override
@@ -7729,25 +7770,28 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Stream<int>
+  Future<Stream<int>>
       concatenateWithTwinNormalHandleSomeStaticStreamSinkSingleArgTwinNormal(
-          {dynamic hint}) {
-    return handler.executeStream(StreamTask(
+          {dynamic hint}) async {
+    final sink = RustStreamSink<int>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_u_32_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 154, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_u_32,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta:
           kConcatenateWithTwinNormalHandleSomeStaticStreamSinkSingleArgTwinNormalConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta
@@ -7755,31 +7799,34 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           const TaskConstMeta(
             debugName:
                 "concatenate_with_twin_normal_handle_some_static_stream_sink_single_arg_twin_normal",
-            argNames: [],
+            argNames: ["sink"],
           );
 
   @override
-  Stream<Log2TwinNormal>
+  Future<Stream<Log2TwinNormal>>
       concatenateWithTwinNormalHandleSomeStaticStreamSinkTwinNormal(
-          {required int key, required int max, dynamic hint}) {
-    return handler.executeStream(StreamTask(
+          {required int key, required int max, dynamic hint}) async {
+    final sink = RustStreamSink<Log2TwinNormal>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_32(key, serializer);
         sse_encode_u_32(max, serializer);
+        sse_encode_StreamSink_log_2_twin_normal_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 153, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_log_2_twin_normal,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta:
           kConcatenateWithTwinNormalHandleSomeStaticStreamSinkTwinNormalConstMeta,
-      argValues: [key, max],
+      argValues: [key, max, sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta
@@ -7787,29 +7834,33 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           const TaskConstMeta(
             debugName:
                 "concatenate_with_twin_normal_handle_some_static_stream_sink_twin_normal",
-            argNames: ["key", "max"],
+            argNames: ["key", "max", "sink"],
           );
 
   @override
-  Stream<int> concatenateWithTwinNormalHandleSomeStreamSinkAt1TwinNormal(
-      {required ConcatenateWithTwinNormal that, dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<int>>
+      concatenateWithTwinNormalHandleSomeStreamSinkAt1TwinNormal(
+          {required ConcatenateWithTwinNormal that, dynamic hint}) async {
+    final sink = RustStreamSink<int>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_box_autoadd_concatenate_with_twin_normal(that, serializer);
+        sse_encode_StreamSink_u_32_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 152, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_u_32,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta:
           kConcatenateWithTwinNormalHandleSomeStreamSinkAt1TwinNormalConstMeta,
-      argValues: [that],
+      argValues: [that, sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta
@@ -7817,35 +7868,38 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           const TaskConstMeta(
             debugName:
                 "concatenate_with_twin_normal_handle_some_stream_sink_at_1_twin_normal",
-            argNames: ["that"],
+            argNames: ["that", "sink"],
           );
 
   @override
-  Stream<Log2TwinNormal>
+  Future<Stream<Log2TwinNormal>>
       concatenateWithTwinNormalHandleSomeStreamSinkTwinNormal(
           {required ConcatenateWithTwinNormal that,
           required int key,
           required int max,
-          dynamic hint}) {
-    return handler.executeStream(StreamTask(
+          dynamic hint}) async {
+    final sink = RustStreamSink<Log2TwinNormal>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_box_autoadd_concatenate_with_twin_normal(that, serializer);
         sse_encode_u_32(key, serializer);
         sse_encode_u_32(max, serializer);
+        sse_encode_StreamSink_log_2_twin_normal_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 151, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_log_2_twin_normal,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta:
           kConcatenateWithTwinNormalHandleSomeStreamSinkTwinNormalConstMeta,
-      argValues: [that, key, max],
+      argValues: [that, key, max, sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta
@@ -7853,7 +7907,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           const TaskConstMeta(
             debugName:
                 "concatenate_with_twin_normal_handle_some_stream_sink_twin_normal",
-            argNames: ["that", "key", "max"],
+            argNames: ["that", "key", "max", "sink"],
           );
 
   @override
@@ -8187,54 +8241,61 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Stream<ApplicationSettings> appSettingsStreamTwinNormal({dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<ApplicationSettings>> appSettingsStreamTwinNormal(
+      {dynamic hint}) async {
+    final sink = RustStreamSink<ApplicationSettings>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_application_settings_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 167, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_application_settings,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kAppSettingsStreamTwinNormalConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kAppSettingsStreamTwinNormalConstMeta =>
       const TaskConstMeta(
         debugName: "app_settings_stream_twin_normal",
-        argNames: [],
+        argNames: ["sink"],
       );
 
   @override
-  Stream<List<ApplicationSettings>> appSettingsVecStreamTwinNormal(
-      {dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<List<ApplicationSettings>>> appSettingsVecStreamTwinNormal(
+      {dynamic hint}) async {
+    final sink = RustStreamSink<List<ApplicationSettings>>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_list_application_settings_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 168, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_application_settings,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kAppSettingsVecStreamTwinNormalConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kAppSettingsVecStreamTwinNormalConstMeta =>
       const TaskConstMeta(
         debugName: "app_settings_vec_stream_twin_normal",
-        argNames: [],
+        argNames: ["sink"],
       );
 
   @override
@@ -8388,206 +8449,236 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Stream<ApplicationModeArray2> mirrorArrayEnumStreamTwinNormal(
-      {dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<ApplicationModeArray2>> mirrorArrayEnumStreamTwinNormal(
+      {dynamic hint}) async {
+    final sink = RustStreamSink<ApplicationModeArray2>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_application_mode_array_2_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 189, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_application_mode_array_2,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kMirrorArrayEnumStreamTwinNormalConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kMirrorArrayEnumStreamTwinNormalConstMeta =>
       const TaskConstMeta(
         debugName: "mirror_array_enum_stream_twin_normal",
-        argNames: [],
+        argNames: ["sink"],
       );
 
   @override
-  Stream<ApplicationMode> mirrorEnumStreamTwinNormal({dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<ApplicationMode>> mirrorEnumStreamTwinNormal(
+      {dynamic hint}) async {
+    final sink = RustStreamSink<ApplicationMode>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_application_mode_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 184, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_application_mode,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kMirrorEnumStreamTwinNormalConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kMirrorEnumStreamTwinNormalConstMeta => const TaskConstMeta(
         debugName: "mirror_enum_stream_twin_normal",
-        argNames: [],
+        argNames: ["sink"],
       );
 
   @override
-  Stream<Map<int, ApplicationMode>> mirrorMapEnumStreamTwinNormal(
-      {dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<Map<int, ApplicationMode>>> mirrorMapEnumStreamTwinNormal(
+      {dynamic hint}) async {
+    final sink = RustStreamSink<Map<int, ApplicationMode>>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_Map_u_8_application_mode_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 187, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_u_8_application_mode,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kMirrorMapEnumStreamTwinNormalConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kMirrorMapEnumStreamTwinNormalConstMeta =>
       const TaskConstMeta(
         debugName: "mirror_map_enum_stream_twin_normal",
-        argNames: [],
+        argNames: ["sink"],
       );
 
   @override
-  Stream<ApplicationMode?> mirrorOptionEnumStreamTwinNormal({dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<ApplicationMode?>> mirrorOptionEnumStreamTwinNormal(
+      {dynamic hint}) async {
+    final sink = RustStreamSink<ApplicationMode?>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_opt_box_autoadd_application_mode_Sse(
+            sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 185, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_application_mode,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kMirrorOptionEnumStreamTwinNormalConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kMirrorOptionEnumStreamTwinNormalConstMeta =>
       const TaskConstMeta(
         debugName: "mirror_option_enum_stream_twin_normal",
-        argNames: [],
+        argNames: ["sink"],
       );
 
   @override
-  Stream<Set<ApplicationMode>> mirrorSetEnumStreamTwinNormal({dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<Set<ApplicationMode>>> mirrorSetEnumStreamTwinNormal(
+      {dynamic hint}) async {
+    final sink = RustStreamSink<Set<ApplicationMode>>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_Set_application_mode_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 188, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Set_application_mode,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kMirrorSetEnumStreamTwinNormalConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kMirrorSetEnumStreamTwinNormalConstMeta =>
       const TaskConstMeta(
         debugName: "mirror_set_enum_stream_twin_normal",
-        argNames: [],
+        argNames: ["sink"],
       );
 
   @override
-  Stream<MirrorStructTwinNormal> mirrorStructStreamTwinNormal({dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<MirrorStructTwinNormal>> mirrorStructStreamTwinNormal(
+      {dynamic hint}) async {
+    final sink = RustStreamSink<MirrorStructTwinNormal>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_mirror_struct_twin_normal_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 169, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_mirror_struct_twin_normal,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kMirrorStructStreamTwinNormalConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kMirrorStructStreamTwinNormalConstMeta =>
       const TaskConstMeta(
         debugName: "mirror_struct_stream_twin_normal",
-        argNames: [],
+        argNames: ["sink"],
       );
 
   @override
-  Stream<(ApplicationSettings, RawStringEnumMirrored)>
-      mirrorTupleStreamTwinNormal({dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<(ApplicationSettings, RawStringEnumMirrored)>>
+      mirrorTupleStreamTwinNormal({dynamic hint}) async {
+    final sink = RustStreamSink<(ApplicationSettings, RawStringEnumMirrored)>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_record_application_settings_raw_string_enum_mirrored_Sse(
+            sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 170, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData:
-            sse_decode_record_application_settings_raw_string_enum_mirrored,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kMirrorTupleStreamTwinNormalConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kMirrorTupleStreamTwinNormalConstMeta =>
       const TaskConstMeta(
         debugName: "mirror_tuple_stream_twin_normal",
-        argNames: [],
+        argNames: ["sink"],
       );
 
   @override
-  Stream<List<ApplicationMode>> mirrorVecEnumStreamTwinNormal({dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<List<ApplicationMode>>> mirrorVecEnumStreamTwinNormal(
+      {dynamic hint}) async {
+    final sink = RustStreamSink<List<ApplicationMode>>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_list_application_mode_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 186, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_application_mode,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kMirrorVecEnumStreamTwinNormalConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kMirrorVecEnumStreamTwinNormalConstMeta =>
       const TaskConstMeta(
         debugName: "mirror_vec_enum_stream_twin_normal",
-        argNames: [],
+        argNames: ["sink"],
       );
 
   @override
@@ -19047,31 +19138,34 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Stream<int> droppableTwinRustAsyncCreateStreamTwinRustAsync(
-      {required DroppableTwinRustAsync that, dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<int>> droppableTwinRustAsyncCreateStreamTwinRustAsync(
+      {required DroppableTwinRustAsync that, dynamic hint}) async {
+    final sink = RustStreamSink<int>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsync(
             that, serializer);
+        sse_encode_StreamSink_i_32_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 578, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kDroppableTwinRustAsyncCreateStreamTwinRustAsyncConstMeta,
-      argValues: [that],
+      argValues: [that, sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kDroppableTwinRustAsyncCreateStreamTwinRustAsyncConstMeta =>
       const TaskConstMeta(
         debugName: "DroppableTwinRustAsync_create_stream_twin_rust_async",
-        argNames: ["that"],
+        argNames: ["that", "sink"],
       );
 
   @override
@@ -19157,29 +19251,31 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Stream<int> droppableTwinSyncCreateStreamTwinSync(
       {required DroppableTwinSync that, dynamic hint}) {
-    return handler.executeStream(StreamTask(
-      callFfi: (port_) {
+    final sink = RustStreamSink<int>();
+    handler.executeSync(SyncTask(
+      callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSync(
             that, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 582, port: port_);
+        sse_encode_StreamSink_i_32_Sse(sink, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 582)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kDroppableTwinSyncCreateStreamTwinSyncConstMeta,
-      argValues: [that],
+      argValues: [that, sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kDroppableTwinSyncCreateStreamTwinSyncConstMeta =>
       const TaskConstMeta(
         debugName: "DroppableTwinSync_create_stream_twin_sync",
-        argNames: ["that"],
+        argNames: ["that", "sink"],
       );
 
   @override
@@ -19864,29 +19960,32 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Stream<EventTwinRustAsync> registerEventListenerTwinRustAsync(
-      {dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<EventTwinRustAsync>> registerEventListenerTwinRustAsync(
+      {dynamic hint}) async {
+    final listener = RustStreamSink<EventTwinRustAsync>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_event_twin_rust_async_Sse(listener, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 604, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_event_twin_rust_async,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: sse_decode_AnyhowException,
       ),
       constMeta: kRegisterEventListenerTwinRustAsyncConstMeta,
-      argValues: [],
+      argValues: [listener],
       apiImpl: this,
       hint: hint,
     ));
+    return listener.stream;
   }
 
   TaskConstMeta get kRegisterEventListenerTwinRustAsyncConstMeta =>
       const TaskConstMeta(
         debugName: "register_event_listener_twin_rust_async",
-        argNames: [],
+        argNames: ["listener"],
       );
 
   @override
@@ -20618,28 +20717,32 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  Stream<String> streamSinkThrowAnyhowTwinRustAsync({dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<String>> streamSinkThrowAnyhowTwinRustAsync(
+      {dynamic hint}) async {
+    final sink = RustStreamSink<String>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_String_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 626, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_String,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: sse_decode_AnyhowException,
       ),
       constMeta: kStreamSinkThrowAnyhowTwinRustAsyncConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kStreamSinkThrowAnyhowTwinRustAsyncConstMeta =>
       const TaskConstMeta(
         debugName: "stream_sink_throw_anyhow_twin_rust_async",
-        argNames: [],
+        argNames: ["sink"],
       );
 
   @override
@@ -21356,27 +21459,29 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Stream<String> streamSinkThrowAnyhowTwinSync({dynamic hint}) {
-    return handler.executeStream(StreamTask(
-      callFfi: (port_) {
+    final sink = RustStreamSink<String>();
+    handler.executeSync(SyncTask(
+      callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 655, port: port_);
+        sse_encode_StreamSink_String_Sse(sink, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 655)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_String,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: sse_decode_AnyhowException,
       ),
       constMeta: kStreamSinkThrowAnyhowTwinSyncConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kStreamSinkThrowAnyhowTwinSyncConstMeta =>
       const TaskConstMeta(
         debugName: "stream_sink_throw_anyhow_twin_sync",
-        argNames: [],
+        argNames: ["sink"],
       );
 
   @override
@@ -22118,25 +22223,28 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  Stream<int>
+  Future<Stream<int>>
       concatenateWithTwinRustAsyncHandleSomeStaticStreamSinkSingleArgTwinRustAsync(
-          {dynamic hint}) {
-    return handler.executeStream(StreamTask(
+          {dynamic hint}) async {
+    final sink = RustStreamSink<int>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_u_32_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 699, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_u_32,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta:
           kConcatenateWithTwinRustAsyncHandleSomeStaticStreamSinkSingleArgTwinRustAsyncConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta
@@ -22144,31 +22252,34 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           const TaskConstMeta(
             debugName:
                 "concatenate_with_twin_rust_async_handle_some_static_stream_sink_single_arg_twin_rust_async",
-            argNames: [],
+            argNames: ["sink"],
           );
 
   @override
-  Stream<Log2TwinRustAsync>
+  Future<Stream<Log2TwinRustAsync>>
       concatenateWithTwinRustAsyncHandleSomeStaticStreamSinkTwinRustAsync(
-          {required int key, required int max, dynamic hint}) {
-    return handler.executeStream(StreamTask(
+          {required int key, required int max, dynamic hint}) async {
+    final sink = RustStreamSink<Log2TwinRustAsync>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_32(key, serializer);
         sse_encode_u_32(max, serializer);
+        sse_encode_StreamSink_log_2_twin_rust_async_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 698, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_log_2_twin_rust_async,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta:
           kConcatenateWithTwinRustAsyncHandleSomeStaticStreamSinkTwinRustAsyncConstMeta,
-      argValues: [key, max],
+      argValues: [key, max, sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta
@@ -22176,30 +22287,34 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           const TaskConstMeta(
             debugName:
                 "concatenate_with_twin_rust_async_handle_some_static_stream_sink_twin_rust_async",
-            argNames: ["key", "max"],
+            argNames: ["key", "max", "sink"],
           );
 
   @override
-  Stream<int> concatenateWithTwinRustAsyncHandleSomeStreamSinkAt1TwinRustAsync(
-      {required ConcatenateWithTwinRustAsync that, dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<int>>
+      concatenateWithTwinRustAsyncHandleSomeStreamSinkAt1TwinRustAsync(
+          {required ConcatenateWithTwinRustAsync that, dynamic hint}) async {
+    final sink = RustStreamSink<int>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_box_autoadd_concatenate_with_twin_rust_async(
             that, serializer);
+        sse_encode_StreamSink_u_32_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 697, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_u_32,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta:
           kConcatenateWithTwinRustAsyncHandleSomeStreamSinkAt1TwinRustAsyncConstMeta,
-      argValues: [that],
+      argValues: [that, sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta
@@ -22207,36 +22322,39 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           const TaskConstMeta(
             debugName:
                 "concatenate_with_twin_rust_async_handle_some_stream_sink_at_1_twin_rust_async",
-            argNames: ["that"],
+            argNames: ["that", "sink"],
           );
 
   @override
-  Stream<Log2TwinRustAsync>
+  Future<Stream<Log2TwinRustAsync>>
       concatenateWithTwinRustAsyncHandleSomeStreamSinkTwinRustAsync(
           {required ConcatenateWithTwinRustAsync that,
           required int key,
           required int max,
-          dynamic hint}) {
-    return handler.executeStream(StreamTask(
+          dynamic hint}) async {
+    final sink = RustStreamSink<Log2TwinRustAsync>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_box_autoadd_concatenate_with_twin_rust_async(
             that, serializer);
         sse_encode_u_32(key, serializer);
         sse_encode_u_32(max, serializer);
+        sse_encode_StreamSink_log_2_twin_rust_async_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 696, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_log_2_twin_rust_async,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta:
           kConcatenateWithTwinRustAsyncHandleSomeStreamSinkTwinRustAsyncConstMeta,
-      argValues: [that, key, max],
+      argValues: [that, key, max, sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta
@@ -22244,7 +22362,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           const TaskConstMeta(
             debugName:
                 "concatenate_with_twin_rust_async_handle_some_stream_sink_twin_rust_async",
-            argNames: ["that", "key", "max"],
+            argNames: ["that", "key", "max", "sink"],
           );
 
   @override
@@ -22679,22 +22797,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Stream<int>
       concatenateWithTwinSyncHandleSomeStaticStreamSinkSingleArgTwinSync(
           {dynamic hint}) {
-    return handler.executeStream(StreamTask(
-      callFfi: (port_) {
+    final sink = RustStreamSink<int>();
+    handler.executeSync(SyncTask(
+      callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 718, port: port_);
+        sse_encode_StreamSink_u_32_Sse(sink, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 718)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_u_32,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta:
           kConcatenateWithTwinSyncHandleSomeStaticStreamSinkSingleArgTwinSyncConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta
@@ -22702,31 +22822,33 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           const TaskConstMeta(
             debugName:
                 "concatenate_with_twin_sync_handle_some_static_stream_sink_single_arg_twin_sync",
-            argNames: [],
+            argNames: ["sink"],
           );
 
   @override
   Stream<Log2TwinSync>
       concatenateWithTwinSyncHandleSomeStaticStreamSinkTwinSync(
           {required int key, required int max, dynamic hint}) {
-    return handler.executeStream(StreamTask(
-      callFfi: (port_) {
+    final sink = RustStreamSink<Log2TwinSync>();
+    handler.executeSync(SyncTask(
+      callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_32(key, serializer);
         sse_encode_u_32(max, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 717, port: port_);
+        sse_encode_StreamSink_log_2_twin_sync_Sse(sink, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 717)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_log_2_twin_sync,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta:
           kConcatenateWithTwinSyncHandleSomeStaticStreamSinkTwinSyncConstMeta,
-      argValues: [key, max],
+      argValues: [key, max, sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta
@@ -22734,29 +22856,31 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           const TaskConstMeta(
             debugName:
                 "concatenate_with_twin_sync_handle_some_static_stream_sink_twin_sync",
-            argNames: ["key", "max"],
+            argNames: ["key", "max", "sink"],
           );
 
   @override
   Stream<int> concatenateWithTwinSyncHandleSomeStreamSinkAt1TwinSync(
       {required ConcatenateWithTwinSync that, dynamic hint}) {
-    return handler.executeStream(StreamTask(
-      callFfi: (port_) {
+    final sink = RustStreamSink<int>();
+    handler.executeSync(SyncTask(
+      callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_box_autoadd_concatenate_with_twin_sync(that, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 716, port: port_);
+        sse_encode_StreamSink_u_32_Sse(sink, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 716)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_u_32,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta:
           kConcatenateWithTwinSyncHandleSomeStreamSinkAt1TwinSyncConstMeta,
-      argValues: [that],
+      argValues: [that, sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta
@@ -22764,7 +22888,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           const TaskConstMeta(
             debugName:
                 "concatenate_with_twin_sync_handle_some_stream_sink_at_1_twin_sync",
-            argNames: ["that"],
+            argNames: ["that", "sink"],
           );
 
   @override
@@ -22773,24 +22897,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       required int key,
       required int max,
       dynamic hint}) {
-    return handler.executeStream(StreamTask(
-      callFfi: (port_) {
+    final sink = RustStreamSink<Log2TwinSync>();
+    handler.executeSync(SyncTask(
+      callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_box_autoadd_concatenate_with_twin_sync(that, serializer);
         sse_encode_u_32(key, serializer);
         sse_encode_u_32(max, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 715, port: port_);
+        sse_encode_StreamSink_log_2_twin_sync_Sse(sink, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 715)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_log_2_twin_sync,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kConcatenateWithTwinSyncHandleSomeStreamSinkTwinSyncConstMeta,
-      argValues: [that, key, max],
+      argValues: [that, key, max, sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta
@@ -22798,7 +22924,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           const TaskConstMeta(
             debugName:
                 "concatenate_with_twin_sync_handle_some_stream_sink_twin_sync",
-            argNames: ["that", "key", "max"],
+            argNames: ["that", "key", "max", "sink"],
           );
 
   @override
@@ -23118,54 +23244,61 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Stream<ApplicationSettings> appSettingsStreamTwinRustAsync({dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<ApplicationSettings>> appSettingsStreamTwinRustAsync(
+      {dynamic hint}) async {
+    final sink = RustStreamSink<ApplicationSettings>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_application_settings_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 731, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_application_settings,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kAppSettingsStreamTwinRustAsyncConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kAppSettingsStreamTwinRustAsyncConstMeta =>
       const TaskConstMeta(
         debugName: "app_settings_stream_twin_rust_async",
-        argNames: [],
+        argNames: ["sink"],
       );
 
   @override
-  Stream<List<ApplicationSettings>> appSettingsVecStreamTwinRustAsync(
-      {dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<List<ApplicationSettings>>> appSettingsVecStreamTwinRustAsync(
+      {dynamic hint}) async {
+    final sink = RustStreamSink<List<ApplicationSettings>>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_list_application_settings_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 732, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_application_settings,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kAppSettingsVecStreamTwinRustAsyncConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kAppSettingsVecStreamTwinRustAsyncConstMeta =>
       const TaskConstMeta(
         debugName: "app_settings_vec_stream_twin_rust_async",
-        argNames: [],
+        argNames: ["sink"],
       );
 
   @override
@@ -23321,210 +23454,238 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Stream<ApplicationModeArray2> mirrorArrayEnumStreamTwinRustAsync(
-      {dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<ApplicationModeArray2>> mirrorArrayEnumStreamTwinRustAsync(
+      {dynamic hint}) async {
+    final sink = RustStreamSink<ApplicationModeArray2>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_application_mode_array_2_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 753, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_application_mode_array_2,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kMirrorArrayEnumStreamTwinRustAsyncConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kMirrorArrayEnumStreamTwinRustAsyncConstMeta =>
       const TaskConstMeta(
         debugName: "mirror_array_enum_stream_twin_rust_async",
-        argNames: [],
+        argNames: ["sink"],
       );
 
   @override
-  Stream<ApplicationMode> mirrorEnumStreamTwinRustAsync({dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<ApplicationMode>> mirrorEnumStreamTwinRustAsync(
+      {dynamic hint}) async {
+    final sink = RustStreamSink<ApplicationMode>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_application_mode_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 748, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_application_mode,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kMirrorEnumStreamTwinRustAsyncConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kMirrorEnumStreamTwinRustAsyncConstMeta =>
       const TaskConstMeta(
         debugName: "mirror_enum_stream_twin_rust_async",
-        argNames: [],
+        argNames: ["sink"],
       );
 
   @override
-  Stream<Map<int, ApplicationMode>> mirrorMapEnumStreamTwinRustAsync(
-      {dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<Map<int, ApplicationMode>>> mirrorMapEnumStreamTwinRustAsync(
+      {dynamic hint}) async {
+    final sink = RustStreamSink<Map<int, ApplicationMode>>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_Map_u_8_application_mode_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 751, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_u_8_application_mode,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kMirrorMapEnumStreamTwinRustAsyncConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kMirrorMapEnumStreamTwinRustAsyncConstMeta =>
       const TaskConstMeta(
         debugName: "mirror_map_enum_stream_twin_rust_async",
-        argNames: [],
+        argNames: ["sink"],
       );
 
   @override
-  Stream<ApplicationMode?> mirrorOptionEnumStreamTwinRustAsync({dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<ApplicationMode?>> mirrorOptionEnumStreamTwinRustAsync(
+      {dynamic hint}) async {
+    final sink = RustStreamSink<ApplicationMode?>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_opt_box_autoadd_application_mode_Sse(
+            sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 749, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_application_mode,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kMirrorOptionEnumStreamTwinRustAsyncConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kMirrorOptionEnumStreamTwinRustAsyncConstMeta =>
       const TaskConstMeta(
         debugName: "mirror_option_enum_stream_twin_rust_async",
-        argNames: [],
+        argNames: ["sink"],
       );
 
   @override
-  Stream<Set<ApplicationMode>> mirrorSetEnumStreamTwinRustAsync(
-      {dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<Set<ApplicationMode>>> mirrorSetEnumStreamTwinRustAsync(
+      {dynamic hint}) async {
+    final sink = RustStreamSink<Set<ApplicationMode>>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_Set_application_mode_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 752, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Set_application_mode,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kMirrorSetEnumStreamTwinRustAsyncConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kMirrorSetEnumStreamTwinRustAsyncConstMeta =>
       const TaskConstMeta(
         debugName: "mirror_set_enum_stream_twin_rust_async",
-        argNames: [],
+        argNames: ["sink"],
       );
 
   @override
-  Stream<MirrorStructTwinRustAsync> mirrorStructStreamTwinRustAsync(
-      {dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<MirrorStructTwinRustAsync>> mirrorStructStreamTwinRustAsync(
+      {dynamic hint}) async {
+    final sink = RustStreamSink<MirrorStructTwinRustAsync>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_mirror_struct_twin_rust_async_Sse(
+            sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 733, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_mirror_struct_twin_rust_async,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kMirrorStructStreamTwinRustAsyncConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kMirrorStructStreamTwinRustAsyncConstMeta =>
       const TaskConstMeta(
         debugName: "mirror_struct_stream_twin_rust_async",
-        argNames: [],
+        argNames: ["sink"],
       );
 
   @override
-  Stream<(ApplicationSettings, RawStringEnumMirrored)>
-      mirrorTupleStreamTwinRustAsync({dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<(ApplicationSettings, RawStringEnumMirrored)>>
+      mirrorTupleStreamTwinRustAsync({dynamic hint}) async {
+    final sink = RustStreamSink<(ApplicationSettings, RawStringEnumMirrored)>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_record_application_settings_raw_string_enum_mirrored_Sse(
+            sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 734, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData:
-            sse_decode_record_application_settings_raw_string_enum_mirrored,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kMirrorTupleStreamTwinRustAsyncConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kMirrorTupleStreamTwinRustAsyncConstMeta =>
       const TaskConstMeta(
         debugName: "mirror_tuple_stream_twin_rust_async",
-        argNames: [],
+        argNames: ["sink"],
       );
 
   @override
-  Stream<List<ApplicationMode>> mirrorVecEnumStreamTwinRustAsync(
-      {dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<List<ApplicationMode>>> mirrorVecEnumStreamTwinRustAsync(
+      {dynamic hint}) async {
+    final sink = RustStreamSink<List<ApplicationMode>>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_list_application_mode_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 750, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_application_mode,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kMirrorVecEnumStreamTwinRustAsyncConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kMirrorVecEnumStreamTwinRustAsyncConstMeta =>
       const TaskConstMeta(
         debugName: "mirror_vec_enum_stream_twin_rust_async",
-        argNames: [],
+        argNames: ["sink"],
       );
 
   @override
@@ -23793,52 +23954,56 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Stream<ApplicationSettings> appSettingsStreamTwinSync({dynamic hint}) {
-    return handler.executeStream(StreamTask(
-      callFfi: (port_) {
+    final sink = RustStreamSink<ApplicationSettings>();
+    handler.executeSync(SyncTask(
+      callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 757, port: port_);
+        sse_encode_StreamSink_application_settings_Sse(sink, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 757)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_application_settings,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kAppSettingsStreamTwinSyncConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kAppSettingsStreamTwinSyncConstMeta => const TaskConstMeta(
         debugName: "app_settings_stream_twin_sync",
-        argNames: [],
+        argNames: ["sink"],
       );
 
   @override
   Stream<List<ApplicationSettings>> appSettingsVecStreamTwinSync(
       {dynamic hint}) {
-    return handler.executeStream(StreamTask(
-      callFfi: (port_) {
+    final sink = RustStreamSink<List<ApplicationSettings>>();
+    handler.executeSync(SyncTask(
+      callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 758, port: port_);
+        sse_encode_StreamSink_list_application_settings_Sse(sink, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 758)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_application_settings,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kAppSettingsVecStreamTwinSyncConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kAppSettingsVecStreamTwinSyncConstMeta =>
       const TaskConstMeta(
         debugName: "app_settings_vec_stream_twin_sync",
-        argNames: [],
+        argNames: ["sink"],
       );
 
   @override
@@ -23986,202 +24151,219 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Stream<ApplicationModeArray2> mirrorArrayEnumStreamTwinSync({dynamic hint}) {
-    return handler.executeStream(StreamTask(
-      callFfi: (port_) {
+    final sink = RustStreamSink<ApplicationModeArray2>();
+    handler.executeSync(SyncTask(
+      callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 779, port: port_);
+        sse_encode_StreamSink_application_mode_array_2_Sse(sink, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 779)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_application_mode_array_2,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kMirrorArrayEnumStreamTwinSyncConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kMirrorArrayEnumStreamTwinSyncConstMeta =>
       const TaskConstMeta(
         debugName: "mirror_array_enum_stream_twin_sync",
-        argNames: [],
+        argNames: ["sink"],
       );
 
   @override
   Stream<ApplicationMode> mirrorEnumStreamTwinSync({dynamic hint}) {
-    return handler.executeStream(StreamTask(
-      callFfi: (port_) {
+    final sink = RustStreamSink<ApplicationMode>();
+    handler.executeSync(SyncTask(
+      callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 774, port: port_);
+        sse_encode_StreamSink_application_mode_Sse(sink, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 774)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_application_mode,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kMirrorEnumStreamTwinSyncConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kMirrorEnumStreamTwinSyncConstMeta => const TaskConstMeta(
         debugName: "mirror_enum_stream_twin_sync",
-        argNames: [],
+        argNames: ["sink"],
       );
 
   @override
   Stream<Map<int, ApplicationMode>> mirrorMapEnumStreamTwinSync(
       {dynamic hint}) {
-    return handler.executeStream(StreamTask(
-      callFfi: (port_) {
+    final sink = RustStreamSink<Map<int, ApplicationMode>>();
+    handler.executeSync(SyncTask(
+      callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 777, port: port_);
+        sse_encode_StreamSink_Map_u_8_application_mode_Sse(sink, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 777)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_u_8_application_mode,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kMirrorMapEnumStreamTwinSyncConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kMirrorMapEnumStreamTwinSyncConstMeta =>
       const TaskConstMeta(
         debugName: "mirror_map_enum_stream_twin_sync",
-        argNames: [],
+        argNames: ["sink"],
       );
 
   @override
   Stream<ApplicationMode?> mirrorOptionEnumStreamTwinSync({dynamic hint}) {
-    return handler.executeStream(StreamTask(
-      callFfi: (port_) {
+    final sink = RustStreamSink<ApplicationMode?>();
+    handler.executeSync(SyncTask(
+      callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 775, port: port_);
+        sse_encode_StreamSink_opt_box_autoadd_application_mode_Sse(
+            sink, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 775)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_application_mode,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kMirrorOptionEnumStreamTwinSyncConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kMirrorOptionEnumStreamTwinSyncConstMeta =>
       const TaskConstMeta(
         debugName: "mirror_option_enum_stream_twin_sync",
-        argNames: [],
+        argNames: ["sink"],
       );
 
   @override
   Stream<Set<ApplicationMode>> mirrorSetEnumStreamTwinSync({dynamic hint}) {
-    return handler.executeStream(StreamTask(
-      callFfi: (port_) {
+    final sink = RustStreamSink<Set<ApplicationMode>>();
+    handler.executeSync(SyncTask(
+      callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 778, port: port_);
+        sse_encode_StreamSink_Set_application_mode_Sse(sink, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 778)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Set_application_mode,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kMirrorSetEnumStreamTwinSyncConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kMirrorSetEnumStreamTwinSyncConstMeta =>
       const TaskConstMeta(
         debugName: "mirror_set_enum_stream_twin_sync",
-        argNames: [],
+        argNames: ["sink"],
       );
 
   @override
   Stream<MirrorStructTwinSync> mirrorStructStreamTwinSync({dynamic hint}) {
-    return handler.executeStream(StreamTask(
-      callFfi: (port_) {
+    final sink = RustStreamSink<MirrorStructTwinSync>();
+    handler.executeSync(SyncTask(
+      callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 759, port: port_);
+        sse_encode_StreamSink_mirror_struct_twin_sync_Sse(sink, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 759)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_mirror_struct_twin_sync,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kMirrorStructStreamTwinSyncConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kMirrorStructStreamTwinSyncConstMeta => const TaskConstMeta(
         debugName: "mirror_struct_stream_twin_sync",
-        argNames: [],
+        argNames: ["sink"],
       );
 
   @override
   Stream<(ApplicationSettings, RawStringEnumMirrored)>
       mirrorTupleStreamTwinSync({dynamic hint}) {
-    return handler.executeStream(StreamTask(
-      callFfi: (port_) {
+    final sink = RustStreamSink<(ApplicationSettings, RawStringEnumMirrored)>();
+    handler.executeSync(SyncTask(
+      callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 760, port: port_);
+        sse_encode_StreamSink_record_application_settings_raw_string_enum_mirrored_Sse(
+            sink, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 760)!;
       },
       codec: SseCodec(
-        decodeSuccessData:
-            sse_decode_record_application_settings_raw_string_enum_mirrored,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kMirrorTupleStreamTwinSyncConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kMirrorTupleStreamTwinSyncConstMeta => const TaskConstMeta(
         debugName: "mirror_tuple_stream_twin_sync",
-        argNames: [],
+        argNames: ["sink"],
       );
 
   @override
   Stream<List<ApplicationMode>> mirrorVecEnumStreamTwinSync({dynamic hint}) {
-    return handler.executeStream(StreamTask(
-      callFfi: (port_) {
+    final sink = RustStreamSink<List<ApplicationMode>>();
+    handler.executeSync(SyncTask(
+      callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 776, port: port_);
+        sse_encode_StreamSink_list_application_mode_Sse(sink, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 776)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_application_mode,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kMirrorVecEnumStreamTwinSyncConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kMirrorVecEnumStreamTwinSyncConstMeta =>
       const TaskConstMeta(
         debugName: "mirror_vec_enum_stream_twin_sync",
-        argNames: [],
+        argNames: ["sink"],
       );
 
   @override
@@ -26951,30 +27133,33 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Stream<NonCloneSimpleTwinRustAsync> rustAutoOpaqueStreamSinkTwinRustAsync(
-      {dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<NonCloneSimpleTwinRustAsync>>
+      rustAutoOpaqueStreamSinkTwinRustAsync({dynamic hint}) async {
+    final sink = RustStreamSink<NonCloneSimpleTwinRustAsync>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync_Sse(
+            sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 856, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData:
-            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kRustAutoOpaqueStreamSinkTwinRustAsyncConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kRustAutoOpaqueStreamSinkTwinRustAsyncConstMeta =>
       const TaskConstMeta(
         debugName: "rust_auto_opaque_stream_sink_twin_rust_async",
-        argNames: [],
+        argNames: ["sink"],
       );
 
   @override
@@ -28270,28 +28455,30 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Stream<NonCloneSimpleTwinSync> rustAutoOpaqueStreamSinkTwinSync(
       {dynamic hint}) {
-    return handler.executeStream(StreamTask(
-      callFfi: (port_) {
+    final sink = RustStreamSink<NonCloneSimpleTwinSync>();
+    handler.executeSync(SyncTask(
+      callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 902, port: port_);
+        sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync_Sse(
+            sink, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 902)!;
       },
       codec: SseCodec(
-        decodeSuccessData:
-            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kRustAutoOpaqueStreamSinkTwinSyncConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kRustAutoOpaqueStreamSinkTwinSyncConstMeta =>
       const TaskConstMeta(
         debugName: "rust_auto_opaque_stream_sink_twin_sync",
-        argNames: [],
+        argNames: ["sink"],
       );
 
   @override
@@ -29337,217 +29524,299 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Stream<String> funcStreamReturnErrorTwinRustAsync({dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<String>> funcStreamReturnErrorTwinRustAsync(
+      {dynamic hint}) async {
+    final sink = RustStreamSink<String>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_String_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 956, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_String,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: sse_decode_AnyhowException,
       ),
       constMeta: kFuncStreamReturnErrorTwinRustAsyncConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kFuncStreamReturnErrorTwinRustAsyncConstMeta =>
       const TaskConstMeta(
         debugName: "func_stream_return_error_twin_rust_async",
-        argNames: [],
+        argNames: ["sink"],
       );
 
   @override
-  Stream<String> funcStreamReturnPanicTwinRustAsync({dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<String>> funcStreamReturnPanicTwinRustAsync(
+      {dynamic hint}) async {
+    final sink = RustStreamSink<String>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_String_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 957, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_String,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: sse_decode_AnyhowException,
       ),
       constMeta: kFuncStreamReturnPanicTwinRustAsyncConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kFuncStreamReturnPanicTwinRustAsyncConstMeta =>
       const TaskConstMeta(
         debugName: "func_stream_return_panic_twin_rust_async",
-        argNames: [],
+        argNames: ["sink"],
       );
 
   @override
-  Stream<int> funcStreamSinkArgPositionTwinRustAsync(
-      {required int a, required int b, dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<int>> funcStreamSinkArgPositionTwinRustAsync(
+      {required int a, required int b, dynamic hint}) async {
+    final c = RustStreamSink<int>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_32(a, serializer);
         sse_encode_u_32(b, serializer);
+        sse_encode_StreamSink_u_32_Sse(c, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 958, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_u_32,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kFuncStreamSinkArgPositionTwinRustAsyncConstMeta,
-      argValues: [a, b],
+      argValues: [a, b, c],
       apiImpl: this,
       hint: hint,
     ));
+    return c.stream;
   }
 
   TaskConstMeta get kFuncStreamSinkArgPositionTwinRustAsyncConstMeta =>
       const TaskConstMeta(
         debugName: "func_stream_sink_arg_position_twin_rust_async",
-        argNames: ["a", "b"],
+        argNames: ["a", "b", "c"],
       );
 
   @override
-  Stream<MyStreamEntryTwinRustAsync> handleStreamOfStructTwinRustAsync(
-      {dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<MyStreamEntryTwinRustAsync>> handleStreamOfStructTwinRustAsync(
+      {dynamic hint}) async {
+    final sink = RustStreamSink<MyStreamEntryTwinRustAsync>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_my_stream_entry_twin_rust_async_Sse(
+            sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 959, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_my_stream_entry_twin_rust_async,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kHandleStreamOfStructTwinRustAsyncConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kHandleStreamOfStructTwinRustAsyncConstMeta =>
       const TaskConstMeta(
         debugName: "handle_stream_of_struct_twin_rust_async",
-        argNames: [],
+        argNames: ["sink"],
       );
 
   @override
-  Stream<LogTwinRustAsync> handleStreamSinkAt1TwinRustAsync(
-      {required int key, required int max, dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<LogTwinRustAsync>> handleStreamSinkAt1TwinRustAsync(
+      {required int key, required int max, dynamic hint}) async {
+    final sink = RustStreamSink<LogTwinRustAsync>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_32(key, serializer);
         sse_encode_u_32(max, serializer);
+        sse_encode_StreamSink_log_twin_rust_async_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 960, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_log_twin_rust_async,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kHandleStreamSinkAt1TwinRustAsyncConstMeta,
-      argValues: [key, max],
+      argValues: [key, max, sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kHandleStreamSinkAt1TwinRustAsyncConstMeta =>
       const TaskConstMeta(
         debugName: "handle_stream_sink_at_1_twin_rust_async",
-        argNames: ["key", "max"],
+        argNames: ["key", "max", "sink"],
       );
 
   @override
-  Stream<LogTwinRustAsync> handleStreamSinkAt2TwinRustAsync(
-      {required int key, required int max, dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<LogTwinRustAsync>> handleStreamSinkAt2TwinRustAsync(
+      {required int key, required int max, dynamic hint}) async {
+    final sink = RustStreamSink<LogTwinRustAsync>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_32(key, serializer);
+        sse_encode_StreamSink_log_twin_rust_async_Sse(sink, serializer);
         sse_encode_u_32(max, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 961, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_log_twin_rust_async,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kHandleStreamSinkAt2TwinRustAsyncConstMeta,
-      argValues: [key, max],
+      argValues: [key, sink, max],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kHandleStreamSinkAt2TwinRustAsyncConstMeta =>
       const TaskConstMeta(
         debugName: "handle_stream_sink_at_2_twin_rust_async",
-        argNames: ["key", "max"],
+        argNames: ["key", "sink", "max"],
       );
 
   @override
-  Stream<LogTwinRustAsync> handleStreamSinkAt3TwinRustAsync(
-      {required int key, required int max, dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<LogTwinRustAsync>> handleStreamSinkAt3TwinRustAsync(
+      {required int key, required int max, dynamic hint}) async {
+    final sink = RustStreamSink<LogTwinRustAsync>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_log_twin_rust_async_Sse(sink, serializer);
         sse_encode_u_32(key, serializer);
         sse_encode_u_32(max, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 962, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_log_twin_rust_async,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kHandleStreamSinkAt3TwinRustAsyncConstMeta,
-      argValues: [key, max],
+      argValues: [sink, key, max],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kHandleStreamSinkAt3TwinRustAsyncConstMeta =>
       const TaskConstMeta(
         debugName: "handle_stream_sink_at_3_twin_rust_async",
-        argNames: ["key", "max"],
+        argNames: ["sink", "key", "max"],
       );
 
   @override
-  Stream<U8Array2> streamSinkFixedSizedPrimitiveArrayTwinRustAsync(
-      {dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<U8Array2>> streamSinkFixedSizedPrimitiveArrayTwinRustAsync(
+      {dynamic hint}) async {
+    final sink = RustStreamSink<U8Array2>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_u_8_array_2_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 963, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_u_8_array_2,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kStreamSinkFixedSizedPrimitiveArrayTwinRustAsyncConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kStreamSinkFixedSizedPrimitiveArrayTwinRustAsyncConstMeta =>
       const TaskConstMeta(
         debugName: "stream_sink_fixed_sized_primitive_array_twin_rust_async",
-        argNames: [],
+        argNames: ["sink"],
+      );
+
+  @override
+  Future<void> streamSinkInsideStructTwinRustAsync(
+      {required MyStructContainingStreamSinkTwinRustAsync arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_box_autoadd_my_struct_containing_stream_sink_twin_rust_async(
+            arg, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 965, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kStreamSinkInsideStructTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kStreamSinkInsideStructTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "stream_sink_inside_struct_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<void> streamSinkInsideVecTwinRustAsync(
+      {required List<RustStreamSink<int>> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_StreamSink_i_32_Sse(arg, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 964, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kStreamSinkInsideVecTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kStreamSinkInsideVecTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "stream_sink_inside_vec_twin_rust_async",
+        argNames: ["arg"],
       );
 
   @override
@@ -29559,7 +29828,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_box_autoadd_struct_with_one_field_twin_rust_async(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 965, port: port_);
+            funcId: 967, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_struct_with_one_field_twin_rust_async,
@@ -29587,7 +29856,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_box_autoadd_struct_with_two_field_twin_rust_async(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 966, port: port_);
+            funcId: 968, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_struct_with_two_field_twin_rust_async,
@@ -29615,7 +29884,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_box_autoadd_struct_with_zero_field_twin_rust_async(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 964, port: port_);
+            funcId: 966, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_struct_with_zero_field_twin_rust_async,
@@ -29644,7 +29913,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_box_autoadd_tuple_struct_with_one_field_twin_rust_async(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 967, port: port_);
+            funcId: 969, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -29674,7 +29943,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_box_autoadd_tuple_struct_with_two_field_twin_rust_async(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 968, port: port_);
+            funcId: 970, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -29701,7 +29970,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_box_autoadd_struct_with_one_field_twin_sync(arg, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 970)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 972)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_struct_with_one_field_twin_sync,
@@ -29727,7 +29996,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_box_autoadd_struct_with_two_field_twin_sync(arg, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 971)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 973)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_struct_with_two_field_twin_sync,
@@ -29754,7 +30023,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_box_autoadd_struct_with_zero_field_twin_sync(
             arg, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 969)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 971)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_struct_with_zero_field_twin_sync,
@@ -29781,7 +30050,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_box_autoadd_tuple_struct_with_one_field_twin_sync(
             arg, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 972)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 974)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_tuple_struct_with_one_field_twin_sync,
@@ -29808,7 +30077,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_box_autoadd_tuple_struct_with_two_field_twin_sync(
             arg, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 973)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 975)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_tuple_struct_with_two_field_twin_sync,
@@ -29835,7 +30104,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_list_record_string_i_32(value, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 975, port: port_);
+            funcId: 977, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -29861,7 +30130,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_opt_box_autoadd_record_string_i_32(value, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 974, port: port_);
+            funcId: 976, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_record_string_i_32,
@@ -29885,7 +30154,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_list_record_string_i_32(value, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 977)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 979)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -29909,7 +30178,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_opt_box_autoadd_record_string_i_32(value, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 976)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 978)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_record_string_i_32,
@@ -29935,7 +30204,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_64(input, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 978, port: port_);
+            funcId: 980, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_u_64,
@@ -29962,7 +30231,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_64(input, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 980, port: port_);
+            funcId: 982, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_test_model_twin_rust_async,
@@ -29989,7 +30258,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_64(input, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 979, port: port_);
+            funcId: 981, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_u_64,
@@ -30014,7 +30283,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_64(input, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 981)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 983)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_u_64,
@@ -30039,7 +30308,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_64(input, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 983)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 985)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_test_model_twin_sync,
@@ -30064,7 +30333,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_64(input, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 982)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 984)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_u_64,
@@ -30091,7 +30360,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_box_autoadd_feature_uuid_twin_rust_async(ids, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 986, port: port_);
+            funcId: 988, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_feature_uuid_twin_rust_async,
@@ -30118,7 +30387,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_Uuid(id, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 984, port: port_);
+            funcId: 986, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_Uuid,
@@ -30144,7 +30413,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_list_Uuid(ids, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 985, port: port_);
+            funcId: 987, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_list_Uuid,
@@ -30169,7 +30438,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_box_autoadd_feature_uuid_twin_sync(ids, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 989)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 991)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_feature_uuid_twin_sync,
@@ -30193,7 +30462,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_Uuid(id, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 987)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 989)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_Uuid,
@@ -30218,7 +30487,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_list_Uuid(ids, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 988)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 990)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_list_Uuid,
@@ -30243,7 +30512,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 991, port: port_);
+            funcId: 993, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -30270,7 +30539,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 990, port: port_);
+            funcId: 992, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_raw_string_item_struct_twin_normal,
@@ -30298,7 +30567,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
             that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1034, port: port_);
+            funcId: 1036, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -30329,7 +30598,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
             that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1035, port: port_);
+            funcId: 1037, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -30360,7 +30629,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
             that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1033, port: port_);
+            funcId: 1035, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -30391,7 +30660,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
             that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1037, port: port_);
+            funcId: 1039, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
@@ -30423,7 +30692,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
             that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1036, port: port_);
+            funcId: 1038, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -30453,7 +30722,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1031, port: port_);
+            funcId: 1033, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -30480,7 +30749,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1030, port: port_);
+            funcId: 1032, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -30507,7 +30776,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1032, port: port_);
+            funcId: 1034, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -30536,7 +30805,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1027, port: port_);
+            funcId: 1029, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -30567,7 +30836,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1028, port: port_);
+            funcId: 1030, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -30598,7 +30867,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1026, port: port_);
+            funcId: 1028, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -30626,7 +30895,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1029, port: port_);
+            funcId: 1031, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -30661,7 +30930,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             arg, serializer);
         sse_encode_i_32(expect, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 993, port: port_);
+            funcId: 995, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -30694,7 +30963,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(expect, serializer);
         sse_encode_i_32(adder, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 994, port: port_);
+            funcId: 996, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -30722,7 +30991,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 996, port: port_);
+            funcId: 998, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -30754,7 +31023,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             arg, serializer);
         sse_encode_i_32(expect, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 992, port: port_);
+            funcId: 994, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -30785,7 +31054,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             arg, serializer);
         sse_encode_list_prim_i_32_loose(expect, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1017, port: port_);
+            funcId: 1019, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -30817,7 +31086,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
             b, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1025, port: port_);
+            funcId: 1027, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
@@ -30849,7 +31118,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
             mutBorrow, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1024, port: port_);
+            funcId: 1026, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
@@ -30877,7 +31146,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynFnStringStringSendSync(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1001, port: port_);
+            funcId: 1003, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -30903,7 +31172,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1002, port: port_);
+            funcId: 1004, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -30936,7 +31205,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockEnumWithGoodAndOpaqueWithoutOptionTwinNormal(
             b, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1013, port: port_);
+            funcId: 1015, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -30964,7 +31233,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleEnumTwinNormal(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1014, port: port_);
+            funcId: 1016, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -30990,7 +31259,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1015, port: port_);
+            funcId: 1017, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -31019,7 +31288,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_box_autoadd_enum_with_good_and_opaque_twin_normal(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1010, port: port_);
+            funcId: 1012, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -31048,7 +31317,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1011, port: port_);
+            funcId: 1013, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_enum_with_good_and_opaque_twin_normal,
@@ -31078,7 +31347,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1012, port: port_);
+            funcId: 1014, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_enum_with_good_and_opaque_twin_normal,
@@ -31112,7 +31381,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             arg, serializer);
         sse_encode_i_32(expect, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1019, port: port_);
+            funcId: 1021, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -31139,7 +31408,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_i_32(initial, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1021, port: port_);
+            funcId: 1023, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -31169,7 +31438,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_normal(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1020, port: port_);
+            funcId: 1022, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -31198,7 +31467,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             a, serializer);
         sse_encode_String(b, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 998, port: port_);
+            funcId: 1000, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -31226,7 +31495,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinNormalSendSync(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 999, port: port_);
+            funcId: 1001, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -31252,7 +31521,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1000, port: port_);
+            funcId: 1002, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -31279,7 +31548,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1022, port: port_);
+            funcId: 1024, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -31306,7 +31575,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1023, port: port_);
+            funcId: 1025, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -31334,7 +31603,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_i_32(initial, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 995, port: port_);
+            funcId: 997, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -31361,7 +31630,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1018, port: port_);
+            funcId: 1020, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -31382,30 +31651,33 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Stream<NonCloneSimpleTwinNormal> rustAutoOpaqueStreamSinkTwinNormal(
-      {dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<NonCloneSimpleTwinNormal>> rustAutoOpaqueStreamSinkTwinNormal(
+      {dynamic hint}) async {
+    final sink = RustStreamSink<NonCloneSimpleTwinNormal>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal_Sse(
+            sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1016, port: port_);
+            funcId: 1018, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData:
-            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kRustAutoOpaqueStreamSinkTwinNormalConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kRustAutoOpaqueStreamSinkTwinNormalConstMeta =>
       const TaskConstMeta(
         debugName: "rust_auto_opaque_stream_sink_twin_normal",
-        argNames: [],
+        argNames: ["sink"],
       );
 
   @override
@@ -31417,7 +31689,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_box_autoadd_struct_with_good_and_opaque_field_twin_normal(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1008, port: port_);
+            funcId: 1010, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -31447,7 +31719,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1009, port: port_);
+            funcId: 1011, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -31482,7 +31754,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             arg, serializer);
         sse_encode_String(expect, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1004, port: port_);
+            funcId: 1006, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -31513,7 +31785,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             arg, serializer);
         sse_encode_String(expect, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1005, port: port_);
+            funcId: 1007, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -31544,7 +31816,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             arg, serializer);
         sse_encode_String(expect, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1003, port: port_);
+            funcId: 1005, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -31570,7 +31842,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1006, port: port_);
+            funcId: 1008, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -31597,7 +31869,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1007, port: port_);
+            funcId: 1009, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -31630,7 +31902,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
             b, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 997, port: port_);
+            funcId: 999, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -31656,7 +31928,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1040, port: port_);
+            funcId: 1042, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_enum_opaque_twin_normal_array_5,
@@ -31681,7 +31953,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1049, port: port_);
+            funcId: 1051, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_opaque_nested_twin_normal,
@@ -31706,7 +31978,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1038, port: port_);
+            funcId: 1040, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_RustOpaque_HideDataTwinNormal,
@@ -31733,7 +32005,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_opt_box_autoadd_RustOpaque_HideDataTwinNormal(
             opaque, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1039, port: port_);
+            funcId: 1041, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -31759,7 +32031,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1052, port: port_);
+            funcId: 1054, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_RustOpaque_FrbOpaqueReturnTwinNormal,
@@ -31785,7 +32057,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_RustOpaque_HideDataTwinNormal_array_2(data, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1046, port: port_);
+            funcId: 1048, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -31809,7 +32081,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1044, port: port_);
+            funcId: 1046, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_RustOpaque_HideDataTwinNormal_array_2,
@@ -31835,7 +32107,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_list_RustOpaque_HideDataTwinNormal(data, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1048, port: port_);
+            funcId: 1050, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -31859,7 +32131,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1047, port: port_);
+            funcId: 1049, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_list_RustOpaque_HideDataTwinNormal,
@@ -31885,7 +32157,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_box_autoadd_enum_opaque_twin_normal(opaque, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1041, port: port_);
+            funcId: 1043, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -31911,7 +32183,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_box_autoadd_opaque_nested_twin_normal(opaque, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1050, port: port_);
+            funcId: 1052, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -31937,7 +32209,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_RustOpaque_NonCloneDataTwinNormal(clone, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1045, port: port_);
+            funcId: 1047, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -31963,7 +32235,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_RustOpaque_HideDataTwinNormal(opaque, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1042, port: port_);
+            funcId: 1044, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -31989,7 +32261,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_RustOpaque_HideDataTwinNormal(opaque, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1043, port: port_);
+            funcId: 1045, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -32016,7 +32288,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_RustOpaque_HideDataTwinNormal(opaque, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1051, port: port_);
+            funcId: 1053, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -32039,7 +32311,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1056)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1058)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_RustOpaque_FrbOpaqueSyncReturnTwinNormal,
@@ -32063,7 +32335,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1055)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1057)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_RustOpaque_NonCloneDataTwinNormal,
@@ -32087,7 +32359,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1054)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1056)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_RustOpaque_HideDataAnotherTwinNormal,
@@ -32110,7 +32382,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1053)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1055)!;
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -32139,7 +32411,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(a, serializer);
         sse_encode_i_32(b, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1057, port: port_);
+            funcId: 1059, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
@@ -32158,244 +32430,326 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Stream<String> funcStreamReturnErrorTwinNormal({dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<String>> funcStreamReturnErrorTwinNormal({dynamic hint}) async {
+    final sink = RustStreamSink<String>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_String_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1058, port: port_);
+            funcId: 1060, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_String,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: sse_decode_AnyhowException,
       ),
       constMeta: kFuncStreamReturnErrorTwinNormalConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kFuncStreamReturnErrorTwinNormalConstMeta =>
       const TaskConstMeta(
         debugName: "func_stream_return_error_twin_normal",
-        argNames: [],
+        argNames: ["sink"],
       );
 
   @override
-  Stream<String> funcStreamReturnPanicTwinNormal({dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<String>> funcStreamReturnPanicTwinNormal({dynamic hint}) async {
+    final sink = RustStreamSink<String>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_String_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1059, port: port_);
+            funcId: 1061, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_String,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: sse_decode_AnyhowException,
       ),
       constMeta: kFuncStreamReturnPanicTwinNormalConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kFuncStreamReturnPanicTwinNormalConstMeta =>
       const TaskConstMeta(
         debugName: "func_stream_return_panic_twin_normal",
-        argNames: [],
+        argNames: ["sink"],
       );
 
   @override
-  Stream<int> funcStreamSinkArgPositionTwinNormal(
-      {required int a, required int b, dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<int>> funcStreamSinkArgPositionTwinNormal(
+      {required int a, required int b, dynamic hint}) async {
+    final c = RustStreamSink<int>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_32(a, serializer);
         sse_encode_u_32(b, serializer);
+        sse_encode_StreamSink_u_32_Sse(c, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1060, port: port_);
+            funcId: 1062, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_u_32,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kFuncStreamSinkArgPositionTwinNormalConstMeta,
-      argValues: [a, b],
+      argValues: [a, b, c],
       apiImpl: this,
       hint: hint,
     ));
+    return c.stream;
   }
 
   TaskConstMeta get kFuncStreamSinkArgPositionTwinNormalConstMeta =>
       const TaskConstMeta(
         debugName: "func_stream_sink_arg_position_twin_normal",
-        argNames: ["a", "b"],
+        argNames: ["a", "b", "c"],
       );
 
   @override
-  Stream<MyStreamEntryTwinNormal> handleStreamOfStructTwinNormal(
-      {dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<MyStreamEntryTwinNormal>> handleStreamOfStructTwinNormal(
+      {dynamic hint}) async {
+    final sink = RustStreamSink<MyStreamEntryTwinNormal>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_my_stream_entry_twin_normal_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1061, port: port_);
+            funcId: 1063, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_my_stream_entry_twin_normal,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kHandleStreamOfStructTwinNormalConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kHandleStreamOfStructTwinNormalConstMeta =>
       const TaskConstMeta(
         debugName: "handle_stream_of_struct_twin_normal",
-        argNames: [],
+        argNames: ["sink"],
       );
 
   @override
-  Stream<LogTwinNormal> handleStreamSinkAt1TwinNormal(
-      {required int key, required int max, dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<LogTwinNormal>> handleStreamSinkAt1TwinNormal(
+      {required int key, required int max, dynamic hint}) async {
+    final sink = RustStreamSink<LogTwinNormal>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_32(key, serializer);
         sse_encode_u_32(max, serializer);
+        sse_encode_StreamSink_log_twin_normal_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1062, port: port_);
+            funcId: 1064, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_log_twin_normal,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kHandleStreamSinkAt1TwinNormalConstMeta,
-      argValues: [key, max],
+      argValues: [key, max, sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kHandleStreamSinkAt1TwinNormalConstMeta =>
       const TaskConstMeta(
         debugName: "handle_stream_sink_at_1_twin_normal",
-        argNames: ["key", "max"],
+        argNames: ["key", "max", "sink"],
       );
 
   @override
-  Stream<LogTwinNormal> handleStreamSinkAt2TwinNormal(
-      {required int key, required int max, dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<LogTwinNormal>> handleStreamSinkAt2TwinNormal(
+      {required int key, required int max, dynamic hint}) async {
+    final sink = RustStreamSink<LogTwinNormal>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_32(key, serializer);
+        sse_encode_StreamSink_log_twin_normal_Sse(sink, serializer);
         sse_encode_u_32(max, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1063, port: port_);
+            funcId: 1065, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_log_twin_normal,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kHandleStreamSinkAt2TwinNormalConstMeta,
-      argValues: [key, max],
+      argValues: [key, sink, max],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kHandleStreamSinkAt2TwinNormalConstMeta =>
       const TaskConstMeta(
         debugName: "handle_stream_sink_at_2_twin_normal",
-        argNames: ["key", "max"],
+        argNames: ["key", "sink", "max"],
       );
 
   @override
-  Stream<LogTwinNormal> handleStreamSinkAt3TwinNormal(
-      {required int key, required int max, dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<LogTwinNormal>> handleStreamSinkAt3TwinNormal(
+      {required int key, required int max, dynamic hint}) async {
+    final sink = RustStreamSink<LogTwinNormal>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_log_twin_normal_Sse(sink, serializer);
         sse_encode_u_32(key, serializer);
         sse_encode_u_32(max, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1064, port: port_);
+            funcId: 1066, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_log_twin_normal,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kHandleStreamSinkAt3TwinNormalConstMeta,
-      argValues: [key, max],
+      argValues: [sink, key, max],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kHandleStreamSinkAt3TwinNormalConstMeta =>
       const TaskConstMeta(
         debugName: "handle_stream_sink_at_3_twin_normal",
-        argNames: ["key", "max"],
+        argNames: ["sink", "key", "max"],
       );
 
   @override
-  Stream<U8Array2> streamSinkFixedSizedPrimitiveArrayTwinNormal(
-      {dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<Stream<U8Array2>> streamSinkFixedSizedPrimitiveArrayTwinNormal(
+      {dynamic hint}) async {
+    final sink = RustStreamSink<U8Array2>();
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_u_8_array_2_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1065, port: port_);
+            funcId: 1067, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_u_8_array_2,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kStreamSinkFixedSizedPrimitiveArrayTwinNormalConstMeta,
-      argValues: [],
+      argValues: [sink],
       apiImpl: this,
       hint: hint,
     ));
+    return sink.stream;
   }
 
   TaskConstMeta get kStreamSinkFixedSizedPrimitiveArrayTwinNormalConstMeta =>
       const TaskConstMeta(
         debugName: "stream_sink_fixed_sized_primitive_array_twin_normal",
-        argNames: [],
+        argNames: ["sink"],
       );
 
   @override
-  Stream<String> funcStreamRealisticTwinNormal(
-      {required String arg, dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<void> streamSinkInsideStructTwinNormal(
+      {required MyStructContainingStreamSinkTwinNormal arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_String(arg, serializer);
+        sse_encode_box_autoadd_my_struct_containing_stream_sink_twin_normal(
+            arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1066, port: port_);
+            funcId: 1069, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_String,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kFuncStreamRealisticTwinNormalConstMeta,
+      constMeta: kStreamSinkInsideStructTwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
       hint: hint,
     ));
   }
 
+  TaskConstMeta get kStreamSinkInsideStructTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "stream_sink_inside_struct_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<void> streamSinkInsideVecTwinNormal(
+      {required List<RustStreamSink<int>> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_StreamSink_i_32_Sse(arg, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 1068, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kStreamSinkInsideVecTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kStreamSinkInsideVecTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "stream_sink_inside_vec_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Stream<String>> funcStreamRealisticTwinNormal(
+      {required String arg, dynamic hint}) async {
+    final sink = RustStreamSink<String>();
+    await handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_String_Sse(sink, serializer);
+        sse_encode_String(arg, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 1070, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kFuncStreamRealisticTwinNormalConstMeta,
+      argValues: [sink, arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+    return sink.stream;
+  }
+
   TaskConstMeta get kFuncStreamRealisticTwinNormalConstMeta =>
       const TaskConstMeta(
         debugName: "func_stream_realistic_twin_normal",
-        argNames: ["arg"],
+        argNames: ["sink", "arg"],
       );
 
   @override
@@ -32407,7 +32761,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_box_autoadd_struct_with_one_field_twin_normal(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1068, port: port_);
+            funcId: 1072, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_struct_with_one_field_twin_normal,
@@ -32435,7 +32789,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_box_autoadd_struct_with_two_field_twin_normal(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1069, port: port_);
+            funcId: 1073, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_struct_with_two_field_twin_normal,
@@ -32463,7 +32817,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_box_autoadd_struct_with_zero_field_twin_normal(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1067, port: port_);
+            funcId: 1071, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_struct_with_zero_field_twin_normal,
@@ -32492,7 +32846,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_box_autoadd_tuple_struct_with_one_field_twin_normal(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1070, port: port_);
+            funcId: 1074, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_tuple_struct_with_one_field_twin_normal,
@@ -32521,7 +32875,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_box_autoadd_tuple_struct_with_two_field_twin_normal(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1071, port: port_);
+            funcId: 1075, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_tuple_struct_with_two_field_twin_normal,
@@ -32548,7 +32902,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_list_record_string_i_32(value, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1073, port: port_);
+            funcId: 1077, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -32574,7 +32928,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_opt_box_autoadd_record_string_i_32(value, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1072, port: port_);
+            funcId: 1076, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_record_string_i_32,
@@ -32599,7 +32953,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_64(input, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1074, port: port_);
+            funcId: 1078, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_u_64,
@@ -32626,7 +32980,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_64(input, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1076, port: port_);
+            funcId: 1080, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_test_model_twin_normal,
@@ -32653,7 +33007,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_64(input, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1075, port: port_);
+            funcId: 1079, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_u_64,
@@ -32680,7 +33034,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_box_autoadd_feature_uuid_twin_normal(ids, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1079, port: port_);
+            funcId: 1083, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_feature_uuid_twin_normal,
@@ -32707,7 +33061,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_Uuid(id, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1077, port: port_);
+            funcId: 1081, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_Uuid,
@@ -32733,7 +33087,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_list_Uuid(ids, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1078, port: port_);
+            funcId: 1082, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_list_Uuid,
@@ -34845,6 +35199,202 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  RustStreamSink<NonCloneSimpleTwinNormal>
+      dco_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal_Sse(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    throw UnimplementedError();
+  }
+
+  @protected
+  RustStreamSink<NonCloneSimpleTwinRustAsync>
+      dco_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync_Sse(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    throw UnimplementedError();
+  }
+
+  @protected
+  RustStreamSink<NonCloneSimpleTwinSync>
+      dco_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync_Sse(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    throw UnimplementedError();
+  }
+
+  @protected
+  RustStreamSink<Map<int, ApplicationMode>>
+      dco_decode_StreamSink_Map_u_8_application_mode_Sse(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    throw UnimplementedError();
+  }
+
+  @protected
+  RustStreamSink<Set<ApplicationMode>>
+      dco_decode_StreamSink_Set_application_mode_Sse(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    throw UnimplementedError();
+  }
+
+  @protected
+  RustStreamSink<String> dco_decode_StreamSink_String_Sse(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    throw UnimplementedError();
+  }
+
+  @protected
+  RustStreamSink<ApplicationMode> dco_decode_StreamSink_application_mode_Sse(
+      dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    throw UnimplementedError();
+  }
+
+  @protected
+  RustStreamSink<ApplicationModeArray2>
+      dco_decode_StreamSink_application_mode_array_2_Sse(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    throw UnimplementedError();
+  }
+
+  @protected
+  RustStreamSink<ApplicationSettings>
+      dco_decode_StreamSink_application_settings_Sse(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    throw UnimplementedError();
+  }
+
+  @protected
+  RustStreamSink<EventTwinNormal> dco_decode_StreamSink_event_twin_normal_Sse(
+      dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    throw UnimplementedError();
+  }
+
+  @protected
+  RustStreamSink<EventTwinRustAsync>
+      dco_decode_StreamSink_event_twin_rust_async_Sse(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    throw UnimplementedError();
+  }
+
+  @protected
+  RustStreamSink<int> dco_decode_StreamSink_i_32_Sse(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    throw UnimplementedError();
+  }
+
+  @protected
+  RustStreamSink<List<ApplicationMode>>
+      dco_decode_StreamSink_list_application_mode_Sse(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    throw UnimplementedError();
+  }
+
+  @protected
+  RustStreamSink<List<ApplicationSettings>>
+      dco_decode_StreamSink_list_application_settings_Sse(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    throw UnimplementedError();
+  }
+
+  @protected
+  RustStreamSink<Log2TwinNormal> dco_decode_StreamSink_log_2_twin_normal_Sse(
+      dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    throw UnimplementedError();
+  }
+
+  @protected
+  RustStreamSink<Log2TwinRustAsync>
+      dco_decode_StreamSink_log_2_twin_rust_async_Sse(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    throw UnimplementedError();
+  }
+
+  @protected
+  RustStreamSink<Log2TwinSync> dco_decode_StreamSink_log_2_twin_sync_Sse(
+      dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    throw UnimplementedError();
+  }
+
+  @protected
+  RustStreamSink<LogTwinNormal> dco_decode_StreamSink_log_twin_normal_Sse(
+      dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    throw UnimplementedError();
+  }
+
+  @protected
+  RustStreamSink<LogTwinRustAsync>
+      dco_decode_StreamSink_log_twin_rust_async_Sse(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    throw UnimplementedError();
+  }
+
+  @protected
+  RustStreamSink<MirrorStructTwinNormal>
+      dco_decode_StreamSink_mirror_struct_twin_normal_Sse(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    throw UnimplementedError();
+  }
+
+  @protected
+  RustStreamSink<MirrorStructTwinRustAsync>
+      dco_decode_StreamSink_mirror_struct_twin_rust_async_Sse(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    throw UnimplementedError();
+  }
+
+  @protected
+  RustStreamSink<MirrorStructTwinSync>
+      dco_decode_StreamSink_mirror_struct_twin_sync_Sse(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    throw UnimplementedError();
+  }
+
+  @protected
+  RustStreamSink<MyStreamEntryTwinNormal>
+      dco_decode_StreamSink_my_stream_entry_twin_normal_Sse(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    throw UnimplementedError();
+  }
+
+  @protected
+  RustStreamSink<MyStreamEntryTwinRustAsync>
+      dco_decode_StreamSink_my_stream_entry_twin_rust_async_Sse(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    throw UnimplementedError();
+  }
+
+  @protected
+  RustStreamSink<ApplicationMode?>
+      dco_decode_StreamSink_opt_box_autoadd_application_mode_Sse(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    throw UnimplementedError();
+  }
+
+  @protected
+  RustStreamSink<(ApplicationSettings, RawStringEnumMirrored)>
+      dco_decode_StreamSink_record_application_settings_raw_string_enum_mirrored_Sse(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    throw UnimplementedError();
+  }
+
+  @protected
+  RustStreamSink<int> dco_decode_StreamSink_u_32_Sse(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    throw UnimplementedError();
+  }
+
+  @protected
+  RustStreamSink<U8Array2> dco_decode_StreamSink_u_8_array_2_Sse(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    throw UnimplementedError();
+  }
+
+  @protected
   String dco_decode_String(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw as String;
@@ -36317,6 +36867,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   MyStruct dco_decode_box_autoadd_my_struct(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return dco_decode_my_struct(raw);
+  }
+
+  @protected
+  MyStructContainingStreamSinkTwinNormal
+      dco_decode_box_autoadd_my_struct_containing_stream_sink_twin_normal(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_my_struct_containing_stream_sink_twin_normal(raw);
+  }
+
+  @protected
+  MyStructContainingStreamSinkTwinRustAsync
+      dco_decode_box_autoadd_my_struct_containing_stream_sink_twin_rust_async(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_my_struct_containing_stream_sink_twin_rust_async(raw);
   }
 
   @protected
@@ -38741,6 +39307,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  List<RustStreamSink<int>> dco_decode_list_StreamSink_i_32_Sse(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return (raw as List<dynamic>).map(dco_decode_StreamSink_i_32_Sse).toList();
+  }
+
+  @protected
   List<String> dco_decode_list_String(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return (raw as List<dynamic>).map(dco_decode_String).toList();
@@ -39948,6 +40520,32 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return MyStruct(
       content: dco_decode_bool(arr[0]),
+    );
+  }
+
+  @protected
+  MyStructContainingStreamSinkTwinNormal
+      dco_decode_my_struct_containing_stream_sink_twin_normal(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return MyStructContainingStreamSinkTwinNormal(
+      a: dco_decode_i_32(arr[0]),
+      b: dco_decode_StreamSink_i_32_Sse(arr[1]),
+    );
+  }
+
+  @protected
+  MyStructContainingStreamSinkTwinRustAsync
+      dco_decode_my_struct_containing_stream_sink_twin_rust_async(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return MyStructContainingStreamSinkTwinRustAsync(
+      a: dco_decode_i_32(arr[0]),
+      b: dco_decode_StreamSink_i_32_Sse(arr[1]),
     );
   }
 
@@ -43996,6 +44594,221 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  RustStreamSink<NonCloneSimpleTwinNormal>
+      sse_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal_Sse(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    throw UnimplementedError('Unreachable ()');
+  }
+
+  @protected
+  RustStreamSink<NonCloneSimpleTwinRustAsync>
+      sse_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync_Sse(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    throw UnimplementedError('Unreachable ()');
+  }
+
+  @protected
+  RustStreamSink<NonCloneSimpleTwinSync>
+      sse_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync_Sse(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    throw UnimplementedError('Unreachable ()');
+  }
+
+  @protected
+  RustStreamSink<Map<int, ApplicationMode>>
+      sse_decode_StreamSink_Map_u_8_application_mode_Sse(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    throw UnimplementedError('Unreachable ()');
+  }
+
+  @protected
+  RustStreamSink<Set<ApplicationMode>>
+      sse_decode_StreamSink_Set_application_mode_Sse(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    throw UnimplementedError('Unreachable ()');
+  }
+
+  @protected
+  RustStreamSink<String> sse_decode_StreamSink_String_Sse(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    throw UnimplementedError('Unreachable ()');
+  }
+
+  @protected
+  RustStreamSink<ApplicationMode> sse_decode_StreamSink_application_mode_Sse(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    throw UnimplementedError('Unreachable ()');
+  }
+
+  @protected
+  RustStreamSink<ApplicationModeArray2>
+      sse_decode_StreamSink_application_mode_array_2_Sse(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    throw UnimplementedError('Unreachable ()');
+  }
+
+  @protected
+  RustStreamSink<ApplicationSettings>
+      sse_decode_StreamSink_application_settings_Sse(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    throw UnimplementedError('Unreachable ()');
+  }
+
+  @protected
+  RustStreamSink<EventTwinNormal> sse_decode_StreamSink_event_twin_normal_Sse(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    throw UnimplementedError('Unreachable ()');
+  }
+
+  @protected
+  RustStreamSink<EventTwinRustAsync>
+      sse_decode_StreamSink_event_twin_rust_async_Sse(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    throw UnimplementedError('Unreachable ()');
+  }
+
+  @protected
+  RustStreamSink<int> sse_decode_StreamSink_i_32_Sse(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    throw UnimplementedError('Unreachable ()');
+  }
+
+  @protected
+  RustStreamSink<List<ApplicationMode>>
+      sse_decode_StreamSink_list_application_mode_Sse(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    throw UnimplementedError('Unreachable ()');
+  }
+
+  @protected
+  RustStreamSink<List<ApplicationSettings>>
+      sse_decode_StreamSink_list_application_settings_Sse(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    throw UnimplementedError('Unreachable ()');
+  }
+
+  @protected
+  RustStreamSink<Log2TwinNormal> sse_decode_StreamSink_log_2_twin_normal_Sse(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    throw UnimplementedError('Unreachable ()');
+  }
+
+  @protected
+  RustStreamSink<Log2TwinRustAsync>
+      sse_decode_StreamSink_log_2_twin_rust_async_Sse(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    throw UnimplementedError('Unreachable ()');
+  }
+
+  @protected
+  RustStreamSink<Log2TwinSync> sse_decode_StreamSink_log_2_twin_sync_Sse(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    throw UnimplementedError('Unreachable ()');
+  }
+
+  @protected
+  RustStreamSink<LogTwinNormal> sse_decode_StreamSink_log_twin_normal_Sse(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    throw UnimplementedError('Unreachable ()');
+  }
+
+  @protected
+  RustStreamSink<LogTwinRustAsync>
+      sse_decode_StreamSink_log_twin_rust_async_Sse(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    throw UnimplementedError('Unreachable ()');
+  }
+
+  @protected
+  RustStreamSink<MirrorStructTwinNormal>
+      sse_decode_StreamSink_mirror_struct_twin_normal_Sse(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    throw UnimplementedError('Unreachable ()');
+  }
+
+  @protected
+  RustStreamSink<MirrorStructTwinRustAsync>
+      sse_decode_StreamSink_mirror_struct_twin_rust_async_Sse(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    throw UnimplementedError('Unreachable ()');
+  }
+
+  @protected
+  RustStreamSink<MirrorStructTwinSync>
+      sse_decode_StreamSink_mirror_struct_twin_sync_Sse(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    throw UnimplementedError('Unreachable ()');
+  }
+
+  @protected
+  RustStreamSink<MyStreamEntryTwinNormal>
+      sse_decode_StreamSink_my_stream_entry_twin_normal_Sse(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    throw UnimplementedError('Unreachable ()');
+  }
+
+  @protected
+  RustStreamSink<MyStreamEntryTwinRustAsync>
+      sse_decode_StreamSink_my_stream_entry_twin_rust_async_Sse(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    throw UnimplementedError('Unreachable ()');
+  }
+
+  @protected
+  RustStreamSink<ApplicationMode?>
+      sse_decode_StreamSink_opt_box_autoadd_application_mode_Sse(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    throw UnimplementedError('Unreachable ()');
+  }
+
+  @protected
+  RustStreamSink<(ApplicationSettings, RawStringEnumMirrored)>
+      sse_decode_StreamSink_record_application_settings_raw_string_enum_mirrored_Sse(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    throw UnimplementedError('Unreachable ()');
+  }
+
+  @protected
+  RustStreamSink<int> sse_decode_StreamSink_u_32_Sse(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    throw UnimplementedError('Unreachable ()');
+  }
+
+  @protected
+  RustStreamSink<U8Array2> sse_decode_StreamSink_u_8_array_2_Sse(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    throw UnimplementedError('Unreachable ()');
+  }
+
+  @protected
   String sse_decode_String(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_list_prim_u_8_strict(deserializer);
@@ -45450,6 +46263,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   MyStruct sse_decode_box_autoadd_my_struct(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return (sse_decode_my_struct(deserializer));
+  }
+
+  @protected
+  MyStructContainingStreamSinkTwinNormal
+      sse_decode_box_autoadd_my_struct_containing_stream_sink_twin_normal(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_my_struct_containing_stream_sink_twin_normal(
+        deserializer));
+  }
+
+  @protected
+  MyStructContainingStreamSinkTwinRustAsync
+      sse_decode_box_autoadd_my_struct_containing_stream_sink_twin_rust_async(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_my_struct_containing_stream_sink_twin_rust_async(
+        deserializer));
   }
 
   @protected
@@ -47944,6 +48775,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  List<RustStreamSink<int>> sse_decode_list_StreamSink_i_32_Sse(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <RustStreamSink<int>>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_StreamSink_i_32_Sse(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
   List<String> sse_decode_list_String(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
@@ -49611,6 +50455,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_content = sse_decode_bool(deserializer);
     return MyStruct(content: var_content);
+  }
+
+  @protected
+  MyStructContainingStreamSinkTwinNormal
+      sse_decode_my_struct_containing_stream_sink_twin_normal(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_a = sse_decode_i_32(deserializer);
+    var var_b = sse_decode_StreamSink_i_32_Sse(deserializer);
+    return MyStructContainingStreamSinkTwinNormal(a: var_a, b: var_b);
+  }
+
+  @protected
+  MyStructContainingStreamSinkTwinRustAsync
+      sse_decode_my_struct_containing_stream_sink_twin_rust_async(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_a = sse_decode_i_32(deserializer);
+    var var_b = sse_decode_StreamSink_i_32_Sse(deserializer);
+    return MyStructContainingStreamSinkTwinRustAsync(a: var_a, b: var_b);
   }
 
   @protected
@@ -52188,7 +53052,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_AnyhowException(
       AnyhowException self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    throw UnimplementedError('Unreachable ((');
+    throw UnimplementedError('Unreachable ()');
   }
 
   @protected
@@ -52730,7 +53594,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void sse_encode_Backtrace(String self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    throw UnimplementedError('Unreachable ((');
+    throw UnimplementedError('Unreachable ()');
   }
 
   @protected
@@ -53633,6 +54497,355 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_prim_i_32_strict(
         Int32List.fromList(self.toList()), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal_Sse(
+          RustStreamSink<NonCloneSimpleTwinNormal> self,
+          SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(
+        self.setupAndSerialize(
+            codec: SseCodec(
+                decodeSuccessData:
+                    sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal,
+                decodeErrorData: null)),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync_Sse(
+          RustStreamSink<NonCloneSimpleTwinRustAsync> self,
+          SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(
+        self.setupAndSerialize(
+            codec: SseCodec(
+                decodeSuccessData:
+                    sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync,
+                decodeErrorData: null)),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync_Sse(
+          RustStreamSink<NonCloneSimpleTwinSync> self,
+          SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(
+        self.setupAndSerialize(
+            codec: SseCodec(
+                decodeSuccessData:
+                    sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync,
+                decodeErrorData: null)),
+        serializer);
+  }
+
+  @protected
+  void sse_encode_StreamSink_Map_u_8_application_mode_Sse(
+      RustStreamSink<Map<int, ApplicationMode>> self,
+      SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(
+        self.setupAndSerialize(
+            codec: SseCodec(
+                decodeSuccessData: sse_decode_Map_u_8_application_mode,
+                decodeErrorData: null)),
+        serializer);
+  }
+
+  @protected
+  void sse_encode_StreamSink_Set_application_mode_Sse(
+      RustStreamSink<Set<ApplicationMode>> self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(
+        self.setupAndSerialize(
+            codec: SseCodec(
+                decodeSuccessData: sse_decode_Set_application_mode,
+                decodeErrorData: null)),
+        serializer);
+  }
+
+  @protected
+  void sse_encode_StreamSink_String_Sse(
+      RustStreamSink<String> self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(
+        self.setupAndSerialize(
+            codec: SseCodec(
+                decodeSuccessData: sse_decode_String, decodeErrorData: null)),
+        serializer);
+  }
+
+  @protected
+  void sse_encode_StreamSink_application_mode_Sse(
+      RustStreamSink<ApplicationMode> self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(
+        self.setupAndSerialize(
+            codec: SseCodec(
+                decodeSuccessData: sse_decode_application_mode,
+                decodeErrorData: null)),
+        serializer);
+  }
+
+  @protected
+  void sse_encode_StreamSink_application_mode_array_2_Sse(
+      RustStreamSink<ApplicationModeArray2> self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(
+        self.setupAndSerialize(
+            codec: SseCodec(
+                decodeSuccessData: sse_decode_application_mode_array_2,
+                decodeErrorData: null)),
+        serializer);
+  }
+
+  @protected
+  void sse_encode_StreamSink_application_settings_Sse(
+      RustStreamSink<ApplicationSettings> self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(
+        self.setupAndSerialize(
+            codec: SseCodec(
+                decodeSuccessData: sse_decode_application_settings,
+                decodeErrorData: null)),
+        serializer);
+  }
+
+  @protected
+  void sse_encode_StreamSink_event_twin_normal_Sse(
+      RustStreamSink<EventTwinNormal> self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(
+        self.setupAndSerialize(
+            codec: SseCodec(
+                decodeSuccessData: sse_decode_event_twin_normal,
+                decodeErrorData: null)),
+        serializer);
+  }
+
+  @protected
+  void sse_encode_StreamSink_event_twin_rust_async_Sse(
+      RustStreamSink<EventTwinRustAsync> self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(
+        self.setupAndSerialize(
+            codec: SseCodec(
+                decodeSuccessData: sse_decode_event_twin_rust_async,
+                decodeErrorData: null)),
+        serializer);
+  }
+
+  @protected
+  void sse_encode_StreamSink_i_32_Sse(
+      RustStreamSink<int> self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(
+        self.setupAndSerialize(
+            codec: SseCodec(
+                decodeSuccessData: sse_decode_i_32, decodeErrorData: null)),
+        serializer);
+  }
+
+  @protected
+  void sse_encode_StreamSink_list_application_mode_Sse(
+      RustStreamSink<List<ApplicationMode>> self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(
+        self.setupAndSerialize(
+            codec: SseCodec(
+                decodeSuccessData: sse_decode_list_application_mode,
+                decodeErrorData: null)),
+        serializer);
+  }
+
+  @protected
+  void sse_encode_StreamSink_list_application_settings_Sse(
+      RustStreamSink<List<ApplicationSettings>> self,
+      SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(
+        self.setupAndSerialize(
+            codec: SseCodec(
+                decodeSuccessData: sse_decode_list_application_settings,
+                decodeErrorData: null)),
+        serializer);
+  }
+
+  @protected
+  void sse_encode_StreamSink_log_2_twin_normal_Sse(
+      RustStreamSink<Log2TwinNormal> self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(
+        self.setupAndSerialize(
+            codec: SseCodec(
+                decodeSuccessData: sse_decode_log_2_twin_normal,
+                decodeErrorData: null)),
+        serializer);
+  }
+
+  @protected
+  void sse_encode_StreamSink_log_2_twin_rust_async_Sse(
+      RustStreamSink<Log2TwinRustAsync> self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(
+        self.setupAndSerialize(
+            codec: SseCodec(
+                decodeSuccessData: sse_decode_log_2_twin_rust_async,
+                decodeErrorData: null)),
+        serializer);
+  }
+
+  @protected
+  void sse_encode_StreamSink_log_2_twin_sync_Sse(
+      RustStreamSink<Log2TwinSync> self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(
+        self.setupAndSerialize(
+            codec: SseCodec(
+                decodeSuccessData: sse_decode_log_2_twin_sync,
+                decodeErrorData: null)),
+        serializer);
+  }
+
+  @protected
+  void sse_encode_StreamSink_log_twin_normal_Sse(
+      RustStreamSink<LogTwinNormal> self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(
+        self.setupAndSerialize(
+            codec: SseCodec(
+                decodeSuccessData: sse_decode_log_twin_normal,
+                decodeErrorData: null)),
+        serializer);
+  }
+
+  @protected
+  void sse_encode_StreamSink_log_twin_rust_async_Sse(
+      RustStreamSink<LogTwinRustAsync> self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(
+        self.setupAndSerialize(
+            codec: SseCodec(
+                decodeSuccessData: sse_decode_log_twin_rust_async,
+                decodeErrorData: null)),
+        serializer);
+  }
+
+  @protected
+  void sse_encode_StreamSink_mirror_struct_twin_normal_Sse(
+      RustStreamSink<MirrorStructTwinNormal> self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(
+        self.setupAndSerialize(
+            codec: SseCodec(
+                decodeSuccessData: sse_decode_mirror_struct_twin_normal,
+                decodeErrorData: null)),
+        serializer);
+  }
+
+  @protected
+  void sse_encode_StreamSink_mirror_struct_twin_rust_async_Sse(
+      RustStreamSink<MirrorStructTwinRustAsync> self,
+      SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(
+        self.setupAndSerialize(
+            codec: SseCodec(
+                decodeSuccessData: sse_decode_mirror_struct_twin_rust_async,
+                decodeErrorData: null)),
+        serializer);
+  }
+
+  @protected
+  void sse_encode_StreamSink_mirror_struct_twin_sync_Sse(
+      RustStreamSink<MirrorStructTwinSync> self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(
+        self.setupAndSerialize(
+            codec: SseCodec(
+                decodeSuccessData: sse_decode_mirror_struct_twin_sync,
+                decodeErrorData: null)),
+        serializer);
+  }
+
+  @protected
+  void sse_encode_StreamSink_my_stream_entry_twin_normal_Sse(
+      RustStreamSink<MyStreamEntryTwinNormal> self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(
+        self.setupAndSerialize(
+            codec: SseCodec(
+                decodeSuccessData: sse_decode_my_stream_entry_twin_normal,
+                decodeErrorData: null)),
+        serializer);
+  }
+
+  @protected
+  void sse_encode_StreamSink_my_stream_entry_twin_rust_async_Sse(
+      RustStreamSink<MyStreamEntryTwinRustAsync> self,
+      SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(
+        self.setupAndSerialize(
+            codec: SseCodec(
+                decodeSuccessData: sse_decode_my_stream_entry_twin_rust_async,
+                decodeErrorData: null)),
+        serializer);
+  }
+
+  @protected
+  void sse_encode_StreamSink_opt_box_autoadd_application_mode_Sse(
+      RustStreamSink<ApplicationMode?> self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(
+        self.setupAndSerialize(
+            codec: SseCodec(
+                decodeSuccessData: sse_decode_opt_box_autoadd_application_mode,
+                decodeErrorData: null)),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_StreamSink_record_application_settings_raw_string_enum_mirrored_Sse(
+          RustStreamSink<(ApplicationSettings, RawStringEnumMirrored)> self,
+          SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(
+        self.setupAndSerialize(
+            codec: SseCodec(
+                decodeSuccessData:
+                    sse_decode_record_application_settings_raw_string_enum_mirrored,
+                decodeErrorData: null)),
+        serializer);
+  }
+
+  @protected
+  void sse_encode_StreamSink_u_32_Sse(
+      RustStreamSink<int> self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(
+        self.setupAndSerialize(
+            codec: SseCodec(
+                decodeSuccessData: sse_decode_u_32, decodeErrorData: null)),
+        serializer);
+  }
+
+  @protected
+  void sse_encode_StreamSink_u_8_array_2_Sse(
+      RustStreamSink<U8Array2> self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(
+        self.setupAndSerialize(
+            codec: SseCodec(
+                decodeSuccessData: sse_decode_u_8_array_2,
+                decodeErrorData: null)),
+        serializer);
   }
 
   @protected
@@ -54978,6 +56191,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       MyStruct self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_my_struct(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_my_struct_containing_stream_sink_twin_normal(
+      MyStructContainingStreamSinkTwinNormal self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_my_struct_containing_stream_sink_twin_normal(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_my_struct_containing_stream_sink_twin_rust_async(
+      MyStructContainingStreamSinkTwinRustAsync self,
+      SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_my_struct_containing_stream_sink_twin_rust_async(
+        self, serializer);
   }
 
   @protected
@@ -57127,6 +58356,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_list_StreamSink_i_32_Sse(
+      List<RustStreamSink<int>> self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_StreamSink_i_32_Sse(item, serializer);
+    }
+  }
+
+  @protected
   void sse_encode_list_String(List<String> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_i_32(self.length, serializer);
@@ -58460,6 +59699,23 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_my_struct(MyStruct self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_bool(self.content, serializer);
+  }
+
+  @protected
+  void sse_encode_my_struct_containing_stream_sink_twin_normal(
+      MyStructContainingStreamSinkTwinNormal self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_i_32(self.a, serializer);
+    sse_encode_StreamSink_i_32_Sse(self.b, serializer);
+  }
+
+  @protected
+  void sse_encode_my_struct_containing_stream_sink_twin_rust_async(
+      MyStructContainingStreamSinkTwinRustAsync self,
+      SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_i_32(self.a, serializer);
+    sse_encode_StreamSink_i_32_Sse(self.b, serializer);
   }
 
   @protected

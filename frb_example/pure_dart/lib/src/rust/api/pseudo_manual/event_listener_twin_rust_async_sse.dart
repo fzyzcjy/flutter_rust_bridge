@@ -8,7 +8,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'event_listener_twin_rust_async_sse.freezed.dart';
 
-Stream<EventTwinRustAsyncSse> registerEventListenerTwinRustAsyncSse(
+Future<Stream<EventTwinRustAsyncSse>> registerEventListenerTwinRustAsyncSse(
         {dynamic hint}) =>
     RustLib.instance.api.registerEventListenerTwinRustAsyncSse(hint: hint);
 
@@ -27,9 +27,7 @@ class EventTwinRustAsyncSse with _$EventTwinRustAsyncSse {
     required String address,
     required String payload,
   }) = _EventTwinRustAsyncSse;
-  Future<String> asStringTwinRustAsyncSse({dynamic hint}) =>
-      RustLib.instance.api.eventTwinRustAsyncSseAsStringTwinRustAsyncSse(
-        that: this,
-        hint: hint,
-      );
+  Future<String> asStringTwinRustAsyncSse({dynamic hint}) => RustLib
+      .instance.api
+      .eventTwinRustAsyncSseAsStringTwinRustAsyncSse(that: this, hint: hint);
 }

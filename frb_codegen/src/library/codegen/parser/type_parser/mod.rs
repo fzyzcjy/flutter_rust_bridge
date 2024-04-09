@@ -1,3 +1,4 @@
+use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::ir::func::IrFuncOwnerInfo;
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::{IrEnumPool, IrStructPool};
@@ -105,6 +106,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 pub(crate) struct TypeParserParsingContext {
     pub(crate) initiated_namespace: Namespace,
     pub(crate) func_attributes: FrbAttributes,
+    pub(crate) default_stream_sink_codec: CodecMode,
     pub(crate) default_rust_opaque_codec: RustOpaqueCodecMode,
     pub(crate) owner: Option<IrFuncOwnerInfo>,
 }

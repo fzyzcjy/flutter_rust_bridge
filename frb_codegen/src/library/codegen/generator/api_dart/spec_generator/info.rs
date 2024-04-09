@@ -79,6 +79,10 @@ impl<'a> ApiDartGeneratorInfoTrait for DelegateApiDartGenerator<'a> {
                 "Set<{}>",
                 ApiDartGenerator::new(*ir.inner.clone(), self.context).dart_api_type(),
             ),
+            IrTypeDelegate::StreamSink(ir) => format!(
+                "RustStreamSink<{}>",
+                ApiDartGenerator::new(*ir.inner.clone(), self.context).dart_api_type(),
+            ),
         }
     }
 

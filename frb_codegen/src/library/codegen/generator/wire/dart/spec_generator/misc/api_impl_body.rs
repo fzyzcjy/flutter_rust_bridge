@@ -1,9 +1,11 @@
 use crate::codegen::generator::api_dart;
+use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::dart::spec_generator::codec::base::WireDartCodecEntrypoint;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::misc::wire_func::wire_func_name;
 use crate::codegen::ir::func::{IrFunc, IrFuncMode};
+use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
@@ -13,7 +15,6 @@ pub(crate) fn generate_api_impl_normal_function(
     context: WireDartGeneratorContext,
 ) -> anyhow::Result<WireDartOutputCode> {
     let dart2rust_codec = WireDartCodecEntrypoint::from(func.codec_mode_pack.dart2rust);
-    let _rust2dart_codec = WireDartCodecEntrypoint::from(func.codec_mode_pack.rust2dart);
 
     let api_dart_func =
         api_dart::spec_generator::function::generate(func, context.as_api_dart_context())?;
@@ -32,19 +33,47 @@ pub(crate) fn generate_api_impl_normal_function(
 
     let func_expr = api_dart_func.func_expr;
 
+    let call_handler = format!(
+        "handler.{execute_func_name}({task_class}(
+            callFfi: ({call_ffi_args}) {{
+              {inner_func_stmt}
+            }},
+            codec: {codec},
+            constMeta: {const_meta_field_name},
+            argValues: [{arg_values}],
+            apiImpl: this,
+            hint: hint,
+        ))",
+    );
+    let function_implementation_body = if let Some(return_stream) = &api_dart_func.return_stream {
+        format!(
+            "
+            final {return_stream_name} = {return_stream_type}();
+            {maybe_await}{call_handler};
+            return {return_stream_name}.stream;
+            ",
+            return_stream_name = return_stream.field.name.dart_style(),
+            return_stream_type = ApiDartGenerator::new(
+                return_stream.field.ty.clone(),
+                context.as_api_dart_context()
+            )
+            .dart_api_type(),
+            maybe_await = if func.mode != IrFuncMode::Sync {
+                "await "
+            } else {
+                ""
+            },
+        )
+    } else {
+        format!("return {call_handler};")
+    };
     let function_implementation = format!(
-        "@override {func_expr} {{
-            return handler.{execute_func_name}({task_class}(
-                callFfi: ({call_ffi_args}) {{
-                  {inner_func_stmt}
-                }},
-                codec: {codec},
-                constMeta: {const_meta_field_name},
-                argValues: [{arg_values}],
-                apiImpl: this,
-                hint: hint,
-            ));
-        }}",
+        "@override {func_expr} {maybe_async} {{ {function_implementation_body} }}",
+        maybe_async = if func.mode != IrFuncMode::Sync && api_dart_func.return_stream.is_some() {
+            "async "
+        } else {
+            ""
+        },
     );
 
     let companion_field_implementation = generate_companion_field(func, &const_meta_field_name);
@@ -62,7 +91,6 @@ fn generate_execute_func_name(func: &IrFunc) -> &str {
     match func.mode {
         IrFuncMode::Normal => "executeNormal",
         IrFuncMode::Sync => "executeSync",
-        IrFuncMode::Stream { .. } => "executeStream",
     }
 }
 
@@ -70,7 +98,6 @@ fn generate_task_class(func: &IrFunc) -> &str {
     match func.mode {
         IrFuncMode::Normal => "NormalTask",
         IrFuncMode::Sync => "SyncTask",
-        IrFuncMode::Stream { .. } => "StreamTask",
     }
 }
 

@@ -23,6 +23,7 @@ pub mod rust_async;
 #[cfg(feature = "rust-async")]
 pub(crate) mod rust_auto_opaque;
 pub(crate) mod rust_opaque;
+pub(crate) mod stream;
 pub(crate) mod web_transfer;
 
 pub use crate::codec::sse::SseCodec;

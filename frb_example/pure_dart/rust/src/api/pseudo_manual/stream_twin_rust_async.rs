@@ -80,3 +80,21 @@ pub async fn stream_sink_fixed_sized_primitive_array_twin_rust_async(sink: Strea
     sink.add([1, 2]).unwrap();
     sink.add([3, 4]).unwrap();
 }
+
+pub async fn stream_sink_inside_vec_twin_rust_async(arg: Vec<StreamSink<i32>>) {
+    for sink in arg {
+        sink.add(100).unwrap();
+        sink.add(200).unwrap();
+    }
+}
+
+pub struct MyStructContainingStreamSinkTwinRustAsync {
+    pub a: i32,
+    pub b: StreamSink<i32>,
+}
+
+pub async fn stream_sink_inside_struct_twin_rust_async(
+    arg: MyStructContainingStreamSinkTwinRustAsync,
+) {
+    arg.b.add(arg.a).unwrap();
+}

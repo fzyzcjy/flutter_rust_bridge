@@ -71,7 +71,7 @@ Future<void> throwAnyhowTwinRustAsync({dynamic hint}) =>
 Future<void> panicWithCustomResultTwinRustAsync({dynamic hint}) =>
     RustLib.instance.api.panicWithCustomResultTwinRustAsync(hint: hint);
 
-Stream<String> streamSinkThrowAnyhowTwinRustAsync({dynamic hint}) =>
+Future<Stream<String>> streamSinkThrowAnyhowTwinRustAsync({dynamic hint}) =>
     RustLib.instance.api.streamSinkThrowAnyhowTwinRustAsync(hint: hint);
 
 @freezed
@@ -209,36 +209,28 @@ class CustomStructTwinRustAsync {
   static Future<CustomStructTwinRustAsync> newTwinRustAsync(
           {required String message, dynamic hint}) =>
       RustLib.instance.api.customStructTwinRustAsyncNewTwinRustAsync(
-        message: message,
-        hint: hint,
-      );
+          message: message, hint: hint);
 
   Future<void> nonstaticReturnCustomStructErrorTwinRustAsync({dynamic hint}) =>
       RustLib.instance.api
           .customStructTwinRustAsyncNonstaticReturnCustomStructErrorTwinRustAsync(
-        that: this,
-        hint: hint,
-      );
+              that: this, hint: hint);
 
   Future<int> nonstaticReturnCustomStructOkTwinRustAsync({dynamic hint}) =>
       RustLib.instance.api
           .customStructTwinRustAsyncNonstaticReturnCustomStructOkTwinRustAsync(
-        that: this,
-        hint: hint,
-      );
+              that: this, hint: hint);
 
   static Future<void> staticReturnCustomStructErrorTwinRustAsync(
           {dynamic hint}) =>
       RustLib.instance.api
           .customStructTwinRustAsyncStaticReturnCustomStructErrorTwinRustAsync(
-        hint: hint,
-      );
+              hint: hint);
 
   static Future<int> staticReturnCustomStructOkTwinRustAsync({dynamic hint}) =>
       RustLib.instance.api
           .customStructTwinRustAsyncStaticReturnCustomStructOkTwinRustAsync(
-        hint: hint,
-      );
+              hint: hint);
 
   @override
   int get hashCode => message.hashCode;
@@ -260,36 +252,28 @@ class SomeStructTwinRustAsync {
 
   static Future<SomeStructTwinRustAsync> newTwinRustAsync(
           {required int value, dynamic hint}) =>
-      RustLib.instance.api.someStructTwinRustAsyncNewTwinRustAsync(
-        value: value,
-        hint: hint,
-      );
+      RustLib.instance.api
+          .someStructTwinRustAsyncNewTwinRustAsync(value: value, hint: hint);
 
   Future<int> nonStaticReturnErrCustomErrorTwinRustAsync({dynamic hint}) =>
       RustLib.instance.api
           .someStructTwinRustAsyncNonStaticReturnErrCustomErrorTwinRustAsync(
-        that: this,
-        hint: hint,
-      );
+              that: this, hint: hint);
 
   Future<int> nonStaticReturnOkCustomErrorTwinRustAsync({dynamic hint}) =>
       RustLib.instance.api
           .someStructTwinRustAsyncNonStaticReturnOkCustomErrorTwinRustAsync(
-        that: this,
-        hint: hint,
-      );
+              that: this, hint: hint);
 
   static Future<int> staticReturnErrCustomErrorTwinRustAsync({dynamic hint}) =>
       RustLib.instance.api
           .someStructTwinRustAsyncStaticReturnErrCustomErrorTwinRustAsync(
-        hint: hint,
-      );
+              hint: hint);
 
   static Future<int> staticReturnOkCustomErrorTwinRustAsync({dynamic hint}) =>
       RustLib.instance.api
           .someStructTwinRustAsyncStaticReturnOkCustomErrorTwinRustAsync(
-        hint: hint,
-      );
+              hint: hint);
 
   @override
   int get hashCode => value.hashCode;

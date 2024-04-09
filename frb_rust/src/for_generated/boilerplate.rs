@@ -144,8 +144,8 @@ macro_rules! frb_generated_stream_sink {
         }
 
         impl<T, Rust2DartCodec: $crate::for_generated::BaseCodec> StreamSink<T, Rust2DartCodec> {
-            pub fn new(base: $crate::for_generated::StreamSinkBase<T, Rust2DartCodec>) -> Self {
-                Self { base }
+            pub fn deserialize(raw: String) -> Self {
+                Self { base: $crate::for_generated::StreamSinkBase::deserialize(raw) }
             }
         }
 
@@ -173,6 +173,21 @@ macro_rules! frb_generated_stream_sink {
                 ))
             }
         }
+
+        // Ignore coverage since unreachable
+        // frb-coverage:ignore-start
+        impl<T, Rust2DartCodec: $crate::for_generated::BaseCodec> $crate::IntoIntoDart<StreamSink<T, Rust2DartCodec>> for StreamSink<T, Rust2DartCodec> {
+            fn into_into_dart(self) -> StreamSink<T, Rust2DartCodec> {
+                unreachable!()
+            }
+        }
+
+        impl<T, Rust2DartCodec: $crate::for_generated::BaseCodec> $crate::IntoDart for StreamSink<T, Rust2DartCodec> {
+            fn into_dart(self) -> $crate::for_generated::DartAbi {
+                unreachable!()
+            }
+        }
+        // frb-coverage:ignore-end
     };
 }
 

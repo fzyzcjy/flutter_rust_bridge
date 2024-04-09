@@ -41,15 +41,12 @@ class StructWithCommentsTwinNormal {
   /// Documentation on an instance method
   Future<void> instanceMethodTwinNormal({dynamic hint}) =>
       RustLib.instance.api.structWithCommentsTwinNormalInstanceMethodTwinNormal(
-        that: this,
-        hint: hint,
-      );
+          that: this, hint: hint);
 
   /// Documentation on a static method
   static Future<void> staticMethodTwinNormal({dynamic hint}) =>
-      RustLib.instance.api.structWithCommentsTwinNormalStaticMethodTwinNormal(
-        hint: hint,
-      );
+      RustLib.instance.api
+          .structWithCommentsTwinNormalStaticMethodTwinNormal(hint: hint);
 
   @override
   int get hashCode => fieldWithComments.hashCode;

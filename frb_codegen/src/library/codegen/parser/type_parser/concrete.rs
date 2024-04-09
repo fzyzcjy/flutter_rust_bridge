@@ -1,13 +1,16 @@
+use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::ir::func::IrFuncOwnerInfo;
 use crate::codegen::ir::ty::boxed::IrTypeBoxed;
 use crate::codegen::ir::ty::dart_opaque::IrTypeDartOpaque;
 use crate::codegen::ir::ty::delegate::{
-    IrTypeDelegate, IrTypeDelegateMap, IrTypeDelegateSet, IrTypeDelegateTime,
+    IrTypeDelegate, IrTypeDelegateMap, IrTypeDelegateSet, IrTypeDelegateStreamSink,
+    IrTypeDelegateTime,
 };
 use crate::codegen::ir::ty::dynamic::IrTypeDynamic;
 use crate::codegen::ir::ty::general_list::ir_list;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{Boxed, DartOpaque, Delegate, Dynamic};
+use crate::codegen::parser::type_parser::path_data::extract_path_data;
 use crate::codegen::parser::type_parser::unencodable::{splay_segments, SplayedSegment};
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use crate::if_then_some;
@@ -80,6 +83,15 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 inner: Box::new(self.parse_type(inner)?),
             })),
 
+            ("StreamSink", [inner ]) => Delegate(IrTypeDelegate::StreamSink(IrTypeDelegateStreamSink {
+                inner: Box::new(self.parse_type(inner)?),
+                codec: self.context.default_stream_sink_codec,
+            })),
+            ("StreamSink", [inner, codec ]) => Delegate(IrTypeDelegate::StreamSink(IrTypeDelegateStreamSink {
+                inner: Box::new(self.parse_type(inner)?),
+                codec: parse_stream_sink_codec(codec)?,
+            })),
+
             _ => return Ok(None),
         }))
     }
@@ -106,4 +118,12 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         bail!("Invalid DateTime generic: {args:?}")
         // frb-coverage:ignore-end
     }
+}
+
+fn parse_stream_sink_codec(codec: &Type) -> anyhow::Result<CodecMode> {
+    let path = if_then_some!(let Type::Path(path) = codec, path).unwrap();
+    let segments = extract_path_data(&path.path)?;
+    let ident = &segments.last().unwrap().ident;
+    let ident_stripped = ident.strip_suffix("Codec").unwrap();
+    Ok(ident_stripped.parse()?)
 }

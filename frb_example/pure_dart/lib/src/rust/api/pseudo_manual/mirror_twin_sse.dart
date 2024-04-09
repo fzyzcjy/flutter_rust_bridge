@@ -20,18 +20,19 @@ Future<bool> isAppEmbeddedTwinSse(
     RustLib.instance.api
         .isAppEmbeddedTwinSse(appSettings: appSettings, hint: hint);
 
-Stream<ApplicationSettings> appSettingsStreamTwinSse({dynamic hint}) =>
+Future<Stream<ApplicationSettings>> appSettingsStreamTwinSse({dynamic hint}) =>
     RustLib.instance.api.appSettingsStreamTwinSse(hint: hint);
 
-Stream<List<ApplicationSettings>> appSettingsVecStreamTwinSse({dynamic hint}) =>
+Future<Stream<List<ApplicationSettings>>> appSettingsVecStreamTwinSse(
+        {dynamic hint}) =>
     RustLib.instance.api.appSettingsVecStreamTwinSse(hint: hint);
 
-Stream<MirrorStructTwinSse> mirrorStructStreamTwinSse({dynamic hint}) =>
+Future<Stream<MirrorStructTwinSse>> mirrorStructStreamTwinSse({dynamic hint}) =>
     RustLib.instance.api.mirrorStructStreamTwinSse(hint: hint);
 
-Stream<(ApplicationSettings, RawStringEnumMirrored)> mirrorTupleStreamTwinSse(
-        {dynamic hint}) =>
-    RustLib.instance.api.mirrorTupleStreamTwinSse(hint: hint);
+Future<Stream<(ApplicationSettings, RawStringEnumMirrored)>>
+    mirrorTupleStreamTwinSse({dynamic hint}) =>
+        RustLib.instance.api.mirrorTupleStreamTwinSse(hint: hint);
 
 Future<ApplicationMessage> getMessageTwinSse({dynamic hint}) =>
     RustLib.instance.api.getMessageTwinSse(hint: hint);
@@ -83,22 +84,27 @@ Future<ContainsMirroredSubStructTwinSse> testContainsMirroredSubStructTwinSse(
 Future<StructWithHashMap> testHashmapWithMirroredValueTwinSse({dynamic hint}) =>
     RustLib.instance.api.testHashmapWithMirroredValueTwinSse(hint: hint);
 
-Stream<ApplicationMode> mirrorEnumStreamTwinSse({dynamic hint}) =>
+Future<Stream<ApplicationMode>> mirrorEnumStreamTwinSse({dynamic hint}) =>
     RustLib.instance.api.mirrorEnumStreamTwinSse(hint: hint);
 
-Stream<ApplicationMode?> mirrorOptionEnumStreamTwinSse({dynamic hint}) =>
+Future<Stream<ApplicationMode?>> mirrorOptionEnumStreamTwinSse(
+        {dynamic hint}) =>
     RustLib.instance.api.mirrorOptionEnumStreamTwinSse(hint: hint);
 
-Stream<List<ApplicationMode>> mirrorVecEnumStreamTwinSse({dynamic hint}) =>
+Future<Stream<List<ApplicationMode>>> mirrorVecEnumStreamTwinSse(
+        {dynamic hint}) =>
     RustLib.instance.api.mirrorVecEnumStreamTwinSse(hint: hint);
 
-Stream<Map<int, ApplicationMode>> mirrorMapEnumStreamTwinSse({dynamic hint}) =>
+Future<Stream<Map<int, ApplicationMode>>> mirrorMapEnumStreamTwinSse(
+        {dynamic hint}) =>
     RustLib.instance.api.mirrorMapEnumStreamTwinSse(hint: hint);
 
-Stream<Set<ApplicationMode>> mirrorSetEnumStreamTwinSse({dynamic hint}) =>
+Future<Stream<Set<ApplicationMode>>> mirrorSetEnumStreamTwinSse(
+        {dynamic hint}) =>
     RustLib.instance.api.mirrorSetEnumStreamTwinSse(hint: hint);
 
-Stream<ApplicationModeArray2> mirrorArrayEnumStreamTwinSse({dynamic hint}) =>
+Future<Stream<ApplicationModeArray2>> mirrorArrayEnumStreamTwinSse(
+        {dynamic hint}) =>
     RustLib.instance.api.mirrorArrayEnumStreamTwinSse(hint: hint);
 
 class AnotherTwinSse {

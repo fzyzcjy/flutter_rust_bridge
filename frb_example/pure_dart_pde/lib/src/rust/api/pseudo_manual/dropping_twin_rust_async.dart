@@ -24,25 +24,17 @@ class DroppableTwinRustAsync extends RustOpaque {
         .instance.api.rust_arc_decrement_strong_count_DroppableTwinRustAsyncPtr,
   );
 
-  Stream<int> createStreamTwinRustAsync({dynamic hint}) =>
-      RustLib.instance.api.droppableTwinRustAsyncCreateStreamTwinRustAsync(
-        that: this,
-        hint: hint,
-      );
+  Future<Stream<int>> createStreamTwinRustAsync({dynamic hint}) => RustLib
+      .instance.api
+      .droppableTwinRustAsyncCreateStreamTwinRustAsync(that: this, hint: hint);
 
   static Future<int> getDropCountTwinRustAsync({dynamic hint}) =>
-      RustLib.instance.api.droppableTwinRustAsyncGetDropCountTwinRustAsync(
-        hint: hint,
-      );
+      RustLib.instance.api
+          .droppableTwinRustAsyncGetDropCountTwinRustAsync(hint: hint);
 
   static Future<DroppableTwinRustAsync> newTwinRustAsync({dynamic hint}) =>
-      RustLib.instance.api.droppableTwinRustAsyncNewTwinRustAsync(
-        hint: hint,
-      );
+      RustLib.instance.api.droppableTwinRustAsyncNewTwinRustAsync(hint: hint);
 
-  Future<void> simpleMethodTwinRustAsync({dynamic hint}) =>
-      RustLib.instance.api.droppableTwinRustAsyncSimpleMethodTwinRustAsync(
-        that: this,
-        hint: hint,
-      );
+  Future<void> simpleMethodTwinRustAsync({dynamic hint}) => RustLib.instance.api
+      .droppableTwinRustAsyncSimpleMethodTwinRustAsync(that: this, hint: hint);
 }

@@ -1,12 +1,10 @@
 import 'dart:async';
 
-import 'package:flutter_rust_bridge/src/codec/base.dart';
 import 'package:flutter_rust_bridge/src/dart_opaque/dart_opaque.dart';
 import 'package:flutter_rust_bridge/src/exceptions.dart';
 import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
 import 'package:flutter_rust_bridge/src/generalized_isolate/generalized_isolate.dart';
 import 'package:flutter_rust_bridge/src/task.dart';
-import 'package:flutter_rust_bridge/src/utils/port_generator.dart';
 import 'package:flutter_rust_bridge/src/utils/single_complete_port.dart';
 
 /// Generically handles a Dart-Rust call.
@@ -37,38 +35,6 @@ class BaseHandler {
     } finally {
       task.codec.freeWireSyncRust2Dart(
           syncReturn, task.apiImpl.generalizedFrbRustBinding);
-    }
-  }
-
-  /// Similar to [executeNormal], except that this will return a [Stream] instead of a [Future].
-  Stream<S> executeStream<S, E extends Object>(StreamTask<S, E> task) =>
-      _executeStreamInner(task);
-
-  Stream<S> _executeStreamInner<S, E extends Object>(StreamTask<S, E>? task) {
-    final portName =
-        ExecuteStreamPortGenerator.create(task!.constMeta.debugName);
-    final receivePort = broadcastPort(portName);
-
-    task.callFfi(receivePort.sendPort.nativePort);
-
-    final codec = task.codec;
-    task = null;
-
-    return _executeStreamInnerAsyncStar(receivePort, codec);
-  }
-
-  Stream<S> _executeStreamInnerAsyncStar<S, E extends Object>(
-      ReceivePort receivePort, BaseCodec<S, E, dynamic> codec) async* {
-    try {
-      await for (final raw in receivePort) {
-        try {
-          yield codec.decodeObject(raw);
-        } on CloseStreamException {
-          break;
-        }
-      }
-    } finally {
-      receivePort.close();
     }
   }
 

@@ -78,6 +78,7 @@ impl<'a> WireDartCodecDcoGeneratorDecoderTrait for DelegateWireDartCodecDcoGener
                 "return Set.from(dco_decode_{}(raw));",
                 self.ir.get_delegate().safe_ident(),
             ),
+            IrTypeDelegate::StreamSink(_) => "throw UnimplementedError();".to_owned(),
         }
     }
 }

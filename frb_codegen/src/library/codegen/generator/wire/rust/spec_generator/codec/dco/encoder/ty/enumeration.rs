@@ -7,19 +7,10 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::
 };
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::ty::WireRustCodecDcoGeneratorEncoderTrait;
 use crate::codegen::ir::namespace::NamespacedName;
-use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::enumeration::IrTypeEnumRef;
-use crate::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 
 impl<'a> WireRustCodecDcoGeneratorEncoderTrait for EnumRefWireRustCodecDcoGenerator<'a> {
-    fn intodart_type(&self, ir_pack: &IrPack) -> String {
-        match &self.ir.get(ir_pack).wrapper_name {
-            Some(wrapper) => wrapper.clone(),
-            None => self.ir.rust_api_type(),
-        }
-    }
-
     fn generate_impl_into_dart(&self) -> Option<String> {
         let src = self.ir.get(self.context.ir_pack);
         let (name, _self_path) =

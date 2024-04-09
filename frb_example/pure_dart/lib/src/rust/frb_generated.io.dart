@@ -3245,6 +3245,261 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Set<int> dco_decode_Set_i_32(dynamic raw);
 
   @protected
+  RustStreamSink<NonCloneSimpleTwinMoi>
+      dco_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoi_Dco(
+          dynamic raw);
+
+  @protected
+  RustStreamSink<NonCloneSimpleTwinNormal>
+      dco_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal_Dco(
+          dynamic raw);
+
+  @protected
+  RustStreamSink<NonCloneSimpleTwinRustAsyncMoi>
+      dco_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi_Dco(
+          dynamic raw);
+
+  @protected
+  RustStreamSink<NonCloneSimpleTwinRustAsyncSseMoi>
+      dco_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi_Sse(
+          dynamic raw);
+
+  @protected
+  RustStreamSink<NonCloneSimpleTwinRustAsyncSse>
+      dco_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse_Sse(
+          dynamic raw);
+
+  @protected
+  RustStreamSink<NonCloneSimpleTwinRustAsync>
+      dco_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync_Dco(
+          dynamic raw);
+
+  @protected
+  RustStreamSink<NonCloneSimpleTwinSseMoi>
+      dco_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi_Sse(
+          dynamic raw);
+
+  @protected
+  RustStreamSink<NonCloneSimpleTwinSse>
+      dco_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSse_Sse(
+          dynamic raw);
+
+  @protected
+  RustStreamSink<NonCloneSimpleTwinSyncMoi>
+      dco_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi_Dco(
+          dynamic raw);
+
+  @protected
+  RustStreamSink<NonCloneSimpleTwinSyncSseMoi>
+      dco_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi_Sse(
+          dynamic raw);
+
+  @protected
+  RustStreamSink<NonCloneSimpleTwinSyncSse>
+      dco_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse_Sse(
+          dynamic raw);
+
+  @protected
+  RustStreamSink<NonCloneSimpleTwinSync>
+      dco_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync_Dco(
+          dynamic raw);
+
+  @protected
+  RustStreamSink<Map<int, ApplicationMode>>
+      dco_decode_StreamSink_Map_u_8_application_mode_Dco(dynamic raw);
+
+  @protected
+  RustStreamSink<Map<int, ApplicationMode>>
+      dco_decode_StreamSink_Map_u_8_application_mode_Sse(dynamic raw);
+
+  @protected
+  RustStreamSink<Set<ApplicationMode>>
+      dco_decode_StreamSink_Set_application_mode_Dco(dynamic raw);
+
+  @protected
+  RustStreamSink<Set<ApplicationMode>>
+      dco_decode_StreamSink_Set_application_mode_Sse(dynamic raw);
+
+  @protected
+  RustStreamSink<String> dco_decode_StreamSink_String_Dco(dynamic raw);
+
+  @protected
+  RustStreamSink<String> dco_decode_StreamSink_String_Sse(dynamic raw);
+
+  @protected
+  RustStreamSink<ApplicationMode> dco_decode_StreamSink_application_mode_Dco(
+      dynamic raw);
+
+  @protected
+  RustStreamSink<ApplicationMode> dco_decode_StreamSink_application_mode_Sse(
+      dynamic raw);
+
+  @protected
+  RustStreamSink<ApplicationModeArray2>
+      dco_decode_StreamSink_application_mode_array_2_Dco(dynamic raw);
+
+  @protected
+  RustStreamSink<ApplicationModeArray2>
+      dco_decode_StreamSink_application_mode_array_2_Sse(dynamic raw);
+
+  @protected
+  RustStreamSink<ApplicationSettings>
+      dco_decode_StreamSink_application_settings_Dco(dynamic raw);
+
+  @protected
+  RustStreamSink<ApplicationSettings>
+      dco_decode_StreamSink_application_settings_Sse(dynamic raw);
+
+  @protected
+  RustStreamSink<EventTwinNormal> dco_decode_StreamSink_event_twin_normal_Dco(
+      dynamic raw);
+
+  @protected
+  RustStreamSink<EventTwinRustAsync>
+      dco_decode_StreamSink_event_twin_rust_async_Dco(dynamic raw);
+
+  @protected
+  RustStreamSink<EventTwinRustAsyncSse>
+      dco_decode_StreamSink_event_twin_rust_async_sse_Sse(dynamic raw);
+
+  @protected
+  RustStreamSink<EventTwinSse> dco_decode_StreamSink_event_twin_sse_Sse(
+      dynamic raw);
+
+  @protected
+  RustStreamSink<int> dco_decode_StreamSink_i_32_Dco(dynamic raw);
+
+  @protected
+  RustStreamSink<int> dco_decode_StreamSink_i_32_Sse(dynamic raw);
+
+  @protected
+  RustStreamSink<List<ApplicationMode>>
+      dco_decode_StreamSink_list_application_mode_Dco(dynamic raw);
+
+  @protected
+  RustStreamSink<List<ApplicationMode>>
+      dco_decode_StreamSink_list_application_mode_Sse(dynamic raw);
+
+  @protected
+  RustStreamSink<List<ApplicationSettings>>
+      dco_decode_StreamSink_list_application_settings_Dco(dynamic raw);
+
+  @protected
+  RustStreamSink<List<ApplicationSettings>>
+      dco_decode_StreamSink_list_application_settings_Sse(dynamic raw);
+
+  @protected
+  RustStreamSink<Log2TwinNormal> dco_decode_StreamSink_log_2_twin_normal_Dco(
+      dynamic raw);
+
+  @protected
+  RustStreamSink<Log2TwinRustAsync>
+      dco_decode_StreamSink_log_2_twin_rust_async_Dco(dynamic raw);
+
+  @protected
+  RustStreamSink<Log2TwinRustAsyncSse>
+      dco_decode_StreamSink_log_2_twin_rust_async_sse_Sse(dynamic raw);
+
+  @protected
+  RustStreamSink<Log2TwinSse> dco_decode_StreamSink_log_2_twin_sse_Sse(
+      dynamic raw);
+
+  @protected
+  RustStreamSink<Log2TwinSync> dco_decode_StreamSink_log_2_twin_sync_Dco(
+      dynamic raw);
+
+  @protected
+  RustStreamSink<Log2TwinSyncSse> dco_decode_StreamSink_log_2_twin_sync_sse_Sse(
+      dynamic raw);
+
+  @protected
+  RustStreamSink<LogTwinNormal> dco_decode_StreamSink_log_twin_normal_Dco(
+      dynamic raw);
+
+  @protected
+  RustStreamSink<LogTwinRustAsync>
+      dco_decode_StreamSink_log_twin_rust_async_Dco(dynamic raw);
+
+  @protected
+  RustStreamSink<LogTwinRustAsyncSse>
+      dco_decode_StreamSink_log_twin_rust_async_sse_Sse(dynamic raw);
+
+  @protected
+  RustStreamSink<LogTwinSse> dco_decode_StreamSink_log_twin_sse_Sse(
+      dynamic raw);
+
+  @protected
+  RustStreamSink<MirrorStructTwinNormal>
+      dco_decode_StreamSink_mirror_struct_twin_normal_Dco(dynamic raw);
+
+  @protected
+  RustStreamSink<MirrorStructTwinRustAsync>
+      dco_decode_StreamSink_mirror_struct_twin_rust_async_Dco(dynamic raw);
+
+  @protected
+  RustStreamSink<MirrorStructTwinRustAsyncSse>
+      dco_decode_StreamSink_mirror_struct_twin_rust_async_sse_Sse(dynamic raw);
+
+  @protected
+  RustStreamSink<MirrorStructTwinSse>
+      dco_decode_StreamSink_mirror_struct_twin_sse_Sse(dynamic raw);
+
+  @protected
+  RustStreamSink<MirrorStructTwinSync>
+      dco_decode_StreamSink_mirror_struct_twin_sync_Dco(dynamic raw);
+
+  @protected
+  RustStreamSink<MirrorStructTwinSyncSse>
+      dco_decode_StreamSink_mirror_struct_twin_sync_sse_Sse(dynamic raw);
+
+  @protected
+  RustStreamSink<MyStreamEntryTwinNormal>
+      dco_decode_StreamSink_my_stream_entry_twin_normal_Dco(dynamic raw);
+
+  @protected
+  RustStreamSink<MyStreamEntryTwinRustAsync>
+      dco_decode_StreamSink_my_stream_entry_twin_rust_async_Dco(dynamic raw);
+
+  @protected
+  RustStreamSink<MyStreamEntryTwinRustAsyncSse>
+      dco_decode_StreamSink_my_stream_entry_twin_rust_async_sse_Sse(
+          dynamic raw);
+
+  @protected
+  RustStreamSink<MyStreamEntryTwinSse>
+      dco_decode_StreamSink_my_stream_entry_twin_sse_Sse(dynamic raw);
+
+  @protected
+  RustStreamSink<ApplicationMode?>
+      dco_decode_StreamSink_opt_box_autoadd_application_mode_Dco(dynamic raw);
+
+  @protected
+  RustStreamSink<ApplicationMode?>
+      dco_decode_StreamSink_opt_box_autoadd_application_mode_Sse(dynamic raw);
+
+  @protected
+  RustStreamSink<(ApplicationSettings, RawStringEnumMirrored)>
+      dco_decode_StreamSink_record_application_settings_raw_string_enum_mirrored_Dco(
+          dynamic raw);
+
+  @protected
+  RustStreamSink<(ApplicationSettings, RawStringEnumMirrored)>
+      dco_decode_StreamSink_record_application_settings_raw_string_enum_mirrored_Sse(
+          dynamic raw);
+
+  @protected
+  RustStreamSink<int> dco_decode_StreamSink_u_32_Dco(dynamic raw);
+
+  @protected
+  RustStreamSink<int> dco_decode_StreamSink_u_32_Sse(dynamic raw);
+
+  @protected
+  RustStreamSink<U8Array2> dco_decode_StreamSink_u_8_array_2_Dco(dynamic raw);
+
+  @protected
+  RustStreamSink<U8Array2> dco_decode_StreamSink_u_8_array_2_Sse(dynamic raw);
+
+  @protected
   String dco_decode_String(dynamic raw);
 
   @protected
@@ -4566,6 +4821,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   MyStruct dco_decode_box_autoadd_my_struct(dynamic raw);
+
+  @protected
+  MyStructContainingStreamSinkTwinNormal
+      dco_decode_box_autoadd_my_struct_containing_stream_sink_twin_normal(
+          dynamic raw);
+
+  @protected
+  MyStructContainingStreamSinkTwinRustAsync
+      dco_decode_box_autoadd_my_struct_containing_stream_sink_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  MyStructContainingStreamSinkTwinRustAsyncSse
+      dco_decode_box_autoadd_my_struct_containing_stream_sink_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  MyStructContainingStreamSinkTwinSse
+      dco_decode_box_autoadd_my_struct_containing_stream_sink_twin_sse(
+          dynamic raw);
 
   @protected
   MyTreeNodeTwinNormal dco_decode_box_autoadd_my_tree_node_twin_normal(
@@ -6299,6 +6574,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_list_RustOpaque_HideDataTwinSyncSseMoi(dynamic raw);
 
   @protected
+  List<RustStreamSink<int>> dco_decode_list_StreamSink_i_32_Dco(dynamic raw);
+
+  @protected
+  List<RustStreamSink<int>> dco_decode_list_StreamSink_i_32_Sse(dynamic raw);
+
+  @protected
   List<String> dco_decode_list_String(dynamic raw);
 
   @protected
@@ -7105,6 +7386,23 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   MyStruct dco_decode_my_struct(dynamic raw);
+
+  @protected
+  MyStructContainingStreamSinkTwinNormal
+      dco_decode_my_struct_containing_stream_sink_twin_normal(dynamic raw);
+
+  @protected
+  MyStructContainingStreamSinkTwinRustAsync
+      dco_decode_my_struct_containing_stream_sink_twin_rust_async(dynamic raw);
+
+  @protected
+  MyStructContainingStreamSinkTwinRustAsyncSse
+      dco_decode_my_struct_containing_stream_sink_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  MyStructContainingStreamSinkTwinSse
+      dco_decode_my_struct_containing_stream_sink_twin_sse(dynamic raw);
 
   @protected
   MyTreeNodeTwinNormal dco_decode_my_tree_node_twin_normal(dynamic raw);
@@ -10950,6 +11248,298 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Set<int> sse_decode_Set_i_32(SseDeserializer deserializer);
 
   @protected
+  RustStreamSink<NonCloneSimpleTwinMoi>
+      sse_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoi_Dco(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<NonCloneSimpleTwinNormal>
+      sse_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal_Dco(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<NonCloneSimpleTwinRustAsyncMoi>
+      sse_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi_Dco(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<NonCloneSimpleTwinRustAsyncSseMoi>
+      sse_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi_Sse(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<NonCloneSimpleTwinRustAsyncSse>
+      sse_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse_Sse(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<NonCloneSimpleTwinRustAsync>
+      sse_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync_Dco(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<NonCloneSimpleTwinSseMoi>
+      sse_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi_Sse(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<NonCloneSimpleTwinSse>
+      sse_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSse_Sse(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<NonCloneSimpleTwinSyncMoi>
+      sse_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi_Dco(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<NonCloneSimpleTwinSyncSseMoi>
+      sse_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi_Sse(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<NonCloneSimpleTwinSyncSse>
+      sse_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse_Sse(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<NonCloneSimpleTwinSync>
+      sse_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync_Dco(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<Map<int, ApplicationMode>>
+      sse_decode_StreamSink_Map_u_8_application_mode_Dco(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<Map<int, ApplicationMode>>
+      sse_decode_StreamSink_Map_u_8_application_mode_Sse(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<Set<ApplicationMode>>
+      sse_decode_StreamSink_Set_application_mode_Dco(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<Set<ApplicationMode>>
+      sse_decode_StreamSink_Set_application_mode_Sse(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<String> sse_decode_StreamSink_String_Dco(
+      SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<String> sse_decode_StreamSink_String_Sse(
+      SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<ApplicationMode> sse_decode_StreamSink_application_mode_Dco(
+      SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<ApplicationMode> sse_decode_StreamSink_application_mode_Sse(
+      SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<ApplicationModeArray2>
+      sse_decode_StreamSink_application_mode_array_2_Dco(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<ApplicationModeArray2>
+      sse_decode_StreamSink_application_mode_array_2_Sse(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<ApplicationSettings>
+      sse_decode_StreamSink_application_settings_Dco(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<ApplicationSettings>
+      sse_decode_StreamSink_application_settings_Sse(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<EventTwinNormal> sse_decode_StreamSink_event_twin_normal_Dco(
+      SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<EventTwinRustAsync>
+      sse_decode_StreamSink_event_twin_rust_async_Dco(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<EventTwinRustAsyncSse>
+      sse_decode_StreamSink_event_twin_rust_async_sse_Sse(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<EventTwinSse> sse_decode_StreamSink_event_twin_sse_Sse(
+      SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<int> sse_decode_StreamSink_i_32_Dco(
+      SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<int> sse_decode_StreamSink_i_32_Sse(
+      SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<List<ApplicationMode>>
+      sse_decode_StreamSink_list_application_mode_Dco(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<List<ApplicationMode>>
+      sse_decode_StreamSink_list_application_mode_Sse(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<List<ApplicationSettings>>
+      sse_decode_StreamSink_list_application_settings_Dco(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<List<ApplicationSettings>>
+      sse_decode_StreamSink_list_application_settings_Sse(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<Log2TwinNormal> sse_decode_StreamSink_log_2_twin_normal_Dco(
+      SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<Log2TwinRustAsync>
+      sse_decode_StreamSink_log_2_twin_rust_async_Dco(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<Log2TwinRustAsyncSse>
+      sse_decode_StreamSink_log_2_twin_rust_async_sse_Sse(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<Log2TwinSse> sse_decode_StreamSink_log_2_twin_sse_Sse(
+      SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<Log2TwinSync> sse_decode_StreamSink_log_2_twin_sync_Dco(
+      SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<Log2TwinSyncSse> sse_decode_StreamSink_log_2_twin_sync_sse_Sse(
+      SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<LogTwinNormal> sse_decode_StreamSink_log_twin_normal_Dco(
+      SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<LogTwinRustAsync>
+      sse_decode_StreamSink_log_twin_rust_async_Dco(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<LogTwinRustAsyncSse>
+      sse_decode_StreamSink_log_twin_rust_async_sse_Sse(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<LogTwinSse> sse_decode_StreamSink_log_twin_sse_Sse(
+      SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<MirrorStructTwinNormal>
+      sse_decode_StreamSink_mirror_struct_twin_normal_Dco(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<MirrorStructTwinRustAsync>
+      sse_decode_StreamSink_mirror_struct_twin_rust_async_Dco(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<MirrorStructTwinRustAsyncSse>
+      sse_decode_StreamSink_mirror_struct_twin_rust_async_sse_Sse(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<MirrorStructTwinSse>
+      sse_decode_StreamSink_mirror_struct_twin_sse_Sse(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<MirrorStructTwinSync>
+      sse_decode_StreamSink_mirror_struct_twin_sync_Dco(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<MirrorStructTwinSyncSse>
+      sse_decode_StreamSink_mirror_struct_twin_sync_sse_Sse(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<MyStreamEntryTwinNormal>
+      sse_decode_StreamSink_my_stream_entry_twin_normal_Dco(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<MyStreamEntryTwinRustAsync>
+      sse_decode_StreamSink_my_stream_entry_twin_rust_async_Dco(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<MyStreamEntryTwinRustAsyncSse>
+      sse_decode_StreamSink_my_stream_entry_twin_rust_async_sse_Sse(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<MyStreamEntryTwinSse>
+      sse_decode_StreamSink_my_stream_entry_twin_sse_Sse(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<ApplicationMode?>
+      sse_decode_StreamSink_opt_box_autoadd_application_mode_Dco(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<ApplicationMode?>
+      sse_decode_StreamSink_opt_box_autoadd_application_mode_Sse(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<(ApplicationSettings, RawStringEnumMirrored)>
+      sse_decode_StreamSink_record_application_settings_raw_string_enum_mirrored_Dco(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<(ApplicationSettings, RawStringEnumMirrored)>
+      sse_decode_StreamSink_record_application_settings_raw_string_enum_mirrored_Sse(
+          SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<int> sse_decode_StreamSink_u_32_Dco(
+      SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<int> sse_decode_StreamSink_u_32_Sse(
+      SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<U8Array2> sse_decode_StreamSink_u_8_array_2_Dco(
+      SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<U8Array2> sse_decode_StreamSink_u_8_array_2_Sse(
+      SseDeserializer deserializer);
+
+  @protected
   String sse_decode_String(SseDeserializer deserializer);
 
   @protected
@@ -12447,6 +13037,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   MyStruct sse_decode_box_autoadd_my_struct(SseDeserializer deserializer);
+
+  @protected
+  MyStructContainingStreamSinkTwinNormal
+      sse_decode_box_autoadd_my_struct_containing_stream_sink_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  MyStructContainingStreamSinkTwinRustAsync
+      sse_decode_box_autoadd_my_struct_containing_stream_sink_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  MyStructContainingStreamSinkTwinRustAsyncSse
+      sse_decode_box_autoadd_my_struct_containing_stream_sink_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  MyStructContainingStreamSinkTwinSse
+      sse_decode_box_autoadd_my_struct_containing_stream_sink_twin_sse(
+          SseDeserializer deserializer);
 
   @protected
   MyTreeNodeTwinNormal sse_decode_box_autoadd_my_tree_node_twin_normal(
@@ -14416,6 +15026,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  List<RustStreamSink<int>> sse_decode_list_StreamSink_i_32_Dco(
+      SseDeserializer deserializer);
+
+  @protected
+  List<RustStreamSink<int>> sse_decode_list_StreamSink_i_32_Sse(
+      SseDeserializer deserializer);
+
+  @protected
   List<String> sse_decode_list_String(SseDeserializer deserializer);
 
   @protected
@@ -15351,6 +15969,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   MyStruct sse_decode_my_struct(SseDeserializer deserializer);
+
+  @protected
+  MyStructContainingStreamSinkTwinNormal
+      sse_decode_my_struct_containing_stream_sink_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  MyStructContainingStreamSinkTwinRustAsync
+      sse_decode_my_struct_containing_stream_sink_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  MyStructContainingStreamSinkTwinRustAsyncSse
+      sse_decode_my_struct_containing_stream_sink_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  MyStructContainingStreamSinkTwinSse
+      sse_decode_my_struct_containing_stream_sink_twin_sse(
+          SseDeserializer deserializer);
 
   @protected
   MyTreeNodeTwinNormal sse_decode_my_tree_node_twin_normal(
@@ -17620,6 +18258,346 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  ffi.Pointer<wire_cst_list_prim_u_8_strict>
+      cst_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoi_Dco(
+          RustStreamSink<NonCloneSimpleTwinMoi> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_String(raw.setupAndSerialize(
+        codec: DcoCodec(
+            decodeSuccessData:
+                dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoi,
+            decodeErrorData: null)));
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_prim_u_8_strict>
+      cst_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal_Dco(
+          RustStreamSink<NonCloneSimpleTwinNormal> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_String(raw.setupAndSerialize(
+        codec: DcoCodec(
+            decodeSuccessData:
+                dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal,
+            decodeErrorData: null)));
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_prim_u_8_strict>
+      cst_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi_Dco(
+          RustStreamSink<NonCloneSimpleTwinRustAsyncMoi> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_String(raw.setupAndSerialize(
+        codec: DcoCodec(
+            decodeSuccessData:
+                dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi,
+            decodeErrorData: null)));
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_prim_u_8_strict>
+      cst_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync_Dco(
+          RustStreamSink<NonCloneSimpleTwinRustAsync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_String(raw.setupAndSerialize(
+        codec: DcoCodec(
+            decodeSuccessData:
+                dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync,
+            decodeErrorData: null)));
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_prim_u_8_strict>
+      cst_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi_Dco(
+          RustStreamSink<NonCloneSimpleTwinSyncMoi> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_String(raw.setupAndSerialize(
+        codec: DcoCodec(
+            decodeSuccessData:
+                dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi,
+            decodeErrorData: null)));
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_prim_u_8_strict>
+      cst_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync_Dco(
+          RustStreamSink<NonCloneSimpleTwinSync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_String(raw.setupAndSerialize(
+        codec: DcoCodec(
+            decodeSuccessData:
+                dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync,
+            decodeErrorData: null)));
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_prim_u_8_strict>
+      cst_encode_StreamSink_Map_u_8_application_mode_Dco(
+          RustStreamSink<Map<int, ApplicationMode>> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_String(raw.setupAndSerialize(
+        codec: DcoCodec(
+            decodeSuccessData: dco_decode_Map_u_8_application_mode,
+            decodeErrorData: null)));
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_prim_u_8_strict>
+      cst_encode_StreamSink_Set_application_mode_Dco(
+          RustStreamSink<Set<ApplicationMode>> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_String(raw.setupAndSerialize(
+        codec: DcoCodec(
+            decodeSuccessData: dco_decode_Set_application_mode,
+            decodeErrorData: null)));
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_prim_u_8_strict> cst_encode_StreamSink_String_Dco(
+      RustStreamSink<String> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_String(raw.setupAndSerialize(
+        codec: DcoCodec(
+            decodeSuccessData: dco_decode_String, decodeErrorData: null)));
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_prim_u_8_strict>
+      cst_encode_StreamSink_application_mode_Dco(
+          RustStreamSink<ApplicationMode> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_String(raw.setupAndSerialize(
+        codec: DcoCodec(
+            decodeSuccessData: dco_decode_application_mode,
+            decodeErrorData: null)));
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_prim_u_8_strict>
+      cst_encode_StreamSink_application_mode_array_2_Dco(
+          RustStreamSink<ApplicationModeArray2> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_String(raw.setupAndSerialize(
+        codec: DcoCodec(
+            decodeSuccessData: dco_decode_application_mode_array_2,
+            decodeErrorData: null)));
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_prim_u_8_strict>
+      cst_encode_StreamSink_application_settings_Dco(
+          RustStreamSink<ApplicationSettings> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_String(raw.setupAndSerialize(
+        codec: DcoCodec(
+            decodeSuccessData: dco_decode_application_settings,
+            decodeErrorData: null)));
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_prim_u_8_strict>
+      cst_encode_StreamSink_event_twin_normal_Dco(
+          RustStreamSink<EventTwinNormal> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_String(raw.setupAndSerialize(
+        codec: DcoCodec(
+            decodeSuccessData: dco_decode_event_twin_normal,
+            decodeErrorData: null)));
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_prim_u_8_strict>
+      cst_encode_StreamSink_event_twin_rust_async_Dco(
+          RustStreamSink<EventTwinRustAsync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_String(raw.setupAndSerialize(
+        codec: DcoCodec(
+            decodeSuccessData: dco_decode_event_twin_rust_async,
+            decodeErrorData: null)));
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_prim_u_8_strict> cst_encode_StreamSink_i_32_Dco(
+      RustStreamSink<int> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_String(raw.setupAndSerialize(
+        codec: DcoCodec(
+            decodeSuccessData: dco_decode_i_32, decodeErrorData: null)));
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_prim_u_8_strict>
+      cst_encode_StreamSink_list_application_mode_Dco(
+          RustStreamSink<List<ApplicationMode>> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_String(raw.setupAndSerialize(
+        codec: DcoCodec(
+            decodeSuccessData: dco_decode_list_application_mode,
+            decodeErrorData: null)));
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_prim_u_8_strict>
+      cst_encode_StreamSink_list_application_settings_Dco(
+          RustStreamSink<List<ApplicationSettings>> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_String(raw.setupAndSerialize(
+        codec: DcoCodec(
+            decodeSuccessData: dco_decode_list_application_settings,
+            decodeErrorData: null)));
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_prim_u_8_strict>
+      cst_encode_StreamSink_log_2_twin_normal_Dco(
+          RustStreamSink<Log2TwinNormal> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_String(raw.setupAndSerialize(
+        codec: DcoCodec(
+            decodeSuccessData: dco_decode_log_2_twin_normal,
+            decodeErrorData: null)));
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_prim_u_8_strict>
+      cst_encode_StreamSink_log_2_twin_rust_async_Dco(
+          RustStreamSink<Log2TwinRustAsync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_String(raw.setupAndSerialize(
+        codec: DcoCodec(
+            decodeSuccessData: dco_decode_log_2_twin_rust_async,
+            decodeErrorData: null)));
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_prim_u_8_strict>
+      cst_encode_StreamSink_log_2_twin_sync_Dco(
+          RustStreamSink<Log2TwinSync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_String(raw.setupAndSerialize(
+        codec: DcoCodec(
+            decodeSuccessData: dco_decode_log_2_twin_sync,
+            decodeErrorData: null)));
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_prim_u_8_strict>
+      cst_encode_StreamSink_log_twin_normal_Dco(
+          RustStreamSink<LogTwinNormal> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_String(raw.setupAndSerialize(
+        codec: DcoCodec(
+            decodeSuccessData: dco_decode_log_twin_normal,
+            decodeErrorData: null)));
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_prim_u_8_strict>
+      cst_encode_StreamSink_log_twin_rust_async_Dco(
+          RustStreamSink<LogTwinRustAsync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_String(raw.setupAndSerialize(
+        codec: DcoCodec(
+            decodeSuccessData: dco_decode_log_twin_rust_async,
+            decodeErrorData: null)));
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_prim_u_8_strict>
+      cst_encode_StreamSink_mirror_struct_twin_normal_Dco(
+          RustStreamSink<MirrorStructTwinNormal> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_String(raw.setupAndSerialize(
+        codec: DcoCodec(
+            decodeSuccessData: dco_decode_mirror_struct_twin_normal,
+            decodeErrorData: null)));
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_prim_u_8_strict>
+      cst_encode_StreamSink_mirror_struct_twin_rust_async_Dco(
+          RustStreamSink<MirrorStructTwinRustAsync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_String(raw.setupAndSerialize(
+        codec: DcoCodec(
+            decodeSuccessData: dco_decode_mirror_struct_twin_rust_async,
+            decodeErrorData: null)));
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_prim_u_8_strict>
+      cst_encode_StreamSink_mirror_struct_twin_sync_Dco(
+          RustStreamSink<MirrorStructTwinSync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_String(raw.setupAndSerialize(
+        codec: DcoCodec(
+            decodeSuccessData: dco_decode_mirror_struct_twin_sync,
+            decodeErrorData: null)));
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_prim_u_8_strict>
+      cst_encode_StreamSink_my_stream_entry_twin_normal_Dco(
+          RustStreamSink<MyStreamEntryTwinNormal> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_String(raw.setupAndSerialize(
+        codec: DcoCodec(
+            decodeSuccessData: dco_decode_my_stream_entry_twin_normal,
+            decodeErrorData: null)));
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_prim_u_8_strict>
+      cst_encode_StreamSink_my_stream_entry_twin_rust_async_Dco(
+          RustStreamSink<MyStreamEntryTwinRustAsync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_String(raw.setupAndSerialize(
+        codec: DcoCodec(
+            decodeSuccessData: dco_decode_my_stream_entry_twin_rust_async,
+            decodeErrorData: null)));
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_prim_u_8_strict>
+      cst_encode_StreamSink_opt_box_autoadd_application_mode_Dco(
+          RustStreamSink<ApplicationMode?> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_String(raw.setupAndSerialize(
+        codec: DcoCodec(
+            decodeSuccessData: dco_decode_opt_box_autoadd_application_mode,
+            decodeErrorData: null)));
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_prim_u_8_strict>
+      cst_encode_StreamSink_record_application_settings_raw_string_enum_mirrored_Dco(
+          RustStreamSink<(ApplicationSettings, RawStringEnumMirrored)> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_String(raw.setupAndSerialize(
+        codec: DcoCodec(
+            decodeSuccessData:
+                dco_decode_record_application_settings_raw_string_enum_mirrored,
+            decodeErrorData: null)));
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_prim_u_8_strict> cst_encode_StreamSink_u_32_Dco(
+      RustStreamSink<int> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_String(raw.setupAndSerialize(
+        codec: DcoCodec(
+            decodeSuccessData: dco_decode_u_32, decodeErrorData: null)));
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_prim_u_8_strict>
+      cst_encode_StreamSink_u_8_array_2_Dco(RustStreamSink<U8Array2> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_String(raw.setupAndSerialize(
+        codec: DcoCodec(
+            decodeSuccessData: dco_decode_u_8_array_2, decodeErrorData: null)));
+  }
+
+  @protected
   ffi.Pointer<wire_cst_list_prim_u_8_strict> cst_encode_String(String raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_prim_u_8_strict(utf8.encoder.convert(raw));
@@ -19014,6 +19992,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     final ptr = wire.cst_new_box_autoadd_my_struct();
     cst_api_fill_to_wire_my_struct(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_my_struct_containing_stream_sink_twin_normal>
+      cst_encode_box_autoadd_my_struct_containing_stream_sink_twin_normal(
+          MyStructContainingStreamSinkTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr =
+        wire.cst_new_box_autoadd_my_struct_containing_stream_sink_twin_normal();
+    cst_api_fill_to_wire_my_struct_containing_stream_sink_twin_normal(
+        raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_my_struct_containing_stream_sink_twin_rust_async>
+      cst_encode_box_autoadd_my_struct_containing_stream_sink_twin_rust_async(
+          MyStructContainingStreamSinkTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr = wire
+        .cst_new_box_autoadd_my_struct_containing_stream_sink_twin_rust_async();
+    cst_api_fill_to_wire_my_struct_containing_stream_sink_twin_rust_async(
+        raw, ptr.ref);
     return ptr;
   }
 
@@ -20413,6 +21415,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     final ans = wire.cst_new_list_RustOpaque_HideDataTwinSyncMoi(raw.length);
     for (var i = 0; i < raw.length; ++i) {
       ans.ref.ptr[i] = cst_encode_RustOpaque_HideDataTwinSyncMoi(raw[i]);
+    }
+    return ans;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_StreamSink_i_32_Dco>
+      cst_encode_list_StreamSink_i_32_Dco(List<RustStreamSink<int>> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ans = wire.cst_new_list_StreamSink_i_32_Dco(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      ans.ref.ptr[i] = cst_encode_StreamSink_i_32_Dco(raw[i]);
     }
     return ans;
   }
@@ -23816,6 +24829,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  void
+      cst_api_fill_to_wire_box_autoadd_my_struct_containing_stream_sink_twin_normal(
+          MyStructContainingStreamSinkTwinNormal apiObj,
+          ffi.Pointer<wire_cst_my_struct_containing_stream_sink_twin_normal>
+              wireObj) {
+    cst_api_fill_to_wire_my_struct_containing_stream_sink_twin_normal(
+        apiObj, wireObj.ref);
+  }
+
+  @protected
+  void
+      cst_api_fill_to_wire_box_autoadd_my_struct_containing_stream_sink_twin_rust_async(
+          MyStructContainingStreamSinkTwinRustAsync apiObj,
+          ffi.Pointer<wire_cst_my_struct_containing_stream_sink_twin_rust_async>
+              wireObj) {
+    cst_api_fill_to_wire_my_struct_containing_stream_sink_twin_rust_async(
+        apiObj, wireObj.ref);
+  }
+
+  @protected
   void cst_api_fill_to_wire_box_autoadd_my_tree_node_twin_normal(
       MyTreeNodeTwinNormal apiObj,
       ffi.Pointer<wire_cst_my_tree_node_twin_normal> wireObj) {
@@ -26351,6 +27384,22 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void cst_api_fill_to_wire_my_struct(
       MyStruct apiObj, wire_cst_my_struct wireObj) {
     wireObj.content = cst_encode_bool(apiObj.content);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_my_struct_containing_stream_sink_twin_normal(
+      MyStructContainingStreamSinkTwinNormal apiObj,
+      wire_cst_my_struct_containing_stream_sink_twin_normal wireObj) {
+    wireObj.a = cst_encode_i_32(apiObj.a);
+    wireObj.b = cst_encode_StreamSink_i_32_Dco(apiObj.b);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_my_struct_containing_stream_sink_twin_rust_async(
+      MyStructContainingStreamSinkTwinRustAsync apiObj,
+      wire_cst_my_struct_containing_stream_sink_twin_rust_async wireObj) {
+    wireObj.a = cst_encode_i_32(apiObj.a);
+    wireObj.b = cst_encode_StreamSink_i_32_Dco(apiObj.b);
   }
 
   @protected
@@ -30843,6 +31892,283 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_Set_i_32(Set<int> self, SseSerializer serializer);
 
   @protected
+  void
+      sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoi_Dco(
+          RustStreamSink<NonCloneSimpleTwinMoi> self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal_Dco(
+          RustStreamSink<NonCloneSimpleTwinNormal> self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi_Dco(
+          RustStreamSink<NonCloneSimpleTwinRustAsyncMoi> self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi_Sse(
+          RustStreamSink<NonCloneSimpleTwinRustAsyncSseMoi> self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse_Sse(
+          RustStreamSink<NonCloneSimpleTwinRustAsyncSse> self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync_Dco(
+          RustStreamSink<NonCloneSimpleTwinRustAsync> self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi_Sse(
+          RustStreamSink<NonCloneSimpleTwinSseMoi> self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSse_Sse(
+          RustStreamSink<NonCloneSimpleTwinSse> self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi_Dco(
+          RustStreamSink<NonCloneSimpleTwinSyncMoi> self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi_Sse(
+          RustStreamSink<NonCloneSimpleTwinSyncSseMoi> self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse_Sse(
+          RustStreamSink<NonCloneSimpleTwinSyncSse> self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync_Dco(
+          RustStreamSink<NonCloneSimpleTwinSync> self,
+          SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_Map_u_8_application_mode_Dco(
+      RustStreamSink<Map<int, ApplicationMode>> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_Map_u_8_application_mode_Sse(
+      RustStreamSink<Map<int, ApplicationMode>> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_Set_application_mode_Dco(
+      RustStreamSink<Set<ApplicationMode>> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_Set_application_mode_Sse(
+      RustStreamSink<Set<ApplicationMode>> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_String_Dco(
+      RustStreamSink<String> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_String_Sse(
+      RustStreamSink<String> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_application_mode_Dco(
+      RustStreamSink<ApplicationMode> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_application_mode_Sse(
+      RustStreamSink<ApplicationMode> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_application_mode_array_2_Dco(
+      RustStreamSink<ApplicationModeArray2> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_application_mode_array_2_Sse(
+      RustStreamSink<ApplicationModeArray2> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_application_settings_Dco(
+      RustStreamSink<ApplicationSettings> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_application_settings_Sse(
+      RustStreamSink<ApplicationSettings> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_event_twin_normal_Dco(
+      RustStreamSink<EventTwinNormal> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_event_twin_rust_async_Dco(
+      RustStreamSink<EventTwinRustAsync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_event_twin_rust_async_sse_Sse(
+      RustStreamSink<EventTwinRustAsyncSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_event_twin_sse_Sse(
+      RustStreamSink<EventTwinSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_i_32_Dco(
+      RustStreamSink<int> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_i_32_Sse(
+      RustStreamSink<int> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_list_application_mode_Dco(
+      RustStreamSink<List<ApplicationMode>> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_list_application_mode_Sse(
+      RustStreamSink<List<ApplicationMode>> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_list_application_settings_Dco(
+      RustStreamSink<List<ApplicationSettings>> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_list_application_settings_Sse(
+      RustStreamSink<List<ApplicationSettings>> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_log_2_twin_normal_Dco(
+      RustStreamSink<Log2TwinNormal> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_log_2_twin_rust_async_Dco(
+      RustStreamSink<Log2TwinRustAsync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_log_2_twin_rust_async_sse_Sse(
+      RustStreamSink<Log2TwinRustAsyncSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_log_2_twin_sse_Sse(
+      RustStreamSink<Log2TwinSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_log_2_twin_sync_Dco(
+      RustStreamSink<Log2TwinSync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_log_2_twin_sync_sse_Sse(
+      RustStreamSink<Log2TwinSyncSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_log_twin_normal_Dco(
+      RustStreamSink<LogTwinNormal> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_log_twin_rust_async_Dco(
+      RustStreamSink<LogTwinRustAsync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_log_twin_rust_async_sse_Sse(
+      RustStreamSink<LogTwinRustAsyncSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_log_twin_sse_Sse(
+      RustStreamSink<LogTwinSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_mirror_struct_twin_normal_Dco(
+      RustStreamSink<MirrorStructTwinNormal> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_mirror_struct_twin_rust_async_Dco(
+      RustStreamSink<MirrorStructTwinRustAsync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_mirror_struct_twin_rust_async_sse_Sse(
+      RustStreamSink<MirrorStructTwinRustAsyncSse> self,
+      SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_mirror_struct_twin_sse_Sse(
+      RustStreamSink<MirrorStructTwinSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_mirror_struct_twin_sync_Dco(
+      RustStreamSink<MirrorStructTwinSync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_mirror_struct_twin_sync_sse_Sse(
+      RustStreamSink<MirrorStructTwinSyncSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_my_stream_entry_twin_normal_Dco(
+      RustStreamSink<MyStreamEntryTwinNormal> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_my_stream_entry_twin_rust_async_Dco(
+      RustStreamSink<MyStreamEntryTwinRustAsync> self,
+      SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_my_stream_entry_twin_rust_async_sse_Sse(
+      RustStreamSink<MyStreamEntryTwinRustAsyncSse> self,
+      SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_my_stream_entry_twin_sse_Sse(
+      RustStreamSink<MyStreamEntryTwinSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_opt_box_autoadd_application_mode_Dco(
+      RustStreamSink<ApplicationMode?> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_opt_box_autoadd_application_mode_Sse(
+      RustStreamSink<ApplicationMode?> self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_StreamSink_record_application_settings_raw_string_enum_mirrored_Dco(
+          RustStreamSink<(ApplicationSettings, RawStringEnumMirrored)> self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_StreamSink_record_application_settings_raw_string_enum_mirrored_Sse(
+          RustStreamSink<(ApplicationSettings, RawStringEnumMirrored)> self,
+          SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_u_32_Dco(
+      RustStreamSink<int> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_u_32_Sse(
+      RustStreamSink<int> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_u_8_array_2_Dco(
+      RustStreamSink<U8Array2> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_u_8_array_2_Sse(
+      RustStreamSink<U8Array2> self, SseSerializer serializer);
+
+  @protected
   void sse_encode_String(String self, SseSerializer serializer);
 
   @protected
@@ -32251,6 +33577,24 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_box_autoadd_my_struct(
       MyStruct self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_my_struct_containing_stream_sink_twin_normal(
+      MyStructContainingStreamSinkTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_my_struct_containing_stream_sink_twin_rust_async(
+      MyStructContainingStreamSinkTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_box_autoadd_my_struct_containing_stream_sink_twin_rust_async_sse(
+          MyStructContainingStreamSinkTwinRustAsyncSse self,
+          SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_my_struct_containing_stream_sink_twin_sse(
+      MyStructContainingStreamSinkTwinSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_my_tree_node_twin_normal(
@@ -34128,6 +35472,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       List<HideDataTwinSyncSseMoi> self, SseSerializer serializer);
 
   @protected
+  void sse_encode_list_StreamSink_i_32_Dco(
+      List<RustStreamSink<int>> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_StreamSink_i_32_Sse(
+      List<RustStreamSink<int>> self, SseSerializer serializer);
+
+  @protected
   void sse_encode_list_String(List<String> self, SseSerializer serializer);
 
   @protected
@@ -35034,6 +36386,23 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_my_struct(MyStruct self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_struct_containing_stream_sink_twin_normal(
+      MyStructContainingStreamSinkTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_struct_containing_stream_sink_twin_rust_async(
+      MyStructContainingStreamSinkTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_struct_containing_stream_sink_twin_rust_async_sse(
+      MyStructContainingStreamSinkTwinRustAsyncSse self,
+      SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_struct_containing_stream_sink_twin_sse(
+      MyStructContainingStreamSinkTwinSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_my_tree_node_twin_normal(
@@ -37173,21 +38542,26 @@ class RustLibWire implements BaseWire {
   void wire_simple_use_async_spawn_local(
     int port_,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> arg,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_simple_use_async_spawn_local(
       port_,
       arg,
+      sink,
     );
   }
 
   late final _wire_simple_use_async_spawn_localPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+                  ffi.Int64,
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>,
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_simple_use_async_spawn_local');
   late final _wire_simple_use_async_spawn_local =
       _wire_simple_use_async_spawn_localPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>,
+              ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_handle_customized_struct_twin_normal(
     int port_,
@@ -38240,19 +39614,24 @@ class RustLibWire implements BaseWire {
   void wire_DroppableTwinNormal_create_stream(
     int port_,
     int that,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_DroppableTwinNormal_create_stream(
       port_,
       that,
+      sink,
     );
   }
 
   late final _wire_DroppableTwinNormal_create_streamPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64, ffi.UintPtr,
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_DroppableTwinNormal_create_stream');
   late final _wire_DroppableTwinNormal_create_stream =
-      _wire_DroppableTwinNormal_create_streamPtr
-          .asFunction<void Function(int, int)>();
+      _wire_DroppableTwinNormal_create_streamPtr.asFunction<
+          void Function(
+              int, int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_DroppableTwinNormal_get_drop_count_twin_normal(
     int port_,
@@ -38569,18 +39948,22 @@ class RustLibWire implements BaseWire {
 
   void wire_register_event_listener_twin_normal(
     int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> listener,
   ) {
     return _wire_register_event_listener_twin_normal(
       port_,
+      listener,
     );
   }
 
   late final _wire_register_event_listener_twin_normalPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_register_event_listener_twin_normal');
   late final _wire_register_event_listener_twin_normal =
-      _wire_register_event_listener_twin_normalPtr
-          .asFunction<void Function(int)>();
+      _wire_register_event_listener_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_custom_enum_error_panic_twin_normal(
     int port_,
@@ -39044,18 +40427,22 @@ class RustLibWire implements BaseWire {
 
   void wire_stream_sink_throw_anyhow_twin_normal(
     int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> _sink,
   ) {
     return _wire_stream_sink_throw_anyhow_twin_normal(
       port_,
+      _sink,
     );
   }
 
   late final _wire_stream_sink_throw_anyhow_twin_normalPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_stream_sink_throw_anyhow_twin_normal');
   late final _wire_stream_sink_throw_anyhow_twin_normal =
-      _wire_stream_sink_throw_anyhow_twin_normalPtr
-          .asFunction<void Function(int)>();
+      _wire_stream_sink_throw_anyhow_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_throw_anyhow_twin_normal(
     int port_,
@@ -39467,75 +40854,94 @@ class RustLibWire implements BaseWire {
   void
       wire_concatenate_with_twin_normal_handle_some_static_stream_sink_single_arg_twin_normal(
     int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_concatenate_with_twin_normal_handle_some_static_stream_sink_single_arg_twin_normal(
       port_,
+      sink,
     );
   }
 
   late final _wire_concatenate_with_twin_normal_handle_some_static_stream_sink_single_arg_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(
+                      ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
           'frbgen_frb_example_pure_dart_wire_concatenate_with_twin_normal_handle_some_static_stream_sink_single_arg_twin_normal');
   late final _wire_concatenate_with_twin_normal_handle_some_static_stream_sink_single_arg_twin_normal =
       _wire_concatenate_with_twin_normal_handle_some_static_stream_sink_single_arg_twin_normalPtr
-          .asFunction<void Function(int)>();
+          .asFunction<
+              void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void
       wire_concatenate_with_twin_normal_handle_some_static_stream_sink_twin_normal(
     int port_,
     int key,
     int max,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_concatenate_with_twin_normal_handle_some_static_stream_sink_twin_normal(
       port_,
       key,
       max,
+      sink,
     );
   }
 
   late final _wire_concatenate_with_twin_normal_handle_some_static_stream_sink_twin_normalPtr =
       _lookup<
               ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Uint32, ffi.Uint32)>>(
+                  ffi.Void Function(ffi.Int64, ffi.Uint32, ffi.Uint32,
+                      ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
           'frbgen_frb_example_pure_dart_wire_concatenate_with_twin_normal_handle_some_static_stream_sink_twin_normal');
   late final _wire_concatenate_with_twin_normal_handle_some_static_stream_sink_twin_normal =
       _wire_concatenate_with_twin_normal_handle_some_static_stream_sink_twin_normalPtr
-          .asFunction<void Function(int, int, int)>();
+          .asFunction<
+              void Function(
+                  int, int, int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void
       wire_concatenate_with_twin_normal_handle_some_stream_sink_at_1_twin_normal(
     int port_,
     ffi.Pointer<wire_cst_concatenate_with_twin_normal> that,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_concatenate_with_twin_normal_handle_some_stream_sink_at_1_twin_normal(
       port_,
       that,
+      sink,
     );
   }
 
   late final _wire_concatenate_with_twin_normal_handle_some_stream_sink_at_1_twin_normalPtr =
       _lookup<
               ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64,
-                      ffi.Pointer<wire_cst_concatenate_with_twin_normal>)>>(
+                  ffi.Void Function(
+                      ffi.Int64,
+                      ffi.Pointer<wire_cst_concatenate_with_twin_normal>,
+                      ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
           'frbgen_frb_example_pure_dart_wire_concatenate_with_twin_normal_handle_some_stream_sink_at_1_twin_normal');
   late final _wire_concatenate_with_twin_normal_handle_some_stream_sink_at_1_twin_normal =
       _wire_concatenate_with_twin_normal_handle_some_stream_sink_at_1_twin_normalPtr
           .asFunction<
               void Function(
-                  int, ffi.Pointer<wire_cst_concatenate_with_twin_normal>)>();
+                  int,
+                  ffi.Pointer<wire_cst_concatenate_with_twin_normal>,
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_concatenate_with_twin_normal_handle_some_stream_sink_twin_normal(
     int port_,
     ffi.Pointer<wire_cst_concatenate_with_twin_normal> that,
     int key,
     int max,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_concatenate_with_twin_normal_handle_some_stream_sink_twin_normal(
       port_,
       that,
       key,
       max,
+      sink,
     );
   }
 
@@ -39546,7 +40952,8 @@ class RustLibWire implements BaseWire {
                       ffi.Int64,
                       ffi.Pointer<wire_cst_concatenate_with_twin_normal>,
                       ffi.Uint32,
-                      ffi.Uint32)>>(
+                      ffi.Uint32,
+                      ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
           'frbgen_frb_example_pure_dart_wire_concatenate_with_twin_normal_handle_some_stream_sink_twin_normal');
   late final _wire_concatenate_with_twin_normal_handle_some_stream_sink_twin_normal =
       _wire_concatenate_with_twin_normal_handle_some_stream_sink_twin_normalPtr
@@ -39555,7 +40962,8 @@ class RustLibWire implements BaseWire {
                   int,
                   ffi.Pointer<wire_cst_concatenate_with_twin_normal>,
                   int,
-                  int)>();
+                  int,
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_concatenate_with_twin_normal_new_twin_normal(
     int port_,
@@ -39806,32 +41214,41 @@ class RustLibWire implements BaseWire {
 
   void wire_app_settings_stream_twin_normal(
     int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_app_settings_stream_twin_normal(
       port_,
+      sink,
     );
   }
 
-  late final _wire_app_settings_stream_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'frbgen_frb_example_pure_dart_wire_app_settings_stream_twin_normal');
+  late final _wire_app_settings_stream_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+      'frbgen_frb_example_pure_dart_wire_app_settings_stream_twin_normal');
   late final _wire_app_settings_stream_twin_normal =
-      _wire_app_settings_stream_twin_normalPtr.asFunction<void Function(int)>();
+      _wire_app_settings_stream_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_app_settings_vec_stream_twin_normal(
     int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_app_settings_vec_stream_twin_normal(
       port_,
+      sink,
     );
   }
 
   late final _wire_app_settings_vec_stream_twin_normalPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_app_settings_vec_stream_twin_normal');
   late final _wire_app_settings_vec_stream_twin_normal =
-      _wire_app_settings_vec_stream_twin_normalPtr
-          .asFunction<void Function(int)>();
+      _wire_app_settings_vec_stream_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_first_number_twin_normal(
     int port_,
@@ -39932,121 +41349,155 @@ class RustLibWire implements BaseWire {
 
   void wire_mirror_array_enum_stream_twin_normal(
     int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_mirror_array_enum_stream_twin_normal(
       port_,
+      sink,
     );
   }
 
   late final _wire_mirror_array_enum_stream_twin_normalPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_mirror_array_enum_stream_twin_normal');
   late final _wire_mirror_array_enum_stream_twin_normal =
-      _wire_mirror_array_enum_stream_twin_normalPtr
-          .asFunction<void Function(int)>();
+      _wire_mirror_array_enum_stream_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_mirror_enum_stream_twin_normal(
     int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_mirror_enum_stream_twin_normal(
       port_,
+      sink,
     );
   }
 
-  late final _wire_mirror_enum_stream_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'frbgen_frb_example_pure_dart_wire_mirror_enum_stream_twin_normal');
+  late final _wire_mirror_enum_stream_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+      'frbgen_frb_example_pure_dart_wire_mirror_enum_stream_twin_normal');
   late final _wire_mirror_enum_stream_twin_normal =
-      _wire_mirror_enum_stream_twin_normalPtr.asFunction<void Function(int)>();
+      _wire_mirror_enum_stream_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_mirror_map_enum_stream_twin_normal(
     int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_mirror_map_enum_stream_twin_normal(
       port_,
+      sink,
     );
   }
 
   late final _wire_mirror_map_enum_stream_twin_normalPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_mirror_map_enum_stream_twin_normal');
   late final _wire_mirror_map_enum_stream_twin_normal =
-      _wire_mirror_map_enum_stream_twin_normalPtr
-          .asFunction<void Function(int)>();
+      _wire_mirror_map_enum_stream_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_mirror_option_enum_stream_twin_normal(
     int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_mirror_option_enum_stream_twin_normal(
       port_,
+      sink,
     );
   }
 
   late final _wire_mirror_option_enum_stream_twin_normalPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_mirror_option_enum_stream_twin_normal');
   late final _wire_mirror_option_enum_stream_twin_normal =
-      _wire_mirror_option_enum_stream_twin_normalPtr
-          .asFunction<void Function(int)>();
+      _wire_mirror_option_enum_stream_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_mirror_set_enum_stream_twin_normal(
     int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_mirror_set_enum_stream_twin_normal(
       port_,
+      sink,
     );
   }
 
   late final _wire_mirror_set_enum_stream_twin_normalPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_mirror_set_enum_stream_twin_normal');
   late final _wire_mirror_set_enum_stream_twin_normal =
-      _wire_mirror_set_enum_stream_twin_normalPtr
-          .asFunction<void Function(int)>();
+      _wire_mirror_set_enum_stream_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_mirror_struct_stream_twin_normal(
     int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_mirror_struct_stream_twin_normal(
       port_,
+      sink,
     );
   }
 
-  late final _wire_mirror_struct_stream_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'frbgen_frb_example_pure_dart_wire_mirror_struct_stream_twin_normal');
+  late final _wire_mirror_struct_stream_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+      'frbgen_frb_example_pure_dart_wire_mirror_struct_stream_twin_normal');
   late final _wire_mirror_struct_stream_twin_normal =
-      _wire_mirror_struct_stream_twin_normalPtr
-          .asFunction<void Function(int)>();
+      _wire_mirror_struct_stream_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_mirror_tuple_stream_twin_normal(
     int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_mirror_tuple_stream_twin_normal(
       port_,
+      sink,
     );
   }
 
-  late final _wire_mirror_tuple_stream_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'frbgen_frb_example_pure_dart_wire_mirror_tuple_stream_twin_normal');
+  late final _wire_mirror_tuple_stream_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+      'frbgen_frb_example_pure_dart_wire_mirror_tuple_stream_twin_normal');
   late final _wire_mirror_tuple_stream_twin_normal =
-      _wire_mirror_tuple_stream_twin_normalPtr.asFunction<void Function(int)>();
+      _wire_mirror_tuple_stream_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_mirror_vec_enum_stream_twin_normal(
     int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_mirror_vec_enum_stream_twin_normal(
       port_,
+      sink,
     );
   }
 
   late final _wire_mirror_vec_enum_stream_twin_normalPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_mirror_vec_enum_stream_twin_normal');
   late final _wire_mirror_vec_enum_stream_twin_normal =
-      _wire_mirror_vec_enum_stream_twin_normalPtr
-          .asFunction<void Function(int)>();
+      _wire_mirror_vec_enum_stream_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_repeat_number_twin_normal(
     int port_,
@@ -56448,19 +57899,25 @@ class RustLibWire implements BaseWire {
   void wire_DroppableTwinRustAsync_create_stream_twin_rust_async(
     int port_,
     int that,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_DroppableTwinRustAsync_create_stream_twin_rust_async(
       port_,
       that,
+      sink,
     );
   }
 
   late final _wire_DroppableTwinRustAsync_create_stream_twin_rust_asyncPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.UintPtr,
+                      ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
           'frbgen_frb_example_pure_dart_wire_DroppableTwinRustAsync_create_stream_twin_rust_async');
   late final _wire_DroppableTwinRustAsync_create_stream_twin_rust_async =
-      _wire_DroppableTwinRustAsync_create_stream_twin_rust_asyncPtr
-          .asFunction<void Function(int, int)>();
+      _wire_DroppableTwinRustAsync_create_stream_twin_rust_asyncPtr.asFunction<
+          void Function(
+              int, int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_DroppableTwinRustAsync_get_drop_count_twin_rust_async(
     int port_,
@@ -56696,22 +58153,25 @@ class RustLibWire implements BaseWire {
       _wire_DroppableTwinSse_simple_method_twin_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
-  void wire_DroppableTwinSync_create_stream_twin_sync(
-    int port_,
+  WireSyncRust2DartDco wire_DroppableTwinSync_create_stream_twin_sync(
     int that,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_DroppableTwinSync_create_stream_twin_sync(
-      port_,
       that,
+      sink,
     );
   }
 
   late final _wire_DroppableTwinSync_create_stream_twin_syncPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.UintPtr, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_DroppableTwinSync_create_stream_twin_sync');
   late final _wire_DroppableTwinSync_create_stream_twin_sync =
-      _wire_DroppableTwinSync_create_stream_twin_syncPtr
-          .asFunction<void Function(int, int)>();
+      _wire_DroppableTwinSync_create_stream_twin_syncPtr.asFunction<
+          WireSyncRust2DartDco Function(
+              int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   WireSyncRust2DartDco wire_DroppableTwinSync_get_drop_count_twin_sync() {
     return _wire_DroppableTwinSync_get_drop_count_twin_sync();
@@ -56750,14 +58210,12 @@ class RustLibWire implements BaseWire {
       _wire_DroppableTwinSync_simple_method_twin_syncPtr
           .asFunction<WireSyncRust2DartDco Function(int)>();
 
-  void wire_DroppableTwinSyncSse_create_stream_twin_sync_sse(
-    int port_,
+  WireSyncRust2DartSse wire_DroppableTwinSyncSse_create_stream_twin_sync_sse(
     ffi.Pointer<ffi.Uint8> ptr_,
     int rust_vec_len_,
     int data_len_,
   ) {
     return _wire_DroppableTwinSyncSse_create_stream_twin_sync_sse(
-      port_,
       ptr_,
       rust_vec_len_,
       data_len_,
@@ -56766,12 +58224,12 @@ class RustLibWire implements BaseWire {
 
   late final _wire_DroppableTwinSyncSse_create_stream_twin_sync_ssePtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
       'frbgen_frb_example_pure_dart_wire_DroppableTwinSyncSse_create_stream_twin_sync_sse');
   late final _wire_DroppableTwinSyncSse_create_stream_twin_sync_sse =
-      _wire_DroppableTwinSyncSse_create_stream_twin_sync_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+      _wire_DroppableTwinSyncSse_create_stream_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
   WireSyncRust2DartSse wire_DroppableTwinSyncSse_get_drop_count_twin_sync_sse(
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -57925,18 +59383,22 @@ class RustLibWire implements BaseWire {
 
   void wire_register_event_listener_twin_rust_async(
     int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> listener,
   ) {
     return _wire_register_event_listener_twin_rust_async(
       port_,
+      listener,
     );
   }
 
   late final _wire_register_event_listener_twin_rust_asyncPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_register_event_listener_twin_rust_async');
   late final _wire_register_event_listener_twin_rust_async =
-      _wire_register_event_listener_twin_rust_asyncPtr
-          .asFunction<void Function(int)>();
+      _wire_register_event_listener_twin_rust_asyncPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_close_event_listener_twin_rust_async_sse(
     int port_,
@@ -58589,18 +60051,22 @@ class RustLibWire implements BaseWire {
 
   void wire_stream_sink_throw_anyhow_twin_rust_async(
     int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> _sink,
   ) {
     return _wire_stream_sink_throw_anyhow_twin_rust_async(
       port_,
+      _sink,
     );
   }
 
   late final _wire_stream_sink_throw_anyhow_twin_rust_asyncPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_stream_sink_throw_anyhow_twin_rust_async');
   late final _wire_stream_sink_throw_anyhow_twin_rust_async =
-      _wire_stream_sink_throw_anyhow_twin_rust_asyncPtr
-          .asFunction<void Function(int)>();
+      _wire_stream_sink_throw_anyhow_twin_rust_asyncPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_throw_anyhow_twin_rust_async(
     int port_,
@@ -60353,20 +61819,23 @@ class RustLibWire implements BaseWire {
       _wire_some_struct_twin_sync_static_return_ok_custom_error_twin_syncPtr
           .asFunction<WireSyncRust2DartDco Function()>();
 
-  void wire_stream_sink_throw_anyhow_twin_sync(
-    int port_,
+  WireSyncRust2DartDco wire_stream_sink_throw_anyhow_twin_sync(
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> _sink,
   ) {
     return _wire_stream_sink_throw_anyhow_twin_sync(
-      port_,
+      _sink,
     );
   }
 
   late final _wire_stream_sink_throw_anyhow_twin_syncPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_stream_sink_throw_anyhow_twin_sync');
   late final _wire_stream_sink_throw_anyhow_twin_sync =
-      _wire_stream_sink_throw_anyhow_twin_syncPtr
-          .asFunction<void Function(int)>();
+      _wire_stream_sink_throw_anyhow_twin_syncPtr.asFunction<
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   WireSyncRust2DartDco wire_throw_anyhow_twin_sync() {
     return _wire_throw_anyhow_twin_sync();
@@ -60977,14 +62446,12 @@ class RustLibWire implements BaseWire {
               WireSyncRust2DartSse Function(
                   ffi.Pointer<ffi.Uint8>, int, int)>();
 
-  void wire_stream_sink_throw_anyhow_twin_sync_sse(
-    int port_,
+  WireSyncRust2DartSse wire_stream_sink_throw_anyhow_twin_sync_sse(
     ffi.Pointer<ffi.Uint8> ptr_,
     int rust_vec_len_,
     int data_len_,
   ) {
     return _wire_stream_sink_throw_anyhow_twin_sync_sse(
-      port_,
       ptr_,
       rust_vec_len_,
       data_len_,
@@ -60993,12 +62460,12 @@ class RustLibWire implements BaseWire {
 
   late final _wire_stream_sink_throw_anyhow_twin_sync_ssePtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
       'frbgen_frb_example_pure_dart_wire_stream_sink_throw_anyhow_twin_sync_sse');
   late final _wire_stream_sink_throw_anyhow_twin_sync_sse =
-      _wire_stream_sink_throw_anyhow_twin_sync_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+      _wire_stream_sink_throw_anyhow_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
   WireSyncRust2DartSse wire_throw_anyhow_twin_sync_sse(
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -62331,63 +63798,80 @@ class RustLibWire implements BaseWire {
   void
       wire_concatenate_with_twin_rust_async_handle_some_static_stream_sink_single_arg_twin_rust_async(
     int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_concatenate_with_twin_rust_async_handle_some_static_stream_sink_single_arg_twin_rust_async(
       port_,
+      sink,
     );
   }
 
   late final _wire_concatenate_with_twin_rust_async_handle_some_static_stream_sink_single_arg_twin_rust_asyncPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(
+                      ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
           'frbgen_frb_example_pure_dart_wire_concatenate_with_twin_rust_async_handle_some_static_stream_sink_single_arg_twin_rust_async');
   late final _wire_concatenate_with_twin_rust_async_handle_some_static_stream_sink_single_arg_twin_rust_async =
       _wire_concatenate_with_twin_rust_async_handle_some_static_stream_sink_single_arg_twin_rust_asyncPtr
-          .asFunction<void Function(int)>();
+          .asFunction<
+              void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void
       wire_concatenate_with_twin_rust_async_handle_some_static_stream_sink_twin_rust_async(
     int port_,
     int key,
     int max,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_concatenate_with_twin_rust_async_handle_some_static_stream_sink_twin_rust_async(
       port_,
       key,
       max,
+      sink,
     );
   }
 
   late final _wire_concatenate_with_twin_rust_async_handle_some_static_stream_sink_twin_rust_asyncPtr =
       _lookup<
               ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Uint32, ffi.Uint32)>>(
+                  ffi.Void Function(ffi.Int64, ffi.Uint32, ffi.Uint32,
+                      ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
           'frbgen_frb_example_pure_dart_wire_concatenate_with_twin_rust_async_handle_some_static_stream_sink_twin_rust_async');
   late final _wire_concatenate_with_twin_rust_async_handle_some_static_stream_sink_twin_rust_async =
       _wire_concatenate_with_twin_rust_async_handle_some_static_stream_sink_twin_rust_asyncPtr
-          .asFunction<void Function(int, int, int)>();
+          .asFunction<
+              void Function(
+                  int, int, int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void
       wire_concatenate_with_twin_rust_async_handle_some_stream_sink_at_1_twin_rust_async(
     int port_,
     ffi.Pointer<wire_cst_concatenate_with_twin_rust_async> that,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_concatenate_with_twin_rust_async_handle_some_stream_sink_at_1_twin_rust_async(
       port_,
       that,
+      sink,
     );
   }
 
   late final _wire_concatenate_with_twin_rust_async_handle_some_stream_sink_at_1_twin_rust_asyncPtr =
       _lookup<
               ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64,
-                      ffi.Pointer<wire_cst_concatenate_with_twin_rust_async>)>>(
+                  ffi.Void Function(
+                      ffi.Int64,
+                      ffi.Pointer<wire_cst_concatenate_with_twin_rust_async>,
+                      ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
           'frbgen_frb_example_pure_dart_wire_concatenate_with_twin_rust_async_handle_some_stream_sink_at_1_twin_rust_async');
   late final _wire_concatenate_with_twin_rust_async_handle_some_stream_sink_at_1_twin_rust_async =
       _wire_concatenate_with_twin_rust_async_handle_some_stream_sink_at_1_twin_rust_asyncPtr
           .asFunction<
-              void Function(int,
-                  ffi.Pointer<wire_cst_concatenate_with_twin_rust_async>)>();
+              void Function(
+                  int,
+                  ffi.Pointer<wire_cst_concatenate_with_twin_rust_async>,
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void
       wire_concatenate_with_twin_rust_async_handle_some_stream_sink_twin_rust_async(
@@ -62395,12 +63879,14 @@ class RustLibWire implements BaseWire {
     ffi.Pointer<wire_cst_concatenate_with_twin_rust_async> that,
     int key,
     int max,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_concatenate_with_twin_rust_async_handle_some_stream_sink_twin_rust_async(
       port_,
       that,
       key,
       max,
+      sink,
     );
   }
 
@@ -62411,7 +63897,8 @@ class RustLibWire implements BaseWire {
                       ffi.Int64,
                       ffi.Pointer<wire_cst_concatenate_with_twin_rust_async>,
                       ffi.Uint32,
-                      ffi.Uint32)>>(
+                      ffi.Uint32,
+                      ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
           'frbgen_frb_example_pure_dart_wire_concatenate_with_twin_rust_async_handle_some_stream_sink_twin_rust_async');
   late final _wire_concatenate_with_twin_rust_async_handle_some_stream_sink_twin_rust_async =
       _wire_concatenate_with_twin_rust_async_handle_some_stream_sink_twin_rust_asyncPtr
@@ -62420,7 +63907,8 @@ class RustLibWire implements BaseWire {
                   int,
                   ffi.Pointer<wire_cst_concatenate_with_twin_rust_async>,
                   int,
-                  int)>();
+                  int,
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_concatenate_with_twin_rust_async_new_twin_rust_async(
     int port_,
@@ -63644,96 +65132,109 @@ class RustLibWire implements BaseWire {
               ffi.Pointer<wire_cst_concatenate_with_twin_sync>,
               ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  void
+  WireSyncRust2DartDco
       wire_concatenate_with_twin_sync_handle_some_static_stream_sink_single_arg_twin_sync(
-    int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_concatenate_with_twin_sync_handle_some_static_stream_sink_single_arg_twin_sync(
-      port_,
+      sink,
     );
   }
 
   late final _wire_concatenate_with_twin_sync_handle_some_static_stream_sink_single_arg_twin_syncPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<
+              ffi.NativeFunction<
+                  WireSyncRust2DartDco Function(
+                      ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
           'frbgen_frb_example_pure_dart_wire_concatenate_with_twin_sync_handle_some_static_stream_sink_single_arg_twin_sync');
   late final _wire_concatenate_with_twin_sync_handle_some_static_stream_sink_single_arg_twin_sync =
       _wire_concatenate_with_twin_sync_handle_some_static_stream_sink_single_arg_twin_syncPtr
-          .asFunction<void Function(int)>();
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  void wire_concatenate_with_twin_sync_handle_some_static_stream_sink_twin_sync(
-    int port_,
+  WireSyncRust2DartDco
+      wire_concatenate_with_twin_sync_handle_some_static_stream_sink_twin_sync(
     int key,
     int max,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_concatenate_with_twin_sync_handle_some_static_stream_sink_twin_sync(
-      port_,
       key,
       max,
+      sink,
     );
   }
 
   late final _wire_concatenate_with_twin_sync_handle_some_static_stream_sink_twin_syncPtr =
       _lookup<
               ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Uint32, ffi.Uint32)>>(
+                  WireSyncRust2DartDco Function(ffi.Uint32, ffi.Uint32,
+                      ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
           'frbgen_frb_example_pure_dart_wire_concatenate_with_twin_sync_handle_some_static_stream_sink_twin_sync');
   late final _wire_concatenate_with_twin_sync_handle_some_static_stream_sink_twin_sync =
       _wire_concatenate_with_twin_sync_handle_some_static_stream_sink_twin_syncPtr
-          .asFunction<void Function(int, int, int)>();
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                  int, int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  void wire_concatenate_with_twin_sync_handle_some_stream_sink_at_1_twin_sync(
-    int port_,
+  WireSyncRust2DartDco
+      wire_concatenate_with_twin_sync_handle_some_stream_sink_at_1_twin_sync(
     ffi.Pointer<wire_cst_concatenate_with_twin_sync> that,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_concatenate_with_twin_sync_handle_some_stream_sink_at_1_twin_sync(
-      port_,
       that,
+      sink,
     );
   }
 
   late final _wire_concatenate_with_twin_sync_handle_some_stream_sink_at_1_twin_syncPtr =
       _lookup<
               ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64,
-                      ffi.Pointer<wire_cst_concatenate_with_twin_sync>)>>(
+                  WireSyncRust2DartDco Function(
+                      ffi.Pointer<wire_cst_concatenate_with_twin_sync>,
+                      ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
           'frbgen_frb_example_pure_dart_wire_concatenate_with_twin_sync_handle_some_stream_sink_at_1_twin_sync');
   late final _wire_concatenate_with_twin_sync_handle_some_stream_sink_at_1_twin_sync =
       _wire_concatenate_with_twin_sync_handle_some_stream_sink_at_1_twin_syncPtr
           .asFunction<
-              void Function(
-                  int, ffi.Pointer<wire_cst_concatenate_with_twin_sync>)>();
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_concatenate_with_twin_sync>,
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  void wire_concatenate_with_twin_sync_handle_some_stream_sink_twin_sync(
-    int port_,
+  WireSyncRust2DartDco
+      wire_concatenate_with_twin_sync_handle_some_stream_sink_twin_sync(
     ffi.Pointer<wire_cst_concatenate_with_twin_sync> that,
     int key,
     int max,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_concatenate_with_twin_sync_handle_some_stream_sink_twin_sync(
-      port_,
       that,
       key,
       max,
+      sink,
     );
   }
 
   late final _wire_concatenate_with_twin_sync_handle_some_stream_sink_twin_syncPtr =
       _lookup<
               ffi.NativeFunction<
-                  ffi.Void Function(
-                      ffi.Int64,
+                  WireSyncRust2DartDco Function(
                       ffi.Pointer<wire_cst_concatenate_with_twin_sync>,
                       ffi.Uint32,
-                      ffi.Uint32)>>(
+                      ffi.Uint32,
+                      ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
           'frbgen_frb_example_pure_dart_wire_concatenate_with_twin_sync_handle_some_stream_sink_twin_sync');
   late final _wire_concatenate_with_twin_sync_handle_some_stream_sink_twin_sync =
       _wire_concatenate_with_twin_sync_handle_some_stream_sink_twin_syncPtr
           .asFunction<
-              void Function(
-                  int,
+              WireSyncRust2DartDco Function(
                   ffi.Pointer<wire_cst_concatenate_with_twin_sync>,
                   int,
-                  int)>();
+                  int,
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   WireSyncRust2DartDco wire_concatenate_with_twin_sync_new_twin_sync(
     ffi.Pointer<wire_cst_list_prim_u_8_strict> a,
@@ -64031,15 +65532,13 @@ class RustLibWire implements BaseWire {
               WireSyncRust2DartSse Function(
                   ffi.Pointer<ffi.Uint8>, int, int)>();
 
-  void
+  WireSyncRust2DartSse
       wire_concatenate_with_twin_sync_sse_handle_some_static_stream_sink_single_arg_twin_sync_sse(
-    int port_,
     ffi.Pointer<ffi.Uint8> ptr_,
     int rust_vec_len_,
     int data_len_,
   ) {
     return _wire_concatenate_with_twin_sync_sse_handle_some_static_stream_sink_single_arg_twin_sync_sse(
-      port_,
       ptr_,
       rust_vec_len_,
       data_len_,
@@ -64049,22 +65548,22 @@ class RustLibWire implements BaseWire {
   late final _wire_concatenate_with_twin_sync_sse_handle_some_static_stream_sink_single_arg_twin_sync_ssePtr =
       _lookup<
               ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
-                      ffi.Int32, ffi.Int32)>>(
+                  WireSyncRust2DartSse Function(
+                      ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
           'frbgen_frb_example_pure_dart_wire_concatenate_with_twin_sync_sse_handle_some_static_stream_sink_single_arg_twin_sync_sse');
   late final _wire_concatenate_with_twin_sync_sse_handle_some_static_stream_sink_single_arg_twin_sync_sse =
       _wire_concatenate_with_twin_sync_sse_handle_some_static_stream_sink_single_arg_twin_sync_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+          .asFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, int, int)>();
 
-  void
+  WireSyncRust2DartSse
       wire_concatenate_with_twin_sync_sse_handle_some_static_stream_sink_twin_sync_sse(
-    int port_,
     ffi.Pointer<ffi.Uint8> ptr_,
     int rust_vec_len_,
     int data_len_,
   ) {
     return _wire_concatenate_with_twin_sync_sse_handle_some_static_stream_sink_twin_sync_sse(
-      port_,
       ptr_,
       rust_vec_len_,
       data_len_,
@@ -64074,22 +65573,22 @@ class RustLibWire implements BaseWire {
   late final _wire_concatenate_with_twin_sync_sse_handle_some_static_stream_sink_twin_sync_ssePtr =
       _lookup<
               ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
-                      ffi.Int32, ffi.Int32)>>(
+                  WireSyncRust2DartSse Function(
+                      ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
           'frbgen_frb_example_pure_dart_wire_concatenate_with_twin_sync_sse_handle_some_static_stream_sink_twin_sync_sse');
   late final _wire_concatenate_with_twin_sync_sse_handle_some_static_stream_sink_twin_sync_sse =
       _wire_concatenate_with_twin_sync_sse_handle_some_static_stream_sink_twin_sync_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+          .asFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, int, int)>();
 
-  void
+  WireSyncRust2DartSse
       wire_concatenate_with_twin_sync_sse_handle_some_stream_sink_at_1_twin_sync_sse(
-    int port_,
     ffi.Pointer<ffi.Uint8> ptr_,
     int rust_vec_len_,
     int data_len_,
   ) {
     return _wire_concatenate_with_twin_sync_sse_handle_some_stream_sink_at_1_twin_sync_sse(
-      port_,
       ptr_,
       rust_vec_len_,
       data_len_,
@@ -64099,22 +65598,22 @@ class RustLibWire implements BaseWire {
   late final _wire_concatenate_with_twin_sync_sse_handle_some_stream_sink_at_1_twin_sync_ssePtr =
       _lookup<
               ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
-                      ffi.Int32, ffi.Int32)>>(
+                  WireSyncRust2DartSse Function(
+                      ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
           'frbgen_frb_example_pure_dart_wire_concatenate_with_twin_sync_sse_handle_some_stream_sink_at_1_twin_sync_sse');
   late final _wire_concatenate_with_twin_sync_sse_handle_some_stream_sink_at_1_twin_sync_sse =
       _wire_concatenate_with_twin_sync_sse_handle_some_stream_sink_at_1_twin_sync_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+          .asFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, int, int)>();
 
-  void
+  WireSyncRust2DartSse
       wire_concatenate_with_twin_sync_sse_handle_some_stream_sink_twin_sync_sse(
-    int port_,
     ffi.Pointer<ffi.Uint8> ptr_,
     int rust_vec_len_,
     int data_len_,
   ) {
     return _wire_concatenate_with_twin_sync_sse_handle_some_stream_sink_twin_sync_sse(
-      port_,
       ptr_,
       rust_vec_len_,
       data_len_,
@@ -64124,12 +65623,14 @@ class RustLibWire implements BaseWire {
   late final _wire_concatenate_with_twin_sync_sse_handle_some_stream_sink_twin_sync_ssePtr =
       _lookup<
               ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
-                      ffi.Int32, ffi.Int32)>>(
+                  WireSyncRust2DartSse Function(
+                      ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
           'frbgen_frb_example_pure_dart_wire_concatenate_with_twin_sync_sse_handle_some_stream_sink_twin_sync_sse');
   late final _wire_concatenate_with_twin_sync_sse_handle_some_stream_sink_twin_sync_sse =
       _wire_concatenate_with_twin_sync_sse_handle_some_stream_sink_twin_sync_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+          .asFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, int, int)>();
 
   WireSyncRust2DartSse wire_concatenate_with_twin_sync_sse_new_twin_sync_sse(
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -64395,33 +65896,41 @@ class RustLibWire implements BaseWire {
 
   void wire_app_settings_stream_twin_rust_async(
     int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_app_settings_stream_twin_rust_async(
       port_,
+      sink,
     );
   }
 
   late final _wire_app_settings_stream_twin_rust_asyncPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_app_settings_stream_twin_rust_async');
   late final _wire_app_settings_stream_twin_rust_async =
-      _wire_app_settings_stream_twin_rust_asyncPtr
-          .asFunction<void Function(int)>();
+      _wire_app_settings_stream_twin_rust_asyncPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_app_settings_vec_stream_twin_rust_async(
     int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_app_settings_vec_stream_twin_rust_async(
       port_,
+      sink,
     );
   }
 
   late final _wire_app_settings_vec_stream_twin_rust_asyncPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_app_settings_vec_stream_twin_rust_async');
   late final _wire_app_settings_vec_stream_twin_rust_async =
-      _wire_app_settings_vec_stream_twin_rust_asyncPtr
-          .asFunction<void Function(int)>();
+      _wire_app_settings_vec_stream_twin_rust_asyncPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_first_number_twin_rust_async(
     int port_,
@@ -64524,123 +66033,155 @@ class RustLibWire implements BaseWire {
 
   void wire_mirror_array_enum_stream_twin_rust_async(
     int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_mirror_array_enum_stream_twin_rust_async(
       port_,
+      sink,
     );
   }
 
   late final _wire_mirror_array_enum_stream_twin_rust_asyncPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_mirror_array_enum_stream_twin_rust_async');
   late final _wire_mirror_array_enum_stream_twin_rust_async =
-      _wire_mirror_array_enum_stream_twin_rust_asyncPtr
-          .asFunction<void Function(int)>();
+      _wire_mirror_array_enum_stream_twin_rust_asyncPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_mirror_enum_stream_twin_rust_async(
     int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_mirror_enum_stream_twin_rust_async(
       port_,
+      sink,
     );
   }
 
   late final _wire_mirror_enum_stream_twin_rust_asyncPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_mirror_enum_stream_twin_rust_async');
   late final _wire_mirror_enum_stream_twin_rust_async =
-      _wire_mirror_enum_stream_twin_rust_asyncPtr
-          .asFunction<void Function(int)>();
+      _wire_mirror_enum_stream_twin_rust_asyncPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_mirror_map_enum_stream_twin_rust_async(
     int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_mirror_map_enum_stream_twin_rust_async(
       port_,
+      sink,
     );
   }
 
   late final _wire_mirror_map_enum_stream_twin_rust_asyncPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_mirror_map_enum_stream_twin_rust_async');
   late final _wire_mirror_map_enum_stream_twin_rust_async =
-      _wire_mirror_map_enum_stream_twin_rust_asyncPtr
-          .asFunction<void Function(int)>();
+      _wire_mirror_map_enum_stream_twin_rust_asyncPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_mirror_option_enum_stream_twin_rust_async(
     int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_mirror_option_enum_stream_twin_rust_async(
       port_,
+      sink,
     );
   }
 
   late final _wire_mirror_option_enum_stream_twin_rust_asyncPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_mirror_option_enum_stream_twin_rust_async');
   late final _wire_mirror_option_enum_stream_twin_rust_async =
-      _wire_mirror_option_enum_stream_twin_rust_asyncPtr
-          .asFunction<void Function(int)>();
+      _wire_mirror_option_enum_stream_twin_rust_asyncPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_mirror_set_enum_stream_twin_rust_async(
     int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_mirror_set_enum_stream_twin_rust_async(
       port_,
+      sink,
     );
   }
 
   late final _wire_mirror_set_enum_stream_twin_rust_asyncPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_mirror_set_enum_stream_twin_rust_async');
   late final _wire_mirror_set_enum_stream_twin_rust_async =
-      _wire_mirror_set_enum_stream_twin_rust_asyncPtr
-          .asFunction<void Function(int)>();
+      _wire_mirror_set_enum_stream_twin_rust_asyncPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_mirror_struct_stream_twin_rust_async(
     int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_mirror_struct_stream_twin_rust_async(
       port_,
+      sink,
     );
   }
 
   late final _wire_mirror_struct_stream_twin_rust_asyncPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_mirror_struct_stream_twin_rust_async');
   late final _wire_mirror_struct_stream_twin_rust_async =
-      _wire_mirror_struct_stream_twin_rust_asyncPtr
-          .asFunction<void Function(int)>();
+      _wire_mirror_struct_stream_twin_rust_asyncPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_mirror_tuple_stream_twin_rust_async(
     int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_mirror_tuple_stream_twin_rust_async(
       port_,
+      sink,
     );
   }
 
   late final _wire_mirror_tuple_stream_twin_rust_asyncPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_mirror_tuple_stream_twin_rust_async');
   late final _wire_mirror_tuple_stream_twin_rust_async =
-      _wire_mirror_tuple_stream_twin_rust_asyncPtr
-          .asFunction<void Function(int)>();
+      _wire_mirror_tuple_stream_twin_rust_asyncPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_mirror_vec_enum_stream_twin_rust_async(
     int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_mirror_vec_enum_stream_twin_rust_async(
       port_,
+      sink,
     );
   }
 
   late final _wire_mirror_vec_enum_stream_twin_rust_asyncPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_mirror_vec_enum_stream_twin_rust_async');
   late final _wire_mirror_vec_enum_stream_twin_rust_async =
-      _wire_mirror_vec_enum_stream_twin_rust_asyncPtr
-          .asFunction<void Function(int)>();
+      _wire_mirror_vec_enum_stream_twin_rust_asyncPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_repeat_number_twin_rust_async(
     int port_,
@@ -65999,34 +67540,41 @@ class RustLibWire implements BaseWire {
       _wire_test_raw_string_mirrored_twin_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
-  void wire_app_settings_stream_twin_sync(
-    int port_,
+  WireSyncRust2DartDco wire_app_settings_stream_twin_sync(
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_app_settings_stream_twin_sync(
-      port_,
+      sink,
     );
   }
 
-  late final _wire_app_settings_stream_twin_syncPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'frbgen_frb_example_pure_dart_wire_app_settings_stream_twin_sync');
+  late final _wire_app_settings_stream_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+      'frbgen_frb_example_pure_dart_wire_app_settings_stream_twin_sync');
   late final _wire_app_settings_stream_twin_sync =
-      _wire_app_settings_stream_twin_syncPtr.asFunction<void Function(int)>();
+      _wire_app_settings_stream_twin_syncPtr.asFunction<
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  void wire_app_settings_vec_stream_twin_sync(
-    int port_,
+  WireSyncRust2DartDco wire_app_settings_vec_stream_twin_sync(
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_app_settings_vec_stream_twin_sync(
-      port_,
+      sink,
     );
   }
 
   late final _wire_app_settings_vec_stream_twin_syncPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_app_settings_vec_stream_twin_sync');
   late final _wire_app_settings_vec_stream_twin_sync =
-      _wire_app_settings_vec_stream_twin_syncPtr
-          .asFunction<void Function(int)>();
+      _wire_app_settings_vec_stream_twin_syncPtr.asFunction<
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   WireSyncRust2DartDco wire_first_number_twin_sync(
     ffi.Pointer<wire_cst_numbers> nums,
@@ -66110,122 +67658,149 @@ class RustLibWire implements BaseWire {
           WireSyncRust2DartDco Function(
               ffi.Pointer<wire_cst_application_settings>)>();
 
-  void wire_mirror_array_enum_stream_twin_sync(
-    int port_,
+  WireSyncRust2DartDco wire_mirror_array_enum_stream_twin_sync(
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_mirror_array_enum_stream_twin_sync(
-      port_,
+      sink,
     );
   }
 
   late final _wire_mirror_array_enum_stream_twin_syncPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_mirror_array_enum_stream_twin_sync');
   late final _wire_mirror_array_enum_stream_twin_sync =
-      _wire_mirror_array_enum_stream_twin_syncPtr
-          .asFunction<void Function(int)>();
+      _wire_mirror_array_enum_stream_twin_syncPtr.asFunction<
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  void wire_mirror_enum_stream_twin_sync(
-    int port_,
+  WireSyncRust2DartDco wire_mirror_enum_stream_twin_sync(
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_mirror_enum_stream_twin_sync(
-      port_,
+      sink,
     );
   }
 
-  late final _wire_mirror_enum_stream_twin_syncPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'frbgen_frb_example_pure_dart_wire_mirror_enum_stream_twin_sync');
+  late final _wire_mirror_enum_stream_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+      'frbgen_frb_example_pure_dart_wire_mirror_enum_stream_twin_sync');
   late final _wire_mirror_enum_stream_twin_sync =
-      _wire_mirror_enum_stream_twin_syncPtr.asFunction<void Function(int)>();
+      _wire_mirror_enum_stream_twin_syncPtr.asFunction<
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  void wire_mirror_map_enum_stream_twin_sync(
-    int port_,
+  WireSyncRust2DartDco wire_mirror_map_enum_stream_twin_sync(
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_mirror_map_enum_stream_twin_sync(
-      port_,
+      sink,
     );
   }
 
-  late final _wire_mirror_map_enum_stream_twin_syncPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'frbgen_frb_example_pure_dart_wire_mirror_map_enum_stream_twin_sync');
+  late final _wire_mirror_map_enum_stream_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+      'frbgen_frb_example_pure_dart_wire_mirror_map_enum_stream_twin_sync');
   late final _wire_mirror_map_enum_stream_twin_sync =
-      _wire_mirror_map_enum_stream_twin_syncPtr
-          .asFunction<void Function(int)>();
+      _wire_mirror_map_enum_stream_twin_syncPtr.asFunction<
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  void wire_mirror_option_enum_stream_twin_sync(
-    int port_,
+  WireSyncRust2DartDco wire_mirror_option_enum_stream_twin_sync(
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_mirror_option_enum_stream_twin_sync(
-      port_,
+      sink,
     );
   }
 
   late final _wire_mirror_option_enum_stream_twin_syncPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_mirror_option_enum_stream_twin_sync');
   late final _wire_mirror_option_enum_stream_twin_sync =
-      _wire_mirror_option_enum_stream_twin_syncPtr
-          .asFunction<void Function(int)>();
+      _wire_mirror_option_enum_stream_twin_syncPtr.asFunction<
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  void wire_mirror_set_enum_stream_twin_sync(
-    int port_,
+  WireSyncRust2DartDco wire_mirror_set_enum_stream_twin_sync(
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_mirror_set_enum_stream_twin_sync(
-      port_,
+      sink,
     );
   }
 
-  late final _wire_mirror_set_enum_stream_twin_syncPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'frbgen_frb_example_pure_dart_wire_mirror_set_enum_stream_twin_sync');
+  late final _wire_mirror_set_enum_stream_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+      'frbgen_frb_example_pure_dart_wire_mirror_set_enum_stream_twin_sync');
   late final _wire_mirror_set_enum_stream_twin_sync =
-      _wire_mirror_set_enum_stream_twin_syncPtr
-          .asFunction<void Function(int)>();
+      _wire_mirror_set_enum_stream_twin_syncPtr.asFunction<
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  void wire_mirror_struct_stream_twin_sync(
-    int port_,
+  WireSyncRust2DartDco wire_mirror_struct_stream_twin_sync(
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_mirror_struct_stream_twin_sync(
-      port_,
+      sink,
     );
   }
 
-  late final _wire_mirror_struct_stream_twin_syncPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'frbgen_frb_example_pure_dart_wire_mirror_struct_stream_twin_sync');
+  late final _wire_mirror_struct_stream_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+      'frbgen_frb_example_pure_dart_wire_mirror_struct_stream_twin_sync');
   late final _wire_mirror_struct_stream_twin_sync =
-      _wire_mirror_struct_stream_twin_syncPtr.asFunction<void Function(int)>();
+      _wire_mirror_struct_stream_twin_syncPtr.asFunction<
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  void wire_mirror_tuple_stream_twin_sync(
-    int port_,
+  WireSyncRust2DartDco wire_mirror_tuple_stream_twin_sync(
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_mirror_tuple_stream_twin_sync(
-      port_,
+      sink,
     );
   }
 
-  late final _wire_mirror_tuple_stream_twin_syncPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'frbgen_frb_example_pure_dart_wire_mirror_tuple_stream_twin_sync');
+  late final _wire_mirror_tuple_stream_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+      'frbgen_frb_example_pure_dart_wire_mirror_tuple_stream_twin_sync');
   late final _wire_mirror_tuple_stream_twin_sync =
-      _wire_mirror_tuple_stream_twin_syncPtr.asFunction<void Function(int)>();
+      _wire_mirror_tuple_stream_twin_syncPtr.asFunction<
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  void wire_mirror_vec_enum_stream_twin_sync(
-    int port_,
+  WireSyncRust2DartDco wire_mirror_vec_enum_stream_twin_sync(
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_mirror_vec_enum_stream_twin_sync(
-      port_,
+      sink,
     );
   }
 
-  late final _wire_mirror_vec_enum_stream_twin_syncPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'frbgen_frb_example_pure_dart_wire_mirror_vec_enum_stream_twin_sync');
+  late final _wire_mirror_vec_enum_stream_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+      'frbgen_frb_example_pure_dart_wire_mirror_vec_enum_stream_twin_sync');
   late final _wire_mirror_vec_enum_stream_twin_sync =
-      _wire_mirror_vec_enum_stream_twin_syncPtr
-          .asFunction<void Function(int)>();
+      _wire_mirror_vec_enum_stream_twin_syncPtr.asFunction<
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   WireSyncRust2DartDco wire_repeat_number_twin_sync(
     int num,
@@ -66355,14 +67930,12 @@ class RustLibWire implements BaseWire {
       _wire_test_raw_string_mirrored_twin_syncPtr
           .asFunction<WireSyncRust2DartDco Function()>();
 
-  void wire_app_settings_stream_twin_sync_sse(
-    int port_,
+  WireSyncRust2DartSse wire_app_settings_stream_twin_sync_sse(
     ffi.Pointer<ffi.Uint8> ptr_,
     int rust_vec_len_,
     int data_len_,
   ) {
     return _wire_app_settings_stream_twin_sync_sse(
-      port_,
       ptr_,
       rust_vec_len_,
       data_len_,
@@ -66371,21 +67944,19 @@ class RustLibWire implements BaseWire {
 
   late final _wire_app_settings_stream_twin_sync_ssePtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
       'frbgen_frb_example_pure_dart_wire_app_settings_stream_twin_sync_sse');
   late final _wire_app_settings_stream_twin_sync_sse =
-      _wire_app_settings_stream_twin_sync_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+      _wire_app_settings_stream_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
-  void wire_app_settings_vec_stream_twin_sync_sse(
-    int port_,
+  WireSyncRust2DartSse wire_app_settings_vec_stream_twin_sync_sse(
     ffi.Pointer<ffi.Uint8> ptr_,
     int rust_vec_len_,
     int data_len_,
   ) {
     return _wire_app_settings_vec_stream_twin_sync_sse(
-      port_,
       ptr_,
       rust_vec_len_,
       data_len_,
@@ -66394,12 +67965,12 @@ class RustLibWire implements BaseWire {
 
   late final _wire_app_settings_vec_stream_twin_sync_ssePtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
       'frbgen_frb_example_pure_dart_wire_app_settings_vec_stream_twin_sync_sse');
   late final _wire_app_settings_vec_stream_twin_sync_sse =
-      _wire_app_settings_vec_stream_twin_sync_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+      _wire_app_settings_vec_stream_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
   WireSyncRust2DartSse wire_first_number_twin_sync_sse(
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -66527,14 +68098,12 @@ class RustLibWire implements BaseWire {
       _wire_is_app_embedded_twin_sync_ssePtr.asFunction<
           WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
-  void wire_mirror_array_enum_stream_twin_sync_sse(
-    int port_,
+  WireSyncRust2DartSse wire_mirror_array_enum_stream_twin_sync_sse(
     ffi.Pointer<ffi.Uint8> ptr_,
     int rust_vec_len_,
     int data_len_,
   ) {
     return _wire_mirror_array_enum_stream_twin_sync_sse(
-      port_,
       ptr_,
       rust_vec_len_,
       data_len_,
@@ -66543,21 +68112,19 @@ class RustLibWire implements BaseWire {
 
   late final _wire_mirror_array_enum_stream_twin_sync_ssePtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
       'frbgen_frb_example_pure_dart_wire_mirror_array_enum_stream_twin_sync_sse');
   late final _wire_mirror_array_enum_stream_twin_sync_sse =
-      _wire_mirror_array_enum_stream_twin_sync_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+      _wire_mirror_array_enum_stream_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
-  void wire_mirror_enum_stream_twin_sync_sse(
-    int port_,
+  WireSyncRust2DartSse wire_mirror_enum_stream_twin_sync_sse(
     ffi.Pointer<ffi.Uint8> ptr_,
     int rust_vec_len_,
     int data_len_,
   ) {
     return _wire_mirror_enum_stream_twin_sync_sse(
-      port_,
       ptr_,
       rust_vec_len_,
       data_len_,
@@ -66566,21 +68133,19 @@ class RustLibWire implements BaseWire {
 
   late final _wire_mirror_enum_stream_twin_sync_ssePtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
       'frbgen_frb_example_pure_dart_wire_mirror_enum_stream_twin_sync_sse');
   late final _wire_mirror_enum_stream_twin_sync_sse =
-      _wire_mirror_enum_stream_twin_sync_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+      _wire_mirror_enum_stream_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
-  void wire_mirror_map_enum_stream_twin_sync_sse(
-    int port_,
+  WireSyncRust2DartSse wire_mirror_map_enum_stream_twin_sync_sse(
     ffi.Pointer<ffi.Uint8> ptr_,
     int rust_vec_len_,
     int data_len_,
   ) {
     return _wire_mirror_map_enum_stream_twin_sync_sse(
-      port_,
       ptr_,
       rust_vec_len_,
       data_len_,
@@ -66589,21 +68154,19 @@ class RustLibWire implements BaseWire {
 
   late final _wire_mirror_map_enum_stream_twin_sync_ssePtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
       'frbgen_frb_example_pure_dart_wire_mirror_map_enum_stream_twin_sync_sse');
   late final _wire_mirror_map_enum_stream_twin_sync_sse =
-      _wire_mirror_map_enum_stream_twin_sync_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+      _wire_mirror_map_enum_stream_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
-  void wire_mirror_option_enum_stream_twin_sync_sse(
-    int port_,
+  WireSyncRust2DartSse wire_mirror_option_enum_stream_twin_sync_sse(
     ffi.Pointer<ffi.Uint8> ptr_,
     int rust_vec_len_,
     int data_len_,
   ) {
     return _wire_mirror_option_enum_stream_twin_sync_sse(
-      port_,
       ptr_,
       rust_vec_len_,
       data_len_,
@@ -66612,21 +68175,19 @@ class RustLibWire implements BaseWire {
 
   late final _wire_mirror_option_enum_stream_twin_sync_ssePtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
       'frbgen_frb_example_pure_dart_wire_mirror_option_enum_stream_twin_sync_sse');
   late final _wire_mirror_option_enum_stream_twin_sync_sse =
-      _wire_mirror_option_enum_stream_twin_sync_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+      _wire_mirror_option_enum_stream_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
-  void wire_mirror_set_enum_stream_twin_sync_sse(
-    int port_,
+  WireSyncRust2DartSse wire_mirror_set_enum_stream_twin_sync_sse(
     ffi.Pointer<ffi.Uint8> ptr_,
     int rust_vec_len_,
     int data_len_,
   ) {
     return _wire_mirror_set_enum_stream_twin_sync_sse(
-      port_,
       ptr_,
       rust_vec_len_,
       data_len_,
@@ -66635,21 +68196,19 @@ class RustLibWire implements BaseWire {
 
   late final _wire_mirror_set_enum_stream_twin_sync_ssePtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
       'frbgen_frb_example_pure_dart_wire_mirror_set_enum_stream_twin_sync_sse');
   late final _wire_mirror_set_enum_stream_twin_sync_sse =
-      _wire_mirror_set_enum_stream_twin_sync_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+      _wire_mirror_set_enum_stream_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
-  void wire_mirror_struct_stream_twin_sync_sse(
-    int port_,
+  WireSyncRust2DartSse wire_mirror_struct_stream_twin_sync_sse(
     ffi.Pointer<ffi.Uint8> ptr_,
     int rust_vec_len_,
     int data_len_,
   ) {
     return _wire_mirror_struct_stream_twin_sync_sse(
-      port_,
       ptr_,
       rust_vec_len_,
       data_len_,
@@ -66658,21 +68217,19 @@ class RustLibWire implements BaseWire {
 
   late final _wire_mirror_struct_stream_twin_sync_ssePtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
       'frbgen_frb_example_pure_dart_wire_mirror_struct_stream_twin_sync_sse');
   late final _wire_mirror_struct_stream_twin_sync_sse =
-      _wire_mirror_struct_stream_twin_sync_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+      _wire_mirror_struct_stream_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
-  void wire_mirror_tuple_stream_twin_sync_sse(
-    int port_,
+  WireSyncRust2DartSse wire_mirror_tuple_stream_twin_sync_sse(
     ffi.Pointer<ffi.Uint8> ptr_,
     int rust_vec_len_,
     int data_len_,
   ) {
     return _wire_mirror_tuple_stream_twin_sync_sse(
-      port_,
       ptr_,
       rust_vec_len_,
       data_len_,
@@ -66681,21 +68238,19 @@ class RustLibWire implements BaseWire {
 
   late final _wire_mirror_tuple_stream_twin_sync_ssePtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
       'frbgen_frb_example_pure_dart_wire_mirror_tuple_stream_twin_sync_sse');
   late final _wire_mirror_tuple_stream_twin_sync_sse =
-      _wire_mirror_tuple_stream_twin_sync_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+      _wire_mirror_tuple_stream_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
-  void wire_mirror_vec_enum_stream_twin_sync_sse(
-    int port_,
+  WireSyncRust2DartSse wire_mirror_vec_enum_stream_twin_sync_sse(
     ffi.Pointer<ffi.Uint8> ptr_,
     int rust_vec_len_,
     int data_len_,
   ) {
     return _wire_mirror_vec_enum_stream_twin_sync_sse(
-      port_,
       ptr_,
       rust_vec_len_,
       data_len_,
@@ -66704,12 +68259,12 @@ class RustLibWire implements BaseWire {
 
   late final _wire_mirror_vec_enum_stream_twin_sync_ssePtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
       'frbgen_frb_example_pure_dart_wire_mirror_vec_enum_stream_twin_sync_sse');
   late final _wire_mirror_vec_enum_stream_twin_sync_sse =
-      _wire_mirror_vec_enum_stream_twin_sync_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+      _wire_mirror_vec_enum_stream_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
   WireSyncRust2DartSse wire_repeat_number_twin_sync_sse(
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -70323,18 +71878,22 @@ class RustLibWire implements BaseWire {
 
   void wire_rust_auto_opaque_stream_sink_twin_moi(
     int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_rust_auto_opaque_stream_sink_twin_moi(
       port_,
+      sink,
     );
   }
 
   late final _wire_rust_auto_opaque_stream_sink_twin_moiPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_stream_sink_twin_moi');
   late final _wire_rust_auto_opaque_stream_sink_twin_moi =
-      _wire_rust_auto_opaque_stream_sink_twin_moiPtr
-          .asFunction<void Function(int)>();
+      _wire_rust_auto_opaque_stream_sink_twin_moiPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_moi(
     int port_,
@@ -71171,18 +72730,22 @@ class RustLibWire implements BaseWire {
 
   void wire_rust_auto_opaque_stream_sink_twin_rust_async(
     int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_rust_auto_opaque_stream_sink_twin_rust_async(
       port_,
+      sink,
     );
   }
 
   late final _wire_rust_auto_opaque_stream_sink_twin_rust_asyncPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_stream_sink_twin_rust_async');
   late final _wire_rust_auto_opaque_stream_sink_twin_rust_async =
-      _wire_rust_auto_opaque_stream_sink_twin_rust_asyncPtr
-          .asFunction<void Function(int)>();
+      _wire_rust_auto_opaque_stream_sink_twin_rust_asyncPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async(
@@ -72030,18 +73593,22 @@ class RustLibWire implements BaseWire {
 
   void wire_rust_auto_opaque_stream_sink_twin_rust_async_moi(
     int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_rust_auto_opaque_stream_sink_twin_rust_async_moi(
       port_,
+      sink,
     );
   }
 
   late final _wire_rust_auto_opaque_stream_sink_twin_rust_async_moiPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_stream_sink_twin_rust_async_moi');
   late final _wire_rust_auto_opaque_stream_sink_twin_rust_async_moi =
-      _wire_rust_auto_opaque_stream_sink_twin_rust_async_moiPtr
-          .asFunction<void Function(int)>();
+      _wire_rust_auto_opaque_stream_sink_twin_rust_async_moiPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async_moi(
@@ -77166,20 +78733,23 @@ class RustLibWire implements BaseWire {
       _wire_rust_auto_opaque_return_vec_own_twin_syncPtr
           .asFunction<WireSyncRust2DartDco Function()>();
 
-  void wire_rust_auto_opaque_stream_sink_twin_sync(
-    int port_,
+  WireSyncRust2DartDco wire_rust_auto_opaque_stream_sink_twin_sync(
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_rust_auto_opaque_stream_sink_twin_sync(
-      port_,
+      sink,
     );
   }
 
   late final _wire_rust_auto_opaque_stream_sink_twin_syncPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_stream_sink_twin_sync');
   late final _wire_rust_auto_opaque_stream_sink_twin_sync =
-      _wire_rust_auto_opaque_stream_sink_twin_syncPtr
-          .asFunction<void Function(int)>();
+      _wire_rust_auto_opaque_stream_sink_twin_syncPtr.asFunction<
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   WireSyncRust2DartDco
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync(
@@ -77901,20 +79471,23 @@ class RustLibWire implements BaseWire {
       _wire_rust_auto_opaque_return_vec_own_twin_sync_moiPtr
           .asFunction<WireSyncRust2DartDco Function()>();
 
-  void wire_rust_auto_opaque_stream_sink_twin_sync_moi(
-    int port_,
+  WireSyncRust2DartDco wire_rust_auto_opaque_stream_sink_twin_sync_moi(
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_rust_auto_opaque_stream_sink_twin_sync_moi(
-      port_,
+      sink,
     );
   }
 
   late final _wire_rust_auto_opaque_stream_sink_twin_sync_moiPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_stream_sink_twin_sync_moi');
   late final _wire_rust_auto_opaque_stream_sink_twin_sync_moi =
-      _wire_rust_auto_opaque_stream_sink_twin_sync_moiPtr
-          .asFunction<void Function(int)>();
+      _wire_rust_auto_opaque_stream_sink_twin_sync_moiPtr.asFunction<
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   WireSyncRust2DartDco
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_moi(
@@ -78902,14 +80475,12 @@ class RustLibWire implements BaseWire {
       _wire_rust_auto_opaque_return_vec_own_twin_sync_ssePtr.asFunction<
           WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
-  void wire_rust_auto_opaque_stream_sink_twin_sync_sse(
-    int port_,
+  WireSyncRust2DartSse wire_rust_auto_opaque_stream_sink_twin_sync_sse(
     ffi.Pointer<ffi.Uint8> ptr_,
     int rust_vec_len_,
     int data_len_,
   ) {
     return _wire_rust_auto_opaque_stream_sink_twin_sync_sse(
-      port_,
       ptr_,
       rust_vec_len_,
       data_len_,
@@ -78918,12 +80489,12 @@ class RustLibWire implements BaseWire {
 
   late final _wire_rust_auto_opaque_stream_sink_twin_sync_ssePtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
       'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_stream_sink_twin_sync_sse');
   late final _wire_rust_auto_opaque_stream_sink_twin_sync_sse =
-      _wire_rust_auto_opaque_stream_sink_twin_sync_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+      _wire_rust_auto_opaque_stream_sink_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
   WireSyncRust2DartSse
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_sse(
@@ -79970,14 +81541,12 @@ class RustLibWire implements BaseWire {
       _wire_rust_auto_opaque_return_vec_own_twin_sync_sse_moiPtr.asFunction<
           WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
-  void wire_rust_auto_opaque_stream_sink_twin_sync_sse_moi(
-    int port_,
+  WireSyncRust2DartSse wire_rust_auto_opaque_stream_sink_twin_sync_sse_moi(
     ffi.Pointer<ffi.Uint8> ptr_,
     int rust_vec_len_,
     int data_len_,
   ) {
     return _wire_rust_auto_opaque_stream_sink_twin_sync_sse_moi(
-      port_,
       ptr_,
       rust_vec_len_,
       data_len_,
@@ -79986,12 +81555,12 @@ class RustLibWire implements BaseWire {
 
   late final _wire_rust_auto_opaque_stream_sink_twin_sync_sse_moiPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
       'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_stream_sink_twin_sync_sse_moi');
   late final _wire_rust_auto_opaque_stream_sink_twin_sync_sse_moi =
-      _wire_rust_auto_opaque_stream_sink_twin_sync_sse_moiPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+      _wire_rust_auto_opaque_stream_sink_twin_sync_sse_moiPtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
   WireSyncRust2DartSse
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_sse_moi(
@@ -83717,116 +85286,142 @@ class RustLibWire implements BaseWire {
 
   void wire_func_stream_return_error_twin_rust_async(
     int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> _sink,
   ) {
     return _wire_func_stream_return_error_twin_rust_async(
       port_,
+      _sink,
     );
   }
 
   late final _wire_func_stream_return_error_twin_rust_asyncPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_func_stream_return_error_twin_rust_async');
   late final _wire_func_stream_return_error_twin_rust_async =
-      _wire_func_stream_return_error_twin_rust_asyncPtr
-          .asFunction<void Function(int)>();
+      _wire_func_stream_return_error_twin_rust_asyncPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_func_stream_return_panic_twin_rust_async(
     int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> _sink,
   ) {
     return _wire_func_stream_return_panic_twin_rust_async(
       port_,
+      _sink,
     );
   }
 
   late final _wire_func_stream_return_panic_twin_rust_asyncPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_func_stream_return_panic_twin_rust_async');
   late final _wire_func_stream_return_panic_twin_rust_async =
-      _wire_func_stream_return_panic_twin_rust_asyncPtr
-          .asFunction<void Function(int)>();
+      _wire_func_stream_return_panic_twin_rust_asyncPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_func_stream_sink_arg_position_twin_rust_async(
     int port_,
     int a,
     int b,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> c,
   ) {
     return _wire_func_stream_sink_arg_position_twin_rust_async(
       port_,
       a,
       b,
+      c,
     );
   }
 
   late final _wire_func_stream_sink_arg_position_twin_rust_asyncPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Uint32, ffi.Uint32)>>(
+              ffi.Void Function(ffi.Int64, ffi.Uint32, ffi.Uint32,
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_func_stream_sink_arg_position_twin_rust_async');
   late final _wire_func_stream_sink_arg_position_twin_rust_async =
-      _wire_func_stream_sink_arg_position_twin_rust_asyncPtr
-          .asFunction<void Function(int, int, int)>();
+      _wire_func_stream_sink_arg_position_twin_rust_asyncPtr.asFunction<
+          void Function(
+              int, int, int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_handle_stream_of_struct_twin_rust_async(
     int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> _sink,
   ) {
     return _wire_handle_stream_of_struct_twin_rust_async(
       port_,
+      _sink,
     );
   }
 
   late final _wire_handle_stream_of_struct_twin_rust_asyncPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_handle_stream_of_struct_twin_rust_async');
   late final _wire_handle_stream_of_struct_twin_rust_async =
-      _wire_handle_stream_of_struct_twin_rust_asyncPtr
-          .asFunction<void Function(int)>();
+      _wire_handle_stream_of_struct_twin_rust_asyncPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_handle_stream_sink_at_1_twin_rust_async(
     int port_,
     int key,
     int max,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_handle_stream_sink_at_1_twin_rust_async(
       port_,
       key,
       max,
+      sink,
     );
   }
 
   late final _wire_handle_stream_sink_at_1_twin_rust_asyncPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Uint32, ffi.Uint32)>>(
+              ffi.Void Function(ffi.Int64, ffi.Uint32, ffi.Uint32,
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_handle_stream_sink_at_1_twin_rust_async');
   late final _wire_handle_stream_sink_at_1_twin_rust_async =
-      _wire_handle_stream_sink_at_1_twin_rust_asyncPtr
-          .asFunction<void Function(int, int, int)>();
+      _wire_handle_stream_sink_at_1_twin_rust_asyncPtr.asFunction<
+          void Function(
+              int, int, int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_handle_stream_sink_at_2_twin_rust_async(
     int port_,
     int key,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
     int max,
   ) {
     return _wire_handle_stream_sink_at_2_twin_rust_async(
       port_,
       key,
+      sink,
       max,
     );
   }
 
   late final _wire_handle_stream_sink_at_2_twin_rust_asyncPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Uint32, ffi.Uint32)>>(
+              ffi.Void Function(ffi.Int64, ffi.Uint32,
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Uint32)>>(
       'frbgen_frb_example_pure_dart_wire_handle_stream_sink_at_2_twin_rust_async');
   late final _wire_handle_stream_sink_at_2_twin_rust_async =
-      _wire_handle_stream_sink_at_2_twin_rust_asyncPtr
-          .asFunction<void Function(int, int, int)>();
+      _wire_handle_stream_sink_at_2_twin_rust_asyncPtr.asFunction<
+          void Function(
+              int, int, ffi.Pointer<wire_cst_list_prim_u_8_strict>, int)>();
 
   void wire_handle_stream_sink_at_3_twin_rust_async(
     int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
     int key,
     int max,
   ) {
     return _wire_handle_stream_sink_at_3_twin_rust_async(
       port_,
+      sink,
       key,
       max,
     );
@@ -83834,26 +85429,80 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_stream_sink_at_3_twin_rust_asyncPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Uint32, ffi.Uint32)>>(
+              ffi.Void Function(
+                  ffi.Int64,
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>,
+                  ffi.Uint32,
+                  ffi.Uint32)>>(
       'frbgen_frb_example_pure_dart_wire_handle_stream_sink_at_3_twin_rust_async');
   late final _wire_handle_stream_sink_at_3_twin_rust_async =
-      _wire_handle_stream_sink_at_3_twin_rust_asyncPtr
-          .asFunction<void Function(int, int, int)>();
+      _wire_handle_stream_sink_at_3_twin_rust_asyncPtr.asFunction<
+          void Function(
+              int, ffi.Pointer<wire_cst_list_prim_u_8_strict>, int, int)>();
 
   void wire_stream_sink_fixed_sized_primitive_array_twin_rust_async(
     int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_stream_sink_fixed_sized_primitive_array_twin_rust_async(
       port_,
+      sink,
     );
   }
 
   late final _wire_stream_sink_fixed_sized_primitive_array_twin_rust_asyncPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(
+                      ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
           'frbgen_frb_example_pure_dart_wire_stream_sink_fixed_sized_primitive_array_twin_rust_async');
   late final _wire_stream_sink_fixed_sized_primitive_array_twin_rust_async =
       _wire_stream_sink_fixed_sized_primitive_array_twin_rust_asyncPtr
-          .asFunction<void Function(int)>();
+          .asFunction<
+              void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+
+  void wire_stream_sink_inside_struct_twin_rust_async(
+    int port_,
+    ffi.Pointer<wire_cst_my_struct_containing_stream_sink_twin_rust_async> arg,
+  ) {
+    return _wire_stream_sink_inside_struct_twin_rust_async(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_stream_sink_inside_struct_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64,
+                  ffi.Pointer<
+                      wire_cst_my_struct_containing_stream_sink_twin_rust_async>)>>(
+      'frbgen_frb_example_pure_dart_wire_stream_sink_inside_struct_twin_rust_async');
+  late final _wire_stream_sink_inside_struct_twin_rust_async =
+      _wire_stream_sink_inside_struct_twin_rust_asyncPtr.asFunction<
+          void Function(
+              int,
+              ffi.Pointer<
+                  wire_cst_my_struct_containing_stream_sink_twin_rust_async>)>();
+
+  void wire_stream_sink_inside_vec_twin_rust_async(
+    int port_,
+    ffi.Pointer<wire_cst_list_StreamSink_i_32_Dco> arg,
+  ) {
+    return _wire_stream_sink_inside_vec_twin_rust_async(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_stream_sink_inside_vec_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_StreamSink_i_32_Dco>)>>(
+      'frbgen_frb_example_pure_dart_wire_stream_sink_inside_vec_twin_rust_async');
+  late final _wire_stream_sink_inside_vec_twin_rust_async =
+      _wire_stream_sink_inside_vec_twin_rust_asyncPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_StreamSink_i_32_Dco>)>();
 
   void wire_func_stream_return_error_twin_rust_async_sse(
     int port_,
@@ -84040,6 +85689,52 @@ class RustLibWire implements BaseWire {
       _wire_stream_sink_fixed_sized_primitive_array_twin_rust_async_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
+  void wire_stream_sink_inside_struct_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_stream_sink_inside_struct_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_stream_sink_inside_struct_twin_rust_async_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_stream_sink_inside_struct_twin_rust_async_sse');
+  late final _wire_stream_sink_inside_struct_twin_rust_async_sse =
+      _wire_stream_sink_inside_struct_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_stream_sink_inside_vec_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_stream_sink_inside_vec_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_stream_sink_inside_vec_twin_rust_async_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_stream_sink_inside_vec_twin_rust_async_sse');
+  late final _wire_stream_sink_inside_vec_twin_rust_async_sse =
+      _wire_stream_sink_inside_vec_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
   void wire_func_stream_return_error_twin_sse(
     int port_,
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -84222,6 +85917,52 @@ class RustLibWire implements BaseWire {
       'frbgen_frb_example_pure_dart_wire_stream_sink_fixed_sized_primitive_array_twin_sse');
   late final _wire_stream_sink_fixed_sized_primitive_array_twin_sse =
       _wire_stream_sink_fixed_sized_primitive_array_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_stream_sink_inside_struct_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_stream_sink_inside_struct_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_stream_sink_inside_struct_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_stream_sink_inside_struct_twin_sse');
+  late final _wire_stream_sink_inside_struct_twin_sse =
+      _wire_stream_sink_inside_struct_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_stream_sink_inside_vec_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_stream_sink_inside_vec_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_stream_sink_inside_vec_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_stream_sink_inside_vec_twin_sse');
+  late final _wire_stream_sink_inside_vec_twin_sse =
+      _wire_stream_sink_inside_vec_twin_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_func_struct_with_one_field_twin_rust_async(
@@ -86275,18 +88016,22 @@ class RustLibWire implements BaseWire {
 
   void wire_rust_auto_opaque_stream_sink_twin_normal(
     int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_rust_auto_opaque_stream_sink_twin_normal(
       port_,
+      sink,
     );
   }
 
   late final _wire_rust_auto_opaque_stream_sink_twin_normalPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_stream_sink_twin_normal');
   late final _wire_rust_auto_opaque_stream_sink_twin_normal =
-      _wire_rust_auto_opaque_stream_sink_twin_normalPtr
-          .asFunction<void Function(int)>();
+      _wire_rust_auto_opaque_stream_sink_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal(
@@ -86764,116 +88509,142 @@ class RustLibWire implements BaseWire {
 
   void wire_func_stream_return_error_twin_normal(
     int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> _sink,
   ) {
     return _wire_func_stream_return_error_twin_normal(
       port_,
+      _sink,
     );
   }
 
   late final _wire_func_stream_return_error_twin_normalPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_func_stream_return_error_twin_normal');
   late final _wire_func_stream_return_error_twin_normal =
-      _wire_func_stream_return_error_twin_normalPtr
-          .asFunction<void Function(int)>();
+      _wire_func_stream_return_error_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_func_stream_return_panic_twin_normal(
     int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> _sink,
   ) {
     return _wire_func_stream_return_panic_twin_normal(
       port_,
+      _sink,
     );
   }
 
   late final _wire_func_stream_return_panic_twin_normalPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_func_stream_return_panic_twin_normal');
   late final _wire_func_stream_return_panic_twin_normal =
-      _wire_func_stream_return_panic_twin_normalPtr
-          .asFunction<void Function(int)>();
+      _wire_func_stream_return_panic_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_func_stream_sink_arg_position_twin_normal(
     int port_,
     int a,
     int b,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> c,
   ) {
     return _wire_func_stream_sink_arg_position_twin_normal(
       port_,
       a,
       b,
+      c,
     );
   }
 
   late final _wire_func_stream_sink_arg_position_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Uint32, ffi.Uint32)>>(
+              ffi.Void Function(ffi.Int64, ffi.Uint32, ffi.Uint32,
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_func_stream_sink_arg_position_twin_normal');
   late final _wire_func_stream_sink_arg_position_twin_normal =
-      _wire_func_stream_sink_arg_position_twin_normalPtr
-          .asFunction<void Function(int, int, int)>();
+      _wire_func_stream_sink_arg_position_twin_normalPtr.asFunction<
+          void Function(
+              int, int, int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_handle_stream_of_struct_twin_normal(
     int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> _sink,
   ) {
     return _wire_handle_stream_of_struct_twin_normal(
       port_,
+      _sink,
     );
   }
 
   late final _wire_handle_stream_of_struct_twin_normalPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_handle_stream_of_struct_twin_normal');
   late final _wire_handle_stream_of_struct_twin_normal =
-      _wire_handle_stream_of_struct_twin_normalPtr
-          .asFunction<void Function(int)>();
+      _wire_handle_stream_of_struct_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_handle_stream_sink_at_1_twin_normal(
     int port_,
     int key,
     int max,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_handle_stream_sink_at_1_twin_normal(
       port_,
       key,
       max,
+      sink,
     );
   }
 
   late final _wire_handle_stream_sink_at_1_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Uint32, ffi.Uint32)>>(
+              ffi.Void Function(ffi.Int64, ffi.Uint32, ffi.Uint32,
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_handle_stream_sink_at_1_twin_normal');
   late final _wire_handle_stream_sink_at_1_twin_normal =
-      _wire_handle_stream_sink_at_1_twin_normalPtr
-          .asFunction<void Function(int, int, int)>();
+      _wire_handle_stream_sink_at_1_twin_normalPtr.asFunction<
+          void Function(
+              int, int, int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_handle_stream_sink_at_2_twin_normal(
     int port_,
     int key,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
     int max,
   ) {
     return _wire_handle_stream_sink_at_2_twin_normal(
       port_,
       key,
+      sink,
       max,
     );
   }
 
   late final _wire_handle_stream_sink_at_2_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Uint32, ffi.Uint32)>>(
+              ffi.Void Function(ffi.Int64, ffi.Uint32,
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Uint32)>>(
       'frbgen_frb_example_pure_dart_wire_handle_stream_sink_at_2_twin_normal');
   late final _wire_handle_stream_sink_at_2_twin_normal =
-      _wire_handle_stream_sink_at_2_twin_normalPtr
-          .asFunction<void Function(int, int, int)>();
+      _wire_handle_stream_sink_at_2_twin_normalPtr.asFunction<
+          void Function(
+              int, int, ffi.Pointer<wire_cst_list_prim_u_8_strict>, int)>();
 
   void wire_handle_stream_sink_at_3_twin_normal(
     int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
     int key,
     int max,
   ) {
     return _wire_handle_stream_sink_at_3_twin_normal(
       port_,
+      sink,
       key,
       max,
     );
@@ -86881,33 +88652,87 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_stream_sink_at_3_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Uint32, ffi.Uint32)>>(
+              ffi.Void Function(
+                  ffi.Int64,
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>,
+                  ffi.Uint32,
+                  ffi.Uint32)>>(
       'frbgen_frb_example_pure_dart_wire_handle_stream_sink_at_3_twin_normal');
   late final _wire_handle_stream_sink_at_3_twin_normal =
-      _wire_handle_stream_sink_at_3_twin_normalPtr
-          .asFunction<void Function(int, int, int)>();
+      _wire_handle_stream_sink_at_3_twin_normalPtr.asFunction<
+          void Function(
+              int, ffi.Pointer<wire_cst_list_prim_u_8_strict>, int, int)>();
 
   void wire_stream_sink_fixed_sized_primitive_array_twin_normal(
     int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire_stream_sink_fixed_sized_primitive_array_twin_normal(
       port_,
+      sink,
     );
   }
 
-  late final _wire_stream_sink_fixed_sized_primitive_array_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'frbgen_frb_example_pure_dart_wire_stream_sink_fixed_sized_primitive_array_twin_normal');
+  late final _wire_stream_sink_fixed_sized_primitive_array_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+      'frbgen_frb_example_pure_dart_wire_stream_sink_fixed_sized_primitive_array_twin_normal');
   late final _wire_stream_sink_fixed_sized_primitive_array_twin_normal =
-      _wire_stream_sink_fixed_sized_primitive_array_twin_normalPtr
-          .asFunction<void Function(int)>();
+      _wire_stream_sink_fixed_sized_primitive_array_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+
+  void wire_stream_sink_inside_struct_twin_normal(
+    int port_,
+    ffi.Pointer<wire_cst_my_struct_containing_stream_sink_twin_normal> arg,
+  ) {
+    return _wire_stream_sink_inside_struct_twin_normal(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_stream_sink_inside_struct_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64,
+                  ffi.Pointer<
+                      wire_cst_my_struct_containing_stream_sink_twin_normal>)>>(
+      'frbgen_frb_example_pure_dart_wire_stream_sink_inside_struct_twin_normal');
+  late final _wire_stream_sink_inside_struct_twin_normal =
+      _wire_stream_sink_inside_struct_twin_normalPtr.asFunction<
+          void Function(
+              int,
+              ffi.Pointer<
+                  wire_cst_my_struct_containing_stream_sink_twin_normal>)>();
+
+  void wire_stream_sink_inside_vec_twin_normal(
+    int port_,
+    ffi.Pointer<wire_cst_list_StreamSink_i_32_Dco> arg,
+  ) {
+    return _wire_stream_sink_inside_vec_twin_normal(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_stream_sink_inside_vec_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_StreamSink_i_32_Dco>)>>(
+      'frbgen_frb_example_pure_dart_wire_stream_sink_inside_vec_twin_normal');
+  late final _wire_stream_sink_inside_vec_twin_normal =
+      _wire_stream_sink_inside_vec_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_StreamSink_i_32_Dco>)>();
 
   void wire_func_stream_realistic_twin_normal(
     int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> arg,
   ) {
     return _wire_func_stream_realistic_twin_normal(
       port_,
+      sink,
       arg,
     );
   }
@@ -86915,11 +88740,14 @@ class RustLibWire implements BaseWire {
   late final _wire_func_stream_realistic_twin_normalPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+                  ffi.Int64,
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>,
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_func_stream_realistic_twin_normal');
   late final _wire_func_stream_realistic_twin_normal =
       _wire_func_stream_realistic_twin_normalPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>,
+              ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_func_struct_with_one_field_twin_normal(
     int port_,
@@ -95396,6 +97224,43 @@ class RustLibWire implements BaseWire {
   late final _cst_new_box_autoadd_my_struct = _cst_new_box_autoadd_my_structPtr
       .asFunction<ffi.Pointer<wire_cst_my_struct> Function()>();
 
+  ffi.Pointer<wire_cst_my_struct_containing_stream_sink_twin_normal>
+      cst_new_box_autoadd_my_struct_containing_stream_sink_twin_normal() {
+    return _cst_new_box_autoadd_my_struct_containing_stream_sink_twin_normal();
+  }
+
+  late final _cst_new_box_autoadd_my_struct_containing_stream_sink_twin_normalPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Pointer<
+                          wire_cst_my_struct_containing_stream_sink_twin_normal>
+                      Function()>>(
+          'frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_struct_containing_stream_sink_twin_normal');
+  late final _cst_new_box_autoadd_my_struct_containing_stream_sink_twin_normal =
+      _cst_new_box_autoadd_my_struct_containing_stream_sink_twin_normalPtr
+          .asFunction<
+              ffi.Pointer<wire_cst_my_struct_containing_stream_sink_twin_normal>
+                  Function()>();
+
+  ffi.Pointer<wire_cst_my_struct_containing_stream_sink_twin_rust_async>
+      cst_new_box_autoadd_my_struct_containing_stream_sink_twin_rust_async() {
+    return _cst_new_box_autoadd_my_struct_containing_stream_sink_twin_rust_async();
+  }
+
+  late final _cst_new_box_autoadd_my_struct_containing_stream_sink_twin_rust_asyncPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Pointer<
+                          wire_cst_my_struct_containing_stream_sink_twin_rust_async>
+                      Function()>>(
+          'frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_struct_containing_stream_sink_twin_rust_async');
+  late final _cst_new_box_autoadd_my_struct_containing_stream_sink_twin_rust_async =
+      _cst_new_box_autoadd_my_struct_containing_stream_sink_twin_rust_asyncPtr
+          .asFunction<
+              ffi.Pointer<
+                      wire_cst_my_struct_containing_stream_sink_twin_rust_async>
+                  Function()>();
+
   ffi.Pointer<wire_cst_my_tree_node_twin_normal>
       cst_new_box_autoadd_my_tree_node_twin_normal() {
     return _cst_new_box_autoadd_my_tree_node_twin_normal();
@@ -97352,6 +99217,24 @@ class RustLibWire implements BaseWire {
       _cst_new_list_RustOpaque_HideDataTwinSyncMoiPtr.asFunction<
           ffi.Pointer<wire_cst_list_RustOpaque_HideDataTwinSyncMoi> Function(
               int)>();
+
+  ffi.Pointer<wire_cst_list_StreamSink_i_32_Dco>
+      cst_new_list_StreamSink_i_32_Dco(
+    int len,
+  ) {
+    return _cst_new_list_StreamSink_i_32_Dco(
+      len,
+    );
+  }
+
+  late final _cst_new_list_StreamSink_i_32_DcoPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<wire_cst_list_StreamSink_i_32_Dco> Function(
+                  ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_cst_new_list_StreamSink_i_32_Dco');
+  late final _cst_new_list_StreamSink_i_32_Dco =
+      _cst_new_list_StreamSink_i_32_DcoPtr.asFunction<
+          ffi.Pointer<wire_cst_list_StreamSink_i_32_Dco> Function(int)>();
 
   ffi.Pointer<wire_cst_list_String> cst_new_list_String(
     int len,
@@ -102407,6 +104290,21 @@ final class wire_cst_opaque_nested_twin_sync_moi extends ffi.Struct {
   external int second;
 }
 
+final class wire_cst_my_struct_containing_stream_sink_twin_rust_async
+    extends ffi.Struct {
+  @ffi.Int32()
+  external int a;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8_strict> b;
+}
+
+final class wire_cst_list_StreamSink_i_32_Dco extends ffi.Struct {
+  external ffi.Pointer<ffi.Pointer<wire_cst_list_prim_u_8_strict>> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
 final class wire_cst_struct_with_one_field_twin_rust_async extends ffi.Struct {
   @ffi.Int32()
   external int a;
@@ -102601,6 +104499,14 @@ final class wire_cst_opaque_nested_twin_normal extends ffi.Struct {
 
   @ffi.UintPtr()
   external int second;
+}
+
+final class wire_cst_my_struct_containing_stream_sink_twin_normal
+    extends ffi.Struct {
+  @ffi.Int32()
+  external int a;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8_strict> b;
 }
 
 final class wire_cst_struct_with_one_field_twin_normal extends ffi.Struct {

@@ -3,17 +3,14 @@ use crate::codegen::generator::misc::target::TargetOrCommon;
 use crate::codegen::generator::wire::misc::has_port_argument;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
 use crate::codegen::generator::wire::rust::spec_generator::codec::base::WireRustCodecEntrypoint;
-use crate::codegen::generator::wire::rust::spec_generator::codec::dco::base::WireRustCodecDcoGenerator;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
     ExternFunc, ExternFuncParam,
 };
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::ir::func::IrFuncOwnerInfoMethodMode::Instance;
 use crate::codegen::ir::func::{IrFunc, IrFuncMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod};
-use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::rust_auto_opaque::OwnershipMode;
 use crate::codegen::ir::ty::IrType;
-use crate::library::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::ty::WireRustCodecDcoGeneratorEncoderTrait;
 use crate::misc::consts::HANDLER_NAME;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
@@ -25,14 +22,13 @@ pub(crate) fn generate_wire_func(
 ) -> Acc<WireRustOutputCode> {
     let dart2rust_codec = WireRustCodecEntrypoint::from(func.codec_mode_pack.dart2rust);
 
-    let ir_pack = context.ir_pack;
     let params = dart2rust_codec.generate_func_params(func, context);
-    let inner_func_args = generate_inner_func_args(func, ir_pack, context);
+    let inner_func_args = generate_inner_func_args(func);
     let wrap_info_obj = generate_wrap_info_obj(func);
     let code_decode = dart2rust_codec.generate_func_call_decode(func, context);
     let code_inner_decode = generate_code_inner_decode(func);
     let code_call_inner_func_result = generate_code_call_inner_func_result(func, inner_func_args);
-    let handler_func_name = generate_handler_func_name(func, ir_pack, context);
+    let handler_func_name = generate_handler_func_name(func);
     let return_type = generate_return_type(func);
     let code_closure = generate_code_closure(
         func,
@@ -71,12 +67,8 @@ pub(crate) fn generate_wire_func(
     })
 }
 
-fn generate_inner_func_args(
-    func: &IrFunc,
-    ir_pack: &IrPack,
-    context: WireRustGeneratorContext,
-) -> Vec<String> {
-    let mut ans = func
+fn generate_inner_func_args(func: &IrFunc) -> Vec<String> {
+    let ans = func
         .inputs
         .iter()
         .enumerate()
@@ -94,20 +86,6 @@ fn generate_inner_func_args(
             ans
         })
         .collect_vec();
-
-    if let IrFuncMode::Stream { argument_index } = func.mode {
-        ans.insert(
-            argument_index,
-            format!(
-                "StreamSink::new(context.rust2dart_context().stream_sink::<_,{}>())",
-                WireRustCodecDcoGenerator::new(
-                    func.output.clone(),
-                    context.as_wire_rust_codec_dco_context()
-                )
-                .intodart_type(ir_pack)
-            ),
-        );
-    }
 
     ans
 }
@@ -177,11 +155,7 @@ fn generate_code_call_inner_func_result(func: &IrFunc, inner_func_args: Vec<Stri
     ans
 }
 
-fn generate_handler_func_name(
-    func: &IrFunc,
-    _ir_pack: &IrPack,
-    _context: WireRustGeneratorContext,
-) -> String {
+fn generate_handler_func_name(func: &IrFunc) -> String {
     let codec = format!(
         "flutter_rust_bridge::for_generated::{}Codec",
         func.codec_mode_pack.rust2dart.delegate_or_self()
@@ -189,22 +163,12 @@ fn generate_handler_func_name(
 
     match func.mode {
         IrFuncMode::Sync => format!("wrap_sync::<{codec},_>"),
-        IrFuncMode::Normal | IrFuncMode::Stream { .. } => {
+        IrFuncMode::Normal => {
             let name = if func.rust_async {
                 "wrap_async"
             } else {
                 "wrap_normal"
             };
-
-            // let output = if matches!(func.mode, IrFuncMode::Stream { .. }) {
-            //     "()".to_owned()
-            // } else {
-            //     WireRustCodecDcoGenerator::new(
-            //         func.output.clone(),
-            //         context.as_wire_rust_codec_dco_context(),
-            //     )
-            //     .intodart_type(ir_pack)
-            // };
 
             let generic_args = if func.rust_async {
                 format!("<{codec},_,_,_>")
@@ -223,7 +187,7 @@ fn generate_return_type(func: &IrFunc) -> Option<String> {
             "flutter_rust_bridge::for_generated::WireSyncRust2Dart{}",
             func.codec_mode_pack.rust2dart.delegate_or_self(),
         )),
-        IrFuncMode::Normal | IrFuncMode::Stream { .. } => None,
+        IrFuncMode::Normal => None,
     }
 }
 
@@ -246,7 +210,7 @@ fn generate_code_closure(
                 }})())"
             )
         }
-        IrFuncMode::Normal | IrFuncMode::Stream { .. } => {
+        IrFuncMode::Normal => {
             let maybe_async_move = if func.rust_async { "async move" } else { "" };
             let maybe_await = if func.rust_async { ".await" } else { "" };
             format!(
@@ -276,6 +240,5 @@ fn ffi_call_mode(mode: IrFuncMode) -> &'static str {
     match mode {
         IrFuncMode::Normal => "Normal",
         IrFuncMode::Sync => "Sync",
-        IrFuncMode::Stream { .. } => "Stream",
     }
 }

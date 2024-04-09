@@ -1,3 +1,4 @@
+use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::ty::enumeration::IrTypeEnumRef;
 use crate::codegen::ir::ty::general_list::{ir_list, IrTypeGeneralList};
@@ -22,6 +23,7 @@ pub enum IrTypeDelegate {
     AnyhowException,
     Map(IrTypeDelegateMap),
     Set(IrTypeDelegateSet),
+    StreamSink(IrTypeDelegateStreamSink),
 }
 
 pub struct IrTypeDelegateArray {
@@ -58,6 +60,11 @@ pub struct IrTypeDelegateMap {
 pub struct IrTypeDelegateSet {
     pub inner: Box<IrType>,
 }
+
+pub struct IrTypeDelegateStreamSink {
+    pub inner: Box<IrType>,
+    pub codec: CodecMode,
+}
 }
 
 impl IrTypeTrait for IrTypeDelegate {
@@ -68,11 +75,12 @@ impl IrTypeTrait for IrTypeDelegate {
     ) {
         self.get_delegate().visit_types(f, ir_context);
 
-        // TODO avoid this hack
-        // extras
-        // if let Self::TimeList(ir) = self {
-        //     IrType::Delegate(IrTypeDelegate::Time(*ir)).visit_types(f, ir_context);
-        // }
+        #[allow(clippy::single_match)]
+        match self {
+            Self::StreamSink(ir) => ir.inner.visit_types(f, ir_context),
+            // ... others
+            _ => {}
+        }
     }
 
     fn safe_ident(&self) -> String {
@@ -94,6 +102,9 @@ impl IrTypeTrait for IrTypeDelegate {
                 format!("Map_{}_{}", ir.key.safe_ident(), ir.value.safe_ident())
             }
             IrTypeDelegate::Set(ir) => format!("Set_{}", ir.inner.safe_ident()),
+            IrTypeDelegate::StreamSink(ir) => {
+                format!("StreamSink_{}_{}", ir.inner.safe_ident(), ir.codec)
+            }
         }
     }
 
@@ -140,6 +151,13 @@ impl IrTypeTrait for IrTypeDelegate {
             ),
             IrTypeDelegate::Set(ir) => {
                 format!("std::collections::HashSet<{}>", ir.inner.rust_api_type())
+            }
+            IrTypeDelegate::StreamSink(ir) => {
+                format!(
+                    "StreamSink<{},flutter_rust_bridge::for_generated::{codec}Codec>",
+                    ir.inner.rust_api_type(),
+                    codec = ir.codec,
+                )
             }
         }
     }
@@ -191,6 +209,7 @@ impl IrTypeDelegate {
             IrTypeDelegate::AnyhowException => IrType::Delegate(IrTypeDelegate::String),
             IrTypeDelegate::Map(ir) => ir_list(IrType::Record(ir.element_delegate.clone()), true),
             IrTypeDelegate::Set(ir) => ir_list(*ir.inner.to_owned(), true),
+            IrTypeDelegate::StreamSink(_) => IrType::Delegate(IrTypeDelegate::String),
         }
     }
 }

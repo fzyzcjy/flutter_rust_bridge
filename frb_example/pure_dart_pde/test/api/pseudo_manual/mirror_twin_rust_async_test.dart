@@ -39,18 +39,18 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('dart call app_settings_stream', () async {
-    final settings = await appSettingsStreamTwinRustAsync().first;
+    final settings = await (await appSettingsStreamTwinRustAsync()).first;
     _testAppSettings(settings);
   });
 
   test('dart call app_settings_vec_stream', () async {
-    final settings = await appSettingsVecStreamTwinRustAsync().first;
+    final settings = await (await appSettingsVecStreamTwinRustAsync()).first;
     _testAppSettings(settings[0]);
     _testAppSettings(settings[1]);
   });
 
   test('dart call mirror_struct_stream', () async {
-    final ret = await mirrorStructStreamTwinRustAsync().first;
+    final ret = await (await mirrorStructStreamTwinRustAsync()).first;
     _testAppSettings(ret.a);
     expect(ret.b.content, true);
     expect(ret.c[0], MyEnum.True);
@@ -61,7 +61,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('dart call mirror_tuple_stream', () async {
     final (settings, rawStringEnum) =
-        await mirrorTupleStreamTwinRustAsync().first;
+        await (await mirrorTupleStreamTwinRustAsync()).first;
     _testAppSettings(settings);
     expect(rawStringEnum is RawStringEnumMirrored_Raw, true);
     expect((rawStringEnum as RawStringEnumMirrored_Raw).field0.value, "test");
@@ -153,7 +153,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('mirror_enum_stream_twin_normal', () async {
-    final output = await mirrorEnumStreamTwinRustAsync().toList();
+    final output = await (await mirrorEnumStreamTwinRustAsync()).toList();
     expect(
       output,
       orderedEquals([
@@ -164,7 +164,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('mirror_option_enum_stream_twin_normal', () async {
-    final output = await mirrorOptionEnumStreamTwinRustAsync().toList();
+    final output = await (await mirrorOptionEnumStreamTwinRustAsync()).toList();
     expect(
       output,
       orderedEquals([
@@ -176,7 +176,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('mirror_vec_enum_stream_twin_normal', () async {
-    final output = await mirrorVecEnumStreamTwinRustAsync().toList();
+    final output = await (await mirrorVecEnumStreamTwinRustAsync()).toList();
     expect(output, [
       orderedEquals([ApplicationMode.embedded]),
       orderedEquals([ApplicationMode.standalone]),
@@ -184,7 +184,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('mirror_map_enum_stream_twin_normal', () async {
-    final output = await mirrorMapEnumStreamTwinRustAsync().toList();
+    final output = await (await mirrorMapEnumStreamTwinRustAsync()).toList();
     expect(output, [
       allOf(
         containsPair(0, ApplicationMode.embedded),
@@ -194,7 +194,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('mirror_set_enum_stream_twin_normal', () async {
-    final output = await mirrorSetEnumStreamTwinRustAsync().toList();
+    final output = await (await mirrorSetEnumStreamTwinRustAsync()).toList();
     expect(output, [
       unorderedEquals([
         ApplicationMode.embedded,
@@ -204,7 +204,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('mirror_array_enum_stream_twin_normal', () async {
-    final output = await mirrorArrayEnumStreamTwinRustAsync().toList();
+    final output = await (await mirrorArrayEnumStreamTwinRustAsync()).toList();
     expect(output, [
       orderedEquals([
         ApplicationMode.embedded,

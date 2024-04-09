@@ -48,55 +48,36 @@ class ConcatenateWithTwinSse {
   static Future<String> concatenateStaticTwinSse(
           {required String a, required String b, dynamic hint}) =>
       RustLib.instance.api.concatenateWithTwinSseConcatenateStaticTwinSse(
-        a: a,
-        b: b,
-        hint: hint,
-      );
+          a: a, b: b, hint: hint);
 
   Future<String> concatenateTwinSse({required String b, dynamic hint}) =>
       RustLib.instance.api.concatenateWithTwinSseConcatenateTwinSse(
-        that: this,
-        b: b,
-        hint: hint,
-      );
+          that: this, b: b, hint: hint);
 
-  static Stream<int> handleSomeStaticStreamSinkSingleArgTwinSse(
+  static Future<Stream<int>> handleSomeStaticStreamSinkSingleArgTwinSse(
           {dynamic hint}) =>
       RustLib.instance.api
           .concatenateWithTwinSseHandleSomeStaticStreamSinkSingleArgTwinSse(
-        hint: hint,
-      );
+              hint: hint);
 
-  static Stream<Log2TwinSse> handleSomeStaticStreamSinkTwinSse(
+  static Future<Stream<Log2TwinSse>> handleSomeStaticStreamSinkTwinSse(
           {required int key, required int max, dynamic hint}) =>
       RustLib.instance.api
           .concatenateWithTwinSseHandleSomeStaticStreamSinkTwinSse(
-        key: key,
-        max: max,
-        hint: hint,
-      );
+              key: key, max: max, hint: hint);
 
-  Stream<int> handleSomeStreamSinkAt1TwinSse({dynamic hint}) =>
+  Future<Stream<int>> handleSomeStreamSinkAt1TwinSse({dynamic hint}) =>
       RustLib.instance.api.concatenateWithTwinSseHandleSomeStreamSinkAt1TwinSse(
-        that: this,
-        hint: hint,
-      );
+          that: this, hint: hint);
 
-  Stream<Log2TwinSse> handleSomeStreamSinkTwinSse(
+  Future<Stream<Log2TwinSse>> handleSomeStreamSinkTwinSse(
           {required int key, required int max, dynamic hint}) =>
       RustLib.instance.api.concatenateWithTwinSseHandleSomeStreamSinkTwinSse(
-        that: this,
-        key: key,
-        max: max,
-        hint: hint,
-      );
+          that: this, key: key, max: max, hint: hint);
 
   static Future<ConcatenateWithTwinSse> newTwinSse(
           {required String a, dynamic hint}) =>
-      RustLib.instance.api.concatenateWithTwinSseNewTwinSse(
-        a: a,
-        hint: hint,
-      );
+      RustLib.instance.api.concatenateWithTwinSseNewTwinSse(a: a, hint: hint);
 
   Future<String> get simpleGetterTwinSse =>
       RustLib.instance.api.concatenateWithTwinSseSimpleGetterTwinSse(
@@ -143,11 +124,8 @@ class MyCallableTwinSse {
   });
 
   Future<String> call({required String two, dynamic hint}) =>
-      RustLib.instance.api.myCallableTwinSseCall(
-        that: this,
-        two: two,
-        hint: hint,
-      );
+      RustLib.instance.api
+          .myCallableTwinSseCall(that: this, two: two, hint: hint);
 
   @override
   int get hashCode => one.hashCode;
@@ -171,16 +149,11 @@ sealed class SimpleEnumTwinSse with _$SimpleEnumTwinSse {
 
   static Future<SimpleEnumTwinSse> returnSelfTwinSse(
           {required String one, dynamic hint}) =>
-      RustLib.instance.api.simpleEnumTwinSseReturnSelfTwinSse(
-        one: one,
-        hint: hint,
-      );
+      RustLib.instance.api
+          .simpleEnumTwinSseReturnSelfTwinSse(one: one, hint: hint);
 
-  Future<String> simpleMethodTwinSse({dynamic hint}) =>
-      RustLib.instance.api.simpleEnumTwinSseSimpleMethodTwinSse(
-        that: this,
-        hint: hint,
-      );
+  Future<String> simpleMethodTwinSse({dynamic hint}) => RustLib.instance.api
+      .simpleEnumTwinSseSimpleMethodTwinSse(that: this, hint: hint);
 }
 
 class SimpleStructTwinSse {
@@ -194,25 +167,18 @@ class SimpleStructTwinSse {
           {required SimpleStructTwinSse a,
           required SimpleStructTwinSse b,
           dynamic hint}) =>
-      RustLib.instance.api.simpleStructTwinSseArgSelfTwinSse(
-        a: a,
-        b: b,
-        hint: hint,
-      );
+      RustLib.instance.api
+          .simpleStructTwinSseArgSelfTwinSse(a: a, b: b, hint: hint);
 
   static Future<SimpleStructTwinSse> returnSelfTwinSse(
           {required String one, dynamic hint}) =>
-      RustLib.instance.api.simpleStructTwinSseReturnSelfTwinSse(
-        one: one,
-        hint: hint,
-      );
+      RustLib.instance.api
+          .simpleStructTwinSseReturnSelfTwinSse(one: one, hint: hint);
 
   static Future<List<String>> vecSelfTwinSse(
           {required List<SimpleStructTwinSse> arg, dynamic hint}) =>
-      RustLib.instance.api.simpleStructTwinSseVecSelfTwinSse(
-        arg: arg,
-        hint: hint,
-      );
+      RustLib.instance.api
+          .simpleStructTwinSseVecSelfTwinSse(arg: arg, hint: hint);
 
   @override
   int get hashCode => one.hashCode;
@@ -233,10 +199,8 @@ class StaticOnlyTwinSse {
   });
 
   static Future<int> staticMethodTwinSse({required int a, dynamic hint}) =>
-      RustLib.instance.api.staticOnlyTwinSseStaticMethodTwinSse(
-        a: a,
-        hint: hint,
-      );
+      RustLib.instance.api
+          .staticOnlyTwinSseStaticMethodTwinSse(a: a, hint: hint);
 
   @override
   int get hashCode => one.hashCode;
@@ -257,12 +221,8 @@ class SumWithTwinSse {
   });
 
   Future<int> sumTwinSse({required int y, required int z, dynamic hint}) =>
-      RustLib.instance.api.sumWithTwinSseSumTwinSse(
-        that: this,
-        y: y,
-        z: z,
-        hint: hint,
-      );
+      RustLib.instance.api
+          .sumWithTwinSseSumTwinSse(that: this, y: y, z: z, hint: hint);
 
   @override
   int get hashCode => x.hashCode;
