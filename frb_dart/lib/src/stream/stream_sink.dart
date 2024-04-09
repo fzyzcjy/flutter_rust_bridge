@@ -29,14 +29,18 @@ _State<T> _setup<T>(BaseCodec<T, dynamic, dynamic> codec) {
 
   final Stream<T> stream = () async* {
     try {
+      print('hi RustStreamSink async* start');
       await for (final raw in receivePort) {
+        print('hi RustStreamSink recv raw=$raw');
         try {
           yield codec.decodeObject(raw);
         } on CloseStreamException {
+          print('hi RustStreamSink recv see CloseStreamException');
           break;
         }
       }
     } finally {
+      print('hi RustStreamSink finally');
       receivePort.close();
     }
   }();
