@@ -115,7 +115,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
                 .into(),
             IrTypeDelegate::Map(ir) => generate_decode_map(ir).into(),
             IrTypeDelegate::Set(ir) => generate_decode_set(ir).into(),
-            IrTypeDelegate::StreamSink(_) => "unimplemented!()".into(),
+            IrTypeDelegate::StreamSink(_) => "StreamSink::deserialize(self.as_string().expect(\"should be a string\"))".into(),
         })
     }
 
