@@ -75,13 +75,10 @@ impl IrTypeTrait for IrTypeDelegate {
     ) {
         self.get_delegate().visit_types(f, ir_context);
 
-        // TODO avoid this hack
-        // extras
-        // if let Self::TimeList(ir) = self {
-        //     IrType::Delegate(IrTypeDelegate::Time(*ir)).visit_types(f, ir_context);
-        // }
+        #[allow(clippy::single_match)]
         match self {
             Self::StreamSink(ir) => ir.inner.visit_types(f, ir_context),
+            // ... others
             _ => {}
         }
     }

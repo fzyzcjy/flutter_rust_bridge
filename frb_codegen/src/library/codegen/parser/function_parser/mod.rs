@@ -33,6 +33,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         Self { type_parser }
     }
 
+    #[allow(clippy::too_many_arguments)]
     pub(crate) fn parse_function(
         &mut self,
         func: &GeneralizedItemFn,
@@ -55,6 +56,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         .with_context(|| format!("function={:?}", func.sig().ident))
     }
 
+    #[allow(clippy::too_many_arguments)]
     fn parse_function_inner(
         &mut self,
         func: &GeneralizedItemFn,
