@@ -19,6 +19,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('dart call funcStreamSinkArgPositionTwinSse', () async {
     // We only care about whether the codegen can understand StreamSink
     // as non-first argument in Rust, thus we do not test the return values.
+    // ignore: unawaited_futures
     funcStreamSinkArgPositionTwinSse(a: 100, b: 200);
   });
 
@@ -72,7 +73,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('stream_sink_fixed_sized_primitive_array_twin_normal', () async {
-    final output = await streamSinkFixedSizedPrimitiveArrayTwinSse().toList();
+    final output =
+        await (await streamSinkFixedSizedPrimitiveArrayTwinSse()).toList();
     expect(output, [
       orderedEquals([1, 2]),
       orderedEquals([3, 4]),
