@@ -29,17 +29,6 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for RustAutoOpaqueWireRustCodecDc
             None
         }
     }
-
-    fn intodart_type(&self, _ir_pack: &IrPack) -> String {
-        if self.ir.ownership_mode == OwnershipMode::Owned {
-            rust_auto_opaque_local_struct_type(&self.ir)
-        } else {
-            // We do not generate IntoDart for this, so this should not be called
-            // frb-coverage:ignore-start
-            unreachable!()
-            // frb-coverage:ignore-end
-        }
-    }
 }
 
 // Similar to "mirror"

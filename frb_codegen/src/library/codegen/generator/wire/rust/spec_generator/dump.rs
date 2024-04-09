@@ -21,8 +21,6 @@ pub(crate) struct WireRustDumpInfoType {
     safe_ident: String,
     rust_wire_type: HashMap<Target, String>,
     rust_wire_modifier: HashMap<Target, String>,
-    // TODO
-    // intodart_type: String,
     wrapper_struct_name: Option<String>,
 }
 
@@ -48,7 +46,6 @@ pub(super) fn generate_dump_info(
                     rust_wire_modifier: Target::iter()
                         .map(|target| (target, cst_gen.rust_wire_modifier(target)))
                         .collect(),
-                    // intodart_type: gen.intodart_type(context.ir_pack),
                     wrapper_struct_name: gen.wrapper_struct_name(),
                 }
             })

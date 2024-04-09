@@ -9,11 +9,6 @@ use crate::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 
 impl<'a> WireRustCodecDcoGeneratorEncoderTrait for StructRefWireRustCodecDcoGenerator<'a> {
-    fn intodart_type(&self, ir_pack: &IrPack) -> String {
-        let wrapper = &self.ir.get(ir_pack).wrapper_name;
-        wrapper.clone().unwrap_or(self.ir.rust_api_type())
-    }
-
     fn generate_impl_into_dart(&self) -> Option<String> {
         let src = self.ir.get(self.context.ir_pack);
 
