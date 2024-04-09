@@ -29,28 +29,38 @@ _State<T> _setup<T>(BaseCodec<T, dynamic, dynamic> codec) {
   final portName = ExecuteStreamPortGenerator.create('RustStreamSink');
   final receivePort = broadcastPort(portName);
 
-  late final StreamSubscription<dynamic> receivePortSubscription;
-  late final StreamController<T> outputStreamController;
+  final outputStreamController = StreamController<T>();
 
-  void cleanup() {
-    receivePortSubscription.cancel();
-    outputStreamController.close();
-    receivePort.close();
-  }
-
-  outputStreamController = StreamController<T>(
-    onCancel: () => cleanup(),
-  );
-  receivePortSubscription = receivePort.listen(
+  late final StreamSubscription<dynamic> subscription;
+  subscription = receivePort.listen(
     (message) {
-      try {
-        outputStreamController.add(codec.decodeObject(message));
-      } on CloseStreamException {
-        cleanup();
-      }
+      TODO;
     },
-    onError: (Object e, StackTrace s) => outputStreamController.addError(e, s),
+    onError: (Object e, StackTrace s) {
+      TODO;
+    },
+    onDone: () {
+      TODO;
+    },
   );
+
+  final Stream<T> stream = () async* {
+    try {
+      print('hi RustStreamSink async* start');
+      await for (final raw in receivePort) {
+        print('hi RustStreamSink recv raw=$raw');
+        try {
+          yield codec.decodeObject(raw);
+        } on CloseStreamException {
+          print('hi RustStreamSink recv see CloseStreamException');
+          break;
+        }
+      }
+    } finally {
+      print('hi RustStreamSink finally');
+      receivePort.close();
+    }
+  }();
 
   return _State(receivePort, outputStreamController.stream);
 }
