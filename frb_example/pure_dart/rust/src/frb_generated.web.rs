@@ -11596,7 +11596,7 @@ impl CstDecode<StreamSink<NonCloneSimpleTwinMoi, flutter_rust_bridge::for_genera
     fn cst_decode(
         self,
     ) -> StreamSink<NonCloneSimpleTwinMoi, flutter_rust_bridge::for_generated::DcoCodec> {
-        unimplemented!()
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
     }
 }
 impl CstDecode<StreamSink<NonCloneSimpleTwinNormal, flutter_rust_bridge::for_generated::DcoCodec>>
@@ -11606,7 +11606,7 @@ impl CstDecode<StreamSink<NonCloneSimpleTwinNormal, flutter_rust_bridge::for_gen
     fn cst_decode(
         self,
     ) -> StreamSink<NonCloneSimpleTwinNormal, flutter_rust_bridge::for_generated::DcoCodec> {
-        unimplemented!()
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
     }
 }
 impl
@@ -11619,7 +11619,7 @@ impl
         self,
     ) -> StreamSink<NonCloneSimpleTwinRustAsyncMoi, flutter_rust_bridge::for_generated::DcoCodec>
     {
-        unimplemented!()
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
     }
 }
 impl
@@ -11630,7 +11630,7 @@ impl
     fn cst_decode(
         self,
     ) -> StreamSink<NonCloneSimpleTwinRustAsync, flutter_rust_bridge::for_generated::DcoCodec> {
-        unimplemented!()
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
     }
 }
 impl CstDecode<StreamSink<NonCloneSimpleTwinSyncMoi, flutter_rust_bridge::for_generated::DcoCodec>>
@@ -11640,7 +11640,7 @@ impl CstDecode<StreamSink<NonCloneSimpleTwinSyncMoi, flutter_rust_bridge::for_ge
     fn cst_decode(
         self,
     ) -> StreamSink<NonCloneSimpleTwinSyncMoi, flutter_rust_bridge::for_generated::DcoCodec> {
-        unimplemented!()
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
     }
 }
 impl CstDecode<StreamSink<NonCloneSimpleTwinSync, flutter_rust_bridge::for_generated::DcoCodec>>
@@ -11650,7 +11650,7 @@ impl CstDecode<StreamSink<NonCloneSimpleTwinSync, flutter_rust_bridge::for_gener
     fn cst_decode(
         self,
     ) -> StreamSink<NonCloneSimpleTwinSync, flutter_rust_bridge::for_generated::DcoCodec> {
-        unimplemented!()
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
     }
 }
 impl
@@ -11674,7 +11674,7 @@ impl
         >,
         flutter_rust_bridge::for_generated::DcoCodec,
     > {
-        unimplemented!()
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
     }
 }
 impl
@@ -11694,7 +11694,7 @@ impl
         std::collections::HashSet<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
         flutter_rust_bridge::for_generated::DcoCodec,
     > {
-        unimplemented!()
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
     }
 }
 impl CstDecode<StreamSink<String, flutter_rust_bridge::for_generated::DcoCodec>>
@@ -11702,7 +11702,7 @@ impl CstDecode<StreamSink<String, flutter_rust_bridge::for_generated::DcoCodec>>
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> StreamSink<String, flutter_rust_bridge::for_generated::DcoCodec> {
-        unimplemented!()
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
     }
 }
 impl
@@ -11720,7 +11720,7 @@ impl
         crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
         flutter_rust_bridge::for_generated::DcoCodec,
     > {
-        unimplemented!()
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
     }
 }
 impl
@@ -11738,7 +11738,7 @@ impl
         [crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode; 2],
         flutter_rust_bridge::for_generated::DcoCodec,
     > {
-        unimplemented!()
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
     }
 }
 impl
@@ -11756,7 +11756,7 @@ impl
         crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings,
         flutter_rust_bridge::for_generated::DcoCodec,
     > {
-        unimplemented!()
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
     }
 }
 impl
@@ -11774,7 +11774,7 @@ impl
         crate::api::event_listener::EventTwinNormal,
         flutter_rust_bridge::for_generated::DcoCodec,
     > {
-        unimplemented!()
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
     }
 }
 impl
@@ -11792,7 +11792,7 @@ impl
         crate::api::pseudo_manual::event_listener_twin_rust_async::EventTwinRustAsync,
         flutter_rust_bridge::for_generated::DcoCodec,
     > {
-        unimplemented!()
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
     }
 }
 impl CstDecode<StreamSink<i32, flutter_rust_bridge::for_generated::DcoCodec>>
@@ -11800,7 +11800,7 @@ impl CstDecode<StreamSink<i32, flutter_rust_bridge::for_generated::DcoCodec>>
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> StreamSink<i32, flutter_rust_bridge::for_generated::DcoCodec> {
-        unimplemented!()
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
     }
 }
 impl
@@ -11818,7 +11818,7 @@ impl
         Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
         flutter_rust_bridge::for_generated::DcoCodec,
     > {
-        unimplemented!()
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
     }
 }
 impl
@@ -11836,7 +11836,7 @@ impl
         Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings>,
         flutter_rust_bridge::for_generated::DcoCodec,
     > {
-        unimplemented!()
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
     }
 }
 impl
@@ -11852,7 +11852,7 @@ impl
         self,
     ) -> StreamSink<crate::api::method::Log2TwinNormal, flutter_rust_bridge::for_generated::DcoCodec>
     {
-        unimplemented!()
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
     }
 }
 impl
@@ -11870,7 +11870,7 @@ impl
         crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync,
         flutter_rust_bridge::for_generated::DcoCodec,
     > {
-        unimplemented!()
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
     }
 }
 impl
@@ -11888,7 +11888,7 @@ impl
         crate::api::pseudo_manual::method_twin_sync::Log2TwinSync,
         flutter_rust_bridge::for_generated::DcoCodec,
     > {
-        unimplemented!()
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
     }
 }
 impl
@@ -11901,7 +11901,7 @@ impl
         self,
     ) -> StreamSink<crate::api::stream::LogTwinNormal, flutter_rust_bridge::for_generated::DcoCodec>
     {
-        unimplemented!()
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
     }
 }
 impl
@@ -11919,7 +11919,7 @@ impl
         crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync,
         flutter_rust_bridge::for_generated::DcoCodec,
     > {
-        unimplemented!()
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
     }
 }
 impl
@@ -11937,7 +11937,7 @@ impl
         crate::api::mirror::MirrorStructTwinNormal,
         flutter_rust_bridge::for_generated::DcoCodec,
     > {
-        unimplemented!()
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
     }
 }
 impl
@@ -11955,7 +11955,7 @@ impl
         crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync,
         flutter_rust_bridge::for_generated::DcoCodec,
     > {
-        unimplemented!()
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
     }
 }
 impl
@@ -11973,7 +11973,7 @@ impl
         crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync,
         flutter_rust_bridge::for_generated::DcoCodec,
     > {
-        unimplemented!()
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
     }
 }
 impl
@@ -11991,7 +11991,7 @@ impl
         crate::api::stream::MyStreamEntryTwinNormal,
         flutter_rust_bridge::for_generated::DcoCodec,
     > {
-        unimplemented!()
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
     }
 }
 impl
@@ -12009,7 +12009,7 @@ impl
         crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync,
         flutter_rust_bridge::for_generated::DcoCodec,
     > {
-        unimplemented!()
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
     }
 }
 impl
@@ -12027,7 +12027,7 @@ impl
         Option<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
         flutter_rust_bridge::for_generated::DcoCodec,
     > {
-        unimplemented!()
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
     }
 }
 impl
@@ -12051,7 +12051,7 @@ impl
         ),
         flutter_rust_bridge::for_generated::DcoCodec,
     > {
-        unimplemented!()
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
     }
 }
 impl CstDecode<StreamSink<u32, flutter_rust_bridge::for_generated::DcoCodec>>
@@ -12059,7 +12059,7 @@ impl CstDecode<StreamSink<u32, flutter_rust_bridge::for_generated::DcoCodec>>
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> StreamSink<u32, flutter_rust_bridge::for_generated::DcoCodec> {
-        unimplemented!()
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
     }
 }
 impl CstDecode<StreamSink<[u8; 2], flutter_rust_bridge::for_generated::DcoCodec>>
@@ -12067,7 +12067,7 @@ impl CstDecode<StreamSink<[u8; 2], flutter_rust_bridge::for_generated::DcoCodec>
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> StreamSink<[u8; 2], flutter_rust_bridge::for_generated::DcoCodec> {
-        unimplemented!()
+        StreamSink::deserialize(self.as_string().expect("should be a string"))
     }
 }
 impl CstDecode<String> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
