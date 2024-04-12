@@ -11,6 +11,7 @@ use crate::codegen::ir::func::IrFuncOwnerInfoMethodMode::Instance;
 use crate::codegen::ir::func::OwnershipMode;
 use crate::codegen::ir::func::{IrFunc, IrFuncMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod};
 use crate::codegen::ir::ty::IrType;
+use crate::if_then_some;
 use crate::misc::consts::HANDLER_NAME;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
@@ -74,10 +75,10 @@ fn generate_inner_func_args(func: &IrFunc) -> Vec<String> {
         .enumerate()
         .map(|(index, field)| {
             let mut ans = format!("api_{}", field.inner.name.rust_style());
-            if let IrType::RustAutoOpaque(o) = &field.inner.ty {
-                ans = format!("{}{ans}", o.ownership_mode.prefix())
-            } else if index == 0 && matches!(&func.owner, IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod { mode, .. }) if mode == &Instance) {
-                ans = format!("&{ans}");
+            let ownership_mode = if_then_some!(let IrType::RustAutoOpaque(o) = &field.inner.ty, o.ownership_mode)
+                .or(field.ownership_mode);
+            if let Some(ownership_mode) = ownership_mode {
+                ans = format!("{}{ans}", ownership_mode.prefix())
             }
             ans
         })
