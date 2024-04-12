@@ -28,15 +28,15 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             FnArg::Receiver(ref receiver) => {
                 let method = if_then_some!(let IrFuncOwnerInfo::Method(method) = owner, method)
                     .context("`self` must happen within methods")?;
-                (syntheize_receiver_type(receiver, method), "that".to_owned())
+                (syntheize_receiver_type(receiver, method)?, "that".to_owned())
             }
         };
 
         let (ty_syn_without_ownership, ownership_mode_split) =
-            split_ownership_from_ty_except_ref_mut(ty_syn_raw);
+            split_ownership_from_ty_except_ref_mut(&ty_syn_raw);
 
         let ty_without_ownership =
-            (self.type_parser).parse_type(ty_syn_without_ownership, context)?;
+            (self.type_parser).parse_type(&ty_syn_without_ownership, context)?;
 
         let (ty, ownership_mode) =
             self.merge_ownership_into_ty(context, ty_without_ownership, ownership_mode_split)?;
@@ -106,13 +106,13 @@ fn parse_name_from_pat_type(pat_type: &PatType) -> anyhow::Result<String> {
         .with_context(|| quote::quote!(#pat_type).to_string())
 }
 
-fn syntheize_receiver_type(receiver: &Receiver, method: &IrFuncOwnerInfoMethod) -> Type {
+fn syntheize_receiver_type(receiver: &Receiver, method: &IrFuncOwnerInfoMethod) -> anyhow::Result<Type> {
     let ty_str = format!(
         "{}{}",
         parse_receiver_ownership_mode(receiver).prefix(),
         method.owner_ty_name().name.to_owned()
     );
-    parse_str::<Type>(&ty_str)
+    Ok(parse_str::<Type>(&ty_str)?)
 }
 
 fn parse_receiver_ownership_mode(receiver: &Receiver) -> OwnershipMode {
@@ -140,7 +140,7 @@ pub(crate) fn split_ownership_from_ty_except_ref_mut(
 
 fn parse_attrs_from_fn_arg(fn_arg: &FnArg) -> &[Attribute] {
     match fn_arg {
-        FnArg::Typed(inner) => inner.attrs,
-        FnArg::Receiver(inner) => inner.attrs,
+        FnArg::Typed(inner) => &inner.attrs,
+        FnArg::Receiver(inner) => &inner.attrs,
     }
 }
