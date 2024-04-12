@@ -70,7 +70,7 @@ impl IrFunc {
     ) {
         // inputs
         for field in &self.inputs {
-            field.ty.visit_types(f, ir_context);
+            field.inner.ty.visit_types(f, ir_context);
         }
 
         // output

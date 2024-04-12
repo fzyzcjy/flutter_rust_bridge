@@ -53,7 +53,7 @@ pub(crate) fn generate_serialize_inputs(func: &IrFunc) -> String {
         .map(|input| {
             format!(
                 "{};",
-                DartLang.call_encode(&input.ty, &input.name.dart_style())
+                DartLang.call_encode(&input.inner.ty, &input.inner.name.dart_style())
             )
         })
         .join("\n")

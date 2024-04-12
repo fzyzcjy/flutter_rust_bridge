@@ -73,8 +73,8 @@ fn generate_inner_func_args(func: &IrFunc) -> Vec<String> {
         .iter()
         .enumerate()
         .map(|(index, field)| {
-            let mut ans = format!("api_{}", field.name.rust_style());
-            if let IrType::RustAutoOpaque(o) = &field.ty {
+            let mut ans = format!("api_{}", field.inner.name.rust_style());
+            if let IrType::RustAutoOpaque(o) = &field.inner.ty {
                 ans = match o.ownership_mode {
                     OwnershipMode::Ref => format!("&{ans}"),
                     OwnershipMode::RefMut => format!("&mut {ans}"),
@@ -107,7 +107,7 @@ fn generate_code_inner_decode(func: &IrFunc) -> String {
     func.inputs
         .iter()
         .filter_map(|field| {
-            if let IrType::RustAutoOpaque(o) = &field.ty {
+            if let IrType::RustAutoOpaque(o) = &field.inner.ty {
                 if o.ownership_mode != OwnershipMode::Owned {
                     let mode = o.ownership_mode.to_string().to_case(Case::Snake);
                     let mutability = if o.ownership_mode == OwnershipMode::RefMut {
@@ -117,7 +117,7 @@ fn generate_code_inner_decode(func: &IrFunc) -> String {
                     };
                     Some(format!(
                         "let {mutability}api_{name} = api_{name}.rust_auto_opaque_decode_{mode}();\n",
-                        name = field.name.rust_style()
+                        name = field.inner.name.rust_style()
                     ))
                 } else {
                     None

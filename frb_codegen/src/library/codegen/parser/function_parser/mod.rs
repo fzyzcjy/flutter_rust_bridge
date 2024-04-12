@@ -1,9 +1,6 @@
 use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
 use crate::codegen::ir::field::IrField;
-use crate::codegen::ir::func::{
-    IrFunc, IrFuncMode, IrFuncOutput, IrFuncOwnerInfo, IrFuncOwnerInfoMethod,
-    IrFuncOwnerInfoMethodMode,
-};
+use crate::codegen::ir::func::{IrFunc, IrFuncInput, IrFuncMode, IrFuncOutput, IrFuncOwnerInfo, IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode};
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
@@ -205,7 +202,7 @@ fn parse_name(sig: &Signature, owner: &IrFuncOwnerInfo) -> String {
 
 #[derive(Debug, Default)]
 struct FunctionPartialInfo {
-    inputs: Vec<IrField>,
+    inputs: Vec<IrFuncInput>,
     ok_output: Option<IrType>,
     error_output: Option<IrType>,
     mode: Option<IrFuncMode>,

@@ -96,8 +96,8 @@ fn compute_return_stream(func: &IrFunc) -> Option<ReturnStreamInfo> {
     let stream_sink_vars = (func.inputs.iter())
         .filter_map(|input| {
             if_then_some!(
-                let IrType::Delegate(IrTypeDelegate::StreamSink(ty)) = &input.ty,
-                ReturnStreamInfo { field:input.to_owned(), ty: ty.clone() }
+                let IrType::Delegate(IrTypeDelegate::StreamSink(ty)) = &input.inner.ty,
+                ReturnStreamInfo { field: input.inner.to_owned(), ty: ty.clone() }
             )
         })
         .collect_vec();
@@ -115,12 +115,12 @@ fn generate_params(
     return_stream: &Option<ReturnStreamInfo>,
 ) -> (Vec<ApiDartGeneratedFunctionParam>, String) {
     let mut params = (func.inputs.iter())
-        .filter(|field| Some(&field.name) != return_stream.as_ref().map(|s| &s.field.name))
+        .filter(|field| Some(&field.inner.name) != return_stream.as_ref().map(|s| &s.field.name))
         .map(|input| {
-            let required = generate_field_required_modifier(input);
-            let r#default = generate_field_default(input, false, dart_enums_style);
-            let type_str = ApiDartGenerator::new(input.ty.clone(), context).dart_api_type();
-            let name_str = input.name.dart_style();
+            let required = generate_field_required_modifier(&input.inner);
+            let r#default = generate_field_default(&input.inner, false, dart_enums_style);
+            let type_str = ApiDartGenerator::new(input.inner.ty.clone(), context).dart_api_type();
+            let name_str = input.inner.name.dart_style();
             ApiDartGeneratedFunctionParam {
                 full: format!("{required}{type_str} {name_str} {default}"),
                 type_str,
@@ -149,8 +149,8 @@ fn generate_func_impl(
     let func_name = &func.name.name.to_case(Case::Camel);
     let param_names: Vec<String> = [
         ((func.inputs.iter())
-            .filter(|field| Some(&field.name) != return_stream.as_ref().map(|s| &s.field.name))
-            .map(|input| input.name.dart_style()))
+            .filter(|field| Some(&field.inner.name) != return_stream.as_ref().map(|s| &s.field.name))
+            .map(|input| input.inner.name.dart_style()))
         .collect_vec(),
         vec!["hint".to_owned()],
     ]

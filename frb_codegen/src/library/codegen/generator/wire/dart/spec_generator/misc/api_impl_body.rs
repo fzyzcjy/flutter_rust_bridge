@@ -112,7 +112,7 @@ fn generate_companion_field(func: &IrFunc, const_meta_field_name: &str) -> Strin
         func.name.name,
         func.inputs
             .iter()
-            .map(|input| format!("\"{}\"", input.name.dart_style()))
+            .map(|input| format!("\"{}\"", input.inner.name.dart_style()))
             .collect_vec()
             .join(", "),
     )
@@ -128,7 +128,7 @@ fn generate_call_ffi_args(func: &IrFunc) -> &str {
 
 fn generate_arg_values(func: &IrFunc) -> String {
     (func.inputs.iter())
-        .map(|input| input.name.dart_style())
+        .map(|input| input.inner.name.dart_style())
         .join(", ")
 }
 

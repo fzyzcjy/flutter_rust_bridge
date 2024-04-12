@@ -1,4 +1,5 @@
 use crate::codegen::ir::field::IrField;
+use crate::codegen::ir::func::IrFuncInput;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
 use crate::codegen::ir::ty::IrType;
@@ -10,9 +11,11 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     pub(super) fn transform_fn_info(&mut self, info: FunctionPartialInfo) -> FunctionPartialInfo {
         FunctionPartialInfo {
             inputs: (info.inputs.into_iter())
-                .map(|x| IrField {
-                    ty: transform_primitive_list_param(x.ty),
-                    ..x
+                .map(|x| IrFuncInput {
+                    inner: IrField {
+                        ty: transform_primitive_list_param(x.inner.ty),
+                        ..x.inner
+                    },
                 })
                 .collect_vec(),
             ..info

@@ -1,8 +1,8 @@
+use crate::codegen::ir::field::OwnershipMode;
 use crate::codegen::ir::field::{IrField, IrFieldSettings};
-use crate::codegen::ir::func::IrFuncOwnerInfo;
+use crate::codegen::ir::func::{IrFuncInput, IrFuncOwnerInfo};
 use crate::codegen::ir::ident::IrIdent;
 use crate::codegen::ir::ty::boxed::IrTypeBoxed;
-use crate::codegen::ir::field::OwnershipMode;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::Boxed;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
@@ -85,13 +85,15 @@ fn partial_info_for_normal_type_raw(
     let attributes = FrbAttributes::parse(attrs)?;
     let ty = auto_add_boxed(ty_raw);
     Ok(FunctionPartialInfo {
-        inputs: vec![IrField {
-            name: IrIdent::new(name),
-            ty,
-            is_final: true,
-            comments: parse_comments(attrs),
-            default: attributes.default_value(),
-            settings: IrFieldSettings::default(),
+        inputs: vec![IrFuncInput {
+            inner: IrField {
+                name: IrIdent::new(name),
+                ty,
+                is_final: true,
+                comments: parse_comments(attrs),
+                default: attributes.default_value(),
+                settings: IrFieldSettings::default(),
+            },
         }],
         ..Default::default()
     })
