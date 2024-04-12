@@ -7,38 +7,36 @@ import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'stream_twin_rust_async.dart';
 
-Future<Stream<String>> funcStreamReturnErrorTwinSse({dynamic hint}) =>
+Stream<String> funcStreamReturnErrorTwinSse({dynamic hint}) =>
     RustLib.instance.api.funcStreamReturnErrorTwinSse(hint: hint);
 
-Future<Stream<String>> funcStreamReturnPanicTwinSse({dynamic hint}) =>
+Stream<String> funcStreamReturnPanicTwinSse({dynamic hint}) =>
     RustLib.instance.api.funcStreamReturnPanicTwinSse(hint: hint);
 
-Future<Stream<int>> funcStreamSinkArgPositionTwinSse(
+Stream<int> funcStreamSinkArgPositionTwinSse(
         {required int a, required int b, dynamic hint}) =>
     RustLib.instance.api
         .funcStreamSinkArgPositionTwinSse(a: a, b: b, hint: hint);
 
-Future<Stream<MyStreamEntryTwinSse>> handleStreamOfStructTwinSse(
-        {dynamic hint}) =>
+Stream<MyStreamEntryTwinSse> handleStreamOfStructTwinSse({dynamic hint}) =>
     RustLib.instance.api.handleStreamOfStructTwinSse(hint: hint);
 
-Future<Stream<LogTwinSse>> handleStreamSinkAt1TwinSse(
+Stream<LogTwinSse> handleStreamSinkAt1TwinSse(
         {required int key, required int max, dynamic hint}) =>
     RustLib.instance.api
         .handleStreamSinkAt1TwinSse(key: key, max: max, hint: hint);
 
-Future<Stream<LogTwinSse>> handleStreamSinkAt2TwinSse(
+Stream<LogTwinSse> handleStreamSinkAt2TwinSse(
         {required int key, required int max, dynamic hint}) =>
     RustLib.instance.api
         .handleStreamSinkAt2TwinSse(key: key, max: max, hint: hint);
 
-Future<Stream<LogTwinSse>> handleStreamSinkAt3TwinSse(
+Stream<LogTwinSse> handleStreamSinkAt3TwinSse(
         {required int key, required int max, dynamic hint}) =>
     RustLib.instance.api
         .handleStreamSinkAt3TwinSse(key: key, max: max, hint: hint);
 
-Future<Stream<U8Array2>> streamSinkFixedSizedPrimitiveArrayTwinSse(
-        {dynamic hint}) =>
+Stream<U8Array2> streamSinkFixedSizedPrimitiveArrayTwinSse({dynamic hint}) =>
     RustLib.instance.api.streamSinkFixedSizedPrimitiveArrayTwinSse(hint: hint);
 
 Future<void> streamSinkInsideVecTwinSse(

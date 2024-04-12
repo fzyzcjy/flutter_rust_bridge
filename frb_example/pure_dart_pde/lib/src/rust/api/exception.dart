@@ -70,7 +70,7 @@ Future<void> throwAnyhowTwinNormal({dynamic hint}) =>
 Future<void> panicWithCustomResultTwinNormal({dynamic hint}) =>
     RustLib.instance.api.panicWithCustomResultTwinNormal(hint: hint);
 
-Future<Stream<String>> streamSinkThrowAnyhowTwinNormal({dynamic hint}) =>
+Stream<String> streamSinkThrowAnyhowTwinNormal({dynamic hint}) =>
     RustLib.instance.api.streamSinkThrowAnyhowTwinNormal(hint: hint);
 
 @freezed

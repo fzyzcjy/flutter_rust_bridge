@@ -20,19 +20,17 @@ Future<bool> isAppEmbeddedTwinNormal(
     RustLib.instance.api
         .isAppEmbeddedTwinNormal(appSettings: appSettings, hint: hint);
 
-Future<Stream<ApplicationSettings>> appSettingsStreamTwinNormal(
-        {dynamic hint}) =>
+Stream<ApplicationSettings> appSettingsStreamTwinNormal({dynamic hint}) =>
     RustLib.instance.api.appSettingsStreamTwinNormal(hint: hint);
 
-Future<Stream<List<ApplicationSettings>>> appSettingsVecStreamTwinNormal(
+Stream<List<ApplicationSettings>> appSettingsVecStreamTwinNormal(
         {dynamic hint}) =>
     RustLib.instance.api.appSettingsVecStreamTwinNormal(hint: hint);
 
-Future<Stream<MirrorStructTwinNormal>> mirrorStructStreamTwinNormal(
-        {dynamic hint}) =>
+Stream<MirrorStructTwinNormal> mirrorStructStreamTwinNormal({dynamic hint}) =>
     RustLib.instance.api.mirrorStructStreamTwinNormal(hint: hint);
 
-Future<Stream<(ApplicationSettings, RawStringEnumMirrored)>>
+Stream<(ApplicationSettings, RawStringEnumMirrored)>
     mirrorTupleStreamTwinNormal({dynamic hint}) =>
         RustLib.instance.api.mirrorTupleStreamTwinNormal(hint: hint);
 
@@ -89,27 +87,23 @@ Future<StructWithHashMap> testHashmapWithMirroredValueTwinNormal(
         {dynamic hint}) =>
     RustLib.instance.api.testHashmapWithMirroredValueTwinNormal(hint: hint);
 
-Future<Stream<ApplicationMode>> mirrorEnumStreamTwinNormal({dynamic hint}) =>
+Stream<ApplicationMode> mirrorEnumStreamTwinNormal({dynamic hint}) =>
     RustLib.instance.api.mirrorEnumStreamTwinNormal(hint: hint);
 
-Future<Stream<ApplicationMode?>> mirrorOptionEnumStreamTwinNormal(
-        {dynamic hint}) =>
+Stream<ApplicationMode?> mirrorOptionEnumStreamTwinNormal({dynamic hint}) =>
     RustLib.instance.api.mirrorOptionEnumStreamTwinNormal(hint: hint);
 
-Future<Stream<List<ApplicationMode>>> mirrorVecEnumStreamTwinNormal(
-        {dynamic hint}) =>
+Stream<List<ApplicationMode>> mirrorVecEnumStreamTwinNormal({dynamic hint}) =>
     RustLib.instance.api.mirrorVecEnumStreamTwinNormal(hint: hint);
 
-Future<Stream<Map<int, ApplicationMode>>> mirrorMapEnumStreamTwinNormal(
+Stream<Map<int, ApplicationMode>> mirrorMapEnumStreamTwinNormal(
         {dynamic hint}) =>
     RustLib.instance.api.mirrorMapEnumStreamTwinNormal(hint: hint);
 
-Future<Stream<Set<ApplicationMode>>> mirrorSetEnumStreamTwinNormal(
-        {dynamic hint}) =>
+Stream<Set<ApplicationMode>> mirrorSetEnumStreamTwinNormal({dynamic hint}) =>
     RustLib.instance.api.mirrorSetEnumStreamTwinNormal(hint: hint);
 
-Future<Stream<ApplicationModeArray2>> mirrorArrayEnumStreamTwinNormal(
-        {dynamic hint}) =>
+Stream<ApplicationModeArray2> mirrorArrayEnumStreamTwinNormal({dynamic hint}) =>
     RustLib.instance.api.mirrorArrayEnumStreamTwinNormal(hint: hint);
 
 class AnotherTwinNormal {

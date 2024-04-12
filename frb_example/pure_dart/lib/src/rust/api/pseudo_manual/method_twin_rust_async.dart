@@ -55,25 +55,24 @@ class ConcatenateWithTwinRustAsync {
       RustLib.instance.api.concatenateWithTwinRustAsyncConcatenateTwinRustAsync(
           that: this, b: b, hint: hint);
 
-  static Future<Stream<int>> handleSomeStaticStreamSinkSingleArgTwinRustAsync(
+  static Stream<int> handleSomeStaticStreamSinkSingleArgTwinRustAsync(
           {dynamic hint}) =>
       RustLib.instance.api
           .concatenateWithTwinRustAsyncHandleSomeStaticStreamSinkSingleArgTwinRustAsync(
               hint: hint);
 
-  static Future<
-      Stream<Log2TwinRustAsync>> handleSomeStaticStreamSinkTwinRustAsync(
+  static Stream<Log2TwinRustAsync> handleSomeStaticStreamSinkTwinRustAsync(
           {required int key, required int max, dynamic hint}) =>
       RustLib.instance.api
           .concatenateWithTwinRustAsyncHandleSomeStaticStreamSinkTwinRustAsync(
               key: key, max: max, hint: hint);
 
-  Future<Stream<int>> handleSomeStreamSinkAt1TwinRustAsync({dynamic hint}) =>
+  Stream<int> handleSomeStreamSinkAt1TwinRustAsync({dynamic hint}) =>
       RustLib.instance.api
           .concatenateWithTwinRustAsyncHandleSomeStreamSinkAt1TwinRustAsync(
               that: this, hint: hint);
 
-  Future<Stream<Log2TwinRustAsync>> handleSomeStreamSinkTwinRustAsync(
+  Stream<Log2TwinRustAsync> handleSomeStreamSinkTwinRustAsync(
           {required int key, required int max, dynamic hint}) =>
       RustLib.instance.api
           .concatenateWithTwinRustAsyncHandleSomeStreamSinkTwinRustAsync(

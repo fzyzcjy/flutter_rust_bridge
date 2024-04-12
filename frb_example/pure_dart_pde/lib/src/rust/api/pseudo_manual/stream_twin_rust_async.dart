@@ -7,37 +7,37 @@ import '../../frb_generated.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<Stream<String>> funcStreamReturnErrorTwinRustAsync({dynamic hint}) =>
+Stream<String> funcStreamReturnErrorTwinRustAsync({dynamic hint}) =>
     RustLib.instance.api.funcStreamReturnErrorTwinRustAsync(hint: hint);
 
-Future<Stream<String>> funcStreamReturnPanicTwinRustAsync({dynamic hint}) =>
+Stream<String> funcStreamReturnPanicTwinRustAsync({dynamic hint}) =>
     RustLib.instance.api.funcStreamReturnPanicTwinRustAsync(hint: hint);
 
-Future<Stream<int>> funcStreamSinkArgPositionTwinRustAsync(
+Stream<int> funcStreamSinkArgPositionTwinRustAsync(
         {required int a, required int b, dynamic hint}) =>
     RustLib.instance.api
         .funcStreamSinkArgPositionTwinRustAsync(a: a, b: b, hint: hint);
 
-Future<Stream<MyStreamEntryTwinRustAsync>> handleStreamOfStructTwinRustAsync(
+Stream<MyStreamEntryTwinRustAsync> handleStreamOfStructTwinRustAsync(
         {dynamic hint}) =>
     RustLib.instance.api.handleStreamOfStructTwinRustAsync(hint: hint);
 
-Future<Stream<LogTwinRustAsync>> handleStreamSinkAt1TwinRustAsync(
+Stream<LogTwinRustAsync> handleStreamSinkAt1TwinRustAsync(
         {required int key, required int max, dynamic hint}) =>
     RustLib.instance.api
         .handleStreamSinkAt1TwinRustAsync(key: key, max: max, hint: hint);
 
-Future<Stream<LogTwinRustAsync>> handleStreamSinkAt2TwinRustAsync(
+Stream<LogTwinRustAsync> handleStreamSinkAt2TwinRustAsync(
         {required int key, required int max, dynamic hint}) =>
     RustLib.instance.api
         .handleStreamSinkAt2TwinRustAsync(key: key, max: max, hint: hint);
 
-Future<Stream<LogTwinRustAsync>> handleStreamSinkAt3TwinRustAsync(
+Stream<LogTwinRustAsync> handleStreamSinkAt3TwinRustAsync(
         {required int key, required int max, dynamic hint}) =>
     RustLib.instance.api
         .handleStreamSinkAt3TwinRustAsync(key: key, max: max, hint: hint);
 
-Future<Stream<U8Array2>> streamSinkFixedSizedPrimitiveArrayTwinRustAsync(
+Stream<U8Array2> streamSinkFixedSizedPrimitiveArrayTwinRustAsync(
         {dynamic hint}) =>
     RustLib.instance.api
         .streamSinkFixedSizedPrimitiveArrayTwinRustAsync(hint: hint);

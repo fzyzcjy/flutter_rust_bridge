@@ -71,7 +71,7 @@ Future<void> throwAnyhowTwinRustAsyncSse({dynamic hint}) =>
 Future<void> panicWithCustomResultTwinRustAsyncSse({dynamic hint}) =>
     RustLib.instance.api.panicWithCustomResultTwinRustAsyncSse(hint: hint);
 
-Future<Stream<String>> streamSinkThrowAnyhowTwinRustAsyncSse({dynamic hint}) =>
+Stream<String> streamSinkThrowAnyhowTwinRustAsyncSse({dynamic hint}) =>
     RustLib.instance.api.streamSinkThrowAnyhowTwinRustAsyncSse(hint: hint);
 
 @freezed

@@ -6,7 +6,7 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<Stream<String>> funcStreamRealisticTwinNormal(
+Stream<String> funcStreamRealisticTwinNormal(
         {required String arg, dynamic hint}) =>
     RustLib.instance.api.funcStreamRealisticTwinNormal(arg: arg, hint: hint);
 
