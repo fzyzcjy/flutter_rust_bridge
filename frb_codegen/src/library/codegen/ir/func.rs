@@ -16,7 +16,7 @@ pub struct IrFunc {
     pub error_output: Option<IrType>,
     pub owner: IrFuncOwnerInfo,
     pub mode: IrFuncMode,
-    pub stream_mode: Option<IrFuncStreamMode>,
+    pub await_stream: bool,
     pub rust_async: bool,
     pub initializer: bool,
     // When later we support setter, etc, we should refactor it into an enum
@@ -32,11 +32,6 @@ pub struct IrFunc {
 pub enum IrFuncMode {
     Normal,
     Sync,
-}
-
-#[derive(Copy)]
-pub enum IrFuncStreamMode {
-    Awaited,
 }
 
 pub enum IrFuncOwnerInfo {

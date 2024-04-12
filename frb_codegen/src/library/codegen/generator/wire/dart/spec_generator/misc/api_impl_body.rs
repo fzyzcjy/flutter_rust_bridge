@@ -58,9 +58,7 @@ pub(crate) fn generate_api_impl_normal_function(
                 context.as_api_dart_context()
             )
             .dart_api_type(),
-            maybe_await = if func.mode != IrFuncMode::Sync
-                && func.stream_mode == Some(IrFuncStreamMode::Awaited)
-            {
+            maybe_await = if func.mode != IrFuncMode::Sync && func.await_stream {
                 "await "
             } else {
                 ""
