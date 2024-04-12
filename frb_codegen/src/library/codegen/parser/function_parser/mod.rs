@@ -103,8 +103,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         info = self.transform_fn_info(info);
 
         let codec_mode_pack = compute_codec_mode_pack(&attributes, force_codec_mode_pack);
-        let mode = compute_func_mode(&attributes, &info);
-        let await_stream = TODO;
+        let (mode, await_stream) = compute_func_mode_and_await_stream(&attributes, &info);
 
         if info.ignore_func {
             return Ok(None);
@@ -181,11 +180,14 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     }
 }
 
-fn compute_func_mode(attributes: &FrbAttributes, info: &FunctionPartialInfo) -> IrFuncMode {
+fn compute_func_mode_and_await_stream(
+    attributes: &FrbAttributes,
+    info: &FunctionPartialInfo,
+) -> (IrFuncMode, bool) {
     info.mode.unwrap_or(if attributes.sync() {
-        IrFuncMode::Sync
+        (IrFuncMode::Sync, false)
     } else {
-        IrFuncMode::Normal
+        (IrFuncMode::Normal, !attributes.dart_async())
     })
 }
 
