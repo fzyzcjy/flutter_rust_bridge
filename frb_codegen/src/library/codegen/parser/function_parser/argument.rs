@@ -33,8 +33,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     ) -> anyhow::Result<FunctionPartialInfo> {
         let ty_syn = pat_type.ty.as_ref();
         let ty_syn_without_ownership = TODO;
-        let ownership_mode = TODO;
-        let ty = self.parse_fn_arg_common(&ty_syn_without_ownership, ownership_mode)?;
+        let (ty, ownership_mode) = self.parse_fn_arg_common(&ty_syn_without_ownership, TODO)?;
         let name = parse_name_from_pat_type(pat_type)?;
         partial_info_for_normal_type_raw(ty_raw, &pat_type.attrs, name, ownership_mode)
     }
@@ -48,10 +47,9 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let method = if_then_some!(let IrFuncOwnerInfo::Method(method) = owner, method)
             .context("`self` must happen within methods")?;
 
-        let ownership_mode = parse_receiver_ownership_mode(receiver);
-        let ty = self.parse_fn_arg_common(
+        let (ty, ownership_mode) = self.parse_fn_arg_common(
             &parse_str::<Type>(&method.owner_ty_name().name)?,
-            ownership_mode,
+            parse_receiver_ownership_mode(receiver),
         )?;
         let name = "that".to_owned();
 
@@ -64,7 +62,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             }
 
             ensure!(
-                ownership_mode != OwnershipMode::RefMut,
+                ownership_mode != Some(OwnershipMode::RefMut),
                 "If you want to use `&mut self`, please make the struct opaque (by adding `#[frb(opaque)]` on the struct)."
             );
         }
@@ -75,22 +73,25 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     fn parse_fn_arg_common(
         &mut self,
         ty_syn_without_ownership: &Type,
-        ownership_mode: OwnershipMode,
-    ) -> anyhow::Result<IrType> {
+        ownership_mode_raw: OwnershipMode,
+    ) -> anyhow::Result<(IrType, Option<OwnershipMode>)> {
         let ty_raw = self
             .type_parser
             .parse_type(ty_syn_without_ownership, context)?;
         Ok(match ty_raw {
-            IrType::RustAutoOpaque(ty_raw) => self.type_parser.transform_rust_auto_opaque(
-                &ty_raw,
-                |raw| match ownership_mode {
-                    OwnershipMode::Owned => raw.to_owned(),
-                    OwnershipMode::RefMut => format!("&mut {raw}"),
-                    OwnershipMode::Ref => format!("&{raw}"),
-                },
-                context,
-            )?,
-            _ => ty_raw,
+            IrType::RustAutoOpaque(ty_raw) => (
+                self.type_parser.transform_rust_auto_opaque(
+                    &ty_raw,
+                    |raw| match ownership_mode_raw {
+                        OwnershipMode::Owned => raw.to_owned(),
+                        OwnershipMode::RefMut => format!("&mut {raw}"),
+                        OwnershipMode::Ref => format!("&{raw}"),
+                    },
+                    context,
+                )?,
+                None,
+            ),
+            _ => (ty_raw, Some(ownership_mode_raw)),
         })
     }
 }
@@ -99,7 +100,7 @@ fn partial_info_for_normal_type_raw(
     ty_raw: IrType,
     attrs: &[Attribute],
     name: String,
-    ownership_mode: OwnershipMode,
+    ownership_mode: Option<OwnershipMode>,
 ) -> anyhow::Result<FunctionPartialInfo> {
     let attributes = FrbAttributes::parse(attrs)?;
     let ty = auto_add_boxed(ty_raw);
