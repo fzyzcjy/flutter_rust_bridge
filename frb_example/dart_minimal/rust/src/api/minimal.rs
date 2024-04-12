@@ -13,5 +13,5 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 pub struct MyStruct {}
 
 impl MyStruct {
-    pub fn f(&self) {}
+    pub fn f(&mut self) {}
 }
