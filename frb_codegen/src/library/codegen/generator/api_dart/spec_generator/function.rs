@@ -51,7 +51,7 @@ pub(crate) fn generate(
         &return_stream,
     );
     let func_return_type = generate_function_dart_return_type(
-        &func.mode,
+        &func,
         &ApiDartGenerator::new(func.output.clone(), context).dart_api_type(),
         &return_stream,
         context,
@@ -177,23 +177,23 @@ fn generate_header(
 }
 
 fn generate_function_dart_return_type(
-    func_mode: &IrFuncMode,
-    raw_inner: &str,
+    func: &IrFunc,
+    inner: &str,
     return_stream: &Option<ReturnStreamInfo>,
     context: ApiDartGeneratorContext,
 ) -> String {
-    let inner = return_stream
-        .as_ref()
-        .map(|info| {
-            format!(
-                "Stream<{}>",
-                ApiDartGenerator::new(info.ty.inner.clone(), context).dart_api_type()
-            )
-        })
-        .unwrap_or(raw_inner.to_owned());
+    let mut inner = inner.to_owned();
 
-    match func_mode {
-        IrFuncMode::Normal => format!("Future<{inner}>"),
-        IrFuncMode::Sync => inner.to_string(),
+    if let Some(return_stream) = return_stream {
+        inner = format!(
+            "Stream<{}>",
+            ApiDartGenerator::new(info.ty.inner.clone(), context).dart_api_type()
+        );
     }
+
+    if (return_stream.is_some() && func.stream_dart_await) || (func.mode != IrFuncMode::Sync) {
+        inner = format!("Future<{inner}>");
+    }
+
+    inner
 }
