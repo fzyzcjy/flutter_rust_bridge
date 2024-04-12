@@ -43,26 +43,13 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl,
       throw StateError('Should not initialize flutter_rust_bridge twice');
     }
 
-    if (codegenVersion != kFlutterRustBridgeRuntimeVersion) {
-      throw StateError(
-        "flutter_rust_bridge's codegen version ($codegenVersion) should be the same as runtime version ($kFlutterRustBridgeRuntimeVersion). "
-        "See https://cjycode.com/flutter_rust_bridge/guides/miscellaneous/upgrade/regular for details.",
-      );
-    }
-
-    final rustSideRustContentHash =
-        generalizedFrbRustBinding.getRustContentHash();
-    if (rustContentHash != rustSideRustContentHash) {
-      throw StateError(
-        "Content hash on Dart side ($rustContentHash) is different from Rust side ($rustSideRustContentHash), indicating out-of-sync code. "
-        "This may happen when, for example, the Dart code is hot-restarted/hot-reloaded without recompiling Rust code.",
-      );
-    }
+    _sanityCheckCodegenVersion();
 
     externalLibrary ??= await _loadDefaultExternalLibrary();
     handler ??= BaseHandler();
     final generalizedFrbRustBinding =
         GeneralizedFrbRustBinding(externalLibrary);
+    _sanityCheckContentHash(generalizedFrbRustBinding);
     final portManager = PortManager(generalizedFrbRustBinding, handler);
     api ??= _createDefaultApi(
         handler, generalizedFrbRustBinding, portManager, externalLibrary);
@@ -90,6 +77,27 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl,
     print(
         'WARN: resetState() (should only be used in internal tests, never be used by normal users)');
     __state = null;
+  }
+
+  void _sanityCheckCodegenVersion() {
+    if (codegenVersion != kFlutterRustBridgeRuntimeVersion) {
+      throw StateError(
+        "flutter_rust_bridge's codegen version ($codegenVersion) should be the same as runtime version ($kFlutterRustBridgeRuntimeVersion). "
+        "See https://cjycode.com/flutter_rust_bridge/guides/miscellaneous/upgrade/regular for details.",
+      );
+    }
+  }
+
+  void _sanityCheckContentHash(
+      GeneralizedFrbRustBinding generalizedFrbRustBinding) {
+    final rustSideRustContentHash =
+        generalizedFrbRustBinding.getRustContentHash();
+    if (rustContentHash != rustSideRustContentHash) {
+      throw StateError(
+        "Content hash on Dart side ($rustContentHash) is different from Rust side ($rustSideRustContentHash), indicating out-of-sync code. "
+        "This may happen when, for example, the Dart code is hot-restarted/hot-reloaded without recompiling Rust code.",
+      );
+    }
   }
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
