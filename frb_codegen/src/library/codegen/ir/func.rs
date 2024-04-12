@@ -58,6 +58,16 @@ pub enum IrFuncOwnerInfoMethodMode {
 }
 }
 
+#[derive(Debug, Clone, Hash, Eq, PartialEq, serde::Serialize, strum_macros::Display)]
+pub enum OwnershipMode {
+    /// "T"
+    Owned,
+    /// "&T"
+    Ref,
+    /// "&mut T"
+    RefMut,
+}
+
 impl IrFunc {
     pub(crate) fn fallible(&self) -> bool {
         self.output.error.is_some()

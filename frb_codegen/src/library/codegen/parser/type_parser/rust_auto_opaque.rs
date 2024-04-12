@@ -2,7 +2,7 @@ use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::ty::rust_auto_opaque::{
     IrRustAutoOpaqueRaw, IrTypeRustAutoOpaque
 };
-use crate::codegen::ir::field::OwnershipMode;
+use crate::codegen::ir::func::OwnershipMode;
 use crate::codegen::ir::ty::rust_opaque::{
     IrRustOpaqueInner, IrTypeRustOpaque, RustOpaqueCodecMode,
 };

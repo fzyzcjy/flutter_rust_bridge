@@ -20,16 +20,6 @@ pub struct IrFieldSettings {
 }
 }
 
-#[derive(Debug, Clone, Hash, Eq, PartialEq, serde::Serialize, strum_macros::Display)]
-pub enum OwnershipMode {
-    /// "T"
-    Owned,
-    /// "&T"
-    Ref,
-    /// "&mut T"
-    RefMut,
-}
-
 impl IrField {
     #[inline]
     pub fn is_optional(&self) -> bool {

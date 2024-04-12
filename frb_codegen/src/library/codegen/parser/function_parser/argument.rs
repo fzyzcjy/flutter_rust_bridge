@@ -1,4 +1,4 @@
-use crate::codegen::ir::field::OwnershipMode;
+use crate::codegen::ir::func::OwnershipMode;
 use crate::codegen::ir::field::{IrField, IrFieldSettings};
 use crate::codegen::ir::func::{IrFuncInput, IrFuncOwnerInfo};
 use crate::codegen::ir::ident::IrIdent;

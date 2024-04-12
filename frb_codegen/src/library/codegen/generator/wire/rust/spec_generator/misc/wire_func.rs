@@ -9,7 +9,7 @@ use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::ir::func::IrFuncOwnerInfoMethodMode::Instance;
 use crate::codegen::ir::func::{IrFunc, IrFuncMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod};
-use crate::codegen::ir::field::OwnershipMode;
+use crate::codegen::ir::func::OwnershipMode;
 use crate::codegen::ir::ty::IrType;
 use crate::misc::consts::HANDLER_NAME;
 use convert_case::{Case, Casing};
