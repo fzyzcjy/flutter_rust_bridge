@@ -59,7 +59,7 @@ pub enum IrFuncOwnerInfoMethodMode {
 }
 }
 
-#[derive(Debug, Clone, Hash, Eq, PartialEq, serde::Serialize, strum_macros::Display)]
+#[derive(Debug, Clone, Copy, Hash, Eq, PartialEq, serde::Serialize, strum_macros::Display)]
 pub enum OwnershipMode {
     /// "T"
     Owned,
