@@ -122,17 +122,9 @@ fn auto_add_boxed(ty: IrType) -> IrType {
 }
 
 fn parse_name_from_pat_type(pat_type: &PatType) -> anyhow::Result<String> {
-    if let Pat::Ident(ref pat_ident) = *pat_type.pat {
-        Ok(format!("{}", pat_ident.ident))
-    } else {
-        // This branch simply halts the generator with an error message, so we do not test it
-        // frb-coverage:ignore-start
-        bail!(
-            "Unexpected pattern: {}",
-            quote::quote!(#pat_type).to_string(),
-        )
-        // frb-coverage:ignore-end
-    }
+    if_then_some!(let Pat::Ident(ref pat_ident) = *pat_type.pat, pat_ident)
+        .map(|pat_ident| format!("{}", pat_ident.ident))
+        .with_context(|| quote::quote!(#pat_type).to_string())
 }
 
 fn parse_receiver_ownership_mode(receiver: &Receiver) -> OwnershipMode {
