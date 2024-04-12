@@ -5,7 +5,7 @@ pub(crate) const CONTENT_HASH_PLACEHOLDER: &str = "__PLACEHOLDER_FRB_CONTENT_HAS
 
 pub(crate) fn text_inject_content_hash(text: &Acc<Option<String>>) -> Acc<Option<String>> {
     let content_hash = compute_content_hash(text);
-    TODO
+    text.map(|x, _| x.map(|x| x.replace(CONTENT_HASH_PLACEHOLDER, content_hash)))
 }
 
 fn compute_content_hash(text: &Acc<Option<String>>) -> i32 {

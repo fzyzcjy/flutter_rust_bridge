@@ -154,7 +154,7 @@ fn generate_boilerplate(
                     default_rust_auto_opaque = RustAutoOpaque{default_rust_opaque_codec},
                 );
                 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "{version}";
-                pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: &str = "{CONTENT_HASH_PLACEHOLDER}";
+                pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = {CONTENT_HASH_PLACEHOLDER};
             "#,
                 version = env!("CARGO_PKG_VERSION"),
             )
