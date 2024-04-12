@@ -54,28 +54,6 @@ pub(crate) fn generate_dart_maybe_implements_exception(is_exception: bool) -> &'
     }
 }
 
-pub(crate) fn generate_function_dart_return_type(
-    func_mode: &IrFuncMode,
-    raw_inner: &str,
-    return_stream: &Option<ReturnStreamInfo>,
-    context: ApiDartGeneratorContext,
-) -> String {
-    let inner = return_stream
-        .as_ref()
-        .map(|info| {
-            format!(
-                "Stream<{}>",
-                ApiDartGenerator::new(info.ty.inner.clone(), context).dart_api_type()
-            )
-        })
-        .unwrap_or(raw_inner.to_owned());
-
-    match func_mode {
-        IrFuncMode::Normal => format!("Future<{inner}>"),
-        IrFuncMode::Sync => inner.to_string(),
-    }
-}
-
 pub(crate) fn generate_imports_which_types_and_funcs_use(
     current_file_namespace: &Namespace,
     seed_types: &Option<&Vec<&IrType>>,
