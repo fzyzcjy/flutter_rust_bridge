@@ -50,6 +50,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             }
         }
 
+        let attrs = parse_attrs_from_fn_arg(sig_input);
         let attributes = FrbAttributes::parse(attrs)?;
         let ty = auto_add_boxed(ty);
         Ok(FunctionPartialInfo {
@@ -134,5 +135,12 @@ pub(crate) fn split_ownership_from_ty_except_ref_mut(
         (ty_raw.to_owned(), None)
     } else {
         (ty, Some(ownership_mode))
+    }
+}
+
+fn parse_attrs_from_fn_arg(fn_arg: &FnArg) -> &[Attribute] {
+    match fn_arg {
+        FnArg::Typed(inner) => inner.attrs,
+        FnArg::Receiver(inner) => inner.attrs,
     }
 }
