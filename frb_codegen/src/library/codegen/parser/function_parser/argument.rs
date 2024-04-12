@@ -32,7 +32,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             }
         };
 
-        let ty_syn_without_ownership = TODO;
+        let (ty_syn_without_ownership, ownership_mode_raw) = TODO;
 
         let ty_without_ownership =
             (self.type_parser).parse_type(ty_syn_without_ownership, context)?;
@@ -59,7 +59,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         }
 
         let attributes = FrbAttributes::parse(attrs)?;
-        let ty = auto_add_boxed(ty_raw);
+        let ty = auto_add_boxed(ty);
         Ok(FunctionPartialInfo {
             inputs: vec![IrFuncInput {
                 inner: IrField {
