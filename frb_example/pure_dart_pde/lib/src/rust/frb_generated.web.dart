@@ -574,51 +574,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   BoxHelloTraitTwinNormal
-      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinNormal(
-          dynamic raw);
-
-  @protected
-  BoxHelloTraitTwinRustAsync
-      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsync(
-          dynamic raw);
-
-  @protected
-  BoxHelloTraitTwinSync
-      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync(
-          dynamic raw);
-
-  @protected
-  DroppableTwinNormal
-      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
-          dynamic raw);
-
-  @protected
-  DroppableTwinRustAsync
-      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsync(
-          dynamic raw);
-
-  @protected
-  DroppableTwinSync
-      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSync(
-          dynamic raw);
-
-  @protected
-  NonCloneSimpleTwinNormal
-      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
-          dynamic raw);
-
-  @protected
-  NonCloneSimpleTwinRustAsync
-      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync(
-          dynamic raw);
-
-  @protected
-  NonCloneSimpleTwinSync
-      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
-          dynamic raw);
-
-  @protected
-  BoxHelloTraitTwinNormal
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinNormal(
           dynamic raw);
 
@@ -4322,51 +4277,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithImplBlockInMultiFile
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
-          SseDeserializer deserializer);
-
-  @protected
-  BoxHelloTraitTwinNormal
-      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinNormal(
-          SseDeserializer deserializer);
-
-  @protected
-  BoxHelloTraitTwinRustAsync
-      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsync(
-          SseDeserializer deserializer);
-
-  @protected
-  BoxHelloTraitTwinSync
-      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync(
-          SseDeserializer deserializer);
-
-  @protected
-  DroppableTwinNormal
-      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
-          SseDeserializer deserializer);
-
-  @protected
-  DroppableTwinRustAsync
-      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsync(
-          SseDeserializer deserializer);
-
-  @protected
-  DroppableTwinSync
-      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSync(
-          SseDeserializer deserializer);
-
-  @protected
-  NonCloneSimpleTwinNormal
-      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
-          SseDeserializer deserializer);
-
-  @protected
-  NonCloneSimpleTwinRustAsync
-      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync(
-          SseDeserializer deserializer);
-
-  @protected
-  NonCloneSimpleTwinSync
-      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
           SseDeserializer deserializer);
 
   @protected
@@ -8480,51 +8390,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
           StructWithImplBlockInMultiFile self, SseSerializer serializer);
-
-  @protected
-  void
-      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinNormal(
-          BoxHelloTraitTwinNormal self, SseSerializer serializer);
-
-  @protected
-  void
-      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsync(
-          BoxHelloTraitTwinRustAsync self, SseSerializer serializer);
-
-  @protected
-  void
-      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync(
-          BoxHelloTraitTwinSync self, SseSerializer serializer);
-
-  @protected
-  void
-      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinNormal(
-          DroppableTwinNormal self, SseSerializer serializer);
-
-  @protected
-  void
-      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinRustAsync(
-          DroppableTwinRustAsync self, SseSerializer serializer);
-
-  @protected
-  void
-      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockDroppableTwinSync(
-          DroppableTwinSync self, SseSerializer serializer);
-
-  @protected
-  void
-      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
-          NonCloneSimpleTwinNormal self, SseSerializer serializer);
-
-  @protected
-  void
-      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync(
-          NonCloneSimpleTwinRustAsync self, SseSerializer serializer);
-
-  @protected
-  void
-      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
-          NonCloneSimpleTwinSync self, SseSerializer serializer);
 
   @protected
   void
