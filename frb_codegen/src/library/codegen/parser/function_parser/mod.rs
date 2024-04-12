@@ -104,7 +104,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         let codec_mode_pack = compute_codec_mode_pack(&attributes, force_codec_mode_pack);
         let mode = compute_func_mode(&attributes, &info);
-        let dart_async = attributes.dart_async().then_some(true);
+        let stream_dart_await = attributes.stream_dart_await();
 
         if info.ignore_func {
             return Ok(None);
@@ -118,7 +118,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             error_output: info.error_output,
             owner,
             mode,
-            dart_async,
+            stream_dart_await,
             rust_async: sig.asyncness.is_some(),
             initializer: attributes.init(),
             getter: attributes.getter(),
