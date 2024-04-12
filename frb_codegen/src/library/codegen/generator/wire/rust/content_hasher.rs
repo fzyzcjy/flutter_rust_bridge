@@ -8,7 +8,8 @@ pub(crate) fn text_inject_content_hash(
     text: &Acc<Option<String>>,
     content_hash: i32,
 ) -> Acc<Option<String>> {
-    text.map(|x, _| x.map(|x| x.replace(CONTENT_HASH_PLACEHOLDER, &content_hash.to_string())))
+    text.clone()
+        .map(|x, _| x.map(|x| x.replace(CONTENT_HASH_PLACEHOLDER, &content_hash.to_string())))
 }
 
 pub(crate) fn compute_content_hash(text: &Acc<Option<String>>) -> i32 {
