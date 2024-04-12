@@ -121,7 +121,7 @@ fn generate_item(
         })
         .unwrap_or_default();
 
-    sanity_check_class_name_duplicates(&classes);
+    sanity_check_class_name_duplicates(&classes)?;
 
     let unused_types = (context.ir_pack.unused_types.iter())
         .filter(|t| &t.namespace == namespace)

@@ -1,7 +1,10 @@
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
+use anyhow::ensure;
 use itertools::Itertools;
 
-pub(crate) fn sanity_check_class_name_duplicates(classes: &[ApiDartGeneratedClass]) {
+pub(crate) fn sanity_check_class_name_duplicates(
+    classes: &[ApiDartGeneratedClass],
+) -> anyhow::Result<()> {
     let duplicate_class_names = classes
         .iter()
         .map(|c| c.class_name.clone())
@@ -16,4 +19,6 @@ pub(crate) fn sanity_check_class_name_duplicates(classes: &[ApiDartGeneratedClas
         duplicate_class_names,
     );
     // frb-coverage:ignore-end
+
+    Ok(())
 }
