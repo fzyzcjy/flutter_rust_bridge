@@ -15,6 +15,7 @@ use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::Wi
 use itertools::Itertools;
 use serde::Serialize;
 use std::collections::HashSet;
+use crate::codegen::generator::wire::rust::content_hasher::CONTENT_HASH_PLACEHOLDER;
 
 pub(crate) mod ty;
 pub(crate) mod wire_func;
@@ -153,6 +154,7 @@ fn generate_boilerplate(
                     default_rust_auto_opaque = RustAutoOpaque{default_rust_opaque_codec},
                 );
                 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "{version}";
+                pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: &str = "{CONTENT_HASH_PLACEHOLDER}";
             "#,
                 version = env!("CARGO_PKG_VERSION"),
             )

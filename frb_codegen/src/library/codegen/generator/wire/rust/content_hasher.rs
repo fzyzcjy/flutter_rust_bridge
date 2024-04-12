@@ -1,0 +1,1 @@
+pub(crate) const CONTENT_HASH_PLACEHOLDER: &str = "__PLACEHOLDER_FRB_CONTENT_HASH__";
