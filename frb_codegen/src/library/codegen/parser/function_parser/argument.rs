@@ -33,9 +33,9 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     ) -> anyhow::Result<FunctionPartialInfo> {
         let ty_syn = pat_type.ty.as_ref();
         let ty_syn_without_ownership = TODO;
-        let ty = self.parse_fn_arg_common(&ty_syn_without_ownership)?;
-        let name = parse_name_from_pat_type(pat_type)?;
         let ownership_mode = TODO;
+        let ty = self.parse_fn_arg_common(&ty_syn_without_ownership, ownership_mode)?;
+        let name = parse_name_from_pat_type(pat_type)?;
         partial_info_for_normal_type_raw(ty_raw, &pat_type.attrs, name, ownership_mode)
     }
 
@@ -49,7 +49,10 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             .context("`self` must happen within methods")?;
 
         let ownership_mode = parse_receiver_ownership_mode(receiver);
-        let ty = self.parse_fn_arg_common(&parse_str::<Type>(&method.owner_ty_name().name)?)?;
+        let ty = self.parse_fn_arg_common(
+            &parse_str::<Type>(&method.owner_ty_name().name)?,
+            ownership_mode,
+        )?;
         let name = "that".to_owned();
 
         if let IrType::StructRef(s) = &ty {
