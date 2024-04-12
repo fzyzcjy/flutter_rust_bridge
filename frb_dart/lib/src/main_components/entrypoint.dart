@@ -50,6 +50,14 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl,
       );
     }
 
+    final rustSideRustContentHash = TODO;
+    if (rustContentHash != rustSideRustContentHash) {
+      throw StateError(
+        "Content hash on Dart side ($rustContentHash) is different from Rust side ($rustSideRustContentHash), indicating out-of-sync code. "
+        "This may happen when, for example, the Dart code is hot-restarted/hot-reloaded without recompiling Rust code.",
+      );
+    }
+
     externalLibrary ??= await _loadDefaultExternalLibrary();
     handler ??= BaseHandler();
     final generalizedFrbRustBinding =
@@ -98,6 +106,10 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl,
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @protected
   String get codegenVersion;
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  @protected
+  int get rustContentHash;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @protected
