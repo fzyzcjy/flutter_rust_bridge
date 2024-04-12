@@ -60,7 +60,7 @@ pub(crate) fn generate_api_impl_normal_function(
         format!(
             "
             final {return_stream_name} = {return_stream_type}();
-            {maybe_await}{call_handler};
+            {wrapped_call_handler};
             return {return_stream_name}.stream;
             ",
             return_stream_name = return_stream.field.name.dart_style(),
@@ -69,11 +69,6 @@ pub(crate) fn generate_api_impl_normal_function(
                 context.as_api_dart_context()
             )
             .dart_api_type(),
-            maybe_await = if func.mode != IrFuncMode::Sync && func.dart_async.unwrap_or(true) {
-                "await "
-            } else {
-                ""
-            },
         )
     } else {
         format!("return {call_handler};")
