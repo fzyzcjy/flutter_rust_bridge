@@ -27,7 +27,7 @@ impl EventTwinNormal {
     }
 }
 
-#[frb(dart_async)]
+#[frb(stream_dart_await)]
 pub fn register_event_listener_twin_normal(listener: StreamSink<EventTwinNormal>) -> Result<()> {
     match EVENTS.lock() {
         Ok(mut guard) => {
