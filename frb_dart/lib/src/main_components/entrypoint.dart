@@ -50,7 +50,8 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl,
       );
     }
 
-    final rustSideRustContentHash = TODO;
+    final rustSideRustContentHash =
+        generalizedFrbRustBinding.getRustContentHash();
     if (rustContentHash != rustSideRustContentHash) {
       throw StateError(
         "Content hash on Dart side ($rustContentHash) is different from Rust side ($rustSideRustContentHash), indicating out-of-sync code. "
