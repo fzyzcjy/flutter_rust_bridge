@@ -16,6 +16,7 @@ impl<'a> StructRefApiDartGenerator<'a> {
         methods: &[String],
         constructor_postfix: &str,
         extra_body: &str,
+        class_name: &str,
     ) -> String {
         let private_constructor = if !methods.is_empty() {
             format!("const {}._();", self.ir.ident.0.name)
@@ -25,14 +26,13 @@ impl<'a> StructRefApiDartGenerator<'a> {
 
         let constructor_params =
             self.generate_mode_freezed_constructor_params(src, !methods.is_empty());
-        let name_str = &self.ir.ident.0.name;
         let implements_exception = generate_dart_maybe_implements_exception(self.ir.is_exception);
         let methods_str = methods.join("\n");
 
         format!(
-            "{comments}{metadata}class {name_str} with _${name_str} {implements_exception} {{
+            "{comments}{metadata}class {class_name} with _${class_name} {implements_exception} {{
                 {private_constructor}
-                const factory {name_str}{constructor_postfix}({{{constructor_params}}}) = _{name_str};
+                const factory {class_name}{constructor_postfix}({{{constructor_params}}}) = _{class_name};
                 {methods_str}
                 {extra_body}
             }}",

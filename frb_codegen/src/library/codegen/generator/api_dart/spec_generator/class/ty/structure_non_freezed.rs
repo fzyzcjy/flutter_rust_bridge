@@ -19,12 +19,12 @@ impl<'a> StructRefApiDartGenerator<'a> {
         methods: &[String],
         constructor_postfix: &str,
         extra_body: &str,
+        class_name: &str,
     ) -> String {
         let field_declarations = self.generate_field_declarations(src);
         let constructor_params = self.generate_mode_non_freezed_constructor_params(src);
 
         let const_capable = src.fields.iter().all(|field| field.is_final);
-        let name_str = &self.ir.ident.0.name;
         let maybe_const = if const_capable { "const " } else { "" };
         let implements_exception = generate_dart_maybe_implements_exception(self.ir.is_exception);
         let methods_str = methods.join("\n");
@@ -35,16 +35,16 @@ impl<'a> StructRefApiDartGenerator<'a> {
             "".to_owned()
         };
         let equals = if src.generate_eq {
-            generate_equals(&src.fields, name_str)
+            generate_equals(&src.fields, class_name)
         } else {
             "".to_owned()
         };
 
         format!(
-            "{comments}{metadata}class {name_str} {implements_exception} {{
+            "{comments}{metadata}class {class_name} {implements_exception} {{
                 {field_declarations}
 
-                {maybe_const}{name_str}{constructor_postfix}({constructor_params});
+                {maybe_const}{class_name}{constructor_postfix}({constructor_params});
 
                 {methods_str}
                 {extra_body}

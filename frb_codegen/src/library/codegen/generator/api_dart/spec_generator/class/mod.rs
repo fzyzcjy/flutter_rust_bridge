@@ -7,7 +7,7 @@ pub(crate) mod method;
 pub(super) mod misc;
 pub(crate) mod ty;
 
-#[derive(Debug, Serialize, Default)]
+#[derive(Debug, Serialize)]
 pub(crate) struct ApiDartGeneratedClass {
     pub(crate) header: DartBasicHeaderCode,
     pub(crate) namespace: Namespace,
