@@ -22,4 +22,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
     }
     expect(cnt, 10);
   });
+
+  test('streamSinkDartAsyncTwinSse', () async {
+    final stream = await streamSinkDartAsyncTwinSse();
+    expect(await stream.toList(), [100]);
+  });
 }

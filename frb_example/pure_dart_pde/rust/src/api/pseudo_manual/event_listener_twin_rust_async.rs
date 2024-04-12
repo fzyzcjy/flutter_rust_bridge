@@ -31,6 +31,7 @@ impl EventTwinRustAsync {
     }
 }
 
+#[frb(dart_async)]
 pub async fn register_event_listener_twin_rust_async(
     listener: StreamSink<EventTwinRustAsync>,
 ) -> Result<()> {

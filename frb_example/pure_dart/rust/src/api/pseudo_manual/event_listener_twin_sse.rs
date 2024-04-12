@@ -31,6 +31,7 @@ impl EventTwinSse {
     }
 }
 
+#[frb(dart_async)]
 #[flutter_rust_bridge::frb(serialize)]
 pub fn register_event_listener_twin_sse(
     listener: StreamSink<EventTwinSse, flutter_rust_bridge::SseCodec>,

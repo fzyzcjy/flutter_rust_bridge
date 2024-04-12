@@ -7,7 +7,7 @@
 use crate::frb_generated::StreamSink;
 use crate::frb_generated::FLUTTER_RUST_BRIDGE_HANDLER;
 use flutter_rust_bridge::for_generated::BaseThreadPool;
-use flutter_rust_bridge::transfer;
+use flutter_rust_bridge::{frb, transfer};
 use log::info;
 use std::sync::atomic::{AtomicI32, Ordering};
 use std::sync::Arc;
@@ -44,4 +44,10 @@ pub fn func_stream_realistic_twin_sse(
         sink.add(msg).unwrap();
         sleep(Duration::from_millis(50));
     }
+}
+
+#[frb(dart_async)]
+#[flutter_rust_bridge::frb(serialize)]
+pub fn stream_sink_dart_async_twin_sse(sink: StreamSink<i32, flutter_rust_bridge::SseCodec>) {
+    sink.add(100).unwrap()
 }
