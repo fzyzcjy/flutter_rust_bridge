@@ -26,7 +26,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('call funcStreamReturnErrorTwinRustAsyncSse', () async {
     await expectLater(
       () async {
-        await for (final _ in funcStreamReturnErrorTwinRustAsyncSse()) {}
+        await for (final _ in await funcStreamReturnErrorTwinRustAsyncSse()) {}
       },
       throwsA(isA<AnyhowException>()
           .having((x) => x.message, 'message', startsWith('deliberate error'))),
@@ -37,7 +37,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('call funcStreamReturnPanicTwinRustAsyncSse', skip: kIsWeb, () async {
     await expectRustPanic(
       () async {
-        await for (final _ in funcStreamReturnPanicTwinRustAsyncSse()) {}
+        await for (final _ in await funcStreamReturnPanicTwinRustAsyncSse()) {}
       },
       'TwinRustAsyncSse',
       messageOnNative: 'deliberate panic',

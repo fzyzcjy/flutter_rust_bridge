@@ -7,10 +7,10 @@ import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'stream_twin_rust_async.dart';
 
-Stream<String> funcStreamReturnErrorTwinRustAsyncSse({dynamic hint}) =>
+Future<Stream<String>> funcStreamReturnErrorTwinRustAsyncSse({dynamic hint}) =>
     RustLib.instance.api.funcStreamReturnErrorTwinRustAsyncSse(hint: hint);
 
-Stream<String> funcStreamReturnPanicTwinRustAsyncSse({dynamic hint}) =>
+Future<Stream<String>> funcStreamReturnPanicTwinRustAsyncSse({dynamic hint}) =>
     RustLib.instance.api.funcStreamReturnPanicTwinRustAsyncSse(hint: hint);
 
 Stream<int> funcStreamSinkArgPositionTwinRustAsyncSse(

@@ -527,7 +527,7 @@ abstract class RustLibApi extends BaseApi {
   Future<int> someStructTwinNormalStaticReturnOkCustomErrorTwinNormal(
       {dynamic hint});
 
-  Stream<String> streamSinkThrowAnyhowTwinNormal({dynamic hint});
+  Future<Stream<String>> streamSinkThrowAnyhowTwinNormal({dynamic hint});
 
   Future<void> throwAnyhowTwinNormal({dynamic hint});
 
@@ -1982,7 +1982,7 @@ abstract class RustLibApi extends BaseApi {
   Future<int> someStructTwinRustAsyncStaticReturnOkCustomErrorTwinRustAsync(
       {dynamic hint});
 
-  Stream<String> streamSinkThrowAnyhowTwinRustAsync({dynamic hint});
+  Future<Stream<String>> streamSinkThrowAnyhowTwinRustAsync({dynamic hint});
 
   Future<void> throwAnyhowTwinRustAsync({dynamic hint});
 
@@ -2049,7 +2049,7 @@ abstract class RustLibApi extends BaseApi {
 
   int someStructTwinSyncStaticReturnOkCustomErrorTwinSync({dynamic hint});
 
-  Stream<String> streamSinkThrowAnyhowTwinSync({dynamic hint});
+  Future<Stream<String>> streamSinkThrowAnyhowTwinSync({dynamic hint});
 
   void throwAnyhowTwinSync({dynamic hint});
 
@@ -2969,9 +2969,9 @@ abstract class RustLibApi extends BaseApi {
 
   int simpleAdderTwinSync({required int a, required int b, dynamic hint});
 
-  Stream<String> funcStreamReturnErrorTwinRustAsync({dynamic hint});
+  Future<Stream<String>> funcStreamReturnErrorTwinRustAsync({dynamic hint});
 
-  Stream<String> funcStreamReturnPanicTwinRustAsync({dynamic hint});
+  Future<Stream<String>> funcStreamReturnPanicTwinRustAsync({dynamic hint});
 
   Stream<int> funcStreamSinkArgPositionTwinRustAsync(
       {required int a, required int b, dynamic hint});
@@ -3296,9 +3296,9 @@ abstract class RustLibApi extends BaseApi {
   Future<int> simpleAdderTwinNormal(
       {required int a, required int b, dynamic hint});
 
-  Stream<String> funcStreamReturnErrorTwinNormal({dynamic hint});
+  Future<Stream<String>> funcStreamReturnErrorTwinNormal({dynamic hint});
 
-  Stream<String> funcStreamReturnPanicTwinNormal({dynamic hint});
+  Future<Stream<String>> funcStreamReturnPanicTwinNormal({dynamic hint});
 
   Stream<int> funcStreamSinkArgPositionTwinNormal(
       {required int a, required int b, dynamic hint});
@@ -7158,9 +7158,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  Stream<String> streamSinkThrowAnyhowTwinNormal({dynamic hint}) {
+  Future<Stream<String>> streamSinkThrowAnyhowTwinNormal({dynamic hint}) async {
     final sink = RustStreamSink<String>();
-    unawaited(handler.executeNormal(NormalTask(
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_StreamSink_String_Sse(sink, serializer);
@@ -7175,7 +7175,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       argValues: [sink],
       apiImpl: this,
       hint: hint,
-    )));
+    ));
     return sink.stream;
   }
 
@@ -20698,9 +20698,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  Stream<String> streamSinkThrowAnyhowTwinRustAsync({dynamic hint}) {
+  Future<Stream<String>> streamSinkThrowAnyhowTwinRustAsync(
+      {dynamic hint}) async {
     final sink = RustStreamSink<String>();
-    unawaited(handler.executeNormal(NormalTask(
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_StreamSink_String_Sse(sink, serializer);
@@ -20715,7 +20716,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       argValues: [sink],
       apiImpl: this,
       hint: hint,
-    )));
+    ));
     return sink.stream;
   }
 
@@ -21438,7 +21439,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  Stream<String> streamSinkThrowAnyhowTwinSync({dynamic hint}) {
+  Future<Stream<String>> streamSinkThrowAnyhowTwinSync({dynamic hint}) {
     final sink = RustStreamSink<String>();
     handler.executeSync(SyncTask(
       callFfi: () {
@@ -29500,9 +29501,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Stream<String> funcStreamReturnErrorTwinRustAsync({dynamic hint}) {
+  Future<Stream<String>> funcStreamReturnErrorTwinRustAsync(
+      {dynamic hint}) async {
     final sink = RustStreamSink<String>();
-    unawaited(handler.executeNormal(NormalTask(
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_StreamSink_String_Sse(sink, serializer);
@@ -29517,7 +29519,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       argValues: [sink],
       apiImpl: this,
       hint: hint,
-    )));
+    ));
     return sink.stream;
   }
 
@@ -29528,9 +29530,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Stream<String> funcStreamReturnPanicTwinRustAsync({dynamic hint}) {
+  Future<Stream<String>> funcStreamReturnPanicTwinRustAsync(
+      {dynamic hint}) async {
     final sink = RustStreamSink<String>();
-    unawaited(handler.executeNormal(NormalTask(
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_StreamSink_String_Sse(sink, serializer);
@@ -29545,7 +29548,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       argValues: [sink],
       apiImpl: this,
       hint: hint,
-    )));
+    ));
     return sink.stream;
   }
 
@@ -32404,9 +32407,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Stream<String> funcStreamReturnErrorTwinNormal({dynamic hint}) {
+  Future<Stream<String>> funcStreamReturnErrorTwinNormal({dynamic hint}) async {
     final sink = RustStreamSink<String>();
-    unawaited(handler.executeNormal(NormalTask(
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_StreamSink_String_Sse(sink, serializer);
@@ -32421,7 +32424,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       argValues: [sink],
       apiImpl: this,
       hint: hint,
-    )));
+    ));
     return sink.stream;
   }
 
@@ -32432,9 +32435,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Stream<String> funcStreamReturnPanicTwinNormal({dynamic hint}) {
+  Future<Stream<String>> funcStreamReturnPanicTwinNormal({dynamic hint}) async {
     final sink = RustStreamSink<String>();
-    unawaited(handler.executeNormal(NormalTask(
+    await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_StreamSink_String_Sse(sink, serializer);
@@ -32449,7 +32452,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       argValues: [sink],
       apiImpl: this,
       hint: hint,
-    )));
+    ));
     return sink.stream;
   }
 
