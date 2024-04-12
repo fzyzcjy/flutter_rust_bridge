@@ -103,6 +103,16 @@ Future<void> main({bool skipRustLibInit = false}) async {
           'One');
     });
 
+    test('receiverBorrow', () async {
+      final obj = SimpleStructTwinSync(one: 'a');
+      expect(await obj.receiverBorrowTwinSync(), 'a');
+    });
+
+    test('receiverOwn', () async {
+      final obj = SimpleStructTwinSync(one: 'a');
+      expect(await obj.receiverOwnTwinSync(), 'a');
+    });
+
     test('argSelf', () async {
       final a = SimpleStructTwinSync(one: 'a');
       final b = SimpleStructTwinSync(one: 'b');

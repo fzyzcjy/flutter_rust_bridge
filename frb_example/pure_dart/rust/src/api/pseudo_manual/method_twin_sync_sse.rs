@@ -160,6 +160,18 @@ impl SimpleStructTwinSyncSse {
 
     #[flutter_rust_bridge::frb(serialize)]
     #[flutter_rust_bridge::frb(sync)]
+    pub fn receiver_borrow_twin_sync_sse(&self) -> String {
+        self.one.to_owned()
+    }
+
+    #[flutter_rust_bridge::frb(serialize)]
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn receiver_own_twin_sync_sse(self) -> String {
+        self.one.to_owned()
+    }
+
+    #[flutter_rust_bridge::frb(serialize)]
+    #[flutter_rust_bridge::frb(sync)]
     pub fn arg_self_twin_sync_sse(a: Self, b: Self) -> String {
         a.one + &b.one
     }

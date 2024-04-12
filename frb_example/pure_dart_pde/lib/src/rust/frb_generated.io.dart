@@ -34,6 +34,7 @@ import 'api/misc_type.dart';
 import 'api/newtype_pattern.dart';
 import 'api/optional.dart';
 import 'api/optional_primitive_misc.dart';
+import 'api/ownership.dart';
 import 'api/primitive_list_misc.dart';
 import 'api/primitive_misc.dart';
 import 'api/pseudo_manual/array_twin_rust_async.dart';
@@ -87,6 +88,8 @@ import 'api/pseudo_manual/optional_primitive_misc_twin_rust_async.dart';
 import 'api/pseudo_manual/optional_primitive_misc_twin_sync.dart';
 import 'api/pseudo_manual/optional_twin_rust_async.dart';
 import 'api/pseudo_manual/optional_twin_sync.dart';
+import 'api/pseudo_manual/ownership_twin_rust_async.dart';
+import 'api/pseudo_manual/ownership_twin_sync.dart';
 import 'api/pseudo_manual/primitive_list_misc_twin_rust_async.dart';
 import 'api/pseudo_manual/primitive_list_misc_twin_sync.dart';
 import 'api/pseudo_manual/primitive_misc_twin_rust_async.dart';
@@ -370,6 +373,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_StructWithImplBlockInMultiFilePtr => wire
           ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFilePtr;
+
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_StrPtr => wire
+      ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstrPtr;
 
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_I32Ptr =>
       wire._rust_arc_decrement_strong_count_RustOpaque_i32Ptr;
@@ -706,6 +712,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   StructWithImplBlockInMultiFile
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
           dynamic raw);
+
+  @protected
+  Str dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr(
+      dynamic raw);
 
   @protected
   String dco_decode_Backtrace(dynamic raw);
@@ -1168,6 +1178,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   StructWithImplBlockInMultiFile
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
           dynamic raw);
+
+  @protected
+  Str dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr(
+      dynamic raw);
 
   @protected
   I32 dco_decode_RustOpaque_i32(dynamic raw);
@@ -2024,6 +2038,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   SimpleEnumTwinSync dco_decode_box_autoadd_simple_enum_twin_sync(dynamic raw);
+
+  @protected
+  SimpleStructForBorrowTwinNormal
+      dco_decode_box_autoadd_simple_struct_for_borrow_twin_normal(dynamic raw);
+
+  @protected
+  SimpleStructForBorrowTwinRustAsync
+      dco_decode_box_autoadd_simple_struct_for_borrow_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  SimpleStructForBorrowTwinSync
+      dco_decode_box_autoadd_simple_struct_for_borrow_twin_sync(dynamic raw);
 
   @protected
   SimpleStructTwinNormal dco_decode_box_autoadd_simple_struct_twin_normal(
@@ -3803,6 +3830,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   SimpleEnumTwinSync dco_decode_simple_enum_twin_sync(dynamic raw);
 
   @protected
+  SimpleStructForBorrowTwinNormal
+      dco_decode_simple_struct_for_borrow_twin_normal(dynamic raw);
+
+  @protected
+  SimpleStructForBorrowTwinRustAsync
+      dco_decode_simple_struct_for_borrow_twin_rust_async(dynamic raw);
+
+  @protected
+  SimpleStructForBorrowTwinSync dco_decode_simple_struct_for_borrow_twin_sync(
+      dynamic raw);
+
+  @protected
   SimpleStructTwinNormal dco_decode_simple_struct_twin_normal(dynamic raw);
 
   @protected
@@ -4427,6 +4466,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  Str sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr(
+      SseDeserializer deserializer);
+
+  @protected
   String sse_decode_Backtrace(SseDeserializer deserializer);
 
   @protected
@@ -4868,6 +4911,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   StructWithImplBlockInMultiFile
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
           SseDeserializer deserializer);
+
+  @protected
+  Str sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr(
+      SseDeserializer deserializer);
 
   @protected
   I32 sse_decode_RustOpaque_i32(SseDeserializer deserializer);
@@ -5845,6 +5892,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   SimpleEnumTwinSync sse_decode_box_autoadd_simple_enum_twin_sync(
       SseDeserializer deserializer);
+
+  @protected
+  SimpleStructForBorrowTwinNormal
+      sse_decode_box_autoadd_simple_struct_for_borrow_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  SimpleStructForBorrowTwinRustAsync
+      sse_decode_box_autoadd_simple_struct_for_borrow_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  SimpleStructForBorrowTwinSync
+      sse_decode_box_autoadd_simple_struct_for_borrow_twin_sync(
+          SseDeserializer deserializer);
 
   @protected
   SimpleStructTwinNormal sse_decode_box_autoadd_simple_struct_twin_normal(
@@ -7867,6 +7929,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  SimpleStructForBorrowTwinNormal
+      sse_decode_simple_struct_for_borrow_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  SimpleStructForBorrowTwinRustAsync
+      sse_decode_simple_struct_for_borrow_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  SimpleStructForBorrowTwinSync sse_decode_simple_struct_for_borrow_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
   SimpleStructTwinNormal sse_decode_simple_struct_twin_normal(
       SseDeserializer deserializer);
 
@@ -8547,6 +8623,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           StructWithImplBlockInMultiFile self, SseSerializer serializer);
 
   @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr(
+          Str self, SseSerializer serializer);
+
+  @protected
   void sse_encode_Backtrace(String self, SseSerializer serializer);
 
   @protected
@@ -9035,6 +9116,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
           StructWithImplBlockInMultiFile self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr(
+          Str self, SseSerializer serializer);
 
   @protected
   void sse_encode_RustOpaque_i32(I32 self, SseSerializer serializer);
@@ -9971,6 +10057,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_box_autoadd_simple_enum_twin_sync(
       SimpleEnumTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_simple_struct_for_borrow_twin_normal(
+      SimpleStructForBorrowTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_simple_struct_for_borrow_twin_rust_async(
+      SimpleStructForBorrowTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_simple_struct_for_borrow_twin_sync(
+      SimpleStructForBorrowTwinSync self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_simple_struct_twin_normal(
@@ -11932,6 +12030,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_simple_enum_twin_sync(
       SimpleEnumTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_simple_struct_for_borrow_twin_normal(
+      SimpleStructForBorrowTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_simple_struct_for_borrow_twin_rust_async(
+      SimpleStructForBorrowTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_simple_struct_for_borrow_twin_sync(
+      SimpleStructForBorrowTwinSync self, SseSerializer serializer);
 
   @protected
   void sse_encode_simple_struct_twin_normal(
@@ -14093,6 +14203,38 @@ class RustLibWire implements BaseWire {
           'frbgen_frb_example_pure_dart_pde_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFilePtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstrPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_pde_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr');
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr =
+      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstrPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstrPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_pde_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr');
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr =
+      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstrPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void rust_arc_increment_strong_count_RustOpaque_i32(

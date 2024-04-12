@@ -107,6 +107,16 @@ Future<void> main({bool skipRustLibInit = false}) async {
           'One');
     });
 
+    test('receiverBorrow', () async {
+      final obj = SimpleStructTwinRustAsyncSse(one: 'a');
+      expect(await obj.receiverBorrowTwinRustAsyncSse(), 'a');
+    });
+
+    test('receiverOwn', () async {
+      final obj = SimpleStructTwinRustAsyncSse(one: 'a');
+      expect(await obj.receiverOwnTwinRustAsyncSse(), 'a');
+    });
+
     test('argSelf', () async {
       final a = SimpleStructTwinRustAsyncSse(one: 'a');
       final b = SimpleStructTwinRustAsyncSse(one: 'b');

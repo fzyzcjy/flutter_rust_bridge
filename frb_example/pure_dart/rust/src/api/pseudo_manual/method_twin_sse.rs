@@ -146,6 +146,16 @@ impl SimpleStructTwinSse {
     }
 
     #[flutter_rust_bridge::frb(serialize)]
+    pub fn receiver_borrow_twin_sse(&self) -> String {
+        self.one.to_owned()
+    }
+
+    #[flutter_rust_bridge::frb(serialize)]
+    pub fn receiver_own_twin_sse(self) -> String {
+        self.one.to_owned()
+    }
+
+    #[flutter_rust_bridge::frb(serialize)]
     pub fn arg_self_twin_sse(a: Self, b: Self) -> String {
         a.one + &b.one
     }
