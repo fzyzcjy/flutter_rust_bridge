@@ -11,6 +11,7 @@ pub struct IrField {
     pub is_final: bool,
     pub comments: Vec<IrComment>,
     pub default: Option<IrDefaultValue>,
+    pub ownership_mode: OwnershipMode,
     pub settings: IrFieldSettings,
 }
 
