@@ -137,8 +137,8 @@ fn generate_rust2dart_codec_object(func: &IrFunc) -> String {
     let codec_name_pascal = codec_mode.delegate_or_self().to_string();
     let codec_name_snake = codec_name_pascal.to_case(Case::Snake);
 
-    let parse_success_data = format!("{codec_name_snake}_decode_{}", func.output.safe_ident());
-    let parse_error_data = if let Some(error_output) = &func.error_output {
+    let parse_success_data = format!("{codec_name_snake}_decode_{}", func.output.normal.safe_ident());
+    let parse_error_data = if let Some(error_output) = &func.output.error {
         format!("{codec_name_snake}_decode_{}", error_output.safe_ident())
     } else {
         "null".to_string()
