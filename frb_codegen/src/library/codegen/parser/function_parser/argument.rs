@@ -32,7 +32,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             }
         };
 
-        let (ty_syn_without_ownership, ownership_mode_raw) = split_ownership_from_ty(ty_syn_raw);
+        let (ty_syn_without_ownership, ownership_mode_raw) =
+            split_ownership_from_ty_except_ref_mut(ty_syn_raw);
 
         let ty_without_ownership =
             (self.type_parser).parse_type(ty_syn_without_ownership, context)?;
@@ -112,5 +113,14 @@ fn parse_receiver_ownership_mode(receiver: &Receiver) -> OwnershipMode {
         }
     } else {
         OwnershipMode::Owned
+    }
+}
+
+pub(crate) fn split_ownership_from_ty_except_ref_mut(ty_raw: &Type) -> (Type, OwnershipMode) {
+    let (ty, ownership_mode) = split_ownership_from_ty(ty_raw);
+    if ownership_mode == OwnershipMode::RefMut {
+        (ty_raw.to_owned(), TODO)
+    } else {
+        (ty, ownership_mode)
     }
 }
