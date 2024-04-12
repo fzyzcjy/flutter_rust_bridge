@@ -16,7 +16,7 @@ impl<'a> EnumRefApiDartGenerator<'a> {
             .collect_vec()
             .join("\n");
 
-        let name = self.ir.ident.0.name;
+        let name = &self.ir.ident.0.name;
 
         Some(ApiDartGeneratedClass {
             namespace: src.name.namespace.clone(),
