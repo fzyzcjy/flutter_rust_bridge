@@ -8,6 +8,7 @@ use crate::codegen::ir::ty::IrType::Boxed;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::function_parser::{FunctionParser, FunctionPartialInfo};
 use crate::codegen::parser::type_parser::misc::parse_comments;
+use crate::codegen::parser::type_parser::rust_auto_opaque::parse_and_remove_ownership;
 use crate::codegen::parser::type_parser::TypeParserParsingContext;
 use crate::if_then_some;
 use anyhow::{bail, ensure, Context};
@@ -31,8 +32,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         context: &TypeParserParsingContext,
         pat_type: &PatType,
     ) -> anyhow::Result<FunctionPartialInfo> {
-        let (ty, ownership_mode) =
-            self.parse_fn_arg_common(&remove_ownership(pat_type.ty.as_ref()), TODO)?;
+        let (ty_raw, ownership_mode_raw) = parse_and_remove_ownership(pat_type.ty.as_ref());
+        let (ty, ownership_mode) = self.parse_fn_arg_common(&ty_raw, ownership_mode_raw)?;
         let name = parse_name_from_pat_type(pat_type)?;
         partial_info_for_normal_type_raw(ty_raw, &pat_type.attrs, name, ownership_mode)
     }

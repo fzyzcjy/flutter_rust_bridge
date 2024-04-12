@@ -92,7 +92,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
 pub(super) type RustAutoOpaqueParserInfo = GeneralizedRustOpaqueParserInfo;
 
-fn parse_and_remove_ownership(ty: &Type) -> (Type, OwnershipMode) {
+pub(crate) fn parse_and_remove_ownership(ty: &Type) -> (Type, OwnershipMode) {
     match ty {
         Type::Reference(ty) => (
             (*ty.elem).to_owned(),
