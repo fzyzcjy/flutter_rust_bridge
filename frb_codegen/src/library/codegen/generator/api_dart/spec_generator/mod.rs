@@ -27,6 +27,7 @@ mod dump;
 pub(crate) mod function;
 pub(crate) mod info;
 pub(crate) mod misc;
+pub(crate) mod sanity_checker;
 
 #[derive(Serialize)]
 pub(crate) struct ApiDartOutputSpec {
@@ -118,6 +119,8 @@ fn generate_item(
                 .collect_vec()
         })
         .unwrap_or_default();
+
+    sanity_check_class_name_duplicates();
 
     let unused_types = (context.ir_pack.unused_types.iter())
         .filter(|t| &t.namespace == namespace)
