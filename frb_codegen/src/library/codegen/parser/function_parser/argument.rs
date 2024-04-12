@@ -21,7 +21,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         owner: &IrFuncOwnerInfo,
         context: &TypeParserParsingContext,
     ) -> anyhow::Result<FunctionPartialInfo> {
-        let (ty_syn, name) = match sig_input {
+        let (ty_syn_raw, name) = match sig_input {
             FnArg::Typed(ref pat_type) => {
                 (*pat_type.ty.clone(), parse_name_from_pat_type(pat_type)?)
             }
@@ -41,11 +41,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             IrType::RustAutoOpaque(ty_raw) => (
                 self.type_parser.transform_rust_auto_opaque(
                     &ty_raw,
-                    |raw| match ownership_mode_raw {
-                        OwnershipMode::Owned => raw.to_owned(),
-                        OwnershipMode::RefMut => format!("&mut {raw}"),
-                        OwnershipMode::Ref => format!("&{raw}"),
-                    },
+                    |raw| format!("{}{raw}", ownership_mode_raw.prefix()),
                     context,
                 )?,
                 None,
