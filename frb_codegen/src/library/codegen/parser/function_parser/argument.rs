@@ -49,21 +49,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             _ => (ty_without_ownership, Some(ownership_mode_raw)),
         };
 
-        partial_info_for_normal_type_raw(ty, &receiver.attrs, name, ownership_mode)
-    }
-
-    fn parse_fn_arg_receiver(
-        &mut self,
-        owner: &IrFuncOwnerInfo,
-        context: &TypeParserParsingContext,
-        receiver: &Receiver,
-    ) -> anyhow::Result<FunctionPartialInfo> {
-        let (ty, ownership_mode) = self.parse_fn_arg_common(
-            &parse_str::<Type>(&method.owner_ty_name().name)?,
-            parse_receiver_ownership_mode(receiver),
-            context,
-        )?;
-
         if let IrType::StructRef(s) = &ty {
             if s.get(self.type_parser).ignore {
                 return Ok(FunctionPartialInfo {
@@ -73,32 +58,23 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             }
         }
 
-        partial_info_for_normal_type_raw(ty, &receiver.attrs, name, ownership_mode)
+        let attributes = FrbAttributes::parse(attrs)?;
+        let ty = auto_add_boxed(ty_raw);
+        Ok(FunctionPartialInfo {
+            inputs: vec![IrFuncInput {
+                inner: IrField {
+                    name: IrIdent::new(name),
+                    ty,
+                    is_final: true,
+                    comments: parse_comments(attrs),
+                    default: attributes.default_value(),
+                    settings: IrFieldSettings::default(),
+                },
+                ownership_mode,
+            }],
+            ..Default::default()
+        })
     }
-}
-
-fn partial_info_for_normal_type_raw(
-    ty_raw: IrType,
-    attrs: &[Attribute],
-    name: String,
-    ownership_mode: Option<OwnershipMode>,
-) -> anyhow::Result<FunctionPartialInfo> {
-    let attributes = FrbAttributes::parse(attrs)?;
-    let ty = auto_add_boxed(ty_raw);
-    Ok(FunctionPartialInfo {
-        inputs: vec![IrFuncInput {
-            inner: IrField {
-                name: IrIdent::new(name),
-                ty,
-                is_final: true,
-                comments: parse_comments(attrs),
-                default: attributes.default_value(),
-                settings: IrFieldSettings::default(),
-            },
-            ownership_mode,
-        }],
-        ..Default::default()
-    })
 }
 
 fn auto_add_boxed(ty: IrType) -> IrType {
