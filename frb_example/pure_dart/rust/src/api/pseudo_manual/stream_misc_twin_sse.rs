@@ -46,7 +46,7 @@ pub fn func_stream_realistic_twin_sse(
     }
 }
 
-#[frb(dart_async)]
+#[frb(stream_dart_await)]
 #[flutter_rust_bridge::frb(serialize)]
 pub fn stream_sink_dart_async_twin_sse(sink: StreamSink<i32, flutter_rust_bridge::SseCodec>) {
     sink.add(100).unwrap()

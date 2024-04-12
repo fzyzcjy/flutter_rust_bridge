@@ -38,7 +38,7 @@ pub fn func_stream_realistic_twin_normal(sink: StreamSink<String>, arg: String) 
     }
 }
 
-#[frb(dart_async)]
+#[frb(stream_dart_await)]
 pub fn stream_sink_dart_async_twin_normal(sink: StreamSink<i32>) {
     sink.add(100).unwrap()
 }
