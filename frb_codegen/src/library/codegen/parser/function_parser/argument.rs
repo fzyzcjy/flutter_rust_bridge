@@ -75,16 +75,16 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         ty_without_ownership: IrType,
         ownership_mode: Option<OwnershipMode>,
     ) -> anyhow::Result<(IrType, Option<OwnershipMode>)> {
-        Ok(match ty_without_ownership {
-            IrType::RustAutoOpaque(ty_raw) => (
+        Ok(match (ty_without_ownership, ownership_mode) {
+            (IrType::RustAutoOpaque(ty_raw), ownership_mode) => (
                 self.type_parser.transform_rust_auto_opaque(
                     &ty_raw,
-                    |raw| format!("{}{raw}", ownership_mode.map(|x| x.prefix()).unwrap_or("")),
+                    |raw| format!("{}{raw}", ownership_mode.prefix()),
                     context,
                 )?,
                 None,
             ),
-            _ => (ty_without_ownership, ownership_mode),
+            others => others,
         })
     }
 }
