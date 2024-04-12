@@ -17,7 +17,7 @@ use itertools::Itertools;
 const BACKTRACE_IDENT: &str = "backtrace";
 
 impl<'a> EnumRefApiDartGenerator<'a> {
-    pub(crate) fn generate_mode_complex(&self, src: &IrEnum) -> Option<ApiDartGeneratedClass> {
+    pub(crate) fn generate_mode_complex(&self, src: &IrEnum, extra_body: &str) -> Option<ApiDartGeneratedClass> {
         let variants = src
             .variants()
             .iter()
@@ -33,10 +33,6 @@ impl<'a> EnumRefApiDartGenerator<'a> {
         let maybe_implements_exception =
             generate_dart_maybe_implements_exception(self.ir.is_exception);
 
-        let methods_str = generate_api_methods(&src.name, self.context).join("\n");
-        let extra_body =
-            generate_class_extra_body(self.ir_type(), &self.context.ir_pack.dart_code_of_type);
-
         Some(ApiDartGeneratedClass {
             namespace: src.name.namespace.clone(),
             code: format!(
@@ -46,7 +42,6 @@ impl<'a> EnumRefApiDartGenerator<'a> {
 
                     {variants}
 
-                    {methods_str}
                     {extra_body}
                 }}",
             ),

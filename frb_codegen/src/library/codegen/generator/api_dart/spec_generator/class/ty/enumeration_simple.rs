@@ -4,9 +4,11 @@ use crate::codegen::ir::ty::enumeration::{IrEnum, IrVariant};
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::utils::dart_keywords::make_string_keyword_safe;
 use itertools::Itertools;
+use crate::codegen::generator::api_dart::spec_generator::class::method::generate_api_methods;
+use crate::codegen::generator::api_dart::spec_generator::class::misc::generate_class_extra_body;
 
 impl<'a> EnumRefApiDartGenerator<'a> {
-    pub(crate) fn generate_mode_simple(&self, src: &IrEnum) -> Option<ApiDartGeneratedClass> {
+    pub(crate) fn generate_mode_simple(&self, src: &IrEnum, extra_body: &str) -> Option<ApiDartGeneratedClass> {
         let comments = generate_dart_comments(&src.comments);
 
         let variants = src
@@ -19,10 +21,11 @@ impl<'a> EnumRefApiDartGenerator<'a> {
         Some(ApiDartGeneratedClass {
             namespace: src.name.namespace.clone(),
             code: format!(
-                "{}enum {} {{
-                    {}
+                "{comments}enum {name} {{
+                    {variants};
+                    {extra_body}
                 }}",
-                comments, self.ir.ident.0.name, variants
+                name = self.ir.ident.0.name,
             ),
             needs_freezed: false,
             ..Default::default()
