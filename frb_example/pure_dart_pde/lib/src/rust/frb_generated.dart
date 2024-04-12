@@ -816,7 +816,7 @@ abstract class RustLibApi extends BaseApi {
 
   Future<int> borrowI32TwinNormal({required int arg, dynamic hint});
 
-  Future<String> borrowStrTwinNormal({required Str arg, dynamic hint});
+  Future<String> borrowStrTwinNormal({required String arg, dynamic hint});
 
   Future<String> borrowStringTwinNormal({required String arg, dynamic hint});
 
@@ -2565,7 +2565,7 @@ abstract class RustLibApi extends BaseApi {
 
   Future<int> borrowI32TwinRustAsync({required int arg, dynamic hint});
 
-  Future<String> borrowStrTwinRustAsync({required Str arg, dynamic hint});
+  Future<String> borrowStrTwinRustAsync({required String arg, dynamic hint});
 
   Future<String> borrowStringTwinRustAsync({required String arg, dynamic hint});
 
@@ -2574,7 +2574,7 @@ abstract class RustLibApi extends BaseApi {
 
   int borrowI32TwinSync({required int arg, dynamic hint});
 
-  String borrowStrTwinSync({required Str arg, dynamic hint});
+  String borrowStrTwinSync({required String arg, dynamic hint});
 
   String borrowStringTwinSync({required String arg, dynamic hint});
 
@@ -3947,12 +3947,6 @@ abstract class RustLibApi extends BaseApi {
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_StructWithImplBlockInMultiFilePtr;
-
-  RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_Str;
-
-  RustArcDecrementStrongCountFnType get rust_arc_decrement_strong_count_Str;
-
-  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_StrPtr;
 
   RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_I32;
 
@@ -9802,12 +9796,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<String> borrowStrTwinNormal({required Str arg, dynamic hint}) {
+  Future<String> borrowStrTwinNormal({required String arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr(
-            arg, serializer);
+        sse_encode_String(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 219, port: port_);
       },
@@ -26101,12 +26094,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<String> borrowStrTwinRustAsync({required Str arg, dynamic hint}) {
+  Future<String> borrowStrTwinRustAsync({required String arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr(
-            arg, serializer);
+        sse_encode_String(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 833, port: port_);
       },
@@ -26204,12 +26196,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  String borrowStrTwinSync({required Str arg, dynamic hint}) {
+  String borrowStrTwinSync({required String arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr(
-            arg, serializer);
+        sse_encode_String(arg, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 837)!;
       },
       codec: SseCodec(
@@ -34287,12 +34278,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get rust_arc_decrement_strong_count_StructWithImplBlockInMultiFile => wire
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile;
 
-  RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_Str => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr;
-
-  RustArcDecrementStrongCountFnType get rust_arc_decrement_strong_count_Str => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr;
-
   RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_I32 =>
       wire.rust_arc_increment_strong_count_RustOpaque_i32;
 
@@ -34839,13 +34824,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructWithImplBlockInMultiFile.dcoDecode(raw as List<dynamic>);
-  }
-
-  @protected
-  Str dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr(
-      dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return Str.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -35709,13 +35687,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructWithImplBlockInMultiFile.dcoDecode(raw as List<dynamic>);
-  }
-
-  @protected
-  Str dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr(
-      dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return Str.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -44295,14 +44266,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  Str sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr(
-      SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return Str.sseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
   String sse_decode_Backtrace(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_String(deserializer);
@@ -45171,14 +45134,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return StructWithImplBlockInMultiFile.sseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
-  Str sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr(
-      SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return Str.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -54260,14 +54215,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void
-      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr(
-          Str self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(self.sseEncode(move: false), serializer);
-  }
-
-  @protected
   void sse_encode_Backtrace(String self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     throw UnimplementedError('Unreachable ()');
@@ -55145,14 +55092,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
           StructWithImplBlockInMultiFile self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(self.sseEncode(move: null), serializer);
-  }
-
-  @protected
-  void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr(
-          Str self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }

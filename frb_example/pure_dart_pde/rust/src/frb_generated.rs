@@ -26,7 +26,6 @@ use crate::api::external_impl::*;
 use crate::api::method::*;
 use crate::api::misc_no_twin_example_a::*;
 use crate::api::misc_no_twin_example_b::*;
-use crate::api::ownership::*;
 use crate::api::pseudo_manual::dropping_twin_rust_async::*;
 use crate::api::pseudo_manual::dropping_twin_sync::*;
 use crate::api::pseudo_manual::method_twin_rust_async::*;
@@ -4941,7 +4940,7 @@ fn wire_simple_struct_twin_normal_receiver_own_twin_normal_impl(
                 transform_result_sse((move || {
                     Result::<_, ()>::Ok(
                         crate::api::method::SimpleStructTwinNormal::receiver_own_twin_normal(
-                            &api_that,
+                            api_that,
                         ),
                     )
                 })())
@@ -6841,7 +6840,7 @@ fn wire_borrow_i32_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
-                    Result::<_, ()>::Ok(crate::api::ownership::borrow_i32_twin_normal(api_arg))
+                    Result::<_, ()>::Ok(crate::api::ownership::borrow_i32_twin_normal(&api_arg))
                 })())
             }
         },
@@ -6869,13 +6868,10 @@ fn wire_borrow_str_twin_normal_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::rust_async::RwLock<str>,
-            >>::sse_decode(&mut deserializer);
+            let api_arg = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
-                    let api_arg = api_arg.rust_auto_opaque_decode_ref();
                     Result::<_, ()>::Ok(crate::api::ownership::borrow_str_twin_normal(&api_arg))
                 })())
             }
@@ -6908,7 +6904,7 @@ fn wire_borrow_string_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
-                    Result::<_, ()>::Ok(crate::api::ownership::borrow_string_twin_normal(api_arg))
+                    Result::<_, ()>::Ok(crate::api::ownership::borrow_string_twin_normal(&api_arg))
                 })())
             }
         },
@@ -6942,7 +6938,7 @@ fn wire_borrow_struct_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
-                    Result::<_, ()>::Ok(crate::api::ownership::borrow_struct_twin_normal(api_arg))
+                    Result::<_, ()>::Ok(crate::api::ownership::borrow_struct_twin_normal(&api_arg))
                 })())
             }
         },
@@ -15539,7 +15535,7 @@ fn wire_simple_struct_twin_rust_async_receiver_own_twin_rust_async_impl(
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <crate::api::pseudo_manual::method_twin_rust_async::SimpleStructTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_rust_async::SimpleStructTwinRustAsync::receiver_own_twin_rust_async(&api_that).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_rust_async::SimpleStructTwinRustAsync::receiver_own_twin_rust_async(api_that).await)
                     })().await)
                 } })
 }
@@ -15895,7 +15891,7 @@ fn wire_simple_struct_twin_sync_receiver_own_twin_sync_impl(
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <crate::api::pseudo_manual::method_twin_sync::SimpleStructTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse((move || {
-                     Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sync::SimpleStructTwinSync::receiver_own_twin_sync(&api_that))
+                     Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sync::SimpleStructTwinSync::receiver_own_twin_sync(api_that))
                 })()) })
 }
 fn wire_simple_struct_twin_sync_return_self_twin_sync_impl(
@@ -17959,7 +17955,7 @@ fn wire_borrow_i32_twin_rust_async_impl(
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::ownership_twin_rust_async::borrow_i32_twin_rust_async(api_arg).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::ownership_twin_rust_async::borrow_i32_twin_rust_async(&api_arg).await)
                     })().await)
                 } })
 }
@@ -17972,10 +17968,9 @@ fn wire_borrow_str_twin_rust_async_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "borrow_str_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<str>>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+            let api_arg = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                        let api_arg = api_arg.rust_auto_opaque_decode_ref();
- Result::<_,()>::Ok(crate::api::pseudo_manual::ownership_twin_rust_async::borrow_str_twin_rust_async(&api_arg).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::ownership_twin_rust_async::borrow_str_twin_rust_async(&api_arg).await)
                     })().await)
                 } })
 }
@@ -17990,7 +17985,7 @@ fn wire_borrow_string_twin_rust_async_impl(
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::ownership_twin_rust_async::borrow_string_twin_rust_async(api_arg).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::ownership_twin_rust_async::borrow_string_twin_rust_async(&api_arg).await)
                     })().await)
                 } })
 }
@@ -18005,7 +18000,7 @@ fn wire_borrow_struct_twin_rust_async_impl(
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::ownership_twin_rust_async::SimpleStructForBorrowTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::ownership_twin_rust_async::borrow_struct_twin_rust_async(api_arg).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::ownership_twin_rust_async::borrow_struct_twin_rust_async(&api_arg).await)
                     })().await)
                 } })
 }
@@ -18034,7 +18029,7 @@ fn wire_borrow_i32_twin_sync_impl(
             deserializer.end();
             transform_result_sse((move || {
                 Result::<_, ()>::Ok(
-                    crate::api::pseudo_manual::ownership_twin_sync::borrow_i32_twin_sync(api_arg),
+                    crate::api::pseudo_manual::ownership_twin_sync::borrow_i32_twin_sync(&api_arg),
                 )
             })())
         },
@@ -18061,12 +18056,9 @@ fn wire_borrow_str_twin_sync_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::rust_async::RwLock<str>,
-            >>::sse_decode(&mut deserializer);
+            let api_arg = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse((move || {
-                let api_arg = api_arg.rust_auto_opaque_decode_ref();
                 Result::<_, ()>::Ok(
                     crate::api::pseudo_manual::ownership_twin_sync::borrow_str_twin_sync(&api_arg),
                 )
@@ -18100,7 +18092,7 @@ fn wire_borrow_string_twin_sync_impl(
             transform_result_sse((move || {
                 Result::<_, ()>::Ok(
                     crate::api::pseudo_manual::ownership_twin_sync::borrow_string_twin_sync(
-                        api_arg,
+                        &api_arg,
                     ),
                 )
             })())
@@ -18117,7 +18109,7 @@ fn wire_borrow_struct_twin_sync_impl(
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::ownership_twin_sync::SimpleStructForBorrowTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse((move || {
-                     Result::<_,()>::Ok(crate::api::pseudo_manual::ownership_twin_sync::borrow_struct_twin_sync(api_arg))
+                     Result::<_,()>::Ok(crate::api::pseudo_manual::ownership_twin_sync::borrow_struct_twin_sync(&api_arg))
                 })()) })
 }
 fn wire_handle_vec_of_primitive_twin_rust_async_impl(
@@ -24062,9 +24054,6 @@ flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
     flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithImplBlockInMultiFile>
 );
-flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
-    flutter_rust_bridge::for_generated::rust_async::RwLock<str>
-);
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(i32);
 
 // Section: dart2rust
@@ -25594,14 +25583,6 @@ impl SseDecode
         flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithImplBlockInMultiFile>,
     >
 {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <usize>::sse_decode(deserializer);
-        return decode_rust_opaque_moi(inner);
-    }
-}
-
-impl SseDecode for RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<str>> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <usize>::sse_decode(deserializer);
@@ -44037,15 +44018,6 @@ impl SseEncode
         flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithImplBlockInMultiFile>,
     >
 {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        let (ptr, size) = self.sse_encode_raw();
-        <usize>::sse_encode(ptr, serializer);
-        <i32>::sse_encode(size, serializer);
-    }
-}
-
-impl SseEncode for RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<str>> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         let (ptr, size) = self.sse_encode_raw();
