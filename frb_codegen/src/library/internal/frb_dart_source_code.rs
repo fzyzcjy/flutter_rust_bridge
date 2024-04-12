@@ -72,6 +72,7 @@ fn generate_frb_rust_extra_code() -> String {
     format!(
         "
         crate::frb_generated_io_extern_func!();
+        crate::frb_generated_io_content_hash!();
         {}
         ",
         generate_ffi_dispatcher_raw(
