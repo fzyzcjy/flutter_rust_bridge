@@ -32,7 +32,28 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             }
         };
 
-        TODO
+        let ty_syn_without_ownership = TODO;
+
+        let ty_without_ownership =
+            (self.type_parser).parse_type(ty_syn_without_ownership, context)?;
+
+        let (ty, ownership_mode) = match ty_without_ownership {
+            IrType::RustAutoOpaque(ty_raw) => (
+                self.type_parser.transform_rust_auto_opaque(
+                    &ty_raw,
+                    |raw| match ownership_mode_raw {
+                        OwnershipMode::Owned => raw.to_owned(),
+                        OwnershipMode::RefMut => format!("&mut {raw}"),
+                        OwnershipMode::Ref => format!("&{raw}"),
+                    },
+                    context,
+                )?,
+                None,
+            ),
+            _ => (ty_without_ownership, Some(ownership_mode_raw)),
+        };
+
+        partial_info_for_normal_type_raw(ty, &receiver.attrs, name, ownership_mode)
     }
 
     fn parse_fn_arg_receiver(
@@ -57,32 +78,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         }
 
         partial_info_for_normal_type_raw(ty, &receiver.attrs, name, ownership_mode)
-    }
-
-    fn parse_fn_arg_common(
-        &mut self,
-        ty_syn_without_ownership: &Type,
-        ownership_mode_raw: OwnershipMode,
-        context: &TypeParserParsingContext,
-    ) -> anyhow::Result<(IrType, Option<OwnershipMode>)> {
-        let ty_raw = self
-            .type_parser
-            .parse_type(ty_syn_without_ownership, context)?;
-        Ok(match ty_raw {
-            IrType::RustAutoOpaque(ty_raw) => (
-                self.type_parser.transform_rust_auto_opaque(
-                    &ty_raw,
-                    |raw| match ownership_mode_raw {
-                        OwnershipMode::Owned => raw.to_owned(),
-                        OwnershipMode::RefMut => format!("&mut {raw}"),
-                        OwnershipMode::Ref => format!("&{raw}"),
-                    },
-                    context,
-                )?,
-                None,
-            ),
-            _ => (ty_raw, Some(ownership_mode_raw)),
-        })
     }
 }
 
