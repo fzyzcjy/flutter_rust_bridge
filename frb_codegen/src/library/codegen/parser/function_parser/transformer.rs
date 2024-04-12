@@ -12,6 +12,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         FunctionPartialInfo {
             inputs: (info.inputs.into_iter())
                 .map(|x| IrFuncInput {
+                    ownership_mode: x.ownership_mode,
                     inner: IrField {
                         ty: transform_primitive_list_param(x.inner.ty),
                         ..x.inner

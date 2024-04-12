@@ -94,6 +94,7 @@ fn partial_info_for_normal_type_raw(
                 default: attributes.default_value(),
                 settings: IrFieldSettings::default(),
             },
+            ownership_mode: TODO,
         }],
         ..Default::default()
     })
