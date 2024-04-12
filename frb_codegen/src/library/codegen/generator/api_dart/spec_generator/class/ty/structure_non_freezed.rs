@@ -11,6 +11,7 @@ use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartG
 use itertools::Itertools;
 
 impl<'a> StructRefApiDartGenerator<'a> {
+    #[allow(clippy::too_many_arguments)]
     pub(crate) fn generate_mode_non_freezed(
         &self,
         src: &IrStruct,
