@@ -22,7 +22,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('call funcStreamReturnErrorTwinNormal', () async {
     await expectLater(
       () async {
-        await for (final _ in await funcStreamReturnErrorTwinNormal()) {}
+        await for (final _ in funcStreamReturnErrorTwinNormal()) {}
       },
       throwsA(isA<AnyhowException>()
           .having((x) => x.message, 'message', startsWith('deliberate error'))),
@@ -33,7 +33,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('call funcStreamReturnPanicTwinNormal', skip: kIsWeb, () async {
     await expectRustPanic(
       () async {
-        await for (final _ in await funcStreamReturnPanicTwinNormal()) {}
+        await for (final _ in funcStreamReturnPanicTwinNormal()) {}
       },
       'TwinNormal',
       messageOnNative: 'deliberate panic',
@@ -46,7 +46,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
           handleStreamFunction) async {
     final max = 5;
     final key = 8;
-    final stream = await handleStreamFunction(key: key, max: max);
+    final stream = handleStreamFunction(key: key, max: max);
     var cnt = 0;
     await for (final value in stream) {
       print("output from handle_stream_x's stream: $value");
@@ -70,7 +70,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('stream_sink_fixed_sized_primitive_array_twin_normal', () async {
     final output =
-        await (await streamSinkFixedSizedPrimitiveArrayTwinNormal()).toList();
+        await streamSinkFixedSizedPrimitiveArrayTwinNormal().toList();
     expect(output, [
       orderedEquals([1, 2]),
       orderedEquals([3, 4]),
