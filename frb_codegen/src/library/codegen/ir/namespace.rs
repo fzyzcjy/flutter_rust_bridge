@@ -77,7 +77,7 @@ impl Display for Namespace {
 /// Usually, a name itself (say "Apple") is vague, since it can be `mod_a::Apple`
 /// or `mod_b::Apple`. Instead, a namespace + name unambiguously determines the object.
 // Note: Do NOT implement `display`, otherwise it is easy to misuse it.
-#[derive(Debug, Clone, Hash, Eq, PartialEq, Ord, PartialOrd, Default)]
+#[derive(Debug, Clone, Hash, Eq, PartialEq, Ord, PartialOrd)]
 pub struct NamespacedName {
     pub namespace: Namespace,
     pub name: String,
