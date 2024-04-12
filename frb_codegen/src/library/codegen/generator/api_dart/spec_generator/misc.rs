@@ -1,10 +1,9 @@
 use crate::codegen::generator::api_dart::spec_generator::base::{
     ApiDartGenerator, ApiDartGeneratorContext,
 };
-use crate::codegen::generator::api_dart::spec_generator::function::ReturnStreamInfo;
 use crate::codegen::ir::annotation::IrDartAnnotation;
 use crate::codegen::ir::comment::IrComment;
-use crate::codegen::ir::func::{IrFunc, IrFuncMode};
+use crate::codegen::ir::func::IrFunc;
 use crate::codegen::ir::import::IrDartImport;
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::DistinctTypeGatherer;
