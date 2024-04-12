@@ -46,6 +46,17 @@ pub(crate) fn generate_api_impl_normal_function(
         ))",
     );
     let function_implementation_body = if let Some(return_stream) = &api_dart_func.return_stream {
+        let wrapped_call_handler = match func.mode {
+            IrFuncMode::Normal => {
+                if func.dart_async.unwrap_or(false) {
+                    format!("await {call_handler}")
+                } else {
+                    format!("unawaited({call_handler})")
+                }
+            }
+            IrFuncMode::Sync => call_handler.clone(),
+        };
+
         format!(
             "
             final {return_stream_name} = {return_stream_type}();
