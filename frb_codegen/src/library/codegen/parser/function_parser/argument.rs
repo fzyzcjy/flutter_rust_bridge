@@ -31,9 +31,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         context: &TypeParserParsingContext,
         pat_type: &PatType,
     ) -> anyhow::Result<FunctionPartialInfo> {
-        let ty_syn = pat_type.ty.as_ref();
-        let ty_syn_without_ownership = TODO;
-        let (ty, ownership_mode) = self.parse_fn_arg_common(&ty_syn_without_ownership, TODO)?;
+        let (ty, ownership_mode) =
+            self.parse_fn_arg_common(&remove_ownership(pat_type.ty.as_ref()), TODO)?;
         let name = parse_name_from_pat_type(pat_type)?;
         partial_info_for_normal_type_raw(ty_raw, &pat_type.attrs, name, ownership_mode)
     }
@@ -154,5 +153,20 @@ fn parse_receiver_ownership_mode(receiver: &Receiver) -> OwnershipMode {
         }
     } else {
         OwnershipMode::Owned
+    }
+}
+
+fn parse_and_remove_ownership(ty: &Type) -> (Type, OwnershipMode) {
+    if let Type::Reference(ty_inner) = ty {
+        (
+            *ty_inner.elem,
+            if ty_inner.mutability.is_some() {
+                OwnershipMode::RefMut
+            } else {
+                OwnershipMode::Ref
+            },
+        )
+    } else {
+        (ty.to_owned(), OwnershipMode::Owned)
     }
 }
