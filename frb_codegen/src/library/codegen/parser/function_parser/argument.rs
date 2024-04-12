@@ -1,6 +1,6 @@
 use crate::codegen::ir::field::{IrField, IrFieldSettings};
-use crate::codegen::ir::func::{IrFuncOwnerInfoMethod, OwnershipMode};
 use crate::codegen::ir::func::{IrFuncInput, IrFuncOwnerInfo};
+use crate::codegen::ir::func::{IrFuncOwnerInfoMethod, OwnershipMode};
 use crate::codegen::ir::ident::IrIdent;
 use crate::codegen::ir::ty::boxed::IrTypeBoxed;
 use crate::codegen::ir::ty::IrType;
@@ -23,12 +23,12 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     ) -> anyhow::Result<FunctionPartialInfo> {
         let (ty_syn, name) = match sig_input {
             FnArg::Typed(ref pat_type) => {
-                (pat_type.ty.clone(), parse_name_from_pat_type(pat_type)?)
+                (*pat_type.ty.clone(), parse_name_from_pat_type(pat_type)?)
             }
             FnArg::Receiver(ref receiver) => {
                 let method = if_then_some!(let IrFuncOwnerInfo::Method(method) = owner, method)
                     .context("`self` must happen within methods")?;
-                (TODO, "that".to_owned())
+                (syntheize_receiver_type(receiver, method), "that".to_owned())
             }
         };
 
@@ -128,10 +128,15 @@ fn parse_name_from_pat_type(pat_type: &PatType) -> anyhow::Result<String> {
 }
 
 fn syntheize_receiver_type(receiver: &Receiver, method: &IrFuncOwnerInfoMethod) -> Type {
-    let ty_str = method.owner_ty_name().name.to_owned();
+    let ty_str = format!(
+        "{}{}",
+        parse_receiver_ownership_mode(receiver).prefix(),
+        method.owner_ty_name().name.to_owned()
+    );
+    parse_str::<Type>(&ty_str)
+}
 
-    // &parse_str::<Type>(&method.owner_ty_name().name)
-    // parse_receiver_ownership_mode(receiver),
+fn parse_receiver_ownership_mode(receiver: &Receiver) -> OwnershipMode {
     if receiver.reference.is_some() {
         if receiver.mutability.is_some() {
             OwnershipMode::RefMut
