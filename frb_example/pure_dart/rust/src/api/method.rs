@@ -151,6 +151,21 @@ impl SimpleEnumTwinNormal {
     }
 }
 
+// #1870
+pub enum SimplePrimitiveEnumTwinNormal {
+    First,
+    Second,
+}
+
+impl SimplePrimitiveEnumTwinNormal {
+    pub fn simple_method_twin_normal(&self) -> i32 {
+        match self {
+            SimplePrimitiveEnumTwinNormal::First => 100,
+            SimplePrimitiveEnumTwinNormal::Second => 200,
+        }
+    }
+}
+
 // #1838
 pub struct StaticOnlyTwinNormal {
     pub one: String,
