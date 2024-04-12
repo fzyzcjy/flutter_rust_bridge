@@ -1,5 +1,5 @@
-use crate::codegen::ir::func::OwnershipMode;
 use crate::codegen::ir::field::{IrField, IrFieldSettings};
+use crate::codegen::ir::func::OwnershipMode;
 use crate::codegen::ir::func::{IrFuncInput, IrFuncOwnerInfo};
 use crate::codegen::ir::ident::IrIdent;
 use crate::codegen::ir::ty::boxed::IrTypeBoxed;
@@ -31,7 +31,9 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         context: &TypeParserParsingContext,
         pat_type: &PatType,
     ) -> anyhow::Result<FunctionPartialInfo> {
-        let ty_raw = self.type_parser.parse_type(pat_type.ty.as_ref(), context)?;
+        let ty_syn = pat_type.ty.as_ref();
+        let ty_syn_without_ownership = TODO;
+        let ty = self.parse_fn_arg_common(&ty_syn_without_ownership)?;
         let name = parse_name_from_pat_type(pat_type)?;
         let ownership_mode = TODO;
         partial_info_for_normal_type_raw(ty_raw, &pat_type.attrs, name, ownership_mode)
@@ -46,20 +48,9 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let method = if_then_some!(let IrFuncOwnerInfo::Method(method) = owner, method)
             .context("`self` must happen within methods")?;
 
-        let ty_raw = self
-            .type_parser
-            .parse_type(&parse_str::<Type>(&method.owner_ty_name().name)?, context)?;
-        let ty = match ty_raw {
-            IrType::RustAutoOpaque(ty_raw) => self.type_parser.transform_rust_auto_opaque(
-                &ty_raw,
-                |raw| generate_ref_type_considering_reference(raw, receiver),
-                context,
-            )?,
-            _ => ty_raw,
-        };
-
-        let name = "that".to_owned();
         let ownership_mode = parse_receiver_ownership_mode(receiver);
+        let ty = self.parse_fn_arg_common(&parse_str::<Type>(&method.owner_ty_name().name)?)?;
+        let name = "that".to_owned();
 
         if let IrType::StructRef(s) = &ty {
             if s.get(self.type_parser).ignore {
@@ -76,6 +67,28 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         }
 
         partial_info_for_normal_type_raw(ty, &receiver.attrs, name, ownership_mode)
+    }
+
+    fn parse_fn_arg_common(
+        &mut self,
+        ty_syn_without_ownership: &Type,
+        ownership_mode: OwnershipMode,
+    ) -> anyhow::Result<IrType> {
+        let ty_raw = self
+            .type_parser
+            .parse_type(ty_syn_without_ownership, context)?;
+        Ok(match ty_raw {
+            IrType::RustAutoOpaque(ty_raw) => self.type_parser.transform_rust_auto_opaque(
+                &ty_raw,
+                |raw| match ownership_mode {
+                    OwnershipMode::Owned => raw.to_owned(),
+                    OwnershipMode::RefMut => format!("&mut {raw}"),
+                    OwnershipMode::Ref => format!("&{raw}"),
+                },
+                context,
+            )?,
+            _ => ty_raw,
+        })
     }
 }
 
@@ -125,14 +138,6 @@ fn parse_name_from_pat_type(pat_type: &PatType) -> anyhow::Result<String> {
             quote::quote!(#pat_type).to_string(),
         )
         // frb-coverage:ignore-end
-    }
-}
-
-fn generate_ref_type_considering_reference(raw: &str, receiver: &Receiver) -> String {
-    match parse_receiver_ownership_mode(receiver) {
-        OwnershipMode::Owned => raw.to_owned(),
-        OwnershipMode::RefMut => format!("&mut {raw}"),
-        OwnershipMode::Ref => format!("&{raw}"),
     }
 }
 
