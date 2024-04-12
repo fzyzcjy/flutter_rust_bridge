@@ -174,6 +174,22 @@ impl SimpleEnumTwinSync {
     }
 }
 
+// #1870
+pub enum SimplePrimitiveEnumTwinSync {
+    First,
+    Second,
+}
+
+impl SimplePrimitiveEnumTwinSync {
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn simple_method_twin_sync(&self) -> i32 {
+        match self {
+            SimplePrimitiveEnumTwinSync::First => 100,
+            SimplePrimitiveEnumTwinSync::Second => 200,
+        }
+    }
+}
+
 // #1838
 pub struct StaticOnlyTwinSync {
     pub one: String,

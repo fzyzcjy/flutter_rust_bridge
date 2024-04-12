@@ -17145,6 +17145,14 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_simple_enum_twin_normal_simp
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_simple_primitive_enum_twin_normal_simple_method_twin_normal(
+    port_: i64,
+    that: i32,
+) {
+    wire_simple_primitive_enum_twin_normal_simple_method_twin_normal_impl(port_, that)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_simple_struct_twin_normal_arg_self_twin_normal(
     port_: i64,
     a: *mut wire_cst_simple_struct_twin_normal,
@@ -27440,6 +27448,14 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_simple_enum_twin_rust_async_
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_simple_primitive_enum_twin_rust_async_simple_method_twin_rust_async(
+    port_: i64,
+    that: i32,
+) {
+    wire_simple_primitive_enum_twin_rust_async_simple_method_twin_rust_async_impl(port_, that)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_simple_struct_twin_rust_async_arg_self_twin_rust_async(
     port_: i64,
     a: *mut wire_cst_simple_struct_twin_rust_async,
@@ -27660,6 +27676,21 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_simple_enum_twin_rust_async_
     data_len_: i32,
 ) {
     wire_simple_enum_twin_rust_async_sse_simple_method_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_simple_primitive_enum_twin_rust_async_sse_simple_method_twin_rust_async_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_simple_primitive_enum_twin_rust_async_sse_simple_method_twin_rust_async_sse_impl(
         port_,
         ptr_,
         rust_vec_len_,
@@ -27913,6 +27944,21 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_simple_enum_twin_sse_simple_
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_simple_primitive_enum_twin_sse_simple_method_twin_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_simple_primitive_enum_twin_sse_simple_method_twin_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_simple_struct_twin_sse_arg_self_twin_sse(
     port_: i64,
     ptr_: *mut u8,
@@ -28067,6 +28113,13 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_simple_enum_twin_sync_simple
     that: *mut wire_cst_simple_enum_twin_sync,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_simple_enum_twin_sync_simple_method_twin_sync_impl(that)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_simple_primitive_enum_twin_sync_simple_method_twin_sync(
+    that: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_simple_primitive_enum_twin_sync_simple_method_twin_sync_impl(that)
 }
 
 #[no_mangle]
@@ -28263,6 +28316,19 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_simple_enum_twin_sync_sse_si
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_simple_enum_twin_sync_sse_simple_method_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_simple_primitive_enum_twin_sync_sse_simple_method_twin_sync_sse(
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_simple_primitive_enum_twin_sync_sse_simple_method_twin_sync_sse_impl(
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
 }
 
 #[no_mangle]

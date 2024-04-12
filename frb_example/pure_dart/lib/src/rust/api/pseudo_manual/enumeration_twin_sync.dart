@@ -62,11 +62,13 @@ sealed class DistanceTwinSync with _$DistanceTwinSync {
 enum EnumSimpleTwinSync {
   a,
   b,
+  ;
 }
 
 enum EnumWithDiscriminantTwinSync {
   oneHundred,
   fifty,
+  ;
 }
 
 @freezed

@@ -156,6 +156,15 @@ sealed class SimpleEnumTwinSync with _$SimpleEnumTwinSync {
       .simpleEnumTwinSyncSimpleMethodTwinSync(that: this, hint: hint);
 }
 
+enum SimplePrimitiveEnumTwinSync {
+  first,
+  second,
+  ;
+
+  int simpleMethodTwinSync({dynamic hint}) => RustLib.instance.api
+      .simplePrimitiveEnumTwinSyncSimpleMethodTwinSync(that: this, hint: hint);
+}
+
 class SimpleStructTwinSync {
   final String one;
 

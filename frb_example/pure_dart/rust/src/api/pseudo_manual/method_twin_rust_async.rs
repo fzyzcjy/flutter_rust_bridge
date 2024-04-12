@@ -155,6 +155,21 @@ impl SimpleEnumTwinRustAsync {
     }
 }
 
+// #1870
+pub enum SimplePrimitiveEnumTwinRustAsync {
+    First,
+    Second,
+}
+
+impl SimplePrimitiveEnumTwinRustAsync {
+    pub async fn simple_method_twin_rust_async(&self) -> i32 {
+        match self {
+            SimplePrimitiveEnumTwinRustAsync::First => 100,
+            SimplePrimitiveEnumTwinRustAsync::Second => 200,
+        }
+    }
+}
+
 // #1838
 pub struct StaticOnlyTwinRustAsync {
     pub one: String,

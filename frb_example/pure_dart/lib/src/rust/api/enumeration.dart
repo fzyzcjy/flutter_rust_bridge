@@ -64,11 +64,13 @@ sealed class DistanceTwinNormal with _$DistanceTwinNormal {
 enum EnumSimpleTwinNormal {
   a,
   b,
+  ;
 }
 
 enum EnumWithDiscriminantTwinNormal {
   oneHundred,
   fifty,
+  ;
 }
 
 @freezed
