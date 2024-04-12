@@ -99,8 +99,6 @@ fn generate_boilerplate(
         .join("");
 
     let codegen_version = env!("CARGO_PKG_VERSION");
-    
-    TODO_content_hash;
 
     Ok(Acc {
         common: vec![WireDartOutputCode {
@@ -159,7 +157,10 @@ fn generate_boilerplate(
 
                   @override
                   String get codegenVersion => '{codegen_version}';
-                  
+
+                  @override
+                  int get rustContentHash => {rust_content_hash};
+
                   static const kDefaultExternalLibraryLoaderConfig = ExternalLibraryLoaderConfig(
                     stem: '{stem}',
                     ioDirectory: '{io_directory}',
