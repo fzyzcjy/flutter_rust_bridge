@@ -3,12 +3,14 @@ use itertools::Itertools;
 
 pub(crate) const CONTENT_HASH_PLACEHOLDER: &str = "__PLACEHOLDER_FRB_CONTENT_HASH__";
 
-pub(crate) fn text_inject_content_hash(text: &Acc<Option<String>>) -> Acc<Option<String>> {
-    let content_hash = compute_content_hash(text);
+pub(crate) fn text_inject_content_hash(
+    text: &Acc<Option<String>>,
+    content_hash: i32,
+) -> Acc<Option<String>> {
     text.map(|x, _| x.map(|x| x.replace(CONTENT_HASH_PLACEHOLDER, content_hash)))
 }
 
-fn compute_content_hash(text: &Acc<Option<String>>) -> i32 {
+pub(crate) fn compute_content_hash(text: &Acc<Option<String>>) -> i32 {
     let joined_text = (text.clone().into_vec().into_iter())
         .filter_map(|x| x)
         .join("\n");
