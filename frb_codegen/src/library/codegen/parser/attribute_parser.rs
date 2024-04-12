@@ -62,8 +62,8 @@ impl FrbAttributes {
         self.any_eq(&FrbAttribute::Sync)
     }
 
-    pub(crate) fn await_stream(&self) -> bool {
-        self.any_eq(&FrbAttribute::AwaitStream)
+    pub(crate) fn stream_dart_await(&self) -> bool {
+        self.any_eq(&FrbAttribute::StreamDartAwait)
     }
 
     pub(crate) fn getter(&self) -> bool {
@@ -158,7 +158,7 @@ mod frb_keyword {
     syn::custom_keyword!(mirror);
     syn::custom_keyword!(non_final);
     syn::custom_keyword!(sync);
-    syn::custom_keyword!(await_stream);
+    syn::custom_keyword!(stream_dart_await);
     syn::custom_keyword!(getter);
     syn::custom_keyword!(init);
     syn::custom_keyword!(ignore);
@@ -192,7 +192,7 @@ enum FrbAttribute {
     Mirror(FrbAttributeMirror),
     NonFinal,
     Sync,
-    AwaitStream,
+    StreamDartAwait,
     Getter,
     Init,
     Ignore,
@@ -218,7 +218,7 @@ impl Parse for FrbAttribute {
 
         let keyword_output = parse_keyword::<non_final, _>(input, &lookahead, non_final, NonFinal)
             .or_else(|| parse_keyword::<sync, _>(input, &lookahead, sync, Sync))
-            .or_else(|| parse_keyword::<await_stream, _>(input, &lookahead, await_stream, AwaitStream))
+            .or_else(|| parse_keyword::<stream_dart_await, _>(input, &lookahead, stream_dart_await, StreamDartAwait))
             .or_else(|| parse_keyword::<getter, _>(input, &lookahead, getter, Getter))
             .or_else(|| parse_keyword::<init, _>(input, &lookahead, init, Init))
             .or_else(|| parse_keyword::<ignore, _>(input, &lookahead, ignore, Ignore))
@@ -555,7 +555,7 @@ mod tests {
 
     #[test]
     fn test_dart_async() {
-        simple_keyword_tester("await_stream", FrbAttribute::AwaitStream);
+        simple_keyword_tester("stream_dart_await", FrbAttribute::StreamDartAwait);
     }
 
     #[test]

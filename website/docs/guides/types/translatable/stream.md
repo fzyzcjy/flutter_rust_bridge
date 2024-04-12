@@ -34,7 +34,7 @@ See example 3 below for more details.
 By default, the stream is immediately usable in Dart, and the Rust function is *not* awaited.
 
 If you need the Rust function to finish execution *before* the stream can be obtained in Dart,
-just add `#[frb(await_stream)]` (to await the stream) or `#[frb(sync)]` (to let the whole function be synchronous) to
+just add `#[frb(stream_dart_await)]` (to await the stream) or `#[frb(sync)]` (to let the whole function be synchronous) to
 the function.
 
 ## Examples
