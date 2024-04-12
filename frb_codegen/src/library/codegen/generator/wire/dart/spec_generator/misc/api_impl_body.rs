@@ -75,7 +75,10 @@ pub(crate) fn generate_api_impl_normal_function(
     };
     let function_implementation = format!(
         "@override {func_expr} {maybe_async} {{ {function_implementation_body} }}",
-        maybe_async = if func.mode != IrFuncMode::Sync && api_dart_func.return_stream.is_some() {
+        maybe_async = if func.mode != IrFuncMode::Sync
+            && api_dart_func.return_stream.is_some()
+            && func.stream_dart_await
+        {
             "async "
         } else {
             ""
