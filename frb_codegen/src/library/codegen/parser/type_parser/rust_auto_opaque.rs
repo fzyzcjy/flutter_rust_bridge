@@ -22,7 +22,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         namespace: Option<Namespace>,
         ty: &Type,
     ) -> Result<IrType> {
-        let (ownership_mode, inner) = parse_and_remove_ownership(ty);
+        let (inner, ownership_mode) = parse_and_remove_ownership(ty);
         let inner = external_impl::parse_type(inner)?;
         // println!("inner={inner:?}");
 

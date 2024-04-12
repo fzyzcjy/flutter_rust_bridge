@@ -33,9 +33,10 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         pat_type: &PatType,
     ) -> anyhow::Result<FunctionPartialInfo> {
         let (ty_raw, ownership_mode_raw) = parse_and_remove_ownership(pat_type.ty.as_ref());
-        let (ty, ownership_mode) = self.parse_fn_arg_common(&ty_raw, ownership_mode_raw)?;
+        let (ty, ownership_mode) =
+            self.parse_fn_arg_common(&ty_raw, ownership_mode_raw, context)?;
         let name = parse_name_from_pat_type(pat_type)?;
-        partial_info_for_normal_type_raw(ty_raw, &pat_type.attrs, name, ownership_mode)
+        partial_info_for_normal_type_raw(ty, &pat_type.attrs, name, ownership_mode)
     }
 
     fn parse_fn_arg_receiver(
@@ -50,6 +51,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let (ty, ownership_mode) = self.parse_fn_arg_common(
             &parse_str::<Type>(&method.owner_ty_name().name)?,
             parse_receiver_ownership_mode(receiver),
+            context,
         )?;
         let name = "that".to_owned();
 
@@ -74,6 +76,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         &mut self,
         ty_syn_without_ownership: &Type,
         ownership_mode_raw: OwnershipMode,
+        context: &TypeParserParsingContext,
     ) -> anyhow::Result<(IrType, Option<OwnershipMode>)> {
         let ty_raw = self
             .type_parser
