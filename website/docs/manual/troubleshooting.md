@@ -80,7 +80,7 @@ You may have an iOS app that works fine in Debug and Release modes locally but w
 occurs trying to locate the `store_dart_post_cobject` - this is because the nested XCode project for the native bindings
 maybe be stripping symbols from the linked product.
 
-Select the scheme (eg: `Product > Scheme > native-staticlib`) and go to *Build Settings* then under the `Deployment`
+Select the scheme (eg: `Product > Scheme > native-staticlib`) and go to _Build Settings_ then under the `Deployment`
 section change `Strip Linked Product` to `No`; you may also need to change `Strip Style` to `Debugging Symbols`.
 
 ## Generated code is so long
@@ -170,7 +170,92 @@ pub extern "C" fn JNI_OnLoad(vm: jni::JavaVM, res: *mut std::os::raw::c_void) ->
 
 This is the bit of JNI glue that allows for `ndk_context` to be initialized.
 
-## "Could not resolve symbol __cxa_pure_virtual", or libc++_shared issues.
+## Alternative method, if you require direct access to the current Android context, without creating another one.
+
+### MainActivity.kt
+
+Add these lines to your FlutterActivity subclass, as well as create a Plugin class:
+
+```kotlin
+package com.example.frontend
+
+import android.content.Context
+import androidx.annotation.NonNull
+import io.flutter.embedding.android.FlutterActivity
+import io.flutter.embedding.engine.FlutterEngine
+import io.flutter.embedding.engine.plugins.FlutterPlugin
+import io.flutter.plugin.common.MethodCall
+import io.flutter.plugin.common.MethodChannel.MethodCallHandler
+import io.flutter.plugin.common.MethodChannel.Result
+
+class MainActivity : FlutterActivity() {
+    override fun configureFlutterEngine(
+        @NonNull flutterEngine: FlutterEngine,
+    ) {
+        super.configureFlutterEngine(flutterEngine)
+        flutterEngine.plugins.add(MyPlugin())
+    }
+}
+
+class MyPlugin : FlutterPlugin, MethodCallHandler {
+    companion object {
+        init {
+            System.loadLibrary("rust_lib_frontend")
+        }
+    }
+
+    external fun init_android(ctx: Context)
+
+    override fun onAttachedToEngine(
+        @NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding,
+    ) {
+        init_android(flutterPluginBinding.applicationContext)
+    }
+
+    override fun onMethodCall(
+        @NonNull call: MethodCall,
+        @NonNull result: Result,
+    ) {
+        result.notImplemented()
+    }
+
+    override fun onDetachedFromEngine(
+        @NonNull binding: FlutterPlugin.FlutterPluginBinding,
+    ) {
+    }
+}
+```
+
+### Rust
+
+#### Cargo.toml
+
+```toml
+[target.'cfg(target_os = "android")'.dependencies]
+jni = "0.21"
+```
+
+#### lib.rs
+
+```rust
+#[cfg(target_os = "android")]
+use {
+    jni::{objects::JClass, objects::JObject, JNIEnv},
+    mylib::setup_android,
+};
+
+#[cfg(target_os = "android")]
+#[no_mangle]
+pub extern "system" fn Java_com_example_spareshare_MyPlugin_init_1android(
+    env: JNIEnv,
+    _class: JClass,
+    ctx: JObject,
+) {
+    setup_android(env, ctx);
+}
+```
+
+## "Could not resolve symbol \_\_cxa_pure_virtual", or libc++\_shared issues.
 
 At the time of writing this, linking with `libc++_static` or not linking at all may lead to symbol resolution errors
 when launching the flutter application, after loading your dynamic library. Adding a fix is quite easy, create a
@@ -189,10 +274,10 @@ Then, in each `jniLibs` architecture directory, put the corresponding `libc++_sh
 NDK. `libc++_shared.so` is typically located in `$ANDROID_NDK/toolchains/llvm/prebuilt/`. You will have to search for
 it, as it's different for each operating system.
 
-* arm-linux-androideabi -> armeabi-v7a
-* aarch64-linux-android -> arm64-v8a
-* i686-linux-android -> x86
-* x86_64-linux-android -> x86_64
+- arm-linux-androideabi -> armeabi-v7a
+- aarch64-linux-android -> arm64-v8a
+- i686-linux-android -> x86
+- x86_64-linux-android -> x86_64
 
 ## Issues on Web?
 
