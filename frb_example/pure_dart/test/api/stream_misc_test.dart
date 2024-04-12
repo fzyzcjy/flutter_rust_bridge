@@ -19,7 +19,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(cnt, 10);
   });
 
-  test('stream_sink_dart_async_twin_normal', () async {
+  test('streamSinkDartAsyncTwinNormal', () async {
     final stream = await streamSinkDartAsyncTwinNormal();
     expect(await stream.toList(), [100]);
   });
