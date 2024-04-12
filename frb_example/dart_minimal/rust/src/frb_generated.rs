@@ -61,11 +61,14 @@ fn wire_MyStruct_f_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_that = <MyStruct>::sse_decode(&mut deserializer);
+            let api_that = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::rust_async::RwLock<MyStruct>,
+            >>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
-                    Result::<_, ()>::Ok(crate::api::minimal::MyStruct::f(api_that))
+                    let mut api_that = api_that.rust_auto_opaque_decode_ref_mut();
+                    Result::<_, ()>::Ok(crate::api::minimal::MyStruct::f(&mut api_that))
                 })())
             }
         },

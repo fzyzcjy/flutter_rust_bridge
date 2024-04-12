@@ -27,6 +27,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   MyStruct
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyStruct(
+          dynamic raw);
+
+  @protected
+  MyStruct
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyStruct(
           dynamic raw);
 
@@ -42,6 +47,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   MyStruct
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyStruct(
+          SseDeserializer deserializer);
+
+  @protected
+  MyStruct
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyStruct(
           SseDeserializer deserializer);
 
   @protected
@@ -64,6 +74,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyStruct(
+          MyStruct self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyStruct(
           MyStruct self, SseSerializer serializer);
 
   @protected
