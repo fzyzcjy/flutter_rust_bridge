@@ -68,8 +68,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             }
 
             ensure!(
-                parse_receiver_ownership_mode(receiver) == OwnershipMode::Ref,
-                "If you want to use `self`/`&mut self`, please make the struct opaque (by adding `#[frb(opaque)]` on the struct)."
+                parse_receiver_ownership_mode(receiver) != OwnershipMode::RefMut,
+                "If you want to use `&mut self`, please make the struct opaque (by adding `#[frb(opaque)]` on the struct)."
             );
         }
 

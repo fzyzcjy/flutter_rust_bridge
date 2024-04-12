@@ -250,7 +250,7 @@ mod tests {
     fn test_error_non_opaque_mut() -> anyhow::Result<()> {
         let result = execute_parse("library/codegen/parser/mod/error_non_opaque_mut", None);
         assert!(format!("{:#?}", result.err().unwrap())
-            .contains("If you want to use `self`/`&mut self`"));
+            .contains("If you want to use `&mut self`"));
         Ok(())
     }
 
