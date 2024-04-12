@@ -32,6 +32,8 @@ void dart_fn_deliver_output(int32_t call_id,
                             int32_t rust_vec_len_,
                             int32_t data_len_);
 
+int32_t frb_get_rust_content_hash(void);
+
 /**
  * # Safety
  *
