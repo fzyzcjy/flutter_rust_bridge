@@ -12,3 +12,4 @@ pub(crate) mod path_utils;
 pub(crate) mod rust_project_utils;
 #[cfg(test)]
 pub(crate) mod test_utils;
+mod serde_md5;
