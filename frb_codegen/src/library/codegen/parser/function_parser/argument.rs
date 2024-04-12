@@ -21,22 +21,18 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         owner: &IrFuncOwnerInfo,
         context: &TypeParserParsingContext,
     ) -> anyhow::Result<FunctionPartialInfo> {
-        match sig_input {
-            FnArg::Typed(ref pat_type) => self.parse_fn_arg_typed(context, pat_type),
-            FnArg::Receiver(ref receiver) => self.parse_fn_arg_receiver(owner, context, receiver),
-        }
-    }
+        let (ty_syn, name) = match sig_input {
+            FnArg::Typed(ref pat_type) => {
+                (pat_type.ty.clone(), parse_name_from_pat_type(pat_type)?)
+            }
+            FnArg::Receiver(ref receiver) => {
+                let method = if_then_some!(let IrFuncOwnerInfo::Method(method) = owner, method)
+                    .context("`self` must happen within methods")?;
+                (TODO, "that".to_owned())
+            }
+        };
 
-    fn parse_fn_arg_typed(
-        &mut self,
-        context: &TypeParserParsingContext,
-        pat_type: &PatType,
-    ) -> anyhow::Result<FunctionPartialInfo> {
-        let (ty_raw, ownership_mode_raw) = parse_and_remove_ownership(pat_type.ty.as_ref());
-        let (ty, ownership_mode) =
-            self.parse_fn_arg_common(&ty_raw, ownership_mode_raw, context)?;
-        let name = parse_name_from_pat_type(pat_type)?;
-        partial_info_for_normal_type_raw(ty, &pat_type.attrs, name, ownership_mode)
+        TODO
     }
 
     fn parse_fn_arg_receiver(
@@ -45,15 +41,11 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         context: &TypeParserParsingContext,
         receiver: &Receiver,
     ) -> anyhow::Result<FunctionPartialInfo> {
-        let method = if_then_some!(let IrFuncOwnerInfo::Method(method) = owner, method)
-            .context("`self` must happen within methods")?;
-
         let (ty, ownership_mode) = self.parse_fn_arg_common(
             &parse_str::<Type>(&method.owner_ty_name().name)?,
             parse_receiver_ownership_mode(receiver),
             context,
         )?;
-        let name = "that".to_owned();
 
         if let IrType::StructRef(s) = &ty {
             if s.get(self.type_parser).ignore {
@@ -62,11 +54,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     ..Default::default()
                 });
             }
-
-            ensure!(
-                ownership_mode != Some(OwnershipMode::RefMut),
-                "If you want to use `&mut self`, please make the struct opaque (by adding `#[frb(opaque)]` on the struct)."
-            );
         }
 
         partial_info_for_normal_type_raw(ty, &receiver.attrs, name, ownership_mode)
