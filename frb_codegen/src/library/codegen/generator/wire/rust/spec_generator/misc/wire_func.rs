@@ -8,8 +8,8 @@ use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
 };
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::ir::func::IrFuncOwnerInfoMethodMode::Instance;
-use crate::codegen::ir::func::{IrFunc, IrFuncMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod};
 use crate::codegen::ir::func::OwnershipMode;
+use crate::codegen::ir::func::{IrFunc, IrFuncMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod};
 use crate::codegen::ir::ty::IrType;
 use crate::misc::consts::HANDLER_NAME;
 use convert_case::{Case, Casing};
@@ -75,11 +75,7 @@ fn generate_inner_func_args(func: &IrFunc) -> Vec<String> {
         .map(|(index, field)| {
             let mut ans = format!("api_{}", field.inner.name.rust_style());
             if let IrType::RustAutoOpaque(o) = &field.inner.ty {
-                ans = match o.ownership_mode {
-                    OwnershipMode::Ref => format!("&{ans}"),
-                    OwnershipMode::RefMut => format!("&mut {ans}"),
-                    _ => ans,
-                };
+                ans = format!("{}{ans}", o.ownership_mode.prefix())
             } else if index == 0 && matches!(&func.owner, IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod { mode, .. }) if mode == &Instance) {
                 ans = format!("&{ans}");
             }

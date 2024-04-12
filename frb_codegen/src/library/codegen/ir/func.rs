@@ -69,6 +69,16 @@ pub enum OwnershipMode {
     RefMut,
 }
 
+impl OwnershipMode {
+    pub(crate) fn prefix(&self) -> &'static str {
+        match self {
+            OwnershipMode::Owned => "",
+            OwnershipMode::Ref => "&",
+            OwnershipMode::RefMut => "&mut ",
+        }
+    }
+}
+
 impl IrFunc {
     pub(crate) fn fallible(&self) -> bool {
         self.output.error.is_some()

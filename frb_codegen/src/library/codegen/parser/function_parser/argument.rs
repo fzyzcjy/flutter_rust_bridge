@@ -1,5 +1,5 @@
 use crate::codegen::ir::field::{IrField, IrFieldSettings};
-use crate::codegen::ir::func::OwnershipMode;
+use crate::codegen::ir::func::{IrFuncOwnerInfoMethod, OwnershipMode};
 use crate::codegen::ir::func::{IrFuncInput, IrFuncOwnerInfo};
 use crate::codegen::ir::ident::IrIdent;
 use crate::codegen::ir::ty::boxed::IrTypeBoxed;
@@ -127,7 +127,11 @@ fn parse_name_from_pat_type(pat_type: &PatType) -> anyhow::Result<String> {
         .with_context(|| quote::quote!(#pat_type).to_string())
 }
 
-fn parse_receiver_ownership_mode(receiver: &Receiver) -> OwnershipMode {
+fn syntheize_receiver_type(receiver: &Receiver, method: &IrFuncOwnerInfoMethod) -> Type {
+    let ty_str = method.owner_ty_name().name.to_owned();
+
+    // &parse_str::<Type>(&method.owner_ty_name().name)
+    // parse_receiver_ownership_mode(receiver),
     if receiver.reference.is_some() {
         if receiver.mutability.is_some() {
             OwnershipMode::RefMut
