@@ -27,6 +27,7 @@ pub struct IrFunc {
 }
 
 pub struct IrFuncInput {
+    pub ownership_mode: OwnershipMode,
     pub inner: IrField,
 }
 
