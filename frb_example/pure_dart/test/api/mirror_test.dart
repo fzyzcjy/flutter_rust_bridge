@@ -55,8 +55,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('dart call mirror_tuple_stream', () async {
-    final (settings, rawStringEnum) =
-        await mirrorTupleStreamTwinNormal().first;
+    final (settings, rawStringEnum) = await mirrorTupleStreamTwinNormal().first;
     _testAppSettings(settings);
     expect(rawStringEnum is RawStringEnumMirrored_Raw, true);
     expect((rawStringEnum as RawStringEnumMirrored_Raw).field0.value, "test");

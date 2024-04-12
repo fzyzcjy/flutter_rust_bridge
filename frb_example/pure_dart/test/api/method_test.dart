@@ -49,8 +49,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
         ConcatenateWithTwinNormal(a: "hello ");
     final int key = 10;
     final int max = 5;
-    final stream = concatenateWith.handleSomeStreamSinkTwinNormal(
-        key: key, max: max);
+    final stream =
+        concatenateWith.handleSomeStreamSinkTwinNormal(key: key, max: max);
     int cnt = 0;
     await for (final value in stream) {
       print("output from ConcatenateWith's stream: $value");

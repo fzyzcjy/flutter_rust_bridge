@@ -4293,8 +4293,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Stream<String> simpleUseAsyncSpawnLocal(
-      {required String arg, dynamic hint}) async {
+  Stream<String> simpleUseAsyncSpawnLocal({required String arg, dynamic hint}) {
     final sink = RustStreamSink<String>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -5925,7 +5924,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Stream<int> droppableTwinNormalCreateStream(
-      {required DroppableTwinNormal that, dynamic hint}) async {
+      {required DroppableTwinNormal that, dynamic hint}) {
     final sink = RustStreamSink<int>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -7159,7 +7158,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  Stream<String> streamSinkThrowAnyhowTwinNormal({dynamic hint}) async {
+  Stream<String> streamSinkThrowAnyhowTwinNormal({dynamic hint}) {
     final sink = RustStreamSink<String>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -7761,7 +7760,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Stream<int>
       concatenateWithTwinNormalHandleSomeStaticStreamSinkSingleArgTwinNormal(
-          {dynamic hint}) async {
+          {dynamic hint}) {
     final sink = RustStreamSink<int>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -7794,7 +7793,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Stream<Log2TwinNormal>
       concatenateWithTwinNormalHandleSomeStaticStreamSinkTwinNormal(
-          {required int key, required int max, dynamic hint}) async {
+          {required int key, required int max, dynamic hint}) {
     final sink = RustStreamSink<Log2TwinNormal>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -7828,7 +7827,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Stream<int> concatenateWithTwinNormalHandleSomeStreamSinkAt1TwinNormal(
-      {required ConcatenateWithTwinNormal that, dynamic hint}) async {
+      {required ConcatenateWithTwinNormal that, dynamic hint}) {
     final sink = RustStreamSink<int>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -7865,7 +7864,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required ConcatenateWithTwinNormal that,
           required int key,
           required int max,
-          dynamic hint}) async {
+          dynamic hint}) {
     final sink = RustStreamSink<Log2TwinNormal>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -8229,8 +8228,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Stream<ApplicationSettings> appSettingsStreamTwinNormal(
-      {dynamic hint}) async {
+  Stream<ApplicationSettings> appSettingsStreamTwinNormal({dynamic hint}) {
     final sink = RustStreamSink<ApplicationSettings>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -8259,7 +8257,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Stream<List<ApplicationSettings>> appSettingsVecStreamTwinNormal(
-      {dynamic hint}) async {
+      {dynamic hint}) {
     final sink = RustStreamSink<List<ApplicationSettings>>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -8438,7 +8436,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Stream<ApplicationModeArray2> mirrorArrayEnumStreamTwinNormal(
-      {dynamic hint}) async {
+      {dynamic hint}) {
     final sink = RustStreamSink<ApplicationModeArray2>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -8466,7 +8464,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Stream<ApplicationMode> mirrorEnumStreamTwinNormal({dynamic hint}) async {
+  Stream<ApplicationMode> mirrorEnumStreamTwinNormal({dynamic hint}) {
     final sink = RustStreamSink<ApplicationMode>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -8494,7 +8492,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Stream<Map<int, ApplicationMode>> mirrorMapEnumStreamTwinNormal(
-      {dynamic hint}) async {
+      {dynamic hint}) {
     final sink = RustStreamSink<Map<int, ApplicationMode>>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -8522,8 +8520,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Stream<ApplicationMode?> mirrorOptionEnumStreamTwinNormal(
-      {dynamic hint}) async {
+  Stream<ApplicationMode?> mirrorOptionEnumStreamTwinNormal({dynamic hint}) {
     final sink = RustStreamSink<ApplicationMode?>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -8552,8 +8549,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Stream<Set<ApplicationMode>> mirrorSetEnumStreamTwinNormal(
-      {dynamic hint}) async {
+  Stream<Set<ApplicationMode>> mirrorSetEnumStreamTwinNormal({dynamic hint}) {
     final sink = RustStreamSink<Set<ApplicationMode>>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -8581,8 +8577,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Stream<MirrorStructTwinNormal> mirrorStructStreamTwinNormal(
-      {dynamic hint}) async {
+  Stream<MirrorStructTwinNormal> mirrorStructStreamTwinNormal({dynamic hint}) {
     final sink = RustStreamSink<MirrorStructTwinNormal>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -8611,7 +8606,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Stream<(ApplicationSettings, RawStringEnumMirrored)>
-      mirrorTupleStreamTwinNormal({dynamic hint}) async {
+      mirrorTupleStreamTwinNormal({dynamic hint}) {
     final sink = RustStreamSink<(ApplicationSettings, RawStringEnumMirrored)>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -8640,8 +8635,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Stream<List<ApplicationMode>> mirrorVecEnumStreamTwinNormal(
-      {dynamic hint}) async {
+  Stream<List<ApplicationMode>> mirrorVecEnumStreamTwinNormal({dynamic hint}) {
     final sink = RustStreamSink<List<ApplicationMode>>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -19126,7 +19120,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Stream<int> droppableTwinRustAsyncCreateStreamTwinRustAsync(
-      {required DroppableTwinRustAsync that, dynamic hint}) async {
+      {required DroppableTwinRustAsync that, dynamic hint}) {
     final sink = RustStreamSink<int>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -20704,7 +20698,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  Stream<String> streamSinkThrowAnyhowTwinRustAsync({dynamic hint}) async {
+  Stream<String> streamSinkThrowAnyhowTwinRustAsync({dynamic hint}) {
     final sink = RustStreamSink<String>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -22211,7 +22205,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Stream<int>
       concatenateWithTwinRustAsyncHandleSomeStaticStreamSinkSingleArgTwinRustAsync(
-          {dynamic hint}) async {
+          {dynamic hint}) {
     final sink = RustStreamSink<int>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -22244,7 +22238,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Stream<Log2TwinRustAsync>
       concatenateWithTwinRustAsyncHandleSomeStaticStreamSinkTwinRustAsync(
-          {required int key, required int max, dynamic hint}) async {
+          {required int key, required int max, dynamic hint}) {
     final sink = RustStreamSink<Log2TwinRustAsync>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -22278,7 +22272,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Stream<int> concatenateWithTwinRustAsyncHandleSomeStreamSinkAt1TwinRustAsync(
-      {required ConcatenateWithTwinRustAsync that, dynamic hint}) async {
+      {required ConcatenateWithTwinRustAsync that, dynamic hint}) {
     final sink = RustStreamSink<int>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -22316,7 +22310,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required ConcatenateWithTwinRustAsync that,
           required int key,
           required int max,
-          dynamic hint}) async {
+          dynamic hint}) {
     final sink = RustStreamSink<Log2TwinRustAsync>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -23229,8 +23223,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Stream<ApplicationSettings> appSettingsStreamTwinRustAsync(
-      {dynamic hint}) async {
+  Stream<ApplicationSettings> appSettingsStreamTwinRustAsync({dynamic hint}) {
     final sink = RustStreamSink<ApplicationSettings>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -23259,7 +23252,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Stream<List<ApplicationSettings>> appSettingsVecStreamTwinRustAsync(
-      {dynamic hint}) async {
+      {dynamic hint}) {
     final sink = RustStreamSink<List<ApplicationSettings>>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -23440,7 +23433,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Stream<ApplicationModeArray2> mirrorArrayEnumStreamTwinRustAsync(
-      {dynamic hint}) async {
+      {dynamic hint}) {
     final sink = RustStreamSink<ApplicationModeArray2>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -23468,7 +23461,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Stream<ApplicationMode> mirrorEnumStreamTwinRustAsync({dynamic hint}) async {
+  Stream<ApplicationMode> mirrorEnumStreamTwinRustAsync({dynamic hint}) {
     final sink = RustStreamSink<ApplicationMode>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -23497,7 +23490,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Stream<Map<int, ApplicationMode>> mirrorMapEnumStreamTwinRustAsync(
-      {dynamic hint}) async {
+      {dynamic hint}) {
     final sink = RustStreamSink<Map<int, ApplicationMode>>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -23525,8 +23518,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Stream<ApplicationMode?> mirrorOptionEnumStreamTwinRustAsync(
-      {dynamic hint}) async {
+  Stream<ApplicationMode?> mirrorOptionEnumStreamTwinRustAsync({dynamic hint}) {
     final sink = RustStreamSink<ApplicationMode?>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -23556,7 +23548,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Stream<Set<ApplicationMode>> mirrorSetEnumStreamTwinRustAsync(
-      {dynamic hint}) async {
+      {dynamic hint}) {
     final sink = RustStreamSink<Set<ApplicationMode>>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -23585,7 +23577,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Stream<MirrorStructTwinRustAsync> mirrorStructStreamTwinRustAsync(
-      {dynamic hint}) async {
+      {dynamic hint}) {
     final sink = RustStreamSink<MirrorStructTwinRustAsync>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -23615,7 +23607,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Stream<(ApplicationSettings, RawStringEnumMirrored)>
-      mirrorTupleStreamTwinRustAsync({dynamic hint}) async {
+      mirrorTupleStreamTwinRustAsync({dynamic hint}) {
     final sink = RustStreamSink<(ApplicationSettings, RawStringEnumMirrored)>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -23645,7 +23637,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Stream<List<ApplicationMode>> mirrorVecEnumStreamTwinRustAsync(
-      {dynamic hint}) async {
+      {dynamic hint}) {
     final sink = RustStreamSink<List<ApplicationMode>>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -27118,7 +27110,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Stream<NonCloneSimpleTwinRustAsync> rustAutoOpaqueStreamSinkTwinRustAsync(
-      {dynamic hint}) async {
+      {dynamic hint}) {
     final sink = RustStreamSink<NonCloneSimpleTwinRustAsync>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -29508,7 +29500,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Stream<String> funcStreamReturnErrorTwinRustAsync({dynamic hint}) async {
+  Stream<String> funcStreamReturnErrorTwinRustAsync({dynamic hint}) {
     final sink = RustStreamSink<String>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -29536,7 +29528,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Stream<String> funcStreamReturnPanicTwinRustAsync({dynamic hint}) async {
+  Stream<String> funcStreamReturnPanicTwinRustAsync({dynamic hint}) {
     final sink = RustStreamSink<String>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -29565,7 +29557,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Stream<int> funcStreamSinkArgPositionTwinRustAsync(
-      {required int a, required int b, dynamic hint}) async {
+      {required int a, required int b, dynamic hint}) {
     final c = RustStreamSink<int>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -29596,7 +29588,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Stream<MyStreamEntryTwinRustAsync> handleStreamOfStructTwinRustAsync(
-      {dynamic hint}) async {
+      {dynamic hint}) {
     final sink = RustStreamSink<MyStreamEntryTwinRustAsync>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -29626,7 +29618,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Stream<LogTwinRustAsync> handleStreamSinkAt1TwinRustAsync(
-      {required int key, required int max, dynamic hint}) async {
+      {required int key, required int max, dynamic hint}) {
     final sink = RustStreamSink<LogTwinRustAsync>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -29657,7 +29649,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Stream<LogTwinRustAsync> handleStreamSinkAt2TwinRustAsync(
-      {required int key, required int max, dynamic hint}) async {
+      {required int key, required int max, dynamic hint}) {
     final sink = RustStreamSink<LogTwinRustAsync>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -29688,7 +29680,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Stream<LogTwinRustAsync> handleStreamSinkAt3TwinRustAsync(
-      {required int key, required int max, dynamic hint}) async {
+      {required int key, required int max, dynamic hint}) {
     final sink = RustStreamSink<LogTwinRustAsync>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -29719,7 +29711,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Stream<U8Array2> streamSinkFixedSizedPrimitiveArrayTwinRustAsync(
-      {dynamic hint}) async {
+      {dynamic hint}) {
     final sink = RustStreamSink<U8Array2>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -31634,7 +31626,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Stream<NonCloneSimpleTwinNormal> rustAutoOpaqueStreamSinkTwinNormal(
-      {dynamic hint}) async {
+      {dynamic hint}) {
     final sink = RustStreamSink<NonCloneSimpleTwinNormal>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -32412,7 +32404,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Stream<String> funcStreamReturnErrorTwinNormal({dynamic hint}) async {
+  Stream<String> funcStreamReturnErrorTwinNormal({dynamic hint}) {
     final sink = RustStreamSink<String>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -32440,7 +32432,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Stream<String> funcStreamReturnPanicTwinNormal({dynamic hint}) async {
+  Stream<String> funcStreamReturnPanicTwinNormal({dynamic hint}) {
     final sink = RustStreamSink<String>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -32469,7 +32461,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Stream<int> funcStreamSinkArgPositionTwinNormal(
-      {required int a, required int b, dynamic hint}) async {
+      {required int a, required int b, dynamic hint}) {
     final c = RustStreamSink<int>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -32500,7 +32492,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Stream<MyStreamEntryTwinNormal> handleStreamOfStructTwinNormal(
-      {dynamic hint}) async {
+      {dynamic hint}) {
     final sink = RustStreamSink<MyStreamEntryTwinNormal>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -32529,7 +32521,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Stream<LogTwinNormal> handleStreamSinkAt1TwinNormal(
-      {required int key, required int max, dynamic hint}) async {
+      {required int key, required int max, dynamic hint}) {
     final sink = RustStreamSink<LogTwinNormal>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -32560,7 +32552,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Stream<LogTwinNormal> handleStreamSinkAt2TwinNormal(
-      {required int key, required int max, dynamic hint}) async {
+      {required int key, required int max, dynamic hint}) {
     final sink = RustStreamSink<LogTwinNormal>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -32591,7 +32583,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Stream<LogTwinNormal> handleStreamSinkAt3TwinNormal(
-      {required int key, required int max, dynamic hint}) async {
+      {required int key, required int max, dynamic hint}) {
     final sink = RustStreamSink<LogTwinNormal>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -32622,7 +32614,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Stream<U8Array2> streamSinkFixedSizedPrimitiveArrayTwinNormal(
-      {dynamic hint}) async {
+      {dynamic hint}) {
     final sink = RustStreamSink<U8Array2>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -32706,7 +32698,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Stream<String> funcStreamRealisticTwinNormal(
-      {required String arg, dynamic hint}) async {
+      {required String arg, dynamic hint}) {
     final sink = RustStreamSink<String>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
