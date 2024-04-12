@@ -2049,7 +2049,7 @@ abstract class RustLibApi extends BaseApi {
 
   int someStructTwinSyncStaticReturnOkCustomErrorTwinSync({dynamic hint});
 
-  Future<Stream<String>> streamSinkThrowAnyhowTwinSync({dynamic hint});
+  Stream<String> streamSinkThrowAnyhowTwinSync({dynamic hint});
 
   void throwAnyhowTwinSync({dynamic hint});
 
@@ -21439,7 +21439,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  Future<Stream<String>> streamSinkThrowAnyhowTwinSync({dynamic hint}) {
+  Stream<String> streamSinkThrowAnyhowTwinSync({dynamic hint}) {
     final sink = RustStreamSink<String>();
     handler.executeSync(SyncTask(
       callFfi: () {

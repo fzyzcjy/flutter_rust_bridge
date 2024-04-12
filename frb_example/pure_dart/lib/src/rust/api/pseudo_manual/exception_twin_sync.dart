@@ -67,7 +67,7 @@ void throwAnyhowTwinSync({dynamic hint}) =>
 void panicWithCustomResultTwinSync({dynamic hint}) =>
     RustLib.instance.api.panicWithCustomResultTwinSync(hint: hint);
 
-Future<Stream<String>> streamSinkThrowAnyhowTwinSync({dynamic hint}) =>
+Stream<String> streamSinkThrowAnyhowTwinSync({dynamic hint}) =>
     RustLib.instance.api.streamSinkThrowAnyhowTwinSync(hint: hint);
 
 @freezed
