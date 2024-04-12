@@ -33,7 +33,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     ) -> anyhow::Result<FunctionPartialInfo> {
         let ty_raw = self.type_parser.parse_type(pat_type.ty.as_ref(), context)?;
         let name = parse_name_from_pat_type(pat_type)?;
-        partial_info_for_normal_type_raw(ty_raw, &pat_type.attrs, name)
+        partial_info_for_normal_type_raw(ty_raw, &pat_type.attrs, name, )
     }
 
     fn parse_fn_arg_receiver(
@@ -58,6 +58,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         };
 
         let name = "that".to_owned();
+        let ownership_mode = parse_receiver_ownership_mode(receiver);
 
         if let IrType::StructRef(s) = &ty {
             if s.get(self.type_parser).ignore {
@@ -68,12 +69,12 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             }
 
             ensure!(
-                parse_receiver_ownership_mode(receiver) != OwnershipMode::RefMut,
+                ownership_mode != OwnershipMode::RefMut,
                 "If you want to use `&mut self`, please make the struct opaque (by adding `#[frb(opaque)]` on the struct)."
             );
         }
 
-        partial_info_for_normal_type_raw(ty, &receiver.attrs, name)
+        partial_info_for_normal_type_raw(ty, &receiver.attrs, name, ownership_mode)
     }
 }
 
@@ -81,6 +82,7 @@ fn partial_info_for_normal_type_raw(
     ty_raw: IrType,
     attrs: &[Attribute],
     name: String,
+    ownership_mode: OwnershipMode,
 ) -> anyhow::Result<FunctionPartialInfo> {
     let attributes = FrbAttributes::parse(attrs)?;
     let ty = auto_add_boxed(ty_raw);
@@ -94,7 +96,7 @@ fn partial_info_for_normal_type_raw(
                 default: attributes.default_value(),
                 settings: IrFieldSettings::default(),
             },
-            ownership_mode: TODO,
+            ownership_mode,
         }],
         ..Default::default()
     })
