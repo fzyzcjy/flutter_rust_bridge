@@ -38,17 +38,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let ty_without_ownership =
             (self.type_parser).parse_type(ty_syn_without_ownership, context)?;
 
-        let (ty, ownership_mode) = match ty_without_ownership {
-            IrType::RustAutoOpaque(ty_raw) => (
-                self.type_parser.transform_rust_auto_opaque(
-                    &ty_raw,
-                    |raw| format!("{}{raw}", ownership_mode_raw.prefix()),
-                    context,
-                )?,
-                None,
-            ),
-            _ => (ty_without_ownership, Some(ownership_mode_raw)),
-        };
+        let (ty, ownership_mode) =
+            self.merge_ownership_into_ty(context, ty_without_ownership, ownership_mode_raw)?;
 
         if let IrType::StructRef(s) = &ty {
             if s.get(self.type_parser).ignore {
@@ -74,6 +65,25 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                 ownership_mode,
             }],
             ..Default::default()
+        })
+    }
+
+    fn merge_ownership_into_ty(
+        &mut self,
+        context: &TypeParserParsingContext,
+        ty_without_ownership: IrType,
+        ownership_mode: OwnershipMode,
+    ) -> anyhow::Result<(IrType, Option<OwnershipMode>)> {
+        Ok(match ty_without_ownership {
+            IrType::RustAutoOpaque(ty_raw) => (
+                self.type_parser.transform_rust_auto_opaque(
+                    &ty_raw,
+                    |raw| format!("{}{raw}", ownership_mode.prefix()),
+                    context,
+                )?,
+                None,
+            ),
+            _ => (ty_without_ownership, Some(ownership_mode)),
         })
     }
 }
