@@ -12,6 +12,8 @@ finds out a new piece of the full solution. In this case, it can immediately giv
 can render it to UI immediately. Therefore, users do not need to wait for the full algorithm to finish before he can see
 some partial results on the user interface.
 
+## Remarks
+
 As for the details, a Rust function with signature like `fn f(sink: StreamSink<T>, ..) -> Result<()>` is translated to a
 Dart function `Stream<T> f(..)`.
 
@@ -26,6 +28,13 @@ and `fn f(a: StreamSink<String>, b: i32)` are both valid.
 
 The `StreamSink` type can also be placed in arbitrary types, such as inside structs, enums, vectors, ...
 See example 3 below for more details.
+
+## Control whether to wait
+
+By default, the stream is immediately usable in Dart, and the Rust function is *not* awaited.
+
+If you need the Rust function to finish execution *before* the stream can be obtained in Dart,
+just add `#[frb(dart_async)]` or `#[frb(sync)]` to the function.
 
 ## Examples
 
