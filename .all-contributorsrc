@@ -351,6 +351,15 @@
       ]
     },
     {
+      "login": "debanjanbasu",
+      "name": "Debanjan Basu",
+      "avatar_url": "https://avatars.githubusercontent.com/u/10209115?v=4",
+      "profile": "https://github.com/debanjanbasu",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
       "login": "valeth",
       "name": "Patrick Auernig",
       "avatar_url": "https://avatars.githubusercontent.com/u/3198362?v=4",
@@ -860,15 +869,6 @@
       "name": "thesimplekid",
       "avatar_url": "https://avatars.githubusercontent.com/u/8606367?v=4",
       "profile": "https://thesimplekid.com",
-      "contributions": [
-        "doc"
-      ]
-    },
-    {
-      "login": "debanjanbasu",
-      "name": "Debanjan Basu",
-      "avatar_url": "https://avatars.githubusercontent.com/u/10209115?v=4",
-      "profile": "https://github.com/debanjanbasu",
       "contributions": [
         "doc"
       ]
