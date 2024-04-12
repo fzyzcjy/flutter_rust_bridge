@@ -99,7 +99,7 @@ external void _dart_fn_deliver_output(
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 @JS("wasm_bindgen.frb_get_rust_content_hash")
-external int frb_get_rust_content_hash();
+external int _frb_get_rust_content_hash();
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 @JS("wasm_bindgen.dart_opaque_dart2rust_encode")
