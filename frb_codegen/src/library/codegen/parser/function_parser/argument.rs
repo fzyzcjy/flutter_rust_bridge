@@ -32,14 +32,14 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             }
         };
 
-        let (ty_syn_without_ownership, ownership_mode_raw) =
+        let (ty_syn_without_ownership, ownership_mode_split) =
             split_ownership_from_ty_except_ref_mut(ty_syn_raw);
 
         let ty_without_ownership =
             (self.type_parser).parse_type(ty_syn_without_ownership, context)?;
 
         let (ty, ownership_mode) =
-            self.merge_ownership_into_ty(context, ty_without_ownership, ownership_mode_raw)?;
+            self.merge_ownership_into_ty(context, ty_without_ownership, ownership_mode_split)?;
 
         if let IrType::StructRef(s) = &ty {
             if s.get(self.type_parser).ignore {
