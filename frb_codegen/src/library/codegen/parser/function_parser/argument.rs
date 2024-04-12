@@ -33,7 +33,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     ) -> anyhow::Result<FunctionPartialInfo> {
         let ty_raw = self.type_parser.parse_type(pat_type.ty.as_ref(), context)?;
         let name = parse_name_from_pat_type(pat_type)?;
-        partial_info_for_normal_type_raw(ty_raw, &pat_type.attrs, name, )
+        let ownership_mode = TODO;
+        partial_info_for_normal_type_raw(ty_raw, &pat_type.attrs, name, ownership_mode)
     }
 
     fn parse_fn_arg_receiver(
