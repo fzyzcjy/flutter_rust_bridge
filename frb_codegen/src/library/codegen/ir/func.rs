@@ -12,8 +12,7 @@ pub struct IrFunc {
     pub name: NamespacedName,
     pub id: i32,
     pub inputs: Vec<IrField>,
-    pub output: IrType,
-    pub error_output: Option<IrType>,
+    pub output: IrFuncOutput,
     pub owner: IrFuncOwnerInfo,
     pub mode: IrFuncMode,
     pub rust_async: bool,
@@ -25,6 +24,11 @@ pub struct IrFunc {
     // Currently, we use serde only for tests. Since lineno can be unstable, we skip this field for comparison
     #[serde(skip_serializing)]
     pub src_lineno: usize,
+}
+
+pub struct IrFuncOutput {
+    pub normal: IrType,
+    pub error: Option<IrType>,
 }
 
 #[derive(Copy)]
