@@ -191,7 +191,12 @@ fn generate_function_dart_return_type(
         );
     }
 
-    if (return_stream.is_some() && func.stream_dart_await) || (func.mode != IrFuncMode::Sync) {
+    let return_future = if return_stream.is_some() {
+        func.stream_dart_await
+    } else {
+        func.mode != IrFuncMode::Sync
+    };
+    if return_future {
         inner = format!("Future<{inner}>");
     }
 
