@@ -8,7 +8,7 @@ use crate::codegen::ir::ty::IrType::Boxed;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::function_parser::{FunctionParser, FunctionPartialInfo};
 use crate::codegen::parser::type_parser::misc::parse_comments;
-use crate::codegen::parser::type_parser::rust_auto_opaque::parse_and_remove_ownership;
+use crate::codegen::parser::type_parser::rust_auto_opaque::split_ownership_from_ty;
 use crate::codegen::parser::type_parser::TypeParserParsingContext;
 use crate::if_then_some;
 use anyhow::{bail, ensure, Context};
@@ -32,7 +32,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             }
         };
 
-        let (ty_syn_without_ownership, ownership_mode_raw) = TODO;
+        let (ty_syn_without_ownership, ownership_mode_raw) = split_ownership_from_ty(ty_syn_raw);
 
         let ty_without_ownership =
             (self.type_parser).parse_type(ty_syn_without_ownership, context)?;

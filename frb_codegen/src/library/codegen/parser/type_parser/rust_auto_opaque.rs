@@ -22,7 +22,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         namespace: Option<Namespace>,
         ty: &Type,
     ) -> Result<IrType> {
-        let (inner, ownership_mode) = parse_and_remove_ownership(ty);
+        let (inner, ownership_mode) = split_ownership_from_ty(ty);
         let inner = external_impl::parse_type(inner)?;
         // println!("inner={inner:?}");
 
@@ -92,7 +92,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
 pub(super) type RustAutoOpaqueParserInfo = GeneralizedRustOpaqueParserInfo;
 
-pub(crate) fn parse_and_remove_ownership(ty: &Type) -> (Type, OwnershipMode) {
+pub(crate) fn split_ownership_from_ty(ty: &Type) -> (Type, OwnershipMode) {
     match ty {
         Type::Reference(ty) => (
             (*ty.elem).to_owned(),
