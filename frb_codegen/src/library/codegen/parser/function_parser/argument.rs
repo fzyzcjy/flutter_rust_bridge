@@ -11,7 +11,7 @@ use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::rust_auto_opaque::split_ownership_from_ty;
 use crate::codegen::parser::type_parser::TypeParserParsingContext;
 use crate::if_then_some;
-use anyhow::{bail, ensure, Context};
+use anyhow::Context;
 use syn::*;
 
 impl<'a, 'b> FunctionParser<'a, 'b> {
