@@ -72,18 +72,18 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         &mut self,
         context: &TypeParserParsingContext,
         ty_without_ownership: IrType,
-        ownership_mode: OwnershipMode,
+        ownership_mode: Option<OwnershipMode>,
     ) -> anyhow::Result<(IrType, Option<OwnershipMode>)> {
         Ok(match ty_without_ownership {
             IrType::RustAutoOpaque(ty_raw) => (
                 self.type_parser.transform_rust_auto_opaque(
                     &ty_raw,
-                    |raw| format!("{}{raw}", ownership_mode.prefix()),
+                    |raw| format!("{}{raw}", ownership_mode.map(|x| x.prefix()).unwrap_or("")),
                     context,
                 )?,
                 None,
             ),
-            _ => (ty_without_ownership, Some(ownership_mode)),
+            _ => (ty_without_ownership, ownership_mode),
         })
     }
 }
@@ -126,11 +126,13 @@ fn parse_receiver_ownership_mode(receiver: &Receiver) -> OwnershipMode {
     }
 }
 
-pub(crate) fn split_ownership_from_ty_except_ref_mut(ty_raw: &Type) -> (Type, OwnershipMode) {
+pub(crate) fn split_ownership_from_ty_except_ref_mut(
+    ty_raw: &Type,
+) -> (Type, Option<OwnershipMode>) {
     let (ty, ownership_mode) = split_ownership_from_ty(ty_raw);
     if ownership_mode == OwnershipMode::RefMut {
-        (ty_raw.to_owned(), TODO)
+        (ty_raw.to_owned(), None)
     } else {
-        (ty, ownership_mode)
+        (ty, Some(ownership_mode))
     }
 }
