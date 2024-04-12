@@ -1,8 +1,6 @@
-use crate::codegen::ir::namespace::Namespace;
-use crate::codegen::ir::ty::rust_auto_opaque::{
-    IrRustAutoOpaqueRaw, IrTypeRustAutoOpaque
-};
 use crate::codegen::ir::func::OwnershipMode;
+use crate::codegen::ir::namespace::Namespace;
+use crate::codegen::ir::ty::rust_auto_opaque::{IrRustAutoOpaqueRaw, IrTypeRustAutoOpaque};
 use crate::codegen::ir::ty::rust_opaque::{
     IrRustOpaqueInner, IrTypeRustOpaque, RustOpaqueCodecMode,
 };
@@ -24,17 +22,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         namespace: Option<Namespace>,
         ty: &Type,
     ) -> Result<IrType> {
-        let (ownership_mode, inner) = match ty {
-            Type::Reference(ty) => (
-                if ty.mutability.is_some() {
-                    OwnershipMode::RefMut
-                } else {
-                    OwnershipMode::Ref
-                },
-                (*ty.elem).to_owned(),
-            ),
-            _ => (OwnershipMode::Owned, ty.clone()),
-        };
+        let (ownership_mode, inner) = parse_and_remove_ownership(ty);
         let inner = external_impl::parse_type(inner)?;
         // println!("inner={inner:?}");
 
@@ -103,3 +91,17 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 }
 
 pub(super) type RustAutoOpaqueParserInfo = GeneralizedRustOpaqueParserInfo;
+
+fn parse_and_remove_ownership(ty: &Type) -> (Type, OwnershipMode) {
+    match ty {
+        Type::Reference(ty) => (
+            (*ty.elem).to_owned(),
+            if ty.mutability.is_some() {
+                OwnershipMode::RefMut
+            } else {
+                OwnershipMode::Ref
+            },
+        ),
+        _ => (ty.clone(), OwnershipMode::Owned),
+    }
+}

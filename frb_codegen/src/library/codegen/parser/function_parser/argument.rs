@@ -155,18 +155,3 @@ fn parse_receiver_ownership_mode(receiver: &Receiver) -> OwnershipMode {
         OwnershipMode::Owned
     }
 }
-
-fn parse_and_remove_ownership(ty: &Type) -> (Type, OwnershipMode) {
-    if let Type::Reference(ty_inner) = ty {
-        (
-            *ty_inner.elem,
-            if ty_inner.mutability.is_some() {
-                OwnershipMode::RefMut
-            } else {
-                OwnershipMode::Ref
-            },
-        )
-    } else {
-        (ty.to_owned(), OwnershipMode::Owned)
-    }
-}
