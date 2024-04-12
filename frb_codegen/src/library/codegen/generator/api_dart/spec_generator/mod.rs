@@ -7,6 +7,7 @@ use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGenerated
 use crate::codegen::generator::api_dart::spec_generator::dump::generate_dump_info;
 use crate::codegen::generator::api_dart::spec_generator::function::ApiDartGeneratedFunction;
 use crate::codegen::generator::api_dart::spec_generator::misc::generate_imports_which_types_and_funcs_use;
+use crate::codegen::generator::api_dart::spec_generator::sanity_checker::sanity_check_class_name_duplicates;
 use crate::codegen::ir::func::{IrFunc, IrFuncOwnerInfo};
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::{IrPack, IrPackComputedCache};
@@ -120,7 +121,7 @@ fn generate_item(
         })
         .unwrap_or_default();
 
-    sanity_check_class_name_duplicates();
+    sanity_check_class_name_duplicates(&classes);
 
     let unused_types = (context.ir_pack.unused_types.iter())
         .filter(|t| &t.namespace == namespace)
