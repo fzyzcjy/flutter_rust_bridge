@@ -1051,9 +1051,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       get rust_arc_decrement_strong_count_StructWithImplBlockInMultiFilePtr => wire
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile;
 
-  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_StrPtr => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr;
-
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_I16Ptr =>
       wire.rust_arc_decrement_strong_count_RustOpaque_i16;
 
@@ -2037,10 +2034,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   StructWithImplBlockInMultiFile
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
           dynamic raw);
-
-  @protected
-  Str dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr(
-      dynamic raw);
 
   @protected
   String dco_decode_Backtrace(dynamic raw);
@@ -3240,10 +3233,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   StructWithImplBlockInMultiFile
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
           dynamic raw);
-
-  @protected
-  Str dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr(
-      dynamic raw);
 
   @protected
   I16 dco_decode_RustOpaque_i16(dynamic raw);
@@ -10095,10 +10084,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
-  Str sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr(
-      SseDeserializer deserializer);
-
-  @protected
   String sse_decode_Backtrace(SseDeserializer deserializer);
 
   @protected
@@ -11301,10 +11286,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   StructWithImplBlockInMultiFile
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
           SseDeserializer deserializer);
-
-  @protected
-  Str sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr(
-      SseDeserializer deserializer);
 
   @protected
   I16 sse_decode_RustOpaque_i16(SseDeserializer deserializer);
@@ -25976,10 +25957,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       StructWithImplBlockInMultiFile raw);
 
   @protected
-  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr(
-      Str raw);
-
-  @protected
   PlatformPointer cst_encode_DartFn_Inputs_DartOpaque_Output_unit(
       FutureOr<void> Function(Object) raw);
 
@@ -26420,10 +26397,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
       StructWithImplBlockInMultiFile raw);
-
-  @protected
-  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr(
-      Str raw);
 
   @protected
   int cst_encode_RustOpaque_i16(I16 raw);
@@ -27516,11 +27489,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
           StructWithImplBlockInMultiFile self, SseSerializer serializer);
-
-  @protected
-  void
-      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr(
-          Str self, SseSerializer serializer);
 
   @protected
   void sse_encode_Backtrace(String self, SseSerializer serializer);
@@ -28788,11 +28756,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
           StructWithImplBlockInMultiFile self, SseSerializer serializer);
-
-  @protected
-  void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr(
-          Str self, SseSerializer serializer);
 
   @protected
   void sse_encode_RustOpaque_i16(I16 self, SseSerializer serializer);
@@ -36023,7 +35986,7 @@ class RustLibWire implements BaseWire {
   void wire_borrow_i32_twin_normal(NativePortType port_, int arg) =>
       wasmModule.wire_borrow_i32_twin_normal(port_, arg);
 
-  void wire_borrow_str_twin_normal(NativePortType port_, Object arg) =>
+  void wire_borrow_str_twin_normal(NativePortType port_, String arg) =>
       wasmModule.wire_borrow_str_twin_normal(port_, arg);
 
   void wire_borrow_string_twin_normal(NativePortType port_, String arg) =>
@@ -44954,7 +44917,7 @@ class RustLibWire implements BaseWire {
   void wire_borrow_i32_twin_rust_async(NativePortType port_, int arg) =>
       wasmModule.wire_borrow_i32_twin_rust_async(port_, arg);
 
-  void wire_borrow_str_twin_rust_async(NativePortType port_, Object arg) =>
+  void wire_borrow_str_twin_rust_async(NativePortType port_, String arg) =>
       wasmModule.wire_borrow_str_twin_rust_async(port_, arg);
 
   void wire_borrow_string_twin_rust_async(NativePortType port_, String arg) =>
@@ -45033,7 +44996,7 @@ class RustLibWire implements BaseWire {
           wasmModule.wire_borrow_i32_twin_sync(arg);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_borrow_str_twin_sync(Object arg) =>
+      wire_borrow_str_twin_sync(String arg) =>
           wasmModule.wire_borrow_str_twin_sync(arg);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
@@ -53162,18 +53125,6 @@ class RustLibWire implements BaseWire {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
               ptr);
 
-  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr(
-              ptr);
-
   void rust_arc_increment_strong_count_RustOpaque_i16(dynamic ptr) =>
       wasmModule.rust_arc_increment_strong_count_RustOpaque_i16(ptr);
 
@@ -53841,7 +53792,7 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_borrow_i32_twin_normal(NativePortType port_, int arg);
 
-  external void wire_borrow_str_twin_normal(NativePortType port_, Object arg);
+  external void wire_borrow_str_twin_normal(NativePortType port_, String arg);
 
   external void wire_borrow_string_twin_normal(
       NativePortType port_, String arg);
@@ -59741,7 +59692,7 @@ class RustLibWasmModule implements WasmModule {
   external void wire_borrow_i32_twin_rust_async(NativePortType port_, int arg);
 
   external void wire_borrow_str_twin_rust_async(
-      NativePortType port_, Object arg);
+      NativePortType port_, String arg);
 
   external void wire_borrow_string_twin_rust_async(
       NativePortType port_, String arg);
@@ -59777,7 +59728,7 @@ class RustLibWasmModule implements WasmModule {
       wire_borrow_i32_twin_sync(int arg);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_borrow_str_twin_sync(Object arg);
+      wire_borrow_str_twin_sync(String arg);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_borrow_string_twin_sync(String arg);
@@ -65237,14 +65188,6 @@ class RustLibWasmModule implements WasmModule {
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
-          dynamic ptr);
-
-  external void
-      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr(
-          dynamic ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr(
           dynamic ptr);
 
   external void rust_arc_increment_strong_count_RustOpaque_i16(dynamic ptr);

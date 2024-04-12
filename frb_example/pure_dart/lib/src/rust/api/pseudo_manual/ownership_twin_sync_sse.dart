@@ -4,13 +4,12 @@
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
 import '../../frb_generated.dart';
-import '../ownership.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 String borrowStringTwinSyncSse({required String arg, dynamic hint}) =>
     RustLib.instance.api.borrowStringTwinSyncSse(arg: arg, hint: hint);
 
-String borrowStrTwinSyncSse({required Str arg, dynamic hint}) =>
+String borrowStrTwinSyncSse({required String arg, dynamic hint}) =>
     RustLib.instance.api.borrowStrTwinSyncSse(arg: arg, hint: hint);
 
 int borrowI32TwinSyncSse({required int arg, dynamic hint}) =>

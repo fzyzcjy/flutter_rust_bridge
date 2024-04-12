@@ -11,7 +11,6 @@ use crate::api::external_impl::*;
 use crate::api::method::*;
 use crate::api::misc_no_twin_example_a::*;
 use crate::api::misc_no_twin_example_b::*;
-use crate::api::ownership::*;
 use crate::api::pseudo_manual::dropping_twin_rust_async::*;
 use crate::api::pseudo_manual::dropping_twin_rust_async_sse::*;
 use crate::api::pseudo_manual::dropping_twin_sse::*;
@@ -2660,16 +2659,6 @@ impl
     ) -> RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithImplBlockInMultiFile>,
     > {
-        unsafe { decode_rust_opaque_nom(self as _) }
-    }
-}
-impl CstDecode<RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<str>>>
-    for usize
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<str>> {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
@@ -17739,7 +17728,10 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_borrow_i32_twin_normal(port_
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire_borrow_str_twin_normal(port_: i64, arg: usize) {
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_borrow_str_twin_normal(
+    port_: i64,
+    arg: *mut wire_cst_list_prim_u_8_strict,
+) {
     wire_borrow_str_twin_normal_impl(port_, arg)
 }
 
@@ -30695,7 +30687,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_borrow_i32_twin_rust_async(
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_borrow_str_twin_rust_async(
     port_: i64,
-    arg: usize,
+    arg: *mut wire_cst_list_prim_u_8_strict,
 ) {
     wire_borrow_str_twin_rust_async_impl(port_, arg)
 }
@@ -30805,7 +30797,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_borrow_i32_twin_sync(
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_borrow_str_twin_sync(
-    arg: usize,
+    arg: *mut wire_cst_list_prim_u_8_strict,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_borrow_str_twin_sync_impl(arg)
 }
@@ -43094,24 +43086,6 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
         StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithImplBlockInMultiFile>,
         >::decrement_strong_count(ptr as _);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<str>>::increment_strong_count(ptr as _);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<str>>::decrement_strong_count(ptr as _);
     }
 }
 

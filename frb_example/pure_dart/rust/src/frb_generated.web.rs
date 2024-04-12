@@ -11,7 +11,6 @@ use crate::api::external_impl::*;
 use crate::api::method::*;
 use crate::api::misc_no_twin_example_a::*;
 use crate::api::misc_no_twin_example_b::*;
-use crate::api::ownership::*;
 use crate::api::pseudo_manual::dropping_twin_rust_async::*;
 use crate::api::pseudo_manual::dropping_twin_rust_async_sse::*;
 use crate::api::pseudo_manual::dropping_twin_sse::*;
@@ -11601,20 +11600,6 @@ impl
         unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
     }
 }
-impl CstDecode<RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<str>>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<str>> {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
 impl CstDecode<RustOpaqueMoi<i16>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueMoi<i16> {
@@ -14680,7 +14665,7 @@ pub fn wire_borrow_i32_twin_normal(
 #[wasm_bindgen]
 pub fn wire_borrow_str_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    arg: String,
 ) {
     wire_borrow_str_twin_normal_impl(port_, arg)
 }
@@ -27642,7 +27627,7 @@ pub fn wire_borrow_i32_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_borrow_str_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    arg: String,
 ) {
     wire_borrow_str_twin_rust_async_impl(port_, arg)
 }
@@ -27752,7 +27737,7 @@ pub fn wire_borrow_i32_twin_sync(
 
 #[wasm_bindgen]
 pub fn wire_borrow_str_twin_sync(
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    arg: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_borrow_str_twin_sync_impl(arg)
 }
@@ -40032,24 +40017,6 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
         StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithImplBlockInMultiFile>,
         >::decrement_strong_count(ptr as _);
-    }
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<str>>::increment_strong_count(ptr as _);
-    }
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockstr(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<str>>::decrement_strong_count(ptr as _);
     }
 }
 

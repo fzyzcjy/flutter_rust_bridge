@@ -9,7 +9,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 Future<String> borrowStringTwinNormal({required String arg, dynamic hint}) =>
     RustLib.instance.api.borrowStringTwinNormal(arg: arg, hint: hint);
 
-Future<String> borrowStrTwinNormal({required Str arg, dynamic hint}) =>
+Future<String> borrowStrTwinNormal({required String arg, dynamic hint}) =>
     RustLib.instance.api.borrowStrTwinNormal(arg: arg, hint: hint);
 
 Future<int> borrowI32TwinNormal({required int arg, dynamic hint}) =>
@@ -18,24 +18,6 @@ Future<int> borrowI32TwinNormal({required int arg, dynamic hint}) =>
 Future<SimpleStructForBorrowTwinNormal> borrowStructTwinNormal(
         {required SimpleStructForBorrowTwinNormal arg, dynamic hint}) =>
     RustLib.instance.api.borrowStructTwinNormal(arg: arg, hint: hint);
-
-// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<str>>
-@sealed
-class Str extends RustOpaque {
-  Str.dcoDecode(List<dynamic> wire) : super.dcoDecode(wire, _kStaticData);
-
-  Str.sseDecode(int ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_Str,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_Str,
-    rustArcDecrementStrongCountPtr:
-        RustLib.instance.api.rust_arc_decrement_strong_count_StrPtr,
-  );
-}
 
 class SimpleStructForBorrowTwinNormal {
   final String one;
