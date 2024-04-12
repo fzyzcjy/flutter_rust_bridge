@@ -11,7 +11,7 @@ crate::ir! {
 pub struct IrFunc {
     pub name: NamespacedName,
     pub id: i32,
-    pub inputs: Vec<IrField>,
+    pub inputs: Vec<IrFuncInput>,
     pub output: IrFuncOutput,
     pub owner: IrFuncOwnerInfo,
     pub mode: IrFuncMode,
@@ -24,6 +24,10 @@ pub struct IrFunc {
     // Currently, we use serde only for tests. Since lineno can be unstable, we skip this field for comparison
     #[serde(skip_serializing)]
     pub src_lineno: usize,
+}
+
+pub struct IrFuncInput {
+    pub inner: IrField,
 }
 
 pub struct IrFuncOutput {
