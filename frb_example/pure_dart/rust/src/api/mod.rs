@@ -48,3 +48,4 @@ pub mod structure;
 pub mod tuple;
 pub mod type_alias;
 pub mod uuid_type;
+pub mod ownership;
