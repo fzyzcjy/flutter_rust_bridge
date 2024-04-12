@@ -5,7 +5,7 @@ use crate::codegen::generator::codec::sse::ty::rust_opaque::{
     generate_generalized_rust_opaque_decode, generate_generalized_rust_opaque_encode,
 };
 use crate::codegen::generator::codec::sse::ty::*;
-use crate::codegen::ir::ty::rust_auto_opaque::OwnershipMode;
+use crate::codegen::ir::field::OwnershipMode;
 use convert_case::{Case, Casing};
 
 impl<'a> CodecSseTyTrait for RustAutoOpaqueCodecSseTy<'a> {

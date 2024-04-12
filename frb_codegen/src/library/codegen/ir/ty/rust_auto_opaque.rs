@@ -1,9 +1,9 @@
+use crate::codegen::ir::field::OwnershipMode;
 use super::rust_opaque::RUST_OPAQUE_AS_PRIMITIVE;
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::rust_opaque::{IrTypeRustOpaque, NameComponent};
 use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
-use serde::Serialize;
 
 crate::ir! {
 pub struct IrTypeRustAutoOpaque {
@@ -17,16 +17,6 @@ pub struct IrRustAutoOpaqueRaw {
     pub string: String,
     pub segments: Vec<NameComponent>,
 }
-}
-
-#[derive(Debug, Clone, Hash, Eq, PartialEq, Serialize, strum_macros::Display)]
-pub enum OwnershipMode {
-    /// "T"
-    Owned,
-    /// "&T"
-    Ref,
-    /// "&mut T"
-    RefMut,
 }
 
 impl IrTypeTrait for IrTypeRustAutoOpaque {

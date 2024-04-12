@@ -2,7 +2,7 @@ use crate::codegen::ir::field::{IrField, IrFieldSettings};
 use crate::codegen::ir::func::IrFuncOwnerInfo;
 use crate::codegen::ir::ident::IrIdent;
 use crate::codegen::ir::ty::boxed::IrTypeBoxed;
-use crate::codegen::ir::ty::rust_auto_opaque::OwnershipMode;
+use crate::codegen::ir::field::OwnershipMode;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::Boxed;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
