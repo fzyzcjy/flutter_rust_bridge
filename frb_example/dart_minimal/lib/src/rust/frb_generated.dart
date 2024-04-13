@@ -64,19 +64,9 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  Future<void> myStructF({required MyStruct that, dynamic hint});
-
   Future<void> initApp({dynamic hint});
 
   Future<int> minimalAdder({required int a, required int b, dynamic hint});
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_MyStruct;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_MyStruct;
-
-  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_MyStructPtr;
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -86,32 +76,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     required super.generalizedFrbRustBinding,
     required super.portManager,
   });
-
-  @override
-  Future<void> myStructF({required MyStruct that, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyStruct(
-            that, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 3, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta: kMyStructFConstMeta,
-      argValues: [that],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kMyStructFConstMeta => const TaskConstMeta(
-        debugName: "MyStruct_f",
-        argNames: ["that"],
-      );
 
   @override
   Future<void> initApp({dynamic hint}) {
@@ -163,38 +127,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         argNames: ["a", "b"],
       );
 
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_MyStruct => wire
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyStruct;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_MyStruct => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyStruct;
-
-  @protected
-  MyStruct
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyStruct(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return MyStruct.dcoDecode(raw as List<dynamic>);
-  }
-
-  @protected
-  MyStruct
-      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyStruct(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return MyStruct.dcoDecode(raw as List<dynamic>);
-  }
-
-  @protected
-  MyStruct
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyStruct(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return MyStruct.dcoDecode(raw as List<dynamic>);
-  }
-
   @protected
   int dco_decode_i_32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -205,39 +137,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void dco_decode_unit(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return;
-  }
-
-  @protected
-  int dco_decode_usize(dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return dcoDecodeI64OrU64(raw);
-  }
-
-  @protected
-  MyStruct
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyStruct(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return MyStruct.sseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
-  MyStruct
-      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyStruct(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return MyStruct.sseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
-  MyStruct
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyStruct(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return MyStruct.sseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
@@ -252,39 +151,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  int sse_decode_usize(SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return deserializer.buffer.getUint64();
-  }
-
-  @protected
   bool sse_decode_bool(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return deserializer.buffer.getUint8() != 0;
-  }
-
-  @protected
-  void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyStruct(
-          MyStruct self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(self.sseEncode(move: true), serializer);
-  }
-
-  @protected
-  void
-      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyStruct(
-          MyStruct self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(self.sseEncode(move: false), serializer);
-  }
-
-  @protected
-  void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyStruct(
-          MyStruct self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
   @protected
@@ -296,12 +165,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void sse_encode_unit(void self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-  }
-
-  @protected
-  void sse_encode_usize(int self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    serializer.buffer.putUint64(self);
   }
 
   @protected
