@@ -22719,6 +22719,43 @@ fn wire_func_stream_realistic_twin_normal_impl(
         },
     )
 }
+fn wire_stream_sink_dart_async_twin_normal_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "stream_sink_dart_async_twin_normal",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_sink =
+                <StreamSink<i32, flutter_rust_bridge::for_generated::SseCodec>>::sse_decode(
+                    &mut deserializer,
+                );
+            deserializer.end();
+            move |context| {
+                transform_result_sse((move || {
+                    Result::<_, ()>::Ok(
+                        crate::api::stream_misc::stream_sink_dart_async_twin_normal(api_sink),
+                    )
+                })())
+            }
+        },
+    )
+}
 fn wire_func_struct_with_one_field_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -33958,19 +33995,20 @@ fn pde_ffi_dispatcher_primary_impl(
 1069 => wire_stream_sink_inside_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
 1068 => wire_stream_sink_inside_vec_twin_normal_impl(port, ptr, rust_vec_len, data_len),
 1070 => wire_func_stream_realistic_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1072 => wire_func_struct_with_one_field_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1073 => wire_func_struct_with_two_field_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1071 => wire_func_struct_with_zero_field_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1074 => wire_func_tuple_struct_with_one_field_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1075 => wire_func_tuple_struct_with_two_field_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1077 => wire_test_tuple_2_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1076 => wire_test_tuple_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1078 => wire_handle_type_alias_id_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1080 => wire_handle_type_alias_model_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1079 => wire_handle_type_nest_alias_id_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1083 => wire_handle_nested_uuids_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1081 => wire_handle_uuid_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1082 => wire_handle_uuids_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1071 => wire_stream_sink_dart_async_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1073 => wire_func_struct_with_one_field_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1074 => wire_func_struct_with_two_field_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1072 => wire_func_struct_with_zero_field_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1075 => wire_func_tuple_struct_with_one_field_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1076 => wire_func_tuple_struct_with_two_field_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1078 => wire_test_tuple_2_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1077 => wire_test_tuple_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1079 => wire_handle_type_alias_id_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1081 => wire_handle_type_alias_model_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1080 => wire_handle_type_nest_alias_id_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1084 => wire_handle_nested_uuids_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1082 => wire_handle_uuid_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1083 => wire_handle_uuids_twin_normal_impl(port, ptr, rust_vec_len, data_len),
                         _ => unreachable!(),
                     }
 }

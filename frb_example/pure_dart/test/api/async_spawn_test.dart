@@ -16,6 +16,6 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('dart call simpleUseAsyncSpawnLocal', () async {
-    expect(await (await simpleUseAsyncSpawnLocal(arg: 'a')).first, 'aa');
+    expect(await simpleUseAsyncSpawnLocal(arg: 'a').first, 'aa');
   });
 }
