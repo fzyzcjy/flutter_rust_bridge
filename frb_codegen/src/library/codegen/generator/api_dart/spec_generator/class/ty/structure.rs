@@ -20,9 +20,11 @@ impl<'a> ApiDartGeneratorClassTrait for StructRefApiDartGenerator<'a> {
             generate_class_extra_body(self.ir_type(), &self.context.ir_pack.dart_code_of_type);
 
         let constructor_postfix = dart_constructor_postfix(&src.name, &self.context.ir_pack.funcs);
+        let class_name = &self.ir.ident.0.name;
 
         Some(ApiDartGeneratedClass {
             namespace: src.name.namespace.clone(),
+            class_name: class_name.to_owned(),
             code: if src.using_freezed() {
                 self.generate_mode_freezed(
                     src,
@@ -31,6 +33,7 @@ impl<'a> ApiDartGeneratorClassTrait for StructRefApiDartGenerator<'a> {
                     &methods,
                     constructor_postfix,
                     &extra_body,
+                    class_name,
                 )
             } else {
                 self.generate_mode_non_freezed(
@@ -40,10 +43,11 @@ impl<'a> ApiDartGeneratorClassTrait for StructRefApiDartGenerator<'a> {
                     &methods,
                     constructor_postfix,
                     &extra_body,
+                    class_name,
                 )
             },
             needs_freezed: src.using_freezed(),
-            ..Default::default()
+            header: Default::default(),
         })
     }
 }
