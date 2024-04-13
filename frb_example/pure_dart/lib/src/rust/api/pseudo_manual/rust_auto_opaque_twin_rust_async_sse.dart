@@ -162,10 +162,9 @@ Future<NonCloneSimpleEnumTwinRustAsyncSse>
         RustLib.instance.api
             .rustAutoOpaqueEnumReturnOwnTwinRustAsyncSse(hint: hint);
 
-Future<Stream<NonCloneSimpleTwinRustAsyncSse>>
-    rustAutoOpaqueStreamSinkTwinRustAsyncSse({dynamic hint}) =>
-        RustLib.instance.api
-            .rustAutoOpaqueStreamSinkTwinRustAsyncSse(hint: hint);
+Stream<NonCloneSimpleTwinRustAsyncSse> rustAutoOpaqueStreamSinkTwinRustAsyncSse(
+        {dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueStreamSinkTwinRustAsyncSse(hint: hint);
 
 Future<void> rustAutoOpaqueArgVecOwnTwinRustAsyncSse(
         {required List<NonCloneSimpleTwinRustAsyncSse> arg,

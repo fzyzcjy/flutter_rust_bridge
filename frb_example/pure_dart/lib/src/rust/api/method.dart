@@ -54,24 +54,24 @@ class ConcatenateWithTwinNormal {
       RustLib.instance.api.concatenateWithTwinNormalConcatenateTwinNormal(
           that: this, b: b, hint: hint);
 
-  static Future<Stream<int>> handleSomeStaticStreamSinkSingleArgTwinNormal(
+  static Stream<int> handleSomeStaticStreamSinkSingleArgTwinNormal(
           {dynamic hint}) =>
       RustLib.instance.api
           .concatenateWithTwinNormalHandleSomeStaticStreamSinkSingleArgTwinNormal(
               hint: hint);
 
-  static Future<Stream<Log2TwinNormal>> handleSomeStaticStreamSinkTwinNormal(
+  static Stream<Log2TwinNormal> handleSomeStaticStreamSinkTwinNormal(
           {required int key, required int max, dynamic hint}) =>
       RustLib.instance.api
           .concatenateWithTwinNormalHandleSomeStaticStreamSinkTwinNormal(
               key: key, max: max, hint: hint);
 
-  Future<Stream<int>> handleSomeStreamSinkAt1TwinNormal({dynamic hint}) =>
+  Stream<int> handleSomeStreamSinkAt1TwinNormal({dynamic hint}) =>
       RustLib.instance.api
           .concatenateWithTwinNormalHandleSomeStreamSinkAt1TwinNormal(
               that: this, hint: hint);
 
-  Future<Stream<Log2TwinNormal>> handleSomeStreamSinkTwinNormal(
+  Stream<Log2TwinNormal> handleSomeStreamSinkTwinNormal(
           {required int key, required int max, dynamic hint}) =>
       RustLib.instance.api
           .concatenateWithTwinNormalHandleSomeStreamSinkTwinNormal(

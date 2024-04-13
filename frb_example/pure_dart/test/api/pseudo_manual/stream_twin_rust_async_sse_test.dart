@@ -45,12 +45,12 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   Future<void> testHandleStream(
-      FutureOr<Stream<LogTwinRustAsyncSse>> Function(
+      Stream<LogTwinRustAsyncSse> Function(
               {dynamic hint, required int key, required int max})
           handleStreamFunction) async {
     final max = 5;
     final key = 8;
-    final stream = await handleStreamFunction(key: key, max: max);
+    final stream = handleStreamFunction(key: key, max: max);
     var cnt = 0;
     await for (final value in stream) {
       print("output from handle_stream_x's stream: $value");
@@ -74,8 +74,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('stream_sink_fixed_sized_primitive_array_twin_normal', () async {
     final output =
-        await (await streamSinkFixedSizedPrimitiveArrayTwinRustAsyncSse())
-            .toList();
+        await streamSinkFixedSizedPrimitiveArrayTwinRustAsyncSse().toList();
     expect(output, [
       orderedEquals([1, 2]),
       orderedEquals([3, 4]),

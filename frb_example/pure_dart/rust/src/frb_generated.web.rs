@@ -34445,6 +34445,16 @@ pub fn wire_func_stream_realistic_twin_sse(
 }
 
 #[wasm_bindgen]
+pub fn wire_stream_sink_dart_async_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_stream_sink_dart_async_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
 pub fn wire_func_stream_return_error_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     _sink: String,
@@ -35944,6 +35954,14 @@ pub fn wire_func_stream_realistic_twin_normal(
     arg: String,
 ) {
     wire_func_stream_realistic_twin_normal_impl(port_, sink, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_stream_sink_dart_async_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    sink: String,
+) {
+    wire_stream_sink_dart_async_twin_normal_impl(port_, sink)
 }
 
 #[wasm_bindgen]

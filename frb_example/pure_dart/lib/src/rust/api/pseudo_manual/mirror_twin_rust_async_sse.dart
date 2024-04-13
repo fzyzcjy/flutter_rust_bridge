@@ -21,19 +21,18 @@ Future<bool> isAppEmbeddedTwinRustAsyncSse(
     RustLib.instance.api
         .isAppEmbeddedTwinRustAsyncSse(appSettings: appSettings, hint: hint);
 
-Future<Stream<ApplicationSettings>> appSettingsStreamTwinRustAsyncSse(
-        {dynamic hint}) =>
+Stream<ApplicationSettings> appSettingsStreamTwinRustAsyncSse({dynamic hint}) =>
     RustLib.instance.api.appSettingsStreamTwinRustAsyncSse(hint: hint);
 
-Future<Stream<List<ApplicationSettings>>> appSettingsVecStreamTwinRustAsyncSse(
+Stream<List<ApplicationSettings>> appSettingsVecStreamTwinRustAsyncSse(
         {dynamic hint}) =>
     RustLib.instance.api.appSettingsVecStreamTwinRustAsyncSse(hint: hint);
 
-Future<Stream<MirrorStructTwinRustAsyncSse>> mirrorStructStreamTwinRustAsyncSse(
+Stream<MirrorStructTwinRustAsyncSse> mirrorStructStreamTwinRustAsyncSse(
         {dynamic hint}) =>
     RustLib.instance.api.mirrorStructStreamTwinRustAsyncSse(hint: hint);
 
-Future<Stream<(ApplicationSettings, RawStringEnumMirrored)>>
+Stream<(ApplicationSettings, RawStringEnumMirrored)>
     mirrorTupleStreamTwinRustAsyncSse({dynamic hint}) =>
         RustLib.instance.api.mirrorTupleStreamTwinRustAsyncSse(hint: hint);
 
@@ -97,27 +96,26 @@ Future<StructWithHashMap> testHashmapWithMirroredValueTwinRustAsyncSse(
     RustLib.instance.api
         .testHashmapWithMirroredValueTwinRustAsyncSse(hint: hint);
 
-Future<Stream<ApplicationMode>> mirrorEnumStreamTwinRustAsyncSse(
-        {dynamic hint}) =>
+Stream<ApplicationMode> mirrorEnumStreamTwinRustAsyncSse({dynamic hint}) =>
     RustLib.instance.api.mirrorEnumStreamTwinRustAsyncSse(hint: hint);
 
-Future<Stream<ApplicationMode?>> mirrorOptionEnumStreamTwinRustAsyncSse(
+Stream<ApplicationMode?> mirrorOptionEnumStreamTwinRustAsyncSse(
         {dynamic hint}) =>
     RustLib.instance.api.mirrorOptionEnumStreamTwinRustAsyncSse(hint: hint);
 
-Future<Stream<List<ApplicationMode>>> mirrorVecEnumStreamTwinRustAsyncSse(
+Stream<List<ApplicationMode>> mirrorVecEnumStreamTwinRustAsyncSse(
         {dynamic hint}) =>
     RustLib.instance.api.mirrorVecEnumStreamTwinRustAsyncSse(hint: hint);
 
-Future<Stream<Map<int, ApplicationMode>>> mirrorMapEnumStreamTwinRustAsyncSse(
+Stream<Map<int, ApplicationMode>> mirrorMapEnumStreamTwinRustAsyncSse(
         {dynamic hint}) =>
     RustLib.instance.api.mirrorMapEnumStreamTwinRustAsyncSse(hint: hint);
 
-Future<Stream<Set<ApplicationMode>>> mirrorSetEnumStreamTwinRustAsyncSse(
+Stream<Set<ApplicationMode>> mirrorSetEnumStreamTwinRustAsyncSse(
         {dynamic hint}) =>
     RustLib.instance.api.mirrorSetEnumStreamTwinRustAsyncSse(hint: hint);
 
-Future<Stream<ApplicationModeArray2>> mirrorArrayEnumStreamTwinRustAsyncSse(
+Stream<ApplicationModeArray2> mirrorArrayEnumStreamTwinRustAsyncSse(
         {dynamic hint}) =>
     RustLib.instance.api.mirrorArrayEnumStreamTwinRustAsyncSse(hint: hint);
 

@@ -54,23 +54,23 @@ class ConcatenateWithTwinSse {
       RustLib.instance.api.concatenateWithTwinSseConcatenateTwinSse(
           that: this, b: b, hint: hint);
 
-  static Future<Stream<int>> handleSomeStaticStreamSinkSingleArgTwinSse(
+  static Stream<int> handleSomeStaticStreamSinkSingleArgTwinSse(
           {dynamic hint}) =>
       RustLib.instance.api
           .concatenateWithTwinSseHandleSomeStaticStreamSinkSingleArgTwinSse(
               hint: hint);
 
-  static Future<Stream<Log2TwinSse>> handleSomeStaticStreamSinkTwinSse(
+  static Stream<Log2TwinSse> handleSomeStaticStreamSinkTwinSse(
           {required int key, required int max, dynamic hint}) =>
       RustLib.instance.api
           .concatenateWithTwinSseHandleSomeStaticStreamSinkTwinSse(
               key: key, max: max, hint: hint);
 
-  Future<Stream<int>> handleSomeStreamSinkAt1TwinSse({dynamic hint}) =>
+  Stream<int> handleSomeStreamSinkAt1TwinSse({dynamic hint}) =>
       RustLib.instance.api.concatenateWithTwinSseHandleSomeStreamSinkAt1TwinSse(
           that: this, hint: hint);
 
-  Future<Stream<Log2TwinSse>> handleSomeStreamSinkTwinSse(
+  Stream<Log2TwinSse> handleSomeStreamSinkTwinSse(
           {required int key, required int max, dynamic hint}) =>
       RustLib.instance.api.concatenateWithTwinSseHandleSomeStreamSinkTwinSse(
           that: this, key: key, max: max, hint: hint);

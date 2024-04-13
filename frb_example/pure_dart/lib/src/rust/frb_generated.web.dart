@@ -49359,6 +49359,14 @@ class RustLibWire implements BaseWire {
       wasmModule.wire_func_stream_realistic_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
+  void wire_stream_sink_dart_async_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_stream_sink_dart_async_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
   void wire_func_stream_return_error_twin_rust_async(
           NativePortType port_, String _sink) =>
       wasmModule.wire_func_stream_return_error_twin_rust_async(port_, _sink);
@@ -50327,6 +50335,10 @@ class RustLibWire implements BaseWire {
   void wire_func_stream_realistic_twin_normal(
           NativePortType port_, String sink, String arg) =>
       wasmModule.wire_func_stream_realistic_twin_normal(port_, sink, arg);
+
+  void wire_stream_sink_dart_async_twin_normal(
+          NativePortType port_, String sink) =>
+      wasmModule.wire_stream_sink_dart_async_twin_normal(port_, sink);
 
   void wire_func_struct_with_one_field_twin_normal(
           NativePortType port_, List<dynamic> arg) =>
@@ -62427,6 +62439,9 @@ class RustLibWasmModule implements WasmModule {
   external void wire_func_stream_realistic_twin_sse(NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
+  external void wire_stream_sink_dart_async_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
   external void wire_func_stream_return_error_twin_rust_async(
       NativePortType port_, String _sink);
 
@@ -63056,6 +63071,9 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_func_stream_realistic_twin_normal(
       NativePortType port_, String sink, String arg);
+
+  external void wire_stream_sink_dart_async_twin_normal(
+      NativePortType port_, String sink);
 
   external void wire_func_struct_with_one_field_twin_normal(
       NativePortType port_, List<dynamic> arg);

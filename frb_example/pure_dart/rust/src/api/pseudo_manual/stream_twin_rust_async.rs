@@ -8,14 +8,16 @@ use crate::frb_generated::StreamSink;
 use crate::frb_generated::FLUTTER_RUST_BRIDGE_HANDLER;
 use anyhow::anyhow;
 use flutter_rust_bridge::for_generated::BaseThreadPool;
-use flutter_rust_bridge::transfer;
+use flutter_rust_bridge::{frb, transfer};
 
+#[frb(stream_dart_await)]
 pub async fn func_stream_return_error_twin_rust_async(
     _sink: StreamSink<String>,
 ) -> anyhow::Result<()> {
     Err(anyhow!("deliberate error"))
 }
 
+#[frb(stream_dart_await)]
 pub async fn func_stream_return_panic_twin_rust_async(
     _sink: StreamSink<String>,
 ) -> anyhow::Result<()> {

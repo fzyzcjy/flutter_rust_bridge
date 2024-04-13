@@ -84,7 +84,8 @@
         "type": "Primitive"
       },
       "owner": "Function",
-      "rust_async": false
+      "rust_async": false,
+      "stream_dart_await": false
     }
   ],
   "struct_pool": {
