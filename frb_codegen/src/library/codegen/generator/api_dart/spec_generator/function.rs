@@ -51,7 +51,7 @@ pub(crate) fn generate(
         &return_stream,
     );
     let func_return_type = generate_function_dart_return_type(
-        &func,
+        func,
         &ApiDartGenerator::new(func.output.clone(), context).dart_api_type(),
         &return_stream,
         context,
