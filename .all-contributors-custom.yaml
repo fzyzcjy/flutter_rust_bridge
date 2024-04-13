@@ -33,6 +33,7 @@
 - w-ensink: Improve doc. Fix CI. Refactor. Add tests.
 - smw-wagnerma: Improve Windows encoding handling.
 - powpingdone: Document JNI init and libc++_static linking.
+- debanjanbasu: Document alternative NDK init.
 - valeth: Rename callFfi's port.
 - sccheruku: Prevent double-generating utility.
 - upsuper: Refactor delegate-attr.

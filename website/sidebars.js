@@ -230,6 +230,7 @@ const sidebars = {
                         'guides/how-to/init',
                         'guides/how-to/stateful-rust',
                         'guides/how-to/protobuf-json',
+                        'guides/how-to/ndk-init',
                         'guides/how-to/regression',
                         'guides/how-to/object-pool',
                         'guides/how-to/gitignore',
