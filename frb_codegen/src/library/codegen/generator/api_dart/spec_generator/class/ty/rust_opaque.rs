@@ -31,6 +31,7 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
 
         Some(ApiDartGeneratedClass {
             namespace: self.ir.namespace.clone(),
+            class_name: dart_api_type.clone(),
             code: format!(
                 "
             // Rust type: {rust_api_type}
@@ -51,7 +52,7 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
             }}"
             ),
             needs_freezed: false,
-            ..Default::default()
+            header: Default::default(),
         })
     }
 }
