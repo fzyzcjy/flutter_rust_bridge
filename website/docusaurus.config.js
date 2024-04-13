@@ -18,7 +18,7 @@ const config = {
     // If you aren't using GitHub pages, you don't need these.
     organizationName: 'fzyzcjy', // Usually your GitHub org/user name.
     projectName: 'flutter_rust_bridge', // Usually your repo name.
- 
+
     // https://docusaurus.io/docs/api/docusaurus-config#trailingSlash
     // https://github.com/facebook/docusaurus/issues/3372
     trailingSlash: false,
@@ -78,7 +78,7 @@ const config = {
                 logo: {
                     alt: 'Logo',
                     src: 'logo.png',
-                    srcDark:'logo_dark.png',
+                    srcDark: 'logo_dark.png',
                 },
                 items: [
                     // TODO
@@ -161,7 +161,7 @@ const config = {
                 theme: lightCodeTheme,
                 darkTheme: darkCodeTheme,
                 defaultLanguage: "dart",
-                additionalLanguages: ["dart", "cpp", "yaml", "rust"],
+                additionalLanguages: ["dart", "cpp", "yaml", "toml", "rust", "kotlin"],
             },
             algolia: {
                 // The application ID provided by Algolia
