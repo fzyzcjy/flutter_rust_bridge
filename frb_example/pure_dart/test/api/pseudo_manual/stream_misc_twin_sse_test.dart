@@ -14,12 +14,17 @@ Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   test('dart call funcStreamRealisticTwinSse', () async {
-    final stream = await funcStreamRealisticTwinSse(arg: 'hello');
+    final stream = funcStreamRealisticTwinSse(arg: 'hello');
     var cnt = 0;
     await for (final value in stream) {
       debugPrint("output from func_stream's stream: $value");
       cnt++;
     }
     expect(cnt, 10);
+  });
+
+  test('streamSinkDartAsyncTwinSse', () async {
+    final stream = await streamSinkDartAsyncTwinSse();
+    expect(await stream.toList(), [100]);
   });
 }

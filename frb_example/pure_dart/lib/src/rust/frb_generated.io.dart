@@ -85494,6 +85494,29 @@ class RustLibWire implements BaseWire {
       _wire_func_stream_realistic_twin_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
+  void wire_stream_sink_dart_async_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_stream_sink_dart_async_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_stream_sink_dart_async_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_stream_sink_dart_async_twin_sse');
+  late final _wire_stream_sink_dart_async_twin_sse =
+      _wire_stream_sink_dart_async_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
   void wire_func_stream_return_error_twin_rust_async(
     int port_,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> _sink,
@@ -88958,6 +88981,25 @@ class RustLibWire implements BaseWire {
       _wire_func_stream_realistic_twin_normalPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>,
               ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+
+  void wire_stream_sink_dart_async_twin_normal(
+    int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
+  ) {
+    return _wire_stream_sink_dart_async_twin_normal(
+      port_,
+      sink,
+    );
+  }
+
+  late final _wire_stream_sink_dart_async_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+      'frbgen_frb_example_pure_dart_wire_stream_sink_dart_async_twin_normal');
+  late final _wire_stream_sink_dart_async_twin_normal =
+      _wire_stream_sink_dart_async_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_func_struct_with_one_field_twin_normal(
     int port_,

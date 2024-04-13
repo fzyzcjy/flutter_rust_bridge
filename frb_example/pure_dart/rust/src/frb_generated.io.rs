@@ -37521,6 +37521,16 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_stream_realistic_twin_s
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_stream_sink_dart_async_twin_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_stream_sink_dart_async_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_stream_return_error_twin_rust_async(
     port_: i64,
     _sink: *mut wire_cst_list_prim_u_8_strict,
@@ -39018,6 +39028,14 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_stream_realistic_twin_n
     arg: *mut wire_cst_list_prim_u_8_strict,
 ) {
     wire_func_stream_realistic_twin_normal_impl(port_, sink, arg)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_stream_sink_dart_async_twin_normal(
+    port_: i64,
+    sink: *mut wire_cst_list_prim_u_8_strict,
+) {
+    wire_stream_sink_dart_async_twin_normal_impl(port_, sink)
 }
 
 #[no_mangle]

@@ -276,7 +276,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('stream sink', () async {
-    final stream = await rustAutoOpaqueStreamSinkTwinSyncSse();
+    final stream = rustAutoOpaqueStreamSinkTwinSyncSse();
     final obj = (await stream.toList()).single;
     await futurizeVoidTwinSyncSse(
         rustAutoOpaqueArgBorrowTwinSyncSse(arg: obj, expect: 42));

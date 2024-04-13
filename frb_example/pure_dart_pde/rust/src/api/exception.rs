@@ -3,6 +3,7 @@
 use crate::frb_generated::StreamSink;
 use anyhow::{anyhow, Result};
 use backtrace::Backtrace;
+use flutter_rust_bridge::frb;
 
 // ------------------------------ built-in errors ----------------------------------
 
@@ -232,6 +233,7 @@ pub fn panic_with_custom_result_twin_normal() -> Result<(), CustomErrorTwinNorma
     panic!("just a panic");
 }
 
+#[frb(stream_dart_await)]
 pub fn stream_sink_throw_anyhow_twin_normal(_sink: StreamSink<String>) -> Result<()> {
     Err(anyhow!("anyhow error"))
 }

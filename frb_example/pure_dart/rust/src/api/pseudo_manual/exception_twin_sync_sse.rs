@@ -5,6 +5,7 @@
 use crate::frb_generated::StreamSink;
 use anyhow::{anyhow, Result};
 use backtrace::Backtrace;
+use flutter_rust_bridge::frb;
 
 // ------------------------------ built-in errors ----------------------------------
 
@@ -293,6 +294,7 @@ pub fn panic_with_custom_result_twin_sync_sse() -> Result<(), CustomErrorTwinSyn
     panic!("just a panic");
 }
 
+#[frb(stream_dart_await)]
 #[flutter_rust_bridge::frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]
 pub fn stream_sink_throw_anyhow_twin_sync_sse(
