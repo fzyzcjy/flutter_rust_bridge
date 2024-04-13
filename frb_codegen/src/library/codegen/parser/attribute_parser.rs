@@ -218,7 +218,14 @@ impl Parse for FrbAttribute {
 
         let keyword_output = parse_keyword::<non_final, _>(input, &lookahead, non_final, NonFinal)
             .or_else(|| parse_keyword::<sync, _>(input, &lookahead, sync, Sync))
-            .or_else(|| parse_keyword::<stream_dart_await, _>(input, &lookahead, stream_dart_await, StreamDartAwait))
+            .or_else(|| {
+                parse_keyword::<stream_dart_await, _>(
+                    input,
+                    &lookahead,
+                    stream_dart_await,
+                    StreamDartAwait,
+                )
+            })
             .or_else(|| parse_keyword::<getter, _>(input, &lookahead, getter, Getter))
             .or_else(|| parse_keyword::<init, _>(input, &lookahead, init, Init))
             .or_else(|| parse_keyword::<ignore, _>(input, &lookahead, ignore, Ignore))
