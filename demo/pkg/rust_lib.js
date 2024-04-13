@@ -224,11 +224,11 @@ function makeMutClosure(arg0, arg1, dtor, f) {
     return real;
 }
 function __wbg_adapter_34(arg0, arg1, arg2) {
-    wasm._dyn_core__ops__function__FnMut__A____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h72de905ea0e7d2ed(arg0, arg1, addHeapObject(arg2));
+    wasm._dyn_core__ops__function__FnMut__A____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__hd7cedf47102ecc52(arg0, arg1, addHeapObject(arg2));
 }
 
 function __wbg_adapter_39(arg0, arg1, arg2) {
-    wasm._dyn_core__ops__function__FnMut__A____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h6f8ea163181a7a5f(arg0, arg1, addHeapObject(arg2));
+    wasm._dyn_core__ops__function__FnMut__A____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h53933f8e00bc8fd2(arg0, arg1, addHeapObject(arg2));
 }
 
 /**
@@ -350,7 +350,7 @@ __exports.dart_opaque_dart2rust_encode = function(handle, dart_handler_port) {
 };
 
 function __wbg_adapter_123(arg0, arg1, arg2, arg3) {
-    wasm.wasm_bindgen__convert__closures__invoke2_mut__h2f0f181779c060ad(arg0, arg1, addHeapObject(arg2), addHeapObject(arg3));
+    wasm.wasm_bindgen__convert__closures__invoke2_mut__h3512641d6af92727(arg0, arg1, addHeapObject(arg2), addHeapObject(arg3));
 }
 
 const WorkerPoolFinalization = (typeof FinalizationRegistry === 'undefined')
@@ -779,11 +779,11 @@ function __wbg_get_imports() {
         return addHeapObject(ret);
     };
     imports.wbg.__wbindgen_closure_wrapper454 = function(arg0, arg1, arg2) {
-        const ret = makeMutClosure(arg0, arg1, 185, __wbg_adapter_39);
+        const ret = makeMutClosure(arg0, arg1, 186, __wbg_adapter_39);
         return addHeapObject(ret);
     };
-    imports.wbg.__wbindgen_closure_wrapper456 = function(arg0, arg1, arg2) {
-        const ret = makeMutClosure(arg0, arg1, 185, __wbg_adapter_39);
+    imports.wbg.__wbindgen_closure_wrapper455 = function(arg0, arg1, arg2) {
+        const ret = makeMutClosure(arg0, arg1, 186, __wbg_adapter_39);
         return addHeapObject(ret);
     };
 
