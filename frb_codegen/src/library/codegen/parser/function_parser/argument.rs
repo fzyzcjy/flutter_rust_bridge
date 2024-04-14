@@ -28,7 +28,10 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             FnArg::Receiver(ref receiver) => {
                 let method = if_then_some!(let IrFuncOwnerInfo::Method(method) = owner, method)
                     .context("`self` must happen within methods")?;
-                (syntheize_receiver_type(receiver, method)?, "that".to_owned())
+                (
+                    syntheize_receiver_type(receiver, method)?,
+                    "that".to_owned(),
+                )
             }
         };
 
@@ -106,7 +109,10 @@ fn parse_name_from_pat_type(pat_type: &PatType) -> anyhow::Result<String> {
         .with_context(|| quote::quote!(#pat_type).to_string())
 }
 
-fn syntheize_receiver_type(receiver: &Receiver, method: &IrFuncOwnerInfoMethod) -> anyhow::Result<Type> {
+fn syntheize_receiver_type(
+    receiver: &Receiver,
+    method: &IrFuncOwnerInfoMethod,
+) -> anyhow::Result<Type> {
     let ty_str = format!(
         "{}{}",
         parse_receiver_ownership_mode(receiver).prefix(),

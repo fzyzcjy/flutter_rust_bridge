@@ -148,7 +148,9 @@ fn generate_func_impl(
     let func_name = &func.name.name.to_case(Case::Camel);
     let param_names: Vec<String> = [
         ((func.inputs.iter())
-            .filter(|field| Some(&field.inner.name) != return_stream.as_ref().map(|s| &s.field.name))
+            .filter(|field| {
+                Some(&field.inner.name) != return_stream.as_ref().map(|s| &s.field.name)
+            })
             .map(|input| input.inner.name.dart_style()))
         .collect_vec(),
         vec!["hint".to_owned()],

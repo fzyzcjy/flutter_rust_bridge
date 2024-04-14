@@ -1,5 +1,5 @@
-use crate::codegen::ir::func::OwnershipMode;
 use super::rust_opaque::RUST_OPAQUE_AS_PRIMITIVE;
+use crate::codegen::ir::func::OwnershipMode;
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::rust_opaque::{IrTypeRustOpaque, NameComponent};
