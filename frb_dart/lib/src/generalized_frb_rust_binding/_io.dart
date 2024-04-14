@@ -63,7 +63,14 @@ class GeneralizedFrbRustBinding {
   }
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  int getRustContentHash() => _binding.frb_get_rust_content_hash();
+  int getRustContentHash() {
+    try {
+      return _binding.frb_get_rust_content_hash();
+    } on ArgumentError catch (e, s) {
+      _userFriendlyDynamicLibraryErrorReporting(e, s);
+      rethrow;
+    }
+  }
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   PlatformPointer dartOpaqueDart2RustEncode(
