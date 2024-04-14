@@ -9,7 +9,6 @@
         "rust2dart": "Dco"
       },
       "comments": [],
-      "error_output": null,
       "getter": false,
       "id": 1,
       "initializer": false,
@@ -17,9 +16,12 @@
       "mode": "Normal",
       "name": "crate::api/first_function",
       "output": {
-        "data": "Unit",
-        "safe_ident": "unit",
-        "type": "Primitive"
+        "error": null,
+        "normal": {
+          "data": "Unit",
+          "safe_ident": "unit",
+          "type": "Primitive"
+        }
       },
       "owner": "Function",
       "rust_async": false,
