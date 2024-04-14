@@ -14,8 +14,8 @@ use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
 use itertools::Itertools;
 use serde::Serialize;
+use sha1::{Digest, Sha1};
 use std::collections::HashSet;
-use sha1::{Sha1, Digest};
 
 pub(crate) mod ty;
 pub(crate) mod wire_func;

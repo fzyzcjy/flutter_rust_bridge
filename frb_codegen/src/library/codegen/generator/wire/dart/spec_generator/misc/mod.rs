@@ -48,7 +48,12 @@ pub(crate) fn generate(
             rust_extern_funcs,
             progress_bar_pack,
         )?,
-        boilerplate: generate_boilerplate(api_dart_actual_output_paths, cache, context, rust_content_hash)?,
+        boilerplate: generate_boilerplate(
+            api_dart_actual_output_paths,
+            cache,
+            context,
+            rust_content_hash,
+        )?,
         api_impl_normal_functions: (context.ir_pack.funcs.iter())
             .map(|f| api_impl_body::generate_api_impl_normal_function(f, context))
             .collect::<anyhow::Result<Vec<_>>>()?,
