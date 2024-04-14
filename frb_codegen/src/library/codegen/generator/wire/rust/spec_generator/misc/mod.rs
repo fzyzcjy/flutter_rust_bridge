@@ -213,6 +213,7 @@ fn generate_handler(ir_pack: &IrPack) -> String {
     }
 }
 
+// TODO can compute hash for more things
 fn generate_content_hash(ir_pack: &IrPack) -> i32 {
     let mut hasher = Sha1::new();
     for func in ir_pack.funcs.iter() {
