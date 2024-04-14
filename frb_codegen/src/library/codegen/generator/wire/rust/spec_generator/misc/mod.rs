@@ -31,6 +31,7 @@ pub(crate) struct WireRustOutputSpecMisc {
     pub wrapper_structs: Acc<Vec<WireRustOutputCode>>,
     pub static_checks: Acc<Vec<WireRustOutputCode>>,
     pub related_funcs: Acc<Vec<WireRustOutputCode>>,
+    pub content_hash: i32,
 }
 
 pub(crate) fn generate(
@@ -60,6 +61,7 @@ pub(crate) fn generate(
             .iter()
             .map(|ty| WireRustGenerator::new(ty.clone(), context).generate_related_funcs())
             .collect(),
+        content_hash: generate_content_hash(),
     })
 }
 
@@ -206,4 +208,8 @@ fn generate_handler(ir_pack: &IrPack) -> String {
     } else {
         r#"flutter_rust_bridge::frb_generated_default_handler!();"#.to_owned()
     }
+}
+
+fn generate_content_hash() -> i32 {
+    TODO
 }
