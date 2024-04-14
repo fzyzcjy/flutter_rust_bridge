@@ -95,7 +95,8 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl,
     if (rustContentHash != rustSideRustContentHash) {
       throw StateError(
         "Content hash on Dart side ($rustContentHash) is different from Rust side ($rustSideRustContentHash), indicating out-of-sync code. "
-        "This may happen when, for example, the Dart code is hot-restarted/hot-reloaded without recompiling Rust code.",
+        "This may happen when, for example, the Dart code is hot-restarted/hot-reloaded without recompiling Rust code. "
+        "(Note: This is just a sanity check. Even if content hash does not change, the code may still change and needs to be recompiled)",
       );
     }
   }
