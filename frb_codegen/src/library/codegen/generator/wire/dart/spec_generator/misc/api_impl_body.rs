@@ -121,7 +121,7 @@ fn generate_companion_field(func: &IrFunc, const_meta_field_name: &str) -> Strin
         func.name.name,
         func.inputs
             .iter()
-            .map(|input| format!("\"{}\"", input.name.dart_style()))
+            .map(|input| format!("\"{}\"", input.inner.name.dart_style()))
             .collect_vec()
             .join(", "),
     )
@@ -137,7 +137,7 @@ fn generate_call_ffi_args(func: &IrFunc) -> &str {
 
 fn generate_arg_values(func: &IrFunc) -> String {
     (func.inputs.iter())
-        .map(|input| input.name.dart_style())
+        .map(|input| input.inner.name.dart_style())
         .join(", ")
 }
 
@@ -146,8 +146,11 @@ fn generate_rust2dart_codec_object(func: &IrFunc) -> String {
     let codec_name_pascal = codec_mode.delegate_or_self().to_string();
     let codec_name_snake = codec_name_pascal.to_case(Case::Snake);
 
-    let parse_success_data = format!("{codec_name_snake}_decode_{}", func.output.safe_ident());
-    let parse_error_data = if let Some(error_output) = &func.error_output {
+    let parse_success_data = format!(
+        "{codec_name_snake}_decode_{}",
+        func.output.normal.safe_ident()
+    );
+    let parse_error_data = if let Some(error_output) = &func.output.error {
         format!("{codec_name_snake}_decode_{}", error_output.safe_ident())
     } else {
         "null".to_string()

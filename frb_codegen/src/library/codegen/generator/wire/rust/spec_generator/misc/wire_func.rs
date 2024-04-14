@@ -7,10 +7,10 @@ use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
     ExternFunc, ExternFuncParam,
 };
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
-use crate::codegen::ir::func::IrFuncOwnerInfoMethodMode::Instance;
-use crate::codegen::ir::func::{IrFunc, IrFuncMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod};
-use crate::codegen::ir::ty::rust_auto_opaque::OwnershipMode;
+use crate::codegen::ir::func::OwnershipMode;
+use crate::codegen::ir::func::{IrFunc, IrFuncMode, IrFuncOwnerInfo};
 use crate::codegen::ir::ty::IrType;
+use crate::if_then_some;
 use crate::misc::consts::HANDLER_NAME;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
@@ -71,17 +71,13 @@ fn generate_inner_func_args(func: &IrFunc) -> Vec<String> {
     let ans = func
         .inputs
         .iter()
-        .enumerate()
-        .map(|(index, field)| {
-            let mut ans = format!("api_{}", field.name.rust_style());
-            if let IrType::RustAutoOpaque(o) = &field.ty {
-                ans = match o.ownership_mode {
-                    OwnershipMode::Ref => format!("&{ans}"),
-                    OwnershipMode::RefMut => format!("&mut {ans}"),
-                    _ => ans,
-                };
-            } else if index == 0 && matches!(&func.owner, IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod { mode, .. }) if mode == &Instance) {
-                ans = format!("&{ans}");
+        .map(|field| {
+            let mut ans = format!("api_{}", field.inner.name.rust_style());
+            let ownership_mode =
+                if_then_some!(let IrType::RustAutoOpaque(o) = &field.inner.ty, o.ownership_mode)
+                    .or(field.ownership_mode);
+            if let Some(ownership_mode) = ownership_mode {
+                ans = format!("{}{ans}", ownership_mode.prefix())
             }
             ans
         })
@@ -107,7 +103,7 @@ fn generate_code_inner_decode(func: &IrFunc) -> String {
     func.inputs
         .iter()
         .filter_map(|field| {
-            if let IrType::RustAutoOpaque(o) = &field.ty {
+            if let IrType::RustAutoOpaque(o) = &field.inner.ty {
                 if o.ownership_mode != OwnershipMode::Owned {
                     let mode = o.ownership_mode.to_string().to_case(Case::Snake);
                     let mutability = if o.ownership_mode == OwnershipMode::RefMut {
@@ -117,7 +113,7 @@ fn generate_code_inner_decode(func: &IrFunc) -> String {
                     };
                     Some(format!(
                         "let {mutability}api_{name} = api_{name}.rust_auto_opaque_decode_{mode}();\n",
-                        name = field.name.rust_style()
+                        name = field.inner.name.rust_style()
                     ))
                 } else {
                     None

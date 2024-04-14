@@ -1,7 +1,7 @@
 use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
-use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::func::{
-    IrFunc, IrFuncMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode,
+    IrFunc, IrFuncInput, IrFuncMode, IrFuncOutput, IrFuncOwnerInfo, IrFuncOwnerInfoMethod,
+    IrFuncOwnerInfoMethodMode,
 };
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
@@ -114,8 +114,10 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             name: NamespacedName::new(namespace, func_name),
             id: func_id,
             inputs: info.inputs,
-            output: info.ok_output.unwrap_or(Primitive(IrTypePrimitive::Unit)),
-            error_output: info.error_output,
+            output: IrFuncOutput {
+                normal: info.ok_output.unwrap_or(Primitive(IrTypePrimitive::Unit)),
+                error: info.error_output,
+            },
             owner,
             mode,
             stream_dart_await,
@@ -204,7 +206,7 @@ fn parse_name(sig: &Signature, owner: &IrFuncOwnerInfo) -> String {
 
 #[derive(Debug, Default)]
 struct FunctionPartialInfo {
-    inputs: Vec<IrField>,
+    inputs: Vec<IrFuncInput>,
     ok_output: Option<IrType>,
     error_output: Option<IrType>,
     mode: Option<IrFuncMode>,

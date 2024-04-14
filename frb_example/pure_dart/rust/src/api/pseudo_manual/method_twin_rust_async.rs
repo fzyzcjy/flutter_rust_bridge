@@ -127,6 +127,14 @@ impl SimpleStructTwinRustAsync {
         Self { one }
     }
 
+    pub async fn receiver_borrow_twin_rust_async(&self) -> String {
+        self.one.to_owned()
+    }
+
+    pub async fn receiver_own_twin_rust_async(self) -> String {
+        self.one.to_owned()
+    }
+
     pub async fn arg_self_twin_rust_async(a: Self, b: Self) -> String {
         a.one + &b.one
     }

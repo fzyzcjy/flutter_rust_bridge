@@ -35,6 +35,7 @@ import 'api/misc_type_test.dart' as misc_type_test;
 import 'api/newtype_pattern_test.dart' as newtype_pattern_test;
 import 'api/optional_primitive_misc_test.dart' as optional_primitive_misc_test;
 import 'api/optional_test.dart' as optional_test;
+import 'api/ownership_test.dart' as ownership_test;
 import 'api/primitive_list_misc_test.dart' as primitive_list_misc_test;
 import 'api/primitive_misc_test.dart' as primitive_misc_test;
 import 'api/pseudo_manual/array_twin_rust_async_test.dart'
@@ -121,6 +122,10 @@ import 'api/pseudo_manual/optional_twin_rust_async_test.dart'
     as optional_twin_rust_async_test;
 import 'api/pseudo_manual/optional_twin_sync_test.dart'
     as optional_twin_sync_test;
+import 'api/pseudo_manual/ownership_twin_rust_async_test.dart'
+    as ownership_twin_rust_async_test;
+import 'api/pseudo_manual/ownership_twin_sync_test.dart'
+    as ownership_twin_sync_test;
 import 'api/pseudo_manual/primitive_list_misc_twin_rust_async_test.dart'
     as primitive_list_misc_twin_rust_async_test;
 import 'api/pseudo_manual/primitive_list_misc_twin_sync_test.dart'
@@ -219,6 +224,7 @@ Future<void> callFileEntrypoints() async {
   await newtype_pattern_test.main(skipRustLibInit: true);
   await optional_primitive_misc_test.main(skipRustLibInit: true);
   await optional_test.main(skipRustLibInit: true);
+  await ownership_test.main(skipRustLibInit: true);
   await primitive_list_misc_test.main(skipRustLibInit: true);
   await primitive_misc_test.main(skipRustLibInit: true);
   await array_twin_rust_async_test.main(skipRustLibInit: true);
@@ -268,6 +274,8 @@ Future<void> callFileEntrypoints() async {
   await optional_primitive_misc_twin_sync_test.main(skipRustLibInit: true);
   await optional_twin_rust_async_test.main(skipRustLibInit: true);
   await optional_twin_sync_test.main(skipRustLibInit: true);
+  await ownership_twin_rust_async_test.main(skipRustLibInit: true);
+  await ownership_twin_sync_test.main(skipRustLibInit: true);
   await primitive_list_misc_twin_rust_async_test.main(skipRustLibInit: true);
   await primitive_list_misc_twin_sync_test.main(skipRustLibInit: true);
   await primitive_misc_twin_rust_async_test.main(skipRustLibInit: true);

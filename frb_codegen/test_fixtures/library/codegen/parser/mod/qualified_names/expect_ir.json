@@ -9,48 +9,56 @@
         "rust2dart": "Dco"
       },
       "comments": [],
-      "error_output": null,
       "getter": false,
       "id": 1,
       "initializer": false,
       "inputs": [
         {
-          "comments": [],
-          "default": null,
-          "is_final": true,
-          "name": "chrono_duration",
-          "settings": {
-            "is_in_mirrored_enum": false
-          },
-          "ty": {
-            "data": {
-              "Time": "Duration"
+          "inner": {
+            "comments": [],
+            "default": null,
+            "is_final": true,
+            "name": "chrono_duration",
+            "settings": {
+              "is_in_mirrored_enum": false
             },
-            "safe_ident": "Chrono_Duration",
-            "type": "Delegate"
-          }
+            "ty": {
+              "data": {
+                "Time": "Duration"
+              },
+              "safe_ident": "Chrono_Duration",
+              "type": "Delegate"
+            }
+          },
+          "ownership_mode": "Owned"
         },
         {
-          "comments": [],
-          "default": null,
-          "is_final": true,
-          "name": "uuid_uuid",
-          "settings": {
-            "is_in_mirrored_enum": false
+          "inner": {
+            "comments": [],
+            "default": null,
+            "is_final": true,
+            "name": "uuid_uuid",
+            "settings": {
+              "is_in_mirrored_enum": false
+            },
+            "ty": {
+              "data": "Uuid",
+              "safe_ident": "Uuid",
+              "type": "Delegate"
+            }
           },
-          "ty": {
-            "data": "Uuid",
-            "safe_ident": "Uuid",
-            "type": "Delegate"
-          }
+          "ownership_mode": "Owned"
         }
       ],
       "mode": "Normal",
       "name": "crate::api/func_1",
       "output": {
-        "data": "Unit",
-        "safe_ident": "unit",
-        "type": "Primitive"
+        "error": null,
+        "normal": {
+          "data": "Unit",
+          "safe_ident": "unit",
+          "type": "Primitive"
+        }
       },
       "owner": "Function",
       "rust_async": false,
@@ -62,11 +70,6 @@
         "rust2dart": "Dco"
       },
       "comments": [],
-      "error_output": {
-        "data": "String",
-        "safe_ident": "String",
-        "type": "Delegate"
-      },
       "getter": false,
       "id": 3,
       "initializer": false,
@@ -74,9 +77,16 @@
       "mode": "Normal",
       "name": "crate::api/func_anyhow_result",
       "output": {
-        "data": "I32",
-        "safe_ident": "i_32",
-        "type": "Primitive"
+        "error": {
+          "data": "String",
+          "safe_ident": "String",
+          "type": "Delegate"
+        },
+        "normal": {
+          "data": "I32",
+          "safe_ident": "i_32",
+          "type": "Primitive"
+        }
       },
       "owner": "Function",
       "rust_async": false,
@@ -88,11 +98,6 @@
         "rust2dart": "Dco"
       },
       "comments": [],
-      "error_output": {
-        "data": "String",
-        "safe_ident": "String",
-        "type": "Delegate"
-      },
       "getter": false,
       "id": 2,
       "initializer": false,
@@ -100,9 +105,16 @@
       "mode": "Normal",
       "name": "crate::api/func_result",
       "output": {
-        "data": "I32",
-        "safe_ident": "i_32",
-        "type": "Primitive"
+        "error": {
+          "data": "String",
+          "safe_ident": "String",
+          "type": "Delegate"
+        },
+        "normal": {
+          "data": "I32",
+          "safe_ident": "i_32",
+          "type": "Primitive"
+        }
       },
       "owner": "Function",
       "rust_async": false,
@@ -114,11 +126,6 @@
         "rust2dart": "Dco"
       },
       "comments": [],
-      "error_output": {
-        "data": "String",
-        "safe_ident": "String",
-        "type": "Delegate"
-      },
       "getter": false,
       "id": 4,
       "initializer": false,
@@ -126,9 +133,16 @@
       "mode": "Normal",
       "name": "crate::api/func_std_result_result",
       "output": {
-        "data": "I32",
-        "safe_ident": "i_32",
-        "type": "Primitive"
+        "error": {
+          "data": "String",
+          "safe_ident": "String",
+          "type": "Delegate"
+        },
+        "normal": {
+          "data": "I32",
+          "safe_ident": "i_32",
+          "type": "Primitive"
+        }
       },
       "owner": "Function",
       "rust_async": false,
