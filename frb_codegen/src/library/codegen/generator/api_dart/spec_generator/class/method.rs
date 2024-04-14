@@ -150,7 +150,7 @@ fn generate_implementation(
     if method_info.mode == IrFuncOwnerInfoMethodMode::Static {
         format!("{dart_api_instance}.{func_name}({arg_names})")
     } else {
-        let extra_arg_name = func.inputs[0].name.dart_style();
+        let extra_arg_name = func.inputs[0].inner.name.dart_style();
         format!("{dart_api_instance}.{func_name}({extra_arg_name}: this, {arg_names})")
     }
 }

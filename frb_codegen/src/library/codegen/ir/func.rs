@@ -11,9 +11,8 @@ crate::ir! {
 pub struct IrFunc {
     pub name: NamespacedName,
     pub id: i32,
-    pub inputs: Vec<IrField>,
-    pub output: IrType,
-    pub error_output: Option<IrType>,
+    pub inputs: Vec<IrFuncInput>,
+    pub output: IrFuncOutput,
     pub owner: IrFuncOwnerInfo,
     pub mode: IrFuncMode,
     pub stream_dart_await: bool,
@@ -26,6 +25,16 @@ pub struct IrFunc {
     // Currently, we use serde only for tests. Since lineno can be unstable, we skip this field for comparison
     #[serde(skip_serializing)]
     pub src_lineno: usize,
+}
+
+pub struct IrFuncInput {
+    pub ownership_mode: Option<OwnershipMode>,
+    pub inner: IrField,
+}
+
+pub struct IrFuncOutput {
+    pub normal: IrType,
+    pub error: Option<IrType>,
 }
 
 #[derive(Copy)]
@@ -51,9 +60,29 @@ pub enum IrFuncOwnerInfoMethodMode {
 }
 }
 
+#[derive(Debug, Clone, Copy, Hash, Eq, PartialEq, serde::Serialize, strum_macros::Display)]
+pub enum OwnershipMode {
+    /// "T"
+    Owned,
+    /// "&T"
+    Ref,
+    /// "&mut T"
+    RefMut,
+}
+
+impl OwnershipMode {
+    pub(crate) fn prefix(&self) -> &'static str {
+        match self {
+            OwnershipMode::Owned => "",
+            OwnershipMode::Ref => "&",
+            OwnershipMode::RefMut => "&mut ",
+        }
+    }
+}
+
 impl IrFunc {
     pub(crate) fn fallible(&self) -> bool {
-        self.error_output.is_some()
+        self.output.error.is_some()
     }
 
     pub(crate) fn visit_types<F: FnMut(&IrType) -> bool>(
@@ -63,12 +92,12 @@ impl IrFunc {
     ) {
         // inputs
         for field in &self.inputs {
-            field.ty.visit_types(f, ir_context);
+            field.inner.ty.visit_types(f, ir_context);
         }
 
         // output
-        self.output.visit_types(f, ir_context);
-        let error_output = (self.error_output.as_ref().cloned())
+        self.output.normal.visit_types(f, ir_context);
+        let error_output = (self.output.error.as_ref().cloned())
             .unwrap_or(IrType::Primitive(IrTypePrimitive::Unit));
         error_output.visit_types(f, ir_context);
 

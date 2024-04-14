@@ -98,6 +98,16 @@ Future<void> main({bool skipRustLibInit = false}) async {
           'One');
     });
 
+    test('receiverBorrow', () async {
+      final obj = SimpleStructTwinNormal(one: 'a');
+      expect(await obj.receiverBorrowTwinNormal(), 'a');
+    });
+
+    test('receiverOwn', () async {
+      final obj = SimpleStructTwinNormal(one: 'a');
+      expect(await obj.receiverOwnTwinNormal(), 'a');
+    });
+
     test('argSelf', () async {
       final a = SimpleStructTwinNormal(one: 'a');
       final b = SimpleStructTwinNormal(one: 'b');

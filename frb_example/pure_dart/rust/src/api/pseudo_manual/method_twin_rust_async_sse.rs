@@ -150,6 +150,16 @@ impl SimpleStructTwinRustAsyncSse {
     }
 
     #[flutter_rust_bridge::frb(serialize)]
+    pub async fn receiver_borrow_twin_rust_async_sse(&self) -> String {
+        self.one.to_owned()
+    }
+
+    #[flutter_rust_bridge::frb(serialize)]
+    pub async fn receiver_own_twin_rust_async_sse(self) -> String {
+        self.one.to_owned()
+    }
+
+    #[flutter_rust_bridge::frb(serialize)]
     pub async fn arg_self_twin_rust_async_sse(a: Self, b: Self) -> String {
         a.one + &b.one
     }

@@ -53,18 +53,18 @@ impl WireRustCodecEntrypointTrait<'_> for CstWireRustCodecEntrypoint {
             .inputs
             .iter()
             .map(|field| {
-                let name = field.name.rust_style().to_owned();
+                let name = field.inner.name.rust_style().to_owned();
                 Acc::new(|target| match target {
                     TargetOrCommon::Common => ExternFuncParam {
                         name: name.clone(),
                         rust_type: format!(
                             "impl CstDecode<{}>",
                             WireRustCodecCstGenerator::new(
-                                field.ty.clone(),
+                                field.inner.ty.clone(),
                                 context.as_wire_rust_codec_cst_context()
                             )
                             .generate_wire_func_param_api_type()
-                            .unwrap_or(field.ty.rust_api_type())
+                            .unwrap_or(field.inner.ty.rust_api_type())
                         ),
                         dart_type: "THIS_TYPE_SHOULD_NOT_BE_USED".into(),
                     },
@@ -73,7 +73,7 @@ impl WireRustCodecEntrypointTrait<'_> for CstWireRustCodecEntrypoint {
                         ExternFuncParam::new(
                             name.clone(),
                             target,
-                            &field.ty,
+                            &field.inner.ty,
                             context.as_wire_rust_codec_cst_context(),
                         )
                     }
@@ -92,9 +92,9 @@ impl WireRustCodecEntrypointTrait<'_> for CstWireRustCodecEntrypoint {
         func.inputs
             .iter()
             .map(|field| {
-                let gen = WireRustGenerator::new(field.ty.clone(), context);
+                let gen = WireRustGenerator::new(field.inner.ty.clone(), context);
 
-                let name = field.name.rust_style();
+                let name = field.inner.name.rust_style();
                 let mut expr = format!("{name}.cst_decode()");
                 if let Some(wrapper) = gen.generate_wire_func_call_decode_wrapper() {
                     expr = format!("{wrapper}({expr})");

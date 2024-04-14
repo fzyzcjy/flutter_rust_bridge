@@ -179,6 +179,12 @@ class SimpleStructTwinSync {
       RustLib.instance.api
           .simpleStructTwinSyncArgSelfTwinSync(a: a, b: b, hint: hint);
 
+  String receiverBorrowTwinSync({dynamic hint}) => RustLib.instance.api
+      .simpleStructTwinSyncReceiverBorrowTwinSync(that: this, hint: hint);
+
+  String receiverOwnTwinSync({dynamic hint}) => RustLib.instance.api
+      .simpleStructTwinSyncReceiverOwnTwinSync(that: this, hint: hint);
+
   static SimpleStructTwinSync returnSelfTwinSync(
           {required String one, dynamic hint}) =>
       RustLib.instance.api

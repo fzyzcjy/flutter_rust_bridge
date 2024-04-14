@@ -24,64 +24,72 @@
         "rust2dart": "Dco"
       },
       "comments": [],
-      "error_output": null,
       "getter": false,
       "id": 1,
       "initializer": false,
       "inputs": [
         {
-          "comments": [],
-          "default": null,
-          "is_final": true,
-          "name": "s",
-          "settings": {
-            "is_in_mirrored_enum": false
-          },
-          "ty": {
-            "data": {
-              "exist_in_real_api": false,
-              "inner": {
-                "data": {
-                  "ident": "crate::another_file/StructInAnotherFile",
-                  "is_exception": false
-                },
-                "safe_ident": "struct_in_another_file",
-                "type": "StructRef"
-              }
+          "inner": {
+            "comments": [],
+            "default": null,
+            "is_final": true,
+            "name": "s",
+            "settings": {
+              "is_in_mirrored_enum": false
             },
-            "safe_ident": "box_autoadd_struct_in_another_file",
-            "type": "Boxed"
-          }
+            "ty": {
+              "data": {
+                "exist_in_real_api": false,
+                "inner": {
+                  "data": {
+                    "ident": "crate::another_file/StructInAnotherFile",
+                    "is_exception": false
+                  },
+                  "safe_ident": "struct_in_another_file",
+                  "type": "StructRef"
+                }
+              },
+              "safe_ident": "box_autoadd_struct_in_another_file",
+              "type": "Boxed"
+            }
+          },
+          "ownership_mode": "Owned"
         },
         {
-          "comments": [],
-          "default": null,
-          "is_final": true,
-          "name": "e",
-          "settings": {
-            "is_in_mirrored_enum": false
-          },
-          "ty": {
-            "data": {
-              "PrimitiveEnum": {
-                "ir": {
-                  "ident": "crate::another_file/EnumInAnotherFile",
-                  "is_exception": false
-                },
-                "repr": "I32"
-              }
+          "inner": {
+            "comments": [],
+            "default": null,
+            "is_final": true,
+            "name": "e",
+            "settings": {
+              "is_in_mirrored_enum": false
             },
-            "safe_ident": "enum_in_another_file",
-            "type": "Delegate"
-          }
+            "ty": {
+              "data": {
+                "PrimitiveEnum": {
+                  "ir": {
+                    "ident": "crate::another_file/EnumInAnotherFile",
+                    "is_exception": false
+                  },
+                  "repr": "I32"
+                }
+              },
+              "safe_ident": "enum_in_another_file",
+              "type": "Delegate"
+            }
+          },
+          "ownership_mode": "Owned"
         }
       ],
       "mode": "Normal",
       "name": "crate::api/func_one",
       "output": {
-        "data": "Unit",
-        "safe_ident": "unit",
-        "type": "Primitive"
+        "error": null,
+        "normal": {
+          "data": "Unit",
+          "safe_ident": "unit",
+          "type": "Primitive"
+        }
       },
       "owner": "Function",
       "rust_async": false,

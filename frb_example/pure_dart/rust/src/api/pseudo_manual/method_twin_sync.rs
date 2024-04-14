@@ -141,6 +141,16 @@ impl SimpleStructTwinSync {
     }
 
     #[flutter_rust_bridge::frb(sync)]
+    pub fn receiver_borrow_twin_sync(&self) -> String {
+        self.one.to_owned()
+    }
+
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn receiver_own_twin_sync(self) -> String {
+        self.one.to_owned()
+    }
+
+    #[flutter_rust_bridge::frb(sync)]
     pub fn arg_self_twin_sync(a: Self, b: Self) -> String {
         a.one + &b.one
     }

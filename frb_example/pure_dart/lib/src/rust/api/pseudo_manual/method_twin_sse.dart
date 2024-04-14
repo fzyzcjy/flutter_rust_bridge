@@ -179,6 +179,12 @@ class SimpleStructTwinSse {
       RustLib.instance.api
           .simpleStructTwinSseArgSelfTwinSse(a: a, b: b, hint: hint);
 
+  Future<String> receiverBorrowTwinSse({dynamic hint}) => RustLib.instance.api
+      .simpleStructTwinSseReceiverBorrowTwinSse(that: this, hint: hint);
+
+  Future<String> receiverOwnTwinSse({dynamic hint}) => RustLib.instance.api
+      .simpleStructTwinSseReceiverOwnTwinSse(that: this, hint: hint);
+
   static Future<SimpleStructTwinSse> returnSelfTwinSse(
           {required String one, dynamic hint}) =>
       RustLib.instance.api

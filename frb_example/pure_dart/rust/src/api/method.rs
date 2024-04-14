@@ -123,6 +123,14 @@ impl SimpleStructTwinNormal {
         Self { one }
     }
 
+    pub fn receiver_borrow_twin_normal(&self) -> String {
+        self.one.to_owned()
+    }
+
+    pub fn receiver_own_twin_normal(self) -> String {
+        self.one.to_owned()
+    }
+
     pub fn arg_self_twin_normal(a: Self, b: Self) -> String {
         a.one + &b.one
     }
