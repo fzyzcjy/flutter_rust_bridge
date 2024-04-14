@@ -50,6 +50,8 @@ pub mod optional_primitive_misc_twin_rust_async;
 pub mod optional_primitive_misc_twin_sync;
 pub mod optional_twin_rust_async;
 pub mod optional_twin_sync;
+pub mod ownership_twin_rust_async;
+pub mod ownership_twin_sync;
 pub mod primitive_list_misc_twin_rust_async;
 pub mod primitive_list_misc_twin_sync;
 pub mod primitive_misc_twin_rust_async;

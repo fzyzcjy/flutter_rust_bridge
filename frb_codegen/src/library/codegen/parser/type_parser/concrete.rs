@@ -38,7 +38,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             ("DateTime", args) if check_prefix("chrono") => self.parse_datetime(args)?,
 
             ("Uuid", []) if check_prefix("uuid") => Delegate(IrTypeDelegate::Uuid),
-            ("String", []) => Delegate(IrTypeDelegate::String),
+            ("String", []) | ("str", []) => Delegate(IrTypeDelegate::String),
             ("Backtrace", []) => Delegate(IrTypeDelegate::Backtrace),
 
             ("DartAbi", []) => Dynamic(IrTypeDynamic),

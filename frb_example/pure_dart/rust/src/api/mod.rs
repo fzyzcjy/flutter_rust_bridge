@@ -34,6 +34,7 @@ pub mod misc_type;
 pub mod newtype_pattern;
 pub mod optional;
 pub mod optional_primitive_misc;
+pub mod ownership;
 pub mod primitive_list_misc;
 pub mod primitive_misc;
 pub mod pseudo_manual;

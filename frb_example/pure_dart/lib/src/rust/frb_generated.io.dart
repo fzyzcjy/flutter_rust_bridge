@@ -35,6 +35,7 @@ import 'api/misc_type.dart';
 import 'api/newtype_pattern.dart';
 import 'api/optional.dart';
 import 'api/optional_primitive_misc.dart';
+import 'api/ownership.dart';
 import 'api/primitive_list_misc.dart';
 import 'api/primitive_misc.dart';
 import 'api/pseudo_manual/array_twin_rust_async.dart';
@@ -162,6 +163,11 @@ import 'api/pseudo_manual/optional_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/optional_twin_sse.dart';
 import 'api/pseudo_manual/optional_twin_sync.dart';
 import 'api/pseudo_manual/optional_twin_sync_sse.dart';
+import 'api/pseudo_manual/ownership_twin_rust_async.dart';
+import 'api/pseudo_manual/ownership_twin_rust_async_sse.dart';
+import 'api/pseudo_manual/ownership_twin_sse.dart';
+import 'api/pseudo_manual/ownership_twin_sync.dart';
+import 'api/pseudo_manual/ownership_twin_sync_sse.dart';
 import 'api/pseudo_manual/primitive_list_misc_twin_rust_async.dart';
 import 'api/pseudo_manual/primitive_list_misc_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/primitive_list_misc_twin_sse.dart';
@@ -5012,6 +5018,33 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  SimpleStructForBorrowTwinNormal
+      dco_decode_box_autoadd_simple_struct_for_borrow_twin_normal(dynamic raw);
+
+  @protected
+  SimpleStructForBorrowTwinRustAsync
+      dco_decode_box_autoadd_simple_struct_for_borrow_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  SimpleStructForBorrowTwinRustAsyncSse
+      dco_decode_box_autoadd_simple_struct_for_borrow_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  SimpleStructForBorrowTwinSse
+      dco_decode_box_autoadd_simple_struct_for_borrow_twin_sse(dynamic raw);
+
+  @protected
+  SimpleStructForBorrowTwinSync
+      dco_decode_box_autoadd_simple_struct_for_borrow_twin_sync(dynamic raw);
+
+  @protected
+  SimpleStructForBorrowTwinSyncSse
+      dco_decode_box_autoadd_simple_struct_for_borrow_twin_sync_sse(
+          dynamic raw);
+
+  @protected
   SimpleStructTwinNormal dco_decode_box_autoadd_simple_struct_twin_normal(
       dynamic raw);
 
@@ -8453,6 +8486,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   SimpleEnumTwinSyncSse dco_decode_simple_enum_twin_sync_sse(dynamic raw);
+
+  @protected
+  SimpleStructForBorrowTwinNormal
+      dco_decode_simple_struct_for_borrow_twin_normal(dynamic raw);
+
+  @protected
+  SimpleStructForBorrowTwinRustAsync
+      dco_decode_simple_struct_for_borrow_twin_rust_async(dynamic raw);
+
+  @protected
+  SimpleStructForBorrowTwinRustAsyncSse
+      dco_decode_simple_struct_for_borrow_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  SimpleStructForBorrowTwinSse dco_decode_simple_struct_for_borrow_twin_sse(
+      dynamic raw);
+
+  @protected
+  SimpleStructForBorrowTwinSync dco_decode_simple_struct_for_borrow_twin_sync(
+      dynamic raw);
+
+  @protected
+  SimpleStructForBorrowTwinSyncSse
+      dco_decode_simple_struct_for_borrow_twin_sync_sse(dynamic raw);
 
   @protected
   SimpleStructTwinNormal dco_decode_simple_struct_twin_normal(dynamic raw);
@@ -13253,6 +13310,36 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  SimpleStructForBorrowTwinNormal
+      sse_decode_box_autoadd_simple_struct_for_borrow_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  SimpleStructForBorrowTwinRustAsync
+      sse_decode_box_autoadd_simple_struct_for_borrow_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  SimpleStructForBorrowTwinRustAsyncSse
+      sse_decode_box_autoadd_simple_struct_for_borrow_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  SimpleStructForBorrowTwinSse
+      sse_decode_box_autoadd_simple_struct_for_borrow_twin_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  SimpleStructForBorrowTwinSync
+      sse_decode_box_autoadd_simple_struct_for_borrow_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  SimpleStructForBorrowTwinSyncSse
+      sse_decode_box_autoadd_simple_struct_for_borrow_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
   SimpleStructTwinNormal sse_decode_box_autoadd_simple_struct_twin_normal(
       SseDeserializer deserializer);
 
@@ -17164,6 +17251,34 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  SimpleStructForBorrowTwinNormal
+      sse_decode_simple_struct_for_borrow_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  SimpleStructForBorrowTwinRustAsync
+      sse_decode_simple_struct_for_borrow_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  SimpleStructForBorrowTwinRustAsyncSse
+      sse_decode_simple_struct_for_borrow_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  SimpleStructForBorrowTwinSse sse_decode_simple_struct_for_borrow_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  SimpleStructForBorrowTwinSync sse_decode_simple_struct_for_borrow_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  SimpleStructForBorrowTwinSyncSse
+      sse_decode_simple_struct_for_borrow_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
   SimpleStructTwinNormal sse_decode_simple_struct_twin_normal(
       SseDeserializer deserializer);
 
@@ -20260,6 +20375,37 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     final ptr = wire.cst_new_box_autoadd_simple_enum_twin_sync();
     cst_api_fill_to_wire_simple_enum_twin_sync(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_simple_struct_for_borrow_twin_normal>
+      cst_encode_box_autoadd_simple_struct_for_borrow_twin_normal(
+          SimpleStructForBorrowTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr = wire.cst_new_box_autoadd_simple_struct_for_borrow_twin_normal();
+    cst_api_fill_to_wire_simple_struct_for_borrow_twin_normal(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_simple_struct_for_borrow_twin_rust_async>
+      cst_encode_box_autoadd_simple_struct_for_borrow_twin_rust_async(
+          SimpleStructForBorrowTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr =
+        wire.cst_new_box_autoadd_simple_struct_for_borrow_twin_rust_async();
+    cst_api_fill_to_wire_simple_struct_for_borrow_twin_rust_async(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_simple_struct_for_borrow_twin_sync>
+      cst_encode_box_autoadd_simple_struct_for_borrow_twin_sync(
+          SimpleStructForBorrowTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr = wire.cst_new_box_autoadd_simple_struct_for_borrow_twin_sync();
+    cst_api_fill_to_wire_simple_struct_for_borrow_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -25026,6 +25172,32 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  void cst_api_fill_to_wire_box_autoadd_simple_struct_for_borrow_twin_normal(
+      SimpleStructForBorrowTwinNormal apiObj,
+      ffi.Pointer<wire_cst_simple_struct_for_borrow_twin_normal> wireObj) {
+    cst_api_fill_to_wire_simple_struct_for_borrow_twin_normal(
+        apiObj, wireObj.ref);
+  }
+
+  @protected
+  void
+      cst_api_fill_to_wire_box_autoadd_simple_struct_for_borrow_twin_rust_async(
+          SimpleStructForBorrowTwinRustAsync apiObj,
+          ffi.Pointer<wire_cst_simple_struct_for_borrow_twin_rust_async>
+              wireObj) {
+    cst_api_fill_to_wire_simple_struct_for_borrow_twin_rust_async(
+        apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_simple_struct_for_borrow_twin_sync(
+      SimpleStructForBorrowTwinSync apiObj,
+      ffi.Pointer<wire_cst_simple_struct_for_borrow_twin_sync> wireObj) {
+    cst_api_fill_to_wire_simple_struct_for_borrow_twin_sync(
+        apiObj, wireObj.ref);
+  }
+
+  @protected
   void cst_api_fill_to_wire_box_autoadd_simple_struct_twin_normal(
       SimpleStructTwinNormal apiObj,
       ffi.Pointer<wire_cst_simple_struct_twin_normal> wireObj) {
@@ -28063,6 +28235,27 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       wireObj.kind.Second.field0 = pre_field0;
       return;
     }
+  }
+
+  @protected
+  void cst_api_fill_to_wire_simple_struct_for_borrow_twin_normal(
+      SimpleStructForBorrowTwinNormal apiObj,
+      wire_cst_simple_struct_for_borrow_twin_normal wireObj) {
+    wireObj.one = cst_encode_String(apiObj.one);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_simple_struct_for_borrow_twin_rust_async(
+      SimpleStructForBorrowTwinRustAsync apiObj,
+      wire_cst_simple_struct_for_borrow_twin_rust_async wireObj) {
+    wireObj.one = cst_encode_String(apiObj.one);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_simple_struct_for_borrow_twin_sync(
+      SimpleStructForBorrowTwinSync apiObj,
+      wire_cst_simple_struct_for_borrow_twin_sync wireObj) {
+    wireObj.one = cst_encode_String(apiObj.one);
   }
 
   @protected
@@ -33784,6 +33977,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SimpleEnumTwinSyncSse self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_simple_struct_for_borrow_twin_normal(
+      SimpleStructForBorrowTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_simple_struct_for_borrow_twin_rust_async(
+      SimpleStructForBorrowTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_simple_struct_for_borrow_twin_rust_async_sse(
+      SimpleStructForBorrowTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_simple_struct_for_borrow_twin_sse(
+      SimpleStructForBorrowTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_simple_struct_for_borrow_twin_sync(
+      SimpleStructForBorrowTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_simple_struct_for_borrow_twin_sync_sse(
+      SimpleStructForBorrowTwinSyncSse self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_simple_struct_twin_normal(
       SimpleStructTwinNormal self, SseSerializer serializer);
 
@@ -37503,6 +37720,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SimpleEnumTwinSyncSse self, SseSerializer serializer);
 
   @protected
+  void sse_encode_simple_struct_for_borrow_twin_normal(
+      SimpleStructForBorrowTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_simple_struct_for_borrow_twin_rust_async(
+      SimpleStructForBorrowTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_simple_struct_for_borrow_twin_rust_async_sse(
+      SimpleStructForBorrowTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_simple_struct_for_borrow_twin_sse(
+      SimpleStructForBorrowTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_simple_struct_for_borrow_twin_sync(
+      SimpleStructForBorrowTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_simple_struct_for_borrow_twin_sync_sse(
+      SimpleStructForBorrowTwinSyncSse self, SseSerializer serializer);
+
+  @protected
   void sse_encode_simple_struct_twin_normal(
       SimpleStructTwinNormal self, SseSerializer serializer);
 
@@ -41129,6 +41370,47 @@ class RustLibWire implements BaseWire {
           void Function(int, ffi.Pointer<wire_cst_simple_struct_twin_normal>,
               ffi.Pointer<wire_cst_simple_struct_twin_normal>)>();
 
+  void wire_simple_struct_twin_normal_receiver_borrow_twin_normal(
+    int port_,
+    ffi.Pointer<wire_cst_simple_struct_twin_normal> that,
+  ) {
+    return _wire_simple_struct_twin_normal_receiver_borrow_twin_normal(
+      port_,
+      that,
+    );
+  }
+
+  late final _wire_simple_struct_twin_normal_receiver_borrow_twin_normalPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64,
+                      ffi.Pointer<wire_cst_simple_struct_twin_normal>)>>(
+          'frbgen_frb_example_pure_dart_wire_simple_struct_twin_normal_receiver_borrow_twin_normal');
+  late final _wire_simple_struct_twin_normal_receiver_borrow_twin_normal =
+      _wire_simple_struct_twin_normal_receiver_borrow_twin_normalPtr.asFunction<
+          void Function(
+              int, ffi.Pointer<wire_cst_simple_struct_twin_normal>)>();
+
+  void wire_simple_struct_twin_normal_receiver_own_twin_normal(
+    int port_,
+    ffi.Pointer<wire_cst_simple_struct_twin_normal> that,
+  ) {
+    return _wire_simple_struct_twin_normal_receiver_own_twin_normal(
+      port_,
+      that,
+    );
+  }
+
+  late final _wire_simple_struct_twin_normal_receiver_own_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_simple_struct_twin_normal>)>>(
+      'frbgen_frb_example_pure_dart_wire_simple_struct_twin_normal_receiver_own_twin_normal');
+  late final _wire_simple_struct_twin_normal_receiver_own_twin_normal =
+      _wire_simple_struct_twin_normal_receiver_own_twin_normalPtr.asFunction<
+          void Function(
+              int, ffi.Pointer<wire_cst_simple_struct_twin_normal>)>();
+
   void wire_simple_struct_twin_normal_return_self_twin_normal(
     int port_,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> one,
@@ -42178,6 +42460,80 @@ class RustLibWire implements BaseWire {
       _wire_primitive_optional_types_twin_normalPtr.asFunction<
           void Function(int, ffi.Pointer<ffi.Int32>, ffi.Pointer<ffi.Int64>,
               ffi.Pointer<ffi.Double>, ffi.Pointer<ffi.Bool>)>();
+
+  void wire_borrow_i32_twin_normal(
+    int port_,
+    int arg,
+  ) {
+    return _wire_borrow_i32_twin_normal(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_borrow_i32_twin_normalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_borrow_i32_twin_normal');
+  late final _wire_borrow_i32_twin_normal =
+      _wire_borrow_i32_twin_normalPtr.asFunction<void Function(int, int)>();
+
+  void wire_borrow_str_twin_normal(
+    int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> arg,
+  ) {
+    return _wire_borrow_str_twin_normal(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_borrow_str_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+      'frbgen_frb_example_pure_dart_wire_borrow_str_twin_normal');
+  late final _wire_borrow_str_twin_normal =
+      _wire_borrow_str_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+
+  void wire_borrow_string_twin_normal(
+    int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> arg,
+  ) {
+    return _wire_borrow_string_twin_normal(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_borrow_string_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+      'frbgen_frb_example_pure_dart_wire_borrow_string_twin_normal');
+  late final _wire_borrow_string_twin_normal =
+      _wire_borrow_string_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+
+  void wire_borrow_struct_twin_normal(
+    int port_,
+    ffi.Pointer<wire_cst_simple_struct_for_borrow_twin_normal> arg,
+  ) {
+    return _wire_borrow_struct_twin_normal(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_borrow_struct_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64,
+                  ffi.Pointer<wire_cst_simple_struct_for_borrow_twin_normal>)>>(
+      'frbgen_frb_example_pure_dart_wire_borrow_struct_twin_normal');
+  late final _wire_borrow_struct_twin_normal =
+      _wire_borrow_struct_twin_normalPtr.asFunction<
+          void Function(int,
+              ffi.Pointer<wire_cst_simple_struct_for_borrow_twin_normal>)>();
 
   void wire_handle_vec_of_primitive_twin_normal(
     int port_,
@@ -64084,6 +64440,50 @@ class RustLibWire implements BaseWire {
                   ffi.Pointer<wire_cst_simple_struct_twin_rust_async>,
                   ffi.Pointer<wire_cst_simple_struct_twin_rust_async>)>();
 
+  void wire_simple_struct_twin_rust_async_receiver_borrow_twin_rust_async(
+    int port_,
+    ffi.Pointer<wire_cst_simple_struct_twin_rust_async> that,
+  ) {
+    return _wire_simple_struct_twin_rust_async_receiver_borrow_twin_rust_async(
+      port_,
+      that,
+    );
+  }
+
+  late final _wire_simple_struct_twin_rust_async_receiver_borrow_twin_rust_asyncPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64,
+                      ffi.Pointer<wire_cst_simple_struct_twin_rust_async>)>>(
+          'frbgen_frb_example_pure_dart_wire_simple_struct_twin_rust_async_receiver_borrow_twin_rust_async');
+  late final _wire_simple_struct_twin_rust_async_receiver_borrow_twin_rust_async =
+      _wire_simple_struct_twin_rust_async_receiver_borrow_twin_rust_asyncPtr
+          .asFunction<
+              void Function(
+                  int, ffi.Pointer<wire_cst_simple_struct_twin_rust_async>)>();
+
+  void wire_simple_struct_twin_rust_async_receiver_own_twin_rust_async(
+    int port_,
+    ffi.Pointer<wire_cst_simple_struct_twin_rust_async> that,
+  ) {
+    return _wire_simple_struct_twin_rust_async_receiver_own_twin_rust_async(
+      port_,
+      that,
+    );
+  }
+
+  late final _wire_simple_struct_twin_rust_async_receiver_own_twin_rust_asyncPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64,
+                      ffi.Pointer<wire_cst_simple_struct_twin_rust_async>)>>(
+          'frbgen_frb_example_pure_dart_wire_simple_struct_twin_rust_async_receiver_own_twin_rust_async');
+  late final _wire_simple_struct_twin_rust_async_receiver_own_twin_rust_async =
+      _wire_simple_struct_twin_rust_async_receiver_own_twin_rust_asyncPtr
+          .asFunction<
+              void Function(
+                  int, ffi.Pointer<wire_cst_simple_struct_twin_rust_async>)>();
+
   void wire_simple_struct_twin_rust_async_return_self_twin_rust_async(
     int port_,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> one,
@@ -64537,6 +64937,55 @@ class RustLibWire implements BaseWire {
       _wire_simple_struct_twin_rust_async_sse_arg_self_twin_rust_async_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
+  void
+      wire_simple_struct_twin_rust_async_sse_receiver_borrow_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_simple_struct_twin_rust_async_sse_receiver_borrow_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_simple_struct_twin_rust_async_sse_receiver_borrow_twin_rust_async_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_simple_struct_twin_rust_async_sse_receiver_borrow_twin_rust_async_sse');
+  late final _wire_simple_struct_twin_rust_async_sse_receiver_borrow_twin_rust_async_sse =
+      _wire_simple_struct_twin_rust_async_sse_receiver_borrow_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_simple_struct_twin_rust_async_sse_receiver_own_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_simple_struct_twin_rust_async_sse_receiver_own_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_simple_struct_twin_rust_async_sse_receiver_own_twin_rust_async_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_simple_struct_twin_rust_async_sse_receiver_own_twin_rust_async_sse');
+  late final _wire_simple_struct_twin_rust_async_sse_receiver_own_twin_rust_async_sse =
+      _wire_simple_struct_twin_rust_async_sse_receiver_own_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
   void wire_simple_struct_twin_rust_async_sse_return_self_twin_rust_async_sse(
     int port_,
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -64982,6 +65431,52 @@ class RustLibWire implements BaseWire {
       _wire_simple_struct_twin_sse_arg_self_twin_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
+  void wire_simple_struct_twin_sse_receiver_borrow_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_simple_struct_twin_sse_receiver_borrow_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_simple_struct_twin_sse_receiver_borrow_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_simple_struct_twin_sse_receiver_borrow_twin_sse');
+  late final _wire_simple_struct_twin_sse_receiver_borrow_twin_sse =
+      _wire_simple_struct_twin_sse_receiver_borrow_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_simple_struct_twin_sse_receiver_own_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_simple_struct_twin_sse_receiver_own_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_simple_struct_twin_sse_receiver_own_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_simple_struct_twin_sse_receiver_own_twin_sse');
+  late final _wire_simple_struct_twin_sse_receiver_own_twin_sse =
+      _wire_simple_struct_twin_sse_receiver_own_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
   void wire_simple_struct_twin_sse_return_self_twin_sse(
     int port_,
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -65380,6 +65875,42 @@ class RustLibWire implements BaseWire {
       _wire_simple_struct_twin_sync_arg_self_twin_syncPtr.asFunction<
           WireSyncRust2DartDco Function(
               ffi.Pointer<wire_cst_simple_struct_twin_sync>,
+              ffi.Pointer<wire_cst_simple_struct_twin_sync>)>();
+
+  WireSyncRust2DartDco wire_simple_struct_twin_sync_receiver_borrow_twin_sync(
+    ffi.Pointer<wire_cst_simple_struct_twin_sync> that,
+  ) {
+    return _wire_simple_struct_twin_sync_receiver_borrow_twin_sync(
+      that,
+    );
+  }
+
+  late final _wire_simple_struct_twin_sync_receiver_borrow_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_simple_struct_twin_sync>)>>(
+      'frbgen_frb_example_pure_dart_wire_simple_struct_twin_sync_receiver_borrow_twin_sync');
+  late final _wire_simple_struct_twin_sync_receiver_borrow_twin_sync =
+      _wire_simple_struct_twin_sync_receiver_borrow_twin_syncPtr.asFunction<
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_simple_struct_twin_sync>)>();
+
+  WireSyncRust2DartDco wire_simple_struct_twin_sync_receiver_own_twin_sync(
+    ffi.Pointer<wire_cst_simple_struct_twin_sync> that,
+  ) {
+    return _wire_simple_struct_twin_sync_receiver_own_twin_sync(
+      that,
+    );
+  }
+
+  late final _wire_simple_struct_twin_sync_receiver_own_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_simple_struct_twin_sync>)>>(
+      'frbgen_frb_example_pure_dart_wire_simple_struct_twin_sync_receiver_own_twin_sync');
+  late final _wire_simple_struct_twin_sync_receiver_own_twin_sync =
+      _wire_simple_struct_twin_sync_receiver_own_twin_syncPtr.asFunction<
+          WireSyncRust2DartDco Function(
               ffi.Pointer<wire_cst_simple_struct_twin_sync>)>();
 
   WireSyncRust2DartDco wire_simple_struct_twin_sync_return_self_twin_sync(
@@ -65805,6 +66336,56 @@ class RustLibWire implements BaseWire {
   late final _wire_simple_struct_twin_sync_sse_arg_self_twin_sync_sse =
       _wire_simple_struct_twin_sync_sse_arg_self_twin_sync_ssePtr.asFunction<
           WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse
+      wire_simple_struct_twin_sync_sse_receiver_borrow_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_simple_struct_twin_sync_sse_receiver_borrow_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_simple_struct_twin_sync_sse_receiver_borrow_twin_sync_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  WireSyncRust2DartSse Function(
+                      ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_simple_struct_twin_sync_sse_receiver_borrow_twin_sync_sse');
+  late final _wire_simple_struct_twin_sync_sse_receiver_borrow_twin_sync_sse =
+      _wire_simple_struct_twin_sync_sse_receiver_borrow_twin_sync_ssePtr
+          .asFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse
+      wire_simple_struct_twin_sync_sse_receiver_own_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_simple_struct_twin_sync_sse_receiver_own_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_simple_struct_twin_sync_sse_receiver_own_twin_sync_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  WireSyncRust2DartSse Function(
+                      ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_simple_struct_twin_sync_sse_receiver_own_twin_sync_sse');
+  late final _wire_simple_struct_twin_sync_sse_receiver_own_twin_sync_sse =
+      _wire_simple_struct_twin_sync_sse_receiver_own_twin_sync_ssePtr
+          .asFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, int, int)>();
 
   WireSyncRust2DartSse
       wire_simple_struct_twin_sync_sse_return_self_twin_sync_sse(
@@ -70711,6 +71292,416 @@ class RustLibWire implements BaseWire {
       'frbgen_frb_example_pure_dart_wire_handle_vec_of_opts_twin_sync_sse');
   late final _wire_handle_vec_of_opts_twin_sync_sse =
       _wire_handle_vec_of_opts_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_borrow_i32_twin_rust_async(
+    int port_,
+    int arg,
+  ) {
+    return _wire_borrow_i32_twin_rust_async(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_borrow_i32_twin_rust_asyncPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_borrow_i32_twin_rust_async');
+  late final _wire_borrow_i32_twin_rust_async =
+      _wire_borrow_i32_twin_rust_asyncPtr.asFunction<void Function(int, int)>();
+
+  void wire_borrow_str_twin_rust_async(
+    int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> arg,
+  ) {
+    return _wire_borrow_str_twin_rust_async(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_borrow_str_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+      'frbgen_frb_example_pure_dart_wire_borrow_str_twin_rust_async');
+  late final _wire_borrow_str_twin_rust_async =
+      _wire_borrow_str_twin_rust_asyncPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+
+  void wire_borrow_string_twin_rust_async(
+    int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> arg,
+  ) {
+    return _wire_borrow_string_twin_rust_async(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_borrow_string_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+      'frbgen_frb_example_pure_dart_wire_borrow_string_twin_rust_async');
+  late final _wire_borrow_string_twin_rust_async =
+      _wire_borrow_string_twin_rust_asyncPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+
+  void wire_borrow_struct_twin_rust_async(
+    int port_,
+    ffi.Pointer<wire_cst_simple_struct_for_borrow_twin_rust_async> arg,
+  ) {
+    return _wire_borrow_struct_twin_rust_async(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_borrow_struct_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64,
+                  ffi.Pointer<
+                      wire_cst_simple_struct_for_borrow_twin_rust_async>)>>(
+      'frbgen_frb_example_pure_dart_wire_borrow_struct_twin_rust_async');
+  late final _wire_borrow_struct_twin_rust_async =
+      _wire_borrow_struct_twin_rust_asyncPtr.asFunction<
+          void Function(
+              int,
+              ffi.Pointer<
+                  wire_cst_simple_struct_for_borrow_twin_rust_async>)>();
+
+  void wire_borrow_i32_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_borrow_i32_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_borrow_i32_twin_rust_async_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_borrow_i32_twin_rust_async_sse');
+  late final _wire_borrow_i32_twin_rust_async_sse =
+      _wire_borrow_i32_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_borrow_str_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_borrow_str_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_borrow_str_twin_rust_async_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_borrow_str_twin_rust_async_sse');
+  late final _wire_borrow_str_twin_rust_async_sse =
+      _wire_borrow_str_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_borrow_string_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_borrow_string_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_borrow_string_twin_rust_async_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_borrow_string_twin_rust_async_sse');
+  late final _wire_borrow_string_twin_rust_async_sse =
+      _wire_borrow_string_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_borrow_struct_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_borrow_struct_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_borrow_struct_twin_rust_async_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_borrow_struct_twin_rust_async_sse');
+  late final _wire_borrow_struct_twin_rust_async_sse =
+      _wire_borrow_struct_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_borrow_i32_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_borrow_i32_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_borrow_i32_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_borrow_i32_twin_sse');
+  late final _wire_borrow_i32_twin_sse = _wire_borrow_i32_twin_ssePtr
+      .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_borrow_str_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_borrow_str_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_borrow_str_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_borrow_str_twin_sse');
+  late final _wire_borrow_str_twin_sse = _wire_borrow_str_twin_ssePtr
+      .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_borrow_string_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_borrow_string_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_borrow_string_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_borrow_string_twin_sse');
+  late final _wire_borrow_string_twin_sse = _wire_borrow_string_twin_ssePtr
+      .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_borrow_struct_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_borrow_struct_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_borrow_struct_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_borrow_struct_twin_sse');
+  late final _wire_borrow_struct_twin_sse = _wire_borrow_struct_twin_ssePtr
+      .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartDco wire_borrow_i32_twin_sync(
+    int arg,
+  ) {
+    return _wire_borrow_i32_twin_sync(
+      arg,
+    );
+  }
+
+  late final _wire_borrow_i32_twin_syncPtr =
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_borrow_i32_twin_sync');
+  late final _wire_borrow_i32_twin_sync = _wire_borrow_i32_twin_syncPtr
+      .asFunction<WireSyncRust2DartDco Function(int)>();
+
+  WireSyncRust2DartDco wire_borrow_str_twin_sync(
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> arg,
+  ) {
+    return _wire_borrow_str_twin_sync(
+      arg,
+    );
+  }
+
+  late final _wire_borrow_str_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+      'frbgen_frb_example_pure_dart_wire_borrow_str_twin_sync');
+  late final _wire_borrow_str_twin_sync =
+      _wire_borrow_str_twin_syncPtr.asFunction<
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+
+  WireSyncRust2DartDco wire_borrow_string_twin_sync(
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> arg,
+  ) {
+    return _wire_borrow_string_twin_sync(
+      arg,
+    );
+  }
+
+  late final _wire_borrow_string_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+      'frbgen_frb_example_pure_dart_wire_borrow_string_twin_sync');
+  late final _wire_borrow_string_twin_sync =
+      _wire_borrow_string_twin_syncPtr.asFunction<
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+
+  WireSyncRust2DartDco wire_borrow_struct_twin_sync(
+    ffi.Pointer<wire_cst_simple_struct_for_borrow_twin_sync> arg,
+  ) {
+    return _wire_borrow_struct_twin_sync(
+      arg,
+    );
+  }
+
+  late final _wire_borrow_struct_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_simple_struct_for_borrow_twin_sync>)>>(
+      'frbgen_frb_example_pure_dart_wire_borrow_struct_twin_sync');
+  late final _wire_borrow_struct_twin_sync =
+      _wire_borrow_struct_twin_syncPtr.asFunction<
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_simple_struct_for_borrow_twin_sync>)>();
+
+  WireSyncRust2DartSse wire_borrow_i32_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_borrow_i32_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_borrow_i32_twin_sync_ssePtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_borrow_i32_twin_sync_sse');
+  late final _wire_borrow_i32_twin_sync_sse =
+      _wire_borrow_i32_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_borrow_str_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_borrow_str_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_borrow_str_twin_sync_ssePtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_borrow_str_twin_sync_sse');
+  late final _wire_borrow_str_twin_sync_sse =
+      _wire_borrow_str_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_borrow_string_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_borrow_string_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_borrow_string_twin_sync_ssePtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_borrow_string_twin_sync_sse');
+  late final _wire_borrow_string_twin_sync_sse =
+      _wire_borrow_string_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_borrow_struct_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_borrow_struct_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_borrow_struct_twin_sync_ssePtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_borrow_struct_twin_sync_sse');
+  late final _wire_borrow_struct_twin_sync_sse =
+      _wire_borrow_struct_twin_sync_ssePtr.asFunction<
           WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_handle_vec_of_primitive_twin_rust_async(
@@ -97634,6 +98625,53 @@ class RustLibWire implements BaseWire {
       _cst_new_box_autoadd_simple_enum_twin_syncPtr
           .asFunction<ffi.Pointer<wire_cst_simple_enum_twin_sync> Function()>();
 
+  ffi.Pointer<wire_cst_simple_struct_for_borrow_twin_normal>
+      cst_new_box_autoadd_simple_struct_for_borrow_twin_normal() {
+    return _cst_new_box_autoadd_simple_struct_for_borrow_twin_normal();
+  }
+
+  late final _cst_new_box_autoadd_simple_struct_for_borrow_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<wire_cst_simple_struct_for_borrow_twin_normal>
+                  Function()>>(
+      'frbgen_frb_example_pure_dart_cst_new_box_autoadd_simple_struct_for_borrow_twin_normal');
+  late final _cst_new_box_autoadd_simple_struct_for_borrow_twin_normal =
+      _cst_new_box_autoadd_simple_struct_for_borrow_twin_normalPtr.asFunction<
+          ffi.Pointer<wire_cst_simple_struct_for_borrow_twin_normal>
+              Function()>();
+
+  ffi.Pointer<wire_cst_simple_struct_for_borrow_twin_rust_async>
+      cst_new_box_autoadd_simple_struct_for_borrow_twin_rust_async() {
+    return _cst_new_box_autoadd_simple_struct_for_borrow_twin_rust_async();
+  }
+
+  late final _cst_new_box_autoadd_simple_struct_for_borrow_twin_rust_asyncPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Pointer<wire_cst_simple_struct_for_borrow_twin_rust_async>
+                      Function()>>(
+          'frbgen_frb_example_pure_dart_cst_new_box_autoadd_simple_struct_for_borrow_twin_rust_async');
+  late final _cst_new_box_autoadd_simple_struct_for_borrow_twin_rust_async =
+      _cst_new_box_autoadd_simple_struct_for_borrow_twin_rust_asyncPtr
+          .asFunction<
+              ffi.Pointer<wire_cst_simple_struct_for_borrow_twin_rust_async>
+                  Function()>();
+
+  ffi.Pointer<wire_cst_simple_struct_for_borrow_twin_sync>
+      cst_new_box_autoadd_simple_struct_for_borrow_twin_sync() {
+    return _cst_new_box_autoadd_simple_struct_for_borrow_twin_sync();
+  }
+
+  late final _cst_new_box_autoadd_simple_struct_for_borrow_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<wire_cst_simple_struct_for_borrow_twin_sync>
+                  Function()>>(
+      'frbgen_frb_example_pure_dart_cst_new_box_autoadd_simple_struct_for_borrow_twin_sync');
+  late final _cst_new_box_autoadd_simple_struct_for_borrow_twin_sync =
+      _cst_new_box_autoadd_simple_struct_for_borrow_twin_syncPtr.asFunction<
+          ffi.Pointer<wire_cst_simple_struct_for_borrow_twin_sync>
+              Function()>();
+
   ffi.Pointer<wire_cst_simple_struct_twin_normal>
       cst_new_box_autoadd_simple_struct_twin_normal() {
     return _cst_new_box_autoadd_simple_struct_twin_normal();
@@ -102070,6 +103108,10 @@ final class wire_cst_opt_vecs_twin_normal extends ffi.Struct {
   external ffi.Pointer<wire_cst_list_opt_list_prim_i_32_strict> buffers;
 }
 
+final class wire_cst_simple_struct_for_borrow_twin_normal extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8_strict> one;
+}
+
 final class wire_cst_test_id_twin_rust_async extends ffi.Struct {
   external ffi.Pointer<wire_cst_list_prim_i_32_strict> field0;
 }
@@ -103781,6 +104823,15 @@ final class wire_cst_opt_vecs_twin_sync extends ffi.Struct {
   external ffi.Pointer<wire_cst_list_opt_String> strings;
 
   external ffi.Pointer<wire_cst_list_opt_list_prim_i_32_strict> buffers;
+}
+
+final class wire_cst_simple_struct_for_borrow_twin_rust_async
+    extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8_strict> one;
+}
+
+final class wire_cst_simple_struct_for_borrow_twin_sync extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8_strict> one;
 }
 
 final class wire_cst_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoi

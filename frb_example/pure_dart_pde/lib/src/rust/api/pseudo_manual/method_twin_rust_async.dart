@@ -175,6 +175,14 @@ class SimpleStructTwinRustAsync {
       RustLib.instance.api.simpleStructTwinRustAsyncArgSelfTwinRustAsync(
           a: a, b: b, hint: hint);
 
+  Future<String> receiverBorrowTwinRustAsync({dynamic hint}) =>
+      RustLib.instance.api.simpleStructTwinRustAsyncReceiverBorrowTwinRustAsync(
+          that: this, hint: hint);
+
+  Future<String> receiverOwnTwinRustAsync({dynamic hint}) =>
+      RustLib.instance.api.simpleStructTwinRustAsyncReceiverOwnTwinRustAsync(
+          that: this, hint: hint);
+
   static Future<SimpleStructTwinRustAsync> returnSelfTwinRustAsync(
           {required String one, dynamic hint}) =>
       RustLib.instance.api.simpleStructTwinRustAsyncReturnSelfTwinRustAsync(

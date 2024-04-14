@@ -1,0 +1,16 @@
+// AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
+
+import 'package:frb_example_pure_dart_pde/src/rust/api/ownership.dart';
+import 'package:frb_example_pure_dart_pde/src/rust/frb_generated.dart';
+
+import '../test_utils.dart';
+
+Future<void> main({bool skipRustLibInit = false}) async {
+  if (!skipRustLibInit) await RustLib.init();
+
+  addTestsIdentityFunctionCall(borrowStringTwinNormal, ['a']);
+  addTestsIdentityFunctionCall(borrowStrTwinNormal, ['a']);
+  addTestsIdentityFunctionCall(borrowI32TwinNormal, [100]);
+  addTestsIdentityFunctionCall(
+      borrowStructTwinNormal, [SimpleStructForBorrowTwinNormal(one: 'a')]);
+}

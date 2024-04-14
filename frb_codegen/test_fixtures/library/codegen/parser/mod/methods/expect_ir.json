@@ -30,40 +30,45 @@
         "rust2dart": "Dco"
       },
       "comments": [],
-      "error_output": null,
       "getter": false,
       "id": 4,
       "initializer": false,
       "inputs": [
         {
-          "comments": [],
-          "default": null,
-          "is_final": true,
-          "name": "that",
-          "settings": {
-            "is_in_mirrored_enum": false
-          },
-          "ty": {
-            "data": {
-              "PrimitiveEnum": {
-                "ir": {
-                  "ident": "crate::api/MyEnum",
-                  "is_exception": false
-                },
-                "repr": "I32"
-              }
+          "inner": {
+            "comments": [],
+            "default": null,
+            "is_final": true,
+            "name": "that",
+            "settings": {
+              "is_in_mirrored_enum": false
             },
-            "safe_ident": "my_enum",
-            "type": "Delegate"
-          }
+            "ty": {
+              "data": {
+                "PrimitiveEnum": {
+                  "ir": {
+                    "ident": "crate::api/MyEnum",
+                    "is_exception": false
+                  },
+                  "repr": "I32"
+                }
+              },
+              "safe_ident": "my_enum",
+              "type": "Delegate"
+            }
+          },
+          "ownership_mode": "Ref"
         }
       ],
       "mode": "Normal",
       "name": "crate::api/my_enum_example_instance_method",
       "output": {
-        "data": "Unit",
-        "safe_ident": "unit",
-        "type": "Primitive"
+        "error": null,
+        "normal": {
+          "data": "Unit",
+          "safe_ident": "unit",
+          "type": "Primitive"
+        }
       },
       "owner": {
         "Method": {
@@ -93,7 +98,6 @@
         "rust2dart": "Dco"
       },
       "comments": [],
-      "error_output": null,
       "getter": false,
       "id": 3,
       "initializer": false,
@@ -101,9 +105,12 @@
       "mode": "Normal",
       "name": "crate::api/my_enum_example_static_method",
       "output": {
-        "data": "Unit",
-        "safe_ident": "unit",
-        "type": "Primitive"
+        "error": null,
+        "normal": {
+          "data": "Unit",
+          "safe_ident": "unit",
+          "type": "Primitive"
+        }
       },
       "owner": {
         "Method": {
@@ -133,42 +140,47 @@
         "rust2dart": "Dco"
       },
       "comments": [],
-      "error_output": null,
       "getter": false,
       "id": 2,
       "initializer": false,
       "inputs": [
         {
-          "comments": [],
-          "default": null,
-          "is_final": true,
-          "name": "that",
-          "settings": {
-            "is_in_mirrored_enum": false
-          },
-          "ty": {
-            "data": {
-              "exist_in_real_api": false,
-              "inner": {
-                "data": {
-                  "ident": "crate::api/MyStruct",
-                  "is_exception": false
-                },
-                "safe_ident": "my_struct",
-                "type": "StructRef"
-              }
+          "inner": {
+            "comments": [],
+            "default": null,
+            "is_final": true,
+            "name": "that",
+            "settings": {
+              "is_in_mirrored_enum": false
             },
-            "safe_ident": "box_autoadd_my_struct",
-            "type": "Boxed"
-          }
+            "ty": {
+              "data": {
+                "exist_in_real_api": false,
+                "inner": {
+                  "data": {
+                    "ident": "crate::api/MyStruct",
+                    "is_exception": false
+                  },
+                  "safe_ident": "my_struct",
+                  "type": "StructRef"
+                }
+              },
+              "safe_ident": "box_autoadd_my_struct",
+              "type": "Boxed"
+            }
+          },
+          "ownership_mode": "Ref"
         }
       ],
       "mode": "Normal",
       "name": "crate::api/my_struct_example_instance_method",
       "output": {
-        "data": "Unit",
-        "safe_ident": "unit",
-        "type": "Primitive"
+        "error": null,
+        "normal": {
+          "data": "Unit",
+          "safe_ident": "unit",
+          "type": "Primitive"
+        }
       },
       "owner": {
         "Method": {
@@ -193,7 +205,6 @@
         "rust2dart": "Dco"
       },
       "comments": [],
-      "error_output": null,
       "getter": false,
       "id": 1,
       "initializer": false,
@@ -201,9 +212,12 @@
       "mode": "Normal",
       "name": "crate::api/my_struct_example_static_method",
       "output": {
-        "data": "Unit",
-        "safe_ident": "unit",
-        "type": "Primitive"
+        "error": null,
+        "normal": {
+          "data": "Unit",
+          "safe_ident": "unit",
+          "type": "Primitive"
+        }
       },
       "owner": {
         "Method": {

@@ -173,6 +173,13 @@ class SimpleStructTwinNormal {
       RustLib.instance.api
           .simpleStructTwinNormalArgSelfTwinNormal(a: a, b: b, hint: hint);
 
+  Future<String> receiverBorrowTwinNormal({dynamic hint}) => RustLib
+      .instance.api
+      .simpleStructTwinNormalReceiverBorrowTwinNormal(that: this, hint: hint);
+
+  Future<String> receiverOwnTwinNormal({dynamic hint}) => RustLib.instance.api
+      .simpleStructTwinNormalReceiverOwnTwinNormal(that: this, hint: hint);
+
   static Future<SimpleStructTwinNormal> returnSelfTwinNormal(
           {required String one, dynamic hint}) =>
       RustLib.instance.api

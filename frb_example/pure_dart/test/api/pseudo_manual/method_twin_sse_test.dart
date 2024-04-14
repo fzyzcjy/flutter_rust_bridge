@@ -100,6 +100,16 @@ Future<void> main({bool skipRustLibInit = false}) async {
           (await SimpleStructTwinSse.returnSelfTwinSse(one: 'One')).one, 'One');
     });
 
+    test('receiverBorrow', () async {
+      final obj = SimpleStructTwinSse(one: 'a');
+      expect(await obj.receiverBorrowTwinSse(), 'a');
+    });
+
+    test('receiverOwn', () async {
+      final obj = SimpleStructTwinSse(one: 'a');
+      expect(await obj.receiverOwnTwinSse(), 'a');
+    });
+
     test('argSelf', () async {
       final a = SimpleStructTwinSse(one: 'a');
       final b = SimpleStructTwinSse(one: 'b');
