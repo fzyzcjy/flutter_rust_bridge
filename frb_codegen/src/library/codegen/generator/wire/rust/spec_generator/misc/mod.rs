@@ -15,7 +15,6 @@ use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::Wi
 use itertools::Itertools;
 use serde::Serialize;
 use std::collections::HashSet;
-use crate::codegen::generator::wire::rust::content_hasher::CONTENT_HASH_PLACEHOLDER;
 
 pub(crate) mod ty;
 pub(crate) mod wire_func;
@@ -38,6 +37,7 @@ pub(crate) fn generate(
     context: WireRustGeneratorContext,
     cache: &IrPackComputedCache,
 ) -> anyhow::Result<WireRustOutputSpecMisc> {
+    let content_hash = generate_content_hash();
     Ok(WireRustOutputSpecMisc {
         code_header: Acc::new(|_| vec![(generate_code_header() + "\n\n").into()]),
         file_attributes: Acc::new_common(vec![FILE_ATTRIBUTES.to_string().into()]),
@@ -46,6 +46,7 @@ pub(crate) fn generate(
         boilerplate: generate_boilerplate(
             context.config.default_stream_sink_codec,
             context.config.default_rust_opaque_codec,
+            content_hash,
         ),
         wire_funcs: (context.ir_pack.funcs.iter())
             .map(|f| generate_wire_func(f, context))
@@ -61,7 +62,7 @@ pub(crate) fn generate(
             .iter()
             .map(|ty| WireRustGenerator::new(ty.clone(), context).generate_related_funcs())
             .collect(),
-        content_hash: generate_content_hash(),
+        content_hash,
     })
 }
 
@@ -134,6 +135,7 @@ fn generate_static_checks(types: &[IrType], context: WireRustGeneratorContext) -
 fn generate_boilerplate(
     default_stream_sink_codec: CodecMode,
     default_rust_opaque_codec: RustOpaqueCodecMode,
+    content_hash: i32,
 ) -> Acc<Vec<WireRustOutputCode>> {
     Acc::new(|target| {
         match target {
@@ -156,7 +158,7 @@ fn generate_boilerplate(
                     default_rust_auto_opaque = RustAutoOpaque{default_rust_opaque_codec},
                 );
                 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "{version}";
-                pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = {CONTENT_HASH_PLACEHOLDER};
+                pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = {content_hash};
             "#,
                 version = env!("CARGO_PKG_VERSION"),
             )
