@@ -24,6 +24,7 @@ pub(super) struct WireRustOutputSpec {
     pub(super) dart2rust: WireRustCodecOutputSpec,
     pub(super) rust2dart: WireRustCodecOutputSpec,
     pub(super) extern_struct_names: Vec<String>,
+    pub(super) content_hash: i32,
 }
 
 pub(super) fn generate(

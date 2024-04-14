@@ -3,20 +3,21 @@ use crate::codegen::generator::misc::target::{Target, TargetOrCommon};
 use crate::codegen::generator::misc::text_generator_utils::{
     generate_text_respecting_web_flag, section_header_comment,
 };
+use crate::codegen::generator::wire::rust::content_hasher::{
+    compute_content_hash, text_inject_content_hash,
+};
 use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInternalConfig;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::WireRustOutputSpec;
 use itertools::Itertools;
 use strum::IntoEnumIterator;
-use crate::codegen::generator::wire::rust::content_hasher::{compute_content_hash, text_inject_content_hash};
 
 // Call it "text", not "code", because the whole codegen is generating code,
 // and we want to emphasize we are generating final output text here.
 pub(super) struct WireRustOutputText {
     pub(super) text: Acc<Option<String>>,
     pub(super) extern_funcs: Vec<ExternFunc>,
-    pub(super) content_hash: i32,
 }
 
 pub(super) fn generate(
@@ -39,12 +40,9 @@ pub(super) fn generate(
         &(merged_code.clone()).map(|code, _| code.all_code(&config.c_symbol_prefix)),
     )?;
 
-    let content_hash = compute_content_hash(&text);
-    let text = text_inject_content_hash(&text, content_hash);
-
     let extern_funcs = compute_extern_funcs(merged_code);
 
-    Ok(WireRustOutputText { text, extern_funcs, content_hash })
+    Ok(WireRustOutputText { text, extern_funcs })
 }
 
 fn compute_extern_funcs(merged_code: Acc<WireRustOutputCode>) -> Vec<ExternFunc> {
