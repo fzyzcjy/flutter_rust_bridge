@@ -15,8 +15,7 @@ use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::Wi
 use itertools::Itertools;
 use serde::Serialize;
 use std::collections::HashSet;
-use sha1::Digest;
-use sha1::digest::Update;
+use sha1::{Sha1, Digest};
 
 pub(crate) mod ty;
 pub(crate) mod wire_func;
@@ -215,7 +214,7 @@ fn generate_handler(ir_pack: &IrPack) -> String {
 }
 
 fn generate_content_hash(ir_pack: &IrPack) -> i32 {
-    let mut hasher = sha1::Sha1::new();
+    let mut hasher = Sha1::new();
     for func in ir_pack.funcs.iter() {
         hasher.update(func.name.rust_style().as_bytes());
     }

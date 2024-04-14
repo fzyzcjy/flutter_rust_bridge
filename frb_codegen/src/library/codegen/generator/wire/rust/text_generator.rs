@@ -3,9 +3,6 @@ use crate::codegen::generator::misc::target::{Target, TargetOrCommon};
 use crate::codegen::generator::misc::text_generator_utils::{
     generate_text_respecting_web_flag, section_header_comment,
 };
-use crate::codegen::generator::wire::rust::content_hasher::{
-    compute_content_hash, text_inject_content_hash,
-};
 use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInternalConfig;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
