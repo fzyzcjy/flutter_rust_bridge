@@ -5,11 +5,10 @@ use crate::codegen::generator::api_dart::spec_generator::class::field::{
     generate_field_default, generate_field_required_modifier,
 };
 use crate::codegen::generator::api_dart::spec_generator::misc::{
-    generate_dart_comments, generate_function_dart_return_type,
-    generate_imports_which_types_and_funcs_use,
+    generate_dart_comments, generate_imports_which_types_and_funcs_use,
 };
 use crate::codegen::ir::field::IrField;
-use crate::codegen::ir::func::IrFunc;
+use crate::codegen::ir::func::{IrFunc, IrFuncMode};
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegateStreamSink};
 use crate::codegen::ir::ty::IrType;
@@ -52,7 +51,7 @@ pub(crate) fn generate(
         &return_stream,
     );
     let func_return_type = generate_function_dart_return_type(
-        &func.mode,
+        func,
         &ApiDartGenerator::new(func.output.normal.clone(), context).dart_api_type(),
         &return_stream,
         context,
@@ -175,4 +174,31 @@ fn generate_header(
         )?,
         ..Default::default()
     })
+}
+
+fn generate_function_dart_return_type(
+    func: &IrFunc,
+    inner: &str,
+    return_stream: &Option<ReturnStreamInfo>,
+    context: ApiDartGeneratorContext,
+) -> String {
+    let mut inner = inner.to_owned();
+
+    if let Some(return_stream) = return_stream {
+        inner = format!(
+            "Stream<{}>",
+            ApiDartGenerator::new(return_stream.ty.inner.clone(), context).dart_api_type()
+        );
+    }
+
+    let return_future = if return_stream.is_some() {
+        func.stream_dart_await
+    } else {
+        func.mode != IrFuncMode::Sync
+    };
+    if return_future {
+        inner = format!("Future<{inner}>");
+    }
+
+    inner
 }

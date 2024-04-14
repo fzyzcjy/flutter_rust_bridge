@@ -1,10 +1,9 @@
 use crate::codegen::generator::api_dart::spec_generator::base::{
     ApiDartGenerator, ApiDartGeneratorContext,
 };
-use crate::codegen::generator::api_dart::spec_generator::function::ReturnStreamInfo;
 use crate::codegen::ir::annotation::IrDartAnnotation;
 use crate::codegen::ir::comment::IrComment;
-use crate::codegen::ir::func::{IrFunc, IrFuncMode};
+use crate::codegen::ir::func::IrFunc;
 use crate::codegen::ir::import::IrDartImport;
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::DistinctTypeGatherer;
@@ -51,28 +50,6 @@ pub(crate) fn generate_dart_maybe_implements_exception(is_exception: bool) -> &'
         "implements FrbException"
     } else {
         ""
-    }
-}
-
-pub(crate) fn generate_function_dart_return_type(
-    func_mode: &IrFuncMode,
-    raw_inner: &str,
-    return_stream: &Option<ReturnStreamInfo>,
-    context: ApiDartGeneratorContext,
-) -> String {
-    let inner = return_stream
-        .as_ref()
-        .map(|info| {
-            format!(
-                "Stream<{}>",
-                ApiDartGenerator::new(info.ty.inner.clone(), context).dart_api_type()
-            )
-        })
-        .unwrap_or(raw_inner.to_owned());
-
-    match func_mode {
-        IrFuncMode::Normal => format!("Future<{inner}>"),
-        IrFuncMode::Sync => inner.to_string(),
     }
 }
 

@@ -8,8 +8,9 @@ use crate::frb_generated::StreamSink;
 use crate::frb_generated::FLUTTER_RUST_BRIDGE_HANDLER;
 use anyhow::anyhow;
 use flutter_rust_bridge::for_generated::BaseThreadPool;
-use flutter_rust_bridge::transfer;
+use flutter_rust_bridge::{frb, transfer};
 
+#[frb(stream_dart_await)]
 #[flutter_rust_bridge::frb(serialize)]
 pub async fn func_stream_return_error_twin_rust_async_sse(
     _sink: StreamSink<String, flutter_rust_bridge::SseCodec>,
@@ -17,6 +18,7 @@ pub async fn func_stream_return_error_twin_rust_async_sse(
     Err(anyhow!("deliberate error"))
 }
 
+#[frb(stream_dart_await)]
 #[flutter_rust_bridge::frb(serialize)]
 pub async fn func_stream_return_panic_twin_rust_async_sse(
     _sink: StreamSink<String, flutter_rust_bridge::SseCodec>,

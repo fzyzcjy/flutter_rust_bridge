@@ -15,6 +15,7 @@ pub struct IrFunc {
     pub output: IrFuncOutput,
     pub owner: IrFuncOwnerInfo,
     pub mode: IrFuncMode,
+    pub stream_dart_await: bool,
     pub rust_async: bool,
     pub initializer: bool,
     // When later we support setter, etc, we should refactor it into an enum

@@ -146,8 +146,7 @@ Future<NonCloneSimpleEnumTwinSse> rustAutoOpaqueEnumReturnOwnTwinSse(
         {dynamic hint}) =>
     RustLib.instance.api.rustAutoOpaqueEnumReturnOwnTwinSse(hint: hint);
 
-Future<Stream<NonCloneSimpleTwinSse>> rustAutoOpaqueStreamSinkTwinSse(
-        {dynamic hint}) =>
+Stream<NonCloneSimpleTwinSse> rustAutoOpaqueStreamSinkTwinSse({dynamic hint}) =>
     RustLib.instance.api.rustAutoOpaqueStreamSinkTwinSse(hint: hint);
 
 Future<void> rustAutoOpaqueArgVecOwnTwinSse(

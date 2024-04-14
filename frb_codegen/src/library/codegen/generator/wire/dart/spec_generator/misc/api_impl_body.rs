@@ -46,10 +46,21 @@ pub(crate) fn generate_api_impl_normal_function(
         ))",
     );
     let function_implementation_body = if let Some(return_stream) = &api_dart_func.return_stream {
+        let wrapped_call_handler = match func.mode {
+            IrFuncMode::Normal => {
+                if func.stream_dart_await {
+                    format!("await {call_handler}")
+                } else {
+                    format!("unawaited({call_handler})")
+                }
+            }
+            IrFuncMode::Sync => call_handler.clone(),
+        };
+
         format!(
             "
             final {return_stream_name} = {return_stream_type}();
-            {maybe_await}{call_handler};
+            {wrapped_call_handler};
             return {return_stream_name}.stream;
             ",
             return_stream_name = return_stream.field.name.dart_style(),
@@ -58,18 +69,16 @@ pub(crate) fn generate_api_impl_normal_function(
                 context.as_api_dart_context()
             )
             .dart_api_type(),
-            maybe_await = if func.mode != IrFuncMode::Sync {
-                "await "
-            } else {
-                ""
-            },
         )
     } else {
         format!("return {call_handler};")
     };
     let function_implementation = format!(
         "@override {func_expr} {maybe_async} {{ {function_implementation_body} }}",
-        maybe_async = if func.mode != IrFuncMode::Sync && api_dart_func.return_stream.is_some() {
+        maybe_async = if func.mode != IrFuncMode::Sync
+            && api_dart_func.return_stream.is_some()
+            && func.stream_dart_await
+        {
             "async "
         } else {
             ""

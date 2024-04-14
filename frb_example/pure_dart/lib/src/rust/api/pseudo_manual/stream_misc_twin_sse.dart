@@ -6,6 +6,9 @@
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<Stream<String>> funcStreamRealisticTwinSse(
+Stream<String> funcStreamRealisticTwinSse(
         {required String arg, dynamic hint}) =>
     RustLib.instance.api.funcStreamRealisticTwinSse(arg: arg, hint: hint);
+
+Future<Stream<int>> streamSinkDartAsyncTwinSse({dynamic hint}) =>
+    RustLib.instance.api.streamSinkDartAsyncTwinSse(hint: hint);

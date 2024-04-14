@@ -54,7 +54,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final int key = 10;
     final int max = 5;
     final stream =
-        await concatenateWith.handleSomeStreamSinkTwinSync(key: key, max: max);
+        concatenateWith.handleSomeStreamSinkTwinSync(key: key, max: max);
     int cnt = 0;
     await for (final value in stream) {
       print("output from ConcatenateWith's stream: $value");
@@ -67,9 +67,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('ConcatenateWith static stream sink test', () async {
     final int key = 10;
     final int max = 5;
-    final stream =
-        await ConcatenateWithTwinSync.handleSomeStaticStreamSinkTwinSync(
-            key: key, max: max);
+    final stream = ConcatenateWithTwinSync.handleSomeStaticStreamSinkTwinSync(
+        key: key, max: max);
     int cnt = 0;
     await for (final value in stream) {
       print("output from ConcatenateWith's static stream: $value");
@@ -80,8 +79,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('ConcatenateWith static stream sink at 1 test', () async {
-    final stream = await ConcatenateWithTwinSync
-        .handleSomeStaticStreamSinkSingleArgTwinSync();
+    final stream =
+        ConcatenateWithTwinSync.handleSomeStaticStreamSinkSingleArgTwinSync();
     expect(stream.toList(), completion([0, 1, 2, 3, 4]));
   });
 
