@@ -15,6 +15,8 @@ use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::Wi
 use itertools::Itertools;
 use serde::Serialize;
 use std::collections::HashSet;
+use sha1::Digest;
+use sha1::digest::Update;
 
 pub(crate) mod ty;
 pub(crate) mod wire_func;
@@ -37,7 +39,7 @@ pub(crate) fn generate(
     context: WireRustGeneratorContext,
     cache: &IrPackComputedCache,
 ) -> anyhow::Result<WireRustOutputSpecMisc> {
-    let content_hash = generate_content_hash();
+    let content_hash = generate_content_hash(context.ir_pack);
     Ok(WireRustOutputSpecMisc {
         code_header: Acc::new(|_| vec![(generate_code_header() + "\n\n").into()]),
         file_attributes: Acc::new_common(vec![FILE_ATTRIBUTES.to_string().into()]),
@@ -212,6 +214,11 @@ fn generate_handler(ir_pack: &IrPack) -> String {
     }
 }
 
-fn generate_content_hash() -> i32 {
-    TODO
+fn generate_content_hash(ir_pack: &IrPack) -> i32 {
+    let mut hasher = sha1::Sha1::new();
+    for func in ir_pack.funcs.iter() {
+        hasher.update(func.name.rust_style().as_bytes());
+    }
+    let digest = hasher.finalize();
+    i32::from_le_bytes(digest[..4].try_into().unwrap())
 }
