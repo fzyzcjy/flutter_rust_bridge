@@ -26,6 +26,7 @@ impl<'a> EnumRefApiDartGenerator<'a> {
             code: format!(
                 "{comments}enum {name} {{
                     {variants}
+                    ;
                     {extra_body}
                 }}",
             ),
