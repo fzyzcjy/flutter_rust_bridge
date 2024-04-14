@@ -8,7 +8,6 @@ use crate::codegen::ir::pack::IrPackComputedCache;
 pub(crate) mod internal_config;
 pub(crate) mod spec_generator;
 mod text_generator;
-pub(crate) mod content_hasher;
 
 pub(crate) struct GeneratorWireRustOutput {
     pub output_texts: PathTexts,
