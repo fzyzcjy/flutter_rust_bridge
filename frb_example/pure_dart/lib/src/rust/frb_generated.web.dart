@@ -35,6 +35,7 @@ import 'api/misc_type.dart';
 import 'api/newtype_pattern.dart';
 import 'api/optional.dart';
 import 'api/optional_primitive_misc.dart';
+import 'api/ownership.dart';
 import 'api/primitive_list_misc.dart';
 import 'api/primitive_misc.dart';
 import 'api/pseudo_manual/array_twin_rust_async.dart';
@@ -162,6 +163,11 @@ import 'api/pseudo_manual/optional_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/optional_twin_sse.dart';
 import 'api/pseudo_manual/optional_twin_sync.dart';
 import 'api/pseudo_manual/optional_twin_sync_sse.dart';
+import 'api/pseudo_manual/ownership_twin_rust_async.dart';
+import 'api/pseudo_manual/ownership_twin_rust_async_sse.dart';
+import 'api/pseudo_manual/ownership_twin_sse.dart';
+import 'api/pseudo_manual/ownership_twin_sync.dart';
+import 'api/pseudo_manual/ownership_twin_sync_sse.dart';
 import 'api/pseudo_manual/primitive_list_misc_twin_rust_async.dart';
 import 'api/pseudo_manual/primitive_list_misc_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/primitive_list_misc_twin_sse.dart';
@@ -5011,6 +5017,33 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  SimpleStructForBorrowTwinNormal
+      dco_decode_box_autoadd_simple_struct_for_borrow_twin_normal(dynamic raw);
+
+  @protected
+  SimpleStructForBorrowTwinRustAsync
+      dco_decode_box_autoadd_simple_struct_for_borrow_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  SimpleStructForBorrowTwinRustAsyncSse
+      dco_decode_box_autoadd_simple_struct_for_borrow_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  SimpleStructForBorrowTwinSse
+      dco_decode_box_autoadd_simple_struct_for_borrow_twin_sse(dynamic raw);
+
+  @protected
+  SimpleStructForBorrowTwinSync
+      dco_decode_box_autoadd_simple_struct_for_borrow_twin_sync(dynamic raw);
+
+  @protected
+  SimpleStructForBorrowTwinSyncSse
+      dco_decode_box_autoadd_simple_struct_for_borrow_twin_sync_sse(
+          dynamic raw);
+
+  @protected
   SimpleStructTwinNormal dco_decode_box_autoadd_simple_struct_twin_normal(
       dynamic raw);
 
@@ -8476,6 +8509,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   SimplePrimitiveEnumTwinSyncSse dco_decode_simple_primitive_enum_twin_sync_sse(
       dynamic raw);
+
+  @protected
+  SimpleStructForBorrowTwinNormal
+      dco_decode_simple_struct_for_borrow_twin_normal(dynamic raw);
+
+  @protected
+  SimpleStructForBorrowTwinRustAsync
+      dco_decode_simple_struct_for_borrow_twin_rust_async(dynamic raw);
+
+  @protected
+  SimpleStructForBorrowTwinRustAsyncSse
+      dco_decode_simple_struct_for_borrow_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  SimpleStructForBorrowTwinSse dco_decode_simple_struct_for_borrow_twin_sse(
+      dynamic raw);
+
+  @protected
+  SimpleStructForBorrowTwinSync dco_decode_simple_struct_for_borrow_twin_sync(
+      dynamic raw);
+
+  @protected
+  SimpleStructForBorrowTwinSyncSse
+      dco_decode_simple_struct_for_borrow_twin_sync_sse(dynamic raw);
 
   @protected
   SimpleStructTwinNormal dco_decode_simple_struct_twin_normal(dynamic raw);
@@ -13276,6 +13333,36 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  SimpleStructForBorrowTwinNormal
+      sse_decode_box_autoadd_simple_struct_for_borrow_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  SimpleStructForBorrowTwinRustAsync
+      sse_decode_box_autoadd_simple_struct_for_borrow_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  SimpleStructForBorrowTwinRustAsyncSse
+      sse_decode_box_autoadd_simple_struct_for_borrow_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  SimpleStructForBorrowTwinSse
+      sse_decode_box_autoadd_simple_struct_for_borrow_twin_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  SimpleStructForBorrowTwinSync
+      sse_decode_box_autoadd_simple_struct_for_borrow_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  SimpleStructForBorrowTwinSyncSse
+      sse_decode_box_autoadd_simple_struct_for_borrow_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
   SimpleStructTwinNormal sse_decode_box_autoadd_simple_struct_twin_normal(
       SseDeserializer deserializer);
 
@@ -17213,6 +17300,34 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  SimpleStructForBorrowTwinNormal
+      sse_decode_simple_struct_for_borrow_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  SimpleStructForBorrowTwinRustAsync
+      sse_decode_simple_struct_for_borrow_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  SimpleStructForBorrowTwinRustAsyncSse
+      sse_decode_simple_struct_for_borrow_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  SimpleStructForBorrowTwinSse sse_decode_simple_struct_for_borrow_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  SimpleStructForBorrowTwinSync sse_decode_simple_struct_for_borrow_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  SimpleStructForBorrowTwinSyncSse
+      sse_decode_simple_struct_for_borrow_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
   SimpleStructTwinNormal sse_decode_simple_struct_twin_normal(
       SseDeserializer deserializer);
 
@@ -20158,6 +20273,27 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SimpleEnumTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_simple_enum_twin_sync(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_simple_struct_for_borrow_twin_normal(
+      SimpleStructForBorrowTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_simple_struct_for_borrow_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_simple_struct_for_borrow_twin_rust_async(
+      SimpleStructForBorrowTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_simple_struct_for_borrow_twin_rust_async(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_simple_struct_for_borrow_twin_sync(
+      SimpleStructForBorrowTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_simple_struct_for_borrow_twin_sync(raw);
   }
 
   @protected
@@ -24722,6 +24858,27 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
 
     throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> cst_encode_simple_struct_for_borrow_twin_normal(
+      SimpleStructForBorrowTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_String(raw.one)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_simple_struct_for_borrow_twin_rust_async(
+      SimpleStructForBorrowTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_String(raw.one)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_simple_struct_for_borrow_twin_sync(
+      SimpleStructForBorrowTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_String(raw.one)];
   }
 
   @protected
@@ -30571,6 +30728,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SimpleEnumTwinSyncSse self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_simple_struct_for_borrow_twin_normal(
+      SimpleStructForBorrowTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_simple_struct_for_borrow_twin_rust_async(
+      SimpleStructForBorrowTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_simple_struct_for_borrow_twin_rust_async_sse(
+      SimpleStructForBorrowTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_simple_struct_for_borrow_twin_sse(
+      SimpleStructForBorrowTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_simple_struct_for_borrow_twin_sync(
+      SimpleStructForBorrowTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_simple_struct_for_borrow_twin_sync_sse(
+      SimpleStructForBorrowTwinSyncSse self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_simple_struct_twin_normal(
       SimpleStructTwinNormal self, SseSerializer serializer);
 
@@ -34314,6 +34495,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SimplePrimitiveEnumTwinSyncSse self, SseSerializer serializer);
 
   @protected
+  void sse_encode_simple_struct_for_borrow_twin_normal(
+      SimpleStructForBorrowTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_simple_struct_for_borrow_twin_rust_async(
+      SimpleStructForBorrowTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_simple_struct_for_borrow_twin_rust_async_sse(
+      SimpleStructForBorrowTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_simple_struct_for_borrow_twin_sse(
+      SimpleStructForBorrowTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_simple_struct_for_borrow_twin_sync(
+      SimpleStructForBorrowTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_simple_struct_for_borrow_twin_sync_sse(
+      SimpleStructForBorrowTwinSyncSse self, SseSerializer serializer);
+
+  @protected
   void sse_encode_simple_struct_twin_normal(
       SimpleStructTwinNormal self, SseSerializer serializer);
 
@@ -35631,6 +35836,16 @@ class RustLibWire implements BaseWire {
       wasmModule.wire_simple_struct_twin_normal_arg_self_twin_normal(
           port_, a, b);
 
+  void wire_simple_struct_twin_normal_receiver_borrow_twin_normal(
+          NativePortType port_, List<dynamic> that) =>
+      wasmModule.wire_simple_struct_twin_normal_receiver_borrow_twin_normal(
+          port_, that);
+
+  void wire_simple_struct_twin_normal_receiver_own_twin_normal(
+          NativePortType port_, List<dynamic> that) =>
+      wasmModule.wire_simple_struct_twin_normal_receiver_own_twin_normal(
+          port_, that);
+
   void wire_simple_struct_twin_normal_return_self_twin_normal(
           NativePortType port_, String one) =>
       wasmModule.wire_simple_struct_twin_normal_return_self_twin_normal(
@@ -35859,6 +36074,19 @@ class RustLibWire implements BaseWire {
           int? my_i32, Object? my_i64, double? my_f64, bool? my_bool) =>
       wasmModule.wire_primitive_optional_types_twin_normal(
           port_, my_i32, my_i64, my_f64, my_bool);
+
+  void wire_borrow_i32_twin_normal(NativePortType port_, int arg) =>
+      wasmModule.wire_borrow_i32_twin_normal(port_, arg);
+
+  void wire_borrow_str_twin_normal(NativePortType port_, String arg) =>
+      wasmModule.wire_borrow_str_twin_normal(port_, arg);
+
+  void wire_borrow_string_twin_normal(NativePortType port_, String arg) =>
+      wasmModule.wire_borrow_string_twin_normal(port_, arg);
+
+  void wire_borrow_struct_twin_normal(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule.wire_borrow_struct_twin_normal(port_, arg);
 
   void wire_handle_vec_of_primitive_twin_normal(NativePortType port_, int n) =>
       wasmModule.wire_handle_vec_of_primitive_twin_normal(port_, n);
@@ -42625,6 +42853,18 @@ class RustLibWire implements BaseWire {
       wasmModule.wire_simple_struct_twin_rust_async_arg_self_twin_rust_async(
           port_, a, b);
 
+  void wire_simple_struct_twin_rust_async_receiver_borrow_twin_rust_async(
+          NativePortType port_, List<dynamic> that) =>
+      wasmModule
+          .wire_simple_struct_twin_rust_async_receiver_borrow_twin_rust_async(
+              port_, that);
+
+  void wire_simple_struct_twin_rust_async_receiver_own_twin_rust_async(
+          NativePortType port_, List<dynamic> that) =>
+      wasmModule
+          .wire_simple_struct_twin_rust_async_receiver_own_twin_rust_async(
+              port_, that);
+
   void wire_simple_struct_twin_rust_async_return_self_twin_rust_async(
           NativePortType port_, String one) =>
       wasmModule.wire_simple_struct_twin_rust_async_return_self_twin_rust_async(
@@ -42784,6 +43024,24 @@ class RustLibWire implements BaseWire {
           int data_len_) =>
       wasmModule
           .wire_simple_struct_twin_rust_async_sse_arg_self_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_simple_struct_twin_rust_async_sse_receiver_borrow_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire_simple_struct_twin_rust_async_sse_receiver_borrow_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_simple_struct_twin_rust_async_sse_receiver_own_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire_simple_struct_twin_rust_async_sse_receiver_own_twin_rust_async_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_simple_struct_twin_rust_async_sse_return_self_twin_rust_async_sse(
@@ -42953,6 +43211,22 @@ class RustLibWire implements BaseWire {
       wasmModule.wire_simple_struct_twin_sse_arg_self_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
+  void wire_simple_struct_twin_sse_receiver_borrow_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_simple_struct_twin_sse_receiver_borrow_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_simple_struct_twin_sse_receiver_own_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_simple_struct_twin_sse_receiver_own_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
   void wire_simple_struct_twin_sse_return_self_twin_sse(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
@@ -43070,6 +43344,16 @@ class RustLibWire implements BaseWire {
       wire_simple_struct_twin_sync_arg_self_twin_sync(
               List<dynamic> a, List<dynamic> b) =>
           wasmModule.wire_simple_struct_twin_sync_arg_self_twin_sync(a, b);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_simple_struct_twin_sync_receiver_borrow_twin_sync(
+              List<dynamic> that) =>
+          wasmModule
+              .wire_simple_struct_twin_sync_receiver_borrow_twin_sync(that);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_simple_struct_twin_sync_receiver_own_twin_sync(List<dynamic> that) =>
+          wasmModule.wire_simple_struct_twin_sync_receiver_own_twin_sync(that);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_simple_struct_twin_sync_return_self_twin_sync(String one) =>
@@ -43217,6 +43501,24 @@ class RustLibWire implements BaseWire {
               int data_len_) =>
           wasmModule.wire_simple_struct_twin_sync_sse_arg_self_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_simple_struct_twin_sync_sse_receiver_borrow_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire_simple_struct_twin_sync_sse_receiver_borrow_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_simple_struct_twin_sync_sse_receiver_own_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire_simple_struct_twin_sync_sse_receiver_own_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_simple_struct_twin_sync_sse_return_self_twin_sync_sse(
@@ -44740,6 +45042,123 @@ class RustLibWire implements BaseWire {
               int rust_vec_len_,
               int data_len_) =>
           wasmModule.wire_handle_vec_of_opts_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  void wire_borrow_i32_twin_rust_async(NativePortType port_, int arg) =>
+      wasmModule.wire_borrow_i32_twin_rust_async(port_, arg);
+
+  void wire_borrow_str_twin_rust_async(NativePortType port_, String arg) =>
+      wasmModule.wire_borrow_str_twin_rust_async(port_, arg);
+
+  void wire_borrow_string_twin_rust_async(NativePortType port_, String arg) =>
+      wasmModule.wire_borrow_string_twin_rust_async(port_, arg);
+
+  void wire_borrow_struct_twin_rust_async(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule.wire_borrow_struct_twin_rust_async(port_, arg);
+
+  void wire_borrow_i32_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_borrow_i32_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_borrow_str_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_borrow_str_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_borrow_string_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_borrow_string_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_borrow_struct_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_borrow_struct_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_borrow_i32_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_borrow_i32_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_borrow_str_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_borrow_str_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_borrow_string_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_borrow_string_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_borrow_struct_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_borrow_struct_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_borrow_i32_twin_sync(int arg) =>
+          wasmModule.wire_borrow_i32_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_borrow_str_twin_sync(String arg) =>
+          wasmModule.wire_borrow_str_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_borrow_string_twin_sync(String arg) =>
+          wasmModule.wire_borrow_string_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_borrow_struct_twin_sync(List<dynamic> arg) =>
+          wasmModule.wire_borrow_struct_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_borrow_i32_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_, int data_len_) =>
+          wasmModule.wire_borrow_i32_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_borrow_str_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_, int data_len_) =>
+          wasmModule.wire_borrow_str_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_borrow_string_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_, int data_len_) =>
+          wasmModule.wire_borrow_string_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_borrow_struct_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_, int data_len_) =>
+          wasmModule.wire_borrow_struct_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_vec_of_primitive_twin_rust_async(
@@ -53341,6 +53760,12 @@ class RustLibWasmModule implements WasmModule {
   external void wire_simple_struct_twin_normal_arg_self_twin_normal(
       NativePortType port_, List<dynamic> a, List<dynamic> b);
 
+  external void wire_simple_struct_twin_normal_receiver_borrow_twin_normal(
+      NativePortType port_, List<dynamic> that);
+
+  external void wire_simple_struct_twin_normal_receiver_own_twin_normal(
+      NativePortType port_, List<dynamic> that);
+
   external void wire_simple_struct_twin_normal_return_self_twin_normal(
       NativePortType port_, String one);
 
@@ -53510,6 +53935,16 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_primitive_optional_types_twin_normal(NativePortType port_,
       int? my_i32, Object? my_i64, double? my_f64, bool? my_bool);
+
+  external void wire_borrow_i32_twin_normal(NativePortType port_, int arg);
+
+  external void wire_borrow_str_twin_normal(NativePortType port_, String arg);
+
+  external void wire_borrow_string_twin_normal(
+      NativePortType port_, String arg);
+
+  external void wire_borrow_struct_twin_normal(
+      NativePortType port_, List<dynamic> arg);
 
   external void wire_handle_vec_of_primitive_twin_normal(
       NativePortType port_, int n);
@@ -57985,6 +58420,13 @@ class RustLibWasmModule implements WasmModule {
   external void wire_simple_struct_twin_rust_async_arg_self_twin_rust_async(
       NativePortType port_, List<dynamic> a, List<dynamic> b);
 
+  external void
+      wire_simple_struct_twin_rust_async_receiver_borrow_twin_rust_async(
+          NativePortType port_, List<dynamic> that);
+
+  external void wire_simple_struct_twin_rust_async_receiver_own_twin_rust_async(
+      NativePortType port_, List<dynamic> that);
+
   external void wire_simple_struct_twin_rust_async_return_self_twin_rust_async(
       NativePortType port_, String one);
 
@@ -58092,6 +58534,20 @@ class RustLibWasmModule implements WasmModule {
 
   external void
       wire_simple_struct_twin_rust_async_sse_arg_self_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire_simple_struct_twin_rust_async_sse_receiver_borrow_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire_simple_struct_twin_rust_async_sse_receiver_own_twin_rust_async_sse(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -58214,6 +58670,18 @@ class RustLibWasmModule implements WasmModule {
       int rust_vec_len_,
       int data_len_);
 
+  external void wire_simple_struct_twin_sse_receiver_borrow_twin_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_simple_struct_twin_sse_receiver_own_twin_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
   external void wire_simple_struct_twin_sse_return_self_twin_sse(
       NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_,
@@ -58290,6 +58758,13 @@ class RustLibWasmModule implements WasmModule {
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_simple_struct_twin_sync_arg_self_twin_sync(
           List<dynamic> a, List<dynamic> b);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_simple_struct_twin_sync_receiver_borrow_twin_sync(
+          List<dynamic> that);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_simple_struct_twin_sync_receiver_own_twin_sync(List<dynamic> that);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_simple_struct_twin_sync_return_self_twin_sync(String one);
@@ -58389,6 +58864,18 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_simple_struct_twin_sync_sse_arg_self_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_simple_struct_twin_sync_sse_receiver_borrow_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_simple_struct_twin_sync_sse_receiver_own_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
@@ -59373,6 +59860,69 @@ class RustLibWasmModule implements WasmModule {
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
+
+  external void wire_borrow_i32_twin_rust_async(NativePortType port_, int arg);
+
+  external void wire_borrow_str_twin_rust_async(
+      NativePortType port_, String arg);
+
+  external void wire_borrow_string_twin_rust_async(
+      NativePortType port_, String arg);
+
+  external void wire_borrow_struct_twin_rust_async(
+      NativePortType port_, List<dynamic> arg);
+
+  external void wire_borrow_i32_twin_rust_async_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_borrow_str_twin_rust_async_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_borrow_string_twin_rust_async_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_borrow_struct_twin_rust_async_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_borrow_i32_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_borrow_str_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_borrow_string_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_borrow_struct_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_borrow_i32_twin_sync(int arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_borrow_str_twin_sync(String arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_borrow_string_twin_sync(String arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_borrow_struct_twin_sync(List<dynamic> arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_borrow_i32_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_, int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_borrow_str_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_, int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_borrow_string_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_, int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_borrow_struct_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_, int data_len_);
 
   external void wire_handle_vec_of_primitive_twin_rust_async(
       NativePortType port_, int n);
