@@ -1,14 +1,18 @@
+use crate::codegen::generator::api_dart::spec_generator::class::method::generate_api_methods;
+use crate::codegen::generator::api_dart::spec_generator::class::misc::generate_class_extra_body;
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
 use crate::codegen::generator::api_dart::spec_generator::misc::generate_dart_comments;
 use crate::codegen::ir::ty::enumeration::{IrEnum, IrVariant};
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::utils::dart_keywords::make_string_keyword_safe;
 use itertools::Itertools;
-use crate::codegen::generator::api_dart::spec_generator::class::method::generate_api_methods;
-use crate::codegen::generator::api_dart::spec_generator::class::misc::generate_class_extra_body;
 
 impl<'a> EnumRefApiDartGenerator<'a> {
-    pub(crate) fn generate_mode_simple(&self, src: &IrEnum, extra_body: &str) -> Option<ApiDartGeneratedClass> {
+    pub(crate) fn generate_mode_simple(
+        &self,
+        src: &IrEnum,
+        extra_body: &str,
+    ) -> Option<ApiDartGeneratedClass> {
         let comments = generate_dart_comments(&src.comments);
 
         let variants = src

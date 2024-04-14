@@ -17,7 +17,11 @@ use itertools::Itertools;
 const BACKTRACE_IDENT: &str = "backtrace";
 
 impl<'a> EnumRefApiDartGenerator<'a> {
-    pub(crate) fn generate_mode_complex(&self, src: &IrEnum, extra_body: &str) -> Option<ApiDartGeneratedClass> {
+    pub(crate) fn generate_mode_complex(
+        &self,
+        src: &IrEnum,
+        extra_body: &str,
+    ) -> Option<ApiDartGeneratedClass> {
         let variants = src
             .variants()
             .iter()
