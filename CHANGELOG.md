@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.0.0-dev.32
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Support self in non-opaque case (&self already supported before) #1880
+* Support &SomeStructOrEnum in non-opaque case (SomeStructOrEnum already supported before) #1880
+* Support &str type (String already supported before) #1880
+* Support instance and static methods for enums without fields #1879
+* Revert stream default semantics to not wait for Rust function execution #1877
+* Allow users to customize whether to await for Rust function for streams #1877
+* Hint users when a type is automatically inferred as both opaque and non-opaque #1876
+* Add check to ensure Rust and Dart has in-sync generated code #1878
+
 ## 2.0.0-dev.31
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
