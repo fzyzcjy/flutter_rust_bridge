@@ -135,6 +135,13 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(await obj.simpleMethodTwinRustAsync(), 'A');
   });
 
+  test('SimplePrimitiveEnum', () async {
+    expect(
+        await SimplePrimitiveEnumTwinRustAsync.second
+            .simpleMethodTwinRustAsync(),
+        200);
+  });
+
   test('StaticOnly', () async {
     expect(await StaticOnlyTwinRustAsync.staticMethodTwinRustAsync(a: 42), 42);
   });

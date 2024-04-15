@@ -191,6 +191,22 @@ impl SimpleEnumTwinRustAsyncSse {
     }
 }
 
+// #1870
+pub enum SimplePrimitiveEnumTwinRustAsyncSse {
+    First,
+    Second,
+}
+
+impl SimplePrimitiveEnumTwinRustAsyncSse {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub async fn simple_method_twin_rust_async_sse(&self) -> i32 {
+        match self {
+            SimplePrimitiveEnumTwinRustAsyncSse::First => 100,
+            SimplePrimitiveEnumTwinRustAsyncSse::Second => 200,
+        }
+    }
+}
+
 // #1838
 pub struct StaticOnlyTwinRustAsyncSse {
     pub one: String,

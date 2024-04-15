@@ -213,4 +213,5 @@ enum WeekdaysTwinSync {
   friday,
   saturday,
   sunday,
+  ;
 }

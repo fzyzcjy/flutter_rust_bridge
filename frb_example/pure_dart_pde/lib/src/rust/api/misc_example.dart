@@ -214,4 +214,5 @@ enum WeekdaysTwinNormal {
   friday,
   saturday,
   sunday,
+  ;
 }

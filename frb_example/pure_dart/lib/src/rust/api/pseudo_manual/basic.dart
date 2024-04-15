@@ -91,6 +91,7 @@ sealed class BasicGeneralEnumTwinNormal with _$BasicGeneralEnumTwinNormal {
 enum BasicPrimitiveEnumTwinNormal {
   apple,
   orange,
+  ;
 }
 
 class BasicStructTwinNormal {

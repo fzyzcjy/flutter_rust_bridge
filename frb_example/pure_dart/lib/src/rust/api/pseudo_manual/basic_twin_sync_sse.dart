@@ -88,6 +88,7 @@ sealed class BasicGeneralEnumTwinSyncSse with _$BasicGeneralEnumTwinSyncSse {
 enum BasicPrimitiveEnumTwinSyncSse {
   apple,
   orange,
+  ;
 }
 
 class BasicStructTwinSyncSse {

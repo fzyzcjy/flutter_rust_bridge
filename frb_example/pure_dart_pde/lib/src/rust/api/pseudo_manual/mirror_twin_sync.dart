@@ -176,6 +176,7 @@ sealed class ApplicationMessage with _$ApplicationMessage {
 enum ApplicationMode {
   standalone,
   embedded,
+  ;
 }
 
 class ApplicationSettings {

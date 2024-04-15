@@ -187,6 +187,22 @@ impl SimpleEnumTwinSse {
     }
 }
 
+// #1870
+pub enum SimplePrimitiveEnumTwinSse {
+    First,
+    Second,
+}
+
+impl SimplePrimitiveEnumTwinSse {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub fn simple_method_twin_sse(&self) -> i32 {
+        match self {
+            SimplePrimitiveEnumTwinSse::First => 100,
+            SimplePrimitiveEnumTwinSse::Second => 200,
+        }
+    }
+}
+
 // #1838
 pub struct StaticOnlyTwinSse {
     pub one: String,
