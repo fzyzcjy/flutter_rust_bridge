@@ -159,6 +159,16 @@ sealed class SimpleEnumTwinNormal with _$SimpleEnumTwinNormal {
       .simpleEnumTwinNormalSimpleMethodTwinNormal(that: this, hint: hint);
 }
 
+enum SimplePrimitiveEnumTwinNormal {
+  first,
+  second,
+  ;
+
+  Future<int> simpleMethodTwinNormal({dynamic hint}) =>
+      RustLib.instance.api.simplePrimitiveEnumTwinNormalSimpleMethodTwinNormal(
+          that: this, hint: hint);
+}
+
 class SimpleStructTwinNormal {
   final String one;
 

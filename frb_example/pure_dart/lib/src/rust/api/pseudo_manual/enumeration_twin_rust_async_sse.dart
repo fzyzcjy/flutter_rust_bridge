@@ -73,11 +73,13 @@ sealed class DistanceTwinRustAsyncSse with _$DistanceTwinRustAsyncSse {
 enum EnumSimpleTwinRustAsyncSse {
   a,
   b,
+  ;
 }
 
 enum EnumWithDiscriminantTwinRustAsyncSse {
   oneHundred,
   fifty,
+  ;
 }
 
 @freezed

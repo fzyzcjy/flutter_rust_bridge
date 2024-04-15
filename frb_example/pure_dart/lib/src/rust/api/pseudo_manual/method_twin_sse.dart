@@ -156,6 +156,15 @@ sealed class SimpleEnumTwinSse with _$SimpleEnumTwinSse {
       .simpleEnumTwinSseSimpleMethodTwinSse(that: this, hint: hint);
 }
 
+enum SimplePrimitiveEnumTwinSse {
+  first,
+  second,
+  ;
+
+  Future<int> simpleMethodTwinSse({dynamic hint}) => RustLib.instance.api
+      .simplePrimitiveEnumTwinSseSimpleMethodTwinSse(that: this, hint: hint);
+}
+
 class SimpleStructTwinSse {
   final String one;
 

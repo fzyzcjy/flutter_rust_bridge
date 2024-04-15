@@ -6,7 +6,11 @@ use crate::utils::dart_keywords::make_string_keyword_safe;
 use itertools::Itertools;
 
 impl<'a> EnumRefApiDartGenerator<'a> {
-    pub(crate) fn generate_mode_simple(&self, src: &IrEnum) -> Option<ApiDartGeneratedClass> {
+    pub(crate) fn generate_mode_simple(
+        &self,
+        src: &IrEnum,
+        extra_body: &str,
+    ) -> Option<ApiDartGeneratedClass> {
         let comments = generate_dart_comments(&src.comments);
 
         let variants = src
@@ -24,6 +28,8 @@ impl<'a> EnumRefApiDartGenerator<'a> {
             code: format!(
                 "{comments}enum {name} {{
                     {variants}
+                    ;
+                    {extra_body}
                 }}",
             ),
             needs_freezed: false,

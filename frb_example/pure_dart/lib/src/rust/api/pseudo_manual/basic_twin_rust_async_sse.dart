@@ -119,6 +119,7 @@ sealed class BasicGeneralEnumTwinRustAsyncSse
 enum BasicPrimitiveEnumTwinRustAsyncSse {
   apple,
   orange,
+  ;
 }
 
 class BasicStructTwinRustAsyncSse {

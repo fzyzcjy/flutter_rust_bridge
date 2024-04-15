@@ -87,6 +87,7 @@ sealed class BasicGeneralEnumTwinSse with _$BasicGeneralEnumTwinSse {
 enum BasicPrimitiveEnumTwinSse {
   apple,
   orange,
+  ;
 }
 
 class BasicStructTwinSse {
