@@ -60,6 +60,7 @@ pub(crate) fn generate(
         &c_output.c_file_content,
         api_dart_actual_output_paths,
         &rust_output.extern_funcs,
+        rust_output.content_hash,
         dumper,
         progress_bar_pack,
     )?;

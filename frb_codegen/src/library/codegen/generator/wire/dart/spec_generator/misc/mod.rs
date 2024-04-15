@@ -38,6 +38,7 @@ pub(crate) fn generate(
     c_file_content: &str,
     api_dart_actual_output_paths: &[PathBuf],
     rust_extern_funcs: &[ExternFunc],
+    rust_content_hash: i32,
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<WireDartOutputSpecMisc> {
     Ok(WireDartOutputSpecMisc {
@@ -47,7 +48,12 @@ pub(crate) fn generate(
             rust_extern_funcs,
             progress_bar_pack,
         )?,
-        boilerplate: generate_boilerplate(api_dart_actual_output_paths, cache, context)?,
+        boilerplate: generate_boilerplate(
+            api_dart_actual_output_paths,
+            cache,
+            context,
+            rust_content_hash,
+        )?,
         api_impl_normal_functions: (context.ir_pack.funcs.iter())
             .map(|f| api_impl_body::generate_api_impl_normal_function(f, context))
             .collect::<anyhow::Result<Vec<_>>>()?,
@@ -64,6 +70,7 @@ fn generate_boilerplate(
     api_dart_actual_output_paths: &[PathBuf],
     cache: &IrPackComputedCache,
     context: WireDartGeneratorContext,
+    rust_content_hash: i32,
 ) -> anyhow::Result<Acc<Vec<WireDartOutputCode>>> {
     let DartOutputClassNamePack {
         entrypoint_class_name,
@@ -155,7 +162,10 @@ fn generate_boilerplate(
 
                   @override
                   String get codegenVersion => '{codegen_version}';
-                  
+
+                  @override
+                  int get rustContentHash => {rust_content_hash};
+
                   static const kDefaultExternalLibraryLoaderConfig = ExternalLibraryLoaderConfig(
                     stem: '{stem}',
                     ioDirectory: '{io_directory}',

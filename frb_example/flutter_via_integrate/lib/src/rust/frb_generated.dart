@@ -55,6 +55,9 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   @override
   String get codegenVersion => '2.0.0-dev.31';
 
+  @override
+  int get rustContentHash => -1918914929;
+
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
     stem: 'rust_lib_flutter_via_integrate',

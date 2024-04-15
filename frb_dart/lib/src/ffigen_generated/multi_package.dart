@@ -288,6 +288,16 @@ class MultiPackageCBinding {
   late final _dart_fn_deliver_output = _dart_fn_deliver_outputPtr
       .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
+  int frb_get_rust_content_hash() {
+    return _frb_get_rust_content_hash();
+  }
+
+  late final _frb_get_rust_content_hashPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>(
+          'frb_get_rust_content_hash');
+  late final _frb_get_rust_content_hash =
+      _frb_get_rust_content_hashPtr.asFunction<int Function()>();
+
   /// # Safety
   ///
   /// This should never be called manually.

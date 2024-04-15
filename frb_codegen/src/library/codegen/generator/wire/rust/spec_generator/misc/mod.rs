@@ -14,6 +14,7 @@ use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
 use itertools::Itertools;
 use serde::Serialize;
+use sha1::{Digest, Sha1};
 use std::collections::HashSet;
 
 pub(crate) mod ty;
@@ -30,12 +31,14 @@ pub(crate) struct WireRustOutputSpecMisc {
     pub wrapper_structs: Acc<Vec<WireRustOutputCode>>,
     pub static_checks: Acc<Vec<WireRustOutputCode>>,
     pub related_funcs: Acc<Vec<WireRustOutputCode>>,
+    pub content_hash: i32,
 }
 
 pub(crate) fn generate(
     context: WireRustGeneratorContext,
     cache: &IrPackComputedCache,
 ) -> anyhow::Result<WireRustOutputSpecMisc> {
+    let content_hash = generate_content_hash(context.ir_pack);
     Ok(WireRustOutputSpecMisc {
         code_header: Acc::new(|_| vec![(generate_code_header() + "\n\n").into()]),
         file_attributes: Acc::new_common(vec![FILE_ATTRIBUTES.to_string().into()]),
@@ -44,6 +47,7 @@ pub(crate) fn generate(
         boilerplate: generate_boilerplate(
             context.config.default_stream_sink_codec,
             context.config.default_rust_opaque_codec,
+            content_hash,
         ),
         wire_funcs: (context.ir_pack.funcs.iter())
             .map(|f| generate_wire_func(f, context))
@@ -59,6 +63,7 @@ pub(crate) fn generate(
             .iter()
             .map(|ty| WireRustGenerator::new(ty.clone(), context).generate_related_funcs())
             .collect(),
+        content_hash,
     })
 }
 
@@ -131,6 +136,7 @@ fn generate_static_checks(types: &[IrType], context: WireRustGeneratorContext) -
 fn generate_boilerplate(
     default_stream_sink_codec: CodecMode,
     default_rust_opaque_codec: RustOpaqueCodecMode,
+    content_hash: i32,
 ) -> Acc<Vec<WireRustOutputCode>> {
     Acc::new(|target| {
         match target {
@@ -153,6 +159,7 @@ fn generate_boilerplate(
                     default_rust_auto_opaque = RustAutoOpaque{default_rust_opaque_codec},
                 );
                 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "{version}";
+                pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = {content_hash};
             "#,
                 version = env!("CARGO_PKG_VERSION"),
             )
@@ -204,4 +211,18 @@ fn generate_handler(ir_pack: &IrPack) -> String {
     } else {
         r#"flutter_rust_bridge::frb_generated_default_handler!();"#.to_owned()
     }
+}
+
+// TODO can compute hash for more things
+fn generate_content_hash(ir_pack: &IrPack) -> i32 {
+    let mut hasher = Sha1::new();
+    hasher.update(
+        (ir_pack.funcs.iter())
+            .map(|func| func.name.rust_style())
+            .sorted()
+            .join("\n")
+            .as_bytes(),
+    );
+    let digest = hasher.finalize();
+    i32::from_le_bytes(digest[..4].try_into().unwrap())
 }

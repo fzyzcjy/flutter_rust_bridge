@@ -19,6 +19,7 @@ pub(crate) fn generate(
     c_file_content: &str,
     api_dart_actual_output_paths: &[PathBuf],
     rust_extern_funcs: &[ExternFunc],
+    rust_content_hash: i32,
     dumper: &Dumper,
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<GeneratorWireDartOutput> {
@@ -27,6 +28,7 @@ pub(crate) fn generate(
         c_file_content,
         api_dart_actual_output_paths,
         rust_extern_funcs,
+        rust_content_hash,
         dumper,
         progress_bar_pack,
     )?;

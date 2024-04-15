@@ -12,6 +12,7 @@ mod text_generator;
 pub(crate) struct GeneratorWireRustOutput {
     pub output_texts: PathTexts,
     pub extern_funcs: Vec<ExternFunc>,
+    pub content_hash: i32,
     pub extern_struct_names: Vec<String>,
 }
 
@@ -33,6 +34,7 @@ pub(crate) fn generate(
     Ok(GeneratorWireRustOutput {
         output_texts: PathTexts::new_from_targets(&context.config.rust_output_path, &text.text),
         extern_funcs: text.extern_funcs,
+        content_hash: spec.misc.content_hash,
         extern_struct_names: spec.extern_struct_names,
     })
 }
