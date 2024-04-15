@@ -216,9 +216,13 @@ fn generate_handler(ir_pack: &IrPack) -> String {
 // TODO can compute hash for more things
 fn generate_content_hash(ir_pack: &IrPack) -> i32 {
     let mut hasher = Sha1::new();
-    for func in ir_pack.funcs.iter() {
-        hasher.update(func.name.rust_style().as_bytes());
-    }
+    hasher.update(
+        (ir_pack.funcs.iter())
+            .map(|func| func.name.rust_style())
+            .sorted()
+            .join("\n")
+            .as_bytes(),
+    );
     let digest = hasher.finalize();
     i32::from_le_bytes(digest[..4].try_into().unwrap())
 }
