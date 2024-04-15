@@ -1,8 +1,6 @@
 use crate::codegen::generator::api_dart::spec_generator::class::field::{
     generate_field_default, generate_field_required_modifier,
 };
-use crate::codegen::generator::api_dart::spec_generator::class::method::generate_api_methods;
-use crate::codegen::generator::api_dart::spec_generator::class::misc::generate_class_extra_body;
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
 use crate::codegen::generator::api_dart::spec_generator::misc::{
     generate_dart_comments, generate_dart_maybe_implements_exception,
@@ -17,7 +15,11 @@ use itertools::Itertools;
 const BACKTRACE_IDENT: &str = "backtrace";
 
 impl<'a> EnumRefApiDartGenerator<'a> {
-    pub(crate) fn generate_mode_complex(&self, src: &IrEnum) -> Option<ApiDartGeneratedClass> {
+    pub(crate) fn generate_mode_complex(
+        &self,
+        src: &IrEnum,
+        extra_body: &str,
+    ) -> Option<ApiDartGeneratedClass> {
         let variants = src
             .variants()
             .iter()
@@ -33,10 +35,6 @@ impl<'a> EnumRefApiDartGenerator<'a> {
         let maybe_implements_exception =
             generate_dart_maybe_implements_exception(self.ir.is_exception);
 
-        let methods_str = generate_api_methods(&src.name, self.context).join("\n");
-        let extra_body =
-            generate_class_extra_body(self.ir_type(), &self.context.ir_pack.dart_code_of_type);
-
         Some(ApiDartGeneratedClass {
             namespace: src.name.namespace.clone(),
             class_name: name.clone(),
@@ -47,7 +45,6 @@ impl<'a> EnumRefApiDartGenerator<'a> {
 
                     {variants}
 
-                    {methods_str}
                     {extra_body}
                 }}",
             ),

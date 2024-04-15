@@ -221,4 +221,5 @@ enum WeekdaysTwinRustAsync {
   friday,
   saturday,
   sunday,
+  ;
 }

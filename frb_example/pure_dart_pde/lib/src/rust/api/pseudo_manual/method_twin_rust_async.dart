@@ -161,6 +161,16 @@ sealed class SimpleEnumTwinRustAsync with _$SimpleEnumTwinRustAsync {
       .simpleEnumTwinRustAsyncSimpleMethodTwinRustAsync(that: this, hint: hint);
 }
 
+enum SimplePrimitiveEnumTwinRustAsync {
+  first,
+  second,
+  ;
+
+  Future<int> simpleMethodTwinRustAsync({dynamic hint}) => RustLib.instance.api
+      .simplePrimitiveEnumTwinRustAsyncSimpleMethodTwinRustAsync(
+          that: this, hint: hint);
+}
+
 class SimpleStructTwinRustAsync {
   final String one;
 

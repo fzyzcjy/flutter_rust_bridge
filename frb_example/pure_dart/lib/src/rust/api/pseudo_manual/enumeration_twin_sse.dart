@@ -62,11 +62,13 @@ sealed class DistanceTwinSse with _$DistanceTwinSse {
 enum EnumSimpleTwinSse {
   a,
   b,
+  ;
 }
 
 enum EnumWithDiscriminantTwinSse {
   oneHundred,
   fifty,
+  ;
 }
 
 @freezed
