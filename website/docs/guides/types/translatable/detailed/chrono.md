@@ -6,6 +6,7 @@ Codegen optionally support [chrono crate](https://docs.rs/chrono) with feature `
 | -----------       | -----------                   |
 | `DateTime<Utc>`   | `DateTime` *utc*              |
 | `DateTime<Local>` | `DateTime` *local timezone*   |
+| `NaiveDate    `   | `DateTime` *utc assumed*      |
 | `NaiveDateTime`   | `DateTime` *utc assumed*      |
 | `Duration`        | `Duration`                    |
 

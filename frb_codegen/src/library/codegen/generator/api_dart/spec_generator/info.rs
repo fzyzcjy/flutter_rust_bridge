@@ -57,7 +57,7 @@ impl<'a> ApiDartGeneratorInfoTrait for DelegateApiDartGenerator<'a> {
                 ApiDartGenerator::new(IrType::EnumRef(ir.clone()), self.context).dart_api_type()
             }
             IrTypeDelegate::Time(ir) => match ir {
-                IrTypeDelegateTime::Local | IrTypeDelegateTime::Utc | IrTypeDelegateTime::Naive => {
+                IrTypeDelegateTime::Local | IrTypeDelegateTime::Utc | IrTypeDelegateTime::NaiveDate | IrTypeDelegateTime::NaiveDateTime => {
                     "DateTime".to_string()
                 }
                 IrTypeDelegateTime::Duration => "Duration".to_string(),

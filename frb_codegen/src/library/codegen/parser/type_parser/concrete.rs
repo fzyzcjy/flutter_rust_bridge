@@ -34,7 +34,8 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             ("Self", []) => self.parse_type_self()?,
 
             ("Duration", []) if check_prefix("chrono") => Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Duration)),
-            ("NaiveDateTime", []) if check_prefix("chrono") => Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Naive)),
+            ("NaiveDate", []) if check_prefix("chrono") => Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::NaiveDate)),
+            ("NaiveDateTime", []) if check_prefix("chrono") => Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::NaiveDateTime)),
             ("DateTime", args) if check_prefix("chrono") => self.parse_datetime(args)?,
 
             ("Uuid", []) if check_prefix("uuid") => Delegate(IrTypeDelegate::Uuid),

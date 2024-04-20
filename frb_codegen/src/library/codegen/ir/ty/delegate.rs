@@ -47,7 +47,8 @@ pub struct IrTypeDelegatePrimitiveEnum {
 pub enum IrTypeDelegateTime {
     Local,
     Utc,
-    Naive,
+    NaiveDate,
+    NaiveDateTime,
     Duration,
 }
 
@@ -125,7 +126,8 @@ impl IrTypeTrait for IrTypeDelegate {
                 ir.rust_api_type()
             }
             IrTypeDelegate::Time(ir) => match ir {
-                IrTypeDelegateTime::Naive => "chrono::NaiveDateTime",
+                IrTypeDelegateTime::NaiveDate => "chrono::NaiveDate",
+                IrTypeDelegateTime::NaiveDateTime => "chrono::NaiveDateTime",
                 IrTypeDelegateTime::Local => "chrono::DateTime::<chrono::Local>",
                 IrTypeDelegateTime::Utc => "chrono::DateTime::<chrono::Utc>",
                 IrTypeDelegateTime::Duration => "chrono::Duration",
