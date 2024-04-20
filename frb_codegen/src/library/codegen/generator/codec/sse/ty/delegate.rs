@@ -64,8 +64,8 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::Time(ir) => match ir {
                     IrTypeDelegateTime::Utc
                     | IrTypeDelegateTime::Local
-                    | IrTypeDelegateTime::NaiveDate
                     | IrTypeDelegateTime::NaiveDateTime => "self.timestamp_micros()".to_owned(),
+                    IrTypeDelegateTime::NaiveDate => "self.and_hms_opt(0, 0, 0).unwrap().timestamp_micros()".to_owned(),
                     IrTypeDelegateTime::Duration => {
                         r#"self.num_microseconds().expect("cannot get microseconds from time")"#
                             .to_owned()
