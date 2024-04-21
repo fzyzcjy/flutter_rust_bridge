@@ -86,6 +86,16 @@ fn extract_methods_from_file(file: &File) -> anyhow::Result<Vec<GeneralizedItemF
                             item_impl: item_impl.clone(),
                             impl_item_fn: impl_item_fn.clone(),
                         });
+                    } else if let Visibility::Inherited = &impl_item_fn.vis {
+                        // `ìmpl ... for ...` blocks are also parsed as
+                        // inherited. We need to do further checks to ensure no
+                        // private function is extracted.
+                        if let Some(_) = &item_impl.trait_ {
+                            src_fns.push(GeneralizedItemFn::Method {
+                                item_impl: item_impl.clone(),
+                                impl_item_fn: impl_item_fn.clone(),
+                            });
+                        }
                     }
                 }
             }
