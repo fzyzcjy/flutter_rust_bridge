@@ -3,7 +3,6 @@ use itertools::Itertools;
 use quote::__private::Span;
 use std::path::PathBuf;
 use syn::spanned::Spanned;
-use syn::File;
 use syn::*;
 
 pub(super) struct PathAndItemFn {
@@ -103,4 +102,46 @@ fn extract_methods_from_file(file: &File) -> anyhow::Result<Vec<GeneralizedItemF
     }
 
     Ok(src_fns)
+}
+
+#[cfg(test)]
+mod tests {
+    #[test]
+    fn extract_methods_from_impl_for() {
+        let data = syn::parse_str::<syn::File>("
+        pub struct A {
+            val: u32
+        }
+
+        impl Default for A {
+            fn default() -> Self {
+                A {
+                    val: 0
+                }
+            }
+        }
+        ").unwrap();
+
+        use crate::codegen::parser::function_extractor::extract_methods_from_file;
+        let methods = extract_methods_from_file(&data);
+        assert!(methods.is_ok());
+        assert_eq!(methods.unwrap().len(), 1);
+    }
+    #[test]
+    fn dont_extract_private_restricted_methods() {
+        let data = syn::parse_str::<syn::File>("
+        pub struct A {}
+
+        impl A {
+            fn private() {}
+            pub(crate) fn restricted() {}
+            pub fn public() {}
+        }
+        ").unwrap();
+
+        use crate::codegen::parser::function_extractor::extract_methods_from_file;
+        let methods = extract_methods_from_file(&data);
+        assert!(methods.is_ok());
+        assert_eq!(methods.unwrap().len(), 1);
+    }
 }
