@@ -1,5 +1,5 @@
 pub struct StructWithDefaultValue {
-    pub val: u32
+    pub val: u32,
 }
 
 pub trait TestTrait {
@@ -8,8 +8,6 @@ pub trait TestTrait {
 
 impl TestTrait for StructWithDefaultValue {
     fn trait_fun() -> Self {
-        StructWithDefaultValue {
-            val: 42
-        }
+        StructWithDefaultValue { val: 42 }
     }
 }
