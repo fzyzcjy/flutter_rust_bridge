@@ -1,10 +1,14 @@
-pub struct SomeStructWithDefaultValue {
+pub struct StructWithDefaultValue {
     pub val: u32
 }
 
-impl Default for SomeStructWithDefaultValue {
-    fn default() -> Self {
-        SomeStructWithDefaultValue {
+pub trait TestTrait {
+    fn trait_fun() -> Self;
+}
+
+impl TestTrait for StructWithDefaultValue {
+    fn trait_fun() -> Self {
+        StructWithDefaultValue {
             val: 42
         }
     }

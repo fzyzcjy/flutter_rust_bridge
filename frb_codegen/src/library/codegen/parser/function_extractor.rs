@@ -108,19 +108,16 @@ fn extract_methods_from_file(file: &File) -> anyhow::Result<Vec<GeneralizedItemF
 mod tests {
     #[test]
     fn extract_methods_from_impl_for() {
-        let data = syn::parse_str::<syn::File>("
-        pub struct A {
-            val: u32
-        }
-
-        impl Default for A {
-            fn default() -> Self {
-                A {
-                    val: 0
-                }
+        let data = syn::parse_str::<syn::File>(
+            "pub struct A {
+                val: u32
             }
-        }
-        ").unwrap();
+            impl Default for A {
+                fn default() -> Self {
+                    A {val: 0}
+                }
+            }",
+        ).unwrap();
 
         use crate::codegen::parser::function_extractor::extract_methods_from_file;
         let methods = extract_methods_from_file(&data);
@@ -129,15 +126,15 @@ mod tests {
     }
     #[test]
     fn dont_extract_private_restricted_methods() {
-        let data = syn::parse_str::<syn::File>("
-        pub struct A {}
+        let data = syn::parse_str::<syn::File>(
+            "pub struct A {}
 
-        impl A {
-            fn private() {}
-            pub(crate) fn restricted() {}
-            pub fn public() {}
-        }
-        ").unwrap();
+            impl A {
+                fn private() {}
+                pub(crate) fn restricted() {}
+                pub fn public() {}
+            }",
+        ).unwrap();
 
         use crate::codegen::parser::function_extractor::extract_methods_from_file;
         let methods = extract_methods_from_file(&data);

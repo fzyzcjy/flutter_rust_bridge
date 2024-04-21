@@ -5,7 +5,7 @@ import 'package:test/test.dart';
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
-  test('SomeStructWithDefaultValue', () async {
-       expect(await SomeStructWithDefaultValue.default().val, 42);
+  test('StructWithDefaultValue', () async {
+       expect(await StructWithDefaultValue.trait_fun().val, 42);
   });
 }

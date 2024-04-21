@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
         colorScheme: const ColorScheme.light(
-          background: Colors.white,
+          surface: Colors.white,
           primary: Colors.blue,
         ),
       ),
