@@ -12,7 +12,7 @@ That's why adding a test seems slightly more complex than usual - but surely qui
 1. In `./frb_example/pure_dart`,
 add your test in (for example) `rust/src/api/whatever.rs` and `test/api/whatever_test.dart`.
 2. Remember to mimic existing tests and add `_twin_normal`/`TwinNormal`/etc as appropriate (this allows more "twin" tests to be generated).
-3. Run `./frbinternal precommit --mode slow`, or if that's too slow,
+3. Run `./frb_internal precommit --mode slow`, or if that's too slow,
 run `./frb_internal generate-internal-frb-example-pure-dart && ./frb_internal generate-run-frb-codegen-command-generate --package frb_example/pure_dart`
 
 ## How to solve failed CI
