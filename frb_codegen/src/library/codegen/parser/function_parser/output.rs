@@ -50,7 +50,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 }
 
 fn parse_fn_output_type_result(args: &[IrType]) -> anyhow::Result<FunctionPartialInfo> {
-    let ok_output = args.first().unwrap();
+    let ok_output = args.first();
 
     let is_anyhow = args.len() == 1
         || args.iter().any(|x| {
@@ -69,7 +69,7 @@ fn parse_fn_output_type_result(args: &[IrType]) -> anyhow::Result<FunctionPartia
     let error_output = error_output.map(set_is_exception_flag);
 
     Ok(FunctionPartialInfo {
-        ok_output: Some(ok_output.clone()),
+        ok_output: ok_output.map(|o| o.clone()),
         error_output,
         ..Default::default()
     })

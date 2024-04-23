@@ -18,6 +18,7 @@ use crate::utils::basic_code::DartBasicHeaderCode;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 use serde::Serialize;
+use crate::utils::dart_keywords::make_string_keyword_safe;
 
 #[derive(Debug, Serialize)]
 pub(crate) struct ApiDartGeneratedFunction {
@@ -59,7 +60,7 @@ pub(crate) fn generate(
 
     let func_expr = format!(
         "{func_return_type} {func_name}({func_params_str})",
-        func_name = func.name.name.to_case(Case::Camel),
+        func_name = make_string_keyword_safe(func.name.name.to_case(Case::Camel)),
     );
 
     let func_comments = generate_dart_comments(&func.comments);

@@ -19,6 +19,9 @@ pub(crate) enum GeneralizedItemFn {
         item_impl: ItemImpl,
         impl_item_fn: ImplItemFn,
     },
+    TraitMethod {
+        impl_item_fn: ImplItemFn,
+    },
 }
 
 impl GeneralizedItemFn {
@@ -26,6 +29,7 @@ impl GeneralizedItemFn {
         match self {
             GeneralizedItemFn::Function { item_fn } => &item_fn.sig,
             GeneralizedItemFn::Method { impl_item_fn, .. } => &impl_item_fn.sig,
+            GeneralizedItemFn::TraitMethod { impl_item_fn } => &impl_item_fn.sig,
         }
     }
 
@@ -33,6 +37,7 @@ impl GeneralizedItemFn {
         match self {
             GeneralizedItemFn::Function { item_fn } => &item_fn.attrs,
             GeneralizedItemFn::Method { impl_item_fn, .. } => &impl_item_fn.attrs,
+            GeneralizedItemFn::TraitMethod { impl_item_fn } => &impl_item_fn.attrs,
         }
     }
 
@@ -40,6 +45,7 @@ impl GeneralizedItemFn {
         match self {
             GeneralizedItemFn::Function { item_fn } => item_fn.span(),
             GeneralizedItemFn::Method { impl_item_fn, .. } => impl_item_fn.span(),
+            GeneralizedItemFn::TraitMethod { impl_item_fn } => impl_item_fn.span(),
         }
     }
 }
@@ -52,7 +58,7 @@ pub(super) fn extract_generalized_functions_from_file(
         extract_fns_from_file(file),
         extract_methods_from_file(file)?,
     ]
-    .concat();
+        .concat();
     let ans = item_fns
         .into_iter()
         .map(|generalized_item_fn| PathAndItemFn {
@@ -90,8 +96,7 @@ fn extract_methods_from_file(file: &File) -> anyhow::Result<Vec<GeneralizedItemF
                         // inherited. We need to do further checks to ensure no
                         // private function is extracted.
                         if let Some(_) = &item_impl.trait_ {
-                            src_fns.push(GeneralizedItemFn::Method {
-                                item_impl: item_impl.clone(),
+                            src_fns.push(GeneralizedItemFn::TraitMethod {
                                 impl_item_fn: impl_item_fn.clone(),
                             });
                         }
@@ -117,7 +122,8 @@ mod tests {
                     A {val: 0}
                 }
             }",
-        ).unwrap();
+        )
+            .unwrap();
 
         use crate::codegen::parser::function_extractor::extract_methods_from_file;
         let methods = extract_methods_from_file(&data);
@@ -134,7 +140,8 @@ mod tests {
                 pub(crate) fn restricted() {}
                 pub fn public() {}
             }",
-        ).unwrap();
+        )
+            .unwrap();
 
         use crate::codegen::parser::function_extractor::extract_methods_from_file;
         let methods = extract_methods_from_file(&data);

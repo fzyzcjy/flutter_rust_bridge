@@ -19,6 +19,7 @@ use std::fmt::Debug;
 use std::path::Path;
 use syn::*;
 use IrType::Primitive;
+use crate::codegen::ir::ty::structure::{IrStructIdent, IrTypeStructRef};
 
 pub(crate) mod argument;
 pub(crate) mod output;
@@ -157,6 +158,23 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
                 IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod {
                     owner_ty,
+                    actual_method_name,
+                    mode,
+                })
+            },
+            GeneralizedItemFn::TraitMethod { impl_item_fn } => {
+                let mode = if matches!(impl_item_fn.sig.inputs.first(), Some(FnArg::Receiver(..))) {
+                    IrFuncOwnerInfoMethodMode::Instance
+                } else {
+                    IrFuncOwnerInfoMethodMode::Static
+                };
+                let actual_method_name = impl_item_fn.sig.ident.to_string();
+                let namespace_name = NamespacedName::new(context.initiated_namespace.clone(), actual_method_name.clone());
+                IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod {
+                    owner_ty: IrType::StructRef(IrTypeStructRef {
+                        ident: IrStructIdent(namespace_name),
+                        is_exception: false
+                    }),
                     actual_method_name,
                     mode,
                 })
