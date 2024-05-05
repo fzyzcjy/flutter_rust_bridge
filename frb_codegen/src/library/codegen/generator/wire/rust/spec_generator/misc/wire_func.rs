@@ -100,31 +100,7 @@ fn generate_wrap_info_obj(func: &IrFunc) -> String {
 }
 
 fn generate_code_inner_decode(func: &IrFunc) -> String {
-    func.inputs
-        .iter()
-        .filter_map(|field| {
-            if let IrType::RustAutoOpaque(o) = &field.inner.ty {
-                if o.ownership_mode != OwnershipMode::Owned {
-                    let mode = o.ownership_mode.to_string().to_case(Case::Snake);
-                    let mutability = if o.ownership_mode == OwnershipMode::RefMut {
-                        "mut "
-                    } else {
-                        ""
-                    };
-                    Some(format!(
-                        "let {mutability}api_{name} = api_{name}.rust_auto_opaque_decode_{syncness}_{mode}(){maybe_await};\n",
-                        name = field.inner.name.rust_style(),
-                        syncness = if func.rust_async { "async" } else { "sync" },
-                        maybe_await = if func.rust_async { ".await" } else { "" },
-                    ))
-                } else {
-                    None
-                }
-            } else {
-                None
-            }
-        })
-        .join("")
+    super::wire_func_rao::generate_code_inner_decode(func)
 }
 
 fn generate_code_call_inner_func_result(func: &IrFunc, inner_func_args: Vec<String>) -> String {

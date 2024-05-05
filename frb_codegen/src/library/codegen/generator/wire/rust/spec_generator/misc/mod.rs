@@ -19,6 +19,7 @@ use std::collections::HashSet;
 
 pub(crate) mod ty;
 pub(crate) mod wire_func;
+pub(crate) mod wire_func_rao;
 
 #[derive(Serialize)]
 pub(crate) struct WireRustOutputSpecMisc {
