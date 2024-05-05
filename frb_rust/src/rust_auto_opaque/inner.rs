@@ -1,4 +1,3 @@
-use crate::for_generated::BaseArc;
 use crate::rust_auto_opaque::order::RustAutoOpaqueOrder;
 use tokio::sync::{RwLock, RwLockReadGuard, RwLockWriteGuard, TryLockError};
 
