@@ -11,7 +11,13 @@ pub type RustAutoOpaqueBase<T, A> = RustOpaqueBase<RustAutoOpaqueInner<T>, A>;
 pub type RustAutoOpaqueNom<T> = RustAutoOpaqueBase<T, StdArc<RustAutoOpaqueInner<T>>>;
 
 pub struct RustAutoOpaqueInner<T> {
-    data: RwLock<T>,
+    pub(crate) data: RwLock<T>,
+}
+
+impl<T> RustAutoOpaqueInner<T> {
+    pub(crate) fn new(data: RwLock<T>) -> Self {
+        Self { data }
+    }
 }
 
 #[doc(hidden)]
