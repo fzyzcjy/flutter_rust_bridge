@@ -61,9 +61,10 @@ fn wire_f_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_a = <crate::api::minimal::MyStruct>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
-                transform_result_sse((move || Result::<_, ()>::Ok(crate::api::minimal::f()))())
+                transform_result_sse((move || Result::<_, ()>::Ok(crate::api::minimal::f(api_a)))())
             }
         },
     )

@@ -9,7 +9,8 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 Future<int> minimalAdder({required int a, required int b, dynamic hint}) =>
     RustLib.instance.api.minimalAdder(a: a, b: b, hint: hint);
 
-Future<MyStruct> f({dynamic hint}) => RustLib.instance.api.f(hint: hint);
+Future<MyStruct> f({required MyStruct a, dynamic hint}) =>
+    RustLib.instance.api.f(a: a, hint: hint);
 
 class MyStruct {
   final int template;
