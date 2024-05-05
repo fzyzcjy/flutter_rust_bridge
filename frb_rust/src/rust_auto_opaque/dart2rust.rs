@@ -21,11 +21,11 @@ impl<T, A: BaseArc<RwLock<T>>> RustAutoOpaqueBase<T, A> {
     }
 
     pub async fn rust_auto_opaque_decode_async_ref(&self) -> RwLockReadGuard<'_, T> {
-        self.read()
+        self.read().await
     }
 
     pub async fn rust_auto_opaque_decode_async_ref_mut(&self) -> RwLockWriteGuard<'_, T> {
-        self.write()
+        self.write().await
     }
 }
 

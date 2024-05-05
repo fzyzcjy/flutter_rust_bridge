@@ -112,9 +112,10 @@ fn generate_code_inner_decode(func: &IrFunc) -> String {
                         ""
                     };
                     Some(format!(
-                        "let {mutability}api_{name} = api_{name}.rust_auto_opaque_decode_{syncness}_{mode}();\n",
+                        "let {mutability}api_{name} = api_{name}.rust_auto_opaque_decode_{syncness}_{mode}(){maybe_await};\n",
                         name = field.inner.name.rust_style(),
                         syncness = if func.rust_async { "async" } else { "sync" },
+                        maybe_await = if func.rust_async { ".await" } else { "" },
                     ))
                 } else {
                     None
