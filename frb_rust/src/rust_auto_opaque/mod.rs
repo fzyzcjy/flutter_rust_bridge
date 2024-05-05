@@ -5,17 +5,12 @@ use crate::rust_opaque::RustOpaqueBase;
 
 pub(crate) mod dart2rust;
 mod order;
-pub mod misc;
+pub(crate) mod inner;
 
-pub type RustAutoOpaqueBase<T, A> = RustOpaqueBase<RustAutoOpaqueInner<T>, A>;
+pub type RustAutoOpaqueBase<T, A> = RustOpaqueBase<inner::RustAutoOpaqueInner<T>, A>;
 
 /// Please refer to `RustAutoOpaque` for doc.
-pub type RustAutoOpaqueNom<T> = RustAutoOpaqueBase<T, StdArc<RustAutoOpaqueInner<T>>>;
-
-pub struct RustAutoOpaqueInner<T> {
-    pub(crate) data: RwLock<T>,
-    pub(crate) order: RustAutoOpaqueOrder,
-}
+pub type RustAutoOpaqueNom<T> = RustAutoOpaqueBase<T, StdArc<inner::RustAutoOpaqueInner<T>>>;
 
 #[doc(hidden)]
 #[macro_export]

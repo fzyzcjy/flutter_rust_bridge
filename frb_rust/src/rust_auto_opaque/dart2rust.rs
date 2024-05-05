@@ -1,7 +1,7 @@
 use crate::for_generated::BaseArc;
 use crate::rust_async::{RwLock, RwLockReadGuard, RwLockWriteGuard};
 use crate::rust_auto_opaque::order::RustAutoOpaqueOrder;
-use crate::rust_auto_opaque::{RustAutoOpaqueBase, RustAutoOpaqueInner};
+use crate::rust_auto_opaque::{RustAutoOpaqueBase, inner::RustAutoOpaqueInner};
 use std::iter::zip;
 
 impl<T, A: BaseArc<RustAutoOpaqueInner<T>>> RustAutoOpaqueBase<T, A> {

@@ -1,7 +1,12 @@
 use tokio::sync::{RwLock, RwLockReadGuard, RwLockWriteGuard, TryLockError};
 use crate::for_generated::BaseArc;
-use crate::rust_auto_opaque::{RustAutoOpaqueBase, RustAutoOpaqueInner};
+use crate::rust_auto_opaque::RustAutoOpaqueBase;
 use crate::rust_auto_opaque::order::RustAutoOpaqueOrder;
+
+pub struct RustAutoOpaqueInner<T> {
+    pub(crate) data: RwLock<T>,
+    pub(crate) order: RustAutoOpaqueOrder,
+}
 
 impl<T> RustAutoOpaqueInner<T> {
     pub fn new(data: RwLock<T>) -> Self {
