@@ -70,10 +70,7 @@ pub fn rust_auto_opaque_decode_compute_order(
         "Cannot borrow an object mutably, and at the same time borrow again in another argument"
     );
 
-    sorted_index_and_lock_orders
-        .into_iter()
-        .map(|index, _order| index)
-        .collect()
+    sorted_infos.into_iter().map(|info| info.index).collect()
 }
 
 fn check_no_immediate_invalid_borrow(sorted_infos: &[RustAutoOpaqueLockOrderInfo]) -> bool {
@@ -121,7 +118,7 @@ mod tests {
                 RustAutoOpaqueLockOrderInfo {
                     index: 0,
                     mutable,
-                    object_order: RustAutoOpaqueOrder(100),
+                    object_order: RustAutoOpaqueOrder::new_for_test(100),
                 }
             ]));
         }
@@ -137,12 +134,12 @@ mod tests {
                     RustAutoOpaqueLockOrderInfo {
                         index: 0,
                         mutable: mutable_a,
-                        object_order: RustAutoOpaqueOrder(100),
+                        object_order: RustAutoOpaqueOrder::new_for_test(100),
                     },
                     RustAutoOpaqueLockOrderInfo {
                         index: 1,
                         mutable: mutable_b,
-                        object_order: RustAutoOpaqueOrder(100),
+                        object_order: RustAutoOpaqueOrder::new_for_test(100),
                     }
                 ]),
                 expect
@@ -153,12 +150,12 @@ mod tests {
             RustAutoOpaqueLockOrderInfo {
                 index: 0,
                 mutable: true,
-                object_order: RustAutoOpaqueOrder(100),
+                object_order: RustAutoOpaqueOrder::new_for_test(100),
             },
             RustAutoOpaqueLockOrderInfo {
                 index: 1,
                 mutable: true,
-                object_order: RustAutoOpaqueOrder(101),
+                object_order: RustAutoOpaqueOrder::new_for_test(101),
             }
         ]));
     }
