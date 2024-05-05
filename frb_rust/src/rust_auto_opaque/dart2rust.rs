@@ -56,13 +56,17 @@ pub fn rust_auto_opaque_encode<T, A: BaseArc<RustAutoOpaqueInner<T>>>(
     RustAutoOpaqueBase::new(RustAutoOpaqueInner::new(RwLock::new(value)))
 }
 
-pub fn rust_auto_opaque_decode_compute_order(lock_orders: &[RustAutoOpaqueOrder]) -> Vec<usize> {
-    let mut sorted_index_and_lock_orders: Vec<_> =
-        lock_orders.iter().cloned().enumerate().collect();
-    sorted_index_and_lock_orders.sort_unstable_by_key(|(_index, order)| order);
+pub fn rust_auto_opaque_decode_compute_order(
+    infos: Vec<RustAutoOpaqueLockOrderInfo>,
+) -> Vec<usize> {
+    let sorted_infos = {
+        let mut x = infos;
+        x.sort_unstable_by_key(|info| info.lock_order);
+        x
+    };
 
     assert!(
-        check_no_mut_multi_borrow(&sorted_index_and_lock_orders),
+        check_no_mut_multi_borrow(&sorted_infos),
         "Cannot borrow an object mutably, and at the same time borrow again in another argument"
     );
 
@@ -72,9 +76,7 @@ pub fn rust_auto_opaque_decode_compute_order(lock_orders: &[RustAutoOpaqueOrder]
         .collect()
 }
 
-fn check_no_mut_multi_borrow(
-    sorted_index_and_lock_orders: &[(usize, RustAutoOpaqueOrder)],
-) -> bool {
+fn check_no_mut_multi_borrow(sorted_infos: &[RustAutoOpaqueLockOrderInfo]) -> bool {
     TODO
 }
 
