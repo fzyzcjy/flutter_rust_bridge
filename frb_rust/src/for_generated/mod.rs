@@ -29,7 +29,6 @@ pub use crate::handler::handler::{TaskContext, TaskRetFutTrait};
 pub use crate::handler::implementation::error_listener::NoOpErrorListener;
 pub use crate::handler::implementation::executor::SimpleExecutor;
 pub use crate::handler::implementation::handler::SimpleHandler;
-pub use crate::misc::manual_impl::*;
 pub use crate::misc::version::FLUTTER_RUST_BRIDGE_RUNTIME_VERSION;
 pub use crate::platform_types::{
     DartAbi, MessagePort, PlatformGeneralizedUint8ListPtr, WireSyncRust2DartDco,
@@ -43,7 +42,7 @@ pub use crate::rust_auto_opaque::dart2rust::{
     rust_auto_opaque_decode_compute_order, rust_auto_opaque_encode,
 };
 #[cfg(feature = "rust-async")]
-pub use crate::rust_auto_opaque::{RustAutoOpaqueBase, inner::RustAutoOpaqueInner};
+pub use crate::rust_auto_opaque::{inner::RustAutoOpaqueInner, RustAutoOpaqueBase};
 pub use crate::rust_opaque::{dart2rust::decode_rust_opaque_nom, RustOpaqueBase};
 pub use crate::stream::stream_sink::StreamSinkBase;
 pub use crate::thread_pool::{BaseThreadPool, SimpleThreadPool};

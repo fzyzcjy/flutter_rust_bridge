@@ -1,8 +1,7 @@
 use crate::for_generated::BaseArc;
 use crate::rust_async::{RwLock, RwLockReadGuard, RwLockWriteGuard};
 use crate::rust_auto_opaque::order::RustAutoOpaqueOrder;
-use crate::rust_auto_opaque::{RustAutoOpaqueBase, inner::RustAutoOpaqueInner};
-use std::iter::zip;
+use crate::rust_auto_opaque::{inner::RustAutoOpaqueInner, RustAutoOpaqueBase};
 
 impl<T, A: BaseArc<RustAutoOpaqueInner<T>>> RustAutoOpaqueBase<T, A> {
     // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool

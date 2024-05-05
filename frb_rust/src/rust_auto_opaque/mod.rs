@@ -1,11 +1,9 @@
 use crate::for_generated::StdArc;
-use crate::rust_async::RwLock;
-use crate::rust_auto_opaque::order::RustAutoOpaqueOrder;
 use crate::rust_opaque::RustOpaqueBase;
 
 pub(crate) mod dart2rust;
-mod order;
 pub(crate) mod inner;
+mod order;
 
 pub type RustAutoOpaqueBase<T, A> = RustOpaqueBase<inner::RustAutoOpaqueInner<T>, A>;
 
