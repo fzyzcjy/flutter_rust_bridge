@@ -756,7 +756,7 @@ jobs:
         device:
           - "pixel"
           - "Nexus 6"
-        api-level: [ 29 ]
+        api-level: [ 30 ]
 
     steps:
       # setup
@@ -814,8 +814,8 @@ jobs:
           - frb_example--flutter_via_create
           # no `frb_example--flutter_via_integrate` since it is similar to `flutter_via_create`
         device:
-          - "iPad (9th generation) Simulator (16.2)"
-          - "iPhone 12 Pro Max Simulator (16.2)"
+          - "iPad (10th generation) Simulator (17.2)"
+          - "iPhone 14 Pro Max Simulator (17.2)"
 
     steps:
       # setup
