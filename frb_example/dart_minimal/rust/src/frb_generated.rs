@@ -76,9 +76,9 @@ fn wire_f_impl(
 
                     let decode_indices_ =
                         flutter_rust_bridge::for_generated::rust_auto_opaque_decode_compute_order(
-                            &[
-                                api_a.rust_auto_opaque_lock_order(),
-                                api_b.rust_auto_opaque_lock_order(),
+                            vec![
+                                api_a.rust_auto_opaque_lock_order_info(0, true),
+                                api_b.rust_auto_opaque_lock_order_info(1, true),
                             ],
                         );
                     for i in decode_indices_ {
