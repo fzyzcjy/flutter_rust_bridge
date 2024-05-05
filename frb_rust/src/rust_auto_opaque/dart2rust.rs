@@ -1,5 +1,6 @@
 use crate::for_generated::BaseArc;
 use crate::rust_async::{RwLock, RwLockReadGuard, RwLockWriteGuard};
+use crate::rust_auto_opaque::order::RustAutoOpaqueOrder;
 use crate::rust_auto_opaque::RustAutoOpaqueBase;
 
 impl<T, A: BaseArc<RwLock<T>>> RustAutoOpaqueBase<T, A> {
@@ -29,7 +30,7 @@ impl<T, A: BaseArc<RwLock<T>>> RustAutoOpaqueBase<T, A> {
     }
 
     // TODO surely not i32
-    pub fn rust_auto_opaque_lock_order(&self) -> i32 {
+    pub fn rust_auto_opaque_lock_order(&self) -> RustAutoOpaqueOrder {
         todo!()
     }
 }
@@ -39,6 +40,6 @@ pub fn rust_auto_opaque_encode<T, A: BaseArc<RwLock<T>>>(value: T) -> RustAutoOp
 }
 
 // TODO surely not i32
-pub fn rust_auto_opaque_decode_compute_order(orders: &[i32]) -> Vec<usize> {
+pub fn rust_auto_opaque_decode_compute_order(orders: &[RustAutoOpaqueOrder]) -> Vec<usize> {
     todo!()
 }

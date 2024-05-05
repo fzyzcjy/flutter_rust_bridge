@@ -2,7 +2,7 @@ use std::sync::atomic::{AtomicU64, Ordering};
 use std::thread;
 
 #[derive(PartialEq, Eq, PartialOrd, Ord)]
-pub(crate) struct RustAutoOpaqueOrder(u64);
+pub struct RustAutoOpaqueOrder(u64);
 
 static COUNTER: AtomicU64 = AtomicU64::new(0);
 
