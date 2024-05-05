@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `dart_opaque_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -30,13 +30,15 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('drop', () async {
     expect(
-        await asyncAcceptDartOpaqueTwinRustAsync(opaque: createLargeList(mb: 200)),
+        await asyncAcceptDartOpaqueTwinRustAsync(
+            opaque: createLargeList(mb: 200)),
         'async test');
   });
 
   test('nested', () async {
     var str = await createNestedDartOpaqueTwinRustAsync(opaque1: f, opaque2: f);
-    await futurizeVoidTwinRustAsync(getNestedDartOpaqueTwinRustAsync(opaque: str));
+    await futurizeVoidTwinRustAsync(
+        getNestedDartOpaqueTwinRustAsync(opaque: str));
   });
 
   test('enum', () async {
@@ -46,7 +48,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('nested', () async {
     var str = await createNestedDartOpaqueTwinRustAsync(opaque1: f, opaque2: f);
-    await futurizeVoidTwinRustAsync(getNestedDartOpaqueTwinRustAsync(opaque: str));
+    await futurizeVoidTwinRustAsync(
+        getNestedDartOpaqueTwinRustAsync(opaque: str));
   });
 
   test('enum', () async {

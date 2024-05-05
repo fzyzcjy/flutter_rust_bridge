@@ -339,7 +339,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
         () async => rustAutoOpaqueBorrowAndMutBorrowTwinRustAsync(
             borrow: obj, mutBorrow: obj),
         'TwinRustAsync',
-        messageMatcherOnNative: matches(RegExp('Fail to.*borrow object')),
+        messageMatcherOnNative: matches(RegExp('Cannot.*borrow.*object')),
       );
     });
 

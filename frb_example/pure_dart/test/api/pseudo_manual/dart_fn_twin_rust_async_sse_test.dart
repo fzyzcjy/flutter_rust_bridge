@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `dart_fn_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -13,7 +13,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('rustCallDartSimpleTwinRustAsyncSse', () async {
     var callbackCallCount = 0;
-    await rustCallDartSimpleTwinRustAsyncSse(callback: () => callbackCallCount++);
+    await rustCallDartSimpleTwinRustAsyncSse(
+        callback: () => callbackCallCount++);
     expect(callbackCallCount, 1);
   });
 
@@ -25,11 +26,12 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('rustCallDartTwoArgsTwinRustAsyncSse', () async {
-    final callbackCalls = <(String, DemoStructForRustCallDartTwinRustAsyncSse)>[];
+    final callbackCalls =
+        <(String, DemoStructForRustCallDartTwinRustAsyncSse)>[];
     await rustCallDartTwoArgsTwinRustAsyncSse(
         callback: (a, b) => callbackCalls.add((a, b)));
-    expect(
-        callbackCalls, [('a', DemoStructForRustCallDartTwinRustAsyncSse(name: 'b'))]);
+    expect(callbackCalls,
+        [('a', DemoStructForRustCallDartTwinRustAsyncSse(name: 'b'))]);
   });
 
   test('rustCallDartReturnTwinRustAsyncSse', () async {

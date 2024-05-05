@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `structure_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -12,8 +12,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   addTestsIdentityFunctionCall(
       funcStructWithZeroFieldTwinSyncSse, [StructWithZeroFieldTwinSyncSse()]);
-  addTestsIdentityFunctionCall(
-      funcStructWithOneFieldTwinSyncSse, [StructWithOneFieldTwinSyncSse(a: 42)]);
+  addTestsIdentityFunctionCall(funcStructWithOneFieldTwinSyncSse,
+      [StructWithOneFieldTwinSyncSse(a: 42)]);
   addTestsIdentityFunctionCall(funcStructWithTwoFieldTwinSyncSse,
       [StructWithTwoFieldTwinSyncSse(a: 10, b: 20)]);
   addTestsIdentityFunctionCall(funcTupleStructWithOneFieldTwinSyncSse,

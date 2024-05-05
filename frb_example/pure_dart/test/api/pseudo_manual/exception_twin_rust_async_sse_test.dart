@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `exception_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -20,20 +20,22 @@ Future<void> main({bool skipRustLibInit = false}) async {
               (x) => x.message, 'message', startsWith('deliberate error'))));
     });
     test('call funcTypeFalliblePanicTwinRustAsyncSse', () async {
-      await expectRustPanic(
-          () async => funcTypeFalliblePanicTwinRustAsyncSse(), 'TwinRustAsyncSse',
+      await expectRustPanic(() async => funcTypeFalliblePanicTwinRustAsyncSse(),
+          'TwinRustAsyncSse',
           messageOnNative: 'deliberate panic');
     });
     test('call funcTypeInfalliblePanicTwinRustAsyncSse', () async {
       await expectRustPanic(
-          () async => funcTypeInfalliblePanicTwinRustAsyncSse(), 'TwinRustAsyncSse',
+          () async => funcTypeInfalliblePanicTwinRustAsyncSse(),
+          'TwinRustAsyncSse',
           messageOnNative: 'deliberate panic');
     });
 
-    addTestsIdentityFunctionCall(customEnumErrorReturnOkTwinRustAsyncSse, [100]);
+    addTestsIdentityFunctionCall(
+        customEnumErrorReturnOkTwinRustAsyncSse, [100]);
     test('call customEnumErrorPanicTwinRustAsyncSse', () async {
-      await expectRustPanic(
-          () async => customEnumErrorPanicTwinRustAsyncSse(), 'TwinRustAsyncSse',
+      await expectRustPanic(() async => customEnumErrorPanicTwinRustAsyncSse(),
+          'TwinRustAsyncSse',
           messageOnNative: 'deliberate panic');
     });
 
@@ -43,7 +45,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
       if (!kIsWeb)
         matcher = matcher.having((x) => x.backtrace, 'backtrace', isNotEmpty);
       await expectLater(
-          () async => customEnumErrorReturnErrorTwinRustAsyncSse(), throwsA(matcher));
+          () async => customEnumErrorReturnErrorTwinRustAsyncSse(),
+          throwsA(matcher));
     });
 
     addTestsErrorFunctionCall(
@@ -106,7 +109,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
       test('Do not throw CustomStructError static method', () async {
         expect(
-            await CustomStructTwinRustAsyncSse.staticReturnCustomStructOkTwinRustAsyncSse(),
+            await CustomStructTwinRustAsyncSse
+                .staticReturnCustomStructOkTwinRustAsyncSse(),
             3);
       });
 
@@ -120,21 +124,26 @@ Future<void> main({bool skipRustLibInit = false}) async {
       test('Throw CustomNestedError1 variant 1', () async {
         await expectLater(
             () async => returnCustomNestedError1Variant1TwinRustAsyncSse(),
-            throwsA(CustomNestedError1TwinRustAsyncSse.customNested1("custom")));
+            throwsA(
+                CustomNestedError1TwinRustAsyncSse.customNested1("custom")));
       });
 
       test('Throw CustomNestedError2', () async {
-        await expectLater(() async => returnCustomNestedError2TwinRustAsyncSse(),
-            throwsA(CustomNestedError2TwinRustAsyncSse.customNested2("custom")));
+        await expectLater(
+            () async => returnCustomNestedError2TwinRustAsyncSse(),
+            throwsA(
+                CustomNestedError2TwinRustAsyncSse.customNested2("custom")));
       });
 
       test('Throw CustomError variant 0', () async {
-        await expectLater(() async => returnErrorVariantTwinRustAsyncSse(variant: 0),
+        await expectLater(
+            () async => returnErrorVariantTwinRustAsyncSse(variant: 0),
             throwsA(isA<CustomErrorTwinRustAsyncSse>()));
       });
 
       test('Throw CustomError variant 1', () async {
-        await expectLater(() async => returnErrorVariantTwinRustAsyncSse(variant: 1),
+        await expectLater(
+            () async => returnErrorVariantTwinRustAsyncSse(variant: 1),
             throwsA(isA<CustomErrorTwinRustAsyncSse>()));
       });
 
@@ -144,21 +153,23 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
       test('Throw CustomError static method', () async {
         await expectLater(
-            () async =>
-                SomeStructTwinRustAsyncSse.staticReturnErrCustomErrorTwinRustAsyncSse(),
+            () async => SomeStructTwinRustAsyncSse
+                .staticReturnErrCustomErrorTwinRustAsyncSse(),
             throwsA(isA<CustomErrorTwinRustAsyncSse>()));
       });
 
       test('Throw CustomError static method, verifies implements Frb',
           () async {
         await expectLater(
-            () async =>
-                SomeStructTwinRustAsyncSse.staticReturnErrCustomErrorTwinRustAsyncSse(),
+            () async => SomeStructTwinRustAsyncSse
+                .staticReturnErrCustomErrorTwinRustAsyncSse(),
             throwsA(isA<FrbException>()));
       });
 
       test('Do not throw CustomError static method', () async {
-        expect(await SomeStructTwinRustAsyncSse.staticReturnOkCustomErrorTwinRustAsyncSse(),
+        expect(
+            await SomeStructTwinRustAsyncSse
+                .staticReturnOkCustomErrorTwinRustAsyncSse(),
             3);
       });
 
@@ -192,19 +203,22 @@ Future<void> main({bool skipRustLibInit = false}) async {
       });
 
       test('Throw anyhow error', () async {
-        await expectLater(
-            () async => throwAnyhowTwinRustAsyncSse(), throwsA(isA<FrbException>()));
+        await expectLater(() async => throwAnyhowTwinRustAsyncSse(),
+            throwsA(isA<FrbException>()));
       });
 
       test('Function with custom result panics', () async {
-        await expectRustPanicRaw(() async => panicWithCustomResultTwinRustAsyncSse(),
-            'TwinRustAsyncSse', throwsA(isA<FrbException>()));
+        await expectRustPanicRaw(
+            () async => panicWithCustomResultTwinRustAsyncSse(),
+            'TwinRustAsyncSse',
+            throwsA(isA<FrbException>()));
       });
 
       test('Stream sink throw anyhow error', () async {
         expect(
           () async {
-            await for (final _ in await streamSinkThrowAnyhowTwinRustAsyncSse()) {}
+            await for (final _
+                in await streamSinkThrowAnyhowTwinRustAsyncSse()) {}
           },
           throwsA(isA<AnyhowException>().having((e) => e.toString(), 'toString',
               startsWith('AnyhowException(anyhow error'))),
@@ -225,8 +239,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     });
 
     test('when panic', () async {
-      await expectRustPanic(
-          () async => funcTypeFalliblePanicTwinRustAsyncSse(), 'TwinRustAsyncSse',
+      await expectRustPanic(() async => funcTypeFalliblePanicTwinRustAsyncSse(),
+          'TwinRustAsyncSse',
           messageMatcherOnNative: matcher);
     });
   });

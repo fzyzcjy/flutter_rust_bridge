@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `rust_opaque_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -129,7 +129,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(await runEnumOpaqueTwinRustAsyncSseMoi(opaque: data[1]), "42");
     (data[1] as EnumOpaqueTwinRustAsyncSseMoi_Primitive).field0.dispose();
 
-    expect(await runEnumOpaqueTwinRustAsyncSseMoi(opaque: data[2]), "\"String\"");
+    expect(
+        await runEnumOpaqueTwinRustAsyncSseMoi(opaque: data[2]), "\"String\"");
     (data[2] as EnumOpaqueTwinRustAsyncSseMoi_TraitObj).field0.dispose();
 
     expect(
@@ -159,7 +160,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('opaque field', () async {
     var data = await createNestedOpaqueTwinRustAsyncSseMoi();
-    await futurizeVoidTwinRustAsyncSseMoi(runNestedOpaqueTwinRustAsyncSseMoi(opaque: data));
+    await futurizeVoidTwinRustAsyncSseMoi(
+        runNestedOpaqueTwinRustAsyncSseMoi(opaque: data));
 
     expect(
         await runOpaqueTwinRustAsyncSseMoi(opaque: data.first),
@@ -198,7 +200,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('array', () async {
     var data = await opaqueArrayTwinRustAsyncSseMoi();
-    await futurizeVoidTwinRustAsyncSseMoi(opaqueArrayRunTwinRustAsyncSseMoi(data: data));
+    await futurizeVoidTwinRustAsyncSseMoi(
+        opaqueArrayRunTwinRustAsyncSseMoi(data: data));
     data[0].dispose();
 
     expect(
@@ -218,7 +221,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('vec', () async {
     var data = await opaqueVecTwinRustAsyncSseMoi();
-    await futurizeVoidTwinRustAsyncSseMoi(opaqueVecRunTwinRustAsyncSseMoi(data: data));
+    await futurizeVoidTwinRustAsyncSseMoi(
+        opaqueVecRunTwinRustAsyncSseMoi(data: data));
     data[0].dispose();
 
     expect(

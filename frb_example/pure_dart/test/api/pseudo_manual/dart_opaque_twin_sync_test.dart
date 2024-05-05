@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `dart_opaque_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -16,8 +16,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('loopback', () async {
     await futurizeVoidTwinSync(loopBackArrayGetTwinSync(
         opaque: await loopBackArrayTwinSync(opaque: f)));
-    await futurizeVoidTwinSync(loopBackVecGetTwinSync(
-        opaque: await loopBackVecTwinSync(opaque: f)));
+    await futurizeVoidTwinSync(
+        loopBackVecGetTwinSync(opaque: await loopBackVecTwinSync(opaque: f)));
     await futurizeVoidTwinSync(loopBackOptionGetTwinSync(
         opaque: await loopBackOptionTwinSync(opaque: f)));
 

@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `exception_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -99,15 +99,14 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
       test('Throw CustomStructError static method', () async {
         await expectLater(
-            () async => CustomStructTwinSse
-                .staticReturnCustomStructErrorTwinSse(),
+            () async =>
+                CustomStructTwinSse.staticReturnCustomStructErrorTwinSse(),
             throwsA(isA<CustomStructErrorAnotherTwinSse>()));
       });
 
       test('Do not throw CustomStructError static method', () async {
         expect(
-            await CustomStructTwinSse.staticReturnCustomStructOkTwinSse(),
-            3);
+            await CustomStructTwinSse.staticReturnCustomStructOkTwinSse(), 3);
       });
 
       test('Throw CustomNestedError1', () async {
@@ -118,8 +117,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
       });
 
       test('Throw CustomNestedError1 variant 1', () async {
-        await expectLater(
-            () async => returnCustomNestedError1Variant1TwinSse(),
+        await expectLater(() async => returnCustomNestedError1Variant1TwinSse(),
             throwsA(CustomNestedError1TwinSse.customNested1("custom")));
       });
 
@@ -144,22 +142,19 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
       test('Throw CustomError static method', () async {
         await expectLater(
-            () async =>
-                SomeStructTwinSse.staticReturnErrCustomErrorTwinSse(),
+            () async => SomeStructTwinSse.staticReturnErrCustomErrorTwinSse(),
             throwsA(isA<CustomErrorTwinSse>()));
       });
 
       test('Throw CustomError static method, verifies implements Frb',
           () async {
         await expectLater(
-            () async =>
-                SomeStructTwinSse.staticReturnErrCustomErrorTwinSse(),
+            () async => SomeStructTwinSse.staticReturnErrCustomErrorTwinSse(),
             throwsA(isA<FrbException>()));
       });
 
       test('Do not throw CustomError static method', () async {
-        expect(await SomeStructTwinSse.staticReturnOkCustomErrorTwinSse(),
-            3);
+        expect(await SomeStructTwinSse.staticReturnOkCustomErrorTwinSse(), 3);
       });
 
       test('Do not throw CustomError', () async {

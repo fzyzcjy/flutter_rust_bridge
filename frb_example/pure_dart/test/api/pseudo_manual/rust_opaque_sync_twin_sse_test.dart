@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `rust_opaque_sync_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -32,8 +32,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('check generator', () {
     expect(
-        frbSyncGeneratorTestTwinSse().runtimeType ==
-            FrbOpaqueSyncReturnTwinSse,
+        frbSyncGeneratorTestTwinSse().runtimeType == FrbOpaqueSyncReturnTwinSse,
         isTrue);
   });
 }

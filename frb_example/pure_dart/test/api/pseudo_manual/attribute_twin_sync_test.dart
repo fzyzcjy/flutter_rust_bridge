@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `attribute_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -19,7 +19,6 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('dart call next_user_id to test metadata annotations', () async {
     UserIdTwinSync userId = UserIdTwinSync(value: 11);
-    expect(await nextUserIdTwinSync(userId: userId),
-        UserIdTwinSync(value: 12));
+    expect(await nextUserIdTwinSync(userId: userId), UserIdTwinSync(value: 12));
   });
 }

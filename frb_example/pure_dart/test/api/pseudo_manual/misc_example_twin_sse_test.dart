@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `misc_example_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -24,8 +24,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('dart call handleComplexStruct', () async {
     final arrLen = 5;
-    final complexStructResp = await handleComplexStructTwinSse(
-        s: _createMyTreeNode(arrLen: arrLen));
+    final complexStructResp =
+        await handleComplexStructTwinSse(s: _createMyTreeNode(arrLen: arrLen));
     testComplexStruct(complexStructResp, arrLen: arrLen);
   });
 
@@ -37,8 +37,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test("dart call list_of_primitive_enums", () async {
-    List<WeekdaysTwinSse> days = await listOfPrimitiveEnumsTwinSse(
-        weekdays: WeekdaysTwinSse.values);
+    List<WeekdaysTwinSse> days =
+        await listOfPrimitiveEnumsTwinSse(weekdays: WeekdaysTwinSse.values);
     expect(days, WeekdaysTwinSse.values);
   });
 
@@ -57,16 +57,15 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('test abc', () async {
-    final output1 = await testAbcEnumTwinSse(
-        abc: AbcTwinSse.a(ATwinSse(a: "test")));
+    final output1 =
+        await testAbcEnumTwinSse(abc: AbcTwinSse.a(ATwinSse(a: "test")));
     expect((output1 as AbcTwinSse_A).field0.a, "test");
 
-    final output2 =
-        await testAbcEnumTwinSse(abc: AbcTwinSse.b(BTwinSse(b: 1)));
+    final output2 = await testAbcEnumTwinSse(abc: AbcTwinSse.b(BTwinSse(b: 1)));
     expect((output2 as AbcTwinSse_B).field0.b, 1);
 
-    final output3 = await testAbcEnumTwinSse(
-        abc: AbcTwinSse.c(CTwinSse(c: false)));
+    final output3 =
+        await testAbcEnumTwinSse(abc: AbcTwinSse.c(CTwinSse(c: false)));
     expect((output3 as AbcTwinSse_C).field0.c, false);
 
     final output4 = await testAbcEnumTwinSse(abc: AbcTwinSse.justInt(1));
@@ -102,8 +101,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('dart call handleVecU8', () async {
     final len = 100000;
     expect(
-        await handleVecU8TwinSse(
-            v: Uint8List.fromList(List.filled(len, 127))),
+        await handleVecU8TwinSse(v: Uint8List.fromList(List.filled(len, 127))),
         Uint8List.fromList(List.filled(len * 2, 127)));
   });
 
@@ -147,6 +145,5 @@ MyTreeNodeTwinSse _createMyTreeNode({required int arrLen}) {
 
 MyNestedStructTwinSse _createMyNestedStruct() {
   return MyNestedStructTwinSse(
-      treeNode: _createMyTreeNode(arrLen: 5),
-      weekday: WeekdaysTwinSse.friday);
+      treeNode: _createMyTreeNode(arrLen: 5), weekday: WeekdaysTwinSse.friday);
 }

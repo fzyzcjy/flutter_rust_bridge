@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `rust_auto_opaque_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -64,15 +64,15 @@ Future<void> main({bool skipRustLibInit = false}) async {
     group('arg ref mut', () {
       test('can be called', () async {
         final obj = await rustAutoOpaqueReturnOwnTwinSse(initial: 100);
-        await futurizeVoidTwinSse(rustAutoOpaqueArgMutBorrowTwinSse(
-            arg: obj, expect: 100, adder: 1));
+        await futurizeVoidTwinSse(
+            rustAutoOpaqueArgMutBorrowTwinSse(arg: obj, expect: 100, adder: 1));
         expect(obj.isDisposed, false);
       });
 
       test('after call, the object can still be used again', () async {
         final obj = await rustAutoOpaqueReturnOwnTwinSse(initial: 100);
-        await futurizeVoidTwinSse(rustAutoOpaqueArgMutBorrowTwinSse(
-            arg: obj, expect: 100, adder: 1));
+        await futurizeVoidTwinSse(
+            rustAutoOpaqueArgMutBorrowTwinSse(arg: obj, expect: 100, adder: 1));
 
         expect(obj.isDisposed, false);
 
@@ -91,8 +91,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
         await futurizeVoidTwinSse(
             rustAutoOpaqueArgBorrowTwinSse(arg: obj, expect: 100));
 
-        await futurizeVoidTwinSse(rustAutoOpaqueArgMutBorrowTwinSse(
-            arg: obj, expect: 100, adder: 1));
+        await futurizeVoidTwinSse(
+            rustAutoOpaqueArgMutBorrowTwinSse(arg: obj, expect: 100, adder: 1));
 
         // expect internal data to change
         await futurizeVoidTwinSse(
@@ -180,24 +180,21 @@ Future<void> main({bool skipRustLibInit = false}) async {
   group('complex type signatures', () {
     test('plus sign', () async {
       final obj = await rustAutoOpaquePlusSignReturnTwinSse();
-      await futurizeVoidTwinSse(
-          rustAutoOpaquePlusSignArgTwinSse(arg: obj));
+      await futurizeVoidTwinSse(rustAutoOpaquePlusSignArgTwinSse(arg: obj));
     });
 
     test('callable', () async {
       final obj = await rustAutoOpaqueCallableReturnTwinSse();
-      await futurizeVoidTwinSse(
-          rustAutoOpaqueCallableArgTwinSse(arg: obj));
+      await futurizeVoidTwinSse(rustAutoOpaqueCallableArgTwinSse(arg: obj));
     });
   });
 
   group('trait object', () {
     Future<void> _body(BoxHelloTraitTwinSse obj, String expect) async {
-      await futurizeVoidTwinSse(rustAutoOpaqueTraitObjectArgBorrowTwinSse(
-          arg: obj, expect: expect));
       await futurizeVoidTwinSse(
-          rustAutoOpaqueTraitObjectArgMutBorrowTwinSse(
-              arg: obj, expect: expect));
+          rustAutoOpaqueTraitObjectArgBorrowTwinSse(arg: obj, expect: expect));
+      await futurizeVoidTwinSse(rustAutoOpaqueTraitObjectArgMutBorrowTwinSse(
+          arg: obj, expect: expect));
       await futurizeVoidTwinSse(
           rustAutoOpaqueTraitObjectArgOwnTwinSse(arg: obj, expect: expect));
     }
@@ -213,8 +210,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('static method', () async {
-    final obj =
-        await NonCloneSimpleTwinSse.staticMethodReturnOwnTwinSse();
+    final obj = await NonCloneSimpleTwinSse.staticMethodReturnOwnTwinSse();
     await futurizeVoidTwinSse(
         NonCloneSimpleTwinSse.staticMethodArgBorrowTwinSse(arg: obj));
     await futurizeVoidTwinSse(
@@ -261,15 +257,13 @@ Future<void> main({bool skipRustLibInit = false}) async {
     await futurizeVoidTwinSse(
         rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinSse(arg: opaque));
 
-    await futurizeVoidTwinSse(
-        rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinSse(
-            arg: EnumWithGoodAndOpaqueTwinSse.good('hello')));
+    await futurizeVoidTwinSse(rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinSse(
+        arg: EnumWithGoodAndOpaqueTwinSse.good('hello')));
   });
 
   test('enum opaque type', () async {
     final obj = await rustAutoOpaqueEnumReturnOwnTwinSse();
-    await futurizeVoidTwinSse(
-        rustAutoOpaqueEnumArgBorrowTwinSse(arg: obj));
+    await futurizeVoidTwinSse(rustAutoOpaqueEnumArgBorrowTwinSse(arg: obj));
   });
 
   test('stream sink', () async {
@@ -345,8 +339,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   group('borrow + borrow', () {
     test('when same object', () async {
       final obj = await rustAutoOpaqueReturnOwnTwinSse(initial: 100);
-      expect(
-          await rustAutoOpaqueBorrowAndBorrowTwinSse(a: obj, b: obj), 200);
+      expect(await rustAutoOpaqueBorrowAndBorrowTwinSse(a: obj, b: obj), 200);
     });
 
     test('when different object', () async {

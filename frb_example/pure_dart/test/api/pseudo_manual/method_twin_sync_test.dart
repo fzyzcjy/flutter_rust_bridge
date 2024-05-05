@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `method_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -67,9 +67,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('ConcatenateWith static stream sink test', () async {
     final int key = 10;
     final int max = 5;
-    final stream =
-        ConcatenateWithTwinSync.handleSomeStaticStreamSinkTwinSync(
-            key: key, max: max);
+    final stream = ConcatenateWithTwinSync.handleSomeStaticStreamSinkTwinSync(
+        key: key, max: max);
     int cnt = 0;
     await for (final value in stream) {
       print("output from ConcatenateWith's static stream: $value");
@@ -80,8 +79,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('ConcatenateWith static stream sink at 1 test', () async {
-    final stream = ConcatenateWithTwinSync
-        .handleSomeStaticStreamSinkSingleArgTwinSync();
+    final stream =
+        ConcatenateWithTwinSync.handleSomeStaticStreamSinkSingleArgTwinSync();
     expect(stream.toList(), completion([0, 1, 2, 3, 4]));
   });
 
@@ -97,8 +96,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   group('SimpleStruct', () {
     test('returnSelf', () async {
-      expect(
-          (await SimpleStructTwinSync.returnSelfTwinSync(one: 'One')).one,
+      expect((await SimpleStructTwinSync.returnSelfTwinSync(one: 'One')).one,
           'One');
     });
 
@@ -121,8 +119,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     test('vecSelf', () async {
       final a = SimpleStructTwinSync(one: 'a');
       final b = SimpleStructTwinSync(one: 'b');
-      expect(await SimpleStructTwinSync.vecSelfTwinSync(arg: [a, b]),
-          ['a', 'b']);
+      expect(
+          await SimpleStructTwinSync.vecSelfTwinSync(arg: [a, b]), ['a', 'b']);
     });
   });
 
@@ -132,8 +130,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('SimplePrimitiveEnum', () async {
-    expect(await SimplePrimitiveEnumTwinSync.second.simpleMethodTwinSync(),
-        200);
+    expect(
+        await SimplePrimitiveEnumTwinSync.second.simpleMethodTwinSync(), 200);
   });
 
   test('StaticOnly', () async {

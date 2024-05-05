@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `dart_opaque_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -14,10 +14,10 @@ Future<void> main({bool skipRustLibInit = false}) async {
   String f() => 'Test_String';
 
   test('loopback', () async {
-    await futurizeVoidTwinSse(loopBackArrayGetTwinSse(
-        opaque: await loopBackArrayTwinSse(opaque: f)));
-    await futurizeVoidTwinSse(loopBackVecGetTwinSse(
-        opaque: await loopBackVecTwinSse(opaque: f)));
+    await futurizeVoidTwinSse(
+        loopBackArrayGetTwinSse(opaque: await loopBackArrayTwinSse(opaque: f)));
+    await futurizeVoidTwinSse(
+        loopBackVecGetTwinSse(opaque: await loopBackVecTwinSse(opaque: f)));
     await futurizeVoidTwinSse(loopBackOptionGetTwinSse(
         opaque: await loopBackOptionTwinSse(opaque: f)));
 
@@ -29,8 +29,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('drop', () async {
-    expect(
-        await asyncAcceptDartOpaqueTwinSse(opaque: createLargeList(mb: 200)),
+    expect(await asyncAcceptDartOpaqueTwinSse(opaque: createLargeList(mb: 200)),
         'async test');
   });
 

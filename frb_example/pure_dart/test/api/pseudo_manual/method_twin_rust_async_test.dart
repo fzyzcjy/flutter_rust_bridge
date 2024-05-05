@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `method_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -98,7 +98,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   group('SimpleStruct', () {
     test('returnSelf', () async {
       expect(
-          (await SimpleStructTwinRustAsync.returnSelfTwinRustAsync(one: 'One')).one,
+          (await SimpleStructTwinRustAsync.returnSelfTwinRustAsync(one: 'One'))
+              .one,
           'One');
     });
 
@@ -115,7 +116,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     test('argSelf', () async {
       final a = SimpleStructTwinRustAsync(one: 'a');
       final b = SimpleStructTwinRustAsync(one: 'b');
-      expect(await SimpleStructTwinRustAsync.argSelfTwinRustAsync(a: a, b: b), 'ab');
+      expect(await SimpleStructTwinRustAsync.argSelfTwinRustAsync(a: a, b: b),
+          'ab');
     });
 
     test('vecSelf', () async {
@@ -132,7 +134,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('SimplePrimitiveEnum', () async {
-    expect(await SimplePrimitiveEnumTwinRustAsync.second.simpleMethodTwinRustAsync(),
+    expect(
+        await SimplePrimitiveEnumTwinRustAsync.second
+            .simpleMethodTwinRustAsync(),
         200);
   });
 

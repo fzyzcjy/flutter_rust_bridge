@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `comment_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -19,10 +19,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
         functionWithCommentsTripleSlashMultiLineTwinSse());
     await futurizeVoidTwinSse(
         functionWithCommentsTripleSlashSingleLineTwinSse());
-    await futurizeVoidTwinSse(
-        StructWithCommentsTwinSse(fieldWithComments: 42)
-            .instanceMethodTwinSse());
-    await futurizeVoidTwinSse(
-        StructWithCommentsTwinSse.staticMethodTwinSse());
+    await futurizeVoidTwinSse(StructWithCommentsTwinSse(fieldWithComments: 42)
+        .instanceMethodTwinSse());
+    await futurizeVoidTwinSse(StructWithCommentsTwinSse.staticMethodTwinSse());
   });
 }

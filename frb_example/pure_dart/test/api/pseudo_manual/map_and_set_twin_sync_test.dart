@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `map_and_set_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -60,24 +60,22 @@ Future<void> main({bool skipRustLibInit = false}) async {
   ]);
 
   addTestsIdentityFunctionCall(
-      funcHashMapStringSimpleEnumTwinSync,
-      <Map<String, EnumSimpleTwinSync>>[
-        {},
-        {'a': EnumSimpleTwinSync.a},
-        {
-          'a': EnumSimpleTwinSync.a,
-          'b': EnumSimpleTwinSync.b,
-        },
-      ]);
+      funcHashMapStringSimpleEnumTwinSync, <Map<String, EnumSimpleTwinSync>>[
+    {},
+    {'a': EnumSimpleTwinSync.a},
+    {
+      'a': EnumSimpleTwinSync.a,
+      'b': EnumSimpleTwinSync.b,
+    },
+  ]);
 
   addTestsIdentityFunctionCall(
-      funcHashMapStringComplexEnumTwinSync,
-      <Map<String, KitchenSinkTwinSync>>[
-        {},
-        {'a': KitchenSinkTwinSync.empty()},
-        {
-          'a': KitchenSinkTwinSync.buffer(Uint8List.fromList([10, 20])),
-          'b': KitchenSinkTwinSync.nested(42),
-        },
-      ]);
+      funcHashMapStringComplexEnumTwinSync, <Map<String, KitchenSinkTwinSync>>[
+    {},
+    {'a': KitchenSinkTwinSync.empty()},
+    {
+      'a': KitchenSinkTwinSync.buffer(Uint8List.fromList([10, 20])),
+      'b': KitchenSinkTwinSync.nested(42),
+    },
+  ]);
 }

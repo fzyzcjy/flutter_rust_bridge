@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `misc_type_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -45,8 +45,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     }
     final nulls = List.filled(loops, null);
     expect(opt.i32, nulls);
-    expect(
-        opt.enums, [WeekdaysTwinSync.monday, for (final val in nulls) val]);
+    expect(opt.enums, [WeekdaysTwinSync.monday, for (final val in nulls) val]);
     expect(opt.strings, ['foo', for (final val in nulls) val]);
     expect(opt.buffers, nulls);
   });

@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `misc_example_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -37,13 +37,15 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test("dart call list_of_primitive_enums", () async {
-    List<WeekdaysTwinRustAsyncSse> days = await listOfPrimitiveEnumsTwinRustAsyncSse(
-        weekdays: WeekdaysTwinRustAsyncSse.values);
+    List<WeekdaysTwinRustAsyncSse> days =
+        await listOfPrimitiveEnumsTwinRustAsyncSse(
+            weekdays: WeekdaysTwinRustAsyncSse.values);
     expect(days, WeekdaysTwinRustAsyncSse.values);
   });
 
   test('dart call handleNestedStruct', () async {
-    final r = await handleNestedStructTwinRustAsyncSse(s: _createMyNestedStruct());
+    final r =
+        await handleNestedStructTwinRustAsyncSse(s: _createMyNestedStruct());
     testComplexStruct(r.treeNode, arrLen: 5);
     expect(r.weekday, WeekdaysTwinRustAsyncSse.friday);
   });
@@ -61,15 +63,16 @@ Future<void> main({bool skipRustLibInit = false}) async {
         abc: AbcTwinRustAsyncSse.a(ATwinRustAsyncSse(a: "test")));
     expect((output1 as AbcTwinRustAsyncSse_A).field0.a, "test");
 
-    final output2 =
-        await testAbcEnumTwinRustAsyncSse(abc: AbcTwinRustAsyncSse.b(BTwinRustAsyncSse(b: 1)));
+    final output2 = await testAbcEnumTwinRustAsyncSse(
+        abc: AbcTwinRustAsyncSse.b(BTwinRustAsyncSse(b: 1)));
     expect((output2 as AbcTwinRustAsyncSse_B).field0.b, 1);
 
     final output3 = await testAbcEnumTwinRustAsyncSse(
         abc: AbcTwinRustAsyncSse.c(CTwinRustAsyncSse(c: false)));
     expect((output3 as AbcTwinRustAsyncSse_C).field0.c, false);
 
-    final output4 = await testAbcEnumTwinRustAsyncSse(abc: AbcTwinRustAsyncSse.justInt(1));
+    final output4 =
+        await testAbcEnumTwinRustAsyncSse(abc: AbcTwinRustAsyncSse.justInt(1));
     expect((output4 as AbcTwinRustAsyncSse_JustInt).field0, 1);
   });
 

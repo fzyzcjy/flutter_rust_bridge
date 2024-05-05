@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `method_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -115,7 +115,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     test('argSelf', () async {
       final a = SimpleStructTwinSyncSse(one: 'a');
       final b = SimpleStructTwinSyncSse(one: 'b');
-      expect(await SimpleStructTwinSyncSse.argSelfTwinSyncSse(a: a, b: b), 'ab');
+      expect(
+          await SimpleStructTwinSyncSse.argSelfTwinSyncSse(a: a, b: b), 'ab');
     });
 
     test('vecSelf', () async {
@@ -132,7 +133,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('SimplePrimitiveEnum', () async {
-    expect(await SimplePrimitiveEnumTwinSyncSse.second.simpleMethodTwinSyncSse(),
+    expect(
+        await SimplePrimitiveEnumTwinSyncSse.second.simpleMethodTwinSyncSse(),
         200);
   });
 

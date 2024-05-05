@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `tuple_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -11,6 +11,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test("dart call tuples", () async {
     expect(await testTupleTwinRustAsyncSse(), ('John', 0));
-    expect(await testTupleTwinRustAsyncSse(value: ('Bob', 42)), ('Hello Bob', 43));
+    expect(
+        await testTupleTwinRustAsyncSse(value: ('Bob', 42)), ('Hello Bob', 43));
   });
 }

@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `enumeration_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -56,14 +56,16 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
     test('dart call handleEnumStruct', () async {
       expect(
-          await handleEnumStructTwinRustAsyncSse(val: KitchenSinkTwinRustAsyncSse_Empty()),
+          await handleEnumStructTwinRustAsyncSse(
+              val: KitchenSinkTwinRustAsyncSse_Empty()),
           KitchenSinkTwinRustAsyncSse_Empty());
       expect(
         await handleEnumStructTwinRustAsyncSse(
           val: KitchenSinkTwinRustAsyncSse_Primitives(
               int32: 0, float64: 1, boolean: false),
         ),
-        KitchenSinkTwinRustAsyncSse_Primitives(int32: 1, float64: 2, boolean: true),
+        KitchenSinkTwinRustAsyncSse_Primitives(
+            int32: 1, float64: 2, boolean: true),
       );
       expect(
         await handleEnumStructTwinRustAsyncSse(
@@ -77,38 +79,45 @@ Future<void> main({bool skipRustLibInit = false}) async {
       );
       expect(
         await handleEnumStructTwinRustAsyncSse(
-            val: KitchenSinkTwinRustAsyncSse_Enums(WeekdaysTwinRustAsyncSse.monday)),
+            val: KitchenSinkTwinRustAsyncSse_Enums(
+                WeekdaysTwinRustAsyncSse.monday)),
         KitchenSinkTwinRustAsyncSse_Enums(WeekdaysTwinRustAsyncSse.tuesday),
       );
       expect(
         await handleEnumStructTwinRustAsyncSse(
             val: const KitchenSinkTwinRustAsyncSse.nested(
                 0, KitchenSinkTwinRustAsyncSse.empty())),
-        const KitchenSinkTwinRustAsyncSse.nested(1, KitchenSinkTwinRustAsyncSse.empty()),
+        const KitchenSinkTwinRustAsyncSse.nested(
+            1, KitchenSinkTwinRustAsyncSse.empty()),
       );
     });
 
     test('dart call multiplyByTen()', () async {
       expect(
         await multiplyByTenTwinRustAsyncSse(
-            measure: MeasureTwinRustAsyncSse.speed(SpeedTwinRustAsyncSse_GPS(10.0))),
+            measure:
+                MeasureTwinRustAsyncSse.speed(SpeedTwinRustAsyncSse_GPS(10.0))),
         MeasureTwinRustAsyncSse.speed(SpeedTwinRustAsyncSse_GPS(100.0)),
       );
       expect(
         await multiplyByTenTwinRustAsyncSse(
-            measure: MeasureTwinRustAsyncSse.speed(SpeedTwinRustAsyncSse_Unknown())),
+            measure:
+                MeasureTwinRustAsyncSse.speed(SpeedTwinRustAsyncSse_Unknown())),
         null,
       );
       final skipMinified =
           releaseMode ? skipWeb('Minified names cannot be compared.') : null;
-      expect((SpeedTwinRustAsyncSse_Unknown).toString(), 'SpeedTwinRustAsyncSse_Unknown',
-          skip: skipMinified);
-      expect((SpeedTwinRustAsyncSse_GPS).toString(), 'SpeedTwinRustAsyncSse_GPS',
+      expect((SpeedTwinRustAsyncSse_Unknown).toString(),
+          'SpeedTwinRustAsyncSse_Unknown',
           skip: skipMinified);
       expect(
-          (DistanceTwinRustAsyncSse_Unknown).toString(), 'DistanceTwinRustAsyncSse_Unknown',
+          (SpeedTwinRustAsyncSse_GPS).toString(), 'SpeedTwinRustAsyncSse_GPS',
           skip: skipMinified);
-      expect((DistanceTwinRustAsyncSse_Map).toString(), 'DistanceTwinRustAsyncSse_Map',
+      expect((DistanceTwinRustAsyncSse_Unknown).toString(),
+          'DistanceTwinRustAsyncSse_Unknown',
+          skip: skipMinified);
+      expect((DistanceTwinRustAsyncSse_Map).toString(),
+          'DistanceTwinRustAsyncSse_Map',
           skip: skipMinified);
     });
   });

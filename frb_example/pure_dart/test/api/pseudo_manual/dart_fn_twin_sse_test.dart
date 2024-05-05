@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `dart_fn_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -19,8 +19,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('rustCallDartOneArgTwinSse', () async {
     final callbackCalls = <String>[];
-    await rustCallDartOneArgTwinSse(
-        callback: (arg) => callbackCalls.add(arg));
+    await rustCallDartOneArgTwinSse(callback: (arg) => callbackCalls.add(arg));
     expect(callbackCalls, ['a']);
   });
 
@@ -28,8 +27,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final callbackCalls = <(String, DemoStructForRustCallDartTwinSse)>[];
     await rustCallDartTwoArgsTwinSse(
         callback: (a, b) => callbackCalls.add((a, b)));
-    expect(
-        callbackCalls, [('a', DemoStructForRustCallDartTwinSse(name: 'b'))]);
+    expect(callbackCalls, [('a', DemoStructForRustCallDartTwinSse(name: 'b'))]);
   });
 
   test('rustCallDartReturnTwinSse', () async {
@@ -70,8 +68,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('rustCallDartWithDartOpaqueResultTwinSse', () async {
     final opaque = (String whatever) => 42;
     var callCount = 0;
-    final output =
-        await rustCallDartWithDartOpaqueResultTwinSse(callback: () {
+    final output = await rustCallDartWithDartOpaqueResultTwinSse(callback: () {
       callCount++;
       return opaque;
     });

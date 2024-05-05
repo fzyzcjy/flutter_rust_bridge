@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `stream_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -73,8 +73,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('stream_sink_fixed_sized_primitive_array_twin_normal', () async {
-    final output =
-        await streamSinkFixedSizedPrimitiveArrayTwinSse().toList();
+    final output = await streamSinkFixedSizedPrimitiveArrayTwinSse().toList();
     expect(output, [
       orderedEquals([1, 2]),
       orderedEquals([3, 4]),
@@ -89,8 +88,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('stream_sink_inside_struct_twin_normal', () async {
-    final arg = MyStructContainingStreamSinkTwinSse(
-        a: 1000, b: RustStreamSink<int>());
+    final arg =
+        MyStructContainingStreamSinkTwinSse(a: 1000, b: RustStreamSink<int>());
     await streamSinkInsideStructTwinSse(arg: arg);
     expect(await arg.b.stream.toList(), [1000]);
   });
