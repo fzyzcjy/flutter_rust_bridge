@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests,
+// NOTE: This file is mimicking how a human developer writes tests, 
 // and is auto-generated from `exception_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -42,8 +42,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
           .having((x) => x.message, 'message', startsWith('deliberate error'));
       if (!kIsWeb)
         matcher = matcher.having((x) => x.backtrace, 'backtrace', isNotEmpty);
-      await expectLater(() async => customEnumErrorReturnErrorTwinSyncSse(),
-          throwsA(matcher));
+      await expectLater(
+          () async => customEnumErrorReturnErrorTwinSyncSse(), throwsA(matcher));
     });
 
     addTestsErrorFunctionCall(
@@ -106,8 +106,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
       test('Do not throw CustomStructError static method', () async {
         expect(
-            await CustomStructTwinSyncSse
-                .staticReturnCustomStructOkTwinSyncSse(),
+            await CustomStructTwinSyncSse.staticReturnCustomStructOkTwinSyncSse(),
             3);
       });
 
@@ -159,8 +158,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
       });
 
       test('Do not throw CustomError static method', () async {
-        expect(
-            await SomeStructTwinSyncSse.staticReturnOkCustomErrorTwinSyncSse(),
+        expect(await SomeStructTwinSyncSse.staticReturnOkCustomErrorTwinSyncSse(),
             3);
       });
 

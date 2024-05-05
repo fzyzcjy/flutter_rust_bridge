@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests,
+// NOTE: This file is mimicking how a human developer writes tests, 
 // and is auto-generated from `misc_example_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -69,8 +69,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
         abc: AbcTwinSyncSse.c(CTwinSyncSse(c: false)));
     expect((output3 as AbcTwinSyncSse_C).field0.c, false);
 
-    final output4 =
-        await testAbcEnumTwinSyncSse(abc: AbcTwinSyncSse.justInt(1));
+    final output4 = await testAbcEnumTwinSyncSse(abc: AbcTwinSyncSse.justInt(1));
     expect((output4 as AbcTwinSyncSse_JustInt).field0, 1);
   });
 

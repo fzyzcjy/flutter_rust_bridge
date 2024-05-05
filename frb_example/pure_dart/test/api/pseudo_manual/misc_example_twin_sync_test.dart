@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests,
+// NOTE: This file is mimicking how a human developer writes tests, 
 // and is auto-generated from `misc_example_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -24,8 +24,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('dart call handleComplexStruct', () async {
     final arrLen = 5;
-    final complexStructResp =
-        await handleComplexStructTwinSync(s: _createMyTreeNode(arrLen: arrLen));
+    final complexStructResp = await handleComplexStructTwinSync(
+        s: _createMyTreeNode(arrLen: arrLen));
     testComplexStruct(complexStructResp, arrLen: arrLen);
   });
 
@@ -37,8 +37,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test("dart call list_of_primitive_enums", () async {
-    List<WeekdaysTwinSync> days =
-        await listOfPrimitiveEnumsTwinSync(weekdays: WeekdaysTwinSync.values);
+    List<WeekdaysTwinSync> days = await listOfPrimitiveEnumsTwinSync(
+        weekdays: WeekdaysTwinSync.values);
     expect(days, WeekdaysTwinSync.values);
   });
 
@@ -57,16 +57,16 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('test abc', () async {
-    final output1 =
-        await testAbcEnumTwinSync(abc: AbcTwinSync.a(ATwinSync(a: "test")));
+    final output1 = await testAbcEnumTwinSync(
+        abc: AbcTwinSync.a(ATwinSync(a: "test")));
     expect((output1 as AbcTwinSync_A).field0.a, "test");
 
     final output2 =
         await testAbcEnumTwinSync(abc: AbcTwinSync.b(BTwinSync(b: 1)));
     expect((output2 as AbcTwinSync_B).field0.b, 1);
 
-    final output3 =
-        await testAbcEnumTwinSync(abc: AbcTwinSync.c(CTwinSync(c: false)));
+    final output3 = await testAbcEnumTwinSync(
+        abc: AbcTwinSync.c(CTwinSync(c: false)));
     expect((output3 as AbcTwinSync_C).field0.c, false);
 
     final output4 = await testAbcEnumTwinSync(abc: AbcTwinSync.justInt(1));
@@ -102,7 +102,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('dart call handleVecU8', () async {
     final len = 100000;
     expect(
-        await handleVecU8TwinSync(v: Uint8List.fromList(List.filled(len, 127))),
+        await handleVecU8TwinSync(
+            v: Uint8List.fromList(List.filled(len, 127))),
         Uint8List.fromList(List.filled(len * 2, 127)));
   });
 
@@ -146,5 +147,6 @@ MyTreeNodeTwinSync _createMyTreeNode({required int arrLen}) {
 
 MyNestedStructTwinSync _createMyNestedStruct() {
   return MyNestedStructTwinSync(
-      treeNode: _createMyTreeNode(arrLen: 5), weekday: WeekdaysTwinSync.friday);
+      treeNode: _createMyTreeNode(arrLen: 5),
+      weekday: WeekdaysTwinSync.friday);
 }

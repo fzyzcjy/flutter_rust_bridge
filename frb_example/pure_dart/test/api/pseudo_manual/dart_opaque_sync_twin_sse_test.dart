@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests,
+// NOTE: This file is mimicking how a human developer writes tests, 
 // and is auto-generated from `dart_opaque_sync_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -19,7 +19,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('loopback', () {
     var syncBack = syncLoopbackTwinSse(opaque: f);
-    expect(identical(syncOptionLoopbackTwinSse(opaque: syncBack), f), isTrue);
+    expect(
+        identical(syncOptionLoopbackTwinSse(opaque: syncBack), f), isTrue);
     expect(syncOptionLoopbackTwinSse(opaque: null), isNull);
   });
 
@@ -29,12 +30,13 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('drop', () async {
-    expect(
-        syncAcceptDartOpaqueTwinSse(opaque: createLargeList(mb: 200)), 'test');
+    expect(syncAcceptDartOpaqueTwinSse(opaque: createLargeList(mb: 200)),
+        'test');
   });
 
   test('unwrap', () async {
-    expect(unwrapDartOpaqueTwinSse(opaque: createLargeList(mb: 200)), 'Test');
+    expect(
+        unwrapDartOpaqueTwinSse(opaque: createLargeList(mb: 200)), 'Test');
     await expectLater(
         () => panicUnwrapDartOpaqueTwinSse(opaque: createLargeList(mb: 200)),
         throwsA(isA<PanicException>()));

@@ -1,8 +1,8 @@
-// NOTE: This file is mimicking how a human developer writes tests,
+// NOTE: This file is mimicking how a human developer writes tests, 
 // and is auto-generated from `array_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
-import 'package:frb_example_pure_dart/src/rust/api/array.dart'; // FRB_INTERNAL_GENERATOR: {"addCode": "import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/array_twin_sync.dart';"}
+import 'package:frb_example_pure_dart/src/rust/api/array.dart';// FRB_INTERNAL_GENERATOR: {"addCode": "import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/array_twin_sync.dart';"}
 
 import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/array_twin_sync.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
@@ -45,7 +45,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('FeedId', () async {
     final inner = U8Array8.init();
     inner[3] = 3;
-    final FeedIdTwinSync feedId = await returnBoxedFeedIdTwinSync(id: inner);
+    final FeedIdTwinSync feedId =
+        await returnBoxedFeedIdTwinSync(id: inner);
     expect(feedId.field0[3], 3);
     feedId.field0[5] = 5;
     final raw = await returnBoxedRawFeedIdTwinSync(id: feedId);
@@ -57,7 +58,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final inner = I32Array2.init();
     inner[0] = 1;
     inner[1] = 2;
-    final testId = await funcTestIdTwinSync(id: TestIdTwinSync(field0: inner));
+    final testId =
+        await funcTestIdTwinSync(id: TestIdTwinSync(field0: inner));
     expect(testId.field0[0], 1);
     expect(testId.field0[1], 2);
   });
@@ -78,8 +80,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     id2.field0[1] = 30;
     final id3 = TestIdTwinSync(field0: I32Array2.init());
     id3.field0[1] = 40;
-    final x =
-        await nestedIdTwinSync(id: TestIdTwinSyncArray4([id0, id1, id2, id3]));
+    final x = await nestedIdTwinSync(
+        id: TestIdTwinSyncArray4([id0, id1, id2, id3]));
     expect(x[0].field0[1], 10);
     expect(x[1].field0[1], 40);
   });

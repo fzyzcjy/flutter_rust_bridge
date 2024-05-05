@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests,
+// NOTE: This file is mimicking how a human developer writes tests, 
 // and is auto-generated from `rust_opaque_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -159,8 +159,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('opaque field', () async {
     var data = await createNestedOpaqueTwinRustAsyncMoi();
-    await futurizeVoidTwinRustAsyncMoi(
-        runNestedOpaqueTwinRustAsyncMoi(opaque: data));
+    await futurizeVoidTwinRustAsyncMoi(runNestedOpaqueTwinRustAsyncMoi(opaque: data));
 
     expect(
         await runOpaqueTwinRustAsyncMoi(opaque: data.first),
@@ -199,8 +198,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('array', () async {
     var data = await opaqueArrayTwinRustAsyncMoi();
-    await futurizeVoidTwinRustAsyncMoi(
-        opaqueArrayRunTwinRustAsyncMoi(data: data));
+    await futurizeVoidTwinRustAsyncMoi(opaqueArrayRunTwinRustAsyncMoi(data: data));
     data[0].dispose();
 
     expect(
@@ -220,8 +218,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('vec', () async {
     var data = await opaqueVecTwinRustAsyncMoi();
-    await futurizeVoidTwinRustAsyncMoi(
-        opaqueVecRunTwinRustAsyncMoi(data: data));
+    await futurizeVoidTwinRustAsyncMoi(opaqueVecRunTwinRustAsyncMoi(data: data));
     data[0].dispose();
 
     expect(

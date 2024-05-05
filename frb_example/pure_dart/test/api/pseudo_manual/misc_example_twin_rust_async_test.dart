@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests,
+// NOTE: This file is mimicking how a human developer writes tests, 
 // and is auto-generated from `misc_example_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -61,16 +61,15 @@ Future<void> main({bool skipRustLibInit = false}) async {
         abc: AbcTwinRustAsync.a(ATwinRustAsync(a: "test")));
     expect((output1 as AbcTwinRustAsync_A).field0.a, "test");
 
-    final output2 = await testAbcEnumTwinRustAsync(
-        abc: AbcTwinRustAsync.b(BTwinRustAsync(b: 1)));
+    final output2 =
+        await testAbcEnumTwinRustAsync(abc: AbcTwinRustAsync.b(BTwinRustAsync(b: 1)));
     expect((output2 as AbcTwinRustAsync_B).field0.b, 1);
 
     final output3 = await testAbcEnumTwinRustAsync(
         abc: AbcTwinRustAsync.c(CTwinRustAsync(c: false)));
     expect((output3 as AbcTwinRustAsync_C).field0.c, false);
 
-    final output4 =
-        await testAbcEnumTwinRustAsync(abc: AbcTwinRustAsync.justInt(1));
+    final output4 = await testAbcEnumTwinRustAsync(abc: AbcTwinRustAsync.justInt(1));
     expect((output4 as AbcTwinRustAsync_JustInt).field0, 1);
   });
 

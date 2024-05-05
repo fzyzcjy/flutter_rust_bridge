@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests,
+// NOTE: This file is mimicking how a human developer writes tests, 
 // and is auto-generated from `dart_fn_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -28,8 +28,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final callbackCalls = <(String, DemoStructForRustCallDartTwinRustAsync)>[];
     await rustCallDartTwoArgsTwinRustAsync(
         callback: (a, b) => callbackCalls.add((a, b)));
-    expect(callbackCalls,
-        [('a', DemoStructForRustCallDartTwinRustAsync(name: 'b'))]);
+    expect(
+        callbackCalls, [('a', DemoStructForRustCallDartTwinRustAsync(name: 'b'))]);
   });
 
   test('rustCallDartReturnTwinRustAsync', () async {

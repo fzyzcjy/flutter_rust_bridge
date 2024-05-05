@@ -1,8 +1,8 @@
-// NOTE: This file is mimicking how a human developer writes tests,
+// NOTE: This file is mimicking how a human developer writes tests, 
 // and is auto-generated from `mirror_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
-import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/mirror_twin_sync_sse.dart'; // FRB_INTERNAL_GENERATOR: {"removeCode":["import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/mirror_twin_sync_sse_twin_rust_async_sse_twin_rust_async.dart';\n","import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/mirror_twin_sync_sse_twin_rust_async_twin_rust_async.dart';\n","import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/mirror_twin_sync_sse_twin_sse_twin_rust_async.dart';\n","import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/mirror_twin_sync_sse_twin_sync_sse_twin_rust_async.dart';\n","import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/mirror_twin_sync_sse_twin_sync_twin_rust_async.dart';\n"],"addCode":"import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/mirror_twin_sync_sse_twin_rust_async.dart';"}
+import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/mirror_twin_sync_sse.dart';// FRB_INTERNAL_GENERATOR: {"removeCode":["import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/mirror_twin_sync_sse_twin_rust_async_sse_twin_rust_async.dart';\n","import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/mirror_twin_sync_sse_twin_rust_async_twin_rust_async.dart';\n","import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/mirror_twin_sync_sse_twin_sse_twin_rust_async.dart';\n","import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/mirror_twin_sync_sse_twin_sync_sse_twin_rust_async.dart';\n","import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/mirror_twin_sync_sse_twin_sync_twin_rust_async.dart';\n"],"addCode":"import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/mirror_twin_sync_sse_twin_rust_async.dart';"}
 
 // ignore_for_file: duplicate_import
 
@@ -58,8 +58,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('dart call mirror_tuple_stream', () async {
-    final (settings, rawStringEnum) =
-        await mirrorTupleStreamTwinRustAsync().first;
+    final (settings, rawStringEnum) = await mirrorTupleStreamTwinRustAsync().first;
     _testAppSettings(settings);
     expect(rawStringEnum is RawStringEnumMirrored_Raw, true);
     expect((rawStringEnum as RawStringEnumMirrored_Raw).field0.value, "test");

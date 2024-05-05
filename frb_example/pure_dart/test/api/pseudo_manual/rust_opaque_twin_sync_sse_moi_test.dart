@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests,
+// NOTE: This file is mimicking how a human developer writes tests, 
 // and is auto-generated from `rust_opaque_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -159,8 +159,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('opaque field', () async {
     var data = await createNestedOpaqueTwinSyncSseMoi();
-    await futurizeVoidTwinSyncSseMoi(
-        runNestedOpaqueTwinSyncSseMoi(opaque: data));
+    await futurizeVoidTwinSyncSseMoi(runNestedOpaqueTwinSyncSseMoi(opaque: data));
 
     expect(
         await runOpaqueTwinSyncSseMoi(opaque: data.first),

@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests,
+// NOTE: This file is mimicking how a human developer writes tests, 
 // and is auto-generated from `map_and_set_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -60,22 +60,24 @@ Future<void> main({bool skipRustLibInit = false}) async {
   ]);
 
   addTestsIdentityFunctionCall(
-      funcHashMapStringSimpleEnumTwinSse, <Map<String, EnumSimpleTwinSse>>[
-    {},
-    {'a': EnumSimpleTwinSse.a},
-    {
-      'a': EnumSimpleTwinSse.a,
-      'b': EnumSimpleTwinSse.b,
-    },
-  ]);
+      funcHashMapStringSimpleEnumTwinSse,
+      <Map<String, EnumSimpleTwinSse>>[
+        {},
+        {'a': EnumSimpleTwinSse.a},
+        {
+          'a': EnumSimpleTwinSse.a,
+          'b': EnumSimpleTwinSse.b,
+        },
+      ]);
 
   addTestsIdentityFunctionCall(
-      funcHashMapStringComplexEnumTwinSse, <Map<String, KitchenSinkTwinSse>>[
-    {},
-    {'a': KitchenSinkTwinSse.empty()},
-    {
-      'a': KitchenSinkTwinSse.buffer(Uint8List.fromList([10, 20])),
-      'b': KitchenSinkTwinSse.nested(42),
-    },
-  ]);
+      funcHashMapStringComplexEnumTwinSse,
+      <Map<String, KitchenSinkTwinSse>>[
+        {},
+        {'a': KitchenSinkTwinSse.empty()},
+        {
+          'a': KitchenSinkTwinSse.buffer(Uint8List.fromList([10, 20])),
+          'b': KitchenSinkTwinSse.nested(42),
+        },
+      ]);
 }

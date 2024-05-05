@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests,
+// NOTE: This file is mimicking how a human developer writes tests, 
 // and is auto-generated from `exception_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -99,14 +99,15 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
       test('Throw CustomStructError static method', () async {
         await expectLater(
-            () async =>
-                CustomStructTwinSync.staticReturnCustomStructErrorTwinSync(),
+            () async => CustomStructTwinSync
+                .staticReturnCustomStructErrorTwinSync(),
             throwsA(isA<CustomStructErrorAnotherTwinSync>()));
       });
 
       test('Do not throw CustomStructError static method', () async {
         expect(
-            await CustomStructTwinSync.staticReturnCustomStructOkTwinSync(), 3);
+            await CustomStructTwinSync.staticReturnCustomStructOkTwinSync(),
+            3);
       });
 
       test('Throw CustomNestedError1', () async {
@@ -143,19 +144,22 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
       test('Throw CustomError static method', () async {
         await expectLater(
-            () async => SomeStructTwinSync.staticReturnErrCustomErrorTwinSync(),
+            () async =>
+                SomeStructTwinSync.staticReturnErrCustomErrorTwinSync(),
             throwsA(isA<CustomErrorTwinSync>()));
       });
 
       test('Throw CustomError static method, verifies implements Frb',
           () async {
         await expectLater(
-            () async => SomeStructTwinSync.staticReturnErrCustomErrorTwinSync(),
+            () async =>
+                SomeStructTwinSync.staticReturnErrCustomErrorTwinSync(),
             throwsA(isA<FrbException>()));
       });
 
       test('Do not throw CustomError static method', () async {
-        expect(await SomeStructTwinSync.staticReturnOkCustomErrorTwinSync(), 3);
+        expect(await SomeStructTwinSync.staticReturnOkCustomErrorTwinSync(),
+            3);
       });
 
       test('Do not throw CustomError', () async {

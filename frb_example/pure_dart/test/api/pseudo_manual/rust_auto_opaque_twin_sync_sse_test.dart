@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests,
+// NOTE: This file is mimicking how a human developer writes tests, 
 // and is auto-generated from `rust_auto_opaque_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -166,8 +166,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
       final a = await rustAutoOpaqueReturnOwnTwinSyncSse(initial: 10);
       final b = await rustAutoOpaqueReturnOwnTwinSyncSse(initial: 20);
 
-      await futurizeVoidTwinSyncSse(
-          rustAutoOpaqueTwoArgsTwinSyncSse(a: a, b: b));
+      await futurizeVoidTwinSyncSse(rustAutoOpaqueTwoArgsTwinSyncSse(a: a, b: b));
     });
 
     test('call rustAutoOpaqueNormalAndOpaqueArgTwinSyncSse', () async {
@@ -194,9 +193,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   group('trait object', () {
     Future<void> _body(BoxHelloTraitTwinSyncSse obj, String expect) async {
-      await futurizeVoidTwinSyncSse(
-          rustAutoOpaqueTraitObjectArgBorrowTwinSyncSse(
-              arg: obj, expect: expect));
+      await futurizeVoidTwinSyncSse(rustAutoOpaqueTraitObjectArgBorrowTwinSyncSse(
+          arg: obj, expect: expect));
       await futurizeVoidTwinSyncSse(
           rustAutoOpaqueTraitObjectArgMutBorrowTwinSyncSse(
               arg: obj, expect: expect));
@@ -220,8 +218,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     await futurizeVoidTwinSyncSse(
         NonCloneSimpleTwinSyncSse.staticMethodArgBorrowTwinSyncSse(arg: obj));
     await futurizeVoidTwinSyncSse(
-        NonCloneSimpleTwinSyncSse.staticMethodArgMutBorrowTwinSyncSse(
-            arg: obj));
+        NonCloneSimpleTwinSyncSse.staticMethodArgMutBorrowTwinSyncSse(arg: obj));
     await futurizeVoidTwinSyncSse(
         NonCloneSimpleTwinSyncSse.staticMethodArgOwnTwinSyncSse(arg: obj));
   });

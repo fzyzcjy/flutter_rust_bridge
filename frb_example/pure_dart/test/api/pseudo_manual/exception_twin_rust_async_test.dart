@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests,
+// NOTE: This file is mimicking how a human developer writes tests, 
 // and is auto-generated from `exception_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -42,8 +42,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
           .having((x) => x.message, 'message', startsWith('deliberate error'));
       if (!kIsWeb)
         matcher = matcher.having((x) => x.backtrace, 'backtrace', isNotEmpty);
-      await expectLater(() async => customEnumErrorReturnErrorTwinRustAsync(),
-          throwsA(matcher));
+      await expectLater(
+          () async => customEnumErrorReturnErrorTwinRustAsync(), throwsA(matcher));
     });
 
     addTestsErrorFunctionCall(
@@ -106,8 +106,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
       test('Do not throw CustomStructError static method', () async {
         expect(
-            await CustomStructTwinRustAsync
-                .staticReturnCustomStructOkTwinRustAsync(),
+            await CustomStructTwinRustAsync.staticReturnCustomStructOkTwinRustAsync(),
             3);
       });
 
@@ -130,14 +129,12 @@ Future<void> main({bool skipRustLibInit = false}) async {
       });
 
       test('Throw CustomError variant 0', () async {
-        await expectLater(
-            () async => returnErrorVariantTwinRustAsync(variant: 0),
+        await expectLater(() async => returnErrorVariantTwinRustAsync(variant: 0),
             throwsA(isA<CustomErrorTwinRustAsync>()));
       });
 
       test('Throw CustomError variant 1', () async {
-        await expectLater(
-            () async => returnErrorVariantTwinRustAsync(variant: 1),
+        await expectLater(() async => returnErrorVariantTwinRustAsync(variant: 1),
             throwsA(isA<CustomErrorTwinRustAsync>()));
       });
 
@@ -147,23 +144,21 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
       test('Throw CustomError static method', () async {
         await expectLater(
-            () async => SomeStructTwinRustAsync
-                .staticReturnErrCustomErrorTwinRustAsync(),
+            () async =>
+                SomeStructTwinRustAsync.staticReturnErrCustomErrorTwinRustAsync(),
             throwsA(isA<CustomErrorTwinRustAsync>()));
       });
 
       test('Throw CustomError static method, verifies implements Frb',
           () async {
         await expectLater(
-            () async => SomeStructTwinRustAsync
-                .staticReturnErrCustomErrorTwinRustAsync(),
+            () async =>
+                SomeStructTwinRustAsync.staticReturnErrCustomErrorTwinRustAsync(),
             throwsA(isA<FrbException>()));
       });
 
       test('Do not throw CustomError static method', () async {
-        expect(
-            await SomeStructTwinRustAsync
-                .staticReturnOkCustomErrorTwinRustAsync(),
+        expect(await SomeStructTwinRustAsync.staticReturnOkCustomErrorTwinRustAsync(),
             3);
       });
 
@@ -197,15 +192,13 @@ Future<void> main({bool skipRustLibInit = false}) async {
       });
 
       test('Throw anyhow error', () async {
-        await expectLater(() async => throwAnyhowTwinRustAsync(),
-            throwsA(isA<FrbException>()));
+        await expectLater(
+            () async => throwAnyhowTwinRustAsync(), throwsA(isA<FrbException>()));
       });
 
       test('Function with custom result panics', () async {
-        await expectRustPanicRaw(
-            () async => panicWithCustomResultTwinRustAsync(),
-            'TwinRustAsync',
-            throwsA(isA<FrbException>()));
+        await expectRustPanicRaw(() async => panicWithCustomResultTwinRustAsync(),
+            'TwinRustAsync', throwsA(isA<FrbException>()));
       });
 
       test('Stream sink throw anyhow error', () async {

@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests,
+// NOTE: This file is mimicking how a human developer writes tests, 
 // and is auto-generated from `rust_auto_opaque_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -180,21 +180,24 @@ Future<void> main({bool skipRustLibInit = false}) async {
   group('complex type signatures', () {
     test('plus sign', () async {
       final obj = await rustAutoOpaquePlusSignReturnTwinSync();
-      await futurizeVoidTwinSync(rustAutoOpaquePlusSignArgTwinSync(arg: obj));
+      await futurizeVoidTwinSync(
+          rustAutoOpaquePlusSignArgTwinSync(arg: obj));
     });
 
     test('callable', () async {
       final obj = await rustAutoOpaqueCallableReturnTwinSync();
-      await futurizeVoidTwinSync(rustAutoOpaqueCallableArgTwinSync(arg: obj));
+      await futurizeVoidTwinSync(
+          rustAutoOpaqueCallableArgTwinSync(arg: obj));
     });
   });
 
   group('trait object', () {
     Future<void> _body(BoxHelloTraitTwinSync obj, String expect) async {
-      await futurizeVoidTwinSync(
-          rustAutoOpaqueTraitObjectArgBorrowTwinSync(arg: obj, expect: expect));
-      await futurizeVoidTwinSync(rustAutoOpaqueTraitObjectArgMutBorrowTwinSync(
+      await futurizeVoidTwinSync(rustAutoOpaqueTraitObjectArgBorrowTwinSync(
           arg: obj, expect: expect));
+      await futurizeVoidTwinSync(
+          rustAutoOpaqueTraitObjectArgMutBorrowTwinSync(
+              arg: obj, expect: expect));
       await futurizeVoidTwinSync(
           rustAutoOpaqueTraitObjectArgOwnTwinSync(arg: obj, expect: expect));
     }
@@ -210,7 +213,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('static method', () async {
-    final obj = await NonCloneSimpleTwinSync.staticMethodReturnOwnTwinSync();
+    final obj =
+        await NonCloneSimpleTwinSync.staticMethodReturnOwnTwinSync();
     await futurizeVoidTwinSync(
         NonCloneSimpleTwinSync.staticMethodArgBorrowTwinSync(arg: obj));
     await futurizeVoidTwinSync(
@@ -264,7 +268,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('enum opaque type', () async {
     final obj = await rustAutoOpaqueEnumReturnOwnTwinSync();
-    await futurizeVoidTwinSync(rustAutoOpaqueEnumArgBorrowTwinSync(arg: obj));
+    await futurizeVoidTwinSync(
+        rustAutoOpaqueEnumArgBorrowTwinSync(arg: obj));
   });
 
   test('stream sink', () async {
@@ -340,7 +345,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   group('borrow + borrow', () {
     test('when same object', () async {
       final obj = await rustAutoOpaqueReturnOwnTwinSync(initial: 100);
-      expect(await rustAutoOpaqueBorrowAndBorrowTwinSync(a: obj, b: obj), 200);
+      expect(
+          await rustAutoOpaqueBorrowAndBorrowTwinSync(a: obj, b: obj), 200);
     });
 
     test('when different object', () async {

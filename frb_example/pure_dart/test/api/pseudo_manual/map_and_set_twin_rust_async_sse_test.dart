@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests,
+// NOTE: This file is mimicking how a human developer writes tests, 
 // and is auto-generated from `map_and_set_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -14,8 +14,7 @@ import '../../test_utils.dart';
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
-  addTestsIdentityFunctionCall(
-      funcHashMapI32I32TwinRustAsyncSse, <Map<int, int>>[
+  addTestsIdentityFunctionCall(funcHashMapI32I32TwinRustAsyncSse, <Map<int, int>>[
     {},
     {10: 20},
     {10: 20, 30: 40},

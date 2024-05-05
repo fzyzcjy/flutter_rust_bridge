@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests,
+// NOTE: This file is mimicking how a human developer writes tests, 
 // and is auto-generated from `structure_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -10,10 +10,10 @@ import '../../test_utils.dart';
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
-  addTestsIdentityFunctionCall(funcStructWithZeroFieldTwinRustAsyncSse,
-      [StructWithZeroFieldTwinRustAsyncSse()]);
-  addTestsIdentityFunctionCall(funcStructWithOneFieldTwinRustAsyncSse,
-      [StructWithOneFieldTwinRustAsyncSse(a: 42)]);
+  addTestsIdentityFunctionCall(
+      funcStructWithZeroFieldTwinRustAsyncSse, [StructWithZeroFieldTwinRustAsyncSse()]);
+  addTestsIdentityFunctionCall(
+      funcStructWithOneFieldTwinRustAsyncSse, [StructWithOneFieldTwinRustAsyncSse(a: 42)]);
   addTestsIdentityFunctionCall(funcStructWithTwoFieldTwinRustAsyncSse,
       [StructWithTwoFieldTwinRustAsyncSse(a: 10, b: 20)]);
   addTestsIdentityFunctionCall(funcTupleStructWithOneFieldTwinRustAsyncSse,

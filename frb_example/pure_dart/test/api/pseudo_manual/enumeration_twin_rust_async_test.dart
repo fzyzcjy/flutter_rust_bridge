@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests,
+// NOTE: This file is mimicking how a human developer writes tests, 
 // and is auto-generated from `enumeration_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -56,16 +56,14 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
     test('dart call handleEnumStruct', () async {
       expect(
-          await handleEnumStructTwinRustAsync(
-              val: KitchenSinkTwinRustAsync_Empty()),
+          await handleEnumStructTwinRustAsync(val: KitchenSinkTwinRustAsync_Empty()),
           KitchenSinkTwinRustAsync_Empty());
       expect(
         await handleEnumStructTwinRustAsync(
           val: KitchenSinkTwinRustAsync_Primitives(
               int32: 0, float64: 1, boolean: false),
         ),
-        KitchenSinkTwinRustAsync_Primitives(
-            int32: 1, float64: 2, boolean: true),
+        KitchenSinkTwinRustAsync_Primitives(int32: 1, float64: 2, boolean: true),
       );
       expect(
         await handleEnumStructTwinRustAsync(
@@ -86,8 +84,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
         await handleEnumStructTwinRustAsync(
             val: const KitchenSinkTwinRustAsync.nested(
                 0, KitchenSinkTwinRustAsync.empty())),
-        const KitchenSinkTwinRustAsync.nested(
-            1, KitchenSinkTwinRustAsync.empty()),
+        const KitchenSinkTwinRustAsync.nested(1, KitchenSinkTwinRustAsync.empty()),
       );
     });
 
@@ -104,16 +101,14 @@ Future<void> main({bool skipRustLibInit = false}) async {
       );
       final skipMinified =
           releaseMode ? skipWeb('Minified names cannot be compared.') : null;
-      expect(
-          (SpeedTwinRustAsync_Unknown).toString(), 'SpeedTwinRustAsync_Unknown',
+      expect((SpeedTwinRustAsync_Unknown).toString(), 'SpeedTwinRustAsync_Unknown',
           skip: skipMinified);
       expect((SpeedTwinRustAsync_GPS).toString(), 'SpeedTwinRustAsync_GPS',
           skip: skipMinified);
-      expect((DistanceTwinRustAsync_Unknown).toString(),
-          'DistanceTwinRustAsync_Unknown',
-          skip: skipMinified);
       expect(
-          (DistanceTwinRustAsync_Map).toString(), 'DistanceTwinRustAsync_Map',
+          (DistanceTwinRustAsync_Unknown).toString(), 'DistanceTwinRustAsync_Unknown',
+          skip: skipMinified);
+      expect((DistanceTwinRustAsync_Map).toString(), 'DistanceTwinRustAsync_Map',
           skip: skipMinified);
     });
   });

@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests,
+// NOTE: This file is mimicking how a human developer writes tests, 
 // and is auto-generated from `enumeration_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -49,12 +49,14 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
     test('dart call handleEnumParameter', () async {
       expect(
-          await handleEnumParameterTwinSse(weekday: WeekdaysTwinSse.saturday),
+          await handleEnumParameterTwinSse(
+              weekday: WeekdaysTwinSse.saturday),
           WeekdaysTwinSse.saturday);
     });
 
     test('dart call handleEnumStruct', () async {
-      expect(await handleEnumStructTwinSse(val: KitchenSinkTwinSse_Empty()),
+      expect(
+          await handleEnumStructTwinSse(val: KitchenSinkTwinSse_Empty()),
           KitchenSinkTwinSse_Empty());
       expect(
         await handleEnumStructTwinSse(
@@ -80,8 +82,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
       );
       expect(
         await handleEnumStructTwinSse(
-            val:
-                const KitchenSinkTwinSse.nested(0, KitchenSinkTwinSse.empty())),
+            val: const KitchenSinkTwinSse.nested(
+                0, KitchenSinkTwinSse.empty())),
         const KitchenSinkTwinSse.nested(1, KitchenSinkTwinSse.empty()),
       );
     });
@@ -103,7 +105,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
           skip: skipMinified);
       expect((SpeedTwinSse_GPS).toString(), 'SpeedTwinSse_GPS',
           skip: skipMinified);
-      expect((DistanceTwinSse_Unknown).toString(), 'DistanceTwinSse_Unknown',
+      expect(
+          (DistanceTwinSse_Unknown).toString(), 'DistanceTwinSse_Unknown',
           skip: skipMinified);
       expect((DistanceTwinSse_Map).toString(), 'DistanceTwinSse_Map',
           skip: skipMinified);

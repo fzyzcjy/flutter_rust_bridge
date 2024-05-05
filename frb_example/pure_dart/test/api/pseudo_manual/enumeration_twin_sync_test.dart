@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests,
+// NOTE: This file is mimicking how a human developer writes tests, 
 // and is auto-generated from `enumeration_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -49,12 +49,14 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
     test('dart call handleEnumParameter', () async {
       expect(
-          await handleEnumParameterTwinSync(weekday: WeekdaysTwinSync.saturday),
+          await handleEnumParameterTwinSync(
+              weekday: WeekdaysTwinSync.saturday),
           WeekdaysTwinSync.saturday);
     });
 
     test('dart call handleEnumStruct', () async {
-      expect(await handleEnumStructTwinSync(val: KitchenSinkTwinSync_Empty()),
+      expect(
+          await handleEnumStructTwinSync(val: KitchenSinkTwinSync_Empty()),
           KitchenSinkTwinSync_Empty());
       expect(
         await handleEnumStructTwinSync(
@@ -103,7 +105,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
           skip: skipMinified);
       expect((SpeedTwinSync_GPS).toString(), 'SpeedTwinSync_GPS',
           skip: skipMinified);
-      expect((DistanceTwinSync_Unknown).toString(), 'DistanceTwinSync_Unknown',
+      expect(
+          (DistanceTwinSync_Unknown).toString(), 'DistanceTwinSync_Unknown',
           skip: skipMinified);
       expect((DistanceTwinSync_Map).toString(), 'DistanceTwinSync_Map',
           skip: skipMinified);
