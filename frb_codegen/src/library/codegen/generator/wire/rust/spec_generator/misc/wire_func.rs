@@ -7,7 +7,6 @@ use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
     ExternFunc, ExternFuncParam,
 };
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
-use crate::codegen::ir::func::OwnershipMode;
 use crate::codegen::ir::func::{IrFunc, IrFuncMode, IrFuncOwnerInfo};
 use crate::codegen::ir::ty::IrType;
 use crate::if_then_some;

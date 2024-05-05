@@ -14,15 +14,20 @@ pub(crate) fn generate_code_inner_decode(func: &IrFunc) -> String {
                 name = get_variable_name(field)
             )
         })
-        .join();
+        .join("");
 
     let var_names = (interest_fields.iter())
         .map(|(field, _ty)| format!("api_{name}", name = get_variable_name(field)))
         .join(", ");
 
     let match_arms = (interest_fields.iter().enumerate())
-        .map(|(index, (field, ty))| format!("{index} => {},\n", generate_decode_statement(field)))
-        .join();
+        .map(|(index, (field, ty))| {
+            format!(
+                "{index} => {},\n",
+                generate_decode_statement(func, field, ty)
+            )
+        })
+        .join("");
 
     let unwraps = (interest_fields.iter())
         .map(|(field, _ty)| {
@@ -31,7 +36,7 @@ pub(crate) fn generate_code_inner_decode(func: &IrFunc) -> String {
                 name = get_variable_name(field)
             )
         })
-        .join();
+        .join("");
 
     format!(
         "
@@ -47,8 +52,12 @@ pub(crate) fn generate_code_inner_decode(func: &IrFunc) -> String {
     )
 }
 
-fn generate_decode_statement(field: &IrFuncInput) -> Option<String> {
-    let mode = o.ownership_mode.to_string().to_case(Case::Snake);
+fn generate_decode_statement(
+    func: &IrFunc,
+    field: &IrFuncInput,
+    ty: &IrTypeRustAutoOpaque,
+) -> String {
+    let mode = ty.ownership_mode.to_string().to_case(Case::Snake);
     format!(
         "api_{name}_decoded = Some(api_{name}.rust_auto_opaque_decode_{syncness}_{mode}(){maybe_await})",
         name = get_variable_name(field),
@@ -60,9 +69,9 @@ fn generate_decode_statement(field: &IrFuncInput) -> Option<String> {
 fn filter_interest_fields(func: &IrFunc) -> Vec<(&IrFuncInput, &IrTypeRustAutoOpaque)> {
     (func.inputs.iter())
         .filter_map(|field| {
-            if let IrType::RustAutoOpaque(o) = &field.inner.ty {
-                if o.ownership_mode != OwnershipMode::Owned {
-                    Some((field, o))
+            if let IrType::RustAutoOpaque(ty) = &field.inner.ty {
+                if ty.ownership_mode != OwnershipMode::Owned {
+                    Some((field, ty))
                 } else {
                     None
                 }
@@ -73,6 +82,6 @@ fn filter_interest_fields(func: &IrFunc) -> Vec<(&IrFuncInput, &IrTypeRustAutoOp
         .collect_vec()
 }
 
-fn get_variable_name(field: &IrFuncInput) -> String {
+fn get_variable_name(field: &IrFuncInput) -> &str {
     field.inner.name.rust_style()
 }
