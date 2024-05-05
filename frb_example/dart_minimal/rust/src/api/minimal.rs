@@ -8,31 +8,3 @@ pub fn init_app() {
 pub fn minimal_adder(a: i32, b: i32) -> i32 {
     a + b
 }
-
-#[frb(opaque)]
-pub struct StructOne {}
-
-impl StructOne {
-    #[frb(sync)]
-    pub fn new() -> Self {
-        Self {}
-    }
-}
-
-#[frb(opaque)]
-pub struct StructTwo {}
-
-impl StructTwo {
-    #[frb(sync)]
-    pub fn new() -> Self {
-        Self {}
-    }
-}
-
-pub fn f(
-    one_a: &mut StructOne,
-    one_b: &mut StructOne,
-    two_a: &mut StructTwo,
-    two_b: &mut StructTwo,
-) {
-}
