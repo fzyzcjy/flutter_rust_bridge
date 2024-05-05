@@ -355,23 +355,12 @@ pub fn rust_auto_opaque_explicit_return_twin_normal(
 
 // ================ deadlock detection ===================
 
-pub fn rust_auto_opaque_apple_orange_twin_normal(
+pub fn rust_auto_opaque_sleep_twin_normal(
     apple: &mut NonCloneSimpleTwinNormal,
     orange: &mut NonCloneSimpleTwinNormal,
 ) -> i32 {
-    let _ = (apple, orange);
     sleep(Duration::from_millis(1000));
-    0
-}
-
-// Deliberate reverse order to test a kind of deadlock
-pub fn rust_auto_opaque_orange_apple_twin_normal(
-    orange: &mut NonCloneSimpleTwinNormal,
-    apple: &mut NonCloneSimpleTwinNormal,
-) -> i32 {
-    let _ = (apple, orange);
-    sleep(Duration::from_millis(1000));
-    0
+    apple.inner + orange.inner
 }
 
 // ================ misc ===================
