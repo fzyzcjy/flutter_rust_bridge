@@ -10,6 +10,9 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 }
 
 #[frb(opaque)]
-pub struct MyStruct {}
+pub struct StructOne {}
 
-pub fn f(a: &mut MyStruct, b: &mut MyStruct) {}
+#[frb(opaque)]
+pub struct StructTwo {}
+
+pub fn f(a: &mut StructOne, b: &mut StructTwo) {}
