@@ -71,7 +71,12 @@ abstract class RustLibApi extends BaseApi {
 
   StructTwo structTwoNew({dynamic hint});
 
-  Future<void> f({required StructOne a, required StructTwo b, dynamic hint});
+  Future<void> f(
+      {required StructOne oneA,
+      required StructOne oneB,
+      required StructTwo twoA,
+      required StructTwo twoB,
+      dynamic hint});
 
   Future<void> initApp({dynamic hint});
 
@@ -151,14 +156,23 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<void> f({required StructOne a, required StructTwo b, dynamic hint}) {
+  Future<void> f(
+      {required StructOne oneA,
+      required StructOne oneB,
+      required StructTwo twoA,
+      required StructTwo twoB,
+      dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOne(
-            a, serializer);
+            oneA, serializer);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOne(
+            oneB, serializer);
         sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwo(
-            b, serializer);
+            twoA, serializer);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwo(
+            twoB, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 3, port: port_);
       },
@@ -167,7 +181,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: null,
       ),
       constMeta: kFConstMeta,
-      argValues: [a, b],
+      argValues: [oneA, oneB, twoA, twoB],
       apiImpl: this,
       hint: hint,
     ));
@@ -175,7 +189,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kFConstMeta => const TaskConstMeta(
         debugName: "f",
-        argNames: ["a", "b"],
+        argNames: ["oneA", "oneB", "twoA", "twoB"],
       );
 
   @override

@@ -29,4 +29,10 @@ impl StructTwo {
     }
 }
 
-pub fn f(a: &mut StructOne, b: &mut StructTwo) {}
+pub fn f(
+    one_a: &mut StructOne,
+    one_b: &mut StructOne,
+    two_a: &mut StructTwo,
+    two_b: &mut StructTwo,
+) {
+}

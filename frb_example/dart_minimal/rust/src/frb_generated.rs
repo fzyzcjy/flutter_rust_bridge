@@ -118,36 +118,67 @@ fn wire_f_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_a = <RustOpaqueMoi<
+            let api_one_a = <RustOpaqueMoi<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOne>,
             >>::sse_decode(&mut deserializer);
-            let api_b = <RustOpaqueMoi<
+            let api_one_b = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOne>,
+            >>::sse_decode(&mut deserializer);
+            let api_two_a = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructTwo>,
+            >>::sse_decode(&mut deserializer);
+            let api_two_b = <RustOpaqueMoi<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructTwo>,
             >>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
-                    let mut api_a_decoded = None;
-                    let mut api_b_decoded = None;
+                    let mut api_one_a_decoded = None;
+                    let mut api_one_b_decoded = None;
+                    let mut api_two_a_decoded = None;
+                    let mut api_two_b_decoded = None;
 
                     let decode_indices_ =
                         flutter_rust_bridge::for_generated::rust_auto_opaque_decode_compute_order(
                             vec![
-                                api_a.rust_auto_opaque_lock_order_info(0, true),
-                                api_b.rust_auto_opaque_lock_order_info(1, true),
+                                api_one_a.rust_auto_opaque_lock_order_info(0, true),
+                                api_one_b.rust_auto_opaque_lock_order_info(1, true),
+                                api_two_a.rust_auto_opaque_lock_order_info(2, true),
+                                api_two_b.rust_auto_opaque_lock_order_info(3, true),
                             ],
                         );
                     for i in decode_indices_ {
                         match i {
-                            0 => api_a_decoded = Some(api_a.rust_auto_opaque_decode_sync_ref_mut()),
-                            1 => api_b_decoded = Some(api_b.rust_auto_opaque_decode_sync_ref_mut()),
+                            0 => {
+                                api_one_a_decoded =
+                                    Some(api_one_a.rust_auto_opaque_decode_sync_ref_mut())
+                            }
+                            1 => {
+                                api_one_b_decoded =
+                                    Some(api_one_b.rust_auto_opaque_decode_sync_ref_mut())
+                            }
+                            2 => {
+                                api_two_a_decoded =
+                                    Some(api_two_a.rust_auto_opaque_decode_sync_ref_mut())
+                            }
+                            3 => {
+                                api_two_b_decoded =
+                                    Some(api_two_b.rust_auto_opaque_decode_sync_ref_mut())
+                            }
                             _ => unreachable!(),
                         }
                     }
-                    let mut api_a = api_a_decoded.unwrap();
-                    let mut api_b = api_b_decoded.unwrap();
+                    let mut api_one_a = api_one_a_decoded.unwrap();
+                    let mut api_one_b = api_one_b_decoded.unwrap();
+                    let mut api_two_a = api_two_a_decoded.unwrap();
+                    let mut api_two_b = api_two_b_decoded.unwrap();
 
-                    Result::<_, ()>::Ok(crate::api::minimal::f(&mut api_a, &mut api_b))
+                    Result::<_, ()>::Ok(crate::api::minimal::f(
+                        &mut api_one_a,
+                        &mut api_one_b,
+                        &mut api_two_a,
+                        &mut api_two_b,
+                    ))
                 })())
             }
         },

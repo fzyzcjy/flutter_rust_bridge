@@ -16,8 +16,11 @@ Future<void> main() async {
   print('Action: Configure tests (end)');
 
   test('hi', () async {
-    final a = StructOne();
-    final b = StructTwo();
-    await f(a: a, b: b);
+    final oneA = StructOne();
+    final oneB = StructOne();
+    final twoA = StructTwo();
+    final twoB = StructTwo();
+    await f(oneA: oneA, oneB: oneB, twoA: twoA, twoB: twoB);
+    await f(oneA: oneA, oneB: oneB, twoA: twoA, twoB: twoA);
   });
 }
