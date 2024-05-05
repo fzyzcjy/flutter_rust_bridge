@@ -12,26 +12,8 @@ Future<int> minimalAdder({required int a, required int b, dynamic hint}) =>
 Future<MyStruct> f({required MyStruct a, dynamic hint}) =>
     RustLib.instance.api.f(a: a, hint: hint);
 
-class AnotherStruct {
-  final String? template;
-
-  const AnotherStruct({
-    this.template,
-  });
-
-  @override
-  int get hashCode => template.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is AnotherStruct &&
-          runtimeType == other.runtimeType &&
-          template == other.template;
-}
-
 class MyStruct {
-  final AnotherStruct template;
+  final int template;
 
   const MyStruct({
     required this.template,
