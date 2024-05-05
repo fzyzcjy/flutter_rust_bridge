@@ -8,3 +8,23 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<int> minimalAdder({required int a, required int b, dynamic hint}) =>
     RustLib.instance.api.minimalAdder(a: a, b: b, hint: hint);
+
+Future<MyStruct> f({dynamic hint}) => RustLib.instance.api.f(hint: hint);
+
+class MyStruct {
+  final int template;
+
+  const MyStruct({
+    required this.template,
+  });
+
+  @override
+  int get hashCode => template.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MyStruct &&
+          runtimeType == other.runtimeType &&
+          template == other.template;
+}
