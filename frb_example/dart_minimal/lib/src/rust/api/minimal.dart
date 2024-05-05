@@ -28,6 +28,9 @@ class StructOne extends RustOpaque {
     rustArcDecrementStrongCountPtr:
         RustLib.instance.api.rust_arc_decrement_strong_count_StructOnePtr,
   );
+
+  factory StructOne({dynamic hint}) =>
+      RustLib.instance.api.structOneNew(hint: hint);
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructTwo>>
@@ -46,4 +49,7 @@ class StructTwo extends RustOpaque {
     rustArcDecrementStrongCountPtr:
         RustLib.instance.api.rust_arc_decrement_strong_count_StructTwoPtr,
   );
+
+  factory StructTwo({dynamic hint}) =>
+      RustLib.instance.api.structTwoNew(hint: hint);
 }
