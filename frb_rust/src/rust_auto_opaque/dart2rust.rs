@@ -39,7 +39,7 @@ impl<T, A: BaseArc<RustAutoOpaqueInner<T>>> RustAutoOpaqueBase<T, A> {
         RustAutoOpaqueLockOrderInfo {
             index,
             mutable,
-            lock_order: self.order,
+            object_order: self.order,
         }
     }
 }
@@ -47,7 +47,7 @@ impl<T, A: BaseArc<RustAutoOpaqueInner<T>>> RustAutoOpaqueBase<T, A> {
 pub struct RustAutoOpaqueLockOrderInfo {
     index: usize,
     mutable: bool,
-    lock_order: RustAutoOpaqueOrder,
+    object_order: RustAutoOpaqueOrder,
 }
 
 pub fn rust_auto_opaque_encode<T, A: BaseArc<RustAutoOpaqueInner<T>>>(
@@ -61,7 +61,7 @@ pub fn rust_auto_opaque_decode_compute_order(
 ) -> Vec<usize> {
     let sorted_infos = {
         let mut x = infos;
-        x.sort_unstable_by_key(|info| info.lock_order);
+        x.sort_unstable_by_key(|info| info.object_order);
         x
     };
 
@@ -86,6 +86,79 @@ mod tests {
 
     #[test]
     fn test_check_no_mut_multi_borrow() {
-        check_no_mut_multi_borrow(&[()])
+        assert!(check_no_mut_multi_borrow(&[]));
+
+        for mutable in [false, true] {
+            assert!(check_no_mut_multi_borrow(&[RustAutoOpaqueLockOrderInfo {
+                index: 0,
+                mutable,
+                object_order: RustAutoOpaqueOrder(100),
+            }]));
+        }
+
+        assert!(check_no_mut_multi_borrow(&[
+            RustAutoOpaqueLockOrderInfo {
+                index: 0,
+                mutable: false,
+                object_order: RustAutoOpaqueOrder(100),
+            },
+            RustAutoOpaqueLockOrderInfo {
+                index: 1,
+                mutable: false,
+                object_order: RustAutoOpaqueOrder(100),
+            }
+        ]));
+
+        assert!(!check_no_mut_multi_borrow(&[
+            RustAutoOpaqueLockOrderInfo {
+                index: 0,
+                mutable: true,
+                object_order: RustAutoOpaqueOrder(100),
+            },
+            RustAutoOpaqueLockOrderInfo {
+                index: 1,
+                mutable: false,
+                object_order: RustAutoOpaqueOrder(100),
+            }
+        ]));
+
+        assert!(!check_no_mut_multi_borrow(&[
+            RustAutoOpaqueLockOrderInfo {
+                index: 0,
+                mutable: false,
+                object_order: RustAutoOpaqueOrder(100),
+            },
+            RustAutoOpaqueLockOrderInfo {
+                index: 1,
+                mutable: true,
+                object_order: RustAutoOpaqueOrder(100),
+            }
+        ]));
+
+        assert!(!check_no_mut_multi_borrow(&[
+            RustAutoOpaqueLockOrderInfo {
+                index: 0,
+                mutable: true,
+                object_order: RustAutoOpaqueOrder(100),
+            },
+            RustAutoOpaqueLockOrderInfo {
+                index: 1,
+                mutable: true,
+                object_order: RustAutoOpaqueOrder(100),
+            }
+        ]));
+
+        assert!(check_no_mut_multi_borrow(&[
+            RustAutoOpaqueLockOrderInfo {
+                index: 0,
+                mutable: true,
+                object_order: RustAutoOpaqueOrder(100),
+            },
+            RustAutoOpaqueLockOrderInfo {
+                index: 1,
+                mutable: true,
+                object_order: RustAutoOpaqueOrder(101),
+            }
+        ]));
     }
 }
