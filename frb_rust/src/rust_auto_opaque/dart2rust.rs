@@ -12,11 +12,11 @@ impl<T, A: BaseArc<RwLock<T>>> RustAutoOpaqueBase<T, A> {
             .into_inner()
     }
 
-    pub fn rust_auto_opaque_decode_ref(&self) -> RwLockReadGuard<'_, T> {
+    pub fn rust_auto_opaque_decode_sync_ref(&self) -> RwLockReadGuard<'_, T> {
         self.blocking_read()
     }
 
-    pub fn rust_auto_opaque_decode_ref_mut(&self) -> RwLockWriteGuard<'_, T> {
+    pub fn rust_auto_opaque_decode_sync_ref_mut(&self) -> RwLockWriteGuard<'_, T> {
         self.blocking_write()
     }
 
