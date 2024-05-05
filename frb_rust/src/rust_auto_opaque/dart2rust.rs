@@ -13,13 +13,19 @@ impl<T, A: BaseArc<RwLock<T>>> RustAutoOpaqueBase<T, A> {
     }
 
     pub fn rust_auto_opaque_decode_ref(&self) -> RwLockReadGuard<'_, T> {
-        self.try_read()
-            .expect("Fail to borrow object. Please ensure the object is not borrowed mutably elsewhere at the same time, which violates Rust's rules.")
+        self.blocking_read()
     }
 
     pub fn rust_auto_opaque_decode_ref_mut(&self) -> RwLockWriteGuard<'_, T> {
-        self.try_write()
-            .expect("Fail to mutably borrow object. Please ensure the object is not borrowed elsewhere at the same time, which violates Rust's rules.")
+        self.blocking_write()
+    }
+
+    pub async fn rust_auto_opaque_decode_async_ref(&self) -> RwLockReadGuard<'_, T> {
+        self.read()
+    }
+
+    pub async fn rust_auto_opaque_decode_async_ref_mut(&self) -> RwLockWriteGuard<'_, T> {
+        self.write()
     }
 }
 
