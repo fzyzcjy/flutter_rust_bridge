@@ -351,6 +351,25 @@ pub fn rust_auto_opaque_explicit_return_twin_normal(
     RustAutoOpaque::new(RustAutoOpaqueInner::new(RwLock::new(NonCloneSimpleTwinNormal { inner: initial })))
 }
 
+// ================ deadlock detection ===================
+
+pub fn rust_auto_opaque_apple_orange_twin_normal(
+    apple: &mut NonCloneSimpleTwinNormal,
+    orange: &mut NonCloneSimpleTwinNormal,
+) -> i32 {
+    let _ = (apple, orange);
+    0
+}
+
+// Deliberate reverse order to test a kind of deadlock
+pub fn rust_auto_opaque_orange_apple_twin_normal(
+    orange: &mut NonCloneSimpleTwinNormal,
+    apple: &mut NonCloneSimpleTwinNormal,
+) -> i32 {
+    let _ = (apple, orange);
+    0
+}
+
 // ================ misc ===================
 
 // #1577 - this should generate valid Dart code without name collisions
