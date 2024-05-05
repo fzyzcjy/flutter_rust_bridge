@@ -30,9 +30,8 @@ impl<T, A: BaseArc<RustAutoOpaqueInner<T>>> RustAutoOpaqueBase<T, A> {
         self.data.write().await
     }
 
-    // TODO surely not i32
     pub fn rust_auto_opaque_lock_order(&self) -> RustAutoOpaqueOrder {
-        todo!()
+        self.order
     }
 }
 
@@ -42,7 +41,6 @@ pub fn rust_auto_opaque_encode<T, A: BaseArc<RustAutoOpaqueInner<T>>>(
     RustAutoOpaqueBase::new(RustAutoOpaqueInner::new(RwLock::new(value)))
 }
 
-// TODO surely not i32
 pub fn rust_auto_opaque_decode_compute_order(orders: &[RustAutoOpaqueOrder]) -> Vec<usize> {
     todo!()
 }

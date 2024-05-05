@@ -1,5 +1,6 @@
 use crate::for_generated::StdArc;
 use crate::rust_async::RwLock;
+use crate::rust_auto_opaque::order::RustAutoOpaqueOrder;
 use crate::rust_opaque::RustOpaqueBase;
 
 pub(crate) mod dart2rust;
@@ -12,11 +13,15 @@ pub type RustAutoOpaqueNom<T> = RustAutoOpaqueBase<T, StdArc<RustAutoOpaqueInner
 
 pub struct RustAutoOpaqueInner<T> {
     pub(crate) data: RwLock<T>,
+    pub(crate) order: RustAutoOpaqueOrder,
 }
 
 impl<T> RustAutoOpaqueInner<T> {
     pub(crate) fn new(data: RwLock<T>) -> Self {
-        Self { data }
+        Self {
+            data,
+            order: RustAutoOpaqueOrder::new(),
+        }
     }
 }
 
