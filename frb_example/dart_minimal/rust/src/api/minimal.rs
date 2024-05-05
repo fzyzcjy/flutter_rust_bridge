@@ -12,7 +12,21 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 #[frb(opaque)]
 pub struct StructOne {}
 
+impl StructOne {
+    #[frb(sync)]
+    pub fn new() -> Self {
+        Self {}
+    }
+}
+
 #[frb(opaque)]
 pub struct StructTwo {}
+
+impl StructTwo {
+    #[frb(sync)]
+    pub fn new() -> Self {
+        Self {}
+    }
+}
 
 pub fn f(a: &mut StructOne, b: &mut StructTwo) {}

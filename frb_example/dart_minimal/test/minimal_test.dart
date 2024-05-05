@@ -14,4 +14,10 @@ Future<void> main() async {
     print('Action: Call rust (after)');
   });
   print('Action: Configure tests (end)');
+
+  test('hi', () async {
+    final a = StructOne();
+    final b = StructTwo();
+    await f(a: a, b: b);
+  });
 }
