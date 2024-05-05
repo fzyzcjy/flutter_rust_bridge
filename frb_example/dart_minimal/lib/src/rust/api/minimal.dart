@@ -13,15 +13,21 @@ Future<MyStruct> f({required MyStruct a, dynamic hint}) =>
     RustLib.instance.api.f(a: a, hint: hint);
 
 class AnotherStruct {
-  const AnotherStruct();
+  final String? template;
+
+  const AnotherStruct({
+    this.template,
+  });
 
   @override
-  int get hashCode => 0;
+  int get hashCode => template.hashCode;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is AnotherStruct && runtimeType == other.runtimeType;
+      other is AnotherStruct &&
+          runtimeType == other.runtimeType &&
+          template == other.template;
 }
 
 class MyStruct {

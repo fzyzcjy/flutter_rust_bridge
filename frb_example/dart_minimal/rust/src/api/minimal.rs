@@ -13,7 +13,9 @@ pub struct MyStruct {
     pub template: AnotherStruct,
 }
 
-pub struct AnotherStruct {}
+pub struct AnotherStruct {
+    pub template: Option<String>,
+}
 
 pub fn f(a: MyStruct) -> MyStruct {
     a
