@@ -29,6 +29,8 @@ pub use crate::handler::handler::{TaskContext, TaskRetFutTrait};
 pub use crate::handler::implementation::error_listener::NoOpErrorListener;
 pub use crate::handler::implementation::executor::SimpleExecutor;
 pub use crate::handler::implementation::handler::SimpleHandler;
+#[allow(unused)]
+pub use crate::misc::manual_impl::*;
 pub use crate::misc::version::FLUTTER_RUST_BRIDGE_RUNTIME_VERSION;
 pub use crate::platform_types::{
     DartAbi, MessagePort, PlatformGeneralizedUint8ListPtr, WireSyncRust2DartDco,
