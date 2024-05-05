@@ -756,7 +756,7 @@ jobs:
         device:
           - "pixel"
           - "Nexus 6"
-        api-level: [ 30 ]
+        api-level: [ 29 ]
 
     steps:
       # setup
@@ -775,7 +775,7 @@ jobs:
       - uses: actions/setup-java@v2
         with:
           distribution: 'zulu'
-          java-version: "11.x"
+          java-version: "17.x"
       - name: AVD cache
         uses: actions/cache@v3
         id: avd-cache
