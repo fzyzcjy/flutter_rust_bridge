@@ -11,8 +11,6 @@ use flutter_rust_bridge::for_generated::RustAutoOpaqueInner;
 use flutter_rust_bridge::frb;
 use flutter_rust_bridge::rust_async::RwLock;
 use std::path::PathBuf;
-use std::thread::sleep;
-use std::time::Duration;
 
 // TODO auto determine it is opaque or not later
 #[frb(opaque)]
@@ -399,7 +397,11 @@ pub fn rust_auto_opaque_sleep_twin_moi(
     apple: &mut NonCloneSimpleTwinMoi,
     orange: &mut NonCloneSimpleTwinMoi,
 ) -> i32 {
-    sleep(Duration::from_millis(1000));
+    // If WASM + main thread (i.e. "sync"), the `sleep` cannot be used, which is a Rust / WASM limit.
+    // (But if on native, or on WASM + async mode, it is OK)
+    #[cfg(not(target_family = "wasm"))]
+    std::thread::sleep(std::time::Duration::from_millis(1000));
+
     apple.inner + orange.inner
 }
 
