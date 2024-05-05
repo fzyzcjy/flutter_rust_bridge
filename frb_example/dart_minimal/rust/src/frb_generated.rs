@@ -74,18 +74,17 @@ fn wire_f_impl(
                     let mut api_a_decoded = None;
                     let mut api_b_decoded = None;
 
-                    let decoder_orders_ =
+                    let decode_indices_ =
                         flutter_rust_bridge::for_generated::rust_auto_opaque_decode_compute_order(
                             &[
                                 api_a.rust_auto_opaque_lock_order(),
                                 api_b.rust_auto_opaque_lock_order(),
                             ],
                         );
-                    for i in decoder_orders_ {
+                    for i in decode_indices_ {
                         match i {
                             0 => api_a_decoded = Some(api_a.rust_auto_opaque_decode_sync_ref_mut()),
                             1 => api_b_decoded = Some(api_b.rust_auto_opaque_decode_sync_ref_mut()),
-
                             _ => unreachable!(),
                         }
                     }

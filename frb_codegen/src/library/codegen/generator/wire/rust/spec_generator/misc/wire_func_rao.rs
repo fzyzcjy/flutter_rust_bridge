@@ -30,12 +30,9 @@ pub(crate) fn generate_code_inner_decode(func: &IrFunc) -> String {
 
     let match_arms = (interest_fields.iter().enumerate())
         .map(|(index, (field, ty))| {
-            format!(
-                "{index} => {},\n",
-                generate_decode_statement(func, field, ty)
-            )
+            format!("{index} => {},", generate_decode_statement(func, field, ty))
         })
-        .join("");
+        .join("\n");
 
     let unwraps = (interest_fields.iter())
         .map(|(field, _ty)| {
@@ -49,8 +46,8 @@ pub(crate) fn generate_code_inner_decode(func: &IrFunc) -> String {
     format!(
         "
         {declarations}
-        let decoder_orders_ = flutter_rust_bridge::for_generated::rust_auto_opaque_decode_compute_order(&[{var_orders}]);
-        for i in decoder_orders_ {{
+        let decode_indices_ = flutter_rust_bridge::for_generated::rust_auto_opaque_decode_compute_order(&[{var_orders}]);
+        for i in decode_indices_ {{
             match i {{
                 {match_arms}
                 _ => unreachable!(),
