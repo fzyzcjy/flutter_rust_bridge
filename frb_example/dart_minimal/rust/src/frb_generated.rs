@@ -63,14 +63,10 @@ fn wire_f_impl(
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_a = <RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                    flutter_rust_bridge::for_generated::rust_async::RwLock<StructOne>,
-                >,
+                flutter_rust_bridge::for_generated::rust_async::RwLock<StructOne>,
             >>::sse_decode(&mut deserializer);
             let api_b = <RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                    flutter_rust_bridge::for_generated::rust_async::RwLock<StructTwo>,
-                >,
+                flutter_rust_bridge::for_generated::rust_async::RwLock<StructTwo>,
             >>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
