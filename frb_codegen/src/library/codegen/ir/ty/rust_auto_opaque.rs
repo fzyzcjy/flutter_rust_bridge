@@ -36,7 +36,12 @@ impl IrTypeTrait for IrTypeRustAutoOpaque {
         match self.ownership_mode {
             // Different mechanisms for Owned vs Ref/RefMut
             OwnershipMode::Owned => self.raw.string.clone(),
-            OwnershipMode::Ref | OwnershipMode::RefMut => self.inner.rust_api_type(),
+            OwnershipMode::Ref | OwnershipMode::RefMut => {
+                format!(
+                    "RustOpaque{}<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<{}>>",
+                    self.inner.codec, self.inner.inner.0
+                )
+            }
         }
     }
 
