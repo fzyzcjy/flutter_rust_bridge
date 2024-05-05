@@ -17,15 +17,6 @@ pub struct RustAutoOpaqueInner<T> {
     pub(crate) order: RustAutoOpaqueOrder,
 }
 
-impl<T> RustAutoOpaqueInner<T> {
-    pub fn new(data: RwLock<T>) -> Self {
-        Self {
-            data,
-            order: RustAutoOpaqueOrder::new(),
-        }
-    }
-}
-
 #[doc(hidden)]
 #[macro_export]
 macro_rules! frb_generated_rust_auto_opaque_def {
