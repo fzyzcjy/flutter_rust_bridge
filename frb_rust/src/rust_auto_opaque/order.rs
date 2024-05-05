@@ -11,4 +11,9 @@ impl RustAutoOpaqueOrder {
         let value = COUNTER.fetch_add(1, Ordering::Relaxed);
         Self(value)
     }
+
+    #[cfg(test)]
+    pub fn new_for_test(value: u64) -> Self {
+        Self(value)
+    }
 }
