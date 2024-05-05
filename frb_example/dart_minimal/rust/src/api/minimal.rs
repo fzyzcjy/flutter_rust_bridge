@@ -10,8 +10,10 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 }
 
 pub struct MyStruct {
-    pub template: i32,
+    pub template: AnotherStruct,
 }
+
+pub struct AnotherStruct {}
 
 pub fn f(a: MyStruct) -> MyStruct {
     a

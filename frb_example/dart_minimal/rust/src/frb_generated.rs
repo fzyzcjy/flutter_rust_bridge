@@ -136,6 +136,13 @@ fn wire_minimal_adder_impl(
 
 // Section: dart2rust
 
+impl SseDecode for crate::api::minimal::AnotherStruct {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        return crate::api::minimal::AnotherStruct {};
+    }
+}
+
 impl SseDecode for i32 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -146,7 +153,7 @@ impl SseDecode for i32 {
 impl SseDecode for crate::api::minimal::MyStruct {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_template = <i32>::sse_decode(deserializer);
+        let mut var_template = <crate::api::minimal::AnotherStruct>::sse_decode(deserializer);
         return crate::api::minimal::MyStruct {
             template: var_template,
         };
@@ -196,6 +203,23 @@ fn pde_ffi_dispatcher_sync_impl(
 // Section: rust2dart
 
 // Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for crate::api::minimal::AnotherStruct {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        Vec::<u8>::new().into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::minimal::AnotherStruct
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::minimal::AnotherStruct>
+    for crate::api::minimal::AnotherStruct
+{
+    fn into_into_dart(self) -> crate::api::minimal::AnotherStruct {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for crate::api::minimal::MyStruct {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [self.template.into_into_dart().into_dart()].into_dart()
@@ -210,6 +234,11 @@ impl flutter_rust_bridge::IntoIntoDart<crate::api::minimal::MyStruct>
     }
 }
 
+impl SseEncode for crate::api::minimal::AnotherStruct {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {}
+}
+
 impl SseEncode for i32 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -220,7 +249,7 @@ impl SseEncode for i32 {
 impl SseEncode for crate::api::minimal::MyStruct {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <i32>::sse_encode(self.template, serializer);
+        <crate::api::minimal::AnotherStruct>::sse_encode(self.template, serializer);
     }
 }
 
