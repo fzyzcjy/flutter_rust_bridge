@@ -17,7 +17,7 @@ pub struct RustAutoOpaqueInner<T> {
 }
 
 impl<T> RustAutoOpaqueInner<T> {
-    pub(crate) fn new(data: RwLock<T>) -> Self {
+    pub fn new(data: RwLock<T>) -> Self {
         Self {
             data,
             order: RustAutoOpaqueOrder::new(),
