@@ -191,6 +191,7 @@ const sidebars = {
                         'guides/miscellaneous/default',
                         'guides/miscellaneous/pure-dart',
                         'guides/miscellaneous/isolates',
+                        'guides/miscellaneous/attributes',
                         'guides/miscellaneous/safety',
                         'guides/miscellaneous/compatibility',
                         'guides/miscellaneous/deployment',
