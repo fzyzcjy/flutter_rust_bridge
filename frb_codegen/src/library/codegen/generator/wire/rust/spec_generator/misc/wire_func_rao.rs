@@ -17,7 +17,7 @@ pub(crate) fn generate_code_inner_decode(func: &IrFunc) -> String {
         .join("");
 
     let var_names = (interest_fields.iter())
-        .map(|(field, _ty)| format!("api_{name}", name = get_variable_name(field)))
+        .map(|(field, _ty)| format!("&api_{name}", name = get_variable_name(field)))
         .join(", ");
 
     let match_arms = (interest_fields.iter().enumerate())
@@ -32,7 +32,7 @@ pub(crate) fn generate_code_inner_decode(func: &IrFunc) -> String {
     let unwraps = (interest_fields.iter())
         .map(|(field, _ty)| {
             format!(
-                "let api_{name} = api_{name}_raw.unwrap();\n",
+                "let api_{name} = api_{name}_decoded.unwrap();\n",
                 name = get_variable_name(field)
             )
         })

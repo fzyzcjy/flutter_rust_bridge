@@ -76,7 +76,7 @@ fn wire_f_impl(
 
                     let decoder_orders_ =
                         flutter_rust_bridge::for_generated::rust_auto_opaque_decode_order(&[
-                            api_a, api_b,
+                            &api_a, &api_b,
                         ]);
                     for i in decoder_orders_ {
                         match i {
@@ -84,8 +84,8 @@ fn wire_f_impl(
                             1 => api_b_decoded = Some(api_b.rust_auto_opaque_decode_sync_ref_mut()),
                         }
                     }
-                    let api_a = api_a_raw.unwrap();
-                    let api_b = api_b_raw.unwrap();
+                    let api_a = api_a_decoded.unwrap();
+                    let api_b = api_b_decoded.unwrap();
 
                     Result::<_, ()>::Ok(crate::api::minimal::f(&mut api_a, &mut api_b))
                 })())
