@@ -5,6 +5,7 @@ use crate::rust_opaque::RustOpaqueBase;
 
 pub(crate) mod dart2rust;
 mod order;
+pub mod misc;
 
 pub type RustAutoOpaqueBase<T, A> = RustOpaqueBase<RustAutoOpaqueInner<T>, A>;
 
