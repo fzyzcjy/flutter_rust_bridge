@@ -348,4 +348,34 @@ Future<void> main({bool skipRustLibInit = false}) async {
       expect(await rustAutoOpaqueBorrowAndBorrowTwinSse(a: a, b: b), 300);
     });
   });
+
+  group('deadlock', () {
+    test('simple call', () async {
+      final a = await rustAutoOpaqueReturnOwnTwinSse(initial: 100);
+      final b = await rustAutoOpaqueReturnOwnTwinSse(initial: 200);
+      expect(await rustAutoOpaqueSleepTwinSse(apple: a, orange: b), 300);
+    });
+
+    test('call both with same order', () async {
+      final a = await rustAutoOpaqueReturnOwnTwinSse(initial: 100);
+      final b = await rustAutoOpaqueReturnOwnTwinSse(initial: 200);
+
+      final future1 = rustAutoOpaqueSleepTwinSse(apple: a, orange: b);
+      final future2 = rustAutoOpaqueSleepTwinSse(apple: a, orange: b);
+
+      expect(await future1, 300);
+      expect(await future2, 300);
+    });
+
+    test('call both with reversed order', () async {
+      final a = await rustAutoOpaqueReturnOwnTwinSse(initial: 100);
+      final b = await rustAutoOpaqueReturnOwnTwinSse(initial: 200);
+
+      final future1 = rustAutoOpaqueSleepTwinSse(apple: a, orange: b);
+      final future2 = rustAutoOpaqueSleepTwinSse(apple: b, orange: a);
+
+      expect(await future1, 300);
+      expect(await future2, 300);
+    });
+  });
 }

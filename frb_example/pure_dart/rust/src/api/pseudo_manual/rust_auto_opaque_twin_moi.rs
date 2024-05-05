@@ -7,9 +7,12 @@
 #[allow(unused_imports)]
 use crate::frb_generated::RustAutoOpaque;
 use crate::frb_generated::StreamSink;
+use flutter_rust_bridge::for_generated::RustAutoOpaqueInner;
 use flutter_rust_bridge::frb;
 use flutter_rust_bridge::rust_async::RwLock;
 use std::path::PathBuf;
+use std::thread::sleep;
+use std::time::Duration;
 
 // TODO auto determine it is opaque or not later
 #[frb(opaque)]
@@ -384,9 +387,20 @@ pub fn rust_auto_opaque_explicit_struct_twin_moi(arg: StructWithExplicitAutoOpaq
 pub fn rust_auto_opaque_explicit_return_twin_moi(
     initial: i32,
 ) -> crate::frb_generated::RustAutoOpaqueMoi<NonCloneSimpleTwinMoi> {
-    crate::frb_generated::RustAutoOpaqueMoi::new(RwLock::new(NonCloneSimpleTwinMoi {
-        inner: initial,
-    }))
+    crate::frb_generated::RustAutoOpaqueMoi::new(RustAutoOpaqueInner::new(RwLock::new(
+        NonCloneSimpleTwinMoi { inner: initial },
+    )))
+}
+
+// ================ deadlock detection ===================
+
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+pub fn rust_auto_opaque_sleep_twin_moi(
+    apple: &mut NonCloneSimpleTwinMoi,
+    orange: &mut NonCloneSimpleTwinMoi,
+) -> i32 {
+    sleep(Duration::from_millis(1000));
+    apple.inner + orange.inner
 }
 
 // ================ misc ===================

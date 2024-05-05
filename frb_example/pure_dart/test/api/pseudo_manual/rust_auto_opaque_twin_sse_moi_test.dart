@@ -355,4 +355,34 @@ Future<void> main({bool skipRustLibInit = false}) async {
       expect(await rustAutoOpaqueBorrowAndBorrowTwinSseMoi(a: a, b: b), 300);
     });
   });
+
+  group('deadlock', () {
+    test('simple call', () async {
+      final a = await rustAutoOpaqueReturnOwnTwinSseMoi(initial: 100);
+      final b = await rustAutoOpaqueReturnOwnTwinSseMoi(initial: 200);
+      expect(await rustAutoOpaqueSleepTwinSseMoi(apple: a, orange: b), 300);
+    });
+
+    test('call both with same order', () async {
+      final a = await rustAutoOpaqueReturnOwnTwinSseMoi(initial: 100);
+      final b = await rustAutoOpaqueReturnOwnTwinSseMoi(initial: 200);
+
+      final future1 = rustAutoOpaqueSleepTwinSseMoi(apple: a, orange: b);
+      final future2 = rustAutoOpaqueSleepTwinSseMoi(apple: a, orange: b);
+
+      expect(await future1, 300);
+      expect(await future2, 300);
+    });
+
+    test('call both with reversed order', () async {
+      final a = await rustAutoOpaqueReturnOwnTwinSseMoi(initial: 100);
+      final b = await rustAutoOpaqueReturnOwnTwinSseMoi(initial: 200);
+
+      final future1 = rustAutoOpaqueSleepTwinSseMoi(apple: a, orange: b);
+      final future2 = rustAutoOpaqueSleepTwinSseMoi(apple: b, orange: a);
+
+      expect(await future1, 300);
+      expect(await future2, 300);
+    });
+  });
 }

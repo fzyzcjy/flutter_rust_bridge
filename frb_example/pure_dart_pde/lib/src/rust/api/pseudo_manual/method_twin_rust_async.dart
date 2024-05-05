@@ -16,7 +16,7 @@ Future<SumWithTwinRustAsyncArray3> getSumArrayTwinRustAsync(
         {required int a, required int b, required int c, dynamic hint}) =>
     RustLib.instance.api.getSumArrayTwinRustAsync(a: a, b: b, c: c, hint: hint);
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<StaticGetterOnlyTwinRustAsync>>
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StaticGetterOnlyTwinRustAsync>>
 @sealed
 class StaticGetterOnlyTwinRustAsync extends RustOpaque {
   StaticGetterOnlyTwinRustAsync.dcoDecode(List<dynamic> wire)

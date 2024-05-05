@@ -7,9 +7,12 @@
 #[allow(unused_imports)]
 use crate::frb_generated::RustAutoOpaque;
 use crate::frb_generated::StreamSink;
+use flutter_rust_bridge::for_generated::RustAutoOpaqueInner;
 use flutter_rust_bridge::frb;
 use flutter_rust_bridge::rust_async::RwLock;
 use std::path::PathBuf;
+use std::thread::sleep;
+use std::time::Duration;
 
 // TODO auto determine it is opaque or not later
 #[frb(opaque)]
@@ -375,7 +378,19 @@ pub async fn rust_auto_opaque_explicit_struct_twin_rust_async(
 pub async fn rust_auto_opaque_explicit_return_twin_rust_async(
     initial: i32,
 ) -> RustAutoOpaque<NonCloneSimpleTwinRustAsync> {
-    RustAutoOpaque::new(RwLock::new(NonCloneSimpleTwinRustAsync { inner: initial }))
+    RustAutoOpaque::new(RustAutoOpaqueInner::new(RwLock::new(
+        NonCloneSimpleTwinRustAsync { inner: initial },
+    )))
+}
+
+// ================ deadlock detection ===================
+
+pub async fn rust_auto_opaque_sleep_twin_rust_async(
+    apple: &mut NonCloneSimpleTwinRustAsync,
+    orange: &mut NonCloneSimpleTwinRustAsync,
+) -> i32 {
+    sleep(Duration::from_millis(1000));
+    apple.inner + orange.inner
 }
 
 // ================ misc ===================

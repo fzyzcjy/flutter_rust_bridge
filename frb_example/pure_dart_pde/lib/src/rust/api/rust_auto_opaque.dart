@@ -188,6 +188,13 @@ Future<NonCloneSimpleTwinNormal> rustAutoOpaqueExplicitReturnTwinNormal(
     RustLib.instance.api
         .rustAutoOpaqueExplicitReturnTwinNormal(initial: initial, hint: hint);
 
+Future<int> rustAutoOpaqueSleepTwinNormal(
+        {required NonCloneSimpleTwinNormal apple,
+        required NonCloneSimpleTwinNormal orange,
+        dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueSleepTwinNormal(
+        apple: apple, orange: orange, hint: hint);
+
 Future<(OpaqueOneTwinNormal, OpaqueTwoTwinNormal)>
     rustAutoOpaqueReturnOpaqueOneAndTwoTwinNormal({dynamic hint}) =>
         RustLib.instance.api
@@ -211,7 +218,7 @@ Future<int> rustAutoOpaqueBorrowAndBorrowTwinNormal(
     RustLib.instance.api
         .rustAutoOpaqueBorrowAndBorrowTwinNormal(a: a, b: b, hint: hint);
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<Box < dyn HelloTraitTwinNormal >>>
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn HelloTraitTwinNormal >>>
 @sealed
 class BoxHelloTraitTwinNormal extends RustOpaque {
   BoxHelloTraitTwinNormal.dcoDecode(List<dynamic> wire)
@@ -230,7 +237,7 @@ class BoxHelloTraitTwinNormal extends RustOpaque {
   );
 }
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<Box < dyn MyTraitTwinNormal + Send + Sync >>>
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn MyTraitTwinNormal + Send + Sync >>>
 @sealed
 class BoxMyTraitTwinNormal extends RustOpaque {
   BoxMyTraitTwinNormal.dcoDecode(List<dynamic> wire)
@@ -249,7 +256,7 @@ class BoxMyTraitTwinNormal extends RustOpaque {
   );
 }
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<EnumWithGoodAndOpaqueWithoutOptionTwinNormal>>
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<EnumWithGoodAndOpaqueWithoutOptionTwinNormal>>
 @sealed
 class EnumWithGoodAndOpaqueWithoutOptionTwinNormal extends RustOpaque {
   EnumWithGoodAndOpaqueWithoutOptionTwinNormal.dcoDecode(List<dynamic> wire)
@@ -269,7 +276,7 @@ class EnumWithGoodAndOpaqueWithoutOptionTwinNormal extends RustOpaque {
   );
 }
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleEnumTwinNormal>>
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleEnumTwinNormal>>
 @sealed
 class NonCloneSimpleEnumTwinNormal extends RustOpaque {
   NonCloneSimpleEnumTwinNormal.dcoDecode(List<dynamic> wire)
@@ -288,7 +295,7 @@ class NonCloneSimpleEnumTwinNormal extends RustOpaque {
   );
 }
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinNormal>>
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinNormal>>
 @sealed
 class NonCloneSimpleTwinNormal extends RustOpaque {
   NonCloneSimpleTwinNormal.dcoDecode(List<dynamic> wire)
@@ -371,7 +378,7 @@ class NonCloneSimpleTwinNormal extends RustOpaque {
           .nonCloneSimpleTwinNormalStaticMethodReturnOwnTwinNormal(hint: hint);
 }
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinNormal>>
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueOneTwinNormal>>
 @sealed
 class OpaqueOneTwinNormal extends RustOpaque {
   OpaqueOneTwinNormal.dcoDecode(List<dynamic> wire)
@@ -390,7 +397,7 @@ class OpaqueOneTwinNormal extends RustOpaque {
   );
 }
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueTwoTwinNormal>>
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueTwoTwinNormal>>
 @sealed
 class OpaqueTwoTwinNormal extends RustOpaque {
   OpaqueTwoTwinNormal.dcoDecode(List<dynamic> wire)
@@ -409,7 +416,7 @@ class OpaqueTwoTwinNormal extends RustOpaque {
   );
 }
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal>>
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal>>
 @sealed
 class StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal extends RustOpaque {
   StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal.dcoDecode(
