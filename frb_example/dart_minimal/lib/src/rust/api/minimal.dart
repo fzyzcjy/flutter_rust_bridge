@@ -9,23 +9,41 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 Future<int> minimalAdder({required int a, required int b, dynamic hint}) =>
     RustLib.instance.api.minimalAdder(a: a, b: b, hint: hint);
 
-Future<void> f({required MyStruct a, required MyStruct b, dynamic hint}) =>
+Future<void> f({required StructOne a, required StructTwo b, dynamic hint}) =>
     RustLib.instance.api.f(a: a, b: b, hint: hint);
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<MyStruct>>
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<StructOne>>
 @sealed
-class MyStruct extends RustOpaque {
-  MyStruct.dcoDecode(List<dynamic> wire) : super.dcoDecode(wire, _kStaticData);
+class StructOne extends RustOpaque {
+  StructOne.dcoDecode(List<dynamic> wire) : super.dcoDecode(wire, _kStaticData);
 
-  MyStruct.sseDecode(int ptr, int externalSizeOnNative)
+  StructOne.sseDecode(int ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_MyStruct,
+        RustLib.instance.api.rust_arc_increment_strong_count_StructOne,
     rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_MyStruct,
+        RustLib.instance.api.rust_arc_decrement_strong_count_StructOne,
     rustArcDecrementStrongCountPtr:
-        RustLib.instance.api.rust_arc_decrement_strong_count_MyStructPtr,
+        RustLib.instance.api.rust_arc_decrement_strong_count_StructOnePtr,
+  );
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<StructTwo>>
+@sealed
+class StructTwo extends RustOpaque {
+  StructTwo.dcoDecode(List<dynamic> wire) : super.dcoDecode(wire, _kStaticData);
+
+  StructTwo.sseDecode(int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_StructTwo,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_StructTwo,
+    rustArcDecrementStrongCountPtr:
+        RustLib.instance.api.rust_arc_decrement_strong_count_StructTwoPtr,
   );
 }

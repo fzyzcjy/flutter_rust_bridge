@@ -63,16 +63,16 @@ fn wire_f_impl(
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_a = <RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::rust_async::RwLock<MyStruct>,
+                flutter_rust_bridge::for_generated::rust_async::RwLock<StructOne>,
             >>::sse_decode(&mut deserializer);
             let api_b = <RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::rust_async::RwLock<MyStruct>,
+                flutter_rust_bridge::for_generated::rust_async::RwLock<StructTwo>,
             >>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
-                    let mut api_a = api_a.rust_auto_opaque_decode_ref_mut();
-                    let mut api_b = api_b.rust_auto_opaque_decode_ref_mut();
+                    let mut api_a = api_a.rust_auto_opaque_decode_sync_ref_mut();
+                    let mut api_b = api_b.rust_auto_opaque_decode_sync_ref_mut();
                     Result::<_, ()>::Ok(crate::api::minimal::f(&mut api_a, &mut api_b))
                 })())
             }
@@ -147,12 +147,27 @@ fn wire_minimal_adder_impl(
 // Section: related_funcs
 
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
-    flutter_rust_bridge::for_generated::rust_async::RwLock<MyStruct>
+    flutter_rust_bridge::for_generated::rust_async::RwLock<StructOne>
+);
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
+    flutter_rust_bridge::for_generated::rust_async::RwLock<StructTwo>
 );
 
 // Section: dart2rust
 
-impl SseDecode for RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<MyStruct>> {
+impl SseDecode
+    for RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<StructOne>>
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
+    }
+}
+
+impl SseDecode
+    for RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<StructTwo>>
+{
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <usize>::sse_decode(deserializer);
@@ -216,7 +231,20 @@ fn pde_ffi_dispatcher_sync_impl(
 
 // Section: rust2dart
 
-impl SseEncode for RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<MyStruct>> {
+impl SseEncode
+    for RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<StructOne>>
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<StructTwo>>
+{
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         let (ptr, size) = self.sse_encode_raw();
