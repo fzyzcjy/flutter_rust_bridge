@@ -31,9 +31,23 @@ impl<T, A: BaseArc<RustAutoOpaqueInner<T>>> RustAutoOpaqueBase<T, A> {
         self.data.write().await
     }
 
-    pub fn rust_auto_opaque_lock_order(&self) -> RustAutoOpaqueOrder {
-        self.order
+    pub fn rust_auto_opaque_lock_order_info(
+        &self,
+        index: usize,
+        mutable: bool,
+    ) -> RustAutoOpaqueLockOrderInfo {
+        RustAutoOpaqueLockOrderInfo {
+            index,
+            mutable,
+            lock_order: self.order,
+        }
     }
+}
+
+pub struct RustAutoOpaqueLockOrderInfo {
+    index: usize,
+    mutable: bool,
+    lock_order: RustAutoOpaqueOrder,
 }
 
 pub fn rust_auto_opaque_encode<T, A: BaseArc<RustAutoOpaqueInner<T>>>(
@@ -70,6 +84,6 @@ mod tests {
 
     #[test]
     fn test_check_no_mut_multi_borrow() {
-        TODO
+        check_no_mut_multi_borrow(&[()])
     }
 }

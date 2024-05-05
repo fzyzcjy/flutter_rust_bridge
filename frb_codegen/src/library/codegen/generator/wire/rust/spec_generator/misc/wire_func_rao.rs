@@ -19,10 +19,11 @@ pub(crate) fn generate_code_inner_decode(func: &IrFunc) -> String {
         })
         .join("");
 
-    let var_orders = (interest_fields.iter())
-        .map(|(field, _ty)| {
+    let var_orders = (interest_fields.iter().enumerate())
+        .map(|(index, (field, ty))| {
+            let mutable = (ty.ownership_mode == OwnershipMode::RefMut).to_string();
             format!(
-                "api_{name}.rust_auto_opaque_lock_order()",
+                "api_{name}.rust_auto_opaque_lock_order_info({index}, {mutable})",
                 name = get_variable_name(field)
             )
         })
