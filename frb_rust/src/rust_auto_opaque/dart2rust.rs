@@ -41,6 +41,12 @@ pub fn rust_auto_opaque_encode<T, A: BaseArc<RustAutoOpaqueInner<T>>>(
     RustAutoOpaqueBase::new(RustAutoOpaqueInner::new(RwLock::new(value)))
 }
 
-pub fn rust_auto_opaque_decode_compute_order(orders: &[RustAutoOpaqueOrder]) -> Vec<usize> {
-    todo!()
+pub fn rust_auto_opaque_decode_compute_order(lock_orders: &[RustAutoOpaqueOrder]) -> Vec<usize> {
+    let mut sorted_index_and_lock_orders: Vec<_> = lock_orders.iter().enumerate().collect();
+    sorted_index_and_lock_orders.sort_unstable_by_key(|(_index, order)| order);
+
+    sorted_index_and_lock_orders
+        .into_iter()
+        .map(|index, _order| index)
+        .collect()
 }
