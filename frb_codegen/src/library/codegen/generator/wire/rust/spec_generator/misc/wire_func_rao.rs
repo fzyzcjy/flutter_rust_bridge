@@ -51,7 +51,7 @@ pub(crate) fn generate_code_inner_decode(func: &IrFunc) -> String {
     format!(
         "
         {declarations}
-        let decode_indices_ = flutter_rust_bridge::for_generated::rust_auto_opaque_decode_compute_order(vec![{var_orders}]);
+        let decode_indices_ = flutter_rust_bridge::for_generated::rust_auto_opaque_decode_compute_order(&[{var_orders}]);
         for i in decode_indices_ {{
             match i {{
                 {match_arms}

@@ -41,12 +41,6 @@ pub fn rust_auto_opaque_encode<T, A: BaseArc<RustAutoOpaqueInner<T>>>(
     RustAutoOpaqueBase::new(RustAutoOpaqueInner::new(RwLock::new(value)))
 }
 
-pub fn rust_auto_opaque_decode_compute_order(lock_orders: Vec<RustAutoOpaqueOrder>) -> Vec<usize> {
-    let sorted_lock_orders = {
-        let mut x = lock_orders;
-        x.sort();
-        x
-    };
-
+pub fn rust_auto_opaque_decode_compute_order(orders: &[RustAutoOpaqueOrder]) -> Vec<usize> {
     todo!()
 }
