@@ -35,9 +35,14 @@ pub(crate) fn generate_code_inner_decode(func: &IrFunc) -> String {
         .join("\n");
 
     let unwraps = (interest_fields.iter())
-        .map(|(field, _ty)| {
+        .map(|(field, ty)| {
+            let mutability = if ty.ownership_mode == OwnershipMode::RefMut {
+                "mut "
+            } else {
+                ""
+            };
             format!(
-                "let api_{name} = api_{name}_decoded.unwrap();\n",
+                "let {mutability}api_{name} = api_{name}_decoded.unwrap();\n",
                 name = get_variable_name(field)
             )
         })

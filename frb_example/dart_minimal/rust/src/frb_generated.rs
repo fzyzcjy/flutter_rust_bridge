@@ -88,8 +88,8 @@ fn wire_f_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let api_a = api_a_decoded.unwrap();
-                    let api_b = api_b_decoded.unwrap();
+                    let mut api_a = api_a_decoded.unwrap();
+                    let mut api_b = api_b_decoded.unwrap();
 
                     Result::<_, ()>::Ok(crate::api::minimal::f(&mut api_a, &mut api_b))
                 })())
