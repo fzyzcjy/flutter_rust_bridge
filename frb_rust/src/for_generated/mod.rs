@@ -39,7 +39,11 @@ pub use crate::rust2dart::action::Rust2DartAction;
 pub use crate::rust_async;
 pub use crate::rust_async::{BaseAsyncRuntime, SimpleAsyncRuntime};
 #[cfg(feature = "rust-async")]
-pub use crate::rust_auto_opaque::{dart2rust::rust_auto_opaque_encode, RustAutoOpaqueBase};
+pub use crate::rust_auto_opaque::dart2rust::{
+    rust_auto_opaque_decode_compute_order, rust_auto_opaque_encode,
+};
+#[cfg(feature = "rust-async")]
+pub use crate::rust_auto_opaque::RustAutoOpaqueBase;
 pub use crate::rust_opaque::{dart2rust::decode_rust_opaque_nom, RustOpaqueBase};
 pub use crate::stream::stream_sink::StreamSinkBase;
 pub use crate::thread_pool::{BaseThreadPool, SimpleThreadPool};

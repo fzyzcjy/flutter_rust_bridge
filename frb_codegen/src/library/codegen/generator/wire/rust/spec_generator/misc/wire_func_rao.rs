@@ -19,8 +19,13 @@ pub(crate) fn generate_code_inner_decode(func: &IrFunc) -> String {
         })
         .join("");
 
-    let var_names = (interest_fields.iter())
-        .map(|(field, _ty)| format!("&api_{name}", name = get_variable_name(field)))
+    let var_orders = (interest_fields.iter())
+        .map(|(field, _ty)| {
+            format!(
+                "api_{name}.rust_auto_opaque_lock_order()",
+                name = get_variable_name(field)
+            )
+        })
         .join(", ");
 
     let match_arms = (interest_fields.iter().enumerate())
@@ -44,10 +49,11 @@ pub(crate) fn generate_code_inner_decode(func: &IrFunc) -> String {
     format!(
         "
         {declarations}
-        let decoder_orders_ = flutter_rust_bridge::for_generated::rust_auto_opaque_decode_order(&[{var_names}]);
+        let decoder_orders_ = flutter_rust_bridge::for_generated::rust_auto_opaque_decode_compute_order(&[{var_orders}]);
         for i in decoder_orders_ {{
             match i {{
                 {match_arms}
+                _ => unreachable!(),
             }}
         }}
         {unwraps}

@@ -27,8 +27,18 @@ impl<T, A: BaseArc<RwLock<T>>> RustAutoOpaqueBase<T, A> {
     pub async fn rust_auto_opaque_decode_async_ref_mut(&self) -> RwLockWriteGuard<'_, T> {
         self.write().await
     }
+
+    // TODO surely not i32
+    pub fn rust_auto_opaque_lock_order(&self) -> i32 {
+        todo!()
+    }
 }
 
 pub fn rust_auto_opaque_encode<T, A: BaseArc<RwLock<T>>>(value: T) -> RustAutoOpaqueBase<T, A> {
     RustAutoOpaqueBase::new(RwLock::new(value))
+}
+
+// TODO surely not i32
+pub fn rust_auto_opaque_decode_compute_order(orders: &[i32]) -> Vec<usize> {
+    todo!()
 }
