@@ -6,6 +6,9 @@ use itertools::Itertools;
 
 pub(crate) fn generate_code_inner_decode(func: &IrFunc) -> String {
     let interest_fields = filter_interest_fields(func);
+    if interest_fields.is_empty() {
+        return "".to_owned();
+    }
 
     let declarations = (interest_fields.iter())
         .map(|(field, _ty)| {

@@ -118,12 +118,6 @@ fn wire_init_app_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
-                    let decoder_orders_ =
-                        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_order(&[]);
-                    for i in decoder_orders_ {
-                        match i {}
-                    }
-
                     Result::<_, ()>::Ok(crate::api::minimal::init_app())
                 })())
             }
@@ -157,12 +151,6 @@ fn wire_minimal_adder_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
-                    let decoder_orders_ =
-                        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_order(&[]);
-                    for i in decoder_orders_ {
-                        match i {}
-                    }
-
                     Result::<_, ()>::Ok(crate::api::minimal::minimal_adder(api_a, api_b))
                 })())
             }
