@@ -110,7 +110,7 @@ fn wire_rust_auto_opaque_return_own_twin_normal_impl(
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec, _, _, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "rust_auto_opaque_return_own_twin_normal",
             port: Some(port_),
@@ -128,18 +128,12 @@ fn wire_rust_auto_opaque_return_own_twin_normal_impl(
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_initial = <i32>::sse_decode(&mut deserializer);
             deserializer.end();
-            move |context| async move {
-                transform_result_sse(
-                    (move || async move {
-                        Result::<_, ()>::Ok(
-                            crate::api::minimal::rust_auto_opaque_return_own_twin_normal(
-                                api_initial,
-                            )
-                            .await,
-                        )
-                    })()
-                    .await,
-                )
+            move |context| {
+                transform_result_sse((move || {
+                    Result::<_, ()>::Ok(
+                        crate::api::minimal::rust_auto_opaque_return_own_twin_normal(api_initial),
+                    )
+                })())
             }
         },
     )
@@ -150,27 +144,63 @@ fn wire_rust_auto_opaque_sleep_twin_normal_impl(
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_sleep_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
-            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
-            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_apple = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinNormal>>>::sse_decode(&mut deserializer);
-let api_orange = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinNormal>>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
-                    transform_result_sse((move || async move {
-                        let mut api_apple_decoded = None;
-let mut api_orange_decoded = None;
-let decode_indices_ = flutter_rust_bridge::for_generated::rust_auto_opaque_decode_compute_order(vec![api_apple.rust_auto_opaque_lock_order_info(0, true), api_orange.rust_auto_opaque_lock_order_info(1, true)]);
-        for i in decode_indices_ {
-            match i {
-                0 => api_apple_decoded = Some(api_apple.rust_auto_opaque_decode_async_ref_mut().await),
-1 => api_orange_decoded = Some(api_orange.rust_auto_opaque_decode_async_ref_mut().await),
-                _ => unreachable!(),
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "rust_auto_opaque_sleep_twin_normal",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_apple = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinNormal>,
+            >>::sse_decode(&mut deserializer);
+            let api_orange = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinNormal>,
+            >>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| {
+                transform_result_sse((move || {
+                    let mut api_apple_decoded = None;
+                    let mut api_orange_decoded = None;
+                    let decode_indices_ =
+                        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_compute_order(
+                            vec![
+                                api_apple.rust_auto_opaque_lock_order_info(0, true),
+                                api_orange.rust_auto_opaque_lock_order_info(1, true),
+                            ],
+                        );
+                    for i in decode_indices_ {
+                        match i {
+                            0 => {
+                                api_apple_decoded =
+                                    Some(api_apple.rust_auto_opaque_decode_sync_ref_mut())
+                            }
+                            1 => {
+                                api_orange_decoded =
+                                    Some(api_orange.rust_auto_opaque_decode_sync_ref_mut())
+                            }
+                            _ => unreachable!(),
+                        }
+                    }
+                    let mut api_apple = api_apple_decoded.unwrap();
+                    let mut api_orange = api_orange_decoded.unwrap();
+                    Result::<_, ()>::Ok(crate::api::minimal::rust_auto_opaque_sleep_twin_normal(
+                        &mut api_apple,
+                        &mut api_orange,
+                    ))
+                })())
             }
-        }
-        let mut api_apple = api_apple_decoded.unwrap();
-let mut api_orange = api_orange_decoded.unwrap();
- Result::<_,()>::Ok(crate::api::minimal::rust_auto_opaque_sleep_twin_normal(&mut api_apple, &mut api_orange).await)
-                    })().await)
-                } })
+        },
+    )
 }
 
 // Section: related_funcs

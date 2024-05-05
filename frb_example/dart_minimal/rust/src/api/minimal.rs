@@ -17,13 +17,11 @@ pub struct NonCloneSimpleTwinNormal {
     inner: i32,
 }
 
-#[frb(rust_opaque_codec_moi)]
-pub async fn rust_auto_opaque_return_own_twin_normal(initial: i32) -> NonCloneSimpleTwinNormal {
+pub fn rust_auto_opaque_return_own_twin_normal(initial: i32) -> NonCloneSimpleTwinNormal {
     NonCloneSimpleTwinNormal { inner: initial }
 }
 
-#[frb(rust_opaque_codec_moi)]
-pub async fn rust_auto_opaque_sleep_twin_normal(
+pub fn rust_auto_opaque_sleep_twin_normal(
     apple: &mut NonCloneSimpleTwinNormal,
     orange: &mut NonCloneSimpleTwinNormal,
 ) -> i32 {
