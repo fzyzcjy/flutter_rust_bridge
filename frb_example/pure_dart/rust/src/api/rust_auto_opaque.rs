@@ -6,6 +6,8 @@ use crate::frb_generated::StreamSink;
 use flutter_rust_bridge::frb;
 use flutter_rust_bridge::rust_async::RwLock;
 use std::path::PathBuf;
+use std::thread::sleep;
+use std::time::Duration;
 use flutter_rust_bridge::for_generated::RustAutoOpaqueInner;
 
 // TODO auto determine it is opaque or not later
@@ -358,6 +360,7 @@ pub fn rust_auto_opaque_apple_orange_twin_normal(
     orange: &mut NonCloneSimpleTwinNormal,
 ) -> i32 {
     let _ = (apple, orange);
+    sleep(Duration::from_millis(1000));
     0
 }
 
@@ -367,6 +370,7 @@ pub fn rust_auto_opaque_orange_apple_twin_normal(
     apple: &mut NonCloneSimpleTwinNormal,
 ) -> i32 {
     let _ = (apple, orange);
+    sleep(Duration::from_millis(1000));
     0
 }
 
