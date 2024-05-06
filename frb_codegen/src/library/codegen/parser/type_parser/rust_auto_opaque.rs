@@ -57,7 +57,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         // TODO when all usages of a type do not require `&mut`, can drop this Mutex
         // TODO similarly, can use std instead of `tokio`'s lock
         IrRustOpaqueInner(format!(
-            "flutter_rust_bridge::for_generated::rust_async::RwLock<{inner}>"
+            "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<{inner}>"
         ))
     }
 

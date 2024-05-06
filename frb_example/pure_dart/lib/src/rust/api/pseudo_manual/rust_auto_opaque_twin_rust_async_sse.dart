@@ -197,6 +197,13 @@ Future<NonCloneSimpleTwinRustAsyncSse>
         RustLib.instance.api.rustAutoOpaqueExplicitReturnTwinRustAsyncSse(
             initial: initial, hint: hint);
 
+Future<int> rustAutoOpaqueSleepTwinRustAsyncSse(
+        {required NonCloneSimpleTwinRustAsyncSse apple,
+        required NonCloneSimpleTwinRustAsyncSse orange,
+        dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueSleepTwinRustAsyncSse(
+        apple: apple, orange: orange, hint: hint);
+
 Future<(OpaqueOneTwinRustAsyncSse, OpaqueTwoTwinRustAsyncSse)>
     rustAutoOpaqueReturnOpaqueOneAndTwoTwinRustAsyncSse({dynamic hint}) =>
         RustLib.instance.api
@@ -221,7 +228,7 @@ Future<int> rustAutoOpaqueBorrowAndBorrowTwinRustAsyncSse(
     RustLib.instance.api
         .rustAutoOpaqueBorrowAndBorrowTwinRustAsyncSse(a: a, b: b, hint: hint);
 
-// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<Box < dyn HelloTraitTwinRustAsyncSse >>>
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn HelloTraitTwinRustAsyncSse >>>
 @sealed
 class BoxHelloTraitTwinRustAsyncSse extends RustOpaque {
   BoxHelloTraitTwinRustAsyncSse.dcoDecode(List<dynamic> wire)
@@ -240,7 +247,7 @@ class BoxHelloTraitTwinRustAsyncSse extends RustOpaque {
   );
 }
 
-// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<Box < dyn MyTraitTwinRustAsyncSse + Send + Sync >>>
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn MyTraitTwinRustAsyncSse + Send + Sync >>>
 @sealed
 class BoxMyTraitTwinRustAsyncSse extends RustOpaque {
   BoxMyTraitTwinRustAsyncSse.dcoDecode(List<dynamic> wire)
@@ -259,7 +266,7 @@ class BoxMyTraitTwinRustAsyncSse extends RustOpaque {
   );
 }
 
-// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncSse>>
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncSse>>
 @sealed
 class EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncSse extends RustOpaque {
   EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncSse.dcoDecode(
@@ -280,7 +287,7 @@ class EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncSse extends RustOpaque {
   );
 }
 
-// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleEnumTwinRustAsyncSse>>
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleEnumTwinRustAsyncSse>>
 @sealed
 class NonCloneSimpleEnumTwinRustAsyncSse extends RustOpaque {
   NonCloneSimpleEnumTwinRustAsyncSse.dcoDecode(List<dynamic> wire)
@@ -300,7 +307,7 @@ class NonCloneSimpleEnumTwinRustAsyncSse extends RustOpaque {
   );
 }
 
-// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinRustAsyncSse>>
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinRustAsyncSse>>
 @sealed
 class NonCloneSimpleTwinRustAsyncSse extends RustOpaque {
   NonCloneSimpleTwinRustAsyncSse.dcoDecode(List<dynamic> wire)
@@ -389,7 +396,7 @@ class NonCloneSimpleTwinRustAsyncSse extends RustOpaque {
               hint: hint);
 }
 
-// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinRustAsyncSse>>
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueOneTwinRustAsyncSse>>
 @sealed
 class OpaqueOneTwinRustAsyncSse extends RustOpaque {
   OpaqueOneTwinRustAsyncSse.dcoDecode(List<dynamic> wire)
@@ -408,7 +415,7 @@ class OpaqueOneTwinRustAsyncSse extends RustOpaque {
   );
 }
 
-// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueTwoTwinRustAsyncSse>>
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueTwoTwinRustAsyncSse>>
 @sealed
 class OpaqueTwoTwinRustAsyncSse extends RustOpaque {
   OpaqueTwoTwinRustAsyncSse.dcoDecode(List<dynamic> wire)
@@ -427,7 +434,7 @@ class OpaqueTwoTwinRustAsyncSse extends RustOpaque {
   );
 }
 
-// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse>>
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse>>
 @sealed
 class StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse
     extends RustOpaque {

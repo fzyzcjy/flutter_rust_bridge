@@ -775,7 +775,7 @@ jobs:
       - uses: actions/setup-java@v2
         with:
           distribution: 'zulu'
-          java-version: "11.x"
+          java-version: "17.x"
       - name: AVD cache
         uses: actions/cache@v3
         id: avd-cache
@@ -814,8 +814,8 @@ jobs:
           - frb_example--flutter_via_create
           # no `frb_example--flutter_via_integrate` since it is similar to `flutter_via_create`
         device:
-          - "iPad (9th generation) Simulator (16.2)"
-          - "iPhone 12 Pro Max Simulator (16.2)"
+          - "iPad (10th generation) Simulator (17.2)"
+          - "iPhone 14 Pro Max Simulator (17.2)"
 
     steps:
       # setup

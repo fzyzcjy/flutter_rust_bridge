@@ -16,7 +16,7 @@ Future<SumWithTwinSseArray3> getSumArrayTwinSse(
         {required int a, required int b, required int c, dynamic hint}) =>
     RustLib.instance.api.getSumArrayTwinSse(a: a, b: b, c: c, hint: hint);
 
-// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<StaticGetterOnlyTwinSse>>
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StaticGetterOnlyTwinSse>>
 @sealed
 class StaticGetterOnlyTwinSse extends RustOpaque {
   StaticGetterOnlyTwinSse.dcoDecode(List<dynamic> wire)
