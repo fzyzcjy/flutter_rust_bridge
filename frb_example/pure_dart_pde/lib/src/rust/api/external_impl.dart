@@ -9,7 +9,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 // The type `__external_impl__53696d706c654f706171756545787465726e616c537472756374576974684d6574686f64` is not used by any `pub` functions, thus it is ignored.
 // The type `__external_impl__53696d706c655472616e736c617461626c6545787465726e616c537472756374576974684d6574686f64` is not used by any `pub` functions, thus it is ignored.
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<SimpleOpaqueExternalStructWithMethod>>
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<SimpleOpaqueExternalStructWithMethod>>
 @sealed
 class SimpleOpaqueExternalStructWithMethod extends RustOpaque {
   SimpleOpaqueExternalStructWithMethod.dcoDecode(List<dynamic> wire)

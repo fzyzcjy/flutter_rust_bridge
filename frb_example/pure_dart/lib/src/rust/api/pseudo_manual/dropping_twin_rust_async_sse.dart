@@ -6,7 +6,7 @@
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<DroppableTwinRustAsyncSse>>
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DroppableTwinRustAsyncSse>>
 @sealed
 class DroppableTwinRustAsyncSse extends RustOpaque {
   DroppableTwinRustAsyncSse.dcoDecode(List<dynamic> wire)

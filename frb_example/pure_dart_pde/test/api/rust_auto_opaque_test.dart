@@ -326,7 +326,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
         () async => rustAutoOpaqueBorrowAndMutBorrowTwinNormal(
             borrow: obj, mutBorrow: obj),
         'TwinNormal',
-        messageMatcherOnNative: matches(RegExp('Fail to.*borrow object')),
+        messageMatcherOnNative: matches(RegExp('Cannot.*borrow.*object')),
       );
     });
 
@@ -351,6 +351,36 @@ Future<void> main({bool skipRustLibInit = false}) async {
       final a = await rustAutoOpaqueReturnOwnTwinNormal(initial: 100);
       final b = await rustAutoOpaqueReturnOwnTwinNormal(initial: 200);
       expect(await rustAutoOpaqueBorrowAndBorrowTwinNormal(a: a, b: b), 300);
+    });
+  });
+
+  group('deadlock', () {
+    test('simple call', () async {
+      final a = await rustAutoOpaqueReturnOwnTwinNormal(initial: 100);
+      final b = await rustAutoOpaqueReturnOwnTwinNormal(initial: 200);
+      expect(await rustAutoOpaqueSleepTwinNormal(apple: a, orange: b), 300);
+    });
+
+    test('call both with same order', () async {
+      final a = await rustAutoOpaqueReturnOwnTwinNormal(initial: 100);
+      final b = await rustAutoOpaqueReturnOwnTwinNormal(initial: 200);
+
+      final future1 = rustAutoOpaqueSleepTwinNormal(apple: a, orange: b);
+      final future2 = rustAutoOpaqueSleepTwinNormal(apple: a, orange: b);
+
+      expect(await future1, 300);
+      expect(await future2, 300);
+    });
+
+    test('call both with reversed order', () async {
+      final a = await rustAutoOpaqueReturnOwnTwinNormal(initial: 100);
+      final b = await rustAutoOpaqueReturnOwnTwinNormal(initial: 200);
+
+      final future1 = rustAutoOpaqueSleepTwinNormal(apple: a, orange: b);
+      final future2 = rustAutoOpaqueSleepTwinNormal(apple: b, orange: a);
+
+      expect(await future1, 300);
+      expect(await future2, 300);
     });
   });
 }

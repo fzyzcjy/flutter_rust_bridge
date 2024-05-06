@@ -16,7 +16,7 @@ Future<SumWithTwinNormalArray3> getSumArrayTwinNormal(
         {required int a, required int b, required int c, dynamic hint}) =>
     RustLib.instance.api.getSumArrayTwinNormal(a: a, b: b, c: c, hint: hint);
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<StaticGetterOnlyTwinNormal>>
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StaticGetterOnlyTwinNormal>>
 @sealed
 class StaticGetterOnlyTwinNormal extends RustOpaque {
   StaticGetterOnlyTwinNormal.dcoDecode(List<dynamic> wire)

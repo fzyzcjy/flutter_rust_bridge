@@ -63,7 +63,7 @@ fn compute_api_method_query_name(
 ) -> String {
     lazy_static! {
         static ref FILTER: Regex =
-            Regex::new(r"^flutter_rust_bridge::for_generated::rust_async::RwLock<(.*)>$").unwrap();
+            Regex::new(r"^flutter_rust_bridge::for_generated::RustAutoOpaqueInner<(.*)>$").unwrap();
     }
 
     FILTER.replace_all(&ir.inner.0, "$1").to_string()

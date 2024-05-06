@@ -17,7 +17,7 @@ Future<SumWithTwinRustAsyncSseArray3> getSumArrayTwinRustAsyncSse(
     RustLib.instance.api
         .getSumArrayTwinRustAsyncSse(a: a, b: b, c: c, hint: hint);
 
-// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<StaticGetterOnlyTwinRustAsyncSse>>
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StaticGetterOnlyTwinRustAsyncSse>>
 @sealed
 class StaticGetterOnlyTwinRustAsyncSse extends RustOpaque {
   StaticGetterOnlyTwinRustAsyncSse.dcoDecode(List<dynamic> wire)
