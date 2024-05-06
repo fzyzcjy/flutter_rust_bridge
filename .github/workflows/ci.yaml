@@ -755,7 +755,7 @@ jobs:
           - frb_example--flutter_via_create
           # no `frb_example--flutter_via_integrate` since it is similar to `flutter_via_create`
         device:
-#          - "pixel"
+          - "pixel"
           - "Nexus 6"
         api-level: [ 29 ]
 
