@@ -745,8 +745,9 @@ jobs:
   # ref https://betterprogramming.pub/test-flutter-apps-on-android-with-github-actions-abdba2137b4
   test_flutter_native_android:
     name: 'Test :: Flutter :: Native:: Android'
-    # Must use MacOS because of reasons mentioned in `android-emulator-runner`'s readme.
-    runs-on: macos-latest
+#    # Must use MacOS because of reasons mentioned in `android-emulator-runner`'s readme.
+#    runs-on: macos-latest
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
@@ -776,6 +777,11 @@ jobs:
         with:
           distribution: 'zulu'
           java-version: "17.x"
+      - name: Enable KVM group perms
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
       - name: AVD cache
         uses: actions/cache@v3
         id: avd-cache
@@ -790,16 +796,16 @@ jobs:
         with:
           api-level: ${{ matrix.api-level }}
           force-avd-creation: false
-          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
-          disable-animations: false
+          # emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          # disable-animations: false
           script: echo "Generated AVD snapshot for caching."
 
       # execute
       - uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: ${{ matrix.api-level }}
-          emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim
-          arch: x86_64
+          # emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim
+          # arch: x86_64
           profile: ${{ matrix.device }}
           script: ./frb_internal test-flutter-native --package ${{ matrix.package }}
 
