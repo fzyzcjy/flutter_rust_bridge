@@ -7,43 +7,58 @@ import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 DateTime datetimeUtcTwinSync({required DateTime d, dynamic hint}) =>
-    RustLib.instance.api.datetimeUtcTwinSync(d: d, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualChronoTypeTwinSyncDatetimeUtcTwinSync(
+            d: d, hint: hint);
 
 DateTime datetimeLocalTwinSync({required DateTime d, dynamic hint}) =>
-    RustLib.instance.api.datetimeLocalTwinSync(d: d, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualChronoTypeTwinSyncDatetimeLocalTwinSync(
+            d: d, hint: hint);
 
 DateTime naivedatetimeTwinSync({required DateTime d, dynamic hint}) =>
-    RustLib.instance.api.naivedatetimeTwinSync(d: d, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualChronoTypeTwinSyncNaivedatetimeTwinSync(
+            d: d, hint: hint);
 
 DateTime? optionalEmptyDatetimeUtcTwinSync({DateTime? d, dynamic hint}) =>
-    RustLib.instance.api.optionalEmptyDatetimeUtcTwinSync(d: d, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualChronoTypeTwinSyncOptionalEmptyDatetimeUtcTwinSync(
+            d: d, hint: hint);
 
-Duration durationTwinSync({required Duration d, dynamic hint}) =>
-    RustLib.instance.api.durationTwinSync(d: d, hint: hint);
+Duration durationTwinSync({required Duration d, dynamic hint}) => RustLib
+    .instance.api
+    .crateApiPseudoManualChronoTypeTwinSyncDurationTwinSync(d: d, hint: hint);
 
 List<Duration> handleTimestampsTwinSync(
         {required List<DateTime> timestamps,
         required DateTime epoch,
         dynamic hint}) =>
-    RustLib.instance.api.handleTimestampsTwinSync(
-        timestamps: timestamps, epoch: epoch, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualChronoTypeTwinSyncHandleTimestampsTwinSync(
+            timestamps: timestamps, epoch: epoch, hint: hint);
 
 List<DateTime> handleDurationsTwinSync(
         {required List<Duration> durations,
         required DateTime since,
         dynamic hint}) =>
-    RustLib.instance.api.handleDurationsTwinSync(
-        durations: durations, since: since, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualChronoTypeTwinSyncHandleDurationsTwinSync(
+            durations: durations, since: since, hint: hint);
 
-TestChronoTwinSync testChronoTwinSync({dynamic hint}) =>
-    RustLib.instance.api.testChronoTwinSync(hint: hint);
+TestChronoTwinSync testChronoTwinSync({dynamic hint}) => RustLib.instance.api
+    .crateApiPseudoManualChronoTypeTwinSyncTestChronoTwinSync(hint: hint);
 
-TestChronoTwinSync testPreciseChronoTwinSync({dynamic hint}) =>
-    RustLib.instance.api.testPreciseChronoTwinSync(hint: hint);
+TestChronoTwinSync testPreciseChronoTwinSync({dynamic hint}) => RustLib
+    .instance.api
+    .crateApiPseudoManualChronoTypeTwinSyncTestPreciseChronoTwinSync(
+        hint: hint);
 
 Duration howLongDoesItTakeTwinSync(
         {required FeatureChronoTwinSync mine, dynamic hint}) =>
-    RustLib.instance.api.howLongDoesItTakeTwinSync(mine: mine, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualChronoTypeTwinSyncHowLongDoesItTakeTwinSync(
+            mine: mine, hint: hint);
 
 class FeatureChronoTwinSync {
   final DateTime utc;

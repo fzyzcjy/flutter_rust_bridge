@@ -7,19 +7,27 @@ import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 HideDataAnotherTwinSseMoi? syncOptionRustOpaqueTwinSseMoi({dynamic hint}) =>
-    RustLib.instance.api.syncOptionRustOpaqueTwinSseMoi(hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueSyncTwinSseMoiSyncOptionRustOpaqueTwinSseMoi(
+            hint: hint);
 
 HideDataAnotherTwinSseMoi syncCreateOpaqueTwinSseMoi({dynamic hint}) =>
-    RustLib.instance.api.syncCreateOpaqueTwinSseMoi(hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueSyncTwinSseMoiSyncCreateOpaqueTwinSseMoi(
+            hint: hint);
 
-NonCloneDataTwinSseMoi syncCreateNonCloneTwinSseMoi({dynamic hint}) =>
-    RustLib.instance.api.syncCreateNonCloneTwinSseMoi(hint: hint);
+NonCloneDataTwinSseMoi syncCreateNonCloneTwinSseMoi({dynamic hint}) => RustLib
+    .instance.api
+    .crateApiPseudoManualRustOpaqueSyncTwinSseMoiSyncCreateNonCloneTwinSseMoi(
+        hint: hint);
 
 /// Structure for testing the sync-mode RustOpaque code generator.
 /// FrbOpaqueSyncReturn must be only return type.
 /// FrbOpaqueSyncReturn must be without wrapper like Option<> Vec<> etc.
 FrbOpaqueSyncReturnTwinSseMoi frbSyncGeneratorTestTwinSseMoi({dynamic hint}) =>
-    RustLib.instance.api.frbSyncGeneratorTestTwinSseMoi(hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueSyncTwinSseMoiFrbSyncGeneratorTestTwinSseMoi(
+            hint: hint);
 
 // Rust type: RustOpaqueMoi<FrbOpaqueSyncReturnTwinSseMoi>
 @sealed

@@ -10,107 +10,150 @@ import 'mirror_twin_sync_sse.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<ApplicationSettings> getAppSettingsTwinRustAsync({dynamic hint}) =>
-    RustLib.instance.api.getAppSettingsTwinRustAsync(hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMirrorTwinRustAsyncGetAppSettingsTwinRustAsync(
+            hint: hint);
 
 Future<ApplicationSettings> getFallibleAppSettingsTwinRustAsync(
         {dynamic hint}) =>
-    RustLib.instance.api.getFallibleAppSettingsTwinRustAsync(hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMirrorTwinRustAsyncGetFallibleAppSettingsTwinRustAsync(
+            hint: hint);
 
 Future<bool> isAppEmbeddedTwinRustAsync(
         {required ApplicationSettings appSettings, dynamic hint}) =>
     RustLib.instance.api
-        .isAppEmbeddedTwinRustAsync(appSettings: appSettings, hint: hint);
+        .crateApiPseudoManualMirrorTwinRustAsyncIsAppEmbeddedTwinRustAsync(
+            appSettings: appSettings, hint: hint);
 
 Stream<ApplicationSettings> appSettingsStreamTwinRustAsync({dynamic hint}) =>
-    RustLib.instance.api.appSettingsStreamTwinRustAsync(hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMirrorTwinRustAsyncAppSettingsStreamTwinRustAsync(
+            hint: hint);
 
 Stream<List<ApplicationSettings>> appSettingsVecStreamTwinRustAsync(
         {dynamic hint}) =>
-    RustLib.instance.api.appSettingsVecStreamTwinRustAsync(hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMirrorTwinRustAsyncAppSettingsVecStreamTwinRustAsync(
+            hint: hint);
 
 Stream<MirrorStructTwinRustAsync> mirrorStructStreamTwinRustAsync(
         {dynamic hint}) =>
-    RustLib.instance.api.mirrorStructStreamTwinRustAsync(hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMirrorTwinRustAsyncMirrorStructStreamTwinRustAsync(
+            hint: hint);
 
 Stream<(ApplicationSettings, RawStringEnumMirrored)>
-    mirrorTupleStreamTwinRustAsync({dynamic hint}) =>
-        RustLib.instance.api.mirrorTupleStreamTwinRustAsync(hint: hint);
+    mirrorTupleStreamTwinRustAsync({dynamic hint}) => RustLib.instance.api
+        .crateApiPseudoManualMirrorTwinRustAsyncMirrorTupleStreamTwinRustAsync(
+            hint: hint);
 
-Future<ApplicationMessage> getMessageTwinRustAsync({dynamic hint}) =>
-    RustLib.instance.api.getMessageTwinRustAsync(hint: hint);
+Future<ApplicationMessage> getMessageTwinRustAsync({dynamic hint}) => RustLib
+    .instance.api
+    .crateApiPseudoManualMirrorTwinRustAsyncGetMessageTwinRustAsync(hint: hint);
 
 Future<Numbers> repeatNumberTwinRustAsync(
         {required int num, required int times, dynamic hint}) =>
     RustLib.instance.api
-        .repeatNumberTwinRustAsync(num: num, times: times, hint: hint);
+        .crateApiPseudoManualMirrorTwinRustAsyncRepeatNumberTwinRustAsync(
+            num: num, times: times, hint: hint);
 
 Future<Sequences> repeatSequenceTwinRustAsync(
         {required int seq, required int times, dynamic hint}) =>
     RustLib.instance.api
-        .repeatSequenceTwinRustAsync(seq: seq, times: times, hint: hint);
+        .crateApiPseudoManualMirrorTwinRustAsyncRepeatSequenceTwinRustAsync(
+            seq: seq, times: times, hint: hint);
 
 Future<int?> firstNumberTwinRustAsync({required Numbers nums, dynamic hint}) =>
-    RustLib.instance.api.firstNumberTwinRustAsync(nums: nums, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMirrorTwinRustAsyncFirstNumberTwinRustAsync(
+            nums: nums, hint: hint);
 
 Future<int?> firstSequenceTwinRustAsync(
         {required Sequences seqs, dynamic hint}) =>
-    RustLib.instance.api.firstSequenceTwinRustAsync(seqs: seqs, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMirrorTwinRustAsyncFirstSequenceTwinRustAsync(
+            seqs: seqs, hint: hint);
 
 Future<RawStringMirrored> testRawStringMirroredTwinRustAsync({dynamic hint}) =>
-    RustLib.instance.api.testRawStringMirroredTwinRustAsync(hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMirrorTwinRustAsyncTestRawStringMirroredTwinRustAsync(
+            hint: hint);
 
 Future<NestedRawStringMirrored> testNestedRawStringMirroredTwinRustAsync(
         {dynamic hint}) =>
-    RustLib.instance.api.testNestedRawStringMirroredTwinRustAsync(hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMirrorTwinRustAsyncTestNestedRawStringMirroredTwinRustAsync(
+            hint: hint);
 
 Future<RawStringEnumMirrored> testRawStringEnumMirroredTwinRustAsync(
         {required bool nested, dynamic hint}) =>
     RustLib.instance.api
-        .testRawStringEnumMirroredTwinRustAsync(nested: nested, hint: hint);
+        .crateApiPseudoManualMirrorTwinRustAsyncTestRawStringEnumMirroredTwinRustAsync(
+            nested: nested, hint: hint);
 
 Future<ListOfNestedRawStringMirrored>
-    testListOfRawNestedStringMirroredTwinRustAsync({dynamic hint}) =>
-        RustLib.instance.api
-            .testListOfRawNestedStringMirroredTwinRustAsync(hint: hint);
+    testListOfRawNestedStringMirroredTwinRustAsync({dynamic hint}) => RustLib
+        .instance.api
+        .crateApiPseudoManualMirrorTwinRustAsyncTestListOfRawNestedStringMirroredTwinRustAsync(
+            hint: hint);
 
 Future<List<RawStringMirrored>> testFallibleOfRawStringMirroredTwinRustAsync(
         {dynamic hint}) =>
     RustLib.instance.api
-        .testFallibleOfRawStringMirroredTwinRustAsync(hint: hint);
+        .crateApiPseudoManualMirrorTwinRustAsyncTestFallibleOfRawStringMirroredTwinRustAsync(
+            hint: hint);
 
 Future<List<RawStringEnumMirrored>> testListOfNestedEnumsMirroredTwinRustAsync(
         {dynamic hint}) =>
-    RustLib.instance.api.testListOfNestedEnumsMirroredTwinRustAsync(hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMirrorTwinRustAsyncTestListOfNestedEnumsMirroredTwinRustAsync(
+            hint: hint);
 
 Future<ContainsMirroredSubStructTwinRustAsync>
-    testContainsMirroredSubStructTwinRustAsync({dynamic hint}) =>
-        RustLib.instance.api
-            .testContainsMirroredSubStructTwinRustAsync(hint: hint);
+    testContainsMirroredSubStructTwinRustAsync({dynamic hint}) => RustLib
+        .instance.api
+        .crateApiPseudoManualMirrorTwinRustAsyncTestContainsMirroredSubStructTwinRustAsync(
+            hint: hint);
 
 Future<StructWithHashMap> testHashmapWithMirroredValueTwinRustAsync(
         {dynamic hint}) =>
-    RustLib.instance.api.testHashmapWithMirroredValueTwinRustAsync(hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMirrorTwinRustAsyncTestHashmapWithMirroredValueTwinRustAsync(
+            hint: hint);
 
 Stream<ApplicationMode> mirrorEnumStreamTwinRustAsync({dynamic hint}) =>
-    RustLib.instance.api.mirrorEnumStreamTwinRustAsync(hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMirrorTwinRustAsyncMirrorEnumStreamTwinRustAsync(
+            hint: hint);
 
 Stream<ApplicationMode?> mirrorOptionEnumStreamTwinRustAsync({dynamic hint}) =>
-    RustLib.instance.api.mirrorOptionEnumStreamTwinRustAsync(hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMirrorTwinRustAsyncMirrorOptionEnumStreamTwinRustAsync(
+            hint: hint);
 
 Stream<List<ApplicationMode>> mirrorVecEnumStreamTwinRustAsync(
         {dynamic hint}) =>
-    RustLib.instance.api.mirrorVecEnumStreamTwinRustAsync(hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMirrorTwinRustAsyncMirrorVecEnumStreamTwinRustAsync(
+            hint: hint);
 
 Stream<Map<int, ApplicationMode>> mirrorMapEnumStreamTwinRustAsync(
         {dynamic hint}) =>
-    RustLib.instance.api.mirrorMapEnumStreamTwinRustAsync(hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMirrorTwinRustAsyncMirrorMapEnumStreamTwinRustAsync(
+            hint: hint);
 
 Stream<Set<ApplicationMode>> mirrorSetEnumStreamTwinRustAsync({dynamic hint}) =>
-    RustLib.instance.api.mirrorSetEnumStreamTwinRustAsync(hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMirrorTwinRustAsyncMirrorSetEnumStreamTwinRustAsync(
+            hint: hint);
 
 Stream<ApplicationModeArray2> mirrorArrayEnumStreamTwinRustAsync(
         {dynamic hint}) =>
-    RustLib.instance.api.mirrorArrayEnumStreamTwinRustAsync(hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMirrorTwinRustAsyncMirrorArrayEnumStreamTwinRustAsync(
+            hint: hint);
 
 class AnotherTwinRustAsync {
   final String a;

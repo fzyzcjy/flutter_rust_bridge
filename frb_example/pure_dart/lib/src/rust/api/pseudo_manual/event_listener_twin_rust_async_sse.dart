@@ -10,15 +10,20 @@ part 'event_listener_twin_rust_async_sse.freezed.dart';
 
 Future<Stream<EventTwinRustAsyncSse>> registerEventListenerTwinRustAsyncSse(
         {dynamic hint}) =>
-    RustLib.instance.api.registerEventListenerTwinRustAsyncSse(hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualEventListenerTwinRustAsyncSseRegisterEventListenerTwinRustAsyncSse(
+            hint: hint);
 
-Future<void> closeEventListenerTwinRustAsyncSse({dynamic hint}) =>
-    RustLib.instance.api.closeEventListenerTwinRustAsyncSse(hint: hint);
+Future<void> closeEventListenerTwinRustAsyncSse({dynamic hint}) => RustLib
+    .instance.api
+    .crateApiPseudoManualEventListenerTwinRustAsyncSseCloseEventListenerTwinRustAsyncSse(
+        hint: hint);
 
 Future<void> createEventTwinRustAsyncSse(
         {required String address, required String payload, dynamic hint}) =>
-    RustLib.instance.api.createEventTwinRustAsyncSse(
-        address: address, payload: payload, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualEventListenerTwinRustAsyncSseCreateEventTwinRustAsyncSse(
+            address: address, payload: payload, hint: hint);
 
 @freezed
 class EventTwinRustAsyncSse with _$EventTwinRustAsyncSse {
@@ -29,5 +34,6 @@ class EventTwinRustAsyncSse with _$EventTwinRustAsyncSse {
   }) = _EventTwinRustAsyncSse;
   Future<String> asStringTwinRustAsyncSse({dynamic hint}) => RustLib
       .instance.api
-      .eventTwinRustAsyncSseAsStringTwinRustAsyncSse(that: this, hint: hint);
+      .crateApiPseudoManualEventListenerTwinRustAsyncSseEventTwinRustAsyncSseAsStringTwinRustAsyncSse(
+          that: this, hint: hint);
 }

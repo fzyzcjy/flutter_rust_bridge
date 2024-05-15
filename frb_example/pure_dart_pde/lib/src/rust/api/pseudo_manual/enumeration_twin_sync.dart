@@ -11,43 +11,62 @@ part 'enumeration_twin_sync.freezed.dart';
 
 EnumSimpleTwinSync funcEnumSimpleTwinSync(
         {required EnumSimpleTwinSync arg, dynamic hint}) =>
-    RustLib.instance.api.funcEnumSimpleTwinSync(arg: arg, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualEnumerationTwinSyncFuncEnumSimpleTwinSync(
+            arg: arg, hint: hint);
 
 EnumWithItemMixedTwinSync funcEnumWithItemMixedTwinSync(
         {required EnumWithItemMixedTwinSync arg, dynamic hint}) =>
-    RustLib.instance.api.funcEnumWithItemMixedTwinSync(arg: arg, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualEnumerationTwinSyncFuncEnumWithItemMixedTwinSync(
+            arg: arg, hint: hint);
 
 EnumWithItemTupleTwinSync funcEnumWithItemTupleTwinSync(
         {required EnumWithItemTupleTwinSync arg, dynamic hint}) =>
-    RustLib.instance.api.funcEnumWithItemTupleTwinSync(arg: arg, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualEnumerationTwinSyncFuncEnumWithItemTupleTwinSync(
+            arg: arg, hint: hint);
 
 EnumWithItemStructTwinSync funcEnumWithItemStructTwinSync(
         {required EnumWithItemStructTwinSync arg, dynamic hint}) =>
-    RustLib.instance.api.funcEnumWithItemStructTwinSync(arg: arg, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualEnumerationTwinSyncFuncEnumWithItemStructTwinSync(
+            arg: arg, hint: hint);
 
 EnumWithDiscriminantTwinSync funcEnumWithDiscriminantTwinSync(
         {required EnumWithDiscriminantTwinSync arg, dynamic hint}) =>
-    RustLib.instance.api.funcEnumWithDiscriminantTwinSync(arg: arg, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualEnumerationTwinSyncFuncEnumWithDiscriminantTwinSync(
+            arg: arg, hint: hint);
 
 Uint8List printNoteTwinSync({required NoteTwinSync note, dynamic hint}) =>
-    RustLib.instance.api.printNoteTwinSync(note: note, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualEnumerationTwinSyncPrintNoteTwinSync(
+            note: note, hint: hint);
 
 WeekdaysTwinSync? handleReturnEnumTwinSync(
         {required String input, dynamic hint}) =>
-    RustLib.instance.api.handleReturnEnumTwinSync(input: input, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualEnumerationTwinSyncHandleReturnEnumTwinSync(
+            input: input, hint: hint);
 
 WeekdaysTwinSync handleEnumParameterTwinSync(
         {required WeekdaysTwinSync weekday, dynamic hint}) =>
     RustLib.instance.api
-        .handleEnumParameterTwinSync(weekday: weekday, hint: hint);
+        .crateApiPseudoManualEnumerationTwinSyncHandleEnumParameterTwinSync(
+            weekday: weekday, hint: hint);
 
 MeasureTwinSync? multiplyByTenTwinSync(
         {required MeasureTwinSync measure, dynamic hint}) =>
-    RustLib.instance.api.multiplyByTenTwinSync(measure: measure, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualEnumerationTwinSyncMultiplyByTenTwinSync(
+            measure: measure, hint: hint);
 
 KitchenSinkTwinSync handleEnumStructTwinSync(
         {required KitchenSinkTwinSync val, dynamic hint}) =>
-    RustLib.instance.api.handleEnumStructTwinSync(val: val, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualEnumerationTwinSyncHandleEnumStructTwinSync(
+            val: val, hint: hint);
 
 @freezed
 sealed class DistanceTwinSync with _$DistanceTwinSync {

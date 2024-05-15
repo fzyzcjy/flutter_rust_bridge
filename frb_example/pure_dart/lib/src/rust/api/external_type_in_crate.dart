@@ -11,15 +11,18 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<bool> useImportedStructTwinNormal(
         {required MyStruct myStruct, dynamic hint}) =>
-    RustLib.instance.api
-        .useImportedStructTwinNormal(myStruct: myStruct, hint: hint);
+    RustLib.instance.api.crateApiExternalTypeInCrateUseImportedStructTwinNormal(
+        myStruct: myStruct, hint: hint);
 
 Future<bool> useImportedEnumTwinNormal(
         {required MyEnum myEnum, dynamic hint}) =>
-    RustLib.instance.api.useImportedEnumTwinNormal(myEnum: myEnum, hint: hint);
+    RustLib.instance.api.crateApiExternalTypeInCrateUseImportedEnumTwinNormal(
+        myEnum: myEnum, hint: hint);
 
 Future<OldSimpleStruct> callOldModuleSystemTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.callOldModuleSystemTwinNormal(hint: hint);
+    RustLib.instance.api
+        .crateApiExternalTypeInCrateCallOldModuleSystemTwinNormal(hint: hint);
 
 Future<NewSimpleStruct> callNewModuleSystemTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.callNewModuleSystemTwinNormal(hint: hint);
+    RustLib.instance.api
+        .crateApiExternalTypeInCrateCallNewModuleSystemTwinNormal(hint: hint);

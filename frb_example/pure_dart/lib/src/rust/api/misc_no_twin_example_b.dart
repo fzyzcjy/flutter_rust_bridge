@@ -8,7 +8,8 @@ import 'misc_no_twin_example_a.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<void> sameFunctionNameInDifferentFiles({dynamic hint}) =>
-    RustLib.instance.api.sameFunctionNameInDifferentFiles(hint: hint);
+    RustLib.instance.api
+        .crateApiMiscNoTwinExampleBSameFunctionNameInDifferentFiles(hint: hint);
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructInMiscNoTwinExampleB>>
 @sealed
@@ -31,9 +32,10 @@ class StructInMiscNoTwinExampleB extends RustOpaque {
   Future<StructInMiscNoTwinExampleA> getStructInMiscNoTwinExampleA(
           {dynamic hint}) =>
       RustLib.instance.api
-          .structInMiscNoTwinExampleBGetStructInMiscNoTwinExampleA(
+          .crateApiMiscNoTwinExampleBStructInMiscNoTwinExampleBGetStructInMiscNoTwinExampleA(
               that: this, hint: hint);
 
   Future<void> sampleFunctionB({dynamic hint}) => RustLib.instance.api
-      .structInMiscNoTwinExampleBSampleFunctionB(that: this, hint: hint);
+      .crateApiMiscNoTwinExampleBStructInMiscNoTwinExampleBSampleFunctionB(
+          that: this, hint: hint);
 }

@@ -8,12 +8,14 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<RawStringItemStructTwinNormal> testRawStringItemStructTwinNormal(
         {dynamic hint}) =>
-    RustLib.instance.api.testRawStringItemStructTwinNormal(hint: hint);
+    RustLib.instance.api
+        .crateApiRawStringTestRawStringItemStructTwinNormal(hint: hint);
 
 Future<MoreThanJustOneRawStringStructTwinNormal>
     testMoreThanJustOneRawStringStructTwinNormal({dynamic hint}) =>
         RustLib.instance.api
-            .testMoreThanJustOneRawStringStructTwinNormal(hint: hint);
+            .crateApiRawStringTestMoreThanJustOneRawStringStructTwinNormal(
+                hint: hint);
 
 class MoreThanJustOneRawStringStructTwinNormal {
   final String regular;

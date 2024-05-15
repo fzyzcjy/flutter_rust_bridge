@@ -7,16 +7,16 @@ import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<void> makeStackBufferOverflow({dynamic hint}) =>
-    RustLib.instance.api.makeStackBufferOverflow(hint: hint);
+    RustLib.instance.api.crateApiSimpleMakeStackBufferOverflow(hint: hint);
 
 Future<void> makeHeapUseAfterFree({dynamic hint}) =>
-    RustLib.instance.api.makeHeapUseAfterFree(hint: hint);
+    RustLib.instance.api.crateApiSimpleMakeHeapUseAfterFree(hint: hint);
 
 Future<void> makeUseOfUninitializedValue({dynamic hint}) =>
-    RustLib.instance.api.makeUseOfUninitializedValue(hint: hint);
+    RustLib.instance.api.crateApiSimpleMakeUseOfUninitializedValue(hint: hint);
 
 Future<void> makeMemoryLeak({dynamic hint}) =>
-    RustLib.instance.api.makeMemoryLeak(hint: hint);
+    RustLib.instance.api.crateApiSimpleMakeMemoryLeak(hint: hint);
 
 Future<void> makeDataRace({dynamic hint}) =>
-    RustLib.instance.api.makeDataRace(hint: hint);
+    RustLib.instance.api.crateApiSimpleMakeDataRace(hint: hint);

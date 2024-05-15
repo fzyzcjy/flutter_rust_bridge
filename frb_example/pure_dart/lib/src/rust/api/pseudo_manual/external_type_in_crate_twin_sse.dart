@@ -12,13 +12,20 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 Future<bool> useImportedStructTwinSse(
         {required MyStruct myStruct, dynamic hint}) =>
     RustLib.instance.api
-        .useImportedStructTwinSse(myStruct: myStruct, hint: hint);
+        .crateApiPseudoManualExternalTypeInCrateTwinSseUseImportedStructTwinSse(
+            myStruct: myStruct, hint: hint);
 
 Future<bool> useImportedEnumTwinSse({required MyEnum myEnum, dynamic hint}) =>
-    RustLib.instance.api.useImportedEnumTwinSse(myEnum: myEnum, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualExternalTypeInCrateTwinSseUseImportedEnumTwinSse(
+            myEnum: myEnum, hint: hint);
 
-Future<OldSimpleStruct> callOldModuleSystemTwinSse({dynamic hint}) =>
-    RustLib.instance.api.callOldModuleSystemTwinSse(hint: hint);
+Future<OldSimpleStruct> callOldModuleSystemTwinSse({dynamic hint}) => RustLib
+    .instance.api
+    .crateApiPseudoManualExternalTypeInCrateTwinSseCallOldModuleSystemTwinSse(
+        hint: hint);
 
-Future<NewSimpleStruct> callNewModuleSystemTwinSse({dynamic hint}) =>
-    RustLib.instance.api.callNewModuleSystemTwinSse(hint: hint);
+Future<NewSimpleStruct> callNewModuleSystemTwinSse({dynamic hint}) => RustLib
+    .instance.api
+    .crateApiPseudoManualExternalTypeInCrateTwinSseCallNewModuleSystemTwinSse(
+        hint: hint);

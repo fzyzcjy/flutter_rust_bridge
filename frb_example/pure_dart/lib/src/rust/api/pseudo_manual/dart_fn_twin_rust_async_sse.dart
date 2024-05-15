@@ -9,12 +9,14 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 Future<void> rustCallDartSimpleTwinRustAsyncSse(
         {required FutureOr<void> Function() callback, dynamic hint}) =>
     RustLib.instance.api
-        .rustCallDartSimpleTwinRustAsyncSse(callback: callback, hint: hint);
+        .crateApiPseudoManualDartFnTwinRustAsyncSseRustCallDartSimpleTwinRustAsyncSse(
+            callback: callback, hint: hint);
 
 Future<void> rustCallDartOneArgTwinRustAsyncSse(
         {required FutureOr<void> Function(String) callback, dynamic hint}) =>
     RustLib.instance.api
-        .rustCallDartOneArgTwinRustAsyncSse(callback: callback, hint: hint);
+        .crateApiPseudoManualDartFnTwinRustAsyncSseRustCallDartOneArgTwinRustAsyncSse(
+            callback: callback, hint: hint);
 
 Future<void> rustCallDartTwoArgsTwinRustAsyncSse(
         {required FutureOr<void> Function(
@@ -22,12 +24,14 @@ Future<void> rustCallDartTwoArgsTwinRustAsyncSse(
             callback,
         dynamic hint}) =>
     RustLib.instance.api
-        .rustCallDartTwoArgsTwinRustAsyncSse(callback: callback, hint: hint);
+        .crateApiPseudoManualDartFnTwinRustAsyncSseRustCallDartTwoArgsTwinRustAsyncSse(
+            callback: callback, hint: hint);
 
 Future<void> rustCallDartReturnTwinRustAsyncSse(
         {required FutureOr<String> Function() callback, dynamic hint}) =>
     RustLib.instance.api
-        .rustCallDartReturnTwinRustAsyncSse(callback: callback, hint: hint);
+        .crateApiPseudoManualDartFnTwinRustAsyncSseRustCallDartReturnTwinRustAsyncSse(
+            callback: callback, hint: hint);
 
 Future<void> rustCallDartLoopbackTwinRustAsyncSse(
         {required FutureOr<DemoStructForRustCallDartTwinRustAsyncSse> Function(
@@ -35,26 +39,30 @@ Future<void> rustCallDartLoopbackTwinRustAsyncSse(
             callback,
         dynamic hint}) =>
     RustLib.instance.api
-        .rustCallDartLoopbackTwinRustAsyncSse(callback: callback, hint: hint);
+        .crateApiPseudoManualDartFnTwinRustAsyncSseRustCallDartLoopbackTwinRustAsyncSse(
+            callback: callback, hint: hint);
 
 Future<void> rustCallDartWithDartOpaqueArgTwinRustAsyncSse(
         {required Object input,
         required FutureOr<void> Function(Object) callback,
         dynamic hint}) =>
-    RustLib.instance.api.rustCallDartWithDartOpaqueArgTwinRustAsyncSse(
-        input: input, callback: callback, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualDartFnTwinRustAsyncSseRustCallDartWithDartOpaqueArgTwinRustAsyncSse(
+            input: input, callback: callback, hint: hint);
 
 Future<Object> rustCallDartWithDartOpaqueResultTwinRustAsyncSse(
         {required FutureOr<Object> Function() callback, dynamic hint}) =>
-    RustLib.instance.api.rustCallDartWithDartOpaqueResultTwinRustAsyncSse(
-        callback: callback, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualDartFnTwinRustAsyncSseRustCallDartWithDartOpaqueResultTwinRustAsyncSse(
+            callback: callback, hint: hint);
 
 Future<void> rustCallDartMultiTimesTwinRustAsyncSse(
         {required FutureOr<void> Function() callback,
         required int numTimes,
         dynamic hint}) =>
-    RustLib.instance.api.rustCallDartMultiTimesTwinRustAsyncSse(
-        callback: callback, numTimes: numTimes, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualDartFnTwinRustAsyncSseRustCallDartMultiTimesTwinRustAsyncSse(
+            callback: callback, numTimes: numTimes, hint: hint);
 
 class DemoStructForRustCallDartTwinRustAsyncSse {
   final String name;

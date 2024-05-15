@@ -65,7 +65,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  Future<Uint8List> drawMandelbrot(
+  Future<Uint8List> crateApiMandelbrotDrawMandelbrot(
       {required Size imageSize,
       required Point zoomPoint,
       required double scale,
@@ -82,7 +82,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
-  Future<Uint8List> drawMandelbrot(
+  Future<Uint8List> crateApiMandelbrotDrawMandelbrot(
       {required Size imageSize,
       required Point zoomPoint,
       required double scale,
@@ -102,14 +102,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_list_prim_u_8_strict,
         decodeErrorData: sse_decode_AnyhowException,
       ),
-      constMeta: kDrawMandelbrotConstMeta,
+      constMeta: kCrateApiMandelbrotDrawMandelbrotConstMeta,
       argValues: [imageSize, zoomPoint, scale, numThreads],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kDrawMandelbrotConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateApiMandelbrotDrawMandelbrotConstMeta =>
+      const TaskConstMeta(
         debugName: "draw_mandelbrot",
         argNames: ["imageSize", "zoomPoint", "scale", "numThreads"],
       );

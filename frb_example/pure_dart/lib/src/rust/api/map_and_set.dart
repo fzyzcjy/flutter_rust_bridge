@@ -11,37 +11,42 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<Map<int, int>> funcHashMapI32I32TwinNormal(
         {required Map<int, int> arg, dynamic hint}) =>
-    RustLib.instance.api.funcHashMapI32I32TwinNormal(arg: arg, hint: hint);
+    RustLib.instance.api
+        .crateApiMapAndSetFuncHashMapI32I32TwinNormal(arg: arg, hint: hint);
 
 Future<Set<int>> funcHashSetI32TwinNormal(
         {required Set<int> arg, dynamic hint}) =>
-    RustLib.instance.api.funcHashSetI32TwinNormal(arg: arg, hint: hint);
+    RustLib.instance.api
+        .crateApiMapAndSetFuncHashSetI32TwinNormal(arg: arg, hint: hint);
 
 Future<Map<String, String>> funcHashMapStringStringTwinNormal(
         {required Map<String, String> arg, dynamic hint}) =>
-    RustLib.instance.api
-        .funcHashMapStringStringTwinNormal(arg: arg, hint: hint);
+    RustLib.instance.api.crateApiMapAndSetFuncHashMapStringStringTwinNormal(
+        arg: arg, hint: hint);
 
 Future<Set<String>> funcHashSetStringTwinNormal(
         {required Set<String> arg, dynamic hint}) =>
-    RustLib.instance.api.funcHashSetStringTwinNormal(arg: arg, hint: hint);
+    RustLib.instance.api
+        .crateApiMapAndSetFuncHashSetStringTwinNormal(arg: arg, hint: hint);
 
 Future<Map<String, Uint8List>> funcHashMapStringBytesTwinNormal(
         {required Map<String, Uint8List> arg, dynamic hint}) =>
-    RustLib.instance.api.funcHashMapStringBytesTwinNormal(arg: arg, hint: hint);
+    RustLib.instance.api.crateApiMapAndSetFuncHashMapStringBytesTwinNormal(
+        arg: arg, hint: hint);
 
 Future<Map<String, MySize>> funcHashMapStringStructTwinNormal(
         {required Map<String, MySize> arg, dynamic hint}) =>
-    RustLib.instance.api
-        .funcHashMapStringStructTwinNormal(arg: arg, hint: hint);
+    RustLib.instance.api.crateApiMapAndSetFuncHashMapStringStructTwinNormal(
+        arg: arg, hint: hint);
 
 Future<Map<String, EnumSimpleTwinNormal>> funcHashMapStringSimpleEnumTwinNormal(
         {required Map<String, EnumSimpleTwinNormal> arg, dynamic hint}) =>
-    RustLib.instance.api
-        .funcHashMapStringSimpleEnumTwinNormal(arg: arg, hint: hint);
+    RustLib.instance.api.crateApiMapAndSetFuncHashMapStringSimpleEnumTwinNormal(
+        arg: arg, hint: hint);
 
 Future<Map<String, KitchenSinkTwinNormal>>
     funcHashMapStringComplexEnumTwinNormal(
             {required Map<String, KitchenSinkTwinNormal> arg, dynamic hint}) =>
         RustLib.instance.api
-            .funcHashMapStringComplexEnumTwinNormal(arg: arg, hint: hint);
+            .crateApiMapAndSetFuncHashMapStringComplexEnumTwinNormal(
+                arg: arg, hint: hint);

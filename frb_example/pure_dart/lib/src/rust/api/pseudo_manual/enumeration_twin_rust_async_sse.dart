@@ -11,53 +11,65 @@ part 'enumeration_twin_rust_async_sse.freezed.dart';
 
 Future<EnumSimpleTwinRustAsyncSse> funcEnumSimpleTwinRustAsyncSse(
         {required EnumSimpleTwinRustAsyncSse arg, dynamic hint}) =>
-    RustLib.instance.api.funcEnumSimpleTwinRustAsyncSse(arg: arg, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualEnumerationTwinRustAsyncSseFuncEnumSimpleTwinRustAsyncSse(
+            arg: arg, hint: hint);
 
 Future<EnumWithItemMixedTwinRustAsyncSse> funcEnumWithItemMixedTwinRustAsyncSse(
         {required EnumWithItemMixedTwinRustAsyncSse arg, dynamic hint}) =>
     RustLib.instance.api
-        .funcEnumWithItemMixedTwinRustAsyncSse(arg: arg, hint: hint);
+        .crateApiPseudoManualEnumerationTwinRustAsyncSseFuncEnumWithItemMixedTwinRustAsyncSse(
+            arg: arg, hint: hint);
 
 Future<EnumWithItemTupleTwinRustAsyncSse> funcEnumWithItemTupleTwinRustAsyncSse(
         {required EnumWithItemTupleTwinRustAsyncSse arg, dynamic hint}) =>
     RustLib.instance.api
-        .funcEnumWithItemTupleTwinRustAsyncSse(arg: arg, hint: hint);
+        .crateApiPseudoManualEnumerationTwinRustAsyncSseFuncEnumWithItemTupleTwinRustAsyncSse(
+            arg: arg, hint: hint);
 
-Future<EnumWithItemStructTwinRustAsyncSse>
-    funcEnumWithItemStructTwinRustAsyncSse(
-            {required EnumWithItemStructTwinRustAsyncSse arg, dynamic hint}) =>
-        RustLib.instance.api
-            .funcEnumWithItemStructTwinRustAsyncSse(arg: arg, hint: hint);
+Future<
+    EnumWithItemStructTwinRustAsyncSse> funcEnumWithItemStructTwinRustAsyncSse(
+        {required EnumWithItemStructTwinRustAsyncSse arg, dynamic hint}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualEnumerationTwinRustAsyncSseFuncEnumWithItemStructTwinRustAsyncSse(
+            arg: arg, hint: hint);
 
-Future<EnumWithDiscriminantTwinRustAsyncSse>
-    funcEnumWithDiscriminantTwinRustAsyncSse(
-            {required EnumWithDiscriminantTwinRustAsyncSse arg,
-            dynamic hint}) =>
-        RustLib.instance.api
-            .funcEnumWithDiscriminantTwinRustAsyncSse(arg: arg, hint: hint);
+Future<
+    EnumWithDiscriminantTwinRustAsyncSse> funcEnumWithDiscriminantTwinRustAsyncSse(
+        {required EnumWithDiscriminantTwinRustAsyncSse arg, dynamic hint}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualEnumerationTwinRustAsyncSseFuncEnumWithDiscriminantTwinRustAsyncSse(
+            arg: arg, hint: hint);
 
 Future<Uint8List> printNoteTwinRustAsyncSse(
         {required NoteTwinRustAsyncSse note, dynamic hint}) =>
-    RustLib.instance.api.printNoteTwinRustAsyncSse(note: note, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualEnumerationTwinRustAsyncSsePrintNoteTwinRustAsyncSse(
+            note: note, hint: hint);
 
 Future<WeekdaysTwinRustAsyncSse?> handleReturnEnumTwinRustAsyncSse(
         {required String input, dynamic hint}) =>
     RustLib.instance.api
-        .handleReturnEnumTwinRustAsyncSse(input: input, hint: hint);
+        .crateApiPseudoManualEnumerationTwinRustAsyncSseHandleReturnEnumTwinRustAsyncSse(
+            input: input, hint: hint);
 
 Future<WeekdaysTwinRustAsyncSse> handleEnumParameterTwinRustAsyncSse(
         {required WeekdaysTwinRustAsyncSse weekday, dynamic hint}) =>
     RustLib.instance.api
-        .handleEnumParameterTwinRustAsyncSse(weekday: weekday, hint: hint);
+        .crateApiPseudoManualEnumerationTwinRustAsyncSseHandleEnumParameterTwinRustAsyncSse(
+            weekday: weekday, hint: hint);
 
 Future<MeasureTwinRustAsyncSse?> multiplyByTenTwinRustAsyncSse(
         {required MeasureTwinRustAsyncSse measure, dynamic hint}) =>
     RustLib.instance.api
-        .multiplyByTenTwinRustAsyncSse(measure: measure, hint: hint);
+        .crateApiPseudoManualEnumerationTwinRustAsyncSseMultiplyByTenTwinRustAsyncSse(
+            measure: measure, hint: hint);
 
 Future<KitchenSinkTwinRustAsyncSse> handleEnumStructTwinRustAsyncSse(
         {required KitchenSinkTwinRustAsyncSse val, dynamic hint}) =>
-    RustLib.instance.api.handleEnumStructTwinRustAsyncSse(val: val, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualEnumerationTwinRustAsyncSseHandleEnumStructTwinRustAsyncSse(
+            val: val, hint: hint);
 
 @freezed
 sealed class DistanceTwinRustAsyncSse with _$DistanceTwinRustAsyncSse {

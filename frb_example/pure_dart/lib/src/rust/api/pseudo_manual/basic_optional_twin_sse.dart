@@ -9,83 +9,99 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<int?> exampleBasicOptionalTypeI8TwinSse({int? arg, dynamic hint}) =>
     RustLib.instance.api
-        .exampleBasicOptionalTypeI8TwinSse(arg: arg, hint: hint);
+        .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeI8TwinSse(
+            arg: arg, hint: hint);
 
 Future<int?> exampleBasicOptionalTypeI16TwinSse({int? arg, dynamic hint}) =>
     RustLib.instance.api
-        .exampleBasicOptionalTypeI16TwinSse(arg: arg, hint: hint);
+        .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeI16TwinSse(
+            arg: arg, hint: hint);
 
 Future<int?> exampleBasicOptionalTypeI32TwinSse({int? arg, dynamic hint}) =>
     RustLib.instance.api
-        .exampleBasicOptionalTypeI32TwinSse(arg: arg, hint: hint);
+        .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeI32TwinSse(
+            arg: arg, hint: hint);
 
 Future<int?> exampleBasicOptionalTypeI64TwinSse({int? arg, dynamic hint}) =>
     RustLib.instance.api
-        .exampleBasicOptionalTypeI64TwinSse(arg: arg, hint: hint);
+        .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeI64TwinSse(
+            arg: arg, hint: hint);
 
 Future<int?> exampleBasicOptionalTypeU8TwinSse({int? arg, dynamic hint}) =>
     RustLib.instance.api
-        .exampleBasicOptionalTypeU8TwinSse(arg: arg, hint: hint);
+        .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeU8TwinSse(
+            arg: arg, hint: hint);
 
 Future<int?> exampleBasicOptionalTypeU16TwinSse({int? arg, dynamic hint}) =>
     RustLib.instance.api
-        .exampleBasicOptionalTypeU16TwinSse(arg: arg, hint: hint);
+        .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeU16TwinSse(
+            arg: arg, hint: hint);
 
 Future<int?> exampleBasicOptionalTypeU32TwinSse({int? arg, dynamic hint}) =>
     RustLib.instance.api
-        .exampleBasicOptionalTypeU32TwinSse(arg: arg, hint: hint);
+        .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeU32TwinSse(
+            arg: arg, hint: hint);
 
 Future<int?> exampleBasicOptionalTypeU64TwinSse({int? arg, dynamic hint}) =>
     RustLib.instance.api
-        .exampleBasicOptionalTypeU64TwinSse(arg: arg, hint: hint);
+        .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeU64TwinSse(
+            arg: arg, hint: hint);
 
 Future<int?> exampleBasicOptionalTypeIsizeTwinSse({int? arg, dynamic hint}) =>
     RustLib.instance.api
-        .exampleBasicOptionalTypeIsizeTwinSse(arg: arg, hint: hint);
+        .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeIsizeTwinSse(
+            arg: arg, hint: hint);
 
 Future<int?> exampleBasicOptionalTypeUsizeTwinSse({int? arg, dynamic hint}) =>
     RustLib.instance.api
-        .exampleBasicOptionalTypeUsizeTwinSse(arg: arg, hint: hint);
+        .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeUsizeTwinSse(
+            arg: arg, hint: hint);
 
 Future<double?> exampleBasicOptionalTypeF32TwinSse(
         {double? arg, dynamic hint}) =>
     RustLib.instance.api
-        .exampleBasicOptionalTypeF32TwinSse(arg: arg, hint: hint);
+        .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeF32TwinSse(
+            arg: arg, hint: hint);
 
 Future<double?> exampleBasicOptionalTypeF64TwinSse(
         {double? arg, dynamic hint}) =>
     RustLib.instance.api
-        .exampleBasicOptionalTypeF64TwinSse(arg: arg, hint: hint);
+        .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeF64TwinSse(
+            arg: arg, hint: hint);
 
 Future<bool?> exampleBasicOptionalTypeBoolTwinSse({bool? arg, dynamic hint}) =>
     RustLib.instance.api
-        .exampleBasicOptionalTypeBoolTwinSse(arg: arg, hint: hint);
+        .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeBoolTwinSse(
+            arg: arg, hint: hint);
 
 Future<String?> exampleBasicOptionalTypeStringTwinSse(
         {String? arg, dynamic hint}) =>
     RustLib.instance.api
-        .exampleBasicOptionalTypeStringTwinSse(arg: arg, hint: hint);
+        .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeStringTwinSse(
+            arg: arg, hint: hint);
 
 Future<Uint8List?> exampleBasicOptionalTypeBytesTwinSse(
         {Uint8List? arg, dynamic hint}) =>
     RustLib.instance.api
-        .exampleBasicOptionalTypeBytesTwinSse(arg: arg, hint: hint);
+        .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeBytesTwinSse(
+            arg: arg, hint: hint);
 
 Future<BasicPrimitiveEnumTwinSse?>
     exampleBasicOptionalTypeBasicPrimitiveEnumTwinSseTwinSse(
             {BasicPrimitiveEnumTwinSse? arg, dynamic hint}) =>
         RustLib.instance.api
-            .exampleBasicOptionalTypeBasicPrimitiveEnumTwinSseTwinSse(
+            .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeBasicPrimitiveEnumTwinSseTwinSse(
                 arg: arg, hint: hint);
 
 Future<BasicGeneralEnumTwinSse?>
     exampleBasicOptionalTypeBasicGeneralEnumTwinSseTwinSse(
             {BasicGeneralEnumTwinSse? arg, dynamic hint}) =>
         RustLib.instance.api
-            .exampleBasicOptionalTypeBasicGeneralEnumTwinSseTwinSse(
+            .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeBasicGeneralEnumTwinSseTwinSse(
                 arg: arg, hint: hint);
 
 Future<BasicStructTwinSse?> exampleBasicOptionalTypeBasicStructTwinSseTwinSse(
         {BasicStructTwinSse? arg, dynamic hint}) =>
-    RustLib.instance.api.exampleBasicOptionalTypeBasicStructTwinSseTwinSse(
-        arg: arg, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeBasicStructTwinSseTwinSse(
+            arg: arg, hint: hint);

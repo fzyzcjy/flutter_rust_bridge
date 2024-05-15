@@ -13,21 +13,23 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 Future<void> functionWithCommentsTripleSlashSingleLineTwinNormal(
         {dynamic hint}) =>
     RustLib.instance.api
-        .functionWithCommentsTripleSlashSingleLineTwinNormal(hint: hint);
+        .crateApiCommentFunctionWithCommentsTripleSlashSingleLineTwinNormal(
+            hint: hint);
 
 /// This is first line
 /// This is second line
 Future<void> functionWithCommentsTripleSlashMultiLineTwinNormal(
         {dynamic hint}) =>
     RustLib.instance.api
-        .functionWithCommentsTripleSlashMultiLineTwinNormal(hint: hint);
+        .crateApiCommentFunctionWithCommentsTripleSlashMultiLineTwinNormal(
+            hint: hint);
 
 /// Multiline comments are fine,
 /// but they are not preferred in Rust nor in Dart.
 /// Newlines are preserved.
 Future<void> functionWithCommentsSlashStarStarTwinNormal({dynamic hint}) =>
     RustLib.instance.api
-        .functionWithCommentsSlashStarStarTwinNormal(hint: hint);
+        .crateApiCommentFunctionWithCommentsSlashStarStarTwinNormal(hint: hint);
 
 /// Comments on structs
 class StructWithCommentsTwinNormal {
@@ -39,14 +41,15 @@ class StructWithCommentsTwinNormal {
   });
 
   /// Documentation on an instance method
-  Future<void> instanceMethodTwinNormal({dynamic hint}) =>
-      RustLib.instance.api.structWithCommentsTwinNormalInstanceMethodTwinNormal(
+  Future<void> instanceMethodTwinNormal({dynamic hint}) => RustLib.instance.api
+      .crateApiCommentStructWithCommentsTwinNormalInstanceMethodTwinNormal(
           that: this, hint: hint);
 
   /// Documentation on a static method
-  static Future<void> staticMethodTwinNormal({dynamic hint}) =>
-      RustLib.instance.api
-          .structWithCommentsTwinNormalStaticMethodTwinNormal(hint: hint);
+  static Future<void> staticMethodTwinNormal({dynamic hint}) => RustLib
+      .instance.api
+      .crateApiCommentStructWithCommentsTwinNormalStaticMethodTwinNormal(
+          hint: hint);
 
   @override
   int get hashCode => fieldWithComments.hashCode;

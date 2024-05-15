@@ -8,15 +8,20 @@ import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 int handleTypeAliasIdTwinSync({required int input, dynamic hint}) =>
-    RustLib.instance.api.handleTypeAliasIdTwinSync(input: input, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualTypeAliasTwinSyncHandleTypeAliasIdTwinSync(
+            input: input, hint: hint);
 
 int handleTypeNestAliasIdTwinSync({required int input, dynamic hint}) =>
     RustLib.instance.api
-        .handleTypeNestAliasIdTwinSync(input: input, hint: hint);
+        .crateApiPseudoManualTypeAliasTwinSyncHandleTypeNestAliasIdTwinSync(
+            input: input, hint: hint);
 
 TestModelTwinSync handleTypeAliasModelTwinSync(
         {required int input, dynamic hint}) =>
-    RustLib.instance.api.handleTypeAliasModelTwinSync(input: input, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualTypeAliasTwinSyncHandleTypeAliasModelTwinSync(
+            input: input, hint: hint);
 
 class TestModelTwinSync {
   final int id;

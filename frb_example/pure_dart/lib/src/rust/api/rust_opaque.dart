@@ -11,64 +11,74 @@ import 'pseudo_manual/rust_opaque_twin_rust_async.dart';
 part 'rust_opaque.freezed.dart';
 
 Future<HideDataTwinNormal> createOpaqueTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.createOpaqueTwinNormal(hint: hint);
+    RustLib.instance.api.crateApiRustOpaqueCreateOpaqueTwinNormal(hint: hint);
 
 Future<HideDataTwinNormal?> createOptionOpaqueTwinNormal(
         {HideDataTwinNormal? opaque, dynamic hint}) =>
-    RustLib.instance.api
-        .createOptionOpaqueTwinNormal(opaque: opaque, hint: hint);
+    RustLib.instance.api.crateApiRustOpaqueCreateOptionOpaqueTwinNormal(
+        opaque: opaque, hint: hint);
 
 Future<EnumOpaqueTwinNormalArray5> createArrayOpaqueEnumTwinNormal(
         {dynamic hint}) =>
-    RustLib.instance.api.createArrayOpaqueEnumTwinNormal(hint: hint);
+    RustLib.instance.api
+        .crateApiRustOpaqueCreateArrayOpaqueEnumTwinNormal(hint: hint);
 
 Future<String> runEnumOpaqueTwinNormal(
         {required EnumOpaqueTwinNormal opaque, dynamic hint}) =>
-    RustLib.instance.api.runEnumOpaqueTwinNormal(opaque: opaque, hint: hint);
+    RustLib.instance.api
+        .crateApiRustOpaqueRunEnumOpaqueTwinNormal(opaque: opaque, hint: hint);
 
 Future<String> runOpaqueTwinNormal(
         {required HideDataTwinNormal opaque, dynamic hint}) =>
-    RustLib.instance.api.runOpaqueTwinNormal(opaque: opaque, hint: hint);
+    RustLib.instance.api
+        .crateApiRustOpaqueRunOpaqueTwinNormal(opaque: opaque, hint: hint);
 
 Future<String> runOpaqueWithDelayTwinNormal(
         {required HideDataTwinNormal opaque, dynamic hint}) =>
-    RustLib.instance.api
-        .runOpaqueWithDelayTwinNormal(opaque: opaque, hint: hint);
+    RustLib.instance.api.crateApiRustOpaqueRunOpaqueWithDelayTwinNormal(
+        opaque: opaque, hint: hint);
 
 Future<HideDataTwinNormalArray2> opaqueArrayTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.opaqueArrayTwinNormal(hint: hint);
+    RustLib.instance.api.crateApiRustOpaqueOpaqueArrayTwinNormal(hint: hint);
 
 Future<String> runNonCloneTwinNormal(
         {required NonCloneDataTwinNormal clone, dynamic hint}) =>
-    RustLib.instance.api.runNonCloneTwinNormal(clone: clone, hint: hint);
+    RustLib.instance.api
+        .crateApiRustOpaqueRunNonCloneTwinNormal(clone: clone, hint: hint);
 
 Future<void> opaqueArrayRunTwinNormal(
         {required HideDataTwinNormalArray2 data, dynamic hint}) =>
-    RustLib.instance.api.opaqueArrayRunTwinNormal(data: data, hint: hint);
+    RustLib.instance.api
+        .crateApiRustOpaqueOpaqueArrayRunTwinNormal(data: data, hint: hint);
 
 Future<List<HideDataTwinNormal>> opaqueVecTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.opaqueVecTwinNormal(hint: hint);
+    RustLib.instance.api.crateApiRustOpaqueOpaqueVecTwinNormal(hint: hint);
 
 Future<void> opaqueVecRunTwinNormal(
         {required List<HideDataTwinNormal> data, dynamic hint}) =>
-    RustLib.instance.api.opaqueVecRunTwinNormal(data: data, hint: hint);
+    RustLib.instance.api
+        .crateApiRustOpaqueOpaqueVecRunTwinNormal(data: data, hint: hint);
 
 Future<OpaqueNestedTwinNormal> createNestedOpaqueTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.createNestedOpaqueTwinNormal(hint: hint);
+    RustLib.instance.api
+        .crateApiRustOpaqueCreateNestedOpaqueTwinNormal(hint: hint);
 
 Future<void> runNestedOpaqueTwinNormal(
         {required OpaqueNestedTwinNormal opaque, dynamic hint}) =>
-    RustLib.instance.api.runNestedOpaqueTwinNormal(opaque: opaque, hint: hint);
+    RustLib.instance.api.crateApiRustOpaqueRunNestedOpaqueTwinNormal(
+        opaque: opaque, hint: hint);
 
 Future<String> unwrapRustOpaqueTwinNormal(
         {required HideDataTwinNormal opaque, dynamic hint}) =>
-    RustLib.instance.api.unwrapRustOpaqueTwinNormal(opaque: opaque, hint: hint);
+    RustLib.instance.api.crateApiRustOpaqueUnwrapRustOpaqueTwinNormal(
+        opaque: opaque, hint: hint);
 
 /// Function to check the code generator.
 /// FrbOpaqueReturn must be only return type.
 /// FrbOpaqueReturn must not be used as an argument.
 Future<FrbOpaqueReturnTwinNormal> frbGeneratorTestTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.frbGeneratorTestTwinNormal(hint: hint);
+    RustLib.instance.api
+        .crateApiRustOpaqueFrbGeneratorTestTwinNormal(hint: hint);
 
 // Rust type: RustOpaqueNom<Box < dyn DartDebugTwinNormal >>
 @sealed

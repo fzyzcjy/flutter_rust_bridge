@@ -9,69 +9,85 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'exception.freezed.dart';
 
 Future<int> funcReturnErrorTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.funcReturnErrorTwinNormal(hint: hint);
+    RustLib.instance.api.crateApiExceptionFuncReturnErrorTwinNormal(hint: hint);
 
 Future<int> funcTypeFalliblePanicTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.funcTypeFalliblePanicTwinNormal(hint: hint);
+    RustLib.instance.api
+        .crateApiExceptionFuncTypeFalliblePanicTwinNormal(hint: hint);
 
 Future<int> funcTypeInfalliblePanicTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.funcTypeInfalliblePanicTwinNormal(hint: hint);
+    RustLib.instance.api
+        .crateApiExceptionFuncTypeInfalliblePanicTwinNormal(hint: hint);
 
 Future<int> customEnumErrorReturnOkTwinNormal(
         {required int arg, dynamic hint}) =>
-    RustLib.instance.api
-        .customEnumErrorReturnOkTwinNormal(arg: arg, hint: hint);
+    RustLib.instance.api.crateApiExceptionCustomEnumErrorReturnOkTwinNormal(
+        arg: arg, hint: hint);
 
 Future<void> customEnumErrorPanicTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.customEnumErrorPanicTwinNormal(hint: hint);
+    RustLib.instance.api
+        .crateApiExceptionCustomEnumErrorPanicTwinNormal(hint: hint);
 
 Future<int> customEnumErrorReturnErrorTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.customEnumErrorReturnErrorTwinNormal(hint: hint);
+    RustLib.instance.api
+        .crateApiExceptionCustomEnumErrorReturnErrorTwinNormal(hint: hint);
 
 Future<void> customNestedErrorReturnErrorTwinNormal(
         {required CustomNestedErrorOuterTwinNormal arg, dynamic hint}) =>
     RustLib.instance.api
-        .customNestedErrorReturnErrorTwinNormal(arg: arg, hint: hint);
+        .crateApiExceptionCustomNestedErrorReturnErrorTwinNormal(
+            arg: arg, hint: hint);
 
 Future<void> customStructErrorReturnErrorTwinNormal(
         {required CustomStructErrorTwinNormal arg, dynamic hint}) =>
     RustLib.instance.api
-        .customStructErrorReturnErrorTwinNormal(arg: arg, hint: hint);
+        .crateApiExceptionCustomStructErrorReturnErrorTwinNormal(
+            arg: arg, hint: hint);
 
 Future<int> returnErrCustomErrorTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.returnErrCustomErrorTwinNormal(hint: hint);
+    RustLib.instance.api
+        .crateApiExceptionReturnErrCustomErrorTwinNormal(hint: hint);
 
 Future<int> returnOkCustomErrorTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.returnOkCustomErrorTwinNormal(hint: hint);
+    RustLib.instance.api
+        .crateApiExceptionReturnOkCustomErrorTwinNormal(hint: hint);
 
 Future<int> returnErrorVariantTwinNormal(
         {required int variant, dynamic hint}) =>
-    RustLib.instance.api
-        .returnErrorVariantTwinNormal(variant: variant, hint: hint);
+    RustLib.instance.api.crateApiExceptionReturnErrorVariantTwinNormal(
+        variant: variant, hint: hint);
 
 Future<void> returnCustomNestedError1TwinNormal({dynamic hint}) =>
-    RustLib.instance.api.returnCustomNestedError1TwinNormal(hint: hint);
+    RustLib.instance.api
+        .crateApiExceptionReturnCustomNestedError1TwinNormal(hint: hint);
 
 Future<void> returnCustomNestedError1Variant1TwinNormal({dynamic hint}) =>
-    RustLib.instance.api.returnCustomNestedError1Variant1TwinNormal(hint: hint);
+    RustLib.instance.api
+        .crateApiExceptionReturnCustomNestedError1Variant1TwinNormal(
+            hint: hint);
 
 Future<void> returnCustomNestedError2TwinNormal({dynamic hint}) =>
-    RustLib.instance.api.returnCustomNestedError2TwinNormal(hint: hint);
+    RustLib.instance.api
+        .crateApiExceptionReturnCustomNestedError2TwinNormal(hint: hint);
 
 Future<void> returnCustomStructErrorTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.returnCustomStructErrorTwinNormal(hint: hint);
+    RustLib.instance.api
+        .crateApiExceptionReturnCustomStructErrorTwinNormal(hint: hint);
 
 Future<int> returnCustomStructOkTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.returnCustomStructOkTwinNormal(hint: hint);
+    RustLib.instance.api
+        .crateApiExceptionReturnCustomStructOkTwinNormal(hint: hint);
 
 Future<void> throwAnyhowTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.throwAnyhowTwinNormal(hint: hint);
+    RustLib.instance.api.crateApiExceptionThrowAnyhowTwinNormal(hint: hint);
 
 Future<void> panicWithCustomResultTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.panicWithCustomResultTwinNormal(hint: hint);
+    RustLib.instance.api
+        .crateApiExceptionPanicWithCustomResultTwinNormal(hint: hint);
 
 Future<Stream<String>> streamSinkThrowAnyhowTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.streamSinkThrowAnyhowTwinNormal(hint: hint);
+    RustLib.instance.api
+        .crateApiExceptionStreamSinkThrowAnyhowTwinNormal(hint: hint);
 
 @freezed
 sealed class CustomEnumErrorTwinNormal
@@ -206,27 +222,27 @@ class CustomStructTwinNormal {
 
   static Future<CustomStructTwinNormal> newTwinNormal(
           {required String message, dynamic hint}) =>
-      RustLib.instance.api
-          .customStructTwinNormalNewTwinNormal(message: message, hint: hint);
+      RustLib.instance.api.crateApiExceptionCustomStructTwinNormalNewTwinNormal(
+          message: message, hint: hint);
 
   Future<void> nonstaticReturnCustomStructErrorTwinNormal({dynamic hint}) =>
       RustLib.instance.api
-          .customStructTwinNormalNonstaticReturnCustomStructErrorTwinNormal(
+          .crateApiExceptionCustomStructTwinNormalNonstaticReturnCustomStructErrorTwinNormal(
               that: this, hint: hint);
 
-  Future<int> nonstaticReturnCustomStructOkTwinNormal({dynamic hint}) =>
-      RustLib.instance.api
-          .customStructTwinNormalNonstaticReturnCustomStructOkTwinNormal(
-              that: this, hint: hint);
+  Future<int> nonstaticReturnCustomStructOkTwinNormal({dynamic hint}) => RustLib
+      .instance.api
+      .crateApiExceptionCustomStructTwinNormalNonstaticReturnCustomStructOkTwinNormal(
+          that: this, hint: hint);
 
   static Future<void> staticReturnCustomStructErrorTwinNormal({dynamic hint}) =>
       RustLib.instance.api
-          .customStructTwinNormalStaticReturnCustomStructErrorTwinNormal(
+          .crateApiExceptionCustomStructTwinNormalStaticReturnCustomStructErrorTwinNormal(
               hint: hint);
 
   static Future<int> staticReturnCustomStructOkTwinNormal({dynamic hint}) =>
       RustLib.instance.api
-          .customStructTwinNormalStaticReturnCustomStructOkTwinNormal(
+          .crateApiExceptionCustomStructTwinNormalStaticReturnCustomStructOkTwinNormal(
               hint: hint);
 
   @override
@@ -249,26 +265,28 @@ class SomeStructTwinNormal {
 
   static Future<SomeStructTwinNormal> newTwinNormal(
           {required int value, dynamic hint}) =>
-      RustLib.instance.api
-          .someStructTwinNormalNewTwinNormal(value: value, hint: hint);
+      RustLib.instance.api.crateApiExceptionSomeStructTwinNormalNewTwinNormal(
+          value: value, hint: hint);
 
-  Future<int> nonStaticReturnErrCustomErrorTwinNormal({dynamic hint}) =>
-      RustLib.instance.api
-          .someStructTwinNormalNonStaticReturnErrCustomErrorTwinNormal(
-              that: this, hint: hint);
+  Future<int> nonStaticReturnErrCustomErrorTwinNormal({dynamic hint}) => RustLib
+      .instance.api
+      .crateApiExceptionSomeStructTwinNormalNonStaticReturnErrCustomErrorTwinNormal(
+          that: this, hint: hint);
 
-  Future<int> nonStaticReturnOkCustomErrorTwinNormal({dynamic hint}) =>
-      RustLib.instance.api
-          .someStructTwinNormalNonStaticReturnOkCustomErrorTwinNormal(
-              that: this, hint: hint);
+  Future<int> nonStaticReturnOkCustomErrorTwinNormal({dynamic hint}) => RustLib
+      .instance.api
+      .crateApiExceptionSomeStructTwinNormalNonStaticReturnOkCustomErrorTwinNormal(
+          that: this, hint: hint);
 
   static Future<int> staticReturnErrCustomErrorTwinNormal({dynamic hint}) =>
       RustLib.instance.api
-          .someStructTwinNormalStaticReturnErrCustomErrorTwinNormal(hint: hint);
+          .crateApiExceptionSomeStructTwinNormalStaticReturnErrCustomErrorTwinNormal(
+              hint: hint);
 
-  static Future<int> staticReturnOkCustomErrorTwinNormal({dynamic hint}) =>
-      RustLib.instance.api
-          .someStructTwinNormalStaticReturnOkCustomErrorTwinNormal(hint: hint);
+  static Future<int> staticReturnOkCustomErrorTwinNormal({dynamic hint}) => RustLib
+      .instance.api
+      .crateApiExceptionSomeStructTwinNormalStaticReturnOkCustomErrorTwinNormal(
+          hint: hint);
 
   @override
   int get hashCode => value.hashCode;

@@ -9,16 +9,21 @@ import 'package:uuid/uuid.dart';
 
 Future<UuidValue> handleUuidTwinRustAsyncSse(
         {required UuidValue id, dynamic hint}) =>
-    RustLib.instance.api.handleUuidTwinRustAsyncSse(id: id, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualUuidTypeTwinRustAsyncSseHandleUuidTwinRustAsyncSse(
+            id: id, hint: hint);
 
 Future<List<UuidValue>> handleUuidsTwinRustAsyncSse(
         {required List<UuidValue> ids, dynamic hint}) =>
-    RustLib.instance.api.handleUuidsTwinRustAsyncSse(ids: ids, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualUuidTypeTwinRustAsyncSseHandleUuidsTwinRustAsyncSse(
+            ids: ids, hint: hint);
 
 Future<FeatureUuidTwinRustAsyncSse> handleNestedUuidsTwinRustAsyncSse(
         {required FeatureUuidTwinRustAsyncSse ids, dynamic hint}) =>
     RustLib.instance.api
-        .handleNestedUuidsTwinRustAsyncSse(ids: ids, hint: hint);
+        .crateApiPseudoManualUuidTypeTwinRustAsyncSseHandleNestedUuidsTwinRustAsyncSse(
+            ids: ids, hint: hint);
 
 class FeatureUuidTwinRustAsyncSse {
   final UuidValue one;
