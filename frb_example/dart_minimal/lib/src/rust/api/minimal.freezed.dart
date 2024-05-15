@@ -58,11 +58,13 @@ mixin _$MyEnum {
 
 /// @nodoc
 abstract class $MyEnumCopyWith<$Res> {
-  factory $MyEnumCopyWith(MyEnum value, $Res Function(MyEnum) then) = _$MyEnumCopyWithImpl<$Res, MyEnum>;
+  factory $MyEnumCopyWith(MyEnum value, $Res Function(MyEnum) then) =
+      _$MyEnumCopyWithImpl<$Res, MyEnum>;
 }
 
 /// @nodoc
-class _$MyEnumCopyWithImpl<$Res, $Val extends MyEnum> implements $MyEnumCopyWith<$Res> {
+class _$MyEnumCopyWithImpl<$Res, $Val extends MyEnum>
+    implements $MyEnumCopyWith<$Res> {
   _$MyEnumCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -73,14 +75,18 @@ class _$MyEnumCopyWithImpl<$Res, $Val extends MyEnum> implements $MyEnumCopyWith
 
 /// @nodoc
 abstract class _$$MyEnum_AImplCopyWith<$Res> {
-  factory _$$MyEnum_AImplCopyWith(_$MyEnum_AImpl value, $Res Function(_$MyEnum_AImpl) then) =
+  factory _$$MyEnum_AImplCopyWith(
+          _$MyEnum_AImpl value, $Res Function(_$MyEnum_AImpl) then) =
       __$$MyEnum_AImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$MyEnum_AImplCopyWithImpl<$Res> extends _$MyEnumCopyWithImpl<$Res, _$MyEnum_AImpl>
+class __$$MyEnum_AImplCopyWithImpl<$Res>
+    extends _$MyEnumCopyWithImpl<$Res, _$MyEnum_AImpl>
     implements _$$MyEnum_AImplCopyWith<$Res> {
-  __$$MyEnum_AImplCopyWithImpl(_$MyEnum_AImpl _value, $Res Function(_$MyEnum_AImpl) _then) : super(_value, _then);
+  __$$MyEnum_AImplCopyWithImpl(
+      _$MyEnum_AImpl _value, $Res Function(_$MyEnum_AImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -95,7 +101,8 @@ class _$MyEnum_AImpl extends MyEnum_A {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$MyEnum_AImpl);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$MyEnum_AImpl);
   }
 
   @override
@@ -171,16 +178,20 @@ abstract class MyEnum_A extends MyEnum {
 
 /// @nodoc
 abstract class _$$MyEnum_BImplCopyWith<$Res> {
-  factory _$$MyEnum_BImplCopyWith(_$MyEnum_BImpl value, $Res Function(_$MyEnum_BImpl) then) =
+  factory _$$MyEnum_BImplCopyWith(
+          _$MyEnum_BImpl value, $Res Function(_$MyEnum_BImpl) then) =
       __$$MyEnum_BImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int field0});
 }
 
 /// @nodoc
-class __$$MyEnum_BImplCopyWithImpl<$Res> extends _$MyEnumCopyWithImpl<$Res, _$MyEnum_BImpl>
+class __$$MyEnum_BImplCopyWithImpl<$Res>
+    extends _$MyEnumCopyWithImpl<$Res, _$MyEnum_BImpl>
     implements _$$MyEnum_BImplCopyWith<$Res> {
-  __$$MyEnum_BImplCopyWithImpl(_$MyEnum_BImpl _value, $Res Function(_$MyEnum_BImpl) _then) : super(_value, _then);
+  __$$MyEnum_BImplCopyWithImpl(
+      _$MyEnum_BImpl _value, $Res Function(_$MyEnum_BImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -295,5 +306,6 @@ abstract class MyEnum_B extends MyEnum {
 
   int get field0;
   @JsonKey(ignore: true)
-  _$$MyEnum_BImplCopyWith<_$MyEnum_BImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$MyEnum_BImplCopyWith<_$MyEnum_BImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
