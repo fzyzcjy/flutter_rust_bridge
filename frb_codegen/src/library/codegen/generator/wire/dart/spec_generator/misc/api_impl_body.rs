@@ -37,6 +37,10 @@ pub(crate) fn generate_api_impl_normal_function(
         func_params_str,
         ..
     } = api_dart_func;
+    let func_expr = format!(
+        "{func_return_type} {func_name}({func_params_str})",
+        func_name = func.name_dart_wire(),
+    );
 
     let call_handler = format!(
         "handler.{execute_func_name}({task_class}(
@@ -79,7 +83,7 @@ pub(crate) fn generate_api_impl_normal_function(
         format!("return {call_handler};")
     };
     let function_implementation = format!(
-        "@override {func_return_type} {func_name}({func_params_str}) {maybe_async} {{ {function_implementation_body} }}",
+        "@override {func_expr} {maybe_async} {{ {function_implementation_body} }}",
         maybe_async = if func.mode != IrFuncMode::Sync
             && api_dart_func.return_stream.is_some()
             && func.stream_dart_await
@@ -88,7 +92,6 @@ pub(crate) fn generate_api_impl_normal_function(
         } else {
             ""
         },
-        func_name = func.name_dart_wire(),
     );
 
     let companion_field_implementation = generate_companion_field(func, &const_meta_field_name);
