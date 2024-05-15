@@ -22,7 +22,7 @@ impl<'a> WireRustGeneratorMiscTrait for DartFnWireRustGenerator<'a> {
             .map(|i| format!("arg{i}.into_into_dart().into_dart(),"))
             .join("");
 
-        let return_type = self.ir.output.rust_api_type();
+        let return_type = self.ir.ok_output.rust_api_type();
 
         Acc::new_common(
             format!(

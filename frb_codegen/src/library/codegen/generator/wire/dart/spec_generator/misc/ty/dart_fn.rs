@@ -25,7 +25,7 @@ impl<'a> WireDartGeneratorMiscTrait for DartFnWireDartGenerator<'a> {
         let dart_api_type =
             ApiDartGenerator::new(self.ir.clone(), self.context.as_api_dart_context())
                 .dart_api_type();
-        let return_type_safe_ident = self.ir.output.safe_ident();
+        let return_type_safe_ident = self.ir.ok_output.safe_ident();
 
         let api_impl_body = format!(
             "

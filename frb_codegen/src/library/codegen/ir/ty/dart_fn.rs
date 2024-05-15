@@ -21,14 +21,14 @@ impl IrTypeTrait for IrTypeDartFn {
         for x in &self.inputs {
             x.visit_types(f, ir_context);
         }
-        self.output.visit_types(f, ir_context);
+        self.ok_output.visit_types(f, ir_context);
     }
 
     fn safe_ident(&self) -> String {
         format!(
             "DartFn_Inputs_{}_Output_{}",
             self.inputs.iter().map(|x| x.safe_ident()).join("_"),
-            self.output.safe_ident()
+            self.ok_output.safe_ident()
         )
     }
 
