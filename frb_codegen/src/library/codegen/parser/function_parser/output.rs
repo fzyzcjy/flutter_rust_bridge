@@ -3,7 +3,9 @@ use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{EnumRef, StructRef};
 use crate::codegen::parser::function_parser::{FunctionParser, FunctionPartialInfo};
-use crate::codegen::parser::type_parser::result::parse_fn_output_type_result;
+use crate::codegen::parser::type_parser::result::{
+    parse_fn_output_type_result, parse_type_maybe_result,
+};
 use crate::codegen::parser::type_parser::unencodable::splay_segments;
 use crate::codegen::parser::type_parser::TypeParserParsingContext;
 use syn::*;
@@ -29,27 +31,10 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         context: &TypeParserParsingContext,
     ) -> anyhow::Result<FunctionPartialInfo> {
         let ir = self.type_parser.parse_type(ty, context)?;
-
-        if let IrType::RustAutoOpaque(inner) = ir {
-            match splay_segments(&inner.raw.segments).last() {
-                Some(("Result", args)) => {
-                    let info = parse_fn_output_type_result(
-                        &(args.iter())
-                            .map(|arg| self.type_parser.parse_type(arg, context))
-                            .collect::<anyhow::Result<Vec<_>>>()?,
-                    )?;
-                    return Ok(FunctionPartialInfo {
-                        ok_output: Some(info.ok_output),
-                        error_output: info.error_output,
-                        ..Default::default()
-                    });
-                }
-                _ => {}
-            }
-        }
-
+        let info = parse_type_maybe_result(&ir, self.type_parser)?;
         Ok(FunctionPartialInfo {
-            ok_output: Some(self.type_parser.parse_type(ty, context)?),
+            ok_output: Some(info.ok_output),
+            error_output: info.error_output,
             ..Default::default()
         })
     }
