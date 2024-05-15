@@ -112,8 +112,11 @@ fn execute_dart_format(
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<()> {
     let _pb = progress_bar_pack.polish_dart_formatter.start();
+
+    let output_dart_paths = filter_paths_by_extension(output_paths, "dart");
+
     format_dart(
-        &filter_paths_by_extension(output_paths, "dart"),
+        &output_dart_paths,
         &config.dart_root,
         config.dart_format_line_length,
     )
