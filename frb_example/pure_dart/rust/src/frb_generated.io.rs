@@ -17622,6 +17622,13 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_StructWithImplBlockInMultiFi
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_same_function_name_in_different_files(
+    port_: i64,
+) {
+    wire_same_function_name_in_different_files_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_StructInMiscNoTwinExampleB_get_struct_in_misc_no_twin_example_a(
     port_: i64,
     that: usize,
@@ -17643,6 +17650,13 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_StructWithImplBlockInMultiFi
     that: usize,
 ) {
     wire_StructWithImplBlockInMultiFile_method_in_b_impl(port_, that)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_same_function_name_in_different_files(
+    port_: i64,
+) {
+    wire_same_function_name_in_different_files_impl(port_)
 }
 
 #[no_mangle]

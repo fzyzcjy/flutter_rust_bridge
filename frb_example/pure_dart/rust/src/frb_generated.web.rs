@@ -14582,6 +14582,13 @@ pub fn wire_StructWithImplBlockInMultiFile_method_in_a(
 }
 
 #[wasm_bindgen]
+pub fn wire_same_function_name_in_different_files(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire_same_function_name_in_different_files_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_StructInMiscNoTwinExampleB_get_struct_in_misc_no_twin_example_a(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
@@ -14603,6 +14610,13 @@ pub fn wire_StructWithImplBlockInMultiFile_method_in_b(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_StructWithImplBlockInMultiFile_method_in_b_impl(port_, that)
+}
+
+#[wasm_bindgen]
+pub fn wire_same_function_name_in_different_files(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire_same_function_name_in_different_files_impl(port_)
 }
 
 #[wasm_bindgen]

@@ -3811,6 +3811,8 @@ void frbgen_frb_example_pure_dart_wire_StructInMiscNoTwinExampleA_sample_functio
 void frbgen_frb_example_pure_dart_wire_StructWithImplBlockInMultiFile_method_in_a(int64_t port_,
                                                                                   uintptr_t that);
 
+void frbgen_frb_example_pure_dart_wire_same_function_name_in_different_files(int64_t port_);
+
 void frbgen_frb_example_pure_dart_wire_StructInMiscNoTwinExampleB_get_struct_in_misc_no_twin_example_a(int64_t port_,
                                                                                                        uintptr_t that);
 
@@ -3819,6 +3821,8 @@ void frbgen_frb_example_pure_dart_wire_StructInMiscNoTwinExampleB_sample_functio
 
 void frbgen_frb_example_pure_dart_wire_StructWithImplBlockInMultiFile_method_in_b(int64_t port_,
                                                                                   uintptr_t that);
+
+void frbgen_frb_example_pure_dart_wire_same_function_name_in_different_files(int64_t port_);
 
 void frbgen_frb_example_pure_dart_wire_empty_struct_twin_normal(int64_t port_,
                                                                 struct wire_cst_empty_twin_normal *empty);
@@ -17246,6 +17250,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_rust_call_dart_with_dart_opaque_result_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_rust_call_dart_with_dart_opaque_result_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_rust_call_dart_with_dart_opaque_result_twin_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_same_function_name_in_different_files);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_set_static_dart_opaque_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_set_static_dart_opaque_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_set_static_dart_opaque_twin_rust_async_sse);

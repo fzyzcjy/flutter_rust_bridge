@@ -36005,6 +36005,9 @@ class RustLibWire implements BaseWire {
           NativePortType port_, Object that) =>
       wasmModule.wire_StructWithImplBlockInMultiFile_method_in_a(port_, that);
 
+  void wire_same_function_name_in_different_files(NativePortType port_) =>
+      wasmModule.wire_same_function_name_in_different_files(port_);
+
   void wire_StructInMiscNoTwinExampleB_get_struct_in_misc_no_twin_example_a(
           NativePortType port_, Object that) =>
       wasmModule
@@ -36018,6 +36021,9 @@ class RustLibWire implements BaseWire {
   void wire_StructWithImplBlockInMultiFile_method_in_b(
           NativePortType port_, Object that) =>
       wasmModule.wire_StructWithImplBlockInMultiFile_method_in_b(port_, that);
+
+  void wire_same_function_name_in_different_files(NativePortType port_) =>
+      wasmModule.wire_same_function_name_in_different_files(port_);
 
   void wire_empty_struct_twin_normal(
           NativePortType port_, List<dynamic> empty) =>
@@ -53958,6 +53964,9 @@ class RustLibWasmModule implements WasmModule {
   external void wire_StructWithImplBlockInMultiFile_method_in_a(
       NativePortType port_, Object that);
 
+  external void wire_same_function_name_in_different_files(
+      NativePortType port_);
+
   external void
       wire_StructInMiscNoTwinExampleB_get_struct_in_misc_no_twin_example_a(
           NativePortType port_, Object that);
@@ -53967,6 +53976,9 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_StructWithImplBlockInMultiFile_method_in_b(
       NativePortType port_, Object that);
+
+  external void wire_same_function_name_in_different_files(
+      NativePortType port_);
 
   external void wire_empty_struct_twin_normal(
       NativePortType port_, List<dynamic> empty);

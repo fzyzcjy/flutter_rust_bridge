@@ -42252,6 +42252,21 @@ class RustLibWire implements BaseWire {
       _wire_StructWithImplBlockInMultiFile_method_in_aPtr
           .asFunction<void Function(int, int)>();
 
+  void wire_same_function_name_in_different_files(
+    int port_,
+  ) {
+    return _wire_same_function_name_in_different_files(
+      port_,
+    );
+  }
+
+  late final _wire_same_function_name_in_different_filesPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      'frbgen_frb_example_pure_dart_wire_same_function_name_in_different_files');
+  late final _wire_same_function_name_in_different_files =
+      _wire_same_function_name_in_different_filesPtr
+          .asFunction<void Function(int)>();
+
   void wire_StructInMiscNoTwinExampleB_get_struct_in_misc_no_twin_example_a(
     int port_,
     int that,
