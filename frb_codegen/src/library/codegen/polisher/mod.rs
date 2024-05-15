@@ -123,7 +123,7 @@ fn execute_dart_format(
         .collect_vec();
 
     format_dart(
-        &output_dart_paths,
+        &generalized_dart_paths,
         &config.dart_root,
         config.dart_format_line_length,
     )
