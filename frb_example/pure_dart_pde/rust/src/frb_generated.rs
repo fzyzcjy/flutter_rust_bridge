@@ -25172,8 +25172,9 @@ impl SseDecode for chrono::DateTime<chrono::Local> {
         let mut inner = <i64>::sse_decode(deserializer);
         return chrono::DateTime::<chrono::Local>::from(
             chrono::DateTime::<chrono::Utc>::from_naive_utc_and_offset(
-                chrono::NaiveDateTime::from_timestamp_micros(inner)
-                    .expect("invalid or out-of-range datetime"),
+                chrono::DateTime::from_timestamp_micros(inner)
+                    .expect("invalid or out-of-range datetime")
+                    .naive_utc(),
                 chrono::Utc,
             ),
         );
@@ -25184,8 +25185,9 @@ impl SseDecode for chrono::NaiveDateTime {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <i64>::sse_decode(deserializer);
-        return chrono::NaiveDateTime::from_timestamp_micros(inner)
-            .expect("invalid or out-of-range datetime");
+        return chrono::DateTime::from_timestamp_micros(inner)
+            .expect("invalid or out-of-range datetime")
+            .naive_utc();
     }
 }
 
@@ -25194,8 +25196,9 @@ impl SseDecode for chrono::DateTime<chrono::Utc> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <i64>::sse_decode(deserializer);
         return chrono::DateTime::<chrono::Utc>::from_naive_utc_and_offset(
-            chrono::NaiveDateTime::from_timestamp_micros(inner)
-                .expect("invalid or out-of-range datetime"),
+            chrono::DateTime::from_timestamp_micros(inner)
+                .expect("invalid or out-of-range datetime")
+                .naive_utc(),
             chrono::Utc,
         );
     }
