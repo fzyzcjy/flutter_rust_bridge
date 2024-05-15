@@ -58,7 +58,7 @@ pub(crate) fn generate(
 
     let func_expr = format!(
         "{func_return_type} {func_name}({func_params_str})",
-        func_name = func.name_dart_wire(),
+        func_name = func.name_dart_api(),
     );
 
     let func_comments = generate_dart_comments(&func.comments);
