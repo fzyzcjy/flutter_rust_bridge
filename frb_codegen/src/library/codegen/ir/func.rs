@@ -9,7 +9,7 @@ use crate::if_then_some;
 
 crate::ir! {
 pub struct IrFunc {
-    pub name: NamespacedName,
+    name: NamespacedName,
     pub id: i32,
     pub inputs: Vec<IrFuncInput>,
     pub output: IrFuncOutput,
