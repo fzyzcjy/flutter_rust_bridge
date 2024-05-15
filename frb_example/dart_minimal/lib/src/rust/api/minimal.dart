@@ -5,6 +5,20 @@
 
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+part 'minimal.freezed.dart';
 
 Future<int> minimalAdder({required int a, required int b, dynamic hint}) =>
     RustLib.instance.api.minimalAdder(a: a, b: b, hint: hint);
+
+Future<MyEnum> f({dynamic hint}) => RustLib.instance.api.f(hint: hint);
+
+@freezed
+sealed class MyEnum with _$MyEnum {
+  const MyEnum._();
+
+  const factory MyEnum.a() = MyEnum_A;
+  const factory MyEnum.b(
+    int field0,
+  ) = MyEnum_B;
+}
