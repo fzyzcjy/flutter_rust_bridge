@@ -18,7 +18,7 @@ impl IrIdent {
     }
 
     pub fn c_style(&self) -> String {
-        convert_rust_to_c_style(self.raw)
+        convert_rust_to_c_style(&self.raw)
     }
 
     pub fn dart_style(&self) -> String {
