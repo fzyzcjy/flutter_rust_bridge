@@ -1,5 +1,6 @@
 use crate::codegen::ir::ty::dart_fn::IrTypeDartFn;
 use crate::codegen::ir::ty::IrType;
+use crate::codegen::parser::type_parser::result::parse_type_maybe_result;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use crate::if_then_some;
 use anyhow::{bail, Context};
@@ -67,7 +68,9 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                             .find(|arg| matches!(arg, GenericArgument::Type(_)))
                             .unwrap()
                         {
-                            return self.parse_type(inner_ty);
+                            let ir = self.parse_type(inner_ty)?;
+                            let info = parse_type_maybe_result(ir, self.inner)?;
+                            return TODO;
 
                             // This will stop the whole generator and tell the users, so we do not care about testing it
                             // frb-coverage:ignore-start
