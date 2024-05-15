@@ -39,9 +39,16 @@ impl std::fmt::Display for IrIdent {
 }
 
 fn convert_rust_to_c_style(raw: &str) -> String {
-    let mut ans = (raw.strip_prefix("r#").unwrap_or(raw.as_str())).to_string();
-    if &ans == "async" {
-        ans = "async1".to_owned(); // match behavior of ffigen
+    let mut ans = raw.to_owned();
+
+    if let Some(stripped) = ans.strip_prefix("r#") {
+        ans = stripped.to_owned();
     }
+
+    // match behavior of ffigen
+    if &ans == "async" {
+        ans = "async1".to_owned();
+    }
+
     ans
 }
