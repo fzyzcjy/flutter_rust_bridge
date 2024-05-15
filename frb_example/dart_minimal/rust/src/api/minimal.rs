@@ -13,7 +13,3 @@ pub enum MyEnum {
     A,
     B(i32),
 }
-
-pub fn f() -> MyEnum {
-    unimplemented!()
-}
