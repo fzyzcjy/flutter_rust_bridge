@@ -118,7 +118,9 @@ fn execute_dart_format(
     let candidate_extensions = ["g.dart", "freezed.dart"];
     let generalized_dart_paths = output_dart_paths
         .into_iter()
-        .flat_map(|path| (candidate_extensions.iter()).map(|ext| with_extension(path.clone(), ext)))
+        .flat_map(|path| {
+            (candidate_extensions.iter()).map(move |ext| with_extension(path.clone(), ext))
+        })
         .filter(|path| path.exists())
         .collect_vec();
 
