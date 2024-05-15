@@ -3,9 +3,7 @@ use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{EnumRef, StructRef};
 use crate::codegen::parser::function_parser::{FunctionParser, FunctionPartialInfo};
-use crate::codegen::parser::type_parser::result::{
-    parse_fn_output_type_result, parse_type_maybe_result,
-};
+use crate::codegen::parser::type_parser::result::parse_type_maybe_result;
 use crate::codegen::parser::type_parser::unencodable::splay_segments;
 use crate::codegen::parser::type_parser::TypeParserParsingContext;
 use syn::*;
@@ -31,7 +29,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         context: &TypeParserParsingContext,
     ) -> anyhow::Result<FunctionPartialInfo> {
         let ir = self.type_parser.parse_type(ty, context)?;
-        let info = parse_type_maybe_result(&ir, self.type_parser)?;
+        let info = parse_type_maybe_result(&ir, self.type_parser, context)?;
         Ok(FunctionPartialInfo {
             ok_output: Some(info.ok_output),
             error_output: info.error_output,

@@ -6,7 +6,7 @@ crate::ir! {
 pub struct IrTypeDartFn {
     pub inputs: Vec<IrType>,
     pub ok_output: Box<IrType>,
-    pub error_output: Option<IrType>,
+    pub error_output: Option<Box<IrType>>,
 }
 }
 

@@ -2,11 +2,12 @@ use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{EnumRef, StructRef};
 use crate::codegen::parser::type_parser::unencodable::splay_segments;
-use crate::codegen::parser::type_parser::TypeParser;
+use crate::codegen::parser::type_parser::{TypeParser, TypeParserParsingContext};
 
 pub(crate) fn parse_type_maybe_result(
     ir: &IrType,
     type_parser: &mut TypeParser,
+    context: &TypeParserParsingContext,
 ) -> anyhow::Result<ResultTypeInfo> {
     if let IrType::RustAutoOpaque(inner) = ir {
         match splay_segments(&inner.raw.segments).last() {
@@ -22,8 +23,8 @@ pub(crate) fn parse_type_maybe_result(
     }
 
     Ok(ResultTypeInfo {
-        ok_output: Some(type_parser.parse_type(ty, context)?),
-        error_output: TODO,
+        ok_output: type_parser.parse_type(ty, context)?,
+        error_output: None,
     })
 }
 
@@ -49,7 +50,6 @@ fn parse_type_result(args: &[IrType]) -> anyhow::Result<ResultTypeInfo> {
     Ok(ResultTypeInfo {
         ok_output: Some(ok_output.clone()),
         error_output,
-        ..Default::default()
     })
 }
 
