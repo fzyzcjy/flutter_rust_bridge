@@ -206,7 +206,8 @@ fn generate_redirect_body(func: &IrFunc, params: &[ExternFuncParam]) -> String {
 }
 
 pub(crate) fn wire_func_name(func: &IrFunc) -> String {
-    format!("wire_{}", func.name.name)
+    let name = func.name;
+    format!("wire__{}__{}", name.namespace.joined_path, name.name)
 }
 
 fn ffi_call_mode(mode: IrFuncMode) -> &'static str {
