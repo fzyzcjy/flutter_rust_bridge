@@ -18,25 +18,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   @protected
-  MyStruct dco_decode_box_autoadd_my_struct(dynamic raw);
-
-  @protected
   int dco_decode_i_32(dynamic raw);
-
-  @protected
-  MyStruct dco_decode_my_struct(dynamic raw);
 
   @protected
   void dco_decode_unit(dynamic raw);
 
   @protected
-  MyStruct sse_decode_box_autoadd_my_struct(SseDeserializer deserializer);
-
-  @protected
   int sse_decode_i_32(SseDeserializer deserializer);
-
-  @protected
-  MyStruct sse_decode_my_struct(SseDeserializer deserializer);
 
   @protected
   void sse_decode_unit(SseDeserializer deserializer);
@@ -45,32 +33,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_my_struct(MyStruct raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_my_struct(raw);
-  }
-
-  @protected
-  List<dynamic> cst_encode_my_struct(MyStruct raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.template)];
-  }
-
-  @protected
-  int cst_encode_i_32(int raw);
-
-  @protected
-  void cst_encode_unit(void raw);
-
-  @protected
-  void sse_encode_box_autoadd_my_struct(
-      MyStruct self, SseSerializer serializer);
-
-  @protected
   void sse_encode_i_32(int self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_my_struct(MyStruct self, SseSerializer serializer);
 
   @protected
   void sse_encode_unit(void self, SseSerializer serializer);
@@ -83,14 +46,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
 class RustLibWire implements BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
-
-  void wire_f(NativePortType port_, List<dynamic> a) =>
-      wasmModule.wire_f(port_, a);
-
-  void wire_init_app(NativePortType port_) => wasmModule.wire_init_app(port_);
-
-  void wire_minimal_adder(NativePortType port_, int a, int b) =>
-      wasmModule.wire_minimal_adder(port_, a, b);
 }
 
 @JS('wasm_bindgen')
@@ -104,10 +59,4 @@ class RustLibWasmModule implements WasmModule {
 
   @override
   external RustLibWasmModule bind(dynamic thisArg, String moduleName);
-
-  external void wire_f(NativePortType port_, List<dynamic> a);
-
-  external void wire_init_app(NativePortType port_);
-
-  external void wire_minimal_adder(NativePortType port_, int a, int b);
 }

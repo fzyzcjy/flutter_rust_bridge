@@ -10,11 +10,3 @@ pub fn init_app() {
 pub fn minimal_adder(a: i32, b: i32) -> i32 {
     a + b
 }
-
-pub struct MyStruct {
-    pub template: i32,
-}
-
-pub fn f(a: MyStruct) -> MyStruct {
-    a
-}
