@@ -8,6 +8,3 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<int> minimalAdder({required int a, required int b, dynamic hint}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b, hint: hint);
-
-Future<void> dupNameFunc({dynamic hint}) =>
-    RustLib.instance.api.crateApiMinimalDupNameFunc(hint: hint);
