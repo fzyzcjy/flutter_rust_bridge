@@ -63,7 +63,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void cst_api_fill_to_wire_my_struct(
       MyStruct apiObj, wire_cst_my_struct wireObj) {
-    wireObj.template = cst_encode_i_32(apiObj.template);
+    wireObj.template_ = cst_encode_i_32(apiObj.template);
   }
 
   @protected
