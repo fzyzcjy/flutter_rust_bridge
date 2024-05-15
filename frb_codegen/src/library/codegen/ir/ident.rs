@@ -1,4 +1,5 @@
 use crate::codegen::generator::codec::sse::lang::Lang;
+use crate::utils::cbindgen_keywords;
 use convert_case::{Case, Casing};
 crate::ir! {
 #[serde(transparent)]
@@ -17,11 +18,7 @@ impl IrIdent {
     }
 
     pub fn c_style(&self) -> String {
-        let mut ans = (self.raw.strip_prefix("r#").unwrap_or(self.raw.as_str())).to_string();
-        if &ans == "async" {
-            ans = "async1".to_owned(); // match behavior of ffigen
-        }
-        ans
+        convert_rust_to_c_style(&self.raw)
     }
 
     pub fn dart_style(&self) -> String {
@@ -40,4 +37,22 @@ impl std::fmt::Display for IrIdent {
     fn fmt(&self, fmt: &mut std::fmt::Formatter<'_>) -> Result<(), std::fmt::Error> {
         fmt.write_str(&self.raw)
     }
+}
+
+fn convert_rust_to_c_style(raw: &str) -> String {
+    let mut ans = raw.to_owned();
+
+    if let Some(stripped) = ans.strip_prefix("r#") {
+        ans = stripped.to_owned();
+    }
+
+    // match behavior of ffigen
+    if &ans == "async" {
+        ans = "async1".to_owned();
+    }
+
+    // match behavior of cbindgen
+    cbindgen_keywords::escape(&mut ans);
+
+    ans
 }
