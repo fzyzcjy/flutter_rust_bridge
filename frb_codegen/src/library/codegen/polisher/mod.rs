@@ -112,28 +112,12 @@ fn execute_dart_format(
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<()> {
     let _pb = progress_bar_pack.polish_dart_formatter.start();
-
-    let output_dart_paths = filter_paths_by_extension(output_paths, "dart");
-
-    let candidate_extensions = ["g.dart", "freezed.dart"];
-    let generalized_dart_paths = output_dart_paths
-        .into_iter()
-        .flat_map(|path| {
-            (candidate_extensions.iter()).map(move |ext| with_extension(path.clone(), ext))
-        })
-        .filter(|path| path.exists())
-        .collect_vec();
-
     format_dart(
-        &generalized_dart_paths,
+        &filter_paths_by_extension(output_paths, "dart"),
         &config.dart_root,
         config.dart_format_line_length,
+        &["g.dart", "freezed.dart"],
     )
-}
-
-fn with_extension(mut path: PathBuf, ext: &str) -> PathBuf {
-    path.set_extension(ext);
-    path
 }
 
 fn execute_rust_format(
