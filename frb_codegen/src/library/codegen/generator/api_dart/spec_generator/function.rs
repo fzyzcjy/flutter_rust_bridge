@@ -59,7 +59,7 @@ pub(crate) fn generate(
 
     let func_expr = format!(
         "{func_return_type} {func_name}({func_params_str})",
-        func_name = func.name.name.to_case(Case::Camel),
+        func_name = func.name_dart_api(),
     );
 
     let func_comments = generate_dart_comments(&func.comments);
@@ -73,7 +73,7 @@ pub(crate) fn generate(
     let header = generate_header(func, context)?;
 
     Ok(ApiDartGeneratedFunction {
-        namespace: func.name.namespace.clone(),
+        namespace: func.namespace(),
         header,
         func_comments,
         func_expr,
@@ -145,7 +145,7 @@ fn generate_func_impl(
     dart_entrypoint_class_name: &str,
     return_stream: &Option<ReturnStreamInfo>,
 ) -> String {
-    let func_name = &func.name.name.to_case(Case::Camel);
+    let func_name = &func.name_dart_wire();
     let param_names: Vec<String> = [
         ((func.inputs.iter())
             .filter(|field| {
@@ -169,7 +169,7 @@ fn generate_header(
 ) -> anyhow::Result<DartBasicHeaderCode> {
     Ok(DartBasicHeaderCode {
         import: generate_imports_which_types_and_funcs_use(
-            &func.name.namespace.clone(),
+            &func.namespace(),
             &None,
             &Some(&vec![func]),
             context,

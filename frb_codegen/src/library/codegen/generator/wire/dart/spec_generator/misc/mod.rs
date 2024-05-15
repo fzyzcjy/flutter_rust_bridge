@@ -100,7 +100,7 @@ fn generate_boilerplate(
 
     let execute_rust_initializers = (context.ir_pack.funcs.iter())
         .filter(|f| f.initializer)
-        .map(|f| format!("await api.{}();\n", f.name.name.to_case(Case::Camel)))
+        .map(|f| format!("await api.{}();\n", f.name_dart_wire()))
         .join("");
 
     let codegen_version = env!("CARGO_PKG_VERSION");

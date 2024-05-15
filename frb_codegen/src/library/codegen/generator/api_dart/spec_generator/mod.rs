@@ -58,7 +58,7 @@ pub(crate) fn generate(
         &generate_dump_info(&cache, context),
     )?;
 
-    let grouped_funcs = (ir_pack.funcs.iter()).into_group_map_by(|x| x.name.namespace.clone());
+    let grouped_funcs = (ir_pack.funcs.iter()).into_group_map_by(|x| x.namespace());
     let grouped_namespaced_types = (cache.distinct_types.iter())
         .filter(|x| x.self_namespace().is_some())
         .into_group_map_by(|x| x.self_namespace().unwrap());

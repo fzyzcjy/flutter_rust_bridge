@@ -1,11 +1,12 @@
 use crate::codegen::generator::codec::structs::CodecModePack;
 use crate::codegen::ir::comment::IrComment;
 use crate::codegen::ir::field::IrField;
-use crate::codegen::ir::namespace::NamespacedName;
+use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegatePrimitiveEnum};
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
 use crate::if_then_some;
+use convert_case::{Case, Casing};
 
 crate::ir! {
 pub struct IrFunc {
@@ -125,6 +126,18 @@ impl IrFunc {
         } else {
             None
         }
+    }
+
+    pub(crate) fn namespace(&self) -> Namespace {
+        self.name.namespace.clone()
+    }
+
+    pub(crate) fn name_dart_api(&self) -> String {
+        self.name.name.to_owned().to_case(Case::Camel) // TODO
+    }
+
+    pub(crate) fn name_dart_wire(&self) -> String {
+        self.name.name.to_owned().to_case(Case::Camel) // TODO
     }
 }
 
