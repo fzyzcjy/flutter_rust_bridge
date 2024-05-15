@@ -10,7 +10,7 @@ use convert_case::{Case, Casing};
 
 crate::ir! {
 pub struct IrFunc {
-    name: NamespacedName,
+    pub name: NamespacedName,
     pub id: i32,
     pub inputs: Vec<IrFuncInput>,
     pub output: IrFuncOutput,
