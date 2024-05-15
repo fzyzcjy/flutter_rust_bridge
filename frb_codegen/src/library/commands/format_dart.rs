@@ -4,7 +4,7 @@ use crate::library::commands::command_runner::check_exit_code;
 use crate::utils::path_utils::{normalize_windows_unc_path, path_to_string};
 use anyhow::Context;
 use anyhow::Result;
-use itertools::Itertools;
+use itertools::{concat, Itertools};
 use log::debug;
 use pathdiff::diff_paths;
 use std::path::{Path, PathBuf};
@@ -56,7 +56,10 @@ pub(super) fn prepare_paths(
         .collect::<Result<Vec<_>>>()?
         .into_iter()
         .flat_map(|path| {
-            (candidate_extensions.iter()).map(move |ext| with_extension(path.clone(), ext))
+            concat([
+                vec![path.clone()],
+                (extra_extensions.iter()).map(move |ext| with_extension(path.clone(), ext)),
+            ])
         })
         .filter(|path| path.exists())
         .collect_vec())
