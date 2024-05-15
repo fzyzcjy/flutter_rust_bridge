@@ -60,7 +60,7 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
 
     setup_cargokit_dependencies(&dart_root)?;
 
-    format_dart(&[dart_root.clone()], &dart_root, 80)?;
+    format_dart(&[dart_root.clone()], &dart_root, 80, &[])?;
 
     Ok(())
 }
