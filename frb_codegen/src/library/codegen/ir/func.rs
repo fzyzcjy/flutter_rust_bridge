@@ -128,10 +128,6 @@ impl IrFunc {
         }
     }
 
-    pub(crate) fn namespace(&self) -> Namespace {
-        self.name.namespace.clone()
-    }
-
     pub(crate) fn name_dart_api(&self) -> String {
         self.name.name.to_owned().to_case(Case::Camel) // TODO
     }
