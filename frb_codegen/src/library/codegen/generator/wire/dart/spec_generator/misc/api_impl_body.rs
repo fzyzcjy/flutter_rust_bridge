@@ -1,5 +1,6 @@
 use crate::codegen::generator::api_dart;
 use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
+use crate::codegen::generator::api_dart::spec_generator::function::ApiDartGeneratedFunction;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::dart::spec_generator::codec::base::WireDartCodecEntrypoint;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
@@ -31,7 +32,11 @@ pub(crate) fn generate_api_impl_normal_function(
 
     let task_class = generate_task_class(func);
 
-    let func_expr = api_dart_func.func_expr;
+    let ApiDartGeneratedFunction {
+        func_return_type,
+        func_params_str,
+        ..
+    } = api_dart_func;
 
     let call_handler = format!(
         "handler.{execute_func_name}({task_class}(
@@ -74,7 +79,7 @@ pub(crate) fn generate_api_impl_normal_function(
         format!("return {call_handler};")
     };
     let function_implementation = format!(
-        "@override {func_expr} {maybe_async} {{ {function_implementation_body} }}",
+        "@override {func_return_type} {func_name}({func_params_str}) {maybe_async} {{ {function_implementation_body} }}",
         maybe_async = if func.mode != IrFuncMode::Sync
             && api_dart_func.return_stream.is_some()
             && func.stream_dart_await
@@ -83,6 +88,7 @@ pub(crate) fn generate_api_impl_normal_function(
         } else {
             ""
         },
+        func_name = func.name_dart_wire(),
     );
 
     let companion_field_implementation = generate_companion_field(func, &const_meta_field_name);
