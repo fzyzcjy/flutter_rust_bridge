@@ -8,3 +8,27 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<int> minimalAdder({required int a, required int b, dynamic hint}) =>
     RustLib.instance.api.minimalAdder(a: a, b: b, hint: hint);
+
+Future<void> rustFunction(
+        {required FutureOr<ResultStringU32> Function(String) dartCallback,
+        dynamic hint}) =>
+    RustLib.instance.api.rustFunction(dartCallback: dartCallback, hint: hint);
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Result < String , u32 >>>
+@sealed
+class ResultStringU32 extends RustOpaque {
+  ResultStringU32.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  ResultStringU32.sseDecode(int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_ResultStringU32,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_ResultStringU32,
+    rustArcDecrementStrongCountPtr:
+        RustLib.instance.api.rust_arc_decrement_strong_count_ResultStringU32Ptr,
+  );
+}
