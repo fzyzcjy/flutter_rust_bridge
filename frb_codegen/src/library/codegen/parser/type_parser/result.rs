@@ -23,7 +23,7 @@ pub(crate) fn parse_type_maybe_result(
     }
 
     Ok(ResultTypeInfo {
-        ok_output: type_parser.parse_type(ty, context)?,
+        ok_output: ir.clone(),
         error_output: None,
     })
 }
@@ -48,7 +48,7 @@ fn parse_type_result(args: &[IrType]) -> anyhow::Result<ResultTypeInfo> {
     let error_output = error_output.map(set_is_exception_flag);
 
     Ok(ResultTypeInfo {
-        ok_output: Some(ok_output.clone()),
+        ok_output: ok_output.clone(),
         error_output,
     })
 }

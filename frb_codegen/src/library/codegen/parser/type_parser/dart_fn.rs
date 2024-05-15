@@ -42,12 +42,12 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             let ResultTypeInfo {
                 ok_output,
                 error_output,
-            } = Box::new(self.parse_dart_fn_output(&arguments.output)?);
+            } = self.parse_dart_fn_output(&arguments.output)?;
 
             return Ok(IrType::DartFn(IrTypeDartFn {
                 inputs,
-                ok_output,
-                error_output,
+                ok_output: Box::new(ok_output),
+                error_output: error_output.map(Box::new),
             }));
 
             // This will stop the whole generator and tell the users, so we do not care about testing it
@@ -76,7 +76,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                             .unwrap()
                         {
                             let ir = self.parse_type(inner_ty)?;
-                            return parse_type_maybe_result(ir, self.inner, self.context);
+                            return parse_type_maybe_result(&ir, self.inner, self.context);
 
                             // This will stop the whole generator and tell the users, so we do not care about testing it
                             // frb-coverage:ignore-start
