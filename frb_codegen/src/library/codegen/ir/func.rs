@@ -1,7 +1,7 @@
 use crate::codegen::generator::codec::structs::CodecModePack;
 use crate::codegen::ir::comment::IrComment;
 use crate::codegen::ir::field::IrField;
-use crate::codegen::ir::namespace::{Namespace, NamespacedName};
+use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegatePrimitiveEnum};
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};

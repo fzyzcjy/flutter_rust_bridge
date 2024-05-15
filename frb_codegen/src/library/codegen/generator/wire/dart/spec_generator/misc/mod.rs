@@ -15,7 +15,6 @@ use crate::library::codegen::generator::wire::dart::spec_generator::misc::ty::Wi
 use crate::utils::basic_code::DartBasicHeaderCode;
 use crate::utils::path_utils::path_to_string;
 use anyhow::Context;
-use convert_case::{Case, Casing};
 use itertools::Itertools;
 use pathdiff::diff_paths;
 use serde::Serialize;
