@@ -7,4 +7,4 @@ import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<void> dupNameFunc({dynamic hint}) =>
-    RustLib.instance.api.dupNameFunc(hint: hint);
+    RustLib.instance.api.crateApiAnotherDupNameFunc(hint: hint);

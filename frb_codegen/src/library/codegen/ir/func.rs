@@ -7,6 +7,7 @@ use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
 use crate::if_then_some;
 use convert_case::{Case, Casing};
+use itertools::Itertools;
 
 crate::ir! {
 pub struct IrFunc {
@@ -129,11 +130,16 @@ impl IrFunc {
     }
 
     pub(crate) fn name_dart_api(&self) -> String {
-        self.name.name.to_owned().to_case(Case::Camel) // TODO
+        self.name.name.to_owned().to_case(Case::Camel)
     }
 
     pub(crate) fn name_dart_wire(&self) -> String {
-        self.name.name.to_owned().to_case(Case::Camel) // TODO
+        let raw = format!(
+            "{}_{}",
+            self.name.namespace.path().into_iter().join("_"),
+            self.name.name
+        );
+        raw.to_case(Case::Camel)
     }
 }
 

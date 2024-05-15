@@ -46,7 +46,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 
   @override
   Future<void> executeRustInitializers() async {
-    await api.initApp();
+    await api.crateApiMinimalInitApp();
   }
 
   @override
