@@ -56,10 +56,12 @@ pub(super) fn prepare_paths(
         .collect::<Result<Vec<_>>>()?
         .into_iter()
         .flat_map(|path| {
-            (vec![path.clone()].into_iter())
-                .chain((extra_extensions.iter()).map(move |ext| with_extension(path.clone(), ext)))
+            (vec![path.clone()].into_iter()).chain(
+                (extra_extensions.iter())
+                    .map(move |ext| with_extension(path.clone(), ext))
+                    .filter(|path| path.exists()),
+            )
         })
-        .filter(|path| path.exists())
         .collect_vec())
 }
 
