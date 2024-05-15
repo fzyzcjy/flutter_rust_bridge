@@ -15,3 +15,5 @@ cargo:
   release:
     toolchain: nightly
 ```
+
+to fulfill the need of using nightly Rust.
