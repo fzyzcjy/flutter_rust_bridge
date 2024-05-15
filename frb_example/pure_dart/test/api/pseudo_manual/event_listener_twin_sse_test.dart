@@ -35,6 +35,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
     await closeEventListenerTwinSse();
 
+    await Future.delayed(const Duration(seconds: 1));
+
     expect(logs, ['one', 'two']);
   });
 }

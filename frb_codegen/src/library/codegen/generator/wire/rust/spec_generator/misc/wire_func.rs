@@ -7,7 +7,6 @@ use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
     ExternFunc, ExternFuncParam,
 };
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
-use crate::codegen::ir::func::OwnershipMode;
 use crate::codegen::ir::func::{IrFunc, IrFuncMode, IrFuncOwnerInfo};
 use crate::codegen::ir::ty::IrType;
 use crate::if_then_some;
@@ -100,29 +99,7 @@ fn generate_wrap_info_obj(func: &IrFunc) -> String {
 }
 
 fn generate_code_inner_decode(func: &IrFunc) -> String {
-    func.inputs
-        .iter()
-        .filter_map(|field| {
-            if let IrType::RustAutoOpaque(o) = &field.inner.ty {
-                if o.ownership_mode != OwnershipMode::Owned {
-                    let mode = o.ownership_mode.to_string().to_case(Case::Snake);
-                    let mutability = if o.ownership_mode == OwnershipMode::RefMut {
-                        "mut "
-                    } else {
-                        ""
-                    };
-                    Some(format!(
-                        "let {mutability}api_{name} = api_{name}.rust_auto_opaque_decode_{mode}();\n",
-                        name = field.inner.name.rust_style()
-                    ))
-                } else {
-                    None
-                }
-            } else {
-                None
-            }
-        })
-        .join("")
+    super::wire_func_rao::generate_code_inner_decode(func)
 }
 
 fn generate_code_call_inner_func_result(func: &IrFunc, inner_func_args: Vec<String>) -> String {
