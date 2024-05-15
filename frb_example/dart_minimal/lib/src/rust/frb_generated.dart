@@ -98,14 +98,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kDupNameFuncConstMeta,
+      constMeta: kCrateApiAnotherDupNameFuncConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kDupNameFuncConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateApiAnotherDupNameFuncConstMeta => const TaskConstMeta(
         debugName: "dup_name_func",
         argNames: [],
       );
@@ -122,14 +122,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kDupNameFuncConstMeta,
+      constMeta: kCrateApiMinimalDupNameFuncConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kDupNameFuncConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateApiMinimalDupNameFuncConstMeta => const TaskConstMeta(
         debugName: "dup_name_func",
         argNames: [],
       );
@@ -146,14 +146,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kInitAppConstMeta,
+      constMeta: kCrateApiMinimalInitAppConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kInitAppConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateApiMinimalInitAppConstMeta => const TaskConstMeta(
         debugName: "init_app",
         argNames: [],
       );
@@ -173,14 +173,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_i_32,
         decodeErrorData: null,
       ),
-      constMeta: kMinimalAdderConstMeta,
+      constMeta: kCrateApiMinimalMinimalAdderConstMeta,
       argValues: [a, b],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kMinimalAdderConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateApiMinimalMinimalAdderConstMeta =>
+      const TaskConstMeta(
         debugName: "minimal_adder",
         argNames: ["a", "b"],
       );

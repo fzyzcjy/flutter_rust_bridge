@@ -20,7 +20,8 @@ pub(crate) fn generate_api_impl_normal_function(
     let api_dart_func =
         api_dart::spec_generator::function::generate(func, context.as_api_dart_context())?;
 
-    let const_meta_field_name = format!("k{}ConstMeta", func.name.name.to_case(Case::Pascal));
+    let const_meta_field_name =
+        format!("k{}ConstMeta", func.name_dart_wire().to_case(Case::Pascal));
 
     let wire_func_name = wire_func_name(func);
     let inner_func_stmt = dart2rust_codec.generate_dart2rust_inner_func_stmt(func, &wire_func_name);
