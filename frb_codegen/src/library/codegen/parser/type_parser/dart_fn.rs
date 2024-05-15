@@ -1,6 +1,6 @@
 use crate::codegen::ir::ty::dart_fn::IrTypeDartFn;
 use crate::codegen::ir::ty::IrType;
-use crate::codegen::parser::type_parser::result::parse_type_maybe_result;
+use crate::codegen::parser::type_parser::result::{parse_type_maybe_result, ResultTypeInfo};
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use crate::if_then_some;
 use anyhow::{bail, Context};
@@ -39,9 +39,16 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 .map(|x| self.parse_type(x))
                 .collect::<anyhow::Result<Vec<_>>>()?;
 
-            let output = Box::new(self.parse_dart_fn_output(&arguments.output)?);
+            let ResultTypeInfo {
+                ok_output,
+                error_output,
+            } = Box::new(self.parse_dart_fn_output(&arguments.output)?);
 
-            return Ok(IrType::DartFn(IrTypeDartFn { inputs, output }));
+            return Ok(IrType::DartFn(IrTypeDartFn {
+                inputs,
+                ok_output,
+                error_output,
+            }));
 
             // This will stop the whole generator and tell the users, so we do not care about testing it
             // frb-coverage:ignore-start
@@ -53,7 +60,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
     // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
     // frb-coverage:ignore-start
-    fn parse_dart_fn_output(&mut self, return_type: &ReturnType) -> anyhow::Result<IrType> {
+    fn parse_dart_fn_output(&mut self, return_type: &ReturnType) -> anyhow::Result<ResultTypeInfo> {
         // frb-coverage:ignore-end
         if let ReturnType::Type(_, ret_ty) = return_type {
             if let Type::Path(TypePath { ref path, .. }) = **ret_ty {
@@ -69,8 +76,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                             .unwrap()
                         {
                             let ir = self.parse_type(inner_ty)?;
-                            let info = parse_type_maybe_result(ir, self.inner)?;
-                            return TODO;
+                            return parse_type_maybe_result(ir, self.inner);
 
                             // This will stop the whole generator and tell the users, so we do not care about testing it
                             // frb-coverage:ignore-start
