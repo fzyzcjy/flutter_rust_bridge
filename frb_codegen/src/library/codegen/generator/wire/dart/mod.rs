@@ -22,6 +22,7 @@ pub(crate) fn generate(
     rust_content_hash: i32,
     dumper: &Dumper,
     progress_bar_pack: &GeneratorProgressBarPack,
+    dart_preamble: String,
 ) -> anyhow::Result<GeneratorWireDartOutput> {
     let spec = spec_generator::generate(
         context,
@@ -31,6 +32,7 @@ pub(crate) fn generate(
         rust_content_hash,
         dumper,
         progress_bar_pack,
+        dart_preamble,
     )?;
     dumper.dump(ConfigDumpContent::GeneratorSpec, "wire_dart.json", &spec)?;
 

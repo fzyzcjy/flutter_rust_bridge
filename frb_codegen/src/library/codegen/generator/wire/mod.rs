@@ -63,6 +63,7 @@ pub(crate) fn generate(
         rust_output.content_hash,
         dumper,
         progress_bar_pack,
+        api_dart_config.dart_preamble.clone(),
     )?;
 
     Ok(GeneratorWireOutput {

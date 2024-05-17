@@ -40,6 +40,7 @@ pub(crate) fn generate(
     rust_content_hash: i32,
     dumper: &Dumper,
     progress_bar_pack: &GeneratorProgressBarPack,
+    dart_preamble: String,
 ) -> anyhow::Result<WireDartOutputSpec> {
     let cache = IrPackComputedCache::compute(context.ir_pack);
 
@@ -58,6 +59,7 @@ pub(crate) fn generate(
             rust_extern_funcs,
             rust_content_hash,
             progress_bar_pack,
+            dart_preamble,
         )?,
         rust2dart: auto_add_base_class_abstract_method(WireDartCodecEntrypoint::generate_all(
             context, &cache, Decode,

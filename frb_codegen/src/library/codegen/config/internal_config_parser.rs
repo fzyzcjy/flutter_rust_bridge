@@ -119,6 +119,7 @@ impl InternalConfig {
                     dart_entrypoint_class_name: dart_output_class_name_pack
                         .entrypoint_class_name
                         .clone(),
+                    dart_preamble: config.dart_preamble.clone().unwrap_or_default(),
                 },
                 wire: GeneratorWireInternalConfig {
                     dart: GeneratorWireDartInternalConfig {
