@@ -10,7 +10,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
         
 
-        Future<void> firstFunction({dynamic hint}) => RustLib.instance.api.firstFunction(hint: hint);
+        Future<void> firstFunction({dynamic hint}) => RustLib.instance.api.crateApiFirstFunction(hint: hint);
 
         
         
