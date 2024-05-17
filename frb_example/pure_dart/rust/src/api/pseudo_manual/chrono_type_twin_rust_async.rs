@@ -92,10 +92,16 @@ pub struct TestChronoTwinRustAsync {
 pub async fn test_chrono_twin_rust_async() -> TestChronoTwinRustAsync {
     TestChronoTwinRustAsync {
         dt: Some(chrono::DateTime::from_naive_utc_and_offset(
-            chrono::NaiveDateTime::from_timestamp_opt(1631297333, 0).unwrap(),
+            chrono::DateTime::from_timestamp(1631297333, 0)
+                .unwrap()
+                .naive_utc(),
             chrono::Utc,
         )),
-        dt2: Some(chrono::NaiveDateTime::from_timestamp_opt(1631297333, 0).unwrap()),
+        dt2: Some(
+            chrono::DateTime::from_timestamp(1631297333, 0)
+                .unwrap()
+                .naive_utc(),
+        ),
         du: Some(chrono::Duration::hours(4)),
     }
 }
@@ -103,10 +109,16 @@ pub async fn test_chrono_twin_rust_async() -> TestChronoTwinRustAsync {
 pub async fn test_precise_chrono_twin_rust_async() -> TestChronoTwinRustAsync {
     TestChronoTwinRustAsync {
         dt: Some(chrono::DateTime::from_naive_utc_and_offset(
-            chrono::NaiveDateTime::from_timestamp_opt(1014466435, 0).unwrap(),
+            chrono::DateTime::from_timestamp(1014466435, 0)
+                .unwrap()
+                .naive_utc(),
             chrono::Utc,
         )),
-        dt2: Some(chrono::NaiveDateTime::from_timestamp_opt(-5362715015, 0).unwrap()),
+        dt2: Some(
+            chrono::DateTime::from_timestamp(-5362715015, 0)
+                .unwrap()
+                .naive_utc(),
+        ),
         du: Some(chrono::Duration::hours(4)),
     }
 }
