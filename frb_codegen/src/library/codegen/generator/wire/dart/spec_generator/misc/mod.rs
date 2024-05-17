@@ -40,7 +40,6 @@ pub(crate) fn generate(
     rust_extern_funcs: &[ExternFunc],
     rust_content_hash: i32,
     progress_bar_pack: &GeneratorProgressBarPack,
-    dart_preamble: String,
 ) -> anyhow::Result<WireDartOutputSpecMisc> {
     Ok(WireDartOutputSpecMisc {
         wire_class: super::wire_class::generate(
@@ -54,7 +53,6 @@ pub(crate) fn generate(
             cache,
             context,
             rust_content_hash,
-            dart_preamble,
         )?,
         api_impl_normal_functions: (context.ir_pack.funcs.iter())
             .map(|f| api_impl_body::generate_api_impl_normal_function(f, context))
@@ -73,7 +71,6 @@ fn generate_boilerplate(
     cache: &IrPackComputedCache,
     context: WireDartGeneratorContext,
     rust_content_hash: i32,
-    dart_preamble: String,
 ) -> anyhow::Result<Acc<Vec<WireDartOutputCode>>> {
     let DartOutputClassNamePack {
         entrypoint_class_name,
@@ -83,8 +80,9 @@ fn generate_boilerplate(
         ..
     } = &context.config.dart_output_class_name_pack;
 
+    let dart_preamble = &context.api_dart_config.dart_preamble.as_str();
     let file_top = generate_code_header()
-        + if !dart_preamble.is_empty() {"\n\n"} else {""} + dart_preamble.as_str()
+        + if !dart_preamble.is_empty() {"\n\n"} else {""} + dart_preamble
         + "\n\n// ignore_for_file: unused_import, unused_element, unnecessary_import, duplicate_ignore, invalid_use_of_internal_member, annotate_overrides, non_constant_identifier_names, curly_braces_in_flow_control_structures, prefer_const_literals_to_create_immutables, unused_field\n";
 
     let mut universal_imports = generate_import_dart_api_layer(
