@@ -12,76 +12,96 @@ part 'rust_opaque_twin_rust_async_sse_moi.freezed.dart';
 
 Future<HideDataTwinRustAsyncSseMoi> createOpaqueTwinRustAsyncSseMoi(
         {dynamic hint}) =>
-    RustLib.instance.api.createOpaqueTwinRustAsyncSseMoi(hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueTwinRustAsyncSseMoiCreateOpaqueTwinRustAsyncSseMoi(
+            hint: hint);
 
 Future<HideDataTwinRustAsyncSseMoi?> createOptionOpaqueTwinRustAsyncSseMoi(
         {HideDataTwinRustAsyncSseMoi? opaque, dynamic hint}) =>
     RustLib.instance.api
-        .createOptionOpaqueTwinRustAsyncSseMoi(opaque: opaque, hint: hint);
+        .crateApiPseudoManualRustOpaqueTwinRustAsyncSseMoiCreateOptionOpaqueTwinRustAsyncSseMoi(
+            opaque: opaque, hint: hint);
 
 Future<EnumOpaqueTwinRustAsyncSseMoiArray5>
-    createArrayOpaqueEnumTwinRustAsyncSseMoi({dynamic hint}) =>
-        RustLib.instance.api
-            .createArrayOpaqueEnumTwinRustAsyncSseMoi(hint: hint);
+    createArrayOpaqueEnumTwinRustAsyncSseMoi({dynamic hint}) => RustLib
+        .instance.api
+        .crateApiPseudoManualRustOpaqueTwinRustAsyncSseMoiCreateArrayOpaqueEnumTwinRustAsyncSseMoi(
+            hint: hint);
 
 Future<String> runEnumOpaqueTwinRustAsyncSseMoi(
         {required EnumOpaqueTwinRustAsyncSseMoi opaque, dynamic hint}) =>
     RustLib.instance.api
-        .runEnumOpaqueTwinRustAsyncSseMoi(opaque: opaque, hint: hint);
+        .crateApiPseudoManualRustOpaqueTwinRustAsyncSseMoiRunEnumOpaqueTwinRustAsyncSseMoi(
+            opaque: opaque, hint: hint);
 
 Future<String> runOpaqueTwinRustAsyncSseMoi(
         {required HideDataTwinRustAsyncSseMoi opaque, dynamic hint}) =>
     RustLib.instance.api
-        .runOpaqueTwinRustAsyncSseMoi(opaque: opaque, hint: hint);
+        .crateApiPseudoManualRustOpaqueTwinRustAsyncSseMoiRunOpaqueTwinRustAsyncSseMoi(
+            opaque: opaque, hint: hint);
 
 Future<String> runOpaqueWithDelayTwinRustAsyncSseMoi(
         {required HideDataTwinRustAsyncSseMoi opaque, dynamic hint}) =>
     RustLib.instance.api
-        .runOpaqueWithDelayTwinRustAsyncSseMoi(opaque: opaque, hint: hint);
+        .crateApiPseudoManualRustOpaqueTwinRustAsyncSseMoiRunOpaqueWithDelayTwinRustAsyncSseMoi(
+            opaque: opaque, hint: hint);
 
 Future<HideDataTwinRustAsyncSseMoiArray2> opaqueArrayTwinRustAsyncSseMoi(
         {dynamic hint}) =>
-    RustLib.instance.api.opaqueArrayTwinRustAsyncSseMoi(hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueTwinRustAsyncSseMoiOpaqueArrayTwinRustAsyncSseMoi(
+            hint: hint);
 
 Future<String> runNonCloneTwinRustAsyncSseMoi(
         {required NonCloneDataTwinRustAsyncSseMoi clone, dynamic hint}) =>
     RustLib.instance.api
-        .runNonCloneTwinRustAsyncSseMoi(clone: clone, hint: hint);
+        .crateApiPseudoManualRustOpaqueTwinRustAsyncSseMoiRunNonCloneTwinRustAsyncSseMoi(
+            clone: clone, hint: hint);
 
 Future<void> opaqueArrayRunTwinRustAsyncSseMoi(
         {required HideDataTwinRustAsyncSseMoiArray2 data, dynamic hint}) =>
     RustLib.instance.api
-        .opaqueArrayRunTwinRustAsyncSseMoi(data: data, hint: hint);
+        .crateApiPseudoManualRustOpaqueTwinRustAsyncSseMoiOpaqueArrayRunTwinRustAsyncSseMoi(
+            data: data, hint: hint);
 
 Future<List<HideDataTwinRustAsyncSseMoi>> opaqueVecTwinRustAsyncSseMoi(
         {dynamic hint}) =>
-    RustLib.instance.api.opaqueVecTwinRustAsyncSseMoi(hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueTwinRustAsyncSseMoiOpaqueVecTwinRustAsyncSseMoi(
+            hint: hint);
 
 Future<void> opaqueVecRunTwinRustAsyncSseMoi(
         {required List<HideDataTwinRustAsyncSseMoi> data, dynamic hint}) =>
     RustLib.instance.api
-        .opaqueVecRunTwinRustAsyncSseMoi(data: data, hint: hint);
+        .crateApiPseudoManualRustOpaqueTwinRustAsyncSseMoiOpaqueVecRunTwinRustAsyncSseMoi(
+            data: data, hint: hint);
 
 Future<OpaqueNestedTwinRustAsyncSseMoi> createNestedOpaqueTwinRustAsyncSseMoi(
         {dynamic hint}) =>
-    RustLib.instance.api.createNestedOpaqueTwinRustAsyncSseMoi(hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueTwinRustAsyncSseMoiCreateNestedOpaqueTwinRustAsyncSseMoi(
+            hint: hint);
 
 Future<void> runNestedOpaqueTwinRustAsyncSseMoi(
         {required OpaqueNestedTwinRustAsyncSseMoi opaque, dynamic hint}) =>
     RustLib.instance.api
-        .runNestedOpaqueTwinRustAsyncSseMoi(opaque: opaque, hint: hint);
+        .crateApiPseudoManualRustOpaqueTwinRustAsyncSseMoiRunNestedOpaqueTwinRustAsyncSseMoi(
+            opaque: opaque, hint: hint);
 
 Future<String> unwrapRustOpaqueTwinRustAsyncSseMoi(
         {required HideDataTwinRustAsyncSseMoi opaque, dynamic hint}) =>
     RustLib.instance.api
-        .unwrapRustOpaqueTwinRustAsyncSseMoi(opaque: opaque, hint: hint);
+        .crateApiPseudoManualRustOpaqueTwinRustAsyncSseMoiUnwrapRustOpaqueTwinRustAsyncSseMoi(
+            opaque: opaque, hint: hint);
 
 /// Function to check the code generator.
 /// FrbOpaqueReturn must be only return type.
 /// FrbOpaqueReturn must not be used as an argument.
 Future<FrbOpaqueReturnTwinRustAsyncSseMoi> frbGeneratorTestTwinRustAsyncSseMoi(
         {dynamic hint}) =>
-    RustLib.instance.api.frbGeneratorTestTwinRustAsyncSseMoi(hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueTwinRustAsyncSseMoiFrbGeneratorTestTwinRustAsyncSseMoi(
+            hint: hint);
 
 // Rust type: RustOpaqueMoi<Box < dyn DartDebugTwinRustAsyncSseMoi >>
 @sealed

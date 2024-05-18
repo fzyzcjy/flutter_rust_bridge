@@ -13,11 +13,13 @@ part 'attribute.freezed.dart';
 
 Future<void> handleCustomizedStructTwinNormal(
         {required CustomizedTwinNormal val, dynamic hint}) =>
-    RustLib.instance.api.handleCustomizedStructTwinNormal(val: val, hint: hint);
+    RustLib.instance.api.crateApiAttributeHandleCustomizedStructTwinNormal(
+        val: val, hint: hint);
 
 Future<UserIdTwinNormal> nextUserIdTwinNormal(
         {UserIdTwinNormal userId = const UserIdTwinNormal(), dynamic hint}) =>
-    RustLib.instance.api.nextUserIdTwinNormal(userId: userId, hint: hint);
+    RustLib.instance.api
+        .crateApiAttributeNextUserIdTwinNormal(userId: userId, hint: hint);
 
 class CustomizedTwinNormal {
   final String finalField;

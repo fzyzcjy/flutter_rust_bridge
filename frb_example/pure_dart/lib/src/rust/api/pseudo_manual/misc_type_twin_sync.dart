@@ -7,20 +7,26 @@ import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-void funcReturnUnitTwinSync({dynamic hint}) =>
-    RustLib.instance.api.funcReturnUnitTwinSync(hint: hint);
+void funcReturnUnitTwinSync({dynamic hint}) => RustLib.instance.api
+    .crateApiPseudoManualMiscTypeTwinSyncFuncReturnUnitTwinSync(hint: hint);
 
 List<MySize> handleListOfStructTwinSync(
         {required List<MySize> l, dynamic hint}) =>
-    RustLib.instance.api.handleListOfStructTwinSync(l: l, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMiscTypeTwinSyncHandleListOfStructTwinSync(
+            l: l, hint: hint);
 
 List<String> handleStringListTwinSync(
         {required List<String> names, dynamic hint}) =>
-    RustLib.instance.api.handleStringListTwinSync(names: names, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMiscTypeTwinSyncHandleStringListTwinSync(
+            names: names, hint: hint);
 
 EmptyTwinSync emptyStructTwinSync(
         {required EmptyTwinSync empty, dynamic hint}) =>
-    RustLib.instance.api.emptyStructTwinSync(empty: empty, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMiscTypeTwinSyncEmptyStructTwinSync(
+            empty: empty, hint: hint);
 
 class EmptyTwinSync {
   const EmptyTwinSync();

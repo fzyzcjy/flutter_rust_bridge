@@ -8,7 +8,9 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<NewTypeIntTwinRustAsync> handleNewtypeTwinRustAsync(
         {required NewTypeIntTwinRustAsync arg, dynamic hint}) =>
-    RustLib.instance.api.handleNewtypeTwinRustAsync(arg: arg, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualNewtypePatternTwinRustAsyncHandleNewtypeTwinRustAsync(
+            arg: arg, hint: hint);
 
 class NewTypeIntTwinRustAsync {
   final int field0;

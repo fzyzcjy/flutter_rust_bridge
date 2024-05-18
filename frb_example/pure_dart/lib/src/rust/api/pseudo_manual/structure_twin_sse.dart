@@ -8,25 +8,33 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<StructWithZeroFieldTwinSse> funcStructWithZeroFieldTwinSse(
         {required StructWithZeroFieldTwinSse arg, dynamic hint}) =>
-    RustLib.instance.api.funcStructWithZeroFieldTwinSse(arg: arg, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualStructureTwinSseFuncStructWithZeroFieldTwinSse(
+            arg: arg, hint: hint);
 
 Future<StructWithOneFieldTwinSse> funcStructWithOneFieldTwinSse(
         {required StructWithOneFieldTwinSse arg, dynamic hint}) =>
-    RustLib.instance.api.funcStructWithOneFieldTwinSse(arg: arg, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualStructureTwinSseFuncStructWithOneFieldTwinSse(
+            arg: arg, hint: hint);
 
 Future<StructWithTwoFieldTwinSse> funcStructWithTwoFieldTwinSse(
         {required StructWithTwoFieldTwinSse arg, dynamic hint}) =>
-    RustLib.instance.api.funcStructWithTwoFieldTwinSse(arg: arg, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualStructureTwinSseFuncStructWithTwoFieldTwinSse(
+            arg: arg, hint: hint);
 
 Future<TupleStructWithOneFieldTwinSse> funcTupleStructWithOneFieldTwinSse(
         {required TupleStructWithOneFieldTwinSse arg, dynamic hint}) =>
     RustLib.instance.api
-        .funcTupleStructWithOneFieldTwinSse(arg: arg, hint: hint);
+        .crateApiPseudoManualStructureTwinSseFuncTupleStructWithOneFieldTwinSse(
+            arg: arg, hint: hint);
 
 Future<TupleStructWithTwoFieldTwinSse> funcTupleStructWithTwoFieldTwinSse(
         {required TupleStructWithTwoFieldTwinSse arg, dynamic hint}) =>
     RustLib.instance.api
-        .funcTupleStructWithTwoFieldTwinSse(arg: arg, hint: hint);
+        .crateApiPseudoManualStructureTwinSseFuncTupleStructWithTwoFieldTwinSse(
+            arg: arg, hint: hint);
 
 class StructWithOneFieldTwinSse {
   final int a;

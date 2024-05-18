@@ -7,44 +7,50 @@ import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<DateTime> datetimeUtcTwinNormal({required DateTime d, dynamic hint}) =>
-    RustLib.instance.api.datetimeUtcTwinNormal(d: d, hint: hint);
+    RustLib.instance.api
+        .crateApiChronoTypeDatetimeUtcTwinNormal(d: d, hint: hint);
 
 Future<DateTime> datetimeLocalTwinNormal({required DateTime d, dynamic hint}) =>
-    RustLib.instance.api.datetimeLocalTwinNormal(d: d, hint: hint);
+    RustLib.instance.api
+        .crateApiChronoTypeDatetimeLocalTwinNormal(d: d, hint: hint);
 
 Future<DateTime> naivedatetimeTwinNormal({required DateTime d, dynamic hint}) =>
-    RustLib.instance.api.naivedatetimeTwinNormal(d: d, hint: hint);
+    RustLib.instance.api
+        .crateApiChronoTypeNaivedatetimeTwinNormal(d: d, hint: hint);
 
 Future<DateTime?> optionalEmptyDatetimeUtcTwinNormal(
         {DateTime? d, dynamic hint}) =>
-    RustLib.instance.api.optionalEmptyDatetimeUtcTwinNormal(d: d, hint: hint);
+    RustLib.instance.api
+        .crateApiChronoTypeOptionalEmptyDatetimeUtcTwinNormal(d: d, hint: hint);
 
 Future<Duration> durationTwinNormal({required Duration d, dynamic hint}) =>
-    RustLib.instance.api.durationTwinNormal(d: d, hint: hint);
+    RustLib.instance.api.crateApiChronoTypeDurationTwinNormal(d: d, hint: hint);
 
 Future<List<Duration>> handleTimestampsTwinNormal(
         {required List<DateTime> timestamps,
         required DateTime epoch,
         dynamic hint}) =>
-    RustLib.instance.api.handleTimestampsTwinNormal(
+    RustLib.instance.api.crateApiChronoTypeHandleTimestampsTwinNormal(
         timestamps: timestamps, epoch: epoch, hint: hint);
 
 Future<List<DateTime>> handleDurationsTwinNormal(
         {required List<Duration> durations,
         required DateTime since,
         dynamic hint}) =>
-    RustLib.instance.api.handleDurationsTwinNormal(
+    RustLib.instance.api.crateApiChronoTypeHandleDurationsTwinNormal(
         durations: durations, since: since, hint: hint);
 
 Future<TestChronoTwinNormal> testChronoTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.testChronoTwinNormal(hint: hint);
+    RustLib.instance.api.crateApiChronoTypeTestChronoTwinNormal(hint: hint);
 
 Future<TestChronoTwinNormal> testPreciseChronoTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.testPreciseChronoTwinNormal(hint: hint);
+    RustLib.instance.api
+        .crateApiChronoTypeTestPreciseChronoTwinNormal(hint: hint);
 
 Future<Duration> howLongDoesItTakeTwinNormal(
         {required FeatureChronoTwinNormal mine, dynamic hint}) =>
-    RustLib.instance.api.howLongDoesItTakeTwinNormal(mine: mine, hint: hint);
+    RustLib.instance.api
+        .crateApiChronoTypeHowLongDoesItTakeTwinNormal(mine: mine, hint: hint);
 
 class FeatureChronoTwinNormal {
   final DateTime utc;

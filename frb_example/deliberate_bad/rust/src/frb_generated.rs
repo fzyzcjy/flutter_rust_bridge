@@ -39,7 +39,7 @@ flutter_rust_bridge::frb_generated_default_handler!();
 
 // Section: wire_funcs
 
-fn wire_make_data_race_impl(
+fn wire__crate__api__simple__make_data_race_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
@@ -70,7 +70,7 @@ fn wire_make_data_race_impl(
         },
     )
 }
-fn wire_make_heap_use_after_free_impl(
+fn wire__crate__api__simple__make_heap_use_after_free_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
@@ -101,7 +101,7 @@ fn wire_make_heap_use_after_free_impl(
         },
     )
 }
-fn wire_make_memory_leak_impl(
+fn wire__crate__api__simple__make_memory_leak_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
@@ -132,7 +132,7 @@ fn wire_make_memory_leak_impl(
         },
     )
 }
-fn wire_make_stack_buffer_overflow_impl(
+fn wire__crate__api__simple__make_stack_buffer_overflow_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
@@ -163,7 +163,7 @@ fn wire_make_stack_buffer_overflow_impl(
         },
     )
 }
-fn wire_make_use_of_uninitialized_value_impl(
+fn wire__crate__api__simple__make_use_of_uninitialized_value_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
@@ -225,11 +225,26 @@ fn pde_ffi_dispatcher_primary_impl(
 ) {
     // Codec=Pde (Serialization + dispatch), see doc to use other codecs
     match func_id {
-        5 => wire_make_data_race_impl(port, ptr, rust_vec_len, data_len),
-        2 => wire_make_heap_use_after_free_impl(port, ptr, rust_vec_len, data_len),
-        4 => wire_make_memory_leak_impl(port, ptr, rust_vec_len, data_len),
-        1 => wire_make_stack_buffer_overflow_impl(port, ptr, rust_vec_len, data_len),
-        3 => wire_make_use_of_uninitialized_value_impl(port, ptr, rust_vec_len, data_len),
+        5 => wire__crate__api__simple__make_data_race_impl(port, ptr, rust_vec_len, data_len),
+        2 => wire__crate__api__simple__make_heap_use_after_free_impl(
+            port,
+            ptr,
+            rust_vec_len,
+            data_len,
+        ),
+        4 => wire__crate__api__simple__make_memory_leak_impl(port, ptr, rust_vec_len, data_len),
+        1 => wire__crate__api__simple__make_stack_buffer_overflow_impl(
+            port,
+            ptr,
+            rust_vec_len,
+            data_len,
+        ),
+        3 => wire__crate__api__simple__make_use_of_uninitialized_value_impl(
+            port,
+            ptr,
+            rust_vec_len,
+            data_len,
+        ),
         _ => unreachable!(),
     }
 }

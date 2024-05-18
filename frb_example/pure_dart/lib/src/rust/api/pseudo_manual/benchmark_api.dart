@@ -6,74 +6,92 @@
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<void> benchmarkVoidTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.benchmarkVoidTwinNormal(hint: hint);
+Future<void> benchmarkVoidTwinNormal({dynamic hint}) => RustLib.instance.api
+    .crateApiPseudoManualBenchmarkApiBenchmarkVoidTwinNormal(hint: hint);
 
 Future<int> benchmarkInputBytesTwinNormal(
         {required List<int> bytes, dynamic hint}) =>
     RustLib.instance.api
-        .benchmarkInputBytesTwinNormal(bytes: bytes, hint: hint);
+        .crateApiPseudoManualBenchmarkApiBenchmarkInputBytesTwinNormal(
+            bytes: bytes, hint: hint);
 
 Future<Uint8List> benchmarkOutputBytesTwinNormal(
         {required int size, dynamic hint}) =>
-    RustLib.instance.api.benchmarkOutputBytesTwinNormal(size: size, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualBenchmarkApiBenchmarkOutputBytesTwinNormal(
+            size: size, hint: hint);
 
 Future<void> benchmarkBinaryTreeInputTwinNormal(
         {required BenchmarkBinaryTreeTwinNormal tree, dynamic hint}) =>
     RustLib.instance.api
-        .benchmarkBinaryTreeInputTwinNormal(tree: tree, hint: hint);
+        .crateApiPseudoManualBenchmarkApiBenchmarkBinaryTreeInputTwinNormal(
+            tree: tree, hint: hint);
 
 Future<BenchmarkBinaryTreeTwinNormal> benchmarkBinaryTreeOutputTwinNormal(
         {required int depth, dynamic hint}) =>
     RustLib.instance.api
-        .benchmarkBinaryTreeOutputTwinNormal(depth: depth, hint: hint);
+        .crateApiPseudoManualBenchmarkApiBenchmarkBinaryTreeOutputTwinNormal(
+            depth: depth, hint: hint);
 
 Future<void> benchmarkBinaryTreeInputProtobufTwinNormal(
         {required List<int> raw, dynamic hint}) =>
     RustLib.instance.api
-        .benchmarkBinaryTreeInputProtobufTwinNormal(raw: raw, hint: hint);
+        .crateApiPseudoManualBenchmarkApiBenchmarkBinaryTreeInputProtobufTwinNormal(
+            raw: raw, hint: hint);
 
 Future<Uint8List> benchmarkBinaryTreeOutputProtobufTwinNormal(
         {required int depth, dynamic hint}) =>
     RustLib.instance.api
-        .benchmarkBinaryTreeOutputProtobufTwinNormal(depth: depth, hint: hint);
+        .crateApiPseudoManualBenchmarkApiBenchmarkBinaryTreeOutputProtobufTwinNormal(
+            depth: depth, hint: hint);
 
 Future<void> benchmarkBinaryTreeInputJsonTwinNormal(
         {required String raw, dynamic hint}) =>
     RustLib.instance.api
-        .benchmarkBinaryTreeInputJsonTwinNormal(raw: raw, hint: hint);
+        .crateApiPseudoManualBenchmarkApiBenchmarkBinaryTreeInputJsonTwinNormal(
+            raw: raw, hint: hint);
 
 Future<String> benchmarkBinaryTreeOutputJsonTwinNormal(
         {required int depth, dynamic hint}) =>
     RustLib.instance.api
-        .benchmarkBinaryTreeOutputJsonTwinNormal(depth: depth, hint: hint);
+        .crateApiPseudoManualBenchmarkApiBenchmarkBinaryTreeOutputJsonTwinNormal(
+            depth: depth, hint: hint);
 
 Future<void> benchmarkBlobInputTwinNormal(
         {required BenchmarkBlobTwinNormal blob, dynamic hint}) =>
-    RustLib.instance.api.benchmarkBlobInputTwinNormal(blob: blob, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualBenchmarkApiBenchmarkBlobInputTwinNormal(
+            blob: blob, hint: hint);
 
 Future<BenchmarkBlobTwinNormal> benchmarkBlobOutputTwinNormal(
         {required int size, dynamic hint}) =>
-    RustLib.instance.api.benchmarkBlobOutputTwinNormal(size: size, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualBenchmarkApiBenchmarkBlobOutputTwinNormal(
+            size: size, hint: hint);
 
 Future<void> benchmarkBlobInputProtobufTwinNormal(
         {required List<int> raw, dynamic hint}) =>
     RustLib.instance.api
-        .benchmarkBlobInputProtobufTwinNormal(raw: raw, hint: hint);
+        .crateApiPseudoManualBenchmarkApiBenchmarkBlobInputProtobufTwinNormal(
+            raw: raw, hint: hint);
 
 Future<Uint8List> benchmarkBlobOutputProtobufTwinNormal(
         {required int size, dynamic hint}) =>
     RustLib.instance.api
-        .benchmarkBlobOutputProtobufTwinNormal(size: size, hint: hint);
+        .crateApiPseudoManualBenchmarkApiBenchmarkBlobOutputProtobufTwinNormal(
+            size: size, hint: hint);
 
 Future<void> benchmarkBlobInputJsonTwinNormal(
         {required String raw, dynamic hint}) =>
-    RustLib.instance.api.benchmarkBlobInputJsonTwinNormal(raw: raw, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualBenchmarkApiBenchmarkBlobInputJsonTwinNormal(
+            raw: raw, hint: hint);
 
 Future<String> benchmarkBlobOutputJsonTwinNormal(
         {required int size, dynamic hint}) =>
     RustLib.instance.api
-        .benchmarkBlobOutputJsonTwinNormal(size: size, hint: hint);
+        .crateApiPseudoManualBenchmarkApiBenchmarkBlobOutputJsonTwinNormal(
+            size: size, hint: hint);
 
 class BenchmarkBinaryTreeTwinNormal {
   final String name;

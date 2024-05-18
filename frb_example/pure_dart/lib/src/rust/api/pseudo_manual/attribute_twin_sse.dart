@@ -13,11 +13,14 @@ part 'attribute_twin_sse.freezed.dart';
 
 Future<void> handleCustomizedStructTwinSse(
         {required CustomizedTwinSse val, dynamic hint}) =>
-    RustLib.instance.api.handleCustomizedStructTwinSse(val: val, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualAttributeTwinSseHandleCustomizedStructTwinSse(
+            val: val, hint: hint);
 
 Future<UserIdTwinSse> nextUserIdTwinSse(
         {UserIdTwinSse userId = const UserIdTwinSse(), dynamic hint}) =>
-    RustLib.instance.api.nextUserIdTwinSse(userId: userId, hint: hint);
+    RustLib.instance.api.crateApiPseudoManualAttributeTwinSseNextUserIdTwinSse(
+        userId: userId, hint: hint);
 
 class CustomizedTwinSse {
   final String finalField;

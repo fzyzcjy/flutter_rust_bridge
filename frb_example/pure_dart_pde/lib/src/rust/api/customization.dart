@@ -10,4 +10,4 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 // The type `INIT_TWO_DONE` is not used by any `pub` functions, thus it is ignored.
 
 Future<bool> checkInitDone({dynamic hint}) =>
-    RustLib.instance.api.checkInitDone(hint: hint);
+    RustLib.instance.api.crateApiCustomizationCheckInitDone(hint: hint);

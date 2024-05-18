@@ -11,13 +11,20 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 bool useImportedStructTwinSync({required MyStruct myStruct, dynamic hint}) =>
     RustLib.instance.api
-        .useImportedStructTwinSync(myStruct: myStruct, hint: hint);
+        .crateApiPseudoManualExternalTypeInCrateTwinSyncUseImportedStructTwinSync(
+            myStruct: myStruct, hint: hint);
 
 bool useImportedEnumTwinSync({required MyEnum myEnum, dynamic hint}) =>
-    RustLib.instance.api.useImportedEnumTwinSync(myEnum: myEnum, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualExternalTypeInCrateTwinSyncUseImportedEnumTwinSync(
+            myEnum: myEnum, hint: hint);
 
-OldSimpleStruct callOldModuleSystemTwinSync({dynamic hint}) =>
-    RustLib.instance.api.callOldModuleSystemTwinSync(hint: hint);
+OldSimpleStruct callOldModuleSystemTwinSync({dynamic hint}) => RustLib
+    .instance.api
+    .crateApiPseudoManualExternalTypeInCrateTwinSyncCallOldModuleSystemTwinSync(
+        hint: hint);
 
-NewSimpleStruct callNewModuleSystemTwinSync({dynamic hint}) =>
-    RustLib.instance.api.callNewModuleSystemTwinSync(hint: hint);
+NewSimpleStruct callNewModuleSystemTwinSync({dynamic hint}) => RustLib
+    .instance.api
+    .crateApiPseudoManualExternalTypeInCrateTwinSyncCallNewModuleSystemTwinSync(
+        hint: hint);

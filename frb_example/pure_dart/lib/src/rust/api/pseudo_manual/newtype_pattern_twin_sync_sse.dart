@@ -8,7 +8,9 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 NewTypeIntTwinSyncSse handleNewtypeTwinSyncSse(
         {required NewTypeIntTwinSyncSse arg, dynamic hint}) =>
-    RustLib.instance.api.handleNewtypeTwinSyncSse(arg: arg, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualNewtypePatternTwinSyncSseHandleNewtypeTwinSyncSse(
+            arg: arg, hint: hint);
 
 class NewTypeIntTwinSyncSse {
   final int field0;

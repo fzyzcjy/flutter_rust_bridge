@@ -13,39 +13,55 @@ part 'misc_example_twin_rust_async.freezed.dart';
 
 Future<MyTreeNodeTwinRustAsync> handleComplexStructTwinRustAsync(
         {required MyTreeNodeTwinRustAsync s, dynamic hint}) =>
-    RustLib.instance.api.handleComplexStructTwinRustAsync(s: s, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMiscExampleTwinRustAsyncHandleComplexStructTwinRustAsync(
+            s: s, hint: hint);
 
 Future<List<WeekdaysTwinRustAsync>> listOfPrimitiveEnumsTwinRustAsync(
         {required List<WeekdaysTwinRustAsync> weekdays, dynamic hint}) =>
     RustLib.instance.api
-        .listOfPrimitiveEnumsTwinRustAsync(weekdays: weekdays, hint: hint);
+        .crateApiPseudoManualMiscExampleTwinRustAsyncListOfPrimitiveEnumsTwinRustAsync(
+            weekdays: weekdays, hint: hint);
 
 Future<MyNestedStructTwinRustAsync> handleNestedStructTwinRustAsync(
         {required MyNestedStructTwinRustAsync s, dynamic hint}) =>
-    RustLib.instance.api.handleNestedStructTwinRustAsync(s: s, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMiscExampleTwinRustAsyncHandleNestedStructTwinRustAsync(
+            s: s, hint: hint);
 
 Future<BigBuffersTwinRustAsync> handleBigBuffersTwinRustAsync({dynamic hint}) =>
-    RustLib.instance.api.handleBigBuffersTwinRustAsync(hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMiscExampleTwinRustAsyncHandleBigBuffersTwinRustAsync(
+            hint: hint);
 
 Future<AbcTwinRustAsync> testAbcEnumTwinRustAsync(
         {required AbcTwinRustAsync abc, dynamic hint}) =>
-    RustLib.instance.api.testAbcEnumTwinRustAsync(abc: abc, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMiscExampleTwinRustAsyncTestAbcEnumTwinRustAsync(
+            abc: abc, hint: hint);
 
 Future<StructWithEnumTwinRustAsync> testStructWithEnumTwinRustAsync(
         {required StructWithEnumTwinRustAsync se, dynamic hint}) =>
-    RustLib.instance.api.testStructWithEnumTwinRustAsync(se: se, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMiscExampleTwinRustAsyncTestStructWithEnumTwinRustAsync(
+            se: se, hint: hint);
 
 Future<String> handleStringTwinRustAsync({required String s, dynamic hint}) =>
-    RustLib.instance.api.handleStringTwinRustAsync(s: s, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMiscExampleTwinRustAsyncHandleStringTwinRustAsync(
+            s: s, hint: hint);
 
 Future<Uint8List> handleVecU8TwinRustAsync(
         {required List<int> v, dynamic hint}) =>
-    RustLib.instance.api.handleVecU8TwinRustAsync(v: v, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMiscExampleTwinRustAsyncHandleVecU8TwinRustAsync(
+            v: v, hint: hint);
 
 Future<MySize> handleStructTwinRustAsync(
         {required MySize arg, required MySize boxed, dynamic hint}) =>
     RustLib.instance.api
-        .handleStructTwinRustAsync(arg: arg, boxed: boxed, hint: hint);
+        .crateApiPseudoManualMiscExampleTwinRustAsyncHandleStructTwinRustAsync(
+            arg: arg, boxed: boxed, hint: hint);
 
 class ATwinRustAsync {
   final String a;

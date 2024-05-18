@@ -9,88 +9,103 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<int?> exampleBasicOptionalTypeI8TwinNormal({int? arg, dynamic hint}) =>
     RustLib.instance.api
-        .exampleBasicOptionalTypeI8TwinNormal(arg: arg, hint: hint);
+        .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeI8TwinNormal(
+            arg: arg, hint: hint);
 
 Future<int?> exampleBasicOptionalTypeI16TwinNormal({int? arg, dynamic hint}) =>
     RustLib.instance.api
-        .exampleBasicOptionalTypeI16TwinNormal(arg: arg, hint: hint);
+        .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeI16TwinNormal(
+            arg: arg, hint: hint);
 
 Future<int?> exampleBasicOptionalTypeI32TwinNormal({int? arg, dynamic hint}) =>
     RustLib.instance.api
-        .exampleBasicOptionalTypeI32TwinNormal(arg: arg, hint: hint);
+        .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeI32TwinNormal(
+            arg: arg, hint: hint);
 
 Future<int?> exampleBasicOptionalTypeI64TwinNormal({int? arg, dynamic hint}) =>
     RustLib.instance.api
-        .exampleBasicOptionalTypeI64TwinNormal(arg: arg, hint: hint);
+        .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeI64TwinNormal(
+            arg: arg, hint: hint);
 
 Future<int?> exampleBasicOptionalTypeU8TwinNormal({int? arg, dynamic hint}) =>
     RustLib.instance.api
-        .exampleBasicOptionalTypeU8TwinNormal(arg: arg, hint: hint);
+        .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeU8TwinNormal(
+            arg: arg, hint: hint);
 
 Future<int?> exampleBasicOptionalTypeU16TwinNormal({int? arg, dynamic hint}) =>
     RustLib.instance.api
-        .exampleBasicOptionalTypeU16TwinNormal(arg: arg, hint: hint);
+        .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeU16TwinNormal(
+            arg: arg, hint: hint);
 
 Future<int?> exampleBasicOptionalTypeU32TwinNormal({int? arg, dynamic hint}) =>
     RustLib.instance.api
-        .exampleBasicOptionalTypeU32TwinNormal(arg: arg, hint: hint);
+        .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeU32TwinNormal(
+            arg: arg, hint: hint);
 
 Future<int?> exampleBasicOptionalTypeU64TwinNormal({int? arg, dynamic hint}) =>
     RustLib.instance.api
-        .exampleBasicOptionalTypeU64TwinNormal(arg: arg, hint: hint);
+        .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeU64TwinNormal(
+            arg: arg, hint: hint);
 
 Future<int?> exampleBasicOptionalTypeIsizeTwinNormal(
         {int? arg, dynamic hint}) =>
     RustLib.instance.api
-        .exampleBasicOptionalTypeIsizeTwinNormal(arg: arg, hint: hint);
+        .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeIsizeTwinNormal(
+            arg: arg, hint: hint);
 
 Future<int?> exampleBasicOptionalTypeUsizeTwinNormal(
         {int? arg, dynamic hint}) =>
     RustLib.instance.api
-        .exampleBasicOptionalTypeUsizeTwinNormal(arg: arg, hint: hint);
+        .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeUsizeTwinNormal(
+            arg: arg, hint: hint);
 
 Future<double?> exampleBasicOptionalTypeF32TwinNormal(
         {double? arg, dynamic hint}) =>
     RustLib.instance.api
-        .exampleBasicOptionalTypeF32TwinNormal(arg: arg, hint: hint);
+        .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeF32TwinNormal(
+            arg: arg, hint: hint);
 
 Future<double?> exampleBasicOptionalTypeF64TwinNormal(
         {double? arg, dynamic hint}) =>
     RustLib.instance.api
-        .exampleBasicOptionalTypeF64TwinNormal(arg: arg, hint: hint);
+        .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeF64TwinNormal(
+            arg: arg, hint: hint);
 
 Future<bool?> exampleBasicOptionalTypeBoolTwinNormal(
         {bool? arg, dynamic hint}) =>
     RustLib.instance.api
-        .exampleBasicOptionalTypeBoolTwinNormal(arg: arg, hint: hint);
+        .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeBoolTwinNormal(
+            arg: arg, hint: hint);
 
 Future<String?> exampleBasicOptionalTypeStringTwinNormal(
         {String? arg, dynamic hint}) =>
     RustLib.instance.api
-        .exampleBasicOptionalTypeStringTwinNormal(arg: arg, hint: hint);
+        .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeStringTwinNormal(
+            arg: arg, hint: hint);
 
 Future<Uint8List?> exampleBasicOptionalTypeBytesTwinNormal(
         {Uint8List? arg, dynamic hint}) =>
     RustLib.instance.api
-        .exampleBasicOptionalTypeBytesTwinNormal(arg: arg, hint: hint);
+        .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeBytesTwinNormal(
+            arg: arg, hint: hint);
 
 Future<BasicPrimitiveEnumTwinNormal?>
     exampleBasicOptionalTypeBasicPrimitiveEnumTwinNormalTwinNormal(
             {BasicPrimitiveEnumTwinNormal? arg, dynamic hint}) =>
         RustLib.instance.api
-            .exampleBasicOptionalTypeBasicPrimitiveEnumTwinNormalTwinNormal(
+            .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeBasicPrimitiveEnumTwinNormalTwinNormal(
                 arg: arg, hint: hint);
 
 Future<BasicGeneralEnumTwinNormal?>
     exampleBasicOptionalTypeBasicGeneralEnumTwinNormalTwinNormal(
             {BasicGeneralEnumTwinNormal? arg, dynamic hint}) =>
         RustLib.instance.api
-            .exampleBasicOptionalTypeBasicGeneralEnumTwinNormalTwinNormal(
+            .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeBasicGeneralEnumTwinNormalTwinNormal(
                 arg: arg, hint: hint);
 
 Future<BasicStructTwinNormal?>
     exampleBasicOptionalTypeBasicStructTwinNormalTwinNormal(
             {BasicStructTwinNormal? arg, dynamic hint}) =>
         RustLib.instance.api
-            .exampleBasicOptionalTypeBasicStructTwinNormalTwinNormal(
+            .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeBasicStructTwinNormalTwinNormal(
                 arg: arg, hint: hint);

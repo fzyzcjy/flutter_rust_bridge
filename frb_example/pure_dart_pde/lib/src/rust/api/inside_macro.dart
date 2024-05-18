@@ -8,11 +8,13 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<MacroStruct> funcMacroStructTwinNormal(
         {required MacroStruct arg, dynamic hint}) =>
-    RustLib.instance.api.funcMacroStructTwinNormal(arg: arg, hint: hint);
+    RustLib.instance.api
+        .crateApiInsideMacroFuncMacroStructTwinNormal(arg: arg, hint: hint);
 
 Future<AnotherMacroStructTwinNormal> anotherMacroStructTwinNormal(
         {dynamic hint}) =>
-    RustLib.instance.api.anotherMacroStructTwinNormal(hint: hint);
+    RustLib.instance.api
+        .crateApiInsideMacroAnotherMacroStructTwinNormal(hint: hint);
 
 class AnotherMacroStructTwinNormal {
   final int data;

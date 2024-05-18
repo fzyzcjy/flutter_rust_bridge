@@ -45,7 +45,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 
   @override
   Future<void> executeRustInitializers() async {
-    await api.initApp();
+    await api.crateApiSimpleInitApp();
   }
 
   @override
@@ -67,9 +67,9 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  String greet({required String name, dynamic hint});
+  String crateApiSimpleGreet({required String name, dynamic hint});
 
-  Future<void> initApp({dynamic hint});
+  Future<void> crateApiSimpleInitApp({dynamic hint});
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -81,7 +81,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
-  String greet({required String name, dynamic hint}) {
+  String crateApiSimpleGreet({required String name, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -92,20 +92,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_String,
         decodeErrorData: null,
       ),
-      constMeta: kGreetConstMeta,
+      constMeta: kCrateApiSimpleGreetConstMeta,
       argValues: [name],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kGreetConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateApiSimpleGreetConstMeta => const TaskConstMeta(
         debugName: "greet",
         argNames: ["name"],
       );
 
   @override
-  Future<void> initApp({dynamic hint}) {
+  Future<void> crateApiSimpleInitApp({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -116,14 +116,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kInitAppConstMeta,
+      constMeta: kCrateApiSimpleInitAppConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kInitAppConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateApiSimpleInitAppConstMeta => const TaskConstMeta(
         debugName: "init_app",
         argNames: [],
       );

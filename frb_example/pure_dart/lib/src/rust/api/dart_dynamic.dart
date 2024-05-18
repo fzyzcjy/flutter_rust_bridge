@@ -7,4 +7,5 @@ import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<dynamic> returnDartDynamicTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.returnDartDynamicTwinNormal(hint: hint);
+    RustLib.instance.api
+        .crateApiDartDynamicReturnDartDynamicTwinNormal(hint: hint);

@@ -8,17 +8,18 @@ import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<int> handleTypeAliasIdTwinNormal({required int input, dynamic hint}) =>
-    RustLib.instance.api.handleTypeAliasIdTwinNormal(input: input, hint: hint);
+    RustLib.instance.api
+        .crateApiTypeAliasHandleTypeAliasIdTwinNormal(input: input, hint: hint);
 
 Future<int> handleTypeNestAliasIdTwinNormal(
         {required int input, dynamic hint}) =>
-    RustLib.instance.api
-        .handleTypeNestAliasIdTwinNormal(input: input, hint: hint);
+    RustLib.instance.api.crateApiTypeAliasHandleTypeNestAliasIdTwinNormal(
+        input: input, hint: hint);
 
 Future<TestModelTwinNormal> handleTypeAliasModelTwinNormal(
         {required int input, dynamic hint}) =>
-    RustLib.instance.api
-        .handleTypeAliasModelTwinNormal(input: input, hint: hint);
+    RustLib.instance.api.crateApiTypeAliasHandleTypeAliasModelTwinNormal(
+        input: input, hint: hint);
 
 class TestModelTwinNormal {
   final int id;

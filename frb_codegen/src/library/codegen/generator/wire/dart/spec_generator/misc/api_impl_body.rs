@@ -1,5 +1,6 @@
 use crate::codegen::generator::api_dart;
 use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
+use crate::codegen::generator::api_dart::spec_generator::function::ApiDartGeneratedFunction;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::dart::spec_generator::codec::base::WireDartCodecEntrypoint;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
@@ -19,7 +20,8 @@ pub(crate) fn generate_api_impl_normal_function(
     let api_dart_func =
         api_dart::spec_generator::function::generate(func, context.as_api_dart_context())?;
 
-    let const_meta_field_name = format!("k{}ConstMeta", func.name.name.to_case(Case::Pascal));
+    let const_meta_field_name =
+        format!("k{}ConstMeta", func.name_dart_wire().to_case(Case::Pascal));
 
     let wire_func_name = wire_func_name(func);
     let inner_func_stmt = dart2rust_codec.generate_dart2rust_inner_func_stmt(func, &wire_func_name);
@@ -31,7 +33,15 @@ pub(crate) fn generate_api_impl_normal_function(
 
     let task_class = generate_task_class(func);
 
-    let func_expr = api_dart_func.func_expr;
+    let ApiDartGeneratedFunction {
+        func_return_type,
+        func_params_str,
+        ..
+    } = api_dart_func;
+    let func_expr = format!(
+        "{func_return_type} {func_name}({func_params_str})",
+        func_name = func.name_dart_wire(),
+    );
 
     let call_handler = format!(
         "handler.{execute_func_name}({task_class}(

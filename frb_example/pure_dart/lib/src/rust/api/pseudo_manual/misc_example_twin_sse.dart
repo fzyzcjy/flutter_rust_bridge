@@ -13,38 +13,53 @@ part 'misc_example_twin_sse.freezed.dart';
 
 Future<MyTreeNodeTwinSse> handleComplexStructTwinSse(
         {required MyTreeNodeTwinSse s, dynamic hint}) =>
-    RustLib.instance.api.handleComplexStructTwinSse(s: s, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMiscExampleTwinSseHandleComplexStructTwinSse(
+            s: s, hint: hint);
 
 Future<List<WeekdaysTwinSse>> listOfPrimitiveEnumsTwinSse(
         {required List<WeekdaysTwinSse> weekdays, dynamic hint}) =>
     RustLib.instance.api
-        .listOfPrimitiveEnumsTwinSse(weekdays: weekdays, hint: hint);
+        .crateApiPseudoManualMiscExampleTwinSseListOfPrimitiveEnumsTwinSse(
+            weekdays: weekdays, hint: hint);
 
 Future<MyNestedStructTwinSse> handleNestedStructTwinSse(
         {required MyNestedStructTwinSse s, dynamic hint}) =>
-    RustLib.instance.api.handleNestedStructTwinSse(s: s, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMiscExampleTwinSseHandleNestedStructTwinSse(
+            s: s, hint: hint);
 
-Future<BigBuffersTwinSse> handleBigBuffersTwinSse({dynamic hint}) =>
-    RustLib.instance.api.handleBigBuffersTwinSse(hint: hint);
+Future<BigBuffersTwinSse> handleBigBuffersTwinSse({dynamic hint}) => RustLib
+    .instance.api
+    .crateApiPseudoManualMiscExampleTwinSseHandleBigBuffersTwinSse(hint: hint);
 
 Future<AbcTwinSse> testAbcEnumTwinSse(
         {required AbcTwinSse abc, dynamic hint}) =>
-    RustLib.instance.api.testAbcEnumTwinSse(abc: abc, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMiscExampleTwinSseTestAbcEnumTwinSse(
+            abc: abc, hint: hint);
 
 Future<StructWithEnumTwinSse> testStructWithEnumTwinSse(
         {required StructWithEnumTwinSse se, dynamic hint}) =>
-    RustLib.instance.api.testStructWithEnumTwinSse(se: se, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMiscExampleTwinSseTestStructWithEnumTwinSse(
+            se: se, hint: hint);
 
 Future<String> handleStringTwinSse({required String s, dynamic hint}) =>
-    RustLib.instance.api.handleStringTwinSse(s: s, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMiscExampleTwinSseHandleStringTwinSse(
+            s: s, hint: hint);
 
 Future<Uint8List> handleVecU8TwinSse({required List<int> v, dynamic hint}) =>
-    RustLib.instance.api.handleVecU8TwinSse(v: v, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMiscExampleTwinSseHandleVecU8TwinSse(
+            v: v, hint: hint);
 
 Future<MySize> handleStructTwinSse(
         {required MySize arg, required MySize boxed, dynamic hint}) =>
     RustLib.instance.api
-        .handleStructTwinSse(arg: arg, boxed: boxed, hint: hint);
+        .crateApiPseudoManualMiscExampleTwinSseHandleStructTwinSse(
+            arg: arg, boxed: boxed, hint: hint);
 
 class ATwinSse {
   final String a;

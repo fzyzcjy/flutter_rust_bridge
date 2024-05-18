@@ -11,74 +11,82 @@ part 'dart_opaque.freezed.dart';
 
 Future<String> asyncAcceptDartOpaqueTwinNormal(
         {required Object opaque, dynamic hint}) =>
-    RustLib.instance.api
-        .asyncAcceptDartOpaqueTwinNormal(opaque: opaque, hint: hint);
+    RustLib.instance.api.crateApiDartOpaqueAsyncAcceptDartOpaqueTwinNormal(
+        opaque: opaque, hint: hint);
 
 Future<Object> loopBackTwinNormal({required Object opaque, dynamic hint}) =>
-    RustLib.instance.api.loopBackTwinNormal(opaque: opaque, hint: hint);
+    RustLib.instance.api
+        .crateApiDartOpaqueLoopBackTwinNormal(opaque: opaque, hint: hint);
 
 Future<Object?> loopBackOptionTwinNormal(
         {required Object opaque, dynamic hint}) =>
-    RustLib.instance.api.loopBackOptionTwinNormal(opaque: opaque, hint: hint);
+    RustLib.instance.api
+        .crateApiDartOpaqueLoopBackOptionTwinNormal(opaque: opaque, hint: hint);
 
 Future<ObjectArray1> loopBackArrayTwinNormal(
         {required Object opaque, dynamic hint}) =>
-    RustLib.instance.api.loopBackArrayTwinNormal(opaque: opaque, hint: hint);
+    RustLib.instance.api
+        .crateApiDartOpaqueLoopBackArrayTwinNormal(opaque: opaque, hint: hint);
 
 Future<List<Object>> loopBackVecTwinNormal(
         {required Object opaque, dynamic hint}) =>
-    RustLib.instance.api.loopBackVecTwinNormal(opaque: opaque, hint: hint);
+    RustLib.instance.api
+        .crateApiDartOpaqueLoopBackVecTwinNormal(opaque: opaque, hint: hint);
 
 Future<void> loopBackOptionGetTwinNormal({Object? opaque, dynamic hint}) =>
-    RustLib.instance.api
-        .loopBackOptionGetTwinNormal(opaque: opaque, hint: hint);
+    RustLib.instance.api.crateApiDartOpaqueLoopBackOptionGetTwinNormal(
+        opaque: opaque, hint: hint);
 
 Future<void> loopBackArrayGetTwinNormal(
         {required ObjectArray1 opaque, dynamic hint}) =>
-    RustLib.instance.api.loopBackArrayGetTwinNormal(opaque: opaque, hint: hint);
+    RustLib.instance.api.crateApiDartOpaqueLoopBackArrayGetTwinNormal(
+        opaque: opaque, hint: hint);
 
 Future<void> loopBackVecGetTwinNormal(
         {required List<Object> opaque, dynamic hint}) =>
-    RustLib.instance.api.loopBackVecGetTwinNormal(opaque: opaque, hint: hint);
+    RustLib.instance.api
+        .crateApiDartOpaqueLoopBackVecGetTwinNormal(opaque: opaque, hint: hint);
 
 /// [DartWrapObject] cannot be obtained
 /// on a thread other than the thread it was created on.
 Future<void> panicUnwrapDartOpaqueTwinNormal(
         {required Object opaque, dynamic hint}) =>
-    RustLib.instance.api
-        .panicUnwrapDartOpaqueTwinNormal(opaque: opaque, hint: hint);
+    RustLib.instance.api.crateApiDartOpaquePanicUnwrapDartOpaqueTwinNormal(
+        opaque: opaque, hint: hint);
 
 Future<DartOpaqueNestedTwinNormal> createNestedDartOpaqueTwinNormal(
         {required Object opaque1, required Object opaque2, dynamic hint}) =>
-    RustLib.instance.api.createNestedDartOpaqueTwinNormal(
+    RustLib.instance.api.crateApiDartOpaqueCreateNestedDartOpaqueTwinNormal(
         opaque1: opaque1, opaque2: opaque2, hint: hint);
 
 Future<void> getNestedDartOpaqueTwinNormal(
         {required DartOpaqueNestedTwinNormal opaque, dynamic hint}) =>
-    RustLib.instance.api
-        .getNestedDartOpaqueTwinNormal(opaque: opaque, hint: hint);
+    RustLib.instance.api.crateApiDartOpaqueGetNestedDartOpaqueTwinNormal(
+        opaque: opaque, hint: hint);
 
 Future<EnumDartOpaqueTwinNormal> createEnumDartOpaqueTwinNormal(
         {required Object opaque, dynamic hint}) =>
-    RustLib.instance.api
-        .createEnumDartOpaqueTwinNormal(opaque: opaque, hint: hint);
+    RustLib.instance.api.crateApiDartOpaqueCreateEnumDartOpaqueTwinNormal(
+        opaque: opaque, hint: hint);
 
 Future<void> getEnumDartOpaqueTwinNormal(
         {required EnumDartOpaqueTwinNormal opaque, dynamic hint}) =>
-    RustLib.instance.api
-        .getEnumDartOpaqueTwinNormal(opaque: opaque, hint: hint);
+    RustLib.instance.api.crateApiDartOpaqueGetEnumDartOpaqueTwinNormal(
+        opaque: opaque, hint: hint);
 
 Future<void> setStaticDartOpaqueTwinNormal(
         {required int id, required Object opaque, dynamic hint}) =>
-    RustLib.instance.api
-        .setStaticDartOpaqueTwinNormal(id: id, opaque: opaque, hint: hint);
+    RustLib.instance.api.crateApiDartOpaqueSetStaticDartOpaqueTwinNormal(
+        id: id, opaque: opaque, hint: hint);
 
 Future<void> dropStaticDartOpaqueTwinNormal({required int id, dynamic hint}) =>
-    RustLib.instance.api.dropStaticDartOpaqueTwinNormal(id: id, hint: hint);
+    RustLib.instance.api
+        .crateApiDartOpaqueDropStaticDartOpaqueTwinNormal(id: id, hint: hint);
 
 Future<List<Object>> cloneDartOpaqueTwinNormal(
         {required Object opaque, dynamic hint}) =>
-    RustLib.instance.api.cloneDartOpaqueTwinNormal(opaque: opaque, hint: hint);
+    RustLib.instance.api.crateApiDartOpaqueCloneDartOpaqueTwinNormal(
+        opaque: opaque, hint: hint);
 
 class ObjectArray1 extends NonGrowableListView<Object> {
   static const arraySize = 1;

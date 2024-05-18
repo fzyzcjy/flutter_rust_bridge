@@ -39,7 +39,7 @@ flutter_rust_bridge::frb_generated_default_handler!();
 
 // Section: wire_funcs
 
-fn wire_draw_mandelbrot_impl(
+fn wire__crate__api__mandelbrot__draw_mandelbrot_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
@@ -171,7 +171,7 @@ fn pde_ffi_dispatcher_primary_impl(
 ) {
     // Codec=Pde (Serialization + dispatch), see doc to use other codecs
     match func_id {
-        1 => wire_draw_mandelbrot_impl(port, ptr, rust_vec_len, data_len),
+        1 => wire__crate__api__mandelbrot__draw_mandelbrot_impl(port, ptr, rust_vec_len, data_len),
         _ => unreachable!(),
     }
 }

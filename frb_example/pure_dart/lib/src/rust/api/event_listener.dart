@@ -10,19 +10,21 @@ part 'event_listener.freezed.dart';
 
 Future<Stream<EventTwinNormal>> registerEventListenerTwinNormal(
         {dynamic hint}) =>
-    RustLib.instance.api.registerEventListenerTwinNormal(hint: hint);
+    RustLib.instance.api
+        .crateApiEventListenerRegisterEventListenerTwinNormal(hint: hint);
 
 Future<void> closeEventListenerTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.closeEventListenerTwinNormal(hint: hint);
+    RustLib.instance.api
+        .crateApiEventListenerCloseEventListenerTwinNormal(hint: hint);
 
 Future<void> createEventTwinNormal(
         {required String address, required String payload, dynamic hint}) =>
-    RustLib.instance.api
-        .createEventTwinNormal(address: address, payload: payload, hint: hint);
+    RustLib.instance.api.crateApiEventListenerCreateEventTwinNormal(
+        address: address, payload: payload, hint: hint);
 
 void createEventSyncTwinNormal(
         {required String address, required String payload, dynamic hint}) =>
-    RustLib.instance.api.createEventSyncTwinNormal(
+    RustLib.instance.api.crateApiEventListenerCreateEventSyncTwinNormal(
         address: address, payload: payload, hint: hint);
 
 @freezed
@@ -33,5 +35,6 @@ class EventTwinNormal with _$EventTwinNormal {
     required String payload,
   }) = _EventTwinNormal;
   Future<String> asStringTwinNormal({dynamic hint}) => RustLib.instance.api
-      .eventTwinNormalAsStringTwinNormal(that: this, hint: hint);
+      .crateApiEventListenerEventTwinNormalAsStringTwinNormal(
+          that: this, hint: hint);
 }

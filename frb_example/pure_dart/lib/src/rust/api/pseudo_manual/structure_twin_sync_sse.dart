@@ -9,27 +9,32 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 StructWithZeroFieldTwinSyncSse funcStructWithZeroFieldTwinSyncSse(
         {required StructWithZeroFieldTwinSyncSse arg, dynamic hint}) =>
     RustLib.instance.api
-        .funcStructWithZeroFieldTwinSyncSse(arg: arg, hint: hint);
+        .crateApiPseudoManualStructureTwinSyncSseFuncStructWithZeroFieldTwinSyncSse(
+            arg: arg, hint: hint);
 
 StructWithOneFieldTwinSyncSse funcStructWithOneFieldTwinSyncSse(
         {required StructWithOneFieldTwinSyncSse arg, dynamic hint}) =>
     RustLib.instance.api
-        .funcStructWithOneFieldTwinSyncSse(arg: arg, hint: hint);
+        .crateApiPseudoManualStructureTwinSyncSseFuncStructWithOneFieldTwinSyncSse(
+            arg: arg, hint: hint);
 
 StructWithTwoFieldTwinSyncSse funcStructWithTwoFieldTwinSyncSse(
         {required StructWithTwoFieldTwinSyncSse arg, dynamic hint}) =>
     RustLib.instance.api
-        .funcStructWithTwoFieldTwinSyncSse(arg: arg, hint: hint);
+        .crateApiPseudoManualStructureTwinSyncSseFuncStructWithTwoFieldTwinSyncSse(
+            arg: arg, hint: hint);
 
 TupleStructWithOneFieldTwinSyncSse funcTupleStructWithOneFieldTwinSyncSse(
         {required TupleStructWithOneFieldTwinSyncSse arg, dynamic hint}) =>
     RustLib.instance.api
-        .funcTupleStructWithOneFieldTwinSyncSse(arg: arg, hint: hint);
+        .crateApiPseudoManualStructureTwinSyncSseFuncTupleStructWithOneFieldTwinSyncSse(
+            arg: arg, hint: hint);
 
 TupleStructWithTwoFieldTwinSyncSse funcTupleStructWithTwoFieldTwinSyncSse(
         {required TupleStructWithTwoFieldTwinSyncSse arg, dynamic hint}) =>
     RustLib.instance.api
-        .funcTupleStructWithTwoFieldTwinSyncSse(arg: arg, hint: hint);
+        .crateApiPseudoManualStructureTwinSyncSseFuncTupleStructWithTwoFieldTwinSyncSse(
+            arg: arg, hint: hint);
 
 class StructWithOneFieldTwinSyncSse {
   final int a;
