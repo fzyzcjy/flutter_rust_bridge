@@ -7,21 +7,28 @@ import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<void> funcReturnUnitTwinRustAsyncSse({dynamic hint}) =>
-    RustLib.instance.api.funcReturnUnitTwinRustAsyncSse(hint: hint);
+Future<void> funcReturnUnitTwinRustAsyncSse({dynamic hint}) => RustLib
+    .instance.api
+    .crateApiPseudoManualMiscTypeTwinRustAsyncSseFuncReturnUnitTwinRustAsyncSse(
+        hint: hint);
 
 Future<List<MySize>> handleListOfStructTwinRustAsyncSse(
         {required List<MySize> l, dynamic hint}) =>
-    RustLib.instance.api.handleListOfStructTwinRustAsyncSse(l: l, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMiscTypeTwinRustAsyncSseHandleListOfStructTwinRustAsyncSse(
+            l: l, hint: hint);
 
 Future<List<String>> handleStringListTwinRustAsyncSse(
         {required List<String> names, dynamic hint}) =>
     RustLib.instance.api
-        .handleStringListTwinRustAsyncSse(names: names, hint: hint);
+        .crateApiPseudoManualMiscTypeTwinRustAsyncSseHandleStringListTwinRustAsyncSse(
+            names: names, hint: hint);
 
 Future<EmptyTwinRustAsyncSse> emptyStructTwinRustAsyncSse(
         {required EmptyTwinRustAsyncSse empty, dynamic hint}) =>
-    RustLib.instance.api.emptyStructTwinRustAsyncSse(empty: empty, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMiscTypeTwinRustAsyncSseEmptyStructTwinRustAsyncSse(
+            empty: empty, hint: hint);
 
 class EmptyTwinRustAsyncSse {
   const EmptyTwinRustAsyncSse();

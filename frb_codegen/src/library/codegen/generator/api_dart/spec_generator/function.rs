@@ -15,7 +15,6 @@ use crate::codegen::ir::ty::IrType;
 use crate::if_then_some;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::utils::basic_code::DartBasicHeaderCode;
-use convert_case::{Case, Casing};
 use itertools::Itertools;
 use serde::Serialize;
 
@@ -24,6 +23,7 @@ pub(crate) struct ApiDartGeneratedFunction {
     pub(crate) namespace: Namespace,
     pub(crate) header: DartBasicHeaderCode,
     pub(crate) func_comments: String,
+    pub(crate) func_params_str: String,
     pub(crate) func_expr: String,
     pub(crate) func_impl: String,
     pub(crate) func_params: Vec<ApiDartGeneratedFunctionParam>,
@@ -59,7 +59,7 @@ pub(crate) fn generate(
 
     let func_expr = format!(
         "{func_return_type} {func_name}({func_params_str})",
-        func_name = func.name.name.to_case(Case::Camel),
+        func_name = func.name_dart_api(),
     );
 
     let func_comments = generate_dart_comments(&func.comments);
@@ -76,6 +76,7 @@ pub(crate) fn generate(
         namespace: func.name.namespace.clone(),
         header,
         func_comments,
+        func_params_str,
         func_expr,
         func_impl,
         func_params,
@@ -145,7 +146,7 @@ fn generate_func_impl(
     dart_entrypoint_class_name: &str,
     return_stream: &Option<ReturnStreamInfo>,
 ) -> String {
-    let func_name = &func.name.name.to_case(Case::Camel);
+    let func_name = &func.name_dart_wire();
     let param_names: Vec<String> = [
         ((func.inputs.iter())
             .filter(|field| {

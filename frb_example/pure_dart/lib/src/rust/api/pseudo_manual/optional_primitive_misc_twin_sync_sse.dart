@@ -8,5 +8,10 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 int? primitiveOptionalTypesTwinSyncSse(
         {int? myI32, int? myI64, double? myF64, bool? myBool, dynamic hint}) =>
-    RustLib.instance.api.primitiveOptionalTypesTwinSyncSse(
-        myI32: myI32, myI64: myI64, myF64: myF64, myBool: myBool, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualOptionalPrimitiveMiscTwinSyncSsePrimitiveOptionalTypesTwinSyncSse(
+            myI32: myI32,
+            myI64: myI64,
+            myF64: myF64,
+            myBool: myBool,
+            hint: hint);

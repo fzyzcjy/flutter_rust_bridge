@@ -12,8 +12,9 @@ Future<int> primitiveTypesTwinNormal(
         required double myF64,
         required bool myBool,
         dynamic hint}) =>
-    RustLib.instance.api.primitiveTypesTwinNormal(
+    RustLib.instance.api.crateApiPrimitiveMiscPrimitiveTypesTwinNormal(
         myI32: myI32, myI64: myI64, myF64: myF64, myBool: myBool, hint: hint);
 
 Future<int> primitiveU32TwinNormal({required int myU32, dynamic hint}) =>
-    RustLib.instance.api.primitiveU32TwinNormal(myU32: myU32, hint: hint);
+    RustLib.instance.api
+        .crateApiPrimitiveMiscPrimitiveU32TwinNormal(myU32: myU32, hint: hint);

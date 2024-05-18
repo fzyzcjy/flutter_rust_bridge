@@ -6,6 +6,10 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+Future<void> sameFunctionNameInDifferentFiles({dynamic hint}) =>
+    RustLib.instance.api
+        .crateApiMiscNoTwinExampleASameFunctionNameInDifferentFiles(hint: hint);
+
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructInMiscNoTwinExampleA>>
 @sealed
 class StructInMiscNoTwinExampleA extends RustOpaque {
@@ -25,7 +29,8 @@ class StructInMiscNoTwinExampleA extends RustOpaque {
   );
 
   Future<void> sampleFunctionA({dynamic hint}) => RustLib.instance.api
-      .structInMiscNoTwinExampleASampleFunctionA(that: this, hint: hint);
+      .crateApiMiscNoTwinExampleAStructInMiscNoTwinExampleASampleFunctionA(
+          that: this, hint: hint);
 }
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithImplBlockInMultiFile>>
@@ -47,8 +52,10 @@ class StructWithImplBlockInMultiFile extends RustOpaque {
   );
 
   Future<void> methodInA({dynamic hint}) => RustLib.instance.api
-      .structWithImplBlockInMultiFileMethodInA(that: this, hint: hint);
+      .crateApiMiscNoTwinExampleAStructWithImplBlockInMultiFileMethodInA(
+          that: this, hint: hint);
 
   Future<void> methodInB({dynamic hint}) => RustLib.instance.api
-      .structWithImplBlockInMultiFileMethodInB(that: this, hint: hint);
+      .crateApiMiscNoTwinExampleBStructWithImplBlockInMultiFileMethodInB(
+          that: this, hint: hint);
 }

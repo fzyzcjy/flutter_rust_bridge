@@ -10,12 +10,15 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'method_twin_rust_async_sse.freezed.dart';
 
 Future<SumWithTwinRustAsyncSse> getSumStructTwinRustAsyncSse({dynamic hint}) =>
-    RustLib.instance.api.getSumStructTwinRustAsyncSse(hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMethodTwinRustAsyncSseGetSumStructTwinRustAsyncSse(
+            hint: hint);
 
 Future<SumWithTwinRustAsyncSseArray3> getSumArrayTwinRustAsyncSse(
         {required int a, required int b, required int c, dynamic hint}) =>
     RustLib.instance.api
-        .getSumArrayTwinRustAsyncSse(a: a, b: b, c: c, hint: hint);
+        .crateApiPseudoManualMethodTwinRustAsyncSseGetSumArrayTwinRustAsyncSse(
+            a: a, b: b, c: c, hint: hint);
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StaticGetterOnlyTwinRustAsyncSse>>
 @sealed
@@ -36,7 +39,7 @@ class StaticGetterOnlyTwinRustAsyncSse extends RustOpaque {
   );
 
   static Future<int> get staticGetterTwinRustAsyncSse => RustLib.instance.api
-      .staticGetterOnlyTwinRustAsyncSseStaticGetterTwinRustAsyncSse();
+      .crateApiPseudoManualMethodTwinRustAsyncSseStaticGetterOnlyTwinRustAsyncSseStaticGetterTwinRustAsyncSse();
 }
 
 class ConcatenateWithTwinRustAsyncSse {
@@ -49,46 +52,47 @@ class ConcatenateWithTwinRustAsyncSse {
   static Future<String> concatenateStaticTwinRustAsyncSse(
           {required String a, required String b, dynamic hint}) =>
       RustLib.instance.api
-          .concatenateWithTwinRustAsyncSseConcatenateStaticTwinRustAsyncSse(
+          .crateApiPseudoManualMethodTwinRustAsyncSseConcatenateWithTwinRustAsyncSseConcatenateStaticTwinRustAsyncSse(
               a: a, b: b, hint: hint);
 
   Future<String> concatenateTwinRustAsyncSse(
           {required String b, dynamic hint}) =>
       RustLib.instance.api
-          .concatenateWithTwinRustAsyncSseConcatenateTwinRustAsyncSse(
+          .crateApiPseudoManualMethodTwinRustAsyncSseConcatenateWithTwinRustAsyncSseConcatenateTwinRustAsyncSse(
               that: this, b: b, hint: hint);
 
   static Stream<int> handleSomeStaticStreamSinkSingleArgTwinRustAsyncSse(
           {dynamic hint}) =>
       RustLib.instance.api
-          .concatenateWithTwinRustAsyncSseHandleSomeStaticStreamSinkSingleArgTwinRustAsyncSse(
+          .crateApiPseudoManualMethodTwinRustAsyncSseConcatenateWithTwinRustAsyncSseHandleSomeStaticStreamSinkSingleArgTwinRustAsyncSse(
               hint: hint);
 
   static Stream<
       Log2TwinRustAsyncSse> handleSomeStaticStreamSinkTwinRustAsyncSse(
           {required int key, required int max, dynamic hint}) =>
       RustLib.instance.api
-          .concatenateWithTwinRustAsyncSseHandleSomeStaticStreamSinkTwinRustAsyncSse(
+          .crateApiPseudoManualMethodTwinRustAsyncSseConcatenateWithTwinRustAsyncSseHandleSomeStaticStreamSinkTwinRustAsyncSse(
               key: key, max: max, hint: hint);
 
   Stream<int> handleSomeStreamSinkAt1TwinRustAsyncSse({dynamic hint}) => RustLib
       .instance.api
-      .concatenateWithTwinRustAsyncSseHandleSomeStreamSinkAt1TwinRustAsyncSse(
+      .crateApiPseudoManualMethodTwinRustAsyncSseConcatenateWithTwinRustAsyncSseHandleSomeStreamSinkAt1TwinRustAsyncSse(
           that: this, hint: hint);
 
   Stream<Log2TwinRustAsyncSse> handleSomeStreamSinkTwinRustAsyncSse(
           {required int key, required int max, dynamic hint}) =>
       RustLib.instance.api
-          .concatenateWithTwinRustAsyncSseHandleSomeStreamSinkTwinRustAsyncSse(
+          .crateApiPseudoManualMethodTwinRustAsyncSseConcatenateWithTwinRustAsyncSseHandleSomeStreamSinkTwinRustAsyncSse(
               that: this, key: key, max: max, hint: hint);
 
   static Future<ConcatenateWithTwinRustAsyncSse> newTwinRustAsyncSse(
           {required String a, dynamic hint}) =>
       RustLib.instance.api
-          .concatenateWithTwinRustAsyncSseNewTwinRustAsyncSse(a: a, hint: hint);
+          .crateApiPseudoManualMethodTwinRustAsyncSseConcatenateWithTwinRustAsyncSseNewTwinRustAsyncSse(
+              a: a, hint: hint);
 
   Future<String> get simpleGetterTwinRustAsyncSse => RustLib.instance.api
-          .concatenateWithTwinRustAsyncSseSimpleGetterTwinRustAsyncSse(
+          .crateApiPseudoManualMethodTwinRustAsyncSseConcatenateWithTwinRustAsyncSseSimpleGetterTwinRustAsyncSse(
         that: this,
       );
 
@@ -131,9 +135,10 @@ class MyCallableTwinRustAsyncSse {
     required this.one,
   });
 
-  Future<String> call({required String two, dynamic hint}) =>
-      RustLib.instance.api
-          .myCallableTwinRustAsyncSseCall(that: this, two: two, hint: hint);
+  Future<String> call({required String two, dynamic hint}) => RustLib
+      .instance.api
+      .crateApiPseudoManualMethodTwinRustAsyncSseMyCallableTwinRustAsyncSseCall(
+          that: this, two: two, hint: hint);
 
   @override
   int get hashCode => one.hashCode;
@@ -158,13 +163,14 @@ sealed class SimpleEnumTwinRustAsyncSse with _$SimpleEnumTwinRustAsyncSse {
 
   static Future<SimpleEnumTwinRustAsyncSse> returnSelfTwinRustAsyncSse(
           {required String one, dynamic hint}) =>
-      RustLib.instance.api.simpleEnumTwinRustAsyncSseReturnSelfTwinRustAsyncSse(
-          one: one, hint: hint);
-
-  Future<String> simpleMethodTwinRustAsyncSse({dynamic hint}) =>
       RustLib.instance.api
-          .simpleEnumTwinRustAsyncSseSimpleMethodTwinRustAsyncSse(
-              that: this, hint: hint);
+          .crateApiPseudoManualMethodTwinRustAsyncSseSimpleEnumTwinRustAsyncSseReturnSelfTwinRustAsyncSse(
+              one: one, hint: hint);
+
+  Future<String> simpleMethodTwinRustAsyncSse({dynamic hint}) => RustLib
+      .instance.api
+      .crateApiPseudoManualMethodTwinRustAsyncSseSimpleEnumTwinRustAsyncSseSimpleMethodTwinRustAsyncSse(
+          that: this, hint: hint);
 }
 
 enum SimplePrimitiveEnumTwinRustAsyncSse {
@@ -172,10 +178,10 @@ enum SimplePrimitiveEnumTwinRustAsyncSse {
   second,
   ;
 
-  Future<int> simpleMethodTwinRustAsyncSse({dynamic hint}) =>
-      RustLib.instance.api
-          .simplePrimitiveEnumTwinRustAsyncSseSimpleMethodTwinRustAsyncSse(
-              that: this, hint: hint);
+  Future<int> simpleMethodTwinRustAsyncSse({dynamic hint}) => RustLib
+      .instance.api
+      .crateApiPseudoManualMethodTwinRustAsyncSseSimplePrimitiveEnumTwinRustAsyncSseSimpleMethodTwinRustAsyncSse(
+          that: this, hint: hint);
 }
 
 class SimpleStructTwinRustAsyncSse {
@@ -189,29 +195,31 @@ class SimpleStructTwinRustAsyncSse {
           {required SimpleStructTwinRustAsyncSse a,
           required SimpleStructTwinRustAsyncSse b,
           dynamic hint}) =>
-      RustLib.instance.api.simpleStructTwinRustAsyncSseArgSelfTwinRustAsyncSse(
-          a: a, b: b, hint: hint);
-
-  Future<String> receiverBorrowTwinRustAsyncSse({dynamic hint}) =>
       RustLib.instance.api
-          .simpleStructTwinRustAsyncSseReceiverBorrowTwinRustAsyncSse(
-              that: this, hint: hint);
+          .crateApiPseudoManualMethodTwinRustAsyncSseSimpleStructTwinRustAsyncSseArgSelfTwinRustAsyncSse(
+              a: a, b: b, hint: hint);
+
+  Future<String> receiverBorrowTwinRustAsyncSse({dynamic hint}) => RustLib
+      .instance.api
+      .crateApiPseudoManualMethodTwinRustAsyncSseSimpleStructTwinRustAsyncSseReceiverBorrowTwinRustAsyncSse(
+          that: this, hint: hint);
 
   Future<String> receiverOwnTwinRustAsyncSse({dynamic hint}) => RustLib
       .instance.api
-      .simpleStructTwinRustAsyncSseReceiverOwnTwinRustAsyncSse(
+      .crateApiPseudoManualMethodTwinRustAsyncSseSimpleStructTwinRustAsyncSseReceiverOwnTwinRustAsyncSse(
           that: this, hint: hint);
 
   static Future<SimpleStructTwinRustAsyncSse> returnSelfTwinRustAsyncSse(
           {required String one, dynamic hint}) =>
       RustLib.instance.api
-          .simpleStructTwinRustAsyncSseReturnSelfTwinRustAsyncSse(
+          .crateApiPseudoManualMethodTwinRustAsyncSseSimpleStructTwinRustAsyncSseReturnSelfTwinRustAsyncSse(
               one: one, hint: hint);
 
   static Future<List<String>> vecSelfTwinRustAsyncSse(
           {required List<SimpleStructTwinRustAsyncSse> arg, dynamic hint}) =>
-      RustLib.instance.api.simpleStructTwinRustAsyncSseVecSelfTwinRustAsyncSse(
-          arg: arg, hint: hint);
+      RustLib.instance.api
+          .crateApiPseudoManualMethodTwinRustAsyncSseSimpleStructTwinRustAsyncSseVecSelfTwinRustAsyncSse(
+              arg: arg, hint: hint);
 
   @override
   int get hashCode => one.hashCode;
@@ -234,7 +242,7 @@ class StaticOnlyTwinRustAsyncSse {
   static Future<int> staticMethodTwinRustAsyncSse(
           {required int a, dynamic hint}) =>
       RustLib.instance.api
-          .staticOnlyTwinRustAsyncSseStaticMethodTwinRustAsyncSse(
+          .crateApiPseudoManualMethodTwinRustAsyncSseStaticOnlyTwinRustAsyncSseStaticMethodTwinRustAsyncSse(
               a: a, hint: hint);
 
   @override
@@ -257,8 +265,9 @@ class SumWithTwinRustAsyncSse {
 
   Future<int> sumTwinRustAsyncSse(
           {required int y, required int z, dynamic hint}) =>
-      RustLib.instance.api.sumWithTwinRustAsyncSseSumTwinRustAsyncSse(
-          that: this, y: y, z: z, hint: hint);
+      RustLib.instance.api
+          .crateApiPseudoManualMethodTwinRustAsyncSseSumWithTwinRustAsyncSseSumTwinRustAsyncSse(
+              that: this, y: y, z: z, hint: hint);
 
   @override
   int get hashCode => x.hashCode;

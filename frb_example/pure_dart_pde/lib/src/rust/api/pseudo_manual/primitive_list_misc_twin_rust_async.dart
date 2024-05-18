@@ -8,7 +8,9 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<VecOfPrimitivePackTwinRustAsync> handleVecOfPrimitiveTwinRustAsync(
         {required int n, dynamic hint}) =>
-    RustLib.instance.api.handleVecOfPrimitiveTwinRustAsync(n: n, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualPrimitiveListMiscTwinRustAsyncHandleVecOfPrimitiveTwinRustAsync(
+            n: n, hint: hint);
 
 class VecOfPrimitivePackTwinRustAsync {
   final Int8List int8List;

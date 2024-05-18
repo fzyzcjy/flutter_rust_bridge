@@ -14,12 +14,15 @@ part 'attribute_twin_rust_async.freezed.dart';
 Future<void> handleCustomizedStructTwinRustAsync(
         {required CustomizedTwinRustAsync val, dynamic hint}) =>
     RustLib.instance.api
-        .handleCustomizedStructTwinRustAsync(val: val, hint: hint);
+        .crateApiPseudoManualAttributeTwinRustAsyncHandleCustomizedStructTwinRustAsync(
+            val: val, hint: hint);
 
 Future<UserIdTwinRustAsync> nextUserIdTwinRustAsync(
         {UserIdTwinRustAsync userId = const UserIdTwinRustAsync(),
         dynamic hint}) =>
-    RustLib.instance.api.nextUserIdTwinRustAsync(userId: userId, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualAttributeTwinRustAsyncNextUserIdTwinRustAsync(
+            userId: userId, hint: hint);
 
 class CustomizedTwinRustAsync {
   final String finalField;

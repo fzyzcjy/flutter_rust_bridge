@@ -9,70 +9,99 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'basic_twin_sync_sse.freezed.dart';
 
 int exampleBasicTypeI8TwinSyncSse({required int arg, dynamic hint}) =>
-    RustLib.instance.api.exampleBasicTypeI8TwinSyncSse(arg: arg, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualBasicTwinSyncSseExampleBasicTypeI8TwinSyncSse(
+            arg: arg, hint: hint);
 
 int exampleBasicTypeI16TwinSyncSse({required int arg, dynamic hint}) =>
-    RustLib.instance.api.exampleBasicTypeI16TwinSyncSse(arg: arg, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualBasicTwinSyncSseExampleBasicTypeI16TwinSyncSse(
+            arg: arg, hint: hint);
 
 int exampleBasicTypeI32TwinSyncSse({required int arg, dynamic hint}) =>
-    RustLib.instance.api.exampleBasicTypeI32TwinSyncSse(arg: arg, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualBasicTwinSyncSseExampleBasicTypeI32TwinSyncSse(
+            arg: arg, hint: hint);
 
 int exampleBasicTypeI64TwinSyncSse({required int arg, dynamic hint}) =>
-    RustLib.instance.api.exampleBasicTypeI64TwinSyncSse(arg: arg, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualBasicTwinSyncSseExampleBasicTypeI64TwinSyncSse(
+            arg: arg, hint: hint);
 
 int exampleBasicTypeU8TwinSyncSse({required int arg, dynamic hint}) =>
-    RustLib.instance.api.exampleBasicTypeU8TwinSyncSse(arg: arg, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualBasicTwinSyncSseExampleBasicTypeU8TwinSyncSse(
+            arg: arg, hint: hint);
 
 int exampleBasicTypeU16TwinSyncSse({required int arg, dynamic hint}) =>
-    RustLib.instance.api.exampleBasicTypeU16TwinSyncSse(arg: arg, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualBasicTwinSyncSseExampleBasicTypeU16TwinSyncSse(
+            arg: arg, hint: hint);
 
 int exampleBasicTypeU32TwinSyncSse({required int arg, dynamic hint}) =>
-    RustLib.instance.api.exampleBasicTypeU32TwinSyncSse(arg: arg, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualBasicTwinSyncSseExampleBasicTypeU32TwinSyncSse(
+            arg: arg, hint: hint);
 
 int exampleBasicTypeU64TwinSyncSse({required int arg, dynamic hint}) =>
-    RustLib.instance.api.exampleBasicTypeU64TwinSyncSse(arg: arg, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualBasicTwinSyncSseExampleBasicTypeU64TwinSyncSse(
+            arg: arg, hint: hint);
 
 int exampleBasicTypeIsizeTwinSyncSse({required int arg, dynamic hint}) =>
-    RustLib.instance.api.exampleBasicTypeIsizeTwinSyncSse(arg: arg, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualBasicTwinSyncSseExampleBasicTypeIsizeTwinSyncSse(
+            arg: arg, hint: hint);
 
 int exampleBasicTypeUsizeTwinSyncSse({required int arg, dynamic hint}) =>
-    RustLib.instance.api.exampleBasicTypeUsizeTwinSyncSse(arg: arg, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualBasicTwinSyncSseExampleBasicTypeUsizeTwinSyncSse(
+            arg: arg, hint: hint);
 
 double exampleBasicTypeF32TwinSyncSse({required double arg, dynamic hint}) =>
-    RustLib.instance.api.exampleBasicTypeF32TwinSyncSse(arg: arg, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualBasicTwinSyncSseExampleBasicTypeF32TwinSyncSse(
+            arg: arg, hint: hint);
 
 double exampleBasicTypeF64TwinSyncSse({required double arg, dynamic hint}) =>
-    RustLib.instance.api.exampleBasicTypeF64TwinSyncSse(arg: arg, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualBasicTwinSyncSseExampleBasicTypeF64TwinSyncSse(
+            arg: arg, hint: hint);
 
 bool exampleBasicTypeBoolTwinSyncSse({required bool arg, dynamic hint}) =>
-    RustLib.instance.api.exampleBasicTypeBoolTwinSyncSse(arg: arg, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualBasicTwinSyncSseExampleBasicTypeBoolTwinSyncSse(
+            arg: arg, hint: hint);
 
 String exampleBasicTypeStringTwinSyncSse({required String arg, dynamic hint}) =>
     RustLib.instance.api
-        .exampleBasicTypeStringTwinSyncSse(arg: arg, hint: hint);
+        .crateApiPseudoManualBasicTwinSyncSseExampleBasicTypeStringTwinSyncSse(
+            arg: arg, hint: hint);
 
 Uint8List exampleBasicTypeBytesTwinSyncSse(
         {required List<int> arg, dynamic hint}) =>
-    RustLib.instance.api.exampleBasicTypeBytesTwinSyncSse(arg: arg, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualBasicTwinSyncSseExampleBasicTypeBytesTwinSyncSse(
+            arg: arg, hint: hint);
 
 BasicPrimitiveEnumTwinSyncSse
     exampleBasicTypeBasicPrimitiveEnumTwinSyncSseTwinSyncSse(
             {required BasicPrimitiveEnumTwinSyncSse arg, dynamic hint}) =>
         RustLib.instance.api
-            .exampleBasicTypeBasicPrimitiveEnumTwinSyncSseTwinSyncSse(
+            .crateApiPseudoManualBasicTwinSyncSseExampleBasicTypeBasicPrimitiveEnumTwinSyncSseTwinSyncSse(
                 arg: arg, hint: hint);
 
-BasicGeneralEnumTwinSyncSse
-    exampleBasicTypeBasicGeneralEnumTwinSyncSseTwinSyncSse(
-            {required BasicGeneralEnumTwinSyncSse arg, dynamic hint}) =>
-        RustLib.instance.api
-            .exampleBasicTypeBasicGeneralEnumTwinSyncSseTwinSyncSse(
-                arg: arg, hint: hint);
+BasicGeneralEnumTwinSyncSse exampleBasicTypeBasicGeneralEnumTwinSyncSseTwinSyncSse(
+        {required BasicGeneralEnumTwinSyncSse arg, dynamic hint}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicTwinSyncSseExampleBasicTypeBasicGeneralEnumTwinSyncSseTwinSyncSse(
+            arg: arg, hint: hint);
 
 BasicStructTwinSyncSse exampleBasicTypeBasicStructTwinSyncSseTwinSyncSse(
         {required BasicStructTwinSyncSse arg, dynamic hint}) =>
-    RustLib.instance.api.exampleBasicTypeBasicStructTwinSyncSseTwinSyncSse(
-        arg: arg, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualBasicTwinSyncSseExampleBasicTypeBasicStructTwinSyncSseTwinSyncSse(
+            arg: arg, hint: hint);
 
 @freezed
 sealed class BasicGeneralEnumTwinSyncSse with _$BasicGeneralEnumTwinSyncSse {

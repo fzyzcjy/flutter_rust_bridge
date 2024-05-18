@@ -12,7 +12,7 @@ Future<Uint8List> drawMandelbrot(
         required double scale,
         required int numThreads,
         dynamic hint}) =>
-    RustLib.instance.api.drawMandelbrot(
+    RustLib.instance.api.crateApiMandelbrotDrawMandelbrot(
         imageSize: imageSize,
         zoomPoint: zoomPoint,
         scale: scale,

@@ -7,17 +7,21 @@ import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<String> borrowStringTwinNormal({required String arg, dynamic hint}) =>
-    RustLib.instance.api.borrowStringTwinNormal(arg: arg, hint: hint);
+    RustLib.instance.api
+        .crateApiOwnershipBorrowStringTwinNormal(arg: arg, hint: hint);
 
 Future<String> borrowStrTwinNormal({required String arg, dynamic hint}) =>
-    RustLib.instance.api.borrowStrTwinNormal(arg: arg, hint: hint);
+    RustLib.instance.api
+        .crateApiOwnershipBorrowStrTwinNormal(arg: arg, hint: hint);
 
 Future<int> borrowI32TwinNormal({required int arg, dynamic hint}) =>
-    RustLib.instance.api.borrowI32TwinNormal(arg: arg, hint: hint);
+    RustLib.instance.api
+        .crateApiOwnershipBorrowI32TwinNormal(arg: arg, hint: hint);
 
 Future<SimpleStructForBorrowTwinNormal> borrowStructTwinNormal(
         {required SimpleStructForBorrowTwinNormal arg, dynamic hint}) =>
-    RustLib.instance.api.borrowStructTwinNormal(arg: arg, hint: hint);
+    RustLib.instance.api
+        .crateApiOwnershipBorrowStructTwinNormal(arg: arg, hint: hint);
 
 class SimpleStructForBorrowTwinNormal {
   final String one;

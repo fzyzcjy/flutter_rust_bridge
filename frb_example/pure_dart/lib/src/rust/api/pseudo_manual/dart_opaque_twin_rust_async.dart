@@ -12,78 +12,98 @@ part 'dart_opaque_twin_rust_async.freezed.dart';
 Future<String> asyncAcceptDartOpaqueTwinRustAsync(
         {required Object opaque, dynamic hint}) =>
     RustLib.instance.api
-        .asyncAcceptDartOpaqueTwinRustAsync(opaque: opaque, hint: hint);
+        .crateApiPseudoManualDartOpaqueTwinRustAsyncAsyncAcceptDartOpaqueTwinRustAsync(
+            opaque: opaque, hint: hint);
 
 Future<Object> loopBackTwinRustAsync({required Object opaque, dynamic hint}) =>
-    RustLib.instance.api.loopBackTwinRustAsync(opaque: opaque, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualDartOpaqueTwinRustAsyncLoopBackTwinRustAsync(
+            opaque: opaque, hint: hint);
 
 Future<Object?> loopBackOptionTwinRustAsync(
         {required Object opaque, dynamic hint}) =>
     RustLib.instance.api
-        .loopBackOptionTwinRustAsync(opaque: opaque, hint: hint);
+        .crateApiPseudoManualDartOpaqueTwinRustAsyncLoopBackOptionTwinRustAsync(
+            opaque: opaque, hint: hint);
 
 Future<ObjectArray1> loopBackArrayTwinRustAsync(
         {required Object opaque, dynamic hint}) =>
-    RustLib.instance.api.loopBackArrayTwinRustAsync(opaque: opaque, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualDartOpaqueTwinRustAsyncLoopBackArrayTwinRustAsync(
+            opaque: opaque, hint: hint);
 
 Future<List<Object>> loopBackVecTwinRustAsync(
         {required Object opaque, dynamic hint}) =>
-    RustLib.instance.api.loopBackVecTwinRustAsync(opaque: opaque, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualDartOpaqueTwinRustAsyncLoopBackVecTwinRustAsync(
+            opaque: opaque, hint: hint);
 
 Future<void> loopBackOptionGetTwinRustAsync({Object? opaque, dynamic hint}) =>
     RustLib.instance.api
-        .loopBackOptionGetTwinRustAsync(opaque: opaque, hint: hint);
+        .crateApiPseudoManualDartOpaqueTwinRustAsyncLoopBackOptionGetTwinRustAsync(
+            opaque: opaque, hint: hint);
 
 Future<void> loopBackArrayGetTwinRustAsync(
         {required ObjectArray1 opaque, dynamic hint}) =>
     RustLib.instance.api
-        .loopBackArrayGetTwinRustAsync(opaque: opaque, hint: hint);
+        .crateApiPseudoManualDartOpaqueTwinRustAsyncLoopBackArrayGetTwinRustAsync(
+            opaque: opaque, hint: hint);
 
 Future<void> loopBackVecGetTwinRustAsync(
         {required List<Object> opaque, dynamic hint}) =>
     RustLib.instance.api
-        .loopBackVecGetTwinRustAsync(opaque: opaque, hint: hint);
+        .crateApiPseudoManualDartOpaqueTwinRustAsyncLoopBackVecGetTwinRustAsync(
+            opaque: opaque, hint: hint);
 
 /// [DartWrapObject] cannot be obtained
 /// on a thread other than the thread it was created on.
 Future<void> panicUnwrapDartOpaqueTwinRustAsync(
         {required Object opaque, dynamic hint}) =>
     RustLib.instance.api
-        .panicUnwrapDartOpaqueTwinRustAsync(opaque: opaque, hint: hint);
+        .crateApiPseudoManualDartOpaqueTwinRustAsyncPanicUnwrapDartOpaqueTwinRustAsync(
+            opaque: opaque, hint: hint);
 
 Future<DartOpaqueNestedTwinRustAsync> createNestedDartOpaqueTwinRustAsync(
         {required Object opaque1, required Object opaque2, dynamic hint}) =>
-    RustLib.instance.api.createNestedDartOpaqueTwinRustAsync(
-        opaque1: opaque1, opaque2: opaque2, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualDartOpaqueTwinRustAsyncCreateNestedDartOpaqueTwinRustAsync(
+            opaque1: opaque1, opaque2: opaque2, hint: hint);
 
 Future<void> getNestedDartOpaqueTwinRustAsync(
         {required DartOpaqueNestedTwinRustAsync opaque, dynamic hint}) =>
     RustLib.instance.api
-        .getNestedDartOpaqueTwinRustAsync(opaque: opaque, hint: hint);
+        .crateApiPseudoManualDartOpaqueTwinRustAsyncGetNestedDartOpaqueTwinRustAsync(
+            opaque: opaque, hint: hint);
 
 Future<EnumDartOpaqueTwinRustAsync> createEnumDartOpaqueTwinRustAsync(
         {required Object opaque, dynamic hint}) =>
     RustLib.instance.api
-        .createEnumDartOpaqueTwinRustAsync(opaque: opaque, hint: hint);
+        .crateApiPseudoManualDartOpaqueTwinRustAsyncCreateEnumDartOpaqueTwinRustAsync(
+            opaque: opaque, hint: hint);
 
 Future<void> getEnumDartOpaqueTwinRustAsync(
         {required EnumDartOpaqueTwinRustAsync opaque, dynamic hint}) =>
     RustLib.instance.api
-        .getEnumDartOpaqueTwinRustAsync(opaque: opaque, hint: hint);
+        .crateApiPseudoManualDartOpaqueTwinRustAsyncGetEnumDartOpaqueTwinRustAsync(
+            opaque: opaque, hint: hint);
 
 Future<void> setStaticDartOpaqueTwinRustAsync(
         {required int id, required Object opaque, dynamic hint}) =>
     RustLib.instance.api
-        .setStaticDartOpaqueTwinRustAsync(id: id, opaque: opaque, hint: hint);
+        .crateApiPseudoManualDartOpaqueTwinRustAsyncSetStaticDartOpaqueTwinRustAsync(
+            id: id, opaque: opaque, hint: hint);
 
 Future<void> dropStaticDartOpaqueTwinRustAsync(
         {required int id, dynamic hint}) =>
-    RustLib.instance.api.dropStaticDartOpaqueTwinRustAsync(id: id, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualDartOpaqueTwinRustAsyncDropStaticDartOpaqueTwinRustAsync(
+            id: id, hint: hint);
 
 Future<List<Object>> cloneDartOpaqueTwinRustAsync(
         {required Object opaque, dynamic hint}) =>
     RustLib.instance.api
-        .cloneDartOpaqueTwinRustAsync(opaque: opaque, hint: hint);
+        .crateApiPseudoManualDartOpaqueTwinRustAsyncCloneDartOpaqueTwinRustAsync(
+            opaque: opaque, hint: hint);
 
 class DartOpaqueNestedTwinRustAsync {
   final Object first;

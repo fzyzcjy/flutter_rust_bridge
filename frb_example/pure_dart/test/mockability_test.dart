@@ -8,18 +8,22 @@ class MockRustLibApi extends Mock implements RustLibApi {}
 
 Future<void> main() async {
   final mockApi = MockRustLibApi();
-  when(() => mockApi.initApp()).thenAnswer((_) async => null);
-  when(() => mockApi.myInitOne()).thenAnswer((_) async => null);
-  when(() => mockApi.myInitTwo()).thenAnswer((_) async => null);
+  when(() => mockApi.crateApiCustomizationInitApp())
+      .thenAnswer((_) async => null);
+  when(() => mockApi.crateApiCustomizationMyInitOne())
+      .thenAnswer((_) async => null);
+  when(() => mockApi.crateApiCustomizationMyInitTwo())
+      .thenAnswer((_) async => null);
 
   await RustLib.init(api: mockApi);
 
   test('can mock Rust calls', () async {
-    when(() => mockApi.simpleAdderTwinNormal(a: 1, b: 2))
+    when(() => mockApi.crateApiSimpleSimpleAdderTwinNormal(a: 1, b: 2))
         .thenAnswer((_) async => 123456789);
     final actualResult = await simpleAdderTwinNormal(a: 1, b: 2);
     expect(actualResult, isNot(3));
     expect(actualResult, equals(123456789));
-    verify(() => mockApi.simpleAdderTwinNormal(a: 1, b: 2)).called(1);
+    verify(() => mockApi.crateApiSimpleSimpleAdderTwinNormal(a: 1, b: 2))
+        .called(1);
   });
 }

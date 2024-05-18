@@ -8,26 +8,28 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<StructWithZeroFieldTwinNormal> funcStructWithZeroFieldTwinNormal(
         {required StructWithZeroFieldTwinNormal arg, dynamic hint}) =>
-    RustLib.instance.api
-        .funcStructWithZeroFieldTwinNormal(arg: arg, hint: hint);
+    RustLib.instance.api.crateApiStructureFuncStructWithZeroFieldTwinNormal(
+        arg: arg, hint: hint);
 
 Future<StructWithOneFieldTwinNormal> funcStructWithOneFieldTwinNormal(
         {required StructWithOneFieldTwinNormal arg, dynamic hint}) =>
-    RustLib.instance.api.funcStructWithOneFieldTwinNormal(arg: arg, hint: hint);
+    RustLib.instance.api.crateApiStructureFuncStructWithOneFieldTwinNormal(
+        arg: arg, hint: hint);
 
 Future<StructWithTwoFieldTwinNormal> funcStructWithTwoFieldTwinNormal(
         {required StructWithTwoFieldTwinNormal arg, dynamic hint}) =>
-    RustLib.instance.api.funcStructWithTwoFieldTwinNormal(arg: arg, hint: hint);
+    RustLib.instance.api.crateApiStructureFuncStructWithTwoFieldTwinNormal(
+        arg: arg, hint: hint);
 
 Future<TupleStructWithOneFieldTwinNormal> funcTupleStructWithOneFieldTwinNormal(
         {required TupleStructWithOneFieldTwinNormal arg, dynamic hint}) =>
-    RustLib.instance.api
-        .funcTupleStructWithOneFieldTwinNormal(arg: arg, hint: hint);
+    RustLib.instance.api.crateApiStructureFuncTupleStructWithOneFieldTwinNormal(
+        arg: arg, hint: hint);
 
 Future<TupleStructWithTwoFieldTwinNormal> funcTupleStructWithTwoFieldTwinNormal(
         {required TupleStructWithTwoFieldTwinNormal arg, dynamic hint}) =>
-    RustLib.instance.api
-        .funcTupleStructWithTwoFieldTwinNormal(arg: arg, hint: hint);
+    RustLib.instance.api.crateApiStructureFuncTupleStructWithTwoFieldTwinNormal(
+        arg: arg, hint: hint);
 
 class StructWithOneFieldTwinNormal {
   final int a;

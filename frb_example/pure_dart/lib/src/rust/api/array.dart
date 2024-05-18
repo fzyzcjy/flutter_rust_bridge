@@ -8,46 +8,51 @@ import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<U8Array5> getArrayTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.getArrayTwinNormal(hint: hint);
+    RustLib.instance.api.crateApiArrayGetArrayTwinNormal(hint: hint);
 
 Future<PointTwinNormalArray2> getComplexArrayTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.getComplexArrayTwinNormal(hint: hint);
+    RustLib.instance.api.crateApiArrayGetComplexArrayTwinNormal(hint: hint);
 
 Future<MessageIdTwinNormal> newMsgidTwinNormal(
         {required U8Array32 id, dynamic hint}) =>
-    RustLib.instance.api.newMsgidTwinNormal(id: id, hint: hint);
+    RustLib.instance.api.crateApiArrayNewMsgidTwinNormal(id: id, hint: hint);
 
 Future<U8Array32> useMsgidTwinNormal(
         {required MessageIdTwinNormal id, dynamic hint}) =>
-    RustLib.instance.api.useMsgidTwinNormal(id: id, hint: hint);
+    RustLib.instance.api.crateApiArrayUseMsgidTwinNormal(id: id, hint: hint);
 
 Future<BlobTwinNormal> boxedBlobTwinNormal(
         {required U8Array1600 blob, dynamic hint}) =>
-    RustLib.instance.api.boxedBlobTwinNormal(blob: blob, hint: hint);
+    RustLib.instance.api
+        .crateApiArrayBoxedBlobTwinNormal(blob: blob, hint: hint);
 
 Future<U8Array1600> useBoxedBlobTwinNormal(
         {required BlobTwinNormal blob, dynamic hint}) =>
-    RustLib.instance.api.useBoxedBlobTwinNormal(blob: blob, hint: hint);
+    RustLib.instance.api
+        .crateApiArrayUseBoxedBlobTwinNormal(blob: blob, hint: hint);
 
 Future<FeedIdTwinNormal> returnBoxedFeedIdTwinNormal(
         {required U8Array8 id, dynamic hint}) =>
-    RustLib.instance.api.returnBoxedFeedIdTwinNormal(id: id, hint: hint);
+    RustLib.instance.api
+        .crateApiArrayReturnBoxedFeedIdTwinNormal(id: id, hint: hint);
 
 Future<U8Array8> returnBoxedRawFeedIdTwinNormal(
         {required FeedIdTwinNormal id, dynamic hint}) =>
-    RustLib.instance.api.returnBoxedRawFeedIdTwinNormal(id: id, hint: hint);
+    RustLib.instance.api
+        .crateApiArrayReturnBoxedRawFeedIdTwinNormal(id: id, hint: hint);
 
 Future<TestIdTwinNormal> funcTestIdTwinNormal(
         {required TestIdTwinNormal id, dynamic hint}) =>
-    RustLib.instance.api.funcTestIdTwinNormal(id: id, hint: hint);
+    RustLib.instance.api.crateApiArrayFuncTestIdTwinNormal(id: id, hint: hint);
 
 Future<double> lastNumberTwinNormal(
         {required F64Array16 array, dynamic hint}) =>
-    RustLib.instance.api.lastNumberTwinNormal(array: array, hint: hint);
+    RustLib.instance.api
+        .crateApiArrayLastNumberTwinNormal(array: array, hint: hint);
 
 Future<TestIdTwinNormalArray2> nestedIdTwinNormal(
         {required TestIdTwinNormalArray4 id, dynamic hint}) =>
-    RustLib.instance.api.nestedIdTwinNormal(id: id, hint: hint);
+    RustLib.instance.api.crateApiArrayNestedIdTwinNormal(id: id, hint: hint);
 
 class BlobTwinNormal {
   final U8Array1600 field0;

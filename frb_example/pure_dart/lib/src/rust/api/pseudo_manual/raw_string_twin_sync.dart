@@ -7,12 +7,15 @@ import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 RawStringItemStructTwinSync testRawStringItemStructTwinSync({dynamic hint}) =>
-    RustLib.instance.api.testRawStringItemStructTwinSync(hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualRawStringTwinSyncTestRawStringItemStructTwinSync(
+            hint: hint);
 
 MoreThanJustOneRawStringStructTwinSync
-    testMoreThanJustOneRawStringStructTwinSync({dynamic hint}) =>
-        RustLib.instance.api
-            .testMoreThanJustOneRawStringStructTwinSync(hint: hint);
+    testMoreThanJustOneRawStringStructTwinSync({dynamic hint}) => RustLib
+        .instance.api
+        .crateApiPseudoManualRawStringTwinSyncTestMoreThanJustOneRawStringStructTwinSync(
+            hint: hint);
 
 class MoreThanJustOneRawStringStructTwinSync {
   final String regular;

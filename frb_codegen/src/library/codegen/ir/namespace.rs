@@ -1,5 +1,6 @@
 use crate::codegen::generator::codec::sse::lang::Lang;
 use crate::utils::rust_project_utils::compute_mod_from_rust_crate_path;
+use itertools::Itertools;
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
 use std::fmt::{Display, Formatter};
 use std::path::{Path, PathBuf};
@@ -63,6 +64,10 @@ impl Namespace {
 
     pub fn to_pseudo_io_path(&self, extension: &str) -> PathBuf {
         PathBuf::from(&format!("/{}.{extension}", self.path().join("/")))
+    }
+
+    pub fn safe_ident(&self) -> String {
+        self.path().iter().join("__")
     }
 }
 
