@@ -37,7 +37,10 @@ impl<Tz: chrono::TimeZone> IntoDart for chrono::DateTime<Tz> {
 impl IntoDart for chrono::NaiveDate {
     #[inline]
     fn into_dart(self) -> DartAbi {
-        self.and_hms_opt(0, 0, 0).unwrap().timestamp_millis().into_dart()
+        self.and_hms_opt(0, 0, 0)
+            .unwrap()
+            .timestamp_millis()
+            .into_dart()
     }
 }
 #[cfg(feature = "chrono")]
