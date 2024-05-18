@@ -43,7 +43,7 @@ impl fmt::Debug for Rust2DartSendError {
 
 impl fmt::Display for Rust2DartSendError {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "Fail to post message to Dart")
+        write!(f, "Fail to post message to Dart. (If happen during Flutter hot restart, this may not be a problem.)")
     }
 }
 

@@ -5,7 +5,7 @@ use log::debug;
 use std::path::{Path, PathBuf};
 
 pub fn format_rust(paths: &[PathBuf], base_path: &Path) -> anyhow::Result<()> {
-    let paths = prepare_paths(paths, base_path)?;
+    let paths = prepare_paths(paths, base_path, &[])?;
     debug!("execute format_rust paths={paths:?}");
 
     check_exit_code(&command_run!(
