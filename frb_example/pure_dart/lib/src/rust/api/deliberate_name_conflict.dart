@@ -9,7 +9,9 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<StructInUpperLevel> testDuplicatedModuleNames(
         {required StructInLowerLevel s, dynamic hint}) =>
-    RustLib.instance.api.testDuplicatedModuleNames(s: s, hint: hint);
+    RustLib.instance.api
+        .crateApiDeliberateNameConflictTestDuplicatedModuleNames(
+            s: s, hint: hint);
 
 class StructInLowerLevel {
   final StructInUpperLevel inner;

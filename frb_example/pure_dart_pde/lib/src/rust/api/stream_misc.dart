@@ -8,7 +8,9 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Stream<String> funcStreamRealisticTwinNormal(
         {required String arg, dynamic hint}) =>
-    RustLib.instance.api.funcStreamRealisticTwinNormal(arg: arg, hint: hint);
+    RustLib.instance.api
+        .crateApiStreamMiscFuncStreamRealisticTwinNormal(arg: arg, hint: hint);
 
 Future<Stream<int>> streamSinkDartAsyncTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.streamSinkDartAsyncTwinNormal(hint: hint);
+    RustLib.instance.api
+        .crateApiStreamMiscStreamSinkDartAsyncTwinNormal(hint: hint);

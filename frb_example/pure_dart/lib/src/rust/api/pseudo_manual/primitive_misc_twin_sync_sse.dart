@@ -12,8 +12,15 @@ int primitiveTypesTwinSyncSse(
         required double myF64,
         required bool myBool,
         dynamic hint}) =>
-    RustLib.instance.api.primitiveTypesTwinSyncSse(
-        myI32: myI32, myI64: myI64, myF64: myF64, myBool: myBool, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualPrimitiveMiscTwinSyncSsePrimitiveTypesTwinSyncSse(
+            myI32: myI32,
+            myI64: myI64,
+            myF64: myF64,
+            myBool: myBool,
+            hint: hint);
 
 int primitiveU32TwinSyncSse({required int myU32, dynamic hint}) =>
-    RustLib.instance.api.primitiveU32TwinSyncSse(myU32: myU32, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualPrimitiveMiscTwinSyncSsePrimitiveU32TwinSyncSse(
+            myU32: myU32, hint: hint);

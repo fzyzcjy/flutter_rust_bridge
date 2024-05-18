@@ -10,17 +10,20 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 Future<int> handleTypeAliasIdTwinRustAsync(
         {required int input, dynamic hint}) =>
     RustLib.instance.api
-        .handleTypeAliasIdTwinRustAsync(input: input, hint: hint);
+        .crateApiPseudoManualTypeAliasTwinRustAsyncHandleTypeAliasIdTwinRustAsync(
+            input: input, hint: hint);
 
 Future<int> handleTypeNestAliasIdTwinRustAsync(
         {required int input, dynamic hint}) =>
     RustLib.instance.api
-        .handleTypeNestAliasIdTwinRustAsync(input: input, hint: hint);
+        .crateApiPseudoManualTypeAliasTwinRustAsyncHandleTypeNestAliasIdTwinRustAsync(
+            input: input, hint: hint);
 
 Future<TestModelTwinRustAsync> handleTypeAliasModelTwinRustAsync(
         {required int input, dynamic hint}) =>
     RustLib.instance.api
-        .handleTypeAliasModelTwinRustAsync(input: input, hint: hint);
+        .crateApiPseudoManualTypeAliasTwinRustAsyncHandleTypeAliasModelTwinRustAsync(
+            input: input, hint: hint);
 
 class TestModelTwinRustAsync {
   final int id;

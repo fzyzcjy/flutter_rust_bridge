@@ -6,22 +6,24 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Object syncLoopbackTwinNormal({required Object opaque, dynamic hint}) =>
-    RustLib.instance.api.syncLoopbackTwinNormal(opaque: opaque, hint: hint);
+Object syncLoopbackTwinNormal({required Object opaque, dynamic hint}) => RustLib
+    .instance.api
+    .crateApiDartOpaqueSyncSyncLoopbackTwinNormal(opaque: opaque, hint: hint);
 
 Object? syncOptionLoopbackTwinNormal({Object? opaque, dynamic hint}) =>
-    RustLib.instance.api
-        .syncOptionLoopbackTwinNormal(opaque: opaque, hint: hint);
+    RustLib.instance.api.crateApiDartOpaqueSyncSyncOptionLoopbackTwinNormal(
+        opaque: opaque, hint: hint);
 
 String syncAcceptDartOpaqueTwinNormal({required Object opaque, dynamic hint}) =>
-    RustLib.instance.api
-        .syncAcceptDartOpaqueTwinNormal(opaque: opaque, hint: hint);
+    RustLib.instance.api.crateApiDartOpaqueSyncSyncAcceptDartOpaqueTwinNormal(
+        opaque: opaque, hint: hint);
 
 /// [DartWrapObject] can be safely retrieved on a dart thread.
 String unwrapDartOpaqueTwinNormal({required Object opaque, dynamic hint}) =>
-    RustLib.instance.api.unwrapDartOpaqueTwinNormal(opaque: opaque, hint: hint);
+    RustLib.instance.api.crateApiDartOpaqueSyncUnwrapDartOpaqueTwinNormal(
+        opaque: opaque, hint: hint);
 
 Object? syncOptionDartOpaqueTwinNormal(
         {required Object opaque, dynamic hint}) =>
-    RustLib.instance.api
-        .syncOptionDartOpaqueTwinNormal(opaque: opaque, hint: hint);
+    RustLib.instance.api.crateApiDartOpaqueSyncSyncOptionDartOpaqueTwinNormal(
+        opaque: opaque, hint: hint);

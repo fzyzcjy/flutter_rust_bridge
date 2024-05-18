@@ -39,7 +39,7 @@ flutter_rust_bridge::frb_generated_default_handler!();
 
 // Section: wire_funcs
 
-fn wire_init_app_impl(
+fn wire__crate__api__minimal__init_app_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
@@ -70,7 +70,7 @@ fn wire_init_app_impl(
         },
     )
 }
-fn wire_minimal_adder_impl(
+fn wire__crate__api__minimal__minimal_adder_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
@@ -134,8 +134,8 @@ fn pde_ffi_dispatcher_primary_impl(
 ) {
     // Codec=Pde (Serialization + dispatch), see doc to use other codecs
     match func_id {
-        1 => wire_init_app_impl(port, ptr, rust_vec_len, data_len),
-        2 => wire_minimal_adder_impl(port, ptr, rust_vec_len, data_len),
+        1 => wire__crate__api__minimal__init_app_impl(port, ptr, rust_vec_len, data_len),
+        2 => wire__crate__api__minimal__minimal_adder_impl(port, ptr, rust_vec_len, data_len),
         _ => unreachable!(),
     }
 }

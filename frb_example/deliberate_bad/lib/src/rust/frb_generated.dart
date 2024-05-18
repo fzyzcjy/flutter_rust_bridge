@@ -65,15 +65,15 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  Future<void> makeDataRace({dynamic hint});
+  Future<void> crateApiSimpleMakeDataRace({dynamic hint});
 
-  Future<void> makeHeapUseAfterFree({dynamic hint});
+  Future<void> crateApiSimpleMakeHeapUseAfterFree({dynamic hint});
 
-  Future<void> makeMemoryLeak({dynamic hint});
+  Future<void> crateApiSimpleMakeMemoryLeak({dynamic hint});
 
-  Future<void> makeStackBufferOverflow({dynamic hint});
+  Future<void> crateApiSimpleMakeStackBufferOverflow({dynamic hint});
 
-  Future<void> makeUseOfUninitializedValue({dynamic hint});
+  Future<void> crateApiSimpleMakeUseOfUninitializedValue({dynamic hint});
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -85,7 +85,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
-  Future<void> makeDataRace({dynamic hint}) {
+  Future<void> crateApiSimpleMakeDataRace({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -96,20 +96,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kMakeDataRaceConstMeta,
+      constMeta: kCrateApiSimpleMakeDataRaceConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kMakeDataRaceConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateApiSimpleMakeDataRaceConstMeta => const TaskConstMeta(
         debugName: "make_data_race",
         argNames: [],
       );
 
   @override
-  Future<void> makeHeapUseAfterFree({dynamic hint}) {
+  Future<void> crateApiSimpleMakeHeapUseAfterFree({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -120,20 +120,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kMakeHeapUseAfterFreeConstMeta,
+      constMeta: kCrateApiSimpleMakeHeapUseAfterFreeConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kMakeHeapUseAfterFreeConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateApiSimpleMakeHeapUseAfterFreeConstMeta =>
+      const TaskConstMeta(
         debugName: "make_heap_use_after_free",
         argNames: [],
       );
 
   @override
-  Future<void> makeMemoryLeak({dynamic hint}) {
+  Future<void> crateApiSimpleMakeMemoryLeak({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -144,20 +145,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kMakeMemoryLeakConstMeta,
+      constMeta: kCrateApiSimpleMakeMemoryLeakConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kMakeMemoryLeakConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateApiSimpleMakeMemoryLeakConstMeta =>
+      const TaskConstMeta(
         debugName: "make_memory_leak",
         argNames: [],
       );
 
   @override
-  Future<void> makeStackBufferOverflow({dynamic hint}) {
+  Future<void> crateApiSimpleMakeStackBufferOverflow({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -168,20 +170,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kMakeStackBufferOverflowConstMeta,
+      constMeta: kCrateApiSimpleMakeStackBufferOverflowConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kMakeStackBufferOverflowConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateApiSimpleMakeStackBufferOverflowConstMeta =>
+      const TaskConstMeta(
         debugName: "make_stack_buffer_overflow",
         argNames: [],
       );
 
   @override
-  Future<void> makeUseOfUninitializedValue({dynamic hint}) {
+  Future<void> crateApiSimpleMakeUseOfUninitializedValue({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -192,14 +195,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kMakeUseOfUninitializedValueConstMeta,
+      constMeta: kCrateApiSimpleMakeUseOfUninitializedValueConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kMakeUseOfUninitializedValueConstMeta =>
+  TaskConstMeta get kCrateApiSimpleMakeUseOfUninitializedValueConstMeta =>
       const TaskConstMeta(
         debugName: "make_use_of_uninitialized_value",
         argNames: [],

@@ -13,38 +13,54 @@ part 'misc_example_twin_sync_sse.freezed.dart';
 
 MyTreeNodeTwinSyncSse handleComplexStructTwinSyncSse(
         {required MyTreeNodeTwinSyncSse s, dynamic hint}) =>
-    RustLib.instance.api.handleComplexStructTwinSyncSse(s: s, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMiscExampleTwinSyncSseHandleComplexStructTwinSyncSse(
+            s: s, hint: hint);
 
 List<WeekdaysTwinSyncSse> listOfPrimitiveEnumsTwinSyncSse(
         {required List<WeekdaysTwinSyncSse> weekdays, dynamic hint}) =>
     RustLib.instance.api
-        .listOfPrimitiveEnumsTwinSyncSse(weekdays: weekdays, hint: hint);
+        .crateApiPseudoManualMiscExampleTwinSyncSseListOfPrimitiveEnumsTwinSyncSse(
+            weekdays: weekdays, hint: hint);
 
 MyNestedStructTwinSyncSse handleNestedStructTwinSyncSse(
         {required MyNestedStructTwinSyncSse s, dynamic hint}) =>
-    RustLib.instance.api.handleNestedStructTwinSyncSse(s: s, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMiscExampleTwinSyncSseHandleNestedStructTwinSyncSse(
+            s: s, hint: hint);
 
 BigBuffersTwinSyncSse handleBigBuffersTwinSyncSse({dynamic hint}) =>
-    RustLib.instance.api.handleBigBuffersTwinSyncSse(hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMiscExampleTwinSyncSseHandleBigBuffersTwinSyncSse(
+            hint: hint);
 
 AbcTwinSyncSse testAbcEnumTwinSyncSse(
         {required AbcTwinSyncSse abc, dynamic hint}) =>
-    RustLib.instance.api.testAbcEnumTwinSyncSse(abc: abc, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMiscExampleTwinSyncSseTestAbcEnumTwinSyncSse(
+            abc: abc, hint: hint);
 
 StructWithEnumTwinSyncSse testStructWithEnumTwinSyncSse(
         {required StructWithEnumTwinSyncSse se, dynamic hint}) =>
-    RustLib.instance.api.testStructWithEnumTwinSyncSse(se: se, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMiscExampleTwinSyncSseTestStructWithEnumTwinSyncSse(
+            se: se, hint: hint);
 
 String handleStringTwinSyncSse({required String s, dynamic hint}) =>
-    RustLib.instance.api.handleStringTwinSyncSse(s: s, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMiscExampleTwinSyncSseHandleStringTwinSyncSse(
+            s: s, hint: hint);
 
 Uint8List handleVecU8TwinSyncSse({required List<int> v, dynamic hint}) =>
-    RustLib.instance.api.handleVecU8TwinSyncSse(v: v, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMiscExampleTwinSyncSseHandleVecU8TwinSyncSse(
+            v: v, hint: hint);
 
 MySize handleStructTwinSyncSse(
         {required MySize arg, required MySize boxed, dynamic hint}) =>
     RustLib.instance.api
-        .handleStructTwinSyncSse(arg: arg, boxed: boxed, hint: hint);
+        .crateApiPseudoManualMiscExampleTwinSyncSseHandleStructTwinSyncSse(
+            arg: arg, boxed: boxed, hint: hint);
 
 class ATwinSyncSse {
   final String a;

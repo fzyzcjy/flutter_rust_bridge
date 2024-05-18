@@ -8,71 +8,105 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'exception_twin_rust_async_sse.freezed.dart';
 
-Future<int> funcReturnErrorTwinRustAsyncSse({dynamic hint}) =>
-    RustLib.instance.api.funcReturnErrorTwinRustAsyncSse(hint: hint);
+Future<int> funcReturnErrorTwinRustAsyncSse({dynamic hint}) => RustLib
+    .instance.api
+    .crateApiPseudoManualExceptionTwinRustAsyncSseFuncReturnErrorTwinRustAsyncSse(
+        hint: hint);
 
-Future<int> funcTypeFalliblePanicTwinRustAsyncSse({dynamic hint}) =>
-    RustLib.instance.api.funcTypeFalliblePanicTwinRustAsyncSse(hint: hint);
+Future<int> funcTypeFalliblePanicTwinRustAsyncSse({dynamic hint}) => RustLib
+    .instance.api
+    .crateApiPseudoManualExceptionTwinRustAsyncSseFuncTypeFalliblePanicTwinRustAsyncSse(
+        hint: hint);
 
-Future<int> funcTypeInfalliblePanicTwinRustAsyncSse({dynamic hint}) =>
-    RustLib.instance.api.funcTypeInfalliblePanicTwinRustAsyncSse(hint: hint);
+Future<int> funcTypeInfalliblePanicTwinRustAsyncSse({dynamic hint}) => RustLib
+    .instance.api
+    .crateApiPseudoManualExceptionTwinRustAsyncSseFuncTypeInfalliblePanicTwinRustAsyncSse(
+        hint: hint);
 
 Future<int> customEnumErrorReturnOkTwinRustAsyncSse(
         {required int arg, dynamic hint}) =>
     RustLib.instance.api
-        .customEnumErrorReturnOkTwinRustAsyncSse(arg: arg, hint: hint);
+        .crateApiPseudoManualExceptionTwinRustAsyncSseCustomEnumErrorReturnOkTwinRustAsyncSse(
+            arg: arg, hint: hint);
 
-Future<void> customEnumErrorPanicTwinRustAsyncSse({dynamic hint}) =>
-    RustLib.instance.api.customEnumErrorPanicTwinRustAsyncSse(hint: hint);
+Future<void> customEnumErrorPanicTwinRustAsyncSse({dynamic hint}) => RustLib
+    .instance.api
+    .crateApiPseudoManualExceptionTwinRustAsyncSseCustomEnumErrorPanicTwinRustAsyncSse(
+        hint: hint);
 
-Future<int> customEnumErrorReturnErrorTwinRustAsyncSse({dynamic hint}) =>
-    RustLib.instance.api.customEnumErrorReturnErrorTwinRustAsyncSse(hint: hint);
+Future<int> customEnumErrorReturnErrorTwinRustAsyncSse({dynamic hint}) => RustLib
+    .instance.api
+    .crateApiPseudoManualExceptionTwinRustAsyncSseCustomEnumErrorReturnErrorTwinRustAsyncSse(
+        hint: hint);
 
 Future<void> customNestedErrorReturnErrorTwinRustAsyncSse(
         {required CustomNestedErrorOuterTwinRustAsyncSse arg, dynamic hint}) =>
     RustLib.instance.api
-        .customNestedErrorReturnErrorTwinRustAsyncSse(arg: arg, hint: hint);
+        .crateApiPseudoManualExceptionTwinRustAsyncSseCustomNestedErrorReturnErrorTwinRustAsyncSse(
+            arg: arg, hint: hint);
 
 Future<void> customStructErrorReturnErrorTwinRustAsyncSse(
         {required CustomStructErrorTwinRustAsyncSse arg, dynamic hint}) =>
     RustLib.instance.api
-        .customStructErrorReturnErrorTwinRustAsyncSse(arg: arg, hint: hint);
+        .crateApiPseudoManualExceptionTwinRustAsyncSseCustomStructErrorReturnErrorTwinRustAsyncSse(
+            arg: arg, hint: hint);
 
-Future<int> returnErrCustomErrorTwinRustAsyncSse({dynamic hint}) =>
-    RustLib.instance.api.returnErrCustomErrorTwinRustAsyncSse(hint: hint);
+Future<int> returnErrCustomErrorTwinRustAsyncSse({dynamic hint}) => RustLib
+    .instance.api
+    .crateApiPseudoManualExceptionTwinRustAsyncSseReturnErrCustomErrorTwinRustAsyncSse(
+        hint: hint);
 
-Future<int> returnOkCustomErrorTwinRustAsyncSse({dynamic hint}) =>
-    RustLib.instance.api.returnOkCustomErrorTwinRustAsyncSse(hint: hint);
+Future<int> returnOkCustomErrorTwinRustAsyncSse({dynamic hint}) => RustLib
+    .instance.api
+    .crateApiPseudoManualExceptionTwinRustAsyncSseReturnOkCustomErrorTwinRustAsyncSse(
+        hint: hint);
 
 Future<int> returnErrorVariantTwinRustAsyncSse(
         {required int variant, dynamic hint}) =>
     RustLib.instance.api
-        .returnErrorVariantTwinRustAsyncSse(variant: variant, hint: hint);
+        .crateApiPseudoManualExceptionTwinRustAsyncSseReturnErrorVariantTwinRustAsyncSse(
+            variant: variant, hint: hint);
 
-Future<void> returnCustomNestedError1TwinRustAsyncSse({dynamic hint}) =>
-    RustLib.instance.api.returnCustomNestedError1TwinRustAsyncSse(hint: hint);
+Future<void> returnCustomNestedError1TwinRustAsyncSse({dynamic hint}) => RustLib
+    .instance.api
+    .crateApiPseudoManualExceptionTwinRustAsyncSseReturnCustomNestedError1TwinRustAsyncSse(
+        hint: hint);
 
 Future<void> returnCustomNestedError1Variant1TwinRustAsyncSse({dynamic hint}) =>
     RustLib.instance.api
-        .returnCustomNestedError1Variant1TwinRustAsyncSse(hint: hint);
+        .crateApiPseudoManualExceptionTwinRustAsyncSseReturnCustomNestedError1Variant1TwinRustAsyncSse(
+            hint: hint);
 
-Future<void> returnCustomNestedError2TwinRustAsyncSse({dynamic hint}) =>
-    RustLib.instance.api.returnCustomNestedError2TwinRustAsyncSse(hint: hint);
+Future<void> returnCustomNestedError2TwinRustAsyncSse({dynamic hint}) => RustLib
+    .instance.api
+    .crateApiPseudoManualExceptionTwinRustAsyncSseReturnCustomNestedError2TwinRustAsyncSse(
+        hint: hint);
 
-Future<void> returnCustomStructErrorTwinRustAsyncSse({dynamic hint}) =>
-    RustLib.instance.api.returnCustomStructErrorTwinRustAsyncSse(hint: hint);
+Future<void> returnCustomStructErrorTwinRustAsyncSse({dynamic hint}) => RustLib
+    .instance.api
+    .crateApiPseudoManualExceptionTwinRustAsyncSseReturnCustomStructErrorTwinRustAsyncSse(
+        hint: hint);
 
-Future<int> returnCustomStructOkTwinRustAsyncSse({dynamic hint}) =>
-    RustLib.instance.api.returnCustomStructOkTwinRustAsyncSse(hint: hint);
+Future<int> returnCustomStructOkTwinRustAsyncSse({dynamic hint}) => RustLib
+    .instance.api
+    .crateApiPseudoManualExceptionTwinRustAsyncSseReturnCustomStructOkTwinRustAsyncSse(
+        hint: hint);
 
-Future<void> throwAnyhowTwinRustAsyncSse({dynamic hint}) =>
-    RustLib.instance.api.throwAnyhowTwinRustAsyncSse(hint: hint);
+Future<void> throwAnyhowTwinRustAsyncSse({dynamic hint}) => RustLib.instance.api
+    .crateApiPseudoManualExceptionTwinRustAsyncSseThrowAnyhowTwinRustAsyncSse(
+        hint: hint);
 
-Future<void> panicWithCustomResultTwinRustAsyncSse({dynamic hint}) =>
-    RustLib.instance.api.panicWithCustomResultTwinRustAsyncSse(hint: hint);
+Future<void> panicWithCustomResultTwinRustAsyncSse({dynamic hint}) => RustLib
+    .instance.api
+    .crateApiPseudoManualExceptionTwinRustAsyncSsePanicWithCustomResultTwinRustAsyncSse(
+        hint: hint);
 
-Future<Stream<String>> streamSinkThrowAnyhowTwinRustAsyncSse({dynamic hint}) =>
-    RustLib.instance.api.streamSinkThrowAnyhowTwinRustAsyncSse(hint: hint);
+Future<
+    Stream<
+        String>> streamSinkThrowAnyhowTwinRustAsyncSse({dynamic hint}) => RustLib
+    .instance.api
+    .crateApiPseudoManualExceptionTwinRustAsyncSseStreamSinkThrowAnyhowTwinRustAsyncSse(
+        hint: hint);
 
 @freezed
 sealed class CustomEnumErrorTwinRustAsyncSse
@@ -208,30 +242,31 @@ class CustomStructTwinRustAsyncSse {
 
   static Future<CustomStructTwinRustAsyncSse> newTwinRustAsyncSse(
           {required String message, dynamic hint}) =>
-      RustLib.instance.api.customStructTwinRustAsyncSseNewTwinRustAsyncSse(
-          message: message, hint: hint);
+      RustLib.instance.api
+          .crateApiPseudoManualExceptionTwinRustAsyncSseCustomStructTwinRustAsyncSseNewTwinRustAsyncSse(
+              message: message, hint: hint);
 
   Future<void> nonstaticReturnCustomStructErrorTwinRustAsyncSse(
           {dynamic hint}) =>
       RustLib.instance.api
-          .customStructTwinRustAsyncSseNonstaticReturnCustomStructErrorTwinRustAsyncSse(
+          .crateApiPseudoManualExceptionTwinRustAsyncSseCustomStructTwinRustAsyncSseNonstaticReturnCustomStructErrorTwinRustAsyncSse(
               that: this, hint: hint);
 
   Future<int> nonstaticReturnCustomStructOkTwinRustAsyncSse({dynamic hint}) =>
       RustLib.instance.api
-          .customStructTwinRustAsyncSseNonstaticReturnCustomStructOkTwinRustAsyncSse(
+          .crateApiPseudoManualExceptionTwinRustAsyncSseCustomStructTwinRustAsyncSseNonstaticReturnCustomStructOkTwinRustAsyncSse(
               that: this, hint: hint);
 
   static Future<void> staticReturnCustomStructErrorTwinRustAsyncSse(
           {dynamic hint}) =>
       RustLib.instance.api
-          .customStructTwinRustAsyncSseStaticReturnCustomStructErrorTwinRustAsyncSse(
+          .crateApiPseudoManualExceptionTwinRustAsyncSseCustomStructTwinRustAsyncSseStaticReturnCustomStructErrorTwinRustAsyncSse(
               hint: hint);
 
   static Future<int> staticReturnCustomStructOkTwinRustAsyncSse(
           {dynamic hint}) =>
       RustLib.instance.api
-          .customStructTwinRustAsyncSseStaticReturnCustomStructOkTwinRustAsyncSse(
+          .crateApiPseudoManualExceptionTwinRustAsyncSseCustomStructTwinRustAsyncSseStaticReturnCustomStructOkTwinRustAsyncSse(
               hint: hint);
 
   @override
@@ -254,29 +289,30 @@ class SomeStructTwinRustAsyncSse {
 
   static Future<SomeStructTwinRustAsyncSse> newTwinRustAsyncSse(
           {required int value, dynamic hint}) =>
-      RustLib.instance.api.someStructTwinRustAsyncSseNewTwinRustAsyncSse(
-          value: value, hint: hint);
+      RustLib.instance.api
+          .crateApiPseudoManualExceptionTwinRustAsyncSseSomeStructTwinRustAsyncSseNewTwinRustAsyncSse(
+              value: value, hint: hint);
 
   Future<int> nonStaticReturnErrCustomErrorTwinRustAsyncSse({dynamic hint}) =>
       RustLib.instance.api
-          .someStructTwinRustAsyncSseNonStaticReturnErrCustomErrorTwinRustAsyncSse(
+          .crateApiPseudoManualExceptionTwinRustAsyncSseSomeStructTwinRustAsyncSseNonStaticReturnErrCustomErrorTwinRustAsyncSse(
               that: this, hint: hint);
 
   Future<int> nonStaticReturnOkCustomErrorTwinRustAsyncSse({dynamic hint}) =>
       RustLib.instance.api
-          .someStructTwinRustAsyncSseNonStaticReturnOkCustomErrorTwinRustAsyncSse(
+          .crateApiPseudoManualExceptionTwinRustAsyncSseSomeStructTwinRustAsyncSseNonStaticReturnOkCustomErrorTwinRustAsyncSse(
               that: this, hint: hint);
 
   static Future<int> staticReturnErrCustomErrorTwinRustAsyncSse(
           {dynamic hint}) =>
       RustLib.instance.api
-          .someStructTwinRustAsyncSseStaticReturnErrCustomErrorTwinRustAsyncSse(
+          .crateApiPseudoManualExceptionTwinRustAsyncSseSomeStructTwinRustAsyncSseStaticReturnErrCustomErrorTwinRustAsyncSse(
               hint: hint);
 
   static Future<int> staticReturnOkCustomErrorTwinRustAsyncSse(
           {dynamic hint}) =>
       RustLib.instance.api
-          .someStructTwinRustAsyncSseStaticReturnOkCustomErrorTwinRustAsyncSse(
+          .crateApiPseudoManualExceptionTwinRustAsyncSseSomeStructTwinRustAsyncSseStaticReturnOkCustomErrorTwinRustAsyncSse(
               hint: hint);
 
   @override

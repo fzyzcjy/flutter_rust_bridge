@@ -8,41 +8,53 @@ import '../array.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-U8Array5 getArrayTwinSync({dynamic hint}) =>
-    RustLib.instance.api.getArrayTwinSync(hint: hint);
+U8Array5 getArrayTwinSync({dynamic hint}) => RustLib.instance.api
+    .crateApiPseudoManualArrayTwinSyncGetArrayTwinSync(hint: hint);
 
 PointTwinSyncArray2 getComplexArrayTwinSync({dynamic hint}) =>
-    RustLib.instance.api.getComplexArrayTwinSync(hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualArrayTwinSyncGetComplexArrayTwinSync(hint: hint);
 
 MessageIdTwinSync newMsgidTwinSync({required U8Array32 id, dynamic hint}) =>
-    RustLib.instance.api.newMsgidTwinSync(id: id, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualArrayTwinSyncNewMsgidTwinSync(id: id, hint: hint);
 
 U8Array32 useMsgidTwinSync({required MessageIdTwinSync id, dynamic hint}) =>
-    RustLib.instance.api.useMsgidTwinSync(id: id, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualArrayTwinSyncUseMsgidTwinSync(id: id, hint: hint);
 
 BlobTwinSync boxedBlobTwinSync({required U8Array1600 blob, dynamic hint}) =>
-    RustLib.instance.api.boxedBlobTwinSync(blob: blob, hint: hint);
+    RustLib.instance.api.crateApiPseudoManualArrayTwinSyncBoxedBlobTwinSync(
+        blob: blob, hint: hint);
 
 U8Array1600 useBoxedBlobTwinSync({required BlobTwinSync blob, dynamic hint}) =>
-    RustLib.instance.api.useBoxedBlobTwinSync(blob: blob, hint: hint);
+    RustLib.instance.api.crateApiPseudoManualArrayTwinSyncUseBoxedBlobTwinSync(
+        blob: blob, hint: hint);
 
 FeedIdTwinSync returnBoxedFeedIdTwinSync(
         {required U8Array8 id, dynamic hint}) =>
-    RustLib.instance.api.returnBoxedFeedIdTwinSync(id: id, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualArrayTwinSyncReturnBoxedFeedIdTwinSync(
+            id: id, hint: hint);
 
 U8Array8 returnBoxedRawFeedIdTwinSync(
         {required FeedIdTwinSync id, dynamic hint}) =>
-    RustLib.instance.api.returnBoxedRawFeedIdTwinSync(id: id, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualArrayTwinSyncReturnBoxedRawFeedIdTwinSync(
+            id: id, hint: hint);
 
 TestIdTwinSync funcTestIdTwinSync({required TestIdTwinSync id, dynamic hint}) =>
-    RustLib.instance.api.funcTestIdTwinSync(id: id, hint: hint);
+    RustLib.instance.api.crateApiPseudoManualArrayTwinSyncFuncTestIdTwinSync(
+        id: id, hint: hint);
 
 double lastNumberTwinSync({required F64Array16 array, dynamic hint}) =>
-    RustLib.instance.api.lastNumberTwinSync(array: array, hint: hint);
+    RustLib.instance.api.crateApiPseudoManualArrayTwinSyncLastNumberTwinSync(
+        array: array, hint: hint);
 
 TestIdTwinSyncArray2 nestedIdTwinSync(
         {required TestIdTwinSyncArray4 id, dynamic hint}) =>
-    RustLib.instance.api.nestedIdTwinSync(id: id, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualArrayTwinSyncNestedIdTwinSync(id: id, hint: hint);
 
 class BlobTwinSync {
   final U8Array1600 field0;

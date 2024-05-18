@@ -45,7 +45,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 
   @override
   Future<void> executeRustInitializers() async {
-    await api.initApp();
+    await api.crateApiMinimalInitApp();
   }
 
   @override
@@ -67,9 +67,10 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  Future<void> initApp({dynamic hint});
+  Future<void> crateApiMinimalInitApp({dynamic hint});
 
-  Future<int> minimalAdder({required int a, required int b, dynamic hint});
+  Future<int> crateApiMinimalMinimalAdder(
+      {required int a, required int b, dynamic hint});
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -81,7 +82,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
-  Future<void> initApp({dynamic hint}) {
+  Future<void> crateApiMinimalInitApp({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -92,20 +93,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kInitAppConstMeta,
+      constMeta: kCrateApiMinimalInitAppConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kInitAppConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateApiMinimalInitAppConstMeta => const TaskConstMeta(
         debugName: "init_app",
         argNames: [],
       );
 
   @override
-  Future<int> minimalAdder({required int a, required int b, dynamic hint}) {
+  Future<int> crateApiMinimalMinimalAdder(
+      {required int a, required int b, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -118,14 +120,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_i_32,
         decodeErrorData: null,
       ),
-      constMeta: kMinimalAdderConstMeta,
+      constMeta: kCrateApiMinimalMinimalAdderConstMeta,
       argValues: [a, b],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kMinimalAdderConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateApiMinimalMinimalAdderConstMeta =>
+      const TaskConstMeta(
         debugName: "minimal_adder",
         argNames: ["a", "b"],
       );

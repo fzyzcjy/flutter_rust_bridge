@@ -12,8 +12,15 @@ Future<int> primitiveTypesTwinSse(
         required double myF64,
         required bool myBool,
         dynamic hint}) =>
-    RustLib.instance.api.primitiveTypesTwinSse(
-        myI32: myI32, myI64: myI64, myF64: myF64, myBool: myBool, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualPrimitiveMiscTwinSsePrimitiveTypesTwinSse(
+            myI32: myI32,
+            myI64: myI64,
+            myF64: myF64,
+            myBool: myBool,
+            hint: hint);
 
 Future<int> primitiveU32TwinSse({required int myU32, dynamic hint}) =>
-    RustLib.instance.api.primitiveU32TwinSse(myU32: myU32, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualPrimitiveMiscTwinSsePrimitiveU32TwinSse(
+            myU32: myU32, hint: hint);

@@ -31,10 +31,11 @@ class SimpleOpaqueExternalStructWithMethod extends RustOpaque {
   factory SimpleOpaqueExternalStructWithMethod(
           {required String a, dynamic hint}) =>
       RustLib.instance.api
-          .simpleOpaqueExternalStructWithMethodNew(a: a, hint: hint);
+          .crateApiExternalImplSimpleOpaqueExternalStructWithMethodNew(
+              a: a, hint: hint);
 
   Future<String> simpleExternalMethod({dynamic hint}) => RustLib.instance.api
-      .simpleOpaqueExternalStructWithMethodSimpleExternalMethod(
+      .crateApiExternalImplSimpleOpaqueExternalStructWithMethodSimpleExternalMethod(
           that: this, hint: hint);
 }
 
@@ -46,7 +47,7 @@ class SimpleTranslatableExternalStructWithMethod {
   });
 
   Future<String> simpleExternalMethod({dynamic hint}) => RustLib.instance.api
-      .simpleTranslatableExternalStructWithMethodSimpleExternalMethod(
+      .crateApiExternalImplSimpleTranslatableExternalStructWithMethodSimpleExternalMethod(
           that: this, hint: hint);
 
   @override

@@ -8,15 +8,18 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:uuid/uuid.dart';
 
 Future<UuidValue> handleUuidTwinNormal({required UuidValue id, dynamic hint}) =>
-    RustLib.instance.api.handleUuidTwinNormal(id: id, hint: hint);
+    RustLib.instance.api
+        .crateApiUuidTypeHandleUuidTwinNormal(id: id, hint: hint);
 
 Future<List<UuidValue>> handleUuidsTwinNormal(
         {required List<UuidValue> ids, dynamic hint}) =>
-    RustLib.instance.api.handleUuidsTwinNormal(ids: ids, hint: hint);
+    RustLib.instance.api
+        .crateApiUuidTypeHandleUuidsTwinNormal(ids: ids, hint: hint);
 
 Future<FeatureUuidTwinNormal> handleNestedUuidsTwinNormal(
         {required FeatureUuidTwinNormal ids, dynamic hint}) =>
-    RustLib.instance.api.handleNestedUuidsTwinNormal(ids: ids, hint: hint);
+    RustLib.instance.api
+        .crateApiUuidTypeHandleNestedUuidsTwinNormal(ids: ids, hint: hint);
 
 class FeatureUuidTwinNormal {
   final UuidValue one;

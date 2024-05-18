@@ -8,47 +8,67 @@ import '../array.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<U8Array5> getArrayTwinRustAsync({dynamic hint}) =>
-    RustLib.instance.api.getArrayTwinRustAsync(hint: hint);
+Future<U8Array5> getArrayTwinRustAsync({dynamic hint}) => RustLib.instance.api
+    .crateApiPseudoManualArrayTwinRustAsyncGetArrayTwinRustAsync(hint: hint);
 
 Future<PointTwinRustAsyncArray2> getComplexArrayTwinRustAsync({dynamic hint}) =>
-    RustLib.instance.api.getComplexArrayTwinRustAsync(hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualArrayTwinRustAsyncGetComplexArrayTwinRustAsync(
+            hint: hint);
 
 Future<MessageIdTwinRustAsync> newMsgidTwinRustAsync(
         {required U8Array32 id, dynamic hint}) =>
-    RustLib.instance.api.newMsgidTwinRustAsync(id: id, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualArrayTwinRustAsyncNewMsgidTwinRustAsync(
+            id: id, hint: hint);
 
 Future<U8Array32> useMsgidTwinRustAsync(
         {required MessageIdTwinRustAsync id, dynamic hint}) =>
-    RustLib.instance.api.useMsgidTwinRustAsync(id: id, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualArrayTwinRustAsyncUseMsgidTwinRustAsync(
+            id: id, hint: hint);
 
 Future<BlobTwinRustAsync> boxedBlobTwinRustAsync(
         {required U8Array1600 blob, dynamic hint}) =>
-    RustLib.instance.api.boxedBlobTwinRustAsync(blob: blob, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualArrayTwinRustAsyncBoxedBlobTwinRustAsync(
+            blob: blob, hint: hint);
 
 Future<U8Array1600> useBoxedBlobTwinRustAsync(
         {required BlobTwinRustAsync blob, dynamic hint}) =>
-    RustLib.instance.api.useBoxedBlobTwinRustAsync(blob: blob, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualArrayTwinRustAsyncUseBoxedBlobTwinRustAsync(
+            blob: blob, hint: hint);
 
 Future<FeedIdTwinRustAsync> returnBoxedFeedIdTwinRustAsync(
         {required U8Array8 id, dynamic hint}) =>
-    RustLib.instance.api.returnBoxedFeedIdTwinRustAsync(id: id, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualArrayTwinRustAsyncReturnBoxedFeedIdTwinRustAsync(
+            id: id, hint: hint);
 
 Future<U8Array8> returnBoxedRawFeedIdTwinRustAsync(
         {required FeedIdTwinRustAsync id, dynamic hint}) =>
-    RustLib.instance.api.returnBoxedRawFeedIdTwinRustAsync(id: id, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualArrayTwinRustAsyncReturnBoxedRawFeedIdTwinRustAsync(
+            id: id, hint: hint);
 
 Future<TestIdTwinRustAsync> funcTestIdTwinRustAsync(
         {required TestIdTwinRustAsync id, dynamic hint}) =>
-    RustLib.instance.api.funcTestIdTwinRustAsync(id: id, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualArrayTwinRustAsyncFuncTestIdTwinRustAsync(
+            id: id, hint: hint);
 
 Future<double> lastNumberTwinRustAsync(
         {required F64Array16 array, dynamic hint}) =>
-    RustLib.instance.api.lastNumberTwinRustAsync(array: array, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualArrayTwinRustAsyncLastNumberTwinRustAsync(
+            array: array, hint: hint);
 
 Future<TestIdTwinRustAsyncArray2> nestedIdTwinRustAsync(
         {required TestIdTwinRustAsyncArray4 id, dynamic hint}) =>
-    RustLib.instance.api.nestedIdTwinRustAsync(id: id, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualArrayTwinRustAsyncNestedIdTwinRustAsync(
+            id: id, hint: hint);
 
 class BlobTwinRustAsync {
   final U8Array1600 field0;

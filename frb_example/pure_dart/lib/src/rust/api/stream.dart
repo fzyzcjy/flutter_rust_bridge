@@ -8,46 +8,51 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'pseudo_manual/stream_twin_rust_async.dart';
 
 Future<Stream<String>> funcStreamReturnErrorTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.funcStreamReturnErrorTwinNormal(hint: hint);
+    RustLib.instance.api
+        .crateApiStreamFuncStreamReturnErrorTwinNormal(hint: hint);
 
 Future<Stream<String>> funcStreamReturnPanicTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.funcStreamReturnPanicTwinNormal(hint: hint);
+    RustLib.instance.api
+        .crateApiStreamFuncStreamReturnPanicTwinNormal(hint: hint);
 
 Stream<int> funcStreamSinkArgPositionTwinNormal(
         {required int a, required int b, dynamic hint}) =>
-    RustLib.instance.api
-        .funcStreamSinkArgPositionTwinNormal(a: a, b: b, hint: hint);
+    RustLib.instance.api.crateApiStreamFuncStreamSinkArgPositionTwinNormal(
+        a: a, b: b, hint: hint);
 
 Stream<MyStreamEntryTwinNormal> handleStreamOfStructTwinNormal(
         {dynamic hint}) =>
-    RustLib.instance.api.handleStreamOfStructTwinNormal(hint: hint);
+    RustLib.instance.api
+        .crateApiStreamHandleStreamOfStructTwinNormal(hint: hint);
 
 Stream<LogTwinNormal> handleStreamSinkAt1TwinNormal(
         {required int key, required int max, dynamic hint}) =>
-    RustLib.instance.api
-        .handleStreamSinkAt1TwinNormal(key: key, max: max, hint: hint);
+    RustLib.instance.api.crateApiStreamHandleStreamSinkAt1TwinNormal(
+        key: key, max: max, hint: hint);
 
 Stream<LogTwinNormal> handleStreamSinkAt2TwinNormal(
         {required int key, required int max, dynamic hint}) =>
-    RustLib.instance.api
-        .handleStreamSinkAt2TwinNormal(key: key, max: max, hint: hint);
+    RustLib.instance.api.crateApiStreamHandleStreamSinkAt2TwinNormal(
+        key: key, max: max, hint: hint);
 
 Stream<LogTwinNormal> handleStreamSinkAt3TwinNormal(
         {required int key, required int max, dynamic hint}) =>
-    RustLib.instance.api
-        .handleStreamSinkAt3TwinNormal(key: key, max: max, hint: hint);
+    RustLib.instance.api.crateApiStreamHandleStreamSinkAt3TwinNormal(
+        key: key, max: max, hint: hint);
 
 Stream<U8Array2> streamSinkFixedSizedPrimitiveArrayTwinNormal({dynamic hint}) =>
     RustLib.instance.api
-        .streamSinkFixedSizedPrimitiveArrayTwinNormal(hint: hint);
+        .crateApiStreamStreamSinkFixedSizedPrimitiveArrayTwinNormal(hint: hint);
 
 Future<void> streamSinkInsideVecTwinNormal(
         {required List<RustStreamSink<int>> arg, dynamic hint}) =>
-    RustLib.instance.api.streamSinkInsideVecTwinNormal(arg: arg, hint: hint);
+    RustLib.instance.api
+        .crateApiStreamStreamSinkInsideVecTwinNormal(arg: arg, hint: hint);
 
 Future<void> streamSinkInsideStructTwinNormal(
         {required MyStructContainingStreamSinkTwinNormal arg, dynamic hint}) =>
-    RustLib.instance.api.streamSinkInsideStructTwinNormal(arg: arg, hint: hint);
+    RustLib.instance.api
+        .crateApiStreamStreamSinkInsideStructTwinNormal(arg: arg, hint: hint);
 
 class LogTwinNormal {
   final int key;

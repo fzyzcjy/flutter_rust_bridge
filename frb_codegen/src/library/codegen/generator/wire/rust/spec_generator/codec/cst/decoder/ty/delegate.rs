@@ -42,7 +42,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
                 let codegen_naive_date =
                     "chrono::NaiveDateTime::from_timestamp_opt(s, ns).expect(\"invalid or out-of-range datetime\").date()";
                 let codegen_naive_date_time =
-                    "chrono::NaiveDateTime::from_timestamp_opt(s, ns).expect(\"invalid or out-of-range datetime\")";
+                    "chrono::DateTime::from_timestamp(s, ns).expect(\"invalid or out-of-range datetime\").naive_utc()";
                 let codegen_utc = format!("chrono::DateTime::<chrono::Utc>::from_naive_utc_and_offset({codegen_naive_date_time}, chrono::Utc)");
                 let codegen_local = format!("chrono::DateTime::<chrono::Local>::from({codegen_utc})");
                 let codegen_conversion = match ir {

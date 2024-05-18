@@ -8,7 +8,8 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<NewTypeIntTwinNormal> handleNewtypeTwinNormal(
         {required NewTypeIntTwinNormal arg, dynamic hint}) =>
-    RustLib.instance.api.handleNewtypeTwinNormal(arg: arg, hint: hint);
+    RustLib.instance.api
+        .crateApiNewtypePatternHandleNewtypeTwinNormal(arg: arg, hint: hint);
 
 class NewTypeIntTwinNormal {
   final int field0;

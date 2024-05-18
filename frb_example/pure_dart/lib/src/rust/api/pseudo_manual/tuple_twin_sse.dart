@@ -7,8 +7,10 @@ import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<(String, int)> testTupleTwinSse({(String, int)? value, dynamic hint}) =>
-    RustLib.instance.api.testTupleTwinSse(value: value, hint: hint);
+    RustLib.instance.api.crateApiPseudoManualTupleTwinSseTestTupleTwinSse(
+        value: value, hint: hint);
 
 Future<void> testTuple2TwinSse(
         {required List<(String, int)> value, dynamic hint}) =>
-    RustLib.instance.api.testTuple2TwinSse(value: value, hint: hint);
+    RustLib.instance.api.crateApiPseudoManualTupleTwinSseTestTuple2TwinSse(
+        value: value, hint: hint);

@@ -62,9 +62,10 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::Map(_) => "self.into_iter().collect()".to_owned(),
                 IrTypeDelegate::Set(_) => "self.into_iter().collect()".to_owned(),
                 IrTypeDelegate::Time(ir) => match ir {
-                    IrTypeDelegateTime::Utc
-                    | IrTypeDelegateTime::Local
-                    | IrTypeDelegateTime::NaiveDateTime => "self.timestamp_micros()".to_owned(),
+                    IrTypeDelegateTime::Utc | IrTypeDelegateTime::Local => {
+                        "self.timestamp_micros()".to_owned()
+                    }
+                    IrTypeDelegateTime::NaiveDateTime => "self.and_utc().timestamp_micros()".to_owned(),
                     IrTypeDelegateTime::NaiveDate => {
                         "self.and_hms_opt(0, 0, 0).unwrap().timestamp_micros()".to_owned()
                     }
@@ -143,7 +144,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::Set(_) => "inner.into_iter().collect()".to_owned(),
                 IrTypeDelegate::Time(ir) => {
                     let naive_date = "chrono::NaiveDateTime::from_timestamp_micros(inner).expect(\"invalid or out-of-range date\").date()";
-                    let naive_date_time = "chrono::NaiveDateTime::from_timestamp_micros(inner).expect(\"invalid or out-of-range datetime\")";
+                    let naive_date_time = "chrono::DateTime::from_timestamp_micros(inner).expect(\"invalid or out-of-range datetime\").naive_utc()";
                     let utc = format!("chrono::DateTime::<chrono::Utc>::from_naive_utc_and_offset({naive_date_time}, chrono::Utc)");
                     match ir {
                         IrTypeDelegateTime::NaiveDate => naive_date.to_owned(),

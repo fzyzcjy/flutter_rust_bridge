@@ -15,7 +15,6 @@ use crate::library::codegen::generator::wire::dart::spec_generator::misc::ty::Wi
 use crate::utils::basic_code::DartBasicHeaderCode;
 use crate::utils::path_utils::path_to_string;
 use anyhow::Context;
-use convert_case::{Case, Casing};
 use itertools::Itertools;
 use pathdiff::diff_paths;
 use serde::Serialize;
@@ -100,7 +99,7 @@ fn generate_boilerplate(
 
     let execute_rust_initializers = (context.ir_pack.funcs.iter())
         .filter(|f| f.initializer)
-        .map(|f| format!("await api.{}();\n", f.name.name.to_case(Case::Camel)))
+        .map(|f| format!("await api.{}();\n", f.name_dart_wire()))
         .join("");
 
     let codegen_version = env!("CARGO_PKG_VERSION");

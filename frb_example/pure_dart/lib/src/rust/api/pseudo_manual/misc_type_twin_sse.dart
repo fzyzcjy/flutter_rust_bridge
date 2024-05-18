@@ -7,20 +7,25 @@ import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<void> funcReturnUnitTwinSse({dynamic hint}) =>
-    RustLib.instance.api.funcReturnUnitTwinSse(hint: hint);
+Future<void> funcReturnUnitTwinSse({dynamic hint}) => RustLib.instance.api
+    .crateApiPseudoManualMiscTypeTwinSseFuncReturnUnitTwinSse(hint: hint);
 
 Future<List<MySize>> handleListOfStructTwinSse(
         {required List<MySize> l, dynamic hint}) =>
-    RustLib.instance.api.handleListOfStructTwinSse(l: l, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMiscTypeTwinSseHandleListOfStructTwinSse(
+            l: l, hint: hint);
 
 Future<List<String>> handleStringListTwinSse(
         {required List<String> names, dynamic hint}) =>
-    RustLib.instance.api.handleStringListTwinSse(names: names, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualMiscTypeTwinSseHandleStringListTwinSse(
+            names: names, hint: hint);
 
 Future<EmptyTwinSse> emptyStructTwinSse(
         {required EmptyTwinSse empty, dynamic hint}) =>
-    RustLib.instance.api.emptyStructTwinSse(empty: empty, hint: hint);
+    RustLib.instance.api.crateApiPseudoManualMiscTypeTwinSseEmptyStructTwinSse(
+        empty: empty, hint: hint);
 
 class EmptyTwinSse {
   const EmptyTwinSse();

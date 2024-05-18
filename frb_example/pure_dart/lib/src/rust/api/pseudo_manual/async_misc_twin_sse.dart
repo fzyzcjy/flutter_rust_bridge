@@ -6,9 +6,11 @@
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<void> funcAsyncVoidTwinSse({dynamic hint}) =>
-    RustLib.instance.api.funcAsyncVoidTwinSse(hint: hint);
+Future<void> funcAsyncVoidTwinSse({dynamic hint}) => RustLib.instance.api
+    .crateApiPseudoManualAsyncMiscTwinSseFuncAsyncVoidTwinSse(hint: hint);
 
 Future<int> funcAsyncSimpleAddTwinSse(
         {required int a, required int b, dynamic hint}) =>
-    RustLib.instance.api.funcAsyncSimpleAddTwinSse(a: a, b: b, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualAsyncMiscTwinSseFuncAsyncSimpleAddTwinSse(
+            a: a, b: b, hint: hint);

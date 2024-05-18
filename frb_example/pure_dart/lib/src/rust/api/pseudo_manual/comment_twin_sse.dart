@@ -12,19 +12,23 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 /// This is single line comment
 Future<void> functionWithCommentsTripleSlashSingleLineTwinSse({dynamic hint}) =>
     RustLib.instance.api
-        .functionWithCommentsTripleSlashSingleLineTwinSse(hint: hint);
+        .crateApiPseudoManualCommentTwinSseFunctionWithCommentsTripleSlashSingleLineTwinSse(
+            hint: hint);
 
 /// This is first line
 /// This is second line
 Future<void> functionWithCommentsTripleSlashMultiLineTwinSse({dynamic hint}) =>
     RustLib.instance.api
-        .functionWithCommentsTripleSlashMultiLineTwinSse(hint: hint);
+        .crateApiPseudoManualCommentTwinSseFunctionWithCommentsTripleSlashMultiLineTwinSse(
+            hint: hint);
 
 /// Multiline comments are fine,
 /// but they are not preferred in Rust nor in Dart.
 /// Newlines are preserved.
-Future<void> functionWithCommentsSlashStarStarTwinSse({dynamic hint}) =>
-    RustLib.instance.api.functionWithCommentsSlashStarStarTwinSse(hint: hint);
+Future<void> functionWithCommentsSlashStarStarTwinSse({dynamic hint}) => RustLib
+    .instance.api
+    .crateApiPseudoManualCommentTwinSseFunctionWithCommentsSlashStarStarTwinSse(
+        hint: hint);
 
 /// Comments on structs
 class StructWithCommentsTwinSse {
@@ -37,12 +41,14 @@ class StructWithCommentsTwinSse {
 
   /// Documentation on an instance method
   Future<void> instanceMethodTwinSse({dynamic hint}) => RustLib.instance.api
-      .structWithCommentsTwinSseInstanceMethodTwinSse(that: this, hint: hint);
+      .crateApiPseudoManualCommentTwinSseStructWithCommentsTwinSseInstanceMethodTwinSse(
+          that: this, hint: hint);
 
   /// Documentation on a static method
-  static Future<void> staticMethodTwinSse({dynamic hint}) =>
-      RustLib.instance.api
-          .structWithCommentsTwinSseStaticMethodTwinSse(hint: hint);
+  static Future<void> staticMethodTwinSse({dynamic hint}) => RustLib
+      .instance.api
+      .crateApiPseudoManualCommentTwinSseStructWithCommentsTwinSseStaticMethodTwinSse(
+          hint: hint);
 
   @override
   int get hashCode => fieldWithComments.hashCode;

@@ -11,61 +11,86 @@ import 'rust_opaque_sync_twin_moi.dart';
 part 'rust_opaque_twin_moi.freezed.dart';
 
 Future<HideDataTwinMoi> createOpaqueTwinMoi({dynamic hint}) =>
-    RustLib.instance.api.createOpaqueTwinMoi(hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueTwinMoiCreateOpaqueTwinMoi(hint: hint);
 
 Future<HideDataTwinMoi?> createOptionOpaqueTwinMoi(
         {HideDataTwinMoi? opaque, dynamic hint}) =>
-    RustLib.instance.api.createOptionOpaqueTwinMoi(opaque: opaque, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueTwinMoiCreateOptionOpaqueTwinMoi(
+            opaque: opaque, hint: hint);
 
 Future<EnumOpaqueTwinMoiArray5> createArrayOpaqueEnumTwinMoi({dynamic hint}) =>
-    RustLib.instance.api.createArrayOpaqueEnumTwinMoi(hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueTwinMoiCreateArrayOpaqueEnumTwinMoi(
+            hint: hint);
 
 Future<String> runEnumOpaqueTwinMoi(
         {required EnumOpaqueTwinMoi opaque, dynamic hint}) =>
-    RustLib.instance.api.runEnumOpaqueTwinMoi(opaque: opaque, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueTwinMoiRunEnumOpaqueTwinMoi(
+            opaque: opaque, hint: hint);
 
 Future<String> runOpaqueTwinMoi(
         {required HideDataTwinMoi opaque, dynamic hint}) =>
-    RustLib.instance.api.runOpaqueTwinMoi(opaque: opaque, hint: hint);
+    RustLib.instance.api.crateApiPseudoManualRustOpaqueTwinMoiRunOpaqueTwinMoi(
+        opaque: opaque, hint: hint);
 
 Future<String> runOpaqueWithDelayTwinMoi(
         {required HideDataTwinMoi opaque, dynamic hint}) =>
-    RustLib.instance.api.runOpaqueWithDelayTwinMoi(opaque: opaque, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueTwinMoiRunOpaqueWithDelayTwinMoi(
+            opaque: opaque, hint: hint);
 
 Future<HideDataTwinMoiArray2> opaqueArrayTwinMoi({dynamic hint}) =>
-    RustLib.instance.api.opaqueArrayTwinMoi(hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueTwinMoiOpaqueArrayTwinMoi(hint: hint);
 
 Future<String> runNonCloneTwinMoi(
         {required NonCloneDataTwinMoi clone, dynamic hint}) =>
-    RustLib.instance.api.runNonCloneTwinMoi(clone: clone, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueTwinMoiRunNonCloneTwinMoi(
+            clone: clone, hint: hint);
 
 Future<void> opaqueArrayRunTwinMoi(
         {required HideDataTwinMoiArray2 data, dynamic hint}) =>
-    RustLib.instance.api.opaqueArrayRunTwinMoi(data: data, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueTwinMoiOpaqueArrayRunTwinMoi(
+            data: data, hint: hint);
 
 Future<List<HideDataTwinMoi>> opaqueVecTwinMoi({dynamic hint}) =>
-    RustLib.instance.api.opaqueVecTwinMoi(hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueTwinMoiOpaqueVecTwinMoi(hint: hint);
 
 Future<void> opaqueVecRunTwinMoi(
         {required List<HideDataTwinMoi> data, dynamic hint}) =>
-    RustLib.instance.api.opaqueVecRunTwinMoi(data: data, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueTwinMoiOpaqueVecRunTwinMoi(
+            data: data, hint: hint);
 
-Future<OpaqueNestedTwinMoi> createNestedOpaqueTwinMoi({dynamic hint}) =>
-    RustLib.instance.api.createNestedOpaqueTwinMoi(hint: hint);
+Future<OpaqueNestedTwinMoi> createNestedOpaqueTwinMoi({dynamic hint}) => RustLib
+    .instance.api
+    .crateApiPseudoManualRustOpaqueTwinMoiCreateNestedOpaqueTwinMoi(hint: hint);
 
 Future<void> runNestedOpaqueTwinMoi(
         {required OpaqueNestedTwinMoi opaque, dynamic hint}) =>
-    RustLib.instance.api.runNestedOpaqueTwinMoi(opaque: opaque, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueTwinMoiRunNestedOpaqueTwinMoi(
+            opaque: opaque, hint: hint);
 
 Future<String> unwrapRustOpaqueTwinMoi(
         {required HideDataTwinMoi opaque, dynamic hint}) =>
-    RustLib.instance.api.unwrapRustOpaqueTwinMoi(opaque: opaque, hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueTwinMoiUnwrapRustOpaqueTwinMoi(
+            opaque: opaque, hint: hint);
 
 /// Function to check the code generator.
 /// FrbOpaqueReturn must be only return type.
 /// FrbOpaqueReturn must not be used as an argument.
 Future<FrbOpaqueReturnTwinMoi> frbGeneratorTestTwinMoi({dynamic hint}) =>
-    RustLib.instance.api.frbGeneratorTestTwinMoi(hint: hint);
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueTwinMoiFrbGeneratorTestTwinMoi(
+            hint: hint);
 
 // Rust type: RustOpaqueMoi<Box < dyn DartDebugTwinMoi >>
 @sealed
