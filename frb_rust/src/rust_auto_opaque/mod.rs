@@ -1,13 +1,14 @@
 use crate::for_generated::StdArc;
-use crate::rust_async::RwLock;
 use crate::rust_opaque::RustOpaqueBase;
 
 pub(crate) mod dart2rust;
+pub(crate) mod inner;
+mod order;
 
-pub type RustAutoOpaqueBase<T, A> = RustOpaqueBase<RwLock<T>, A>;
+pub type RustAutoOpaqueBase<T, A> = RustOpaqueBase<inner::RustAutoOpaqueInner<T>, A>;
 
 /// Please refer to `RustAutoOpaque` for doc.
-pub type RustAutoOpaqueNom<T> = RustAutoOpaqueBase<T, StdArc<RwLock<T>>>;
+pub type RustAutoOpaqueNom<T> = RustAutoOpaqueBase<T, StdArc<inner::RustAutoOpaqueInner<T>>>;
 
 #[doc(hidden)]
 #[macro_export]
@@ -18,7 +19,7 @@ macro_rules! frb_generated_rust_auto_opaque_def {
         /// Please refer to `RustAutoOpaque` for doc.
         pub type RustAutoOpaqueMoi<T> = $crate::for_generated::RustAutoOpaqueBase<
             T,
-            MoiArc<$crate::for_generated::rust_async::RwLock<T>>,
+            MoiArc<$crate::for_generated::RustAutoOpaqueInner<T>>,
         >;
 
         /// Usually this is unneeded, and just write down arbitrary types.

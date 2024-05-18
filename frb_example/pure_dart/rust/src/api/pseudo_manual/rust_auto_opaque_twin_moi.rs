@@ -7,6 +7,7 @@
 #[allow(unused_imports)]
 use crate::frb_generated::RustAutoOpaque;
 use crate::frb_generated::StreamSink;
+use flutter_rust_bridge::for_generated::RustAutoOpaqueInner;
 use flutter_rust_bridge::frb;
 use flutter_rust_bridge::rust_async::RwLock;
 use std::path::PathBuf;
@@ -384,9 +385,24 @@ pub fn rust_auto_opaque_explicit_struct_twin_moi(arg: StructWithExplicitAutoOpaq
 pub fn rust_auto_opaque_explicit_return_twin_moi(
     initial: i32,
 ) -> crate::frb_generated::RustAutoOpaqueMoi<NonCloneSimpleTwinMoi> {
-    crate::frb_generated::RustAutoOpaqueMoi::new(RwLock::new(NonCloneSimpleTwinMoi {
-        inner: initial,
-    }))
+    crate::frb_generated::RustAutoOpaqueMoi::new(RustAutoOpaqueInner::new(RwLock::new(
+        NonCloneSimpleTwinMoi { inner: initial },
+    )))
+}
+
+// ================ deadlock detection ===================
+
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+pub fn rust_auto_opaque_sleep_twin_moi(
+    apple: &mut NonCloneSimpleTwinMoi,
+    orange: &mut NonCloneSimpleTwinMoi,
+) -> i32 {
+    // If WASM + main thread (i.e. "sync"), the `sleep` cannot be used, which is a Rust / WASM limit.
+    // (But if on native, or on WASM + async mode, it is OK)
+    #[cfg(not(target_family = "wasm"))]
+    std::thread::sleep(std::time::Duration::from_millis(1000));
+
+    apple.inner + orange.inner
 }
 
 // ================ misc ===================

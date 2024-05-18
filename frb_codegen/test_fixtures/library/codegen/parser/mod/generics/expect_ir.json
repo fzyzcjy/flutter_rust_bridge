@@ -26,7 +26,7 @@
                       "inner": {
                         "brief_name": true,
                         "codec": "Nom",
-                        "inner": "flutter_rust_bridge::for_generated::rust_async::RwLock<A>",
+                        "inner": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<A>",
                         "namespace": "crate::api"
                       },
                       "ownership_mode": "Owned",
@@ -40,7 +40,7 @@
                         "string": "A"
                       }
                     },
-                    "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockA",
+                    "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA",
                     "type": "RustAutoOpaque"
                   }
                 }
@@ -76,7 +76,7 @@
                       "inner": {
                         "brief_name": true,
                         "codec": "Nom",
-                        "inner": "flutter_rust_bridge::for_generated::rust_async::RwLock<B>",
+                        "inner": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<B>",
                         "namespace": "crate::api"
                       },
                       "ownership_mode": "Owned",
@@ -90,7 +90,7 @@
                         "string": "B"
                       }
                     },
-                    "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockB",
+                    "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerB",
                     "type": "RustAutoOpaque"
                   }
                 }
@@ -136,7 +136,7 @@
                 "inner": {
                   "brief_name": true,
                   "codec": "Nom",
-                  "inner": "flutter_rust_bridge::for_generated::rust_async::RwLock<MyGenericEnum>",
+                  "inner": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyGenericEnum>",
                   "namespace": "crate::api"
                 },
                 "ownership_mode": "Owned",
@@ -150,7 +150,7 @@
                   "string": "MyGenericEnum"
                 }
               },
-              "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyGenericEnum",
+              "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyGenericEnum",
               "type": "RustAutoOpaque"
             }
           },
@@ -195,7 +195,7 @@
                 "inner": {
                   "brief_name": true,
                   "codec": "Nom",
-                  "inner": "flutter_rust_bridge::for_generated::rust_async::RwLock<MyGenericEnum>",
+                  "inner": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyGenericEnum>",
                   "namespace": "crate::api"
                 },
                 "ownership_mode": "Owned",
@@ -209,7 +209,7 @@
                   "string": "MyGenericEnum"
                 }
               },
-              "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyGenericEnum",
+              "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyGenericEnum",
               "type": "RustAutoOpaque"
             }
           },
@@ -254,7 +254,7 @@
                 "inner": {
                   "brief_name": true,
                   "codec": "Nom",
-                  "inner": "flutter_rust_bridge::for_generated::rust_async::RwLock<MyGenericStruct>",
+                  "inner": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyGenericStruct>",
                   "namespace": "crate::api"
                 },
                 "ownership_mode": "Owned",
@@ -268,7 +268,7 @@
                   "string": "MyGenericStruct"
                 }
               },
-              "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyGenericStruct",
+              "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyGenericStruct",
               "type": "RustAutoOpaque"
             }
           },
@@ -313,7 +313,7 @@
                 "inner": {
                   "brief_name": true,
                   "codec": "Nom",
-                  "inner": "flutter_rust_bridge::for_generated::rust_async::RwLock<MyGenericStruct>",
+                  "inner": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyGenericStruct>",
                   "namespace": "crate::api"
                 },
                 "ownership_mode": "Owned",
@@ -327,7 +327,7 @@
                   "string": "MyGenericStruct"
                 }
               },
-              "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyGenericStruct",
+              "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyGenericStruct",
               "type": "RustAutoOpaque"
             }
           },
@@ -372,7 +372,7 @@
                 "inner": {
                   "brief_name": true,
                   "codec": "Nom",
-                  "inner": "flutter_rust_bridge::for_generated::rust_async::RwLock<MyGenericStruct>",
+                  "inner": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyGenericStruct>",
                   "namespace": "crate::api"
                 },
                 "ownership_mode": "Owned",
@@ -386,7 +386,7 @@
                   "string": "MyGenericStruct"
                 }
               },
-              "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyGenericStruct",
+              "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyGenericStruct",
               "type": "RustAutoOpaque"
             }
           },
@@ -426,7 +426,7 @@
               "inner": {
                 "brief_name": true,
                 "codec": "Nom",
-                "inner": "flutter_rust_bridge::for_generated::rust_async::RwLock<T>",
+                "inner": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<T>",
                 "namespace": "crate::api"
               },
               "ownership_mode": "Owned",
@@ -440,7 +440,7 @@
                 "string": "T"
               }
             },
-            "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockT",
+            "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerT",
             "type": "RustAutoOpaque"
           }
         },
@@ -457,7 +457,7 @@
               "inner": {
                 "brief_name": true,
                 "codec": "Nom",
-                "inner": "flutter_rust_bridge::for_generated::rust_async::RwLock<Box < T >>",
+                "inner": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < T >>",
                 "namespace": "crate::api"
               },
               "ownership_mode": "Owned",
@@ -471,7 +471,7 @@
                 "string": "Box < T >"
               }
             },
-            "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxT",
+            "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxT",
             "type": "RustAutoOpaque"
           }
         },

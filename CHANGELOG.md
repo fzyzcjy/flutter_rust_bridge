@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.0-dev.33
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Automatically wait when concurrent mutable access, while still preventing deadlocks #1920
+
 ## 2.0.0-dev.32
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
