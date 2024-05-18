@@ -43709,7 +43709,7 @@ impl SseEncode for chrono::DateTime<chrono::Local> {
 impl SseEncode for chrono::NaiveDateTime {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <i64>::sse_encode(self.and_utc().timestamp_micros(), serializer);
+        <i64>::sse_encode(self.timestamp_micros(), serializer);
     }
 }
 
