@@ -1,5 +1,16 @@
 # Changelog
 
+## 2.0.0-dev.34
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Add preamble for dart generated files #1949 (thanks @Krysl)
+* Support same function name in different files #1944
+* Support dart_format_line_length on generated .freezed.dart #1939
+* Improve hints when Flutter hot restarts with Streams #1942
+* Fix name conflict when using C++ keywords #1943
+* Fix warning use of deprecated associated function chrono::NaiveDateTime::from_timestamp_micros #1941
+* Bump Dart SDK source #1940
+
 ## 2.0.0-dev.33
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
