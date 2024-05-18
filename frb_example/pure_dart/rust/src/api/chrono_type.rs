@@ -86,10 +86,16 @@ pub struct TestChronoTwinNormal {
 pub fn test_chrono_twin_normal() -> TestChronoTwinNormal {
     TestChronoTwinNormal {
         dt: Some(chrono::DateTime::from_naive_utc_and_offset(
-            chrono::NaiveDateTime::from_timestamp_opt(1631297333, 0).unwrap(),
+            chrono::DateTime::from_timestamp(1631297333, 0)
+                .unwrap()
+                .naive_utc(),
             chrono::Utc,
         )),
-        dt2: Some(chrono::NaiveDateTime::from_timestamp_opt(1631297333, 0).unwrap()),
+        dt2: Some(
+            chrono::DateTime::from_timestamp(1631297333, 0)
+                .unwrap()
+                .naive_utc(),
+        ),
         du: Some(chrono::Duration::hours(4)),
     }
 }
@@ -97,10 +103,16 @@ pub fn test_chrono_twin_normal() -> TestChronoTwinNormal {
 pub fn test_precise_chrono_twin_normal() -> TestChronoTwinNormal {
     TestChronoTwinNormal {
         dt: Some(chrono::DateTime::from_naive_utc_and_offset(
-            chrono::NaiveDateTime::from_timestamp_opt(1014466435, 0).unwrap(),
+            chrono::DateTime::from_timestamp(1014466435, 0)
+                .unwrap()
+                .naive_utc(),
             chrono::Utc,
         )),
-        dt2: Some(chrono::NaiveDateTime::from_timestamp_opt(-5362715015, 0).unwrap()),
+        dt2: Some(
+            chrono::DateTime::from_timestamp(-5362715015, 0)
+                .unwrap()
+                .naive_utc(),
+        ),
         du: Some(chrono::Duration::hours(4)),
     }
 }
