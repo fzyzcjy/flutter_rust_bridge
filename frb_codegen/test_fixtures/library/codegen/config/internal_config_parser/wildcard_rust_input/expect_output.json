@@ -20,7 +20,8 @@
       "dart3": true,
       "dart_decl_base_output_path": "{the-working-directory}/my_dart_folder",
       "dart_entrypoint_class_name": "RustLib",
-      "dart_enums_style": true
+      "dart_enums_style": true,
+      "dart_preamble": ""
     },
     "wire": {
       "c": {
