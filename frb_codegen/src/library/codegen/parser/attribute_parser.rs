@@ -173,6 +173,7 @@ mod frb_keyword {
     syn::custom_keyword!(import);
     syn::custom_keyword!(default);
     syn::custom_keyword!(dart_code);
+    syn::custom_keyword!(name);
 }
 
 struct FrbAttributesInner(Vec<FrbAttribute>);
@@ -207,6 +208,7 @@ enum FrbAttribute {
     Metadata(NamedOption<frb_keyword::dart_metadata, FrbAttributeDartMetadata>),
     Default(FrbAttributeDefaultValue),
     DartCode(FrbAttributeDartCode),
+    Name(FrbAttributeName),
 }
 
 impl Parse for FrbAttribute {
@@ -262,6 +264,10 @@ impl Parse for FrbAttribute {
             input.parse::<dart_code>()?;
             input.parse::<Token![=]>()?;
             input.parse().map(FrbAttribute::DartCode)?
+        } else if lookahead.peek(name) {
+            input.parse::<name>()?;
+            input.parse::<Token![=]>()?;
+            input.parse().map(FrbAttribute::Name)?
         } else {
             return Err(lookahead.error());
         })
@@ -483,12 +489,21 @@ impl Parse for FrbAttributeDartCode {
     }
 }
 
+#[derive(Clone, Serialize, Eq, PartialEq, Debug)]
+struct FrbAttributeName(String);
+
+impl Parse for FrbAttributeName {
+    fn parse(input: ParseStream) -> Result<Self> {
+        input.parse::<syn::LitStr>().map(|x| Self(x.value()))
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use crate::codegen::ir::default::IrDefaultValue;
     use crate::codegen::parser::attribute_parser::{
         FrbAttribute, FrbAttributeDartCode, FrbAttributeDefaultValue, FrbAttributeMirror,
-        FrbAttributes, NamedOption,
+        FrbAttributeName, FrbAttributes, NamedOption,
     };
     use crate::if_then_some;
     use quote::quote;
@@ -612,6 +627,18 @@ mod tests {
             parsed,
             FrbAttributes(vec![FrbAttribute::DartCode(FrbAttributeDartCode(
                 "a\nb\nc".to_owned()
+            ))])
+        );
+        Ok(())
+    }
+
+    #[test]
+    fn test_name() -> anyhow::Result<()> {
+        let parsed = parse(r###"#[frb(name="operator <")]"###)?;
+        assert_eq!(
+            parsed,
+            FrbAttributes(vec![FrbAttribute::Name(FrbAttributeName(
+                "operator <".to_owned()
             ))])
         );
         Ok(())
