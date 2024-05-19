@@ -185,7 +185,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_String(rawOutput.value, serializer);
       } else {
         serializer.buffer.putUint8(1);
-        sse_encode_u_32(rawError.value, serializer);
+        sse_encode_u_32(rawError!.value, serializer);
       }
       final output = serializer.intoRaw();
 

@@ -65,7 +65,7 @@ impl<'a> WireDartGeneratorMiscTrait for DartFnWireDartGenerator<'a> {
                     sse_encode_{output_normal_safe_ident}(rawOutput.value, serializer);
                 }} else {{
                     serializer.buffer.putUint8({action_error});
-                    sse_encode_{output_error_safe_ident}(rawError.value, serializer);
+                    sse_encode_{output_error_safe_ident}(rawError!.value, serializer);
                 }}
                 final output = serializer.intoRaw();
 
