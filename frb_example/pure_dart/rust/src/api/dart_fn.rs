@@ -65,8 +65,8 @@ pub async fn rust_call_dart_multi_times_twin_normal(
 }
 
 pub async fn rust_call_dart_return_result_twin_normal(
-    callback: impl Fn(i32) -> DartFnFuture<anyhow::Result<i32>>,
-    expect_return_ok: bool,
+    callback: impl Fn(String) -> DartFnFuture<anyhow::Result<String>>,
+    expect_output: Option<String>,
 ) {
-    assert_eq!(callback().await.is_ok(), expect_return_ok);
+    assert_eq!(callback("hello".to_owned()).await.ok(), expect_output);
 }
