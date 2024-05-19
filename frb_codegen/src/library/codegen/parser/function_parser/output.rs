@@ -1,4 +1,3 @@
-use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::function_parser::{FunctionParser, FunctionPartialInfo};
