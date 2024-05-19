@@ -43,4 +43,5 @@ pub(crate) struct GeneratorWireInternalConfig {
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
 pub(crate) struct RustInputPathPack {
     pub rust_input_paths: Vec<PathBuf>,
+    pub rust_suppressed_input_paths: Vec<PathBuf>,
 }
