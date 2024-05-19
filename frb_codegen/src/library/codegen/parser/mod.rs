@@ -13,7 +13,9 @@ use crate::codegen::dumper::Dumper;
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::misc::GeneratorProgressBarPack;
-use crate::codegen::parser::function_extractor::extract_generalized_functions_from_file;
+use crate::codegen::parser::function_extractor::{
+    extract_generalized_functions_from_file, ExtractMode,
+};
 use crate::codegen::parser::function_parser::FunctionParser;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::parser::misc::parse_has_executor;
@@ -58,7 +60,9 @@ pub(crate) fn parse(
 
     let src_fns = file_data_arr
         .iter()
-        .map(|file| extract_generalized_functions_from_file(&file.ast, &file.path, TODO))
+        .map(|file| {
+            extract_generalized_functions_from_file(&file.ast, &file.path, ExtractMode::Full)
+        })
         .collect::<anyhow::Result<Vec<_>>>()?
         .into_iter()
         .flatten()
