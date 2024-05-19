@@ -1,8 +1,7 @@
+use crate::codegen::dumper::Dumper;
+use crate::codegen::parser::reader::CachedRustReader;
 use std::path::{Path, PathBuf};
 use syn::File;
-use crate::codegen::dumper::Dumper;
-use crate::codegen::misc::GeneratorProgressBarPack;
-use crate::codegen::parser::reader::CachedRustReader;
 
 pub(crate) struct FileData {
     pub(crate) path: PathBuf,
@@ -37,4 +36,3 @@ pub(crate) fn read_files(
         })
         .collect()
 }
-

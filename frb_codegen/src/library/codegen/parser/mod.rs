@@ -30,8 +30,6 @@ use crate::library::misc::consts::HANDLER_NAME;
 use anyhow::ensure;
 use itertools::Itertools;
 use log::trace;
-use std::path::{Path, PathBuf};
-use syn::File;
 use ConfigDumpContent::SourceGraph;
 
 pub(crate) fn parse(
