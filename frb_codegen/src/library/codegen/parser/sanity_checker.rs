@@ -14,7 +14,7 @@ pub(crate) fn check_suppressed_input_path_no_content(
 ) -> anyhow::Result<()> {
     let file_data_arr = read_files(
         rust_suppressed_input_paths,
-        &rust_crate_dir,
+        rust_crate_dir,
         cached_rust_reader,
         dumper,
     )?;
