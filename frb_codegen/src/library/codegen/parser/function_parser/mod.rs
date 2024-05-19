@@ -71,12 +71,12 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         debug!("parse_function function name: {:?}", func.sig().ident);
 
         let sig = func.sig();
-        let namespace = Namespace::new_from_rust_crate_path(file_path, rust_crate_dir)?;
         let src_lineno = func.span().start().line;
         let attributes = FrbAttributes::parse(func.attrs())?;
+        let namespace_naive = Namespace::new_from_rust_crate_path(file_path, rust_crate_dir)?;
 
         let create_context = |owner: Option<IrFuncOwnerInfo>| TypeParserParsingContext {
-            initiated_namespace: namespace.clone(),
+            initiated_namespace: namespace_naive.clone(),
             func_attributes: attributes.clone(),
             default_stream_sink_codec,
             default_rust_opaque_codec,
@@ -106,13 +106,14 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let codec_mode_pack = compute_codec_mode_pack(&attributes, force_codec_mode_pack);
         let mode = compute_func_mode(&attributes, &info);
         let stream_dart_await = attributes.stream_dart_await() && !attributes.sync();
+        let namespace_refined = refine_namespace(&owner).unwrap_or(namespace_naive.clone());
 
         if info.ignore_func {
             return Ok(None);
         }
 
         Ok(Some(IrFunc {
-            name: NamespacedName::new(namespace, func_name),
+            name: NamespacedName::new(namespace_refined, func_name),
             id: func_id,
             inputs: info.inputs,
             output: IrMaybeResult {
@@ -254,4 +255,14 @@ fn compute_codec_mode_pack(
     }
 
     force_ans.to_owned().or(attr_ans).unwrap_or(DEFAULT_ANS)
+}
+
+fn refine_namespace(owner: &IrFuncOwnerInfo) -> Option<Namespace> {
+    if let IrFuncOwnerInfo::Method(method) = owner {
+        let owner_ty = &method.owner_ty;
+        if matches!(owner_ty, IrType::StructRef(_) | IrType::EnumRef(_)) {
+            return owner_ty.self_namespace();
+        }
+    }
+    None
 }
