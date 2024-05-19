@@ -119,8 +119,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             output: IrMaybeResult {
                 normal: info.ok_output.unwrap_or(Primitive(IrTypePrimitive::Unit)),
                 error: info.error_output,
-                // Not used yet, thus give it a dummy type
-                delegate: IrType::Primitive(IrTypePrimitive::Unit),
             },
             owner,
             mode,
