@@ -1,4 +1,5 @@
 use crate::codegen::ir::ty::{IrContext, IrType};
+use crate::library::codegen::ir::ty::IrTypeTrait;
 
 crate::ir! {
 /// A `Result<T, E>` or a direct type `T`
@@ -25,6 +26,11 @@ impl IrMaybeResult {
     }
 
     pub(crate) fn synthesized_type(&self) -> IrType {
+        todo!()
+    }
+
+    // TODO maybe move
+    pub(crate) fn rust_api_type(&self) -> String {
         todo!()
     }
 }

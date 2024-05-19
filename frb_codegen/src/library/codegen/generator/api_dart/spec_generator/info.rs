@@ -30,7 +30,7 @@ impl<'a> ApiDartGeneratorInfoTrait for DartFnApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
         format!(
             "FutureOr<{}> Function({})",
-            ApiDartGenerator::new(self.ir.ok_output.clone(), self.context).dart_api_type(),
+            ApiDartGenerator::new(self.ir.output.normal.clone(), self.context).dart_api_type(),
             (self.ir.inputs.iter())
                 .map(|x| ApiDartGenerator::new(x.clone(), self.context).dart_api_type())
                 .join(", "),
