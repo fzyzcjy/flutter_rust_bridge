@@ -15,7 +15,6 @@ use web_sys::ErrorEvent;
 use web_sys::MessageEvent;
 use web_sys::{Blob, Url};
 use web_sys::{Event, Worker};
-use crate::console_error;
 
 #[wasm_bindgen]
 pub struct WorkerPool {
@@ -204,11 +203,8 @@ impl WorkerPool {
     /// a `post_message`. Examples are `Buffer`s, `MessagePort`s, etc...
     // NOTE: It is originally named `run`, but rename to align with crate `threadpool`
     pub fn execute(&self, closure: TransferClosure<JsValue>) -> Result<(), JsValue> {
-        console_error!("hi WorkerPool.execute 1");
         let worker = self.execute_raw(closure)?;
-        console_error!("hi WorkerPool.execute 2");
         self.reclaim_on_message(&worker);
-        console_error!("hi WorkerPool.execute 3");
         Ok(())
     }
 }
@@ -229,7 +225,6 @@ impl PoolState {
 
 impl Default for WorkerPool {
     fn default() -> Self {
-        console_error!("hi WorkerPool.default 1");
         Self::new(
             get_wasm_hardware_concurrency(),
             script_path().expect("fail to get script path"),
