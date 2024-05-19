@@ -8,28 +8,3 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<int> minimalAdder({required int a, required int b, dynamic hint}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b, hint: hint);
-
-Future<void> renamedFunction({dynamic hint}) => RustLib.instance.api
-    .crateApiMinimalFunctionWithCustomNameTwinNormal(hint: hint);
-
-class StructWithCustomNameMethodTwinNormal {
-  final int field0;
-
-  const StructWithCustomNameMethodTwinNormal({
-    required this.field0,
-  });
-
-  void renamedMethod({dynamic hint}) => RustLib.instance.api
-      .crateApiMinimalStructWithCustomNameMethodTwinNormalMethodWithCustomNameTwinNormal(
-          that: this, hint: hint);
-
-  @override
-  int get hashCode => field0.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is StructWithCustomNameMethodTwinNormal &&
-          runtimeType == other.runtimeType &&
-          field0 == other.field0;
-}

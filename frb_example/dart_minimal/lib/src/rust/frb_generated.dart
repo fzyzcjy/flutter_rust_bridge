@@ -56,7 +56,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.0.0-dev.34';
 
   @override
-  int get rustContentHash => 252579025;
+  int get rustContentHash => -2119384465;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -67,16 +67,10 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  Future<void> crateApiMinimalFunctionWithCustomNameTwinNormal({dynamic hint});
-
   Future<void> crateApiMinimalInitApp({dynamic hint});
 
   Future<int> crateApiMinimalMinimalAdder(
       {required int a, required int b, dynamic hint});
-
-  void
-      crateApiMinimalStructWithCustomNameMethodTwinNormalMethodWithCustomNameTwinNormal(
-          {required StructWithCustomNameMethodTwinNormal that, dynamic hint});
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -86,31 +80,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     required super.generalizedFrbRustBinding,
     required super.portManager,
   });
-
-  @override
-  Future<void> crateApiMinimalFunctionWithCustomNameTwinNormal({dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 3, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta: kCrateApiMinimalFunctionWithCustomNameTwinNormalConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kCrateApiMinimalFunctionWithCustomNameTwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "function_with_custom_name_twin_normal",
-        argNames: [],
-      );
 
   @override
   Future<void> crateApiMinimalInitApp({dynamic hint}) {
@@ -164,61 +133,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         argNames: ["a", "b"],
       );
 
-  @override
-  void
-      crateApiMinimalStructWithCustomNameMethodTwinNormalMethodWithCustomNameTwinNormal(
-          {required StructWithCustomNameMethodTwinNormal that, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_box_autoadd_struct_with_custom_name_method_twin_normal(
-            that, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 4)!;
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiMinimalStructWithCustomNameMethodTwinNormalMethodWithCustomNameTwinNormalConstMeta,
-      argValues: [that],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiMinimalStructWithCustomNameMethodTwinNormalMethodWithCustomNameTwinNormalConstMeta =>
-          const TaskConstMeta(
-            debugName:
-                "struct_with_custom_name_method_twin_normal_method_with_custom_name_twin_normal",
-            argNames: ["that"],
-          );
-
-  @protected
-  StructWithCustomNameMethodTwinNormal
-      dco_decode_box_autoadd_struct_with_custom_name_method_twin_normal(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return dco_decode_struct_with_custom_name_method_twin_normal(raw);
-  }
-
   @protected
   int dco_decode_i_32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw as int;
-  }
-
-  @protected
-  StructWithCustomNameMethodTwinNormal
-      dco_decode_struct_with_custom_name_method_twin_normal(dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
-    if (arr.length != 1)
-      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-    return StructWithCustomNameMethodTwinNormal(
-      field0: dco_decode_i_32(arr[0]),
-    );
   }
 
   @protected
@@ -228,27 +146,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  StructWithCustomNameMethodTwinNormal
-      sse_decode_box_autoadd_struct_with_custom_name_method_twin_normal(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return (sse_decode_struct_with_custom_name_method_twin_normal(
-        deserializer));
-  }
-
-  @protected
   int sse_decode_i_32(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return deserializer.buffer.getInt32();
-  }
-
-  @protected
-  StructWithCustomNameMethodTwinNormal
-      sse_decode_struct_with_custom_name_method_twin_normal(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    var var_field0 = sse_decode_i_32(deserializer);
-    return StructWithCustomNameMethodTwinNormal(field0: var_field0);
   }
 
   @protected
@@ -263,23 +163,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_box_autoadd_struct_with_custom_name_method_twin_normal(
-      StructWithCustomNameMethodTwinNormal self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_struct_with_custom_name_method_twin_normal(self, serializer);
-  }
-
-  @protected
   void sse_encode_i_32(int self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     serializer.buffer.putInt32(self);
-  }
-
-  @protected
-  void sse_encode_struct_with_custom_name_method_twin_normal(
-      StructWithCustomNameMethodTwinNormal self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_i_32(self.field0, serializer);
   }
 
   @protected
