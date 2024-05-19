@@ -1,3 +1,5 @@
+use crate::codegen::ir::field::IrField;
+use crate::codegen::ir::ident::IrIdent;
 use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::ir::result::IrMaybeResult;
 use crate::codegen::ir::ty::dart_fn::IrTypeDartFn;
@@ -113,7 +115,24 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                         name: "ok",
                         wrapper_name: None,
                         comments: vec![],
-                        kind: IrVariantKind::Struct(TODO),
+                        kind: IrVariantKind::Struct(IrStruct {
+                            name: TODO,
+                            wrapper_name: None,
+                            is_fields_named: true,
+                            dart_metadata: vec![],
+                            ignore: false,
+                            generate_hash: false,
+                            generate_eq: false,
+                            comments: vec![],
+                            fields: vec![IrField {
+                                ty: TODO,
+                                name: IrIdent::new("value".to_owned()),
+                                is_final: true,
+                                comments: vec![],
+                                default: None,
+                                settings: Default::default(),
+                            }],
+                        }),
                     },
                     IrVariant {
                         name: "err",
