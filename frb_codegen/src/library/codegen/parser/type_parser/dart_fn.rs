@@ -6,6 +6,7 @@ use crate::codegen::ir::ty::dart_fn::IrTypeDartFn;
 use crate::codegen::ir::ty::enumeration::{
     IrEnum, IrEnumIdent, IrEnumMode, IrTypeEnumRef, IrVariant, IrVariantKind,
 };
+use crate::codegen::ir::ty::structure::IrStruct;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::type_parser::result::{parse_type_maybe_result, ResultTypeInfo};
 use crate::codegen::parser::type_parser::TypeParserWithContext;
@@ -99,8 +100,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         let safe_ident = format!(
             "__delegate_Result__{}_{}",
             info.ok_output.safe_ident(),
-            // TODO when no error type
-            info.error_output.map(|x| x.safe_ident()).unwrap_or("None"),
+            info.error_output.safe_ident(),
         );
 
         self.inner.enum_parser_info.object_pool.insert(
@@ -111,35 +111,8 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 comments: vec![],
                 mode: IrEnumMode::Complex,
                 variants: vec![
-                    IrVariant {
-                        name: "ok",
-                        wrapper_name: None,
-                        comments: vec![],
-                        kind: IrVariantKind::Struct(IrStruct {
-                            name: TODO,
-                            wrapper_name: None,
-                            is_fields_named: true,
-                            dart_metadata: vec![],
-                            ignore: false,
-                            generate_hash: false,
-                            generate_eq: false,
-                            comments: vec![],
-                            fields: vec![IrField {
-                                ty: TODO,
-                                name: IrIdent::new("value".to_owned()),
-                                is_final: true,
-                                comments: vec![],
-                                default: None,
-                                settings: Default::default(),
-                            }],
-                        }),
-                    },
-                    IrVariant {
-                        name: "err",
-                        wrapper_name: None,
-                        comments: vec![],
-                        kind: IrVariantKind::Struct(TODO),
-                    },
+                    create_enum_variant("ok", info.ok_output.clone()),
+                    create_enum_variant("err", info.error_output.clone()),
                 ],
             },
         );
@@ -154,6 +127,32 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             error: info.error_output,
             delegate,
         }
+    }
+}
+
+fn create_enum_variant(name: &str, ty: IrType) -> IrVariant {
+    IrVariant {
+        name: IrIdent::new(name.to_owned()),
+        wrapper_name: None,
+        comments: vec![],
+        kind: IrVariantKind::Struct(IrStruct {
+            name: IrIdent::new(name.to_owned()),
+            wrapper_name: None,
+            is_fields_named: true,
+            dart_metadata: vec![],
+            ignore: false,
+            generate_hash: false,
+            generate_eq: false,
+            comments: vec![],
+            fields: vec![IrField {
+                ty,
+                name: IrIdent::new("value".to_owned()),
+                is_final: true,
+                comments: vec![],
+                default: None,
+                settings: Default::default(),
+            }],
+        }),
     }
 }
 
