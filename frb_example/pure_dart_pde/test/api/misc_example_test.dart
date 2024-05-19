@@ -7,6 +7,8 @@ import 'package:frb_example_pure_dart_pde/src/rust/auxiliary/sample_types.dart';
 import 'package:frb_example_pure_dart_pde/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
+import '../test_utils.dart';
+
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
