@@ -7390,6 +7390,27 @@ impl CstDecode<crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsT
         }
     }
 }
+impl CstDecode<crate::api::misc_no_twin_example_a::StructWithCustomNameMethodTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> crate::api::misc_no_twin_example_a::StructWithCustomNameMethodTwinNormal {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::misc_no_twin_example_a::StructWithCustomNameMethodTwinNormal(
+            self_.get(0).cst_decode(),
+        )
+    }
+}
 impl CstDecode<crate::api::misc_example::StructWithEnumTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -14699,10 +14720,24 @@ pub fn wire__crate__api__misc_no_twin_example_a__StructWithImplBlockInMultiFile_
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__misc_no_twin_example_a__function_with_custom_name_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire__crate__api__misc_no_twin_example_a__function_with_custom_name_twin_normal_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__misc_no_twin_example_a__same_function_name_in_different_files(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__misc_no_twin_example_a__same_function_name_in_different_files_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__misc_no_twin_example_a__struct_with_custom_name_method_twin_normal_method_with_custom_name_twin_normal(
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__misc_no_twin_example_a__struct_with_custom_name_method_twin_normal_method_with_custom_name_twin_normal_impl(that)
 }
 
 #[wasm_bindgen]

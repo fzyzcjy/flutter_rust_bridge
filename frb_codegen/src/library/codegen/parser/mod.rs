@@ -1,9 +1,11 @@
 pub(crate) mod attribute_parser;
+mod file_reader;
 pub(crate) mod function_extractor;
 pub(crate) mod function_parser;
 pub(crate) mod internal_config;
 pub(crate) mod misc;
 pub(crate) mod reader;
+mod sanity_checker;
 pub(crate) mod source_graph;
 pub(crate) mod type_alias_resolver;
 pub(crate) mod type_parser;
@@ -13,11 +15,13 @@ use crate::codegen::dumper::Dumper;
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::misc::GeneratorProgressBarPack;
+use crate::codegen::parser::file_reader::read_files;
 use crate::codegen::parser::function_extractor::extract_generalized_functions_from_file;
 use crate::codegen::parser::function_parser::FunctionParser;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::parser::misc::parse_has_executor;
 use crate::codegen::parser::reader::CachedRustReader;
+use crate::codegen::parser::sanity_checker::check_suppressed_input_path_no_content;
 use crate::codegen::parser::type_alias_resolver::resolve_type_aliases;
 use crate::codegen::parser::type_parser::TypeParser;
 use crate::codegen::parser::unused_checker::get_unused_types;
@@ -26,8 +30,6 @@ use crate::library::misc::consts::HANDLER_NAME;
 use anyhow::ensure;
 use itertools::Itertools;
 use log::trace;
-use std::path::{Path, PathBuf};
-use syn::File;
 use ConfigDumpContent::SourceGraph;
 
 pub(crate) fn parse(
@@ -36,16 +38,24 @@ pub(crate) fn parse(
     dumper: &Dumper,
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<IrPack> {
+    check_suppressed_input_path_no_content(
+        &config.rust_input_path_pack.rust_suppressed_input_paths,
+        &config.rust_crate_dir,
+        cached_rust_reader,
+        dumper,
+    )?;
+
     let rust_input_paths = &config.rust_input_path_pack.rust_input_paths;
     trace!("rust_input_paths={:?}", &rust_input_paths);
 
+    let pb = progress_bar_pack.parse_cargo_expand.start();
     let file_data_arr = read_files(
         rust_input_paths,
         &config.rust_crate_dir,
         cached_rust_reader,
         dumper,
-        progress_bar_pack,
     )?;
+    drop(pb);
 
     let pb = progress_bar_pack.parse_source_graph.start();
     let crate_map = source_graph::crates::Crate::parse(
@@ -131,42 +141,6 @@ pub(crate) fn parse(
     Ok(ans)
 }
 
-struct FileData {
-    path: PathBuf,
-    content: String,
-    ast: File,
-}
-
-fn read_files(
-    rust_input_paths: &[PathBuf],
-    rust_crate_dir: &Path,
-    cached_rust_reader: &mut CachedRustReader,
-    dumper: &Dumper,
-    progress_bar_pack: &GeneratorProgressBarPack,
-) -> anyhow::Result<Vec<FileData>> {
-    let _pb = progress_bar_pack.parse_cargo_expand.start();
-    let contents = rust_input_paths
-        .iter()
-        .map(|rust_input_path| {
-            let content =
-                cached_rust_reader.read_rust_file(rust_input_path, rust_crate_dir, dumper)?;
-            Ok((rust_input_path.to_owned(), content))
-        })
-        .collect::<anyhow::Result<Vec<(PathBuf, String)>>>()?;
-
-    contents
-        .into_iter()
-        .map(|(rust_input_path, content)| {
-            let ast = syn::parse_file(&content)?;
-            Ok(FileData {
-                path: rust_input_path,
-                content,
-                ast,
-            })
-        })
-        .collect()
-}
-
 #[cfg(test)]
 mod tests {
     use crate::codegen::config::internal_config::RustInputPathPack;
@@ -211,6 +185,7 @@ mod tests {
                     rust_crate_dir.join("src/api_two.rs"),
                 ]
                 .into(),
+                rust_suppressed_input_paths: vec![],
             })),
         )
     }
@@ -287,6 +262,7 @@ mod tests {
                 rust_input_path_pack: rust_input_path_pack.map(|f| f(&rust_crate_dir)).unwrap_or(
                     RustInputPathPack {
                         rust_input_paths: vec![rust_crate_dir.join("src/api.rs")],
+                        rust_suppressed_input_paths: vec![],
                     },
                 ),
                 rust_crate_dir: rust_crate_dir.clone(),

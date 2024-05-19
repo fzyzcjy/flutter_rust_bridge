@@ -5126,6 +5126,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_box_autoadd_struct_with_comments_twin_sync_sse(dynamic raw);
 
   @protected
+  StructWithCustomNameMethodTwinNormal
+      dco_decode_box_autoadd_struct_with_custom_name_method_twin_normal(
+          dynamic raw);
+
+  @protected
   StructWithEnumTwinNormal dco_decode_box_autoadd_struct_with_enum_twin_normal(
       dynamic raw);
 
@@ -8651,6 +8656,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithCommentsTwinSyncSse dco_decode_struct_with_comments_twin_sync_sse(
       dynamic raw);
+
+  @protected
+  StructWithCustomNameMethodTwinNormal
+      dco_decode_struct_with_custom_name_method_twin_normal(dynamic raw);
 
   @protected
   StructWithEnumTwinNormal dco_decode_struct_with_enum_twin_normal(dynamic raw);
@@ -13472,6 +13481,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  StructWithCustomNameMethodTwinNormal
+      sse_decode_box_autoadd_struct_with_custom_name_method_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
   StructWithEnumTwinNormal sse_decode_box_autoadd_struct_with_enum_twin_normal(
       SseDeserializer deserializer);
 
@@ -17483,6 +17497,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  StructWithCustomNameMethodTwinNormal
+      sse_decode_struct_with_custom_name_method_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
   StructWithEnumTwinNormal sse_decode_struct_with_enum_twin_normal(
       SseDeserializer deserializer);
 
@@ -20412,6 +20431,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       StructWithCommentsTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_comments_twin_sync(raw);
+  }
+
+  @protected
+  List<dynamic>
+      cst_encode_box_autoadd_struct_with_custom_name_method_twin_normal(
+          StructWithCustomNameMethodTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_struct_with_custom_name_method_twin_normal(raw);
   }
 
   @protected
@@ -25064,6 +25091,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       StructWithCommentsTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32(raw.fieldWithComments)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_struct_with_custom_name_method_twin_normal(
+      StructWithCustomNameMethodTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_i_32(raw.field0)];
   }
 
   @protected
@@ -30898,6 +30932,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       StructWithCommentsTwinSyncSse self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_struct_with_custom_name_method_twin_normal(
+      StructWithCustomNameMethodTwinNormal self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_struct_with_enum_twin_normal(
       StructWithEnumTwinNormal self, SseSerializer serializer);
 
@@ -34720,6 +34758,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       StructWithCommentsTwinSyncSse self, SseSerializer serializer);
 
   @protected
+  void sse_encode_struct_with_custom_name_method_twin_normal(
+      StructWithCustomNameMethodTwinNormal self, SseSerializer serializer);
+
+  @protected
   void sse_encode_struct_with_enum_twin_normal(
       StructWithEnumTwinNormal self, SseSerializer serializer);
 
@@ -36393,11 +36435,24 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__misc_no_twin_example_a__StructWithImplBlockInMultiFile_method_in_a(
               port_, that);
 
+  void wire__crate__api__misc_no_twin_example_a__function_with_custom_name_twin_normal(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__misc_no_twin_example_a__function_with_custom_name_twin_normal(
+              port_);
+
   void wire__crate__api__misc_no_twin_example_a__same_function_name_in_different_files(
           NativePortType port_) =>
       wasmModule
           .wire__crate__api__misc_no_twin_example_a__same_function_name_in_different_files(
               port_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__struct_with_custom_name_method_twin_normal_method_with_custom_name_twin_normal(
+              List<dynamic> that) =>
+          wasmModule
+              .wire__crate__api__misc_no_twin_example_a__struct_with_custom_name_method_twin_normal_method_with_custom_name_twin_normal(
+                  that);
 
   void wire__crate__api__misc_no_twin_example_a__struct_with_impl_block_in_another_file_f(
           NativePortType port_, List<dynamic> arg) =>
@@ -57639,8 +57694,16 @@ class RustLibWasmModule implements WasmModule {
           NativePortType port_, Object that);
 
   external void
+      wire__crate__api__misc_no_twin_example_a__function_with_custom_name_twin_normal(
+          NativePortType port_);
+
+  external void
       wire__crate__api__misc_no_twin_example_a__same_function_name_in_different_files(
           NativePortType port_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__struct_with_custom_name_method_twin_normal_method_with_custom_name_twin_normal(
+          List<dynamic> that);
 
   external void
       wire__crate__api__misc_no_twin_example_a__struct_with_impl_block_in_another_file_f(

@@ -30,6 +30,7 @@
         "rust2dart": "Dco"
       },
       "comments": [],
+      "dart_name": null,
       "getter": false,
       "id": 4,
       "initializer": false,
@@ -72,6 +73,7 @@
       },
       "owner": {
         "Method": {
+          "actual_method_dart_name": null,
           "actual_method_name": "example_instance_method",
           "mode": "Instance",
           "owner_ty": {
@@ -98,6 +100,7 @@
         "rust2dart": "Dco"
       },
       "comments": [],
+      "dart_name": null,
       "getter": false,
       "id": 3,
       "initializer": false,
@@ -114,6 +117,7 @@
       },
       "owner": {
         "Method": {
+          "actual_method_dart_name": null,
           "actual_method_name": "example_static_method",
           "mode": "Static",
           "owner_ty": {
@@ -140,6 +144,7 @@
         "rust2dart": "Dco"
       },
       "comments": [],
+      "dart_name": null,
       "getter": false,
       "id": 2,
       "initializer": false,
@@ -184,6 +189,7 @@
       },
       "owner": {
         "Method": {
+          "actual_method_dart_name": null,
           "actual_method_name": "example_instance_method",
           "mode": "Instance",
           "owner_ty": {
@@ -205,6 +211,7 @@
         "rust2dart": "Dco"
       },
       "comments": [],
+      "dart_name": null,
       "getter": false,
       "id": 1,
       "initializer": false,
@@ -221,6 +228,7 @@
       },
       "owner": {
         "Method": {
+          "actual_method_dart_name": null,
           "actual_method_name": "example_static_method",
           "mode": "Static",
           "owner_ty": {

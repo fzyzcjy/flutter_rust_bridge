@@ -5654,6 +5654,17 @@ impl CstDecode<crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsT
         CstDecode::<crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsTwinSync>::cst_decode(*wrap).into()
     }
 }
+impl CstDecode<crate::api::misc_no_twin_example_a::StructWithCustomNameMethodTwinNormal>
+    for *mut wire_cst_struct_with_custom_name_method_twin_normal
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> crate::api::misc_no_twin_example_a::StructWithCustomNameMethodTwinNormal {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<crate::api::misc_no_twin_example_a::StructWithCustomNameMethodTwinNormal>::cst_decode(*wrap).into()
+    }
+}
 impl CstDecode<crate::api::misc_example::StructWithEnumTwinNormal>
     for *mut wire_cst_struct_with_enum_twin_normal
 {
@@ -11366,6 +11377,18 @@ impl CstDecode<crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsT
         }
     }
 }
+impl CstDecode<crate::api::misc_no_twin_example_a::StructWithCustomNameMethodTwinNormal>
+    for wire_cst_struct_with_custom_name_method_twin_normal
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> crate::api::misc_no_twin_example_a::StructWithCustomNameMethodTwinNormal {
+        crate::api::misc_no_twin_example_a::StructWithCustomNameMethodTwinNormal(
+            self.field0.cst_decode(),
+        )
+    }
+}
 impl CstDecode<crate::api::misc_example::StructWithEnumTwinNormal>
     for wire_cst_struct_with_enum_twin_normal
 {
@@ -15468,6 +15491,18 @@ impl Default for wire_cst_struct_with_comments_twin_sync {
         Self::new_with_null_ptr()
     }
 }
+impl NewWithNullPtr for wire_cst_struct_with_custom_name_method_twin_normal {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            field0: Default::default(),
+        }
+    }
+}
+impl Default for wire_cst_struct_with_custom_name_method_twin_normal {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
 impl NewWithNullPtr for wire_cst_struct_with_enum_twin_normal {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -17766,10 +17801,24 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_ex
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__function_with_custom_name_twin_normal(
+    port_: i64,
+) {
+    wire__crate__api__misc_no_twin_example_a__function_with_custom_name_twin_normal_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__same_function_name_in_different_files(
     port_: i64,
 ) {
     wire__crate__api__misc_no_twin_example_a__same_function_name_in_different_files_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__struct_with_custom_name_method_twin_normal_method_with_custom_name_twin_normal(
+    that: *mut wire_cst_struct_with_custom_name_method_twin_normal,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__misc_no_twin_example_a__struct_with_custom_name_method_twin_normal_method_with_custom_name_twin_normal_impl(that)
 }
 
 #[no_mangle]
@@ -45393,6 +45442,14 @@ pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_with_c
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_with_custom_name_method_twin_normal(
+) -> *mut wire_cst_struct_with_custom_name_method_twin_normal {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_struct_with_custom_name_method_twin_normal::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_with_enum_twin_normal(
 ) -> *mut wire_cst_struct_with_enum_twin_normal {
     flutter_rust_bridge::for_generated::new_leak_box_ptr(
@@ -51275,6 +51332,11 @@ pub struct wire_cst_struct_with_comments_twin_rust_async {
 #[derive(Clone, Copy)]
 pub struct wire_cst_struct_with_comments_twin_sync {
     field_with_comments: i32,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_struct_with_custom_name_method_twin_normal {
+    field0: i32,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
