@@ -24,7 +24,7 @@ pub(crate) fn check_suppressed_input_path_no_content(
         if !extracted_fns.is_empty() {
             warn!(
                 "Functions or methods in {} are ignored. Please do not put them in `mod.rs`.",
-                file.path
+                file.path,
             );
         }
     }
