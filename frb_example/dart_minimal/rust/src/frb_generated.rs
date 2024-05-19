@@ -158,6 +158,7 @@ fn decode_DartFn_Inputs_String_Output_delegate_result_string_u_32(
         let message = FLUTTER_RUST_BRIDGE_HANDLER
             .dart_fn_invoke(dart_opaque, args)
             .await;
+        String::sse_decode_single()
         let decoded =
             <crate::api::minimal::__delegate_Result__String_u_32>::sse_decode_single(message);
         match decoded {

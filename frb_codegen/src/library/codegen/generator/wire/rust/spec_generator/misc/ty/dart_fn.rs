@@ -37,8 +37,15 @@ impl<'a> WireRustGeneratorMiscTrait for DartFnWireRustGenerator<'a> {
                     async fn body(dart_opaque: flutter_rust_bridge::DartOpaque, {parameter_names_and_types}) -> {return_type_outer} {{
                         let args = vec![{into_dart_expressions}];
                         let message = {HANDLER_NAME}.dart_fn_invoke(dart_opaque, args).await;
-                        let decoded = <{return_type_inner}>::sse_decode_single(message);
-                        {return_type_inner_to_outer}
+
+                        let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+                        let action = deserializer.cursor.read_u8().unwrap();
+                        match action {{
+
+                        }}
+                        let ans = <{TODO}>::sse_decode(&mut deserializer);
+                        deserializer.end();
+                        ans
                     }}
 
                     move |{parameter_names_and_types}| {{
