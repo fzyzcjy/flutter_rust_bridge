@@ -98,28 +98,41 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     fn create_ir_maybe_result(&mut self, info: ResultTypeInfo) -> IrMaybeResult {
         let namespace = self.context.initiated_namespace.clone();
 
-        let safe_ident = format!(
+        let enum_safe_ident = format!(
             "__delegate_Result__{}_{}",
             info.ok_output.safe_ident(),
             info.error_output.safe_ident(),
         );
 
         self.inner.enum_parser_info.object_pool.insert(
-            IrEnumIdent(NamespacedName::new(namespace.clone(), safe_ident.clone())),
+            IrEnumIdent(NamespacedName::new(
+                namespace.clone(),
+                enum_safe_ident.clone(),
+            )),
             IrEnum {
-                name: NamespacedName::new(namespace.clone(), safe_ident.clone()),
+                name: NamespacedName::new(namespace.clone(), enum_safe_ident.clone()),
                 wrapper_name: None,
                 comments: vec![],
                 mode: IrEnumMode::Complex,
                 variants: vec![
-                    create_enum_variant(namespace.clone(), "ok", info.ok_output.clone()),
-                    create_enum_variant(namespace.clone(), "err", info.error_output.clone()),
+                    create_enum_variant(
+                        namespace.clone(),
+                        &enum_safe_ident,
+                        "ok",
+                        info.ok_output.clone(),
+                    ),
+                    create_enum_variant(
+                        namespace.clone(),
+                        &enum_safe_ident,
+                        "err",
+                        info.error_output.clone(),
+                    ),
                 ],
             },
         );
 
         let delegate = IrType::EnumRef(IrTypeEnumRef {
-            ident: IrEnumIdent(NamespacedName::new(namespace, safe_ident)),
+            ident: IrEnumIdent(NamespacedName::new(namespace, enum_safe_ident)),
             is_exception: false,
         });
 
@@ -131,10 +144,15 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     }
 }
 
-fn create_enum_variant(namespace: Namespace, name: &str, ty: IrType) -> IrVariant {
+fn create_enum_variant(
+    namespace: Namespace,
+    enum_safe_ident: &str,
+    name: &str,
+    ty: IrType,
+) -> IrVariant {
     IrVariant {
         name: IrIdent::new(name.to_owned()),
-        wrapper_name: TODO,
+        wrapper_name: IrIdent::new(format!("{enum_safe_ident}_{name}")),
         comments: vec![],
         kind: IrVariantKind::Struct(IrStruct {
             name: NamespacedName::new(namespace, name.to_owned()),
