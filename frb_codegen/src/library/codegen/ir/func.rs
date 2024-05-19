@@ -131,7 +131,7 @@ impl IrFunc {
     }
 
     pub(crate) fn name_dart_api(&self) -> String {
-        self.name.name.to_owned().to_case(Case::Camel)
+        (self.dart_name.clone()).unwrap_or_else(|| self.name.name.to_owned().to_case(Case::Camel))
     }
 
     pub(crate) fn name_dart_wire(&self) -> String {
