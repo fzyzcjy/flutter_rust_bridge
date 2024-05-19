@@ -22,3 +22,6 @@ impl StructWithImplBlockInMultiFile {
 
 // Please keep exactly the *same* name in two files to test #1913
 pub fn same_function_name_in_different_files() {}
+
+// #1933
+pub struct StructWithImplBlockInAnotherFile {}
