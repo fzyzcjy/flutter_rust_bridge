@@ -1,13 +1,6 @@
-use crate::codegen::ir::field::IrField;
-use crate::codegen::ir::ident::IrIdent;
-use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::ty::dart_fn::IrDartFnOutput;
 use crate::codegen::ir::ty::dart_fn::IrTypeDartFn;
 use crate::codegen::ir::ty::delegate::IrTypeDelegate;
-use crate::codegen::ir::ty::enumeration::{
-    IrEnum, IrEnumIdent, IrEnumMode, IrTypeEnumRef, IrVariant, IrVariantKind,
-};
-use crate::codegen::ir::ty::structure::IrStruct;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::type_parser::result::{parse_type_maybe_result, ResultTypeInfo};
 use crate::codegen::parser::type_parser::TypeParserWithContext;
