@@ -1,25 +1,27 @@
 pub(crate) mod attribute_parser;
+mod file_reader;
 pub(crate) mod function_extractor;
 pub(crate) mod function_parser;
 pub(crate) mod internal_config;
 pub(crate) mod misc;
 pub(crate) mod reader;
+mod sanity_checker;
 pub(crate) mod source_graph;
 pub(crate) mod type_alias_resolver;
 pub(crate) mod type_parser;
 mod unused_checker;
-mod sanity_checker;
-mod file_reader;
 
 use crate::codegen::dumper::Dumper;
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::misc::GeneratorProgressBarPack;
+use crate::codegen::parser::file_reader::read_files;
 use crate::codegen::parser::function_extractor::extract_generalized_functions_from_file;
 use crate::codegen::parser::function_parser::FunctionParser;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::parser::misc::parse_has_executor;
 use crate::codegen::parser::reader::CachedRustReader;
+use crate::codegen::parser::sanity_checker::check_suppressed_input_path_no_content;
 use crate::codegen::parser::type_alias_resolver::resolve_type_aliases;
 use crate::codegen::parser::type_parser::TypeParser;
 use crate::codegen::parser::unused_checker::get_unused_types;
@@ -31,8 +33,6 @@ use log::trace;
 use std::path::{Path, PathBuf};
 use syn::File;
 use ConfigDumpContent::SourceGraph;
-use crate::codegen::parser::file_reader::read_files;
-use crate::codegen::parser::sanity_checker::check_suppressed_input_path_no_content;
 
 pub(crate) fn parse(
     config: &ParserInternalConfig,
@@ -40,7 +40,12 @@ pub(crate) fn parse(
     dumper: &Dumper,
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<IrPack> {
-    check_suppressed_input_path_no_content(&config.rust_input_path_pack.rust_suppressed_input_paths);
+    check_suppressed_input_path_no_content(
+        &config.rust_input_path_pack.rust_suppressed_input_paths,
+        &config.rust_crate_dir,
+        cached_rust_reader,
+        dumper,
+    );
 
     let rust_input_paths = &config.rust_input_path_pack.rust_input_paths;
     trace!("rust_input_paths={:?}", &rust_input_paths);
