@@ -18,6 +18,7 @@ pub enum IrTypePrimitive {
     Unit,
     Usize,
     Isize,
+    Char,
 }
 }
 
