@@ -6,6 +6,8 @@ crate::ir! {
 pub(crate) struct IrMaybeResult {
     pub(crate) normal: IrType,
     pub(crate) error: Option<IrType>,
+    /// Combines `normal` and `error` into a new synthesized type
+    pub(crate) delegate: IrType,
 }
 }
 
@@ -23,10 +25,6 @@ impl IrMaybeResult {
 
     pub(crate) fn safe_ident(&self) -> String {
         self.inner_type().safe_ident()
-    }
-
-    pub(crate) fn inner_type(&self) -> IrType {
-        todo!()
     }
 
     // TODO maybe move
