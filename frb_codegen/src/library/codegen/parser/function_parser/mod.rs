@@ -257,7 +257,7 @@ fn compute_codec_mode_pack(
 
 fn refine_namespace(namespace_naive: &Namespace, owner: &IrFuncOwnerInfo) -> Option<Namespace> {
     if let IrFuncOwnerInfo::Method(method) = owner {
-        let owner_ty = method.owner_ty;
+        let owner_ty = &method.owner_ty;
         if matches!(owner_ty, IrType::StructRef(_) | IrType::EnumRef(_)) {
             return owner_ty.self_namespace();
         }
