@@ -1,5 +1,9 @@
+use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::ir::result::IrMaybeResult;
 use crate::codegen::ir::ty::dart_fn::IrTypeDartFn;
+use crate::codegen::ir::ty::enumeration::{
+    IrEnum, IrEnumIdent, IrEnumMode, IrTypeEnumRef, IrVariant, IrVariantKind,
+};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::type_parser::result::{parse_type_maybe_result, ResultTypeInfo};
 use crate::codegen::parser::type_parser::TypeParserWithContext;
@@ -87,8 +91,45 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         // frb-coverage:ignore-end
     }
 
-    fn create_ir_maybe_result(&mut self, info: ResultTypeInfo) -> IrMaybeResult{
-        let delegate = TODO;
+    fn create_ir_maybe_result(&mut self, info: ResultTypeInfo) -> IrMaybeResult {
+        let namespace = self.context.initiated_namespace.clone();
+
+        let safe_ident = format!(
+            "__delegate_Result__{}_{}",
+            info.ok_output.safe_ident(),
+            // TODO when no error type
+            info.error_output.map(|x| x.safe_ident()).unwrap_or("None"),
+        );
+
+        self.inner.enum_parser_info.object_pool.insert(
+            IrEnumIdent(NamespacedName::new(namespace.clone(), safe_ident.clone())),
+            IrEnum {
+                name: NamespacedName::new(namespace.clone(), safe_ident.clone()),
+                wrapper_name: None,
+                comments: vec![],
+                mode: IrEnumMode::Complex,
+                variants: vec![
+                    IrVariant {
+                        name: "ok",
+                        wrapper_name: None,
+                        comments: vec![],
+                        kind: IrVariantKind::Struct(TODO),
+                    },
+                    IrVariant {
+                        name: "err",
+                        wrapper_name: None,
+                        comments: vec![],
+                        kind: IrVariantKind::Struct(TODO),
+                    },
+                ],
+            },
+        );
+
+        let delegate = IrType::EnumRef(IrTypeEnumRef {
+            ident: IrEnumIdent(NamespacedName::new(namespace, safe_ident)),
+            is_exception: false,
+        });
+
         IrMaybeResult {
             normal: info.ok_output,
             error: info.error_output,
