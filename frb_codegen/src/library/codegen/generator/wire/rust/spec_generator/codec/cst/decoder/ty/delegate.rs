@@ -27,7 +27,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
             },
             IrTypeDelegate::Char => {
                 Acc {
-                    web: Some("self".into()),
+                    web: Some("CstDecode::<String>::cst_decode(self).chars().next().unwrap()".into()),
                     io: Some("CstDecode::<String>::cst_decode(self).chars().next().unwrap()".into()),
                     ..Default::default()
                 }
