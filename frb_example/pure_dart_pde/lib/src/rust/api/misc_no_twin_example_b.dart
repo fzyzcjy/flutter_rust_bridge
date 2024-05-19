@@ -39,3 +39,16 @@ class StructInMiscNoTwinExampleB extends RustOpaque {
       .crateApiMiscNoTwinExampleBStructInMiscNoTwinExampleBSampleFunctionB(
           that: this, hint: hint);
 }
+
+class StructWithImplBlockInAnotherFileDependency {
+  const StructWithImplBlockInAnotherFileDependency();
+
+  @override
+  int get hashCode => 0;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StructWithImplBlockInAnotherFileDependency &&
+          runtimeType == other.runtimeType;
+}

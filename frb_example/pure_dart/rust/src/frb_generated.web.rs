@@ -7619,6 +7619,42 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::StructWithHashMa
         }
     }
 }
+impl CstDecode<crate::api::misc_no_twin_example_a::StructWithImplBlockInAnotherFile>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> crate::api::misc_no_twin_example_a::StructWithImplBlockInAnotherFile {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            0,
+            "Expected 0 elements, got {}",
+            self_.length()
+        );
+        crate::api::misc_no_twin_example_a::StructWithImplBlockInAnotherFile {}
+    }
+}
+impl CstDecode<crate::api::misc_no_twin_example_b::StructWithImplBlockInAnotherFileDependency>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> crate::api::misc_no_twin_example_b::StructWithImplBlockInAnotherFileDependency {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            0,
+            "Expected 0 elements, got {}",
+            self_.length()
+        );
+        crate::api::misc_no_twin_example_b::StructWithImplBlockInAnotherFileDependency {}
+    }
+}
 impl CstDecode<crate::api::structure::StructWithOneFieldTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -14641,6 +14677,16 @@ pub fn wire__crate__api__misc_no_twin_example_a__same_function_name_in_different
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__misc_no_twin_example_a__same_function_name_in_different_files_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__misc_no_twin_example_a__struct_with_impl_block_in_another_file_f(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire__crate__api__misc_no_twin_example_a__struct_with_impl_block_in_another_file_f_impl(
+        port_, arg,
+    )
 }
 
 #[wasm_bindgen]
