@@ -47,11 +47,11 @@ impl<'a> WireDartGeneratorMiscTrait for DartFnWireDartGenerator<'a> {
                 {decode_block}
 
                 Box<{output_normal_dart_api_type}>? rawOutput;
-                {output_error_dart_api_type}? rawError;
+                Box<{output_error_dart_api_type}>? rawError;
                 try {{
                     rawOutput = Box(await raw({parameter_names}));
                 }} catch (e) {{
-                    rawError = e;
+                    rawError = Box(e);
                 }}
 
                 final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -62,7 +62,7 @@ impl<'a> WireDartGeneratorMiscTrait for DartFnWireDartGenerator<'a> {
                 }} else {{
                     assert(rawOutput == null);
                     TODO_tag;
-                    sse_encode_{output_error_safe_ident}(rawError, serializer);
+                    sse_encode_{output_error_safe_ident}(rawError.value, serializer);
                 }}
                 final output = serializer.intoRaw();
 
