@@ -24,7 +24,7 @@ impl IrMaybeResult {
     }
 
     pub(crate) fn safe_ident(&self) -> String {
-        self.inner_type().safe_ident()
+        self.delegate.safe_ident()
     }
 
     // TODO maybe move

@@ -50,6 +50,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 output: Box::new(IrMaybeResult {
                     normal: ok_output,
                     error: error_output,
+                    delegate: TODO,
                 }),
             }));
 
