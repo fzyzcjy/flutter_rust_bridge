@@ -24,7 +24,9 @@ impl IrMaybeResult {
         format!(
             "{}_{}",
             self.normal.safe_ident(),
-            self.error.map(|x| x.safe_ident()).unwrap_or("None")
+            self.error
+                .map(|x| x.safe_ident())
+                .unwrap_or("None".to_owned())
         )
     }
 
