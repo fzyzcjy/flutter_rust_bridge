@@ -1,7 +1,7 @@
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::ident::IrIdent;
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
-use crate::codegen::ir::result::IrMaybeResult;
+use crate::codegen::ir::result::IrDartFnOutput;
 use crate::codegen::ir::ty::dart_fn::IrTypeDartFn;
 use crate::codegen::ir::ty::enumeration::{
     IrEnum, IrEnumIdent, IrEnumMode, IrTypeEnumRef, IrVariant, IrVariantKind,
@@ -53,7 +53,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
             return Ok(IrType::DartFn(IrTypeDartFn {
                 inputs,
-                output: Box::new(IrMaybeResult {
+                output: Box::new(IrDartFnOutput {
                     normal: output.ok_output,
                     error: output.error_output,
                 }),

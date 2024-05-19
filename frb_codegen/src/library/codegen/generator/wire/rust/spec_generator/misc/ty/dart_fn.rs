@@ -2,7 +2,7 @@ use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::wire::rust::spec_generator::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
-use crate::codegen::ir::result::IrMaybeResult;
+use crate::codegen::ir::result::IrDartFnOutput;
 use crate::codegen::ir::ty::IrTypeTrait;
 use crate::library::misc::consts::HANDLER_NAME;
 use itertools::Itertools;
@@ -62,7 +62,7 @@ impl<'a> WireRustGeneratorMiscTrait for DartFnWireRustGenerator<'a> {
     }
 }
 
-fn generate_return_type_inner_to_outer(ir: &IrMaybeResult) -> String {
+fn generate_return_type_inner_to_outer(ir: &IrDartFnOutput) -> String {
     let (branch_ok, branch_err) = if let Some(error) = &ir.error {
         (
             "std::result::Result::Ok(value)",

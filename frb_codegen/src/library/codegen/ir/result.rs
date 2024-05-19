@@ -2,13 +2,13 @@ use crate::codegen::ir::ty::{IrContext, IrType};
 use crate::library::codegen::ir::ty::IrTypeTrait;
 
 crate::ir! {
-pub(crate) struct IrMaybeResult {
+pub(crate) struct IrDartFnOutput {
     pub(crate) normal: IrType,
     pub(crate) error: Option<IrType>,
 }
 }
 
-impl IrMaybeResult {
+impl IrDartFnOutput {
     pub(crate) fn visit_types<F: FnMut(&IrType) -> bool>(
         &self,
         f: &mut F,
