@@ -41,8 +41,9 @@ pub(crate) fn parse(
     let rust_input_paths = &config.rust_input_path_pack.rust_input_paths;
     trace!("rust_input_paths={:?}", &rust_input_paths);
 
+    let crate_all_rust_paths = get_crate_all_rust_paths(&config.rust_crate_dir)?;
     let all_file_data_arr = read_files(
-        TODO,
+        crate_all_rust_paths,
         &config.rust_crate_dir,
         cached_rust_reader,
         dumper,
@@ -170,6 +171,10 @@ fn read_files(
             Ok(FileData { path, content, ast })
         })
         .collect()
+}
+
+fn get_crate_all_rust_paths(rust_crate_dir: &Path) -> anyhow::Result<Vec<PathBuf>> {
+    TODO
 }
 
 #[cfg(test)]
