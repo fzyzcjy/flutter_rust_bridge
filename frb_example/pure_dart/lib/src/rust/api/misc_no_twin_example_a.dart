@@ -4,6 +4,7 @@
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
 import '../frb_generated.dart';
+import 'misc_no_twin_example_b.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // The type `StructWithImplBlockOutsideApiFolder` is not used by any `pub` functions, thus it is ignored.
@@ -60,4 +61,24 @@ class StructWithImplBlockInMultiFile extends RustOpaque {
   Future<void> methodInB({dynamic hint}) => RustLib.instance.api
       .crateApiMiscNoTwinExampleBStructWithImplBlockInMultiFileMethodInB(
           that: this, hint: hint);
+}
+
+class StructWithImplBlockInAnotherFile {
+  const StructWithImplBlockInAnotherFile();
+
+  static Future<void> f(
+          {required StructWithImplBlockInAnotherFileDependency arg,
+          dynamic hint}) =>
+      RustLib.instance.api
+          .crateApiMiscNoTwinExampleAStructWithImplBlockInAnotherFileF(
+              arg: arg, hint: hint);
+
+  @override
+  int get hashCode => 0;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StructWithImplBlockInAnotherFile &&
+          runtimeType == other.runtimeType;
 }

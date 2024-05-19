@@ -23,3 +23,6 @@ pub fn same_function_name_in_different_files() {}
 
 // #1906
 pub struct StructWithImplBlockOutsideApiFolder {}
+
+// #1933
+pub struct StructWithImplBlockInAnotherFile {}

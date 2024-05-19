@@ -5267,6 +5267,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  StructWithImplBlockInAnotherFileDependency
+      dco_decode_box_autoadd_struct_with_impl_block_in_another_file_dependency(
+          dynamic raw);
+
+  @protected
   StructWithOneFieldTwinNormal
       dco_decode_box_autoadd_struct_with_one_field_twin_normal(dynamic raw);
 
@@ -8776,6 +8781,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   StructWithHashMap dco_decode_struct_with_hash_map(dynamic raw);
+
+  @protected
+  StructWithImplBlockInAnotherFile
+      dco_decode_struct_with_impl_block_in_another_file(dynamic raw);
+
+  @protected
+  StructWithImplBlockInAnotherFileDependency
+      dco_decode_struct_with_impl_block_in_another_file_dependency(dynamic raw);
 
   @protected
   StructWithOneFieldTwinNormal dco_decode_struct_with_one_field_twin_normal(
@@ -13600,6 +13613,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  StructWithImplBlockInAnotherFileDependency
+      sse_decode_box_autoadd_struct_with_impl_block_in_another_file_dependency(
+          SseDeserializer deserializer);
+
+  @protected
   StructWithOneFieldTwinNormal
       sse_decode_box_autoadd_struct_with_one_field_twin_normal(
           SseDeserializer deserializer);
@@ -17608,6 +17626,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  StructWithImplBlockInAnotherFile
+      sse_decode_struct_with_impl_block_in_another_file(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithImplBlockInAnotherFileDependency
+      sse_decode_struct_with_impl_block_in_another_file_dependency(
+          SseDeserializer deserializer);
+
+  @protected
   StructWithOneFieldTwinNormal sse_decode_struct_with_one_field_twin_normal(
       SseDeserializer deserializer);
 
@@ -20492,6 +20520,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           StructWithGoodAndOpaqueFieldTwinSyncMoi raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_good_and_opaque_field_twin_sync_moi(raw);
+  }
+
+  @protected
+  List<dynamic>
+      cst_encode_box_autoadd_struct_with_impl_block_in_another_file_dependency(
+          StructWithImplBlockInAnotherFileDependency raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_struct_with_impl_block_in_another_file_dependency(raw);
   }
 
   @protected
@@ -25199,6 +25235,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic> cst_encode_struct_with_hash_map(StructWithHashMap raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_Map_String_hash_map_value(raw.map)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_struct_with_impl_block_in_another_file(
+      StructWithImplBlockInAnotherFile raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [];
+  }
+
+  @protected
+  List<dynamic> cst_encode_struct_with_impl_block_in_another_file_dependency(
+      StructWithImplBlockInAnotherFileDependency raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [];
   }
 
   @protected
@@ -30979,6 +31029,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_struct_with_impl_block_in_another_file_dependency(
+      StructWithImplBlockInAnotherFileDependency self,
+      SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_struct_with_one_field_twin_normal(
       StructWithOneFieldTwinNormal self, SseSerializer serializer);
 
@@ -34788,6 +34843,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       StructWithHashMap self, SseSerializer serializer);
 
   @protected
+  void sse_encode_struct_with_impl_block_in_another_file(
+      StructWithImplBlockInAnotherFile self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_impl_block_in_another_file_dependency(
+      StructWithImplBlockInAnotherFileDependency self,
+      SseSerializer serializer);
+
+  @protected
   void sse_encode_struct_with_one_field_twin_normal(
       StructWithOneFieldTwinNormal self, SseSerializer serializer);
 
@@ -36314,6 +36378,12 @@ class RustLibWire implements BaseWire {
       wasmModule
           .wire__crate__api__misc_no_twin_example_a__same_function_name_in_different_files(
               port_);
+
+  void wire__crate__api__misc_no_twin_example_a__struct_with_impl_block_in_another_file_f(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule
+          .wire__crate__api__misc_no_twin_example_a__struct_with_impl_block_in_another_file_f(
+              port_, arg);
 
   void wire__crate__api__misc_no_twin_example_b__StructInMiscNoTwinExampleB_get_struct_in_misc_no_twin_example_a(
           NativePortType port_, Object that) =>
@@ -57508,6 +57578,10 @@ class RustLibWasmModule implements WasmModule {
   external void
       wire__crate__api__misc_no_twin_example_a__same_function_name_in_different_files(
           NativePortType port_);
+
+  external void
+      wire__crate__api__misc_no_twin_example_a__struct_with_impl_block_in_another_file_f(
+          NativePortType port_, List<dynamic> arg);
 
   external void
       wire__crate__api__misc_no_twin_example_b__StructInMiscNoTwinExampleB_get_struct_in_misc_no_twin_example_a(

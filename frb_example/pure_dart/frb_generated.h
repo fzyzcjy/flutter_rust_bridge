@@ -536,6 +536,10 @@ typedef struct wire_cst_struct_with_enum_twin_normal {
   struct wire_cst_abc_twin_normal abc2;
 } wire_cst_struct_with_enum_twin_normal;
 
+typedef struct wire_cst_struct_with_impl_block_in_another_file_dependency {
+
+} wire_cst_struct_with_impl_block_in_another_file_dependency;
+
 typedef struct wire_cst_empty_twin_normal {
 
 } wire_cst_empty_twin_normal;
@@ -3163,6 +3167,10 @@ typedef struct wire_cst_struct_with_hash_map {
   struct wire_cst_list_record_string_hash_map_value *map;
 } wire_cst_struct_with_hash_map;
 
+typedef struct wire_cst_struct_with_impl_block_in_another_file {
+
+} wire_cst_struct_with_impl_block_in_another_file;
+
 typedef struct wire_cst_test_chrono_twin_normal {
   int64_t *dt;
   int64_t *dt2;
@@ -3819,6 +3827,9 @@ void frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__Stru
                                                                                                                        uintptr_t that);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__same_function_name_in_different_files(int64_t port_);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__struct_with_impl_block_in_another_file_f(int64_t port_,
+                                                                                                                     struct wire_cst_struct_with_impl_block_in_another_file_dependency *arg);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_b__StructInMiscNoTwinExampleB_get_struct_in_misc_no_twin_example_a(int64_t port_,
                                                                                                                                             uintptr_t that);
@@ -13837,6 +13848,8 @@ struct wire_cst_struct_with_good_and_opaque_field_twin_sync *frbgen_frb_example_
 
 struct wire_cst_struct_with_good_and_opaque_field_twin_sync_moi *frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_with_good_and_opaque_field_twin_sync_moi(void);
 
+struct wire_cst_struct_with_impl_block_in_another_file_dependency *frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_with_impl_block_in_another_file_dependency(void);
+
 struct wire_cst_struct_with_one_field_twin_normal *frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_with_one_field_twin_normal(void);
 
 struct wire_cst_struct_with_one_field_twin_rust_async *frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_with_one_field_twin_rust_async(void);
@@ -14432,6 +14445,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_with_good_and_opaque_field_twin_rust_async_moi);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_with_good_and_opaque_field_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_with_good_and_opaque_field_twin_sync_moi);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_with_impl_block_in_another_file_dependency);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_with_one_field_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_with_one_field_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_with_one_field_twin_sync);
@@ -15225,6 +15239,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__StructInMiscNoTwinExampleA_sample_function_a);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__StructWithImplBlockInMultiFile_method_in_a);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__same_function_name_in_different_files);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__struct_with_impl_block_in_another_file_f);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_b__StructInMiscNoTwinExampleB_get_struct_in_misc_no_twin_example_a);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_b__StructInMiscNoTwinExampleB_sample_function_b);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_b__StructWithImplBlockInMultiFile_method_in_b);
