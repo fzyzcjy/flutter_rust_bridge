@@ -2,12 +2,9 @@ use crate::codegen::ir::ty::{IrContext, IrType};
 use crate::library::codegen::ir::ty::IrTypeTrait;
 
 crate::ir! {
-/// A `Result<T, E>` or a direct type `T`
 pub(crate) struct IrMaybeResult {
     pub(crate) normal: IrType,
     pub(crate) error: Option<IrType>,
-    /// Combines `normal` and `error` into a new synthesized type
-    pub(crate) delegate: IrType,
 }
 }
 
@@ -21,11 +18,14 @@ impl IrMaybeResult {
         if let Some(error) = &self.error {
             error.visit_types(f, ir_context);
         }
-        self.delegate.visit_types(f, ir_context);
     }
 
     pub(crate) fn safe_ident(&self) -> String {
-        self.delegate.safe_ident()
+        format!(
+            "{}_{}",
+            self.normal.safe_ident(),
+            self.error.map(|x| x.safe_ident()).unwrap_or("None")
+        )
     }
 
     pub(crate) fn rust_api_type(&self) -> String {

@@ -50,14 +50,12 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 .collect::<anyhow::Result<Vec<_>>>()?;
 
             let output = self.parse_dart_fn_output(&arguments.output)?;
-            let output_delegate = self.create_dart_fn_output_delegate(&output);
 
             return Ok(IrType::DartFn(IrTypeDartFn {
                 inputs,
                 output: Box::new(IrMaybeResult {
                     normal: output.ok_output,
                     error: output.error_output,
-                    delegate: output_delegate,
                 }),
             }));
 
@@ -99,51 +97,6 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
         bail!("DartFn does not support return types except `DartFnFuture<T>` yet")
         // frb-coverage:ignore-end
-    }
-
-    fn create_dart_fn_output_delegate(&mut self, info: &ResultTypeInfo) -> IrType {
-        let namespace = self.context.initiated_namespace.clone();
-
-        let error_output_or_default =
-            (info.error_output.clone()).unwrap_or(IrType::Primitive(IrTypePrimitive::Unit));
-
-        let enum_safe_ident = format!(
-            "__delegate_Result__{}_{}",
-            info.ok_output.safe_ident(),
-            error_output_or_default.safe_ident(),
-        );
-
-        self.inner.enum_parser_info.object_pool.insert(
-            IrEnumIdent(NamespacedName::new(
-                namespace.clone(),
-                enum_safe_ident.clone(),
-            )),
-            IrEnum {
-                name: NamespacedName::new(namespace.clone(), enum_safe_ident.clone()),
-                wrapper_name: None,
-                comments: vec![],
-                mode: IrEnumMode::Complex,
-                variants: vec![
-                    create_enum_variant(
-                        namespace.clone(),
-                        &enum_safe_ident,
-                        "ok",
-                        info.ok_output.clone(),
-                    ),
-                    create_enum_variant(
-                        namespace.clone(),
-                        &enum_safe_ident,
-                        "err",
-                        error_output_or_default.clone(),
-                    ),
-                ],
-            },
-        );
-
-        IrType::EnumRef(IrTypeEnumRef {
-            ident: IrEnumIdent(NamespacedName::new(namespace, enum_safe_ident)),
-            is_exception: false,
-        })
     }
 }
 
