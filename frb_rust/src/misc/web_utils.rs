@@ -3,10 +3,10 @@ use wasm_bindgen::prelude::*;
 #[macro_export]
 macro_rules! console_error {
     ($lit:literal) => {
-        $crate::misc::web_utils::js_console_error($lit)
+        $crate::for_generated::web_utils::js_console_error($lit)
     };
     ($($tt:tt)*) => {
-        $crate::misc::web_utils::js_console_error(&format!($($tt)*))
+        $crate::for_generated::web_utils::js_console_error(&format!($($tt)*))
     };
 }
 

@@ -68,3 +68,5 @@ pub use misc_rust_async::*;
 pub use pointer::*;
 #[cfg(wasm)]
 pub use wasm_bindgen;
+#[cfg(wasm)]
+pub use crate::misc::web_utils;
