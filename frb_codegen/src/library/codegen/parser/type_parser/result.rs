@@ -4,6 +4,7 @@ use crate::codegen::ir::ty::IrType::{EnumRef, StructRef};
 use crate::codegen::parser::type_parser::unencodable::splay_segments;
 use crate::codegen::parser::type_parser::{TypeParser, TypeParserParsingContext};
 
+#[allow(clippy::single_match)] // deliberate do so to ensure style consistency
 pub(crate) fn parse_type_maybe_result(
     ir: &IrType,
     type_parser: &mut TypeParser,
