@@ -155,6 +155,7 @@ fn pde_ffi_dispatcher_primary_impl(
     rust_vec_len: i32,
     data_len: i32,
 ) {
+    flutter_rust_bridge::console_error!("hi call pde_ffi_dispatcher_primary_impl");
     // Codec=Pde (Serialization + dispatch), see doc to use other codecs
     match func_id {
         2 => wire__crate__api__simple__init_app_impl(port, ptr, rust_vec_len, data_len),
