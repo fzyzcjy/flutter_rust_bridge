@@ -105,8 +105,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let codec_mode_pack = compute_codec_mode_pack(&attributes, force_codec_mode_pack);
         let mode = compute_func_mode(&attributes, &info);
         let stream_dart_await = attributes.stream_dart_await() && !attributes.sync();
-        let namespace_refined =
-            refine_namespace(&namespace_naive, &owner).unwrap_or(namespace_naive.clone());
+        let namespace_refined = refine_namespace(&owner).unwrap_or(namespace_naive.clone());
 
         if info.ignore_func {
             return Ok(None);
@@ -255,7 +254,7 @@ fn compute_codec_mode_pack(
     force_ans.to_owned().or(attr_ans).unwrap_or(DEFAULT_ANS)
 }
 
-fn refine_namespace(namespace_naive: &Namespace, owner: &IrFuncOwnerInfo) -> Option<Namespace> {
+fn refine_namespace(owner: &IrFuncOwnerInfo) -> Option<Namespace> {
     if let IrFuncOwnerInfo::Method(method) = owner {
         let owner_ty = &method.owner_ty;
         if matches!(owner_ty, IrType::StructRef(_) | IrType::EnumRef(_)) {
