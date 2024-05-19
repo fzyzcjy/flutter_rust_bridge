@@ -63,15 +63,23 @@ impl<'a> WireRustGeneratorMiscTrait for DartFnWireRustGenerator<'a> {
 }
 
 fn generate_return_type_inner_to_outer(ir: &IrMaybeResult) -> String {
-    let delegate_type = ir.delegate.rust_api_type();
-    if let Some(error) = ir.error {
-        format!(
-            "match decoded {{
-                {delegate_type}::Ok(value) => std::result::Result::Ok(value),
-                {delegate_type}::Err(value) => std::result::Result::Err(value),
-            }}"
+    let (branch_ok, branch_err) = if let Some(error) = &ir.error {
+        (
+            "std::result::Result::Ok(value)".to_owned(),
+            "std::result::Result::Err(value)".to_owned(),
         )
     } else {
-        format!("decoded")
-    }
+        (
+            "value",
+            r#"panic!("Dart throws exception but Rust side assume it is not failable")"#,
+        )
+    };
+
+    let delegate_type = ir.delegate.rust_api_type();
+    format!(
+        "match decoded {{
+            {delegate_type}::Ok(value) => {branch_ok},
+            {delegate_type}::Err(value) => {branch_err},
+        }}"
+    )
 }
