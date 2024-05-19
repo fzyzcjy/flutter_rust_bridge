@@ -40,18 +40,11 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 .map(|x| self.parse_type(x))
                 .collect::<anyhow::Result<Vec<_>>>()?;
 
-            let ResultTypeInfo {
-                ok_output,
-                error_output,
-            } = self.parse_dart_fn_output(&arguments.output)?;
+            let output = self.parse_dart_fn_output(&arguments.output)?;
 
             return Ok(IrType::DartFn(IrTypeDartFn {
                 inputs,
-                output: Box::new(IrMaybeResult {
-                    normal: ok_output,
-                    error: error_output,
-                    delegate: TODO,
-                }),
+                output: Box::new(self.create_ir_maybe_result(output)),
             }));
 
             // This will stop the whole generator and tell the users, so we do not care about testing it
@@ -92,6 +85,15 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
         bail!("DartFn does not support return types except `DartFnFuture<T>` yet")
         // frb-coverage:ignore-end
+    }
+
+    fn create_ir_maybe_result(&mut self, info: ResultTypeInfo) -> IrMaybeResult{
+        let delegate = TODO;
+        IrMaybeResult {
+            normal: info.ok_output,
+            error: info.error_output,
+            delegate,
+        }
     }
 }
 
