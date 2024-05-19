@@ -22,8 +22,9 @@ pub(crate) fn check_suppressed_input_path_no_content(
         let extracted_fns = extract_generalized_functions_from_file(&file.ast, &file.path)?;
         if !extracted_fns.is_empty() {
             warn!(
-                "Functions or methods in {:?} are ignored. Please do not put them in `mod.rs`.",
+                "Functions or methods in {:?} are ignored. Please do not put them in `mod.rs`. (Function names: {:?})",
                 file.path,
+                extracted_fns.iter().map(|f| f.sig().ident).collect_vec()
             );
         }
     }
