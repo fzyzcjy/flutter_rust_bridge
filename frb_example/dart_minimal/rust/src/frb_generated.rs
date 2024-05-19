@@ -31,7 +31,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueMoi,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.0.0-dev.34";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -957330701;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -431697752;
 
 // Section: executor
 
@@ -103,7 +103,7 @@ fn wire__crate__api__minimal__minimal_adder_impl(
         },
     )
 }
-fn wire__crate__api__minimal__rust_function_impl(
+fn wire__crate__api__minimal__rust_function_1_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
@@ -111,7 +111,7 @@ fn wire__crate__api__minimal__rust_function_impl(
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec, _, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "rust_function",
+            debug_name: "rust_function_1",
             port: Some(port_),
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
@@ -125,7 +125,7 @@ fn wire__crate__api__minimal__rust_function_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_dart_callback = decode_DartFn_Inputs_String_Output_String_AnyhowException(
+            let api_dart_callback = decode_DartFn_Inputs_String_Output_i_32_String(
                 <flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer),
             );
             deserializer.end();
@@ -133,7 +133,47 @@ fn wire__crate__api__minimal__rust_function_impl(
                 transform_result_sse(
                     (move || async move {
                         Result::<_, ()>::Ok(
-                            crate::api::minimal::rust_function(api_dart_callback).await,
+                            crate::api::minimal::rust_function_1(api_dart_callback).await,
+                        )
+                    })()
+                    .await,
+                )
+            }
+        },
+    )
+}
+fn wire__crate__api__minimal__rust_function_2_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec, _, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "rust_function_2",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_dart_callback =
+                decode_DartFn_Inputs_String_Output_list_prim_u_8_strict_AnyhowException(
+                    <flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer),
+                );
+            deserializer.end();
+            move |context| async move {
+                transform_result_sse(
+                    (move || async move {
+                        Result::<_, ()>::Ok(
+                            crate::api::minimal::rust_function_2(api_dart_callback).await,
                         )
                     })()
                     .await,
@@ -145,19 +185,12 @@ fn wire__crate__api__minimal__rust_function_impl(
 
 // Section: related_funcs
 
-fn decode_DartFn_Inputs_String_Output_String_AnyhowException(
+fn decode_DartFn_Inputs_String_Output_i_32_String(
     dart_opaque: flutter_rust_bridge::DartOpaque,
-) -> impl Fn(
-    String,
-) -> flutter_rust_bridge::DartFnFuture<
-    std::result::Result<String, flutter_rust_bridge::for_generated::anyhow::Error>,
-> {
+) -> impl Fn(String) -> flutter_rust_bridge::DartFnFuture<i32> {
     use flutter_rust_bridge::IntoDart;
 
-    async fn body(
-        dart_opaque: flutter_rust_bridge::DartOpaque,
-        arg0: String,
-    ) -> std::result::Result<String, flutter_rust_bridge::for_generated::anyhow::Error> {
+    async fn body(dart_opaque: flutter_rust_bridge::DartOpaque, arg0: String) -> i32 {
         let args = vec![arg0.into_into_dart().into_dart()];
         let message = FLUTTER_RUST_BRIDGE_HANDLER
             .dart_fn_invoke(dart_opaque, args)
@@ -166,7 +199,44 @@ fn decode_DartFn_Inputs_String_Output_String_AnyhowException(
         let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
         let action = deserializer.cursor.read_u8().unwrap();
         let ans = match action {
-            0 => std::result::Result::Ok(<String>::sse_decode(&mut deserializer)),
+            0 => std::result::Result::Ok(<i32>::sse_decode(&mut deserializer)),
+            1 => std::result::Result::Err(<String>::sse_decode(&mut deserializer)),
+            _ => unreachable!(),
+        };
+        deserializer.end();
+        let ans = ans.expect("Dart throws exception but Rust side assume it is not failable");
+        ans
+    }
+
+    move |arg0: String| {
+        flutter_rust_bridge::for_generated::convert_into_dart_fn_future(body(
+            dart_opaque.clone(),
+            arg0,
+        ))
+    }
+}
+fn decode_DartFn_Inputs_String_Output_list_prim_u_8_strict_AnyhowException(
+    dart_opaque: flutter_rust_bridge::DartOpaque,
+) -> impl Fn(
+    String,
+) -> flutter_rust_bridge::DartFnFuture<
+    std::result::Result<Vec<u8>, flutter_rust_bridge::for_generated::anyhow::Error>,
+> {
+    use flutter_rust_bridge::IntoDart;
+
+    async fn body(
+        dart_opaque: flutter_rust_bridge::DartOpaque,
+        arg0: String,
+    ) -> std::result::Result<Vec<u8>, flutter_rust_bridge::for_generated::anyhow::Error> {
+        let args = vec![arg0.into_into_dart().into_dart()];
+        let message = FLUTTER_RUST_BRIDGE_HANDLER
+            .dart_fn_invoke(dart_opaque, args)
+            .await;
+
+        let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+        let action = deserializer.cursor.read_u8().unwrap();
+        let ans = match action {
+            0 => std::result::Result::Ok(<Vec<u8>>::sse_decode(&mut deserializer)),
             1 => std::result::Result::Err(
                 <flutter_rust_bridge::for_generated::anyhow::Error>::sse_decode(&mut deserializer),
             ),
@@ -266,7 +336,8 @@ fn pde_ffi_dispatcher_primary_impl(
     match func_id {
         1 => wire__crate__api__minimal__init_app_impl(port, ptr, rust_vec_len, data_len),
         2 => wire__crate__api__minimal__minimal_adder_impl(port, ptr, rust_vec_len, data_len),
-        3 => wire__crate__api__minimal__rust_function_impl(port, ptr, rust_vec_len, data_len),
+        3 => wire__crate__api__minimal__rust_function_1_impl(port, ptr, rust_vec_len, data_len),
+        4 => wire__crate__api__minimal__rust_function_2_impl(port, ptr, rust_vec_len, data_len),
         _ => unreachable!(),
     }
 }
