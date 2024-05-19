@@ -22,10 +22,10 @@ impl IrMaybeResult {
     }
 
     pub(crate) fn safe_ident(&self) -> String {
-        self.synthesized_type().safe_ident()
+        self.inner_type().safe_ident()
     }
 
-    pub(crate) fn synthesized_type(&self) -> IrType {
+    pub(crate) fn inner_type(&self) -> IrType {
         todo!()
     }
 
