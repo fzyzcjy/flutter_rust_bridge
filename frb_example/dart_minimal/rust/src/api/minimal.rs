@@ -19,4 +19,5 @@ impl StructWithCustomNameMethodTwinNormal {
     }
 }
 
+#[frb(name = "renamedFunction")]
 pub fn function_with_custom_name_twin_normal() {}
