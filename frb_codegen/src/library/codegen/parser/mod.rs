@@ -52,7 +52,7 @@ pub(crate) fn parse(
 
     let crate_all_rust_paths = crate_map.root_module().collect_paths();
     let all_file_data_arr = read_files(
-        crate_all_rust_paths,
+        &crate_all_rust_paths,
         &config.rust_crate_dir,
         cached_rust_reader,
         dumper,
