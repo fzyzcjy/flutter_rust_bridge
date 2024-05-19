@@ -2126,6 +2126,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  StructWithImplBlockInAnotherFileDependency
+      dco_decode_box_autoadd_struct_with_impl_block_in_another_file_dependency(
+          dynamic raw);
+
+  @protected
   StructWithOneFieldTwinNormal
       dco_decode_box_autoadd_struct_with_one_field_twin_normal(dynamic raw);
 
@@ -3938,6 +3943,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   StructWithHashMap dco_decode_struct_with_hash_map(dynamic raw);
+
+  @protected
+  StructWithImplBlockInAnotherFile
+      dco_decode_struct_with_impl_block_in_another_file(dynamic raw);
+
+  @protected
+  StructWithImplBlockInAnotherFileDependency
+      dco_decode_struct_with_impl_block_in_another_file_dependency(dynamic raw);
 
   @protected
   StructWithOneFieldTwinNormal dco_decode_struct_with_one_field_twin_normal(
@@ -5990,6 +6003,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithGoodAndOpaqueFieldTwinSync
       sse_decode_box_autoadd_struct_with_good_and_opaque_field_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithImplBlockInAnotherFileDependency
+      sse_decode_box_autoadd_struct_with_impl_block_in_another_file_dependency(
           SseDeserializer deserializer);
 
   @protected
@@ -8064,6 +8082,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithHashMap sse_decode_struct_with_hash_map(
       SseDeserializer deserializer);
+
+  @protected
+  StructWithImplBlockInAnotherFile
+      sse_decode_struct_with_impl_block_in_another_file(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithImplBlockInAnotherFileDependency
+      sse_decode_struct_with_impl_block_in_another_file_dependency(
+          SseDeserializer deserializer);
 
   @protected
   StructWithOneFieldTwinNormal sse_decode_struct_with_one_field_twin_normal(
@@ -10151,6 +10179,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       StructWithGoodAndOpaqueFieldTwinSync self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_struct_with_impl_block_in_another_file_dependency(
+      StructWithImplBlockInAnotherFileDependency self,
+      SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_struct_with_one_field_twin_normal(
       StructWithOneFieldTwinNormal self, SseSerializer serializer);
 
@@ -12163,6 +12196,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_struct_with_hash_map(
       StructWithHashMap self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_impl_block_in_another_file(
+      StructWithImplBlockInAnotherFile self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_impl_block_in_another_file_dependency(
+      StructWithImplBlockInAnotherFileDependency self,
+      SseSerializer serializer);
 
   @protected
   void sse_encode_struct_with_one_field_twin_normal(
