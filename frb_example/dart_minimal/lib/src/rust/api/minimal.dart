@@ -12,29 +12,24 @@ Future<int> minimalAdder({required int a, required int b, dynamic hint}) =>
 Future<void> renamedFunction({dynamic hint}) => RustLib.instance.api
     .crateApiMinimalFunctionWithCustomNameTwinNormal(hint: hint);
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithCustomNameMethodTwinNormal>>
-@sealed
-class StructWithCustomNameMethodTwinNormal extends RustOpaque {
-  StructWithCustomNameMethodTwinNormal.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
+class StructWithCustomNameMethodTwinNormal {
+  final int field0;
 
-  StructWithCustomNameMethodTwinNormal.sseDecode(
-      int ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+  const StructWithCustomNameMethodTwinNormal({
+    required this.field0,
+  });
 
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_StructWithCustomNameMethodTwinNormal,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StructWithCustomNameMethodTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StructWithCustomNameMethodTwinNormalPtr,
-  );
+  void renamedMethod({dynamic hint}) => RustLib.instance.api
+      .crateApiMinimalStructWithCustomNameMethodTwinNormalMethodWithCustomNameTwinNormal(
+          that: this, hint: hint);
 
-  bool lessThan(
-          {required StructWithCustomNameMethodTwinNormal other,
-          dynamic hint}) =>
-      RustLib.instance.api
-          .crateApiMinimalStructWithCustomNameMethodTwinNormalLessThan(
-              that: this, other: other, hint: hint);
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StructWithCustomNameMethodTwinNormal &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
 }
