@@ -68,5 +68,5 @@ pub async fn rust_call_dart_return_result_twin_normal(
     callback: impl Fn(String) -> DartFnFuture<anyhow::Result<String>>,
     expect_output: Option<String>,
 ) {
-    assert_eq!(callback("hello".to_owned()).await.ok(), expect_output);
+    assert_eq!(callback("hi".to_owned()).await.ok(), expect_output);
 }
