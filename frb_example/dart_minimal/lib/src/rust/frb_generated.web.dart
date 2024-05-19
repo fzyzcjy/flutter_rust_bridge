@@ -22,7 +22,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   FutureOr<int> Function(String)
-      dco_decode_DartFn_Inputs_String_Output_i_32_String(dynamic raw);
+      dco_decode_DartFn_Inputs_String_Output_i_32_AnyhowException(dynamic raw);
 
   @protected
   FutureOr<Uint8List> Function(String)
@@ -82,7 +82,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       AnyhowException self, SseSerializer serializer);
 
   @protected
-  void sse_encode_DartFn_Inputs_String_Output_i_32_String(
+  void sse_encode_DartFn_Inputs_String_Output_i_32_AnyhowException(
       FutureOr<int> Function(String) self, SseSerializer serializer);
 
   @protected

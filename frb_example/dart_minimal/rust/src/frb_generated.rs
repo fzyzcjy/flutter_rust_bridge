@@ -125,7 +125,7 @@ fn wire__crate__api__minimal__rust_function_1_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_dart_callback = decode_DartFn_Inputs_String_Output_i_32_String(
+            let api_dart_callback = decode_DartFn_Inputs_String_Output_i_32_AnyhowException(
                 <flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer),
             );
             deserializer.end();
@@ -185,7 +185,7 @@ fn wire__crate__api__minimal__rust_function_2_impl(
 
 // Section: related_funcs
 
-fn decode_DartFn_Inputs_String_Output_i_32_String(
+fn decode_DartFn_Inputs_String_Output_i_32_AnyhowException(
     dart_opaque: flutter_rust_bridge::DartOpaque,
 ) -> impl Fn(String) -> flutter_rust_bridge::DartFnFuture<i32> {
     use flutter_rust_bridge::IntoDart;
@@ -200,7 +200,9 @@ fn decode_DartFn_Inputs_String_Output_i_32_String(
         let action = deserializer.cursor.read_u8().unwrap();
         let ans = match action {
             0 => std::result::Result::Ok(<i32>::sse_decode(&mut deserializer)),
-            1 => std::result::Result::Err(<String>::sse_decode(&mut deserializer)),
+            1 => std::result::Result::Err(
+                <flutter_rust_bridge::for_generated::anyhow::Error>::sse_decode(&mut deserializer),
+            ),
             _ => unreachable!(),
         };
         deserializer.end();

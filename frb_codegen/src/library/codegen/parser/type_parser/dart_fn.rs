@@ -100,7 +100,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     }
 }
 
-const FALLBACK_ERROR_TYPE: IrType = IrType::Delegate(IrTypeDelegate::String);
+const FALLBACK_ERROR_TYPE: IrType = IrType::Delegate(IrTypeDelegate::AnyhowException);
 
 // // Use this unit "test" to see how a type will be parsed into a tree
 // #[cfg(test)]
