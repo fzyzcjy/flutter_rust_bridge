@@ -11,6 +11,7 @@ use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::type_parser::result::{parse_type_maybe_result, ResultTypeInfo};
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use crate::if_then_some;
+use crate::library::codegen::ir::ty::IrTypeTrait;
 use anyhow::{bail, Context};
 use syn::{
     AngleBracketedGenericArguments, GenericArgument, PathArguments, PathSegment, ReturnType, Type,
