@@ -65,8 +65,8 @@ impl<'a> WireRustGeneratorMiscTrait for DartFnWireRustGenerator<'a> {
 fn generate_return_type_inner_to_outer(ir: &IrMaybeResult) -> String {
     let (branch_ok, branch_err) = if let Some(error) = &ir.error {
         (
-            "std::result::Result::Ok(value)".to_owned(),
-            "std::result::Result::Err(value)".to_owned(),
+            "std::result::Result::Ok(value)",
+            "std::result::Result::Err(value)",
         )
     } else {
         (
