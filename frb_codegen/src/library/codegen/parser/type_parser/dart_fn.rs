@@ -1,3 +1,4 @@
+use crate::codegen::ir::result::IrMaybeResult;
 use crate::codegen::ir::ty::dart_fn::IrTypeDartFn;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::type_parser::result::{parse_type_maybe_result, ResultTypeInfo};
@@ -46,8 +47,10 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
             return Ok(IrType::DartFn(IrTypeDartFn {
                 inputs,
-                ok_output: Box::new(ok_output),
-                error_output: error_output.map(Box::new),
+                output: Box::new(IrMaybeResult {
+                    normal: ok_output,
+                    error: error_output,
+                }),
             }));
 
             // This will stop the whole generator and tell the users, so we do not care about testing it
