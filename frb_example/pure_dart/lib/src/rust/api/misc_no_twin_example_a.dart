@@ -6,6 +6,8 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+// The type `StructWithImplBlockOutsideApiFolder` is not used by any `pub` functions, thus it is ignored.
+
 Future<void> sameFunctionNameInDifferentFiles({dynamic hint}) =>
     RustLib.instance.api
         .crateApiMiscNoTwinExampleASameFunctionNameInDifferentFiles(hint: hint);
