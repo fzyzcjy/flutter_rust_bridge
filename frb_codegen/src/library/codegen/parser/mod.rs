@@ -148,31 +148,26 @@ struct FileData {
 }
 
 fn read_files(
-    rust_input_paths: &[PathBuf],
+    paths: &[PathBuf],
     rust_crate_dir: &Path,
     cached_rust_reader: &mut CachedRustReader,
     dumper: &Dumper,
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<Vec<FileData>> {
     let _pb = progress_bar_pack.parse_cargo_expand.start();
-    let contents = rust_input_paths
+    let contents = paths
         .iter()
-        .map(|rust_input_path| {
-            let content =
-                cached_rust_reader.read_rust_file(rust_input_path, rust_crate_dir, dumper)?;
-            Ok((rust_input_path.to_owned(), content))
+        .map(|path| {
+            let content = cached_rust_reader.read_rust_file(path, rust_crate_dir, dumper)?;
+            Ok((path.to_owned(), content))
         })
         .collect::<anyhow::Result<Vec<(PathBuf, String)>>>()?;
 
     contents
         .into_iter()
-        .map(|(rust_input_path, content)| {
+        .map(|(path, content)| {
             let ast = syn::parse_file(&content)?;
-            Ok(FileData {
-                path: rust_input_path,
-                content,
-                ast,
-            })
+            Ok(FileData { path, content, ast })
         })
         .collect()
 }
