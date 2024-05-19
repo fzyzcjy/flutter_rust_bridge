@@ -142,7 +142,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_DartFn_Inputs_String_Output_delegate_result_string_u_32(
+        sse_encode_DartFn_Inputs_String_Output_String_u_32(
             dartCallback, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 3, port: port_);
@@ -165,15 +165,28 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   Future<void> Function(int, dynamic)
-      encode_DartFn_Inputs_String_Output_delegate_result_string_u_32(
+      encode_DartFn_Inputs_String_Output_String_u_32(
           FutureOr<String> Function(String) raw) {
     return (callId, rawArg0) async {
       final arg0 = dco_decode_String(rawArg0);
 
-      final rawOutput = await raw(arg0);
+      Box<String>? rawOutput;
+      Box<int>? rawError;
+      try {
+        rawOutput = Box(await raw(arg0));
+      } catch (e) {
+        rawError = Box(e);
+      }
 
       final serializer = SseSerializer(generalizedFrbRustBinding);
-      sse_encode_delegate_result_string_u_32(rawOutput, serializer);
+      assert((rawOutput != null) ^ (rawError != null));
+      if (rawOutput != null) {
+        serializer.buffer.putUint8(0);
+        sse_encode_String(rawOutput.value, serializer);
+      } else {
+        serializer.buffer.putUint8(1);
+        sse_encode_u_32(rawError.value, serializer);
+      }
       final output = serializer.intoRaw();
 
       generalizedFrbRustBinding.dartFnDeliverOutput(
@@ -186,8 +199,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   FutureOr<String> Function(String)
-      dco_decode_DartFn_Inputs_String_Output_delegate_result_string_u_32(
-          dynamic raw) {
+      dco_decode_DartFn_Inputs_String_Output_String_u_32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError('');
   }
@@ -202,24 +214,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   String dco_decode_String(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw as String;
-  }
-
-  @protected
-  __delegate_Result__String_u_32 dco_decode_delegate_result_string_u_32(
-      dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
-      case 0:
-        return __delegate_Result__String_u_32_ok(
-          value: dco_decode_String(raw[1]),
-        );
-      case 1:
-        return __delegate_Result__String_u_32_err(
-          value: dco_decode_u_32(raw[1]),
-        );
-      default:
-        throw Exception("unreachable");
-    }
   }
 
   @protected
@@ -273,24 +267,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  __delegate_Result__String_u_32 sse_decode_delegate_result_string_u_32(
-      SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-
-    var tag_ = sse_decode_i_32(deserializer);
-    switch (tag_) {
-      case 0:
-        var var_value = sse_decode_String(deserializer);
-        return __delegate_Result__String_u_32_ok(value: var_value);
-      case 1:
-        var var_value = sse_decode_u_32(deserializer);
-        return __delegate_Result__String_u_32_err(value: var_value);
-      default:
-        throw UnimplementedError('');
-    }
-  }
-
-  @protected
   int sse_decode_i_32(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return deserializer.buffer.getInt32();
@@ -333,12 +309,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_DartFn_Inputs_String_Output_delegate_result_string_u_32(
+  void sse_encode_DartFn_Inputs_String_Output_String_u_32(
       FutureOr<String> Function(String) self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_DartOpaque(
-        encode_DartFn_Inputs_String_Output_delegate_result_string_u_32(self),
-        serializer);
+        encode_DartFn_Inputs_String_Output_String_u_32(self), serializer);
   }
 
   @protected
@@ -354,20 +329,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_String(String self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_prim_u_8_strict(utf8.encoder.convert(self), serializer);
-  }
-
-  @protected
-  void sse_encode_delegate_result_string_u_32(
-      __delegate_Result__String_u_32 self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    switch (self) {
-      case __delegate_Result__String_u_32_ok(value: final value):
-        sse_encode_i_32(0, serializer);
-        sse_encode_String(value, serializer);
-      case __delegate_Result__String_u_32_err(value: final value):
-        sse_encode_i_32(1, serializer);
-        sse_encode_u_32(value, serializer);
-    }
   }
 
   @protected

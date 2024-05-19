@@ -19,18 +19,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   FutureOr<String> Function(String)
-      dco_decode_DartFn_Inputs_String_Output_delegate_result_string_u_32(
-          dynamic raw);
+      dco_decode_DartFn_Inputs_String_Output_String_u_32(dynamic raw);
 
   @protected
   Object dco_decode_DartOpaque(dynamic raw);
 
   @protected
   String dco_decode_String(dynamic raw);
-
-  @protected
-  __delegate_Result__String_u_32 dco_decode_delegate_result_string_u_32(
-      dynamic raw);
 
   @protected
   int dco_decode_i_32(dynamic raw);
@@ -57,10 +52,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   String sse_decode_String(SseDeserializer deserializer);
 
   @protected
-  __delegate_Result__String_u_32 sse_decode_delegate_result_string_u_32(
-      SseDeserializer deserializer);
-
-  @protected
   int sse_decode_i_32(SseDeserializer deserializer);
 
   @protected
@@ -82,7 +73,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
-  void sse_encode_DartFn_Inputs_String_Output_delegate_result_string_u_32(
+  void sse_encode_DartFn_Inputs_String_Output_String_u_32(
       FutureOr<String> Function(String) self, SseSerializer serializer);
 
   @protected
@@ -90,10 +81,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_String(String self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_delegate_result_string_u_32(
-      __delegate_Result__String_u_32 self, SseSerializer serializer);
 
   @protected
   void sse_encode_i_32(int self, SseSerializer serializer);
