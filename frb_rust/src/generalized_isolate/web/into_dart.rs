@@ -144,7 +144,7 @@ macro_rules! delegate_buffer {
 }
 // Orphan rules disallow blanket implementations, so we have to manually delegate here.
 delegate! {
-    bool char
+    bool
     i8 u8 i16 u16 i32 u32 i64 u64 i128 u128 isize usize
     f32 f64
     &str String JsValue
@@ -158,6 +158,13 @@ delegate_buffer! {
     u32 => js_sys::Uint32Array
     f32 => js_sys::Float32Array
     f64 => js_sys::Float64Array
+}
+
+impl IntoDart for char {
+    #[inline]
+    fn into_dart(self) -> DartAbi {
+        (self as u32).into_dart()
+    }
 }
 
 fn into_dart_iterator<T, It>(iter: It) -> DartAbi
