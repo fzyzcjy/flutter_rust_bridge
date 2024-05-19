@@ -105,7 +105,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         let namespace = self.context.initiated_namespace.clone();
 
         let error_output_or_default =
-            (info.error_output).unwrap_or(IrType::Primitive(IrTypePrimitive::Unit));
+            (info.error_output.clone()).unwrap_or(IrType::Primitive(IrTypePrimitive::Unit));
 
         let enum_safe_ident = format!(
             "__delegate_Result__{}_{}",
