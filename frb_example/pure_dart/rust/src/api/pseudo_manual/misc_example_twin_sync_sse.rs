@@ -125,6 +125,12 @@ pub fn handle_string_twin_sync_sse(s: String) -> String {
     s + &s2
 }
 
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn handle_char_twin_sync_sse(arg: char) -> char {
+    arg
+}
+
 // to check that `Vec<u8>` can be used as return type
 #[flutter_rust_bridge::frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]

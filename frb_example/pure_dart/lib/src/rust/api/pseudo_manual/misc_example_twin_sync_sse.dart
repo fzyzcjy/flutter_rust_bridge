@@ -51,6 +51,11 @@ String handleStringTwinSyncSse({required String s, dynamic hint}) =>
         .crateApiPseudoManualMiscExampleTwinSyncSseHandleStringTwinSyncSse(
             s: s, hint: hint);
 
+String handleCharTwinSyncSse({required String arg, dynamic hint}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualMiscExampleTwinSyncSseHandleCharTwinSyncSse(
+            arg: arg, hint: hint);
+
 Uint8List handleVecU8TwinSyncSse({required List<int> v, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualMiscExampleTwinSyncSseHandleVecU8TwinSyncSse(

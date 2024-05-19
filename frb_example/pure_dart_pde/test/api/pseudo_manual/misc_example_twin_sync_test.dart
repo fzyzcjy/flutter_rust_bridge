@@ -101,6 +101,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
     );
   });
 
+  addTestsIdentityFunctionCall(
+      handleCharTwinSync, <String>['a', '\0', '\u{10FFFF}']);
+
   test('dart call handleVecU8', () async {
     final len = 100000;
     expect(
