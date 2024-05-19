@@ -41,15 +41,6 @@ pub(crate) fn parse(
     let rust_input_paths = &config.rust_input_path_pack.rust_input_paths;
     trace!("rust_input_paths={:?}", &rust_input_paths);
 
-    let crate_all_rust_paths = get_crate_all_rust_paths(&config.rust_crate_dir)?;
-    let all_file_data_arr = read_files(
-        crate_all_rust_paths,
-        &config.rust_crate_dir,
-        cached_rust_reader,
-        dumper,
-        progress_bar_pack,
-    )?;
-
     let pb = progress_bar_pack.parse_source_graph.start();
     let crate_map = source_graph::crates::Crate::parse(
         &config.rust_crate_dir.join("Cargo.toml"),
@@ -58,6 +49,15 @@ pub(crate) fn parse(
     )?;
     dumper.dump(SourceGraph, "source_graph.json", &crate_map)?;
     drop(pb);
+
+    let crate_all_rust_paths = get_crate_all_rust_paths(&config.rust_crate_dir)?;
+    let all_file_data_arr = read_files(
+        crate_all_rust_paths,
+        &config.rust_crate_dir,
+        cached_rust_reader,
+        dumper,
+        progress_bar_pack,
+    )?;
 
     let src_fns = all_file_data_arr
         .iter()
