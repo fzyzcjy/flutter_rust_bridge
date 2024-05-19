@@ -174,8 +174,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       Box<AnyhowException>? rawError;
       try {
         rawOutput = Box(await raw(arg0));
-      } catch (e) {
-        rawError = Box(e);
+      } catch (e, s) {
+        rawError = Box(AnyhowException("$e\n\n$s"));
       }
 
       final serializer = SseSerializer(generalizedFrbRustBinding);

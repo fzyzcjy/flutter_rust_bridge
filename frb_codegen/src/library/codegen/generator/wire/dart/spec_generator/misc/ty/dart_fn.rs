@@ -44,7 +44,7 @@ impl<'a> WireDartGeneratorMiscTrait for DartFnWireDartGenerator<'a> {
         let action_error = DartFnOutputAction::Error as i32;
 
         let api_impl_body = format!(
-            "
+            r#"
             Future<void> Function(int, {repeated_dynamics})
                 encode_{ir_safe_ident}({dart_api_type} raw) {{
               return (callId, {raw_parameter_names}) async {{
@@ -54,8 +54,8 @@ impl<'a> WireDartGeneratorMiscTrait for DartFnWireDartGenerator<'a> {
                 Box<{output_error_dart_api_type}>? rawError;
                 try {{
                     rawOutput = Box(await raw({parameter_names}));
-                }} catch (e) {{
-                    rawError = Box(e);
+                }} catch (e, s) {{
+                    rawError = Box(AnyhowException("$e\n\n$s"));
                 }}
 
                 final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -73,7 +73,7 @@ impl<'a> WireDartGeneratorMiscTrait for DartFnWireDartGenerator<'a> {
                   callId: callId, ptr: output.ptr, rustVecLen: output.rustVecLen, dataLen: output.dataLen);
               }};
             }}
-            ",
+            "#,
         );
         Some(Acc::new_common(WireDartOutputCode {
             api_impl_class_body: api_impl_body,
