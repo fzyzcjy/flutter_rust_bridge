@@ -25,7 +25,8 @@ impl<'a> WireDartGeneratorMiscTrait for DartFnWireDartGenerator<'a> {
         let dart_api_type =
             ApiDartGenerator::new(self.ir.clone(), self.context.as_api_dart_context())
                 .dart_api_type();
-        let return_type_safe_ident = self.ir.output.delegate.safe_ident();
+        let output_normal_safe_ident = self.ir.output.normal.safe_ident();
+        let output_error_safe_ident = self.ir.output.error.safe_ident();
 
         let api_impl_body = format!(
             "
@@ -37,7 +38,8 @@ impl<'a> WireDartGeneratorMiscTrait for DartFnWireDartGenerator<'a> {
                 final rawOutput = await raw({parameter_names});
 
                 final serializer = SseSerializer(generalizedFrbRustBinding);
-                sse_encode_{return_type_safe_ident}(rawOutput, serializer);
+                sse_encode_{output_normal_safe_ident}(rawOutput, serializer);
+                TODO
                 final output = serializer.intoRaw();
 
                 generalizedFrbRustBinding.dartFnDeliverOutput(
