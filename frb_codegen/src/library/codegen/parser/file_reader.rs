@@ -15,9 +15,7 @@ pub(crate) fn read_files(
     rust_crate_dir: &Path,
     cached_rust_reader: &mut CachedRustReader,
     dumper: &Dumper,
-    progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<Vec<FileData>> {
-    let _pb = progress_bar_pack.parse_cargo_expand.start();
     let contents = rust_input_paths
         .iter()
         .map(|rust_input_path| {

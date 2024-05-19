@@ -45,13 +45,14 @@ pub(crate) fn parse(
     let rust_input_paths = &config.rust_input_path_pack.rust_input_paths;
     trace!("rust_input_paths={:?}", &rust_input_paths);
 
+    let pb = progress_bar_pack.parse_cargo_expand.start();
     let file_data_arr = read_files(
         rust_input_paths,
         &config.rust_crate_dir,
         cached_rust_reader,
         dumper,
-        progress_bar_pack,
     )?;
+    drop(pb);
 
     let pb = progress_bar_pack.parse_source_graph.start();
     let crate_map = source_graph::crates::Crate::parse(
