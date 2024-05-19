@@ -205,6 +205,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  __delegate_Result__String_u_32 dco_decode_delegate_result_string_u_32(
+      dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    switch (raw[0]) {
+      case 0:
+        return __delegate_Result__String_u_32_ok(
+          value: dco_decode_String(raw[1]),
+        );
+      case 1:
+        return __delegate_Result__String_u_32_err(
+          value: dco_decode_u_32(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
   int dco_decode_i_32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw as int;
@@ -252,6 +270,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_list_prim_u_8_strict(deserializer);
     return utf8.decoder.convert(inner);
+  }
+
+  @protected
+  __delegate_Result__String_u_32 sse_decode_delegate_result_string_u_32(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    var tag_ = sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var var_value = sse_decode_String(deserializer);
+        return __delegate_Result__String_u_32_ok(value: var_value);
+      case 1:
+        var var_value = sse_decode_u_32(deserializer);
+        return __delegate_Result__String_u_32_err(value: var_value);
+      default:
+        throw UnimplementedError('');
+    }
   }
 
   @protected
@@ -318,6 +354,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_String(String self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_prim_u_8_strict(utf8.encoder.convert(self), serializer);
+  }
+
+  @protected
+  void sse_encode_delegate_result_string_u_32(
+      __delegate_Result__String_u_32 self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    switch (self) {
+      case __delegate_Result__String_u_32_ok(value: final value):
+        sse_encode_i_32(0, serializer);
+        sse_encode_String(value, serializer);
+      case __delegate_Result__String_u_32_err(value: final value):
+        sse_encode_i_32(1, serializer);
+        sse_encode_u_32(value, serializer);
+    }
   }
 
   @protected

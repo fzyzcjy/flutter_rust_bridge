@@ -196,6 +196,30 @@ impl SseDecode for String {
     }
 }
 
+impl SseDecode for crate::api::minimal::__delegate_Result__String_u_32 {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut tag_ = <i32>::sse_decode(deserializer);
+        match tag_ {
+            0 => {
+                let mut var_value = <String>::sse_decode(deserializer);
+                return crate::api::minimal::__delegate_Result__String_u_32::ok {
+                    value: var_value,
+                };
+            }
+            1 => {
+                let mut var_value = <u32>::sse_decode(deserializer);
+                return crate::api::minimal::__delegate_Result__String_u_32::err {
+                    value: var_value,
+                };
+            }
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+
 impl SseDecode for i32 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -278,6 +302,31 @@ fn pde_ffi_dispatcher_sync_impl(
 
 // Section: rust2dart
 
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for crate::api::minimal::__delegate_Result__String_u_32 {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        match self {
+            crate::api::minimal::__delegate_Result__String_u_32::ok { value } => {
+                [0.into_dart(), value.into_into_dart().into_dart()].into_dart()
+            }
+            crate::api::minimal::__delegate_Result__String_u_32::err { value } => {
+                [1.into_dart(), value.into_into_dart().into_dart()].into_dart()
+            }
+        }
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::minimal::__delegate_Result__String_u_32
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::minimal::__delegate_Result__String_u_32>
+    for crate::api::minimal::__delegate_Result__String_u_32
+{
+    fn into_into_dart(self) -> crate::api::minimal::__delegate_Result__String_u_32 {
+        self
+    }
+}
+
 impl SseEncode for flutter_rust_bridge::DartOpaque {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -289,6 +338,22 @@ impl SseEncode for String {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <Vec<u8>>::sse_encode(self.into_bytes(), serializer);
+    }
+}
+
+impl SseEncode for crate::api::minimal::__delegate_Result__String_u_32 {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        match self {
+            crate::api::minimal::__delegate_Result__String_u_32::ok { value } => {
+                <i32>::sse_encode(0, serializer);
+                <String>::sse_encode(value, serializer);
+            }
+            crate::api::minimal::__delegate_Result__String_u_32::err { value } => {
+                <i32>::sse_encode(1, serializer);
+                <u32>::sse_encode(value, serializer);
+            }
+        }
     }
 }
 
