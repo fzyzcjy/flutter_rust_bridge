@@ -11,7 +11,7 @@ use crate::platform_types::MessagePort;
 use crate::rust2dart::sender::Rust2DartSender;
 use crate::rust_async::BaseAsyncRuntime;
 use crate::thread_pool::BaseThreadPool;
-use crate::transfer;
+use crate::{console_error, transfer};
 #[cfg(feature = "rust-async")]
 use futures::FutureExt;
 use std::future::Future;
@@ -55,27 +55,39 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
         let el = self.error_listener;
         let el2 = self.error_listener;
 
+        console_error!("hi execute_normal 1");
+
         let TaskInfo { port, .. } = task_info;
         let port: MessagePort = port.unwrap();
 
+        console_error!("hi execute_normal 2");
         self.thread_pool
             .execute(transfer!(|port: crate::platform_types::MessagePort| {
+                console_error!("hi execute_normal 3");
                 #[allow(clippy::clone_on_copy)]
                 let port2 = port.clone();
                 let thread_result = PanicBacktrace::catch_unwind(AssertUnwindSafe(|| {
+                    console_error!("hi execute_normal 4");
                     #[allow(clippy::clone_on_copy)]
                     let sender = Rust2DartSender::new(Channel::new(port2.clone()));
                     let task_context = TaskContext::new();
 
+                    console_error!("hi execute_normal 5");
                     let ret = task(task_context);
 
+                    console_error!("hi execute_normal 6");
                     ExecuteNormalOrAsyncUtils::handle_result::<Rust2DartCodec, _>(ret, sender, el2);
+                    console_error!("hi execute_normal 7");
                 }));
 
+                console_error!("hi execute_normal 8");
                 if let Err(error) = thread_result {
+                    console_error!("hi execute_normal 9");
                     handle_non_sync_panic_error::<Rust2DartCodec>(el, port, error);
+                    console_error!("hi execute_normal 10");
                 }
             }));
+        console_error!("hi execute_normal 11");
     }
 
     fn execute_sync<Rust2DartCodec, SyncTaskFn>(
