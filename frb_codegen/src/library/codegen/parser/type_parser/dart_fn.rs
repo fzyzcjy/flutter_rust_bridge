@@ -56,7 +56,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 inputs,
                 output: Box::new(IrDartFnOutput {
                     normal: output.ok_output,
-                    error: output.error_output.unwrap_or(FALLBACK_ERROR_TYPE),
+                    error: output.error_output.clone().unwrap_or(FALLBACK_ERROR_TYPE),
                     api_fallible: output.error_output.is_some(),
                 }),
             }));
