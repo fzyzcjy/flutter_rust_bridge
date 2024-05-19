@@ -7,7 +7,7 @@ use syn::{Attribute, Ident, ItemEnum, ItemStruct, Type};
 
 #[derive(Clone, Debug, Serialize)]
 pub struct Module {
-    pub(super) info: ModuleInfo,
+    pub(crate) info: ModuleInfo,
     pub(super) scope: ModuleScope,
 }
 
@@ -15,7 +15,7 @@ pub struct Module {
 #[derivative(Debug)]
 pub struct ModuleInfo {
     pub(super) visibility: Visibility,
-    pub(super) file_path: PathBuf,
+    pub(crate) file_path: PathBuf,
     pub(super) module_path: Vec<String>,
     #[derivative(Debug = "ignore")]
     #[serde(skip_serializing)]
