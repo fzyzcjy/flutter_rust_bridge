@@ -45,7 +45,7 @@ pub(crate) fn parse(
         &config.rust_crate_dir,
         cached_rust_reader,
         dumper,
-    );
+    )?;
 
     let rust_input_paths = &config.rust_input_path_pack.rust_input_paths;
     trace!("rust_input_paths={:?}", &rust_input_paths);
