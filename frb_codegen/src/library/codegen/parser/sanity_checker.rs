@@ -2,7 +2,6 @@ use crate::codegen::dumper::Dumper;
 use crate::codegen::parser::file_reader::read_files;
 use crate::codegen::parser::function_extractor::extract_generalized_functions_from_file;
 use crate::codegen::parser::reader::CachedRustReader;
-use itertools::Itertools;
 use log::warn;
 use std::path::{Path, PathBuf};
 
@@ -14,7 +13,7 @@ pub(crate) fn check_suppressed_input_path_no_content(
 ) -> anyhow::Result<()> {
     let file_data_arr = read_files(
         rust_suppressed_input_paths,
-        &config.rust_crate_dir,
+        &rust_crate_dir,
         cached_rust_reader,
         dumper,
     )?;
@@ -23,7 +22,7 @@ pub(crate) fn check_suppressed_input_path_no_content(
         let extracted_fns = extract_generalized_functions_from_file(&file.ast, &file.path)?;
         if !extracted_fns.is_empty() {
             warn!(
-                "Functions or methods in {} are ignored. Please do not put them in `mod.rs`.",
+                "Functions or methods in {:?} are ignored. Please do not put them in `mod.rs`.",
                 file.path,
             );
         }
