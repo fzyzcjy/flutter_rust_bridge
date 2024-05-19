@@ -1,6 +1,6 @@
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::ident::IrIdent;
-use crate::codegen::ir::namespace::NamespacedName;
+use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::result::IrMaybeResult;
 use crate::codegen::ir::ty::dart_fn::IrTypeDartFn;
 use crate::codegen::ir::ty::enumeration::{
@@ -112,8 +112,8 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 comments: vec![],
                 mode: IrEnumMode::Complex,
                 variants: vec![
-                    create_enum_variant("ok", info.ok_output.clone()),
-                    create_enum_variant("err", info.error_output.clone()),
+                    create_enum_variant(namespace.clone(), "ok", info.ok_output.clone()),
+                    create_enum_variant(namespace.clone(), "err", info.error_output.clone()),
                 ],
             },
         );
@@ -131,13 +131,13 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     }
 }
 
-fn create_enum_variant(name: &str, ty: IrType) -> IrVariant {
+fn create_enum_variant(namespace: Namespace, name: &str, ty: IrType) -> IrVariant {
     IrVariant {
         name: IrIdent::new(name.to_owned()),
-        wrapper_name: None,
+        wrapper_name: TODO,
         comments: vec![],
         kind: IrVariantKind::Struct(IrStruct {
-            name: IrIdent::new(name.to_owned()),
+            name: NamespacedName::new(namespace, name.to_owned()),
             wrapper_name: None,
             is_fields_named: true,
             dart_metadata: vec![],
