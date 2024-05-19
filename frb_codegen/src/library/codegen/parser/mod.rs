@@ -8,6 +8,7 @@ pub(crate) mod source_graph;
 pub(crate) mod type_alias_resolver;
 pub(crate) mod type_parser;
 mod unused_checker;
+mod sanity_checker;
 
 use crate::codegen::dumper::Dumper;
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
@@ -29,6 +30,7 @@ use log::trace;
 use std::path::{Path, PathBuf};
 use syn::File;
 use ConfigDumpContent::SourceGraph;
+use crate::codegen::parser::sanity_checker::check_suppressed_input_path_no_content;
 
 pub(crate) fn parse(
     config: &ParserInternalConfig,
@@ -36,6 +38,8 @@ pub(crate) fn parse(
     dumper: &Dumper,
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<IrPack> {
+    check_suppressed_input_path_no_content(&config.rust_input_path_pack.rust_suppressed_input_paths);
+
     let rust_input_paths = &config.rust_input_path_pack.rust_input_paths;
     trace!("rust_input_paths={:?}", &rust_input_paths);
 
