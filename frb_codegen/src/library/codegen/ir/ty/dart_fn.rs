@@ -1,3 +1,4 @@
+use crate::codegen::ir::result::IrMaybeResult;
 use crate::codegen::ir::ty::dart_opaque::IrTypeDartOpaque;
 use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
 use itertools::Itertools;
@@ -5,8 +6,7 @@ use itertools::Itertools;
 crate::ir! {
 pub struct IrTypeDartFn {
     pub inputs: Vec<IrType>,
-    pub ok_output: Box<IrType>,
-    pub error_output: Option<Box<IrType>>,
+    pub output: Box<IrMaybeResult>,
 }
 }
 
