@@ -41,8 +41,8 @@ pub(crate) fn parse(
     let rust_input_paths = &config.rust_input_path_pack.rust_input_paths;
     trace!("rust_input_paths={:?}", &rust_input_paths);
 
-    let file_data_arr = read_files(
-        rust_input_paths,
+    let all_file_data_arr = read_files(
+        TODO,
         &config.rust_crate_dir,
         cached_rust_reader,
         dumper,
@@ -58,10 +58,15 @@ pub(crate) fn parse(
     dumper.dump(SourceGraph, "source_graph.json", &crate_map)?;
     drop(pb);
 
-    let src_fns = file_data_arr
+    let src_fns = all_file_data_arr
         .iter()
         .map(|file| {
-            extract_generalized_functions_from_file(&file.ast, &file.path, ExtractMode::Full)
+            let mode = if rust_input_paths.contains(&file.path) {
+                ExtractMode::Full
+            } else {
+                ExtractMode::MethodOnly
+            };
+            extract_generalized_functions_from_file(&file.ast, &file.path, mode)
         })
         .collect::<anyhow::Result<Vec<_>>>()?
         .into_iter()
@@ -96,7 +101,8 @@ pub(crate) fn parse(
         .sorted_by_cached_key(|func| func.name.clone())
         .collect_vec();
 
-    let existing_handlers = (file_data_arr.iter())
+    let existing_handlers = (all_file_data_arr.iter())
+        .filter(|file| rust_input_paths.contains(&file.path))
         .filter(|file| parse_has_executor(&file.content))
         .map(|file| {
             NamespacedName::new(
