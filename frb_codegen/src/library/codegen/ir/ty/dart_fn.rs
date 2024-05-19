@@ -21,7 +21,7 @@ impl IrTypeTrait for IrTypeDartFn {
         for x in &self.inputs {
             x.visit_types(f, ir_context);
         }
-        self.ok_output.visit_types(f, ir_context);
+        self.output.visit_types(f, ir_context);
     }
 
     fn safe_ident(&self) -> String {
