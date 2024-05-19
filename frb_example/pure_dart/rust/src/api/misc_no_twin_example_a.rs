@@ -24,7 +24,7 @@ pub fn same_function_name_in_different_files() {}
 // #1933
 pub struct StructWithImplBlockInAnotherFile {}
 
-pub struct StructWithCustomNameMethodTwinNormal(i32);
+pub struct StructWithCustomNameMethodTwinNormal(pub i32);
 
 impl StructWithCustomNameMethodTwinNormal {
     #[frb(name = "renamedMethod", sync)]
