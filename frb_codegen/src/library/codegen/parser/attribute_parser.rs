@@ -156,9 +156,7 @@ impl FrbAttributes {
     pub(crate) fn name(&self) -> Option<String> {
         self.0
             .iter()
-            .filter_map(
-                |item| if_then_some!(let FrbAttribute::Name(inner) = item, inner.0.clone()),
-            )
+            .filter_map(|item| if_then_some!(let FrbAttribute::Name(inner) = item, inner.0.clone()))
             .next()
     }
 }
