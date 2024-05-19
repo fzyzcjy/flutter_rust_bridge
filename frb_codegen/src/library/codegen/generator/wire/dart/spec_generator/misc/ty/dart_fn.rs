@@ -46,21 +46,23 @@ impl<'a> WireDartGeneratorMiscTrait for DartFnWireDartGenerator<'a> {
               return (callId, {raw_parameter_names}) async {{
                 {decode_block}
 
-                {output_normal_dart_api_type}? rawOutput;
+                Box<{output_normal_dart_api_type}>? rawOutput;
                 {output_error_dart_api_type}? rawError;
                 try {{
-                    rawOutput = await raw({parameter_names});
+                    rawOutput = Box(await raw({parameter_names}));
                 }} catch (e) {{
                     rawError = e;
                 }}
 
                 final serializer = SseSerializer(generalizedFrbRustBinding);
-                if (rawError != null) {{
+                if (rawOutput != null) {{
+                    assert(rawError == null);
+                    TODO_tag;
+                    sse_encode_{output_normal_safe_ident}(rawOutput.value, serializer);
+                }} else {{
+                    assert(rawOutput == null);
                     TODO_tag;
                     sse_encode_{output_error_safe_ident}(rawError, serializer);
-                }} else {{
-                    TODO_tag;
-                    sse_encode_{output_normal_safe_ident}(rawOutput, serializer);
                 }}
                 final output = serializer.intoRaw();
 
