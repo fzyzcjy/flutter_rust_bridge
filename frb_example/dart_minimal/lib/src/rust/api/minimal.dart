@@ -8,3 +8,28 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<int> minimalAdder({required int a, required int b, dynamic hint}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b, hint: hint);
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithRenamedMethodTwiNormal>>
+@sealed
+class StructWithRenamedMethodTwiNormal extends RustOpaque {
+  StructWithRenamedMethodTwiNormal.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  StructWithRenamedMethodTwiNormal.sseDecode(int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_StructWithRenamedMethodTwiNormal,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_StructWithRenamedMethodTwiNormal,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_StructWithRenamedMethodTwiNormalPtr,
+  );
+
+  bool lessThan(
+          {required StructWithRenamedMethodTwiNormal other, dynamic hint}) =>
+      RustLib.instance.api
+          .crateApiMinimalStructWithRenamedMethodTwiNormalLessThan(
+              that: this, other: other, hint: hint);
+}
