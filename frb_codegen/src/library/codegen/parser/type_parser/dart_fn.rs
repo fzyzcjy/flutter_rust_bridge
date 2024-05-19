@@ -49,10 +49,15 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 .collect::<anyhow::Result<Vec<_>>>()?;
 
             let output = self.parse_dart_fn_output(&arguments.output)?;
+            let output_delegate = self.create_dart_fn_output_delegate(&output);
 
             return Ok(IrType::DartFn(IrTypeDartFn {
                 inputs,
-                output: Box::new(self.create_ir_maybe_result(output)),
+                output: Box::new(IrMaybeResult {
+                    normal: output.ok_output,
+                    error: output.error_output,
+                    delegate: output_delegate,
+                }),
             }));
 
             // This will stop the whole generator and tell the users, so we do not care about testing it
@@ -95,7 +100,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         // frb-coverage:ignore-end
     }
 
-    fn create_ir_maybe_result(&mut self, info: ResultTypeInfo) -> IrMaybeResult {
+    fn create_dart_fn_output_delegate(&mut self, info: &ResultTypeInfo) -> IrType {
         let namespace = self.context.initiated_namespace.clone();
 
         let enum_safe_ident = format!(
@@ -131,16 +136,10 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             },
         );
 
-        let delegate = IrType::EnumRef(IrTypeEnumRef {
+        IrType::EnumRef(IrTypeEnumRef {
             ident: IrEnumIdent(NamespacedName::new(namespace, enum_safe_ident)),
             is_exception: false,
-        });
-
-        IrMaybeResult {
-            normal: info.ok_output,
-            error: info.error_output,
-            delegate,
-        }
+        })
     }
 }
 
