@@ -54,6 +54,7 @@ pub enum IrFuncOwnerInfo {
 pub struct IrFuncOwnerInfoMethod {
     pub(crate) owner_ty: IrType,
     pub(crate) actual_method_name: String,
+    pub(crate) actual_method_dart_name: Option<String>,
     pub(crate) mode: IrFuncOwnerInfoMethodMode,
 }
 

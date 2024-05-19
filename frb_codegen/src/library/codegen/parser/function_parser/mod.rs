@@ -138,7 +138,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         &mut self,
         item_fn: &GeneralizedItemFn,
         context: &TypeParserParsingContext,
-        override_name: Option<String>,
+        actual_method_dart_name: Option<String>,
     ) -> anyhow::Result<Option<IrFuncOwnerInfo>> {
         Ok(Some(match item_fn {
             GeneralizedItemFn::Function { .. } => IrFuncOwnerInfo::Function,
@@ -158,12 +158,12 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     return Ok(None);
                 };
 
-                let actual_method_name =
-                    override_name.unwrap_or(impl_item_fn.sig.ident.to_string());
+                let actual_method_name = impl_item_fn.sig.ident.to_string();
 
                 IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod {
                     owner_ty,
                     actual_method_name,
+                    actual_method_dart_name,
                     mode,
                 })
             }
