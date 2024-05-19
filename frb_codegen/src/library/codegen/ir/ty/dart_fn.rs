@@ -61,27 +61,19 @@ impl IrDartFnOutput {
         ir_context: &impl IrContext,
     ) {
         self.normal.visit_types(f, ir_context);
-        if let Some(error) = &self.error {
-            error.visit_types(f, ir_context);
-        }
+        self.error.visit_types(f, ir_context);
     }
 
     pub(crate) fn safe_ident(&self) -> String {
-        format!(
-            "{}_{}",
-            self.normal.safe_ident(),
-            self.error
-                .map(|x| x.safe_ident())
-                .unwrap_or("None".to_owned())
-        )
+        format!("{}_{}", self.normal.safe_ident(), self.error.safe_ident())
     }
 
     pub(crate) fn rust_api_type(&self) -> String {
-        if let Some(error) = &self.error {
+        if self.api_fallible {
             format!(
                 "std::result::Result<{}, {}>",
                 self.normal.rust_api_type(),
-                error.rust_api_type()
+                self.error.rust_api_type()
             )
         } else {
             self.normal.rust_api_type()
