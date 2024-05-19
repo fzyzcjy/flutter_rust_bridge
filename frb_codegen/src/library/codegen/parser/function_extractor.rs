@@ -45,15 +45,25 @@ impl GeneralizedItemFn {
     }
 }
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub(super) enum ExtractMode {
+    MethodOnly,
+    Full,
+}
+
 pub(super) fn extract_generalized_functions_from_file(
     file: &File,
     path: &std::path::Path,
+    mode: ExtractMode,
 ) -> anyhow::Result<Vec<PathAndItemFn>> {
-    let item_fns = [
-        extract_fns_from_file(file),
-        extract_methods_from_file(file)?,
-    ]
-    .concat();
+    let item_fns = match mode {
+        ExtractMode::MethodOnly => extract_methods_from_file(file)?,
+        ExtractMode::Full => [
+            extract_fns_from_file(file),
+            extract_methods_from_file(file)?,
+        ]
+        .concat(),
+    };
     let ans = item_fns
         .into_iter()
         .map(|generalized_item_fn| PathAndItemFn {
