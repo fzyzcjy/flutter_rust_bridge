@@ -4,7 +4,7 @@ use crate::handler::error::error_to_string;
 use crate::platform_types::{DartAbi, PlatformGeneralizedUint8ListPtr, WireSyncRust2DartSse};
 use crate::rust2dart::action::Rust2DartAction;
 use byteorder::WriteBytesExt;
-use byteorder::{NativeEndian, ReadBytesExt};
+use byteorder::NativeEndian;
 use std::any::Any;
 use std::backtrace::Backtrace;
 use std::io::Cursor;
