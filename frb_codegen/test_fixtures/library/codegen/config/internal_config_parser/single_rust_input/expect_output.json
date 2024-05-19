@@ -84,7 +84,8 @@
         "rust_input_path_pack": {
           "rust_input_paths": [
             "{the-working-directory}/src/api.rs"
-          ]
+          ],
+          "rust_suppressed_input_paths": []
         },
         "rust_output_path": {
           "common": "{the-working-directory}/src/frb_generated.rs",
@@ -106,7 +107,8 @@
     "rust_input_path_pack": {
       "rust_input_paths": [
         "{the-working-directory}/src/api.rs"
-      ]
+      ],
+      "rust_suppressed_input_paths": []
     }
   },
   "polisher": {
