@@ -9,6 +9,7 @@ pub(crate) mod type_alias_resolver;
 pub(crate) mod type_parser;
 mod unused_checker;
 mod sanity_checker;
+mod file_reader;
 
 use crate::codegen::dumper::Dumper;
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
@@ -30,6 +31,7 @@ use log::trace;
 use std::path::{Path, PathBuf};
 use syn::File;
 use ConfigDumpContent::SourceGraph;
+use crate::codegen::parser::file_reader::read_files;
 use crate::codegen::parser::sanity_checker::check_suppressed_input_path_no_content;
 
 pub(crate) fn parse(
@@ -133,42 +135,6 @@ pub(crate) fn parse(
     )?;
 
     Ok(ans)
-}
-
-struct FileData {
-    path: PathBuf,
-    content: String,
-    ast: File,
-}
-
-fn read_files(
-    rust_input_paths: &[PathBuf],
-    rust_crate_dir: &Path,
-    cached_rust_reader: &mut CachedRustReader,
-    dumper: &Dumper,
-    progress_bar_pack: &GeneratorProgressBarPack,
-) -> anyhow::Result<Vec<FileData>> {
-    let _pb = progress_bar_pack.parse_cargo_expand.start();
-    let contents = rust_input_paths
-        .iter()
-        .map(|rust_input_path| {
-            let content =
-                cached_rust_reader.read_rust_file(rust_input_path, rust_crate_dir, dumper)?;
-            Ok((rust_input_path.to_owned(), content))
-        })
-        .collect::<anyhow::Result<Vec<(PathBuf, String)>>>()?;
-
-    contents
-        .into_iter()
-        .map(|(rust_input_path, content)| {
-            let ast = syn::parse_file(&content)?;
-            Ok(FileData {
-                path: rust_input_path,
-                content,
-                ast,
-            })
-        })
-        .collect()
 }
 
 #[cfg(test)]
