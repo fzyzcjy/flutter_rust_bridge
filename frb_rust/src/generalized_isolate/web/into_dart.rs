@@ -18,7 +18,6 @@ impl<T, A: BaseArc<T>> IntoDartExceptPrimitive for RustOpaqueBase<T, A> {}
 impl IntoDartExceptPrimitive for crate::dart_opaque::DartOpaque {}
 impl IntoDartExceptPrimitive for String {}
 impl IntoDartExceptPrimitive for bool {}
-impl IntoDartExceptPrimitive for char {}
 impl<T: IntoDart> IntoDartExceptPrimitive for Option<T> {}
 
 impl IntoDart for () {
@@ -145,7 +144,7 @@ macro_rules! delegate_buffer {
 }
 // Orphan rules disallow blanket implementations, so we have to manually delegate here.
 delegate! {
-    bool
+    bool char
     i8 u8 i16 u16 i32 u32 i64 u64 i128 u128 isize usize
     f32 f64
     &str String JsValue
