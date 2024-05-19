@@ -25,6 +25,17 @@ impl<'a> WireDartGeneratorMiscTrait for DartFnWireDartGenerator<'a> {
         let dart_api_type =
             ApiDartGenerator::new(self.ir.clone(), self.context.as_api_dart_context())
                 .dart_api_type();
+
+        let output_normal_dart_api_type = ApiDartGenerator::new(
+            self.ir.output.normal.clone(),
+            self.context.as_api_dart_context(),
+        )
+        .dart_api_type();
+        let output_error_dart_api_type = ApiDartGenerator::new(
+            self.ir.output.error.clone(),
+            self.context.as_api_dart_context(),
+        )
+        .dart_api_type();
         let output_normal_safe_ident = self.ir.output.normal.safe_ident();
         let output_error_safe_ident = self.ir.output.error.safe_ident();
 
@@ -35,11 +46,22 @@ impl<'a> WireDartGeneratorMiscTrait for DartFnWireDartGenerator<'a> {
               return (callId, {raw_parameter_names}) async {{
                 {decode_block}
 
-                final rawOutput = await raw({parameter_names});
+                {output_normal_dart_api_type}? rawOutput;
+                {output_error_dart_api_type}? rawError;
+                try {{
+                    rawOutput = await raw({parameter_names});
+                }} catch (e) {{
+                    rawError = e;
+                }}
 
                 final serializer = SseSerializer(generalizedFrbRustBinding);
-                sse_encode_{output_normal_safe_ident}(rawOutput, serializer);
-                TODO
+                if (rawError != null) {{
+                    TODO_tag;
+                    sse_encode_{output_error_safe_ident}(rawError, serializer);
+                }} else {{
+                    TODO_tag;
+                    sse_encode_{output_normal_safe_ident}(rawOutput, serializer);
+                }}
                 final output = serializer.intoRaw();
 
                 generalizedFrbRustBinding.dartFnDeliverOutput(
