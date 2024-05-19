@@ -4,7 +4,6 @@
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
 import '../frb_generated.dart';
-import 'another.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<int> minimalAdder({required int a, required int b, dynamic hint}) =>
@@ -14,7 +13,7 @@ class A {
   const A();
 
   static Future<void> g({required B b, dynamic hint}) =>
-      RustLib.instance.api.crateApiMinimalAG(b: b, hint: hint);
+      RustLib.instance.api.crateApiAnotherAG(b: b, hint: hint);
 
   @override
   int get hashCode => 0;
