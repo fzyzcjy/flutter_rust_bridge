@@ -58,7 +58,7 @@ pub(crate) fn parse(
 
     let src_fns = file_data_arr
         .iter()
-        .map(|file| extract_generalized_functions_from_file(&file.ast, &file.path))
+        .map(|file| extract_generalized_functions_from_file(&file.ast, &file.path, TODO))
         .collect::<anyhow::Result<Vec<_>>>()?
         .into_iter()
         .flatten()
