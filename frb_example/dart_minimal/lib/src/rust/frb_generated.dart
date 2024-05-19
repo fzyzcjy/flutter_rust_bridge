@@ -57,7 +57,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.0.0-dev.34';
 
   @override
-  int get rustContentHash => 980946383;
+  int get rustContentHash => 654432592;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -69,8 +69,6 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 
 abstract class RustLibApi extends BaseApi {
   Future<void> crateApiAnotherAG({required B b, dynamic hint});
-
-  Future<void> crateApiMinimalAF({dynamic hint});
 
   Future<void> crateApiMinimalInitApp({dynamic hint});
 
@@ -109,30 +107,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kCrateApiAnotherAgConstMeta => const TaskConstMeta(
         debugName: "a_g",
         argNames: ["b"],
-      );
-
-  @override
-  Future<void> crateApiMinimalAF({dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 4, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta: kCrateApiMinimalAfConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kCrateApiMinimalAfConstMeta => const TaskConstMeta(
-        debugName: "a_f",
-        argNames: [],
       );
 
   @override

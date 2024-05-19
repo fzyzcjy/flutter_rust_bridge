@@ -15,9 +15,6 @@ class A {
   static Future<void> g({required B b, dynamic hint}) =>
       RustLib.instance.api.crateApiAnotherAG(b: b, hint: hint);
 
-  static Future<void> f({dynamic hint}) =>
-      RustLib.instance.api.crateApiMinimalAF(hint: hint);
-
   @override
   int get hashCode => 0;
 
