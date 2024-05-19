@@ -21,6 +21,7 @@ impl IrMaybeResult {
         if let Some(error) = &self.error {
             error.visit_types(f, ir_context);
         }
+        self.delegate.visit_types(f, ir_context);
     }
 
     pub(crate) fn safe_ident(&self) -> String {
