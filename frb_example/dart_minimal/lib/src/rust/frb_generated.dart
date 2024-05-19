@@ -56,7 +56,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.0.0-dev.34';
 
   @override
-  int get rustContentHash => -431697752;
+  int get rustContentHash => 471216942;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -72,11 +72,9 @@ abstract class RustLibApi extends BaseApi {
   Future<int> crateApiMinimalMinimalAdder(
       {required int a, required int b, dynamic hint});
 
-  Future<void> crateApiMinimalRustFunction1(
-      {required FutureOr<int> Function(String) dartCallback, dynamic hint});
-
-  Future<void> crateApiMinimalRustFunction2(
-      {required FutureOr<Uint8List> Function(String) dartCallback,
+  Future<void> crateApiMinimalRustCallDartReturnResultTwinNormal(
+      {required FutureOr<String> Function(String) callback,
+      String? expectOutput,
       dynamic hint});
 }
 
@@ -141,13 +139,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<void> crateApiMinimalRustFunction1(
-      {required FutureOr<int> Function(String) dartCallback, dynamic hint}) {
+  Future<void> crateApiMinimalRustCallDartReturnResultTwinNormal(
+      {required FutureOr<String> Function(String) callback,
+      String? expectOutput,
+      dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_DartFn_Inputs_String_Output_i_32_AnyhowException(
-            dartCallback, serializer);
+        sse_encode_DartFn_Inputs_String_Output_String_AnyhowException(
+            callback, serializer);
+        sse_encode_opt_String(expectOutput, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 3, port: port_);
       },
@@ -155,55 +156,27 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiMinimalRustFunction1ConstMeta,
-      argValues: [dartCallback],
+      constMeta: kCrateApiMinimalRustCallDartReturnResultTwinNormalConstMeta,
+      argValues: [callback, expectOutput],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kCrateApiMinimalRustFunction1ConstMeta =>
-      const TaskConstMeta(
-        debugName: "rust_function_1",
-        argNames: ["dartCallback"],
-      );
-
-  @override
-  Future<void> crateApiMinimalRustFunction2(
-      {required FutureOr<Uint8List> Function(String) dartCallback,
-      dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_DartFn_Inputs_String_Output_list_prim_u_8_strict_AnyhowException(
-            dartCallback, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 4, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta: kCrateApiMinimalRustFunction2ConstMeta,
-      argValues: [dartCallback],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kCrateApiMinimalRustFunction2ConstMeta =>
-      const TaskConstMeta(
-        debugName: "rust_function_2",
-        argNames: ["dartCallback"],
-      );
+  TaskConstMeta
+      get kCrateApiMinimalRustCallDartReturnResultTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName: "rust_call_dart_return_result_twin_normal",
+            argNames: ["callback", "expectOutput"],
+          );
 
   Future<void> Function(int, dynamic)
-      encode_DartFn_Inputs_String_Output_i_32_AnyhowException(
-          FutureOr<int> Function(String) raw) {
+      encode_DartFn_Inputs_String_Output_String_AnyhowException(
+          FutureOr<String> Function(String) raw) {
     return (callId, rawArg0) async {
       final arg0 = dco_decode_String(rawArg0);
 
-      Box<int>? rawOutput;
+      Box<String>? rawOutput;
       Box<AnyhowException>? rawError;
       try {
         rawOutput = Box(await raw(arg0));
@@ -215,40 +188,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       assert((rawOutput != null) ^ (rawError != null));
       if (rawOutput != null) {
         serializer.buffer.putUint8(0);
-        sse_encode_i_32(rawOutput.value, serializer);
-      } else {
-        serializer.buffer.putUint8(1);
-        sse_encode_AnyhowException(rawError!.value, serializer);
-      }
-      final output = serializer.intoRaw();
-
-      generalizedFrbRustBinding.dartFnDeliverOutput(
-          callId: callId,
-          ptr: output.ptr,
-          rustVecLen: output.rustVecLen,
-          dataLen: output.dataLen);
-    };
-  }
-
-  Future<void> Function(int, dynamic)
-      encode_DartFn_Inputs_String_Output_list_prim_u_8_strict_AnyhowException(
-          FutureOr<Uint8List> Function(String) raw) {
-    return (callId, rawArg0) async {
-      final arg0 = dco_decode_String(rawArg0);
-
-      Box<Uint8List>? rawOutput;
-      Box<AnyhowException>? rawError;
-      try {
-        rawOutput = Box(await raw(arg0));
-      } catch (e, s) {
-        rawError = Box(AnyhowException("$e\n\n$s"));
-      }
-
-      final serializer = SseSerializer(generalizedFrbRustBinding);
-      assert((rawOutput != null) ^ (rawError != null));
-      if (rawOutput != null) {
-        serializer.buffer.putUint8(0);
-        sse_encode_list_prim_u_8_strict(rawOutput.value, serializer);
+        sse_encode_String(rawOutput.value, serializer);
       } else {
         serializer.buffer.putUint8(1);
         sse_encode_AnyhowException(rawError!.value, serializer);
@@ -270,15 +210,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  FutureOr<int> Function(String)
-      dco_decode_DartFn_Inputs_String_Output_i_32_AnyhowException(dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    throw UnimplementedError('');
-  }
-
-  @protected
-  FutureOr<Uint8List> Function(String)
-      dco_decode_DartFn_Inputs_String_Output_list_prim_u_8_strict_AnyhowException(
+  FutureOr<String> Function(String)
+      dco_decode_DartFn_Inputs_String_Output_String_AnyhowException(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError('');
@@ -306,6 +239,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Uint8List dco_decode_list_prim_u_8_strict(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw as Uint8List;
+  }
+
+  @protected
+  String? dco_decode_opt_String(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return raw == null ? null : dco_decode_String(raw);
   }
 
   @protected
@@ -361,6 +300,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  String? sse_decode_opt_String(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_String(deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
   int sse_decode_u_8(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return deserializer.buffer.getUint8();
@@ -391,22 +341,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_DartFn_Inputs_String_Output_i_32_AnyhowException(
-      FutureOr<int> Function(String) self, SseSerializer serializer) {
+  void sse_encode_DartFn_Inputs_String_Output_String_AnyhowException(
+      FutureOr<String> Function(String) self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_DartOpaque(
-        encode_DartFn_Inputs_String_Output_i_32_AnyhowException(self),
-        serializer);
-  }
-
-  @protected
-  void
-      sse_encode_DartFn_Inputs_String_Output_list_prim_u_8_strict_AnyhowException(
-          FutureOr<Uint8List> Function(String) self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_DartOpaque(
-        encode_DartFn_Inputs_String_Output_list_prim_u_8_strict_AnyhowException(
-            self),
+        encode_DartFn_Inputs_String_Output_String_AnyhowException(self),
         serializer);
   }
 
@@ -437,6 +376,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_i_32(self.length, serializer);
     serializer.buffer.putUint8List(self);
+  }
+
+  @protected
+  void sse_encode_opt_String(String? self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_String(self, serializer);
+    }
   }
 
   @protected
