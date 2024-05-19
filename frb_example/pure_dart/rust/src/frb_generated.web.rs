@@ -76,7 +76,10 @@ impl CstDecode<backtrace::Backtrace> for String {
 impl CstDecode<char> for String {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> char {
-        self
+        CstDecode::<String>::cst_decode(self)
+            .chars()
+            .next()
+            .unwrap()
     }
 }
 impl CstDecode<chrono::Duration> for i64 {
