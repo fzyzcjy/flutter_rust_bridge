@@ -92,9 +92,8 @@ fn wire__crate__api__simple__init_app_impl(
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
-            flutter_rust_bridge::console_error!("hi call wire__crate__api__simple__init_app_impl INSIDE 1");
+            flutter_rust_bridge::console_error!("hi call wire__crate__api__simple__init_app_impl INSIDE");
             move |context| {
-                flutter_rust_bridge::console_error!("hi call wire__crate__api__simple__init_app_impl INSIDE 2");
                 transform_result_sse(
                     (move || Result::<_, ()>::Ok(crate::api::simple::init_app()))(),
                 )
