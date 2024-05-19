@@ -19,4 +19,12 @@ impl IrMaybeResult {
             error.visit_types(f, ir_context);
         }
     }
+
+    pub(crate) fn safe_ident(&self) -> String {
+        format!(
+            "{}_{}",
+            self.normal.safe_ident(),
+            self.error.map(|x| x.safe_ident()).unwrap_or("None")
+        )
+    }
 }

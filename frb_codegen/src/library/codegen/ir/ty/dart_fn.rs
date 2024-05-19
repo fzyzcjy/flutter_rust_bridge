@@ -28,7 +28,7 @@ impl IrTypeTrait for IrTypeDartFn {
         format!(
             "DartFn_Inputs_{}_Output_{}",
             self.inputs.iter().map(|x| x.safe_ident()).join("_"),
-            self.ok_output.safe_ident()
+            self.output.safe_ident()
         )
     }
 
