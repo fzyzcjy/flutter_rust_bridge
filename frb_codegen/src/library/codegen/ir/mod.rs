@@ -7,6 +7,5 @@ pub(crate) mod ident;
 pub(crate) mod import;
 pub(crate) mod namespace;
 pub(crate) mod pack;
-pub(crate) mod result;
 pub(crate) mod ty;
 mod utils;

@@ -2,7 +2,6 @@ use crate::codegen::generator::codec::structs::CodecModePack;
 use crate::codegen::ir::comment::IrComment;
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::namespace::NamespacedName;
-use crate::codegen::ir::result::IrMaybeResult;
 use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegatePrimitiveEnum};
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
@@ -15,7 +14,7 @@ pub struct IrFunc {
     pub name: NamespacedName,
     pub id: i32,
     pub inputs: Vec<IrFuncInput>,
-    pub output: IrMaybeResult,
+    pub output: IrFuncOutput,
     pub owner: IrFuncOwnerInfo,
     pub mode: IrFuncMode,
     pub stream_dart_await: bool,
@@ -33,6 +32,11 @@ pub struct IrFunc {
 pub struct IrFuncInput {
     pub ownership_mode: Option<OwnershipMode>,
     pub inner: IrField,
+}
+
+pub struct IrFuncOutput {
+    pub normal: IrType,
+    pub error: Option<IrType>,
 }
 
 #[derive(Copy)]
