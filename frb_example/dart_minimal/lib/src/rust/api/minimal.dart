@@ -8,10 +8,3 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<int> minimalAdder({required int a, required int b, dynamic hint}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b, hint: hint);
-
-Future<void> rustCallDartReturnResultTwinNormal(
-        {required FutureOr<String> Function(String) callback,
-        String? expectOutput,
-        dynamic hint}) =>
-    RustLib.instance.api.crateApiMinimalRustCallDartReturnResultTwinNormal(
-        callback: callback, expectOutput: expectOutput, hint: hint);
