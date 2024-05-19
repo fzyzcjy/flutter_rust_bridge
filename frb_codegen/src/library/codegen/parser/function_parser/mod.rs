@@ -1,9 +1,10 @@
 use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
 use crate::codegen::ir::func::{
-    IrFunc, IrFuncInput, IrFuncMode, IrFuncOutput, IrFuncOwnerInfo, IrFuncOwnerInfoMethod,
+    IrFunc, IrFuncInput, IrFuncMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod,
     IrFuncOwnerInfoMethodMode,
 };
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
+use crate::codegen::ir::result::IrMaybeResult;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::ty::IrType;
@@ -114,7 +115,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             name: NamespacedName::new(namespace, func_name),
             id: func_id,
             inputs: info.inputs,
-            output: IrFuncOutput {
+            output: IrMaybeResult {
                 normal: info.ok_output.unwrap_or(Primitive(IrTypePrimitive::Unit)),
                 error: info.error_output,
             },
