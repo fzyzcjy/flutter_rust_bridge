@@ -39,6 +39,7 @@ impl<'a> WireDartGeneratorMiscTrait for DartFnWireDartGenerator<'a> {
         .dart_api_type();
         let output_normal_safe_ident = self.ir.output.normal.safe_ident();
         let output_error_safe_ident = self.ir.output.error.safe_ident();
+
         let action_normal = DartFnOutputAction::Success as i32;
         let action_error = DartFnOutputAction::Error as i32;
 

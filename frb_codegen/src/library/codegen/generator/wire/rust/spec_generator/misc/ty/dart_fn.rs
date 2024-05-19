@@ -24,8 +24,24 @@ impl<'a> WireRustGeneratorMiscTrait for DartFnWireRustGenerator<'a> {
             .join("");
 
         let return_type_outer = self.ir.output.rust_api_type();
-        let return_type_inner = self.ir.output.delegate.rust_api_type();
-        let return_type_inner_to_outer = generate_return_type_inner_to_outer(&self.ir.output);
+        let output_normal_type = self.ir.output.normal.rust_api_type();
+        let output_error_type = self.ir.output.error.rust_api_type();
+
+        let action_normal = DartFnOutputAction::Success as i32;
+        let action_error = DartFnOutputAction::Error as i32;
+
+        let (branch_normal, branch_err) = if self.ir.output.api_fallible {
+            (
+                format!("std::result::Result::Ok(<{output_normal_type}>::sse_decode(&mut deserializer))"),
+                format!("std::result::Result::Err(<{output_error_type}>::sse_decode(&mut deserializer))"),
+            )
+        } else {
+            (
+                format!("<{output_normal_type}>::sse_decode(&mut deserializer)"),
+                r#"panic!("Dart throws exception but Rust side assume it is not failable")"#
+                    .to_owned(),
+            )
+        };
 
         Acc::new_common(
             format!(
@@ -40,10 +56,11 @@ impl<'a> WireRustGeneratorMiscTrait for DartFnWireRustGenerator<'a> {
 
                         let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
                         let action = deserializer.cursor.read_u8().unwrap();
-                        match action {{
-
-                        }}
-                        let ans = <{TODO}>::sse_decode(&mut deserializer);
+                        let ans = match action {{
+                            {action_normal} => {branch_normal},
+                            {action_error} => {branch_error},
+                            _ => unreachable!(),
+                        }};
                         deserializer.end();
                         ans
                     }}
@@ -67,28 +84,6 @@ impl<'a> WireRustGeneratorMiscTrait for DartFnWireRustGenerator<'a> {
     fn generate_wire_func_call_decode_type(&self) -> Option<String> {
         Some(self.ir.get_delegate().rust_api_type())
     }
-}
-
-fn generate_return_type_inner_to_outer(ir: &IrDartFnOutput) -> String {
-    let (branch_ok, branch_err) = if ir.api_fallible {
-        (
-            "std::result::Result::Ok(value)",
-            "std::result::Result::Err(value)",
-        )
-    } else {
-        (
-            "value",
-            r#"panic!("Dart throws exception but Rust side assume it is not failable")"#,
-        )
-    };
-
-    let delegate_type = ir.delegate.rust_api_type();
-    format!(
-        "match decoded {{
-            {delegate_type}::Ok(value) => {branch_ok},
-            {delegate_type}::Err(value) => {branch_err},
-        }}"
-    )
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
