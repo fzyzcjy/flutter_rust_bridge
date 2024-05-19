@@ -16,6 +16,7 @@ use crate::thread_pool::BaseThreadPool;
 use std::future::Future;
 use std::panic;
 use std::panic::AssertUnwindSafe;
+use crate::console_error;
 
 /// The default handler used by the generated code.
 pub type DefaultHandler<TP> =
@@ -165,16 +166,23 @@ impl<E: Executor, EL: ErrorListener> SimpleHandler<E, EL> {
         // ref https://doc.rust-lang.org/nomicon/unwinding.html
         let _ = panic::catch_unwind(AssertUnwindSafe(move || {
             let task_info2 = task_info.clone();
+            console_error!("hi wrap_normal_or_async 1");
             if let Err(error) = PanicBacktrace::catch_unwind(AssertUnwindSafe(move || {
+                console_error!("hi wrap_normal_or_async 2");
                 let task = prepare();
+                console_error!("hi wrap_normal_or_async 3");
                 execute(task_info2, task);
+                console_error!("hi wrap_normal_or_async 4");
             })) {
+                console_error!("hi wrap_normal_or_async 5");
                 handle_non_sync_panic_error::<Rust2DartCodec>(
                     self.error_listener,
                     task_info.port.unwrap(),
                     error,
                 );
+                console_error!("hi wrap_normal_or_async 6");
             }
+            console_error!("hi wrap_normal_or_async 7");
         }));
     }
 }
