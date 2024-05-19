@@ -82,7 +82,9 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             owner,
         };
 
-        let owner = if let Some(owner) = self.parse_owner(func, &create_context(None))? {
+        let owner = if let Some(owner) =
+            self.parse_owner(func, &create_context(None), attributes.name())?
+        {
             owner
         } else {
             return Ok(None);
@@ -136,6 +138,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         &mut self,
         item_fn: &GeneralizedItemFn,
         context: &TypeParserParsingContext,
+        override_name: Option<String>,
     ) -> anyhow::Result<Option<IrFuncOwnerInfo>> {
         Ok(Some(match item_fn {
             GeneralizedItemFn::Function { .. } => IrFuncOwnerInfo::Function,
@@ -155,7 +158,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     return Ok(None);
                 };
 
-                let actual_method_name = impl_item_fn.sig.ident.to_string();
+                let actual_method_name =
+                    override_name.unwrap_or(impl_item_fn.sig.ident.to_string());
 
                 IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod {
                     owner_ty,
