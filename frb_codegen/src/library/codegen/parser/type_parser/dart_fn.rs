@@ -6,6 +6,7 @@ use crate::codegen::ir::ty::dart_fn::IrTypeDartFn;
 use crate::codegen::ir::ty::enumeration::{
     IrEnum, IrEnumIdent, IrEnumMode, IrTypeEnumRef, IrVariant, IrVariantKind,
 };
+use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::structure::IrStruct;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::type_parser::result::{parse_type_maybe_result, ResultTypeInfo};
@@ -103,10 +104,13 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     fn create_dart_fn_output_delegate(&mut self, info: &ResultTypeInfo) -> IrType {
         let namespace = self.context.initiated_namespace.clone();
 
+        let error_output_or_default =
+            (info.error_output).unwrap_or(IrType::Primitive(IrTypePrimitive::Unit));
+
         let enum_safe_ident = format!(
             "__delegate_Result__{}_{}",
             info.ok_output.safe_ident(),
-            info.error_output.safe_ident(),
+            error_output_or_default.safe_ident(),
         );
 
         self.inner.enum_parser_info.object_pool.insert(
@@ -130,7 +134,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                         namespace.clone(),
                         &enum_safe_ident,
                         "err",
-                        info.error_output.clone(),
+                        error_output_or_default.clone(),
                     ),
                 ],
             },
