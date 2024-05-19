@@ -25,6 +25,13 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
                     ..Default::default()
                 }
             },
+            IrTypeDelegate::Char => {
+                Acc {
+                    web: Some("self".into()),
+                    io: Some("CstDecode::<String>::cst_decode(self).chars().next().unwrap()".into()),
+                    ..Default::default()
+                }
+            },
             // IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
             //     Acc::distribute(Some("flutter_rust_bridge::ZeroCopyBuffer(self.cst_decode())".into()))
             // },
@@ -94,6 +101,9 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
         Some(match &self.ir {
             IrTypeDelegate::String => {
                 "self.as_string().expect(\"non-UTF-8 string, or not a string\")".into()
+            }
+            IrTypeDelegate::Char => {
+                "CstDecode::<String>::cst_decode(self).chars().next().unwrap()".into()
             }
             IrTypeDelegate::PrimitiveEnum (IrTypeDelegatePrimitiveEnum { repr, .. }) => format!(
                 "(self.unchecked_into_f64() as {}).cst_decode()",
