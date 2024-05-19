@@ -20,8 +20,6 @@ use crate::codegen::parser::function_parser::FunctionParser;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::parser::misc::parse_has_executor;
 use crate::codegen::parser::reader::CachedRustReader;
-use crate::codegen::parser::source_graph::crates::Crate;
-use crate::codegen::parser::source_graph::modules::Module;
 use crate::codegen::parser::type_alias_resolver::resolve_type_aliases;
 use crate::codegen::parser::type_parser::TypeParser;
 use crate::codegen::parser::unused_checker::get_unused_types;
@@ -52,7 +50,7 @@ pub(crate) fn parse(
     dumper.dump(SourceGraph, "source_graph.json", &crate_map)?;
     drop(pb);
 
-    let crate_all_rust_paths = get_crate_all_rust_paths(&crate_map)?;
+    let crate_all_rust_paths = get_crate_all_rust_paths(&config.rust_crate_dir)?;
     let all_file_data_arr = read_files(
         crate_all_rust_paths,
         &config.rust_crate_dir,
@@ -175,15 +173,8 @@ fn read_files(
         .collect()
 }
 
-fn get_crate_all_rust_paths(crate_map: &Crate) -> anyhow::Result<Vec<PathBuf>> {
-    fn handle_module(module: &Module, target: &mut Vec<PathBuf>) {
-        target.push(module.info.file_path.clone());
-        module.collect_structs();
-    }
-
-    let mut paths = vec![];
-    handle_module(crate_map.root_module(), &mut paths);
-    Ok(paths)
+fn get_crate_all_rust_paths(rust_crate_dir: &Path) -> anyhow::Result<Vec<PathBuf>> {
+    TODO
 }
 
 #[cfg(test)]
