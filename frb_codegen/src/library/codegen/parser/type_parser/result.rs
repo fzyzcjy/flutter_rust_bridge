@@ -1,4 +1,3 @@
-use crate::codegen::ir::result::IrMaybeResult;
 use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{EnumRef, StructRef};
@@ -9,7 +8,7 @@ pub(crate) fn parse_type_maybe_result(
     ir: &IrType,
     type_parser: &mut TypeParser,
     context: &TypeParserParsingContext,
-) -> anyhow::Result<IrMaybeResult> {
+) -> anyhow::Result<ResultTypeInfo> {
     if let IrType::RustAutoOpaque(inner) = ir {
         match splay_segments(&inner.raw.segments).last() {
             Some(("Result", args)) => {
@@ -23,14 +22,14 @@ pub(crate) fn parse_type_maybe_result(
         }
     }
 
-    Ok(IrMaybeResult {
-        normal: ir.clone(),
-        error: None,
+    Ok(ResultTypeInfo {
+        ok_output: ir.clone(),
+        error_output: None,
     })
 }
 
-fn parse_type_result(args: &[IrType]) -> anyhow::Result<IrMaybeResult> {
-    let normal = args.first().unwrap();
+fn parse_type_result(args: &[IrType]) -> anyhow::Result<ResultTypeInfo> {
+    let ok_output = args.first().unwrap();
 
     let is_anyhow = args.len() == 1
         || args.iter().any(|x| {
@@ -40,18 +39,23 @@ fn parse_type_result(args: &[IrType]) -> anyhow::Result<IrMaybeResult> {
             false
         });
 
-    let error = if is_anyhow {
+    let error_output = if is_anyhow {
         Some(IrType::Delegate(IrTypeDelegate::AnyhowException))
     } else {
         args.last().cloned()
     };
 
-    let error = error.map(set_is_exception_flag);
+    let error_output = error_output.map(set_is_exception_flag);
 
-    Ok(IrMaybeResult {
-        normal: normal.clone(),
-        error,
+    Ok(ResultTypeInfo {
+        ok_output: ok_output.clone(),
+        error_output,
     })
+}
+
+pub(crate) struct ResultTypeInfo {
+    pub ok_output: IrType,
+    pub error_output: Option<IrType>,
 }
 
 fn set_is_exception_flag(mut ty: IrType) -> IrType {

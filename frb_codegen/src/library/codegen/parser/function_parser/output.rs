@@ -29,8 +29,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let ir = self.type_parser.parse_type(ty, context)?;
         let info = parse_type_maybe_result(&ir, self.type_parser, context)?;
         Ok(FunctionPartialInfo {
-            ok_output: Some(info.normal),
-            error_output: info.error,
+            ok_output: Some(info.ok_output),
+            error_output: info.error_output,
             ..Default::default()
         })
     }
