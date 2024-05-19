@@ -25,7 +25,7 @@ pub(crate) fn check_suppressed_input_path_no_content(
             warn!(
                 "Functions or methods in {:?} are ignored. Please do not put them in `mod.rs`. (Function names: {:?})",
                 file.path,
-                extracted_fns.iter().map(|f| f.generalized_item_fn.sig().ident).collect_vec()
+                extracted_fns.iter().map(|f| f.generalized_item_fn.sig().ident.clone()).collect_vec()
             );
         }
     }
