@@ -7,13 +7,11 @@ use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::enumeration::{
     IrEnum, IrEnumIdent, IrEnumMode, IrTypeEnumRef, IrVariant, IrVariantKind,
 };
-use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::structure::IrStruct;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::type_parser::result::{parse_type_maybe_result, ResultTypeInfo};
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use crate::if_then_some;
-use crate::library::codegen::ir::ty::IrTypeTrait;
 use anyhow::{bail, Context};
 use syn::{
     AngleBracketedGenericArguments, GenericArgument, PathArguments, PathSegment, ReturnType, Type,
@@ -99,37 +97,6 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
         bail!("DartFn does not support return types except `DartFnFuture<T>` yet")
         // frb-coverage:ignore-end
-    }
-}
-
-fn create_enum_variant(
-    namespace: Namespace,
-    enum_safe_ident: &str,
-    name: &str,
-    ty: IrType,
-) -> IrVariant {
-    IrVariant {
-        name: IrIdent::new(name.to_owned()),
-        wrapper_name: IrIdent::new(format!("{enum_safe_ident}_{name}")),
-        comments: vec![],
-        kind: IrVariantKind::Struct(IrStruct {
-            name: NamespacedName::new(namespace, name.to_owned()),
-            wrapper_name: None,
-            is_fields_named: true,
-            dart_metadata: vec![],
-            ignore: false,
-            generate_hash: false,
-            generate_eq: false,
-            comments: vec![],
-            fields: vec![IrField {
-                ty,
-                name: IrIdent::new("value".to_owned()),
-                is_final: true,
-                comments: vec![],
-                default: None,
-                settings: Default::default(),
-            }],
-        }),
     }
 }
 
