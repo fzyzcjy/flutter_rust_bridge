@@ -189,7 +189,8 @@ fn decode_DartFn_Inputs_String_Output_String_AnyhowException(
 impl SseDecode for flutter_rust_bridge::for_generated::anyhow::Error {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        unreachable!("");
+        let mut inner = <String>::sse_decode(deserializer);
+        return anyhow::anyhow!("{}", inner);
     }
 }
 
