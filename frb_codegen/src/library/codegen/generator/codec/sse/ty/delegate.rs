@@ -18,7 +18,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::Backtrace => {
                     return Some(format!("{};", lang.throw_unreachable("")));
                 }
-                IrTypeDelegate::AnyhowException => TODO,
+                IrTypeDelegate::AnyhowException => "self.message",
                 IrTypeDelegate::Map(_) => {
                     "self.entries.map((e) => (e.key, e.value)).toList()".to_owned()
                 }
@@ -132,7 +132,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::Backtrace => {
                     return Some(format!("{};", lang.throw_unreachable("")));
                 }
-                IrTypeDelegate::AnyhowException => TODO,
+                IrTypeDelegate::AnyhowException => r#"anyhow::anyhow!("{}", inner)"#,
                 IrTypeDelegate::Map(_) => "inner.into_iter().collect()".to_owned(),
                 IrTypeDelegate::Set(_) => "inner.into_iter().collect()".to_owned(),
                 IrTypeDelegate::Time(ir) => {
