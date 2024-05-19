@@ -39,6 +39,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
             ("Uuid", []) if check_prefix("uuid") => Delegate(IrTypeDelegate::Uuid),
             ("String", []) | ("str", []) => Delegate(IrTypeDelegate::String),
+            ("chat", []) => Delegate(IrTypeDelegate::Char),
             ("Backtrace", []) => Delegate(IrTypeDelegate::Backtrace),
 
             ("DartAbi", []) => Dynamic(IrTypeDynamic),
