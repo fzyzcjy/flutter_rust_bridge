@@ -56,7 +56,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.0.0-dev.34';
 
   @override
-  int get rustContentHash => 1288874347;
+  int get rustContentHash => 1292819302;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -67,10 +67,12 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  bool crateApiMinimalStructWithRenamedMethodTwiNormalLessThan(
-      {required StructWithRenamedMethodTwiNormal that,
-      required StructWithRenamedMethodTwiNormal other,
+  bool crateApiMinimalStructWithCustomNameMethodTwinNormalLessThan(
+      {required StructWithCustomNameMethodTwinNormal that,
+      required StructWithCustomNameMethodTwinNormal other,
       dynamic hint});
+
+  Future<void> crateApiMinimalFunctionWithCustomNameTwinNormal({dynamic hint});
 
   Future<void> crateApiMinimalInitApp({dynamic hint});
 
@@ -78,13 +80,13 @@ abstract class RustLibApi extends BaseApi {
       {required int a, required int b, dynamic hint});
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_StructWithRenamedMethodTwiNormal;
+      get rust_arc_increment_strong_count_StructWithCustomNameMethodTwinNormal;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_StructWithRenamedMethodTwiNormal;
+      get rust_arc_decrement_strong_count_StructWithCustomNameMethodTwinNormal;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_StructWithRenamedMethodTwiNormalPtr;
+      get rust_arc_decrement_strong_count_StructWithCustomNameMethodTwinNormalPtr;
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -96,25 +98,25 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
-  bool crateApiMinimalStructWithRenamedMethodTwiNormalLessThan(
-      {required StructWithRenamedMethodTwiNormal that,
-      required StructWithRenamedMethodTwiNormal other,
+  bool crateApiMinimalStructWithCustomNameMethodTwinNormalLessThan(
+      {required StructWithCustomNameMethodTwinNormal that,
+      required StructWithCustomNameMethodTwinNormal other,
       dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithRenamedMethodTwiNormal(
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithCustomNameMethodTwinNormal(
             that, serializer);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithRenamedMethodTwiNormal(
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithCustomNameMethodTwinNormal(
             other, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 3)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 4)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_bool,
         decodeErrorData: null,
       ),
       constMeta:
-          kCrateApiMinimalStructWithRenamedMethodTwiNormalLessThanConstMeta,
+          kCrateApiMinimalStructWithCustomNameMethodTwinNormalLessThanConstMeta,
       argValues: [that, other],
       apiImpl: this,
       hint: hint,
@@ -122,11 +124,36 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-      get kCrateApiMinimalStructWithRenamedMethodTwiNormalLessThanConstMeta =>
+      get kCrateApiMinimalStructWithCustomNameMethodTwinNormalLessThanConstMeta =>
           const TaskConstMeta(
-            debugName: "StructWithRenamedMethodTwiNormal_less_than",
+            debugName: "StructWithCustomNameMethodTwinNormal_less_than",
             argNames: ["that", "other"],
           );
+
+  @override
+  Future<void> crateApiMinimalFunctionWithCustomNameTwinNormal({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 3, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiMinimalFunctionWithCustomNameTwinNormalConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiMinimalFunctionWithCustomNameTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "function_with_custom_name_twin_normal",
+        argNames: [],
+      );
 
   @override
   Future<void> crateApiMinimalInitApp({dynamic hint}) {
@@ -181,35 +208,35 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_StructWithRenamedMethodTwiNormal => wire
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithRenamedMethodTwiNormal;
+      get rust_arc_increment_strong_count_StructWithCustomNameMethodTwinNormal =>
+          wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithCustomNameMethodTwinNormal;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_StructWithRenamedMethodTwiNormal => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithRenamedMethodTwiNormal;
+      get rust_arc_decrement_strong_count_StructWithCustomNameMethodTwinNormal =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithCustomNameMethodTwinNormal;
 
   @protected
-  StructWithRenamedMethodTwiNormal
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithRenamedMethodTwiNormal(
+  StructWithCustomNameMethodTwinNormal
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithCustomNameMethodTwinNormal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return StructWithRenamedMethodTwiNormal.dcoDecode(raw as List<dynamic>);
+    return StructWithCustomNameMethodTwinNormal.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
-  StructWithRenamedMethodTwiNormal
-      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithRenamedMethodTwiNormal(
+  StructWithCustomNameMethodTwinNormal
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithCustomNameMethodTwinNormal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return StructWithRenamedMethodTwiNormal.dcoDecode(raw as List<dynamic>);
+    return StructWithCustomNameMethodTwinNormal.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
-  StructWithRenamedMethodTwiNormal
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithRenamedMethodTwiNormal(
+  StructWithCustomNameMethodTwinNormal
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithCustomNameMethodTwinNormal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return StructWithRenamedMethodTwiNormal.dcoDecode(raw as List<dynamic>);
+    return StructWithCustomNameMethodTwinNormal.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -237,29 +264,29 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  StructWithRenamedMethodTwiNormal
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithRenamedMethodTwiNormal(
+  StructWithCustomNameMethodTwinNormal
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithCustomNameMethodTwinNormal(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return StructWithRenamedMethodTwiNormal.sseDecode(
+    return StructWithCustomNameMethodTwinNormal.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  StructWithRenamedMethodTwiNormal
-      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithRenamedMethodTwiNormal(
+  StructWithCustomNameMethodTwinNormal
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithCustomNameMethodTwinNormal(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return StructWithRenamedMethodTwiNormal.sseDecode(
+    return StructWithCustomNameMethodTwinNormal.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  StructWithRenamedMethodTwiNormal
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithRenamedMethodTwiNormal(
+  StructWithCustomNameMethodTwinNormal
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithCustomNameMethodTwinNormal(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return StructWithRenamedMethodTwiNormal.sseDecode(
+    return StructWithCustomNameMethodTwinNormal.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -288,24 +315,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithRenamedMethodTwiNormal(
-          StructWithRenamedMethodTwiNormal self, SseSerializer serializer) {
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithCustomNameMethodTwinNormal(
+          StructWithCustomNameMethodTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(self.sseEncode(move: true), serializer);
   }
 
   @protected
   void
-      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithRenamedMethodTwiNormal(
-          StructWithRenamedMethodTwiNormal self, SseSerializer serializer) {
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithCustomNameMethodTwinNormal(
+          StructWithCustomNameMethodTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
 
   @protected
   void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithRenamedMethodTwiNormal(
-          StructWithRenamedMethodTwiNormal self, SseSerializer serializer) {
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithCustomNameMethodTwinNormal(
+          StructWithCustomNameMethodTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }

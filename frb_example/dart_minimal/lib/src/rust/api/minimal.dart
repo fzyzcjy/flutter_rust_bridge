@@ -9,27 +9,33 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 Future<int> minimalAdder({required int a, required int b, dynamic hint}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b, hint: hint);
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithRenamedMethodTwiNormal>>
+Future<void> functionWithCustomNameTwinNormal({dynamic hint}) =>
+    RustLib.instance.api
+        .crateApiMinimalFunctionWithCustomNameTwinNormal(hint: hint);
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithCustomNameMethodTwinNormal>>
 @sealed
-class StructWithRenamedMethodTwiNormal extends RustOpaque {
-  StructWithRenamedMethodTwiNormal.dcoDecode(List<dynamic> wire)
+class StructWithCustomNameMethodTwinNormal extends RustOpaque {
+  StructWithCustomNameMethodTwinNormal.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  StructWithRenamedMethodTwiNormal.sseDecode(int ptr, int externalSizeOnNative)
+  StructWithCustomNameMethodTwinNormal.sseDecode(
+      int ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_StructWithRenamedMethodTwiNormal,
+        .rust_arc_increment_strong_count_StructWithCustomNameMethodTwinNormal,
     rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StructWithRenamedMethodTwiNormal,
+        .rust_arc_decrement_strong_count_StructWithCustomNameMethodTwinNormal,
     rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StructWithRenamedMethodTwiNormalPtr,
+        .rust_arc_decrement_strong_count_StructWithCustomNameMethodTwinNormalPtr,
   );
 
   bool lessThan(
-          {required StructWithRenamedMethodTwiNormal other, dynamic hint}) =>
+          {required StructWithCustomNameMethodTwinNormal other,
+          dynamic hint}) =>
       RustLib.instance.api
-          .crateApiMinimalStructWithRenamedMethodTwiNormalLessThan(
+          .crateApiMinimalStructWithCustomNameMethodTwinNormalLessThan(
               that: this, other: other, hint: hint);
 }

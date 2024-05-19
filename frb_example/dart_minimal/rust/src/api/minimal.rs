@@ -10,11 +10,13 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 }
 
 #[frb(opaque)]
-pub struct StructWithRenamedMethodTwiNormal(i32);
+pub struct StructWithCustomNameMethodTwinNormal(i32);
 
-impl StructWithRenamedMethodTwiNormal {
+impl StructWithCustomNameMethodTwinNormal {
     #[frb(name = "operator<", sync)]
-    pub fn less_than(&self, other: &StructWithRenamedMethodTwiNormal) -> bool {
+    pub fn less_than(&self, other: &StructWithCustomNameMethodTwinNormal) -> bool {
         self.0 < other.0
     }
 }
+
+pub fn function_with_custom_name_twin_normal() {}

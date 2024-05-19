@@ -32,7 +32,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueMoi,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.0.0-dev.34";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 1288874347;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 1292819302;
 
 // Section: executor
 
@@ -40,14 +40,14 @@ flutter_rust_bridge::frb_generated_default_handler!();
 
 // Section: wire_funcs
 
-fn wire__crate__api__minimal__StructWithRenamedMethodTwiNormal_less_than_impl(
+fn wire__crate__api__minimal__StructWithCustomNameMethodTwinNormal_less_than_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "StructWithRenamedMethodTwiNormal_less_than",
+            debug_name: "StructWithCustomNameMethodTwinNormal_less_than",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -63,12 +63,12 @@ fn wire__crate__api__minimal__StructWithRenamedMethodTwiNormal_less_than_impl(
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <RustOpaqueMoi<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                    StructWithRenamedMethodTwiNormal,
+                    StructWithCustomNameMethodTwinNormal,
                 >,
             >>::sse_decode(&mut deserializer);
             let api_other = <RustOpaqueMoi<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                    StructWithRenamedMethodTwiNormal,
+                    StructWithCustomNameMethodTwinNormal,
                 >,
             >>::sse_decode(&mut deserializer);
             deserializer.end();
@@ -92,13 +92,28 @@ fn wire__crate__api__minimal__StructWithRenamedMethodTwiNormal_less_than_impl(
                 let api_that = api_that_decoded.unwrap();
                 let api_other = api_other_decoded.unwrap();
                 Result::<_, ()>::Ok(
-                    crate::api::minimal::StructWithRenamedMethodTwiNormal::less_than(
+                    crate::api::minimal::StructWithCustomNameMethodTwinNormal::less_than(
                         &api_that, &api_other,
                     ),
                 )
             })())
         },
     )
+}
+fn wire__crate__api__minimal__function_with_custom_name_twin_normal_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "function_with_custom_name_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            deserializer.end(); move |context|  {
+                    transform_result_sse((move ||  {
+                         Result::<_,()>::Ok(crate::api::minimal::function_with_custom_name_twin_normal())
+                    })())
+                } })
 }
 fn wire__crate__api__minimal__init_app_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
@@ -168,17 +183,17 @@ fn wire__crate__api__minimal__minimal_adder_impl(
 // Section: related_funcs
 
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
-    flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithRenamedMethodTwiNormal>
+    flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithCustomNameMethodTwinNormal>
 );
 
 // Section: dart2rust
 
-impl SseDecode for StructWithRenamedMethodTwiNormal {
+impl SseDecode for StructWithCustomNameMethodTwinNormal {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <RustOpaqueMoi<
             flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                StructWithRenamedMethodTwiNormal,
+                StructWithCustomNameMethodTwinNormal,
             >,
         >>::sse_decode(deserializer);
         return inner.rust_auto_opaque_decode_owned();
@@ -187,7 +202,9 @@ impl SseDecode for StructWithRenamedMethodTwiNormal {
 
 impl SseDecode
     for RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithRenamedMethodTwiNormal>,
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+            StructWithCustomNameMethodTwinNormal,
+        >,
     >
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -232,6 +249,12 @@ fn pde_ffi_dispatcher_primary_impl(
 ) {
     // Codec=Pde (Serialization + dispatch), see doc to use other codecs
     match func_id {
+        3 => wire__crate__api__minimal__function_with_custom_name_twin_normal_impl(
+            port,
+            ptr,
+            rust_vec_len,
+            data_len,
+        ),
         1 => wire__crate__api__minimal__init_app_impl(port, ptr, rust_vec_len, data_len),
         2 => wire__crate__api__minimal__minimal_adder_impl(port, ptr, rust_vec_len, data_len),
         _ => unreachable!(),
@@ -246,7 +269,7 @@ fn pde_ffi_dispatcher_sync_impl(
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     // Codec=Pde (Serialization + dispatch), see doc to use other codecs
     match func_id {
-        3 => wire__crate__api__minimal__StructWithRenamedMethodTwiNormal_less_than_impl(
+        4 => wire__crate__api__minimal__StructWithCustomNameMethodTwinNormal_less_than_impl(
             ptr,
             rust_vec_len,
             data_len,
@@ -258,31 +281,31 @@ fn pde_ffi_dispatcher_sync_impl(
 // Section: rust2dart
 
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for FrbWrapper<StructWithRenamedMethodTwiNormal> {
+impl flutter_rust_bridge::IntoDart for FrbWrapper<StructWithCustomNameMethodTwinNormal> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
             .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for FrbWrapper<StructWithRenamedMethodTwiNormal>
+    for FrbWrapper<StructWithCustomNameMethodTwinNormal>
 {
 }
 
-impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<StructWithRenamedMethodTwiNormal>>
-    for StructWithRenamedMethodTwiNormal
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<StructWithCustomNameMethodTwinNormal>>
+    for StructWithCustomNameMethodTwinNormal
 {
-    fn into_into_dart(self) -> FrbWrapper<StructWithRenamedMethodTwiNormal> {
+    fn into_into_dart(self) -> FrbWrapper<StructWithCustomNameMethodTwinNormal> {
         self.into()
     }
 }
 
-impl SseEncode for StructWithRenamedMethodTwiNormal {
+impl SseEncode for StructWithCustomNameMethodTwinNormal {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <RustOpaqueMoi<
             flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                StructWithRenamedMethodTwiNormal,
+                StructWithCustomNameMethodTwinNormal,
             >,
         >>::sse_encode(
             flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self),
@@ -293,7 +316,9 @@ impl SseEncode for StructWithRenamedMethodTwiNormal {
 
 impl SseEncode
     for RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithRenamedMethodTwiNormal>,
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+            StructWithCustomNameMethodTwinNormal,
+        >,
     >
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
