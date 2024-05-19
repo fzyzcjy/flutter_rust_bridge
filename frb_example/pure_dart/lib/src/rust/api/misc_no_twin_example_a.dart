@@ -11,6 +11,9 @@ Future<void> sameFunctionNameInDifferentFiles({dynamic hint}) =>
     RustLib.instance.api
         .crateApiMiscNoTwinExampleASameFunctionNameInDifferentFiles(hint: hint);
 
+Future<void> renamedFunction({dynamic hint}) => RustLib.instance.api
+    .crateApiMiscNoTwinExampleAFunctionWithCustomNameTwinNormal(hint: hint);
+
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructInMiscNoTwinExampleA>>
 @sealed
 class StructInMiscNoTwinExampleA extends RustOpaque {
@@ -59,6 +62,28 @@ class StructWithImplBlockInMultiFile extends RustOpaque {
   Future<void> methodInB({dynamic hint}) => RustLib.instance.api
       .crateApiMiscNoTwinExampleBStructWithImplBlockInMultiFileMethodInB(
           that: this, hint: hint);
+}
+
+class StructWithCustomNameMethodTwinNormal {
+  final int field0;
+
+  const StructWithCustomNameMethodTwinNormal({
+    required this.field0,
+  });
+
+  void renamedMethod({dynamic hint}) => RustLib.instance.api
+      .crateApiMiscNoTwinExampleAStructWithCustomNameMethodTwinNormalMethodWithCustomNameTwinNormal(
+          that: this, hint: hint);
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StructWithCustomNameMethodTwinNormal &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
 }
 
 class StructWithImplBlockInAnotherFile {

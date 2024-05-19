@@ -2084,6 +2084,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_box_autoadd_struct_with_comments_twin_sync(dynamic raw);
 
   @protected
+  StructWithCustomNameMethodTwinNormal
+      dco_decode_box_autoadd_struct_with_custom_name_method_twin_normal(
+          dynamic raw);
+
+  @protected
   StructWithEnumTwinNormal dco_decode_box_autoadd_struct_with_enum_twin_normal(
       dynamic raw);
 
@@ -3904,6 +3909,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithCommentsTwinSync dco_decode_struct_with_comments_twin_sync(
       dynamic raw);
+
+  @protected
+  StructWithCustomNameMethodTwinNormal
+      dco_decode_struct_with_custom_name_method_twin_normal(dynamic raw);
 
   @protected
   StructWithEnumTwinNormal dco_decode_struct_with_enum_twin_normal(dynamic raw);
@@ -5960,6 +5969,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithCommentsTwinSync
       sse_decode_box_autoadd_struct_with_comments_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithCustomNameMethodTwinNormal
+      sse_decode_box_autoadd_struct_with_custom_name_method_twin_normal(
           SseDeserializer deserializer);
 
   @protected
@@ -8036,6 +8050,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithCommentsTwinSync sse_decode_struct_with_comments_twin_sync(
       SseDeserializer deserializer);
+
+  @protected
+  StructWithCustomNameMethodTwinNormal
+      sse_decode_struct_with_custom_name_method_twin_normal(
+          SseDeserializer deserializer);
 
   @protected
   StructWithEnumTwinNormal sse_decode_struct_with_enum_twin_normal(
@@ -10139,6 +10158,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       StructWithCommentsTwinSync self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_struct_with_custom_name_method_twin_normal(
+      StructWithCustomNameMethodTwinNormal self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_struct_with_enum_twin_normal(
       StructWithEnumTwinNormal self, SseSerializer serializer);
 
@@ -12154,6 +12177,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_struct_with_comments_twin_sync(
       StructWithCommentsTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_custom_name_method_twin_normal(
+      StructWithCustomNameMethodTwinNormal self, SseSerializer serializer);
 
   @protected
   void sse_encode_struct_with_enum_twin_normal(

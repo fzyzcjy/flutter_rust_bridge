@@ -25,3 +25,13 @@ pub fn same_function_name_in_different_files() {}
 
 // #1933
 pub struct StructWithImplBlockInAnotherFile {}
+
+pub struct StructWithCustomNameMethodTwinNormal(i32);
+
+impl StructWithCustomNameMethodTwinNormal {
+    #[frb(name = "renamedMethod", sync)]
+    pub fn method_with_custom_name_twin_normal(&self) {}
+}
+
+#[frb(name = "renamedFunction")]
+pub fn function_with_custom_name_twin_normal() {}
