@@ -12,6 +12,7 @@ crate::ir! {
 pub enum IrTypeDelegate {
     Array(IrTypeDelegateArray),
     String,
+    Char,
     // StringList,// TODO avoid this special case?
     // ZeroCopyBufferVecPrimitive(IrTypePrimitive),
     PrimitiveEnum(IrTypeDelegatePrimitiveEnum),
