@@ -12,6 +12,7 @@ use itertools::Itertools;
 crate::ir! {
 pub struct IrFunc {
     pub name: NamespacedName,
+    pub dart_name: Option<String>,
     pub id: i32,
     pub inputs: Vec<IrFuncInput>,
     pub output: IrFuncOutput,

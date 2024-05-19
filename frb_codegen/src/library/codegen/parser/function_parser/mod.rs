@@ -113,6 +113,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         Ok(Some(IrFunc {
             name: NamespacedName::new(namespace_refined, func_name),
+            dart_name: attributes.name(),
             id: func_id,
             inputs: info.inputs,
             output: IrFuncOutput {
