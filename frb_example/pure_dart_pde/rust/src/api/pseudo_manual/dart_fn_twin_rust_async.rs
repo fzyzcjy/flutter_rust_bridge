@@ -69,3 +69,10 @@ pub async fn rust_call_dart_multi_times_twin_rust_async(
         callback().await;
     }
 }
+
+pub async fn rust_call_dart_return_result_twin_rust_async(
+    callback: impl Fn(String) -> DartFnFuture<anyhow::Result<String>>,
+    expect_output: Option<String>,
+) {
+    assert_eq!(callback("hi".to_owned()).await.ok(), expect_output);
+}

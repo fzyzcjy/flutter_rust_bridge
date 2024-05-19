@@ -87,4 +87,17 @@ Future<void> main({bool skipRustLibInit = false}) async {
         callback: () => callCount++, numTimes: 10);
     expect(callCount, 10);
   });
+
+  group('rustCallDartReturnResultTwinRustAsync', () {
+    test('when normal', () async {
+      await rustCallDartReturnResultTwinRustAsync(
+          callback: (s) => s * 2, expectOutput: "hihi");
+    });
+
+    test('when error', () async {
+      await rustCallDartReturnResultTwinRustAsync(
+          callback: (s) => throw Exception('dummy exception'),
+          expectOutput: null);
+    });
+  });
 }

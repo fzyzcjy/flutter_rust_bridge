@@ -727,43 +727,50 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   FutureOr<void> Function(Object)
-      dco_decode_DartFn_Inputs_DartOpaque_Output_unit(dynamic raw);
+      dco_decode_DartFn_Inputs_DartOpaque_Output_unit_AnyhowException(
+          dynamic raw);
 
   @protected
-  FutureOr<void> Function(String) dco_decode_DartFn_Inputs_String_Output_unit(
-      dynamic raw);
+  FutureOr<String> Function(String)
+      dco_decode_DartFn_Inputs_String_Output_String_AnyhowException(
+          dynamic raw);
+
+  @protected
+  FutureOr<void> Function(String)
+      dco_decode_DartFn_Inputs_String_Output_unit_AnyhowException(dynamic raw);
 
   @protected
   FutureOr<void> Function(String, DemoStructForRustCallDartTwinNormal)
-      dco_decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_normal_Output_unit(
+      dco_decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_normal_Output_unit_AnyhowException(
           dynamic raw);
 
   @protected
   FutureOr<void> Function(String, DemoStructForRustCallDartTwinRustAsync)
-      dco_decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_rust_async_Output_unit(
+      dco_decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_rust_async_Output_unit_AnyhowException(
           dynamic raw);
 
   @protected
-  FutureOr<Object> Function() dco_decode_DartFn_Inputs__Output_DartOpaque(
-      dynamic raw);
+  FutureOr<Object> Function()
+      dco_decode_DartFn_Inputs__Output_DartOpaque_AnyhowException(dynamic raw);
 
   @protected
-  FutureOr<String> Function() dco_decode_DartFn_Inputs__Output_String(
-      dynamic raw);
+  FutureOr<String> Function()
+      dco_decode_DartFn_Inputs__Output_String_AnyhowException(dynamic raw);
 
   @protected
-  FutureOr<void> Function() dco_decode_DartFn_Inputs__Output_unit(dynamic raw);
+  FutureOr<void> Function()
+      dco_decode_DartFn_Inputs__Output_unit_AnyhowException(dynamic raw);
 
   @protected
   FutureOr<DemoStructForRustCallDartTwinNormal> Function(
           DemoStructForRustCallDartTwinNormal)
-      dco_decode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_normal_Output_demo_struct_for_rust_call_dart_twin_normal(
+      dco_decode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_normal_Output_demo_struct_for_rust_call_dart_twin_normal_AnyhowException(
           dynamic raw);
 
   @protected
   FutureOr<DemoStructForRustCallDartTwinRustAsync> Function(
           DemoStructForRustCallDartTwinRustAsync)
-      dco_decode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_rust_async_Output_demo_struct_for_rust_call_dart_twin_rust_async(
+      dco_decode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_rust_async_Output_demo_struct_for_rust_call_dart_twin_rust_async_AnyhowException(
           dynamic raw);
 
   @protected
@@ -8672,43 +8679,47 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_Chrono_Utc(DateTime self, SseSerializer serializer);
 
   @protected
-  void sse_encode_DartFn_Inputs_DartOpaque_Output_unit(
+  void sse_encode_DartFn_Inputs_DartOpaque_Output_unit_AnyhowException(
       FutureOr<void> Function(Object) self, SseSerializer serializer);
 
   @protected
-  void sse_encode_DartFn_Inputs_String_Output_unit(
+  void sse_encode_DartFn_Inputs_String_Output_String_AnyhowException(
+      FutureOr<String> Function(String) self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_DartFn_Inputs_String_Output_unit_AnyhowException(
       FutureOr<void> Function(String) self, SseSerializer serializer);
 
   @protected
   void
-      sse_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_normal_Output_unit(
+      sse_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_normal_Output_unit_AnyhowException(
           FutureOr<void> Function(String, DemoStructForRustCallDartTwinNormal)
               self,
           SseSerializer serializer);
 
   @protected
   void
-      sse_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_rust_async_Output_unit(
+      sse_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_rust_async_Output_unit_AnyhowException(
           FutureOr<void> Function(
                   String, DemoStructForRustCallDartTwinRustAsync)
               self,
           SseSerializer serializer);
 
   @protected
-  void sse_encode_DartFn_Inputs__Output_DartOpaque(
+  void sse_encode_DartFn_Inputs__Output_DartOpaque_AnyhowException(
       FutureOr<Object> Function() self, SseSerializer serializer);
 
   @protected
-  void sse_encode_DartFn_Inputs__Output_String(
+  void sse_encode_DartFn_Inputs__Output_String_AnyhowException(
       FutureOr<String> Function() self, SseSerializer serializer);
 
   @protected
-  void sse_encode_DartFn_Inputs__Output_unit(
+  void sse_encode_DartFn_Inputs__Output_unit_AnyhowException(
       FutureOr<void> Function() self, SseSerializer serializer);
 
   @protected
   void
-      sse_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_normal_Output_demo_struct_for_rust_call_dart_twin_normal(
+      sse_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_normal_Output_demo_struct_for_rust_call_dart_twin_normal_AnyhowException(
           FutureOr<DemoStructForRustCallDartTwinNormal> Function(
                   DemoStructForRustCallDartTwinNormal)
               self,
@@ -8716,7 +8727,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
-      sse_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_rust_async_Output_demo_struct_for_rust_call_dart_twin_rust_async(
+      sse_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_rust_async_Output_demo_struct_for_rust_call_dart_twin_rust_async_AnyhowException(
           FutureOr<DemoStructForRustCallDartTwinRustAsync> Function(
                   DemoStructForRustCallDartTwinRustAsync)
               self,

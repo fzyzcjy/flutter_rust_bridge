@@ -2052,65 +2052,72 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   FutureOr<void> Function(Object)
-      dco_decode_DartFn_Inputs_DartOpaque_Output_unit(dynamic raw);
+      dco_decode_DartFn_Inputs_DartOpaque_Output_unit_AnyhowException(
+          dynamic raw);
 
   @protected
-  FutureOr<void> Function(String) dco_decode_DartFn_Inputs_String_Output_unit(
-      dynamic raw);
+  FutureOr<String> Function(String)
+      dco_decode_DartFn_Inputs_String_Output_String_AnyhowException(
+          dynamic raw);
+
+  @protected
+  FutureOr<void> Function(String)
+      dco_decode_DartFn_Inputs_String_Output_unit_AnyhowException(dynamic raw);
 
   @protected
   FutureOr<void> Function(String, DemoStructForRustCallDartTwinNormal)
-      dco_decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_normal_Output_unit(
+      dco_decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_normal_Output_unit_AnyhowException(
           dynamic raw);
 
   @protected
   FutureOr<void> Function(String, DemoStructForRustCallDartTwinRustAsync)
-      dco_decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_rust_async_Output_unit(
+      dco_decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_rust_async_Output_unit_AnyhowException(
           dynamic raw);
 
   @protected
   FutureOr<void> Function(String, DemoStructForRustCallDartTwinRustAsyncSse)
-      dco_decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_rust_async_sse_Output_unit(
+      dco_decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_rust_async_sse_Output_unit_AnyhowException(
           dynamic raw);
 
   @protected
   FutureOr<void> Function(String, DemoStructForRustCallDartTwinSse)
-      dco_decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_sse_Output_unit(
+      dco_decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_sse_Output_unit_AnyhowException(
           dynamic raw);
 
   @protected
-  FutureOr<Object> Function() dco_decode_DartFn_Inputs__Output_DartOpaque(
-      dynamic raw);
+  FutureOr<Object> Function()
+      dco_decode_DartFn_Inputs__Output_DartOpaque_AnyhowException(dynamic raw);
 
   @protected
-  FutureOr<String> Function() dco_decode_DartFn_Inputs__Output_String(
-      dynamic raw);
+  FutureOr<String> Function()
+      dco_decode_DartFn_Inputs__Output_String_AnyhowException(dynamic raw);
 
   @protected
-  FutureOr<void> Function() dco_decode_DartFn_Inputs__Output_unit(dynamic raw);
+  FutureOr<void> Function()
+      dco_decode_DartFn_Inputs__Output_unit_AnyhowException(dynamic raw);
 
   @protected
   FutureOr<DemoStructForRustCallDartTwinNormal> Function(
           DemoStructForRustCallDartTwinNormal)
-      dco_decode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_normal_Output_demo_struct_for_rust_call_dart_twin_normal(
+      dco_decode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_normal_Output_demo_struct_for_rust_call_dart_twin_normal_AnyhowException(
           dynamic raw);
 
   @protected
   FutureOr<DemoStructForRustCallDartTwinRustAsync> Function(
           DemoStructForRustCallDartTwinRustAsync)
-      dco_decode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_rust_async_Output_demo_struct_for_rust_call_dart_twin_rust_async(
+      dco_decode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_rust_async_Output_demo_struct_for_rust_call_dart_twin_rust_async_AnyhowException(
           dynamic raw);
 
   @protected
   FutureOr<DemoStructForRustCallDartTwinRustAsyncSse> Function(
           DemoStructForRustCallDartTwinRustAsyncSse)
-      dco_decode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_rust_async_sse_Output_demo_struct_for_rust_call_dart_twin_rust_async_sse(
+      dco_decode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_rust_async_sse_Output_demo_struct_for_rust_call_dart_twin_rust_async_sse_AnyhowException(
           dynamic raw);
 
   @protected
   FutureOr<DemoStructForRustCallDartTwinSse> Function(
           DemoStructForRustCallDartTwinSse)
-      dco_decode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_sse_Output_demo_struct_for_rust_call_dart_twin_sse(
+      dco_decode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_sse_Output_demo_struct_for_rust_call_dart_twin_sse_AnyhowException(
           dynamic raw);
 
   @protected
@@ -26057,48 +26064,53 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       StructWithImplBlockInMultiFile raw);
 
   @protected
-  PlatformPointer cst_encode_DartFn_Inputs_DartOpaque_Output_unit(
-      FutureOr<void> Function(Object) raw);
+  PlatformPointer
+      cst_encode_DartFn_Inputs_DartOpaque_Output_unit_AnyhowException(
+          FutureOr<void> Function(Object) raw);
 
   @protected
-  PlatformPointer cst_encode_DartFn_Inputs_String_Output_unit(
+  PlatformPointer cst_encode_DartFn_Inputs_String_Output_String_AnyhowException(
+      FutureOr<String> Function(String) raw);
+
+  @protected
+  PlatformPointer cst_encode_DartFn_Inputs_String_Output_unit_AnyhowException(
       FutureOr<void> Function(String) raw);
 
   @protected
   PlatformPointer
-      cst_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_normal_Output_unit(
+      cst_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_normal_Output_unit_AnyhowException(
           FutureOr<void> Function(String, DemoStructForRustCallDartTwinNormal)
               raw);
 
   @protected
   PlatformPointer
-      cst_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_rust_async_Output_unit(
+      cst_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_rust_async_Output_unit_AnyhowException(
           FutureOr<void> Function(
                   String, DemoStructForRustCallDartTwinRustAsync)
               raw);
 
   @protected
-  PlatformPointer cst_encode_DartFn_Inputs__Output_DartOpaque(
+  PlatformPointer cst_encode_DartFn_Inputs__Output_DartOpaque_AnyhowException(
       FutureOr<Object> Function() raw);
 
   @protected
-  PlatformPointer cst_encode_DartFn_Inputs__Output_String(
+  PlatformPointer cst_encode_DartFn_Inputs__Output_String_AnyhowException(
       FutureOr<String> Function() raw);
 
   @protected
-  PlatformPointer cst_encode_DartFn_Inputs__Output_unit(
+  PlatformPointer cst_encode_DartFn_Inputs__Output_unit_AnyhowException(
       FutureOr<void> Function() raw);
 
   @protected
   PlatformPointer
-      cst_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_normal_Output_demo_struct_for_rust_call_dart_twin_normal(
+      cst_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_normal_Output_demo_struct_for_rust_call_dart_twin_normal_AnyhowException(
           FutureOr<DemoStructForRustCallDartTwinNormal> Function(
                   DemoStructForRustCallDartTwinNormal)
               raw);
 
   @protected
   PlatformPointer
-      cst_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_rust_async_Output_demo_struct_for_rust_call_dart_twin_rust_async(
+      cst_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_rust_async_Output_demo_struct_for_rust_call_dart_twin_rust_async_AnyhowException(
           FutureOr<DemoStructForRustCallDartTwinRustAsync> Function(
                   DemoStructForRustCallDartTwinRustAsync)
               raw);
@@ -27618,23 +27630,27 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_Chrono_Utc(DateTime self, SseSerializer serializer);
 
   @protected
-  void sse_encode_DartFn_Inputs_DartOpaque_Output_unit(
+  void sse_encode_DartFn_Inputs_DartOpaque_Output_unit_AnyhowException(
       FutureOr<void> Function(Object) self, SseSerializer serializer);
 
   @protected
-  void sse_encode_DartFn_Inputs_String_Output_unit(
+  void sse_encode_DartFn_Inputs_String_Output_String_AnyhowException(
+      FutureOr<String> Function(String) self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_DartFn_Inputs_String_Output_unit_AnyhowException(
       FutureOr<void> Function(String) self, SseSerializer serializer);
 
   @protected
   void
-      sse_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_normal_Output_unit(
+      sse_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_normal_Output_unit_AnyhowException(
           FutureOr<void> Function(String, DemoStructForRustCallDartTwinNormal)
               self,
           SseSerializer serializer);
 
   @protected
   void
-      sse_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_rust_async_Output_unit(
+      sse_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_rust_async_Output_unit_AnyhowException(
           FutureOr<void> Function(
                   String, DemoStructForRustCallDartTwinRustAsync)
               self,
@@ -27642,7 +27658,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
-      sse_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_rust_async_sse_Output_unit(
+      sse_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_rust_async_sse_Output_unit_AnyhowException(
           FutureOr<void> Function(
                   String, DemoStructForRustCallDartTwinRustAsyncSse)
               self,
@@ -27650,26 +27666,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
-      sse_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_sse_Output_unit(
+      sse_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_sse_Output_unit_AnyhowException(
           FutureOr<void> Function(String, DemoStructForRustCallDartTwinSse)
               self,
           SseSerializer serializer);
 
   @protected
-  void sse_encode_DartFn_Inputs__Output_DartOpaque(
+  void sse_encode_DartFn_Inputs__Output_DartOpaque_AnyhowException(
       FutureOr<Object> Function() self, SseSerializer serializer);
 
   @protected
-  void sse_encode_DartFn_Inputs__Output_String(
+  void sse_encode_DartFn_Inputs__Output_String_AnyhowException(
       FutureOr<String> Function() self, SseSerializer serializer);
 
   @protected
-  void sse_encode_DartFn_Inputs__Output_unit(
+  void sse_encode_DartFn_Inputs__Output_unit_AnyhowException(
       FutureOr<void> Function() self, SseSerializer serializer);
 
   @protected
   void
-      sse_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_normal_Output_demo_struct_for_rust_call_dart_twin_normal(
+      sse_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_normal_Output_demo_struct_for_rust_call_dart_twin_normal_AnyhowException(
           FutureOr<DemoStructForRustCallDartTwinNormal> Function(
                   DemoStructForRustCallDartTwinNormal)
               self,
@@ -27677,7 +27693,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
-      sse_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_rust_async_Output_demo_struct_for_rust_call_dart_twin_rust_async(
+      sse_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_rust_async_Output_demo_struct_for_rust_call_dart_twin_rust_async_AnyhowException(
           FutureOr<DemoStructForRustCallDartTwinRustAsync> Function(
                   DemoStructForRustCallDartTwinRustAsync)
               self,
@@ -27685,7 +27701,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
-      sse_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_rust_async_sse_Output_demo_struct_for_rust_call_dart_twin_rust_async_sse(
+      sse_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_rust_async_sse_Output_demo_struct_for_rust_call_dart_twin_rust_async_sse_AnyhowException(
           FutureOr<DemoStructForRustCallDartTwinRustAsyncSse> Function(
                   DemoStructForRustCallDartTwinRustAsyncSse)
               self,
@@ -27693,7 +27709,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
-      sse_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_sse_Output_demo_struct_for_rust_call_dart_twin_sse(
+      sse_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_sse_Output_demo_struct_for_rust_call_dart_twin_sse_AnyhowException(
           FutureOr<DemoStructForRustCallDartTwinSse> Function(
                   DemoStructForRustCallDartTwinSse)
               self,
@@ -35504,6 +35520,14 @@ class RustLibWire implements BaseWire {
       wasmModule.wire__crate__api__dart_fn__rust_call_dart_one_arg_twin_normal(
           port_, callback);
 
+  void wire__crate__api__dart_fn__rust_call_dart_return_result_twin_normal(
+          NativePortType port_,
+          PlatformPointer callback,
+          String? expect_output) =>
+      wasmModule
+          .wire__crate__api__dart_fn__rust_call_dart_return_result_twin_normal(
+              port_, callback, expect_output);
+
   void wire__crate__api__dart_fn__rust_call_dart_return_twin_normal(
           NativePortType port_, PlatformPointer callback) =>
       wasmModule.wire__crate__api__dart_fn__rust_call_dart_return_twin_normal(
@@ -41583,6 +41607,14 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_one_arg_twin_rust_async(
               port_, callback);
 
+  void wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_return_result_twin_rust_async(
+          NativePortType port_,
+          PlatformPointer callback,
+          String? expect_output) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_return_result_twin_rust_async(
+              port_, callback, expect_output);
+
   void wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_return_twin_rust_async(
           NativePortType port_, PlatformPointer callback) =>
       wasmModule
@@ -41640,6 +41672,15 @@ class RustLibWire implements BaseWire {
           int data_len_) =>
       wasmModule
           .wire__crate__api__pseudo_manual__dart_fn_twin_rust_async_sse__rust_call_dart_one_arg_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__dart_fn_twin_rust_async_sse__rust_call_dart_return_result_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__dart_fn_twin_rust_async_sse__rust_call_dart_return_result_twin_rust_async_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__pseudo_manual__dart_fn_twin_rust_async_sse__rust_call_dart_return_twin_rust_async_sse(
@@ -41712,6 +41753,15 @@ class RustLibWire implements BaseWire {
           int data_len_) =>
       wasmModule
           .wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_one_arg_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_return_result_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_return_result_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_return_twin_sse(
@@ -57018,6 +57068,12 @@ class RustLibWasmModule implements WasmModule {
   external void wire__crate__api__dart_fn__rust_call_dart_one_arg_twin_normal(
       NativePortType port_, PlatformPointer callback);
 
+  external void
+      wire__crate__api__dart_fn__rust_call_dart_return_result_twin_normal(
+          NativePortType port_,
+          PlatformPointer callback,
+          String? expect_output);
+
   external void wire__crate__api__dart_fn__rust_call_dart_return_twin_normal(
       NativePortType port_, PlatformPointer callback);
 
@@ -61205,6 +61261,12 @@ class RustLibWasmModule implements WasmModule {
           NativePortType port_, PlatformPointer callback);
 
   external void
+      wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_return_result_twin_rust_async(
+          NativePortType port_,
+          PlatformPointer callback,
+          String? expect_output);
+
+  external void
       wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_return_twin_rust_async(
           NativePortType port_, PlatformPointer callback);
 
@@ -61242,6 +61304,13 @@ class RustLibWasmModule implements WasmModule {
 
   external void
       wire__crate__api__pseudo_manual__dart_fn_twin_rust_async_sse__rust_call_dart_one_arg_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__dart_fn_twin_rust_async_sse__rust_call_dart_return_result_twin_rust_async_sse(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -61298,6 +61367,13 @@ class RustLibWasmModule implements WasmModule {
 
   external void
       wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_one_arg_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_return_result_twin_sse(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
