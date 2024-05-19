@@ -5,4 +5,5 @@ pub mod custom_handler;
 pub mod new_module_system;
 pub mod old_module_system;
 pub mod protobuf_for_benchmark;
+pub mod sample_impls;
 pub mod sample_types;
