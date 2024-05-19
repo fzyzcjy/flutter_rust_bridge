@@ -30,17 +30,10 @@ impl<'a> WireRustGeneratorMiscTrait for DartFnWireRustGenerator<'a> {
         let action_normal = DartFnOutputAction::Success as i32;
         let action_error = DartFnOutputAction::Error as i32;
 
-        let (branch_normal, branch_err) = if self.ir.output.api_fallible {
-            (
-                format!("std::result::Result::Ok(<{output_normal_type}>::sse_decode(&mut deserializer))"),
-                format!("std::result::Result::Err(<{output_error_type}>::sse_decode(&mut deserializer))"),
-            )
+        let maybe_unwrap_ans = if self.ir.output.api_fallible {
+            ""
         } else {
-            (
-                format!("<{output_normal_type}>::sse_decode(&mut deserializer)"),
-                r#"panic!("Dart throws exception but Rust side assume it is not failable")"#
-                    .to_owned(),
-            )
+            r#"let ans = ans.expect("Dart throws exception but Rust side assume it is not failable");"#
         };
 
         Acc::new_common(
@@ -57,12 +50,12 @@ impl<'a> WireRustGeneratorMiscTrait for DartFnWireRustGenerator<'a> {
                         let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
                         let action = deserializer.cursor.read_u8().unwrap();
                         let ans = match action {{
-                            {action_normal} => {branch_normal},
-                            {action_error} => {branch_error},
+                            {action_normal} => std::result::Result::Ok(<{output_normal_type}>::sse_decode(&mut deserializer)),
+                            {action_error} => std::result::Result::Err(<{output_error_type}>::sse_decode(&mut deserializer)),
                             _ => unreachable!(),
                         }};
                         deserializer.end();
-                        ans
+                        {maybe_unwrap_ans}ans
                     }}
 
                     move |{parameter_names_and_types}| {{
