@@ -11,3 +11,71 @@ use flutter_rust_bridge::{Handler, IntoIntoDart};
 // Section: boilerplate
 
 flutter_rust_bridge::frb_generated_boilerplate_io!();
+
+// Section: dart2rust
+
+impl CstDecode<char> for *mut wire_cst_list_prim_u_8_strict {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> char {
+        CstDecode::<String>::cst_decode(self)
+            .chars()
+            .next()
+            .unwrap()
+    }
+}
+impl CstDecode<String> for *mut wire_cst_list_prim_u_8_strict {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> String {
+        let vec: Vec<u8> = self.cst_decode();
+        String::from_utf8(vec).unwrap()
+    }
+}
+impl CstDecode<Vec<u8>> for *mut wire_cst_list_prim_u_8_strict {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> Vec<u8> {
+        unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_dart_minimal_wire__crate__api__minimal__handle_char_twin_normal(
+    port_: i64,
+    arg: *mut wire_cst_list_prim_u_8_strict,
+) {
+    wire__crate__api__minimal__handle_char_twin_normal_impl(port_, arg)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_dart_minimal_wire__crate__api__minimal__init_app(port_: i64) {
+    wire__crate__api__minimal__init_app_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_dart_minimal_wire__crate__api__minimal__minimal_adder(
+    port_: i64,
+    a: i32,
+    b: i32,
+) {
+    wire__crate__api__minimal__minimal_adder_impl(port_, a, b)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_dart_minimal_cst_new_list_prim_u_8_strict(
+    len: i32,
+) -> *mut wire_cst_list_prim_u_8_strict {
+    let ans = wire_cst_list_prim_u_8_strict {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(ans)
+}
+
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_list_prim_u_8_strict {
+    ptr: *mut u8,
+    len: i32,
+}
