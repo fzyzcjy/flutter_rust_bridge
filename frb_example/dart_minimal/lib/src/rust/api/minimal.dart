@@ -8,3 +8,20 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<int> minimalAdder({required int a, required int b, dynamic hint}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b, hint: hint);
+
+class A {
+  const A();
+
+  static Future<void> g({required B b, dynamic hint}) =>
+      RustLib.instance.api.crateApiAnotherAG(b: b, hint: hint);
+
+  static Future<void> f({dynamic hint}) =>
+      RustLib.instance.api.crateApiMinimalAF(hint: hint);
+
+  @override
+  int get hashCode => 0;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) || other is A && runtimeType == other.runtimeType;
+}
