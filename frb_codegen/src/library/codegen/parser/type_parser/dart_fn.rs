@@ -3,6 +3,7 @@ use crate::codegen::ir::ident::IrIdent;
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::ty::dart_fn::IrDartFnOutput;
 use crate::codegen::ir::ty::dart_fn::IrTypeDartFn;
+use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::enumeration::{
     IrEnum, IrEnumIdent, IrEnumMode, IrTypeEnumRef, IrVariant, IrVariantKind,
 };
@@ -55,7 +56,8 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 inputs,
                 output: Box::new(IrDartFnOutput {
                     normal: output.ok_output,
-                    error: output.error_output,
+                    error: output.error_output.unwrap_or(FALLBACK_ERROR_TYPE),
+                    api_fallible: output.error_output.is_some(),
                 }),
             }));
 
@@ -130,6 +132,8 @@ fn create_enum_variant(
         }),
     }
 }
+
+const FALLBACK_ERROR_TYPE: IrType = IrType::Delegate(IrTypeDelegate::String);
 
 // // Use this unit "test" to see how a type will be parsed into a tree
 // #[cfg(test)]
