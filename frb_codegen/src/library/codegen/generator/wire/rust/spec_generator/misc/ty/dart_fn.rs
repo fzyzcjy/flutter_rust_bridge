@@ -22,19 +22,21 @@ impl<'a> WireRustGeneratorMiscTrait for DartFnWireRustGenerator<'a> {
             .map(|i| format!("arg{i}.into_into_dart().into_dart(),"))
             .join("");
 
-        let return_type = self.ir.output.rust_api_type();
+        let return_type_outer = self.ir.output.rust_api_type();
+        let return_type_inner = self.ir.output.delegate.rust_api_type();
 
         Acc::new_common(
             format!(
                 "fn decode_{safe_ident}(
                     dart_opaque: flutter_rust_bridge::DartOpaque,
-                ) -> impl Fn({parameter_types}) -> flutter_rust_bridge::DartFnFuture<{return_type}> {{
+                ) -> impl Fn({parameter_types}) -> flutter_rust_bridge::DartFnFuture<{return_type_outer}> {{
                     use flutter_rust_bridge::IntoDart;
 
-                    async fn body(dart_opaque: flutter_rust_bridge::DartOpaque, {parameter_names_and_types}) -> {return_type} {{
+                    async fn body(dart_opaque: flutter_rust_bridge::DartOpaque, {parameter_names_and_types}) -> {return_type_outer} {{
                         let args = vec![{into_dart_expressions}];
                         let message = {HANDLER_NAME}.dart_fn_invoke(dart_opaque, args).await;
-                        <{return_type}>::sse_decode_single(message)
+                        let decoded = <{return_type_inner}>::sse_decode_single(message);
+                        {TODO}
                     }}
 
                     move |{parameter_names_and_types}| {{
