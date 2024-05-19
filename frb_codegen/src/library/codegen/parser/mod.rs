@@ -50,7 +50,7 @@ pub(crate) fn parse(
     dumper.dump(SourceGraph, "source_graph.json", &crate_map)?;
     drop(pb);
 
-    let crate_all_rust_paths = get_crate_all_rust_paths(&config.rust_crate_dir)?;
+    let crate_all_rust_paths = crate_map.root_module().collect_paths();
     let all_file_data_arr = read_files(
         crate_all_rust_paths,
         &config.rust_crate_dir,
@@ -171,10 +171,6 @@ fn read_files(
             Ok(FileData { path, content, ast })
         })
         .collect()
-}
-
-fn get_crate_all_rust_paths(rust_crate_dir: &Path) -> anyhow::Result<Vec<PathBuf>> {
-    TODO
 }
 
 #[cfg(test)]
