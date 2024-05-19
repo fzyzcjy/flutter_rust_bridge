@@ -3,6 +3,7 @@ use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::misc::ty::WireDartGeneratorMiscTrait;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
+use crate::codegen::generator::wire::rust::spec_generator::misc::ty::dart_fn::DartFnOutputAction;
 use crate::codegen::ir::ty::IrTypeTrait;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use itertools::Itertools;
@@ -38,6 +39,8 @@ impl<'a> WireDartGeneratorMiscTrait for DartFnWireDartGenerator<'a> {
         .dart_api_type();
         let output_normal_safe_ident = self.ir.output.normal.safe_ident();
         let output_error_safe_ident = self.ir.output.error.safe_ident();
+        let action_normal = DartFnOutputAction::Success as i32;
+        let action_error = DartFnOutputAction::Error as i32;
 
         let api_impl_body = format!(
             "
@@ -57,10 +60,10 @@ impl<'a> WireDartGeneratorMiscTrait for DartFnWireDartGenerator<'a> {
                 final serializer = SseSerializer(generalizedFrbRustBinding);
                 assert((rawOutput != null) ^ (rawError != null));
                 if (rawOutput != null) {{
-                    serializer.buffer.putInt32(TODO);
+                    serializer.buffer.putInt32({action_normal});
                     sse_encode_{output_normal_safe_ident}(rawOutput.value, serializer);
                 }} else {{
-                    serializer.buffer.putInt32(TODO);
+                    serializer.buffer.putInt32({action_error});
                     sse_encode_{output_error_safe_ident}(rawError.value, serializer);
                 }}
                 final output = serializer.intoRaw();

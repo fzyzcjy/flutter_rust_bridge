@@ -83,3 +83,9 @@ fn generate_return_type_inner_to_outer(ir: &IrMaybeResult) -> String {
         }}"
     )
 }
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub(crate) enum DartFnOutputAction {
+    Success = 0,
+    Error = 1,
+}
