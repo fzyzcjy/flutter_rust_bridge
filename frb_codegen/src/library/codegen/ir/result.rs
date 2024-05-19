@@ -27,8 +27,15 @@ impl IrMaybeResult {
         self.delegate.safe_ident()
     }
 
-    // TODO maybe move
     pub(crate) fn rust_api_type(&self) -> String {
-        todo!()
+        if let Some(error) = &self.error {
+            format!(
+                "std::result::Result<{}, {}>",
+                self.normal.rust_api_type(),
+                error.rust_api_type()
+            )
+        } else {
+            self.normal.rust_api_type()
+        }
     }
 }
