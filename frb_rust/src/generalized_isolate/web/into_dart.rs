@@ -18,6 +18,7 @@ impl<T, A: BaseArc<T>> IntoDartExceptPrimitive for RustOpaqueBase<T, A> {}
 impl IntoDartExceptPrimitive for crate::dart_opaque::DartOpaque {}
 impl IntoDartExceptPrimitive for String {}
 impl IntoDartExceptPrimitive for bool {}
+impl IntoDartExceptPrimitive for char {}
 impl<T: IntoDart> IntoDartExceptPrimitive for Option<T> {}
 
 impl IntoDart for () {
