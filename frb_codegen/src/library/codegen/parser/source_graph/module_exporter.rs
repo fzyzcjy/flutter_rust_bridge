@@ -2,6 +2,7 @@ use crate::codegen::parser::source_graph::modules::{Enum, Module, Struct};
 use log::debug;
 use std::collections::HashMap;
 use std::fmt::Debug;
+use std::path::PathBuf;
 use syn::Type;
 
 impl Module {
@@ -21,6 +22,14 @@ impl Module {
             |module| &module.scope.type_alias,
             |x| (x.ident.clone(), x.target.clone()),
         )
+    }
+
+    pub fn collect_paths(&self) -> Vec<PathBuf> {
+        let mut ans = vec![];
+        self.visit_modules(&mut |module| {
+            ans.push(module.info.file_path.clone());
+        });
+        ans
     }
 
     fn collect_objects<'a, T: 'a, F, G, V: 'a>(
