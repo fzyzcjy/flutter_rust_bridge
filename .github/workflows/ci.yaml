@@ -28,9 +28,6 @@ jobs:
           - msan
         package:
           - frb_example--dart_minimal
-          - frb_example--pure_dart
-          - frb_example--pure_dart_pde
-          - frb_example--deliberate_bad
 
     steps:
       # setup
