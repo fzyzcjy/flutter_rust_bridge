@@ -10,7 +10,9 @@ pub struct IrTypeDartFn {
 
 pub(crate) struct IrDartFnOutput {
     pub(crate) normal: IrType,
-    pub(crate) error: Option<IrType>,
+    pub(crate) error: IrType,
+    /// Whether the error is provided to users, or error yields panic
+    pub(crate) api_fallible: bool,
 }
 }
 
