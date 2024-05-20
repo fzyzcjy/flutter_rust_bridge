@@ -57,6 +57,13 @@ Future<void> rustCallDartMultiTimesTwinNormal(
     RustLib.instance.api.crateApiDartFnRustCallDartMultiTimesTwinNormal(
         callback: callback, numTimes: numTimes, hint: hint);
 
+Future<void> rustCallDartReturnResultTwinNormal(
+        {required FutureOr<String> Function(String) callback,
+        String? expectOutput,
+        dynamic hint}) =>
+    RustLib.instance.api.crateApiDartFnRustCallDartReturnResultTwinNormal(
+        callback: callback, expectOutput: expectOutput, hint: hint);
+
 class DemoStructForRustCallDartTwinNormal {
   final String name;
 

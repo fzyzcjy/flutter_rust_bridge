@@ -16584,6 +16584,19 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__dart_fn__rust_c
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__dart_fn__rust_call_dart_return_result_twin_normal(
+    port_: i64,
+    callback: *const std::ffi::c_void,
+    expect_output: *mut wire_cst_list_prim_u_8_strict,
+) {
+    wire__crate__api__dart_fn__rust_call_dart_return_result_twin_normal_impl(
+        port_,
+        callback,
+        expect_output,
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__dart_fn__rust_call_dart_return_twin_normal(
     port_: i64,
     callback: *const std::ffi::c_void,
@@ -24390,6 +24403,15 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_return_result_twin_rust_async(
+    port_: i64,
+    callback: *const std::ffi::c_void,
+    expect_output: *mut wire_cst_list_prim_u_8_strict,
+) {
+    wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_return_result_twin_rust_async_impl(port_, callback, expect_output)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_return_twin_rust_async(
     port_: i64,
     callback: *const std::ffi::c_void,
@@ -24458,6 +24480,16 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
     data_len_: i32,
 ) {
     wire__crate__api__pseudo_manual__dart_fn_twin_rust_async_sse__rust_call_dart_one_arg_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__dart_fn_twin_rust_async_sse__rust_call_dart_return_result_twin_rust_async_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__pseudo_manual__dart_fn_twin_rust_async_sse__rust_call_dart_return_result_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
@@ -24548,6 +24580,21 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
     data_len_: i32,
 ) {
     wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_one_arg_twin_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_return_result_twin_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_return_result_twin_sse_impl(
         port_,
         ptr_,
         rust_vec_len_,

@@ -64,6 +64,14 @@ Future<void> rustCallDartMultiTimesTwinRustAsync(
         .crateApiPseudoManualDartFnTwinRustAsyncRustCallDartMultiTimesTwinRustAsync(
             callback: callback, numTimes: numTimes, hint: hint);
 
+Future<void> rustCallDartReturnResultTwinRustAsync(
+        {required FutureOr<String> Function(String) callback,
+        String? expectOutput,
+        dynamic hint}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualDartFnTwinRustAsyncRustCallDartReturnResultTwinRustAsync(
+            callback: callback, expectOutput: expectOutput, hint: hint);
+
 class DemoStructForRustCallDartTwinRustAsync {
   final String name;
 

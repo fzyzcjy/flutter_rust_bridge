@@ -64,6 +64,14 @@ Future<void> rustCallDartMultiTimesTwinSse(
         .crateApiPseudoManualDartFnTwinSseRustCallDartMultiTimesTwinSse(
             callback: callback, numTimes: numTimes, hint: hint);
 
+Future<void> rustCallDartReturnResultTwinSse(
+        {required FutureOr<String> Function(String) callback,
+        String? expectOutput,
+        dynamic hint}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualDartFnTwinSseRustCallDartReturnResultTwinSse(
+            callback: callback, expectOutput: expectOutput, hint: hint);
+
 class DemoStructForRustCallDartTwinSse {
   final String name;
 

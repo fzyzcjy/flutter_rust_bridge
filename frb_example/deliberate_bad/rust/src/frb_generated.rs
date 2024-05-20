@@ -14,7 +14,8 @@
     clippy::double_parens,
     clippy::let_and_return,
     clippy::too_many_arguments,
-    clippy::match_single_binding
+    clippy::match_single_binding,
+    clippy::let_unit_value
 )]
 
 // Section: imports

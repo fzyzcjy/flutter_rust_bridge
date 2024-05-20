@@ -14,7 +14,8 @@
     clippy::double_parens,
     clippy::let_and_return,
     clippy::too_many_arguments,
-    clippy::match_single_binding
+    clippy::match_single_binding,
+    clippy::let_unit_value
 )]
 
 // Section: imports
@@ -89,7 +90,8 @@ fn wire__crate__api__mandelbrot__draw_mandelbrot_impl(
 impl SseDecode for flutter_rust_bridge::for_generated::anyhow::Error {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        unreachable!("");
+        let mut inner = <String>::sse_decode(deserializer);
+        return anyhow::anyhow!("{}", inner);
     }
 }
 
