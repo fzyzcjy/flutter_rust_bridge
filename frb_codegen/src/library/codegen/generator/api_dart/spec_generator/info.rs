@@ -49,6 +49,7 @@ impl<'a> ApiDartGeneratorInfoTrait for DelegateApiDartGenerator<'a> {
         match &self.ir {
             IrTypeDelegate::Array(array) => array.dart_api_type(self.context),
             IrTypeDelegate::String => "String".to_string(),
+            IrTypeDelegate::Char => "String".to_string(),
             // IrTypeDelegate::StringList => "List<String>".to_owned(),
             // IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
             //     ApiDartGenerator::new(self.ir.get_delegate(), self.context).dart_api_type()

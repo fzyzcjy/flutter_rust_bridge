@@ -120,6 +120,11 @@ pub async fn handle_string_twin_rust_async_sse(s: String) -> String {
     s + &s2
 }
 
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn handle_char_twin_rust_async_sse(arg: char) -> char {
+    arg
+}
+
 // to check that `Vec<u8>` can be used as return type
 #[flutter_rust_bridge::frb(serialize)]
 pub async fn handle_vec_u8_twin_rust_async_sse(v: Vec<u8>) -> Vec<u8> {

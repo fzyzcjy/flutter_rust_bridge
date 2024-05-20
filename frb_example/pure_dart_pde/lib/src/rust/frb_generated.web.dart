@@ -713,6 +713,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   String dco_decode_Backtrace(dynamic raw);
 
   @protected
+  String dco_decode_Char(dynamic raw);
+
+  @protected
   Duration dco_decode_Chrono_Duration(dynamic raw);
 
   @protected
@@ -2089,6 +2092,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithCommentsTwinSync
       dco_decode_box_autoadd_struct_with_comments_twin_sync(dynamic raw);
+
+  @protected
+  StructWithCustomNameMethodTwinNormal
+      dco_decode_box_autoadd_struct_with_custom_name_method_twin_normal(
+          dynamic raw);
 
   @protected
   StructWithEnumTwinNormal dco_decode_box_autoadd_struct_with_enum_twin_normal(
@@ -3913,6 +3921,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  StructWithCustomNameMethodTwinNormal
+      dco_decode_struct_with_custom_name_method_twin_normal(dynamic raw);
+
+  @protected
   StructWithEnumTwinNormal dco_decode_struct_with_enum_twin_normal(dynamic raw);
 
   @protected
@@ -4487,6 +4499,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   String sse_decode_Backtrace(SseDeserializer deserializer);
+
+  @protected
+  String sse_decode_Char(SseDeserializer deserializer);
 
   @protected
   Duration sse_decode_Chrono_Duration(SseDeserializer deserializer);
@@ -5967,6 +5982,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithCommentsTwinSync
       sse_decode_box_autoadd_struct_with_comments_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithCustomNameMethodTwinNormal
+      sse_decode_box_autoadd_struct_with_custom_name_method_twin_normal(
           SseDeserializer deserializer);
 
   @protected
@@ -8045,6 +8065,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  StructWithCustomNameMethodTwinNormal
+      sse_decode_struct_with_custom_name_method_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
   StructWithEnumTwinNormal sse_decode_struct_with_enum_twin_normal(
       SseDeserializer deserializer);
 
@@ -8664,6 +8689,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_Backtrace(String self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Char(String self, SseSerializer serializer);
 
   @protected
   void sse_encode_Chrono_Duration(Duration self, SseSerializer serializer);
@@ -10148,6 +10176,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_box_autoadd_struct_with_comments_twin_sync(
       StructWithCommentsTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_struct_with_custom_name_method_twin_normal(
+      StructWithCustomNameMethodTwinNormal self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_struct_with_enum_twin_normal(
@@ -12165,6 +12197,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_struct_with_comments_twin_sync(
       StructWithCommentsTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_custom_name_method_twin_normal(
+      StructWithCustomNameMethodTwinNormal self, SseSerializer serializer);
 
   @protected
   void sse_encode_struct_with_enum_twin_normal(

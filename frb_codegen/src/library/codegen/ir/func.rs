@@ -12,6 +12,7 @@ use itertools::Itertools;
 crate::ir! {
 pub struct IrFunc {
     pub name: NamespacedName,
+    pub dart_name: Option<String>,
     pub id: i32,
     pub inputs: Vec<IrFuncInput>,
     pub output: IrFuncOutput,
@@ -53,6 +54,7 @@ pub enum IrFuncOwnerInfo {
 pub struct IrFuncOwnerInfoMethod {
     pub(crate) owner_ty: IrType,
     pub(crate) actual_method_name: String,
+    pub(crate) actual_method_dart_name: Option<String>,
     pub(crate) mode: IrFuncOwnerInfoMethodMode,
 }
 
@@ -130,7 +132,7 @@ impl IrFunc {
     }
 
     pub(crate) fn name_dart_api(&self) -> String {
-        self.name.name.to_owned().to_case(Case::Camel)
+        (self.dart_name.clone()).unwrap_or_else(|| self.name.name.to_owned().to_case(Case::Camel))
     }
 
     pub(crate) fn name_dart_wire(&self) -> String {

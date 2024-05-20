@@ -707,7 +707,7 @@ jobs:
       matrix:
         sanitizer:
           - asan
-          # - msan # todo: #1824
+          - msan
           - lsan
           # Every time we build TSAN in https://github.com/fzyzcjy/dart_lang_ci, it fails near the end.
           # Since it is unlikely we will have thread issues, we temporarily disable TSAN now.

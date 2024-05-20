@@ -113,7 +113,11 @@ fn generate_signature(
     let method_name = if default_constructor_mode.is_some() {
         "newInstance".to_owned()
     } else {
-        method_info.actual_method_name.to_case(Case::Camel)
+        (method_info
+            .actual_method_dart_name
+            .as_ref()
+            .unwrap_or(&method_info.actual_method_name))
+        .to_case(Case::Camel)
     };
     let (func_params, maybe_getter) = if func.getter {
         ("".to_owned(), "get")

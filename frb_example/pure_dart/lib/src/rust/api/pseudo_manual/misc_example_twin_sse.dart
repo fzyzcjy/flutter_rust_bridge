@@ -50,6 +50,11 @@ Future<String> handleStringTwinSse({required String s, dynamic hint}) =>
         .crateApiPseudoManualMiscExampleTwinSseHandleStringTwinSse(
             s: s, hint: hint);
 
+Future<String> handleCharTwinSse({required String arg, dynamic hint}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualMiscExampleTwinSseHandleCharTwinSse(
+            arg: arg, hint: hint);
+
 Future<Uint8List> handleVecU8TwinSse({required List<int> v, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualMiscExampleTwinSseHandleVecU8TwinSse(

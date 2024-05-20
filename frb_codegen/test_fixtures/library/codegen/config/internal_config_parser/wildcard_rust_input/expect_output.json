@@ -85,6 +85,9 @@
           "rust_input_paths": [
             "{the-working-directory}/src/api/apple.rs",
             "{the-working-directory}/src/api/orange.rs"
+          ],
+          "rust_suppressed_input_paths": [
+            "{the-working-directory}/src/api/mod.rs"
           ]
         },
         "rust_output_path": {
@@ -108,6 +111,9 @@
       "rust_input_paths": [
         "{the-working-directory}/src/api/apple.rs",
         "{the-working-directory}/src/api/orange.rs"
+      ],
+      "rust_suppressed_input_paths": [
+        "{the-working-directory}/src/api/mod.rs"
       ]
     }
   },
