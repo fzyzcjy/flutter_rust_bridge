@@ -44,6 +44,10 @@ Future<String> handleStringTwinNormal({required String s, dynamic hint}) =>
     RustLib.instance.api
         .crateApiMiscExampleHandleStringTwinNormal(s: s, hint: hint);
 
+Future<String> handleCharTwinNormal({required String arg, dynamic hint}) =>
+    RustLib.instance.api
+        .crateApiMiscExampleHandleCharTwinNormal(arg: arg, hint: hint);
+
 Future<Uint8List> handleVecU8TwinNormal({required List<int> v, dynamic hint}) =>
     RustLib.instance.api
         .crateApiMiscExampleHandleVecU8TwinNormal(v: v, hint: hint);

@@ -9,6 +9,8 @@ import 'package:frb_example_pure_dart/src/rust/auxiliary/sample_types.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
+import '../../test_utils.dart';
+
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
@@ -98,6 +100,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
       ),
     );
   });
+
+  addTestsIdentityFunctionCall(
+      handleCharTwinSync, <String>['a', '\0', '\u{10FFFF}']);
 
   test('dart call handleVecU8', () async {
     final len = 100000;

@@ -105,6 +105,10 @@ pub fn handle_string_twin_normal(s: String) -> String {
     s + &s2
 }
 
+pub fn handle_char_twin_normal(arg: char) -> char {
+    arg
+}
+
 // to check that `Vec<u8>` can be used as return type
 pub fn handle_vec_u8_twin_normal(v: Vec<u8>) -> Vec<u8> {
     info!("handle_vec_u8(first few elements: {:?})", &v[..5]);

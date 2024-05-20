@@ -112,6 +112,11 @@ pub fn handle_string_twin_sse(s: String) -> String {
     s + &s2
 }
 
+#[flutter_rust_bridge::frb(serialize)]
+pub fn handle_char_twin_sse(arg: char) -> char {
+    arg
+}
+
 // to check that `Vec<u8>` can be used as return type
 #[flutter_rust_bridge::frb(serialize)]
 pub fn handle_vec_u8_twin_sse(v: Vec<u8>) -> Vec<u8> {

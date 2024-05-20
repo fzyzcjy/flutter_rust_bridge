@@ -53,6 +53,12 @@ Future<String> handleStringTwinRustAsyncSse(
         .crateApiPseudoManualMiscExampleTwinRustAsyncSseHandleStringTwinRustAsyncSse(
             s: s, hint: hint);
 
+Future<String> handleCharTwinRustAsyncSse(
+        {required String arg, dynamic hint}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualMiscExampleTwinRustAsyncSseHandleCharTwinRustAsyncSse(
+            arg: arg, hint: hint);
+
 Future<Uint8List> handleVecU8TwinRustAsyncSse(
         {required List<int> v, dynamic hint}) =>
     RustLib.instance.api

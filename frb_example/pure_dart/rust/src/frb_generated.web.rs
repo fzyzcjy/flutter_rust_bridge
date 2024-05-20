@@ -73,6 +73,15 @@ impl CstDecode<backtrace::Backtrace> for String {
         unimplemented!()
     }
 }
+impl CstDecode<char> for String {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> char {
+        CstDecode::<String>::cst_decode(self)
+            .chars()
+            .next()
+            .unwrap()
+    }
+}
 impl CstDecode<chrono::Duration> for i64 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> chrono::Duration {
@@ -9286,6 +9295,15 @@ impl CstDecode<backtrace::Backtrace> for flutter_rust_bridge::for_generated::was
         unimplemented!()
     }
 }
+impl CstDecode<char> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> char {
+        CstDecode::<String>::cst_decode(self)
+            .chars()
+            .next()
+            .unwrap()
+    }
+}
 impl CstDecode<chrono::Duration> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> chrono::Duration {
@@ -14606,6 +14624,14 @@ pub fn wire__crate__api__misc_example__handle_big_buffers_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__misc_example__handle_big_buffers_twin_normal_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__misc_example__handle_char_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: String,
+) {
+    wire__crate__api__misc_example__handle_char_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
@@ -27519,6 +27545,16 @@ pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_big
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_char_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: String,
+) {
+    wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_char_twin_rust_async_impl(
+        port_, arg,
+    )
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_complex_struct_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     s: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
@@ -27591,6 +27627,16 @@ pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__handle
     data_len_: i32,
 ) {
     wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__handle_big_buffers_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__handle_char_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__handle_char_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -27681,6 +27727,21 @@ pub fn wire__crate__api__pseudo_manual__misc_example_twin_sse__handle_big_buffer
     data_len_: i32,
 ) {
     wire__crate__api__pseudo_manual__misc_example_twin_sse__handle_big_buffers_twin_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__misc_example_twin_sse__handle_char_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__pseudo_manual__misc_example_twin_sse__handle_char_twin_sse_impl(
         port_,
         ptr_,
         rust_vec_len_,
@@ -27815,6 +27876,13 @@ pub fn wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_big_buffe
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_char_twin_sync(
+    arg: String,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_char_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_complex_struct_twin_sync(
     s: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
@@ -27884,6 +27952,19 @@ pub fn wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__handle_big_b
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__handle_big_buffers_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__handle_char_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__handle_char_twin_sync_sse_impl(
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
 }
 
 #[wasm_bindgen]

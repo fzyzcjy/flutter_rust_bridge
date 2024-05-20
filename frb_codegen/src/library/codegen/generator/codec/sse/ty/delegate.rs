@@ -14,6 +14,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
             Lang::DartLang(_) => match &self.ir {
                 IrTypeDelegate::Array(_) => "self.inner".to_owned(),
                 IrTypeDelegate::String => "utf8.encoder.convert(self)".to_owned(),
+                IrTypeDelegate::Char => "self".to_owned(),
                 IrTypeDelegate::PrimitiveEnum(_) => "self.index".to_owned(),
                 IrTypeDelegate::Backtrace | IrTypeDelegate::AnyhowException => {
                     return Some(format!("{};", lang.throw_unreachable("")));
@@ -40,6 +41,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     "{ let boxed: Box<[_]> = Box::new(self); boxed.into_vec() }".to_owned()
                 }
                 IrTypeDelegate::String => "self.into_bytes()".to_owned(),
+                IrTypeDelegate::Char => "self.to_string()".to_owned(),
                 IrTypeDelegate::PrimitiveEnum(ir) => {
                     let src = ir.ir.get(self.context.ir_pack);
                     let variants = (src.variants.iter().enumerate())
@@ -90,6 +92,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                         .dart_api_type()
                 ),
                 IrTypeDelegate::String => "utf8.decoder.convert(inner)".to_owned(),
+                IrTypeDelegate::Char => "inner".to_owned(),
                 IrTypeDelegate::PrimitiveEnum(inner) => {
                     format!(
                         "{}.values[inner]",
@@ -125,6 +128,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     "flutter_rust_bridge::for_generated::from_vec_to_array(inner)".to_owned()
                 }
                 IrTypeDelegate::String => "String::from_utf8(inner).unwrap()".to_owned(),
+                IrTypeDelegate::Char => "inner.chars().next().unwrap()".to_owned(),
                 IrTypeDelegate::PrimitiveEnum(inner) => {
                     rust_decode_primitive_enum(inner, self.context.ir_pack, "inner")
                 }
