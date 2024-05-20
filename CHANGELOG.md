@@ -1,5 +1,16 @@
 # Changelog
 
+## 2.0.0-dev.35
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Support Result type when Rust calls Dart back #1945
+* Support type char #1957
+* Support renaming functions and methods #1958
+* Re-enable MemorySanitizer #1959
+* Show hints when functions or methods are ignored #1956
+* Add hints to deliberate Exception in RustLib.init in Chrome #1955
+* Support when struct type definition is in one file, struct impl is in another file, and the impl needs extra import #1953
+
 ## 2.0.0-dev.34
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
