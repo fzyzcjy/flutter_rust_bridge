@@ -3,10 +3,10 @@ use wasm_bindgen::prelude::*;
 #[macro_export]
 macro_rules! console_error {
     ($lit:literal) => {
-        $crate::misc::web_utils::js_console_error($lit)
+        $crate::for_generated::web_utils::js_console_error($lit)
     };
     ($($tt:tt)*) => {
-        $crate::misc::web_utils::js_console_error(&format!($($tt)*))
+        $crate::for_generated::web_utils::js_console_error(&format!($($tt)*))
     };
 }
 
@@ -23,15 +23,15 @@ extern "C" {
 /// Extracts current script file path from artificially generated stack trace
 pub(crate) fn script_path() -> Option<String> {
     js_sys::eval(
-        r"
+        r#"
 (() => {
     try {
-        throw new Error();
+        throw new Error("Harmless thrown-and-caught error to get script_path");
     } catch (e) {
         let parts = e.stack.match(/(?:\(|@)(\S+):\d+:\d+/);
         return parts[1];
     }
-})()",
+})()"#,
     )
     .ok()?
     .as_string()

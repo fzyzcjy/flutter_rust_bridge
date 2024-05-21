@@ -39,6 +39,9 @@ impl<'a> WireDartCodecDcoGeneratorDecoderTrait for DelegateWireDartCodecDcoGener
             /*| IrTypeDelegate::ZeroCopyBufferVecPrimitive(_)*/ => {
                 gen_decode_simple_type_cast(self.ir.clone().into(), self.context)
             }
+            IrTypeDelegate::Char => {
+                "return String.fromCharCode(raw);".to_owned()
+            }
             // IrTypeDelegate::StringList => {
             //     "return (raw as List<dynamic>).cast<String>();".to_owned()
             // }

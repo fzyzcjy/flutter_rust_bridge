@@ -179,6 +179,7 @@ impl_into_into_dart_by_self!(());
 impl_into_into_dart_by_self!(usize);
 impl_into_into_dart_by_self!(isize);
 impl_into_into_dart_by_self!(String);
+impl_into_into_dart_by_self!(char);
 #[cfg(feature = "dart-opaque")]
 impl_into_into_dart_by_self!(crate::dart_opaque::DartOpaque);
 #[cfg(not(target_family = "wasm"))]

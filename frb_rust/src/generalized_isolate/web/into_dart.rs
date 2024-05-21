@@ -179,6 +179,13 @@ delegate_buffer! {
     f64 => js_sys::Float64Array
 }
 
+impl IntoDart for char {
+    #[inline]
+    fn into_dart(self) -> DartAbi {
+        (self as u32).into_dart()
+    }
+}
+
 fn into_dart_iterator<T, It>(iter: It) -> DartAbi
 where
     T: IntoDart,

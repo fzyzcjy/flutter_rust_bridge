@@ -40,6 +40,7 @@ pub(crate) struct ApiDartOutputSpecItem {
     pub funcs: Vec<ApiDartGeneratedFunction>,
     pub classes: Vec<ApiDartGeneratedClass>,
     pub imports: DartBasicHeaderCode,
+    pub preamble: String,
     pub unused_types: Vec<String>,
     pub needs_freezed: bool,
 }
@@ -134,6 +135,7 @@ fn generate_item(
         funcs,
         classes,
         imports,
+        preamble: context.config.dart_preamble.clone(),
         unused_types,
         needs_freezed,
     })

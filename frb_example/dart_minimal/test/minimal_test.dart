@@ -14,4 +14,8 @@ Future<void> main() async {
     print('Action: Call rust (after)');
   });
   print('Action: Configure tests (end)');
+
+  test('handleCharTwinNormal', () async {
+    expect(await handleCharTwinNormal(arg: "a"), "a");
+  });
 }

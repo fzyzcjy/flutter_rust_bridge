@@ -30,7 +30,7 @@ impl<'a> ApiDartGeneratorInfoTrait for DartFnApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
         format!(
             "FutureOr<{}> Function({})",
-            ApiDartGenerator::new(self.ir.output.clone(), self.context).dart_api_type(),
+            ApiDartGenerator::new(self.ir.output.normal.clone(), self.context).dart_api_type(),
             (self.ir.inputs.iter())
                 .map(|x| ApiDartGenerator::new(x.clone(), self.context).dart_api_type())
                 .join(", "),
@@ -49,6 +49,7 @@ impl<'a> ApiDartGeneratorInfoTrait for DelegateApiDartGenerator<'a> {
         match &self.ir {
             IrTypeDelegate::Array(array) => array.dart_api_type(self.context),
             IrTypeDelegate::String => "String".to_string(),
+            IrTypeDelegate::Char => "String".to_string(),
             // IrTypeDelegate::StringList => "List<String>".to_owned(),
             // IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
             //     ApiDartGenerator::new(self.ir.get_delegate(), self.context).dart_api_type()

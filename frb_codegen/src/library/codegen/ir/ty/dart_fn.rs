@@ -5,7 +5,14 @@ use itertools::Itertools;
 crate::ir! {
 pub struct IrTypeDartFn {
     pub inputs: Vec<IrType>,
-    pub output: Box<IrType>,
+    pub output: Box<IrDartFnOutput>,
+}
+
+pub(crate) struct IrDartFnOutput {
+    pub(crate) normal: IrType,
+    pub(crate) error: IrType,
+    /// Whether the error is provided to users, or error yields panic
+    pub(crate) api_fallible: bool,
 }
 }
 
@@ -44,5 +51,32 @@ impl IrTypeTrait for IrTypeDartFn {
 impl IrTypeDartFn {
     pub(crate) fn get_delegate(&self) -> IrType {
         IrType::DartOpaque(IrTypeDartOpaque)
+    }
+}
+
+impl IrDartFnOutput {
+    pub(crate) fn visit_types<F: FnMut(&IrType) -> bool>(
+        &self,
+        f: &mut F,
+        ir_context: &impl IrContext,
+    ) {
+        self.normal.visit_types(f, ir_context);
+        self.error.visit_types(f, ir_context);
+    }
+
+    pub(crate) fn safe_ident(&self) -> String {
+        format!("{}_{}", self.normal.safe_ident(), self.error.safe_ident())
+    }
+
+    pub(crate) fn rust_api_type(&self) -> String {
+        if self.api_fallible {
+            format!(
+                "std::result::Result<{}, {}>",
+                self.normal.rust_api_type(),
+                self.error.rust_api_type()
+            )
+        } else {
+            self.normal.rust_api_type()
+        }
     }
 }

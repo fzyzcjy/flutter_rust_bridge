@@ -52,6 +52,7 @@ fn compute_codegen_config_from_naive_command_args(
         rust_output: args.rust_output,
         dart_entrypoint_class_name: args.dart_entrypoint_class_name,
         dart_format_line_length: args.dart_format_line_length,
+        dart_preamble: args.dart_preamble,
         dart_enums_style: Some(!args.no_dart_enums_style),
         add_mod_to_lib: Some(!args.no_add_mod_to_lib),
         llvm_path: args.llvm_path,

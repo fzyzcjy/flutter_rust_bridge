@@ -20,7 +20,8 @@
       "dart3": true,
       "dart_decl_base_output_path": "{the-working-directory}/my_dart_folder",
       "dart_entrypoint_class_name": "RustLib",
-      "dart_enums_style": true
+      "dart_enums_style": true,
+      "dart_preamble": ""
     },
     "wire": {
       "c": {
@@ -84,6 +85,9 @@
           "rust_input_paths": [
             "{the-working-directory}/src/api/apple.rs",
             "{the-working-directory}/src/api/orange.rs"
+          ],
+          "rust_suppressed_input_paths": [
+            "{the-working-directory}/src/api/mod.rs"
           ]
         },
         "rust_output_path": {
@@ -107,6 +111,9 @@
       "rust_input_paths": [
         "{the-working-directory}/src/api/apple.rs",
         "{the-working-directory}/src/api/orange.rs"
+      ],
+      "rust_suppressed_input_paths": [
+        "{the-working-directory}/src/api/mod.rs"
       ]
     }
   },

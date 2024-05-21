@@ -1,5 +1,8 @@
+use crate::codegen::ir::ty::dart_fn::IrDartFnOutput;
 use crate::codegen::ir::ty::dart_fn::IrTypeDartFn;
+use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::IrType;
+use crate::codegen::parser::type_parser::result::{parse_type_maybe_result, ResultTypeInfo};
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use crate::if_then_some;
 use anyhow::{bail, Context};
@@ -38,9 +41,16 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 .map(|x| self.parse_type(x))
                 .collect::<anyhow::Result<Vec<_>>>()?;
 
-            let output = Box::new(self.parse_dart_fn_output(&arguments.output)?);
+            let output = self.parse_dart_fn_output(&arguments.output)?;
 
-            return Ok(IrType::DartFn(IrTypeDartFn { inputs, output }));
+            return Ok(IrType::DartFn(IrTypeDartFn {
+                inputs,
+                output: Box::new(IrDartFnOutput {
+                    normal: output.ok_output,
+                    error: output.error_output.clone().unwrap_or(FALLBACK_ERROR_TYPE),
+                    api_fallible: output.error_output.is_some(),
+                }),
+            }));
 
             // This will stop the whole generator and tell the users, so we do not care about testing it
             // frb-coverage:ignore-start
@@ -52,7 +62,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
     // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
     // frb-coverage:ignore-start
-    fn parse_dart_fn_output(&mut self, return_type: &ReturnType) -> anyhow::Result<IrType> {
+    fn parse_dart_fn_output(&mut self, return_type: &ReturnType) -> anyhow::Result<ResultTypeInfo> {
         // frb-coverage:ignore-end
         if let ReturnType::Type(_, ret_ty) = return_type {
             if let Type::Path(TypePath { ref path, .. }) = **ret_ty {
@@ -67,7 +77,8 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                             .find(|arg| matches!(arg, GenericArgument::Type(_)))
                             .unwrap()
                         {
-                            return self.parse_type(inner_ty);
+                            let ir = self.parse_type(inner_ty)?;
+                            return parse_type_maybe_result(&ir, self.inner, self.context);
 
                             // This will stop the whole generator and tell the users, so we do not care about testing it
                             // frb-coverage:ignore-start
@@ -81,6 +92,8 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         // frb-coverage:ignore-end
     }
 }
+
+const FALLBACK_ERROR_TYPE: IrType = IrType::Delegate(IrTypeDelegate::AnyhowException);
 
 // // Use this unit "test" to see how a type will be parsed into a tree
 // #[cfg(test)]

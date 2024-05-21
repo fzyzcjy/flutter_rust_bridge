@@ -119,6 +119,7 @@ impl InternalConfig {
                     dart_entrypoint_class_name: dart_output_class_name_pack
                         .entrypoint_class_name
                         .clone(),
+                    dart_preamble: config.dart_preamble.clone().unwrap_or_default(),
                 },
                 wire: GeneratorWireInternalConfig {
                     dart: GeneratorWireDartInternalConfig {
@@ -246,12 +247,18 @@ fn compute_rust_input_path_pack(
     const BLACKLIST_FILE_NAMES: [&str; 1] = ["mod.rs"];
 
     let glob_pattern = base_dir.join(raw_rust_input);
-    let rust_input_paths = glob_path(&glob_pattern)?
-        .into_iter()
-        .filter(|path| !BLACKLIST_FILE_NAMES.contains(&path.file_name().unwrap().to_str().unwrap()))
-        .collect_vec();
 
-    let pack = RustInputPathPack { rust_input_paths };
+    let mut pack = RustInputPathPack {
+        rust_input_paths: vec![],
+        rust_suppressed_input_paths: vec![],
+    };
+    for path in glob_path(&glob_pattern)?.into_iter() {
+        if BLACKLIST_FILE_NAMES.contains(&path.file_name().unwrap().to_str().unwrap()) {
+            pack.rust_suppressed_input_paths.push(path);
+        } else {
+            pack.rust_input_paths.push(path);
+        }
+    }
 
     // This will stop the whole generator and tell the users, so we do not care about testing it
     // frb-coverage:ignore-start
