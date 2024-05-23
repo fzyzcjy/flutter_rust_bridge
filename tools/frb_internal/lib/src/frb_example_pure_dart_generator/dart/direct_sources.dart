@@ -27,7 +27,7 @@ Map<String, String> generateDartDirectSources(Package package) {
       package,
       postfix: '_list',
       values: (ty) => [
-        ty.listWrapper(ty, ''),
+        ty.listWrapper(ty, null),
         ...ty.interestRawValues
             .map((x) => x.guard + ty.listWrapper(ty, x.text)),
       ],

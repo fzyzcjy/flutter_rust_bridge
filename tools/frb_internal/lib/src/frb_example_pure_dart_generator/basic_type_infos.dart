@@ -8,7 +8,7 @@ class BasicTypeInfo {
   final bool enableList;
   final bool enableRustExpect;
   final List<RawValue> interestRawValues;
-  final String Function(BasicTypeInfo, String) listWrapper;
+  final String Function(BasicTypeInfo, String?) listWrapper;
 
   BasicTypeInfo({
     String? name,
@@ -34,11 +34,11 @@ class RawValue {
   String get textAndGuard => '$guard$text';
 }
 
-String _defaultGeneralListWrapper(BasicTypeInfo info, String value) =>
-    '[$value]';
+String _defaultGeneralListWrapper(BasicTypeInfo info, String? value) =>
+    '[${value ?? ""}]';
 
-String _defaultPrimitiveListWrapper(BasicTypeInfo info, String value) =>
-    '${info.listName}(1)..[0] = $value';
+String _defaultPrimitiveListWrapper(BasicTypeInfo info, String? value) =>
+    value == null ? '${info.listName}(0)' : '${info.listName}(1)..[0] = $value';
 
 final kBasicTypes = [
   BasicTypeInfo(
