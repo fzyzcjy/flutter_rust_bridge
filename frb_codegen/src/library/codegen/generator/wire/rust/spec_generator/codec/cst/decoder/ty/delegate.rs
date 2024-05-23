@@ -41,7 +41,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
                 if ir == &IrTypeDelegateTime::Duration {
                     return Acc {
                         io: Some("chrono::Duration::microseconds(self)".into()),
-                        web: Some("chrono::Duration::milliseconds(self)".into()),
+                        web: None,
                         ..Default::default()
                     };
                 }
@@ -118,7 +118,10 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
             // IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
             //     "flutter_rust_bridge::ZeroCopyBuffer(self.cst_decode())".into()
             // }
-            IrTypeDelegate::Time(_) => "CstDecode::<i64>::cst_decode(self).cst_decode()".into(),
+            IrTypeDelegate::Time(ir) => match ir {
+                IrTypeDelegateTime::Duration => "chrono::Duration::milliseconds(CstDecode::<i64>::cst_decode(self))".into(),
+                _ => "CstDecode::<i64>::cst_decode(self).cst_decode()".into(),
+            },
             // IrTypeDelegate::TimeList(_) =>
             //     "self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::BigInt64Array>().to_vec().into_iter().map(CstDecode::cst_decode).collect()".into(),
             IrTypeDelegate::Uuid /*| IrTypeDelegate::Uuids*/ => {
