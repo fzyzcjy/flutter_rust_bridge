@@ -5,7 +5,6 @@ use crate::rust_opaque::RustOpaqueBase;
 use js_sys::{Array, BigInt64Array, BigUint64Array, Int32Array};
 use std::collections::{HashMap, HashSet};
 use std::iter::FromIterator;
-use allo_isolate::IntoDart;
 use wasm_bindgen::JsValue;
 
 pub trait IntoDart {
