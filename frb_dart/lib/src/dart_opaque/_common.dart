@@ -3,8 +3,8 @@ import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 Object decodeDartOpaque(
-    dynamic raw, GeneralizedFrbRustBinding generalizedFrbRustBinding) {
-  return generalizedFrbRustBinding.dartOpaqueRust2DartDecode(raw);
+    BigInt raw, GeneralizedFrbRustBinding generalizedFrbRustBinding) {
+  return generalizedFrbRustBinding.dartOpaqueRust2DartDecode(raw.toInt());
 }
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
