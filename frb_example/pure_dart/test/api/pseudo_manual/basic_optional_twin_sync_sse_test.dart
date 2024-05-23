@@ -34,13 +34,13 @@ Future<void> main({bool skipRustLibInit = false}) async {
     addTestsIdentityFunctionCall(
         exampleBasicOptionalTypeI128TwinSyncSse, <BigInt?>[
       null,
-      0,
-      -9007199254740992,
-      9007199254740992,
-      -9223372036854775808,
-      9223372036854775807,
-      -170141183460469231731687303715884105728,
-      170141183460469231731687303715884105727
+      BigInt.parse("0"),
+      BigInt.parse("-9007199254740992"),
+      BigInt.parse("9007199254740992"),
+      BigInt.parse("-9223372036854775808"),
+      BigInt.parse("9223372036854775807"),
+      BigInt.parse("-170141183460469231731687303715884105728"),
+      BigInt.parse("170141183460469231731687303715884105727")
     ]);
     addTestsIdentityFunctionCall(
         exampleBasicOptionalTypeU8TwinSyncSse, <int?>[null, 0, 255]);
@@ -50,18 +50,18 @@ Future<void> main({bool skipRustLibInit = false}) async {
         exampleBasicOptionalTypeU32TwinSyncSse, <int?>[null, 0, 4294967295]);
     addTestsIdentityFunctionCall(exampleBasicOptionalTypeU64TwinSyncSse, <int?>[
       null,
-      0,
-      9007199254740992,
-      9223372036854775807,
-      18446744073709551615
+      BigInt.parse("0"),
+      BigInt.parse("9007199254740992"),
+      BigInt.parse("9223372036854775807"),
+      BigInt.parse("18446744073709551615")
     ]);
     addTestsIdentityFunctionCall(
         exampleBasicOptionalTypeU128TwinSyncSse, <BigInt?>[
       null,
-      0,
-      9007199254740992,
-      18446744073709551615,
-      340282366920938463463374607431768211455
+      BigInt.parse("0"),
+      BigInt.parse("9007199254740992"),
+      BigInt.parse("18446744073709551615"),
+      BigInt.parse("340282366920938463463374607431768211455")
     ]);
     addTestsIdentityFunctionCall(exampleBasicOptionalTypeIsizeTwinSyncSse,
         <int?>[null, 0, -2147483648, 2147483647]);

@@ -26,26 +26,30 @@ Future<void> main({bool skipRustLibInit = false}) async {
       9223372036854775807
     ]);
     addTestsIdentityFunctionCall(exampleBasicTypeI128TwinNormal, <BigInt>[
-      0,
-      -9007199254740992,
-      9007199254740992,
-      -9223372036854775808,
-      9223372036854775807,
-      -170141183460469231731687303715884105728,
-      170141183460469231731687303715884105727
+      BigInt.parse("0"),
+      BigInt.parse("-9007199254740992"),
+      BigInt.parse("9007199254740992"),
+      BigInt.parse("-9223372036854775808"),
+      BigInt.parse("9223372036854775807"),
+      BigInt.parse("-170141183460469231731687303715884105728"),
+      BigInt.parse("170141183460469231731687303715884105727")
     ]);
     addTestsIdentityFunctionCall(exampleBasicTypeU8TwinNormal, <int>[0, 255]);
     addTestsIdentityFunctionCall(
         exampleBasicTypeU16TwinNormal, <int>[0, 65535]);
     addTestsIdentityFunctionCall(
         exampleBasicTypeU32TwinNormal, <int>[0, 4294967295]);
-    addTestsIdentityFunctionCall(exampleBasicTypeU64TwinNormal,
-        <int>[0, 9007199254740992, 9223372036854775807, 18446744073709551615]);
+    addTestsIdentityFunctionCall(exampleBasicTypeU64TwinNormal, <int>[
+      BigInt.parse("0"),
+      BigInt.parse("9007199254740992"),
+      BigInt.parse("9223372036854775807"),
+      BigInt.parse("18446744073709551615")
+    ]);
     addTestsIdentityFunctionCall(exampleBasicTypeU128TwinNormal, <BigInt>[
-      0,
-      9007199254740992,
-      18446744073709551615,
-      340282366920938463463374607431768211455
+      BigInt.parse("0"),
+      BigInt.parse("9007199254740992"),
+      BigInt.parse("18446744073709551615"),
+      BigInt.parse("340282366920938463463374607431768211455")
     ]);
     addTestsIdentityFunctionCall(
         exampleBasicTypeIsizeTwinNormal, <int>[0, -2147483648, 2147483647]);
