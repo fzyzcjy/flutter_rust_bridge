@@ -18,6 +18,20 @@ void addTestsIdentityFunctionCall<T>(
 }
 
 @isTestGroup
+void addTestsIdentityWithExpectFunctionCall<T>(
+  FutureOr<T> Function({required T arg, required String expect, dynamic hint})
+      func,
+  List<T> values,
+) {
+  _addTestsRaw(
+    groupName: 'call $func',
+    values: values,
+    body: (value) async =>
+        expect(await func(arg: value, expect: value.toString()), value),
+  );
+}
+
+@isTestGroup
 void addTestsErrorFunctionCall<T>(
   FutureOr<void> Function({required T arg, dynamic hint}) func,
   List<T> values,
