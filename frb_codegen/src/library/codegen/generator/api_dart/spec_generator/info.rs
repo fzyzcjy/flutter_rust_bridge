@@ -1,5 +1,8 @@
 use crate::codegen::generator::api_dart::spec_generator::base::*;
-use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegateArrayMode, IrTypeDelegatePrimitiveEnum, IrTypeDelegateTime};
+use crate::codegen::ir::ty::delegate::{
+    IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegateArrayMode, IrTypeDelegatePrimitiveEnum,
+    IrTypeDelegateTime,
+};
 use crate::codegen::ir::ty::general_list::IrTypeGeneralList;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
@@ -149,11 +152,9 @@ impl<'a> ApiDartGeneratorInfoTrait for PrimitiveApiDartGenerator<'a> {
             | IrTypePrimitive::U16
             | IrTypePrimitive::I16
             | IrTypePrimitive::U32
-            | IrTypePrimitive::I32
-            | IrTypePrimitive::Usize
-            | IrTypePrimitive::Isize
-            | IrTypePrimitive::U64
-            | IrTypePrimitive::I64 => "int",
+            | IrTypePrimitive::I32 => "int",
+            IrTypePrimitive::I64 | IrTypePrimitive::Isize => "PlatformInt64",
+            IrTypePrimitive::U64 | IrTypePrimitive::Usize => "BigInt",
             IrTypePrimitive::F32 | IrTypePrimitive::F64 => "double",
             IrTypePrimitive::Bool => "bool",
             IrTypePrimitive::Unit => "void",
