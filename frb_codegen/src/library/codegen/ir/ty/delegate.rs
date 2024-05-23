@@ -226,10 +226,7 @@ impl IrTypeDelegate {
             IrTypeDelegate::Map(ir) => ir_list(IrType::Record(ir.element_delegate.clone()), true),
             IrTypeDelegate::Set(ir) => ir_list(*ir.inner.to_owned(), true),
             IrTypeDelegate::StreamSink(_) => IrType::Delegate(IrTypeDelegate::String),
-            IrTypeDelegate::BigPrimitive(_) => IrType::PrimitiveList(IrTypePrimitiveList {
-                primitive: IrTypePrimitive::U8,
-                strict_dart_type: true,
-            }),
+            IrTypeDelegate::BigPrimitive(_) => IrType::Delegate(IrTypeDelegate::String),
         }
     }
 }
