@@ -187,7 +187,7 @@ const sidebars = {
                         'guides/miscellaneous/codec',
                         'guides/miscellaneous/build-rs',
                         'guides/miscellaneous/expanding-macros',
-                        'guides/miscellaneous/ignoring-functions',
+                        'guides/miscellaneous/functions',
                         'guides/miscellaneous/default',
                         'guides/miscellaneous/pure-dart',
                         'guides/miscellaneous/isolates',
