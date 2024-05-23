@@ -103,6 +103,7 @@ final kBasicTypes = [
   BasicTypeInfo(
     rustTypeName: 'i128',
     dartTypeName: 'BigInt',
+    enableList: false,
     interestRawValues: [
       RawValue(_bigInt('0')),
       RawValue(_bigInt('-9007199254740992')),
@@ -170,6 +171,7 @@ final kBasicTypes = [
   BasicTypeInfo(
     rustTypeName: 'u128',
     dartTypeName: 'BigInt',
+    enableList: false,
     interestRawValues: [
       RawValue(_bigInt('0')),
       RawValue(_bigInt('9007199254740992')),

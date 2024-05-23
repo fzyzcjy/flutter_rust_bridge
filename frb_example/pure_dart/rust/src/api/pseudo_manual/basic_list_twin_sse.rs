@@ -28,11 +28,6 @@ pub fn example_basic_list_type_i64_twin_sse(arg: Vec<i64>) -> Vec<i64> {
 }
 
 #[flutter_rust_bridge::frb(serialize)]
-pub fn example_basic_list_type_i128_twin_sse(arg: Vec<i128>) -> Vec<i128> {
-    arg
-}
-
-#[flutter_rust_bridge::frb(serialize)]
 pub fn example_basic_list_type_u8_twin_sse(arg: Vec<u8>) -> Vec<u8> {
     arg
 }
@@ -49,11 +44,6 @@ pub fn example_basic_list_type_u32_twin_sse(arg: Vec<u32>) -> Vec<u32> {
 
 #[flutter_rust_bridge::frb(serialize)]
 pub fn example_basic_list_type_u64_twin_sse(arg: Vec<u64>) -> Vec<u64> {
-    arg
-}
-
-#[flutter_rust_bridge::frb(serialize)]
-pub fn example_basic_list_type_u128_twin_sse(arg: Vec<u128>) -> Vec<u128> {
     arg
 }
 

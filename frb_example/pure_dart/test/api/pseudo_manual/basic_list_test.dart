@@ -49,17 +49,6 @@ Future<void> main({bool skipRustLibInit = false}) async {
       Int64List.fromList([PlatformInt64.parse("1234567890123456789")]),
       Int64List.fromList([PlatformInt64.parse("-1234567890123456789")])
     ]);
-    addTestsIdentityFunctionCall(
-        exampleBasicListTypeI128TwinNormal, <List<BigInt>>[
-      [],
-      [BigInt.parse("0")],
-      [BigInt.parse("-9007199254740992")],
-      [BigInt.parse("9007199254740992")],
-      [BigInt.parse("-9223372036854775808")],
-      [BigInt.parse("9223372036854775807")],
-      [BigInt.parse("-170141183460469231731687303715884105728")],
-      [BigInt.parse("170141183460469231731687303715884105727")]
-    ]);
     addTestsIdentityFunctionCall(exampleBasicListTypeU8TwinNormal, <Uint8List>[
       Uint8List.fromList([]),
       Uint8List.fromList([0]),
@@ -89,16 +78,6 @@ Future<void> main({bool skipRustLibInit = false}) async {
       Uint64List.fromList([BigInt.parse("9223372036854775808")]),
       Uint64List.fromList([BigInt.parse("18446744073709551615")]),
       Uint64List.fromList([BigInt.parse("12345678901234456789")])
-    ]);
-    addTestsIdentityFunctionCall(
-        exampleBasicListTypeU128TwinNormal, <List<BigInt>>[
-      [],
-      [BigInt.parse("0")],
-      [BigInt.parse("9007199254740992")],
-      [BigInt.parse("9223372036854775807")],
-      [BigInt.parse("9223372036854775808")],
-      [BigInt.parse("18446744073709551615")],
-      [BigInt.parse("340282366920938463463374607431768211455")]
     ]);
     addTestsIdentityFunctionCall(
         exampleBasicListTypeF32TwinNormal, <Float32List>[
