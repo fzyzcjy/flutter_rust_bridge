@@ -4,7 +4,8 @@ import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator
 
 Map<String, String> generateRustDirectSources() {
   return {
-    'pseudo_manual/basic.rs': _generateBasicRelated((x) => x, ''),
+    'pseudo_manual/basic.rs':
+        _generateBasicRelated((x) => x, '', withArgExpect: true),
     'pseudo_manual/basic_optional.rs':
         _generateBasicRelated((x) => 'Option<$x>', '_optional'),
     'pseudo_manual/basic_list.rs': _generateBasicRelated(
@@ -24,6 +25,7 @@ String _generateBasicRelated(
   String postfix, {
   String extraBody = '',
   bool Function(BasicTypeInfo)? enable,
+  bool withArgExpect = false,
 }) {
   final builder = RustFileBuilder();
   builder.body += extraBody;
@@ -52,8 +54,17 @@ pub use super::basic::*;
   }
   for (final ty in kBasicTypes) {
     if (enable?.call(ty) ?? true) {
-      builder.addIdentityFunction(rustTypeNameWrapper(ty.rustTypeName),
-          'example_basic${postfix}_type_${ty.name}');
+      final partialName = 'example_basic${postfix}_type_${ty.name}';
+      if (withArgExpect) {
+        builder.body +=
+            '''pub fn ${partialName}_twin_normal(arg: $ty, expect: String) -> $ty {
+          assert_eq!(arg, expect.parse().unwrap());
+          arg
+        }\n\n''';
+      } else {
+        builder.addIdentityFunction(
+            rustTypeNameWrapper(ty.rustTypeName), partialName);
+      }
     }
   }
   return builder.toString();
