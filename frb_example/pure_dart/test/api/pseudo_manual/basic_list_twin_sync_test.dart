@@ -92,7 +92,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
       Float64List(1)..[0] = 123456
     ]);
     addTestsIdentityFunctionCall(exampleBasicListTypeBoolTwinSync, <List<bool>>[
-      <bool>[null],
+      <bool>[],
       <bool>[false],
       <bool>[true]
     ]);

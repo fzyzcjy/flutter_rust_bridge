@@ -101,7 +101,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     ]);
     addTestsIdentityFunctionCall(
         exampleBasicListTypeBoolTwinSyncSse, <List<bool>>[
-      <bool>[null],
+      <bool>[],
       <bool>[false],
       <bool>[true]
     ]);

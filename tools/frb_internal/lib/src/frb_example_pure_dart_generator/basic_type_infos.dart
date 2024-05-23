@@ -250,7 +250,7 @@ final kBasicTypes = [
       const RawValue('false'),
       const RawValue('true'),
     ],
-    listWrapper: (info, x) => '<bool>[$x]',
+    listWrapper: (info, x) => x == null ? '<bool>[]' : '<bool>[$x]',
   ),
   BasicTypeInfo(
     rustTypeName: 'String',
