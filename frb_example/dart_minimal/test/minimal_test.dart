@@ -17,7 +17,7 @@ Future<void> main() async {
 
   test('hi', () async {
     expect(
-        await exampleBasicTypeU64TwinNormal(
+        await exampleBasicListTypeU64TwinNormal(
             arg: BigInt.parse('18446744073709551615'),
             expect: '18446744073709551615'),
         BigInt.parse('18446744073709551615'));

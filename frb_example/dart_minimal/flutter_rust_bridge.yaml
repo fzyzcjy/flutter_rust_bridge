@@ -6,4 +6,4 @@ dump_all: true
 local: true
 
 # TODO temp
-full_dep: true
+#full_dep: true
