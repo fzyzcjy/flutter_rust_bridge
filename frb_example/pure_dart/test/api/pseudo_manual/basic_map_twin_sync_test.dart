@@ -92,6 +92,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
       {42: BigInt.parse("0")},
       {42: BigInt.parse("9007199254740992")},
       {42: BigInt.parse("9223372036854775807")},
+      {42: BigInt.parse("9223372036854775808")},
       {42: BigInt.parse("18446744073709551615")},
       {42: BigInt.parse("12345678901234456789")}
     ]);
@@ -100,6 +101,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
       {},
       {42: BigInt.parse("0")},
       {42: BigInt.parse("9007199254740992")},
+      {42: BigInt.parse("9223372036854775807")},
+      {42: BigInt.parse("9223372036854775808")},
       {42: BigInt.parse("18446744073709551615")},
       {42: BigInt.parse("340282366920938463463374607431768211455")}
     ]);

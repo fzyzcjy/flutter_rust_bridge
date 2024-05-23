@@ -22,73 +22,73 @@ pub struct BasicStructTwinSse {
 }
 #[flutter_rust_bridge::frb(serialize)]
 pub fn example_basic_type_i8_twin_sse(arg: i8, expect: String) -> i8 {
-    assert_eq!(arg, expect.parse().unwrap());
+    assert_eq!(arg, expect.parse::<i8>().unwrap());
     arg
 }
 
 #[flutter_rust_bridge::frb(serialize)]
 pub fn example_basic_type_i16_twin_sse(arg: i16, expect: String) -> i16 {
-    assert_eq!(arg, expect.parse().unwrap());
+    assert_eq!(arg, expect.parse::<i16>().unwrap());
     arg
 }
 
 #[flutter_rust_bridge::frb(serialize)]
 pub fn example_basic_type_i32_twin_sse(arg: i32, expect: String) -> i32 {
-    assert_eq!(arg, expect.parse().unwrap());
+    assert_eq!(arg, expect.parse::<i32>().unwrap());
     arg
 }
 
 #[flutter_rust_bridge::frb(serialize)]
 pub fn example_basic_type_i64_twin_sse(arg: i64, expect: String) -> i64 {
-    assert_eq!(arg, expect.parse().unwrap());
+    assert_eq!(arg, expect.parse::<i64>().unwrap());
     arg
 }
 
 #[flutter_rust_bridge::frb(serialize)]
 pub fn example_basic_type_i128_twin_sse(arg: i128, expect: String) -> i128 {
-    assert_eq!(arg, expect.parse().unwrap());
+    assert_eq!(arg, expect.parse::<i128>().unwrap());
     arg
 }
 
 #[flutter_rust_bridge::frb(serialize)]
 pub fn example_basic_type_u8_twin_sse(arg: u8, expect: String) -> u8 {
-    assert_eq!(arg, expect.parse().unwrap());
+    assert_eq!(arg, expect.parse::<u8>().unwrap());
     arg
 }
 
 #[flutter_rust_bridge::frb(serialize)]
 pub fn example_basic_type_u16_twin_sse(arg: u16, expect: String) -> u16 {
-    assert_eq!(arg, expect.parse().unwrap());
+    assert_eq!(arg, expect.parse::<u16>().unwrap());
     arg
 }
 
 #[flutter_rust_bridge::frb(serialize)]
 pub fn example_basic_type_u32_twin_sse(arg: u32, expect: String) -> u32 {
-    assert_eq!(arg, expect.parse().unwrap());
+    assert_eq!(arg, expect.parse::<u32>().unwrap());
     arg
 }
 
 #[flutter_rust_bridge::frb(serialize)]
 pub fn example_basic_type_u64_twin_sse(arg: u64, expect: String) -> u64 {
-    assert_eq!(arg, expect.parse().unwrap());
+    assert_eq!(arg, expect.parse::<u64>().unwrap());
     arg
 }
 
 #[flutter_rust_bridge::frb(serialize)]
 pub fn example_basic_type_u128_twin_sse(arg: u128, expect: String) -> u128 {
-    assert_eq!(arg, expect.parse().unwrap());
+    assert_eq!(arg, expect.parse::<u128>().unwrap());
     arg
 }
 
 #[flutter_rust_bridge::frb(serialize)]
 pub fn example_basic_type_isize_twin_sse(arg: isize, expect: String) -> isize {
-    assert_eq!(arg, expect.parse().unwrap());
+    assert_eq!(arg, expect.parse::<isize>().unwrap());
     arg
 }
 
 #[flutter_rust_bridge::frb(serialize)]
 pub fn example_basic_type_usize_twin_sse(arg: usize, expect: String) -> usize {
-    assert_eq!(arg, expect.parse().unwrap());
+    assert_eq!(arg, expect.parse::<usize>().unwrap());
     arg
 }
 

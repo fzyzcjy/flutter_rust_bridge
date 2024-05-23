@@ -17,13 +17,13 @@ Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   group('basic', () {
-    addTestsIdentityFunctionCall(
+    addTestsIdentityWithExpectFunctionCall(
         exampleBasicTypeI8TwinRustAsyncSse, <int>[0, -128, 127, 79, -79]);
-    addTestsIdentityFunctionCall(exampleBasicTypeI16TwinRustAsyncSse,
+    addTestsIdentityWithExpectFunctionCall(exampleBasicTypeI16TwinRustAsyncSse,
         <int>[0, -32768, 32767, 12345, -12345]);
-    addTestsIdentityFunctionCall(exampleBasicTypeI32TwinRustAsyncSse,
+    addTestsIdentityWithExpectFunctionCall(exampleBasicTypeI32TwinRustAsyncSse,
         <int>[0, -2147483648, 2147483647, 1234567890, -1234567890]);
-    addTestsIdentityFunctionCall(
+    addTestsIdentityWithExpectFunctionCall(
         exampleBasicTypeI64TwinRustAsyncSse, <PlatformInt64>[
       PlatformInt64.parse("0"),
       PlatformInt64.parse("-9007199254740992"),
@@ -33,7 +33,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
       PlatformInt64.parse("1234567890123456789"),
       PlatformInt64.parse("-1234567890123456789")
     ]);
-    addTestsIdentityFunctionCall(exampleBasicTypeI128TwinRustAsyncSse, <BigInt>[
+    addTestsIdentityWithExpectFunctionCall(
+        exampleBasicTypeI128TwinRustAsyncSse, <BigInt>[
       BigInt.parse("0"),
       BigInt.parse("-9007199254740992"),
       BigInt.parse("9007199254740992"),
@@ -42,26 +43,31 @@ Future<void> main({bool skipRustLibInit = false}) async {
       BigInt.parse("-170141183460469231731687303715884105728"),
       BigInt.parse("170141183460469231731687303715884105727")
     ]);
-    addTestsIdentityFunctionCall(
+    addTestsIdentityWithExpectFunctionCall(
         exampleBasicTypeU8TwinRustAsyncSse, <int>[0, 255, 123]);
-    addTestsIdentityFunctionCall(
+    addTestsIdentityWithExpectFunctionCall(
         exampleBasicTypeU16TwinRustAsyncSse, <int>[0, 65535, 12345]);
-    addTestsIdentityFunctionCall(
+    addTestsIdentityWithExpectFunctionCall(
         exampleBasicTypeU32TwinRustAsyncSse, <int>[0, 4294967295, 2468013579]);
-    addTestsIdentityFunctionCall(exampleBasicTypeU64TwinRustAsyncSse, <BigInt>[
+    addTestsIdentityWithExpectFunctionCall(
+        exampleBasicTypeU64TwinRustAsyncSse, <BigInt>[
       BigInt.parse("0"),
       BigInt.parse("9007199254740992"),
       BigInt.parse("9223372036854775807"),
+      BigInt.parse("9223372036854775808"),
       BigInt.parse("18446744073709551615"),
       BigInt.parse("12345678901234456789")
     ]);
-    addTestsIdentityFunctionCall(exampleBasicTypeU128TwinRustAsyncSse, <BigInt>[
+    addTestsIdentityWithExpectFunctionCall(
+        exampleBasicTypeU128TwinRustAsyncSse, <BigInt>[
       BigInt.parse("0"),
       BigInt.parse("9007199254740992"),
+      BigInt.parse("9223372036854775807"),
+      BigInt.parse("9223372036854775808"),
       BigInt.parse("18446744073709551615"),
       BigInt.parse("340282366920938463463374607431768211455")
     ]);
-    addTestsIdentityFunctionCall(
+    addTestsIdentityWithExpectFunctionCall(
         exampleBasicTypeIsizeTwinRustAsyncSse, <PlatformInt64>[
       PlatformInt64.parse("0"),
       PlatformInt64.parse("-2147483648"),
@@ -75,7 +81,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
       if (!kIsWeb) PlatformInt64.parse("-12345678901234456789"),
       if (!kIsWeb) PlatformInt64.parse("12345678901234456789")
     ]);
-    addTestsIdentityFunctionCall(
+    addTestsIdentityWithExpectFunctionCall(
         exampleBasicTypeUsizeTwinRustAsyncSse, <BigInt>[
       BigInt.parse("0"),
       BigInt.parse("4294967295"),
