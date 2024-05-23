@@ -83,13 +83,13 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
                 IrTypeDelegateTime::Utc | IrTypeDelegateTime::Local | IrTypeDelegateTime::Naive => {
                     Acc {
                         io: Some("return cst_encode_i_64(raw.microsecondsSinceEpoch);".into()),
-                        web: Some("return cst_encode_i_64(raw.millisecondsSinceEpoch);".into()),
+                        web: Some("return cst_encode_i_64(BigInt.from(raw.millisecondsSinceEpoch));".into()),
                         ..Default::default()
                     }
                 }
                 IrTypeDelegateTime::Duration => Acc {
                     io: Some("return cst_encode_i_64(raw.inMicroseconds);".into()),
-                    web: Some("return cst_encode_i_64(raw.inMilliseconds);".into()),
+                    web: Some("return cst_encode_i_64(BigInt.from(raw.inMilliseconds));".into()),
                     ..Default::default()
                 },
             },
