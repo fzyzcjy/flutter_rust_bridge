@@ -5,6 +5,7 @@ import 'dart:collection';
 import 'dart:typed_data' hide Int64List, Uint64List;
 
 import 'package:flutter_rust_bridge/src/exceptions.dart';
+import 'package:flutter_rust_bridge/src/platform_utils/_web.dart';
 import 'package:js/js.dart';
 import 'package:js/js_util.dart';
 
@@ -103,10 +104,6 @@ abstract class _TypedList<T> extends _SetAnyListMixin<T> {
   set length(int newLength) => throw const UnmodifiableTypedListException();
 
   ByteBuffer get buffer => inner.buffer;
-}
-
-BigInt jsBigIntToDartBigInt(Object bigInt) {
-  return BigInt.parse(callMethod(bigInt, 'toString', const []));
 }
 
 Object _convertBigInt(Object dart) {
