@@ -18162,25 +18162,25 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   Object cst_encode_Chrono_Duration(Duration raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_i_64(raw.inMilliseconds);
+    return cst_encode_i_64(BigInt.from(raw.inMilliseconds));
   }
 
   @protected
   Object cst_encode_Chrono_Local(DateTime raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_i_64(raw.millisecondsSinceEpoch);
+    return cst_encode_i_64(BigInt.from(raw.millisecondsSinceEpoch));
   }
 
   @protected
   Object cst_encode_Chrono_Naive(DateTime raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_i_64(raw.millisecondsSinceEpoch);
+    return cst_encode_i_64(BigInt.from(raw.millisecondsSinceEpoch));
   }
 
   @protected
   Object cst_encode_Chrono_Utc(DateTime raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_i_64(raw.millisecondsSinceEpoch);
+    return cst_encode_i_64(BigInt.from(raw.millisecondsSinceEpoch));
   }
 
   @protected

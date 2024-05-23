@@ -49489,28 +49489,28 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Duration sse_decode_Chrono_Duration(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_i_64(deserializer);
-    return Duration(microseconds: inner);
+    return Duration(microseconds: inner.toInt());
   }
 
   @protected
   DateTime sse_decode_Chrono_Local(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_i_64(deserializer);
-    return DateTime.fromMicrosecondsSinceEpoch(inner, isUtc: false);
+    return DateTime.fromMicrosecondsSinceEpoch(inner.toInt(), isUtc: false);
   }
 
   @protected
   DateTime sse_decode_Chrono_Naive(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_i_64(deserializer);
-    return DateTime.fromMicrosecondsSinceEpoch(inner, isUtc: true);
+    return DateTime.fromMicrosecondsSinceEpoch(inner.toInt(), isUtc: true);
   }
 
   @protected
   DateTime sse_decode_Chrono_Utc(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_i_64(deserializer);
-    return DateTime.fromMicrosecondsSinceEpoch(inner, isUtc: true);
+    return DateTime.fromMicrosecondsSinceEpoch(inner.toInt(), isUtc: true);
   }
 
   @protected
@@ -59607,25 +59607,25 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void sse_encode_Chrono_Duration(Duration self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_i_64(self.inMicroseconds, serializer);
+    sse_encode_i_64(BigInt.from(self.inMicroseconds), serializer);
   }
 
   @protected
   void sse_encode_Chrono_Local(DateTime self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_i_64(self.microsecondsSinceEpoch, serializer);
+    sse_encode_i_64(BigInt.from(self.microsecondsSinceEpoch), serializer);
   }
 
   @protected
   void sse_encode_Chrono_Naive(DateTime self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_i_64(self.microsecondsSinceEpoch, serializer);
+    sse_encode_i_64(BigInt.from(self.microsecondsSinceEpoch), serializer);
   }
 
   @protected
   void sse_encode_Chrono_Utc(DateTime self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_i_64(self.microsecondsSinceEpoch, serializer);
+    sse_encode_i_64(BigInt.from(self.microsecondsSinceEpoch), serializer);
   }
 
   @protected
