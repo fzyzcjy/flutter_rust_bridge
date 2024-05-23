@@ -42341,7 +42341,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformInt64 dco_decode_box_autoadd_isize(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as PlatformInt64;
+    return dco_decode_isize(raw);
   }
 
   @protected
@@ -59607,25 +59607,28 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void sse_encode_Chrono_Duration(Duration self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_i_64(BigInt.from(self.inMicroseconds), serializer);
+    sse_encode_i_64(PlatformInt64Util.from(self.inMicroseconds), serializer);
   }
 
   @protected
   void sse_encode_Chrono_Local(DateTime self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_i_64(BigInt.from(self.microsecondsSinceEpoch), serializer);
+    sse_encode_i_64(
+        PlatformInt64Util.from(self.microsecondsSinceEpoch), serializer);
   }
 
   @protected
   void sse_encode_Chrono_Naive(DateTime self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_i_64(BigInt.from(self.microsecondsSinceEpoch), serializer);
+    sse_encode_i_64(
+        PlatformInt64Util.from(self.microsecondsSinceEpoch), serializer);
   }
 
   @protected
   void sse_encode_Chrono_Utc(DateTime self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_i_64(BigInt.from(self.microsecondsSinceEpoch), serializer);
+    sse_encode_i_64(
+        PlatformInt64Util.from(self.microsecondsSinceEpoch), serializer);
   }
 
   @protected
