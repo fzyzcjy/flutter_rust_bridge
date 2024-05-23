@@ -58,7 +58,7 @@ pub use super::basic::*;
       if (withArgExpect?.call(ty) ?? false) {
         builder.body +=
             '''pub fn ${partialName}_twin_normal(arg: ${ty.rustTypeName}, expect: String) -> ${ty.rustTypeName} {
-          assert_eq!(arg, expect.parse().unwrap());
+          assert_eq!(arg, expect.parse::<${ty.rustTypeName}>().unwrap());
           arg
         }\n\n''';
       } else {
