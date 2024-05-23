@@ -1,3 +1,4 @@
+import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:frb_example_dart_minimal/src/rust/api/minimal.dart';
 import 'package:frb_example_dart_minimal/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
@@ -18,8 +19,7 @@ Future<void> main() async {
   test('hi', () async {
     expect(
         await exampleBasicListTypeU64TwinNormal(
-            arg: BigInt.parse('18446744073709551615'),
-            expect: '18446744073709551615'),
-        BigInt.parse('18446744073709551615'));
+            arg: Uint64List(1)..[0] = BigInt.parse('18446744073709551615')),
+        [BigInt.parse('18446744073709551615')]);
   });
 }
