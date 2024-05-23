@@ -18,3 +18,8 @@ Future<BigInt> exampleBasicTypeU64TwinNormal(
         {required BigInt arg, required String expect, dynamic hint}) =>
     RustLib.instance.api.crateApiMinimalExampleBasicTypeU64TwinNormal(
         arg: arg, expect: expect, hint: hint);
+
+Future<BigInt> exampleBasicTypeUsizeTwinNormal(
+        {required BigInt arg, required String expect, dynamic hint}) =>
+    RustLib.instance.api.crateApiMinimalExampleBasicTypeUsizeTwinNormal(
+        arg: arg, expect: expect, hint: hint);

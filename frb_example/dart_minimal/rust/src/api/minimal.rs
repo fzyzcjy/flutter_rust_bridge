@@ -19,3 +19,8 @@ pub fn example_basic_type_u64_twin_normal(arg: u64, expect: String) -> u64 {
     arg
 }
 
+pub fn example_basic_type_usize_twin_normal(arg: usize, expect: String) -> usize {
+    assert_eq!(arg, expect.parse().unwrap());
+    arg
+}
+

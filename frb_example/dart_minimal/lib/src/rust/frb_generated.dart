@@ -56,7 +56,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.0.0-dev.35';
 
   @override
-  int get rustContentHash => -272615826;
+  int get rustContentHash => -711064660;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -71,6 +71,9 @@ abstract class RustLibApi extends BaseApi {
       {required PlatformInt64 arg, required String expect, dynamic hint});
 
   Future<BigInt> crateApiMinimalExampleBasicTypeU64TwinNormal(
+      {required BigInt arg, required String expect, dynamic hint});
+
+  Future<BigInt> crateApiMinimalExampleBasicTypeUsizeTwinNormal(
       {required BigInt arg, required String expect, dynamic hint});
 
   Future<void> crateApiMinimalInitApp({dynamic hint});
@@ -92,14 +95,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required PlatformInt64 arg, required String expect, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_64(arg, serializer);
-        sse_encode_String(expect, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 3, port: port_);
+        var arg0 = cst_encode_i_64(arg);
+        var arg1 = cst_encode_String(expect);
+        return wire
+            .wire__crate__api__minimal__example_basic_type_i64_twin_normal(
+                port_, arg0, arg1);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_64,
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_i_64,
         decodeErrorData: null,
       ),
       constMeta: kCrateApiMinimalExampleBasicTypeI64TwinNormalConstMeta,
@@ -120,14 +123,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required BigInt arg, required String expect, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_u_64(arg, serializer);
-        sse_encode_String(expect, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 4, port: port_);
+        var arg0 = cst_encode_u_64(arg);
+        var arg1 = cst_encode_String(expect);
+        return wire
+            .wire__crate__api__minimal__example_basic_type_u64_twin_normal(
+                port_, arg0, arg1);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_u_64,
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_u_64,
         decodeErrorData: null,
       ),
       constMeta: kCrateApiMinimalExampleBasicTypeU64TwinNormalConstMeta,
@@ -144,15 +147,41 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<BigInt> crateApiMinimalExampleBasicTypeUsizeTwinNormal(
+      {required BigInt arg, required String expect, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_usize(arg);
+        var arg1 = cst_encode_String(expect);
+        return wire
+            .wire__crate__api__minimal__example_basic_type_usize_twin_normal(
+                port_, arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_usize,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiMinimalExampleBasicTypeUsizeTwinNormalConstMeta,
+      argValues: [arg, expect],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiMinimalExampleBasicTypeUsizeTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_usize_twin_normal",
+        argNames: ["arg", "expect"],
+      );
+
+  @override
   Future<void> crateApiMinimalInitApp({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1, port: port_);
+        return wire.wire__crate__api__minimal__init_app(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kCrateApiMinimalInitAppConstMeta,
@@ -172,14 +201,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required int a, required int b, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_32(a, serializer);
-        sse_encode_i_32(b, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 2, port: port_);
+        var arg0 = cst_encode_i_32(a);
+        var arg1 = cst_encode_i_32(b);
+        return wire.wire__crate__api__minimal__minimal_adder(port_, arg0, arg1);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_i_32,
         decodeErrorData: null,
       ),
       constMeta: kCrateApiMinimalMinimalAdderConstMeta,
@@ -238,6 +265,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BigInt dco_decode_usize(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dcoDecodeU64(raw);
+  }
+
+  @protected
   String sse_decode_String(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_list_prim_u_8_strict(deserializer);
@@ -281,9 +314,39 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BigInt sse_decode_usize(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return deserializer.buffer.getBigUint64();
+  }
+
+  @protected
   bool sse_decode_bool(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return deserializer.buffer.getUint8() != 0;
+  }
+
+  @protected
+  int cst_encode_i_32(int raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw;
+  }
+
+  @protected
+  int cst_encode_u_8(int raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw;
+  }
+
+  @protected
+  void cst_encode_unit(void raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw;
+  }
+
+  @protected
+  BigInt cst_encode_usize(BigInt raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw;
   }
 
   @protected
@@ -327,6 +390,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void sse_encode_unit(void self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
+  }
+
+  @protected
+  void sse_encode_usize(BigInt self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    serializer.buffer.putBigUint64(self);
   }
 
   @protected
