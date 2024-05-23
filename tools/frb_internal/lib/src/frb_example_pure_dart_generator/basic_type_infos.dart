@@ -38,7 +38,7 @@ String _defaultGeneralListWrapper(BasicTypeInfo info, String value) =>
     '[$value]';
 
 String _defaultPrimitiveListWrapper(BasicTypeInfo info, String value) =>
-    '${info.listName}.fromList([$value])';
+    '${info.listName}(1)..[0] = $value';
 
 final kBasicTypes = [
   BasicTypeInfo(
