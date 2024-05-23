@@ -81,7 +81,7 @@ impl<'a> ApiDartGeneratorInfoTrait for DelegateApiDartGenerator<'a> {
                 "RustStreamSink<{}>",
                 ApiDartGenerator::new(*ir.inner.clone(), self.context).dart_api_type(),
             ),
-            IrTypeDelegate::BigPrimitive(ir) => "BigInt".to_owned(),
+            IrTypeDelegate::BigPrimitive(_) => "BigInt".to_owned(),
         }
     }
 
