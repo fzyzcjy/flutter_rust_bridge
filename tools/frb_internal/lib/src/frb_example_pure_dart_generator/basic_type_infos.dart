@@ -35,7 +35,7 @@ class RawValue {
 }
 
 String _defaultGeneralListWrapper(BasicTypeInfo info, String? value) =>
-    '[${value ?? ""}]';
+    value == null ? '[]' : '[$value]';
 
 String _defaultPrimitiveListWrapper(BasicTypeInfo info, String? value) =>
     value == null ? '${info.listName}(0)' : '${info.listName}(1)..[0] = $value';

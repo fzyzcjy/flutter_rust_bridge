@@ -32,7 +32,6 @@ Map<String, String> generateDartDirectSources(Package package) {
             .map((x) => x.guard + ty.listWrapper(ty, x.text)),
       ],
       imports: """
-      import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
       import 'package:${package.dartPackageName}/src/rust/api/pseudo_manual/basic.dart';
       """,
       enable: (ty) => ty.enableList,
