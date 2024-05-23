@@ -6,7 +6,7 @@ class BasicTypeInfo {
   final String dartTypeName;
   final String listName;
   final bool enableList;
-  final List<RawValue> interestRawValues;
+  final List<String> interestRawValues;
   final String Function(BasicTypeInfo, String) listWrapper;
 
   BasicTypeInfo({
@@ -21,13 +21,6 @@ class BasicTypeInfo {
         listName = listName ?? 'List<$dartTypeName>';
 }
 
-class RawValue {
-  final String text;
-  final bool nonWebOnly;
-
-  const RawValue(this.text, {this.nonWebOnly = false});
-}
-
 String _defaultGeneralListWrapper(BasicTypeInfo info, String value) =>
     '[$value]';
 
@@ -39,33 +32,21 @@ final kBasicTypes = [
     rustTypeName: 'i8',
     dartTypeName: 'int',
     listName: 'Int8List',
-    interestRawValues: [
-      const RawValue('0'),
-      const RawValue('-128'),
-      const RawValue('127'),
-    ],
+    interestRawValues: ['0', '-128', '127'],
     listWrapper: _defaultPrimitiveListWrapper,
   ),
   BasicTypeInfo(
     rustTypeName: 'i16',
     dartTypeName: 'int',
     listName: 'Int16List',
-    interestRawValues: [
-      const RawValue('0'),
-      const RawValue('-32768'),
-      const RawValue('32767'),
-    ],
+    interestRawValues: ['0', '-32768', '32767'],
     listWrapper: _defaultPrimitiveListWrapper,
   ),
   BasicTypeInfo(
     rustTypeName: 'i32',
     dartTypeName: 'int',
     listName: 'Int32List',
-    interestRawValues: [
-      const RawValue('0'),
-      const RawValue('-2147483648'),
-      const RawValue('2147483647'),
-    ],
+    interestRawValues: ['0', '-2147483648', '2147483647'],
     listWrapper: _defaultPrimitiveListWrapper,
   ),
   BasicTypeInfo(
@@ -73,11 +54,11 @@ final kBasicTypes = [
     dartTypeName: 'PlatformInt64',
     listName: 'Int64List',
     interestRawValues: [
-      RawValue(_platformInt64('0')),
-      RawValue(_platformInt64('-9007199254740992')),
-      RawValue(_platformInt64('9007199254740992')),
-      RawValue(_platformInt64('-9223372036854775808')),
-      RawValue(_platformInt64('9223372036854775807')),
+      _platformInt64('0'),
+      _platformInt64('-9007199254740992'),
+      _platformInt64('9007199254740992'),
+      _platformInt64('-9223372036854775808'),
+      _platformInt64('9223372036854775807'),
     ],
     listWrapper: _defaultPrimitiveListWrapper,
     // primitiveWrapper: (_, x) => 'BigInt.parse("$x")',
@@ -86,13 +67,13 @@ final kBasicTypes = [
     rustTypeName: 'i128',
     dartTypeName: 'BigInt',
     interestRawValues: [
-      RawValue(_bigInt('0')),
-      RawValue(_bigInt('-9007199254740992')),
-      RawValue(_bigInt('9007199254740992')),
-      RawValue(_bigInt('-9223372036854775808')),
-      RawValue(_bigInt('9223372036854775807')),
-      RawValue(_bigInt('-170141183460469231731687303715884105728')),
-      RawValue(_bigInt('170141183460469231731687303715884105727')),
+      _bigInt('0'),
+      _bigInt('-9007199254740992'),
+      _bigInt('9007199254740992'),
+      _bigInt('-9223372036854775808'),
+      _bigInt('9223372036854775807'),
+      _bigInt('-170141183460469231731687303715884105728'),
+      _bigInt('170141183460469231731687303715884105727'),
     ],
     listWrapper: _defaultGeneralListWrapper,
   ),
@@ -100,30 +81,21 @@ final kBasicTypes = [
     rustTypeName: 'u8',
     dartTypeName: 'int',
     listName: 'Uint8List',
-    interestRawValues: [
-      const RawValue('0'),
-      const RawValue('255'),
-    ],
+    interestRawValues: ['0', '255'],
     listWrapper: _defaultPrimitiveListWrapper,
   ),
   BasicTypeInfo(
     rustTypeName: 'u16',
     dartTypeName: 'int',
     listName: 'Uint16List',
-    interestRawValues: [
-      const RawValue('0'),
-      const RawValue('65535'),
-    ],
+    interestRawValues: ['0', '65535'],
     listWrapper: _defaultPrimitiveListWrapper,
   ),
   BasicTypeInfo(
     rustTypeName: 'u32',
     dartTypeName: 'int',
     listName: 'Uint32List',
-    interestRawValues: [
-      const RawValue('0'),
-      const RawValue('4294967295'),
-    ],
+    interestRawValues: ['0', '4294967295'],
     listWrapper: _defaultPrimitiveListWrapper,
   ),
   BasicTypeInfo(
@@ -131,10 +103,10 @@ final kBasicTypes = [
     dartTypeName: 'BigInt',
     listName: 'Uint64List',
     interestRawValues: [
-      RawValue(_bigInt('0')),
-      RawValue(_bigInt('9007199254740992')),
-      RawValue(_bigInt('9223372036854775807')),
-      RawValue(_bigInt('18446744073709551615')),
+      _bigInt('0'),
+      _bigInt('9007199254740992'),
+      _bigInt('9223372036854775807'),
+      _bigInt('18446744073709551615'),
     ],
     listWrapper: _defaultPrimitiveListWrapper,
     // primitiveWrapper: (_, x) => 'BigInt.parse("$x")',
@@ -143,10 +115,10 @@ final kBasicTypes = [
     rustTypeName: 'u128',
     dartTypeName: 'BigInt',
     interestRawValues: [
-      RawValue(_bigInt('0')),
-      RawValue(_bigInt('9007199254740992')),
-      RawValue(_bigInt('18446744073709551615')),
-      RawValue(_bigInt('340282366920938463463374607431768211455')),
+      _bigInt('0'),
+      _bigInt('9007199254740992'),
+      _bigInt('18446744073709551615'),
+      _bigInt('340282366920938463463374607431768211455'),
     ],
     listWrapper: _defaultGeneralListWrapper,
   ),
@@ -155,13 +127,13 @@ final kBasicTypes = [
     dartTypeName: 'PlatformInt64',
     enableList: false,
     interestRawValues: [
-      RawValue(_platformInt64('0')),
-      RawValue(_platformInt64('-2147483648')),
-      RawValue(_platformInt64('2147483647')),
-      RawValue('if (!kIsWeb) ${_platformInt64('-9007199254740992')}'),
-      RawValue('if (!kIsWeb) ${_platformInt64('9007199254740992')}'),
-      RawValue('if (!kIsWeb) ${_platformInt64('-9223372036854775808')}'),
-      RawValue('if (!kIsWeb) ${_platformInt64('9223372036854775807')}'),
+      _platformInt64('0'),
+      _platformInt64('-2147483648'),
+      _platformInt64('2147483647'),
+      'if (!kIsWeb) ${_platformInt64('-9007199254740992')}',
+      'if (!kIsWeb) ${_platformInt64('9007199254740992')}',
+      'if (!kIsWeb) ${_platformInt64('-9223372036854775808')}',
+      'if (!kIsWeb) ${_platformInt64('9223372036854775807')}',
     ],
     listWrapper: _defaultPrimitiveListWrapper,
   ),
@@ -170,11 +142,11 @@ final kBasicTypes = [
     dartTypeName: 'BigInt',
     enableList: false,
     interestRawValues: [
-      RawValue(_bigInt('0')),
-      RawValue(_bigInt('4294967295')),
-      RawValue('if (!kIsWeb) ${_bigInt('9007199254740992')}'),
-      RawValue('if (!kIsWeb) ${_bigInt('9223372036854775807')}'),
-      RawValue('if (!kIsWeb) ${_bigInt('18446744073709551615')}'),
+      _bigInt('0'),
+      _bigInt('4294967295'),
+      'if (!kIsWeb) ${_bigInt('9007199254740992')}',
+      'if (!kIsWeb) ${_bigInt('9223372036854775807')}',
+      'if (!kIsWeb) ${_bigInt('18446744073709551615')}',
     ],
     listWrapper: _defaultPrimitiveListWrapper,
   ),
@@ -182,42 +154,27 @@ final kBasicTypes = [
     rustTypeName: 'f32',
     dartTypeName: 'double',
     listName: 'Float32List',
-    interestRawValues: [
-      const RawValue('0'),
-      const RawValue('-42.5'),
-      const RawValue('123456'),
-    ],
+    interestRawValues: ['0', '-42.5', '123456'],
     listWrapper: _defaultPrimitiveListWrapper,
   ),
   BasicTypeInfo(
     rustTypeName: 'f64',
     dartTypeName: 'double',
     listName: 'Float64List',
-    interestRawValues: [
-      const RawValue('0'),
-      const RawValue('-42.5'),
-      const RawValue('123456'),
-    ],
+    interestRawValues: ['0', '-42.5', '123456'],
     listWrapper: _defaultPrimitiveListWrapper,
   ),
   BasicTypeInfo(
     rustTypeName: 'bool',
     dartTypeName: 'bool',
     listName: 'List<bool>',
-    interestRawValues: [
-      const RawValue('false'),
-      const RawValue('true'),
-    ],
+    interestRawValues: ['false', 'true'],
     listWrapper: (info, x) => '<bool>[$x]',
   ),
   BasicTypeInfo(
     rustTypeName: 'String',
     dartTypeName: 'String',
-    interestRawValues: [
-      const RawValue('""'),
-      const RawValue('"hello"'),
-      const RawValue('"😂"'),
-    ],
+    interestRawValues: ['""', '"hello"', '"😂"'],
     listWrapper: _defaultGeneralListWrapper,
   ),
   BasicTypeInfo(
@@ -225,9 +182,9 @@ final kBasicTypes = [
     rustTypeName: 'Vec<u8>',
     dartTypeName: 'Uint8List',
     interestRawValues: [
-      const RawValue('Uint8List.fromList([])'),
-      const RawValue('Uint8List.fromList([255, 0])'),
-      const RawValue('Uint8List.fromList([10, 20, 30, 40])'),
+      'Uint8List.fromList([])',
+      'Uint8List.fromList([255, 0])',
+      'Uint8List.fromList([10, 20, 30, 40])'
     ],
     listWrapper: _defaultGeneralListWrapper,
   ),
@@ -235,8 +192,8 @@ final kBasicTypes = [
     rustTypeName: 'BasicPrimitiveEnumTwinNormal',
     dartTypeName: 'BasicPrimitiveEnumTwinNormal',
     interestRawValues: [
-      const RawValue('BasicPrimitiveEnumTwinNormal.apple'),
-      const RawValue('BasicPrimitiveEnumTwinNormal.orange'),
+      'BasicPrimitiveEnumTwinNormal.apple',
+      'BasicPrimitiveEnumTwinNormal.orange',
     ],
     listWrapper: _defaultGeneralListWrapper,
   ),
@@ -244,8 +201,8 @@ final kBasicTypes = [
     rustTypeName: 'BasicGeneralEnumTwinNormal',
     dartTypeName: 'BasicGeneralEnumTwinNormal',
     interestRawValues: [
-      const RawValue('BasicGeneralEnumTwinNormal.apple(field: "one")'),
-      const RawValue('BasicGeneralEnumTwinNormal.orange()'),
+      'BasicGeneralEnumTwinNormal.apple(field: "one")',
+      'BasicGeneralEnumTwinNormal.orange()',
     ],
     listWrapper: _defaultGeneralListWrapper,
   ),
@@ -253,8 +210,8 @@ final kBasicTypes = [
     rustTypeName: 'BasicStructTwinNormal',
     dartTypeName: 'BasicStructTwinNormal',
     interestRawValues: [
-      const RawValue('BasicStructTwinNormal(apple: null, orange: null)'),
-      const RawValue('BasicStructTwinNormal(apple: "one", orange: 42)'),
+      'BasicStructTwinNormal(apple: null, orange: null)',
+      'BasicStructTwinNormal(apple: "one", orange: 42)',
     ],
     listWrapper: _defaultGeneralListWrapper,
   ),
