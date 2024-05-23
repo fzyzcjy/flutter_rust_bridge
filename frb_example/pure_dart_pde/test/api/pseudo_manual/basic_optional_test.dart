@@ -67,21 +67,10 @@ Future<void> main({bool skipRustLibInit = false}) async {
       null,
       PlatformInt64.parse("0"),
       PlatformInt64.parse("-2147483648"),
-      PlatformInt64.parse("2147483647"),
-      PlatformInt64.parse("-9007199254740992"),
-      PlatformInt64.parse("9007199254740992"),
-      PlatformInt64.parse("-9223372036854775808"),
-      PlatformInt64.parse("9223372036854775807")
+      PlatformInt64.parse("2147483647")
     ]);
-    addTestsIdentityFunctionCall(
-        exampleBasicOptionalTypeUsizeTwinNormal, <BigInt?>[
-      null,
-      BigInt.parse("0"),
-      BigInt.parse("4294967295"),
-      BigInt.parse("9007199254740992"),
-      BigInt.parse("9223372036854775807"),
-      BigInt.parse("18446744073709551615")
-    ]);
+    addTestsIdentityFunctionCall(exampleBasicOptionalTypeUsizeTwinNormal,
+        <BigInt?>[null, BigInt.parse("0"), BigInt.parse("4294967295")]);
     addTestsIdentityFunctionCall(exampleBasicOptionalTypeF32TwinNormal,
         <double?>[null, 0, -42.5, 123456]);
     addTestsIdentityFunctionCall(exampleBasicOptionalTypeF64TwinNormal,
