@@ -36,6 +36,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::StreamSink(ir) => {
                     generate_stream_sink_setup_and_serialize(ir, "self")
                 }
+                IrTypeDelegate::BigPrimitive(_) => TODO,
             },
             Lang::RustLang(_) => match &self.ir {
                 IrTypeDelegate::Array(_) => {
@@ -75,6 +76,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 },
                 IrTypeDelegate::Uuid => "self.as_bytes().to_vec()".to_owned(),
                 IrTypeDelegate::StreamSink(_) => return Some(lang.throw_unimplemented("")),
+                IrTypeDelegate::BigPrimitive(_) => TODO,
             },
         };
         Some(simple_delegate_encode(
@@ -123,6 +125,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::StreamSink(_) => {
                     return Some(format!("{};", lang.throw_unreachable("")));
                 }
+                IrTypeDelegate::BigPrimitive(_) => TODO,
             },
             Lang::RustLang(_) => match &self.ir {
                 IrTypeDelegate::Array(_) => {
@@ -157,6 +160,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     r#"uuid::Uuid::from_slice(&inner).expect("fail to decode uuid")"#.to_owned()
                 }
                 IrTypeDelegate::StreamSink(_) => "StreamSink::deserialize(inner)".to_owned(),
+                IrTypeDelegate::BigPrimitive(_) => TODO,
             },
         };
 
