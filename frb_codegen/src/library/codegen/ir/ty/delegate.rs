@@ -25,6 +25,7 @@ pub enum IrTypeDelegate {
     Map(IrTypeDelegateMap),
     Set(IrTypeDelegateSet),
     StreamSink(IrTypeDelegateStreamSink),
+    BigPrimitive(IrTypeDelegateBigPrimitive),
 }
 
 pub struct IrTypeDelegateArray {
@@ -65,6 +66,11 @@ pub struct IrTypeDelegateSet {
 pub struct IrTypeDelegateStreamSink {
     pub inner: Box<IrType>,
     pub codec: CodecMode,
+}
+
+pub enum IrTypeDelegateBigPrimitive {
+    I128,
+    U128,
 }
 }
 

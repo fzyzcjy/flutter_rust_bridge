@@ -18,6 +18,7 @@ pub enum IrTypePrimitive {
     Unit,
     Usize,
     Isize,
+    // For i128/u128, see IrDelegate
 }
 }
 
