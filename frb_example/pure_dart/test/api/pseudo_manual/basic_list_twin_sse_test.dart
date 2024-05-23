@@ -23,19 +23,25 @@ Future<void> main({bool skipRustLibInit = false}) async {
       Int8List.fromList([]),
       Int8List.fromList([0]),
       Int8List.fromList([-128]),
-      Int8List.fromList([127])
+      Int8List.fromList([127]),
+      Int8List.fromList([79]),
+      Int8List.fromList([-79])
     ]);
     addTestsIdentityFunctionCall(exampleBasicListTypeI16TwinSse, <Int16List>[
       Int16List.fromList([]),
       Int16List.fromList([0]),
       Int16List.fromList([-32768]),
-      Int16List.fromList([32767])
+      Int16List.fromList([32767]),
+      Int16List.fromList([12345]),
+      Int16List.fromList([-12345])
     ]);
     addTestsIdentityFunctionCall(exampleBasicListTypeI32TwinSse, <Int32List>[
       Int32List.fromList([]),
       Int32List.fromList([0]),
       Int32List.fromList([-2147483648]),
-      Int32List.fromList([2147483647])
+      Int32List.fromList([2147483647]),
+      Int32List.fromList([1234567890]),
+      Int32List.fromList([-1234567890])
     ]);
     addTestsIdentityFunctionCall(exampleBasicListTypeI64TwinSse, <Int64List>[
       Int64List.fromList([]),
@@ -43,7 +49,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
       Int64List.fromList([PlatformInt64.parse("-9007199254740992")]),
       Int64List.fromList([PlatformInt64.parse("9007199254740992")]),
       Int64List.fromList([PlatformInt64.parse("-9223372036854775808")]),
-      Int64List.fromList([PlatformInt64.parse("9223372036854775807")])
+      Int64List.fromList([PlatformInt64.parse("9223372036854775807")]),
+      Int64List.fromList([PlatformInt64.parse("1234567890123456789")]),
+      Int64List.fromList([PlatformInt64.parse("-1234567890123456789")])
     ]);
     addTestsIdentityFunctionCall(
         exampleBasicListTypeI128TwinSse, <List<BigInt>>[
@@ -59,24 +67,28 @@ Future<void> main({bool skipRustLibInit = false}) async {
     addTestsIdentityFunctionCall(exampleBasicListTypeU8TwinSse, <Uint8List>[
       Uint8List.fromList([]),
       Uint8List.fromList([0]),
-      Uint8List.fromList([255])
+      Uint8List.fromList([255]),
+      Uint8List.fromList([123])
     ]);
     addTestsIdentityFunctionCall(exampleBasicListTypeU16TwinSse, <Uint16List>[
       Uint16List.fromList([]),
       Uint16List.fromList([0]),
-      Uint16List.fromList([65535])
+      Uint16List.fromList([65535]),
+      Uint16List.fromList([12345])
     ]);
     addTestsIdentityFunctionCall(exampleBasicListTypeU32TwinSse, <Uint32List>[
       Uint32List.fromList([]),
       Uint32List.fromList([0]),
-      Uint32List.fromList([4294967295])
+      Uint32List.fromList([4294967295]),
+      Uint32List.fromList([2468013579])
     ]);
     addTestsIdentityFunctionCall(exampleBasicListTypeU64TwinSse, <Uint64List>[
       Uint64List.fromList([]),
       Uint64List.fromList([BigInt.parse("0")]),
       Uint64List.fromList([BigInt.parse("9007199254740992")]),
       Uint64List.fromList([BigInt.parse("9223372036854775807")]),
-      Uint64List.fromList([BigInt.parse("18446744073709551615")])
+      Uint64List.fromList([BigInt.parse("18446744073709551615")]),
+      Uint64List.fromList([BigInt.parse("12345678901234456789")])
     ]);
     addTestsIdentityFunctionCall(
         exampleBasicListTypeU128TwinSse, <List<BigInt>>[
