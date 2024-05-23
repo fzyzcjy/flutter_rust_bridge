@@ -66,6 +66,18 @@ final kBasicTypes = [
     // primitiveWrapper: (_, x) => 'BigInt.parse("$x")',
   ),
   BasicTypeInfo(
+    rustTypeName: 'i128',
+    dartTypeName: 'BigInt',
+    interestRawValues: [
+      '0',
+      '-9223372036854775808',
+      '9223372036854775807',
+      '-170141183460469231731687303715884105728',
+      '170141183460469231731687303715884105727',
+    ],
+    listWrapper: _defaultGeneralListWrapper,
+  ),
+  BasicTypeInfo(
     rustTypeName: 'u8',
     dartTypeName: 'int',
     listName: 'Uint8List',
@@ -100,6 +112,16 @@ final kBasicTypes = [
     ],
     listWrapper: _defaultPrimitiveListWrapper,
     // primitiveWrapper: (_, x) => 'BigInt.parse("$x")',
+  ),
+  BasicTypeInfo(
+    rustTypeName: 'u128',
+    dartTypeName: 'BigInt',
+    interestRawValues: [
+      '0',
+      '18446744073709551615',
+      '340282366920938463463374607431768211455',
+    ],
+    listWrapper: _defaultGeneralListWrapper,
   ),
   BasicTypeInfo(
     rustTypeName: 'isize',
