@@ -22373,6 +22373,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  Object cst_encode_isize(PlatformInt64 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return castNativeBigInt(raw);
+  }
+
+  @protected
   List<dynamic> cst_encode_kitchen_sink_twin_normal(KitchenSinkTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is KitchenSinkTwinNormal_Empty) {
@@ -25763,6 +25769,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  Object cst_encode_usize(BigInt raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return castNativeBigInt(raw);
+  }
+
+  @protected
   List<dynamic> cst_encode_vec_of_primitive_pack_twin_normal(
       VecOfPrimitivePackTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -26746,9 +26758,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   int cst_encode_i_8(int raw);
 
   @protected
-  int cst_encode_isize(PlatformInt64 raw);
-
-  @protected
   int cst_encode_my_enum(MyEnum raw);
 
   @protected
@@ -26774,9 +26783,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void cst_encode_unit(void raw);
-
-  @protected
-  int cst_encode_usize(BigInt raw);
 
   @protected
   int cst_encode_weekdays_twin_normal(WeekdaysTwinNormal raw);
