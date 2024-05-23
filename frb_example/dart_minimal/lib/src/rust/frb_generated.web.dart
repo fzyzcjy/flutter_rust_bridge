@@ -102,7 +102,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void cst_encode_unit(void raw);
 
   @protected
-  BigInt cst_encode_usize(BigInt raw);
+  int cst_encode_usize(BigInt raw);
 
   @protected
   void sse_encode_String(String self, SseSerializer serializer);
@@ -149,7 +149,7 @@ class RustLibWire implements BaseWire {
           port_, arg, expect);
 
   void wire__crate__api__minimal__example_basic_type_usize_twin_normal(
-          NativePortType port_, BigInt arg, String expect) =>
+          NativePortType port_, Object arg, String expect) =>
       wasmModule
           .wire__crate__api__minimal__example_basic_type_usize_twin_normal(
               port_, arg, expect);
@@ -181,7 +181,7 @@ class RustLibWasmModule implements WasmModule {
       NativePortType port_, Object arg, String expect);
 
   external void wire__crate__api__minimal__example_basic_type_usize_twin_normal(
-      NativePortType port_, BigInt arg, String expect);
+      NativePortType port_, Object arg, String expect);
 
   external void wire__crate__api__minimal__init_app(NativePortType port_);
 

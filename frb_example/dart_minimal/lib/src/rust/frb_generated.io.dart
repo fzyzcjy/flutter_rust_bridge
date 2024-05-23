@@ -106,7 +106,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void cst_encode_unit(void raw);
 
   @protected
-  BigInt cst_encode_usize(BigInt raw);
+  int cst_encode_usize(BigInt raw);
 
   @protected
   void sse_encode_String(String self, SseSerializer serializer);
