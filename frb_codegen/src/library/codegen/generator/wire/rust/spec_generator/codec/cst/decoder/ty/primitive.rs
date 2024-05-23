@@ -20,7 +20,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for PrimitiveWireRustCodecCstGene
         Some(match &self.ir {
             Unit => return None,
             Bool => "self.is_truthy()".into(),
-            I64 | U64 | Isize | Usize => "::std::convert::TryInto::try_into(self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::BigInt>().unwrap()).unwrap()".into(),
+            I64 | U64 | Isize | Usize => "self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::BigInt>().unwrap()".into(),
             _ => "self.unchecked_into_f64() as _".into(),
         })
     }
