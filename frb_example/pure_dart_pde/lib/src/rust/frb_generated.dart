@@ -44942,7 +44942,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformInt64 dco_decode_i_64(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return dcoDecodeI64OrU64(raw);
+    return dcoDecodeI64(raw);
   }
 
   @protected
@@ -44954,7 +44954,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformInt64 dco_decode_isize(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as PlatformInt64;
+    return dcoDecodeI64(raw);
   }
 
   @protected
@@ -48916,7 +48916,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   BigInt dco_decode_u_64(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return dcoDecodeI64OrU64(raw);
+    return dcoDecodeU64(raw);
   }
 
   @protected
@@ -48997,7 +48997,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   BigInt dco_decode_usize(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return dcoDecodeI64OrU64(raw);
+    return dcoDecodeU64(raw);
   }
 
   @protected
@@ -54593,7 +54593,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformInt64 sse_decode_i_64(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return deserializer.buffer.getInt64();
+    return deserializer.buffer.getPlatformInt64();
   }
 
   @protected
@@ -54605,7 +54605,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformInt64 sse_decode_isize(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return deserializer.buffer.getInt64();
+    return deserializer.buffer.getPlatformInt64();
   }
 
   @protected
@@ -55515,7 +55515,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Int64List sse_decode_list_prim_i_64_strict(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var len_ = sse_decode_i_32(deserializer);
-    return deserializer.buffer.getInt64List(len_);
+    return deserializer.buffer.getPlatformInt64List(len_);
   }
 
   @protected
@@ -55564,7 +55564,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Uint64List sse_decode_list_prim_u_64_strict(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var len_ = sse_decode_i_32(deserializer);
-    return deserializer.buffer.getUint64List(len_);
+    return deserializer.buffer.getBigUint64List(len_);
   }
 
   @protected
@@ -59098,7 +59098,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   BigInt sse_decode_u_64(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return deserializer.buffer.getUint64();
+    return deserializer.buffer.getBigUint64();
   }
 
   @protected
@@ -59173,7 +59173,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   BigInt sse_decode_usize(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return deserializer.buffer.getUint64();
+    return deserializer.buffer.getBigUint64();
   }
 
   @protected
@@ -64447,7 +64447,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void sse_encode_i_64(PlatformInt64 self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    serializer.buffer.putInt64(self);
+    serializer.buffer.putPlatformInt64(self);
   }
 
   @protected
@@ -64459,7 +64459,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void sse_encode_isize(PlatformInt64 self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    serializer.buffer.putInt64(self);
+    serializer.buffer.putPlatformInt64(self);
   }
 
   @protected
@@ -65217,7 +65217,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       Int64List self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_i_32(self.length, serializer);
-    serializer.buffer.putInt64List(self);
+    serializer.buffer.putPlatformInt64List(self);
   }
 
   @protected
@@ -65276,7 +65276,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       Uint64List self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_i_32(self.length, serializer);
-    serializer.buffer.putUint64List(self);
+    serializer.buffer.putBigUint64List(self);
   }
 
   @protected
@@ -68218,7 +68218,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void sse_encode_u_64(BigInt self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    serializer.buffer.putUint64(self);
+    serializer.buffer.putBigUint64(self);
   }
 
   @protected
@@ -68286,7 +68286,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void sse_encode_usize(BigInt self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    serializer.buffer.putUint64(self);
+    serializer.buffer.putBigUint64(self);
   }
 
   @protected
