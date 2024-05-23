@@ -58,9 +58,8 @@ final kBasicTypes = [
       '0',
       '-9007199254740992',
       '9007199254740992',
-      // TODO handle >53bit values, in dart web compiler it will error
-      // '-9223372036854775808',
-      // '9223372036854775807',
+      '-9223372036854775808',
+      '9223372036854775807',
     ],
     listWrapper: _defaultPrimitiveListWrapper,
     // primitiveWrapper: (_, x) => 'BigInt.parse("$x")',
@@ -105,12 +104,11 @@ final kBasicTypes = [
     // dartTypeName: 'BigInt',
     dartTypeName: 'int',
     listName: 'Uint64List',
-    // '18446744073709551615', // not support numbers bigger than max i64 yet (but implementable)
     interestRawValues: [
       '0',
       '9007199254740992',
-      // TODO handle >53bit values, in dart web compiler it will error
-      // '9223372036854775807',
+      '9223372036854775807',
+      '18446744073709551615',
     ],
     listWrapper: _defaultPrimitiveListWrapper,
     // primitiveWrapper: (_, x) => 'BigInt.parse("$x")',

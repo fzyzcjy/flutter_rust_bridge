@@ -23,8 +23,14 @@ Future<void> main({bool skipRustLibInit = false}) async {
         exampleBasicOptionalTypeI16TwinSse, <int?>[null, 0, -32768, 32767]);
     addTestsIdentityFunctionCall(exampleBasicOptionalTypeI32TwinSse,
         <int?>[null, 0, -2147483648, 2147483647]);
-    addTestsIdentityFunctionCall(exampleBasicOptionalTypeI64TwinSse,
-        <int?>[null, 0, -9007199254740992, 9007199254740992]);
+    addTestsIdentityFunctionCall(exampleBasicOptionalTypeI64TwinSse, <int?>[
+      null,
+      0,
+      -9007199254740992,
+      9007199254740992,
+      -9223372036854775808,
+      9223372036854775807
+    ]);
     addTestsIdentityFunctionCall(exampleBasicOptionalTypeI128TwinSse, <BigInt?>[
       null,
       0,
@@ -41,8 +47,13 @@ Future<void> main({bool skipRustLibInit = false}) async {
         exampleBasicOptionalTypeU16TwinSse, <int?>[null, 0, 65535]);
     addTestsIdentityFunctionCall(
         exampleBasicOptionalTypeU32TwinSse, <int?>[null, 0, 4294967295]);
-    addTestsIdentityFunctionCall(
-        exampleBasicOptionalTypeU64TwinSse, <int?>[null, 0, 9007199254740992]);
+    addTestsIdentityFunctionCall(exampleBasicOptionalTypeU64TwinSse, <int?>[
+      null,
+      0,
+      9007199254740992,
+      9223372036854775807,
+      18446744073709551615
+    ]);
     addTestsIdentityFunctionCall(exampleBasicOptionalTypeU128TwinSse, <BigInt?>[
       null,
       0,

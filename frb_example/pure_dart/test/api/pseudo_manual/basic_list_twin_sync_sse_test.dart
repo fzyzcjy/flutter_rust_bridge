@@ -43,7 +43,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
       Int64List.fromList([]),
       Int64List.fromList([0]),
       Int64List.fromList([-9007199254740992]),
-      Int64List.fromList([9007199254740992])
+      Int64List.fromList([9007199254740992]),
+      Int64List.fromList([-9223372036854775808]),
+      Int64List.fromList([9223372036854775807])
     ]);
     addTestsIdentityFunctionCall(
         exampleBasicListTypeI128TwinSyncSse, <List<BigInt>>[
@@ -77,7 +79,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
         exampleBasicListTypeU64TwinSyncSse, <Uint64List>[
       Uint64List.fromList([]),
       Uint64List.fromList([0]),
-      Uint64List.fromList([9007199254740992])
+      Uint64List.fromList([9007199254740992]),
+      Uint64List.fromList([9223372036854775807]),
+      Uint64List.fromList([18446744073709551615])
     ]);
     addTestsIdentityFunctionCall(
         exampleBasicListTypeU128TwinSyncSse, <List<BigInt>>[

@@ -43,7 +43,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
       {},
       {42: 0},
       {42: -9007199254740992},
-      {42: 9007199254740992}
+      {42: 9007199254740992},
+      {42: -9223372036854775808},
+      {42: 9223372036854775807}
     ]);
     addTestsIdentityFunctionCall(
         exampleBasicMapTypeI128TwinRustAsyncSse, <Map<int, BigInt>>[
@@ -78,7 +80,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
         exampleBasicMapTypeU64TwinRustAsyncSse, <Map<int, int>>[
       {},
       {42: 0},
-      {42: 9007199254740992}
+      {42: 9007199254740992},
+      {42: 9223372036854775807},
+      {42: 18446744073709551615}
     ]);
     addTestsIdentityFunctionCall(
         exampleBasicMapTypeU128TwinRustAsyncSse, <Map<int, BigInt>>[
