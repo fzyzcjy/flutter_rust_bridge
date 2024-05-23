@@ -57,7 +57,7 @@ pub use super::basic::*;
       final partialName = 'example_basic${postfix}_type_${ty.name}';
       if (withArgExpect?.call(ty) ?? false) {
         builder.body +=
-            '''pub fn ${partialName}_twin_normal(arg: $ty, expect: String) -> $ty {
+            '''pub fn ${partialName}_twin_normal(arg: ${ty.rustTypeName}, expect: String) -> ${ty.rustTypeName} {
           assert_eq!(arg, expect.parse().unwrap());
           arg
         }\n\n''';
