@@ -2,6 +2,12 @@ import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
+Object decodeDartOpaque(
+    BigInt raw, GeneralizedFrbRustBinding generalizedFrbRustBinding) {
+  return generalizedFrbRustBinding.dartOpaqueRust2DartDecode(raw.toInt());
+}
+
+/// {@macro flutter_rust_bridge.only_for_generated_code}
 PlatformPointer encodeDartOpaque(Object raw, NativePortType dartHandlerPort,
     GeneralizedFrbRustBinding generalizedFrbRustBinding) {
   return generalizedFrbRustBinding.dartOpaqueDart2RustEncode(
