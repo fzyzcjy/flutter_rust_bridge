@@ -25,19 +25,13 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for PrimitiveListWireDartCodecCst
                 return ans;",
                 self.ir.safe_ident(),
                 match self.ir.primitive {
-                    IrTypePrimitive::I64
-                    | IrTypePrimitive::U64
-                    | IrTypePrimitive::Isize
-                    | IrTypePrimitive::Usize => "raw.inner",
+                    IrTypePrimitive::I64 | IrTypePrimitive::U64 => "raw.inner",
                     _ => "raw",
                 }
             )),
             web: Some(
                 match self.ir.primitive {
-                    IrTypePrimitive::I64
-                    | IrTypePrimitive::U64
-                    | IrTypePrimitive::Isize
-                    | IrTypePrimitive::Usize => "return raw.inner;",
+                    IrTypePrimitive::I64 | IrTypePrimitive::U64 => "return raw.inner;",
                     _ => "return raw;",
                 }
                 .into(),
@@ -52,10 +46,9 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for PrimitiveListWireDartCodecCst
                 format!("ffi.Pointer<wire_cst_{}>", self.ir.safe_ident())
             }
             Target::Web => match self.ir.primitive {
-                IrTypePrimitive::I64
-                | IrTypePrimitive::U64
-                | IrTypePrimitive::Isize
-                | IrTypePrimitive::Usize => "Object /* BigInt64Array */".to_owned(),
+                IrTypePrimitive::I64 | IrTypePrimitive::U64 => {
+                    "Object /* BigInt64Array */".to_owned()
+                }
                 _ => ApiDartGenerator::new(self.ir.clone(), self.context.as_api_dart_context())
                     .dart_api_type(),
             },
