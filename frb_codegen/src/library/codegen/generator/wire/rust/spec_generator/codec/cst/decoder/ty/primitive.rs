@@ -26,11 +26,9 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for PrimitiveWireRustCodecCstGene
         })
     }
 
-    fn rust_wire_type(&self, _target: Target) -> String {
+    fn rust_wire_type(&self, target: Target) -> String {
         use IrTypePrimitive::*;
-        if let Target::Web = target
-            && matches!(self.ir.primitive, I64 | U64 | Isize | Usize)
-        {
+        if target == Target::Web && matches!(self.ir, I64 | U64 | Isize | Usize) {
             return JS_VALUE.into();
         }
         self.ir.rust_api_type()
