@@ -13,4 +13,5 @@ export 'src/loader/loader.dart' show loadExternalLibrary;
 export 'src/main_components/handler.dart' show BaseHandler;
 export 'src/task.dart' show NormalTask, SyncTask;
 export 'src/stream/stream_sink.dart' show RustStreamSink;
-export 'src/platform_types/platform_types.dart' show PlatformInt64;
+export 'src/platform_types/platform_types.dart'
+    show PlatformInt64, PlatformInt64Util;

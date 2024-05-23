@@ -85,3 +85,9 @@ class PlatformPointerUtil {
   /// {@macro flutter_rust_bridge.internal}
   static bool isNullPtr(PlatformPointer ptr) => ptr.address == 0;
 }
+
+/// {@macro flutter_rust_bridge.internal}
+class PlatformInt64Util {
+  /// {@macro flutter_rust_bridge.internal}
+  static PlatformInt64 from(int value) => value;
+}
