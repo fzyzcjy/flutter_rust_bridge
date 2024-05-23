@@ -9,76 +9,76 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'basic_twin_rust_async_sse.freezed.dart';
 
 Future<int> exampleBasicTypeI8TwinRustAsyncSse(
-        {required int arg, dynamic hint}) =>
+        {required int arg, required String expect, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicTwinRustAsyncSseExampleBasicTypeI8TwinRustAsyncSse(
-            arg: arg, hint: hint);
+            arg: arg, expect: expect, hint: hint);
 
 Future<int> exampleBasicTypeI16TwinRustAsyncSse(
-        {required int arg, dynamic hint}) =>
+        {required int arg, required String expect, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicTwinRustAsyncSseExampleBasicTypeI16TwinRustAsyncSse(
-            arg: arg, hint: hint);
+            arg: arg, expect: expect, hint: hint);
 
 Future<int> exampleBasicTypeI32TwinRustAsyncSse(
-        {required int arg, dynamic hint}) =>
+        {required int arg, required String expect, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicTwinRustAsyncSseExampleBasicTypeI32TwinRustAsyncSse(
-            arg: arg, hint: hint);
+            arg: arg, expect: expect, hint: hint);
 
 Future<PlatformInt64> exampleBasicTypeI64TwinRustAsyncSse(
-        {required PlatformInt64 arg, dynamic hint}) =>
+        {required PlatformInt64 arg, required String expect, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicTwinRustAsyncSseExampleBasicTypeI64TwinRustAsyncSse(
-            arg: arg, hint: hint);
+            arg: arg, expect: expect, hint: hint);
 
 Future<BigInt> exampleBasicTypeI128TwinRustAsyncSse(
-        {required BigInt arg, dynamic hint}) =>
+        {required BigInt arg, required String expect, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicTwinRustAsyncSseExampleBasicTypeI128TwinRustAsyncSse(
-            arg: arg, hint: hint);
+            arg: arg, expect: expect, hint: hint);
 
 Future<int> exampleBasicTypeU8TwinRustAsyncSse(
-        {required int arg, dynamic hint}) =>
+        {required int arg, required String expect, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicTwinRustAsyncSseExampleBasicTypeU8TwinRustAsyncSse(
-            arg: arg, hint: hint);
+            arg: arg, expect: expect, hint: hint);
 
 Future<int> exampleBasicTypeU16TwinRustAsyncSse(
-        {required int arg, dynamic hint}) =>
+        {required int arg, required String expect, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicTwinRustAsyncSseExampleBasicTypeU16TwinRustAsyncSse(
-            arg: arg, hint: hint);
+            arg: arg, expect: expect, hint: hint);
 
 Future<int> exampleBasicTypeU32TwinRustAsyncSse(
-        {required int arg, dynamic hint}) =>
+        {required int arg, required String expect, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicTwinRustAsyncSseExampleBasicTypeU32TwinRustAsyncSse(
-            arg: arg, hint: hint);
+            arg: arg, expect: expect, hint: hint);
 
 Future<BigInt> exampleBasicTypeU64TwinRustAsyncSse(
-        {required BigInt arg, dynamic hint}) =>
+        {required BigInt arg, required String expect, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicTwinRustAsyncSseExampleBasicTypeU64TwinRustAsyncSse(
-            arg: arg, hint: hint);
+            arg: arg, expect: expect, hint: hint);
 
 Future<BigInt> exampleBasicTypeU128TwinRustAsyncSse(
-        {required BigInt arg, dynamic hint}) =>
+        {required BigInt arg, required String expect, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicTwinRustAsyncSseExampleBasicTypeU128TwinRustAsyncSse(
-            arg: arg, hint: hint);
+            arg: arg, expect: expect, hint: hint);
 
 Future<PlatformInt64> exampleBasicTypeIsizeTwinRustAsyncSse(
-        {required PlatformInt64 arg, dynamic hint}) =>
+        {required PlatformInt64 arg, required String expect, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicTwinRustAsyncSseExampleBasicTypeIsizeTwinRustAsyncSse(
-            arg: arg, hint: hint);
+            arg: arg, expect: expect, hint: hint);
 
 Future<BigInt> exampleBasicTypeUsizeTwinRustAsyncSse(
-        {required BigInt arg, dynamic hint}) =>
+        {required BigInt arg, required String expect, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicTwinRustAsyncSseExampleBasicTypeUsizeTwinRustAsyncSse(
-            arg: arg, hint: hint);
+            arg: arg, expect: expect, hint: hint);
 
 Future<double> exampleBasicTypeF32TwinRustAsyncSse(
         {required double arg, dynamic hint}) =>

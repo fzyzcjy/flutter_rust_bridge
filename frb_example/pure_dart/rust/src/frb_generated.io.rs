@@ -18970,48 +18970,66 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic__example_basic_type_i128_twin_normal(
     port_: i64,
     arg: *mut wire_cst_list_prim_u_8_strict,
+    expect: *mut wire_cst_list_prim_u_8_strict,
 ) {
-    wire__crate__api__pseudo_manual__basic__example_basic_type_i128_twin_normal_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic__example_basic_type_i128_twin_normal_impl(
+        port_, arg, expect,
+    )
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic__example_basic_type_i16_twin_normal(
     port_: i64,
     arg: i16,
+    expect: *mut wire_cst_list_prim_u_8_strict,
 ) {
-    wire__crate__api__pseudo_manual__basic__example_basic_type_i16_twin_normal_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic__example_basic_type_i16_twin_normal_impl(
+        port_, arg, expect,
+    )
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic__example_basic_type_i32_twin_normal(
     port_: i64,
     arg: i32,
+    expect: *mut wire_cst_list_prim_u_8_strict,
 ) {
-    wire__crate__api__pseudo_manual__basic__example_basic_type_i32_twin_normal_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic__example_basic_type_i32_twin_normal_impl(
+        port_, arg, expect,
+    )
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic__example_basic_type_i64_twin_normal(
     port_: i64,
     arg: i64,
+    expect: *mut wire_cst_list_prim_u_8_strict,
 ) {
-    wire__crate__api__pseudo_manual__basic__example_basic_type_i64_twin_normal_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic__example_basic_type_i64_twin_normal_impl(
+        port_, arg, expect,
+    )
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic__example_basic_type_i8_twin_normal(
     port_: i64,
     arg: i8,
+    expect: *mut wire_cst_list_prim_u_8_strict,
 ) {
-    wire__crate__api__pseudo_manual__basic__example_basic_type_i8_twin_normal_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic__example_basic_type_i8_twin_normal_impl(
+        port_, arg, expect,
+    )
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic__example_basic_type_isize_twin_normal(
     port_: i64,
     arg: isize,
+    expect: *mut wire_cst_list_prim_u_8_strict,
 ) {
-    wire__crate__api__pseudo_manual__basic__example_basic_type_isize_twin_normal_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic__example_basic_type_isize_twin_normal_impl(
+        port_, arg, expect,
+    )
 }
 
 #[no_mangle]
@@ -19026,48 +19044,66 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic__example_basic_type_u128_twin_normal(
     port_: i64,
     arg: *mut wire_cst_list_prim_u_8_strict,
+    expect: *mut wire_cst_list_prim_u_8_strict,
 ) {
-    wire__crate__api__pseudo_manual__basic__example_basic_type_u128_twin_normal_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic__example_basic_type_u128_twin_normal_impl(
+        port_, arg, expect,
+    )
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic__example_basic_type_u16_twin_normal(
     port_: i64,
     arg: u16,
+    expect: *mut wire_cst_list_prim_u_8_strict,
 ) {
-    wire__crate__api__pseudo_manual__basic__example_basic_type_u16_twin_normal_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic__example_basic_type_u16_twin_normal_impl(
+        port_, arg, expect,
+    )
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic__example_basic_type_u32_twin_normal(
     port_: i64,
     arg: u32,
+    expect: *mut wire_cst_list_prim_u_8_strict,
 ) {
-    wire__crate__api__pseudo_manual__basic__example_basic_type_u32_twin_normal_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic__example_basic_type_u32_twin_normal_impl(
+        port_, arg, expect,
+    )
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic__example_basic_type_u64_twin_normal(
     port_: i64,
     arg: u64,
+    expect: *mut wire_cst_list_prim_u_8_strict,
 ) {
-    wire__crate__api__pseudo_manual__basic__example_basic_type_u64_twin_normal_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic__example_basic_type_u64_twin_normal_impl(
+        port_, arg, expect,
+    )
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic__example_basic_type_u8_twin_normal(
     port_: i64,
     arg: u8,
+    expect: *mut wire_cst_list_prim_u_8_strict,
 ) {
-    wire__crate__api__pseudo_manual__basic__example_basic_type_u8_twin_normal_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic__example_basic_type_u8_twin_normal_impl(
+        port_, arg, expect,
+    )
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic__example_basic_type_usize_twin_normal(
     port_: i64,
     arg: usize,
+    expect: *mut wire_cst_list_prim_u_8_strict,
 ) {
-    wire__crate__api__pseudo_manual__basic__example_basic_type_usize_twin_normal_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic__example_basic_type_usize_twin_normal_impl(
+        port_, arg, expect,
+    )
 }
 
 #[no_mangle]
@@ -22394,48 +22430,54 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i128_twin_rust_async(
     port_: i64,
     arg: *mut wire_cst_list_prim_u_8_strict,
+    expect: *mut wire_cst_list_prim_u_8_strict,
 ) {
-    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i128_twin_rust_async_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i128_twin_rust_async_impl(port_, arg, expect)
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i16_twin_rust_async(
     port_: i64,
     arg: i16,
+    expect: *mut wire_cst_list_prim_u_8_strict,
 ) {
-    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i16_twin_rust_async_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i16_twin_rust_async_impl(port_, arg, expect)
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i32_twin_rust_async(
     port_: i64,
     arg: i32,
+    expect: *mut wire_cst_list_prim_u_8_strict,
 ) {
-    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i32_twin_rust_async_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i32_twin_rust_async_impl(port_, arg, expect)
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i64_twin_rust_async(
     port_: i64,
     arg: i64,
+    expect: *mut wire_cst_list_prim_u_8_strict,
 ) {
-    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i64_twin_rust_async_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i64_twin_rust_async_impl(port_, arg, expect)
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i8_twin_rust_async(
     port_: i64,
     arg: i8,
+    expect: *mut wire_cst_list_prim_u_8_strict,
 ) {
-    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i8_twin_rust_async_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i8_twin_rust_async_impl(port_, arg, expect)
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_isize_twin_rust_async(
     port_: i64,
     arg: isize,
+    expect: *mut wire_cst_list_prim_u_8_strict,
 ) {
-    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_isize_twin_rust_async_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_isize_twin_rust_async_impl(port_, arg, expect)
 }
 
 #[no_mangle]
@@ -22450,48 +22492,54 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u128_twin_rust_async(
     port_: i64,
     arg: *mut wire_cst_list_prim_u_8_strict,
+    expect: *mut wire_cst_list_prim_u_8_strict,
 ) {
-    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u128_twin_rust_async_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u128_twin_rust_async_impl(port_, arg, expect)
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u16_twin_rust_async(
     port_: i64,
     arg: u16,
+    expect: *mut wire_cst_list_prim_u_8_strict,
 ) {
-    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u16_twin_rust_async_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u16_twin_rust_async_impl(port_, arg, expect)
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u32_twin_rust_async(
     port_: i64,
     arg: u32,
+    expect: *mut wire_cst_list_prim_u_8_strict,
 ) {
-    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u32_twin_rust_async_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u32_twin_rust_async_impl(port_, arg, expect)
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u64_twin_rust_async(
     port_: i64,
     arg: u64,
+    expect: *mut wire_cst_list_prim_u_8_strict,
 ) {
-    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u64_twin_rust_async_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u64_twin_rust_async_impl(port_, arg, expect)
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u8_twin_rust_async(
     port_: i64,
     arg: u8,
+    expect: *mut wire_cst_list_prim_u_8_strict,
 ) {
-    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u8_twin_rust_async_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u8_twin_rust_async_impl(port_, arg, expect)
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_usize_twin_rust_async(
     port_: i64,
     arg: usize,
+    expect: *mut wire_cst_list_prim_u_8_strict,
 ) {
-    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_usize_twin_rust_async_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_usize_twin_rust_async_impl(port_, arg, expect)
 }
 
 #[no_mangle]
@@ -23031,43 +23079,61 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i128_twin_sync(
     arg: *mut wire_cst_list_prim_u_8_strict,
+    expect: *mut wire_cst_list_prim_u_8_strict,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i128_twin_sync_impl(arg)
+    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i128_twin_sync_impl(
+        arg, expect,
+    )
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i16_twin_sync(
     arg: i16,
+    expect: *mut wire_cst_list_prim_u_8_strict,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i16_twin_sync_impl(arg)
+    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i16_twin_sync_impl(
+        arg, expect,
+    )
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i32_twin_sync(
     arg: i32,
+    expect: *mut wire_cst_list_prim_u_8_strict,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i32_twin_sync_impl(arg)
+    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i32_twin_sync_impl(
+        arg, expect,
+    )
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i64_twin_sync(
     arg: i64,
+    expect: *mut wire_cst_list_prim_u_8_strict,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i64_twin_sync_impl(arg)
+    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i64_twin_sync_impl(
+        arg, expect,
+    )
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i8_twin_sync(
     arg: i8,
+    expect: *mut wire_cst_list_prim_u_8_strict,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i8_twin_sync_impl(arg)
+    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i8_twin_sync_impl(
+        arg, expect,
+    )
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_isize_twin_sync(
     arg: isize,
+    expect: *mut wire_cst_list_prim_u_8_strict,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_isize_twin_sync_impl(arg)
+    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_isize_twin_sync_impl(
+        arg, expect,
+    )
 }
 
 #[no_mangle]
@@ -23080,43 +23146,61 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u128_twin_sync(
     arg: *mut wire_cst_list_prim_u_8_strict,
+    expect: *mut wire_cst_list_prim_u_8_strict,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u128_twin_sync_impl(arg)
+    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u128_twin_sync_impl(
+        arg, expect,
+    )
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u16_twin_sync(
     arg: u16,
+    expect: *mut wire_cst_list_prim_u_8_strict,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u16_twin_sync_impl(arg)
+    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u16_twin_sync_impl(
+        arg, expect,
+    )
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u32_twin_sync(
     arg: u32,
+    expect: *mut wire_cst_list_prim_u_8_strict,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u32_twin_sync_impl(arg)
+    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u32_twin_sync_impl(
+        arg, expect,
+    )
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u64_twin_sync(
     arg: u64,
+    expect: *mut wire_cst_list_prim_u_8_strict,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u64_twin_sync_impl(arg)
+    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u64_twin_sync_impl(
+        arg, expect,
+    )
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u8_twin_sync(
     arg: u8,
+    expect: *mut wire_cst_list_prim_u_8_strict,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u8_twin_sync_impl(arg)
+    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u8_twin_sync_impl(
+        arg, expect,
+    )
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_usize_twin_sync(
     arg: usize,
+    expect: *mut wire_cst_list_prim_u_8_strict,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_usize_twin_sync_impl(arg)
+    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_usize_twin_sync_impl(
+        arg, expect,
+    )
 }
 
 #[no_mangle]

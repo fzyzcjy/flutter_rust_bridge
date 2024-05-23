@@ -8163,12 +8163,13 @@ fn wire__crate__api__pseudo_manual__basic__example_basic_type_i128_twin_normal_i
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <i128>::sse_decode(&mut deserializer);
+            let api_expect = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
                     Result::<_, ()>::Ok(
                         crate::api::pseudo_manual::basic::example_basic_type_i128_twin_normal(
-                            api_arg,
+                            api_arg, api_expect,
                         ),
                     )
                 })())
@@ -8199,12 +8200,13 @@ fn wire__crate__api__pseudo_manual__basic__example_basic_type_i16_twin_normal_im
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <i16>::sse_decode(&mut deserializer);
+            let api_expect = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
                     Result::<_, ()>::Ok(
                         crate::api::pseudo_manual::basic::example_basic_type_i16_twin_normal(
-                            api_arg,
+                            api_arg, api_expect,
                         ),
                     )
                 })())
@@ -8235,12 +8237,13 @@ fn wire__crate__api__pseudo_manual__basic__example_basic_type_i32_twin_normal_im
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <i32>::sse_decode(&mut deserializer);
+            let api_expect = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
                     Result::<_, ()>::Ok(
                         crate::api::pseudo_manual::basic::example_basic_type_i32_twin_normal(
-                            api_arg,
+                            api_arg, api_expect,
                         ),
                     )
                 })())
@@ -8271,12 +8274,13 @@ fn wire__crate__api__pseudo_manual__basic__example_basic_type_i64_twin_normal_im
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <i64>::sse_decode(&mut deserializer);
+            let api_expect = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
                     Result::<_, ()>::Ok(
                         crate::api::pseudo_manual::basic::example_basic_type_i64_twin_normal(
-                            api_arg,
+                            api_arg, api_expect,
                         ),
                     )
                 })())
@@ -8307,12 +8311,13 @@ fn wire__crate__api__pseudo_manual__basic__example_basic_type_i8_twin_normal_imp
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <i8>::sse_decode(&mut deserializer);
+            let api_expect = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
                     Result::<_, ()>::Ok(
                         crate::api::pseudo_manual::basic::example_basic_type_i8_twin_normal(
-                            api_arg,
+                            api_arg, api_expect,
                         ),
                     )
                 })())
@@ -8343,12 +8348,13 @@ fn wire__crate__api__pseudo_manual__basic__example_basic_type_isize_twin_normal_
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <isize>::sse_decode(&mut deserializer);
+            let api_expect = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
                     Result::<_, ()>::Ok(
                         crate::api::pseudo_manual::basic::example_basic_type_isize_twin_normal(
-                            api_arg,
+                            api_arg, api_expect,
                         ),
                     )
                 })())
@@ -8415,12 +8421,13 @@ fn wire__crate__api__pseudo_manual__basic__example_basic_type_u128_twin_normal_i
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <u128>::sse_decode(&mut deserializer);
+            let api_expect = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
                     Result::<_, ()>::Ok(
                         crate::api::pseudo_manual::basic::example_basic_type_u128_twin_normal(
-                            api_arg,
+                            api_arg, api_expect,
                         ),
                     )
                 })())
@@ -8451,12 +8458,13 @@ fn wire__crate__api__pseudo_manual__basic__example_basic_type_u16_twin_normal_im
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <u16>::sse_decode(&mut deserializer);
+            let api_expect = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
                     Result::<_, ()>::Ok(
                         crate::api::pseudo_manual::basic::example_basic_type_u16_twin_normal(
-                            api_arg,
+                            api_arg, api_expect,
                         ),
                     )
                 })())
@@ -8487,12 +8495,13 @@ fn wire__crate__api__pseudo_manual__basic__example_basic_type_u32_twin_normal_im
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <u32>::sse_decode(&mut deserializer);
+            let api_expect = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
                     Result::<_, ()>::Ok(
                         crate::api::pseudo_manual::basic::example_basic_type_u32_twin_normal(
-                            api_arg,
+                            api_arg, api_expect,
                         ),
                     )
                 })())
@@ -8523,12 +8532,13 @@ fn wire__crate__api__pseudo_manual__basic__example_basic_type_u64_twin_normal_im
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <u64>::sse_decode(&mut deserializer);
+            let api_expect = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
                     Result::<_, ()>::Ok(
                         crate::api::pseudo_manual::basic::example_basic_type_u64_twin_normal(
-                            api_arg,
+                            api_arg, api_expect,
                         ),
                     )
                 })())
@@ -8559,12 +8569,13 @@ fn wire__crate__api__pseudo_manual__basic__example_basic_type_u8_twin_normal_imp
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <u8>::sse_decode(&mut deserializer);
+            let api_expect = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
                     Result::<_, ()>::Ok(
                         crate::api::pseudo_manual::basic::example_basic_type_u8_twin_normal(
-                            api_arg,
+                            api_arg, api_expect,
                         ),
                     )
                 })())
@@ -8595,12 +8606,13 @@ fn wire__crate__api__pseudo_manual__basic__example_basic_type_usize_twin_normal_
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <usize>::sse_decode(&mut deserializer);
+            let api_expect = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
                     Result::<_, ()>::Ok(
                         crate::api::pseudo_manual::basic::example_basic_type_usize_twin_normal(
-                            api_arg,
+                            api_arg, api_expect,
                         ),
                     )
                 })())
@@ -11258,9 +11270,10 @@ fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i1
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_basic_type_i128_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <i128>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+            let api_arg = <i128>::sse_decode(&mut deserializer);
+let api_expect = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_i128_twin_rust_async(api_arg).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_i128_twin_rust_async(api_arg, api_expect).await)
                     })().await)
                 } })
 }
@@ -11273,9 +11286,10 @@ fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i1
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_basic_type_i16_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <i16>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+            let api_arg = <i16>::sse_decode(&mut deserializer);
+let api_expect = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_i16_twin_rust_async(api_arg).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_i16_twin_rust_async(api_arg, api_expect).await)
                     })().await)
                 } })
 }
@@ -11288,9 +11302,10 @@ fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i3
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_basic_type_i32_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+            let api_arg = <i32>::sse_decode(&mut deserializer);
+let api_expect = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_i32_twin_rust_async(api_arg).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_i32_twin_rust_async(api_arg, api_expect).await)
                     })().await)
                 } })
 }
@@ -11303,9 +11318,10 @@ fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i6
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_basic_type_i64_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <i64>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+            let api_arg = <i64>::sse_decode(&mut deserializer);
+let api_expect = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_i64_twin_rust_async(api_arg).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_i64_twin_rust_async(api_arg, api_expect).await)
                     })().await)
                 } })
 }
@@ -11318,9 +11334,10 @@ fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i8
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_basic_type_i8_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <i8>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+            let api_arg = <i8>::sse_decode(&mut deserializer);
+let api_expect = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_i8_twin_rust_async(api_arg).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_i8_twin_rust_async(api_arg, api_expect).await)
                     })().await)
                 } })
 }
@@ -11333,9 +11350,10 @@ fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_is
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_basic_type_isize_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <isize>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+            let api_arg = <isize>::sse_decode(&mut deserializer);
+let api_expect = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_isize_twin_rust_async(api_arg).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_isize_twin_rust_async(api_arg, api_expect).await)
                     })().await)
                 } })
 }
@@ -11363,9 +11381,10 @@ fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u1
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_basic_type_u128_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <u128>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+            let api_arg = <u128>::sse_decode(&mut deserializer);
+let api_expect = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_u128_twin_rust_async(api_arg).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_u128_twin_rust_async(api_arg, api_expect).await)
                     })().await)
                 } })
 }
@@ -11378,9 +11397,10 @@ fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u1
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_basic_type_u16_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <u16>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+            let api_arg = <u16>::sse_decode(&mut deserializer);
+let api_expect = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_u16_twin_rust_async(api_arg).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_u16_twin_rust_async(api_arg, api_expect).await)
                     })().await)
                 } })
 }
@@ -11393,9 +11413,10 @@ fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u3
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_basic_type_u32_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <u32>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+            let api_arg = <u32>::sse_decode(&mut deserializer);
+let api_expect = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_u32_twin_rust_async(api_arg).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_u32_twin_rust_async(api_arg, api_expect).await)
                     })().await)
                 } })
 }
@@ -11408,9 +11429,10 @@ fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u6
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_basic_type_u64_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <u64>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+            let api_arg = <u64>::sse_decode(&mut deserializer);
+let api_expect = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_u64_twin_rust_async(api_arg).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_u64_twin_rust_async(api_arg, api_expect).await)
                     })().await)
                 } })
 }
@@ -11423,9 +11445,10 @@ fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u8
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_basic_type_u8_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <u8>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+            let api_arg = <u8>::sse_decode(&mut deserializer);
+let api_expect = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_u8_twin_rust_async(api_arg).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_u8_twin_rust_async(api_arg, api_expect).await)
                     })().await)
                 } })
 }
@@ -11438,9 +11461,10 @@ fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_us
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_basic_type_usize_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <usize>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+            let api_arg = <usize>::sse_decode(&mut deserializer);
+let api_expect = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_usize_twin_rust_async(api_arg).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_usize_twin_rust_async(api_arg, api_expect).await)
                     })().await)
                 } })
 }
@@ -11637,11 +11661,12 @@ fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i128_twi
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <i128>::sse_decode(&mut deserializer);
+            let api_expect = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse((move || {
                 Result::<_, ()>::Ok(
                     crate::api::pseudo_manual::basic_twin_sync::example_basic_type_i128_twin_sync(
-                        api_arg,
+                        api_arg, api_expect,
                     ),
                 )
             })())
@@ -11670,11 +11695,12 @@ fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i16_twin
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <i16>::sse_decode(&mut deserializer);
+            let api_expect = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse((move || {
                 Result::<_, ()>::Ok(
                     crate::api::pseudo_manual::basic_twin_sync::example_basic_type_i16_twin_sync(
-                        api_arg,
+                        api_arg, api_expect,
                     ),
                 )
             })())
@@ -11703,11 +11729,12 @@ fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i32_twin
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <i32>::sse_decode(&mut deserializer);
+            let api_expect = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse((move || {
                 Result::<_, ()>::Ok(
                     crate::api::pseudo_manual::basic_twin_sync::example_basic_type_i32_twin_sync(
-                        api_arg,
+                        api_arg, api_expect,
                     ),
                 )
             })())
@@ -11736,11 +11763,12 @@ fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i64_twin
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <i64>::sse_decode(&mut deserializer);
+            let api_expect = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse((move || {
                 Result::<_, ()>::Ok(
                     crate::api::pseudo_manual::basic_twin_sync::example_basic_type_i64_twin_sync(
-                        api_arg,
+                        api_arg, api_expect,
                     ),
                 )
             })())
@@ -11769,11 +11797,12 @@ fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i8_twin_
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <i8>::sse_decode(&mut deserializer);
+            let api_expect = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse((move || {
                 Result::<_, ()>::Ok(
                     crate::api::pseudo_manual::basic_twin_sync::example_basic_type_i8_twin_sync(
-                        api_arg,
+                        api_arg, api_expect,
                     ),
                 )
             })())
@@ -11802,11 +11831,12 @@ fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_isize_tw
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <isize>::sse_decode(&mut deserializer);
+            let api_expect = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse((move || {
                 Result::<_, ()>::Ok(
                     crate::api::pseudo_manual::basic_twin_sync::example_basic_type_isize_twin_sync(
-                        api_arg,
+                        api_arg, api_expect,
                     ),
                 )
             })())
@@ -11868,11 +11898,12 @@ fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u128_twi
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <u128>::sse_decode(&mut deserializer);
+            let api_expect = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse((move || {
                 Result::<_, ()>::Ok(
                     crate::api::pseudo_manual::basic_twin_sync::example_basic_type_u128_twin_sync(
-                        api_arg,
+                        api_arg, api_expect,
                     ),
                 )
             })())
@@ -11901,11 +11932,12 @@ fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u16_twin
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <u16>::sse_decode(&mut deserializer);
+            let api_expect = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse((move || {
                 Result::<_, ()>::Ok(
                     crate::api::pseudo_manual::basic_twin_sync::example_basic_type_u16_twin_sync(
-                        api_arg,
+                        api_arg, api_expect,
                     ),
                 )
             })())
@@ -11934,11 +11966,12 @@ fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u32_twin
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <u32>::sse_decode(&mut deserializer);
+            let api_expect = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse((move || {
                 Result::<_, ()>::Ok(
                     crate::api::pseudo_manual::basic_twin_sync::example_basic_type_u32_twin_sync(
-                        api_arg,
+                        api_arg, api_expect,
                     ),
                 )
             })())
@@ -11967,11 +12000,12 @@ fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u64_twin
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <u64>::sse_decode(&mut deserializer);
+            let api_expect = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse((move || {
                 Result::<_, ()>::Ok(
                     crate::api::pseudo_manual::basic_twin_sync::example_basic_type_u64_twin_sync(
-                        api_arg,
+                        api_arg, api_expect,
                     ),
                 )
             })())
@@ -12000,11 +12034,12 @@ fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u8_twin_
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <u8>::sse_decode(&mut deserializer);
+            let api_expect = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse((move || {
                 Result::<_, ()>::Ok(
                     crate::api::pseudo_manual::basic_twin_sync::example_basic_type_u8_twin_sync(
-                        api_arg,
+                        api_arg, api_expect,
                     ),
                 )
             })())
@@ -12033,11 +12068,12 @@ fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_usize_tw
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <usize>::sse_decode(&mut deserializer);
+            let api_expect = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse((move || {
                 Result::<_, ()>::Ok(
                     crate::api::pseudo_manual::basic_twin_sync::example_basic_type_usize_twin_sync(
-                        api_arg,
+                        api_arg, api_expect,
                     ),
                 )
             })())

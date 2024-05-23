@@ -37408,40 +37408,40 @@ class RustLibWire implements BaseWire {
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic__example_basic_type_i128_twin_normal(
-          NativePortType port_, String arg) =>
+          NativePortType port_, String arg, String expect) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic__example_basic_type_i128_twin_normal(
-              port_, arg);
+              port_, arg, expect);
 
   void wire__crate__api__pseudo_manual__basic__example_basic_type_i16_twin_normal(
-          NativePortType port_, int arg) =>
+          NativePortType port_, int arg, String expect) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic__example_basic_type_i16_twin_normal(
-              port_, arg);
+              port_, arg, expect);
 
   void wire__crate__api__pseudo_manual__basic__example_basic_type_i32_twin_normal(
-          NativePortType port_, int arg) =>
+          NativePortType port_, int arg, String expect) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic__example_basic_type_i32_twin_normal(
-              port_, arg);
+              port_, arg, expect);
 
   void wire__crate__api__pseudo_manual__basic__example_basic_type_i64_twin_normal(
-          NativePortType port_, Object arg) =>
+          NativePortType port_, Object arg, String expect) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic__example_basic_type_i64_twin_normal(
-              port_, arg);
+              port_, arg, expect);
 
   void wire__crate__api__pseudo_manual__basic__example_basic_type_i8_twin_normal(
-          NativePortType port_, int arg) =>
+          NativePortType port_, int arg, String expect) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic__example_basic_type_i8_twin_normal(
-              port_, arg);
+              port_, arg, expect);
 
   void wire__crate__api__pseudo_manual__basic__example_basic_type_isize_twin_normal(
-          NativePortType port_, PlatformInt64 arg) =>
+          NativePortType port_, PlatformInt64 arg, String expect) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic__example_basic_type_isize_twin_normal(
-              port_, arg);
+              port_, arg, expect);
 
   void wire__crate__api__pseudo_manual__basic__example_basic_type_string_twin_normal(
           NativePortType port_, String arg) =>
@@ -37450,40 +37450,40 @@ class RustLibWire implements BaseWire {
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic__example_basic_type_u128_twin_normal(
-          NativePortType port_, String arg) =>
+          NativePortType port_, String arg, String expect) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic__example_basic_type_u128_twin_normal(
-              port_, arg);
+              port_, arg, expect);
 
   void wire__crate__api__pseudo_manual__basic__example_basic_type_u16_twin_normal(
-          NativePortType port_, int arg) =>
+          NativePortType port_, int arg, String expect) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic__example_basic_type_u16_twin_normal(
-              port_, arg);
+              port_, arg, expect);
 
   void wire__crate__api__pseudo_manual__basic__example_basic_type_u32_twin_normal(
-          NativePortType port_, int arg) =>
+          NativePortType port_, int arg, String expect) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic__example_basic_type_u32_twin_normal(
-              port_, arg);
+              port_, arg, expect);
 
   void wire__crate__api__pseudo_manual__basic__example_basic_type_u64_twin_normal(
-          NativePortType port_, Object arg) =>
+          NativePortType port_, Object arg, String expect) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic__example_basic_type_u64_twin_normal(
-              port_, arg);
+              port_, arg, expect);
 
   void wire__crate__api__pseudo_manual__basic__example_basic_type_u8_twin_normal(
-          NativePortType port_, int arg) =>
+          NativePortType port_, int arg, String expect) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic__example_basic_type_u8_twin_normal(
-              port_, arg);
+              port_, arg, expect);
 
   void wire__crate__api__pseudo_manual__basic__example_basic_type_usize_twin_normal(
-          NativePortType port_, BigInt arg) =>
+          NativePortType port_, BigInt arg, String expect) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic__example_basic_type_usize_twin_normal(
-              port_, arg);
+              port_, arg, expect);
 
   void wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_basic_general_enum_twin_normal_twin_normal(
           NativePortType port_, List<dynamic> arg) =>
@@ -40196,40 +40196,40 @@ class RustLibWire implements BaseWire {
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i128_twin_rust_async(
-          NativePortType port_, String arg) =>
+          NativePortType port_, String arg, String expect) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i128_twin_rust_async(
-              port_, arg);
+              port_, arg, expect);
 
   void wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i16_twin_rust_async(
-          NativePortType port_, int arg) =>
+          NativePortType port_, int arg, String expect) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i16_twin_rust_async(
-              port_, arg);
+              port_, arg, expect);
 
   void wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i32_twin_rust_async(
-          NativePortType port_, int arg) =>
+          NativePortType port_, int arg, String expect) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i32_twin_rust_async(
-              port_, arg);
+              port_, arg, expect);
 
   void wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i64_twin_rust_async(
-          NativePortType port_, Object arg) =>
+          NativePortType port_, Object arg, String expect) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i64_twin_rust_async(
-              port_, arg);
+              port_, arg, expect);
 
   void wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i8_twin_rust_async(
-          NativePortType port_, int arg) =>
+          NativePortType port_, int arg, String expect) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i8_twin_rust_async(
-              port_, arg);
+              port_, arg, expect);
 
   void wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_isize_twin_rust_async(
-          NativePortType port_, PlatformInt64 arg) =>
+          NativePortType port_, PlatformInt64 arg, String expect) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_isize_twin_rust_async(
-              port_, arg);
+              port_, arg, expect);
 
   void wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_string_twin_rust_async(
           NativePortType port_, String arg) =>
@@ -40238,40 +40238,40 @@ class RustLibWire implements BaseWire {
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u128_twin_rust_async(
-          NativePortType port_, String arg) =>
+          NativePortType port_, String arg, String expect) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u128_twin_rust_async(
-              port_, arg);
+              port_, arg, expect);
 
   void wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u16_twin_rust_async(
-          NativePortType port_, int arg) =>
+          NativePortType port_, int arg, String expect) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u16_twin_rust_async(
-              port_, arg);
+              port_, arg, expect);
 
   void wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u32_twin_rust_async(
-          NativePortType port_, int arg) =>
+          NativePortType port_, int arg, String expect) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u32_twin_rust_async(
-              port_, arg);
+              port_, arg, expect);
 
   void wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u64_twin_rust_async(
-          NativePortType port_, Object arg) =>
+          NativePortType port_, Object arg, String expect) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u64_twin_rust_async(
-              port_, arg);
+              port_, arg, expect);
 
   void wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u8_twin_rust_async(
-          NativePortType port_, int arg) =>
+          NativePortType port_, int arg, String expect) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u8_twin_rust_async(
-              port_, arg);
+              port_, arg, expect);
 
   void wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_usize_twin_rust_async(
-          NativePortType port_, BigInt arg) =>
+          NativePortType port_, BigInt arg, String expect) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_usize_twin_rust_async(
-              port_, arg);
+              port_, arg, expect);
 
   void wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic_type_basic_general_enum_twin_rust_async_sse_twin_rust_async_sse(
           NativePortType port_,
@@ -40684,45 +40684,45 @@ class RustLibWire implements BaseWire {
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i128_twin_sync(
-              String arg) =>
+              String arg, String expect) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i128_twin_sync(
-                  arg);
+                  arg, expect);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i16_twin_sync(
-              int arg) =>
+              int arg, String expect) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i16_twin_sync(
-                  arg);
+                  arg, expect);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i32_twin_sync(
-              int arg) =>
+              int arg, String expect) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i32_twin_sync(
-                  arg);
+                  arg, expect);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i64_twin_sync(
-              Object arg) =>
+              Object arg, String expect) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i64_twin_sync(
-                  arg);
+                  arg, expect);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i8_twin_sync(
-              int arg) =>
+              int arg, String expect) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i8_twin_sync(
-                  arg);
+                  arg, expect);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_isize_twin_sync(
-              PlatformInt64 arg) =>
+              PlatformInt64 arg, String expect) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_isize_twin_sync(
-                  arg);
+                  arg, expect);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_string_twin_sync(
@@ -40733,45 +40733,45 @@ class RustLibWire implements BaseWire {
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u128_twin_sync(
-              String arg) =>
+              String arg, String expect) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u128_twin_sync(
-                  arg);
+                  arg, expect);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u16_twin_sync(
-              int arg) =>
+              int arg, String expect) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u16_twin_sync(
-                  arg);
+                  arg, expect);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u32_twin_sync(
-              int arg) =>
+              int arg, String expect) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u32_twin_sync(
-                  arg);
+                  arg, expect);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u64_twin_sync(
-              Object arg) =>
+              Object arg, String expect) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u64_twin_sync(
-                  arg);
+                  arg, expect);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u8_twin_sync(
-              int arg) =>
+              int arg, String expect) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u8_twin_sync(
-                  arg);
+                  arg, expect);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_usize_twin_sync(
-              BigInt arg) =>
+              BigInt arg, String expect) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_usize_twin_sync(
-                  arg);
+                  arg, expect);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_basic_general_enum_twin_sync_sse_twin_sync_sse(
@@ -58840,27 +58840,27 @@ class RustLibWasmModule implements WasmModule {
 
   external void
       wire__crate__api__pseudo_manual__basic__example_basic_type_i128_twin_normal(
-          NativePortType port_, String arg);
+          NativePortType port_, String arg, String expect);
 
   external void
       wire__crate__api__pseudo_manual__basic__example_basic_type_i16_twin_normal(
-          NativePortType port_, int arg);
+          NativePortType port_, int arg, String expect);
 
   external void
       wire__crate__api__pseudo_manual__basic__example_basic_type_i32_twin_normal(
-          NativePortType port_, int arg);
+          NativePortType port_, int arg, String expect);
 
   external void
       wire__crate__api__pseudo_manual__basic__example_basic_type_i64_twin_normal(
-          NativePortType port_, Object arg);
+          NativePortType port_, Object arg, String expect);
 
   external void
       wire__crate__api__pseudo_manual__basic__example_basic_type_i8_twin_normal(
-          NativePortType port_, int arg);
+          NativePortType port_, int arg, String expect);
 
   external void
       wire__crate__api__pseudo_manual__basic__example_basic_type_isize_twin_normal(
-          NativePortType port_, PlatformInt64 arg);
+          NativePortType port_, PlatformInt64 arg, String expect);
 
   external void
       wire__crate__api__pseudo_manual__basic__example_basic_type_string_twin_normal(
@@ -58868,27 +58868,27 @@ class RustLibWasmModule implements WasmModule {
 
   external void
       wire__crate__api__pseudo_manual__basic__example_basic_type_u128_twin_normal(
-          NativePortType port_, String arg);
+          NativePortType port_, String arg, String expect);
 
   external void
       wire__crate__api__pseudo_manual__basic__example_basic_type_u16_twin_normal(
-          NativePortType port_, int arg);
+          NativePortType port_, int arg, String expect);
 
   external void
       wire__crate__api__pseudo_manual__basic__example_basic_type_u32_twin_normal(
-          NativePortType port_, int arg);
+          NativePortType port_, int arg, String expect);
 
   external void
       wire__crate__api__pseudo_manual__basic__example_basic_type_u64_twin_normal(
-          NativePortType port_, Object arg);
+          NativePortType port_, Object arg, String expect);
 
   external void
       wire__crate__api__pseudo_manual__basic__example_basic_type_u8_twin_normal(
-          NativePortType port_, int arg);
+          NativePortType port_, int arg, String expect);
 
   external void
       wire__crate__api__pseudo_manual__basic__example_basic_type_usize_twin_normal(
-          NativePortType port_, BigInt arg);
+          NativePortType port_, BigInt arg, String expect);
 
   external void
       wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_basic_general_enum_twin_normal_twin_normal(
@@ -60776,27 +60776,27 @@ class RustLibWasmModule implements WasmModule {
 
   external void
       wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i128_twin_rust_async(
-          NativePortType port_, String arg);
+          NativePortType port_, String arg, String expect);
 
   external void
       wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i16_twin_rust_async(
-          NativePortType port_, int arg);
+          NativePortType port_, int arg, String expect);
 
   external void
       wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i32_twin_rust_async(
-          NativePortType port_, int arg);
+          NativePortType port_, int arg, String expect);
 
   external void
       wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i64_twin_rust_async(
-          NativePortType port_, Object arg);
+          NativePortType port_, Object arg, String expect);
 
   external void
       wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i8_twin_rust_async(
-          NativePortType port_, int arg);
+          NativePortType port_, int arg, String expect);
 
   external void
       wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_isize_twin_rust_async(
-          NativePortType port_, PlatformInt64 arg);
+          NativePortType port_, PlatformInt64 arg, String expect);
 
   external void
       wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_string_twin_rust_async(
@@ -60804,27 +60804,27 @@ class RustLibWasmModule implements WasmModule {
 
   external void
       wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u128_twin_rust_async(
-          NativePortType port_, String arg);
+          NativePortType port_, String arg, String expect);
 
   external void
       wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u16_twin_rust_async(
-          NativePortType port_, int arg);
+          NativePortType port_, int arg, String expect);
 
   external void
       wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u32_twin_rust_async(
-          NativePortType port_, int arg);
+          NativePortType port_, int arg, String expect);
 
   external void
       wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u64_twin_rust_async(
-          NativePortType port_, Object arg);
+          NativePortType port_, Object arg, String expect);
 
   external void
       wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u8_twin_rust_async(
-          NativePortType port_, int arg);
+          NativePortType port_, int arg, String expect);
 
   external void
       wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_usize_twin_rust_async(
-          NativePortType port_, BigInt arg);
+          NativePortType port_, BigInt arg, String expect);
 
   external void
       wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic_type_basic_general_enum_twin_rust_async_sse_twin_rust_async_sse(
@@ -61136,27 +61136,27 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i128_twin_sync(
-          String arg);
+          String arg, String expect);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i16_twin_sync(
-          int arg);
+          int arg, String expect);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i32_twin_sync(
-          int arg);
+          int arg, String expect);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i64_twin_sync(
-          Object arg);
+          Object arg, String expect);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i8_twin_sync(
-          int arg);
+          int arg, String expect);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_isize_twin_sync(
-          PlatformInt64 arg);
+          PlatformInt64 arg, String expect);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_string_twin_sync(
@@ -61164,27 +61164,27 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u128_twin_sync(
-          String arg);
+          String arg, String expect);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u16_twin_sync(
-          int arg);
+          int arg, String expect);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u32_twin_sync(
-          int arg);
+          int arg, String expect);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u64_twin_sync(
-          Object arg);
+          Object arg, String expect);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u8_twin_sync(
-          int arg);
+          int arg, String expect);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_usize_twin_sync(
-          BigInt arg);
+          BigInt arg, String expect);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_basic_general_enum_twin_sync_sse_twin_sync_sse(

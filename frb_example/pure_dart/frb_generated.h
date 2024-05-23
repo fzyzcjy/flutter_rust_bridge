@@ -4233,43 +4233,55 @@ void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic__exampl
                                                                                                              double arg);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic__example_basic_type_i128_twin_normal(int64_t port_,
-                                                                                                              struct wire_cst_list_prim_u_8_strict *arg);
+                                                                                                              struct wire_cst_list_prim_u_8_strict *arg,
+                                                                                                              struct wire_cst_list_prim_u_8_strict *expect);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic__example_basic_type_i16_twin_normal(int64_t port_,
-                                                                                                             int16_t arg);
+                                                                                                             int16_t arg,
+                                                                                                             struct wire_cst_list_prim_u_8_strict *expect);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic__example_basic_type_i32_twin_normal(int64_t port_,
-                                                                                                             int32_t arg);
+                                                                                                             int32_t arg,
+                                                                                                             struct wire_cst_list_prim_u_8_strict *expect);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic__example_basic_type_i64_twin_normal(int64_t port_,
-                                                                                                             int64_t arg);
+                                                                                                             int64_t arg,
+                                                                                                             struct wire_cst_list_prim_u_8_strict *expect);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic__example_basic_type_i8_twin_normal(int64_t port_,
-                                                                                                            int8_t arg);
+                                                                                                            int8_t arg,
+                                                                                                            struct wire_cst_list_prim_u_8_strict *expect);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic__example_basic_type_isize_twin_normal(int64_t port_,
-                                                                                                               intptr_t arg);
+                                                                                                               intptr_t arg,
+                                                                                                               struct wire_cst_list_prim_u_8_strict *expect);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic__example_basic_type_string_twin_normal(int64_t port_,
                                                                                                                 struct wire_cst_list_prim_u_8_strict *arg);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic__example_basic_type_u128_twin_normal(int64_t port_,
-                                                                                                              struct wire_cst_list_prim_u_8_strict *arg);
+                                                                                                              struct wire_cst_list_prim_u_8_strict *arg,
+                                                                                                              struct wire_cst_list_prim_u_8_strict *expect);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic__example_basic_type_u16_twin_normal(int64_t port_,
-                                                                                                             uint16_t arg);
+                                                                                                             uint16_t arg,
+                                                                                                             struct wire_cst_list_prim_u_8_strict *expect);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic__example_basic_type_u32_twin_normal(int64_t port_,
-                                                                                                             uint32_t arg);
+                                                                                                             uint32_t arg,
+                                                                                                             struct wire_cst_list_prim_u_8_strict *expect);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic__example_basic_type_u64_twin_normal(int64_t port_,
-                                                                                                             uint64_t arg);
+                                                                                                             uint64_t arg,
+                                                                                                             struct wire_cst_list_prim_u_8_strict *expect);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic__example_basic_type_u8_twin_normal(int64_t port_,
-                                                                                                            uint8_t arg);
+                                                                                                            uint8_t arg,
+                                                                                                            struct wire_cst_list_prim_u_8_strict *expect);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic__example_basic_type_usize_twin_normal(int64_t port_,
-                                                                                                               uintptr_t arg);
+                                                                                                               uintptr_t arg,
+                                                                                                               struct wire_cst_list_prim_u_8_strict *expect);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_basic_general_enum_twin_normal_twin_normal(int64_t port_,
                                                                                                                                                   struct wire_cst_list_basic_general_enum_twin_normal *arg);
@@ -5569,43 +5581,55 @@ void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_ru
                                                                                                                                  double arg);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i128_twin_rust_async(int64_t port_,
-                                                                                                                                  struct wire_cst_list_prim_u_8_strict *arg);
+                                                                                                                                  struct wire_cst_list_prim_u_8_strict *arg,
+                                                                                                                                  struct wire_cst_list_prim_u_8_strict *expect);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i16_twin_rust_async(int64_t port_,
-                                                                                                                                 int16_t arg);
+                                                                                                                                 int16_t arg,
+                                                                                                                                 struct wire_cst_list_prim_u_8_strict *expect);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i32_twin_rust_async(int64_t port_,
-                                                                                                                                 int32_t arg);
+                                                                                                                                 int32_t arg,
+                                                                                                                                 struct wire_cst_list_prim_u_8_strict *expect);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i64_twin_rust_async(int64_t port_,
-                                                                                                                                 int64_t arg);
+                                                                                                                                 int64_t arg,
+                                                                                                                                 struct wire_cst_list_prim_u_8_strict *expect);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i8_twin_rust_async(int64_t port_,
-                                                                                                                                int8_t arg);
+                                                                                                                                int8_t arg,
+                                                                                                                                struct wire_cst_list_prim_u_8_strict *expect);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_isize_twin_rust_async(int64_t port_,
-                                                                                                                                   intptr_t arg);
+                                                                                                                                   intptr_t arg,
+                                                                                                                                   struct wire_cst_list_prim_u_8_strict *expect);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_string_twin_rust_async(int64_t port_,
                                                                                                                                     struct wire_cst_list_prim_u_8_strict *arg);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u128_twin_rust_async(int64_t port_,
-                                                                                                                                  struct wire_cst_list_prim_u_8_strict *arg);
+                                                                                                                                  struct wire_cst_list_prim_u_8_strict *arg,
+                                                                                                                                  struct wire_cst_list_prim_u_8_strict *expect);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u16_twin_rust_async(int64_t port_,
-                                                                                                                                 uint16_t arg);
+                                                                                                                                 uint16_t arg,
+                                                                                                                                 struct wire_cst_list_prim_u_8_strict *expect);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u32_twin_rust_async(int64_t port_,
-                                                                                                                                 uint32_t arg);
+                                                                                                                                 uint32_t arg,
+                                                                                                                                 struct wire_cst_list_prim_u_8_strict *expect);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u64_twin_rust_async(int64_t port_,
-                                                                                                                                 uint64_t arg);
+                                                                                                                                 uint64_t arg,
+                                                                                                                                 struct wire_cst_list_prim_u_8_strict *expect);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u8_twin_rust_async(int64_t port_,
-                                                                                                                                uint8_t arg);
+                                                                                                                                uint8_t arg,
+                                                                                                                                struct wire_cst_list_prim_u_8_strict *expect);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_usize_twin_rust_async(int64_t port_,
-                                                                                                                                   uintptr_t arg);
+                                                                                                                                   uintptr_t arg,
+                                                                                                                                   struct wire_cst_list_prim_u_8_strict *expect);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic_type_basic_general_enum_twin_rust_async_sse_twin_rust_async_sse(int64_t port_,
                                                                                                                                                                             uint8_t *ptr_,
@@ -5821,31 +5845,43 @@ WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manua
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_f64_twin_sync(double arg);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i128_twin_sync(struct wire_cst_list_prim_u_8_strict *arg);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i128_twin_sync(struct wire_cst_list_prim_u_8_strict *arg,
+                                                                                                                                      struct wire_cst_list_prim_u_8_strict *expect);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i16_twin_sync(int16_t arg);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i16_twin_sync(int16_t arg,
+                                                                                                                                     struct wire_cst_list_prim_u_8_strict *expect);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i32_twin_sync(int32_t arg);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i32_twin_sync(int32_t arg,
+                                                                                                                                     struct wire_cst_list_prim_u_8_strict *expect);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i64_twin_sync(int64_t arg);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i64_twin_sync(int64_t arg,
+                                                                                                                                     struct wire_cst_list_prim_u_8_strict *expect);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i8_twin_sync(int8_t arg);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i8_twin_sync(int8_t arg,
+                                                                                                                                    struct wire_cst_list_prim_u_8_strict *expect);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_isize_twin_sync(intptr_t arg);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_isize_twin_sync(intptr_t arg,
+                                                                                                                                       struct wire_cst_list_prim_u_8_strict *expect);
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_string_twin_sync(struct wire_cst_list_prim_u_8_strict *arg);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u128_twin_sync(struct wire_cst_list_prim_u_8_strict *arg);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u128_twin_sync(struct wire_cst_list_prim_u_8_strict *arg,
+                                                                                                                                      struct wire_cst_list_prim_u_8_strict *expect);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u16_twin_sync(uint16_t arg);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u16_twin_sync(uint16_t arg,
+                                                                                                                                     struct wire_cst_list_prim_u_8_strict *expect);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u32_twin_sync(uint32_t arg);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u32_twin_sync(uint32_t arg,
+                                                                                                                                     struct wire_cst_list_prim_u_8_strict *expect);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u64_twin_sync(uint64_t arg);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u64_twin_sync(uint64_t arg,
+                                                                                                                                     struct wire_cst_list_prim_u_8_strict *expect);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u8_twin_sync(uint8_t arg);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u8_twin_sync(uint8_t arg,
+                                                                                                                                    struct wire_cst_list_prim_u_8_strict *expect);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_usize_twin_sync(uintptr_t arg);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_usize_twin_sync(uintptr_t arg,
+                                                                                                                                       struct wire_cst_list_prim_u_8_strict *expect);
 
 WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_basic_general_enum_twin_sync_sse_twin_sync_sse(uint8_t *ptr_,
                                                                                                                                                                           int32_t rust_vec_len_,

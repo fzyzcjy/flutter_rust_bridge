@@ -1074,44 +1074,44 @@ abstract class RustLibApi extends BaseApi {
       {required double arg, dynamic hint});
 
   Future<BigInt> crateApiPseudoManualBasicExampleBasicTypeI128TwinNormal(
-      {required BigInt arg, dynamic hint});
+      {required BigInt arg, required String expect, dynamic hint});
 
   Future<int> crateApiPseudoManualBasicExampleBasicTypeI16TwinNormal(
-      {required int arg, dynamic hint});
+      {required int arg, required String expect, dynamic hint});
 
   Future<int> crateApiPseudoManualBasicExampleBasicTypeI32TwinNormal(
-      {required int arg, dynamic hint});
+      {required int arg, required String expect, dynamic hint});
 
   Future<PlatformInt64> crateApiPseudoManualBasicExampleBasicTypeI64TwinNormal(
-      {required PlatformInt64 arg, dynamic hint});
+      {required PlatformInt64 arg, required String expect, dynamic hint});
 
   Future<int> crateApiPseudoManualBasicExampleBasicTypeI8TwinNormal(
-      {required int arg, dynamic hint});
+      {required int arg, required String expect, dynamic hint});
 
   Future<PlatformInt64>
       crateApiPseudoManualBasicExampleBasicTypeIsizeTwinNormal(
-          {required PlatformInt64 arg, dynamic hint});
+          {required PlatformInt64 arg, required String expect, dynamic hint});
 
   Future<String> crateApiPseudoManualBasicExampleBasicTypeStringTwinNormal(
       {required String arg, dynamic hint});
 
   Future<BigInt> crateApiPseudoManualBasicExampleBasicTypeU128TwinNormal(
-      {required BigInt arg, dynamic hint});
+      {required BigInt arg, required String expect, dynamic hint});
 
   Future<int> crateApiPseudoManualBasicExampleBasicTypeU16TwinNormal(
-      {required int arg, dynamic hint});
+      {required int arg, required String expect, dynamic hint});
 
   Future<int> crateApiPseudoManualBasicExampleBasicTypeU32TwinNormal(
-      {required int arg, dynamic hint});
+      {required int arg, required String expect, dynamic hint});
 
   Future<BigInt> crateApiPseudoManualBasicExampleBasicTypeU64TwinNormal(
-      {required BigInt arg, dynamic hint});
+      {required BigInt arg, required String expect, dynamic hint});
 
   Future<int> crateApiPseudoManualBasicExampleBasicTypeU8TwinNormal(
-      {required int arg, dynamic hint});
+      {required int arg, required String expect, dynamic hint});
 
   Future<BigInt> crateApiPseudoManualBasicExampleBasicTypeUsizeTwinNormal(
-      {required BigInt arg, dynamic hint});
+      {required BigInt arg, required String expect, dynamic hint});
 
   Future<List<BasicGeneralEnumTwinNormal>>
       crateApiPseudoManualBasicListExampleBasicListTypeBasicGeneralEnumTwinNormalTwinNormal(
@@ -1838,27 +1838,27 @@ abstract class RustLibApi extends BaseApi {
 
   Future<BigInt>
       crateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeI128TwinRustAsync(
-          {required BigInt arg, dynamic hint});
+          {required BigInt arg, required String expect, dynamic hint});
 
   Future<int>
       crateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeI16TwinRustAsync(
-          {required int arg, dynamic hint});
+          {required int arg, required String expect, dynamic hint});
 
   Future<int>
       crateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeI32TwinRustAsync(
-          {required int arg, dynamic hint});
+          {required int arg, required String expect, dynamic hint});
 
   Future<PlatformInt64>
       crateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeI64TwinRustAsync(
-          {required PlatformInt64 arg, dynamic hint});
+          {required PlatformInt64 arg, required String expect, dynamic hint});
 
   Future<int>
       crateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeI8TwinRustAsync(
-          {required int arg, dynamic hint});
+          {required int arg, required String expect, dynamic hint});
 
   Future<PlatformInt64>
       crateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeIsizeTwinRustAsync(
-          {required PlatformInt64 arg, dynamic hint});
+          {required PlatformInt64 arg, required String expect, dynamic hint});
 
   Future<String>
       crateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeStringTwinRustAsync(
@@ -1866,27 +1866,27 @@ abstract class RustLibApi extends BaseApi {
 
   Future<BigInt>
       crateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeU128TwinRustAsync(
-          {required BigInt arg, dynamic hint});
+          {required BigInt arg, required String expect, dynamic hint});
 
   Future<int>
       crateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeU16TwinRustAsync(
-          {required int arg, dynamic hint});
+          {required int arg, required String expect, dynamic hint});
 
   Future<int>
       crateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeU32TwinRustAsync(
-          {required int arg, dynamic hint});
+          {required int arg, required String expect, dynamic hint});
 
   Future<BigInt>
       crateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeU64TwinRustAsync(
-          {required BigInt arg, dynamic hint});
+          {required BigInt arg, required String expect, dynamic hint});
 
   Future<int>
       crateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeU8TwinRustAsync(
-          {required int arg, dynamic hint});
+          {required int arg, required String expect, dynamic hint});
 
   Future<BigInt>
       crateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeUsizeTwinRustAsync(
-          {required BigInt arg, dynamic hint});
+          {required BigInt arg, required String expect, dynamic hint});
 
   BasicGeneralEnumTwinSync
       crateApiPseudoManualBasicTwinSyncExampleBasicTypeBasicGeneralEnumTwinSyncTwinSync(
@@ -1913,43 +1913,43 @@ abstract class RustLibApi extends BaseApi {
       {required double arg, dynamic hint});
 
   BigInt crateApiPseudoManualBasicTwinSyncExampleBasicTypeI128TwinSync(
-      {required BigInt arg, dynamic hint});
+      {required BigInt arg, required String expect, dynamic hint});
 
   int crateApiPseudoManualBasicTwinSyncExampleBasicTypeI16TwinSync(
-      {required int arg, dynamic hint});
+      {required int arg, required String expect, dynamic hint});
 
   int crateApiPseudoManualBasicTwinSyncExampleBasicTypeI32TwinSync(
-      {required int arg, dynamic hint});
+      {required int arg, required String expect, dynamic hint});
 
   PlatformInt64 crateApiPseudoManualBasicTwinSyncExampleBasicTypeI64TwinSync(
-      {required PlatformInt64 arg, dynamic hint});
+      {required PlatformInt64 arg, required String expect, dynamic hint});
 
   int crateApiPseudoManualBasicTwinSyncExampleBasicTypeI8TwinSync(
-      {required int arg, dynamic hint});
+      {required int arg, required String expect, dynamic hint});
 
   PlatformInt64 crateApiPseudoManualBasicTwinSyncExampleBasicTypeIsizeTwinSync(
-      {required PlatformInt64 arg, dynamic hint});
+      {required PlatformInt64 arg, required String expect, dynamic hint});
 
   String crateApiPseudoManualBasicTwinSyncExampleBasicTypeStringTwinSync(
       {required String arg, dynamic hint});
 
   BigInt crateApiPseudoManualBasicTwinSyncExampleBasicTypeU128TwinSync(
-      {required BigInt arg, dynamic hint});
+      {required BigInt arg, required String expect, dynamic hint});
 
   int crateApiPseudoManualBasicTwinSyncExampleBasicTypeU16TwinSync(
-      {required int arg, dynamic hint});
+      {required int arg, required String expect, dynamic hint});
 
   int crateApiPseudoManualBasicTwinSyncExampleBasicTypeU32TwinSync(
-      {required int arg, dynamic hint});
+      {required int arg, required String expect, dynamic hint});
 
   BigInt crateApiPseudoManualBasicTwinSyncExampleBasicTypeU64TwinSync(
-      {required BigInt arg, dynamic hint});
+      {required BigInt arg, required String expect, dynamic hint});
 
   int crateApiPseudoManualBasicTwinSyncExampleBasicTypeU8TwinSync(
-      {required int arg, dynamic hint});
+      {required int arg, required String expect, dynamic hint});
 
   BigInt crateApiPseudoManualBasicTwinSyncExampleBasicTypeUsizeTwinSync(
-      {required BigInt arg, dynamic hint});
+      {required BigInt arg, required String expect, dynamic hint});
 
   Future<void>
       crateApiPseudoManualBenchmarkApiBenchmarkBinaryTreeInputJsonTwinNormal(
@@ -12531,11 +12531,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<BigInt> crateApiPseudoManualBasicExampleBasicTypeI128TwinNormal(
-      {required BigInt arg, dynamic hint}) {
+      {required BigInt arg, required String expect, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_I128(arg, serializer);
+        sse_encode_String(expect, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 269, port: port_);
       },
@@ -12545,7 +12546,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       ),
       constMeta:
           kCrateApiPseudoManualBasicExampleBasicTypeI128TwinNormalConstMeta,
-      argValues: [arg],
+      argValues: [arg, expect],
       apiImpl: this,
       hint: hint,
     ));
@@ -12555,16 +12556,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get kCrateApiPseudoManualBasicExampleBasicTypeI128TwinNormalConstMeta =>
           const TaskConstMeta(
             debugName: "example_basic_type_i128_twin_normal",
-            argNames: ["arg"],
+            argNames: ["arg", "expect"],
           );
 
   @override
   Future<int> crateApiPseudoManualBasicExampleBasicTypeI16TwinNormal(
-      {required int arg, dynamic hint}) {
+      {required int arg, required String expect, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_i_16(arg, serializer);
+        sse_encode_String(expect, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 266, port: port_);
       },
@@ -12574,7 +12576,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       ),
       constMeta:
           kCrateApiPseudoManualBasicExampleBasicTypeI16TwinNormalConstMeta,
-      argValues: [arg],
+      argValues: [arg, expect],
       apiImpl: this,
       hint: hint,
     ));
@@ -12584,16 +12586,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get kCrateApiPseudoManualBasicExampleBasicTypeI16TwinNormalConstMeta =>
           const TaskConstMeta(
             debugName: "example_basic_type_i16_twin_normal",
-            argNames: ["arg"],
+            argNames: ["arg", "expect"],
           );
 
   @override
   Future<int> crateApiPseudoManualBasicExampleBasicTypeI32TwinNormal(
-      {required int arg, dynamic hint}) {
+      {required int arg, required String expect, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_i_32(arg, serializer);
+        sse_encode_String(expect, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 267, port: port_);
       },
@@ -12603,7 +12606,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       ),
       constMeta:
           kCrateApiPseudoManualBasicExampleBasicTypeI32TwinNormalConstMeta,
-      argValues: [arg],
+      argValues: [arg, expect],
       apiImpl: this,
       hint: hint,
     ));
@@ -12613,16 +12616,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get kCrateApiPseudoManualBasicExampleBasicTypeI32TwinNormalConstMeta =>
           const TaskConstMeta(
             debugName: "example_basic_type_i32_twin_normal",
-            argNames: ["arg"],
+            argNames: ["arg", "expect"],
           );
 
   @override
   Future<PlatformInt64> crateApiPseudoManualBasicExampleBasicTypeI64TwinNormal(
-      {required PlatformInt64 arg, dynamic hint}) {
+      {required PlatformInt64 arg, required String expect, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_i_64(arg, serializer);
+        sse_encode_String(expect, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 268, port: port_);
       },
@@ -12632,7 +12636,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       ),
       constMeta:
           kCrateApiPseudoManualBasicExampleBasicTypeI64TwinNormalConstMeta,
-      argValues: [arg],
+      argValues: [arg, expect],
       apiImpl: this,
       hint: hint,
     ));
@@ -12642,16 +12646,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get kCrateApiPseudoManualBasicExampleBasicTypeI64TwinNormalConstMeta =>
           const TaskConstMeta(
             debugName: "example_basic_type_i64_twin_normal",
-            argNames: ["arg"],
+            argNames: ["arg", "expect"],
           );
 
   @override
   Future<int> crateApiPseudoManualBasicExampleBasicTypeI8TwinNormal(
-      {required int arg, dynamic hint}) {
+      {required int arg, required String expect, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_i_8(arg, serializer);
+        sse_encode_String(expect, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 265, port: port_);
       },
@@ -12661,7 +12666,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       ),
       constMeta:
           kCrateApiPseudoManualBasicExampleBasicTypeI8TwinNormalConstMeta,
-      argValues: [arg],
+      argValues: [arg, expect],
       apiImpl: this,
       hint: hint,
     ));
@@ -12671,17 +12676,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get kCrateApiPseudoManualBasicExampleBasicTypeI8TwinNormalConstMeta =>
           const TaskConstMeta(
             debugName: "example_basic_type_i8_twin_normal",
-            argNames: ["arg"],
+            argNames: ["arg", "expect"],
           );
 
   @override
   Future<PlatformInt64>
       crateApiPseudoManualBasicExampleBasicTypeIsizeTwinNormal(
-          {required PlatformInt64 arg, dynamic hint}) {
+          {required PlatformInt64 arg, required String expect, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_isize(arg, serializer);
+        sse_encode_String(expect, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 275, port: port_);
       },
@@ -12691,7 +12697,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       ),
       constMeta:
           kCrateApiPseudoManualBasicExampleBasicTypeIsizeTwinNormalConstMeta,
-      argValues: [arg],
+      argValues: [arg, expect],
       apiImpl: this,
       hint: hint,
     ));
@@ -12701,7 +12707,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get kCrateApiPseudoManualBasicExampleBasicTypeIsizeTwinNormalConstMeta =>
           const TaskConstMeta(
             debugName: "example_basic_type_isize_twin_normal",
-            argNames: ["arg"],
+            argNames: ["arg", "expect"],
           );
 
   @override
@@ -12735,11 +12741,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<BigInt> crateApiPseudoManualBasicExampleBasicTypeU128TwinNormal(
-      {required BigInt arg, dynamic hint}) {
+      {required BigInt arg, required String expect, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_U128(arg, serializer);
+        sse_encode_String(expect, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 274, port: port_);
       },
@@ -12749,7 +12756,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       ),
       constMeta:
           kCrateApiPseudoManualBasicExampleBasicTypeU128TwinNormalConstMeta,
-      argValues: [arg],
+      argValues: [arg, expect],
       apiImpl: this,
       hint: hint,
     ));
@@ -12759,16 +12766,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get kCrateApiPseudoManualBasicExampleBasicTypeU128TwinNormalConstMeta =>
           const TaskConstMeta(
             debugName: "example_basic_type_u128_twin_normal",
-            argNames: ["arg"],
+            argNames: ["arg", "expect"],
           );
 
   @override
   Future<int> crateApiPseudoManualBasicExampleBasicTypeU16TwinNormal(
-      {required int arg, dynamic hint}) {
+      {required int arg, required String expect, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_16(arg, serializer);
+        sse_encode_String(expect, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 271, port: port_);
       },
@@ -12778,7 +12786,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       ),
       constMeta:
           kCrateApiPseudoManualBasicExampleBasicTypeU16TwinNormalConstMeta,
-      argValues: [arg],
+      argValues: [arg, expect],
       apiImpl: this,
       hint: hint,
     ));
@@ -12788,16 +12796,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get kCrateApiPseudoManualBasicExampleBasicTypeU16TwinNormalConstMeta =>
           const TaskConstMeta(
             debugName: "example_basic_type_u16_twin_normal",
-            argNames: ["arg"],
+            argNames: ["arg", "expect"],
           );
 
   @override
   Future<int> crateApiPseudoManualBasicExampleBasicTypeU32TwinNormal(
-      {required int arg, dynamic hint}) {
+      {required int arg, required String expect, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_32(arg, serializer);
+        sse_encode_String(expect, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 272, port: port_);
       },
@@ -12807,7 +12816,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       ),
       constMeta:
           kCrateApiPseudoManualBasicExampleBasicTypeU32TwinNormalConstMeta,
-      argValues: [arg],
+      argValues: [arg, expect],
       apiImpl: this,
       hint: hint,
     ));
@@ -12817,16 +12826,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get kCrateApiPseudoManualBasicExampleBasicTypeU32TwinNormalConstMeta =>
           const TaskConstMeta(
             debugName: "example_basic_type_u32_twin_normal",
-            argNames: ["arg"],
+            argNames: ["arg", "expect"],
           );
 
   @override
   Future<BigInt> crateApiPseudoManualBasicExampleBasicTypeU64TwinNormal(
-      {required BigInt arg, dynamic hint}) {
+      {required BigInt arg, required String expect, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_64(arg, serializer);
+        sse_encode_String(expect, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 273, port: port_);
       },
@@ -12836,7 +12846,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       ),
       constMeta:
           kCrateApiPseudoManualBasicExampleBasicTypeU64TwinNormalConstMeta,
-      argValues: [arg],
+      argValues: [arg, expect],
       apiImpl: this,
       hint: hint,
     ));
@@ -12846,16 +12856,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get kCrateApiPseudoManualBasicExampleBasicTypeU64TwinNormalConstMeta =>
           const TaskConstMeta(
             debugName: "example_basic_type_u64_twin_normal",
-            argNames: ["arg"],
+            argNames: ["arg", "expect"],
           );
 
   @override
   Future<int> crateApiPseudoManualBasicExampleBasicTypeU8TwinNormal(
-      {required int arg, dynamic hint}) {
+      {required int arg, required String expect, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_8(arg, serializer);
+        sse_encode_String(expect, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 270, port: port_);
       },
@@ -12865,7 +12876,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       ),
       constMeta:
           kCrateApiPseudoManualBasicExampleBasicTypeU8TwinNormalConstMeta,
-      argValues: [arg],
+      argValues: [arg, expect],
       apiImpl: this,
       hint: hint,
     ));
@@ -12875,16 +12886,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get kCrateApiPseudoManualBasicExampleBasicTypeU8TwinNormalConstMeta =>
           const TaskConstMeta(
             debugName: "example_basic_type_u8_twin_normal",
-            argNames: ["arg"],
+            argNames: ["arg", "expect"],
           );
 
   @override
   Future<BigInt> crateApiPseudoManualBasicExampleBasicTypeUsizeTwinNormal(
-      {required BigInt arg, dynamic hint}) {
+      {required BigInt arg, required String expect, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_usize(arg, serializer);
+        sse_encode_String(expect, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 276, port: port_);
       },
@@ -12894,7 +12906,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       ),
       constMeta:
           kCrateApiPseudoManualBasicExampleBasicTypeUsizeTwinNormalConstMeta,
-      argValues: [arg],
+      argValues: [arg, expect],
       apiImpl: this,
       hint: hint,
     ));
@@ -12904,7 +12916,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get kCrateApiPseudoManualBasicExampleBasicTypeUsizeTwinNormalConstMeta =>
           const TaskConstMeta(
             debugName: "example_basic_type_usize_twin_normal",
-            argNames: ["arg"],
+            argNames: ["arg", "expect"],
           );
 
   @override
@@ -18330,11 +18342,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<BigInt>
       crateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeI128TwinRustAsync(
-          {required BigInt arg, dynamic hint}) {
+          {required BigInt arg, required String expect, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_I128(arg, serializer);
+        sse_encode_String(expect, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 463, port: port_);
       },
@@ -18344,7 +18357,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       ),
       constMeta:
           kCrateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeI128TwinRustAsyncConstMeta,
-      argValues: [arg],
+      argValues: [arg, expect],
       apiImpl: this,
       hint: hint,
     ));
@@ -18354,17 +18367,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get kCrateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeI128TwinRustAsyncConstMeta =>
           const TaskConstMeta(
             debugName: "example_basic_type_i128_twin_rust_async",
-            argNames: ["arg"],
+            argNames: ["arg", "expect"],
           );
 
   @override
   Future<int>
       crateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeI16TwinRustAsync(
-          {required int arg, dynamic hint}) {
+          {required int arg, required String expect, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_i_16(arg, serializer);
+        sse_encode_String(expect, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 460, port: port_);
       },
@@ -18374,7 +18388,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       ),
       constMeta:
           kCrateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeI16TwinRustAsyncConstMeta,
-      argValues: [arg],
+      argValues: [arg, expect],
       apiImpl: this,
       hint: hint,
     ));
@@ -18384,17 +18398,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get kCrateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeI16TwinRustAsyncConstMeta =>
           const TaskConstMeta(
             debugName: "example_basic_type_i16_twin_rust_async",
-            argNames: ["arg"],
+            argNames: ["arg", "expect"],
           );
 
   @override
   Future<int>
       crateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeI32TwinRustAsync(
-          {required int arg, dynamic hint}) {
+          {required int arg, required String expect, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_i_32(arg, serializer);
+        sse_encode_String(expect, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 461, port: port_);
       },
@@ -18404,7 +18419,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       ),
       constMeta:
           kCrateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeI32TwinRustAsyncConstMeta,
-      argValues: [arg],
+      argValues: [arg, expect],
       apiImpl: this,
       hint: hint,
     ));
@@ -18414,17 +18429,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get kCrateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeI32TwinRustAsyncConstMeta =>
           const TaskConstMeta(
             debugName: "example_basic_type_i32_twin_rust_async",
-            argNames: ["arg"],
+            argNames: ["arg", "expect"],
           );
 
   @override
   Future<PlatformInt64>
       crateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeI64TwinRustAsync(
-          {required PlatformInt64 arg, dynamic hint}) {
+          {required PlatformInt64 arg, required String expect, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_i_64(arg, serializer);
+        sse_encode_String(expect, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 462, port: port_);
       },
@@ -18434,7 +18450,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       ),
       constMeta:
           kCrateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeI64TwinRustAsyncConstMeta,
-      argValues: [arg],
+      argValues: [arg, expect],
       apiImpl: this,
       hint: hint,
     ));
@@ -18444,17 +18460,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get kCrateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeI64TwinRustAsyncConstMeta =>
           const TaskConstMeta(
             debugName: "example_basic_type_i64_twin_rust_async",
-            argNames: ["arg"],
+            argNames: ["arg", "expect"],
           );
 
   @override
   Future<int>
       crateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeI8TwinRustAsync(
-          {required int arg, dynamic hint}) {
+          {required int arg, required String expect, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_i_8(arg, serializer);
+        sse_encode_String(expect, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 459, port: port_);
       },
@@ -18464,7 +18481,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       ),
       constMeta:
           kCrateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeI8TwinRustAsyncConstMeta,
-      argValues: [arg],
+      argValues: [arg, expect],
       apiImpl: this,
       hint: hint,
     ));
@@ -18474,17 +18491,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get kCrateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeI8TwinRustAsyncConstMeta =>
           const TaskConstMeta(
             debugName: "example_basic_type_i8_twin_rust_async",
-            argNames: ["arg"],
+            argNames: ["arg", "expect"],
           );
 
   @override
   Future<PlatformInt64>
       crateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeIsizeTwinRustAsync(
-          {required PlatformInt64 arg, dynamic hint}) {
+          {required PlatformInt64 arg, required String expect, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_isize(arg, serializer);
+        sse_encode_String(expect, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 469, port: port_);
       },
@@ -18494,7 +18512,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       ),
       constMeta:
           kCrateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeIsizeTwinRustAsyncConstMeta,
-      argValues: [arg],
+      argValues: [arg, expect],
       apiImpl: this,
       hint: hint,
     ));
@@ -18504,7 +18522,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get kCrateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeIsizeTwinRustAsyncConstMeta =>
           const TaskConstMeta(
             debugName: "example_basic_type_isize_twin_rust_async",
-            argNames: ["arg"],
+            argNames: ["arg", "expect"],
           );
 
   @override
@@ -18540,11 +18558,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<BigInt>
       crateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeU128TwinRustAsync(
-          {required BigInt arg, dynamic hint}) {
+          {required BigInt arg, required String expect, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_U128(arg, serializer);
+        sse_encode_String(expect, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 468, port: port_);
       },
@@ -18554,7 +18573,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       ),
       constMeta:
           kCrateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeU128TwinRustAsyncConstMeta,
-      argValues: [arg],
+      argValues: [arg, expect],
       apiImpl: this,
       hint: hint,
     ));
@@ -18564,17 +18583,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get kCrateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeU128TwinRustAsyncConstMeta =>
           const TaskConstMeta(
             debugName: "example_basic_type_u128_twin_rust_async",
-            argNames: ["arg"],
+            argNames: ["arg", "expect"],
           );
 
   @override
   Future<int>
       crateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeU16TwinRustAsync(
-          {required int arg, dynamic hint}) {
+          {required int arg, required String expect, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_16(arg, serializer);
+        sse_encode_String(expect, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 465, port: port_);
       },
@@ -18584,7 +18604,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       ),
       constMeta:
           kCrateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeU16TwinRustAsyncConstMeta,
-      argValues: [arg],
+      argValues: [arg, expect],
       apiImpl: this,
       hint: hint,
     ));
@@ -18594,17 +18614,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get kCrateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeU16TwinRustAsyncConstMeta =>
           const TaskConstMeta(
             debugName: "example_basic_type_u16_twin_rust_async",
-            argNames: ["arg"],
+            argNames: ["arg", "expect"],
           );
 
   @override
   Future<int>
       crateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeU32TwinRustAsync(
-          {required int arg, dynamic hint}) {
+          {required int arg, required String expect, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_32(arg, serializer);
+        sse_encode_String(expect, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 466, port: port_);
       },
@@ -18614,7 +18635,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       ),
       constMeta:
           kCrateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeU32TwinRustAsyncConstMeta,
-      argValues: [arg],
+      argValues: [arg, expect],
       apiImpl: this,
       hint: hint,
     ));
@@ -18624,17 +18645,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get kCrateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeU32TwinRustAsyncConstMeta =>
           const TaskConstMeta(
             debugName: "example_basic_type_u32_twin_rust_async",
-            argNames: ["arg"],
+            argNames: ["arg", "expect"],
           );
 
   @override
   Future<BigInt>
       crateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeU64TwinRustAsync(
-          {required BigInt arg, dynamic hint}) {
+          {required BigInt arg, required String expect, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_64(arg, serializer);
+        sse_encode_String(expect, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 467, port: port_);
       },
@@ -18644,7 +18666,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       ),
       constMeta:
           kCrateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeU64TwinRustAsyncConstMeta,
-      argValues: [arg],
+      argValues: [arg, expect],
       apiImpl: this,
       hint: hint,
     ));
@@ -18654,17 +18676,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get kCrateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeU64TwinRustAsyncConstMeta =>
           const TaskConstMeta(
             debugName: "example_basic_type_u64_twin_rust_async",
-            argNames: ["arg"],
+            argNames: ["arg", "expect"],
           );
 
   @override
   Future<int>
       crateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeU8TwinRustAsync(
-          {required int arg, dynamic hint}) {
+          {required int arg, required String expect, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_8(arg, serializer);
+        sse_encode_String(expect, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 464, port: port_);
       },
@@ -18674,7 +18697,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       ),
       constMeta:
           kCrateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeU8TwinRustAsyncConstMeta,
-      argValues: [arg],
+      argValues: [arg, expect],
       apiImpl: this,
       hint: hint,
     ));
@@ -18684,17 +18707,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get kCrateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeU8TwinRustAsyncConstMeta =>
           const TaskConstMeta(
             debugName: "example_basic_type_u8_twin_rust_async",
-            argNames: ["arg"],
+            argNames: ["arg", "expect"],
           );
 
   @override
   Future<BigInt>
       crateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeUsizeTwinRustAsync(
-          {required BigInt arg, dynamic hint}) {
+          {required BigInt arg, required String expect, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_usize(arg, serializer);
+        sse_encode_String(expect, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 470, port: port_);
       },
@@ -18704,7 +18728,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       ),
       constMeta:
           kCrateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeUsizeTwinRustAsyncConstMeta,
-      argValues: [arg],
+      argValues: [arg, expect],
       apiImpl: this,
       hint: hint,
     ));
@@ -18714,7 +18738,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get kCrateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeUsizeTwinRustAsyncConstMeta =>
           const TaskConstMeta(
             debugName: "example_basic_type_usize_twin_rust_async",
-            argNames: ["arg"],
+            argNames: ["arg", "expect"],
           );
 
   @override
@@ -18920,11 +18944,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   BigInt crateApiPseudoManualBasicTwinSyncExampleBasicTypeI128TwinSync(
-      {required BigInt arg, dynamic hint}) {
+      {required BigInt arg, required String expect, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_I128(arg, serializer);
+        sse_encode_String(expect, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 483)!;
       },
       codec: SseCodec(
@@ -18933,7 +18958,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       ),
       constMeta:
           kCrateApiPseudoManualBasicTwinSyncExampleBasicTypeI128TwinSyncConstMeta,
-      argValues: [arg],
+      argValues: [arg, expect],
       apiImpl: this,
       hint: hint,
     ));
@@ -18943,16 +18968,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get kCrateApiPseudoManualBasicTwinSyncExampleBasicTypeI128TwinSyncConstMeta =>
           const TaskConstMeta(
             debugName: "example_basic_type_i128_twin_sync",
-            argNames: ["arg"],
+            argNames: ["arg", "expect"],
           );
 
   @override
   int crateApiPseudoManualBasicTwinSyncExampleBasicTypeI16TwinSync(
-      {required int arg, dynamic hint}) {
+      {required int arg, required String expect, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_i_16(arg, serializer);
+        sse_encode_String(expect, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 480)!;
       },
       codec: SseCodec(
@@ -18961,7 +18987,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       ),
       constMeta:
           kCrateApiPseudoManualBasicTwinSyncExampleBasicTypeI16TwinSyncConstMeta,
-      argValues: [arg],
+      argValues: [arg, expect],
       apiImpl: this,
       hint: hint,
     ));
@@ -18971,16 +18997,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get kCrateApiPseudoManualBasicTwinSyncExampleBasicTypeI16TwinSyncConstMeta =>
           const TaskConstMeta(
             debugName: "example_basic_type_i16_twin_sync",
-            argNames: ["arg"],
+            argNames: ["arg", "expect"],
           );
 
   @override
   int crateApiPseudoManualBasicTwinSyncExampleBasicTypeI32TwinSync(
-      {required int arg, dynamic hint}) {
+      {required int arg, required String expect, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_i_32(arg, serializer);
+        sse_encode_String(expect, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 481)!;
       },
       codec: SseCodec(
@@ -18989,7 +19016,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       ),
       constMeta:
           kCrateApiPseudoManualBasicTwinSyncExampleBasicTypeI32TwinSyncConstMeta,
-      argValues: [arg],
+      argValues: [arg, expect],
       apiImpl: this,
       hint: hint,
     ));
@@ -18999,16 +19026,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get kCrateApiPseudoManualBasicTwinSyncExampleBasicTypeI32TwinSyncConstMeta =>
           const TaskConstMeta(
             debugName: "example_basic_type_i32_twin_sync",
-            argNames: ["arg"],
+            argNames: ["arg", "expect"],
           );
 
   @override
   PlatformInt64 crateApiPseudoManualBasicTwinSyncExampleBasicTypeI64TwinSync(
-      {required PlatformInt64 arg, dynamic hint}) {
+      {required PlatformInt64 arg, required String expect, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_i_64(arg, serializer);
+        sse_encode_String(expect, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 482)!;
       },
       codec: SseCodec(
@@ -19017,7 +19045,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       ),
       constMeta:
           kCrateApiPseudoManualBasicTwinSyncExampleBasicTypeI64TwinSyncConstMeta,
-      argValues: [arg],
+      argValues: [arg, expect],
       apiImpl: this,
       hint: hint,
     ));
@@ -19027,16 +19055,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get kCrateApiPseudoManualBasicTwinSyncExampleBasicTypeI64TwinSyncConstMeta =>
           const TaskConstMeta(
             debugName: "example_basic_type_i64_twin_sync",
-            argNames: ["arg"],
+            argNames: ["arg", "expect"],
           );
 
   @override
   int crateApiPseudoManualBasicTwinSyncExampleBasicTypeI8TwinSync(
-      {required int arg, dynamic hint}) {
+      {required int arg, required String expect, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_i_8(arg, serializer);
+        sse_encode_String(expect, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 479)!;
       },
       codec: SseCodec(
@@ -19045,7 +19074,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       ),
       constMeta:
           kCrateApiPseudoManualBasicTwinSyncExampleBasicTypeI8TwinSyncConstMeta,
-      argValues: [arg],
+      argValues: [arg, expect],
       apiImpl: this,
       hint: hint,
     ));
@@ -19055,16 +19084,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get kCrateApiPseudoManualBasicTwinSyncExampleBasicTypeI8TwinSyncConstMeta =>
           const TaskConstMeta(
             debugName: "example_basic_type_i8_twin_sync",
-            argNames: ["arg"],
+            argNames: ["arg", "expect"],
           );
 
   @override
   PlatformInt64 crateApiPseudoManualBasicTwinSyncExampleBasicTypeIsizeTwinSync(
-      {required PlatformInt64 arg, dynamic hint}) {
+      {required PlatformInt64 arg, required String expect, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_isize(arg, serializer);
+        sse_encode_String(expect, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 489)!;
       },
       codec: SseCodec(
@@ -19073,7 +19103,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       ),
       constMeta:
           kCrateApiPseudoManualBasicTwinSyncExampleBasicTypeIsizeTwinSyncConstMeta,
-      argValues: [arg],
+      argValues: [arg, expect],
       apiImpl: this,
       hint: hint,
     ));
@@ -19083,7 +19113,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get kCrateApiPseudoManualBasicTwinSyncExampleBasicTypeIsizeTwinSyncConstMeta =>
           const TaskConstMeta(
             debugName: "example_basic_type_isize_twin_sync",
-            argNames: ["arg"],
+            argNames: ["arg", "expect"],
           );
 
   @override
@@ -19116,11 +19146,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   BigInt crateApiPseudoManualBasicTwinSyncExampleBasicTypeU128TwinSync(
-      {required BigInt arg, dynamic hint}) {
+      {required BigInt arg, required String expect, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_U128(arg, serializer);
+        sse_encode_String(expect, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 488)!;
       },
       codec: SseCodec(
@@ -19129,7 +19160,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       ),
       constMeta:
           kCrateApiPseudoManualBasicTwinSyncExampleBasicTypeU128TwinSyncConstMeta,
-      argValues: [arg],
+      argValues: [arg, expect],
       apiImpl: this,
       hint: hint,
     ));
@@ -19139,16 +19170,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get kCrateApiPseudoManualBasicTwinSyncExampleBasicTypeU128TwinSyncConstMeta =>
           const TaskConstMeta(
             debugName: "example_basic_type_u128_twin_sync",
-            argNames: ["arg"],
+            argNames: ["arg", "expect"],
           );
 
   @override
   int crateApiPseudoManualBasicTwinSyncExampleBasicTypeU16TwinSync(
-      {required int arg, dynamic hint}) {
+      {required int arg, required String expect, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_16(arg, serializer);
+        sse_encode_String(expect, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 485)!;
       },
       codec: SseCodec(
@@ -19157,7 +19189,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       ),
       constMeta:
           kCrateApiPseudoManualBasicTwinSyncExampleBasicTypeU16TwinSyncConstMeta,
-      argValues: [arg],
+      argValues: [arg, expect],
       apiImpl: this,
       hint: hint,
     ));
@@ -19167,16 +19199,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get kCrateApiPseudoManualBasicTwinSyncExampleBasicTypeU16TwinSyncConstMeta =>
           const TaskConstMeta(
             debugName: "example_basic_type_u16_twin_sync",
-            argNames: ["arg"],
+            argNames: ["arg", "expect"],
           );
 
   @override
   int crateApiPseudoManualBasicTwinSyncExampleBasicTypeU32TwinSync(
-      {required int arg, dynamic hint}) {
+      {required int arg, required String expect, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_32(arg, serializer);
+        sse_encode_String(expect, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 486)!;
       },
       codec: SseCodec(
@@ -19185,7 +19218,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       ),
       constMeta:
           kCrateApiPseudoManualBasicTwinSyncExampleBasicTypeU32TwinSyncConstMeta,
-      argValues: [arg],
+      argValues: [arg, expect],
       apiImpl: this,
       hint: hint,
     ));
@@ -19195,16 +19228,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get kCrateApiPseudoManualBasicTwinSyncExampleBasicTypeU32TwinSyncConstMeta =>
           const TaskConstMeta(
             debugName: "example_basic_type_u32_twin_sync",
-            argNames: ["arg"],
+            argNames: ["arg", "expect"],
           );
 
   @override
   BigInt crateApiPseudoManualBasicTwinSyncExampleBasicTypeU64TwinSync(
-      {required BigInt arg, dynamic hint}) {
+      {required BigInt arg, required String expect, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_64(arg, serializer);
+        sse_encode_String(expect, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 487)!;
       },
       codec: SseCodec(
@@ -19213,7 +19247,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       ),
       constMeta:
           kCrateApiPseudoManualBasicTwinSyncExampleBasicTypeU64TwinSyncConstMeta,
-      argValues: [arg],
+      argValues: [arg, expect],
       apiImpl: this,
       hint: hint,
     ));
@@ -19223,16 +19257,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get kCrateApiPseudoManualBasicTwinSyncExampleBasicTypeU64TwinSyncConstMeta =>
           const TaskConstMeta(
             debugName: "example_basic_type_u64_twin_sync",
-            argNames: ["arg"],
+            argNames: ["arg", "expect"],
           );
 
   @override
   int crateApiPseudoManualBasicTwinSyncExampleBasicTypeU8TwinSync(
-      {required int arg, dynamic hint}) {
+      {required int arg, required String expect, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_8(arg, serializer);
+        sse_encode_String(expect, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 484)!;
       },
       codec: SseCodec(
@@ -19241,7 +19276,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       ),
       constMeta:
           kCrateApiPseudoManualBasicTwinSyncExampleBasicTypeU8TwinSyncConstMeta,
-      argValues: [arg],
+      argValues: [arg, expect],
       apiImpl: this,
       hint: hint,
     ));
@@ -19251,16 +19286,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get kCrateApiPseudoManualBasicTwinSyncExampleBasicTypeU8TwinSyncConstMeta =>
           const TaskConstMeta(
             debugName: "example_basic_type_u8_twin_sync",
-            argNames: ["arg"],
+            argNames: ["arg", "expect"],
           );
 
   @override
   BigInt crateApiPseudoManualBasicTwinSyncExampleBasicTypeUsizeTwinSync(
-      {required BigInt arg, dynamic hint}) {
+      {required BigInt arg, required String expect, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_usize(arg, serializer);
+        sse_encode_String(expect, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 490)!;
       },
       codec: SseCodec(
@@ -19269,7 +19305,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       ),
       constMeta:
           kCrateApiPseudoManualBasicTwinSyncExampleBasicTypeUsizeTwinSyncConstMeta,
-      argValues: [arg],
+      argValues: [arg, expect],
       apiImpl: this,
       hint: hint,
     ));
@@ -19279,7 +19315,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get kCrateApiPseudoManualBasicTwinSyncExampleBasicTypeUsizeTwinSyncConstMeta =>
           const TaskConstMeta(
             debugName: "example_basic_type_usize_twin_sync",
-            argNames: ["arg"],
+            argNames: ["arg", "expect"],
           );
 
   @override
