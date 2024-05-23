@@ -82,12 +82,6 @@ impl CstDecode<char> for String {
             .unwrap()
     }
 }
-impl CstDecode<chrono::Duration> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> chrono::Duration {
-        chrono::Duration::milliseconds(self)
-    }
-}
 impl CstDecode<flutter_rust_bridge::DartOpaque>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -9381,7 +9375,7 @@ impl CstDecode<char> for flutter_rust_bridge::for_generated::wasm_bindgen::JsVal
 impl CstDecode<chrono::Duration> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> chrono::Duration {
-        CstDecode::<i64>::cst_decode(self).cst_decode()
+        chrono::Duration::milliseconds(CstDecode::<i64>::cst_decode(self))
     }
 }
 impl CstDecode<chrono::DateTime<chrono::Local>>
