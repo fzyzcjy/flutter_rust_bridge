@@ -13,11 +13,15 @@ class DartFileBuilder {
     String funcName,
     List<String> values, {
     String? valueType,
+    bool withExpect = false,
   }) {
     if (values.isEmpty) throw ArgumentError();
     final bracketedValueType = valueType == null ? "" : '<$valueType>';
+    final testerName = withExpect
+        ? 'addTestsIdentityWithExpectFunctionCall'
+        : 'addTestsIdentityFunctionCall';
     body +=
-        'addTestsIdentityFunctionCall($funcName, $bracketedValueType[${values.join(", ")}]);';
+        '$testerName($funcName, $bracketedValueType[${values.join(", ")}]);';
   }
 
   @override

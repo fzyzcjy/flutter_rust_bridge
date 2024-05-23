@@ -11,6 +11,7 @@ Map<String, String> generateDartDirectSources(Package package) {
       postfix: '',
       values: (ty) => ty.interestRawValues.map((x) => x.textAndGuard).toList(),
       valueType: (ty) => ty.dartTypeName,
+      withExpect: (ty) => ty.enableRustExpect,
     ),
     'pseudo_manual/basic_optional_test.dart': _generateBasicRelated(
       package,
@@ -59,6 +60,7 @@ String _generateBasicRelated(
   required String postfix,
   required List<String> Function(BasicTypeInfo) values,
   required String? Function(BasicTypeInfo) valueType,
+  bool Function(BasicTypeInfo)? withExpect,
   String imports = '',
   bool Function(BasicTypeInfo)? enable,
 }) {
@@ -73,6 +75,7 @@ String _generateBasicRelated(
         'exampleBasic${ReCase(postfix).pascalCase}Type${ReCase(ty.name).pascalCase}TwinNormal',
         values(ty),
         valueType: valueType(ty),
+        withExpect: withExpect?.call(ty) ?? false,
       );
     }
   }
