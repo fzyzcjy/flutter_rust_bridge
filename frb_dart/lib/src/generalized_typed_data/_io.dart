@@ -145,7 +145,7 @@ void byteDataSetInt64($data.ByteData byteData, int byteOffset, BigInt value,
 /// {@macro flutter_rust_bridge.internal}
 BigInt byteDataGetUint64(
         $data.ByteData byteData, int byteOffset, $data.Endian endian) =>
-    BigInt.from(byteData.getUint64(byteOffset, endian));
+    BigInt.from(byteData.getUint64(byteOffset, endian)).toUnsigned(64);
 
 /// {@macro flutter_rust_bridge.internal}
 BigInt byteDataGetInt64(
