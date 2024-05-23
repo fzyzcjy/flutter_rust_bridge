@@ -21,8 +21,8 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for PrimitiveWireRustCodecCstGene
         Some(match &self.ir {
             Unit => return None,
             Bool => "self.is_truthy()".into(),
-            I64 | Isize => "::std::convert::TryInto::try_into::<i64>(self).unwrap() as _".into(),
-            U64 | Usize => "::std::convert::TryInto::try_into::<u64>(self).unwrap() as _".into(),
+            I64 | Isize => "::std::convert::TryInto::<i64>::try_into(self).unwrap() as _".into(),
+            U64 | Usize => "::std::convert::TryInto::<u64>::try_into(self).unwrap() as _".into(),
             _ => "self.unchecked_into_f64() as _".into(),
         })
     }
