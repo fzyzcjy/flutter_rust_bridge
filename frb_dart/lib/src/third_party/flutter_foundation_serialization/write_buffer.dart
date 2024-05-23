@@ -97,9 +97,13 @@ class WriteBuffer {
 
   /// Write a Uint64 into the buffer.
   void putUint64(int value, {Endian? endian}) {
+    putBigUint64(BigInt.from(value), endian: endian);
+  }
+
+  /// Write a Uint64 into the buffer.
+  void putBigUint64(BigInt value, {Endian? endian}) {
     assert(!_isDone);
-    byteDataSetUint64(
-        _eightBytes, 0, BigInt.from(value), endian ?? Endian.host);
+    byteDataSetUint64(_eightBytes, 0, value, endian ?? Endian.host);
     _addAll(_eightBytesAsList, 0, 8);
   }
 
@@ -126,8 +130,13 @@ class WriteBuffer {
 
   /// Write an Int64 into the buffer.
   void putInt64(int value, {Endian? endian}) {
+    putBigInt64(BigInt.from(value), endian: endian);
+  }
+
+  /// Write an Int64 into the buffer.
+  void putBigInt64(BigInt value, {Endian? endian}) {
     assert(!_isDone);
-    byteDataSetInt64(_eightBytes, 0, BigInt.from(value), endian ?? Endian.host);
+    byteDataSetInt64(_eightBytes, 0, value, endian ?? Endian.host);
     _addAll(_eightBytesAsList, 0, 8);
   }
 
