@@ -172,6 +172,8 @@ impl_into_into_dart_by_self!(u32);
 impl_into_into_dart_by_self!(i32);
 impl_into_into_dart_by_self!(u64);
 impl_into_into_dart_by_self!(i64);
+impl_into_into_dart_by_self!(u128);
+impl_into_into_dart_by_self!(i128);
 impl_into_into_dart_by_self!(f32);
 impl_into_into_dart_by_self!(f64);
 impl_into_into_dart_by_self!(bool);
