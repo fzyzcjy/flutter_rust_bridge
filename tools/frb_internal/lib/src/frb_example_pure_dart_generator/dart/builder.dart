@@ -23,6 +23,7 @@ class DartFileBuilder {
   @override
   String toString() {
     return '''$kDirectSourcesPrelude
+import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:${package.dartPackageName}/src/rust/api/pseudo_manual/$importName.dart';
 import 'package:${package.dartPackageName}/src/rust/frb_generated.dart';
 import 'package:test/test.dart';

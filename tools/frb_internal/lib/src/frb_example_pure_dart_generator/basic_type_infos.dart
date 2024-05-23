@@ -130,7 +130,10 @@ final kBasicTypes = [
       _platformInt64('0'),
       _platformInt64('-2147483648'),
       _platformInt64('2147483647'),
-      // TODO more test
+      'if (!kIsWeb) ${_bigInt('-9007199254740992')}',
+      'if (!kIsWeb) ${_bigInt('9007199254740992')}',
+      'if (!kIsWeb) ${_bigInt('-9223372036854775808')}',
+      'if (!kIsWeb) ${_bigInt('9223372036854775807')}',
     ],
     listWrapper: _defaultPrimitiveListWrapper,
   ),
@@ -141,7 +144,9 @@ final kBasicTypes = [
     interestRawValues: [
       _bigInt('0'),
       _bigInt('4294967295'),
-      // TODO more test
+      'if (!kIsWeb) ${_bigInt('9007199254740992')}',
+      'if (!kIsWeb) ${_bigInt('9223372036854775807')}',
+      'if (!kIsWeb) ${_bigInt('18446744073709551615')}',
     ],
     listWrapper: _defaultPrimitiveListWrapper,
   ),
