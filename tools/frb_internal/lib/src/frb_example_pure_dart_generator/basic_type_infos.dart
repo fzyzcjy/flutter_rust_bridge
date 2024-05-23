@@ -6,6 +6,7 @@ class BasicTypeInfo {
   final String dartTypeName;
   final String listName;
   final bool enableList;
+  final bool enableRustExpect;
   final List<RawValue> interestRawValues;
   final String Function(BasicTypeInfo, String) listWrapper;
 
@@ -15,6 +16,7 @@ class BasicTypeInfo {
     required this.dartTypeName,
     String? listName,
     this.enableList = true,
+    required this.enableRustExpect,
     required this.interestRawValues,
     required this.listWrapper,
   })  : name = name ?? ReCase(rustTypeName).snakeCase,
