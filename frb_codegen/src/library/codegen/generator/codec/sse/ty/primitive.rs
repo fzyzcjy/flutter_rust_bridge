@@ -65,7 +65,7 @@ pub(super) fn get_serializer_dart_postfix(prim: &IrTypePrimitive) -> &'static st
         IrTypePrimitive::I16 => "Int16",
         IrTypePrimitive::U32 => "Uint32",
         IrTypePrimitive::I32 => "Int32",
-        IrTypePrimitive::I64 | IrTypePrimitive::Isize => "Int64",
+        IrTypePrimitive::I64 | IrTypePrimitive::Isize => "PlatformInt64",
         IrTypePrimitive::U64 | IrTypePrimitive::Usize => "BigUint64",
         IrTypePrimitive::F32 => "Float32",
         IrTypePrimitive::F64 => "Float64",
