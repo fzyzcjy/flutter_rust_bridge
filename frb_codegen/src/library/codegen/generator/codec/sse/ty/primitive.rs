@@ -72,7 +72,13 @@ pub(super) fn get_serializer_dart_postfix(prim: &IrTypePrimitive, mode_list: boo
                 "PlatformInt64"
             }
         }
-        IrTypePrimitive::U64 | IrTypePrimitive::Usize => "BigUint64",
+        IrTypePrimitive::U64 | IrTypePrimitive::Usize => {
+            if mode_list {
+                "Uint64"
+            } else {
+                "BigUint64"
+            }
+        }
         IrTypePrimitive::F32 => "Float32",
         IrTypePrimitive::F64 => "Float64",
         IrTypePrimitive::Bool => "Uint8",
