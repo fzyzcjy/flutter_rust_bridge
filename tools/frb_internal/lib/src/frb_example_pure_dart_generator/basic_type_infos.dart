@@ -16,7 +16,7 @@ class BasicTypeInfo {
     required this.dartTypeName,
     String? listName,
     this.enableList = true,
-    required this.enableRustExpect,
+    this.enableRustExpect = false,
     required this.interestRawValues,
     required this.listWrapper,
   })  : name = name ?? ReCase(rustTypeName).snakeCase,
@@ -53,6 +53,7 @@ final kBasicTypes = [
       const RawValue('-79'),
     ],
     listWrapper: _defaultPrimitiveListWrapper,
+    enableRustExpect: true,
   ),
   BasicTypeInfo(
     rustTypeName: 'i16',
@@ -66,6 +67,7 @@ final kBasicTypes = [
       const RawValue('-12345'),
     ],
     listWrapper: _defaultPrimitiveListWrapper,
+    enableRustExpect: true,
   ),
   BasicTypeInfo(
     rustTypeName: 'i32',
@@ -79,6 +81,7 @@ final kBasicTypes = [
       const RawValue('-1234567890'),
     ],
     listWrapper: _defaultPrimitiveListWrapper,
+    enableRustExpect: true,
   ),
   BasicTypeInfo(
     rustTypeName: 'i64',
@@ -94,6 +97,7 @@ final kBasicTypes = [
       RawValue(_platformInt64('-1234567890123456789')),
     ],
     listWrapper: _defaultPrimitiveListWrapper,
+    enableRustExpect: true,
     // primitiveWrapper: (_, x) => 'BigInt.parse("$x")',
   ),
   BasicTypeInfo(
@@ -109,6 +113,7 @@ final kBasicTypes = [
       RawValue(_bigInt('170141183460469231731687303715884105727')),
     ],
     listWrapper: _defaultGeneralListWrapper,
+    enableRustExpect: true,
   ),
   BasicTypeInfo(
     rustTypeName: 'u8',
@@ -120,6 +125,7 @@ final kBasicTypes = [
       const RawValue('123'),
     ],
     listWrapper: _defaultPrimitiveListWrapper,
+    enableRustExpect: true,
   ),
   BasicTypeInfo(
     rustTypeName: 'u16',
@@ -131,6 +137,7 @@ final kBasicTypes = [
       const RawValue('12345'),
     ],
     listWrapper: _defaultPrimitiveListWrapper,
+    enableRustExpect: true,
   ),
   BasicTypeInfo(
     rustTypeName: 'u32',
@@ -142,6 +149,7 @@ final kBasicTypes = [
       const RawValue('2468013579'),
     ],
     listWrapper: _defaultPrimitiveListWrapper,
+    enableRustExpect: true,
   ),
   BasicTypeInfo(
     rustTypeName: 'u64',
@@ -155,6 +163,7 @@ final kBasicTypes = [
       RawValue(_bigInt('12345678901234456789')),
     ],
     listWrapper: _defaultPrimitiveListWrapper,
+    enableRustExpect: true,
     // primitiveWrapper: (_, x) => 'BigInt.parse("$x")',
   ),
   BasicTypeInfo(
@@ -167,6 +176,7 @@ final kBasicTypes = [
       RawValue(_bigInt('340282366920938463463374607431768211455')),
     ],
     listWrapper: _defaultGeneralListWrapper,
+    enableRustExpect: true,
   ),
   BasicTypeInfo(
     rustTypeName: 'isize',
@@ -187,6 +197,7 @@ final kBasicTypes = [
       RawValue(_platformInt64('12345678901234456789'), nonWebOnly: true),
     ],
     listWrapper: _defaultPrimitiveListWrapper,
+    enableRustExpect: true,
   ),
   BasicTypeInfo(
     rustTypeName: 'usize',
@@ -202,6 +213,7 @@ final kBasicTypes = [
       RawValue(_bigInt('12345678901234456789'), nonWebOnly: true),
     ],
     listWrapper: _defaultPrimitiveListWrapper,
+    enableRustExpect: true,
   ),
   BasicTypeInfo(
     rustTypeName: 'f32',
