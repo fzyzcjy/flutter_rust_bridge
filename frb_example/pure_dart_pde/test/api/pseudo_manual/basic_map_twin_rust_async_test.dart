@@ -98,13 +98,20 @@ Future<void> main({bool skipRustLibInit = false}) async {
       {},
       {42: PlatformInt64.parse("0")},
       {42: PlatformInt64.parse("-2147483648")},
-      {42: PlatformInt64.parse("2147483647")}
+      {42: PlatformInt64.parse("2147483647")},
+      if (!kIsWeb) {42: PlatformInt64.parse("-9007199254740992")},
+      if (!kIsWeb) {42: PlatformInt64.parse("9007199254740992")},
+      if (!kIsWeb) {42: PlatformInt64.parse("-9223372036854775808")},
+      if (!kIsWeb) {42: PlatformInt64.parse("9223372036854775807")}
     ]);
     addTestsIdentityFunctionCall(
         exampleBasicMapTypeUsizeTwinRustAsync, <Map<int, BigInt>>[
       {},
       {42: BigInt.parse("0")},
-      {42: BigInt.parse("4294967295")}
+      {42: BigInt.parse("4294967295")},
+      if (!kIsWeb) {42: BigInt.parse("9007199254740992")},
+      if (!kIsWeb) {42: BigInt.parse("9223372036854775807")},
+      if (!kIsWeb) {42: BigInt.parse("18446744073709551615")}
     ]);
     addTestsIdentityFunctionCall(
         exampleBasicMapTypeF32TwinRustAsync, <Map<int, double>>[

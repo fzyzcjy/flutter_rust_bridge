@@ -26,6 +26,10 @@ class RawValue {
   final bool nonWebOnly;
 
   const RawValue(this.text, {this.nonWebOnly = false});
+
+  String get guard => nonWebOnly ? "if (!kIsWeb) " : "";
+
+  String get textAndGuard => '$guard$text';
 }
 
 String _defaultGeneralListWrapper(BasicTypeInfo info, String value) =>

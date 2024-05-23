@@ -9,7 +9,7 @@ Map<String, String> generateDartDirectSources(Package package) {
     'pseudo_manual/basic_test.dart': _generateBasicRelated(
       package,
       postfix: '',
-      values: (ty) => ty.interestRawValues,
+      values: (ty) => ty.interestRawValues.map((x) => x.textAndGuard).toList(),
       valueType: (ty) => ty.dartTypeName,
     ),
     'pseudo_manual/basic_optional_test.dart': _generateBasicRelated(
@@ -18,7 +18,8 @@ Map<String, String> generateDartDirectSources(Package package) {
       imports: """
       import 'package:${package.dartPackageName}/src/rust/api/pseudo_manual/basic.dart';
       """,
-      values: (ty) => ["null", ...ty.interestRawValues],
+      values: (ty) =>
+          ["null", ...ty.interestRawValues.map((x) => x.textAndGuard)],
       valueType: (ty) => '${ty.dartTypeName}?',
     ),
     'pseudo_manual/basic_list_test.dart': _generateBasicRelated(
@@ -26,7 +27,8 @@ Map<String, String> generateDartDirectSources(Package package) {
       postfix: '_list',
       values: (ty) => [
         ty.listWrapper(ty, ''),
-        ...ty.interestRawValues.map((x) => ty.listWrapper(ty, x)),
+        ...ty.interestRawValues
+            .map((x) => x.guard + ty.listWrapper(ty, x.text)),
       ],
       imports: """
       import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
@@ -41,7 +43,10 @@ Map<String, String> generateDartDirectSources(Package package) {
       imports: """
       import 'package:${package.dartPackageName}/src/rust/api/pseudo_manual/basic.dart';
       """,
-      values: (ty) => ['{}', ...ty.interestRawValues.map((x) => '{42: $x}')],
+      values: (ty) => [
+        '{}',
+        ...ty.interestRawValues.map((x) => '${x.guard}{42: ${x.text}}')
+      ],
       valueType: (ty) => 'Map<int, ${ty.dartTypeName}>',
     ),
     if (package == Package.pureDart)
