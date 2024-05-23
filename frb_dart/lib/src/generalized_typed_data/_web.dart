@@ -106,7 +106,7 @@ abstract class _TypedList<T> extends _SetAnyListMixin<T> {
   ByteBuffer get buffer => inner.buffer;
 }
 
-Object _convertBigInt(Object dart) {
+Object _convertBigIntToJs(Object dart) {
   if (dart is int) return BigInt.from(dart);
   // Assume value is already JS safe.
   return dart;
@@ -124,7 +124,7 @@ class Int64List extends _TypedList<BigInt> {
   BigInt _js2dart(Object? value) => jsBigIntToDartBigInt(value!);
 
   @override
-  dynamic _dart2js(Object? value) => _convertBigInt(value!);
+  dynamic _dart2js(Object? value) => _convertBigIntToJs(value!);
 
   /// Construct a list
   factory Int64List(int length) => Int64List.from(BigInt64Array(length));
@@ -155,7 +155,7 @@ class Uint64List extends _TypedList<BigInt> {
   BigInt _js2dart(Object? value) => jsBigIntToDartBigInt(value!);
 
   @override
-  dynamic _dart2js(Object? value) => _convertBigInt(value!);
+  dynamic _dart2js(Object? value) => _convertBigIntToJs(value!);
 
   /// Construct a list
   factory Uint64List(int length) => Uint64List.from(BigUint64Array(length));
