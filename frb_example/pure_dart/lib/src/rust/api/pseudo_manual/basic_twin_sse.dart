@@ -23,9 +23,16 @@ Future<int> exampleBasicTypeI32TwinSse({required int arg, dynamic hint}) =>
         .crateApiPseudoManualBasicTwinSseExampleBasicTypeI32TwinSse(
             arg: arg, hint: hint);
 
-Future<int> exampleBasicTypeI64TwinSse({required int arg, dynamic hint}) =>
+Future<PlatformInt64> exampleBasicTypeI64TwinSse(
+        {required PlatformInt64 arg, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicTwinSseExampleBasicTypeI64TwinSse(
+            arg: arg, hint: hint);
+
+Future<BigInt> exampleBasicTypeI128TwinSse(
+        {required BigInt arg, dynamic hint}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicTwinSseExampleBasicTypeI128TwinSse(
             arg: arg, hint: hint);
 
 Future<int> exampleBasicTypeU8TwinSse({required int arg, dynamic hint}) =>
@@ -43,17 +50,26 @@ Future<int> exampleBasicTypeU32TwinSse({required int arg, dynamic hint}) =>
         .crateApiPseudoManualBasicTwinSseExampleBasicTypeU32TwinSse(
             arg: arg, hint: hint);
 
-Future<int> exampleBasicTypeU64TwinSse({required int arg, dynamic hint}) =>
+Future<BigInt> exampleBasicTypeU64TwinSse(
+        {required BigInt arg, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicTwinSseExampleBasicTypeU64TwinSse(
             arg: arg, hint: hint);
 
-Future<int> exampleBasicTypeIsizeTwinSse({required int arg, dynamic hint}) =>
+Future<BigInt> exampleBasicTypeU128TwinSse(
+        {required BigInt arg, dynamic hint}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicTwinSseExampleBasicTypeU128TwinSse(
+            arg: arg, hint: hint);
+
+Future<PlatformInt64> exampleBasicTypeIsizeTwinSse(
+        {required PlatformInt64 arg, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicTwinSseExampleBasicTypeIsizeTwinSse(
             arg: arg, hint: hint);
 
-Future<int> exampleBasicTypeUsizeTwinSse({required int arg, dynamic hint}) =>
+Future<BigInt> exampleBasicTypeUsizeTwinSse(
+        {required BigInt arg, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicTwinSseExampleBasicTypeUsizeTwinSse(
             arg: arg, hint: hint);

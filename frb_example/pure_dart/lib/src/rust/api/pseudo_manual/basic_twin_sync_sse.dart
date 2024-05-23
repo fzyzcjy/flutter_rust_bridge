@@ -23,9 +23,15 @@ int exampleBasicTypeI32TwinSyncSse({required int arg, dynamic hint}) =>
         .crateApiPseudoManualBasicTwinSyncSseExampleBasicTypeI32TwinSyncSse(
             arg: arg, hint: hint);
 
-int exampleBasicTypeI64TwinSyncSse({required int arg, dynamic hint}) =>
+PlatformInt64 exampleBasicTypeI64TwinSyncSse(
+        {required PlatformInt64 arg, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicTwinSyncSseExampleBasicTypeI64TwinSyncSse(
+            arg: arg, hint: hint);
+
+BigInt exampleBasicTypeI128TwinSyncSse({required BigInt arg, dynamic hint}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicTwinSyncSseExampleBasicTypeI128TwinSyncSse(
             arg: arg, hint: hint);
 
 int exampleBasicTypeU8TwinSyncSse({required int arg, dynamic hint}) =>
@@ -43,17 +49,23 @@ int exampleBasicTypeU32TwinSyncSse({required int arg, dynamic hint}) =>
         .crateApiPseudoManualBasicTwinSyncSseExampleBasicTypeU32TwinSyncSse(
             arg: arg, hint: hint);
 
-int exampleBasicTypeU64TwinSyncSse({required int arg, dynamic hint}) =>
+BigInt exampleBasicTypeU64TwinSyncSse({required BigInt arg, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicTwinSyncSseExampleBasicTypeU64TwinSyncSse(
             arg: arg, hint: hint);
 
-int exampleBasicTypeIsizeTwinSyncSse({required int arg, dynamic hint}) =>
+BigInt exampleBasicTypeU128TwinSyncSse({required BigInt arg, dynamic hint}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicTwinSyncSseExampleBasicTypeU128TwinSyncSse(
+            arg: arg, hint: hint);
+
+PlatformInt64 exampleBasicTypeIsizeTwinSyncSse(
+        {required PlatformInt64 arg, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicTwinSyncSseExampleBasicTypeIsizeTwinSyncSse(
             arg: arg, hint: hint);
 
-int exampleBasicTypeUsizeTwinSyncSse({required int arg, dynamic hint}) =>
+BigInt exampleBasicTypeUsizeTwinSyncSse({required BigInt arg, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicTwinSyncSseExampleBasicTypeUsizeTwinSyncSse(
             arg: arg, hint: hint);

@@ -12,7 +12,7 @@ Future<NewTypeIntTwinNormal> handleNewtypeTwinNormal(
         .crateApiNewtypePatternHandleNewtypeTwinNormal(arg: arg, hint: hint);
 
 class NewTypeIntTwinNormal {
-  final int field0;
+  final PlatformInt64 field0;
 
   const NewTypeIntTwinNormal({
     required this.field0,

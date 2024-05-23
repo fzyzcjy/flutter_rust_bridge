@@ -25,10 +25,16 @@ Future<int> exampleBasicTypeI32TwinRustAsync(
         .crateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeI32TwinRustAsync(
             arg: arg, hint: hint);
 
-Future<int> exampleBasicTypeI64TwinRustAsync(
-        {required int arg, dynamic hint}) =>
+Future<PlatformInt64> exampleBasicTypeI64TwinRustAsync(
+        {required PlatformInt64 arg, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeI64TwinRustAsync(
+            arg: arg, hint: hint);
+
+Future<BigInt> exampleBasicTypeI128TwinRustAsync(
+        {required BigInt arg, dynamic hint}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeI128TwinRustAsync(
             arg: arg, hint: hint);
 
 Future<int> exampleBasicTypeU8TwinRustAsync({required int arg, dynamic hint}) =>
@@ -48,20 +54,26 @@ Future<int> exampleBasicTypeU32TwinRustAsync(
         .crateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeU32TwinRustAsync(
             arg: arg, hint: hint);
 
-Future<int> exampleBasicTypeU64TwinRustAsync(
-        {required int arg, dynamic hint}) =>
+Future<BigInt> exampleBasicTypeU64TwinRustAsync(
+        {required BigInt arg, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeU64TwinRustAsync(
             arg: arg, hint: hint);
 
-Future<int> exampleBasicTypeIsizeTwinRustAsync(
-        {required int arg, dynamic hint}) =>
+Future<BigInt> exampleBasicTypeU128TwinRustAsync(
+        {required BigInt arg, dynamic hint}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeU128TwinRustAsync(
+            arg: arg, hint: hint);
+
+Future<PlatformInt64> exampleBasicTypeIsizeTwinRustAsync(
+        {required PlatformInt64 arg, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeIsizeTwinRustAsync(
             arg: arg, hint: hint);
 
-Future<int> exampleBasicTypeUsizeTwinRustAsync(
-        {required int arg, dynamic hint}) =>
+Future<BigInt> exampleBasicTypeUsizeTwinRustAsync(
+        {required BigInt arg, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeUsizeTwinRustAsync(
             arg: arg, hint: hint);

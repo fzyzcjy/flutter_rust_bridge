@@ -23,9 +23,15 @@ int exampleBasicTypeI32TwinSync({required int arg, dynamic hint}) =>
         .crateApiPseudoManualBasicTwinSyncExampleBasicTypeI32TwinSync(
             arg: arg, hint: hint);
 
-int exampleBasicTypeI64TwinSync({required int arg, dynamic hint}) =>
+PlatformInt64 exampleBasicTypeI64TwinSync(
+        {required PlatformInt64 arg, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicTwinSyncExampleBasicTypeI64TwinSync(
+            arg: arg, hint: hint);
+
+BigInt exampleBasicTypeI128TwinSync({required BigInt arg, dynamic hint}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicTwinSyncExampleBasicTypeI128TwinSync(
             arg: arg, hint: hint);
 
 int exampleBasicTypeU8TwinSync({required int arg, dynamic hint}) =>
@@ -43,17 +49,23 @@ int exampleBasicTypeU32TwinSync({required int arg, dynamic hint}) =>
         .crateApiPseudoManualBasicTwinSyncExampleBasicTypeU32TwinSync(
             arg: arg, hint: hint);
 
-int exampleBasicTypeU64TwinSync({required int arg, dynamic hint}) =>
+BigInt exampleBasicTypeU64TwinSync({required BigInt arg, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicTwinSyncExampleBasicTypeU64TwinSync(
             arg: arg, hint: hint);
 
-int exampleBasicTypeIsizeTwinSync({required int arg, dynamic hint}) =>
+BigInt exampleBasicTypeU128TwinSync({required BigInt arg, dynamic hint}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicTwinSyncExampleBasicTypeU128TwinSync(
+            arg: arg, hint: hint);
+
+PlatformInt64 exampleBasicTypeIsizeTwinSync(
+        {required PlatformInt64 arg, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicTwinSyncExampleBasicTypeIsizeTwinSync(
             arg: arg, hint: hint);
 
-int exampleBasicTypeUsizeTwinSync({required int arg, dynamic hint}) =>
+BigInt exampleBasicTypeUsizeTwinSync({required BigInt arg, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicTwinSyncExampleBasicTypeUsizeTwinSync(
             arg: arg, hint: hint);

@@ -49,12 +49,12 @@ ApplicationMessage getMessageTwinSync({dynamic hint}) => RustLib.instance.api
     .crateApiPseudoManualMirrorTwinSyncGetMessageTwinSync(hint: hint);
 
 Numbers repeatNumberTwinSync(
-        {required int num, required int times, dynamic hint}) =>
+        {required int num, required BigInt times, dynamic hint}) =>
     RustLib.instance.api.crateApiPseudoManualMirrorTwinSyncRepeatNumberTwinSync(
         num: num, times: times, hint: hint);
 
 Sequences repeatSequenceTwinSync(
-        {required int seq, required int times, dynamic hint}) =>
+        {required int seq, required BigInt times, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualMirrorTwinSyncRepeatSequenceTwinSync(
             seq: seq, times: times, hint: hint);

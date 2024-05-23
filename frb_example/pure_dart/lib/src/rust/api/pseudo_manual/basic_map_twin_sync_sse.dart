@@ -25,10 +25,16 @@ Map<int, int> exampleBasicMapTypeI32TwinSyncSse(
         .crateApiPseudoManualBasicMapTwinSyncSseExampleBasicMapTypeI32TwinSyncSse(
             arg: arg, hint: hint);
 
-Map<int, int> exampleBasicMapTypeI64TwinSyncSse(
-        {required Map<int, int> arg, dynamic hint}) =>
+Map<int, PlatformInt64> exampleBasicMapTypeI64TwinSyncSse(
+        {required Map<int, PlatformInt64> arg, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicMapTwinSyncSseExampleBasicMapTypeI64TwinSyncSse(
+            arg: arg, hint: hint);
+
+Map<int, BigInt> exampleBasicMapTypeI128TwinSyncSse(
+        {required Map<int, BigInt> arg, dynamic hint}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicMapTwinSyncSseExampleBasicMapTypeI128TwinSyncSse(
             arg: arg, hint: hint);
 
 Map<int, int> exampleBasicMapTypeU8TwinSyncSse(
@@ -49,20 +55,26 @@ Map<int, int> exampleBasicMapTypeU32TwinSyncSse(
         .crateApiPseudoManualBasicMapTwinSyncSseExampleBasicMapTypeU32TwinSyncSse(
             arg: arg, hint: hint);
 
-Map<int, int> exampleBasicMapTypeU64TwinSyncSse(
-        {required Map<int, int> arg, dynamic hint}) =>
+Map<int, BigInt> exampleBasicMapTypeU64TwinSyncSse(
+        {required Map<int, BigInt> arg, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicMapTwinSyncSseExampleBasicMapTypeU64TwinSyncSse(
             arg: arg, hint: hint);
 
-Map<int, int> exampleBasicMapTypeIsizeTwinSyncSse(
-        {required Map<int, int> arg, dynamic hint}) =>
+Map<int, BigInt> exampleBasicMapTypeU128TwinSyncSse(
+        {required Map<int, BigInt> arg, dynamic hint}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicMapTwinSyncSseExampleBasicMapTypeU128TwinSyncSse(
+            arg: arg, hint: hint);
+
+Map<int, PlatformInt64> exampleBasicMapTypeIsizeTwinSyncSse(
+        {required Map<int, PlatformInt64> arg, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicMapTwinSyncSseExampleBasicMapTypeIsizeTwinSyncSse(
             arg: arg, hint: hint);
 
-Map<int, int> exampleBasicMapTypeUsizeTwinSyncSse(
-        {required Map<int, int> arg, dynamic hint}) =>
+Map<int, BigInt> exampleBasicMapTypeUsizeTwinSyncSse(
+        {required Map<int, BigInt> arg, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicMapTwinSyncSseExampleBasicMapTypeUsizeTwinSyncSse(
             arg: arg, hint: hint);
