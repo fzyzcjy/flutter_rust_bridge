@@ -9,12 +9,12 @@ use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartG
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for PrimitiveWireDartCodecCstGenerator<'a> {
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {
         match self.ir {
-            IrTypePrimitive::I64 => Acc {
+            IrTypePrimitive::I64 | IrTypePrimitive::Isize => Acc {
                 io: Some("return raw.toInt();".into()),
                 web: Some(CAST_NATIVE_BIG_INT.into()),
                 ..Default::default()
             },
-            IrTypePrimitive::U64 => Acc {
+            IrTypePrimitive::U64 | IrTypePrimitive::Usize => Acc {
                 io: Some("return raw.toSigned(64).toInt();".into()),
                 web: Some(CAST_NATIVE_BIG_INT.into()),
                 ..Default::default()
