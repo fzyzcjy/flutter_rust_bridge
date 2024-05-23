@@ -26,6 +26,7 @@ Here is a brief glance showing what the code generator can generate (non-exhaust
 | `i8`, `u8`, .., `usize`                                    | `int`                                                     |
 | `f32`, `f64`                                               | `double`                                                  |
 | `bool`                                                     | `bool`                                                    |
+| `char`                                                     | `String`                                                  |
 | `String`                                                   | `String`                                                  |
 | `()`                                                       | `void`                                                    |
 | `type A = B`                                               | [type alias](detailed/alias)                              |
