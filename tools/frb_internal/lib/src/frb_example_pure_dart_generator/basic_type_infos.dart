@@ -159,6 +159,7 @@ final kBasicTypes = [
       RawValue(_bigInt('0')),
       RawValue(_bigInt('9007199254740992')),
       RawValue(_bigInt('9223372036854775807')),
+      RawValue(_bigInt('9223372036854775808')),
       RawValue(_bigInt('18446744073709551615')),
       RawValue(_bigInt('12345678901234456789')),
     ],
@@ -172,6 +173,8 @@ final kBasicTypes = [
     interestRawValues: [
       RawValue(_bigInt('0')),
       RawValue(_bigInt('9007199254740992')),
+      RawValue(_bigInt('9223372036854775807')),
+      RawValue(_bigInt('9223372036854775808')),
       RawValue(_bigInt('18446744073709551615')),
       RawValue(_bigInt('340282366920938463463374607431768211455')),
     ],
