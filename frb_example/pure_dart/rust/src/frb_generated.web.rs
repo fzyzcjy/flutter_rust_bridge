@@ -12855,11 +12855,7 @@ impl CstDecode<[i32; 2]> for flutter_rust_bridge::for_generated::wasm_bindgen::J
 impl CstDecode<i64> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> i64 {
-        ::std::convert::TryInto::try_into(
-            self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::BigInt>()
-                .unwrap(),
-        )
-        .unwrap()
+        ::std::convert::TryInto::<i64>::try_into(self).unwrap() as _
     }
 }
 impl CstDecode<i8> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
@@ -12871,11 +12867,7 @@ impl CstDecode<i8> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 impl CstDecode<isize> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> isize {
-        ::std::convert::TryInto::try_into(
-            self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::BigInt>()
-                .unwrap(),
-        )
-        .unwrap()
+        ::std::convert::TryInto::<i64>::try_into(self).unwrap() as _
     }
 }
 impl CstDecode<Vec<f32>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
@@ -13136,11 +13128,7 @@ impl CstDecode<u32> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValu
 impl CstDecode<u64> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> u64 {
-        ::std::convert::TryInto::try_into(
-            self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::BigInt>()
-                .unwrap(),
-        )
-        .unwrap()
+        ::std::convert::TryInto::<u64>::try_into(self).unwrap() as _
     }
 }
 impl CstDecode<u8> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
@@ -13187,11 +13175,7 @@ impl CstDecode<[u8; 8]> for flutter_rust_bridge::for_generated::wasm_bindgen::Js
 impl CstDecode<usize> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> usize {
-        ::std::convert::TryInto::try_into(
-            self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::BigInt>()
-                .unwrap(),
-        )
-        .unwrap()
+        ::std::convert::TryInto::<u64>::try_into(self).unwrap() as _
     }
 }
 impl CstDecode<crate::api::misc_example::WeekdaysTwinNormal>
