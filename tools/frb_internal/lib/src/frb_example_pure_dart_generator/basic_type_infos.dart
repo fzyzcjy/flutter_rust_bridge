@@ -51,15 +51,14 @@ final kBasicTypes = [
   ),
   BasicTypeInfo(
     rustTypeName: 'i64',
-    // dartTypeName: 'BigInt',
-    dartTypeName: 'int',
+    dartTypeName: 'PlatformInt64',
     listName: 'Int64List',
     interestRawValues: [
-      '0',
-      '-9007199254740992',
-      '9007199254740992',
-      '-9223372036854775808',
-      '9223372036854775807',
+      _platformInt64('0'),
+      _platformInt64('-9007199254740992'),
+      _platformInt64('9007199254740992'),
+      _platformInt64('-9223372036854775808'),
+      _platformInt64('9223372036854775807'),
     ],
     listWrapper: _defaultPrimitiveListWrapper,
     // primitiveWrapper: (_, x) => 'BigInt.parse("$x")',
@@ -125,9 +124,14 @@ final kBasicTypes = [
   ),
   BasicTypeInfo(
     rustTypeName: 'isize',
-    dartTypeName: 'int',
+    dartTypeName: 'PlatformInt64',
     enableList: false,
-    interestRawValues: ['0', '-2147483648', '2147483647'],
+    interestRawValues: [
+      _platformInt64('0'),
+      _platformInt64('-2147483648'),
+      _platformInt64('2147483647'),
+      // TODO more test
+    ],
     listWrapper: _defaultPrimitiveListWrapper,
   ),
   BasicTypeInfo(
@@ -137,6 +141,7 @@ final kBasicTypes = [
     interestRawValues: [
       _bigInt('0'),
       _bigInt('4294967295'),
+      // TODO more test
     ],
     listWrapper: _defaultPrimitiveListWrapper,
   ),
@@ -208,3 +213,5 @@ final kBasicTypes = [
 ];
 
 String _bigInt(String raw) => 'BigInt.parse("$raw")';
+
+String _platformInt64(String raw) => 'PlatformInt64.parse("$raw")';

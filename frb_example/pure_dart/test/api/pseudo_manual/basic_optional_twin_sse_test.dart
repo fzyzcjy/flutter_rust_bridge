@@ -23,13 +23,14 @@ Future<void> main({bool skipRustLibInit = false}) async {
         exampleBasicOptionalTypeI16TwinSse, <int?>[null, 0, -32768, 32767]);
     addTestsIdentityFunctionCall(exampleBasicOptionalTypeI32TwinSse,
         <int?>[null, 0, -2147483648, 2147483647]);
-    addTestsIdentityFunctionCall(exampleBasicOptionalTypeI64TwinSse, <int?>[
+    addTestsIdentityFunctionCall(
+        exampleBasicOptionalTypeI64TwinSse, <PlatformInt64?>[
       null,
-      0,
-      -9007199254740992,
-      9007199254740992,
-      -9223372036854775808,
-      9223372036854775807
+      PlatformInt64.parse("0"),
+      PlatformInt64.parse("-9007199254740992"),
+      PlatformInt64.parse("9007199254740992"),
+      PlatformInt64.parse("-9223372036854775808"),
+      PlatformInt64.parse("9223372036854775807")
     ]);
     addTestsIdentityFunctionCall(exampleBasicOptionalTypeI128TwinSse, <BigInt?>[
       null,
@@ -61,8 +62,13 @@ Future<void> main({bool skipRustLibInit = false}) async {
       BigInt.parse("18446744073709551615"),
       BigInt.parse("340282366920938463463374607431768211455")
     ]);
-    addTestsIdentityFunctionCall(exampleBasicOptionalTypeIsizeTwinSse,
-        <int?>[null, 0, -2147483648, 2147483647]);
+    addTestsIdentityFunctionCall(
+        exampleBasicOptionalTypeIsizeTwinSse, <PlatformInt64?>[
+      null,
+      PlatformInt64.parse("0"),
+      PlatformInt64.parse("-2147483648"),
+      PlatformInt64.parse("2147483647")
+    ]);
     addTestsIdentityFunctionCall(exampleBasicOptionalTypeUsizeTwinSse,
         <BigInt?>[null, BigInt.parse("0"), BigInt.parse("4294967295")]);
     addTestsIdentityFunctionCall(

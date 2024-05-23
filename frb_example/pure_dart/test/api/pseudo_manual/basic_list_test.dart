@@ -34,11 +34,11 @@ Future<void> main({bool skipRustLibInit = false}) async {
     ]);
     addTestsIdentityFunctionCall(exampleBasicListTypeI64TwinNormal, <Int64List>[
       Int64List.fromList([]),
-      Int64List.fromList([0]),
-      Int64List.fromList([-9007199254740992]),
-      Int64List.fromList([9007199254740992]),
-      Int64List.fromList([-9223372036854775808]),
-      Int64List.fromList([9223372036854775807])
+      Int64List.fromList([PlatformInt64.parse("0")]),
+      Int64List.fromList([PlatformInt64.parse("-9007199254740992")]),
+      Int64List.fromList([PlatformInt64.parse("9007199254740992")]),
+      Int64List.fromList([PlatformInt64.parse("-9223372036854775808")]),
+      Int64List.fromList([PlatformInt64.parse("9223372036854775807")])
     ]);
     addTestsIdentityFunctionCall(
         exampleBasicListTypeI128TwinNormal, <List<BigInt>>[

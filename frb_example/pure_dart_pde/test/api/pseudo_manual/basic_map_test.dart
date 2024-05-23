@@ -35,13 +35,13 @@ Future<void> main({bool skipRustLibInit = false}) async {
       {42: 2147483647}
     ]);
     addTestsIdentityFunctionCall(
-        exampleBasicMapTypeI64TwinNormal, <Map<int, int>>[
+        exampleBasicMapTypeI64TwinNormal, <Map<int, PlatformInt64>>[
       {},
-      {42: 0},
-      {42: -9007199254740992},
-      {42: 9007199254740992},
-      {42: -9223372036854775808},
-      {42: 9223372036854775807}
+      {42: PlatformInt64.parse("0")},
+      {42: PlatformInt64.parse("-9007199254740992")},
+      {42: PlatformInt64.parse("9007199254740992")},
+      {42: PlatformInt64.parse("-9223372036854775808")},
+      {42: PlatformInt64.parse("9223372036854775807")}
     ]);
     addTestsIdentityFunctionCall(
         exampleBasicMapTypeI128TwinNormal, <Map<int, BigInt>>[
@@ -89,11 +89,11 @@ Future<void> main({bool skipRustLibInit = false}) async {
       {42: BigInt.parse("340282366920938463463374607431768211455")}
     ]);
     addTestsIdentityFunctionCall(
-        exampleBasicMapTypeIsizeTwinNormal, <Map<int, int>>[
+        exampleBasicMapTypeIsizeTwinNormal, <Map<int, PlatformInt64>>[
       {},
-      {42: 0},
-      {42: -2147483648},
-      {42: 2147483647}
+      {42: PlatformInt64.parse("0")},
+      {42: PlatformInt64.parse("-2147483648")},
+      {42: PlatformInt64.parse("2147483647")}
     ]);
     addTestsIdentityFunctionCall(
         exampleBasicMapTypeUsizeTwinNormal, <Map<int, BigInt>>[
