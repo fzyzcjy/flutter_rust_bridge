@@ -33,6 +33,12 @@ pub fn example_basic_optional_type_i64_twin_sync_sse(arg: Option<i64>) -> Option
 
 #[flutter_rust_bridge::frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]
+pub fn example_basic_optional_type_i128_twin_sync_sse(arg: Option<i128>) -> Option<i128> {
+    arg
+}
+
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
 pub fn example_basic_optional_type_u8_twin_sync_sse(arg: Option<u8>) -> Option<u8> {
     arg
 }
@@ -52,6 +58,12 @@ pub fn example_basic_optional_type_u32_twin_sync_sse(arg: Option<u32>) -> Option
 #[flutter_rust_bridge::frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]
 pub fn example_basic_optional_type_u64_twin_sync_sse(arg: Option<u64>) -> Option<u64> {
+    arg
+}
+
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn example_basic_optional_type_u128_twin_sync_sse(arg: Option<u128>) -> Option<u128> {
     arg
 }
 

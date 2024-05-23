@@ -37,6 +37,13 @@ pub async fn example_basic_map_type_i64_twin_rust_async_sse(
 }
 
 #[flutter_rust_bridge::frb(serialize)]
+pub async fn example_basic_map_type_i128_twin_rust_async_sse(
+    arg: HashMap<i32, i128>,
+) -> HashMap<i32, i128> {
+    arg
+}
+
+#[flutter_rust_bridge::frb(serialize)]
 pub async fn example_basic_map_type_u8_twin_rust_async_sse(
     arg: HashMap<i32, u8>,
 ) -> HashMap<i32, u8> {
@@ -61,6 +68,13 @@ pub async fn example_basic_map_type_u32_twin_rust_async_sse(
 pub async fn example_basic_map_type_u64_twin_rust_async_sse(
     arg: HashMap<i32, u64>,
 ) -> HashMap<i32, u64> {
+    arg
+}
+
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn example_basic_map_type_u128_twin_rust_async_sse(
+    arg: HashMap<i32, u128>,
+) -> HashMap<i32, u128> {
     arg
 }
 

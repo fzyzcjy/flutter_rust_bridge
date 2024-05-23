@@ -44,6 +44,17 @@ Future<void> main({bool skipRustLibInit = false}) async {
       {42: -9007199254740992},
       {42: 9007199254740992}
     ]);
+    addTestsIdentityFunctionCall(
+        exampleBasicMapTypeI128TwinSync, <Map<int, BigInt>>[
+      {},
+      {42: 0},
+      {42: -9007199254740992},
+      {42: 9007199254740992},
+      {42: -9223372036854775808},
+      {42: 9223372036854775807},
+      {42: -170141183460469231731687303715884105728},
+      {42: 170141183460469231731687303715884105727}
+    ]);
     addTestsIdentityFunctionCall(exampleBasicMapTypeU8TwinSync, <Map<int, int>>[
       {},
       {42: 0},
@@ -66,6 +77,14 @@ Future<void> main({bool skipRustLibInit = false}) async {
       {},
       {42: 0},
       {42: 9007199254740992}
+    ]);
+    addTestsIdentityFunctionCall(
+        exampleBasicMapTypeU128TwinSync, <Map<int, BigInt>>[
+      {},
+      {42: 0},
+      {42: 9007199254740992},
+      {42: 18446744073709551615},
+      {42: 340282366920938463463374607431768211455}
     ]);
     addTestsIdentityFunctionCall(
         exampleBasicMapTypeIsizeTwinSync, <Map<int, int>>[

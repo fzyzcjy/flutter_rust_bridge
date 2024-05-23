@@ -26,6 +26,17 @@ Future<void> main({bool skipRustLibInit = false}) async {
     addTestsIdentityFunctionCall(exampleBasicOptionalTypeI64TwinSync,
         <int?>[null, 0, -9007199254740992, 9007199254740992]);
     addTestsIdentityFunctionCall(
+        exampleBasicOptionalTypeI128TwinSync, <BigInt?>[
+      null,
+      0,
+      -9007199254740992,
+      9007199254740992,
+      -9223372036854775808,
+      9223372036854775807,
+      -170141183460469231731687303715884105728,
+      170141183460469231731687303715884105727
+    ]);
+    addTestsIdentityFunctionCall(
         exampleBasicOptionalTypeU8TwinSync, <int?>[null, 0, 255]);
     addTestsIdentityFunctionCall(
         exampleBasicOptionalTypeU16TwinSync, <int?>[null, 0, 65535]);
@@ -33,6 +44,14 @@ Future<void> main({bool skipRustLibInit = false}) async {
         exampleBasicOptionalTypeU32TwinSync, <int?>[null, 0, 4294967295]);
     addTestsIdentityFunctionCall(
         exampleBasicOptionalTypeU64TwinSync, <int?>[null, 0, 9007199254740992]);
+    addTestsIdentityFunctionCall(
+        exampleBasicOptionalTypeU128TwinSync, <BigInt?>[
+      null,
+      0,
+      9007199254740992,
+      18446744073709551615,
+      340282366920938463463374607431768211455
+    ]);
     addTestsIdentityFunctionCall(exampleBasicOptionalTypeIsizeTwinSync,
         <int?>[null, 0, -2147483648, 2147483647]);
     addTestsIdentityFunctionCall(

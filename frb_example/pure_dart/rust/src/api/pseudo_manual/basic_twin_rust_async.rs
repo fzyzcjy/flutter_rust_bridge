@@ -36,6 +36,10 @@ pub async fn example_basic_type_i64_twin_rust_async(arg: i64) -> i64 {
     arg
 }
 
+pub async fn example_basic_type_i128_twin_rust_async(arg: i128) -> i128 {
+    arg
+}
+
 pub async fn example_basic_type_u8_twin_rust_async(arg: u8) -> u8 {
     arg
 }
@@ -49,6 +53,10 @@ pub async fn example_basic_type_u32_twin_rust_async(arg: u32) -> u32 {
 }
 
 pub async fn example_basic_type_u64_twin_rust_async(arg: u64) -> u64 {
+    arg
+}
+
+pub async fn example_basic_type_u128_twin_rust_async(arg: u128) -> u128 {
     arg
 }
 

@@ -19,6 +19,10 @@ pub fn example_basic_list_type_i64_twin_normal(arg: Vec<i64>) -> Vec<i64> {
     arg
 }
 
+pub fn example_basic_list_type_i128_twin_normal(arg: Vec<i128>) -> Vec<i128> {
+    arg
+}
+
 pub fn example_basic_list_type_u8_twin_normal(arg: Vec<u8>) -> Vec<u8> {
     arg
 }
@@ -32,6 +36,10 @@ pub fn example_basic_list_type_u32_twin_normal(arg: Vec<u32>) -> Vec<u32> {
 }
 
 pub fn example_basic_list_type_u64_twin_normal(arg: Vec<u64>) -> Vec<u64> {
+    arg
+}
+
+pub fn example_basic_list_type_u128_twin_normal(arg: Vec<u128>) -> Vec<u128> {
     arg
 }
 
