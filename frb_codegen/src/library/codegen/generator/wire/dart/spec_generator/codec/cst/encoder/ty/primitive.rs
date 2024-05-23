@@ -26,7 +26,10 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for PrimitiveWireDartCodecCstGene
 
     fn dart_wire_type(&self, target: Target) -> String {
         match &self.ir {
-            IrTypePrimitive::I64 | IrTypePrimitive::U64 => match target {
+            IrTypePrimitive::I64
+            | IrTypePrimitive::U64
+            | IrTypePrimitive::Isize
+            | IrTypePrimitive::Usize => match target {
                 Target::Io => "int".into(),
                 Target::Web => "Object".into(),
             },
