@@ -20,7 +20,7 @@ class StructInMiscNoTwinExampleA extends RustOpaque {
   StructInMiscNoTwinExampleA.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  StructInMiscNoTwinExampleA.sseDecode(int ptr, int externalSizeOnNative)
+  StructInMiscNoTwinExampleA.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -43,7 +43,7 @@ class StructWithImplBlockInMultiFile extends RustOpaque {
   StructWithImplBlockInMultiFile.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  StructWithImplBlockInMultiFile.sseDecode(int ptr, int externalSizeOnNative)
+  StructWithImplBlockInMultiFile.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(

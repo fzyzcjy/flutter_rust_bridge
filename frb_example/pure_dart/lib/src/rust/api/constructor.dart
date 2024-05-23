@@ -12,7 +12,8 @@ class ConstructorOpaqueStructTwinNormal extends RustOpaque {
   ConstructorOpaqueStructTwinNormal.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  ConstructorOpaqueStructTwinNormal.sseDecode(int ptr, int externalSizeOnNative)
+  ConstructorOpaqueStructTwinNormal.sseDecode(
+      BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -42,7 +43,7 @@ class ConstructorOpaqueSyncStructTwinNormal extends RustOpaque {
       : super.dcoDecode(wire, _kStaticData);
 
   ConstructorOpaqueSyncStructTwinNormal.sseDecode(
-      int ptr, int externalSizeOnNative)
+      BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(

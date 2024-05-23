@@ -32,7 +32,7 @@ class FrbOpaqueSyncReturnTwinNormal extends RustOpaque {
   FrbOpaqueSyncReturnTwinNormal.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  FrbOpaqueSyncReturnTwinNormal.sseDecode(int ptr, int externalSizeOnNative)
+  FrbOpaqueSyncReturnTwinNormal.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -51,7 +51,7 @@ class HideDataAnotherTwinNormal extends RustOpaque {
   HideDataAnotherTwinNormal.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  HideDataAnotherTwinNormal.sseDecode(int ptr, int externalSizeOnNative)
+  HideDataAnotherTwinNormal.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
