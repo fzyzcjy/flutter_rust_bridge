@@ -29,8 +29,8 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::Time(ir) => match ir {
                     IrTypeDelegateTime::Utc
                     | IrTypeDelegateTime::Local
-                    | IrTypeDelegateTime::Naive => "BigInt.from(self.microsecondsSinceEpoch)".to_owned(),
-                    IrTypeDelegateTime::Duration => "BigInt.from(self.inMicroseconds)".to_owned(),
+                    | IrTypeDelegateTime::Naive => "PlatformInt64Util.from(self.microsecondsSinceEpoch)".to_owned(),
+                    IrTypeDelegateTime::Duration => "PlatformInt64Util.from(self.inMicroseconds)".to_owned(),
                 },
                 IrTypeDelegate::Uuid => "self.toBytes()".to_owned(),
                 IrTypeDelegate::StreamSink(ir) => {
