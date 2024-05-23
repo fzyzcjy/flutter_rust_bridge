@@ -158,6 +158,7 @@ final kBasicTypes = [
       RawValue(_platformInt64('0')),
       RawValue(_platformInt64('-2147483648')),
       RawValue(_platformInt64('2147483647')),
+      // NOTE web is currently 32bit, thus `isize`/`usize` is 32 bit
       RawValue(_platformInt64('-9007199254740992'), nonWebOnly: true),
       RawValue(_platformInt64('9007199254740992'), nonWebOnly: true),
       RawValue(_platformInt64('-9223372036854775808'), nonWebOnly: true),
