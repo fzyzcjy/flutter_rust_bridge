@@ -15,7 +15,11 @@ Future<void> main() async {
   });
   print('Action: Configure tests (end)');
 
-  test('handleCharTwinNormal', () async {
-    expect(await handleCharTwinNormal(arg: "a"), "a");
+  test('hi', () async {
+    expect(
+        await exampleBasicTypeU64TwinNormal(
+            arg: BigInt.parse('18446744073709551615'),
+            expect: '18446744073709551615'),
+        BigInt.parse('18446744073709551615'));
   });
 }
