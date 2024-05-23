@@ -6,6 +6,7 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::IrTypeTrait;
 use IrTypePrimitive::Unit;
+use crate::codegen::ir::ty::primitive::IrTypePrimitive::{I64, Isize};
 
 impl<'a> WireRustCodecCstGeneratorDecoderTrait for PrimitiveWireRustCodecCstGenerator<'a> {
     fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
@@ -20,7 +21,8 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for PrimitiveWireRustCodecCstGene
         Some(match &self.ir {
             Unit => return None,
             Bool => "self.is_truthy()".into(),
-            I64 | U64 | Isize | Usize => "self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::BigInt>().unwrap()".into(),
+            I64 | Isize => "::std::convert::TryInto::try_into::<i64>(self).unwrap() as _".into(),
+            U64 | Usize => "::std::convert::TryInto::try_into::<u64>(self).unwrap() as _".into(),
             _ => "self.unchecked_into_f64() as _".into(),
         })
     }
