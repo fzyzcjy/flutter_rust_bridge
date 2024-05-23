@@ -6,5 +6,5 @@ export 'src/dart_opaque/_io.dart';
 export 'src/droppable/_io.dart' show CrossPlatformFinalizerArg;
 export 'src/generalized_uint8list/_io.dart';
 export 'src/manual_impl/_io.dart';
-export 'src/platform_types/_io.dart';
+export 'src/platform_types/_io.dart' hide PlatformInt64;
 export 'src/platform_utils/_io.dart';
