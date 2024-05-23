@@ -43,7 +43,7 @@ impl CstDecode<i32> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValu
 impl CstDecode<i64> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> i64 {
-        ::std::convert::TryInto::try_into::<i64>(self).unwrap() as _
+        ::std::convert::TryInto::<i64>::try_into(self).unwrap() as _
     }
 }
 impl CstDecode<Vec<u8>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
@@ -57,7 +57,7 @@ impl CstDecode<Vec<u8>> for flutter_rust_bridge::for_generated::wasm_bindgen::Js
 impl CstDecode<u64> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> u64 {
-        ::std::convert::TryInto::try_into::<u64>(self).unwrap() as _
+        ::std::convert::TryInto::<u64>::try_into(self).unwrap() as _
     }
 }
 impl CstDecode<u8> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
