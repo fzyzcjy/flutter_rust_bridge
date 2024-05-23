@@ -10,7 +10,13 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for PrimitiveWireDartCodecCstGene
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {
         match self.ir {
             IrTypePrimitive::I64 | IrTypePrimitive::U64 => Acc {
-                io: Some("return raw.toInt();".into()),
+                io: Some(match self.ir {
+                    IrTypePrimitive::I64 => "return raw.toInt();".into(),
+                    IrTypePrimitive::U64 => "return raw.toSigned(64).toInt();".into(),
+                    // frb-coverage:ignore-start
+                    _ => unreachable!(),
+                    // frb-coverage:ignore-end
+                }),
                 web: Some("return castNativeBigInt(raw);".into()),
                 ..Default::default()
             },

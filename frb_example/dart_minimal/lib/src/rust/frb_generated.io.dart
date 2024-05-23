@@ -87,7 +87,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   int cst_encode_u_64(BigInt raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.toInt();
+    return raw.toSigned(64).toInt();
   }
 
   @protected
