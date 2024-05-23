@@ -179,7 +179,7 @@ class WriteBuffer {
   void putUint64List(Uint64List list) {
     assert(!_isDone);
     for (final value in list) {
-      putUint64(value.toInt());
+      putBigUint64(value);
     }
   }
 
@@ -207,7 +207,7 @@ class WriteBuffer {
     assert(!_isDone);
     // _alignTo(8);
     for (final value in list) {
-      putInt64(value.toInt());
+      putBigInt64(value);
     }
   }
 
