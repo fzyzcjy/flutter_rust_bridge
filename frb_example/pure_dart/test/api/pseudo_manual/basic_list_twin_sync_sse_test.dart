@@ -83,7 +83,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
       Uint64List(1)..[0] = BigInt.parse("9223372036854775807"),
       Uint64List(1)..[0] = BigInt.parse("9223372036854775808"),
       Uint64List(1)..[0] = BigInt.parse("18446744073709551615"),
-      Uint64List(1)..[0] = BigInt.parse("12345678901234456789")
+      Uint64List(1)..[0] = BigInt.parse("12345678912345678913")
     ]);
     addTestsIdentityFunctionCall(
         exampleBasicListTypeF32TwinSyncSse, <Float32List>[
