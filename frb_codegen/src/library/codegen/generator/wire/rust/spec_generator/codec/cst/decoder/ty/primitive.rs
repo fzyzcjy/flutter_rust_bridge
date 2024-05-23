@@ -1,8 +1,10 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::*;
+use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::misc::JS_VALUE;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
+use crate::codegen::ir::ty::primitive::IrTypePrimitive::{Isize, Usize, I64, U64};
 use crate::codegen::ir::ty::IrTypeTrait;
 use IrTypePrimitive::Unit;
 
@@ -25,6 +27,12 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for PrimitiveWireRustCodecCstGene
     }
 
     fn rust_wire_type(&self, _target: Target) -> String {
+        use IrTypePrimitive::*;
+        if let Target::Web = target
+            && matches!(self.ir.primitive, I64 | U64 | Isize | Usize)
+        {
+            return JS_VALUE.into();
+        }
         self.ir.rust_api_type()
     }
 }
