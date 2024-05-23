@@ -1,5 +1,5 @@
 use crate::codegen::generator::api_dart::spec_generator::base::*;
-use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegateArrayMode, IrTypeDelegateBigPrimitive, IrTypeDelegatePrimitiveEnum, IrTypeDelegateTime};
+use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegateArrayMode, IrTypeDelegatePrimitiveEnum, IrTypeDelegateTime};
 use crate::codegen::ir::ty::general_list::IrTypeGeneralList;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
