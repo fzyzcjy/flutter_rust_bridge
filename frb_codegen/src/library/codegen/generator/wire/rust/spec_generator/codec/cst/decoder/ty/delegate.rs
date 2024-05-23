@@ -94,6 +94,11 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
                 io: Some("let raw: String = self.cst_decode(); StreamSink::deserialize(raw)".into()),
                 ..Default::default()
             },
+            IrTypeDelegate::BigPrimitive(_) => Acc::distribute(
+                Some(
+                    "CstDecode::<String>::cst_decode(self).parse().unwrap()".into(),
+                ),
+            ),
         }
     }
 
@@ -126,6 +131,11 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
             IrTypeDelegate::Map(ir) => generate_decode_map(ir).into(),
             IrTypeDelegate::Set(ir) => generate_decode_set(ir).into(),
             IrTypeDelegate::StreamSink(_) => "StreamSink::deserialize(self.as_string().expect(\"should be a string\"))".into(),
+            IrTypeDelegate::BigPrimitive(_) => Acc::distribute(
+                Some(
+                    "CstDecode::<String>::cst_decode(self).parse().unwrap()".into(),
+                ),
+            ),
         })
     }
 
