@@ -171,8 +171,8 @@ impl IrTypeTrait for IrTypeDelegate {
                 )
             }
             IrTypeDelegate::BigPrimitive(ir) => match ir {
-                IrTypeDelegateBigPrimitive::I128 => "i128",
-                IrTypeDelegateBigPrimitive::U128 => "u128",
+                IrTypeDelegateBigPrimitive::I128 => "i128".to_owned(),
+                IrTypeDelegateBigPrimitive::U128 => "u128".to_owned(),
             },
         }
     }
