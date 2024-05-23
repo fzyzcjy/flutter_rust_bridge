@@ -19,7 +19,7 @@ abstract class _TypedArray {
 }
 
 extension on _TypedArray {
-  operator []=(int index, value) {
+  operator []=(int index, Object? value) {
     setProperty(this, index, value);
   }
 }
@@ -75,7 +75,7 @@ abstract class BigUint64Array extends _TypedArray {
 /// Helpful if the array needs to accept multiple types.
 abstract class _SetAnyListMixin<T> extends ListMixin<T> {
   @override
-  void operator []=(int index, dynamic value) {
+  void operator []=(int index, Object? value) {
     this[index] = value;
   }
 }
@@ -87,7 +87,7 @@ abstract class _TypedList<T> extends _SetAnyListMixin<T> {
   T _js2dart(Object? value);
 
   /// How to convert a Dart integer-like value to an acceptable JS value.
-  dynamic _dart2js(Object? value);
+  Object? _dart2js(Object? value);
 
   @override
   T operator [](int index) => _js2dart(inner.at(index));
@@ -124,7 +124,7 @@ class Int64List extends _TypedList<BigInt> {
   BigInt _js2dart(Object? value) => jsBigIntToDartBigInt(value!);
 
   @override
-  dynamic _dart2js(Object? value) => _convertBigIntToJs(value!);
+  Object? _dart2js(Object? value) => _convertBigIntToJs(value!);
 
   /// Construct a list
   factory Int64List(int length) => Int64List.from(BigInt64Array(length));
@@ -155,7 +155,7 @@ class Uint64List extends _TypedList<BigInt> {
   BigInt _js2dart(Object? value) => jsBigIntToDartBigInt(value!);
 
   @override
-  dynamic _dart2js(Object? value) => _convertBigIntToJs(value!);
+  Object? _dart2js(Object? value) => _convertBigIntToJs(value!);
 
   /// Construct a list
   factory Uint64List(int length) => Uint64List.from(BigUint64Array(length));
