@@ -9,6 +9,12 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 Future<int> minimalAdder({required int a, required int b, dynamic hint}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b, hint: hint);
 
-Future<String> handleCharTwinNormal({required String arg, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiMinimalHandleCharTwinNormal(arg: arg, hint: hint);
+Future<PlatformInt64> exampleBasicTypeI64TwinNormal(
+        {required PlatformInt64 arg, required String expect, dynamic hint}) =>
+    RustLib.instance.api.crateApiMinimalExampleBasicTypeI64TwinNormal(
+        arg: arg, expect: expect, hint: hint);
+
+Future<BigInt> exampleBasicTypeU64TwinNormal(
+        {required BigInt arg, required String expect, dynamic hint}) =>
+    RustLib.instance.api.crateApiMinimalExampleBasicTypeU64TwinNormal(
+        arg: arg, expect: expect, hint: hint);
