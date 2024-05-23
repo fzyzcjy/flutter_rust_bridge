@@ -101,8 +101,7 @@ final kBasicTypes = [
   ),
   BasicTypeInfo(
     rustTypeName: 'u64',
-    // dartTypeName: 'BigInt',
-    dartTypeName: 'int',
+    dartTypeName: 'BigInt',
     listName: 'Uint64List',
     interestRawValues: [
       _bigInt('0'),
@@ -133,9 +132,12 @@ final kBasicTypes = [
   ),
   BasicTypeInfo(
     rustTypeName: 'usize',
-    dartTypeName: 'int',
+    dartTypeName: 'BigInt',
     enableList: false,
-    interestRawValues: ['0', '4294967295'],
+    interestRawValues: [
+      _bigInt('0'),
+      _bigInt('4294967295'),
+    ],
     listWrapper: _defaultPrimitiveListWrapper,
   ),
   BasicTypeInfo(

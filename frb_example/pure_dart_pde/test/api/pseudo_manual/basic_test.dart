@@ -39,7 +39,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
         exampleBasicTypeU16TwinNormal, <int>[0, 65535]);
     addTestsIdentityFunctionCall(
         exampleBasicTypeU32TwinNormal, <int>[0, 4294967295]);
-    addTestsIdentityFunctionCall(exampleBasicTypeU64TwinNormal, <int>[
+    addTestsIdentityFunctionCall(exampleBasicTypeU64TwinNormal, <BigInt>[
       BigInt.parse("0"),
       BigInt.parse("9007199254740992"),
       BigInt.parse("9223372036854775807"),
@@ -53,8 +53,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     ]);
     addTestsIdentityFunctionCall(
         exampleBasicTypeIsizeTwinNormal, <int>[0, -2147483648, 2147483647]);
-    addTestsIdentityFunctionCall(
-        exampleBasicTypeUsizeTwinNormal, <int>[0, 4294967295]);
+    addTestsIdentityFunctionCall(exampleBasicTypeUsizeTwinNormal,
+        <BigInt>[BigInt.parse("0"), BigInt.parse("4294967295")]);
     addTestsIdentityFunctionCall(
         exampleBasicTypeF32TwinNormal, <double>[0, -42.5, 123456]);
     addTestsIdentityFunctionCall(

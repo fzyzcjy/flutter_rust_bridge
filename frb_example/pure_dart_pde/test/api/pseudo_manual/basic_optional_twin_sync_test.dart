@@ -48,7 +48,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
         exampleBasicOptionalTypeU16TwinSync, <int?>[null, 0, 65535]);
     addTestsIdentityFunctionCall(
         exampleBasicOptionalTypeU32TwinSync, <int?>[null, 0, 4294967295]);
-    addTestsIdentityFunctionCall(exampleBasicOptionalTypeU64TwinSync, <int?>[
+    addTestsIdentityFunctionCall(exampleBasicOptionalTypeU64TwinSync, <BigInt?>[
       null,
       BigInt.parse("0"),
       BigInt.parse("9007199254740992"),
@@ -65,8 +65,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     ]);
     addTestsIdentityFunctionCall(exampleBasicOptionalTypeIsizeTwinSync,
         <int?>[null, 0, -2147483648, 2147483647]);
-    addTestsIdentityFunctionCall(
-        exampleBasicOptionalTypeUsizeTwinSync, <int?>[null, 0, 4294967295]);
+    addTestsIdentityFunctionCall(exampleBasicOptionalTypeUsizeTwinSync,
+        <BigInt?>[null, BigInt.parse("0"), BigInt.parse("4294967295")]);
     addTestsIdentityFunctionCall(
         exampleBasicOptionalTypeF32TwinSync, <double?>[null, 0, -42.5, 123456]);
     addTestsIdentityFunctionCall(
