@@ -2798,9 +2798,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<Object> dco_decode_list_DartOpaque(dynamic raw);
 
   @protected
-  List<BigInt> dco_decode_list_I128(dynamic raw);
-
-  @protected
   List<HideDataTwinNormal> dco_decode_list_RustOpaque_HideDataTwinNormal(
       dynamic raw);
 
@@ -2817,9 +2814,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<String> dco_decode_list_String(dynamic raw);
-
-  @protected
-  List<BigInt> dco_decode_list_U128(dynamic raw);
 
   @protected
   List<UuidValue> dco_decode_list_Uuid(dynamic raw);
@@ -6818,9 +6812,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<Object> sse_decode_list_DartOpaque(SseDeserializer deserializer);
 
   @protected
-  List<BigInt> sse_decode_list_I128(SseDeserializer deserializer);
-
-  @protected
   List<HideDataTwinNormal> sse_decode_list_RustOpaque_HideDataTwinNormal(
       SseDeserializer deserializer);
 
@@ -6838,9 +6829,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<String> sse_decode_list_String(SseDeserializer deserializer);
-
-  @protected
-  List<BigInt> sse_decode_list_U128(SseDeserializer deserializer);
 
   @protected
   List<UuidValue> sse_decode_list_Uuid(SseDeserializer deserializer);
@@ -11031,9 +11019,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_list_DartOpaque(List<Object> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_list_I128(List<BigInt> self, SseSerializer serializer);
-
-  @protected
   void sse_encode_list_RustOpaque_HideDataTwinNormal(
       List<HideDataTwinNormal> self, SseSerializer serializer);
 
@@ -11051,9 +11036,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_list_String(List<String> self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_list_U128(List<BigInt> self, SseSerializer serializer);
 
   @protected
   void sse_encode_list_Uuid(List<UuidValue> self, SseSerializer serializer);

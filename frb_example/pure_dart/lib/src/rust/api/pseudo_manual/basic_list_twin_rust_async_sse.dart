@@ -31,12 +31,6 @@ Future<Int64List> exampleBasicListTypeI64TwinRustAsyncSse(
         .crateApiPseudoManualBasicListTwinRustAsyncSseExampleBasicListTypeI64TwinRustAsyncSse(
             arg: arg, hint: hint);
 
-Future<List<BigInt>> exampleBasicListTypeI128TwinRustAsyncSse(
-        {required List<BigInt> arg, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBasicListTwinRustAsyncSseExampleBasicListTypeI128TwinRustAsyncSse(
-            arg: arg, hint: hint);
-
 Future<Uint8List> exampleBasicListTypeU8TwinRustAsyncSse(
         {required List<int> arg, dynamic hint}) =>
     RustLib.instance.api
@@ -59,12 +53,6 @@ Future<Uint64List> exampleBasicListTypeU64TwinRustAsyncSse(
         {required Uint64List arg, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicListTwinRustAsyncSseExampleBasicListTypeU64TwinRustAsyncSse(
-            arg: arg, hint: hint);
-
-Future<List<BigInt>> exampleBasicListTypeU128TwinRustAsyncSse(
-        {required List<BigInt> arg, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBasicListTwinRustAsyncSseExampleBasicListTypeU128TwinRustAsyncSse(
             arg: arg, hint: hint);
 
 Future<Float32List> exampleBasicListTypeF32TwinRustAsyncSse(

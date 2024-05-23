@@ -31,12 +31,6 @@ Int64List exampleBasicListTypeI64TwinSync(
         .crateApiPseudoManualBasicListTwinSyncExampleBasicListTypeI64TwinSync(
             arg: arg, hint: hint);
 
-List<BigInt> exampleBasicListTypeI128TwinSync(
-        {required List<BigInt> arg, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBasicListTwinSyncExampleBasicListTypeI128TwinSync(
-            arg: arg, hint: hint);
-
 Uint8List exampleBasicListTypeU8TwinSync(
         {required List<int> arg, dynamic hint}) =>
     RustLib.instance.api
@@ -59,12 +53,6 @@ Uint64List exampleBasicListTypeU64TwinSync(
         {required Uint64List arg, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicListTwinSyncExampleBasicListTypeU64TwinSync(
-            arg: arg, hint: hint);
-
-List<BigInt> exampleBasicListTypeU128TwinSync(
-        {required List<BigInt> arg, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBasicListTwinSyncExampleBasicListTypeU128TwinSync(
             arg: arg, hint: hint);
 
 Float32List exampleBasicListTypeF32TwinSync(

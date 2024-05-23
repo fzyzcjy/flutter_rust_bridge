@@ -31,12 +31,6 @@ Future<Int64List> exampleBasicListTypeI64TwinNormal(
         .crateApiPseudoManualBasicListExampleBasicListTypeI64TwinNormal(
             arg: arg, hint: hint);
 
-Future<List<BigInt>> exampleBasicListTypeI128TwinNormal(
-        {required List<BigInt> arg, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBasicListExampleBasicListTypeI128TwinNormal(
-            arg: arg, hint: hint);
-
 Future<Uint8List> exampleBasicListTypeU8TwinNormal(
         {required List<int> arg, dynamic hint}) =>
     RustLib.instance.api
@@ -59,12 +53,6 @@ Future<Uint64List> exampleBasicListTypeU64TwinNormal(
         {required Uint64List arg, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicListExampleBasicListTypeU64TwinNormal(
-            arg: arg, hint: hint);
-
-Future<List<BigInt>> exampleBasicListTypeU128TwinNormal(
-        {required List<BigInt> arg, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBasicListExampleBasicListTypeU128TwinNormal(
             arg: arg, hint: hint);
 
 Future<Float32List> exampleBasicListTypeF32TwinNormal(
