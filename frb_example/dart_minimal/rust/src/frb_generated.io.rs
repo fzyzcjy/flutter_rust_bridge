@@ -157,7 +157,7 @@ pub extern "C" fn frbgen_frb_example_dart_minimal_cst_new_box_autoadd_item_conta
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_dart_minimal_cst_new_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(len: i32) -> *mut wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem{
-    let wrap = wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem { ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(<usize>::new_with_null_ptr(), len), len };
+    let wrap = wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem { ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len), len };
     flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
 }
 

@@ -145,8 +145,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
         .cst_new_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
             raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      cst_api_fill_to_wire_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
-          raw[i], ans.ref.ptr[i]);
+      ans.ref.ptr[i] =
+          cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+              raw[i]);
     }
     return ans;
   }
