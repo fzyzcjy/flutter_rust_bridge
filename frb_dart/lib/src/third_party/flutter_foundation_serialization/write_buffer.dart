@@ -258,7 +258,7 @@ class WriteBuffer {
 
 /// {@macro flutter_rust_bridge.internal}
 typedef WriteBufferRaw = ({
-PlatformGeneralizedUint8ListPtr ptr,
-int rustVecLen,
-int dataLen
+  PlatformGeneralizedUint8ListPtr ptr,
+  int rustVecLen,
+  int dataLen
 });
