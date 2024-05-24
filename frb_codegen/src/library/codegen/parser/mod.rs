@@ -147,7 +147,14 @@ fn parse_ir_funcs(
         .flatten()
         .collect_vec();
 
-    let ir_funcs_auto_accessor = parse_auto_accessors(src_structs, type_parser, rust_input_paths, rust_crate_dir)?;
+    let ir_funcs_auto_accessor = parse_auto_accessors(
+        src_structs,
+        type_parser,
+        rust_input_paths,
+        rust_crate_dir,
+        config.default_stream_sink_codec,
+        config.default_rust_opaque_codec,
+    )?;
 
     Ok(concat([ir_funcs_normal, ir_funcs_auto_accessor])
         .into_iter()
