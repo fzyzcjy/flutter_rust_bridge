@@ -9,6 +9,7 @@ mod optional;
 mod primitive;
 mod primitive_list;
 mod record;
+mod rust_auto_opaque_explicit;
 mod rust_auto_opaque_implicit;
 mod rust_opaque;
 mod structure;
