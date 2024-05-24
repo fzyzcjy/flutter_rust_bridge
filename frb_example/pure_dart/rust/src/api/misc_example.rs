@@ -147,25 +147,25 @@ pub struct MySizeFreezedTwinNormal {
 pub(super) fn visibility_restricted_func_twin_normal() {}
 
 // #1937
-pub struct ItemContainer {
+pub struct ItemContainerSolutionOne {
     pub name: String,
-    items: Vec<OpaqueItem>,
+    items: Vec<RustAutoOpaque<OpaqueItem>>,
 }
 
 // Suppose this is opaque
 #[frb(opaque)]
 pub struct OpaqueItem(i32);
 
-impl ItemContainer {
+impl ItemContainerSolutionOne {
     #[frb(sync)]
     pub fn new() -> Self {
         Self {
             name: "hi".to_owned(),
-            items: vec![OpaqueItem(100)],
+            items: vec![RustAutoOpaque::new(OpaqueItem(100))],
         }
     }
 
     pub fn get_item_contents(&self) -> Vec<i32> {
-        self.items.iter().map(|x| x.0).collect()
+        self.items.iter().map(|x| x.try_read().unwrap().0).collect()
     }
 }
