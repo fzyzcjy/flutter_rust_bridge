@@ -11,7 +11,6 @@ import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/basic_list_twin
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 import '../../test_utils.dart';
-import 'dart:typed_data';
 import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/basic_twin_sync.dart';
 
 Future<void> main({bool skipRustLibInit = false}) async {

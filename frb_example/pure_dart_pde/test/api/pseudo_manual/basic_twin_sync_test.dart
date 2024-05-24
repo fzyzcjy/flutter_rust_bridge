@@ -11,7 +11,6 @@ import 'package:frb_example_pure_dart_pde/src/rust/api/pseudo_manual/basic_twin_
 import 'package:frb_example_pure_dart_pde/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 import '../../test_utils.dart';
-import 'dart:typed_data';
 
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();

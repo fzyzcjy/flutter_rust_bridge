@@ -65,7 +65,6 @@ String _generateBasicRelated(
 }) {
   final builder = DartFileBuilder(package, importName: 'basic$postfix');
   builder.imports += '''
-  import 'dart:typed_data';
   $imports
   ''';
   for (final ty in kBasicTypes) {
