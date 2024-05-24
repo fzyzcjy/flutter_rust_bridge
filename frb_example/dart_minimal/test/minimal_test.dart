@@ -15,11 +15,4 @@ Future<void> main() async {
     print('Action: Call rust (after)');
   });
   print('Action: Configure tests (end)');
-
-  test('hi', () async {
-    expect(
-        await exampleBasicListTypeU64TwinNormal(
-            arg: Uint64List(1)..[0] = BigInt.parse('18446744073709551615')),
-        [BigInt.parse('18446744073709551615')]);
-  });
 }
