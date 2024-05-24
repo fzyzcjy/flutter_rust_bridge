@@ -207,6 +207,12 @@ Future<void> rustAutoOpaqueExplicitStructTwinSse(
         .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueExplicitStructTwinSse(
             arg: arg, hint: hint);
 
+Future<StructWithExplicitAutoOpaqueFieldTwinSse>
+    rustAutoOpaqueExplicitReturnStructTwinSse({dynamic hint}) => RustLib
+        .instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueExplicitReturnStructTwinSse(
+            hint: hint);
+
 Future<NonCloneSimpleTwinSse> rustAutoOpaqueExplicitReturnTwinSse(
         {required int initial, dynamic hint}) =>
     RustLib.instance.api

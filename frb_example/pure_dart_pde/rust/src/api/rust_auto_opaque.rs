@@ -347,6 +347,16 @@ pub fn rust_auto_opaque_explicit_struct_twin_normal(
     assert_eq!((*arg.auto_opaque).try_read().unwrap().inner, arg.normal);
 }
 
+pub fn rust_auto_opaque_explicit_return_struct_twin_normal(
+) -> StructWithExplicitAutoOpaqueFieldTwinNormal {
+    StructWithExplicitAutoOpaqueFieldTwinNormal {
+        normal: 100,
+        auto_opaque: RustAutoOpaque::new(RustAutoOpaqueInner::new(RwLock::new(
+            NonCloneSimpleTwinNormal { inner: 100 },
+        ))),
+    }
+}
+
 pub fn rust_auto_opaque_explicit_return_twin_normal(
     initial: i32,
 ) -> RustAutoOpaque<NonCloneSimpleTwinNormal> {

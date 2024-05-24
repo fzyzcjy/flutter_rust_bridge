@@ -445,6 +445,18 @@ pub fn rust_auto_opaque_explicit_struct_twin_sync_sse(
 
 #[flutter_rust_bridge::frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_explicit_return_struct_twin_sync_sse(
+) -> StructWithExplicitAutoOpaqueFieldTwinSyncSse {
+    StructWithExplicitAutoOpaqueFieldTwinSyncSse {
+        normal: 100,
+        auto_opaque: RustAutoOpaque::new(RustAutoOpaqueInner::new(RwLock::new(
+            NonCloneSimpleTwinSyncSse { inner: 100 },
+        ))),
+    }
+}
+
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
 pub fn rust_auto_opaque_explicit_return_twin_sync_sse(
     initial: i32,
 ) -> RustAutoOpaque<NonCloneSimpleTwinSyncSse> {

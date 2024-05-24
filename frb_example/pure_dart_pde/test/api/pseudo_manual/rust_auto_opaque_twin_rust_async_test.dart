@@ -309,11 +309,17 @@ Future<void> main({bool skipRustLibInit = false}) async {
           rustAutoOpaqueExplicitArgTwinRustAsync(arg: obj, expect: 100));
     });
 
-    test('it can be inside a struct', () async {
+    test('it can be inside a struct used as argument', () async {
       final obj = await rustAutoOpaqueExplicitReturnTwinRustAsync(initial: 100);
       await futurizeVoidTwinRustAsync(rustAutoOpaqueExplicitStructTwinRustAsync(
           arg: StructWithExplicitAutoOpaqueFieldTwinRustAsync(
               autoOpaque: obj, normal: 100)));
+    });
+
+    test('it can be inside a struct used as return type', () async {
+      final obj = await rustAutoOpaqueExplicitReturnStructTwinRustAsync();
+      await futurizeVoidTwinRustAsync(
+          rustAutoOpaqueExplicitStructTwinRustAsync(arg: obj));
     });
 
     group('it can be used with automatic (implicit) ones', () {

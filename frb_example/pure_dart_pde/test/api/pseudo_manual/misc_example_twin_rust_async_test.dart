@@ -122,6 +122,27 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(structResp.width, 42 + 1000);
     expect(structResp.height, 100 + 10000);
   });
+
+  test('ItemContainerSolutionOne', () async {
+    final container = await ItemContainerSolutionOne.create();
+
+    expect(await container.getItemContents(), [100]);
+
+    // TODO
+    // expect(container.name, 'hi');
+    // container.name = 'hello';
+    // expect(container.name, 'hello');
+  });
+
+  test('ItemContainerSolutionTwo', () async {
+    final container = await ItemContainerSolutionTwo.create();
+
+    expect(await container.getItemContents(), [100]);
+
+    expect(container.name, 'hi');
+    container.name = 'hello';
+    expect(container.name, 'hello');
+  });
 }
 
 MyTreeNodeTwinRustAsync _createMyTreeNode({required int arrLen}) {

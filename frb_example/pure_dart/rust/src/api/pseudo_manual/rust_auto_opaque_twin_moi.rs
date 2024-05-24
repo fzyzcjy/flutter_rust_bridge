@@ -382,6 +382,17 @@ pub fn rust_auto_opaque_explicit_struct_twin_moi(arg: StructWithExplicitAutoOpaq
 }
 
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+pub fn rust_auto_opaque_explicit_return_struct_twin_moi() -> StructWithExplicitAutoOpaqueFieldTwinMoi
+{
+    StructWithExplicitAutoOpaqueFieldTwinMoi {
+        normal: 100,
+        auto_opaque: crate::frb_generated::RustAutoOpaqueMoi::new(RustAutoOpaqueInner::new(
+            RwLock::new(NonCloneSimpleTwinMoi { inner: 100 }),
+        )),
+    }
+}
+
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
 pub fn rust_auto_opaque_explicit_return_twin_moi(
     initial: i32,
 ) -> crate::frb_generated::RustAutoOpaqueMoi<NonCloneSimpleTwinMoi> {

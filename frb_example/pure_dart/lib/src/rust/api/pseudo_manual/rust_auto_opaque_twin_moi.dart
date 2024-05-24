@@ -206,6 +206,12 @@ Future<void> rustAutoOpaqueExplicitStructTwinMoi(
         .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueExplicitStructTwinMoi(
             arg: arg, hint: hint);
 
+Future<StructWithExplicitAutoOpaqueFieldTwinMoi>
+    rustAutoOpaqueExplicitReturnStructTwinMoi({dynamic hint}) => RustLib
+        .instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueExplicitReturnStructTwinMoi(
+            hint: hint);
+
 Future<NonCloneSimpleTwinMoi> rustAutoOpaqueExplicitReturnTwinMoi(
         {required int initial, dynamic hint}) =>
     RustLib.instance.api

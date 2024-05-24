@@ -304,8 +304,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
     test('it can be inside a struct used as return type', () async {
       final obj = await rustAutoOpaqueExplicitReturnStructTwinNormal();
-      await futurizeVoidTwinNormal(rustAutoOpaqueExplicitStructTwinNormal(
-          arg: obj));
+      await futurizeVoidTwinNormal(
+          rustAutoOpaqueExplicitStructTwinNormal(arg: obj));
     });
 
     group('it can be used with automatic (implicit) ones', () {

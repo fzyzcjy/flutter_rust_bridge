@@ -470,6 +470,18 @@ pub async fn rust_auto_opaque_explicit_struct_twin_rust_async_sse_moi(
 
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
 #[flutter_rust_bridge::frb(serialize)]
+pub async fn rust_auto_opaque_explicit_return_struct_twin_rust_async_sse_moi(
+) -> StructWithExplicitAutoOpaqueFieldTwinRustAsyncSseMoi {
+    StructWithExplicitAutoOpaqueFieldTwinRustAsyncSseMoi {
+        normal: 100,
+        auto_opaque: crate::frb_generated::RustAutoOpaqueMoi::new(RustAutoOpaqueInner::new(
+            RwLock::new(NonCloneSimpleTwinRustAsyncSseMoi { inner: 100 }),
+        )),
+    }
+}
+
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(serialize)]
 pub async fn rust_auto_opaque_explicit_return_twin_rust_async_sse_moi(
     initial: i32,
 ) -> crate::frb_generated::RustAutoOpaqueMoi<NonCloneSimpleTwinRustAsyncSseMoi> {

@@ -308,6 +308,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       get rust_arc_decrement_strong_count_NonCloneSimpleTwinSyncPtr => wire
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync;
 
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_OpaqueItemPtr =>
+      wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem;
+
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_OpaqueOneTwinNormalPtr => wire
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinNormal;
@@ -381,6 +384,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   AnyhowException dco_decode_AnyhowException(dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinNormal
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinRustAsync
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinSync
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+          dynamic raw);
+
+  @protected
+  OpaqueItem
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+          dynamic raw);
 
   @protected
   BoxFnStringString
@@ -485,6 +508,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   NonCloneSimpleTwinSync
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+          dynamic raw);
+
+  @protected
+  OpaqueItem
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
           dynamic raw);
 
   @protected
@@ -1106,6 +1134,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   NonCloneSimpleTwinSync
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+          dynamic raw);
+
+  @protected
+  OpaqueItem
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
           dynamic raw);
 
   @protected
@@ -1892,6 +1925,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   PlatformInt64 dco_decode_box_autoadd_isize(dynamic raw);
+
+  @protected
+  ItemContainerSolutionOne dco_decode_box_autoadd_item_container_solution_one(
+      dynamic raw);
+
+  @protected
+  ItemContainerSolutionTwo dco_decode_box_autoadd_item_container_solution_two(
+      dynamic raw);
 
   @protected
   KitchenSinkTwinNormal dco_decode_box_autoadd_kitchen_sink_twin_normal(
@@ -2764,6 +2805,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   PlatformInt64 dco_decode_isize(dynamic raw);
 
   @protected
+  ItemContainerSolutionOne dco_decode_item_container_solution_one(dynamic raw);
+
+  @protected
+  ItemContainerSolutionTwo dco_decode_item_container_solution_two(dynamic raw);
+
+  @protected
   KitchenSinkTwinNormal dco_decode_kitchen_sink_twin_normal(dynamic raw);
 
   @protected
@@ -2771,6 +2818,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   KitchenSinkTwinSync dco_decode_kitchen_sink_twin_sync(dynamic raw);
+
+  @protected
+  List<OpaqueItem>
+      dco_decode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+          dynamic raw);
 
   @protected
   List<NonCloneSimpleTwinNormal>
@@ -2785,6 +2837,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<NonCloneSimpleTwinSync>
       dco_decode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+          dynamic raw);
+
+  @protected
+  List<OpaqueItem>
+      dco_decode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
           dynamic raw);
 
   @protected
@@ -4201,6 +4258,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   AnyhowException sse_decode_AnyhowException(SseDeserializer deserializer);
 
   @protected
+  NonCloneSimpleTwinNormal
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleTwinRustAsync
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleTwinSync
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueItem
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+          SseDeserializer deserializer);
+
+  @protected
   BoxFnStringString
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
           SseDeserializer deserializer);
@@ -4303,6 +4380,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   NonCloneSimpleTwinSync
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueItem
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
           SseDeserializer deserializer);
 
   @protected
@@ -4900,6 +4982,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   NonCloneSimpleTwinSync
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueItem
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
           SseDeserializer deserializer);
 
   @protected
@@ -5790,6 +5877,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   PlatformInt64 sse_decode_box_autoadd_isize(SseDeserializer deserializer);
+
+  @protected
+  ItemContainerSolutionOne sse_decode_box_autoadd_item_container_solution_one(
+      SseDeserializer deserializer);
+
+  @protected
+  ItemContainerSolutionTwo sse_decode_box_autoadd_item_container_solution_two(
+      SseDeserializer deserializer);
 
   @protected
   KitchenSinkTwinNormal sse_decode_box_autoadd_kitchen_sink_twin_normal(
@@ -6775,6 +6870,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   PlatformInt64 sse_decode_isize(SseDeserializer deserializer);
 
   @protected
+  ItemContainerSolutionOne sse_decode_item_container_solution_one(
+      SseDeserializer deserializer);
+
+  @protected
+  ItemContainerSolutionTwo sse_decode_item_container_solution_two(
+      SseDeserializer deserializer);
+
+  @protected
   KitchenSinkTwinNormal sse_decode_kitchen_sink_twin_normal(
       SseDeserializer deserializer);
 
@@ -6785,6 +6888,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   KitchenSinkTwinSync sse_decode_kitchen_sink_twin_sync(
       SseDeserializer deserializer);
+
+  @protected
+  List<OpaqueItem>
+      sse_decode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+          SseDeserializer deserializer);
 
   @protected
   List<NonCloneSimpleTwinNormal>
@@ -6799,6 +6907,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<NonCloneSimpleTwinSync>
       sse_decode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+          SseDeserializer deserializer);
+
+  @protected
+  List<OpaqueItem>
+      sse_decode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
           SseDeserializer deserializer);
 
   @protected
@@ -8422,6 +8535,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+          NonCloneSimpleTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+          NonCloneSimpleTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+          NonCloneSimpleTwinSync self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+          OpaqueItem self, SseSerializer serializer);
+
+  @protected
+  void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
           BoxFnStringString self, SseSerializer serializer);
 
@@ -8527,6 +8660,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
           NonCloneSimpleTwinSync self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+          OpaqueItem self, SseSerializer serializer);
 
   @protected
   void
@@ -9179,6 +9317,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
           NonCloneSimpleTwinSync self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+          OpaqueItem self, SseSerializer serializer);
 
   @protected
   void
@@ -10034,6 +10177,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_box_autoadd_isize(
       PlatformInt64 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_item_container_solution_one(
+      ItemContainerSolutionOne self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_item_container_solution_two(
+      ItemContainerSolutionTwo self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_kitchen_sink_twin_normal(
@@ -10979,6 +11130,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_isize(PlatformInt64 self, SseSerializer serializer);
 
   @protected
+  void sse_encode_item_container_solution_one(
+      ItemContainerSolutionOne self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_item_container_solution_two(
+      ItemContainerSolutionTwo self, SseSerializer serializer);
+
+  @protected
   void sse_encode_kitchen_sink_twin_normal(
       KitchenSinkTwinNormal self, SseSerializer serializer);
 
@@ -10989,6 +11148,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_kitchen_sink_twin_sync(
       KitchenSinkTwinSync self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+          List<OpaqueItem> self, SseSerializer serializer);
 
   @protected
   void
@@ -11004,6 +11168,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
           List<NonCloneSimpleTwinSync> self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+          List<OpaqueItem> self, SseSerializer serializer);
 
   @protected
   void sse_encode_list_Chrono_Duration(
@@ -13079,6 +13248,18 @@ class RustLibWire implements BaseWire {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
               ptr);
 
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+              ptr);
+
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinNormal(
           dynamic ptr) =>
       wasmModule
@@ -13622,6 +13803,14 @@ class RustLibWasmModule implements WasmModule {
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+          dynamic ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+          dynamic ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
           dynamic ptr);
 
   external void

@@ -866,6 +866,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       get rust_arc_decrement_strong_count_NonCloneSimpleTwinSyncSseMoiPtr => wire
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncSseMoi;
 
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_OpaqueItemPtr =>
+      wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem;
+
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_OpaqueOneTwinMoiPtr => wire
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinMoi;
@@ -1062,6 +1065,71 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   AnyhowException dco_decode_AnyhowException(dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinMoi
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinNormal
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinRustAsync
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinRustAsyncMoi
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinRustAsyncSse
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncSse(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinRustAsyncSseMoi
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncSseMoi(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinSse
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSse(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinSseMoi
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSseMoi(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinSync
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinSyncMoi
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinSyncSse
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncSse(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinSyncSseMoi
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncSseMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueItem
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+          dynamic raw);
 
   @protected
   BoxFnStringString
@@ -1406,6 +1474,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   NonCloneSimpleTwinSyncSseMoi
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncSseMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueItem
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
           dynamic raw);
 
   @protected
@@ -3019,6 +3092,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   NonCloneSimpleTwinSyncSseMoi
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncSseMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueItem
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
           dynamic raw);
 
   @protected
@@ -4727,6 +4805,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   PlatformInt64 dco_decode_box_autoadd_isize(dynamic raw);
+
+  @protected
+  ItemContainerSolutionOne dco_decode_box_autoadd_item_container_solution_one(
+      dynamic raw);
+
+  @protected
+  ItemContainerSolutionTwo dco_decode_box_autoadd_item_container_solution_two(
+      dynamic raw);
 
   @protected
   KitchenSinkTwinNormal dco_decode_box_autoadd_kitchen_sink_twin_normal(
@@ -6504,6 +6590,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   PlatformInt64 dco_decode_isize(dynamic raw);
 
   @protected
+  ItemContainerSolutionOne dco_decode_item_container_solution_one(dynamic raw);
+
+  @protected
+  ItemContainerSolutionTwo dco_decode_item_container_solution_two(dynamic raw);
+
+  @protected
   KitchenSinkTwinNormal dco_decode_kitchen_sink_twin_normal(dynamic raw);
 
   @protected
@@ -6521,6 +6613,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   KitchenSinkTwinSyncSse dco_decode_kitchen_sink_twin_sync_sse(dynamic raw);
+
+  @protected
+  List<OpaqueItem>
+      dco_decode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+          dynamic raw);
 
   @protected
   List<NonCloneSimpleTwinMoi>
@@ -6580,6 +6677,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<NonCloneSimpleTwinSyncSseMoi>
       dco_decode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncSseMoi(
+          dynamic raw);
+
+  @protected
+  List<OpaqueItem>
+      dco_decode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
           dynamic raw);
 
   @protected
@@ -9198,6 +9300,71 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   AnyhowException sse_decode_AnyhowException(SseDeserializer deserializer);
 
   @protected
+  NonCloneSimpleTwinMoi
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleTwinNormal
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleTwinRustAsync
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleTwinRustAsyncMoi
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleTwinRustAsyncSse
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleTwinRustAsyncSseMoi
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncSseMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleTwinSse
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSse(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleTwinSseMoi
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSseMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleTwinSync
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleTwinSyncMoi
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleTwinSyncSse
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneSimpleTwinSyncSseMoi
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncSseMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueItem
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+          SseDeserializer deserializer);
+
+  @protected
   BoxFnStringString
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
           SseDeserializer deserializer);
@@ -9540,6 +9707,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   NonCloneSimpleTwinSyncSseMoi
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncSseMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueItem
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
           SseDeserializer deserializer);
 
   @protected
@@ -11153,6 +11325,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   NonCloneSimpleTwinSyncSseMoi
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncSseMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueItem
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
           SseDeserializer deserializer);
 
   @protected
@@ -13059,6 +13236,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   PlatformInt64 sse_decode_box_autoadd_isize(SseDeserializer deserializer);
+
+  @protected
+  ItemContainerSolutionOne sse_decode_box_autoadd_item_container_solution_one(
+      SseDeserializer deserializer);
+
+  @protected
+  ItemContainerSolutionTwo sse_decode_box_autoadd_item_container_solution_two(
+      SseDeserializer deserializer);
 
   @protected
   KitchenSinkTwinNormal sse_decode_box_autoadd_kitchen_sink_twin_normal(
@@ -15080,6 +15265,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   PlatformInt64 sse_decode_isize(SseDeserializer deserializer);
 
   @protected
+  ItemContainerSolutionOne sse_decode_item_container_solution_one(
+      SseDeserializer deserializer);
+
+  @protected
+  ItemContainerSolutionTwo sse_decode_item_container_solution_two(
+      SseDeserializer deserializer);
+
+  @protected
   KitchenSinkTwinNormal sse_decode_kitchen_sink_twin_normal(
       SseDeserializer deserializer);
 
@@ -15102,6 +15295,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   KitchenSinkTwinSyncSse sse_decode_kitchen_sink_twin_sync_sse(
       SseDeserializer deserializer);
+
+  @protected
+  List<OpaqueItem>
+      sse_decode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+          SseDeserializer deserializer);
 
   @protected
   List<NonCloneSimpleTwinMoi>
@@ -15161,6 +15359,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<NonCloneSimpleTwinSyncSseMoi>
       sse_decode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncSseMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  List<OpaqueItem>
+      sse_decode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
           SseDeserializer deserializer);
 
   @protected
@@ -18151,6 +18354,69 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  Object
+      cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+          NonCloneSimpleTwinMoi raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+        raw);
+  }
+
+  @protected
+  Object
+      cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+          NonCloneSimpleTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+        raw);
+  }
+
+  @protected
+  Object
+      cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+          NonCloneSimpleTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+        raw);
+  }
+
+  @protected
+  Object
+      cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+          NonCloneSimpleTwinRustAsyncMoi raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+        raw);
+  }
+
+  @protected
+  Object
+      cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+          NonCloneSimpleTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+        raw);
+  }
+
+  @protected
+  Object
+      cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+          NonCloneSimpleTwinSyncMoi raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+        raw);
+  }
+
+  @protected
+  Object
+      cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+          OpaqueItem raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+        raw);
+  }
+
+  @protected
   String cst_encode_Backtrace(String raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     throw UnimplementedError();
@@ -20113,6 +20379,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Object cst_encode_box_autoadd_isize(PlatformInt64 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_isize(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_item_container_solution_one(
+      ItemContainerSolutionOne raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_item_container_solution_one(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_item_container_solution_two(
+      ItemContainerSolutionTwo raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_item_container_solution_two(raw);
   }
 
   @protected
@@ -22382,6 +22662,28 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> cst_encode_item_container_solution_one(
+      ItemContainerSolutionOne raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [
+      cst_encode_String(raw.name),
+      cst_encode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+          raw.items)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_item_container_solution_two(
+      ItemContainerSolutionTwo raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [
+      cst_encode_String(raw.name),
+      cst_encode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+          raw.items)
+    ];
+  }
+
+  @protected
   List<dynamic> cst_encode_kitchen_sink_twin_normal(KitchenSinkTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is KitchenSinkTwinNormal_Empty) {
@@ -22498,6 +22800,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic>
+      cst_encode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+          List<OpaqueItem> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw
+        .map(
+            cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem)
+        .toList();
+  }
+
+  @protected
+  List<dynamic>
       cst_encode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
           List<NonCloneSimpleTwinMoi> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -22559,6 +22872,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     return raw
         .map(
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi)
+        .toList();
+  }
+
+  @protected
+  List<dynamic>
+      cst_encode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+          List<OpaqueItem> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw
+        .map(
+            cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem)
         .toList();
   }
 
@@ -25281,7 +25605,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       StructWithExplicitAutoOpaqueFieldTwinMoi raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+      cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
           raw.autoOpaque),
       cst_encode_i_32(raw.normal)
     ];
@@ -25292,7 +25616,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       StructWithExplicitAutoOpaqueFieldTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+      cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
           raw.autoOpaque),
       cst_encode_i_32(raw.normal)
     ];
@@ -25304,7 +25628,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           StructWithExplicitAutoOpaqueFieldTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+      cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
           raw.autoOpaque),
       cst_encode_i_32(raw.normal)
     ];
@@ -25316,7 +25640,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           StructWithExplicitAutoOpaqueFieldTwinRustAsyncMoi raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+      cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
           raw.autoOpaque),
       cst_encode_i_32(raw.normal)
     ];
@@ -25327,7 +25651,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       StructWithExplicitAutoOpaqueFieldTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+      cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
           raw.autoOpaque),
       cst_encode_i_32(raw.normal)
     ];
@@ -25338,7 +25662,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       StructWithExplicitAutoOpaqueFieldTwinSyncMoi raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+      cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
           raw.autoOpaque),
       cst_encode_i_32(raw.normal)
     ];
@@ -25979,6 +26303,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       NonCloneSimpleTwinSyncMoi raw);
 
   @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+      OpaqueItem raw);
+
+  @protected
   int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinMoi(
       OpaqueOneTwinMoi raw);
 
@@ -26598,6 +26926,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       NonCloneSimpleTwinSyncMoi raw);
 
   @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+      OpaqueItem raw);
+
+  @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinMoi(
       OpaqueOneTwinMoi raw);
 
@@ -26799,6 +27131,71 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_AnyhowException(
       AnyhowException self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+          NonCloneSimpleTwinMoi self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+          NonCloneSimpleTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+          NonCloneSimpleTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+          NonCloneSimpleTwinRustAsyncMoi self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncSse(
+          NonCloneSimpleTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncSseMoi(
+          NonCloneSimpleTwinRustAsyncSseMoi self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSse(
+          NonCloneSimpleTwinSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSseMoi(
+          NonCloneSimpleTwinSseMoi self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+          NonCloneSimpleTwinSync self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+          NonCloneSimpleTwinSyncMoi self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncSse(
+          NonCloneSimpleTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncSseMoi(
+          NonCloneSimpleTwinSyncSseMoi self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+          OpaqueItem self, SseSerializer serializer);
 
   @protected
   void
@@ -27156,6 +27553,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncSseMoi(
           NonCloneSimpleTwinSyncSseMoi self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+          OpaqueItem self, SseSerializer serializer);
 
   @protected
   void
@@ -28840,6 +29242,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncSseMoi(
           NonCloneSimpleTwinSyncSseMoi self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+          OpaqueItem self, SseSerializer serializer);
 
   @protected
   void
@@ -30660,6 +31067,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_box_autoadd_isize(
       PlatformInt64 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_item_container_solution_one(
+      ItemContainerSolutionOne self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_item_container_solution_two(
+      ItemContainerSolutionTwo self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_kitchen_sink_twin_normal(
@@ -32575,6 +32990,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_isize(PlatformInt64 self, SseSerializer serializer);
 
   @protected
+  void sse_encode_item_container_solution_one(
+      ItemContainerSolutionOne self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_item_container_solution_two(
+      ItemContainerSolutionTwo self, SseSerializer serializer);
+
+  @protected
   void sse_encode_kitchen_sink_twin_normal(
       KitchenSinkTwinNormal self, SseSerializer serializer);
 
@@ -32597,6 +33020,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_kitchen_sink_twin_sync_sse(
       KitchenSinkTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+          List<OpaqueItem> self, SseSerializer serializer);
 
   @protected
   void
@@ -32658,6 +33086,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncSseMoi(
           List<NonCloneSimpleTwinSyncSseMoi> self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+          List<OpaqueItem> self, SseSerializer serializer);
 
   @protected
   void sse_encode_list_Chrono_Duration(
@@ -47557,6 +47990,186 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__handle_vec_u8_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
+  void wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_create(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_create(
+              port_);
+
+  void wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_create_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_create_twin_rust_async(
+              port_);
+
+  void wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_create_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_create_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_create_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_create_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_create_twin_sync() =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_create_twin_sync();
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_create_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_create_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_get_item_contents(
+          NativePortType port_, List<dynamic> that) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_get_item_contents(
+              port_, that);
+
+  void wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_get_item_contents_twin_rust_async(
+          NativePortType port_, List<dynamic> that) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_get_item_contents_twin_rust_async(
+              port_, that);
+
+  void wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_get_item_contents_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_get_item_contents_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_get_item_contents_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_get_item_contents_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_get_item_contents_twin_sync(
+              List<dynamic> that) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_get_item_contents_twin_sync(
+                  that);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_get_item_contents_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_get_item_contents_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_create(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_create(
+              port_);
+
+  void wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_create_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_create_twin_rust_async(
+              port_);
+
+  void wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_create_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_create_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_create_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_create_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_create_twin_sync() =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_create_twin_sync();
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_create_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_create_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_get_item_contents(
+          NativePortType port_, List<dynamic> that) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_get_item_contents(
+              port_, that);
+
+  void wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_get_item_contents_twin_rust_async(
+          NativePortType port_, List<dynamic> that) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_get_item_contents_twin_rust_async(
+              port_, that);
+
+  void wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_get_item_contents_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_get_item_contents_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_get_item_contents_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_get_item_contents_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_get_item_contents_twin_sync(
+              List<dynamic> that) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_get_item_contents_twin_sync(
+                  that);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_get_item_contents_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_get_item_contents_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__list_of_primitive_enums_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
@@ -48607,6 +49220,12 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_explicit_arg_twin_moi(
               port_, arg, expect);
 
+  void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_explicit_return_struct_twin_moi(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_explicit_return_struct_twin_moi(
+              port_);
+
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_explicit_return_twin_moi(
           NativePortType port_, int initial) =>
       wasmModule
@@ -48889,6 +49508,12 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_explicit_arg_twin_rust_async(
               port_, arg, expect);
 
+  void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_explicit_return_struct_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_explicit_return_struct_twin_rust_async(
+              port_);
+
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_explicit_return_twin_rust_async(
           NativePortType port_, int initial) =>
       wasmModule
@@ -49170,6 +49795,12 @@ class RustLibWire implements BaseWire {
       wasmModule
           .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_explicit_arg_twin_rust_async_moi(
               port_, arg, expect);
+
+  void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_explicit_return_struct_twin_rust_async_moi(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_explicit_return_struct_twin_rust_async_moi(
+              port_);
 
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_explicit_return_twin_rust_async_moi(
           NativePortType port_, int initial) =>
@@ -49535,6 +50166,15 @@ class RustLibWire implements BaseWire {
           int data_len_) =>
       wasmModule
           .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_explicit_arg_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_explicit_return_struct_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_explicit_return_struct_twin_rust_async_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_explicit_return_twin_rust_async_sse(
@@ -49960,6 +50600,15 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_explicit_arg_twin_rust_async_sse_moi(
               port_, ptr_, rust_vec_len_, data_len_);
 
+  void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_explicit_return_struct_twin_rust_async_sse_moi(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_explicit_return_struct_twin_rust_async_sse_moi(
+              port_, ptr_, rust_vec_len_, data_len_);
+
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_explicit_return_twin_rust_async_sse_moi(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
@@ -50381,6 +51030,15 @@ class RustLibWire implements BaseWire {
           int data_len_) =>
       wasmModule
           .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_explicit_arg_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_explicit_return_struct_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_explicit_return_struct_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_explicit_return_twin_sse(
@@ -50806,6 +51464,15 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_explicit_arg_twin_sse_moi(
               port_, ptr_, rust_vec_len_, data_len_);
 
+  void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_explicit_return_struct_twin_sse_moi(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_explicit_return_struct_twin_sse_moi(
+              port_, ptr_, rust_vec_len_, data_len_);
+
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_explicit_return_twin_sse_moi(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
@@ -51158,6 +51825,11 @@ class RustLibWire implements BaseWire {
                   arg, expect);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_explicit_return_struct_twin_sync() =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_explicit_return_struct_twin_sync();
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_explicit_return_twin_sync(
               int initial) =>
           wasmModule
@@ -51455,6 +52127,11 @@ class RustLibWire implements BaseWire {
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_explicit_arg_twin_sync_moi(
                   arg, expect);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_explicit_return_struct_twin_sync_moi() =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_explicit_return_struct_twin_sync_moi();
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_explicit_return_twin_sync_moi(
@@ -51825,6 +52502,15 @@ class RustLibWire implements BaseWire {
               int data_len_) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_explicit_arg_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_explicit_return_struct_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_explicit_return_struct_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
@@ -52248,6 +52934,15 @@ class RustLibWire implements BaseWire {
               int data_len_) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_explicit_arg_twin_sync_sse_moi(
+                  ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_explicit_return_struct_twin_sync_sse_moi(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_explicit_return_struct_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
@@ -54777,6 +55472,12 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_arg_twin_normal(
               port_, arg, expect);
 
+  void wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_return_struct_twin_normal(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_return_struct_twin_normal(
+              port_);
+
   void wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_return_twin_normal(
           NativePortType port_, int initial) =>
       wasmModule
@@ -56891,6 +57592,18 @@ class RustLibWire implements BaseWire {
           dynamic ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncSseMoi(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinMoi(
@@ -65862,6 +66575,132 @@ class RustLibWasmModule implements WasmModule {
           int rust_vec_len_,
           int data_len_);
 
+  external void
+      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_create(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_create_twin_rust_async(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_create_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_create_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_create_twin_sync();
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_create_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_get_item_contents(
+          NativePortType port_, List<dynamic> that);
+
+  external void
+      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_get_item_contents_twin_rust_async(
+          NativePortType port_, List<dynamic> that);
+
+  external void
+      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_get_item_contents_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_get_item_contents_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_get_item_contents_twin_sync(
+          List<dynamic> that);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_get_item_contents_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_create(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_create_twin_rust_async(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_create_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_create_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_create_twin_sync();
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_create_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_get_item_contents(
+          NativePortType port_, List<dynamic> that);
+
+  external void
+      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_get_item_contents_twin_rust_async(
+          NativePortType port_, List<dynamic> that);
+
+  external void
+      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_get_item_contents_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_get_item_contents_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_get_item_contents_twin_sync(
+          List<dynamic> that);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_get_item_contents_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__list_of_primitive_enums_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
@@ -66599,6 +67438,10 @@ class RustLibWasmModule implements WasmModule {
           NativePortType port_, Object arg, int expect);
 
   external void
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_explicit_return_struct_twin_moi(
+          NativePortType port_);
+
+  external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_explicit_return_twin_moi(
           NativePortType port_, int initial);
 
@@ -66787,6 +67630,10 @@ class RustLibWasmModule implements WasmModule {
           NativePortType port_, Object arg, int expect);
 
   external void
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_explicit_return_struct_twin_rust_async(
+          NativePortType port_);
+
+  external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_explicit_return_twin_rust_async(
           NativePortType port_, int initial);
 
@@ -66973,6 +67820,10 @@ class RustLibWasmModule implements WasmModule {
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_explicit_arg_twin_rust_async_moi(
           NativePortType port_, Object arg, int expect);
+
+  external void
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_explicit_return_struct_twin_rust_async_moi(
+          NativePortType port_);
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_explicit_return_twin_rust_async_moi(
@@ -67241,6 +68092,13 @@ class RustLibWasmModule implements WasmModule {
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_explicit_arg_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_explicit_return_struct_twin_rust_async_sse(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -67576,6 +68434,13 @@ class RustLibWasmModule implements WasmModule {
           int data_len_);
 
   external void
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_explicit_return_struct_twin_rust_async_sse_moi(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_explicit_return_twin_rust_async_sse_moi(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
@@ -67899,6 +68764,13 @@ class RustLibWasmModule implements WasmModule {
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_explicit_arg_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_explicit_return_struct_twin_sse(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -68234,6 +69106,13 @@ class RustLibWasmModule implements WasmModule {
           int data_len_);
 
   external void
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_explicit_return_struct_twin_sse_moi(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_explicit_return_twin_sse_moi(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
@@ -68471,6 +69350,9 @@ class RustLibWasmModule implements WasmModule {
           Object arg, int expect);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_explicit_return_struct_twin_sync();
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_explicit_return_twin_sync(
           int initial);
 
@@ -68642,6 +69524,9 @@ class RustLibWasmModule implements WasmModule {
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_explicit_arg_twin_sync_moi(
           Object arg, int expect);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_explicit_return_struct_twin_sync_moi();
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_explicit_return_twin_sync_moi(
@@ -68876,6 +69761,12 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_explicit_arg_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_explicit_return_struct_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
@@ -69158,6 +70049,12 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_explicit_arg_twin_sync_sse_moi(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_explicit_return_struct_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
@@ -70931,6 +71828,10 @@ class RustLibWasmModule implements WasmModule {
           NativePortType port_, Object arg, int expect);
 
   external void
+      wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_return_struct_twin_normal(
+          NativePortType port_);
+
+  external void
       wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_return_twin_normal(
           NativePortType port_, int initial);
 
@@ -72320,6 +73221,14 @@ class RustLibWasmModule implements WasmModule {
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncSseMoi(
+          dynamic ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+          dynamic ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
           dynamic ptr);
 
   external void

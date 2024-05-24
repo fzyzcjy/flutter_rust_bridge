@@ -209,6 +209,12 @@ void rustAutoOpaqueExplicitStructTwinSync(
         .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueExplicitStructTwinSync(
             arg: arg, hint: hint);
 
+StructWithExplicitAutoOpaqueFieldTwinSync
+    rustAutoOpaqueExplicitReturnStructTwinSync({dynamic hint}) => RustLib
+        .instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueExplicitReturnStructTwinSync(
+            hint: hint);
+
 NonCloneSimpleTwinSync rustAutoOpaqueExplicitReturnTwinSync(
         {required int initial, dynamic hint}) =>
     RustLib.instance.api

@@ -66,6 +66,25 @@ MySize handleStructTwinSync(
         .crateApiPseudoManualMiscExampleTwinSyncHandleStructTwinSync(
             arg: arg, boxed: boxed, hint: hint);
 
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItem>>
+@sealed
+class OpaqueItem extends RustOpaque {
+  OpaqueItem.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  OpaqueItem.sseDecode(BigInt ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_OpaqueItem,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_OpaqueItem,
+    rustArcDecrementStrongCountPtr:
+        RustLib.instance.api.rust_arc_decrement_strong_count_OpaqueItemPtr,
+  );
+}
+
 class ATwinSync {
   final String a;
 
@@ -151,6 +170,104 @@ class CTwinSync {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is CTwinSync && runtimeType == other.runtimeType && c == other.c;
+}
+
+class ItemContainerSolutionOne {
+  final String name;
+  final List<OpaqueItem> items;
+
+  const ItemContainerSolutionOne({
+    required this.name,
+    required this.items,
+  });
+
+  static Future<ItemContainerSolutionOne> create({dynamic hint}) => RustLib
+      .instance.api
+      .crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneCreate(
+          hint: hint);
+
+  static Future<ItemContainerSolutionOne> createTwinRustAsync({dynamic hint}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneCreateTwinRustAsync(
+              hint: hint);
+
+  static ItemContainerSolutionOne createTwinSync({dynamic hint}) => RustLib
+      .instance.api
+      .crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneCreateTwinSync(
+          hint: hint);
+
+  Future<Int32List> getItemContents({dynamic hint}) => RustLib.instance.api
+      .crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneGetItemContents(
+          that: this, hint: hint);
+
+  Future<Int32List> getItemContentsTwinRustAsync({dynamic hint}) => RustLib
+      .instance.api
+      .crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneGetItemContentsTwinRustAsync(
+          that: this, hint: hint);
+
+  Int32List getItemContentsTwinSync({dynamic hint}) => RustLib.instance.api
+      .crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneGetItemContentsTwinSync(
+          that: this, hint: hint);
+
+  @override
+  int get hashCode => name.hashCode ^ items.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ItemContainerSolutionOne &&
+          runtimeType == other.runtimeType &&
+          name == other.name &&
+          items == other.items;
+}
+
+class ItemContainerSolutionTwo {
+  String name;
+  final List<OpaqueItem> items;
+
+  ItemContainerSolutionTwo({
+    required this.name,
+    required this.items,
+  });
+
+  static Future<ItemContainerSolutionTwo> create({dynamic hint}) => RustLib
+      .instance.api
+      .crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoCreate(
+          hint: hint);
+
+  static Future<ItemContainerSolutionTwo> createTwinRustAsync({dynamic hint}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoCreateTwinRustAsync(
+              hint: hint);
+
+  static ItemContainerSolutionTwo createTwinSync({dynamic hint}) => RustLib
+      .instance.api
+      .crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoCreateTwinSync(
+          hint: hint);
+
+  Future<Int32List> getItemContents({dynamic hint}) => RustLib.instance.api
+      .crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoGetItemContents(
+          that: this, hint: hint);
+
+  Future<Int32List> getItemContentsTwinRustAsync({dynamic hint}) => RustLib
+      .instance.api
+      .crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoGetItemContentsTwinRustAsync(
+          that: this, hint: hint);
+
+  Int32List getItemContentsTwinSync({dynamic hint}) => RustLib.instance.api
+      .crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoGetItemContentsTwinSync(
+          that: this, hint: hint);
+
+  @override
+  int get hashCode => name.hashCode ^ items.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ItemContainerSolutionTwo &&
+          runtimeType == other.runtimeType &&
+          name == other.name &&
+          items == other.items;
 }
 
 class MyNestedStructTwinSync {
