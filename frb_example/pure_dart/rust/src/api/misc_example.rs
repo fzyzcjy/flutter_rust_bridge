@@ -174,7 +174,7 @@ impl ItemContainerSolutionOne {
 // #1937
 pub struct ItemContainerSolutionTwo {
     pub name: String,
-    items: Vec<RustAutoOpaque<OpaqueItem>>,
+    pub items: Vec<RustAutoOpaque<OpaqueItem>>,
 }
 
 impl ItemContainerSolutionTwo {
