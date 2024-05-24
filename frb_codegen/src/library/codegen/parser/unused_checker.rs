@@ -7,7 +7,7 @@ use crate::codegen::parser::source_graph::modules::{Enum, Struct, StructOrEnumWr
 use crate::codegen::parser::type_parser::path_data::extract_path_data;
 use itertools::Itertools;
 use std::collections::{HashMap, HashSet};
-use std::path::Path;
+use std::path::{Path, PathBuf};
 use syn::Type;
 
 pub(super) fn get_unused_types(
@@ -17,15 +17,10 @@ pub(super) fn get_unused_types(
     rust_input_path_pack: &RustInputPathPack,
     rust_crate_dir: &Path,
 ) -> anyhow::Result<Vec<NamespacedName>> {
-    let interest_input_paths = rust_input_path_pack
-        .rust_input_paths
-        .iter()
-        .map(|p| Namespace::new_from_rust_crate_path(p, rust_crate_dir))
-        .collect::<anyhow::Result<Vec<_>>>()?;
-
+    let rust_input_paths = &rust_input_path_pack.rust_input_paths;
     let all_types = [
-        extract_interest_src_types(src_structs, &interest_input_paths),
-        extract_interest_src_types(src_enums, &interest_input_paths),
+        extract_src_types_in_paths(src_structs, rust_input_paths, rust_crate_dir),
+        extract_src_types_in_paths(src_enums, rust_input_paths, rust_crate_dir),
     ]
     .concat();
 
@@ -43,10 +38,15 @@ pub(super) fn get_unused_types(
     Ok(unused_types)
 }
 
-fn extract_interest_src_types<T: StructOrEnumWrapper<I>, I>(
+fn extract_src_types_in_paths<T: StructOrEnumWrapper<I>, I>(
     src_items: &HashMap<String, &T>,
-    interest_input_paths: &[Namespace],
+    rust_input_paths: &[PathBuf],
+    rust_crate_dir: &Path,
 ) -> Vec<NamespacedName> {
+    let interest_input_paths = (rust_input_paths.iter())
+        .map(|p| Namespace::new_from_rust_crate_path(p, rust_crate_dir))
+        .collect::<anyhow::Result<Vec<_>>>()?;
+
     (src_items.iter())
         .filter_map(|(k, v)| {
             let namespace = v.inner().namespace();
