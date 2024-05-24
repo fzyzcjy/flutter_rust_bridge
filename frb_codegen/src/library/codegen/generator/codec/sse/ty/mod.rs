@@ -9,7 +9,6 @@ mod optional;
 mod primitive;
 mod primitive_list;
 mod record;
-pub(crate) mod rust_auto_opaque_explicit;
 pub(crate) mod rust_auto_opaque_implicit;
 pub(crate) mod rust_opaque;
 mod structure;
