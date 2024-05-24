@@ -1,3 +1,4 @@
+use crate::generalized_arc::base_arc::BaseArc;
 use crate::for_generated::StdArc;
 use crate::rust_opaque::RustOpaqueBase;
 
@@ -5,7 +6,7 @@ pub(crate) mod dart2rust;
 pub(crate) mod inner;
 mod order;
 
-pub struct RustAutoOpaqueBase<T: ?Sized + 'static, A: BaseArc<T>>(
+pub struct RustAutoOpaqueBase<T: 'static, A: BaseArc<inner::RustAutoOpaqueInner<T>>>(
     RustOpaqueBase<inner::RustAutoOpaqueInner<T>, A>,
 );
 
