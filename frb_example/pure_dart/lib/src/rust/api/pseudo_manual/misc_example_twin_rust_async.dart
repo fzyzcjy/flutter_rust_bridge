@@ -5,6 +5,7 @@
 
 import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
+import 'misc_example_twin_sync_sse.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'misc_example_twin_rust_async.freezed.dart';
@@ -159,6 +160,70 @@ class CTwinRustAsync {
       other is CTwinRustAsync &&
           runtimeType == other.runtimeType &&
           c == other.c;
+}
+
+class ItemContainerSolutionOneTwinRustAsync {
+  final String name;
+  final List<OpaqueItem> items;
+
+  const ItemContainerSolutionOneTwinRustAsync({
+    required this.name,
+    required this.items,
+  });
+
+  static Future<ItemContainerSolutionOneTwinRustAsync> createTwinRustAsync(
+          {dynamic hint}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualMiscExampleTwinRustAsyncItemContainerSolutionOneTwinRustAsyncCreateTwinRustAsync(
+              hint: hint);
+
+  Future<Int32List> getItemContentsTwinRustAsync({dynamic hint}) => RustLib
+      .instance.api
+      .crateApiPseudoManualMiscExampleTwinRustAsyncItemContainerSolutionOneTwinRustAsyncGetItemContentsTwinRustAsync(
+          that: this, hint: hint);
+
+  @override
+  int get hashCode => name.hashCode ^ items.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ItemContainerSolutionOneTwinRustAsync &&
+          runtimeType == other.runtimeType &&
+          name == other.name &&
+          items == other.items;
+}
+
+class ItemContainerSolutionTwoTwinRustAsync {
+  String name;
+  final List<OpaqueItem> items;
+
+  ItemContainerSolutionTwoTwinRustAsync({
+    required this.name,
+    required this.items,
+  });
+
+  static Future<ItemContainerSolutionTwoTwinRustAsync> createTwinRustAsync(
+          {dynamic hint}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualMiscExampleTwinRustAsyncItemContainerSolutionTwoTwinRustAsyncCreateTwinRustAsync(
+              hint: hint);
+
+  Future<Int32List> getItemContentsTwinRustAsync({dynamic hint}) => RustLib
+      .instance.api
+      .crateApiPseudoManualMiscExampleTwinRustAsyncItemContainerSolutionTwoTwinRustAsyncGetItemContentsTwinRustAsync(
+          that: this, hint: hint);
+
+  @override
+  int get hashCode => name.hashCode ^ items.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ItemContainerSolutionTwoTwinRustAsync &&
+          runtimeType == other.runtimeType &&
+          name == other.name &&
+          items == other.items;
 }
 
 class MyNestedStructTwinRustAsync {

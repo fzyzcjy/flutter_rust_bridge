@@ -164,13 +164,13 @@ pub(super) fn visibility_restricted_func_twin_rust_async() {}
 pub struct OpaqueItem(i32);
 
 // #1937
-pub struct ItemContainerSolutionOne {
+pub struct ItemContainerSolutionOneTwinRustAsync {
     // TODO auto generate getter/setter
     pub name: String,
     items: Vec<OpaqueItem>,
 }
 
-impl ItemContainerSolutionOne {
+impl ItemContainerSolutionOneTwinRustAsync {
     pub async fn create_twin_rust_async() -> Self {
         Self {
             name: "hi".to_owned(),
@@ -185,13 +185,13 @@ impl ItemContainerSolutionOne {
 
 // #1937
 #[frb]
-pub struct ItemContainerSolutionTwo {
+pub struct ItemContainerSolutionTwoTwinRustAsync {
     #[frb(non_final)]
     pub name: String,
     pub items: Vec<RustAutoOpaque<OpaqueItem>>,
 }
 
-impl ItemContainerSolutionTwo {
+impl ItemContainerSolutionTwoTwinRustAsync {
     pub async fn create_twin_rust_async() -> Self {
         Self {
             name: "hi".to_owned(),

@@ -1927,12 +1927,32 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   PlatformInt64 dco_decode_box_autoadd_isize(dynamic raw);
 
   @protected
-  ItemContainerSolutionOne dco_decode_box_autoadd_item_container_solution_one(
-      dynamic raw);
+  ItemContainerSolutionOneTwinNormal
+      dco_decode_box_autoadd_item_container_solution_one_twin_normal(
+          dynamic raw);
 
   @protected
-  ItemContainerSolutionTwo dco_decode_box_autoadd_item_container_solution_two(
-      dynamic raw);
+  ItemContainerSolutionOneTwinRustAsync
+      dco_decode_box_autoadd_item_container_solution_one_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  ItemContainerSolutionOneTwinSync
+      dco_decode_box_autoadd_item_container_solution_one_twin_sync(dynamic raw);
+
+  @protected
+  ItemContainerSolutionTwoTwinNormal
+      dco_decode_box_autoadd_item_container_solution_two_twin_normal(
+          dynamic raw);
+
+  @protected
+  ItemContainerSolutionTwoTwinRustAsync
+      dco_decode_box_autoadd_item_container_solution_two_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  ItemContainerSolutionTwoTwinSync
+      dco_decode_box_autoadd_item_container_solution_two_twin_sync(dynamic raw);
 
   @protected
   KitchenSinkTwinNormal dco_decode_box_autoadd_kitchen_sink_twin_normal(
@@ -2805,10 +2825,28 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   PlatformInt64 dco_decode_isize(dynamic raw);
 
   @protected
-  ItemContainerSolutionOne dco_decode_item_container_solution_one(dynamic raw);
+  ItemContainerSolutionOneTwinNormal
+      dco_decode_item_container_solution_one_twin_normal(dynamic raw);
 
   @protected
-  ItemContainerSolutionTwo dco_decode_item_container_solution_two(dynamic raw);
+  ItemContainerSolutionOneTwinRustAsync
+      dco_decode_item_container_solution_one_twin_rust_async(dynamic raw);
+
+  @protected
+  ItemContainerSolutionOneTwinSync
+      dco_decode_item_container_solution_one_twin_sync(dynamic raw);
+
+  @protected
+  ItemContainerSolutionTwoTwinNormal
+      dco_decode_item_container_solution_two_twin_normal(dynamic raw);
+
+  @protected
+  ItemContainerSolutionTwoTwinRustAsync
+      dco_decode_item_container_solution_two_twin_rust_async(dynamic raw);
+
+  @protected
+  ItemContainerSolutionTwoTwinSync
+      dco_decode_item_container_solution_two_twin_sync(dynamic raw);
 
   @protected
   KitchenSinkTwinNormal dco_decode_kitchen_sink_twin_normal(dynamic raw);
@@ -5879,12 +5917,34 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   PlatformInt64 sse_decode_box_autoadd_isize(SseDeserializer deserializer);
 
   @protected
-  ItemContainerSolutionOne sse_decode_box_autoadd_item_container_solution_one(
-      SseDeserializer deserializer);
+  ItemContainerSolutionOneTwinNormal
+      sse_decode_box_autoadd_item_container_solution_one_twin_normal(
+          SseDeserializer deserializer);
 
   @protected
-  ItemContainerSolutionTwo sse_decode_box_autoadd_item_container_solution_two(
-      SseDeserializer deserializer);
+  ItemContainerSolutionOneTwinRustAsync
+      sse_decode_box_autoadd_item_container_solution_one_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  ItemContainerSolutionOneTwinSync
+      sse_decode_box_autoadd_item_container_solution_one_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  ItemContainerSolutionTwoTwinNormal
+      sse_decode_box_autoadd_item_container_solution_two_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  ItemContainerSolutionTwoTwinRustAsync
+      sse_decode_box_autoadd_item_container_solution_two_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  ItemContainerSolutionTwoTwinSync
+      sse_decode_box_autoadd_item_container_solution_two_twin_sync(
+          SseDeserializer deserializer);
 
   @protected
   KitchenSinkTwinNormal sse_decode_box_autoadd_kitchen_sink_twin_normal(
@@ -6870,12 +6930,34 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   PlatformInt64 sse_decode_isize(SseDeserializer deserializer);
 
   @protected
-  ItemContainerSolutionOne sse_decode_item_container_solution_one(
-      SseDeserializer deserializer);
+  ItemContainerSolutionOneTwinNormal
+      sse_decode_item_container_solution_one_twin_normal(
+          SseDeserializer deserializer);
 
   @protected
-  ItemContainerSolutionTwo sse_decode_item_container_solution_two(
-      SseDeserializer deserializer);
+  ItemContainerSolutionOneTwinRustAsync
+      sse_decode_item_container_solution_one_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  ItemContainerSolutionOneTwinSync
+      sse_decode_item_container_solution_one_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  ItemContainerSolutionTwoTwinNormal
+      sse_decode_item_container_solution_two_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  ItemContainerSolutionTwoTwinRustAsync
+      sse_decode_item_container_solution_two_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  ItemContainerSolutionTwoTwinSync
+      sse_decode_item_container_solution_two_twin_sync(
+          SseDeserializer deserializer);
 
   @protected
   KitchenSinkTwinNormal sse_decode_kitchen_sink_twin_normal(
@@ -10179,12 +10261,28 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       PlatformInt64 self, SseSerializer serializer);
 
   @protected
-  void sse_encode_box_autoadd_item_container_solution_one(
-      ItemContainerSolutionOne self, SseSerializer serializer);
+  void sse_encode_box_autoadd_item_container_solution_one_twin_normal(
+      ItemContainerSolutionOneTwinNormal self, SseSerializer serializer);
 
   @protected
-  void sse_encode_box_autoadd_item_container_solution_two(
-      ItemContainerSolutionTwo self, SseSerializer serializer);
+  void sse_encode_box_autoadd_item_container_solution_one_twin_rust_async(
+      ItemContainerSolutionOneTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_item_container_solution_one_twin_sync(
+      ItemContainerSolutionOneTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_item_container_solution_two_twin_normal(
+      ItemContainerSolutionTwoTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_item_container_solution_two_twin_rust_async(
+      ItemContainerSolutionTwoTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_item_container_solution_two_twin_sync(
+      ItemContainerSolutionTwoTwinSync self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_kitchen_sink_twin_normal(
@@ -11130,12 +11228,28 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_isize(PlatformInt64 self, SseSerializer serializer);
 
   @protected
-  void sse_encode_item_container_solution_one(
-      ItemContainerSolutionOne self, SseSerializer serializer);
+  void sse_encode_item_container_solution_one_twin_normal(
+      ItemContainerSolutionOneTwinNormal self, SseSerializer serializer);
 
   @protected
-  void sse_encode_item_container_solution_two(
-      ItemContainerSolutionTwo self, SseSerializer serializer);
+  void sse_encode_item_container_solution_one_twin_rust_async(
+      ItemContainerSolutionOneTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_item_container_solution_one_twin_sync(
+      ItemContainerSolutionOneTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_item_container_solution_two_twin_normal(
+      ItemContainerSolutionTwoTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_item_container_solution_two_twin_rust_async(
+      ItemContainerSolutionTwoTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_item_container_solution_two_twin_sync(
+      ItemContainerSolutionTwoTwinSync self, SseSerializer serializer);
 
   @protected
   void sse_encode_kitchen_sink_twin_normal(

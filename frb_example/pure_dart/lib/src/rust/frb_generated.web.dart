@@ -4807,12 +4807,60 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   PlatformInt64 dco_decode_box_autoadd_isize(dynamic raw);
 
   @protected
-  ItemContainerSolutionOne dco_decode_box_autoadd_item_container_solution_one(
-      dynamic raw);
+  ItemContainerSolutionOneTwinNormal
+      dco_decode_box_autoadd_item_container_solution_one_twin_normal(
+          dynamic raw);
 
   @protected
-  ItemContainerSolutionTwo dco_decode_box_autoadd_item_container_solution_two(
-      dynamic raw);
+  ItemContainerSolutionOneTwinRustAsync
+      dco_decode_box_autoadd_item_container_solution_one_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  ItemContainerSolutionOneTwinRustAsyncSse
+      dco_decode_box_autoadd_item_container_solution_one_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  ItemContainerSolutionOneTwinSse
+      dco_decode_box_autoadd_item_container_solution_one_twin_sse(dynamic raw);
+
+  @protected
+  ItemContainerSolutionOneTwinSync
+      dco_decode_box_autoadd_item_container_solution_one_twin_sync(dynamic raw);
+
+  @protected
+  ItemContainerSolutionOneTwinSyncSse
+      dco_decode_box_autoadd_item_container_solution_one_twin_sync_sse(
+          dynamic raw);
+
+  @protected
+  ItemContainerSolutionTwoTwinNormal
+      dco_decode_box_autoadd_item_container_solution_two_twin_normal(
+          dynamic raw);
+
+  @protected
+  ItemContainerSolutionTwoTwinRustAsync
+      dco_decode_box_autoadd_item_container_solution_two_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  ItemContainerSolutionTwoTwinRustAsyncSse
+      dco_decode_box_autoadd_item_container_solution_two_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  ItemContainerSolutionTwoTwinSse
+      dco_decode_box_autoadd_item_container_solution_two_twin_sse(dynamic raw);
+
+  @protected
+  ItemContainerSolutionTwoTwinSync
+      dco_decode_box_autoadd_item_container_solution_two_twin_sync(dynamic raw);
+
+  @protected
+  ItemContainerSolutionTwoTwinSyncSse
+      dco_decode_box_autoadd_item_container_solution_two_twin_sync_sse(
+          dynamic raw);
 
   @protected
   KitchenSinkTwinNormal dco_decode_box_autoadd_kitchen_sink_twin_normal(
@@ -6590,10 +6638,52 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   PlatformInt64 dco_decode_isize(dynamic raw);
 
   @protected
-  ItemContainerSolutionOne dco_decode_item_container_solution_one(dynamic raw);
+  ItemContainerSolutionOneTwinNormal
+      dco_decode_item_container_solution_one_twin_normal(dynamic raw);
 
   @protected
-  ItemContainerSolutionTwo dco_decode_item_container_solution_two(dynamic raw);
+  ItemContainerSolutionOneTwinRustAsync
+      dco_decode_item_container_solution_one_twin_rust_async(dynamic raw);
+
+  @protected
+  ItemContainerSolutionOneTwinRustAsyncSse
+      dco_decode_item_container_solution_one_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  ItemContainerSolutionOneTwinSse
+      dco_decode_item_container_solution_one_twin_sse(dynamic raw);
+
+  @protected
+  ItemContainerSolutionOneTwinSync
+      dco_decode_item_container_solution_one_twin_sync(dynamic raw);
+
+  @protected
+  ItemContainerSolutionOneTwinSyncSse
+      dco_decode_item_container_solution_one_twin_sync_sse(dynamic raw);
+
+  @protected
+  ItemContainerSolutionTwoTwinNormal
+      dco_decode_item_container_solution_two_twin_normal(dynamic raw);
+
+  @protected
+  ItemContainerSolutionTwoTwinRustAsync
+      dco_decode_item_container_solution_two_twin_rust_async(dynamic raw);
+
+  @protected
+  ItemContainerSolutionTwoTwinRustAsyncSse
+      dco_decode_item_container_solution_two_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  ItemContainerSolutionTwoTwinSse
+      dco_decode_item_container_solution_two_twin_sse(dynamic raw);
+
+  @protected
+  ItemContainerSolutionTwoTwinSync
+      dco_decode_item_container_solution_two_twin_sync(dynamic raw);
+
+  @protected
+  ItemContainerSolutionTwoTwinSyncSse
+      dco_decode_item_container_solution_two_twin_sync_sse(dynamic raw);
 
   @protected
   KitchenSinkTwinNormal dco_decode_kitchen_sink_twin_normal(dynamic raw);
@@ -13238,12 +13328,64 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   PlatformInt64 sse_decode_box_autoadd_isize(SseDeserializer deserializer);
 
   @protected
-  ItemContainerSolutionOne sse_decode_box_autoadd_item_container_solution_one(
-      SseDeserializer deserializer);
+  ItemContainerSolutionOneTwinNormal
+      sse_decode_box_autoadd_item_container_solution_one_twin_normal(
+          SseDeserializer deserializer);
 
   @protected
-  ItemContainerSolutionTwo sse_decode_box_autoadd_item_container_solution_two(
-      SseDeserializer deserializer);
+  ItemContainerSolutionOneTwinRustAsync
+      sse_decode_box_autoadd_item_container_solution_one_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  ItemContainerSolutionOneTwinRustAsyncSse
+      sse_decode_box_autoadd_item_container_solution_one_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  ItemContainerSolutionOneTwinSse
+      sse_decode_box_autoadd_item_container_solution_one_twin_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  ItemContainerSolutionOneTwinSync
+      sse_decode_box_autoadd_item_container_solution_one_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  ItemContainerSolutionOneTwinSyncSse
+      sse_decode_box_autoadd_item_container_solution_one_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  ItemContainerSolutionTwoTwinNormal
+      sse_decode_box_autoadd_item_container_solution_two_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  ItemContainerSolutionTwoTwinRustAsync
+      sse_decode_box_autoadd_item_container_solution_two_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  ItemContainerSolutionTwoTwinRustAsyncSse
+      sse_decode_box_autoadd_item_container_solution_two_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  ItemContainerSolutionTwoTwinSse
+      sse_decode_box_autoadd_item_container_solution_two_twin_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  ItemContainerSolutionTwoTwinSync
+      sse_decode_box_autoadd_item_container_solution_two_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  ItemContainerSolutionTwoTwinSyncSse
+      sse_decode_box_autoadd_item_container_solution_two_twin_sync_sse(
+          SseDeserializer deserializer);
 
   @protected
   KitchenSinkTwinNormal sse_decode_box_autoadd_kitchen_sink_twin_normal(
@@ -15265,12 +15407,64 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   PlatformInt64 sse_decode_isize(SseDeserializer deserializer);
 
   @protected
-  ItemContainerSolutionOne sse_decode_item_container_solution_one(
-      SseDeserializer deserializer);
+  ItemContainerSolutionOneTwinNormal
+      sse_decode_item_container_solution_one_twin_normal(
+          SseDeserializer deserializer);
 
   @protected
-  ItemContainerSolutionTwo sse_decode_item_container_solution_two(
-      SseDeserializer deserializer);
+  ItemContainerSolutionOneTwinRustAsync
+      sse_decode_item_container_solution_one_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  ItemContainerSolutionOneTwinRustAsyncSse
+      sse_decode_item_container_solution_one_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  ItemContainerSolutionOneTwinSse
+      sse_decode_item_container_solution_one_twin_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  ItemContainerSolutionOneTwinSync
+      sse_decode_item_container_solution_one_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  ItemContainerSolutionOneTwinSyncSse
+      sse_decode_item_container_solution_one_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  ItemContainerSolutionTwoTwinNormal
+      sse_decode_item_container_solution_two_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  ItemContainerSolutionTwoTwinRustAsync
+      sse_decode_item_container_solution_two_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  ItemContainerSolutionTwoTwinRustAsyncSse
+      sse_decode_item_container_solution_two_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  ItemContainerSolutionTwoTwinSse
+      sse_decode_item_container_solution_two_twin_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  ItemContainerSolutionTwoTwinSync
+      sse_decode_item_container_solution_two_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  ItemContainerSolutionTwoTwinSyncSse
+      sse_decode_item_container_solution_two_twin_sync_sse(
+          SseDeserializer deserializer);
 
   @protected
   KitchenSinkTwinNormal sse_decode_kitchen_sink_twin_normal(
@@ -20382,17 +20576,47 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_item_container_solution_one(
-      ItemContainerSolutionOne raw) {
+  List<dynamic> cst_encode_box_autoadd_item_container_solution_one_twin_normal(
+      ItemContainerSolutionOneTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_item_container_solution_one(raw);
+    return cst_encode_item_container_solution_one_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_item_container_solution_two(
-      ItemContainerSolutionTwo raw) {
+  List<dynamic>
+      cst_encode_box_autoadd_item_container_solution_one_twin_rust_async(
+          ItemContainerSolutionOneTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_item_container_solution_two(raw);
+    return cst_encode_item_container_solution_one_twin_rust_async(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_item_container_solution_one_twin_sync(
+      ItemContainerSolutionOneTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_item_container_solution_one_twin_sync(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_item_container_solution_two_twin_normal(
+      ItemContainerSolutionTwoTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_item_container_solution_two_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic>
+      cst_encode_box_autoadd_item_container_solution_two_twin_rust_async(
+          ItemContainerSolutionTwoTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_item_container_solution_two_twin_rust_async(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_item_container_solution_two_twin_sync(
+      ItemContainerSolutionTwoTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_item_container_solution_two_twin_sync(raw);
   }
 
   @protected
@@ -22662,8 +22886,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_item_container_solution_one(
-      ItemContainerSolutionOne raw) {
+  List<dynamic> cst_encode_item_container_solution_one_twin_normal(
+      ItemContainerSolutionOneTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_String(raw.name),
@@ -22673,8 +22897,52 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_item_container_solution_two(
-      ItemContainerSolutionTwo raw) {
+  List<dynamic> cst_encode_item_container_solution_one_twin_rust_async(
+      ItemContainerSolutionOneTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [
+      cst_encode_String(raw.name),
+      cst_encode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+          raw.items)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_item_container_solution_one_twin_sync(
+      ItemContainerSolutionOneTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [
+      cst_encode_String(raw.name),
+      cst_encode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+          raw.items)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_item_container_solution_two_twin_normal(
+      ItemContainerSolutionTwoTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [
+      cst_encode_String(raw.name),
+      cst_encode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+          raw.items)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_item_container_solution_two_twin_rust_async(
+      ItemContainerSolutionTwoTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [
+      cst_encode_String(raw.name),
+      cst_encode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+          raw.items)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_item_container_solution_two_twin_sync(
+      ItemContainerSolutionTwoTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_String(raw.name),
@@ -31069,12 +31337,52 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       PlatformInt64 self, SseSerializer serializer);
 
   @protected
-  void sse_encode_box_autoadd_item_container_solution_one(
-      ItemContainerSolutionOne self, SseSerializer serializer);
+  void sse_encode_box_autoadd_item_container_solution_one_twin_normal(
+      ItemContainerSolutionOneTwinNormal self, SseSerializer serializer);
 
   @protected
-  void sse_encode_box_autoadd_item_container_solution_two(
-      ItemContainerSolutionTwo self, SseSerializer serializer);
+  void sse_encode_box_autoadd_item_container_solution_one_twin_rust_async(
+      ItemContainerSolutionOneTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_item_container_solution_one_twin_rust_async_sse(
+      ItemContainerSolutionOneTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_item_container_solution_one_twin_sse(
+      ItemContainerSolutionOneTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_item_container_solution_one_twin_sync(
+      ItemContainerSolutionOneTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_item_container_solution_one_twin_sync_sse(
+      ItemContainerSolutionOneTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_item_container_solution_two_twin_normal(
+      ItemContainerSolutionTwoTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_item_container_solution_two_twin_rust_async(
+      ItemContainerSolutionTwoTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_item_container_solution_two_twin_rust_async_sse(
+      ItemContainerSolutionTwoTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_item_container_solution_two_twin_sse(
+      ItemContainerSolutionTwoTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_item_container_solution_two_twin_sync(
+      ItemContainerSolutionTwoTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_item_container_solution_two_twin_sync_sse(
+      ItemContainerSolutionTwoTwinSyncSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_kitchen_sink_twin_normal(
@@ -32990,12 +33298,52 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_isize(PlatformInt64 self, SseSerializer serializer);
 
   @protected
-  void sse_encode_item_container_solution_one(
-      ItemContainerSolutionOne self, SseSerializer serializer);
+  void sse_encode_item_container_solution_one_twin_normal(
+      ItemContainerSolutionOneTwinNormal self, SseSerializer serializer);
 
   @protected
-  void sse_encode_item_container_solution_two(
-      ItemContainerSolutionTwo self, SseSerializer serializer);
+  void sse_encode_item_container_solution_one_twin_rust_async(
+      ItemContainerSolutionOneTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_item_container_solution_one_twin_rust_async_sse(
+      ItemContainerSolutionOneTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_item_container_solution_one_twin_sse(
+      ItemContainerSolutionOneTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_item_container_solution_one_twin_sync(
+      ItemContainerSolutionOneTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_item_container_solution_one_twin_sync_sse(
+      ItemContainerSolutionOneTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_item_container_solution_two_twin_normal(
+      ItemContainerSolutionTwoTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_item_container_solution_two_twin_rust_async(
+      ItemContainerSolutionTwoTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_item_container_solution_two_twin_rust_async_sse(
+      ItemContainerSolutionTwoTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_item_container_solution_two_twin_sse(
+      ItemContainerSolutionTwoTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_item_container_solution_two_twin_sync(
+      ItemContainerSolutionTwoTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_item_container_solution_two_twin_sync_sse(
+      ItemContainerSolutionTwoTwinSyncSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_kitchen_sink_twin_normal(
@@ -37049,6 +37397,30 @@ class RustLibWire implements BaseWire {
           NativePortType port_, List<int> v) =>
       wasmModule.wire__crate__api__misc_example__handle_vec_u8_twin_normal(
           port_, v);
+
+  void wire__crate__api__misc_example__item_container_solution_one_twin_normal_create_twin_normal(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__misc_example__item_container_solution_one_twin_normal_create_twin_normal(
+              port_);
+
+  void wire__crate__api__misc_example__item_container_solution_one_twin_normal_get_item_contents_twin_normal(
+          NativePortType port_, List<dynamic> that) =>
+      wasmModule
+          .wire__crate__api__misc_example__item_container_solution_one_twin_normal_get_item_contents_twin_normal(
+              port_, that);
+
+  void wire__crate__api__misc_example__item_container_solution_two_twin_normal_create_twin_normal(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__misc_example__item_container_solution_two_twin_normal_create_twin_normal(
+              port_);
+
+  void wire__crate__api__misc_example__item_container_solution_two_twin_normal_get_item_contents_twin_normal(
+          NativePortType port_, List<dynamic> that) =>
+      wasmModule
+          .wire__crate__api__misc_example__item_container_solution_two_twin_normal_get_item_contents_twin_normal(
+              port_, that);
 
   void wire__crate__api__misc_example__list_of_primitive_enums_twin_normal(
           NativePortType port_, List<dynamic> weekdays) =>
@@ -47661,6 +48033,30 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_vec_u8_twin_rust_async(
               port_, v);
 
+  void wire__crate__api__pseudo_manual__misc_example_twin_rust_async__item_container_solution_one_twin_rust_async_create_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__misc_example_twin_rust_async__item_container_solution_one_twin_rust_async_create_twin_rust_async(
+              port_);
+
+  void wire__crate__api__pseudo_manual__misc_example_twin_rust_async__item_container_solution_one_twin_rust_async_get_item_contents_twin_rust_async(
+          NativePortType port_, List<dynamic> that) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__misc_example_twin_rust_async__item_container_solution_one_twin_rust_async_get_item_contents_twin_rust_async(
+              port_, that);
+
+  void wire__crate__api__pseudo_manual__misc_example_twin_rust_async__item_container_solution_two_twin_rust_async_create_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__misc_example_twin_rust_async__item_container_solution_two_twin_rust_async_create_twin_rust_async(
+              port_);
+
+  void wire__crate__api__pseudo_manual__misc_example_twin_rust_async__item_container_solution_two_twin_rust_async_get_item_contents_twin_rust_async(
+          NativePortType port_, List<dynamic> that) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__misc_example_twin_rust_async__item_container_solution_two_twin_rust_async_get_item_contents_twin_rust_async(
+              port_, that);
+
   void wire__crate__api__pseudo_manual__misc_example_twin_rust_async__list_of_primitive_enums_twin_rust_async(
           NativePortType port_, List<dynamic> weekdays) =>
       wasmModule
@@ -47740,6 +48136,42 @@ class RustLibWire implements BaseWire {
           int data_len_) =>
       wasmModule
           .wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__handle_vec_u8_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__item_container_solution_one_twin_rust_async_sse_create_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__item_container_solution_one_twin_rust_async_sse_create_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__item_container_solution_one_twin_rust_async_sse_get_item_contents_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__item_container_solution_one_twin_rust_async_sse_get_item_contents_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__item_container_solution_two_twin_rust_async_sse_create_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__item_container_solution_two_twin_rust_async_sse_create_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__item_container_solution_two_twin_rust_async_sse_get_item_contents_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__item_container_solution_two_twin_rust_async_sse_get_item_contents_twin_rust_async_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__list_of_primitive_enums_twin_rust_async_sse(
@@ -47832,6 +48264,42 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__misc_example_twin_sse__handle_vec_u8_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
+  void wire__crate__api__pseudo_manual__misc_example_twin_sse__item_container_solution_one_twin_sse_create_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__misc_example_twin_sse__item_container_solution_one_twin_sse_create_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__misc_example_twin_sse__item_container_solution_one_twin_sse_get_item_contents_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__misc_example_twin_sse__item_container_solution_one_twin_sse_get_item_contents_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__misc_example_twin_sse__item_container_solution_two_twin_sse_create_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__misc_example_twin_sse__item_container_solution_two_twin_sse_create_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__misc_example_twin_sse__item_container_solution_two_twin_sse_get_item_contents_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__misc_example_twin_sse__item_container_solution_two_twin_sse_get_item_contents_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
   void wire__crate__api__pseudo_manual__misc_example_twin_sse__list_of_primitive_enums_twin_sse(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
@@ -47905,6 +48373,30 @@ class RustLibWire implements BaseWire {
           wasmModule
               .wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_vec_u8_twin_sync(
                   v);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__misc_example_twin_sync__item_container_solution_one_twin_sync_create_twin_sync() =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__misc_example_twin_sync__item_container_solution_one_twin_sync_create_twin_sync();
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__misc_example_twin_sync__item_container_solution_one_twin_sync_get_item_contents_twin_sync(
+              List<dynamic> that) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__misc_example_twin_sync__item_container_solution_one_twin_sync_get_item_contents_twin_sync(
+                  that);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__misc_example_twin_sync__item_container_solution_two_twin_sync_create_twin_sync() =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__misc_example_twin_sync__item_container_solution_two_twin_sync_create_twin_sync();
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__misc_example_twin_sync__item_container_solution_two_twin_sync_get_item_contents_twin_sync(
+              List<dynamic> that) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__misc_example_twin_sync__item_container_solution_two_twin_sync_get_item_contents_twin_sync(
+                  that);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_example_twin_sync__list_of_primitive_enums_twin_sync(
@@ -47990,184 +48482,40 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__handle_vec_u8_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  void wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_create(
-          NativePortType port_) =>
-      wasmModule
-          .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_create(
-              port_);
-
-  void wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_create_twin_rust_async(
-          NativePortType port_) =>
-      wasmModule
-          .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_create_twin_rust_async(
-              port_);
-
-  void wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_create_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule
-          .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_create_twin_rust_async_sse(
-              port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_create_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule
-          .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_create_twin_sse(
-              port_, ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_create_twin_sync() =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_create_twin_sync();
-
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_create_twin_sync_sse(
+      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_twin_sync_sse_create_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
               int data_len_) =>
           wasmModule
-              .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_create_twin_sync_sse(
+              .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_twin_sync_sse_create_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  void wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_get_item_contents(
-          NativePortType port_, List<dynamic> that) =>
-      wasmModule
-          .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_get_item_contents(
-              port_, that);
-
-  void wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_get_item_contents_twin_rust_async(
-          NativePortType port_, List<dynamic> that) =>
-      wasmModule
-          .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_get_item_contents_twin_rust_async(
-              port_, that);
-
-  void wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_get_item_contents_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule
-          .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_get_item_contents_twin_rust_async_sse(
-              port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_get_item_contents_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule
-          .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_get_item_contents_twin_sse(
-              port_, ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_get_item_contents_twin_sync(
-              List<dynamic> that) =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_get_item_contents_twin_sync(
-                  that);
-
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_get_item_contents_twin_sync_sse(
+      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_twin_sync_sse_get_item_contents_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
               int data_len_) =>
           wasmModule
-              .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_get_item_contents_twin_sync_sse(
+              .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_twin_sync_sse_get_item_contents_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  void wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_create(
-          NativePortType port_) =>
-      wasmModule
-          .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_create(
-              port_);
-
-  void wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_create_twin_rust_async(
-          NativePortType port_) =>
-      wasmModule
-          .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_create_twin_rust_async(
-              port_);
-
-  void wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_create_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule
-          .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_create_twin_rust_async_sse(
-              port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_create_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule
-          .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_create_twin_sse(
-              port_, ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_create_twin_sync() =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_create_twin_sync();
-
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_create_twin_sync_sse(
+      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_twin_sync_sse_create_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
               int data_len_) =>
           wasmModule
-              .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_create_twin_sync_sse(
+              .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_twin_sync_sse_create_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  void wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_get_item_contents(
-          NativePortType port_, List<dynamic> that) =>
-      wasmModule
-          .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_get_item_contents(
-              port_, that);
-
-  void wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_get_item_contents_twin_rust_async(
-          NativePortType port_, List<dynamic> that) =>
-      wasmModule
-          .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_get_item_contents_twin_rust_async(
-              port_, that);
-
-  void wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_get_item_contents_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule
-          .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_get_item_contents_twin_rust_async_sse(
-              port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_get_item_contents_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule
-          .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_get_item_contents_twin_sse(
-              port_, ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_get_item_contents_twin_sync(
-              List<dynamic> that) =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_get_item_contents_twin_sync(
-                  that);
-
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_get_item_contents_twin_sync_sse(
+      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_twin_sync_sse_get_item_contents_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
               int data_len_) =>
           wasmModule
-              .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_get_item_contents_twin_sync_sse(
+              .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_twin_sync_sse_get_item_contents_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
@@ -58907,6 +59255,22 @@ class RustLibWasmModule implements WasmModule {
       NativePortType port_, List<int> v);
 
   external void
+      wire__crate__api__misc_example__item_container_solution_one_twin_normal_create_twin_normal(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__misc_example__item_container_solution_one_twin_normal_get_item_contents_twin_normal(
+          NativePortType port_, List<dynamic> that);
+
+  external void
+      wire__crate__api__misc_example__item_container_solution_two_twin_normal_create_twin_normal(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__misc_example__item_container_solution_two_twin_normal_get_item_contents_twin_normal(
+          NativePortType port_, List<dynamic> that);
+
+  external void
       wire__crate__api__misc_example__list_of_primitive_enums_twin_normal(
           NativePortType port_, List<dynamic> weekdays);
 
@@ -66343,6 +66707,22 @@ class RustLibWasmModule implements WasmModule {
           NativePortType port_, List<int> v);
 
   external void
+      wire__crate__api__pseudo_manual__misc_example_twin_rust_async__item_container_solution_one_twin_rust_async_create_twin_rust_async(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__misc_example_twin_rust_async__item_container_solution_one_twin_rust_async_get_item_contents_twin_rust_async(
+          NativePortType port_, List<dynamic> that);
+
+  external void
+      wire__crate__api__pseudo_manual__misc_example_twin_rust_async__item_container_solution_two_twin_rust_async_create_twin_rust_async(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__misc_example_twin_rust_async__item_container_solution_two_twin_rust_async_get_item_contents_twin_rust_async(
+          NativePortType port_, List<dynamic> that);
+
+  external void
       wire__crate__api__pseudo_manual__misc_example_twin_rust_async__list_of_primitive_enums_twin_rust_async(
           NativePortType port_, List<dynamic> weekdays);
 
@@ -66398,6 +66778,34 @@ class RustLibWasmModule implements WasmModule {
 
   external void
       wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__handle_vec_u8_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__item_container_solution_one_twin_rust_async_sse_create_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__item_container_solution_one_twin_rust_async_sse_get_item_contents_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__item_container_solution_two_twin_rust_async_sse_create_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__item_container_solution_two_twin_rust_async_sse_get_item_contents_twin_rust_async_sse(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -66474,6 +66882,34 @@ class RustLibWasmModule implements WasmModule {
           int data_len_);
 
   external void
+      wire__crate__api__pseudo_manual__misc_example_twin_sse__item_container_solution_one_twin_sse_create_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__misc_example_twin_sse__item_container_solution_one_twin_sse_get_item_contents_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__misc_example_twin_sse__item_container_solution_two_twin_sse_create_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__misc_example_twin_sse__item_container_solution_two_twin_sse_get_item_contents_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
       wire__crate__api__pseudo_manual__misc_example_twin_sse__list_of_primitive_enums_twin_sse(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
@@ -66520,6 +66956,20 @@ class RustLibWasmModule implements WasmModule {
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_vec_u8_twin_sync(
           List<int> v);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__misc_example_twin_sync__item_container_solution_one_twin_sync_create_twin_sync();
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__misc_example_twin_sync__item_container_solution_one_twin_sync_get_item_contents_twin_sync(
+          List<dynamic> that);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__misc_example_twin_sync__item_container_solution_two_twin_sync_create_twin_sync();
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__misc_example_twin_sync__item_container_solution_two_twin_sync_get_item_contents_twin_sync(
+          List<dynamic> that);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_example_twin_sync__list_of_primitive_enums_twin_sync(
@@ -66575,128 +67025,26 @@ class RustLibWasmModule implements WasmModule {
           int rust_vec_len_,
           int data_len_);
 
-  external void
-      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_create(
-          NativePortType port_);
-
-  external void
-      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_create_twin_rust_async(
-          NativePortType port_);
-
-  external void
-      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_create_twin_rust_async_sse(
-          NativePortType port_,
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_twin_sync_sse_create_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
-
-  external void
-      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_create_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_create_twin_sync();
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_create_twin_sync_sse(
+      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_twin_sync_sse_get_item_contents_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
-
-  external void
-      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_get_item_contents(
-          NativePortType port_, List<dynamic> that);
-
-  external void
-      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_get_item_contents_twin_rust_async(
-          NativePortType port_, List<dynamic> that);
-
-  external void
-      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_get_item_contents_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external void
-      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_get_item_contents_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_get_item_contents_twin_sync(
-          List<dynamic> that);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_one_get_item_contents_twin_sync_sse(
+      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_twin_sync_sse_create_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
-
-  external void
-      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_create(
-          NativePortType port_);
-
-  external void
-      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_create_twin_rust_async(
-          NativePortType port_);
-
-  external void
-      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_create_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external void
-      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_create_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_create_twin_sync();
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_create_twin_sync_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external void
-      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_get_item_contents(
-          NativePortType port_, List<dynamic> that);
-
-  external void
-      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_get_item_contents_twin_rust_async(
-          NativePortType port_, List<dynamic> that);
-
-  external void
-      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_get_item_contents_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external void
-      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_get_item_contents_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_get_item_contents_twin_sync(
-          List<dynamic> that);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_get_item_contents_twin_sync_sse(
+      wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_twin_sync_sse_get_item_contents_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);

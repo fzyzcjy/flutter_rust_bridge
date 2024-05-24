@@ -7,6 +7,7 @@ import '../auxiliary/sample_types.dart';
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+import 'pseudo_manual/misc_example_twin_sync_sse.dart';
 part 'misc_example.freezed.dart';
 
 // The type `MySizeFreezedTwinNormal` is not used by any `pub` functions, thus it is ignored.
@@ -142,6 +143,70 @@ class CTwinNormal {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is CTwinNormal && runtimeType == other.runtimeType && c == other.c;
+}
+
+class ItemContainerSolutionOneTwinNormal {
+  final String name;
+  final List<OpaqueItem> items;
+
+  const ItemContainerSolutionOneTwinNormal({
+    required this.name,
+    required this.items,
+  });
+
+  static Future<ItemContainerSolutionOneTwinNormal> createTwinNormal(
+          {dynamic hint}) =>
+      RustLib.instance.api
+          .crateApiMiscExampleItemContainerSolutionOneTwinNormalCreateTwinNormal(
+              hint: hint);
+
+  Future<Int32List> getItemContentsTwinNormal({dynamic hint}) => RustLib
+      .instance.api
+      .crateApiMiscExampleItemContainerSolutionOneTwinNormalGetItemContentsTwinNormal(
+          that: this, hint: hint);
+
+  @override
+  int get hashCode => name.hashCode ^ items.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ItemContainerSolutionOneTwinNormal &&
+          runtimeType == other.runtimeType &&
+          name == other.name &&
+          items == other.items;
+}
+
+class ItemContainerSolutionTwoTwinNormal {
+  String name;
+  final List<OpaqueItem> items;
+
+  ItemContainerSolutionTwoTwinNormal({
+    required this.name,
+    required this.items,
+  });
+
+  static Future<ItemContainerSolutionTwoTwinNormal> createTwinNormal(
+          {dynamic hint}) =>
+      RustLib.instance.api
+          .crateApiMiscExampleItemContainerSolutionTwoTwinNormalCreateTwinNormal(
+              hint: hint);
+
+  Future<Int32List> getItemContentsTwinNormal({dynamic hint}) => RustLib
+      .instance.api
+      .crateApiMiscExampleItemContainerSolutionTwoTwinNormalGetItemContentsTwinNormal(
+          that: this, hint: hint);
+
+  @override
+  int get hashCode => name.hashCode ^ items.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ItemContainerSolutionTwoTwinNormal &&
+          runtimeType == other.runtimeType &&
+          name == other.name &&
+          items == other.items;
 }
 
 class MyNestedStructTwinNormal {

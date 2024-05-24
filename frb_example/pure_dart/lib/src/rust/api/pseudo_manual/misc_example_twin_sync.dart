@@ -5,6 +5,7 @@
 
 import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
+import 'misc_example_twin_sync_sse.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'misc_example_twin_sync.freezed.dart';
@@ -151,6 +152,66 @@ class CTwinSync {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is CTwinSync && runtimeType == other.runtimeType && c == other.c;
+}
+
+class ItemContainerSolutionOneTwinSync {
+  final String name;
+  final List<OpaqueItem> items;
+
+  const ItemContainerSolutionOneTwinSync({
+    required this.name,
+    required this.items,
+  });
+
+  static ItemContainerSolutionOneTwinSync createTwinSync({dynamic hint}) => RustLib
+      .instance.api
+      .crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneTwinSyncCreateTwinSync(
+          hint: hint);
+
+  Int32List getItemContentsTwinSync({dynamic hint}) => RustLib.instance.api
+      .crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneTwinSyncGetItemContentsTwinSync(
+          that: this, hint: hint);
+
+  @override
+  int get hashCode => name.hashCode ^ items.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ItemContainerSolutionOneTwinSync &&
+          runtimeType == other.runtimeType &&
+          name == other.name &&
+          items == other.items;
+}
+
+class ItemContainerSolutionTwoTwinSync {
+  String name;
+  final List<OpaqueItem> items;
+
+  ItemContainerSolutionTwoTwinSync({
+    required this.name,
+    required this.items,
+  });
+
+  static ItemContainerSolutionTwoTwinSync createTwinSync({dynamic hint}) => RustLib
+      .instance.api
+      .crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoTwinSyncCreateTwinSync(
+          hint: hint);
+
+  Int32List getItemContentsTwinSync({dynamic hint}) => RustLib.instance.api
+      .crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoTwinSyncGetItemContentsTwinSync(
+          that: this, hint: hint);
+
+  @override
+  int get hashCode => name.hashCode ^ items.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ItemContainerSolutionTwoTwinSync &&
+          runtimeType == other.runtimeType &&
+          name == other.name &&
+          items == other.items;
 }
 
 class MyNestedStructTwinSync {

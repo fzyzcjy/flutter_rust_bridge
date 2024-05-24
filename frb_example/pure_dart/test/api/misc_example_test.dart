@@ -117,7 +117,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('ItemContainerSolutionOneTwinNormal', () async {
-    final container = await ItemContainerSolutionOneTwinNormal.createTwinNormal();
+    final container =
+        await ItemContainerSolutionOneTwinNormal.createTwinNormal();
 
     expect(await container.getItemContentsTwinNormal(), [100]);
 
@@ -128,7 +129,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('ItemContainerSolutionTwoTwinNormal', () async {
-    final container = await ItemContainerSolutionTwoTwinNormal.createTwinNormal();
+    final container =
+        await ItemContainerSolutionTwoTwinNormal.createTwinNormal();
 
     expect(await container.getItemContentsTwinNormal(), [100]);
 

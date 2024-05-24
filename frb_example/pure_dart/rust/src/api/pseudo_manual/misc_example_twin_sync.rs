@@ -164,13 +164,13 @@ pub(super) fn visibility_restricted_func_twin_sync() {}
 pub struct OpaqueItem(i32);
 
 // #1937
-pub struct ItemContainerSolutionOne {
+pub struct ItemContainerSolutionOneTwinSync {
     // TODO auto generate getter/setter
     pub name: String,
     items: Vec<OpaqueItem>,
 }
 
-impl ItemContainerSolutionOne {
+impl ItemContainerSolutionOneTwinSync {
     #[flutter_rust_bridge::frb(sync)]
     pub fn create_twin_sync() -> Self {
         Self {
@@ -187,13 +187,13 @@ impl ItemContainerSolutionOne {
 
 // #1937
 #[frb]
-pub struct ItemContainerSolutionTwo {
+pub struct ItemContainerSolutionTwoTwinSync {
     #[frb(non_final)]
     pub name: String,
     pub items: Vec<RustAutoOpaque<OpaqueItem>>,
 }
 
-impl ItemContainerSolutionTwo {
+impl ItemContainerSolutionTwoTwinSync {
     #[flutter_rust_bridge::frb(sync)]
     pub fn create_twin_sync() -> Self {
         Self {

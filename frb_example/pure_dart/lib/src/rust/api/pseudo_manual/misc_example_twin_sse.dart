@@ -5,6 +5,7 @@
 
 import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
+import 'misc_example_twin_sync_sse.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'misc_example_twin_sse.freezed.dart';
@@ -151,6 +152,70 @@ class CTwinSse {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is CTwinSse && runtimeType == other.runtimeType && c == other.c;
+}
+
+class ItemContainerSolutionOneTwinSse {
+  final String name;
+  final List<OpaqueItem> items;
+
+  const ItemContainerSolutionOneTwinSse({
+    required this.name,
+    required this.items,
+  });
+
+  static Future<ItemContainerSolutionOneTwinSse> createTwinSse(
+          {dynamic hint}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualMiscExampleTwinSseItemContainerSolutionOneTwinSseCreateTwinSse(
+              hint: hint);
+
+  Future<Int32List> getItemContentsTwinSse({dynamic hint}) => RustLib
+      .instance.api
+      .crateApiPseudoManualMiscExampleTwinSseItemContainerSolutionOneTwinSseGetItemContentsTwinSse(
+          that: this, hint: hint);
+
+  @override
+  int get hashCode => name.hashCode ^ items.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ItemContainerSolutionOneTwinSse &&
+          runtimeType == other.runtimeType &&
+          name == other.name &&
+          items == other.items;
+}
+
+class ItemContainerSolutionTwoTwinSse {
+  String name;
+  final List<OpaqueItem> items;
+
+  ItemContainerSolutionTwoTwinSse({
+    required this.name,
+    required this.items,
+  });
+
+  static Future<ItemContainerSolutionTwoTwinSse> createTwinSse(
+          {dynamic hint}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualMiscExampleTwinSseItemContainerSolutionTwoTwinSseCreateTwinSse(
+              hint: hint);
+
+  Future<Int32List> getItemContentsTwinSse({dynamic hint}) => RustLib
+      .instance.api
+      .crateApiPseudoManualMiscExampleTwinSseItemContainerSolutionTwoTwinSseGetItemContentsTwinSse(
+          that: this, hint: hint);
+
+  @override
+  int get hashCode => name.hashCode ^ items.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ItemContainerSolutionTwoTwinSse &&
+          runtimeType == other.runtimeType &&
+          name == other.name &&
+          items == other.items;
 }
 
 class MyNestedStructTwinSse {

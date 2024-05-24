@@ -182,7 +182,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.0.0-dev.35';
 
   @override
-  int get rustContentHash => 757105907;
+  int get rustContentHash => -1404158318;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -839,6 +839,22 @@ abstract class RustLibApi extends BaseApi {
 
   Future<Uint8List> crateApiMiscExampleHandleVecU8TwinNormal(
       {required List<int> v, dynamic hint});
+
+  Future<ItemContainerSolutionOneTwinNormal>
+      crateApiMiscExampleItemContainerSolutionOneTwinNormalCreateTwinNormal(
+          {dynamic hint});
+
+  Future<Int32List>
+      crateApiMiscExampleItemContainerSolutionOneTwinNormalGetItemContentsTwinNormal(
+          {required ItemContainerSolutionOneTwinNormal that, dynamic hint});
+
+  Future<ItemContainerSolutionTwoTwinNormal>
+      crateApiMiscExampleItemContainerSolutionTwoTwinNormalCreateTwinNormal(
+          {dynamic hint});
+
+  Future<Int32List>
+      crateApiMiscExampleItemContainerSolutionTwoTwinNormalGetItemContentsTwinNormal(
+          {required ItemContainerSolutionTwoTwinNormal that, dynamic hint});
 
   Future<List<WeekdaysTwinNormal>>
       crateApiMiscExampleListOfPrimitiveEnumsTwinNormal(
@@ -3224,6 +3240,22 @@ abstract class RustLibApi extends BaseApi {
       crateApiPseudoManualMiscExampleTwinRustAsyncHandleVecU8TwinRustAsync(
           {required List<int> v, dynamic hint});
 
+  Future<ItemContainerSolutionOneTwinRustAsync>
+      crateApiPseudoManualMiscExampleTwinRustAsyncItemContainerSolutionOneTwinRustAsyncCreateTwinRustAsync(
+          {dynamic hint});
+
+  Future<Int32List>
+      crateApiPseudoManualMiscExampleTwinRustAsyncItemContainerSolutionOneTwinRustAsyncGetItemContentsTwinRustAsync(
+          {required ItemContainerSolutionOneTwinRustAsync that, dynamic hint});
+
+  Future<ItemContainerSolutionTwoTwinRustAsync>
+      crateApiPseudoManualMiscExampleTwinRustAsyncItemContainerSolutionTwoTwinRustAsyncCreateTwinRustAsync(
+          {dynamic hint});
+
+  Future<Int32List>
+      crateApiPseudoManualMiscExampleTwinRustAsyncItemContainerSolutionTwoTwinRustAsyncGetItemContentsTwinRustAsync(
+          {required ItemContainerSolutionTwoTwinRustAsync that, dynamic hint});
+
   Future<List<WeekdaysTwinRustAsync>>
       crateApiPseudoManualMiscExampleTwinRustAsyncListOfPrimitiveEnumsTwinRustAsync(
           {required List<WeekdaysTwinRustAsync> weekdays, dynamic hint});
@@ -3260,53 +3292,21 @@ abstract class RustLibApi extends BaseApi {
   Uint8List crateApiPseudoManualMiscExampleTwinSyncHandleVecU8TwinSync(
       {required List<int> v, dynamic hint});
 
-  Future<ItemContainerSolutionOne>
-      crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneCreate(
+  ItemContainerSolutionOneTwinSync
+      crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneTwinSyncCreateTwinSync(
           {dynamic hint});
-
-  Future<ItemContainerSolutionOne>
-      crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneCreateTwinRustAsync(
-          {dynamic hint});
-
-  ItemContainerSolutionOne
-      crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneCreateTwinSync(
-          {dynamic hint});
-
-  Future<Int32List>
-      crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneGetItemContents(
-          {required ItemContainerSolutionOne that, dynamic hint});
-
-  Future<Int32List>
-      crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneGetItemContentsTwinRustAsync(
-          {required ItemContainerSolutionOne that, dynamic hint});
 
   Int32List
-      crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneGetItemContentsTwinSync(
-          {required ItemContainerSolutionOne that, dynamic hint});
+      crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneTwinSyncGetItemContentsTwinSync(
+          {required ItemContainerSolutionOneTwinSync that, dynamic hint});
 
-  Future<ItemContainerSolutionTwo>
-      crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoCreate(
+  ItemContainerSolutionTwoTwinSync
+      crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoTwinSyncCreateTwinSync(
           {dynamic hint});
-
-  Future<ItemContainerSolutionTwo>
-      crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoCreateTwinRustAsync(
-          {dynamic hint});
-
-  ItemContainerSolutionTwo
-      crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoCreateTwinSync(
-          {dynamic hint});
-
-  Future<Int32List>
-      crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoGetItemContents(
-          {required ItemContainerSolutionTwo that, dynamic hint});
-
-  Future<Int32List>
-      crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoGetItemContentsTwinRustAsync(
-          {required ItemContainerSolutionTwo that, dynamic hint});
 
   Int32List
-      crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoGetItemContentsTwinSync(
-          {required ItemContainerSolutionTwo that, dynamic hint});
+      crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoTwinSyncGetItemContentsTwinSync(
+          {required ItemContainerSolutionTwoTwinSync that, dynamic hint});
 
   List<WeekdaysTwinSync>
       crateApiPseudoManualMiscExampleTwinSyncListOfPrimitiveEnumsTwinSync(
@@ -10676,6 +10676,130 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         debugName: "handle_vec_u8_twin_normal",
         argNames: ["v"],
       );
+
+  @override
+  Future<ItemContainerSolutionOneTwinNormal>
+      crateApiMiscExampleItemContainerSolutionOneTwinNormalCreateTwinNormal(
+          {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 204, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_item_container_solution_one_twin_normal,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMiscExampleItemContainerSolutionOneTwinNormalCreateTwinNormalConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMiscExampleItemContainerSolutionOneTwinNormalCreateTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "item_container_solution_one_twin_normal_create_twin_normal",
+            argNames: [],
+          );
+
+  @override
+  Future<Int32List>
+      crateApiMiscExampleItemContainerSolutionOneTwinNormalGetItemContentsTwinNormal(
+          {required ItemContainerSolutionOneTwinNormal that, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_box_autoadd_item_container_solution_one_twin_normal(
+            that, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 205, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_i_32_strict,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMiscExampleItemContainerSolutionOneTwinNormalGetItemContentsTwinNormalConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMiscExampleItemContainerSolutionOneTwinNormalGetItemContentsTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "item_container_solution_one_twin_normal_get_item_contents_twin_normal",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<ItemContainerSolutionTwoTwinNormal>
+      crateApiMiscExampleItemContainerSolutionTwoTwinNormalCreateTwinNormal(
+          {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 206, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_item_container_solution_two_twin_normal,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMiscExampleItemContainerSolutionTwoTwinNormalCreateTwinNormalConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMiscExampleItemContainerSolutionTwoTwinNormalCreateTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "item_container_solution_two_twin_normal_create_twin_normal",
+            argNames: [],
+          );
+
+  @override
+  Future<Int32List>
+      crateApiMiscExampleItemContainerSolutionTwoTwinNormalGetItemContentsTwinNormal(
+          {required ItemContainerSolutionTwoTwinNormal that, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_box_autoadd_item_container_solution_two_twin_normal(
+            that, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 207, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_i_32_strict,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMiscExampleItemContainerSolutionTwoTwinNormalGetItemContentsTwinNormalConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMiscExampleItemContainerSolutionTwoTwinNormalGetItemContentsTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "item_container_solution_two_twin_normal_get_item_contents_twin_normal",
+            argNames: ["that"],
+          );
 
   @override
   Future<List<WeekdaysTwinNormal>>
@@ -29101,6 +29225,132 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
+  Future<ItemContainerSolutionOneTwinRustAsync>
+      crateApiPseudoManualMiscExampleTwinRustAsyncItemContainerSolutionOneTwinRustAsyncCreateTwinRustAsync(
+          {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 833, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_item_container_solution_one_twin_rust_async,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualMiscExampleTwinRustAsyncItemContainerSolutionOneTwinRustAsyncCreateTwinRustAsyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualMiscExampleTwinRustAsyncItemContainerSolutionOneTwinRustAsyncCreateTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "item_container_solution_one_twin_rust_async_create_twin_rust_async",
+            argNames: [],
+          );
+
+  @override
+  Future<Int32List>
+      crateApiPseudoManualMiscExampleTwinRustAsyncItemContainerSolutionOneTwinRustAsyncGetItemContentsTwinRustAsync(
+          {required ItemContainerSolutionOneTwinRustAsync that, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_box_autoadd_item_container_solution_one_twin_rust_async(
+            that, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 834, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_i_32_strict,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualMiscExampleTwinRustAsyncItemContainerSolutionOneTwinRustAsyncGetItemContentsTwinRustAsyncConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualMiscExampleTwinRustAsyncItemContainerSolutionOneTwinRustAsyncGetItemContentsTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "item_container_solution_one_twin_rust_async_get_item_contents_twin_rust_async",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<ItemContainerSolutionTwoTwinRustAsync>
+      crateApiPseudoManualMiscExampleTwinRustAsyncItemContainerSolutionTwoTwinRustAsyncCreateTwinRustAsync(
+          {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 835, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_item_container_solution_two_twin_rust_async,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualMiscExampleTwinRustAsyncItemContainerSolutionTwoTwinRustAsyncCreateTwinRustAsyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualMiscExampleTwinRustAsyncItemContainerSolutionTwoTwinRustAsyncCreateTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "item_container_solution_two_twin_rust_async_create_twin_rust_async",
+            argNames: [],
+          );
+
+  @override
+  Future<Int32List>
+      crateApiPseudoManualMiscExampleTwinRustAsyncItemContainerSolutionTwoTwinRustAsyncGetItemContentsTwinRustAsync(
+          {required ItemContainerSolutionTwoTwinRustAsync that, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_box_autoadd_item_container_solution_two_twin_rust_async(
+            that, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 836, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_i_32_strict,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualMiscExampleTwinRustAsyncItemContainerSolutionTwoTwinRustAsyncGetItemContentsTwinRustAsyncConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualMiscExampleTwinRustAsyncItemContainerSolutionTwoTwinRustAsyncGetItemContentsTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "item_container_solution_two_twin_rust_async_get_item_contents_twin_rust_async",
+            argNames: ["that"],
+          );
+
+  @override
   Future<List<WeekdaysTwinRustAsync>>
       crateApiPseudoManualMiscExampleTwinRustAsyncListOfPrimitiveEnumsTwinRustAsync(
           {required List<WeekdaysTwinRustAsync> weekdays, dynamic hint}) {
@@ -29390,66 +29640,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  Future<ItemContainerSolutionOne>
-      crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneCreate(
-          {dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 204, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_item_container_solution_one,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneCreateConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneCreateConstMeta =>
-          const TaskConstMeta(
-            debugName: "item_container_solution_one_create",
-            argNames: [],
-          );
-
-  @override
-  Future<ItemContainerSolutionOne>
-      crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneCreateTwinRustAsync(
-          {dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 833, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_item_container_solution_one,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneCreateTwinRustAsyncConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneCreateTwinRustAsyncConstMeta =>
-          const TaskConstMeta(
-            debugName: "item_container_solution_one_create_twin_rust_async",
-            argNames: [],
-          );
-
-  @override
-  ItemContainerSolutionOne
-      crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneCreateTwinSync(
+  ItemContainerSolutionOneTwinSync
+      crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneTwinSyncCreateTwinSync(
           {dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -29457,11 +29649,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 847)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_item_container_solution_one,
+        decodeSuccessData: sse_decode_item_container_solution_one_twin_sync,
         decodeErrorData: null,
       ),
       constMeta:
-          kCrateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneCreateTwinSyncConstMeta,
+          kCrateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneTwinSyncCreateTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
@@ -29469,81 +29661,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-      get kCrateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneCreateTwinSyncConstMeta =>
+      get kCrateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneTwinSyncCreateTwinSyncConstMeta =>
           const TaskConstMeta(
-            debugName: "item_container_solution_one_create_twin_sync",
+            debugName: "item_container_solution_one_twin_sync_create_twin_sync",
             argNames: [],
           );
 
   @override
-  Future<Int32List>
-      crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneGetItemContents(
-          {required ItemContainerSolutionOne that, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_box_autoadd_item_container_solution_one(that, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 205, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_i_32_strict,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneGetItemContentsConstMeta,
-      argValues: [that],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneGetItemContentsConstMeta =>
-          const TaskConstMeta(
-            debugName: "item_container_solution_one_get_item_contents",
-            argNames: ["that"],
-          );
-
-  @override
-  Future<Int32List>
-      crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneGetItemContentsTwinRustAsync(
-          {required ItemContainerSolutionOne that, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_box_autoadd_item_container_solution_one(that, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 834, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_i_32_strict,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneGetItemContentsTwinRustAsyncConstMeta,
-      argValues: [that],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneGetItemContentsTwinRustAsyncConstMeta =>
-          const TaskConstMeta(
-            debugName:
-                "item_container_solution_one_get_item_contents_twin_rust_async",
-            argNames: ["that"],
-          );
-
-  @override
   Int32List
-      crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneGetItemContentsTwinSync(
-          {required ItemContainerSolutionOne that, dynamic hint}) {
+      crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneTwinSyncGetItemContentsTwinSync(
+          {required ItemContainerSolutionOneTwinSync that, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_box_autoadd_item_container_solution_one(that, serializer);
+        sse_encode_box_autoadd_item_container_solution_one_twin_sync(
+            that, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 848)!;
       },
       codec: SseCodec(
@@ -29551,7 +29683,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: null,
       ),
       constMeta:
-          kCrateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneGetItemContentsTwinSyncConstMeta,
+          kCrateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneTwinSyncGetItemContentsTwinSyncConstMeta,
       argValues: [that],
       apiImpl: this,
       hint: hint,
@@ -29559,74 +29691,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-      get kCrateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneGetItemContentsTwinSyncConstMeta =>
+      get kCrateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneTwinSyncGetItemContentsTwinSyncConstMeta =>
           const TaskConstMeta(
             debugName:
-                "item_container_solution_one_get_item_contents_twin_sync",
+                "item_container_solution_one_twin_sync_get_item_contents_twin_sync",
             argNames: ["that"],
           );
 
   @override
-  Future<ItemContainerSolutionTwo>
-      crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoCreate(
-          {dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 206, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_item_container_solution_two,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoCreateConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoCreateConstMeta =>
-          const TaskConstMeta(
-            debugName: "item_container_solution_two_create",
-            argNames: [],
-          );
-
-  @override
-  Future<ItemContainerSolutionTwo>
-      crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoCreateTwinRustAsync(
-          {dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 835, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_item_container_solution_two,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoCreateTwinRustAsyncConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoCreateTwinRustAsyncConstMeta =>
-          const TaskConstMeta(
-            debugName: "item_container_solution_two_create_twin_rust_async",
-            argNames: [],
-          );
-
-  @override
-  ItemContainerSolutionTwo
-      crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoCreateTwinSync(
+  ItemContainerSolutionTwoTwinSync
+      crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoTwinSyncCreateTwinSync(
           {dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -29634,11 +29708,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 849)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_item_container_solution_two,
+        decodeSuccessData: sse_decode_item_container_solution_two_twin_sync,
         decodeErrorData: null,
       ),
       constMeta:
-          kCrateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoCreateTwinSyncConstMeta,
+          kCrateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoTwinSyncCreateTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
@@ -29646,81 +29720,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-      get kCrateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoCreateTwinSyncConstMeta =>
+      get kCrateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoTwinSyncCreateTwinSyncConstMeta =>
           const TaskConstMeta(
-            debugName: "item_container_solution_two_create_twin_sync",
+            debugName: "item_container_solution_two_twin_sync_create_twin_sync",
             argNames: [],
           );
 
   @override
-  Future<Int32List>
-      crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoGetItemContents(
-          {required ItemContainerSolutionTwo that, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_box_autoadd_item_container_solution_two(that, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 207, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_i_32_strict,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoGetItemContentsConstMeta,
-      argValues: [that],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoGetItemContentsConstMeta =>
-          const TaskConstMeta(
-            debugName: "item_container_solution_two_get_item_contents",
-            argNames: ["that"],
-          );
-
-  @override
-  Future<Int32List>
-      crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoGetItemContentsTwinRustAsync(
-          {required ItemContainerSolutionTwo that, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_box_autoadd_item_container_solution_two(that, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 836, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_i_32_strict,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoGetItemContentsTwinRustAsyncConstMeta,
-      argValues: [that],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoGetItemContentsTwinRustAsyncConstMeta =>
-          const TaskConstMeta(
-            debugName:
-                "item_container_solution_two_get_item_contents_twin_rust_async",
-            argNames: ["that"],
-          );
-
-  @override
   Int32List
-      crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoGetItemContentsTwinSync(
-          {required ItemContainerSolutionTwo that, dynamic hint}) {
+      crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoTwinSyncGetItemContentsTwinSync(
+          {required ItemContainerSolutionTwoTwinSync that, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_box_autoadd_item_container_solution_two(that, serializer);
+        sse_encode_box_autoadd_item_container_solution_two_twin_sync(
+            that, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 850)!;
       },
       codec: SseCodec(
@@ -29728,7 +29742,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: null,
       ),
       constMeta:
-          kCrateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoGetItemContentsTwinSyncConstMeta,
+          kCrateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoTwinSyncGetItemContentsTwinSyncConstMeta,
       argValues: [that],
       apiImpl: this,
       hint: hint,
@@ -29736,10 +29750,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-      get kCrateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoGetItemContentsTwinSyncConstMeta =>
+      get kCrateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoTwinSyncGetItemContentsTwinSyncConstMeta =>
           const TaskConstMeta(
             debugName:
-                "item_container_solution_two_get_item_contents_twin_sync",
+                "item_container_solution_two_twin_sync_get_item_contents_twin_sync",
             argNames: ["that"],
           );
 
@@ -42917,17 +42931,51 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  ItemContainerSolutionOne dco_decode_box_autoadd_item_container_solution_one(
-      dynamic raw) {
+  ItemContainerSolutionOneTwinNormal
+      dco_decode_box_autoadd_item_container_solution_one_twin_normal(
+          dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return dco_decode_item_container_solution_one(raw);
+    return dco_decode_item_container_solution_one_twin_normal(raw);
   }
 
   @protected
-  ItemContainerSolutionTwo dco_decode_box_autoadd_item_container_solution_two(
-      dynamic raw) {
+  ItemContainerSolutionOneTwinRustAsync
+      dco_decode_box_autoadd_item_container_solution_one_twin_rust_async(
+          dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return dco_decode_item_container_solution_two(raw);
+    return dco_decode_item_container_solution_one_twin_rust_async(raw);
+  }
+
+  @protected
+  ItemContainerSolutionOneTwinSync
+      dco_decode_box_autoadd_item_container_solution_one_twin_sync(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_item_container_solution_one_twin_sync(raw);
+  }
+
+  @protected
+  ItemContainerSolutionTwoTwinNormal
+      dco_decode_box_autoadd_item_container_solution_two_twin_normal(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_item_container_solution_two_twin_normal(raw);
+  }
+
+  @protected
+  ItemContainerSolutionTwoTwinRustAsync
+      dco_decode_box_autoadd_item_container_solution_two_twin_rust_async(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_item_container_solution_two_twin_rust_async(raw);
+  }
+
+  @protected
+  ItemContainerSolutionTwoTwinSync
+      dco_decode_box_autoadd_item_container_solution_two_twin_sync(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_item_container_solution_two_twin_sync(raw);
   }
 
   @protected
@@ -45342,12 +45390,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  ItemContainerSolutionOne dco_decode_item_container_solution_one(dynamic raw) {
+  ItemContainerSolutionOneTwinNormal
+      dco_decode_item_container_solution_one_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     final arr = raw as List<dynamic>;
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-    return ItemContainerSolutionOne(
+    return ItemContainerSolutionOneTwinNormal(
       name: dco_decode_String(arr[0]),
       items:
           dco_decode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
@@ -45356,12 +45405,73 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  ItemContainerSolutionTwo dco_decode_item_container_solution_two(dynamic raw) {
+  ItemContainerSolutionOneTwinRustAsync
+      dco_decode_item_container_solution_one_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     final arr = raw as List<dynamic>;
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-    return ItemContainerSolutionTwo(
+    return ItemContainerSolutionOneTwinRustAsync(
+      name: dco_decode_String(arr[0]),
+      items:
+          dco_decode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+              arr[1]),
+    );
+  }
+
+  @protected
+  ItemContainerSolutionOneTwinSync
+      dco_decode_item_container_solution_one_twin_sync(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return ItemContainerSolutionOneTwinSync(
+      name: dco_decode_String(arr[0]),
+      items:
+          dco_decode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+              arr[1]),
+    );
+  }
+
+  @protected
+  ItemContainerSolutionTwoTwinNormal
+      dco_decode_item_container_solution_two_twin_normal(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return ItemContainerSolutionTwoTwinNormal(
+      name: dco_decode_String(arr[0]),
+      items:
+          dco_decode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+              arr[1]),
+    );
+  }
+
+  @protected
+  ItemContainerSolutionTwoTwinRustAsync
+      dco_decode_item_container_solution_two_twin_rust_async(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return ItemContainerSolutionTwoTwinRustAsync(
+      name: dco_decode_String(arr[0]),
+      items:
+          dco_decode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+              arr[1]),
+    );
+  }
+
+  @protected
+  ItemContainerSolutionTwoTwinSync
+      dco_decode_item_container_solution_two_twin_sync(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return ItemContainerSolutionTwoTwinSync(
       name: dco_decode_String(arr[0]),
       items:
           dco_decode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
@@ -52647,17 +52757,53 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  ItemContainerSolutionOne sse_decode_box_autoadd_item_container_solution_one(
-      SseDeserializer deserializer) {
+  ItemContainerSolutionOneTwinNormal
+      sse_decode_box_autoadd_item_container_solution_one_twin_normal(
+          SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return (sse_decode_item_container_solution_one(deserializer));
+    return (sse_decode_item_container_solution_one_twin_normal(deserializer));
   }
 
   @protected
-  ItemContainerSolutionTwo sse_decode_box_autoadd_item_container_solution_two(
-      SseDeserializer deserializer) {
+  ItemContainerSolutionOneTwinRustAsync
+      sse_decode_box_autoadd_item_container_solution_one_twin_rust_async(
+          SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return (sse_decode_item_container_solution_two(deserializer));
+    return (sse_decode_item_container_solution_one_twin_rust_async(
+        deserializer));
+  }
+
+  @protected
+  ItemContainerSolutionOneTwinSync
+      sse_decode_box_autoadd_item_container_solution_one_twin_sync(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_item_container_solution_one_twin_sync(deserializer));
+  }
+
+  @protected
+  ItemContainerSolutionTwoTwinNormal
+      sse_decode_box_autoadd_item_container_solution_two_twin_normal(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_item_container_solution_two_twin_normal(deserializer));
+  }
+
+  @protected
+  ItemContainerSolutionTwoTwinRustAsync
+      sse_decode_box_autoadd_item_container_solution_two_twin_rust_async(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_item_container_solution_two_twin_rust_async(
+        deserializer));
+  }
+
+  @protected
+  ItemContainerSolutionTwoTwinSync
+      sse_decode_box_autoadd_item_container_solution_two_twin_sync(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_item_container_solution_two_twin_sync(deserializer));
   }
 
   @protected
@@ -55107,25 +55253,77 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  ItemContainerSolutionOne sse_decode_item_container_solution_one(
-      SseDeserializer deserializer) {
+  ItemContainerSolutionOneTwinNormal
+      sse_decode_item_container_solution_one_twin_normal(
+          SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_name = sse_decode_String(deserializer);
     var var_items =
         sse_decode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
             deserializer);
-    return ItemContainerSolutionOne(name: var_name, items: var_items);
+    return ItemContainerSolutionOneTwinNormal(name: var_name, items: var_items);
   }
 
   @protected
-  ItemContainerSolutionTwo sse_decode_item_container_solution_two(
-      SseDeserializer deserializer) {
+  ItemContainerSolutionOneTwinRustAsync
+      sse_decode_item_container_solution_one_twin_rust_async(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_name = sse_decode_String(deserializer);
+    var var_items =
+        sse_decode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+            deserializer);
+    return ItemContainerSolutionOneTwinRustAsync(
+        name: var_name, items: var_items);
+  }
+
+  @protected
+  ItemContainerSolutionOneTwinSync
+      sse_decode_item_container_solution_one_twin_sync(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_name = sse_decode_String(deserializer);
+    var var_items =
+        sse_decode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+            deserializer);
+    return ItemContainerSolutionOneTwinSync(name: var_name, items: var_items);
+  }
+
+  @protected
+  ItemContainerSolutionTwoTwinNormal
+      sse_decode_item_container_solution_two_twin_normal(
+          SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_name = sse_decode_String(deserializer);
     var var_items =
         sse_decode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
             deserializer);
-    return ItemContainerSolutionTwo(name: var_name, items: var_items);
+    return ItemContainerSolutionTwoTwinNormal(name: var_name, items: var_items);
+  }
+
+  @protected
+  ItemContainerSolutionTwoTwinRustAsync
+      sse_decode_item_container_solution_two_twin_rust_async(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_name = sse_decode_String(deserializer);
+    var var_items =
+        sse_decode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+            deserializer);
+    return ItemContainerSolutionTwoTwinRustAsync(
+        name: var_name, items: var_items);
+  }
+
+  @protected
+  ItemContainerSolutionTwoTwinSync
+      sse_decode_item_container_solution_two_twin_sync(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_name = sse_decode_String(deserializer);
+    var var_items =
+        sse_decode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+            deserializer);
+    return ItemContainerSolutionTwoTwinSync(name: var_name, items: var_items);
   }
 
   @protected
@@ -62938,17 +63136,45 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_box_autoadd_item_container_solution_one(
-      ItemContainerSolutionOne self, SseSerializer serializer) {
+  void sse_encode_box_autoadd_item_container_solution_one_twin_normal(
+      ItemContainerSolutionOneTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_item_container_solution_one(self, serializer);
+    sse_encode_item_container_solution_one_twin_normal(self, serializer);
   }
 
   @protected
-  void sse_encode_box_autoadd_item_container_solution_two(
-      ItemContainerSolutionTwo self, SseSerializer serializer) {
+  void sse_encode_box_autoadd_item_container_solution_one_twin_rust_async(
+      ItemContainerSolutionOneTwinRustAsync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_item_container_solution_two(self, serializer);
+    sse_encode_item_container_solution_one_twin_rust_async(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_item_container_solution_one_twin_sync(
+      ItemContainerSolutionOneTwinSync self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_item_container_solution_one_twin_sync(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_item_container_solution_two_twin_normal(
+      ItemContainerSolutionTwoTwinNormal self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_item_container_solution_two_twin_normal(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_item_container_solution_two_twin_rust_async(
+      ItemContainerSolutionTwoTwinRustAsync self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_item_container_solution_two_twin_rust_async(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_item_container_solution_two_twin_sync(
+      ItemContainerSolutionTwoTwinSync self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_item_container_solution_two_twin_sync(self, serializer);
   }
 
   @protected
@@ -65061,8 +65287,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_item_container_solution_one(
-      ItemContainerSolutionOne self, SseSerializer serializer) {
+  void sse_encode_item_container_solution_one_twin_normal(
+      ItemContainerSolutionOneTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(self.name, serializer);
     sse_encode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
@@ -65070,8 +65296,44 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_item_container_solution_two(
-      ItemContainerSolutionTwo self, SseSerializer serializer) {
+  void sse_encode_item_container_solution_one_twin_rust_async(
+      ItemContainerSolutionOneTwinRustAsync self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(self.name, serializer);
+    sse_encode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+        self.items, serializer);
+  }
+
+  @protected
+  void sse_encode_item_container_solution_one_twin_sync(
+      ItemContainerSolutionOneTwinSync self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(self.name, serializer);
+    sse_encode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+        self.items, serializer);
+  }
+
+  @protected
+  void sse_encode_item_container_solution_two_twin_normal(
+      ItemContainerSolutionTwoTwinNormal self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(self.name, serializer);
+    sse_encode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+        self.items, serializer);
+  }
+
+  @protected
+  void sse_encode_item_container_solution_two_twin_rust_async(
+      ItemContainerSolutionTwoTwinRustAsync self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(self.name, serializer);
+    sse_encode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+        self.items, serializer);
+  }
+
+  @protected
+  void sse_encode_item_container_solution_two_twin_sync(
+      ItemContainerSolutionTwoTwinSync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(self.name, serializer);
     sse_encode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(

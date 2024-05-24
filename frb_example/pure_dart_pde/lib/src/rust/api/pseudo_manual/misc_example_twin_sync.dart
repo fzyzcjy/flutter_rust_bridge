@@ -172,41 +172,22 @@ class CTwinSync {
       other is CTwinSync && runtimeType == other.runtimeType && c == other.c;
 }
 
-class ItemContainerSolutionOne {
+class ItemContainerSolutionOneTwinSync {
   final String name;
   final List<OpaqueItem> items;
 
-  const ItemContainerSolutionOne({
+  const ItemContainerSolutionOneTwinSync({
     required this.name,
     required this.items,
   });
 
-  static Future<ItemContainerSolutionOne> create({dynamic hint}) => RustLib
+  static ItemContainerSolutionOneTwinSync createTwinSync({dynamic hint}) => RustLib
       .instance.api
-      .crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneCreate(
+      .crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneTwinSyncCreateTwinSync(
           hint: hint);
-
-  static Future<ItemContainerSolutionOne> createTwinRustAsync({dynamic hint}) =>
-      RustLib.instance.api
-          .crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneCreateTwinRustAsync(
-              hint: hint);
-
-  static ItemContainerSolutionOne createTwinSync({dynamic hint}) => RustLib
-      .instance.api
-      .crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneCreateTwinSync(
-          hint: hint);
-
-  Future<Int32List> getItemContents({dynamic hint}) => RustLib.instance.api
-      .crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneGetItemContents(
-          that: this, hint: hint);
-
-  Future<Int32List> getItemContentsTwinRustAsync({dynamic hint}) => RustLib
-      .instance.api
-      .crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneGetItemContentsTwinRustAsync(
-          that: this, hint: hint);
 
   Int32List getItemContentsTwinSync({dynamic hint}) => RustLib.instance.api
-      .crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneGetItemContentsTwinSync(
+      .crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneTwinSyncGetItemContentsTwinSync(
           that: this, hint: hint);
 
   @override
@@ -215,47 +196,28 @@ class ItemContainerSolutionOne {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ItemContainerSolutionOne &&
+      other is ItemContainerSolutionOneTwinSync &&
           runtimeType == other.runtimeType &&
           name == other.name &&
           items == other.items;
 }
 
-class ItemContainerSolutionTwo {
+class ItemContainerSolutionTwoTwinSync {
   String name;
   final List<OpaqueItem> items;
 
-  ItemContainerSolutionTwo({
+  ItemContainerSolutionTwoTwinSync({
     required this.name,
     required this.items,
   });
 
-  static Future<ItemContainerSolutionTwo> create({dynamic hint}) => RustLib
+  static ItemContainerSolutionTwoTwinSync createTwinSync({dynamic hint}) => RustLib
       .instance.api
-      .crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoCreate(
+      .crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoTwinSyncCreateTwinSync(
           hint: hint);
-
-  static Future<ItemContainerSolutionTwo> createTwinRustAsync({dynamic hint}) =>
-      RustLib.instance.api
-          .crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoCreateTwinRustAsync(
-              hint: hint);
-
-  static ItemContainerSolutionTwo createTwinSync({dynamic hint}) => RustLib
-      .instance.api
-      .crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoCreateTwinSync(
-          hint: hint);
-
-  Future<Int32List> getItemContents({dynamic hint}) => RustLib.instance.api
-      .crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoGetItemContents(
-          that: this, hint: hint);
-
-  Future<Int32List> getItemContentsTwinRustAsync({dynamic hint}) => RustLib
-      .instance.api
-      .crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoGetItemContentsTwinRustAsync(
-          that: this, hint: hint);
 
   Int32List getItemContentsTwinSync({dynamic hint}) => RustLib.instance.api
-      .crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoGetItemContentsTwinSync(
+      .crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionTwoTwinSyncGetItemContentsTwinSync(
           that: this, hint: hint);
 
   @override
@@ -264,7 +226,7 @@ class ItemContainerSolutionTwo {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ItemContainerSolutionTwo &&
+      other is ItemContainerSolutionTwoTwinSync &&
           runtimeType == other.runtimeType &&
           name == other.name &&
           items == other.items;

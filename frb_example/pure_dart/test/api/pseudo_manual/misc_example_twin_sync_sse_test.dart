@@ -121,10 +121,11 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(structResp.height, 100 + 10000);
   });
 
-  test('ItemContainerSolutionOne', () async {
-    final container = await ItemContainerSolutionOne.create();
+  test('ItemContainerSolutionOneTwinSyncSse', () async {
+    final container =
+        await ItemContainerSolutionOneTwinSyncSse.createTwinSyncSse();
 
-    expect(await container.getItemContents(), [100]);
+    expect(await container.getItemContentsTwinSyncSse(), [100]);
 
     // TODO
     // expect(container.name, 'hi');
@@ -132,10 +133,11 @@ Future<void> main({bool skipRustLibInit = false}) async {
     // expect(container.name, 'hello');
   });
 
-  test('ItemContainerSolutionTwo', () async {
-    final container = await ItemContainerSolutionTwo.create();
+  test('ItemContainerSolutionTwoTwinSyncSse', () async {
+    final container =
+        await ItemContainerSolutionTwoTwinSyncSse.createTwinSyncSse();
 
-    expect(await container.getItemContents(), [100]);
+    expect(await container.getItemContentsTwinSyncSse(), [100]);
 
     expect(container.name, 'hi');
     container.name = 'hello';
