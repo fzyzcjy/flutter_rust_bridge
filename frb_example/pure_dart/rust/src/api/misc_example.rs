@@ -149,21 +149,21 @@ pub(super) fn visibility_restricted_func_twin_normal() {}
 // #1937
 // Suppose this is opaque
 #[frb(opaque)]
-pub struct OpaqueItem(i32);
+pub struct OpaqueItemTwinNormal(i32);
 
 // #1937
 #[frb(opaque)]
 pub struct ItemContainerSolutionOneTwinNormal {
     // TODO auto generate getter/setter
     pub name: String,
-    items: Vec<OpaqueItem>,
+    items: Vec<OpaqueItemTwinNormal>,
 }
 
 impl ItemContainerSolutionOneTwinNormal {
     pub fn create_twin_normal() -> Self {
         Self {
             name: "hi".to_owned(),
-            items: vec![OpaqueItem(100)],
+            items: vec![OpaqueItemTwinNormal(100)],
         }
     }
 
@@ -177,14 +177,14 @@ impl ItemContainerSolutionOneTwinNormal {
 pub struct ItemContainerSolutionTwoTwinNormal {
     #[frb(non_final)]
     pub name: String,
-    pub items: Vec<RustAutoOpaque<OpaqueItem>>,
+    pub items: Vec<RustAutoOpaque<OpaqueItemTwinNormal>>,
 }
 
 impl ItemContainerSolutionTwoTwinNormal {
     pub fn create_twin_normal() -> Self {
         Self {
             name: "hi".to_owned(),
-            items: vec![RustAutoOpaque::new(OpaqueItem(100))],
+            items: vec![RustAutoOpaque::new(OpaqueItemTwinNormal(100))],
         }
     }
 
