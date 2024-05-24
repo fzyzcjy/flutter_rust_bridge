@@ -145,7 +145,9 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::Backtrace => {
                     return Some(format!("{};", lang.throw_unreachable("")));
                 }
-                IrTypeDelegate::AnyhowException => r#"anyhow::anyhow!("{}", inner)"#.to_owned(),
+                IrTypeDelegate::AnyhowException => {
+                    r#"flutter_rust_bridge::for_generated::anyhow::anyhow!("{}", inner)"#.to_owned()
+                }
                 IrTypeDelegate::Map(_) => "inner.into_iter().collect()".to_owned(),
                 IrTypeDelegate::Set(_) => "inner.into_iter().collect()".to_owned(),
                 IrTypeDelegate::Time(ir) => {
