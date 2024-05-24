@@ -30,7 +30,7 @@ use crate::codegen::parser::unused_checker::get_unused_types;
 use crate::codegen::ConfigDumpContent;
 use crate::library::misc::consts::HANDLER_NAME;
 use anyhow::ensure;
-use itertools::Itertools;
+use itertools::{concat, Itertools};
 use log::trace;
 use ConfigDumpContent::SourceGraph;
 
@@ -115,7 +115,7 @@ fn parse_ir_funcs(
 ) -> anyhow::Result<Vec<IrFunc>> {
     let mut function_parser = FunctionParser::new(type_parser);
 
-    Ok(src_fns
+    let ir_funcs_normal = src_fns
         .iter()
         .enumerate()
         .map(|(index, f)| {
@@ -132,6 +132,12 @@ fn parse_ir_funcs(
         .collect::<anyhow::Result<Vec<_>>>()?
         .into_iter()
         .flatten()
+        .collect_vec();
+
+    let ir_funcs_auto_accessor = TODO;
+
+    Ok(concat([ir_funcs_normal, ir_funcs_auto_accessor])
+        .into_iter()
         // to give downstream a stable output
         .sorted_by_cached_key(|func| func.name.clone())
         .collect_vec())
