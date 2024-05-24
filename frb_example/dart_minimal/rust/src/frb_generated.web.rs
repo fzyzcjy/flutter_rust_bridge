@@ -17,11 +17,11 @@ flutter_rust_bridge::frb_generated_boilerplate_web!();
 
 // Section: dart2rust
 
-impl CstDecode<RustAutoOpaque<MyStruct>>
+impl CstDecode<RustAutoOpaqueMoi<MyStruct>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> RustAutoOpaque<MyStruct> {
+    fn cst_decode(self) -> RustAutoOpaqueMoi<MyStruct> {
         flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(self.cst_decode())
     }
 }

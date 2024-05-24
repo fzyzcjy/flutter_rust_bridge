@@ -43,7 +43,7 @@ flutter_rust_bridge::frb_generated_default_handler!();
 
 fn wire__crate__api__minimal__f_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    a: impl CstDecode<RustAutoOpaque<MyStruct>>,
+    a: impl CstDecode<RustAutoOpaqueMoi<MyStruct>>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -120,7 +120,7 @@ impl CstDecode<usize> for usize {
         self
     }
 }
-impl SseDecode for RustAutoOpaque<MyStruct> {
+impl SseDecode for RustAutoOpaqueMoi<MyStruct> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <RustOpaqueMoi<
@@ -193,7 +193,7 @@ fn pde_ffi_dispatcher_sync_impl(
 
 // Section: rust2dart
 
-impl SseEncode for RustAutoOpaque<MyStruct> {
+impl SseEncode for RustAutoOpaqueMoi<MyStruct> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyStruct>>>::sse_encode(flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_encode(self), serializer);

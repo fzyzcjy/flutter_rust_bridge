@@ -15,9 +15,9 @@ flutter_rust_bridge::frb_generated_boilerplate_io!();
 
 // Section: dart2rust
 
-impl CstDecode<RustAutoOpaque<MyStruct>> for usize {
+impl CstDecode<RustAutoOpaqueMoi<MyStruct>> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> RustAutoOpaque<MyStruct> {
+    fn cst_decode(self) -> RustAutoOpaqueMoi<MyStruct> {
         flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(self.cst_decode())
     }
 }
