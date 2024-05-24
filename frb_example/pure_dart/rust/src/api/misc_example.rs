@@ -1,4 +1,5 @@
 use crate::auxiliary::sample_types::MySize;
+use crate::frb_generated::RustAutoOpaque;
 use flutter_rust_bridge::frb;
 use log::info;
 
@@ -144,3 +145,27 @@ pub struct MySizeFreezedTwinNormal {
 // To test parsing of `pub(super)`
 #[allow(dead_code)]
 pub(super) fn visibility_restricted_func_twin_normal() {}
+
+// #1937
+pub struct ItemContainer {
+    pub name: String,
+    items: Vec<OpaqueItem>,
+}
+
+// Suppose this is opaque
+#[frb(opaque)]
+pub struct OpaqueItem(i32);
+
+impl ItemContainer {
+    #[frb(sync)]
+    pub fn new() -> Self {
+        Self {
+            name: "hi".to_owned(),
+            items: vec![OpaqueItem(100)],
+        }
+    }
+
+    pub fn get_item_contents(&self) -> Vec<i32> {
+        self.items.iter().map(|x| x.0).collect()
+    }
+}
