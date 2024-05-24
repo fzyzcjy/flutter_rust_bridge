@@ -17,6 +17,7 @@ use crate::codegen::ir::func::IrFunc;
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::misc::GeneratorProgressBarPack;
+use crate::codegen::parser::auto_accessor_parser::parse_auto_accessors;
 use crate::codegen::parser::file_reader::{read_files, FileData};
 use crate::codegen::parser::function_extractor::extract_generalized_functions_from_file;
 use crate::codegen::parser::function_extractor::structs::PathAndItemFn;
@@ -25,6 +26,7 @@ use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::parser::misc::parse_has_executor;
 use crate::codegen::parser::reader::CachedRustReader;
 use crate::codegen::parser::sanity_checker::check_suppressed_input_path_no_content;
+use crate::codegen::parser::source_graph::modules::Struct;
 use crate::codegen::parser::type_alias_resolver::resolve_type_aliases;
 use crate::codegen::parser::type_parser::TypeParser;
 use crate::codegen::parser::unused_checker::get_unused_types;
@@ -33,8 +35,9 @@ use crate::library::misc::consts::HANDLER_NAME;
 use anyhow::ensure;
 use itertools::{concat, Itertools};
 use log::trace;
+use std::collections::HashMap;
+use std::path::{Path, PathBuf};
 use ConfigDumpContent::SourceGraph;
-use crate::codegen::parser::auto_accessor_parser::parse_auto_accessors;
 
 pub(crate) fn parse(
     config: &ParserInternalConfig,
@@ -84,7 +87,14 @@ pub(crate) fn parse(
 
     let mut type_parser = TypeParser::new(src_structs.clone(), src_enums.clone(), src_types);
 
-    let ir_funcs = parse_ir_funcs(&config, &src_fns, &mut type_parser)?;
+    let ir_funcs = parse_ir_funcs(
+        &config,
+        &src_fns,
+        &mut type_parser,
+        &src_structs,
+        &config.rust_input_path_pack.rust_input_paths,
+        &config.rust_crate_dir,
+    )?;
 
     let existing_handlers = parse_existing_handlers(config, &file_data_arr)?;
 
@@ -114,6 +124,9 @@ fn parse_ir_funcs(
     config: &ParserInternalConfig,
     src_fns: &[PathAndItemFn],
     type_parser: &mut TypeParser,
+    src_structs: &HashMap<String, &Struct>,
+    rust_input_paths: &[PathBuf],
+    rust_crate_dir: &Path,
 ) -> anyhow::Result<Vec<IrFunc>> {
     let mut function_parser = FunctionParser::new(type_parser);
 
@@ -134,7 +147,7 @@ fn parse_ir_funcs(
         .flatten()
         .collect_vec();
 
-    let ir_funcs_auto_accessor = parse_auto_accessors()?;
+    let ir_funcs_auto_accessor = parse_auto_accessors(src_structs, type_parser, rust_input_paths, rust_crate_dir)?;
 
     Ok(concat([ir_funcs_normal, ir_funcs_auto_accessor])
         .into_iter()
