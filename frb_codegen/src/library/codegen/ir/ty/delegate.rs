@@ -6,6 +6,7 @@ use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
 use crate::codegen::ir::ty::record::IrTypeRecord;
 use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
+use crate::codegen::ir::ty::rust_opaque::IrTypeRustOpaque;
 
 crate::ir! {
 /// types that delegate to another type
@@ -26,6 +27,7 @@ pub enum IrTypeDelegate {
     Set(IrTypeDelegateSet),
     StreamSink(IrTypeDelegateStreamSink),
     BigPrimitive(IrTypeDelegateBigPrimitive),
+    RustAutoOpaqueExplicit(IrTypeDelegateRustAutoOpaqueExplicit),
 }
 
 pub struct IrTypeDelegateArray {
@@ -72,6 +74,10 @@ pub struct IrTypeDelegateStreamSink {
 pub enum IrTypeDelegateBigPrimitive {
     I128,
     U128,
+}
+
+pub struct IrTypeDelegateRustAutoOpaqueExplicit {
+    pub inner: IrTypeRustOpaque,
 }
 }
 
