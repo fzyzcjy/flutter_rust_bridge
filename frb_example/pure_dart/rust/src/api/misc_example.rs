@@ -159,8 +159,7 @@ pub struct ItemContainerSolutionOne {
 }
 
 impl ItemContainerSolutionOne {
-    #[frb(sync)]
-    pub fn new() -> Self {
+    pub fn create() -> Self {
         Self {
             name: "hi".to_owned(),
             items: vec![OpaqueItem(100)],
@@ -179,8 +178,7 @@ pub struct ItemContainerSolutionTwo {
 }
 
 impl ItemContainerSolutionTwo {
-    #[frb(sync)]
-    pub fn new() -> Self {
+    pub fn create() -> Self {
         Self {
             name: "hi".to_owned(),
             items: vec![RustAutoOpaque::new(OpaqueItem(100))],
