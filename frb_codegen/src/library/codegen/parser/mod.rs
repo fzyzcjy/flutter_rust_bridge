@@ -15,7 +15,7 @@ use crate::codegen::dumper::Dumper;
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::misc::GeneratorProgressBarPack;
-use crate::codegen::parser::file_reader::read_files;
+use crate::codegen::parser::file_reader::{read_files, FileData};
 use crate::codegen::parser::function_extractor::extract_generalized_functions_from_file;
 use crate::codegen::parser::function_parser::FunctionParser;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
@@ -101,23 +101,8 @@ pub(crate) fn parse(
         // to give downstream a stable output
         .sorted_by_cached_key(|func| func.name.clone())
         .collect_vec();
-
-    let existing_handlers = (file_data_arr.iter())
-        .filter(|file| parse_has_executor(&file.content))
-        .map(|file| {
-            NamespacedName::new(
-                Namespace::new_from_rust_crate_path(&file.path, &config.rust_crate_dir).unwrap(),
-                HANDLER_NAME.to_owned(),
-            )
-        })
-        .collect_vec();
-    ensure!(
-        existing_handlers.len() <= 1,
-        // frb-coverage:ignore-start
-        // This will stop the whole generator and tell the users, so we do not care about testing it
-        "Should have at most one custom handler"
-    );
-    // frb-coverage:ignore-end
+    
+    let existing_handlers = parse_existing_handlers(config, &file_data_arr);
 
     let (struct_pool, enum_pool, dart_code_of_type) = type_parser.consume();
 
@@ -139,6 +124,29 @@ pub(crate) fn parse(
     )?;
 
     Ok(ans)
+}
+
+fn parse_existing_handlers(
+    config: &ParserInternalConfig,
+    file_data_arr: &[FileData],
+) -> Vec<NamespacedName> {
+    let existing_handlers = (file_data_arr.iter())
+        .filter(|file| parse_has_executor(&file.content))
+        .map(|file| {
+            NamespacedName::new(
+                Namespace::new_from_rust_crate_path(&file.path, &config.rust_crate_dir).unwrap(),
+                HANDLER_NAME.to_owned(),
+            )
+        })
+        .collect_vec();
+    ensure!(
+        existing_handlers.len() <= 1,
+        // frb-coverage:ignore-start
+        // This will stop the whole generator and tell the users, so we do not care about testing it
+        "Should have at most one custom handler"
+    );
+    // frb-coverage:ignore-end
+    existing_handlers
 }
 
 #[cfg(test)]
