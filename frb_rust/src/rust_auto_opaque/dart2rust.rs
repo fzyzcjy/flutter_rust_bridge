@@ -15,19 +15,19 @@ impl<T, A: BaseArc<RustAutoOpaqueInner<T>>> RustAutoOpaqueBase<T, A> {
     }
 
     pub fn rust_auto_opaque_decode_sync_ref(&self) -> RwLockReadGuard<'_, T> {
-        self.0.data.blocking_read()
+        self.blocking_read()
     }
 
     pub fn rust_auto_opaque_decode_sync_ref_mut(&self) -> RwLockWriteGuard<'_, T> {
-        self.0.data.blocking_write()
+        self.blocking_write()
     }
 
     pub async fn rust_auto_opaque_decode_async_ref(&self) -> RwLockReadGuard<'_, T> {
-        self.0.data.read().await
+        self.read().await
     }
 
     pub async fn rust_auto_opaque_decode_async_ref_mut(&self) -> RwLockWriteGuard<'_, T> {
-        self.0.data.write().await
+        self.write().await
     }
 
     pub fn rust_auto_opaque_lock_order_info(
