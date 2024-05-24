@@ -6,7 +6,6 @@ use crate::codegen::parser::type_parser::TypeParserWithContext;
 use quote::ToTokens;
 use syn::Type;
 use crate::codegen::ir::ty::IrType::RustAutoOpaqueImplicit;
-use crate::codegen::ir::ty::rust_auto_opaque_implicit::{IrRustAutoOpaqueRaw, IrTypeRustAutoOpaqueImplicit};
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_rust_auto_opaque_explicit(
