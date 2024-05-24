@@ -70,7 +70,7 @@ pub(crate) fn generate_decode_rust_auto_opaque(
     variable: &str,
 ) -> String {
     format!(
-        "{variable}.rust_auto_opaque_decode_{}()",
+        "flutter_rust_bridge::for_generated::rust_auto_opaque_decode_{}({variable})",
         ir.ownership_mode.to_string().to_case(Case::Snake)
     )
 }
