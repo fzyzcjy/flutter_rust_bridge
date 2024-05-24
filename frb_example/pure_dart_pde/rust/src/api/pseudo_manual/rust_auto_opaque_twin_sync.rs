@@ -370,7 +370,7 @@ pub fn rust_auto_opaque_explicit_arg_twin_sync(
     arg: RustAutoOpaque<NonCloneSimpleTwinSync>,
     expect: i32,
 ) {
-    assert_eq!((*arg).try_read().unwrap().inner, expect);
+    assert_eq!(arg.blocking_read().inner, expect);
 }
 
 pub struct StructWithExplicitAutoOpaqueFieldTwinSync {
@@ -380,7 +380,7 @@ pub struct StructWithExplicitAutoOpaqueFieldTwinSync {
 
 #[flutter_rust_bridge::frb(sync)]
 pub fn rust_auto_opaque_explicit_struct_twin_sync(arg: StructWithExplicitAutoOpaqueFieldTwinSync) {
-    assert_eq!((*arg.auto_opaque).try_read().unwrap().inner, arg.normal);
+    assert_eq!(arg.auto_opaque.blocking_read().unwrap().inner, arg.normal);
 }
 
 #[flutter_rust_bridge::frb(sync)]
@@ -388,9 +388,7 @@ pub fn rust_auto_opaque_explicit_return_struct_twin_sync(
 ) -> StructWithExplicitAutoOpaqueFieldTwinSync {
     StructWithExplicitAutoOpaqueFieldTwinSync {
         normal: 100,
-        auto_opaque: RustAutoOpaque::new(RustAutoOpaqueInner::new(RwLock::new(
-            NonCloneSimpleTwinSync { inner: 100 },
-        ))),
+        auto_opaque: RustAutoOpaque::new(NonCloneSimpleTwinSync { inner: 100 }),
     }
 }
 
@@ -398,9 +396,7 @@ pub fn rust_auto_opaque_explicit_return_struct_twin_sync(
 pub fn rust_auto_opaque_explicit_return_twin_sync(
     initial: i32,
 ) -> RustAutoOpaque<NonCloneSimpleTwinSync> {
-    RustAutoOpaque::new(RustAutoOpaqueInner::new(RwLock::new(
-        NonCloneSimpleTwinSync { inner: initial },
-    )))
+    RustAutoOpaque::new(NonCloneSimpleTwinSync { inner: initial })
 }
 
 // ================ deadlock detection ===================

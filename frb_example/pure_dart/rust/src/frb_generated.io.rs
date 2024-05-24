@@ -113,764 +113,827 @@ impl CstDecode<RustAutoOpaque<OpaqueItem>> for usize {
 impl CstDecode<Box<dyn Fn(String) -> String + Send + Sync>> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<dyn Fn(String) -> String + Send + Sync> {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueMoi<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                     Box<dyn Fn(String) -> String + Send + Sync>,
                 >,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<Box<dyn HelloTraitTwinMoi>> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<dyn HelloTraitTwinMoi> {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueMoi<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box<dyn HelloTraitTwinMoi>>,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<Box<dyn HelloTraitTwinNormal>> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<dyn HelloTraitTwinNormal> {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueNom<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                     Box<dyn HelloTraitTwinNormal>,
                 >,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<Box<dyn HelloTraitTwinRustAsync>> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<dyn HelloTraitTwinRustAsync> {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueNom<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                     Box<dyn HelloTraitTwinRustAsync>,
                 >,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<Box<dyn HelloTraitTwinRustAsyncMoi>> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<dyn HelloTraitTwinRustAsyncMoi> {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueMoi<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                     Box<dyn HelloTraitTwinRustAsyncMoi>,
                 >,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<Box<dyn HelloTraitTwinSync>> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<dyn HelloTraitTwinSync> {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueNom<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                     Box<dyn HelloTraitTwinSync>,
                 >,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<Box<dyn HelloTraitTwinSyncMoi>> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<dyn HelloTraitTwinSyncMoi> {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueMoi<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                     Box<dyn HelloTraitTwinSyncMoi>,
                 >,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<Box<dyn MyTraitTwinMoi + Send + Sync>> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<dyn MyTraitTwinMoi + Send + Sync> {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueMoi<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                     Box<dyn MyTraitTwinMoi + Send + Sync>,
                 >,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<Box<dyn MyTraitTwinNormal + Send + Sync>> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<dyn MyTraitTwinNormal + Send + Sync> {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueNom<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                     Box<dyn MyTraitTwinNormal + Send + Sync>,
                 >,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<Box<dyn MyTraitTwinRustAsyncMoi + Send + Sync>> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<dyn MyTraitTwinRustAsyncMoi + Send + Sync> {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueMoi<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                     Box<dyn MyTraitTwinRustAsyncMoi + Send + Sync>,
                 >,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<Box<dyn MyTraitTwinRustAsync + Send + Sync>> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<dyn MyTraitTwinRustAsync + Send + Sync> {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueNom<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                     Box<dyn MyTraitTwinRustAsync + Send + Sync>,
                 >,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<Box<dyn MyTraitTwinSyncMoi + Send + Sync>> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<dyn MyTraitTwinSyncMoi + Send + Sync> {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueMoi<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                     Box<dyn MyTraitTwinSyncMoi + Send + Sync>,
                 >,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<Box<dyn MyTraitTwinSync + Send + Sync>> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<dyn MyTraitTwinSync + Send + Sync> {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueNom<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                     Box<dyn MyTraitTwinSync + Send + Sync>,
                 >,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<ConstructorOpaqueStructTwinNormal> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> ConstructorOpaqueStructTwinNormal {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueNom<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                     ConstructorOpaqueStructTwinNormal,
                 >,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<ConstructorOpaqueSyncStructTwinNormal> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> ConstructorOpaqueSyncStructTwinNormal {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueNom<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                     ConstructorOpaqueSyncStructTwinNormal,
                 >,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<DroppableTwinNormal> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> DroppableTwinNormal {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueNom<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DroppableTwinNormal>,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<DroppableTwinRustAsync> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> DroppableTwinRustAsync {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueNom<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DroppableTwinRustAsync>,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<DroppableTwinSync> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> DroppableTwinSync {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueNom<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DroppableTwinSync>,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<EnumWithGoodAndOpaqueWithoutOptionTwinMoi> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> EnumWithGoodAndOpaqueWithoutOptionTwinMoi {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueMoi<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                     EnumWithGoodAndOpaqueWithoutOptionTwinMoi,
                 >,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<EnumWithGoodAndOpaqueWithoutOptionTwinNormal> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> EnumWithGoodAndOpaqueWithoutOptionTwinNormal {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueNom<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                     EnumWithGoodAndOpaqueWithoutOptionTwinNormal,
                 >,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<EnumWithGoodAndOpaqueWithoutOptionTwinRustAsync> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> EnumWithGoodAndOpaqueWithoutOptionTwinRustAsync {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueNom<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                     EnumWithGoodAndOpaqueWithoutOptionTwinRustAsync,
                 >,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncMoi> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncMoi {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueMoi<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                     EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncMoi,
                 >,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<EnumWithGoodAndOpaqueWithoutOptionTwinSync> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> EnumWithGoodAndOpaqueWithoutOptionTwinSync {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueNom<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                     EnumWithGoodAndOpaqueWithoutOptionTwinSync,
                 >,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<EnumWithGoodAndOpaqueWithoutOptionTwinSyncMoi> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> EnumWithGoodAndOpaqueWithoutOptionTwinSyncMoi {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueMoi<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                     EnumWithGoodAndOpaqueWithoutOptionTwinSyncMoi,
                 >,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<NonCloneSimpleEnumTwinMoi> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> NonCloneSimpleEnumTwinMoi {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueMoi<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleEnumTwinMoi>,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<NonCloneSimpleEnumTwinNormal> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> NonCloneSimpleEnumTwinNormal {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueNom<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                     NonCloneSimpleEnumTwinNormal,
                 >,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<NonCloneSimpleEnumTwinRustAsync> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> NonCloneSimpleEnumTwinRustAsync {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueNom<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                     NonCloneSimpleEnumTwinRustAsync,
                 >,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<NonCloneSimpleEnumTwinRustAsyncMoi> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> NonCloneSimpleEnumTwinRustAsyncMoi {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueMoi<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                     NonCloneSimpleEnumTwinRustAsyncMoi,
                 >,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<NonCloneSimpleEnumTwinSync> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> NonCloneSimpleEnumTwinSync {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueNom<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleEnumTwinSync>,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<NonCloneSimpleEnumTwinSyncMoi> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> NonCloneSimpleEnumTwinSyncMoi {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueMoi<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                     NonCloneSimpleEnumTwinSyncMoi,
                 >,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<NonCloneSimpleTwinMoi> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> NonCloneSimpleTwinMoi {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueMoi<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinMoi>,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<NonCloneSimpleTwinNormal> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> NonCloneSimpleTwinNormal {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueNom<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinNormal>,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<NonCloneSimpleTwinRustAsync> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> NonCloneSimpleTwinRustAsync {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueNom<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                     NonCloneSimpleTwinRustAsync,
                 >,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<NonCloneSimpleTwinRustAsyncMoi> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> NonCloneSimpleTwinRustAsyncMoi {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueMoi<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                     NonCloneSimpleTwinRustAsyncMoi,
                 >,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<NonCloneSimpleTwinSync> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> NonCloneSimpleTwinSync {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueNom<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinSync>,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<NonCloneSimpleTwinSyncMoi> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> NonCloneSimpleTwinSyncMoi {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueMoi<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinSyncMoi>,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<OpaqueItem> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> OpaqueItem {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItem>>,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<OpaqueOneTwinMoi> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> OpaqueOneTwinMoi {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueMoi<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueOneTwinMoi>,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<OpaqueOneTwinNormal> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> OpaqueOneTwinNormal {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueNom<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueOneTwinNormal>,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<OpaqueOneTwinRustAsync> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> OpaqueOneTwinRustAsync {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueNom<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueOneTwinRustAsync>,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<OpaqueOneTwinRustAsyncMoi> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> OpaqueOneTwinRustAsyncMoi {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueMoi<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueOneTwinRustAsyncMoi>,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<OpaqueOneTwinSync> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> OpaqueOneTwinSync {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueNom<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueOneTwinSync>,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<OpaqueOneTwinSyncMoi> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> OpaqueOneTwinSyncMoi {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueMoi<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueOneTwinSyncMoi>,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<OpaqueStructWithDartCodeTwinNormal> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> OpaqueStructWithDartCodeTwinNormal {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueNom<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                     OpaqueStructWithDartCodeTwinNormal,
                 >,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<OpaqueTwoTwinMoi> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> OpaqueTwoTwinMoi {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueMoi<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueTwoTwinMoi>,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<OpaqueTwoTwinNormal> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> OpaqueTwoTwinNormal {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueNom<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueTwoTwinNormal>,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<OpaqueTwoTwinRustAsync> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> OpaqueTwoTwinRustAsync {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueNom<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueTwoTwinRustAsync>,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<OpaqueTwoTwinRustAsyncMoi> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> OpaqueTwoTwinRustAsyncMoi {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueMoi<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueTwoTwinRustAsyncMoi>,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<OpaqueTwoTwinSync> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> OpaqueTwoTwinSync {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueNom<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueTwoTwinSync>,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<OpaqueTwoTwinSyncMoi> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> OpaqueTwoTwinSyncMoi {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueMoi<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueTwoTwinSyncMoi>,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<SimpleOpaqueExternalStructWithMethod> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> SimpleOpaqueExternalStructWithMethod {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueNom<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                     SimpleOpaqueExternalStructWithMethod,
                 >,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<StaticGetterOnlyTwinNormal> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> StaticGetterOnlyTwinNormal {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueNom<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StaticGetterOnlyTwinNormal>,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<StaticGetterOnlyTwinRustAsync> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> StaticGetterOnlyTwinRustAsync {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueNom<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                     StaticGetterOnlyTwinRustAsync,
                 >,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<StaticGetterOnlyTwinSync> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> StaticGetterOnlyTwinSync {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueNom<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StaticGetterOnlyTwinSync>,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<StructInMiscNoTwinExampleA> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> StructInMiscNoTwinExampleA {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueNom<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructInMiscNoTwinExampleA>,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<StructInMiscNoTwinExampleB> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> StructInMiscNoTwinExampleB {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueNom<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructInMiscNoTwinExampleB>,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueMoi<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                     StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi,
                 >,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueNom<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                     StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal,
                 >,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueNom<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                     StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync,
                 >,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueMoi<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                     StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi,
                 >,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<StructWithGoodAndOpaqueFieldWithoutOptionTwinSync> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> StructWithGoodAndOpaqueFieldWithoutOptionTwinSync {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueNom<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                     StructWithGoodAndOpaqueFieldWithoutOptionTwinSync,
                 >,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueMoi<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                     StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi,
                 >,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<StructWithImplBlockInMultiFile> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> StructWithImplBlockInMultiFile {
-        CstDecode::<
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueNom<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                     StructWithImplBlockInMultiFile,
                 >,
             >,
-        >::cst_decode(self)
-        .rust_auto_opaque_decode_owned()
+        >::cst_decode(
+            self
+        ))
     }
 }
 impl CstDecode<backtrace::Backtrace> for *mut wire_cst_list_prim_u_8_strict {

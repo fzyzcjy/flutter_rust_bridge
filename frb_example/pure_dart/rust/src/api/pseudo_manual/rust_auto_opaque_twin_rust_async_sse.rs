@@ -407,7 +407,7 @@ pub async fn rust_auto_opaque_explicit_arg_twin_rust_async_sse(
     arg: RustAutoOpaque<NonCloneSimpleTwinRustAsyncSse>,
     expect: i32,
 ) {
-    assert_eq!((*arg).try_read().unwrap().inner, expect);
+    assert_eq!(arg.blocking_read().inner, expect);
 }
 
 pub struct StructWithExplicitAutoOpaqueFieldTwinRustAsyncSse {
@@ -419,7 +419,7 @@ pub struct StructWithExplicitAutoOpaqueFieldTwinRustAsyncSse {
 pub async fn rust_auto_opaque_explicit_struct_twin_rust_async_sse(
     arg: StructWithExplicitAutoOpaqueFieldTwinRustAsyncSse,
 ) {
-    assert_eq!((*arg.auto_opaque).try_read().unwrap().inner, arg.normal);
+    assert_eq!(arg.auto_opaque.blocking_read().unwrap().inner, arg.normal);
 }
 
 #[flutter_rust_bridge::frb(serialize)]
@@ -427,9 +427,7 @@ pub async fn rust_auto_opaque_explicit_return_struct_twin_rust_async_sse(
 ) -> StructWithExplicitAutoOpaqueFieldTwinRustAsyncSse {
     StructWithExplicitAutoOpaqueFieldTwinRustAsyncSse {
         normal: 100,
-        auto_opaque: RustAutoOpaque::new(RustAutoOpaqueInner::new(RwLock::new(
-            NonCloneSimpleTwinRustAsyncSse { inner: 100 },
-        ))),
+        auto_opaque: RustAutoOpaque::new(NonCloneSimpleTwinRustAsyncSse { inner: 100 }),
     }
 }
 
@@ -437,9 +435,7 @@ pub async fn rust_auto_opaque_explicit_return_struct_twin_rust_async_sse(
 pub async fn rust_auto_opaque_explicit_return_twin_rust_async_sse(
     initial: i32,
 ) -> RustAutoOpaque<NonCloneSimpleTwinRustAsyncSse> {
-    RustAutoOpaque::new(RustAutoOpaqueInner::new(RwLock::new(
-        NonCloneSimpleTwinRustAsyncSse { inner: initial },
-    )))
+    RustAutoOpaque::new(NonCloneSimpleTwinRustAsyncSse { inner: initial })
 }
 
 // ================ deadlock detection ===================
