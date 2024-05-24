@@ -1,5 +1,6 @@
-use crate::generalized_arc::base_arc::BaseArc;
+use tokio::sync::RwLock;
 use crate::for_generated::StdArc;
+use crate::generalized_arc::base_arc::BaseArc;
 use crate::rust_opaque::RustOpaqueBase;
 
 pub(crate) mod dart2rust;
@@ -9,6 +10,12 @@ mod order;
 pub struct RustAutoOpaqueBase<T: 'static, A: BaseArc<inner::RustAutoOpaqueInner<T>>>(
     RustOpaqueBase<inner::RustAutoOpaqueInner<T>, A>,
 );
+
+impl<T: 'static, A: BaseArc<inner::RustAutoOpaqueInner<T>>> RustAutoOpaqueBase<T, A> {
+    pub fn new(value: T) -> Self {
+        Self(RustOpaqueBase::new(inner::RustAutoOpaqueInner::new(RwLock::new(value))))
+    }
+}
 
 /// Please refer to `RustAutoOpaque` for doc.
 pub type RustAutoOpaqueNom<T> = RustAutoOpaqueBase<T, StdArc<inner::RustAutoOpaqueInner<T>>>;
