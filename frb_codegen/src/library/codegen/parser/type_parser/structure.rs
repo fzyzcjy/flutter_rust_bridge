@@ -20,8 +20,9 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_struct(
         &mut self,
         last_segment: &SplayedSegment,
+        override_opaque: Option<bool>,
     ) -> anyhow::Result<Option<IrType>> {
-        EnumOrStructParserStruct(self).parse(last_segment)
+        EnumOrStructParserStruct(self).parse(last_segment, override_opaque)
     }
 
     fn parse_struct(

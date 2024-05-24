@@ -16,7 +16,11 @@ where
     Id: From<NamespacedName> + Clone + PartialEq + Eq + Hash,
     SrcObj: StructOrEnumWrapper<Item> + Clone + Debug,
 {
-    fn parse(&mut self, last_segment: &SplayedSegment) -> anyhow::Result<Option<IrType>> {
+    fn parse(
+        &mut self,
+        last_segment: &SplayedSegment,
+        override_opaque: Option<bool>,
+    ) -> anyhow::Result<Option<IrType>> {
         let output = self.parse_impl(last_segment)?;
         self.handle_dart_code(&output);
         Ok(output.map(|(ty, _)| ty))

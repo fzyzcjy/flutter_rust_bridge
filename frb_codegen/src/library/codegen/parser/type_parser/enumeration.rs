@@ -28,7 +28,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         &mut self,
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
-        EnumOrStructParserEnum(self).parse(last_segment)
+        EnumOrStructParserEnum(self).parse(last_segment, None)
     }
 
     fn parse_enum(
