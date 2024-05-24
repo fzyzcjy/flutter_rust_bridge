@@ -1,5 +1,5 @@
 use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegateRustAutoOpaqueExplicit};
-use crate::codegen::ir::ty::rust_opaque::{IrTypeRustOpaque, RustOpaqueCodecMode};
+use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
