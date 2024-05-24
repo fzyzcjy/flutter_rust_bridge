@@ -5,10 +5,10 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::
 };
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::ty::WireRustCodecDcoGeneratorEncoderTrait;
 use crate::codegen::ir::func::OwnershipMode;
-use crate::codegen::ir::ty::rust_auto_opaque_implicit::IrTypeRustAutoOpaque;
+use crate::codegen::ir::ty::rust_auto_opaque_implicit::IrTypeRustAutoOpaqueImplicit;
 use crate::codegen::ir::ty::IrTypeTrait;
 
-impl<'a> WireRustCodecDcoGeneratorEncoderTrait for RustAutoOpaqueWireRustCodecDcoGenerator<'a> {
+impl<'a> WireRustCodecDcoGeneratorEncoderTrait for RustAutoOpaqueImplicitWireRustCodecDcoGenerator<'a> {
     fn generate_impl_into_dart(&self) -> Option<String> {
         if self.ir.ownership_mode == OwnershipMode::Owned {
             let rust_api_type = self.ir.rust_api_type();
@@ -32,6 +32,6 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for RustAutoOpaqueWireRustCodecDc
 }
 
 // Similar to "mirror"
-fn rust_auto_opaque_local_struct_type(ir: &IrTypeRustAutoOpaque) -> String {
+fn rust_auto_opaque_local_struct_type(ir: &IrTypeRustAutoOpaqueImplicit) -> String {
     format!("FrbWrapper<{}>", ir.rust_api_type())
 }

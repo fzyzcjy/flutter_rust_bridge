@@ -205,7 +205,7 @@ impl<'a> ApiDartGeneratorInfoTrait for RecordApiDartGenerator<'a> {
     }
 }
 
-impl<'a> ApiDartGeneratorInfoTrait for RustAutoOpaqueApiDartGenerator<'a> {
+impl<'a> ApiDartGeneratorInfoTrait for RustAutoOpaqueImplicitApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
         let inner = ApiDartGenerator::new(self.ir.inner.clone(), self.context);
         inner.dart_api_type()

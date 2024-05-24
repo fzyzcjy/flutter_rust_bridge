@@ -8,7 +8,7 @@ use crate::codegen::generator::codec::sse::ty::*;
 use crate::codegen::ir::func::OwnershipMode;
 use convert_case::{Case, Casing};
 
-impl<'a> CodecSseTyTrait for RustAutoOpaqueCodecSseTy<'a> {
+impl<'a> CodecSseTyTrait for RustAutoOpaqueImplicitCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
         match lang {
             Lang::DartLang(_) => {
@@ -56,7 +56,7 @@ impl<'a> CodecSseTyTrait for RustAutoOpaqueCodecSseTy<'a> {
 }
 
 pub(crate) fn generate_encode_rust_auto_opaque(
-    ir: &IrTypeRustAutoOpaque,
+    ir: &IrTypeRustAutoOpaqueImplicit,
     variable: &str,
 ) -> String {
     let arc = ir.inner.codec.arc_ty();
@@ -66,7 +66,7 @@ pub(crate) fn generate_encode_rust_auto_opaque(
 }
 
 pub(crate) fn generate_decode_rust_auto_opaque(
-    ir: &IrTypeRustAutoOpaque,
+    ir: &IrTypeRustAutoOpaqueImplicit,
     variable: &str,
 ) -> String {
     format!(

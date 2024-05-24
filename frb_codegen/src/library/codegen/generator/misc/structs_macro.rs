@@ -19,7 +19,7 @@ macro_rules! codegen_generator_structs {
             Primitive,
             PrimitiveList,
             Record,
-            RustAutoOpaque,
+            RustAutoOpaqueImplicit,
             RustOpaque,
             StructRef,
         );
@@ -37,7 +37,7 @@ macro_rules! codegen_generator_structs {
         use $crate::codegen::ir::ty::primitive::IrTypePrimitive;
         use $crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
         use $crate::codegen::ir::ty::record::IrTypeRecord;
-        use $crate::codegen::ir::ty::rust_auto_opaque_implicit::IrTypeRustAutoOpaque;
+        use $crate::codegen::ir::ty::rust_auto_opaque_implicit::IrTypeRustAutoOpaqueImplicit;
         use $crate::codegen::ir::ty::rust_opaque::IrTypeRustOpaque;
         use $crate::codegen::ir::ty::structure::IrTypeStructRef;
         use $crate::codegen::ir::ty::IrType;

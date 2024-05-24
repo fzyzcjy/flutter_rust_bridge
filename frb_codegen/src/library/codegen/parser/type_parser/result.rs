@@ -10,7 +10,7 @@ pub(crate) fn parse_type_maybe_result(
     type_parser: &mut TypeParser,
     context: &TypeParserParsingContext,
 ) -> anyhow::Result<ResultTypeInfo> {
-    if let IrType::RustAutoOpaque(inner) = ir {
+    if let IrType::RustAutoOpaqueImplicit(inner) = ir {
         match splay_segments(&inner.raw.segments).last() {
             Some(("Result", args)) => {
                 return parse_type_result(
@@ -34,7 +34,7 @@ fn parse_type_result(args: &[IrType]) -> anyhow::Result<ResultTypeInfo> {
 
     let is_anyhow = args.len() == 1
         || args.iter().any(|x| {
-            if let IrType::RustAutoOpaque(inner) = x {
+            if let IrType::RustAutoOpaqueImplicit(inner) = x {
                 return inner.raw.string == "anyhow :: Error";
             }
             false

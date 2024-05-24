@@ -76,7 +76,7 @@ where
             }
 
             let keys = match ty {
-                IrType::RustAutoOpaque(ty) => vec![ty.safe_ident(), ty.inner.safe_ident()],
+                IrType::RustAutoOpaqueImplicit(ty) => vec![ty.safe_ident(), ty.inner.safe_ident()],
                 ty => vec![ty.safe_ident()],
             };
 

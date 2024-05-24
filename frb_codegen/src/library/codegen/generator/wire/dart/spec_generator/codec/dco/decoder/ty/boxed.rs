@@ -15,7 +15,7 @@ impl<'a> WireDartCodecDcoGeneratorDecoderTrait for BoxedWireDartCodecDcoGenerato
             StructRef(_)
             | DartOpaque(_)
             | RustOpaque(_)
-            | RustAutoOpaque(_)
+            | RustAutoOpaqueImplicit(_)
             | EnumRef(_)
             | Primitive(
                 IrTypePrimitive::I64

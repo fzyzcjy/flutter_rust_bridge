@@ -1,6 +1,6 @@
 use crate::codegen::ir::func::OwnershipMode;
 use crate::codegen::ir::namespace::Namespace;
-use crate::codegen::ir::ty::rust_auto_opaque_implicit::{IrRustAutoOpaqueRaw, IrTypeRustAutoOpaque};
+use crate::codegen::ir::ty::rust_auto_opaque_implicit::{IrRustAutoOpaqueImplicitRaw, IrTypeRustAutoOpaqueImplicit};
 use crate::codegen::ir::ty::rust_opaque::{
     IrRustOpaqueInner, IrTypeRustOpaque, RustOpaqueCodecMode,
 };
@@ -14,7 +14,7 @@ use crate::codegen::parser::type_parser::TypeParserWithContext;
 use anyhow::Result;
 use quote::ToTokens;
 use syn::Type;
-use IrType::RustAutoOpaque;
+use IrType::RustAutoOpaqueImplicit;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_rust_auto_opaque(
@@ -35,9 +35,9 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             _ => vec![],
         };
 
-        Ok(RustAutoOpaque(IrTypeRustAutoOpaque {
+        Ok(RustAutoOpaqueImplicit(IrTypeRustAutoOpaqueImplicit {
             ownership_mode,
-            raw: IrRustAutoOpaqueRaw {
+            raw: IrRustAutoOpaqueImplicitRaw {
                 string: inner_str.clone(),
                 segments: raw_segments,
             },
@@ -80,7 +80,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
     pub(crate) fn transform_rust_auto_opaque(
         &mut self,
-        ty_raw: &IrTypeRustAutoOpaque,
+        ty_raw: &IrTypeRustAutoOpaqueImplicit,
         transform: impl FnOnce(&str) -> String,
     ) -> Result<IrType> {
         self.parse_type_rust_auto_opaque(

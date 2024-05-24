@@ -38,7 +38,7 @@ pub enum IrType {
     Primitive(primitive::IrTypePrimitive),
     PrimitiveList(primitive_list::IrTypePrimitiveList),
     Record(record::IrTypeRecord),
-    RustAutoOpaque(rust_auto_opaque_implicit::IrTypeRustAutoOpaque),
+    RustAutoOpaqueImplicit(rust_auto_opaque_implicit::IrTypeRustAutoOpaqueImplicit),
     RustOpaque(rust_opaque::IrTypeRustOpaque),
     StructRef(structure::IrTypeStructRef),
 }
@@ -133,7 +133,7 @@ impl Serialize for IrType {
             IrType::Primitive(inner) => ser::<S, _>(&mut state, "Primitive", inner),
             IrType::PrimitiveList(inner) => ser::<S, _>(&mut state, "PrimitiveList", inner),
             IrType::Record(inner) => ser::<S, _>(&mut state, "Record", inner),
-            IrType::RustAutoOpaque(inner) => ser::<S, _>(&mut state, "RustAutoOpaque", inner),
+            IrType::RustAutoOpaqueImplicit(inner) => ser::<S, _>(&mut state, "RustAutoOpaque", inner),
             IrType::RustOpaque(inner) => ser::<S, _>(&mut state, "RustOpaque", inner),
             IrType::StructRef(inner) => ser::<S, _>(&mut state, "StructRef", inner),
         }?;

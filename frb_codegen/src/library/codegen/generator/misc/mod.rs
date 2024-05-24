@@ -23,7 +23,7 @@ pub fn is_js_value(ty: &IrType) -> bool {
         IrType::GeneralList(_)
         | IrType::StructRef(_)
         | IrType::EnumRef(_)
-        | IrType::RustAutoOpaque(_)
+        | IrType::RustAutoOpaqueImplicit(_)
         | IrType::RustOpaque(_)
         | IrType::DartOpaque(_)
         | IrType::DartFn(_)

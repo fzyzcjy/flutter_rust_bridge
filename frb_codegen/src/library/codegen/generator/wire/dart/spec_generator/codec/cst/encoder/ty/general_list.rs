@@ -23,7 +23,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for GeneralListWireDartCodecCstGe
                     || matches!(
                         *self.ir.inner,
                         IrType::Optional(_)
-                            | IrType::RustAutoOpaque(_)
+                            | IrType::RustAutoOpaqueImplicit(_)
                             | IrType::RustOpaque(_)
                             | IrType::DartOpaque(_)
                             | IrType::PrimitiveList(_)

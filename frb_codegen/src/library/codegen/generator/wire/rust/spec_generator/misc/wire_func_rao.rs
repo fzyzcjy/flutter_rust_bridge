@@ -1,5 +1,5 @@
 use crate::codegen::ir::func::{IrFunc, IrFuncInput, OwnershipMode};
-use crate::codegen::ir::ty::rust_auto_opaque_implicit::IrTypeRustAutoOpaque;
+use crate::codegen::ir::ty::rust_auto_opaque_implicit::IrTypeRustAutoOpaqueImplicit;
 use crate::codegen::ir::ty::IrType;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
@@ -64,7 +64,7 @@ pub(crate) fn generate_code_inner_decode(func: &IrFunc) -> String {
 fn generate_decode_statement(
     func: &IrFunc,
     field: &IrFuncInput,
-    ty: &IrTypeRustAutoOpaque,
+    ty: &IrTypeRustAutoOpaqueImplicit,
 ) -> String {
     let mode = ty.ownership_mode.to_string().to_case(Case::Snake);
     format!(
@@ -75,10 +75,10 @@ fn generate_decode_statement(
     )
 }
 
-fn filter_interest_fields(func: &IrFunc) -> Vec<(&IrFuncInput, &IrTypeRustAutoOpaque)> {
+fn filter_interest_fields(func: &IrFunc) -> Vec<(&IrFuncInput, &IrTypeRustAutoOpaqueImplicit)> {
     (func.inputs.iter())
         .filter_map(|field| {
-            if let IrType::RustAutoOpaque(ty) = &field.inner.ty {
+            if let IrType::RustAutoOpaqueImplicit(ty) = &field.inner.ty {
                 if ty.ownership_mode != OwnershipMode::Owned {
                     Some((field, ty))
                 } else {
