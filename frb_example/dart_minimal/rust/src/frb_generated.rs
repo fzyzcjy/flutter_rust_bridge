@@ -180,6 +180,16 @@ flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
 
 // Section: dart2rust
 
+impl SseDecode for RustAutoOpaque<OpaqueItem> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <RustOpaqueMoi<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItem>,
+        >>::sse_decode(deserializer);
+        return flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(inner);
+    }
+}
+
 impl SseDecode
     for RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItem>>
 {
@@ -209,9 +219,7 @@ impl SseDecode for crate::api::minimal::ItemContainerSolutionTwo {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut var_name = <String>::sse_decode(deserializer);
-        let mut var_items = <Vec<
-            RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItem>>,
-        >>::sse_decode(deserializer);
+        let mut var_items = <Vec<RustAutoOpaque<OpaqueItem>>>::sse_decode(deserializer);
         return crate::api::minimal::ItemContainerSolutionTwo {
             name: var_name,
             items: var_items,
@@ -219,17 +227,13 @@ impl SseDecode for crate::api::minimal::ItemContainerSolutionTwo {
     }
 }
 
-impl SseDecode
-    for Vec<RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItem>>>
-{
+impl SseDecode for Vec<RustAutoOpaque<OpaqueItem>> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
         let mut ans_ = vec![];
         for idx_ in 0..len_ {
-            ans_.push(<RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItem>,
-            >>::sse_decode(deserializer));
+            ans_.push(<RustAutoOpaque<OpaqueItem>>::sse_decode(deserializer));
         }
         return ans_;
     }
@@ -348,6 +352,13 @@ impl flutter_rust_bridge::IntoIntoDart<crate::api::minimal::ItemContainerSolutio
     }
 }
 
+impl SseEncode for RustAutoOpaque<OpaqueItem> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItem>>>::sse_encode(flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_encode(inner), serializer);
+    }
+}
+
 impl SseEncode
     for RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItem>>
 {
@@ -377,18 +388,16 @@ impl SseEncode for crate::api::minimal::ItemContainerSolutionTwo {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <String>::sse_encode(self.name, serializer);
-        <Vec<RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItem>>>>::sse_encode(self.items, serializer);
+        <Vec<RustAutoOpaque<OpaqueItem>>>::sse_encode(self.items, serializer);
     }
 }
 
-impl SseEncode
-    for Vec<RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItem>>>
-{
+impl SseEncode for Vec<RustAutoOpaque<OpaqueItem>> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <i32>::sse_encode(self.len() as _, serializer);
         for item in self {
-            <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItem>>>::sse_encode(item, serializer);
+            <RustAutoOpaque<OpaqueItem>>::sse_encode(item, serializer);
         }
     }
 }
