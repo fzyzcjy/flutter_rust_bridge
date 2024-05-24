@@ -1,5 +1,6 @@
 use crate::codegen::config::internal_config::RustInputPathPack;
 use crate::codegen::ir::func::IrFunc;
+use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::misc::extract_src_types_in_paths;
 use crate::codegen::parser::source_graph::modules::Struct;
 use crate::codegen::parser::type_parser::TypeParser;
@@ -25,5 +26,10 @@ fn parse_auto_accessors_of_struct(
     struct_name: &str,
     type_parser: &mut TypeParser,
 ) -> anyhow::Result<Vec<IrFunc>> {
+    let ty = type_parser.parse_type(syn::parse_str(struct_name)?)?;
+    if !matches!(ty, IrType::RustAutoOpaqueImplicit(_)) {
+        return Ok(vec![]);
+    }
+
     TODO
 }
