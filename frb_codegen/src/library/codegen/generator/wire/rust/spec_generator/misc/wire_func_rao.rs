@@ -23,7 +23,7 @@ pub(crate) fn generate_code_inner_decode(func: &IrFunc) -> String {
         .map(|(index, (field, ty))| {
             let mutable = (ty.ownership_mode == OwnershipMode::RefMut).to_string();
             format!(
-                "api_{name}.rust_auto_opaque_lock_order_info({index}, {mutable})",
+                "rust_auto_opaque_lock_order_info(api_{name}, {index}, {mutable})",
                 name = get_variable_name(field)
             )
         })
