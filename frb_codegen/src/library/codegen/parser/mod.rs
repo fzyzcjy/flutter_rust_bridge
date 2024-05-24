@@ -92,8 +92,6 @@ pub(crate) fn parse(
         &src_fns,
         &mut type_parser,
         &src_structs,
-        &config.rust_input_path_pack.rust_input_paths,
-        &config.rust_crate_dir,
     )?;
 
     let existing_handlers = parse_existing_handlers(config, &file_data_arr)?;
@@ -125,8 +123,6 @@ fn parse_ir_funcs(
     src_fns: &[PathAndItemFn],
     type_parser: &mut TypeParser,
     src_structs: &HashMap<String, &Struct>,
-    rust_input_paths: &[PathBuf],
-    rust_crate_dir: &Path,
 ) -> anyhow::Result<Vec<IrFunc>> {
     let mut function_parser = FunctionParser::new(type_parser);
 
@@ -148,12 +144,9 @@ fn parse_ir_funcs(
         .collect_vec();
 
     let ir_funcs_auto_accessor = parse_auto_accessors(
+        config,
         src_structs,
         type_parser,
-        rust_input_paths,
-        rust_crate_dir,
-        config.default_stream_sink_codec,
-        config.default_rust_opaque_codec,
     )?;
 
     Ok(concat([ir_funcs_normal, ir_funcs_auto_accessor])
