@@ -83,7 +83,10 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
                 IrTypeDelegateTime::Utc | IrTypeDelegateTime::Local | IrTypeDelegateTime::Naive => {
                     Acc {
                         io: Some("return cst_encode_i_64(raw.microsecondsSinceEpoch);".into()),
-                        web: Some("return cst_encode_i_64(BigInt.from(raw.millisecondsSinceEpoch));".into()),
+                        web: Some(
+                            "return cst_encode_i_64(BigInt.from(raw.millisecondsSinceEpoch));"
+                                .into(),
+                        ),
                         ..Default::default()
                     }
                 }
@@ -128,9 +131,9 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
                 self.ir.get_delegate().safe_ident(),
                 generate_stream_sink_setup_and_serialize(ir, "raw")
             ))),
-            IrTypeDelegate::BigPrimitive(_) => Acc::distribute(Some(format!(
-                "return cst_encode_String(raw.toString());",
-            ))),
+            IrTypeDelegate::BigPrimitive(_) => {
+                Acc::distribute(Some(format!("return cst_encode_String(raw.toString());",)))
+            }
         }
     }
 
