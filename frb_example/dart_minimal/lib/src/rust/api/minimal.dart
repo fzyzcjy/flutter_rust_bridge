@@ -9,7 +9,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 Future<int> minimalAdder({required int a, required int b, dynamic hint}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b, hint: hint);
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItem>>
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItem>>
 @sealed
 class OpaqueItem extends RustOpaque {
   OpaqueItem.dcoDecode(List<dynamic> wire)

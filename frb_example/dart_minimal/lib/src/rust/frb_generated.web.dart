@@ -114,6 +114,81 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
+  Object
+      cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+          OpaqueItem raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+        raw);
+  }
+
+  @protected
+  String cst_encode_String(String raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw;
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_item_container_solution_two(
+      ItemContainerSolutionTwo raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_item_container_solution_two(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_item_container_solution_two(
+      ItemContainerSolutionTwo raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [
+      cst_encode_String(raw.name),
+      cst_encode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+          raw.items)
+    ];
+  }
+
+  @protected
+  List<dynamic>
+      cst_encode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+          List<OpaqueItem> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw
+        .map(
+            cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem)
+        .toList();
+  }
+
+  @protected
+  Int32List cst_encode_list_prim_i_32_strict(Int32List raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw;
+  }
+
+  @protected
+  Uint8List cst_encode_list_prim_u_8_strict(Uint8List raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw;
+  }
+
+  @protected
+  Object cst_encode_usize(BigInt raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return castNativeBigInt(raw);
+  }
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+      OpaqueItem raw);
+
+  @protected
+  int cst_encode_i_32(int raw);
+
+  @protected
+  int cst_encode_u_8(int raw);
+
+  @protected
+  void cst_encode_unit(void raw);
+
+  @protected
   void
       sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
           OpaqueItem self, SseSerializer serializer);
@@ -168,6 +243,24 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 class RustLibWire implements BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
 
+  void wire__crate__api__minimal__init_app(NativePortType port_) =>
+      wasmModule.wire__crate__api__minimal__init_app(port_);
+
+  void wire__crate__api__minimal__item_container_solution_two_create(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__minimal__item_container_solution_two_create(port_);
+
+  void wire__crate__api__minimal__item_container_solution_two_get_item_contents(
+          NativePortType port_, List<dynamic> that) =>
+      wasmModule
+          .wire__crate__api__minimal__item_container_solution_two_get_item_contents(
+              port_, that);
+
+  void wire__crate__api__minimal__minimal_adder(
+          NativePortType port_, int a, int b) =>
+      wasmModule.wire__crate__api__minimal__minimal_adder(port_, a, b);
+
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
           dynamic ptr) =>
       wasmModule
@@ -192,6 +285,18 @@ class RustLibWasmModule implements WasmModule {
 
   @override
   external RustLibWasmModule bind(dynamic thisArg, String moduleName);
+
+  external void wire__crate__api__minimal__init_app(NativePortType port_);
+
+  external void wire__crate__api__minimal__item_container_solution_two_create(
+      NativePortType port_);
+
+  external void
+      wire__crate__api__minimal__item_container_solution_two_get_item_contents(
+          NativePortType port_, List<dynamic> that);
+
+  external void wire__crate__api__minimal__minimal_adder(
+      NativePortType port_, int a, int b);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(

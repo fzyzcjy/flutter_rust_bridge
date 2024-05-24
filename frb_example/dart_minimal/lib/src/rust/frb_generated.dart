@@ -99,12 +99,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> crateApiMinimalInitApp({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1, port: port_);
+        return wire.wire__crate__api__minimal__init_app(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kCrateApiMinimalInitAppConstMeta,
@@ -124,12 +122,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       crateApiMinimalItemContainerSolutionTwoCreate({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 3, port: port_);
+        return wire
+            .wire__crate__api__minimal__item_container_solution_two_create(
+                port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_item_container_solution_two,
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_item_container_solution_two,
         decodeErrorData: null,
       ),
       constMeta: kCrateApiMinimalItemContainerSolutionTwoCreateConstMeta,
@@ -150,13 +148,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required ItemContainerSolutionTwo that, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_box_autoadd_item_container_solution_two(that, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 4, port: port_);
+        var arg0 = cst_encode_box_autoadd_item_container_solution_two(that);
+        return wire
+            .wire__crate__api__minimal__item_container_solution_two_get_item_contents(
+                port_, arg0);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_i_32_strict,
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_i_32_strict,
         decodeErrorData: null,
       ),
       constMeta:
@@ -179,14 +177,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required int a, required int b, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_32(a, serializer);
-        sse_encode_i_32(b, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 2, port: port_);
+        var arg0 = cst_encode_i_32(a);
+        var arg1 = cst_encode_i_32(b);
+        return wire.wire__crate__api__minimal__minimal_adder(port_, arg0, arg1);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_i_32,
         decodeErrorData: null,
       ),
       constMeta: kCrateApiMinimalMinimalAdderConstMeta,
@@ -403,6 +399,32 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   bool sse_decode_bool(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return deserializer.buffer.getUint8() != 0;
+  }
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+      OpaqueItem raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+// ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_i_32(int raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw;
+  }
+
+  @protected
+  int cst_encode_u_8(int raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw;
+  }
+
+  @protected
+  void cst_encode_unit(void raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw;
   }
 
   @protected

@@ -13,16 +13,196 @@ use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 flutter_rust_bridge::frb_generated_boilerplate_io!();
 
+// Section: dart2rust
+
+impl CstDecode<RustAutoOpaque<OpaqueItem>> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> RustAutoOpaque<OpaqueItem> {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(self.cst_decode())
+    }
+}
+impl CstDecode<RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItem>>>
+    for usize
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItem>> {
+        unsafe { decode_rust_opaque_nom(self as _) }
+    }
+}
+impl CstDecode<String> for *mut wire_cst_list_prim_u_8_strict {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> String {
+        let vec: Vec<u8> = self.cst_decode();
+        String::from_utf8(vec).unwrap()
+    }
+}
+impl CstDecode<crate::api::minimal::ItemContainerSolutionTwo>
+    for *mut wire_cst_item_container_solution_two
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> crate::api::minimal::ItemContainerSolutionTwo {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<crate::api::minimal::ItemContainerSolutionTwo>::cst_decode(*wrap).into()
+    }
+}
+impl CstDecode<crate::api::minimal::ItemContainerSolutionTwo>
+    for wire_cst_item_container_solution_two
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> crate::api::minimal::ItemContainerSolutionTwo {
+        crate::api::minimal::ItemContainerSolutionTwo {
+            name: self.name.cst_decode(),
+            items: self.items.cst_decode(),
+        }
+    }
+}
+impl CstDecode<Vec<RustAutoOpaque<OpaqueItem>>> for *mut wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem {
+            // Codec=Cst (C-struct based), see doc to use other codecs
+            fn cst_decode(self) -> Vec<RustAutoOpaque<OpaqueItem>> {
+                let vec = unsafe {
+        let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+        flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+    };
+    vec.into_iter().map(CstDecode::cst_decode).collect()
+            }
+        }
+impl CstDecode<Vec<i32>> for *mut wire_cst_list_prim_i_32_strict {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> Vec<i32> {
+        unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
+    }
+}
+impl CstDecode<Vec<u8>> for *mut wire_cst_list_prim_u_8_strict {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> Vec<u8> {
+        unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
+    }
+}
+impl NewWithNullPtr for wire_cst_item_container_solution_two {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            name: core::ptr::null_mut(),
+            items: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_item_container_solution_two {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_dart_minimal_wire__crate__api__minimal__init_app(port_: i64) {
+    wire__crate__api__minimal__init_app_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_dart_minimal_wire__crate__api__minimal__item_container_solution_two_create(
+    port_: i64,
+) {
+    wire__crate__api__minimal__item_container_solution_two_create_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_dart_minimal_wire__crate__api__minimal__item_container_solution_two_get_item_contents(
+    port_: i64,
+    that: *mut wire_cst_item_container_solution_two,
+) {
+    wire__crate__api__minimal__item_container_solution_two_get_item_contents_impl(port_, that)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_dart_minimal_wire__crate__api__minimal__minimal_adder(
+    port_: i64,
+    a: i32,
+    b: i32,
+) {
+    wire__crate__api__minimal__minimal_adder_impl(port_, a, b)
+}
+
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_dart_minimal_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItem>>::increment_strong_count(ptr as _);
+    unsafe {
+        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItem>>::increment_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_dart_minimal_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItem>>::decrement_strong_count(ptr as _);
+    unsafe {
+        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItem>>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_dart_minimal_cst_new_box_autoadd_item_container_solution_two(
+) -> *mut wire_cst_item_container_solution_two {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_item_container_solution_two::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_dart_minimal_cst_new_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(len: i32) -> *mut wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem{
+    let wrap = wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem { ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(<usize>::new_with_null_ptr(), len), len };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_dart_minimal_cst_new_list_prim_i_32_strict(
+    len: i32,
+) -> *mut wire_cst_list_prim_i_32_strict {
+    let ans = wire_cst_list_prim_i_32_strict {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_dart_minimal_cst_new_list_prim_u_8_strict(
+    len: i32,
+) -> *mut wire_cst_list_prim_u_8_strict {
+    let ans = wire_cst_list_prim_u_8_strict {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(ans)
+}
+
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_item_container_solution_two { name: *mut wire_cst_list_prim_u_8_strict,
+items: *mut wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem }
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem
+{
+    ptr: *mut usize,
+    len: i32,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_list_prim_i_32_strict {
+    ptr: *mut i32,
+    len: i32,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_list_prim_u_8_strict {
+    ptr: *mut u8,
+    len: i32,
 }
