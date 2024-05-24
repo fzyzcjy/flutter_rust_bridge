@@ -82,9 +82,9 @@ pub(crate) fn parse(
 
     let mut type_parser = TypeParser::new(src_structs.clone(), src_enums.clone(), src_types);
 
-    let ir_funcs = parse_ir_funcs(&config, src_fns, &mut type_parser)?;
+    let ir_funcs = parse_ir_funcs(&config, &src_fns, &mut type_parser)?;
 
-    let existing_handlers = parse_existing_handlers(config, &file_data_arr);
+    let existing_handlers = parse_existing_handlers(config, &file_data_arr)?;
 
     let (struct_pool, enum_pool, dart_code_of_type) = type_parser.consume();
 
@@ -112,7 +112,7 @@ fn parse_ir_funcs(
     config: &ParserInternalConfig,
     src_fns: &[PathAndItemFn],
     type_parser: &mut TypeParser,
-) -> Result<Vec<IrFunc>, Error> {
+) -> anyhow::Result<Vec<IrFunc>> {
     let mut function_parser = FunctionParser::new(type_parser);
 
     Ok(src_fns
@@ -140,7 +140,7 @@ fn parse_ir_funcs(
 fn parse_existing_handlers(
     config: &ParserInternalConfig,
     file_data_arr: &[FileData],
-) -> Vec<NamespacedName> {
+) -> anyhow::Result<Vec<NamespacedName>> {
     let existing_handlers = (file_data_arr.iter())
         .filter(|file| parse_has_executor(&file.content))
         .map(|file| {
@@ -157,7 +157,7 @@ fn parse_existing_handlers(
         "Should have at most one custom handler"
     );
     // frb-coverage:ignore-end
-    existing_handlers
+    Ok(existing_handlers)
 }
 
 #[cfg(test)]
