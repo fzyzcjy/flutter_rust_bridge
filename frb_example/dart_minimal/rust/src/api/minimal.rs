@@ -1,4 +1,5 @@
 use flutter_rust_bridge::frb;
+use crate::frb_generated::RustAutoOpaque;
 
 #[frb(init)]
 pub fn init_app() {
@@ -7,4 +8,25 @@ pub fn init_app() {
 
 pub fn minimal_adder(a: i32, b: i32) -> i32 {
     a + b
+}
+
+#[frb(opaque)]
+pub struct OpaqueItem(i32);
+
+pub struct ItemContainerSolutionTwo {
+    pub name: String,
+    pub items: Vec<RustAutoOpaque<OpaqueItem>>,
+}
+
+impl ItemContainerSolutionTwo {
+    pub fn create() -> Self {
+        Self {
+            name: "hi".to_owned(),
+            items: vec![RustAutoOpaque::new(OpaqueItem(100))],
+        }
+    }
+
+    pub fn get_item_contents(&self) -> Vec<i32> {
+        self.items.iter().map(|x| x.try_read().unwrap().0).collect()
+    }
 }
