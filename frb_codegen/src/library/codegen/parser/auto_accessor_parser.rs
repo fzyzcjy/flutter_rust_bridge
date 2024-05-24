@@ -18,6 +18,7 @@ pub(crate) fn parse_auto_accessors(
         extract_src_types_in_paths(src_structs, rust_input_paths, rust_crate_dir)?;
     src_structs_in_paths
         .iter()
+        .filter(|struct_name| is_struct_opaque(&struct_name.name, type_parser))
         .flat_map(|struct_name| parse_auto_accessors_of_struct(&struct_name.name, type_parser))
         .collect()
 }
@@ -26,10 +27,10 @@ fn parse_auto_accessors_of_struct(
     struct_name: &str,
     type_parser: &mut TypeParser,
 ) -> anyhow::Result<Vec<IrFunc>> {
-    let ty = type_parser.parse_type(syn::parse_str(struct_name)?)?;
-    if !matches!(ty, IrType::RustAutoOpaqueImplicit(_)) {
-        return Ok(vec![]);
-    }
-
     TODO
+}
+
+fn is_struct_opaque(struct_name: &str, type_parser: &mut TypeParser) -> anyhow::Result<bool> {
+    let ty = type_parser.parse_type(syn::parse_str(struct_name)?)?;
+    Ok(matches!(ty, IrType::RustAutoOpaqueImplicit(_)))
 }
