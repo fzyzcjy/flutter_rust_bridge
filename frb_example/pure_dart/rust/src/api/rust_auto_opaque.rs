@@ -342,7 +342,7 @@ pub struct StructWithExplicitAutoOpaqueFieldTwinNormal {
 pub fn rust_auto_opaque_explicit_struct_twin_normal(
     arg: StructWithExplicitAutoOpaqueFieldTwinNormal,
 ) {
-    assert_eq!(arg.auto_opaque.blocking_read().unwrap().inner, arg.normal);
+    assert_eq!(arg.auto_opaque.blocking_read().inner, arg.normal);
 }
 
 pub fn rust_auto_opaque_explicit_return_struct_twin_normal(
