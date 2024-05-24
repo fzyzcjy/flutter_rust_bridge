@@ -9,6 +9,7 @@ use itertools::Itertools;
 use std::collections::{HashMap, HashSet};
 use std::path::{Path, PathBuf};
 use syn::Type;
+use crate::codegen::parser::misc::extract_src_types_in_paths;
 
 pub(super) fn get_unused_types(
     pack: &IrPack,
@@ -36,27 +37,6 @@ pub(super) fn get_unused_types(
         .collect_vec();
 
     Ok(unused_types)
-}
-
-fn extract_src_types_in_paths<T: StructOrEnumWrapper<I>, I>(
-    src_items: &HashMap<String, &T>,
-    rust_input_paths: &[PathBuf],
-    rust_crate_dir: &Path,
-) -> Vec<NamespacedName> {
-    let interest_input_paths = (rust_input_paths.iter())
-        .map(|p| Namespace::new_from_rust_crate_path(p, rust_crate_dir))
-        .collect::<anyhow::Result<Vec<_>>>()?;
-
-    (src_items.iter())
-        .filter_map(|(k, v)| {
-            let namespace = v.inner().namespace();
-            if interest_input_paths.contains(&namespace) {
-                Some(NamespacedName::new(namespace, k.to_owned()))
-            } else {
-                None
-            }
-        })
-        .collect_vec()
 }
 
 fn get_potential_struct_or_enum_names(ty: &IrType) -> anyhow::Result<Vec<String>> {
