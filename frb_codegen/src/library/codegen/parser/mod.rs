@@ -10,6 +10,7 @@ pub(crate) mod source_graph;
 pub(crate) mod type_alias_resolver;
 pub(crate) mod type_parser;
 mod unused_checker;
+mod auto_accessor_parser;
 
 use crate::codegen::dumper::Dumper;
 use crate::codegen::ir::func::IrFunc;
