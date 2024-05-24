@@ -42,7 +42,7 @@ pub use crate::rust2dart::action::Rust2DartAction;
 pub use crate::rust_async;
 pub use crate::rust_async::{BaseAsyncRuntime, SimpleAsyncRuntime};
 #[cfg(feature = "rust-async")]
-pub use crate::rust_auto_opaque::dart2rust::{
+pub use crate::rust_auto_opaque::dart2rust_implicit::{
     rust_auto_opaque_decode_compute_order, rust_auto_opaque_encode,
 };
 #[cfg(feature = "rust-async")]
