@@ -3,9 +3,7 @@ use crate::codegen::ir::ty::rust_opaque::{IrTypeRustOpaque, RustOpaqueCodecMode}
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
-use quote::ToTokens;
 use syn::Type;
-use crate::codegen::ir::ty::IrType::RustAutoOpaqueImplicit;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_rust_auto_opaque_explicit(
