@@ -20,8 +20,8 @@ pub(super) fn get_unused_types(
 ) -> anyhow::Result<Vec<NamespacedName>> {
     let rust_input_paths = &rust_input_path_pack.rust_input_paths;
     let all_types = [
-        extract_src_types_in_paths(src_structs, rust_input_paths, rust_crate_dir),
-        extract_src_types_in_paths(src_enums, rust_input_paths, rust_crate_dir),
+        extract_src_types_in_paths(src_structs, rust_input_paths, rust_crate_dir)?,
+        extract_src_types_in_paths(src_enums, rust_input_paths, rust_crate_dir)?,
     ]
     .concat();
 
