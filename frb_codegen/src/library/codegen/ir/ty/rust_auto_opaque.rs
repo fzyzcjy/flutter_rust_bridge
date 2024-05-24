@@ -7,22 +7,10 @@ use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
 
 crate::ir! {
 pub struct IrTypeRustAutoOpaque {
-    pub sub: IrTypeRustAutoOpaqueSub,
-    pub inner: IrTypeRustOpaque,
-}
-
-pub enum IrTypeRustAutoOpaqueSub {
-    Explicit(IrTypeRustAutoOpaqueSubExplicit),
-    Implicit(IrTypeRustAutoOpaqueSubImplicit),
-}
-
-pub struct IrTypeRustAutoOpaqueSubExplicit {
-    // nothing yet
-}
-
-pub struct IrTypeRustAutoOpaqueSubImplicit {
     pub ownership_mode: OwnershipMode,
+    pub inner: IrTypeRustOpaque,
     pub raw: IrRustAutoOpaqueRaw,
+    pub explicit: bool,
 }
 
 /// Original type without any transformation
