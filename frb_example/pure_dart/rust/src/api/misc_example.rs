@@ -153,6 +153,7 @@ pub struct OpaqueItem(i32);
 
 // #1937
 pub struct ItemContainerSolutionOne {
+    // TODO auto generate getter/setter
     pub name: String,
     items: Vec<OpaqueItem>,
 }
