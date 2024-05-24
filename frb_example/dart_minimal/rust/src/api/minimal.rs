@@ -1,4 +1,3 @@
-
 use flutter_rust_bridge::frb;
 
 #[frb(init)]
