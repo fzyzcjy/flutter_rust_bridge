@@ -7,6 +7,7 @@ use crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
 use crate::codegen::ir::ty::record::IrTypeRecord;
 use crate::codegen::ir::ty::rust_opaque::IrTypeRustOpaque;
 use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
+use crate::codegen::ir::ty::rust_auto_opaque_implicit::IrRustAutoOpaqueRaw;
 
 crate::ir! {
 /// types that delegate to another type
@@ -78,6 +79,7 @@ pub enum IrTypeDelegateBigPrimitive {
 
 pub struct IrTypeDelegateRustAutoOpaqueExplicit {
     pub inner: IrTypeRustOpaque,
+    pub raw: IrRustAutoOpaqueRaw,
 }
 }
 
@@ -183,7 +185,7 @@ impl IrTypeTrait for IrTypeDelegate {
                 IrTypeDelegateBigPrimitive::I128 => "i128".to_owned(),
                 IrTypeDelegateBigPrimitive::U128 => "u128".to_owned(),
             },
-            IrTypeDelegate::RustAutoOpaqueExplicit(ir) => format!("RustAutoOpaque<{}>", ir.raw),
+            IrTypeDelegate::RustAutoOpaqueExplicit(ir) => format!("RustAutoOpaque<{}>", ir.raw.string),
         }
     }
 
