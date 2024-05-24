@@ -5,7 +5,9 @@ pub(crate) mod dart2rust;
 pub(crate) mod inner;
 mod order;
 
-pub type RustAutoOpaqueBase<T, A> = RustOpaqueBase<inner::RustAutoOpaqueInner<T>, A>;
+pub struct RustAutoOpaqueBase<T: ?Sized + 'static, A: BaseArc<T>>(
+    RustOpaqueBase<inner::RustAutoOpaqueInner<T>, A>,
+);
 
 /// Please refer to `RustAutoOpaque` for doc.
 pub type RustAutoOpaqueNom<T> = RustAutoOpaqueBase<T, StdArc<inner::RustAutoOpaqueInner<T>>>;
