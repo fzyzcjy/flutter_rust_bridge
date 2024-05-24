@@ -331,7 +331,7 @@ pub fn rust_auto_opaque_explicit_arg_twin_normal(
     arg: RustAutoOpaque<NonCloneSimpleTwinNormal>,
     expect: i32,
 ) {
-    assert_eq!((*arg).try_read().unwrap().inner, expect);
+    assert_eq!(arg.blocking_read().inner, expect);
 }
 
 pub struct StructWithExplicitAutoOpaqueFieldTwinNormal {
@@ -342,25 +342,21 @@ pub struct StructWithExplicitAutoOpaqueFieldTwinNormal {
 pub fn rust_auto_opaque_explicit_struct_twin_normal(
     arg: StructWithExplicitAutoOpaqueFieldTwinNormal,
 ) {
-    assert_eq!((*arg.auto_opaque).try_read().unwrap().inner, arg.normal);
+    assert_eq!(arg.auto_opaque.blocking_read().unwrap().inner, arg.normal);
 }
 
 pub fn rust_auto_opaque_explicit_return_struct_twin_normal(
 ) -> StructWithExplicitAutoOpaqueFieldTwinNormal {
     StructWithExplicitAutoOpaqueFieldTwinNormal {
         normal: 100,
-        auto_opaque: RustAutoOpaque::new(RustAutoOpaqueInner::new(RwLock::new(
-            NonCloneSimpleTwinNormal { inner: 100 },
-        ))),
+        auto_opaque: RustAutoOpaque::new(NonCloneSimpleTwinNormal { inner: 100 }),
     }
 }
 
 pub fn rust_auto_opaque_explicit_return_twin_normal(
     initial: i32,
 ) -> RustAutoOpaque<NonCloneSimpleTwinNormal> {
-    RustAutoOpaque::new(RustAutoOpaqueInner::new(RwLock::new(
-        NonCloneSimpleTwinNormal { inner: initial },
-    )))
+    RustAutoOpaque::new(NonCloneSimpleTwinNormal { inner: initial })
 }
 
 // ================ deadlock detection ===================
