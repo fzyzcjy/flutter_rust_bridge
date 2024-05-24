@@ -1,4 +1,5 @@
 pub(crate) mod attribute_parser;
+mod auto_accessor_parser;
 mod file_reader;
 pub(crate) mod function_extractor;
 pub(crate) mod function_parser;
@@ -10,7 +11,6 @@ pub(crate) mod source_graph;
 pub(crate) mod type_alias_resolver;
 pub(crate) mod type_parser;
 mod unused_checker;
-mod auto_accessor_parser;
 
 use crate::codegen::dumper::Dumper;
 use crate::codegen::ir::func::IrFunc;
@@ -118,14 +118,12 @@ fn parse_ir_funcs(
 
     let ir_funcs_normal = src_fns
         .iter()
-        .enumerate()
-        .map(|(index, f)| {
+        .map(|f| {
             function_parser.parse_function(
                 &f.generalized_item_fn,
                 &f.path,
                 &config.rust_crate_dir,
                 &config.force_codec_mode_pack,
-                (index + 1) as i32,
                 config.default_stream_sink_codec,
                 config.default_rust_opaque_codec,
             )
@@ -141,6 +139,11 @@ fn parse_ir_funcs(
         .into_iter()
         // to give downstream a stable output
         .sorted_by_cached_key(|func| func.name.clone())
+        .enumerate()
+        .map(|(index, f)| IrFunc {
+            id: Some((index + 1) as _),
+            ..f
+        })
         .collect_vec())
 }
 

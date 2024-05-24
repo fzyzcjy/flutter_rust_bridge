@@ -49,7 +49,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             file_path,
             rust_crate_dir,
             force_codec_mode_pack,
-            func_id,
             default_stream_sink_codec,
             default_rust_opaque_codec,
         )
@@ -63,7 +62,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         file_path: &Path,
         rust_crate_dir: &Path,
         force_codec_mode_pack: &Option<CodecModePack>,
-        func_id: i32,
         default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
     ) -> anyhow::Result<Option<IrFunc>> {
@@ -116,7 +114,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         Ok(Some(IrFunc {
             name: NamespacedName::new(namespace_refined, func_name),
             dart_name: attributes.name(),
-            id: func_id,
+            id: None, // to be filled later
             inputs: info.inputs,
             output: IrFuncOutput {
                 normal: info.ok_output.unwrap_or(Primitive(IrTypePrimitive::Unit)),
