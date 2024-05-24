@@ -20,45 +20,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     required super.portManager,
   });
 
-  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_OpaqueItemPtr =>
-      wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem;
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_MyStructPtr => wire
+      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct;
 
   @protected
-  OpaqueItem
-      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+  MyStruct
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
           dynamic raw);
 
   @protected
-  OpaqueItem
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+  MyStruct
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
           dynamic raw);
 
   @protected
-  String dco_decode_String(dynamic raw);
-
-  @protected
-  ItemContainerSolutionTwo dco_decode_box_autoadd_item_container_solution_two(
-      dynamic raw);
+  MyStruct
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
+          dynamic raw);
 
   @protected
   int dco_decode_i_32(dynamic raw);
-
-  @protected
-  ItemContainerSolutionTwo dco_decode_item_container_solution_two(dynamic raw);
-
-  @protected
-  List<OpaqueItem>
-      dco_decode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
-          dynamic raw);
-
-  @protected
-  Int32List dco_decode_list_prim_i_32_strict(dynamic raw);
-
-  @protected
-  Uint8List dco_decode_list_prim_u_8_strict(dynamic raw);
-
-  @protected
-  int dco_decode_u_8(dynamic raw);
 
   @protected
   void dco_decode_unit(dynamic raw);
@@ -67,42 +48,22 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   BigInt dco_decode_usize(dynamic raw);
 
   @protected
-  OpaqueItem
-      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+  MyStruct
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
           SseDeserializer deserializer);
 
   @protected
-  OpaqueItem
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+  MyStruct
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
           SseDeserializer deserializer);
 
   @protected
-  String sse_decode_String(SseDeserializer deserializer);
-
-  @protected
-  ItemContainerSolutionTwo sse_decode_box_autoadd_item_container_solution_two(
-      SseDeserializer deserializer);
+  MyStruct
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
+          SseDeserializer deserializer);
 
   @protected
   int sse_decode_i_32(SseDeserializer deserializer);
-
-  @protected
-  ItemContainerSolutionTwo sse_decode_item_container_solution_two(
-      SseDeserializer deserializer);
-
-  @protected
-  List<OpaqueItem>
-      sse_decode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
-          SseDeserializer deserializer);
-
-  @protected
-  Int32List sse_decode_list_prim_i_32_strict(SseDeserializer deserializer);
-
-  @protected
-  Uint8List sse_decode_list_prim_u_8_strict(SseDeserializer deserializer);
-
-  @protected
-  int sse_decode_u_8(SseDeserializer deserializer);
 
   @protected
   void sse_decode_unit(SseDeserializer deserializer);
@@ -114,119 +75,46 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
-  Object
-      cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
-          OpaqueItem raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
-        raw);
-  }
-
-  @protected
-  String cst_encode_String(String raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw;
-  }
-
-  @protected
-  List<dynamic> cst_encode_box_autoadd_item_container_solution_two(
-      ItemContainerSolutionTwo raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_item_container_solution_two(raw);
-  }
-
-  @protected
-  List<dynamic> cst_encode_item_container_solution_two(
-      ItemContainerSolutionTwo raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    return [
-      cst_encode_String(raw.name),
-      cst_encode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
-          raw.items)
-    ];
-  }
-
-  @protected
-  List<dynamic>
-      cst_encode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
-          List<OpaqueItem> raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw
-        .map(
-            cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem)
-        .toList();
-  }
-
-  @protected
-  Int32List cst_encode_list_prim_i_32_strict(Int32List raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw;
-  }
-
-  @protected
-  Uint8List cst_encode_list_prim_u_8_strict(Uint8List raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw;
-  }
-
-  @protected
   Object cst_encode_usize(BigInt raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return castNativeBigInt(raw);
   }
 
   @protected
-  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
-      OpaqueItem raw);
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
+      MyStruct raw);
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
+      MyStruct raw);
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
+      MyStruct raw);
 
   @protected
   int cst_encode_i_32(int raw);
-
-  @protected
-  int cst_encode_u_8(int raw);
 
   @protected
   void cst_encode_unit(void raw);
 
   @protected
   void
-      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
-          OpaqueItem self, SseSerializer serializer);
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
+          MyStruct self, SseSerializer serializer);
 
   @protected
   void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
-          OpaqueItem self, SseSerializer serializer);
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
+          MyStruct self, SseSerializer serializer);
 
   @protected
-  void sse_encode_String(String self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_box_autoadd_item_container_solution_two(
-      ItemContainerSolutionTwo self, SseSerializer serializer);
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
+          MyStruct self, SseSerializer serializer);
 
   @protected
   void sse_encode_i_32(int self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_item_container_solution_two(
-      ItemContainerSolutionTwo self, SseSerializer serializer);
-
-  @protected
-  void
-      sse_encode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
-          List<OpaqueItem> self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_list_prim_i_32_strict(
-      Int32List self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_list_prim_u_8_strict(
-      Uint8List self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_u_8(int self, SseSerializer serializer);
 
   @protected
   void sse_encode_unit(void self, SseSerializer serializer);
@@ -243,34 +131,27 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 class RustLibWire implements BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
 
+  void wire__crate__api__minimal__MyStruct_f(
+          NativePortType port_, Object that) =>
+      wasmModule.wire__crate__api__minimal__MyStruct_f(port_, that);
+
   void wire__crate__api__minimal__init_app(NativePortType port_) =>
       wasmModule.wire__crate__api__minimal__init_app(port_);
-
-  void wire__crate__api__minimal__item_container_solution_two_create(
-          NativePortType port_) =>
-      wasmModule
-          .wire__crate__api__minimal__item_container_solution_two_create(port_);
-
-  void wire__crate__api__minimal__item_container_solution_two_get_item_contents(
-          NativePortType port_, List<dynamic> that) =>
-      wasmModule
-          .wire__crate__api__minimal__item_container_solution_two_get_item_contents(
-              port_, that);
 
   void wire__crate__api__minimal__minimal_adder(
           NativePortType port_, int a, int b) =>
       wasmModule.wire__crate__api__minimal__minimal_adder(port_, a, b);
 
-  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
           dynamic ptr) =>
       wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
               ptr);
 
-  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
           dynamic ptr) =>
       wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
               ptr);
 }
 
@@ -286,23 +167,19 @@ class RustLibWasmModule implements WasmModule {
   @override
   external RustLibWasmModule bind(dynamic thisArg, String moduleName);
 
+  external void wire__crate__api__minimal__MyStruct_f(
+      NativePortType port_, Object that);
+
   external void wire__crate__api__minimal__init_app(NativePortType port_);
-
-  external void wire__crate__api__minimal__item_container_solution_two_create(
-      NativePortType port_);
-
-  external void
-      wire__crate__api__minimal__item_container_solution_two_get_item_contents(
-          NativePortType port_, List<dynamic> that);
 
   external void wire__crate__api__minimal__minimal_adder(
       NativePortType port_, int a, int b);
 
   external void
-      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
           dynamic ptr);
 
   external void
-      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
           dynamic ptr);
 }

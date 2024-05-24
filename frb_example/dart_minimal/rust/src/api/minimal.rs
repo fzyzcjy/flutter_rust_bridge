@@ -11,24 +11,10 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 }
 
 #[frb(opaque)]
-pub struct OpaqueItem(i32);
+pub struct MyStruct;
 
-#[frb]
-pub struct ItemContainerSolutionTwo {
-    #[frb(non_final)]
-    pub name: String,
-    pub items: Vec<RustAutoOpaque<OpaqueItem>>,
-}
-
-impl ItemContainerSolutionTwo {
-    pub fn create() -> Self {
-        Self {
-            name: "hi".to_owned(),
-            items: vec![RustAutoOpaque::new(OpaqueItem(100))],
-        }
-    }
-
-    pub fn get_item_contents(&self) -> Vec<i32> {
-        self.items.iter().map(|x| x.blocking_read().0).collect()
+impl MyStruct {
+    pub fn f(&self) -> Self {
+        todo!()
     }
 }

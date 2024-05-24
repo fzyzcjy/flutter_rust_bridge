@@ -18,45 +18,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     required super.portManager,
   });
 
-  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_OpaqueItemPtr =>
-      wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemPtr;
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_MyStructPtr => wire
+      ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStructPtr;
 
   @protected
-  OpaqueItem
-      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+  MyStruct
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
           dynamic raw);
 
   @protected
-  OpaqueItem
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+  MyStruct
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
           dynamic raw);
 
   @protected
-  String dco_decode_String(dynamic raw);
-
-  @protected
-  ItemContainerSolutionTwo dco_decode_box_autoadd_item_container_solution_two(
-      dynamic raw);
+  MyStruct
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
+          dynamic raw);
 
   @protected
   int dco_decode_i_32(dynamic raw);
-
-  @protected
-  ItemContainerSolutionTwo dco_decode_item_container_solution_two(dynamic raw);
-
-  @protected
-  List<OpaqueItem>
-      dco_decode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
-          dynamic raw);
-
-  @protected
-  Int32List dco_decode_list_prim_i_32_strict(dynamic raw);
-
-  @protected
-  Uint8List dco_decode_list_prim_u_8_strict(dynamic raw);
-
-  @protected
-  int dco_decode_u_8(dynamic raw);
 
   @protected
   void dco_decode_unit(dynamic raw);
@@ -65,42 +46,22 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   BigInt dco_decode_usize(dynamic raw);
 
   @protected
-  OpaqueItem
-      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+  MyStruct
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
           SseDeserializer deserializer);
 
   @protected
-  OpaqueItem
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+  MyStruct
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
           SseDeserializer deserializer);
 
   @protected
-  String sse_decode_String(SseDeserializer deserializer);
-
-  @protected
-  ItemContainerSolutionTwo sse_decode_box_autoadd_item_container_solution_two(
-      SseDeserializer deserializer);
+  MyStruct
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
+          SseDeserializer deserializer);
 
   @protected
   int sse_decode_i_32(SseDeserializer deserializer);
-
-  @protected
-  ItemContainerSolutionTwo sse_decode_item_container_solution_two(
-      SseDeserializer deserializer);
-
-  @protected
-  List<OpaqueItem>
-      sse_decode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
-          SseDeserializer deserializer);
-
-  @protected
-  Int32List sse_decode_list_prim_i_32_strict(SseDeserializer deserializer);
-
-  @protected
-  Uint8List sse_decode_list_prim_u_8_strict(SseDeserializer deserializer);
-
-  @protected
-  int sse_decode_u_8(SseDeserializer deserializer);
 
   @protected
   void sse_decode_unit(SseDeserializer deserializer);
@@ -112,139 +73,46 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
-  int cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
-      OpaqueItem raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
-        raw);
-  }
-
-  @protected
-  ffi.Pointer<wire_cst_list_prim_u_8_strict> cst_encode_String(String raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_list_prim_u_8_strict(utf8.encoder.convert(raw));
-  }
-
-  @protected
-  ffi.Pointer<wire_cst_item_container_solution_two>
-      cst_encode_box_autoadd_item_container_solution_two(
-          ItemContainerSolutionTwo raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    final ptr = wire.cst_new_box_autoadd_item_container_solution_two();
-    cst_api_fill_to_wire_item_container_solution_two(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<
-          wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem>
-      cst_encode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
-          List<OpaqueItem> raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    final ans = wire
-        .cst_new_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
-            raw.length);
-    for (var i = 0; i < raw.length; ++i) {
-      ans.ref.ptr[i] =
-          cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
-              raw[i]);
-    }
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_cst_list_prim_i_32_strict> cst_encode_list_prim_i_32_strict(
-      Int32List raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    final ans = wire.cst_new_list_prim_i_32_strict(raw.length);
-    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_cst_list_prim_u_8_strict> cst_encode_list_prim_u_8_strict(
-      Uint8List raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    final ans = wire.cst_new_list_prim_u_8_strict(raw.length);
-    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
-    return ans;
-  }
-
-  @protected
   int cst_encode_usize(BigInt raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.toSigned(64).toInt();
   }
 
   @protected
-  void cst_api_fill_to_wire_box_autoadd_item_container_solution_two(
-      ItemContainerSolutionTwo apiObj,
-      ffi.Pointer<wire_cst_item_container_solution_two> wireObj) {
-    cst_api_fill_to_wire_item_container_solution_two(apiObj, wireObj.ref);
-  }
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
+      MyStruct raw);
 
   @protected
-  void cst_api_fill_to_wire_item_container_solution_two(
-      ItemContainerSolutionTwo apiObj,
-      wire_cst_item_container_solution_two wireObj) {
-    wireObj.name = cst_encode_String(apiObj.name);
-    wireObj.items =
-        cst_encode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
-            apiObj.items);
-  }
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
+      MyStruct raw);
 
   @protected
-  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
-      OpaqueItem raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
+      MyStruct raw);
 
   @protected
   int cst_encode_i_32(int raw);
-
-  @protected
-  int cst_encode_u_8(int raw);
 
   @protected
   void cst_encode_unit(void raw);
 
   @protected
   void
-      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
-          OpaqueItem self, SseSerializer serializer);
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
+          MyStruct self, SseSerializer serializer);
 
   @protected
   void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
-          OpaqueItem self, SseSerializer serializer);
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
+          MyStruct self, SseSerializer serializer);
 
   @protected
-  void sse_encode_String(String self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_box_autoadd_item_container_solution_two(
-      ItemContainerSolutionTwo self, SseSerializer serializer);
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
+          MyStruct self, SseSerializer serializer);
 
   @protected
   void sse_encode_i_32(int self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_item_container_solution_two(
-      ItemContainerSolutionTwo self, SseSerializer serializer);
-
-  @protected
-  void
-      sse_encode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
-          List<OpaqueItem> self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_list_prim_i_32_strict(
-      Int32List self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_list_prim_u_8_strict(
-      Uint8List self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_u_8(int self, SseSerializer serializer);
 
   @protected
   void sse_encode_unit(void self, SseSerializer serializer);
@@ -297,6 +165,23 @@ class RustLibWire implements BaseWire {
   late final _store_dart_post_cobject = _store_dart_post_cobjectPtr
       .asFunction<void Function(DartPostCObjectFnType)>();
 
+  void wire__crate__api__minimal__MyStruct_f(
+    int port_,
+    int that,
+  ) {
+    return _wire__crate__api__minimal__MyStruct_f(
+      port_,
+      that,
+    );
+  }
+
+  late final _wire__crate__api__minimal__MyStruct_fPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
+      'frbgen_frb_example_dart_minimal_wire__crate__api__minimal__MyStruct_f');
+  late final _wire__crate__api__minimal__MyStruct_f =
+      _wire__crate__api__minimal__MyStruct_fPtr
+          .asFunction<void Function(int, int)>();
+
   void wire__crate__api__minimal__init_app(
     int port_,
   ) {
@@ -310,43 +195,6 @@ class RustLibWire implements BaseWire {
       'frbgen_frb_example_dart_minimal_wire__crate__api__minimal__init_app');
   late final _wire__crate__api__minimal__init_app =
       _wire__crate__api__minimal__init_appPtr.asFunction<void Function(int)>();
-
-  void wire__crate__api__minimal__item_container_solution_two_create(
-    int port_,
-  ) {
-    return _wire__crate__api__minimal__item_container_solution_two_create(
-      port_,
-    );
-  }
-
-  late final _wire__crate__api__minimal__item_container_solution_two_createPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'frbgen_frb_example_dart_minimal_wire__crate__api__minimal__item_container_solution_two_create');
-  late final _wire__crate__api__minimal__item_container_solution_two_create =
-      _wire__crate__api__minimal__item_container_solution_two_createPtr
-          .asFunction<void Function(int)>();
-
-  void wire__crate__api__minimal__item_container_solution_two_get_item_contents(
-    int port_,
-    ffi.Pointer<wire_cst_item_container_solution_two> that,
-  ) {
-    return _wire__crate__api__minimal__item_container_solution_two_get_item_contents(
-      port_,
-      that,
-    );
-  }
-
-  late final _wire__crate__api__minimal__item_container_solution_two_get_item_contentsPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64,
-                      ffi.Pointer<wire_cst_item_container_solution_two>)>>(
-          'frbgen_frb_example_dart_minimal_wire__crate__api__minimal__item_container_solution_two_get_item_contents');
-  late final _wire__crate__api__minimal__item_container_solution_two_get_item_contents =
-      _wire__crate__api__minimal__item_container_solution_two_get_item_contentsPtr
-          .asFunction<
-              void Function(
-                  int, ffi.Pointer<wire_cst_item_container_solution_two>)>();
 
   void wire__crate__api__minimal__minimal_adder(
     int port_,
@@ -369,103 +217,36 @@ class RustLibWire implements BaseWire {
           .asFunction<void Function(int, int, int)>();
 
   void
-      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
     ffi.Pointer<ffi.Void> ptr,
   ) {
-    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
       ptr,
     );
   }
 
-  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemPtr =
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStructPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_frb_example_dart_minimal_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem');
-  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem =
-      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemPtr
+          'frbgen_frb_example_dart_minimal_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct');
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct =
+      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStructPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void
-      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
     ffi.Pointer<ffi.Void> ptr,
   ) {
-    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
       ptr,
     );
   }
 
-  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemPtr =
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStructPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_frb_example_dart_minimal_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem');
-  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem =
-      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemPtr
+          'frbgen_frb_example_dart_minimal_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct');
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct =
+      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStructPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  ffi.Pointer<wire_cst_item_container_solution_two>
-      cst_new_box_autoadd_item_container_solution_two() {
-    return _cst_new_box_autoadd_item_container_solution_two();
-  }
-
-  late final _cst_new_box_autoadd_item_container_solution_twoPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Pointer<wire_cst_item_container_solution_two> Function()>>(
-      'frbgen_frb_example_dart_minimal_cst_new_box_autoadd_item_container_solution_two');
-  late final _cst_new_box_autoadd_item_container_solution_two =
-      _cst_new_box_autoadd_item_container_solution_twoPtr.asFunction<
-          ffi.Pointer<wire_cst_item_container_solution_two> Function()>();
-
-  ffi.Pointer<
-          wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem>
-      cst_new_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
-    int len,
-  ) {
-    return _cst_new_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
-      len,
-    );
-  }
-
-  late final _cst_new_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  ffi.Pointer<
-                          wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem>
-                      Function(ffi.Int32)>>(
-          'frbgen_frb_example_dart_minimal_cst_new_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem');
-  late final _cst_new_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem =
-      _cst_new_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemPtr
-          .asFunction<
-              ffi.Pointer<
-                      wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem>
-                  Function(int)>();
-
-  ffi.Pointer<wire_cst_list_prim_i_32_strict> cst_new_list_prim_i_32_strict(
-    int len,
-  ) {
-    return _cst_new_list_prim_i_32_strict(
-      len,
-    );
-  }
-
-  late final _cst_new_list_prim_i_32_strictPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Pointer<wire_cst_list_prim_i_32_strict> Function(ffi.Int32)>>(
-      'frbgen_frb_example_dart_minimal_cst_new_list_prim_i_32_strict');
-  late final _cst_new_list_prim_i_32_strict = _cst_new_list_prim_i_32_strictPtr
-      .asFunction<ffi.Pointer<wire_cst_list_prim_i_32_strict> Function(int)>();
-
-  ffi.Pointer<wire_cst_list_prim_u_8_strict> cst_new_list_prim_u_8_strict(
-    int len,
-  ) {
-    return _cst_new_list_prim_u_8_strict(
-      len,
-    );
-  }
-
-  late final _cst_new_list_prim_u_8_strictPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Pointer<wire_cst_list_prim_u_8_strict> Function(ffi.Int32)>>(
-      'frbgen_frb_example_dart_minimal_cst_new_list_prim_u_8_strict');
-  late final _cst_new_list_prim_u_8_strict = _cst_new_list_prim_u_8_strictPtr
-      .asFunction<ffi.Pointer<wire_cst_list_prim_u_8_strict> Function(int)>();
 
   int dummy_method_to_enforce_bundling() {
     return _dummy_method_to_enforce_bundling();
@@ -486,33 +267,3 @@ typedef DartDartPostCObjectFnTypeFunction = bool Function(
     DartDartPort port_id, ffi.Pointer<ffi.Void> message);
 typedef DartPort = ffi.Int64;
 typedef DartDartPort = int;
-
-final class wire_cst_list_prim_u_8_strict extends ffi.Struct {
-  external ffi.Pointer<ffi.Uint8> ptr;
-
-  @ffi.Int32()
-  external int len;
-}
-
-final class wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem
-    extends ffi.Struct {
-  external ffi.Pointer<ffi.UintPtr> ptr;
-
-  @ffi.Int32()
-  external int len;
-}
-
-final class wire_cst_item_container_solution_two extends ffi.Struct {
-  external ffi.Pointer<wire_cst_list_prim_u_8_strict> name;
-
-  external ffi.Pointer<
-          wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem>
-      items;
-}
-
-final class wire_cst_list_prim_i_32_strict extends ffi.Struct {
-  external ffi.Pointer<ffi.Int32> ptr;
-
-  @ffi.Int32()
-  external int len;
-}
