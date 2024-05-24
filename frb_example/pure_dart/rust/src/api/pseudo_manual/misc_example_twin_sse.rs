@@ -205,6 +205,6 @@ impl ItemContainerSolutionTwoTwinSse {
 
     #[flutter_rust_bridge::frb(serialize)]
     pub fn get_item_contents_twin_sse(&self) -> Vec<i32> {
-        self.items.iter().map(|x| x.blocking_read().0).collect()
+        self.items.iter().map(|x| x.try_read().unwrap().0).collect()
     }
 }

@@ -7,9 +7,7 @@
 #[allow(unused_imports)]
 use crate::frb_generated::RustAutoOpaque;
 use crate::frb_generated::StreamSink;
-use flutter_rust_bridge::for_generated::RustAutoOpaqueInner;
 use flutter_rust_bridge::frb;
-use flutter_rust_bridge::rust_async::RwLock;
 use std::path::PathBuf;
 
 // TODO auto determine it is opaque or not later
@@ -471,7 +469,7 @@ pub fn rust_auto_opaque_explicit_arg_twin_sync_sse_moi(
     arg: crate::frb_generated::RustAutoOpaqueMoi<NonCloneSimpleTwinSyncSseMoi>,
     expect: i32,
 ) {
-    assert_eq!(arg.blocking_read().inner, expect);
+    assert_eq!(arg.try_read().unwrap().inner, expect);
 }
 
 pub struct StructWithExplicitAutoOpaqueFieldTwinSyncSseMoi {
@@ -485,7 +483,7 @@ pub struct StructWithExplicitAutoOpaqueFieldTwinSyncSseMoi {
 pub fn rust_auto_opaque_explicit_struct_twin_sync_sse_moi(
     arg: StructWithExplicitAutoOpaqueFieldTwinSyncSseMoi,
 ) {
-    assert_eq!(arg.auto_opaque.blocking_read().inner, arg.normal);
+    assert_eq!(arg.auto_opaque.try_read().unwrap().inner, arg.normal);
 }
 
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
