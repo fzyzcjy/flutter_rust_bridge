@@ -1,6 +1,6 @@
 // AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
 
-import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:frb_example_pure_dart_pde/src/rust/api/optional_primitive_misc.dart';
 import 'package:frb_example_pure_dart_pde/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
