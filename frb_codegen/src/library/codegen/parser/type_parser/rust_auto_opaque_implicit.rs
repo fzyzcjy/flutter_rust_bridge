@@ -27,7 +27,6 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         // println!("inner={inner:?}");
 
         let inner_str = inner.to_token_stream().to_string();
-
         let info = self.get_or_insert_rust_auto_opaque_info(&inner_str, namespace, None);
 
         let raw_segments = match inner {

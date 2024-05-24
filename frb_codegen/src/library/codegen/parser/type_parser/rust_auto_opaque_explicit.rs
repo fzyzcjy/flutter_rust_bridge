@@ -5,6 +5,7 @@ use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use quote::ToTokens;
 use syn::Type;
+use crate::codegen::ir::ty::rust_auto_opaque_implicit::IrRustAutoOpaqueRaw;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_rust_auto_opaque_explicit(
@@ -39,6 +40,10 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                     inner: self.create_rust_opaque_type_for_rust_auto_opaque(&inner_str),
                     codec: info.codec,
                     brief_name: true,
+                },
+                raw: IrRustAutoOpaqueRaw {
+                    string: inner_str.clone(),
+                    segments: raw_segments,
                 },
             },
         ))
