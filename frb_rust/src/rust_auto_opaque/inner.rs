@@ -7,7 +7,7 @@ pub struct RustAutoOpaqueInner<T> {
 }
 
 impl<T> RustAutoOpaqueInner<T> {
-    pub fn new(data: RwLock<T>) -> Self {
+    pub(crate) fn new(data: RwLock<T>) -> Self {
         Self {
             data,
             order: RustAutoOpaqueOrder::new(),
@@ -15,12 +15,13 @@ impl<T> RustAutoOpaqueInner<T> {
     }
 }
 
-impl<T> RustAutoOpaqueInner<T> {
-    pub fn try_read(&self) -> Result<RwLockReadGuard<'_, T>, TryLockError> {
-        self.data.try_read()
-    }
-
-    pub fn try_write(&self) -> Result<RwLockWriteGuard<'_, T>, TryLockError> {
-        self.data.try_write()
-    }
-}
+// TODO rm
+// impl<T> RustAutoOpaqueInner<T> {
+//     pub fn try_read(&self) -> Result<RwLockReadGuard<'_, T>, TryLockError> {
+//         self.data.try_read()
+//     }
+//
+//     pub fn try_write(&self) -> Result<RwLockWriteGuard<'_, T>, TryLockError> {
+//         self.data.try_write()
+//     }
+// }
