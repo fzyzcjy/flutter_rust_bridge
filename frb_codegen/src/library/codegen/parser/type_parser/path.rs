@@ -59,6 +59,6 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         }
         // frb-coverage:ignore-end
 
-        self.parse_type_rust_auto_opaque(None, &syn::Type::Path(type_path.to_owned()))
+        self.parse_type_rust_auto_opaque_implicit(None, &syn::Type::Path(type_path.to_owned()))
     }
 }

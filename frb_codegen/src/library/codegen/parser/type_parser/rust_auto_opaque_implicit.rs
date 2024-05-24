@@ -17,7 +17,7 @@ use syn::Type;
 use IrType::RustAutoOpaqueImplicit;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
-    pub(crate) fn parse_type_rust_auto_opaque(
+    pub(crate) fn parse_type_rust_auto_opaque_implicit(
         &mut self,
         namespace: Option<Namespace>,
         ty: &Type,
@@ -83,7 +83,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         ty_raw: &IrTypeRustAutoOpaqueImplicit,
         transform: impl FnOnce(&str) -> String,
     ) -> Result<IrType> {
-        self.parse_type_rust_auto_opaque(
+        self.parse_type_rust_auto_opaque_implicit(
             ty_raw.self_namespace(),
             &syn::parse_str(&transform(&ty_raw.raw.string))?,
         )
