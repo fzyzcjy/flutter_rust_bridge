@@ -134,6 +134,10 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
             IrTypeDelegate::BigPrimitive(_) => Acc::distribute(Some(
                 "return cst_encode_String(raw.toString());".to_string(),
             )),
+            IrTypeDelegate::RustAutoOpaqueExplicit(ir) => Acc::distribute(Some(format!(
+                "return cst_encode_{}(raw);",
+                self.ir.get_delegate().safe_ident(),
+            ))),
         }
     }
 

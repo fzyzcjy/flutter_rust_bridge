@@ -85,6 +85,7 @@ impl<'a> WireDartCodecDcoGeneratorDecoderTrait for DelegateWireDartCodecDcoGener
             IrTypeDelegate::BigPrimitive(_) => {
                 "return BigInt.parse(raw);".to_owned()
             }
+            IrTypeDelegate::RustAutoOpaqueExplicit(ir) => format!(r"return dco_decode_{}(raw);", ir.inner.safe_ident())
         }
     }
 }
