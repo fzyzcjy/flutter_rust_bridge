@@ -1,8 +1,5 @@
 use crate::codegen::ir::namespace::Namespace;
-use crate::codegen::ir::ty::rust_auto_opaque::{
-    IrRustAutoOpaqueRaw, IrTypeRustAutoOpaque, IrTypeRustAutoOpaqueSub,
-    IrTypeRustAutoOpaqueSubExplicit,
-};
+use crate::codegen::ir::ty::rust_auto_opaque::{IrRustAutoOpaqueRaw, IrTypeRustAutoOpaque};
 use crate::codegen::ir::ty::rust_opaque::{
     IrRustOpaqueInner, IrTypeRustOpaque, RustOpaqueCodecMode,
 };
@@ -66,7 +63,9 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         let info = self.get_or_insert_rust_auto_opaque_info(&inner_str, None, codec);
 
         RustAutoOpaque(IrTypeRustAutoOpaque {
-            sub: IrTypeRustAutoOpaqueSub::Explicit(IrTypeRustAutoOpaqueSubExplicit {}),
+            ownership_mode: TODO,
+            raw: TODO,
+            explicit: true,
             inner: IrTypeRustOpaque {
                 namespace: info.namespace,
                 inner: self.create_rust_opaque_type_for_rust_auto_opaque(&inner_str),
