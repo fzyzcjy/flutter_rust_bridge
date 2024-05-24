@@ -13,7 +13,9 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 #[frb(opaque)]
 pub struct OpaqueItem(i32);
 
+#[frb]
 pub struct ItemContainerSolutionTwo {
+    #[frb(non_final)]
     pub name: String,
     pub items: Vec<RustAutoOpaque<OpaqueItem>>,
 }

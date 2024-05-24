@@ -29,10 +29,10 @@ class OpaqueItem extends RustOpaque {
 }
 
 class ItemContainerSolutionTwo {
-  final String name;
+  String name;
   final List<OpaqueItem> items;
 
-  const ItemContainerSolutionTwo({
+  ItemContainerSolutionTwo({
     required this.name,
     required this.items,
   });

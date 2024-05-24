@@ -172,7 +172,9 @@ impl ItemContainerSolutionOne {
 }
 
 // #1937
+#[frb]
 pub struct ItemContainerSolutionTwo {
+    #[frb(non_final)]
     pub name: String,
     pub items: Vec<RustAutoOpaque<OpaqueItem>>,
 }
