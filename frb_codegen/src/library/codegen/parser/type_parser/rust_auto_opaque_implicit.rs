@@ -57,25 +57,18 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             },
             IrTypeRustOpaque {
                 namespace: info.namespace,
-                inner: self.create_rust_opaque_type_for_rust_auto_opaque(&inner_str),
+                // TODO when all usages of a type do not require `&mut`, can drop this Mutex
+                // TODO similarly, can use std instead of `tokio`'s lock
+                inner: IrRustOpaqueInner(format!(
+                    "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<{inner_str}>"
+                )),
                 codec: info.codec,
                 brief_name: true,
             },
         ))
     }
 
-    pub(super) fn create_rust_opaque_type_for_rust_auto_opaque(
-        &self,
-        inner: &str,
-    ) -> IrRustOpaqueInner {
-        // TODO when all usages of a type do not require `&mut`, can drop this Mutex
-        // TODO similarly, can use std instead of `tokio`'s lock
-        IrRustOpaqueInner(format!(
-            "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<{inner}>"
-        ))
-    }
-
-    pub(super) fn get_or_insert_rust_auto_opaque_info(
+    fn get_or_insert_rust_auto_opaque_info(
         &mut self,
         inner: &str,
         namespace: Option<Namespace>,
