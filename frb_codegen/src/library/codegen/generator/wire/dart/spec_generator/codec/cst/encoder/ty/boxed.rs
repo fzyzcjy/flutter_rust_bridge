@@ -1,3 +1,4 @@
+use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::is_js_value;
 use crate::codegen::generator::misc::target::Target;
