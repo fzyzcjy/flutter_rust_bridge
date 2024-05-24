@@ -99,6 +99,10 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
                     "CstDecode::<String>::cst_decode(self).parse().unwrap()".into(),
                 ),
             ),
+            IrTypeDelegate::RustAutoOpaqueExplicit(ir) => Acc {
+                io: Some("flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(self.cst_decode())".into()),
+                ..Default::default()
+            },
         }
     }
 
@@ -135,6 +139,8 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
             IrTypeDelegate::Set(ir) => generate_decode_set(ir).into(),
             IrTypeDelegate::StreamSink(_) => "StreamSink::deserialize(self.as_string().expect(\"should be a string\"))".into(),
             IrTypeDelegate::BigPrimitive(_) => "CstDecode::<String>::cst_decode(self).parse().unwrap()".into(),
+            IrTypeDelegate::RustAutoOpaqueExplicit(ir) =>
+                "flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(self.cst_decode())".into(),
         })
     }
 
