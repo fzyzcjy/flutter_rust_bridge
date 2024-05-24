@@ -11,3 +11,14 @@ impl<T: 'static, A: BaseArc<RustAutoOpaqueInner<T>>> RustAutoOpaqueBase<T, A> {
         ))))
     }
 }
+
+// TODO rm
+// impl<T> RustAutoOpaqueInner<T> {
+//     pub fn try_read(&self) -> Result<RwLockReadGuard<'_, T>, TryLockError> {
+//         self.data.try_read()
+//     }
+//
+//     pub fn try_write(&self) -> Result<RwLockWriteGuard<'_, T>, TryLockError> {
+//         self.data.try_write()
+//     }
+// }
