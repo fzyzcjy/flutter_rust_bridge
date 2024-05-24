@@ -82,7 +82,10 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::Uuid => "self.as_bytes().to_vec()".to_owned(),
                 IrTypeDelegate::StreamSink(_) => return Some(lang.throw_unimplemented("")),
                 IrTypeDelegate::BigPrimitive(_) => "self.to_string()".to_owned(),
-                IrTypeDelegate::RustAutoOpaqueExplicit(ir) => "flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_encode(self)".to_owned(),
+                IrTypeDelegate::RustAutoOpaqueExplicit(ir) => {
+                    "flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_encode(self)"
+                        .to_owned()
+                }
             },
         };
         Some(simple_delegate_encode(
@@ -172,7 +175,10 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 }
                 IrTypeDelegate::StreamSink(_) => "StreamSink::deserialize(inner)".to_owned(),
                 IrTypeDelegate::BigPrimitive(_) => "inner.parse().unwrap()".to_owned(),
-                IrTypeDelegate::RustAutoOpaqueExplicit(ir) => "flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(inner)".to_owned(),
+                IrTypeDelegate::RustAutoOpaqueExplicit(ir) => {
+                    "flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(inner)"
+                        .to_owned()
+                }
             },
         };
 
