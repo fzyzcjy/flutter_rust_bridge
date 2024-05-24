@@ -10,6 +10,7 @@ pub struct IrTypeRustAutoOpaque {
     pub ownership_mode: OwnershipMode,
     pub inner: IrTypeRustOpaque,
     pub raw: IrRustAutoOpaqueRaw,
+    pub explicit: bool,
 }
 
 /// Original type without any transformation
