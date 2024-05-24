@@ -6,6 +6,7 @@ use crate::codegen::generator::codec::sse::ty::rust_opaque::{
 };
 use crate::codegen::generator::codec::sse::ty::*;
 use crate::codegen::ir::func::OwnershipMode;
+use crate::codegen::ir::ty::rust_auto_opaque::{IrTypeRustAutoOpaqueSub, IrTypeRustAutoOpaqueSubImplicit};
 use convert_case::{Case, Casing};
 
 impl<'a> CodecSseTyTrait for RustAutoOpaqueCodecSseTy<'a> {
@@ -19,15 +20,16 @@ impl<'a> CodecSseTyTrait for RustAutoOpaqueCodecSseTy<'a> {
                 ))
             }
             Lang::RustLang(_) => {
-                if self.ir.ownership_mode == OwnershipMode::Owned {
-                    Some(simple_delegate_encode(
-                        lang,
-                        &RustOpaque(self.ir.inner.to_owned()),
-                        &generate_encode_rust_auto_opaque(&self.ir, "self"),
-                    ))
-                } else {
-                    None
+                if let IrTypeRustAutoOpaqueSub::Implicit(sub) = &self.ir.sub {
+                    if sub.ownership_mode == OwnershipMode::Owned {
+                        return Some(simple_delegate_encode(
+                            lang,
+                            &RustOpaque(self.ir.inner.to_owned()),
+                            &generate_encode_rust_auto_opaque(&self.ir, "self"),
+                        ));
+                    }
                 }
+                None
             }
         }
     }
@@ -41,15 +43,16 @@ impl<'a> CodecSseTyTrait for RustAutoOpaqueCodecSseTy<'a> {
                 self.context,
             )),
             Lang::RustLang(_) => {
-                if self.ir.ownership_mode == OwnershipMode::Owned {
-                    Some(simple_delegate_decode(
-                        lang,
-                        &RustOpaque(self.ir.inner.to_owned()),
-                        &generate_decode_rust_auto_opaque(&self.ir, "inner"),
-                    ))
-                } else {
-                    None
+                if let IrTypeRustAutoOpaqueSub::Implicit(sub) = &self.ir.sub {
+                    if sub.ownership_mode == OwnershipMode::Owned {
+                        return Some(simple_delegate_decode(
+                            lang,
+                            &RustOpaque(self.ir.inner.to_owned()),
+                            &generate_decode_rust_auto_opaque(sub, "inner"),
+                        ));
+                    }
                 }
+                None
             }
         }
     }
@@ -66,11 +69,11 @@ pub(crate) fn generate_encode_rust_auto_opaque(
 }
 
 pub(crate) fn generate_decode_rust_auto_opaque(
-    ir: &IrTypeRustAutoOpaque,
+    sub: &IrTypeRustAutoOpaqueSubImplicit,
     variable: &str,
 ) -> String {
     format!(
         "{variable}.rust_auto_opaque_decode_{}()",
-        ir.ownership_mode.to_string().to_case(Case::Snake)
+        sub.ownership_mode.to_string().to_case(Case::Snake)
     )
 }
