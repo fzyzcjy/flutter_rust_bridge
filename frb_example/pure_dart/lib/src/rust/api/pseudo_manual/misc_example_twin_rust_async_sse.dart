@@ -5,7 +5,7 @@
 
 import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
-import 'misc_example_twin_sync_sse.dart';
+import '../misc_example.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'misc_example_twin_rust_async_sse.freezed.dart';
@@ -71,6 +71,36 @@ Future<MySize> handleStructTwinRustAsyncSse(
     RustLib.instance.api
         .crateApiPseudoManualMiscExampleTwinRustAsyncSseHandleStructTwinRustAsyncSse(
             arg: arg, boxed: boxed, hint: hint);
+
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ItemContainerSolutionOneTwinRustAsyncSse>>
+@sealed
+class ItemContainerSolutionOneTwinRustAsyncSse extends RustOpaque {
+  ItemContainerSolutionOneTwinRustAsyncSse.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  ItemContainerSolutionOneTwinRustAsyncSse.sseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_ItemContainerSolutionOneTwinRustAsyncSse,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_ItemContainerSolutionOneTwinRustAsyncSse,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_ItemContainerSolutionOneTwinRustAsyncSsePtr,
+  );
+
+  static Future<ItemContainerSolutionOneTwinRustAsyncSse>
+      createTwinRustAsyncSse({dynamic hint}) => RustLib.instance.api
+          .crateApiPseudoManualMiscExampleTwinRustAsyncSseItemContainerSolutionOneTwinRustAsyncSseCreateTwinRustAsyncSse(
+              hint: hint);
+
+  Future<Int32List> getItemContentsTwinRustAsyncSse({dynamic hint}) => RustLib
+      .instance.api
+      .crateApiPseudoManualMiscExampleTwinRustAsyncSseItemContainerSolutionOneTwinRustAsyncSseGetItemContentsTwinRustAsyncSse(
+          that: this, hint: hint);
+}
 
 class ATwinRustAsyncSse {
   final String a;
@@ -163,37 +193,6 @@ class CTwinRustAsyncSse {
       other is CTwinRustAsyncSse &&
           runtimeType == other.runtimeType &&
           c == other.c;
-}
-
-class ItemContainerSolutionOneTwinRustAsyncSse {
-  final String name;
-  final List<OpaqueItem> items;
-
-  const ItemContainerSolutionOneTwinRustAsyncSse({
-    required this.name,
-    required this.items,
-  });
-
-  static Future<ItemContainerSolutionOneTwinRustAsyncSse>
-      createTwinRustAsyncSse({dynamic hint}) => RustLib.instance.api
-          .crateApiPseudoManualMiscExampleTwinRustAsyncSseItemContainerSolutionOneTwinRustAsyncSseCreateTwinRustAsyncSse(
-              hint: hint);
-
-  Future<Int32List> getItemContentsTwinRustAsyncSse({dynamic hint}) => RustLib
-      .instance.api
-      .crateApiPseudoManualMiscExampleTwinRustAsyncSseItemContainerSolutionOneTwinRustAsyncSseGetItemContentsTwinRustAsyncSse(
-          that: this, hint: hint);
-
-  @override
-  int get hashCode => name.hashCode ^ items.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ItemContainerSolutionOneTwinRustAsyncSse &&
-          runtimeType == other.runtimeType &&
-          name == other.name &&
-          items == other.items;
 }
 
 class ItemContainerSolutionTwoTwinRustAsyncSse {

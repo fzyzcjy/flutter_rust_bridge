@@ -164,6 +164,7 @@ pub(super) fn visibility_restricted_func_twin_sse() {}
 pub struct OpaqueItem(i32);
 
 // #1937
+#[frb(opaque)]
 pub struct ItemContainerSolutionOneTwinSse {
     // TODO auto generate getter/setter
     pub name: String,

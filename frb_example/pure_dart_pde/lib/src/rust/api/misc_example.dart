@@ -7,7 +7,6 @@ import '../auxiliary/sample_types.dart';
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-import 'pseudo_manual/misc_example_twin_sync.dart';
 part 'misc_example.freezed.dart';
 
 // The type `MySizeFreezedTwinNormal` is not used by any `pub` functions, thus it is ignored.
@@ -57,6 +56,56 @@ Future<MySize> handleStructTwinNormal(
         {required MySize arg, required MySize boxed, dynamic hint}) =>
     RustLib.instance.api.crateApiMiscExampleHandleStructTwinNormal(
         arg: arg, boxed: boxed, hint: hint);
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ItemContainerSolutionOneTwinNormal>>
+@sealed
+class ItemContainerSolutionOneTwinNormal extends RustOpaque {
+  ItemContainerSolutionOneTwinNormal.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  ItemContainerSolutionOneTwinNormal.sseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_ItemContainerSolutionOneTwinNormal,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_ItemContainerSolutionOneTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_ItemContainerSolutionOneTwinNormalPtr,
+  );
+
+  static Future<ItemContainerSolutionOneTwinNormal> createTwinNormal(
+          {dynamic hint}) =>
+      RustLib.instance.api
+          .crateApiMiscExampleItemContainerSolutionOneTwinNormalCreateTwinNormal(
+              hint: hint);
+
+  Future<Int32List> getItemContentsTwinNormal({dynamic hint}) => RustLib
+      .instance.api
+      .crateApiMiscExampleItemContainerSolutionOneTwinNormalGetItemContentsTwinNormal(
+          that: this, hint: hint);
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItem>>
+@sealed
+class OpaqueItem extends RustOpaque {
+  OpaqueItem.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  OpaqueItem.sseDecode(BigInt ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_OpaqueItem,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_OpaqueItem,
+    rustArcDecrementStrongCountPtr:
+        RustLib.instance.api.rust_arc_decrement_strong_count_OpaqueItemPtr,
+  );
+}
 
 class ATwinNormal {
   final String a;
@@ -143,38 +192,6 @@ class CTwinNormal {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is CTwinNormal && runtimeType == other.runtimeType && c == other.c;
-}
-
-class ItemContainerSolutionOneTwinNormal {
-  final String name;
-  final List<OpaqueItem> items;
-
-  const ItemContainerSolutionOneTwinNormal({
-    required this.name,
-    required this.items,
-  });
-
-  static Future<ItemContainerSolutionOneTwinNormal> createTwinNormal(
-          {dynamic hint}) =>
-      RustLib.instance.api
-          .crateApiMiscExampleItemContainerSolutionOneTwinNormalCreateTwinNormal(
-              hint: hint);
-
-  Future<Int32List> getItemContentsTwinNormal({dynamic hint}) => RustLib
-      .instance.api
-      .crateApiMiscExampleItemContainerSolutionOneTwinNormalGetItemContentsTwinNormal(
-          that: this, hint: hint);
-
-  @override
-  int get hashCode => name.hashCode ^ items.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ItemContainerSolutionOneTwinNormal &&
-          runtimeType == other.runtimeType &&
-          name == other.name &&
-          items == other.items;
 }
 
 class ItemContainerSolutionTwoTwinNormal {

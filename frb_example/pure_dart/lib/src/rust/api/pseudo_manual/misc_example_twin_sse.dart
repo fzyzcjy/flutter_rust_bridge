@@ -5,7 +5,7 @@
 
 import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
-import 'misc_example_twin_sync_sse.dart';
+import '../misc_example.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'misc_example_twin_sse.freezed.dart';
@@ -66,6 +66,37 @@ Future<MySize> handleStructTwinSse(
     RustLib.instance.api
         .crateApiPseudoManualMiscExampleTwinSseHandleStructTwinSse(
             arg: arg, boxed: boxed, hint: hint);
+
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ItemContainerSolutionOneTwinSse>>
+@sealed
+class ItemContainerSolutionOneTwinSse extends RustOpaque {
+  ItemContainerSolutionOneTwinSse.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  ItemContainerSolutionOneTwinSse.sseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_ItemContainerSolutionOneTwinSse,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_ItemContainerSolutionOneTwinSse,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_ItemContainerSolutionOneTwinSsePtr,
+  );
+
+  static Future<ItemContainerSolutionOneTwinSse> createTwinSse(
+          {dynamic hint}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualMiscExampleTwinSseItemContainerSolutionOneTwinSseCreateTwinSse(
+              hint: hint);
+
+  Future<Int32List> getItemContentsTwinSse({dynamic hint}) => RustLib
+      .instance.api
+      .crateApiPseudoManualMiscExampleTwinSseItemContainerSolutionOneTwinSseGetItemContentsTwinSse(
+          that: this, hint: hint);
+}
 
 class ATwinSse {
   final String a;
@@ -152,38 +183,6 @@ class CTwinSse {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is CTwinSse && runtimeType == other.runtimeType && c == other.c;
-}
-
-class ItemContainerSolutionOneTwinSse {
-  final String name;
-  final List<OpaqueItem> items;
-
-  const ItemContainerSolutionOneTwinSse({
-    required this.name,
-    required this.items,
-  });
-
-  static Future<ItemContainerSolutionOneTwinSse> createTwinSse(
-          {dynamic hint}) =>
-      RustLib.instance.api
-          .crateApiPseudoManualMiscExampleTwinSseItemContainerSolutionOneTwinSseCreateTwinSse(
-              hint: hint);
-
-  Future<Int32List> getItemContentsTwinSse({dynamic hint}) => RustLib
-      .instance.api
-      .crateApiPseudoManualMiscExampleTwinSseItemContainerSolutionOneTwinSseGetItemContentsTwinSse(
-          that: this, hint: hint);
-
-  @override
-  int get hashCode => name.hashCode ^ items.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ItemContainerSolutionOneTwinSse &&
-          runtimeType == other.runtimeType &&
-          name == other.name &&
-          items == other.items;
 }
 
 class ItemContainerSolutionTwoTwinSse {
