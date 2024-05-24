@@ -1,6 +1,8 @@
 use crate::codegen::ir::func::OwnershipMode;
 use crate::codegen::ir::namespace::Namespace;
-use crate::codegen::ir::ty::rust_auto_opaque_implicit::{IrRustAutoOpaqueRaw, IrTypeRustAutoOpaqueImplicit};
+use crate::codegen::ir::ty::rust_auto_opaque_implicit::{
+    IrRustAutoOpaqueRaw, IrTypeRustAutoOpaqueImplicit,
+};
 use crate::codegen::ir::ty::rust_opaque::{
     IrRustOpaqueInner, IrTypeRustOpaque, RustOpaqueCodecMode,
 };
@@ -23,30 +25,41 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         ty: &Type,
     ) -> Result<IrType> {
         let (inner, ownership_mode) = split_ownership_from_ty(ty);
+        let (ans_raw, ans_inner) = self.parse_type_rust_auto_opaque_common(&inner, None)?;
+        Ok(RustAutoOpaqueImplicit(IrTypeRustAutoOpaqueImplicit {
+            ownership_mode,
+            raw: ans_raw,
+            inner: ans_inner,
+        }))
+    }
+
+    pub(crate) fn parse_type_rust_auto_opaque_common(
+        &mut self,
+        inner: &Type,
+        codec: Option<RustOpaqueCodecMode>,
+    ) -> Result<(IrRustAutoOpaqueRaw, IrTypeRustOpaque)> {
         let inner = external_impl::parse_type(inner)?;
-        // println!("inner={inner:?}");
 
         let inner_str = inner.to_token_stream().to_string();
-        let info = self.get_or_insert_rust_auto_opaque_info(&inner_str, namespace, None);
+        let info = self.get_or_insert_rust_auto_opaque_info(&inner_str, namespace, codec);
 
         let raw_segments = match inner {
             Type::Path(inner) => extract_path_data(&inner.path)?,
             _ => vec![],
         };
 
-        Ok(RustAutoOpaqueImplicit(IrTypeRustAutoOpaqueImplicit {
-            ownership_mode,
-            raw: IrRustAutoOpaqueRaw {
+        Ok((
+            IrRustAutoOpaqueRaw {
                 string: inner_str.clone(),
                 segments: raw_segments,
             },
-            inner: IrTypeRustOpaque {
+            IrTypeRustOpaque {
                 namespace: info.namespace,
                 inner: self.create_rust_opaque_type_for_rust_auto_opaque(&inner_str),
                 codec: info.codec,
                 brief_name: true,
             },
-        }))
+        ))
     }
 
     pub(super) fn create_rust_opaque_type_for_rust_auto_opaque(
