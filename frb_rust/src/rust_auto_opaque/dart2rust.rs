@@ -8,26 +8,26 @@ impl<T, A: BaseArc<RustAutoOpaqueInner<T>>> RustAutoOpaqueBase<T, A> {
     // frb-coverage:ignore-start
     pub fn rust_auto_opaque_decode_owned(self) -> T {
         // frb-coverage:ignore-end
-        self.into_inner()
+        self.0.into_inner()
             .expect("Cannot convert RustOpaque to inner value. This is probably because you are having more than one references to it.")
             .data
             .into_inner()
     }
 
     pub fn rust_auto_opaque_decode_sync_ref(&self) -> RwLockReadGuard<'_, T> {
-        self.data.blocking_read()
+        self.0.data.blocking_read()
     }
 
     pub fn rust_auto_opaque_decode_sync_ref_mut(&self) -> RwLockWriteGuard<'_, T> {
-        self.data.blocking_write()
+        self.0.data.blocking_write()
     }
 
     pub async fn rust_auto_opaque_decode_async_ref(&self) -> RwLockReadGuard<'_, T> {
-        self.data.read().await
+        self.0.data.read().await
     }
 
     pub async fn rust_auto_opaque_decode_async_ref_mut(&self) -> RwLockWriteGuard<'_, T> {
-        self.data.write().await
+        self.0.data.write().await
     }
 
     pub fn rust_auto_opaque_lock_order_info(
@@ -38,7 +38,7 @@ impl<T, A: BaseArc<RustAutoOpaqueInner<T>>> RustAutoOpaqueBase<T, A> {
         RustAutoOpaqueLockOrderInfo {
             index,
             mutable,
-            object_order: self.order,
+            object_order: self.0.order,
         }
     }
 }
