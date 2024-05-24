@@ -5,8 +5,8 @@ use crate::codegen::ir::ty::general_list::{ir_list, IrTypeGeneralList};
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
 use crate::codegen::ir::ty::record::IrTypeRecord;
-use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
 use crate::codegen::ir::ty::rust_opaque::IrTypeRustOpaque;
+use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
 
 crate::ir! {
 /// types that delegate to another type
@@ -121,6 +121,9 @@ impl IrTypeTrait for IrTypeDelegate {
                 format!("StreamSink_{}_{}", ir.inner.safe_ident(), ir.codec)
             }
             IrTypeDelegate::BigPrimitive(ir) => ir.to_string(),
+            IrTypeDelegate::RustAutoOpaqueExplicit(ir) => {
+                format!("AutoExplicit_{}", ir.inner.safe_ident())
+            }
         }
     }
 
@@ -180,6 +183,7 @@ impl IrTypeTrait for IrTypeDelegate {
                 IrTypeDelegateBigPrimitive::I128 => "i128".to_owned(),
                 IrTypeDelegateBigPrimitive::U128 => "u128".to_owned(),
             },
+            IrTypeDelegate::RustAutoOpaqueExplicit(ir) => format!("RustAutoOpaque<{}>", TODO),
         }
     }
 
@@ -233,6 +237,7 @@ impl IrTypeDelegate {
             IrTypeDelegate::Set(ir) => ir_list(*ir.inner.to_owned(), true),
             IrTypeDelegate::StreamSink(_) => IrType::Delegate(IrTypeDelegate::String),
             IrTypeDelegate::BigPrimitive(_) => IrType::Delegate(IrTypeDelegate::String),
+            IrTypeDelegate::RustAutoOpaqueExplicit(ir) => IrType::RustOpaque(ir.inner.clone()),
         }
     }
 }
