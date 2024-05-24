@@ -1,5 +1,5 @@
 use crate::for_generated::BaseArc;
-use crate::rust_async::{RwLock, RwLockReadGuard, RwLockWriteGuard};
+use crate::rust_async::{RwLockReadGuard, RwLockWriteGuard};
 use crate::rust_auto_opaque::order::RustAutoOpaqueOrder;
 use crate::rust_auto_opaque::{inner::RustAutoOpaqueInner, RustAutoOpaqueBase};
 

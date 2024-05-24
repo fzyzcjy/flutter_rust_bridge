@@ -1,5 +1,5 @@
 use crate::rust_auto_opaque::order::RustAutoOpaqueOrder;
-use tokio::sync::{RwLock, RwLockReadGuard, RwLockWriteGuard, TryLockError};
+use tokio::sync::RwLock;
 
 pub struct RustAutoOpaqueInner<T> {
     pub(crate) data: RwLock<T>,
