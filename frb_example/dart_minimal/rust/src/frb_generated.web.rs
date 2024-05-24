@@ -17,28 +17,26 @@ flutter_rust_bridge::frb_generated_boilerplate_web!();
 
 // Section: dart2rust
 
-impl CstDecode<MyStruct> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+impl CstDecode<RustAutoOpaque<MyStruct>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> MyStruct {
-        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
-            RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyStruct>>,
-        >::cst_decode(
-            self
-        ))
+    fn cst_decode(self) -> RustAutoOpaque<MyStruct> {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(self.cst_decode())
     }
 }
-impl CstDecode<RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyStruct>>>
+impl CstDecode<RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyStruct>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
-    ) -> RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyStruct>> {
+    ) -> RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyStruct>> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
         }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
+        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
     }
 }
 impl CstDecode<i32> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
@@ -55,11 +53,11 @@ impl CstDecode<usize> for flutter_rust_bridge::for_generated::wasm_bindgen::JsVa
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__minimal__MyStruct_f(
+pub fn wire__crate__api__minimal__f(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire__crate__api__minimal__MyStruct_f_impl(port_, that)
+    wire__crate__api__minimal__f_impl(port_, a)
 }
 
 #[wasm_bindgen]
@@ -80,16 +78,12 @@ pub fn wire__crate__api__minimal__minimal_adder(
 pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
     ptr: *const std::ffi::c_void,
 ) {
-    unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyStruct>>::increment_strong_count(ptr as _);
-    }
+    MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyStruct>>::increment_strong_count(ptr as _);
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
     ptr: *const std::ffi::c_void,
 ) {
-    unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyStruct>>::decrement_strong_count(ptr as _);
-    }
+    MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyStruct>>::decrement_strong_count(ptr as _);
 }

@@ -23,12 +23,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   MyStruct
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
-          dynamic raw);
-
-  @protected
-  MyStruct
-      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
           dynamic raw);
 
   @protected
@@ -47,12 +42,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   MyStruct
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
-          SseDeserializer deserializer);
-
-  @protected
-  MyStruct
-      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
           SseDeserializer deserializer);
 
   @protected
@@ -73,18 +63,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
+  int cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
+      MyStruct raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
+        raw);
+  }
+
+  @protected
   int cst_encode_usize(BigInt raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.toSigned(64).toInt();
   }
-
-  @protected
-  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
-      MyStruct raw);
-
-  @protected
-  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
-      MyStruct raw);
 
   @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
@@ -98,12 +88,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
-          MyStruct self, SseSerializer serializer);
-
-  @protected
-  void
-      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
           MyStruct self, SseSerializer serializer);
 
   @protected
@@ -165,22 +150,21 @@ class RustLibWire implements BaseWire {
   late final _store_dart_post_cobject = _store_dart_post_cobjectPtr
       .asFunction<void Function(DartPostCObjectFnType)>();
 
-  void wire__crate__api__minimal__MyStruct_f(
+  void wire__crate__api__minimal__f(
     int port_,
-    int that,
+    int a,
   ) {
-    return _wire__crate__api__minimal__MyStruct_f(
+    return _wire__crate__api__minimal__f(
       port_,
-      that,
+      a,
     );
   }
 
-  late final _wire__crate__api__minimal__MyStruct_fPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
-      'frbgen_frb_example_dart_minimal_wire__crate__api__minimal__MyStruct_f');
-  late final _wire__crate__api__minimal__MyStruct_f =
-      _wire__crate__api__minimal__MyStruct_fPtr
-          .asFunction<void Function(int, int)>();
+  late final _wire__crate__api__minimal__fPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
+          'frbgen_frb_example_dart_minimal_wire__crate__api__minimal__f');
+  late final _wire__crate__api__minimal__f =
+      _wire__crate__api__minimal__fPtr.asFunction<void Function(int, int)>();
 
   void wire__crate__api__minimal__init_app(
     int port_,

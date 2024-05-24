@@ -9,7 +9,10 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 Future<int> minimalAdder({required int a, required int b, dynamic hint}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b, hint: hint);
 
-// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyStruct>>
+Future<void> f({required MyStruct a, dynamic hint}) =>
+    RustLib.instance.api.crateApiMinimalF(a: a, hint: hint);
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyStruct>>
 @sealed
 class MyStruct extends RustOpaque {
   MyStruct.dcoDecode(List<dynamic> wire) : super.dcoDecode(wire, _kStaticData);
@@ -25,7 +28,4 @@ class MyStruct extends RustOpaque {
     rustArcDecrementStrongCountPtr:
         RustLib.instance.api.rust_arc_decrement_strong_count_MyStructPtr,
   );
-
-  Future<MyStruct> f({dynamic hint}) =>
-      RustLib.instance.api.crateApiMinimalMyStructF(that: this, hint: hint);
 }

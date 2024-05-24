@@ -1,4 +1,5 @@
 use flutter_rust_bridge::frb;
+use crate::frb_generated::RustAutoOpaqueMoi;
 
 #[frb(init)]
 pub fn init_app() {
@@ -12,8 +13,6 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 #[frb(opaque)]
 pub struct MyStruct;
 
-impl MyStruct {
-    pub fn f(&self) -> Self {
-        todo!()
-    }
+pub fn f(a: RustAutoOpaqueMoi<MyStruct>) {
+    todo!()
 }
