@@ -85,6 +85,9 @@ impl<'a> ApiDartGeneratorInfoTrait for DelegateApiDartGenerator<'a> {
                 ApiDartGenerator::new(*ir.inner.clone(), self.context).dart_api_type(),
             ),
             IrTypeDelegate::BigPrimitive(_) => "BigInt".to_owned(),
+            IrTypeDelegate::RustAutoOpaqueExplicit(ir) => {
+                ApiDartGenerator::new(ir.inner.clone(), self.context).dart_api_type()
+            }
         }
     }
 
