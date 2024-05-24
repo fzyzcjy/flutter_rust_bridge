@@ -25,7 +25,8 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         ty: &Type,
     ) -> Result<IrType> {
         let (inner, ownership_mode) = split_ownership_from_ty(ty);
-        let (ans_raw, ans_inner) = self.parse_type_rust_auto_opaque_common(&inner, None)?;
+        let (ans_raw, ans_inner) =
+            self.parse_type_rust_auto_opaque_common(inner, namespace, None)?;
         Ok(RustAutoOpaqueImplicit(IrTypeRustAutoOpaqueImplicit {
             ownership_mode,
             raw: ans_raw,
@@ -35,7 +36,8 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
     pub(crate) fn parse_type_rust_auto_opaque_common(
         &mut self,
-        inner: &Type,
+        inner: Type,
+        namespace: Option<Namespace>,
         codec: Option<RustOpaqueCodecMode>,
     ) -> Result<(IrRustAutoOpaqueRaw, IrTypeRustOpaque)> {
         let inner = external_impl::parse_type(inner)?;

@@ -5,7 +5,8 @@ use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use quote::ToTokens;
 use syn::Type;
-use crate::codegen::ir::ty::rust_auto_opaque_implicit::IrRustAutoOpaqueRaw;
+use crate::codegen::ir::ty::IrType::RustAutoOpaqueImplicit;
+use crate::codegen::ir::ty::rust_auto_opaque_implicit::{IrRustAutoOpaqueRaw, IrTypeRustAutoOpaqueImplicit};
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_rust_auto_opaque_explicit(
@@ -13,12 +14,12 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
         Ok(Some(match last_segment {
-            ("RustAutoOpaque", [ty]) => self.parse_rust_auto_opaque_explicit(ty, None),
+            ("RustAutoOpaque", [ty]) => self.parse_rust_auto_opaque_explicit(ty, None)?,
             ("RustAutoOpaqueNom", [ty]) => {
-                self.parse_rust_auto_opaque_explicit(ty, Some(RustOpaqueCodecMode::Nom))
+                self.parse_rust_auto_opaque_explicit(ty, Some(RustOpaqueCodecMode::Nom))?
             }
             ("RustAutoOpaqueMoi", [ty]) => {
-                self.parse_rust_auto_opaque_explicit(ty, Some(RustOpaqueCodecMode::Moi))
+                self.parse_rust_auto_opaque_explicit(ty, Some(RustOpaqueCodecMode::Moi))?
             }
 
             _ => return Ok(None),
@@ -29,23 +30,14 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         &mut self,
         inner: &Type,
         codec: Option<RustOpaqueCodecMode>,
-    ) -> IrType {
-        let inner_str = inner.to_token_stream().to_string();
-        let info = self.get_or_insert_rust_auto_opaque_info(&inner_str, None, codec);
-
-        IrType::Delegate(IrTypeDelegate::RustAutoOpaqueExplicit(
+    ) -> anyhow::Result<IrType> {
+        let (ans_raw, ans_inner) =
+            self.parse_type_rust_auto_opaque_common(inner.clone(), None, codec)?;
+        Ok(IrType::Delegate(IrTypeDelegate::RustAutoOpaqueExplicit(
             IrTypeDelegateRustAutoOpaqueExplicit {
-                inner: IrTypeRustOpaque {
-                    namespace: info.namespace,
-                    inner: self.create_rust_opaque_type_for_rust_auto_opaque(&inner_str),
-                    codec: info.codec,
-                    brief_name: true,
-                },
-                raw: IrRustAutoOpaqueRaw {
-                    string: inner_str.clone(),
-                    segments: raw_segments,
-                },
+                raw: ans_raw,
+                inner: ans_inner,
             },
-        ))
+        )))
     }
 }
