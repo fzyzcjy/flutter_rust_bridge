@@ -12,11 +12,13 @@ pub(crate) mod type_parser;
 mod unused_checker;
 
 use crate::codegen::dumper::Dumper;
+use crate::codegen::ir::func::IrFunc;
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::codegen::parser::file_reader::{read_files, FileData};
 use crate::codegen::parser::function_extractor::extract_generalized_functions_from_file;
+use crate::codegen::parser::function_extractor::structs::PathAndItemFn;
 use crate::codegen::parser::function_parser::FunctionParser;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::parser::misc::parse_has_executor;
@@ -79,29 +81,9 @@ pub(crate) fn parse(
     let src_types = resolve_type_aliases(crate_map.root_module().collect_types());
 
     let mut type_parser = TypeParser::new(src_structs.clone(), src_enums.clone(), src_types);
-    let mut function_parser = FunctionParser::new(&mut type_parser);
 
-    let ir_funcs = src_fns
-        .iter()
-        .enumerate()
-        .map(|(index, f)| {
-            function_parser.parse_function(
-                &f.generalized_item_fn,
-                &f.path,
-                &config.rust_crate_dir,
-                &config.force_codec_mode_pack,
-                (index + 1) as i32,
-                config.default_stream_sink_codec,
-                config.default_rust_opaque_codec,
-            )
-        })
-        .collect::<anyhow::Result<Vec<_>>>()?
-        .into_iter()
-        .flatten()
-        // to give downstream a stable output
-        .sorted_by_cached_key(|func| func.name.clone())
-        .collect_vec();
-    
+    let ir_funcs = parse_ir_funcs(&config, src_fns, &mut type_parser)?;
+
     let existing_handlers = parse_existing_handlers(config, &file_data_arr);
 
     let (struct_pool, enum_pool, dart_code_of_type) = type_parser.consume();
@@ -124,6 +106,35 @@ pub(crate) fn parse(
     )?;
 
     Ok(ans)
+}
+
+fn parse_ir_funcs(
+    config: &ParserInternalConfig,
+    src_fns: &[PathAndItemFn],
+    type_parser: &mut TypeParser,
+) -> Result<Vec<IrFunc>, Error> {
+    let mut function_parser = FunctionParser::new(type_parser);
+
+    Ok(src_fns
+        .iter()
+        .enumerate()
+        .map(|(index, f)| {
+            function_parser.parse_function(
+                &f.generalized_item_fn,
+                &f.path,
+                &config.rust_crate_dir,
+                &config.force_codec_mode_pack,
+                (index + 1) as i32,
+                config.default_stream_sink_codec,
+                config.default_rust_opaque_codec,
+            )
+        })
+        .collect::<anyhow::Result<Vec<_>>>()?
+        .into_iter()
+        .flatten()
+        // to give downstream a stable output
+        .sorted_by_cached_key(|func| func.name.clone())
+        .collect_vec())
 }
 
 fn parse_existing_handlers(
