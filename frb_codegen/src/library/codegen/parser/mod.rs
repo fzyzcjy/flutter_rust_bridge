@@ -103,7 +103,7 @@ pub(crate) fn parse(
         &ans,
         &src_structs,
         &src_enums,
-        &config.rust_input_path_pack,
+        &config.rust_input_path_pack.rust_input_paths,
         &config.rust_crate_dir,
     )?;
 
