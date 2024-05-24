@@ -163,14 +163,14 @@ pub(super) fn visibility_restricted_func_twin_sync() {}
 // #1937
 // Suppose this is opaque
 #[frb(opaque)]
-pub struct OpaqueItem(i32);
+pub struct OpaqueItemTwinSync(i32);
 
 // #1937
 #[frb(opaque)]
 pub struct ItemContainerSolutionOneTwinSync {
     // TODO auto generate getter/setter
     pub name: String,
-    items: Vec<OpaqueItem>,
+    items: Vec<OpaqueItemTwinSync>,
 }
 
 impl ItemContainerSolutionOneTwinSync {
@@ -178,7 +178,7 @@ impl ItemContainerSolutionOneTwinSync {
     pub fn create_twin_sync() -> Self {
         Self {
             name: "hi".to_owned(),
-            items: vec![OpaqueItem(100)],
+            items: vec![OpaqueItemTwinSync(100)],
         }
     }
 
@@ -193,7 +193,7 @@ impl ItemContainerSolutionOneTwinSync {
 pub struct ItemContainerSolutionTwoTwinSync {
     #[frb(non_final)]
     pub name: String,
-    pub items: Vec<RustAutoOpaque<OpaqueItem>>,
+    pub items: Vec<RustAutoOpaque<OpaqueItemTwinSync>>,
 }
 
 impl ItemContainerSolutionTwoTwinSync {
@@ -201,7 +201,7 @@ impl ItemContainerSolutionTwoTwinSync {
     pub fn create_twin_sync() -> Self {
         Self {
             name: "hi".to_owned(),
-            items: vec![RustAutoOpaque::new(OpaqueItem(100))],
+            items: vec![RustAutoOpaque::new(OpaqueItemTwinSync(100))],
         }
     }
 

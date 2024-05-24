@@ -5,7 +5,6 @@
 
 import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
-import '../misc_example.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'misc_example_twin_sync.freezed.dart';
@@ -94,6 +93,25 @@ class ItemContainerSolutionOneTwinSync extends RustOpaque {
   Int32List getItemContentsTwinSync({dynamic hint}) => RustLib.instance.api
       .crateApiPseudoManualMiscExampleTwinSyncItemContainerSolutionOneTwinSyncGetItemContentsTwinSync(
           that: this, hint: hint);
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinSync>>
+@sealed
+class OpaqueItemTwinSync extends RustOpaque {
+  OpaqueItemTwinSync.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  OpaqueItemTwinSync.sseDecode(BigInt ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_OpaqueItemTwinSync,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_OpaqueItemTwinSync,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_OpaqueItemTwinSyncPtr,
+  );
 }
 
 class ATwinSync {
@@ -185,7 +203,7 @@ class CTwinSync {
 
 class ItemContainerSolutionTwoTwinSync {
   String name;
-  final List<OpaqueItem> items;
+  final List<OpaqueItemTwinSync> items;
 
   ItemContainerSolutionTwoTwinSync({
     required this.name,

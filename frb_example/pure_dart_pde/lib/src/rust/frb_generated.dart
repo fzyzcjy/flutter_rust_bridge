@@ -4939,12 +4939,31 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_NonCloneSimpleTwinSyncPtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_OpaqueItem;
+      get rust_arc_increment_strong_count_OpaqueItemTwinNormal;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_OpaqueItem;
+      get rust_arc_decrement_strong_count_OpaqueItemTwinNormal;
 
-  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_OpaqueItemPtr;
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_OpaqueItemTwinNormalPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueItemTwinRustAsync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueItemTwinRustAsync;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_OpaqueItemTwinRustAsyncPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueItemTwinSync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueItemTwinSync;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_OpaqueItemTwinSyncPtr;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_OpaqueOneTwinNormal;
@@ -39765,12 +39784,28 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_OpaqueItem => wire
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem;
+      get rust_arc_increment_strong_count_OpaqueItemTwinNormal => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_OpaqueItem => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem;
+      get rust_arc_decrement_strong_count_OpaqueItemTwinNormal => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueItemTwinRustAsync => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueItemTwinRustAsync => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsync;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueItemTwinSync => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueItemTwinSync => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSync;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_OpaqueOneTwinNormal => wire
@@ -39948,11 +39983,29 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  OpaqueItem
-      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+  OpaqueItemTwinNormal
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+    return dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
+        raw);
+  }
+
+  @protected
+  OpaqueItemTwinRustAsync
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsync(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsync(
+        raw);
+  }
+
+  @protected
+  OpaqueItemTwinSync
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSync(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSync(
         raw);
   }
 
@@ -41328,11 +41381,27 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  OpaqueItem
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+  OpaqueItemTwinNormal
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return OpaqueItem.dcoDecode(raw as List<dynamic>);
+    return OpaqueItemTwinNormal.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueItemTwinRustAsync
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsync(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return OpaqueItemTwinRustAsync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueItemTwinSync
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSync(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return OpaqueItemTwinSync.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -45494,7 +45563,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return ItemContainerSolutionTwoTwinNormal(
       name: dco_decode_String(arr[0]),
       items:
-          dco_decode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+          dco_decode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
               arr[1]),
     );
   }
@@ -45509,7 +45578,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return ItemContainerSolutionTwoTwinRustAsync(
       name: dco_decode_String(arr[0]),
       items:
-          dco_decode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+          dco_decode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsync(
               arr[1]),
     );
   }
@@ -45524,7 +45593,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return ItemContainerSolutionTwoTwinSync(
       name: dco_decode_String(arr[0]),
       items:
-          dco_decode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+          dco_decode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSync(
               arr[1]),
     );
   }
@@ -45636,13 +45705,35 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  List<OpaqueItem>
-      dco_decode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+  List<OpaqueItemTwinNormal>
+      dco_decode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return (raw as List<dynamic>)
         .map(
-            dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem)
+            dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal)
+        .toList();
+  }
+
+  @protected
+  List<OpaqueItemTwinRustAsync>
+      dco_decode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsync(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return (raw as List<dynamic>)
+        .map(
+            dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsync)
+        .toList();
+  }
+
+  @protected
+  List<OpaqueItemTwinSync>
+      dco_decode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSync(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return (raw as List<dynamic>)
+        .map(
+            dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSync)
         .toList();
   }
 
@@ -49696,12 +49787,34 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  OpaqueItem
-      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+  OpaqueItemTwinNormal
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner =
-        sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+        sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
+            deserializer);
+    return inner;
+  }
+
+  @protected
+  OpaqueItemTwinRustAsync
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsync(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var inner =
+        sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsync(
+            deserializer);
+    return inner;
+  }
+
+  @protected
+  OpaqueItemTwinSync
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSync(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var inner =
+        sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSync(
             deserializer);
     return inner;
   }
@@ -51131,11 +51244,29 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  OpaqueItem
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+  OpaqueItemTwinNormal
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return OpaqueItem.sseDecode(
+    return OpaqueItemTwinNormal.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueItemTwinRustAsync
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsync(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return OpaqueItemTwinRustAsync.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueItemTwinSync
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSync(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return OpaqueItemTwinSync.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -55345,7 +55476,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_name = sse_decode_String(deserializer);
     var var_items =
-        sse_decode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+        sse_decode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
             deserializer);
     return ItemContainerSolutionTwoTwinNormal(name: var_name, items: var_items);
   }
@@ -55357,7 +55488,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_name = sse_decode_String(deserializer);
     var var_items =
-        sse_decode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+        sse_decode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsync(
             deserializer);
     return ItemContainerSolutionTwoTwinRustAsync(
         name: var_name, items: var_items);
@@ -55370,7 +55501,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_name = sse_decode_String(deserializer);
     var var_items =
-        sse_decode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+        sse_decode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSync(
             deserializer);
     return ItemContainerSolutionTwoTwinSync(name: var_name, items: var_items);
   }
@@ -55479,16 +55610,48 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  List<OpaqueItem>
-      sse_decode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+  List<OpaqueItemTwinNormal>
+      sse_decode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
     var len_ = sse_decode_i_32(deserializer);
-    var ans_ = <OpaqueItem>[];
+    var ans_ = <OpaqueItemTwinNormal>[];
     for (var idx_ = 0; idx_ < len_; ++idx_) {
       ans_.add(
-          sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+          sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
+              deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<OpaqueItemTwinRustAsync>
+      sse_decode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsync(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <OpaqueItemTwinRustAsync>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(
+          sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsync(
+              deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<OpaqueItemTwinSync>
+      sse_decode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSync(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <OpaqueItemTwinSync>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(
+          sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSync(
               deserializer));
     }
     return ans_;
@@ -60082,10 +60245,28 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
-          OpaqueItem self, SseSerializer serializer) {
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
+          OpaqueItemTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+    sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
+        self, serializer);
+  }
+
+  @protected
+  void
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsync(
+          OpaqueItemTwinRustAsync self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsync(
+        self, serializer);
+  }
+
+  @protected
+  void
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSync(
+          OpaqueItemTwinSync self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSync(
         self, serializer);
   }
 
@@ -61494,8 +61675,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
-          OpaqueItem self, SseSerializer serializer) {
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
+          OpaqueItemTwinNormal self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsync(
+          OpaqueItemTwinRustAsync self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSync(
+          OpaqueItemTwinSync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
@@ -65370,7 +65567,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       ItemContainerSolutionTwoTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(self.name, serializer);
-    sse_encode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+    sse_encode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
         self.items, serializer);
   }
 
@@ -65379,7 +65576,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       ItemContainerSolutionTwoTwinRustAsync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(self.name, serializer);
-    sse_encode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+    sse_encode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsync(
         self.items, serializer);
   }
 
@@ -65388,7 +65585,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       ItemContainerSolutionTwoTwinSync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(self.name, serializer);
-    sse_encode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+    sse_encode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSync(
         self.items, serializer);
   }
 
@@ -65511,12 +65708,36 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-      sse_encode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
-          List<OpaqueItem> self, SseSerializer serializer) {
+      sse_encode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
+          List<OpaqueItemTwinNormal> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_i_32(self.length, serializer);
     for (final item in self) {
-      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
+          item, serializer);
+    }
+  }
+
+  @protected
+  void
+      sse_encode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsync(
+          List<OpaqueItemTwinRustAsync> self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsync(
+          item, serializer);
+    }
+  }
+
+  @protected
+  void
+      sse_encode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSync(
+          List<OpaqueItemTwinSync> self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSync(
           item, serializer);
     }
   }

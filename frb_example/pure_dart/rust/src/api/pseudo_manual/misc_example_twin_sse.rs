@@ -161,14 +161,14 @@ pub(super) fn visibility_restricted_func_twin_sse() {}
 // #1937
 // Suppose this is opaque
 #[frb(opaque)]
-pub struct OpaqueItem(i32);
+pub struct OpaqueItemTwinSse(i32);
 
 // #1937
 #[frb(opaque)]
 pub struct ItemContainerSolutionOneTwinSse {
     // TODO auto generate getter/setter
     pub name: String,
-    items: Vec<OpaqueItem>,
+    items: Vec<OpaqueItemTwinSse>,
 }
 
 impl ItemContainerSolutionOneTwinSse {
@@ -176,7 +176,7 @@ impl ItemContainerSolutionOneTwinSse {
     pub fn create_twin_sse() -> Self {
         Self {
             name: "hi".to_owned(),
-            items: vec![OpaqueItem(100)],
+            items: vec![OpaqueItemTwinSse(100)],
         }
     }
 
@@ -191,7 +191,7 @@ impl ItemContainerSolutionOneTwinSse {
 pub struct ItemContainerSolutionTwoTwinSse {
     #[frb(non_final)]
     pub name: String,
-    pub items: Vec<RustAutoOpaque<OpaqueItem>>,
+    pub items: Vec<RustAutoOpaque<OpaqueItemTwinSse>>,
 }
 
 impl ItemContainerSolutionTwoTwinSse {
@@ -199,7 +199,7 @@ impl ItemContainerSolutionTwoTwinSse {
     pub fn create_twin_sse() -> Self {
         Self {
             name: "hi".to_owned(),
-            items: vec![RustAutoOpaque::new(OpaqueItem(100))],
+            items: vec![RustAutoOpaque::new(OpaqueItemTwinSse(100))],
         }
     }
 

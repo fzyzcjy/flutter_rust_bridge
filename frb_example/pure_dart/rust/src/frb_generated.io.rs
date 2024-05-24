@@ -109,9 +109,21 @@ impl CstDecode<RustAutoOpaqueMoi<NonCloneSimpleTwinSyncMoi>> for usize {
         flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(self.cst_decode())
     }
 }
-impl CstDecode<RustAutoOpaqueNom<OpaqueItem>> for usize {
+impl CstDecode<RustAutoOpaqueNom<OpaqueItemTwinNormal>> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> RustAutoOpaqueNom<OpaqueItem> {
+    fn cst_decode(self) -> RustAutoOpaqueNom<OpaqueItemTwinNormal> {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(self.cst_decode())
+    }
+}
+impl CstDecode<RustAutoOpaqueNom<OpaqueItemTwinRustAsync>> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> RustAutoOpaqueNom<OpaqueItemTwinRustAsync> {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(self.cst_decode())
+    }
+}
+impl CstDecode<RustAutoOpaqueNom<OpaqueItemTwinSync>> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> RustAutoOpaqueNom<OpaqueItemTwinSync> {
         flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(self.cst_decode())
     }
 }
@@ -2493,13 +2505,47 @@ impl
         decode_rust_opaque_moi(self as _)
     }
 }
-impl CstDecode<RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItem>>>
-    for usize
+impl
+    CstDecode<
+        RustOpaqueNom<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinNormal>,
+        >,
+    > for usize
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
-    ) -> RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItem>> {
+    ) -> RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinNormal>>
+    {
+        unsafe { decode_rust_opaque_nom(self as _) }
+    }
+}
+impl
+    CstDecode<
+        RustOpaqueNom<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinRustAsync>,
+        >,
+    > for usize
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> RustOpaqueNom<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinRustAsync>,
+    > {
+        unsafe { decode_rust_opaque_nom(self as _) }
+    }
+}
+impl
+    CstDecode<
+        RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinSync>>,
+    > for usize
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinSync>>
+    {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
@@ -8574,9 +8620,29 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwin
         }
     }
 }
-impl CstDecode<Vec<RustAutoOpaqueNom<OpaqueItem>>> for *mut wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem {
+impl CstDecode<Vec<RustAutoOpaqueNom<OpaqueItemTwinNormal>>> for *mut wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal {
             // Codec=Cst (C-struct based), see doc to use other codecs
-            fn cst_decode(self) -> Vec<RustAutoOpaqueNom<OpaqueItem>> {
+            fn cst_decode(self) -> Vec<RustAutoOpaqueNom<OpaqueItemTwinNormal>> {
+                let vec = unsafe {
+        let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+        flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+    };
+    vec.into_iter().map(CstDecode::cst_decode).collect()
+            }
+        }
+impl CstDecode<Vec<RustAutoOpaqueNom<OpaqueItemTwinRustAsync>>> for *mut wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsync {
+            // Codec=Cst (C-struct based), see doc to use other codecs
+            fn cst_decode(self) -> Vec<RustAutoOpaqueNom<OpaqueItemTwinRustAsync>> {
+                let vec = unsafe {
+        let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+        flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+    };
+    vec.into_iter().map(CstDecode::cst_decode).collect()
+            }
+        }
+impl CstDecode<Vec<RustAutoOpaqueNom<OpaqueItemTwinSync>>> for *mut wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSync {
+            // Codec=Cst (C-struct based), see doc to use other codecs
+            fn cst_decode(self) -> Vec<RustAutoOpaqueNom<OpaqueItemTwinSync>> {
                 let vec = unsafe {
         let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
         flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -44413,20 +44479,110 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItem>>::increment_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinNormal>>::increment_strong_count(ptr as _);
     }
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItem>>::decrement_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinNormal>>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinRustAsync>>::increment_strong_count(ptr as _);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinRustAsync>>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsyncSse(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinRustAsyncSse>>::increment_strong_count(ptr as _);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsyncSse(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinRustAsyncSse>>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSse(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinSse>>::increment_strong_count(ptr as _);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSse(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinSse>>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinSync>>::increment_strong_count(ptr as _);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinSync>>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSyncSse(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinSyncSse>>::increment_strong_count(ptr as _);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSyncSse(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinSyncSse>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -47445,8 +47601,20 @@ pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_weekdays_twin_sync(
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(len: i32) -> *mut wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem{
-    let wrap = wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem { ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len), len };
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(len: i32) -> *mut wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal{
+    let wrap = wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal { ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len), len };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsync(len: i32) -> *mut wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsync{
+    let wrap = wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsync { ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len), len };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSync(len: i32) -> *mut wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSync{
+    let wrap = wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSync { ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len), len };
     flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
 }
 
@@ -50935,15 +51103,15 @@ pub struct wire_cst_hash_map_value {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_item_container_solution_two_twin_normal { name: *mut wire_cst_list_prim_u_8_strict,
-items: *mut wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem }
+items: *mut wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_item_container_solution_two_twin_rust_async { name: *mut wire_cst_list_prim_u_8_strict,
-items: *mut wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem }
+items: *mut wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsync }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_item_container_solution_two_twin_sync { name: *mut wire_cst_list_prim_u_8_strict,
-items: *mut wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem }
+items: *mut wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSync }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_kitchen_sink_twin_normal {
@@ -51081,7 +51249,21 @@ pub struct wire_cst_KitchenSinkTwinSync_Enums {
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
-pub struct wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem
+pub struct wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal
+{
+    ptr: *mut usize,
+    len: i32,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsync
+{
+    ptr: *mut usize,
+    len: i32,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSync
 {
     ptr: *mut usize,
     len: i32,

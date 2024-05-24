@@ -3332,11 +3332,35 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwin
         }
     }
 }
-impl CstDecode<Vec<RustAutoOpaqueNom<OpaqueItem>>>
+impl CstDecode<Vec<RustAutoOpaqueNom<OpaqueItemTwinNormal>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> Vec<RustAutoOpaqueNom<OpaqueItem>> {
+    fn cst_decode(self) -> Vec<RustAutoOpaqueNom<OpaqueItemTwinNormal>> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl CstDecode<Vec<RustAutoOpaqueNom<OpaqueItemTwinRustAsync>>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> Vec<RustAutoOpaqueNom<OpaqueItemTwinRustAsync>> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl CstDecode<Vec<RustAutoOpaqueNom<OpaqueItemTwinSync>>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> Vec<RustAutoOpaqueNom<OpaqueItemTwinSync>> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
@@ -8615,11 +8639,27 @@ impl CstDecode<RustAutoOpaqueMoi<NonCloneSimpleTwinSyncMoi>>
         flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(self.cst_decode())
     }
 }
-impl CstDecode<RustAutoOpaqueNom<OpaqueItem>>
+impl CstDecode<RustAutoOpaqueNom<OpaqueItemTwinNormal>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> RustAutoOpaqueNom<OpaqueItem> {
+    fn cst_decode(self) -> RustAutoOpaqueNom<OpaqueItemTwinNormal> {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(self.cst_decode())
+    }
+}
+impl CstDecode<RustAutoOpaqueNom<OpaqueItemTwinRustAsync>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> RustAutoOpaqueNom<OpaqueItemTwinRustAsync> {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(self.cst_decode())
+    }
+}
+impl CstDecode<RustAutoOpaqueNom<OpaqueItemTwinSync>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> RustAutoOpaqueNom<OpaqueItemTwinSync> {
         flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(self.cst_decode())
     }
 }
@@ -11559,13 +11599,55 @@ impl
         decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
     }
 }
-impl CstDecode<RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItem>>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+impl
+    CstDecode<
+        RustOpaqueNom<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinNormal>,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
-    ) -> RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItem>> {
+    ) -> RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinNormal>>
+    {
+        #[cfg(target_pointer_width = "64")]
+        {
+            compile_error!("64-bit pointers are not supported.");
+        }
+        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
+    }
+}
+impl
+    CstDecode<
+        RustOpaqueNom<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinRustAsync>,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> RustOpaqueNom<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinRustAsync>,
+    > {
+        #[cfg(target_pointer_width = "64")]
+        {
+            compile_error!("64-bit pointers are not supported.");
+        }
+        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
+    }
+}
+impl
+    CstDecode<
+        RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinSync>>,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinSync>>
+    {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
@@ -41306,20 +41388,110 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
 }
 
 #[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItem>>::increment_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinNormal>>::increment_strong_count(ptr as _);
     }
 }
 
 #[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItem(
+pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItem>>::decrement_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinNormal>>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinRustAsync>>::increment_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinRustAsync>>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsyncSse(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinRustAsyncSse>>::increment_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsyncSse(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinRustAsyncSse>>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSse(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinSse>>::increment_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSse(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinSse>>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinSync>>::increment_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinSync>>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSyncSse(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinSyncSse>>::increment_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSyncSse(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinSyncSse>>::decrement_strong_count(ptr as _);
     }
 }
 

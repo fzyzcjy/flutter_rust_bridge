@@ -25527,7 +25527,13 @@ flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
     flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinSync>
 );
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
-    flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItem>
+    flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinNormal>
+);
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
+    flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinRustAsync>
+);
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
+    flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinSync>
 );
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
     flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueOneTwinNormal>
@@ -25628,11 +25634,31 @@ impl SseDecode for RustAutoOpaqueMoi<NonCloneSimpleTwinSync> {
     }
 }
 
-impl SseDecode for RustAutoOpaqueMoi<OpaqueItem> {
+impl SseDecode for RustAutoOpaqueMoi<OpaqueItemTwinNormal> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItem>,
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinNormal>,
+        >>::sse_decode(deserializer);
+        return flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(inner);
+    }
+}
+
+impl SseDecode for RustAutoOpaqueMoi<OpaqueItemTwinRustAsync> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <RustOpaqueMoi<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinRustAsync>,
+        >>::sse_decode(deserializer);
+        return flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(inner);
+    }
+}
+
+impl SseDecode for RustAutoOpaqueMoi<OpaqueItemTwinSync> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <RustOpaqueMoi<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinSync>,
         >>::sse_decode(deserializer);
         return flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(inner);
     }
@@ -27071,7 +27097,29 @@ impl SseDecode
 }
 
 impl SseDecode
-    for RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItem>>
+    for RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinNormal>>
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
+    }
+}
+
+impl SseDecode
+    for RustOpaqueMoi<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinRustAsync>,
+    >
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
+    }
+}
+
+impl SseDecode
+    for RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinSync>>
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -30320,7 +30368,8 @@ impl SseDecode for crate::api::misc_example::ItemContainerSolutionTwoTwinNormal 
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut var_name = <String>::sse_decode(deserializer);
-        let mut var_items = <Vec<RustAutoOpaqueMoi<OpaqueItem>>>::sse_decode(deserializer);
+        let mut var_items =
+            <Vec<RustAutoOpaqueMoi<OpaqueItemTwinNormal>>>::sse_decode(deserializer);
         return crate::api::misc_example::ItemContainerSolutionTwoTwinNormal {
             name: var_name,
             items: var_items,
@@ -30331,7 +30380,7 @@ impl SseDecode for crate::api::misc_example::ItemContainerSolutionTwoTwinNormal 
 impl SseDecode for crate::api::pseudo_manual::misc_example_twin_rust_async::ItemContainerSolutionTwoTwinRustAsync {
                     // Codec=Sse (Serialization based), see doc to use other codecs
                     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {let mut var_name = <String>::sse_decode(deserializer);
-let mut var_items = <Vec<RustAutoOpaqueMoi<OpaqueItem>>>::sse_decode(deserializer);
+let mut var_items = <Vec<RustAutoOpaqueMoi<OpaqueItemTwinRustAsync>>>::sse_decode(deserializer);
 return crate::api::pseudo_manual::misc_example_twin_rust_async::ItemContainerSolutionTwoTwinRustAsync{name: var_name, items: var_items};}
                 }
 
@@ -30341,7 +30390,7 @@ impl SseDecode
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut var_name = <String>::sse_decode(deserializer);
-        let mut var_items = <Vec<RustAutoOpaqueMoi<OpaqueItem>>>::sse_decode(deserializer);
+        let mut var_items = <Vec<RustAutoOpaqueMoi<OpaqueItemTwinSync>>>::sse_decode(deserializer);
         return crate::api::pseudo_manual::misc_example_twin_sync::ItemContainerSolutionTwoTwinSync{name: var_name, items: var_items};
     }
 }
@@ -30477,13 +30526,43 @@ impl SseDecode for crate::api::pseudo_manual::enumeration_twin_sync::KitchenSink
     }
 }
 
-impl SseDecode for Vec<RustAutoOpaqueMoi<OpaqueItem>> {
+impl SseDecode for Vec<RustAutoOpaqueMoi<OpaqueItemTwinNormal>> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
         let mut ans_ = vec![];
         for idx_ in 0..len_ {
-            ans_.push(<RustAutoOpaqueMoi<OpaqueItem>>::sse_decode(deserializer));
+            ans_.push(<RustAutoOpaqueMoi<OpaqueItemTwinNormal>>::sse_decode(
+                deserializer,
+            ));
+        }
+        return ans_;
+    }
+}
+
+impl SseDecode for Vec<RustAutoOpaqueMoi<OpaqueItemTwinRustAsync>> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut len_ = <i32>::sse_decode(deserializer);
+        let mut ans_ = vec![];
+        for idx_ in 0..len_ {
+            ans_.push(<RustAutoOpaqueMoi<OpaqueItemTwinRustAsync>>::sse_decode(
+                deserializer,
+            ));
+        }
+        return ans_;
+    }
+}
+
+impl SseDecode for Vec<RustAutoOpaqueMoi<OpaqueItemTwinSync>> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut len_ = <i32>::sse_decode(deserializer);
+        let mut ans_ = vec![];
+        for idx_ in 0..len_ {
+            ans_.push(<RustAutoOpaqueMoi<OpaqueItemTwinSync>>::sse_decode(
+                deserializer,
+            ));
         }
         return ans_;
     }
@@ -44406,10 +44485,34 @@ impl SseEncode for RustAutoOpaqueMoi<NonCloneSimpleTwinSync> {
     }
 }
 
-impl SseEncode for RustAutoOpaqueMoi<OpaqueItem> {
+impl SseEncode for RustAutoOpaqueMoi<OpaqueItemTwinNormal> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItem>>>::sse_encode(flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_encode(self), serializer);
+        <RustOpaqueMoi<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinNormal>,
+        >>::sse_encode(
+            flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_encode(self),
+            serializer,
+        );
+    }
+}
+
+impl SseEncode for RustAutoOpaqueMoi<OpaqueItemTwinRustAsync> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <RustOpaqueMoi<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinRustAsync>,
+        >>::sse_encode(
+            flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_encode(self),
+            serializer,
+        );
+    }
+}
+
+impl SseEncode for RustAutoOpaqueMoi<OpaqueItemTwinSync> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinSync>>>::sse_encode(flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_encode(self), serializer);
     }
 }
 
@@ -45912,7 +46015,31 @@ impl SseEncode
 }
 
 impl SseEncode
-    for RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItem>>
+    for RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinNormal>>
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueMoi<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinRustAsync>,
+    >
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinSync>>
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -48585,14 +48712,14 @@ impl SseEncode for crate::api::misc_example::ItemContainerSolutionTwoTwinNormal 
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <String>::sse_encode(self.name, serializer);
-        <Vec<RustAutoOpaqueMoi<OpaqueItem>>>::sse_encode(self.items, serializer);
+        <Vec<RustAutoOpaqueMoi<OpaqueItemTwinNormal>>>::sse_encode(self.items, serializer);
     }
 }
 
 impl SseEncode for crate::api::pseudo_manual::misc_example_twin_rust_async::ItemContainerSolutionTwoTwinRustAsync {
                     // Codec=Sse (Serialization based), see doc to use other codecs
                     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {<String>::sse_encode(self.name, serializer);
-<Vec<RustAutoOpaqueMoi<OpaqueItem>>>::sse_encode(self.items, serializer);}
+<Vec<RustAutoOpaqueMoi<OpaqueItemTwinRustAsync>>>::sse_encode(self.items, serializer);}
                 }
 
 impl SseEncode
@@ -48601,7 +48728,7 @@ impl SseEncode
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <String>::sse_encode(self.name, serializer);
-        <Vec<RustAutoOpaqueMoi<OpaqueItem>>>::sse_encode(self.items, serializer);
+        <Vec<RustAutoOpaqueMoi<OpaqueItemTwinSync>>>::sse_encode(self.items, serializer);
     }
 }
 
@@ -48721,12 +48848,32 @@ impl SseEncode for crate::api::pseudo_manual::enumeration_twin_sync::KitchenSink
     }
 }
 
-impl SseEncode for Vec<RustAutoOpaqueMoi<OpaqueItem>> {
+impl SseEncode for Vec<RustAutoOpaqueMoi<OpaqueItemTwinNormal>> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <i32>::sse_encode(self.len() as _, serializer);
         for item in self {
-            <RustAutoOpaqueMoi<OpaqueItem>>::sse_encode(item, serializer);
+            <RustAutoOpaqueMoi<OpaqueItemTwinNormal>>::sse_encode(item, serializer);
+        }
+    }
+}
+
+impl SseEncode for Vec<RustAutoOpaqueMoi<OpaqueItemTwinRustAsync>> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self.len() as _, serializer);
+        for item in self {
+            <RustAutoOpaqueMoi<OpaqueItemTwinRustAsync>>::sse_encode(item, serializer);
+        }
+    }
+}
+
+impl SseEncode for Vec<RustAutoOpaqueMoi<OpaqueItemTwinSync>> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self.len() as _, serializer);
+        for item in self {
+            <RustAutoOpaqueMoi<OpaqueItemTwinSync>>::sse_encode(item, serializer);
         }
     }
 }

@@ -169,14 +169,14 @@ pub(super) fn visibility_restricted_func_twin_rust_async_sse() {}
 // #1937
 // Suppose this is opaque
 #[frb(opaque)]
-pub struct OpaqueItem(i32);
+pub struct OpaqueItemTwinRustAsyncSse(i32);
 
 // #1937
 #[frb(opaque)]
 pub struct ItemContainerSolutionOneTwinRustAsyncSse {
     // TODO auto generate getter/setter
     pub name: String,
-    items: Vec<OpaqueItem>,
+    items: Vec<OpaqueItemTwinRustAsyncSse>,
 }
 
 impl ItemContainerSolutionOneTwinRustAsyncSse {
@@ -184,7 +184,7 @@ impl ItemContainerSolutionOneTwinRustAsyncSse {
     pub async fn create_twin_rust_async_sse() -> Self {
         Self {
             name: "hi".to_owned(),
-            items: vec![OpaqueItem(100)],
+            items: vec![OpaqueItemTwinRustAsyncSse(100)],
         }
     }
 
@@ -199,7 +199,7 @@ impl ItemContainerSolutionOneTwinRustAsyncSse {
 pub struct ItemContainerSolutionTwoTwinRustAsyncSse {
     #[frb(non_final)]
     pub name: String,
-    pub items: Vec<RustAutoOpaque<OpaqueItem>>,
+    pub items: Vec<RustAutoOpaque<OpaqueItemTwinRustAsyncSse>>,
 }
 
 impl ItemContainerSolutionTwoTwinRustAsyncSse {
@@ -207,7 +207,7 @@ impl ItemContainerSolutionTwoTwinRustAsyncSse {
     pub async fn create_twin_rust_async_sse() -> Self {
         Self {
             name: "hi".to_owned(),
-            items: vec![RustAutoOpaque::new(OpaqueItem(100))],
+            items: vec![RustAutoOpaque::new(OpaqueItemTwinRustAsyncSse(100))],
         }
     }
 

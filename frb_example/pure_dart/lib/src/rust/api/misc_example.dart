@@ -88,22 +88,22 @@ class ItemContainerSolutionOneTwinNormal extends RustOpaque {
           that: this, hint: hint);
 }
 
-// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItem>>
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinNormal>>
 @sealed
-class OpaqueItem extends RustOpaque {
-  OpaqueItem.dcoDecode(List<dynamic> wire)
+class OpaqueItemTwinNormal extends RustOpaque {
+  OpaqueItemTwinNormal.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  OpaqueItem.sseDecode(BigInt ptr, int externalSizeOnNative)
+  OpaqueItemTwinNormal.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_OpaqueItem,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_OpaqueItem,
-    rustArcDecrementStrongCountPtr:
-        RustLib.instance.api.rust_arc_decrement_strong_count_OpaqueItemPtr,
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_OpaqueItemTwinNormal,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_OpaqueItemTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_OpaqueItemTwinNormalPtr,
   );
 }
 
@@ -196,7 +196,7 @@ class CTwinNormal {
 
 class ItemContainerSolutionTwoTwinNormal {
   String name;
-  final List<OpaqueItem> items;
+  final List<OpaqueItemTwinNormal> items;
 
   ItemContainerSolutionTwoTwinNormal({
     required this.name,

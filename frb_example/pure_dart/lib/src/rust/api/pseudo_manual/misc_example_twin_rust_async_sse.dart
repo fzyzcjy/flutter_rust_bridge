@@ -5,7 +5,6 @@
 
 import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
-import '../misc_example.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'misc_example_twin_rust_async_sse.freezed.dart';
@@ -100,6 +99,25 @@ class ItemContainerSolutionOneTwinRustAsyncSse extends RustOpaque {
       .instance.api
       .crateApiPseudoManualMiscExampleTwinRustAsyncSseItemContainerSolutionOneTwinRustAsyncSseGetItemContentsTwinRustAsyncSse(
           that: this, hint: hint);
+}
+
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinRustAsyncSse>>
+@sealed
+class OpaqueItemTwinRustAsyncSse extends RustOpaque {
+  OpaqueItemTwinRustAsyncSse.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  OpaqueItemTwinRustAsyncSse.sseDecode(BigInt ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_OpaqueItemTwinRustAsyncSse,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_OpaqueItemTwinRustAsyncSse,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_OpaqueItemTwinRustAsyncSsePtr,
+  );
 }
 
 class ATwinRustAsyncSse {
@@ -197,7 +215,7 @@ class CTwinRustAsyncSse {
 
 class ItemContainerSolutionTwoTwinRustAsyncSse {
   String name;
-  final List<OpaqueItem> items;
+  final List<OpaqueItemTwinRustAsyncSse> items;
 
   ItemContainerSolutionTwoTwinRustAsyncSse({
     required this.name,
