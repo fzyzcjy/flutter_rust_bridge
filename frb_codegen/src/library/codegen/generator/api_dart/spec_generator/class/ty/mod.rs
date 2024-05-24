@@ -28,5 +28,4 @@ impl<'a> ApiDartGeneratorClassTrait for OptionalApiDartGenerator<'a> {}
 impl<'a> ApiDartGeneratorClassTrait for PrimitiveApiDartGenerator<'a> {}
 impl<'a> ApiDartGeneratorClassTrait for PrimitiveListApiDartGenerator<'a> {}
 impl<'a> ApiDartGeneratorClassTrait for RecordApiDartGenerator<'a> {}
-impl<'a> ApiDartGeneratorClassTrait for RustAutoOpaqueExplicitApiDartGenerator<'a> {}
 impl<'a> ApiDartGeneratorClassTrait for RustAutoOpaqueImplicitApiDartGenerator<'a> {}
