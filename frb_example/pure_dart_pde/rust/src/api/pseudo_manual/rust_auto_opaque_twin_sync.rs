@@ -380,7 +380,7 @@ pub struct StructWithExplicitAutoOpaqueFieldTwinSync {
 
 #[flutter_rust_bridge::frb(sync)]
 pub fn rust_auto_opaque_explicit_struct_twin_sync(arg: StructWithExplicitAutoOpaqueFieldTwinSync) {
-    assert_eq!(arg.auto_opaque.blocking_read().unwrap().inner, arg.normal);
+    assert_eq!(arg.auto_opaque.blocking_read().inner, arg.normal);
 }
 
 #[flutter_rust_bridge::frb(sync)]

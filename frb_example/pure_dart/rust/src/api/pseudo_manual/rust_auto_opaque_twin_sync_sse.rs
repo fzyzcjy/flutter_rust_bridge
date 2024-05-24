@@ -440,7 +440,7 @@ pub struct StructWithExplicitAutoOpaqueFieldTwinSyncSse {
 pub fn rust_auto_opaque_explicit_struct_twin_sync_sse(
     arg: StructWithExplicitAutoOpaqueFieldTwinSyncSse,
 ) {
-    assert_eq!(arg.auto_opaque.blocking_read().unwrap().inner, arg.normal);
+    assert_eq!(arg.auto_opaque.blocking_read().inner, arg.normal);
 }
 
 #[flutter_rust_bridge::frb(serialize)]

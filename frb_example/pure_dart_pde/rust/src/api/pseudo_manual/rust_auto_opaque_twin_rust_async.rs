@@ -372,7 +372,7 @@ pub struct StructWithExplicitAutoOpaqueFieldTwinRustAsync {
 pub async fn rust_auto_opaque_explicit_struct_twin_rust_async(
     arg: StructWithExplicitAutoOpaqueFieldTwinRustAsync,
 ) {
-    assert_eq!(arg.auto_opaque.blocking_read().unwrap().inner, arg.normal);
+    assert_eq!(arg.auto_opaque.blocking_read().inner, arg.normal);
 }
 
 pub async fn rust_auto_opaque_explicit_return_struct_twin_rust_async(
