@@ -26,11 +26,7 @@ impl<'a> CodecSseTyTrait for RustAutoOpaqueCodecSseTy<'a> {
                         &generate_encode_rust_auto_opaque(&self.ir, "self"),
                     ))
                 } else {
-                    Some(simple_delegate_encode(
-                        lang,
-                        &RustOpaque(self.ir.inner.to_owned()),
-                        "TODO_a",
-                    ))
+                    None
                 }
             }
         }
@@ -52,11 +48,7 @@ impl<'a> CodecSseTyTrait for RustAutoOpaqueCodecSseTy<'a> {
                         &generate_decode_rust_auto_opaque(&self.ir, "inner"),
                     ))
                 } else {
-                    Some(simple_delegate_encode(
-                        lang,
-                        &RustOpaque(self.ir.inner.to_owned()),
-                        "TODO_b",
-                    ))
+                    None
                 }
             }
         }
