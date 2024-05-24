@@ -9,6 +9,7 @@ use itertools::Itertools;
 use std::ops::Add;
 use std::path::PathBuf;
 use strum::IntoEnumIterator;
+use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 
 pub(crate) mod comments;
 pub(crate) mod structs_macro;
@@ -25,6 +26,7 @@ pub fn is_js_value(ty: &IrType) -> bool {
         | IrType::EnumRef(_)
         | IrType::RustAutoOpaqueImplicit(_)
         | IrType::RustOpaque(_)
+        | IrType::Delegate(IrTypeDelegate::RustAutoOpaqueExplicit(_))
         | IrType::DartOpaque(_)
         | IrType::DartFn(_)
         | IrType::Record(_) => true,

@@ -3,6 +3,7 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::dco::decoder::
 use crate::codegen::generator::wire::dart::spec_generator::codec::dco::decoder::ty::WireDartCodecDcoGeneratorDecoderTrait;
 use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
+use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::*;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 
@@ -15,6 +16,7 @@ impl<'a> WireDartCodecDcoGeneratorDecoderTrait for BoxedWireDartCodecDcoGenerato
             StructRef(_)
             | DartOpaque(_)
             | RustOpaque(_)
+            | IrType::Delegate(IrTypeDelegate::RustAutoOpaqueExplicit(_))
             | RustAutoOpaqueImplicit(_)
             | EnumRef(_)
             | Primitive(

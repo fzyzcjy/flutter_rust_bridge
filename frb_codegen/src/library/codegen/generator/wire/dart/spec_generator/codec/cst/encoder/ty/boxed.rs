@@ -18,7 +18,10 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for BoxedWireDartCodecCstGenerato
                 if self.ir.inner.is_primitive()
                     || matches!(
                         *self.ir.inner,
-                        IrType::RustOpaque(_) | IrType::RustAutoOpaqueImplicit(_) | IrType::DartOpaque(_)
+                        IrType::RustOpaque(_)
+                            | IrType::RustAutoOpaqueImplicit(_)
+                            | IrType::Delegate(IrTypeDelegate::RustAutoOpaqueExplicit(_))
+                            | IrType::DartOpaque(_)
                     )
                 {
                     format!(
@@ -52,7 +55,10 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for BoxedWireDartCodecCstGenerato
         } else if !self.ir.inner.is_primitive()
             && !matches!(
                 *self.ir.inner,
-                IrType::RustOpaque(_) | IrType::RustAutoOpaqueImplicit(_) | IrType::DartOpaque(_)
+                IrType::RustOpaque(_)
+                    | IrType::RustAutoOpaqueImplicit(_)
+                    | IrType::Delegate(IrTypeDelegate::RustAutoOpaqueExplicit(_))
+                    | IrType::DartOpaque(_)
             )
             && !is_empty_struct(self)
         {
