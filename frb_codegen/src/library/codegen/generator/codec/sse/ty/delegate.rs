@@ -41,7 +41,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     generate_stream_sink_setup_and_serialize(ir, "self")
                 }
                 IrTypeDelegate::BigPrimitive(_) => "self.toString()".to_owned(),
-                IrTypeDelegate::RustAutoOpaqueExplicit(ir) => "self".to_owned(),
+                IrTypeDelegate::RustAutoOpaqueExplicit(_ir) => "self".to_owned(),
             },
             Lang::RustLang(_) => match &self.ir {
                 IrTypeDelegate::Array(_) => {
@@ -82,7 +82,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::Uuid => "self.as_bytes().to_vec()".to_owned(),
                 IrTypeDelegate::StreamSink(_) => return Some(lang.throw_unimplemented("")),
                 IrTypeDelegate::BigPrimitive(_) => "self.to_string()".to_owned(),
-                IrTypeDelegate::RustAutoOpaqueExplicit(ir) => {
+                IrTypeDelegate::RustAutoOpaqueExplicit(_ir) => {
                     "flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_encode(self)"
                         .to_owned()
                 }
@@ -137,7 +137,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     return Some(format!("{};", lang.throw_unreachable("")));
                 }
                 IrTypeDelegate::BigPrimitive(_) => "BigInt.parse(inner)".to_owned(),
-                IrTypeDelegate::RustAutoOpaqueExplicit(ir) => "inner".to_owned(),
+                IrTypeDelegate::RustAutoOpaqueExplicit(_ir) => "inner".to_owned(),
             },
             Lang::RustLang(_) => match &self.ir {
                 IrTypeDelegate::Array(_) => {
@@ -175,7 +175,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 }
                 IrTypeDelegate::StreamSink(_) => "StreamSink::deserialize(inner)".to_owned(),
                 IrTypeDelegate::BigPrimitive(_) => "inner.parse().unwrap()".to_owned(),
-                IrTypeDelegate::RustAutoOpaqueExplicit(ir) => {
+                IrTypeDelegate::RustAutoOpaqueExplicit(_ir) => {
                     "flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(inner)"
                         .to_owned()
                 }
