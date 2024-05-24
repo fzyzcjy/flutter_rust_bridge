@@ -5,7 +5,7 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::rust_opaque::generalized_rust_opaque_rust_wire_type;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 use crate::codegen::ir::func::OwnershipMode;
-use crate::codegen::ir::ty::rust_auto_opaque::IrTypeRustAutoOpaque;
+use crate::codegen::ir::ty::rust_auto_opaque::{IrTypeRustAutoOpaque, IrTypeRustAutoOpaqueSub};
 use crate::codegen::ir::ty::IrTypeTrait;
 use std::borrow::Cow;
 
@@ -27,13 +27,14 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for RustAutoOpaqueWireRustCodecCs
 }
 
 fn generate_decode(ir: &IrTypeRustAutoOpaque) -> Option<String> {
-    if ir.ownership_mode == OwnershipMode::Owned {
-        let inner = format!(
-            "CstDecode::<{}>::cst_decode(self)",
-            ir.inner.rust_api_type()
-        );
-        Some(generate_decode_rust_auto_opaque(ir, &inner))
-    } else {
-        None
+    if let IrTypeRustAutoOpaqueSub::Implicit(sub) = &ir.sub {
+        if sub.ownership_mode == OwnershipMode::Owned {
+            let inner = format!(
+                "CstDecode::<{}>::cst_decode(self)",
+                ir.inner.rust_api_type()
+            );
+            return Some(generate_decode_rust_auto_opaque(sub, &inner));
+        }
     }
+    None
 }
