@@ -40,7 +40,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         file_path: &Path,
         rust_crate_dir: &Path,
         force_codec_mode_pack: &Option<CodecModePack>,
-        func_id: i32,
         default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
     ) -> anyhow::Result<Option<IrFunc>> {

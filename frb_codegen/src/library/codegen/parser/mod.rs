@@ -34,6 +34,7 @@ use anyhow::ensure;
 use itertools::{concat, Itertools};
 use log::trace;
 use ConfigDumpContent::SourceGraph;
+use crate::codegen::parser::auto_accessor_parser::parse_auto_accessors;
 
 pub(crate) fn parse(
     config: &ParserInternalConfig,
@@ -133,7 +134,7 @@ fn parse_ir_funcs(
         .flatten()
         .collect_vec();
 
-    let ir_funcs_auto_accessor = TODO;
+    let ir_funcs_auto_accessor = parse_auto_accessors()?;
 
     Ok(concat([ir_funcs_normal, ir_funcs_auto_accessor])
         .into_iter()

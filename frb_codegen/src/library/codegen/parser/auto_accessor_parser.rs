@@ -1,5 +1,5 @@
 use crate::codegen::ir::func::IrFunc;
 
-pub(crate) fn parse_auto_accessor() -> anyhow::Result<Vec<IrFunc>> {
-    TOOD
+pub(crate) fn parse_auto_accessors() -> anyhow::Result<Vec<IrFunc>> {
+    todo!()
 }
