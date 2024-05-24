@@ -1,7 +1,9 @@
+use tokio::sync::RwLock;
 use crate::for_generated::BaseArc;
 use crate::rust_async::{RwLockReadGuard, RwLockWriteGuard};
 use crate::rust_auto_opaque::order::RustAutoOpaqueOrder;
-use crate::rust_auto_opaque::{inner::RustAutoOpaqueInner, RustAutoOpaqueBase};
+use crate::rust_opaque::RustOpaqueBase;
+use crate::rust_auto_opaque::inner::RustAutoOpaqueInner;
 
 // NOTE: Make these functions instead of methods, thus we can control its visibility by exporting
 // only through `for_generated::...` and do not expose to end users.
@@ -9,48 +11,48 @@ use crate::rust_auto_opaque::{inner::RustAutoOpaqueInner, RustAutoOpaqueBase};
 // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
 // frb-coverage:ignore-start
 pub fn rust_auto_opaque_decode_owned<T, A: BaseArc<RustAutoOpaqueInner<T>>>(
-    opaque: RustAutoOpaqueBase<T, A>,
+    opaque: RustOpaqueBase<RustAutoOpaqueInner<T>, A>,
 ) -> T {
     // frb-coverage:ignore-end
-    opaque.0.into_inner()
+    opaque.into_inner()
             .expect("Cannot convert RustOpaque to inner value. This is probably because you are having more than one references to it.")
             .data
             .into_inner()
 }
 
 pub fn rust_auto_opaque_decode_sync_ref<T, A: BaseArc<RustAutoOpaqueInner<T>>>(
-    opaque: &RustAutoOpaqueBase<T, A>,
+    opaque: &RustOpaqueBase<RustAutoOpaqueInner<T>, A>,
 ) -> RwLockReadGuard<'_, T> {
-    opaque.blocking_read()
+    opaque.data.blocking_read()
 }
 
 pub fn rust_auto_opaque_decode_sync_ref_mut<T, A: BaseArc<RustAutoOpaqueInner<T>>>(
-    opaque: &RustAutoOpaqueBase<T, A>,
+    opaque: &RustOpaqueBase<RustAutoOpaqueInner<T>, A>,
 ) -> RwLockWriteGuard<'_, T> {
-    opaque.blocking_write()
+    opaque.data.blocking_write()
 }
 
 pub async fn rust_auto_opaque_decode_async_ref<T, A: BaseArc<RustAutoOpaqueInner<T>>>(
-    opaque: &RustAutoOpaqueBase<T, A>,
+    opaque: &RustOpaqueBase<RustAutoOpaqueInner<T>, A>,
 ) -> RwLockReadGuard<'_, T> {
-    opaque.read().await
+    opaque.data.read().await
 }
 
 pub async fn rust_auto_opaque_decode_async_ref_mut<T, A: BaseArc<RustAutoOpaqueInner<T>>>(
-    opaque: &RustAutoOpaqueBase<T, A>,
+    opaque: &RustOpaqueBase<RustAutoOpaqueInner<T>, A>,
 ) -> RwLockWriteGuard<'_, T> {
-    opaque.write().await
+    opaque.data.write().await
 }
 
 pub fn rust_auto_opaque_lock_order_info<T, A: BaseArc<RustAutoOpaqueInner<T>>>(
-    opaque: &RustAutoOpaqueBase<T, A>,
+    opaque: &RustOpaqueBase<RustAutoOpaqueInner<T>, A>,
     index: usize,
     mutable: bool,
 ) -> RustAutoOpaqueLockOrderInfo {
     RustAutoOpaqueLockOrderInfo {
         index,
         mutable,
-        object_order: opaque.0.order,
+        object_order: opaque.order,
     }
 }
 
@@ -62,8 +64,8 @@ pub struct RustAutoOpaqueLockOrderInfo {
 
 pub fn rust_auto_opaque_encode<T, A: BaseArc<RustAutoOpaqueInner<T>>>(
     value: T,
-) -> RustAutoOpaqueBase<T, A> {
-    RustAutoOpaqueBase::new(value)
+) -> RustOpaqueBase<RustAutoOpaqueInner<T>, A> {
+    RustOpaqueBase::new(RustAutoOpaqueInner::new(RwLock::new(value)))
 }
 
 pub fn rust_auto_opaque_decode_compute_order(
