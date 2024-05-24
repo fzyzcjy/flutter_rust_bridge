@@ -1,5 +1,5 @@
 use crate::codegen::generator::acc::Acc;
-use crate::codegen::generator::codec::sse::ty::rust_auto_opaque::generate_decode_rust_auto_opaque;
+use crate::codegen::generator::codec::sse::ty::rust_auto_opaque_implicit::generate_decode_rust_auto_opaque;
 use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::rust_opaque::generalized_rust_opaque_rust_wire_type;

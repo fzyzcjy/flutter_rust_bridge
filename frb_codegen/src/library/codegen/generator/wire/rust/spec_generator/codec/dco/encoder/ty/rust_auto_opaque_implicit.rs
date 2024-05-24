@@ -1,4 +1,4 @@
-use crate::codegen::generator::codec::sse::ty::rust_auto_opaque::generate_encode_rust_auto_opaque;
+use crate::codegen::generator::codec::sse::ty::rust_auto_opaque_implicit::generate_encode_rust_auto_opaque;
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::misc::{
     generate_impl_into_dart, generate_impl_into_into_dart,

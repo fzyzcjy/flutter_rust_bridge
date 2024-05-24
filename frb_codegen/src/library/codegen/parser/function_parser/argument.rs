@@ -8,7 +8,7 @@ use crate::codegen::ir::ty::IrType::Boxed;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::function_parser::{FunctionParser, FunctionPartialInfo};
 use crate::codegen::parser::type_parser::misc::parse_comments;
-use crate::codegen::parser::type_parser::rust_auto_opaque::split_ownership_from_ty;
+use crate::codegen::parser::type_parser::rust_auto_opaque_implicit::split_ownership_from_ty;
 use crate::codegen::parser::type_parser::TypeParserParsingContext;
 use crate::if_then_some;
 use anyhow::Context;
