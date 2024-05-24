@@ -3,9 +3,7 @@
 #[allow(unused_imports)]
 use crate::frb_generated::RustAutoOpaque;
 use crate::frb_generated::StreamSink;
-use flutter_rust_bridge::for_generated::RustAutoOpaqueInner;
 use flutter_rust_bridge::frb;
-use flutter_rust_bridge::rust_async::RwLock;
 use std::path::PathBuf;
 
 // TODO auto determine it is opaque or not later
