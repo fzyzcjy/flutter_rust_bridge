@@ -1,6 +1,6 @@
 use crate::codegen::ir::func::OwnershipMode;
 use crate::codegen::ir::namespace::Namespace;
-use crate::codegen::ir::ty::rust_auto_opaque_implicit::{IrRustAutoOpaqueImplicitRaw, IrTypeRustAutoOpaqueImplicit};
+use crate::codegen::ir::ty::rust_auto_opaque_implicit::{IrRustAutoOpaqueRaw, IrTypeRustAutoOpaqueImplicit};
 use crate::codegen::ir::ty::rust_opaque::{
     IrRustOpaqueInner, IrTypeRustOpaque, RustOpaqueCodecMode,
 };
@@ -37,7 +37,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
         Ok(RustAutoOpaqueImplicit(IrTypeRustAutoOpaqueImplicit {
             ownership_mode,
-            raw: IrRustAutoOpaqueImplicitRaw {
+            raw: IrRustAutoOpaqueRaw {
                 string: inner_str.clone(),
                 segments: raw_segments,
             },

@@ -9,11 +9,11 @@ crate::ir! {
 pub struct IrTypeRustAutoOpaqueImplicit {
     pub ownership_mode: OwnershipMode,
     pub inner: IrTypeRustOpaque,
-    pub raw: IrRustAutoOpaqueImplicitRaw,
+    pub raw: IrRustAutoOpaqueRaw,
 }
 
 /// Original type without any transformation
-pub struct IrRustAutoOpaqueImplicitRaw {
+pub struct IrRustAutoOpaqueRaw {
     pub string: String,
     pub segments: Vec<NameComponent>,
 }
