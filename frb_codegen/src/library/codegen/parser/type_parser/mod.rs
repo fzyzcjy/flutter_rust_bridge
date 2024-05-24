@@ -3,7 +3,7 @@ use crate::codegen::ir::func::IrFuncOwnerInfo;
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::{IrEnumPool, IrStructPool};
 use crate::codegen::ir::ty::enumeration::{IrEnum, IrEnumIdent};
-use crate::codegen::ir::ty::rust_auto_opaque::IrTypeRustAutoOpaque;
+use crate::codegen::ir::ty::rust_auto_opaque_implicit::IrTypeRustAutoOpaque;
 use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::ty::structure::{IrStruct, IrStructIdent};
 use crate::codegen::ir::ty::IrContext;

@@ -5,7 +5,7 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::
 };
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::ty::WireRustCodecDcoGeneratorEncoderTrait;
 use crate::codegen::ir::func::OwnershipMode;
-use crate::codegen::ir::ty::rust_auto_opaque::IrTypeRustAutoOpaque;
+use crate::codegen::ir::ty::rust_auto_opaque_implicit::IrTypeRustAutoOpaque;
 use crate::codegen::ir::ty::IrTypeTrait;
 
 impl<'a> WireRustCodecDcoGeneratorEncoderTrait for RustAutoOpaqueWireRustCodecDcoGenerator<'a> {

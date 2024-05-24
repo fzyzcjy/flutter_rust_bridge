@@ -1,5 +1,5 @@
 use crate::codegen::ir::func::{IrFunc, IrFuncInput, OwnershipMode};
-use crate::codegen::ir::ty::rust_auto_opaque::IrTypeRustAutoOpaque;
+use crate::codegen::ir::ty::rust_auto_opaque_implicit::IrTypeRustAutoOpaque;
 use crate::codegen::ir::ty::IrType;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
