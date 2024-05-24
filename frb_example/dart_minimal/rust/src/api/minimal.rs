@@ -1,4 +1,3 @@
-use crate::frb_generated::RustAutoOpaque;
 use flutter_rust_bridge::frb;
 
 #[frb(init)]
