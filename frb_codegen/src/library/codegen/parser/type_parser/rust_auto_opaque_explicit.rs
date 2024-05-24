@@ -1,3 +1,4 @@
+use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegateRustAutoOpaqueExplicit};
 use crate::codegen::ir::ty::rust_opaque::{IrTypeRustOpaque, RustOpaqueCodecMode};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
@@ -31,14 +32,15 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         let inner_str = inner.to_token_stream().to_string();
         let info = self.get_or_insert_rust_auto_opaque_info(&inner_str, None, codec);
 
-        todo!()
-        // IrType::RustAutoOpaqueExplicit(IrTypeRustAutoOpaqueExplicit {
-        //     inner: IrTypeRustOpaque {
-        //         namespace: info.namespace,
-        //         inner: self.create_rust_opaque_type_for_rust_auto_opaque(&inner_str),
-        //         codec: info.codec,
-        //         brief_name: true,
-        //     },
-        // })
+        IrType::Delegate(IrTypeDelegate::RustAutoOpaqueExplicit(
+            IrTypeDelegateRustAutoOpaqueExplicit {
+                inner: IrTypeRustOpaque {
+                    namespace: info.namespace,
+                    inner: self.create_rust_opaque_type_for_rust_auto_opaque(&inner_str),
+                    codec: info.codec,
+                    brief_name: true,
+                },
+            },
+        ))
     }
 }
