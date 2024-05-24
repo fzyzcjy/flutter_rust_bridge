@@ -14,14 +14,4 @@ Future<void> main() async {
     print('Action: Call rust (after)');
   });
   print('Action: Configure tests (end)');
-
-  test('ItemContainerSolutionTwo', () async {
-    final container = await ItemContainerSolutionTwo.create();
-
-    expect(await container.getItemContents(), [100]);
-
-    expect(container.name, 'hi');
-    container.name = 'hello';
-    expect(container.name, 'hello');
-  });
 }
