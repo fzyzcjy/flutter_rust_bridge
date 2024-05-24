@@ -95,10 +95,10 @@ class WriteBuffer {
     _addAll(_eightBytesAsList, 0, 4);
   }
 
-  /// Write a Uint64 into the buffer.
-  void putUint64(int value, {Endian? endian}) {
-    putBigUint64(BigInt.from(value), endian: endian);
-  }
+  // /// Write a Uint64 into the buffer.
+  // void putUint64(int value, {Endian? endian}) {
+  //   putBigUint64(BigInt.from(value), endian: endian);
+  // }
 
   /// Write a Uint64 into the buffer.
   void putBigUint64(BigInt value, {Endian? endian}) {
