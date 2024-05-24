@@ -1,4 +1,5 @@
 import 'package:js/js.dart';
+import 'package:js/js_util.dart';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 @JS('Number')
@@ -28,3 +29,8 @@ external bool? get crossOriginIsolated;
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 @JS('BigInt')
 external Object castNativeBigInt(Object? value);
+
+/// {@macro flutter_rust_bridge.only_for_generated_code}
+BigInt jsBigIntToDartBigInt(Object bigInt) {
+  return BigInt.parse(callMethod(bigInt, 'toString', const []));
+}

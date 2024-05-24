@@ -13,7 +13,7 @@ Future<NewTypeIntTwinSse> handleNewtypeTwinSse(
             arg: arg, hint: hint);
 
 class NewTypeIntTwinSse {
-  final int field0;
+  final PlatformInt64 field0;
 
   const NewTypeIntTwinSse({
     required this.field0,

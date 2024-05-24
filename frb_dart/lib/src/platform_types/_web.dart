@@ -18,6 +18,9 @@ Uint8List wireSyncRust2DartSseAsUint8ListView(WireSyncRust2DartSse raw) => raw;
 typedef PlatformPointer = int;
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
+typedef PlatformInt64 = BigInt;
+
+/// {@macro flutter_rust_bridge.only_for_generated_code}
 typedef DartPostCObject = void;
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
@@ -42,4 +45,10 @@ class PlatformPointerUtil {
 
   /// {@macro flutter_rust_bridge.internal}
   static bool isNullPtr(PlatformPointer ptr) => ptr == 0;
+}
+
+/// {@macro flutter_rust_bridge.internal}
+class PlatformInt64Util {
+  /// {@macro flutter_rust_bridge.internal}
+  static PlatformInt64 from(int value) => PlatformInt64.from(value);
 }

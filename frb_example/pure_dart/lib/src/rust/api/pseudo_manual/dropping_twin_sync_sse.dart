@@ -14,7 +14,7 @@ class DroppableTwinSyncSse extends RustOpaque {
   DroppableTwinSyncSse.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  DroppableTwinSyncSse.sseDecode(int ptr, int externalSizeOnNative)
+  DroppableTwinSyncSse.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(

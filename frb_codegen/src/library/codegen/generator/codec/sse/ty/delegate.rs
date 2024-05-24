@@ -29,13 +29,18 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::Time(ir) => match ir {
                     IrTypeDelegateTime::Utc
                     | IrTypeDelegateTime::Local
-                    | IrTypeDelegateTime::Naive => "self.microsecondsSinceEpoch".to_owned(),
-                    IrTypeDelegateTime::Duration => "self.inMicroseconds".to_owned(),
+                    | IrTypeDelegateTime::Naive => {
+                        "PlatformInt64Util.from(self.microsecondsSinceEpoch)".to_owned()
+                    }
+                    IrTypeDelegateTime::Duration => {
+                        "PlatformInt64Util.from(self.inMicroseconds)".to_owned()
+                    }
                 },
                 IrTypeDelegate::Uuid => "self.toBytes()".to_owned(),
                 IrTypeDelegate::StreamSink(ir) => {
                     generate_stream_sink_setup_and_serialize(ir, "self")
                 }
+                IrTypeDelegate::BigPrimitive(_) => "self.toString()".to_owned(),
             },
             Lang::RustLang(_) => match &self.ir {
                 IrTypeDelegate::Array(_) => {
@@ -75,6 +80,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 },
                 IrTypeDelegate::Uuid => "self.as_bytes().to_vec()".to_owned(),
                 IrTypeDelegate::StreamSink(_) => return Some(lang.throw_unimplemented("")),
+                IrTypeDelegate::BigPrimitive(_) => "self.to_string()".to_owned(),
             },
         };
         Some(simple_delegate_encode(
@@ -112,17 +118,20 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     | IrTypeDelegateTime::Local
                     | IrTypeDelegateTime::Naive => {
                         format!(
-                            "DateTime.fromMicrosecondsSinceEpoch(inner, isUtc: {is_utc})",
+                            "DateTime.fromMicrosecondsSinceEpoch(inner.toInt(), isUtc: {is_utc})",
                             is_utc =
                                 matches!(ir, IrTypeDelegateTime::Naive | IrTypeDelegateTime::Utc),
                         )
                     }
-                    IrTypeDelegateTime::Duration => "Duration(microseconds: inner)".to_owned(),
+                    IrTypeDelegateTime::Duration => {
+                        "Duration(microseconds: inner.toInt())".to_owned()
+                    }
                 },
                 IrTypeDelegate::Uuid => "UuidValue.fromByteList(inner)".to_owned(),
                 IrTypeDelegate::StreamSink(_) => {
                     return Some(format!("{};", lang.throw_unreachable("")));
                 }
+                IrTypeDelegate::BigPrimitive(_) => "BigInt.parse(inner)".to_owned(),
             },
             Lang::RustLang(_) => match &self.ir {
                 IrTypeDelegate::Array(_) => {
@@ -159,6 +168,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     r#"uuid::Uuid::from_slice(&inner).expect("fail to decode uuid")"#.to_owned()
                 }
                 IrTypeDelegate::StreamSink(_) => "StreamSink::deserialize(inner)".to_owned(),
+                IrTypeDelegate::BigPrimitive(_) => "inner.parse().unwrap()".to_owned(),
             },
         };
 

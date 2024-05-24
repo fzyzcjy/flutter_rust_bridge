@@ -13,7 +13,7 @@ Future<NewTypeIntTwinRustAsyncSse> handleNewtypeTwinRustAsyncSse(
             arg: arg, hint: hint);
 
 class NewTypeIntTwinRustAsyncSse {
-  final int field0;
+  final PlatformInt64 field0;
 
   const NewTypeIntTwinRustAsyncSse({
     required this.field0,

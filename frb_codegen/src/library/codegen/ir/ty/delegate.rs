@@ -25,6 +25,7 @@ pub enum IrTypeDelegate {
     Map(IrTypeDelegateMap),
     Set(IrTypeDelegateSet),
     StreamSink(IrTypeDelegateStreamSink),
+    BigPrimitive(IrTypeDelegateBigPrimitive),
 }
 
 pub struct IrTypeDelegateArray {
@@ -65,6 +66,12 @@ pub struct IrTypeDelegateSet {
 pub struct IrTypeDelegateStreamSink {
     pub inner: Box<IrType>,
     pub codec: CodecMode,
+}
+
+#[derive(Copy, strum_macros::Display)]
+pub enum IrTypeDelegateBigPrimitive {
+    I128,
+    U128,
 }
 }
 
@@ -107,6 +114,7 @@ impl IrTypeTrait for IrTypeDelegate {
             IrTypeDelegate::StreamSink(ir) => {
                 format!("StreamSink_{}_{}", ir.inner.safe_ident(), ir.codec)
             }
+            IrTypeDelegate::BigPrimitive(ir) => ir.to_string(),
         }
     }
 
@@ -162,6 +170,10 @@ impl IrTypeTrait for IrTypeDelegate {
                     codec = ir.codec,
                 )
             }
+            IrTypeDelegate::BigPrimitive(ir) => match ir {
+                IrTypeDelegateBigPrimitive::I128 => "i128".to_owned(),
+                IrTypeDelegateBigPrimitive::U128 => "u128".to_owned(),
+            },
         }
     }
 
@@ -214,6 +226,7 @@ impl IrTypeDelegate {
             IrTypeDelegate::Map(ir) => ir_list(IrType::Record(ir.element_delegate.clone()), true),
             IrTypeDelegate::Set(ir) => ir_list(*ir.inner.to_owned(), true),
             IrTypeDelegate::StreamSink(_) => IrType::Delegate(IrTypeDelegate::String),
+            IrTypeDelegate::BigPrimitive(_) => IrType::Delegate(IrTypeDelegate::String),
         }
     }
 }

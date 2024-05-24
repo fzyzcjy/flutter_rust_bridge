@@ -256,7 +256,7 @@ class BoxHelloTraitTwinNormal extends RustOpaque {
   BoxHelloTraitTwinNormal.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  BoxHelloTraitTwinNormal.sseDecode(int ptr, int externalSizeOnNative)
+  BoxHelloTraitTwinNormal.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -275,7 +275,7 @@ class BoxMyTraitTwinNormal extends RustOpaque {
   BoxMyTraitTwinNormal.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  BoxMyTraitTwinNormal.sseDecode(int ptr, int externalSizeOnNative)
+  BoxMyTraitTwinNormal.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -295,7 +295,7 @@ class EnumWithGoodAndOpaqueWithoutOptionTwinNormal extends RustOpaque {
       : super.dcoDecode(wire, _kStaticData);
 
   EnumWithGoodAndOpaqueWithoutOptionTwinNormal.sseDecode(
-      int ptr, int externalSizeOnNative)
+      BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -314,7 +314,7 @@ class NonCloneSimpleEnumTwinNormal extends RustOpaque {
   NonCloneSimpleEnumTwinNormal.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  NonCloneSimpleEnumTwinNormal.sseDecode(int ptr, int externalSizeOnNative)
+  NonCloneSimpleEnumTwinNormal.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -333,7 +333,7 @@ class NonCloneSimpleTwinNormal extends RustOpaque {
   NonCloneSimpleTwinNormal.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  NonCloneSimpleTwinNormal.sseDecode(int ptr, int externalSizeOnNative)
+  NonCloneSimpleTwinNormal.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -422,7 +422,7 @@ class OpaqueOneTwinNormal extends RustOpaque {
   OpaqueOneTwinNormal.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  OpaqueOneTwinNormal.sseDecode(int ptr, int externalSizeOnNative)
+  OpaqueOneTwinNormal.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -441,7 +441,7 @@ class OpaqueTwoTwinNormal extends RustOpaque {
   OpaqueTwoTwinNormal.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  OpaqueTwoTwinNormal.sseDecode(int ptr, int externalSizeOnNative)
+  OpaqueTwoTwinNormal.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -462,7 +462,7 @@ class StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal extends RustOpaque {
       : super.dcoDecode(wire, _kStaticData);
 
   StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal.sseDecode(
-      int ptr, int externalSizeOnNative)
+      BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(

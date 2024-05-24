@@ -82,18 +82,18 @@ impl CstDecode<char> for String {
             .unwrap()
     }
 }
-impl CstDecode<chrono::Duration> for i64 {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> chrono::Duration {
-        chrono::Duration::milliseconds(self)
-    }
-}
 impl CstDecode<flutter_rust_bridge::DartOpaque>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> flutter_rust_bridge::DartOpaque {
         unsafe { flutter_rust_bridge::for_generated::cst_decode_dart_opaque(self as _) }
+    }
+}
+impl CstDecode<i128> for String {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> i128 {
+        CstDecode::<String>::cst_decode(self).parse().unwrap()
     }
 }
 impl CstDecode<std::collections::HashSet<i32>> for Box<[i32]> {
@@ -580,6 +580,12 @@ impl CstDecode<String> for String {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> String {
         self
+    }
+}
+impl CstDecode<u128> for String {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> u128 {
+        CstDecode::<String>::cst_decode(self).parse().unwrap()
     }
 }
 impl CstDecode<uuid::Uuid> for Box<[u8]> {
@@ -4392,6 +4398,16 @@ impl CstDecode<Vec<(i32, f64)>> for flutter_rust_bridge::for_generated::wasm_bin
             .collect()
     }
 }
+impl CstDecode<Vec<(i32, i128)>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> Vec<(i32, i128)> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
 impl CstDecode<Vec<(i32, i16)>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(i32, i16)> {
@@ -4455,6 +4471,16 @@ impl CstDecode<Vec<(i32, Vec<u8>)>> for flutter_rust_bridge::for_generated::wasm
 impl CstDecode<Vec<(i32, String)>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(i32, String)> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl CstDecode<Vec<(i32, u128)>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> Vec<(i32, u128)> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
@@ -5836,9 +5862,21 @@ impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::OpaqueNeste
         }
     }
 }
+impl CstDecode<Option<i128>> for Option<String> {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> Option<i128> {
+        self.map(CstDecode::cst_decode)
+    }
+}
 impl CstDecode<Option<String>> for Option<String> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Option<String> {
+        self.map(CstDecode::cst_decode)
+    }
+}
+impl CstDecode<Option<u128>> for Option<String> {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> Option<u128> {
         self.map(CstDecode::cst_decode)
     }
 }
@@ -6494,6 +6532,21 @@ impl CstDecode<(i32, f64)> for flutter_rust_bridge::for_generated::wasm_bindgen:
         (self_.get(0).cst_decode(), self_.get(1).cst_decode())
     }
 }
+impl CstDecode<(i32, i128)> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> (i32, i128) {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        (self_.get(0).cst_decode(), self_.get(1).cst_decode())
+    }
+}
 impl CstDecode<(i32, i16)> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (i32, i16) {
@@ -6587,6 +6640,21 @@ impl CstDecode<(i32, Vec<u8>)> for flutter_rust_bridge::for_generated::wasm_bind
 impl CstDecode<(i32, String)> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (i32, String) {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        (self_.get(0).cst_decode(), self_.get(1).cst_decode())
+    }
+}
+impl CstDecode<(i32, u128)> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> (i32, u128) {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap();
@@ -9307,7 +9375,7 @@ impl CstDecode<char> for flutter_rust_bridge::for_generated::wasm_bindgen::JsVal
 impl CstDecode<chrono::Duration> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> chrono::Duration {
-        CstDecode::<i64>::cst_decode(self).cst_decode()
+        chrono::Duration::milliseconds(CstDecode::<i64>::cst_decode(self))
     }
 }
 impl CstDecode<chrono::DateTime<chrono::Local>>
@@ -9341,6 +9409,12 @@ impl CstDecode<[flutter_rust_bridge::DartOpaque; 1]>
     fn cst_decode(self) -> [flutter_rust_bridge::DartOpaque; 1] {
         let vec: Vec<flutter_rust_bridge::DartOpaque> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
+impl CstDecode<i128> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> i128 {
+        CstDecode::<String>::cst_decode(self).parse().unwrap()
     }
 }
 impl CstDecode<std::collections::HashMap<String, String>>
@@ -9504,12 +9578,30 @@ impl CstDecode<std::collections::HashMap<String, crate::auxiliary::sample_types:
         vec.into_iter().collect()
     }
 }
+impl CstDecode<std::collections::HashMap<i32, i128>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> std::collections::HashMap<i32, i128> {
+        let vec: Vec<(i32, i128)> = self.cst_decode();
+        vec.into_iter().collect()
+    }
+}
 impl CstDecode<std::collections::HashMap<i32, String>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> std::collections::HashMap<i32, String> {
         let vec: Vec<(i32, String)> = self.cst_decode();
+        vec.into_iter().collect()
+    }
+}
+impl CstDecode<std::collections::HashMap<i32, u128>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> std::collections::HashMap<i32, u128> {
+        let vec: Vec<(i32, u128)> = self.cst_decode();
         vec.into_iter().collect()
     }
 }
@@ -12235,6 +12327,12 @@ impl CstDecode<String> for flutter_rust_bridge::for_generated::wasm_bindgen::JsV
         self.as_string().expect("non-UTF-8 string, or not a string")
     }
 }
+impl CstDecode<u128> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> u128 {
+        CstDecode::<String>::cst_decode(self).parse().unwrap()
+    }
+}
 impl CstDecode<uuid::Uuid> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> uuid::Uuid {
@@ -12751,11 +12849,7 @@ impl CstDecode<[i32; 2]> for flutter_rust_bridge::for_generated::wasm_bindgen::J
 impl CstDecode<i64> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> i64 {
-        ::std::convert::TryInto::try_into(
-            self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::BigInt>()
-                .unwrap(),
-        )
-        .unwrap()
+        ::std::convert::TryInto::<i64>::try_into(self).unwrap() as _
     }
 }
 impl CstDecode<i8> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
@@ -12767,7 +12861,7 @@ impl CstDecode<i8> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 impl CstDecode<isize> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> isize {
-        self.unchecked_into_f64() as _
+        ::std::convert::TryInto::<i64>::try_into(self).unwrap() as _
     }
 }
 impl CstDecode<Vec<f32>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
@@ -13028,11 +13122,7 @@ impl CstDecode<u32> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValu
 impl CstDecode<u64> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> u64 {
-        ::std::convert::TryInto::try_into(
-            self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::BigInt>()
-                .unwrap(),
-        )
-        .unwrap()
+        ::std::convert::TryInto::<u64>::try_into(self).unwrap() as _
     }
 }
 impl CstDecode<u8> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
@@ -13079,7 +13169,7 @@ impl CstDecode<[u8; 8]> for flutter_rust_bridge::for_generated::wasm_bindgen::Js
 impl CstDecode<usize> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> usize {
-        self.unchecked_into_f64() as _
+        ::std::convert::TryInto::<u64>::try_into(self).unwrap() as _
     }
 }
 impl CstDecode<crate::api::misc_example::WeekdaysTwinNormal>
@@ -13261,7 +13351,7 @@ pub fn wire__crate__api__benchmark_misc__benchmark_void_semi_serialize(
 #[wasm_bindgen]
 pub fn wire__crate__api__chrono_type__datetime_local_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    d: i64,
+    d: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__chrono_type__datetime_local_twin_normal_impl(port_, d)
 }
@@ -13269,7 +13359,7 @@ pub fn wire__crate__api__chrono_type__datetime_local_twin_normal(
 #[wasm_bindgen]
 pub fn wire__crate__api__chrono_type__datetime_utc_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    d: i64,
+    d: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__chrono_type__datetime_utc_twin_normal_impl(port_, d)
 }
@@ -13277,7 +13367,7 @@ pub fn wire__crate__api__chrono_type__datetime_utc_twin_normal(
 #[wasm_bindgen]
 pub fn wire__crate__api__chrono_type__duration_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    d: i64,
+    d: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__chrono_type__duration_twin_normal_impl(port_, d)
 }
@@ -13286,7 +13376,7 @@ pub fn wire__crate__api__chrono_type__duration_twin_normal(
 pub fn wire__crate__api__chrono_type__handle_durations_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     durations: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    since: i64,
+    since: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__chrono_type__handle_durations_twin_normal_impl(port_, durations, since)
 }
@@ -13295,7 +13385,7 @@ pub fn wire__crate__api__chrono_type__handle_durations_twin_normal(
 pub fn wire__crate__api__chrono_type__handle_timestamps_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     timestamps: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    epoch: i64,
+    epoch: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__chrono_type__handle_timestamps_twin_normal_impl(port_, timestamps, epoch)
 }
@@ -13311,7 +13401,7 @@ pub fn wire__crate__api__chrono_type__how_long_does_it_take_twin_normal(
 #[wasm_bindgen]
 pub fn wire__crate__api__chrono_type__naivedatetime_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    d: i64,
+    d: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__chrono_type__naivedatetime_twin_normal_impl(port_, d)
 }
@@ -14561,7 +14651,7 @@ pub fn wire__crate__api__mirror__mirror_vec_enum_stream_twin_normal(
 pub fn wire__crate__api__mirror__repeat_number_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     num: i32,
-    times: usize,
+    times: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__mirror__repeat_number_twin_normal_impl(port_, num, times)
 }
@@ -14570,7 +14660,7 @@ pub fn wire__crate__api__mirror__repeat_number_twin_normal(
 pub fn wire__crate__api__mirror__repeat_sequence_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     seq: i32,
-    times: usize,
+    times: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__mirror__repeat_sequence_twin_normal_impl(port_, seq, times)
 }
@@ -14951,7 +15041,7 @@ pub fn wire__crate__api__primitive_list_misc__handle_vec_of_primitive_twin_norma
 pub fn wire__crate__api__primitive_misc__primitive_types_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     my_i32: i32,
-    my_i64: i64,
+    my_i64: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     my_f64: f64,
     my_bool: bool,
 ) {
@@ -15782,43 +15872,69 @@ pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_f64_twin_norma
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_i128_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: String,
+    expect: String,
+) {
+    wire__crate__api__pseudo_manual__basic__example_basic_type_i128_twin_normal_impl(
+        port_, arg, expect,
+    )
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_i16_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: i16,
+    expect: String,
 ) {
-    wire__crate__api__pseudo_manual__basic__example_basic_type_i16_twin_normal_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic__example_basic_type_i16_twin_normal_impl(
+        port_, arg, expect,
+    )
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_i32_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: i32,
+    expect: String,
 ) {
-    wire__crate__api__pseudo_manual__basic__example_basic_type_i32_twin_normal_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic__example_basic_type_i32_twin_normal_impl(
+        port_, arg, expect,
+    )
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_i64_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: i64,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    expect: String,
 ) {
-    wire__crate__api__pseudo_manual__basic__example_basic_type_i64_twin_normal_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic__example_basic_type_i64_twin_normal_impl(
+        port_, arg, expect,
+    )
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_i8_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: i8,
+    expect: String,
 ) {
-    wire__crate__api__pseudo_manual__basic__example_basic_type_i8_twin_normal_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic__example_basic_type_i8_twin_normal_impl(
+        port_, arg, expect,
+    )
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_isize_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: isize,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    expect: String,
 ) {
-    wire__crate__api__pseudo_manual__basic__example_basic_type_isize_twin_normal_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic__example_basic_type_isize_twin_normal_impl(
+        port_, arg, expect,
+    )
 }
 
 #[wasm_bindgen]
@@ -15830,43 +15946,69 @@ pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_string_twin_no
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_u128_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: String,
+    expect: String,
+) {
+    wire__crate__api__pseudo_manual__basic__example_basic_type_u128_twin_normal_impl(
+        port_, arg, expect,
+    )
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_u16_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: u16,
+    expect: String,
 ) {
-    wire__crate__api__pseudo_manual__basic__example_basic_type_u16_twin_normal_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic__example_basic_type_u16_twin_normal_impl(
+        port_, arg, expect,
+    )
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_u32_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: u32,
+    expect: String,
 ) {
-    wire__crate__api__pseudo_manual__basic__example_basic_type_u32_twin_normal_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic__example_basic_type_u32_twin_normal_impl(
+        port_, arg, expect,
+    )
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_u64_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: u64,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    expect: String,
 ) {
-    wire__crate__api__pseudo_manual__basic__example_basic_type_u64_twin_normal_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic__example_basic_type_u64_twin_normal_impl(
+        port_, arg, expect,
+    )
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_u8_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: u8,
+    expect: String,
 ) {
-    wire__crate__api__pseudo_manual__basic__example_basic_type_u8_twin_normal_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic__example_basic_type_u8_twin_normal_impl(
+        port_, arg, expect,
+    )
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_usize_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: usize,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    expect: String,
 ) {
-    wire__crate__api__pseudo_manual__basic__example_basic_type_usize_twin_normal_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic__example_basic_type_usize_twin_normal_impl(
+        port_, arg, expect,
+    )
 }
 
 #[wasm_bindgen]
@@ -16851,6 +16993,16 @@ pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_f64_tw
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_i128_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_i128_twin_normal_impl(
+        port_, arg,
+    )
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_i16_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
@@ -16906,6 +17058,16 @@ pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_string
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_string_twin_normal_impl(
+        port_, arg,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_u128_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_u128_twin_normal_impl(
         port_, arg,
     )
 }
@@ -17017,6 +17179,14 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_i128_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_i128_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_i16_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
@@ -17062,6 +17232,14 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_string_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_u128_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_u128_twin_rust_async_impl(port_, arg)
 }
 
 #[wasm_bindgen]
@@ -17175,6 +17353,16 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_b
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_basic_map_type_i128_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_basic_map_type_i128_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_basic_map_type_i16_twin_rust_async_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -17232,6 +17420,16 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_b
     data_len_: i32,
 ) {
     wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_basic_map_type_string_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_basic_map_type_u128_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_basic_map_type_u128_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -17375,6 +17573,21 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_ty
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_type_i128_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_type_i128_twin_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_type_i16_twin_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -17457,6 +17670,21 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_ty
     data_len_: i32,
 ) {
     wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_type_string_twin_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_type_u128_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_type_u128_twin_sse_impl(
         port_,
         ptr_,
         rust_vec_len_,
@@ -17595,6 +17823,15 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_t
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_i128_twin_sync(
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_i128_twin_sync_impl(
+        arg,
+    )
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_i16_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
@@ -17642,6 +17879,15 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_t
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_string_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_u128_twin_sync(
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_u128_twin_sync_impl(
+        arg,
+    )
 }
 
 #[wasm_bindgen]
@@ -17751,6 +17997,15 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_m
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_i128_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_i128_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_i16_twin_sync_sse(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
@@ -17802,6 +18057,15 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_m
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_string_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_u128_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_u128_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -17906,6 +18170,14 @@ pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_t
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_i128_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: Option<String>,
+) {
+    wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_i128_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_i16_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
@@ -17953,6 +18225,14 @@ pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_t
     arg: Option<String>,
 ) {
     wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_string_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_u128_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: Option<String>,
+) {
+    wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_u128_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
@@ -18054,6 +18334,14 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_i128_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: Option<String>,
+) {
+    wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_i128_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_i16_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
@@ -18099,6 +18387,14 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_
     arg: Option<String>,
 ) {
     wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_string_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_u128_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: Option<String>,
+) {
+    wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_u128_twin_rust_async_impl(port_, arg)
 }
 
 #[wasm_bindgen]
@@ -18212,6 +18508,16 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__exam
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__example_basic_optional_type_i128_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__example_basic_optional_type_i128_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__example_basic_optional_type_i16_twin_rust_async_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -18269,6 +18575,16 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__exam
     data_len_: i32,
 ) {
     wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__example_basic_optional_type_string_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__example_basic_optional_type_u128_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__example_basic_optional_type_u128_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -18392,6 +18708,16 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_o
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_optional_type_i128_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_optional_type_i128_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_optional_type_i16_twin_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -18449,6 +18775,16 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_o
     data_len_: i32,
 ) {
     wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_optional_type_string_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_optional_type_u128_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_optional_type_u128_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -18551,6 +18887,13 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_i128_twin_sync(
+    arg: Option<String>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_i128_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_i16_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
@@ -18590,6 +18933,13 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_
     arg: Option<String>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_string_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_u128_twin_sync(
+    arg: Option<String>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_u128_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
@@ -18691,6 +19041,15 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_ba
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_i128_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_i128_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_i16_twin_sync_sse(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
@@ -18742,6 +19101,15 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_ba
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_string_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_u128_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_u128_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -18846,43 +19214,57 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_typ
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i128_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: String,
+    expect: String,
+) {
+    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i128_twin_rust_async_impl(port_, arg, expect)
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i16_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: i16,
+    expect: String,
 ) {
-    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i16_twin_rust_async_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i16_twin_rust_async_impl(port_, arg, expect)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i32_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: i32,
+    expect: String,
 ) {
-    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i32_twin_rust_async_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i32_twin_rust_async_impl(port_, arg, expect)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i64_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: i64,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    expect: String,
 ) {
-    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i64_twin_rust_async_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i64_twin_rust_async_impl(port_, arg, expect)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i8_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: i8,
+    expect: String,
 ) {
-    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i8_twin_rust_async_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i8_twin_rust_async_impl(port_, arg, expect)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_isize_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: isize,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    expect: String,
 ) {
-    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_isize_twin_rust_async_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_isize_twin_rust_async_impl(port_, arg, expect)
 }
 
 #[wasm_bindgen]
@@ -18894,43 +19276,57 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_typ
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u128_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: String,
+    expect: String,
+) {
+    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u128_twin_rust_async_impl(port_, arg, expect)
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u16_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: u16,
+    expect: String,
 ) {
-    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u16_twin_rust_async_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u16_twin_rust_async_impl(port_, arg, expect)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u32_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: u32,
+    expect: String,
 ) {
-    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u32_twin_rust_async_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u32_twin_rust_async_impl(port_, arg, expect)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u64_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: u64,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    expect: String,
 ) {
-    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u64_twin_rust_async_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u64_twin_rust_async_impl(port_, arg, expect)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u8_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: u8,
+    expect: String,
 ) {
-    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u8_twin_rust_async_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u8_twin_rust_async_impl(port_, arg, expect)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_usize_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: usize,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    expect: String,
 ) {
-    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_usize_twin_rust_async_impl(port_, arg)
+    wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_usize_twin_rust_async_impl(port_, arg, expect)
 }
 
 #[wasm_bindgen]
@@ -19004,6 +19400,16 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic_type_i128_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic_type_i128_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic_type_i16_twin_rust_async_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -19061,6 +19467,16 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic
     data_len_: i32,
 ) {
     wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic_type_string_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic_type_u128_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic_type_u128_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -19204,6 +19620,21 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_f64_t
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_i128_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_i128_twin_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_i16_twin_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -19286,6 +19717,21 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_strin
     data_len_: i32,
 ) {
     wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_string_twin_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_u128_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_u128_twin_sse_impl(
         port_,
         ptr_,
         rust_vec_len_,
@@ -19418,38 +19864,63 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_f64_
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i128_twin_sync(
+    arg: String,
+    expect: String,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i128_twin_sync_impl(
+        arg, expect,
+    )
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i16_twin_sync(
     arg: i16,
+    expect: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i16_twin_sync_impl(arg)
+    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i16_twin_sync_impl(
+        arg, expect,
+    )
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i32_twin_sync(
     arg: i32,
+    expect: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i32_twin_sync_impl(arg)
+    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i32_twin_sync_impl(
+        arg, expect,
+    )
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i64_twin_sync(
-    arg: i64,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    expect: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i64_twin_sync_impl(arg)
+    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i64_twin_sync_impl(
+        arg, expect,
+    )
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i8_twin_sync(
     arg: i8,
+    expect: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i8_twin_sync_impl(arg)
+    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i8_twin_sync_impl(
+        arg, expect,
+    )
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_isize_twin_sync(
-    arg: isize,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    expect: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_isize_twin_sync_impl(arg)
+    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_isize_twin_sync_impl(
+        arg, expect,
+    )
 }
 
 #[wasm_bindgen]
@@ -19460,38 +19931,63 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_stri
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u128_twin_sync(
+    arg: String,
+    expect: String,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u128_twin_sync_impl(
+        arg, expect,
+    )
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u16_twin_sync(
     arg: u16,
+    expect: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u16_twin_sync_impl(arg)
+    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u16_twin_sync_impl(
+        arg, expect,
+    )
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u32_twin_sync(
     arg: u32,
+    expect: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u32_twin_sync_impl(arg)
+    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u32_twin_sync_impl(
+        arg, expect,
+    )
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u64_twin_sync(
-    arg: u64,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    expect: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u64_twin_sync_impl(arg)
+    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u64_twin_sync_impl(
+        arg, expect,
+    )
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u8_twin_sync(
     arg: u8,
+    expect: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u8_twin_sync_impl(arg)
+    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u8_twin_sync_impl(
+        arg, expect,
+    )
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_usize_twin_sync(
-    arg: usize,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    expect: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_usize_twin_sync_impl(arg)
+    wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_usize_twin_sync_impl(
+        arg, expect,
+    )
 }
 
 #[wasm_bindgen]
@@ -19570,6 +20066,19 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_i128_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_i128_twin_sync_sse_impl(
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_i16_twin_sync_sse(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
@@ -19637,6 +20146,19 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_string_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_u128_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_u128_twin_sync_sse_impl(
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
 }
 
 #[wasm_bindgen]
@@ -20542,7 +21064,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_v
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__datetime_local_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    d: i64,
+    d: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__datetime_local_twin_rust_async_impl(port_, d)
 }
@@ -20550,7 +21072,7 @@ pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__datetime_lo
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__datetime_utc_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    d: i64,
+    d: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__datetime_utc_twin_rust_async_impl(
         port_, d,
@@ -20560,7 +21082,7 @@ pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__datetime_ut
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__duration_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    d: i64,
+    d: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__duration_twin_rust_async_impl(
         port_, d,
@@ -20571,7 +21093,7 @@ pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__duration_tw
 pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__handle_durations_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     durations: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    since: i64,
+    since: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__handle_durations_twin_rust_async_impl(port_, durations, since)
 }
@@ -20580,7 +21102,7 @@ pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__handle_dura
 pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__handle_timestamps_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     timestamps: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    epoch: i64,
+    epoch: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__handle_timestamps_twin_rust_async_impl(port_, timestamps, epoch)
 }
@@ -20596,7 +21118,7 @@ pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__how_long_do
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__naivedatetime_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    d: i64,
+    d: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__naivedatetime_twin_rust_async_impl(
         port_, d,
@@ -20879,21 +21401,21 @@ pub fn wire__crate__api__pseudo_manual__chrono_type_twin_sse__test_precise_chron
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__chrono_type_twin_sync__datetime_local_twin_sync(
-    d: i64,
+    d: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__pseudo_manual__chrono_type_twin_sync__datetime_local_twin_sync_impl(d)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__chrono_type_twin_sync__datetime_utc_twin_sync(
-    d: i64,
+    d: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__pseudo_manual__chrono_type_twin_sync__datetime_utc_twin_sync_impl(d)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__chrono_type_twin_sync__duration_twin_sync(
-    d: i64,
+    d: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__pseudo_manual__chrono_type_twin_sync__duration_twin_sync_impl(d)
 }
@@ -20901,7 +21423,7 @@ pub fn wire__crate__api__pseudo_manual__chrono_type_twin_sync__duration_twin_syn
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__chrono_type_twin_sync__handle_durations_twin_sync(
     durations: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    since: i64,
+    since: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__pseudo_manual__chrono_type_twin_sync__handle_durations_twin_sync_impl(
         durations, since,
@@ -20911,7 +21433,7 @@ pub fn wire__crate__api__pseudo_manual__chrono_type_twin_sync__handle_durations_
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__chrono_type_twin_sync__handle_timestamps_twin_sync(
     timestamps: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    epoch: i64,
+    epoch: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__pseudo_manual__chrono_type_twin_sync__handle_timestamps_twin_sync_impl(
         timestamps, epoch,
@@ -20929,7 +21451,7 @@ pub fn wire__crate__api__pseudo_manual__chrono_type_twin_sync__how_long_does_it_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__chrono_type_twin_sync__naivedatetime_twin_sync(
-    d: i64,
+    d: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__pseudo_manual__chrono_type_twin_sync__naivedatetime_twin_sync_impl(d)
 }
@@ -26411,7 +26933,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_vec_enum_
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__repeat_number_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     num: i32,
-    times: usize,
+    times: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__mirror_twin_rust_async__repeat_number_twin_rust_async_impl(
         port_, num, times,
@@ -26422,7 +26944,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__repeat_number_tw
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__repeat_sequence_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     seq: i32,
-    times: usize,
+    times: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__mirror_twin_rust_async__repeat_sequence_twin_rust_async_impl(
         port_, seq, times,
@@ -27230,7 +27752,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_vec_enum_stream
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_sync__repeat_number_twin_sync(
     num: i32,
-    times: usize,
+    times: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__pseudo_manual__mirror_twin_sync__repeat_number_twin_sync_impl(num, times)
 }
@@ -27238,7 +27760,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_sync__repeat_number_twin_syn
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_sync__repeat_sequence_twin_sync(
     seq: i32,
-    times: usize,
+    times: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__pseudo_manual__mirror_twin_sync__repeat_sequence_twin_sync_impl(seq, times)
 }
@@ -28992,7 +29514,7 @@ pub fn wire__crate__api__pseudo_manual__primitive_list_misc_twin_sync_sse__handl
 pub fn wire__crate__api__pseudo_manual__primitive_misc_twin_rust_async__primitive_types_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     my_i32: i32,
-    my_i64: i64,
+    my_i64: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     my_f64: f64,
     my_bool: bool,
 ) {
@@ -29060,7 +29582,7 @@ pub fn wire__crate__api__pseudo_manual__primitive_misc_twin_sse__primitive_u32_t
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__primitive_misc_twin_sync__primitive_types_twin_sync(
     my_i32: i32,
-    my_i64: i64,
+    my_i64: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     my_f64: f64,
     my_bool: bool,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
@@ -36216,7 +36738,7 @@ pub fn wire__crate__api__pseudo_manual__tuple_twin_sync_sse__test_tuple_twin_syn
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__type_alias_twin_rust_async__handle_type_alias_id_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    input: u64,
+    input: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__type_alias_twin_rust_async__handle_type_alias_id_twin_rust_async_impl(port_, input)
 }
@@ -36224,7 +36746,7 @@ pub fn wire__crate__api__pseudo_manual__type_alias_twin_rust_async__handle_type_
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__type_alias_twin_rust_async__handle_type_alias_model_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    input: u64,
+    input: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__type_alias_twin_rust_async__handle_type_alias_model_twin_rust_async_impl(port_, input)
 }
@@ -36232,7 +36754,7 @@ pub fn wire__crate__api__pseudo_manual__type_alias_twin_rust_async__handle_type_
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__type_alias_twin_rust_async__handle_type_nest_alias_id_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    input: u64,
+    input: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__type_alias_twin_rust_async__handle_type_nest_alias_id_twin_rust_async_impl(port_, input)
 }
@@ -36314,7 +36836,7 @@ pub fn wire__crate__api__pseudo_manual__type_alias_twin_sse__handle_type_nest_al
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__type_alias_twin_sync__handle_type_alias_id_twin_sync(
-    input: u64,
+    input: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__pseudo_manual__type_alias_twin_sync__handle_type_alias_id_twin_sync_impl(
         input,
@@ -36323,7 +36845,7 @@ pub fn wire__crate__api__pseudo_manual__type_alias_twin_sync__handle_type_alias_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__type_alias_twin_sync__handle_type_alias_model_twin_sync(
-    input: u64,
+    input: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__pseudo_manual__type_alias_twin_sync__handle_type_alias_model_twin_sync_impl(
         input,
@@ -36332,7 +36854,7 @@ pub fn wire__crate__api__pseudo_manual__type_alias_twin_sync__handle_type_alias_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__type_alias_twin_sync__handle_type_nest_alias_id_twin_sync(
-    input: u64,
+    input: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__pseudo_manual__type_alias_twin_sync__handle_type_nest_alias_id_twin_sync_impl(
         input,
@@ -37266,7 +37788,7 @@ pub fn wire__crate__api__tuple__test_tuple_twin_normal(
 #[wasm_bindgen]
 pub fn wire__crate__api__type_alias__handle_type_alias_id_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    input: u64,
+    input: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__type_alias__handle_type_alias_id_twin_normal_impl(port_, input)
 }
@@ -37274,7 +37796,7 @@ pub fn wire__crate__api__type_alias__handle_type_alias_id_twin_normal(
 #[wasm_bindgen]
 pub fn wire__crate__api__type_alias__handle_type_alias_model_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    input: u64,
+    input: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__type_alias__handle_type_alias_model_twin_normal_impl(port_, input)
 }
@@ -37282,7 +37804,7 @@ pub fn wire__crate__api__type_alias__handle_type_alias_model_twin_normal(
 #[wasm_bindgen]
 pub fn wire__crate__api__type_alias__handle_type_nest_alias_id_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    input: u64,
+    input: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__type_alias__handle_type_nest_alias_id_twin_normal_impl(port_, input)
 }

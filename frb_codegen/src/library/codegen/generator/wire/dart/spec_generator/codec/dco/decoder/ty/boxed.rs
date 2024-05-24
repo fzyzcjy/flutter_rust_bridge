@@ -17,7 +17,12 @@ impl<'a> WireDartCodecDcoGeneratorDecoderTrait for BoxedWireDartCodecDcoGenerato
             | RustOpaque(_)
             | RustAutoOpaque(_)
             | EnumRef(_)
-            | Primitive(IrTypePrimitive::I64 | IrTypePrimitive::U64 | IrTypePrimitive::Usize)
+            | Primitive(
+                IrTypePrimitive::I64
+                | IrTypePrimitive::Isize
+                | IrTypePrimitive::U64
+                | IrTypePrimitive::Usize,
+            )
             | Delegate(IrTypeDelegate::Array(_) | IrTypeDelegate::PrimitiveEnum { .. }) => {
                 format!("return dco_decode_{}(raw);", self.ir.inner.safe_ident())
             }

@@ -102,7 +102,7 @@ class BoxDartDebugTwinSyncMoi extends RustOpaque {
   BoxDartDebugTwinSyncMoi.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  BoxDartDebugTwinSyncMoi.sseDecode(int ptr, int externalSizeOnNative)
+  BoxDartDebugTwinSyncMoi.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -121,7 +121,7 @@ class FrbOpaqueReturnTwinSyncMoi extends RustOpaque {
   FrbOpaqueReturnTwinSyncMoi.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  FrbOpaqueReturnTwinSyncMoi.sseDecode(int ptr, int externalSizeOnNative)
+  FrbOpaqueReturnTwinSyncMoi.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -140,7 +140,7 @@ class HideDataTwinSyncMoi extends RustOpaque {
   HideDataTwinSyncMoi.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  HideDataTwinSyncMoi.sseDecode(int ptr, int externalSizeOnNative)
+  HideDataTwinSyncMoi.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -175,7 +175,7 @@ class MutexHideDataTwinSyncMoi extends RustOpaque {
   MutexHideDataTwinSyncMoi.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  MutexHideDataTwinSyncMoi.sseDecode(int ptr, int externalSizeOnNative)
+  MutexHideDataTwinSyncMoi.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -194,7 +194,7 @@ class NonCloneDataTwinSyncMoi extends RustOpaque {
   NonCloneDataTwinSyncMoi.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  NonCloneDataTwinSyncMoi.sseDecode(int ptr, int externalSizeOnNative)
+  NonCloneDataTwinSyncMoi.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -213,7 +213,7 @@ class RwLockHideDataTwinSyncMoi extends RustOpaque {
   RwLockHideDataTwinSyncMoi.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  RwLockHideDataTwinSyncMoi.sseDecode(int ptr, int externalSizeOnNative)
+  RwLockHideDataTwinSyncMoi.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(

@@ -105,7 +105,7 @@ class BoxDartDebugTwinRustAsync extends RustOpaque {
   BoxDartDebugTwinRustAsync.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  BoxDartDebugTwinRustAsync.sseDecode(int ptr, int externalSizeOnNative)
+  BoxDartDebugTwinRustAsync.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -124,7 +124,7 @@ class FrbOpaqueReturnTwinRustAsync extends RustOpaque {
   FrbOpaqueReturnTwinRustAsync.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  FrbOpaqueReturnTwinRustAsync.sseDecode(int ptr, int externalSizeOnNative)
+  FrbOpaqueReturnTwinRustAsync.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -143,7 +143,7 @@ class HideDataTwinRustAsync extends RustOpaque {
   HideDataTwinRustAsync.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  HideDataTwinRustAsync.sseDecode(int ptr, int externalSizeOnNative)
+  HideDataTwinRustAsync.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -178,7 +178,7 @@ class MutexHideDataTwinRustAsync extends RustOpaque {
   MutexHideDataTwinRustAsync.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  MutexHideDataTwinRustAsync.sseDecode(int ptr, int externalSizeOnNative)
+  MutexHideDataTwinRustAsync.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -197,7 +197,7 @@ class NonCloneDataTwinRustAsync extends RustOpaque {
   NonCloneDataTwinRustAsync.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  NonCloneDataTwinRustAsync.sseDecode(int ptr, int externalSizeOnNative)
+  NonCloneDataTwinRustAsync.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -216,7 +216,7 @@ class RwLockHideDataTwinRustAsync extends RustOpaque {
   RwLockHideDataTwinRustAsync.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  RwLockHideDataTwinRustAsync.sseDecode(int ptr, int externalSizeOnNative)
+  RwLockHideDataTwinRustAsync.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -234,7 +234,7 @@ class RwLockHideDataTwinRustAsync extends RustOpaque {
 class I32 extends RustOpaque {
   I32.dcoDecode(List<dynamic> wire) : super.dcoDecode(wire, _kStaticData);
 
-  I32.sseDecode(int ptr, int externalSizeOnNative)
+  I32.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(

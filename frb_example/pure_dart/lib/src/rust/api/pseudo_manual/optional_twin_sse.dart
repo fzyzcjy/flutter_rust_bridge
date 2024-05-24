@@ -42,7 +42,7 @@ Future<String> handleOptionBoxArgumentsTwinSse(
         {int? i8Box,
         int? u8Box,
         int? i32Box,
-        int? i64Box,
+        PlatformInt64? i64Box,
         double? f64Box,
         bool? boolbox,
         ExoticOptionalsTwinSse? structbox,
@@ -109,7 +109,7 @@ class ElementTwinSse {
 
 class ExoticOptionalsTwinSse {
   final int? int32;
-  final int? int64;
+  final PlatformInt64? int64;
   final double? float64;
   final bool? boolean;
   final Uint8List? zerocopy;

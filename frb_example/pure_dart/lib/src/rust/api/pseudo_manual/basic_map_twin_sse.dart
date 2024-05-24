@@ -25,10 +25,16 @@ Future<Map<int, int>> exampleBasicMapTypeI32TwinSse(
         .crateApiPseudoManualBasicMapTwinSseExampleBasicMapTypeI32TwinSse(
             arg: arg, hint: hint);
 
-Future<Map<int, int>> exampleBasicMapTypeI64TwinSse(
-        {required Map<int, int> arg, dynamic hint}) =>
+Future<Map<int, PlatformInt64>> exampleBasicMapTypeI64TwinSse(
+        {required Map<int, PlatformInt64> arg, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicMapTwinSseExampleBasicMapTypeI64TwinSse(
+            arg: arg, hint: hint);
+
+Future<Map<int, BigInt>> exampleBasicMapTypeI128TwinSse(
+        {required Map<int, BigInt> arg, dynamic hint}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicMapTwinSseExampleBasicMapTypeI128TwinSse(
             arg: arg, hint: hint);
 
 Future<Map<int, int>> exampleBasicMapTypeU8TwinSse(
@@ -49,20 +55,26 @@ Future<Map<int, int>> exampleBasicMapTypeU32TwinSse(
         .crateApiPseudoManualBasicMapTwinSseExampleBasicMapTypeU32TwinSse(
             arg: arg, hint: hint);
 
-Future<Map<int, int>> exampleBasicMapTypeU64TwinSse(
-        {required Map<int, int> arg, dynamic hint}) =>
+Future<Map<int, BigInt>> exampleBasicMapTypeU64TwinSse(
+        {required Map<int, BigInt> arg, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicMapTwinSseExampleBasicMapTypeU64TwinSse(
             arg: arg, hint: hint);
 
-Future<Map<int, int>> exampleBasicMapTypeIsizeTwinSse(
-        {required Map<int, int> arg, dynamic hint}) =>
+Future<Map<int, BigInt>> exampleBasicMapTypeU128TwinSse(
+        {required Map<int, BigInt> arg, dynamic hint}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicMapTwinSseExampleBasicMapTypeU128TwinSse(
+            arg: arg, hint: hint);
+
+Future<Map<int, PlatformInt64>> exampleBasicMapTypeIsizeTwinSse(
+        {required Map<int, PlatformInt64> arg, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicMapTwinSseExampleBasicMapTypeIsizeTwinSse(
             arg: arg, hint: hint);
 
-Future<Map<int, int>> exampleBasicMapTypeUsizeTwinSse(
-        {required Map<int, int> arg, dynamic hint}) =>
+Future<Map<int, BigInt>> exampleBasicMapTypeUsizeTwinSse(
+        {required Map<int, BigInt> arg, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicMapTwinSseExampleBasicMapTypeUsizeTwinSse(
             arg: arg, hint: hint);

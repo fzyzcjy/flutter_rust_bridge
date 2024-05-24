@@ -12,7 +12,7 @@ class DroppableTwinNormal extends RustOpaque {
   DroppableTwinNormal.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  DroppableTwinNormal.sseDecode(int ptr, int externalSizeOnNative)
+  DroppableTwinNormal.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(

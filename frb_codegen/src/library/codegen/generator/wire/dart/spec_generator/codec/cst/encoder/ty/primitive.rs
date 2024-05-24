@@ -9,9 +9,14 @@ use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartG
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for PrimitiveWireDartCodecCstGenerator<'a> {
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {
         match self.ir {
-            IrTypePrimitive::I64 | IrTypePrimitive::U64 => Acc {
+            IrTypePrimitive::I64 | IrTypePrimitive::Isize => Acc {
                 io: Some("return raw.toInt();".into()),
-                web: Some("return castNativeBigInt(raw);".into()),
+                web: Some(CAST_NATIVE_BIG_INT.into()),
+                ..Default::default()
+            },
+            IrTypePrimitive::U64 | IrTypePrimitive::Usize => Acc {
+                io: Some("return raw.toSigned(64).toInt();".into()),
+                web: Some(CAST_NATIVE_BIG_INT.into()),
                 ..Default::default()
             },
             _ => "return raw;".into(),
@@ -20,7 +25,10 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for PrimitiveWireDartCodecCstGene
 
     fn dart_wire_type(&self, target: Target) -> String {
         match &self.ir {
-            IrTypePrimitive::I64 | IrTypePrimitive::U64 => match target {
+            IrTypePrimitive::I64
+            | IrTypePrimitive::U64
+            | IrTypePrimitive::Isize
+            | IrTypePrimitive::Usize => match target {
                 Target::Io => "int".into(),
                 Target::Web => "Object".into(),
             },
@@ -29,6 +37,8 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for PrimitiveWireDartCodecCstGene
         }
     }
 }
+
+const CAST_NATIVE_BIG_INT: &str = "return castNativeBigInt(raw);";
 
 /// Representations of primitives within Dart's pointers, e.g. `ffi.Pointer<ffi.Uint8>`.
 /// This is enforced on Dart's side, and should be used instead of `dart_wire_type`

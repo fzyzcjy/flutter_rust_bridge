@@ -1,6 +1,7 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::*;
+use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::misc::JS_VALUE;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::IrTypeTrait;
@@ -19,12 +20,17 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for PrimitiveWireRustCodecCstGene
         Some(match &self.ir {
             Unit => return None,
             Bool => "self.is_truthy()".into(),
-            I64 | U64 => "::std::convert::TryInto::try_into(self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::BigInt>().unwrap()).unwrap()".into(),
+            I64 | Isize => "::std::convert::TryInto::<i64>::try_into(self).unwrap() as _".into(),
+            U64 | Usize => "::std::convert::TryInto::<u64>::try_into(self).unwrap() as _".into(),
             _ => "self.unchecked_into_f64() as _".into(),
         })
     }
 
-    fn rust_wire_type(&self, _target: Target) -> String {
+    fn rust_wire_type(&self, target: Target) -> String {
+        use IrTypePrimitive::*;
+        if target == Target::Web && matches!(self.ir, I64 | U64 | Isize | Usize) {
+            return JS_VALUE.into();
+        }
         self.ir.rust_api_type()
     }
 }

@@ -7,24 +7,24 @@ import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-int handleTypeAliasIdTwinSync({required int input, dynamic hint}) =>
+BigInt handleTypeAliasIdTwinSync({required BigInt input, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualTypeAliasTwinSyncHandleTypeAliasIdTwinSync(
             input: input, hint: hint);
 
-int handleTypeNestAliasIdTwinSync({required int input, dynamic hint}) =>
+BigInt handleTypeNestAliasIdTwinSync({required BigInt input, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualTypeAliasTwinSyncHandleTypeNestAliasIdTwinSync(
             input: input, hint: hint);
 
 TestModelTwinSync handleTypeAliasModelTwinSync(
-        {required int input, dynamic hint}) =>
+        {required BigInt input, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualTypeAliasTwinSyncHandleTypeAliasModelTwinSync(
             input: input, hint: hint);
 
 class TestModelTwinSync {
-  final int id;
+  final BigInt id;
   final String name;
   final MyEnum aliasEnum;
   final MyStruct aliasStruct;

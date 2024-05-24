@@ -8,7 +8,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<int> primitiveTypesTwinRustAsyncSse(
         {required int myI32,
-        required int myI64,
+        required PlatformInt64 myI64,
         required double myF64,
         required bool myBool,
         dynamic hint}) =>

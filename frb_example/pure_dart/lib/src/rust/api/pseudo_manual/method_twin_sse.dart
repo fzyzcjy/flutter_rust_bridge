@@ -24,7 +24,7 @@ class StaticGetterOnlyTwinSse extends RustOpaque {
   StaticGetterOnlyTwinSse.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  StaticGetterOnlyTwinSse.sseDecode(int ptr, int externalSizeOnNative)
+  StaticGetterOnlyTwinSse.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
