@@ -9,7 +9,7 @@ pub(crate) mod inner;
 mod order;
 
 pub struct RustAutoOpaqueBase<T: 'static, A: BaseArc<inner::RustAutoOpaqueInner<T>>>(
-    RustOpaqueBase<inner::RustAutoOpaqueInner<T>, A>,
+    pub(crate) RustOpaqueBase<inner::RustAutoOpaqueInner<T>, A>,
 );
 
 /// Please refer to `RustAutoOpaque` for doc.
