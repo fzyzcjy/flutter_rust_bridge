@@ -183,7 +183,7 @@ impl IrTypeTrait for IrTypeDelegate {
                 IrTypeDelegateBigPrimitive::I128 => "i128".to_owned(),
                 IrTypeDelegateBigPrimitive::U128 => "u128".to_owned(),
             },
-            IrTypeDelegate::RustAutoOpaqueExplicit(ir) => format!("RustAutoOpaque<{}>", TODO),
+            IrTypeDelegate::RustAutoOpaqueExplicit(ir) => format!("RustAutoOpaque<{}>", ir.raw),
         }
     }
 
