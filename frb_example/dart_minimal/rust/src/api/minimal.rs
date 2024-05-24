@@ -1,5 +1,5 @@
-use flutter_rust_bridge::frb;
 use crate::frb_generated::RustAutoOpaque;
+use flutter_rust_bridge::frb;
 
 #[frb(init)]
 pub fn init_app() {
@@ -27,6 +27,6 @@ impl ItemContainerSolutionTwo {
     }
 
     pub fn get_item_contents(&self) -> Vec<i32> {
-        self.items.iter().map(|x| x.try_read().unwrap().0).collect()
+        self.items.iter().map(|x| x.blocking_read().0).collect()
     }
 }
