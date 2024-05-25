@@ -104,6 +104,26 @@ fn parse_auto_accessor_of_field(
         mode: IrFuncOwnerInfoMethodMode::Instance,
     };
 
+    let mut inputs = vec![
+        IrFuncInput {
+            ownership_mode: match accessor_mode {
+                IrFuncAccessorMode::Getter => OwnershipMode::Ref,
+                IrFuncAccessorMode::Setter => OwnershipMode::RefMut,
+            },
+            inner: IrField {
+                ty: ty_direct_parse.to_owned(),
+                name: "that".to_owned(),
+                ..Default::default()
+            },
+        },
+    ];
+    if accessor_mode == IrFuncAccessorMode::Setter {
+        inputs.push(IrFuncInput {
+            ownership_mode: TODO,
+            inner: TODO,
+        });
+    }
+
     Ok(IrFunc {
         name: NamespacedName::new(
             struct_name.namespace.clone(),
@@ -111,25 +131,12 @@ fn parse_auto_accessor_of_field(
         ),
         dart_name: None,
         id: None,
-        inputs: vec![
-            IrFuncInput {
-                ownership_mode: match accessor_mode {
-                    IrFuncAccessorMode::Getter => OwnershipMode::Ref,
-                    IrFuncAccessorMode::Setter => OwnershipMode::RefMut,
-                },
-                inner: IrField {
-                    ty: ty_direct_parse.to_owned(),
-                    name: "that".to_owned(),
-                    ..Default::default()
-                },
-            },
-            IrFuncInput {
-                ownership_mode: TODO,
-                inner: TODO,
-            },
-        ],
+        inputs,
         output: IrFuncOutput {
-            normal: TODO,
+            normal: match accessor_mode {
+                IrFuncAccessorMode::Getter => TODO,
+                IrFuncAccessorMode::Setter => IrType::Primitive(IrTypePrimitive::Unit),
+            },
             error: None,
         },
         owner: IrFuncOwnerInfo::Method(owner),
