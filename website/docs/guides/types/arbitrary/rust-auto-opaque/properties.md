@@ -33,12 +33,14 @@ object.name += 'a';
 print('Hi ${object.name}');
 ```
 
-## The cloning implementation and caveats
+## Caveats
 
 :::tip
 There is no need to memorize anything here (or anything in doc) -
 the code generator will provide warnings when detecting non-best-practices.
 :::
+
+### Problem description
 
 Because borrowed types are not (yet) supported, the current implementation clones the field when reading it.
 This is no problem when the field type is something like integers, Strings, or `RustAutoOpaque<T>`s.
@@ -68,7 +70,9 @@ print(a.b.c); // unchanged
 may be confusing since the `a.b.c` is not changed.
 This is because each access to `a.b` creates a brand new `B` instance.
 
-It is easy to workaround this: Just add `RustAutoOpaque<...>` like below.
+### Solution 1
+
+One solution is to just add `RustAutoOpaque<...>` like below.
 It will not affect other things, for example, the generated type will still be `B`.
 
 ```rust
@@ -81,3 +85,8 @@ It works because `RustAutoOpaque<T>` is indeed an `Arc`,
 thus the cloned `b` will point to the very same object instead of a brand new object.
 
 To create/read/write objects of type `RustAutoOpaque<...>`, please refer to [this page](struct).
+
+### Solution 2
+
+Another way is to make the struct non-opaque (possibly by adding `#[frb(non_opaque)]`). 
+
