@@ -19,7 +19,7 @@ pub(super) fn report(hints: &[SanityCheckHint]) {
     }
 
     warn!(
-        "To use the automatically generated getters of the following fields, \
+        "To use the automatically generated getters of the following fields of opaque types, \
         it is suggested to read https://fzyzcjy.github.io/flutter_rust_bridge/guides/types/arbitrary/rust-auto-opaque/properties to know more details. \
         (Related fields: {})",
         hints.iter().map(|x| &x.name).join(", ")
