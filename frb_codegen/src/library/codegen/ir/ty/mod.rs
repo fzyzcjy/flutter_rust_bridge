@@ -97,7 +97,9 @@ pub trait IrTypeTrait {
     }
 
     // TODO move
-    fn cloned_getter_semantics_reasonable(&self) -> bool;
+    fn cloned_getter_semantics_reasonable(&self) -> bool {
+        false
+    }
 }
 
 impl From<Box<IrType>> for IrType {
