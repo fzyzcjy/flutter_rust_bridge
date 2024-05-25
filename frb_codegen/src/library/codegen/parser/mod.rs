@@ -25,10 +25,11 @@ use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::parser::misc::parse_has_executor;
 use crate::codegen::parser::reader::CachedRustReader;
 use crate::codegen::parser::sanity_checker::misc_checker::check_suppressed_input_path_no_content;
+use crate::codegen::parser::sanity_checker::opaque_inside_translatable_checker::check_opaque_inside_translatable;
+use crate::codegen::parser::sanity_checker::unused_checker::get_unused_types;
 use crate::codegen::parser::source_graph::modules::Struct;
 use crate::codegen::parser::type_alias_resolver::resolve_type_aliases;
 use crate::codegen::parser::type_parser::TypeParser;
-use crate::codegen::parser::sanity_checker::unused_checker::get_unused_types;
 use crate::codegen::ConfigDumpContent;
 use crate::library::misc::consts::HANDLER_NAME;
 use anyhow::ensure;
@@ -107,6 +108,8 @@ pub(crate) fn parse(
         &config.rust_input_path_pack.rust_input_paths,
         &config.rust_crate_dir,
     )?;
+
+    check_opaque_inside_translatable();
 
     Ok(ans)
 }
