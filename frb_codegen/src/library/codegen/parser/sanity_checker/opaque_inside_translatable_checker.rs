@@ -7,12 +7,12 @@ use itertools::Itertools;
 use std::collections::HashSet;
 
 pub(crate) fn check_opaque_inside_translatable(pack: &IrPack) {
-    (pack.distinct_types(None).into_iter())
-        .map(|ty| handle_type(pack, ty))
-        .collect()
+    let hint_names = (pack.distinct_types(None).into_iter())
+        .flat_map(|ty| handle_type(pack, ty))
+        .collect_vec();
 }
 
-fn handle_type(pack: &IrPack, ty: IrType) -> Vec<TODO> {
+fn handle_type(pack: &IrPack, ty: IrType) -> Vec<String> {
     match ty {
         IrType::StructRef(ty) => {
             let st = ty.get(pack);
@@ -32,15 +32,15 @@ fn handle_type(pack: &IrPack, ty: IrType) -> Vec<TODO> {
     }
 }
 
-fn handle_struct(st: &IrStruct, partial_name: &str) -> Vec<TODO> {
+fn handle_struct(st: &IrStruct, partial_name: &str) -> Vec<String> {
     (st.fields.iter())
         .filter_map(|field| handle_field(field, partial_name))
         .collect()
 }
 
-fn handle_field(field: &IrField, partial_name: &str) -> Option<TODO> {
+fn handle_field(field: &IrField, partial_name: &str) -> Option<String> {
     if matches!(field.ty, IrType::RustAutoOpaqueImplicit(_)) {
-        Some(TODO)
+        Some(format!("{partial_name}.{}", field.name.rust_style()))
     } else {
         Noen
     }
