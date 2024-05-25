@@ -170,6 +170,24 @@ const sidebars = {
                 },
                 {
                     type: 'category',
+                    label: 'Functions',
+                    collapsed: true,
+                    link: {
+                        type: 'doc',
+                        id: 'guides/function/index',
+                    },
+                    items: [
+                        'guides/function/methods',
+                        'guides/function/callables',
+                        'guides/function/properties',
+                        'guides/function/constructors',
+                        'guides/function/eq-hash',
+                        'guides/function/ignoring',
+                        'guides/function/renaming',
+                    ],
+                },
+                {
+                    type: 'category',
                     label: 'Miscellaneous',
                     collapsed: true,
                     link: {
@@ -178,16 +196,10 @@ const sidebars = {
                     },
                     items: [
                         'guides/miscellaneous/directory',
-                        'guides/miscellaneous/methods',
-                        'guides/miscellaneous/callables',
-                        'guides/miscellaneous/properties',
-                        'guides/miscellaneous/constructors',
                         'guides/miscellaneous/dart-code',
-                        'guides/miscellaneous/eq-hash',
                         'guides/miscellaneous/codec',
                         'guides/miscellaneous/build-rs',
                         'guides/miscellaneous/expanding-macros',
-                        'guides/miscellaneous/functions',
                         'guides/miscellaneous/default',
                         'guides/miscellaneous/pure-dart',
                         'guides/miscellaneous/isolates',
