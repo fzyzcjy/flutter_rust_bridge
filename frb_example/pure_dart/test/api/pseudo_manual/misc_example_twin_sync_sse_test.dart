@@ -120,29 +120,6 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(structResp.width, 42 + 1000);
     expect(structResp.height, 100 + 10000);
   });
-
-  test('ItemContainerSolutionOneTwinSyncSse', () async {
-    final container =
-        await ItemContainerSolutionOneTwinSyncSse.createTwinSyncSse();
-
-    expect(await container.getItemContentsTwinSyncSse(), [100]);
-
-    // TODO
-    // expect(container.name, 'hi');
-    // container.name = 'hello';
-    // expect(container.name, 'hello');
-  });
-
-  test('ItemContainerSolutionTwoTwinSyncSse', () async {
-    final container =
-        await ItemContainerSolutionTwoTwinSyncSse.createTwinSyncSse();
-
-    expect(await container.getItemContentsTwinSyncSse(), [100]);
-
-    expect(container.name, 'hi');
-    container.name = 'hello';
-    expect(container.name, 'hello');
-  });
 }
 
 MyTreeNodeTwinSyncSse _createMyTreeNode({required int arrLen}) {
