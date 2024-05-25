@@ -8,36 +8,3 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<int> minimalAdder({required int a, required int b, dynamic hint}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b, hint: hint);
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithSimpleSetterTwinNormal>>
-@sealed
-class StructWithSimpleSetterTwinNormal extends RustOpaque {
-  StructWithSimpleSetterTwinNormal.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
-
-  StructWithSimpleSetterTwinNormal.sseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_StructWithSimpleSetterTwinNormal,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StructWithSimpleSetterTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StructWithSimpleSetterTwinNormalPtr,
-  );
-
-  factory StructWithSimpleSetterTwinNormal({dynamic hint}) =>
-      RustLib.instance.api
-          .crateApiMinimalStructWithSimpleSetterTwinNormalNew(hint: hint);
-
-  int get simpleGetter => RustLib.instance.api
-          .crateApiMinimalStructWithSimpleSetterTwinNormalSimpleGetter(
-        that: this,
-      );
-
-  void set simpleSetter(int value) => RustLib.instance.api
-      .crateApiMinimalStructWithSimpleSetterTwinNormalSimpleSetter(
-          that: this, value: value);
-}
