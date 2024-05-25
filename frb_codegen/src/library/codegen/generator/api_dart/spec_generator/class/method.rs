@@ -123,7 +123,7 @@ fn generate_signature(
         Some(IrFuncAccessorMode::Getter) => ("".to_owned(), "get"),
         Some(IrFuncAccessorMode::Setter) => (
             format!(
-                "({{ {} }})",
+                "({})",
                 func_params
                     .iter()
                     .map(|x| format!("{} {}", x.type_str, x.name_str))
