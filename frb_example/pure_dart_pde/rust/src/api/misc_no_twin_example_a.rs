@@ -60,6 +60,7 @@ impl StructWithSimpleSetterTwinNormal {
 // #1937
 // Suppose this is opaque
 #[frb(opaque)]
+#[derive(Clone)]
 pub struct OpaqueItemTwinNormal(i32);
 
 // #1937
