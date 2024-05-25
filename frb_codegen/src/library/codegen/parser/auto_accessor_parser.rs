@@ -1,14 +1,17 @@
 use crate::codegen::config::internal_config::RustInputPathPack;
 use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::ir::field::IrField;
-use crate::codegen::ir::func::{IrFunc, IrFuncMode, IrFuncOutput};
+use crate::codegen::ir::func::{IrFunc, IrFuncMode, IrFuncOutput, IrFuncOwnerInfo, IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode};
 use crate::codegen::ir::namespace::NamespacedName;
+use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
+use crate::codegen::ir::ty::IrType::Primitive;
 use crate::codegen::ir::ty::{IrContext, IrType};
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::parser::misc::extract_src_types_in_paths;
 use crate::codegen::parser::source_graph::modules::Struct;
+use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::{
     TypeParser, TypeParserParsingContext, TypeParserWithContext,
 };
@@ -16,9 +19,6 @@ use crate::if_then_some;
 use itertools::Itertools;
 use std::collections::HashMap;
 use std::path::{Path, PathBuf};
-use crate::codegen::ir::ty::IrType::Primitive;
-use crate::codegen::ir::ty::primitive::IrTypePrimitive;
-use crate::codegen::parser::type_parser::misc::parse_comments;
 
 pub(crate) fn parse_auto_accessors(
     config: &ParserInternalConfig,
@@ -84,12 +84,17 @@ fn parse_auto_accessor_of_field(field: &IrField) -> anyhow::Result<IrFunc> {
             normal: TODO,
             error: None,
         },
-        owner: TODO,
+        owner: IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod {
+            owner_ty: TODO,
+            actual_method_name: TODO,
+            actual_method_dart_name: None,
+            mode: IrFuncOwnerInfoMethodMode::Instance,
+        }),
         mode: IrFuncMode::Sync,
         stream_dart_await: false,
         rust_async: false,
         initializer: false,
-        getter: TODO,
+        accessor: TODO,
         comments: vec![],
         codec_mode_pack: TODO,
         src_lineno: TODO,
