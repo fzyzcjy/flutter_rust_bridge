@@ -1,6 +1,6 @@
-# `RustAutoOpaque` class
+# `RustAutoOpaque` struct
 
-Sometimes you may want to directly work with the `RustAutoOpaque<T>` class.
+Sometimes you may want to directly work with the `RustAutoOpaque<T>` struct.
 It is currently implemented as (roughly) an `Arc<RwLock<T>>`.
 The main API is quite simple:
 

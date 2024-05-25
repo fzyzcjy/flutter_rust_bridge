@@ -117,7 +117,7 @@ const sidebars = {
                                         'guides/types/arbitrary/rust-auto-opaque/interleaving',
                                         'guides/types/arbitrary/rust-auto-opaque/ownership',
                                         'guides/types/arbitrary/rust-auto-opaque/dispose',
-                                        'guides/types/arbitrary/rust-auto-opaque/class',
+                                        'guides/types/arbitrary/rust-auto-opaque/struct',
                                     ],
                                 },
                                 'guides/types/arbitrary/dart-opaque',
