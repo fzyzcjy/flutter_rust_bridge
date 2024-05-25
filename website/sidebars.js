@@ -119,7 +119,6 @@ const sidebars = {
                                         'guides/types/arbitrary/rust-auto-opaque/ownership',
                                         'guides/types/arbitrary/rust-auto-opaque/dispose',
                                         'guides/types/arbitrary/rust-auto-opaque/struct',
-                                        'guides/types/arbitrary/rust-auto-opaque/borrowed',
                                     ],
                                 },
                                 'guides/types/arbitrary/dart-opaque',
