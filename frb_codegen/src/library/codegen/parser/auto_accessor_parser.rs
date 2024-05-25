@@ -85,7 +85,7 @@ fn parse_auto_accessor_of_field(
     let rust_method_name = format!("{}_{}", accessor_mode.verb_str(), field.name.raw);
 
     Ok(IrFunc {
-        name: NamespacedName::new(namespace_refined, func_name),
+        name: NamespacedName::new(struct_name.namespace.clone(), TODO),
         dart_name: None,
         id: None,
         inputs: vec![
