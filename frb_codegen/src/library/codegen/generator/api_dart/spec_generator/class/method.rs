@@ -3,7 +3,10 @@ use crate::codegen::generator::api_dart::spec_generator::function::{
     ApiDartGeneratedFunction, ApiDartGeneratedFunctionParam,
 };
 use crate::codegen::generator::api_dart::spec_generator::misc::generate_dart_comments;
-use crate::codegen::ir::func::{IrFunc, IrFuncAccessorMode, IrFuncDefaultConstructorMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode};
+use crate::codegen::ir::func::{
+    IrFunc, IrFuncAccessorMode, IrFuncDefaultConstructorMode, IrFuncOwnerInfo,
+    IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode,
+};
 use crate::codegen::ir::namespace::NamespacedName;
 use crate::if_then_some;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
@@ -116,13 +119,13 @@ fn generate_signature(
             .unwrap_or(&method_info.actual_method_name))
         .to_case(Case::Camel)
     };
-    let (func_params, maybe_getter) = if func.getter {
-        ("".to_owned(), "get")
-    } else {
-        (
+    let (func_params, maybe_getter) = match func.accessor {
+        Some(IrFuncAccessorMode::Getter) => ("".to_owned(), "get"),
+        Some(IrFuncAccessorMode::Setter) => TODO,
+        None => (
             format!("({{ {} }})", func_params.iter().map(|x| &x.full).join(",")),
             "",
-        )
+        ),
     };
 
     if default_constructor_mode == Some(IrFuncDefaultConstructorMode::DartConstructor) {
