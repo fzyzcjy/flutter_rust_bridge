@@ -33,7 +33,7 @@ object.name += 'a';
 print('Hi ${object.name}');
 ```
 
-## Caveats
+## Implementation: Cloning
 
 :::tip
 There is no need to memorize anything here (or anything in doc) -
@@ -41,6 +41,31 @@ the code generator will provide warnings when detecting non-best-practices.
 :::
 
 Because borrowed types are not (yet) supported, the current implementation clones the field when reading it.
-This is no problem when, for example, the field is an integer, a String, or a `RustAutoOpaque<T>`.
-However, if it is 
+This is no problem when the field type is something like integers, Strings, or `RustAutoOpaque<T>`s.
+However, it may be confusing in some scenarios.
+For example,
+
+```rust
+#[frb(opaque)]
+pub struct A {
+    pub b: B,
+}
+
+#[frb(opaque)]
+pub struct B {
+    pub c: i32,
+}
+```
+
+Then, usage like
+
+```dart
+var a = A(...);
+a.b.c += 1;
+print(a.b.c); // unchanged
+```
+
+may be confusing since the `a.b.c` is not changed.
+This is because each access to `a.b` creates a brand new `B` instance.
+
 TODO
