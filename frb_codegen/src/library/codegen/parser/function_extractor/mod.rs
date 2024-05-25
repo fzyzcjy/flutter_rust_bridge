@@ -1,12 +1,12 @@
-pub(crate) mod structs;
 mod functions;
 mod methods;
+pub(crate) mod structs;
 
-use itertools::Itertools;
-use syn::File;
 use crate::codegen::parser::function_extractor::functions::extract_fns_from_file;
 use crate::codegen::parser::function_extractor::methods::extract_methods_from_file;
 use crate::codegen::parser::function_extractor::structs::PathAndItemFn;
+use itertools::Itertools;
+use syn::File;
 
 pub(super) fn extract_generalized_functions_from_file(
     file: &File,

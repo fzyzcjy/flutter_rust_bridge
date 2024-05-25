@@ -2,13 +2,13 @@ use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::IrType;
+use crate::codegen::parser::misc::extract_src_types_in_paths;
 use crate::codegen::parser::source_graph::modules::{Enum, Struct};
 use crate::codegen::parser::type_parser::path_data::extract_path_data;
 use itertools::Itertools;
 use std::collections::{HashMap, HashSet};
 use std::path::{Path, PathBuf};
 use syn::Type;
-use crate::codegen::parser::misc::extract_src_types_in_paths;
 
 pub(super) fn get_unused_types(
     pack: &IrPack,

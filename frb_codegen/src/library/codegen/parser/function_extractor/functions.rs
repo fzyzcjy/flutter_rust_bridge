@@ -1,7 +1,7 @@
-use syn::*;
 use crate::codegen::parser::function_extractor::structs::GeneralizedItemFn;
 use crate::if_then_some;
 use itertools::Itertools;
+use syn::*;
 
 pub(super) fn extract_fns_from_file(file: &File) -> Vec<GeneralizedItemFn> {
     file.items

@@ -1,9 +1,9 @@
-use std::collections::HashMap;
-use std::path::{Path, PathBuf};
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::parser::source_graph::modules::StructOrEnumWrapper;
 use crate::library::misc::consts::HANDLER_NAME;
 use itertools::Itertools;
+use std::collections::HashMap;
+use std::path::{Path, PathBuf};
 
 pub(crate) fn parse_has_executor(source_rust_content: &str) -> bool {
     source_rust_content.contains(&format!("static {HANDLER_NAME}"))
@@ -29,4 +29,3 @@ pub(crate) fn extract_src_types_in_paths<T: StructOrEnumWrapper<I>, I>(
         })
         .collect_vec())
 }
-

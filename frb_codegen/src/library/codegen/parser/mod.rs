@@ -86,12 +86,7 @@ pub(crate) fn parse(
 
     let mut type_parser = TypeParser::new(src_structs.clone(), src_enums.clone(), src_types);
 
-    let ir_funcs = parse_ir_funcs(
-        &config,
-        &src_fns,
-        &mut type_parser,
-        &src_structs,
-    )?;
+    let ir_funcs = parse_ir_funcs(&config, &src_fns, &mut type_parser, &src_structs)?;
 
     let existing_handlers = parse_existing_handlers(config, &file_data_arr)?;
 
@@ -142,11 +137,7 @@ fn parse_ir_funcs(
         .flatten()
         .collect_vec();
 
-    let ir_funcs_auto_accessor = parse_auto_accessors(
-        config,
-        src_structs,
-        type_parser,
-    )?;
+    let ir_funcs_auto_accessor = parse_auto_accessors(config, src_structs, type_parser)?;
 
     Ok(concat([ir_funcs_normal, ir_funcs_auto_accessor])
         .into_iter()

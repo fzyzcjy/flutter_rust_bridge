@@ -1,7 +1,7 @@
-use std::path::PathBuf;
 use proc_macro2::Span;
-use syn::{Attribute, ImplItemFn, ItemFn, ItemImpl, Signature};
+use std::path::PathBuf;
 use syn::spanned::Spanned;
+use syn::{Attribute, ImplItemFn, ItemFn, ItemImpl, Signature};
 
 pub(crate) struct PathAndItemFn {
     pub(crate) path: PathBuf,
@@ -41,4 +41,3 @@ impl GeneralizedItemFn {
         }
     }
 }
-

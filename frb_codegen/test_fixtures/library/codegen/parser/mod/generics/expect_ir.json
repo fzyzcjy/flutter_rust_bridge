@@ -17,6 +17,7 @@
                   "comments": [],
                   "default": null,
                   "is_final": true,
+                  "is_rust_public": false,
                   "name": "field0",
                   "settings": {
                     "is_in_mirrored_enum": false
@@ -67,6 +68,7 @@
                   "comments": [],
                   "default": null,
                   "is_final": true,
+                  "is_rust_public": false,
                   "name": "field0",
                   "settings": {
                     "is_in_mirrored_enum": false
@@ -120,7 +122,7 @@
       },
       "comments": [],
       "dart_name": null,
-      "id": 5,
+      "id": 1,
       "initializer": false,
       "inputs": [
         {
@@ -128,6 +130,7 @@
             "comments": [],
             "default": null,
             "is_final": true,
+            "is_rust_public": null,
             "name": "arg",
             "settings": {
               "is_in_mirrored_enum": false
@@ -170,6 +173,7 @@
       },
       "owner": "Function",
       "rust_async": false,
+      "rust_call_code": null,
       "stream_dart_await": false
     },
     {
@@ -180,7 +184,7 @@
       },
       "comments": [],
       "dart_name": null,
-      "id": 4,
+      "id": 2,
       "initializer": false,
       "inputs": [
         {
@@ -188,6 +192,7 @@
             "comments": [],
             "default": null,
             "is_final": true,
+            "is_rust_public": null,
             "name": "arg",
             "settings": {
               "is_in_mirrored_enum": false
@@ -230,6 +235,7 @@
       },
       "owner": "Function",
       "rust_async": false,
+      "rust_call_code": null,
       "stream_dart_await": false
     },
     {
@@ -248,6 +254,7 @@
             "comments": [],
             "default": null,
             "is_final": true,
+            "is_rust_public": null,
             "name": "arg",
             "settings": {
               "is_in_mirrored_enum": false
@@ -290,6 +297,7 @@
       },
       "owner": "Function",
       "rust_async": false,
+      "rust_call_code": null,
       "stream_dart_await": false
     },
     {
@@ -300,7 +308,7 @@
       },
       "comments": [],
       "dart_name": null,
-      "id": 1,
+      "id": 4,
       "initializer": false,
       "inputs": [
         {
@@ -308,6 +316,7 @@
             "comments": [],
             "default": null,
             "is_final": true,
+            "is_rust_public": null,
             "name": "arg",
             "settings": {
               "is_in_mirrored_enum": false
@@ -350,6 +359,7 @@
       },
       "owner": "Function",
       "rust_async": false,
+      "rust_call_code": null,
       "stream_dart_await": false
     },
     {
@@ -360,7 +370,7 @@
       },
       "comments": [],
       "dart_name": null,
-      "id": 2,
+      "id": 5,
       "initializer": false,
       "inputs": [
         {
@@ -368,6 +378,7 @@
             "comments": [],
             "default": null,
             "is_final": true,
+            "is_rust_public": null,
             "name": "arg",
             "settings": {
               "is_in_mirrored_enum": false
@@ -410,6 +421,7 @@
       },
       "owner": "Function",
       "rust_async": false,
+      "rust_call_code": null,
       "stream_dart_await": false
     }
   ],
@@ -422,6 +434,7 @@
           "comments": [],
           "default": null,
           "is_final": true,
+          "is_rust_public": false,
           "name": "generic_field",
           "settings": {
             "is_in_mirrored_enum": false
@@ -453,6 +466,7 @@
           "comments": [],
           "default": null,
           "is_final": true,
+          "is_rust_public": false,
           "name": "generic_boxed_field",
           "settings": {
             "is_in_mirrored_enum": false
@@ -484,6 +498,7 @@
           "comments": [],
           "default": null,
           "is_final": true,
+          "is_rust_public": false,
           "name": "normal_field",
           "settings": {
             "is_in_mirrored_enum": false
