@@ -111,3 +111,7 @@ pub struct DeliberateFailSanityCheckTwinNormal {
     pub deliberate_bad_field_b: OpaqueItemTwinNormal,
     pub deliberate_bad_field_c: Vec<OpaqueItemTwinNormal>,
 }
+
+impl DeliberateFailSanityCheckTwinNormal {
+    pub fn dummy_function_twin_normal() {}
+}
