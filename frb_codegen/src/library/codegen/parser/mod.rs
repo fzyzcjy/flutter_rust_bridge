@@ -6,7 +6,7 @@ pub(crate) mod function_parser;
 pub(crate) mod internal_config;
 pub(crate) mod misc;
 pub(crate) mod reader;
-mod sanity_checker;
+pub(crate) mod sanity_checker;
 pub(crate) mod source_graph;
 pub(crate) mod type_alias_resolver;
 pub(crate) mod type_parser;
