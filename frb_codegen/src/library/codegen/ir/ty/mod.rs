@@ -96,7 +96,8 @@ pub trait IrTypeTrait {
         None
     }
 
-    fn roughly_dart_mutable(&self) -> bool;
+    // TODO move
+    fn cloned_getter_semantics_reasonable(&self) -> bool;
 }
 
 impl From<Box<IrType>> for IrType {
