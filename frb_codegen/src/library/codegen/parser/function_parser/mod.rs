@@ -239,7 +239,7 @@ fn merge_option<T: Debug>(a: Option<T>, b: Option<T>) -> anyhow::Result<Option<T
     Ok(a.or(b))
 }
 
-fn compute_codec_mode_pack(
+pub(crate) fn compute_codec_mode_pack(
     attributes: &FrbAttributes,
     force_ans: &Option<CodecModePack>,
 ) -> CodecModePack {

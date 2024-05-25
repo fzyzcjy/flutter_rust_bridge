@@ -1,13 +1,17 @@
 use crate::codegen::config::internal_config::RustInputPathPack;
 use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::ir::field::IrField;
-use crate::codegen::ir::func::{IrFunc, IrFuncMode, IrFuncOutput, IrFuncOwnerInfo, IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode};
+use crate::codegen::ir::func::{
+    IrFunc, IrFuncMode, IrFuncOutput, IrFuncOwnerInfo, IrFuncOwnerInfoMethod,
+    IrFuncOwnerInfoMethodMode,
+};
 use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::ty::IrType::Primitive;
 use crate::codegen::ir::ty::{IrContext, IrType};
 use crate::codegen::parser::attribute_parser::FrbAttributes;
+use crate::codegen::parser::function_parser::compute_codec_mode_pack;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::parser::misc::extract_src_types_in_paths;
 use crate::codegen::parser::source_graph::modules::Struct;
@@ -32,14 +36,7 @@ pub(crate) fn parse_auto_accessors(
     )?;
     Ok(src_structs_in_paths
         .iter()
-        .map(|struct_name| {
-            parse_auto_accessors_of_struct(
-                struct_name,
-                type_parser,
-                config.default_stream_sink_codec,
-                config.default_rust_opaque_codec,
-            )
-        })
+        .map(|struct_name| parse_auto_accessors_of_struct(config, struct_name, type_parser))
         .collect::<anyhow::Result<Vec<_>>>()?
         .into_iter()
         .flatten()
@@ -47,15 +44,14 @@ pub(crate) fn parse_auto_accessors(
 }
 
 fn parse_auto_accessors_of_struct(
+    config: &ParserInternalConfig,
     struct_name: &NamespacedName,
     type_parser: &mut TypeParser,
-    default_stream_sink_codec: CodecMode,
-    default_rust_opaque_codec: RustOpaqueCodecMode,
 ) -> anyhow::Result<Vec<IrFunc>> {
     let context = create_parsing_context(
         struct_name,
-        default_stream_sink_codec,
-        default_rust_opaque_codec,
+        config.default_stream_sink_codec,
+        defaulconfig.t_rust_opaque_codec,
     )?;
     if !is_struct_opaque(type_parser, struct_name, &context)? {
         return Ok(vec![]);
@@ -70,11 +66,14 @@ fn parse_auto_accessors_of_struct(
 
     (ty_struct.fields.iter())
         .filter(|field| field.is_rust_public.unwrap())
-        .map(|field| parse_auto_accessor_of_field(field))
+        .map(|field| parse_auto_accessor_of_field(config, field))
         .collect()
 }
 
-fn parse_auto_accessor_of_field(field: &IrField) -> anyhow::Result<IrFunc> {
+fn parse_auto_accessor_of_field(
+    config: &ParserInternalConfig,
+    field: &IrField,
+) -> anyhow::Result<IrFunc> {
     Ok(IrFunc {
         name: TODO,
         dart_name: None,
@@ -96,7 +95,10 @@ fn parse_auto_accessor_of_field(field: &IrField) -> anyhow::Result<IrFunc> {
         initializer: false,
         accessor: TODO,
         comments: vec![],
-        codec_mode_pack: TODO,
+        codec_mode_pack: compute_codec_mode_pack(
+            &FrbAttributes::parse(&[]).unwrap(),
+            config.force_codec_mode_pack,
+        ),
         src_lineno: TODO,
     })
 }
