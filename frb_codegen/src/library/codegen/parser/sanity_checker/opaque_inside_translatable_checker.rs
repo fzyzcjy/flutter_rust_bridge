@@ -4,12 +4,21 @@ use crate::codegen::ir::ty::enumeration::IrVariantKind;
 use crate::codegen::ir::ty::structure::IrStruct;
 use crate::codegen::ir::ty::IrType;
 use itertools::Itertools;
+use log::info;
 use std::collections::HashSet;
 
 pub(crate) fn check_opaque_inside_translatable(pack: &IrPack) {
     let hint_names = (pack.distinct_types(None).into_iter())
         .flat_map(|ty| handle_type(pack, ty))
         .collect_vec();
+    if !hint_names.is_empty() {
+        info!(
+            "It is suggested (but not required) to wrap opaque inside non-opaque type with `RustAutoOpaque<..>`. \
+            See https://fzyzcjy.github.io/flutter_rust_bridge/guides/types/arbitrary/rust-auto-opaque/opaque-in-translatable for more details. \
+            Related types: {}",
+            hint_names.join(", "),
+        );
+    }
 }
 
 fn handle_type(pack: &IrPack, ty: IrType) -> Vec<String> {
@@ -28,6 +37,7 @@ fn handle_type(pack: &IrPack, ty: IrType) -> Vec<String> {
                 ),
             })
         }
+        // TODO also check and hint `Vec<OpaqueType>`, etc
         _ => vec![],
     }
 }
