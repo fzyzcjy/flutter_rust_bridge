@@ -102,8 +102,8 @@ fn parse_auto_accessor_of_field(
         },
         owner: IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod {
             owner_ty: TODO,
-            actual_method_name: TODO,
-            actual_method_dart_name: None,
+            actual_method_name: rust_method_name,
+            actual_method_dart_name: Some(field.name.raw.clone()),
             mode: IrFuncOwnerInfoMethodMode::Instance,
         }),
         mode: IrFuncMode::Sync,
