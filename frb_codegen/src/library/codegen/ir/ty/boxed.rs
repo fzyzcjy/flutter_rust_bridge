@@ -36,4 +36,8 @@ impl IrTypeTrait for IrTypeBoxed {
             self.inner.rust_api_type()
         }
     }
+
+    fn roughly_dart_mutable(&self) -> bool {
+        self.inner.roughly_dart_mutable()
+    }
 }
