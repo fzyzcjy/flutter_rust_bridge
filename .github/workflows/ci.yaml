@@ -41,7 +41,7 @@ jobs:
         with:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
           components: rustfmt, clippy
-      - run: rustup toolchain install nightly && rustup component add rustfmt --toolchain nightly-x86_64-unknown-linux-gnu
+      - run: rustup toolchain install nightly && rustup target add wasm32-unknown-unknown && rustup component add rustfmt --toolchain nightly-x86_64-unknown-linux-gnu
       - uses: subosito/flutter-action@v2
         with:
           cache: true
