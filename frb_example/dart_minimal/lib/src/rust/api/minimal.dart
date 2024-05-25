@@ -37,7 +37,7 @@ class StructWithSimpleSetterTwinNormal extends RustOpaque {
         that: this,
       );
 
-  void set simpleSetter({required int value}) => RustLib.instance.api
+  void set simpleSetter(int value) => RustLib.instance.api
       .crateApiMinimalStructWithSimpleSetterTwinNormalSimpleSetter(
           that: this, value: value);
 }
