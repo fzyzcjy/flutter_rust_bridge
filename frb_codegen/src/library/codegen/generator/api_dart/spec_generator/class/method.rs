@@ -3,10 +3,7 @@ use crate::codegen::generator::api_dart::spec_generator::function::{
     ApiDartGeneratedFunction, ApiDartGeneratedFunctionParam,
 };
 use crate::codegen::generator::api_dart::spec_generator::misc::generate_dart_comments;
-use crate::codegen::ir::func::{
-    IrFunc, IrFuncDefaultConstructorMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod,
-    IrFuncOwnerInfoMethodMode,
-};
+use crate::codegen::ir::func::{IrFunc, IrFuncAccessorMode, IrFuncDefaultConstructorMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode};
 use crate::codegen::ir::namespace::NamespacedName;
 use crate::if_then_some;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
@@ -82,7 +79,7 @@ fn compute_skip_names(func: &IrFunc, method_info: &IrFuncOwnerInfoMethod) -> Vec
     if method_info.mode != IrFuncOwnerInfoMethodMode::Static {
         ans.push("that");
     }
-    if func.getter {
+    if func.accessor.is_some() {
         ans.push("hint");
     }
     ans
