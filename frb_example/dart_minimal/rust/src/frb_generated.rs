@@ -122,11 +122,7 @@ fn wire__crate__api__minimal__ItemContainerSolutionOneTwinNormal_get_name_impl(
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <ItemContainerSolutionOneTwinNormal>::sse_decode(&mut deserializer);
             deserializer.end();
-            transform_result_sse((move || {
-                Result::<_, ()>::Ok(
-                    crate::api::minimal::ItemContainerSolutionOneTwinNormal::get_name(api_that),
-                )
-            })())
+            transform_result_sse((move || Result::<_, ()>::Ok(api_that.name.clone()))())
         },
     )
 }
@@ -155,11 +151,9 @@ fn wire__crate__api__minimal__ItemContainerSolutionOneTwinNormal_set_name_impl(
             let api_name = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse((move || {
-                Result::<_, ()>::Ok(
-                    crate::api::minimal::ItemContainerSolutionOneTwinNormal::set_name(
-                        api_that, api_name,
-                    ),
-                )
+                Result::<_, ()>::Ok({
+                    api_that.name = api_name;
+                })
             })())
         },
     )
