@@ -127,6 +127,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             accessor: attributes.accessor(),
             comments: parse_comments(func.attrs()),
             codec_mode_pack,
+            rust_call_code: None,
             src_lineno_pseudo: src_lineno,
         }))
     }
