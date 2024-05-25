@@ -10,7 +10,7 @@ use std::collections::{HashMap, HashSet};
 use std::path::{Path, PathBuf};
 use syn::Type;
 
-pub(super) fn get_unused_types(
+pub(crate) fn get_unused_types(
     pack: &IrPack,
     src_structs: &HashMap<String, &Struct>,
     src_enums: &HashMap<String, &Enum>,
