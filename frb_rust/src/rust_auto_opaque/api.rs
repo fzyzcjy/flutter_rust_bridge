@@ -4,6 +4,8 @@ use crate::rust_auto_opaque::inner::RustAutoOpaqueInner;
 use crate::rust_auto_opaque::RustAutoOpaqueBase;
 use crate::rust_opaque::RustOpaqueBase;
 use tokio::sync::{RwLock, TryLockError};
+use crate::rust_auto_opaque::dart2rust_implicit::RustAutoOpaqueLockOrderInfo;
+use crate::rust_auto_opaque::order::RustAutoOpaqueOrder;
 
 impl<T, A: BaseArc<RustAutoOpaqueInner<T>>> RustAutoOpaqueBase<T, A> {
     pub fn new(value: T) -> Self {
@@ -34,5 +36,21 @@ impl<T, A: BaseArc<RustAutoOpaqueInner<T>>> RustAutoOpaqueBase<T, A> {
 
     pub fn try_write(&self) -> Result<RwLockWriteGuard<'_, T>, TryLockError> {
         self.0.data.try_write()
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_api() {
+        let opaque = RustAutoOpaqueBase::new(42);
+        assert_eq!(opaque.blocking_read(), 42);
+        assert_eq!(opaque.blocking_write(), 42);
+        assert_eq!(opaque.try_read().unwrap(), 42);
+        assert_eq!(opaque.try_write().unwrap(), 42);
+        assert_eq!(opaque.read().await, 42);
+        assert_eq!(opaque.write().await, 42);
     }
 }
