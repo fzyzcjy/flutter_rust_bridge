@@ -55,6 +55,8 @@ pub(super) fn parse_auto_accessor_of_field(
         }
     };
 
+    super::sanity_checker::sanity_check_field();
+
     Ok(IrFunc {
         name: NamespacedName::new(
             struct_name.namespace.clone(),

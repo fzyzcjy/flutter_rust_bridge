@@ -1,4 +1,5 @@
 mod field;
+mod sanity_checker;
 
 use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::ir::func::{IrFunc, IrFuncAccessorMode};
