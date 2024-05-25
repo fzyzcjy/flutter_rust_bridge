@@ -12,3 +12,5 @@ TODO
 ## Translatable field in opaque structs
 
 TODO
+
+## TODO: opaque field in opaque structs

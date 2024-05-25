@@ -32,3 +32,10 @@ var object = MyOpaqueType();
 object.name += 'a';
 print('Hi ${object.name}');
 ```
+
+## Caveats
+
+Because borrowed types are not (yet) supported, the current implementation clones the field when reading it.
+This is no problem when, for example, the field is an integer, a String, or a `RustAutoOpaque<T>`.
+However, if it is 
+TODO
