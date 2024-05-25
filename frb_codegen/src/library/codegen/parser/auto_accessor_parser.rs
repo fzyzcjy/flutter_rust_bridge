@@ -1,7 +1,7 @@
 use crate::codegen::config::internal_config::RustInputPathPack;
 use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::ir::field::IrField;
-use crate::codegen::ir::func::IrFunc;
+use crate::codegen::ir::func::{IrFunc, IrFuncMode, IrFuncOutput};
 use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::ty::{IrContext, IrType};
@@ -16,6 +16,9 @@ use crate::if_then_some;
 use itertools::Itertools;
 use std::collections::HashMap;
 use std::path::{Path, PathBuf};
+use crate::codegen::ir::ty::IrType::Primitive;
+use crate::codegen::ir::ty::primitive::IrTypePrimitive;
+use crate::codegen::parser::type_parser::misc::parse_comments;
 
 pub(crate) fn parse_auto_accessors(
     config: &ParserInternalConfig,
@@ -72,7 +75,25 @@ fn parse_auto_accessors_of_struct(
 }
 
 fn parse_auto_accessor_of_field(field: &IrField) -> anyhow::Result<IrFunc> {
-    todo!()
+    Ok(IrFunc {
+        name: TODO,
+        dart_name: None,
+        id: None,
+        inputs: TODO,
+        output: IrFuncOutput {
+            normal: TODO,
+            error: None,
+        },
+        owner: TODO,
+        mode: IrFuncMode::Sync,
+        stream_dart_await: false,
+        rust_async: false,
+        initializer: false,
+        getter: TODO,
+        comments: vec![],
+        codec_mode_pack: TODO,
+        src_lineno: TODO,
+    })
 }
 
 fn is_struct_opaque(
