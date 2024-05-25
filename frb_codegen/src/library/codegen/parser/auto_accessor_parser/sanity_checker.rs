@@ -10,7 +10,7 @@ pub(super) fn check_field(
     struct_name: &NamespacedName,
     field: &IrField,
 ) -> Option<SanityCheckHint> {
-    does_need_hint(&field.ty).then(|| SanityCheckHint {
+    (!field.ty.cloned_getter_semantics_reasonable()).then(|| SanityCheckHint {
         name: format!("{}.{}", struct_name.rust_style(), field.name.rust_style()),
     })
 }
@@ -30,8 +30,4 @@ pub(super) fn report(hints: &[SanityCheckHint]) {
 
 pub(super) struct SanityCheckHint {
     name: String,
-}
-
-fn does_need_hint(ty: &IrType) -> bool {
-    ty.roughly_dart_mutable()
 }
