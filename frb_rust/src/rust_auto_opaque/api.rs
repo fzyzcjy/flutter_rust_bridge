@@ -57,4 +57,12 @@ mod tests {
         assert_eq!(*opaque.read().await, 42);
         assert_eq!(*opaque.write().await, 42);
     }
+
+    #[test]
+    fn test_clone() {
+        let a = RustAutoOpaqueNom::new(42);
+        let b = a.clone();
+        *a.blocking_write() = 200;
+        assert_eq!(*b.blocking_read(), 200);
+    }
 }
