@@ -67,23 +67,25 @@ fn parse_auto_accessors_of_struct(
     (ty_struct.fields.iter())
         .filter(|field| field.is_rust_public.unwrap())
         .flat_map(|field| {
-            vec![
-                parse_auto_accessor_of_field(config, field, IrFuncAccessorMode::Getter),
-                parse_auto_accessor_of_field(config, field, IrFuncAccessorMode::Setter),
-            ]
+            [IrFuncAccessorMode::Getter, IrFuncAccessorMode::Setter]
+                .into_iter()
+                .map(|accessor_mode| {
+                    parse_auto_accessor_of_field(config, struct_name, field, accessor_mode)
+                })
         })
         .collect()
 }
 
 fn parse_auto_accessor_of_field(
     config: &ParserInternalConfig,
+    struct_name: &NamespacedName,
     field: &IrField,
     accessor_mode: IrFuncAccessorMode,
 ) -> anyhow::Result<IrFunc> {
     let rust_method_name = format!("{}_{}", accessor_mode.verb_str(), field.name.raw);
 
     Ok(IrFunc {
-        name: TODO,
+        name: NamespacedName::new(namespace_refined, func_name),
         dart_name: None,
         id: None,
         inputs: vec![
