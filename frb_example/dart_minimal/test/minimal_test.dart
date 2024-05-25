@@ -14,4 +14,15 @@ Future<void> main() async {
     print('Action: Call rust (after)');
   });
   print('Action: Configure tests (end)');
+
+  test('ItemContainerSolutionOneTwinNormal', () async {
+    final container =
+        await ItemContainerSolutionOneTwinNormal.createTwinNormal();
+
+    expect(await container.getItemContentsTwinNormal(), [100]);
+
+    expect(container.name, 'hi');
+    container.name = 'hello';
+    expect(container.name, 'hello');
+  });
 }
