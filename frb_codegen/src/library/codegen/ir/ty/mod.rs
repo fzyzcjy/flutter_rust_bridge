@@ -95,6 +95,8 @@ pub trait IrTypeTrait {
     fn self_namespace(&self) -> Option<Namespace> {
         None
     }
+
+    fn roughly_dart_mutable(&self) -> bool;
 }
 
 impl From<Box<IrType>> for IrType {

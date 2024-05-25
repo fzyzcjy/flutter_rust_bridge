@@ -31,5 +31,5 @@ pub(super) struct SanityCheckHint {
 }
 
 fn does_need_hint(ty: &IrType) -> bool {
-    TODO
+    ty.roughly_dart_mutable()
 }
