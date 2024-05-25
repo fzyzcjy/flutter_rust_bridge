@@ -119,20 +119,18 @@ fn generate_signature(
             .unwrap_or(&method_info.actual_method_name))
         .to_case(Case::Camel)
     };
-    let (func_params, maybe_getter) = match func.accessor {
+    let func_params_raw_str = format!("({{ {} }})", func_params.iter().map(|x| &x.full).join(","));
+    let (func_params, maybe_accessor) = match func.accessor {
         Some(IrFuncAccessorMode::Getter) => ("".to_owned(), "get"),
-        Some(IrFuncAccessorMode::Setter) => TODO,
-        None => (
-            format!("({{ {} }})", func_params.iter().map(|x| &x.full).join(",")),
-            "",
-        ),
+        Some(IrFuncAccessorMode::Setter) => (func_params_raw_str, "set"),
+        None => (func_params_raw_str, ""),
     };
 
     if default_constructor_mode == Some(IrFuncDefaultConstructorMode::DartConstructor) {
         return format!("factory {return_type}{func_params}");
     }
 
-    format!("{maybe_static} {return_type} {maybe_getter} {method_name}{func_params}")
+    format!("{maybe_static} {return_type} {maybe_accessor} {method_name}{func_params}")
 }
 
 fn generate_implementation(
