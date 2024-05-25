@@ -174,6 +174,7 @@ mod frb_keyword {
     syn::custom_keyword!(sync);
     syn::custom_keyword!(stream_dart_await);
     syn::custom_keyword!(getter);
+    syn::custom_keyword!(setter);
     syn::custom_keyword!(init);
     syn::custom_keyword!(ignore);
     syn::custom_keyword!(opaque);
@@ -209,6 +210,7 @@ enum FrbAttribute {
     Sync,
     StreamDartAwait,
     Getter,
+    Setter,
     Init,
     Ignore,
     Opaque,
@@ -243,6 +245,7 @@ impl Parse for FrbAttribute {
                 )
             })
             .or_else(|| parse_keyword::<getter, _>(input, &lookahead, getter, Getter))
+            .or_else(|| parse_keyword::<setter, _>(input, &lookahead, setter, Setter))
             .or_else(|| parse_keyword::<init, _>(input, &lookahead, init, Init))
             .or_else(|| parse_keyword::<ignore, _>(input, &lookahead, ignore, Ignore))
             .or_else(|| parse_keyword::<opaque, _>(input, &lookahead, opaque, Opaque))
@@ -597,6 +600,11 @@ mod tests {
     #[test]
     fn test_getter() {
         simple_keyword_tester("getter", FrbAttribute::Getter);
+    }
+
+    #[test]
+    fn test_setter() {
+        simple_keyword_tester("setter", FrbAttribute::Setter);
     }
 
     #[test]
