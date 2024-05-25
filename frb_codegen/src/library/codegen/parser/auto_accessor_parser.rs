@@ -1,11 +1,12 @@
 use crate::codegen::config::internal_config::RustInputPathPack;
 use crate::codegen::generator::codec::structs::CodecMode;
-use crate::codegen::ir::field::IrField;
+use crate::codegen::ir::field::{IrField, IrFieldSettings};
 use crate::codegen::ir::func::{
     IrFunc, IrFuncAccessorMode, IrFuncInput, IrFuncMode, IrFuncOutput, IrFuncOwnerInfo,
     IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode, OwnershipMode,
 };
 use crate::codegen::ir::namespace::NamespacedName;
+use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::ty::IrType::Primitive;
@@ -75,7 +76,13 @@ fn parse_auto_accessors_of_struct(
             [IrFuncAccessorMode::Getter, IrFuncAccessorMode::Setter]
                 .into_iter()
                 .map(|accessor_mode| {
-                    parse_auto_accessor_of_field(config, struct_name, field, accessor_mode)
+                    parse_auto_accessor_of_field(
+                        config,
+                        struct_name,
+                        field,
+                        accessor_mode,
+                        &ty_direct_parse,
+                    )
                 })
         })
         .collect()
@@ -86,6 +93,7 @@ fn parse_auto_accessor_of_field(
     struct_name: &NamespacedName,
     field: &IrField,
     accessor_mode: IrFuncAccessorMode,
+    ty_direct_parse: &IrType,
 ) -> anyhow::Result<IrFunc> {
     let rust_method_name = format!("{}_{}", accessor_mode.verb_str(), field.name.raw);
 
@@ -109,7 +117,11 @@ fn parse_auto_accessor_of_field(
                     IrFuncAccessorMode::Getter => OwnershipMode::Ref,
                     IrFuncAccessorMode::Setter => OwnershipMode::RefMut,
                 },
-                inner: TODO,
+                inner: IrField {
+                    ty: ty_direct_parse.to_owned(),
+                    name: "that".to_owned(),
+                    ..Default::default()
+                },
             },
             IrFuncInput {
                 ownership_mode: TODO,
