@@ -35,6 +35,11 @@ print('Hi ${object.name}');
 
 ## Caveats
 
+:::tip
+There is no need to memorize anything here (or anything in doc) -
+the code generator will provide warnings when detecting non-best-practices.
+:::
+
 Because borrowed types are not (yet) supported, the current implementation clones the field when reading it.
 This is no problem when, for example, the field is an integer, a String, or a `RustAutoOpaque<T>`.
 However, if it is 
