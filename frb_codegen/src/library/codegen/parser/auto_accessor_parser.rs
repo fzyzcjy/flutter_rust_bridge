@@ -119,9 +119,10 @@ fn parse_auto_accessor_of_field(
         });
     }
 
+    let field_name_rust = field.name.rust_style();
     let rust_call_code = match accessor_mode {
-        IrFuncAccessorMode::Getter => TODO,
-        IrFuncAccessorMode::Setter => TODO,
+        IrFuncAccessorMode::Getter => format!("api_that.{field_name_rust}.clone()"),
+        IrFuncAccessorMode::Setter => format!("{{ api_that.{field_name_rust} = api_{field_name_rust}; }}"),
     };
 
     Ok(IrFunc {
