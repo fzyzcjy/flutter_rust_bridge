@@ -135,12 +135,7 @@ mod tests {
         configure_opinionated_test_logging();
         set_cwd_test_fixture("binary/commands_parser/config_file")?;
 
-        let config = run_command_line(vec![
-            "",
-            "generate",
-            "--config-file",
-            "hello.yaml",
-        ])?;
+        let config = run_command_line(vec!["", "generate", "--config-file", "hello.yaml"])?;
         assert_eq!(config.rust_input, "hello.rs".to_string());
         assert!(!config.dart3.unwrap());
 
@@ -185,17 +180,13 @@ mod tests {
             "--c-output",
             "hello.h",
         ];
-        let config = run_command_line(common_args.clone())
-            .expect("failed to parse cli args");
+        let config = run_command_line(common_args.clone()).expect("failed to parse cli args");
         assert_eq!(config.dart3, Some(true));
         assert_eq!(config.rust_input, "hello.rs".to_string());
         assert_eq!(
-            run_command_line(concat([
-                common_args.clone(),
-                vec!["--no-dart3"]
-            ]))
-            .expect("failed to parse cli args")
-            .dart3,
+            run_command_line(concat([common_args.clone(), vec!["--no-dart3"]]))
+                .expect("failed to parse cli args")
+                .dart3,
             Some(false)
         );
     }

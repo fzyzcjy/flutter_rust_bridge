@@ -76,8 +76,10 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     }
                     IrTypeDelegateTime::NaiveDate => {
                         "self.and_hms_opt(0, 0, 0).unwrap().and_utc().timestamp_micros()".to_owned()
-                    },
-                    IrTypeDelegateTime::NaiveDateTime => "self.and_utc().timestamp_micros()".to_owned(),
+                    }
+                    IrTypeDelegateTime::NaiveDateTime => {
+                        "self.and_utc().timestamp_micros()".to_owned()
+                    }
                     IrTypeDelegateTime::Duration => {
                         r#"self.num_microseconds().expect("cannot get microseconds from time")"#
                             .to_owned()
@@ -122,21 +124,23 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     "Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)))".to_owned()
                 }
                 IrTypeDelegate::Set(_) => "Set.from(inner)".to_owned(),
-                IrTypeDelegate::Time(ir) => match ir {
-                    IrTypeDelegateTime::Utc
-                    | IrTypeDelegateTime::Local
-                    | IrTypeDelegateTime::NaiveDate
-                    | IrTypeDelegateTime::NaiveDateTime => {
-                        format!(
+                IrTypeDelegate::Time(ir) => {
+                    match ir {
+                        IrTypeDelegateTime::Utc
+                        | IrTypeDelegateTime::Local
+                        | IrTypeDelegateTime::NaiveDate
+                        | IrTypeDelegateTime::NaiveDateTime => {
+                            format!(
                             "DateTime.fromMicrosecondsSinceEpoch(inner.toInt(), isUtc: {is_utc})",
                             is_utc =
                                 matches!(ir, IrTypeDelegateTime::NaiveDate | IrTypeDelegateTime::NaiveDateTime | IrTypeDelegateTime::Utc),
                         )
+                        }
+                        IrTypeDelegateTime::Duration => {
+                            "Duration(microseconds: inner.toInt())".to_owned()
+                        }
                     }
-                    IrTypeDelegateTime::Duration => {
-                        "Duration(microseconds: inner.toInt())".to_owned()
-                    }
-                },
+                }
                 IrTypeDelegate::Uuid => "UuidValue.fromByteList(inner)".to_owned(),
                 IrTypeDelegate::StreamSink(_) => {
                     return Some(format!("{};", lang.throw_unreachable("")));
