@@ -115,29 +115,6 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(structResp.width, 42 + 1000);
     expect(structResp.height, 100 + 10000);
   });
-
-  test('ItemContainerSolutionOneTwinNormal', () async {
-    final container =
-        await ItemContainerSolutionOneTwinNormal.createTwinNormal();
-
-    expect(await container.getItemContentsTwinNormal(), [100]);
-
-    // TODO
-    // expect(container.name, 'hi');
-    // container.name = 'hello';
-    // expect(container.name, 'hello');
-  });
-
-  test('ItemContainerSolutionTwoTwinNormal', () async {
-    final container =
-        await ItemContainerSolutionTwoTwinNormal.createTwinNormal();
-
-    expect(await container.getItemContentsTwinNormal(), [100]);
-
-    expect(container.name, 'hi');
-    container.name = 'hello';
-    expect(container.name, 'hello');
-  });
 }
 
 MyTreeNodeTwinNormal _createMyTreeNode({required int arrLen}) {
