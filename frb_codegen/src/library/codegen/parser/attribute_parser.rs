@@ -10,6 +10,7 @@ use serde::{Serialize, Serializer};
 use syn::parse::{Lookahead1, Parse, ParseStream, Peek};
 use syn::punctuated::Punctuated;
 use syn::*;
+use crate::codegen::ir::func::IrFuncAccessorMode;
 
 const METADATA_IDENT: &str = "frb";
 
@@ -66,8 +67,14 @@ impl FrbAttributes {
         self.any_eq(&FrbAttribute::StreamDartAwait)
     }
 
-    pub(crate) fn getter(&self) -> bool {
-        self.any_eq(&FrbAttribute::Getter)
+    pub(crate) fn accessor(&self) -> Option<IrFuncAccessorMode> {
+        if self.any_eq(&FrbAttribute::Getter) {
+            Some(IrFuncAccessorMode::Getter)
+        } else if self.any_eq(&FrbAttribute::Setter) {
+            Some(IrFuncAccessorMode::Setter)
+        } else {
+            None
+        }
     }
 
     pub(crate) fn init(&self) -> bool {
