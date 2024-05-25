@@ -70,7 +70,7 @@ fn parse_auto_accessors_of_struct(
         .unwrap();
     let ty_struct_ident =
         if_then_some!(let IrType::StructRef(ir) = ty_struct_ref, ir.ident).unwrap();
-    let ty_struct = &type_parser.struct_pool()[&ty_struct_ident];
+    let ty_struct = &type_parser.struct_pool()[&ty_struct_ident].to_owned();
 
     (ty_struct.fields.iter())
         .filter(|field| field.is_rust_public.unwrap())
