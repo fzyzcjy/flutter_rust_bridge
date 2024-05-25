@@ -102,7 +102,21 @@ const sidebars = {
                                 id: 'guides/types/arbitrary/index',
                             },
                             items: [
-                                'guides/types/arbitrary/rust-auto-opaque',
+                                {
+                                    type: 'category',
+                                    label: 'Automatic arbitrary Rust type',
+                                    collapsed: true,
+                                    link: {
+                                        type: 'doc',
+                                        id: 'guides/types/arbitrary/rust-auto-opaque/index',
+                                    },
+                                    items: [
+                                        'guides/types/arbitrary/rust-auto-opaque/overview',
+                                        'guides/types/arbitrary/rust-auto-opaque/override-defaults',
+                                        'guides/types/arbitrary/rust-auto-opaque/ownership',
+                                        'guides/types/arbitrary/rust-auto-opaque/dispose',
+                                    ],
+                                },
                                 'guides/types/arbitrary/dart-opaque',
                                 'guides/types/arbitrary/rust-opaque',
                                 'guides/types/arbitrary/dart-dynamic',
