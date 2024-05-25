@@ -50,6 +50,7 @@ mod tests {
         assert_eq!(*opaque.try_write().unwrap(), 42);
     }
 
+    #[cfg(not(wasm))]
     #[tokio::test]
     async fn test_api_async() {
         let opaque = RustAutoOpaqueNom::new(42);
