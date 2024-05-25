@@ -24,6 +24,7 @@ pub struct IrFunc {
     pub accessor: Option<IrFuncAccessorMode>,
     pub comments: Vec<IrComment>,
     pub codec_mode_pack: CodecModePack,
+    pub rust_call_code: Option<String>,
     // Currently, we use serde only for tests. Since lineno can be unstable, we skip this field for comparison
     #[serde(skip_serializing)]
     pub src_lineno_pseudo: usize,
