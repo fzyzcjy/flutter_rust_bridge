@@ -11,7 +11,9 @@ use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::ty::IrType::Primitive;
 use crate::codegen::ir::ty::{IrContext, IrType};
 use crate::codegen::parser::attribute_parser::FrbAttributes;
-use crate::codegen::parser::function_parser::compute_codec_mode_pack;
+use crate::codegen::parser::function_parser::{
+    compute_codec_mode_pack, parse_effective_function_name_of_method,
+};
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::parser::misc::extract_src_types_in_paths;
 use crate::codegen::parser::source_graph::modules::Struct;
@@ -84,8 +86,18 @@ fn parse_auto_accessor_of_field(
 ) -> anyhow::Result<IrFunc> {
     let rust_method_name = format!("{}_{}", accessor_mode.verb_str(), field.name.raw);
 
+    let owner = IrFuncOwnerInfoMethod {
+        owner_ty: TODO,
+        actual_method_name: rust_method_name,
+        actual_method_dart_name: Some(field.name.raw.clone()),
+        mode: IrFuncOwnerInfoMethodMode::Instance,
+    };
+
     Ok(IrFunc {
-        name: NamespacedName::new(struct_name.namespace.clone(), TODO),
+        name: NamespacedName::new(
+            struct_name.namespace.clone(),
+            parse_effective_function_name_of_method(&owner),
+        ),
         dart_name: None,
         id: None,
         inputs: vec![
@@ -102,12 +114,7 @@ fn parse_auto_accessor_of_field(
             normal: TODO,
             error: None,
         },
-        owner: IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod {
-            owner_ty: TODO,
-            actual_method_name: rust_method_name,
-            actual_method_dart_name: Some(field.name.raw.clone()),
-            mode: IrFuncOwnerInfoMethodMode::Instance,
-        }),
+        owner: IrFuncOwnerInfo::Method(owner),
         mode: IrFuncMode::Sync,
         stream_dart_await: false,
         rust_async: false,
