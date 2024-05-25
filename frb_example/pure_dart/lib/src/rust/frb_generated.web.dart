@@ -1102,6 +1102,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       get rust_arc_decrement_strong_count_StructWithImplBlockInMultiFilePtr => wire
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithImplBlockInMultiFile;
 
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_StructWithSimpleSetterTwinNormalPtr =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal;
+
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_I16Ptr =>
       wire.rust_arc_decrement_strong_count_RustOpaque_i16;
 
@@ -1812,6 +1816,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  StructWithSimpleSetterTwinNormal
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
+          dynamic raw);
+
+  @protected
   BoxHelloTraitTwinMoi
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynHelloTraitTwinMoi(
           dynamic raw);
@@ -1959,6 +1968,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   NonCloneSimpleTwinSyncSseMoi
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncSseMoi(
+          dynamic raw);
+
+  @protected
+  StructWithSimpleSetterTwinNormal
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
           dynamic raw);
 
   @protected
@@ -2234,6 +2248,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithImplBlockInMultiFile
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithImplBlockInMultiFile(
+          dynamic raw);
+
+  @protected
+  StructWithSimpleSetterTwinNormal
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
           dynamic raw);
 
   @protected
@@ -3512,6 +3531,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithImplBlockInMultiFile
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithImplBlockInMultiFile(
+          dynamic raw);
+
+  @protected
+  StructWithSimpleSetterTwinNormal
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
           dynamic raw);
 
   @protected
@@ -10238,6 +10262,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  StructWithSimpleSetterTwinNormal
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
   BoxHelloTraitTwinMoi
       sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynHelloTraitTwinMoi(
           SseDeserializer deserializer);
@@ -10385,6 +10414,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   NonCloneSimpleTwinSyncSseMoi
       sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncSseMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithSimpleSetterTwinNormal
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
           SseDeserializer deserializer);
 
   @protected
@@ -10660,6 +10694,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithImplBlockInMultiFile
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithImplBlockInMultiFile(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithSimpleSetterTwinNormal
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
           SseDeserializer deserializer);
 
   @protected
@@ -11938,6 +11977,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithImplBlockInMultiFile
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithImplBlockInMultiFile(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithSimpleSetterTwinNormal
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
           SseDeserializer deserializer);
 
   @protected
@@ -26904,6 +26948,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       StructWithImplBlockInMultiFile raw);
 
   @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
+      StructWithSimpleSetterTwinNormal raw);
+
+  @protected
   int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynHelloTraitTwinMoi(
       BoxHelloTraitTwinMoi raw);
 
@@ -26962,6 +27010,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
       NonCloneSimpleTwinSyncMoi raw);
+
+  @protected
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
+      StructWithSimpleSetterTwinNormal raw);
 
   @protected
   int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynHelloTraitTwinMoi(
@@ -27086,6 +27138,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithImplBlockInMultiFile(
       StructWithImplBlockInMultiFile raw);
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
+      StructWithSimpleSetterTwinNormal raw);
 
   @protected
   PlatformPointer
@@ -27557,6 +27613,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithImplBlockInMultiFile(
       StructWithImplBlockInMultiFile raw);
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
+      StructWithSimpleSetterTwinNormal raw);
 
   @protected
   int cst_encode_RustOpaque_i16(I16 raw);
@@ -28384,6 +28444,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
+          StructWithSimpleSetterTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void
       sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynHelloTraitTwinMoi(
           BoxHelloTraitTwinMoi self, SseSerializer serializer);
 
@@ -28531,6 +28596,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncSseMoi(
           NonCloneSimpleTwinSyncSseMoi self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
+          StructWithSimpleSetterTwinNormal self, SseSerializer serializer);
 
   @protected
   void
@@ -28807,6 +28877,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithImplBlockInMultiFile(
           StructWithImplBlockInMultiFile self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
+          StructWithSimpleSetterTwinNormal self, SseSerializer serializer);
 
   @protected
   void sse_encode_Backtrace(String self, SseSerializer serializer);
@@ -30157,6 +30232,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithImplBlockInMultiFile(
           StructWithImplBlockInMultiFile self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
+          StructWithSimpleSetterTwinNormal self, SseSerializer serializer);
 
   @protected
   void sse_encode_RustOpaque_i16(I16 self, SseSerializer serializer);
@@ -37817,6 +37897,25 @@ class RustLibWire implements BaseWire {
       wasmModule
           .wire__crate__api__misc_no_twin_example_a__StructWithImplBlockInMultiFile_method_in_a(
               port_, that);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_new() =>
+          wasmModule
+              .wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_new();
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_simple_getter(
+              Object that) =>
+          wasmModule
+              .wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_simple_getter(
+                  that);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_simple_setter(
+              Object that, int value) =>
+          wasmModule
+              .wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_simple_setter(
+                  that, value);
 
   void wire__crate__api__misc_no_twin_example_a__function_with_custom_name_twin_normal(
           NativePortType port_) =>
@@ -59017,6 +59116,18 @@ class RustLibWire implements BaseWire {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithImplBlockInMultiFile(
               ptr);
 
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
+              ptr);
+
   void rust_arc_increment_strong_count_RustOpaque_i16(dynamic ptr) =>
       wasmModule.rust_arc_increment_strong_count_RustOpaque_i16(ptr);
 
@@ -59787,6 +59898,17 @@ class RustLibWasmModule implements WasmModule {
   external void
       wire__crate__api__misc_no_twin_example_a__StructWithImplBlockInMultiFile_method_in_a(
           NativePortType port_, Object that);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_new();
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_simple_getter(
+          Object that);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_simple_setter(
+          Object that, int value);
 
   external void
       wire__crate__api__misc_no_twin_example_a__function_with_custom_name_twin_normal(
@@ -74540,6 +74662,14 @@ class RustLibWasmModule implements WasmModule {
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithImplBlockInMultiFile(
+          dynamic ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
+          dynamic ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
           dynamic ptr);
 
   external void rust_arc_increment_strong_count_RustOpaque_i16(dynamic ptr);

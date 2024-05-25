@@ -124,7 +124,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             stream_dart_await,
             rust_async: sig.asyncness.is_some(),
             initializer: attributes.init(),
-            getter: attributes.getter(),
+            accessor: attributes.accessor(),
             comments: parse_comments(func.attrs()),
             codec_mode_pack,
             src_lineno,
