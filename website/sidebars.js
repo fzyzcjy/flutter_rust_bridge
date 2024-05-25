@@ -195,6 +195,7 @@ const sidebars = {
                         id: 'guides/functions/index',
                     },
                     items: [
+                        'guides/functions/overview',
                         'guides/functions/methods',
                         'guides/functions/callables',
                         'guides/functions/properties',
