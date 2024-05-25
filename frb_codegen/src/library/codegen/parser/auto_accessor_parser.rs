@@ -53,13 +53,13 @@ fn parse_auto_accessors_of_struct(
         struct_name,
         default_stream_sink_codec,
         default_rust_opaque_codec,
-    );
-    if !is_struct_opaque(type_parser, struct_name, context)? {
+    )?;
+    if !is_struct_opaque(type_parser, struct_name, &context)? {
         return Ok(vec![]);
     }
 
-    let ty_struct_ref = TypeParserWithContext::new(type_parser, context)
-        .parse_type_path_data_struct((&struct_name.name, &[]), Some(false))?
+    let ty_struct_ref = TypeParserWithContext::new(type_parser, &context)
+        .parse_type_path_data_struct(&(&struct_name.name, &[]), Some(false))?
         .unwrap();
     let ty_struct_ident =
         if_then_some!(let IrType::StructRef(ir) = ty_struct_ref, ir.ident).unwrap();
@@ -82,9 +82,9 @@ fn parse_auto_accessor_of_field(field: &IrField) -> anyhow::Result<Option<IrFunc
 fn is_struct_opaque(
     type_parser: &mut TypeParser,
     struct_name: &NamespacedName,
-    context: TypeParserParsingContext,
+    context: &TypeParserParsingContext,
 ) -> anyhow::Result<bool> {
-    let ty = type_parser.parse_type(&syn::parse_str(&struct_name.name)?, &context)?;
+    let ty = type_parser.parse_type(&syn::parse_str(&struct_name.name)?, context)?;
     Ok(matches!(ty, IrType::RustAutoOpaqueImplicit(_)))
 }
 
@@ -92,12 +92,12 @@ fn create_parsing_context(
     struct_name: &NamespacedName,
     default_stream_sink_codec: CodecMode,
     default_rust_opaque_codec: RustOpaqueCodecMode,
-) -> TypeParserParsingContext {
-    TypeParserParsingContext {
+) -> anyhow::Result<TypeParserParsingContext> {
+    Ok(TypeParserParsingContext {
         initiated_namespace: struct_name.namespace.to_owned(),
         func_attributes: FrbAttributes::parse(&[])?,
         default_stream_sink_codec,
         default_rust_opaque_codec,
         owner: None,
-    }
+    })
 }
