@@ -33,7 +33,7 @@ object.name += 'a';
 print('Hi ${object.name}');
 ```
 
-## Implementation: Cloning
+## The cloning implementation and caveats
 
 :::tip
 There is no need to memorize anything here (or anything in doc) -
@@ -67,5 +67,17 @@ print(a.b.c); // unchanged
 
 may be confusing since the `a.b.c` is not changed.
 This is because each access to `a.b` creates a brand new `B` instance.
+
+It is easy to workaround this: Just add `RustAutoOpaque<...>` like below.
+It will not affect other things, for example, the generated type will still be `B`.
+
+```rust
+pub struct A {
+    pub b: RustAutoOpaque<B>,
+}
+```
+
+It works because `RustAutoOpaque<T>` is indeed an `Arc`,
+thus the cloned `b` will point to the very same object instead of a brand new object.
 
 TODO
