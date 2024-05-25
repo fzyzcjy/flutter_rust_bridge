@@ -121,7 +121,16 @@ fn generate_signature(
     };
     let (func_params, maybe_accessor) = match func.accessor {
         Some(IrFuncAccessorMode::Getter) => ("".to_owned(), "get"),
-        Some(IrFuncAccessorMode::Setter) => (TODO, "set"),
+        Some(IrFuncAccessorMode::Setter) => (
+            format!(
+                "({{ {} }})",
+                func_params
+                    .iter()
+                    .map(|x| format!("{} {}", x.type_str, x.name_str))
+                    .join(", ")
+            ),
+            "set",
+        ),
         None => (
             format!("({{ {} }})", func_params.iter().map(|x| &x.full).join(",")),
             "",
