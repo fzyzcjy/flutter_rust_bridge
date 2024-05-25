@@ -9,7 +9,7 @@ use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::function_parser::{FunctionParser, FunctionPartialInfo};
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::rust_auto_opaque_implicit::split_ownership_from_ty;
-use crate::codegen::parser::type_parser::TypeParserParsingContext;
+use crate::codegen::parser::type_parser::{TypeParser, TypeParserParsingContext};
 use crate::if_then_some;
 use anyhow::Context;
 use syn::*;
@@ -41,8 +41,12 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let ty_without_ownership =
             (self.type_parser).parse_type(&ty_syn_without_ownership, context)?;
 
-        let (ty, ownership_mode) =
-            self.merge_ownership_into_ty(context, ty_without_ownership, ownership_mode_split)?;
+        let (ty, ownership_mode) = merge_ownership_into_ty(
+            self.type_parser,
+            context,
+            ty_without_ownership,
+            ownership_mode_split,
+        )?;
 
         if let IrType::StructRef(s) = &ty {
             if s.get(self.type_parser).ignore {
@@ -72,25 +76,25 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             ..Default::default()
         })
     }
+}
 
-    fn merge_ownership_into_ty(
-        &mut self,
-        context: &TypeParserParsingContext,
-        ty_without_ownership: IrType,
-        ownership_mode: Option<OwnershipMode>,
-    ) -> anyhow::Result<(IrType, Option<OwnershipMode>)> {
-        Ok(match (ty_without_ownership, ownership_mode) {
-            (IrType::RustAutoOpaqueImplicit(ty_raw), Some(ownership_mode)) => (
-                self.type_parser.transform_rust_auto_opaque(
-                    &ty_raw,
-                    |raw| format!("{}{raw}", ownership_mode.prefix()),
-                    context,
-                )?,
-                None,
-            ),
-            others => others,
-        })
-    }
+pub(crate) fn merge_ownership_into_ty(
+    type_parser: &mut TypeParser,
+    context: &TypeParserParsingContext,
+    ty_without_ownership: IrType,
+    ownership_mode: Option<OwnershipMode>,
+) -> anyhow::Result<(IrType, Option<OwnershipMode>)> {
+    Ok(match (ty_without_ownership, ownership_mode) {
+        (IrType::RustAutoOpaqueImplicit(ty_raw), Some(ownership_mode)) => (
+            type_parser.transform_rust_auto_opaque(
+                &ty_raw,
+                |raw| format!("{}{raw}", ownership_mode.prefix()),
+                context,
+            )?,
+            None,
+        ),
+        others => others,
+    })
 }
 
 fn auto_add_boxed(ty: IrType) -> IrType {
