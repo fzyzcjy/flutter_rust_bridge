@@ -23,6 +23,7 @@ use crate::codegen::parser::type_parser::{
 };
 use crate::if_then_some;
 use itertools::Itertools;
+use sha1::Sha1;
 use std::collections::HashMap;
 use std::path::{Path, PathBuf};
 
@@ -125,8 +126,16 @@ fn parse_auto_accessor_of_field(
             &FrbAttributes::parse(&[]).unwrap(),
             config.force_codec_mode_pack,
         ),
-        src_lineno_pseudo: TODO,
+        src_lineno_pseudo: compute_src_lineno_pseudo(struct_name, &field),
     })
+}
+
+fn compute_src_lineno_pseudo(struct_name: &NamespacedName, field: &IrField) -> usize {
+    let mut hasher = Sha1::new();
+    hasher.update(struct_name.rust_style().as_bytes());
+    hasher.update(field.name.raw.as_bytes());
+    let digest = hasher.finalize();
+    usize::from_le_bytes(digest[..8].try_into().unwrap())
 }
 
 fn is_struct_opaque(
