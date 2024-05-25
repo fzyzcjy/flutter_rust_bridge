@@ -26,7 +26,7 @@ pub struct IrFunc {
     pub codec_mode_pack: CodecModePack,
     // Currently, we use serde only for tests. Since lineno can be unstable, we skip this field for comparison
     #[serde(skip_serializing)]
-    pub src_lineno: usize,
+    pub src_lineno_pseudo: usize,
 }
 
 pub struct IrFuncInput {

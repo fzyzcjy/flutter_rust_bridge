@@ -125,7 +125,7 @@ fn parse_auto_accessor_of_field(
             &FrbAttributes::parse(&[]).unwrap(),
             config.force_codec_mode_pack,
         ),
-        src_lineno: TODO,
+        src_lineno_pseudo: TODO,
     })
 }
 

@@ -43,7 +43,7 @@ fn generate_end_api_text(
     let funcs = item
         .funcs
         .iter()
-        .sorted_by_key(|f| f.src_lineno)
+        .sorted_by_key(|f| f.src_lineno_pseudo)
         .map(generate_function)
         .join("\n\n");
     let classes = item.classes.iter().map(|c| c.code.clone()).join("\n\n");
