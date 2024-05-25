@@ -274,7 +274,7 @@ pub fn rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_normal(
 
 pub struct StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal {
     pub good: String,
-    pub opaque: NonCloneSimpleTwinNormal,
+    opaque: NonCloneSimpleTwinNormal,
 }
 
 pub enum EnumWithGoodAndOpaqueWithoutOptionTwinNormal {
