@@ -2,7 +2,14 @@
 
 You might wonder, since the Dart side is just a "pointer",
 how to use the underlying data in Dart?
-The answer is through functions (and/or methods).
+There are two answers.
+
+## Through properties
+
+For each public field, corresponding getters and setters will be auto generated, thus can be directy used.
+Please refer to [this page](properties) for more details.
+
+## Through functions/methods
 
 In short,
 just imagine those fields are private (to Rust) - the **"private fields" concept** you use everyday
