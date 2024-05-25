@@ -14,7 +14,7 @@ use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use anyhow::bail;
 use std::collections::HashMap;
-use syn::{Field, Fields, FieldsNamed, FieldsUnnamed, ItemStruct, Type};
+use syn::{Field, Fields, FieldsNamed, FieldsUnnamed, ItemStruct, Type, Visibility};
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_struct(
@@ -75,6 +75,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             name: IrIdent::new(field_name),
             ty: field_type,
             is_final: !attributes.non_final(),
+            is_rust_public: Some(matches!(field.vis, Visibility::Public(_))),
             comments: parse_comments(&field.attrs),
             default: attributes.default_value(),
             settings: IrFieldSettings::default(),
