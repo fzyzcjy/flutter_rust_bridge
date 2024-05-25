@@ -197,14 +197,16 @@ fn compute_func_mode(attributes: &FrbAttributes, info: &FunctionPartialInfo) -> 
 fn parse_name(sig: &Signature, owner: &IrFuncOwnerInfo) -> String {
     match owner {
         IrFuncOwnerInfo::Function => sig.ident.to_string(),
-        IrFuncOwnerInfo::Method(method) => {
-            let owner_name = match &method.owner_ty {
-                IrType::RustAutoOpaqueImplicit(ty) => ty.sanitized_type(),
-                ty => ty.safe_ident(),
-            };
-            format!("{owner_name}_{}", method.actual_method_name)
-        }
+        IrFuncOwnerInfo::Method(method) => parse_effective_function_name_of_method(method),
     }
+}
+
+pub(crate) fn parse_effective_function_name_of_method(method: &IrFuncOwnerInfoMethod) -> String {
+    let owner_name = match &method.owner_ty {
+        IrType::RustAutoOpaqueImplicit(ty) => ty.sanitized_type(),
+        ty => ty.safe_ident(),
+    };
+    format!("{owner_name}_{}", method.actual_method_name)
 }
 
 #[derive(Debug, Default)]
