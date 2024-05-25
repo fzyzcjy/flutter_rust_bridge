@@ -36,7 +36,12 @@ pub(crate) fn parse_auto_accessors(
         .flatten()
         .collect_vec();
 
-    sanity_checker::report(&infos.iter().flat_map(|x| x.sanity_check_hint).collect_vec());
+    sanity_checker::report(
+        &infos
+            .iter()
+            .flat_map(|x| x.sanity_check_hint.clone())
+            .collect_vec(),
+    );
 
     Ok(infos.into_iter().map(|x| x.ir_func).collect_vec())
 }

@@ -28,6 +28,7 @@ pub(super) fn report(hints: &[SanityCheckHint]) {
     )
 }
 
+#[derive(Clone)]
 pub(super) struct SanityCheckHint {
     name: String,
 }
