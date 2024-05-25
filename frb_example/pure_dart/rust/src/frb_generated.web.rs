@@ -9127,66 +9127,6 @@ impl CstDecode<NonCloneSimpleTwinRustAsyncMoi>
         ))
     }
 }
-impl CstDecode<NonCloneSimpleTwinRustAsyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> NonCloneSimpleTwinRustAsyncSse {
-        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
-            RustOpaqueNom<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                    NonCloneSimpleTwinRustAsyncSse,
-                >,
-            >,
-        >::cst_decode(
-            self
-        ))
-    }
-}
-impl CstDecode<NonCloneSimpleTwinRustAsyncSseMoi>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> NonCloneSimpleTwinRustAsyncSseMoi {
-        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
-            RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                    NonCloneSimpleTwinRustAsyncSseMoi,
-                >,
-            >,
-        >::cst_decode(
-            self
-        ))
-    }
-}
-impl CstDecode<NonCloneSimpleTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> NonCloneSimpleTwinSse {
-        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
-            RustOpaqueNom<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinSse>,
-            >,
-        >::cst_decode(
-            self
-        ))
-    }
-}
-impl CstDecode<NonCloneSimpleTwinSseMoi>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> NonCloneSimpleTwinSseMoi {
-        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
-            RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinSseMoi>,
-            >,
-        >::cst_decode(
-            self
-        ))
-    }
-}
 impl CstDecode<NonCloneSimpleTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -9209,36 +9149,6 @@ impl CstDecode<NonCloneSimpleTwinSyncMoi>
         flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueMoi<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinSyncMoi>,
-            >,
-        >::cst_decode(
-            self
-        ))
-    }
-}
-impl CstDecode<NonCloneSimpleTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> NonCloneSimpleTwinSyncSse {
-        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
-            RustOpaqueNom<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinSyncSse>,
-            >,
-        >::cst_decode(
-            self
-        ))
-    }
-}
-impl CstDecode<NonCloneSimpleTwinSyncSseMoi>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> NonCloneSimpleTwinSyncSseMoi {
-        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
-            RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                    NonCloneSimpleTwinSyncSseMoi,
-                >,
             >,
         >::cst_decode(
             self
@@ -11610,87 +11520,6 @@ impl
 impl
     CstDecode<
         RustOpaqueNom<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinRustAsyncSse>,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueNom<
-        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinRustAsyncSse>,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                NonCloneSimpleTwinRustAsyncSseMoi,
-            >,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinRustAsyncSseMoi>,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueNom<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinSse>,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinSse>>
-    {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinSseMoi>,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinSseMoi>,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueNom<
             flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinSync>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
@@ -11720,46 +11549,6 @@ impl
         self,
     ) -> RustOpaqueMoi<
         flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinSyncMoi>,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueNom<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinSyncSse>,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueNom<
-        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinSyncSse>,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinSyncSseMoi>,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinSyncSseMoi>,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -30607,26 +30396,11 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoo
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_get_opaque(
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_get_opaque_impl(that)
-}
-
-#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_set_good(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     good: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_set_good_impl(that, good)
-}
-
-#[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_set_opaque(
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_set_opaque_impl(that, opaque)
 }
 
 #[wasm_bindgen]
@@ -31024,26 +30798,11 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__Struct
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_get_opaque(
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_get_opaque_impl(that)
-}
-
-#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_set_good(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     good: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_set_good_impl(that, good)
-}
-
-#[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_set_opaque(
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_set_opaque_impl(that, opaque)
 }
 
 #[wasm_bindgen]
@@ -31437,26 +31196,11 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__St
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_get_opaque(
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_get_opaque_impl(that)
-}
-
-#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_set_good(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     good: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_set_good_impl(that, good)
-}
-
-#[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_set_opaque(
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_set_opaque_impl(that, opaque)
 }
 
 #[wasm_bindgen]
@@ -31878,26 +31622,11 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__St
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_get_opaque(
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_get_opaque_impl(that)
-}
-
-#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_set_good(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     good: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_set_good_impl(that, good)
-}
-
-#[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_set_opaque(
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_set_opaque_impl(that, opaque)
 }
 
 #[wasm_bindgen]
@@ -32388,26 +32117,11 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_get_opaque(
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_get_opaque_impl(that)
-}
-
-#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_set_good(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     good: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_set_good_impl(that, good)
-}
-
-#[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_set_opaque(
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_set_opaque_impl(that, opaque)
 }
 
 #[wasm_bindgen]
@@ -32898,26 +32612,11 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoo
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_get_opaque(
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_get_opaque_impl(that)
-}
-
-#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_set_good(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     good: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_set_good_impl(that, good)
-}
-
-#[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_set_opaque(
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_set_opaque_impl(that, opaque)
 }
 
 #[wasm_bindgen]
@@ -33418,26 +33117,11 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWit
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_get_opaque(
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_get_opaque_impl(that)
-}
-
-#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_set_good(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     good: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_set_good_impl(that, good)
-}
-
-#[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_set_opaque(
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_set_opaque_impl(that, opaque)
 }
 
 #[wasm_bindgen]
@@ -33888,26 +33572,11 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGo
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_get_opaque(
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_get_opaque_impl(that)
-}
-
-#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_set_good(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     good: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_set_good_impl(that, good)
-}
-
-#[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_set_opaque(
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_set_opaque_impl(that, opaque)
 }
 
 #[wasm_bindgen]
@@ -34253,26 +33922,11 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWi
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_get_opaque(
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_get_opaque_impl(that)
-}
-
-#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_set_good(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     good: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_set_good_impl(that, good)
-}
-
-#[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_set_opaque(
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_set_opaque_impl(that, opaque)
 }
 
 #[wasm_bindgen]
@@ -34646,26 +34300,11 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWi
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_get_opaque(
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_get_opaque_impl(that)
-}
-
-#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_set_good(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     good: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_set_good_impl(that, good)
-}
-
-#[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_set_opaque(
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_set_opaque_impl(that, opaque)
 }
 
 #[wasm_bindgen]
@@ -35108,26 +34747,11 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__Stru
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_get_opaque(
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_get_opaque_impl(that)
-}
-
-#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_set_good(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     good: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_set_good_impl(that, good)
-}
-
-#[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_set_opaque(
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_set_opaque_impl(that, opaque)
 }
 
 #[wasm_bindgen]
@@ -38388,26 +38012,11 @@ pub fn wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOp
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_get_opaque(
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_get_opaque_impl(that)
-}
-
-#[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_set_good(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     good: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_set_good_impl(that, good)
-}
-
-#[wasm_bindgen]
-pub fn wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_set_opaque(
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_set_opaque_impl(that, opaque)
 }
 
 #[wasm_bindgen]

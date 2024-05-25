@@ -487,18 +487,9 @@ class StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse extends RustOpaque {
         that: this,
       );
 
-  NonCloneSimpleTwinSyncSse get opaque => RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinSyncSseStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseGetOpaque(
-        that: this,
-      );
-
   void set good(String good) => RustLib.instance.api
       .crateApiPseudoManualRustAutoOpaqueTwinSyncSseStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseSetGood(
           that: this, good: good);
-
-  void set opaque(NonCloneSimpleTwinSyncSse opaque) => RustLib.instance.api
-      .crateApiPseudoManualRustAutoOpaqueTwinSyncSseStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseSetOpaque(
-          that: this, opaque: opaque);
 }
 
 @freezed

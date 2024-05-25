@@ -354,7 +354,7 @@ pub fn rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_mo
 
 pub struct StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi {
     pub good: String,
-    pub opaque: NonCloneSimpleTwinSyncMoi,
+    opaque: NonCloneSimpleTwinSyncMoi,
 }
 
 pub enum EnumWithGoodAndOpaqueWithoutOptionTwinSyncMoi {

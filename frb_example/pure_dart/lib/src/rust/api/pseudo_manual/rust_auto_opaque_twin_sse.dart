@@ -480,18 +480,9 @@ class StructWithGoodAndOpaqueFieldWithoutOptionTwinSse extends RustOpaque {
         that: this,
       );
 
-  NonCloneSimpleTwinSse get opaque => RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinSseStructWithGoodAndOpaqueFieldWithoutOptionTwinSseGetOpaque(
-        that: this,
-      );
-
   void set good(String good) => RustLib.instance.api
       .crateApiPseudoManualRustAutoOpaqueTwinSseStructWithGoodAndOpaqueFieldWithoutOptionTwinSseSetGood(
           that: this, good: good);
-
-  void set opaque(NonCloneSimpleTwinSse opaque) => RustLib.instance.api
-      .crateApiPseudoManualRustAutoOpaqueTwinSseStructWithGoodAndOpaqueFieldWithoutOptionTwinSseSetOpaque(
-          that: this, opaque: opaque);
 }
 
 @freezed

@@ -513,18 +513,9 @@ class StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync
         that: this,
       );
 
-  NonCloneSimpleTwinRustAsync get opaque => RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncGetOpaque(
-        that: this,
-      );
-
   void set good(String good) => RustLib.instance.api
       .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSetGood(
           that: this, good: good);
-
-  void set opaque(NonCloneSimpleTwinRustAsync opaque) => RustLib.instance.api
-      .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSetOpaque(
-          that: this, opaque: opaque);
 }
 
 @freezed

@@ -307,7 +307,7 @@ pub fn rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sse(
 
 pub struct StructWithGoodAndOpaqueFieldWithoutOptionTwinSse {
     pub good: String,
-    pub opaque: NonCloneSimpleTwinSse,
+    opaque: NonCloneSimpleTwinSse,
 }
 
 pub enum EnumWithGoodAndOpaqueWithoutOptionTwinSse {

@@ -487,18 +487,9 @@ class StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi extends RustOpaque {
         that: this,
       );
 
-  NonCloneSimpleTwinSyncMoi get opaque => RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinSyncMoiStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoiGetOpaque(
-        that: this,
-      );
-
   void set good(String good) => RustLib.instance.api
       .crateApiPseudoManualRustAutoOpaqueTwinSyncMoiStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoiSetGood(
           that: this, good: good);
-
-  void set opaque(NonCloneSimpleTwinSyncMoi opaque) => RustLib.instance.api
-      .crateApiPseudoManualRustAutoOpaqueTwinSyncMoiStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoiSetOpaque(
-          that: this, opaque: opaque);
 }
 
 @freezed

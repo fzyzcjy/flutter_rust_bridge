@@ -26588,36 +26588,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       NonCloneSimpleTwinRustAsyncMoi raw);
 
   @protected
-  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncSse(
-      NonCloneSimpleTwinRustAsyncSse raw);
-
-  @protected
-  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncSseMoi(
-      NonCloneSimpleTwinRustAsyncSseMoi raw);
-
-  @protected
-  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSse(
-      NonCloneSimpleTwinSse raw);
-
-  @protected
-  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSseMoi(
-      NonCloneSimpleTwinSseMoi raw);
-
-  @protected
   int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
       NonCloneSimpleTwinSync raw);
 
   @protected
   int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
       NonCloneSimpleTwinSyncMoi raw);
-
-  @protected
-  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncSse(
-      NonCloneSimpleTwinSyncSse raw);
-
-  @protected
-  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncSseMoi(
-      NonCloneSimpleTwinSyncSseMoi raw);
 
   @protected
   int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinMoi(
@@ -27383,36 +27359,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       NonCloneSimpleTwinRustAsyncMoi raw);
 
   @protected
-  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncSse(
-      NonCloneSimpleTwinRustAsyncSse raw);
-
-  @protected
-  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncSseMoi(
-      NonCloneSimpleTwinRustAsyncSseMoi raw);
-
-  @protected
-  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSse(
-      NonCloneSimpleTwinSse raw);
-
-  @protected
-  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSseMoi(
-      NonCloneSimpleTwinSseMoi raw);
-
-  @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
       NonCloneSimpleTwinSync raw);
 
   @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
       NonCloneSimpleTwinSyncMoi raw);
-
-  @protected
-  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncSse(
-      NonCloneSimpleTwinSyncSse raw);
-
-  @protected
-  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncSseMoi(
-      NonCloneSimpleTwinSyncSseMoi raw);
 
   @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
@@ -49730,25 +49682,11 @@ class RustLibWire implements BaseWire {
                   that);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_get_opaque(
-              Object that) =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_get_opaque(
-                  that);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_set_good(
               Object that, String good) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_set_good(
                   that, good);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_set_opaque(
-              Object that, Object opaque) =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_set_opaque(
-                  that, opaque);
 
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_arg_borrow_twin_moi(
           NativePortType port_, Object arg, int expect) =>
@@ -50046,25 +49984,11 @@ class RustLibWire implements BaseWire {
                   that);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_get_opaque(
-              Object that) =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_get_opaque(
-                  that);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_set_good(
               Object that, String good) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_set_good(
                   that, good);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_set_opaque(
-              Object that, Object opaque) =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_set_opaque(
-                  that, opaque);
 
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_arg_borrow_twin_rust_async(
           NativePortType port_, Object arg, int expect) =>
@@ -50362,25 +50286,11 @@ class RustLibWire implements BaseWire {
                   that);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_get_opaque(
-              Object that) =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_get_opaque(
-                  that);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_set_good(
               Object that, String good) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_set_good(
                   that, good);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_set_opaque(
-              Object that, Object opaque) =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_set_opaque(
-                  that, opaque);
 
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_arg_borrow_twin_rust_async_moi(
           NativePortType port_, Object arg, int expect) =>
@@ -50714,25 +50624,11 @@ class RustLibWire implements BaseWire {
                   that);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_get_opaque(
-              Object that) =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_get_opaque(
-                  that);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_set_good(
               Object that, String good) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_set_good(
                   that, good);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_set_opaque(
-              Object that, Object opaque) =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_set_opaque(
-                  that, opaque);
 
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_arg_borrow_twin_rust_async_sse(
           NativePortType port_,
@@ -51174,25 +51070,11 @@ class RustLibWire implements BaseWire {
                   that);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_get_opaque(
-              Object that) =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_get_opaque(
-                  that);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_set_good(
               Object that, String good) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_set_good(
                   that, good);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_set_opaque(
-              Object that, Object opaque) =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_set_opaque(
-                  that, opaque);
 
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_arg_borrow_twin_rust_async_sse_moi(
           NativePortType port_,
@@ -51634,25 +51516,11 @@ class RustLibWire implements BaseWire {
                   that);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_get_opaque(
-              Object that) =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_get_opaque(
-                  that);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_set_good(
               Object that, String good) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_set_good(
                   that, good);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_set_opaque(
-              Object that, Object opaque) =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_set_opaque(
-                  that, opaque);
 
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_arg_borrow_twin_sse(
           NativePortType port_,
@@ -52094,25 +51962,11 @@ class RustLibWire implements BaseWire {
                   that);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_get_opaque(
-              Object that) =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_get_opaque(
-                  that);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_set_good(
               Object that, String good) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_set_good(
                   that, good);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_set_opaque(
-              Object that, Object opaque) =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_set_opaque(
-                  that, opaque);
 
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_arg_borrow_twin_sse_moi(
           NativePortType port_,
@@ -52522,25 +52376,11 @@ class RustLibWire implements BaseWire {
                   that);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_get_opaque(
-              Object that) =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_get_opaque(
-                  that);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_set_good(
               Object that, String good) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_set_good(
                   that, good);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_set_opaque(
-              Object that, Object opaque) =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_set_opaque(
-                  that, opaque);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_borrow_twin_sync(
@@ -52854,25 +52694,11 @@ class RustLibWire implements BaseWire {
                   that);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_get_opaque(
-              Object that) =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_get_opaque(
-                  that);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_set_good(
               Object that, String good) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_set_good(
                   that, good);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_set_opaque(
-              Object that, Object opaque) =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_set_opaque(
-                  that, opaque);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_arg_borrow_twin_sync_moi(
@@ -53218,25 +53044,11 @@ class RustLibWire implements BaseWire {
                   that);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_get_opaque(
-              Object that) =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_get_opaque(
-                  that);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_set_good(
               Object that, String good) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_set_good(
                   that, good);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_set_opaque(
-              Object that, Object opaque) =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_set_opaque(
-                  that, opaque);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_arg_borrow_twin_sync_sse(
@@ -53678,25 +53490,11 @@ class RustLibWire implements BaseWire {
                   that);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_get_opaque(
-              Object that) =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_get_opaque(
-                  that);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_set_good(
               Object that, String good) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_set_good(
                   that, good);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_set_opaque(
-              Object that, Object opaque) =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_set_opaque(
-                  that, opaque);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_arg_borrow_twin_sync_sse_moi(
@@ -56290,25 +56088,11 @@ class RustLibWire implements BaseWire {
                   that);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_get_opaque(
-              Object that) =>
-          wasmModule
-              .wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_get_opaque(
-                  that);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_set_good(
               Object that, String good) =>
           wasmModule
               .wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_set_good(
                   that, good);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_set_opaque(
-              Object that, Object opaque) =>
-          wasmModule
-              .wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_set_opaque(
-                  that, opaque);
 
   void wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_borrow_twin_normal(
           NativePortType port_, Object arg, int expect) =>
@@ -68261,16 +68045,8 @@ class RustLibWasmModule implements WasmModule {
           Object that);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_get_opaque(
-          Object that);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_set_good(
           Object that, String good);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_set_opaque(
-          Object that, Object opaque);
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_arg_borrow_twin_moi(
@@ -68469,16 +68245,8 @@ class RustLibWasmModule implements WasmModule {
           Object that);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_get_opaque(
-          Object that);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_set_good(
           Object that, String good);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_set_opaque(
-          Object that, Object opaque);
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_arg_borrow_twin_rust_async(
@@ -68677,16 +68445,8 @@ class RustLibWasmModule implements WasmModule {
           Object that);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_get_opaque(
-          Object that);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_set_good(
           Object that, String good);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_set_opaque(
-          Object that, Object opaque);
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_arg_borrow_twin_rust_async_moi(
@@ -68921,16 +68681,8 @@ class RustLibWasmModule implements WasmModule {
           Object that);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_get_opaque(
-          Object that);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_set_good(
           Object that, String good);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_set_opaque(
-          Object that, Object opaque);
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_arg_borrow_twin_rust_async_sse(
@@ -69273,16 +69025,8 @@ class RustLibWasmModule implements WasmModule {
           Object that);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_get_opaque(
-          Object that);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_set_good(
           Object that, String good);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_set_opaque(
-          Object that, Object opaque);
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_arg_borrow_twin_rust_async_sse_moi(
@@ -69625,16 +69369,8 @@ class RustLibWasmModule implements WasmModule {
           Object that);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_get_opaque(
-          Object that);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_set_good(
           Object that, String good);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_set_opaque(
-          Object that, Object opaque);
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_arg_borrow_twin_sse(
@@ -69977,16 +69713,8 @@ class RustLibWasmModule implements WasmModule {
           Object that);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_get_opaque(
-          Object that);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_set_good(
           Object that, String good);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_set_opaque(
-          Object that, Object opaque);
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_arg_borrow_twin_sse_moi(
@@ -70289,16 +70017,8 @@ class RustLibWasmModule implements WasmModule {
           Object that);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_get_opaque(
-          Object that);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_set_good(
           Object that, String good);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_set_opaque(
-          Object that, Object opaque);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_borrow_twin_sync(
@@ -70481,16 +70201,8 @@ class RustLibWasmModule implements WasmModule {
           Object that);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_get_opaque(
-          Object that);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_set_good(
           Object that, String good);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_set_opaque(
-          Object that, Object opaque);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_arg_borrow_twin_sync_moi(
@@ -70701,16 +70413,8 @@ class RustLibWasmModule implements WasmModule {
           Object that);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_get_opaque(
-          Object that);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_set_good(
           Object that, String good);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_set_opaque(
-          Object that, Object opaque);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_arg_borrow_twin_sync_sse(
@@ -71005,16 +70709,8 @@ class RustLibWasmModule implements WasmModule {
           Object that);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_get_opaque(
-          Object that);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_set_good(
           Object that, String good);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_set_opaque(
-          Object that, Object opaque);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_arg_borrow_twin_sync_sse_moi(
@@ -72827,16 +72523,8 @@ class RustLibWasmModule implements WasmModule {
           Object that);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_get_opaque(
-          Object that);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_set_good(
           Object that, String good);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_set_opaque(
-          Object that, Object opaque);
 
   external void
       wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_borrow_twin_normal(

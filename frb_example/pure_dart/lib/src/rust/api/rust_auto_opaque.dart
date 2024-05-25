@@ -485,18 +485,9 @@ class StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal extends RustOpaque {
         that: this,
       );
 
-  NonCloneSimpleTwinNormal get opaque => RustLib.instance.api
-          .crateApiRustAutoOpaqueStructWithGoodAndOpaqueFieldWithoutOptionTwinNormalGetOpaque(
-        that: this,
-      );
-
   void set good(String good) => RustLib.instance.api
       .crateApiRustAutoOpaqueStructWithGoodAndOpaqueFieldWithoutOptionTwinNormalSetGood(
           that: this, good: good);
-
-  void set opaque(NonCloneSimpleTwinNormal opaque) => RustLib.instance.api
-      .crateApiRustAutoOpaqueStructWithGoodAndOpaqueFieldWithoutOptionTwinNormalSetOpaque(
-          that: this, opaque: opaque);
 }
 
 @freezed
