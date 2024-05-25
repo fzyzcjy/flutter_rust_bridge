@@ -8,5 +8,3 @@ When doing so for `RustAutoOpaque` objects, you will receive a runtime error.
 In short, just write normal Rust code, and you are safe.
 Anything that violates Rust's model or safety will be caught and provide a runtime error,
 instead of the dangerous undefined behavior.
-
-TODO doc
