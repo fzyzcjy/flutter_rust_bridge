@@ -101,3 +101,13 @@ impl ItemContainerSolutionTwoTwinNormal {
         self.items.iter().map(|x| x.try_read().unwrap().0).collect()
     }
 }
+
+#[frb(opaque)]
+pub struct DeliberateFailSanityCheckTwinNormal {
+    pub good_field_a: String,
+    pub good_field_b: i32,
+    pub good_field_c: RustAutoOpaque<OpaqueItemTwinNormal>,
+    pub deliberate_bad_field_a: Vec<u8>,
+    pub deliberate_bad_field_b: OpaqueItemTwinNormal,
+    pub deliberate_bad_field_c: Vec<OpaqueItemTwinNormal>,
+}
