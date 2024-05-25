@@ -12,10 +12,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
     expect(await container.getItemContentsTwinNormal(), [100]);
 
-    // TODO
-    // expect(container.name, 'hi');
-    // container.name = 'hello';
-    // expect(container.name, 'hello');
+    expect(container.name, 'hi');
+    container.name = 'hello';
+    expect(container.name, 'hello');
   });
 
   test('ItemContainerSolutionTwoTwinNormal', () async {
