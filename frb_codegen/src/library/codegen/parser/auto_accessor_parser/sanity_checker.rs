@@ -19,10 +19,10 @@ pub(super) fn report(hints: &[SanityCheckHint]) {
     }
 
     warn!(
-        "It is suggested (but not required) to wrap field `{struct_name}.{field_name}` with `RustAutoOpaque<..>`. \
-        Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/types/arbitrary/rust-auto-opaque/properties for more details.",
-        struct_name = struct_name.rust_style(),
-        field_name = field.name.rust_style(),
+        "To use the automatically generated getters of the following fields, \
+        it is suggested to read https://fzyzcjy.github.io/flutter_rust_bridge/guides/types/arbitrary/rust-auto-opaque/properties to know more details. \
+        (Related fields: {})",
+        hints.iter().map(|x| &x.name).join(", ")
     )
 }
 
