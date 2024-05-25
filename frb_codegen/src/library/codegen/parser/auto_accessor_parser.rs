@@ -5,6 +5,7 @@ use crate::codegen::ir::func::{
     IrFunc, IrFuncAccessorMode, IrFuncInput, IrFuncMode, IrFuncOutput, IrFuncOwnerInfo,
     IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode, OwnershipMode,
 };
+use crate::codegen::ir::ident::IrIdent;
 use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
@@ -24,10 +25,9 @@ use crate::codegen::parser::type_parser::{
 };
 use crate::if_then_some;
 use itertools::Itertools;
-use sha1::{Sha1, Digest};
+use sha1::{Digest, Sha1};
 use std::collections::HashMap;
 use std::path::{Path, PathBuf};
-use crate::codegen::ir::ident::IrIdent;
 
 pub(crate) fn parse_auto_accessors(
     config: &ParserInternalConfig,
@@ -105,27 +105,17 @@ fn parse_auto_accessor_of_field(
         mode: IrFuncOwnerInfoMethodMode::Instance,
     };
 
-    let mut inputs = vec![
-        IrFuncInput {
-            ownership_mode: Some(match accessor_mode {
-                IrFuncAccessorMode::Getter => OwnershipMode::Ref,
-                IrFuncAccessorMode::Setter => OwnershipMode::RefMut,
-            }),
-            inner: IrField {
-                ty: ty_direct_parse.to_owned(),
-                name: IrIdent::new("that".to_owned()),
-                is_final: true,
-                is_rust_public: None,
-                comments: vec![],
-                default: None,
-                settings: Default::default(),
-            },
-        },
-    ];
+    let mut inputs = vec![IrFuncInput {
+        ownership_mode: Some(match accessor_mode {
+            IrFuncAccessorMode::Getter => OwnershipMode::Ref,
+            IrFuncAccessorMode::Setter => OwnershipMode::RefMut,
+        }),
+        inner: create_ir_field(ty_direct_parse.to_owned(), "that"),
+    }];
     if accessor_mode == IrFuncAccessorMode::Setter {
         inputs.push(IrFuncInput {
             ownership_mode: None,
-            inner: field.ty.clone(),
+            inner: create_ir_field(field.ty.clone(), &field.name.raw),
         });
     }
 
@@ -165,6 +155,18 @@ fn compute_src_lineno_pseudo(struct_name: &NamespacedName, field: &IrField) -> u
     hasher.update(field.name.raw.as_bytes());
     let digest = hasher.finalize();
     usize::from_le_bytes(digest[..8].try_into().unwrap())
+}
+
+fn create_ir_field(ty: IrType, name: &str) -> IrField {
+    IrField {
+        ty,
+        name: IrIdent::new(name.to_owned()),
+        is_final: true,
+        is_rust_public: None,
+        comments: vec![],
+        default: None,
+        settings: Default::default(),
+    }
 }
 
 fn create_parsing_context(
