@@ -1,0 +1,3 @@
+# `RustAutoOpaque` class
+
+TODO
