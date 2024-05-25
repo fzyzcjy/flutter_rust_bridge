@@ -65,16 +65,13 @@ fn parse_auto_accessors_of_struct(
         if_then_some!(let IrType::StructRef(ir) = ty_struct_ref, ir.ident).unwrap();
     let ty_struct = &type_parser.struct_pool()[&ty_struct_ident];
 
-    Ok((ty_struct.fields.iter())
+    (ty_struct.fields.iter())
         .filter(|field| field.is_rust_public.unwrap())
         .map(|field| parse_auto_accessor_of_field(field))
-        .collect::<anyhow::Result<Vec<_>>>()?
-        .into_iter()
-        .filter_map(|x| x)
-        .collect_vec())
+        .collect()
 }
 
-fn parse_auto_accessor_of_field(field: &IrField) -> anyhow::Result<Option<IrFunc>> {
+fn parse_auto_accessor_of_field(field: &IrField) -> anyhow::Result<IrFunc> {
     todo!()
 }
 
