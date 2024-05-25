@@ -1,3 +1,4 @@
+use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::enumeration::IrVariantKind;
 use crate::codegen::ir::ty::structure::IrStruct;
@@ -32,5 +33,15 @@ fn handle_type(pack: &IrPack, ty: IrType) -> Vec<TODO> {
 }
 
 fn handle_struct(st: &IrStruct, partial_name: &str) -> Vec<TODO> {
-    st.fields.iter().map(|field| handle_field(field)).collect()
+    (st.fields.iter())
+        .filter_map(|field| handle_field(field, partial_name))
+        .collect()
+}
+
+fn handle_field(field: &IrField, partial_name: &str) -> Option<TODO> {
+    if matches!(field.ty, IrType::RustAutoOpaqueImplicit(_)) {
+        Some(TODO)
+    } else {
+        Noen
+    }
 }
