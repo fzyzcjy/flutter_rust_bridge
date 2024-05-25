@@ -1,6 +1,7 @@
 use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
 use crate::codegen::ir::annotation::IrDartAnnotation;
 use crate::codegen::ir::default::IrDefaultValue;
+use crate::codegen::ir::func::IrFuncAccessorMode;
 use crate::codegen::ir::import::IrDartImport;
 use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::if_then_some;
@@ -66,8 +67,14 @@ impl FrbAttributes {
         self.any_eq(&FrbAttribute::StreamDartAwait)
     }
 
-    pub(crate) fn getter(&self) -> bool {
-        self.any_eq(&FrbAttribute::Getter)
+    pub(crate) fn accessor(&self) -> Option<IrFuncAccessorMode> {
+        if self.any_eq(&FrbAttribute::Getter) {
+            Some(IrFuncAccessorMode::Getter)
+        } else if self.any_eq(&FrbAttribute::Setter) {
+            Some(IrFuncAccessorMode::Setter)
+        } else {
+            None
+        }
     }
 
     pub(crate) fn init(&self) -> bool {
@@ -167,6 +174,7 @@ mod frb_keyword {
     syn::custom_keyword!(sync);
     syn::custom_keyword!(stream_dart_await);
     syn::custom_keyword!(getter);
+    syn::custom_keyword!(setter);
     syn::custom_keyword!(init);
     syn::custom_keyword!(ignore);
     syn::custom_keyword!(opaque);
@@ -202,6 +210,7 @@ enum FrbAttribute {
     Sync,
     StreamDartAwait,
     Getter,
+    Setter,
     Init,
     Ignore,
     Opaque,
@@ -236,6 +245,7 @@ impl Parse for FrbAttribute {
                 )
             })
             .or_else(|| parse_keyword::<getter, _>(input, &lookahead, getter, Getter))
+            .or_else(|| parse_keyword::<setter, _>(input, &lookahead, setter, Setter))
             .or_else(|| parse_keyword::<init, _>(input, &lookahead, init, Init))
             .or_else(|| parse_keyword::<ignore, _>(input, &lookahead, ignore, Ignore))
             .or_else(|| parse_keyword::<opaque, _>(input, &lookahead, opaque, Opaque))
@@ -590,6 +600,11 @@ mod tests {
     #[test]
     fn test_getter() {
         simple_keyword_tester("getter", FrbAttribute::Getter);
+    }
+
+    #[test]
+    fn test_setter() {
+        simple_keyword_tester("setter", FrbAttribute::Setter);
     }
 
     #[test]
