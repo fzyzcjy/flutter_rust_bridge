@@ -13,6 +13,7 @@ use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::ty::IrType::Primitive;
 use crate::codegen::ir::ty::{IrContext, IrType};
 use crate::codegen::parser::attribute_parser::FrbAttributes;
+use crate::codegen::parser::function_parser::argument::merge_ownership_into_ty;
 use crate::codegen::parser::function_parser::{
     compute_codec_mode_pack, parse_effective_function_name_of_method,
 };
@@ -83,6 +84,8 @@ fn parse_auto_accessors_of_struct(
                         field,
                         accessor_mode,
                         &ty_direct_parse,
+                        type_parser,
+                        &context,
                     )
                 })
         })
@@ -95,6 +98,8 @@ fn parse_auto_accessor_of_field(
     field: &IrField,
     accessor_mode: IrFuncAccessorMode,
     ty_direct_parse: &IrType,
+    type_parser: &mut TypeParser,
+    context: &TypeParserParsingContext,
 ) -> anyhow::Result<IrFunc> {
     let rust_method_name = format!("{}_{}", accessor_mode.verb_str(), field.name.raw);
 
@@ -105,7 +110,12 @@ fn parse_auto_accessor_of_field(
         mode: IrFuncOwnerInfoMethodMode::Instance,
     };
 
-    let mut inputs = vec![compute_self_arg(accessor_mode, ty_direct_parse)];
+    let mut inputs = vec![compute_self_arg(
+        accessor_mode,
+        ty_direct_parse,
+        type_parser,
+        context,
+    )];
     if accessor_mode == IrFuncAccessorMode::Setter {
         inputs.push(IrFuncInput {
             ownership_mode: None,
@@ -116,7 +126,9 @@ fn parse_auto_accessor_of_field(
     let field_name_rust = field.name.rust_style();
     let rust_call_code = match accessor_mode {
         IrFuncAccessorMode::Getter => format!("api_that.{field_name_rust}.clone()"),
-        IrFuncAccessorMode::Setter => format!("{{ api_that.{field_name_rust} = api_{field_name_rust}; }}"),
+        IrFuncAccessorMode::Setter => {
+            format!("{{ api_that.{field_name_rust} = api_{field_name_rust}; }}")
+        }
     };
 
     Ok(IrFunc {
@@ -153,14 +165,25 @@ fn parse_auto_accessor_of_field(
 fn compute_self_arg(
     accessor_mode: IrFuncAccessorMode,
     ty_direct_parse: &IrType,
-) {
-    IrFuncInput {
-        ownership_mode: Some(match accessor_mode {
-            IrFuncAccessorMode::Getter => OwnershipMode::Ref,
-            IrFuncAccessorMode::Setter => OwnershipMode::RefMut,
-        }),
-        inner: create_ir_field(ty_direct_parse.to_owned(), "that"),
-    }
+    type_parser: &mut TypeParser,
+    context: &TypeParserParsingContext,
+) -> anyhow::Result<IrFuncInput> {
+    let ownership_mode = Some(match accessor_mode {
+        IrFuncAccessorMode::Getter => OwnershipMode::Ref,
+        IrFuncAccessorMode::Setter => OwnershipMode::RefMut,
+    });
+
+    let (ty_interest, ownership_mode) = merge_ownership_into_ty(
+        type_parser,
+        context,
+        ty_direct_parse.to_owned(),
+        ownership_mode,
+    )?;
+
+    Ok(IrFuncInput {
+        ownership_mode,
+        inner: create_ir_field(ty_interest, "that"),
+    })
 }
 
 fn compute_src_lineno_pseudo(struct_name: &NamespacedName, field: &IrField) -> usize {
