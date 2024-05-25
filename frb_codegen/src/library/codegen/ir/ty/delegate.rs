@@ -208,14 +208,14 @@ impl IrTypeTrait for IrTypeDelegate {
     }
 
     fn cloned_getter_semantics_reasonable(&self) -> bool {
-        match self {
+        matches!(
+            self,
             IrTypeDelegate::String
-            | IrTypeDelegate::Char
-            | IrTypeDelegate::PrimitiveEnum(_)
-            | IrTypeDelegate::BigPrimitive(_)
-            | IrTypeDelegate::RustAutoOpaqueExplicit(_) => true,
-            _ => false,
-        }
+                | IrTypeDelegate::Char
+                | IrTypeDelegate::PrimitiveEnum(_)
+                | IrTypeDelegate::BigPrimitive(_)
+                | IrTypeDelegate::RustAutoOpaqueExplicit(_)
+        )
     }
 }
 
