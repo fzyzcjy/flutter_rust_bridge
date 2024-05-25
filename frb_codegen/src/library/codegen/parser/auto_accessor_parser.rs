@@ -55,7 +55,11 @@ fn parse_auto_accessors_of_struct(
         config.default_rust_opaque_codec,
     )?;
 
-    let ty_direct_parse = type_parser.parse_type(&syn::parse_str(&struct_name.name)?, &context)?;
+    let ty_direct_parse = match type_parser.parse_type(&syn::parse_str(&struct_name.name)?, &context) {
+        Ok(value) => value,
+        // We do not care about parsing errors here (e.g. some type that we do not support)
+        Err(_) => return Ok(vec![]),
+    };
     if !matches!(ty_direct_parse, IrType::RustAutoOpaqueImplicit(_)) {
         return Ok(vec![]);
     }
