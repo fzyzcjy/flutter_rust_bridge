@@ -1,10 +1,7 @@
 use crate::codegen::config::internal_config::RustInputPathPack;
 use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::ir::field::IrField;
-use crate::codegen::ir::func::{
-    IrFunc, IrFuncAccessorMode, IrFuncInput, IrFuncMode, IrFuncOutput, IrFuncOwnerInfo,
-    IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode,
-};
+use crate::codegen::ir::func::{IrFunc, IrFuncAccessorMode, IrFuncInput, IrFuncMode, IrFuncOutput, IrFuncOwnerInfo, IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode, OwnershipMode};
 use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
@@ -103,7 +100,10 @@ fn parse_auto_accessor_of_field(
         id: None,
         inputs: vec![
             IrFuncInput {
-                ownership_mode: TODO,
+                ownership_mode: match accessor_mode {
+                    IrFuncAccessorMode::Getter => OwnershipMode::Ref,
+                    IrFuncAccessorMode::Setter => OwnershipMode::RefMut,
+                },
                 inner: TODO,
             },
             IrFuncInput {
