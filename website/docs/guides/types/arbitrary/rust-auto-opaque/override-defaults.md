@@ -1,9 +1,9 @@
 # Override defaults
 
 By default, flutter_rust_bridge tries to infer whether a type is opaque or not automatically.
-To override the default behavior sometimes, please refer to methods below.
+To override the default behavior, please use `#[frb(opaque)]` and `#[frb(non_opaque)]`.
 
-## Force a non-opaque type to be opaque
+## Example
 
 If a type is indeed encodable, it will by default be translated to the corresponding Dart types.
 However, if you want to force it to be opaque, you can use the `#[frb(opaque)]` attribute.
@@ -15,12 +15,12 @@ For example:
 
 ```rust
 struct A {
-    name: String
+    name: String,
 }
 
 #[frb(opaque)]
 struct B {
-    name: String
+    name: String,
 }
 ```
 
@@ -31,9 +31,5 @@ Will generate different Dart code:
 class A { String name; ... }
 
 // A Dart class without data fields, you should pass it to Rust to manipulate it
-class B extends RustAutoOpaque {}
+class B extends RustAutoOpaque { ... }
 ```
-
-## Force an opaque type to be non-opaque
-
-Similarly, you can use `#[frb(non_opaque)]` on a struct that is auto recognized as opaque.
