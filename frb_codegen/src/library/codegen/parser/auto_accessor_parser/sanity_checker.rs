@@ -1,7 +1,5 @@
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::namespace::NamespacedName;
-use crate::codegen::ir::ty::delegate::IrTypeDelegate;
-use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 use log::warn;
