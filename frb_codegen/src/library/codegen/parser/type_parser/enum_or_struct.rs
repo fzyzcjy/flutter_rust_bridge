@@ -16,8 +16,12 @@ where
     Id: From<NamespacedName> + Clone + PartialEq + Eq + Hash,
     SrcObj: StructOrEnumWrapper<Item> + Clone + Debug,
 {
-    fn parse(&mut self, last_segment: &SplayedSegment) -> anyhow::Result<Option<IrType>> {
-        let output = self.parse_impl(last_segment)?;
+    fn parse(
+        &mut self,
+        last_segment: &SplayedSegment,
+        override_opaque: Option<bool>,
+    ) -> anyhow::Result<Option<IrType>> {
+        let output = self.parse_impl(last_segment, override_opaque)?;
         self.handle_dart_code(&output);
         Ok(output.map(|(ty, _)| ty))
     }
@@ -25,6 +29,7 @@ where
     fn parse_impl(
         &mut self,
         last_segment: &SplayedSegment,
+        override_opaque: Option<bool>,
     ) -> anyhow::Result<Option<(IrType, FrbAttributes)>> {
         let (name, _) = last_segment;
         let name = external_impl::parse_name_or_original(name)?;
@@ -36,7 +41,7 @@ where
             let namespaced_name = NamespacedName::new(namespace, name.clone());
 
             let attrs = FrbAttributes::parse(src_object.attrs())?;
-            let attrs_opaque = attrs.opaque();
+            let attrs_opaque = override_opaque.or(attrs.opaque());
             if attrs_opaque == Some(true) {
                 debug!("Treat {name} as opaque since attribute says so");
                 return Ok(Some((self.parse_opaque(&namespaced_name)?, attrs)));

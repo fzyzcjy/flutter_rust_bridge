@@ -13,7 +13,7 @@ crate::ir! {
 pub struct IrFunc {
     pub name: NamespacedName,
     pub dart_name: Option<String>,
-    pub id: i32,
+    pub id: Option<i32>,
     pub inputs: Vec<IrFuncInput>,
     pub output: IrFuncOutput,
     pub owner: IrFuncOwnerInfo,
@@ -24,9 +24,10 @@ pub struct IrFunc {
     pub accessor: Option<IrFuncAccessorMode>,
     pub comments: Vec<IrComment>,
     pub codec_mode_pack: CodecModePack,
+    pub rust_call_code: Option<String>,
     // Currently, we use serde only for tests. Since lineno can be unstable, we skip this field for comparison
     #[serde(skip_serializing)]
-    pub src_lineno: usize,
+    pub src_lineno_pseudo: usize,
 }
 
 pub struct IrFuncInput {
@@ -171,4 +172,13 @@ impl IrFuncOwnerInfoMethod {
 pub(crate) enum IrFuncDefaultConstructorMode {
     DartConstructor,
     StaticMethod,
+}
+
+impl IrFuncAccessorMode {
+    pub(crate) fn verb_str(&self) -> &'static str {
+        match self {
+            IrFuncAccessorMode::Getter => "get",
+            IrFuncAccessorMode::Setter => "set",
+        }
+    }
 }

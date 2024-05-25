@@ -21,14 +21,14 @@ use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use crate::if_then_some;
 use std::collections::HashMap;
-use syn::{Attribute, Field, Ident, ItemEnum, Type, Variant};
+use syn::{Attribute, Field, Ident, ItemEnum, Type, Variant, Visibility};
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_enum(
         &mut self,
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
-        EnumOrStructParserEnum(self).parse(last_segment)
+        EnumOrStructParserEnum(self).parse(last_segment, None)
     }
 
     fn parse_enum(
@@ -108,6 +108,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                         ),
                         ty: self.parse_type(&field.ty)?,
                         is_final: true,
+                        is_rust_public: Some(matches!(field.vis, Visibility::Public(_))),
                         comments: parse_comments(&field.attrs),
                         default: FrbAttributes::parse(&field.attrs)?.default_value(),
                         settings: IrFieldSettings {

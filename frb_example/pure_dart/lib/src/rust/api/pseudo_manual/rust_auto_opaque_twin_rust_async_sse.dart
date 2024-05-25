@@ -496,6 +496,15 @@ class StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSsePtr,
   );
+
+  String get good => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseGetGood(
+        that: this,
+      );
+
+  void set good(String good) => RustLib.instance.api
+      .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseSetGood(
+          that: this, good: good);
 }
 
 @freezed

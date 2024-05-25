@@ -32,7 +32,7 @@
       },
       "comments": [],
       "dart_name": null,
-      "id": 4,
+      "id": 1,
       "initializer": false,
       "inputs": [
         {
@@ -40,6 +40,7 @@
             "comments": [],
             "default": null,
             "is_final": true,
+            "is_rust_public": null,
             "name": "that",
             "settings": {
               "is_in_mirrored_enum": false
@@ -92,6 +93,7 @@
         }
       },
       "rust_async": false,
+      "rust_call_code": null,
       "stream_dart_await": false
     },
     {
@@ -102,7 +104,7 @@
       },
       "comments": [],
       "dart_name": null,
-      "id": 3,
+      "id": 2,
       "initializer": false,
       "inputs": [],
       "mode": "Normal",
@@ -136,6 +138,7 @@
         }
       },
       "rust_async": false,
+      "rust_call_code": null,
       "stream_dart_await": false
     },
     {
@@ -146,7 +149,7 @@
       },
       "comments": [],
       "dart_name": null,
-      "id": 2,
+      "id": 3,
       "initializer": false,
       "inputs": [
         {
@@ -154,6 +157,7 @@
             "comments": [],
             "default": null,
             "is_final": true,
+            "is_rust_public": null,
             "name": "that",
             "settings": {
               "is_in_mirrored_enum": false
@@ -203,6 +207,7 @@
         }
       },
       "rust_async": false,
+      "rust_call_code": null,
       "stream_dart_await": false
     },
     {
@@ -213,7 +218,7 @@
       },
       "comments": [],
       "dart_name": null,
-      "id": 1,
+      "id": 4,
       "initializer": false,
       "inputs": [],
       "mode": "Normal",
@@ -242,6 +247,7 @@
         }
       },
       "rust_async": false,
+      "rust_call_code": null,
       "stream_dart_await": false
     }
   ],

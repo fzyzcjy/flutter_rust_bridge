@@ -34,6 +34,7 @@
             "comments": [],
             "default": null,
             "is_final": true,
+            "is_rust_public": null,
             "name": "s",
             "settings": {
               "is_in_mirrored_enum": false
@@ -61,6 +62,7 @@
             "comments": [],
             "default": null,
             "is_final": true,
+            "is_rust_public": null,
             "name": "e",
             "settings": {
               "is_in_mirrored_enum": false
@@ -94,6 +96,7 @@
       },
       "owner": "Function",
       "rust_async": false,
+      "rust_call_code": null,
       "stream_dart_await": false
     }
   ],
@@ -106,6 +109,7 @@
           "comments": [],
           "default": null,
           "is_final": true,
+          "is_rust_public": false,
           "name": "a",
           "settings": {
             "is_in_mirrored_enum": false

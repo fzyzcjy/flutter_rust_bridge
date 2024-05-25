@@ -67,55 +67,6 @@ MySize handleStructTwinSyncSse(
         .crateApiPseudoManualMiscExampleTwinSyncSseHandleStructTwinSyncSse(
             arg: arg, boxed: boxed, hint: hint);
 
-// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ItemContainerSolutionOneTwinSyncSse>>
-@sealed
-class ItemContainerSolutionOneTwinSyncSse extends RustOpaque {
-  ItemContainerSolutionOneTwinSyncSse.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
-
-  ItemContainerSolutionOneTwinSyncSse.sseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_ItemContainerSolutionOneTwinSyncSse,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_ItemContainerSolutionOneTwinSyncSse,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_ItemContainerSolutionOneTwinSyncSsePtr,
-  );
-
-  static ItemContainerSolutionOneTwinSyncSse createTwinSyncSse(
-          {dynamic hint}) =>
-      RustLib.instance.api
-          .crateApiPseudoManualMiscExampleTwinSyncSseItemContainerSolutionOneTwinSyncSseCreateTwinSyncSse(
-              hint: hint);
-
-  Int32List getItemContentsTwinSyncSse({dynamic hint}) => RustLib.instance.api
-      .crateApiPseudoManualMiscExampleTwinSyncSseItemContainerSolutionOneTwinSyncSseGetItemContentsTwinSyncSse(
-          that: this, hint: hint);
-}
-
-// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinSyncSse>>
-@sealed
-class OpaqueItemTwinSyncSse extends RustOpaque {
-  OpaqueItemTwinSyncSse.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
-
-  OpaqueItemTwinSyncSse.sseDecode(BigInt ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_OpaqueItemTwinSyncSse,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_OpaqueItemTwinSyncSse,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_OpaqueItemTwinSyncSsePtr,
-  );
-}
-
 class ATwinSyncSse {
   final String a;
 
@@ -201,37 +152,6 @@ class CTwinSyncSse {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is CTwinSyncSse && runtimeType == other.runtimeType && c == other.c;
-}
-
-class ItemContainerSolutionTwoTwinSyncSse {
-  String name;
-  final List<OpaqueItemTwinSyncSse> items;
-
-  ItemContainerSolutionTwoTwinSyncSse({
-    required this.name,
-    required this.items,
-  });
-
-  static ItemContainerSolutionTwoTwinSyncSse createTwinSyncSse(
-          {dynamic hint}) =>
-      RustLib.instance.api
-          .crateApiPseudoManualMiscExampleTwinSyncSseItemContainerSolutionTwoTwinSyncSseCreateTwinSyncSse(
-              hint: hint);
-
-  Int32List getItemContentsTwinSyncSse({dynamic hint}) => RustLib.instance.api
-      .crateApiPseudoManualMiscExampleTwinSyncSseItemContainerSolutionTwoTwinSyncSseGetItemContentsTwinSyncSse(
-          that: this, hint: hint);
-
-  @override
-  int get hashCode => name.hashCode ^ items.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ItemContainerSolutionTwoTwinSyncSse &&
-          runtimeType == other.runtimeType &&
-          name == other.name &&
-          items == other.items;
 }
 
 class MyNestedStructTwinSyncSse {

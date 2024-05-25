@@ -52,7 +52,7 @@ fn generate_ffi_dispatcher(funcs: &[IrFunc]) -> WireRustCodecOutputSpec {
                         };
                         format!(
                             "{} => {}_impl({maybe_port}ptr, rust_vec_len, data_len),",
-                            f.id,
+                            f.id.unwrap(),
                             wire_func_name(f)
                         )
                     })

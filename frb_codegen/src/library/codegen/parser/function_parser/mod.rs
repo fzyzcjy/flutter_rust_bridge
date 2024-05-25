@@ -8,7 +8,7 @@ use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
-use crate::codegen::parser::function_extractor::GeneralizedItemFn;
+use crate::codegen::parser::function_extractor::structs::GeneralizedItemFn;
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::{external_impl, TypeParser, TypeParserParsingContext};
 use crate::library::codegen::ir::ty::IrTypeTrait;
@@ -40,7 +40,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         file_path: &Path,
         rust_crate_dir: &Path,
         force_codec_mode_pack: &Option<CodecModePack>,
-        func_id: i32,
         default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
     ) -> anyhow::Result<Option<IrFunc>> {
@@ -49,7 +48,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             file_path,
             rust_crate_dir,
             force_codec_mode_pack,
-            func_id,
             default_stream_sink_codec,
             default_rust_opaque_codec,
         )
@@ -63,7 +61,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         file_path: &Path,
         rust_crate_dir: &Path,
         force_codec_mode_pack: &Option<CodecModePack>,
-        func_id: i32,
         default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
     ) -> anyhow::Result<Option<IrFunc>> {
@@ -116,7 +113,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         Ok(Some(IrFunc {
             name: NamespacedName::new(namespace_refined, func_name),
             dart_name: attributes.name(),
-            id: func_id,
+            id: None, // to be filled later
             inputs: info.inputs,
             output: IrFuncOutput {
                 normal: info.ok_output.unwrap_or(Primitive(IrTypePrimitive::Unit)),
@@ -130,7 +127,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             accessor: attributes.accessor(),
             comments: parse_comments(func.attrs()),
             codec_mode_pack,
-            src_lineno,
+            rust_call_code: None,
+            src_lineno_pseudo: src_lineno,
         }))
     }
 
@@ -200,14 +198,16 @@ fn compute_func_mode(attributes: &FrbAttributes, info: &FunctionPartialInfo) -> 
 fn parse_name(sig: &Signature, owner: &IrFuncOwnerInfo) -> String {
     match owner {
         IrFuncOwnerInfo::Function => sig.ident.to_string(),
-        IrFuncOwnerInfo::Method(method) => {
-            let owner_name = match &method.owner_ty {
-                IrType::RustAutoOpaqueImplicit(ty) => ty.sanitized_type(),
-                ty => ty.safe_ident(),
-            };
-            format!("{owner_name}_{}", method.actual_method_name)
-        }
+        IrFuncOwnerInfo::Method(method) => parse_effective_function_name_of_method(method),
     }
+}
+
+pub(crate) fn parse_effective_function_name_of_method(method: &IrFuncOwnerInfoMethod) -> String {
+    let owner_name = match &method.owner_ty {
+        IrType::RustAutoOpaqueImplicit(ty) => ty.sanitized_type(),
+        ty => ty.safe_ident(),
+    };
+    format!("{owner_name}_{}", method.actual_method_name)
 }
 
 #[derive(Debug, Default)]
@@ -242,7 +242,7 @@ fn merge_option<T: Debug>(a: Option<T>, b: Option<T>) -> anyhow::Result<Option<T
     Ok(a.or(b))
 }
 
-fn compute_codec_mode_pack(
+pub(crate) fn compute_codec_mode_pack(
     attributes: &FrbAttributes,
     force_ans: &Option<CodecModePack>,
 ) -> CodecModePack {

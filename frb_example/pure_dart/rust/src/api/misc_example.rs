@@ -1,5 +1,4 @@
 use crate::auxiliary::sample_types::MySize;
-use crate::frb_generated::RustAutoOpaque;
 use flutter_rust_bridge::frb;
 use log::info;
 
@@ -145,50 +144,3 @@ pub struct MySizeFreezedTwinNormal {
 // To test parsing of `pub(super)`
 #[allow(dead_code)]
 pub(super) fn visibility_restricted_func_twin_normal() {}
-
-// #1937
-// Suppose this is opaque
-#[frb(opaque)]
-pub struct OpaqueItemTwinNormal(i32);
-
-// #1937
-#[frb(opaque)]
-pub struct ItemContainerSolutionOneTwinNormal {
-    // TODO auto generate getter/setter
-    pub name: String,
-    items: Vec<OpaqueItemTwinNormal>,
-}
-
-impl ItemContainerSolutionOneTwinNormal {
-    pub fn create_twin_normal() -> Self {
-        Self {
-            name: "hi".to_owned(),
-            items: vec![OpaqueItemTwinNormal(100)],
-        }
-    }
-
-    pub fn get_item_contents_twin_normal(&self) -> Vec<i32> {
-        self.items.iter().map(|x| x.0).collect()
-    }
-}
-
-// #1937
-#[frb]
-pub struct ItemContainerSolutionTwoTwinNormal {
-    #[frb(non_final)]
-    pub name: String,
-    pub items: Vec<RustAutoOpaque<OpaqueItemTwinNormal>>,
-}
-
-impl ItemContainerSolutionTwoTwinNormal {
-    pub fn create_twin_normal() -> Self {
-        Self {
-            name: "hi".to_owned(),
-            items: vec![RustAutoOpaque::new(OpaqueItemTwinNormal(100))],
-        }
-    }
-
-    pub fn get_item_contents_twin_normal(&self) -> Vec<i32> {
-        self.items.iter().map(|x| x.try_read().unwrap().0).collect()
-    }
-}

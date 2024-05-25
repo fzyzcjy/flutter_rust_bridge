@@ -41,7 +41,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             {
                 return Ok(ans);
             }
-            if let Some(ans) = self.parse_type_path_data_struct(last_segment)? {
+            if let Some(ans) = self.parse_type_path_data_struct(last_segment, None)? {
                 return Ok(ans);
             }
             if let Some(ans) = self.parse_type_path_data_enum(last_segment)? {

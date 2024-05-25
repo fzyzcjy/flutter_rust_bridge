@@ -19,6 +19,7 @@
             "comments": [],
             "default": null,
             "is_final": true,
+            "is_rust_public": null,
             "name": "chrono_duration",
             "settings": {
               "is_in_mirrored_enum": false
@@ -38,6 +39,7 @@
             "comments": [],
             "default": null,
             "is_final": true,
+            "is_rust_public": null,
             "name": "uuid_uuid",
             "settings": {
               "is_in_mirrored_enum": false
@@ -63,6 +65,7 @@
       },
       "owner": "Function",
       "rust_async": false,
+      "rust_call_code": null,
       "stream_dart_await": false
     },
     {
@@ -73,7 +76,7 @@
       },
       "comments": [],
       "dart_name": null,
-      "id": 3,
+      "id": 2,
       "initializer": false,
       "inputs": [],
       "mode": "Normal",
@@ -92,6 +95,7 @@
       },
       "owner": "Function",
       "rust_async": false,
+      "rust_call_code": null,
       "stream_dart_await": false
     },
     {
@@ -102,7 +106,7 @@
       },
       "comments": [],
       "dart_name": null,
-      "id": 2,
+      "id": 3,
       "initializer": false,
       "inputs": [],
       "mode": "Normal",
@@ -121,6 +125,7 @@
       },
       "owner": "Function",
       "rust_async": false,
+      "rust_call_code": null,
       "stream_dart_await": false
     },
     {
@@ -150,6 +155,7 @@
       },
       "owner": "Function",
       "rust_async": false,
+      "rust_call_code": null,
       "stream_dart_await": false
     }
   ],

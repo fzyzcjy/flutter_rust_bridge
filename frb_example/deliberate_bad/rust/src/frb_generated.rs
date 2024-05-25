@@ -226,21 +226,21 @@ fn pde_ffi_dispatcher_primary_impl(
 ) {
     // Codec=Pde (Serialization + dispatch), see doc to use other codecs
     match func_id {
-        5 => wire__crate__api__simple__make_data_race_impl(port, ptr, rust_vec_len, data_len),
+        1 => wire__crate__api__simple__make_data_race_impl(port, ptr, rust_vec_len, data_len),
         2 => wire__crate__api__simple__make_heap_use_after_free_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        4 => wire__crate__api__simple__make_memory_leak_impl(port, ptr, rust_vec_len, data_len),
-        1 => wire__crate__api__simple__make_stack_buffer_overflow_impl(
+        3 => wire__crate__api__simple__make_memory_leak_impl(port, ptr, rust_vec_len, data_len),
+        4 => wire__crate__api__simple__make_stack_buffer_overflow_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        3 => wire__crate__api__simple__make_use_of_uninitialized_value_impl(
+        5 => wire__crate__api__simple__make_use_of_uninitialized_value_impl(
             port,
             ptr,
             rust_vec_len,
