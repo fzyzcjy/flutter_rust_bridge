@@ -305,6 +305,7 @@ pub fn rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync(
 
 // ================ struct/enum with both encodable and opaque fields, without non_opaque option ===================
 
+#[allow(dead_code)]
 pub struct StructWithGoodAndOpaqueFieldWithoutOptionTwinSync {
     pub good: String,
     opaque: NonCloneSimpleTwinSync,
