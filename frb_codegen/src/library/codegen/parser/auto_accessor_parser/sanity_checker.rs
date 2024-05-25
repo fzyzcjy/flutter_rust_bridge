@@ -31,15 +31,5 @@ pub(super) struct SanityCheckHint {
 }
 
 fn does_need_hint(ty: &IrType) -> bool {
-    match ty {
-        // TODO more
-        // TODO sth like box int
-        IrType::Primitive(_)
-        | IrType::Delegate(IrTypeDelegate::String)
-        | IrType::Delegate(IrTypeDelegate::Char)
-        | IrType::Delegate(IrTypeDelegate::BigPrimitive(_)) => false,
-        _ => true,
-    }
+    TODO
 }
-
-fn display_hint() {}
