@@ -91,6 +91,10 @@ impl IrTypeTrait for IrTypeRustOpaque {
     fn as_primitive(&self) -> Option<&IrTypePrimitive> {
         Some(&RUST_OPAQUE_AS_PRIMITIVE)
     }
+
+    fn cloned_getter_semantics_reasonable(&self) -> bool {
+        true
+    }
 }
 
 pub(super) const RUST_OPAQUE_AS_PRIMITIVE: IrTypePrimitive = IrTypePrimitive::Usize;

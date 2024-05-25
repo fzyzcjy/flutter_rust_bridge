@@ -19,4 +19,8 @@ impl IrTypeTrait for IrTypeDynamic {
     fn rust_api_type(&self) -> String {
         "flutter_rust_bridge::for_generated::DartAbi".to_owned()
     }
+
+    fn cloned_getter_semantics_reasonable(&self) -> bool {
+        true
+    }
 }

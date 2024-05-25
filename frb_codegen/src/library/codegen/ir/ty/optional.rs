@@ -24,6 +24,10 @@ impl IrTypeTrait for IrTypeOptional {
     fn rust_api_type(&self) -> String {
         format!("Option<{}>", self.inner.rust_api_type())
     }
+
+    fn cloned_getter_semantics_reasonable(&self) -> bool {
+        self.inner.cloned_getter_semantics_reasonable()
+    }
 }
 
 impl IrTypeOptional {
