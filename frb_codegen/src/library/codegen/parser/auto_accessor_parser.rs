@@ -1,5 +1,6 @@
 use crate::codegen::config::internal_config::RustInputPathPack;
 use crate::codegen::generator::codec::structs::CodecMode;
+use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::func::IrFunc;
 use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
@@ -60,9 +61,21 @@ fn parse_auto_accessors_of_struct(
     let ty_struct_ref = TypeParserWithContext::new(type_parser, context)
         .parse_type_path_data_struct((&struct_name.name, &[]), Some(false))?
         .unwrap();
-    let ty_struct_ident = if_then_some!(let IrType::StructRef(ir) = ty_struct_ref, ir.ident).unwrap();
+    let ty_struct_ident =
+        if_then_some!(let IrType::StructRef(ir) = ty_struct_ref, ir.ident).unwrap();
     let ty_struct = &type_parser.struct_pool()[&ty_struct_ident];
 
+    Ok(ty_struct
+        .fields
+        .iter()
+        .map(|field| parse_auto_accessor_of_field(field))
+        .collect::<anyhow::Result<Vec<_>>>()?
+        .into_iter()
+        .filter_map(|x| x)
+        .collect_vec())
+}
+
+fn parse_auto_accessor_of_field(field: &IrField) -> anyhow::Result<Option<IrFunc>> {
     todo!()
 }
 
