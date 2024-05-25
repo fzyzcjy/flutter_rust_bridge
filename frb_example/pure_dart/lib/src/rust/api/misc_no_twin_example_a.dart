@@ -64,6 +64,40 @@ class StructWithImplBlockInMultiFile extends RustOpaque {
           that: this, hint: hint);
 }
 
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithSimpleSetterTwinNormal>>
+@sealed
+class StructWithSimpleSetterTwinNormal extends RustOpaque {
+  StructWithSimpleSetterTwinNormal.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  StructWithSimpleSetterTwinNormal.sseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_StructWithSimpleSetterTwinNormal,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_StructWithSimpleSetterTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_StructWithSimpleSetterTwinNormalPtr,
+  );
+
+  factory StructWithSimpleSetterTwinNormal({dynamic hint}) =>
+      RustLib.instance.api
+          .crateApiMiscNoTwinExampleAStructWithSimpleSetterTwinNormalNew(
+              hint: hint);
+
+  int get simpleGetter => RustLib.instance.api
+          .crateApiMiscNoTwinExampleAStructWithSimpleSetterTwinNormalSimpleGetter(
+        that: this,
+      );
+
+  void set simpleSetter(int value) => RustLib.instance.api
+      .crateApiMiscNoTwinExampleAStructWithSimpleSetterTwinNormalSimpleSetter(
+          that: this, value: value);
+}
+
 class StructWithCustomNameMethodTwinNormal {
   final int field0;
 

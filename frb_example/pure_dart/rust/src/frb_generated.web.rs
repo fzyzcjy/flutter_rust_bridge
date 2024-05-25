@@ -9631,6 +9631,22 @@ impl CstDecode<StructWithImplBlockInMultiFile>
         ))
     }
 }
+impl CstDecode<StructWithSimpleSetterTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> StructWithSimpleSetterTwinNormal {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
+            RustOpaqueNom<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                    StructWithSimpleSetterTwinNormal,
+                >,
+            >,
+        >::cst_decode(
+            self
+        ))
+    }
+}
 impl CstDecode<backtrace::Backtrace> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> backtrace::Backtrace {
@@ -12177,6 +12193,28 @@ impl
         self,
     ) -> RustOpaqueNom<
         flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithImplBlockInMultiFile>,
+    > {
+        #[cfg(target_pointer_width = "64")]
+        {
+            compile_error!("64-bit pointers are not supported.");
+        }
+        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
+    }
+}
+impl
+    CstDecode<
+        RustOpaqueNom<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                StructWithSimpleSetterTwinNormal,
+            >,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> RustOpaqueNom<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithSimpleSetterTwinNormal>,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -15251,6 +15289,31 @@ pub fn wire__crate__api__misc_no_twin_example_a__StructWithImplBlockInMultiFile_
 ) {
     wire__crate__api__misc_no_twin_example_a__StructWithImplBlockInMultiFile_method_in_a_impl(
         port_, that,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_new(
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_new_impl()
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_simple_getter(
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_simple_getter_impl(
+        that,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_simple_setter(
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    value: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_simple_setter_impl(
+        that, value,
     )
 }
 
@@ -42397,6 +42460,32 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     unsafe {
         StdArc::<
             flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithImplBlockInMultiFile>,
+        >::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                StructWithSimpleSetterTwinNormal,
+            >,
+        >::increment_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                StructWithSimpleSetterTwinNormal,
+            >,
         >::decrement_strong_count(ptr as _);
     }
 }
