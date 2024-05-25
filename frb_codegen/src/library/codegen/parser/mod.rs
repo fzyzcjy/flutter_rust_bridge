@@ -109,7 +109,7 @@ pub(crate) fn parse(
         &config.rust_crate_dir,
     )?;
 
-    check_opaque_inside_translatable();
+    check_opaque_inside_translatable(&ans);
 
     Ok(ans)
 }

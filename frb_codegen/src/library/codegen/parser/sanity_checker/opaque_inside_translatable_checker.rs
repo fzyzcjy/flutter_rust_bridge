@@ -5,7 +5,6 @@ use crate::codegen::ir::ty::structure::IrStruct;
 use crate::codegen::ir::ty::IrType;
 use itertools::Itertools;
 use log::info;
-use std::collections::HashSet;
 
 pub(crate) fn check_opaque_inside_translatable(pack: &IrPack) {
     let hint_names = (pack.distinct_types(None).into_iter())
@@ -25,17 +24,17 @@ fn handle_type(pack: &IrPack, ty: IrType) -> Vec<String> {
     match ty {
         IrType::StructRef(ty) => {
             let st = ty.get(pack);
-            handle_struct(st, ty.ident.0.rust_style())
+            handle_struct(st, &ty.ident.0.rust_style())
         }
         IrType::EnumRef(ty) => {
             let en = ty.get(pack);
-            en.variants.iter().flat_map(|variant| match variant.kind {
+            en.variants.iter().flat_map(|variant| match &variant.kind {
                 IrVariantKind::Value => vec![],
                 IrVariantKind::Struct(st) => handle_struct(
-                    st,
-                    format!("{}.{}", ty.ident.0.rust_style(), variant.name.rust_style()),
+                    &st,
+                    &format!("{}.{}", ty.ident.0.rust_style(), variant.name.rust_style()),
                 ),
-            })
+            }).collect_vec()
         }
         // TODO also check and hint `Vec<OpaqueType>`, etc
         _ => vec![],
@@ -52,6 +51,6 @@ fn handle_field(field: &IrField, partial_name: &str) -> Option<String> {
     if matches!(field.ty, IrType::RustAutoOpaqueImplicit(_)) {
         Some(format!("{partial_name}.{}", field.name.rust_style()))
     } else {
-        Noen
+        None
     }
 }
