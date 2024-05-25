@@ -105,13 +105,7 @@ fn parse_auto_accessor_of_field(
         mode: IrFuncOwnerInfoMethodMode::Instance,
     };
 
-    let mut inputs = vec![IrFuncInput {
-        ownership_mode: Some(match accessor_mode {
-            IrFuncAccessorMode::Getter => OwnershipMode::Ref,
-            IrFuncAccessorMode::Setter => OwnershipMode::RefMut,
-        }),
-        inner: create_ir_field(ty_direct_parse.to_owned(), "that"),
-    }];
+    let mut inputs = vec![compute_self_arg(accessor_mode, ty_direct_parse)];
     if accessor_mode == IrFuncAccessorMode::Setter {
         inputs.push(IrFuncInput {
             ownership_mode: None,
@@ -154,6 +148,19 @@ fn parse_auto_accessor_of_field(
         rust_call_code: Some(rust_call_code),
         src_lineno_pseudo: compute_src_lineno_pseudo(struct_name, &field),
     })
+}
+
+fn compute_self_arg(
+    accessor_mode: IrFuncAccessorMode,
+    ty_direct_parse: &IrType,
+) {
+    IrFuncInput {
+        ownership_mode: Some(match accessor_mode {
+            IrFuncAccessorMode::Getter => OwnershipMode::Ref,
+            IrFuncAccessorMode::Setter => OwnershipMode::RefMut,
+        }),
+        inner: create_ir_field(ty_direct_parse.to_owned(), "that"),
+    }
 }
 
 fn compute_src_lineno_pseudo(struct_name: &NamespacedName, field: &IrField) -> usize {
