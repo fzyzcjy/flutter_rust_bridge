@@ -481,6 +481,24 @@ class StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse extends RustOpaque {
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSsePtr,
   );
+
+  String get good => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSyncSseStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseGetGood(
+        that: this,
+      );
+
+  NonCloneSimpleTwinSyncSse get opaque => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSyncSseStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseGetOpaque(
+        that: this,
+      );
+
+  void set good(String good) => RustLib.instance.api
+      .crateApiPseudoManualRustAutoOpaqueTwinSyncSseStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseSetGood(
+          that: this, good: good);
+
+  void set opaque(NonCloneSimpleTwinSyncSse opaque) => RustLib.instance.api
+      .crateApiPseudoManualRustAutoOpaqueTwinSyncSseStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseSetOpaque(
+          that: this, opaque: opaque);
 }
 
 @freezed

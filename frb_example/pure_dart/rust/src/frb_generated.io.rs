@@ -9,7 +9,6 @@ use crate::api::dart_code::*;
 use crate::api::dropping::*;
 use crate::api::external_impl::*;
 use crate::api::method::*;
-use crate::api::misc_example::*;
 use crate::api::misc_no_twin_example_a::*;
 use crate::api::misc_no_twin_example_b::*;
 use crate::api::pseudo_manual::dropping_twin_rust_async::*;
@@ -22,11 +21,6 @@ use crate::api::pseudo_manual::method_twin_rust_async_sse::*;
 use crate::api::pseudo_manual::method_twin_sse::*;
 use crate::api::pseudo_manual::method_twin_sync::*;
 use crate::api::pseudo_manual::method_twin_sync_sse::*;
-use crate::api::pseudo_manual::misc_example_twin_rust_async::*;
-use crate::api::pseudo_manual::misc_example_twin_rust_async_sse::*;
-use crate::api::pseudo_manual::misc_example_twin_sse::*;
-use crate::api::pseudo_manual::misc_example_twin_sync::*;
-use crate::api::pseudo_manual::misc_example_twin_sync_sse::*;
 use crate::api::pseudo_manual::rust_auto_opaque_twin_moi::*;
 use crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::*;
 use crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_moi::*;
@@ -112,18 +106,6 @@ impl CstDecode<RustAutoOpaqueMoi<NonCloneSimpleTwinSyncMoi>> for usize {
 impl CstDecode<RustAutoOpaqueNom<OpaqueItemTwinNormal>> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustAutoOpaqueNom<OpaqueItemTwinNormal> {
-        flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(self.cst_decode())
-    }
-}
-impl CstDecode<RustAutoOpaqueNom<OpaqueItemTwinRustAsync>> for usize {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> RustAutoOpaqueNom<OpaqueItemTwinRustAsync> {
-        flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(self.cst_decode())
-    }
-}
-impl CstDecode<RustAutoOpaqueNom<OpaqueItemTwinSync>> for usize {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> RustAutoOpaqueNom<OpaqueItemTwinSync> {
         flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(self.cst_decode())
     }
 }
@@ -469,34 +451,6 @@ impl CstDecode<ItemContainerSolutionOneTwinNormal> for usize {
         ))
     }
 }
-impl CstDecode<ItemContainerSolutionOneTwinRustAsync> for usize {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> ItemContainerSolutionOneTwinRustAsync {
-        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
-            RustOpaqueNom<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                    ItemContainerSolutionOneTwinRustAsync,
-                >,
-            >,
-        >::cst_decode(
-            self
-        ))
-    }
-}
-impl CstDecode<ItemContainerSolutionOneTwinSync> for usize {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> ItemContainerSolutionOneTwinSync {
-        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
-            RustOpaqueNom<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                    ItemContainerSolutionOneTwinSync,
-                >,
-            >,
-        >::cst_decode(
-            self
-        ))
-    }
-}
 impl CstDecode<NonCloneSimpleEnumTwinMoi> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> NonCloneSimpleEnumTwinMoi {
@@ -629,6 +583,58 @@ impl CstDecode<NonCloneSimpleTwinRustAsyncMoi> for usize {
         ))
     }
 }
+impl CstDecode<NonCloneSimpleTwinRustAsyncSse> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> NonCloneSimpleTwinRustAsyncSse {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
+            RustOpaqueNom<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                    NonCloneSimpleTwinRustAsyncSse,
+                >,
+            >,
+        >::cst_decode(
+            self
+        ))
+    }
+}
+impl CstDecode<NonCloneSimpleTwinRustAsyncSseMoi> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> NonCloneSimpleTwinRustAsyncSseMoi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
+            RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                    NonCloneSimpleTwinRustAsyncSseMoi,
+                >,
+            >,
+        >::cst_decode(
+            self
+        ))
+    }
+}
+impl CstDecode<NonCloneSimpleTwinSse> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> NonCloneSimpleTwinSse {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
+            RustOpaqueNom<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinSse>,
+            >,
+        >::cst_decode(
+            self
+        ))
+    }
+}
+impl CstDecode<NonCloneSimpleTwinSseMoi> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> NonCloneSimpleTwinSseMoi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
+            RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinSseMoi>,
+            >,
+        >::cst_decode(
+            self
+        ))
+    }
+}
 impl CstDecode<NonCloneSimpleTwinSync> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> NonCloneSimpleTwinSync {
@@ -647,6 +653,32 @@ impl CstDecode<NonCloneSimpleTwinSyncMoi> for usize {
         flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueMoi<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinSyncMoi>,
+            >,
+        >::cst_decode(
+            self
+        ))
+    }
+}
+impl CstDecode<NonCloneSimpleTwinSyncSse> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> NonCloneSimpleTwinSyncSse {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
+            RustOpaqueNom<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinSyncSse>,
+            >,
+        >::cst_decode(
+            self
+        ))
+    }
+}
+impl CstDecode<NonCloneSimpleTwinSyncSseMoi> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> NonCloneSimpleTwinSyncSseMoi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
+            RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                    NonCloneSimpleTwinSyncSseMoi,
+                >,
             >,
         >::cst_decode(
             self
@@ -943,6 +975,62 @@ impl CstDecode<StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi> for us
         ))
     }
 }
+impl CstDecode<StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
+            RustOpaqueNom<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                    StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse,
+                >,
+            >,
+        >::cst_decode(
+            self
+        ))
+    }
+}
+impl CstDecode<StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
+            RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                    StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi,
+                >,
+            >,
+        >::cst_decode(
+            self
+        ))
+    }
+}
+impl CstDecode<StructWithGoodAndOpaqueFieldWithoutOptionTwinSse> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> StructWithGoodAndOpaqueFieldWithoutOptionTwinSse {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
+            RustOpaqueNom<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                    StructWithGoodAndOpaqueFieldWithoutOptionTwinSse,
+                >,
+            >,
+        >::cst_decode(
+            self
+        ))
+    }
+}
+impl CstDecode<StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
+            RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                    StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi,
+                >,
+            >,
+        >::cst_decode(
+            self
+        ))
+    }
+}
 impl CstDecode<StructWithGoodAndOpaqueFieldWithoutOptionTwinSync> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> StructWithGoodAndOpaqueFieldWithoutOptionTwinSync {
@@ -964,6 +1052,34 @@ impl CstDecode<StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi> for usize {
             RustOpaqueMoi<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                     StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi,
+                >,
+            >,
+        >::cst_decode(
+            self
+        ))
+    }
+}
+impl CstDecode<StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
+            RustOpaqueNom<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                    StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse,
+                >,
+            >,
+        >::cst_decode(
+            self
+        ))
+    }
+}
+impl CstDecode<StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
+            RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                    StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi,
                 >,
             >,
         >::cst_decode(
@@ -2288,44 +2404,6 @@ impl
 }
 impl
     CstDecode<
-        RustOpaqueNom<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                ItemContainerSolutionOneTwinRustAsync,
-            >,
-        >,
-    > for usize
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueNom<
-        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-            ItemContainerSolutionOneTwinRustAsync,
-        >,
-    > {
-        unsafe { decode_rust_opaque_nom(self as _) }
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueNom<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                ItemContainerSolutionOneTwinSync,
-            >,
-        >,
-    > for usize
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueNom<
-        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ItemContainerSolutionOneTwinSync>,
-    > {
-        unsafe { decode_rust_opaque_nom(self as _) }
-    }
-}
-impl
-    CstDecode<
         RustOpaqueMoi<
             flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleEnumTwinMoi>,
         >,
@@ -2490,6 +2568,71 @@ impl
 impl
     CstDecode<
         RustOpaqueNom<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinRustAsyncSse>,
+        >,
+    > for usize
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> RustOpaqueNom<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinRustAsyncSse>,
+    > {
+        unsafe { decode_rust_opaque_nom(self as _) }
+    }
+}
+impl
+    CstDecode<
+        RustOpaqueMoi<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                NonCloneSimpleTwinRustAsyncSseMoi,
+            >,
+        >,
+    > for usize
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> RustOpaqueMoi<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinRustAsyncSseMoi>,
+    > {
+        decode_rust_opaque_moi(self as _)
+    }
+}
+impl
+    CstDecode<
+        RustOpaqueNom<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinSse>,
+        >,
+    > for usize
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinSse>>
+    {
+        unsafe { decode_rust_opaque_nom(self as _) }
+    }
+}
+impl
+    CstDecode<
+        RustOpaqueMoi<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinSseMoi>,
+        >,
+    > for usize
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> RustOpaqueMoi<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinSseMoi>,
+    > {
+        decode_rust_opaque_moi(self as _)
+    }
+}
+impl
+    CstDecode<
+        RustOpaqueNom<
             flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinSync>,
         >,
     > for usize
@@ -2522,6 +2665,38 @@ impl
 impl
     CstDecode<
         RustOpaqueNom<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinSyncSse>,
+        >,
+    > for usize
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> RustOpaqueNom<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinSyncSse>,
+    > {
+        unsafe { decode_rust_opaque_nom(self as _) }
+    }
+}
+impl
+    CstDecode<
+        RustOpaqueMoi<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinSyncSseMoi>,
+        >,
+    > for usize
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> RustOpaqueMoi<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinSyncSseMoi>,
+    > {
+        decode_rust_opaque_moi(self as _)
+    }
+}
+impl
+    CstDecode<
+        RustOpaqueNom<
             flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinNormal>,
         >,
     > for usize
@@ -2530,35 +2705,6 @@ impl
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinNormal>>
-    {
-        unsafe { decode_rust_opaque_nom(self as _) }
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueNom<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinRustAsync>,
-        >,
-    > for usize
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueNom<
-        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinRustAsync>,
-    > {
-        unsafe { decode_rust_opaque_nom(self as _) }
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinSync>>,
-    > for usize
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinSync>>
     {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
@@ -2937,6 +3083,86 @@ impl
     CstDecode<
         RustOpaqueNom<
             flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse,
+            >,
+        >,
+    > for usize
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> RustOpaqueNom<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+            StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse,
+        >,
+    > {
+        unsafe { decode_rust_opaque_nom(self as _) }
+    }
+}
+impl
+    CstDecode<
+        RustOpaqueMoi<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi,
+            >,
+        >,
+    > for usize
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> RustOpaqueMoi<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+            StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi,
+        >,
+    > {
+        decode_rust_opaque_moi(self as _)
+    }
+}
+impl
+    CstDecode<
+        RustOpaqueNom<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                StructWithGoodAndOpaqueFieldWithoutOptionTwinSse,
+            >,
+        >,
+    > for usize
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> RustOpaqueNom<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+            StructWithGoodAndOpaqueFieldWithoutOptionTwinSse,
+        >,
+    > {
+        unsafe { decode_rust_opaque_nom(self as _) }
+    }
+}
+impl
+    CstDecode<
+        RustOpaqueMoi<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi,
+            >,
+        >,
+    > for usize
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> RustOpaqueMoi<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+            StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi,
+        >,
+    > {
+        decode_rust_opaque_moi(self as _)
+    }
+}
+impl
+    CstDecode<
+        RustOpaqueNom<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                 StructWithGoodAndOpaqueFieldWithoutOptionTwinSync,
             >,
         >,
@@ -2968,6 +3194,46 @@ impl
     ) -> RustOpaqueMoi<
         flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
             StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi,
+        >,
+    > {
+        decode_rust_opaque_moi(self as _)
+    }
+}
+impl
+    CstDecode<
+        RustOpaqueNom<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse,
+            >,
+        >,
+    > for usize
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> RustOpaqueNom<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+            StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse,
+        >,
+    > {
+        unsafe { decode_rust_opaque_nom(self as _) }
+    }
+}
+impl
+    CstDecode<
+        RustOpaqueMoi<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi,
+            >,
+        >,
+    > for usize
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> RustOpaqueMoi<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+            StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi,
         >,
     > {
         decode_rust_opaque_moi(self as _)
@@ -5358,35 +5624,13 @@ impl CstDecode<isize> for *mut isize {
         unsafe { *flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
     }
 }
-impl CstDecode<crate::api::misc_example::ItemContainerSolutionTwoTwinNormal>
+impl CstDecode<crate::api::misc_no_twin_example_a::ItemContainerSolutionTwoTwinNormal>
     for *mut wire_cst_item_container_solution_two_twin_normal
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> crate::api::misc_example::ItemContainerSolutionTwoTwinNormal {
+    fn cst_decode(self) -> crate::api::misc_no_twin_example_a::ItemContainerSolutionTwoTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-        CstDecode::<crate::api::misc_example::ItemContainerSolutionTwoTwinNormal>::cst_decode(*wrap)
-            .into()
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::ItemContainerSolutionTwoTwinRustAsync> for *mut wire_cst_item_container_solution_two_twin_rust_async {
-            // Codec=Cst (C-struct based), see doc to use other codecs
-            fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_rust_async::ItemContainerSolutionTwoTwinRustAsync {
-                let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-                CstDecode::<crate::api::pseudo_manual::misc_example_twin_rust_async::ItemContainerSolutionTwoTwinRustAsync>::cst_decode(*wrap).into()
-            }
-        }
-impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::ItemContainerSolutionTwoTwinSync>
-    for *mut wire_cst_item_container_solution_two_twin_sync
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::misc_example_twin_sync::ItemContainerSolutionTwoTwinSync {
-        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-        CstDecode::<
-            crate::api::pseudo_manual::misc_example_twin_sync::ItemContainerSolutionTwoTwinSync,
-        >::cst_decode(*wrap)
-        .into()
+        CstDecode::<crate::api::misc_no_twin_example_a::ItemContainerSolutionTwoTwinNormal>::cst_decode(*wrap).into()
     }
 }
 impl CstDecode<crate::api::enumeration::KitchenSinkTwinNormal>
@@ -8503,31 +8747,12 @@ impl CstDecode<[i32; 2]> for *mut wire_cst_list_prim_i_32_strict {
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
-impl CstDecode<crate::api::misc_example::ItemContainerSolutionTwoTwinNormal>
+impl CstDecode<crate::api::misc_no_twin_example_a::ItemContainerSolutionTwoTwinNormal>
     for wire_cst_item_container_solution_two_twin_normal
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> crate::api::misc_example::ItemContainerSolutionTwoTwinNormal {
-        crate::api::misc_example::ItemContainerSolutionTwoTwinNormal {
-            name: self.name.cst_decode(),
-            items: self.items.cst_decode(),
-        }
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::ItemContainerSolutionTwoTwinRustAsync> for wire_cst_item_container_solution_two_twin_rust_async {
-            // Codec=Cst (C-struct based), see doc to use other codecs
-            fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_rust_async::ItemContainerSolutionTwoTwinRustAsync {
-                crate::api::pseudo_manual::misc_example_twin_rust_async::ItemContainerSolutionTwoTwinRustAsync{name:  self.name.cst_decode(),items:  self.items.cst_decode()}
-            }
-        }
-impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::ItemContainerSolutionTwoTwinSync>
-    for wire_cst_item_container_solution_two_twin_sync
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::misc_example_twin_sync::ItemContainerSolutionTwoTwinSync {
-        crate::api::pseudo_manual::misc_example_twin_sync::ItemContainerSolutionTwoTwinSync {
+    fn cst_decode(self) -> crate::api::misc_no_twin_example_a::ItemContainerSolutionTwoTwinNormal {
+        crate::api::misc_no_twin_example_a::ItemContainerSolutionTwoTwinNormal {
             name: self.name.cst_decode(),
             items: self.items.cst_decode(),
         }
@@ -8655,26 +8880,6 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwin
 impl CstDecode<Vec<RustAutoOpaqueNom<OpaqueItemTwinNormal>>> for *mut wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal {
             // Codec=Cst (C-struct based), see doc to use other codecs
             fn cst_decode(self) -> Vec<RustAutoOpaqueNom<OpaqueItemTwinNormal>> {
-                let vec = unsafe {
-        let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
-        flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
-    };
-    vec.into_iter().map(CstDecode::cst_decode).collect()
-            }
-        }
-impl CstDecode<Vec<RustAutoOpaqueNom<OpaqueItemTwinRustAsync>>> for *mut wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsync {
-            // Codec=Cst (C-struct based), see doc to use other codecs
-            fn cst_decode(self) -> Vec<RustAutoOpaqueNom<OpaqueItemTwinRustAsync>> {
-                let vec = unsafe {
-        let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
-        flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
-    };
-    vec.into_iter().map(CstDecode::cst_decode).collect()
-            }
-        }
-impl CstDecode<Vec<RustAutoOpaqueNom<OpaqueItemTwinSync>>> for *mut wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSync {
-            // Codec=Cst (C-struct based), see doc to use other codecs
-            fn cst_decode(self) -> Vec<RustAutoOpaqueNom<OpaqueItemTwinSync>> {
                 let vec = unsafe {
         let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
         flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -14262,32 +14467,6 @@ impl Default for wire_cst_item_container_solution_two_twin_normal {
         Self::new_with_null_ptr()
     }
 }
-impl NewWithNullPtr for wire_cst_item_container_solution_two_twin_rust_async {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            name: core::ptr::null_mut(),
-            items: core::ptr::null_mut(),
-        }
-    }
-}
-impl Default for wire_cst_item_container_solution_two_twin_rust_async {
-    fn default() -> Self {
-        Self::new_with_null_ptr()
-    }
-}
-impl NewWithNullPtr for wire_cst_item_container_solution_two_twin_sync {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            name: core::ptr::null_mut(),
-            items: core::ptr::null_mut(),
-        }
-    }
-}
-impl Default for wire_cst_item_container_solution_two_twin_sync {
-    fn default() -> Self {
-        Self::new_with_null_ptr()
-    }
-}
 impl NewWithNullPtr for wire_cst_kitchen_sink_twin_normal {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -16981,10 +17160,25 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__constructor__Co
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_get_one(
+    that: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_get_one_impl(that)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_new(
     port_: i64,
 ) {
     wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_new_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_set_one(
+    that: usize,
+    one: *mut wire_cst_list_prim_u_8_strict,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_set_one_impl(that, one)
 }
 
 #[no_mangle]
@@ -16995,9 +17189,24 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__constructor__Co
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_get_one(
+    that: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_get_one_impl(that)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_new(
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_new_impl()
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_set_one(
+    that: usize,
+    one: *mut wire_cst_list_prim_u_8_strict,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_set_one_impl(that, one)
 }
 
 #[no_mangle]
@@ -18224,23 +18433,6 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__mirror__test_ra
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__misc_example__ItemContainerSolutionOneTwinNormal_create_twin_normal(
-    port_: i64,
-) {
-    wire__crate__api__misc_example__ItemContainerSolutionOneTwinNormal_create_twin_normal_impl(
-        port_,
-    )
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__misc_example__ItemContainerSolutionOneTwinNormal_get_item_contents_twin_normal(
-    port_: i64,
-    that: usize,
-) {
-    wire__crate__api__misc_example__ItemContainerSolutionOneTwinNormal_get_item_contents_twin_normal_impl(port_, that)
-}
-
-#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__misc_example__handle_big_buffers_twin_normal(
     port_: i64,
 ) {
@@ -18297,23 +18489,6 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__misc_example__h
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__misc_example__item_container_solution_two_twin_normal_create_twin_normal(
-    port_: i64,
-) {
-    wire__crate__api__misc_example__item_container_solution_two_twin_normal_create_twin_normal_impl(
-        port_,
-    )
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__misc_example__item_container_solution_two_twin_normal_get_item_contents_twin_normal(
-    port_: i64,
-    that: *mut wire_cst_item_container_solution_two_twin_normal,
-) {
-    wire__crate__api__misc_example__item_container_solution_two_twin_normal_get_item_contents_twin_normal_impl(port_, that)
-}
-
-#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__misc_example__list_of_primitive_enums_twin_normal(
     port_: i64,
     weekdays: *mut wire_cst_list_weekdays_twin_normal,
@@ -18335,6 +18510,38 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__misc_example__t
     se: *mut wire_cst_struct_with_enum_twin_normal,
 ) {
     wire__crate__api__misc_example__test_struct_with_enum_twin_normal_impl(port_, se)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_create_twin_normal(
+    port_: i64,
+) {
+    wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_create_twin_normal_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_get_item_contents_twin_normal(
+    port_: i64,
+    that: usize,
+) {
+    wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_get_item_contents_twin_normal_impl(port_, that)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_get_name(
+    that: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_get_name_impl(that)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_set_name(
+    that: usize,
+    name: *mut wire_cst_list_prim_u_8_strict,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_set_name_impl(
+        that, name,
+    )
 }
 
 #[no_mangle]
@@ -18387,6 +18594,21 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_ex
     port_: i64,
 ) {
     wire__crate__api__misc_no_twin_example_a__function_with_custom_name_twin_normal_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__item_container_solution_two_twin_normal_create_twin_normal(
+    port_: i64,
+) {
+    wire__crate__api__misc_no_twin_example_a__item_container_solution_two_twin_normal_create_twin_normal_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__item_container_solution_two_twin_normal_get_item_contents_twin_normal(
+    port_: i64,
+    that: *mut wire_cst_item_container_solution_two_twin_normal,
+) {
+    wire__crate__api__misc_no_twin_example_a__item_container_solution_two_twin_normal_get_item_contents_twin_normal_impl(port_, that)
 }
 
 #[no_mangle]
@@ -31667,21 +31889,6 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__misc_example_twin_rust_async__ItemContainerSolutionOneTwinRustAsync_create_twin_rust_async(
-    port_: i64,
-) {
-    wire__crate__api__pseudo_manual__misc_example_twin_rust_async__ItemContainerSolutionOneTwinRustAsync_create_twin_rust_async_impl(port_)
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__misc_example_twin_rust_async__ItemContainerSolutionOneTwinRustAsync_get_item_contents_twin_rust_async(
-    port_: i64,
-    that: usize,
-) {
-    wire__crate__api__pseudo_manual__misc_example_twin_rust_async__ItemContainerSolutionOneTwinRustAsync_get_item_contents_twin_rust_async_impl(port_, that)
-}
-
-#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_big_buffers_twin_rust_async(
     port_: i64,
 ) {
@@ -31740,21 +31947,6 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__misc_example_twin_rust_async__item_container_solution_two_twin_rust_async_create_twin_rust_async(
-    port_: i64,
-) {
-    wire__crate__api__pseudo_manual__misc_example_twin_rust_async__item_container_solution_two_twin_rust_async_create_twin_rust_async_impl(port_)
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__misc_example_twin_rust_async__item_container_solution_two_twin_rust_async_get_item_contents_twin_rust_async(
-    port_: i64,
-    that: *mut wire_cst_item_container_solution_two_twin_rust_async,
-) {
-    wire__crate__api__pseudo_manual__misc_example_twin_rust_async__item_container_solution_two_twin_rust_async_get_item_contents_twin_rust_async_impl(port_, that)
-}
-
-#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__misc_example_twin_rust_async__list_of_primitive_enums_twin_rust_async(
     port_: i64,
     weekdays: *mut wire_cst_list_weekdays_twin_rust_async,
@@ -31776,26 +31968,6 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
     se: *mut wire_cst_struct_with_enum_twin_rust_async,
 ) {
     wire__crate__api__pseudo_manual__misc_example_twin_rust_async__test_struct_with_enum_twin_rust_async_impl(port_, se)
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__ItemContainerSolutionOneTwinRustAsyncSse_create_twin_rust_async_sse(
-    port_: i64,
-    ptr_: *mut u8,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__ItemContainerSolutionOneTwinRustAsyncSse_create_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__ItemContainerSolutionOneTwinRustAsyncSse_get_item_contents_twin_rust_async_sse(
-    port_: i64,
-    ptr_: *mut u8,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__ItemContainerSolutionOneTwinRustAsyncSse_get_item_contents_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
@@ -31869,26 +32041,6 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__item_container_solution_two_twin_rust_async_sse_create_twin_rust_async_sse(
-    port_: i64,
-    ptr_: *mut u8,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__item_container_solution_two_twin_rust_async_sse_create_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__item_container_solution_two_twin_rust_async_sse_get_item_contents_twin_rust_async_sse(
-    port_: i64,
-    ptr_: *mut u8,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__item_container_solution_two_twin_rust_async_sse_get_item_contents_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__list_of_primitive_enums_twin_rust_async_sse(
     port_: i64,
     ptr_: *mut u8,
@@ -31916,26 +32068,6 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
     data_len_: i32,
 ) {
     wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__test_struct_with_enum_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__misc_example_twin_sse__ItemContainerSolutionOneTwinSse_create_twin_sse(
-    port_: i64,
-    ptr_: *mut u8,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire__crate__api__pseudo_manual__misc_example_twin_sse__ItemContainerSolutionOneTwinSse_create_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__misc_example_twin_sse__ItemContainerSolutionOneTwinSse_get_item_contents_twin_sse(
-    port_: i64,
-    ptr_: *mut u8,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire__crate__api__pseudo_manual__misc_example_twin_sse__ItemContainerSolutionOneTwinSse_get_item_contents_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
@@ -32044,26 +32176,6 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__misc_example_twin_sse__item_container_solution_two_twin_sse_create_twin_sse(
-    port_: i64,
-    ptr_: *mut u8,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire__crate__api__pseudo_manual__misc_example_twin_sse__item_container_solution_two_twin_sse_create_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__misc_example_twin_sse__item_container_solution_two_twin_sse_get_item_contents_twin_sse(
-    port_: i64,
-    ptr_: *mut u8,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire__crate__api__pseudo_manual__misc_example_twin_sse__item_container_solution_two_twin_sse_get_item_contents_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__misc_example_twin_sse__list_of_primitive_enums_twin_sse(
     port_: i64,
     ptr_: *mut u8,
@@ -32106,19 +32218,6 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
         rust_vec_len_,
         data_len_,
     )
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__misc_example_twin_sync__ItemContainerSolutionOneTwinSync_create_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__misc_example_twin_sync__ItemContainerSolutionOneTwinSync_create_twin_sync_impl()
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__misc_example_twin_sync__ItemContainerSolutionOneTwinSync_get_item_contents_twin_sync(
-    that: usize,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__misc_example_twin_sync__ItemContainerSolutionOneTwinSync_get_item_contents_twin_sync_impl(that)
 }
 
 #[no_mangle]
@@ -32173,19 +32272,6 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__misc_example_twin_sync__item_container_solution_two_twin_sync_create_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__misc_example_twin_sync__item_container_solution_two_twin_sync_create_twin_sync_impl()
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__misc_example_twin_sync__item_container_solution_two_twin_sync_get_item_contents_twin_sync(
-    that: *mut wire_cst_item_container_solution_two_twin_sync,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__misc_example_twin_sync__item_container_solution_two_twin_sync_get_item_contents_twin_sync_impl(that)
-}
-
-#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__misc_example_twin_sync__list_of_primitive_enums_twin_sync(
     weekdays: *mut wire_cst_list_weekdays_twin_sync,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
@@ -32208,24 +32294,6 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
     wire__crate__api__pseudo_manual__misc_example_twin_sync__test_struct_with_enum_twin_sync_impl(
         se,
     )
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__ItemContainerSolutionOneTwinSyncSse_create_twin_sync_sse(
-    ptr_: *mut u8,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__ItemContainerSolutionOneTwinSyncSse_create_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__ItemContainerSolutionOneTwinSyncSse_get_item_contents_twin_sync_sse(
-    ptr_: *mut u8,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__ItemContainerSolutionOneTwinSyncSse_get_item_contents_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
@@ -32305,24 +32373,6 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
         rust_vec_len_,
         data_len_,
     )
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_twin_sync_sse_create_twin_sync_sse(
-    ptr_: *mut u8,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_twin_sync_sse_create_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_twin_sync_sse_get_item_contents_twin_sync_sse(
-    ptr_: *mut u8,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__item_container_solution_two_twin_sync_sse_get_item_contents_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
@@ -33534,6 +33584,36 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_get_good(
+    that: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_get_good_impl(that)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_get_opaque(
+    that: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_get_opaque_impl(that)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_set_good(
+    that: usize,
+    good: *mut wire_cst_list_prim_u_8_strict,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_set_good_impl(that, good)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_set_opaque(
+    that: usize,
+    opaque: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_set_opaque_impl(that, opaque)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_arg_borrow_twin_moi(
     port_: i64,
     arg: usize,
@@ -33921,6 +34001,36 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_get_good(
+    that: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_get_good_impl(that)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_get_opaque(
+    that: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_get_opaque_impl(that)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_set_good(
+    that: usize,
+    good: *mut wire_cst_list_prim_u_8_strict,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_set_good_impl(that, good)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_set_opaque(
+    that: usize,
+    opaque: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_set_opaque_impl(that, opaque)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_arg_borrow_twin_rust_async(
     port_: i64,
     arg: usize,
@@ -34301,6 +34411,36 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
     port_: i64,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__NonCloneSimpleTwinRustAsyncMoi_static_method_return_own_twin_rust_async_moi_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_get_good(
+    that: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_get_good_impl(that)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_get_opaque(
+    that: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_get_opaque_impl(that)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_set_good(
+    that: usize,
+    good: *mut wire_cst_list_prim_u_8_strict,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_set_good_impl(that, good)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_set_opaque(
+    that: usize,
+    opaque: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_set_opaque_impl(that, opaque)
 }
 
 #[no_mangle]
@@ -34712,6 +34852,36 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
     data_len_: i32,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__NonCloneSimpleTwinRustAsyncSse_static_method_return_own_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_get_good(
+    that: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_get_good_impl(that)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_get_opaque(
+    that: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_get_opaque_impl(that)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_set_good(
+    that: usize,
+    good: *mut wire_cst_list_prim_u_8_strict,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_set_good_impl(that, good)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_set_opaque(
+    that: usize,
+    opaque: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_set_opaque_impl(that, opaque)
 }
 
 #[no_mangle]
@@ -35195,6 +35365,36 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_get_good(
+    that: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_get_good_impl(that)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_get_opaque(
+    that: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_get_opaque_impl(that)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_set_good(
+    that: usize,
+    good: *mut wire_cst_list_prim_u_8_strict,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_set_good_impl(that, good)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_set_opaque(
+    that: usize,
+    opaque: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_set_opaque_impl(that, opaque)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_arg_borrow_twin_rust_async_sse_moi(
     port_: i64,
     ptr_: *mut u8,
@@ -35672,6 +35872,36 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
     data_len_: i32,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__NonCloneSimpleTwinSse_static_method_return_own_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_get_good(
+    that: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_get_good_impl(that)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_get_opaque(
+    that: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_get_opaque_impl(that)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_set_good(
+    that: usize,
+    good: *mut wire_cst_list_prim_u_8_strict,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_set_good_impl(that, good)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_set_opaque(
+    that: usize,
+    opaque: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_set_opaque_impl(that, opaque)
 }
 
 #[no_mangle]
@@ -36165,6 +36395,36 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_get_good(
+    that: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_get_good_impl(that)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_get_opaque(
+    that: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_get_opaque_impl(that)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_set_good(
+    that: usize,
+    good: *mut wire_cst_list_prim_u_8_strict,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_set_good_impl(that, good)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_set_opaque(
+    that: usize,
+    opaque: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_set_opaque_impl(that, opaque)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_arg_borrow_twin_sse_moi(
     port_: i64,
     ptr_: *mut u8,
@@ -36605,6 +36865,36 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_get_good(
+    that: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_get_good_impl(that)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_get_opaque(
+    that: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_get_opaque_impl(that)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_set_good(
+    that: usize,
+    good: *mut wire_cst_list_prim_u_8_strict,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_set_good_impl(that, good)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_set_opaque(
+    that: usize,
+    opaque: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_set_opaque_impl(that, opaque)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_borrow_twin_sync(
     arg: usize,
     expect: i32,
@@ -36937,6 +37227,36 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__NonCloneSimpleTwinSyncMoi_static_method_return_own_twin_sync_moi(
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__NonCloneSimpleTwinSyncMoi_static_method_return_own_twin_sync_moi_impl()
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_get_good(
+    that: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_get_good_impl(that)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_get_opaque(
+    that: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_get_opaque_impl(that)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_set_good(
+    that: usize,
+    good: *mut wire_cst_list_prim_u_8_strict,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_set_good_impl(that, good)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_set_opaque(
+    that: usize,
+    opaque: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_set_opaque_impl(that, opaque)
 }
 
 #[no_mangle]
@@ -37300,6 +37620,36 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__NonCloneSimpleTwinSyncSse_static_method_return_own_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_get_good(
+    that: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_get_good_impl(that)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_get_opaque(
+    that: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_get_opaque_impl(that)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_set_good(
+    that: usize,
+    good: *mut wire_cst_list_prim_u_8_strict,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_set_good_impl(that, good)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_set_opaque(
+    that: usize,
+    opaque: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_set_opaque_impl(that, opaque)
 }
 
 #[no_mangle]
@@ -37732,6 +38082,36 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__NonCloneSimpleTwinSyncSseMoi_static_method_return_own_twin_sync_sse_moi_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_get_good(
+    that: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_get_good_impl(that)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_get_opaque(
+    that: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_get_opaque_impl(that)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_set_good(
+    that: usize,
+    good: *mut wire_cst_list_prim_u_8_strict,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_set_good_impl(that, good)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_set_opaque(
+    that: usize,
+    opaque: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_set_opaque_impl(that, opaque)
 }
 
 #[no_mangle]
@@ -40985,6 +41365,36 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__rust_auto_opaqu
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_get_good(
+    that: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_get_good_impl(that)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_get_opaque(
+    that: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_get_opaque_impl(that)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_set_good(
+    that: usize,
+    good: *mut wire_cst_list_prim_u_8_strict,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_set_good_impl(that, good)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_set_opaque(
+    that: usize,
+    opaque: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_set_opaque_impl(that, opaque)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_borrow_twin_normal(
     port_: i64,
     arg: usize,
@@ -43970,136 +44380,6 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinRustAsync(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                ItemContainerSolutionOneTwinRustAsync,
-            >,
-        >::increment_strong_count(ptr as _);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinRustAsync(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                ItemContainerSolutionOneTwinRustAsync,
-            >,
-        >::decrement_strong_count(ptr as _);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinRustAsyncSse(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                ItemContainerSolutionOneTwinRustAsyncSse,
-            >,
-        >::increment_strong_count(ptr as _);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinRustAsyncSse(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                ItemContainerSolutionOneTwinRustAsyncSse,
-            >,
-        >::decrement_strong_count(ptr as _);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinSse(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                ItemContainerSolutionOneTwinSse,
-            >,
-        >::increment_strong_count(ptr as _);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinSse(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                ItemContainerSolutionOneTwinSse,
-            >,
-        >::decrement_strong_count(ptr as _);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinSync(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                ItemContainerSolutionOneTwinSync,
-            >,
-        >::increment_strong_count(ptr as _);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinSync(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                ItemContainerSolutionOneTwinSync,
-            >,
-        >::decrement_strong_count(ptr as _);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinSyncSse(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                ItemContainerSolutionOneTwinSyncSse,
-            >,
-        >::increment_strong_count(ptr as _);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinSyncSse(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                ItemContainerSolutionOneTwinSyncSse,
-            >,
-        >::decrement_strong_count(ptr as _);
-    }
-}
-
-#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinMoi(
     ptr: *const std::ffi::c_void,
 ) {
@@ -44550,96 +44830,6 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
 ) {
     unsafe {
         StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinNormal>>::decrement_strong_count(ptr as _);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsync(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinRustAsync>>::increment_strong_count(ptr as _);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsync(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinRustAsync>>::decrement_strong_count(ptr as _);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsyncSse(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinRustAsyncSse>>::increment_strong_count(ptr as _);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsyncSse(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinRustAsyncSse>>::decrement_strong_count(ptr as _);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSse(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinSse>>::increment_strong_count(ptr as _);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSse(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinSse>>::decrement_strong_count(ptr as _);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSync(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinSync>>::increment_strong_count(ptr as _);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSync(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinSync>>::decrement_strong_count(ptr as _);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSyncSse(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinSyncSse>>::increment_strong_count(ptr as _);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSyncSse(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinSyncSse>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -46582,22 +46772,6 @@ pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_item_containe
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_item_container_solution_two_twin_rust_async(
-) -> *mut wire_cst_item_container_solution_two_twin_rust_async {
-    flutter_rust_bridge::for_generated::new_leak_box_ptr(
-        wire_cst_item_container_solution_two_twin_rust_async::new_with_null_ptr(),
-    )
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_item_container_solution_two_twin_sync(
-) -> *mut wire_cst_item_container_solution_two_twin_sync {
-    flutter_rust_bridge::for_generated::new_leak_box_ptr(
-        wire_cst_item_container_solution_two_twin_sync::new_with_null_ptr(),
-    )
-}
-
-#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_kitchen_sink_twin_normal(
 ) -> *mut wire_cst_kitchen_sink_twin_normal {
     flutter_rust_bridge::for_generated::new_leak_box_ptr(
@@ -47686,18 +47860,6 @@ pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_weekdays_twin_sync(
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(len: i32) -> *mut wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal{
     let wrap = wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal { ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len), len };
-    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsync(len: i32) -> *mut wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsync{
-    let wrap = wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsync { ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len), len };
-    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSync(len: i32) -> *mut wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSync{
-    let wrap = wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSync { ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len), len };
     flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
 }
 
@@ -51189,14 +51351,6 @@ pub struct wire_cst_item_container_solution_two_twin_normal { name: *mut wire_cs
 items: *mut wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal }
 #[repr(C)]
 #[derive(Clone, Copy)]
-pub struct wire_cst_item_container_solution_two_twin_rust_async { name: *mut wire_cst_list_prim_u_8_strict,
-items: *mut wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsync }
-#[repr(C)]
-#[derive(Clone, Copy)]
-pub struct wire_cst_item_container_solution_two_twin_sync { name: *mut wire_cst_list_prim_u_8_strict,
-items: *mut wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSync }
-#[repr(C)]
-#[derive(Clone, Copy)]
 pub struct wire_cst_kitchen_sink_twin_normal {
     tag: i32,
     kind: KitchenSinkTwinNormalKind,
@@ -51333,20 +51487,6 @@ pub struct wire_cst_KitchenSinkTwinSync_Enums {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal
-{
-    ptr: *mut usize,
-    len: i32,
-}
-#[repr(C)]
-#[derive(Clone, Copy)]
-pub struct wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinRustAsync
-{
-    ptr: *mut usize,
-    len: i32,
-}
-#[repr(C)]
-#[derive(Clone, Copy)]
-pub struct wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinSync
 {
     ptr: *mut usize,
     len: i32,

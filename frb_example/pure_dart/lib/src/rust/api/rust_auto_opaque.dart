@@ -479,6 +479,24 @@ class StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal extends RustOpaque {
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldWithoutOptionTwinNormalPtr,
   );
+
+  String get good => RustLib.instance.api
+          .crateApiRustAutoOpaqueStructWithGoodAndOpaqueFieldWithoutOptionTwinNormalGetGood(
+        that: this,
+      );
+
+  NonCloneSimpleTwinNormal get opaque => RustLib.instance.api
+          .crateApiRustAutoOpaqueStructWithGoodAndOpaqueFieldWithoutOptionTwinNormalGetOpaque(
+        that: this,
+      );
+
+  void set good(String good) => RustLib.instance.api
+      .crateApiRustAutoOpaqueStructWithGoodAndOpaqueFieldWithoutOptionTwinNormalSetGood(
+          that: this, good: good);
+
+  void set opaque(NonCloneSimpleTwinNormal opaque) => RustLib.instance.api
+      .crateApiRustAutoOpaqueStructWithGoodAndOpaqueFieldWithoutOptionTwinNormalSetOpaque(
+          that: this, opaque: opaque);
 }
 
 @freezed

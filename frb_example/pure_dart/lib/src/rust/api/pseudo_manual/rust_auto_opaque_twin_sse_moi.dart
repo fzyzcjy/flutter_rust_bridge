@@ -485,6 +485,24 @@ class StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi extends RustOpaque {
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoiPtr,
   );
+
+  String get good => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSseMoiStructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoiGetGood(
+        that: this,
+      );
+
+  NonCloneSimpleTwinSseMoi get opaque => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSseMoiStructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoiGetOpaque(
+        that: this,
+      );
+
+  void set good(String good) => RustLib.instance.api
+      .crateApiPseudoManualRustAutoOpaqueTwinSseMoiStructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoiSetGood(
+          that: this, good: good);
+
+  void set opaque(NonCloneSimpleTwinSseMoi opaque) => RustLib.instance.api
+      .crateApiPseudoManualRustAutoOpaqueTwinSseMoiStructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoiSetOpaque(
+          that: this, opaque: opaque);
 }
 
 @freezed

@@ -14,6 +14,65 @@ Future<void> sameFunctionNameInDifferentFiles({dynamic hint}) =>
 Future<void> renamedFunction({dynamic hint}) => RustLib.instance.api
     .crateApiMiscNoTwinExampleAFunctionWithCustomNameTwinNormal(hint: hint);
 
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ItemContainerSolutionOneTwinNormal>>
+@sealed
+class ItemContainerSolutionOneTwinNormal extends RustOpaque {
+  ItemContainerSolutionOneTwinNormal.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  ItemContainerSolutionOneTwinNormal.sseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_ItemContainerSolutionOneTwinNormal,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_ItemContainerSolutionOneTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_ItemContainerSolutionOneTwinNormalPtr,
+  );
+
+  static Future<ItemContainerSolutionOneTwinNormal> createTwinNormal(
+          {dynamic hint}) =>
+      RustLib.instance.api
+          .crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalCreateTwinNormal(
+              hint: hint);
+
+  Future<Int32List> getItemContentsTwinNormal({dynamic hint}) => RustLib
+      .instance.api
+      .crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalGetItemContentsTwinNormal(
+          that: this, hint: hint);
+
+  String get name => RustLib.instance.api
+          .crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalGetName(
+        that: this,
+      );
+
+  void set name(String name) => RustLib.instance.api
+      .crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalSetName(
+          that: this, name: name);
+}
+
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinNormal>>
+@sealed
+class OpaqueItemTwinNormal extends RustOpaque {
+  OpaqueItemTwinNormal.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  OpaqueItemTwinNormal.sseDecode(BigInt ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_OpaqueItemTwinNormal,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_OpaqueItemTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_OpaqueItemTwinNormalPtr,
+  );
+}
+
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructInMiscNoTwinExampleA>>
 @sealed
 class StructInMiscNoTwinExampleA extends RustOpaque {
@@ -96,6 +155,38 @@ class StructWithSimpleSetterTwinNormal extends RustOpaque {
   void set simpleSetter(int value) => RustLib.instance.api
       .crateApiMiscNoTwinExampleAStructWithSimpleSetterTwinNormalSimpleSetter(
           that: this, value: value);
+}
+
+class ItemContainerSolutionTwoTwinNormal {
+  String name;
+  final List<OpaqueItemTwinNormal> items;
+
+  ItemContainerSolutionTwoTwinNormal({
+    required this.name,
+    required this.items,
+  });
+
+  static Future<ItemContainerSolutionTwoTwinNormal> createTwinNormal(
+          {dynamic hint}) =>
+      RustLib.instance.api
+          .crateApiMiscNoTwinExampleAItemContainerSolutionTwoTwinNormalCreateTwinNormal(
+              hint: hint);
+
+  Future<Int32List> getItemContentsTwinNormal({dynamic hint}) => RustLib
+      .instance.api
+      .crateApiMiscNoTwinExampleAItemContainerSolutionTwoTwinNormalGetItemContentsTwinNormal(
+          that: this, hint: hint);
+
+  @override
+  int get hashCode => name.hashCode ^ items.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ItemContainerSolutionTwoTwinNormal &&
+          runtimeType == other.runtimeType &&
+          name == other.name &&
+          items == other.items;
 }
 
 class StructWithCustomNameMethodTwinNormal {
