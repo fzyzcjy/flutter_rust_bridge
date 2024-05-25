@@ -16,7 +16,7 @@ class SimpleOpaqueExternalStructWithMethod extends RustOpaque {
       : super.dcoDecode(wire, _kStaticData);
 
   SimpleOpaqueExternalStructWithMethod.sseDecode(
-      int ptr, int externalSizeOnNative)
+      BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(

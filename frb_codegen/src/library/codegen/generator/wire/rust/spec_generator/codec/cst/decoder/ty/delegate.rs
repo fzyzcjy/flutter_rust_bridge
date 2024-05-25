@@ -41,7 +41,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
                 if ir == &IrTypeDelegateTime::Duration {
                     return Acc {
                         io: Some("chrono::Duration::microseconds(self)".into()),
-                        web: Some("chrono::Duration::milliseconds(self)".into()),
+                        web: None,
                         ..Default::default()
                     };
                 }
@@ -97,6 +97,15 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
                 io: Some("let raw: String = self.cst_decode(); StreamSink::deserialize(raw)".into()),
                 ..Default::default()
             },
+            IrTypeDelegate::BigPrimitive(_) => Acc::distribute(
+                Some(
+                    "CstDecode::<String>::cst_decode(self).parse().unwrap()".into(),
+                ),
+            ),
+            IrTypeDelegate::RustAutoOpaqueExplicit(_) => Acc {
+                io: Some("flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(self.cst_decode())".into()),
+                ..Default::default()
+            },
         }
     }
 
@@ -116,7 +125,10 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
             // IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
             //     "flutter_rust_bridge::ZeroCopyBuffer(self.cst_decode())".into()
             // }
-            IrTypeDelegate::Time(_) => "CstDecode::<i64>::cst_decode(self).cst_decode()".into(),
+            IrTypeDelegate::Time(ir) => match ir {
+                IrTypeDelegateTime::Duration => "chrono::Duration::milliseconds(CstDecode::<i64>::cst_decode(self))".into(),
+                _ => "CstDecode::<i64>::cst_decode(self).cst_decode()".into(),
+            },
             // IrTypeDelegate::TimeList(_) =>
             //     "self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::BigInt64Array>().to_vec().into_iter().map(CstDecode::cst_decode).collect()".into(),
             IrTypeDelegate::Uuid /*| IrTypeDelegate::Uuids*/ => {
@@ -129,6 +141,9 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
             IrTypeDelegate::Map(ir) => generate_decode_map(ir).into(),
             IrTypeDelegate::Set(ir) => generate_decode_set(ir).into(),
             IrTypeDelegate::StreamSink(_) => "StreamSink::deserialize(self.as_string().expect(\"should be a string\"))".into(),
+            IrTypeDelegate::BigPrimitive(_) => "CstDecode::<String>::cst_decode(self).parse().unwrap()".into(),
+            IrTypeDelegate::RustAutoOpaqueExplicit(_) =>
+                "flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(self.cst_decode())".into(),
         })
     }
 

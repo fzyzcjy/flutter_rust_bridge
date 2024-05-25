@@ -1,6 +1,8 @@
 use crate::codegen::ir::func::OwnershipMode;
 use crate::codegen::ir::namespace::Namespace;
-use crate::codegen::ir::ty::rust_auto_opaque::{IrRustAutoOpaqueRaw, IrTypeRustAutoOpaque};
+use crate::codegen::ir::ty::rust_auto_opaque_implicit::{
+    IrRustAutoOpaqueRaw, IrTypeRustAutoOpaqueImplicit,
+};
 use crate::codegen::ir::ty::rust_opaque::{
     IrRustOpaqueInner, IrTypeRustOpaque, RustOpaqueCodecMode,
 };
@@ -14,54 +16,59 @@ use crate::codegen::parser::type_parser::TypeParserWithContext;
 use anyhow::Result;
 use quote::ToTokens;
 use syn::Type;
-use IrType::RustAutoOpaque;
+use IrType::RustAutoOpaqueImplicit;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
-    pub(crate) fn parse_type_rust_auto_opaque(
+    pub(crate) fn parse_type_rust_auto_opaque_implicit(
         &mut self,
         namespace: Option<Namespace>,
         ty: &Type,
     ) -> Result<IrType> {
         let (inner, ownership_mode) = split_ownership_from_ty(ty);
+        let (ans_raw, ans_inner) =
+            self.parse_type_rust_auto_opaque_common(inner, namespace, None)?;
+        Ok(RustAutoOpaqueImplicit(IrTypeRustAutoOpaqueImplicit {
+            ownership_mode,
+            raw: ans_raw,
+            inner: ans_inner,
+        }))
+    }
+
+    pub(crate) fn parse_type_rust_auto_opaque_common(
+        &mut self,
+        inner: Type,
+        namespace: Option<Namespace>,
+        codec: Option<RustOpaqueCodecMode>,
+    ) -> Result<(IrRustAutoOpaqueRaw, IrTypeRustOpaque)> {
         let inner = external_impl::parse_type(inner)?;
-        // println!("inner={inner:?}");
 
         let inner_str = inner.to_token_stream().to_string();
-
-        let info = self.get_or_insert_rust_auto_opaque_info(&inner_str, namespace, None);
+        let info = self.get_or_insert_rust_auto_opaque_info(&inner_str, namespace, codec);
 
         let raw_segments = match inner {
             Type::Path(inner) => extract_path_data(&inner.path)?,
             _ => vec![],
         };
 
-        Ok(RustAutoOpaque(IrTypeRustAutoOpaque {
-            ownership_mode,
-            raw: IrRustAutoOpaqueRaw {
+        Ok((
+            IrRustAutoOpaqueRaw {
                 string: inner_str.clone(),
                 segments: raw_segments,
             },
-            inner: IrTypeRustOpaque {
+            IrTypeRustOpaque {
                 namespace: info.namespace,
-                inner: self.create_rust_opaque_type_for_rust_auto_opaque(&inner_str),
+                // TODO when all usages of a type do not require `&mut`, can drop this Mutex
+                // TODO similarly, can use std instead of `tokio`'s lock
+                inner: IrRustOpaqueInner(format!(
+                    "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<{inner_str}>"
+                )),
                 codec: info.codec,
                 brief_name: true,
             },
-        }))
-    }
-
-    pub(super) fn create_rust_opaque_type_for_rust_auto_opaque(
-        &self,
-        inner: &str,
-    ) -> IrRustOpaqueInner {
-        // TODO when all usages of a type do not require `&mut`, can drop this Mutex
-        // TODO similarly, can use std instead of `tokio`'s lock
-        IrRustOpaqueInner(format!(
-            "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<{inner}>"
         ))
     }
 
-    pub(super) fn get_or_insert_rust_auto_opaque_info(
+    fn get_or_insert_rust_auto_opaque_info(
         &mut self,
         inner: &str,
         namespace: Option<Namespace>,
@@ -80,10 +87,10 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
     pub(crate) fn transform_rust_auto_opaque(
         &mut self,
-        ty_raw: &IrTypeRustAutoOpaque,
+        ty_raw: &IrTypeRustAutoOpaqueImplicit,
         transform: impl FnOnce(&str) -> String,
     ) -> Result<IrType> {
-        self.parse_type_rust_auto_opaque(
+        self.parse_type_rust_auto_opaque_implicit(
             ty_raw.self_namespace(),
             &syn::parse_str(&transform(&ty_raw.raw.string))?,
         )

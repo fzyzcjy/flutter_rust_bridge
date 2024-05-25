@@ -25,10 +25,16 @@ Future<Map<int, int>> exampleBasicMapTypeI32TwinRustAsyncSse(
         .crateApiPseudoManualBasicMapTwinRustAsyncSseExampleBasicMapTypeI32TwinRustAsyncSse(
             arg: arg, hint: hint);
 
-Future<Map<int, int>> exampleBasicMapTypeI64TwinRustAsyncSse(
-        {required Map<int, int> arg, dynamic hint}) =>
+Future<Map<int, PlatformInt64>> exampleBasicMapTypeI64TwinRustAsyncSse(
+        {required Map<int, PlatformInt64> arg, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicMapTwinRustAsyncSseExampleBasicMapTypeI64TwinRustAsyncSse(
+            arg: arg, hint: hint);
+
+Future<Map<int, BigInt>> exampleBasicMapTypeI128TwinRustAsyncSse(
+        {required Map<int, BigInt> arg, dynamic hint}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicMapTwinRustAsyncSseExampleBasicMapTypeI128TwinRustAsyncSse(
             arg: arg, hint: hint);
 
 Future<Map<int, int>> exampleBasicMapTypeU8TwinRustAsyncSse(
@@ -49,20 +55,26 @@ Future<Map<int, int>> exampleBasicMapTypeU32TwinRustAsyncSse(
         .crateApiPseudoManualBasicMapTwinRustAsyncSseExampleBasicMapTypeU32TwinRustAsyncSse(
             arg: arg, hint: hint);
 
-Future<Map<int, int>> exampleBasicMapTypeU64TwinRustAsyncSse(
-        {required Map<int, int> arg, dynamic hint}) =>
+Future<Map<int, BigInt>> exampleBasicMapTypeU64TwinRustAsyncSse(
+        {required Map<int, BigInt> arg, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicMapTwinRustAsyncSseExampleBasicMapTypeU64TwinRustAsyncSse(
             arg: arg, hint: hint);
 
-Future<Map<int, int>> exampleBasicMapTypeIsizeTwinRustAsyncSse(
-        {required Map<int, int> arg, dynamic hint}) =>
+Future<Map<int, BigInt>> exampleBasicMapTypeU128TwinRustAsyncSse(
+        {required Map<int, BigInt> arg, dynamic hint}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicMapTwinRustAsyncSseExampleBasicMapTypeU128TwinRustAsyncSse(
+            arg: arg, hint: hint);
+
+Future<Map<int, PlatformInt64>> exampleBasicMapTypeIsizeTwinRustAsyncSse(
+        {required Map<int, PlatformInt64> arg, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicMapTwinRustAsyncSseExampleBasicMapTypeIsizeTwinRustAsyncSse(
             arg: arg, hint: hint);
 
-Future<Map<int, int>> exampleBasicMapTypeUsizeTwinRustAsyncSse(
-        {required Map<int, int> arg, dynamic hint}) =>
+Future<Map<int, BigInt>> exampleBasicMapTypeUsizeTwinRustAsyncSse(
+        {required Map<int, BigInt> arg, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicMapTwinRustAsyncSseExampleBasicMapTypeUsizeTwinRustAsyncSse(
             arg: arg, hint: hint);

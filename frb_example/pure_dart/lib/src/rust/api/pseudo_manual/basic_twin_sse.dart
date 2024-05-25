@@ -8,55 +8,77 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'basic_twin_sse.freezed.dart';
 
-Future<int> exampleBasicTypeI8TwinSse({required int arg, dynamic hint}) =>
+Future<int> exampleBasicTypeI8TwinSse(
+        {required int arg, required String expect, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicTwinSseExampleBasicTypeI8TwinSse(
-            arg: arg, hint: hint);
+            arg: arg, expect: expect, hint: hint);
 
-Future<int> exampleBasicTypeI16TwinSse({required int arg, dynamic hint}) =>
+Future<int> exampleBasicTypeI16TwinSse(
+        {required int arg, required String expect, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicTwinSseExampleBasicTypeI16TwinSse(
-            arg: arg, hint: hint);
+            arg: arg, expect: expect, hint: hint);
 
-Future<int> exampleBasicTypeI32TwinSse({required int arg, dynamic hint}) =>
+Future<int> exampleBasicTypeI32TwinSse(
+        {required int arg, required String expect, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicTwinSseExampleBasicTypeI32TwinSse(
-            arg: arg, hint: hint);
+            arg: arg, expect: expect, hint: hint);
 
-Future<int> exampleBasicTypeI64TwinSse({required int arg, dynamic hint}) =>
+Future<PlatformInt64> exampleBasicTypeI64TwinSse(
+        {required PlatformInt64 arg, required String expect, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicTwinSseExampleBasicTypeI64TwinSse(
-            arg: arg, hint: hint);
+            arg: arg, expect: expect, hint: hint);
 
-Future<int> exampleBasicTypeU8TwinSse({required int arg, dynamic hint}) =>
+Future<BigInt> exampleBasicTypeI128TwinSse(
+        {required BigInt arg, required String expect, dynamic hint}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicTwinSseExampleBasicTypeI128TwinSse(
+            arg: arg, expect: expect, hint: hint);
+
+Future<int> exampleBasicTypeU8TwinSse(
+        {required int arg, required String expect, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicTwinSseExampleBasicTypeU8TwinSse(
-            arg: arg, hint: hint);
+            arg: arg, expect: expect, hint: hint);
 
-Future<int> exampleBasicTypeU16TwinSse({required int arg, dynamic hint}) =>
+Future<int> exampleBasicTypeU16TwinSse(
+        {required int arg, required String expect, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicTwinSseExampleBasicTypeU16TwinSse(
-            arg: arg, hint: hint);
+            arg: arg, expect: expect, hint: hint);
 
-Future<int> exampleBasicTypeU32TwinSse({required int arg, dynamic hint}) =>
+Future<int> exampleBasicTypeU32TwinSse(
+        {required int arg, required String expect, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicTwinSseExampleBasicTypeU32TwinSse(
-            arg: arg, hint: hint);
+            arg: arg, expect: expect, hint: hint);
 
-Future<int> exampleBasicTypeU64TwinSse({required int arg, dynamic hint}) =>
+Future<BigInt> exampleBasicTypeU64TwinSse(
+        {required BigInt arg, required String expect, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicTwinSseExampleBasicTypeU64TwinSse(
-            arg: arg, hint: hint);
+            arg: arg, expect: expect, hint: hint);
 
-Future<int> exampleBasicTypeIsizeTwinSse({required int arg, dynamic hint}) =>
+Future<BigInt> exampleBasicTypeU128TwinSse(
+        {required BigInt arg, required String expect, dynamic hint}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicTwinSseExampleBasicTypeU128TwinSse(
+            arg: arg, expect: expect, hint: hint);
+
+Future<PlatformInt64> exampleBasicTypeIsizeTwinSse(
+        {required PlatformInt64 arg, required String expect, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicTwinSseExampleBasicTypeIsizeTwinSse(
-            arg: arg, hint: hint);
+            arg: arg, expect: expect, hint: hint);
 
-Future<int> exampleBasicTypeUsizeTwinSse({required int arg, dynamic hint}) =>
+Future<BigInt> exampleBasicTypeUsizeTwinSse(
+        {required BigInt arg, required String expect, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicTwinSseExampleBasicTypeUsizeTwinSse(
-            arg: arg, hint: hint);
+            arg: arg, expect: expect, hint: hint);
 
 Future<double> exampleBasicTypeF32TwinSse(
         {required double arg, dynamic hint}) =>

@@ -10,4 +10,5 @@ export 'src/generalized_uint8list/_web.dart';
 export 'src/manual_impl/_web.dart';
 export 'src/platform_types/_web.dart';
 export 'src/platform_utils/_web.dart';
+export 'src/third_party/flutter_foundation_serialization/_web.dart';
 export 'src/wasm_module/_web.dart';

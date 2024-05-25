@@ -7,9 +7,7 @@
 #[allow(unused_imports)]
 use crate::frb_generated::RustAutoOpaque;
 use crate::frb_generated::StreamSink;
-use flutter_rust_bridge::for_generated::RustAutoOpaqueInner;
 use flutter_rust_bridge::frb;
-use flutter_rust_bridge::rust_async::RwLock;
 use std::path::PathBuf;
 
 // TODO auto determine it is opaque or not later
@@ -425,7 +423,7 @@ pub fn rust_auto_opaque_explicit_arg_twin_sync_moi(
     arg: crate::frb_generated::RustAutoOpaqueMoi<NonCloneSimpleTwinSyncMoi>,
     expect: i32,
 ) {
-    assert_eq!((*arg).try_read().unwrap().inner, expect);
+    assert_eq!(arg.try_read().unwrap().inner, expect);
 }
 
 pub struct StructWithExplicitAutoOpaqueFieldTwinSyncMoi {
@@ -438,7 +436,19 @@ pub struct StructWithExplicitAutoOpaqueFieldTwinSyncMoi {
 pub fn rust_auto_opaque_explicit_struct_twin_sync_moi(
     arg: StructWithExplicitAutoOpaqueFieldTwinSyncMoi,
 ) {
-    assert_eq!((*arg.auto_opaque).try_read().unwrap().inner, arg.normal);
+    assert_eq!(arg.auto_opaque.try_read().unwrap().inner, arg.normal);
+}
+
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_explicit_return_struct_twin_sync_moi(
+) -> StructWithExplicitAutoOpaqueFieldTwinSyncMoi {
+    StructWithExplicitAutoOpaqueFieldTwinSyncMoi {
+        normal: 100,
+        auto_opaque: crate::frb_generated::RustAutoOpaqueMoi::new(NonCloneSimpleTwinSyncMoi {
+            inner: 100,
+        }),
+    }
 }
 
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
@@ -446,9 +456,7 @@ pub fn rust_auto_opaque_explicit_struct_twin_sync_moi(
 pub fn rust_auto_opaque_explicit_return_twin_sync_moi(
     initial: i32,
 ) -> crate::frb_generated::RustAutoOpaqueMoi<NonCloneSimpleTwinSyncMoi> {
-    crate::frb_generated::RustAutoOpaqueMoi::new(RustAutoOpaqueInner::new(RwLock::new(
-        NonCloneSimpleTwinSyncMoi { inner: initial },
-    )))
+    crate::frb_generated::RustAutoOpaqueMoi::new(NonCloneSimpleTwinSyncMoi { inner: initial })
 }
 
 // ================ deadlock detection ===================

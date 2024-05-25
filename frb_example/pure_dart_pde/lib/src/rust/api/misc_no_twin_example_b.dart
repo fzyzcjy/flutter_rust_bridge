@@ -17,7 +17,7 @@ class StructInMiscNoTwinExampleB extends RustOpaque {
   StructInMiscNoTwinExampleB.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  StructInMiscNoTwinExampleB.sseDecode(int ptr, int externalSizeOnNative)
+  StructInMiscNoTwinExampleB.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(

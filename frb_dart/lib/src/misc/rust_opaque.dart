@@ -24,9 +24,9 @@ abstract class RustOpaque {
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @internal
   RustOpaque.sseDecode(
-      int ptr, int externalSizeOnNative, RustArcStaticData staticData)
+      BigInt ptr, int externalSizeOnNative, RustArcStaticData staticData)
       : this._fromRaw(
-          ptr: ptr,
+          ptr: ptr.toSigned(64).toInt(),
           externalSizeOnNative: externalSizeOnNative,
           staticData: staticData,
         );
@@ -54,7 +54,8 @@ abstract class RustOpaque {
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @internal
-  int sseEncode({bool? move}) => cstEncode(move: move);
+  BigInt sseEncode({bool? move}) =>
+      BigInt.from(cstEncode(move: move)).toUnsigned(64);
 
   /// Dispose the underlying `Arc`.
   void dispose() => _arc.dispose();

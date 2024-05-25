@@ -53,13 +53,13 @@ Future<ApplicationMessage> getMessageTwinRustAsync({dynamic hint}) => RustLib
     .crateApiPseudoManualMirrorTwinRustAsyncGetMessageTwinRustAsync(hint: hint);
 
 Future<Numbers> repeatNumberTwinRustAsync(
-        {required int num, required int times, dynamic hint}) =>
+        {required int num, required BigInt times, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualMirrorTwinRustAsyncRepeatNumberTwinRustAsync(
             num: num, times: times, hint: hint);
 
 Future<Sequences> repeatSequenceTwinRustAsync(
-        {required int seq, required int times, dynamic hint}) =>
+        {required int seq, required BigInt times, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualMirrorTwinRustAsyncRepeatSequenceTwinRustAsync(
             seq: seq, times: times, hint: hint);

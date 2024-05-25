@@ -8,7 +8,7 @@ exact grammar, have a look at the example below.
 No need to worry whether this breaks the DRY principle, or what happens when you accidentally write down a wrong field.
 This is because *compile errors will happen* if your mirrored type is not exactly same as the original type.
 
-In order to use methods of externals types, please refer to [this page](../../../miscellaneous/methods).
+In order to use methods of externals types, please refer to [this page](../../../functions/methods).
 
 When multiple structs have the same fields, you can mirror them *once* using grammar
 like `#[frb(mirror(FirstStruct, SecondStruct, ThirdStruct))]`.

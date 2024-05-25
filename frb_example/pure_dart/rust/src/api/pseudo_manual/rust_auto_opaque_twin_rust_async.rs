@@ -7,9 +7,7 @@
 #[allow(unused_imports)]
 use crate::frb_generated::RustAutoOpaque;
 use crate::frb_generated::StreamSink;
-use flutter_rust_bridge::for_generated::RustAutoOpaqueInner;
 use flutter_rust_bridge::frb;
-use flutter_rust_bridge::rust_async::RwLock;
 use std::path::PathBuf;
 
 // TODO auto determine it is opaque or not later
@@ -359,7 +357,7 @@ pub async fn rust_auto_opaque_explicit_arg_twin_rust_async(
     arg: RustAutoOpaque<NonCloneSimpleTwinRustAsync>,
     expect: i32,
 ) {
-    assert_eq!((*arg).try_read().unwrap().inner, expect);
+    assert_eq!(arg.try_read().unwrap().inner, expect);
 }
 
 pub struct StructWithExplicitAutoOpaqueFieldTwinRustAsync {
@@ -370,15 +368,21 @@ pub struct StructWithExplicitAutoOpaqueFieldTwinRustAsync {
 pub async fn rust_auto_opaque_explicit_struct_twin_rust_async(
     arg: StructWithExplicitAutoOpaqueFieldTwinRustAsync,
 ) {
-    assert_eq!((*arg.auto_opaque).try_read().unwrap().inner, arg.normal);
+    assert_eq!(arg.auto_opaque.try_read().unwrap().inner, arg.normal);
+}
+
+pub async fn rust_auto_opaque_explicit_return_struct_twin_rust_async(
+) -> StructWithExplicitAutoOpaqueFieldTwinRustAsync {
+    StructWithExplicitAutoOpaqueFieldTwinRustAsync {
+        normal: 100,
+        auto_opaque: RustAutoOpaque::new(NonCloneSimpleTwinRustAsync { inner: 100 }),
+    }
 }
 
 pub async fn rust_auto_opaque_explicit_return_twin_rust_async(
     initial: i32,
 ) -> RustAutoOpaque<NonCloneSimpleTwinRustAsync> {
-    RustAutoOpaque::new(RustAutoOpaqueInner::new(RwLock::new(
-        NonCloneSimpleTwinRustAsync { inner: initial },
-    )))
+    RustAutoOpaque::new(NonCloneSimpleTwinRustAsync { inner: initial })
 }
 
 // ================ deadlock detection ===================

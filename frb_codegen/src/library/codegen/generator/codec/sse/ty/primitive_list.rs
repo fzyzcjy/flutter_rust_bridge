@@ -14,7 +14,7 @@ impl<'a> CodecSseTyTrait for PrimitiveListCodecSseTy<'a> {
                 } else {
                     format!(
                         "self is {prim}List ? self : {prim}List.fromList(self)",
-                        prim = get_serializer_dart_postfix(&self.ir.primitive),
+                        prim = get_serializer_dart_postfix(&self.ir.primitive, true),
                     )
                 };
 
@@ -22,7 +22,7 @@ impl<'a> CodecSseTyTrait for PrimitiveListCodecSseTy<'a> {
                     "{};
                     serializer.buffer.put{}List({type_converter});",
                     lang.call_encode(&LEN_TYPE, &format!("self.{}", list_len_method(lang))),
-                    get_serializer_dart_postfix(&self.ir.primitive)
+                    get_serializer_dart_postfix(&self.ir.primitive, true)
                 ))
             }
             Lang::RustLang(_) => {
@@ -44,7 +44,7 @@ impl<'a> CodecSseTyTrait for PrimitiveListCodecSseTy<'a> {
                 "{var_decl} len_ = {};
                 return deserializer.buffer.get{}List(len_);",
                 lang.call_decode(&LEN_TYPE),
-                get_serializer_dart_postfix(&self.ir.primitive)
+                get_serializer_dart_postfix(&self.ir.primitive, true)
             )),
             Lang::RustLang(_) => {
                 // TODO do not use naive loop

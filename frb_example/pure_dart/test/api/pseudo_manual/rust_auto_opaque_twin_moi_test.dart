@@ -293,11 +293,16 @@ Future<void> main({bool skipRustLibInit = false}) async {
           rustAutoOpaqueExplicitArgTwinMoi(arg: obj, expect: 100));
     });
 
-    test('it can be inside a struct', () async {
+    test('it can be inside a struct used as argument', () async {
       final obj = await rustAutoOpaqueExplicitReturnTwinMoi(initial: 100);
       await futurizeVoidTwinMoi(rustAutoOpaqueExplicitStructTwinMoi(
           arg: StructWithExplicitAutoOpaqueFieldTwinMoi(
               autoOpaque: obj, normal: 100)));
+    });
+
+    test('it can be inside a struct used as return type', () async {
+      final obj = await rustAutoOpaqueExplicitReturnStructTwinMoi();
+      await futurizeVoidTwinMoi(rustAutoOpaqueExplicitStructTwinMoi(arg: obj));
     });
 
     group('it can be used with automatic (implicit) ones', () {

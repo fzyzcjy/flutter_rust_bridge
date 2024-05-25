@@ -4,8 +4,8 @@ use crate::codegen::generator::api_dart::spec_generator::function::{
 };
 use crate::codegen::generator::api_dart::spec_generator::misc::generate_dart_comments;
 use crate::codegen::ir::func::{
-    IrFunc, IrFuncDefaultConstructorMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod,
-    IrFuncOwnerInfoMethodMode,
+    IrFunc, IrFuncAccessorMode, IrFuncDefaultConstructorMode, IrFuncOwnerInfo,
+    IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode,
 };
 use crate::codegen::ir::namespace::NamespacedName;
 use crate::if_then_some;
@@ -82,7 +82,7 @@ fn compute_skip_names(func: &IrFunc, method_info: &IrFuncOwnerInfoMethod) -> Vec
     if method_info.mode != IrFuncOwnerInfoMethodMode::Static {
         ans.push("that");
     }
-    if func.getter {
+    if func.accessor.is_some() {
         ans.push("hint");
     }
     ans
@@ -119,20 +119,29 @@ fn generate_signature(
             .unwrap_or(&method_info.actual_method_name))
         .to_case(Case::Camel)
     };
-    let (func_params, maybe_getter) = if func.getter {
-        ("".to_owned(), "get")
-    } else {
-        (
+    let (func_params, maybe_accessor) = match func.accessor {
+        Some(IrFuncAccessorMode::Getter) => ("".to_owned(), "get"),
+        Some(IrFuncAccessorMode::Setter) => (
+            format!(
+                "({})",
+                func_params
+                    .iter()
+                    .map(|x| format!("{} {}", x.type_str, x.name_str))
+                    .join(", ")
+            ),
+            "set",
+        ),
+        None => (
             format!("({{ {} }})", func_params.iter().map(|x| &x.full).join(",")),
             "",
-        )
+        ),
     };
 
     if default_constructor_mode == Some(IrFuncDefaultConstructorMode::DartConstructor) {
         return format!("factory {return_type}{func_params}");
     }
 
-    format!("{maybe_static} {return_type} {maybe_getter} {method_name}{func_params}")
+    format!("{maybe_static} {return_type} {maybe_accessor} {method_name}{func_params}")
 }
 
 fn generate_implementation(

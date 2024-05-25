@@ -22,7 +22,7 @@ impl BaseCodec for CstCodec {
     // frb-coverage:ignore-end
 }
 
-pub struct Rust2DartMessageCst(DartAbi);
+pub struct Rust2DartMessageCst;
 
 impl Rust2DartMessageTrait for Rust2DartMessageCst {
     type WireSyncRust2DartType = ();

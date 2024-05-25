@@ -10,4 +10,7 @@ List<dynamic> wireSyncRust2DartDcoIntoDart(WireSyncRust2DartDco syncReturn) =>
     dartCObjectIntoDart(syncReturn.ref);
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-int dcoDecodeI64OrU64(dynamic raw) => raw;
+int dcoDecodeI64(int raw) => raw;
+
+/// {@macro flutter_rust_bridge.only_for_generated_code}
+BigInt dcoDecodeU64(int raw) => BigInt.from(raw).toUnsigned(64);

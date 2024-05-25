@@ -23,7 +23,7 @@ class StaticGetterOnlyTwinSync extends RustOpaque {
   StaticGetterOnlyTwinSync.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  StaticGetterOnlyTwinSync.sseDecode(int ptr, int externalSizeOnNative)
+  StaticGetterOnlyTwinSync.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(

@@ -16,7 +16,7 @@ impl<'a> CodecSseTyTrait for PrimitiveCodecSseTy<'a> {
             _ => match lang {
                 Lang::DartLang(_) => format!(
                     "serializer.buffer.put{}(self{dart_cast});",
-                    get_serializer_dart_postfix(&self.ir)
+                    get_serializer_dart_postfix(&self.ir, false)
                 ),
                 Lang::RustLang(_) => format!(
                     "serializer.cursor.write_{}{}(self{rust_cast}).unwrap();",
@@ -43,7 +43,7 @@ impl<'a> CodecSseTyTrait for PrimitiveCodecSseTy<'a> {
             _ => match lang {
                 Lang::DartLang(_) => format!(
                     "return deserializer.buffer.get{}(){dart_cast};",
-                    get_serializer_dart_postfix(&self.ir)
+                    get_serializer_dart_postfix(&self.ir, false)
                 ),
                 Lang::RustLang(_) => {
                     format!(
@@ -57,7 +57,7 @@ impl<'a> CodecSseTyTrait for PrimitiveCodecSseTy<'a> {
     }
 }
 
-pub(super) fn get_serializer_dart_postfix(prim: &IrTypePrimitive) -> &'static str {
+pub(super) fn get_serializer_dart_postfix(prim: &IrTypePrimitive, mode_list: bool) -> &'static str {
     match prim {
         IrTypePrimitive::U8 => "Uint8",
         IrTypePrimitive::I8 => "Int8",
@@ -65,10 +65,20 @@ pub(super) fn get_serializer_dart_postfix(prim: &IrTypePrimitive) -> &'static st
         IrTypePrimitive::I16 => "Int16",
         IrTypePrimitive::U32 => "Uint32",
         IrTypePrimitive::I32 => "Int32",
-        IrTypePrimitive::U64 => "Uint64",
-        IrTypePrimitive::I64 => "Int64",
-        IrTypePrimitive::Usize => "Uint64",
-        IrTypePrimitive::Isize => "Int64",
+        IrTypePrimitive::I64 | IrTypePrimitive::Isize => {
+            if mode_list {
+                "Int64"
+            } else {
+                "PlatformInt64"
+            }
+        }
+        IrTypePrimitive::U64 | IrTypePrimitive::Usize => {
+            if mode_list {
+                "Uint64"
+            } else {
+                "BigUint64"
+            }
+        }
         IrTypePrimitive::F32 => "Float32",
         IrTypePrimitive::F64 => "Float64",
         IrTypePrimitive::Bool => "Uint8",

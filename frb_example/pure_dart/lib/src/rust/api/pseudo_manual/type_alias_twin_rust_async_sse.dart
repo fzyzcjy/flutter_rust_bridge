@@ -7,26 +7,26 @@ import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<int> handleTypeAliasIdTwinRustAsyncSse(
-        {required int input, dynamic hint}) =>
+Future<BigInt> handleTypeAliasIdTwinRustAsyncSse(
+        {required BigInt input, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualTypeAliasTwinRustAsyncSseHandleTypeAliasIdTwinRustAsyncSse(
             input: input, hint: hint);
 
-Future<int> handleTypeNestAliasIdTwinRustAsyncSse(
-        {required int input, dynamic hint}) =>
+Future<BigInt> handleTypeNestAliasIdTwinRustAsyncSse(
+        {required BigInt input, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualTypeAliasTwinRustAsyncSseHandleTypeNestAliasIdTwinRustAsyncSse(
             input: input, hint: hint);
 
 Future<TestModelTwinRustAsyncSse> handleTypeAliasModelTwinRustAsyncSse(
-        {required int input, dynamic hint}) =>
+        {required BigInt input, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualTypeAliasTwinRustAsyncSseHandleTypeAliasModelTwinRustAsyncSse(
             input: input, hint: hint);
 
 class TestModelTwinRustAsyncSse {
-  final int id;
+  final BigInt id;
   final String name;
   final MyEnum aliasEnum;
   final MyStruct aliasStruct;

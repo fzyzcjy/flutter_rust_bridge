@@ -25,10 +25,16 @@ Future<int?> exampleBasicOptionalTypeI32TwinRustAsyncSse(
         .crateApiPseudoManualBasicOptionalTwinRustAsyncSseExampleBasicOptionalTypeI32TwinRustAsyncSse(
             arg: arg, hint: hint);
 
-Future<int?> exampleBasicOptionalTypeI64TwinRustAsyncSse(
-        {int? arg, dynamic hint}) =>
+Future<PlatformInt64?> exampleBasicOptionalTypeI64TwinRustAsyncSse(
+        {PlatformInt64? arg, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicOptionalTwinRustAsyncSseExampleBasicOptionalTypeI64TwinRustAsyncSse(
+            arg: arg, hint: hint);
+
+Future<BigInt?> exampleBasicOptionalTypeI128TwinRustAsyncSse(
+        {BigInt? arg, dynamic hint}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicOptionalTwinRustAsyncSseExampleBasicOptionalTypeI128TwinRustAsyncSse(
             arg: arg, hint: hint);
 
 Future<int?> exampleBasicOptionalTypeU8TwinRustAsyncSse(
@@ -49,20 +55,26 @@ Future<int?> exampleBasicOptionalTypeU32TwinRustAsyncSse(
         .crateApiPseudoManualBasicOptionalTwinRustAsyncSseExampleBasicOptionalTypeU32TwinRustAsyncSse(
             arg: arg, hint: hint);
 
-Future<int?> exampleBasicOptionalTypeU64TwinRustAsyncSse(
-        {int? arg, dynamic hint}) =>
+Future<BigInt?> exampleBasicOptionalTypeU64TwinRustAsyncSse(
+        {BigInt? arg, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicOptionalTwinRustAsyncSseExampleBasicOptionalTypeU64TwinRustAsyncSse(
             arg: arg, hint: hint);
 
-Future<int?> exampleBasicOptionalTypeIsizeTwinRustAsyncSse(
-        {int? arg, dynamic hint}) =>
+Future<BigInt?> exampleBasicOptionalTypeU128TwinRustAsyncSse(
+        {BigInt? arg, dynamic hint}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicOptionalTwinRustAsyncSseExampleBasicOptionalTypeU128TwinRustAsyncSse(
+            arg: arg, hint: hint);
+
+Future<PlatformInt64?> exampleBasicOptionalTypeIsizeTwinRustAsyncSse(
+        {PlatformInt64? arg, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicOptionalTwinRustAsyncSseExampleBasicOptionalTypeIsizeTwinRustAsyncSse(
             arg: arg, hint: hint);
 
-Future<int?> exampleBasicOptionalTypeUsizeTwinRustAsyncSse(
-        {int? arg, dynamic hint}) =>
+Future<BigInt?> exampleBasicOptionalTypeUsizeTwinRustAsyncSse(
+        {BigInt? arg, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicOptionalTwinRustAsyncSseExampleBasicOptionalTypeUsizeTwinRustAsyncSse(
             arg: arg, hint: hint);

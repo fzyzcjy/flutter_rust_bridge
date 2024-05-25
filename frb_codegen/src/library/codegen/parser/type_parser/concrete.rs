@@ -59,7 +59,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             ("Box", [inner]) => {
                 let inner = self.parse_type(inner)?;
                 match inner {
-                    IrType::RustAutoOpaque(ty_raw) => self.transform_rust_auto_opaque(
+                    IrType::RustAutoOpaqueImplicit(ty_raw) => self.transform_rust_auto_opaque(
                         &ty_raw,
                         |raw| format!("Box<{raw}>"),
                     )?,
@@ -108,7 +108,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     fn parse_datetime(&mut self, args: &[Type]) -> anyhow::Result<IrType> {
         // frb-coverage:ignore-end
         let inner = self.parse_type(&args[0])?;
-        if let IrType::RustAutoOpaque(inner) = &inner {
+        if let IrType::RustAutoOpaqueImplicit(inner) = &inner {
             return Ok(match splay_segments(&inner.raw.segments).last().unwrap() {
                 ("Utc", []) => Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Utc)),
                 ("Local", []) => Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Local)),

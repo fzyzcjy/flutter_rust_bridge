@@ -13,7 +13,7 @@ NewTypeIntTwinSync handleNewtypeTwinSync(
             arg: arg, hint: hint);
 
 class NewTypeIntTwinSync {
-  final int field0;
+  final PlatformInt64 field0;
 
   const NewTypeIntTwinSync({
     required this.field0,

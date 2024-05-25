@@ -1,3 +1,4 @@
+use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegateBigPrimitive};
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::Primitive;
@@ -13,6 +14,9 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             // TODO: change to "if let guard" https://github.com/rust-lang/rust/issues/51114
             (name, []) if matches!(parse_primitive(name), Some(..)) => {
                 Primitive(parse_primitive(name).unwrap())
+            }
+            (name, []) if matches!(parse_big_primitive(name), Some(..)) => {
+                parse_big_primitive(name).unwrap()
             }
 
             _ => return Ok(None),
@@ -38,4 +42,12 @@ fn parse_primitive(s: &str) -> Option<IrTypePrimitive> {
         "isize" => IrTypePrimitive::Isize,
         _ => return None,
     })
+}
+
+fn parse_big_primitive(s: &str) -> Option<IrType> {
+    Some(IrType::Delegate(IrTypeDelegate::BigPrimitive(match s {
+        "i128" => IrTypeDelegateBigPrimitive::I128,
+        "u128" => IrTypeDelegateBigPrimitive::U128,
+        _ => return None,
+    })))
 }

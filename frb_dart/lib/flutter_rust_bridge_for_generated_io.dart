@@ -8,3 +8,4 @@ export 'src/generalized_uint8list/_io.dart';
 export 'src/manual_impl/_io.dart';
 export 'src/platform_types/_io.dart';
 export 'src/platform_utils/_io.dart';
+export 'src/third_party/flutter_foundation_serialization/_io.dart';

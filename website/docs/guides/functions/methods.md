@@ -1,6 +1,7 @@
 # Methods
 
-There is support for structs with methods. Both static methods, and non-static methods are supported.
+In addition to standard functions,
+there is support for structs with methods. Both static methods, and non-static methods are supported.
 No special syntax is needed, and just write normal `impl YourStruct { pub fn your_method() {} }`.
 
 ## Methods in external crates

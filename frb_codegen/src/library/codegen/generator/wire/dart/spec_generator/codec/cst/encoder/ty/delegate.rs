@@ -78,19 +78,22 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
             // },
             IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum { ref repr, .. }) => {
                 format!("return cst_encode_{}(raw.index);", repr.safe_ident()).into()
-            }
+            },
             IrTypeDelegate::Time(ir) => match ir {
                 IrTypeDelegateTime::Utc
                 | IrTypeDelegateTime::Local
                 | IrTypeDelegateTime::NaiveDate
                 | IrTypeDelegateTime::NaiveDateTime => Acc {
-                    io: Some("return cst_encode_i_64(raw.microsecondsSinceEpoch);".into()),
-                    web: Some("return cst_encode_i_64(raw.millisecondsSinceEpoch);".into()),
-                    ..Default::default()
+                        io: Some("return cst_encode_i_64(raw.microsecondsSinceEpoch);".into()),
+                        web: Some(
+                            "return cst_encode_i_64(BigInt.from(raw.millisecondsSinceEpoch));"
+                                .into(),
+                        ),
+                        ..Default::default()
                 },
                 IrTypeDelegateTime::Duration => Acc {
                     io: Some("return cst_encode_i_64(raw.inMicroseconds);".into()),
-                    web: Some("return cst_encode_i_64(raw.inMilliseconds);".into()),
+                    web: Some("return cst_encode_i_64(BigInt.from(raw.inMilliseconds));".into()),
                     ..Default::default()
                 },
             },
@@ -128,6 +131,13 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
                 "return cst_encode_{}({});",
                 self.ir.get_delegate().safe_ident(),
                 generate_stream_sink_setup_and_serialize(ir, "raw")
+            ))),
+            IrTypeDelegate::BigPrimitive(_) => Acc::distribute(Some(
+                "return cst_encode_String(raw.toString());".to_string(),
+            )),
+            IrTypeDelegate::RustAutoOpaqueExplicit(_) => Acc::distribute(Some(format!(
+                "return cst_encode_{}(raw);",
+                self.ir.get_delegate().safe_ident(),
             ))),
         }
     }

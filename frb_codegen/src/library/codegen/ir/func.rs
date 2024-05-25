@@ -21,8 +21,7 @@ pub struct IrFunc {
     pub stream_dart_await: bool,
     pub rust_async: bool,
     pub initializer: bool,
-    // When later we support setter, etc, we should refactor it into an enum
-    pub getter: bool,
+    pub accessor: Option<IrFuncAccessorMode>,
     pub comments: Vec<IrComment>,
     pub codec_mode_pack: CodecModePack,
     // Currently, we use serde only for tests. Since lineno can be unstable, we skip this field for comparison
@@ -61,6 +60,12 @@ pub struct IrFuncOwnerInfoMethod {
 pub enum IrFuncOwnerInfoMethodMode {
     Static,
     Instance,
+}
+
+#[derive(Copy)]
+pub enum IrFuncAccessorMode {
+    Getter,
+    Setter,
 }
 }
 
@@ -154,7 +159,7 @@ impl IrFuncOwnerInfoMethod {
                 ir,
                 ..
             })) => ir.ident.0.clone(),
-            IrType::RustAutoOpaque(ty) => {
+            IrType::RustAutoOpaqueImplicit(ty) => {
                 NamespacedName::new(ty.self_namespace().unwrap(), ty.rust_api_type())
             }
             ty => unimplemented!("enum_or_struct_name does not know {ty:?}"),

@@ -166,12 +166,12 @@ impl EnumOrStructParser<IrEnumIdent, IrEnum, Enum, ItemEnum>
         &mut self.0.inner.dart_code_of_type
     }
 
-    fn parse_type_rust_auto_opaque(
+    fn parse_type_rust_auto_opaque_implicit(
         &mut self,
         namespace: Option<Namespace>,
         ty: &Type,
     ) -> anyhow::Result<IrType> {
-        self.0.parse_type_rust_auto_opaque(namespace, ty)
+        self.0.parse_type_rust_auto_opaque_implicit(namespace, ty)
     }
 
     fn compute_default_opaque(obj: &IrEnum) -> bool {

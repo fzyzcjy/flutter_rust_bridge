@@ -35,7 +35,7 @@ class FrbOpaqueSyncReturnTwinMoi extends RustOpaque {
   FrbOpaqueSyncReturnTwinMoi.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  FrbOpaqueSyncReturnTwinMoi.sseDecode(int ptr, int externalSizeOnNative)
+  FrbOpaqueSyncReturnTwinMoi.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -54,7 +54,7 @@ class HideDataAnotherTwinMoi extends RustOpaque {
   HideDataAnotherTwinMoi.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  HideDataAnotherTwinMoi.sseDecode(int ptr, int externalSizeOnNative)
+  HideDataAnotherTwinMoi.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -73,7 +73,7 @@ class NonCloneDataTwinMoi extends RustOpaque {
   NonCloneDataTwinMoi.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  NonCloneDataTwinMoi.sseDecode(int ptr, int externalSizeOnNative)
+  NonCloneDataTwinMoi.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(

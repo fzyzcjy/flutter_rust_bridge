@@ -212,6 +212,12 @@ void rustAutoOpaqueExplicitStructTwinSyncSse(
         .crateApiPseudoManualRustAutoOpaqueTwinSyncSseRustAutoOpaqueExplicitStructTwinSyncSse(
             arg: arg, hint: hint);
 
+StructWithExplicitAutoOpaqueFieldTwinSyncSse
+    rustAutoOpaqueExplicitReturnStructTwinSyncSse({dynamic hint}) => RustLib
+        .instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSyncSseRustAutoOpaqueExplicitReturnStructTwinSyncSse(
+            hint: hint);
+
 NonCloneSimpleTwinSyncSse rustAutoOpaqueExplicitReturnTwinSyncSse(
         {required int initial, dynamic hint}) =>
     RustLib.instance.api
@@ -261,7 +267,7 @@ class BoxHelloTraitTwinSyncSse extends RustOpaque {
   BoxHelloTraitTwinSyncSse.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  BoxHelloTraitTwinSyncSse.sseDecode(int ptr, int externalSizeOnNative)
+  BoxHelloTraitTwinSyncSse.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -280,7 +286,7 @@ class BoxMyTraitTwinSyncSse extends RustOpaque {
   BoxMyTraitTwinSyncSse.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  BoxMyTraitTwinSyncSse.sseDecode(int ptr, int externalSizeOnNative)
+  BoxMyTraitTwinSyncSse.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -300,7 +306,7 @@ class EnumWithGoodAndOpaqueWithoutOptionTwinSyncSse extends RustOpaque {
       : super.dcoDecode(wire, _kStaticData);
 
   EnumWithGoodAndOpaqueWithoutOptionTwinSyncSse.sseDecode(
-      int ptr, int externalSizeOnNative)
+      BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -319,7 +325,7 @@ class NonCloneSimpleEnumTwinSyncSse extends RustOpaque {
   NonCloneSimpleEnumTwinSyncSse.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  NonCloneSimpleEnumTwinSyncSse.sseDecode(int ptr, int externalSizeOnNative)
+  NonCloneSimpleEnumTwinSyncSse.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -338,7 +344,7 @@ class NonCloneSimpleTwinSyncSse extends RustOpaque {
   NonCloneSimpleTwinSyncSse.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  NonCloneSimpleTwinSyncSse.sseDecode(int ptr, int externalSizeOnNative)
+  NonCloneSimpleTwinSyncSse.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -424,7 +430,7 @@ class OpaqueOneTwinSyncSse extends RustOpaque {
   OpaqueOneTwinSyncSse.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  OpaqueOneTwinSyncSse.sseDecode(int ptr, int externalSizeOnNative)
+  OpaqueOneTwinSyncSse.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -443,7 +449,7 @@ class OpaqueTwoTwinSyncSse extends RustOpaque {
   OpaqueTwoTwinSyncSse.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  OpaqueTwoTwinSyncSse.sseDecode(int ptr, int externalSizeOnNative)
+  OpaqueTwoTwinSyncSse.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -464,7 +470,7 @@ class StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse extends RustOpaque {
       : super.dcoDecode(wire, _kStaticData);
 
   StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse.sseDecode(
-      int ptr, int externalSizeOnNative)
+      BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(

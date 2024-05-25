@@ -1,4 +1,4 @@
-# Ignoring Functions
+# Ignoring functions
 
 Sometimes you may want functions not to be translated by flutter_rust_bridge.
 

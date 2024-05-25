@@ -103,7 +103,7 @@ class BoxDartDebugTwinSseMoi extends RustOpaque {
   BoxDartDebugTwinSseMoi.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  BoxDartDebugTwinSseMoi.sseDecode(int ptr, int externalSizeOnNative)
+  BoxDartDebugTwinSseMoi.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -122,7 +122,7 @@ class FrbOpaqueReturnTwinSseMoi extends RustOpaque {
   FrbOpaqueReturnTwinSseMoi.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  FrbOpaqueReturnTwinSseMoi.sseDecode(int ptr, int externalSizeOnNative)
+  FrbOpaqueReturnTwinSseMoi.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -141,7 +141,7 @@ class HideDataTwinSseMoi extends RustOpaque {
   HideDataTwinSseMoi.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  HideDataTwinSseMoi.sseDecode(int ptr, int externalSizeOnNative)
+  HideDataTwinSseMoi.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -175,7 +175,7 @@ class MutexHideDataTwinSseMoi extends RustOpaque {
   MutexHideDataTwinSseMoi.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  MutexHideDataTwinSseMoi.sseDecode(int ptr, int externalSizeOnNative)
+  MutexHideDataTwinSseMoi.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -194,7 +194,7 @@ class RwLockHideDataTwinSseMoi extends RustOpaque {
   RwLockHideDataTwinSseMoi.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  RwLockHideDataTwinSseMoi.sseDecode(int ptr, int externalSizeOnNative)
+  RwLockHideDataTwinSseMoi.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(

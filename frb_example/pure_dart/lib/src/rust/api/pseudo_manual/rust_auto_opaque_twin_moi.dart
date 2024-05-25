@@ -206,6 +206,12 @@ Future<void> rustAutoOpaqueExplicitStructTwinMoi(
         .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueExplicitStructTwinMoi(
             arg: arg, hint: hint);
 
+Future<StructWithExplicitAutoOpaqueFieldTwinMoi>
+    rustAutoOpaqueExplicitReturnStructTwinMoi({dynamic hint}) => RustLib
+        .instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueExplicitReturnStructTwinMoi(
+            hint: hint);
+
 Future<NonCloneSimpleTwinMoi> rustAutoOpaqueExplicitReturnTwinMoi(
         {required int initial, dynamic hint}) =>
     RustLib.instance.api
@@ -253,7 +259,7 @@ class BoxFnStringString extends RustOpaque {
   BoxFnStringString.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  BoxFnStringString.sseDecode(int ptr, int externalSizeOnNative)
+  BoxFnStringString.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -272,7 +278,7 @@ class BoxHelloTraitTwinMoi extends RustOpaque {
   BoxHelloTraitTwinMoi.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  BoxHelloTraitTwinMoi.sseDecode(int ptr, int externalSizeOnNative)
+  BoxHelloTraitTwinMoi.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -291,7 +297,7 @@ class BoxMyTraitTwinMoi extends RustOpaque {
   BoxMyTraitTwinMoi.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  BoxMyTraitTwinMoi.sseDecode(int ptr, int externalSizeOnNative)
+  BoxMyTraitTwinMoi.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -311,7 +317,7 @@ class EnumWithGoodAndOpaqueWithoutOptionTwinMoi extends RustOpaque {
       : super.dcoDecode(wire, _kStaticData);
 
   EnumWithGoodAndOpaqueWithoutOptionTwinMoi.sseDecode(
-      int ptr, int externalSizeOnNative)
+      BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -330,7 +336,7 @@ class NonCloneSimpleEnumTwinMoi extends RustOpaque {
   NonCloneSimpleEnumTwinMoi.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  NonCloneSimpleEnumTwinMoi.sseDecode(int ptr, int externalSizeOnNative)
+  NonCloneSimpleEnumTwinMoi.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -349,7 +355,7 @@ class NonCloneSimpleTwinMoi extends RustOpaque {
   NonCloneSimpleTwinMoi.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  NonCloneSimpleTwinMoi.sseDecode(int ptr, int externalSizeOnNative)
+  NonCloneSimpleTwinMoi.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -436,7 +442,7 @@ class OpaqueOneTwinMoi extends RustOpaque {
   OpaqueOneTwinMoi.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  OpaqueOneTwinMoi.sseDecode(int ptr, int externalSizeOnNative)
+  OpaqueOneTwinMoi.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -455,7 +461,7 @@ class OpaqueTwoTwinMoi extends RustOpaque {
   OpaqueTwoTwinMoi.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  OpaqueTwoTwinMoi.sseDecode(int ptr, int externalSizeOnNative)
+  OpaqueTwoTwinMoi.sseDecode(BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -475,7 +481,7 @@ class StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi extends RustOpaque {
       : super.dcoDecode(wire, _kStaticData);
 
   StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi.sseDecode(
-      int ptr, int externalSizeOnNative)
+      BigInt ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(

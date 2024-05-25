@@ -50,13 +50,13 @@ ApplicationMessage getMessageTwinSyncSse({dynamic hint}) => RustLib.instance.api
     .crateApiPseudoManualMirrorTwinSyncSseGetMessageTwinSyncSse(hint: hint);
 
 Numbers repeatNumberTwinSyncSse(
-        {required int num, required int times, dynamic hint}) =>
+        {required int num, required BigInt times, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualMirrorTwinSyncSseRepeatNumberTwinSyncSse(
             num: num, times: times, hint: hint);
 
 Sequences repeatSequenceTwinSyncSse(
-        {required int seq, required int times, dynamic hint}) =>
+        {required int seq, required BigInt times, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualMirrorTwinSyncSseRepeatSequenceTwinSyncSse(
             seq: seq, times: times, hint: hint);

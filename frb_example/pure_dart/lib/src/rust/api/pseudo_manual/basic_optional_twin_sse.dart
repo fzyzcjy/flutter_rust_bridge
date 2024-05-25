@@ -22,9 +22,16 @@ Future<int?> exampleBasicOptionalTypeI32TwinSse({int? arg, dynamic hint}) =>
         .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeI32TwinSse(
             arg: arg, hint: hint);
 
-Future<int?> exampleBasicOptionalTypeI64TwinSse({int? arg, dynamic hint}) =>
+Future<PlatformInt64?> exampleBasicOptionalTypeI64TwinSse(
+        {PlatformInt64? arg, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeI64TwinSse(
+            arg: arg, hint: hint);
+
+Future<BigInt?> exampleBasicOptionalTypeI128TwinSse(
+        {BigInt? arg, dynamic hint}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeI128TwinSse(
             arg: arg, hint: hint);
 
 Future<int?> exampleBasicOptionalTypeU8TwinSse({int? arg, dynamic hint}) =>
@@ -42,17 +49,26 @@ Future<int?> exampleBasicOptionalTypeU32TwinSse({int? arg, dynamic hint}) =>
         .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeU32TwinSse(
             arg: arg, hint: hint);
 
-Future<int?> exampleBasicOptionalTypeU64TwinSse({int? arg, dynamic hint}) =>
+Future<BigInt?> exampleBasicOptionalTypeU64TwinSse(
+        {BigInt? arg, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeU64TwinSse(
             arg: arg, hint: hint);
 
-Future<int?> exampleBasicOptionalTypeIsizeTwinSse({int? arg, dynamic hint}) =>
+Future<BigInt?> exampleBasicOptionalTypeU128TwinSse(
+        {BigInt? arg, dynamic hint}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeU128TwinSse(
+            arg: arg, hint: hint);
+
+Future<PlatformInt64?> exampleBasicOptionalTypeIsizeTwinSse(
+        {PlatformInt64? arg, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeIsizeTwinSse(
             arg: arg, hint: hint);
 
-Future<int?> exampleBasicOptionalTypeUsizeTwinSse({int? arg, dynamic hint}) =>
+Future<BigInt?> exampleBasicOptionalTypeUsizeTwinSse(
+        {BigInt? arg, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeUsizeTwinSse(
             arg: arg, hint: hint);

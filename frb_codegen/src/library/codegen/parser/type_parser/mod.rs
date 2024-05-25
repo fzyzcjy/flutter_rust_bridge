@@ -3,7 +3,7 @@ use crate::codegen::ir::func::IrFuncOwnerInfo;
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::{IrEnumPool, IrStructPool};
 use crate::codegen::ir::ty::enumeration::{IrEnum, IrEnumIdent};
-use crate::codegen::ir::ty::rust_auto_opaque::IrTypeRustAutoOpaque;
+use crate::codegen::ir::ty::rust_auto_opaque_implicit::IrTypeRustAutoOpaqueImplicit;
 use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::ty::structure::{IrStruct, IrStructIdent};
 use crate::codegen::ir::ty::IrContext;
@@ -12,7 +12,7 @@ use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::source_graph::modules::{Enum, Struct};
 use crate::codegen::parser::type_parser::array::ArrayParserInfo;
 use crate::codegen::parser::type_parser::enum_or_struct::EnumOrStructParserInfo;
-use crate::codegen::parser::type_parser::rust_auto_opaque::RustAutoOpaqueParserInfo;
+use crate::codegen::parser::type_parser::rust_auto_opaque_implicit::RustAutoOpaqueParserInfo;
 use crate::codegen::parser::type_parser::rust_opaque::RustOpaqueParserInfo;
 use std::collections::HashMap;
 use syn::Type;
@@ -29,7 +29,8 @@ pub(crate) mod path;
 pub(crate) mod path_data;
 pub(crate) mod primitive;
 pub(crate) mod result;
-pub(crate) mod rust_auto_opaque;
+pub(crate) mod rust_auto_opaque_explicit;
+pub(crate) mod rust_auto_opaque_implicit;
 mod rust_opaque;
 pub(crate) mod structure;
 pub(crate) mod tuple;
@@ -85,7 +86,7 @@ impl<'a> TypeParser<'a> {
 
     pub(crate) fn transform_rust_auto_opaque(
         &mut self,
-        ty_raw: &IrTypeRustAutoOpaque,
+        ty_raw: &IrTypeRustAutoOpaqueImplicit,
         transform: impl FnOnce(&str) -> String,
         context: &TypeParserParsingContext,
     ) -> anyhow::Result<IrType> {

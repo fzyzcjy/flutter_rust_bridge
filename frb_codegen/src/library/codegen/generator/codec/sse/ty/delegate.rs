@@ -30,13 +30,19 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     IrTypeDelegateTime::Utc
                     | IrTypeDelegateTime::Local
                     | IrTypeDelegateTime::NaiveDate
-                    | IrTypeDelegateTime::NaiveDateTime => "self.microsecondsSinceEpoch".to_owned(),
-                    IrTypeDelegateTime::Duration => "self.inMicroseconds".to_owned(),
+                    | IrTypeDelegateTime::NaiveDateTime => {
+                        "PlatformInt64Util.from(self.microsecondsSinceEpoch)".to_owned()
+                    }
+                    IrTypeDelegateTime::Duration => {
+                        "PlatformInt64Util.from(self.inMicroseconds)".to_owned()
+                    }
                 },
                 IrTypeDelegate::Uuid => "self.toBytes()".to_owned(),
                 IrTypeDelegate::StreamSink(ir) => {
                     generate_stream_sink_setup_and_serialize(ir, "self")
                 }
+                IrTypeDelegate::BigPrimitive(_) => "self.toString()".to_owned(),
+                IrTypeDelegate::RustAutoOpaqueExplicit(_ir) => "self".to_owned(),
             },
             Lang::RustLang(_) => match &self.ir {
                 IrTypeDelegate::Array(_) => {
@@ -68,10 +74,10 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     IrTypeDelegateTime::Utc | IrTypeDelegateTime::Local => {
                         "self.timestamp_micros()".to_owned()
                     }
-                    IrTypeDelegateTime::NaiveDateTime => "self.and_utc().timestamp_micros()".to_owned(),
                     IrTypeDelegateTime::NaiveDate => {
                         "self.and_hms_opt(0, 0, 0).unwrap().and_utc().timestamp_micros()".to_owned()
-                    }
+                    },
+                    IrTypeDelegateTime::NaiveDateTime => "self.and_utc().timestamp_micros()".to_owned(),
                     IrTypeDelegateTime::Duration => {
                         r#"self.num_microseconds().expect("cannot get microseconds from time")"#
                             .to_owned()
@@ -79,6 +85,11 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 },
                 IrTypeDelegate::Uuid => "self.as_bytes().to_vec()".to_owned(),
                 IrTypeDelegate::StreamSink(_) => return Some(lang.throw_unimplemented("")),
+                IrTypeDelegate::BigPrimitive(_) => "self.to_string()".to_owned(),
+                IrTypeDelegate::RustAutoOpaqueExplicit(_ir) => {
+                    "flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_encode(self)"
+                        .to_owned()
+                }
             },
         };
         Some(simple_delegate_encode(
@@ -117,21 +128,21 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     | IrTypeDelegateTime::NaiveDate
                     | IrTypeDelegateTime::NaiveDateTime => {
                         format!(
-                            "DateTime.fromMicrosecondsSinceEpoch(inner, isUtc: {is_utc})",
-                            is_utc = matches!(
-                                ir,
-                                IrTypeDelegateTime::NaiveDate
-                                    | IrTypeDelegateTime::NaiveDateTime
-                                    | IrTypeDelegateTime::Utc
-                            ),
+                            "DateTime.fromMicrosecondsSinceEpoch(inner.toInt(), isUtc: {is_utc})",
+                            is_utc =
+                                matches!(ir, IrTypeDelegateTime::NaiveDate | IrTypeDelegateTime::NaiveDateTime | IrTypeDelegateTime::Utc),
                         )
                     }
-                    IrTypeDelegateTime::Duration => "Duration(microseconds: inner)".to_owned(),
+                    IrTypeDelegateTime::Duration => {
+                        "Duration(microseconds: inner.toInt())".to_owned()
+                    }
                 },
                 IrTypeDelegate::Uuid => "UuidValue.fromByteList(inner)".to_owned(),
                 IrTypeDelegate::StreamSink(_) => {
                     return Some(format!("{};", lang.throw_unreachable("")));
                 }
+                IrTypeDelegate::BigPrimitive(_) => "BigInt.parse(inner)".to_owned(),
+                IrTypeDelegate::RustAutoOpaqueExplicit(_ir) => "inner".to_owned(),
             },
             Lang::RustLang(_) => match &self.ir {
                 IrTypeDelegate::Array(_) => {
@@ -145,12 +156,15 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::Backtrace => {
                     return Some(format!("{};", lang.throw_unreachable("")));
                 }
-                IrTypeDelegate::AnyhowException => r#"anyhow::anyhow!("{}", inner)"#.to_owned(),
+                IrTypeDelegate::AnyhowException => {
+                    r#"flutter_rust_bridge::for_generated::anyhow::anyhow!("{}", inner)"#.to_owned()
+                }
                 IrTypeDelegate::Map(_) => "inner.into_iter().collect()".to_owned(),
                 IrTypeDelegate::Set(_) => "inner.into_iter().collect()".to_owned(),
                 IrTypeDelegate::Time(ir) => {
-                    let naive_date = "chrono::DateTime::from_timestamp_micros(inner).expect(\"invalid or out-of-range date\").naive_utc().date()";
-                    let naive_date_time = "chrono::DateTime::from_timestamp_micros(inner).expect(\"invalid or out-of-range datetime\").naive_utc()";
+                    let naive_date_time =
+                        "chrono::DateTime::from_timestamp_micros(inner).expect(\"invalid or out-of-range datetime\").naive_utc()";
+                    let naive_date = format!("{naive_date_time}.date()");
                     let utc = format!("chrono::DateTime::<chrono::Utc>::from_naive_utc_and_offset({naive_date_time}, chrono::Utc)");
                     match ir {
                         IrTypeDelegateTime::NaiveDate => naive_date.to_owned(),
@@ -168,6 +182,11 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     r#"uuid::Uuid::from_slice(&inner).expect("fail to decode uuid")"#.to_owned()
                 }
                 IrTypeDelegate::StreamSink(_) => "StreamSink::deserialize(inner)".to_owned(),
+                IrTypeDelegate::BigPrimitive(_) => "inner.parse().unwrap()".to_owned(),
+                IrTypeDelegate::RustAutoOpaqueExplicit(_ir) => {
+                    "flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(inner)"
+                        .to_owned()
+                }
             },
         };
 

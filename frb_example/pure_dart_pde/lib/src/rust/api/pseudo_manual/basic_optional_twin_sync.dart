@@ -22,10 +22,16 @@ int? exampleBasicOptionalTypeI32TwinSync({int? arg, dynamic hint}) => RustLib
     .crateApiPseudoManualBasicOptionalTwinSyncExampleBasicOptionalTypeI32TwinSync(
         arg: arg, hint: hint);
 
-int? exampleBasicOptionalTypeI64TwinSync({int? arg, dynamic hint}) => RustLib
-    .instance.api
-    .crateApiPseudoManualBasicOptionalTwinSyncExampleBasicOptionalTypeI64TwinSync(
-        arg: arg, hint: hint);
+PlatformInt64? exampleBasicOptionalTypeI64TwinSync(
+        {PlatformInt64? arg, dynamic hint}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicOptionalTwinSyncExampleBasicOptionalTypeI64TwinSync(
+            arg: arg, hint: hint);
+
+BigInt? exampleBasicOptionalTypeI128TwinSync({BigInt? arg, dynamic hint}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicOptionalTwinSyncExampleBasicOptionalTypeI128TwinSync(
+            arg: arg, hint: hint);
 
 int? exampleBasicOptionalTypeU8TwinSync({int? arg, dynamic hint}) => RustLib
     .instance.api
@@ -42,20 +48,26 @@ int? exampleBasicOptionalTypeU32TwinSync({int? arg, dynamic hint}) => RustLib
     .crateApiPseudoManualBasicOptionalTwinSyncExampleBasicOptionalTypeU32TwinSync(
         arg: arg, hint: hint);
 
-int? exampleBasicOptionalTypeU64TwinSync({int? arg, dynamic hint}) => RustLib
+BigInt? exampleBasicOptionalTypeU64TwinSync({BigInt? arg, dynamic hint}) => RustLib
     .instance.api
     .crateApiPseudoManualBasicOptionalTwinSyncExampleBasicOptionalTypeU64TwinSync(
         arg: arg, hint: hint);
 
-int? exampleBasicOptionalTypeIsizeTwinSync({int? arg, dynamic hint}) => RustLib
-    .instance.api
-    .crateApiPseudoManualBasicOptionalTwinSyncExampleBasicOptionalTypeIsizeTwinSync(
-        arg: arg, hint: hint);
+BigInt? exampleBasicOptionalTypeU128TwinSync({BigInt? arg, dynamic hint}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicOptionalTwinSyncExampleBasicOptionalTypeU128TwinSync(
+            arg: arg, hint: hint);
 
-int? exampleBasicOptionalTypeUsizeTwinSync({int? arg, dynamic hint}) => RustLib
-    .instance.api
-    .crateApiPseudoManualBasicOptionalTwinSyncExampleBasicOptionalTypeUsizeTwinSync(
-        arg: arg, hint: hint);
+PlatformInt64? exampleBasicOptionalTypeIsizeTwinSync(
+        {PlatformInt64? arg, dynamic hint}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicOptionalTwinSyncExampleBasicOptionalTypeIsizeTwinSync(
+            arg: arg, hint: hint);
+
+BigInt? exampleBasicOptionalTypeUsizeTwinSync({BigInt? arg, dynamic hint}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicOptionalTwinSyncExampleBasicOptionalTypeUsizeTwinSync(
+            arg: arg, hint: hint);
 
 double? exampleBasicOptionalTypeF32TwinSync({double? arg, dynamic hint}) => RustLib
     .instance.api

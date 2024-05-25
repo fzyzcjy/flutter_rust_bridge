@@ -46,12 +46,12 @@ Future<ApplicationMessage> getMessageTwinSse({dynamic hint}) =>
         .crateApiPseudoManualMirrorTwinSseGetMessageTwinSse(hint: hint);
 
 Future<Numbers> repeatNumberTwinSse(
-        {required int num, required int times, dynamic hint}) =>
+        {required int num, required BigInt times, dynamic hint}) =>
     RustLib.instance.api.crateApiPseudoManualMirrorTwinSseRepeatNumberTwinSse(
         num: num, times: times, hint: hint);
 
 Future<Sequences> repeatSequenceTwinSse(
-        {required int seq, required int times, dynamic hint}) =>
+        {required int seq, required BigInt times, dynamic hint}) =>
     RustLib.instance.api.crateApiPseudoManualMirrorTwinSseRepeatSequenceTwinSse(
         seq: seq, times: times, hint: hint);
 

@@ -3,7 +3,7 @@ use crate::codegen::ir::ty::optional::IrTypeOptional;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{
     Boxed, DartFn, DartOpaque, Delegate, Dynamic, EnumRef, GeneralList, Optional, Primitive,
-    PrimitiveList, Record, RustAutoOpaque, RustOpaque, StructRef,
+    PrimitiveList, Record, RustAutoOpaqueImplicit, RustOpaque, StructRef,
 };
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
@@ -33,7 +33,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 Optional(match inner {
                     StructRef(..)
                     | EnumRef(..)
-                    | RustAutoOpaque(..)
+                    | RustAutoOpaqueImplicit(..)
                     | RustOpaque(..)
                     | DartOpaque(..)
                     | DartFn(..)

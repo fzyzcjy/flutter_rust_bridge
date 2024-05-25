@@ -40,12 +40,12 @@ Future<ApplicationMessage> getMessageTwinNormal({dynamic hint}) =>
     RustLib.instance.api.crateApiMirrorGetMessageTwinNormal(hint: hint);
 
 Future<Numbers> repeatNumberTwinNormal(
-        {required int num, required int times, dynamic hint}) =>
+        {required int num, required BigInt times, dynamic hint}) =>
     RustLib.instance.api.crateApiMirrorRepeatNumberTwinNormal(
         num: num, times: times, hint: hint);
 
 Future<Sequences> repeatSequenceTwinNormal(
-        {required int seq, required int times, dynamic hint}) =>
+        {required int seq, required BigInt times, dynamic hint}) =>
     RustLib.instance.api.crateApiMirrorRepeatSequenceTwinNormal(
         seq: seq, times: times, hint: hint);
 

@@ -6,7 +6,7 @@ use crate::codegen::ir::ty::rust_opaque::{IrTypeRustOpaque, NameComponent};
 use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
 
 crate::ir! {
-pub struct IrTypeRustAutoOpaque {
+pub struct IrTypeRustAutoOpaqueImplicit {
     pub ownership_mode: OwnershipMode,
     pub inner: IrTypeRustOpaque,
     pub raw: IrRustAutoOpaqueRaw,
@@ -19,7 +19,7 @@ pub struct IrRustAutoOpaqueRaw {
 }
 }
 
-impl IrTypeTrait for IrTypeRustAutoOpaque {
+impl IrTypeTrait for IrTypeRustAutoOpaqueImplicit {
     fn visit_children_types<F: FnMut(&IrType) -> bool>(
         &self,
         f: &mut F,
@@ -49,7 +49,7 @@ impl IrTypeTrait for IrTypeRustAutoOpaque {
     }
 }
 
-impl IrTypeRustAutoOpaque {
+impl IrTypeRustAutoOpaqueImplicit {
     pub(crate) fn needs_move(&self) -> bool {
         self.ownership_mode == OwnershipMode::Owned
     }

@@ -15,6 +15,9 @@ typedef NativePortType = int;
 typedef PlatformPointer = ffi.Pointer<ffi.Void>;
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
+typedef PlatformInt64 = int;
+
+/// {@macro flutter_rust_bridge.only_for_generated_code}
 typedef DartPostCObject = ffi.Pointer<
     ffi.NativeFunction<ffi.Bool Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>;
 
@@ -81,4 +84,10 @@ class PlatformPointerUtil {
 
   /// {@macro flutter_rust_bridge.internal}
   static bool isNullPtr(PlatformPointer ptr) => ptr.address == 0;
+}
+
+/// {@macro flutter_rust_bridge.internal}
+class PlatformInt64Util {
+  /// {@macro flutter_rust_bridge.internal}
+  static PlatformInt64 from(int value) => value;
 }

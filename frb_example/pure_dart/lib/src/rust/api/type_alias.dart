@@ -7,22 +7,23 @@ import '../auxiliary/sample_types.dart';
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<int> handleTypeAliasIdTwinNormal({required int input, dynamic hint}) =>
+Future<BigInt> handleTypeAliasIdTwinNormal(
+        {required BigInt input, dynamic hint}) =>
     RustLib.instance.api
         .crateApiTypeAliasHandleTypeAliasIdTwinNormal(input: input, hint: hint);
 
-Future<int> handleTypeNestAliasIdTwinNormal(
-        {required int input, dynamic hint}) =>
+Future<BigInt> handleTypeNestAliasIdTwinNormal(
+        {required BigInt input, dynamic hint}) =>
     RustLib.instance.api.crateApiTypeAliasHandleTypeNestAliasIdTwinNormal(
         input: input, hint: hint);
 
 Future<TestModelTwinNormal> handleTypeAliasModelTwinNormal(
-        {required int input, dynamic hint}) =>
+        {required BigInt input, dynamic hint}) =>
     RustLib.instance.api.crateApiTypeAliasHandleTypeAliasModelTwinNormal(
         input: input, hint: hint);
 
 class TestModelTwinNormal {
-  final int id;
+  final BigInt id;
   final String name;
   final MyEnum aliasEnum;
   final MyStruct aliasStruct;

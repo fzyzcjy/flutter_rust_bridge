@@ -85,6 +85,10 @@ impl<'a> ApiDartGeneratorInfoTrait for DelegateApiDartGenerator<'a> {
                 "RustStreamSink<{}>",
                 ApiDartGenerator::new(*ir.inner.clone(), self.context).dart_api_type(),
             ),
+            IrTypeDelegate::BigPrimitive(_) => "BigInt".to_owned(),
+            IrTypeDelegate::RustAutoOpaqueExplicit(ir) => {
+                ApiDartGenerator::new(ir.inner.clone(), self.context).dart_api_type()
+            }
         }
     }
 
@@ -152,11 +156,9 @@ impl<'a> ApiDartGeneratorInfoTrait for PrimitiveApiDartGenerator<'a> {
             | IrTypePrimitive::U16
             | IrTypePrimitive::I16
             | IrTypePrimitive::U32
-            | IrTypePrimitive::I32
-            | IrTypePrimitive::Usize
-            | IrTypePrimitive::Isize
-            | IrTypePrimitive::U64
-            | IrTypePrimitive::I64 => "int",
+            | IrTypePrimitive::I32 => "int",
+            IrTypePrimitive::I64 | IrTypePrimitive::Isize => "PlatformInt64",
+            IrTypePrimitive::U64 | IrTypePrimitive::Usize => "BigInt",
             IrTypePrimitive::F32 | IrTypePrimitive::F64 => "double",
             IrTypePrimitive::Bool => "bool",
             IrTypePrimitive::Unit => "void",
@@ -207,7 +209,7 @@ impl<'a> ApiDartGeneratorInfoTrait for RecordApiDartGenerator<'a> {
     }
 }
 
-impl<'a> ApiDartGeneratorInfoTrait for RustAutoOpaqueApiDartGenerator<'a> {
+impl<'a> ApiDartGeneratorInfoTrait for RustAutoOpaqueImplicitApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
         let inner = ApiDartGenerator::new(self.ir.inner.clone(), self.context);
         inner.dart_api_type()
