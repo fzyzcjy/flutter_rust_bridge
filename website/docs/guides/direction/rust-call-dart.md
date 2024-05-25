@@ -1,7 +1,7 @@
 # Rust calls Dart
 
 Without this feature, the bridge would be a one-way road; but now we have two-way road ;)
-In short, Rust can call arbitrary Dart functions ("closures" indeed).
+In short, Rust can call arbitrary Dart functions (or "closures", or "callbacks").
 
 ## Simple example
 
