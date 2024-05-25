@@ -38,6 +38,6 @@ impl IrTypeTrait for IrTypeBoxed {
     }
 
     fn cloned_getter_semantics_reasonable(&self) -> bool {
-        self.inner.roughly_dart_mutable()
+        self.inner.cloned_getter_semantics_reasonable()
     }
 }
