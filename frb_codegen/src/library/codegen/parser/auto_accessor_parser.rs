@@ -3,7 +3,7 @@ use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::ir::func::IrFunc;
 use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::ir::ty::{IrContext, IrType};
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::parser::misc::extract_src_types_in_paths;
@@ -11,6 +11,7 @@ use crate::codegen::parser::source_graph::modules::Struct;
 use crate::codegen::parser::type_parser::{
     TypeParser, TypeParserParsingContext, TypeParserWithContext,
 };
+use crate::if_then_some;
 use itertools::Itertools;
 use std::collections::HashMap;
 use std::path::{Path, PathBuf};
@@ -56,9 +57,11 @@ fn parse_auto_accessors_of_struct(
         return Ok(vec![]);
     }
 
-    let ty_struct = TypeParserWithContext::new(type_parser, context)
+    let ty_struct_ref = TypeParserWithContext::new(type_parser, context)
         .parse_type_path_data_struct((&struct_name.name, &[]), Some(false))?
         .unwrap();
+    let ty_struct_ident = if_then_some!(let IrType::StructRef(ir) = ty_struct_ref, ir.ident).unwrap();
+    let ty_struct = &type_parser.struct_pool()[&ty_struct_ident];
 
     todo!()
 }
