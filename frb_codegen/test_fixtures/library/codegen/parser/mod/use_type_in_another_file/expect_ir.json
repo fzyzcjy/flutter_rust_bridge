@@ -19,13 +19,13 @@
   "existing_handler": null,
   "funcs": [
     {
+      "accessor": null,
       "codec_mode_pack": {
         "dart2rust": "Cst",
         "rust2dart": "Dco"
       },
       "comments": [],
       "dart_name": null,
-      "getter": false,
       "id": 1,
       "initializer": false,
       "inputs": [

@@ -1,6 +1,7 @@
 use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
 use crate::codegen::ir::annotation::IrDartAnnotation;
 use crate::codegen::ir::default::IrDefaultValue;
+use crate::codegen::ir::func::IrFuncAccessorMode;
 use crate::codegen::ir::import::IrDartImport;
 use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::if_then_some;
@@ -10,7 +11,6 @@ use serde::{Serialize, Serializer};
 use syn::parse::{Lookahead1, Parse, ParseStream, Peek};
 use syn::punctuated::Punctuated;
 use syn::*;
-use crate::codegen::ir::func::IrFuncAccessorMode;
 
 const METADATA_IDENT: &str = "frb";
 
