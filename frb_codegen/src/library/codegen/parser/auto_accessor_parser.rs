@@ -1,7 +1,10 @@
 use crate::codegen::config::internal_config::RustInputPathPack;
 use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::ir::field::IrField;
-use crate::codegen::ir::func::{IrFunc, IrFuncAccessorMode, IrFuncInput, IrFuncMode, IrFuncOutput, IrFuncOwnerInfo, IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode, OwnershipMode};
+use crate::codegen::ir::func::{
+    IrFunc, IrFuncAccessorMode, IrFuncInput, IrFuncMode, IrFuncOutput, IrFuncOwnerInfo,
+    IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode, OwnershipMode,
+};
 use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
@@ -53,7 +56,9 @@ fn parse_auto_accessors_of_struct(
         config.default_stream_sink_codec,
         defaulconfig.t_rust_opaque_codec,
     )?;
-    if !is_struct_opaque(type_parser, struct_name, &context)? {
+
+    let ty_direct_parse = type_parser.parse_type(&syn::parse_str(&struct_name.name)?, context)?;
+    if !matches!(ty_direct_parse, IrType::RustAutoOpaqueImplicit(_))? {
         return Ok(vec![]);
     }
 
@@ -136,15 +141,6 @@ fn compute_src_lineno_pseudo(struct_name: &NamespacedName, field: &IrField) -> u
     hasher.update(field.name.raw.as_bytes());
     let digest = hasher.finalize();
     usize::from_le_bytes(digest[..8].try_into().unwrap())
-}
-
-fn is_struct_opaque(
-    type_parser: &mut TypeParser,
-    struct_name: &NamespacedName,
-    context: &TypeParserParsingContext,
-) -> anyhow::Result<bool> {
-    let ty = type_parser.parse_type(&syn::parse_str(&struct_name.name)?, context)?;
-    Ok(matches!(ty, IrType::RustAutoOpaqueImplicit(_)))
 }
 
 fn create_parsing_context(
