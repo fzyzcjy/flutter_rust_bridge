@@ -62,6 +62,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     name: IrIdent::new(name),
                     ty,
                     is_final: true,
+                    is_rust_public: None,
                     comments: parse_comments(attrs),
                     default: attributes.default_value(),
                     settings: IrFieldSettings::default(),
