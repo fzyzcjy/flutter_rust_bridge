@@ -39,7 +39,6 @@ impl<T, A: BaseArc<RustAutoOpaqueInner<T>>> RustAutoOpaqueBase<T, A> {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
     use crate::RustAutoOpaqueNom;
 
     #[test]
