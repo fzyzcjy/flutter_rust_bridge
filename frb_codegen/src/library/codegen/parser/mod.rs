@@ -36,7 +36,6 @@ use anyhow::ensure;
 use itertools::{concat, Itertools};
 use log::trace;
 use std::collections::HashMap;
-use std::path::{Path, PathBuf};
 use ConfigDumpContent::SourceGraph;
 
 pub(crate) fn parse(

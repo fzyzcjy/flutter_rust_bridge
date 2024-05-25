@@ -2,13 +2,8 @@ pub(crate) mod structs;
 mod functions;
 mod methods;
 
-use crate::if_then_some;
 use itertools::Itertools;
-use quote::__private::Span;
-use std::path::PathBuf;
-use syn::spanned::Spanned;
 use syn::File;
-use syn::*;
 use crate::codegen::parser::function_extractor::functions::extract_fns_from_file;
 use crate::codegen::parser::function_extractor::methods::extract_methods_from_file;
 use crate::codegen::parser::function_extractor::structs::PathAndItemFn;
