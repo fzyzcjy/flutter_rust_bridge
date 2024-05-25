@@ -536,6 +536,11 @@ typedef struct wire_cst_struct_with_enum_twin_normal {
   struct wire_cst_abc_twin_normal abc2;
 } wire_cst_struct_with_enum_twin_normal;
 
+typedef struct wire_cst_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal {
+  uintptr_t *ptr;
+  int32_t len;
+} wire_cst_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal;
+
 typedef struct wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal {
   uintptr_t *ptr;
   int32_t len;
@@ -3870,6 +3875,38 @@ void frbgen_frb_example_pure_dart_wire__crate__api__misc_example__test_abc_enum_
 
 void frbgen_frb_example_pure_dart_wire__crate__api__misc_example__test_struct_with_enum_twin_normal(int64_t port_,
                                                                                                     struct wire_cst_struct_with_enum_twin_normal *se);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_dummy_function_twin_normal(int64_t port_);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_deliberate_bad_field_a(uintptr_t that);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_deliberate_bad_field_b(uintptr_t that);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_deliberate_bad_field_c(uintptr_t that);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_good_field_a(uintptr_t that);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_good_field_b(uintptr_t that);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_good_field_c(uintptr_t that);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_a(uintptr_t that,
+                                                                                                                                                           struct wire_cst_list_prim_u_8_strict *deliberate_bad_field_a);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_b(uintptr_t that,
+                                                                                                                                                           uintptr_t deliberate_bad_field_b);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_c(uintptr_t that,
+                                                                                                                                                           struct wire_cst_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal *deliberate_bad_field_c);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_good_field_a(uintptr_t that,
+                                                                                                                                                 struct wire_cst_list_prim_u_8_strict *good_field_a);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_good_field_b(uintptr_t that,
+                                                                                                                                                 int32_t good_field_b);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_good_field_c(uintptr_t that,
+                                                                                                                                                 uintptr_t good_field_c);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_create_twin_normal(int64_t port_);
 
@@ -13454,6 +13491,10 @@ void frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flu
 
 void frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueSyncStructTwinNormal(const void *ptr);
 
+void frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(const void *ptr);
+
+void frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(const void *ptr);
+
 void frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinNormal(const void *ptr);
 
 void frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinNormal(const void *ptr);
@@ -14386,6 +14427,8 @@ struct wire_cst_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustA
 
 struct wire_cst_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi *frbgen_frb_example_pure_dart_cst_new_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(int32_t len);
 
+struct wire_cst_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal *frbgen_frb_example_pure_dart_cst_new_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(int32_t len);
+
 struct wire_cst_list_Chrono_Duration *frbgen_frb_example_pure_dart_cst_new_list_Chrono_Duration(int32_t len);
 
 struct wire_cst_list_Chrono_Local *frbgen_frb_example_pure_dart_cst_new_list_Chrono_Local(int32_t len);
@@ -14919,6 +14962,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_Chrono_Duration);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_Chrono_Local);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_Chrono_Naive);
@@ -15153,6 +15197,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinSyncSseSendSync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueSyncStructTwinNormal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinNormal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinRustAsync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinRustAsyncSse);
@@ -15354,6 +15399,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinSyncSseSendSync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueSyncStructTwinNormal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinNormal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinRustAsync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinRustAsyncSse);
@@ -15653,6 +15699,19 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_example__list_of_primitive_enums_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_example__test_abc_enum_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_example__test_struct_with_enum_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_dummy_function_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_deliberate_bad_field_a);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_deliberate_bad_field_b);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_deliberate_bad_field_c);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_good_field_a);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_good_field_b);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_good_field_c);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_a);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_b);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_c);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_good_field_a);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_good_field_b);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_good_field_c);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_create_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_get_item_contents_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_get_name);
