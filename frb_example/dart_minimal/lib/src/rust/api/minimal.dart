@@ -40,4 +40,13 @@ class ItemContainerSolutionOneTwinNormal extends RustOpaque {
       .instance.api
       .crateApiMinimalItemContainerSolutionOneTwinNormalGetItemContentsTwinNormal(
           that: this, hint: hint);
+
+  String get name => RustLib.instance.api
+          .crateApiMinimalItemContainerSolutionOneTwinNormalGetName(
+        that: this,
+      );
+
+  void set name(String name) => RustLib.instance.api
+      .crateApiMinimalItemContainerSolutionOneTwinNormalSetName(
+          that: this, name: name);
 }
