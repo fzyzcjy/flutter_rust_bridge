@@ -76,6 +76,10 @@ fn parse_auto_accessors_of_struct(
 }
 
 fn parse_auto_accessor_of_field(field: &IrField) -> anyhow::Result<Option<IrFunc>> {
+    if !field.is_rust_public.unwrap() {
+        return Ok(None);
+    }
+
     todo!()
 }
 
