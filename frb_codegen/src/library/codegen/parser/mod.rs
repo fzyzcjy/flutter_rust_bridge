@@ -86,7 +86,7 @@ pub(crate) fn parse(
 
     let mut type_parser = TypeParser::new(src_structs.clone(), src_enums.clone(), src_types);
 
-    let ir_funcs = parse_ir_funcs(&config, &src_fns, &mut type_parser, &src_structs)?;
+    let ir_funcs = parse_ir_funcs(config, &src_fns, &mut type_parser, &src_structs)?;
 
     let existing_handlers = parse_existing_handlers(config, &file_data_arr)?;
 

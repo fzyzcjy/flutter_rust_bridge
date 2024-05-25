@@ -1,21 +1,11 @@
 mod field;
 
 use crate::codegen::generator::codec::structs::CodecMode;
-use crate::codegen::ir::field::IrField;
-use crate::codegen::ir::func::{
-    IrFunc, IrFuncAccessorMode, IrFuncInput, IrFuncMode, IrFuncOutput, IrFuncOwnerInfo,
-    IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode, OwnershipMode,
-};
-use crate::codegen::ir::ident::IrIdent;
+use crate::codegen::ir::func::{IrFunc, IrFuncAccessorMode};
 use crate::codegen::ir::namespace::NamespacedName;
-use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::ty::{IrContext, IrType};
 use crate::codegen::parser::attribute_parser::FrbAttributes;
-use crate::codegen::parser::function_parser::argument::merge_ownership_into_ty;
-use crate::codegen::parser::function_parser::{
-    compute_codec_mode_pack, parse_effective_function_name_of_method,
-};
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::parser::misc::extract_src_types_in_paths;
 use crate::codegen::parser::source_graph::modules::Struct;
@@ -24,7 +14,6 @@ use crate::codegen::parser::type_parser::{
 };
 use field::parse_auto_accessor_of_field;
 use itertools::Itertools;
-use sha1::{Digest, Sha1};
 use std::collections::HashMap;
 
 pub(crate) fn parse_auto_accessors(

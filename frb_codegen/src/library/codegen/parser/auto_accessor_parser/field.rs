@@ -1,4 +1,3 @@
-use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::func::{
     IrFunc, IrFuncAccessorMode, IrFuncInput, IrFuncMode, IrFuncOutput, IrFuncOwnerInfo,
@@ -7,7 +6,6 @@ use crate::codegen::ir::func::{
 use crate::codegen::ir::ident::IrIdent;
 use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
-use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::function_parser::argument::merge_ownership_into_ty;
@@ -84,7 +82,7 @@ pub(super) fn parse_auto_accessor_of_field(
             &config.force_codec_mode_pack,
         ),
         rust_call_code: Some(rust_call_code),
-        src_lineno_pseudo: compute_src_lineno_pseudo(struct_name, &field),
+        src_lineno_pseudo: compute_src_lineno_pseudo(struct_name, field),
     })
 }
 
