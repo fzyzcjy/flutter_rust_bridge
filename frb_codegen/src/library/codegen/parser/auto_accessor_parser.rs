@@ -20,7 +20,6 @@ use crate::codegen::parser::source_graph::modules::Struct;
 use crate::codegen::parser::type_parser::{
     TypeParser, TypeParserParsingContext, TypeParserWithContext,
 };
-use crate::if_then_some;
 use itertools::Itertools;
 use sha1::{Digest, Sha1};
 use std::collections::HashMap;
@@ -65,9 +64,8 @@ fn parse_auto_accessors_of_struct(
     }
 
     let ty_struct_ref = TypeParserWithContext::new(type_parser, &context)
-        .parse_type_path_data_struct(&(&struct_name.name, &[]), Some(false))?
-        .unwrap();
-    let ty_struct_ident = if let IrType::StructRef(ir) = ty_struct_ref {
+        .parse_type_path_data_struct(&(&struct_name.name, &[]), Some(false));
+    let ty_struct_ident = if let Ok(Some(IrType::StructRef(ir))) = ty_struct_ref {
         ir.ident
     } else {
         return Ok(vec![]);
