@@ -77,6 +77,7 @@ mod tests {
         );
     }
 
+    #[allow(clippy::join_absolute_paths)]
     #[test]
     fn test_glob_path_simple() -> Result<()> {
         let temp_dir = tempdir()?;

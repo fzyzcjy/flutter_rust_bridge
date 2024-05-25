@@ -36,3 +36,24 @@ impl<T, A: BaseArc<RustAutoOpaqueInner<T>>> RustAutoOpaqueBase<T, A> {
         self.0.data.try_write()
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use crate::RustAutoOpaqueNom;
+
+    #[test]
+    fn test_api_sync() {
+        let opaque = RustAutoOpaqueNom::new(42);
+        assert_eq!(*opaque.blocking_read(), 42);
+        assert_eq!(*opaque.blocking_write(), 42);
+        assert_eq!(*opaque.try_read().unwrap(), 42);
+        assert_eq!(*opaque.try_write().unwrap(), 42);
+    }
+
+    #[tokio::test]
+    async fn test_api_async() {
+        let opaque = RustAutoOpaqueNom::new(42);
+        assert_eq!(*opaque.read().await, 42);
+        assert_eq!(*opaque.write().await, 42);
+    }
+}

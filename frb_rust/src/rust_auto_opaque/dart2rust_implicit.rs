@@ -1,9 +1,9 @@
-use tokio::sync::RwLock;
 use crate::for_generated::BaseArc;
 use crate::rust_async::{RwLockReadGuard, RwLockWriteGuard};
+use crate::rust_auto_opaque::inner::RustAutoOpaqueInner;
 use crate::rust_auto_opaque::order::RustAutoOpaqueOrder;
 use crate::rust_opaque::RustOpaqueBase;
-use crate::rust_auto_opaque::inner::RustAutoOpaqueInner;
+use tokio::sync::RwLock;
 
 // NOTE: Make these functions instead of methods, thus we can control its visibility by exporting
 // only through `for_generated::...` and do not expose to end users.

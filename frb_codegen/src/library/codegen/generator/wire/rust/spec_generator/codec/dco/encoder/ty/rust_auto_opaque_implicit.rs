@@ -8,7 +8,9 @@ use crate::codegen::ir::func::OwnershipMode;
 use crate::codegen::ir::ty::rust_auto_opaque_implicit::IrTypeRustAutoOpaqueImplicit;
 use crate::codegen::ir::ty::IrTypeTrait;
 
-impl<'a> WireRustCodecDcoGeneratorEncoderTrait for RustAutoOpaqueImplicitWireRustCodecDcoGenerator<'a> {
+impl<'a> WireRustCodecDcoGeneratorEncoderTrait
+    for RustAutoOpaqueImplicitWireRustCodecDcoGenerator<'a>
+{
     fn generate_impl_into_dart(&self) -> Option<String> {
         if self.ir.ownership_mode == OwnershipMode::Owned {
             let rust_api_type = self.ir.rust_api_type();
