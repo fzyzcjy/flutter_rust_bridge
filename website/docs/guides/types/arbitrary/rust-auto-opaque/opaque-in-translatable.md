@@ -5,17 +5,13 @@ There is no need to memorize anything here (or anything in doc) -
 the code generator will provide warnings when detecting non-best-practices.
 :::
 
-Suppose you want to have a translatable struct, and it has an auto opaque field:
+Suppose you want to have a translatable struct, and it has an (auto) opaque field:
 
 ```rust
-pub struct A {
-    pub name: String,
-    pub b: B,
-}
+pub struct A { pub b: B }
 
-pub struct B {
-    db: FancyDatabaseConnection,
-}
+// Suppose it is opaque
+pub struct B { ... }
 ```
 
 If you want to use the same object of type `A` multiple times,
