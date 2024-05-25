@@ -113,6 +113,7 @@ const sidebars = {
                                     items: [
                                         'guides/types/arbitrary/rust-auto-opaque/overview',
                                         'guides/types/arbitrary/rust-auto-opaque/override-defaults',
+                                        'guides/types/arbitrary/rust-auto-opaque/properties',
                                         'guides/types/arbitrary/rust-auto-opaque/interleaving',
                                         'guides/types/arbitrary/rust-auto-opaque/ownership',
                                         'guides/types/arbitrary/rust-auto-opaque/dispose',
