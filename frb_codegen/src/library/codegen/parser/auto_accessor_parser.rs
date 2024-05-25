@@ -67,8 +67,11 @@ fn parse_auto_accessors_of_struct(
     let ty_struct_ref = TypeParserWithContext::new(type_parser, &context)
         .parse_type_path_data_struct(&(&struct_name.name, &[]), Some(false))?
         .unwrap();
-    let ty_struct_ident =
-        if_then_some!(let IrType::StructRef(ir) = ty_struct_ref, ir.ident).unwrap();
+    let ty_struct_ident = if let IrType::StructRef(ir) = ty_struct_ref {
+        ir.ident
+    } else {
+        return Ok(vec![]);
+    };
     let ty_struct = &type_parser.struct_pool()[&ty_struct_ident].to_owned();
 
     (ty_struct.fields.iter())
