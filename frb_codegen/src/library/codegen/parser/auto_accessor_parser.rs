@@ -151,7 +151,7 @@ fn parse_auto_accessor_of_field(
             &FrbAttributes::parse(&[]).unwrap(),
             &config.force_codec_mode_pack,
         ),
-        rust_call_code,
+        rust_call_code: Some(rust_call_code),
         src_lineno_pseudo: compute_src_lineno_pseudo(struct_name, &field),
     })
 }
