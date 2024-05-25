@@ -16,7 +16,7 @@ use crate::codegen::parser::function_parser::{
 };
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::parser::type_parser::{TypeParser, TypeParserParsingContext};
-use sha1::Sha1;
+use sha1::{Digest, Sha1};
 
 pub(super) fn parse_auto_accessor_of_field(
     config: &ParserInternalConfig,

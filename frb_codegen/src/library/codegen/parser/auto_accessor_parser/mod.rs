@@ -22,6 +22,7 @@ use crate::codegen::parser::source_graph::modules::Struct;
 use crate::codegen::parser::type_parser::{
     TypeParser, TypeParserParsingContext, TypeParserWithContext,
 };
+use field::parse_auto_accessor_of_field;
 use itertools::Itertools;
 use sha1::{Digest, Sha1};
 use std::collections::HashMap;
