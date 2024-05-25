@@ -172,3 +172,12 @@ pub(crate) enum IrFuncDefaultConstructorMode {
     DartConstructor,
     StaticMethod,
 }
+
+impl IrFuncAccessorMode {
+    pub(crate) fn verb_str(&self) -> &'static str {
+        match self {
+            IrFuncAccessorMode::Getter => "get",
+            IrFuncAccessorMode::Setter => "set",
+        }
+    }
+}

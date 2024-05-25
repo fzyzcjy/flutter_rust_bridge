@@ -2,8 +2,8 @@ use crate::codegen::config::internal_config::RustInputPathPack;
 use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::func::{
-    IrFunc, IrFuncMode, IrFuncOutput, IrFuncOwnerInfo, IrFuncOwnerInfoMethod,
-    IrFuncOwnerInfoMethodMode,
+    IrFunc, IrFuncAccessorMode, IrFuncInput, IrFuncMode, IrFuncOutput, IrFuncOwnerInfo,
+    IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode,
 };
 use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
@@ -66,19 +66,36 @@ fn parse_auto_accessors_of_struct(
 
     (ty_struct.fields.iter())
         .filter(|field| field.is_rust_public.unwrap())
-        .map(|field| parse_auto_accessor_of_field(config, field))
+        .flat_map(|field| {
+            vec![
+                parse_auto_accessor_of_field(config, field, IrFuncAccessorMode::Getter),
+                parse_auto_accessor_of_field(config, field, IrFuncAccessorMode::Setter),
+            ]
+        })
         .collect()
 }
 
 fn parse_auto_accessor_of_field(
     config: &ParserInternalConfig,
     field: &IrField,
+    accessor_mode: IrFuncAccessorMode,
 ) -> anyhow::Result<IrFunc> {
+    let rust_method_name = format!("{}_{}", accessor_mode.verb_str(), field.name.raw);
+
     Ok(IrFunc {
         name: TODO,
         dart_name: None,
         id: None,
-        inputs: TODO,
+        inputs: vec![
+            IrFuncInput {
+                ownership_mode: TODO,
+                inner: TODO,
+            },
+            IrFuncInput {
+                ownership_mode: TODO,
+                inner: TODO,
+            },
+        ],
         output: IrFuncOutput {
             normal: TODO,
             error: None,
@@ -93,7 +110,7 @@ fn parse_auto_accessor_of_field(
         stream_dart_await: false,
         rust_async: false,
         initializer: false,
-        accessor: TODO,
+        accessor: Some(accessor_mode),
         comments: vec![],
         codec_mode_pack: compute_codec_mode_pack(
             &FrbAttributes::parse(&[]).unwrap(),
