@@ -88,6 +88,8 @@ fn parse_auto_accessors_of_struct(
                         &context,
                     )
                 })
+                .collect_vec()
+
         })
         .collect()
 }
@@ -115,7 +117,7 @@ fn parse_auto_accessor_of_field(
         ty_direct_parse,
         type_parser,
         context,
-    )];
+    )?];
     if accessor_mode == IrFuncAccessorMode::Setter {
         inputs.push(IrFuncInput {
             ownership_mode: None,
