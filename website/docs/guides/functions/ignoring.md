@@ -1,6 +1,4 @@
-# Function operations
-
-## Ignore a function
+# Ignoring functions
 
 Sometimes you may want functions not to be translated by flutter_rust_bridge.
 
@@ -29,15 +27,3 @@ impl RandomStruct {
 ```
 
 Currently `#[frb(ignore)]` doesn't support enums and structs yet - feel free to open an issue if your scenario needs it.
-
-## Rename a function
-
-To customize the name on Dart side to be different from the name on Rust side, the `#[frb(name = ...)]` can be used.
-For example,
-
-```rust
-#[frb(name = "g")]
-pub fn f() {}
-```
-
-will generate function named `g` on Dart side.

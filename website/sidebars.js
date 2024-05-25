@@ -102,7 +102,25 @@ const sidebars = {
                                 id: 'guides/types/arbitrary/index',
                             },
                             items: [
-                                'guides/types/arbitrary/rust-auto-opaque',
+                                {
+                                    type: 'category',
+                                    label: 'Automatic arbitrary Rust type',
+                                    collapsed: true,
+                                    link: {
+                                        type: 'doc',
+                                        id: 'guides/types/arbitrary/rust-auto-opaque/index',
+                                    },
+                                    items: [
+                                        'guides/types/arbitrary/rust-auto-opaque/overview',
+                                        'guides/types/arbitrary/rust-auto-opaque/using-data',
+                                        'guides/types/arbitrary/rust-auto-opaque/override-defaults',
+                                        'guides/types/arbitrary/rust-auto-opaque/properties',
+                                        'guides/types/arbitrary/rust-auto-opaque/opaque-in-translatable',
+                                        'guides/types/arbitrary/rust-auto-opaque/ownership',
+                                        'guides/types/arbitrary/rust-auto-opaque/dispose',
+                                        'guides/types/arbitrary/rust-auto-opaque/struct',
+                                    ],
+                                },
                                 'guides/types/arbitrary/dart-opaque',
                                 'guides/types/arbitrary/rust-opaque',
                                 'guides/types/arbitrary/dart-dynamic',
@@ -170,6 +188,24 @@ const sidebars = {
                 },
                 {
                     type: 'category',
+                    label: 'Functions',
+                    collapsed: true,
+                    link: {
+                        type: 'doc',
+                        id: 'guides/functions/index',
+                    },
+                    items: [
+                        'guides/functions/methods',
+                        'guides/functions/callables',
+                        'guides/functions/properties',
+                        'guides/functions/constructors',
+                        'guides/functions/eq-hash',
+                        'guides/functions/ignoring',
+                        'guides/functions/renaming',
+                    ],
+                },
+                {
+                    type: 'category',
                     label: 'Miscellaneous',
                     collapsed: true,
                     link: {
@@ -178,16 +214,10 @@ const sidebars = {
                     },
                     items: [
                         'guides/miscellaneous/directory',
-                        'guides/miscellaneous/methods',
-                        'guides/miscellaneous/callables',
-                        'guides/miscellaneous/properties',
-                        'guides/miscellaneous/constructors',
                         'guides/miscellaneous/dart-code',
-                        'guides/miscellaneous/eq-hash',
                         'guides/miscellaneous/codec',
                         'guides/miscellaneous/build-rs',
                         'guides/miscellaneous/expanding-macros',
-                        'guides/miscellaneous/functions',
                         'guides/miscellaneous/default',
                         'guides/miscellaneous/pure-dart',
                         'guides/miscellaneous/isolates',

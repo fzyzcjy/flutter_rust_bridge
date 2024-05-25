@@ -26,6 +26,7 @@
       },
       "owner": "Function",
       "rust_async": false,
+      "rust_call_code": null,
       "stream_dart_await": false
     },
     {
@@ -51,6 +52,7 @@
       },
       "owner": "Function",
       "rust_async": false,
+      "rust_call_code": null,
       "stream_dart_await": false
     }
   ],
