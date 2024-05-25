@@ -8,7 +8,9 @@ use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::parser::misc::extract_src_types_in_paths;
 use crate::codegen::parser::source_graph::modules::Struct;
-use crate::codegen::parser::type_parser::{TypeParser, TypeParserParsingContext};
+use crate::codegen::parser::type_parser::{
+    TypeParser, TypeParserParsingContext, TypeParserWithContext,
+};
 use itertools::Itertools;
 use std::collections::HashMap;
 use std::path::{Path, PathBuf};
@@ -53,6 +55,10 @@ fn parse_auto_accessors_of_struct(
     if !is_struct_opaque(type_parser, struct_name, context)? {
         return Ok(vec![]);
     }
+
+    let ty_struct = TypeParserWithContext::new(type_parser, context)
+        .parse_type_path_data_struct((&struct_name.name, &[]), Some(false))?
+        .unwrap();
 
     todo!()
 }
