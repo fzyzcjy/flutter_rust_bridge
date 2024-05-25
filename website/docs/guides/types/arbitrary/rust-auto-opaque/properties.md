@@ -80,4 +80,4 @@ pub struct A {
 It works because `RustAutoOpaque<T>` is indeed an `Arc`,
 thus the cloned `b` will point to the very same object instead of a brand new object.
 
-To create/read/write objects of type `RustAutoOpaque<...>`, please refer to [this page](class).
+To create/read/write objects of type `RustAutoOpaque<...>`, please refer to [this page](struct).

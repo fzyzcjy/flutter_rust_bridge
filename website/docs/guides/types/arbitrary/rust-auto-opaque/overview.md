@@ -48,4 +48,4 @@ await consume(object);
 ```
 
 P.S. As for how it is implemented as well as the design towards safety,
-please refer to [this doc](../../contributing/submodules/rust-opaque)
+please refer to [this doc](../../../contributing/submodules/rust-opaque)
