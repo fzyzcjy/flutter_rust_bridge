@@ -4,8 +4,16 @@ use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::IrType;
 use log::warn;
 
-pub(super) fn sanity_check_field(struct_name: &NamespacedName, field: &IrField) {
+pub(super) fn check_field(struct_name: &NamespacedName, field: &IrField) {
     TODO
+}
+
+pub(super) fn report(hints: &[SanityCheckHint]) {
+    TODO
+}
+
+pub(super) struct SanityCheckHint {
+    name: String,
 }
 
 fn does_need_hint(ty: &IrType) {

@@ -15,6 +15,7 @@ use crate::codegen::parser::function_parser::{
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::parser::type_parser::{TypeParser, TypeParserParsingContext};
 use sha1::{Digest, Sha1};
+use crate::codegen::parser::auto_accessor_parser::IrFuncAndSanityCheckInfo;
 
 pub(super) fn parse_auto_accessor_of_field(
     config: &ParserInternalConfig,
@@ -24,7 +25,7 @@ pub(super) fn parse_auto_accessor_of_field(
     ty_direct_parse: &IrType,
     type_parser: &mut TypeParser,
     context: &TypeParserParsingContext,
-) -> anyhow::Result<IrFunc> {
+) -> anyhow::Result<IrFuncAndSanityCheckInfo> {
     let rust_method_name = format!("{}_{}", accessor_mode.verb_str(), field.name.raw);
 
     let owner = IrFuncOwnerInfoMethod {
@@ -55,9 +56,7 @@ pub(super) fn parse_auto_accessor_of_field(
         }
     };
 
-    super::sanity_checker::sanity_check_field(struct_name, &field);
-
-    Ok(IrFunc {
+    let ir_func = IrFunc {
         name: NamespacedName::new(
             struct_name.namespace.clone(),
             parse_effective_function_name_of_method(&owner),
@@ -85,6 +84,11 @@ pub(super) fn parse_auto_accessor_of_field(
         ),
         rust_call_code: Some(rust_call_code),
         src_lineno_pseudo: compute_src_lineno_pseudo(struct_name, field),
+    };
+
+    Ok(IrFuncAndSanityCheckInfo {
+        ir_func,
+        sanity_check_hint: super::sanity_checker::check_field(struct_name: &NamespacedName, field: &IrField),
     })
 }
 
