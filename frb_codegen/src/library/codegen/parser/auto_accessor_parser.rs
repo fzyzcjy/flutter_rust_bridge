@@ -119,8 +119,8 @@ fn parse_auto_accessor_of_field(
     ];
     if accessor_mode == IrFuncAccessorMode::Setter {
         inputs.push(IrFuncInput {
-            ownership_mode: TODO,
-            inner: TODO,
+            ownership_mode: None,
+            inner: field.ty.clone(),
         });
     }
 
@@ -134,7 +134,7 @@ fn parse_auto_accessor_of_field(
         inputs,
         output: IrFuncOutput {
             normal: match accessor_mode {
-                IrFuncAccessorMode::Getter => TODO,
+                IrFuncAccessorMode::Getter => field.ty.clone(),
                 IrFuncAccessorMode::Setter => IrType::Primitive(IrTypePrimitive::Unit),
             },
             error: None,
