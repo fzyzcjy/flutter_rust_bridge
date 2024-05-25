@@ -76,7 +76,7 @@ where
             }
 
             let keys = match ty {
-                IrType::RustAutoOpaque(ty) => vec![ty.safe_ident(), ty.inner.safe_ident()],
+                IrType::RustAutoOpaqueImplicit(ty) => vec![ty.safe_ident(), ty.inner.safe_ident()],
                 ty => vec![ty.safe_ident()],
             };
 
@@ -87,7 +87,7 @@ where
     }
 
     fn parse_opaque(&mut self, namespaced_name: &NamespacedName) -> anyhow::Result<IrType> {
-        self.parse_type_rust_auto_opaque(
+        self.parse_type_rust_auto_opaque_implicit(
             Some(namespaced_name.namespace.clone()),
             &syn::parse_str(&namespaced_name.name)?,
         )
@@ -108,7 +108,7 @@ where
 
     fn dart_code_of_type(&mut self) -> &mut HashMap<String, String>;
 
-    fn parse_type_rust_auto_opaque(
+    fn parse_type_rust_auto_opaque_implicit(
         &mut self,
         namespace: Option<Namespace>,
         ty: &Type,

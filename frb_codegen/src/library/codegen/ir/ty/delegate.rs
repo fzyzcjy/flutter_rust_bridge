@@ -5,6 +5,8 @@ use crate::codegen::ir::ty::general_list::{ir_list, IrTypeGeneralList};
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
 use crate::codegen::ir::ty::record::IrTypeRecord;
+use crate::codegen::ir::ty::rust_auto_opaque_implicit::IrRustAutoOpaqueRaw;
+use crate::codegen::ir::ty::rust_opaque::IrTypeRustOpaque;
 use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
 
 crate::ir! {
@@ -26,6 +28,7 @@ pub enum IrTypeDelegate {
     Set(IrTypeDelegateSet),
     StreamSink(IrTypeDelegateStreamSink),
     BigPrimitive(IrTypeDelegateBigPrimitive),
+    RustAutoOpaqueExplicit(IrTypeDelegateRustAutoOpaqueExplicit),
 }
 
 pub struct IrTypeDelegateArray {
@@ -73,6 +76,11 @@ pub enum IrTypeDelegateBigPrimitive {
     I128,
     U128,
 }
+
+pub struct IrTypeDelegateRustAutoOpaqueExplicit {
+    pub inner: IrTypeRustOpaque,
+    pub raw: IrRustAutoOpaqueRaw,
+}
 }
 
 impl IrTypeTrait for IrTypeDelegate {
@@ -115,6 +123,9 @@ impl IrTypeTrait for IrTypeDelegate {
                 format!("StreamSink_{}_{}", ir.inner.safe_ident(), ir.codec)
             }
             IrTypeDelegate::BigPrimitive(ir) => ir.to_string(),
+            IrTypeDelegate::RustAutoOpaqueExplicit(ir) => {
+                format!("AutoExplicit_{}", ir.inner.safe_ident())
+            }
         }
     }
 
@@ -174,6 +185,9 @@ impl IrTypeTrait for IrTypeDelegate {
                 IrTypeDelegateBigPrimitive::I128 => "i128".to_owned(),
                 IrTypeDelegateBigPrimitive::U128 => "u128".to_owned(),
             },
+            IrTypeDelegate::RustAutoOpaqueExplicit(ir) => {
+                format!("RustAutoOpaque{}<{}>", ir.inner.codec, ir.raw.string)
+            }
         }
     }
 
@@ -227,6 +241,7 @@ impl IrTypeDelegate {
             IrTypeDelegate::Set(ir) => ir_list(*ir.inner.to_owned(), true),
             IrTypeDelegate::StreamSink(_) => IrType::Delegate(IrTypeDelegate::String),
             IrTypeDelegate::BigPrimitive(_) => IrType::Delegate(IrTypeDelegate::String),
+            IrTypeDelegate::RustAutoOpaqueExplicit(ir) => IrType::RustOpaque(ir.inner.clone()),
         }
     }
 }

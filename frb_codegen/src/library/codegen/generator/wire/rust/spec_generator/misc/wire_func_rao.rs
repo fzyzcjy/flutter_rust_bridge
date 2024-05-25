@@ -1,5 +1,5 @@
 use crate::codegen::ir::func::{IrFunc, IrFuncInput, OwnershipMode};
-use crate::codegen::ir::ty::rust_auto_opaque::IrTypeRustAutoOpaque;
+use crate::codegen::ir::ty::rust_auto_opaque_implicit::IrTypeRustAutoOpaqueImplicit;
 use crate::codegen::ir::ty::IrType;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
@@ -23,7 +23,7 @@ pub(crate) fn generate_code_inner_decode(func: &IrFunc) -> String {
         .map(|(index, (field, ty))| {
             let mutable = (ty.ownership_mode == OwnershipMode::RefMut).to_string();
             format!(
-                "api_{name}.rust_auto_opaque_lock_order_info({index}, {mutable})",
+                "flutter_rust_bridge::for_generated::rust_auto_opaque_lock_order_info(&api_{name}, {index}, {mutable})",
                 name = get_variable_name(field)
             )
         })
@@ -64,21 +64,21 @@ pub(crate) fn generate_code_inner_decode(func: &IrFunc) -> String {
 fn generate_decode_statement(
     func: &IrFunc,
     field: &IrFuncInput,
-    ty: &IrTypeRustAutoOpaque,
+    ty: &IrTypeRustAutoOpaqueImplicit,
 ) -> String {
     let mode = ty.ownership_mode.to_string().to_case(Case::Snake);
     format!(
-        "api_{name}_decoded = Some(api_{name}.rust_auto_opaque_decode_{syncness}_{mode}(){maybe_await})",
+        "api_{name}_decoded = Some(flutter_rust_bridge::for_generated::rust_auto_opaque_decode_{syncness}_{mode}(&api_{name}){maybe_await})",
         name = get_variable_name(field),
         syncness = if func.rust_async { "async" } else { "sync" },
         maybe_await = if func.rust_async { ".await" } else { "" },
     )
 }
 
-fn filter_interest_fields(func: &IrFunc) -> Vec<(&IrFuncInput, &IrTypeRustAutoOpaque)> {
+fn filter_interest_fields(func: &IrFunc) -> Vec<(&IrFuncInput, &IrTypeRustAutoOpaqueImplicit)> {
     (func.inputs.iter())
         .filter_map(|field| {
-            if let IrType::RustAutoOpaque(ty) = &field.inner.ty {
+            if let IrType::RustAutoOpaqueImplicit(ty) = &field.inner.ty {
                 if ty.ownership_mode != OwnershipMode::Owned {
                     Some((field, ty))
                 } else {

@@ -293,11 +293,16 @@ Future<void> main({bool skipRustLibInit = false}) async {
           rustAutoOpaqueExplicitArgTwinSse(arg: obj, expect: 100));
     });
 
-    test('it can be inside a struct', () async {
+    test('it can be inside a struct used as argument', () async {
       final obj = await rustAutoOpaqueExplicitReturnTwinSse(initial: 100);
       await futurizeVoidTwinSse(rustAutoOpaqueExplicitStructTwinSse(
           arg: StructWithExplicitAutoOpaqueFieldTwinSse(
               autoOpaque: obj, normal: 100)));
+    });
+
+    test('it can be inside a struct used as return type', () async {
+      final obj = await rustAutoOpaqueExplicitReturnStructTwinSse();
+      await futurizeVoidTwinSse(rustAutoOpaqueExplicitStructTwinSse(arg: obj));
     });
 
     group('it can be used with automatic (implicit) ones', () {

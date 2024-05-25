@@ -1,6 +1,8 @@
 use crate::for_generated::BaseArc;
 use crate::generalized_isolate::ZeroCopyBuffer;
 use crate::platform_types::DartAbi;
+#[cfg(feature = "rust-async")]
+use crate::rust_auto_opaque::{inner::RustAutoOpaqueInner, RustAutoOpaqueBase};
 use crate::rust_opaque::RustOpaqueBase;
 use js_sys::{Array, BigInt64Array, BigUint64Array, Int32Array};
 use std::collections::{HashMap, HashSet};
@@ -14,6 +16,8 @@ pub trait IntoDart {
 pub trait IntoDartExceptPrimitive: IntoDart {}
 impl IntoDartExceptPrimitive for JsValue {}
 impl<T, A: BaseArc<T>> IntoDartExceptPrimitive for RustOpaqueBase<T, A> {}
+#[cfg(feature = "rust-async")]
+impl<T, A: BaseArc<RustAutoOpaqueInner<T>>> IntoDartExceptPrimitive for RustAutoOpaqueBase<T, A> {}
 #[cfg(feature = "dart-opaque")]
 impl IntoDartExceptPrimitive for crate::dart_opaque::DartOpaque {}
 impl IntoDartExceptPrimitive for String {}
@@ -242,6 +246,14 @@ impl<T> IntoDart for *mut T {
 }
 
 impl<T, A: BaseArc<T>> IntoDart for RustOpaqueBase<T, A> {
+    #[inline]
+    fn into_dart(self) -> DartAbi {
+        self.into()
+    }
+}
+
+#[cfg(feature = "rust-async")]
+impl<T, A: BaseArc<RustAutoOpaqueInner<T>>> IntoDart for RustAutoOpaqueBase<T, A> {
     #[inline]
     fn into_dart(self) -> DartAbi {
         self.into()

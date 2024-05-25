@@ -114,12 +114,12 @@ impl EnumOrStructParser<IrStructIdent, IrStruct, Struct, ItemStruct>
         &mut self.0.inner.dart_code_of_type
     }
 
-    fn parse_type_rust_auto_opaque(
+    fn parse_type_rust_auto_opaque_implicit(
         &mut self,
         namespace: Option<Namespace>,
         ty: &Type,
     ) -> anyhow::Result<IrType> {
-        self.0.parse_type_rust_auto_opaque(namespace, ty)
+        self.0.parse_type_rust_auto_opaque_implicit(namespace, ty)
     }
 
     fn compute_default_opaque(obj: &IrStruct) -> bool {
@@ -128,5 +128,5 @@ impl EnumOrStructParser<IrStructIdent, IrStruct, Struct, ItemStruct>
 }
 
 pub(super) fn structure_compute_default_opaque(s: &IrStruct) -> bool {
-    (s.fields.iter()).any(|f| matches!(f.ty, IrType::RustAutoOpaque(_)))
+    (s.fields.iter()).any(|f| matches!(f.ty, IrType::RustAutoOpaqueImplicit(_)))
 }

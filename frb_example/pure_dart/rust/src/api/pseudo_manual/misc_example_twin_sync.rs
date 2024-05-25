@@ -3,6 +3,7 @@
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
 use crate::auxiliary::sample_types::MySize;
+use crate::frb_generated::RustAutoOpaque;
 use flutter_rust_bridge::frb;
 use log::info;
 
@@ -156,3 +157,54 @@ pub struct MySizeFreezedTwinSync {
 // To test parsing of `pub(super)`
 #[allow(dead_code)]
 pub(super) fn visibility_restricted_func_twin_sync() {}
+
+// #1937
+// Suppose this is opaque
+#[frb(opaque)]
+pub struct OpaqueItemTwinSync(i32);
+
+// #1937
+#[frb(opaque)]
+pub struct ItemContainerSolutionOneTwinSync {
+    // TODO auto generate getter/setter
+    pub name: String,
+    items: Vec<OpaqueItemTwinSync>,
+}
+
+impl ItemContainerSolutionOneTwinSync {
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn create_twin_sync() -> Self {
+        Self {
+            name: "hi".to_owned(),
+            items: vec![OpaqueItemTwinSync(100)],
+        }
+    }
+
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn get_item_contents_twin_sync(&self) -> Vec<i32> {
+        self.items.iter().map(|x| x.0).collect()
+    }
+}
+
+// #1937
+#[frb]
+pub struct ItemContainerSolutionTwoTwinSync {
+    #[frb(non_final)]
+    pub name: String,
+    pub items: Vec<RustAutoOpaque<OpaqueItemTwinSync>>,
+}
+
+impl ItemContainerSolutionTwoTwinSync {
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn create_twin_sync() -> Self {
+        Self {
+            name: "hi".to_owned(),
+            items: vec![RustAutoOpaque::new(OpaqueItemTwinSync(100))],
+        }
+    }
+
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn get_item_contents_twin_sync(&self) -> Vec<i32> {
+        self.items.iter().map(|x| x.try_read().unwrap().0).collect()
+    }
+}

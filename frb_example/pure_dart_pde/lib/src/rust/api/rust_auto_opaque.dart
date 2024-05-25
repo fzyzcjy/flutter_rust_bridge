@@ -209,6 +209,12 @@ Future<void> rustAutoOpaqueExplicitStructTwinNormal(
         .crateApiRustAutoOpaqueRustAutoOpaqueExplicitStructTwinNormal(
             arg: arg, hint: hint);
 
+Future<StructWithExplicitAutoOpaqueFieldTwinNormal>
+    rustAutoOpaqueExplicitReturnStructTwinNormal({dynamic hint}) =>
+        RustLib.instance.api
+            .crateApiRustAutoOpaqueRustAutoOpaqueExplicitReturnStructTwinNormal(
+                hint: hint);
+
 Future<NonCloneSimpleTwinNormal> rustAutoOpaqueExplicitReturnTwinNormal(
         {required int initial, dynamic hint}) =>
     RustLib.instance.api
