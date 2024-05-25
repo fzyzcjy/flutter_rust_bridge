@@ -24,9 +24,10 @@ use crate::codegen::parser::type_parser::{
 };
 use crate::if_then_some;
 use itertools::Itertools;
-use sha1::Sha1;
+use sha1::{Sha1, Digest};
 use std::collections::HashMap;
 use std::path::{Path, PathBuf};
+use crate::codegen::ir::ident::IrIdent;
 
 pub(crate) fn parse_auto_accessors(
     config: &ParserInternalConfig,
@@ -55,11 +56,11 @@ fn parse_auto_accessors_of_struct(
     let context = create_parsing_context(
         struct_name,
         config.default_stream_sink_codec,
-        defaulconfig.t_rust_opaque_codec,
+        config.default_rust_opaque_codec,
     )?;
 
-    let ty_direct_parse = type_parser.parse_type(&syn::parse_str(&struct_name.name)?, context)?;
-    if !matches!(ty_direct_parse, IrType::RustAutoOpaqueImplicit(_))? {
+    let ty_direct_parse = type_parser.parse_type(&syn::parse_str(&struct_name.name)?, &context)?;
+    if !matches!(ty_direct_parse, IrType::RustAutoOpaqueImplicit(_)) {
         return Ok(vec![]);
     }
 
@@ -106,14 +107,18 @@ fn parse_auto_accessor_of_field(
 
     let mut inputs = vec![
         IrFuncInput {
-            ownership_mode: match accessor_mode {
+            ownership_mode: Some(match accessor_mode {
                 IrFuncAccessorMode::Getter => OwnershipMode::Ref,
                 IrFuncAccessorMode::Setter => OwnershipMode::RefMut,
-            },
+            }),
             inner: IrField {
                 ty: ty_direct_parse.to_owned(),
-                name: "that".to_owned(),
-                ..Default::default()
+                name: IrIdent::new("that".to_owned()),
+                is_final: true,
+                is_rust_public: None,
+                comments: vec![],
+                default: None,
+                settings: Default::default(),
             },
         },
     ];
@@ -148,7 +153,7 @@ fn parse_auto_accessor_of_field(
         comments: vec![],
         codec_mode_pack: compute_codec_mode_pack(
             &FrbAttributes::parse(&[]).unwrap(),
-            config.force_codec_mode_pack,
+            &config.force_codec_mode_pack,
         ),
         src_lineno_pseudo: compute_src_lineno_pseudo(struct_name, &field),
     })
