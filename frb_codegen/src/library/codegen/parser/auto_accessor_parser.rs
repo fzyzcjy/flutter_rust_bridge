@@ -119,7 +119,10 @@ fn parse_auto_accessor_of_field(
         });
     }
 
-    let rust_call_code = TODO;
+    let rust_call_code = match accessor_mode {
+        IrFuncAccessorMode::Getter => TODO,
+        IrFuncAccessorMode::Setter => TODO,
+    };
 
     Ok(IrFunc {
         name: NamespacedName::new(
