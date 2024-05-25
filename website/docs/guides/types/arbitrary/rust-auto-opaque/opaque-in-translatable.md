@@ -18,7 +18,8 @@ pub struct B {
 }
 ```
 
-Then, it is suggested (and flutter_rust_bridge will automatically hint you about that)
+If you want to use the same object of type `A` multiple times,
+then it is suggested (and flutter_rust_bridge will automatically hint you about that)
 to add an `RustAutoOpaque<...>` wrapper on it:
 
 ```diff
@@ -26,4 +27,7 @@ to add an `RustAutoOpaque<...>` wrapper on it:
 +    pub b: RustAutoOpaque<B>,
 ```
 
-This is because, TODO
+(Optional) explanations:
+This is because, shortly speaking,
+the original version needs to have an owned `B`, and thus the `B` object cannot be used later.
+On the other hand, the updated version, which uses `RustAutoOpaque` thus `Arc`, will only require shared ownership.
