@@ -103,7 +103,7 @@ fn generate_code_inner_decode(func: &IrFunc) -> String {
 }
 
 fn generate_code_call_inner_func_result(func: &IrFunc, inner_func_args: Vec<String>) -> String {
-    let mut ans = match &func.owner {
+    let mut ans = (func.rust_call_code.clone()).unwrap_or_else(|| match &func.owner {
         IrFuncOwnerInfo::Function => {
             format!("{}({})", func.name.rust_style(), inner_func_args.join(", "))
         }
@@ -115,7 +115,7 @@ fn generate_code_call_inner_func_result(func: &IrFunc, inner_func_args: Vec<Stri
                 inner_func_args.join(", ")
             )
         }
-    };
+    });
 
     if func.rust_async {
         ans = format!("{ans}.await");

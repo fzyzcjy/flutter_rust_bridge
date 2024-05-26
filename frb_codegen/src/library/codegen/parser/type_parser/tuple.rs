@@ -51,6 +51,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                         ty: ty.clone(),
                         name: IrIdent::new(format!("field{idx}")),
                         is_final: true,
+                        is_rust_public: None,
                         comments: vec![],
                         default: None,
                         settings: Default::default(),

@@ -2,6 +2,7 @@
 
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "rustAsync", "sse", "sync sse", "rustAsync sse"]}
 
+use crate::frb_generated::RustAutoOpaque;
 use flutter_rust_bridge::frb;
 
 // Reproduce #1630
@@ -54,4 +55,66 @@ impl StructWithSimpleSetterTwinNormal {
     pub fn simple_setter(&mut self, value: i32) {
         self.0 = value;
     }
+}
+
+// #1937
+// Suppose this is opaque
+#[frb(opaque)]
+#[derive(Clone)]
+pub struct OpaqueItemTwinNormal(i32);
+
+// #1937
+#[frb(opaque)]
+pub struct ItemContainerSolutionOneTwinNormal {
+    // TODO auto generate getter/setter
+    pub name: String,
+    items: Vec<OpaqueItemTwinNormal>,
+}
+
+impl ItemContainerSolutionOneTwinNormal {
+    pub fn create_twin_normal() -> Self {
+        Self {
+            name: "hi".to_owned(),
+            items: vec![OpaqueItemTwinNormal(100)],
+        }
+    }
+
+    pub fn get_item_contents_twin_normal(&self) -> Vec<i32> {
+        self.items.iter().map(|x| x.0).collect()
+    }
+}
+
+// #1937
+#[frb]
+pub struct ItemContainerSolutionTwoTwinNormal {
+    #[frb(non_final)]
+    pub name: String,
+    pub items: Vec<RustAutoOpaque<OpaqueItemTwinNormal>>,
+}
+
+impl ItemContainerSolutionTwoTwinNormal {
+    pub fn create_twin_normal() -> Self {
+        Self {
+            name: "hi".to_owned(),
+            items: vec![RustAutoOpaque::new(OpaqueItemTwinNormal(100))],
+        }
+    }
+
+    pub fn get_item_contents_twin_normal(&self) -> Vec<i32> {
+        self.items.iter().map(|x| x.try_read().unwrap().0).collect()
+    }
+}
+
+#[frb(opaque)]
+pub struct DeliberateFailSanityCheckTwinNormal {
+    pub good_field_a: String,
+    pub good_field_b: i32,
+    pub good_field_c: RustAutoOpaque<OpaqueItemTwinNormal>,
+    pub deliberate_bad_field_a: Vec<u8>,
+    pub deliberate_bad_field_b: OpaqueItemTwinNormal,
+    pub deliberate_bad_field_c: Vec<OpaqueItemTwinNormal>,
+}
+
+impl DeliberateFailSanityCheckTwinNormal {
+    pub fn dummy_function_twin_normal() {}
 }

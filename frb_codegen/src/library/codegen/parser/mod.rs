@@ -1,35 +1,41 @@
 pub(crate) mod attribute_parser;
+mod auto_accessor_parser;
 mod file_reader;
 pub(crate) mod function_extractor;
 pub(crate) mod function_parser;
 pub(crate) mod internal_config;
 pub(crate) mod misc;
 pub(crate) mod reader;
-mod sanity_checker;
+pub(crate) mod sanity_checker;
 pub(crate) mod source_graph;
 pub(crate) mod type_alias_resolver;
 pub(crate) mod type_parser;
-mod unused_checker;
 
 use crate::codegen::dumper::Dumper;
+use crate::codegen::ir::func::IrFunc;
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::misc::GeneratorProgressBarPack;
-use crate::codegen::parser::file_reader::read_files;
+use crate::codegen::parser::auto_accessor_parser::parse_auto_accessors;
+use crate::codegen::parser::file_reader::{read_files, FileData};
 use crate::codegen::parser::function_extractor::extract_generalized_functions_from_file;
+use crate::codegen::parser::function_extractor::structs::PathAndItemFn;
 use crate::codegen::parser::function_parser::FunctionParser;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::parser::misc::parse_has_executor;
 use crate::codegen::parser::reader::CachedRustReader;
-use crate::codegen::parser::sanity_checker::check_suppressed_input_path_no_content;
+use crate::codegen::parser::sanity_checker::misc_checker::check_suppressed_input_path_no_content;
+use crate::codegen::parser::sanity_checker::opaque_inside_translatable_checker::check_opaque_inside_translatable;
+use crate::codegen::parser::sanity_checker::unused_checker::get_unused_types;
+use crate::codegen::parser::source_graph::modules::Struct;
 use crate::codegen::parser::type_alias_resolver::resolve_type_aliases;
 use crate::codegen::parser::type_parser::TypeParser;
-use crate::codegen::parser::unused_checker::get_unused_types;
 use crate::codegen::ConfigDumpContent;
 use crate::library::misc::consts::HANDLER_NAME;
 use anyhow::ensure;
-use itertools::Itertools;
+use itertools::{concat, Itertools};
 use log::trace;
+use std::collections::HashMap;
 use ConfigDumpContent::SourceGraph;
 
 pub(crate) fn parse(
@@ -79,45 +85,10 @@ pub(crate) fn parse(
     let src_types = resolve_type_aliases(crate_map.root_module().collect_types());
 
     let mut type_parser = TypeParser::new(src_structs.clone(), src_enums.clone(), src_types);
-    let mut function_parser = FunctionParser::new(&mut type_parser);
 
-    let ir_funcs = src_fns
-        .iter()
-        .enumerate()
-        .map(|(index, f)| {
-            function_parser.parse_function(
-                &f.generalized_item_fn,
-                &f.path,
-                &config.rust_crate_dir,
-                &config.force_codec_mode_pack,
-                (index + 1) as i32,
-                config.default_stream_sink_codec,
-                config.default_rust_opaque_codec,
-            )
-        })
-        .collect::<anyhow::Result<Vec<_>>>()?
-        .into_iter()
-        .flatten()
-        // to give downstream a stable output
-        .sorted_by_cached_key(|func| func.name.clone())
-        .collect_vec();
+    let ir_funcs = parse_ir_funcs(config, &src_fns, &mut type_parser, &src_structs)?;
 
-    let existing_handlers = (file_data_arr.iter())
-        .filter(|file| parse_has_executor(&file.content))
-        .map(|file| {
-            NamespacedName::new(
-                Namespace::new_from_rust_crate_path(&file.path, &config.rust_crate_dir).unwrap(),
-                HANDLER_NAME.to_owned(),
-            )
-        })
-        .collect_vec();
-    ensure!(
-        existing_handlers.len() <= 1,
-        // frb-coverage:ignore-start
-        // This will stop the whole generator and tell the users, so we do not care about testing it
-        "Should have at most one custom handler"
-    );
-    // frb-coverage:ignore-end
+    let existing_handlers = parse_existing_handlers(config, &file_data_arr)?;
 
     let (struct_pool, enum_pool, dart_code_of_type) = type_parser.consume();
 
@@ -134,11 +105,75 @@ pub(crate) fn parse(
         &ans,
         &src_structs,
         &src_enums,
-        &config.rust_input_path_pack,
+        &config.rust_input_path_pack.rust_input_paths,
         &config.rust_crate_dir,
     )?;
 
+    check_opaque_inside_translatable(&ans);
+
     Ok(ans)
+}
+
+fn parse_ir_funcs(
+    config: &ParserInternalConfig,
+    src_fns: &[PathAndItemFn],
+    type_parser: &mut TypeParser,
+    src_structs: &HashMap<String, &Struct>,
+) -> anyhow::Result<Vec<IrFunc>> {
+    let mut function_parser = FunctionParser::new(type_parser);
+
+    let ir_funcs_normal = src_fns
+        .iter()
+        .map(|f| {
+            function_parser.parse_function(
+                &f.generalized_item_fn,
+                &f.path,
+                &config.rust_crate_dir,
+                &config.force_codec_mode_pack,
+                config.default_stream_sink_codec,
+                config.default_rust_opaque_codec,
+            )
+        })
+        .collect::<anyhow::Result<Vec<_>>>()?
+        .into_iter()
+        .flatten()
+        .collect_vec();
+
+    let ir_funcs_auto_accessor = parse_auto_accessors(config, src_structs, type_parser)?;
+
+    Ok(concat([ir_funcs_normal, ir_funcs_auto_accessor])
+        .into_iter()
+        // to give downstream a stable output
+        .sorted_by_cached_key(|func| func.name.clone())
+        .enumerate()
+        .map(|(index, f)| IrFunc {
+            id: Some((index + 1) as _),
+            ..f
+        })
+        .collect_vec())
+}
+
+fn parse_existing_handlers(
+    config: &ParserInternalConfig,
+    file_data_arr: &[FileData],
+) -> anyhow::Result<Vec<NamespacedName>> {
+    let existing_handlers = (file_data_arr.iter())
+        .filter(|file| parse_has_executor(&file.content))
+        .map(|file| {
+            NamespacedName::new(
+                Namespace::new_from_rust_crate_path(&file.path, &config.rust_crate_dir).unwrap(),
+                HANDLER_NAME.to_owned(),
+            )
+        })
+        .collect_vec();
+    ensure!(
+        existing_handlers.len() <= 1,
+        // frb-coverage:ignore-start
+        // This will stop the whole generator and tell the users, so we do not care about testing it
+        "Should have at most one custom handler"
+    );
+    // frb-coverage:ignore-end
+    Ok(existing_handlers)
 }
 
 #[cfg(test)]

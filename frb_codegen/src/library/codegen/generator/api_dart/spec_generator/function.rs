@@ -28,7 +28,7 @@ pub(crate) struct ApiDartGeneratedFunction {
     pub(crate) func_impl: String,
     pub(crate) func_params: Vec<ApiDartGeneratedFunctionParam>,
     pub(crate) func_return_type: String,
-    pub(crate) src_lineno: usize,
+    pub(crate) src_lineno_pseudo: usize,
     pub(crate) return_stream: Option<ReturnStreamInfo>,
 }
 
@@ -81,7 +81,7 @@ pub(crate) fn generate(
         func_impl,
         func_params,
         func_return_type,
-        src_lineno: func.src_lineno,
+        src_lineno_pseudo: func.src_lineno_pseudo,
         return_stream,
     })
 }

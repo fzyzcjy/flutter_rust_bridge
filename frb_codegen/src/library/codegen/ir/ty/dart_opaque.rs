@@ -21,6 +21,10 @@ impl IrTypeTrait for IrTypeDartOpaque {
     fn rust_api_type(&self) -> String {
         "flutter_rust_bridge::DartOpaque".to_owned()
     }
+
+    fn cloned_getter_semantics_reasonable(&self) -> bool {
+        true
+    }
 }
 
 impl IrTypeDartOpaque {

@@ -9,7 +9,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         let resolve_ty = self.resolve_alias(ty);
 
         Ok(match resolve_ty.clone() {
-            Type::Path(path) => self.parse_type_path(&path).unwrap(),
+            Type::Path(path) => self.parse_type_path(&path)?,
             Type::Array(type_array) => self.parse_type_array(&type_array)?,
             Type::Tuple(type_tuple) => self.parse_type_tuple(&type_tuple)?,
             Type::ImplTrait(type_impl_trait) => self

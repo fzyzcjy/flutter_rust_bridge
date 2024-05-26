@@ -3,7 +3,6 @@
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
 use crate::auxiliary::sample_types::MySize;
-use crate::frb_generated::RustAutoOpaque;
 use flutter_rust_bridge::frb;
 use log::info;
 
@@ -165,54 +164,3 @@ pub struct MySizeFreezedTwinRustAsyncSse {
 // To test parsing of `pub(super)`
 #[allow(dead_code)]
 pub(super) fn visibility_restricted_func_twin_rust_async_sse() {}
-
-// #1937
-// Suppose this is opaque
-#[frb(opaque)]
-pub struct OpaqueItemTwinRustAsyncSse(i32);
-
-// #1937
-#[frb(opaque)]
-pub struct ItemContainerSolutionOneTwinRustAsyncSse {
-    // TODO auto generate getter/setter
-    pub name: String,
-    items: Vec<OpaqueItemTwinRustAsyncSse>,
-}
-
-impl ItemContainerSolutionOneTwinRustAsyncSse {
-    #[flutter_rust_bridge::frb(serialize)]
-    pub async fn create_twin_rust_async_sse() -> Self {
-        Self {
-            name: "hi".to_owned(),
-            items: vec![OpaqueItemTwinRustAsyncSse(100)],
-        }
-    }
-
-    #[flutter_rust_bridge::frb(serialize)]
-    pub async fn get_item_contents_twin_rust_async_sse(&self) -> Vec<i32> {
-        self.items.iter().map(|x| x.0).collect()
-    }
-}
-
-// #1937
-#[frb]
-pub struct ItemContainerSolutionTwoTwinRustAsyncSse {
-    #[frb(non_final)]
-    pub name: String,
-    pub items: Vec<RustAutoOpaque<OpaqueItemTwinRustAsyncSse>>,
-}
-
-impl ItemContainerSolutionTwoTwinRustAsyncSse {
-    #[flutter_rust_bridge::frb(serialize)]
-    pub async fn create_twin_rust_async_sse() -> Self {
-        Self {
-            name: "hi".to_owned(),
-            items: vec![RustAutoOpaque::new(OpaqueItemTwinRustAsyncSse(100))],
-        }
-    }
-
-    #[flutter_rust_bridge::frb(serialize)]
-    pub async fn get_item_contents_twin_rust_async_sse(&self) -> Vec<i32> {
-        self.items.iter().map(|x| x.try_read().unwrap().0).collect()
-    }
-}

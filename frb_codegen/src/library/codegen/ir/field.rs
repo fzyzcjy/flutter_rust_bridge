@@ -9,6 +9,7 @@ pub struct IrField {
     pub ty: IrType,
     pub name: IrIdent,
     pub is_final: bool,
+    pub is_rust_public: Option<bool>,
     pub comments: Vec<IrComment>,
     pub default: Option<IrDefaultValue>,
     pub settings: IrFieldSettings,

@@ -57,4 +57,8 @@ impl IrTypeTrait for IrTypePrimitive {
     fn as_primitive(&self) -> Option<&IrTypePrimitive> {
         Some(self)
     }
+
+    fn cloned_getter_semantics_reasonable(&self) -> bool {
+        true
+    }
 }
