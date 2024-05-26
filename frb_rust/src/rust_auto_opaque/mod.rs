@@ -10,6 +10,7 @@ mod order;
 pub(crate) mod rust2dart_common;
 pub(crate) mod rust2dart_explicit;
 
+#[derive(Clone)]
 pub struct RustAutoOpaqueBase<T: 'static, A: BaseArc<inner::RustAutoOpaqueInner<T>>>(
     pub(crate) RustOpaqueBase<inner::RustAutoOpaqueInner<T>, A>,
 );

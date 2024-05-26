@@ -95,6 +95,11 @@ pub trait IrTypeTrait {
     fn self_namespace(&self) -> Option<Namespace> {
         None
     }
+
+    // TODO move
+    fn cloned_getter_semantics_reasonable(&self) -> bool {
+        false
+    }
 }
 
 impl From<Box<IrType>> for IrType {

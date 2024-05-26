@@ -8,6 +8,7 @@ use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
+use crate::codegen::parser::auto_accessor_parser::IrFuncAndSanityCheckInfo;
 use crate::codegen::parser::function_parser::argument::merge_ownership_into_ty;
 use crate::codegen::parser::function_parser::{
     compute_codec_mode_pack, parse_effective_function_name_of_method,
@@ -24,7 +25,7 @@ pub(super) fn parse_auto_accessor_of_field(
     ty_direct_parse: &IrType,
     type_parser: &mut TypeParser,
     context: &TypeParserParsingContext,
-) -> anyhow::Result<IrFunc> {
+) -> anyhow::Result<IrFuncAndSanityCheckInfo> {
     let rust_method_name = format!("{}_{}", accessor_mode.verb_str(), field.name.raw);
 
     let owner = IrFuncOwnerInfoMethod {
@@ -55,7 +56,7 @@ pub(super) fn parse_auto_accessor_of_field(
         }
     };
 
-    Ok(IrFunc {
+    let ir_func = IrFunc {
         name: NamespacedName::new(
             struct_name.namespace.clone(),
             parse_effective_function_name_of_method(&owner),
@@ -83,6 +84,11 @@ pub(super) fn parse_auto_accessor_of_field(
         ),
         rust_call_code: Some(rust_call_code),
         src_lineno_pseudo: compute_src_lineno_pseudo(struct_name, field),
+    };
+
+    Ok(IrFuncAndSanityCheckInfo {
+        ir_func,
+        sanity_check_hint: super::sanity_checker::check_field(struct_name, field),
     })
 }
 

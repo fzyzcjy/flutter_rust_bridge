@@ -36,4 +36,8 @@ impl IrTypeTrait for IrTypeBoxed {
             self.inner.rust_api_type()
         }
     }
+
+    fn cloned_getter_semantics_reasonable(&self) -> bool {
+        self.inner.cloned_getter_semantics_reasonable()
+    }
 }

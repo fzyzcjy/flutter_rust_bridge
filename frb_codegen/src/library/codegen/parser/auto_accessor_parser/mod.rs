@@ -1,4 +1,5 @@
 mod field;
+mod sanity_checker;
 
 use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::ir::func::{IrFunc, IrFuncAccessorMode};
@@ -26,20 +27,30 @@ pub(crate) fn parse_auto_accessors(
         &config.rust_input_path_pack.rust_input_paths,
         &config.rust_crate_dir,
     )?;
-    Ok(src_structs_in_paths
+
+    let infos = src_structs_in_paths
         .iter()
         .map(|struct_name| parse_auto_accessors_of_struct(config, struct_name, type_parser))
         .collect::<anyhow::Result<Vec<_>>>()?
         .into_iter()
         .flatten()
-        .collect_vec())
+        .collect_vec();
+
+    sanity_checker::report(
+        &infos
+            .iter()
+            .flat_map(|x| x.sanity_check_hint.clone())
+            .collect_vec(),
+    );
+
+    Ok(infos.into_iter().map(|x| x.ir_func).collect_vec())
 }
 
 fn parse_auto_accessors_of_struct(
     config: &ParserInternalConfig,
     struct_name: &NamespacedName,
     type_parser: &mut TypeParser,
-) -> anyhow::Result<Vec<IrFunc>> {
+) -> anyhow::Result<Vec<IrFuncAndSanityCheckInfo>> {
     let context = create_parsing_context(
         struct_name,
         config.default_stream_sink_codec,
@@ -98,4 +109,9 @@ fn create_parsing_context(
         default_rust_opaque_codec,
         owner: None,
     })
+}
+
+struct IrFuncAndSanityCheckInfo {
+    ir_func: IrFunc,
+    sanity_check_hint: Option<sanity_checker::SanityCheckHint>,
 }

@@ -14,6 +14,89 @@ Future<void> sameFunctionNameInDifferentFiles({dynamic hint}) =>
 Future<void> renamedFunction({dynamic hint}) => RustLib.instance.api
     .crateApiMiscNoTwinExampleAFunctionWithCustomNameTwinNormal(hint: hint);
 
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DeliberateFailSanityCheckTwinNormal>>
+@sealed
+class DeliberateFailSanityCheckTwinNormal extends RustOpaque {
+  DeliberateFailSanityCheckTwinNormal.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  DeliberateFailSanityCheckTwinNormal.sseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_DeliberateFailSanityCheckTwinNormal,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_DeliberateFailSanityCheckTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_DeliberateFailSanityCheckTwinNormalPtr,
+  );
+
+  static Future<void> dummyFunctionTwinNormal({dynamic hint}) => RustLib
+      .instance.api
+      .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalDummyFunctionTwinNormal(
+          hint: hint);
+
+  Uint8List get deliberateBadFieldA => RustLib.instance.api
+          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetDeliberateBadFieldA(
+        that: this,
+      );
+
+  OpaqueItemTwinNormal get deliberateBadFieldB => RustLib.instance.api
+          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetDeliberateBadFieldB(
+        that: this,
+      );
+
+  List<OpaqueItemTwinNormal> get deliberateBadFieldC => RustLib.instance.api
+          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetDeliberateBadFieldC(
+        that: this,
+      );
+
+  String get goodFieldA => RustLib.instance.api
+          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetGoodFieldA(
+        that: this,
+      );
+
+  int get goodFieldB => RustLib.instance.api
+          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetGoodFieldB(
+        that: this,
+      );
+
+  OpaqueItemTwinNormal get goodFieldC => RustLib.instance.api
+          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetGoodFieldC(
+        that: this,
+      );
+
+  void set deliberateBadFieldA(Uint8List deliberateBadFieldA) => RustLib
+      .instance.api
+      .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetDeliberateBadFieldA(
+          that: this, deliberateBadFieldA: deliberateBadFieldA);
+
+  void set deliberateBadFieldB(OpaqueItemTwinNormal deliberateBadFieldB) => RustLib
+      .instance.api
+      .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetDeliberateBadFieldB(
+          that: this, deliberateBadFieldB: deliberateBadFieldB);
+
+  void set deliberateBadFieldC(
+          List<OpaqueItemTwinNormal> deliberateBadFieldC) =>
+      RustLib.instance.api
+          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetDeliberateBadFieldC(
+              that: this, deliberateBadFieldC: deliberateBadFieldC);
+
+  void set goodFieldA(String goodFieldA) => RustLib.instance.api
+      .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetGoodFieldA(
+          that: this, goodFieldA: goodFieldA);
+
+  void set goodFieldB(int goodFieldB) => RustLib.instance.api
+      .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetGoodFieldB(
+          that: this, goodFieldB: goodFieldB);
+
+  void set goodFieldC(OpaqueItemTwinNormal goodFieldC) => RustLib.instance.api
+      .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetGoodFieldC(
+          that: this, goodFieldC: goodFieldC);
+}
+
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ItemContainerSolutionOneTwinNormal>>
 @sealed
 class ItemContainerSolutionOneTwinNormal extends RustOpaque {
