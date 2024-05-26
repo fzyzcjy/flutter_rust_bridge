@@ -1,4 +1,3 @@
-use crate::codegen::parser::auto_accessor_parser::IrFuncAndSanityCheckInfo;
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::func::{
     IrFunc, IrFuncAccessorMode, IrFuncInput, IrFuncMode, IrFuncOutput, IrFuncOwnerInfo,
@@ -9,14 +8,15 @@ use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
+use crate::codegen::parser::auto_accessor_parser::IrFuncAndSanityCheckInfo;
 use crate::codegen::parser::function_parser::argument::merge_ownership_into_ty;
 use crate::codegen::parser::function_parser::{
     compute_codec_mode_pack, parse_effective_function_name_of_method,
 };
 use crate::codegen::parser::internal_config::ParserInternalConfig;
+use crate::codegen::parser::sanity_checker::auto_accessor_checker;
 use crate::codegen::parser::type_parser::{TypeParser, TypeParserParsingContext};
 use sha1::{Digest, Sha1};
-use crate::codegen::parser::sanity_checker::auto_accessor_checker;
 
 pub(super) fn parse_auto_accessor_of_field(
     config: &ParserInternalConfig,

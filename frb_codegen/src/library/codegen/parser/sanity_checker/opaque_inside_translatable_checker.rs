@@ -28,13 +28,16 @@ fn handle_type(pack: &IrPack, ty: IrType) -> Vec<String> {
         }
         IrType::EnumRef(ty) => {
             let en = ty.get(pack);
-            en.variants.iter().flat_map(|variant| match &variant.kind {
-                IrVariantKind::Value => vec![],
-                IrVariantKind::Struct(st) => handle_struct(
-                    &st,
-                    &format!("{}.{}", ty.ident.0.rust_style(), variant.name.rust_style()),
-                ),
-            }).collect_vec()
+            en.variants
+                .iter()
+                .flat_map(|variant| match &variant.kind {
+                    IrVariantKind::Value => vec![],
+                    IrVariantKind::Struct(st) => handle_struct(
+                        &st,
+                        &format!("{}.{}", ty.ident.0.rust_style(), variant.name.rust_style()),
+                    ),
+                })
+                .collect_vec()
         }
         // TODO also check and hint `Vec<OpaqueType>`, etc
         _ => vec![],

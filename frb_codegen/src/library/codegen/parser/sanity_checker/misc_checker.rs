@@ -1,4 +1,3 @@
-
 use crate::codegen::dumper::Dumper;
 use crate::codegen::parser::file_reader::read_files;
 use crate::codegen::parser::function_extractor::extract_generalized_functions_from_file;
