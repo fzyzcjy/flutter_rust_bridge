@@ -14,6 +14,7 @@ use crate::codegen::parser::function_parser::{
     compute_codec_mode_pack, parse_effective_function_name_of_method,
 };
 use crate::codegen::parser::internal_config::ParserInternalConfig;
+use crate::codegen::parser::sanity_checker::auto_accessor_checker;
 use crate::codegen::parser::type_parser::{TypeParser, TypeParserParsingContext};
 use sha1::{Digest, Sha1};
 
@@ -88,7 +89,7 @@ pub(super) fn parse_auto_accessor_of_field(
 
     Ok(IrFuncAndSanityCheckInfo {
         ir_func,
-        sanity_check_hint: super::sanity_checker::check_field(struct_name, field),
+        sanity_check_hint: auto_accessor_checker::check_field(struct_name, field),
     })
 }
 

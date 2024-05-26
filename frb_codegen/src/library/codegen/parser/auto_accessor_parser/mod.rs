@@ -1,5 +1,4 @@
 mod field;
-mod sanity_checker;
 
 use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::ir::func::{IrFunc, IrFuncAccessorMode};
@@ -9,6 +8,7 @@ use crate::codegen::ir::ty::{IrContext, IrType};
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::parser::misc::extract_src_types_in_paths;
+use crate::codegen::parser::sanity_checker::auto_accessor_checker;
 use crate::codegen::parser::source_graph::modules::Struct;
 use crate::codegen::parser::type_parser::{
     TypeParser, TypeParserParsingContext, TypeParserWithContext,
@@ -36,7 +36,7 @@ pub(crate) fn parse_auto_accessors(
         .flatten()
         .collect_vec();
 
-    sanity_checker::report(
+    auto_accessor_checker::report(
         &infos
             .iter()
             .flat_map(|x| x.sanity_check_hint.clone())
@@ -113,5 +113,5 @@ fn create_parsing_context(
 
 struct IrFuncAndSanityCheckInfo {
     ir_func: IrFunc,
-    sanity_check_hint: Option<sanity_checker::SanityCheckHint>,
+    sanity_check_hint: Option<auto_accessor_checker::SanityCheckHint>,
 }

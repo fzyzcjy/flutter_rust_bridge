@@ -4,7 +4,7 @@ use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 use log::warn;
 
-pub(super) fn check_field(
+pub(crate) fn check_field(
     struct_name: &NamespacedName,
     field: &IrField,
 ) -> Option<SanityCheckHint> {
@@ -13,7 +13,7 @@ pub(super) fn check_field(
     })
 }
 
-pub(super) fn report(hints: &[SanityCheckHint]) {
+pub(crate) fn report(hints: &[SanityCheckHint]) {
     if hints.is_empty() {
         return;
     }
@@ -27,7 +27,7 @@ pub(super) fn report(hints: &[SanityCheckHint]) {
 }
 
 #[derive(Clone)]
-pub(super) struct SanityCheckHint {
+pub(crate) struct SanityCheckHint {
     name: String,
 }
 
