@@ -1,5 +1,16 @@
 # Changelog
 
+## 2.0.0-dev.36
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Automatically generate getters and setters for public fields of opaque types #1975
+* Support Dart setters #1972
+* Support i128 and u128 #1964
+* Improve RustAutoOpaque's API and codegen handling #1970
+* Fix when users do not have explicit dependency on anyhow #1967
+* Hint users when using opaque types inside non opaque structs #1978
+* Hint users when using getters of opaque types #1976
+
 ## 2.0.0-dev.35
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
