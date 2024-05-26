@@ -33,7 +33,7 @@ fn handle_type(pack: &IrPack, ty: IrType) -> Vec<String> {
                 .flat_map(|variant| match &variant.kind {
                     IrVariantKind::Value => vec![],
                     IrVariantKind::Struct(st) => handle_struct(
-                        &st,
+                        st,
                         &format!("{}.{}", ty.ident.0.rust_style(), variant.name.rust_style()),
                     ),
                 })
