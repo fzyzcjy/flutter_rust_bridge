@@ -59,7 +59,7 @@ fn generate_api_method(func: &IrFunc, context: ApiDartGeneratorContext) -> Strin
         if_then_some!(let IrFuncOwnerInfo::Method(info) = &func.owner , info).unwrap();
     let default_constructor_mode = func.default_constructor_mode();
 
-    let skip_names = compute_skip_names(func, method_info);
+    let skip_names = compute_skip_names(method_info);
     let params = (api_dart_func.func_params.iter())
         .filter(|param| !skip_names.contains(&&param.name_str[..]))
         .cloned()
@@ -78,14 +78,14 @@ fn generate_api_method(func: &IrFunc, context: ApiDartGeneratorContext) -> Strin
     format!("{comments}{signature}=>{implementation};\n\n")
 }
 
-fn compute_skip_names(func: &IrFunc, method_info: &IrFuncOwnerInfoMethod) -> Vec<&'static str> {
+fn compute_skip_names(method_info: &IrFuncOwnerInfoMethod) -> Vec<&'static str> {
     let mut ans = vec![];
     if method_info.mode != IrFuncOwnerInfoMethodMode::Static {
         ans.push("that");
     }
-    if func.accessor.is_some() {
-        ans.push("hint");
-    }
+    // if func.accessor.is_some() {
+    //     ans.push("hint");
+    // }
     ans
 }
 

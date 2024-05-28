@@ -131,7 +131,7 @@ fn generate_params(
     dart_enums_style: bool,
     return_stream: &Option<ReturnStreamInfo>,
 ) -> Vec<ApiDartGeneratedFunctionParam> {
-    let mut params = (func.inputs.iter())
+    let params = (func.inputs.iter())
         .filter(|field| Some(&field.inner.name) != return_stream.as_ref().map(|s| &s.field.name))
         .map(|input| {
             let type_str = ApiDartGenerator::new(input.inner.ty.clone(), context).dart_api_type();
@@ -145,25 +145,13 @@ fn generate_params(
             }
         })
         .collect_vec();
-    params.push(ApiDartGeneratedFunctionParam {
-        type_str: "dynamic".to_string(),
-        name_str: "hint".to_string(),
-        is_required: false,
-        default_value: "".to_owned(),
-    });
+    // params.push(ApiDartGeneratedFunctionParam {
+    //     full: "dynamic hint".to_string(),
+    //     type_str: "dynamic".to_string(),
+    //     name_str: "hint".to_string(),
+    // });
 
     params
-}
-
-pub(crate) fn compute_params_str(
-    params: &[ApiDartGeneratedFunctionParam],
-    mode: IrFuncArgMode,
-) -> String {
-    let mut params_str = params.iter().map(|x| x.full(mode)).join(", ");
-    if !params_str.is_empty() && mode == IrFuncArgMode::Named {
-        params_str = format!("{{{params_str}}}");
-    }
-    params_str
 }
 
 fn generate_func_impl(
@@ -179,7 +167,7 @@ fn generate_func_impl(
             })
             .map(|input| input.inner.name.dart_style()))
         .collect_vec(),
-        vec!["hint".to_owned()],
+        // vec!["hint".to_owned()],
     ]
     .concat();
     let param_forwards = param_names

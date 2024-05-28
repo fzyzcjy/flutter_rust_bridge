@@ -53,7 +53,6 @@ pub(crate) fn generate_api_impl_normal_function(
             constMeta: {const_meta_field_name},
             argValues: [{arg_values}],
             apiImpl: this,
-            hint: hint,
         ))",
     );
     let function_implementation_body = if let Some(return_stream) = &api_dart_func.return_stream {
