@@ -81,7 +81,7 @@ pub(crate) fn parse(
         .into_iter()
         .flatten()
         .collect_vec();
-    let (src_fns_interest, src_fns_skipped) = (src_fns_all.into_iter())
+    let (src_fns_interest, src_fns_skipped): (Vec<_>, Vec<_>) = (src_fns_all.into_iter())
         .partition(|item| matches!(item.generalized_item_fn.vis(), Visibility::Public(_)));
 
     let src_structs = crate_map.root_module().collect_structs();
@@ -103,7 +103,7 @@ pub(crate) fn parse(
         dart_code_of_type,
         existing_handler: existing_handlers.first().cloned(),
         unused_types: vec![],
-        skipped_functions: compute_skipped_functions(&src_fns_skipped, &config.rust_crate_dir),
+        skipped_functions: compute_skipped_functions(&src_fns_skipped, &config.rust_crate_dir)?,
     };
 
     ans.unused_types = get_unused_types(
@@ -184,16 +184,16 @@ fn parse_existing_handlers(
 fn compute_skipped_functions(
     src_fns_skipped: &[PathAndItemFn],
     rust_crate_dir: &Path,
-) -> Vec<NamespacedName> {
+) -> anyhow::Result<Vec<NamespacedName>> {
     src_fns_skipped
         .iter()
         .map(|x| {
-            NamespacedName::new(
-                Namespace::new_from_rust_crate_path(&x.path, rust_crate_dir),
+            Ok(NamespacedName::new(
+                Namespace::new_from_rust_crate_path(&x.path, rust_crate_dir)?,
                 x.generalized_item_fn.sig().ident.to_string(),
-            )
+            ))
         })
-        .collect_vec()
+        .collect()
 }
 
 #[cfg(test)]

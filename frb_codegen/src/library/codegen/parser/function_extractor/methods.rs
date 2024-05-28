@@ -1,5 +1,5 @@
 use crate::codegen::parser::function_extractor::structs::GeneralizedItemFn;
-use syn::{File, ImplItem, Item, Visibility};
+use syn::{File, ImplItem, Item};
 
 pub(super) fn extract_methods_from_file(file: &File) -> anyhow::Result<Vec<GeneralizedItemFn>> {
     let mut src_fns = Vec::new();

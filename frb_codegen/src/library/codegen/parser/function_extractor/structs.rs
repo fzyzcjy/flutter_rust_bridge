@@ -41,10 +41,10 @@ impl GeneralizedItemFn {
         }
     }
 
-    pub(crate) fn vis(&self) -> Visibility {
+    pub(crate) fn vis(&self) -> &Visibility {
         match self {
-            GeneralizedItemFn::Function { item_fn } => item_fn.vis,
-            GeneralizedItemFn::Method { impl_item_fn, .. } => impl_item_fn.vis,
+            GeneralizedItemFn::Function { item_fn } => &item_fn.vis,
+            GeneralizedItemFn::Method { impl_item_fn, .. } => &impl_item_fn.vis,
         }
     }
 }
