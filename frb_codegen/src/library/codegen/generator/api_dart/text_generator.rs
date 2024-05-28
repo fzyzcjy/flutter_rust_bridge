@@ -106,7 +106,7 @@ fn generate_end_api_text(
         "".to_owned()
     } else {
         format!(
-            "The functions {} are not `pub`, thus are ignored.\n",
+            "// The functions {} are not `pub`, thus are ignored.\n",
             (item.skipped_functions.iter().map(|x| format!("`{x}`"))).join(", "),
         )
     };
