@@ -10,8 +10,9 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 }
 
 #[frb(dart_code = "
-    int a = 1;
-    int b = 2;
+    int testDartCode() {
+        return 3;
+    }
 ")]
 pub struct Hello {
     a: i32,

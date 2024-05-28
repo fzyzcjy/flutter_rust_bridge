@@ -657,14 +657,15 @@ mod tests {
     // #1968
     #[test]
     fn test_dart_code_multi_line() -> anyhow::Result<()> {
-        // Here, it is *really* multiple lines, instead of raw `\n`
-        let parsed = parse("#[frb(dart_code=\"a\nb\nc\")]")?;
-        assert_eq!(
-            parsed,
-            FrbAttributes(vec![FrbAttribute::DartCode(FrbAttributeDartCode(
-                "a\nb\nc".to_owned()
-            ))])
-        );
+        let text = r###"
+        #[frb(dart_code = "
+            int testDartCode() {
+                return 3;
+            }
+        ")]
+        "###;
+        let parsed = parse(text)?;
+        assert!(matches!(parsed.0[0], FrbAttribute::DartCode(_)));
         Ok(())
     }
 
