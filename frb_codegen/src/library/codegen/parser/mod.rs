@@ -72,13 +72,14 @@ pub(crate) fn parse(
     dumper.dump(SourceGraph, "source_graph.json", &crate_map)?;
     drop(pb);
 
-    let src_fns = file_data_arr
+    let src_fns_all = file_data_arr
         .iter()
         .map(|file| extract_generalized_functions_from_file(&file.ast, &file.path))
         .collect::<anyhow::Result<Vec<_>>>()?
         .into_iter()
         .flatten()
         .collect_vec();
+    let (src_fns_interest, src_fns_skipped) = TODO;
 
     let src_structs = crate_map.root_module().collect_structs();
     let src_enums = crate_map.root_module().collect_enums();
@@ -86,7 +87,7 @@ pub(crate) fn parse(
 
     let mut type_parser = TypeParser::new(src_structs.clone(), src_enums.clone(), src_types);
 
-    let ir_funcs = parse_ir_funcs(config, &src_fns, &mut type_parser, &src_structs)?;
+    let ir_funcs = parse_ir_funcs(config, &src_fns_interest, &mut type_parser, &src_structs)?;
 
     let existing_handlers = parse_existing_handlers(config, &file_data_arr)?;
 
