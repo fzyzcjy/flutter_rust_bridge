@@ -169,8 +169,12 @@ Future<void> _executeWasmPack(BuildWebArgs args,
 }
 
 Map<String, String> _environmentVariable(String key, String value) {
-  TODO;
-  return {key: value};
+  final overrideValue = Platform.environment[key];
+  if (overrideValue != null) {
+    print(
+        'NOTE: Use environment variable value=`$overrideValue` instead of default `$value` for key=`$key`');
+  }
+  return {key: overrideValue ?? value};
 }
 
 Future<void> _executeWasmBindgen(BuildWebArgs args,
