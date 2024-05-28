@@ -67,15 +67,14 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  Future<void> crateApiMinimalF({required int a, required int b, dynamic hint});
+  Future<void> crateApiMinimalF(int a, int b, dynamic hint);
 
   Future<void> crateApiMinimalInitApp({dynamic hint});
 
   Future<int> crateApiMinimalMinimalAdder(
       {required int a, required int b, dynamic hint});
 
-  Future<void> crateApiMinimalSG(
-      {required S that, required int c, dynamic hint});
+  Future<void> crateApiMinimalSG(S that, int c, dynamic hint);
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -87,8 +86,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
-  Future<void> crateApiMinimalF(
-      {required int a, required int b, dynamic hint}) {
+  Future<void> crateApiMinimalF(int a, int b, dynamic hint) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -166,8 +164,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<void> crateApiMinimalSG(
-      {required S that, required int c, dynamic hint}) {
+  Future<void> crateApiMinimalSG(S that, int c, dynamic hint) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
