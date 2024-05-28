@@ -114,7 +114,7 @@ fn generate_params(
     dart_enums_style: bool,
     return_stream: &Option<ReturnStreamInfo>,
 ) -> (Vec<ApiDartGeneratedFunctionParam>, String) {
-    let mut params = (func.inputs.iter())
+    let params = (func.inputs.iter())
         .filter(|field| Some(&field.inner.name) != return_stream.as_ref().map(|s| &s.field.name))
         .map(|input| {
             let required = generate_field_required_modifier(&input.inner);
