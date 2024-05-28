@@ -25,11 +25,14 @@ Future<SumWithTwinRustAsyncArray3> getSumArrayTwinRustAsync(
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StaticGetterOnlyTwinRustAsync>>
 @sealed
 class StaticGetterOnlyTwinRustAsync extends RustOpaque {
-  StaticGetterOnlyTwinRustAsync.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
+  // Not to be used by end users
+  StaticGetterOnlyTwinRustAsync.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
-  StaticGetterOnlyTwinRustAsync.sseDecode(BigInt ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+  // Not to be used by end users
+  StaticGetterOnlyTwinRustAsync.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib.instance.api

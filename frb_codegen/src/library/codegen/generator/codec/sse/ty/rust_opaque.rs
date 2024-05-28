@@ -34,7 +34,7 @@ pub(super) fn generate_generalized_rust_opaque_decode(
     match lang {
         Lang::DartLang(_) => {
             format!(
-                "return {}.sseDecode({}, {});",
+                "return {}.frbInternalSseDecode({}, {});",
                 ApiDartGenerator::new(ir, context.as_api_dart_context()).dart_api_type(),
                 lang.call_decode(&IrTypeRustOpaque::DELEGATE_TYPE),
                 lang.call_decode(&EXTERNAL_SIZE_TYPE),
@@ -72,7 +72,7 @@ pub(super) fn generate_generalized_rust_opaque_encode(lang: &Lang, needs_move: &
         Lang::DartLang(_) => simple_delegate_encode(
             lang,
             &IrTypeRustOpaque::DELEGATE_TYPE,
-            &format!("self.sseEncode(move: {needs_move})"),
+            &format!("self.frbInternalSseEncode(move: {needs_move})"),
         ),
         Lang::RustLang(_) => {
             format!(
