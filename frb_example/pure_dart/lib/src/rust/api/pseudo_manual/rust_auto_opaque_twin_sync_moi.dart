@@ -11,6 +11,7 @@ part 'rust_auto_opaque_twin_sync_moi.freezed.dart';
 
 // The type `HelloOneStructTwinSyncMoi` is not used by any `pub` functions, thus it is ignored.
 // The type `HelloTwoEnumTwinSyncMoi` is not used by any `pub` functions, thus it is ignored.
+// The functions `f`, `func_hello`, `func_hello` are not `pub`, thus are ignored.
 
 void rustAutoOpaqueArgOwnTwinSyncMoi(
         {required NonCloneSimpleTwinSyncMoi arg,

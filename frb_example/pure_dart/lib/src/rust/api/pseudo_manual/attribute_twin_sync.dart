@@ -10,6 +10,7 @@ import 'package:meta/meta.dart' as meta;
 part 'attribute_twin_sync.freezed.dart';
 
 // The type `IgnoredStructTwinSync` is not used by any `pub` functions, thus it is ignored.
+// The functions `fmt`, `clone` are not `pub`, thus are ignored.
 
 void handleCustomizedStructTwinSync(
         {required CustomizedTwinSync val, dynamic hint}) =>

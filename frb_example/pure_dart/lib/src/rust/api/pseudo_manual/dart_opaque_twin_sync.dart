@@ -9,6 +9,8 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'dart_opaque_twin_sync.freezed.dart';
 
+// The functions `deref`, `initialize` are not `pub`, thus are ignored.
+
 String asyncAcceptDartOpaqueTwinSync({required Object opaque, dynamic hint}) =>
     RustLib.instance.api
         .crateApiPseudoManualDartOpaqueTwinSyncAsyncAcceptDartOpaqueTwinSync(

@@ -9,6 +9,7 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'event_listener_twin_sse.freezed.dart';
 
 // The type `EVENTS` is not used by any `pub` functions, thus it is ignored.
+// The functions `deref`, `initialize`, `clone` are not `pub`, thus are ignored.
 
 Future<Stream<EventTwinSse>> registerEventListenerTwinSse({dynamic hint}) =>
     RustLib.instance.api

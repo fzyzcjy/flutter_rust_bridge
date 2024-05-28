@@ -11,6 +11,7 @@ part 'rust_auto_opaque_twin_sse_moi.freezed.dart';
 
 // The type `HelloOneStructTwinSseMoi` is not used by any `pub` functions, thus it is ignored.
 // The type `HelloTwoEnumTwinSseMoi` is not used by any `pub` functions, thus it is ignored.
+// The functions `f`, `func_hello`, `func_hello` are not `pub`, thus are ignored.
 
 Future<void> rustAutoOpaqueArgOwnTwinSseMoi(
         {required NonCloneSimpleTwinSseMoi arg,
