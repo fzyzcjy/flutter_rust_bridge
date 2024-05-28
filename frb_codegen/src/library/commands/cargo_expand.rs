@@ -220,4 +220,28 @@ pub(self) mod another {
         let extracted = extract_module(src, Some(String::from("another"))).unwrap();
         assert_eq!(String::from("    // 12345"), extracted);
     }
+
+    // #1968
+    #[test]
+    pub fn test_extract_module_with_brackets() {
+        let src = r###"pub mod api {
+    pub mod minimal {
+        use flutter_rust_bridge::frb;
+        #[frb(dart_code = "
+    int testDartCode() {
+        return 3;
+    }
+")]
+        pub struct Hello;
+    }
+}"###;
+        let extracted = extract_module(src, Some(String::from("api::minimal"))).unwrap();
+        assert_eq!(String::from(r###"use flutter_rust_bridge::frb;
+        #[frb(dart_code = "
+    int testDartCode() {
+        return 3;
+    }
+")]
+        pub struct Hello;"###), extracted);
+    }
 }
