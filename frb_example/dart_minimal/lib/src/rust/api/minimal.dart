@@ -6,11 +6,11 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<int> minimalAdder({required int a, required int b, dynamic hint}) =>
-    RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b, hint: hint);
+Future<int> minimalAdder({required int a, required int b}) =>
+    RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
 
-Future<void> f(int a, int b, dynamic hint) =>
-    RustLib.instance.api.crateApiMinimalF(a: a, b: b, hint: hint);
+Future<void> f(int a, int b) =>
+    RustLib.instance.api.crateApiMinimalF(a: a, b: b);
 
 class S {
   final int a;
@@ -19,8 +19,8 @@ class S {
     required this.a,
   });
 
-  Future<void> g(int c, dynamic hint) =>
-      RustLib.instance.api.crateApiMinimalSG(that: this, c: c, hint: hint);
+  Future<void> g(int c) =>
+      RustLib.instance.api.crateApiMinimalSG(that: this, c: c);
 
   @override
   int get hashCode => a.hashCode;
