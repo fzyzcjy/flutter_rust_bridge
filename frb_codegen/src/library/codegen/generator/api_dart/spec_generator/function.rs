@@ -154,6 +154,17 @@ fn generate_params(
     params
 }
 
+pub(crate) fn compute_params_str(
+    params: &[ApiDartGeneratedFunctionParam],
+    mode: IrFuncArgMode,
+) -> String {
+    let mut params_str = params.iter().map(|x| x.full(mode)).join(", ");
+    if !params_str.is_empty() && mode == IrFuncArgMode::Named {
+        params_str = format!("{{{params_str}}}");
+    }
+    params_str
+}
+
 fn generate_func_impl(
     func: &IrFunc,
     dart_entrypoint_class_name: &str,
