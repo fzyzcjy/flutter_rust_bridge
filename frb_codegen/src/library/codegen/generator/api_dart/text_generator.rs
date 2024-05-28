@@ -103,11 +103,11 @@ fn generate_end_api_text(
         .join("");
 
     let skipped_functions = if item.skipped_functions.is_empty() {
-        ""
+        "".to_owned()
     } else {
         format!(
             "The functions {} are not `pub`, thus are ignored.\n",
-            (item.skipped_functions.iter().map(|x| format!("`{}`"))).join(", "),
+            (item.skipped_functions.iter().map(|x| format!("`{x}`"))).join(", "),
         )
     };
 
