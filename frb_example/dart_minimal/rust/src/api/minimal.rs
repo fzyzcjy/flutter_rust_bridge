@@ -14,18 +14,9 @@ pub struct MyOpaque;
 
 impl MyOpaque {
     #[frb(sync)]
-    pub fn new() -> Self {
+    fn new() -> Self {
         Self
     }
-}
 
-pub struct MyNonOpaque {
-    a: i32,
-}
-
-impl MyNonOpaque {
-    #[frb(sync)]
-    pub fn new() -> Self {
-        Self { a: 100 }
-    }
+    fn another() {}
 }

@@ -6,45 +6,7 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+// The type `MyOpaque` is not used by any `pub` functions, thus it is ignored.
+
 Future<int> minimalAdder({required int a, required int b, dynamic hint}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b, hint: hint);
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyOpaque>>
-@sealed
-class MyOpaque extends RustOpaque {
-  MyOpaque.dcoDecode(List<dynamic> wire) : super.dcoDecode(wire, _kStaticData);
-
-  MyOpaque.sseDecode(BigInt ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_MyOpaque,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_MyOpaque,
-    rustArcDecrementStrongCountPtr:
-        RustLib.instance.api.rust_arc_decrement_strong_count_MyOpaquePtr,
-  );
-
-  factory MyOpaque({dynamic hint}) =>
-      RustLib.instance.api.crateApiMinimalMyOpaqueNew(hint: hint);
-}
-
-class MyNonOpaque {
-  final int a;
-
-  const MyNonOpaque.raw({
-    required this.a,
-  });
-
-  factory MyNonOpaque({dynamic hint}) =>
-      RustLib.instance.api.crateApiMinimalMyNonOpaqueNew(hint: hint);
-
-  @override
-  int get hashCode => a.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is MyNonOpaque && runtimeType == other.runtimeType && a == other.a;
-}
