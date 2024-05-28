@@ -46,14 +46,13 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
                     };
                 }
                 let codegen_timestamp = "let flutter_rust_bridge::for_generated::Timestamp { s, ns } = flutter_rust_bridge::for_generated::decode_timestamp(self);";
-                let codegen_naive_date =
-                    "chrono::DateTime::from_timestamp(s, ns).expect(\"invalid or out-of-range datetime\").naive_utc().date()";
                 let codegen_naive_date_time =
                     "chrono::DateTime::from_timestamp(s, ns).expect(\"invalid or out-of-range datetime\").naive_utc()";
+                let codegen_naive_date = format!("{codegen_naive_date_time}.date()");
                 let codegen_utc = format!("chrono::DateTime::<chrono::Utc>::from_naive_utc_and_offset({codegen_naive_date_time}, chrono::Utc)");
                 let codegen_local = format!("chrono::DateTime::<chrono::Local>::from({codegen_utc})");
                 let codegen_conversion = match ir {
-                    IrTypeDelegateTime::NaiveDate => codegen_naive_date,
+                    IrTypeDelegateTime::NaiveDate => codegen_naive_date.as_str(),
                     IrTypeDelegateTime::NaiveDateTime => codegen_naive_date_time,
                     IrTypeDelegateTime::Utc => codegen_utc.as_str(),
                     IrTypeDelegateTime::Local => codegen_local.as_str(),
