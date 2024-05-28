@@ -34,8 +34,10 @@ pub(crate) struct ApiDartGeneratedFunction {
 
 #[derive(Debug, Serialize)]
 pub(crate) struct ApiDartGeneratedFunctionParam {
+    pub(crate) is_required: bool,
     pub(crate) type_str: String,
     pub(crate) name_str: String,
+    pub(crate) default_value: String,
 }
 
 pub(crate) fn generate(
@@ -116,21 +118,22 @@ fn generate_params(
     let mut params = (func.inputs.iter())
         .filter(|field| Some(&field.inner.name) != return_stream.as_ref().map(|s| &s.field.name))
         .map(|input| {
-            let required = generate_field_required_modifier(&input.inner);
-            let r#default = generate_field_default(&input.inner, false, dart_enums_style);
             let type_str = ApiDartGenerator::new(input.inner.ty.clone(), context).dart_api_type();
             let name_str = input.inner.name.dart_style();
+            let default_value = generate_field_default(&input.inner, false, dart_enums_style);
             ApiDartGeneratedFunctionParam {
-                full: format!("{required}{type_str} {name_str} {default}"),
+                is_required: !input.inner.is_optional(),
                 type_str,
                 name_str,
+                default_value,
             }
         })
         .collect_vec();
     params.push(ApiDartGeneratedFunctionParam {
-        full: "dynamic hint".to_string(),
         type_str: "dynamic".to_string(),
         name_str: "hint".to_string(),
+        is_required: false,
+        default_value: "".to_owned(),
     });
 
     let mut params_str = params.iter().map(|x| &x.full).join(", ");
