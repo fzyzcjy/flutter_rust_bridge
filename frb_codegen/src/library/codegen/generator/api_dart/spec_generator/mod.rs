@@ -130,6 +130,11 @@ fn generate_item(
         .map(|t| t.name.to_owned())
         .collect_vec();
 
+    let skipped_functions = (context.ir_pack.skipped_functions.iter())
+        .filter(|t| &t.namespace == namespace)
+        .map(|t| t.name.to_owned())
+        .collect_vec();
+
     let needs_freezed = classes.iter().any(|class| class.needs_freezed);
 
     Ok(ApiDartOutputSpecItem {
@@ -138,6 +143,7 @@ fn generate_item(
         imports,
         preamble: context.config.dart_preamble.clone(),
         unused_types,
+        skipped_functions,
         needs_freezed,
     })
 }
