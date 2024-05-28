@@ -1,6 +1,7 @@
 use crate::codegen::dumper::Dumper;
 use crate::codegen::parser::reader::CachedRustReader;
 use std::path::{Path, PathBuf};
+use anyhow::Context;
 use syn::File;
 
 pub(crate) struct FileData {
@@ -27,7 +28,8 @@ pub(crate) fn read_files(
     contents
         .into_iter()
         .map(|(rust_input_path, content)| {
-            let ast = syn::parse_file(&content)?;
+            let ast = syn::parse_file(&content)
+                .with_context(|| format!("content={content}"))?;
             Ok(FileData {
                 path: rust_input_path,
                 content,
