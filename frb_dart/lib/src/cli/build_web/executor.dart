@@ -160,17 +160,10 @@ Future<void> _executeWasmPack(BuildWebArgs args,
     // if (config.cliOpts.noDefaultFeatures) '--no-default-features',
     // if (config.cliOpts.features != null) '--features=${config.cliOpts.features}'
   ], env: {
-    ..._environmentVariable('RUSTUP_TOOLCHAIN', 'nightly'),
-    ..._environmentVariable('RUSTFLAGS',
-        '-C target-feature=+atomics,+bulk-memory,+mutable-globals'),
-    if (stdout.supportsAnsiEscapes)
-      ..._environmentVariable('CARGO_TERM_COLOR', 'always'),
+    'RUSTUP_TOOLCHAIN': 'nightly',
+    'RUSTFLAGS': '-C target-feature=+atomics,+bulk-memory,+mutable-globals',
+    if (stdout.supportsAnsiEscapes) 'CARGO_TERM_COLOR': 'always',
   });
-}
-
-Map<String, String> _environmentVariable(String key, String value) {
-  TODO;
-  return {key: value};
 }
 
 Future<void> _executeWasmBindgen(BuildWebArgs args,
