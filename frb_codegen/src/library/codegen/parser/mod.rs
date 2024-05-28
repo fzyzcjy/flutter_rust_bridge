@@ -99,6 +99,7 @@ pub(crate) fn parse(
         dart_code_of_type,
         existing_handler: existing_handlers.first().cloned(),
         unused_types: vec![],
+        skipped_functions: vec![],
     };
 
     ans.unused_types = get_unused_types(
@@ -108,6 +109,7 @@ pub(crate) fn parse(
         &config.rust_input_path_pack.rust_input_paths,
         &config.rust_crate_dir,
     )?;
+    ans.skipped_functions = get_skipped_functions()?;
 
     check_opaque_inside_translatable(&ans);
 
