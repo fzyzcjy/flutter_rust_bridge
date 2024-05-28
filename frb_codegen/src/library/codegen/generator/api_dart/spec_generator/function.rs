@@ -62,12 +62,13 @@ pub(crate) fn generate(
     context: ApiDartGeneratorContext,
 ) -> anyhow::Result<ApiDartGeneratedFunction> {
     let return_stream = compute_return_stream(func);
-    let (func_params, func_params_str) = generate_params(
+    let func_params = generate_params(
         func,
         context,
         context.config.dart_enums_style,
         &return_stream,
     );
+    let func_params_str = compute_params_str(&func_params, func.arg_mode);
     let func_return_type = generate_function_dart_return_type(
         func,
         &ApiDartGenerator::new(func.output.normal.clone(), context).dart_api_type(),
@@ -131,7 +132,7 @@ fn generate_params(
     context: ApiDartGeneratorContext,
     dart_enums_style: bool,
     return_stream: &Option<ReturnStreamInfo>,
-) -> (Vec<ApiDartGeneratedFunctionParam>, String) {
+) -> Vec<ApiDartGeneratedFunctionParam> {
     let mut params = (func.inputs.iter())
         .filter(|field| Some(&field.inner.name) != return_stream.as_ref().map(|s| &s.field.name))
         .map(|input| {
@@ -153,11 +154,18 @@ fn generate_params(
         default_value: "".to_owned(),
     });
 
-    let mut params_str = params.iter().map(|x| x.full(func.arg_mode)).join(", ");
-    if !params_str.is_empty() && func.arg_mode == IrFuncArgMode::Named {
+    params
+}
+
+pub(crate) fn compute_params_str(
+    params: &[ApiDartGeneratedFunctionParam],
+    mode: IrFuncArgMode,
+) -> String {
+    let mut params_str = params.iter().map(|x| x.full(mode)).join(", ");
+    if !params_str.is_empty() && mode == IrFuncArgMode::Named {
         params_str = format!("{{{params_str}}}");
     }
-    (params, params_str)
+    params_str
 }
 
 fn generate_func_impl(
