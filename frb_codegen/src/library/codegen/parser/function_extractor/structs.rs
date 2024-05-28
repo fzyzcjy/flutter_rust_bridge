@@ -1,7 +1,7 @@
 use proc_macro2::Span;
 use std::path::PathBuf;
 use syn::spanned::Spanned;
-use syn::{Attribute, ImplItemFn, ItemFn, ItemImpl, Signature};
+use syn::{Attribute, ImplItemFn, ItemFn, ItemImpl, Signature, Visibility};
 
 pub(crate) struct PathAndItemFn {
     pub(crate) path: PathBuf,
@@ -38,6 +38,13 @@ impl GeneralizedItemFn {
         match self {
             GeneralizedItemFn::Function { item_fn } => item_fn.span(),
             GeneralizedItemFn::Method { impl_item_fn, .. } => impl_item_fn.span(),
+        }
+    }
+
+    pub(crate) fn vis(&self) -> Visibility {
+        match self {
+            GeneralizedItemFn::Function { item_fn } => item_fn.vis,
+            GeneralizedItemFn::Method { impl_item_fn, .. } => impl_item_fn.vis,
         }
     }
 }
