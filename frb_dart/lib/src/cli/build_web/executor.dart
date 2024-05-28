@@ -27,13 +27,13 @@ class BuildWebArgs {
   final List<String> wasmBindgenArgs;
 
   /// {@macro flutter_rust_bridge.cli}
-  final String? dartCompileJsEntrypoint;
-
-  /// {@macro flutter_rust_bridge.cli}
   final String? wasmPackRustupToolchain;
 
   /// {@macro flutter_rust_bridge.cli}
   final String? wasmPackRustflags;
+
+  /// {@macro flutter_rust_bridge.cli}
+  final String? dartCompileJsEntrypoint;
 
   /// {@macro flutter_rust_bridge.cli}
   const BuildWebArgs({
@@ -43,9 +43,9 @@ class BuildWebArgs {
     required this.rustCrateDir,
     required this.cargoBuildArgs,
     required this.wasmBindgenArgs,
-    required this.dartCompileJsEntrypoint,
     required this.wasmPackRustupToolchain,
     required this.wasmPackRustflags,
+    required this.dartCompileJsEntrypoint,
   });
 }
 
