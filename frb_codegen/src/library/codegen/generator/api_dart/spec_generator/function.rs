@@ -1,9 +1,7 @@
 use crate::codegen::generator::api_dart::spec_generator::base::{
     ApiDartGenerator, ApiDartGeneratorContext,
 };
-use crate::codegen::generator::api_dart::spec_generator::class::field::{
-    generate_field_default, generate_field_required_modifier,
-};
+use crate::codegen::generator::api_dart::spec_generator::class::field::generate_field_default;
 use crate::codegen::generator::api_dart::spec_generator::misc::{
     generate_dart_comments, generate_imports_which_types_and_funcs_use,
 };
@@ -38,6 +36,21 @@ pub(crate) struct ApiDartGeneratedFunctionParam {
     pub(crate) type_str: String,
     pub(crate) name_str: String,
     pub(crate) default_value: String,
+}
+
+impl ApiDartGeneratedFunctionParam {
+    pub(crate) fn full(&self) -> String {
+        let ApiDartGeneratedFunctionParam {
+            is_required,
+            type_str,
+            name_str,
+            default_value,
+        } = &self;
+        format!(
+            "{required}{type_str} {name_str} {default_value}",
+            required = if *is_required { "required " } else { "" }
+        )
+    }
 }
 
 pub(crate) fn generate(
@@ -136,7 +149,7 @@ fn generate_params(
         default_value: "".to_owned(),
     });
 
-    let mut params_str = params.iter().map(|x| &x.full).join(", ");
+    let mut params_str = params.iter().map(|x| x.full()).join(", ");
     if !params_str.is_empty() {
         params_str = format!("{{{params_str}}}");
     }
