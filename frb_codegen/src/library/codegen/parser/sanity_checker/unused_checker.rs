@@ -71,10 +71,6 @@ fn get_potential_struct_or_enum_names_from_syn_type(ty: &Type) -> anyhow::Result
     })
 }
 
-pub(crate) fn get_skipped_functions() -> anyhow::Result<Vec<NamespacedName>> {
-    return TODO;
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
