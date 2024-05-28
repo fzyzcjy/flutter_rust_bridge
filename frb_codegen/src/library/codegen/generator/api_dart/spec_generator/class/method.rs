@@ -132,7 +132,10 @@ fn generate_signature(
             "set",
         ),
         None => (
-            format!("({{ {} }})", func_params.iter().map(|x| x.full()).join(",")),
+            format!(
+                "({{ {} }})",
+                func_params.iter().map(|x| x.full(func.arg_mode)).join(",")
+            ),
             "",
         ),
     };
