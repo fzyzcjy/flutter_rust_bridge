@@ -1,6 +1,6 @@
 use crate::codegen::generator::api_dart;
 use crate::codegen::generator::api_dart::spec_generator::function::{
-    ApiDartGeneratedFunction, ApiDartGeneratedFunctionParam,
+    compute_params_str, ApiDartGeneratedFunction, ApiDartGeneratedFunctionParam,
 };
 use crate::codegen::generator::api_dart::spec_generator::misc::generate_dart_comments;
 use crate::codegen::ir::func::{
@@ -132,10 +132,7 @@ fn generate_signature(
             "set",
         ),
         None => (
-            format!(
-                "({{ {} }})",
-                func_params.iter().map(|x| x.full(func.arg_mode)).join(",")
-            ),
+            format!("({})", compute_params_str(func_params, func.arg_mode)),
             "",
         ),
     };
