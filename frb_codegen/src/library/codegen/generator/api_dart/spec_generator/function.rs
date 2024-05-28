@@ -6,7 +6,7 @@ use crate::codegen::generator::api_dart::spec_generator::misc::{
     generate_dart_comments, generate_imports_which_types_and_funcs_use,
 };
 use crate::codegen::ir::field::IrField;
-use crate::codegen::ir::func::{IrFunc, IrFuncMode};
+use crate::codegen::ir::func::{IrFunc, IrFuncArgMode, IrFuncMode};
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegateStreamSink};
 use crate::codegen::ir::ty::IrType;
@@ -39,17 +39,21 @@ pub(crate) struct ApiDartGeneratedFunctionParam {
 }
 
 impl ApiDartGeneratedFunctionParam {
-    pub(crate) fn full(&self) -> String {
+    pub(crate) fn full(&self, arg_mode: IrFuncArgMode) -> String {
         let ApiDartGeneratedFunctionParam {
             is_required,
             type_str,
             name_str,
             default_value,
         } = &self;
-        format!(
-            "{required}{type_str} {name_str} {default_value}",
-            required = if *is_required { "required " } else { "" }
-        )
+
+        match arg_mode {
+            IrFuncArgMode::Positional => format!("{type_str} {name_str}"),
+            IrFuncArgMode::Named => format!(
+                "{required}{type_str} {name_str} {default_value}",
+                required = if *is_required { "required " } else { "" }
+            ),
+        }
     }
 }
 
@@ -149,8 +153,8 @@ fn generate_params(
         default_value: "".to_owned(),
     });
 
-    let mut params_str = params.iter().map(|x| x.full()).join(", ");
-    if !params_str.is_empty() {
+    let mut params_str = params.iter().map(|x| x.full(func.arg_mode)).join(", ");
+    if !params_str.is_empty() && func.arg_mode == IrFuncArgMode::Named {
         params_str = format!("{{{params_str}}}");
     }
     (params, params_str)
