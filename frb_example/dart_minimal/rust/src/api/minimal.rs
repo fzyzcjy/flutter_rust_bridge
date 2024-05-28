@@ -13,7 +13,7 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 pub fn f(a: i32, b: i32) {}
 
 pub struct S {
-    a: i32,
+    pub a: i32,
 }
 
 impl S {
