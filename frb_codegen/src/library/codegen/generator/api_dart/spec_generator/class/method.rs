@@ -4,7 +4,7 @@ use crate::codegen::generator::api_dart::spec_generator::function::{
 };
 use crate::codegen::generator::api_dart::spec_generator::misc::generate_dart_comments;
 use crate::codegen::ir::func::{
-    IrFunc, IrFuncAccessorMode, IrFuncDefaultConstructorMode, IrFuncOwnerInfo,
+    IrFunc, IrFuncAccessorMode, IrFuncArgMode, IrFuncDefaultConstructorMode, IrFuncOwnerInfo,
     IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode,
 };
 use crate::codegen::ir::namespace::NamespacedName;
@@ -122,11 +122,11 @@ fn generate_signature(
     let (func_params, maybe_accessor) = match func.accessor {
         Some(IrFuncAccessorMode::Getter) => ("".to_owned(), "get"),
         Some(IrFuncAccessorMode::Setter) => (
+            // TODO: merge with below
             format!(
                 "({})",
-                func_params
-                    .iter()
-                    .map(|x| format!("{} {}", x.type_str, x.name_str))
+                (func_params.iter())
+                    .map(|x| x.full(IrFuncArgMode::Positional))
                     .join(", ")
             ),
             "set",
