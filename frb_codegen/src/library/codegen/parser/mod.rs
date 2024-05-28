@@ -36,6 +36,7 @@ use anyhow::ensure;
 use itertools::{concat, Itertools};
 use log::trace;
 use std::collections::HashMap;
+use std::path::Path;
 use syn::Visibility;
 use ConfigDumpContent::SourceGraph;
 
@@ -102,7 +103,7 @@ pub(crate) fn parse(
         dart_code_of_type,
         existing_handler: existing_handlers.first().cloned(),
         unused_types: vec![],
-        skipped_functions: compute_skipped_functions(),
+        skipped_functions: compute_skipped_functions(&src_fns_skipped, &config.rust_crate_dir),
     };
 
     ans.unused_types = get_unused_types(
@@ -180,8 +181,19 @@ fn parse_existing_handlers(
     Ok(existing_handlers)
 }
 
-fn compute_skipped_functions(src_fns_skipped: &[PathAndItemFn]) -> Vec<NamespacedName> {
-    src_fns_skipped.iter().map(|x| x.path).collect_vec()
+fn compute_skipped_functions(
+    src_fns_skipped: &[PathAndItemFn],
+    rust_crate_dir: &Path,
+) -> Vec<NamespacedName> {
+    src_fns_skipped
+        .iter()
+        .map(|x| {
+            NamespacedName::new(
+                Namespace::new_from_rust_crate_path(&x.path, rust_crate_dir),
+                x.generalized_item_fn.sig().ident.to_string(),
+            )
+        })
+        .collect_vec()
 }
 
 #[cfg(test)]
