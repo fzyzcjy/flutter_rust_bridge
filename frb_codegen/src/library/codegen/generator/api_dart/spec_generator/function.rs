@@ -128,11 +128,11 @@ fn generate_params(
             }
         })
         .collect_vec();
-    params.push(ApiDartGeneratedFunctionParam {
-        full: "dynamic hint".to_string(),
-        type_str: "dynamic".to_string(),
-        name_str: "hint".to_string(),
-    });
+    // params.push(ApiDartGeneratedFunctionParam {
+    //     full: "dynamic hint".to_string(),
+    //     type_str: "dynamic".to_string(),
+    //     name_str: "hint".to_string(),
+    // });
 
     let mut params_str = params.iter().map(|x| &x.full).join(", ");
     if !params_str.is_empty() {
@@ -154,7 +154,7 @@ fn generate_func_impl(
             })
             .map(|input| input.inner.name.dart_style()))
         .collect_vec(),
-        vec!["hint".to_owned()],
+        // vec!["hint".to_owned()],
     ]
     .concat();
     let param_forwards = param_names

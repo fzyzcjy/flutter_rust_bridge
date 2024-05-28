@@ -82,9 +82,9 @@ fn compute_skip_names(func: &IrFunc, method_info: &IrFuncOwnerInfoMethod) -> Vec
     if method_info.mode != IrFuncOwnerInfoMethodMode::Static {
         ans.push("that");
     }
-    if func.accessor.is_some() {
-        ans.push("hint");
-    }
+    // if func.accessor.is_some() {
+    //     ans.push("hint");
+    // }
     ans
 }
 
