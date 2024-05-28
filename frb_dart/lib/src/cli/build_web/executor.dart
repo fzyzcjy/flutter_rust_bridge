@@ -163,8 +163,7 @@ Future<void> _executeWasmPack(BuildWebArgs args,
     ..._environmentVariable('RUSTUP_TOOLCHAIN', 'nightly'),
     ..._environmentVariable('RUSTFLAGS',
         '-C target-feature=+atomics,+bulk-memory,+mutable-globals'),
-    if (stdout.supportsAnsiEscapes)
-      ..._environmentVariable('CARGO_TERM_COLOR', 'always'),
+    if (stdout.supportsAnsiEscapes) 'CARGO_TERM_COLOR': 'always',
   });
 }
 
