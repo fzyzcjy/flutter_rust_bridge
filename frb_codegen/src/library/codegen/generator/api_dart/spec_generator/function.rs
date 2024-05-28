@@ -30,7 +30,7 @@ pub(crate) struct ApiDartGeneratedFunction {
     pub(crate) return_stream: Option<ReturnStreamInfo>,
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, Clone)]
 pub(crate) struct ApiDartGeneratedFunctionParam {
     pub(crate) is_required: bool,
     pub(crate) type_str: String,

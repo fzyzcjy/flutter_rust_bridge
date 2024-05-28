@@ -62,6 +62,7 @@ fn generate_api_method(func: &IrFunc, context: ApiDartGeneratorContext) -> Strin
     let skip_names = compute_skip_names(func, method_info);
     let params = (api_dart_func.func_params.iter())
         .filter(|param| !skip_names.contains(&&param.name_str[..]))
+        .cloned()
         .collect_vec();
 
     let comments = generate_comments(func, default_constructor_mode);
@@ -103,7 +104,7 @@ fn generate_comments(
 fn generate_signature(
     func: &IrFunc,
     method_info: &IrFuncOwnerInfoMethod,
-    func_params: &[&ApiDartGeneratedFunctionParam],
+    func_params: &[ApiDartGeneratedFunctionParam],
     default_constructor_mode: Option<IrFuncDefaultConstructorMode>,
     api_dart_func: &ApiDartGeneratedFunction,
 ) -> String {
@@ -148,7 +149,7 @@ fn generate_implementation(
     func: &IrFunc,
     context: ApiDartGeneratorContext,
     method_info: &IrFuncOwnerInfoMethod,
-    params: &[&ApiDartGeneratedFunctionParam],
+    params: &[ApiDartGeneratedFunctionParam],
 ) -> String {
     let dart_entrypoint_class_name = &context.config.dart_entrypoint_class_name;
     let dart_api_instance = format!("{dart_entrypoint_class_name}.instance.api");
