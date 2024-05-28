@@ -11,7 +11,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait
         let needs_move = self.ir.needs_move();
         Acc::new_common(Some(format!(
             "// ignore: invalid_use_of_internal_member
-            return raw.cstEncode(move: {needs_move});",
+            return raw.frbInternalCstEncode(move: {needs_move});",
         )))
     }
 
