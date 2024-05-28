@@ -38,7 +38,7 @@ pub(crate) fn generate_api_impl_normal_function(
         func_params,
         ..
     } = api_dart_func;
-    let func_params_str = compute_params_str(func_params, IrFuncArgMode::Named);
+    let func_params_str = compute_params_str(&func_params, IrFuncArgMode::Named);
     let func_expr = format!(
         "{func_return_type} {func_name}({func_params_str})",
         func_name = func.name_dart_wire(),
