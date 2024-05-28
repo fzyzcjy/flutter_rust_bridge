@@ -21,6 +21,7 @@ pub struct IrFunc {
     pub stream_dart_await: bool,
     pub rust_async: bool,
     pub initializer: bool,
+    pub arg_mode: IrFuncArgMode,
     pub accessor: Option<IrFuncAccessorMode>,
     pub comments: Vec<IrComment>,
     pub codec_mode_pack: CodecModePack,
@@ -44,6 +45,12 @@ pub struct IrFuncOutput {
 pub enum IrFuncMode {
     Normal,
     Sync,
+}
+
+#[derive(Copy)]
+pub enum IrFuncArgMode {
+    Positional,
+    Named,
 }
 
 pub enum IrFuncOwnerInfo {
