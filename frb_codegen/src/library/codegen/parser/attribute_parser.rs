@@ -103,6 +103,10 @@ impl FrbAttributes {
         !self.any_eq(&FrbAttribute::NonEq)
     }
 
+    pub(crate) fn positional(&self) -> bool {
+        self.any_eq(&FrbAttribute::Positional)
+    }
+
     pub(crate) fn rust_opaque_codec(&self) -> Option<RustOpaqueCodecMode> {
         if self.any_eq(&FrbAttribute::RustOpaqueCodecMoi) {
             Some(RustOpaqueCodecMode::Moi)

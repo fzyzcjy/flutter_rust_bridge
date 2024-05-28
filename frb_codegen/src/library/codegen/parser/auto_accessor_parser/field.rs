@@ -1,8 +1,5 @@
 use crate::codegen::ir::field::IrField;
-use crate::codegen::ir::func::{
-    IrFunc, IrFuncAccessorMode, IrFuncInput, IrFuncMode, IrFuncOutput, IrFuncOwnerInfo,
-    IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode, OwnershipMode,
-};
+use crate::codegen::ir::func::{IrFunc, IrFuncAccessorMode, IrFuncArgMode, IrFuncInput, IrFuncMode, IrFuncOutput, IrFuncOwnerInfo, IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode, OwnershipMode};
 use crate::codegen::ir::ident::IrIdent;
 use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
@@ -77,6 +74,7 @@ pub(super) fn parse_auto_accessor_of_field(
         stream_dart_await: false,
         rust_async: false,
         initializer: false,
+        arg_mode: IrFuncArgMode::Named,
         accessor: Some(accessor_mode),
         comments: vec![],
         codec_mode_pack: compute_codec_mode_pack(
