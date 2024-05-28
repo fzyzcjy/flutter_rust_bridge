@@ -36,6 +36,7 @@ use anyhow::ensure;
 use itertools::{concat, Itertools};
 use log::trace;
 use std::collections::HashMap;
+use syn::Visibility;
 use ConfigDumpContent::SourceGraph;
 
 pub(crate) fn parse(
@@ -79,7 +80,8 @@ pub(crate) fn parse(
         .into_iter()
         .flatten()
         .collect_vec();
-    let (src_fns_interest, src_fns_skipped) = TODO;
+    let (src_fns_interest, src_fns_skipped) = (src_fns_all.into_iter())
+        .partition(|item| matches!(item.generalized_item_fn.vis(), Visibility::Public(_)));
 
     let src_structs = crate_map.root_module().collect_structs();
     let src_enums = crate_map.root_module().collect_enums();
