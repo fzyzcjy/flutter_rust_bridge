@@ -34,7 +34,6 @@ pub(crate) struct ApiDartGeneratedFunction {
 
 #[derive(Debug, Serialize)]
 pub(crate) struct ApiDartGeneratedFunctionParam {
-    pub(crate) full: String,
     pub(crate) type_str: String,
     pub(crate) name_str: String,
 }
