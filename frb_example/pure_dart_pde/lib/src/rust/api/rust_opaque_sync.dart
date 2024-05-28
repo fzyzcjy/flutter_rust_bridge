@@ -29,11 +29,14 @@ FrbOpaqueSyncReturnTwinNormal frbSyncGeneratorTestTwinNormal({dynamic hint}) =>
 // Rust type: RustOpaqueMoi<FrbOpaqueSyncReturnTwinNormal>
 @sealed
 class FrbOpaqueSyncReturnTwinNormal extends RustOpaque {
-  FrbOpaqueSyncReturnTwinNormal.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
+  // Not to be used by end users
+  FrbOpaqueSyncReturnTwinNormal.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
-  FrbOpaqueSyncReturnTwinNormal.sseDecode(BigInt ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+  // Not to be used by end users
+  FrbOpaqueSyncReturnTwinNormal.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib.instance.api
@@ -48,11 +51,14 @@ class FrbOpaqueSyncReturnTwinNormal extends RustOpaque {
 // Rust type: RustOpaqueMoi<HideDataAnotherTwinNormal>
 @sealed
 class HideDataAnotherTwinNormal extends RustOpaque {
-  HideDataAnotherTwinNormal.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
+  // Not to be used by end users
+  HideDataAnotherTwinNormal.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
-  HideDataAnotherTwinNormal.sseDecode(BigInt ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+  // Not to be used by end users
+  HideDataAnotherTwinNormal.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib
