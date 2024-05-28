@@ -12,64 +12,59 @@ part 'misc_example_twin_rust_async_sse.freezed.dart';
 // The type `MySizeFreezedTwinRustAsyncSse` is not used by any `pub` functions, thus it is ignored.
 
 Future<MyTreeNodeTwinRustAsyncSse> handleComplexStructTwinRustAsyncSse(
-        {required MyTreeNodeTwinRustAsyncSse s, dynamic hint}) =>
+        {required MyTreeNodeTwinRustAsyncSse s}) =>
     RustLib.instance.api
         .crateApiPseudoManualMiscExampleTwinRustAsyncSseHandleComplexStructTwinRustAsyncSse(
-            s: s, hint: hint);
+            s: s);
 
 Future<List<WeekdaysTwinRustAsyncSse>> listOfPrimitiveEnumsTwinRustAsyncSse(
-        {required List<WeekdaysTwinRustAsyncSse> weekdays, dynamic hint}) =>
+        {required List<WeekdaysTwinRustAsyncSse> weekdays}) =>
     RustLib.instance.api
         .crateApiPseudoManualMiscExampleTwinRustAsyncSseListOfPrimitiveEnumsTwinRustAsyncSse(
-            weekdays: weekdays, hint: hint);
+            weekdays: weekdays);
 
 Future<MyNestedStructTwinRustAsyncSse> handleNestedStructTwinRustAsyncSse(
-        {required MyNestedStructTwinRustAsyncSse s, dynamic hint}) =>
+        {required MyNestedStructTwinRustAsyncSse s}) =>
     RustLib.instance.api
         .crateApiPseudoManualMiscExampleTwinRustAsyncSseHandleNestedStructTwinRustAsyncSse(
-            s: s, hint: hint);
+            s: s);
 
-Future<BigBuffersTwinRustAsyncSse> handleBigBuffersTwinRustAsyncSse(
-        {dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinRustAsyncSseHandleBigBuffersTwinRustAsyncSse(
-            hint: hint);
+Future<BigBuffersTwinRustAsyncSse> handleBigBuffersTwinRustAsyncSse() => RustLib
+    .instance.api
+    .crateApiPseudoManualMiscExampleTwinRustAsyncSseHandleBigBuffersTwinRustAsyncSse();
 
 Future<AbcTwinRustAsyncSse> testAbcEnumTwinRustAsyncSse(
-        {required AbcTwinRustAsyncSse abc, dynamic hint}) =>
+        {required AbcTwinRustAsyncSse abc}) =>
     RustLib.instance.api
         .crateApiPseudoManualMiscExampleTwinRustAsyncSseTestAbcEnumTwinRustAsyncSse(
-            abc: abc, hint: hint);
+            abc: abc);
 
 Future<StructWithEnumTwinRustAsyncSse> testStructWithEnumTwinRustAsyncSse(
-        {required StructWithEnumTwinRustAsyncSse se, dynamic hint}) =>
+        {required StructWithEnumTwinRustAsyncSse se}) =>
     RustLib.instance.api
         .crateApiPseudoManualMiscExampleTwinRustAsyncSseTestStructWithEnumTwinRustAsyncSse(
-            se: se, hint: hint);
+            se: se);
 
-Future<String> handleStringTwinRustAsyncSse(
-        {required String s, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinRustAsyncSseHandleStringTwinRustAsyncSse(
-            s: s, hint: hint);
+Future<String> handleStringTwinRustAsyncSse({required String s}) => RustLib
+    .instance.api
+    .crateApiPseudoManualMiscExampleTwinRustAsyncSseHandleStringTwinRustAsyncSse(
+        s: s);
 
-Future<String> handleCharTwinRustAsyncSse(
-        {required String arg, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinRustAsyncSseHandleCharTwinRustAsyncSse(
-            arg: arg, hint: hint);
+Future<String> handleCharTwinRustAsyncSse({required String arg}) => RustLib
+    .instance.api
+    .crateApiPseudoManualMiscExampleTwinRustAsyncSseHandleCharTwinRustAsyncSse(
+        arg: arg);
 
-Future<Uint8List> handleVecU8TwinRustAsyncSse(
-        {required List<int> v, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinRustAsyncSseHandleVecU8TwinRustAsyncSse(
-            v: v, hint: hint);
+Future<Uint8List> handleVecU8TwinRustAsyncSse({required List<int> v}) => RustLib
+    .instance.api
+    .crateApiPseudoManualMiscExampleTwinRustAsyncSseHandleVecU8TwinRustAsyncSse(
+        v: v);
 
 Future<MySize> handleStructTwinRustAsyncSse(
-        {required MySize arg, required MySize boxed, dynamic hint}) =>
+        {required MySize arg, required MySize boxed}) =>
     RustLib.instance.api
         .crateApiPseudoManualMiscExampleTwinRustAsyncSseHandleStructTwinRustAsyncSse(
-            arg: arg, boxed: boxed, hint: hint);
+            arg: arg, boxed: boxed);
 
 class ATwinRustAsyncSse {
   final String a;

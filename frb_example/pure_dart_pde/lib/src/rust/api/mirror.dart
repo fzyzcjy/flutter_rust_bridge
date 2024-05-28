@@ -9,116 +9,96 @@ import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'pseudo_manual/mirror_twin_sync.dart';
 
-Future<ApplicationSettings> getAppSettingsTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.crateApiMirrorGetAppSettingsTwinNormal(hint: hint);
+Future<ApplicationSettings> getAppSettingsTwinNormal() =>
+    RustLib.instance.api.crateApiMirrorGetAppSettingsTwinNormal();
 
-Future<ApplicationSettings> getFallibleAppSettingsTwinNormal({dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiMirrorGetFallibleAppSettingsTwinNormal(hint: hint);
+Future<ApplicationSettings> getFallibleAppSettingsTwinNormal() =>
+    RustLib.instance.api.crateApiMirrorGetFallibleAppSettingsTwinNormal();
 
 Future<bool> isAppEmbeddedTwinNormal(
-        {required ApplicationSettings appSettings, dynamic hint}) =>
-    RustLib.instance.api.crateApiMirrorIsAppEmbeddedTwinNormal(
-        appSettings: appSettings, hint: hint);
-
-Stream<ApplicationSettings> appSettingsStreamTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.crateApiMirrorAppSettingsStreamTwinNormal(hint: hint);
-
-Stream<List<ApplicationSettings>> appSettingsVecStreamTwinNormal(
-        {dynamic hint}) =>
+        {required ApplicationSettings appSettings}) =>
     RustLib.instance.api
-        .crateApiMirrorAppSettingsVecStreamTwinNormal(hint: hint);
+        .crateApiMirrorIsAppEmbeddedTwinNormal(appSettings: appSettings);
 
-Stream<MirrorStructTwinNormal> mirrorStructStreamTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.crateApiMirrorMirrorStructStreamTwinNormal(hint: hint);
+Stream<ApplicationSettings> appSettingsStreamTwinNormal() =>
+    RustLib.instance.api.crateApiMirrorAppSettingsStreamTwinNormal();
+
+Stream<List<ApplicationSettings>> appSettingsVecStreamTwinNormal() =>
+    RustLib.instance.api.crateApiMirrorAppSettingsVecStreamTwinNormal();
+
+Stream<MirrorStructTwinNormal> mirrorStructStreamTwinNormal() =>
+    RustLib.instance.api.crateApiMirrorMirrorStructStreamTwinNormal();
 
 Stream<(ApplicationSettings, RawStringEnumMirrored)>
-    mirrorTupleStreamTwinNormal({dynamic hint}) => RustLib.instance.api
-        .crateApiMirrorMirrorTupleStreamTwinNormal(hint: hint);
+    mirrorTupleStreamTwinNormal() =>
+        RustLib.instance.api.crateApiMirrorMirrorTupleStreamTwinNormal();
 
-Future<ApplicationMessage> getMessageTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.crateApiMirrorGetMessageTwinNormal(hint: hint);
+Future<ApplicationMessage> getMessageTwinNormal() =>
+    RustLib.instance.api.crateApiMirrorGetMessageTwinNormal();
 
 Future<Numbers> repeatNumberTwinNormal(
-        {required int num, required BigInt times, dynamic hint}) =>
-    RustLib.instance.api.crateApiMirrorRepeatNumberTwinNormal(
-        num: num, times: times, hint: hint);
+        {required int num, required BigInt times}) =>
+    RustLib.instance.api
+        .crateApiMirrorRepeatNumberTwinNormal(num: num, times: times);
 
 Future<Sequences> repeatSequenceTwinNormal(
-        {required int seq, required BigInt times, dynamic hint}) =>
-    RustLib.instance.api.crateApiMirrorRepeatSequenceTwinNormal(
-        seq: seq, times: times, hint: hint);
-
-Future<int?> firstNumberTwinNormal({required Numbers nums, dynamic hint}) =>
+        {required int seq, required BigInt times}) =>
     RustLib.instance.api
-        .crateApiMirrorFirstNumberTwinNormal(nums: nums, hint: hint);
+        .crateApiMirrorRepeatSequenceTwinNormal(seq: seq, times: times);
 
-Future<int?> firstSequenceTwinNormal({required Sequences seqs, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiMirrorFirstSequenceTwinNormal(seqs: seqs, hint: hint);
+Future<int?> firstNumberTwinNormal({required Numbers nums}) =>
+    RustLib.instance.api.crateApiMirrorFirstNumberTwinNormal(nums: nums);
 
-Future<RawStringMirrored> testRawStringMirroredTwinNormal({dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiMirrorTestRawStringMirroredTwinNormal(hint: hint);
+Future<int?> firstSequenceTwinNormal({required Sequences seqs}) =>
+    RustLib.instance.api.crateApiMirrorFirstSequenceTwinNormal(seqs: seqs);
 
-Future<NestedRawStringMirrored> testNestedRawStringMirroredTwinNormal(
-        {dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiMirrorTestNestedRawStringMirroredTwinNormal(hint: hint);
+Future<RawStringMirrored> testRawStringMirroredTwinNormal() =>
+    RustLib.instance.api.crateApiMirrorTestRawStringMirroredTwinNormal();
+
+Future<NestedRawStringMirrored> testNestedRawStringMirroredTwinNormal() =>
+    RustLib.instance.api.crateApiMirrorTestNestedRawStringMirroredTwinNormal();
 
 Future<RawStringEnumMirrored> testRawStringEnumMirroredTwinNormal(
-        {required bool nested, dynamic hint}) =>
-    RustLib.instance.api.crateApiMirrorTestRawStringEnumMirroredTwinNormal(
-        nested: nested, hint: hint);
+        {required bool nested}) =>
+    RustLib.instance.api
+        .crateApiMirrorTestRawStringEnumMirroredTwinNormal(nested: nested);
 
 Future<ListOfNestedRawStringMirrored>
-    testListOfRawNestedStringMirroredTwinNormal({dynamic hint}) => RustLib
-        .instance.api
-        .crateApiMirrorTestListOfRawNestedStringMirroredTwinNormal(hint: hint);
+    testListOfRawNestedStringMirroredTwinNormal() => RustLib.instance.api
+        .crateApiMirrorTestListOfRawNestedStringMirroredTwinNormal();
 
-Future<List<RawStringMirrored>> testFallibleOfRawStringMirroredTwinNormal(
-        {dynamic hint}) =>
+Future<List<RawStringMirrored>> testFallibleOfRawStringMirroredTwinNormal() =>
     RustLib.instance.api
-        .crateApiMirrorTestFallibleOfRawStringMirroredTwinNormal(hint: hint);
+        .crateApiMirrorTestFallibleOfRawStringMirroredTwinNormal();
 
-Future<List<RawStringEnumMirrored>> testListOfNestedEnumsMirroredTwinNormal(
-        {dynamic hint}) =>
+Future<List<RawStringEnumMirrored>> testListOfNestedEnumsMirroredTwinNormal() =>
     RustLib.instance.api
-        .crateApiMirrorTestListOfNestedEnumsMirroredTwinNormal(hint: hint);
+        .crateApiMirrorTestListOfNestedEnumsMirroredTwinNormal();
 
 Future<ContainsMirroredSubStructTwinNormal>
-    testContainsMirroredSubStructTwinNormal({dynamic hint}) =>
-        RustLib.instance.api
-            .crateApiMirrorTestContainsMirroredSubStructTwinNormal(hint: hint);
+    testContainsMirroredSubStructTwinNormal() => RustLib.instance.api
+        .crateApiMirrorTestContainsMirroredSubStructTwinNormal();
 
-Future<StructWithHashMap> testHashmapWithMirroredValueTwinNormal(
-        {dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiMirrorTestHashmapWithMirroredValueTwinNormal(hint: hint);
+Future<StructWithHashMap> testHashmapWithMirroredValueTwinNormal() =>
+    RustLib.instance.api.crateApiMirrorTestHashmapWithMirroredValueTwinNormal();
 
-Stream<ApplicationMode> mirrorEnumStreamTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.crateApiMirrorMirrorEnumStreamTwinNormal(hint: hint);
+Stream<ApplicationMode> mirrorEnumStreamTwinNormal() =>
+    RustLib.instance.api.crateApiMirrorMirrorEnumStreamTwinNormal();
 
-Stream<ApplicationMode?> mirrorOptionEnumStreamTwinNormal({dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiMirrorMirrorOptionEnumStreamTwinNormal(hint: hint);
+Stream<ApplicationMode?> mirrorOptionEnumStreamTwinNormal() =>
+    RustLib.instance.api.crateApiMirrorMirrorOptionEnumStreamTwinNormal();
 
-Stream<List<ApplicationMode>> mirrorVecEnumStreamTwinNormal({dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiMirrorMirrorVecEnumStreamTwinNormal(hint: hint);
+Stream<List<ApplicationMode>> mirrorVecEnumStreamTwinNormal() =>
+    RustLib.instance.api.crateApiMirrorMirrorVecEnumStreamTwinNormal();
 
-Stream<Map<int, ApplicationMode>> mirrorMapEnumStreamTwinNormal(
-        {dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiMirrorMirrorMapEnumStreamTwinNormal(hint: hint);
+Stream<Map<int, ApplicationMode>> mirrorMapEnumStreamTwinNormal() =>
+    RustLib.instance.api.crateApiMirrorMirrorMapEnumStreamTwinNormal();
 
-Stream<Set<ApplicationMode>> mirrorSetEnumStreamTwinNormal({dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiMirrorMirrorSetEnumStreamTwinNormal(hint: hint);
+Stream<Set<ApplicationMode>> mirrorSetEnumStreamTwinNormal() =>
+    RustLib.instance.api.crateApiMirrorMirrorSetEnumStreamTwinNormal();
 
-Stream<ApplicationModeArray2> mirrorArrayEnumStreamTwinNormal({dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiMirrorMirrorArrayEnumStreamTwinNormal(hint: hint);
+Stream<ApplicationModeArray2> mirrorArrayEnumStreamTwinNormal() =>
+    RustLib.instance.api.crateApiMirrorMirrorArrayEnumStreamTwinNormal();
 
 class AnotherTwinNormal {
   final String a;

@@ -6,6 +6,5 @@
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-dynamic returnDartDynamicTwinSync({dynamic hint}) => RustLib.instance.api
-    .crateApiPseudoManualDartDynamicTwinSyncReturnDartDynamicTwinSync(
-        hint: hint);
+dynamic returnDartDynamicTwinSync() => RustLib.instance.api
+    .crateApiPseudoManualDartDynamicTwinSyncReturnDartDynamicTwinSync();

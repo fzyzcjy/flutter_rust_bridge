@@ -10,144 +10,108 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'mirror_twin_sync_sse.freezed.dart';
 
-ApplicationSettings getAppSettingsTwinSyncSse({dynamic hint}) => RustLib
-    .instance.api
-    .crateApiPseudoManualMirrorTwinSyncSseGetAppSettingsTwinSyncSse(hint: hint);
+ApplicationSettings getAppSettingsTwinSyncSse() => RustLib.instance.api
+    .crateApiPseudoManualMirrorTwinSyncSseGetAppSettingsTwinSyncSse();
 
-ApplicationSettings getFallibleAppSettingsTwinSyncSse({dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinSyncSseGetFallibleAppSettingsTwinSyncSse(
-            hint: hint);
+ApplicationSettings getFallibleAppSettingsTwinSyncSse() => RustLib.instance.api
+    .crateApiPseudoManualMirrorTwinSyncSseGetFallibleAppSettingsTwinSyncSse();
 
-bool isAppEmbeddedTwinSyncSse(
-        {required ApplicationSettings appSettings, dynamic hint}) =>
+bool isAppEmbeddedTwinSyncSse({required ApplicationSettings appSettings}) =>
     RustLib.instance.api
         .crateApiPseudoManualMirrorTwinSyncSseIsAppEmbeddedTwinSyncSse(
-            appSettings: appSettings, hint: hint);
+            appSettings: appSettings);
 
-Stream<ApplicationSettings> appSettingsStreamTwinSyncSse({dynamic hint}) =>
+Stream<ApplicationSettings> appSettingsStreamTwinSyncSse() =>
     RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinSyncSseAppSettingsStreamTwinSyncSse(
-            hint: hint);
+        .crateApiPseudoManualMirrorTwinSyncSseAppSettingsStreamTwinSyncSse();
 
-Stream<List<ApplicationSettings>> appSettingsVecStreamTwinSyncSse(
-        {dynamic hint}) =>
+Stream<List<ApplicationSettings>> appSettingsVecStreamTwinSyncSse() =>
     RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinSyncSseAppSettingsVecStreamTwinSyncSse(
-            hint: hint);
+        .crateApiPseudoManualMirrorTwinSyncSseAppSettingsVecStreamTwinSyncSse();
 
-Stream<MirrorStructTwinSyncSse> mirrorStructStreamTwinSyncSse({dynamic hint}) =>
+Stream<MirrorStructTwinSyncSse> mirrorStructStreamTwinSyncSse() =>
     RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinSyncSseMirrorStructStreamTwinSyncSse(
-            hint: hint);
+        .crateApiPseudoManualMirrorTwinSyncSseMirrorStructStreamTwinSyncSse();
 
 Stream<(ApplicationSettings, RawStringEnumMirrored)>
-    mirrorTupleStreamTwinSyncSse({dynamic hint}) => RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinSyncSseMirrorTupleStreamTwinSyncSse(
-            hint: hint);
+    mirrorTupleStreamTwinSyncSse() => RustLib.instance.api
+        .crateApiPseudoManualMirrorTwinSyncSseMirrorTupleStreamTwinSyncSse();
 
-ApplicationMessage getMessageTwinSyncSse({dynamic hint}) => RustLib.instance.api
-    .crateApiPseudoManualMirrorTwinSyncSseGetMessageTwinSyncSse(hint: hint);
+ApplicationMessage getMessageTwinSyncSse() => RustLib.instance.api
+    .crateApiPseudoManualMirrorTwinSyncSseGetMessageTwinSyncSse();
 
-Numbers repeatNumberTwinSyncSse(
-        {required int num, required BigInt times, dynamic hint}) =>
+Numbers repeatNumberTwinSyncSse({required int num, required BigInt times}) =>
     RustLib.instance.api
         .crateApiPseudoManualMirrorTwinSyncSseRepeatNumberTwinSyncSse(
-            num: num, times: times, hint: hint);
+            num: num, times: times);
 
 Sequences repeatSequenceTwinSyncSse(
-        {required int seq, required BigInt times, dynamic hint}) =>
+        {required int seq, required BigInt times}) =>
     RustLib.instance.api
         .crateApiPseudoManualMirrorTwinSyncSseRepeatSequenceTwinSyncSse(
-            seq: seq, times: times, hint: hint);
+            seq: seq, times: times);
 
-int? firstNumberTwinSyncSse({required Numbers nums, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinSyncSseFirstNumberTwinSyncSse(
-            nums: nums, hint: hint);
+int? firstNumberTwinSyncSse({required Numbers nums}) => RustLib.instance.api
+    .crateApiPseudoManualMirrorTwinSyncSseFirstNumberTwinSyncSse(nums: nums);
 
-int? firstSequenceTwinSyncSse({required Sequences seqs, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinSyncSseFirstSequenceTwinSyncSse(
-            seqs: seqs, hint: hint);
+int? firstSequenceTwinSyncSse({required Sequences seqs}) => RustLib.instance.api
+    .crateApiPseudoManualMirrorTwinSyncSseFirstSequenceTwinSyncSse(seqs: seqs);
 
-RawStringMirrored testRawStringMirroredTwinSyncSse({dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinSyncSseTestRawStringMirroredTwinSyncSse(
-            hint: hint);
+RawStringMirrored testRawStringMirroredTwinSyncSse() => RustLib.instance.api
+    .crateApiPseudoManualMirrorTwinSyncSseTestRawStringMirroredTwinSyncSse();
 
-NestedRawStringMirrored testNestedRawStringMirroredTwinSyncSse(
-        {dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinSyncSseTestNestedRawStringMirroredTwinSyncSse(
-            hint: hint);
+NestedRawStringMirrored testNestedRawStringMirroredTwinSyncSse() => RustLib
+    .instance.api
+    .crateApiPseudoManualMirrorTwinSyncSseTestNestedRawStringMirroredTwinSyncSse();
 
 RawStringEnumMirrored testRawStringEnumMirroredTwinSyncSse(
-        {required bool nested, dynamic hint}) =>
+        {required bool nested}) =>
     RustLib.instance.api
         .crateApiPseudoManualMirrorTwinSyncSseTestRawStringEnumMirroredTwinSyncSse(
-            nested: nested, hint: hint);
+            nested: nested);
 
-ListOfNestedRawStringMirrored testListOfRawNestedStringMirroredTwinSyncSse(
-        {dynamic hint}) =>
+ListOfNestedRawStringMirrored testListOfRawNestedStringMirroredTwinSyncSse() =>
     RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinSyncSseTestListOfRawNestedStringMirroredTwinSyncSse(
-            hint: hint);
+        .crateApiPseudoManualMirrorTwinSyncSseTestListOfRawNestedStringMirroredTwinSyncSse();
 
-List<RawStringMirrored> testFallibleOfRawStringMirroredTwinSyncSse(
-        {dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinSyncSseTestFallibleOfRawStringMirroredTwinSyncSse(
-            hint: hint);
+List<RawStringMirrored> testFallibleOfRawStringMirroredTwinSyncSse() => RustLib
+    .instance.api
+    .crateApiPseudoManualMirrorTwinSyncSseTestFallibleOfRawStringMirroredTwinSyncSse();
 
-List<RawStringEnumMirrored> testListOfNestedEnumsMirroredTwinSyncSse(
-        {dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinSyncSseTestListOfNestedEnumsMirroredTwinSyncSse(
-            hint: hint);
+List<RawStringEnumMirrored> testListOfNestedEnumsMirroredTwinSyncSse() => RustLib
+    .instance.api
+    .crateApiPseudoManualMirrorTwinSyncSseTestListOfNestedEnumsMirroredTwinSyncSse();
 
-ContainsMirroredSubStructTwinSyncSse testContainsMirroredSubStructTwinSyncSse(
-        {dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinSyncSseTestContainsMirroredSubStructTwinSyncSse(
-            hint: hint);
+ContainsMirroredSubStructTwinSyncSse
+    testContainsMirroredSubStructTwinSyncSse() => RustLib.instance.api
+        .crateApiPseudoManualMirrorTwinSyncSseTestContainsMirroredSubStructTwinSyncSse();
 
-StructWithHashMap testHashmapWithMirroredValueTwinSyncSse({dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinSyncSseTestHashmapWithMirroredValueTwinSyncSse(
-            hint: hint);
+StructWithHashMap testHashmapWithMirroredValueTwinSyncSse() => RustLib
+    .instance.api
+    .crateApiPseudoManualMirrorTwinSyncSseTestHashmapWithMirroredValueTwinSyncSse();
 
-Stream<ApplicationMode> mirrorEnumStreamTwinSyncSse({dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinSyncSseMirrorEnumStreamTwinSyncSse(
-            hint: hint);
+Stream<ApplicationMode> mirrorEnumStreamTwinSyncSse() => RustLib.instance.api
+    .crateApiPseudoManualMirrorTwinSyncSseMirrorEnumStreamTwinSyncSse();
 
-Stream<ApplicationMode?> mirrorOptionEnumStreamTwinSyncSse({dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinSyncSseMirrorOptionEnumStreamTwinSyncSse(
-            hint: hint);
+Stream<ApplicationMode?> mirrorOptionEnumStreamTwinSyncSse() => RustLib
+    .instance.api
+    .crateApiPseudoManualMirrorTwinSyncSseMirrorOptionEnumStreamTwinSyncSse();
 
-Stream<List<ApplicationMode>> mirrorVecEnumStreamTwinSyncSse({dynamic hint}) =>
+Stream<List<ApplicationMode>> mirrorVecEnumStreamTwinSyncSse() =>
     RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinSyncSseMirrorVecEnumStreamTwinSyncSse(
-            hint: hint);
+        .crateApiPseudoManualMirrorTwinSyncSseMirrorVecEnumStreamTwinSyncSse();
 
-Stream<Map<int, ApplicationMode>> mirrorMapEnumStreamTwinSyncSse(
-        {dynamic hint}) =>
+Stream<Map<int, ApplicationMode>> mirrorMapEnumStreamTwinSyncSse() =>
     RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinSyncSseMirrorMapEnumStreamTwinSyncSse(
-            hint: hint);
+        .crateApiPseudoManualMirrorTwinSyncSseMirrorMapEnumStreamTwinSyncSse();
 
-Stream<Set<ApplicationMode>> mirrorSetEnumStreamTwinSyncSse({dynamic hint}) =>
+Stream<Set<ApplicationMode>> mirrorSetEnumStreamTwinSyncSse() =>
     RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinSyncSseMirrorSetEnumStreamTwinSyncSse(
-            hint: hint);
+        .crateApiPseudoManualMirrorTwinSyncSseMirrorSetEnumStreamTwinSyncSse();
 
-Stream<ApplicationModeArray2> mirrorArrayEnumStreamTwinSyncSse(
-        {dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinSyncSseMirrorArrayEnumStreamTwinSyncSse(
-            hint: hint);
+Stream<ApplicationModeArray2> mirrorArrayEnumStreamTwinSyncSse() => RustLib
+    .instance.api
+    .crateApiPseudoManualMirrorTwinSyncSseMirrorArrayEnumStreamTwinSyncSse();
 
 class AnotherTwinSyncSse {
   final String a;

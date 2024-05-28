@@ -9,20 +9,16 @@ import '../auxiliary/sample_types.dart';
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<bool> useImportedStructTwinNormal(
-        {required MyStruct myStruct, dynamic hint}) =>
+Future<bool> useImportedStructTwinNormal({required MyStruct myStruct}) =>
     RustLib.instance.api.crateApiExternalTypeInCrateUseImportedStructTwinNormal(
-        myStruct: myStruct, hint: hint);
+        myStruct: myStruct);
 
-Future<bool> useImportedEnumTwinNormal(
-        {required MyEnum myEnum, dynamic hint}) =>
-    RustLib.instance.api.crateApiExternalTypeInCrateUseImportedEnumTwinNormal(
-        myEnum: myEnum, hint: hint);
-
-Future<OldSimpleStruct> callOldModuleSystemTwinNormal({dynamic hint}) =>
+Future<bool> useImportedEnumTwinNormal({required MyEnum myEnum}) =>
     RustLib.instance.api
-        .crateApiExternalTypeInCrateCallOldModuleSystemTwinNormal(hint: hint);
+        .crateApiExternalTypeInCrateUseImportedEnumTwinNormal(myEnum: myEnum);
 
-Future<NewSimpleStruct> callNewModuleSystemTwinNormal({dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiExternalTypeInCrateCallNewModuleSystemTwinNormal(hint: hint);
+Future<OldSimpleStruct> callOldModuleSystemTwinNormal() => RustLib.instance.api
+    .crateApiExternalTypeInCrateCallOldModuleSystemTwinNormal();
+
+Future<NewSimpleStruct> callNewModuleSystemTwinNormal() => RustLib.instance.api
+    .crateApiExternalTypeInCrateCallNewModuleSystemTwinNormal();

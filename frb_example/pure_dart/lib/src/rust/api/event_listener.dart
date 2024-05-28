@@ -8,24 +8,21 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'event_listener.freezed.dart';
 
-Future<Stream<EventTwinNormal>> registerEventListenerTwinNormal(
-        {dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiEventListenerRegisterEventListenerTwinNormal(hint: hint);
+Future<Stream<EventTwinNormal>> registerEventListenerTwinNormal() =>
+    RustLib.instance.api.crateApiEventListenerRegisterEventListenerTwinNormal();
 
-Future<void> closeEventListenerTwinNormal({dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiEventListenerCloseEventListenerTwinNormal(hint: hint);
+Future<void> closeEventListenerTwinNormal() =>
+    RustLib.instance.api.crateApiEventListenerCloseEventListenerTwinNormal();
 
 Future<void> createEventTwinNormal(
-        {required String address, required String payload, dynamic hint}) =>
+        {required String address, required String payload}) =>
     RustLib.instance.api.crateApiEventListenerCreateEventTwinNormal(
-        address: address, payload: payload, hint: hint);
+        address: address, payload: payload);
 
 void createEventSyncTwinNormal(
-        {required String address, required String payload, dynamic hint}) =>
+        {required String address, required String payload}) =>
     RustLib.instance.api.crateApiEventListenerCreateEventSyncTwinNormal(
-        address: address, payload: payload, hint: hint);
+        address: address, payload: payload);
 
 @freezed
 class EventTwinNormal with _$EventTwinNormal {
@@ -34,7 +31,8 @@ class EventTwinNormal with _$EventTwinNormal {
     required String address,
     required String payload,
   }) = _EventTwinNormal;
-  Future<String> asStringTwinNormal({dynamic hint}) => RustLib.instance.api
-      .crateApiEventListenerEventTwinNormalAsStringTwinNormal(
-          that: this, hint: hint);
+  Future<String> asStringTwinNormal() => RustLib.instance.api
+          .crateApiEventListenerEventTwinNormalAsStringTwinNormal(
+        that: this,
+      );
 }

@@ -7,20 +7,18 @@ import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:uuid/uuid.dart';
 
-Future<UuidValue> handleUuidTwinSse({required UuidValue id, dynamic hint}) =>
-    RustLib.instance.api.crateApiPseudoManualUuidTypeTwinSseHandleUuidTwinSse(
-        id: id, hint: hint);
+Future<UuidValue> handleUuidTwinSse({required UuidValue id}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualUuidTypeTwinSseHandleUuidTwinSse(id: id);
 
-Future<List<UuidValue>> handleUuidsTwinSse(
-        {required List<UuidValue> ids, dynamic hint}) =>
-    RustLib.instance.api.crateApiPseudoManualUuidTypeTwinSseHandleUuidsTwinSse(
-        ids: ids, hint: hint);
+Future<List<UuidValue>> handleUuidsTwinSse({required List<UuidValue> ids}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualUuidTypeTwinSseHandleUuidsTwinSse(ids: ids);
 
 Future<FeatureUuidTwinSse> handleNestedUuidsTwinSse(
-        {required FeatureUuidTwinSse ids, dynamic hint}) =>
+        {required FeatureUuidTwinSse ids}) =>
     RustLib.instance.api
-        .crateApiPseudoManualUuidTypeTwinSseHandleNestedUuidsTwinSse(
-            ids: ids, hint: hint);
+        .crateApiPseudoManualUuidTypeTwinSseHandleNestedUuidsTwinSse(ids: ids);
 
 class FeatureUuidTwinSse {
   final UuidValue one;

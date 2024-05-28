@@ -7,68 +7,57 @@ import '../../frb_generated.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<
-    Stream<
-        String>> funcStreamReturnErrorTwinRustAsync({dynamic hint}) => RustLib
+Future<Stream<String>> funcStreamReturnErrorTwinRustAsync() => RustLib
     .instance.api
-    .crateApiPseudoManualStreamTwinRustAsyncFuncStreamReturnErrorTwinRustAsync(
-        hint: hint);
+    .crateApiPseudoManualStreamTwinRustAsyncFuncStreamReturnErrorTwinRustAsync();
 
-Future<
-    Stream<
-        String>> funcStreamReturnPanicTwinRustAsync({dynamic hint}) => RustLib
+Future<Stream<String>> funcStreamReturnPanicTwinRustAsync() => RustLib
     .instance.api
-    .crateApiPseudoManualStreamTwinRustAsyncFuncStreamReturnPanicTwinRustAsync(
-        hint: hint);
+    .crateApiPseudoManualStreamTwinRustAsyncFuncStreamReturnPanicTwinRustAsync();
 
 Stream<int> funcStreamSinkArgPositionTwinRustAsync(
-        {required int a, required int b, dynamic hint}) =>
+        {required int a, required int b}) =>
     RustLib.instance.api
         .crateApiPseudoManualStreamTwinRustAsyncFuncStreamSinkArgPositionTwinRustAsync(
-            a: a, b: b, hint: hint);
+            a: a, b: b);
 
-Stream<MyStreamEntryTwinRustAsync> handleStreamOfStructTwinRustAsync(
-        {dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualStreamTwinRustAsyncHandleStreamOfStructTwinRustAsync(
-            hint: hint);
+Stream<MyStreamEntryTwinRustAsync> handleStreamOfStructTwinRustAsync() => RustLib
+    .instance.api
+    .crateApiPseudoManualStreamTwinRustAsyncHandleStreamOfStructTwinRustAsync();
 
 Stream<LogTwinRustAsync> handleStreamSinkAt1TwinRustAsync(
-        {required int key, required int max, dynamic hint}) =>
+        {required int key, required int max}) =>
     RustLib.instance.api
         .crateApiPseudoManualStreamTwinRustAsyncHandleStreamSinkAt1TwinRustAsync(
-            key: key, max: max, hint: hint);
+            key: key, max: max);
 
 Stream<LogTwinRustAsync> handleStreamSinkAt2TwinRustAsync(
-        {required int key, required int max, dynamic hint}) =>
+        {required int key, required int max}) =>
     RustLib.instance.api
         .crateApiPseudoManualStreamTwinRustAsyncHandleStreamSinkAt2TwinRustAsync(
-            key: key, max: max, hint: hint);
+            key: key, max: max);
 
 Stream<LogTwinRustAsync> handleStreamSinkAt3TwinRustAsync(
-        {required int key, required int max, dynamic hint}) =>
+        {required int key, required int max}) =>
     RustLib.instance.api
         .crateApiPseudoManualStreamTwinRustAsyncHandleStreamSinkAt3TwinRustAsync(
-            key: key, max: max, hint: hint);
+            key: key, max: max);
 
-Stream<U8Array2> streamSinkFixedSizedPrimitiveArrayTwinRustAsync(
-        {dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualStreamTwinRustAsyncStreamSinkFixedSizedPrimitiveArrayTwinRustAsync(
-            hint: hint);
+Stream<U8Array2> streamSinkFixedSizedPrimitiveArrayTwinRustAsync() => RustLib
+    .instance.api
+    .crateApiPseudoManualStreamTwinRustAsyncStreamSinkFixedSizedPrimitiveArrayTwinRustAsync();
 
 Future<void> streamSinkInsideVecTwinRustAsync(
-        {required List<RustStreamSink<int>> arg, dynamic hint}) =>
+        {required List<RustStreamSink<int>> arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualStreamTwinRustAsyncStreamSinkInsideVecTwinRustAsync(
-            arg: arg, hint: hint);
+            arg: arg);
 
 Future<void> streamSinkInsideStructTwinRustAsync(
-        {required MyStructContainingStreamSinkTwinRustAsync arg,
-        dynamic hint}) =>
+        {required MyStructContainingStreamSinkTwinRustAsync arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualStreamTwinRustAsyncStreamSinkInsideStructTwinRustAsync(
-            arg: arg, hint: hint);
+            arg: arg);
 
 class LogTwinRustAsync {
   final int key;

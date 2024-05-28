@@ -25,9 +25,10 @@ class OpaqueStructWithDartCodeTwinNormal extends RustOpaque {
         .rust_arc_decrement_strong_count_OpaqueStructWithDartCodeTwinNormalPtr,
   );
 
-  Future<int> normalMethodTwinNormal({dynamic hint}) => RustLib.instance.api
-      .crateApiDartCodeOpaqueStructWithDartCodeTwinNormalNormalMethodTwinNormal(
-          that: this, hint: hint);
+  Future<int> normalMethodTwinNormal() => RustLib.instance.api
+          .crateApiDartCodeOpaqueStructWithDartCodeTwinNormalNormalMethodTwinNormal(
+        that: this,
+      );
 
   static int get dartCodeGetter => 123;
 }
@@ -39,9 +40,10 @@ class TranslatableStructWithDartCodeTwinNormal {
     required this.a,
   });
 
-  Future<int> normalMethodTwinNormal({dynamic hint}) => RustLib.instance.api
-      .crateApiDartCodeTranslatableStructWithDartCodeTwinNormalNormalMethodTwinNormal(
-          that: this, hint: hint);
+  Future<int> normalMethodTwinNormal() => RustLib.instance.api
+          .crateApiDartCodeTranslatableStructWithDartCodeTwinNormalNormalMethodTwinNormal(
+        that: this,
+      );
 
   @override
   bool operator ==(Object other) =>

@@ -6,24 +6,20 @@
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<String> borrowStringTwinSse({required String arg, dynamic hint}) =>
+Future<String> borrowStringTwinSse({required String arg}) =>
     RustLib.instance.api
-        .crateApiPseudoManualOwnershipTwinSseBorrowStringTwinSse(
-            arg: arg, hint: hint);
+        .crateApiPseudoManualOwnershipTwinSseBorrowStringTwinSse(arg: arg);
 
-Future<String> borrowStrTwinSse({required String arg, dynamic hint}) => RustLib
-    .instance.api
-    .crateApiPseudoManualOwnershipTwinSseBorrowStrTwinSse(arg: arg, hint: hint);
+Future<String> borrowStrTwinSse({required String arg}) => RustLib.instance.api
+    .crateApiPseudoManualOwnershipTwinSseBorrowStrTwinSse(arg: arg);
 
-Future<int> borrowI32TwinSse({required int arg, dynamic hint}) => RustLib
-    .instance.api
-    .crateApiPseudoManualOwnershipTwinSseBorrowI32TwinSse(arg: arg, hint: hint);
+Future<int> borrowI32TwinSse({required int arg}) => RustLib.instance.api
+    .crateApiPseudoManualOwnershipTwinSseBorrowI32TwinSse(arg: arg);
 
 Future<SimpleStructForBorrowTwinSse> borrowStructTwinSse(
-        {required SimpleStructForBorrowTwinSse arg, dynamic hint}) =>
+        {required SimpleStructForBorrowTwinSse arg}) =>
     RustLib.instance.api
-        .crateApiPseudoManualOwnershipTwinSseBorrowStructTwinSse(
-            arg: arg, hint: hint);
+        .crateApiPseudoManualOwnershipTwinSseBorrowStructTwinSse(arg: arg);
 
 class SimpleStructForBorrowTwinSse {
   final String one;

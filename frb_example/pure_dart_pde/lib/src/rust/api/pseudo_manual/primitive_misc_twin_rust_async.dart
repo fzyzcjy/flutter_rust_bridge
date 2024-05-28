@@ -10,17 +10,12 @@ Future<int> primitiveTypesTwinRustAsync(
         {required int myI32,
         required PlatformInt64 myI64,
         required double myF64,
-        required bool myBool,
-        dynamic hint}) =>
+        required bool myBool}) =>
     RustLib.instance.api
         .crateApiPseudoManualPrimitiveMiscTwinRustAsyncPrimitiveTypesTwinRustAsync(
-            myI32: myI32,
-            myI64: myI64,
-            myF64: myF64,
-            myBool: myBool,
-            hint: hint);
+            myI32: myI32, myI64: myI64, myF64: myF64, myBool: myBool);
 
-Future<int> primitiveU32TwinRustAsync({required int myU32, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualPrimitiveMiscTwinRustAsyncPrimitiveU32TwinRustAsync(
-            myU32: myU32, hint: hint);
+Future<int> primitiveU32TwinRustAsync({required int myU32}) => RustLib
+    .instance.api
+    .crateApiPseudoManualPrimitiveMiscTwinRustAsyncPrimitiveU32TwinRustAsync(
+        myU32: myU32);

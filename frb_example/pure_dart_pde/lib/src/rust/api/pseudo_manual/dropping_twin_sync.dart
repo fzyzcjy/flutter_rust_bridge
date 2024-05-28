@@ -26,19 +26,19 @@ class DroppableTwinSync extends RustOpaque {
         .instance.api.rust_arc_decrement_strong_count_DroppableTwinSyncPtr,
   );
 
-  Stream<int> createStreamTwinSync({dynamic hint}) => RustLib.instance.api
-      .crateApiPseudoManualDroppingTwinSyncDroppableTwinSyncCreateStreamTwinSync(
-          that: this, hint: hint);
+  Stream<int> createStreamTwinSync() => RustLib.instance.api
+          .crateApiPseudoManualDroppingTwinSyncDroppableTwinSyncCreateStreamTwinSync(
+        that: this,
+      );
 
-  static int getDropCountTwinSync({dynamic hint}) => RustLib.instance.api
-      .crateApiPseudoManualDroppingTwinSyncDroppableTwinSyncGetDropCountTwinSync(
-          hint: hint);
+  static int getDropCountTwinSync() => RustLib.instance.api
+      .crateApiPseudoManualDroppingTwinSyncDroppableTwinSyncGetDropCountTwinSync();
 
-  static DroppableTwinSync newTwinSync({dynamic hint}) => RustLib.instance.api
-      .crateApiPseudoManualDroppingTwinSyncDroppableTwinSyncNewTwinSync(
-          hint: hint);
+  static DroppableTwinSync newTwinSync() => RustLib.instance.api
+      .crateApiPseudoManualDroppingTwinSyncDroppableTwinSyncNewTwinSync();
 
-  void simpleMethodTwinSync({dynamic hint}) => RustLib.instance.api
-      .crateApiPseudoManualDroppingTwinSyncDroppableTwinSyncSimpleMethodTwinSync(
-          that: this, hint: hint);
+  void simpleMethodTwinSync() => RustLib.instance.api
+          .crateApiPseudoManualDroppingTwinSyncDroppableTwinSyncSimpleMethodTwinSync(
+        that: this,
+      );
 }

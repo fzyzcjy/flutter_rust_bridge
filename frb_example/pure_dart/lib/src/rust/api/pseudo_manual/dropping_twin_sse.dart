@@ -24,20 +24,19 @@ class DroppableTwinSse extends RustOpaque {
         .instance.api.rust_arc_decrement_strong_count_DroppableTwinSsePtr,
   );
 
-  Stream<int> createStreamTwinSse({dynamic hint}) => RustLib.instance.api
-      .crateApiPseudoManualDroppingTwinSseDroppableTwinSseCreateStreamTwinSse(
-          that: this, hint: hint);
+  Stream<int> createStreamTwinSse() => RustLib.instance.api
+          .crateApiPseudoManualDroppingTwinSseDroppableTwinSseCreateStreamTwinSse(
+        that: this,
+      );
 
-  static Future<int> getDropCountTwinSse({dynamic hint}) => RustLib.instance.api
-      .crateApiPseudoManualDroppingTwinSseDroppableTwinSseGetDropCountTwinSse(
-          hint: hint);
+  static Future<int> getDropCountTwinSse() => RustLib.instance.api
+      .crateApiPseudoManualDroppingTwinSseDroppableTwinSseGetDropCountTwinSse();
 
-  static Future<DroppableTwinSse> newTwinSse({dynamic hint}) => RustLib
-      .instance.api
-      .crateApiPseudoManualDroppingTwinSseDroppableTwinSseNewTwinSse(
-          hint: hint);
+  static Future<DroppableTwinSse> newTwinSse() => RustLib.instance.api
+      .crateApiPseudoManualDroppingTwinSseDroppableTwinSseNewTwinSse();
 
-  Future<void> simpleMethodTwinSse({dynamic hint}) => RustLib.instance.api
-      .crateApiPseudoManualDroppingTwinSseDroppableTwinSseSimpleMethodTwinSse(
-          that: this, hint: hint);
+  Future<void> simpleMethodTwinSse() => RustLib.instance.api
+          .crateApiPseudoManualDroppingTwinSseDroppableTwinSseSimpleMethodTwinSse(
+        that: this,
+      );
 }

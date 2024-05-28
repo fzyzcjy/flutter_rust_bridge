@@ -12,17 +12,16 @@ part 'attribute_twin_rust_async_sse.freezed.dart';
 // The type `IgnoredStructTwinRustAsyncSse` is not used by any `pub` functions, thus it is ignored.
 
 Future<void> handleCustomizedStructTwinRustAsyncSse(
-        {required CustomizedTwinRustAsyncSse val, dynamic hint}) =>
+        {required CustomizedTwinRustAsyncSse val}) =>
     RustLib.instance.api
         .crateApiPseudoManualAttributeTwinRustAsyncSseHandleCustomizedStructTwinRustAsyncSse(
-            val: val, hint: hint);
+            val: val);
 
 Future<UserIdTwinRustAsyncSse> nextUserIdTwinRustAsyncSse(
-        {UserIdTwinRustAsyncSse userId = const UserIdTwinRustAsyncSse(),
-        dynamic hint}) =>
+        {UserIdTwinRustAsyncSse userId = const UserIdTwinRustAsyncSse()}) =>
     RustLib.instance.api
         .crateApiPseudoManualAttributeTwinRustAsyncSseNextUserIdTwinRustAsyncSse(
-            userId: userId, hint: hint);
+            userId: userId);
 
 class CustomizedTwinRustAsyncSse {
   final String finalField;

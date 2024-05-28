@@ -6,5 +6,5 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-void benchmarkVoidSemiSerialize({dynamic hint}) => RustLib.instance.api
-    .crateApiBenchmarkMiscBenchmarkVoidSemiSerialize(hint: hint);
+void benchmarkVoidSemiSerialize() =>
+    RustLib.instance.api.crateApiBenchmarkMiscBenchmarkVoidSemiSerialize();

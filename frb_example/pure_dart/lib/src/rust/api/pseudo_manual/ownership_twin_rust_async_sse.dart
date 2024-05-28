@@ -6,27 +6,26 @@
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<String> borrowStringTwinRustAsyncSse(
-        {required String arg, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOwnershipTwinRustAsyncSseBorrowStringTwinRustAsyncSse(
-            arg: arg, hint: hint);
+Future<String> borrowStringTwinRustAsyncSse({required String arg}) => RustLib
+    .instance.api
+    .crateApiPseudoManualOwnershipTwinRustAsyncSseBorrowStringTwinRustAsyncSse(
+        arg: arg);
 
-Future<String> borrowStrTwinRustAsyncSse({required String arg, dynamic hint}) =>
+Future<String> borrowStrTwinRustAsyncSse({required String arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualOwnershipTwinRustAsyncSseBorrowStrTwinRustAsyncSse(
-            arg: arg, hint: hint);
+            arg: arg);
 
-Future<int> borrowI32TwinRustAsyncSse({required int arg, dynamic hint}) =>
+Future<int> borrowI32TwinRustAsyncSse({required int arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualOwnershipTwinRustAsyncSseBorrowI32TwinRustAsyncSse(
-            arg: arg, hint: hint);
+            arg: arg);
 
 Future<SimpleStructForBorrowTwinRustAsyncSse> borrowStructTwinRustAsyncSse(
-        {required SimpleStructForBorrowTwinRustAsyncSse arg, dynamic hint}) =>
+        {required SimpleStructForBorrowTwinRustAsyncSse arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualOwnershipTwinRustAsyncSseBorrowStructTwinRustAsyncSse(
-            arg: arg, hint: hint);
+            arg: arg);
 
 class SimpleStructForBorrowTwinRustAsyncSse {
   final String one;

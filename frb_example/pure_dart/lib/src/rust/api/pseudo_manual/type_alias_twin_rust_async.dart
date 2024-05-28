@@ -7,23 +7,21 @@ import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<BigInt> handleTypeAliasIdTwinRustAsync(
-        {required BigInt input, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualTypeAliasTwinRustAsyncHandleTypeAliasIdTwinRustAsync(
-            input: input, hint: hint);
+Future<BigInt> handleTypeAliasIdTwinRustAsync({required BigInt input}) => RustLib
+    .instance.api
+    .crateApiPseudoManualTypeAliasTwinRustAsyncHandleTypeAliasIdTwinRustAsync(
+        input: input);
 
-Future<BigInt> handleTypeNestAliasIdTwinRustAsync(
-        {required BigInt input, dynamic hint}) =>
+Future<BigInt> handleTypeNestAliasIdTwinRustAsync({required BigInt input}) =>
     RustLib.instance.api
         .crateApiPseudoManualTypeAliasTwinRustAsyncHandleTypeNestAliasIdTwinRustAsync(
-            input: input, hint: hint);
+            input: input);
 
 Future<TestModelTwinRustAsync> handleTypeAliasModelTwinRustAsync(
-        {required BigInt input, dynamic hint}) =>
+        {required BigInt input}) =>
     RustLib.instance.api
         .crateApiPseudoManualTypeAliasTwinRustAsyncHandleTypeAliasModelTwinRustAsync(
-            input: input, hint: hint);
+            input: input);
 
 class TestModelTwinRustAsync {
   final BigInt id;

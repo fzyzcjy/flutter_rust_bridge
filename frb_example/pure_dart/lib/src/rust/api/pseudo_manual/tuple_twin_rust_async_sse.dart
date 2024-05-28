@@ -6,14 +6,12 @@
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<(String, int)> testTupleTwinRustAsyncSse(
-        {(String, int)? value, dynamic hint}) =>
+Future<(String, int)> testTupleTwinRustAsyncSse({(String, int)? value}) =>
     RustLib.instance.api
         .crateApiPseudoManualTupleTwinRustAsyncSseTestTupleTwinRustAsyncSse(
-            value: value, hint: hint);
+            value: value);
 
-Future<void> testTuple2TwinRustAsyncSse(
-        {required List<(String, int)> value, dynamic hint}) =>
+Future<void> testTuple2TwinRustAsyncSse({required List<(String, int)> value}) =>
     RustLib.instance.api
         .crateApiPseudoManualTupleTwinRustAsyncSseTestTuple2TwinRustAsyncSse(
-            value: value, hint: hint);
+            value: value);

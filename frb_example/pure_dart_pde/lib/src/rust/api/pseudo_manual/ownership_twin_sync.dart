@@ -6,24 +6,19 @@
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-String borrowStringTwinSync({required String arg, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOwnershipTwinSyncBorrowStringTwinSync(
-            arg: arg, hint: hint);
+String borrowStringTwinSync({required String arg}) => RustLib.instance.api
+    .crateApiPseudoManualOwnershipTwinSyncBorrowStringTwinSync(arg: arg);
 
-String borrowStrTwinSync({required String arg, dynamic hint}) =>
-    RustLib.instance.api.crateApiPseudoManualOwnershipTwinSyncBorrowStrTwinSync(
-        arg: arg, hint: hint);
+String borrowStrTwinSync({required String arg}) => RustLib.instance.api
+    .crateApiPseudoManualOwnershipTwinSyncBorrowStrTwinSync(arg: arg);
 
-int borrowI32TwinSync({required int arg, dynamic hint}) =>
-    RustLib.instance.api.crateApiPseudoManualOwnershipTwinSyncBorrowI32TwinSync(
-        arg: arg, hint: hint);
+int borrowI32TwinSync({required int arg}) => RustLib.instance.api
+    .crateApiPseudoManualOwnershipTwinSyncBorrowI32TwinSync(arg: arg);
 
 SimpleStructForBorrowTwinSync borrowStructTwinSync(
-        {required SimpleStructForBorrowTwinSync arg, dynamic hint}) =>
+        {required SimpleStructForBorrowTwinSync arg}) =>
     RustLib.instance.api
-        .crateApiPseudoManualOwnershipTwinSyncBorrowStructTwinSync(
-            arg: arg, hint: hint);
+        .crateApiPseudoManualOwnershipTwinSyncBorrowStructTwinSync(arg: arg);
 
 class SimpleStructForBorrowTwinSync {
   final String one;

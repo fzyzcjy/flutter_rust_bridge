@@ -24,21 +24,20 @@ class DroppableTwinRustAsync extends RustOpaque {
         .instance.api.rust_arc_decrement_strong_count_DroppableTwinRustAsyncPtr,
   );
 
-  Stream<int> createStreamTwinRustAsync({dynamic hint}) => RustLib.instance.api
-      .crateApiPseudoManualDroppingTwinRustAsyncDroppableTwinRustAsyncCreateStreamTwinRustAsync(
-          that: this, hint: hint);
+  Stream<int> createStreamTwinRustAsync() => RustLib.instance.api
+          .crateApiPseudoManualDroppingTwinRustAsyncDroppableTwinRustAsyncCreateStreamTwinRustAsync(
+        that: this,
+      );
 
-  static Future<int> getDropCountTwinRustAsync({dynamic hint}) => RustLib
+  static Future<int> getDropCountTwinRustAsync() => RustLib.instance.api
+      .crateApiPseudoManualDroppingTwinRustAsyncDroppableTwinRustAsyncGetDropCountTwinRustAsync();
+
+  static Future<DroppableTwinRustAsync> newTwinRustAsync() => RustLib
       .instance.api
-      .crateApiPseudoManualDroppingTwinRustAsyncDroppableTwinRustAsyncGetDropCountTwinRustAsync(
-          hint: hint);
+      .crateApiPseudoManualDroppingTwinRustAsyncDroppableTwinRustAsyncNewTwinRustAsync();
 
-  static Future<DroppableTwinRustAsync> newTwinRustAsync({dynamic hint}) => RustLib
-      .instance.api
-      .crateApiPseudoManualDroppingTwinRustAsyncDroppableTwinRustAsyncNewTwinRustAsync(
-          hint: hint);
-
-  Future<void> simpleMethodTwinRustAsync({dynamic hint}) => RustLib.instance.api
-      .crateApiPseudoManualDroppingTwinRustAsyncDroppableTwinRustAsyncSimpleMethodTwinRustAsync(
-          that: this, hint: hint);
+  Future<void> simpleMethodTwinRustAsync() => RustLib.instance.api
+          .crateApiPseudoManualDroppingTwinRustAsyncDroppableTwinRustAsyncSimpleMethodTwinRustAsync(
+        that: this,
+      );
 }

@@ -7,12 +7,11 @@ import '../frb_generated.dart';
 import 'misc_no_twin_example_b.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<void> sameFunctionNameInDifferentFiles({dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiMiscNoTwinExampleASameFunctionNameInDifferentFiles(hint: hint);
+Future<void> sameFunctionNameInDifferentFiles() => RustLib.instance.api
+    .crateApiMiscNoTwinExampleASameFunctionNameInDifferentFiles();
 
-Future<void> renamedFunction({dynamic hint}) => RustLib.instance.api
-    .crateApiMiscNoTwinExampleAFunctionWithCustomNameTwinNormal(hint: hint);
+Future<void> renamedFunction() => RustLib.instance.api
+    .crateApiMiscNoTwinExampleAFunctionWithCustomNameTwinNormal();
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DeliberateFailSanityCheckTwinNormal>>
 @sealed
@@ -33,10 +32,8 @@ class DeliberateFailSanityCheckTwinNormal extends RustOpaque {
         .rust_arc_decrement_strong_count_DeliberateFailSanityCheckTwinNormalPtr,
   );
 
-  static Future<void> dummyFunctionTwinNormal({dynamic hint}) => RustLib
-      .instance.api
-      .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalDummyFunctionTwinNormal(
-          hint: hint);
+  static Future<void> dummyFunctionTwinNormal() => RustLib.instance.api
+      .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalDummyFunctionTwinNormal();
 
   Uint8List get deliberateBadFieldA => RustLib.instance.api
           .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetDeliberateBadFieldA(
@@ -116,16 +113,14 @@ class ItemContainerSolutionOneTwinNormal extends RustOpaque {
         .rust_arc_decrement_strong_count_ItemContainerSolutionOneTwinNormalPtr,
   );
 
-  static Future<ItemContainerSolutionOneTwinNormal> createTwinNormal(
-          {dynamic hint}) =>
-      RustLib.instance.api
-          .crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalCreateTwinNormal(
-              hint: hint);
-
-  Future<Int32List> getItemContentsTwinNormal({dynamic hint}) => RustLib
+  static Future<ItemContainerSolutionOneTwinNormal> createTwinNormal() => RustLib
       .instance.api
-      .crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalGetItemContentsTwinNormal(
-          that: this, hint: hint);
+      .crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalCreateTwinNormal();
+
+  Future<Int32List> getItemContentsTwinNormal() => RustLib.instance.api
+          .crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalGetItemContentsTwinNormal(
+        that: this,
+      );
 
   String get name => RustLib.instance.api
           .crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalGetName(
@@ -174,9 +169,10 @@ class StructInMiscNoTwinExampleA extends RustOpaque {
         .rust_arc_decrement_strong_count_StructInMiscNoTwinExampleAPtr,
   );
 
-  Future<void> sampleFunctionA({dynamic hint}) => RustLib.instance.api
-      .crateApiMiscNoTwinExampleAStructInMiscNoTwinExampleASampleFunctionA(
-          that: this, hint: hint);
+  Future<void> sampleFunctionA() => RustLib.instance.api
+          .crateApiMiscNoTwinExampleAStructInMiscNoTwinExampleASampleFunctionA(
+        that: this,
+      );
 }
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithImplBlockInMultiFile>>
@@ -197,13 +193,15 @@ class StructWithImplBlockInMultiFile extends RustOpaque {
         .rust_arc_decrement_strong_count_StructWithImplBlockInMultiFilePtr,
   );
 
-  Future<void> methodInA({dynamic hint}) => RustLib.instance.api
-      .crateApiMiscNoTwinExampleAStructWithImplBlockInMultiFileMethodInA(
-          that: this, hint: hint);
+  Future<void> methodInA() => RustLib.instance.api
+          .crateApiMiscNoTwinExampleAStructWithImplBlockInMultiFileMethodInA(
+        that: this,
+      );
 
-  Future<void> methodInB({dynamic hint}) => RustLib.instance.api
-      .crateApiMiscNoTwinExampleBStructWithImplBlockInMultiFileMethodInB(
-          that: this, hint: hint);
+  Future<void> methodInB() => RustLib.instance.api
+          .crateApiMiscNoTwinExampleBStructWithImplBlockInMultiFileMethodInB(
+        that: this,
+      );
 }
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithSimpleSetterTwinNormal>>
@@ -225,10 +223,8 @@ class StructWithSimpleSetterTwinNormal extends RustOpaque {
         .rust_arc_decrement_strong_count_StructWithSimpleSetterTwinNormalPtr,
   );
 
-  factory StructWithSimpleSetterTwinNormal({dynamic hint}) =>
-      RustLib.instance.api
-          .crateApiMiscNoTwinExampleAStructWithSimpleSetterTwinNormalNew(
-              hint: hint);
+  factory StructWithSimpleSetterTwinNormal() => RustLib.instance.api
+      .crateApiMiscNoTwinExampleAStructWithSimpleSetterTwinNormalNew();
 
   int get simpleGetter => RustLib.instance.api
           .crateApiMiscNoTwinExampleAStructWithSimpleSetterTwinNormalSimpleGetter(
@@ -249,16 +245,14 @@ class ItemContainerSolutionTwoTwinNormal {
     required this.items,
   });
 
-  static Future<ItemContainerSolutionTwoTwinNormal> createTwinNormal(
-          {dynamic hint}) =>
-      RustLib.instance.api
-          .crateApiMiscNoTwinExampleAItemContainerSolutionTwoTwinNormalCreateTwinNormal(
-              hint: hint);
-
-  Future<Int32List> getItemContentsTwinNormal({dynamic hint}) => RustLib
+  static Future<ItemContainerSolutionTwoTwinNormal> createTwinNormal() => RustLib
       .instance.api
-      .crateApiMiscNoTwinExampleAItemContainerSolutionTwoTwinNormalGetItemContentsTwinNormal(
-          that: this, hint: hint);
+      .crateApiMiscNoTwinExampleAItemContainerSolutionTwoTwinNormalCreateTwinNormal();
+
+  Future<Int32List> getItemContentsTwinNormal() => RustLib.instance.api
+          .crateApiMiscNoTwinExampleAItemContainerSolutionTwoTwinNormalGetItemContentsTwinNormal(
+        that: this,
+      );
 
   @override
   int get hashCode => name.hashCode ^ items.hashCode;
@@ -279,9 +273,10 @@ class StructWithCustomNameMethodTwinNormal {
     required this.field0,
   });
 
-  void renamedMethod({dynamic hint}) => RustLib.instance.api
-      .crateApiMiscNoTwinExampleAStructWithCustomNameMethodTwinNormalMethodWithCustomNameTwinNormal(
-          that: this, hint: hint);
+  void renamedMethod() => RustLib.instance.api
+          .crateApiMiscNoTwinExampleAStructWithCustomNameMethodTwinNormalMethodWithCustomNameTwinNormal(
+        that: this,
+      );
 
   @override
   int get hashCode => field0.hashCode;
@@ -298,11 +293,10 @@ class StructWithImplBlockInAnotherFile {
   const StructWithImplBlockInAnotherFile();
 
   static Future<void> f(
-          {required StructWithImplBlockInAnotherFileDependency arg,
-          dynamic hint}) =>
+          {required StructWithImplBlockInAnotherFileDependency arg}) =>
       RustLib.instance.api
           .crateApiMiscNoTwinExampleAStructWithImplBlockInAnotherFileF(
-              arg: arg, hint: hint);
+              arg: arg);
 
   @override
   int get hashCode => 0;

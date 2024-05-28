@@ -7,22 +7,19 @@ import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:uuid/uuid.dart';
 
-UuidValue handleUuidTwinSyncSse({required UuidValue id, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualUuidTypeTwinSyncSseHandleUuidTwinSyncSse(
-            id: id, hint: hint);
+UuidValue handleUuidTwinSyncSse({required UuidValue id}) => RustLib.instance.api
+    .crateApiPseudoManualUuidTypeTwinSyncSseHandleUuidTwinSyncSse(id: id);
 
-List<UuidValue> handleUuidsTwinSyncSse(
-        {required List<UuidValue> ids, dynamic hint}) =>
+List<UuidValue> handleUuidsTwinSyncSse({required List<UuidValue> ids}) =>
     RustLib.instance.api
         .crateApiPseudoManualUuidTypeTwinSyncSseHandleUuidsTwinSyncSse(
-            ids: ids, hint: hint);
+            ids: ids);
 
 FeatureUuidTwinSyncSse handleNestedUuidsTwinSyncSse(
-        {required FeatureUuidTwinSyncSse ids, dynamic hint}) =>
+        {required FeatureUuidTwinSyncSse ids}) =>
     RustLib.instance.api
         .crateApiPseudoManualUuidTypeTwinSyncSseHandleNestedUuidsTwinSyncSse(
-            ids: ids, hint: hint);
+            ids: ids);
 
 class FeatureUuidTwinSyncSse {
   final UuidValue one;

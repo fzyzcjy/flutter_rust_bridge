@@ -7,10 +7,10 @@ import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<NewTypeIntTwinSse> handleNewtypeTwinSse(
-        {required NewTypeIntTwinSse arg, dynamic hint}) =>
+        {required NewTypeIntTwinSse arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualNewtypePatternTwinSseHandleNewtypeTwinSse(
-            arg: arg, hint: hint);
+            arg: arg);
 
 class NewTypeIntTwinSse {
   final PlatformInt64 field0;
