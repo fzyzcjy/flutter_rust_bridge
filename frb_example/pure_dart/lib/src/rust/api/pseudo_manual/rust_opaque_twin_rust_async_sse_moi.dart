@@ -96,12 +96,14 @@ Future<FrbOpaqueReturnTwinRustAsyncSseMoi>
 // Rust type: RustOpaqueMoi<Box < dyn DartDebugTwinRustAsyncSseMoi >>
 @sealed
 class BoxDartDebugTwinRustAsyncSseMoi extends RustOpaque {
-  BoxDartDebugTwinRustAsyncSseMoi.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
+  // Not to be used by end users
+  BoxDartDebugTwinRustAsyncSseMoi.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
-  BoxDartDebugTwinRustAsyncSseMoi.sseDecode(
+  // Not to be used by end users
+  BoxDartDebugTwinRustAsyncSseMoi.frbInternalSseDecode(
       BigInt ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib.instance.api
@@ -116,12 +118,14 @@ class BoxDartDebugTwinRustAsyncSseMoi extends RustOpaque {
 // Rust type: RustOpaqueMoi<FrbOpaqueReturnTwinRustAsyncSseMoi>
 @sealed
 class FrbOpaqueReturnTwinRustAsyncSseMoi extends RustOpaque {
-  FrbOpaqueReturnTwinRustAsyncSseMoi.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
+  // Not to be used by end users
+  FrbOpaqueReturnTwinRustAsyncSseMoi.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
-  FrbOpaqueReturnTwinRustAsyncSseMoi.sseDecode(
+  // Not to be used by end users
+  FrbOpaqueReturnTwinRustAsyncSseMoi.frbInternalSseDecode(
       BigInt ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib.instance.api
@@ -136,11 +140,14 @@ class FrbOpaqueReturnTwinRustAsyncSseMoi extends RustOpaque {
 // Rust type: RustOpaqueMoi<HideDataTwinRustAsyncSseMoi>
 @sealed
 class HideDataTwinRustAsyncSseMoi extends RustOpaque {
-  HideDataTwinRustAsyncSseMoi.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
+  // Not to be used by end users
+  HideDataTwinRustAsyncSseMoi.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
-  HideDataTwinRustAsyncSseMoi.sseDecode(BigInt ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+  // Not to be used by end users
+  HideDataTwinRustAsyncSseMoi.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib.instance.api
@@ -171,12 +178,14 @@ class HideDataTwinRustAsyncSseMoiArray2
 // Rust type: RustOpaqueMoi<Mutex < HideDataTwinRustAsyncSseMoi >>
 @sealed
 class MutexHideDataTwinRustAsyncSseMoi extends RustOpaque {
-  MutexHideDataTwinRustAsyncSseMoi.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
+  // Not to be used by end users
+  MutexHideDataTwinRustAsyncSseMoi.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
-  MutexHideDataTwinRustAsyncSseMoi.sseDecode(
+  // Not to be used by end users
+  MutexHideDataTwinRustAsyncSseMoi.frbInternalSseDecode(
       BigInt ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib.instance.api
@@ -191,12 +200,14 @@ class MutexHideDataTwinRustAsyncSseMoi extends RustOpaque {
 // Rust type: RustOpaqueMoi<NonCloneDataTwinRustAsyncSseMoi>
 @sealed
 class NonCloneDataTwinRustAsyncSseMoi extends RustOpaque {
-  NonCloneDataTwinRustAsyncSseMoi.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
+  // Not to be used by end users
+  NonCloneDataTwinRustAsyncSseMoi.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
-  NonCloneDataTwinRustAsyncSseMoi.sseDecode(
+  // Not to be used by end users
+  NonCloneDataTwinRustAsyncSseMoi.frbInternalSseDecode(
       BigInt ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib.instance.api
@@ -211,12 +222,14 @@ class NonCloneDataTwinRustAsyncSseMoi extends RustOpaque {
 // Rust type: RustOpaqueMoi<RwLock < HideDataTwinRustAsyncSseMoi >>
 @sealed
 class RwLockHideDataTwinRustAsyncSseMoi extends RustOpaque {
-  RwLockHideDataTwinRustAsyncSseMoi.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
+  // Not to be used by end users
+  RwLockHideDataTwinRustAsyncSseMoi.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
-  RwLockHideDataTwinRustAsyncSseMoi.sseDecode(
+  // Not to be used by end users
+  RwLockHideDataTwinRustAsyncSseMoi.frbInternalSseDecode(
       BigInt ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib.instance.api

@@ -36,10 +36,13 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
                 "
             // Rust type: {rust_api_type}
             @sealed class {dart_api_type} extends RustOpaque {{
-                {dart_api_type}.dcoDecode(List<dynamic> wire): super.dcoDecode(wire, _kStaticData);
+                // Not to be used by end users
+                {dart_api_type}.frbInternalDcoDecode(List<dynamic> wire):
+                    super.frbInternalDcoDecode(wire, _kStaticData);
 
-                {dart_api_type}.sseDecode(BigInt ptr, int externalSizeOnNative):
-                    super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+                // Not to be used by end users
+                {dart_api_type}.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative):
+                    super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
                 static final _kStaticData = RustArcStaticData(
                     rustArcIncrementStrongCount: {dart_api_instance}.rust_arc_increment_strong_count_{dart_api_type},

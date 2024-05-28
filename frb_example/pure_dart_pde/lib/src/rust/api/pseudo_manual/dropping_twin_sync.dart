@@ -11,11 +11,13 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DroppableTwinSync>>
 @sealed
 class DroppableTwinSync extends RustOpaque {
-  DroppableTwinSync.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
+  // Not to be used by end users
+  DroppableTwinSync.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
-  DroppableTwinSync.sseDecode(BigInt ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+  // Not to be used by end users
+  DroppableTwinSync.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:

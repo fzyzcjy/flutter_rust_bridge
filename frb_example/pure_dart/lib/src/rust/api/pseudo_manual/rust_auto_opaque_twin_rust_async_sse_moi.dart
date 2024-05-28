@@ -230,12 +230,14 @@ Future<int> rustAutoOpaqueBorrowAndBorrowTwinRustAsyncSseMoi(
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn HelloTraitTwinRustAsyncSseMoi >>>
 @sealed
 class BoxHelloTraitTwinRustAsyncSseMoi extends RustOpaque {
-  BoxHelloTraitTwinRustAsyncSseMoi.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
+  // Not to be used by end users
+  BoxHelloTraitTwinRustAsyncSseMoi.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
-  BoxHelloTraitTwinRustAsyncSseMoi.sseDecode(
+  // Not to be used by end users
+  BoxHelloTraitTwinRustAsyncSseMoi.frbInternalSseDecode(
       BigInt ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib.instance.api
@@ -250,11 +252,14 @@ class BoxHelloTraitTwinRustAsyncSseMoi extends RustOpaque {
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn MyTraitTwinRustAsyncSseMoi + Send + Sync >>>
 @sealed
 class BoxMyTraitTwinRustAsyncSseMoi extends RustOpaque {
-  BoxMyTraitTwinRustAsyncSseMoi.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
+  // Not to be used by end users
+  BoxMyTraitTwinRustAsyncSseMoi.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
-  BoxMyTraitTwinRustAsyncSseMoi.sseDecode(BigInt ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+  // Not to be used by end users
+  BoxMyTraitTwinRustAsyncSseMoi.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib.instance.api
@@ -269,13 +274,15 @@ class BoxMyTraitTwinRustAsyncSseMoi extends RustOpaque {
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncSseMoi>>
 @sealed
 class EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncSseMoi extends RustOpaque {
-  EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncSseMoi.dcoDecode(
+  // Not to be used by end users
+  EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncSseMoi.frbInternalDcoDecode(
       List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
-  EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncSseMoi.sseDecode(
+  // Not to be used by end users
+  EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncSseMoi.frbInternalSseDecode(
       BigInt ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib.instance.api
@@ -290,12 +297,14 @@ class EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncSseMoi extends RustOpaque {
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleEnumTwinRustAsyncSseMoi>>
 @sealed
 class NonCloneSimpleEnumTwinRustAsyncSseMoi extends RustOpaque {
-  NonCloneSimpleEnumTwinRustAsyncSseMoi.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
+  // Not to be used by end users
+  NonCloneSimpleEnumTwinRustAsyncSseMoi.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
-  NonCloneSimpleEnumTwinRustAsyncSseMoi.sseDecode(
+  // Not to be used by end users
+  NonCloneSimpleEnumTwinRustAsyncSseMoi.frbInternalSseDecode(
       BigInt ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib.instance.api
@@ -310,12 +319,14 @@ class NonCloneSimpleEnumTwinRustAsyncSseMoi extends RustOpaque {
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinRustAsyncSseMoi>>
 @sealed
 class NonCloneSimpleTwinRustAsyncSseMoi extends RustOpaque {
-  NonCloneSimpleTwinRustAsyncSseMoi.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
+  // Not to be used by end users
+  NonCloneSimpleTwinRustAsyncSseMoi.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
-  NonCloneSimpleTwinRustAsyncSseMoi.sseDecode(
+  // Not to be used by end users
+  NonCloneSimpleTwinRustAsyncSseMoi.frbInternalSseDecode(
       BigInt ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib.instance.api
@@ -396,11 +407,14 @@ class NonCloneSimpleTwinRustAsyncSseMoi extends RustOpaque {
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueOneTwinRustAsyncSseMoi>>
 @sealed
 class OpaqueOneTwinRustAsyncSseMoi extends RustOpaque {
-  OpaqueOneTwinRustAsyncSseMoi.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
+  // Not to be used by end users
+  OpaqueOneTwinRustAsyncSseMoi.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
-  OpaqueOneTwinRustAsyncSseMoi.sseDecode(BigInt ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+  // Not to be used by end users
+  OpaqueOneTwinRustAsyncSseMoi.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib.instance.api
@@ -415,11 +429,14 @@ class OpaqueOneTwinRustAsyncSseMoi extends RustOpaque {
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueTwoTwinRustAsyncSseMoi>>
 @sealed
 class OpaqueTwoTwinRustAsyncSseMoi extends RustOpaque {
-  OpaqueTwoTwinRustAsyncSseMoi.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
+  // Not to be used by end users
+  OpaqueTwoTwinRustAsyncSseMoi.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
-  OpaqueTwoTwinRustAsyncSseMoi.sseDecode(BigInt ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+  // Not to be used by end users
+  OpaqueTwoTwinRustAsyncSseMoi.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib.instance.api
@@ -435,13 +452,15 @@ class OpaqueTwoTwinRustAsyncSseMoi extends RustOpaque {
 @sealed
 class StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi
     extends RustOpaque {
-  StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi.dcoDecode(
+  // Not to be used by end users
+  StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi.frbInternalDcoDecode(
       List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
-  StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi.sseDecode(
+  // Not to be used by end users
+  StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi.frbInternalSseDecode(
       BigInt ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib.instance.api

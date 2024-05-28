@@ -9,12 +9,14 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ConstructorOpaqueStructTwinNormal>>
 @sealed
 class ConstructorOpaqueStructTwinNormal extends RustOpaque {
-  ConstructorOpaqueStructTwinNormal.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
+  // Not to be used by end users
+  ConstructorOpaqueStructTwinNormal.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
-  ConstructorOpaqueStructTwinNormal.sseDecode(
+  // Not to be used by end users
+  ConstructorOpaqueStructTwinNormal.frbInternalSseDecode(
       BigInt ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib.instance.api
@@ -48,12 +50,14 @@ class ConstructorOpaqueStructTwinNormal extends RustOpaque {
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ConstructorOpaqueSyncStructTwinNormal>>
 @sealed
 class ConstructorOpaqueSyncStructTwinNormal extends RustOpaque {
-  ConstructorOpaqueSyncStructTwinNormal.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
+  // Not to be used by end users
+  ConstructorOpaqueSyncStructTwinNormal.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
-  ConstructorOpaqueSyncStructTwinNormal.sseDecode(
+  // Not to be used by end users
+  ConstructorOpaqueSyncStructTwinNormal.frbInternalSseDecode(
       BigInt ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib.instance.api
