@@ -35,7 +35,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('NaiveDate', () async {
-    final date = DateTime.utc(2022, 09, 10, 0, 0, 0, 0, 0);
+    final date = DateTime.utc(2022, 09, 10);
     final resp = await naivedateTwinNormal(d: date);
     expect(resp.year, date.year);
     expect(resp.month, date.month);
