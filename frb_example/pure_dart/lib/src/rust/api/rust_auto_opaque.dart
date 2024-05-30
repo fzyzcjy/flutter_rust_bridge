@@ -11,6 +11,7 @@ part 'rust_auto_opaque.freezed.dart';
 
 // The type `HelloOneStructTwinNormal` is not used by any `pub` functions, thus it is ignored.
 // The type `HelloTwoEnumTwinNormal` is not used by any `pub` functions, thus it is ignored.
+// The functions `f`, `func_hello`, `func_hello` are not `pub`, thus are ignored.
 
 Future<void> rustAutoOpaqueArgOwnTwinNormal(
         {required NonCloneSimpleTwinNormal arg, required int expect}) =>

@@ -96,20 +96,26 @@ fn generate_end_api_text(
 
     let header = header.all_code();
 
-    let unused_types = item
-        .unused_types
-        .iter()
-        .sorted()
+    let unused_types = (item.unused_types.iter().sorted())
         .map(|t| {
             format!("// The type `{t}` is not used by any `pub` functions, thus it is ignored.\n")
         })
         .join("");
 
+    let skipped_functions = if item.skipped_functions.is_empty() {
+        "".to_owned()
+    } else {
+        format!(
+            "// The functions {} are not `pub`, thus are ignored.\n",
+            (item.skipped_functions.iter().map(|x| format!("`{x}`"))).join(", "),
+        )
+    };
+
     Ok(format!(
         "
         {header}
 
-        {unused_types}
+        {unused_types}{skipped_functions}
 
         {funcs}
 

@@ -11,6 +11,7 @@ part 'rust_auto_opaque_twin_sync_sse.freezed.dart';
 
 // The type `HelloOneStructTwinSyncSse` is not used by any `pub` functions, thus it is ignored.
 // The type `HelloTwoEnumTwinSyncSse` is not used by any `pub` functions, thus it is ignored.
+// The functions `f`, `func_hello`, `func_hello` are not `pub`, thus are ignored.
 
 void rustAutoOpaqueArgOwnTwinSyncSse(
         {required NonCloneSimpleTwinSyncSse arg, required int expect}) =>

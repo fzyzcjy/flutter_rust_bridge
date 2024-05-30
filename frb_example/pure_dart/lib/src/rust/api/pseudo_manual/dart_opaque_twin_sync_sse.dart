@@ -10,6 +10,7 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'dart_opaque_twin_sync_sse.freezed.dart';
 
 // The type `DART_OPAQUE` is not used by any `pub` functions, thus it is ignored.
+// The functions `deref`, `initialize` are not `pub`, thus are ignored.
 
 String asyncAcceptDartOpaqueTwinSyncSse({required Object opaque}) => RustLib
     .instance.api

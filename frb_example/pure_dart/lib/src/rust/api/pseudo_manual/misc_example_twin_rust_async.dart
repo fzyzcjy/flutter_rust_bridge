@@ -10,6 +10,7 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'misc_example_twin_rust_async.freezed.dart';
 
 // The type `MySizeFreezedTwinRustAsync` is not used by any `pub` functions, thus it is ignored.
+// The functions `visibility_restricted_func_twin_rust_async`, `fmt`, `clone`, `fmt`, `clone`, `fmt`, `clone`, `fmt`, `clone` are not `pub`, thus are ignored.
 
 Future<MyTreeNodeTwinRustAsync> handleComplexStructTwinRustAsync(
         {required MyTreeNodeTwinRustAsync s}) =>

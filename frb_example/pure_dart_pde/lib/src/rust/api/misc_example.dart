@@ -10,6 +10,7 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'misc_example.freezed.dart';
 
 // The type `MySizeFreezedTwinNormal` is not used by any `pub` functions, thus it is ignored.
+// The functions `visibility_restricted_func_twin_normal`, `fmt`, `clone`, `fmt`, `clone`, `fmt`, `clone`, `fmt`, `clone` are not `pub`, thus are ignored.
 
 Future<MyTreeNodeTwinNormal> handleComplexStructTwinNormal(
         {required MyTreeNodeTwinNormal s}) =>

@@ -10,6 +10,7 @@ import 'package:meta/meta.dart' as meta;
 part 'attribute_twin_rust_async_sse.freezed.dart';
 
 // The type `IgnoredStructTwinRustAsyncSse` is not used by any `pub` functions, thus it is ignored.
+// The functions `fmt`, `clone` are not `pub`, thus are ignored.
 
 Future<void> handleCustomizedStructTwinRustAsyncSse(
         {required CustomizedTwinRustAsyncSse val}) =>
