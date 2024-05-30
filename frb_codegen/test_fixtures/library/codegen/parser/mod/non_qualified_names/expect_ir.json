@@ -5,6 +5,7 @@
   "funcs": [
     {
       "accessor": null,
+      "arg_mode": "Named",
       "codec_mode_pack": {
         "dart2rust": "Cst",
         "rust2dart": "Dco"
@@ -70,6 +71,7 @@
     },
     {
       "accessor": null,
+      "arg_mode": "Named",
       "codec_mode_pack": {
         "dart2rust": "Cst",
         "rust2dart": "Dco"
