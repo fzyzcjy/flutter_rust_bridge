@@ -6,11 +6,10 @@
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-VecOfPrimitivePackTwinSync handleVecOfPrimitiveTwinSync(
-        {required int n, dynamic hint}) =>
+VecOfPrimitivePackTwinSync handleVecOfPrimitiveTwinSync({required int n}) =>
     RustLib.instance.api
         .crateApiPseudoManualPrimitiveListMiscTwinSyncHandleVecOfPrimitiveTwinSync(
-            n: n, hint: hint);
+            n: n);
 
 class VecOfPrimitivePackTwinSync {
   final Int8List int8List;

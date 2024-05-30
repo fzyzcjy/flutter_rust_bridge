@@ -13,14 +13,13 @@ part 'attribute.freezed.dart';
 // The functions `fmt`, `clone` are not `pub`, thus are ignored.
 
 Future<void> handleCustomizedStructTwinNormal(
-        {required CustomizedTwinNormal val, dynamic hint}) =>
-    RustLib.instance.api.crateApiAttributeHandleCustomizedStructTwinNormal(
-        val: val, hint: hint);
+        {required CustomizedTwinNormal val}) =>
+    RustLib.instance.api
+        .crateApiAttributeHandleCustomizedStructTwinNormal(val: val);
 
 Future<UserIdTwinNormal> nextUserIdTwinNormal(
-        {UserIdTwinNormal userId = const UserIdTwinNormal(), dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiAttributeNextUserIdTwinNormal(userId: userId, hint: hint);
+        {UserIdTwinNormal userId = const UserIdTwinNormal()}) =>
+    RustLib.instance.api.crateApiAttributeNextUserIdTwinNormal(userId: userId);
 
 class CustomizedTwinNormal {
   final String finalField;

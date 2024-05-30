@@ -9,9 +9,9 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 // The functions `fmt` are not `pub`, thus are ignored.
 
 Future<NewTypeIntTwinNormal> handleNewtypeTwinNormal(
-        {required NewTypeIntTwinNormal arg, dynamic hint}) =>
+        {required NewTypeIntTwinNormal arg}) =>
     RustLib.instance.api
-        .crateApiNewtypePatternHandleNewtypeTwinNormal(arg: arg, hint: hint);
+        .crateApiNewtypePatternHandleNewtypeTwinNormal(arg: arg);
 
 class NewTypeIntTwinNormal {
   final PlatformInt64 field0;

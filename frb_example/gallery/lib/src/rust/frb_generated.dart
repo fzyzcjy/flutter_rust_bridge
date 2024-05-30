@@ -69,8 +69,7 @@ abstract class RustLibApi extends BaseApi {
       {required Size imageSize,
       required Point zoomPoint,
       required double scale,
-      required int numThreads,
-      dynamic hint});
+      required int numThreads});
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -86,8 +85,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required Size imageSize,
       required Point zoomPoint,
       required double scale,
-      required int numThreads,
-      dynamic hint}) {
+      required int numThreads}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -105,7 +103,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       constMeta: kCrateApiMandelbrotDrawMandelbrotConstMeta,
       argValues: [imageSize, zoomPoint, scale, numThreads],
       apiImpl: this,
-      hint: hint,
     ));
   }
 

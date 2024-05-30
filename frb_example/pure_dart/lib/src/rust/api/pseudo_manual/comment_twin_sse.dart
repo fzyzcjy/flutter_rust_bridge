@@ -10,25 +10,21 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 // The type `SimpleEnumWithCommentsTwinSse` is not used by any `pub` functions, thus it is ignored.
 
 /// This is single line comment
-Future<void> functionWithCommentsTripleSlashSingleLineTwinSse({dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualCommentTwinSseFunctionWithCommentsTripleSlashSingleLineTwinSse(
-            hint: hint);
+Future<void> functionWithCommentsTripleSlashSingleLineTwinSse() => RustLib
+    .instance.api
+    .crateApiPseudoManualCommentTwinSseFunctionWithCommentsTripleSlashSingleLineTwinSse();
 
 /// This is first line
 /// This is second line
-Future<void> functionWithCommentsTripleSlashMultiLineTwinSse({dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualCommentTwinSseFunctionWithCommentsTripleSlashMultiLineTwinSse(
-            hint: hint);
+Future<void> functionWithCommentsTripleSlashMultiLineTwinSse() => RustLib
+    .instance.api
+    .crateApiPseudoManualCommentTwinSseFunctionWithCommentsTripleSlashMultiLineTwinSse();
 
 /// Multiline comments are fine,
 /// but they are not preferred in Rust nor in Dart.
 /// Newlines are preserved.
-Future<void> functionWithCommentsSlashStarStarTwinSse({dynamic hint}) => RustLib
-    .instance.api
-    .crateApiPseudoManualCommentTwinSseFunctionWithCommentsSlashStarStarTwinSse(
-        hint: hint);
+Future<void> functionWithCommentsSlashStarStarTwinSse() => RustLib.instance.api
+    .crateApiPseudoManualCommentTwinSseFunctionWithCommentsSlashStarStarTwinSse();
 
 /// Comments on structs
 class StructWithCommentsTwinSse {
@@ -40,15 +36,14 @@ class StructWithCommentsTwinSse {
   });
 
   /// Documentation on an instance method
-  Future<void> instanceMethodTwinSse({dynamic hint}) => RustLib.instance.api
-      .crateApiPseudoManualCommentTwinSseStructWithCommentsTwinSseInstanceMethodTwinSse(
-          that: this, hint: hint);
+  Future<void> instanceMethodTwinSse() => RustLib.instance.api
+          .crateApiPseudoManualCommentTwinSseStructWithCommentsTwinSseInstanceMethodTwinSse(
+        that: this,
+      );
 
   /// Documentation on a static method
-  static Future<void> staticMethodTwinSse({dynamic hint}) => RustLib
-      .instance.api
-      .crateApiPseudoManualCommentTwinSseStructWithCommentsTwinSseStaticMethodTwinSse(
-          hint: hint);
+  static Future<void> staticMethodTwinSse() => RustLib.instance.api
+      .crateApiPseudoManualCommentTwinSseStructWithCommentsTwinSseStaticMethodTwinSse();
 
   @override
   int get hashCode => fieldWithComments.hashCode;

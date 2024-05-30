@@ -11,34 +11,33 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 // The functions `default`, `fmt`, `clone`, `fmt`, `clone`, `fmt` are not `pub`, thus are ignored.
 
 Future<double?> handleOptionalReturnTwinRustAsync(
-        {required double left, required double right, dynamic hint}) =>
+        {required double left, required double right}) =>
     RustLib.instance.api
         .crateApiPseudoManualOptionalTwinRustAsyncHandleOptionalReturnTwinRustAsync(
-            left: left, right: right, hint: hint);
+            left: left, right: right);
 
 Future<ElementTwinRustAsync?> handleOptionalStructTwinRustAsync(
-        {String? document, dynamic hint}) =>
+        {String? document}) =>
     RustLib.instance.api
         .crateApiPseudoManualOptionalTwinRustAsyncHandleOptionalStructTwinRustAsync(
-            document: document, hint: hint);
+            document: document);
 
 Future<ExoticOptionalsTwinRustAsync?> handleOptionalIncrementTwinRustAsync(
-        {ExoticOptionalsTwinRustAsync? opt, dynamic hint}) =>
+        {ExoticOptionalsTwinRustAsync? opt}) =>
     RustLib.instance.api
         .crateApiPseudoManualOptionalTwinRustAsyncHandleOptionalIncrementTwinRustAsync(
-            opt: opt, hint: hint);
+            opt: opt);
 
-Future<double> handleIncrementBoxedOptionalTwinRustAsync(
-        {double? opt, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinRustAsyncHandleIncrementBoxedOptionalTwinRustAsync(
-            opt: opt, hint: hint);
+Future<double> handleIncrementBoxedOptionalTwinRustAsync({double? opt}) => RustLib
+    .instance.api
+    .crateApiPseudoManualOptionalTwinRustAsyncHandleIncrementBoxedOptionalTwinRustAsync(
+        opt: opt);
 
 Future<OptVecsTwinRustAsync> handleVecOfOptsTwinRustAsync(
-        {required OptVecsTwinRustAsync opt, dynamic hint}) =>
+        {required OptVecsTwinRustAsync opt}) =>
     RustLib.instance.api
         .crateApiPseudoManualOptionalTwinRustAsyncHandleVecOfOptsTwinRustAsync(
-            opt: opt, hint: hint);
+            opt: opt);
 
 Future<String> handleOptionBoxArgumentsTwinRustAsync(
         {int? i8Box,
@@ -47,8 +46,7 @@ Future<String> handleOptionBoxArgumentsTwinRustAsync(
         PlatformInt64? i64Box,
         double? f64Box,
         bool? boolbox,
-        ExoticOptionalsTwinRustAsync? structbox,
-        dynamic hint}) =>
+        ExoticOptionalsTwinRustAsync? structbox}) =>
     RustLib.instance.api
         .crateApiPseudoManualOptionalTwinRustAsyncHandleOptionBoxArgumentsTwinRustAsync(
             i8Box: i8Box,
@@ -57,8 +55,7 @@ Future<String> handleOptionBoxArgumentsTwinRustAsync(
             i64Box: i64Box,
             f64Box: f64Box,
             boolbox: boolbox,
-            structbox: structbox,
-            hint: hint);
+            structbox: structbox);
 
 class AttributeTwinRustAsync {
   final String key;

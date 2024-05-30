@@ -10,22 +10,20 @@ part 'event_listener_twin_rust_async_sse.freezed.dart';
 
 // The functions `deref`, `initialize`, `clone` are not `pub`, thus are ignored.
 
-Future<Stream<EventTwinRustAsyncSse>> registerEventListenerTwinRustAsyncSse(
-        {dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualEventListenerTwinRustAsyncSseRegisterEventListenerTwinRustAsyncSse(
-            hint: hint);
-
-Future<void> closeEventListenerTwinRustAsyncSse({dynamic hint}) => RustLib
+Future<
+    Stream<
+        EventTwinRustAsyncSse>> registerEventListenerTwinRustAsyncSse() => RustLib
     .instance.api
-    .crateApiPseudoManualEventListenerTwinRustAsyncSseCloseEventListenerTwinRustAsyncSse(
-        hint: hint);
+    .crateApiPseudoManualEventListenerTwinRustAsyncSseRegisterEventListenerTwinRustAsyncSse();
+
+Future<void> closeEventListenerTwinRustAsyncSse() => RustLib.instance.api
+    .crateApiPseudoManualEventListenerTwinRustAsyncSseCloseEventListenerTwinRustAsyncSse();
 
 Future<void> createEventTwinRustAsyncSse(
-        {required String address, required String payload, dynamic hint}) =>
+        {required String address, required String payload}) =>
     RustLib.instance.api
         .crateApiPseudoManualEventListenerTwinRustAsyncSseCreateEventTwinRustAsyncSse(
-            address: address, payload: payload, hint: hint);
+            address: address, payload: payload);
 
 @freezed
 class EventTwinRustAsyncSse with _$EventTwinRustAsyncSse {
@@ -34,8 +32,8 @@ class EventTwinRustAsyncSse with _$EventTwinRustAsyncSse {
     required String address,
     required String payload,
   }) = _EventTwinRustAsyncSse;
-  Future<String> asStringTwinRustAsyncSse({dynamic hint}) => RustLib
-      .instance.api
-      .crateApiPseudoManualEventListenerTwinRustAsyncSseEventTwinRustAsyncSseAsStringTwinRustAsyncSse(
-          that: this, hint: hint);
+  Future<String> asStringTwinRustAsyncSse() => RustLib.instance.api
+          .crateApiPseudoManualEventListenerTwinRustAsyncSseEventTwinRustAsyncSseAsStringTwinRustAsyncSse(
+        that: this,
+      );
 }

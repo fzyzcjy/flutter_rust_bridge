@@ -10,85 +10,67 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'rust_opaque_twin_rust_async.dart';
 part 'rust_opaque_twin_sync.freezed.dart';
 
-HideDataTwinSync createOpaqueTwinSync({dynamic hint}) => RustLib.instance.api
-    .crateApiPseudoManualRustOpaqueTwinSyncCreateOpaqueTwinSync(hint: hint);
+HideDataTwinSync createOpaqueTwinSync() => RustLib.instance.api
+    .crateApiPseudoManualRustOpaqueTwinSyncCreateOpaqueTwinSync();
 
-HideDataTwinSync? createOptionOpaqueTwinSync(
-        {HideDataTwinSync? opaque, dynamic hint}) =>
+HideDataTwinSync? createOptionOpaqueTwinSync({HideDataTwinSync? opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinSyncCreateOptionOpaqueTwinSync(
-            opaque: opaque, hint: hint);
+            opaque: opaque);
 
-EnumOpaqueTwinSyncArray5 createArrayOpaqueEnumTwinSync({dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustOpaqueTwinSyncCreateArrayOpaqueEnumTwinSync(
-            hint: hint);
+EnumOpaqueTwinSyncArray5 createArrayOpaqueEnumTwinSync() => RustLib.instance.api
+    .crateApiPseudoManualRustOpaqueTwinSyncCreateArrayOpaqueEnumTwinSync();
 
-String runEnumOpaqueTwinSync(
-        {required EnumOpaqueTwinSync opaque, dynamic hint}) =>
+String runEnumOpaqueTwinSync({required EnumOpaqueTwinSync opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinSyncRunEnumOpaqueTwinSync(
-            opaque: opaque, hint: hint);
+            opaque: opaque);
 
-String runOpaqueTwinSync({required HideDataTwinSync opaque, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustOpaqueTwinSyncRunOpaqueTwinSync(
-            opaque: opaque, hint: hint);
+String runOpaqueTwinSync({required HideDataTwinSync opaque}) => RustLib
+    .instance.api
+    .crateApiPseudoManualRustOpaqueTwinSyncRunOpaqueTwinSync(opaque: opaque);
 
-String runOpaqueWithDelayTwinSync(
-        {required HideDataTwinSync opaque, dynamic hint}) =>
+String runOpaqueWithDelayTwinSync({required HideDataTwinSync opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinSyncRunOpaqueWithDelayTwinSync(
-            opaque: opaque, hint: hint);
+            opaque: opaque);
 
-HideDataTwinSyncArray2 opaqueArrayTwinSync({dynamic hint}) =>
+HideDataTwinSyncArray2 opaqueArrayTwinSync() => RustLib.instance.api
+    .crateApiPseudoManualRustOpaqueTwinSyncOpaqueArrayTwinSync();
+
+String runNonCloneTwinSync({required NonCloneDataTwinSync clone}) => RustLib
+    .instance.api
+    .crateApiPseudoManualRustOpaqueTwinSyncRunNonCloneTwinSync(clone: clone);
+
+void opaqueArrayRunTwinSync({required HideDataTwinSyncArray2 data}) => RustLib
+    .instance.api
+    .crateApiPseudoManualRustOpaqueTwinSyncOpaqueArrayRunTwinSync(data: data);
+
+List<HideDataTwinSync> opaqueVecTwinSync() => RustLib.instance.api
+    .crateApiPseudoManualRustOpaqueTwinSyncOpaqueVecTwinSync();
+
+void opaqueVecRunTwinSync({required List<HideDataTwinSync> data}) =>
     RustLib.instance.api
-        .crateApiPseudoManualRustOpaqueTwinSyncOpaqueArrayTwinSync(hint: hint);
+        .crateApiPseudoManualRustOpaqueTwinSyncOpaqueVecRunTwinSync(data: data);
 
-String runNonCloneTwinSync(
-        {required NonCloneDataTwinSync clone, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustOpaqueTwinSyncRunNonCloneTwinSync(
-            clone: clone, hint: hint);
+OpaqueNestedTwinSync createNestedOpaqueTwinSync() => RustLib.instance.api
+    .crateApiPseudoManualRustOpaqueTwinSyncCreateNestedOpaqueTwinSync();
 
-void opaqueArrayRunTwinSync(
-        {required HideDataTwinSyncArray2 data, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustOpaqueTwinSyncOpaqueArrayRunTwinSync(
-            data: data, hint: hint);
-
-List<HideDataTwinSync> opaqueVecTwinSync({dynamic hint}) => RustLib.instance.api
-    .crateApiPseudoManualRustOpaqueTwinSyncOpaqueVecTwinSync(hint: hint);
-
-void opaqueVecRunTwinSync(
-        {required List<HideDataTwinSync> data, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustOpaqueTwinSyncOpaqueVecRunTwinSync(
-            data: data, hint: hint);
-
-OpaqueNestedTwinSync createNestedOpaqueTwinSync({dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustOpaqueTwinSyncCreateNestedOpaqueTwinSync(
-            hint: hint);
-
-void runNestedOpaqueTwinSync(
-        {required OpaqueNestedTwinSync opaque, dynamic hint}) =>
+void runNestedOpaqueTwinSync({required OpaqueNestedTwinSync opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinSyncRunNestedOpaqueTwinSync(
-            opaque: opaque, hint: hint);
+            opaque: opaque);
 
-String unwrapRustOpaqueTwinSync(
-        {required HideDataTwinSync opaque, dynamic hint}) =>
+String unwrapRustOpaqueTwinSync({required HideDataTwinSync opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinSyncUnwrapRustOpaqueTwinSync(
-            opaque: opaque, hint: hint);
+            opaque: opaque);
 
 /// Function to check the code generator.
 /// FrbOpaqueReturn must be only return type.
 /// FrbOpaqueReturn must not be used as an argument.
-FrbOpaqueReturnTwinSync frbGeneratorTestTwinSync({dynamic hint}) => RustLib
-    .instance.api
-    .crateApiPseudoManualRustOpaqueTwinSyncFrbGeneratorTestTwinSync(hint: hint);
+FrbOpaqueReturnTwinSync frbGeneratorTestTwinSync() => RustLib.instance.api
+    .crateApiPseudoManualRustOpaqueTwinSyncFrbGeneratorTestTwinSync();
 
 // Rust type: RustOpaqueMoi<Box < dyn DartDebugTwinSync >>
 @sealed

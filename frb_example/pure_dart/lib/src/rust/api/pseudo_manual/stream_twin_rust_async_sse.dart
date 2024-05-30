@@ -9,68 +9,57 @@ import 'stream_twin_rust_async.dart';
 
 // The functions `handle_stream_inner`, `fmt`, `clone` are not `pub`, thus are ignored.
 
-Future<
-    Stream<
-        String>> funcStreamReturnErrorTwinRustAsyncSse({dynamic hint}) => RustLib
+Future<Stream<String>> funcStreamReturnErrorTwinRustAsyncSse() => RustLib
     .instance.api
-    .crateApiPseudoManualStreamTwinRustAsyncSseFuncStreamReturnErrorTwinRustAsyncSse(
-        hint: hint);
+    .crateApiPseudoManualStreamTwinRustAsyncSseFuncStreamReturnErrorTwinRustAsyncSse();
 
-Future<
-    Stream<
-        String>> funcStreamReturnPanicTwinRustAsyncSse({dynamic hint}) => RustLib
+Future<Stream<String>> funcStreamReturnPanicTwinRustAsyncSse() => RustLib
     .instance.api
-    .crateApiPseudoManualStreamTwinRustAsyncSseFuncStreamReturnPanicTwinRustAsyncSse(
-        hint: hint);
+    .crateApiPseudoManualStreamTwinRustAsyncSseFuncStreamReturnPanicTwinRustAsyncSse();
 
 Stream<int> funcStreamSinkArgPositionTwinRustAsyncSse(
-        {required int a, required int b, dynamic hint}) =>
+        {required int a, required int b}) =>
     RustLib.instance.api
         .crateApiPseudoManualStreamTwinRustAsyncSseFuncStreamSinkArgPositionTwinRustAsyncSse(
-            a: a, b: b, hint: hint);
+            a: a, b: b);
 
-Stream<MyStreamEntryTwinRustAsyncSse> handleStreamOfStructTwinRustAsyncSse(
-        {dynamic hint}) =>
+Stream<MyStreamEntryTwinRustAsyncSse> handleStreamOfStructTwinRustAsyncSse() =>
     RustLib.instance.api
-        .crateApiPseudoManualStreamTwinRustAsyncSseHandleStreamOfStructTwinRustAsyncSse(
-            hint: hint);
+        .crateApiPseudoManualStreamTwinRustAsyncSseHandleStreamOfStructTwinRustAsyncSse();
 
 Stream<LogTwinRustAsyncSse> handleStreamSinkAt1TwinRustAsyncSse(
-        {required int key, required int max, dynamic hint}) =>
+        {required int key, required int max}) =>
     RustLib.instance.api
         .crateApiPseudoManualStreamTwinRustAsyncSseHandleStreamSinkAt1TwinRustAsyncSse(
-            key: key, max: max, hint: hint);
+            key: key, max: max);
 
 Stream<LogTwinRustAsyncSse> handleStreamSinkAt2TwinRustAsyncSse(
-        {required int key, required int max, dynamic hint}) =>
+        {required int key, required int max}) =>
     RustLib.instance.api
         .crateApiPseudoManualStreamTwinRustAsyncSseHandleStreamSinkAt2TwinRustAsyncSse(
-            key: key, max: max, hint: hint);
+            key: key, max: max);
 
 Stream<LogTwinRustAsyncSse> handleStreamSinkAt3TwinRustAsyncSse(
-        {required int key, required int max, dynamic hint}) =>
+        {required int key, required int max}) =>
     RustLib.instance.api
         .crateApiPseudoManualStreamTwinRustAsyncSseHandleStreamSinkAt3TwinRustAsyncSse(
-            key: key, max: max, hint: hint);
+            key: key, max: max);
 
-Stream<U8Array2> streamSinkFixedSizedPrimitiveArrayTwinRustAsyncSse(
-        {dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualStreamTwinRustAsyncSseStreamSinkFixedSizedPrimitiveArrayTwinRustAsyncSse(
-            hint: hint);
+Stream<U8Array2> streamSinkFixedSizedPrimitiveArrayTwinRustAsyncSse() => RustLib
+    .instance.api
+    .crateApiPseudoManualStreamTwinRustAsyncSseStreamSinkFixedSizedPrimitiveArrayTwinRustAsyncSse();
 
 Future<void> streamSinkInsideVecTwinRustAsyncSse(
-        {required List<RustStreamSink<int>> arg, dynamic hint}) =>
+        {required List<RustStreamSink<int>> arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualStreamTwinRustAsyncSseStreamSinkInsideVecTwinRustAsyncSse(
-            arg: arg, hint: hint);
+            arg: arg);
 
 Future<void> streamSinkInsideStructTwinRustAsyncSse(
-        {required MyStructContainingStreamSinkTwinRustAsyncSse arg,
-        dynamic hint}) =>
+        {required MyStructContainingStreamSinkTwinRustAsyncSse arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualStreamTwinRustAsyncSseStreamSinkInsideStructTwinRustAsyncSse(
-            arg: arg, hint: hint);
+            arg: arg);
 
 class LogTwinRustAsyncSse {
   final int key;

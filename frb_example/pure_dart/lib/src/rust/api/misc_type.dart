@@ -9,23 +9,20 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // The functions `fmt`, `clone` are not `pub`, thus are ignored.
 
-Future<void> funcReturnUnitTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.crateApiMiscTypeFuncReturnUnitTwinNormal(hint: hint);
+Future<void> funcReturnUnitTwinNormal() =>
+    RustLib.instance.api.crateApiMiscTypeFuncReturnUnitTwinNormal();
 
-Future<List<MySize>> handleListOfStructTwinNormal(
-        {required List<MySize> l, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiMiscTypeHandleListOfStructTwinNormal(l: l, hint: hint);
+Future<List<MySize>> handleListOfStructTwinNormal({required List<MySize> l}) =>
+    RustLib.instance.api.crateApiMiscTypeHandleListOfStructTwinNormal(l: l);
 
 Future<List<String>> handleStringListTwinNormal(
-        {required List<String> names, dynamic hint}) =>
+        {required List<String> names}) =>
     RustLib.instance.api
-        .crateApiMiscTypeHandleStringListTwinNormal(names: names, hint: hint);
+        .crateApiMiscTypeHandleStringListTwinNormal(names: names);
 
 Future<EmptyTwinNormal> emptyStructTwinNormal(
-        {required EmptyTwinNormal empty, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiMiscTypeEmptyStructTwinNormal(empty: empty, hint: hint);
+        {required EmptyTwinNormal empty}) =>
+    RustLib.instance.api.crateApiMiscTypeEmptyStructTwinNormal(empty: empty);
 
 class EmptyTwinNormal {
   const EmptyTwinNormal();

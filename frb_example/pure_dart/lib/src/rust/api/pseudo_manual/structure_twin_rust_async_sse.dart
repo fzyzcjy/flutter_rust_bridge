@@ -8,40 +8,38 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<
     StructWithZeroFieldTwinRustAsyncSse> funcStructWithZeroFieldTwinRustAsyncSse(
-        {required StructWithZeroFieldTwinRustAsyncSse arg, dynamic hint}) =>
+        {required StructWithZeroFieldTwinRustAsyncSse arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualStructureTwinRustAsyncSseFuncStructWithZeroFieldTwinRustAsyncSse(
-            arg: arg, hint: hint);
+            arg: arg);
 
 Future<
     StructWithOneFieldTwinRustAsyncSse> funcStructWithOneFieldTwinRustAsyncSse(
-        {required StructWithOneFieldTwinRustAsyncSse arg, dynamic hint}) =>
+        {required StructWithOneFieldTwinRustAsyncSse arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualStructureTwinRustAsyncSseFuncStructWithOneFieldTwinRustAsyncSse(
-            arg: arg, hint: hint);
+            arg: arg);
 
 Future<
     StructWithTwoFieldTwinRustAsyncSse> funcStructWithTwoFieldTwinRustAsyncSse(
-        {required StructWithTwoFieldTwinRustAsyncSse arg, dynamic hint}) =>
+        {required StructWithTwoFieldTwinRustAsyncSse arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualStructureTwinRustAsyncSseFuncStructWithTwoFieldTwinRustAsyncSse(
-            arg: arg, hint: hint);
+            arg: arg);
 
 Future<TupleStructWithOneFieldTwinRustAsyncSse>
     funcTupleStructWithOneFieldTwinRustAsyncSse(
-            {required TupleStructWithOneFieldTwinRustAsyncSse arg,
-            dynamic hint}) =>
+            {required TupleStructWithOneFieldTwinRustAsyncSse arg}) =>
         RustLib.instance.api
             .crateApiPseudoManualStructureTwinRustAsyncSseFuncTupleStructWithOneFieldTwinRustAsyncSse(
-                arg: arg, hint: hint);
+                arg: arg);
 
 Future<TupleStructWithTwoFieldTwinRustAsyncSse>
     funcTupleStructWithTwoFieldTwinRustAsyncSse(
-            {required TupleStructWithTwoFieldTwinRustAsyncSse arg,
-            dynamic hint}) =>
+            {required TupleStructWithTwoFieldTwinRustAsyncSse arg}) =>
         RustLib.instance.api
             .crateApiPseudoManualStructureTwinRustAsyncSseFuncTupleStructWithTwoFieldTwinRustAsyncSse(
-                arg: arg, hint: hint);
+                arg: arg);
 
 class StructWithOneFieldTwinRustAsyncSse {
   final int a;

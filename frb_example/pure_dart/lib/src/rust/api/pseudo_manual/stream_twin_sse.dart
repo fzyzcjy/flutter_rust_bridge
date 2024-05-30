@@ -9,59 +9,54 @@ import 'stream_twin_rust_async.dart';
 
 // The functions `handle_stream_inner`, `fmt`, `clone` are not `pub`, thus are ignored.
 
-Future<Stream<String>> funcStreamReturnErrorTwinSse({dynamic hint}) => RustLib
-    .instance.api
-    .crateApiPseudoManualStreamTwinSseFuncStreamReturnErrorTwinSse(hint: hint);
+Future<Stream<String>> funcStreamReturnErrorTwinSse() => RustLib.instance.api
+    .crateApiPseudoManualStreamTwinSseFuncStreamReturnErrorTwinSse();
 
-Future<Stream<String>> funcStreamReturnPanicTwinSse({dynamic hint}) => RustLib
-    .instance.api
-    .crateApiPseudoManualStreamTwinSseFuncStreamReturnPanicTwinSse(hint: hint);
+Future<Stream<String>> funcStreamReturnPanicTwinSse() => RustLib.instance.api
+    .crateApiPseudoManualStreamTwinSseFuncStreamReturnPanicTwinSse();
 
 Stream<int> funcStreamSinkArgPositionTwinSse(
-        {required int a, required int b, dynamic hint}) =>
+        {required int a, required int b}) =>
     RustLib.instance.api
         .crateApiPseudoManualStreamTwinSseFuncStreamSinkArgPositionTwinSse(
-            a: a, b: b, hint: hint);
+            a: a, b: b);
 
-Stream<MyStreamEntryTwinSse> handleStreamOfStructTwinSse({dynamic hint}) =>
+Stream<MyStreamEntryTwinSse> handleStreamOfStructTwinSse() =>
     RustLib.instance.api
-        .crateApiPseudoManualStreamTwinSseHandleStreamOfStructTwinSse(
-            hint: hint);
+        .crateApiPseudoManualStreamTwinSseHandleStreamOfStructTwinSse();
 
 Stream<LogTwinSse> handleStreamSinkAt1TwinSse(
-        {required int key, required int max, dynamic hint}) =>
+        {required int key, required int max}) =>
     RustLib.instance.api
         .crateApiPseudoManualStreamTwinSseHandleStreamSinkAt1TwinSse(
-            key: key, max: max, hint: hint);
+            key: key, max: max);
 
 Stream<LogTwinSse> handleStreamSinkAt2TwinSse(
-        {required int key, required int max, dynamic hint}) =>
+        {required int key, required int max}) =>
     RustLib.instance.api
         .crateApiPseudoManualStreamTwinSseHandleStreamSinkAt2TwinSse(
-            key: key, max: max, hint: hint);
+            key: key, max: max);
 
 Stream<LogTwinSse> handleStreamSinkAt3TwinSse(
-        {required int key, required int max, dynamic hint}) =>
+        {required int key, required int max}) =>
     RustLib.instance.api
         .crateApiPseudoManualStreamTwinSseHandleStreamSinkAt3TwinSse(
-            key: key, max: max, hint: hint);
+            key: key, max: max);
 
-Stream<U8Array2> streamSinkFixedSizedPrimitiveArrayTwinSse({dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualStreamTwinSseStreamSinkFixedSizedPrimitiveArrayTwinSse(
-            hint: hint);
+Stream<U8Array2> streamSinkFixedSizedPrimitiveArrayTwinSse() => RustLib
+    .instance.api
+    .crateApiPseudoManualStreamTwinSseStreamSinkFixedSizedPrimitiveArrayTwinSse();
 
 Future<void> streamSinkInsideVecTwinSse(
-        {required List<RustStreamSink<int>> arg, dynamic hint}) =>
+        {required List<RustStreamSink<int>> arg}) =>
     RustLib.instance.api
-        .crateApiPseudoManualStreamTwinSseStreamSinkInsideVecTwinSse(
-            arg: arg, hint: hint);
+        .crateApiPseudoManualStreamTwinSseStreamSinkInsideVecTwinSse(arg: arg);
 
 Future<void> streamSinkInsideStructTwinSse(
-        {required MyStructContainingStreamSinkTwinSse arg, dynamic hint}) =>
+        {required MyStructContainingStreamSinkTwinSse arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualStreamTwinSseStreamSinkInsideStructTwinSse(
-            arg: arg, hint: hint);
+            arg: arg);
 
 class LogTwinSse {
   final int key;

@@ -8,26 +8,23 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // The functions `clone` are not `pub`, thus are ignored.
 
-Future<String> borrowStringTwinRustAsync({required String arg, dynamic hint}) =>
+Future<String> borrowStringTwinRustAsync({required String arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualOwnershipTwinRustAsyncBorrowStringTwinRustAsync(
-            arg: arg, hint: hint);
+            arg: arg);
 
-Future<String> borrowStrTwinRustAsync({required String arg, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOwnershipTwinRustAsyncBorrowStrTwinRustAsync(
-            arg: arg, hint: hint);
+Future<String> borrowStrTwinRustAsync({required String arg}) => RustLib
+    .instance.api
+    .crateApiPseudoManualOwnershipTwinRustAsyncBorrowStrTwinRustAsync(arg: arg);
 
-Future<int> borrowI32TwinRustAsync({required int arg, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOwnershipTwinRustAsyncBorrowI32TwinRustAsync(
-            arg: arg, hint: hint);
+Future<int> borrowI32TwinRustAsync({required int arg}) => RustLib.instance.api
+    .crateApiPseudoManualOwnershipTwinRustAsyncBorrowI32TwinRustAsync(arg: arg);
 
 Future<SimpleStructForBorrowTwinRustAsync> borrowStructTwinRustAsync(
-        {required SimpleStructForBorrowTwinRustAsync arg, dynamic hint}) =>
+        {required SimpleStructForBorrowTwinRustAsync arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualOwnershipTwinRustAsyncBorrowStructTwinRustAsync(
-            arg: arg, hint: hint);
+            arg: arg);
 
 class SimpleStructForBorrowTwinRustAsync {
   final String one;

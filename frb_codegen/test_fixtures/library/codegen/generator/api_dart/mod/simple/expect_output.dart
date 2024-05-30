@@ -13,9 +13,9 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
         
 
-        Future<void> firstFunction({dynamic hint}) => RustLib.instance.api.crateApiFirstFunction(hint: hint);
+        Future<void> firstFunction() => RustLib.instance.api.crateApiFirstFunction();
 
-Future<void> secondFunction({required Simple arg , dynamic hint}) => RustLib.instance.api.crateApiSecondFunction(arg: arg, hint: hint);
+Future<void> secondFunction({required Simple arg }) => RustLib.instance.api.crateApiSecondFunction(arg: arg);
 
         
         

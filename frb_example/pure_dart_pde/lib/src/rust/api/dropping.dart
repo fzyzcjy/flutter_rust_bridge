@@ -28,18 +28,19 @@ class DroppableTwinNormal extends RustOpaque {
         .instance.api.rust_arc_decrement_strong_count_DroppableTwinNormalPtr,
   );
 
-  Stream<int> createStream({dynamic hint}) => RustLib.instance.api
-      .crateApiDroppingDroppableTwinNormalCreateStream(that: this, hint: hint);
+  Stream<int> createStream() =>
+      RustLib.instance.api.crateApiDroppingDroppableTwinNormalCreateStream(
+        that: this,
+      );
 
-  static Future<int> getDropCountTwinNormal({dynamic hint}) => RustLib
-      .instance.api
-      .crateApiDroppingDroppableTwinNormalGetDropCountTwinNormal(hint: hint);
+  static Future<int> getDropCountTwinNormal() => RustLib.instance.api
+      .crateApiDroppingDroppableTwinNormalGetDropCountTwinNormal();
 
-  static Future<DroppableTwinNormal> newTwinNormal({dynamic hint}) =>
-      RustLib.instance.api
-          .crateApiDroppingDroppableTwinNormalNewTwinNormal(hint: hint);
+  static Future<DroppableTwinNormal> newTwinNormal() =>
+      RustLib.instance.api.crateApiDroppingDroppableTwinNormalNewTwinNormal();
 
-  Future<void> simpleMethodTwinNormal({dynamic hint}) => RustLib.instance.api
-      .crateApiDroppingDroppableTwinNormalSimpleMethodTwinNormal(
-          that: this, hint: hint);
+  Future<void> simpleMethodTwinNormal() => RustLib.instance.api
+          .crateApiDroppingDroppableTwinNormalSimpleMethodTwinNormal(
+        that: this,
+      );
 }

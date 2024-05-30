@@ -11,34 +11,30 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 // The functions `default`, `fmt`, `clone`, `fmt`, `clone`, `fmt` are not `pub`, thus are ignored.
 
 Future<double?> handleOptionalReturnTwinSse(
-        {required double left, required double right, dynamic hint}) =>
+        {required double left, required double right}) =>
     RustLib.instance.api
         .crateApiPseudoManualOptionalTwinSseHandleOptionalReturnTwinSse(
-            left: left, right: right, hint: hint);
+            left: left, right: right);
 
-Future<ElementTwinSse?> handleOptionalStructTwinSse(
-        {String? document, dynamic hint}) =>
+Future<ElementTwinSse?> handleOptionalStructTwinSse({String? document}) =>
     RustLib.instance.api
         .crateApiPseudoManualOptionalTwinSseHandleOptionalStructTwinSse(
-            document: document, hint: hint);
+            document: document);
 
 Future<ExoticOptionalsTwinSse?> handleOptionalIncrementTwinSse(
-        {ExoticOptionalsTwinSse? opt, dynamic hint}) =>
+        {ExoticOptionalsTwinSse? opt}) =>
     RustLib.instance.api
         .crateApiPseudoManualOptionalTwinSseHandleOptionalIncrementTwinSse(
-            opt: opt, hint: hint);
+            opt: opt);
 
-Future<double> handleIncrementBoxedOptionalTwinSse(
-        {double? opt, dynamic hint}) =>
+Future<double> handleIncrementBoxedOptionalTwinSse({double? opt}) =>
     RustLib.instance.api
         .crateApiPseudoManualOptionalTwinSseHandleIncrementBoxedOptionalTwinSse(
-            opt: opt, hint: hint);
+            opt: opt);
 
-Future<OptVecsTwinSse> handleVecOfOptsTwinSse(
-        {required OptVecsTwinSse opt, dynamic hint}) =>
+Future<OptVecsTwinSse> handleVecOfOptsTwinSse({required OptVecsTwinSse opt}) =>
     RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinSseHandleVecOfOptsTwinSse(
-            opt: opt, hint: hint);
+        .crateApiPseudoManualOptionalTwinSseHandleVecOfOptsTwinSse(opt: opt);
 
 Future<String> handleOptionBoxArgumentsTwinSse(
         {int? i8Box,
@@ -47,8 +43,7 @@ Future<String> handleOptionBoxArgumentsTwinSse(
         PlatformInt64? i64Box,
         double? f64Box,
         bool? boolbox,
-        ExoticOptionalsTwinSse? structbox,
-        dynamic hint}) =>
+        ExoticOptionalsTwinSse? structbox}) =>
     RustLib.instance.api
         .crateApiPseudoManualOptionalTwinSseHandleOptionBoxArgumentsTwinSse(
             i8Box: i8Box,
@@ -57,8 +52,7 @@ Future<String> handleOptionBoxArgumentsTwinSse(
             i64Box: i64Box,
             f64Box: f64Box,
             boolbox: boolbox,
-            structbox: structbox,
-            hint: hint);
+            structbox: structbox);
 
 class AttributeTwinSse {
   final String key;

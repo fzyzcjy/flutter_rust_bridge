@@ -15366,6 +15366,15 @@ pub fn wire__crate__api__misc_example__list_of_primitive_enums_twin_normal(
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__misc_example__positional_arguments_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    a: i32,
+    b: i32,
+) {
+    wire__crate__api__misc_example__positional_arguments_twin_normal_impl(port_, a, b)
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__misc_example__test_abc_enum_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     abc: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
@@ -28921,6 +28930,15 @@ pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async__list_of_pr
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async__positional_arguments_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    a: i32,
+    b: i32,
+) {
+    wire__crate__api__pseudo_manual__misc_example_twin_rust_async__positional_arguments_twin_rust_async_impl(port_, a, b)
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async__test_abc_enum_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     abc: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
@@ -29014,6 +29032,16 @@ pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__list_o
     data_len_: i32,
 ) {
     wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__list_of_primitive_enums_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__positional_arguments_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__positional_arguments_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -29157,6 +29185,21 @@ pub fn wire__crate__api__pseudo_manual__misc_example_twin_sse__list_of_primitive
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__misc_example_twin_sse__positional_arguments_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__pseudo_manual__misc_example_twin_sse__positional_arguments_twin_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_example_twin_sse__test_abc_enum_twin_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -29243,6 +29286,16 @@ pub fn wire__crate__api__pseudo_manual__misc_example_twin_sync__list_of_primitiv
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__pseudo_manual__misc_example_twin_sync__list_of_primitive_enums_twin_sync_impl(
         weekdays,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__misc_example_twin_sync__positional_arguments_twin_sync(
+    a: i32,
+    b: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__misc_example_twin_sync__positional_arguments_twin_sync_impl(
+        a, b,
     )
 }
 
@@ -29348,6 +29401,15 @@ pub fn wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__list_of_prim
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__list_of_primitive_enums_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__positional_arguments_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__positional_arguments_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]

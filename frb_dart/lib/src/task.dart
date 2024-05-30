@@ -23,16 +23,12 @@ abstract class BaseTask<S, E extends Object, WireSyncType> {
   /// The Api class that creates the task.
   final BaseApiImpl apiImpl;
 
-  /// Transparent hint given by the caller of the method
-  final dynamic hint;
-
   /// Create a new task.
   const BaseTask({
     required this.codec,
     required this.constMeta,
     required this.argValues,
     required this.apiImpl,
-    required this.hint,
   });
 
   /// Arguments to be passed into the function call, provided in the format of a [Map]
@@ -57,7 +53,6 @@ class NormalTask<S, E extends Object> extends BaseTask<S, E, dynamic> {
     required super.constMeta,
     required super.argValues,
     required super.apiImpl,
-    required super.hint,
   });
 }
 
@@ -77,7 +72,6 @@ class SyncTask<S, E extends Object, WireSyncType>
     required super.constMeta,
     required super.argValues,
     required super.apiImpl,
-    required super.hint,
   });
 }
 

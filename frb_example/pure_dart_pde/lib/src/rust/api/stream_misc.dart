@@ -6,11 +6,9 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Stream<String> funcStreamRealisticTwinNormal(
-        {required String arg, dynamic hint}) =>
+Stream<String> funcStreamRealisticTwinNormal({required String arg}) =>
     RustLib.instance.api
-        .crateApiStreamMiscFuncStreamRealisticTwinNormal(arg: arg, hint: hint);
+        .crateApiStreamMiscFuncStreamRealisticTwinNormal(arg: arg);
 
-Future<Stream<int>> streamSinkDartAsyncTwinNormal({dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiStreamMiscStreamSinkDartAsyncTwinNormal(hint: hint);
+Future<Stream<int>> streamSinkDartAsyncTwinNormal() =>
+    RustLib.instance.api.crateApiStreamMiscStreamSinkDartAsyncTwinNormal();

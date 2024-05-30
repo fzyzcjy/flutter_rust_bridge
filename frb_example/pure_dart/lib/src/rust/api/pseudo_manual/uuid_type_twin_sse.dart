@@ -9,20 +9,18 @@ import 'package:uuid/uuid.dart';
 
 // The functions `fmt`, `clone` are not `pub`, thus are ignored.
 
-Future<UuidValue> handleUuidTwinSse({required UuidValue id, dynamic hint}) =>
-    RustLib.instance.api.crateApiPseudoManualUuidTypeTwinSseHandleUuidTwinSse(
-        id: id, hint: hint);
+Future<UuidValue> handleUuidTwinSse({required UuidValue id}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualUuidTypeTwinSseHandleUuidTwinSse(id: id);
 
-Future<List<UuidValue>> handleUuidsTwinSse(
-        {required List<UuidValue> ids, dynamic hint}) =>
-    RustLib.instance.api.crateApiPseudoManualUuidTypeTwinSseHandleUuidsTwinSse(
-        ids: ids, hint: hint);
+Future<List<UuidValue>> handleUuidsTwinSse({required List<UuidValue> ids}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualUuidTypeTwinSseHandleUuidsTwinSse(ids: ids);
 
 Future<FeatureUuidTwinSse> handleNestedUuidsTwinSse(
-        {required FeatureUuidTwinSse ids, dynamic hint}) =>
+        {required FeatureUuidTwinSse ids}) =>
     RustLib.instance.api
-        .crateApiPseudoManualUuidTypeTwinSseHandleNestedUuidsTwinSse(
-            ids: ids, hint: hint);
+        .crateApiPseudoManualUuidTypeTwinSseHandleNestedUuidsTwinSse(ids: ids);
 
 class FeatureUuidTwinSse {
   final UuidValue one;

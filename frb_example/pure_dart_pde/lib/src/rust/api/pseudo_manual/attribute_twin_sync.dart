@@ -12,17 +12,16 @@ part 'attribute_twin_sync.freezed.dart';
 // The type `IgnoredStructTwinSync` is not used by any `pub` functions, thus it is ignored.
 // The functions `fmt`, `clone` are not `pub`, thus are ignored.
 
-void handleCustomizedStructTwinSync(
-        {required CustomizedTwinSync val, dynamic hint}) =>
+void handleCustomizedStructTwinSync({required CustomizedTwinSync val}) =>
     RustLib.instance.api
         .crateApiPseudoManualAttributeTwinSyncHandleCustomizedStructTwinSync(
-            val: val, hint: hint);
+            val: val);
 
 UserIdTwinSync nextUserIdTwinSync(
-        {UserIdTwinSync userId = const UserIdTwinSync(), dynamic hint}) =>
+        {UserIdTwinSync userId = const UserIdTwinSync()}) =>
     RustLib.instance.api
         .crateApiPseudoManualAttributeTwinSyncNextUserIdTwinSync(
-            userId: userId, hint: hint);
+            userId: userId);
 
 class CustomizedTwinSync {
   final String finalField;

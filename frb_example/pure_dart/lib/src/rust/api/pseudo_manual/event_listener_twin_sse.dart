@@ -11,20 +11,18 @@ part 'event_listener_twin_sse.freezed.dart';
 // The type `EVENTS` is not used by any `pub` functions, thus it is ignored.
 // The functions `deref`, `initialize`, `clone` are not `pub`, thus are ignored.
 
-Future<Stream<EventTwinSse>> registerEventListenerTwinSse({dynamic hint}) =>
+Future<Stream<EventTwinSse>> registerEventListenerTwinSse() =>
     RustLib.instance.api
-        .crateApiPseudoManualEventListenerTwinSseRegisterEventListenerTwinSse(
-            hint: hint);
+        .crateApiPseudoManualEventListenerTwinSseRegisterEventListenerTwinSse();
 
-Future<void> closeEventListenerTwinSse({dynamic hint}) => RustLib.instance.api
-    .crateApiPseudoManualEventListenerTwinSseCloseEventListenerTwinSse(
-        hint: hint);
+Future<void> closeEventListenerTwinSse() => RustLib.instance.api
+    .crateApiPseudoManualEventListenerTwinSseCloseEventListenerTwinSse();
 
 Future<void> createEventTwinSse(
-        {required String address, required String payload, dynamic hint}) =>
+        {required String address, required String payload}) =>
     RustLib.instance.api
         .crateApiPseudoManualEventListenerTwinSseCreateEventTwinSse(
-            address: address, payload: payload, hint: hint);
+            address: address, payload: payload);
 
 @freezed
 class EventTwinSse with _$EventTwinSse {
@@ -33,7 +31,8 @@ class EventTwinSse with _$EventTwinSse {
     required String address,
     required String payload,
   }) = _EventTwinSse;
-  Future<String> asStringTwinSse({dynamic hint}) => RustLib.instance.api
-      .crateApiPseudoManualEventListenerTwinSseEventTwinSseAsStringTwinSse(
-          that: this, hint: hint);
+  Future<String> asStringTwinSse() => RustLib.instance.api
+          .crateApiPseudoManualEventListenerTwinSseEventTwinSseAsStringTwinSse(
+        that: this,
+      );
 }

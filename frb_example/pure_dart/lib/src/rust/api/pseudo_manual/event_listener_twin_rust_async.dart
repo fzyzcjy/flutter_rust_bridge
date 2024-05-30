@@ -10,22 +10,20 @@ part 'event_listener_twin_rust_async.freezed.dart';
 
 // The functions `deref`, `initialize`, `clone` are not `pub`, thus are ignored.
 
-Future<Stream<EventTwinRustAsync>> registerEventListenerTwinRustAsync(
-        {dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualEventListenerTwinRustAsyncRegisterEventListenerTwinRustAsync(
-            hint: hint);
-
-Future<void> closeEventListenerTwinRustAsync({dynamic hint}) => RustLib
+Future<
+    Stream<
+        EventTwinRustAsync>> registerEventListenerTwinRustAsync() => RustLib
     .instance.api
-    .crateApiPseudoManualEventListenerTwinRustAsyncCloseEventListenerTwinRustAsync(
-        hint: hint);
+    .crateApiPseudoManualEventListenerTwinRustAsyncRegisterEventListenerTwinRustAsync();
+
+Future<void> closeEventListenerTwinRustAsync() => RustLib.instance.api
+    .crateApiPseudoManualEventListenerTwinRustAsyncCloseEventListenerTwinRustAsync();
 
 Future<void> createEventTwinRustAsync(
-        {required String address, required String payload, dynamic hint}) =>
+        {required String address, required String payload}) =>
     RustLib.instance.api
         .crateApiPseudoManualEventListenerTwinRustAsyncCreateEventTwinRustAsync(
-            address: address, payload: payload, hint: hint);
+            address: address, payload: payload);
 
 @freezed
 class EventTwinRustAsync with _$EventTwinRustAsync {
@@ -34,7 +32,8 @@ class EventTwinRustAsync with _$EventTwinRustAsync {
     required String address,
     required String payload,
   }) = _EventTwinRustAsync;
-  Future<String> asStringTwinRustAsync({dynamic hint}) => RustLib.instance.api
-      .crateApiPseudoManualEventListenerTwinRustAsyncEventTwinRustAsyncAsStringTwinRustAsync(
-          that: this, hint: hint);
+  Future<String> asStringTwinRustAsync() => RustLib.instance.api
+          .crateApiPseudoManualEventListenerTwinRustAsyncEventTwinRustAsyncAsStringTwinRustAsync(
+        that: this,
+      );
 }

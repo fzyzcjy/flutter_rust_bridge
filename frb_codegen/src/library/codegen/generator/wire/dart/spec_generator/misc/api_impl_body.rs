@@ -1,11 +1,13 @@
 use crate::codegen::generator::api_dart;
 use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
-use crate::codegen::generator::api_dart::spec_generator::function::ApiDartGeneratedFunction;
+use crate::codegen::generator::api_dart::spec_generator::function::{
+    compute_params_str, ApiDartGeneratedFunction,
+};
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::dart::spec_generator::codec::base::WireDartCodecEntrypoint;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::misc::wire_func::wire_func_name;
-use crate::codegen::ir::func::{IrFunc, IrFuncMode};
+use crate::codegen::ir::func::{IrFunc, IrFuncArgMode, IrFuncMode};
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use convert_case::{Case, Casing};
@@ -35,9 +37,10 @@ pub(crate) fn generate_api_impl_normal_function(
 
     let ApiDartGeneratedFunction {
         func_return_type,
-        func_params_str,
+        func_params,
         ..
     } = api_dart_func;
+    let func_params_str = compute_params_str(&func_params, IrFuncArgMode::Named);
     let func_expr = format!(
         "{func_return_type} {func_name}({func_params_str})",
         func_name = func.name_dart_wire(),
@@ -52,7 +55,6 @@ pub(crate) fn generate_api_impl_normal_function(
             constMeta: {const_meta_field_name},
             argValues: [{arg_values}],
             apiImpl: this,
-            hint: hint,
         ))",
     );
     let function_implementation_body = if let Some(return_stream) = &api_dart_func.return_stream {

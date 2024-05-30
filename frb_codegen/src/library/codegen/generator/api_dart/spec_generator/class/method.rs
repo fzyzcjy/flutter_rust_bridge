@@ -1,10 +1,10 @@
 use crate::codegen::generator::api_dart;
 use crate::codegen::generator::api_dart::spec_generator::function::{
-    ApiDartGeneratedFunction, ApiDartGeneratedFunctionParam,
+    compute_params_str, ApiDartGeneratedFunction, ApiDartGeneratedFunctionParam,
 };
 use crate::codegen::generator::api_dart::spec_generator::misc::generate_dart_comments;
 use crate::codegen::ir::func::{
-    IrFunc, IrFuncAccessorMode, IrFuncDefaultConstructorMode, IrFuncOwnerInfo,
+    IrFunc, IrFuncAccessorMode, IrFuncArgMode, IrFuncDefaultConstructorMode, IrFuncOwnerInfo,
     IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode,
 };
 use crate::codegen::ir::namespace::NamespacedName;
@@ -59,9 +59,10 @@ fn generate_api_method(func: &IrFunc, context: ApiDartGeneratorContext) -> Strin
         if_then_some!(let IrFuncOwnerInfo::Method(info) = &func.owner , info).unwrap();
     let default_constructor_mode = func.default_constructor_mode();
 
-    let skip_names = compute_skip_names(func, method_info);
+    let skip_names = compute_skip_names(method_info);
     let params = (api_dart_func.func_params.iter())
         .filter(|param| !skip_names.contains(&&param.name_str[..]))
+        .cloned()
         .collect_vec();
 
     let comments = generate_comments(func, default_constructor_mode);
@@ -77,14 +78,14 @@ fn generate_api_method(func: &IrFunc, context: ApiDartGeneratorContext) -> Strin
     format!("{comments}{signature}=>{implementation};\n\n")
 }
 
-fn compute_skip_names(func: &IrFunc, method_info: &IrFuncOwnerInfoMethod) -> Vec<&'static str> {
+fn compute_skip_names(method_info: &IrFuncOwnerInfoMethod) -> Vec<&'static str> {
     let mut ans = vec![];
     if method_info.mode != IrFuncOwnerInfoMethodMode::Static {
         ans.push("that");
     }
-    if func.accessor.is_some() {
-        ans.push("hint");
-    }
+    // if func.accessor.is_some() {
+    //     ans.push("hint");
+    // }
     ans
 }
 
@@ -103,7 +104,7 @@ fn generate_comments(
 fn generate_signature(
     func: &IrFunc,
     method_info: &IrFuncOwnerInfoMethod,
-    func_params: &[&ApiDartGeneratedFunctionParam],
+    func_params: &[ApiDartGeneratedFunctionParam],
     default_constructor_mode: Option<IrFuncDefaultConstructorMode>,
     api_dart_func: &ApiDartGeneratedFunction,
 ) -> String {
@@ -122,17 +123,17 @@ fn generate_signature(
     let (func_params, maybe_accessor) = match func.accessor {
         Some(IrFuncAccessorMode::Getter) => ("".to_owned(), "get"),
         Some(IrFuncAccessorMode::Setter) => (
+            // TODO: merge with below
             format!(
                 "({})",
-                func_params
-                    .iter()
-                    .map(|x| format!("{} {}", x.type_str, x.name_str))
+                (func_params.iter())
+                    .map(|x| x.full(IrFuncArgMode::Positional))
                     .join(", ")
             ),
             "set",
         ),
         None => (
-            format!("({{ {} }})", func_params.iter().map(|x| &x.full).join(",")),
+            format!("({})", compute_params_str(func_params, func.arg_mode)),
             "",
         ),
     };
@@ -148,7 +149,7 @@ fn generate_implementation(
     func: &IrFunc,
     context: ApiDartGeneratorContext,
     method_info: &IrFuncOwnerInfoMethod,
-    params: &[&ApiDartGeneratedFunctionParam],
+    params: &[ApiDartGeneratedFunctionParam],
 ) -> String {
     let dart_entrypoint_class_name = &context.config.dart_entrypoint_class_name;
     let dart_api_instance = format!("{dart_entrypoint_class_name}.instance.api");

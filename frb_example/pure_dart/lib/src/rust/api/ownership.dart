@@ -8,22 +8,18 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // The functions `clone` are not `pub`, thus are ignored.
 
-Future<String> borrowStringTwinNormal({required String arg, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiOwnershipBorrowStringTwinNormal(arg: arg, hint: hint);
+Future<String> borrowStringTwinNormal({required String arg}) =>
+    RustLib.instance.api.crateApiOwnershipBorrowStringTwinNormal(arg: arg);
 
-Future<String> borrowStrTwinNormal({required String arg, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiOwnershipBorrowStrTwinNormal(arg: arg, hint: hint);
+Future<String> borrowStrTwinNormal({required String arg}) =>
+    RustLib.instance.api.crateApiOwnershipBorrowStrTwinNormal(arg: arg);
 
-Future<int> borrowI32TwinNormal({required int arg, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiOwnershipBorrowI32TwinNormal(arg: arg, hint: hint);
+Future<int> borrowI32TwinNormal({required int arg}) =>
+    RustLib.instance.api.crateApiOwnershipBorrowI32TwinNormal(arg: arg);
 
 Future<SimpleStructForBorrowTwinNormal> borrowStructTwinNormal(
-        {required SimpleStructForBorrowTwinNormal arg, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiOwnershipBorrowStructTwinNormal(arg: arg, hint: hint);
+        {required SimpleStructForBorrowTwinNormal arg}) =>
+    RustLib.instance.api.crateApiOwnershipBorrowStructTwinNormal(arg: arg);
 
 class SimpleStructForBorrowTwinNormal {
   final String one;

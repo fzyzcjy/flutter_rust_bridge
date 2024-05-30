@@ -1,7 +1,7 @@
 use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
 use crate::codegen::ir::func::{
-    IrFunc, IrFuncInput, IrFuncMode, IrFuncOutput, IrFuncOwnerInfo, IrFuncOwnerInfoMethod,
-    IrFuncOwnerInfoMethodMode,
+    IrFunc, IrFuncArgMode, IrFuncInput, IrFuncMode, IrFuncOutput, IrFuncOwnerInfo,
+    IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode,
 };
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
@@ -125,6 +125,11 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             rust_async: sig.asyncness.is_some(),
             initializer: attributes.init(),
             accessor: attributes.accessor(),
+            arg_mode: if attributes.positional() {
+                IrFuncArgMode::Positional
+            } else {
+                IrFuncArgMode::Named
+            },
             comments: parse_comments(func.attrs()),
             codec_mode_pack,
             rust_call_code: None,

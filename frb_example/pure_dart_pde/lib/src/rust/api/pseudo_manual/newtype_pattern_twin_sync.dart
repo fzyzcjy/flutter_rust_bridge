@@ -8,11 +8,10 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // The functions `fmt` are not `pub`, thus are ignored.
 
-NewTypeIntTwinSync handleNewtypeTwinSync(
-        {required NewTypeIntTwinSync arg, dynamic hint}) =>
+NewTypeIntTwinSync handleNewtypeTwinSync({required NewTypeIntTwinSync arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualNewtypePatternTwinSyncHandleNewtypeTwinSync(
-            arg: arg, hint: hint);
+            arg: arg);
 
 class NewTypeIntTwinSync {
   final PlatformInt64 field0;

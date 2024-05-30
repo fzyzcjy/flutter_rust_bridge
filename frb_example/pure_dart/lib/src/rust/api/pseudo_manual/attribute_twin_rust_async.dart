@@ -13,17 +13,16 @@ part 'attribute_twin_rust_async.freezed.dart';
 // The functions `fmt`, `clone` are not `pub`, thus are ignored.
 
 Future<void> handleCustomizedStructTwinRustAsync(
-        {required CustomizedTwinRustAsync val, dynamic hint}) =>
+        {required CustomizedTwinRustAsync val}) =>
     RustLib.instance.api
         .crateApiPseudoManualAttributeTwinRustAsyncHandleCustomizedStructTwinRustAsync(
-            val: val, hint: hint);
+            val: val);
 
 Future<UserIdTwinRustAsync> nextUserIdTwinRustAsync(
-        {UserIdTwinRustAsync userId = const UserIdTwinRustAsync(),
-        dynamic hint}) =>
+        {UserIdTwinRustAsync userId = const UserIdTwinRustAsync()}) =>
     RustLib.instance.api
         .crateApiPseudoManualAttributeTwinRustAsyncNextUserIdTwinRustAsync(
-            userId: userId, hint: hint);
+            userId: userId);
 
 class CustomizedTwinRustAsync {
   final String finalField;

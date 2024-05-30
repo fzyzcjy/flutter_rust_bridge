@@ -13,60 +13,53 @@ part 'misc_example_twin_sync_sse.freezed.dart';
 // The functions `visibility_restricted_func_twin_sync_sse`, `fmt`, `clone`, `fmt`, `clone`, `fmt`, `clone`, `fmt`, `clone` are not `pub`, thus are ignored.
 
 MyTreeNodeTwinSyncSse handleComplexStructTwinSyncSse(
-        {required MyTreeNodeTwinSyncSse s, dynamic hint}) =>
+        {required MyTreeNodeTwinSyncSse s}) =>
     RustLib.instance.api
         .crateApiPseudoManualMiscExampleTwinSyncSseHandleComplexStructTwinSyncSse(
-            s: s, hint: hint);
+            s: s);
 
 List<WeekdaysTwinSyncSse> listOfPrimitiveEnumsTwinSyncSse(
-        {required List<WeekdaysTwinSyncSse> weekdays, dynamic hint}) =>
+        {required List<WeekdaysTwinSyncSse> weekdays}) =>
     RustLib.instance.api
         .crateApiPseudoManualMiscExampleTwinSyncSseListOfPrimitiveEnumsTwinSyncSse(
-            weekdays: weekdays, hint: hint);
+            weekdays: weekdays);
 
 MyNestedStructTwinSyncSse handleNestedStructTwinSyncSse(
-        {required MyNestedStructTwinSyncSse s, dynamic hint}) =>
+        {required MyNestedStructTwinSyncSse s}) =>
     RustLib.instance.api
         .crateApiPseudoManualMiscExampleTwinSyncSseHandleNestedStructTwinSyncSse(
-            s: s, hint: hint);
+            s: s);
 
-BigBuffersTwinSyncSse handleBigBuffersTwinSyncSse({dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinSyncSseHandleBigBuffersTwinSyncSse(
-            hint: hint);
+BigBuffersTwinSyncSse handleBigBuffersTwinSyncSse() => RustLib.instance.api
+    .crateApiPseudoManualMiscExampleTwinSyncSseHandleBigBuffersTwinSyncSse();
 
-AbcTwinSyncSse testAbcEnumTwinSyncSse(
-        {required AbcTwinSyncSse abc, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinSyncSseTestAbcEnumTwinSyncSse(
-            abc: abc, hint: hint);
+AbcTwinSyncSse testAbcEnumTwinSyncSse({required AbcTwinSyncSse abc}) => RustLib
+    .instance.api
+    .crateApiPseudoManualMiscExampleTwinSyncSseTestAbcEnumTwinSyncSse(abc: abc);
 
 StructWithEnumTwinSyncSse testStructWithEnumTwinSyncSse(
-        {required StructWithEnumTwinSyncSse se, dynamic hint}) =>
+        {required StructWithEnumTwinSyncSse se}) =>
     RustLib.instance.api
         .crateApiPseudoManualMiscExampleTwinSyncSseTestStructWithEnumTwinSyncSse(
-            se: se, hint: hint);
+            se: se);
 
-String handleStringTwinSyncSse({required String s, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinSyncSseHandleStringTwinSyncSse(
-            s: s, hint: hint);
+String handleStringTwinSyncSse({required String s}) => RustLib.instance.api
+    .crateApiPseudoManualMiscExampleTwinSyncSseHandleStringTwinSyncSse(s: s);
 
-String handleCharTwinSyncSse({required String arg, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinSyncSseHandleCharTwinSyncSse(
-            arg: arg, hint: hint);
+String handleCharTwinSyncSse({required String arg}) => RustLib.instance.api
+    .crateApiPseudoManualMiscExampleTwinSyncSseHandleCharTwinSyncSse(arg: arg);
 
-Uint8List handleVecU8TwinSyncSse({required List<int> v, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinSyncSseHandleVecU8TwinSyncSse(
-            v: v, hint: hint);
+Uint8List handleVecU8TwinSyncSse({required List<int> v}) => RustLib.instance.api
+    .crateApiPseudoManualMiscExampleTwinSyncSseHandleVecU8TwinSyncSse(v: v);
 
-MySize handleStructTwinSyncSse(
-        {required MySize arg, required MySize boxed, dynamic hint}) =>
+MySize handleStructTwinSyncSse({required MySize arg, required MySize boxed}) =>
     RustLib.instance.api
         .crateApiPseudoManualMiscExampleTwinSyncSseHandleStructTwinSyncSse(
-            arg: arg, boxed: boxed, hint: hint);
+            arg: arg, boxed: boxed);
+
+int positionalArgumentsTwinSyncSse(int a, int b) => RustLib.instance.api
+    .crateApiPseudoManualMiscExampleTwinSyncSsePositionalArgumentsTwinSyncSse(
+        a: a, b: b);
 
 class ATwinSyncSse {
   final String a;

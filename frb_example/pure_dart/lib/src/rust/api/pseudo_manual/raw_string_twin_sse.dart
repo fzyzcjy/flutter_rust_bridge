@@ -6,17 +6,13 @@
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<RawStringItemStructTwinSse> testRawStringItemStructTwinSse(
-        {dynamic hint}) =>
+Future<RawStringItemStructTwinSse> testRawStringItemStructTwinSse() =>
     RustLib.instance.api
-        .crateApiPseudoManualRawStringTwinSseTestRawStringItemStructTwinSse(
-            hint: hint);
+        .crateApiPseudoManualRawStringTwinSseTestRawStringItemStructTwinSse();
 
 Future<MoreThanJustOneRawStringStructTwinSse>
-    testMoreThanJustOneRawStringStructTwinSse({dynamic hint}) => RustLib
-        .instance.api
-        .crateApiPseudoManualRawStringTwinSseTestMoreThanJustOneRawStringStructTwinSse(
-            hint: hint);
+    testMoreThanJustOneRawStringStructTwinSse() => RustLib.instance.api
+        .crateApiPseudoManualRawStringTwinSseTestMoreThanJustOneRawStringStructTwinSse();
 
 class MoreThanJustOneRawStringStructTwinSse {
   final String regular;

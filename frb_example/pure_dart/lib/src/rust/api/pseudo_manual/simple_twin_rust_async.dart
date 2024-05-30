@@ -6,8 +6,7 @@
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<int> simpleAdderTwinRustAsync(
-        {required int a, required int b, dynamic hint}) =>
+Future<int> simpleAdderTwinRustAsync({required int a, required int b}) =>
     RustLib.instance.api
         .crateApiPseudoManualSimpleTwinRustAsyncSimpleAdderTwinRustAsync(
-            a: a, b: b, hint: hint);
+            a: a, b: b);

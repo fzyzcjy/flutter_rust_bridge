@@ -7,34 +7,34 @@ import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 StructWithZeroFieldTwinSyncSse funcStructWithZeroFieldTwinSyncSse(
-        {required StructWithZeroFieldTwinSyncSse arg, dynamic hint}) =>
+        {required StructWithZeroFieldTwinSyncSse arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualStructureTwinSyncSseFuncStructWithZeroFieldTwinSyncSse(
-            arg: arg, hint: hint);
+            arg: arg);
 
 StructWithOneFieldTwinSyncSse funcStructWithOneFieldTwinSyncSse(
-        {required StructWithOneFieldTwinSyncSse arg, dynamic hint}) =>
+        {required StructWithOneFieldTwinSyncSse arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualStructureTwinSyncSseFuncStructWithOneFieldTwinSyncSse(
-            arg: arg, hint: hint);
+            arg: arg);
 
 StructWithTwoFieldTwinSyncSse funcStructWithTwoFieldTwinSyncSse(
-        {required StructWithTwoFieldTwinSyncSse arg, dynamic hint}) =>
+        {required StructWithTwoFieldTwinSyncSse arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualStructureTwinSyncSseFuncStructWithTwoFieldTwinSyncSse(
-            arg: arg, hint: hint);
+            arg: arg);
 
 TupleStructWithOneFieldTwinSyncSse funcTupleStructWithOneFieldTwinSyncSse(
-        {required TupleStructWithOneFieldTwinSyncSse arg, dynamic hint}) =>
+        {required TupleStructWithOneFieldTwinSyncSse arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualStructureTwinSyncSseFuncTupleStructWithOneFieldTwinSyncSse(
-            arg: arg, hint: hint);
+            arg: arg);
 
 TupleStructWithTwoFieldTwinSyncSse funcTupleStructWithTwoFieldTwinSyncSse(
-        {required TupleStructWithTwoFieldTwinSyncSse arg, dynamic hint}) =>
+        {required TupleStructWithTwoFieldTwinSyncSse arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualStructureTwinSyncSseFuncTupleStructWithTwoFieldTwinSyncSse(
-            arg: arg, hint: hint);
+            arg: arg);
 
 class StructWithOneFieldTwinSyncSse {
   final int a;

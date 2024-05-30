@@ -10,27 +10,22 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 // The type `SimpleEnumWithCommentsTwinRustAsync` is not used by any `pub` functions, thus it is ignored.
 
 /// This is single line comment
-Future<void> functionWithCommentsTripleSlashSingleLineTwinRustAsync(
-        {dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualCommentTwinRustAsyncFunctionWithCommentsTripleSlashSingleLineTwinRustAsync(
-            hint: hint);
+Future<void> functionWithCommentsTripleSlashSingleLineTwinRustAsync() => RustLib
+    .instance.api
+    .crateApiPseudoManualCommentTwinRustAsyncFunctionWithCommentsTripleSlashSingleLineTwinRustAsync();
 
 /// This is first line
 /// This is second line
-Future<void> functionWithCommentsTripleSlashMultiLineTwinRustAsync(
-        {dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualCommentTwinRustAsyncFunctionWithCommentsTripleSlashMultiLineTwinRustAsync(
-            hint: hint);
+Future<void> functionWithCommentsTripleSlashMultiLineTwinRustAsync() => RustLib
+    .instance.api
+    .crateApiPseudoManualCommentTwinRustAsyncFunctionWithCommentsTripleSlashMultiLineTwinRustAsync();
 
 /// Multiline comments are fine,
 /// but they are not preferred in Rust nor in Dart.
 /// Newlines are preserved.
-Future<void> functionWithCommentsSlashStarStarTwinRustAsync({dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualCommentTwinRustAsyncFunctionWithCommentsSlashStarStarTwinRustAsync(
-            hint: hint);
+Future<void> functionWithCommentsSlashStarStarTwinRustAsync() => RustLib
+    .instance.api
+    .crateApiPseudoManualCommentTwinRustAsyncFunctionWithCommentsSlashStarStarTwinRustAsync();
 
 /// Comments on structs
 class StructWithCommentsTwinRustAsync {
@@ -42,16 +37,14 @@ class StructWithCommentsTwinRustAsync {
   });
 
   /// Documentation on an instance method
-  Future<void> instanceMethodTwinRustAsync({dynamic hint}) => RustLib
-      .instance.api
-      .crateApiPseudoManualCommentTwinRustAsyncStructWithCommentsTwinRustAsyncInstanceMethodTwinRustAsync(
-          that: this, hint: hint);
+  Future<void> instanceMethodTwinRustAsync() => RustLib.instance.api
+          .crateApiPseudoManualCommentTwinRustAsyncStructWithCommentsTwinRustAsyncInstanceMethodTwinRustAsync(
+        that: this,
+      );
 
   /// Documentation on a static method
-  static Future<void> staticMethodTwinRustAsync({dynamic hint}) => RustLib
-      .instance.api
-      .crateApiPseudoManualCommentTwinRustAsyncStructWithCommentsTwinRustAsyncStaticMethodTwinRustAsync(
-          hint: hint);
+  static Future<void> staticMethodTwinRustAsync() => RustLib.instance.api
+      .crateApiPseudoManualCommentTwinRustAsyncStructWithCommentsTwinRustAsyncStaticMethodTwinRustAsync();
 
   @override
   int get hashCode => fieldWithComments.hashCode;

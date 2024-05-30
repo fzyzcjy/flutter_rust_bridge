@@ -27,9 +27,10 @@ class ConstructorOpaqueStructTwinNormal extends RustOpaque {
         .rust_arc_decrement_strong_count_ConstructorOpaqueStructTwinNormalPtr,
   );
 
-  void check({dynamic hint}) => RustLib.instance.api
-      .crateApiConstructorConstructorOpaqueStructTwinNormalCheck(
-          that: this, hint: hint);
+  void check() => RustLib.instance.api
+          .crateApiConstructorConstructorOpaqueStructTwinNormalCheck(
+        that: this,
+      );
 
   String get one => RustLib.instance.api
           .crateApiConstructorConstructorOpaqueStructTwinNormalGetOne(
@@ -37,10 +38,9 @@ class ConstructorOpaqueStructTwinNormal extends RustOpaque {
       );
 
   // HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.
-  static Future<ConstructorOpaqueStructTwinNormal> newInstance(
-          {dynamic hint}) =>
+  static Future<ConstructorOpaqueStructTwinNormal> newInstance() =>
       RustLib.instance.api
-          .crateApiConstructorConstructorOpaqueStructTwinNormalNew(hint: hint);
+          .crateApiConstructorConstructorOpaqueStructTwinNormalNew();
 
   void set one(String one) => RustLib.instance.api
       .crateApiConstructorConstructorOpaqueStructTwinNormalSetOne(
@@ -68,18 +68,18 @@ class ConstructorOpaqueSyncStructTwinNormal extends RustOpaque {
         .rust_arc_decrement_strong_count_ConstructorOpaqueSyncStructTwinNormalPtr,
   );
 
-  void check({dynamic hint}) => RustLib.instance.api
-      .crateApiConstructorConstructorOpaqueSyncStructTwinNormalCheck(
-          that: this, hint: hint);
+  void check() => RustLib.instance.api
+          .crateApiConstructorConstructorOpaqueSyncStructTwinNormalCheck(
+        that: this,
+      );
 
   String get one => RustLib.instance.api
           .crateApiConstructorConstructorOpaqueSyncStructTwinNormalGetOne(
         that: this,
       );
 
-  factory ConstructorOpaqueSyncStructTwinNormal({dynamic hint}) => RustLib
-      .instance.api
-      .crateApiConstructorConstructorOpaqueSyncStructTwinNormalNew(hint: hint);
+  factory ConstructorOpaqueSyncStructTwinNormal() => RustLib.instance.api
+      .crateApiConstructorConstructorOpaqueSyncStructTwinNormalNew();
 
   void set one(String one) => RustLib.instance.api
       .crateApiConstructorConstructorOpaqueSyncStructTwinNormalSetOne(
@@ -94,11 +94,9 @@ class ConstructorTranslatableStructTwinNormal {
   });
 
   // HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.
-  static Future<ConstructorTranslatableStructTwinNormal> newInstance(
-          {dynamic hint}) =>
+  static Future<ConstructorTranslatableStructTwinNormal> newInstance() =>
       RustLib.instance.api
-          .crateApiConstructorConstructorTranslatableStructTwinNormalNew(
-              hint: hint);
+          .crateApiConstructorConstructorTranslatableStructTwinNormalNew();
 
   @override
   int get hashCode => one.hashCode;
@@ -118,10 +116,8 @@ class ConstructorTranslatableSyncStructTwinNormal {
     required this.one,
   });
 
-  factory ConstructorTranslatableSyncStructTwinNormal({dynamic hint}) =>
-      RustLib.instance.api
-          .crateApiConstructorConstructorTranslatableSyncStructTwinNormalNew(
-              hint: hint);
+  factory ConstructorTranslatableSyncStructTwinNormal() => RustLib.instance.api
+      .crateApiConstructorConstructorTranslatableSyncStructTwinNormalNew();
 
   @override
   int get hashCode => one.hashCode;

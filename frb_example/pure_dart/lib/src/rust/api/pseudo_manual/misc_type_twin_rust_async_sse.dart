@@ -9,28 +9,26 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // The functions `fmt`, `clone` are not `pub`, thus are ignored.
 
-Future<void> funcReturnUnitTwinRustAsyncSse({dynamic hint}) => RustLib
-    .instance.api
-    .crateApiPseudoManualMiscTypeTwinRustAsyncSseFuncReturnUnitTwinRustAsyncSse(
-        hint: hint);
+Future<void> funcReturnUnitTwinRustAsyncSse() => RustLib.instance.api
+    .crateApiPseudoManualMiscTypeTwinRustAsyncSseFuncReturnUnitTwinRustAsyncSse();
 
 Future<List<MySize>> handleListOfStructTwinRustAsyncSse(
-        {required List<MySize> l, dynamic hint}) =>
+        {required List<MySize> l}) =>
     RustLib.instance.api
         .crateApiPseudoManualMiscTypeTwinRustAsyncSseHandleListOfStructTwinRustAsyncSse(
-            l: l, hint: hint);
+            l: l);
 
 Future<List<String>> handleStringListTwinRustAsyncSse(
-        {required List<String> names, dynamic hint}) =>
+        {required List<String> names}) =>
     RustLib.instance.api
         .crateApiPseudoManualMiscTypeTwinRustAsyncSseHandleStringListTwinRustAsyncSse(
-            names: names, hint: hint);
+            names: names);
 
 Future<EmptyTwinRustAsyncSse> emptyStructTwinRustAsyncSse(
-        {required EmptyTwinRustAsyncSse empty, dynamic hint}) =>
+        {required EmptyTwinRustAsyncSse empty}) =>
     RustLib.instance.api
         .crateApiPseudoManualMiscTypeTwinRustAsyncSseEmptyStructTwinRustAsyncSse(
-            empty: empty, hint: hint);
+            empty: empty);
 
 class EmptyTwinRustAsyncSse {
   const EmptyTwinRustAsyncSse();

@@ -9,10 +9,10 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 // The functions `fmt` are not `pub`, thus are ignored.
 
 Future<NewTypeIntTwinRustAsyncSse> handleNewtypeTwinRustAsyncSse(
-        {required NewTypeIntTwinRustAsyncSse arg, dynamic hint}) =>
+        {required NewTypeIntTwinRustAsyncSse arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualNewtypePatternTwinRustAsyncSseHandleNewtypeTwinRustAsyncSse(
-            arg: arg, hint: hint);
+            arg: arg);
 
 class NewTypeIntTwinRustAsyncSse {
   final PlatformInt64 field0;

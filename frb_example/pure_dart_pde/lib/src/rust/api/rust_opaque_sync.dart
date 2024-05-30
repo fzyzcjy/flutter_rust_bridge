@@ -7,24 +7,20 @@ import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'rust_opaque.dart';
 
-HideDataAnotherTwinNormal? syncOptionRustOpaqueTwinNormal({dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiRustOpaqueSyncSyncOptionRustOpaqueTwinNormal(hint: hint);
+HideDataAnotherTwinNormal? syncOptionRustOpaqueTwinNormal() =>
+    RustLib.instance.api.crateApiRustOpaqueSyncSyncOptionRustOpaqueTwinNormal();
 
-HideDataAnotherTwinNormal syncCreateOpaqueTwinNormal({dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiRustOpaqueSyncSyncCreateOpaqueTwinNormal(hint: hint);
+HideDataAnotherTwinNormal syncCreateOpaqueTwinNormal() =>
+    RustLib.instance.api.crateApiRustOpaqueSyncSyncCreateOpaqueTwinNormal();
 
-NonCloneDataTwinNormal syncCreateNonCloneTwinNormal({dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiRustOpaqueSyncSyncCreateNonCloneTwinNormal(hint: hint);
+NonCloneDataTwinNormal syncCreateNonCloneTwinNormal() =>
+    RustLib.instance.api.crateApiRustOpaqueSyncSyncCreateNonCloneTwinNormal();
 
 /// Structure for testing the sync-mode RustOpaque code generator.
 /// FrbOpaqueSyncReturn must be only return type.
 /// FrbOpaqueSyncReturn must be without wrapper like Option<> Vec<> etc.
-FrbOpaqueSyncReturnTwinNormal frbSyncGeneratorTestTwinNormal({dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiRustOpaqueSyncFrbSyncGeneratorTestTwinNormal(hint: hint);
+FrbOpaqueSyncReturnTwinNormal frbSyncGeneratorTestTwinNormal() =>
+    RustLib.instance.api.crateApiRustOpaqueSyncFrbSyncGeneratorTestTwinNormal();
 
 // Rust type: RustOpaqueMoi<FrbOpaqueSyncReturnTwinNormal>
 @sealed

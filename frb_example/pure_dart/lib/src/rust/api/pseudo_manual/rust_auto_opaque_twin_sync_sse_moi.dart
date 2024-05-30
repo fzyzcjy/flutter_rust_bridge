@@ -14,256 +14,210 @@ part 'rust_auto_opaque_twin_sync_sse_moi.freezed.dart';
 // The functions `f`, `func_hello`, `func_hello` are not `pub`, thus are ignored.
 
 void rustAutoOpaqueArgOwnTwinSyncSseMoi(
-        {required NonCloneSimpleTwinSyncSseMoi arg,
-        required int expect,
-        dynamic hint}) =>
+        {required NonCloneSimpleTwinSyncSseMoi arg, required int expect}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueArgOwnTwinSyncSseMoi(
-            arg: arg, expect: expect, hint: hint);
+            arg: arg, expect: expect);
 
 void rustAutoOpaqueArgBorrowTwinSyncSseMoi(
-        {required NonCloneSimpleTwinSyncSseMoi arg,
-        required int expect,
-        dynamic hint}) =>
+        {required NonCloneSimpleTwinSyncSseMoi arg, required int expect}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueArgBorrowTwinSyncSseMoi(
-            arg: arg, expect: expect, hint: hint);
+            arg: arg, expect: expect);
 
 void rustAutoOpaqueArgMutBorrowTwinSyncSseMoi(
         {required NonCloneSimpleTwinSyncSseMoi arg,
         required int expect,
-        required int adder,
-        dynamic hint}) =>
+        required int adder}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueArgMutBorrowTwinSyncSseMoi(
-            arg: arg, expect: expect, adder: adder, hint: hint);
+            arg: arg, expect: expect, adder: adder);
 
 NonCloneSimpleTwinSyncSseMoi rustAutoOpaqueReturnOwnTwinSyncSseMoi(
-        {required int initial, dynamic hint}) =>
+        {required int initial}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueReturnOwnTwinSyncSseMoi(
-            initial: initial, hint: hint);
+            initial: initial);
 
 NonCloneSimpleTwinSyncSseMoi rustAutoOpaqueArgOwnAndReturnOwnTwinSyncSseMoi(
-        {required NonCloneSimpleTwinSyncSseMoi arg, dynamic hint}) =>
+        {required NonCloneSimpleTwinSyncSseMoi arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueArgOwnAndReturnOwnTwinSyncSseMoi(
-            arg: arg, hint: hint);
+            arg: arg);
 
 void rustAutoOpaqueTwoArgsTwinSyncSseMoi(
         {required NonCloneSimpleTwinSyncSseMoi a,
-        required NonCloneSimpleTwinSyncSseMoi b,
-        dynamic hint}) =>
+        required NonCloneSimpleTwinSyncSseMoi b}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueTwoArgsTwinSyncSseMoi(
-            a: a, b: b, hint: hint);
+            a: a, b: b);
 
 void rustAutoOpaqueNormalAndOpaqueArgTwinSyncSseMoi(
-        {required NonCloneSimpleTwinSyncSseMoi a,
-        required String b,
-        dynamic hint}) =>
+        {required NonCloneSimpleTwinSyncSseMoi a, required String b}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueNormalAndOpaqueArgTwinSyncSseMoi(
-            a: a, b: b, hint: hint);
+            a: a, b: b);
 
 /// "+" inside the type signature
 void rustAutoOpaquePlusSignArgTwinSyncSseMoi(
-        {required BoxMyTraitTwinSyncSseMoi arg, dynamic hint}) =>
+        {required BoxMyTraitTwinSyncSseMoi arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaquePlusSignArgTwinSyncSseMoi(
-            arg: arg, hint: hint);
+            arg: arg);
 
-BoxMyTraitTwinSyncSseMoi rustAutoOpaquePlusSignReturnTwinSyncSseMoi(
-        {dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaquePlusSignReturnTwinSyncSseMoi(
-            hint: hint);
+BoxMyTraitTwinSyncSseMoi rustAutoOpaquePlusSignReturnTwinSyncSseMoi() => RustLib
+    .instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaquePlusSignReturnTwinSyncSseMoi();
 
 void rustAutoOpaqueCallableArgTwinSyncSseMoi(
-        {required BoxFnStringString arg, dynamic hint}) =>
+        {required BoxFnStringString arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueCallableArgTwinSyncSseMoi(
-            arg: arg, hint: hint);
+            arg: arg);
 
-BoxFnStringString rustAutoOpaqueCallableReturnTwinSyncSseMoi({dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueCallableReturnTwinSyncSseMoi(
-            hint: hint);
+BoxFnStringString rustAutoOpaqueCallableReturnTwinSyncSseMoi() => RustLib
+    .instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueCallableReturnTwinSyncSseMoi();
 
 void rustAutoOpaqueTraitObjectArgOwnTwinSyncSseMoi(
-        {required BoxHelloTraitTwinSyncSseMoi arg,
-        required String expect,
-        dynamic hint}) =>
+        {required BoxHelloTraitTwinSyncSseMoi arg, required String expect}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueTraitObjectArgOwnTwinSyncSseMoi(
-            arg: arg, expect: expect, hint: hint);
+            arg: arg, expect: expect);
 
 void rustAutoOpaqueTraitObjectArgBorrowTwinSyncSseMoi(
-        {required BoxHelloTraitTwinSyncSseMoi arg,
-        required String expect,
-        dynamic hint}) =>
+        {required BoxHelloTraitTwinSyncSseMoi arg, required String expect}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueTraitObjectArgBorrowTwinSyncSseMoi(
-            arg: arg, expect: expect, hint: hint);
+            arg: arg, expect: expect);
 
 void rustAutoOpaqueTraitObjectArgMutBorrowTwinSyncSseMoi(
-        {required BoxHelloTraitTwinSyncSseMoi arg,
-        required String expect,
-        dynamic hint}) =>
+        {required BoxHelloTraitTwinSyncSseMoi arg, required String expect}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueTraitObjectArgMutBorrowTwinSyncSseMoi(
-            arg: arg, expect: expect, hint: hint);
+            arg: arg, expect: expect);
 
-BoxHelloTraitTwinSyncSseMoi rustAutoOpaqueTraitObjectReturnOwnOneTwinSyncSseMoi(
-        {dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueTraitObjectReturnOwnOneTwinSyncSseMoi(
-            hint: hint);
+BoxHelloTraitTwinSyncSseMoi
+    rustAutoOpaqueTraitObjectReturnOwnOneTwinSyncSseMoi() => RustLib
+        .instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueTraitObjectReturnOwnOneTwinSyncSseMoi();
 
-BoxHelloTraitTwinSyncSseMoi rustAutoOpaqueTraitObjectReturnOwnTwoTwinSyncSseMoi(
-        {dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueTraitObjectReturnOwnTwoTwinSyncSseMoi(
-            hint: hint);
+BoxHelloTraitTwinSyncSseMoi
+    rustAutoOpaqueTraitObjectReturnOwnTwoTwinSyncSseMoi() => RustLib
+        .instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueTraitObjectReturnOwnTwoTwinSyncSseMoi();
 
 void rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSyncSseMoi(
-        {required StructWithGoodAndOpaqueFieldTwinSyncSseMoi arg,
-        dynamic hint}) =>
+        {required StructWithGoodAndOpaqueFieldTwinSyncSseMoi arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSyncSseMoi(
-            arg: arg, hint: hint);
+            arg: arg);
 
 StructWithGoodAndOpaqueFieldTwinSyncSseMoi
-    rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSyncSseMoi(
-            {dynamic hint}) =>
-        RustLib.instance.api
-            .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSyncSseMoi(
-                hint: hint);
+    rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSyncSseMoi() => RustLib
+        .instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSyncSseMoi();
 
 void rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinSyncSseMoi(
-        {required EnumWithGoodAndOpaqueTwinSyncSseMoi arg, dynamic hint}) =>
+        {required EnumWithGoodAndOpaqueTwinSyncSseMoi arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinSyncSseMoi(
-            arg: arg, hint: hint);
+            arg: arg);
 
 EnumWithGoodAndOpaqueTwinSyncSseMoi
-    rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinSyncSseMoi(
-            {dynamic hint}) =>
-        RustLib.instance.api
-            .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinSyncSseMoi(
-                hint: hint);
+    rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinSyncSseMoi() => RustLib
+        .instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinSyncSseMoi();
 
 EnumWithGoodAndOpaqueTwinSyncSseMoi
-    rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinSyncSseMoi(
-            {dynamic hint}) =>
-        RustLib.instance.api
-            .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinSyncSseMoi(
-                hint: hint);
+    rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinSyncSseMoi() => RustLib
+        .instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinSyncSseMoi();
 
 void rustAutoOpaqueDummyTwinSyncSseMoi(
         {required StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi a,
-        required EnumWithGoodAndOpaqueWithoutOptionTwinSyncSseMoi b,
-        dynamic hint}) =>
+        required EnumWithGoodAndOpaqueWithoutOptionTwinSyncSseMoi b}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueDummyTwinSyncSseMoi(
-            a: a, b: b, hint: hint);
+            a: a, b: b);
 
 void rustAutoOpaqueEnumArgBorrowTwinSyncSseMoi(
-        {required NonCloneSimpleEnumTwinSyncSseMoi arg, dynamic hint}) =>
+        {required NonCloneSimpleEnumTwinSyncSseMoi arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueEnumArgBorrowTwinSyncSseMoi(
-            arg: arg, hint: hint);
+            arg: arg);
 
-NonCloneSimpleEnumTwinSyncSseMoi rustAutoOpaqueEnumReturnOwnTwinSyncSseMoi(
-        {dynamic hint}) =>
+NonCloneSimpleEnumTwinSyncSseMoi rustAutoOpaqueEnumReturnOwnTwinSyncSseMoi() =>
     RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueEnumReturnOwnTwinSyncSseMoi(
-            hint: hint);
+        .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueEnumReturnOwnTwinSyncSseMoi();
 
-Stream<NonCloneSimpleTwinSyncSseMoi> rustAutoOpaqueStreamSinkTwinSyncSseMoi(
-        {dynamic hint}) =>
+Stream<NonCloneSimpleTwinSyncSseMoi> rustAutoOpaqueStreamSinkTwinSyncSseMoi() =>
     RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueStreamSinkTwinSyncSseMoi(
-            hint: hint);
+        .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueStreamSinkTwinSyncSseMoi();
 
 void rustAutoOpaqueArgVecOwnTwinSyncSseMoi(
         {required List<NonCloneSimpleTwinSyncSseMoi> arg,
-        required List<int> expect,
-        dynamic hint}) =>
+        required List<int> expect}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueArgVecOwnTwinSyncSseMoi(
-            arg: arg, expect: expect, hint: hint);
+            arg: arg, expect: expect);
 
-List<NonCloneSimpleTwinSyncSseMoi> rustAutoOpaqueReturnVecOwnTwinSyncSseMoi(
-        {dynamic hint}) =>
+List<NonCloneSimpleTwinSyncSseMoi> rustAutoOpaqueReturnVecOwnTwinSyncSseMoi() =>
     RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueReturnVecOwnTwinSyncSseMoi(
-            hint: hint);
+        .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueReturnVecOwnTwinSyncSseMoi();
 
 void rustAutoOpaqueExplicitArgTwinSyncSseMoi(
-        {required NonCloneSimpleTwinSyncSseMoi arg,
-        required int expect,
-        dynamic hint}) =>
+        {required NonCloneSimpleTwinSyncSseMoi arg, required int expect}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueExplicitArgTwinSyncSseMoi(
-            arg: arg, expect: expect, hint: hint);
+            arg: arg, expect: expect);
 
 void rustAutoOpaqueExplicitStructTwinSyncSseMoi(
-        {required StructWithExplicitAutoOpaqueFieldTwinSyncSseMoi arg,
-        dynamic hint}) =>
+        {required StructWithExplicitAutoOpaqueFieldTwinSyncSseMoi arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueExplicitStructTwinSyncSseMoi(
-            arg: arg, hint: hint);
+            arg: arg);
 
 StructWithExplicitAutoOpaqueFieldTwinSyncSseMoi
-    rustAutoOpaqueExplicitReturnStructTwinSyncSseMoi({dynamic hint}) => RustLib
-        .instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueExplicitReturnStructTwinSyncSseMoi(
-            hint: hint);
+    rustAutoOpaqueExplicitReturnStructTwinSyncSseMoi() => RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueExplicitReturnStructTwinSyncSseMoi();
 
 NonCloneSimpleTwinSyncSseMoi rustAutoOpaqueExplicitReturnTwinSyncSseMoi(
-        {required int initial, dynamic hint}) =>
+        {required int initial}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueExplicitReturnTwinSyncSseMoi(
-            initial: initial, hint: hint);
+            initial: initial);
 
 int rustAutoOpaqueSleepTwinSyncSseMoi(
         {required NonCloneSimpleTwinSyncSseMoi apple,
-        required NonCloneSimpleTwinSyncSseMoi orange,
-        dynamic hint}) =>
+        required NonCloneSimpleTwinSyncSseMoi orange}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueSleepTwinSyncSseMoi(
-            apple: apple, orange: orange, hint: hint);
+            apple: apple, orange: orange);
 
 (
   OpaqueOneTwinSyncSseMoi,
   OpaqueTwoTwinSyncSseMoi
-) rustAutoOpaqueReturnOpaqueOneAndTwoTwinSyncSseMoi({dynamic hint}) => RustLib
-    .instance.api
-    .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueReturnOpaqueOneAndTwoTwinSyncSseMoi(
-        hint: hint);
+) rustAutoOpaqueReturnOpaqueOneAndTwoTwinSyncSseMoi() => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueReturnOpaqueOneAndTwoTwinSyncSseMoi();
 
-OpaqueTwoTwinSyncSseMoi rustAutoOpaqueReturnOpaqueTwoTwinSyncSseMoi(
-        {dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueReturnOpaqueTwoTwinSyncSseMoi(
-            hint: hint);
+OpaqueTwoTwinSyncSseMoi rustAutoOpaqueReturnOpaqueTwoTwinSyncSseMoi() => RustLib
+    .instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueReturnOpaqueTwoTwinSyncSseMoi();
 
 int rustAutoOpaqueBorrowAndMutBorrowTwinSyncSseMoi(
         {required NonCloneSimpleTwinSyncSseMoi borrow,
-        required NonCloneSimpleTwinSyncSseMoi mutBorrow,
-        dynamic hint}) =>
+        required NonCloneSimpleTwinSyncSseMoi mutBorrow}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueBorrowAndMutBorrowTwinSyncSseMoi(
-            borrow: borrow, mutBorrow: mutBorrow, hint: hint);
+            borrow: borrow, mutBorrow: mutBorrow);
 
 int rustAutoOpaqueBorrowAndBorrowTwinSyncSseMoi(
         {required NonCloneSimpleTwinSyncSseMoi a,
-        required NonCloneSimpleTwinSyncSseMoi b,
-        dynamic hint}) =>
+        required NonCloneSimpleTwinSyncSseMoi b}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueBorrowAndBorrowTwinSyncSseMoi(
-            a: a, b: b, hint: hint);
+            a: a, b: b);
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn HelloTraitTwinSyncSseMoi >>>
 @sealed
@@ -375,75 +329,68 @@ class NonCloneSimpleTwinSyncSseMoi extends RustOpaque {
         .rust_arc_decrement_strong_count_NonCloneSimpleTwinSyncSseMoiPtr,
   );
 
-  void instanceMethodArgBorrowTwinSyncSseMoi({dynamic hint}) => RustLib
-      .instance.api
-      .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiNonCloneSimpleTwinSyncSseMoiInstanceMethodArgBorrowTwinSyncSseMoi(
-          that: this, hint: hint);
+  void instanceMethodArgBorrowTwinSyncSseMoi() => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiNonCloneSimpleTwinSyncSseMoiInstanceMethodArgBorrowTwinSyncSseMoi(
+        that: this,
+      );
 
-  void instanceMethodArgMutBorrowTwinSyncSseMoi({dynamic hint}) => RustLib
-      .instance.api
-      .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiNonCloneSimpleTwinSyncSseMoiInstanceMethodArgMutBorrowTwinSyncSseMoi(
-          that: this, hint: hint);
+  void instanceMethodArgMutBorrowTwinSyncSseMoi() => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiNonCloneSimpleTwinSyncSseMoiInstanceMethodArgMutBorrowTwinSyncSseMoi(
+        that: this,
+      );
 
-  void instanceMethodArgOwnTwinSyncSseMoi({dynamic hint}) => RustLib
-      .instance.api
-      .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiNonCloneSimpleTwinSyncSseMoiInstanceMethodArgOwnTwinSyncSseMoi(
-          that: this, hint: hint);
+  void instanceMethodArgOwnTwinSyncSseMoi() => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiNonCloneSimpleTwinSyncSseMoiInstanceMethodArgOwnTwinSyncSseMoi(
+        that: this,
+      );
 
   int get instanceMethodGetterTwinSyncSseMoi => RustLib.instance.api
           .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiNonCloneSimpleTwinSyncSseMoiInstanceMethodGetterTwinSyncSseMoi(
         that: this,
       );
 
-  NonCloneSimpleTwinSyncSseMoi instanceMethodReturnOwnTwinSyncSseMoi(
-          {dynamic hint}) =>
+  NonCloneSimpleTwinSyncSseMoi instanceMethodReturnOwnTwinSyncSseMoi() =>
       RustLib.instance.api
           .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiNonCloneSimpleTwinSyncSseMoiInstanceMethodReturnOwnTwinSyncSseMoi(
-              that: this, hint: hint);
+        that: this,
+      );
 
   /// named constructor
-  static NonCloneSimpleTwinSyncSseMoi newCustomNameTwinSyncSseMoi(
-          {dynamic hint}) =>
-      RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiNonCloneSimpleTwinSyncSseMoiNewCustomNameTwinSyncSseMoi(
-              hint: hint);
+  static NonCloneSimpleTwinSyncSseMoi newCustomNameTwinSyncSseMoi() => RustLib
+      .instance.api
+      .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiNonCloneSimpleTwinSyncSseMoiNewCustomNameTwinSyncSseMoi();
 
   /// unnamed constructor
-  static NonCloneSimpleTwinSyncSseMoi newTwinSyncSseMoi({dynamic hint}) => RustLib
+  static NonCloneSimpleTwinSyncSseMoi newTwinSyncSseMoi() => RustLib
       .instance.api
-      .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiNonCloneSimpleTwinSyncSseMoiNewTwinSyncSseMoi(
-          hint: hint);
+      .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiNonCloneSimpleTwinSyncSseMoiNewTwinSyncSseMoi();
 
   /// constructor with Result
-  static NonCloneSimpleTwinSyncSseMoi newWithResultTwinSyncSseMoi(
-          {dynamic hint}) =>
-      RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiNonCloneSimpleTwinSyncSseMoiNewWithResultTwinSyncSseMoi(
-              hint: hint);
+  static NonCloneSimpleTwinSyncSseMoi newWithResultTwinSyncSseMoi() => RustLib
+      .instance.api
+      .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiNonCloneSimpleTwinSyncSseMoiNewWithResultTwinSyncSseMoi();
 
   static void staticMethodArgBorrowTwinSyncSseMoi(
-          {required NonCloneSimpleTwinSyncSseMoi arg, dynamic hint}) =>
+          {required NonCloneSimpleTwinSyncSseMoi arg}) =>
       RustLib.instance.api
           .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiNonCloneSimpleTwinSyncSseMoiStaticMethodArgBorrowTwinSyncSseMoi(
-              arg: arg, hint: hint);
+              arg: arg);
 
   static void staticMethodArgMutBorrowTwinSyncSseMoi(
-          {required NonCloneSimpleTwinSyncSseMoi arg, dynamic hint}) =>
+          {required NonCloneSimpleTwinSyncSseMoi arg}) =>
       RustLib.instance.api
           .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiNonCloneSimpleTwinSyncSseMoiStaticMethodArgMutBorrowTwinSyncSseMoi(
-              arg: arg, hint: hint);
+              arg: arg);
 
   static void staticMethodArgOwnTwinSyncSseMoi(
-          {required NonCloneSimpleTwinSyncSseMoi arg, dynamic hint}) =>
+          {required NonCloneSimpleTwinSyncSseMoi arg}) =>
       RustLib.instance.api
           .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiNonCloneSimpleTwinSyncSseMoiStaticMethodArgOwnTwinSyncSseMoi(
-              arg: arg, hint: hint);
+              arg: arg);
 
-  static NonCloneSimpleTwinSyncSseMoi staticMethodReturnOwnTwinSyncSseMoi(
-          {dynamic hint}) =>
+  static NonCloneSimpleTwinSyncSseMoi staticMethodReturnOwnTwinSyncSseMoi() =>
       RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiNonCloneSimpleTwinSyncSseMoiStaticMethodReturnOwnTwinSyncSseMoi(
-              hint: hint);
+          .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiNonCloneSimpleTwinSyncSseMoiStaticMethodReturnOwnTwinSyncSseMoi();
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueOneTwinSyncSseMoi>>

@@ -8,26 +8,20 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // The functions `clone` are not `pub`, thus are ignored.
 
-String borrowStringTwinSyncSse({required String arg, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOwnershipTwinSyncSseBorrowStringTwinSyncSse(
-            arg: arg, hint: hint);
+String borrowStringTwinSyncSse({required String arg}) => RustLib.instance.api
+    .crateApiPseudoManualOwnershipTwinSyncSseBorrowStringTwinSyncSse(arg: arg);
 
-String borrowStrTwinSyncSse({required String arg, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOwnershipTwinSyncSseBorrowStrTwinSyncSse(
-            arg: arg, hint: hint);
+String borrowStrTwinSyncSse({required String arg}) => RustLib.instance.api
+    .crateApiPseudoManualOwnershipTwinSyncSseBorrowStrTwinSyncSse(arg: arg);
 
-int borrowI32TwinSyncSse({required int arg, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOwnershipTwinSyncSseBorrowI32TwinSyncSse(
-            arg: arg, hint: hint);
+int borrowI32TwinSyncSse({required int arg}) => RustLib.instance.api
+    .crateApiPseudoManualOwnershipTwinSyncSseBorrowI32TwinSyncSse(arg: arg);
 
 SimpleStructForBorrowTwinSyncSse borrowStructTwinSyncSse(
-        {required SimpleStructForBorrowTwinSyncSse arg, dynamic hint}) =>
+        {required SimpleStructForBorrowTwinSyncSse arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualOwnershipTwinSyncSseBorrowStructTwinSyncSse(
-            arg: arg, hint: hint);
+            arg: arg);
 
 class SimpleStructForBorrowTwinSyncSse {
   final String one;

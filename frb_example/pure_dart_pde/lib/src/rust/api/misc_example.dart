@@ -13,50 +13,45 @@ part 'misc_example.freezed.dart';
 // The functions `visibility_restricted_func_twin_normal`, `fmt`, `clone`, `fmt`, `clone`, `fmt`, `clone`, `fmt`, `clone` are not `pub`, thus are ignored.
 
 Future<MyTreeNodeTwinNormal> handleComplexStructTwinNormal(
-        {required MyTreeNodeTwinNormal s, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiMiscExampleHandleComplexStructTwinNormal(s: s, hint: hint);
+        {required MyTreeNodeTwinNormal s}) =>
+    RustLib.instance.api.crateApiMiscExampleHandleComplexStructTwinNormal(s: s);
 
 Future<List<WeekdaysTwinNormal>> listOfPrimitiveEnumsTwinNormal(
-        {required List<WeekdaysTwinNormal> weekdays, dynamic hint}) =>
-    RustLib.instance.api.crateApiMiscExampleListOfPrimitiveEnumsTwinNormal(
-        weekdays: weekdays, hint: hint);
+        {required List<WeekdaysTwinNormal> weekdays}) =>
+    RustLib.instance.api
+        .crateApiMiscExampleListOfPrimitiveEnumsTwinNormal(weekdays: weekdays);
 
 Future<MyNestedStructTwinNormal> handleNestedStructTwinNormal(
-        {required MyNestedStructTwinNormal s, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiMiscExampleHandleNestedStructTwinNormal(s: s, hint: hint);
+        {required MyNestedStructTwinNormal s}) =>
+    RustLib.instance.api.crateApiMiscExampleHandleNestedStructTwinNormal(s: s);
 
-Future<BigBuffersTwinNormal> handleBigBuffersTwinNormal({dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiMiscExampleHandleBigBuffersTwinNormal(hint: hint);
+Future<BigBuffersTwinNormal> handleBigBuffersTwinNormal() =>
+    RustLib.instance.api.crateApiMiscExampleHandleBigBuffersTwinNormal();
 
-Future<AbcTwinNormal> testAbcEnumTwinNormal(
-        {required AbcTwinNormal abc, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiMiscExampleTestAbcEnumTwinNormal(abc: abc, hint: hint);
+Future<AbcTwinNormal> testAbcEnumTwinNormal({required AbcTwinNormal abc}) =>
+    RustLib.instance.api.crateApiMiscExampleTestAbcEnumTwinNormal(abc: abc);
 
 Future<StructWithEnumTwinNormal> testStructWithEnumTwinNormal(
-        {required StructWithEnumTwinNormal se, dynamic hint}) =>
+        {required StructWithEnumTwinNormal se}) =>
     RustLib.instance.api
-        .crateApiMiscExampleTestStructWithEnumTwinNormal(se: se, hint: hint);
+        .crateApiMiscExampleTestStructWithEnumTwinNormal(se: se);
 
-Future<String> handleStringTwinNormal({required String s, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiMiscExampleHandleStringTwinNormal(s: s, hint: hint);
+Future<String> handleStringTwinNormal({required String s}) =>
+    RustLib.instance.api.crateApiMiscExampleHandleStringTwinNormal(s: s);
 
-Future<String> handleCharTwinNormal({required String arg, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiMiscExampleHandleCharTwinNormal(arg: arg, hint: hint);
+Future<String> handleCharTwinNormal({required String arg}) =>
+    RustLib.instance.api.crateApiMiscExampleHandleCharTwinNormal(arg: arg);
 
-Future<Uint8List> handleVecU8TwinNormal({required List<int> v, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiMiscExampleHandleVecU8TwinNormal(v: v, hint: hint);
+Future<Uint8List> handleVecU8TwinNormal({required List<int> v}) =>
+    RustLib.instance.api.crateApiMiscExampleHandleVecU8TwinNormal(v: v);
 
 Future<MySize> handleStructTwinNormal(
-        {required MySize arg, required MySize boxed, dynamic hint}) =>
-    RustLib.instance.api.crateApiMiscExampleHandleStructTwinNormal(
-        arg: arg, boxed: boxed, hint: hint);
+        {required MySize arg, required MySize boxed}) =>
+    RustLib.instance.api
+        .crateApiMiscExampleHandleStructTwinNormal(arg: arg, boxed: boxed);
+
+Future<int> positionalArgumentsTwinNormal(int a, int b) => RustLib.instance.api
+    .crateApiMiscExamplePositionalArgumentsTwinNormal(a: a, b: b);
 
 class ATwinNormal {
   final String a;

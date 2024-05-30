@@ -103,6 +103,10 @@ impl FrbAttributes {
         !self.any_eq(&FrbAttribute::NonEq)
     }
 
+    pub(crate) fn positional(&self) -> bool {
+        self.any_eq(&FrbAttribute::Positional)
+    }
+
     pub(crate) fn rust_opaque_codec(&self) -> Option<RustOpaqueCodecMode> {
         if self.any_eq(&FrbAttribute::RustOpaqueCodecMoi) {
             Some(RustOpaqueCodecMode::Moi)
@@ -181,6 +185,7 @@ mod frb_keyword {
     syn::custom_keyword!(non_opaque);
     syn::custom_keyword!(non_hash);
     syn::custom_keyword!(non_eq);
+    syn::custom_keyword!(positional);
     syn::custom_keyword!(rust_opaque_codec_moi);
     syn::custom_keyword!(serialize);
     syn::custom_keyword!(semi_serialize);
@@ -217,6 +222,7 @@ enum FrbAttribute {
     NonOpaque,
     NonHash,
     NonEq,
+    Positional,
     RustOpaqueCodecMoi,
     Serialize,
     // NOTE: Undocumented, since this name may be suboptimal and is subject to change
@@ -252,6 +258,7 @@ impl Parse for FrbAttribute {
             .or_else(|| parse_keyword::<non_opaque, _>(input, &lookahead, non_opaque, NonOpaque))
             .or_else(|| parse_keyword::<non_hash, _>(input, &lookahead, non_hash, NonHash))
             .or_else(|| parse_keyword::<non_eq, _>(input, &lookahead, non_eq, NonEq))
+            .or_else(|| parse_keyword::<positional, _>(input, &lookahead, positional, Positional))
             .or_else(|| {
                 parse_keyword::<rust_opaque_codec_moi, _>(
                     input,
@@ -635,6 +642,11 @@ mod tests {
     #[test]
     fn test_non_eq() {
         simple_keyword_tester("non_eq", FrbAttribute::NonEq);
+    }
+
+    #[test]
+    fn test_positional() {
+        simple_keyword_tester("positional", FrbAttribute::Positional);
     }
 
     #[test]

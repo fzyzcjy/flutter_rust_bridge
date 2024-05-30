@@ -9,19 +9,15 @@ import 'package:uuid/uuid.dart';
 
 // The functions `fmt`, `clone` are not `pub`, thus are ignored.
 
-Future<UuidValue> handleUuidTwinNormal({required UuidValue id, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiUuidTypeHandleUuidTwinNormal(id: id, hint: hint);
+Future<UuidValue> handleUuidTwinNormal({required UuidValue id}) =>
+    RustLib.instance.api.crateApiUuidTypeHandleUuidTwinNormal(id: id);
 
-Future<List<UuidValue>> handleUuidsTwinNormal(
-        {required List<UuidValue> ids, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiUuidTypeHandleUuidsTwinNormal(ids: ids, hint: hint);
+Future<List<UuidValue>> handleUuidsTwinNormal({required List<UuidValue> ids}) =>
+    RustLib.instance.api.crateApiUuidTypeHandleUuidsTwinNormal(ids: ids);
 
 Future<FeatureUuidTwinNormal> handleNestedUuidsTwinNormal(
-        {required FeatureUuidTwinNormal ids, dynamic hint}) =>
-    RustLib.instance.api
-        .crateApiUuidTypeHandleNestedUuidsTwinNormal(ids: ids, hint: hint);
+        {required FeatureUuidTwinNormal ids}) =>
+    RustLib.instance.api.crateApiUuidTypeHandleNestedUuidsTwinNormal(ids: ids);
 
 class FeatureUuidTwinNormal {
   final UuidValue one;

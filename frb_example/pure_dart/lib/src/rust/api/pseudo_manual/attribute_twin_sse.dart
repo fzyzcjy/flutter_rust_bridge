@@ -12,16 +12,15 @@ part 'attribute_twin_sse.freezed.dart';
 // The type `IgnoredStructTwinSse` is not used by any `pub` functions, thus it is ignored.
 // The functions `fmt`, `clone` are not `pub`, thus are ignored.
 
-Future<void> handleCustomizedStructTwinSse(
-        {required CustomizedTwinSse val, dynamic hint}) =>
+Future<void> handleCustomizedStructTwinSse({required CustomizedTwinSse val}) =>
     RustLib.instance.api
         .crateApiPseudoManualAttributeTwinSseHandleCustomizedStructTwinSse(
-            val: val, hint: hint);
+            val: val);
 
 Future<UserIdTwinSse> nextUserIdTwinSse(
-        {UserIdTwinSse userId = const UserIdTwinSse(), dynamic hint}) =>
-    RustLib.instance.api.crateApiPseudoManualAttributeTwinSseNextUserIdTwinSse(
-        userId: userId, hint: hint);
+        {UserIdTwinSse userId = const UserIdTwinSse()}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualAttributeTwinSseNextUserIdTwinSse(userId: userId);
 
 class CustomizedTwinSse {
   final String finalField;
