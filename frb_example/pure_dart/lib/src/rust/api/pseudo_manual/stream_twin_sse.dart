@@ -7,6 +7,8 @@ import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'stream_twin_rust_async.dart';
 
+// The functions `handle_stream_inner`, `fmt`, `clone` are not `pub`, thus are ignored.
+
 Future<Stream<String>> funcStreamReturnErrorTwinSse({dynamic hint}) => RustLib
     .instance.api
     .crateApiPseudoManualStreamTwinSseFuncStreamReturnErrorTwinSse(hint: hint);

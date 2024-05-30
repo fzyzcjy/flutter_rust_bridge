@@ -36,6 +36,8 @@ use anyhow::ensure;
 use itertools::{concat, Itertools};
 use log::trace;
 use std::collections::HashMap;
+use std::path::Path;
+use syn::Visibility;
 use ConfigDumpContent::SourceGraph;
 
 pub(crate) fn parse(
@@ -72,13 +74,15 @@ pub(crate) fn parse(
     dumper.dump(SourceGraph, "source_graph.json", &crate_map)?;
     drop(pb);
 
-    let src_fns = file_data_arr
+    let src_fns_all = file_data_arr
         .iter()
         .map(|file| extract_generalized_functions_from_file(&file.ast, &file.path))
         .collect::<anyhow::Result<Vec<_>>>()?
         .into_iter()
         .flatten()
         .collect_vec();
+    let (src_fns_interest, src_fns_skipped): (Vec<_>, Vec<_>) = (src_fns_all.into_iter())
+        .partition(|item| matches!(item.generalized_item_fn.vis(), Visibility::Public(_)));
 
     let src_structs = crate_map.root_module().collect_structs();
     let src_enums = crate_map.root_module().collect_enums();
@@ -86,7 +90,7 @@ pub(crate) fn parse(
 
     let mut type_parser = TypeParser::new(src_structs.clone(), src_enums.clone(), src_types);
 
-    let ir_funcs = parse_ir_funcs(config, &src_fns, &mut type_parser, &src_structs)?;
+    let ir_funcs = parse_ir_funcs(config, &src_fns_interest, &mut type_parser, &src_structs)?;
 
     let existing_handlers = parse_existing_handlers(config, &file_data_arr)?;
 
@@ -99,6 +103,7 @@ pub(crate) fn parse(
         dart_code_of_type,
         existing_handler: existing_handlers.first().cloned(),
         unused_types: vec![],
+        skipped_functions: compute_skipped_functions(&src_fns_skipped, &config.rust_crate_dir)?,
     };
 
     ans.unused_types = get_unused_types(
@@ -174,6 +179,21 @@ fn parse_existing_handlers(
     );
     // frb-coverage:ignore-end
     Ok(existing_handlers)
+}
+
+fn compute_skipped_functions(
+    src_fns_skipped: &[PathAndItemFn],
+    rust_crate_dir: &Path,
+) -> anyhow::Result<Vec<NamespacedName>> {
+    src_fns_skipped
+        .iter()
+        .map(|x| {
+            Ok(NamespacedName::new(
+                Namespace::new_from_rust_crate_path(&x.path, rust_crate_dir)?,
+                x.generalized_item_fn.sig().ident.to_string(),
+            ))
+        })
+        .collect()
 }
 
 #[cfg(test)]

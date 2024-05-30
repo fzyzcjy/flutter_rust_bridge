@@ -10,6 +10,7 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'misc_example_twin_sync_sse.freezed.dart';
 
 // The type `MySizeFreezedTwinSyncSse` is not used by any `pub` functions, thus it is ignored.
+// The functions `visibility_restricted_func_twin_sync_sse`, `fmt`, `clone`, `fmt`, `clone`, `fmt`, `clone`, `fmt`, `clone` are not `pub`, thus are ignored.
 
 MyTreeNodeTwinSyncSse handleComplexStructTwinSyncSse(
         {required MyTreeNodeTwinSyncSse s, dynamic hint}) =>

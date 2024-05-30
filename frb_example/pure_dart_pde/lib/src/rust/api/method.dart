@@ -9,6 +9,8 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'method.freezed.dart';
 
+// The functions `fmt`, `clone` are not `pub`, thus are ignored.
+
 Future<SumWithTwinNormal> getSumStructTwinNormal({dynamic hint}) =>
     RustLib.instance.api.crateApiMethodGetSumStructTwinNormal(hint: hint);
 

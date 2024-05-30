@@ -20,6 +20,7 @@ pub struct IrPack {
     pub dart_code_of_type: HashMap<String, String>,
     pub existing_handler: Option<NamespacedName>,
     pub unused_types: Vec<NamespacedName>,
+    pub skipped_functions: Vec<NamespacedName>,
 }
 
 impl IrPack {
