@@ -9,6 +9,8 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'enumeration_twin_sync.freezed.dart';
 
+// The functions `fmt`, `fmt`, `clone`, `fmt`, `clone`, `fmt`, `clone`, `fmt` are not `pub`, thus are ignored.
+
 EnumSimpleTwinSync funcEnumSimpleTwinSync(
         {required EnumSimpleTwinSync arg, dynamic hint}) =>
     RustLib.instance.api

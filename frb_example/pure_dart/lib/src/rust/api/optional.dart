@@ -8,6 +8,8 @@ import 'misc_example.dart';
 import 'newtype_pattern.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+// The functions `default`, `fmt`, `clone`, `fmt`, `clone`, `fmt` are not `pub`, thus are ignored.
+
 Future<double?> handleOptionalReturnTwinNormal(
         {required double left, required double right, dynamic hint}) =>
     RustLib.instance.api.crateApiOptionalHandleOptionalReturnTwinNormal(

@@ -7,6 +7,8 @@ import '../auxiliary/sample_types.dart';
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+// The functions `fmt`, `clone` are not `pub`, thus are ignored.
+
 Future<void> funcReturnUnitTwinNormal({dynamic hint}) =>
     RustLib.instance.api.crateApiMiscTypeFuncReturnUnitTwinNormal(hint: hint);
 

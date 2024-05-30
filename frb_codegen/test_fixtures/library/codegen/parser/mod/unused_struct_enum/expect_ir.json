@@ -3,6 +3,7 @@
   "enum_pool": {},
   "existing_handler": null,
   "funcs": [],
+  "skipped_functions": [],
   "struct_pool": {
     "crate::api/UnusedStruct": {
       "comments": [],

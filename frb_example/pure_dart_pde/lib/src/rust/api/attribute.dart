@@ -10,6 +10,7 @@ import 'package:meta/meta.dart' as meta;
 part 'attribute.freezed.dart';
 
 // The type `IgnoredStructTwinNormal` is not used by any `pub` functions, thus it is ignored.
+// The functions `fmt`, `clone` are not `pub`, thus are ignored.
 
 Future<void> handleCustomizedStructTwinNormal(
         {required CustomizedTwinNormal val, dynamic hint}) =>

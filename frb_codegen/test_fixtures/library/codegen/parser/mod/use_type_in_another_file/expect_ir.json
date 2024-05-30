@@ -100,6 +100,7 @@
       "stream_dart_await": false
     }
   ],
+  "skipped_functions": [],
   "struct_pool": {
     "crate::another_file/StructInAnotherFile": {
       "comments": [],
