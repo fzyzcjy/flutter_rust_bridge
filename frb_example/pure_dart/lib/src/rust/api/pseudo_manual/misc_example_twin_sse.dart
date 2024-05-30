@@ -57,6 +57,10 @@ Future<MySize> handleStructTwinSse(
         .crateApiPseudoManualMiscExampleTwinSseHandleStructTwinSse(
             arg: arg, boxed: boxed);
 
+Future<int> positionalArgumentsTwinSse(int a, int b) => RustLib.instance.api
+    .crateApiPseudoManualMiscExampleTwinSsePositionalArgumentsTwinSse(
+        a: a, b: b);
+
 class ATwinSse {
   final String a;
 

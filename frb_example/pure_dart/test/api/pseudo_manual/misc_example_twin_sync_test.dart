@@ -118,6 +118,10 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(structResp.width, 42 + 1000);
     expect(structResp.height, 100 + 10000);
   });
+
+  test('positionalArgumentsTwinSync', () async {
+    expect(await positionalArgumentsTwinSync(100, 200), 300);
+  });
 }
 
 MyTreeNodeTwinSync _createMyTreeNode({required int arrLen}) {

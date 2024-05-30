@@ -50,6 +50,9 @@ Future<MySize> handleStructTwinNormal(
     RustLib.instance.api
         .crateApiMiscExampleHandleStructTwinNormal(arg: arg, boxed: boxed);
 
+Future<int> positionalArgumentsTwinNormal(int a, int b) => RustLib.instance.api
+    .crateApiMiscExamplePositionalArgumentsTwinNormal(a: a, b: b);
+
 class ATwinNormal {
   final String a;
 

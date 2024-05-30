@@ -66,6 +66,11 @@ Future<MySize> handleStructTwinRustAsync(
         .crateApiPseudoManualMiscExampleTwinRustAsyncHandleStructTwinRustAsync(
             arg: arg, boxed: boxed);
 
+Future<int> positionalArgumentsTwinRustAsync(int a, int b) => RustLib
+    .instance.api
+    .crateApiPseudoManualMiscExampleTwinRustAsyncPositionalArgumentsTwinRustAsync(
+        a: a, b: b);
+
 class ATwinRustAsync {
   final String a;
 

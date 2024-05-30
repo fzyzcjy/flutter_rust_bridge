@@ -156,3 +156,9 @@ pub struct MySizeFreezedTwinSync {
 // To test parsing of `pub(super)`
 #[allow(dead_code)]
 pub(super) fn visibility_restricted_func_twin_sync() {}
+
+#[frb(positional)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn positional_arguments_twin_sync(a: i32, b: i32) -> i32 {
+    a + b
+}

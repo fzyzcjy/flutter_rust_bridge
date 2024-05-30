@@ -57,6 +57,10 @@ MySize handleStructTwinSync({required MySize arg, required MySize boxed}) =>
         .crateApiPseudoManualMiscExampleTwinSyncHandleStructTwinSync(
             arg: arg, boxed: boxed);
 
+int positionalArgumentsTwinSync(int a, int b) => RustLib.instance.api
+    .crateApiPseudoManualMiscExampleTwinSyncPositionalArgumentsTwinSync(
+        a: a, b: b);
+
 class ATwinSync {
   final String a;
 
