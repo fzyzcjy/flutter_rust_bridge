@@ -115,6 +115,10 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(structResp.width, 42 + 1000);
     expect(structResp.height, 100 + 10000);
   });
+
+  test('positionalArgumentsTwinNormal', () async {
+    expect(await positionalArgumentsTwinNormal(100, 200), 300);
+  });
 }
 
 MyTreeNodeTwinNormal _createMyTreeNode({required int arrLen}) {

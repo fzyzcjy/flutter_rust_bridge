@@ -144,3 +144,8 @@ pub struct MySizeFreezedTwinNormal {
 // To test parsing of `pub(super)`
 #[allow(dead_code)]
 pub(super) fn visibility_restricted_func_twin_normal() {}
+
+#[frb(positional)]
+pub fn positional_arguments_twin_normal(a: i32, b: i32) -> i32 {
+    a + b
+}
