@@ -41,7 +41,8 @@ impl InternalConfig {
             .unwrap_or(std::env::current_dir()?);
         debug!("InternalConfig.parse base_dir={base_dir:?}");
 
-        let rust_input_path_pack = compute_rust_input_path_pack(&config.rust_input, &base_dir)?;
+        let rust_input_namespace_pack =
+            compute_rust_input_namespace_pack(&config.rust_input, &base_dir)?;
 
         let dart_output_dir = canonicalize_with_error_message(&base_dir.join(&config.dart_output))?;
         let dart_output_path_pack = compute_dart_output_path_pack(&dart_output_dir)?;
@@ -59,7 +60,7 @@ impl InternalConfig {
 
         let rust_crate_dir = canonicalize_with_error_message(
             &(config.rust_root.clone().map(PathBuf::from)).unwrap_or(find_rust_crate_dir(
-                rust_input_path_pack.one_rust_input_path(),
+                rust_input_namespace_pack.one_rust_input_path(),
             )?),
         )?;
         let rust_output_path = compute_rust_output_path(config, &base_dir, &rust_crate_dir)?;
@@ -105,7 +106,7 @@ impl InternalConfig {
                 needs_ffigen: full_dep,
             },
             parser: ParserInternalConfig {
-                rust_input_namespace_pack: rust_input_path_pack.clone(),
+                rust_input_namespace_pack: rust_input_namespace_pack.clone(),
                 rust_crate_dir: rust_crate_dir.clone(),
                 force_codec_mode_pack: compute_force_codec_mode_pack(full_dep),
                 default_stream_sink_codec,
@@ -239,7 +240,7 @@ impl RustInputNamespacePack {
     }
 }
 
-fn compute_rust_input_path_pack(
+fn compute_rust_input_namespace_pack(
     raw_rust_input: &str,
     base_dir: &Path,
 ) -> Result<RustInputNamespacePack> {

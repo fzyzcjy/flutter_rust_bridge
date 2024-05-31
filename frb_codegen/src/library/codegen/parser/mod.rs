@@ -280,9 +280,9 @@ mod tests {
     #[allow(clippy::type_complexity)]
     fn body(
         fixture_name: &str,
-        rust_input_path_pack: Option<Box<dyn Fn(&Path) -> RustInputNamespacePack>>,
+        rust_input_namespace_pack: Option<Box<dyn Fn(&Path) -> RustInputNamespacePack>>,
     ) -> anyhow::Result<()> {
-        let (actual_ir, rust_crate_dir) = execute_parse(fixture_name, rust_input_path_pack)?;
+        let (actual_ir, rust_crate_dir) = execute_parse(fixture_name, rust_input_namespace_pack)?;
         json_golden_test(
             &serde_json::to_value(actual_ir)?,
             &rust_crate_dir.join("expect_ir.json"),
@@ -295,7 +295,7 @@ mod tests {
     #[allow(clippy::type_complexity)]
     fn execute_parse(
         fixture_name: &str,
-        rust_input_path_pack: Option<Box<dyn Fn(&Path) -> RustInputNamespacePack>>,
+        rust_input_namespace_pack: Option<Box<dyn Fn(&Path) -> RustInputNamespacePack>>,
     ) -> anyhow::Result<(IrPack, PathBuf)> {
         configure_opinionated_test_logging();
         let test_fixture_dir = get_test_fixture_dir(fixture_name);
@@ -316,7 +316,7 @@ mod tests {
 
         let pack = parse(
             &ParserInternalConfig {
-                rust_input_namespace_pack: rust_input_path_pack
+                rust_input_namespace_pack: rust_input_namespace_pack
                     .map(|f| f(&rust_crate_dir))
                     .unwrap_or(RustInputNamespacePack {
                         rust_input_namespaces: vec![rust_crate_dir.join("src/api.rs")],
