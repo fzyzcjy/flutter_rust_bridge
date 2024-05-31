@@ -33,7 +33,7 @@ fn compute_rust_input_namespace_pack(
 ) -> anyhow::Result<RustInputNamespacePack> {
     Ok(RustInputNamespacePack {
         // will support multi prefices later
-        rust_input_namespace_prefices: vec![Namespace::new_raw(raw_rust_input)],
+        rust_input_namespace_prefices: vec![Namespace::new_raw(raw_rust_input.to_owned())],
     })
 
     // const BLACKLIST_FILE_NAMES: [&str; 1] = ["mod.rs"];
