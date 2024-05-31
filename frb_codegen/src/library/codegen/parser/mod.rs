@@ -52,17 +52,18 @@ pub(crate) fn parse(
     //     cached_rust_reader,
     //     dumper,
     // )?;
-
-    let rust_input_paths = &config.rust_input_namespace_pack.rust_input_namespaces;
-    trace!("rust_input_paths={:?}", &rust_input_paths);
+    //
+    // let rust_input_paths = &config.rust_input_namespace_pack.rust_input_namespaces;
+    // trace!("rust_input_paths={:?}", &rust_input_paths);
 
     let pb = progress_bar_pack.parse_cargo_expand.start();
-    let file_data_arr = read_files(
-        rust_input_paths,
-        &config.rust_crate_dir,
-        cached_rust_reader,
-        dumper,
-    )?;
+    let rust_crate_ast = cached_rust_reader.read_rust_crate(&config.rust_crate_dir, dumper)?;
+    // let file_data_arr = read_files(
+    //     rust_input_paths,
+    //     &config.rust_crate_dir,
+    //     cached_rust_reader,
+    //     dumper,
+    // )?;
     drop(pb);
 
     let pb = progress_bar_pack.parse_source_graph.start();
