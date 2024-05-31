@@ -3,11 +3,13 @@ use std::collections::HashMap;
 
 pub(crate) struct SimpleCache<K, V>(HashMap<K, V>);
 
-impl<K, V> SimpleCache<K, V> {
-    pub(crate) fn new() -> Self {
+impl<K, V> Default for SimpleCache<K, V> {
+    fn default() -> Self {
         Self(HashMap::new())
     }
+}
 
+impl<K, V> SimpleCache<K, V> {
     pub(crate) fn get_or_insert(
         &mut self,
         key: &K,

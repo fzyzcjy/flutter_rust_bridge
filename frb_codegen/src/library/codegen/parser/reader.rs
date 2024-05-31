@@ -11,12 +11,15 @@ pub(crate) struct CachedRustReader {
     cache: SimpleCache<PathBuf, syn::File>,
 }
 
-impl CachedRustReader {
-    pub(crate) fn new() -> Self {
+impl Default for CachedRustReader {
+    fn default() -> Self {
         Self {
-            cache: SimpleCache::new(),
+            cache: SimpleCache::default(),
         }
     }
+}
+
+impl CachedRustReader {
     pub(crate) fn read_rust_crate(
         &mut self,
         rust_crate_dir: &Path,
