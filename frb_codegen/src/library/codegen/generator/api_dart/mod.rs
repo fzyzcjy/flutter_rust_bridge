@@ -78,7 +78,11 @@ mod tests {
         env::set_current_dir(&test_fixture_dir)?;
 
         let config = Config::from_files_auto()?;
-        let internal_config = InternalConfig::parse(&config, &MetaConfig { watch: false })?;
+        let internal_config = InternalConfig::parse(
+            &config,
+            &MetaConfig { watch: false },
+            &mut CachedRustReader::default(),
+        )?;
         let mut cached_rust_reader = CachedRustReader::default();
         let ir_pack = parser::parse(
             &internal_config.parser,

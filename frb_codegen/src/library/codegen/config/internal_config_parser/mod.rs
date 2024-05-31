@@ -16,6 +16,7 @@ use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInt
 use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::parser::internal_config::RustInputNamespacePack;
+use crate::codegen::parser::reader::CachedRustReader;
 use crate::codegen::polisher::internal_config::PolisherInternalConfig;
 use crate::codegen::preparer::internal_config::PreparerInternalConfig;
 use crate::codegen::{Config, ConfigDumpContent};
@@ -39,7 +40,11 @@ mod rust_path_migrator;
 mod rust_path_parser;
 
 impl InternalConfig {
-    pub(crate) fn parse(config: &Config, meta_config: &MetaConfig) -> Result<Self> {
+    pub(crate) fn parse(
+        config: &Config,
+        meta_config: &MetaConfig,
+        cached_rust_reader: &mut CachedRustReader,
+    ) -> Result<Self> {
         let base_dir = (config.base_dir.as_ref())
             .filter(|s| !s.is_empty())
             .map(PathBuf::from)
@@ -51,7 +56,11 @@ impl InternalConfig {
         let RustInputInfo {
             rust_crate_dir,
             rust_input_namespace_pack,
-        } = rust_path_parser::compute_rust_input_info(&migrated_rust_input, &base_dir)?;
+        } = rust_path_parser::compute_rust_input_info(
+            &migrated_rust_input,
+            &base_dir,
+            cached_rust_reader,
+        )?;
 
         let dart_output_dir = canonicalize_with_error_message(&base_dir.join(&config.dart_output))?;
         let dart_output_path_pack =
@@ -187,6 +196,7 @@ fn generate_default_rust_opaque_codec(full_dep: bool) -> RustOpaqueCodecMode {
 mod tests {
     use crate::codegen::config::config::MetaConfig;
     use crate::codegen::config::internal_config::InternalConfig;
+    use crate::codegen::parser::reader::CachedRustReader;
     use crate::codegen::Config;
     use crate::utils::logs::configure_opinionated_test_logging;
     use crate::utils::test_utils::{
@@ -218,7 +228,11 @@ mod tests {
 
         let config = Config::from_files_auto()?;
 
-        let internal_config = InternalConfig::parse(&config, &MetaConfig { watch: false })?;
+        let internal_config = InternalConfig::parse(
+            &config,
+            &MetaConfig { watch: false },
+            &mut CachedRustReader::default(),
+        )?;
 
         let actual_string = serde_json::to_string_pretty(&internal_config)?;
         let actual_json: Value = serde_json::from_str(&actual_string)?;
