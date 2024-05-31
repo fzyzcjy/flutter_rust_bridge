@@ -45,7 +45,7 @@ impl CachedCargoExpand {
             Vacant(entry) => entry.insert(run_cargo_expand_with_frb_aware(rust_crate_dir, dumper)?),
         };
 
-        expanded
+        Ok(expanded.to_owned())
     }
 }
 
