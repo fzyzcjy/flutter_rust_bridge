@@ -61,9 +61,7 @@ fn compute_rust_input_namespace_pack(
 }
 
 fn compute_rust_crate_dir(rust_root: &Path) -> anyhow::Result<PathBuf> {
-    canonicalize_with_error_message(&(rust_root.clone().map(PathBuf::from)).unwrap_or(
-        find_rust_crate_dir(rust_input_namespace_pack.one_rust_input_path())?,
-    ))
+    canonicalize_with_error_message(&(rust_root.clone().map(PathBuf::from)))
 }
 
 pub(super) fn compute_rust_output_path(
@@ -80,10 +78,4 @@ pub(super) fn compute_rust_output_path(
 
 fn fallback_rust_output_path(rust_crate_dir: &Path) -> PathBuf {
     rust_crate_dir.join("src").join("frb_generated.rs")
-}
-
-impl RustInputNamespacePack {
-    fn one_rust_input_path(&self) -> &Path {
-        self.rust_input_namespaces.first().unwrap()
-    }
 }
