@@ -54,37 +54,37 @@ impl CachedCargoExpand {
     }
 }
 
-fn extract_module(raw_expanded: &str, module: Option<String>) -> Result<String> {
-    if let Some(module) = module {
-        let mut spaces = 0;
-        let mut expanded = raw_expanded;
-
-        for module in module.split("::") {
-            if expanded.contains(&format!("mod {module} {{}}")) {
-                return Ok("".to_owned());
-            }
-
-            let indent = " ".repeat(spaces);
-            let searched = regex::Regex::new(&format!(
-                "(?m)^{indent}(?:pub(?:\\([^\\)]+\\))?\\s+)?mod {module} \\{{$"
-            ))
-            .unwrap();
-            let start = match searched.find(expanded) {
-                Some(m) => m.end() + 1,
-                // #1830
-                None => return Ok("".to_owned()),
-            };
-            let end = expanded[start..]
-                .find(&format!("\n{}}}", indent))
-                .map(|n| n + start)
-                .unwrap_or(expanded.len());
-            spaces += 4;
-            expanded = &expanded[start..end];
-        }
-        return Ok(expanded.to_owned());
-    }
-    Ok(raw_expanded.to_owned())
-}
+// fn extract_module(raw_expanded: &str, module: Option<String>) -> Result<String> {
+//     if let Some(module) = module {
+//         let mut spaces = 0;
+//         let mut expanded = raw_expanded;
+//
+//         for module in module.split("::") {
+//             if expanded.contains(&format!("mod {module} {{}}")) {
+//                 return Ok("".to_owned());
+//             }
+//
+//             let indent = " ".repeat(spaces);
+//             let searched = regex::Regex::new(&format!(
+//                 "(?m)^{indent}(?:pub(?:\\([^\\)]+\\))?\\s+)?mod {module} \\{{$"
+//             ))
+//             .unwrap();
+//             let start = match searched.find(expanded) {
+//                 Some(m) => m.end() + 1,
+//                 // #1830
+//                 None => return Ok("".to_owned()),
+//             };
+//             let end = expanded[start..]
+//                 .find(&format!("\n{}}}", indent))
+//                 .map(|n| n + start)
+//                 .unwrap_or(expanded.len());
+//             spaces += 4;
+//             expanded = &expanded[start..end];
+//         }
+//         return Ok(expanded.to_owned());
+//     }
+//     Ok(raw_expanded.to_owned())
+// }
 
 fn run_cargo_expand_with_frb_aware(rust_crate_dir: &Path, dumper: &Dumper) -> Result<String> {
     Ok(unwrap_frb_attrs_in_doc(&run_cargo_expand(
@@ -157,67 +157,67 @@ fn install_cargo_expand() -> Result<()> {
     Ok(())
 }
 
-#[cfg(test)]
-mod tests {
-    use super::extract_module;
-
-    #[test]
-    pub fn test_extract_module_simple() {
-        let src = "mod module_1 {
-    // code 1
-}
-mod module_2 {
-    // code 2
-}";
-        let extracted = extract_module(src, Some(String::from("module_1"))).unwrap();
-        assert_eq!(String::from("    // code 1"), extracted);
-        let extracted = extract_module(src, Some(String::from("module_2"))).unwrap();
-        assert_eq!(String::from("    // code 2"), extracted);
-    }
-
-    #[test]
-    pub fn test_extract_module_submod() {
-        let src = "mod module {
-    mod submodule {
-        // sub code
-    }
-}";
-        let extracted = extract_module(src, Some(String::from("module::submodule"))).unwrap();
-        assert_eq!(String::from("        // sub code"), extracted);
-    }
-
-    #[test]
-    pub fn test_extract_module_empty_submod() {
-        let src = "pub mod api {
-    // some code
-}
-mod another {}";
-        let extracted = extract_module(src, Some(String::from("another"))).unwrap();
-        assert_eq!(String::from(""), extracted);
-    }
-
-    #[test]
-    pub fn test_extract_module_with_prefix() {
-        let src = "pub mod parent {
-    mod another {
-        // some code
-    }
-}";
-        let extracted = extract_module(src, Some(String::from("another"))).unwrap();
-        assert_eq!(String::from(""), extracted);
-    }
-
-    #[test]
-    pub fn test_extract_module_with_same_name() {
-        let src = "pub mod parent {
-    mod another {
-        // some code
-    }
-}
-pub(self) mod another {
-    // 12345
-}                                                                                                                                      ";
-        let extracted = extract_module(src, Some(String::from("another"))).unwrap();
-        assert_eq!(String::from("    // 12345"), extracted);
-    }
-}
+// #[cfg(test)]
+// mod tests {
+//     use super::extract_module;
+//
+//     #[test]
+//     pub fn test_extract_module_simple() {
+//         let src = "mod module_1 {
+//     // code 1
+// }
+// mod module_2 {
+//     // code 2
+// }";
+//         let extracted = extract_module(src, Some(String::from("module_1"))).unwrap();
+//         assert_eq!(String::from("    // code 1"), extracted);
+//         let extracted = extract_module(src, Some(String::from("module_2"))).unwrap();
+//         assert_eq!(String::from("    // code 2"), extracted);
+//     }
+//
+//     #[test]
+//     pub fn test_extract_module_submod() {
+//         let src = "mod module {
+//     mod submodule {
+//         // sub code
+//     }
+// }";
+//         let extracted = extract_module(src, Some(String::from("module::submodule"))).unwrap();
+//         assert_eq!(String::from("        // sub code"), extracted);
+//     }
+//
+//     #[test]
+//     pub fn test_extract_module_empty_submod() {
+//         let src = "pub mod api {
+//     // some code
+// }
+// mod another {}";
+//         let extracted = extract_module(src, Some(String::from("another"))).unwrap();
+//         assert_eq!(String::from(""), extracted);
+//     }
+//
+//     #[test]
+//     pub fn test_extract_module_with_prefix() {
+//         let src = "pub mod parent {
+//     mod another {
+//         // some code
+//     }
+// }";
+//         let extracted = extract_module(src, Some(String::from("another"))).unwrap();
+//         assert_eq!(String::from(""), extracted);
+//     }
+//
+//     #[test]
+//     pub fn test_extract_module_with_same_name() {
+//         let src = "pub mod parent {
+//     mod another {
+//         // some code
+//     }
+// }
+// pub(self) mod another {
+//     // 12345
+// }                                                                                                                                      ";
+//         let extracted = extract_module(src, Some(String::from("another"))).unwrap();
+//         assert_eq!(String::from("    // 12345"), extracted);
+//     }
+// }
