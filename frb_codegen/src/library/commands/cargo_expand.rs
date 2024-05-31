@@ -16,9 +16,7 @@ use std::{env, fs};
 
 pub(crate) fn run_cargo_expand(rust_crate_dir: &Path, dumper: &Dumper) -> Result<String> {
     let manifest_dir = env::var("CARGO_MANIFEST_DIR").unwrap_or_default();
-    debug!(
-        "CachedCargoExpand execute manifest_dir={manifest_dir} rust_crate_dir={rust_crate_dir:?}"
-    );
+    debug!("run_cargo_expand manifest_dir={manifest_dir} rust_crate_dir={rust_crate_dir:?}");
 
     if !manifest_dir.is_empty()
         && normalize_windows_unc_path(&path_to_string(rust_crate_dir)?)
