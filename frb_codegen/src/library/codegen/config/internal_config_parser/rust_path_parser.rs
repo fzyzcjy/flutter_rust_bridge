@@ -23,7 +23,7 @@ pub(super) fn compute_rust_input_info(
         &migrated_rust_input.rust_input,
         &rust_crate_dir,
         cached_rust_reader,
-    );
+    )?;
     Ok(RustInputInfo {
         rust_crate_dir,
         rust_input_namespace_pack,
