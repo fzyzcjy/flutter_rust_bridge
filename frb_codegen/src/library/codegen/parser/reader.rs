@@ -33,6 +33,10 @@ impl CachedRustReader {
         // dumper.dump_str(ConfigDumpContent::Source, "read_rust_crate/data.rs", &ans)?;
         Ok(ans)
     }
+
+    pub(crate) fn clear(&mut self) {
+        self.cache.clear()
+    }
 }
 
 // fn get_rust_mod(rust_file_path: &Path, rust_crate_dir: &Path) -> Result<Option<String>> {

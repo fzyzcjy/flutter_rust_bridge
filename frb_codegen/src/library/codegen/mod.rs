@@ -31,7 +31,9 @@ pub fn generate(config: Config, meta_config: MetaConfig) -> anyhow::Result<()> {
     dumper.dump(ContentConfig, "config.json", &config)?;
 
     controller::run(&internal_config.controller, &|| {
-        generate_once(&internal_config, cached_rust_reader, &dumper)
+        generate_once(&internal_config, &mut cached_rust_reader, &dumper)?;
+        cached_rust_reader.clear(); // when read it next time, need to use new data instead of cached
+        Ok(())
     })?;
 
     Ok(())
@@ -39,7 +41,7 @@ pub fn generate(config: Config, meta_config: MetaConfig) -> anyhow::Result<()> {
 
 fn generate_once(
     internal_config: &InternalConfig,
-    mut cached_rust_reader: CachedRustReader,
+    cached_rust_reader: &mut CachedRustReader,
     dumper: &Dumper,
 ) -> anyhow::Result<()> {
     let progress_bar_pack = GeneratorProgressBarPack::new();
@@ -51,7 +53,7 @@ fn generate_once(
     let pb = progress_bar_pack.parse.start();
     let ir_pack = parser::parse(
         &internal_config.parser,
-        &mut cached_rust_reader,
+        cached_rust_reader,
         dumper,
         &progress_bar_pack,
     )?;
