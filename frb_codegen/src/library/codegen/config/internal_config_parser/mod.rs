@@ -32,6 +32,7 @@ use pathdiff::diff_paths;
 use std::path::{Path, PathBuf};
 use strum::IntoEnumIterator;
 
+mod controller_parser;
 mod dart_path_parser;
 mod generator_parser;
 mod rust_path_migrator;
@@ -79,17 +80,12 @@ impl InternalConfig {
 
         let dump_directory = rust_crate_dir.join("target").join("frb_dump");
 
-        let controller_watching_paths = vec![
-            // The whole crate needs to be watched, because e.g. when a struct definition changes
-            // in a non-input file, it may still cause the generated code to change.
-            rust_crate_dir.join("src"),
-        ];
-        let controller_exclude_paths = rust_output_path.clone().into_vec();
-
         let full_dep = config.full_dep.unwrap_or(false);
         let default_stream_sink_codec = generate_default_stream_sink_codec(full_dep);
         let default_rust_opaque_codec = generate_default_rust_opaque_codec(full_dep);
         let enable_local_dependency = config.local.unwrap_or_default();
+
+        let controller = controller_parser::parse(meta_config, &rust_crate_dir, &rust_output_path)?;
 
         let generator = generator_parser::parse(generator_parser::Args {
             config,
@@ -106,12 +102,7 @@ impl InternalConfig {
         })?;
 
         Ok(InternalConfig {
-            controller: ControllerInternalConfig {
-                watch: meta_config.watch,
-                watching_paths: controller_watching_paths,
-                exclude_paths: controller_exclude_paths,
-                max_count: None,
-            },
+            controller,
             preparer: PreparerInternalConfig {
                 dart_root: dart_root.clone(),
                 deps_check: config.deps_check.unwrap_or(true),
