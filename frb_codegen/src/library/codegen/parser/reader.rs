@@ -23,11 +23,11 @@ impl CachedRustReader {
     pub(crate) fn read_rust_crate(
         &mut self,
         rust_crate_dir: &Path,
-        // dumper: &Dumper,
+        dumper: &Dumper,
     ) -> Result<&syn::File> {
         debug!("read_rust_crate rust_crate_dir={rust_crate_dir:?}");
         let ans = (self.cache).get_or_insert(rust_crate_dir.to_owned(), || {
-            let text = run_cargo_expand(rust_crate_dir)?;
+            let text = run_cargo_expand(rust_crate_dir, dumper)?;
             Ok(syn::parse_file(&text)?)
         })?;
         // dumper.dump_str(ConfigDumpContent::Source, "read_rust_crate/data.rs", &ans)?;

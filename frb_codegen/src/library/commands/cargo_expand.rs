@@ -1,3 +1,4 @@
+use crate::codegen::dumper::Dumper;
 use crate::codegen::ConfigDumpContent;
 use crate::command_args;
 use crate::library::commands::command_runner::execute_command;
@@ -13,7 +14,7 @@ use std::collections::HashMap;
 use std::path::{Path, PathBuf};
 use std::{env, fs};
 
-pub(crate) fn run_cargo_expand(rust_crate_dir: &Path) -> Result<String> {
+pub(crate) fn run_cargo_expand(rust_crate_dir: &Path, dumper: &Dumper) -> Result<String> {
     let manifest_dir = env::var("CARGO_MANIFEST_DIR").unwrap_or_default();
     debug!("run_cargo_expand manifest_dir={manifest_dir} rust_crate_dir={rust_crate_dir:?}");
 
@@ -33,7 +34,7 @@ pub(crate) fn run_cargo_expand(rust_crate_dir: &Path) -> Result<String> {
         // return Ok(fs::read_to_string(rust_file_path)?);
     }
 
-    run_cargo_expand_with_frb_aware(rust_crate_dir)
+    run_cargo_expand_with_frb_aware(rust_crate_dir, dumper)
 }
 
 // fn extract_module(raw_expanded: &str, module: Option<String>) -> Result<String> {
@@ -68,10 +69,11 @@ pub(crate) fn run_cargo_expand(rust_crate_dir: &Path) -> Result<String> {
 //     Ok(raw_expanded.to_owned())
 // }
 
-fn run_cargo_expand_with_frb_aware(rust_crate_dir: &Path) -> Result<String> {
+fn run_cargo_expand_with_frb_aware(rust_crate_dir: &Path, dumper: &Dumper) -> Result<String> {
     Ok(unwrap_frb_attrs_in_doc(&run_cargo_expand_raw(
         rust_crate_dir,
         "--cfg frb_expand",
+        dumper,
         true,
     )?)
     .into_owned())
@@ -92,6 +94,7 @@ fn unwrap_frb_attrs_in_doc(code: &str) -> Cow<str> {
 fn run_cargo_expand_raw(
     rust_crate_dir: &Path,
     extra_rustflags: &str,
+    dumper: &Dumper,
     allow_auto_install: bool,
 ) -> Result<String> {
     // let _pb = simple_progress("Run cargo-expand".to_owned(), 1);
@@ -114,7 +117,7 @@ fn run_cargo_expand_raw(
         if stderr.contains("no such command: `expand`") && allow_auto_install {
             info!("Cargo expand is not installed. Automatically install and re-run.");
             install_cargo_expand()?;
-            return run_cargo_expand_raw(rust_crate_dir, extra_rustflags, false);
+            return run_cargo_expand_raw(rust_crate_dir, extra_rustflags, dumper, false);
         }
         // This will stop the whole generator and tell the users, so we do not care about testing it
         // frb-coverage:ignore-start
@@ -123,7 +126,7 @@ fn run_cargo_expand_raw(
     }
 
     let ans = stdout.lines().skip(1).join("\n");
-    // dumper.dump_str(ConfigDumpContent::Source, "cargo_expand.rs", &ans)?;
+    dumper.dump_str(ConfigDumpContent::Source, "cargo_expand.rs", &ans)?;
     Ok(ans)
 }
 
