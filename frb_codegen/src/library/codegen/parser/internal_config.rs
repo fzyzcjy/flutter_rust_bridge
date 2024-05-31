@@ -16,5 +16,4 @@ pub(crate) struct ParserInternalConfig {
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
 pub(crate) struct RustInputNamespacePack {
     pub rust_input_namespaces: Vec<Namespace>,
-    pub rust_suppressed_input_namespaces: Vec<Namespace>,
 }

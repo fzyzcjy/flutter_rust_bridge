@@ -24,7 +24,6 @@ use crate::codegen::parser::function_parser::FunctionParser;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::parser::misc::parse_has_executor;
 use crate::codegen::parser::reader::CachedRustReader;
-use crate::codegen::parser::sanity_checker::misc_checker::check_suppressed_input_path_no_content;
 use crate::codegen::parser::sanity_checker::opaque_inside_translatable_checker::check_opaque_inside_translatable;
 use crate::codegen::parser::sanity_checker::unused_checker::get_unused_types;
 use crate::codegen::parser::source_graph::modules::Struct;
@@ -46,14 +45,14 @@ pub(crate) fn parse(
     dumper: &Dumper,
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<IrPack> {
-    check_suppressed_input_path_no_content(
-        &config
-            .rust_input_namespace_pack
-            .rust_suppressed_input_namespaces,
-        &config.rust_crate_dir,
-        cached_rust_reader,
-        dumper,
-    )?;
+    // check_suppressed_input_path_no_content(
+    //     &config
+    //         .rust_input_namespace_pack
+    //         .rust_suppressed_input_namespaces,
+    //     &config.rust_crate_dir,
+    //     cached_rust_reader,
+    //     dumper,
+    // )?;
 
     let rust_input_paths = &config.rust_input_namespace_pack.rust_input_namespaces;
     trace!("rust_input_paths={:?}", &rust_input_paths);
@@ -242,7 +241,6 @@ mod tests {
                     Namespace::new_self_crate("api_two".to_owned()),
                 ]
                 .into(),
-                rust_suppressed_input_namespaces: vec![],
             })),
         )
     }
@@ -320,7 +318,6 @@ mod tests {
                     .map(|f| f(&rust_crate_dir))
                     .unwrap_or(RustInputNamespacePack {
                         rust_input_namespaces: vec![Namespace::new_self_crate("api".to_owned())],
-                        rust_suppressed_input_namespaces: vec![],
                     }),
                 rust_crate_dir: rust_crate_dir.clone(),
                 force_codec_mode_pack: compute_force_codec_mode_pack(true),
