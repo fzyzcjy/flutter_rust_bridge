@@ -4,11 +4,13 @@ use crate::library::commands::cargo_expand::CachedCargoExpand;
 use anyhow::{Context, Result};
 use itertools::Itertools;
 use log::debug;
-use std::path::Path;
+use std::collections::HashMap;
+use std::path::{Path, PathBuf};
 
 #[derive(Default)]
 pub(crate) struct CachedRustReader {
     cached_cargo_expand: CachedCargoExpand,
+    cache: HashMap<PathBuf, syn::Path>,
 }
 
 impl CachedRustReader {
@@ -16,12 +18,9 @@ impl CachedRustReader {
         &mut self,
         rust_crate_dir: &Path,
         dumper: &Dumper,
-    ) -> Result<String> {
+    ) -> Result<syn::File> {
         debug!("read_rust_crate rust_crate_dir={rust_crate_dir:?}");
-
-        // let module = get_rust_mod(rust_file_path, rust_crate_dir)?;
-        // debug!("read_rust_file rust_file_path={rust_file_path:?} module={module:?}");
-
+        self.cache.entry(rust_crate_dir).or_insert_with(|| TODO);
         let ans = self.cached_cargo_expand.execute(rust_crate_dir, dumper)?;
         dumper.dump_str(ConfigDumpContent::Source, "read_rust_crate/data.rs", &ans)?;
         Ok(ans)
