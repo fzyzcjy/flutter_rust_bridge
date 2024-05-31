@@ -1,6 +1,7 @@
 use crate::codegen::config::internal_config_parser::dart_path_parser::compute_path_map;
 use crate::codegen::generator::misc::target::TargetOrCommonMap;
 use crate::codegen::generator::wire::dart::internal_config::DartOutputClassNamePack;
+use crate::codegen::parser::internal_config::RustInputNamespacePack;
 use crate::codegen::Config;
 use crate::utils::path_utils::{canonicalize_with_error_message, find_rust_crate_dir};
 use anyhow::Context;
@@ -26,4 +27,10 @@ pub(super) fn compute_rust_output_path(
 
 fn fallback_rust_output_path(rust_crate_dir: &Path) -> PathBuf {
     rust_crate_dir.join("src").join("frb_generated.rs")
+}
+
+impl RustInputNamespacePack {
+    fn one_rust_input_path(&self) -> &Path {
+        self.rust_input_namespaces.first().unwrap()
+    }
 }

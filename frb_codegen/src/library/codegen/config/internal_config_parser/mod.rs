@@ -149,12 +149,6 @@ fn parse_dump_contents(config: &Config) -> Vec<ConfigDumpContent> {
     config.dump.clone().unwrap_or_default()
 }
 
-impl RustInputNamespacePack {
-    fn one_rust_input_path(&self) -> &Path {
-        self.rust_input_namespaces.first().unwrap()
-    }
-}
-
 fn compute_rust_input_namespace_pack(
     raw_rust_input: &str,
     base_dir: &Path,
