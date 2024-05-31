@@ -14,39 +14,29 @@ use std::collections::HashMap;
 use std::path::{Path, PathBuf};
 use std::{env, fs};
 
-#[derive(Default)]
-pub(crate) struct CachedCargoExpand {
-    cache: HashMap<PathBuf, String>,
-}
+pub(crate) fn run_cargo_expand(rust_crate_dir: &Path, dumper: &Dumper) -> Result<String> {
+    let manifest_dir = env::var("CARGO_MANIFEST_DIR").unwrap_or_default();
+    debug!(
+        "CachedCargoExpand execute manifest_dir={manifest_dir} rust_crate_dir={rust_crate_dir:?}"
+    );
 
-impl CachedCargoExpand {
-    pub(crate) fn execute(&mut self, rust_crate_dir: &Path, dumper: &Dumper) -> Result<String> {
-        let manifest_dir = env::var("CARGO_MANIFEST_DIR").unwrap_or_default();
-        debug!("CachedCargoExpand execute manifest_dir={manifest_dir} rust_crate_dir={rust_crate_dir:?}");
-
-        if !manifest_dir.is_empty()
-            && normalize_windows_unc_path(&path_to_string(rust_crate_dir)?)
-                == normalize_windows_unc_path(&manifest_dir)
-        {
-            // We do not care about this warning message
-            // frb-coverage:ignore-start
-            warn!(
-                "Skip cargo-expand on {rust_crate_dir:?}, \
+    if !manifest_dir.is_empty()
+        && normalize_windows_unc_path(&path_to_string(rust_crate_dir)?)
+            == normalize_windows_unc_path(&manifest_dir)
+    {
+        // We do not care about this warning message
+        // frb-coverage:ignore-start
+        warn!(
+            "Skip cargo-expand on {rust_crate_dir:?}, \
              because cargo is already running and would block cargo-expand. \
              This might cause errors if your api contains macros or complex mods."
-            );
-            // frb-coverage:ignore-end
-            todo!("Usage in build.rs for new mod-based system is not implemented yet. Feel free to create an issue if you need this!")
-            // return Ok(fs::read_to_string(rust_file_path)?);
-        }
-
-        let expanded = match self.cache.entry(rust_crate_dir.to_owned()) {
-            Occupied(entry) => entry.into_mut(),
-            Vacant(entry) => entry.insert(run_cargo_expand_with_frb_aware(rust_crate_dir, dumper)?),
-        };
-
-        Ok(expanded.to_owned())
+        );
+        // frb-coverage:ignore-end
+        todo!("Usage in build.rs for new mod-based system is not implemented yet. Feel free to create an issue if you need this!")
+        // return Ok(fs::read_to_string(rust_file_path)?);
     }
+
+    run_cargo_expand_with_frb_aware(rust_crate_dir, dumper)
 }
 
 // fn extract_module(raw_expanded: &str, module: Option<String>) -> Result<String> {
