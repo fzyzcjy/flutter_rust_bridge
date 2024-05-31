@@ -1,7 +1,6 @@
 use crate::codegen::config::config::MetaConfig;
 use crate::codegen::config::internal_config::{
     ControllerInternalConfig, GeneratorInternalConfig, GeneratorWireInternalConfig, InternalConfig,
-    RustInputPathPack,
 };
 use crate::codegen::dumper::internal_config::DumperInternalConfig;
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
@@ -15,6 +14,7 @@ use crate::codegen::generator::wire::dart::internal_config::{
 use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInternalConfig;
 use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
+use crate::codegen::parser::internal_config::RustInputPathPack;
 use crate::codegen::polisher::internal_config::PolisherInternalConfig;
 use crate::codegen::preparer::internal_config::PreparerInternalConfig;
 use crate::codegen::{Config, ConfigDumpContent};

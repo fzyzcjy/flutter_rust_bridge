@@ -1,4 +1,3 @@
-use crate::codegen::config::internal_config::RustInputPathPack;
 use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
 use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use serde::{Deserialize, Serialize};
@@ -11,4 +10,10 @@ pub(crate) struct ParserInternalConfig {
     pub force_codec_mode_pack: Option<CodecModePack>,
     pub default_stream_sink_codec: CodecMode,
     pub default_rust_opaque_codec: RustOpaqueCodecMode,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
+pub(crate) struct RustInputPathPack {
+    pub rust_input_paths: Vec<PathBuf>,
+    pub rust_suppressed_input_paths: Vec<PathBuf>,
 }

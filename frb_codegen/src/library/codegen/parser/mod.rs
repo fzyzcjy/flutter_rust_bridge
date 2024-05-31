@@ -198,13 +198,13 @@ fn compute_skipped_functions(
 
 #[cfg(test)]
 mod tests {
-    use crate::codegen::config::internal_config::RustInputPathPack;
     use crate::codegen::config::internal_config_parser::compute_force_codec_mode_pack;
     use crate::codegen::dumper::Dumper;
     use crate::codegen::generator::codec::structs::CodecMode;
     use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
     use crate::codegen::misc::GeneratorProgressBarPack;
     use crate::codegen::parser::internal_config::ParserInternalConfig;
+    use crate::codegen::parser::internal_config::RustInputPathPack;
     use crate::codegen::parser::parse;
     use crate::codegen::parser::reader::CachedRustReader;
     use crate::codegen::parser::source_graph::crates::Crate;
