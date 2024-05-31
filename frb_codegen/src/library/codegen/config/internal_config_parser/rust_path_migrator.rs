@@ -2,7 +2,7 @@ use crate::codegen::Config;
 use anyhow::ensure;
 use std::path::PathBuf;
 
-#[derive(PartialEq, Eq)]
+#[derive(PartialEq, Eq, Debug, Clone)]
 pub(super) struct ConfigRustRootAndRustInput {
     pub rust_root: String,
     pub rust_input: String,
