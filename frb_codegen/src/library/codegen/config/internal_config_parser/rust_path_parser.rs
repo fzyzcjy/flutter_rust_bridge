@@ -35,8 +35,6 @@ fn compute_rust_input_namespace_pack(
     rust_crate_dir: &Path,
     cached_rust_reader: &mut CachedRustReader,
 ) -> anyhow::Result<RustInputNamespacePack> {
-    let rust_crate_ast = cached_rust_reader.read_rust_crate(rust_crate_dir)?;
-
     // const BLACKLIST_FILE_NAMES: [&str; 1] = ["mod.rs"];
     //
     // let glob_pattern = base_dir.join(raw_rust_input);
