@@ -11,6 +11,6 @@ pub(crate) mod file_utils;
 pub mod logs;
 pub(crate) mod path_utils;
 pub(crate) mod rust_project_utils;
-mod simple_cache;
+pub(crate) mod simple_cache;
 #[cfg(test)]
 pub(crate) mod test_utils;
