@@ -1,4 +1,5 @@
 use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
+use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
@@ -14,6 +15,6 @@ pub(crate) struct ParserInternalConfig {
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
 pub(crate) struct RustInputPathPack {
-    pub rust_input_paths: Vec<PathBuf>,
-    pub rust_suppressed_input_paths: Vec<PathBuf>,
+    pub rust_input_namespaces: Vec<Namespace>,
+    pub rust_suppressed_input_namespaces: Vec<Namespace>,
 }
