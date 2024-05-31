@@ -16,6 +16,10 @@ fn compute_rust_output_path(
     compute_path_map(&path_common).context("rust_output: is wrong: ")
 }
 
+fn fallback_rust_output_path(rust_crate_dir: &Path) -> PathBuf {
+    rust_crate_dir.join("src").join("frb_generated.rs")
+}
+
 pub(super) struct DartOutputPathPack {
     pub(super) dart_decl_base_output_path: PathBuf,
     pub(super) dart_impl_output_path: TargetOrCommonMap<PathBuf>,
@@ -41,10 +45,6 @@ fn compute_path_map(path_common: &Path) -> anyhow::Result<TargetOrCommonMap<Path
         io: path_common.with_extension(format!("io.{extension}")),
         web: path_common.with_extension(format!("web.{extension}")),
     })
-}
-
-fn fallback_rust_output_path(rust_crate_dir: &Path) -> PathBuf {
-    rust_crate_dir.join("src").join("frb_generated.rs")
 }
 
 #[cfg(test)]
