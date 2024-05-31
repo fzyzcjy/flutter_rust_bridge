@@ -79,7 +79,7 @@ mod tests {
 
         let config = Config::from_files_auto()?;
         let internal_config = InternalConfig::parse(&config, &MetaConfig { watch: false })?;
-        let mut cached_rust_reader = CachedRustReader::default();
+        let mut cached_rust_reader = CachedRustReader::new();
         let ir_pack = parser::parse(
             &internal_config.parser,
             &mut cached_rust_reader,
