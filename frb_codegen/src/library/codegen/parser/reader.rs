@@ -1,16 +1,16 @@
 use crate::codegen::dumper::Dumper;
 use crate::codegen::ConfigDumpContent;
 use crate::library::commands::cargo_expand::{run_cargo_expand, CachedCargoExpand};
+use crate::utils::simple_cache::SimpleCache;
 use anyhow::{Context, Result};
 use itertools::Itertools;
 use log::debug;
-use std::collections::HashMap;
 use std::path::{Path, PathBuf};
 
 #[derive(Default)]
 pub(crate) struct CachedRustReader {
     cached_cargo_expand: CachedCargoExpand,
-    cache: HashMap<PathBuf, syn::Path>,
+    cache: SimpleCache<PathBuf, syn::File>,
 }
 
 impl CachedRustReader {
@@ -18,11 +18,11 @@ impl CachedRustReader {
         &mut self,
         rust_crate_dir: &Path,
         dumper: &Dumper,
-    ) -> Result<syn::File> {
+    ) -> Result<&syn::File> {
         debug!("read_rust_crate rust_crate_dir={rust_crate_dir:?}");
-        self.cache.entry(rust_crate_dir).or_insert_with(|| TODO);
-        let ans = run_cargo_expand(rust_crate_dir, dumper)?;
-        dumper.dump_str(ConfigDumpContent::Source, "read_rust_crate/data.rs", &ans)?;
+        let ans = (self.cache)
+            .get_or_insert(rust_crate_dir, || run_cargo_expand(rust_crate_dir, dumper))?;
+        // dumper.dump_str(ConfigDumpContent::Source, "read_rust_crate/data.rs", &ans)?;
         Ok(ans)
     }
 }
