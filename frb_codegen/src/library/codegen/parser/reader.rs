@@ -1,6 +1,6 @@
 use crate::codegen::dumper::Dumper;
 use crate::codegen::ConfigDumpContent;
-use crate::library::commands::cargo_expand::CachedCargoExpand;
+use crate::library::commands::cargo_expand::{run_cargo_expand, CachedCargoExpand};
 use anyhow::{Context, Result};
 use itertools::Itertools;
 use log::debug;
@@ -21,7 +21,7 @@ impl CachedRustReader {
     ) -> Result<syn::File> {
         debug!("read_rust_crate rust_crate_dir={rust_crate_dir:?}");
         self.cache.entry(rust_crate_dir).or_insert_with(|| TODO);
-        let ans = self.cached_cargo_expand.execute(rust_crate_dir, dumper)?;
+        let ans = run_cargo_expand(rust_crate_dir, dumper)?;
         dumper.dump_str(ConfigDumpContent::Source, "read_rust_crate/data.rs", &ans)?;
         Ok(ans)
     }
