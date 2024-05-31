@@ -1,4 +1,5 @@
 use crate::codegen::config::internal_config_parser::dart_path_parser::compute_path_map;
+use crate::codegen::config::internal_config_parser::rust_path_migrator::ConfigRustRootAndRustInput;
 use crate::codegen::generator::misc::target::TargetOrCommonMap;
 use crate::codegen::generator::wire::dart::internal_config::DartOutputClassNamePack;
 use crate::codegen::parser::internal_config::RustInputNamespacePack;
@@ -13,12 +14,15 @@ pub(super) struct RustInputInfo {
 }
 
 pub(super) fn compute_rust_input_info(
-    config: &Config,
+    migrated_rust_input: &ConfigRustRootAndRustInput,
     base_dir: &PathBuf,
 ) -> anyhow::Result<RustInputInfo> {
     Ok(RustInputInfo {
-        rust_crate_dir: compute_rust_crate_dir(config)?,
-        rust_input_namespace_pack: compute_rust_input_namespace_pack(&config.rust_input, base_dir)?,
+        rust_crate_dir: compute_rust_crate_dir(&migrated_rust_input.rust_root)?,
+        rust_input_namespace_pack: compute_rust_input_namespace_pack(
+            &migrated_rust_input.rust_input,
+            base_dir,
+        )?,
     })
 }
 
@@ -56,8 +60,8 @@ fn compute_rust_input_namespace_pack(
     Ok(pack)
 }
 
-fn compute_rust_crate_dir(config: &Config) -> anyhow::Result<PathBuf> {
-    canonicalize_with_error_message(&(config.rust_root.clone().map(PathBuf::from)).unwrap_or(
+fn compute_rust_crate_dir(rust_root: &Path) -> anyhow::Result<PathBuf> {
+    canonicalize_with_error_message(&(rust_root.clone().map(PathBuf::from)).unwrap_or(
         find_rust_crate_dir(rust_input_namespace_pack.one_rust_input_path())?,
     ))
 }

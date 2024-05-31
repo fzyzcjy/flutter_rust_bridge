@@ -3,8 +3,8 @@ use anyhow::ensure;
 use std::path::PathBuf;
 
 pub(super) struct ConfigRustRootAndRustInput {
-    rust_root: PathBuf,
-    rust_input: String,
+    pub rust_root: PathBuf,
+    pub rust_input: String,
 }
 
 pub(super) fn migrate_rust_input_config(
