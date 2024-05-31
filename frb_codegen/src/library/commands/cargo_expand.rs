@@ -20,13 +20,7 @@ pub(crate) struct CachedCargoExpand {
 }
 
 impl CachedCargoExpand {
-    pub(crate) fn execute(
-        &mut self,
-        rust_crate_dir: &Path,
-        module: Option<String>,
-        rust_file_path: &Path,
-        dumper: &Dumper,
-    ) -> Result<String> {
+    pub(crate) fn execute(&mut self, rust_crate_dir: &Path, dumper: &Dumper) -> Result<String> {
         let manifest_dir = env::var("CARGO_MANIFEST_DIR").unwrap_or_default();
         debug!("CachedCargoExpand execute manifest_dir={manifest_dir} rust_crate_dir={rust_crate_dir:?}");
 
@@ -50,7 +44,7 @@ impl CachedCargoExpand {
             Vacant(entry) => entry.insert(run_cargo_expand_with_frb_aware(rust_crate_dir, dumper)?),
         };
 
-        extract_module(expanded, module)
+        expanded
     }
 }
 
