@@ -2,8 +2,9 @@ use crate::codegen::Config;
 use anyhow::ensure;
 use std::path::PathBuf;
 
+#[derive(PartialEq, Eq)]
 pub(super) struct ConfigRustRootAndRustInput {
-    pub rust_root: PathBuf,
+    pub rust_root: String,
     pub rust_input: String,
 }
 
@@ -24,10 +25,10 @@ pub(super) fn migrate_rust_input_config(
         For example, rust_input=`rust/src/api/**/*.rs` is now rust_input=`crate::api` and rust_root=`rust/`",
     );
 
-    ConfigRustRootAndRustInput {
+    Ok(ConfigRustRootAndRustInput {
         rust_root: raw_rust_root.unwrap_or_else(|| "rust/".to_owned()),
         rust_input: raw_rust_input.to_owned(),
-    }
+    })
 }
 
 #[cfg(test)]
@@ -36,7 +37,7 @@ mod tests {
 
     #[test]
     fn test_previous_config_auto_migrated() -> anyhow::Result<()> {
-        let actual = migrate_rust_input_config(None, "rust/src/api/**/*.rs")?;
+        let actual = migrate_rust_input_config(&None, "rust/src/api/**/*.rs")?;
         assert_eq!(
             actual,
             ConfigRustRootAndRustInput {
