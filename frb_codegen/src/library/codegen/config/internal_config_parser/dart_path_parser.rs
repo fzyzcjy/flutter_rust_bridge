@@ -7,7 +7,9 @@ pub(super) struct DartOutputPathPack {
     pub(super) dart_impl_output_path: TargetOrCommonMap<PathBuf>,
 }
 
-fn compute_dart_output_path_pack(dart_output_dir: &Path) -> anyhow::Result<DartOutputPathPack> {
+pub(super) fn compute_dart_output_path_pack(
+    dart_output_dir: &Path,
+) -> anyhow::Result<DartOutputPathPack> {
     Ok(DartOutputPathPack {
         dart_decl_base_output_path: dart_output_dir.to_owned(),
         dart_impl_output_path: compute_path_map(&dart_output_dir.join("frb_generated.dart"))

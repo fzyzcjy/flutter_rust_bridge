@@ -2,10 +2,17 @@ use crate::codegen::config::internal_config_parser::dart_path_parser::compute_pa
 use crate::codegen::generator::misc::target::TargetOrCommonMap;
 use crate::codegen::generator::wire::dart::internal_config::DartOutputClassNamePack;
 use crate::codegen::Config;
+use crate::utils::path_utils::{canonicalize_with_error_message, find_rust_crate_dir};
 use anyhow::Context;
 use std::path::{Path, PathBuf};
 
-fn compute_rust_output_path(
+pub(super) fn compute_rust_crate_dir(config: &Config) -> anyhow::Result<PathBuf> {
+    canonicalize_with_error_message(&(config.rust_root.clone().map(PathBuf::from)).unwrap_or(
+        find_rust_crate_dir(rust_input_namespace_pack.one_rust_input_path())?,
+    ))
+}
+
+pub(super) fn compute_rust_output_path(
     config: &Config,
     base_dir: &Path,
     rust_crate_dir: &Path,
