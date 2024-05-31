@@ -34,6 +34,7 @@ use strum::IntoEnumIterator;
 
 mod dart_path_parser;
 mod generator_parser;
+mod rust_path_migrator;
 mod rust_path_parser;
 
 impl InternalConfig {
