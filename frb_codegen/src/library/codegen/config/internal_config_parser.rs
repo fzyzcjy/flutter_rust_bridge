@@ -266,10 +266,10 @@ fn compute_rust_input_namespace_pack(
         !pack.rust_input_namespaces.is_empty(),
         "Find zero rust input paths. (glob_pattern={glob_pattern:?})"
     );
-    ensure!(
-        !pack.rust_input_namespaces.iter().any(|p| path_to_string(p).unwrap().contains("lib.rs")),
-        "Do not use `lib.rs` as a Rust input. Please put code to be generated in something like `api.rs`.",
-    );
+    // ensure!(
+    //     !pack.rust_input_namespaces.iter().any(|p| path_to_string(p).unwrap().contains("lib.rs")),
+    //     "Do not use `lib.rs` as a Rust input. Please put code to be generated in something like `api.rs`.",
+    // );
     // frb-coverage:ignore-end
 
     Ok(pack)
