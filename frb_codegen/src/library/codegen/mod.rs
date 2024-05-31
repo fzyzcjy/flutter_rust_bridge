@@ -24,7 +24,7 @@ pub fn generate(config: Config, meta_config: MetaConfig) -> anyhow::Result<()> {
     debug!("config={config:?} meta_config={meta_config:?}");
 
     let mut cached_rust_reader = CachedRustReader::default();
-    let internal_config = InternalConfig::parse(&config, &meta_config, &mut cached_rust_reader)?;
+    let internal_config = InternalConfig::parse(&config, &meta_config)?;
     debug!("internal_config={internal_config:?}");
 
     let dumper = Dumper(&internal_config.dumper);
