@@ -1,4 +1,5 @@
 use crate::codegen::Config;
+use anyhow::ensure;
 use std::path::PathBuf;
 
 pub(super) struct ConfigRustRootAndRustInput {
@@ -10,6 +11,19 @@ pub(super) fn migrate_rust_input_config(
     raw_rust_root: &Option<String>,
     raw_rust_input: &str,
 ) -> anyhow::Result<ConfigRustRootAndRustInput> {
+    if raw_rust_input == "rust/src/api/**/*.rs" {
+        return Ok(ConfigRustRootAndRustInput {
+            rust_root: "rust/".into(),
+            rust_input: "crate::api".into(),
+        });
+    }
+
+    ensure!(
+        !(raw_rust_input.contains("*") || raw_rust_input.contains(".")),
+        "Please migrate configuration `rust_input` to the new syntax.\
+        For example, rust_input=`rust/src/api/**/*.rs` is now rust_input=`crate::api` and rust_root=`rust/`",
+    );
+
     ConfigRustRootAndRustInput {
         rust_root: TODO,
         rust_input: TODO,
