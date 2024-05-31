@@ -131,6 +131,9 @@ fn compute_default_external_library_loader(
     dart_root: &Path,
     config: &Config,
 ) -> GeneratorWireDartDefaultExternalLibraryLoaderInternalConfig {
+    const FALLBACK_DEFAULT_EXTERNAL_LIBRARY_STEM: &str = "UNKNOWN";
+    const FALLBACK_DEFAULT_EXTERNAL_LIBRARY_RELATIVE_DIRECTORY: &str = "UNKNOWN";
+
     GeneratorWireDartDefaultExternalLibraryLoaderInternalConfig {
         stem: compute_default_external_library_stem(rust_crate_dir)
             .unwrap_or(FALLBACK_DEFAULT_EXTERNAL_LIBRARY_STEM.to_owned()),
@@ -165,6 +168,3 @@ fn compute_default_external_library_relative_directory(
     let diff = diff_paths(rust_crate_dir, dart_root).context("cannot diff path")?;
     Ok(path_to_string(&diff.join("target").join("release/"))?.replace('\\', "/"))
 }
-
-const FALLBACK_DEFAULT_EXTERNAL_LIBRARY_STEM: &str = "UNKNOWN";
-const FALLBACK_DEFAULT_EXTERNAL_LIBRARY_RELATIVE_DIRECTORY: &str = "UNKNOWN";
