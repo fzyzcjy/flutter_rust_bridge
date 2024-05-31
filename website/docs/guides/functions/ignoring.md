@@ -1,5 +1,12 @@
 # Ignoring functions
 
+## Automatic ignore
+
+All functions that are not public (`pub`) will be ignored by default.
+This include private functions, functions with `pub(crate)`, `pub(super)`, etc.
+
+## Explicit ignore
+
 Sometimes you may want functions not to be translated by flutter_rust_bridge.
 
 Firstly, if it is private, i.e. not `pub`, it will automatically be ignored.
@@ -11,7 +18,7 @@ For example:
 ```rust
 #[frb(ignore)]
 pub fn ignored_in_frb() {
-  println!("you should not see ignoredInFrb in dart side.");
+    println!("you should not see ignoredInFrb in dart side.");
 }
 ```
 
@@ -19,10 +26,11 @@ This feature also supports methods. For example:
 
 ```rust
 struct RandomStruct;
+
 impl RandomStruct {
-  pub fn ignored_in_frb() {
-    println!("you should not see ignoredInFrb within RandomStruct in dart side.");
-  }
+    pub fn ignored_in_frb() {
+        println!("you should not see ignoredInFrb within RandomStruct in dart side.");
+    }
 }
 ```
 
