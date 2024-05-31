@@ -36,7 +36,8 @@ impl CachedCargoExpand {
              This might cause errors if your api contains macros or complex mods."
             );
             // frb-coverage:ignore-end
-            return Ok(fs::read_to_string(rust_file_path)?);
+            todo!("Usage in build.rs for new mod-based system is not implemented yet. Feel free to create an issue if you need this!")
+            // return Ok(fs::read_to_string(rust_file_path)?);
         }
 
         let expanded = match self.cache.entry(rust_crate_dir.to_owned()) {
