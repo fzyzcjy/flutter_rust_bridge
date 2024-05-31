@@ -191,6 +191,23 @@ fn compute_rust_input_namespace_pack(
     Ok(pack)
 }
 
+fn compute_dart_output_class_name_pack(config: &Config) -> DartOutputClassNamePack {
+    const FALLBACK_DART_ENTRYPOINT_CLASS_NAME: &str = "RustLib";
+
+    let entrypoint_class_name = (config.dart_entrypoint_class_name.clone())
+        .unwrap_or(FALLBACK_DART_ENTRYPOINT_CLASS_NAME.to_owned());
+    let with_postfix = |postfix: &str| format!("{entrypoint_class_name}{postfix}");
+
+    DartOutputClassNamePack {
+        entrypoint_class_name: entrypoint_class_name.clone(),
+        api_class_name: with_postfix("Api"),
+        api_impl_class_name: with_postfix("ApiImpl"),
+        api_impl_platform_class_name: with_postfix("ApiImplPlatform"),
+        wire_class_name: with_postfix("Wire"),
+        wasm_module_name: with_postfix("WasmModule"),
+    }
+}
+
 pub(crate) fn compute_force_codec_mode_pack(full_dep: bool) -> Option<CodecModePack> {
     (!full_dep).then_some(CodecModePack {
         dart2rust: CodecMode::Pde,
