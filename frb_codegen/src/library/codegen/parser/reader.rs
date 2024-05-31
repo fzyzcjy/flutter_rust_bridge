@@ -26,7 +26,7 @@ impl CachedRustReader {
         dumper: &Dumper,
     ) -> Result<&syn::File> {
         debug!("read_rust_crate rust_crate_dir={rust_crate_dir:?}");
-        let ans = (self.cache).get_or_insert(&rust_crate_dir.to_owned(), || {
+        let ans = (self.cache).get_or_insert(rust_crate_dir.to_owned(), || {
             let text = run_cargo_expand(rust_crate_dir, dumper)?;
             Ok(syn::parse_file(&text)?)
         })?;
