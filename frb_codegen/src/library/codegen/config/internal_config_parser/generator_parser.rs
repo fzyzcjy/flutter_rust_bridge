@@ -21,19 +21,35 @@ use itertools::Itertools;
 use pathdiff::diff_paths;
 use std::path::{Path, PathBuf};
 
-pub(super) fn parse(
-    config: &Config,
-    dart_root: &Path,
-    rust_crate_dir: &Path,
-    dart_output_path_pack: &DartOutputPathPack,
-    dart_output_class_name_pack: &DartOutputClassNamePack,
-    rust_output_path: &TargetOrCommonMap<PathBuf>,
+pub(super) struct Args<'a> {
+    config: &'a Config,
+    dart_root: &'a Path,
+    rust_crate_dir: &'a Path,
+    dart_output_path_pack: &'a DartOutputPathPack,
+    dart_output_class_name_pack: &'a DartOutputClassNamePack,
+    rust_output_path: &'a TargetOrCommonMap<PathBuf>,
     default_stream_sink_codec: CodecMode,
     default_rust_opaque_codec: RustOpaqueCodecMode,
-    c_output_path: &Option<PathBuf>,
+    c_output_path: &'a Option<PathBuf>,
     web_enabled: bool,
     full_dep: bool,
-) -> anyhow::Result<GeneratorInternalConfig> {
+}
+
+pub(super) fn parse(args: Args) -> anyhow::Result<GeneratorInternalConfig> {
+    let Args {
+        config,
+        dart_root,
+        rust_crate_dir,
+        dart_output_path_pack,
+        dart_output_class_name_pack,
+        rust_output_path,
+        default_stream_sink_codec,
+        default_rust_opaque_codec,
+        c_output_path,
+        web_enabled,
+        full_dep,
+    } = args;
+
     let dart_enums_style = config.dart_enums_style.unwrap_or(true);
     let dart3 = config.dart3.unwrap_or(true);
     let default_external_library_loader =

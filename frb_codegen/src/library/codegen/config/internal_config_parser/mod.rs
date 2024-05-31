@@ -88,7 +88,19 @@ impl InternalConfig {
         let default_rust_opaque_codec = generate_default_rust_opaque_codec(full_dep);
         let enable_local_dependency = config.local.unwrap_or_default();
 
-        let generator = generator_parser::parse()?;
+        let generator = generator_parser::parse(generator_parser::Args {
+            config,
+            dart_root: &dart_root,
+            rust_crate_dir: &rust_crate_dir,
+            dart_output_path_pack: &dart_output_path_pack,
+            dart_output_class_name_pack: &dart_output_class_name_pack,
+            rust_output_path: &rust_output_path,
+            default_stream_sink_codec,
+            default_rust_opaque_codec,
+            c_output_path: &c_output_path,
+            web_enabled,
+            full_dep,
+        })?;
 
         Ok(InternalConfig {
             controller: ControllerInternalConfig {
