@@ -25,7 +25,6 @@ pub(crate) fn parse_auto_accessors(
     let src_structs_in_paths = extract_src_types_in_paths(
         src_structs,
         &config.rust_input_namespace_pack.rust_input_namespaces,
-        &config.rust_crate_dir,
     )?;
 
     let infos = src_structs_in_paths
