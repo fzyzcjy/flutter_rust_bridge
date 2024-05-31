@@ -1,5 +1,6 @@
 use crate::codegen::config::internal_config_parser::dart_path_parser::compute_path_map;
 use crate::codegen::config::internal_config_parser::rust_path_migrator::ConfigRustRootAndRustInput;
+use crate::codegen::dumper::Dumper;
 use crate::codegen::generator::misc::target::TargetOrCommonMap;
 use crate::codegen::generator::wire::dart::internal_config::DartOutputClassNamePack;
 use crate::codegen::parser::internal_config::RustInputNamespacePack;
@@ -17,12 +18,14 @@ pub(super) struct RustInputInfo {
 pub(super) fn compute_rust_input_info(
     migrated_rust_input: &ConfigRustRootAndRustInput,
     cached_rust_reader: &mut CachedRustReader,
+    dumper: &Dumper,
 ) -> anyhow::Result<RustInputInfo> {
     let rust_crate_dir = compute_rust_crate_dir(&migrated_rust_input.rust_root)?;
     let rust_input_namespace_pack = compute_rust_input_namespace_pack(
         &migrated_rust_input.rust_input,
         &rust_crate_dir,
         cached_rust_reader,
+        dumper,
     );
     Ok(RustInputInfo {
         rust_crate_dir,
@@ -34,7 +37,11 @@ fn compute_rust_input_namespace_pack(
     raw_rust_input: &str,
     rust_crate_dir: &Path,
     cached_rust_reader: &mut CachedRustReader,
+    dumper: &Dumper,
 ) -> anyhow::Result<RustInputNamespacePack> {
+    cached_rust_reader.read_rust_crate(rust_crate_dir, dumper);
+
+    // old
     // const BLACKLIST_FILE_NAMES: [&str; 1] = ["mod.rs"];
     //
     // let glob_pattern = base_dir.join(raw_rust_input);
