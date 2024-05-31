@@ -7,16 +7,16 @@ use crate::utils::path_utils::{canonicalize_with_error_message, find_rust_crate_
 use anyhow::{ensure, Context};
 use std::path::{Path, PathBuf};
 
-pub(super) struct RustCrateDirAndInputPack {
+pub(super) struct RustInputInfo {
     pub rust_crate_dir: PathBuf,
     pub rust_input_namespace_pack: RustInputNamespacePack,
 }
 
-pub(super) fn compute_rust_crate_dir_and_input_pack(
+pub(super) fn compute_rust_input_info(
     config: &Config,
     base_dir: &PathBuf,
-) -> anyhow::Result<RustCrateDirAndInputPack> {
-    Ok(RustCrateDirAndInputPack {
+) -> anyhow::Result<RustInputInfo> {
+    Ok(RustInputInfo {
         rust_crate_dir: compute_rust_crate_dir(config)?,
         rust_input_namespace_pack: compute_rust_input_namespace_pack(&config.rust_input, base_dir)?,
     })
