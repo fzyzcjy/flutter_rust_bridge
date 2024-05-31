@@ -36,8 +36,8 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_previous_config_auto_migrated() -> anyhow::Result<()> {
-        let actual = migrate_rust_input_config(&None, "rust/src/api/**/*.rs")?;
+    fn test_previous_config_auto_migrated() {
+        let actual = migrate_rust_input_config(&None, "rust/src/api/**/*.rs").unwrap();
         assert_eq!(
             actual,
             ConfigRustRootAndRustInput {
@@ -45,18 +45,17 @@ mod tests {
                 rust_input: "crate::api".into()
             }
         );
-        Ok(())
     }
 
     #[test]
-    fn test_previous_config_unsupported() -> anyhow::Result<()> {
-        assert!(migrate_rust_input_config(None, "native/src/hello/**/*.rs").is_err());
+    fn test_previous_config_unsupported() {
+        assert!(migrate_rust_input_config(&None, "native/src/hello/**/*.rs").is_err());
     }
 
     #[test]
-    fn test_current_config() -> anyhow::Result<()> {
+    fn test_current_config() {
         assert_eq!(
-            migrate_rust_input_config(None, "crate::apple"),
+            migrate_rust_input_config(&None, "crate::apple").unwrap(),
             ConfigRustRootAndRustInput {
                 rust_root: "rust/".into(),
                 rust_input: "crate::apple".into()
@@ -64,7 +63,7 @@ mod tests {
         );
 
         assert_eq!(
-            migrate_rust_input_config(Some("native/"), "crate::orange"),
+            migrate_rust_input_config(&Some("native/".to_owned()), "crate::orange").unwrap(),
             ConfigRustRootAndRustInput {
                 rust_root: "native/".into(),
                 rust_input: "crate::orange".into()
