@@ -33,7 +33,7 @@ impl CachedCargoExpand {
             warn!(
                 "Skip cargo-expand on {rust_crate_dir:?}, \
              because cargo is already running and would block cargo-expand. \
-             This might cause errors if your api contains macros."
+             This might cause errors if your api contains macros or complex mods."
             );
             // frb-coverage:ignore-end
             return Ok(fs::read_to_string(rust_file_path)?);
