@@ -4,6 +4,10 @@ use std::collections::HashMap;
 pub(crate) struct SimpleCache<K, V>(HashMap<K, V>);
 
 impl<K, V> SimpleCache<K, V> {
+    pub(crate) fn new() -> Self {
+        Self(HashMap::new())
+    }
+
     pub(crate) fn get_or_insert(
         &mut self,
         key: &K,

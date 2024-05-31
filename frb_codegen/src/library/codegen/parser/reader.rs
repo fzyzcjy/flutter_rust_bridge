@@ -1,19 +1,22 @@
 use crate::codegen::dumper::Dumper;
 use crate::codegen::ConfigDumpContent;
-use crate::library::commands::cargo_expand::{run_cargo_expand, CachedCargoExpand};
+use crate::library::commands::cargo_expand::run_cargo_expand;
 use crate::utils::simple_cache::SimpleCache;
 use anyhow::{Context, Result};
 use itertools::Itertools;
 use log::debug;
 use std::path::{Path, PathBuf};
 
-#[derive(Default)]
 pub(crate) struct CachedRustReader {
-    cached_cargo_expand: CachedCargoExpand,
     cache: SimpleCache<PathBuf, syn::File>,
 }
 
 impl CachedRustReader {
+    pub(crate) fn new() -> Self {
+        Self {
+            cache: SimpleCache::new(),
+        }
+    }
     pub(crate) fn read_rust_crate(
         &mut self,
         rust_crate_dir: &Path,
