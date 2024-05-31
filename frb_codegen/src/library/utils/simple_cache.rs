@@ -21,8 +21,4 @@ impl<K: Eq + Hash, V> SimpleCache<K, V> {
             Vacant(entry) => entry.insert(inserter()?),
         })
     }
-
-    pub(crate) fn clear(&mut self) {
-        self.0.clear()
-    }
 }
