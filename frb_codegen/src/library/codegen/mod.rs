@@ -23,7 +23,6 @@ use log::debug;
 pub fn generate(config: Config, meta_config: MetaConfig) -> anyhow::Result<()> {
     debug!("config={config:?} meta_config={meta_config:?}");
 
-    let mut cached_rust_reader = CachedRustReader::default();
     let internal_config = InternalConfig::parse(&config, &meta_config)?;
     debug!("internal_config={internal_config:?}");
 
@@ -31,22 +30,20 @@ pub fn generate(config: Config, meta_config: MetaConfig) -> anyhow::Result<()> {
     dumper.dump(ContentConfig, "config.json", &config)?;
 
     controller::run(&internal_config.controller, &|| {
-        generate_once(&internal_config, cached_rust_reader, &dumper)
+        generate_once(&internal_config, &dumper)
     })?;
 
     Ok(())
 }
 
-fn generate_once(
-    internal_config: &InternalConfig,
-    mut cached_rust_reader: CachedRustReader,
-    dumper: &Dumper,
-) -> anyhow::Result<()> {
+fn generate_once(internal_config: &InternalConfig, dumper: &Dumper) -> anyhow::Result<()> {
     let progress_bar_pack = GeneratorProgressBarPack::new();
 
     dumper.dump(ContentConfig, "internal_config.json", &internal_config)?;
 
     preparer::prepare(&internal_config.preparer)?;
+
+    let mut cached_rust_reader = CachedRustReader::default();
 
     let pb = progress_bar_pack.parse.start();
     let ir_pack = parser::parse(
