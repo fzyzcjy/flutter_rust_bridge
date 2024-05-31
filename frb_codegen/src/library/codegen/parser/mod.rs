@@ -17,7 +17,6 @@ use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::codegen::parser::auto_accessor_parser::parse_auto_accessors;
-use crate::codegen::parser::file_reader::{read_files, FileData};
 use crate::codegen::parser::function_extractor::extract_generalized_functions_from_file;
 use crate::codegen::parser::function_extractor::structs::PathAndItemFn;
 use crate::codegen::parser::function_parser::FunctionParser;
