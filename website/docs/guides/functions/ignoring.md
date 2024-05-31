@@ -1,5 +1,7 @@
 # Ignoring functions
 
+This page explains how to let a function not to be translated by flutter_rust_bridge.
+
 ## Automatic ignore
 
 All functions that are not public (`pub`) will be ignored by default.
@@ -7,11 +9,7 @@ This include private functions, functions with `pub(crate)`, `pub(super)`, etc.
 
 ## Explicit ignore
 
-Sometimes you may want functions not to be translated by flutter_rust_bridge.
-
-Firstly, if it is private, i.e. not `pub`, it will automatically be ignored.
-
-Secondly, if it is public but still needs to be ignored,
+If it is public but still needs to be ignored,
 you can use the attribute `#[frb(ignore)]` to ignore it.
 For example:
 
