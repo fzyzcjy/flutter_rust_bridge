@@ -14,7 +14,7 @@ use crate::codegen::generator::wire::dart::internal_config::{
 use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInternalConfig;
 use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
-use crate::codegen::parser::internal_config::RustInputPathPack;
+use crate::codegen::parser::internal_config::RustInputNamespacePack;
 use crate::codegen::polisher::internal_config::PolisherInternalConfig;
 use crate::codegen::preparer::internal_config::PreparerInternalConfig;
 use crate::codegen::{Config, ConfigDumpContent};
@@ -105,7 +105,7 @@ impl InternalConfig {
                 needs_ffigen: full_dep,
             },
             parser: ParserInternalConfig {
-                rust_input_path_pack: rust_input_path_pack.clone(),
+                rust_input_namespace_pack: rust_input_path_pack.clone(),
                 rust_crate_dir: rust_crate_dir.clone(),
                 force_codec_mode_pack: compute_force_codec_mode_pack(full_dep),
                 default_stream_sink_codec,
@@ -233,40 +233,40 @@ fn compute_default_external_library_relative_directory(
 const FALLBACK_DEFAULT_EXTERNAL_LIBRARY_STEM: &str = "UNKNOWN";
 const FALLBACK_DEFAULT_EXTERNAL_LIBRARY_RELATIVE_DIRECTORY: &str = "UNKNOWN";
 
-impl RustInputPathPack {
+impl RustInputNamespacePack {
     fn one_rust_input_path(&self) -> &Path {
-        self.rust_input_paths.first().unwrap()
+        self.rust_input_namespaces.first().unwrap()
     }
 }
 
 fn compute_rust_input_path_pack(
     raw_rust_input: &str,
     base_dir: &Path,
-) -> Result<RustInputPathPack> {
+) -> Result<RustInputNamespacePack> {
     const BLACKLIST_FILE_NAMES: [&str; 1] = ["mod.rs"];
 
     let glob_pattern = base_dir.join(raw_rust_input);
 
-    let mut pack = RustInputPathPack {
-        rust_input_paths: vec![],
-        rust_suppressed_input_paths: vec![],
+    let mut pack = RustInputNamespacePack {
+        rust_input_namespaces: vec![],
+        rust_suppressed_input_namespaces: vec![],
     };
     for path in glob_path(&glob_pattern)?.into_iter() {
         if BLACKLIST_FILE_NAMES.contains(&path.file_name().unwrap().to_str().unwrap()) {
-            pack.rust_suppressed_input_paths.push(path);
+            pack.rust_suppressed_input_namespaces.push(path);
         } else {
-            pack.rust_input_paths.push(path);
+            pack.rust_input_namespaces.push(path);
         }
     }
 
     // This will stop the whole generator and tell the users, so we do not care about testing it
     // frb-coverage:ignore-start
     ensure!(
-        !pack.rust_input_paths.is_empty(),
+        !pack.rust_input_namespaces.is_empty(),
         "Find zero rust input paths. (glob_pattern={glob_pattern:?})"
     );
     ensure!(
-        !pack.rust_input_paths.iter().any(|p| path_to_string(p).unwrap().contains("lib.rs")),
+        !pack.rust_input_namespaces.iter().any(|p| path_to_string(p).unwrap().contains("lib.rs")),
         "Do not use `lib.rs` as a Rust input. Please put code to be generated in something like `api.rs`.",
     );
     // frb-coverage:ignore-end

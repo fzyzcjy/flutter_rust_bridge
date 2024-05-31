@@ -24,7 +24,7 @@ pub(crate) fn parse_auto_accessors(
 ) -> anyhow::Result<Vec<IrFunc>> {
     let src_structs_in_paths = extract_src_types_in_paths(
         src_structs,
-        &config.rust_input_path_pack.rust_input_paths,
+        &config.rust_input_namespace_pack.rust_input_namespaces,
         &config.rust_crate_dir,
     )?;
 

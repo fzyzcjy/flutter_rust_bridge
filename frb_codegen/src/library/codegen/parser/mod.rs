@@ -47,13 +47,15 @@ pub(crate) fn parse(
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<IrPack> {
     check_suppressed_input_path_no_content(
-        &config.rust_input_path_pack.rust_suppressed_input_paths,
+        &config
+            .rust_input_namespace_pack
+            .rust_suppressed_input_namespaces,
         &config.rust_crate_dir,
         cached_rust_reader,
         dumper,
     )?;
 
-    let rust_input_paths = &config.rust_input_path_pack.rust_input_paths;
+    let rust_input_paths = &config.rust_input_namespace_pack.rust_input_namespaces;
     trace!("rust_input_paths={:?}", &rust_input_paths);
 
     let pb = progress_bar_pack.parse_cargo_expand.start();
@@ -110,7 +112,7 @@ pub(crate) fn parse(
         &ans,
         &src_structs,
         &src_enums,
-        &config.rust_input_path_pack.rust_input_paths,
+        &config.rust_input_namespace_pack.rust_input_namespaces,
         &config.rust_crate_dir,
     )?;
 
@@ -204,7 +206,7 @@ mod tests {
     use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
     use crate::codegen::misc::GeneratorProgressBarPack;
     use crate::codegen::parser::internal_config::ParserInternalConfig;
-    use crate::codegen::parser::internal_config::RustInputPathPack;
+    use crate::codegen::parser::internal_config::RustInputNamespacePack;
     use crate::codegen::parser::parse;
     use crate::codegen::parser::reader::CachedRustReader;
     use crate::codegen::parser::source_graph::crates::Crate;
@@ -234,13 +236,13 @@ mod tests {
     fn test_multi_input_file() -> anyhow::Result<()> {
         body(
             "library/codegen/parser/mod/multi_input_file",
-            Some(Box::new(|rust_crate_dir| RustInputPathPack {
-                rust_input_paths: [
+            Some(Box::new(|rust_crate_dir| RustInputNamespacePack {
+                rust_input_namespaces: [
                     rust_crate_dir.join("src/api_one.rs"),
                     rust_crate_dir.join("src/api_two.rs"),
                 ]
                 .into(),
-                rust_suppressed_input_paths: vec![],
+                rust_suppressed_input_namespaces: vec![],
             })),
         )
     }
@@ -278,7 +280,7 @@ mod tests {
     #[allow(clippy::type_complexity)]
     fn body(
         fixture_name: &str,
-        rust_input_path_pack: Option<Box<dyn Fn(&Path) -> RustInputPathPack>>,
+        rust_input_path_pack: Option<Box<dyn Fn(&Path) -> RustInputNamespacePack>>,
     ) -> anyhow::Result<()> {
         let (actual_ir, rust_crate_dir) = execute_parse(fixture_name, rust_input_path_pack)?;
         json_golden_test(
@@ -293,7 +295,7 @@ mod tests {
     #[allow(clippy::type_complexity)]
     fn execute_parse(
         fixture_name: &str,
-        rust_input_path_pack: Option<Box<dyn Fn(&Path) -> RustInputPathPack>>,
+        rust_input_path_pack: Option<Box<dyn Fn(&Path) -> RustInputNamespacePack>>,
     ) -> anyhow::Result<(IrPack, PathBuf)> {
         configure_opinionated_test_logging();
         let test_fixture_dir = get_test_fixture_dir(fixture_name);
@@ -314,12 +316,12 @@ mod tests {
 
         let pack = parse(
             &ParserInternalConfig {
-                rust_input_path_pack: rust_input_path_pack.map(|f| f(&rust_crate_dir)).unwrap_or(
-                    RustInputPathPack {
-                        rust_input_paths: vec![rust_crate_dir.join("src/api.rs")],
-                        rust_suppressed_input_paths: vec![],
-                    },
-                ),
+                rust_input_namespace_pack: rust_input_path_pack
+                    .map(|f| f(&rust_crate_dir))
+                    .unwrap_or(RustInputNamespacePack {
+                        rust_input_namespaces: vec![rust_crate_dir.join("src/api.rs")],
+                        rust_suppressed_input_namespaces: vec![],
+                    }),
                 rust_crate_dir: rust_crate_dir.clone(),
                 force_codec_mode_pack: compute_force_codec_mode_pack(true),
                 default_stream_sink_codec: CodecMode::Dco,
