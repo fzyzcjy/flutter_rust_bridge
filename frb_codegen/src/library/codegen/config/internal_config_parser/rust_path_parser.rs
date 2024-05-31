@@ -34,32 +34,32 @@ fn compute_rust_input_namespace_pack(
     base_dir: &Path,
     cached_rust_reader: &mut CachedRustReader,
 ) -> anyhow::Result<RustInputNamespacePack> {
-    // const BLACKLIST_FILE_NAMES: [&str; 1] = ["mod.rs"];
-    //
-    // let glob_pattern = base_dir.join(raw_rust_input);
-    //
-    // let mut pack = RustInputNamespacePack {
-    //     rust_input_namespaces: vec![],
-    // };
-    // for path in glob_path(&glob_pattern)?.into_iter() {
-    //     if BLACKLIST_FILE_NAMES.contains(&path.file_name().unwrap().to_str().unwrap()) {
-    //         pack.rust_suppressed_input_namespaces.push(path);
-    //     } else {
-    //         pack.rust_input_namespaces.push(path);
-    //     }
-    // }
-    //
-    // // This will stop the whole generator and tell the users, so we do not care about testing it
-    // // frb-coverage:ignore-start
-    // ensure!(
-    //     !pack.rust_input_namespaces.is_empty(),
-    //     "Find zero rust input paths. (glob_pattern={glob_pattern:?})"
-    // );
+    const BLACKLIST_FILE_NAMES: [&str; 1] = ["mod.rs"];
+
+    let glob_pattern = base_dir.join(raw_rust_input);
+
+    let mut pack = RustInputNamespacePack {
+        rust_input_namespaces: vec![],
+    };
+    for path in glob_path(&glob_pattern)?.into_iter() {
+        if BLACKLIST_FILE_NAMES.contains(&path.file_name().unwrap().to_str().unwrap()) {
+            pack.rust_suppressed_input_namespaces.push(path);
+        } else {
+            pack.rust_input_namespaces.push(path);
+        }
+    }
+
+    // This will stop the whole generator and tell the users, so we do not care about testing it
+    // frb-coverage:ignore-start
+    ensure!(
+        !pack.rust_input_namespaces.is_empty(),
+        "Find zero rust input paths. (glob_pattern={glob_pattern:?})"
+    );
     // ensure!(
     //     !pack.rust_input_namespaces.iter().any(|p| path_to_string(p).unwrap().contains("lib.rs")),
     //     "Do not use `lib.rs` as a Rust input. Please put code to be generated in something like `api.rs`.",
     // );
-    // // frb-coverage:ignore-end
+    // frb-coverage:ignore-end
 
     Ok(pack)
 }
