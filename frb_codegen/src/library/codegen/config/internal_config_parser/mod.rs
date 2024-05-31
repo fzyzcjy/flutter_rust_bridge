@@ -2,6 +2,7 @@ use crate::codegen::config::config::MetaConfig;
 use crate::codegen::config::internal_config::{
     ControllerInternalConfig, GeneratorInternalConfig, GeneratorWireInternalConfig, InternalConfig,
 };
+use crate::codegen::config::internal_config_parser::rust_path_parser::RustCrateDirAndInputPack;
 use crate::codegen::dumper::internal_config::DumperInternalConfig;
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
 use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
@@ -37,16 +38,16 @@ mod rust_path_parser;
 
 impl InternalConfig {
     pub(crate) fn parse(config: &Config, meta_config: &MetaConfig) -> Result<Self> {
-        let base_dir = config
-            .base_dir
-            .as_ref()
+        let base_dir = (config.base_dir.as_ref())
             .filter(|s| !s.is_empty())
             .map(PathBuf::from)
             .unwrap_or(std::env::current_dir()?);
         debug!("InternalConfig.parse base_dir={base_dir:?}");
 
-        let rust_input_namespace_pack =
-            rust_path_parser::compute_rust_input_namespace_pack(&config.rust_input, &base_dir)?;
+        let RustCrateDirAndInputPack {
+            rust_crate_dir,
+            rust_input_namespace_pack,
+        } = rust_path_parser::compute_rust_crate_dir_and_input_pack(config, &base_dir)?;
 
         let dart_output_dir = canonicalize_with_error_message(&base_dir.join(&config.dart_output))?;
         let dart_output_path_pack =
@@ -63,7 +64,6 @@ impl InternalConfig {
             .map(|p| base_dir.join(p))
             .collect();
 
-        let rust_crate_dir = rust_path_parser::compute_rust_crate_dir(config)?;
         let rust_output_path =
             rust_path_parser::compute_rust_output_path(config, &base_dir, &rust_crate_dir)?;
 
