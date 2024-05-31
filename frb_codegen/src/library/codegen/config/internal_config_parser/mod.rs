@@ -31,8 +31,9 @@ use pathdiff::diff_paths;
 use std::path::{Path, PathBuf};
 use strum::IntoEnumIterator;
 
+mod dart_path_parser;
 mod generator_parser;
-mod path_parser;
+mod rust_path_parser;
 
 impl InternalConfig {
     pub(crate) fn parse(config: &Config, meta_config: &MetaConfig) -> Result<Self> {

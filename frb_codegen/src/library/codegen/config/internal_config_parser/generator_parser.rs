@@ -1,7 +1,7 @@
 use crate::codegen::config::internal_config::{
     GeneratorInternalConfig, GeneratorWireInternalConfig,
 };
-use crate::codegen::config::internal_config_parser::path_parser::DartOutputPathPack;
+use crate::codegen::config::internal_config_parser::dart_path_parser::DartOutputPathPack;
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
 use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::generator::misc::target::TargetOrCommonMap;
