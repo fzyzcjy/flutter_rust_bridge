@@ -26,6 +26,7 @@ This feature also supports methods. For example:
 struct RandomStruct;
 
 impl RandomStruct {
+    #[frb(ignore)]
     pub fn ignored_in_frb() {
         println!("you should not see ignoredInFrb within RandomStruct in dart side.");
     }
