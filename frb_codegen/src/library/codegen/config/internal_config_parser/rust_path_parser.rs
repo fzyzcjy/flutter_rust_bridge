@@ -32,7 +32,6 @@ fn compute_rust_input_namespace_pack(
 
     let mut pack = RustInputNamespacePack {
         rust_input_namespaces: vec![],
-        rust_suppressed_input_namespaces: vec![],
     };
     for path in glob_path(&glob_pattern)?.into_iter() {
         if BLACKLIST_FILE_NAMES.contains(&path.file_name().unwrap().to_str().unwrap()) {
