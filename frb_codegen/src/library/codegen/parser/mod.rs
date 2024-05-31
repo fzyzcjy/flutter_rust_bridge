@@ -113,7 +113,6 @@ pub(crate) fn parse(
         &src_structs,
         &src_enums,
         &config.rust_input_namespace_pack.rust_input_namespaces,
-        &config.rust_crate_dir,
     )?;
 
     check_opaque_inside_translatable(&ans);
@@ -203,6 +202,7 @@ mod tests {
     use crate::codegen::config::internal_config_parser::compute_force_codec_mode_pack;
     use crate::codegen::dumper::Dumper;
     use crate::codegen::generator::codec::structs::CodecMode;
+    use crate::codegen::ir::namespace::Namespace;
     use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
     use crate::codegen::misc::GeneratorProgressBarPack;
     use crate::codegen::parser::internal_config::ParserInternalConfig;
@@ -238,8 +238,8 @@ mod tests {
             "library/codegen/parser/mod/multi_input_file",
             Some(Box::new(|rust_crate_dir| RustInputNamespacePack {
                 rust_input_namespaces: [
-                    rust_crate_dir.join("src/api_one.rs"),
-                    rust_crate_dir.join("src/api_two.rs"),
+                    Namespace::new_self_crate("api_one".to_owned()),
+                    Namespace::new_self_crate("api_two".to_owned()),
                 ]
                 .into(),
                 rust_suppressed_input_namespaces: vec![],
@@ -319,7 +319,7 @@ mod tests {
                 rust_input_namespace_pack: rust_input_namespace_pack
                     .map(|f| f(&rust_crate_dir))
                     .unwrap_or(RustInputNamespacePack {
-                        rust_input_namespaces: vec![rust_crate_dir.join("src/api.rs")],
+                        rust_input_namespaces: vec![Namespace::new_self_crate("api".to_owned())],
                         rust_suppressed_input_namespaces: vec![],
                     }),
                 rust_crate_dir: rust_crate_dir.clone(),
