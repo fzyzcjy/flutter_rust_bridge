@@ -1,5 +1,4 @@
 use crate::codegen::config::internal_config_parser::dart_path_parser::compute_path_map;
-use crate::codegen::config::internal_config_parser::rust_path_migrator::ConfigRustRootAndRustInput;
 use crate::codegen::generator::misc::target::TargetOrCommonMap;
 use crate::codegen::generator::wire::dart::internal_config::DartOutputClassNamePack;
 use crate::codegen::parser::internal_config::RustInputNamespacePack;
@@ -9,12 +8,12 @@ use anyhow::{ensure, Context};
 use std::path::{Path, PathBuf};
 
 pub(super) fn compute_rust_input_namespace_pack(
-    migrated_rust_input: ConfigRustRootAndRustInput,
+    raw_rust_input: &str,
     base_dir: &Path,
 ) -> anyhow::Result<RustInputNamespacePack> {
     const BLACKLIST_FILE_NAMES: [&str; 1] = ["mod.rs"];
 
-    let glob_pattern = base_dir.join(migrated_rust_input.rust_input);
+    let glob_pattern = base_dir.join(raw_rust_input);
 
     let mut pack = RustInputNamespacePack {
         rust_input_namespaces: vec![],
