@@ -46,7 +46,7 @@ impl InternalConfig {
         debug!("InternalConfig.parse base_dir={base_dir:?}");
 
         let rust_input_namespace_pack =
-            compute_rust_input_namespace_pack(&config.rust_input, &base_dir)?;
+            rust_path_parser::compute_rust_input_namespace_pack(&config.rust_input, &base_dir)?;
 
         let dart_output_dir = canonicalize_with_error_message(&base_dir.join(&config.dart_output))?;
         let dart_output_path_pack =
@@ -147,41 +147,6 @@ fn parse_dump_contents(config: &Config) -> Vec<ConfigDumpContent> {
         return ConfigDumpContent::iter().collect_vec();
     }
     config.dump.clone().unwrap_or_default()
-}
-
-fn compute_rust_input_namespace_pack(
-    raw_rust_input: &str,
-    base_dir: &Path,
-) -> Result<RustInputNamespacePack> {
-    const BLACKLIST_FILE_NAMES: [&str; 1] = ["mod.rs"];
-
-    let glob_pattern = base_dir.join(raw_rust_input);
-
-    let mut pack = RustInputNamespacePack {
-        rust_input_namespaces: vec![],
-        rust_suppressed_input_namespaces: vec![],
-    };
-    for path in glob_path(&glob_pattern)?.into_iter() {
-        if BLACKLIST_FILE_NAMES.contains(&path.file_name().unwrap().to_str().unwrap()) {
-            pack.rust_suppressed_input_namespaces.push(path);
-        } else {
-            pack.rust_input_namespaces.push(path);
-        }
-    }
-
-    // This will stop the whole generator and tell the users, so we do not care about testing it
-    // frb-coverage:ignore-start
-    ensure!(
-        !pack.rust_input_namespaces.is_empty(),
-        "Find zero rust input paths. (glob_pattern={glob_pattern:?})"
-    );
-    // ensure!(
-    //     !pack.rust_input_namespaces.iter().any(|p| path_to_string(p).unwrap().contains("lib.rs")),
-    //     "Do not use `lib.rs` as a Rust input. Please put code to be generated in something like `api.rs`.",
-    // );
-    // frb-coverage:ignore-end
-
-    Ok(pack)
 }
 
 fn compute_dart_output_class_name_pack(config: &Config) -> DartOutputClassNamePack {
