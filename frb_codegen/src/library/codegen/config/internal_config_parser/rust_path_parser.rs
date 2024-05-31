@@ -16,23 +16,22 @@ pub(super) struct RustInputInfo {
 
 pub(super) fn compute_rust_input_info(
     migrated_rust_input: &ConfigRustRootAndRustInput,
+    base_dir: &PathBuf,
     cached_rust_reader: &mut CachedRustReader,
 ) -> anyhow::Result<RustInputInfo> {
-    let rust_crate_dir = compute_rust_crate_dir(&migrated_rust_input.rust_root)?;
-    let rust_input_namespace_pack = compute_rust_input_namespace_pack(
-        &migrated_rust_input.rust_input,
-        &rust_crate_dir,
-        cached_rust_reader,
-    );
     Ok(RustInputInfo {
-        rust_crate_dir,
-        rust_input_namespace_pack,
+        rust_crate_dir: compute_rust_crate_dir(&migrated_rust_input.rust_root)?,
+        rust_input_namespace_pack: compute_rust_input_namespace_pack(
+            &migrated_rust_input.rust_input,
+            base_dir,
+            cached_rust_reader,
+        )?,
     })
 }
 
 fn compute_rust_input_namespace_pack(
     raw_rust_input: &str,
-    rust_crate_dir: &Path,
+    base_dir: &Path,
     cached_rust_reader: &mut CachedRustReader,
 ) -> anyhow::Result<RustInputNamespacePack> {
     // const BLACKLIST_FILE_NAMES: [&str; 1] = ["mod.rs"];
