@@ -9,11 +9,7 @@ use crate::codegen::parser::reader::CachedRustReader;
 use log::debug;
 
 /// Maps out modules, structs and enums within the scope of this module
-pub(crate) fn parse_module(
-    info: HirModuleInfo,
-    cached_rust_reader: &mut CachedRustReader,
-    dumper: &Dumper,
-) -> anyhow::Result<HirModule> {
+pub(crate) fn parse_module(info: HirModuleInfo) -> anyhow::Result<HirModule> {
     debug!("parse_module START info={info:?}");
 
     let mut scope = HirModuleScope::default();
@@ -43,12 +39,7 @@ fn parse_syn_item(item: &syn::Item, scope: &mut HirModuleScope) -> anyhow::Resul
             scope.types.extend(parse_syn_item_type(item_type));
         }
         syn::Item::Mod(item_mod) => {
-            scope.modules.extend(parse_syn_item_mod(
-                &info,
-                item_mod,
-                cached_rust_reader,
-                dumper,
-            )?);
+            scope.modules.extend(parse_syn_item_mod(&info, item_mod)?);
         }
         _ => {}
     }
