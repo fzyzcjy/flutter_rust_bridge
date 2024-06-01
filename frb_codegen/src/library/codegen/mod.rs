@@ -6,6 +6,7 @@ pub(crate) mod dumper;
 pub(crate) mod generator;
 pub(crate) mod hir;
 pub(crate) mod hir_parser;
+pub(crate) mod ir;
 pub(crate) mod mir;
 mod misc;
 pub(crate) mod parser;
