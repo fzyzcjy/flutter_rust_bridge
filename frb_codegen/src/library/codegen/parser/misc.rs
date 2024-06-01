@@ -6,10 +6,6 @@ use itertools::Itertools;
 use std::collections::HashMap;
 use std::path::{Path, PathBuf};
 
-pub(crate) fn parse_has_executor(source_rust_content: &str) -> bool {
-    source_rust_content.contains(&format!("static {HANDLER_NAME}"))
-}
-
 pub(crate) fn extract_src_types_in_paths<T: HirStructOrEnumWrapper<I>, I>(
     src_items: &HashMap<String, &T>,
     rust_input_namespace_pack: &RustInputNamespacePack,

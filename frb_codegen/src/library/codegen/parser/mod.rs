@@ -1,5 +1,6 @@
 pub(crate) mod attribute_parser;
 mod auto_accessor_parser;
+mod existing_handler;
 mod file_reader;
 pub(crate) mod function_parser;
 pub(crate) mod internal_config;
@@ -20,7 +21,6 @@ use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::codegen::parser::auto_accessor_parser::parse_auto_accessors;
 use crate::codegen::parser::function_parser::FunctionParser;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
-use crate::codegen::parser::misc::parse_has_executor;
 use crate::codegen::parser::reader::CachedRustReader;
 use crate::codegen::parser::sanity_checker::opaque_inside_translatable_checker::check_opaque_inside_translatable;
 use crate::codegen::parser::sanity_checker::unused_checker::get_unused_types;
@@ -61,7 +61,7 @@ pub(crate) fn parse(
         &hir_flat_crate.structs,
     )?;
 
-    let existing_handlers = parse_existing_handlers(config, &file_data_arr)?;
+    let existing_handlers = existing_handler::parse_existing_handlers(config, &file_data_arr)?;
 
     let (struct_pool, enum_pool, dart_code_of_type) = type_parser.consume();
 
@@ -123,29 +123,6 @@ fn parse_ir_funcs(
             ..f
         })
         .collect_vec())
-}
-
-fn parse_existing_handlers(
-    config: &ParserInternalConfig,
-    file_data_arr: &[FileData],
-) -> anyhow::Result<Vec<NamespacedName>> {
-    let existing_handlers = (file_data_arr.iter())
-        .filter(|file| parse_has_executor(&file.content))
-        .map(|file| {
-            NamespacedName::new(
-                Namespace::new_from_rust_crate_path(&file.path, &config.rust_crate_dir).unwrap(),
-                HANDLER_NAME.to_owned(),
-            )
-        })
-        .collect_vec();
-    ensure!(
-        existing_handlers.len() <= 1,
-        // frb-coverage:ignore-start
-        // This will stop the whole generator and tell the users, so we do not care about testing it
-        "Should have at most one custom handler"
-    );
-    // frb-coverage:ignore-end
-    Ok(existing_handlers)
 }
 
 fn compute_skipped_functions(
