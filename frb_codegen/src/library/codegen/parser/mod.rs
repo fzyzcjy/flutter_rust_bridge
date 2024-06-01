@@ -39,8 +39,9 @@ mod tests {
     use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
     use crate::codegen::misc::GeneratorProgressBarPack;
     use crate::codegen::parser::mir::internal_config::RustInputNamespacePack;
-    use crate::codegen::parser::parse;
+    use crate::codegen::parser::mir::reader::read_rust_crate;
     use crate::codegen::parser::MirPack;
+    use crate::codegen::parser::{hir, parse};
     use crate::codegen::ParserInternalConfig;
     use crate::utils::logs::configure_opinionated_test_logging;
     use crate::utils::test_utils::{
@@ -131,30 +132,32 @@ mod tests {
         let rust_crate_dir = test_fixture_dir.clone();
         info!("test_fixture_dir={test_fixture_dir:?}");
 
-        let crate_map = HirCrate::parse(
-            &rust_crate_dir.join("Cargo.toml"),
-            &mut CachedRustReader::default(),
-            &Dumper(&Default::default()),
-        )?;
-        json_golden_test(
-            &serde_json::to_value(crate_map)?,
-            &rust_crate_dir.join("expect_source_graph.json"),
-            &create_path_sanitizers(&test_fixture_dir),
-        )
-        .unwrap();
+        let config = ParserInternalConfig {
+            rust_input_namespace_pack: rust_input_namespace_pack
+                .map(|f| f(&rust_crate_dir))
+                .unwrap_or(RustInputNamespacePack::new(vec![
+                    Namespace::new_self_crate("api".to_owned()),
+                ])),
+            rust_crate_dir: rust_crate_dir.clone(),
+            force_codec_mode_pack: compute_force_codec_mode_pack(true),
+            default_stream_sink_codec: CodecMode::Dco,
+            default_rust_opaque_codec: RustOpaqueCodecMode::Nom,
+        };
+
+        // extra test: Hir
+        {
+            let file = read_rust_crate(&config.rust_crate_dir, dumper)?;
+            let hir_hierarchical = hir::hierarchical::parse(config, &file)?;
+            json_golden_test(
+                &serde_json::to_value(hir_hierarchical)?,
+                &rust_crate_dir.join("expect_source_graph.json"),
+                &create_path_sanitizers(&test_fixture_dir),
+            )
+            .unwrap();
+        }
 
         let pack = parse(
-            &ParserInternalConfig {
-                rust_input_namespace_pack: rust_input_namespace_pack
-                    .map(|f| f(&rust_crate_dir))
-                    .unwrap_or(RustInputNamespacePack::new(vec![
-                        Namespace::new_self_crate("api".to_owned()),
-                    ])),
-                rust_crate_dir: rust_crate_dir.clone(),
-                force_codec_mode_pack: compute_force_codec_mode_pack(true),
-                default_stream_sink_codec: CodecMode::Dco,
-                default_rust_opaque_codec: RustOpaqueCodecMode::Nom,
-            },
+            &config,
             &Dumper(&Default::default()),
             &GeneratorProgressBarPack::new(),
         )?;
