@@ -77,14 +77,21 @@ impl Namespace {
         other.path().starts_with(&self.path())
     }
 
-    pub fn strip_prefix(&self, prefix: &Namespace) -> bool {
-        Self::new(self.path().strip_prefix(prefix.path()).unwrap())
+    pub fn strip_prefix(&self, prefix: &Namespace) -> Self {
+        Self::new(
+            self.path()
+                .strip_prefix(&prefix.path())
+                .unwrap()
+                .iter()
+                .map(|x| x.to_string())
+                .collect(),
+        )
     }
 
     pub fn compute_common_prefix(namespaces: &[&Namespace]) -> Self {
-        let paths = namespaces.iter().map(|x| x.path()).collect();
-        let prefix_len = vec_common_prefix(paths);
-        Self::new(paths[0][..prefix_len].to_owned())
+        let paths = namespaces.iter().map(|x| x.path()).collect_vec();
+        let prefix_len = vec_common_prefix(&paths);
+        Self::new(paths[0][..prefix_len].iter().map(|x|x.to_string()).collect_vec())
     }
 }
 
