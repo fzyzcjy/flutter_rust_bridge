@@ -18,7 +18,7 @@ pub(super) fn migrate_rust_input_config(
     }
 
     ensure!(
-        !(raw_rust_input.contains("*") || raw_rust_input.contains(".")),
+        !(raw_rust_input.contains('*') || raw_rust_input.contains('.')),
         "Please migrate configuration `rust_input` to the new syntax.\
         For example, rust_input=`rust/src/api/**/*.rs` is now rust_input=`crate::api` and rust_root=`rust/`",
     );

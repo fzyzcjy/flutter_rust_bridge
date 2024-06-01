@@ -2,16 +2,9 @@ mod pseudo;
 mod real;
 
 use crate::codegen::dumper::Dumper;
-use crate::codegen::ConfigDumpContent;
-use crate::command_args;
-use crate::library::commands::command_runner::execute_command;
 use crate::utils::path_utils::{normalize_windows_unc_path, path_to_string};
-use anyhow::{bail, Context, Result};
-use itertools::Itertools;
-use lazy_static::lazy_static;
-use log::{debug, info, warn};
-use regex::Regex;
-use std::borrow::Cow;
+use anyhow::Result;
+use log::debug;
 use std::env;
 use std::path::Path;
 

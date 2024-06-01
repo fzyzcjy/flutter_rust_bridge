@@ -31,7 +31,7 @@ fn compute_rust_input_namespace_pack(
 ) -> anyhow::Result<RustInputNamespacePack> {
     Ok(RustInputNamespacePack::new(
         raw_rust_input
-            .split(",")
+            .split(',')
             .map(|s| Namespace::new_raw(s.to_owned()))
             .collect_vec(),
     ))

@@ -15,7 +15,7 @@ pub(super) fn run(rust_crate_dir: &Path) -> anyhow::Result<syn::File> {
 }
 
 fn parse_file(path: &Path) -> anyhow::Result<syn::File> {
-    let code = fs::read_to_string(&path)?;
+    let code = fs::read_to_string(path)?;
     let mut file = syn::parse_file(&code)?;
     modify_file(&mut file, path)?;
     Ok(file)
@@ -63,8 +63,8 @@ fn get_module_file_path_candidates(
     .iter()
     .flat_map(|folder_path| {
         [
-            folder_path.join(&module_name).with_extension("rs"),
-            folder_path.join(&module_name).join("mod.rs"),
+            folder_path.join(module_name).with_extension("rs"),
+            folder_path.join(module_name).join("mod.rs"),
         ]
     })
     .collect_vec()

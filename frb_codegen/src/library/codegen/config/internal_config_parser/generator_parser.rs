@@ -53,8 +53,8 @@ pub(super) fn parse(args: Args) -> anyhow::Result<GeneratorInternalConfig> {
     let dart_enums_style = config.dart_enums_style.unwrap_or(true);
     let dart3 = config.dart3.unwrap_or(true);
     let default_external_library_loader =
-        compute_default_external_library_loader(&rust_crate_dir, &dart_root, config);
-    let c_symbol_prefix = compute_c_symbol_prefix(&dart_root)?;
+        compute_default_external_library_loader(rust_crate_dir, dart_root, config);
+    let c_symbol_prefix = compute_c_symbol_prefix(dart_root)?;
 
     Ok(GeneratorInternalConfig {
         api_dart: GeneratorApiDartInternalConfig {
