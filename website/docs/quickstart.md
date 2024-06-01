@@ -134,11 +134,8 @@ flutter run
 
 <TabItem value="Web">
 
-1. The `build-web` command: Because Flutter Web does not have a build hook yet
-   (vote [the corresponding issue](https://github.com/flutter/flutter/issues/138992) to
-   [prioritize](https://github.com/flutter/flutter/wiki/Issue-hygiene#do-not-add-me-too-or-same-or-is-there-an-update-comments-to-bugs)
-   it if you want).
-2. Before Flutter >=3.17 release, [a hack](manual/miscellaneous/web-cross-origin) is needed.
+P.S. The `build-web` command: Because Flutter Web does not have a build hook yet
+([corresponding issue](https://github.com/flutter/flutter/issues/138992)).
 
 ```shell
 flutter_rust_bridge_codegen build-web
