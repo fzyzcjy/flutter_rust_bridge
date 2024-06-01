@@ -2,6 +2,10 @@ use std::borrow::Cow;
 use std::env;
 use std::path::Path;
 
+pub(super) fn run(rust_crate_dir: &Path) -> Result<String> {
+    run_with_frb_aware(rust_crate_dir)
+}
+
 fn run_with_frb_aware(rust_crate_dir: &Path) -> Result<String> {
     Ok(unwrap_frb_attrs_in_doc(&run_raw(rust_crate_dir, "--cfg frb_expand", true)?).into_owned())
 }
