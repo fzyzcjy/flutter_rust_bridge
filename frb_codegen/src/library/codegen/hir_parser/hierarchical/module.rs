@@ -29,9 +29,7 @@ pub(crate) fn parse_module(
 fn parse_syn_item(item: &syn::Item, scope: &mut ModuleScope) -> anyhow::Result<()> {
     match item {
         syn::Item::Struct(item_struct) => {
-            scope
-                .structs
-                .extend(parse_syn_item_struct(&info, item_struct)?);
+            (scope.structs).extend(parse_syn_item_struct(&info, item_struct)?);
         }
         syn::Item::Enum(item_enum) => {
             scope.enums.extend(parse_syn_item_enum(&info, item_enum)?);
