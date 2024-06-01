@@ -131,8 +131,8 @@ fn generate_item(
         .collect_vec();
 
     let skipped_functions = (context.mir_pack.skipped_functions.iter())
-        .filter(|t| &t.namespace == namespace)
-        .map(|t| t.name.to_owned())
+        .filter(|t| &t.name.namespace == namespace)
+        .map(|t| t.name.name.to_owned())
         .collect_vec();
 
     let needs_freezed = classes.iter().any(|class| class.needs_freezed);
