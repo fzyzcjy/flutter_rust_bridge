@@ -97,7 +97,8 @@ impl Display for Namespace {
 fn vec_common_prefix(vecs: &[Vec<&str>]) -> usize {
     let min_len = vecs.iter().map(|x| x.len()).reduce(usize::min).unwrap();
     for i in 0..min_len {
-        if TODO {
+        let sample_value = vecs[0][i];
+        if vecs.iter().any(|vec| vec[i] != sample_value) {
             return i;
         }
     }
