@@ -17,10 +17,12 @@ use crate::codegen::dumper::internal_config::ConfigDumpContent::Config as Conten
 use crate::codegen::dumper::Dumper;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::misc::GeneratorProgressBarPack;
+use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::parser::reader::CachedRustReader;
 pub use config::config::{Config, MetaConfig};
 pub use dumper::internal_config::ConfigDumpContent;
 use log::debug;
+use std::path::Path;
 
 /// Execute the main code generator
 pub fn generate(config: Config, meta_config: MetaConfig) -> anyhow::Result<()> {
@@ -46,10 +48,8 @@ fn generate_once(internal_config: &InternalConfig, dumper: &Dumper) -> anyhow::R
 
     preparer::prepare(&internal_config.preparer)?;
 
-    let mut cached_rust_reader = CachedRustReader::default();
-
     let pb = progress_bar_pack.parse.start();
-    let ir_pack = parse()?;
+    let ir_pack = parse(&internal_config.parser, dumper)?;
     dumper.dump(ConfigDumpContent::Ir, "ir_pack.json", &ir_pack)?;
     drop(pb);
 
@@ -79,12 +79,13 @@ fn generate_once(internal_config: &InternalConfig, dumper: &Dumper) -> anyhow::R
 }
 
 // TODO mv
-fn parse(cached_rust_reader: &mut CachedRustReader, dumper: &Dumper) -> anyhow::Result<IrPack> {
-    let file = cached_rust_reader.read_rust_crate(rust_crate_dir, dumper)?;
+fn parse(config: &ParserInternalConfig, dumper: &Dumper) -> anyhow::Result<IrPack> {
+    let mut cached_rust_reader = CachedRustReader::default();
+    let file = cached_rust_reader.read_rust_crate(config.rust_crate_dir, dumper)?;
 
     let hir_hierarchical = hir_parser::hierarchical::parse(file)?;
 
     let hir_flat = hir_parser::flat::parse(&hir_hierarchical.root_module)?;
 
-    parser::parse(&internal_config.parser, &hir_flat)
+    parser::parse(config, &hir_flat)
 }
