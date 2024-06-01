@@ -6,5 +6,5 @@ use serde::{Deserialize, Serialize};
 pub(crate) struct ParserHirInternalConfig {
     pub rust_input_namespace_pack: RustInputNamespacePack,
     pub rust_crate_dir: PathBuf,
-    pub third_party_crates: Vec<String>,
+    pub third_party_crate_names: Vec<String>,
 }

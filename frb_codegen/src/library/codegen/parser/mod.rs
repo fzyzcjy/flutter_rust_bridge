@@ -153,7 +153,7 @@ mod tests {
             hir: ParserHirInternalConfig {
                 rust_input_namespace_pack: rust_input_namespace_pack.clone(),
                 rust_crate_dir: rust_crate_dir.clone(),
-                third_party_crates: vec![],
+                third_party_crate_names: vec![],
             },
             mir: ParserMirInternalConfig {
                 rust_input_namespace_pack: rust_input_namespace_pack.clone(),

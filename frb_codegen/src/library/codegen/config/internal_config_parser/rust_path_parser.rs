@@ -11,6 +11,7 @@ use std::path::{Path, PathBuf};
 
 pub(super) struct RustInputInfo {
     pub rust_crate_dir: PathBuf,
+    pub third_party_crate_names: Vec<String>,
     pub rust_input_namespace_pack: RustInputNamespacePack,
 }
 
@@ -85,3 +86,15 @@ pub(super) fn compute_rust_output_path(
 fn fallback_rust_output_path(rust_crate_dir: &Path) -> PathBuf {
     rust_crate_dir.join("src").join("frb_generated.rs")
 }
+
+fn parse_third_party_crates(rust_input_namespace_prefices: &[Namespace]) -> Vec<String> {
+    rust_input_namespace_prefices
+        .iter()
+        .map(|x| x.path()[0])
+        .filter(|x| *x != Namespace::SELF_CRATE)
+        .dedup()
+        .sorted()
+        .map(|x| x.to_owned())
+        .collect_vec()
+}
+

@@ -37,6 +37,7 @@ impl InternalConfig {
             rust_path_migrator::migrate_rust_input_config(&config.rust_root, &config.rust_input)?;
         let RustInputInfo {
             rust_crate_dir,
+            third_party_crate_names,
             rust_input_namespace_pack,
         } = rust_path_parser::compute_rust_input_info(&migrated_rust_input, &base_dir)?;
 
@@ -99,9 +100,7 @@ impl InternalConfig {
                 hir: ParserHirInternalConfig {
                     rust_crate_dir: rust_crate_dir.clone(),
                     rust_input_namespace_pack: rust_input_namespace_pack.clone(),
-                    third_party_crates: parse_third_party_crates(
-                        &rust_input_namespace_pack.rust_input_namespace_prefices,
-                    ),
+                    third_party_crate_names,
                 },
                 mir: ParserMirInternalConfig {
                     rust_input_namespace_pack: rust_input_namespace_pack.clone(),
@@ -129,17 +128,6 @@ impl InternalConfig {
             },
         })
     }
-}
-
-fn parse_third_party_crates(rust_input_namespace_prefices: &[Namespace]) -> Vec<String> {
-    rust_input_namespace_prefices
-        .iter()
-        .map(|x| x.path()[0])
-        .filter(|x| *x != Namespace::SELF_CRATE)
-        .dedup()
-        .sorted()
-        .map(|x| x.to_owned())
-        .collect_vec()
 }
 
 fn parse_dump_contents(config: &Config) -> Vec<ConfigDumpContent> {

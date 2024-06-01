@@ -11,7 +11,7 @@ pub(crate) fn parse(
 ) -> anyhow::Result<HirRawPack> {
     let crates = concat([
         vec![Namespace::SELF_CRATE.to_owned()],
-        config.third_party_crates.clone(),
+        config.third_party_crate_names.clone(),
     ])
     .iter()
     .map(|crate_name| {
