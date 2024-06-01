@@ -8,8 +8,9 @@ use lazy_static::lazy_static;
 use log::{debug, info};
 use regex::Regex;
 use std::borrow::Cow;
+use std::collections::HashMap;
 use std::env;
-use std::path::Path;
+use std::path::{Path, PathBuf};
 
 pub(crate) fn run_cargo_expand(rust_crate_dir: &Path, dumper: &Dumper) -> Result<syn::File> {
     let text = run_with_frb_aware(rust_crate_dir)?;
@@ -42,11 +43,15 @@ fn run_raw(
     debug!("Running cargo expand in '{rust_crate_dir:?}'");
 
     let args = command_args!("expand", "--lib", "--theme=none", "--ugly");
-    let extra_env = [(
+
+    let mut extra_env: HashMap<_, _> = [(
         "RUSTFLAGS".to_owned(),
         env::var("RUSTFLAGS").map(|x| x + " ").unwrap_or_default() + extra_rustflags,
     )]
-        .into();
+    .into();
+    if let Some(cargo_target_dir) = compute_cargo_target_dir() {
+        extra_env["CARGO_TARGET_DIR".to_owned()] = cargo_target_dir;
+    }
 
     let output = execute_command("cargo", &args, Some(rust_crate_dir), Some(extra_env))
         .with_context(|| format!("Could not expand rust code at path {rust_crate_dir:?}"))?;
@@ -67,6 +72,17 @@ fn run_raw(
     }
 
     Ok(stdout.lines().skip(1).join("\n"))
+}
+
+fn compute_cargo_target_dir() -> Option<String> {
+    // Please refer to https://github.com/mozilla/cbindgen/blob/3cbb637bbf16c7378ce4d6cb4b73e5d2d2bd33fa/src/bindgen/cargo/cargo_expand.rs#L81-L87
+    // to see how this handles the case when called in build.rs
+    if let Ok(ref path) = env::var("OUT_DIR") {
+        let ans = PathBuf::from(path).join("frb_expanded");
+        Some(ans.to_str().unwrap().to_string())
+    } else {
+        None
+    }
 }
 
 fn install_cargo_expand() -> Result<()> {
