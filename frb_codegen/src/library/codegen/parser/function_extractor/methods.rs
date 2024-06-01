@@ -1,7 +1,7 @@
 use crate::codegen::parser::function_extractor::structs::GeneralizedItemFn;
 use syn::{File, ImplItem, Item};
 
-pub(super) fn extract_methods_from_file(
+pub(super) fn extract_methods_from_syn_items(
     items: &[syn::Item],
 ) -> anyhow::Result<Vec<GeneralizedItemFn>> {
     let mut src_fns = Vec::new();
