@@ -3299,6 +3299,8 @@ int32_t benchmark_raw_input_bytes(struct benchmark_raw_list_prim_u_8 bytes);
 
 void benchmark_raw_output_bytes(int64_t port, int32_t message_id, int32_t size);
 
+void frbgen_frb_example_pure_dart_wire__crate__api__function_at_api_mod_rs(int64_t port_);
+
 void frbgen_frb_example_pure_dart_wire__crate__api__array__boxed_blob_twin_normal(int64_t port_,
                                                                                   struct wire_cst_list_prim_u_8_strict *blob);
 
@@ -15656,6 +15658,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__external_type_in_crate__call_old_module_system_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__external_type_in_crate__use_imported_enum_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__external_type_in_crate__use_imported_struct_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__function_at_api_mod_rs);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__inside_macro__another_macro_struct_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__inside_macro__func_macro_struct_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__map_and_set__func_hash_map_i32_i32_twin_normal);

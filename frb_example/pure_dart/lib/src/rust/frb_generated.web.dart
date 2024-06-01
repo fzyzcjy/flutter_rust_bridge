@@ -6,6 +6,7 @@
 // Static analysis wrongly picks the IO variant, thus ignore this
 // ignore_for_file: argument_type_not_assignable
 
+import 'api.dart';
 import 'api/array.dart';
 import 'api/async_misc.dart';
 import 'api/async_spawn.dart';
@@ -36717,6 +36718,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 class RustLibWire implements BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
 
+  void wire__crate__api__function_at_api_mod_rs(NativePortType port_) =>
+      wasmModule.wire__crate__api__function_at_api_mod_rs(port_);
+
   void wire__crate__api__array__boxed_blob_twin_normal(
           NativePortType port_, Uint8List blob) =>
       wasmModule.wire__crate__api__array__boxed_blob_twin_normal(port_, blob);
@@ -59209,6 +59213,8 @@ class RustLibWasmModule implements WasmModule {
 
   @override
   external RustLibWasmModule bind(dynamic thisArg, String moduleName);
+
+  external void wire__crate__api__function_at_api_mod_rs(NativePortType port_);
 
   external void wire__crate__api__array__boxed_blob_twin_normal(
       NativePortType port_, Uint8List blob);

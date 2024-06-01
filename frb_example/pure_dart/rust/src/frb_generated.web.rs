@@ -13749,6 +13749,13 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSy
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__function_at_api_mod_rs(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire__crate__api__function_at_api_mod_rs_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__array__boxed_blob_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     blob: Box<[u8]>,

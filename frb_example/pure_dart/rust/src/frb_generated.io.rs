@@ -16761,6 +16761,13 @@ impl Default for wire_cst_vec_of_primitive_pack_twin_sync {
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__function_at_api_mod_rs(
+    port_: i64,
+) {
+    wire__crate__api__function_at_api_mod_rs_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__array__boxed_blob_twin_normal(
     port_: i64,
     blob: *mut wire_cst_list_prim_u_8_strict,
