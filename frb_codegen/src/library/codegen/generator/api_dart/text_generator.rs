@@ -26,10 +26,8 @@ pub(super) fn generate(
         spec.namespaced_items
             .iter()
             .map(|(namespace, item)| {
-                let dart_output_path = compute_path_from_namespace(
-                    &config.dart_decl_base_output_path,
-                    namespace,
-                );
+                let dart_output_path =
+                    compute_path_from_namespace(&config.dart_decl_base_output_path, namespace);
                 let text = generate_end_api_text(namespace, &dart_output_path, item)?;
                 Ok(PathText::new(dart_output_path, text))
             })
