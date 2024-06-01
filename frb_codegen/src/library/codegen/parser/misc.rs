@@ -11,12 +11,12 @@ pub(crate) fn parse_has_executor(source_rust_content: &str) -> bool {
 
 pub(crate) fn extract_src_types_in_paths<T: HirStructOrEnumWrapper<I>, I>(
     src_items: &HashMap<String, &T>,
-    rust_input_namespaces: &[Namespace],
+    rust_input_namespace_pack: &RustInputNamespacePack,
 ) -> anyhow::Result<Vec<NamespacedName>> {
     Ok((src_items.iter())
         .filter_map(|(k, v)| {
             let namespace = &v.inner().namespaced_name.namespace;
-            if rust_input_namespaces.contains(&namespace) {
+            if TODO(rust_input_namespace_pack) {
                 Some(NamespacedName::new(namespace.to_owned(), k.to_owned()))
             } else {
                 None

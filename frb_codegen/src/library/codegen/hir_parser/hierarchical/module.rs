@@ -19,7 +19,10 @@ pub(crate) fn parse_module(
     config: &ParserInternalConfig,
 ) -> anyhow::Result<HirModule> {
     let mut scope = HirModuleContent::default();
-    scope.functions = parse_generalized_functions(items, &info.namespace)?;
+
+    if TODO(config.rust_input_namespace_pack) {
+        scope.functions = parse_generalized_functions(items, &info.namespace)?;
+    }
 
     for item in items.iter() {
         parse_syn_item(item, &mut scope, &info.namespace, config)?;
