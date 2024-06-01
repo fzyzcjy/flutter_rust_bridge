@@ -40,11 +40,11 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for EnumRefWireRustCodecDcoGenera
 }
 
 pub(super) fn generate_enum_access_object_core(
-    ir: &MirTypeEnumRef,
+    mir: &MirTypeEnumRef,
     obj: String,
     context: WireRustCodecDcoGeneratorContext,
 ) -> String {
-    let src = ir.get(context.mir_pack);
+    let src = mir.get(context.mir_pack);
     match &src.wrapper_name {
         Some(_) => format!("{obj}.0"),
         None => obj,

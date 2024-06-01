@@ -114,8 +114,8 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for PrimitiveListWireRustCodecCst
     }
 }
 
-fn rust_web_wire_type(ir: &MirTypePrimitiveList) -> &str {
-    match &ir.primitive {
+fn rust_web_wire_type(mir: &MirTypePrimitiveList) -> &str {
+    match &mir.primitive {
         MirTypePrimitive::U8 => "flutter_rust_bridge::for_generated::js_sys::Uint8Array",
         MirTypePrimitive::I8 => "flutter_rust_bridge::for_generated::js_sys::Int8Array",
         MirTypePrimitive::U16 => "flutter_rust_bridge::for_generated::js_sys::Uint16Array",

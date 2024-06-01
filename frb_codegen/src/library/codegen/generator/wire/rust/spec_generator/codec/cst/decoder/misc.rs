@@ -29,11 +29,11 @@ pub(crate) fn generate_class_from_fields(
 pub(super) const JS_VALUE: &str = "flutter_rust_bridge::for_generated::wasm_bindgen::JsValue";
 
 pub(super) fn rust_wire_type_add_prefix_or_js_value<T: MirTypeTrait>(
-    ir: &T,
+    mir: &T,
     target: Target,
 ) -> String {
     match target {
-        Target::Io => format!("wire_cst_{}", ir.safe_ident()),
+        Target::Io => format!("wire_cst_{}", mir.safe_ident()),
         Target::Web => JS_VALUE.into(),
     }
 }

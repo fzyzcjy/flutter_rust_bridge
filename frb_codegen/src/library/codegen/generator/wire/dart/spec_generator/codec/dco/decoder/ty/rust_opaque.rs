@@ -11,11 +11,11 @@ impl<'a> WireDartCodecDcoGeneratorDecoderTrait for RustOpaqueWireDartCodecDcoGen
 }
 
 pub(super) fn generalized_rust_opaque_generate_impl_decode_body(
-    ir: MirType,
+    mir: MirType,
     context: WireDartCodecDcoGeneratorContext,
 ) -> String {
     format!(
         "return {}.frbInternalDcoDecode(raw as List<dynamic>);",
-        ApiDartGenerator::new(ir, context.as_api_dart_context()).dart_api_type()
+        ApiDartGenerator::new(mir, context.as_api_dart_context()).dart_api_type()
     )
 }

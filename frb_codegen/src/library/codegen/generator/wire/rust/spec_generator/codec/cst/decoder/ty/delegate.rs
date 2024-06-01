@@ -37,7 +37,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
             // },
             // MirTypeDelegate::StringList => general_list_impl_decode_body(),
             MirTypeDelegate::PrimitiveEnum (inner) => rust_decode_primitive_enum(inner, self.context.mir_pack, "self").into(),
-            MirTypeDelegate::Time(ir) => {
+            MirTypeDelegate::Time(mir) => {
                 if mir == &MirTypeDelegateTime::Duration {
                     return Acc {
                         io: Some("chrono::Duration::microseconds(self)".into()),
@@ -87,8 +87,8 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
             MirTypeDelegate::Array(array) => {
                 self.generate_skip_web_if_jsvalue(generate_decode_array(array))
             },
-            MirTypeDelegate::Map(ir) => self.generate_skip_web_if_jsvalue(generate_decode_map(ir)),
-            MirTypeDelegate::Set(ir) => self.generate_skip_web_if_jsvalue(generate_decode_set(ir)),
+            MirTypeDelegate::Map(mir) => self.generate_skip_web_if_jsvalue(generate_decode_map(mir)),
+            MirTypeDelegate::Set(mir) => self.generate_skip_web_if_jsvalue(generate_decode_set(mir)),
             MirTypeDelegate::StreamSink(_) => Acc {
                 web: Some("StreamSink::deserialize(self)".into()),
                 io: Some("let raw: String = self.cst_decode(); StreamSink::deserialize(raw)".into()),
@@ -122,7 +122,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
             // MirTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
             //     "flutter_rust_bridge::ZeroCopyBuffer(self.cst_decode())".into()
             // }
-            MirTypeDelegate::Time(ir) => match mir {
+            MirTypeDelegate::Time(mir) => match mir {
                 MirTypeDelegateTime::Duration => "chrono::Duration::milliseconds(CstDecode::<i64>::cst_decode(self))".into(),
                 _ => "CstDecode::<i64>::cst_decode(self).cst_decode()".into(),
             },
@@ -135,8 +135,8 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
             MirTypeDelegate::Backtrace | MirTypeDelegate::AnyhowException => "unimplemented!()".into(),
             MirTypeDelegate::Array(array) => generate_decode_array(array)
                 .into(),
-            MirTypeDelegate::Map(ir) => generate_decode_map(ir).into(),
-            MirTypeDelegate::Set(ir) => generate_decode_set(ir).into(),
+            MirTypeDelegate::Map(mir) => generate_decode_map(mir).into(),
+            MirTypeDelegate::Set(mir) => generate_decode_set(mir).into(),
             MirTypeDelegate::StreamSink(_) => "StreamSink::deserialize(self.as_string().expect(\"should be a string\"))".into(),
             MirTypeDelegate::BigPrimitive(_) => "CstDecode::<String>::cst_decode(self).parse().unwrap()".into(),
             MirTypeDelegate::RustAutoOpaqueExplicit(_) =>
@@ -187,17 +187,17 @@ fn generate_decode_array(array: &MirTypeDelegateArray) -> String {
     )
 }
 
-fn generate_decode_map(ir: &MirTypeDelegateMap) -> String {
+fn generate_decode_map(mir: &MirTypeDelegateMap) -> String {
     format!(
         "let vec: Vec<({}, {})> = self.cst_decode(); vec.into_iter().collect()",
-        ir.key.rust_api_type(),
-        ir.value.rust_api_type(),
+        mir.key.rust_api_type(),
+        mir.value.rust_api_type(),
     )
 }
 
-fn generate_decode_set(ir: &MirTypeDelegateSet) -> String {
+fn generate_decode_set(mir: &MirTypeDelegateSet) -> String {
     format!(
         "let vec: Vec<{}> = self.cst_decode(); vec.into_iter().collect()",
-        ir.inner.rust_api_type()
+        mir.inner.rust_api_type()
     )
 }

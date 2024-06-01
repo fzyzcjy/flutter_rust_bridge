@@ -27,7 +27,7 @@ const EXTERNAL_SIZE_TYPE: MirType = MirType::Primitive(MirTypePrimitive::I32);
 
 pub(super) fn generate_generalized_rust_opaque_decode(
     lang: &Lang,
-    ir: MirType,
+    mir: MirType,
     codec: RustOpaqueCodecMode,
     context: CodecSseTyContext,
 ) -> String {
@@ -35,7 +35,7 @@ pub(super) fn generate_generalized_rust_opaque_decode(
         Lang::DartLang(_) => {
             format!(
                 "return {}.frbInternalSseDecode({}, {});",
-                ApiDartGenerator::new(ir, context.as_api_dart_context()).dart_api_type(),
+                ApiDartGenerator::new(mir, context.as_api_dart_context()).dart_api_type(),
                 lang.call_decode(&MirTypeRustOpaque::DELEGATE_TYPE),
                 lang.call_decode(&EXTERNAL_SIZE_TYPE),
             )

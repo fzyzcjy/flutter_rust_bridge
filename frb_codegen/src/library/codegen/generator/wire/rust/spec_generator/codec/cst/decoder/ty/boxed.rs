@@ -23,7 +23,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for BoxedWireRustCodecCstGenerato
                     "unsafe {{ {extra} flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }}",
                     extra = if exist_in_real_api { "" } else { "*" }
                 )),
-                (Io | Web, ir) if ir.is_array() => Some(format!(
+                (Io | Web, mir) if mir.is_array() => Some(format!(
                     "CstDecode::<{}>::cst_decode(self).into()",
                     box_inner.rust_api_type()
                 )),

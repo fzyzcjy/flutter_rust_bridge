@@ -164,9 +164,9 @@ impl MirFuncOwnerInfoMethod {
             MirType::StructRef(ty) => ty.ident.0.clone(),
             MirType::EnumRef(ty) => ty.ident.0.clone(),
             MirType::Delegate(MirTypeDelegate::PrimitiveEnum(MirTypeDelegatePrimitiveEnum {
-                ir,
+                mir,
                 ..
-            })) => ir.ident.0.clone(),
+            })) => mir.ident.0.clone(),
             MirType::RustAutoOpaqueImplicit(ty) => {
                 NamespacedName::new(ty.self_namespace().unwrap(), ty.rust_api_type())
             }

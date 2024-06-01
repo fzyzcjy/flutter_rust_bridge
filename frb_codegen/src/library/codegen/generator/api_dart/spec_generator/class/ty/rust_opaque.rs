@@ -61,7 +61,7 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
 }
 
 fn compute_api_method_query_name(
-    ir: &MirTypeRustOpaque,
+    mir: &MirTypeRustOpaque,
     _context: ApiDartGeneratorContext,
 ) -> String {
     lazy_static! {
@@ -69,5 +69,5 @@ fn compute_api_method_query_name(
             Regex::new(r"^flutter_rust_bridge::for_generated::RustAutoOpaqueInner<(.*)>$").unwrap();
     }
 
-    FILTER.replace_all(&ir.inner.0, "$1").to_string()
+    FILTER.replace_all(&mir.inner.0, "$1").to_string()
 }

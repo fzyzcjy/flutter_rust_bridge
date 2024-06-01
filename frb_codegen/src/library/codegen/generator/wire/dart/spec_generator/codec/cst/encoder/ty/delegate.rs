@@ -79,7 +79,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
             MirTypeDelegate::PrimitiveEnum(MirTypeDelegatePrimitiveEnum { ref repr, .. }) => {
                 format!("return cst_encode_{}(raw.index);", repr.safe_ident()).into()
             }
-            MirTypeDelegate::Time(ir) => match mir {
+            MirTypeDelegate::Time(mir) => match mir {
                 MirTypeDelegateTime::Utc
                 | MirTypeDelegateTime::Local
                 | MirTypeDelegateTime::Naive => Acc {
@@ -120,15 +120,15 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
                 "return cst_encode_{}(raw.entries.map((e) => (e.key, e.value)).toList());",
                 self.mir.get_delegate().safe_ident()
             ))),
-            MirTypeDelegate::Set(ir) => Acc::distribute(Some(format!(
+            MirTypeDelegate::Set(mir) => Acc::distribute(Some(format!(
                 "return cst_encode_{}({});",
                 self.mir.get_delegate().safe_ident(),
-                generate_set_to_list(ir, self.context.as_api_dart_context(), "raw"),
+                generate_set_to_list(mir, self.context.as_api_dart_context(), "raw"),
             ))),
-            MirTypeDelegate::StreamSink(ir) => Acc::distribute(Some(format!(
+            MirTypeDelegate::StreamSink(mir) => Acc::distribute(Some(format!(
                 "return cst_encode_{}({});",
                 self.mir.get_delegate().safe_ident(),
-                generate_stream_sink_setup_and_serialize(ir, "raw")
+                generate_stream_sink_setup_and_serialize(mir, "raw")
             ))),
             MirTypeDelegate::BigPrimitive(_) => Acc::distribute(Some(
                 "return cst_encode_String(raw.toString());".to_string(),

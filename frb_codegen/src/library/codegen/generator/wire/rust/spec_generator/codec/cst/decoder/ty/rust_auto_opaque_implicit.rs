@@ -28,13 +28,13 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait
     }
 }
 
-fn generate_decode(ir: &MirTypeRustAutoOpaqueImplicit) -> Option<String> {
-    if ir.ownership_mode == OwnershipMode::Owned {
+fn generate_decode(mir: &MirTypeRustAutoOpaqueImplicit) -> Option<String> {
+    if mir.ownership_mode == OwnershipMode::Owned {
         let inner = format!(
             "CstDecode::<{}>::cst_decode(self)",
-            ir.inner.rust_api_type()
+            mir.inner.rust_api_type()
         );
-        Some(generate_decode_rust_auto_opaque(ir, &inner))
+        Some(generate_decode_rust_auto_opaque(mir, &inner))
     } else {
         None
     }

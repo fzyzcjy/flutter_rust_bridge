@@ -45,20 +45,20 @@ impl<'a> WireDartCodecDcoGeneratorDecoderTrait for DelegateWireDartCodecDcoGener
             // MirTypeDelegate::StringList => {
             //     "return (raw as List<dynamic>).cast<String>();".to_owned()
             // }
-            MirTypeDelegate::PrimitiveEnum(MirTypeDelegatePrimitiveEnum { ir, .. }) => {
+            MirTypeDelegate::PrimitiveEnum(MirTypeDelegatePrimitiveEnum { mir, .. }) => {
                 format!(
                     "return {}.values[raw as int];",
-                    ApiDartGenerator::new(ir.clone(), self.context.as_api_dart_context())
+                    ApiDartGenerator::new(mir.clone(), self.context.as_api_dart_context())
                         .dart_api_type()
                 ) // here `as int` is neccessary in strict dynamic mode
             }
-            MirTypeDelegate::Time(ir) => {
+            MirTypeDelegate::Time(mir) => {
                 if mir == &MirTypeDelegateTime::Duration {
                     "return dcoDecodeDuration(dco_decode_i_64(raw).toInt());".to_owned()
                 } else {
                     format!(
                         "return dcoDecodeTimestamp(ts: dco_decode_i_64(raw).toInt(), isUtc: {is_utc});",
-                        is_utc = matches!(ir, MirTypeDelegateTime::Naive | MirTypeDelegateTime::Utc)
+                        is_utc = matches!(mir, MirTypeDelegateTime::Naive | MirTypeDelegateTime::Utc)
                     )
                 }
             }
@@ -85,7 +85,7 @@ impl<'a> WireDartCodecDcoGeneratorDecoderTrait for DelegateWireDartCodecDcoGener
             MirTypeDelegate::BigPrimitive(_) => {
                 "return BigInt.parse(raw);".to_owned()
             }
-            MirTypeDelegate::RustAutoOpaqueExplicit(ir) => format!(r"return dco_decode_{}(raw);", ir.inner.safe_ident())
+            MirTypeDelegate::RustAutoOpaqueExplicit(mir) => format!(r"return dco_decode_{}(raw);", mir.inner.safe_ident())
         }
     }
 }

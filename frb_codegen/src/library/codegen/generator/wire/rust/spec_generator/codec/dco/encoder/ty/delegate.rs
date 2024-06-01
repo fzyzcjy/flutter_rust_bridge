@@ -14,12 +14,13 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for DelegateWireRustCodecDcoGener
     // frb-coverage:ignore-start
     fn generate_impl_into_dart(&self) -> Option<String> {
         // frb-coverage:ignore-end
-        if let MirTypeDelegate::PrimitiveEnum(MirTypeDelegatePrimitiveEnum { ir, .. }) = &self.mir {
-            let src = ir.get(self.context.mir_pack);
+        if let MirTypeDelegate::PrimitiveEnum(MirTypeDelegatePrimitiveEnum { mir, .. }) = &self.mir
+        {
+            let src = mir.get(self.context.mir_pack);
             let (name, self_path) =
                 parse_wrapper_name_into_dart_name_and_self_path(&src.name, &src.wrapper_name);
 
-            let self_ref = generate_enum_access_object_core(ir, "self".to_owned(), self.context);
+            let self_ref = generate_enum_access_object_core(mir, "self".to_owned(), self.context);
             let variants = src
                 .variants()
                 .iter()

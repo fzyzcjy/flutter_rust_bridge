@@ -66,8 +66,8 @@ fn parse_auto_accessors_of_struct(
 
     let ty_struct_ref = TypeParserWithContext::new(type_parser, &context)
         .parse_type_path_data_struct(&(&struct_name.name, &[]), Some(false));
-    let ty_struct_ident = if let Ok(Some(MirType::StructRef(ir))) = ty_struct_ref {
-        ir.ident
+    let ty_struct_ident = if let Ok(Some(MirType::StructRef(mir))) = ty_struct_ref {
+        mir.ident
     } else {
         return Ok(vec![]);
     };

@@ -43,7 +43,7 @@ pub enum MirTypeDelegateArrayMode {
 }
 
 pub struct MirTypeDelegatePrimitiveEnum {
-    pub(crate) ir: MirTypeEnumRef,
+    pub(crate) mir: MirTypeEnumRef,
     /// Allows for `#[repr]`'s other than [i32]
     pub(crate) repr: MirTypePrimitive,
 }
@@ -93,7 +93,7 @@ impl MirTypeTrait for MirTypeDelegate {
 
         #[allow(clippy::single_match)]
         match self {
-            Self::StreamSink(ir) => ir.inner.visit_types(f, mir_context),
+            Self::StreamSink(mir) => mir.inner.visit_types(f, mir_context),
             // ... others
             _ => {}
         }
@@ -108,23 +108,23 @@ impl MirTypeTrait for MirTypeDelegate {
             // MirTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
             //     "ZeroCopyBuffer_".to_owned() + &self.get_delegate().safe_ident()
             // }
-            MirTypeDelegate::PrimitiveEnum(ir) => ir.mir.safe_ident(),
-            MirTypeDelegate::Time(ir) => format!("Chrono_{}", ir),
-            // MirTypeDelegate::TimeList(ir) => format!("Chrono_{}List", ir),
+            MirTypeDelegate::PrimitiveEnum(mir) => mir.mir.safe_ident(),
+            MirTypeDelegate::Time(mir) => format!("Chrono_{}", mir),
+            // MirTypeDelegate::TimeList(mir) => format!("Chrono_{}List", mir),
             MirTypeDelegate::Uuid => "Uuid".to_owned(),
             // MirTypeDelegate::Uuids => "Uuids".to_owned(),
             MirTypeDelegate::Backtrace => "Backtrace".to_owned(),
             MirTypeDelegate::AnyhowException => "AnyhowException".to_owned(),
-            MirTypeDelegate::Map(ir) => {
-                format!("Map_{}_{}", ir.key.safe_ident(), ir.value.safe_ident())
+            MirTypeDelegate::Map(mir) => {
+                format!("Map_{}_{}", mir.key.safe_ident(), mir.value.safe_ident())
             }
-            MirTypeDelegate::Set(ir) => format!("Set_{}", ir.inner.safe_ident()),
-            MirTypeDelegate::StreamSink(ir) => {
-                format!("StreamSink_{}_{}", ir.inner.safe_ident(), ir.codec)
+            MirTypeDelegate::Set(mir) => format!("Set_{}", mir.inner.safe_ident()),
+            MirTypeDelegate::StreamSink(mir) => {
+                format!("StreamSink_{}_{}", mir.inner.safe_ident(), mir.codec)
             }
-            MirTypeDelegate::BigPrimitive(ir) => ir.to_string(),
-            MirTypeDelegate::RustAutoOpaqueExplicit(ir) => {
-                format!("AutoExplicit_{}", ir.inner.safe_ident())
+            MirTypeDelegate::BigPrimitive(mir) => mir.to_string(),
+            MirTypeDelegate::RustAutoOpaqueExplicit(mir) => {
+                format!("AutoExplicit_{}", mir.inner.safe_ident())
             }
         }
     }
@@ -143,17 +143,17 @@ impl MirTypeTrait for MirTypeDelegate {
             //         self.get_delegate().rust_api_type()
             //     )
             // }
-            MirTypeDelegate::PrimitiveEnum(MirTypeDelegatePrimitiveEnum { ir, .. }) => {
-                ir.rust_api_type()
+            MirTypeDelegate::PrimitiveEnum(MirTypeDelegatePrimitiveEnum { mir, .. }) => {
+                mir.rust_api_type()
             }
-            MirTypeDelegate::Time(ir) => match mir {
+            MirTypeDelegate::Time(mir) => match mir {
                 MirTypeDelegateTime::Naive => "chrono::NaiveDateTime",
                 MirTypeDelegateTime::Local => "chrono::DateTime::<chrono::Local>",
                 MirTypeDelegateTime::Utc => "chrono::DateTime::<chrono::Utc>",
                 MirTypeDelegateTime::Duration => "chrono::Duration",
             }
             .to_owned(),
-            // MirTypeDelegate::TimeList(ir) => match mir {
+            // MirTypeDelegate::TimeList(mir) => match mir {
             //     MirTypeDelegateTime::Naive => "Vec<chrono::NaiveDateTime>",
             //     MirTypeDelegateTime::Local => "Vec<chrono::DateTime::<chrono::Local>>",
             //     MirTypeDelegateTime::Utc => "Vec<chrono::DateTime::<chrono::Utc>>",
@@ -166,27 +166,27 @@ impl MirTypeTrait for MirTypeDelegate {
             MirTypeDelegate::AnyhowException => {
                 "flutter_rust_bridge::for_generated::anyhow::Error".to_owned()
             }
-            MirTypeDelegate::Map(ir) => format!(
+            MirTypeDelegate::Map(mir) => format!(
                 "std::collections::HashMap<{}, {}>",
-                ir.key.rust_api_type(),
-                ir.value.rust_api_type()
+                mir.key.rust_api_type(),
+                mir.value.rust_api_type()
             ),
-            MirTypeDelegate::Set(ir) => {
-                format!("std::collections::HashSet<{}>", ir.inner.rust_api_type())
+            MirTypeDelegate::Set(mir) => {
+                format!("std::collections::HashSet<{}>", mir.inner.rust_api_type())
             }
-            MirTypeDelegate::StreamSink(ir) => {
+            MirTypeDelegate::StreamSink(mir) => {
                 format!(
                     "StreamSink<{},flutter_rust_bridge::for_generated::{codec}Codec>",
-                    ir.inner.rust_api_type(),
-                    codec = ir.codec,
+                    mir.inner.rust_api_type(),
+                    codec = mir.codec,
                 )
             }
-            MirTypeDelegate::BigPrimitive(ir) => match mir {
+            MirTypeDelegate::BigPrimitive(mir) => match mir {
                 MirTypeDelegateBigPrimitive::I128 => "i128".to_owned(),
                 MirTypeDelegateBigPrimitive::U128 => "u128".to_owned(),
             },
-            MirTypeDelegate::RustAutoOpaqueExplicit(ir) => {
-                format!("RustAutoOpaque{}<{}>", ir.inner.codec, ir.raw.string)
+            MirTypeDelegate::RustAutoOpaqueExplicit(mir) => {
+                format!("RustAutoOpaque{}<{}>", mir.inner.codec, mir.raw.string)
             }
         }
     }
@@ -248,13 +248,13 @@ impl MirTypeDelegate {
             // }),
             MirTypeDelegate::Backtrace => MirType::Delegate(MirTypeDelegate::String),
             MirTypeDelegate::AnyhowException => MirType::Delegate(MirTypeDelegate::String),
-            MirTypeDelegate::Map(ir) => {
-                mir_list(MirType::Record(ir.element_delegate.clone()), true)
+            MirTypeDelegate::Map(mir) => {
+                mir_list(MirType::Record(mir.element_delegate.clone()), true)
             }
-            MirTypeDelegate::Set(ir) => mir_list(*ir.inner.to_owned(), true),
+            MirTypeDelegate::Set(mir) => mir_list(*mir.inner.to_owned(), true),
             MirTypeDelegate::StreamSink(_) => MirType::Delegate(MirTypeDelegate::String),
             MirTypeDelegate::BigPrimitive(_) => MirType::Delegate(MirTypeDelegate::String),
-            MirTypeDelegate::RustAutoOpaqueExplicit(ir) => MirType::RustOpaque(ir.inner.clone()),
+            MirTypeDelegate::RustAutoOpaqueExplicit(mir) => MirType::RustOpaque(mir.inner.clone()),
         }
     }
 }

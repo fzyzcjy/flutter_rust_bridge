@@ -6,7 +6,7 @@ use crate::codegen::parser::type_parser::{TypeParser, TypeParserParsingContext};
 
 #[allow(clippy::single_match)] // deliberate do so to ensure style consistency
 pub(crate) fn parse_type_maybe_result(
-    ir: &MirType,
+    mir: &MirType,
     type_parser: &mut TypeParser,
     context: &TypeParserParsingContext,
 ) -> anyhow::Result<ResultTypeInfo> {
@@ -24,7 +24,7 @@ pub(crate) fn parse_type_maybe_result(
     }
 
     Ok(ResultTypeInfo {
-        ok_output: ir.clone(),
+        ok_output: mir.clone(),
         error_output: None,
     })
 }

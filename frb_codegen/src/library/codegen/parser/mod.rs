@@ -107,7 +107,7 @@ fn parse_mir_funcs(
 
     let mir_funcs_auto_accessor = parse_auto_accessors(config, src_structs, type_parser)?;
 
-    Ok(concat([ir_funcs_normal, mir_funcs_auto_accessor])
+    Ok(concat([mir_funcs_normal, mir_funcs_auto_accessor])
         .into_iter()
         // to give downstream a stable output
         .sorted_by_cached_key(|func| func.name.clone())

@@ -7,7 +7,7 @@ pub(crate) fn generate_class_extra_body(
     dart_code_of_type: &HashMap<String, String>,
 ) -> String {
     dart_code_of_type
-        .get(&ir_type.safe_ident())
+        .get(&mir_type.safe_ident())
         .cloned()
         .unwrap_or_default()
 }

@@ -30,7 +30,7 @@ pub struct MirStruct {
 
 impl MirTypeStructRef {
     pub fn get<'a>(&self, mir_context: &'a impl MirContext) -> &'a MirStruct {
-        (ir_context.struct_pool().get(&self.ident))
+        (mir_context.struct_pool().get(&self.ident))
             // frb-coverage:ignore-start
             .unwrap_or_else(|| panic!("no entry found for key={:?}", self.ident))
         // frb-coverage:ignore-end

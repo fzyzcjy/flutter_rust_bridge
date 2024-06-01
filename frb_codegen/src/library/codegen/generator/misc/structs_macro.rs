@@ -64,7 +64,7 @@ macro_rules! codegen_generator_structs {
                     // frb-coverage:ignore-start
                     match ty.into() {
                         $(
-                            $name(ir) => Self::$name([<$name $generator_name>]::new(ir, context)),
+                            $name(mir) => Self::$name([<$name $generator_name>]::new(mir, context)),
                         )*
                     }
                     // frb-coverage:ignore-end
@@ -83,13 +83,13 @@ macro_rules! codegen_generator_structs {
             $(
                 #[derive(Debug, Clone)]
                 pub(crate) struct [<$name $generator_name>]<'a> {
-                    pub(crate) ir: [<MirType $name>],
+                    pub(crate) mir: [<MirType $name>],
                     pub(crate) context: [<$generator_name Context>]<'a>,
                 }
 
                 impl<'a> [<$name $generator_name>]<'a> {
-                    pub(crate) fn new(ir: [<MirType $name>], context: [<$generator_name Context>]<'a>) -> Self {
-                        Self { ir, context }
+                    pub(crate) fn new(mir: [<MirType $name>], context: [<$generator_name Context>]<'a>) -> Self {
+                        Self { mir, context }
                     }
                 }
 

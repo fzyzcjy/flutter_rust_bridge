@@ -25,7 +25,7 @@ pub(super) fn general_list_generate_encode(lang: &Lang, mir_inner: &MirType) -> 
         lang.for_loop(
             "item",
             "self",
-            &format!("{};", lang.call_encode(ir_inner, "item")),
+            &format!("{};", lang.call_encode(mir_inner, "item")),
         )
     )
 }
@@ -47,7 +47,7 @@ pub(super) fn general_list_generate_decode(
     let init = match lang {
         Lang::DartLang(_) => format!(
             "<{}>[]",
-            ApiDartGenerator::new(ir_inner.clone(), context.as_api_dart_context()).dart_api_type()
+            ApiDartGenerator::new(mir_inner.clone(), context.as_api_dart_context()).dart_api_type()
         ),
         Lang::RustLang(_) => "vec![]".to_owned(),
     };
@@ -67,7 +67,7 @@ pub(super) fn general_list_generate_decode(
         lang.for_range_loop(
             "idx_",
             "len_",
-            &format!("ans_.{list_push}({});", lang.call_decode(ir_inner))
+            &format!("ans_.{list_push}({});", lang.call_decode(mir_inner))
         ),
     )
 }

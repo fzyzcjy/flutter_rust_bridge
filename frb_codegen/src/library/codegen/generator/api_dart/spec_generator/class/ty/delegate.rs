@@ -10,8 +10,8 @@ use crate::utils::basic_code::DartBasicHeaderCode;
 impl<'a> ApiDartGeneratorClassTrait for DelegateApiDartGenerator<'a> {
     fn generate_class(&self) -> Option<ApiDartGeneratedClass> {
         match &self.mir {
-            MirTypeDelegate::PrimitiveEnum(MirTypeDelegatePrimitiveEnum { ir, .. }) => {
-                EnumRefApiDartGenerator::new(ir.clone(), self.context).generate_class()
+            MirTypeDelegate::PrimitiveEnum(MirTypeDelegatePrimitiveEnum { mir, .. }) => {
+                EnumRefApiDartGenerator::new(mir.clone(), self.context).generate_class()
             }
             MirTypeDelegate::Array(array) => generate_array(array, self.context),
             _ => None,

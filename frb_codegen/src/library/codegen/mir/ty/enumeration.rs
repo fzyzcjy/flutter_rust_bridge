@@ -56,7 +56,7 @@ impl MirTypeTrait for MirTypeEnumRef {
         f: &mut F,
         mir_context: &impl MirContext,
     ) {
-        let enu = self.get(ir_context);
+        let enu = self.get(mir_context);
         for variant in enu.variants() {
             if let MirVariantKind::Struct(st) = &variant.kind {
                 st.fields

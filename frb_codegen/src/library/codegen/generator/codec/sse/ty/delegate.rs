@@ -24,10 +24,10 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 MirTypeDelegate::Map(_) => {
                     "self.entries.map((e) => (e.key, e.value)).toList()".to_owned()
                 }
-                MirTypeDelegate::Set(ir) => {
-                    generate_set_to_list(ir, self.context.as_api_dart_context(), "self")
+                MirTypeDelegate::Set(mir) => {
+                    generate_set_to_list(mir, self.context.as_api_dart_context(), "self")
                 }
-                MirTypeDelegate::Time(ir) => match mir {
+                MirTypeDelegate::Time(mir) => match mir {
                     MirTypeDelegateTime::Utc
                     | MirTypeDelegateTime::Local
                     | MirTypeDelegateTime::Naive => {
@@ -38,8 +38,8 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     }
                 },
                 MirTypeDelegate::Uuid => "self.toBytes()".to_owned(),
-                MirTypeDelegate::StreamSink(ir) => {
-                    generate_stream_sink_setup_and_serialize(ir, "self")
+                MirTypeDelegate::StreamSink(mir) => {
+                    generate_stream_sink_setup_and_serialize(mir, "self")
                 }
                 MirTypeDelegate::BigPrimitive(_) => "self.toString()".to_owned(),
                 MirTypeDelegate::RustAutoOpaqueExplicit(_ir) => "self".to_owned(),
@@ -50,8 +50,8 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 }
                 MirTypeDelegate::String => "self.into_bytes()".to_owned(),
                 MirTypeDelegate::Char => "self.to_string()".to_owned(),
-                MirTypeDelegate::PrimitiveEnum(ir) => {
-                    let src = ir.mir.get(self.context.mir_pack);
+                MirTypeDelegate::PrimitiveEnum(mir) => {
+                    let src = mir.mir.get(self.context.mir_pack);
                     let variants = (src.variants.iter().enumerate())
                         .map(|(idx, variant)| {
                             (
@@ -70,7 +70,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 MirTypeDelegate::AnyhowException => r#"format!("{:?}", self)"#.to_owned(),
                 MirTypeDelegate::Map(_) => "self.into_iter().collect()".to_owned(),
                 MirTypeDelegate::Set(_) => "self.into_iter().collect()".to_owned(),
-                MirTypeDelegate::Time(ir) => match mir {
+                MirTypeDelegate::Time(mir) => match mir {
                     MirTypeDelegateTime::Utc | MirTypeDelegateTime::Local => {
                         "self.timestamp_micros()".to_owned()
                     }
@@ -98,51 +98,53 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
 
     fn generate_decode(&self, lang: &Lang) -> Option<String> {
         let wrapper_expr = match lang {
-            Lang::DartLang(_) => match &self.mir {
-                MirTypeDelegate::Array(_) => format!(
-                    "{}(inner)",
-                    ApiDartGenerator::new(self.mir.clone(), self.context.as_api_dart_context())
-                        .dart_api_type()
-                ),
-                MirTypeDelegate::String => "utf8.decoder.convert(inner)".to_owned(),
-                MirTypeDelegate::Char => "inner".to_owned(),
-                MirTypeDelegate::PrimitiveEnum(inner) => {
-                    format!(
-                        "{}.values[inner]",
-                        ApiDartGenerator::new(
-                            inner.mir.clone(),
-                            self.context.as_api_dart_context()
-                        )
-                        .dart_api_type()
-                    )
-                }
-                MirTypeDelegate::Backtrace => "inner".to_owned(),
-                MirTypeDelegate::AnyhowException => "AnyhowException(inner)".to_owned(),
-                MirTypeDelegate::Map(_) => {
-                    "Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)))".to_owned()
-                }
-                MirTypeDelegate::Set(_) => "Set.from(inner)".to_owned(),
-                MirTypeDelegate::Time(ir) => match mir {
-                    MirTypeDelegateTime::Utc
-                    | MirTypeDelegateTime::Local
-                    | MirTypeDelegateTime::Naive => {
+            Lang::DartLang(_) => {
+                match &self.mir {
+                    MirTypeDelegate::Array(_) => format!(
+                        "{}(inner)",
+                        ApiDartGenerator::new(self.mir.clone(), self.context.as_api_dart_context())
+                            .dart_api_type()
+                    ),
+                    MirTypeDelegate::String => "utf8.decoder.convert(inner)".to_owned(),
+                    MirTypeDelegate::Char => "inner".to_owned(),
+                    MirTypeDelegate::PrimitiveEnum(inner) => {
                         format!(
+                            "{}.values[inner]",
+                            ApiDartGenerator::new(
+                                inner.mir.clone(),
+                                self.context.as_api_dart_context()
+                            )
+                            .dart_api_type()
+                        )
+                    }
+                    MirTypeDelegate::Backtrace => "inner".to_owned(),
+                    MirTypeDelegate::AnyhowException => "AnyhowException(inner)".to_owned(),
+                    MirTypeDelegate::Map(_) => {
+                        "Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)))".to_owned()
+                    }
+                    MirTypeDelegate::Set(_) => "Set.from(inner)".to_owned(),
+                    MirTypeDelegate::Time(mir) => match mir {
+                        MirTypeDelegateTime::Utc
+                        | MirTypeDelegateTime::Local
+                        | MirTypeDelegateTime::Naive => {
+                            format!(
                             "DateTime.fromMicrosecondsSinceEpoch(inner.toInt(), isUtc: {is_utc})",
                             is_utc =
-                                matches!(ir, MirTypeDelegateTime::Naive | MirTypeDelegateTime::Utc),
+                                matches!(mir, MirTypeDelegateTime::Naive | MirTypeDelegateTime::Utc),
                         )
+                        }
+                        MirTypeDelegateTime::Duration => {
+                            "Duration(microseconds: inner.toInt())".to_owned()
+                        }
+                    },
+                    MirTypeDelegate::Uuid => "UuidValue.fromByteList(inner)".to_owned(),
+                    MirTypeDelegate::StreamSink(_) => {
+                        return Some(format!("{};", lang.throw_unreachable("")));
                     }
-                    MirTypeDelegateTime::Duration => {
-                        "Duration(microseconds: inner.toInt())".to_owned()
-                    }
-                },
-                MirTypeDelegate::Uuid => "UuidValue.fromByteList(inner)".to_owned(),
-                MirTypeDelegate::StreamSink(_) => {
-                    return Some(format!("{};", lang.throw_unreachable("")));
+                    MirTypeDelegate::BigPrimitive(_) => "BigInt.parse(inner)".to_owned(),
+                    MirTypeDelegate::RustAutoOpaqueExplicit(_ir) => "inner".to_owned(),
                 }
-                MirTypeDelegate::BigPrimitive(_) => "BigInt.parse(inner)".to_owned(),
-                MirTypeDelegate::RustAutoOpaqueExplicit(_ir) => "inner".to_owned(),
-            },
+            }
             Lang::RustLang(_) => match &self.mir {
                 MirTypeDelegate::Array(_) => {
                     "flutter_rust_bridge::for_generated::from_vec_to_array(inner)".to_owned()
@@ -160,7 +162,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 }
                 MirTypeDelegate::Map(_) => "inner.into_iter().collect()".to_owned(),
                 MirTypeDelegate::Set(_) => "inner.into_iter().collect()".to_owned(),
-                MirTypeDelegate::Time(ir) => {
+                MirTypeDelegate::Time(mir) => {
                     let naive = "chrono::DateTime::from_timestamp_micros(inner).expect(\"invalid or out-of-range datetime\").naive_utc()";
                     let utc = format!("chrono::DateTime::<chrono::Utc>::from_naive_utc_and_offset({naive}, chrono::Utc)");
                     match mir {
@@ -231,21 +233,21 @@ pub(crate) fn rust_decode_primitive_enum(
     )
 }
 
-pub(crate) fn generate_unimplemented_in_sse_message(ir: &MirType) -> String {
+pub(crate) fn generate_unimplemented_in_sse_message(mir: &MirType) -> String {
     format!("The type {mir:?} is not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue")
 }
 
 pub(crate) fn generate_set_to_list(
-    ir: &MirTypeDelegateSet,
+    mir: &MirTypeDelegateSet,
     context: ApiDartGeneratorContext,
     inner: &str,
 ) -> String {
     let mut ans = format!("{inner}.toList()");
-    if let Primitive(_) = &*ir.inner {
+    if let Primitive(_) = &*mir.inner {
         ans = format!(
             "{}.fromList({ans})",
             ApiDartGenerator::new(
-                MirTypeDelegate::Set(ir.to_owned()).get_delegate().clone(),
+                MirTypeDelegate::Set(mir.to_owned()).get_delegate().clone(),
                 context
             )
             .dart_api_type()
@@ -255,12 +257,12 @@ pub(crate) fn generate_set_to_list(
 }
 
 pub(crate) fn generate_stream_sink_setup_and_serialize(
-    ir: &MirTypeDelegateStreamSink,
+    mir: &MirTypeDelegateStreamSink,
     var_name: &str,
 ) -> String {
-    let codec = ir.codec;
+    let codec = mir.codec;
     let codec_lower = codec.to_string().to_case(Case::Snake);
-    let inner_ty = ir.inner.safe_ident();
+    let inner_ty = mir.inner.safe_ident();
 
     let codec_code = format!(
         "{codec}Codec(decodeSuccessData: {codec_lower}_decode_{inner_ty}, decodeErrorData: null)"

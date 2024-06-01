@@ -153,7 +153,7 @@ impl EnumOrStructParser<MirEnumIdent, MirEnum, HirEnum, ItemEnum>
             } else {
                 Delegate(MirTypeDelegate::PrimitiveEnum(
                     MirTypeDelegatePrimitiveEnum {
-                        ir: enum_ref,
+                        mir: enum_ref,
                         // TODO(Desdaemon): Parse #[repr] from enum
                         repr: MirTypePrimitive::I32,
                     },

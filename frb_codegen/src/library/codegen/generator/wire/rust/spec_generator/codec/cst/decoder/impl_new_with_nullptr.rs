@@ -20,12 +20,12 @@ pub(crate) fn generate_impl_new_with_nullptr(
 }
 
 pub(crate) fn generate_impl_new_with_nullptr_code_block(
-    ir: impl Into<MirType>,
+    mir: impl Into<MirType>,
     context: WireRustCodecCstGeneratorContext,
     body: &str,
 ) -> String {
     let rust_wire_type =
-        WireRustCodecCstGenerator::new(ir.into(), context).rust_wire_type(Target::Io);
+        WireRustCodecCstGenerator::new(mir.into(), context).rust_wire_type(Target::Io);
 
     format!(
         "impl NewWithNullPtr for {rust_wire_type} {{

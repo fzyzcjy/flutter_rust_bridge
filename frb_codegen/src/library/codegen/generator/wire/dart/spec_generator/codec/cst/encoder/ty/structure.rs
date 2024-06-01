@@ -33,18 +33,18 @@ impl<'a> StructRefWireDartCodecCstGenerator<'a> {
 }
 
 pub(crate) struct GeneralizedStructGenerator<'a> {
-    ir: MirTypeStructRef,
+    mir: MirTypeStructRef,
     context: WireDartCodecCstGeneratorContext<'a>,
     mode: StructOrRecord,
 }
 
 impl<'a> GeneralizedStructGenerator<'a> {
     pub(crate) fn new(
-        ir: MirTypeStructRef,
+        mir: MirTypeStructRef,
         context: WireDartCodecCstGeneratorContext<'a>,
         mode: StructOrRecord,
     ) -> Self {
-        Self { ir, context, mode }
+        Self { mir, context, mode }
     }
 
     pub(crate) fn generate_encode_func_body(&self) -> Acc<Option<String>> {

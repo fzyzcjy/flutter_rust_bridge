@@ -54,10 +54,10 @@ impl<'a> ApiDartGeneratorInfoTrait for DelegateApiDartGenerator<'a> {
             // MirTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
             //     ApiDartGenerator::new(self.mir.get_delegate(), self.context).dart_api_type()
             // }
-            MirTypeDelegate::PrimitiveEnum(MirTypeDelegatePrimitiveEnum { ir, .. }) => {
-                ApiDartGenerator::new(MirType::EnumRef(ir.clone()), self.context).dart_api_type()
+            MirTypeDelegate::PrimitiveEnum(MirTypeDelegatePrimitiveEnum { mir, .. }) => {
+                ApiDartGenerator::new(MirType::EnumRef(mir.clone()), self.context).dart_api_type()
             }
-            MirTypeDelegate::Time(ir) => match mir {
+            MirTypeDelegate::Time(mir) => match mir {
                 MirTypeDelegateTime::Local
                 | MirTypeDelegateTime::Utc
                 | MirTypeDelegateTime::Naive => "DateTime".to_string(),
@@ -71,22 +71,22 @@ impl<'a> ApiDartGeneratorInfoTrait for DelegateApiDartGenerator<'a> {
             // MirTypeDelegate::Uuids => "List<UuidValue>".to_owned(),
             MirTypeDelegate::Backtrace => "String".to_string(),
             MirTypeDelegate::AnyhowException => "AnyhowException".to_string(),
-            MirTypeDelegate::Map(ir) => format!(
+            MirTypeDelegate::Map(mir) => format!(
                 "Map<{}, {}>",
-                ApiDartGenerator::new(*ir.key.clone(), self.context).dart_api_type(),
-                ApiDartGenerator::new(*ir.value.clone(), self.context).dart_api_type(),
+                ApiDartGenerator::new(*mir.key.clone(), self.context).dart_api_type(),
+                ApiDartGenerator::new(*mir.value.clone(), self.context).dart_api_type(),
             ),
-            MirTypeDelegate::Set(ir) => format!(
+            MirTypeDelegate::Set(mir) => format!(
                 "Set<{}>",
-                ApiDartGenerator::new(*ir.inner.clone(), self.context).dart_api_type(),
+                ApiDartGenerator::new(*mir.inner.clone(), self.context).dart_api_type(),
             ),
-            MirTypeDelegate::StreamSink(ir) => format!(
+            MirTypeDelegate::StreamSink(mir) => format!(
                 "RustStreamSink<{}>",
-                ApiDartGenerator::new(*ir.inner.clone(), self.context).dart_api_type(),
+                ApiDartGenerator::new(*mir.inner.clone(), self.context).dart_api_type(),
             ),
             MirTypeDelegate::BigPrimitive(_) => "BigInt".to_owned(),
-            MirTypeDelegate::RustAutoOpaqueExplicit(ir) => {
-                ApiDartGenerator::new(ir.inner.clone(), self.context).dart_api_type()
+            MirTypeDelegate::RustAutoOpaqueExplicit(mir) => {
+                ApiDartGenerator::new(mir.inner.clone(), self.context).dart_api_type()
             }
         }
     }
