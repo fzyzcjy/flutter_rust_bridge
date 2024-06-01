@@ -1,4 +1,6 @@
 use crate::codegen::parser::attribute_parser::FrbAttributes;
+use anyhow::Context;
+use itertools::Itertools;
 use proc_macro2::Ident;
 use syn::{Attribute, PathArguments};
 

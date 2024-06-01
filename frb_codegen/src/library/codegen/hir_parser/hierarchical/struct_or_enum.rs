@@ -4,6 +4,7 @@ use crate::codegen::hir_parser::hierarchical::mirror_ident::{
     parse_mirror_ident, ParseMirrorIdentOutput,
 };
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
+use itertools::Itertools;
 use log::debug;
 use proc_macro2::Ident;
 use syn::{Attribute, ItemEnum, ItemStruct};

@@ -4,7 +4,7 @@ use syn::Type;
 
 #[derive(Clone, Debug, Serialize)]
 pub struct HirTypeAlias {
-    pub(super) ident: String,
+    pub(crate) ident: String,
     #[serde(serialize_with = "serialize_syn")]
-    pub(super) target: Type,
+    pub(crate) target: Type,
 }

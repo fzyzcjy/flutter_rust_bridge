@@ -51,13 +51,10 @@ fn parse_syn_item_mod(
     item_mod: &ItemMod,
     namespace: &Namespace,
 ) -> anyhow::Result<Option<HirModule>> {
-    // TODO module_path := module_path + ident
-    // let ident = item_mod.ident.clone();
-
     Ok(if let Some((_, items)) = &item_mod.content {
         let info = HirModuleInfo {
-            visibility: item_mod.vis.into(),
-            namespace: namespace.join(item_mod.ident),
+            visibility: (&item_mod.vis).into(),
+            namespace: namespace.join(&item_mod.ident.to_string()),
         };
         Some(parse_module(items, info)?)
     } else {
