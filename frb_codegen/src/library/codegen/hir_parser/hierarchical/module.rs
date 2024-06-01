@@ -4,14 +4,6 @@ use crate::codegen::parser::reader::CachedRustReader;
 use log::debug;
 
 /// Maps out modules, structs and enums within the scope of this module
-//
-// Things this doesn't currently support that it might need to later:
-//
-// - Import parsing is unfinished and so is currently disabled
-// - When import parsing is enabled:
-//     - Import renames (use a::b as c) - these are silently ignored
-//     - Imports that start with two colons (use ::a::b) - these are also silently ignored
-
 pub(crate) fn parse_module(
     info: ModuleInfo,
     cached_rust_reader: &mut CachedRustReader,
