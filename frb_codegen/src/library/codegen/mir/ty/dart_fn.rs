@@ -20,14 +20,14 @@ impl MirTypeTrait for MirTypeDartFn {
     fn visit_children_types<F: FnMut(&MirType) -> bool>(
         &self,
         f: &mut F,
-        ir_context: &impl MirContext,
+        mir_context: &impl MirContext,
     ) {
-        self.get_delegate().visit_types(f, ir_context);
+        self.get_delegate().visit_types(f, mir_context);
 
         for x in &self.inputs {
-            x.visit_types(f, ir_context);
+            x.visit_types(f, mir_context);
         }
-        self.output.visit_types(f, ir_context);
+        self.output.visit_types(f, mir_context);
     }
 
     fn safe_ident(&self) -> String {
@@ -58,10 +58,10 @@ impl MirDartFnOutput {
     pub(crate) fn visit_types<F: FnMut(&MirType) -> bool>(
         &self,
         f: &mut F,
-        ir_context: &impl MirContext,
+        mir_context: &impl MirContext,
     ) {
-        self.normal.visit_types(f, ir_context);
-        self.error.visit_types(f, ir_context);
+        self.normal.visit_types(f, mir_context);
+        self.error.visit_types(f, mir_context);
     }
 
     pub(crate) fn safe_ident(&self) -> String {

@@ -23,9 +23,9 @@ impl MirTypeTrait for MirTypeRustAutoOpaqueImplicit {
     fn visit_children_types<F: FnMut(&MirType) -> bool>(
         &self,
         f: &mut F,
-        ir_context: &impl MirContext,
+        mir_context: &impl MirContext,
     ) {
-        MirType::RustOpaque(self.inner.clone()).visit_types(f, ir_context)
+        MirType::RustOpaque(self.inner.clone()).visit_types(f, mir_context)
     }
 
     fn safe_ident(&self) -> String {

@@ -14,10 +14,10 @@ impl MirTypeTrait for MirTypeRecord {
     fn visit_children_types<F: FnMut(&MirType) -> bool>(
         &self,
         f: &mut F,
-        ir_context: &impl MirContext,
+        mir_context: &impl MirContext,
     ) {
         for ty in self.values.iter() {
-            ty.visit_types(f, ir_context)
+            ty.visit_types(f, mir_context)
         }
     }
 

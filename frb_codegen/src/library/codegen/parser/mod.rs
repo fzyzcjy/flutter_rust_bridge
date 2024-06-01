@@ -47,7 +47,7 @@ pub(crate) fn parse(
         hir_flat_crate.types.clone(),
     );
 
-    let ir_funcs = parse_mir_funcs(
+    let mir_funcs = parse_mir_funcs(
         config,
         &src_fns_interest,
         &mut type_parser,
@@ -60,7 +60,7 @@ pub(crate) fn parse(
     let (struct_pool, enum_pool, dart_code_of_type) = type_parser.consume();
 
     let mut ans = MirPack {
-        funcs: ir_funcs,
+        funcs: mir_funcs,
         struct_pool,
         enum_pool,
         dart_code_of_type,
@@ -89,7 +89,7 @@ fn parse_mir_funcs(
 ) -> anyhow::Result<Vec<MirFunc>> {
     let mut function_parser = FunctionParser::new(type_parser);
 
-    let ir_funcs_normal = src_fns
+    let mir_funcs_normal = src_fns
         .iter()
         .map(|f| {
             function_parser.parse_function(
@@ -105,9 +105,9 @@ fn parse_mir_funcs(
         .flatten()
         .collect_vec();
 
-    let ir_funcs_auto_accessor = parse_auto_accessors(config, src_structs, type_parser)?;
+    let mir_funcs_auto_accessor = parse_auto_accessors(config, src_structs, type_parser)?;
 
-    Ok(concat([ir_funcs_normal, ir_funcs_auto_accessor])
+    Ok(concat([ir_funcs_normal, mir_funcs_auto_accessor])
         .into_iter()
         // to give downstream a stable output
         .sorted_by_cached_key(|func| func.name.clone())

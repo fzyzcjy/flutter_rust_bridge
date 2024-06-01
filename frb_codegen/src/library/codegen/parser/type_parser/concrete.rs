@@ -69,7 +69,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 }
             },
 
-            ("Vec", [element]) => ir_list(self.parse_type(element)?, true),
+            ("Vec", [element]) => mir_list(self.parse_type(element)?, true),
 
             ("HashMap", [key, value]) => {
                 let key  = self.parse_type(key)?;

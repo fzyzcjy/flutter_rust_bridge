@@ -195,7 +195,7 @@ fn maybe_field_wrap_box(mut variants: Vec<MirVariant>, mode: MirEnumMode) -> Vec
         for variant in &mut variants {
             if let MirVariantKind::Struct(st) = &mut variant.kind {
                 for field in &mut st.fields {
-                    ir_type_wrap_box(&mut field.ty);
+                    mir_type_wrap_box(&mut field.ty);
                 }
             }
         }
@@ -204,7 +204,7 @@ fn maybe_field_wrap_box(mut variants: Vec<MirVariant>, mode: MirEnumMode) -> Vec
     variants
 }
 
-fn ir_type_wrap_box(ty: &mut MirType) {
+fn mir_type_wrap_box(ty: &mut MirType) {
     if ty.is_struct_or_enum_or_record() {
         *ty = MirType::Boxed(MirTypeBoxed {
             exist_in_real_api: false,

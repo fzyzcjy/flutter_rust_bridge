@@ -45,11 +45,11 @@ pub enum MirType {
 }
 
 impl MirType {
-    pub fn visit_types<F: FnMut(&MirType) -> bool>(&self, f: &mut F, ir_context: &impl MirContext) {
+    pub fn visit_types<F: FnMut(&MirType) -> bool>(&self, f: &mut F, mir_context: &impl MirContext) {
         if f(self) {
             return;
         }
-        self.visit_children_types(f, ir_context);
+        self.visit_children_types(f, mir_context);
     }
 
     #[inline]
@@ -76,7 +76,7 @@ pub trait MirTypeTrait {
     fn visit_children_types<F: FnMut(&MirType) -> bool>(
         &self,
         f: &mut F,
-        ir_context: &impl MirContext,
+        mir_context: &impl MirContext,
     );
 
     /// A string that can be used as an identifier safely, i.e. without any special characters inside

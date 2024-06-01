@@ -76,7 +76,7 @@ macro_rules! codegen_generator_structs {
             #[enum_dispatch]
             // frb-coverage:ignore-end
             pub(crate) trait [<$generator_name ImplTrait>] {
-                fn ir_type(&self) -> MirType;
+                fn mir_type(&self) -> MirType;
                 fn context(&self) -> [<$generator_name Context>];
             }
 
@@ -94,7 +94,7 @@ macro_rules! codegen_generator_structs {
                 }
 
                 impl<'a> [<$generator_name ImplTrait>] for [<$name $generator_name>]<'a> {
-                    fn ir_type(&self) -> MirType { self.ir.clone().into() }
+                    fn mir_type(&self) -> MirType { self.ir.clone().into() }
                     fn context(&self) -> [<$generator_name Context>] { self.context }
                 }
             )*

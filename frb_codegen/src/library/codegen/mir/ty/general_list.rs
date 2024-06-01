@@ -13,9 +13,9 @@ impl MirTypeTrait for MirTypeGeneralList {
     fn visit_children_types<F: FnMut(&MirType) -> bool>(
         &self,
         f: &mut F,
-        ir_context: &impl MirContext,
+        mir_context: &impl MirContext,
     ) {
-        self.inner.visit_types(f, ir_context);
+        self.inner.visit_types(f, mir_context);
     }
 
     fn safe_ident(&self) -> String {
@@ -27,7 +27,7 @@ impl MirTypeTrait for MirTypeGeneralList {
     }
 }
 
-pub(crate) fn ir_list(inner: MirType, strict_dart_type: bool) -> MirType {
+pub(crate) fn mir_list(inner: MirType, strict_dart_type: bool) -> MirType {
     match inner {
         // Since Dart doesn't have a boolean primitive list like `Uint8List`,
         // we need to convert `Vec<bool>` to a boolean general list in order to achieve the binding.

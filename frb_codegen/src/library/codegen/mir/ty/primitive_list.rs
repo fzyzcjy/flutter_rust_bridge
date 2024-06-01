@@ -12,16 +12,16 @@ impl MirTypeTrait for MirTypePrimitiveList {
     fn visit_children_types<F: FnMut(&MirType) -> bool>(
         &self,
         f: &mut F,
-        ir_context: &impl MirContext,
+        mir_context: &impl MirContext,
     ) {
-        MirType::Primitive(self.primitive.clone()).visit_types(f, ir_context);
+        MirType::Primitive(self.primitive.clone()).visit_types(f, mir_context);
 
         if !self.strict_dart_type {
             MirType::PrimitiveList(MirTypePrimitiveList {
                 strict_dart_type: true,
                 ..self.clone()
             })
-            .visit_types(f, ir_context);
+            .visit_types(f, mir_context);
         }
     }
 

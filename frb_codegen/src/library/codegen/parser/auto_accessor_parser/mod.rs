@@ -109,6 +109,6 @@ fn create_parsing_context(
 }
 
 struct MirFuncAndSanityCheckInfo {
-    ir_func: MirFunc,
+    mir_func: MirFunc,
     sanity_check_hint: Option<auto_accessor_checker::SanityCheckHint>,
 }

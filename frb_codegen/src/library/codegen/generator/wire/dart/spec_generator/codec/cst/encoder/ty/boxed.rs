@@ -10,7 +10,7 @@ use crate::codegen::mir::ty::{MirType, MirTypeTrait};
 
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for BoxedWireDartCodecCstGenerator<'a> {
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {
-        let ir_safe_ident = self.ir.safe_ident();
+        let mir_safe_ident = self.ir.safe_ident();
         let inner_safe_ident = self.ir.inner.safe_ident();
         let empty_struct = is_empty_struct(self);
 

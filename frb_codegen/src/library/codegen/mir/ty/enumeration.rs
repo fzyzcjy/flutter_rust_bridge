@@ -54,14 +54,14 @@ impl MirTypeTrait for MirTypeEnumRef {
     fn visit_children_types<F: FnMut(&MirType) -> bool>(
         &self,
         f: &mut F,
-        ir_context: &impl MirContext,
+        mir_context: &impl MirContext,
     ) {
         let enu = self.get(ir_context);
         for variant in enu.variants() {
             if let MirVariantKind::Struct(st) = &variant.kind {
                 st.fields
                     .iter()
-                    .for_each(|field| field.ty.visit_types(f, ir_context));
+                    .for_each(|field| field.ty.visit_types(f, mir_context));
             }
         }
     }

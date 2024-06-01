@@ -22,7 +22,7 @@ impl<'a> WireDartGeneratorMiscTrait for DartFnWireDartGenerator<'a> {
                 )
             })
             .join("");
-        let ir_safe_ident = self.ir.safe_ident();
+        let mir_safe_ident = self.ir.safe_ident();
         let dart_api_type =
             ApiDartGenerator::new(self.ir.clone(), self.context.as_api_dart_context())
                 .dart_api_type();

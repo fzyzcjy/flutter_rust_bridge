@@ -57,7 +57,7 @@ pub(super) fn parse_auto_accessor_of_field(
         }
     };
 
-    let ir_func = MirFunc {
+    let mir_func = MirFunc {
         name: NamespacedName::new(
             struct_name.namespace.clone(),
             parse_effective_function_name_of_method(&owner),
@@ -89,7 +89,7 @@ pub(super) fn parse_auto_accessor_of_field(
     };
 
     Ok(MirFuncAndSanityCheckInfo {
-        ir_func,
+        mir_func,
         sanity_check_hint: auto_accessor_checker::check_field(struct_name, field),
     })
 }

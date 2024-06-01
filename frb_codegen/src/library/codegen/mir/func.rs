@@ -105,18 +105,18 @@ impl MirFunc {
     pub(crate) fn visit_types<F: FnMut(&MirType) -> bool>(
         &self,
         f: &mut F,
-        ir_context: &impl MirContext,
+        mir_context: &impl MirContext,
     ) {
         // inputs
         for field in &self.inputs {
-            field.inner.ty.visit_types(f, ir_context);
+            field.inner.ty.visit_types(f, mir_context);
         }
 
         // output
-        self.output.normal.visit_types(f, ir_context);
+        self.output.normal.visit_types(f, mir_context);
         let error_output = (self.output.error.as_ref().cloned())
             .unwrap_or(MirType::Primitive(MirTypePrimitive::Unit));
-        error_output.visit_types(f, ir_context);
+        error_output.visit_types(f, mir_context);
 
         // extra (#1838)
         if let MirFuncOwnerInfo::Method(MirFuncOwnerInfoMethod {
@@ -124,7 +124,7 @@ impl MirFunc {
             ..
         }) = &self.owner
         {
-            enum_or_struct_ty.visit_types(f, ir_context);
+            enum_or_struct_ty.visit_types(f, mir_context);
         }
     }
 

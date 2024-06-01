@@ -87,13 +87,13 @@ impl MirTypeTrait for MirTypeDelegate {
     fn visit_children_types<F: FnMut(&MirType) -> bool>(
         &self,
         f: &mut F,
-        ir_context: &impl MirContext,
+        mir_context: &impl MirContext,
     ) {
-        self.get_delegate().visit_types(f, ir_context);
+        self.get_delegate().visit_types(f, mir_context);
 
         #[allow(clippy::single_match)]
         match self {
-            Self::StreamSink(ir) => ir.inner.visit_types(f, ir_context),
+            Self::StreamSink(ir) => ir.inner.visit_types(f, mir_context),
             // ... others
             _ => {}
         }
@@ -248,8 +248,10 @@ impl MirTypeDelegate {
             // }),
             MirTypeDelegate::Backtrace => MirType::Delegate(MirTypeDelegate::String),
             MirTypeDelegate::AnyhowException => MirType::Delegate(MirTypeDelegate::String),
-            MirTypeDelegate::Map(ir) => ir_list(MirType::Record(ir.element_delegate.clone()), true),
-            MirTypeDelegate::Set(ir) => ir_list(*ir.inner.to_owned(), true),
+            MirTypeDelegate::Map(ir) => {
+                mir_list(MirType::Record(ir.element_delegate.clone()), true)
+            }
+            MirTypeDelegate::Set(ir) => mir_list(*ir.inner.to_owned(), true),
             MirTypeDelegate::StreamSink(_) => MirType::Delegate(MirTypeDelegate::String),
             MirTypeDelegate::BigPrimitive(_) => MirType::Delegate(MirTypeDelegate::String),
             MirTypeDelegate::RustAutoOpaqueExplicit(ir) => MirType::RustOpaque(ir.inner.clone()),

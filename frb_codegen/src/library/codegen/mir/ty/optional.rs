@@ -12,9 +12,9 @@ impl MirTypeTrait for MirTypeOptional {
     fn visit_children_types<F: FnMut(&MirType) -> bool>(
         &self,
         f: &mut F,
-        ir_context: &impl MirContext,
+        mir_context: &impl MirContext,
     ) {
-        self.inner.visit_types(f, ir_context);
+        self.inner.visit_types(f, mir_context);
     }
 
     fn safe_ident(&self) -> String {
