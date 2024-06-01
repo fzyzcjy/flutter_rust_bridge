@@ -48,9 +48,9 @@ fn parse_syn_item_mod(item_mod: &ItemMod) -> anyhow::Result<Option<HirModule>> {
     // TODO module_path := module_path + ident
     // let ident = item_mod.ident.clone();
 
-    if let Some((_, items)) = &item_mod.content {
-        parse_module(items, item_mod.vis.into())
+    Ok(if let Some((_, items)) = &item_mod.content {
+        Some(parse_module(items, item_mod.vis.into())?)
     } else {
-        Ok(None)
-    }
+        None
+    })
 }
