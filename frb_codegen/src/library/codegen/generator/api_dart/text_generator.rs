@@ -4,8 +4,8 @@ use crate::codegen::generator::api_dart::spec_generator::{
     ApiDartOutputSpec, ApiDartOutputSpecItem,
 };
 use crate::codegen::generator::misc::{generate_code_header, PathText, PathTexts};
-use crate::utils::namespace::Namespace;
 use crate::utils::basic_code::DartBasicHeaderCode;
+use crate::utils::namespace::Namespace;
 use anyhow::ensure;
 use itertools::Itertools;
 use std::path::{Path, PathBuf};
@@ -106,14 +106,17 @@ fn generate_end_api_text(
         })
         .join("");
 
-    let skipped_functions = if item.skipped_functions.is_empty() {
-        "".to_owned()
-    } else {
-        format!(
-            "// The functions {} are not `pub`, thus are ignored.\n",
-            (item.skipped_functions.iter().map(|x| format!("`{x}`"))).join(", "),
-        )
-    };
+    let skipped_functions = item
+        .skipped_functions
+        .iter()
+        .sorted_by_key(|(reason, _)| reason)
+        .map(|(reason, names)| {
+            format!(
+                "// The functions {} are not `pub`, thus are ignored.\n",
+                (item.skipped_functions.iter().map(|x| format!("`{x}`"))).join(", "),
+            )
+        })
+        .join("");
 
     Ok(format!(
         "
