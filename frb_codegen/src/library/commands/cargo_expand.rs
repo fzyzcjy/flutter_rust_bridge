@@ -32,7 +32,7 @@ pub(crate) fn run_cargo_expand(rust_crate_dir: &Path, dumper: &Dumper) -> Result
         // return Ok(fs::read_to_string(rust_file_path)?);
     }
 
-    run_cargo_expand_with_frb_aware(rust_crate_dir, dumper)
+    run_with_frb_aware(rust_crate_dir, dumper)
 }
 
 // fn extract_module(raw_expanded: &str, module: Option<String>) -> Result<String> {
@@ -67,8 +67,8 @@ pub(crate) fn run_cargo_expand(rust_crate_dir: &Path, dumper: &Dumper) -> Result
 //     Ok(raw_expanded.to_owned())
 // }
 
-fn run_cargo_expand_with_frb_aware(rust_crate_dir: &Path, dumper: &Dumper) -> Result<String> {
-    Ok(unwrap_frb_attrs_in_doc(&run_cargo_expand_raw(
+fn run_with_frb_aware(rust_crate_dir: &Path, dumper: &Dumper) -> Result<String> {
+    Ok(unwrap_frb_attrs_in_doc(&run_raw(
         rust_crate_dir,
         "--cfg frb_expand",
         dumper,
@@ -89,7 +89,7 @@ fn unwrap_frb_attrs_in_doc(code: &str) -> Cow<str> {
 }
 
 #[allow(clippy::vec_init_then_push)]
-fn run_cargo_expand_raw(
+fn run_raw(
     rust_crate_dir: &Path,
     extra_rustflags: &str,
     dumper: &Dumper,
@@ -115,7 +115,7 @@ fn run_cargo_expand_raw(
         if stderr.contains("no such command: `expand`") && allow_auto_install {
             info!("Cargo expand is not installed. Automatically install and re-run.");
             install_cargo_expand()?;
-            return run_cargo_expand_raw(rust_crate_dir, extra_rustflags, dumper, false);
+            return run_raw(rust_crate_dir, extra_rustflags, dumper, false);
         }
         // This will stop the whole generator and tell the users, so we do not care about testing it
         // frb-coverage:ignore-start
