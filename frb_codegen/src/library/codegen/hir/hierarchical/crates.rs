@@ -6,7 +6,7 @@ use std::path::PathBuf;
 /// Represents a crate, including a map of its modules, imports, structs and enums.
 #[derive(Debug, Clone, serde::Serialize)]
 pub struct Crate {
-    name: String,
-    manifest_path: PathBuf,
-    root_module: Module,
+    pub(crate) name: String,
+    pub(crate) manifest_path: PathBuf,
+    pub(crate) root_module: Module,
 }
