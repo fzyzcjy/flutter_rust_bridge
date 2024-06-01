@@ -1,4 +1,7 @@
-pub(super) fn run(rust_crate_dir: &Path) -> Result<String> {
+use log::warn;
+use std::path::Path;
+
+pub(super) fn run(rust_crate_dir: &Path) -> anyhow::Result<String> {
     // We do not care about this warning message
     // frb-coverage:ignore-start
     warn!(
