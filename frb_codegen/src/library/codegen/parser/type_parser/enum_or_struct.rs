@@ -37,8 +37,8 @@ where
         if let Some(src_object) = self.src_objects().get(&name) {
             let src_object = (*src_object).clone();
 
-            let namespace = src_object.inner().namespace();
-            let namespaced_name = NamespacedName::new(namespace, name.clone());
+            let namespace = &src_object.inner().namespaced_name.namespace;
+            let namespaced_name = NamespacedName::new(namespace.clone(), name.clone());
 
             let attrs = FrbAttributes::parse(src_object.attrs())?;
             let attrs_opaque = override_opaque.or(attrs.opaque());
