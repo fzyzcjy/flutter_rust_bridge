@@ -20,11 +20,11 @@ use log::{debug, warn};
 use std::fmt::Debug;
 use syn::*;
 use MirType::Primitive;
-use crate::codegen::parser::mir::function_parser::error::ParseFunctionError;
-use crate::codegen::parser::mir::function_parser::error::ParseFunctionError::{SkipSinceIgnore, SkipSinceNonPublic};
+use crate::codegen::parser::mir::function_parser::structs::ParseFunctionError;
+use crate::codegen::parser::mir::function_parser::structs::ParseFunctionError::{SkipSinceIgnore, SkipSinceNonPublic};
 
 pub(crate) mod argument;
-pub(crate) mod error;
+pub(crate) mod structs;
 pub(crate) mod output;
 mod transformer;
 
