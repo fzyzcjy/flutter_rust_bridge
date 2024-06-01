@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 use crate::utils::namespace::Namespace;
 
 /// e.g. `web-audio-api` (note the `-` instead of `_`)
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, Hash)]
 #[serde(transparent)]
 pub(crate) struct CrateName(String);
 
@@ -12,7 +12,7 @@ impl CrateName {
     }
 
     pub(crate) fn namespace(&self) -> Namespace {
-        Namespace::new_raw(self.0)
+        Namespace::new_raw(self.0.to_owned())
     }
 
     pub(crate) fn raw(&self) -> &str {

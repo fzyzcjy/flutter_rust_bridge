@@ -54,7 +54,7 @@ fn run_raw(
     debug!("Running cargo expand in '{rust_crate_dir:?}'");
 
     let args_choosing_crate = if let Some(interest_crate_name) = interest_crate_name {
-        vec!["-p", interest_crate_name]
+        vec!["-p", interest_crate_name.raw()]
     } else {
         vec![]
     };

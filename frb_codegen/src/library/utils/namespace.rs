@@ -1,8 +1,10 @@
+use std::borrow::ToOwned;
 use crate::codegen::generator::codec::sse::lang::Lang;
 use itertools::Itertools;
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
 use std::fmt::{Display, Formatter};
 use std::path::PathBuf;
+use std::string::ToString;
 use crate::utils::crate_name::CrateName;
 
 /// The Rust files/modules/namespaces.
@@ -16,7 +18,7 @@ pub struct Namespace {
 impl Namespace {
     const SEP: &'static str = "::";
     pub(crate) const SELF_CRATE: &'static str = "crate";
-    pub(crate) const SELF_CRATE_TYPED: CrateName = CrateName::new(Self::SELF_CRATE);
+    pub(crate) const SELF_CRATE_TYPED: CrateName = CrateName::new(Self::SELF_CRATE.to_string());
 
     pub fn new(path: Vec<String>) -> Self {
         assert!((path.iter()).all(|item| !item.contains(Self::SEP)));
