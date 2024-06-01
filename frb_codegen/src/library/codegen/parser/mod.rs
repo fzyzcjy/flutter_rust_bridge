@@ -11,6 +11,7 @@ pub(crate) mod type_alias_resolver;
 pub(crate) mod type_parser;
 
 use crate::codegen::dumper::Dumper;
+use crate::codegen::hir::flat::HirFlatCrate;
 use crate::codegen::hir::hierarchical::crates::HirCrate;
 use crate::codegen::hir::hierarchical::struct_or_enum::HirStruct;
 use crate::codegen::ir::func::IrFunc;
@@ -40,9 +41,7 @@ use ConfigDumpContent::SourceGraph;
 
 pub(crate) fn parse(
     config: &ParserInternalConfig,
-    cached_rust_reader: &mut CachedRustReader,
-    dumper: &Dumper,
-    progress_bar_pack: &GeneratorProgressBarPack,
+    hir_flat_crate: HirFlatCrate,
 ) -> anyhow::Result<IrPack> {
     // check_suppressed_input_path_no_content(
     //     &config
