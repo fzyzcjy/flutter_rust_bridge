@@ -54,9 +54,7 @@
     },
     "raw": [
       "# [prelude_import] use std :: prelude :: rust_2018 :: * ;",
-      "# [macro_use] extern crate std ;",
-      "mod api_one { pub fn func_one () { } }",
-      "mod api_two { pub fn func_two () { } }"
+      "# [macro_use] extern crate std ;"
     ]
   }
 }

@@ -41,8 +41,7 @@
     },
     "raw": [
       "# [prelude_import] use std :: prelude :: rust_2018 :: * ;",
-      "# [macro_use] extern crate std ;",
-      "mod api { use anyhow :: Result ; use chrono :: * ; use uuid :: Uuid ; pub fn func_1 (duration : Duration , uuid : Uuid) { } pub fn func_anyhow_result () -> Result < i32 , String > { { :: std :: rt :: begin_panic (\"explicit panic\") } } }"
+      "# [macro_use] extern crate std ;"
     ]
   }
 }

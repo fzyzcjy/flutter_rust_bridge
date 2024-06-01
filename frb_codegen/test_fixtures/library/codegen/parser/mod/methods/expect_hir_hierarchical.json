@@ -60,8 +60,7 @@
     },
     "raw": [
       "# [prelude_import] use std :: prelude :: rust_2018 :: * ;",
-      "# [macro_use] extern crate std ;",
-      "mod api { pub struct MyStruct { } impl MyStruct { pub fn example_static_method () { } pub fn example_instance_method (& self) { } } pub enum MyEnum { A , B , } impl MyEnum { pub fn example_static_method () { } pub fn example_instance_method (& self) { } } }"
+      "# [macro_use] extern crate std ;"
     ]
   }
 }

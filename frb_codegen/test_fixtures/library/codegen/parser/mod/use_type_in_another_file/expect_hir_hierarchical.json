@@ -67,9 +67,7 @@
     },
     "raw": [
       "# [prelude_import] use std :: prelude :: rust_2018 :: * ;",
-      "# [macro_use] extern crate std ;",
-      "mod another_file { pub struct StructInAnotherFile { a : i32 , } pub enum EnumInAnotherFile { Apple , } }",
-      "mod api { use crate :: another_file :: EnumInAnotherFile ; use crate :: another_file :: StructInAnotherFile ; pub fn func_one (s : StructInAnotherFile , e : EnumInAnotherFile) { } }"
+      "# [macro_use] extern crate std ;"
     ]
   }
 }
