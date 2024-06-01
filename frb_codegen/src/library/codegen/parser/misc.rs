@@ -1,5 +1,6 @@
 use crate::codegen::hir::hierarchical::struct_or_enum::HirStructOrEnumWrapper;
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
+use crate::codegen::parser::internal_config::RustInputNamespacePack;
 use crate::library::misc::consts::HANDLER_NAME;
 use itertools::Itertools;
 use std::collections::HashMap;
