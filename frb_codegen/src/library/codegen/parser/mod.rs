@@ -79,11 +79,11 @@ mod tests {
     fn test_multi_input_file() -> anyhow::Result<()> {
         body(
             "library/codegen/parser/mod/multi_input_file",
-            Some(Box::new(|_rust_crate_dir| {
-                RustInputNamespacePack::new(vec![
+            Some(Box::new(|_rust_crate_dir| RustInputNamespacePack {
+                rust_input_namespace_prefices: vec![
                     Namespace::new_self_crate("api_one".to_owned()),
                     Namespace::new_self_crate("api_two".to_owned()),
-                ])
+                ],
             })),
         )
     }
@@ -145,9 +145,9 @@ mod tests {
 
         let rust_input_namespace_pack = rust_input_namespace_pack
             .map(|f| f(&rust_crate_dir))
-            .unwrap_or(RustInputNamespacePack::new(vec![
-                Namespace::new_self_crate("api".to_owned()),
-            ]));
+            .unwrap_or(RustInputNamespacePack {
+                rust_input_namespace_prefices: vec![Namespace::new_self_crate("api".to_owned())],
+            });
 
         let config = ParserInternalConfig {
             hir: ParserHirInternalConfig {
