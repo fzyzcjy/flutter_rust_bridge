@@ -26,6 +26,7 @@ use crate::utils::namespace::NamespacedName;
 use itertools::{concat, Itertools};
 use std::collections::HashMap;
 use syn::Visibility;
+use crate::codegen::ir::mir::skip::MirSkip;
 
 pub(crate) fn parse(
     config: &ParserMirInternalConfig,
@@ -78,7 +79,7 @@ fn parse_mir_funcs(
     src_fns: &[&HirFunction],
     type_parser: &mut TypeParser,
     src_structs: &HashMap<String, &HirStruct>,
-) -> anyhow::Result<Vec<MirFunc>> {
+) -> anyhow::Result<(Vec<MirFunc>, Vec<MirSkip>)> {
     let mut function_parser = FunctionParser::new(type_parser);
 
     let (mir_funcs_normal, mir_skips): (Vec<_>, Vec<_>) = src_fns
@@ -100,7 +101,7 @@ fn parse_mir_funcs(
 
     let mir_funcs_auto_accessor = parse_auto_accessors(config, src_structs, type_parser)?;
 
-    Ok(concat([mir_funcs_normal, mir_funcs_auto_accessor])
+    let mir_funcs = concat([mir_funcs_normal, mir_funcs_auto_accessor])
         .into_iter()
         // to give downstream a stable output
         .sorted_by_cached_key(|func| func.name.clone())
@@ -109,7 +110,9 @@ fn parse_mir_funcs(
             id: Some((index + 1) as _),
             ..f
         })
-        .collect_vec())
+        .collect_vec();
+
+    Ok((mir_funcs, mir_skips))
 }
 
 fn compute_skipped_functions(
