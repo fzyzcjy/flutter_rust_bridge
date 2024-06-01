@@ -20,7 +20,11 @@ pub(crate) fn parse(
     .map(|crate_name| {
         Ok((
             crate_name.to_owned(),
-            run_cargo_expand(&config.rust_crate_dir, &crate_name, dumper)?,
+            run_cargo_expand(
+                &config.rust_crate_dir,
+                (crate_name != Namespace::SELF_CRATE).then(|| crate_name),
+                dumper,
+            )?,
         ))
     })
     .collect::<anyhow::Result<Vec<_>>>()?
