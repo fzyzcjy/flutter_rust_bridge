@@ -8,6 +8,7 @@ use crate::library::commands::cargo_expand::run_cargo_expand;
 pub(crate) mod hir;
 pub(crate) mod internal_config;
 pub(crate) mod mir;
+pub(crate) mod reader;
 
 pub(crate) fn parse(
     config: &ParserInternalConfig,
