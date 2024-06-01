@@ -8,6 +8,7 @@ use crate::codegen::parser::mir::internal_config::ParserInternalConfig;
 use crate::codegen::parser::mir::reader::read_rust_crate;
 
 pub(crate) mod hir;
+pub(crate) mod internal_config;
 pub(crate) mod mir;
 
 pub(crate) fn parse(
