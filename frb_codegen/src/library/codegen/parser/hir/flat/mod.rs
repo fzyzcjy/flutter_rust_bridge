@@ -8,10 +8,11 @@ use log::debug;
 use std::collections::HashMap;
 use std::fmt::Debug;
 use syn::Type;
+use crate::codegen::ir::hir::hierarchical::pack::HirPack;
 
 mod type_alias_resolver;
 
-pub(crate) fn parse(root_module: &HirModule) -> anyhow::Result<HirFlatCrate> {
+pub(crate) fn parse(hir: &HirPack) -> anyhow::Result<HirFlatCrate> {
     Ok(HirFlatCrate {
         functions: collect_functions(root_module),
         structs: collect_structs(root_module),
