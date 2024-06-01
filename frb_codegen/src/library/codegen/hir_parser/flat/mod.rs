@@ -21,7 +21,7 @@ pub(crate) fn parse(root_module: &HirModule) -> anyhow::Result<HirFlatCrate> {
 fn collect_structs(module: &HirModule) -> HashMap<String, &HirStruct> {
     collect_objects(
         module,
-        |module| &module.scope.structs,
+        |module| &module.content.structs,
         |x| (x.0.ident.to_string(), x),
     )
 }
@@ -29,7 +29,7 @@ fn collect_structs(module: &HirModule) -> HashMap<String, &HirStruct> {
 fn collect_enums(module: &HirModule) -> HashMap<String, &HirEnum> {
     collect_objects(
         module,
-        |module| &module.scope.enums,
+        |module| &module.content.enums,
         |x| (x.0.ident.to_string(), x),
     )
 }
@@ -37,7 +37,7 @@ fn collect_enums(module: &HirModule) -> HashMap<String, &HirEnum> {
 fn collect_types(module: &HirModule) -> HashMap<String, Type> {
     collect_objects(
         module,
-        |module| &module.scope.type_alias,
+        |module| &module.content.type_alias,
         |x| (x.ident.clone(), x.target.clone()),
     )
 }
@@ -67,7 +67,7 @@ where
 
 fn visit_modules<'a, F: FnMut(&'a HirModule)>(module: &'a HirModule, f: &mut F) {
     f(module);
-    for scope_module in module.scope.modules {
+    for scope_module in module.content.modules {
         visit_modules(&scope_module, f);
     }
 }

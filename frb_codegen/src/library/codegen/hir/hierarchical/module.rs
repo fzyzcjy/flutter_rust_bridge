@@ -9,19 +9,19 @@ use std::path::PathBuf;
 
 #[derive(Clone, Debug, Serialize)]
 pub struct HirModule {
-    pub info: HirModuleInfo,
-    pub scope: HirModuleScope,
+    pub meta: HirModuleMeta,
+    pub content: HirModuleContent,
 }
 
 #[derive(Clone, Derivative, Serialize)]
 #[derivative(Debug)]
-pub struct HirModuleInfo {
+pub struct HirModuleMeta {
     pub visibility: HirVisibility,
     pub namespace: Namespace,
 }
 
 #[derive(Debug, Clone, Serialize, Default)]
-pub struct HirModuleScope {
+pub struct HirModuleContent {
     pub modules: Vec<HirModule>,
     pub enums: Vec<HirEnum>,
     pub structs: Vec<HirStruct>,

@@ -1,6 +1,6 @@
 use crate::codegen::dumper::Dumper;
 use crate::codegen::hir::hierarchical::module::{
-    HirModule, HirModuleInfo, HirModuleScope, HirVisibility,
+    HirModule, HirModuleContent, HirModuleMeta, HirVisibility,
 };
 use crate::codegen::hir_parser::hierarchical::function::parse_generalized_functions;
 use crate::codegen::hir_parser::hierarchical::item_type::parse_syn_item_type;
@@ -12,20 +12,23 @@ use crate::codegen::parser::reader::CachedRustReader;
 use log::debug;
 use syn::ItemMod;
 
-pub(crate) fn parse_module(items: &[syn::Item], info: HirModuleInfo) -> anyhow::Result<HirModule> {
-    let mut scope = HirModuleScope::default();
+pub(crate) fn parse_module(items: &[syn::Item], info: HirModuleMeta) -> anyhow::Result<HirModule> {
+    let mut scope = HirModuleContent::default();
     scope.functions = parse_generalized_functions(items, &info.namespace)?;
 
     for item in items.iter() {
         parse_syn_item(item, &mut scope, &info.namespace)?;
     }
 
-    Ok(HirModule { info, scope })
+    Ok(HirModule {
+        meta: info,
+        content: scope,
+    })
 }
 
 fn parse_syn_item(
     item: &syn::Item,
-    scope: &mut HirModuleScope,
+    scope: &mut HirModuleContent,
     namespace: &Namespace,
 ) -> anyhow::Result<()> {
     match item {
@@ -55,7 +58,7 @@ fn parse_syn_item_mod(
     namespace: &Namespace,
 ) -> anyhow::Result<Option<HirModule>> {
     Ok(if let Some((_, items)) = &item_mod.content {
-        let info = HirModuleInfo {
+        let info = HirModuleMeta {
             visibility: (&item_mod.vis).into(),
             namespace: namespace.join(&item_mod.ident.to_string()),
         };
