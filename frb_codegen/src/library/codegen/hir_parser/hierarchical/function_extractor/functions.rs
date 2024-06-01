@@ -1,4 +1,4 @@
-use crate::codegen::parser::function_extractor::structs::HirFunctionInner;
+use crate::codegen::hir::hierarchical::function::HirFunctionInner;
 use crate::if_then_some;
 use itertools::Itertools;
 use syn::*;

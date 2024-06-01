@@ -1,4 +1,5 @@
 use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
+use crate::codegen::hir::hierarchical::function::HirFunctionInner;
 use crate::codegen::ir::func::{
     IrFunc, IrFuncArgMode, IrFuncInput, IrFuncMode, IrFuncOutput, IrFuncOwnerInfo,
     IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode,
@@ -8,7 +9,6 @@ use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
-use crate::codegen::parser::function_extractor::structs::HirFunctionInner;
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::{external_impl, TypeParser, TypeParserParsingContext};
 use crate::library::codegen::ir::ty::IrTypeTrait;

@@ -1,11 +1,14 @@
 use crate::codegen::ir::namespace::Namespace;
 use proc_macro2::Span;
+use serde::Serialize;
 use std::path::PathBuf;
 use syn::spanned::Spanned;
 use syn::{Attribute, ImplItemFn, ItemFn, ItemImpl, Signature, Visibility};
 
+#[derive(Debug, Clone, Serialize)]
 pub(crate) struct HirFunction {
     pub(crate) namespace: Namespace,
+    #[serde(skip_serializing)]
     pub(crate) inner: HirFunctionInner,
 }
 

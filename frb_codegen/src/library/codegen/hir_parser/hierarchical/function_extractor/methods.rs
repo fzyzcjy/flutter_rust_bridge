@@ -1,4 +1,4 @@
-use crate::codegen::parser::function_extractor::structs::HirFunctionInner;
+use crate::codegen::hir::hierarchical::function::HirFunctionInner;
 use syn::{File, ImplItem, Item};
 
 pub(super) fn extract_methods_from_syn_items(

@@ -73,7 +73,7 @@ pub(crate) fn resolve_type_aliases(src: HashMap<String, Type>) -> HashMap<String
 
 #[cfg(test)]
 mod tests {
-    use crate::codegen::parser::type_alias_resolver::resolve_type_aliases;
+    use super::*;
     use std::collections::HashMap;
     use syn::{parse_str, Type};
 
