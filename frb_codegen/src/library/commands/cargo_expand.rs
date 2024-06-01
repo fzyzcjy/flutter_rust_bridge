@@ -12,22 +12,6 @@ use std::env;
 use std::path::Path;
 
 pub(crate) fn run_cargo_expand(rust_crate_dir: &Path, dumper: &Dumper) -> Result<syn::File> {
-    if can_execute_real(rust_crate_dir)? {
-        real::run(rust_crate_dir, dumper)
-    } else {
-        pseudo::run(rust_crate_dir)
-    }
-}
-
-fn can_execute_real(rust_crate_dir: &Path) -> anyhow::Result<bool> {
-    let manifest_dir = env::var("CARGO_MANIFEST_DIR").unwrap_or_default();
-    debug!("run_cargo_expand manifest_dir={manifest_dir} rust_crate_dir={rust_crate_dir:?}");
-    Ok(manifest_dir.is_empty()
-        || normalize_windows_unc_path(&path_to_string(rust_crate_dir)?)
-        != normalize_windows_unc_path(&manifest_dir))
-}
-
-fn run(rust_crate_dir: &Path, dumper: &Dumper) -> Result<syn::File> {
     let text = run_with_frb_aware(rust_crate_dir)?;
     dumper.dump_str(ConfigDumpContent::Source, "cargo_expand.rs", &text)?;
     Ok(syn::parse_file(&text)?)
