@@ -1,4 +1,4 @@
-rust_input: src/api.rs
+rust_input: crate::api
 dart_output: .
 c_output: frb_generated.h
 dart_preamble: "// test for dart_preamble"
