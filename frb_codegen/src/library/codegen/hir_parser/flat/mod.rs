@@ -1,4 +1,5 @@
 use crate::codegen::hir::flat::HirFlatCrate;
+use crate::codegen::hir::hierarchical::function::HirFunction;
 use crate::codegen::hir::hierarchical::module::HirModule;
 use crate::codegen::hir::hierarchical::struct_or_enum::HirEnum;
 use crate::codegen::hir::hierarchical::struct_or_enum::HirStruct;
@@ -12,10 +13,15 @@ mod type_alias_resolver;
 
 pub(crate) fn parse(root_module: &HirModule) -> anyhow::Result<HirFlatCrate> {
     Ok(HirFlatCrate {
+        functions: collect_functions(root_module),
         structs: collect_structs(root_module),
         enums: collect_enums(root_module),
         types: resolve_type_aliases(collect_types(root_module)),
     })
+}
+
+fn collect_functions(module: &HirModule) -> Vec<&HirFunction> {
+    TODO
 }
 
 fn collect_structs(module: &HirModule) -> HashMap<String, &HirStruct> {
