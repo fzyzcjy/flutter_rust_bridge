@@ -11,6 +11,7 @@ use std::path::PathBuf;
 pub struct HirModule {
     pub meta: HirModuleMeta,
     pub content: HirModuleContent,
+    pub raw: Vec<String>,
 }
 
 #[derive(Clone, Derivative, Serialize)]

@@ -31,6 +31,9 @@ pub(crate) fn parse_module(
     Ok(HirModule {
         meta: info,
         content: scope,
+        raw: (items.iter())
+            .map(|item| quote::quote!(#item).to_string())
+            .collect(),
     })
 }
 
