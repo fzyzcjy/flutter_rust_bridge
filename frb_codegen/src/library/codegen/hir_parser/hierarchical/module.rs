@@ -1,6 +1,6 @@
 use crate::codegen::dumper::Dumper;
 use crate::codegen::hir::hierarchical::module::{
-    HirModule, HirModuleInfo, HirModuleScope, HirModuleSource,
+    HirModule, HirModuleInfo, HirModuleScope, HirModuleSource, HirVisibility,
 };
 use crate::codegen::hir_parser::hierarchical::struct_or_enum::{
     parse_syn_item_enum, parse_syn_item_struct,
@@ -8,19 +8,20 @@ use crate::codegen::hir_parser::hierarchical::struct_or_enum::{
 use crate::codegen::parser::reader::CachedRustReader;
 use log::debug;
 
-pub(crate) fn parse_module(items: &[syn::Item]) -> anyhow::Result<HirModule> {
+pub(crate) fn parse_module(
+    items: &[syn::Item],
+    visibility: HirVisibility,
+) -> anyhow::Result<HirModule> {
     let mut scope = HirModuleScope::default();
 
     for item in items.iter() {
         parse_syn_item(item, &mut scope)?;
     }
 
-    let ans = HirModule {
-        info: info.clone(),
+    Ok(HirModule {
+        info: HirModuleInfo { visibility },
         scope,
-    };
-
-    Ok(ans)
+    })
 }
 
 fn parse_syn_item(item: &syn::Item, scope: &mut HirModuleScope) -> anyhow::Result<()> {
