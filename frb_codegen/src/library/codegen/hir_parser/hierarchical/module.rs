@@ -22,28 +22,7 @@ pub(crate) fn parse_module(
     let mut scope = ModuleScope::default();
 
     for item in info.source.items().iter() {
-        match item {
-            syn::Item::Struct(item_struct) => {
-                scope
-                    .structs
-                    .extend(parse_syn_item_struct(&info, item_struct)?);
-            }
-            syn::Item::Enum(item_enum) => {
-                scope.enums.extend(parse_syn_item_enum(&info, item_enum)?);
-            }
-            syn::Item::Type(item_type) => {
-                scope.types.extend(parse_syn_item_type(item_type));
-            }
-            syn::Item::Mod(item_mod) => {
-                scope.modules.extend(parse_syn_item_mod(
-                    &info,
-                    item_mod,
-                    cached_rust_reader,
-                    dumper,
-                )?);
-            }
-            _ => {}
-        }
+        parse_syn_item(item, &mut scope)?;
     }
 
     let ans = Module {
@@ -53,4 +32,30 @@ pub(crate) fn parse_module(
 
     debug!("parse_module END info={info:?}");
     Ok(ans)
+}
+
+fn parse_syn_item(item: &syn::Item, scope: &mut ModuleScope) -> anyhow::Result<()> {
+    match item {
+        syn::Item::Struct(item_struct) => {
+            scope
+                .structs
+                .extend(parse_syn_item_struct(&info, item_struct)?);
+        }
+        syn::Item::Enum(item_enum) => {
+            scope.enums.extend(parse_syn_item_enum(&info, item_enum)?);
+        }
+        syn::Item::Type(item_type) => {
+            scope.types.extend(parse_syn_item_type(item_type));
+        }
+        syn::Item::Mod(item_mod) => {
+            scope.modules.extend(parse_syn_item_mod(
+                &info,
+                item_mod,
+                cached_rust_reader,
+                dumper,
+            )?);
+        }
+        _ => {}
+    }
+    Ok(())
 }
