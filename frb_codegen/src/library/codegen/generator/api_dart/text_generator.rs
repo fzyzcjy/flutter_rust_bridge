@@ -9,6 +9,7 @@ use crate::utils::basic_code::DartBasicHeaderCode;
 use anyhow::ensure;
 use itertools::Itertools;
 use std::path::{Path, PathBuf};
+use log::debug;
 
 pub(super) struct ApiDartOutputText {
     pub(super) output_texts: PathTexts,
@@ -19,6 +20,8 @@ pub(super) fn generate(
     config: &GeneratorApiDartInternalConfig,
 ) -> anyhow::Result<ApiDartOutputText> {
     let common_namespace_prefix = Namespace::compute_common_prefix(&spec.namespaced_items.keys().collect());
+    debug!("common_namespace_prefix={common_namespace_prefix:?}");
+
     let path_texts = PathTexts(
         spec.namespaced_items
             .iter()
