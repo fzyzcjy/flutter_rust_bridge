@@ -15,14 +15,14 @@ pub(crate) fn parse(
     dumper: &Dumper,
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<MirPack> {
-    parse_inner(config, dumper, progress_bar_pack, |_, _| {})
+    parse_inner(config, dumper, progress_bar_pack, |_| Ok(()))
 }
 
 fn parse_inner(
     config: &ParserInternalConfig,
     dumper: &Dumper,
     progress_bar_pack: &GeneratorProgressBarPack,
-    on_hir: impl FnOnce(&HirCrate, &HirFlatCrate) -> (),
+    on_hir: impl FnOnce(&HirCrate) -> anyhow::Result<()>,
 ) -> anyhow::Result<MirPack> {
     let pb = progress_bar_pack.parse_read.start();
     let file = read_rust_crate(&config.rust_crate_dir, dumper)?;
@@ -31,7 +31,7 @@ fn parse_inner(
     let pb = progress_bar_pack.parse_hir.start();
     let hir_hierarchical = hir::hierarchical::parse(&config.hir, &file)?;
     let hir_flat = hir::flat::parse(&hir_hierarchical.root_module)?;
-    on_hir(&hir_hierarchical, &hir_flat);
+    on_hir(&hir_hierarchical)?;
     drop(pb);
 
     let pb = progress_bar_pack.parse_mir.start();
@@ -167,13 +167,12 @@ mod tests {
             &config,
             &Dumper(&Default::default()),
             &GeneratorProgressBarPack::new(),
-            |hir_hierarchical, _hir_flat| {
+            |hir_hierarchical| {
                 json_golden_test(
                     &serde_json::to_value(hir_hierarchical).unwrap(),
                     &rust_crate_dir.join("expect_hir_hierarchical.json"),
                     &create_path_sanitizers(&test_fixture_dir),
                 )
-                .unwrap();
             },
         )?;
 
