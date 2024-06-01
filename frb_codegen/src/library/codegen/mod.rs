@@ -47,7 +47,7 @@ fn generate_once(internal_config: &InternalConfig, dumper: &Dumper) -> anyhow::R
     preparer::prepare(&internal_config.preparer)?;
 
     let pb = progress_bar_pack.parse.start();
-    let mir_pack = parse(&internal_config.parser, dumper, &progress_bar_pack)?;
+    let mir_pack = parser::parse(&internal_config.parser, dumper, &progress_bar_pack)?;
     dumper.dump(ConfigDumpContent::Mir, "mir_pack.json", &mir_pack)?;
     drop(pb);
 
@@ -74,27 +74,4 @@ fn generate_once(internal_config: &InternalConfig, dumper: &Dumper) -> anyhow::R
     println!("Done!");
 
     Ok(())
-}
-
-// TODO mv
-fn parse(
-    config: &ParserInternalConfig,
-    dumper: &Dumper,
-    progress_bar_pack: &GeneratorProgressBarPack,
-) -> anyhow::Result<MirPack> {
-    let pb = progress_bar_pack.parse_read.start();
-    let mut cached_rust_reader = CachedRustReader::default();
-    let file = cached_rust_reader.read_rust_crate(&config.rust_crate_dir, dumper)?;
-    drop(pb);
-
-    let pb = progress_bar_pack.parse_hir.start();
-    let hir_hierarchical = parser::hir::hierarchical::parse(config, file)?;
-    let hir_flat = parser::hir::flat::parse(&hir_hierarchical.root_module)?;
-    drop(pb);
-
-    let pb = progress_bar_pack.parse_mir.start();
-    let mir_pack = parser::mir::parse(config, &hir_flat)?;
-    drop(pb);
-
-    Ok(mir_pack)
 }

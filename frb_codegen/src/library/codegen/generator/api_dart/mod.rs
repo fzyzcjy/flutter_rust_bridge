@@ -79,7 +79,7 @@ mod tests {
 
         let config = Config::from_files_auto()?;
         let internal_config = InternalConfig::parse(&config, &MetaConfig { watch: false })?;
-        let mir_pack = crate::codegen::parse(
+        let mir_pack = crate::codegen::parser::parse(
             &internal_config.parser,
             &Dumper(&Default::default()),
             &GeneratorProgressBarPack::new(),
