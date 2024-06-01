@@ -1,6 +1,6 @@
 use crate::codegen::dumper::Dumper;
 use crate::codegen::hir::hierarchical::module::{
-    HirModule, HirModuleInfo, HirModuleScope, HirModuleSource, HirVisibility,
+    HirModule, HirModuleInfo, HirModuleScope, HirVisibility,
 };
 use crate::codegen::hir_parser::hierarchical::item_type::parse_syn_item_type;
 use crate::codegen::hir_parser::hierarchical::struct_or_enum::{
