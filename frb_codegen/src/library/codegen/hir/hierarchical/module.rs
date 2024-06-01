@@ -15,8 +15,6 @@ pub struct HirModule {
 #[derivative(Debug)]
 pub struct HirModuleInfo {
     pub visibility: HirVisibility,
-    pub file_path: PathBuf,
-    pub module_path: Vec<String>,
 }
 
 #[derive(Debug, Clone, Serialize, Default)]
