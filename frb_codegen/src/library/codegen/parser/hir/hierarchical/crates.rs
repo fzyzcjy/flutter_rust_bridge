@@ -7,10 +7,11 @@ use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 pub(crate) fn parse_crate(
     config: &ParserHirInternalConfig,
     file: &syn::File,
+    crate_name: &str,
 ) -> anyhow::Result<HirCrate> {
     let info = HirModuleMeta {
         visibility: HirVisibility::Public,
-        namespace: Namespace::new(vec![Namespace::SELF_CRATE.to_owned()]),
+        namespace: Namespace::new(vec![crate_name.to_owned()]),
     };
     let root_module = parse_module(&file.items, info, config)?;
     Ok(HirCrate { root_module })
