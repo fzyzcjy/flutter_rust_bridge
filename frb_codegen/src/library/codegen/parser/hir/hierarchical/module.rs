@@ -8,14 +8,14 @@ use crate::codegen::parser::hir::hierarchical::item_type::parse_syn_item_type;
 use crate::codegen::parser::hir::hierarchical::struct_or_enum::{
     parse_syn_item_enum, parse_syn_item_struct,
 };
-use crate::codegen::parser::mir::internal_config::ParserInternalConfig;
+use crate::codegen::parser::mir::internal_config::ParserHirInternalConfig;
 use log::debug;
 use syn::ItemMod;
 
 pub(crate) fn parse_module(
     items: &[syn::Item],
     info: HirModuleMeta,
-    config: &ParserInternalConfig,
+    config: &ParserHirInternalConfig,
 ) -> anyhow::Result<HirModule> {
     let mut scope = HirModuleContent::default();
 
@@ -40,7 +40,7 @@ fn parse_syn_item(
     item: &syn::Item,
     scope: &mut HirModuleContent,
     namespace: &Namespace,
-    config: &ParserInternalConfig,
+    config: &ParserHirInternalConfig,
 ) -> anyhow::Result<()> {
     match item {
         syn::Item::Struct(item_struct) => {
@@ -67,7 +67,7 @@ fn parse_syn_item(
 fn parse_syn_item_mod(
     item_mod: &ItemMod,
     namespace: &Namespace,
-    config: &ParserInternalConfig,
+    config: &ParserHirInternalConfig,
 ) -> anyhow::Result<Option<HirModule>> {
     Ok(if let Some((_, items)) = &item_mod.content {
         let info = HirModuleMeta {
