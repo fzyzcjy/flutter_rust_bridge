@@ -8,6 +8,7 @@ pub(crate) mod hir_parser;
 pub(crate) mod ir;
 pub(crate) mod mir_parser;
 mod misc;
+pub(crate) mod parser;
 mod polisher;
 mod preparer;
 
