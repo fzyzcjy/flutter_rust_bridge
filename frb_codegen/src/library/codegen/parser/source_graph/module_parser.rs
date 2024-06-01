@@ -18,19 +18,6 @@ use std::path::{Path, PathBuf};
 use syn::token::Brace;
 use syn::{Attribute, Ident, Item, ItemEnum, ItemMod, ItemStruct, ItemType, PathArguments};
 
-fn parse_syn_item_type(item_type: &ItemType) -> Option<TypeAlias> {
-    debug!("parse_syn_item_struct_or_enum item_type={item_type:?}");
-
-    if item_type.generics.where_clause.is_none() && item_type.generics.lt_token.is_none() {
-        Some(TypeAlias {
-            ident: item_type.ident.to_string(),
-            target: *item_type.ty.clone(),
-        })
-    } else {
-        None
-    }
-}
-
 fn parse_syn_item_mod(
     info: &ModuleInfo,
     item_mod: &ItemMod,
