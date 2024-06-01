@@ -14,8 +14,8 @@ use std::path::Path;
 
 pub(super) fn run(rust_crate_dir: &Path, dumper: &Dumper) -> Result<syn::File> {
     let text = run_with_frb_aware(rust_crate_dir)?;
-    dumper.dump_str(ConfigDumpContent::Source, "cargo_expand.rs", &ans)?;
-    Ok(syn::parse_file(text)?)
+    dumper.dump_str(ConfigDumpContent::Source, "cargo_expand.rs", &text)?;
+    Ok(syn::parse_file(&text)?)
 }
 
 fn run_with_frb_aware(rust_crate_dir: &Path) -> Result<String> {

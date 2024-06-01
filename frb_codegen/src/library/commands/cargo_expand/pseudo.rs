@@ -1,4 +1,5 @@
 use anyhow::ensure;
+use itertools::Itertools;
 use log::warn;
 use std::fs;
 use std::path::{Path, PathBuf};
@@ -34,20 +35,21 @@ fn modify_file(file: &mut syn::File, path: &Path) -> anyhow::Result<()> {
 fn modify_mod(item_mod: &mut syn::ItemMod, path: &Path) -> anyhow::Result<()> {
     ensure!(item_mod.content.is_none() && item_mod.semi.is_some());
 
-    if let Some(mod_path) = get_module_file_path(item_mod.ident.to_string(), path) {
-        let mod_syn_file = parse_file(mod_path)?;
+    let mod_name = item_mod.ident.to_string();
+    if let Some(mod_path) = get_module_file_path(&mod_name, path) {
+        let mod_syn_file = parse_file(&mod_path)?;
         item_mod.semi = None;
-        item_mod.content = Some(syn::token::Brace::default(), mod_syn_file.items);
+        item_mod.content = Some((syn::token::Brace::default(), mod_syn_file.items));
     } else {
-        log::debug!("Skip parsing {TODO} since do not know its corresponding file path");
+        log::debug!("Skip parsing {mod_name} since do not know its corresponding file path");
     }
 
     Ok(())
 }
 
-fn get_module_file_path(module_name: &str, parent_module_file_path: &Path) -> Option<&PathBuf> {
-    let path_candidates = get_module_file_path_candidates();
-    path_candidates.iter().find(|path| path.exists())
+fn get_module_file_path(module_name: &str, parent_module_file_path: &Path) -> Option<PathBuf> {
+    let path_candidates = get_module_file_path_candidates(module_name, parent_module_file_path);
+    path_candidates.iter().find(|path| path.exists()).cloned()
 }
 
 fn get_module_file_path_candidates(
@@ -70,7 +72,7 @@ fn get_module_file_path_candidates(
 
 #[cfg(test)]
 mod tests {
-    use std::path::PathBuf;
+    use super::*;
 
     #[test]
     fn test_get_module_file_path_candidates_simple() {
