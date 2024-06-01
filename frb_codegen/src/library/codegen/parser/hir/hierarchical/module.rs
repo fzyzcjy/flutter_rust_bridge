@@ -27,6 +27,7 @@ pub(crate) fn parse_module(
         meta: info,
         content: scope,
         raw: (items.iter())
+            .filter(|item| !matches!(item, syn::Item::Mod(_)))
             .map(|item| quote::quote!(#item).to_string())
             .collect(),
     })
