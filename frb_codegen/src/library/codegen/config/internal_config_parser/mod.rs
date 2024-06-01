@@ -135,9 +135,10 @@ fn parse_third_party_crates(rust_input_namespace_prefices: &[Namespace]) -> Vec<
     rust_input_namespace_prefices
         .iter()
         .map(|x| x.path()[0])
-        .filter(|x| x != Namespace::SELF_CRATE)
+        .filter(|x| *x != Namespace::SELF_CRATE)
         .dedup()
         .sorted()
+        .map(|x|x.to_owned())
         .collect_vec()
 }
 
