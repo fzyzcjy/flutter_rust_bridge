@@ -9,7 +9,6 @@ use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
-use crate::codegen::parser::reader::internal_config::ParserReaderInternalConfig;
 use crate::codegen::polisher::internal_config::PolisherInternalConfig;
 use crate::codegen::preparer::internal_config::PreparerInternalConfig;
 use crate::codegen::{Config, ConfigDumpContent};
@@ -97,10 +96,8 @@ impl InternalConfig {
                 needs_ffigen: full_dep,
             },
             parser: ParserInternalConfig {
-                reader: ParserReaderInternalConfig {
-                    rust_crate_dir: rust_crate_dir.clone(),
-                },
                 hir: ParserHirInternalConfig {
+                    rust_crate_dir: rust_crate_dir.clone(),
                     rust_input_namespace_pack: rust_input_namespace_pack.clone(),
                     third_party_crates: parse_third_party_crates(
                         &rust_input_namespace_pack.rust_input_namespace_prefices,

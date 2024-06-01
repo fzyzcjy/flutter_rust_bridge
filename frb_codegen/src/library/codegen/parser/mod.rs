@@ -22,11 +22,11 @@ fn parse_inner(
     progress_bar_pack: &GeneratorProgressBarPack,
     on_hir: impl FnOnce(&HirCrate) -> anyhow::Result<()>,
 ) -> anyhow::Result<MirPack> {
-    let pb = progress_bar_pack.parse_reader.start();
-    let file = reader::parse(&config.reader, dumper)?;
+    let pb = progress_bar_pack.parse_hir_raw.start();
+    let file = hir::raw::parse(&config.hir, dumper)?;
     drop(pb);
 
-    let pb = progress_bar_pack.parse_hir.start();
+    let pb = progress_bar_pack.parse_hir_primary.start();
     let hir_hierarchical = hir::hierarchical::parse(&config.hir, &file)?;
     let hir_flat = hir::flat::parse(&hir_hierarchical.root_module)?;
     on_hir(&hir_hierarchical)?;
@@ -52,7 +52,6 @@ mod tests {
     use crate::codegen::parser::mir::internal_config::{
         ParserMirInternalConfig, RustInputNamespacePack,
     };
-    use crate::codegen::parser::reader::internal_config::ParserReaderInternalConfig;
     use crate::codegen::parser::{parse_inner, MirPack};
     use crate::utils::logs::configure_opinionated_test_logging;
     use crate::utils::test_utils::{
@@ -150,11 +149,9 @@ mod tests {
             });
 
         let config = ParserInternalConfig {
-            reader: ParserReaderInternalConfig {
-                rust_crate_dir: rust_crate_dir.clone(),
-            },
             hir: ParserHirInternalConfig {
                 rust_input_namespace_pack: rust_input_namespace_pack.clone(),
+                rust_crate_dir: rust_crate_dir.clone(),
                 third_party_crates: vec![],
             },
             mir: ParserMirInternalConfig {
