@@ -14,7 +14,7 @@ pub(crate) fn run_cargo_expand(
     dumper: &Dumper,
 ) -> Result<syn::File> {
     if can_execute_real(rust_crate_dir)? {
-        real::run(rust_crate_dir, dumper)
+        real::run(rust_crate_dir, interest_crate_name, dumper)
     } else {
         pseudo::run(rust_crate_dir, interest_crate_name)
     }

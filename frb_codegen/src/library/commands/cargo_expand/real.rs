@@ -11,7 +11,11 @@ use std::borrow::Cow;
 use std::env;
 use std::path::Path;
 
-pub(super) fn run(rust_crate_dir: &Path, dumper: &Dumper) -> Result<syn::File> {
+pub(super) fn run(
+    rust_crate_dir: &Path,
+    interest_crate_name: &str,
+    dumper: &Dumper,
+) -> Result<syn::File> {
     let text = run_with_frb_aware(rust_crate_dir)?;
     dumper.dump_str(ConfigDumpContent::Source, "cargo_expand.rs", &text)?;
     Ok(syn::parse_file(&text)?)
