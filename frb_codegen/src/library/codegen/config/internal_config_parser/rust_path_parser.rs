@@ -19,23 +19,22 @@ pub(super) fn compute_rust_input_info(
     migrated_rust_input: &ConfigRustRootAndRustInput,
     base_dir: &Path,
 ) -> anyhow::Result<RustInputInfo> {
+    let rust_input_namespace_prefices_raw =
+        compute_rust_input_namespace_prefices_raw(&migrated_rust_input.rust_input);
+
     Ok(RustInputInfo {
         rust_crate_dir: compute_rust_crate_dir(base_dir, &migrated_rust_input.rust_root)?,
-        rust_input_namespace_pack: compute_rust_input_namespace_pack(
-            &migrated_rust_input.rust_input,
-        )?,
+        rust_input_namespace_pack: RustInputNamespacePack {
+            rust_input_namespace_prefices: TODO,
+        }?,
     })
 }
 
-fn compute_rust_input_namespace_pack(
-    raw_rust_input: &str,
-) -> anyhow::Result<RustInputNamespacePack> {
-    Ok(RustInputNamespacePack {
-        rust_input_namespace_prefices: raw_rust_input
-            .split(',')
-            .map(|s| Namespace::new_raw(s.to_owned()))
-            .collect_vec(),
-    })
+fn compute_rust_input_namespace_prefices_raw(raw_rust_input: &str) -> Vec<Namespace> {
+    raw_rust_input
+        .split(',')
+        .map(|s| Namespace::new_raw(s.to_owned()))
+        .collect_vec()
 }
 
 fn compute_rust_crate_dir(base_dir: &Path, rust_root: &str) -> anyhow::Result<PathBuf> {
@@ -68,4 +67,3 @@ fn parse_third_party_crates(rust_input_namespace_prefices: &[Namespace]) -> Vec<
         .map(|x| x.to_owned())
         .collect_vec()
 }
-
