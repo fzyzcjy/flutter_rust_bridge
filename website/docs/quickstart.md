@@ -15,7 +15,8 @@ cargo install 'flutter_rust_bridge_codegen@^2.0.0-dev.0' && flutter_rust_bridge_
 
 ## 1. Install
 
-After [Flutter](https://docs.flutter.dev/get-started/install) and [Rust](https://www.rust-lang.org/tools/install) are installed,
+After [Flutter](https://docs.flutter.dev/get-started/install) and [Rust](https://www.rust-lang.org/tools/install) are
+installed,
 install `flutter_rust_bridge` using any method:
 
 <Tabs>
@@ -73,7 +74,8 @@ brew install desdaemon/repo/flutter_rust_bridge_codegen
 
 <TabItem value="Create new">
 
-Suppose your app is to be named `my_app`, then execute this. <small>(Use `--help` to see more options, e.g. package name)</small>
+Suppose your app is to be named `my_app`, then execute this. <small>(Use `--help` to see more options, e.g. package
+name)</small>
 
 ```shell
 flutter_rust_bridge_codegen create my_app
@@ -132,15 +134,13 @@ flutter run
 
 <TabItem value="Web">
 
-1. The `build-web` command: Because Flutter Web does not have a build hook yet
-(vote [the corresponding issue](https://github.com/flutter/flutter/issues/138992) to 
-[prioritize](https://github.com/flutter/flutter/wiki/Issue-hygiene#do-not-add-me-too-or-same-or-is-there-an-update-comments-to-bugs)
-it if you want).
-2. Before Flutter >=3.17 release, [a hack](manual/miscellaneous/web-cross-origin) is needed.
+P.S. The `build-web` command: Because Flutter Web does not have a build hook yet
+([corresponding issue](https://github.com/flutter/flutter/issues/138992)).
 
 ```shell
 flutter_rust_bridge_codegen build-web
-flutter run # or any other standard Flutter ways
+# ... or any other standard Flutter ways
+flutter run --web-header=Cross-Origin-Opener-Policy=same-origin --web-header=Cross-Origin-Embedder-Policy=require-corp
 ```
 
 </TabItem>
@@ -169,7 +169,7 @@ var result = await hello(a: "Hi");
 
 * The `await` is for asynchronous code, a very frequently used feature in Dart.
 * To display the result on the screen, a bit of standard Flutter knowledge may be needed.
-See the existing code for an example how a String can be shown.
+  See the existing code for an example how a String can be shown.
 
 </details>
 
