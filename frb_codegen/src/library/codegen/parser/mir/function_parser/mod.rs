@@ -4,7 +4,7 @@ use crate::codegen::ir::mir::func::{
     MirFunc, MirFuncArgMode, MirFuncInput, MirFuncMode, MirFuncOutput, MirFuncOwnerInfo,
     MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
 };
-use crate::codegen::ir::mir::skip::{MirSkip, MirSkipInner};
+use crate::codegen::ir::mir::skip::{MirSkip, MirSkipReason};
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::mir::ty::MirType;
@@ -22,7 +22,7 @@ use itertools::concat;
 use log::{debug, warn};
 use std::fmt::Debug;
 use syn::*;
-use MirSkipInner::Ignored;
+use MirSkipReason::Ignored;
 use MirType::Primitive;
 
 pub(crate) mod argument;
@@ -61,7 +61,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                 func.sig().ident,
                 err
             );
-            create_output_skip(func, namespace_naive, MirSkipInner::Err)
+            create_output_skip(func, namespace_naive, MirSkipReason::Err)
         })
     }
 
@@ -208,11 +208,11 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 fn create_output_skip(
     func: &HirFunctionInner,
     namespace_naive: &Namespace,
-    inner: MirSkipInner,
+    inner: MirSkipReason,
 ) -> ParseFunctionOutput {
     ParseFunctionOutput::Skip(MirSkip {
         name: NamespacedName::new(namespace_naive.to_owned(), func.sig().ident.to_string()),
-        inner,
+        inner: reason,
     })
 }
 
