@@ -53,9 +53,9 @@ fn run_raw(
     debug!("Running cargo expand in '{rust_crate_dir:?}'");
 
     let args_choosing_crate = if let Some(interest_crate_name) = interest_crate_name {
-        vec!["-p", interest_crate_name];
+        vec!["-p", interest_crate_name]
     } else {
-        vec![];
+        vec![]
     };
 
     let args = command_args!(
@@ -81,7 +81,7 @@ fn run_raw(
         if stderr.contains("no such command: `expand`") && allow_auto_install {
             info!("Cargo expand is not installed. Automatically install and re-run.");
             install_cargo_expand()?;
-            return run_raw(rust_crate_dir, extra_rustflags, false);
+            return run_raw(rust_crate_dir, interest_crate_name,extra_rustflags, false);
         }
         // This will stop the whole generator and tell the users, so we do not care about testing it
         // frb-coverage:ignore-start
