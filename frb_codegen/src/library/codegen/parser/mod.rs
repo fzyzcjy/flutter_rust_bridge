@@ -1,5 +1,4 @@
 use crate::codegen::dumper::Dumper;
-use crate::codegen::ir::hir::flat::HirFlatCrate;
 use crate::codegen::ir::hir::hierarchical::crates::HirCrate;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::misc::GeneratorProgressBarPack;

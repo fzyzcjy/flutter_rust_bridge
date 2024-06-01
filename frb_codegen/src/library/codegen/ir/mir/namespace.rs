@@ -42,13 +42,13 @@ impl Namespace {
         Self::new_raw(format!("{self_crate}{sep}{joined_path}"))
     }
 
-    pub(crate) fn new_from_rust_crate_path(
-        code_path: &Path,
-        rust_crate_path: &Path,
-    ) -> anyhow::Result<Self> {
-        let p = compute_mod_from_rust_crate_path(code_path, rust_crate_path)?;
-        Ok(Self::new_self_crate(p))
-    }
+    // pub(crate) fn new_from_rust_crate_path(
+    //     code_path: &Path,
+    //     rust_crate_path: &Path,
+    // ) -> anyhow::Result<Self> {
+    //     let p = compute_mod_from_rust_crate_path(code_path, rust_crate_path)?;
+    //     Ok(Self::new_self_crate(p))
+    // }
 
     pub fn path(&self) -> Vec<&str> {
         self.joined_path.split(Self::SEP).collect()

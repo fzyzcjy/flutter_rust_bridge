@@ -41,14 +41,14 @@ pub(crate) fn find_dart_package_dir(dart_file_path: &Path) -> Result<PathBuf> {
     })
 }
 
-pub(crate) fn find_rust_crate_dir(rust_file_path: &Path) -> Result<PathBuf> {
-    find_parent_dir_with_file(rust_file_path, "Cargo.toml").with_context(|| {
-        // frb-coverage:ignore-start
-        // This will stop the whole generator and tell the users, so we do not care about testing it
-        format!("Fail to detect rust crate dir from rust_file_path={rust_file_path:?}")
-        // frb-coverage:ignore-end
-    })
-}
+// pub(crate) fn find_rust_crate_dir(rust_file_path: &Path) -> Result<PathBuf> {
+//     find_parent_dir_with_file(rust_file_path, "Cargo.toml").with_context(|| {
+//         // frb-coverage:ignore-start
+//         // This will stop the whole generator and tell the users, so we do not care about testing it
+//         format!("Fail to detect rust crate dir from rust_file_path={rust_file_path:?}")
+//         // frb-coverage:ignore-end
+//     })
+// }
 
 pub(crate) fn normalize_windows_unc_path(path: &str) -> &str {
     // on windows get rid of the UNC path
