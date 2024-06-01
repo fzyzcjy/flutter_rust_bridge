@@ -18,7 +18,7 @@ pub(crate) fn run_cargo_expand(rust_crate_dir: &Path, dumper: &Dumper) -> Result
 
     if !manifest_dir.is_empty()
         && normalize_windows_unc_path(&path_to_string(rust_crate_dir)?)
-            == normalize_windows_unc_path(&manifest_dir)
+        == normalize_windows_unc_path(&manifest_dir)
     {
         // We do not care about this warning message
         // frb-coverage:ignore-start
@@ -74,7 +74,7 @@ fn run_with_frb_aware(rust_crate_dir: &Path, dumper: &Dumper) -> Result<String> 
         dumper,
         true,
     )?)
-    .into_owned())
+        .into_owned())
 }
 
 /// Turns `#[doc = "frb_marker: .."]` back into `#[frb(..)]`, usually produced
@@ -103,7 +103,7 @@ fn run_raw(
         "RUSTFLAGS".to_owned(),
         env::var("RUSTFLAGS").map(|x| x + " ").unwrap_or_default() + extra_rustflags,
     )]
-    .into();
+        .into();
 
     let output = execute_command("cargo", &args, Some(rust_crate_dir), Some(extra_env))
         .with_context(|| format!("Could not expand rust code at path {rust_crate_dir:?}"))?;
