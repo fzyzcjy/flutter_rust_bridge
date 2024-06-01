@@ -17,9 +17,6 @@ pub struct HirModuleInfo {
     pub visibility: HirVisibility,
     pub file_path: PathBuf,
     pub module_path: Vec<String>,
-    #[derivative(Debug = "ignore")]
-    #[serde(skip_serializing)]
-    pub source: HirModuleSource,
 }
 
 #[derive(Debug, Clone, Serialize, Default)]
@@ -38,19 +35,4 @@ pub enum HirVisibility {
     Restricted,
     // Not supported
     Inherited, // Usually means private
-}
-
-#[derive(Debug, Clone)]
-pub enum HirModuleSource {
-    File(syn::File),
-    ModuleInFile(Vec<syn::Item>),
-}
-
-impl HirModuleSource {
-    pub(crate) fn items(&self) -> &[syn::Item] {
-        match self {
-            HirModuleSource::File(file) => &file.items,
-            HirModuleSource::ModuleInFile(items) => items,
-        }
-    }
 }
