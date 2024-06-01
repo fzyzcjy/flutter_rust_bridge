@@ -1,3 +1,3 @@
 crate::ir! {
-pub struct IrComment(pub String);
+pub struct MirComment(pub String);
 }

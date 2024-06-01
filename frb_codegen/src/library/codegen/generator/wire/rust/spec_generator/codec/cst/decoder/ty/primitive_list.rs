@@ -9,9 +9,9 @@ use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
     ExternFunc, ExternFuncParam,
 };
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
-use crate::codegen::mir::ty::primitive::IrTypePrimitive;
-use crate::codegen::mir::ty::primitive_list::IrTypePrimitiveList;
-use crate::codegen::mir::ty::IrTypeTrait;
+use crate::codegen::mir::ty::primitive::MirTypePrimitive;
+use crate::codegen::mir::ty::primitive_list::MirTypePrimitiveList;
+use crate::codegen::mir::ty::MirTypeTrait;
 
 impl<'a> WireRustCodecCstGeneratorDecoderTrait for PrimitiveListWireRustCodecCstGenerator<'a> {
     fn generate_decoder_class(&self) -> Option<WireRustOutputCode> {
@@ -51,9 +51,9 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for PrimitiveListWireRustCodecCst
 
         match self.ir.primitive {
             // frb-coverage:ignore-start
-            IrTypePrimitive::Bool | IrTypePrimitive::Unit => Some("todo!()".into()),
+            MirTypePrimitive::Bool | MirTypePrimitive::Unit => Some("todo!()".into()),
             // frb-coverage:ignore-end
-            IrTypePrimitive::I64 | IrTypePrimitive::U64 => Some(
+            MirTypePrimitive::I64 | MirTypePrimitive::U64 => Some(
                 format!(
                     "let buf = self.dyn_into::<{}>().unwrap();
                     let buf = flutter_rust_bridge::for_generated::js_sys::Uint8Array::new(&buf.buffer());
@@ -101,7 +101,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for PrimitiveListWireRustCodecCst
     fn rust_wire_type(&self, target: Target) -> String {
         if let Target::Web = target {
             match self.ir.primitive {
-                IrTypePrimitive::Bool | IrTypePrimitive::Unit => JS_VALUE.into(),
+                MirTypePrimitive::Bool | MirTypePrimitive::Unit => JS_VALUE.into(),
                 _ => format!("Box<[{}]>", self.ir.primitive.rust_api_type()),
             }
         } else {
@@ -114,23 +114,23 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for PrimitiveListWireRustCodecCst
     }
 }
 
-fn rust_web_wire_type(ir: &IrTypePrimitiveList) -> &str {
+fn rust_web_wire_type(ir: &MirTypePrimitiveList) -> &str {
     match &ir.primitive {
-        IrTypePrimitive::U8 => "flutter_rust_bridge::for_generated::js_sys::Uint8Array",
-        IrTypePrimitive::I8 => "flutter_rust_bridge::for_generated::js_sys::Int8Array",
-        IrTypePrimitive::U16 => "flutter_rust_bridge::for_generated::js_sys::Uint16Array",
-        IrTypePrimitive::I16 => "flutter_rust_bridge::for_generated::js_sys::Int16Array",
-        IrTypePrimitive::U32 | IrTypePrimitive::Usize => {
+        MirTypePrimitive::U8 => "flutter_rust_bridge::for_generated::js_sys::Uint8Array",
+        MirTypePrimitive::I8 => "flutter_rust_bridge::for_generated::js_sys::Int8Array",
+        MirTypePrimitive::U16 => "flutter_rust_bridge::for_generated::js_sys::Uint16Array",
+        MirTypePrimitive::I16 => "flutter_rust_bridge::for_generated::js_sys::Int16Array",
+        MirTypePrimitive::U32 | MirTypePrimitive::Usize => {
             "flutter_rust_bridge::for_generated::js_sys::Uint32Array"
         }
-        IrTypePrimitive::I32 | IrTypePrimitive::Isize => {
+        MirTypePrimitive::I32 | MirTypePrimitive::Isize => {
             "flutter_rust_bridge::for_generated::js_sys::Int32Array"
         }
-        IrTypePrimitive::U64 => "flutter_rust_bridge::for_generated::js_sys::BigUint64Array",
-        IrTypePrimitive::I64 => "flutter_rust_bridge::for_generated::js_sys::BigInt64Array",
-        IrTypePrimitive::F32 => "flutter_rust_bridge::for_generated::js_sys::Float32Array",
-        IrTypePrimitive::F64 => "flutter_rust_bridge::for_generated::js_sys::Float64Array",
-        IrTypePrimitive::Bool | IrTypePrimitive::Unit => {
+        MirTypePrimitive::U64 => "flutter_rust_bridge::for_generated::js_sys::BigUint64Array",
+        MirTypePrimitive::I64 => "flutter_rust_bridge::for_generated::js_sys::BigInt64Array",
+        MirTypePrimitive::F32 => "flutter_rust_bridge::for_generated::js_sys::Float32Array",
+        MirTypePrimitive::F64 => "flutter_rust_bridge::for_generated::js_sys::Float64Array",
+        MirTypePrimitive::Bool | MirTypePrimitive::Unit => {
             "flutter_rust_bridge::for_generated::js_sys::Array"
         }
     }

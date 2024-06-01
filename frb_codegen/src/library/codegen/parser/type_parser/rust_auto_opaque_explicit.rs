@@ -1,6 +1,6 @@
-use crate::codegen::mir::ty::delegate::{IrTypeDelegate, IrTypeDelegateRustAutoOpaqueExplicit};
+use crate::codegen::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegateRustAutoOpaqueExplicit};
 use crate::codegen::mir::ty::rust_opaque::RustOpaqueCodecMode;
-use crate::codegen::mir::ty::IrType;
+use crate::codegen::mir::ty::MirType;
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use syn::Type;
@@ -9,7 +9,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_rust_auto_opaque_explicit(
         &mut self,
         last_segment: &SplayedSegment,
-    ) -> anyhow::Result<Option<IrType>> {
+    ) -> anyhow::Result<Option<MirType>> {
         Ok(Some(match last_segment {
             ("RustAutoOpaque", [ty]) => self.parse_rust_auto_opaque_explicit(ty, None)?,
             ("RustAutoOpaqueNom", [ty]) => {
@@ -27,11 +27,11 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         &mut self,
         inner: &Type,
         codec: Option<RustOpaqueCodecMode>,
-    ) -> anyhow::Result<IrType> {
+    ) -> anyhow::Result<MirType> {
         let (ans_raw, ans_inner) =
             self.parse_type_rust_auto_opaque_common(inner.clone(), None, codec)?;
-        Ok(IrType::Delegate(IrTypeDelegate::RustAutoOpaqueExplicit(
-            IrTypeDelegateRustAutoOpaqueExplicit {
+        Ok(MirType::Delegate(MirTypeDelegate::RustAutoOpaqueExplicit(
+            MirTypeDelegateRustAutoOpaqueExplicit {
                 raw: ans_raw,
                 inner: ans_inner,
             },

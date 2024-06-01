@@ -4,9 +4,9 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::base::{
     WireDartCodecEntrypointTrait, WireDartCodecOutputSpec,
 };
 use crate::codegen::generator::wire::misc::has_port_argument;
-use crate::codegen::mir::func::IrFunc;
-use crate::codegen::mir::ty::IrType;
-use crate::library::codegen::mir::ty::IrTypeTrait;
+use crate::codegen::mir::func::MirFunc;
+use crate::codegen::mir::ty::MirType;
+use crate::library::codegen::mir::ty::MirTypeTrait;
 use itertools::Itertools;
 
 pub(crate) struct CstWireDartCodecEntrypoint;
@@ -17,7 +17,7 @@ impl BaseCodecEntrypointTrait<WireDartGeneratorContext<'_>, WireDartCodecOutputS
     fn generate(
         &self,
         context: WireDartGeneratorContext,
-        types: &[IrType],
+        types: &[MirType],
         mode: EncodeOrDecode,
     ) -> Option<WireDartCodecOutputSpec> {
         match mode {
@@ -31,7 +31,7 @@ impl BaseCodecEntrypointTrait<WireDartGeneratorContext<'_>, WireDartCodecOutputS
 }
 
 impl WireDartCodecEntrypointTrait<'_> for CstWireDartCodecEntrypoint {
-    fn generate_dart2rust_inner_func_stmt(&self, func: &IrFunc, wire_func_name: &str) -> String {
+    fn generate_dart2rust_inner_func_stmt(&self, func: &MirFunc, wire_func_name: &str) -> String {
         let prepare_stmts = func
             .inputs
             .iter()

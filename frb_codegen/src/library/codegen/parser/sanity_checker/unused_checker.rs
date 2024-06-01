@@ -1,8 +1,8 @@
 use crate::codegen::hir::hierarchical::struct_or_enum::{HirEnum, HirStruct};
 use crate::codegen::mir::namespace::{Namespace, NamespacedName};
-use crate::codegen::mir::pack::IrPack;
-use crate::codegen::mir::ty::delegate::IrTypeDelegate;
-use crate::codegen::mir::ty::IrType;
+use crate::codegen::mir::pack::MirPack;
+use crate::codegen::mir::ty::delegate::MirTypeDelegate;
+use crate::codegen::mir::ty::MirType;
 use crate::codegen::parser::internal_config::RustInputNamespacePack;
 use crate::codegen::parser::misc::extract_src_types_in_paths;
 use crate::codegen::parser::type_parser::path_data::extract_path_data;
@@ -12,7 +12,7 @@ use std::path::{Path, PathBuf};
 use syn::Type;
 
 pub(crate) fn get_unused_types(
-    pack: &IrPack,
+    pack: &MirPack,
     src_structs: &HashMap<String, &HirStruct>,
     src_enums: &HashMap<String, &HirEnum>,
     rust_input_namespace_pack: &RustInputNamespacePack,
@@ -37,14 +37,14 @@ pub(crate) fn get_unused_types(
     Ok(unused_types)
 }
 
-fn get_potential_struct_or_enum_names(ty: &IrType) -> anyhow::Result<Vec<String>> {
+fn get_potential_struct_or_enum_names(ty: &MirType) -> anyhow::Result<Vec<String>> {
     Ok(match ty {
-        IrType::StructRef(ty) => vec![ty.ident.0.name.clone()],
-        IrType::EnumRef(ty) => vec![ty.ident.0.name.clone()],
-        IrType::RustOpaque(ty) => {
+        MirType::StructRef(ty) => vec![ty.ident.0.name.clone()],
+        MirType::EnumRef(ty) => vec![ty.ident.0.name.clone()],
+        MirType::RustOpaque(ty) => {
             get_potential_struct_or_enum_names_from_syn_type(&syn::parse_str(&ty.inner.0)?)?
         }
-        IrType::Delegate(IrTypeDelegate::PrimitiveEnum(ty)) => vec![ty.ir.ident.0.name.clone()],
+        MirType::Delegate(MirTypeDelegate::PrimitiveEnum(ty)) => vec![ty.ir.ident.0.name.clone()],
         _ => vec![],
     })
 }

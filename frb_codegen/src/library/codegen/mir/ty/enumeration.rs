@@ -1,64 +1,64 @@
 // Name "enumeration" not "enum", since the latter is a keyword
 
-use crate::codegen::mir::comment::IrComment;
-use crate::codegen::mir::field::IrField;
-use crate::codegen::mir::ident::IrIdent;
+use crate::codegen::mir::comment::MirComment;
+use crate::codegen::mir::field::MirField;
+use crate::codegen::mir::ident::MirIdent;
 use crate::codegen::mir::namespace::{Namespace, NamespacedName};
-use crate::codegen::mir::ty::structure::IrStruct;
-use crate::codegen::mir::ty::{IrContext, IrType, IrTypeTrait};
+use crate::codegen::mir::ty::structure::MirStruct;
+use crate::codegen::mir::ty::{MirContext, MirType, MirTypeTrait};
 use convert_case::{Case, Casing};
 
 crate::ir! {
-pub struct IrTypeEnumRef {
-    pub ident: IrEnumIdent,
+pub struct MirTypeEnumRef {
+    pub ident: MirEnumIdent,
     pub is_exception: bool,
 }
 
-pub struct IrEnumIdent(pub NamespacedName);
+pub struct MirEnumIdent(pub NamespacedName);
 
-pub struct IrEnum {
+pub struct MirEnum {
     pub name: NamespacedName,
     pub wrapper_name: Option<String>,
-    pub comments: Vec<IrComment>,
-    pub variants: Vec<IrVariant>,
-    pub mode: IrEnumMode,
+    pub comments: Vec<MirComment>,
+    pub variants: Vec<MirVariant>,
+    pub mode: MirEnumMode,
 }
 
 #[derive(Copy)]
-pub enum IrEnumMode {
+pub enum MirEnumMode {
     Simple,
     Complex,
 }
 
-pub struct IrVariant {
-    pub name: IrIdent,
-    pub wrapper_name: IrIdent,
-    pub comments: Vec<IrComment>,
-    pub kind: IrVariantKind,
+pub struct MirVariant {
+    pub name: MirIdent,
+    pub wrapper_name: MirIdent,
+    pub comments: Vec<MirComment>,
+    pub kind: MirVariantKind,
 }
 
-pub enum IrVariantKind {
+pub enum MirVariantKind {
     Value,
-    Struct(IrStruct),
+    Struct(MirStruct),
 }
 }
 
-impl IrTypeEnumRef {
+impl MirTypeEnumRef {
     #[inline]
-    pub fn get<'a>(&self, file: &'a impl IrContext) -> &'a IrEnum {
+    pub fn get<'a>(&self, file: &'a impl MirContext) -> &'a MirEnum {
         &file.enum_pool()[&self.ident]
     }
 }
 
-impl IrTypeTrait for IrTypeEnumRef {
-    fn visit_children_types<F: FnMut(&IrType) -> bool>(
+impl MirTypeTrait for MirTypeEnumRef {
+    fn visit_children_types<F: FnMut(&MirType) -> bool>(
         &self,
         f: &mut F,
-        ir_context: &impl IrContext,
+        ir_context: &impl MirContext,
     ) {
         let enu = self.get(ir_context);
         for variant in enu.variants() {
-            if let IrVariantKind::Struct(st) = &variant.kind {
+            if let MirVariantKind::Struct(st) = &variant.kind {
                 st.fields
                     .iter()
                     .for_each(|field| field.ty.visit_types(f, ir_context));
@@ -79,22 +79,22 @@ impl IrTypeTrait for IrTypeEnumRef {
     }
 }
 
-impl IrEnum {
-    pub fn variants(&self) -> &[IrVariant] {
+impl MirEnum {
+    pub fn variants(&self) -> &[MirVariant] {
         &self.variants
     }
 }
 
-impl IrVariantKind {
-    pub(crate) fn fields(&self) -> Vec<IrField> {
+impl MirVariantKind {
+    pub(crate) fn fields(&self) -> Vec<MirField> {
         match self {
-            IrVariantKind::Value => vec![],
-            IrVariantKind::Struct(st) => st.fields.clone(),
+            MirVariantKind::Value => vec![],
+            MirVariantKind::Struct(st) => st.fields.clone(),
         }
     }
 }
 
-impl From<NamespacedName> for IrEnumIdent {
+impl From<NamespacedName> for MirEnumIdent {
     fn from(value: NamespacedName) -> Self {
         Self(value)
     }

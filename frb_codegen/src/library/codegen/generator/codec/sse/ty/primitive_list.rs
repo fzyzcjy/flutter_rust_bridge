@@ -30,7 +30,7 @@ impl<'a> CodecSseTyTrait for PrimitiveListCodecSseTy<'a> {
                 self.ir.strict_dart_type.then(|| {
                     general_list_generate_encode(
                         lang,
-                        &IrType::Primitive(self.ir.primitive.clone()),
+                        &MirType::Primitive(self.ir.primitive.clone()),
                     )
                 })
             }
@@ -51,7 +51,7 @@ impl<'a> CodecSseTyTrait for PrimitiveListCodecSseTy<'a> {
                 self.ir.strict_dart_type.then(|| {
                     general_list_generate_decode(
                         lang,
-                        &IrType::Primitive(self.ir.primitive.clone()),
+                        &MirType::Primitive(self.ir.primitive.clone()),
                         self.context,
                     )
                 })

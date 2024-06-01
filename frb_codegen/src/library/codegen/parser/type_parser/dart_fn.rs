@@ -1,7 +1,7 @@
-use crate::codegen::mir::ty::dart_fn::IrDartFnOutput;
-use crate::codegen::mir::ty::dart_fn::IrTypeDartFn;
-use crate::codegen::mir::ty::delegate::IrTypeDelegate;
-use crate::codegen::mir::ty::IrType;
+use crate::codegen::mir::ty::dart_fn::MirDartFnOutput;
+use crate::codegen::mir::ty::dart_fn::MirTypeDartFn;
+use crate::codegen::mir::ty::delegate::MirTypeDelegate;
+use crate::codegen::mir::ty::MirType;
 use crate::codegen::parser::type_parser::result::{parse_type_maybe_result, ResultTypeInfo};
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use crate::if_then_some;
@@ -15,7 +15,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_impl_trait_dart_fn(
         &mut self,
         type_impl_trait: &TypeImplTrait,
-    ) -> anyhow::Result<IrType> {
+    ) -> anyhow::Result<MirType> {
         let trait_bound = (type_impl_trait.bounds.iter())
             .filter_map(
                 |x| if_then_some!(let TypeParamBound::Trait(trait_bound) = x, trait_bound.clone()),
@@ -43,9 +43,9 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
             let output = self.parse_dart_fn_output(&arguments.output)?;
 
-            return Ok(IrType::DartFn(IrTypeDartFn {
+            return Ok(MirType::DartFn(MirTypeDartFn {
                 inputs,
-                output: Box::new(IrDartFnOutput {
+                output: Box::new(MirDartFnOutput {
                     normal: output.ok_output,
                     error: output.error_output.clone().unwrap_or(FALLBACK_ERROR_TYPE),
                     api_fallible: output.error_output.is_some(),
@@ -93,7 +93,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     }
 }
 
-const FALLBACK_ERROR_TYPE: IrType = IrType::Delegate(IrTypeDelegate::AnyhowException);
+const FALLBACK_ERROR_TYPE: MirType = MirType::Delegate(MirTypeDelegate::AnyhowException);
 
 // // Use this unit "test" to see how a type will be parsed into a tree
 // #[cfg(test)]

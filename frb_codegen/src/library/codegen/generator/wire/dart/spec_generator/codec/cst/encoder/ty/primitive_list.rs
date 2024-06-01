@@ -2,8 +2,8 @@ use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
-use crate::codegen::mir::ty::primitive::IrTypePrimitive;
-use crate::codegen::mir::ty::IrTypeTrait;
+use crate::codegen::mir::ty::primitive::MirTypePrimitive;
+use crate::codegen::mir::ty::MirTypeTrait;
 use crate::library::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 
@@ -25,13 +25,13 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for PrimitiveListWireDartCodecCst
                 return ans;",
                 self.ir.safe_ident(),
                 match self.ir.primitive {
-                    IrTypePrimitive::I64 | IrTypePrimitive::U64 => "raw.inner",
+                    MirTypePrimitive::I64 | MirTypePrimitive::U64 => "raw.inner",
                     _ => "raw",
                 }
             )),
             web: Some(
                 match self.ir.primitive {
-                    IrTypePrimitive::I64 | IrTypePrimitive::U64 => "return raw.inner;",
+                    MirTypePrimitive::I64 | MirTypePrimitive::U64 => "return raw.inner;",
                     _ => "return raw;",
                 }
                 .into(),
@@ -46,7 +46,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for PrimitiveListWireDartCodecCst
                 format!("ffi.Pointer<wire_cst_{}>", self.ir.safe_ident())
             }
             Target::Web => match self.ir.primitive {
-                IrTypePrimitive::I64 | IrTypePrimitive::U64 => {
+                MirTypePrimitive::I64 | MirTypePrimitive::U64 => {
                     "Object /* BigInt64Array */".to_owned()
                 }
                 _ => ApiDartGenerator::new(self.ir.clone(), self.context.as_api_dart_context())

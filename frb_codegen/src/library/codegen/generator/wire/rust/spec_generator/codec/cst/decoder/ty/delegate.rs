@@ -6,10 +6,10 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::mir::ty::delegate::{
-    IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegateMap, IrTypeDelegatePrimitiveEnum,
-    IrTypeDelegateSet, IrTypeDelegateTime,
+    MirTypeDelegate, MirTypeDelegateArray, MirTypeDelegateMap, MirTypeDelegatePrimitiveEnum,
+    MirTypeDelegateSet, MirTypeDelegateTime,
 };
-use crate::library::codegen::mir::ty::IrTypeTrait;
+use crate::library::codegen::mir::ty::MirTypeTrait;
 
 impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGenerator<'a> {
     fn generate_decoder_class(&self) -> Option<WireRustOutputCode> {
@@ -18,27 +18,27 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
 
     fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
         match &self.ir {
-            IrTypeDelegate::String => {
+            MirTypeDelegate::String => {
                 Acc {
                     web: Some("self".into()),
                     io: Some("let vec: Vec<u8> = self.cst_decode(); String::from_utf8(vec).unwrap()".into()),
                     ..Default::default()
                 }
             },
-            IrTypeDelegate::Char => {
+            MirTypeDelegate::Char => {
                 Acc {
                     web: Some("CstDecode::<String>::cst_decode(self).chars().next().unwrap()".into()),
                     io: Some("CstDecode::<String>::cst_decode(self).chars().next().unwrap()".into()),
                     ..Default::default()
                 }
             },
-            // IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
+            // MirTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
             //     Acc::distribute(Some("flutter_rust_bridge::ZeroCopyBuffer(self.cst_decode())".into()))
             // },
-            // IrTypeDelegate::StringList => general_list_impl_decode_body(),
-            IrTypeDelegate::PrimitiveEnum (inner) => rust_decode_primitive_enum(inner, self.context.ir_pack, "self").into(),
-            IrTypeDelegate::Time(ir) => {
-                if ir == &IrTypeDelegateTime::Duration {
+            // MirTypeDelegate::StringList => general_list_impl_decode_body(),
+            MirTypeDelegate::PrimitiveEnum (inner) => rust_decode_primitive_enum(inner, self.context.ir_pack, "self").into(),
+            MirTypeDelegate::Time(ir) => {
+                if ir == &MirTypeDelegateTime::Duration {
                     return Acc {
                         io: Some("chrono::Duration::microseconds(self)".into()),
                         web: None,
@@ -51,11 +51,11 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
                 let codegen_utc = format!("chrono::DateTime::<chrono::Utc>::from_naive_utc_and_offset({codegen_naive}, chrono::Utc)");
                 let codegen_local = format!("chrono::DateTime::<chrono::Local>::from({codegen_utc})");
                 let codegen_conversion = match ir {
-                    IrTypeDelegateTime::Naive => codegen_naive,
-                    IrTypeDelegateTime::Utc => codegen_utc.as_str(),
-                    IrTypeDelegateTime::Local => codegen_local.as_str(),
+                    MirTypeDelegateTime::Naive => codegen_naive,
+                    MirTypeDelegateTime::Utc => codegen_utc.as_str(),
+                    MirTypeDelegateTime::Local => codegen_local.as_str(),
                     // frb-coverage:ignore-start
-                    IrTypeDelegateTime::Duration => unreachable!(),
+                    MirTypeDelegateTime::Duration => unreachable!(),
                     // frb-coverage:ignore-end
                 };
                 Acc {
@@ -63,43 +63,43 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
                     ..Default::default()
                 }
             },
-            // IrTypeDelegate::TimeList(_) => {
+            // MirTypeDelegate::TimeList(_) => {
             //     Acc::distribute(
             //         Some(
             //             "let vec: Vec<i64> = self.cst_decode(); vec.into_iter().map(CstDecode::cst_decode).collect()".into()
             //         )
             //     )
             // }
-            IrTypeDelegate::Uuid => Acc::distribute(
+            MirTypeDelegate::Uuid => Acc::distribute(
                 Some(
                     "let single: Vec<u8> = self.cst_decode(); flutter_rust_bridge::for_generated::decode_uuid(single)".into(),
                 ),
             ),
-            // IrTypeDelegate::Uuids => Acc::distribute(
+            // MirTypeDelegate::Uuids => Acc::distribute(
             //     Some(
             //         "let multiple: Vec<u8> = self.cst_decode(); flutter_rust_bridge::for_generated::decode_uuids(multiple)".into(),
             //     ),
             // ),
-            IrTypeDelegate::Backtrace | IrTypeDelegate::AnyhowException => Acc::new(|target| match target {
+            MirTypeDelegate::Backtrace | MirTypeDelegate::AnyhowException => Acc::new(|target| match target {
                 TargetOrCommon::Common => None,
                 TargetOrCommon::Io | TargetOrCommon::Web => Some("unimplemented!()".into()),
             }),
-            IrTypeDelegate::Array(array) => {
+            MirTypeDelegate::Array(array) => {
                 self.generate_skip_web_if_jsvalue(generate_decode_array(array))
             },
-            IrTypeDelegate::Map(ir) => self.generate_skip_web_if_jsvalue(generate_decode_map(ir)),
-            IrTypeDelegate::Set(ir) => self.generate_skip_web_if_jsvalue(generate_decode_set(ir)),
-            IrTypeDelegate::StreamSink(_) => Acc {
+            MirTypeDelegate::Map(ir) => self.generate_skip_web_if_jsvalue(generate_decode_map(ir)),
+            MirTypeDelegate::Set(ir) => self.generate_skip_web_if_jsvalue(generate_decode_set(ir)),
+            MirTypeDelegate::StreamSink(_) => Acc {
                 web: Some("StreamSink::deserialize(self)".into()),
                 io: Some("let raw: String = self.cst_decode(); StreamSink::deserialize(raw)".into()),
                 ..Default::default()
             },
-            IrTypeDelegate::BigPrimitive(_) => Acc::distribute(
+            MirTypeDelegate::BigPrimitive(_) => Acc::distribute(
                 Some(
                     "CstDecode::<String>::cst_decode(self).parse().unwrap()".into(),
                 ),
             ),
-            IrTypeDelegate::RustAutoOpaqueExplicit(_) => Acc {
+            MirTypeDelegate::RustAutoOpaqueExplicit(_) => Acc {
                 io: Some("flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(self.cst_decode())".into()),
                 ..Default::default()
             },
@@ -108,38 +108,38 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
 
     fn generate_impl_decode_jsvalue_body(&self) -> Option<std::borrow::Cow<str>> {
         Some(match &self.ir {
-            IrTypeDelegate::String => {
+            MirTypeDelegate::String => {
                 "self.as_string().expect(\"non-UTF-8 string, or not a string\")".into()
             }
-            IrTypeDelegate::Char => {
+            MirTypeDelegate::Char => {
                 "CstDecode::<String>::cst_decode(self).chars().next().unwrap()".into()
             }
-            IrTypeDelegate::PrimitiveEnum (IrTypeDelegatePrimitiveEnum { repr, .. }) => format!(
+            MirTypeDelegate::PrimitiveEnum (MirTypeDelegatePrimitiveEnum { repr, .. }) => format!(
                 "(self.unchecked_into_f64() as {}).cst_decode()",
                 WireRustCodecCstGenerator::new(repr.clone(), self.context).rust_wire_type(Target::Web)
             )
                 .into(),
-            // IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
+            // MirTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
             //     "flutter_rust_bridge::ZeroCopyBuffer(self.cst_decode())".into()
             // }
-            IrTypeDelegate::Time(ir) => match ir {
-                IrTypeDelegateTime::Duration => "chrono::Duration::milliseconds(CstDecode::<i64>::cst_decode(self))".into(),
+            MirTypeDelegate::Time(ir) => match ir {
+                MirTypeDelegateTime::Duration => "chrono::Duration::milliseconds(CstDecode::<i64>::cst_decode(self))".into(),
                 _ => "CstDecode::<i64>::cst_decode(self).cst_decode()".into(),
             },
-            // IrTypeDelegate::TimeList(_) =>
+            // MirTypeDelegate::TimeList(_) =>
             //     "self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::BigInt64Array>().to_vec().into_iter().map(CstDecode::cst_decode).collect()".into(),
-            IrTypeDelegate::Uuid /*| IrTypeDelegate::Uuids*/ => {
+            MirTypeDelegate::Uuid /*| MirTypeDelegate::Uuids*/ => {
                 "self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Uint8Array>().to_vec().into_boxed_slice().cst_decode()"
                     .into()
             }
-            IrTypeDelegate::Backtrace | IrTypeDelegate::AnyhowException => "unimplemented!()".into(),
-            IrTypeDelegate::Array(array) => generate_decode_array(array)
+            MirTypeDelegate::Backtrace | MirTypeDelegate::AnyhowException => "unimplemented!()".into(),
+            MirTypeDelegate::Array(array) => generate_decode_array(array)
                 .into(),
-            IrTypeDelegate::Map(ir) => generate_decode_map(ir).into(),
-            IrTypeDelegate::Set(ir) => generate_decode_set(ir).into(),
-            IrTypeDelegate::StreamSink(_) => "StreamSink::deserialize(self.as_string().expect(\"should be a string\"))".into(),
-            IrTypeDelegate::BigPrimitive(_) => "CstDecode::<String>::cst_decode(self).parse().unwrap()".into(),
-            IrTypeDelegate::RustAutoOpaqueExplicit(_) =>
+            MirTypeDelegate::Map(ir) => generate_decode_map(ir).into(),
+            MirTypeDelegate::Set(ir) => generate_decode_set(ir).into(),
+            MirTypeDelegate::StreamSink(_) => "StreamSink::deserialize(self.as_string().expect(\"should be a string\"))".into(),
+            MirTypeDelegate::BigPrimitive(_) => "CstDecode::<String>::cst_decode(self).parse().unwrap()".into(),
+            MirTypeDelegate::RustAutoOpaqueExplicit(_) =>
                 "flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(self.cst_decode())".into(),
         })
     }
@@ -153,9 +153,9 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
     fn rust_wire_type(&self, target: Target) -> String {
         // frb-coverage:ignore-end
         match (&self.ir, target) {
-            (IrTypeDelegate::String, Target::Web) => "String".into(),
-            // (IrTypeDelegate::StringList, Target::Io) => "wire_cst_StringList".to_owned(),
-            // (IrTypeDelegate::StringList, Target::Web) => JS_VALUE.into(),
+            (MirTypeDelegate::String, Target::Web) => "String".into(),
+            // (MirTypeDelegate::StringList, Target::Io) => "wire_cst_StringList".to_owned(),
+            // (MirTypeDelegate::StringList, Target::Web) => JS_VALUE.into(),
             _ => WireRustCodecCstGenerator::new(self.ir.get_delegate(), self.context)
                 .rust_wire_type(target),
         }
@@ -180,14 +180,14 @@ impl<'a> DelegateWireRustCodecCstGenerator<'a> {
     }
 }
 
-fn generate_decode_array(array: &IrTypeDelegateArray) -> String {
+fn generate_decode_array(array: &MirTypeDelegateArray) -> String {
     format!(
         "let vec: Vec<{}> = self.cst_decode(); flutter_rust_bridge::for_generated::from_vec_to_array(vec)",
         array.inner().rust_api_type()
     )
 }
 
-fn generate_decode_map(ir: &IrTypeDelegateMap) -> String {
+fn generate_decode_map(ir: &MirTypeDelegateMap) -> String {
     format!(
         "let vec: Vec<({}, {})> = self.cst_decode(); vec.into_iter().collect()",
         ir.key.rust_api_type(),
@@ -195,7 +195,7 @@ fn generate_decode_map(ir: &IrTypeDelegateMap) -> String {
     )
 }
 
-fn generate_decode_set(ir: &IrTypeDelegateSet) -> String {
+fn generate_decode_set(ir: &MirTypeDelegateSet) -> String {
     format!(
         "let vec: Vec<{}> = self.cst_decode(); vec.into_iter().collect()",
         ir.inner.rust_api_type()

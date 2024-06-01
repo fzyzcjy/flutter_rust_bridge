@@ -1,8 +1,8 @@
 use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
-use crate::codegen::mir::annotation::IrDartAnnotation;
-use crate::codegen::mir::default::IrDefaultValue;
-use crate::codegen::mir::func::IrFuncAccessorMode;
-use crate::codegen::mir::import::IrDartImport;
+use crate::codegen::mir::annotation::MirDartAnnotation;
+use crate::codegen::mir::default::MirDefaultValue;
+use crate::codegen::mir::func::MirFuncAccessorMode;
+use crate::codegen::mir::import::MirDartImport;
 use crate::codegen::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::if_then_some;
 use anyhow::Context;
@@ -38,7 +38,7 @@ impl FrbAttributes {
         ))
     }
 
-    pub(crate) fn default_value(&self) -> Option<IrDefaultValue> {
+    pub(crate) fn default_value(&self) -> Option<MirDefaultValue> {
         let candidates = self
             .0
             .iter()
@@ -67,11 +67,11 @@ impl FrbAttributes {
         self.any_eq(&FrbAttribute::StreamDartAwait)
     }
 
-    pub(crate) fn accessor(&self) -> Option<IrFuncAccessorMode> {
+    pub(crate) fn accessor(&self) -> Option<MirFuncAccessorMode> {
         if self.any_eq(&FrbAttribute::Getter) {
-            Some(IrFuncAccessorMode::Getter)
+            Some(MirFuncAccessorMode::Getter)
         } else if self.any_eq(&FrbAttribute::Setter) {
-            Some(IrFuncAccessorMode::Setter)
+            Some(MirFuncAccessorMode::Setter)
         } else {
             None
         }
@@ -145,7 +145,7 @@ impl FrbAttributes {
             .collect()
     }
 
-    pub(crate) fn dart_metadata(&self) -> Vec<IrDartAnnotation> {
+    pub(crate) fn dart_metadata(&self) -> Vec<MirDartAnnotation> {
         self.0
             .iter()
             .filter_map(
@@ -339,13 +339,13 @@ impl Parse for FrbAttributeMirror {
 }
 
 #[derive(Clone, Debug, Eq, PartialEq)]
-struct FrbAttributeDartMetadata(Vec<IrDartAnnotation>);
+struct FrbAttributeDartMetadata(Vec<MirDartAnnotation>);
 
 impl Parse for FrbAttributeDartMetadata {
     fn parse(input: ParseStream<'_>) -> Result<Self> {
         let content;
         parenthesized!(content in input);
-        let annotations = Punctuated::<IrDartAnnotation, Token![,]>::parse_terminated(&content)?
+        let annotations = Punctuated::<MirDartAnnotation, Token![,]>::parse_terminated(&content)?
             .into_iter()
             .collect();
         Ok(Self(annotations))
@@ -354,20 +354,20 @@ impl Parse for FrbAttributeDartMetadata {
 
 // TODO unused, rm?
 // #[derive(Clone, Debug)]
-// struct DartImports(Vec<IrDartImport>);
+// struct DartImports(Vec<MirDartImport>);
 //
 // impl Parse for DartImports {
 //     fn parse(input: ParseStream<'_>) -> Result<Self> {
 //         let content;
 //         parenthesized!(content in input);
-//         let imports = Punctuated::<IrDartImport, Token![,]>::parse_terminated(&content)?
+//         let imports = Punctuated::<MirDartImport, Token![,]>::parse_terminated(&content)?
 //             .into_iter()
 //             .collect();
 //         Ok(Self(imports))
 //     }
 // }
 
-impl Parse for IrDartImport {
+impl Parse for MirDartImport {
     fn parse(input: ParseStream<'_>) -> Result<Self> {
         let uri: LitStr = input.parse()?;
         let alias: Option<String> = if input.peek(token::As) {
@@ -384,12 +384,12 @@ impl Parse for IrDartImport {
     }
 }
 
-impl Parse for IrDartAnnotation {
+impl Parse for MirDartAnnotation {
     fn parse(input: ParseStream<'_>) -> Result<Self> {
         let annotation: LitStr = input.parse()?;
         let library = if input.peek(frb_keyword::import) {
             let _ = input.parse::<frb_keyword::import>()?;
-            let library: IrDartImport = input.parse()?;
+            let library: MirDartImport = input.parse()?;
             Some(library)
         } else {
             None
@@ -440,23 +440,23 @@ impl Parse for FrbAttributeDefaultValue {
 }
 
 impl FrbAttributeDefaultValue {
-    fn to_ir_default_value(&self) -> IrDefaultValue {
+    fn to_ir_default_value(&self) -> MirDefaultValue {
         match self {
-            Self::Str(lit) => IrDefaultValue::String {
+            Self::Str(lit) => MirDefaultValue::String {
                 content: lit.value(),
             },
 
             // other types
-            Self::Bool(lit) => IrDefaultValue::Others {
+            Self::Bool(lit) => MirDefaultValue::Others {
                 dart_literal: (if lit.value { "true" } else { "false" }).to_owned(),
             },
-            Self::Int(lit) => IrDefaultValue::Others {
+            Self::Int(lit) => MirDefaultValue::Others {
                 dart_literal: lit.base10_digits().into(),
             },
-            Self::Float(lit) => IrDefaultValue::Others {
+            Self::Float(lit) => MirDefaultValue::Others {
                 dart_literal: lit.base10_digits().into(),
             },
-            Self::Vec(lit) => IrDefaultValue::Others {
+            Self::Vec(lit) => MirDefaultValue::Others {
                 dart_literal: format!(
                     "const [{}]",
                     lit.iter()
@@ -524,7 +524,7 @@ impl Parse for FrbAttributeName {
 
 #[cfg(test)]
 mod tests {
-    use crate::codegen::mir::default::IrDefaultValue;
+    use crate::codegen::mir::default::MirDefaultValue;
     use crate::codegen::parser::attribute_parser::{
         FrbAttribute, FrbAttributeDartCode, FrbAttributeDefaultValue, FrbAttributeMirror,
         FrbAttributeName, FrbAttributes, NamedOption,
@@ -714,31 +714,31 @@ mod tests {
         for (text, expect_ir_default_value) in vec![
             (
                 "\"Hello\"",
-                IrDefaultValue::String {
+                MirDefaultValue::String {
                     content: "Hello".to_string(),
                 },
             ),
             (
                 "true",
-                IrDefaultValue::Others {
+                MirDefaultValue::Others {
                     dart_literal: "true".to_string(),
                 },
             ),
             (
                 "100",
-                IrDefaultValue::Others {
+                MirDefaultValue::Others {
                     dart_literal: "100".to_string(),
                 },
             ),
             (
                 "1.5",
-                IrDefaultValue::Others {
+                MirDefaultValue::Others {
                     dart_literal: "1.5".to_string(),
                 },
             ),
             (
                 "[100,200]",
-                IrDefaultValue::Others {
+                MirDefaultValue::Others {
                     dart_literal: "const [100,200]".to_string(),
                 },
             ),

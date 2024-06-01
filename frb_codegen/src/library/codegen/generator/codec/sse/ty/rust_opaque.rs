@@ -23,11 +23,11 @@ impl<'a> CodecSseTyTrait for RustOpaqueCodecSseTy<'a> {
     }
 }
 
-const EXTERNAL_SIZE_TYPE: IrType = IrType::Primitive(IrTypePrimitive::I32);
+const EXTERNAL_SIZE_TYPE: MirType = MirType::Primitive(MirTypePrimitive::I32);
 
 pub(super) fn generate_generalized_rust_opaque_decode(
     lang: &Lang,
-    ir: IrType,
+    ir: MirType,
     codec: RustOpaqueCodecMode,
     context: CodecSseTyContext,
 ) -> String {
@@ -36,13 +36,13 @@ pub(super) fn generate_generalized_rust_opaque_decode(
             format!(
                 "return {}.frbInternalSseDecode({}, {});",
                 ApiDartGenerator::new(ir, context.as_api_dart_context()).dart_api_type(),
-                lang.call_decode(&IrTypeRustOpaque::DELEGATE_TYPE),
+                lang.call_decode(&MirTypeRustOpaque::DELEGATE_TYPE),
                 lang.call_decode(&EXTERNAL_SIZE_TYPE),
             )
         }
         Lang::RustLang(_) => simple_delegate_decode(
             lang,
-            &IrTypeRustOpaque::DELEGATE_TYPE,
+            &MirTypeRustOpaque::DELEGATE_TYPE,
             &generate_decode_rust_opaque("inner", codec),
         ),
     }
@@ -71,7 +71,7 @@ pub(super) fn generate_generalized_rust_opaque_encode(lang: &Lang, needs_move: &
     match lang {
         Lang::DartLang(_) => simple_delegate_encode(
             lang,
-            &IrTypeRustOpaque::DELEGATE_TYPE,
+            &MirTypeRustOpaque::DELEGATE_TYPE,
             &format!("self.frbInternalSseEncode(move: {needs_move})"),
         ),
         Lang::RustLang(_) => {
@@ -81,7 +81,7 @@ pub(super) fn generate_generalized_rust_opaque_encode(lang: &Lang, needs_move: &
                 {};
                 {};
                 ",
-                lang.call_encode(&IrTypeRustOpaque::DELEGATE_TYPE, "ptr"),
+                lang.call_encode(&MirTypeRustOpaque::DELEGATE_TYPE, "ptr"),
                 lang.call_encode(&EXTERNAL_SIZE_TYPE, "size"),
             )
         }

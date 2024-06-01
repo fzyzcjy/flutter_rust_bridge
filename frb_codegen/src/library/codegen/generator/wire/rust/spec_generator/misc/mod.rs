@@ -7,10 +7,10 @@ use crate::codegen::generator::wire::rust::spec_generator::base::{
 };
 use crate::codegen::generator::wire::rust::spec_generator::misc::wire_func::generate_wire_func;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
-use crate::codegen::generator::wire::rust::IrPackComputedCache;
-use crate::codegen::mir::pack::IrPack;
+use crate::codegen::generator::wire::rust::MirPackComputedCache;
+use crate::codegen::mir::pack::MirPack;
 use crate::codegen::mir::ty::rust_opaque::RustOpaqueCodecMode;
-use crate::codegen::mir::ty::IrType;
+use crate::codegen::mir::ty::MirType;
 use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
 use itertools::Itertools;
 use serde::Serialize;
@@ -37,7 +37,7 @@ pub(crate) struct WireRustOutputSpecMisc {
 
 pub(crate) fn generate(
     context: WireRustGeneratorContext,
-    cache: &IrPackComputedCache,
+    cache: &MirPackComputedCache,
 ) -> anyhow::Result<WireRustOutputSpecMisc> {
     let content_hash = generate_content_hash(context.ir_pack);
     Ok(WireRustOutputSpecMisc {
@@ -87,7 +87,7 @@ clippy::let_unit_value
 )]"#;
 
 fn generate_imports(
-    types: &[IrType],
+    types: &[MirType],
     context: WireRustGeneratorContext,
 ) -> Acc<Vec<WireRustOutputCode>> {
     let imports_from_types = types
@@ -118,7 +118,7 @@ use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, WriteBytesExt,
     })
 }
 
-fn generate_static_checks(types: &[IrType], context: WireRustGeneratorContext) -> String {
+fn generate_static_checks(types: &[MirType], context: WireRustGeneratorContext) -> String {
     let raw = types
         .iter()
         .filter_map(|ty| WireRustGenerator::new(ty.clone(), context).generate_static_checks())
@@ -208,7 +208,7 @@ fn generate_boilerplate(
 //     }
 // }
 
-fn generate_handler(ir_pack: &IrPack) -> String {
+fn generate_handler(ir_pack: &MirPack) -> String {
     if let Some(existing_handler) = &ir_pack.existing_handler {
         format!("pub use {};", existing_handler.rust_style())
     } else {
@@ -217,7 +217,7 @@ fn generate_handler(ir_pack: &IrPack) -> String {
 }
 
 // TODO can compute hash for more things
-fn generate_content_hash(ir_pack: &IrPack) -> i32 {
+fn generate_content_hash(ir_pack: &MirPack) -> i32 {
     let mut hasher = Sha1::new();
     hasher.update(
         (ir_pack.funcs.iter())

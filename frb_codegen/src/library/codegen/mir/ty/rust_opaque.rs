@@ -1,6 +1,6 @@
 use crate::codegen::mir::namespace::Namespace;
-use crate::codegen::mir::ty::primitive::IrTypePrimitive;
-use crate::codegen::mir::ty::{IrContext, IrType, IrTypeTrait};
+use crate::codegen::mir::ty::primitive::MirTypePrimitive;
+use crate::codegen::mir::ty::{MirContext, MirType, MirTypeTrait};
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 use lazy_static::lazy_static;
@@ -11,14 +11,14 @@ use strum_macros::{Display, EnumIter};
 use syn::Type;
 
 crate::ir! {
-pub struct IrTypeRustOpaque {
+pub struct MirTypeRustOpaque {
     pub namespace: Namespace,
-    pub inner: IrRustOpaqueInner,
+    pub inner: MirRustOpaqueInner,
     pub codec: RustOpaqueCodecMode,
     pub brief_name: bool,
 }
 
-pub struct IrRustOpaqueInner(pub String);
+pub struct MirRustOpaqueInner(pub String);
 }
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize, Hash, Display, EnumIter)]
@@ -40,10 +40,10 @@ impl RustOpaqueCodecMode {
     }
 }
 
-impl IrTypeRustOpaque {
+impl MirTypeRustOpaque {
     pub fn new(
         namespace: Namespace,
-        inner: IrRustOpaqueInner,
+        inner: MirRustOpaqueInner,
         codec: RustOpaqueCodecMode,
         brief_name: bool,
     ) -> Self {
@@ -55,22 +55,22 @@ impl IrTypeRustOpaque {
         }
     }
 
-    pub(crate) fn get_delegate(&self) -> IrType {
+    pub(crate) fn get_delegate(&self) -> MirType {
         Self::DELEGATE_TYPE.clone()
     }
 
-    pub(crate) const DELEGATE_TYPE: IrType = IrType::Primitive(IrTypePrimitive::Usize);
+    pub(crate) const DELEGATE_TYPE: MirType = MirType::Primitive(MirTypePrimitive::Usize);
 
     pub(crate) fn sanitized_type(&self) -> String {
         rust_type_to_sanitized_type(&self.inner.0, self.brief_name)
     }
 }
 
-impl IrTypeTrait for IrTypeRustOpaque {
-    fn visit_children_types<F: FnMut(&IrType) -> bool>(
+impl MirTypeTrait for MirTypeRustOpaque {
+    fn visit_children_types<F: FnMut(&MirType) -> bool>(
         &self,
         f: &mut F,
-        ir_context: &impl IrContext,
+        ir_context: &impl MirContext,
     ) {
         self.get_delegate().visit_types(f, ir_context)
     }
@@ -88,7 +88,7 @@ impl IrTypeTrait for IrTypeRustOpaque {
     }
 
     // Because we are using usize on the wirre
-    fn as_primitive(&self) -> Option<&IrTypePrimitive> {
+    fn as_primitive(&self) -> Option<&MirTypePrimitive> {
         Some(&RUST_OPAQUE_AS_PRIMITIVE)
     }
 
@@ -97,9 +97,9 @@ impl IrTypeTrait for IrTypeRustOpaque {
     }
 }
 
-pub(super) const RUST_OPAQUE_AS_PRIMITIVE: IrTypePrimitive = IrTypePrimitive::Usize;
+pub(super) const RUST_OPAQUE_AS_PRIMITIVE: MirTypePrimitive = MirTypePrimitive::Usize;
 
-impl IrRustOpaqueInner {
+impl MirRustOpaqueInner {
     pub(crate) fn safe_ident(&self) -> String {
         lazy_static! {
             static ref NEG_FILTER: Regex = Regex::new(r"[^a-zA-Z0-9_]").unwrap();

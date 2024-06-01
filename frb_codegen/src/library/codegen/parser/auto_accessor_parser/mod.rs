@@ -2,10 +2,10 @@ mod field;
 
 use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::hir::hierarchical::struct_or_enum::HirStruct;
-use crate::codegen::mir::func::{IrFunc, IrFuncAccessorMode};
+use crate::codegen::mir::func::{MirFunc, MirFuncAccessorMode};
 use crate::codegen::mir::namespace::NamespacedName;
 use crate::codegen::mir::ty::rust_opaque::RustOpaqueCodecMode;
-use crate::codegen::mir::ty::{IrContext, IrType};
+use crate::codegen::mir::ty::{MirContext, MirType};
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::parser::misc::extract_src_types_in_paths;
@@ -21,7 +21,7 @@ pub(crate) fn parse_auto_accessors(
     config: &ParserInternalConfig,
     src_structs: &HashMap<String, &HirStruct>,
     type_parser: &mut TypeParser,
-) -> anyhow::Result<Vec<IrFunc>> {
+) -> anyhow::Result<Vec<MirFunc>> {
     let src_structs_in_paths =
         extract_src_types_in_paths(src_structs, &config.rust_input_namespace_pack)?;
 
@@ -47,7 +47,7 @@ fn parse_auto_accessors_of_struct(
     config: &ParserInternalConfig,
     struct_name: &NamespacedName,
     type_parser: &mut TypeParser,
-) -> anyhow::Result<Vec<IrFuncAndSanityCheckInfo>> {
+) -> anyhow::Result<Vec<MirFuncAndSanityCheckInfo>> {
     let context = create_parsing_context(
         struct_name,
         config.default_stream_sink_codec,
@@ -60,13 +60,13 @@ fn parse_auto_accessors_of_struct(
             // We do not care about parsing errors here (e.g. some type that we do not support)
             Err(_) => return Ok(vec![]),
         };
-    if !matches!(ty_direct_parse, IrType::RustAutoOpaqueImplicit(_)) {
+    if !matches!(ty_direct_parse, MirType::RustAutoOpaqueImplicit(_)) {
         return Ok(vec![]);
     }
 
     let ty_struct_ref = TypeParserWithContext::new(type_parser, &context)
         .parse_type_path_data_struct(&(&struct_name.name, &[]), Some(false));
-    let ty_struct_ident = if let Ok(Some(IrType::StructRef(ir))) = ty_struct_ref {
+    let ty_struct_ident = if let Ok(Some(MirType::StructRef(ir))) = ty_struct_ref {
         ir.ident
     } else {
         return Ok(vec![]);
@@ -76,7 +76,7 @@ fn parse_auto_accessors_of_struct(
     (ty_struct.fields.iter())
         .filter(|field| field.is_rust_public.unwrap())
         .flat_map(|field| {
-            [IrFuncAccessorMode::Getter, IrFuncAccessorMode::Setter]
+            [MirFuncAccessorMode::Getter, MirFuncAccessorMode::Setter]
                 .into_iter()
                 .map(|accessor_mode| {
                     parse_auto_accessor_of_field(
@@ -108,7 +108,7 @@ fn create_parsing_context(
     })
 }
 
-struct IrFuncAndSanityCheckInfo {
-    ir_func: IrFunc,
+struct MirFuncAndSanityCheckInfo {
+    ir_func: MirFunc,
     sanity_check_hint: Option<auto_accessor_checker::SanityCheckHint>,
 }

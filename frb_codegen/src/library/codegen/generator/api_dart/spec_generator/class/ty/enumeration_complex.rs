@@ -5,9 +5,9 @@ use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGenerated
 use crate::codegen::generator::api_dart::spec_generator::misc::{
     generate_dart_comments, generate_dart_maybe_implements_exception,
 };
-use crate::codegen::mir::field::IrField;
-use crate::codegen::mir::ty::enumeration::{IrEnum, IrVariant, IrVariantKind};
-use crate::codegen::mir::ty::structure::IrStruct;
+use crate::codegen::mir::field::MirField;
+use crate::codegen::mir::ty::enumeration::{MirEnum, MirVariant, MirVariantKind};
+use crate::codegen::mir::ty::structure::MirStruct;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use itertools::Itertools;
@@ -17,7 +17,7 @@ const BACKTRACE_IDENT: &str = "backtrace";
 impl<'a> EnumRefApiDartGenerator<'a> {
     pub(crate) fn generate_mode_complex(
         &self,
-        src: &IrEnum,
+        src: &MirEnum,
         extra_body: &str,
     ) -> Option<ApiDartGeneratedClass> {
         let variants = src
@@ -53,10 +53,10 @@ impl<'a> EnumRefApiDartGenerator<'a> {
         })
     }
 
-    fn generate_mode_complex_variant(&self, variant: &IrVariant) -> String {
+    fn generate_mode_complex_variant(&self, variant: &MirVariant) -> String {
         let args = match &variant.kind {
-            IrVariantKind::Value => "".to_owned(),
-            IrVariantKind::Struct(st) => {
+            MirVariantKind::Value => "".to_owned(),
+            MirVariantKind::Struct(st) => {
                 if st.is_fields_named {
                     self.generate_variant_struct_named(st)
                 } else {
@@ -78,7 +78,7 @@ impl<'a> EnumRefApiDartGenerator<'a> {
         )
     }
 
-    fn generate_variant_struct_unnamed(&self, st: &IrStruct) -> String {
+    fn generate_variant_struct_unnamed(&self, st: &MirStruct) -> String {
         let types = st
             .fields
             .iter()
@@ -107,7 +107,7 @@ impl<'a> EnumRefApiDartGenerator<'a> {
         }
     }
 
-    fn generate_variant_struct_named(&self, st: &IrStruct) -> String {
+    fn generate_variant_struct_named(&self, st: &MirStruct) -> String {
         let fields = st
             .fields
             .iter()
@@ -126,9 +126,9 @@ impl<'a> EnumRefApiDartGenerator<'a> {
         format!("{{ {} }}", fields.join(""))
     }
 
-    fn generate_implements_exception(&self, variant: &IrVariant) -> &str {
+    fn generate_implements_exception(&self, variant: &MirVariant) -> &str {
         let has_backtrace = matches!(&variant.kind,
-            IrVariantKind::Struct(IrStruct {is_fields_named: true, fields, ..}) if fields.iter().any(|field| field.name.raw == BACKTRACE_IDENT));
+            MirVariantKind::Struct(MirStruct {is_fields_named: true, fields, ..}) if fields.iter().any(|field| field.name.raw == BACKTRACE_IDENT));
         if self.ir.is_exception && has_backtrace {
             "@Implements<FrbBacktracedException>()"
         } else {
@@ -137,7 +137,7 @@ impl<'a> EnumRefApiDartGenerator<'a> {
     }
 }
 
-fn optional_boundary_index(fields: &[IrField]) -> Option<usize> {
+fn optional_boundary_index(fields: &[MirField]) -> Option<usize> {
     fields
         .iter()
         .enumerate()

@@ -1,29 +1,29 @@
 use crate::codegen::generator::codec::structs::CodecModePack;
-use crate::codegen::mir::comment::IrComment;
-use crate::codegen::mir::field::IrField;
+use crate::codegen::mir::comment::MirComment;
+use crate::codegen::mir::field::MirField;
 use crate::codegen::mir::namespace::NamespacedName;
-use crate::codegen::mir::ty::delegate::{IrTypeDelegate, IrTypeDelegatePrimitiveEnum};
-use crate::codegen::mir::ty::primitive::IrTypePrimitive;
-use crate::codegen::mir::ty::{IrContext, IrType, IrTypeTrait};
+use crate::codegen::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegatePrimitiveEnum};
+use crate::codegen::mir::ty::primitive::MirTypePrimitive;
+use crate::codegen::mir::ty::{MirContext, MirType, MirTypeTrait};
 use crate::if_then_some;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 
 crate::ir! {
-pub struct IrFunc {
+pub struct MirFunc {
     pub name: NamespacedName,
     pub dart_name: Option<String>,
     pub id: Option<i32>,
-    pub inputs: Vec<IrFuncInput>,
-    pub output: IrFuncOutput,
-    pub owner: IrFuncOwnerInfo,
-    pub mode: IrFuncMode,
+    pub inputs: Vec<MirFuncInput>,
+    pub output: MirFuncOutput,
+    pub owner: MirFuncOwnerInfo,
+    pub mode: MirFuncMode,
     pub stream_dart_await: bool,
     pub rust_async: bool,
     pub initializer: bool,
-    pub arg_mode: IrFuncArgMode,
-    pub accessor: Option<IrFuncAccessorMode>,
-    pub comments: Vec<IrComment>,
+    pub arg_mode: MirFuncArgMode,
+    pub accessor: Option<MirFuncAccessorMode>,
+    pub comments: Vec<MirComment>,
     pub codec_mode_pack: CodecModePack,
     pub rust_call_code: Option<String>,
     // Currently, we use serde only for tests. Since lineno can be unstable, we skip this field for comparison
@@ -31,47 +31,47 @@ pub struct IrFunc {
     pub src_lineno_pseudo: usize,
 }
 
-pub struct IrFuncInput {
+pub struct MirFuncInput {
     pub ownership_mode: Option<OwnershipMode>,
-    pub inner: IrField,
+    pub inner: MirField,
 }
 
-pub struct IrFuncOutput {
-    pub normal: IrType,
-    pub error: Option<IrType>,
+pub struct MirFuncOutput {
+    pub normal: MirType,
+    pub error: Option<MirType>,
 }
 
 #[derive(Copy)]
-pub enum IrFuncMode {
+pub enum MirFuncMode {
     Normal,
     Sync,
 }
 
 #[derive(Copy)]
-pub enum IrFuncArgMode {
+pub enum MirFuncArgMode {
     Positional,
     Named,
 }
 
-pub enum IrFuncOwnerInfo {
+pub enum MirFuncOwnerInfo {
     Function,
-    Method(IrFuncOwnerInfoMethod),
+    Method(MirFuncOwnerInfoMethod),
 }
 
-pub struct IrFuncOwnerInfoMethod {
-    pub(crate) owner_ty: IrType,
+pub struct MirFuncOwnerInfoMethod {
+    pub(crate) owner_ty: MirType,
     pub(crate) actual_method_name: String,
     pub(crate) actual_method_dart_name: Option<String>,
-    pub(crate) mode: IrFuncOwnerInfoMethodMode,
+    pub(crate) mode: MirFuncOwnerInfoMethodMode,
 }
 
-pub enum IrFuncOwnerInfoMethodMode {
+pub enum MirFuncOwnerInfoMethodMode {
     Static,
     Instance,
 }
 
 #[derive(Copy)]
-pub enum IrFuncAccessorMode {
+pub enum MirFuncAccessorMode {
     Getter,
     Setter,
 }
@@ -97,15 +97,15 @@ impl OwnershipMode {
     }
 }
 
-impl IrFunc {
+impl MirFunc {
     pub(crate) fn fallible(&self) -> bool {
         self.output.error.is_some()
     }
 
-    pub(crate) fn visit_types<F: FnMut(&IrType) -> bool>(
+    pub(crate) fn visit_types<F: FnMut(&MirType) -> bool>(
         &self,
         f: &mut F,
-        ir_context: &impl IrContext,
+        ir_context: &impl MirContext,
     ) {
         // inputs
         for field in &self.inputs {
@@ -115,11 +115,11 @@ impl IrFunc {
         // output
         self.output.normal.visit_types(f, ir_context);
         let error_output = (self.output.error.as_ref().cloned())
-            .unwrap_or(IrType::Primitive(IrTypePrimitive::Unit));
+            .unwrap_or(MirType::Primitive(MirTypePrimitive::Unit));
         error_output.visit_types(f, ir_context);
 
         // extra (#1838)
-        if let IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod {
+        if let MirFuncOwnerInfo::Method(MirFuncOwnerInfoMethod {
             owner_ty: enum_or_struct_ty,
             ..
         }) = &self.owner
@@ -128,16 +128,16 @@ impl IrFunc {
         }
     }
 
-    pub(crate) fn default_constructor_mode(&self) -> Option<IrFuncDefaultConstructorMode> {
+    pub(crate) fn default_constructor_mode(&self) -> Option<MirFuncDefaultConstructorMode> {
         let method_info =
-            if_then_some!(let IrFuncOwnerInfo::Method(info) = &self.owner , info).unwrap();
+            if_then_some!(let MirFuncOwnerInfo::Method(info) = &self.owner , info).unwrap();
         if method_info.actual_method_name == "new" {
-            if method_info.mode == IrFuncOwnerInfoMethodMode::Static
-                && self.mode == IrFuncMode::Sync
+            if method_info.mode == MirFuncOwnerInfoMethodMode::Static
+                && self.mode == MirFuncMode::Sync
             {
-                Some(IrFuncDefaultConstructorMode::DartConstructor)
+                Some(MirFuncDefaultConstructorMode::DartConstructor)
             } else {
-                Some(IrFuncDefaultConstructorMode::StaticMethod)
+                Some(MirFuncDefaultConstructorMode::StaticMethod)
             }
         } else {
             None
@@ -158,16 +158,16 @@ impl IrFunc {
     }
 }
 
-impl IrFuncOwnerInfoMethod {
+impl MirFuncOwnerInfoMethod {
     pub(crate) fn owner_ty_name(&self) -> NamespacedName {
         match &self.owner_ty {
-            IrType::StructRef(ty) => ty.ident.0.clone(),
-            IrType::EnumRef(ty) => ty.ident.0.clone(),
-            IrType::Delegate(IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum {
+            MirType::StructRef(ty) => ty.ident.0.clone(),
+            MirType::EnumRef(ty) => ty.ident.0.clone(),
+            MirType::Delegate(MirTypeDelegate::PrimitiveEnum(MirTypeDelegatePrimitiveEnum {
                 ir,
                 ..
             })) => ir.ident.0.clone(),
-            IrType::RustAutoOpaqueImplicit(ty) => {
+            MirType::RustAutoOpaqueImplicit(ty) => {
                 NamespacedName::new(ty.self_namespace().unwrap(), ty.rust_api_type())
             }
             ty => unimplemented!("enum_or_struct_name does not know {ty:?}"),
@@ -176,16 +176,16 @@ impl IrFuncOwnerInfoMethod {
 }
 
 #[derive(Clone, Copy, Eq, PartialEq)]
-pub(crate) enum IrFuncDefaultConstructorMode {
+pub(crate) enum MirFuncDefaultConstructorMode {
     DartConstructor,
     StaticMethod,
 }
 
-impl IrFuncAccessorMode {
+impl MirFuncAccessorMode {
     pub(crate) fn verb_str(&self) -> &'static str {
         match self {
-            IrFuncAccessorMode::Getter => "get",
-            IrFuncAccessorMode::Setter => "set",
+            MirFuncAccessorMode::Getter => "get",
+            MirFuncAccessorMode::Setter => "set",
         }
     }
 }

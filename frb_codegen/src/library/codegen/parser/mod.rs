@@ -14,9 +14,9 @@ use crate::codegen::hir::flat::HirFlatCrate;
 use crate::codegen::hir::hierarchical::crates::HirCrate;
 use crate::codegen::hir::hierarchical::function::HirFunction;
 use crate::codegen::hir::hierarchical::struct_or_enum::HirStruct;
-use crate::codegen::mir::func::IrFunc;
+use crate::codegen::mir::func::MirFunc;
 use crate::codegen::mir::namespace::{Namespace, NamespacedName};
-use crate::codegen::mir::pack::IrPack;
+use crate::codegen::mir::pack::MirPack;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::codegen::parser::auto_accessor_parser::parse_auto_accessors;
 use crate::codegen::parser::function_parser::FunctionParser;
@@ -37,7 +37,7 @@ use syn::Visibility;
 pub(crate) fn parse(
     config: &ParserInternalConfig,
     hir_flat_crate: &HirFlatCrate,
-) -> anyhow::Result<IrPack> {
+) -> anyhow::Result<MirPack> {
     let (src_fns_interest, src_fns_skipped): (Vec<_>, Vec<_>) = (hir_flat_crate.functions.iter())
         .partition(|item| matches!(item.inner.vis(), Visibility::Public(_)));
 
@@ -59,7 +59,7 @@ pub(crate) fn parse(
 
     let (struct_pool, enum_pool, dart_code_of_type) = type_parser.consume();
 
-    let mut ans = IrPack {
+    let mut ans = MirPack {
         funcs: ir_funcs,
         struct_pool,
         enum_pool,
@@ -86,7 +86,7 @@ fn parse_ir_funcs(
     src_fns: &[&HirFunction],
     type_parser: &mut TypeParser,
     src_structs: &HashMap<String, &HirStruct>,
-) -> anyhow::Result<Vec<IrFunc>> {
+) -> anyhow::Result<Vec<MirFunc>> {
     let mut function_parser = FunctionParser::new(type_parser);
 
     let ir_funcs_normal = src_fns
@@ -112,7 +112,7 @@ fn parse_ir_funcs(
         // to give downstream a stable output
         .sorted_by_cached_key(|func| func.name.clone())
         .enumerate()
-        .map(|(index, f)| IrFunc {
+        .map(|(index, f)| MirFunc {
             id: Some((index + 1) as _),
             ..f
         })
@@ -147,7 +147,7 @@ fn compute_skipped_functions(
 //     use crate::codegen::parser::internal_config::RustInputNamespacePack;
 //     use crate::codegen::parser::parse;
 //     use crate::codegen::parser::reader::CachedRustReader;
-//     use crate::codegen::parser::IrPack;
+//     use crate::codegen::parser::MirPack;
 //     use crate::utils::logs::configure_opinionated_test_logging;
 //     use crate::utils::test_utils::{
 //         create_path_sanitizers, get_test_fixture_dir, json_golden_test,
@@ -232,7 +232,7 @@ fn compute_skipped_functions(
 //     fn execute_parse(
 //         fixture_name: &str,
 //         rust_input_namespace_pack: Option<Box<dyn Fn(&Path) -> RustInputNamespacePack>>,
-//     ) -> anyhow::Result<(IrPack, PathBuf)> {
+//     ) -> anyhow::Result<(MirPack, PathBuf)> {
 //         configure_opinionated_test_logging();
 //         let test_fixture_dir = get_test_fixture_dir(fixture_name);
 //         let rust_crate_dir = test_fixture_dir.clone();

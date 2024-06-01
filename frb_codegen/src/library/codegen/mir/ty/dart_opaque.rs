@@ -1,15 +1,15 @@
-use crate::codegen::mir::ty::primitive::IrTypePrimitive;
-use crate::codegen::mir::ty::{IrContext, IrType, IrTypeTrait};
+use crate::codegen::mir::ty::primitive::MirTypePrimitive;
+use crate::codegen::mir::ty::{MirContext, MirType, MirTypeTrait};
 
 crate::ir! {
-pub struct IrTypeDartOpaque;
+pub struct MirTypeDartOpaque;
 }
 
-impl IrTypeTrait for IrTypeDartOpaque {
-    fn visit_children_types<F: FnMut(&IrType) -> bool>(
+impl MirTypeTrait for MirTypeDartOpaque {
+    fn visit_children_types<F: FnMut(&MirType) -> bool>(
         &self,
         f: &mut F,
-        ir_context: &impl IrContext,
+        ir_context: &impl MirContext,
     ) {
         self.get_delegate().visit_types(f, ir_context)
     }
@@ -27,8 +27,8 @@ impl IrTypeTrait for IrTypeDartOpaque {
     }
 }
 
-impl IrTypeDartOpaque {
-    pub(crate) fn get_delegate(&self) -> IrType {
-        IrType::Primitive(IrTypePrimitive::Usize)
+impl MirTypeDartOpaque {
+    pub(crate) fn get_delegate(&self) -> MirType {
+        MirType::Primitive(MirTypePrimitive::Usize)
     }
 }

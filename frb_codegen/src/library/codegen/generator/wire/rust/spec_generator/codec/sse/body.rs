@@ -8,13 +8,13 @@ use crate::codegen::generator::misc::comments::generate_codec_comments;
 use crate::codegen::generator::wire::rust::spec_generator::codec::base::WireRustCodecOutputSpec;
 use crate::codegen::generator::wire::rust::spec_generator::codec::sse::base::WireRustCodecSseGeneratorContext;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
-use crate::codegen::mir::ty::IrType;
+use crate::codegen::mir::ty::MirType;
 use crate::library::codegen::generator::codec::sse::ty::CodecSseTyTrait;
-use crate::library::codegen::mir::ty::IrTypeTrait;
+use crate::library::codegen::mir::ty::MirTypeTrait;
 
 pub(super) fn generate_encode_or_decode(
     context: WireRustCodecSseGeneratorContext,
-    types: &[IrType],
+    types: &[MirType],
     mode: EncodeOrDecode,
 ) -> WireRustCodecOutputSpec {
     let types = with_sse_extra_types(types);
@@ -27,7 +27,7 @@ pub(super) fn generate_encode_or_decode(
 }
 
 fn generate_encode_or_decode_for_type(
-    ty: &IrType,
+    ty: &MirType,
     context: WireRustCodecSseGeneratorContext,
     mode: EncodeOrDecode,
 ) -> Acc<WireRustOutputCode> {

@@ -1,16 +1,16 @@
-use crate::codegen::mir::ty::delegate::IrTypeDelegate;
-use crate::codegen::mir::ty::IrType;
-use crate::codegen::mir::ty::IrType::{EnumRef, StructRef};
+use crate::codegen::mir::ty::delegate::MirTypeDelegate;
+use crate::codegen::mir::ty::MirType;
+use crate::codegen::mir::ty::MirType::{EnumRef, StructRef};
 use crate::codegen::parser::type_parser::unencodable::splay_segments;
 use crate::codegen::parser::type_parser::{TypeParser, TypeParserParsingContext};
 
 #[allow(clippy::single_match)] // deliberate do so to ensure style consistency
 pub(crate) fn parse_type_maybe_result(
-    ir: &IrType,
+    ir: &MirType,
     type_parser: &mut TypeParser,
     context: &TypeParserParsingContext,
 ) -> anyhow::Result<ResultTypeInfo> {
-    if let IrType::RustAutoOpaqueImplicit(inner) = ir {
+    if let MirType::RustAutoOpaqueImplicit(inner) = ir {
         match splay_segments(&inner.raw.segments).last() {
             Some(("Result", args)) => {
                 return parse_type_result(
@@ -29,19 +29,19 @@ pub(crate) fn parse_type_maybe_result(
     })
 }
 
-fn parse_type_result(args: &[IrType]) -> anyhow::Result<ResultTypeInfo> {
+fn parse_type_result(args: &[MirType]) -> anyhow::Result<ResultTypeInfo> {
     let ok_output = args.first().unwrap();
 
     let is_anyhow = args.len() == 1
         || args.iter().any(|x| {
-            if let IrType::RustAutoOpaqueImplicit(inner) = x {
+            if let MirType::RustAutoOpaqueImplicit(inner) = x {
                 return inner.raw.string == "anyhow :: Error";
             }
             false
         });
 
     let error_output = if is_anyhow {
-        Some(IrType::Delegate(IrTypeDelegate::AnyhowException))
+        Some(MirType::Delegate(MirTypeDelegate::AnyhowException))
     } else {
         args.last().cloned()
     };
@@ -55,11 +55,11 @@ fn parse_type_result(args: &[IrType]) -> anyhow::Result<ResultTypeInfo> {
 }
 
 pub(crate) struct ResultTypeInfo {
-    pub ok_output: IrType,
-    pub error_output: Option<IrType>,
+    pub ok_output: MirType,
+    pub error_output: Option<MirType>,
 }
 
-fn set_is_exception_flag(mut ty: IrType) -> IrType {
+fn set_is_exception_flag(mut ty: MirType) -> MirType {
     match &mut ty {
         StructRef(ref mut inner) => {
             inner.is_exception = true;

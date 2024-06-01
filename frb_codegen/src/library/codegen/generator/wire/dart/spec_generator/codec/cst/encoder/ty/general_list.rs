@@ -2,8 +2,8 @@ use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
-use crate::codegen::mir::ty::delegate::IrTypeDelegate;
-use crate::codegen::mir::ty::{IrType, IrTypeTrait};
+use crate::codegen::mir::ty::delegate::MirTypeDelegate;
+use crate::codegen::mir::ty::{MirType, MirTypeTrait};
 
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for GeneralListWireDartCodecCstGenerator<'a> {
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {
@@ -22,16 +22,16 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for GeneralListWireDartCodecCstGe
                 if self.ir.inner.is_primitive()
                     || matches!(
                         *self.ir.inner,
-                        IrType::Optional(_)
-                            | IrType::RustAutoOpaqueImplicit(_)
-                            | IrType::RustOpaque(_)
-                            | IrType::Delegate(IrTypeDelegate::RustAutoOpaqueExplicit(_))
-                            | IrType::DartOpaque(_)
-                            | IrType::PrimitiveList(_)
-                            | IrType::Delegate(IrTypeDelegate::String)
-                            | IrType::Delegate(IrTypeDelegate::StreamSink(_))
-                            | IrType::Delegate(IrTypeDelegate::Time(_))
-                            | IrType::Delegate(IrTypeDelegate::Uuid)
+                        MirType::Optional(_)
+                            | MirType::RustAutoOpaqueImplicit(_)
+                            | MirType::RustOpaque(_)
+                            | MirType::Delegate(MirTypeDelegate::RustAutoOpaqueExplicit(_))
+                            | MirType::DartOpaque(_)
+                            | MirType::PrimitiveList(_)
+                            | MirType::Delegate(MirTypeDelegate::String)
+                            | MirType::Delegate(MirTypeDelegate::StreamSink(_))
+                            | MirType::Delegate(MirTypeDelegate::Time(_))
+                            | MirType::Delegate(MirTypeDelegate::Uuid)
                     )
                 {
                     format!("ans.ref.ptr[i] = cst_encode_{inner}(raw[i]);")

@@ -2,7 +2,7 @@ use crate::codegen::generator::api_dart::spec_generator::class::field::{
     generate_field_default, generate_field_required_modifier,
 };
 use crate::codegen::generator::api_dart::spec_generator::misc::generate_dart_maybe_implements_exception;
-use crate::codegen::mir::ty::structure::IrStruct;
+use crate::codegen::mir::ty::structure::MirStruct;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use itertools::Itertools;
@@ -11,7 +11,7 @@ impl<'a> StructRefApiDartGenerator<'a> {
     #[allow(clippy::too_many_arguments)]
     pub(crate) fn generate_mode_freezed(
         &self,
-        src: &IrStruct,
+        src: &MirStruct,
         comments: &str,
         metadata: &str,
         methods: &[String],
@@ -42,7 +42,7 @@ impl<'a> StructRefApiDartGenerator<'a> {
 
     fn generate_mode_freezed_constructor_params(
         &self,
-        src: &IrStruct,
+        src: &MirStruct,
         _has_methods: bool,
     ) -> String {
         let ans = src

@@ -1,6 +1,6 @@
 use crate::codegen::generator::wire::dart::spec_generator::codec::dco::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::dco::decoder::ty::WireDartCodecDcoGeneratorDecoderTrait;
-use crate::codegen::mir::ty::IrType;
+use crate::codegen::mir::ty::MirType;
 use crate::library::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 
@@ -11,7 +11,7 @@ impl<'a> WireDartCodecDcoGeneratorDecoderTrait for RustOpaqueWireDartCodecDcoGen
 }
 
 pub(super) fn generalized_rust_opaque_generate_impl_decode_body(
-    ir: IrType,
+    ir: MirType,
     context: WireDartCodecDcoGeneratorContext,
 ) -> String {
     format!(

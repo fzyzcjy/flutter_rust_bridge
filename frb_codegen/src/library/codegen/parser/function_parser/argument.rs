@@ -1,10 +1,10 @@
-use crate::codegen::mir::field::{IrField, IrFieldSettings};
-use crate::codegen::mir::func::{IrFuncInput, IrFuncOwnerInfo};
-use crate::codegen::mir::func::{IrFuncOwnerInfoMethod, OwnershipMode};
-use crate::codegen::mir::ident::IrIdent;
-use crate::codegen::mir::ty::boxed::IrTypeBoxed;
-use crate::codegen::mir::ty::IrType;
-use crate::codegen::mir::ty::IrType::Boxed;
+use crate::codegen::mir::field::{MirField, MirFieldSettings};
+use crate::codegen::mir::func::{MirFuncInput, MirFuncOwnerInfo};
+use crate::codegen::mir::func::{MirFuncOwnerInfoMethod, OwnershipMode};
+use crate::codegen::mir::ident::MirIdent;
+use crate::codegen::mir::ty::boxed::MirTypeBoxed;
+use crate::codegen::mir::ty::MirType;
+use crate::codegen::mir::ty::MirType::Boxed;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::function_parser::{FunctionParser, FunctionPartialInfo};
 use crate::codegen::parser::type_parser::misc::parse_comments;
@@ -18,7 +18,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     pub(super) fn parse_fn_arg(
         &mut self,
         sig_input: &FnArg,
-        owner: &IrFuncOwnerInfo,
+        owner: &MirFuncOwnerInfo,
         context: &TypeParserParsingContext,
     ) -> anyhow::Result<FunctionPartialInfo> {
         let (ty_syn_raw, name) = match sig_input {
@@ -26,7 +26,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                 (*pat_type.ty.clone(), parse_name_from_pat_type(pat_type)?)
             }
             FnArg::Receiver(ref receiver) => {
-                let method = if_then_some!(let IrFuncOwnerInfo::Method(method) = owner, method)
+                let method = if_then_some!(let MirFuncOwnerInfo::Method(method) = owner, method)
                     .context("`self` must happen within methods")?;
                 (
                     syntheize_receiver_type(receiver, method)?,
@@ -48,7 +48,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             ownership_mode_split,
         )?;
 
-        if let IrType::StructRef(s) = &ty {
+        if let MirType::StructRef(s) = &ty {
             if s.get(self.type_parser).ignore {
                 return Ok(FunctionPartialInfo {
                     ignore_func: true,
@@ -61,15 +61,15 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let attributes = FrbAttributes::parse(attrs)?;
         let ty = auto_add_boxed(ty);
         Ok(FunctionPartialInfo {
-            inputs: vec![IrFuncInput {
-                inner: IrField {
-                    name: IrIdent::new(name),
+            inputs: vec![MirFuncInput {
+                inner: MirField {
+                    name: MirIdent::new(name),
                     ty,
                     is_final: true,
                     is_rust_public: None,
                     comments: parse_comments(attrs),
                     default: attributes.default_value(),
-                    settings: IrFieldSettings::default(),
+                    settings: MirFieldSettings::default(),
                 },
                 ownership_mode,
             }],
@@ -81,11 +81,11 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 pub(crate) fn merge_ownership_into_ty(
     type_parser: &mut TypeParser,
     context: &TypeParserParsingContext,
-    ty_without_ownership: IrType,
+    ty_without_ownership: MirType,
     ownership_mode: Option<OwnershipMode>,
-) -> anyhow::Result<(IrType, Option<OwnershipMode>)> {
+) -> anyhow::Result<(MirType, Option<OwnershipMode>)> {
     Ok(match (ty_without_ownership, ownership_mode) {
-        (IrType::RustAutoOpaqueImplicit(ty_raw), Some(ownership_mode)) => (
+        (MirType::RustAutoOpaqueImplicit(ty_raw), Some(ownership_mode)) => (
             type_parser.transform_rust_auto_opaque(
                 &ty_raw,
                 |raw| format!("{}{raw}", ownership_mode.prefix()),
@@ -97,9 +97,9 @@ pub(crate) fn merge_ownership_into_ty(
     })
 }
 
-fn auto_add_boxed(ty: IrType) -> IrType {
+fn auto_add_boxed(ty: MirType) -> MirType {
     if ty.is_struct_or_enum_or_record() {
-        Boxed(IrTypeBoxed {
+        Boxed(MirTypeBoxed {
             exist_in_real_api: false,
             inner: Box::new(ty),
         })
@@ -116,7 +116,7 @@ fn parse_name_from_pat_type(pat_type: &PatType) -> anyhow::Result<String> {
 
 fn syntheize_receiver_type(
     receiver: &Receiver,
-    method: &IrFuncOwnerInfoMethod,
+    method: &MirFuncOwnerInfoMethod,
 ) -> anyhow::Result<Type> {
     let ty_str = format!(
         "{}{}",

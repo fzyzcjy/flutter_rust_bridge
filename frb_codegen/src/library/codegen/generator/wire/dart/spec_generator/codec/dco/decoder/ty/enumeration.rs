@@ -1,13 +1,13 @@
 use crate::codegen::generator::wire::dart::spec_generator::codec::dco::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::dco::decoder::ty::WireDartCodecDcoGeneratorDecoderTrait;
-use crate::codegen::mir::ty::enumeration::{IrEnumMode, IrVariantKind};
-use crate::library::codegen::mir::ty::IrTypeTrait;
+use crate::codegen::mir::ty::enumeration::{MirEnumMode, MirVariantKind};
+use crate::library::codegen::mir::ty::MirTypeTrait;
 use itertools::Itertools;
 
 impl<'a> WireDartCodecDcoGeneratorDecoderTrait for EnumRefWireDartCodecDcoGenerator<'a> {
     fn generate_impl_decode_body(&self) -> String {
         let enu = self.ir.get(self.context.ir_pack);
-        assert_eq!(enu.mode, IrEnumMode::Complex);
+        assert_eq!(enu.mode, MirEnumMode::Complex);
 
         let variants = enu
             .variants()
@@ -15,8 +15,8 @@ impl<'a> WireDartCodecDcoGeneratorDecoderTrait for EnumRefWireDartCodecDcoGenera
             .enumerate()
             .map(|(idx, variant)| {
                 let args = match &variant.kind {
-                    IrVariantKind::Value => "".to_owned(),
-                    IrVariantKind::Struct(st) => st
+                    MirVariantKind::Value => "".to_owned(),
+                    MirVariantKind::Struct(st) => st
                         .fields
                         .iter()
                         .enumerate()

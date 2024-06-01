@@ -7,7 +7,7 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::
 };
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::ty::WireRustCodecDcoGeneratorEncoderTrait;
 use crate::codegen::mir::namespace::NamespacedName;
-use crate::codegen::mir::ty::enumeration::IrTypeEnumRef;
+use crate::codegen::mir::ty::enumeration::MirTypeEnumRef;
 use itertools::Itertools;
 
 impl<'a> WireRustCodecDcoGeneratorEncoderTrait for EnumRefWireRustCodecDcoGenerator<'a> {
@@ -40,7 +40,7 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for EnumRefWireRustCodecDcoGenera
 }
 
 pub(super) fn generate_enum_access_object_core(
-    ir: &IrTypeEnumRef,
+    ir: &MirTypeEnumRef,
     obj: String,
     context: WireRustCodecDcoGeneratorContext,
 ) -> String {

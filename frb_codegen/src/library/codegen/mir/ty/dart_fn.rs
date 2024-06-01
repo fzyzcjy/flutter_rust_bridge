@@ -1,26 +1,26 @@
-use crate::codegen::mir::ty::dart_opaque::IrTypeDartOpaque;
-use crate::codegen::mir::ty::{IrContext, IrType, IrTypeTrait};
+use crate::codegen::mir::ty::dart_opaque::MirTypeDartOpaque;
+use crate::codegen::mir::ty::{MirContext, MirType, MirTypeTrait};
 use itertools::Itertools;
 
 crate::ir! {
-pub struct IrTypeDartFn {
-    pub inputs: Vec<IrType>,
-    pub output: Box<IrDartFnOutput>,
+pub struct MirTypeDartFn {
+    pub inputs: Vec<MirType>,
+    pub output: Box<MirDartFnOutput>,
 }
 
-pub(crate) struct IrDartFnOutput {
-    pub(crate) normal: IrType,
-    pub(crate) error: IrType,
+pub(crate) struct MirDartFnOutput {
+    pub(crate) normal: MirType,
+    pub(crate) error: MirType,
     /// Whether the error is provided to users, or error yields panic
     pub(crate) api_fallible: bool,
 }
 }
 
-impl IrTypeTrait for IrTypeDartFn {
-    fn visit_children_types<F: FnMut(&IrType) -> bool>(
+impl MirTypeTrait for MirTypeDartFn {
+    fn visit_children_types<F: FnMut(&MirType) -> bool>(
         &self,
         f: &mut F,
-        ir_context: &impl IrContext,
+        ir_context: &impl MirContext,
     ) {
         self.get_delegate().visit_types(f, ir_context);
 
@@ -48,17 +48,17 @@ impl IrTypeTrait for IrTypeDartFn {
     }
 }
 
-impl IrTypeDartFn {
-    pub(crate) fn get_delegate(&self) -> IrType {
-        IrType::DartOpaque(IrTypeDartOpaque)
+impl MirTypeDartFn {
+    pub(crate) fn get_delegate(&self) -> MirType {
+        MirType::DartOpaque(MirTypeDartOpaque)
     }
 }
 
-impl IrDartFnOutput {
-    pub(crate) fn visit_types<F: FnMut(&IrType) -> bool>(
+impl MirDartFnOutput {
+    pub(crate) fn visit_types<F: FnMut(&MirType) -> bool>(
         &self,
         f: &mut F,
-        ir_context: &impl IrContext,
+        ir_context: &impl MirContext,
     ) {
         self.normal.visit_types(f, ir_context);
         self.error.visit_types(f, ir_context);

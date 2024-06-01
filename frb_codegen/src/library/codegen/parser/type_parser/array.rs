@@ -1,9 +1,9 @@
 use crate::codegen::mir::namespace::Namespace;
 use crate::codegen::mir::ty::delegate::{
-    IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegateArrayMode,
+    MirTypeDelegate, MirTypeDelegateArray, MirTypeDelegateArrayMode,
 };
-use crate::codegen::mir::ty::IrType;
-use crate::codegen::mir::ty::IrType::{Delegate, Primitive};
+use crate::codegen::mir::ty::MirType;
+use crate::codegen::mir::ty::MirType::{Delegate, Primitive};
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use anyhow::bail;
 use std::collections::HashMap;
@@ -13,7 +13,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_array(
         &mut self,
         type_array: &syn::TypeArray,
-    ) -> anyhow::Result<IrType> {
+    ) -> anyhow::Result<MirType> {
         let length: usize = match &type_array.len {
             Expr::Lit(lit) => match &lit.lit {
                 syn::Lit::Int(x) => x.base10_parse()?,
@@ -26,8 +26,8 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         };
 
         let mode = match self.parse_type(&type_array.elem)? {
-            Primitive(primitive) => IrTypeDelegateArrayMode::Primitive(primitive),
-            others => IrTypeDelegateArrayMode::General(Box::new(others)),
+            Primitive(primitive) => MirTypeDelegateArrayMode::Primitive(primitive),
+            others => MirTypeDelegateArrayMode::General(Box::new(others)),
         };
 
         let namespace = (self.inner.array_parser_info.namespace_of_parsed_types)
@@ -35,7 +35,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             .or_insert(self.context.initiated_namespace.clone())
             .to_owned();
 
-        Ok(Delegate(IrTypeDelegate::Array(IrTypeDelegateArray {
+        Ok(Delegate(MirTypeDelegate::Array(MirTypeDelegateArray {
             namespace,
             length,
             mode,
@@ -45,5 +45,5 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
 #[derive(Clone, Debug, Default)]
 pub(super) struct ArrayParserInfo {
-    namespace_of_parsed_types: HashMap<(IrTypeDelegateArrayMode, usize), Namespace>,
+    namespace_of_parsed_types: HashMap<(MirTypeDelegateArrayMode, usize), Namespace>,
 }

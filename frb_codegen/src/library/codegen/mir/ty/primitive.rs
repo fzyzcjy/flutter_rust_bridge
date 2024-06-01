@@ -1,9 +1,9 @@
-use crate::codegen::mir::ty::{IrContext, IrType, IrTypeTrait};
+use crate::codegen::mir::ty::{MirContext, MirType, MirTypeTrait};
 use convert_case::{Case, Casing};
 
 crate::ir! {
 #[derive(strum_macros::Display)]
-pub enum IrTypePrimitive {
+pub enum MirTypePrimitive {
     U8,
     I8,
     U16,
@@ -18,15 +18,15 @@ pub enum IrTypePrimitive {
     Unit,
     Usize,
     Isize,
-    // For i128/u128, see IrDelegate
+    // For i128/u128, see MirDelegate
 }
 }
 
-impl IrTypeTrait for IrTypePrimitive {
-    fn visit_children_types<F: FnMut(&IrType) -> bool>(
+impl MirTypeTrait for MirTypePrimitive {
+    fn visit_children_types<F: FnMut(&MirType) -> bool>(
         &self,
         _f: &mut F,
-        _ir_context: &impl IrContext,
+        _ir_context: &impl MirContext,
     ) {
     }
 
@@ -36,25 +36,25 @@ impl IrTypeTrait for IrTypePrimitive {
 
     fn rust_api_type(&self) -> String {
         match self {
-            IrTypePrimitive::U8 => "u8",
-            IrTypePrimitive::I8 => "i8",
-            IrTypePrimitive::U16 => "u16",
-            IrTypePrimitive::I16 => "i16",
-            IrTypePrimitive::U32 => "u32",
-            IrTypePrimitive::I32 => "i32",
-            IrTypePrimitive::U64 => "u64",
-            IrTypePrimitive::Unit => "()",
-            IrTypePrimitive::Usize => "usize",
-            IrTypePrimitive::Isize => "isize",
-            IrTypePrimitive::I64 => "i64",
-            IrTypePrimitive::F32 => "f32",
-            IrTypePrimitive::F64 => "f64",
-            IrTypePrimitive::Bool => "bool",
+            MirTypePrimitive::U8 => "u8",
+            MirTypePrimitive::I8 => "i8",
+            MirTypePrimitive::U16 => "u16",
+            MirTypePrimitive::I16 => "i16",
+            MirTypePrimitive::U32 => "u32",
+            MirTypePrimitive::I32 => "i32",
+            MirTypePrimitive::U64 => "u64",
+            MirTypePrimitive::Unit => "()",
+            MirTypePrimitive::Usize => "usize",
+            MirTypePrimitive::Isize => "isize",
+            MirTypePrimitive::I64 => "i64",
+            MirTypePrimitive::F32 => "f32",
+            MirTypePrimitive::F64 => "f64",
+            MirTypePrimitive::Bool => "bool",
         }
         .to_string()
     }
 
-    fn as_primitive(&self) -> Option<&IrTypePrimitive> {
+    fn as_primitive(&self) -> Option<&MirTypePrimitive> {
         Some(self)
     }
 

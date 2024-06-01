@@ -56,7 +56,7 @@ impl<'a> CodecSseTyTrait for RustAutoOpaqueImplicitCodecSseTy<'a> {
 }
 
 pub(crate) fn generate_encode_rust_auto_opaque(
-    ir: &IrTypeRustAutoOpaqueImplicit,
+    ir: &MirTypeRustAutoOpaqueImplicit,
     variable: &str,
 ) -> String {
     let arc = ir.inner.codec.arc_ty();
@@ -66,7 +66,7 @@ pub(crate) fn generate_encode_rust_auto_opaque(
 }
 
 pub(crate) fn generate_decode_rust_auto_opaque(
-    ir: &IrTypeRustAutoOpaqueImplicit,
+    ir: &MirTypeRustAutoOpaqueImplicit,
     variable: &str,
 ) -> String {
     format!(

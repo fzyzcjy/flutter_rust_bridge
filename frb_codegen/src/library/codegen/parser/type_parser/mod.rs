@@ -1,14 +1,14 @@
 use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::hir::hierarchical::struct_or_enum::{HirEnum, HirStruct};
-use crate::codegen::mir::func::IrFuncOwnerInfo;
+use crate::codegen::mir::func::MirFuncOwnerInfo;
 use crate::codegen::mir::namespace::Namespace;
-use crate::codegen::mir::pack::{IrEnumPool, IrStructPool};
-use crate::codegen::mir::ty::enumeration::{IrEnum, IrEnumIdent};
-use crate::codegen::mir::ty::rust_auto_opaque_implicit::IrTypeRustAutoOpaqueImplicit;
+use crate::codegen::mir::pack::{MirEnumPool, MirStructPool};
+use crate::codegen::mir::ty::enumeration::{MirEnum, MirEnumIdent};
+use crate::codegen::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqueImplicit;
 use crate::codegen::mir::ty::rust_opaque::RustOpaqueCodecMode;
-use crate::codegen::mir::ty::structure::{IrStruct, IrStructIdent};
-use crate::codegen::mir::ty::IrContext;
-use crate::codegen::mir::ty::IrType;
+use crate::codegen::mir::ty::structure::{MirStruct, MirStructIdent};
+use crate::codegen::mir::ty::MirContext;
+use crate::codegen::mir::ty::MirType;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::type_parser::array::ArrayParserInfo;
 use crate::codegen::parser::type_parser::enum_or_struct::EnumOrStructParserInfo;
@@ -42,8 +42,8 @@ pub(crate) struct TypeParser<'a> {
     src_enums: HashMap<String, &'a HirEnum>,
     src_types: HashMap<String, Type>,
     dart_code_of_type: HashMap<String, String>,
-    struct_parser_info: EnumOrStructParserInfo<IrStructIdent, IrStruct>,
-    enum_parser_info: EnumOrStructParserInfo<IrEnumIdent, IrEnum>,
+    struct_parser_info: EnumOrStructParserInfo<MirStructIdent, MirStruct>,
+    enum_parser_info: EnumOrStructParserInfo<MirEnumIdent, MirEnum>,
     rust_opaque_parser_info: RustOpaqueParserInfo,
     rust_auto_opaque_parser_info: RustAutoOpaqueParserInfo,
     array_parser_info: ArrayParserInfo,
@@ -68,7 +68,7 @@ impl<'a> TypeParser<'a> {
         }
     }
 
-    pub(crate) fn consume(self) -> (IrStructPool, IrEnumPool, HashMap<String, String>) {
+    pub(crate) fn consume(self) -> (MirStructPool, MirEnumPool, HashMap<String, String>) {
         (
             self.struct_parser_info.object_pool,
             self.enum_parser_info.object_pool,
@@ -80,16 +80,16 @@ impl<'a> TypeParser<'a> {
         &mut self,
         ty: &Type,
         context: &TypeParserParsingContext,
-    ) -> anyhow::Result<IrType> {
+    ) -> anyhow::Result<MirType> {
         TypeParserWithContext::new(self, context).parse_type(ty)
     }
 
     pub(crate) fn transform_rust_auto_opaque(
         &mut self,
-        ty_raw: &IrTypeRustAutoOpaqueImplicit,
+        ty_raw: &MirTypeRustAutoOpaqueImplicit,
         transform: impl FnOnce(&str) -> String,
         context: &TypeParserParsingContext,
-    ) -> anyhow::Result<IrType> {
+    ) -> anyhow::Result<MirType> {
         TypeParserWithContext::new(self, context).transform_rust_auto_opaque(ty_raw, transform)
     }
 }
@@ -110,15 +110,15 @@ pub(crate) struct TypeParserParsingContext {
     pub(crate) func_attributes: FrbAttributes,
     pub(crate) default_stream_sink_codec: CodecMode,
     pub(crate) default_rust_opaque_codec: RustOpaqueCodecMode,
-    pub(crate) owner: Option<IrFuncOwnerInfo>,
+    pub(crate) owner: Option<MirFuncOwnerInfo>,
 }
 
-impl IrContext for TypeParser<'_> {
-    fn struct_pool(&self) -> &IrStructPool {
+impl MirContext for TypeParser<'_> {
+    fn struct_pool(&self) -> &MirStructPool {
         &self.struct_parser_info.object_pool
     }
 
-    fn enum_pool(&self) -> &IrEnumPool {
+    fn enum_pool(&self) -> &MirEnumPool {
         &self.enum_parser_info.object_pool
     }
 }

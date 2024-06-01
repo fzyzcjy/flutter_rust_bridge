@@ -14,7 +14,7 @@ codegen_generator_structs!(
 
 #[derive(Debug, Clone, Copy)]
 pub(crate) struct WireDartCodecCstGeneratorContext<'a> {
-    pub(crate) ir_pack: &'a IrPack,
+    pub(crate) ir_pack: &'a MirPack,
     pub(crate) config: &'a GeneratorWireDartInternalConfig,
     pub(crate) wire_rust_config: &'a GeneratorWireRustInternalConfig,
     pub(crate) api_dart_config: &'a GeneratorApiDartInternalConfig,

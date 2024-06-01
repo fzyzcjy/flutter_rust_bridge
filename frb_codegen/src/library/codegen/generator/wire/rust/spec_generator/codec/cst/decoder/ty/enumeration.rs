@@ -4,9 +4,9 @@ use crate::codegen::generator::wire::rust::spec_generator::extern_func::{ExternC
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
-use crate::codegen::mir::ident::IrIdent;
-use crate::codegen::mir::ty::enumeration::{IrEnum, IrEnumMode, IrVariant, IrVariantKind};
-use crate::codegen::mir::ty::structure::IrStruct;
+use crate::codegen::mir::ident::MirIdent;
+use crate::codegen::mir::ty::enumeration::{MirEnum, MirEnumMode, MirVariant, MirVariantKind};
+use crate::codegen::mir::ty::structure::MirStruct;
 use itertools::Itertools;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::impl_new_with_nullptr::generate_impl_new_with_nullptr_code_block;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::misc::rust_wire_type_add_prefix_or_js_value;
@@ -16,7 +16,7 @@ const NIL_FIELD: &str = "nil__";
 impl<'a> WireRustCodecCstGeneratorDecoderTrait for EnumRefWireRustCodecCstGenerator<'a> {
     fn generate_decoder_class(&self) -> Option<WireRustOutputCode> {
         let src = self.ir.get(self.context.ir_pack);
-        if src.mode == IrEnumMode::Simple {
+        if src.mode == MirEnumMode::Simple {
             return None;
         }
         // frb-coverage:ignore-start
@@ -27,8 +27,8 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for EnumRefWireRustCodecCstGenera
         let union_fields = variants
             .iter()
             .filter_map(|variant| match variant.kind {
-                IrVariantKind::Value => None,
-                IrVariantKind::Struct(_) => Some(format!(
+                MirVariantKind::Value => None,
+                MirVariantKind::Struct(_) => Some(format!(
                     "{0}: wire_cst_{1}_{0},",
                     variant.name, self.ir.ident.0.name
                 )),
@@ -56,8 +56,8 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for EnumRefWireRustCodecCstGenera
         ];
 
         extern_classes.extend(variants.iter().filter_map(|variant| match &variant.kind {
-            IrVariantKind::Value => None,
-            IrVariantKind::Struct(s) => Some(self.generate_decoder_enum_variant(&variant.name, s)),
+            MirVariantKind::Value => None,
+            MirVariantKind::Struct(s) => Some(self.generate_decoder_enum_variant(&variant.name, s)),
         }));
 
         Some(WireRustOutputCode {
@@ -123,8 +123,8 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for EnumRefWireRustCodecCstGenera
 impl<'a> EnumRefWireRustCodecCstGenerator<'a> {
     fn generate_decoder_enum_variant(
         &self,
-        variant_name: &IrIdent,
-        r#struct: &IrStruct,
+        variant_name: &MirIdent,
+        r#struct: &MirStruct,
     ) -> ExternClass {
         let fields = r#struct
             .fields
@@ -150,16 +150,16 @@ impl<'a> EnumRefWireRustCodecCstGenerator<'a> {
 }
 
 fn generate_impl_cst_decode_body_variant(
-    enu: &IrEnum,
+    enu: &MirEnum,
     target: TargetOrCommon,
     idx: usize,
-    variant: &IrVariant,
+    variant: &MirVariant,
 ) -> String {
     match &variant.kind {
-        IrVariantKind::Value => {
+        MirVariantKind::Value => {
             format!("{} => {}::{},", idx, enu.name.rust_style(), variant.name)
         }
-        IrVariantKind::Struct(st) => {
+        MirVariantKind::Struct(st) => {
             let fields = st
                 .fields
                 .iter()

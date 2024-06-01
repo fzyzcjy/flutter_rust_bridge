@@ -1,12 +1,12 @@
-use crate::codegen::mir::field::IrField;
-use crate::codegen::mir::pack::IrPack;
-use crate::codegen::mir::ty::enumeration::IrVariantKind;
-use crate::codegen::mir::ty::structure::IrStruct;
-use crate::codegen::mir::ty::IrType;
+use crate::codegen::mir::field::MirField;
+use crate::codegen::mir::pack::MirPack;
+use crate::codegen::mir::ty::enumeration::MirVariantKind;
+use crate::codegen::mir::ty::structure::MirStruct;
+use crate::codegen::mir::ty::MirType;
 use itertools::Itertools;
 use log::info;
 
-pub(crate) fn check_opaque_inside_translatable(pack: &IrPack) {
+pub(crate) fn check_opaque_inside_translatable(pack: &MirPack) {
     let hint_names = (pack.distinct_types(None).into_iter())
         .flat_map(|ty| handle_type(pack, ty))
         .collect_vec();
@@ -20,19 +20,19 @@ pub(crate) fn check_opaque_inside_translatable(pack: &IrPack) {
     }
 }
 
-fn handle_type(pack: &IrPack, ty: IrType) -> Vec<String> {
+fn handle_type(pack: &MirPack, ty: MirType) -> Vec<String> {
     match ty {
-        IrType::StructRef(ty) => {
+        MirType::StructRef(ty) => {
             let st = ty.get(pack);
             handle_struct(st, &ty.ident.0.rust_style())
         }
-        IrType::EnumRef(ty) => {
+        MirType::EnumRef(ty) => {
             let en = ty.get(pack);
             en.variants
                 .iter()
                 .flat_map(|variant| match &variant.kind {
-                    IrVariantKind::Value => vec![],
-                    IrVariantKind::Struct(st) => handle_struct(
+                    MirVariantKind::Value => vec![],
+                    MirVariantKind::Struct(st) => handle_struct(
                         st,
                         &format!("{}.{}", ty.ident.0.rust_style(), variant.name.rust_style()),
                     ),
@@ -44,14 +44,14 @@ fn handle_type(pack: &IrPack, ty: IrType) -> Vec<String> {
     }
 }
 
-fn handle_struct(st: &IrStruct, partial_name: &str) -> Vec<String> {
+fn handle_struct(st: &MirStruct, partial_name: &str) -> Vec<String> {
     (st.fields.iter())
         .filter_map(|field| handle_field(field, partial_name))
         .collect()
 }
 
-fn handle_field(field: &IrField, partial_name: &str) -> Option<String> {
-    if matches!(field.ty, IrType::RustAutoOpaqueImplicit(_)) {
+fn handle_field(field: &MirField, partial_name: &str) -> Option<String> {
+    if matches!(field.ty, MirType::RustAutoOpaqueImplicit(_)) {
         Some(format!("{partial_name}.{}", field.name.rust_style()))
     } else {
         None

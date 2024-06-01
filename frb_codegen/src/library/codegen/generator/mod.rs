@@ -1,7 +1,7 @@
 use crate::codegen::config::internal_config::GeneratorInternalConfig;
 use crate::codegen::dumper::Dumper;
 use crate::codegen::generator::misc::PathTexts;
-use crate::codegen::mir::pack::IrPack;
+use crate::codegen::mir::pack::MirPack;
 use crate::codegen::misc::GeneratorProgressBarPack;
 
 pub(crate) mod acc;
@@ -16,7 +16,7 @@ pub(crate) struct GeneratorOutput {
 }
 
 pub(crate) fn generate(
-    ir_pack: &IrPack,
+    ir_pack: &MirPack,
     config: &GeneratorInternalConfig,
     dumper: &Dumper,
     progress_bar_pack: &GeneratorProgressBarPack,

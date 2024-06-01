@@ -4,8 +4,8 @@ use crate::codegen::generator::api_dart::spec_generator::class::field::{
 use crate::codegen::generator::api_dart::spec_generator::misc::{
     generate_dart_comments, generate_dart_maybe_implements_exception,
 };
-use crate::codegen::mir::field::IrField;
-use crate::codegen::mir::ty::structure::IrStruct;
+use crate::codegen::mir::field::MirField;
+use crate::codegen::mir::ty::structure::MirStruct;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use itertools::Itertools;
@@ -14,7 +14,7 @@ impl<'a> StructRefApiDartGenerator<'a> {
     #[allow(clippy::too_many_arguments)]
     pub(crate) fn generate_mode_non_freezed(
         &self,
-        src: &IrStruct,
+        src: &MirStruct,
         comments: &str,
         metadata: &str,
         methods: &[String],
@@ -57,7 +57,7 @@ impl<'a> StructRefApiDartGenerator<'a> {
         )
     }
 
-    fn generate_field_declarations(&self, src: &IrStruct) -> String {
+    fn generate_field_declarations(&self, src: &MirStruct) -> String {
         let field_declarations = src
             .fields
             .iter()
@@ -73,7 +73,7 @@ impl<'a> StructRefApiDartGenerator<'a> {
         field_declarations.join("\n")
     }
 
-    fn generate_mode_non_freezed_constructor_params(&self, src: &IrStruct) -> String {
+    fn generate_mode_non_freezed_constructor_params(&self, src: &MirStruct) -> String {
         let ans = src
             .fields
             .iter()
@@ -98,7 +98,7 @@ impl<'a> StructRefApiDartGenerator<'a> {
     }
 }
 
-fn generate_hashcode(fields: &[IrField]) -> String {
+fn generate_hashcode(fields: &[MirField]) -> String {
     let body = if fields.is_empty() {
         "0".to_owned()
     } else {
@@ -117,7 +117,7 @@ fn generate_hashcode(fields: &[IrField]) -> String {
     )
 }
 
-fn generate_equals(fields: &[IrField], struct_name: &str) -> String {
+fn generate_equals(fields: &[MirField], struct_name: &str) -> String {
     let cmp = fields
         .iter()
         .map(|x| x.name.dart_style())

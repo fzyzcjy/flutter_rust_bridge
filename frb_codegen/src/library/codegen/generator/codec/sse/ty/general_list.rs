@@ -17,7 +17,7 @@ impl<'a> CodecSseTyTrait for GeneralListCodecSseTy<'a> {
     }
 }
 
-pub(super) fn general_list_generate_encode(lang: &Lang, ir_inner: &IrType) -> String {
+pub(super) fn general_list_generate_encode(lang: &Lang, ir_inner: &MirType) -> String {
     format!(
         "{};
         {}",
@@ -39,7 +39,7 @@ pub(super) fn list_len_method(lang: &Lang) -> &'static str {
 
 pub(super) fn general_list_generate_decode(
     lang: &Lang,
-    ir_inner: &IrType,
+    ir_inner: &MirType,
     context: CodecSseTyContext,
 ) -> String {
     let var_decl = lang.var_decl();
@@ -72,4 +72,4 @@ pub(super) fn general_list_generate_decode(
     )
 }
 
-pub(super) const LEN_TYPE: IrType = Primitive(IrTypePrimitive::I32);
+pub(super) const LEN_TYPE: MirType = Primitive(MirTypePrimitive::I32);

@@ -5,8 +5,8 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::rust_opaque::generalized_rust_opaque_rust_wire_type;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 use crate::codegen::mir::func::OwnershipMode;
-use crate::codegen::mir::ty::rust_auto_opaque_implicit::IrTypeRustAutoOpaqueImplicit;
-use crate::codegen::mir::ty::IrTypeTrait;
+use crate::codegen::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqueImplicit;
+use crate::codegen::mir::ty::MirTypeTrait;
 use std::borrow::Cow;
 
 impl<'a> WireRustCodecCstGeneratorDecoderTrait
@@ -28,7 +28,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait
     }
 }
 
-fn generate_decode(ir: &IrTypeRustAutoOpaqueImplicit) -> Option<String> {
+fn generate_decode(ir: &MirTypeRustAutoOpaqueImplicit) -> Option<String> {
     if ir.ownership_mode == OwnershipMode::Owned {
         let inner = format!(
             "CstDecode::<{}>::cst_decode(self)",

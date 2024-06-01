@@ -1,14 +1,14 @@
-use crate::codegen::mir::field::IrField;
+use crate::codegen::mir::field::MirField;
 use crate::codegen::mir::func::{
-    IrFunc, IrFuncAccessorMode, IrFuncArgMode, IrFuncInput, IrFuncMode, IrFuncOutput,
-    IrFuncOwnerInfo, IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode, OwnershipMode,
+    MirFunc, MirFuncAccessorMode, MirFuncArgMode, MirFuncInput, MirFuncMode, MirFuncOutput,
+    MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode, OwnershipMode,
 };
-use crate::codegen::mir::ident::IrIdent;
+use crate::codegen::mir::ident::MirIdent;
 use crate::codegen::mir::namespace::NamespacedName;
-use crate::codegen::mir::ty::primitive::IrTypePrimitive;
-use crate::codegen::mir::ty::IrType;
+use crate::codegen::mir::ty::primitive::MirTypePrimitive;
+use crate::codegen::mir::ty::MirType;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
-use crate::codegen::parser::auto_accessor_parser::IrFuncAndSanityCheckInfo;
+use crate::codegen::parser::auto_accessor_parser::MirFuncAndSanityCheckInfo;
 use crate::codegen::parser::function_parser::argument::merge_ownership_into_ty;
 use crate::codegen::parser::function_parser::{
     compute_codec_mode_pack, parse_effective_function_name_of_method,
@@ -21,19 +21,19 @@ use sha1::{Digest, Sha1};
 pub(super) fn parse_auto_accessor_of_field(
     config: &ParserInternalConfig,
     struct_name: &NamespacedName,
-    field: &IrField,
-    accessor_mode: IrFuncAccessorMode,
-    ty_direct_parse: &IrType,
+    field: &MirField,
+    accessor_mode: MirFuncAccessorMode,
+    ty_direct_parse: &MirType,
     type_parser: &mut TypeParser,
     context: &TypeParserParsingContext,
-) -> anyhow::Result<IrFuncAndSanityCheckInfo> {
+) -> anyhow::Result<MirFuncAndSanityCheckInfo> {
     let rust_method_name = format!("{}_{}", accessor_mode.verb_str(), field.name.raw);
 
-    let owner = IrFuncOwnerInfoMethod {
+    let owner = MirFuncOwnerInfoMethod {
         owner_ty: ty_direct_parse.to_owned(),
         actual_method_name: rust_method_name,
         actual_method_dart_name: Some(field.name.raw.clone()),
-        mode: IrFuncOwnerInfoMethodMode::Instance,
+        mode: MirFuncOwnerInfoMethodMode::Instance,
     };
 
     let mut inputs = vec![compute_self_arg(
@@ -42,8 +42,8 @@ pub(super) fn parse_auto_accessor_of_field(
         type_parser,
         context,
     )?];
-    if accessor_mode == IrFuncAccessorMode::Setter {
-        inputs.push(IrFuncInput {
+    if accessor_mode == MirFuncAccessorMode::Setter {
+        inputs.push(MirFuncInput {
             ownership_mode: None,
             inner: create_ir_field(field.ty.clone(), &field.name.raw),
         });
@@ -51,13 +51,13 @@ pub(super) fn parse_auto_accessor_of_field(
 
     let field_name_rust = field.name.rust_style();
     let rust_call_code = match accessor_mode {
-        IrFuncAccessorMode::Getter => format!("api_that.{field_name_rust}.clone()"),
-        IrFuncAccessorMode::Setter => {
+        MirFuncAccessorMode::Getter => format!("api_that.{field_name_rust}.clone()"),
+        MirFuncAccessorMode::Setter => {
             format!("{{ api_that.{field_name_rust} = api_{field_name_rust}; }}")
         }
     };
 
-    let ir_func = IrFunc {
+    let ir_func = MirFunc {
         name: NamespacedName::new(
             struct_name.namespace.clone(),
             parse_effective_function_name_of_method(&owner),
@@ -65,19 +65,19 @@ pub(super) fn parse_auto_accessor_of_field(
         dart_name: None,
         id: None,
         inputs,
-        output: IrFuncOutput {
+        output: MirFuncOutput {
             normal: match accessor_mode {
-                IrFuncAccessorMode::Getter => field.ty.clone(),
-                IrFuncAccessorMode::Setter => IrType::Primitive(IrTypePrimitive::Unit),
+                MirFuncAccessorMode::Getter => field.ty.clone(),
+                MirFuncAccessorMode::Setter => MirType::Primitive(MirTypePrimitive::Unit),
             },
             error: None,
         },
-        owner: IrFuncOwnerInfo::Method(owner),
-        mode: IrFuncMode::Sync,
+        owner: MirFuncOwnerInfo::Method(owner),
+        mode: MirFuncMode::Sync,
         stream_dart_await: false,
         rust_async: false,
         initializer: false,
-        arg_mode: IrFuncArgMode::Named,
+        arg_mode: MirFuncArgMode::Named,
         accessor: Some(accessor_mode),
         comments: vec![],
         codec_mode_pack: compute_codec_mode_pack(
@@ -88,21 +88,21 @@ pub(super) fn parse_auto_accessor_of_field(
         src_lineno_pseudo: compute_src_lineno_pseudo(struct_name, field),
     };
 
-    Ok(IrFuncAndSanityCheckInfo {
+    Ok(MirFuncAndSanityCheckInfo {
         ir_func,
         sanity_check_hint: auto_accessor_checker::check_field(struct_name, field),
     })
 }
 
 fn compute_self_arg(
-    accessor_mode: IrFuncAccessorMode,
-    ty_direct_parse: &IrType,
+    accessor_mode: MirFuncAccessorMode,
+    ty_direct_parse: &MirType,
     type_parser: &mut TypeParser,
     context: &TypeParserParsingContext,
-) -> anyhow::Result<IrFuncInput> {
+) -> anyhow::Result<MirFuncInput> {
     let ownership_mode = Some(match accessor_mode {
-        IrFuncAccessorMode::Getter => OwnershipMode::Ref,
-        IrFuncAccessorMode::Setter => OwnershipMode::RefMut,
+        MirFuncAccessorMode::Getter => OwnershipMode::Ref,
+        MirFuncAccessorMode::Setter => OwnershipMode::RefMut,
     });
 
     let (ty_interest, ownership_mode) = merge_ownership_into_ty(
@@ -112,13 +112,13 @@ fn compute_self_arg(
         ownership_mode,
     )?;
 
-    Ok(IrFuncInput {
+    Ok(MirFuncInput {
         ownership_mode,
         inner: create_ir_field(ty_interest, "that"),
     })
 }
 
-fn compute_src_lineno_pseudo(struct_name: &NamespacedName, field: &IrField) -> usize {
+fn compute_src_lineno_pseudo(struct_name: &NamespacedName, field: &MirField) -> usize {
     let mut hasher = Sha1::new();
     hasher.update(struct_name.rust_style().as_bytes());
     hasher.update(field.name.raw.as_bytes());
@@ -126,10 +126,10 @@ fn compute_src_lineno_pseudo(struct_name: &NamespacedName, field: &IrField) -> u
     usize::from_le_bytes(digest[..8].try_into().unwrap())
 }
 
-fn create_ir_field(ty: IrType, name: &str) -> IrField {
-    IrField {
+fn create_ir_field(ty: MirType, name: &str) -> MirField {
+    MirField {
         ty,
-        name: IrIdent::new(name.to_owned()),
+        name: MirIdent::new(name.to_owned()),
         is_final: true,
         is_rust_public: None,
         comments: vec![],

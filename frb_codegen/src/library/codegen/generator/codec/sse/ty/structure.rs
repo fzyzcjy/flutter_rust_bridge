@@ -2,7 +2,7 @@ use crate::codegen::generator::api_dart::spec_generator::class::method::dart_con
 use crate::codegen::generator::codec::sse::ty::*;
 use crate::codegen::generator::misc::StructOrRecord;
 use crate::codegen::generator::misc::StructOrRecord::Struct;
-use crate::codegen::mir::ty::structure::IrStruct;
+use crate::codegen::mir::ty::structure::MirStruct;
 use crate::library::codegen::generator::codec::sse::lang::LangTrait;
 use itertools::Itertools;
 
@@ -30,13 +30,13 @@ impl<'a> StructRefCodecSseTy<'a> {
 }
 
 pub(crate) struct GeneralizedStructGenerator<'a> {
-    st: IrStruct,
+    st: MirStruct,
     mode: StructOrRecord,
     context: CodecSseTyContext<'a>,
 }
 
 impl<'a> GeneralizedStructGenerator<'a> {
-    pub(crate) fn new(st: IrStruct, context: CodecSseTyContext<'a>, mode: StructOrRecord) -> Self {
+    pub(crate) fn new(st: MirStruct, context: CodecSseTyContext<'a>, mode: StructOrRecord) -> Self {
         Self { st, mode, context }
     }
 

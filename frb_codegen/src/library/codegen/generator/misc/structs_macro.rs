@@ -25,25 +25,25 @@ macro_rules! codegen_generator_structs {
         );
     );
     (@private $(#[$attribute:meta])* $generator_name:ident ; $($name:ident),*,) => (
-        use $crate::codegen::mir::pack::IrPack;
-        use $crate::codegen::mir::ty::boxed::IrTypeBoxed;
-        use $crate::codegen::mir::ty::dart_fn::IrTypeDartFn;
-        use $crate::codegen::mir::ty::dart_opaque::IrTypeDartOpaque;
-        use $crate::codegen::mir::ty::delegate::IrTypeDelegate;
-        use $crate::codegen::mir::ty::dynamic::IrTypeDynamic;
-        use $crate::codegen::mir::ty::enumeration::IrTypeEnumRef;
-        use $crate::codegen::mir::ty::general_list::IrTypeGeneralList;
-        use $crate::codegen::mir::ty::optional::IrTypeOptional;
-        use $crate::codegen::mir::ty::primitive::IrTypePrimitive;
-        use $crate::codegen::mir::ty::primitive_list::IrTypePrimitiveList;
-        use $crate::codegen::mir::ty::record::IrTypeRecord;
-        use $crate::codegen::mir::ty::rust_auto_opaque_implicit::IrTypeRustAutoOpaqueImplicit;
-        use $crate::codegen::mir::ty::rust_opaque::IrTypeRustOpaque;
-        use $crate::codegen::mir::ty::structure::IrTypeStructRef;
-        use $crate::codegen::mir::ty::IrType;
+        use $crate::codegen::mir::pack::MirPack;
+        use $crate::codegen::mir::ty::boxed::MirTypeBoxed;
+        use $crate::codegen::mir::ty::dart_fn::MirTypeDartFn;
+        use $crate::codegen::mir::ty::dart_opaque::MirTypeDartOpaque;
+        use $crate::codegen::mir::ty::delegate::MirTypeDelegate;
+        use $crate::codegen::mir::ty::dynamic::MirTypeDynamic;
+        use $crate::codegen::mir::ty::enumeration::MirTypeEnumRef;
+        use $crate::codegen::mir::ty::general_list::MirTypeGeneralList;
+        use $crate::codegen::mir::ty::optional::MirTypeOptional;
+        use $crate::codegen::mir::ty::primitive::MirTypePrimitive;
+        use $crate::codegen::mir::ty::primitive_list::MirTypePrimitiveList;
+        use $crate::codegen::mir::ty::record::MirTypeRecord;
+        use $crate::codegen::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqueImplicit;
+        use $crate::codegen::mir::ty::rust_opaque::MirTypeRustOpaque;
+        use $crate::codegen::mir::ty::structure::MirTypeStructRef;
+        use $crate::codegen::mir::ty::MirType;
         // cargo fix wrongly removes this import
         #[allow(unused_imports)]
-        use $crate::codegen::mir::ty::IrType::*;
+        use $crate::codegen::mir::ty::MirType::*;
 
 
         paste::paste! {
@@ -59,7 +59,7 @@ macro_rules! codegen_generator_structs {
             impl<'a> $generator_name<'a> {
                 // Because only some of them are used
                 #[allow(dead_code)]
-                pub(crate) fn new(ty: impl Into<IrType>, context: [<$generator_name Context>]<'a>) -> Self {
+                pub(crate) fn new(ty: impl Into<MirType>, context: [<$generator_name Context>]<'a>) -> Self {
                     // This is surely used, seems to be bug of coverage tool
                     // frb-coverage:ignore-start
                     match ty.into() {
@@ -76,25 +76,25 @@ macro_rules! codegen_generator_structs {
             #[enum_dispatch]
             // frb-coverage:ignore-end
             pub(crate) trait [<$generator_name ImplTrait>] {
-                fn ir_type(&self) -> IrType;
+                fn ir_type(&self) -> MirType;
                 fn context(&self) -> [<$generator_name Context>];
             }
 
             $(
                 #[derive(Debug, Clone)]
                 pub(crate) struct [<$name $generator_name>]<'a> {
-                    pub(crate) ir: [<IrType $name>],
+                    pub(crate) ir: [<MirType $name>],
                     pub(crate) context: [<$generator_name Context>]<'a>,
                 }
 
                 impl<'a> [<$name $generator_name>]<'a> {
-                    pub(crate) fn new(ir: [<IrType $name>], context: [<$generator_name Context>]<'a>) -> Self {
+                    pub(crate) fn new(ir: [<MirType $name>], context: [<$generator_name Context>]<'a>) -> Self {
                         Self { ir, context }
                     }
                 }
 
                 impl<'a> [<$generator_name ImplTrait>] for [<$name $generator_name>]<'a> {
-                    fn ir_type(&self) -> IrType { self.ir.clone().into() }
+                    fn ir_type(&self) -> MirType { self.ir.clone().into() }
                     fn context(&self) -> [<$generator_name Context>] { self.context }
                 }
             )*

@@ -1,20 +1,20 @@
-use crate::codegen::mir::ty::structure::IrTypeStructRef;
-use crate::codegen::mir::ty::{IrContext, IrType, IrTypeTrait};
+use crate::codegen::mir::ty::structure::MirTypeStructRef;
+use crate::codegen::mir::ty::{MirContext, MirType, MirTypeTrait};
 use itertools::Itertools;
 
 crate::ir! {
-pub struct IrTypeRecord {
+pub struct MirTypeRecord {
     /// Refers to a virtual struct definition.
-    pub inner: IrTypeStructRef,
-    pub values: Box<[IrType]>,
+    pub inner: MirTypeStructRef,
+    pub values: Box<[MirType]>,
 }
 }
 
-impl IrTypeTrait for IrTypeRecord {
-    fn visit_children_types<F: FnMut(&IrType) -> bool>(
+impl MirTypeTrait for MirTypeRecord {
+    fn visit_children_types<F: FnMut(&MirType) -> bool>(
         &self,
         f: &mut F,
-        ir_context: &impl IrContext,
+        ir_context: &impl MirContext,
     ) {
         for ty in self.values.iter() {
             ty.visit_types(f, ir_context)
@@ -29,7 +29,7 @@ impl IrTypeTrait for IrTypeRecord {
         let values = self
             .values
             .iter()
-            .map(IrType::rust_api_type)
+            .map(MirType::rust_api_type)
             .collect_vec()
             .join(",");
         format!("({values},)")

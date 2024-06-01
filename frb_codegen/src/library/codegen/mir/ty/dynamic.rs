@@ -1,14 +1,14 @@
-use crate::codegen::mir::ty::{IrContext, IrType, IrTypeTrait};
+use crate::codegen::mir::ty::{MirContext, MirType, MirTypeTrait};
 
 crate::ir! {
-pub struct IrTypeDynamic;
+pub struct MirTypeDynamic;
 }
 
-impl IrTypeTrait for IrTypeDynamic {
-    fn visit_children_types<F: FnMut(&IrType) -> bool>(
+impl MirTypeTrait for MirTypeDynamic {
+    fn visit_children_types<F: FnMut(&MirType) -> bool>(
         &self,
         _f: &mut F,
-        _ir_context: &impl IrContext,
+        _ir_context: &impl MirContext,
     ) {
     }
 

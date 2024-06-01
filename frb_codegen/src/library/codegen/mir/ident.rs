@@ -3,14 +3,14 @@ use crate::utils::cbindgen_keywords;
 use convert_case::{Case, Casing};
 crate::ir! {
 #[serde(transparent)]
-pub struct IrIdent {
+pub struct MirIdent {
     pub raw: String,
 }
 }
 
-impl IrIdent {
-    pub fn new(raw: String) -> IrIdent {
-        IrIdent { raw }
+impl MirIdent {
+    pub fn new(raw: String) -> MirIdent {
+        MirIdent { raw }
     }
 
     pub fn rust_style(&self) -> &str {
@@ -33,7 +33,7 @@ impl IrIdent {
     }
 }
 
-impl std::fmt::Display for IrIdent {
+impl std::fmt::Display for MirIdent {
     fn fmt(&self, fmt: &mut std::fmt::Formatter<'_>) -> Result<(), std::fmt::Error> {
         fmt.write_str(&self.raw)
     }

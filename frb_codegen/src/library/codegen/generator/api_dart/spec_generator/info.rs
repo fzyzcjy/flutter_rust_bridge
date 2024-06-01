@@ -1,11 +1,11 @@
 use crate::codegen::generator::api_dart::spec_generator::base::*;
 use crate::codegen::mir::ty::delegate::{
-    IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegateArrayMode, IrTypeDelegatePrimitiveEnum,
-    IrTypeDelegateTime,
+    MirTypeDelegate, MirTypeDelegateArray, MirTypeDelegateArrayMode, MirTypeDelegatePrimitiveEnum,
+    MirTypeDelegateTime,
 };
-use crate::codegen::mir::ty::general_list::IrTypeGeneralList;
-use crate::codegen::mir::ty::primitive::IrTypePrimitive;
-use crate::codegen::mir::ty::{IrType, IrTypeTrait};
+use crate::codegen::mir::ty::general_list::MirTypeGeneralList;
+use crate::codegen::mir::ty::primitive::MirTypePrimitive;
+use crate::codegen::mir::ty::{MirType, MirTypeTrait};
 use convert_case::{Case, Casing};
 use enum_dispatch::enum_dispatch;
 use itertools::Itertools;
@@ -47,45 +47,45 @@ impl<'a> ApiDartGeneratorInfoTrait for DartOpaqueApiDartGenerator<'a> {
 impl<'a> ApiDartGeneratorInfoTrait for DelegateApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
         match &self.ir {
-            IrTypeDelegate::Array(array) => array.dart_api_type(self.context),
-            IrTypeDelegate::String => "String".to_string(),
-            IrTypeDelegate::Char => "String".to_string(),
-            // IrTypeDelegate::StringList => "List<String>".to_owned(),
-            // IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
+            MirTypeDelegate::Array(array) => array.dart_api_type(self.context),
+            MirTypeDelegate::String => "String".to_string(),
+            MirTypeDelegate::Char => "String".to_string(),
+            // MirTypeDelegate::StringList => "List<String>".to_owned(),
+            // MirTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
             //     ApiDartGenerator::new(self.ir.get_delegate(), self.context).dart_api_type()
             // }
-            IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum { ir, .. }) => {
-                ApiDartGenerator::new(IrType::EnumRef(ir.clone()), self.context).dart_api_type()
+            MirTypeDelegate::PrimitiveEnum(MirTypeDelegatePrimitiveEnum { ir, .. }) => {
+                ApiDartGenerator::new(MirType::EnumRef(ir.clone()), self.context).dart_api_type()
             }
-            IrTypeDelegate::Time(ir) => match ir {
-                IrTypeDelegateTime::Local | IrTypeDelegateTime::Utc | IrTypeDelegateTime::Naive => {
-                    "DateTime".to_string()
-                }
-                IrTypeDelegateTime::Duration => "Duration".to_string(),
+            MirTypeDelegate::Time(ir) => match ir {
+                MirTypeDelegateTime::Local
+                | MirTypeDelegateTime::Utc
+                | MirTypeDelegateTime::Naive => "DateTime".to_string(),
+                MirTypeDelegateTime::Duration => "Duration".to_string(),
             },
-            // IrTypeDelegate::TimeList(
-            //     IrTypeDelegateTime::Local | IrTypeDelegateTime::Utc | IrTypeDelegateTime::Naive,
+            // MirTypeDelegate::TimeList(
+            //     MirTypeDelegateTime::Local | MirTypeDelegateTime::Utc | MirTypeDelegateTime::Naive,
             // ) => "List<DateTime>".to_string(),
-            // IrTypeDelegate::TimeList(IrTypeDelegateTime::Duration) => "List<Duration>".to_string(),
-            IrTypeDelegate::Uuid => "UuidValue".to_owned(),
-            // IrTypeDelegate::Uuids => "List<UuidValue>".to_owned(),
-            IrTypeDelegate::Backtrace => "String".to_string(),
-            IrTypeDelegate::AnyhowException => "AnyhowException".to_string(),
-            IrTypeDelegate::Map(ir) => format!(
+            // MirTypeDelegate::TimeList(MirTypeDelegateTime::Duration) => "List<Duration>".to_string(),
+            MirTypeDelegate::Uuid => "UuidValue".to_owned(),
+            // MirTypeDelegate::Uuids => "List<UuidValue>".to_owned(),
+            MirTypeDelegate::Backtrace => "String".to_string(),
+            MirTypeDelegate::AnyhowException => "AnyhowException".to_string(),
+            MirTypeDelegate::Map(ir) => format!(
                 "Map<{}, {}>",
                 ApiDartGenerator::new(*ir.key.clone(), self.context).dart_api_type(),
                 ApiDartGenerator::new(*ir.value.clone(), self.context).dart_api_type(),
             ),
-            IrTypeDelegate::Set(ir) => format!(
+            MirTypeDelegate::Set(ir) => format!(
                 "Set<{}>",
                 ApiDartGenerator::new(*ir.inner.clone(), self.context).dart_api_type(),
             ),
-            IrTypeDelegate::StreamSink(ir) => format!(
+            MirTypeDelegate::StreamSink(ir) => format!(
                 "RustStreamSink<{}>",
                 ApiDartGenerator::new(*ir.inner.clone(), self.context).dart_api_type(),
             ),
-            IrTypeDelegate::BigPrimitive(_) => "BigInt".to_owned(),
-            IrTypeDelegate::RustAutoOpaqueExplicit(ir) => {
+            MirTypeDelegate::BigPrimitive(_) => "BigInt".to_owned(),
+            MirTypeDelegate::RustAutoOpaqueExplicit(ir) => {
                 ApiDartGenerator::new(ir.inner.clone(), self.context).dart_api_type()
             }
         }
@@ -93,7 +93,7 @@ impl<'a> ApiDartGeneratorInfoTrait for DelegateApiDartGenerator<'a> {
 
     fn dart_import(&self) -> Option<String> {
         match &self.ir {
-            IrTypeDelegate::Uuid /*| IrTypeDelegate::Uuids*/ => {
+            MirTypeDelegate::Uuid /*| MirTypeDelegate::Uuids*/ => {
                 Some("import 'package:uuid/uuid.dart';".to_owned())
             }
             _ => None,
@@ -101,17 +101,17 @@ impl<'a> ApiDartGeneratorInfoTrait for DelegateApiDartGenerator<'a> {
     }
 }
 
-impl IrTypeDelegateArray {
+impl MirTypeDelegateArray {
     pub(crate) fn dart_api_type(&self, context: ApiDartGeneratorContext) -> String {
         let length = self.length;
         match &self.mode {
-            IrTypeDelegateArrayMode::General(general) => {
+            MirTypeDelegateArrayMode::General(general) => {
                 format!(
                     "{}Array{length}",
                     ApiDartGenerator::new(general.clone(), context).dart_api_type()
                 )
             }
-            IrTypeDelegateArrayMode::Primitive(primitive) => {
+            MirTypeDelegateArrayMode::Primitive(primitive) => {
                 format!(
                     "{}Array{length}",
                     primitive.safe_ident().to_case(Case::Pascal)
@@ -150,17 +150,17 @@ impl<'a> ApiDartGeneratorInfoTrait for OptionalApiDartGenerator<'a> {
 impl<'a> ApiDartGeneratorInfoTrait for PrimitiveApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
         match &self.ir {
-            IrTypePrimitive::U8
-            | IrTypePrimitive::I8
-            | IrTypePrimitive::U16
-            | IrTypePrimitive::I16
-            | IrTypePrimitive::U32
-            | IrTypePrimitive::I32 => "int",
-            IrTypePrimitive::I64 | IrTypePrimitive::Isize => "PlatformInt64",
-            IrTypePrimitive::U64 | IrTypePrimitive::Usize => "BigInt",
-            IrTypePrimitive::F32 | IrTypePrimitive::F64 => "double",
-            IrTypePrimitive::Bool => "bool",
-            IrTypePrimitive::Unit => "void",
+            MirTypePrimitive::U8
+            | MirTypePrimitive::I8
+            | MirTypePrimitive::U16
+            | MirTypePrimitive::I16
+            | MirTypePrimitive::U32
+            | MirTypePrimitive::I32 => "int",
+            MirTypePrimitive::I64 | MirTypePrimitive::Isize => "PlatformInt64",
+            MirTypePrimitive::U64 | MirTypePrimitive::Usize => "BigInt",
+            MirTypePrimitive::F32 | MirTypePrimitive::F64 => "double",
+            MirTypePrimitive::Bool => "bool",
+            MirTypePrimitive::Unit => "void",
         }
         .to_owned()
     }
@@ -170,16 +170,16 @@ impl<'a> ApiDartGeneratorInfoTrait for PrimitiveListApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
         if self.ir.strict_dart_type {
             match &self.ir.primitive {
-                IrTypePrimitive::U8 => "Uint8List",
-                IrTypePrimitive::I8 => "Int8List",
-                IrTypePrimitive::U16 => "Uint16List",
-                IrTypePrimitive::I16 => "Int16List",
-                IrTypePrimitive::U32 => "Uint32List",
-                IrTypePrimitive::I32 => "Int32List",
-                IrTypePrimitive::U64 => "Uint64List",
-                IrTypePrimitive::I64 => "Int64List",
-                IrTypePrimitive::F32 => "Float32List",
-                IrTypePrimitive::F64 => "Float64List",
+                MirTypePrimitive::U8 => "Uint8List",
+                MirTypePrimitive::I8 => "Int8List",
+                MirTypePrimitive::U16 => "Uint16List",
+                MirTypePrimitive::I16 => "Int16List",
+                MirTypePrimitive::U32 => "Uint32List",
+                MirTypePrimitive::I32 => "Int32List",
+                MirTypePrimitive::U64 => "Uint64List",
+                MirTypePrimitive::I64 => "Int64List",
+                MirTypePrimitive::F32 => "Float32List",
+                MirTypePrimitive::F64 => "Float64List",
                 // frb-coverage:ignore-start
                 _ => panic!("does not support {:?} yet", &self.ir.primitive),
                 // frb-coverage:ignore-end
@@ -187,8 +187,8 @@ impl<'a> ApiDartGeneratorInfoTrait for PrimitiveListApiDartGenerator<'a> {
             .to_string()
         } else {
             ApiDartGenerator::new(
-                IrTypeGeneralList {
-                    inner: Box::new(IrType::Primitive(self.ir.primitive.clone())),
+                MirTypeGeneralList {
+                    inner: Box::new(MirType::Primitive(self.ir.primitive.clone())),
                 },
                 self.context,
             )

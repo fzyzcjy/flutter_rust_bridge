@@ -15,7 +15,7 @@ mod preparer;
 use crate::codegen::config::internal_config::InternalConfig;
 use crate::codegen::dumper::internal_config::ConfigDumpContent::Config as ContentConfig;
 use crate::codegen::dumper::Dumper;
-use crate::codegen::mir::pack::IrPack;
+use crate::codegen::mir::pack::MirPack;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::parser::reader::CachedRustReader;
@@ -50,7 +50,7 @@ fn generate_once(internal_config: &InternalConfig, dumper: &Dumper) -> anyhow::R
 
     let pb = progress_bar_pack.parse.start();
     let ir_pack = parse(&internal_config.parser, dumper, &progress_bar_pack)?;
-    dumper.dump(ConfigDumpContent::Ir, "ir_pack.json", &ir_pack)?;
+    dumper.dump(ConfigDumpContent::Mir, "ir_pack.json", &ir_pack)?;
     drop(pb);
 
     let pb = progress_bar_pack.generate.start();
@@ -83,7 +83,7 @@ fn parse(
     config: &ParserInternalConfig,
     dumper: &Dumper,
     progress_bar_pack: &GeneratorProgressBarPack,
-) -> anyhow::Result<IrPack> {
+) -> anyhow::Result<MirPack> {
     let pb = progress_bar_pack.parse_read.start();
     let mut cached_rust_reader = CachedRustReader::default();
     let file = cached_rust_reader.read_rust_crate(&config.rust_crate_dir, dumper)?;

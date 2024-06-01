@@ -3,11 +3,11 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::{
     WireRustCodecCstGenerator, WireRustCodecCstGeneratorContext,
 };
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
-use crate::codegen::mir::ty::IrType;
+use crate::codegen::mir::ty::MirType;
 use crate::library::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 
 pub(crate) fn generate_impl_new_with_nullptr(
-    types: &[IrType],
+    types: &[MirType],
     context: WireRustCodecCstGeneratorContext,
 ) -> Vec<WireRustOutputCode> {
     let mut ans = vec![];
@@ -20,7 +20,7 @@ pub(crate) fn generate_impl_new_with_nullptr(
 }
 
 pub(crate) fn generate_impl_new_with_nullptr_code_block(
-    ir: impl Into<IrType>,
+    ir: impl Into<MirType>,
     context: WireRustCodecCstGeneratorContext,
     body: &str,
 ) -> String {

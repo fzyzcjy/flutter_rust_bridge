@@ -4,9 +4,9 @@ use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::primitive::dart_native_type_of_primitive;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
-use crate::codegen::mir::ty::delegate::IrTypeDelegate;
-use crate::codegen::mir::ty::IrType::StructRef;
-use crate::codegen::mir::ty::{IrType, IrTypeTrait};
+use crate::codegen::mir::ty::delegate::MirTypeDelegate;
+use crate::codegen::mir::ty::MirType::StructRef;
+use crate::codegen::mir::ty::{MirType, MirTypeTrait};
 
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for BoxedWireDartCodecCstGenerator<'a> {
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {
@@ -19,10 +19,10 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for BoxedWireDartCodecCstGenerato
                 if self.ir.inner.is_primitive()
                     || matches!(
                         *self.ir.inner,
-                        IrType::RustOpaque(_)
-                            | IrType::RustAutoOpaqueImplicit(_)
-                            | IrType::Delegate(IrTypeDelegate::RustAutoOpaqueExplicit(_))
-                            | IrType::DartOpaque(_)
+                        MirType::RustOpaque(_)
+                            | MirType::RustAutoOpaqueImplicit(_)
+                            | MirType::Delegate(MirTypeDelegate::RustAutoOpaqueExplicit(_))
+                            | MirType::DartOpaque(_)
                     )
                 {
                     format!(
@@ -56,10 +56,10 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for BoxedWireDartCodecCstGenerato
         } else if !self.ir.inner.is_primitive()
             && !matches!(
                 *self.ir.inner,
-                IrType::RustOpaque(_)
-                    | IrType::RustAutoOpaqueImplicit(_)
-                    | IrType::Delegate(IrTypeDelegate::RustAutoOpaqueExplicit(_))
-                    | IrType::DartOpaque(_)
+                MirType::RustOpaque(_)
+                    | MirType::RustAutoOpaqueImplicit(_)
+                    | MirType::Delegate(MirTypeDelegate::RustAutoOpaqueExplicit(_))
+                    | MirType::DartOpaque(_)
             )
             && !is_empty_struct(self)
         {

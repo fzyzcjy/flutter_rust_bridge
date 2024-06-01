@@ -1,22 +1,22 @@
 use crate::codegen::generator::api_dart::spec_generator::base::{
     ApiDartGenerator, ApiDartGeneratorContext,
 };
-use crate::codegen::mir::annotation::IrDartAnnotation;
-use crate::codegen::mir::comment::IrComment;
-use crate::codegen::mir::func::IrFunc;
-use crate::codegen::mir::import::IrDartImport;
+use crate::codegen::mir::annotation::MirDartAnnotation;
+use crate::codegen::mir::comment::MirComment;
+use crate::codegen::mir::func::MirFunc;
+use crate::codegen::mir::import::MirDartImport;
 use crate::codegen::mir::namespace::Namespace;
 use crate::codegen::mir::pack::DistinctTypeGatherer;
-use crate::codegen::mir::ty::IrType;
+use crate::codegen::mir::ty::MirType;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
-use crate::library::codegen::mir::ty::IrTypeTrait;
+use crate::library::codegen::mir::ty::MirTypeTrait;
 use crate::utils::path_utils::path_to_string;
 use anyhow::Context;
 use itertools::Itertools;
 use pathdiff::diff_paths;
 
 /// A trailing newline is included if comments is not empty.
-pub(crate) fn generate_dart_comments(comments: &[IrComment]) -> String {
+pub(crate) fn generate_dart_comments(comments: &[MirComment]) -> String {
     let mut comments = comments
         .iter()
         .map(|comment| comment.0.clone())
@@ -28,11 +28,11 @@ pub(crate) fn generate_dart_comments(comments: &[IrComment]) -> String {
     comments
 }
 
-pub(crate) fn generate_dart_metadata(metadata: &[IrDartAnnotation]) -> String {
+pub(crate) fn generate_dart_metadata(metadata: &[MirDartAnnotation]) -> String {
     let mut metadata = metadata
         .iter()
         .map(|it| match &it.library {
-            Some(IrDartImport {
+            Some(MirDartImport {
                 alias: Some(alias), ..
             }) => format!("@{}.{}", alias, it.content),
             _ => format!("@{}", it.content),
@@ -55,8 +55,8 @@ pub(crate) fn generate_dart_maybe_implements_exception(is_exception: bool) -> &'
 
 pub(crate) fn generate_imports_which_types_and_funcs_use(
     current_file_namespace: &Namespace,
-    seed_types: &Option<&Vec<&IrType>>,
-    seed_funcs: &Option<&Vec<&IrFunc>>,
+    seed_types: &Option<&Vec<&MirType>>,
+    seed_funcs: &Option<&Vec<&MirFunc>>,
     context: ApiDartGeneratorContext,
 ) -> anyhow::Result<String> {
     let interest_types = {
@@ -81,7 +81,7 @@ pub(crate) fn generate_imports_which_types_and_funcs_use(
 }
 
 fn generate_imports_from_ty(
-    ty: &IrType,
+    ty: &MirType,
     current_file_namespace: &Namespace,
     context: ApiDartGeneratorContext,
 ) -> anyhow::Result<String> {

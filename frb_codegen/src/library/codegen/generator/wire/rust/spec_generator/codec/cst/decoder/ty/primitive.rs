@@ -3,9 +3,9 @@ use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::misc::JS_VALUE;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
-use crate::codegen::mir::ty::primitive::IrTypePrimitive;
-use crate::codegen::mir::ty::IrTypeTrait;
-use IrTypePrimitive::Unit;
+use crate::codegen::mir::ty::primitive::MirTypePrimitive;
+use crate::codegen::mir::ty::MirTypeTrait;
+use MirTypePrimitive::Unit;
 
 impl<'a> WireRustCodecCstGeneratorDecoderTrait for PrimitiveWireRustCodecCstGenerator<'a> {
     fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
@@ -16,7 +16,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for PrimitiveWireRustCodecCstGene
     }
 
     fn generate_impl_decode_jsvalue_body(&self) -> Option<std::borrow::Cow<str>> {
-        use IrTypePrimitive::*;
+        use MirTypePrimitive::*;
         Some(match &self.ir {
             Unit => return None,
             Bool => "self.is_truthy()".into(),
@@ -27,7 +27,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for PrimitiveWireRustCodecCstGene
     }
 
     fn rust_wire_type(&self, target: Target) -> String {
-        use IrTypePrimitive::*;
+        use MirTypePrimitive::*;
         if target == Target::Web && matches!(self.ir, I64 | U64 | Isize | Usize) {
             return JS_VALUE.into();
         }

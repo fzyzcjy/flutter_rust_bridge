@@ -3,9 +3,9 @@ use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::misc::ty::WireDartGeneratorMiscTrait;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
-use crate::codegen::mir::ty::IrType;
+use crate::codegen::mir::ty::MirType;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
-use crate::library::codegen::mir::ty::IrTypeTrait;
+use crate::library::codegen::mir::ty::MirTypeTrait;
 use convert_case::{Case, Casing};
 
 impl<'a> WireDartGeneratorMiscTrait for RustOpaqueWireDartGenerator<'a> {
@@ -18,7 +18,7 @@ impl<'a> WireDartGeneratorMiscTrait for RustOpaqueWireDartGenerator<'a> {
 }
 
 pub(super) fn generate_rust_arc_functions(
-    ir: IrType,
+    ir: MirType,
     context: WireDartGeneratorContext,
 ) -> Acc<WireDartOutputCode> {
     vec![
@@ -33,7 +33,7 @@ pub(super) fn generate_rust_arc_functions(
 
 fn generate_rust_arc_modify_strong_count(
     op_name: &str,
-    ir: &IrType,
+    ir: &MirType,
     context: WireDartGeneratorContext,
 ) -> Acc<WireDartOutputCode> {
     let ty_dart_api_type =
@@ -58,7 +58,7 @@ fn generate_rust_arc_modify_strong_count(
 }
 
 fn generate_rust_arc_function_pointer(
-    ir: &IrType,
+    ir: &MirType,
     context: WireDartGeneratorContext,
 ) -> Acc<WireDartOutputCode> {
     let ty_dart_api_type =

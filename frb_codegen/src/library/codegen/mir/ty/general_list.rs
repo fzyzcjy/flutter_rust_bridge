@@ -1,19 +1,19 @@
-use crate::codegen::mir::ty::primitive::IrTypePrimitive;
-use crate::codegen::mir::ty::primitive_list::IrTypePrimitiveList;
-use crate::codegen::mir::ty::IrType::{GeneralList, PrimitiveList};
-use crate::codegen::mir::ty::{IrContext, IrType, IrTypeTrait};
+use crate::codegen::mir::ty::primitive::MirTypePrimitive;
+use crate::codegen::mir::ty::primitive_list::MirTypePrimitiveList;
+use crate::codegen::mir::ty::MirType::{GeneralList, PrimitiveList};
+use crate::codegen::mir::ty::{MirContext, MirType, MirTypeTrait};
 
 crate::ir! {
-pub struct IrTypeGeneralList {
-    pub inner: Box<IrType>,
+pub struct MirTypeGeneralList {
+    pub inner: Box<MirType>,
 }
 }
 
-impl IrTypeTrait for IrTypeGeneralList {
-    fn visit_children_types<F: FnMut(&IrType) -> bool>(
+impl MirTypeTrait for MirTypeGeneralList {
+    fn visit_children_types<F: FnMut(&MirType) -> bool>(
         &self,
         f: &mut F,
-        ir_context: &impl IrContext,
+        ir_context: &impl MirContext,
     ) {
         self.inner.visit_types(f, ir_context);
     }
@@ -27,17 +27,17 @@ impl IrTypeTrait for IrTypeGeneralList {
     }
 }
 
-pub(crate) fn ir_list(inner: IrType, strict_dart_type: bool) -> IrType {
+pub(crate) fn ir_list(inner: MirType, strict_dart_type: bool) -> MirType {
     match inner {
         // Since Dart doesn't have a boolean primitive list like `Uint8List`,
         // we need to convert `Vec<bool>` to a boolean general list in order to achieve the binding.
-        IrType::Primitive(inner) if inner != IrTypePrimitive::Bool => {
-            PrimitiveList(IrTypePrimitiveList {
+        MirType::Primitive(inner) if inner != MirTypePrimitive::Bool => {
+            PrimitiveList(MirTypePrimitiveList {
                 primitive: inner.clone(),
                 strict_dart_type,
             })
         }
-        _ => GeneralList(IrTypeGeneralList {
+        _ => GeneralList(MirTypeGeneralList {
             inner: Box::new(inner),
         }),
     }

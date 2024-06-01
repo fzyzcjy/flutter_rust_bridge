@@ -1,4 +1,4 @@
-use crate::codegen::mir::ty::IrType;
+use crate::codegen::mir::ty::MirType;
 use crate::codegen::parser::type_parser::path_data::extract_path_data;
 use crate::codegen::parser::type_parser::unencodable::splay_segments;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
@@ -7,7 +7,7 @@ use quote::ToTokens;
 use syn::{Path, QSelf, TypePath};
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
-    pub(crate) fn parse_type_path(&mut self, type_path: &TypePath) -> anyhow::Result<IrType> {
+    pub(crate) fn parse_type_path(&mut self, type_path: &TypePath) -> anyhow::Result<MirType> {
         match &type_path {
             TypePath { qself: None, path } => self.parse_type_path_core(type_path, path),
             // This branch simply halts the generator with an error message, so we do not test it
@@ -28,7 +28,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         &mut self,
         type_path: &TypePath,
         path: &Path,
-    ) -> anyhow::Result<IrType> {
+    ) -> anyhow::Result<MirType> {
         let segments = extract_path_data(path)?;
         let splayed_segments = splay_segments(&segments);
 

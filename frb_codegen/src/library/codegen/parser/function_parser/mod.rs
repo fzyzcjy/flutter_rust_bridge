@@ -1,24 +1,24 @@
 use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
 use crate::codegen::hir::hierarchical::function::HirFunctionInner;
 use crate::codegen::mir::func::{
-    IrFunc, IrFuncArgMode, IrFuncInput, IrFuncMode, IrFuncOutput, IrFuncOwnerInfo,
-    IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode,
+    MirFunc, MirFuncArgMode, MirFuncInput, MirFuncMode, MirFuncOutput, MirFuncOwnerInfo,
+    MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
 };
 use crate::codegen::mir::namespace::{Namespace, NamespacedName};
-use crate::codegen::mir::ty::primitive::IrTypePrimitive;
+use crate::codegen::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::mir::ty::rust_opaque::RustOpaqueCodecMode;
-use crate::codegen::mir::ty::IrType;
+use crate::codegen::mir::ty::MirType;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::{external_impl, TypeParser, TypeParserParsingContext};
-use crate::library::codegen::mir::ty::IrTypeTrait;
+use crate::library::codegen::mir::ty::MirTypeTrait;
 use anyhow::{bail, Context};
 use itertools::concat;
 use log::{debug, warn};
 use std::fmt::Debug;
 use std::path::Path;
 use syn::*;
-use IrType::Primitive;
+use MirType::Primitive;
 
 pub(crate) mod argument;
 pub(crate) mod output;
@@ -41,7 +41,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         force_codec_mode_pack: &Option<CodecModePack>,
         default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
-    ) -> anyhow::Result<Option<IrFunc>> {
+    ) -> anyhow::Result<Option<MirFunc>> {
         self.parse_function_inner(
             func,
             namespace_naive,
@@ -60,14 +60,14 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         force_codec_mode_pack: &Option<CodecModePack>,
         default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
-    ) -> anyhow::Result<Option<IrFunc>> {
+    ) -> anyhow::Result<Option<MirFunc>> {
         debug!("parse_function function name: {:?}", func.sig().ident);
 
         let sig = func.sig();
         let src_lineno = func.span().start().line;
         let attributes = FrbAttributes::parse(func.attrs())?;
 
-        let create_context = |owner: Option<IrFuncOwnerInfo>| TypeParserParsingContext {
+        let create_context = |owner: Option<MirFuncOwnerInfo>| TypeParserParsingContext {
             initiated_namespace: namespace_naive.clone(),
             func_attributes: attributes.clone(),
             default_stream_sink_codec,
@@ -106,13 +106,13 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             return Ok(None);
         }
 
-        Ok(Some(IrFunc {
+        Ok(Some(MirFunc {
             name: NamespacedName::new(namespace_refined, func_name),
             dart_name: attributes.name(),
             id: None, // to be filled later
             inputs: info.inputs,
-            output: IrFuncOutput {
-                normal: info.ok_output.unwrap_or(Primitive(IrTypePrimitive::Unit)),
+            output: MirFuncOutput {
+                normal: info.ok_output.unwrap_or(Primitive(MirTypePrimitive::Unit)),
                 error: info.error_output,
             },
             owner,
@@ -122,9 +122,9 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             initializer: attributes.init(),
             accessor: attributes.accessor(),
             arg_mode: if attributes.positional() {
-                IrFuncArgMode::Positional
+                MirFuncArgMode::Positional
             } else {
-                IrFuncArgMode::Named
+                MirFuncArgMode::Named
             },
             comments: parse_comments(func.attrs()),
             codec_mode_pack,
@@ -138,17 +138,17 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         item_fn: &HirFunctionInner,
         context: &TypeParserParsingContext,
         actual_method_dart_name: Option<String>,
-    ) -> anyhow::Result<Option<IrFuncOwnerInfo>> {
+    ) -> anyhow::Result<Option<MirFuncOwnerInfo>> {
         Ok(Some(match item_fn {
-            HirFunctionInner::Function { .. } => IrFuncOwnerInfo::Function,
+            HirFunctionInner::Function { .. } => MirFuncOwnerInfo::Function,
             HirFunctionInner::Method {
                 item_impl,
                 impl_item_fn,
             } => {
                 let mode = if matches!(impl_item_fn.sig.inputs.first(), Some(FnArg::Receiver(..))) {
-                    IrFuncOwnerInfoMethodMode::Instance
+                    MirFuncOwnerInfoMethodMode::Instance
                 } else {
-                    IrFuncOwnerInfoMethodMode::Static
+                    MirFuncOwnerInfoMethodMode::Static
                 };
 
                 let owner_ty = if let Some(x) = self.parse_method_owner_ty(item_impl, context)? {
@@ -159,7 +159,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
                 let actual_method_name = impl_item_fn.sig.ident.to_string();
 
-                IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod {
+                MirFuncOwnerInfo::Method(MirFuncOwnerInfoMethod {
                     owner_ty,
                     actual_method_name,
                     actual_method_dart_name,
@@ -173,7 +173,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         &mut self,
         item_impl: &ItemImpl,
         context: &TypeParserParsingContext,
-    ) -> anyhow::Result<Option<IrType>> {
+    ) -> anyhow::Result<Option<MirType>> {
         let self_ty_path = if let Type::Path(self_ty_path) = item_impl.self_ty.as_ref() {
             self_ty_path
         } else {
@@ -188,24 +188,24 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     }
 }
 
-fn compute_func_mode(attributes: &FrbAttributes, info: &FunctionPartialInfo) -> IrFuncMode {
+fn compute_func_mode(attributes: &FrbAttributes, info: &FunctionPartialInfo) -> MirFuncMode {
     info.mode.unwrap_or(if attributes.sync() {
-        IrFuncMode::Sync
+        MirFuncMode::Sync
     } else {
-        IrFuncMode::Normal
+        MirFuncMode::Normal
     })
 }
 
-fn parse_name(sig: &Signature, owner: &IrFuncOwnerInfo) -> String {
+fn parse_name(sig: &Signature, owner: &MirFuncOwnerInfo) -> String {
     match owner {
-        IrFuncOwnerInfo::Function => sig.ident.to_string(),
-        IrFuncOwnerInfo::Method(method) => parse_effective_function_name_of_method(method),
+        MirFuncOwnerInfo::Function => sig.ident.to_string(),
+        MirFuncOwnerInfo::Method(method) => parse_effective_function_name_of_method(method),
     }
 }
 
-pub(crate) fn parse_effective_function_name_of_method(method: &IrFuncOwnerInfoMethod) -> String {
+pub(crate) fn parse_effective_function_name_of_method(method: &MirFuncOwnerInfoMethod) -> String {
     let owner_name = match &method.owner_ty {
-        IrType::RustAutoOpaqueImplicit(ty) => ty.sanitized_type(),
+        MirType::RustAutoOpaqueImplicit(ty) => ty.sanitized_type(),
         ty => ty.safe_ident(),
     };
     format!("{owner_name}_{}", method.actual_method_name)
@@ -213,10 +213,10 @@ pub(crate) fn parse_effective_function_name_of_method(method: &IrFuncOwnerInfoMe
 
 #[derive(Debug, Default)]
 struct FunctionPartialInfo {
-    inputs: Vec<IrFuncInput>,
-    ok_output: Option<IrType>,
-    error_output: Option<IrType>,
-    mode: Option<IrFuncMode>,
+    inputs: Vec<MirFuncInput>,
+    ok_output: Option<MirType>,
+    error_output: Option<MirType>,
+    mode: Option<MirFuncMode>,
     ignore_func: bool,
 }
 
@@ -260,10 +260,10 @@ pub(crate) fn compute_codec_mode_pack(
     force_ans.to_owned().or(attr_ans).unwrap_or(DEFAULT_ANS)
 }
 
-fn refine_namespace(owner: &IrFuncOwnerInfo) -> Option<Namespace> {
-    if let IrFuncOwnerInfo::Method(method) = owner {
+fn refine_namespace(owner: &MirFuncOwnerInfo) -> Option<Namespace> {
+    if let MirFuncOwnerInfo::Method(method) = owner {
         let owner_ty = &method.owner_ty;
-        if matches!(owner_ty, IrType::StructRef(_) | IrType::EnumRef(_)) {
+        if matches!(owner_ty, MirType::StructRef(_) | MirType::EnumRef(_)) {
             return owner_ty.self_namespace();
         }
     }

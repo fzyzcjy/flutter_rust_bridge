@@ -9,7 +9,7 @@ use crate::codegen::generator::wire::dart::spec_generator::base::{
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
 use crate::codegen::mir::namespace::Namespace;
-use crate::codegen::mir::pack::IrPackComputedCache;
+use crate::codegen::mir::pack::MirPackComputedCache;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::library::codegen::generator::wire::dart::spec_generator::misc::ty::WireDartGeneratorMiscTrait;
 use crate::utils::basic_code::DartBasicHeaderCode;
@@ -33,7 +33,7 @@ pub(crate) struct WireDartOutputSpecMisc {
 
 pub(crate) fn generate(
     context: WireDartGeneratorContext,
-    cache: &IrPackComputedCache,
+    cache: &MirPackComputedCache,
     c_file_content: &str,
     api_dart_actual_output_paths: &[PathBuf],
     rust_extern_funcs: &[ExternFunc],
@@ -67,7 +67,7 @@ pub(crate) fn generate(
 
 fn generate_boilerplate(
     api_dart_actual_output_paths: &[PathBuf],
-    cache: &IrPackComputedCache,
+    cache: &MirPackComputedCache,
     context: WireDartGeneratorContext,
     rust_content_hash: i32,
 ) -> anyhow::Result<Acc<Vec<WireDartOutputCode>>> {

@@ -5,8 +5,8 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::
 };
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::ty::WireRustCodecDcoGeneratorEncoderTrait;
 use crate::codegen::mir::func::OwnershipMode;
-use crate::codegen::mir::ty::rust_auto_opaque_implicit::IrTypeRustAutoOpaqueImplicit;
-use crate::codegen::mir::ty::IrTypeTrait;
+use crate::codegen::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqueImplicit;
+use crate::codegen::mir::ty::MirTypeTrait;
 
 impl<'a> WireRustCodecDcoGeneratorEncoderTrait
     for RustAutoOpaqueImplicitWireRustCodecDcoGenerator<'a>
@@ -34,6 +34,6 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait
 }
 
 // Similar to "mirror"
-fn rust_auto_opaque_local_struct_type(ir: &IrTypeRustAutoOpaqueImplicit) -> String {
+fn rust_auto_opaque_local_struct_type(ir: &MirTypeRustAutoOpaqueImplicit) -> String {
     format!("FrbWrapper<{}>", ir.rust_api_type())
 }

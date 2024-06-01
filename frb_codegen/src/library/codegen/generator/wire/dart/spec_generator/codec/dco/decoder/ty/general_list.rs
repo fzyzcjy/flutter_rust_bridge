@@ -1,12 +1,12 @@
 use crate::codegen::generator::wire::dart::spec_generator::codec::dco::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::dco::decoder::ty::WireDartCodecDcoGeneratorDecoderTrait;
-use crate::codegen::mir::ty::delegate::IrTypeDelegate;
-use crate::codegen::mir::ty::IrType;
-use crate::library::codegen::mir::ty::IrTypeTrait;
+use crate::codegen::mir::ty::delegate::MirTypeDelegate;
+use crate::codegen::mir::ty::MirType;
+use crate::library::codegen::mir::ty::MirTypeTrait;
 
 impl<'a> WireDartCodecDcoGeneratorDecoderTrait for GeneralListWireDartCodecDcoGenerator<'a> {
     fn generate_impl_decode_body(&self) -> String {
-        if let IrType::Delegate(IrTypeDelegate::Uuid) = &*self.ir.inner {
+        if let MirType::Delegate(MirTypeDelegate::Uuid) = &*self.ir.inner {
             return "const kUuidSizeInBytes = 16;
                 final bytes = dco_decode_list_prim_u_8_strict(raw);
                 return List.generate(

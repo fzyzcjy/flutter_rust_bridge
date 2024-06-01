@@ -10,7 +10,7 @@ use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::misc::PathTexts;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
-use crate::codegen::mir::pack::IrPack;
+use crate::codegen::mir::pack::MirPack;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use anyhow::Result;
 use itertools::Itertools;
@@ -21,7 +21,7 @@ pub(crate) struct GeneratorWireOutput {
 }
 
 pub(crate) fn generate(
-    ir_pack: &IrPack,
+    ir_pack: &MirPack,
     config: &GeneratorWireInternalConfig,
     api_dart_config: &GeneratorApiDartInternalConfig,
     api_dart_actual_output_paths: &[PathBuf],

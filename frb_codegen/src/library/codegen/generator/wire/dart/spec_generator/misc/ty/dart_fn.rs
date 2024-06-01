@@ -4,7 +4,7 @@ use crate::codegen::generator::wire::dart::spec_generator::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::misc::ty::WireDartGeneratorMiscTrait;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::misc::ty::dart_fn::DartFnOutputAction;
-use crate::codegen::mir::ty::IrTypeTrait;
+use crate::codegen::mir::ty::MirTypeTrait;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use itertools::Itertools;
 

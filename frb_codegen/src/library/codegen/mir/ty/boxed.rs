@@ -1,18 +1,18 @@
-use crate::codegen::mir::ty::{IrContext, IrType, IrTypeTrait};
+use crate::codegen::mir::ty::{MirContext, MirType, MirTypeTrait};
 
 crate::ir! {
-pub struct IrTypeBoxed {
+pub struct MirTypeBoxed {
     /// if false, means that we automatically add it when transforming it - it does not exist in real api.
     pub exist_in_real_api: bool,
-    pub inner: Box<IrType>,
+    pub inner: Box<MirType>,
 }
 }
 
-impl IrTypeTrait for IrTypeBoxed {
-    fn visit_children_types<F: FnMut(&IrType) -> bool>(
+impl MirTypeTrait for MirTypeBoxed {
+    fn visit_children_types<F: FnMut(&MirType) -> bool>(
         &self,
         f: &mut F,
-        ir_context: &impl IrContext,
+        ir_context: &impl MirContext,
     ) {
         self.inner.visit_types(f, ir_context);
     }

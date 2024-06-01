@@ -9,10 +9,10 @@ use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
     ExternFunc, ExternFuncParam,
 };
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
-use crate::codegen::mir::ty::delegate::IrTypeDelegate;
-use crate::codegen::mir::ty::general_list::IrTypeGeneralList;
-use crate::codegen::mir::ty::IrType::{Delegate, Optional};
-use crate::codegen::mir::ty::{IrType, IrTypeTrait};
+use crate::codegen::mir::ty::delegate::MirTypeDelegate;
+use crate::codegen::mir::ty::general_list::MirTypeGeneralList;
+use crate::codegen::mir::ty::MirType::{Delegate, Optional};
+use crate::codegen::mir::ty::{MirType, MirTypeTrait};
 
 impl<'a> WireRustCodecCstGeneratorDecoderTrait for GeneralListWireRustCodecCstGenerator<'a> {
     fn generate_decoder_class(&self) -> Option<WireRustOutputCode> {
@@ -58,14 +58,14 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for GeneralListWireRustCodecCstGe
 }
 
 /// Does it need additional indirection for types put behind a vector
-fn general_list_maybe_extra_pointer_indirection(ir: &IrTypeGeneralList) -> &'static str {
+fn general_list_maybe_extra_pointer_indirection(ir: &MirTypeGeneralList) -> &'static str {
     if matches!(
         *ir.inner,
         Optional(_)
-            | Delegate(IrTypeDelegate::String)
-            | Delegate(IrTypeDelegate::StreamSink(_))
-            | Delegate(IrTypeDelegate::Uuid)
-            | IrType::PrimitiveList(_)
+            | Delegate(MirTypeDelegate::String)
+            | Delegate(MirTypeDelegate::StreamSink(_))
+            | Delegate(MirTypeDelegate::Uuid)
+            | MirType::PrimitiveList(_)
     ) {
         "*mut "
     } else {
@@ -93,8 +93,8 @@ const DECODE_BODY_WEB: &str =
 
 pub(crate) fn generate_list_generate_allocate_func(
     safe_ident: &str,
-    list: &IrType,
-    inner: &IrType,
+    list: &MirType,
+    inner: &MirType,
     context: WireRustCodecCstGeneratorContext,
 ) -> ExternFunc {
     let list_generator = WireRustCodecCstGenerator::new(list.clone(), context);
@@ -118,16 +118,16 @@ pub(crate) fn generate_list_generate_allocate_func(
             "let wrap = {} {{ ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr({}, len), len }};
                 flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)",
             list_generator.rust_wire_type(Target::Io),
-            if inner.is_primitive() || matches!(inner, IrType::RustOpaque(_)) || matches!(inner, IrType::Delegate(IrTypeDelegate::RustAutoOpaqueExplicit(_))) || matches!(inner, IrType::RustAutoOpaqueImplicit(_)) {
+            if inner.is_primitive() || matches!(inner, MirType::RustOpaque(_)) || matches!(inner, MirType::Delegate(MirTypeDelegate::RustAutoOpaqueExplicit(_))) || matches!(inner, MirType::RustAutoOpaqueImplicit(_)) {
                 // A primitive enum list can use a default value since
                 // `<i32>::new_with_null_ptr()` isn't implemented.
                 "Default::default()".to_string()
-            } else if matches!(inner, IrType::Optional(_) | IrType::DartOpaque(_)) {
+            } else if matches!(inner, MirType::Optional(_) | MirType::DartOpaque(_)) {
                 "core::ptr::null_mut()".to_string()
             } else {
                 format!(
                     "<{}{}>::new_with_null_ptr()",
-                    general_list_maybe_extra_pointer_indirection(&IrTypeGeneralList {
+                    general_list_maybe_extra_pointer_indirection(&MirTypeGeneralList {
                         inner: Box::new(inner.clone())
                     }),
                     WireRustCodecCstGenerator::new(inner.clone(), context).rust_wire_type(Target::Io)

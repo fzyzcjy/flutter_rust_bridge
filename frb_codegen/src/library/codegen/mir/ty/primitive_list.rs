@@ -1,23 +1,23 @@
-use crate::codegen::mir::ty::primitive::IrTypePrimitive;
-use crate::codegen::mir::ty::{IrContext, IrType, IrTypeTrait};
+use crate::codegen::mir::ty::primitive::MirTypePrimitive;
+use crate::codegen::mir::ty::{MirContext, MirType, MirTypeTrait};
 
 crate::ir! {
-pub struct IrTypePrimitiveList {
-    pub primitive: IrTypePrimitive,
+pub struct MirTypePrimitiveList {
+    pub primitive: MirTypePrimitive,
     pub strict_dart_type: bool,
 }
 }
 
-impl IrTypeTrait for IrTypePrimitiveList {
-    fn visit_children_types<F: FnMut(&IrType) -> bool>(
+impl MirTypeTrait for MirTypePrimitiveList {
+    fn visit_children_types<F: FnMut(&MirType) -> bool>(
         &self,
         f: &mut F,
-        ir_context: &impl IrContext,
+        ir_context: &impl MirContext,
     ) {
-        IrType::Primitive(self.primitive.clone()).visit_types(f, ir_context);
+        MirType::Primitive(self.primitive.clone()).visit_types(f, ir_context);
 
         if !self.strict_dart_type {
-            IrType::PrimitiveList(IrTypePrimitiveList {
+            MirType::PrimitiveList(MirTypePrimitiveList {
                 strict_dart_type: true,
                 ..self.clone()
             })

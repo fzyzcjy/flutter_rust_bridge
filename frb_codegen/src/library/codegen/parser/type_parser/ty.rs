@@ -1,11 +1,11 @@
-use crate::codegen::mir::ty::IrType;
+use crate::codegen::mir::ty::MirType;
 use crate::codegen::parser::type_parser::misc::convert_ident_str;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use anyhow::Context;
 use syn::Type;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
-    pub(crate) fn parse_type(&mut self, ty: &Type) -> anyhow::Result<IrType> {
+    pub(crate) fn parse_type(&mut self, ty: &Type) -> anyhow::Result<MirType> {
         let resolve_ty = self.resolve_alias(ty);
 
         Ok(match resolve_ty.clone() {

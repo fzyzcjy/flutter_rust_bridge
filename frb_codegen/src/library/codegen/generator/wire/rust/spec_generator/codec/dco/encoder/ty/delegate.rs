@@ -6,7 +6,7 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::
     generate_enum_access_object_core, parse_wrapper_name_into_dart_name_and_self_path,
 };
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::ty::WireRustCodecDcoGeneratorEncoderTrait;
-use crate::codegen::mir::ty::delegate::{IrTypeDelegate, IrTypeDelegatePrimitiveEnum};
+use crate::codegen::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegatePrimitiveEnum};
 use itertools::Itertools;
 
 impl<'a> WireRustCodecDcoGeneratorEncoderTrait for DelegateWireRustCodecDcoGenerator<'a> {
@@ -14,7 +14,7 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for DelegateWireRustCodecDcoGener
     // frb-coverage:ignore-start
     fn generate_impl_into_dart(&self) -> Option<String> {
         // frb-coverage:ignore-end
-        if let IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum { ir, .. }) = &self.ir {
+        if let MirTypeDelegate::PrimitiveEnum(MirTypeDelegatePrimitiveEnum { ir, .. }) = &self.ir {
             let src = ir.get(self.context.ir_pack);
             let (name, self_path) =
                 parse_wrapper_name_into_dart_name_and_self_path(&src.name, &src.wrapper_name);

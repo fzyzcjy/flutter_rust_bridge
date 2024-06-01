@@ -8,13 +8,13 @@ use crate::codegen::generator::api_dart::spec_generator::dump::generate_dump_inf
 use crate::codegen::generator::api_dart::spec_generator::function::ApiDartGeneratedFunction;
 use crate::codegen::generator::api_dart::spec_generator::misc::generate_imports_which_types_and_funcs_use;
 use crate::codegen::generator::api_dart::spec_generator::sanity_checker::sanity_check_class_name_duplicates;
-use crate::codegen::mir::func::{IrFunc, IrFuncOwnerInfo};
+use crate::codegen::mir::func::{MirFunc, MirFuncOwnerInfo};
 use crate::codegen::mir::namespace::Namespace;
-use crate::codegen::mir::pack::{IrPack, IrPackComputedCache};
-use crate::codegen::mir::ty::IrType;
+use crate::codegen::mir::pack::{MirPack, MirPackComputedCache};
+use crate::codegen::mir::ty::MirType;
 use crate::codegen::ConfigDumpContent;
 use crate::library::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
-use crate::library::codegen::mir::ty::IrTypeTrait;
+use crate::library::codegen::mir::ty::MirTypeTrait;
 use crate::utils::basic_code::DartBasicHeaderCode;
 use anyhow::Result;
 use itertools::Itertools;
@@ -47,11 +47,11 @@ pub(crate) struct ApiDartOutputSpecItem {
 }
 
 pub(crate) fn generate(
-    ir_pack: &IrPack,
+    ir_pack: &MirPack,
     config: &GeneratorApiDartInternalConfig,
     dumper: &Dumper,
 ) -> Result<ApiDartOutputSpec> {
-    let cache = IrPackComputedCache::compute(ir_pack);
+    let cache = MirPackComputedCache::compute(ir_pack);
     let context = ApiDartGeneratorContext { ir_pack, config };
 
     dumper.dump(
@@ -90,8 +90,8 @@ pub(crate) fn generate(
 
 fn generate_item(
     namespace: &Namespace,
-    namespaced_types: &Option<&Vec<&IrType>>,
-    funcs: &Option<&Vec<&IrFunc>>,
+    namespaced_types: &Option<&Vec<&MirType>>,
+    funcs: &Option<&Vec<&MirFunc>>,
     context: ApiDartGeneratorContext,
 ) -> Result<ApiDartOutputSpecItem> {
     let imports = DartBasicHeaderCode {
@@ -108,7 +108,7 @@ fn generate_item(
         .map(|funcs| {
             funcs
                 .iter()
-                .filter(|f| (f.owner == IrFuncOwnerInfo::Function) && !f.initializer)
+                .filter(|f| (f.owner == MirFuncOwnerInfo::Function) && !f.initializer)
                 .map(|f| function::generate(f, context))
                 .collect::<Result<Vec<_>>>()
         })

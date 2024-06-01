@@ -1,5 +1,5 @@
-use crate::codegen::mir::ty::primitive::IrTypePrimitive;
-use crate::codegen::mir::ty::IrType;
+use crate::codegen::mir::ty::primitive::MirTypePrimitive;
+use crate::codegen::mir::ty::MirType;
 use crate::codegen::parser::function_parser::{FunctionParser, FunctionPartialInfo};
 use crate::codegen::parser::type_parser::result::parse_type_maybe_result;
 use crate::codegen::parser::type_parser::TypeParserParsingContext;
@@ -37,7 +37,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
 // Convert primitive Unit type -> None
 fn remove_primitive_unit(info: FunctionPartialInfo) -> FunctionPartialInfo {
-    let ok_output = if info.ok_output == Some(IrType::Primitive(IrTypePrimitive::Unit)) {
+    let ok_output = if info.ok_output == Some(MirType::Primitive(MirTypePrimitive::Unit)) {
         None
     } else {
         info.ok_output

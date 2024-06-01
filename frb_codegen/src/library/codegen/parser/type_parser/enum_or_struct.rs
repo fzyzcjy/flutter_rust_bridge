@@ -1,10 +1,10 @@
 use crate::codegen::hir::hierarchical::struct_or_enum::HirStructOrEnumWrapper;
 use crate::codegen::mir::namespace::{Namespace, NamespacedName};
-use crate::codegen::mir::ty::IrType;
+use crate::codegen::mir::ty::MirType;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::type_parser::external_impl;
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
-use crate::library::codegen::mir::ty::IrTypeTrait;
+use crate::library::codegen::mir::ty::MirTypeTrait;
 use log::debug;
 use std::collections::{HashMap, HashSet};
 use std::fmt::Debug;
@@ -20,7 +20,7 @@ where
         &mut self,
         last_segment: &SplayedSegment,
         override_opaque: Option<bool>,
-    ) -> anyhow::Result<Option<IrType>> {
+    ) -> anyhow::Result<Option<MirType>> {
         let output = self.parse_impl(last_segment, override_opaque)?;
         self.handle_dart_code(&output);
         Ok(output.map(|(ty, _)| ty))
@@ -30,7 +30,7 @@ where
         &mut self,
         last_segment: &SplayedSegment,
         override_opaque: Option<bool>,
-    ) -> anyhow::Result<Option<(IrType, FrbAttributes)>> {
+    ) -> anyhow::Result<Option<(MirType, FrbAttributes)>> {
         let (name, _) = last_segment;
         let name = external_impl::parse_name_or_original(name)?;
 
@@ -73,7 +73,7 @@ where
         Ok(None)
     }
 
-    fn handle_dart_code(&mut self, raw_output: &Option<(IrType, FrbAttributes)>) {
+    fn handle_dart_code(&mut self, raw_output: &Option<(MirType, FrbAttributes)>) {
         if let Some((ty, attrs)) = &raw_output {
             let dart_code = attrs.dart_code();
             if dart_code.is_empty() {
@@ -81,7 +81,7 @@ where
             }
 
             let keys = match ty {
-                IrType::RustAutoOpaqueImplicit(ty) => vec![ty.safe_ident(), ty.inner.safe_ident()],
+                MirType::RustAutoOpaqueImplicit(ty) => vec![ty.safe_ident(), ty.inner.safe_ident()],
                 ty => vec![ty.safe_ident()],
             };
 
@@ -91,7 +91,7 @@ where
         }
     }
 
-    fn parse_opaque(&mut self, namespaced_name: &NamespacedName) -> anyhow::Result<IrType> {
+    fn parse_opaque(&mut self, namespaced_name: &NamespacedName) -> anyhow::Result<MirType> {
         self.parse_type_rust_auto_opaque_implicit(
             Some(namespaced_name.namespace.clone()),
             &syn::parse_str(&namespaced_name.name)?,
@@ -105,7 +105,7 @@ where
         wrapper_name: Option<String>,
     ) -> anyhow::Result<Obj>;
 
-    fn construct_output(&self, ident: Id) -> anyhow::Result<IrType>;
+    fn construct_output(&self, ident: Id) -> anyhow::Result<MirType>;
 
     fn src_objects(&self) -> &HashMap<String, &SrcObj>;
 
@@ -117,7 +117,7 @@ where
         &mut self,
         namespace: Option<Namespace>,
         ty: &Type,
-    ) -> anyhow::Result<IrType>;
+    ) -> anyhow::Result<MirType>;
 
     fn compute_default_opaque(obj: &Obj) -> bool;
 }

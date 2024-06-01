@@ -1,6 +1,6 @@
 use crate::codegen::generator::wire::rust::spec_generator::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
-use crate::library::codegen::mir::ty::IrTypeTrait;
+use crate::library::codegen::mir::ty::MirTypeTrait;
 use itertools::Itertools;
 
 impl<'a> WireRustGeneratorMiscTrait for StructRefWireRustGenerator<'a> {

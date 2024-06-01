@@ -48,7 +48,7 @@ fn parse_angle_bracketed_generic_arguments(args: &AngleBracketedGenericArguments
 // fn parse_parenthesized_generic_arguments(
 //     &mut self,
 //     args: &ParenthesizedGenericArguments,
-// ) -> Result<Vec<IrType>> {
+// ) -> Result<Vec<MirType>> {
 //     let input_types = args
 //         .inputs
 //         .iter()

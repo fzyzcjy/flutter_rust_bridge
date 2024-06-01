@@ -1,4 +1,4 @@
-use crate::codegen::mir::comment::IrComment;
+use crate::codegen::mir::comment::MirComment;
 use itertools::Itertools;
 use syn::*;
 
@@ -13,7 +13,7 @@ pub(crate) fn convert_ident_str(ty: &Type) -> Option<String> {
     None
 }
 
-pub(crate) fn parse_comments(attrs: &[Attribute]) -> Vec<IrComment> {
+pub(crate) fn parse_comments(attrs: &[Attribute]) -> Vec<MirComment> {
     attrs
         .iter()
         .filter_map(|attr| match &attr.meta {
@@ -30,9 +30,9 @@ pub(crate) fn parse_comments(attrs: &[Attribute]) -> Vec<IrComment> {
         .collect()
 }
 
-fn parse_comment(input: &str) -> IrComment {
+fn parse_comment(input: &str) -> MirComment {
     let input = input.trim_matches('\n');
-    IrComment(if input.contains('\n') {
+    MirComment(if input.contains('\n') {
         // Dart's formatter has issues with block comments
         // so we convert them ahead of time.
         let formatted = input

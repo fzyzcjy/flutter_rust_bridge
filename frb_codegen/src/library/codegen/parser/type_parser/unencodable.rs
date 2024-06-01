@@ -15,8 +15,8 @@ pub(crate) fn splay_segments(segments: &[NameComponent]) -> Vec<SplayedSegment> 
 // pub(crate) fn parse_path_type_to_unencodable(
 //     type_path: &TypePath,
 //     splayed_segments: &[SplayedSegment],
-// ) -> IrType {
-//     Unencodable(IrTypeUnencodable {
+// ) -> MirType {
+//     Unencodable(MirTypeUnencodable {
 //         namespace: None,
 //         string: type_path.to_token_stream().to_string(),
 //         segments: splayed_segments

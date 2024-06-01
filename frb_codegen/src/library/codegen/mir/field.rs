@@ -1,29 +1,29 @@
-use crate::codegen::mir::comment::IrComment;
-use crate::codegen::mir::default::IrDefaultValue;
-use crate::codegen::mir::ident::IrIdent;
-use crate::codegen::mir::ty::IrType;
+use crate::codegen::mir::comment::MirComment;
+use crate::codegen::mir::default::MirDefaultValue;
+use crate::codegen::mir::ident::MirIdent;
+use crate::codegen::mir::ty::MirType;
 use serde::Deserialize;
 
 crate::ir! {
-pub struct IrField {
-    pub ty: IrType,
-    pub name: IrIdent,
+pub struct MirField {
+    pub ty: MirType,
+    pub name: MirIdent,
     pub is_final: bool,
     pub is_rust_public: Option<bool>,
-    pub comments: Vec<IrComment>,
-    pub default: Option<IrDefaultValue>,
-    pub settings: IrFieldSettings,
+    pub comments: Vec<MirComment>,
+    pub default: Option<MirDefaultValue>,
+    pub settings: MirFieldSettings,
 }
 
 #[derive(Deserialize, Default)]
-pub struct IrFieldSettings {
+pub struct MirFieldSettings {
     pub is_in_mirrored_enum: bool,
 }
 }
 
-impl IrField {
+impl MirField {
     #[inline]
     pub fn is_optional(&self) -> bool {
-        matches!(&self.ty, IrType::Optional(_)) || self.default.is_some()
+        matches!(&self.ty, MirType::Optional(_)) || self.default.is_some()
     }
 }

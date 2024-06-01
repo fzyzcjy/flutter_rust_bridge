@@ -1,9 +1,9 @@
 use crate::codegen::mir::namespace::Namespace;
 use crate::codegen::mir::ty::rust_opaque::{
-    IrRustOpaqueInner, IrTypeRustOpaque, RustOpaqueCodecMode,
+    MirRustOpaqueInner, MirTypeRustOpaque, RustOpaqueCodecMode,
 };
-use crate::codegen::mir::ty::IrType;
-use crate::codegen::mir::ty::IrType::RustOpaque;
+use crate::codegen::mir::ty::MirType;
+use crate::codegen::mir::ty::MirType::RustOpaque;
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use quote::ToTokens;
@@ -15,7 +15,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_rust_opaque(
         &mut self,
         last_segment: &SplayedSegment,
-    ) -> anyhow::Result<Option<IrType>> {
+    ) -> anyhow::Result<Option<MirType>> {
         Ok(Some(match last_segment {
             ("RustOpaque", [ty]) => self.parse_rust_opaque(ty, None),
             ("RustOpaqueNom", [ty]) => self.parse_rust_opaque(ty, Some(RustOpaqueCodecMode::Nom)),
@@ -25,7 +25,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         }))
     }
 
-    fn parse_rust_opaque(&mut self, ty: &Type, codec: Option<RustOpaqueCodecMode>) -> IrType {
+    fn parse_rust_opaque(&mut self, ty: &Type, codec: Option<RustOpaqueCodecMode>) -> MirType {
         let ty_str = ty.to_token_stream().to_string();
         let info = self.inner.rust_opaque_parser_info.get_or_insert(
             ty_str.clone(),
@@ -36,9 +36,9 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                     .unwrap_or(self.context.default_rust_opaque_codec),
             ),
         );
-        RustOpaque(IrTypeRustOpaque::new(
+        RustOpaque(MirTypeRustOpaque::new(
             info.namespace,
-            IrRustOpaqueInner(ty_str),
+            MirRustOpaqueInner(ty_str),
             info.codec,
             false,
         ))

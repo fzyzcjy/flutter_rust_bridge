@@ -9,9 +9,9 @@ use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
     ExternFunc, ExternFuncParam,
 };
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
-use crate::codegen::mir::ty::delegate::{IrTypeDelegate, IrTypeDelegatePrimitiveEnum};
-use crate::codegen::mir::ty::IrType;
-use crate::library::codegen::mir::ty::IrTypeTrait;
+use crate::codegen::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegatePrimitiveEnum};
+use crate::codegen::mir::ty::MirType;
+use crate::library::codegen::mir::ty::MirTypeTrait;
 
 impl<'a> WireRustCodecCstGeneratorDecoderTrait for BoxedWireRustCodecCstGenerator<'a> {
     fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
@@ -19,7 +19,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for BoxedWireRustCodecCstGenerato
         let exist_in_real_api = self.ir.exist_in_real_api;
         Acc::new(|target| {
             match (target, self.ir.inner.as_ref()) {
-                (Io, IrType::Primitive(_)) => Some(format!(
+                (Io, MirType::Primitive(_)) => Some(format!(
                     "unsafe {{ {extra} flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }}",
                     extra = if exist_in_real_api { "" } else { "*" }
                 )),
@@ -39,7 +39,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for BoxedWireRustCodecCstGenerato
 
     fn generate_impl_decode_jsvalue_body(&self) -> Option<std::borrow::Cow<str>> {
         (self.ir.exist_in_real_api).then(|| match &*self.ir.inner {
-            IrType::Delegate(IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum {
+            MirType::Delegate(MirTypeDelegate::PrimitiveEnum(MirTypeDelegatePrimitiveEnum {
                                                                repr,
                                                                ..
                                                            })) => format!(
@@ -47,7 +47,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for BoxedWireRustCodecCstGenerato
                 repr.rust_api_type()
             )
                 .into(),
-            IrType::Delegate(IrTypeDelegate::Array(array)) => format!(
+            MirType::Delegate(MirTypeDelegate::Array(array)) => format!(
                 "let vec: Vec<{}> = self.cst_decode(); Box::new(flutter_rust_bridge::for_generated::from_vec_to_array(vec))",
                 array.inner().rust_api_type()
             )
@@ -64,10 +64,10 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for BoxedWireRustCodecCstGenerato
         if self.ir.inner.is_primitive()
             || matches!(
                 *self.ir.inner,
-                IrType::RustOpaque(_)
-                    | IrType::RustAutoOpaqueImplicit(_)
-                    | IrType::Delegate(IrTypeDelegate::RustAutoOpaqueExplicit(_))
-                    | IrType::DartOpaque(_)
+                MirType::RustOpaque(_)
+                    | MirType::RustAutoOpaqueImplicit(_)
+                    | MirType::Delegate(MirTypeDelegate::RustAutoOpaqueExplicit(_))
+                    | MirType::DartOpaque(_)
             )
         {
             Acc {

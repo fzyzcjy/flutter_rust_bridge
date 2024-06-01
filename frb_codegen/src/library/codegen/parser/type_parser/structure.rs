@@ -1,10 +1,10 @@
 use crate::codegen::hir::hierarchical::struct_or_enum::HirStruct;
-use crate::codegen::mir::field::{IrField, IrFieldSettings};
-use crate::codegen::mir::ident::IrIdent;
+use crate::codegen::mir::field::{MirField, MirFieldSettings};
+use crate::codegen::mir::ident::MirIdent;
 use crate::codegen::mir::namespace::{Namespace, NamespacedName};
-use crate::codegen::mir::ty::structure::{IrStruct, IrStructIdent, IrTypeStructRef};
-use crate::codegen::mir::ty::IrType;
-use crate::codegen::mir::ty::IrType::StructRef;
+use crate::codegen::mir::ty::structure::{MirStruct, MirStructIdent, MirTypeStructRef};
+use crate::codegen::mir::ty::MirType;
+use crate::codegen::mir::ty::MirType::StructRef;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::type_parser::enum_or_struct::{
     EnumOrStructParser, EnumOrStructParserInfo,
@@ -21,7 +21,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         &mut self,
         last_segment: &SplayedSegment,
         override_opaque: Option<bool>,
-    ) -> anyhow::Result<Option<IrType>> {
+    ) -> anyhow::Result<Option<MirType>> {
         EnumOrStructParserStruct(self).parse(last_segment, override_opaque)
     }
 
@@ -30,7 +30,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         src_struct: &HirStruct,
         name: NamespacedName,
         wrapper_name: Option<String>,
-    ) -> anyhow::Result<IrStruct> {
+    ) -> anyhow::Result<MirStruct> {
         let (is_fields_named, struct_fields) = match &src_struct.0.src.fields {
             Fields::Named(FieldsNamed { named, .. }) => (true, named),
             Fields::Unnamed(FieldsUnnamed { unnamed, .. }) => (false, unnamed),
@@ -51,7 +51,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         let attributes = FrbAttributes::parse(&src_struct.0.src.attrs)?;
         let dart_metadata = attributes.dart_metadata();
 
-        Ok(IrStruct {
+        Ok(MirStruct {
             name,
             wrapper_name,
             fields,
@@ -64,28 +64,28 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         })
     }
 
-    fn parse_struct_field(&mut self, idx: usize, field: &Field) -> anyhow::Result<IrField> {
+    fn parse_struct_field(&mut self, idx: usize, field: &Field) -> anyhow::Result<MirField> {
         let field_name = field
             .ident
             .as_ref()
             .map_or(format!("field{idx}"), ToString::to_string);
         let field_type = self.parse_type(&field.ty)?;
         let attributes = FrbAttributes::parse(&field.attrs)?;
-        Ok(IrField {
-            name: IrIdent::new(field_name),
+        Ok(MirField {
+            name: MirIdent::new(field_name),
             ty: field_type,
             is_final: !attributes.non_final(),
             is_rust_public: Some(matches!(field.vis, Visibility::Public(_))),
             comments: parse_comments(&field.attrs),
             default: attributes.default_value(),
-            settings: IrFieldSettings::default(),
+            settings: MirFieldSettings::default(),
         })
     }
 }
 
 struct EnumOrStructParserStruct<'a, 'b, 'c, 'd>(&'d mut TypeParserWithContext<'a, 'b, 'c>);
 
-impl EnumOrStructParser<IrStructIdent, IrStruct, HirStruct, ItemStruct>
+impl EnumOrStructParser<MirStructIdent, MirStruct, HirStruct, ItemStruct>
     for EnumOrStructParserStruct<'_, '_, '_, '_>
 {
     fn parse_inner_impl(
@@ -93,12 +93,12 @@ impl EnumOrStructParser<IrStructIdent, IrStruct, HirStruct, ItemStruct>
         src_object: &HirStruct,
         name: NamespacedName,
         wrapper_name: Option<String>,
-    ) -> anyhow::Result<IrStruct> {
+    ) -> anyhow::Result<MirStruct> {
         self.0.parse_struct(src_object, name, wrapper_name)
     }
 
-    fn construct_output(&self, ident: IrStructIdent) -> anyhow::Result<IrType> {
-        Ok(StructRef(IrTypeStructRef {
+    fn construct_output(&self, ident: MirStructIdent) -> anyhow::Result<MirType> {
+        Ok(StructRef(MirTypeStructRef {
             ident,
             is_exception: false,
         }))
@@ -108,7 +108,7 @@ impl EnumOrStructParser<IrStructIdent, IrStruct, HirStruct, ItemStruct>
         &self.0.inner.src_structs
     }
 
-    fn parser_info(&mut self) -> &mut EnumOrStructParserInfo<IrStructIdent, IrStruct> {
+    fn parser_info(&mut self) -> &mut EnumOrStructParserInfo<MirStructIdent, MirStruct> {
         &mut self.0.inner.struct_parser_info
     }
 
@@ -120,15 +120,15 @@ impl EnumOrStructParser<IrStructIdent, IrStruct, HirStruct, ItemStruct>
         &mut self,
         namespace: Option<Namespace>,
         ty: &Type,
-    ) -> anyhow::Result<IrType> {
+    ) -> anyhow::Result<MirType> {
         self.0.parse_type_rust_auto_opaque_implicit(namespace, ty)
     }
 
-    fn compute_default_opaque(obj: &IrStruct) -> bool {
+    fn compute_default_opaque(obj: &MirStruct) -> bool {
         structure_compute_default_opaque(obj)
     }
 }
 
-pub(super) fn structure_compute_default_opaque(s: &IrStruct) -> bool {
-    (s.fields.iter()).any(|f| matches!(f.ty, IrType::RustAutoOpaqueImplicit(_)))
+pub(super) fn structure_compute_default_opaque(s: &MirStruct) -> bool {
+    (s.fields.iter()).any(|f| matches!(f.ty, MirType::RustAutoOpaqueImplicit(_)))
 }

@@ -7,7 +7,7 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
-use crate::codegen::mir::ty::{IrType, IrTypeTrait};
+use crate::codegen::mir::ty::{MirType, MirTypeTrait};
 use itertools::Itertools;
 
 impl<'a> WireRustCodecCstGeneratorDecoderTrait for StructRefWireRustCodecCstGenerator<'a> {
@@ -88,7 +88,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for StructRefWireRustCodecCstGene
                         field.name.rust_style(),
                         if WireRustCodecCstGenerator::new(field.ty.clone(), self.context)
                             .rust_wire_is_pointer(Target::Io)
-                            || matches!(field.ty, IrType::DartOpaque(_))
+                            || matches!(field.ty, MirType::DartOpaque(_))
                         {
                             "core::ptr::null_mut()".to_owned()
                         } else {

@@ -1,8 +1,8 @@
-use crate::codegen::mir::import::IrDartImport;
+use crate::codegen::mir::import::MirDartImport;
 
 crate::ir! {
-pub struct IrDartAnnotation {
+pub struct MirDartAnnotation {
     pub content: String,
-    pub library: Option<IrDartImport>,
+    pub library: Option<MirDartImport>,
 }
 }

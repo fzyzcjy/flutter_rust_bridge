@@ -1,18 +1,18 @@
-use crate::codegen::mir::ty::boxed::IrTypeBoxed;
-use crate::codegen::mir::ty::IrType::Boxed;
-use crate::codegen::mir::ty::{IrContext, IrType, IrTypeTrait};
+use crate::codegen::mir::ty::boxed::MirTypeBoxed;
+use crate::codegen::mir::ty::MirType::Boxed;
+use crate::codegen::mir::ty::{MirContext, MirType, MirTypeTrait};
 
 crate::ir! {
-pub struct IrTypeOptional {
-    pub inner: Box<IrType>,
+pub struct MirTypeOptional {
+    pub inner: Box<MirType>,
 }
 }
 
-impl IrTypeTrait for IrTypeOptional {
-    fn visit_children_types<F: FnMut(&IrType) -> bool>(
+impl MirTypeTrait for MirTypeOptional {
+    fn visit_children_types<F: FnMut(&MirType) -> bool>(
         &self,
         f: &mut F,
-        ir_context: &impl IrContext,
+        ir_context: &impl MirContext,
     ) {
         self.inner.visit_types(f, ir_context);
     }
@@ -30,15 +30,15 @@ impl IrTypeTrait for IrTypeOptional {
     }
 }
 
-impl IrTypeOptional {
-    pub(crate) fn new(inner: IrType) -> Self {
+impl MirTypeOptional {
+    pub(crate) fn new(inner: MirType) -> Self {
         Self {
             inner: Box::new(inner),
         }
     }
 
-    pub(crate) fn new_with_boxed_wrapper(inner: IrType) -> Self {
-        Self::new(Boxed(IrTypeBoxed {
+    pub(crate) fn new_with_boxed_wrapper(inner: MirType) -> Self {
+        Self::new(Boxed(MirTypeBoxed {
             exist_in_real_api: false,
             inner: Box::new(inner),
         }))

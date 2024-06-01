@@ -1,19 +1,19 @@
-use crate::codegen::mir::field::IrField;
-use crate::codegen::mir::func::IrFuncInput;
-use crate::codegen::mir::ty::primitive::IrTypePrimitive;
-use crate::codegen::mir::ty::primitive_list::IrTypePrimitiveList;
-use crate::codegen::mir::ty::IrType;
+use crate::codegen::mir::field::MirField;
+use crate::codegen::mir::func::MirFuncInput;
+use crate::codegen::mir::ty::primitive::MirTypePrimitive;
+use crate::codegen::mir::ty::primitive_list::MirTypePrimitiveList;
+use crate::codegen::mir::ty::MirType;
 use crate::codegen::parser::function_parser::{FunctionParser, FunctionPartialInfo};
 use itertools::Itertools;
-use IrTypePrimitive::{Isize, Usize, I64, U64};
+use MirTypePrimitive::{Isize, Usize, I64, U64};
 
 impl<'a, 'b> FunctionParser<'a, 'b> {
     pub(super) fn transform_fn_info(&mut self, info: FunctionPartialInfo) -> FunctionPartialInfo {
         FunctionPartialInfo {
             inputs: (info.inputs.into_iter())
-                .map(|x| IrFuncInput {
+                .map(|x| MirFuncInput {
                     ownership_mode: x.ownership_mode,
-                    inner: IrField {
+                    inner: MirField {
                         ty: transform_primitive_list_param(x.inner.ty),
                         ..x.inner
                     },
@@ -24,11 +24,11 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     }
 }
 
-fn transform_primitive_list_param(ty: IrType) -> IrType {
-    if let IrType::PrimitiveList(inner) = &ty {
+fn transform_primitive_list_param(ty: MirType) -> MirType {
+    if let MirType::PrimitiveList(inner) = &ty {
         match inner.primitive {
             U64 | I64 | Usize | Isize => ty,
-            _ => IrType::PrimitiveList(IrTypePrimitiveList {
+            _ => MirType::PrimitiveList(MirTypePrimitiveList {
                 strict_dart_type: false,
                 ..inner.clone()
             }),

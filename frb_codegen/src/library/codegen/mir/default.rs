@@ -1,17 +1,17 @@
 use std::borrow::Cow;
 
 crate::ir! {
-pub enum IrDefaultValue {
+pub enum MirDefaultValue {
     String { content: String },
     Others { dart_literal: String },
 }
 }
 
-impl IrDefaultValue {
+impl MirDefaultValue {
     pub(crate) fn to_dart_literal(&self) -> Cow<str> {
         match self {
-            IrDefaultValue::String { content } => format!("r\"{}\"", content).into(),
-            IrDefaultValue::Others { dart_literal } => dart_literal.into(),
+            MirDefaultValue::String { content } => format!("r\"{}\"", content).into(),
+            MirDefaultValue::Others { dart_literal } => dart_literal.into(),
         }
     }
 }

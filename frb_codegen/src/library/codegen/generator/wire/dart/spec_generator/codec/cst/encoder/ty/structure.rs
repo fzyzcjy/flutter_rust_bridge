@@ -7,9 +7,9 @@ use crate::codegen::generator::misc::StructOrRecord::Struct;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::misc::dart_wire_type_from_rust_wire_type_or_web;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
-use crate::codegen::mir::field::IrField;
-use crate::codegen::mir::ty::structure::{IrStruct, IrTypeStructRef};
-use crate::library::codegen::mir::ty::IrTypeTrait;
+use crate::codegen::mir::field::MirField;
+use crate::codegen::mir::ty::structure::{MirStruct, MirTypeStructRef};
+use crate::library::codegen::mir::ty::MirTypeTrait;
 use itertools::Itertools;
 
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for StructRefWireDartCodecCstGenerator<'a> {
@@ -33,14 +33,14 @@ impl<'a> StructRefWireDartCodecCstGenerator<'a> {
 }
 
 pub(crate) struct GeneralizedStructGenerator<'a> {
-    ir: IrTypeStructRef,
+    ir: MirTypeStructRef,
     context: WireDartCodecCstGeneratorContext<'a>,
     mode: StructOrRecord,
 }
 
 impl<'a> GeneralizedStructGenerator<'a> {
     pub(crate) fn new(
-        ir: IrTypeStructRef,
+        ir: MirTypeStructRef,
         context: WireDartCodecCstGeneratorContext<'a>,
         mode: StructOrRecord,
     ) -> Self {
@@ -88,8 +88,8 @@ impl<'a> GeneralizedStructGenerator<'a> {
     fn generate_api_fill_to_wire_body_struct_field(
         &self,
         index: usize,
-        field: &IrField,
-        st: &IrStruct,
+        field: &MirField,
+        st: &MirStruct,
     ) -> String {
         let safe_ident = field.ty.safe_ident();
         let dart_style =

@@ -1,7 +1,7 @@
-use crate::codegen::mir::ty::delegate::IrTypeDelegate;
-use crate::codegen::mir::ty::optional::IrTypeOptional;
-use crate::codegen::mir::ty::IrType;
-use crate::codegen::mir::ty::IrType::{
+use crate::codegen::mir::ty::delegate::MirTypeDelegate;
+use crate::codegen::mir::ty::optional::MirTypeOptional;
+use crate::codegen::mir::ty::MirType;
+use crate::codegen::mir::ty::MirType::{
     Boxed, DartFn, DartOpaque, Delegate, Dynamic, EnumRef, GeneralList, Optional, Primitive,
     PrimitiveList, Record, RustAutoOpaqueImplicit, RustOpaque, StructRef,
 };
@@ -16,7 +16,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         &mut self,
         type_path: &TypePath,
         last_segment: &SplayedSegment,
-    ) -> anyhow::Result<Option<IrType>> {
+    ) -> anyhow::Result<Option<MirType>> {
         Ok(Some(match last_segment {
             ("Option", [inner]) => {
                 let inner = self.parse_type(inner)?;
@@ -39,14 +39,14 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                     | DartFn(..)
                     | Primitive(..)
                     | Record(..)
-                    | Delegate(IrTypeDelegate::PrimitiveEnum(..)) => {
-                        IrTypeOptional::new_with_boxed_wrapper(inner.clone())
+                    | Delegate(MirTypeDelegate::PrimitiveEnum(..)) => {
+                        MirTypeOptional::new_with_boxed_wrapper(inner.clone())
                     }
-                    Delegate(IrTypeDelegate::Time(..)) => {
-                        IrTypeOptional::new_with_boxed_wrapper(inner.clone())
+                    Delegate(MirTypeDelegate::Time(..)) => {
+                        MirTypeOptional::new_with_boxed_wrapper(inner.clone())
                     }
                     PrimitiveList(_) | GeneralList(_) | Boxed(_) | Dynamic(_) | Delegate(_) => {
-                        IrTypeOptional::new(inner.clone())
+                        MirTypeOptional::new(inner.clone())
                     }
                     // frb-coverage:ignore-start
                     Optional(_) => unreachable!(),
