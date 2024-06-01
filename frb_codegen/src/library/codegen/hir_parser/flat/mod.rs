@@ -1,3 +1,4 @@
+use crate::codegen::hir::flat::HirFlatCrate;
 use crate::codegen::hir::hierarchical::module::Module;
 use crate::codegen::hir::hierarchical::struct_or_enum::Enum;
 use crate::codegen::hir::hierarchical::struct_or_enum::Struct;
@@ -6,7 +7,13 @@ use std::collections::HashMap;
 use std::fmt::Debug;
 use syn::Type;
 
-pub(crate) fn parse_module(module: &Module) {}
+pub(crate) fn parse(root_module: &Module) -> anyhow::Result<HirFlatCrate> {
+    Ok(HirFlatCrate {
+        structs: collect_structs(root_module),
+        enums: collect_enums(root_module),
+        types: collect_types(root_module),
+    })
+}
 
 fn collect_structs(module: &Module) -> HashMap<String, &Struct> {
     collect_objects(
