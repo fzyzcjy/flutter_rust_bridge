@@ -7,7 +7,6 @@ use std::path::PathBuf;
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
 pub(crate) struct ParserMirInternalConfig {
     pub rust_input_namespace_pack: RustInputNamespacePack,
-    pub rust_crate_dir: PathBuf,
     pub force_codec_mode_pack: Option<CodecModePack>,
     pub default_stream_sink_codec: CodecMode,
     pub default_rust_opaque_codec: RustOpaqueCodecMode,

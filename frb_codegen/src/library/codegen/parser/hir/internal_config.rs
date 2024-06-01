@@ -5,4 +5,6 @@ use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
-pub(crate) struct ParserHirInternalConfig {}
+pub(crate) struct ParserHirInternalConfig {
+    pub rust_input_namespace_pack: RustInputNamespacePack,
+}

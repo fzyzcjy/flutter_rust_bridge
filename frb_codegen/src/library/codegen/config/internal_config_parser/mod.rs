@@ -112,14 +112,16 @@ impl InternalConfig {
                 needs_ffigen: full_dep,
             },
             parser: ParserInternalConfig {
-                hir: ParserHirInternalConfig {},
+                hir: ParserHirInternalConfig {
+                    rust_input_namespace_pack: rust_input_namespace_pack.clone(),
+                },
                 mir: ParserMirInternalConfig {
                     rust_input_namespace_pack: rust_input_namespace_pack.clone(),
-                    rust_crate_dir: rust_crate_dir.clone(),
                     force_codec_mode_pack: compute_force_codec_mode_pack(full_dep),
                     default_stream_sink_codec,
                     default_rust_opaque_codec,
                 },
+                rust_crate_dir: rust_crate_dir.clone(),
             },
             generator,
             polisher: PolisherInternalConfig {

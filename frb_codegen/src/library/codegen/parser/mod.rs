@@ -30,13 +30,13 @@ fn parse_inner(
     drop(pb);
 
     let pb = progress_bar_pack.parse_hir.start();
-    let hir_hierarchical = hir::hierarchical::parse(config, &file)?;
+    let hir_hierarchical = hir::hierarchical::parse(&config.hir, &file)?;
     let hir_flat = hir::flat::parse(&hir_hierarchical.root_module)?;
     on_hir(&hir_hierarchical, &hir_flat);
     drop(pb);
 
     let pb = progress_bar_pack.parse_mir.start();
-    let mir_pack = mir::parse(config, &hir_flat)?;
+    let mir_pack = mir::parse(&config.mir, &hir_flat)?;
     drop(pb);
 
     Ok(mir_pack)
@@ -147,19 +147,23 @@ mod tests {
         let rust_crate_dir = test_fixture_dir.clone();
         info!("test_fixture_dir={test_fixture_dir:?}");
 
+        let rust_input_namespace_pack = rust_input_namespace_pack
+            .map(|f| f(&rust_crate_dir))
+            .unwrap_or(RustInputNamespacePack::new(vec![
+                Namespace::new_self_crate("api".to_owned()),
+            ]));
+
         let config = ParserInternalConfig {
-            hir: ParserHirInternalConfig {},
+            hir: ParserHirInternalConfig {
+                rust_input_namespace_pack: rust_input_namespace_pack.clone(),
+            },
             mir: ParserMirInternalConfig {
-                rust_input_namespace_pack: rust_input_namespace_pack
-                    .map(|f| f(&rust_crate_dir))
-                    .unwrap_or(RustInputNamespacePack::new(vec![
-                        Namespace::new_self_crate("api".to_owned()),
-                    ])),
-                rust_crate_dir: rust_crate_dir.clone(),
+                rust_input_namespace_pack: rust_input_namespace_pack.clone(),
                 force_codec_mode_pack: compute_force_codec_mode_pack(true),
                 default_stream_sink_codec: CodecMode::Dco,
                 default_rust_opaque_codec: RustOpaqueCodecMode::Nom,
             },
+            rust_crate_dir: rust_crate_dir.clone(),
         };
 
         let pack = parse_inner(
