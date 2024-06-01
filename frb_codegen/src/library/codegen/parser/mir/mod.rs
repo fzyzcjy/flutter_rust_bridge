@@ -29,9 +29,6 @@ pub(crate) fn parse(
     config: &ParserMirInternalConfig,
     hir_flat_crate: &HirFlatCrate,
 ) -> anyhow::Result<MirPack> {
-    let (src_fns_interest, src_fns_skipped): (Vec<_>, Vec<_>) = (hir_flat_crate.functions.iter())
-        .partition(|item| matches!(item.inner.vis(), Visibility::Public(_)));
-
     let mut type_parser = TypeParser::new(
         hir_flat_crate.structs.clone(),
         hir_flat_crate.enums.clone(),
@@ -40,7 +37,7 @@ pub(crate) fn parse(
 
     let mir_funcs = parse_mir_funcs(
         config,
-        &src_fns_interest,
+        &hir_flat_crate.functions,
         &mut type_parser,
         &hir_flat_crate.structs,
     )?;

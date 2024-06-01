@@ -4,7 +4,6 @@ use crate::codegen::ir::mir::func::{
     MirFunc, MirFuncArgMode, MirFuncInput, MirFuncMode, MirFuncOutput, MirFuncOwnerInfo,
     MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
 };
-use crate::utils::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::mir::ty::MirType;
@@ -14,6 +13,7 @@ use crate::codegen::parser::mir::type_parser::{
     external_impl, TypeParser, TypeParserParsingContext,
 };
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
+use crate::utils::namespace::{Namespace, NamespacedName};
 use anyhow::{bail, Context};
 use itertools::concat;
 use log::{debug, warn};
@@ -63,6 +63,10 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         default_rust_opaque_codec: RustOpaqueCodecMode,
     ) -> anyhow::Result<Option<MirFunc>> {
         debug!("parse_function function name: {:?}", func.sig().ident);
+
+        if !matches!(func.vis(), Visibility::Public(_)) {
+            return Ok(None);
+        }
 
         let sig = func.sig();
         let src_lineno = func.span().start().line;
