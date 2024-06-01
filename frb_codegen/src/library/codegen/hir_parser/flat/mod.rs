@@ -18,12 +18,16 @@ pub(crate) fn parse(root_module: &HirModule) -> anyhow::Result<HirFlatCrate> {
         structs: collect_structs(root_module),
         enums: collect_enums(root_module),
         types: resolve_type_aliases(collect_types(root_module)),
-        modules: TODO,
+        modules: collect_modules(root_module),
     })
 }
 
 fn collect_functions(module: &HirModule) -> Vec<&HirFunction> {
     collect_objects_vec(module, |module| module.content.functions.iter().collect())
+}
+
+fn collect_modules(module: &HirModule) -> Vec<&HirModule> {
+    collect_objects_vec(module, |module| vec![module])
 }
 
 fn collect_structs(module: &HirModule) -> HashMap<String, &HirStruct> {
