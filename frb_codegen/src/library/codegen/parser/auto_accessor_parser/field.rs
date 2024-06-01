@@ -45,7 +45,7 @@ pub(super) fn parse_auto_accessor_of_field(
     if accessor_mode == MirFuncAccessorMode::Setter {
         inputs.push(MirFuncInput {
             ownership_mode: None,
-            inner: create_ir_field(field.ty.clone(), &field.name.raw),
+            inner: create_mir_field(field.ty.clone(), &field.name.raw),
         });
     }
 
@@ -114,7 +114,7 @@ fn compute_self_arg(
 
     Ok(MirFuncInput {
         ownership_mode,
-        inner: create_ir_field(ty_interest, "that"),
+        inner: create_mir_field(ty_interest, "that"),
     })
 }
 
@@ -126,7 +126,7 @@ fn compute_src_lineno_pseudo(struct_name: &NamespacedName, field: &MirField) -> 
     usize::from_le_bytes(digest[..8].try_into().unwrap())
 }
 
-fn create_ir_field(ty: MirType, name: &str) -> MirField {
+fn create_mir_field(ty: MirType, name: &str) -> MirField {
     MirField {
         ty,
         name: MirIdent::new(name.to_owned()),

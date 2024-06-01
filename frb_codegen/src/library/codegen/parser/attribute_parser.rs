@@ -52,7 +52,7 @@ impl FrbAttributes {
             log::warn!("Only one `default = ..` attribute is expected; taking the last one");
             // frb-coverage:ignore-end
         }
-        candidates.last().map(|item| item.to_ir_default_value())
+        candidates.last().map(|item| item.to_mir_default_value())
     }
 
     pub(crate) fn non_final(&self) -> bool {
@@ -440,7 +440,7 @@ impl Parse for FrbAttributeDefaultValue {
 }
 
 impl FrbAttributeDefaultValue {
-    fn to_ir_default_value(&self) -> MirDefaultValue {
+    fn to_mir_default_value(&self) -> MirDefaultValue {
         match self {
             Self::Str(lit) => MirDefaultValue::String {
                 content: lit.value(),
@@ -460,7 +460,7 @@ impl FrbAttributeDefaultValue {
                 dart_literal: format!(
                     "const [{}]",
                     lit.iter()
-                        .map(|item| item.to_ir_default_value().to_dart_literal().to_string())
+                        .map(|item| item.to_mir_default_value().to_dart_literal().to_string())
                         .collect_vec()
                         .join(",")
                 ),
@@ -711,7 +711,7 @@ mod tests {
 
     #[test]
     fn test_frb_attribute_default_value() -> anyhow::Result<()> {
-        for (text, expect_ir_default_value) in vec![
+        for (text, expect_mir_default_value) in vec![
             (
                 "\"Hello\"",
                 MirDefaultValue::String {
@@ -744,7 +744,7 @@ mod tests {
             ),
         ] {
             let value: FrbAttributeDefaultValue = syn::parse_str(text)?;
-            assert_eq!(value.to_ir_default_value(), expect_ir_default_value);
+            assert_eq!(value.to_mir_default_value(), expect_mir_default_value);
             assert!(!serde_json::to_string(&value)?.is_empty());
         }
         Ok(())

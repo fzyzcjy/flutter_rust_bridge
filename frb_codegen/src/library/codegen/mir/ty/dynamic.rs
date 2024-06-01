@@ -8,7 +8,7 @@ impl MirTypeTrait for MirTypeDynamic {
     fn visit_children_types<F: FnMut(&MirType) -> bool>(
         &self,
         _f: &mut F,
-        _ir_context: &impl MirContext,
+        _mir_context: &impl MirContext,
     ) {
     }
 

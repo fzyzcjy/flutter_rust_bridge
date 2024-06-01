@@ -22,10 +22,10 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             .map(|elem| self.parse_type(elem))
             .collect::<Result<Vec<_>>>()?;
 
-        Ok(MirType::Record(self.create_ir_record(values)))
+        Ok(MirType::Record(self.create_mir_record(values)))
     }
 
-    pub(crate) fn create_ir_record(&mut self, values: Vec<MirType>) -> MirTypeRecord {
+    pub(crate) fn create_mir_record(&mut self, values: Vec<MirType>) -> MirTypeRecord {
         let namespace = self.context.initiated_namespace.clone();
 
         let safe_ident = format!(

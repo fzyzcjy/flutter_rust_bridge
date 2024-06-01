@@ -77,7 +77,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 Delegate(MirTypeDelegate::Map(MirTypeDelegateMap {
                     key: Box::new(key.clone()),
                     value: Box::new(value.clone()),
-                    element_delegate: self.create_ir_record(vec![key, value]),
+                    element_delegate: self.create_mir_record(vec![key, value]),
                 }))
             },
             ("HashSet", [inner]) => Delegate(MirTypeDelegate::Set(MirTypeDelegateSet {

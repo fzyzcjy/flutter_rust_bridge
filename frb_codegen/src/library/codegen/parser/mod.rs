@@ -47,7 +47,7 @@ pub(crate) fn parse(
         hir_flat_crate.types.clone(),
     );
 
-    let ir_funcs = parse_ir_funcs(
+    let ir_funcs = parse_mir_funcs(
         config,
         &src_fns_interest,
         &mut type_parser,
@@ -81,7 +81,7 @@ pub(crate) fn parse(
     Ok(ans)
 }
 
-fn parse_ir_funcs(
+fn parse_mir_funcs(
     config: &ParserInternalConfig,
     src_fns: &[&HirFunction],
     type_parser: &mut TypeParser,

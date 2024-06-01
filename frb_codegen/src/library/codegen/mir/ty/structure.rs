@@ -41,10 +41,10 @@ impl MirTypeTrait for MirTypeStructRef {
     fn visit_children_types<F: FnMut(&MirType) -> bool>(
         &self,
         f: &mut F,
-        _ir_context: &impl MirContext,
+        _mir_context: &impl MirContext,
     ) {
-        for field in &self.get(_ir_context).fields {
-            field.ty.visit_types(f, _ir_context);
+        for field in &self.get(_mir_context).fields {
+            field.ty.visit_types(f, _mir_context);
         }
     }
 
