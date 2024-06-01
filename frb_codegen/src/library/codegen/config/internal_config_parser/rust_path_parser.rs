@@ -8,10 +8,11 @@ use crate::utils::path_utils::canonicalize_with_error_message;
 use anyhow::Context;
 use itertools::Itertools;
 use std::path::{Path, PathBuf};
+use crate::utils::crate_name::CrateName;
 
 pub(super) struct RustInputInfo {
     pub rust_crate_dir: PathBuf,
-    pub third_party_crate_names: Vec<String>,
+    pub third_party_crate_names: Vec<CrateName>,
     pub rust_input_namespace_pack: RustInputNamespacePack,
 }
 
