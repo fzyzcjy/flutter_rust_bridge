@@ -163,16 +163,6 @@ fn first_existing_path(path_candidates: &[PathBuf]) -> Option<&PathBuf> {
     path_candidates.iter().find(|path| path.exists())
 }
 
-impl Visibility {
-    fn from_syn(value: &syn::Visibility) -> Self {
-        match value {
-            syn::Visibility::Public(_) => Visibility::Public,
-            syn::Visibility::Restricted(_) => Visibility::Restricted,
-            syn::Visibility::Inherited => Visibility::Inherited,
-        }
-    }
-}
-
 #[cfg(test)]
 mod tests {
     use crate::codegen::parser::source_graph::module_parser::get_module_file_path_candidates;
