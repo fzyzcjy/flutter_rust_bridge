@@ -45,3 +45,12 @@ pub enum ModuleSource {
     File(syn::File),
     ModuleInFile(Vec<syn::Item>),
 }
+
+impl ModuleSource {
+    pub(crate) fn items(&self) -> &[syn::Item] {
+        match self {
+            ModuleSource::File(file) => &file.items,
+            ModuleSource::ModuleInFile(items) => items,
+        }
+    }
+}

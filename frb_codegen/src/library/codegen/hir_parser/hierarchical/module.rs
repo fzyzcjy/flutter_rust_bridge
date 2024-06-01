@@ -21,12 +21,7 @@ pub(crate) fn parse_module(
 
     let mut scope = ModuleScope::default();
 
-    let items = match &info.source {
-        ModuleSource::File(file) => &file.items,
-        ModuleSource::ModuleInFile(items) => items,
-    };
-
-    for item in items.iter() {
+    for item in info.source.items().iter() {
         match item {
             syn::Item::Struct(item_struct) => {
                 scope
