@@ -12,6 +12,6 @@ pub(crate) fn parse_crate(
     dumper: &Dumper,
 ) -> anyhow::Result<HirCrate> {
     let file = cached_rust_reader.read_rust_crate(rust_crate_dir, dumper)?;
-    let root_modulee = parse_syn_items(&file.items)?;
+    let root_modulee = parse_module(&file.items)?;
     Ok(HirCrate { root_module })
 }
