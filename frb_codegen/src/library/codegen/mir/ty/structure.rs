@@ -7,7 +7,7 @@ use crate::codegen::mir::namespace::{Namespace, NamespacedName};
 use crate::codegen::mir::ty::{MirContext, MirType, MirTypeTrait};
 use convert_case::{Case, Casing};
 
-crate::ir! {
+crate::mir! {
 pub struct MirTypeStructRef {
     pub ident: MirStructIdent,
     pub is_exception: bool,

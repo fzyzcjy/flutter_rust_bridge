@@ -10,7 +10,7 @@ use serde::{Deserialize, Serialize, Serializer};
 use strum_macros::{Display, EnumIter};
 use syn::Type;
 
-crate::ir! {
+crate::mir! {
 pub struct MirTypeRustOpaque {
     pub namespace: Namespace,
     pub inner: MirRustOpaqueInner,

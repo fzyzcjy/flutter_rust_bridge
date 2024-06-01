@@ -2,7 +2,7 @@ use crate::codegen::mir::ty::dart_opaque::MirTypeDartOpaque;
 use crate::codegen::mir::ty::{MirContext, MirType, MirTypeTrait};
 use itertools::Itertools;
 
-crate::ir! {
+crate::mir! {
 pub struct MirTypeDartFn {
     pub inputs: Vec<MirType>,
     pub output: Box<MirDartFnOutput>,

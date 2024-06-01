@@ -3,7 +3,7 @@ use crate::codegen::mir::ty::primitive_list::MirTypePrimitiveList;
 use crate::codegen::mir::ty::MirType::{GeneralList, PrimitiveList};
 use crate::codegen::mir::ty::{MirContext, MirType, MirTypeTrait};
 
-crate::ir! {
+crate::mir! {
 pub struct MirTypeGeneralList {
     pub inner: Box<MirType>,
 }

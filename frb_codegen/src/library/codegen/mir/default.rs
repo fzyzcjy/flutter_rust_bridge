@@ -1,6 +1,6 @@
 use std::borrow::Cow;
 
-crate::ir! {
+crate::mir! {
 pub enum MirDefaultValue {
     String { content: String },
     Others { dart_literal: String },

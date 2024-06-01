@@ -1,4 +1,4 @@
-crate::ir! {
+crate::mir! {
 pub struct MirDartImport {
     pub uri: String,
     pub alias: Option<String>,

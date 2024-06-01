@@ -4,7 +4,7 @@ use crate::codegen::mir::ident::MirIdent;
 use crate::codegen::mir::ty::MirType;
 use serde::Deserialize;
 
-crate::ir! {
+crate::mir! {
 pub struct MirField {
     pub ty: MirType,
     pub name: MirIdent,

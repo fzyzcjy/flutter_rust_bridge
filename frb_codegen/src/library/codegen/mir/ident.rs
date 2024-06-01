@@ -1,7 +1,7 @@
 use crate::codegen::generator::codec::sse::lang::Lang;
 use crate::utils::cbindgen_keywords;
 use convert_case::{Case, Casing};
-crate::ir! {
+crate::mir! {
 #[serde(transparent)]
 pub struct MirIdent {
     pub raw: String,

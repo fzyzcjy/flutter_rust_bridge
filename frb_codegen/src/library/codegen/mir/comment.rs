@@ -1,3 +1,3 @@
-crate::ir! {
+crate::mir! {
 pub struct MirComment(pub String);
 }

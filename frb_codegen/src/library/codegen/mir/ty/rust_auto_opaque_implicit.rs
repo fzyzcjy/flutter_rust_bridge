@@ -5,7 +5,7 @@ use crate::codegen::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::mir::ty::rust_opaque::{MirTypeRustOpaque, NameComponent};
 use crate::codegen::mir::ty::{MirContext, MirType, MirTypeTrait};
 
-crate::ir! {
+crate::mir! {
 pub struct MirTypeRustAutoOpaqueImplicit {
     pub ownership_mode: OwnershipMode,
     pub inner: MirTypeRustOpaque,

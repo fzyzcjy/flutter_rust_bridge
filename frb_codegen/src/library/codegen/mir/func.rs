@@ -9,7 +9,7 @@ use crate::if_then_some;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 
-crate::ir! {
+crate::mir! {
 pub struct MirFunc {
     pub name: NamespacedName,
     pub dart_name: Option<String>,

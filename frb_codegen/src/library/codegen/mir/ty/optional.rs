@@ -2,7 +2,7 @@ use crate::codegen::mir::ty::boxed::MirTypeBoxed;
 use crate::codegen::mir::ty::MirType::Boxed;
 use crate::codegen::mir::ty::{MirContext, MirType, MirTypeTrait};
 
-crate::ir! {
+crate::mir! {
 pub struct MirTypeOptional {
     pub inner: Box<MirType>,
 }

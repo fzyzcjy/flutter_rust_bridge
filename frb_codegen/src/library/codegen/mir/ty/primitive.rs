@@ -1,7 +1,7 @@
 use crate::codegen::mir::ty::{MirContext, MirType, MirTypeTrait};
 use convert_case::{Case, Casing};
 
-crate::ir! {
+crate::mir! {
 #[derive(strum_macros::Display)]
 pub enum MirTypePrimitive {
     U8,

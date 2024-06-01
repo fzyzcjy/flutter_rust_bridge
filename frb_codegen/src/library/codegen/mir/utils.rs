@@ -5,19 +5,19 @@
 /// - `ir! { #[no_serde] pub struct Bar { .. } .. }`
 #[doc(hidden)] // only to be used within crate, not for end users
 #[macro_export]
-macro_rules! ir {
+macro_rules! mir {
     () => {};
     (#[no_serde] $decl:item $($rest:tt)*) => {
         #[derive(Debug, Clone, Hash, Eq, PartialEq)]
         $decl
 
-        $crate::ir!($($rest)*);
+        $crate::mir!($($rest)*);
     };
     ($decl:item $($rest:tt)*) => {
         #[derive(Debug, Clone, Hash, Eq, PartialEq)]
         #[derive(::serde::Serialize)]
         $decl
 
-        $crate::ir!($($rest)*);
+        $crate::mir!($($rest)*);
     }
 }

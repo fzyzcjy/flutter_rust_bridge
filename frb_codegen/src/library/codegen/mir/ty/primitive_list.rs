@@ -1,7 +1,7 @@
 use crate::codegen::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::mir::ty::{MirContext, MirType, MirTypeTrait};
 
-crate::ir! {
+crate::mir! {
 pub struct MirTypePrimitiveList {
     pub primitive: MirTypePrimitive,
     pub strict_dart_type: bool,

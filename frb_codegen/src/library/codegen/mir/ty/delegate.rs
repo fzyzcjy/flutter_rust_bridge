@@ -9,7 +9,7 @@ use crate::codegen::mir::ty::rust_auto_opaque_implicit::MirRustAutoOpaqueRaw;
 use crate::codegen::mir::ty::rust_opaque::MirTypeRustOpaque;
 use crate::codegen::mir::ty::{MirContext, MirType, MirTypeTrait};
 
-crate::ir! {
+crate::mir! {
 /// types that delegate to another type
 pub enum MirTypeDelegate {
     Array(MirTypeDelegateArray),

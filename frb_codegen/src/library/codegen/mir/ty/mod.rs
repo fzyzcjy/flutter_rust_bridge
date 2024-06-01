@@ -21,7 +21,7 @@ use enum_dispatch::enum_dispatch;
 use serde::ser::SerializeStruct;
 use serde::{Serialize, Serializer};
 
-crate::ir! {
+crate::mir! {
 #[no_serde]
 // Remark: "Ty" instead of "Type", since "type" is a reserved word in Rust.
 #[enum_dispatch(MirTypeTrait)]

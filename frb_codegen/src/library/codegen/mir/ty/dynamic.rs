@@ -1,6 +1,6 @@
 use crate::codegen::mir::ty::{MirContext, MirType, MirTypeTrait};
 
-crate::ir! {
+crate::mir! {
 pub struct MirTypeDynamic;
 }
 

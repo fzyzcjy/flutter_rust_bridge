@@ -8,7 +8,7 @@ use crate::codegen::mir::ty::structure::MirStruct;
 use crate::codegen::mir::ty::{MirContext, MirType, MirTypeTrait};
 use convert_case::{Case, Casing};
 
-crate::ir! {
+crate::mir! {
 pub struct MirTypeEnumRef {
     pub ident: MirEnumIdent,
     pub is_exception: bool,
