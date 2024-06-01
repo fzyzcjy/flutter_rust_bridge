@@ -144,8 +144,7 @@ fn compute_path_from_namespace(
     dart_decl_base_output_path: &Path,
     namespace: &Namespace,
 ) -> PathBuf {
-    // let namespace_stripped = namespace.strip_prefix(common_namespace_prefix);
-    let chunks = namespace.path();
+    let chunks = namespace.path_exclude_self_crate();
     let ans_without_extension =
         (chunks.iter()).fold(dart_decl_base_output_path.to_owned(), |a, b| a.join(b));
     ans_without_extension.with_extension("dart")
