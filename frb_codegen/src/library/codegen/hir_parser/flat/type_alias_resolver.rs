@@ -1,4 +1,4 @@
-use crate::codegen::parser::type_parser::misc::convert_ident_str;
+use crate::codegen::mir_parser::type_parser::misc::convert_ident_str;
 use std::collections::HashMap;
 use syn::Type;
 use topological_sort::TopologicalSort;

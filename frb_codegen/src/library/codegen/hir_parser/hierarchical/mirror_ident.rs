@@ -1,4 +1,4 @@
-use crate::codegen::parser::attribute_parser::FrbAttributes;
+use crate::codegen::mir_parser::attribute_parser::FrbAttributes;
 use anyhow::Context;
 use itertools::Itertools;
 use proc_macro2::Ident;

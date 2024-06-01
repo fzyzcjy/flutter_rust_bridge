@@ -6,8 +6,8 @@ pub(crate) mod dumper;
 pub(crate) mod generator;
 pub(crate) mod hir_parser;
 pub(crate) mod ir;
+pub(crate) mod mir_parser;
 mod misc;
-pub(crate) mod parser;
 mod polisher;
 mod preparer;
 
@@ -15,9 +15,9 @@ use crate::codegen::config::internal_config::InternalConfig;
 use crate::codegen::dumper::internal_config::ConfigDumpContent::Config as ContentConfig;
 use crate::codegen::dumper::Dumper;
 use crate::codegen::ir::mir::pack::MirPack;
+use crate::codegen::mir_parser::internal_config::ParserInternalConfig;
+use crate::codegen::mir_parser::reader::CachedRustReader;
 use crate::codegen::misc::GeneratorProgressBarPack;
-use crate::codegen::parser::internal_config::ParserInternalConfig;
-use crate::codegen::parser::reader::CachedRustReader;
 pub use config::config::{Config, MetaConfig};
 pub use dumper::internal_config::ConfigDumpContent;
 use log::debug;
@@ -94,7 +94,7 @@ fn parse(
     drop(pb);
 
     let pb = progress_bar_pack.parse_mir.start();
-    let mir_pack = parser::parse(config, &hir_flat)?;
+    let mir_pack = mir_parser::parse(config, &hir_flat)?;
     drop(pb);
 
     Ok(mir_pack)

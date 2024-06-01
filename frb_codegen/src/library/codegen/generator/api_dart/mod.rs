@@ -42,8 +42,8 @@ mod tests {
     use crate::codegen::config::internal_config::InternalConfig;
     use crate::codegen::dumper::Dumper;
     use crate::codegen::generator::api_dart::generate;
+    use crate::codegen::mir_parser::reader::CachedRustReader;
     use crate::codegen::misc::GeneratorProgressBarPack;
-    use crate::codegen::parser::reader::CachedRustReader;
     use crate::codegen::Config;
     use crate::utils::logs::configure_opinionated_test_logging;
     use crate::utils::test_utils::{get_test_fixture_dir, text_golden_test};

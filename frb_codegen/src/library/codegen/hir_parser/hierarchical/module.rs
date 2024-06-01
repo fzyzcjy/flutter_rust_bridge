@@ -8,8 +8,8 @@ use crate::codegen::ir::hir::hierarchical::module::{
     HirModule, HirModuleContent, HirModuleMeta, HirVisibility,
 };
 use crate::codegen::ir::mir::namespace::Namespace;
-use crate::codegen::parser::internal_config::ParserInternalConfig;
-use crate::codegen::parser::reader::CachedRustReader;
+use crate::codegen::mir_parser::internal_config::ParserInternalConfig;
+use crate::codegen::mir_parser::reader::CachedRustReader;
 use log::debug;
 use syn::ItemMod;
 
