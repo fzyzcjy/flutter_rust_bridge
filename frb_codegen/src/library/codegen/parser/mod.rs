@@ -54,6 +54,7 @@ mod tests {
     use crate::codegen::parser::mir::internal_config::{
         ParserMirInternalConfig, RustInputNamespacePack,
     };
+    use crate::codegen::parser::reader::internal_config::ParserReaderInternalConfig;
     use crate::codegen::parser::{parse_inner, MirPack};
     use crate::utils::logs::configure_opinionated_test_logging;
     use crate::utils::test_utils::{
@@ -151,6 +152,9 @@ mod tests {
             });
 
         let config = ParserInternalConfig {
+            reader: ParserReaderInternalConfig {
+                rust_crate_dir: rust_crate_dir.clone(),
+            },
             hir: ParserHirInternalConfig {
                 rust_input_namespace_pack: rust_input_namespace_pack.clone(),
                 third_party_crates: vec![],
@@ -161,7 +165,6 @@ mod tests {
                 default_stream_sink_codec: CodecMode::Dco,
                 default_rust_opaque_codec: RustOpaqueCodecMode::Nom,
             },
-            rust_crate_dir: rust_crate_dir.clone(),
         };
 
         let pack = parse_inner(
