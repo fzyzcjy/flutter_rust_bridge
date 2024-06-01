@@ -4,4 +4,5 @@ use serde::{Deserialize, Serialize};
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
 pub(crate) struct ParserHirInternalConfig {
     pub rust_input_namespace_pack: RustInputNamespacePack,
+    pub third_party_crates: Vec<String>,
 }
