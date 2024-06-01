@@ -18,6 +18,7 @@ pub(super) fn generate(
     spec: &ApiDartOutputSpec,
     config: &GeneratorApiDartInternalConfig,
 ) -> anyhow::Result<ApiDartOutputText> {
+    let common_namespace_prefix = Namespace::compute_common_prefix(&spec.namespaced_items.keys().collect());
     let path_texts = PathTexts(
         spec.namespaced_items
             .iter()

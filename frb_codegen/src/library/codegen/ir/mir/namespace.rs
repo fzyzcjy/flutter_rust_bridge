@@ -76,6 +76,10 @@ impl Namespace {
     pub fn is_prefix_of(&self, other: &Namespace) -> bool {
         other.path().starts_with(&self.path())
     }
+    
+    pub fn compute_common_prefix(namespaces: &[&Namespace]) -> Self {
+        TODO
+    }
 }
 
 impl Display for Namespace {
