@@ -15,7 +15,7 @@ use crate::codegen::dumper::internal_config::ConfigDumpContent::Config as Conten
 use crate::codegen::dumper::Dumper;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::misc::GeneratorProgressBarPack;
-use crate::codegen::parser::mir::internal_config::ParserInternalConfig;
+use crate::codegen::parser::hir::internal_config::ParserInternalConfig;
 pub use config::config::{Config, MetaConfig};
 pub use dumper::internal_config::ConfigDumpContent;
 use log::debug;

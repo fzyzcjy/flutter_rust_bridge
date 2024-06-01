@@ -14,8 +14,11 @@ use crate::codegen::generator::wire::dart::internal_config::{
 };
 use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInternalConfig;
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
-use crate::codegen::parser::mir::internal_config::ParserInternalConfig;
-use crate::codegen::parser::mir::internal_config::RustInputNamespacePack;
+use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
+use crate::codegen::parser::internal_config::ParserInternalConfig;
+use crate::codegen::parser::mir::internal_config::{
+    ParserMirInternalConfig, RustInputNamespacePack,
+};
 use crate::codegen::polisher::internal_config::PolisherInternalConfig;
 use crate::codegen::preparer::internal_config::PreparerInternalConfig;
 use crate::codegen::{Config, ConfigDumpContent};
@@ -109,11 +112,14 @@ impl InternalConfig {
                 needs_ffigen: full_dep,
             },
             parser: ParserInternalConfig {
-                rust_input_namespace_pack: rust_input_namespace_pack.clone(),
-                rust_crate_dir: rust_crate_dir.clone(),
-                force_codec_mode_pack: compute_force_codec_mode_pack(full_dep),
-                default_stream_sink_codec,
-                default_rust_opaque_codec,
+                hir: ParserHirInternalConfig {},
+                mir: ParserMirInternalConfig {
+                    rust_input_namespace_pack: rust_input_namespace_pack.clone(),
+                    rust_crate_dir: rust_crate_dir.clone(),
+                    force_codec_mode_pack: compute_force_codec_mode_pack(full_dep),
+                    default_stream_sink_codec,
+                    default_rust_opaque_codec,
+                },
             },
             generator,
             polisher: PolisherInternalConfig {
