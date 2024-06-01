@@ -77,7 +77,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                             .find(|arg| matches!(arg, GenericArgument::Type(_)))
                             .unwrap()
                         {
-                            let ir = self.parse_type(inner_ty)?;
+                            let mir = self.parse_type(inner_ty)?;
                             return parse_type_maybe_result(&ir, self.inner, self.context);
 
                             // This will stop the whole generator and tell the users, so we do not care about testing it

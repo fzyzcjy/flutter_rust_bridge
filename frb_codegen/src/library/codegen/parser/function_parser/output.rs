@@ -25,7 +25,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         ty: &Type,
         context: &TypeParserParsingContext,
     ) -> anyhow::Result<FunctionPartialInfo> {
-        let ir = self.type_parser.parse_type(ty, context)?;
+        let mir = self.type_parser.parse_type(ty, context)?;
         let info = parse_type_maybe_result(&ir, self.type_parser, context)?;
         Ok(FunctionPartialInfo {
             ok_output: Some(info.ok_output),

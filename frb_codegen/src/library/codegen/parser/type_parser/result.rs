@@ -10,7 +10,7 @@ pub(crate) fn parse_type_maybe_result(
     type_parser: &mut TypeParser,
     context: &TypeParserParsingContext,
 ) -> anyhow::Result<ResultTypeInfo> {
-    if let MirType::RustAutoOpaqueImplicit(inner) = ir {
+    if let MirType::RustAutoOpaqueImplicit(inner) = mir {
         match splay_segments(&inner.raw.segments).last() {
             Some(("Result", args)) => {
                 return parse_type_result(

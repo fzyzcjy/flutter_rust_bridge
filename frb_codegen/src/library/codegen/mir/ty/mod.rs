@@ -45,7 +45,11 @@ pub enum MirType {
 }
 
 impl MirType {
-    pub fn visit_types<F: FnMut(&MirType) -> bool>(&self, f: &mut F, mir_context: &impl MirContext) {
+    pub fn visit_types<F: FnMut(&MirType) -> bool>(
+        &self,
+        f: &mut F,
+        mir_context: &impl MirContext,
+    ) {
         if f(self) {
             return;
         }

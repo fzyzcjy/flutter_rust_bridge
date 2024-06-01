@@ -53,7 +53,7 @@ impl<'a> WireDartCodecDcoGeneratorDecoderTrait for DelegateWireDartCodecDcoGener
                 ) // here `as int` is neccessary in strict dynamic mode
             }
             MirTypeDelegate::Time(ir) => {
-                if ir == &MirTypeDelegateTime::Duration {
+                if mir == &MirTypeDelegateTime::Duration {
                     "return dcoDecodeDuration(dco_decode_i_64(raw).toInt());".to_owned()
                 } else {
                     format!(

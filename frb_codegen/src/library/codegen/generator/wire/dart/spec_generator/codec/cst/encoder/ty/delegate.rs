@@ -79,7 +79,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
             MirTypeDelegate::PrimitiveEnum(MirTypeDelegatePrimitiveEnum { ref repr, .. }) => {
                 format!("return cst_encode_{}(raw.index);", repr.safe_ident()).into()
             }
-            MirTypeDelegate::Time(ir) => match ir {
+            MirTypeDelegate::Time(ir) => match mir {
                 MirTypeDelegateTime::Utc
                 | MirTypeDelegateTime::Local
                 | MirTypeDelegateTime::Naive => Acc {

@@ -11,7 +11,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for RecordWireRustCodecCstGenerat
     }
 
     fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
-        let ir = self.ir.inner.get(self.context.mir_pack);
+        let mir = self.ir.inner.get(self.context.mir_pack);
         let len = ir.fields.len();
         let values: Acc<Vec<_>> = ir
             .fields

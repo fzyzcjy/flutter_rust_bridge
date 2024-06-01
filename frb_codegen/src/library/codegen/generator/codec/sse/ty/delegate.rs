@@ -27,7 +27,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 MirTypeDelegate::Set(ir) => {
                     generate_set_to_list(ir, self.context.as_api_dart_context(), "self")
                 }
-                MirTypeDelegate::Time(ir) => match ir {
+                MirTypeDelegate::Time(ir) => match mir {
                     MirTypeDelegateTime::Utc
                     | MirTypeDelegateTime::Local
                     | MirTypeDelegateTime::Naive => {
@@ -70,7 +70,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 MirTypeDelegate::AnyhowException => r#"format!("{:?}", self)"#.to_owned(),
                 MirTypeDelegate::Map(_) => "self.into_iter().collect()".to_owned(),
                 MirTypeDelegate::Set(_) => "self.into_iter().collect()".to_owned(),
-                MirTypeDelegate::Time(ir) => match ir {
+                MirTypeDelegate::Time(ir) => match mir {
                     MirTypeDelegateTime::Utc | MirTypeDelegateTime::Local => {
                         "self.timestamp_micros()".to_owned()
                     }
@@ -119,7 +119,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     "Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)))".to_owned()
                 }
                 MirTypeDelegate::Set(_) => "Set.from(inner)".to_owned(),
-                MirTypeDelegate::Time(ir) => match ir {
+                MirTypeDelegate::Time(ir) => match mir {
                     MirTypeDelegateTime::Utc
                     | MirTypeDelegateTime::Local
                     | MirTypeDelegateTime::Naive => {
@@ -160,7 +160,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 MirTypeDelegate::Time(ir) => {
                     let naive = "chrono::DateTime::from_timestamp_micros(inner).expect(\"invalid or out-of-range datetime\").naive_utc()";
                     let utc = format!("chrono::DateTime::<chrono::Utc>::from_naive_utc_and_offset({naive}, chrono::Utc)");
-                    match ir {
+                    match mir {
                         MirTypeDelegateTime::Naive => naive.to_owned(),
                         MirTypeDelegateTime::Utc => utc,
                         MirTypeDelegateTime::Local => {

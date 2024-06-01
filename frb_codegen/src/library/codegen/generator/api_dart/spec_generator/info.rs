@@ -57,7 +57,7 @@ impl<'a> ApiDartGeneratorInfoTrait for DelegateApiDartGenerator<'a> {
             MirTypeDelegate::PrimitiveEnum(MirTypeDelegatePrimitiveEnum { ir, .. }) => {
                 ApiDartGenerator::new(MirType::EnumRef(ir.clone()), self.context).dart_api_type()
             }
-            MirTypeDelegate::Time(ir) => match ir {
+            MirTypeDelegate::Time(ir) => match mir {
                 MirTypeDelegateTime::Local
                 | MirTypeDelegateTime::Utc
                 | MirTypeDelegateTime::Naive => "DateTime".to_string(),

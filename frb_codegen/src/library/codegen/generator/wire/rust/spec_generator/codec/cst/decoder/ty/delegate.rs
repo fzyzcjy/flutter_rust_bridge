@@ -38,7 +38,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
             // MirTypeDelegate::StringList => general_list_impl_decode_body(),
             MirTypeDelegate::PrimitiveEnum (inner) => rust_decode_primitive_enum(inner, self.context.mir_pack, "self").into(),
             MirTypeDelegate::Time(ir) => {
-                if ir == &MirTypeDelegateTime::Duration {
+                if mir == &MirTypeDelegateTime::Duration {
                     return Acc {
                         io: Some("chrono::Duration::microseconds(self)".into()),
                         web: None,
@@ -50,7 +50,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
                     "chrono::DateTime::from_timestamp(s, ns).expect(\"invalid or out-of-range datetime\").naive_utc()";
                 let codegen_utc = format!("chrono::DateTime::<chrono::Utc>::from_naive_utc_and_offset({codegen_naive}, chrono::Utc)");
                 let codegen_local = format!("chrono::DateTime::<chrono::Local>::from({codegen_utc})");
-                let codegen_conversion = match ir {
+                let codegen_conversion = match mir {
                     MirTypeDelegateTime::Naive => codegen_naive,
                     MirTypeDelegateTime::Utc => codegen_utc.as_str(),
                     MirTypeDelegateTime::Local => codegen_local.as_str(),
@@ -122,7 +122,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
             // MirTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
             //     "flutter_rust_bridge::ZeroCopyBuffer(self.cst_decode())".into()
             // }
-            MirTypeDelegate::Time(ir) => match ir {
+            MirTypeDelegate::Time(ir) => match mir {
                 MirTypeDelegateTime::Duration => "chrono::Duration::milliseconds(CstDecode::<i64>::cst_decode(self))".into(),
                 _ => "CstDecode::<i64>::cst_decode(self).cst_decode()".into(),
             },

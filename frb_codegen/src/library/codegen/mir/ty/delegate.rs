@@ -146,14 +146,14 @@ impl MirTypeTrait for MirTypeDelegate {
             MirTypeDelegate::PrimitiveEnum(MirTypeDelegatePrimitiveEnum { ir, .. }) => {
                 ir.rust_api_type()
             }
-            MirTypeDelegate::Time(ir) => match ir {
+            MirTypeDelegate::Time(ir) => match mir {
                 MirTypeDelegateTime::Naive => "chrono::NaiveDateTime",
                 MirTypeDelegateTime::Local => "chrono::DateTime::<chrono::Local>",
                 MirTypeDelegateTime::Utc => "chrono::DateTime::<chrono::Utc>",
                 MirTypeDelegateTime::Duration => "chrono::Duration",
             }
             .to_owned(),
-            // MirTypeDelegate::TimeList(ir) => match ir {
+            // MirTypeDelegate::TimeList(ir) => match mir {
             //     MirTypeDelegateTime::Naive => "Vec<chrono::NaiveDateTime>",
             //     MirTypeDelegateTime::Local => "Vec<chrono::DateTime::<chrono::Local>>",
             //     MirTypeDelegateTime::Utc => "Vec<chrono::DateTime::<chrono::Utc>>",
@@ -181,7 +181,7 @@ impl MirTypeTrait for MirTypeDelegate {
                     codec = ir.codec,
                 )
             }
-            MirTypeDelegate::BigPrimitive(ir) => match ir {
+            MirTypeDelegate::BigPrimitive(ir) => match mir {
                 MirTypeDelegateBigPrimitive::I128 => "i128".to_owned(),
                 MirTypeDelegateBigPrimitive::U128 => "u128".to_owned(),
             },
