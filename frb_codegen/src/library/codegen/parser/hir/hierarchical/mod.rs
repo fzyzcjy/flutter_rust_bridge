@@ -23,7 +23,7 @@ pub(crate) fn parse(
         .crates
         .iter()
         .map(|(crate_name, syn_file)| Ok((crate_name.to_owned(), parse_crate(config, syn_file)?)))
-        .collect::<anyhow::Result<Vec<_>>>()
+        .collect::<anyhow::Result<Vec<_>>>()?
         .into_iter()
         .collect();
     Ok(HirPack { crates })

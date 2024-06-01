@@ -9,13 +9,14 @@ pub(crate) fn parse(
     config: &ParserHirInternalConfig,
     dumper: &Dumper,
 ) -> anyhow::Result<HirRawPack> {
-    Ok(concat([
+    let crates = concat([
         vec![Namespace::SELF_CRATE.to_owned()],
         config.third_party_crates.clone(),
     ])
     .iter()
     .map(|crate_name| Ok((crate_name.to_owned(), run_cargo_expand(TODO, dumper)?)))
-    .collect::<anyhow::Result<Vec<_>>>()
+    .collect::<anyhow::Result<Vec<_>>>()?
     .into_iter()
-    .collect())
+    .collect();
+    Ok(HirRawPack { crates })
 }
