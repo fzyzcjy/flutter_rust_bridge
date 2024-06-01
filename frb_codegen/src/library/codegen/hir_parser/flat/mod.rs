@@ -88,7 +88,7 @@ where
 
 fn visit_modules<'a, F: FnMut(&'a HirModule)>(module: &'a HirModule, f: &mut F) {
     f(module);
-    for scope_module in module.content.modules {
-        visit_modules(&scope_module, f);
+    for scope_module in module.content.modules.iter() {
+        visit_modules(scope_module, f);
     }
 }
