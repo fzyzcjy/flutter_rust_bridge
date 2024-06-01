@@ -77,7 +77,7 @@ where
     ans
 }
 
-fn collect_objects_vec<'a, T: 'a, F, V: 'a>(module: &'a HirModule, f: F) -> Vec<T>
+fn collect_objects_vec<'a, T: 'a, F>(module: &'a HirModule, f: F) -> Vec<T>
 where
     F: Fn(&HirModule) -> Vec<T>,
 {
