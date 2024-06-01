@@ -36,7 +36,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
             //     Acc::distribute(Some("flutter_rust_bridge::ZeroCopyBuffer(self.cst_decode())".into()))
             // },
             // MirTypeDelegate::StringList => general_list_impl_decode_body(),
-            MirTypeDelegate::PrimitiveEnum (inner) => rust_decode_primitive_enum(inner, self.context.ir_pack, "self").into(),
+            MirTypeDelegate::PrimitiveEnum (inner) => rust_decode_primitive_enum(inner, self.context.mir_pack, "self").into(),
             MirTypeDelegate::Time(ir) => {
                 if ir == &MirTypeDelegateTime::Duration {
                     return Acc {

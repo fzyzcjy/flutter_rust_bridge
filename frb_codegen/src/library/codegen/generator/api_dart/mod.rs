@@ -15,11 +15,11 @@ pub(crate) struct GeneratorApiDartOutput {
 }
 
 pub(crate) fn generate(
-    ir_pack: &MirPack,
+    mir_pack: &MirPack,
     config: &GeneratorApiDartInternalConfig,
     dumper: &Dumper,
 ) -> Result<GeneratorApiDartOutput> {
-    let spec = spec_generator::generate(ir_pack, config, dumper)?;
+    let spec = spec_generator::generate(mir_pack, config, dumper)?;
     dumper.dump(ConfigDumpContent::GeneratorSpec, "api_dart.json", &spec)?;
 
     let text = text_generator::generate(&spec, config)?;
@@ -79,13 +79,13 @@ mod tests {
 
         let config = Config::from_files_auto()?;
         let internal_config = InternalConfig::parse(&config, &MetaConfig { watch: false })?;
-        let ir_pack = crate::codegen::parse(
+        let mir_pack = crate::codegen::parse(
             &internal_config.parser,
             &Dumper(&Default::default()),
             &GeneratorProgressBarPack::new(),
         )?;
         let actual = generate(
-            &ir_pack,
+            &mir_pack,
             &internal_config.generator.api_dart,
             &Dumper(&Default::default()),
         )?;

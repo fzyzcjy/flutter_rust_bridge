@@ -12,7 +12,7 @@ use itertools::Itertools;
 
 impl<'a> WireRustCodecDcoGeneratorEncoderTrait for EnumRefWireRustCodecDcoGenerator<'a> {
     fn generate_impl_into_dart(&self) -> Option<String> {
-        let src = self.ir.get(self.context.ir_pack);
+        let src = self.ir.get(self.context.mir_pack);
         let (name, _self_path) =
             parse_wrapper_name_into_dart_name_and_self_path(&src.name, &src.wrapper_name);
         let self_ref = generate_enum_access_object_core(&self.ir, "self".to_owned(), self.context);
@@ -44,7 +44,7 @@ pub(super) fn generate_enum_access_object_core(
     obj: String,
     context: WireRustCodecDcoGeneratorContext,
 ) -> String {
-    let src = ir.get(context.ir_pack);
+    let src = ir.get(context.mir_pack);
     match &src.wrapper_name {
         Some(_) => format!("{obj}.0"),
         None => obj,

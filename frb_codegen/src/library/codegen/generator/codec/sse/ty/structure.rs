@@ -22,7 +22,7 @@ impl<'a> CodecSseTyTrait for StructRefCodecSseTy<'a> {
 impl<'a> StructRefCodecSseTy<'a> {
     fn new_generalized_generator(&self) -> GeneralizedStructGenerator {
         GeneralizedStructGenerator::new(
-            self.ir.get(self.context.ir_pack).clone(),
+            self.ir.get(self.context.mir_pack).clone(),
             self.context,
             Struct,
         )
@@ -78,7 +78,7 @@ impl<'a> GeneralizedStructGenerator<'a> {
         let ctor = match self.mode {
             Struct => lang.call_constructor(
                 &override_struct_name.unwrap_or_else(|| self.st.name.style(lang)),
-                dart_constructor_postfix(&self.st.name, &self.context.ir_pack.funcs),
+                dart_constructor_postfix(&self.st.name, &self.context.mir_pack.funcs),
                 &(self.st.fields.iter())
                     .map(|x| x.name.style(lang))
                     .collect_vec(),

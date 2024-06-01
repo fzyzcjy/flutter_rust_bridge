@@ -15,7 +15,7 @@ const NIL_FIELD: &str = "nil__";
 
 impl<'a> WireRustCodecCstGeneratorDecoderTrait for EnumRefWireRustCodecCstGenerator<'a> {
     fn generate_decoder_class(&self) -> Option<WireRustOutputCode> {
-        let src = self.ir.get(self.context.ir_pack);
+        let src = self.ir.get(self.context.mir_pack);
         if src.mode == MirEnumMode::Simple {
             return None;
         }
@@ -67,7 +67,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for EnumRefWireRustCodecCstGenera
     }
 
     fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
-        let enu = self.ir.get(self.context.ir_pack);
+        let enu = self.ir.get(self.context.mir_pack);
         Acc::new(|target| {
             if matches!(target, TargetOrCommon::Common) {
                 return None;

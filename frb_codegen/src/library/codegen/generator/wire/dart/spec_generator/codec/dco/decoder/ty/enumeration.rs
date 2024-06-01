@@ -6,7 +6,7 @@ use itertools::Itertools;
 
 impl<'a> WireDartCodecDcoGeneratorDecoderTrait for EnumRefWireDartCodecDcoGenerator<'a> {
     fn generate_impl_decode_body(&self) -> String {
-        let enu = self.ir.get(self.context.ir_pack);
+        let enu = self.ir.get(self.context.mir_pack);
         assert_eq!(enu.mode, MirEnumMode::Complex);
 
         let variants = enu

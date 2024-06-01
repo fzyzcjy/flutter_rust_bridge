@@ -8,7 +8,7 @@ use itertools::Itertools;
 
 impl<'a> CodecSseTyTrait for EnumRefCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
-        let src = self.ir.get(self.context.ir_pack);
+        let src = self.ir.get(self.context.mir_pack);
         Some(generate_enum_encode_rust_general(
             lang,
             src,
@@ -32,7 +32,7 @@ impl<'a> CodecSseTyTrait for EnumRefCodecSseTy<'a> {
     }
 
     fn generate_decode(&self, lang: &Lang) -> Option<String> {
-        let src = self.ir.get(self.context.ir_pack);
+        let src = self.ir.get(self.context.mir_pack);
 
         let var_decl = lang.var_decl();
         let expr_decode_tag = lang.call_decode(&TAG_TYPE);

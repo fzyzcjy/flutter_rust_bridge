@@ -227,7 +227,7 @@ impl<'a> ApiDartGeneratorInfoTrait for StructRefApiDartGenerator<'a> {
     }
 
     fn dart_import(&self) -> Option<String> {
-        let st = self.ir.get(self.context.ir_pack);
+        let st = self.ir.get(self.context.mir_pack);
         Some(
             st.dart_metadata
                 .iter()

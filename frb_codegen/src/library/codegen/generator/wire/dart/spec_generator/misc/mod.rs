@@ -53,7 +53,7 @@ pub(crate) fn generate(
             context,
             rust_content_hash,
         )?,
-        api_impl_normal_functions: (context.ir_pack.funcs.iter())
+        api_impl_normal_functions: (context.mir_pack.funcs.iter())
             .map(|f| api_impl_body::generate_api_impl_normal_function(f, context))
             .collect::<anyhow::Result<Vec<_>>>()?,
         // wire_delegate_functions: (rust_extern_funcs.iter())
@@ -99,7 +99,7 @@ fn generate_boilerplate(
     import 'dart:async';
     ";
 
-    let execute_rust_initializers = (context.ir_pack.funcs.iter())
+    let execute_rust_initializers = (context.mir_pack.funcs.iter())
         .filter(|f| f.initializer)
         .map(|f| format!("await api.{}();\n", f.name_dart_wire()))
         .join("");

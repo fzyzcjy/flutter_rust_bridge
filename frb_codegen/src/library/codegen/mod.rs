@@ -49,13 +49,13 @@ fn generate_once(internal_config: &InternalConfig, dumper: &Dumper) -> anyhow::R
     preparer::prepare(&internal_config.preparer)?;
 
     let pb = progress_bar_pack.parse.start();
-    let ir_pack = parse(&internal_config.parser, dumper, &progress_bar_pack)?;
-    dumper.dump(ConfigDumpContent::Mir, "ir_pack.json", &ir_pack)?;
+    let mir_pack = parse(&internal_config.parser, dumper, &progress_bar_pack)?;
+    dumper.dump(ConfigDumpContent::Mir, "mir_pack.json", &mir_pack)?;
     drop(pb);
 
     let pb = progress_bar_pack.generate.start();
     let generator_output = generator::generate(
-        &ir_pack,
+        &mir_pack,
         &internal_config.generator,
         dumper,
         &progress_bar_pack,
@@ -95,8 +95,8 @@ fn parse(
     drop(pb);
 
     let pb = progress_bar_pack.parse_mir.start();
-    let ir_pack = parser::parse(config, &hir_flat)?;
+    let mir_pack = parser::parse(config, &hir_flat)?;
     drop(pb);
 
-    Ok(ir_pack)
+    Ok(mir_pack)
 }

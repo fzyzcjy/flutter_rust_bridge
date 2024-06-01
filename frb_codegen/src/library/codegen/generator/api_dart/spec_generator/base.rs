@@ -11,6 +11,6 @@ codegen_generator_structs!(
 
 #[derive(Debug, Clone, Copy)]
 pub(crate) struct ApiDartGeneratorContext<'a> {
-    pub(crate) ir_pack: &'a MirPack,
+    pub(crate) mir_pack: &'a MirPack,
     pub(crate) config: &'a GeneratorApiDartInternalConfig,
 }

@@ -30,7 +30,7 @@ pub(super) fn generate(
     context: WireRustGeneratorContext,
     dumper: &Dumper,
 ) -> anyhow::Result<WireRustOutputSpec> {
-    let cache = MirPackComputedCache::compute(context.ir_pack);
+    let cache = MirPackComputedCache::compute(context.mir_pack);
 
     dumper.dump(
         GeneratorInfo,

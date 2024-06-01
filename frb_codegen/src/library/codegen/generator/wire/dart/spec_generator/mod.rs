@@ -41,7 +41,7 @@ pub(crate) fn generate(
     dumper: &Dumper,
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<WireDartOutputSpec> {
-    let cache = MirPackComputedCache::compute(context.ir_pack);
+    let cache = MirPackComputedCache::compute(context.mir_pack);
 
     dumper.dump(
         GeneratorInfo,

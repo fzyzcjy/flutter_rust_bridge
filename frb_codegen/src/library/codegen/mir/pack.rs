@@ -59,15 +59,15 @@ pub(crate) struct MirPackComputedCache {
 }
 
 impl MirPackComputedCache {
-    pub fn compute(ir_pack: &MirPack) -> Self {
-        // let distinct_input_types = ir_pack.distinct_types(true, false);
-        // let distinct_output_types = ir_pack.distinct_types(false, true);
-        let distinct_types = ir_pack.distinct_types(None);
+    pub fn compute(mir_pack: &MirPack) -> Self {
+        // let distinct_input_types = mir_pack.distinct_types(true, false);
+        // let distinct_output_types = mir_pack.distinct_types(false, true);
+        let distinct_types = mir_pack.distinct_types(None);
         let distinct_types_for_codec = CodecMode::iter()
             .map(|codec| {
                 (
                     codec,
-                    ir_pack.distinct_types(Some(Box::new(move |f: &MirFunc| {
+                    mir_pack.distinct_types(Some(Box::new(move |f: &MirFunc| {
                         (f.codec_mode_pack.all().iter()).any(|c| *c == codec)
                     }))),
                 )

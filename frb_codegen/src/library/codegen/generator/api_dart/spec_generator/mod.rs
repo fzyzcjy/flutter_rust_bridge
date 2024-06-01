@@ -47,12 +47,12 @@ pub(crate) struct ApiDartOutputSpecItem {
 }
 
 pub(crate) fn generate(
-    ir_pack: &MirPack,
+    mir_pack: &MirPack,
     config: &GeneratorApiDartInternalConfig,
     dumper: &Dumper,
 ) -> Result<ApiDartOutputSpec> {
-    let cache = MirPackComputedCache::compute(ir_pack);
-    let context = ApiDartGeneratorContext { ir_pack, config };
+    let cache = MirPackComputedCache::compute(mir_pack);
+    let context = ApiDartGeneratorContext { mir_pack, config };
 
     dumper.dump(
         GeneratorInfo,
@@ -60,7 +60,7 @@ pub(crate) fn generate(
         &generate_dump_info(&cache, context),
     )?;
 
-    let grouped_funcs = (ir_pack.funcs.iter()).into_group_map_by(|x| x.name.namespace.clone());
+    let grouped_funcs = (mir_pack.funcs.iter()).into_group_map_by(|x| x.name.namespace.clone());
     let grouped_namespaced_types = (cache.distinct_types.iter())
         .filter(|x| x.self_namespace().is_some())
         .into_group_map_by(|x| x.self_namespace().unwrap());
@@ -125,12 +125,12 @@ fn generate_item(
 
     sanity_check_class_name_duplicates(&classes)?;
 
-    let unused_types = (context.ir_pack.unused_types.iter())
+    let unused_types = (context.mir_pack.unused_types.iter())
         .filter(|t| &t.namespace == namespace)
         .map(|t| t.name.to_owned())
         .collect_vec();
 
-    let skipped_functions = (context.ir_pack.skipped_functions.iter())
+    let skipped_functions = (context.mir_pack.skipped_functions.iter())
         .filter(|t| &t.namespace == namespace)
         .map(|t| t.name.to_owned())
         .collect_vec();

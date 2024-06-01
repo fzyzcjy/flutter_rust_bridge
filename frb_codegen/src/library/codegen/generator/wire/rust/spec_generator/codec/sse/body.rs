@@ -34,7 +34,7 @@ fn generate_encode_or_decode_for_type(
     let rust_api_type = ty.rust_api_type();
     let body = CodecSseTy::new(
         ty.clone(),
-        CodecSseTyContext::new(context.ir_pack, context.api_dart_config),
+        CodecSseTyContext::new(context.mir_pack, context.api_dart_config),
     )
     .generate(&Lang::RustLang(RustLang), mode);
     let codec_comments = generate_codec_comments(CodecMode::Sse);

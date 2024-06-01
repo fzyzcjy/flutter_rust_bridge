@@ -12,7 +12,7 @@ use itertools::Itertools;
 
 impl<'a> WireRustCodecCstGeneratorDecoderTrait for StructRefWireRustCodecCstGenerator<'a> {
     fn generate_decoder_class(&self) -> Option<WireRustOutputCode> {
-        let s = self.ir.get(self.context.ir_pack);
+        let s = self.ir.get(self.context.mir_pack);
         Some(generate_class_from_fields(
             self.ir.clone(),
             self.context,
@@ -33,7 +33,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for StructRefWireRustCodecCstGene
     }
 
     fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
-        let api_struct = self.ir.get(self.context.ir_pack);
+        let api_struct = self.ir.get(self.context.mir_pack);
         let fields: Acc<Vec<_>> = api_struct
             .fields
             .iter()
@@ -77,7 +77,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for StructRefWireRustCodecCstGene
     }
 
     fn generate_impl_new_with_nullptr(&self) -> Option<WireRustOutputCode> {
-        let src = self.ir.get(self.context.ir_pack);
+        let src = self.ir.get(self.context.mir_pack);
 
         let body = {
             src.fields

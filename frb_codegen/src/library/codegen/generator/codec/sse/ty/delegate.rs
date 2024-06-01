@@ -51,7 +51,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 MirTypeDelegate::String => "self.into_bytes()".to_owned(),
                 MirTypeDelegate::Char => "self.to_string()".to_owned(),
                 MirTypeDelegate::PrimitiveEnum(ir) => {
-                    let src = ir.ir.get(self.context.ir_pack);
+                    let src = ir.ir.get(self.context.mir_pack);
                     let variants = (src.variants.iter().enumerate())
                         .map(|(idx, variant)| {
                             (
@@ -147,7 +147,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 MirTypeDelegate::String => "String::from_utf8(inner).unwrap()".to_owned(),
                 MirTypeDelegate::Char => "inner.chars().next().unwrap()".to_owned(),
                 MirTypeDelegate::PrimitiveEnum(inner) => {
-                    rust_decode_primitive_enum(inner, self.context.ir_pack, "inner")
+                    rust_decode_primitive_enum(inner, self.context.mir_pack, "inner")
                 }
                 MirTypeDelegate::Backtrace => {
                     return Some(format!("{};", lang.throw_unreachable("")));
@@ -210,10 +210,10 @@ pub(super) fn simple_delegate_decode(
 
 pub(crate) fn rust_decode_primitive_enum(
     inner: &MirTypeDelegatePrimitiveEnum,
-    ir_pack: &MirPack,
+    mir_pack: &MirPack,
     var_name: &str,
 ) -> String {
-    let enu = inner.ir.get(ir_pack);
+    let enu = inner.ir.get(mir_pack);
     let variants = (enu.variants().iter().enumerate())
         .map(|(idx, variant)| format!("{} => {}::{},", idx, enu.name.rust_style(), variant.name))
         .collect_vec()

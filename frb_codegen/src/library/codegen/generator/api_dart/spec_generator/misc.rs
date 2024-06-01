@@ -62,10 +62,12 @@ pub(crate) fn generate_imports_which_types_and_funcs_use(
     let interest_types = {
         let mut gatherer = DistinctTypeGatherer::new();
         if let Some(types) = seed_types {
-            (types.iter()).for_each(|x| x.visit_types(&mut |ty| gatherer.add(ty), context.ir_pack));
+            (types.iter())
+                .for_each(|x| x.visit_types(&mut |ty| gatherer.add(ty), context.mir_pack));
         }
         if let Some(funcs) = seed_funcs {
-            (funcs.iter()).for_each(|x| x.visit_types(&mut |ty| gatherer.add(ty), context.ir_pack));
+            (funcs.iter())
+                .for_each(|x| x.visit_types(&mut |ty| gatherer.add(ty), context.mir_pack));
         }
         gatherer.gather()
     };

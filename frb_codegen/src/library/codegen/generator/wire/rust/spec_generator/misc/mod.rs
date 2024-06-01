@@ -39,18 +39,18 @@ pub(crate) fn generate(
     context: WireRustGeneratorContext,
     cache: &MirPackComputedCache,
 ) -> anyhow::Result<WireRustOutputSpecMisc> {
-    let content_hash = generate_content_hash(context.ir_pack);
+    let content_hash = generate_content_hash(context.mir_pack);
     Ok(WireRustOutputSpecMisc {
         code_header: Acc::new(|_| vec![(generate_code_header() + "\n\n").into()]),
         file_attributes: Acc::new_common(vec![FILE_ATTRIBUTES.to_string().into()]),
         imports: generate_imports(&cache.distinct_types, context),
-        executor: Acc::new_common(vec![generate_handler(context.ir_pack).into()]),
+        executor: Acc::new_common(vec![generate_handler(context.mir_pack).into()]),
         boilerplate: generate_boilerplate(
             context.config.default_stream_sink_codec,
             context.config.default_rust_opaque_codec,
             content_hash,
         ),
-        wire_funcs: (context.ir_pack.funcs.iter())
+        wire_funcs: (context.mir_pack.funcs.iter())
             .map(|f| generate_wire_func(f, context))
             .collect(),
         wrapper_structs: Acc::default(),
@@ -208,8 +208,8 @@ fn generate_boilerplate(
 //     }
 // }
 
-fn generate_handler(ir_pack: &MirPack) -> String {
-    if let Some(existing_handler) = &ir_pack.existing_handler {
+fn generate_handler(mir_pack: &MirPack) -> String {
+    if let Some(existing_handler) = &mir_pack.existing_handler {
         format!("pub use {};", existing_handler.rust_style())
     } else {
         r#"flutter_rust_bridge::frb_generated_default_handler!();"#.to_owned()
@@ -217,10 +217,10 @@ fn generate_handler(ir_pack: &MirPack) -> String {
 }
 
 // TODO can compute hash for more things
-fn generate_content_hash(ir_pack: &MirPack) -> i32 {
+fn generate_content_hash(mir_pack: &MirPack) -> i32 {
     let mut hasher = Sha1::new();
     hasher.update(
-        (ir_pack.funcs.iter())
+        (mir_pack.funcs.iter())
             .map(|func| func.name.rust_style())
             .sorted()
             .join("\n")

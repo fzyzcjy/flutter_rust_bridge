@@ -16,14 +16,14 @@ pub(crate) struct GeneratorOutput {
 }
 
 pub(crate) fn generate(
-    ir_pack: &MirPack,
+    mir_pack: &MirPack,
     config: &GeneratorInternalConfig,
     dumper: &Dumper,
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<GeneratorOutput> {
-    let api_dart_output = api_dart::generate(ir_pack, &config.api_dart, dumper)?;
+    let api_dart_output = api_dart::generate(mir_pack, &config.api_dart, dumper)?;
     let wire_output = wire::generate(
-        ir_pack,
+        mir_pack,
         &config.wire,
         &config.api_dart,
         &api_dart_output.output_texts.paths(),

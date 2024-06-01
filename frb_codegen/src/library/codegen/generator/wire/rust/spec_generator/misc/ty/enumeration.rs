@@ -6,12 +6,12 @@ use itertools::Itertools;
 
 impl<'a> WireRustGeneratorMiscTrait for EnumRefWireRustGenerator<'a> {
     fn wrapper_struct_name(&self) -> Option<String> {
-        let src = self.ir.get(self.context.ir_pack);
+        let src = self.ir.get(self.context.mir_pack);
         src.wrapper_name.clone()
     }
 
     fn generate_static_checks(&self) -> Option<String> {
-        let src = self.ir.get(self.context.ir_pack);
+        let src = self.ir.get(self.context.mir_pack);
         src.wrapper_name.as_ref()?;
 
         let branches = src

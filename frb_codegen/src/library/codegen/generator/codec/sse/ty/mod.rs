@@ -28,21 +28,21 @@ codegen_generator_structs!(
 
 #[derive(Debug, Clone, Copy)]
 pub(crate) struct CodecSseTyContext<'a> {
-    pub(crate) ir_pack: &'a MirPack,
+    pub(crate) mir_pack: &'a MirPack,
     pub(crate) api_dart_config: &'a GeneratorApiDartInternalConfig,
 }
 
 impl<'a> CodecSseTyContext<'a> {
-    pub fn new(ir_pack: &'a MirPack, api_dart_config: &'a GeneratorApiDartInternalConfig) -> Self {
+    pub fn new(mir_pack: &'a MirPack, api_dart_config: &'a GeneratorApiDartInternalConfig) -> Self {
         Self {
-            ir_pack,
+            mir_pack,
             api_dart_config,
         }
     }
 
     pub(crate) fn as_api_dart_context(&self) -> ApiDartGeneratorContext {
         ApiDartGeneratorContext {
-            ir_pack: self.ir_pack,
+            mir_pack: self.mir_pack,
             config: self.api_dart_config,
         }
     }
