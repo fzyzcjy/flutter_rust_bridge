@@ -1,11 +1,11 @@
 // Name "enumeration" not "enum", since the latter is a keyword
 
-use crate::codegen::ir::comment::IrComment;
-use crate::codegen::ir::field::IrField;
-use crate::codegen::ir::ident::IrIdent;
-use crate::codegen::ir::namespace::{Namespace, NamespacedName};
-use crate::codegen::ir::ty::structure::IrStruct;
-use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
+use crate::codegen::mir::comment::IrComment;
+use crate::codegen::mir::field::IrField;
+use crate::codegen::mir::ident::IrIdent;
+use crate::codegen::mir::namespace::{Namespace, NamespacedName};
+use crate::codegen::mir::ty::structure::IrStruct;
+use crate::codegen::mir::ty::{IrContext, IrType, IrTypeTrait};
 use convert_case::{Case, Casing};
 
 crate::ir! {

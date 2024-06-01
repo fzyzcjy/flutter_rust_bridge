@@ -1,7 +1,7 @@
-use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegateBigPrimitive};
-use crate::codegen::ir::ty::primitive::IrTypePrimitive;
-use crate::codegen::ir::ty::IrType;
-use crate::codegen::ir::ty::IrType::Primitive;
+use crate::codegen::mir::ty::delegate::{IrTypeDelegate, IrTypeDelegateBigPrimitive};
+use crate::codegen::mir::ty::primitive::IrTypePrimitive;
+use crate::codegen::mir::ty::IrType;
+use crate::codegen::mir::ty::IrType::Primitive;
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 

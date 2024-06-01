@@ -25,25 +25,25 @@ macro_rules! codegen_generator_structs {
         );
     );
     (@private $(#[$attribute:meta])* $generator_name:ident ; $($name:ident),*,) => (
-        use $crate::codegen::ir::pack::IrPack;
-        use $crate::codegen::ir::ty::boxed::IrTypeBoxed;
-        use $crate::codegen::ir::ty::dart_fn::IrTypeDartFn;
-        use $crate::codegen::ir::ty::dart_opaque::IrTypeDartOpaque;
-        use $crate::codegen::ir::ty::delegate::IrTypeDelegate;
-        use $crate::codegen::ir::ty::dynamic::IrTypeDynamic;
-        use $crate::codegen::ir::ty::enumeration::IrTypeEnumRef;
-        use $crate::codegen::ir::ty::general_list::IrTypeGeneralList;
-        use $crate::codegen::ir::ty::optional::IrTypeOptional;
-        use $crate::codegen::ir::ty::primitive::IrTypePrimitive;
-        use $crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
-        use $crate::codegen::ir::ty::record::IrTypeRecord;
-        use $crate::codegen::ir::ty::rust_auto_opaque_implicit::IrTypeRustAutoOpaqueImplicit;
-        use $crate::codegen::ir::ty::rust_opaque::IrTypeRustOpaque;
-        use $crate::codegen::ir::ty::structure::IrTypeStructRef;
-        use $crate::codegen::ir::ty::IrType;
+        use $crate::codegen::mir::pack::IrPack;
+        use $crate::codegen::mir::ty::boxed::IrTypeBoxed;
+        use $crate::codegen::mir::ty::dart_fn::IrTypeDartFn;
+        use $crate::codegen::mir::ty::dart_opaque::IrTypeDartOpaque;
+        use $crate::codegen::mir::ty::delegate::IrTypeDelegate;
+        use $crate::codegen::mir::ty::dynamic::IrTypeDynamic;
+        use $crate::codegen::mir::ty::enumeration::IrTypeEnumRef;
+        use $crate::codegen::mir::ty::general_list::IrTypeGeneralList;
+        use $crate::codegen::mir::ty::optional::IrTypeOptional;
+        use $crate::codegen::mir::ty::primitive::IrTypePrimitive;
+        use $crate::codegen::mir::ty::primitive_list::IrTypePrimitiveList;
+        use $crate::codegen::mir::ty::record::IrTypeRecord;
+        use $crate::codegen::mir::ty::rust_auto_opaque_implicit::IrTypeRustAutoOpaqueImplicit;
+        use $crate::codegen::mir::ty::rust_opaque::IrTypeRustOpaque;
+        use $crate::codegen::mir::ty::structure::IrTypeStructRef;
+        use $crate::codegen::mir::ty::IrType;
         // cargo fix wrongly removes this import
         #[allow(unused_imports)]
-        use $crate::codegen::ir::ty::IrType::*;
+        use $crate::codegen::mir::ty::IrType::*;
 
 
         paste::paste! {

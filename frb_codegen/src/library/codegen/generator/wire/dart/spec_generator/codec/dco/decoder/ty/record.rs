@@ -1,6 +1,6 @@
 use crate::codegen::generator::wire::dart::spec_generator::codec::dco::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::dco::decoder::ty::WireDartCodecDcoGeneratorDecoderTrait;
-use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::library::codegen::mir::ty::IrTypeTrait;
 use itertools::Itertools;
 
 impl<'a> WireDartCodecDcoGeneratorDecoderTrait for RecordWireDartCodecDcoGenerator<'a> {

@@ -7,8 +7,8 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::base::{
 };
 use crate::codegen::generator::wire::dart::spec_generator::codec::sse::body::generate_encode_or_decode;
 use crate::codegen::generator::wire::misc::has_port_argument;
-use crate::codegen::ir::func::IrFunc;
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::mir::func::IrFunc;
+use crate::codegen::mir::ty::IrType;
 use itertools::Itertools;
 
 pub(crate) struct SseWireDartCodecEntrypoint;

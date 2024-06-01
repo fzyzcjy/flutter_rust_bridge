@@ -5,11 +5,11 @@ use crate::codegen::generator::misc::target::{Target, TargetOrCommon};
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
-use crate::codegen::ir::ty::delegate::{
+use crate::codegen::mir::ty::delegate::{
     IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegateMap, IrTypeDelegatePrimitiveEnum,
     IrTypeDelegateSet, IrTypeDelegateTime,
 };
-use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::library::codegen::mir::ty::IrTypeTrait;
 
 impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGenerator<'a> {
     fn generate_decoder_class(&self) -> Option<WireRustOutputCode> {

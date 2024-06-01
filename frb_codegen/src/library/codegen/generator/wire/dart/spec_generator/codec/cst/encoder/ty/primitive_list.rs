@@ -2,8 +2,8 @@ use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
-use crate::codegen::ir::ty::primitive::IrTypePrimitive;
-use crate::codegen::ir::ty::IrTypeTrait;
+use crate::codegen::mir::ty::primitive::IrTypePrimitive;
+use crate::codegen::mir::ty::IrTypeTrait;
 use crate::library::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 

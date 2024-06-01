@@ -6,7 +6,7 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::
     generate_enum_access_object_core, parse_wrapper_name_into_dart_name_and_self_path,
 };
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::ty::WireRustCodecDcoGeneratorEncoderTrait;
-use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegatePrimitiveEnum};
+use crate::codegen::mir::ty::delegate::{IrTypeDelegate, IrTypeDelegatePrimitiveEnum};
 use itertools::Itertools;
 
 impl<'a> WireRustCodecDcoGeneratorEncoderTrait for DelegateWireRustCodecDcoGenerator<'a> {

@@ -10,11 +10,11 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::base::{
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::WireRustCodecCstGenerator;
 use crate::codegen::generator::wire::rust::spec_generator::codec::sse::entrypoint::create_maybe_port_param;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFuncParam;
-use crate::codegen::ir::func::IrFunc;
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::mir::func::IrFunc;
+use crate::codegen::mir::ty::IrType;
 use crate::library::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
-use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::library::codegen::mir::ty::IrTypeTrait;
 use itertools::Itertools;
 use std::convert::TryInto;
 

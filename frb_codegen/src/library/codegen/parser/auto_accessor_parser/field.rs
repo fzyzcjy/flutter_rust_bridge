@@ -1,12 +1,12 @@
-use crate::codegen::ir::field::IrField;
-use crate::codegen::ir::func::{
+use crate::codegen::mir::field::IrField;
+use crate::codegen::mir::func::{
     IrFunc, IrFuncAccessorMode, IrFuncArgMode, IrFuncInput, IrFuncMode, IrFuncOutput,
     IrFuncOwnerInfo, IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode, OwnershipMode,
 };
-use crate::codegen::ir::ident::IrIdent;
-use crate::codegen::ir::namespace::NamespacedName;
-use crate::codegen::ir::ty::primitive::IrTypePrimitive;
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::mir::ident::IrIdent;
+use crate::codegen::mir::namespace::NamespacedName;
+use crate::codegen::mir::ty::primitive::IrTypePrimitive;
+use crate::codegen::mir::ty::IrType;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::auto_accessor_parser::IrFuncAndSanityCheckInfo;
 use crate::codegen::parser::function_parser::argument::merge_ownership_into_ty;

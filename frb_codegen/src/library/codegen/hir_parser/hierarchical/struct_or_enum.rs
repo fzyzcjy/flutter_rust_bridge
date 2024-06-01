@@ -3,7 +3,7 @@ use crate::codegen::hir::hierarchical::struct_or_enum::{HirEnum, HirStruct, HirS
 use crate::codegen::hir_parser::hierarchical::mirror_ident::{
     parse_mirror_ident, ParseMirrorIdentOutput,
 };
-use crate::codegen::ir::namespace::{Namespace, NamespacedName};
+use crate::codegen::mir::namespace::{Namespace, NamespacedName};
 use itertools::Itertools;
 use log::debug;
 use proc_macro2::Ident;

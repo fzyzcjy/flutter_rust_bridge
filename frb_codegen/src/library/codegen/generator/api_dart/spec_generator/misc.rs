@@ -1,15 +1,15 @@
 use crate::codegen::generator::api_dart::spec_generator::base::{
     ApiDartGenerator, ApiDartGeneratorContext,
 };
-use crate::codegen::ir::annotation::IrDartAnnotation;
-use crate::codegen::ir::comment::IrComment;
-use crate::codegen::ir::func::IrFunc;
-use crate::codegen::ir::import::IrDartImport;
-use crate::codegen::ir::namespace::Namespace;
-use crate::codegen::ir::pack::DistinctTypeGatherer;
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::mir::annotation::IrDartAnnotation;
+use crate::codegen::mir::comment::IrComment;
+use crate::codegen::mir::func::IrFunc;
+use crate::codegen::mir::import::IrDartImport;
+use crate::codegen::mir::namespace::Namespace;
+use crate::codegen::mir::pack::DistinctTypeGatherer;
+use crate::codegen::mir::ty::IrType;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
-use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::library::codegen::mir::ty::IrTypeTrait;
 use crate::utils::path_utils::path_to_string;
 use anyhow::Context;
 use itertools::Itertools;

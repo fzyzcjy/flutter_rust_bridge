@@ -2,8 +2,8 @@ use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
-use crate::codegen::ir::ty::delegate::IrTypeDelegate;
-use crate::codegen::ir::ty::{IrType, IrTypeTrait};
+use crate::codegen::mir::ty::delegate::IrTypeDelegate;
+use crate::codegen::mir::ty::{IrType, IrTypeTrait};
 
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for GeneralListWireDartCodecCstGenerator<'a> {
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {

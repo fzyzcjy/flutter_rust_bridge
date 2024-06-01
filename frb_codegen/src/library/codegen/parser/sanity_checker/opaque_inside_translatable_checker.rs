@@ -1,8 +1,8 @@
-use crate::codegen::ir::field::IrField;
-use crate::codegen::ir::pack::IrPack;
-use crate::codegen::ir::ty::enumeration::IrVariantKind;
-use crate::codegen::ir::ty::structure::IrStruct;
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::mir::field::IrField;
+use crate::codegen::mir::pack::IrPack;
+use crate::codegen::mir::ty::enumeration::IrVariantKind;
+use crate::codegen::mir::ty::structure::IrStruct;
+use crate::codegen::mir::ty::IrType;
 use itertools::Itertools;
 use log::info;
 

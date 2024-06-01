@@ -9,12 +9,12 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::{
 use crate::codegen::generator::wire::dart::spec_generator::output_code::{
     DartApiImplClassMethod, WireDartOutputCode,
 };
-use crate::codegen::ir::ty::IrType;
-use crate::codegen::ir::ty::IrType::Optional;
+use crate::codegen::mir::ty::IrType;
+use crate::codegen::mir::ty::IrType::Optional;
 use crate::library::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::library::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
-use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::library::codegen::mir::ty::IrTypeTrait;
 
 mod misc;
 pub(crate) mod ty;

@@ -1,8 +1,8 @@
 use crate::codegen::generator::wire::dart::spec_generator::codec::dco::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::dco::decoder::ty::WireDartCodecDcoGeneratorDecoderTrait;
-use crate::codegen::ir::ty::delegate::IrTypeDelegate;
-use crate::codegen::ir::ty::IrType;
-use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::codegen::mir::ty::delegate::IrTypeDelegate;
+use crate::codegen::mir::ty::IrType;
+use crate::library::codegen::mir::ty::IrTypeTrait;
 
 impl<'a> WireDartCodecDcoGeneratorDecoderTrait for GeneralListWireDartCodecDcoGenerator<'a> {
     fn generate_impl_decode_body(&self) -> String {

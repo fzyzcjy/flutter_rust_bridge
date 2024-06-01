@@ -1,8 +1,8 @@
 use crate::codegen::generator::codec::sse::ty::structure::GeneralizedStructGenerator;
 use crate::codegen::generator::codec::sse::ty::*;
 use crate::codegen::generator::misc::StructOrRecord;
-use crate::codegen::ir::namespace::NamespacedName;
-use crate::codegen::ir::ty::enumeration::{IrEnum, IrVariant, IrVariantKind};
+use crate::codegen::mir::namespace::NamespacedName;
+use crate::codegen::mir::ty::enumeration::{IrEnum, IrVariant, IrVariantKind};
 use crate::library::codegen::generator::codec::sse::lang::LangTrait;
 use itertools::Itertools;
 

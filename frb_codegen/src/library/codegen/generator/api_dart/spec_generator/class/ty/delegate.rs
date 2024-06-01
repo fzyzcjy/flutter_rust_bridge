@@ -1,6 +1,6 @@
 use crate::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
-use crate::codegen::ir::ty::delegate::{
+use crate::codegen::mir::ty::delegate::{
     IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegateArrayMode, IrTypeDelegatePrimitiveEnum,
 };
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;

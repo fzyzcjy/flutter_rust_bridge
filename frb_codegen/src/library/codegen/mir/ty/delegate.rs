@@ -1,13 +1,13 @@
 use crate::codegen::generator::codec::structs::CodecMode;
-use crate::codegen::ir::namespace::Namespace;
-use crate::codegen::ir::ty::enumeration::IrTypeEnumRef;
-use crate::codegen::ir::ty::general_list::{ir_list, IrTypeGeneralList};
-use crate::codegen::ir::ty::primitive::IrTypePrimitive;
-use crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
-use crate::codegen::ir::ty::record::IrTypeRecord;
-use crate::codegen::ir::ty::rust_auto_opaque_implicit::IrRustAutoOpaqueRaw;
-use crate::codegen::ir::ty::rust_opaque::IrTypeRustOpaque;
-use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
+use crate::codegen::mir::namespace::Namespace;
+use crate::codegen::mir::ty::enumeration::IrTypeEnumRef;
+use crate::codegen::mir::ty::general_list::{ir_list, IrTypeGeneralList};
+use crate::codegen::mir::ty::primitive::IrTypePrimitive;
+use crate::codegen::mir::ty::primitive_list::IrTypePrimitiveList;
+use crate::codegen::mir::ty::record::IrTypeRecord;
+use crate::codegen::mir::ty::rust_auto_opaque_implicit::IrRustAutoOpaqueRaw;
+use crate::codegen::mir::ty::rust_opaque::IrTypeRustOpaque;
+use crate::codegen::mir::ty::{IrContext, IrType, IrTypeTrait};
 
 crate::ir! {
 /// types that delegate to another type

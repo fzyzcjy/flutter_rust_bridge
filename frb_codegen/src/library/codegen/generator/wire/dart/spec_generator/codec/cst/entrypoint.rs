@@ -4,9 +4,9 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::base::{
     WireDartCodecEntrypointTrait, WireDartCodecOutputSpec,
 };
 use crate::codegen::generator::wire::misc::has_port_argument;
-use crate::codegen::ir::func::IrFunc;
-use crate::codegen::ir::ty::IrType;
-use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::codegen::mir::func::IrFunc;
+use crate::codegen::mir::ty::IrType;
+use crate::library::codegen::mir::ty::IrTypeTrait;
 use itertools::Itertools;
 
 pub(crate) struct CstWireDartCodecEntrypoint;

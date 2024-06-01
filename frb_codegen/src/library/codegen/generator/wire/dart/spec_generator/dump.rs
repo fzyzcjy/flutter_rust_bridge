@@ -1,9 +1,9 @@
 use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::WireDartCodecCstGenerator;
-use crate::codegen::ir::pack::IrPackComputedCache;
+use crate::codegen::mir::pack::IrPackComputedCache;
 use crate::library::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
-use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::library::codegen::mir::ty::IrTypeTrait;
 use serde::Serialize;
 use std::collections::HashMap;
 use strum::IntoEnumIterator;

@@ -7,7 +7,7 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
-use crate::codegen::ir::ty::{IrType, IrTypeTrait};
+use crate::codegen::mir::ty::{IrType, IrTypeTrait};
 use itertools::Itertools;
 
 impl<'a> WireRustCodecCstGeneratorDecoderTrait for StructRefWireRustCodecCstGenerator<'a> {

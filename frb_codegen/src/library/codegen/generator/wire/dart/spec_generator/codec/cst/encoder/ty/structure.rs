@@ -7,9 +7,9 @@ use crate::codegen::generator::misc::StructOrRecord::Struct;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::misc::dart_wire_type_from_rust_wire_type_or_web;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
-use crate::codegen::ir::field::IrField;
-use crate::codegen::ir::ty::structure::{IrStruct, IrTypeStructRef};
-use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::codegen::mir::field::IrField;
+use crate::codegen::mir::ty::structure::{IrStruct, IrTypeStructRef};
+use crate::library::codegen::mir::ty::IrTypeTrait;
 use itertools::Itertools;
 
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for StructRefWireDartCodecCstGenerator<'a> {

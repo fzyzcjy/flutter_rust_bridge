@@ -4,9 +4,9 @@ use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::rust_opaque::generalized_rust_opaque_rust_wire_type;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
-use crate::codegen::ir::func::OwnershipMode;
-use crate::codegen::ir::ty::rust_auto_opaque_implicit::IrTypeRustAutoOpaqueImplicit;
-use crate::codegen::ir::ty::IrTypeTrait;
+use crate::codegen::mir::func::OwnershipMode;
+use crate::codegen::mir::ty::rust_auto_opaque_implicit::IrTypeRustAutoOpaqueImplicit;
+use crate::codegen::mir::ty::IrTypeTrait;
 use std::borrow::Cow;
 
 impl<'a> WireRustCodecCstGeneratorDecoderTrait

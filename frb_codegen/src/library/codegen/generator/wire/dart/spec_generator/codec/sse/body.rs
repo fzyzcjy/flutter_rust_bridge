@@ -11,10 +11,10 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::sse::base::Wir
 use crate::codegen::generator::wire::dart::spec_generator::output_code::{
     DartApiImplClassMethod, WireDartOutputCode,
 };
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::mir::ty::IrType;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::library::codegen::generator::codec::sse::ty::CodecSseTyTrait;
-use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::library::codegen::mir::ty::IrTypeTrait;
 
 pub(super) fn generate_encode_or_decode(
     context: WireDartCodecSseGeneratorContext,

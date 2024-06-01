@@ -1,7 +1,7 @@
 use crate::codegen::config::internal_config::GeneratorInternalConfig;
 use crate::codegen::dumper::Dumper;
 use crate::codegen::generator::misc::PathTexts;
-use crate::codegen::ir::pack::IrPack;
+use crate::codegen::mir::pack::IrPack;
 use crate::codegen::misc::GeneratorProgressBarPack;
 
 pub(crate) mod acc;

@@ -1,5 +1,5 @@
-use crate::codegen::ir::ty::IrType;
-use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::codegen::mir::ty::IrType;
+use crate::library::codegen::mir::ty::IrTypeTrait;
 use std::collections::HashMap;
 
 pub(crate) fn generate_class_extra_body(

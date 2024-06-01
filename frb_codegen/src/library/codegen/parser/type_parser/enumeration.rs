@@ -1,16 +1,16 @@
 use crate::codegen::hir::hierarchical::struct_or_enum::HirEnum;
-use crate::codegen::ir::field::{IrField, IrFieldSettings};
-use crate::codegen::ir::ident::IrIdent;
-use crate::codegen::ir::namespace::{Namespace, NamespacedName};
-use crate::codegen::ir::ty::boxed::IrTypeBoxed;
-use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegatePrimitiveEnum};
-use crate::codegen::ir::ty::enumeration::{
+use crate::codegen::mir::field::{IrField, IrFieldSettings};
+use crate::codegen::mir::ident::IrIdent;
+use crate::codegen::mir::namespace::{Namespace, NamespacedName};
+use crate::codegen::mir::ty::boxed::IrTypeBoxed;
+use crate::codegen::mir::ty::delegate::{IrTypeDelegate, IrTypeDelegatePrimitiveEnum};
+use crate::codegen::mir::ty::enumeration::{
     IrEnum, IrEnumIdent, IrEnumMode, IrTypeEnumRef, IrVariant, IrVariantKind,
 };
-use crate::codegen::ir::ty::primitive::IrTypePrimitive;
-use crate::codegen::ir::ty::structure::IrStruct;
-use crate::codegen::ir::ty::IrType;
-use crate::codegen::ir::ty::IrType::{Delegate, EnumRef};
+use crate::codegen::mir::ty::primitive::IrTypePrimitive;
+use crate::codegen::mir::ty::structure::IrStruct;
+use crate::codegen::mir::ty::IrType;
+use crate::codegen::mir::ty::IrType::{Delegate, EnumRef};
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::type_parser::enum_or_struct::{
     EnumOrStructParser, EnumOrStructParserInfo,

@@ -18,7 +18,7 @@ use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGeneratorC
 use crate::codegen::generator::codec::sse::lang::Lang;
 use crate::codegen::generator::codec::structs::EncodeOrDecode;
 use crate::codegen_generator_structs;
-use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::library::codegen::mir::ty::IrTypeTrait;
 use enum_dispatch::enum_dispatch;
 
 codegen_generator_structs!(

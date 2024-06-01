@@ -1,7 +1,7 @@
-use crate::codegen::ir::comment::IrComment;
-use crate::codegen::ir::default::IrDefaultValue;
-use crate::codegen::ir::ident::IrIdent;
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::mir::comment::IrComment;
+use crate::codegen::mir::default::IrDefaultValue;
+use crate::codegen::mir::ident::IrIdent;
+use crate::codegen::mir::ty::IrType;
 use serde::Deserialize;
 
 crate::ir! {

@@ -1,5 +1,5 @@
-use crate::codegen::ir::ty::primitive::IrTypePrimitive;
-use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
+use crate::codegen::mir::ty::primitive::IrTypePrimitive;
+use crate::codegen::mir::ty::{IrContext, IrType, IrTypeTrait};
 
 crate::ir! {
 pub struct IrTypePrimitiveList {

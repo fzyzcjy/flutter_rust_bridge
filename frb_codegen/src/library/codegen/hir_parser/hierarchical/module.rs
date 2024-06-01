@@ -7,7 +7,7 @@ use crate::codegen::hir_parser::hierarchical::item_type::parse_syn_item_type;
 use crate::codegen::hir_parser::hierarchical::struct_or_enum::{
     parse_syn_item_enum, parse_syn_item_struct,
 };
-use crate::codegen::ir::namespace::Namespace;
+use crate::codegen::mir::namespace::Namespace;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::parser::reader::CachedRustReader;
 use log::debug;

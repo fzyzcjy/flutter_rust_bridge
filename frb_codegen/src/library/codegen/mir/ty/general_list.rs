@@ -1,7 +1,7 @@
-use crate::codegen::ir::ty::primitive::IrTypePrimitive;
-use crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
-use crate::codegen::ir::ty::IrType::{GeneralList, PrimitiveList};
-use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
+use crate::codegen::mir::ty::primitive::IrTypePrimitive;
+use crate::codegen::mir::ty::primitive_list::IrTypePrimitiveList;
+use crate::codegen::mir::ty::IrType::{GeneralList, PrimitiveList};
+use crate::codegen::mir::ty::{IrContext, IrType, IrTypeTrait};
 
 crate::ir! {
 pub struct IrTypeGeneralList {

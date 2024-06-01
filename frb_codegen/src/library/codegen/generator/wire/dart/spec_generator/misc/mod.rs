@@ -8,8 +8,8 @@ use crate::codegen::generator::wire::dart::spec_generator::base::{
 };
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
-use crate::codegen::ir::namespace::Namespace;
-use crate::codegen::ir::pack::IrPackComputedCache;
+use crate::codegen::mir::namespace::Namespace;
+use crate::codegen::mir::pack::IrPackComputedCache;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::library::codegen::generator::wire::dart::spec_generator::misc::ty::WireDartGeneratorMiscTrait;
 use crate::utils::basic_code::DartBasicHeaderCode;

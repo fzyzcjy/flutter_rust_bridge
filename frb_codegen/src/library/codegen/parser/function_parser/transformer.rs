@@ -1,8 +1,8 @@
-use crate::codegen::ir::field::IrField;
-use crate::codegen::ir::func::IrFuncInput;
-use crate::codegen::ir::ty::primitive::IrTypePrimitive;
-use crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::mir::field::IrField;
+use crate::codegen::mir::func::IrFuncInput;
+use crate::codegen::mir::ty::primitive::IrTypePrimitive;
+use crate::codegen::mir::ty::primitive_list::IrTypePrimitiveList;
+use crate::codegen::mir::ty::IrType;
 use crate::codegen::parser::function_parser::{FunctionParser, FunctionPartialInfo};
 use itertools::Itertools;
 use IrTypePrimitive::{Isize, Usize, I64, U64};

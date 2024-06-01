@@ -1,10 +1,10 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::codec::sse::lang::Lang;
 use crate::codegen::generator::misc::target::{TargetOrCommon, TargetOrCommonMap};
-use crate::codegen::ir::field::IrField;
-use crate::codegen::ir::ty::boxed::IrTypeBoxed;
-use crate::codegen::ir::ty::delegate::IrTypeDelegate;
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::mir::field::IrField;
+use crate::codegen::mir::ty::boxed::IrTypeBoxed;
+use crate::codegen::mir::ty::delegate::IrTypeDelegate;
+use crate::codegen::mir::ty::IrType;
 use crate::utils::file_utils::create_dir_all_and_write;
 use itertools::Itertools;
 use std::ops::Add;

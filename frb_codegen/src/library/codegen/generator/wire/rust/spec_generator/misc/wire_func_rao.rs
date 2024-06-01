@@ -1,6 +1,6 @@
-use crate::codegen::ir::func::{IrFunc, IrFuncInput, OwnershipMode};
-use crate::codegen::ir::ty::rust_auto_opaque_implicit::IrTypeRustAutoOpaqueImplicit;
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::mir::func::{IrFunc, IrFuncInput, OwnershipMode};
+use crate::codegen::mir::ty::rust_auto_opaque_implicit::IrTypeRustAutoOpaqueImplicit;
+use crate::codegen::mir::ty::IrType;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 

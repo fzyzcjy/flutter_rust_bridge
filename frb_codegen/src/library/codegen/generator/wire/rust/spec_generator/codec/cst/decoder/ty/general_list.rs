@@ -9,10 +9,10 @@ use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
     ExternFunc, ExternFuncParam,
 };
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
-use crate::codegen::ir::ty::delegate::IrTypeDelegate;
-use crate::codegen::ir::ty::general_list::IrTypeGeneralList;
-use crate::codegen::ir::ty::IrType::{Delegate, Optional};
-use crate::codegen::ir::ty::{IrType, IrTypeTrait};
+use crate::codegen::mir::ty::delegate::IrTypeDelegate;
+use crate::codegen::mir::ty::general_list::IrTypeGeneralList;
+use crate::codegen::mir::ty::IrType::{Delegate, Optional};
+use crate::codegen::mir::ty::{IrType, IrTypeTrait};
 
 impl<'a> WireRustCodecCstGeneratorDecoderTrait for GeneralListWireRustCodecCstGenerator<'a> {
     fn generate_decoder_class(&self) -> Option<WireRustOutputCode> {

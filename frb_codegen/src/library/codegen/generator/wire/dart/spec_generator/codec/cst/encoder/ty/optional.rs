@@ -2,7 +2,7 @@ use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::target::{Target, TargetOrCommon};
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
-use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::library::codegen::mir::ty::IrTypeTrait;
 
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for OptionalWireDartCodecCstGenerator<'a> {
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {

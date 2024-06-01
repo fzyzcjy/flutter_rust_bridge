@@ -1,9 +1,9 @@
 use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
-use crate::codegen::ir::annotation::IrDartAnnotation;
-use crate::codegen::ir::default::IrDefaultValue;
-use crate::codegen::ir::func::IrFuncAccessorMode;
-use crate::codegen::ir::import::IrDartImport;
-use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
+use crate::codegen::mir::annotation::IrDartAnnotation;
+use crate::codegen::mir::default::IrDefaultValue;
+use crate::codegen::mir::func::IrFuncAccessorMode;
+use crate::codegen::mir::import::IrDartImport;
+use crate::codegen::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::if_then_some;
 use anyhow::Context;
 use itertools::Itertools;
@@ -524,7 +524,7 @@ impl Parse for FrbAttributeName {
 
 #[cfg(test)]
 mod tests {
-    use crate::codegen::ir::default::IrDefaultValue;
+    use crate::codegen::mir::default::IrDefaultValue;
     use crate::codegen::parser::attribute_parser::{
         FrbAttribute, FrbAttributeDartCode, FrbAttributeDefaultValue, FrbAttributeMirror,
         FrbAttributeName, FrbAttributes, NamedOption,

@@ -1,10 +1,10 @@
-use crate::codegen::ir::field::{IrField, IrFieldSettings};
-use crate::codegen::ir::func::{IrFuncInput, IrFuncOwnerInfo};
-use crate::codegen::ir::func::{IrFuncOwnerInfoMethod, OwnershipMode};
-use crate::codegen::ir::ident::IrIdent;
-use crate::codegen::ir::ty::boxed::IrTypeBoxed;
-use crate::codegen::ir::ty::IrType;
-use crate::codegen::ir::ty::IrType::Boxed;
+use crate::codegen::mir::field::{IrField, IrFieldSettings};
+use crate::codegen::mir::func::{IrFuncInput, IrFuncOwnerInfo};
+use crate::codegen::mir::func::{IrFuncOwnerInfoMethod, OwnershipMode};
+use crate::codegen::mir::ident::IrIdent;
+use crate::codegen::mir::ty::boxed::IrTypeBoxed;
+use crate::codegen::mir::ty::IrType;
+use crate::codegen::mir::ty::IrType::Boxed;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::function_parser::{FunctionParser, FunctionPartialInfo};
 use crate::codegen::parser::type_parser::misc::parse_comments;

@@ -6,7 +6,7 @@ use crate::codegen::dumper::internal_config::ConfigDumpContent;
 use crate::codegen::dumper::Dumper;
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
 use crate::codegen::generator::misc::PathTexts;
-use crate::codegen::ir::pack::IrPack;
+use crate::codegen::mir::pack::IrPack;
 use anyhow::Result;
 
 pub(crate) struct GeneratorApiDartOutput {

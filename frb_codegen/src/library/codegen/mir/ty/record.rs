@@ -1,5 +1,5 @@
-use crate::codegen::ir::ty::structure::IrTypeStructRef;
-use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
+use crate::codegen::mir::ty::structure::IrTypeStructRef;
+use crate::codegen::mir::ty::{IrContext, IrType, IrTypeTrait};
 use itertools::Itertools;
 
 crate::ir! {

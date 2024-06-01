@@ -1,6 +1,6 @@
 use crate::codegen::generator::codec::sse::lang::LangTrait;
-use crate::codegen::ir::ty::IrType;
-use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::codegen::mir::ty::IrType;
+use crate::library::codegen::mir::ty::IrTypeTrait;
 use itertools::{multizip, Itertools};
 
 #[derive(Clone, Copy, Debug)]

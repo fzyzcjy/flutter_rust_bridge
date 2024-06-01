@@ -2,11 +2,11 @@ use crate::codegen::generator::api_dart::spec_generator::class::method::generate
 use crate::codegen::generator::api_dart::spec_generator::class::misc::generate_class_extra_body;
 use crate::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
-use crate::codegen::ir::namespace::NamespacedName;
-use crate::codegen::ir::ty::rust_opaque::IrTypeRustOpaque;
+use crate::codegen::mir::namespace::NamespacedName;
+use crate::codegen::mir::ty::rust_opaque::IrTypeRustOpaque;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
-use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::library::codegen::mir::ty::IrTypeTrait;
 use lazy_static::lazy_static;
 use regex::Regex;
 

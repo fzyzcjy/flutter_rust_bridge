@@ -1,11 +1,11 @@
 use crate::codegen::generator::api_dart::spec_generator::base::*;
-use crate::codegen::ir::ty::delegate::{
+use crate::codegen::mir::ty::delegate::{
     IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegateArrayMode, IrTypeDelegatePrimitiveEnum,
     IrTypeDelegateTime,
 };
-use crate::codegen::ir::ty::general_list::IrTypeGeneralList;
-use crate::codegen::ir::ty::primitive::IrTypePrimitive;
-use crate::codegen::ir::ty::{IrType, IrTypeTrait};
+use crate::codegen::mir::ty::general_list::IrTypeGeneralList;
+use crate::codegen::mir::ty::primitive::IrTypePrimitive;
+use crate::codegen::mir::ty::{IrType, IrTypeTrait};
 use convert_case::{Case, Casing};
 use enum_dispatch::enum_dispatch;
 use itertools::Itertools;

@@ -1,5 +1,5 @@
-use crate::codegen::ir::ty::primitive::IrTypePrimitive;
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::mir::ty::primitive::IrTypePrimitive;
+use crate::codegen::mir::ty::IrType;
 use crate::codegen::parser::function_parser::{FunctionParser, FunctionPartialInfo};
 use crate::codegen::parser::type_parser::result::parse_type_maybe_result;
 use crate::codegen::parser::type_parser::TypeParserParsingContext;

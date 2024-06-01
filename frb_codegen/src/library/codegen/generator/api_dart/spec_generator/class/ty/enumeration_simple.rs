@@ -1,6 +1,6 @@
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
 use crate::codegen::generator::api_dart::spec_generator::misc::generate_dart_comments;
-use crate::codegen::ir::ty::enumeration::{IrEnum, IrVariant};
+use crate::codegen::mir::ty::enumeration::{IrEnum, IrVariant};
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::utils::dart_keywords::make_string_keyword_safe;
 use itertools::Itertools;

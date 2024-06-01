@@ -9,9 +9,9 @@ use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
     ExternFunc, ExternFuncParam,
 };
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
-use crate::codegen::ir::ty::primitive::IrTypePrimitive;
-use crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
-use crate::codegen::ir::ty::IrTypeTrait;
+use crate::codegen::mir::ty::primitive::IrTypePrimitive;
+use crate::codegen::mir::ty::primitive_list::IrTypePrimitiveList;
+use crate::codegen::mir::ty::IrTypeTrait;
 
 impl<'a> WireRustCodecCstGeneratorDecoderTrait for PrimitiveListWireRustCodecCstGenerator<'a> {
     fn generate_decoder_class(&self) -> Option<WireRustOutputCode> {

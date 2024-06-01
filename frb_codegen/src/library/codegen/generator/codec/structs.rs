@@ -1,5 +1,5 @@
-use crate::codegen::ir::pack::IrPackComputedCache;
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::mir::pack::IrPackComputedCache;
+use crate::codegen::mir::ty::IrType;
 use serde::{Deserialize, Serialize};
 use strum_macros::{Display, EnumIter, EnumString};
 

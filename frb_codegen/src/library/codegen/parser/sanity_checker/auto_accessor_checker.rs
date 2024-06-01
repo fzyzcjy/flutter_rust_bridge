@@ -1,6 +1,6 @@
-use crate::codegen::ir::field::IrField;
-use crate::codegen::ir::namespace::NamespacedName;
-use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::codegen::mir::field::IrField;
+use crate::codegen::mir::namespace::NamespacedName;
+use crate::library::codegen::mir::ty::IrTypeTrait;
 use itertools::Itertools;
 use log::warn;
 
@@ -33,18 +33,18 @@ pub(crate) struct SanityCheckHint {
 
 #[cfg(test)]
 mod tests {
-    use crate::codegen::ir::namespace::Namespace;
-    use crate::codegen::ir::ty::boxed::IrTypeBoxed;
-    use crate::codegen::ir::ty::dart_opaque::IrTypeDartOpaque;
-    use crate::codegen::ir::ty::delegate::IrTypeDelegate;
-    use crate::codegen::ir::ty::dynamic::IrTypeDynamic;
-    use crate::codegen::ir::ty::optional::IrTypeOptional;
-    use crate::codegen::ir::ty::primitive::IrTypePrimitive;
-    use crate::codegen::ir::ty::rust_opaque::{
+    use crate::codegen::mir::namespace::Namespace;
+    use crate::codegen::mir::ty::boxed::IrTypeBoxed;
+    use crate::codegen::mir::ty::dart_opaque::IrTypeDartOpaque;
+    use crate::codegen::mir::ty::delegate::IrTypeDelegate;
+    use crate::codegen::mir::ty::dynamic::IrTypeDynamic;
+    use crate::codegen::mir::ty::optional::IrTypeOptional;
+    use crate::codegen::mir::ty::primitive::IrTypePrimitive;
+    use crate::codegen::mir::ty::rust_opaque::{
         IrRustOpaqueInner, IrTypeRustOpaque, RustOpaqueCodecMode,
     };
-    use crate::codegen::ir::ty::IrType;
-    use crate::library::codegen::ir::ty::IrTypeTrait;
+    use crate::codegen::mir::ty::IrType;
+    use crate::library::codegen::mir::ty::IrTypeTrait;
 
     #[test]
     fn test_cloned_getter_semantics_reasonable() {

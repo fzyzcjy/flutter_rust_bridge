@@ -1,9 +1,9 @@
 use crate::codegen::generator::api_dart::spec_generator::base::{
     ApiDartGenerator, ApiDartGeneratorContext,
 };
-use crate::codegen::ir::pack::IrPackComputedCache;
+use crate::codegen::mir::pack::IrPackComputedCache;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
-use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::library::codegen::mir::ty::IrTypeTrait;
 use serde::Serialize;
 
 #[derive(Serialize)]

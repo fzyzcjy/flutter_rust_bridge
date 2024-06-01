@@ -1,10 +1,10 @@
 use crate::codegen::generator::codec::structs::CodecMode;
-use crate::codegen::ir::func::IrFunc;
-use crate::codegen::ir::namespace::NamespacedName;
-use crate::codegen::ir::ty::enumeration::{IrEnum, IrEnumIdent};
-use crate::codegen::ir::ty::structure::{IrStruct, IrStructIdent};
-use crate::codegen::ir::ty::IrType;
-use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::codegen::mir::func::IrFunc;
+use crate::codegen::mir::namespace::NamespacedName;
+use crate::codegen::mir::ty::enumeration::{IrEnum, IrEnumIdent};
+use crate::codegen::mir::ty::structure::{IrStruct, IrStructIdent};
+use crate::codegen::mir::ty::IrType;
+use crate::library::codegen::mir::ty::IrTypeTrait;
 use itertools::Itertools;
 use std::collections::{HashMap, HashSet};
 use strum::IntoEnumIterator;

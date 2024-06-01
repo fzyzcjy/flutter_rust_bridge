@@ -1,9 +1,9 @@
 use super::rust_opaque::RUST_OPAQUE_AS_PRIMITIVE;
-use crate::codegen::ir::func::OwnershipMode;
-use crate::codegen::ir::namespace::Namespace;
-use crate::codegen::ir::ty::primitive::IrTypePrimitive;
-use crate::codegen::ir::ty::rust_opaque::{IrTypeRustOpaque, NameComponent};
-use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
+use crate::codegen::mir::func::OwnershipMode;
+use crate::codegen::mir::namespace::Namespace;
+use crate::codegen::mir::ty::primitive::IrTypePrimitive;
+use crate::codegen::mir::ty::rust_opaque::{IrTypeRustOpaque, NameComponent};
+use crate::codegen::mir::ty::{IrContext, IrType, IrTypeTrait};
 
 crate::ir! {
 pub struct IrTypeRustAutoOpaqueImplicit {

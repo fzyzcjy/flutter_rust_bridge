@@ -1,7 +1,7 @@
-use crate::codegen::ir::default::IrDefaultValue;
-use crate::codegen::ir::field::IrField;
-use crate::codegen::ir::ty::delegate::IrTypeDelegate;
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::mir::default::IrDefaultValue;
+use crate::codegen::mir::field::IrField;
+use crate::codegen::mir::ty::delegate::IrTypeDelegate;
+use crate::codegen::mir::ty::IrType;
 use crate::utils::dart_keywords::make_string_keyword_safe;
 use convert_case::{Case, Casing};
 use std::borrow::Cow;

@@ -1,7 +1,7 @@
 use crate::codegen::generator::wire::dart::spec_generator::codec::dco::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::dco::decoder::misc::gen_decode_simple_type_cast;
 use crate::codegen::generator::wire::dart::spec_generator::codec::dco::decoder::ty::WireDartCodecDcoGeneratorDecoderTrait;
-use crate::codegen::ir::ty::primitive::IrTypePrimitive;
+use crate::codegen::mir::ty::primitive::IrTypePrimitive;
 
 impl<'a> WireDartCodecDcoGeneratorDecoderTrait for PrimitiveListWireDartCodecDcoGenerator<'a> {
     fn generate_impl_decode_body(&self) -> String {

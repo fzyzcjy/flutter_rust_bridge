@@ -1,6 +1,6 @@
 use crate::codegen::generator::codec::sse::lang::dart::DartLang;
 use crate::codegen::generator::codec::sse::lang::rust::RustLang;
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::mir::ty::IrType;
 use enum_dispatch::enum_dispatch;
 
 pub(crate) mod dart;

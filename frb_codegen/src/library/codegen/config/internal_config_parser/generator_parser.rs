@@ -11,7 +11,7 @@ use crate::codegen::generator::wire::dart::internal_config::{
     GeneratorWireDartInternalConfig,
 };
 use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInternalConfig;
-use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
+use crate::codegen::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::Config;
 use crate::library::commands::cargo_metadata::execute_cargo_metadata;
 use crate::utils::dart_repository::get_dart_package_name;

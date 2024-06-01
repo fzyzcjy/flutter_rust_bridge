@@ -1,17 +1,17 @@
 use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
 use crate::codegen::hir::hierarchical::function::HirFunctionInner;
-use crate::codegen::ir::func::{
+use crate::codegen::mir::func::{
     IrFunc, IrFuncArgMode, IrFuncInput, IrFuncMode, IrFuncOutput, IrFuncOwnerInfo,
     IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode,
 };
-use crate::codegen::ir::namespace::{Namespace, NamespacedName};
-use crate::codegen::ir::ty::primitive::IrTypePrimitive;
-use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::mir::namespace::{Namespace, NamespacedName};
+use crate::codegen::mir::ty::primitive::IrTypePrimitive;
+use crate::codegen::mir::ty::rust_opaque::RustOpaqueCodecMode;
+use crate::codegen::mir::ty::IrType;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::{external_impl, TypeParser, TypeParserParsingContext};
-use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::library::codegen::mir::ty::IrTypeTrait;
 use anyhow::{bail, Context};
 use itertools::concat;
 use log::{debug, warn};

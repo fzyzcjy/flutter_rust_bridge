@@ -1,6 +1,6 @@
-use crate::codegen::ir::ty::boxed::IrTypeBoxed;
-use crate::codegen::ir::ty::IrType::Boxed;
-use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
+use crate::codegen::mir::ty::boxed::IrTypeBoxed;
+use crate::codegen::mir::ty::IrType::Boxed;
+use crate::codegen::mir::ty::{IrContext, IrType, IrTypeTrait};
 
 crate::ir! {
 pub struct IrTypeOptional {

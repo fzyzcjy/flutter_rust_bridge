@@ -3,7 +3,7 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::{
     WireRustCodecCstGenerator, WireRustCodecCstGeneratorContext,
 };
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::mir::ty::IrType;
 use crate::library::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 
 pub(crate) fn generate_impl_new_with_nullptr(

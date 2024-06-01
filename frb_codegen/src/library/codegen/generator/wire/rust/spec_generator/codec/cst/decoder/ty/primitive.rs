@@ -3,8 +3,8 @@ use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::misc::JS_VALUE;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
-use crate::codegen::ir::ty::primitive::IrTypePrimitive;
-use crate::codegen::ir::ty::IrTypeTrait;
+use crate::codegen::mir::ty::primitive::IrTypePrimitive;
+use crate::codegen::mir::ty::IrTypeTrait;
 use IrTypePrimitive::Unit;
 
 impl<'a> WireRustCodecCstGeneratorDecoderTrait for PrimitiveWireRustCodecCstGenerator<'a> {

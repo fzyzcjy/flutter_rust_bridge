@@ -5,8 +5,8 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::base::{
     WireRustCodecEntrypointTrait, WireRustCodecOutputSpec,
 };
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFuncParam;
-use crate::codegen::ir::func::IrFunc;
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::mir::func::IrFunc;
+use crate::codegen::mir::ty::IrType;
 
 pub(crate) struct DcoWireRustCodecEntrypoint;
 

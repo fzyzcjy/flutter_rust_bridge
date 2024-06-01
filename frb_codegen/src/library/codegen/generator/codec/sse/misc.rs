@@ -1,5 +1,5 @@
-use crate::codegen::ir::ty::primitive::IrTypePrimitive;
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::mir::ty::primitive::IrTypePrimitive;
+use crate::codegen::mir::ty::IrType;
 use itertools::Itertools;
 
 pub(crate) fn with_sse_extra_types(raw: &[IrType]) -> Vec<IrType> {
