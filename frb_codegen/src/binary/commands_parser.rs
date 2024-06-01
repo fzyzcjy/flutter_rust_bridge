@@ -92,7 +92,7 @@ mod tests {
         set_cwd_test_fixture("binary/commands_parser/flutter_rust_bridge_yaml")?;
 
         let config = run_command_line::<Config, anyhow::Error>(vec!["", "generate"])?;
-        assert_eq!(config.rust_input, "hello.rs".to_string());
+        assert_eq!(config.rust_input, "crate::hello".to_string());
         assert!(!config.dart3.unwrap());
 
         Ok(())
@@ -105,7 +105,7 @@ mod tests {
         set_cwd_test_fixture("binary/commands_parser/pubspec_yaml")?;
 
         let config = run_command_line::<Config, anyhow::Error>(vec!["", "generate"])?;
-        assert_eq!(config.rust_input, "hello.rs".to_string());
+        assert_eq!(config.rust_input, "crate::hello".to_string());
         assert!(!config.dart3.unwrap());
 
         Ok(())
@@ -142,7 +142,7 @@ mod tests {
             "--config-file",
             "hello.yaml",
         ])?;
-        assert_eq!(config.rust_input, "hello.rs".to_string());
+        assert_eq!(config.rust_input, "crate::hello".to_string());
         assert!(!config.dart3.unwrap());
 
         Ok(())
@@ -180,7 +180,7 @@ mod tests {
             "",
             "generate",
             "--rust-input",
-            "hello.rs",
+            "crate::hello",
             "--dart-output",
             "hello.dart",
             "--c-output",
@@ -189,7 +189,7 @@ mod tests {
         let config = run_command_line::<(), anyhow::Error>(common_args.clone())
             .expect("failed to parse cli args");
         assert_eq!(config.dart3, Some(true));
-        assert_eq!(config.rust_input, "hello.rs".to_string());
+        assert_eq!(config.rust_input, "crate::hello".to_string());
         assert_eq!(
             run_command_line::<Config, anyhow::Error>(concat([
                 common_args.clone(),
