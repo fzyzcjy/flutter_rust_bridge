@@ -81,7 +81,7 @@ fn parse_mir_funcs(
 
     let mir_funcs_normal = src_fns
         .iter()
-        .map(|f| {
+        .flat_map(|f| {
             function_parser.parse_function(
                 &f.inner,
                 &f.namespace,
@@ -90,9 +90,6 @@ fn parse_mir_funcs(
                 config.default_rust_opaque_codec,
             )
         })
-        .collect::<anyhow::Result<Vec<_>>>()?
-        .into_iter()
-        .flatten()
         .collect_vec();
 
     let mir_funcs_auto_accessor = parse_auto_accessors(config, src_structs, type_parser)?;
