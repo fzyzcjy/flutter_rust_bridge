@@ -64,7 +64,6 @@ pub(crate) fn canonicalize_with_error_message(path: &Path) -> Result<PathBuf> {
 mod tests {
     use crate::utils::path_utils::find_parent_dir_with_file;
     use anyhow::Result;
-    use std::collections::HashSet;
     use std::fs;
     use std::path::PathBuf;
     use tempfile::tempdir;
