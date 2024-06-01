@@ -1,3 +1,4 @@
+use crate::codegen::hir::hierarchical::module::HirModule;
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::library::misc::consts::HANDLER_NAME;
@@ -6,7 +7,7 @@ use itertools::Itertools;
 
 pub(super) fn parse_existing_handlers(
     config: &ParserInternalConfig,
-    file_data_arr: &[FileData],
+    modules: &[&HirModule],
 ) -> anyhow::Result<Vec<NamespacedName>> {
     let existing_handlers = (file_data_arr.iter())
         .filter(|file| parse_has_executor(&file.content))
