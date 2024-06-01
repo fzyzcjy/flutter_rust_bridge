@@ -20,8 +20,11 @@ use log::{debug, warn};
 use std::fmt::Debug;
 use syn::*;
 use MirType::Primitive;
+use crate::codegen::parser::mir::function_parser::error::ParseFunctionError;
+use crate::codegen::parser::mir::function_parser::error::ParseFunctionError::{SkipSinceIgnore, SkipSinceNonPublic};
 
 pub(crate) mod argument;
+pub(crate) mod error;
 pub(crate) mod output;
 mod transformer;
 
@@ -42,7 +45,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         force_codec_mode_pack: &Option<CodecModePack>,
         default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
-    ) -> Result<MirFunc, TODO> {
+    ) -> Result<MirFunc, ParseFunctionError> {
         self.parse_function_inner(
             func,
             namespace_naive,
@@ -61,11 +64,11 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         force_codec_mode_pack: &Option<CodecModePack>,
         default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
-    ) -> anyhow::Result<Option<MirFunc>> {
+    ) -> anyhow::Result<MirFunc> {
         debug!("parse_function function name: {:?}", func.sig().ident);
 
         if !matches!(func.vis(), Visibility::Public(_)) {
-            return Ok(None);
+            return Err(SkipSinceNonPublic);
         }
 
         let sig = func.sig();
@@ -85,13 +88,13 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         {
             owner
         } else {
-            return Ok(None);
+            return Err(SkipSinceIgnore);
         };
 
         let func_name = parse_name(sig, &owner);
 
         if attributes.ignore() {
-            return Ok(None);
+            return Err(SkipSinceIgnore);
         }
 
         let context = create_context(Some(owner.clone()));
@@ -108,7 +111,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let namespace_refined = refine_namespace(&owner).unwrap_or(namespace_naive.clone());
 
         if info.ignore_func {
-            return Ok(None);
+            return Err(SkipSinceIgnore);
         }
 
         Ok(Some(MirFunc {
