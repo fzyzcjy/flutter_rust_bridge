@@ -7,7 +7,6 @@ use crate::codegen::parser::internal_config::ParserInternalConfig;
 pub(crate) mod hir;
 pub(crate) mod internal_config;
 pub(crate) mod mir;
-pub(crate) mod reader;
 
 pub(crate) fn parse(
     config: &ParserInternalConfig,
