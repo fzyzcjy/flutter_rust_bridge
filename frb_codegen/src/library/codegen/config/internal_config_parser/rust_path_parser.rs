@@ -19,13 +19,13 @@ pub(super) fn compute_rust_input_info(
     migrated_rust_input: &ConfigRustRootAndRustInput,
     base_dir: &Path,
 ) -> anyhow::Result<RustInputInfo> {
-    let rust_input_namespace_prefices_raw =
+    let rust_input_namespace_prefixes_raw =
         compute_rust_input_namespace_prefixes_raw(&migrated_rust_input.rust_input);
 
     Ok(RustInputInfo {
         rust_crate_dir: compute_rust_crate_dir(base_dir, &migrated_rust_input.rust_root)?,
         rust_input_namespace_pack: RustInputNamespacePack {
-            rust_input_namespace_prefixes: TODO,
+            rust_input_namespace_prefixes: tidy_rust_input_namespace_prefixes(rust_input_namespace_prefixes_raw),
         }?,
     })
 }
@@ -57,8 +57,8 @@ fn fallback_rust_output_path(rust_crate_dir: &Path) -> PathBuf {
     rust_crate_dir.join("src").join("frb_generated.rs")
 }
 
-fn parse_third_party_crates(rust_input_namespace_prefices: &[Namespace]) -> Vec<String> {
-    rust_input_namespace_prefices
+fn parse_third_party_crates(rust_input_namespace_prefixes: &[Namespace]) -> Vec<String> {
+    rust_input_namespace_prefixes
         .iter()
         .map(|x| x.path()[0])
         .filter(|x| *x != Namespace::SELF_CRATE)

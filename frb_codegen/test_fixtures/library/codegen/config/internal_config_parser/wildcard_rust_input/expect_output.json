@@ -93,7 +93,7 @@
   "parser": {
     "hir": {
       "rust_input_namespace_pack": {
-        "rust_input_namespace_prefices": [
+        "rust_input_namespace_prefixes": [
           "crate::api"
         ]
       }
@@ -106,7 +106,7 @@
         "rust2dart": "Pde"
       },
       "rust_input_namespace_pack": {
-        "rust_input_namespace_prefices": [
+        "rust_input_namespace_prefixes": [
           "crate::api"
         ]
       }
