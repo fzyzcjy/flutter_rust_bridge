@@ -10,7 +10,7 @@ use std::path::Path;
 
 pub(crate) fn run_cargo_expand(
     rust_crate_dir: &Path,
-    interest_crate_name: &str,
+    interest_crate_name: Option<&str>,
     dumper: &Dumper,
 ) -> Result<syn::File> {
     if can_execute_real(rust_crate_dir)? {

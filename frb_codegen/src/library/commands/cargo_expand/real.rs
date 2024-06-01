@@ -13,16 +13,22 @@ use std::path::Path;
 
 pub(super) fn run(
     rust_crate_dir: &Path,
-    interest_crate_name: &str,
+    interest_crate_name: Option<&str>,
     dumper: &Dumper,
 ) -> Result<syn::File> {
-    let text = run_with_frb_aware(rust_crate_dir)?;
+    let text = run_with_frb_aware(rust_crate_dir, interest_crate_name)?;
     dumper.dump_str(ConfigDumpContent::Source, "cargo_expand.rs", &text)?;
     Ok(syn::parse_file(&text)?)
 }
 
-fn run_with_frb_aware(rust_crate_dir: &Path) -> Result<String> {
-    Ok(unwrap_frb_attrs_in_doc(&run_raw(rust_crate_dir, "--cfg frb_expand", true)?).into_owned())
+fn run_with_frb_aware(rust_crate_dir: &Path, interest_crate_name: Option<&str>) -> Result<String> {
+    Ok(unwrap_frb_attrs_in_doc(&run_raw(
+        rust_crate_dir,
+        interest_crate_name,
+        "--cfg frb_expand",
+        true,
+    )?)
+    .into_owned())
 }
 
 /// Turns `#[doc = "frb_marker: .."]` back into `#[frb(..)]`, usually produced
@@ -39,6 +45,7 @@ fn unwrap_frb_attrs_in_doc(code: &str) -> Cow<str> {
 #[allow(clippy::vec_init_then_push)]
 fn run_raw(
     rust_crate_dir: &Path,
+    interest_crate_name: Option<&str>,
     extra_rustflags: &str,
     allow_auto_install: bool,
 ) -> Result<String> {
@@ -51,6 +58,8 @@ fn run_raw(
         env::var("RUSTFLAGS").map(|x| x + " ").unwrap_or_default() + extra_rustflags,
     )]
     .into();
+    
+    TODO
 
     let output = execute_command("cargo", &args, Some(rust_crate_dir), Some(extra_env))
         .with_context(|| format!("Could not expand rust code at path {rust_crate_dir:?}"))?;
