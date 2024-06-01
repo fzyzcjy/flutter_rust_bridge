@@ -84,7 +84,7 @@ fn parse(
     dumper: &Dumper,
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<IrPack> {
-    let pb = progress_bar_pack.parse_cargo_expand.start();
+    let pb = progress_bar_pack.parse_read.start();
     let mut cached_rust_reader = CachedRustReader::default();
     let file = cached_rust_reader.read_rust_crate(&config.rust_crate_dir, dumper)?;
     drop(pb);

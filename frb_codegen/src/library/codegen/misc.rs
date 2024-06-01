@@ -2,7 +2,7 @@ use crate::utils::console::SimpleProgressBar;
 
 pub(crate) struct GeneratorProgressBarPack {
     pub parse: SimpleProgressBar,
-    pub parse_cargo_expand: SimpleProgressBar,
+    pub parse_read: SimpleProgressBar,
     pub parse_hir: SimpleProgressBar,
     pub parse_mir: SimpleProgressBar,
     pub generate: SimpleProgressBar,
@@ -19,7 +19,7 @@ impl GeneratorProgressBarPack {
     pub(crate) fn new() -> Self {
         Self {
             parse: SimpleProgressBar::new("Parse", 0),
-            parse_cargo_expand: SimpleProgressBar::new("Run cargo expand", 1),
+            parse_read: SimpleProgressBar::new("Cargo expand & syn parse", 1),
             parse_hir: SimpleProgressBar::new("Parse HIR", 1),
             parse_mir: SimpleProgressBar::new("Parse MIR", 1),
             generate: SimpleProgressBar::new("Generate", 0),
