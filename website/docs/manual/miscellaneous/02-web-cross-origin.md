@@ -10,7 +10,7 @@ the web server needs to respond with the following headers:
 
 ## When `flutter run`
 
-### After next Flutter release (>=3.17)
+### After Flutter 3.17
 
 A [pull request](https://github.com/flutter/flutter/pull/136297) has already been merged into Flutter in 2023 Oct.
 Then, doing it is as easy as:
@@ -20,7 +20,7 @@ flutter run \
     --web-header=Cross-Origin-Opener-Policy=same-origin --web-header=Cross-Origin-Embedder-Policy=require-corp
 ```
 
-### Before next Flutter release (<=3.16)
+### Before Flutter 3.17
 
 Temporarily (before >=3.17), the Flutter source code installed on your computer needs to be hacked as follows.
 
