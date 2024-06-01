@@ -6,7 +6,7 @@ use itertools::Itertools;
 
 impl<'a> WireDartCodecDcoGeneratorDecoderTrait for StructRefWireDartCodecDcoGenerator<'a> {
     fn generate_impl_decode_body(&self) -> String {
-        let s = self.ir.get(self.context.mir_pack);
+        let s = self.mir.get(self.context.mir_pack);
 
         let inner = s
             .fields

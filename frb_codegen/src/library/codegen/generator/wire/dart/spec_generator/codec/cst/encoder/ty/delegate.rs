@@ -16,7 +16,7 @@ use crate::library::codegen::mir::ty::MirTypeTrait;
 
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGenerator<'a> {
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {
-        match &self.ir {
+        match &self.mir {
             MirTypeDelegate::Array(ref array) => match &array.mode {
                 MirTypeDelegateArrayMode::General(_) => Acc::distribute(Some(format!(
                     "return cst_encode_{}(raw);",
@@ -60,7 +60,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
             //     // and must be split.
             //     let body = format!(
             //         "return cst_encode_{}(raw);",
-            //         self.ir.get_delegate().safe_ident()
+            //         self.mir.get_delegate().safe_ident()
             //     );
             //     Acc::distribute(Some(body))
             // }
@@ -118,16 +118,16 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
             }
             MirTypeDelegate::Map(_) => Acc::distribute(Some(format!(
                 "return cst_encode_{}(raw.entries.map((e) => (e.key, e.value)).toList());",
-                self.ir.get_delegate().safe_ident()
+                self.mir.get_delegate().safe_ident()
             ))),
             MirTypeDelegate::Set(ir) => Acc::distribute(Some(format!(
                 "return cst_encode_{}({});",
-                self.ir.get_delegate().safe_ident(),
+                self.mir.get_delegate().safe_ident(),
                 generate_set_to_list(ir, self.context.as_api_dart_context(), "raw"),
             ))),
             MirTypeDelegate::StreamSink(ir) => Acc::distribute(Some(format!(
                 "return cst_encode_{}({});",
-                self.ir.get_delegate().safe_ident(),
+                self.mir.get_delegate().safe_ident(),
                 generate_stream_sink_setup_and_serialize(ir, "raw")
             ))),
             MirTypeDelegate::BigPrimitive(_) => Acc::distribute(Some(
@@ -135,7 +135,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
             )),
             MirTypeDelegate::RustAutoOpaqueExplicit(_) => Acc::distribute(Some(format!(
                 "return cst_encode_{}(raw);",
-                self.ir.get_delegate().safe_ident(),
+                self.mir.get_delegate().safe_ident(),
             ))),
         }
     }
@@ -144,11 +144,11 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
     // frb-coverage:ignore-start
     fn dart_wire_type(&self, target: Target) -> String {
         // frb-coverage:ignore-end
-        match (&self.ir, target) {
+        match (&self.mir, target) {
             (MirTypeDelegate::String, Target::Web) => "String".into(),
             // (MirTypeDelegate::StringList, Target::Web) => "List<String>".into(),
             // (MirTypeDelegate::StringList, _) => "ffi.Pointer<wire_cst_StringList>".to_owned(),
-            _ => WireDartCodecCstGenerator::new(self.ir.get_delegate(), self.context)
+            _ => WireDartCodecCstGenerator::new(self.mir.get_delegate(), self.context)
                 .dart_wire_type(target),
         }
     }

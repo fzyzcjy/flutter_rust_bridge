@@ -12,18 +12,18 @@ impl<'a> CodecSseTyTrait for RustAutoOpaqueImplicitCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
         match lang {
             Lang::DartLang(_) => {
-                let needs_move = self.ir.needs_move();
+                let needs_move = self.mir.needs_move();
                 Some(generate_generalized_rust_opaque_encode(
                     lang,
                     &format!("{needs_move}"),
                 ))
             }
             Lang::RustLang(_) => {
-                if self.ir.ownership_mode == OwnershipMode::Owned {
+                if self.mir.ownership_mode == OwnershipMode::Owned {
                     Some(simple_delegate_encode(
                         lang,
-                        &RustOpaque(self.ir.inner.to_owned()),
-                        &generate_encode_rust_auto_opaque(&self.ir, "self"),
+                        &RustOpaque(self.mir.inner.to_owned()),
+                        &generate_encode_rust_auto_opaque(&self.mir, "self"),
                     ))
                 } else {
                     None
@@ -36,16 +36,16 @@ impl<'a> CodecSseTyTrait for RustAutoOpaqueImplicitCodecSseTy<'a> {
         match lang {
             Lang::DartLang(_) => Some(generate_generalized_rust_opaque_decode(
                 lang,
-                self.ir.clone().into(),
-                self.ir.inner.codec,
+                self.mir.clone().into(),
+                self.mir.inner.codec,
                 self.context,
             )),
             Lang::RustLang(_) => {
-                if self.ir.ownership_mode == OwnershipMode::Owned {
+                if self.mir.ownership_mode == OwnershipMode::Owned {
                     Some(simple_delegate_decode(
                         lang,
-                        &RustOpaque(self.ir.inner.to_owned()),
-                        &generate_decode_rust_auto_opaque(&self.ir, "inner"),
+                        &RustOpaque(self.mir.inner.to_owned()),
+                        &generate_decode_rust_auto_opaque(&self.mir, "inner"),
                     ))
                 } else {
                     None

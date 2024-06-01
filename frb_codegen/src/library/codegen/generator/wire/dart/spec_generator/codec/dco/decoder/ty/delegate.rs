@@ -10,17 +10,17 @@ use crate::library::codegen::mir::ty::MirTypeTrait;
 
 impl<'a> WireDartCodecDcoGeneratorDecoderTrait for DelegateWireDartCodecDcoGenerator<'a> {
     fn generate_impl_decode_body(&self) -> String {
-        match &self.ir {
+        match &self.mir {
             MirTypeDelegate::Array(array) => match &array.mode {
                 MirTypeDelegateArrayMode::General(general) => format!(
                     r"return {}((raw as List<dynamic>).map(dco_decode_{}).toList());",
-                    ApiDartGenerator::new(self.ir.clone(), self.context.as_api_dart_context())
+                    ApiDartGenerator::new(self.mir.clone(), self.context.as_api_dart_context())
                         .dart_api_type(),
                     general.safe_ident(),
                 ),
                 MirTypeDelegateArrayMode::Primitive(_) => format!(
                     r"return {}(dco_decode_{}(raw));",
-                    ApiDartGenerator::new(self.ir.clone(), self.context.as_api_dart_context())
+                    ApiDartGenerator::new(self.mir.clone(), self.context.as_api_dart_context())
                         .dart_api_type(),
                     array.get_delegate().safe_ident(),
                 ),
@@ -31,13 +31,13 @@ impl<'a> WireDartCodecDcoGeneratorDecoderTrait for DelegateWireDartCodecDcoGener
             // ) => {
             //     format!(
             //         "return dco_decode_{}(raw);",
-            //         self.ir.get_delegate().safe_ident()
+            //         self.mir.get_delegate().safe_ident()
             //     )
             // }
             MirTypeDelegate::String
             | MirTypeDelegate::Backtrace
             /*| MirTypeDelegate::ZeroCopyBufferVecPrimitive(_)*/ => {
-                gen_decode_simple_type_cast(self.ir.clone().into(), self.context)
+                gen_decode_simple_type_cast(self.mir.clone().into(), self.context)
             }
             MirTypeDelegate::Char => {
                 "return String.fromCharCode(raw);".to_owned()
@@ -75,11 +75,11 @@ impl<'a> WireDartCodecDcoGeneratorDecoderTrait for DelegateWireDartCodecDcoGener
             MirTypeDelegate::AnyhowException => "return AnyhowException(raw as String);".to_owned(),
             MirTypeDelegate::Map(_) => format!(
                 "return Map.fromEntries(dco_decode_{}(raw).map((e) => MapEntry(e.$1, e.$2)));",
-                self.ir.get_delegate().safe_ident(),
+                self.mir.get_delegate().safe_ident(),
             ),
             MirTypeDelegate::Set(_) => format!(
                 "return Set.from(dco_decode_{}(raw));",
-                self.ir.get_delegate().safe_ident(),
+                self.mir.get_delegate().safe_ident(),
             ),
             MirTypeDelegate::StreamSink(_) => "throw UnimplementedError();".to_owned(),
             MirTypeDelegate::BigPrimitive(_) => {

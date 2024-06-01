@@ -8,7 +8,7 @@ use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartG
 
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for PrimitiveWireDartCodecCstGenerator<'a> {
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {
-        match self.ir {
+        match self.mir {
             MirTypePrimitive::I64 | MirTypePrimitive::Isize => Acc {
                 io: Some("return raw.toInt();".into()),
                 web: Some(CAST_NATIVE_BIG_INT.into()),
@@ -24,7 +24,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for PrimitiveWireDartCodecCstGene
     }
 
     fn dart_wire_type(&self, target: Target) -> String {
-        match &self.ir {
+        match &self.mir {
             MirTypePrimitive::I64
             | MirTypePrimitive::U64
             | MirTypePrimitive::Isize
@@ -32,7 +32,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for PrimitiveWireDartCodecCstGene
                 Target::Io => "int".into(),
                 Target::Web => "Object".into(),
             },
-            _ => ApiDartGenerator::new(self.ir.clone(), self.context.as_api_dart_context())
+            _ => ApiDartGenerator::new(self.mir.clone(), self.context.as_api_dart_context())
                 .dart_api_type(),
         }
     }

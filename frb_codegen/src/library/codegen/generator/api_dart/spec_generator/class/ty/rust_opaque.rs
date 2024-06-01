@@ -15,22 +15,22 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
         let dart_entrypoint_class_name = &self.context.config.dart_entrypoint_class_name;
         let dart_api_instance = format!("{dart_entrypoint_class_name}.instance.api");
 
-        let rust_api_type = self.ir.rust_api_type();
-        let dart_api_type = ApiDartGenerator::new(self.ir.clone(), self.context).dart_api_type();
+        let rust_api_type = self.mir.rust_api_type();
+        let dart_api_type = ApiDartGenerator::new(self.mir.clone(), self.context).dart_api_type();
 
         let methods = generate_api_methods(
             &NamespacedName::new(
-                self.ir.namespace.clone(),
-                compute_api_method_query_name(&self.ir, self.context),
+                self.mir.namespace.clone(),
+                compute_api_method_query_name(&self.mir, self.context),
             ),
             self.context,
         )
         .join("\n");
         let extra_body =
-            generate_class_extra_body(self.ir_type(), &self.context.mir_pack.dart_code_of_type);
+            generate_class_extra_body(self.mir_type(), &self.context.mir_pack.dart_code_of_type);
 
         Some(ApiDartGeneratedClass {
-            namespace: self.ir.namespace.clone(),
+            namespace: self.mir.namespace.clone(),
             class_name: dart_api_type.clone(),
             code: format!(
                 "

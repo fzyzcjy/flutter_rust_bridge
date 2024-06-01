@@ -26,14 +26,14 @@ impl<'a> EnumRefApiDartGenerator<'a> {
             .map(|variant| self.generate_mode_complex_variant(variant))
             .collect_vec()
             .join("\n");
-        let name = &self.ir.ident.0.name;
+        let name = &self.mir.ident.0.name;
         let sealed = if self.context.config.dart3 {
             "sealed"
         } else {
             ""
         };
         let maybe_implements_exception =
-            generate_dart_maybe_implements_exception(self.ir.is_exception);
+            generate_dart_maybe_implements_exception(self.mir.is_exception);
 
         Some(ApiDartGeneratedClass {
             namespace: src.name.namespace.clone(),
@@ -71,7 +71,7 @@ impl<'a> EnumRefApiDartGenerator<'a> {
             "{} {}const factory {}.{}({}) = {};",
             implements_exception,
             generate_dart_comments(&variant.comments),
-            self.ir.ident.0.name,
+            self.mir.ident.0.name,
             variant.name.dart_style(),
             args,
             variant.wrapper_name.rust_style(),
@@ -129,7 +129,7 @@ impl<'a> EnumRefApiDartGenerator<'a> {
     fn generate_implements_exception(&self, variant: &MirVariant) -> &str {
         let has_backtrace = matches!(&variant.kind,
             MirVariantKind::Struct(MirStruct {is_fields_named: true, fields, ..}) if fields.iter().any(|field| field.name.raw == BACKTRACE_IDENT));
-        if self.ir.is_exception && has_backtrace {
+        if self.mir.is_exception && has_backtrace {
             "@Implements<FrbBacktracedException>()"
         } else {
             ""

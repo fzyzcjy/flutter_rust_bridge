@@ -21,7 +21,7 @@ pub(crate) trait ApiDartGeneratorInfoTrait {
 
 impl<'a> ApiDartGeneratorInfoTrait for BoxedApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
-        let inner = ApiDartGenerator::new(self.ir.inner.clone(), self.context);
+        let inner = ApiDartGenerator::new(self.mir.inner.clone(), self.context);
         inner.dart_api_type()
     }
 }
@@ -30,8 +30,8 @@ impl<'a> ApiDartGeneratorInfoTrait for DartFnApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
         format!(
             "FutureOr<{}> Function({})",
-            ApiDartGenerator::new(self.ir.output.normal.clone(), self.context).dart_api_type(),
-            (self.ir.inputs.iter())
+            ApiDartGenerator::new(self.mir.output.normal.clone(), self.context).dart_api_type(),
+            (self.mir.inputs.iter())
                 .map(|x| ApiDartGenerator::new(x.clone(), self.context).dart_api_type())
                 .join(", "),
         )
@@ -46,13 +46,13 @@ impl<'a> ApiDartGeneratorInfoTrait for DartOpaqueApiDartGenerator<'a> {
 
 impl<'a> ApiDartGeneratorInfoTrait for DelegateApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
-        match &self.ir {
+        match &self.mir {
             MirTypeDelegate::Array(array) => array.dart_api_type(self.context),
             MirTypeDelegate::String => "String".to_string(),
             MirTypeDelegate::Char => "String".to_string(),
             // MirTypeDelegate::StringList => "List<String>".to_owned(),
             // MirTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
-            //     ApiDartGenerator::new(self.ir.get_delegate(), self.context).dart_api_type()
+            //     ApiDartGenerator::new(self.mir.get_delegate(), self.context).dart_api_type()
             // }
             MirTypeDelegate::PrimitiveEnum(MirTypeDelegatePrimitiveEnum { ir, .. }) => {
                 ApiDartGenerator::new(MirType::EnumRef(ir.clone()), self.context).dart_api_type()
@@ -92,7 +92,7 @@ impl<'a> ApiDartGeneratorInfoTrait for DelegateApiDartGenerator<'a> {
     }
 
     fn dart_import(&self) -> Option<String> {
-        match &self.ir {
+        match &self.mir {
             MirTypeDelegate::Uuid /*| MirTypeDelegate::Uuids*/ => {
                 Some("import 'package:uuid/uuid.dart';".to_owned())
             }
@@ -129,27 +129,27 @@ impl<'a> ApiDartGeneratorInfoTrait for DynamicApiDartGenerator<'a> {
 
 impl<'a> ApiDartGeneratorInfoTrait for EnumRefApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
-        self.ir.ident.0.name.to_string()
+        self.mir.ident.0.name.to_string()
     }
 }
 
 impl<'a> ApiDartGeneratorInfoTrait for GeneralListApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
-        let inner = ApiDartGenerator::new(self.ir.inner.clone(), self.context);
+        let inner = ApiDartGenerator::new(self.mir.inner.clone(), self.context);
         format!("List<{}>", inner.dart_api_type())
     }
 }
 
 impl<'a> ApiDartGeneratorInfoTrait for OptionalApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
-        let inner = ApiDartGenerator::new(self.ir.inner.clone(), self.context);
+        let inner = ApiDartGenerator::new(self.mir.inner.clone(), self.context);
         format!("{}?", inner.dart_api_type())
     }
 }
 
 impl<'a> ApiDartGeneratorInfoTrait for PrimitiveApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
-        match &self.ir {
+        match &self.mir {
             MirTypePrimitive::U8
             | MirTypePrimitive::I8
             | MirTypePrimitive::U16
@@ -168,8 +168,8 @@ impl<'a> ApiDartGeneratorInfoTrait for PrimitiveApiDartGenerator<'a> {
 
 impl<'a> ApiDartGeneratorInfoTrait for PrimitiveListApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
-        if self.ir.strict_dart_type {
-            match &self.ir.primitive {
+        if self.mir.strict_dart_type {
+            match &self.mir.primitive {
                 MirTypePrimitive::U8 => "Uint8List",
                 MirTypePrimitive::I8 => "Int8List",
                 MirTypePrimitive::U16 => "Uint16List",
@@ -181,14 +181,14 @@ impl<'a> ApiDartGeneratorInfoTrait for PrimitiveListApiDartGenerator<'a> {
                 MirTypePrimitive::F32 => "Float32List",
                 MirTypePrimitive::F64 => "Float64List",
                 // frb-coverage:ignore-start
-                _ => panic!("does not support {:?} yet", &self.ir.primitive),
+                _ => panic!("does not support {:?} yet", &self.mir.primitive),
                 // frb-coverage:ignore-end
             }
             .to_string()
         } else {
             ApiDartGenerator::new(
                 MirTypeGeneralList {
-                    inner: Box::new(MirType::Primitive(self.ir.primitive.clone())),
+                    inner: Box::new(MirType::Primitive(self.mir.primitive.clone())),
                 },
                 self.context,
             )
@@ -199,35 +199,35 @@ impl<'a> ApiDartGeneratorInfoTrait for PrimitiveListApiDartGenerator<'a> {
 
 impl<'a> ApiDartGeneratorInfoTrait for RecordApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
-        let values = (self.ir.values.iter())
+        let values = (self.mir.values.iter())
             .map(|ty| ApiDartGenerator::new(ty.clone(), self.context).dart_api_type())
             .collect_vec()
             .join(",");
-        let extra_comma = if self.ir.values.len() == 1 { "," } else { "" };
+        let extra_comma = if self.mir.values.len() == 1 { "," } else { "" };
         format!("({values}{extra_comma})")
     }
 }
 
 impl<'a> ApiDartGeneratorInfoTrait for RustAutoOpaqueImplicitApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
-        let inner = ApiDartGenerator::new(self.ir.inner.clone(), self.context);
+        let inner = ApiDartGenerator::new(self.mir.inner.clone(), self.context);
         inner.dart_api_type()
     }
 }
 
 impl<'a> ApiDartGeneratorInfoTrait for RustOpaqueApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
-        self.ir.sanitized_type()
+        self.mir.sanitized_type()
     }
 }
 
 impl<'a> ApiDartGeneratorInfoTrait for StructRefApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
-        self.ir.ident.0.name.to_string()
+        self.mir.ident.0.name.to_string()
     }
 
     fn dart_import(&self) -> Option<String> {
-        let st = self.ir.get(self.context.mir_pack);
+        let st = self.mir.get(self.context.mir_pack);
         Some(
             st.dart_metadata
                 .iter()

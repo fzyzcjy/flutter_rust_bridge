@@ -14,7 +14,7 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for DelegateWireRustCodecDcoGener
     // frb-coverage:ignore-start
     fn generate_impl_into_dart(&self) -> Option<String> {
         // frb-coverage:ignore-end
-        if let MirTypeDelegate::PrimitiveEnum(MirTypeDelegatePrimitiveEnum { ir, .. }) = &self.ir {
+        if let MirTypeDelegate::PrimitiveEnum(MirTypeDelegatePrimitiveEnum { ir, .. }) = &self.mir {
             let src = ir.get(self.context.mir_pack);
             let (name, self_path) =
                 parse_wrapper_name_into_dart_name_and_self_path(&src.name, &src.wrapper_name);

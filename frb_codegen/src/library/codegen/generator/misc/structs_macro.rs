@@ -94,7 +94,7 @@ macro_rules! codegen_generator_structs {
                 }
 
                 impl<'a> [<$generator_name ImplTrait>] for [<$name $generator_name>]<'a> {
-                    fn mir_type(&self) -> MirType { self.ir.clone().into() }
+                    fn mir_type(&self) -> MirType { self.mir.clone().into() }
                     fn context(&self) -> [<$generator_name Context>] { self.context }
                 }
             )*

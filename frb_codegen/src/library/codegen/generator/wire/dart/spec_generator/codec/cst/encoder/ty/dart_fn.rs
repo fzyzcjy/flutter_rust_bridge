@@ -8,11 +8,11 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DartFnWireDartCodecCstGenerat
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {
         Acc::new_common(Some(format!(
             "return cst_encode_DartOpaque(encode_{}(raw));",
-            self.ir.safe_ident(),
+            self.mir.safe_ident(),
         )))
     }
 
     fn dart_wire_type(&self, target: Target) -> String {
-        WireDartCodecCstGenerator::new(self.ir.get_delegate(), self.context).dart_wire_type(target)
+        WireDartCodecCstGenerator::new(self.mir.get_delegate(), self.context).dart_wire_type(target)
     }
 }

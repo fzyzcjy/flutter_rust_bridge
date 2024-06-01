@@ -10,15 +10,15 @@ use crate::codegen::mir::ty::{MirType, MirTypeTrait};
 
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for BoxedWireDartCodecCstGenerator<'a> {
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {
-        let mir_safe_ident = self.ir.safe_ident();
-        let inner_safe_ident = self.ir.inner.safe_ident();
+        let mir_safe_ident = self.mir.safe_ident();
+        let inner_safe_ident = self.mir.inner.safe_ident();
         let empty_struct = is_empty_struct(self);
 
         Acc {
             io: Some(
-                if self.ir.inner.is_primitive()
+                if self.mir.inner.is_primitive()
                     || matches!(
-                        *self.ir.inner,
+                        *self.mir.inner,
                         MirType::RustOpaque(_)
                             | MirType::RustAutoOpaqueImplicit(_)
                             | MirType::Delegate(MirTypeDelegate::RustAutoOpaqueExplicit(_))
@@ -28,7 +28,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for BoxedWireDartCodecCstGenerato
                     format!(
                         "return wire.cst_new_{mir_safe_ident}(cst_encode_{inner_safe_ident}(raw));"
                     )
-                } else if self.ir.inner.is_array() {
+                } else if self.mir.inner.is_array() {
                     format!("return cst_encode_{inner_safe_ident}(raw);")
                 } else {
                     format!(
@@ -49,13 +49,13 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for BoxedWireDartCodecCstGenerato
     }
 
     fn generate_encode_api_fill_to_wire_body(&self) -> Option<String> {
-        let inner_safe_ident = self.ir.inner.safe_ident();
+        let inner_safe_ident = self.mir.inner.safe_ident();
 
-        if self.ir.inner.is_array() {
+        if self.mir.inner.is_array() {
             Some(format!("wireObj = cst_encode_{inner_safe_ident}(apiObj);"))
-        } else if !self.ir.inner.is_primitive()
+        } else if !self.mir.inner.is_primitive()
             && !matches!(
-                *self.ir.inner,
+                *self.mir.inner,
                 MirType::RustOpaque(_)
                     | MirType::RustAutoOpaqueImplicit(_)
                     | MirType::Delegate(MirTypeDelegate::RustAutoOpaqueExplicit(_))
@@ -74,11 +74,11 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for BoxedWireDartCodecCstGenerato
     fn dart_wire_type(&self, target: Target) -> String {
         match target {
             Target::Web => {
-                if is_js_value(&self.ir.inner)
-                    || self.ir.inner.is_array()
-                    || self.ir.inner.is_primitive()
+                if is_js_value(&self.mir.inner)
+                    || self.mir.inner.is_array()
+                    || self.mir.inner.is_primitive()
                 {
-                    WireDartCodecCstGenerator::new(self.ir.inner.clone(), self.context)
+                    WireDartCodecCstGenerator::new(self.mir.inner.clone(), self.context)
                         .dart_wire_type(target)
                 } else {
                     // Quick hack to remove seemingly dead code without causing any trouble ;)
@@ -90,7 +90,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for BoxedWireDartCodecCstGenerato
                     // format!(
                     //     "int /* *{} */",
                     //     WireRustCodecCstGenerator::new(
-                    //         self.ir.inner.clone(),
+                    //         self.mir.inner.clone(),
                     //         self.context.as_wire_rust_context()
                     //     )
                     //     .rust_wire_type(target)
@@ -98,17 +98,17 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for BoxedWireDartCodecCstGenerato
                 }
             }
             Target::Io => {
-                if self.ir.inner.is_array() {
-                    return WireDartCodecCstGenerator::new(self.ir.inner.clone(), self.context)
+                if self.mir.inner.is_array() {
+                    return WireDartCodecCstGenerator::new(self.mir.inner.clone(), self.context)
                         .dart_wire_type(Target::Io);
                 }
                 let wire_type = self
-                    .ir
+                    .mir
                     .inner
                     .as_primitive()
                     .map(|prim| dart_native_type_of_primitive(prim).to_owned())
                     .unwrap_or_else(|| {
-                        WireDartCodecCstGenerator::new(self.ir.inner.clone(), self.context)
+                        WireDartCodecCstGenerator::new(self.mir.inner.clone(), self.context)
                             .dart_wire_type(target)
                     });
                 format!("ffi.Pointer<{wire_type}>")
@@ -121,7 +121,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for BoxedWireDartCodecCstGenerato
 // frb-coverage:ignore-start
 fn is_empty_struct(ty: &BoxedWireDartCodecCstGenerator) -> bool {
     // frb-coverage:ignore-end
-    if let StructRef(ref s) = ty.ir.inner.as_ref() {
+    if let StructRef(ref s) = ty.mir.inner.as_ref() {
         s.get(ty.context.mir_pack).fields.is_empty()
     } else {
         false

@@ -6,7 +6,7 @@ impl<'a> WireDartCodecDcoGeneratorDecoderTrait for OptionalWireDartCodecDcoGener
     fn generate_impl_decode_body(&self) -> String {
         format!(
             "return raw == null ? null : dco_decode_{}(raw);",
-            self.ir.inner.safe_ident()
+            self.mir.inner.safe_ident()
         )
     }
 }

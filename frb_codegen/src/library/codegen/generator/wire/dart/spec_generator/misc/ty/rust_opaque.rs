@@ -11,7 +11,7 @@ use convert_case::{Case, Casing};
 impl<'a> WireDartGeneratorMiscTrait for RustOpaqueWireDartGenerator<'a> {
     fn generate_extra_functions(&self) -> Option<Acc<WireDartOutputCode>> {
         Some(generate_rust_arc_functions(
-            self.ir.clone().into(),
+            self.mir.clone().into(),
             self.context,
         ))
     }

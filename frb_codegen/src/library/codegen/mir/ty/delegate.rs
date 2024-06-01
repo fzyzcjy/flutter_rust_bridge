@@ -108,7 +108,7 @@ impl MirTypeTrait for MirTypeDelegate {
             // MirTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
             //     "ZeroCopyBuffer_".to_owned() + &self.get_delegate().safe_ident()
             // }
-            MirTypeDelegate::PrimitiveEnum(ir) => ir.ir.safe_ident(),
+            MirTypeDelegate::PrimitiveEnum(ir) => ir.mir.safe_ident(),
             MirTypeDelegate::Time(ir) => format!("Chrono_{}", ir),
             // MirTypeDelegate::TimeList(ir) => format!("Chrono_{}List", ir),
             MirTypeDelegate::Uuid => "Uuid".to_owned(),
@@ -201,7 +201,7 @@ impl MirTypeTrait for MirTypeDelegate {
 
     fn self_namespace(&self) -> Option<Namespace> {
         match self {
-            MirTypeDelegate::PrimitiveEnum(inner) => inner.ir.self_namespace(),
+            MirTypeDelegate::PrimitiveEnum(inner) => inner.mir.self_namespace(),
             MirTypeDelegate::Array(inner) => Some(inner.namespace.clone()),
             _ => None,
         }

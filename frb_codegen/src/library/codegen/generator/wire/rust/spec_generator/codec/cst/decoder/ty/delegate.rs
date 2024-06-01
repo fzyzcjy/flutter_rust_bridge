@@ -17,7 +17,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
     }
 
     fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
-        match &self.ir {
+        match &self.mir {
             MirTypeDelegate::String => {
                 Acc {
                     web: Some("self".into()),
@@ -107,7 +107,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
     }
 
     fn generate_impl_decode_jsvalue_body(&self) -> Option<std::borrow::Cow<str>> {
-        Some(match &self.ir {
+        Some(match &self.mir {
             MirTypeDelegate::String => {
                 "self.as_string().expect(\"non-UTF-8 string, or not a string\")".into()
             }
@@ -152,24 +152,24 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
     // frb-coverage:ignore-start
     fn rust_wire_type(&self, target: Target) -> String {
         // frb-coverage:ignore-end
-        match (&self.ir, target) {
+        match (&self.mir, target) {
             (MirTypeDelegate::String, Target::Web) => "String".into(),
             // (MirTypeDelegate::StringList, Target::Io) => "wire_cst_StringList".to_owned(),
             // (MirTypeDelegate::StringList, Target::Web) => JS_VALUE.into(),
-            _ => WireRustCodecCstGenerator::new(self.ir.get_delegate(), self.context)
+            _ => WireRustCodecCstGenerator::new(self.mir.get_delegate(), self.context)
                 .rust_wire_type(target),
         }
     }
 
     fn rust_wire_is_pointer(&self, target: Target) -> bool {
-        WireRustCodecCstGenerator::new(self.ir.get_delegate(), self.context)
+        WireRustCodecCstGenerator::new(self.mir.get_delegate(), self.context)
             .rust_wire_is_pointer(target)
     }
 }
 
 impl<'a> DelegateWireRustCodecCstGenerator<'a> {
     fn generate_skip_web_if_jsvalue(&self, acc: String) -> Acc<Option<String>> {
-        if is_js_value(&self.ir.get_delegate()) {
+        if is_js_value(&self.mir.get_delegate()) {
             Acc {
                 io: Some(acc),
                 ..Default::default()

@@ -20,14 +20,14 @@ impl<'a> StructRefApiDartGenerator<'a> {
         class_name: &str,
     ) -> String {
         let private_constructor = if !methods.is_empty() {
-            format!("const {}._();", self.ir.ident.0.name)
+            format!("const {}._();", self.mir.ident.0.name)
         } else {
             "".to_owned()
         };
 
         let constructor_params =
             self.generate_mode_freezed_constructor_params(src, !methods.is_empty());
-        let implements_exception = generate_dart_maybe_implements_exception(self.ir.is_exception);
+        let implements_exception = generate_dart_maybe_implements_exception(self.mir.is_exception);
         let methods_str = methods.join("\n");
 
         format!(

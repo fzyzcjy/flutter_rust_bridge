@@ -9,7 +9,7 @@ use std::borrow::Cow;
 impl<'a> WireRustCodecCstGeneratorDecoderTrait for RustOpaqueWireRustCodecCstGenerator<'a> {
     fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
         Acc {
-            io: Some(generate_decode_rust_opaque("self as _", self.ir.codec)),
+            io: Some(generate_decode_rust_opaque("self as _", self.mir.codec)),
             ..Default::default()
         }
     }
@@ -24,7 +24,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for RustOpaqueWireRustCodecCstGen
                 "#,
                 generate_decode_rust_opaque(
                     "(self.as_f64().unwrap() as usize) as _",
-                    self.ir.codec
+                    self.mir.codec
                 )
             )
             .into(),

@@ -10,11 +10,11 @@ use itertools::Itertools;
 
 impl<'a> WireDartGeneratorMiscTrait for DartFnWireDartGenerator<'a> {
     fn generate_extra_functions(&self) -> Option<Acc<WireDartOutputCode>> {
-        let num_params = self.ir.inputs.len();
+        let num_params = self.mir.inputs.len();
         let raw_parameter_names = (0..num_params).map(|i| format!("rawArg{i}")).join(", ");
         let parameter_names = (0..num_params).map(|i| format!("arg{i}")).join(", ");
         let repeated_dynamics = (0..num_params).map(|_i| "dynamic".to_string()).join(", ");
-        let decode_block = (self.ir.inputs.iter().enumerate())
+        let decode_block = (self.mir.inputs.iter().enumerate())
             .map(|(i, ty)| {
                 format!(
                     "final arg{i} = dco_decode_{}(rawArg{i});\n",
@@ -22,23 +22,23 @@ impl<'a> WireDartGeneratorMiscTrait for DartFnWireDartGenerator<'a> {
                 )
             })
             .join("");
-        let mir_safe_ident = self.ir.safe_ident();
+        let mir_safe_ident = self.mir.safe_ident();
         let dart_api_type =
-            ApiDartGenerator::new(self.ir.clone(), self.context.as_api_dart_context())
+            ApiDartGenerator::new(self.mir.clone(), self.context.as_api_dart_context())
                 .dart_api_type();
 
         let output_normal_dart_api_type = ApiDartGenerator::new(
-            self.ir.output.normal.clone(),
+            self.mir.output.normal.clone(),
             self.context.as_api_dart_context(),
         )
         .dart_api_type();
         let output_error_dart_api_type = ApiDartGenerator::new(
-            self.ir.output.error.clone(),
+            self.mir.output.error.clone(),
             self.context.as_api_dart_context(),
         )
         .dart_api_type();
-        let output_normal_safe_ident = self.ir.output.normal.safe_ident();
-        let output_error_safe_ident = self.ir.output.error.safe_ident();
+        let output_normal_safe_ident = self.mir.output.normal.safe_ident();
+        let output_error_safe_ident = self.mir.output.error.safe_ident();
 
         let action_normal = DartFnOutputAction::Success as i32;
         let action_error = DartFnOutputAction::Error as i32;

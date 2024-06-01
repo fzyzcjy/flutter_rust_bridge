@@ -5,9 +5,9 @@ use itertools::Itertools;
 
 impl<'a> WireDartCodecDcoGeneratorDecoderTrait for RecordWireDartCodecDcoGenerator<'a> {
     fn generate_impl_decode_body(&self) -> String {
-        let len = self.ir.values.len();
+        let len = self.mir.values.len();
         let values = self
-            .ir
+            .mir
             .values
             .iter()
             .enumerate()

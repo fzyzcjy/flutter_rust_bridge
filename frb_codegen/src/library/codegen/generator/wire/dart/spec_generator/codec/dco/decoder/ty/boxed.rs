@@ -12,7 +12,7 @@ impl<'a> WireDartCodecDcoGeneratorDecoderTrait for BoxedWireDartCodecDcoGenerato
     // frb-coverage:ignore-start
     fn generate_impl_decode_body(&self) -> String {
         // frb-coverage:ignore-end
-        match &*self.ir.inner {
+        match &*self.mir.inner {
             StructRef(_)
             | DartOpaque(_)
             | RustOpaque(_)
@@ -26,13 +26,13 @@ impl<'a> WireDartCodecDcoGeneratorDecoderTrait for BoxedWireDartCodecDcoGenerato
                 | MirTypePrimitive::Usize,
             )
             | Delegate(MirTypeDelegate::Array(_) | MirTypeDelegate::PrimitiveEnum { .. }) => {
-                format!("return dco_decode_{}(raw);", self.ir.inner.safe_ident())
+                format!("return dco_decode_{}(raw);", self.mir.inner.safe_ident())
             }
             // TODO merge with above
             Delegate(MirTypeDelegate::Time(time)) => {
                 format!("return dco_decode_Chrono_{}(raw);", time)
             }
-            _ => gen_decode_simple_type_cast(self.ir.clone().into(), self.context),
+            _ => gen_decode_simple_type_cast(self.mir.clone().into(), self.context),
         }
     }
 }

@@ -5,10 +5,10 @@ use crate::codegen::mir::ty::MirTypeTrait;
 
 impl<'a> WireRustCodecCstGeneratorDecoderTrait for DartFnWireRustCodecCstGenerator<'a> {
     fn generate_wire_func_param_api_type(&self) -> Option<String> {
-        Some(self.ir.get_delegate().rust_api_type())
+        Some(self.mir.get_delegate().rust_api_type())
     }
 
     fn rust_wire_type(&self, target: Target) -> String {
-        WireRustCodecCstGenerator::new(self.ir.get_delegate(), self.context).rust_wire_type(target)
+        WireRustCodecCstGenerator::new(self.mir.get_delegate(), self.context).rust_wire_type(target)
     }
 }

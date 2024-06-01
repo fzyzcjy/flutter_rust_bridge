@@ -8,8 +8,8 @@ use crate::codegen::mir::ty::{MirType, MirTypeTrait};
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for GeneralListWireDartCodecCstGenerator<'a> {
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {
         // NOTE the memory strategy is same as PrimitiveList, see comments there.
-        let ident = self.ir.safe_ident();
-        let inner = self.ir.inner.safe_ident();
+        let ident = self.mir.safe_ident();
+        let inner = self.mir.inner.safe_ident();
 
         Acc {
             io: Some(format!(
@@ -19,9 +19,9 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for GeneralListWireDartCodecCstGe
                 }}
                 return ans;
                 ",
-                if self.ir.inner.is_primitive()
+                if self.mir.inner.is_primitive()
                     || matches!(
-                        *self.ir.inner,
+                        *self.mir.inner,
                         MirType::Optional(_)
                             | MirType::RustAutoOpaqueImplicit(_)
                             | MirType::RustOpaque(_)
@@ -42,7 +42,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for GeneralListWireDartCodecCstGe
             web: self.context.config.web_enabled.then(|| {
                 format!(
                     "return raw.map(cst_encode_{}).toList();",
-                    self.ir.inner.safe_ident()
+                    self.mir.inner.safe_ident()
                 )
             }),
             ..Default::default()
@@ -51,7 +51,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for GeneralListWireDartCodecCstGe
 
     fn dart_wire_type(&self, target: Target) -> String {
         match target {
-            Target::Io => format!("ffi.Pointer<wire_cst_{}>", self.ir.safe_ident()),
+            Target::Io => format!("ffi.Pointer<wire_cst_{}>", self.mir.safe_ident()),
             Target::Web => "List<dynamic>".into(),
         }
     }

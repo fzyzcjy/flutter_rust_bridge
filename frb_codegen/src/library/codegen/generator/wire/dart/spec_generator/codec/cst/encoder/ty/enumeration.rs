@@ -9,7 +9,7 @@ use itertools::Itertools;
 
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for EnumRefWireDartCodecCstGenerator<'a> {
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {
-        let variants = (self.ir.get(self.context.mir_pack).variants())
+        let variants = (self.mir.get(self.context.mir_pack).variants())
             .iter()
             .enumerate()
             .map(|(idx, variant)| generate_encode_body_variant(idx, variant))
@@ -27,7 +27,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for EnumRefWireDartCodecCstGenera
 
     fn generate_encode_api_fill_to_wire_body(&self) -> Option<String> {
         Some(
-            self.ir
+            self.mir
                 .get(self.context.mir_pack)
                 .variants()
                 .iter()

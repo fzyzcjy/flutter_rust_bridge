@@ -12,7 +12,7 @@ use itertools::Itertools;
 impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
         let inner_expr = match lang {
-            Lang::DartLang(_) => match &self.ir {
+            Lang::DartLang(_) => match &self.mir {
                 MirTypeDelegate::Array(_) => "self.inner".to_owned(),
                 MirTypeDelegate::String => "utf8.encoder.convert(self)".to_owned(),
                 MirTypeDelegate::Char => "self".to_owned(),
@@ -44,14 +44,14 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 MirTypeDelegate::BigPrimitive(_) => "self.toString()".to_owned(),
                 MirTypeDelegate::RustAutoOpaqueExplicit(_ir) => "self".to_owned(),
             },
-            Lang::RustLang(_) => match &self.ir {
+            Lang::RustLang(_) => match &self.mir {
                 MirTypeDelegate::Array(_) => {
                     "{ let boxed: Box<[_]> = Box::new(self); boxed.into_vec() }".to_owned()
                 }
                 MirTypeDelegate::String => "self.into_bytes()".to_owned(),
                 MirTypeDelegate::Char => "self.to_string()".to_owned(),
                 MirTypeDelegate::PrimitiveEnum(ir) => {
-                    let src = ir.ir.get(self.context.mir_pack);
+                    let src = ir.mir.get(self.context.mir_pack);
                     let variants = (src.variants.iter().enumerate())
                         .map(|(idx, variant)| {
                             (
@@ -91,17 +91,17 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
         };
         Some(simple_delegate_encode(
             lang,
-            &self.ir.get_delegate(),
+            &self.mir.get_delegate(),
             &inner_expr,
         ))
     }
 
     fn generate_decode(&self, lang: &Lang) -> Option<String> {
         let wrapper_expr = match lang {
-            Lang::DartLang(_) => match &self.ir {
+            Lang::DartLang(_) => match &self.mir {
                 MirTypeDelegate::Array(_) => format!(
                     "{}(inner)",
-                    ApiDartGenerator::new(self.ir.clone(), self.context.as_api_dart_context())
+                    ApiDartGenerator::new(self.mir.clone(), self.context.as_api_dart_context())
                         .dart_api_type()
                 ),
                 MirTypeDelegate::String => "utf8.decoder.convert(inner)".to_owned(),
@@ -109,8 +109,11 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 MirTypeDelegate::PrimitiveEnum(inner) => {
                     format!(
                         "{}.values[inner]",
-                        ApiDartGenerator::new(inner.ir.clone(), self.context.as_api_dart_context())
-                            .dart_api_type()
+                        ApiDartGenerator::new(
+                            inner.mir.clone(),
+                            self.context.as_api_dart_context()
+                        )
+                        .dart_api_type()
                     )
                 }
                 MirTypeDelegate::Backtrace => "inner".to_owned(),
@@ -140,7 +143,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 MirTypeDelegate::BigPrimitive(_) => "BigInt.parse(inner)".to_owned(),
                 MirTypeDelegate::RustAutoOpaqueExplicit(_ir) => "inner".to_owned(),
             },
-            Lang::RustLang(_) => match &self.ir {
+            Lang::RustLang(_) => match &self.mir {
                 MirTypeDelegate::Array(_) => {
                     "flutter_rust_bridge::for_generated::from_vec_to_array(inner)".to_owned()
                 }
@@ -185,7 +188,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
 
         Some(simple_delegate_decode(
             lang,
-            &self.ir.get_delegate(),
+            &self.mir.get_delegate(),
             &wrapper_expr,
         ))
     }
@@ -213,7 +216,7 @@ pub(crate) fn rust_decode_primitive_enum(
     mir_pack: &MirPack,
     var_name: &str,
 ) -> String {
-    let enu = inner.ir.get(mir_pack);
+    let enu = inner.mir.get(mir_pack);
     let variants = (enu.variants().iter().enumerate())
         .map(|(idx, variant)| format!("{} => {}::{},", idx, enu.name.rust_style(), variant.name))
         .collect_vec()

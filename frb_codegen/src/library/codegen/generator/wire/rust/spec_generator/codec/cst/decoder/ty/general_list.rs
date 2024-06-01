@@ -17,13 +17,13 @@ use crate::codegen::mir::ty::{MirType, MirTypeTrait};
 impl<'a> WireRustCodecCstGeneratorDecoderTrait for GeneralListWireRustCodecCstGenerator<'a> {
     fn generate_decoder_class(&self) -> Option<WireRustOutputCode> {
         Some(generate_class_from_fields(
-            self.ir.clone(),
+            self.mir.clone(),
             self.context,
             &[
                 format!(
                     "ptr: *mut {}{}",
-                    general_list_maybe_extra_pointer_indirection(&self.ir),
-                    WireRustCodecCstGenerator::new(self.ir.inner.clone(), self.context)
+                    general_list_maybe_extra_pointer_indirection(&self.mir),
+                    WireRustCodecCstGenerator::new(self.mir.inner.clone(), self.context)
                         .rust_wire_type(Target::Io)
                 ),
                 "len: i32".to_string(),
@@ -38,9 +38,9 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for GeneralListWireRustCodecCstGe
     fn generate_allocate_funcs(&self) -> Acc<WireRustOutputCode> {
         Acc {
             io: generate_list_generate_allocate_func(
-                &self.ir.safe_ident(),
-                &self.ir.clone().into(),
-                &self.ir.inner,
+                &self.mir.safe_ident(),
+                &self.mir.clone().into(),
+                &self.mir.inner,
                 self.context,
             )
             .into(),
@@ -49,7 +49,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for GeneralListWireRustCodecCstGe
     }
 
     fn rust_wire_type(&self, target: Target) -> String {
-        rust_wire_type_add_prefix_or_js_value(&self.ir, target)
+        rust_wire_type_add_prefix_or_js_value(&self.mir, target)
     }
 
     fn rust_wire_is_pointer(&self, target: Target) -> bool {

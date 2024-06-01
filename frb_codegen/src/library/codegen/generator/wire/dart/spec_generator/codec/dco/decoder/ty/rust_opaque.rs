@@ -6,7 +6,7 @@ use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartG
 
 impl<'a> WireDartCodecDcoGeneratorDecoderTrait for RustOpaqueWireDartCodecDcoGenerator<'a> {
     fn generate_impl_decode_body(&self) -> String {
-        generalized_rust_opaque_generate_impl_decode_body(self.ir.clone().into(), self.context)
+        generalized_rust_opaque_generate_impl_decode_body(self.mir.clone().into(), self.context)
     }
 }
 

@@ -17,7 +17,7 @@ impl<'a> CodecSseTyTrait for OptionalCodecSseTy<'a> {
                     {};
                 }}
                 ",
-                lang.call_encode(&self.ir.inner, "self"),
+                lang.call_encode(&self.mir.inner, "self"),
             ),
             Lang::RustLang(_) => format!(
                 "
@@ -26,7 +26,7 @@ impl<'a> CodecSseTyTrait for OptionalCodecSseTy<'a> {
                     {};
                 }}
                 ",
-                lang.call_encode(&self.ir.inner, "value"),
+                lang.call_encode(&self.mir.inner, "value"),
             ),
         })
     }
@@ -50,7 +50,7 @@ impl<'a> CodecSseTyTrait for OptionalCodecSseTy<'a> {
             }}
             ",
             lang.call_decode(&Primitive(MirTypePrimitive::Bool)),
-            lang.call_decode(&self.ir.inner),
+            lang.call_decode(&self.mir.inner),
         ))
     }
 }

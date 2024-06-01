@@ -10,7 +10,7 @@ impl<'a> CodecSseTyTrait for BoxedCodecSseTy<'a> {
         self.should_generate(lang).then(|| {
             format!(
                 "{};",
-                lang.call_encode(&self.ir.inner, &format!("{wrapper}self"))
+                lang.call_encode(&self.mir.inner, &format!("{wrapper}self"))
             )
         })
     }
@@ -21,13 +21,13 @@ impl<'a> CodecSseTyTrait for BoxedCodecSseTy<'a> {
             Lang::RustLang(_) => "Box::new",
         };
         self.should_generate(lang)
-            .then(|| format!("return {wrapper}({});", lang.call_decode(&self.ir.inner)))
+            .then(|| format!("return {wrapper}({});", lang.call_decode(&self.mir.inner)))
     }
 }
 
 impl<'a> BoxedCodecSseTy<'a> {
     fn should_generate(&self, lang: &Lang) -> bool {
         // The fake Box is only needed for CST codec, thus here we mostly ignore it.
-        self.ir.exist_in_real_api || matches!(lang, Lang::DartLang(_))
+        self.mir.exist_in_real_api || matches!(lang, Lang::DartLang(_))
     }
 }

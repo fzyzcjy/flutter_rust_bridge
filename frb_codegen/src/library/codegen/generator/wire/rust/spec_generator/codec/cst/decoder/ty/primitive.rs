@@ -9,7 +9,7 @@ use MirTypePrimitive::Unit;
 
 impl<'a> WireRustCodecCstGeneratorDecoderTrait for PrimitiveWireRustCodecCstGenerator<'a> {
     fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
-        match self.ir {
+        match self.mir {
             Unit => Acc::new(|_| None),
             _ => "self".into(),
         }
@@ -17,7 +17,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for PrimitiveWireRustCodecCstGene
 
     fn generate_impl_decode_jsvalue_body(&self) -> Option<std::borrow::Cow<str>> {
         use MirTypePrimitive::*;
-        Some(match &self.ir {
+        Some(match &self.mir {
             Unit => return None,
             Bool => "self.is_truthy()".into(),
             I64 | Isize => "::std::convert::TryInto::<i64>::try_into(self).unwrap() as _".into(),
@@ -28,9 +28,9 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for PrimitiveWireRustCodecCstGene
 
     fn rust_wire_type(&self, target: Target) -> String {
         use MirTypePrimitive::*;
-        if target == Target::Web && matches!(self.ir, I64 | U64 | Isize | Usize) {
+        if target == Target::Web && matches!(self.mir, I64 | U64 | Isize | Usize) {
             return JS_VALUE.into();
         }
-        self.ir.rust_api_type()
+        self.mir.rust_api_type()
     }
 }

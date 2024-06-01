@@ -44,7 +44,7 @@ fn get_potential_struct_or_enum_names(ty: &MirType) -> anyhow::Result<Vec<String
         MirType::RustOpaque(ty) => {
             get_potential_struct_or_enum_names_from_syn_type(&syn::parse_str(&ty.inner.0)?)?
         }
-        MirType::Delegate(MirTypeDelegate::PrimitiveEnum(ty)) => vec![ty.ir.ident.0.name.clone()],
+        MirType::Delegate(MirTypeDelegate::PrimitiveEnum(ty)) => vec![ty.mir.ident.0.name.clone()],
         _ => vec![],
     })
 }

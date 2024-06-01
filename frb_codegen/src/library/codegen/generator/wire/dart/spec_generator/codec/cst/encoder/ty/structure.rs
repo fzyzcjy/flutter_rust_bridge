@@ -28,7 +28,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for StructRefWireDartCodecCstGene
 
 impl<'a> StructRefWireDartCodecCstGenerator<'a> {
     fn new_generalized_generator(&self) -> GeneralizedStructGenerator {
-        GeneralizedStructGenerator::new(self.ir.clone(), self.context, Struct)
+        GeneralizedStructGenerator::new(self.mir.clone(), self.context, Struct)
     }
 }
 
@@ -50,7 +50,7 @@ impl<'a> GeneralizedStructGenerator<'a> {
     pub(crate) fn generate_encode_func_body(&self) -> Acc<Option<String>> {
         Acc {
             web: self.context.config.web_enabled.then(|| {
-                let st = self.ir.get(self.context.mir_pack);
+                let st = self.mir.get(self.context.mir_pack);
                 let values = (st.fields.iter().enumerate())
                     .map(|(index, field)| {
                         format!(
@@ -72,7 +72,7 @@ impl<'a> GeneralizedStructGenerator<'a> {
     }
 
     pub(crate) fn api_fill_to_wire_body(&self) -> Option<String> {
-        let st = self.ir.get(self.context.mir_pack);
+        let st = self.mir.get(self.context.mir_pack);
         Some(
             st.fields
                 .iter()

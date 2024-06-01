@@ -40,7 +40,7 @@ pub(crate) fn parse_auto_accessors(
             .collect_vec(),
     );
 
-    Ok(infos.into_iter().map(|x| x.ir_func).collect_vec())
+    Ok(infos.into_iter().map(|x| x.mir_func).collect_vec())
 }
 
 fn parse_auto_accessors_of_struct(

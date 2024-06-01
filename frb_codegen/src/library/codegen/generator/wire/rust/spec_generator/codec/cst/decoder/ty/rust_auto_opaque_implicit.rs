@@ -14,13 +14,13 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait
 {
     fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
         Acc {
-            io: generate_decode(&self.ir),
+            io: generate_decode(&self.mir),
             ..Default::default()
         }
     }
 
     fn generate_impl_decode_jsvalue_body(&self) -> Option<Cow<str>> {
-        generate_decode(&self.ir).map(Cow::from)
+        generate_decode(&self.mir).map(Cow::from)
     }
 
     fn rust_wire_type(&self, target: Target) -> String {
