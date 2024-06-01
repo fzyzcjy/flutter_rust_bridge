@@ -2,7 +2,7 @@ use crate::codegen::dumper::Dumper;
 use crate::codegen::hir::hierarchical::module::{
     HirModule, HirModuleInfo, HirModuleScope, HirVisibility,
 };
-use crate::codegen::hir_parser::hierarchical::function_extractor::extract_generalized_functions_from_syn_items;
+use crate::codegen::hir_parser::hierarchical::function::parse_generalized_functions;
 use crate::codegen::hir_parser::hierarchical::item_type::parse_syn_item_type;
 use crate::codegen::hir_parser::hierarchical::struct_or_enum::{
     parse_syn_item_enum, parse_syn_item_struct,
@@ -14,7 +14,7 @@ use syn::ItemMod;
 
 pub(crate) fn parse_module(items: &[syn::Item], info: HirModuleInfo) -> anyhow::Result<HirModule> {
     let mut scope = HirModuleScope::default();
-    scope.functions = extract_generalized_functions_from_syn_items(items, &info.namespace)?;
+    scope.functions = parse_generalized_functions(items, &info.namespace)?;
 
     for item in items.iter() {
         parse_syn_item(item, &mut scope, &info.namespace)?;

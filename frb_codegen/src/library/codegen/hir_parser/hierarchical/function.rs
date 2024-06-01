@@ -4,7 +4,7 @@ use crate::if_then_some;
 use itertools::Itertools;
 use syn::{File, ImplItem, Item};
 
-pub(super) fn extract_generalized_functions_from_syn_items(
+pub(super) fn parse_generalized_functions(
     items: &[syn::Item],
     namespace: &Namespace,
 ) -> anyhow::Result<Vec<HirFunction>> {
