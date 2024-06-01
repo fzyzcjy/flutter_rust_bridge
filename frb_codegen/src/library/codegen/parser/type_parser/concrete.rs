@@ -7,7 +7,7 @@ use crate::codegen::mir::ty::delegate::{
     MirTypeDelegateTime,
 };
 use crate::codegen::mir::ty::dynamic::MirTypeDynamic;
-use crate::codegen::mir::ty::general_list::ir_list;
+use crate::codegen::mir::ty::general_list::mir_list;
 use crate::codegen::mir::ty::MirType;
 use crate::codegen::mir::ty::MirType::{Boxed, DartOpaque, Delegate, Dynamic};
 use crate::codegen::parser::type_parser::path_data::extract_path_data;

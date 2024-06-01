@@ -46,7 +46,7 @@ impl<'a> WireDartGeneratorMiscTrait for DartFnWireDartGenerator<'a> {
         let api_impl_body = format!(
             r#"
             Future<void> Function(int, {repeated_dynamics})
-                encode_{ir_safe_ident}({dart_api_type} raw) {{
+                encode_{mir_safe_ident}({dart_api_type} raw) {{
               return (callId, {raw_parameter_names}) async {{
                 {decode_block}
 

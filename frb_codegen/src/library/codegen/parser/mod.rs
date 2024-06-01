@@ -140,8 +140,8 @@ fn compute_skipped_functions(
 //     use crate::codegen::dumper::Dumper;
 //     use crate::codegen::generator::codec::structs::CodecMode;
 //     use crate::codegen::hir::hierarchical::crates::HirCrate;
-//     use crate::codegen::ir::namespace::Namespace;
-//     use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
+//     use crate::codegen::mir::namespace::Namespace;
+//     use crate::codegen::mir::ty::rust_opaque::RustOpaqueCodecMode;
 //     use crate::codegen::misc::GeneratorProgressBarPack;
 //     use crate::codegen::parser::internal_config::ParserInternalConfig;
 //     use crate::codegen::parser::internal_config::RustInputNamespacePack;

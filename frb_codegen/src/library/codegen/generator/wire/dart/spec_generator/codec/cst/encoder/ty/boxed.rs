@@ -26,13 +26,13 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for BoxedWireDartCodecCstGenerato
                     )
                 {
                     format!(
-                        "return wire.cst_new_{ir_safe_ident}(cst_encode_{inner_safe_ident}(raw));"
+                        "return wire.cst_new_{mir_safe_ident}(cst_encode_{inner_safe_ident}(raw));"
                     )
                 } else if self.ir.inner.is_array() {
                     format!("return cst_encode_{inner_safe_ident}(raw);")
                 } else {
                     format!(
-                        "final ptr = wire.cst_new_{ir_safe_ident}();
+                        "final ptr = wire.cst_new_{mir_safe_ident}();
                     {}
                     return ptr;",
                         if empty_struct {
