@@ -79,13 +79,24 @@ fn generate_once(internal_config: &InternalConfig, dumper: &Dumper) -> anyhow::R
 }
 
 // TODO mv
-fn parse(config: &ParserInternalConfig, dumper: &Dumper) -> anyhow::Result<IrPack> {
+fn parse(
+    config: &ParserInternalConfig,
+    dumper: &Dumper,
+    progress_bar_pack: &GeneratorProgressBarPack,
+) -> anyhow::Result<IrPack> {
+    let pb = progress_bar_pack.parse_cargo_expand.start();
     let mut cached_rust_reader = CachedRustReader::default();
     let file = cached_rust_reader.read_rust_crate(config.rust_crate_dir, dumper)?;
+    drop(pb);
 
+    let pb = progress_bar_pack.parse_hir.start();
     let hir_hierarchical = hir_parser::hierarchical::parse(file)?;
-
     let hir_flat = hir_parser::flat::parse(&hir_hierarchical.root_module)?;
+    drop(pb);
 
-    parser::parse(config, &hir_flat)
+    let pb = progress_bar_pack.parse_mir.start();
+    let ir_pack = parser::parse(config, &hir_flat)?;
+    drop(pb);
+
+    Ok(ir_pack)
 }
