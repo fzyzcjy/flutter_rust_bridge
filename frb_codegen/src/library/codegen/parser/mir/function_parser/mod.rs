@@ -20,8 +20,7 @@ use log::{debug, warn};
 use std::fmt::Debug;
 use syn::*;
 use MirType::Primitive;
-use crate::codegen::parser::mir::function_parser::structs::ParseFunctionError;
-use crate::codegen::parser::mir::function_parser::structs::ParseFunctionError::{SkipSinceIgnore, SkipSinceNonPublic};
+use crate::codegen::parser::mir::function_parser::structs::ParseFunctionOutput;
 
 pub(crate) mod argument;
 pub(crate) mod structs;
@@ -45,7 +44,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         force_codec_mode_pack: &Option<CodecModePack>,
         default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
-    ) -> Result<MirFunc, ParseFunctionError> {
+    ) -> ParseFunctionOutput {
         self.parse_function_inner(
             func,
             namespace_naive,
@@ -68,7 +67,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         debug!("parse_function function name: {:?}", func.sig().ident);
 
         if !matches!(func.vis(), Visibility::Public(_)) {
-            return Err(SkipSinceNonPublic);
+            return Ok(ParseFunctionOutput::Skipped);
         }
 
         let sig = func.sig();
@@ -88,13 +87,13 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         {
             owner
         } else {
-            return Err(SkipSinceIgnore);
+            return Ok(ParseFunctionOutput::Skipped);
         };
 
         let func_name = parse_name(sig, &owner);
 
         if attributes.ignore() {
-            return Err(SkipSinceIgnore);
+            return Ok(ParseFunctionOutput::Skipped);
         }
 
         let context = create_context(Some(owner.clone()));
@@ -111,10 +110,10 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let namespace_refined = refine_namespace(&owner).unwrap_or(namespace_naive.clone());
 
         if info.ignore_func {
-            return Err(SkipSinceIgnore);
+            return Ok(ParseFunctionOutput::Skipped);
         }
 
-        Ok(Some(MirFunc {
+        Ok(ParseFunctionOutput::Ok(MirFunc {
             name: NamespacedName::new(namespace_refined, func_name),
             dart_name: attributes.name(),
             id: None, // to be filled later
