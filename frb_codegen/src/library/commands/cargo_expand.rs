@@ -1,4 +1,5 @@
 use crate::codegen::dumper::Dumper;
+use crate::codegen::misc::GenerateSkipper;
 use crate::codegen::ConfigDumpContent;
 use crate::command_args;
 use crate::library::commands::command_runner::execute_command;
@@ -44,13 +45,12 @@ fn run_raw(
 
     let args = command_args!("expand", "--lib", "--theme=none", "--ugly");
 
-    let mut extra_env: HashMap<_, _> = [(
-        "RUSTFLAGS".to_owned(),
-        env::var("RUSTFLAGS").map(|x| x + " ").unwrap_or_default() + extra_rustflags,
-    ),
+    let mut extra_env: HashMap<_, _> = [
         (
-            Skipper
-            )
+            "RUSTFLAGS".to_owned(),
+            env::var("RUSTFLAGS").map(|x| x + " ").unwrap_or_default() + extra_rustflags,
+        ),
+        (GenerateSkipper::ENV_VAR_KEY.to_owned(), "1".to_owned()),
     ]
     .into();
     if let Some(cargo_target_dir) = compute_cargo_target_dir() {
