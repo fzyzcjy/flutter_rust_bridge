@@ -12,7 +12,7 @@ impl CrateName {
     }
 
     pub(crate) fn namespace(&self) -> Namespace {
-        Namespace::new_raw(self.0.to_owned())
+        Namespace::new_raw(self.0.replace('-', "_"))
     }
 
     pub(crate) fn raw(&self) -> &str {
