@@ -161,7 +161,7 @@ mod tests {
             &GeneratorProgressBarPack::new(),
             |hir_hierarchical, _hir_flat| {
                 json_golden_test(
-                    &serde_json::to_value(hir_hierarchical)?,
+                    &serde_json::to_value(hir_hierarchical).unwrap(),
                     &rust_crate_dir.join("expect_source_graph.json"),
                     &create_path_sanitizers(&test_fixture_dir),
                 )
