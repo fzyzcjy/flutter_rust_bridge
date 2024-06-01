@@ -8,6 +8,7 @@ use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
+use crate::codegen::parser::mir::function_parser::structs::ParseFunctionOutput;
 use crate::codegen::parser::mir::type_parser::misc::parse_comments;
 use crate::codegen::parser::mir::type_parser::{
     external_impl, TypeParser, TypeParserParsingContext,
@@ -20,11 +21,10 @@ use log::{debug, warn};
 use std::fmt::Debug;
 use syn::*;
 use MirType::Primitive;
-use crate::codegen::parser::mir::function_parser::structs::ParseFunctionOutput;
 
 pub(crate) mod argument;
-pub(crate) mod structs;
 pub(crate) mod output;
+pub(crate) mod structs;
 mod transformer;
 
 pub(crate) struct FunctionParser<'a, 'b> {
@@ -52,7 +52,13 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             default_stream_sink_codec,
             default_rust_opaque_codec,
         )
-        .with_context(|| format!("function={:?}", func.sig().ident))
+        .unwrap_or_else(|err| {
+            ParseFunctionOutput::Err(format!(
+                "Error when parsing function={:?} error={:?}",
+                func.sig().ident,
+                err
+            ))
+        })
     }
 
     #[allow(clippy::too_many_arguments)]
@@ -63,7 +69,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         force_codec_mode_pack: &Option<CodecModePack>,
         default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
-    ) -> anyhow::Result<MirFunc> {
+    ) -> anyhow::Result<ParseFunctionOutput> {
         debug!("parse_function function name: {:?}", func.sig().ident);
 
         if !matches!(func.vis(), Visibility::Public(_)) {
