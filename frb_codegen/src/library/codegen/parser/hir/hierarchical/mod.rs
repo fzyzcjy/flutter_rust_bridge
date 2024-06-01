@@ -21,7 +21,7 @@ pub(crate) fn parse(
         .map(|(crate_name, syn_file)| {
             Ok((
                 crate_name.to_owned(),
-                parse_crate(config, crate_name, syn_file)?,
+                parse_crate(config, syn_file, crate_name)?,
             ))
         })
         .collect::<anyhow::Result<Vec<_>>>()?
