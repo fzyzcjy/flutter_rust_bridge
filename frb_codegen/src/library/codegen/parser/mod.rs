@@ -20,7 +20,7 @@ use crate::codegen::ir::pack::IrPack;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::codegen::parser::auto_accessor_parser::parse_auto_accessors;
 use crate::codegen::parser::function_extractor::extract_generalized_functions_from_syn_items;
-use crate::codegen::parser::function_extractor::structs::PathAndItemFn;
+use crate::codegen::parser::function_extractor::structs::HirFunction;
 use crate::codegen::parser::function_parser::FunctionParser;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::parser::misc::parse_has_executor;
@@ -93,7 +93,7 @@ pub(crate) fn parse(
 
 fn parse_ir_funcs(
     config: &ParserInternalConfig,
-    src_fns: &[PathAndItemFn],
+    src_fns: &[HirFunction],
     type_parser: &mut TypeParser,
     src_structs: &HashMap<String, &HirStruct>,
 ) -> anyhow::Result<Vec<IrFunc>> {
@@ -154,7 +154,7 @@ fn parse_existing_handlers(
 }
 
 fn compute_skipped_functions(
-    src_fns_skipped: &[PathAndItemFn],
+    src_fns_skipped: &[HirFunction],
     rust_crate_dir: &Path,
 ) -> anyhow::Result<Vec<NamespacedName>> {
     src_fns_skipped

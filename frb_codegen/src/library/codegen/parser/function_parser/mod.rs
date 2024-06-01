@@ -8,7 +8,7 @@ use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
-use crate::codegen::parser::function_extractor::structs::HirFunction;
+use crate::codegen::parser::function_extractor::structs::HirFunctionInner;
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::{external_impl, TypeParser, TypeParserParsingContext};
 use crate::library::codegen::ir::ty::IrTypeTrait;
@@ -36,7 +36,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     #[allow(clippy::too_many_arguments)]
     pub(crate) fn parse_function(
         &mut self,
-        func: &HirFunction,
+        func: &HirFunctionInner,
         file_path: &Path,
         rust_crate_dir: &Path,
         force_codec_mode_pack: &Option<CodecModePack>,
@@ -57,7 +57,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     #[allow(clippy::too_many_arguments)]
     fn parse_function_inner(
         &mut self,
-        func: &HirFunction,
+        func: &HirFunctionInner,
         file_path: &Path,
         rust_crate_dir: &Path,
         force_codec_mode_pack: &Option<CodecModePack>,
@@ -139,13 +139,13 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
     fn parse_owner(
         &mut self,
-        item_fn: &HirFunction,
+        item_fn: &HirFunctionInner,
         context: &TypeParserParsingContext,
         actual_method_dart_name: Option<String>,
     ) -> anyhow::Result<Option<IrFuncOwnerInfo>> {
         Ok(Some(match item_fn {
-            HirFunction::Function { .. } => IrFuncOwnerInfo::Function,
-            HirFunction::Method {
+            HirFunctionInner::Function { .. } => IrFuncOwnerInfo::Function,
+            HirFunctionInner::Method {
                 item_impl,
                 impl_item_fn,
             } => {
