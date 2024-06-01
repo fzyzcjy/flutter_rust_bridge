@@ -1,5 +1,5 @@
 use std::collections::HashMap;
 
-pub(crate) struct HirRawPack<'a> {
+pub(crate) struct HirRawPack {
     pub crates: HashMap<String, syn::File>,
 }
