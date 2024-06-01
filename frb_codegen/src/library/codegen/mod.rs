@@ -79,11 +79,12 @@ fn generate_once(internal_config: &InternalConfig, dumper: &Dumper) -> anyhow::R
 }
 
 // TODO mv
-fn parse() -> anyhow::Result<IrPack> {
-    parser::parse(
-        &internal_config.parser,
-        &mut cached_rust_reader,
-        dumper,
-        &progress_bar_pack,
-    )
+fn parse(cached_rust_reader: &mut CachedRustReader, dumper: &Dumper) -> anyhow::Result<IrPack> {
+    let file = cached_rust_reader.read_rust_crate(rust_crate_dir, dumper)?;
+
+    let hir_hierarchical = hir_parser::hierarchical::parse(file)?;
+
+    let hir_flat = hir_parser::flat::parse(&hir_hierarchical.root_module)?;
+
+    parser::parse(&internal_config.parser, &hir_flat)
 }
