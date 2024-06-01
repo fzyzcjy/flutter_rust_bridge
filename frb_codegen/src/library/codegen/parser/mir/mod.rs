@@ -81,7 +81,7 @@ fn parse_mir_funcs(
 
     let mir_funcs_normal = src_fns
         .iter()
-        .flat_map(|f| {
+        .map(|f| {
             function_parser.parse_function(
                 &f.inner,
                 &f.namespace,
