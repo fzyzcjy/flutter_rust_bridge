@@ -1,9 +1,8 @@
 use crate::codegen::generator::codec::sse::lang::Lang;
-use crate::utils::rust_project_utils::compute_mod_from_rust_crate_path;
 use itertools::Itertools;
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
 use std::fmt::{Display, Formatter};
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 
 /// The Rust files/modules/namespaces.
 #[derive(Debug, Clone, Hash, Eq, PartialEq, Serialize, Deserialize, Ord, PartialOrd, Default)]
