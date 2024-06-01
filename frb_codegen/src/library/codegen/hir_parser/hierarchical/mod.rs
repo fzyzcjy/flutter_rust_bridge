@@ -3,6 +3,7 @@ use crate::codegen::hir::hierarchical::module::{HirModuleInfo, HirVisibility};
 use crate::codegen::hir_parser::hierarchical::module::parse_module;
 use crate::codegen::ir::namespace::Namespace;
 
+pub(crate) mod function_extractor;
 pub(crate) mod item_type;
 pub(crate) mod mirror_ident;
 pub(crate) mod module;
