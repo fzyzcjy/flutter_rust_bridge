@@ -3,10 +3,7 @@ use crate::codegen::ir::hir::raw::HirRawPack;
 use crate::codegen::ir::mir::namespace::Namespace;
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 use crate::library::commands::cargo_expand::run_cargo_expand;
-use crate::library::commands::cargo_metadata::execute_cargo_metadata;
-use cargo_metadata::Metadata;
 use itertools::concat;
-use std::path::PathBuf;
 
 pub(crate) fn parse(
     config: &ParserHirInternalConfig,

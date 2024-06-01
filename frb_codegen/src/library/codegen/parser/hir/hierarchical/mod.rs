@@ -2,9 +2,7 @@ use crate::codegen::ir::hir::hierarchical::crates::HirCrate;
 use crate::codegen::ir::hir::hierarchical::module::{HirModuleMeta, HirVisibility};
 use crate::codegen::ir::hir::hierarchical::pack::HirPack;
 use crate::codegen::ir::hir::raw::HirRawPack;
-use crate::codegen::ir::mir::namespace::Namespace;
 use crate::codegen::parser::hir::hierarchical::crates::parse_crate;
-use crate::codegen::parser::hir::hierarchical::module::parse_module;
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 
 pub(crate) mod crates;
