@@ -35,7 +35,8 @@ pub(crate) fn run_cargo_expand(rust_crate_dir: &Path, dumper: &Dumper) -> Result
         // return Ok(fs::read_to_string(rust_file_path)?);
     }
 
-    let ans = run_with_frb_aware(rust_crate_dir, dumper)?;
+    let ans = real::run(rust_crate_dir, dumper)?;
     dumper.dump_str(ConfigDumpContent::Source, "cargo_expand.rs", &ans)?;
     Ok(ans)
 }
+
