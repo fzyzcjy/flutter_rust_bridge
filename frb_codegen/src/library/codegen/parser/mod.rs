@@ -52,8 +52,7 @@ mod tests {
     use crate::codegen::misc::GeneratorProgressBarPack;
     use crate::codegen::parser::mir::internal_config::RustInputNamespacePack;
     use crate::codegen::parser::mir::reader::read_rust_crate;
-    use crate::codegen::parser::MirPack;
-    use crate::codegen::parser::{hir, parse};
+    use crate::codegen::parser::{hir, parse_inner, MirPack};
     use crate::codegen::ParserInternalConfig;
     use crate::utils::logs::configure_opinionated_test_logging;
     use crate::utils::test_utils::{
@@ -156,23 +155,18 @@ mod tests {
             default_rust_opaque_codec: RustOpaqueCodecMode::Nom,
         };
 
-        // extra test: Hir
-        {
-            let file = read_rust_crate(&config.rust_crate_dir, dumper)?;
-            let hir_hierarchical = hir::hierarchical::parse(config, &file)?;
-            json_golden_test(
-                &serde_json::to_value(hir_hierarchical)?,
-                &rust_crate_dir.join("expect_source_graph.json"),
-                &create_path_sanitizers(&test_fixture_dir),
-            )
-            .unwrap();
-        }
-
-        let pack = parse(
+        let pack = parse_inner(
             &config,
             &Dumper(&Default::default()),
             &GeneratorProgressBarPack::new(),
         )?;
+
+        json_golden_test(
+            &serde_json::to_value(TODO)?,
+            &rust_crate_dir.join("expect_source_graph.json"),
+            &create_path_sanitizers(&test_fixture_dir),
+        )
+        .unwrap();
 
         Ok((pack, rust_crate_dir))
     }
