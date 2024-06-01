@@ -112,8 +112,9 @@ fn generate_end_api_text(
         .sorted_by_key(|(reason, _)| reason)
         .map(|(reason, names)| {
             format!(
-                "// The functions {} are not `pub`, thus are ignored.\n",
-                (item.skipped_functions.iter().map(|x| format!("`{x}`"))).join(", "),
+                "{}: {}",
+                reason.explanation_prefix(),
+                (names.iter().map(|x| format!("`{x}`"))).join(", "),
             )
         })
         .join("");

@@ -12,3 +12,12 @@ pub(crate) enum MirSkipReason {
     Err,
 }
 }
+
+impl MirSkipReason {
+    pub(crate) fn explanation_prefix(&self) -> &'static str {
+        match self {
+            Self::Ignored => "These functions are ignored",
+            Self::Err => "These functions have error during generation (see debug logs for more details)",
+        }
+    }
+}
