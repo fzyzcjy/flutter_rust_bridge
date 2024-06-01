@@ -3,27 +3,42 @@ use crate::codegen::hir::hierarchical::struct_or_enum::{HirEnum, HirStruct, HirS
 use crate::codegen::hir_parser::hierarchical::mirror_ident::{
     parse_mirror_ident, ParseMirrorIdentOutput,
 };
+use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use log::debug;
 use proc_macro2::Ident;
 use syn::{Attribute, ItemEnum, ItemStruct};
 
 pub(crate) fn parse_syn_item_struct(
-    info: &HirModuleInfo,
     item: &ItemStruct,
+    namespace: &Namespace,
 ) -> anyhow::Result<Vec<HirStruct>> {
-    parse_syn_item_struct_or_enum(info, item, &item.ident, &item.attrs, &item.vis, HirStruct)
+    parse_syn_item_struct_or_enum(
+        item,
+        namespace,
+        &item.ident,
+        &item.attrs,
+        &item.vis,
+        HirStruct,
+    )
 }
 
 pub(crate) fn parse_syn_item_enum(
-    info: &HirModuleInfo,
     item: &ItemEnum,
+    namespace: &Namespace,
 ) -> anyhow::Result<Vec<HirEnum>> {
-    parse_syn_item_struct_or_enum(info, item, &item.ident, &item.attrs, &item.vis, HirEnum)
+    parse_syn_item_struct_or_enum(
+        item,
+        namespace,
+        &item.ident,
+        &item.attrs,
+        &item.vis,
+        HirEnum,
+    )
 }
 
 fn parse_syn_item_struct_or_enum<I: Clone, F, T>(
-    info: &HirModuleInfo,
     item: &I,
+    namespace: &Namespace,
     item_ident: &Ident,
     item_attrs: &[Attribute],
     item_vis: &syn::Visibility,
@@ -43,12 +58,8 @@ where
             constructor(HirStructOrEnum {
                 ident,
                 src: item.clone(),
-                visibility: HirVisibility::from_syn(item_vis),
-                path: {
-                    let mut path = info.module_path.clone();
-                    path.push(ident_str);
-                    path
-                },
+                visibility: item_vis.into(),
+                namespaced_name: NamespacedName::new(namespace.to_owned(), ident_str),
                 mirror,
             })
         })
