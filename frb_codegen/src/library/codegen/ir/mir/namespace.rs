@@ -79,19 +79,21 @@ impl Namespace {
 
     pub fn strip_prefix(&self, prefix: &Namespace) -> Self {
         Self::new(
-            self.path()
-                .strip_prefix(&prefix.path())
-                .unwrap()
-                .iter()
-                .map(|x| x.to_string())
-                .collect(),
+            (self.path().into_iter().map(ToString::to_string).collect_vec())
+                .strip_prefix(&prefix.path().into_iter().map(ToString::to_string).collect_vec()[..])
+                .unwrap().to_vec(),
         )
     }
 
     pub fn compute_common_prefix(namespaces: &[&Namespace]) -> Self {
         let paths = namespaces.iter().map(|x| x.path()).collect_vec();
         let prefix_len = vec_common_prefix(&paths);
-        Self::new(paths[0][..prefix_len].iter().map(|x|x.to_string()).collect_vec())
+        Self::new(
+            paths[0][..prefix_len]
+                .iter()
+                .map(|x| x.to_string())
+                .collect_vec(),
+        )
     }
 }
 
