@@ -7,6 +7,5 @@ use std::path::PathBuf;
 #[derive(Debug, Clone, serde::Serialize)]
 pub struct Crate {
     pub(crate) name: String,
-    pub(crate) manifest_path: PathBuf,
     pub(crate) root_module: Module,
 }
