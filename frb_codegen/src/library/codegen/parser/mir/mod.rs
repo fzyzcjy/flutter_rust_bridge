@@ -81,7 +81,7 @@ fn parse_mir_funcs(
 ) -> anyhow::Result<Vec<MirFunc>> {
     let mut function_parser = FunctionParser::new(type_parser);
 
-    let (mir_funcs_normal, mir_funcs_skipped): (Vec<_>, Vec<_>) = src_fns
+    let (mir_funcs_normal, mir_skips): (Vec<_>, Vec<_>) = src_fns
         .iter()
         .map(|f| {
             function_parser.parse_function(
@@ -94,7 +94,7 @@ fn parse_mir_funcs(
         })
         .partition(|item| matches!(item, ParseFunctionOutput::Ok(_)));
     let mir_funcs_normal = mir_funcs_normal.into_iter().map(|x| x.ok()).collect_vec();
-    let mir_funcs_skipped = (mir_funcs_skipped.into_iter())
+    let mir_skips = (mir_skips.into_iter())
         .map(|x| x.skip())
         .collect_vec();
 
