@@ -18,7 +18,7 @@ pub struct Namespace {
 impl Namespace {
     const SEP: &'static str = "::";
     pub(crate) const SELF_CRATE: &'static str = "crate";
-    pub(crate) const SELF_CRATE_TYPED: CrateName = CrateName::new(Self::SELF_CRATE.to_string());
+    pub(crate) const SELF_CRATE_TYPED: CrateName = CrateName::new(String::from(Self::SELF_CRATE));
 
     pub fn new(path: Vec<String>) -> Self {
         assert!((path.iter()).all(|item| !item.contains(Self::SEP)));
