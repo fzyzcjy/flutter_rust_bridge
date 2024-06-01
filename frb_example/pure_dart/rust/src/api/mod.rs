@@ -50,4 +50,4 @@ pub mod tuple;
 pub mod type_alias;
 pub mod uuid_type;
 
-pub fn this_function_should_be_ignored() {}
+pub fn function_at_api_mod_rs() {}

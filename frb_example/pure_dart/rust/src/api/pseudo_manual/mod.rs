@@ -199,4 +199,4 @@ pub mod uuid_type_twin_sse;
 pub mod uuid_type_twin_sync;
 pub mod uuid_type_twin_sync_sse;
 
-pub fn this_function_should_be_ignored() {}
+pub fn function_at_api_mod_rs() {}
