@@ -38,7 +38,7 @@ pub(crate) fn parse(
         hir_flat_crate.types.clone(),
     );
 
-    let mir_funcs = parse_mir_funcs(
+    let (mir_funcs, mir_skips) = parse_mir_funcs(
         config,
         &hir_flat_crate.functions,
         &mut type_parser,
@@ -59,7 +59,7 @@ pub(crate) fn parse(
         dart_code_of_type,
         existing_handler: existing_handlers.first().cloned(),
         unused_types: vec![],
-        skipped_functions: compute_skipped_functions(&src_fns_skipped)?,
+        skipped_functions: mir_skips,
     };
 
     ans.unused_types = get_unused_types(
