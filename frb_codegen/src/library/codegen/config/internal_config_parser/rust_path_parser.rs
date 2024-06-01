@@ -20,17 +20,17 @@ pub(super) fn compute_rust_input_info(
     base_dir: &Path,
 ) -> anyhow::Result<RustInputInfo> {
     let rust_input_namespace_prefices_raw =
-        compute_rust_input_namespace_prefices_raw(&migrated_rust_input.rust_input);
+        compute_rust_input_namespace_prefixes_raw(&migrated_rust_input.rust_input);
 
     Ok(RustInputInfo {
         rust_crate_dir: compute_rust_crate_dir(base_dir, &migrated_rust_input.rust_root)?,
         rust_input_namespace_pack: RustInputNamespacePack {
-            rust_input_namespace_prefices: TODO,
+            rust_input_namespace_prefixes: TODO,
         }?,
     })
 }
 
-fn compute_rust_input_namespace_prefices_raw(raw_rust_input: &str) -> Vec<Namespace> {
+fn compute_rust_input_namespace_prefixes_raw(raw_rust_input: &str) -> Vec<Namespace> {
     raw_rust_input
         .split(',')
         .map(|s| Namespace::new_raw(s.to_owned()))

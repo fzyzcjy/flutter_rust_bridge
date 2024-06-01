@@ -80,7 +80,7 @@ mod tests {
         body(
             "library/codegen/parser/mod/multi_input_file",
             Some(Box::new(|_rust_crate_dir| RustInputNamespacePack {
-                rust_input_namespace_prefices: vec![
+                rust_input_namespace_prefixes: vec![
                     Namespace::new_self_crate("api_one".to_owned()),
                     Namespace::new_self_crate("api_two".to_owned()),
                 ],
@@ -146,7 +146,7 @@ mod tests {
         let rust_input_namespace_pack = rust_input_namespace_pack
             .map(|f| f(&rust_crate_dir))
             .unwrap_or(RustInputNamespacePack {
-                rust_input_namespace_prefices: vec![Namespace::new_self_crate("api".to_owned())],
+                rust_input_namespace_prefixes: vec![Namespace::new_self_crate("api".to_owned())],
             });
 
         let config = ParserInternalConfig {
