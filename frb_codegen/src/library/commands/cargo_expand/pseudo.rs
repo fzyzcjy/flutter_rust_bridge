@@ -33,5 +33,11 @@ fn modify_file(file: &mut syn::File) -> anyhow::Result<()> {
 
 fn modify_mod(item_mod: &mut syn::ItemMod) -> anyhow::Result<()> {
     ensure!(item_mod.content.is_none() && item_mod.semi.is_some());
-    TODO
+
+    let mod_syn_file = parse_file(TODO)?;
+
+    item_mod.semi = None;
+    item_mod.content = Some(syn::token::Brace::default(), mod_syn_file.items);
+
+    Ok(())
 }
