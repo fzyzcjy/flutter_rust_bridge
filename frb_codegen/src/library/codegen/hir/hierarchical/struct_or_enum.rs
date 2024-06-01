@@ -1,5 +1,5 @@
 use crate::codegen::hir::hierarchical::module::HirVisibility;
-use crate::codegen::ir::namespace::Namespace;
+use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use derivative::Derivative;
 use proc_macro2::Ident;
 use quote::ToTokens;
@@ -18,18 +18,10 @@ pub struct HirStructOrEnum<Item> {
     #[serde(skip_serializing)]
     pub(crate) src: Item,
     pub(crate) visibility: HirVisibility,
-    pub(crate) path: Vec<String>,
+    pub(crate) namespaced_name: NamespacedName,
     pub(crate) mirror: bool,
 }
 // frb-coverage:ignore-end
-
-impl<Item> HirStructOrEnum<Item> {
-    pub(crate) fn namespace(&self) -> Namespace {
-        let mut p = self.path.clone();
-        p.pop();
-        Namespace::new(p)
-    }
-}
 
 #[derive(Clone, Debug, Serialize)]
 pub struct HirStruct(pub HirStructOrEnum<ItemStruct>);
