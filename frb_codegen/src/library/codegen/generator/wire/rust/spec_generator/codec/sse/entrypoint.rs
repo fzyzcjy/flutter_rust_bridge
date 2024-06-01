@@ -10,10 +10,10 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::base::{
 };
 use crate::codegen::generator::wire::rust::spec_generator::codec::sse::body::generate_encode_or_decode;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFuncParam;
-use crate::codegen::mir::func::{MirFunc, MirFuncMode};
-use crate::codegen::mir::ty::MirType;
+use crate::codegen::ir::mir::func::{MirFunc, MirFuncMode};
+use crate::codegen::ir::mir::ty::MirType;
 use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
-use crate::library::codegen::mir::ty::MirTypeTrait;
+use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use itertools::Itertools;
 
 pub(crate) struct SseWireRustCodecEntrypoint;

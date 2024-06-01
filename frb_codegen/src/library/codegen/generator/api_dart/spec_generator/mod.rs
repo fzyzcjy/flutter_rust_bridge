@@ -8,13 +8,13 @@ use crate::codegen::generator::api_dart::spec_generator::dump::generate_dump_inf
 use crate::codegen::generator::api_dart::spec_generator::function::ApiDartGeneratedFunction;
 use crate::codegen::generator::api_dart::spec_generator::misc::generate_imports_which_types_and_funcs_use;
 use crate::codegen::generator::api_dart::spec_generator::sanity_checker::sanity_check_class_name_duplicates;
-use crate::codegen::mir::func::{MirFunc, MirFuncOwnerInfo};
-use crate::codegen::mir::namespace::Namespace;
-use crate::codegen::mir::pack::{MirPack, MirPackComputedCache};
-use crate::codegen::mir::ty::MirType;
+use crate::codegen::ir::mir::func::{MirFunc, MirFuncOwnerInfo};
+use crate::codegen::ir::mir::namespace::Namespace;
+use crate::codegen::ir::mir::pack::{MirPack, MirPackComputedCache};
+use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ConfigDumpContent;
 use crate::library::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
-use crate::library::codegen::mir::ty::MirTypeTrait;
+use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::basic_code::DartBasicHeaderCode;
 use anyhow::Result;
 use itertools::Itertools;

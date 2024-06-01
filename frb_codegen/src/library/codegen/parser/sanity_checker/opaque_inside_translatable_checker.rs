@@ -1,8 +1,8 @@
-use crate::codegen::mir::field::MirField;
-use crate::codegen::mir::pack::MirPack;
-use crate::codegen::mir::ty::enumeration::MirVariantKind;
-use crate::codegen::mir::ty::structure::MirStruct;
-use crate::codegen::mir::ty::MirType;
+use crate::codegen::ir::mir::field::MirField;
+use crate::codegen::ir::mir::pack::MirPack;
+use crate::codegen::ir::mir::ty::enumeration::MirVariantKind;
+use crate::codegen::ir::mir::ty::structure::MirStruct;
+use crate::codegen::ir::mir::ty::MirType;
 use itertools::Itertools;
 use log::info;
 

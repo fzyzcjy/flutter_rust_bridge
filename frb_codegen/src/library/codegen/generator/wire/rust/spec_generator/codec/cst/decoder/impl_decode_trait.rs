@@ -6,9 +6,9 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::{
     WireRustCodecCstGenerator, WireRustCodecCstGeneratorContext,
 };
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
-use crate::codegen::mir::ty::MirType;
+use crate::codegen::ir::mir::ty::MirType;
 use crate::library::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
-use crate::library::codegen::mir::ty::MirTypeTrait;
+use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 
 pub(crate) fn generate_impl_decode(
     types: &[MirType],

@@ -1,4 +1,4 @@
-use crate::codegen::mir::ty::MirType;
+use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::type_parser::misc::convert_ident_str;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use anyhow::Context;

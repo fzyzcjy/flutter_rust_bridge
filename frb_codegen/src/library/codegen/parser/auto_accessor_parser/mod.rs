@@ -1,11 +1,11 @@
 mod field;
 
 use crate::codegen::generator::codec::structs::CodecMode;
-use crate::codegen::hir::hierarchical::struct_or_enum::HirStruct;
-use crate::codegen::mir::func::{MirFunc, MirFuncAccessorMode};
-use crate::codegen::mir::namespace::NamespacedName;
-use crate::codegen::mir::ty::rust_opaque::RustOpaqueCodecMode;
-use crate::codegen::mir::ty::{MirContext, MirType};
+use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStruct;
+use crate::codegen::ir::mir::func::{MirFunc, MirFuncAccessorMode};
+use crate::codegen::ir::mir::namespace::NamespacedName;
+use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
+use crate::codegen::ir::mir::ty::{MirContext, MirType};
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::parser::misc::extract_src_types_in_paths;

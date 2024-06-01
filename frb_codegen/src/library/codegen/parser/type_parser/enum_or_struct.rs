@@ -1,10 +1,10 @@
-use crate::codegen::hir::hierarchical::struct_or_enum::HirStructOrEnumWrapper;
-use crate::codegen::mir::namespace::{Namespace, NamespacedName};
-use crate::codegen::mir::ty::MirType;
+use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStructOrEnumWrapper;
+use crate::codegen::ir::mir::namespace::{Namespace, NamespacedName};
+use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::type_parser::external_impl;
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
-use crate::library::codegen::mir::ty::MirTypeTrait;
+use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use log::debug;
 use std::collections::{HashMap, HashSet};
 use std::fmt::Debug;

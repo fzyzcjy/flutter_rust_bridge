@@ -4,7 +4,7 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::dco::base::{
     WireRustCodecDcoGenerator, WireRustCodecDcoGeneratorContext,
 };
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
-use crate::codegen::mir::ty::MirType;
+use crate::codegen::ir::mir::ty::MirType;
 use crate::library::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::ty::WireRustCodecDcoGeneratorEncoderTrait;
 
 mod misc;

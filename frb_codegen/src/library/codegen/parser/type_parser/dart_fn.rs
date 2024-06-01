@@ -1,7 +1,7 @@
-use crate::codegen::mir::ty::dart_fn::MirDartFnOutput;
-use crate::codegen::mir::ty::dart_fn::MirTypeDartFn;
-use crate::codegen::mir::ty::delegate::MirTypeDelegate;
-use crate::codegen::mir::ty::MirType;
+use crate::codegen::ir::mir::ty::dart_fn::MirDartFnOutput;
+use crate::codegen::ir::mir::ty::dart_fn::MirTypeDartFn;
+use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
+use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::type_parser::result::{parse_type_maybe_result, ResultTypeInfo};
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use crate::if_then_some;

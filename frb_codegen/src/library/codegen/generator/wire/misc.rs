@@ -1,4 +1,4 @@
-use crate::codegen::mir::func::MirFuncMode;
+use crate::codegen::ir::mir::func::MirFuncMode;
 
 // This is related to the specific `wire` implementation, thus put in `wire` module,
 // instead of the `ir` module.

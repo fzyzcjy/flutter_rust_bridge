@@ -6,7 +6,7 @@ use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
     ExternClass, ExternClassMode,
 };
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
-use crate::codegen::mir::ty::{MirType, MirTypeTrait};
+use crate::codegen::ir::mir::ty::{MirType, MirTypeTrait};
 use crate::library::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 
 pub(crate) fn generate_class_from_fields(

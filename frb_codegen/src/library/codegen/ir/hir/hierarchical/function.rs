@@ -1,4 +1,4 @@
-use crate::codegen::mir::namespace::Namespace;
+use crate::codegen::ir::mir::namespace::Namespace;
 use proc_macro2::Span;
 use serde::Serialize;
 use std::path::PathBuf;

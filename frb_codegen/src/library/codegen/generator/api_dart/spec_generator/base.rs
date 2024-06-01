@@ -1,5 +1,5 @@
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
-use crate::codegen::mir::ty::MirType::*;
+use crate::codegen::ir::mir::ty::MirType::*;
 use crate::codegen_generator_structs;
 use enum_dispatch::enum_dispatch;
 

@@ -1,10 +1,10 @@
-use crate::codegen::hir::hierarchical::struct_or_enum::HirStruct;
-use crate::codegen::mir::field::{MirField, MirFieldSettings};
-use crate::codegen::mir::ident::MirIdent;
-use crate::codegen::mir::namespace::{Namespace, NamespacedName};
-use crate::codegen::mir::ty::structure::{MirStruct, MirStructIdent, MirTypeStructRef};
-use crate::codegen::mir::ty::MirType;
-use crate::codegen::mir::ty::MirType::StructRef;
+use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStruct;
+use crate::codegen::ir::mir::field::{MirField, MirFieldSettings};
+use crate::codegen::ir::mir::ident::MirIdent;
+use crate::codegen::ir::mir::namespace::{Namespace, NamespacedName};
+use crate::codegen::ir::mir::ty::structure::{MirStruct, MirStructIdent, MirTypeStructRef};
+use crate::codegen::ir::mir::ty::MirType;
+use crate::codegen::ir::mir::ty::MirType::StructRef;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::type_parser::enum_or_struct::{
     EnumOrStructParser, EnumOrStructParserInfo,

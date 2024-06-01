@@ -1,6 +1,6 @@
-use crate::codegen::hir::hierarchical::function::HirFunction;
-use crate::codegen::hir::hierarchical::module::HirModule;
-use crate::codegen::hir::hierarchical::struct_or_enum::{HirEnum, HirStruct};
+use crate::codegen::ir::hir::hierarchical::function::HirFunction;
+use crate::codegen::ir::hir::hierarchical::module::HirModule;
+use crate::codegen::ir::hir::hierarchical::struct_or_enum::{HirEnum, HirStruct};
 use std::collections::HashMap;
 use syn::Type;
 

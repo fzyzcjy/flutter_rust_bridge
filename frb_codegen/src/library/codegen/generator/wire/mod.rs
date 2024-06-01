@@ -10,7 +10,7 @@ use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::misc::PathTexts;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
-use crate::codegen::mir::pack::MirPack;
+use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use anyhow::Result;
 use itertools::Itertools;

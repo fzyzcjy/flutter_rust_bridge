@@ -1,15 +1,15 @@
 use crate::codegen::generator::codec::structs::CodecMode;
-use crate::codegen::mir::func::MirFuncOwnerInfo;
-use crate::codegen::mir::ty::boxed::MirTypeBoxed;
-use crate::codegen::mir::ty::dart_opaque::MirTypeDartOpaque;
-use crate::codegen::mir::ty::delegate::{
+use crate::codegen::ir::mir::func::MirFuncOwnerInfo;
+use crate::codegen::ir::mir::ty::boxed::MirTypeBoxed;
+use crate::codegen::ir::mir::ty::dart_opaque::MirTypeDartOpaque;
+use crate::codegen::ir::mir::ty::delegate::{
     MirTypeDelegate, MirTypeDelegateMap, MirTypeDelegateSet, MirTypeDelegateStreamSink,
     MirTypeDelegateTime,
 };
-use crate::codegen::mir::ty::dynamic::MirTypeDynamic;
-use crate::codegen::mir::ty::general_list::mir_list;
-use crate::codegen::mir::ty::MirType;
-use crate::codegen::mir::ty::MirType::{Boxed, DartOpaque, Delegate, Dynamic};
+use crate::codegen::ir::mir::ty::dynamic::MirTypeDynamic;
+use crate::codegen::ir::mir::ty::general_list::mir_list;
+use crate::codegen::ir::mir::ty::MirType;
+use crate::codegen::ir::mir::ty::MirType::{Boxed, DartOpaque, Delegate, Dynamic};
 use crate::codegen::parser::type_parser::path_data::extract_path_data;
 use crate::codegen::parser::type_parser::unencodable::{splay_segments, SplayedSegment};
 use crate::codegen::parser::type_parser::TypeParserWithContext;

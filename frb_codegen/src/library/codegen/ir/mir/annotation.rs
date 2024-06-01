@@ -1,4 +1,4 @@
-use crate::codegen::mir::import::MirDartImport;
+use crate::codegen::ir::mir::import::MirDartImport;
 
 crate::mir! {
 pub struct MirDartAnnotation {

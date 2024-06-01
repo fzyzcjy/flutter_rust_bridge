@@ -6,8 +6,8 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::
     generate_impl_into_dart, generate_impl_into_into_dart,
 };
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::ty::WireRustCodecDcoGeneratorEncoderTrait;
-use crate::codegen::mir::namespace::NamespacedName;
-use crate::codegen::mir::ty::enumeration::MirTypeEnumRef;
+use crate::codegen::ir::mir::namespace::NamespacedName;
+use crate::codegen::ir::mir::ty::enumeration::MirTypeEnumRef;
 use itertools::Itertools;
 
 impl<'a> WireRustCodecDcoGeneratorEncoderTrait for EnumRefWireRustCodecDcoGenerator<'a> {

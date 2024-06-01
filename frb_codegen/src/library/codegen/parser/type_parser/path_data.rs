@@ -1,4 +1,4 @@
-use crate::codegen::mir::ty::rust_opaque::NameComponent;
+use crate::codegen::ir::mir::ty::rust_opaque::NameComponent;
 use crate::if_then_some;
 use anyhow::Result;
 use syn::{

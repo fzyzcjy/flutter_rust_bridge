@@ -1,10 +1,10 @@
-use crate::codegen::mir::field::{MirField, MirFieldSettings};
-use crate::codegen::mir::func::{MirFuncInput, MirFuncOwnerInfo};
-use crate::codegen::mir::func::{MirFuncOwnerInfoMethod, OwnershipMode};
-use crate::codegen::mir::ident::MirIdent;
-use crate::codegen::mir::ty::boxed::MirTypeBoxed;
-use crate::codegen::mir::ty::MirType;
-use crate::codegen::mir::ty::MirType::Boxed;
+use crate::codegen::ir::mir::field::{MirField, MirFieldSettings};
+use crate::codegen::ir::mir::func::{MirFuncInput, MirFuncOwnerInfo};
+use crate::codegen::ir::mir::func::{MirFuncOwnerInfoMethod, OwnershipMode};
+use crate::codegen::ir::mir::ident::MirIdent;
+use crate::codegen::ir::mir::ty::boxed::MirTypeBoxed;
+use crate::codegen::ir::mir::ty::MirType;
+use crate::codegen::ir::mir::ty::MirType::Boxed;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::function_parser::{FunctionParser, FunctionPartialInfo};
 use crate::codegen::parser::type_parser::misc::parse_comments;

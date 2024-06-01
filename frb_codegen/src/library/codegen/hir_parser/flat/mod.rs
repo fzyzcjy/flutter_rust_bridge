@@ -1,9 +1,9 @@
-use crate::codegen::hir::flat::HirFlatCrate;
-use crate::codegen::hir::hierarchical::function::HirFunction;
-use crate::codegen::hir::hierarchical::module::HirModule;
-use crate::codegen::hir::hierarchical::struct_or_enum::HirEnum;
-use crate::codegen::hir::hierarchical::struct_or_enum::HirStruct;
 use crate::codegen::hir_parser::flat::type_alias_resolver::resolve_type_aliases;
+use crate::codegen::ir::hir::flat::HirFlatCrate;
+use crate::codegen::ir::hir::hierarchical::function::HirFunction;
+use crate::codegen::ir::hir::hierarchical::module::HirModule;
+use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirEnum;
+use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStruct;
 use itertools::Itertools;
 use log::debug;
 use std::collections::HashMap;

@@ -1,7 +1,7 @@
-use crate::codegen::mir::ty::delegate::MirTypeDelegate;
-use crate::codegen::mir::ty::optional::MirTypeOptional;
-use crate::codegen::mir::ty::MirType;
-use crate::codegen::mir::ty::MirType::{
+use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
+use crate::codegen::ir::mir::ty::optional::MirTypeOptional;
+use crate::codegen::ir::mir::ty::MirType;
+use crate::codegen::ir::mir::ty::MirType::{
     Boxed, DartFn, DartOpaque, Delegate, Dynamic, EnumRef, GeneralList, Optional, Primitive,
     PrimitiveList, Record, RustAutoOpaqueImplicit, RustOpaque, StructRef,
 };

@@ -9,8 +9,8 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::pde::entrypoin
 use crate::codegen::generator::wire::rust::spec_generator::codec::sse::entrypoint::SseWireRustCodecEntrypoint;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFuncParam;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
-use crate::codegen::mir::func::MirFunc;
-use crate::codegen::mir::pack::MirPackComputedCache;
+use crate::codegen::ir::mir::func::MirFunc;
+use crate::codegen::ir::mir::pack::MirPackComputedCache;
 use crate::codegen_codec_structs;
 use serde::Serialize;
 use strum::IntoEnumIterator;

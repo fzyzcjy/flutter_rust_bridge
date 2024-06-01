@@ -1,9 +1,9 @@
 use super::rust_opaque::RUST_OPAQUE_AS_PRIMITIVE;
-use crate::codegen::mir::func::OwnershipMode;
-use crate::codegen::mir::namespace::Namespace;
-use crate::codegen::mir::ty::primitive::MirTypePrimitive;
-use crate::codegen::mir::ty::rust_opaque::{MirTypeRustOpaque, NameComponent};
-use crate::codegen::mir::ty::{MirContext, MirType, MirTypeTrait};
+use crate::codegen::ir::mir::func::OwnershipMode;
+use crate::codegen::ir::mir::namespace::Namespace;
+use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+use crate::codegen::ir::mir::ty::rust_opaque::{MirTypeRustOpaque, NameComponent};
+use crate::codegen::ir::mir::ty::{MirContext, MirType, MirTypeTrait};
 
 crate::mir! {
 pub struct MirTypeRustAutoOpaqueImplicit {

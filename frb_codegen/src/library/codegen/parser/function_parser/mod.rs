@@ -1,17 +1,17 @@
 use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
-use crate::codegen::hir::hierarchical::function::HirFunctionInner;
-use crate::codegen::mir::func::{
+use crate::codegen::ir::hir::hierarchical::function::HirFunctionInner;
+use crate::codegen::ir::mir::func::{
     MirFunc, MirFuncArgMode, MirFuncInput, MirFuncMode, MirFuncOutput, MirFuncOwnerInfo,
     MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
 };
-use crate::codegen::mir::namespace::{Namespace, NamespacedName};
-use crate::codegen::mir::ty::primitive::MirTypePrimitive;
-use crate::codegen::mir::ty::rust_opaque::RustOpaqueCodecMode;
-use crate::codegen::mir::ty::MirType;
+use crate::codegen::ir::mir::namespace::{Namespace, NamespacedName};
+use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
+use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::{external_impl, TypeParser, TypeParserParsingContext};
-use crate::library::codegen::mir::ty::MirTypeTrait;
+use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use anyhow::{bail, Context};
 use itertools::concat;
 use log::{debug, warn};

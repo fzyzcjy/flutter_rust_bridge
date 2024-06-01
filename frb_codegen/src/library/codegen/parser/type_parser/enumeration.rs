@@ -1,16 +1,16 @@
-use crate::codegen::hir::hierarchical::struct_or_enum::HirEnum;
-use crate::codegen::mir::field::{MirField, MirFieldSettings};
-use crate::codegen::mir::ident::MirIdent;
-use crate::codegen::mir::namespace::{Namespace, NamespacedName};
-use crate::codegen::mir::ty::boxed::MirTypeBoxed;
-use crate::codegen::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegatePrimitiveEnum};
-use crate::codegen::mir::ty::enumeration::{
+use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirEnum;
+use crate::codegen::ir::mir::field::{MirField, MirFieldSettings};
+use crate::codegen::ir::mir::ident::MirIdent;
+use crate::codegen::ir::mir::namespace::{Namespace, NamespacedName};
+use crate::codegen::ir::mir::ty::boxed::MirTypeBoxed;
+use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegatePrimitiveEnum};
+use crate::codegen::ir::mir::ty::enumeration::{
     MirEnum, MirEnumIdent, MirEnumMode, MirTypeEnumRef, MirVariant, MirVariantKind,
 };
-use crate::codegen::mir::ty::primitive::MirTypePrimitive;
-use crate::codegen::mir::ty::structure::MirStruct;
-use crate::codegen::mir::ty::MirType;
-use crate::codegen::mir::ty::MirType::{Delegate, EnumRef};
+use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+use crate::codegen::ir::mir::ty::structure::MirStruct;
+use crate::codegen::ir::mir::ty::MirType;
+use crate::codegen::ir::mir::ty::MirType::{Delegate, EnumRef};
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::type_parser::enum_or_struct::{
     EnumOrStructParser, EnumOrStructParserInfo,

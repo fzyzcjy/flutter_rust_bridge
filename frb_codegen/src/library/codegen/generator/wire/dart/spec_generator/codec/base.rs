@@ -8,8 +8,8 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::dco::entrypoin
 use crate::codegen::generator::wire::dart::spec_generator::codec::pde::entrypoint::PdeWireDartCodecEntrypoint;
 use crate::codegen::generator::wire::dart::spec_generator::codec::sse::entrypoint::SseWireDartCodecEntrypoint;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
-use crate::codegen::mir::func::MirFunc;
-use crate::codegen::mir::pack::MirPackComputedCache;
+use crate::codegen::ir::mir::func::MirFunc;
+use crate::codegen::ir::mir::pack::MirPackComputedCache;
 use crate::codegen_codec_structs;
 use serde::Serialize;
 use strum::IntoEnumIterator;

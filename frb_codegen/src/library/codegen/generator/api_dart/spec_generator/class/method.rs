@@ -3,11 +3,11 @@ use crate::codegen::generator::api_dart::spec_generator::function::{
     compute_params_str, ApiDartGeneratedFunction, ApiDartGeneratedFunctionParam,
 };
 use crate::codegen::generator::api_dart::spec_generator::misc::generate_dart_comments;
-use crate::codegen::mir::func::{
+use crate::codegen::ir::mir::func::{
     MirFunc, MirFuncAccessorMode, MirFuncArgMode, MirFuncDefaultConstructorMode, MirFuncOwnerInfo,
     MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
 };
-use crate::codegen::mir::namespace::NamespacedName;
+use crate::codegen::ir::mir::namespace::NamespacedName;
 use crate::if_then_some;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use convert_case::{Case, Casing};

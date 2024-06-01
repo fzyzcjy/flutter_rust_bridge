@@ -5,11 +5,11 @@ use crate::codegen::generator::api_dart::spec_generator::class::field::generate_
 use crate::codegen::generator::api_dart::spec_generator::misc::{
     generate_dart_comments, generate_imports_which_types_and_funcs_use,
 };
-use crate::codegen::mir::field::MirField;
-use crate::codegen::mir::func::{MirFunc, MirFuncArgMode, MirFuncMode};
-use crate::codegen::mir::namespace::Namespace;
-use crate::codegen::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegateStreamSink};
-use crate::codegen::mir::ty::MirType;
+use crate::codegen::ir::mir::field::MirField;
+use crate::codegen::ir::mir::func::{MirFunc, MirFuncArgMode, MirFuncMode};
+use crate::codegen::ir::mir::namespace::Namespace;
+use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegateStreamSink};
+use crate::codegen::ir::mir::ty::MirType;
 use crate::if_then_some;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::utils::basic_code::DartBasicHeaderCode;

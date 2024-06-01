@@ -1,12 +1,12 @@
-use crate::codegen::mir::func::OwnershipMode;
-use crate::codegen::mir::namespace::Namespace;
-use crate::codegen::mir::ty::rust_auto_opaque_implicit::{
+use crate::codegen::ir::mir::func::OwnershipMode;
+use crate::codegen::ir::mir::namespace::Namespace;
+use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::{
     MirRustAutoOpaqueRaw, MirTypeRustAutoOpaqueImplicit,
 };
-use crate::codegen::mir::ty::rust_opaque::{
+use crate::codegen::ir::mir::ty::rust_opaque::{
     MirRustOpaqueInner, MirTypeRustOpaque, RustOpaqueCodecMode,
 };
-use crate::codegen::mir::ty::{MirType, MirTypeTrait};
+use crate::codegen::ir::mir::ty::{MirType, MirTypeTrait};
 use crate::codegen::parser::type_parser::external_impl;
 use crate::codegen::parser::type_parser::path_data::extract_path_data;
 use crate::codegen::parser::type_parser::rust_opaque::{

@@ -1,8 +1,8 @@
-use crate::codegen::hir::hierarchical::function::HirFunction;
-use crate::codegen::hir::hierarchical::struct_or_enum::HirEnum;
-use crate::codegen::hir::hierarchical::struct_or_enum::HirStruct;
-use crate::codegen::hir::hierarchical::type_alias::HirTypeAlias;
-use crate::codegen::mir::namespace::Namespace;
+use crate::codegen::ir::hir::hierarchical::function::HirFunction;
+use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirEnum;
+use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStruct;
+use crate::codegen::ir::hir::hierarchical::type_alias::HirTypeAlias;
+use crate::codegen::ir::mir::namespace::Namespace;
 use derivative::Derivative;
 use serde::Serialize;
 use std::path::PathBuf;

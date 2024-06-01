@@ -4,9 +4,9 @@ use crate::codegen::generator::wire::rust::spec_generator::extern_func::{ExternC
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
-use crate::codegen::mir::ident::MirIdent;
-use crate::codegen::mir::ty::enumeration::{MirEnum, MirEnumMode, MirVariant, MirVariantKind};
-use crate::codegen::mir::ty::structure::MirStruct;
+use crate::codegen::ir::mir::ident::MirIdent;
+use crate::codegen::ir::mir::ty::enumeration::{MirEnum, MirEnumMode, MirVariant, MirVariantKind};
+use crate::codegen::ir::mir::ty::structure::MirStruct;
 use itertools::Itertools;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::impl_new_with_nullptr::generate_impl_new_with_nullptr_code_block;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::misc::rust_wire_type_add_prefix_or_js_value;

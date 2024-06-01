@@ -11,7 +11,7 @@ use crate::codegen::generator::wire::dart::spec_generator::output_code::{
     DartApiImplClassMethod, WireDartOutputCode,
 };
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
-use crate::codegen::mir::pack::MirPackComputedCache;
+use crate::codegen::ir::mir::pack::MirPackComputedCache;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::codegen::ConfigDumpContent::GeneratorInfo;
 use itertools::Itertools;

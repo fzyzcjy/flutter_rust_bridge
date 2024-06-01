@@ -1,6 +1,6 @@
-use crate::codegen::mir::ty::boxed::MirTypeBoxed;
-use crate::codegen::mir::ty::MirType::Boxed;
-use crate::codegen::mir::ty::{MirContext, MirType, MirTypeTrait};
+use crate::codegen::ir::mir::ty::boxed::MirTypeBoxed;
+use crate::codegen::ir::mir::ty::MirType::Boxed;
+use crate::codegen::ir::mir::ty::{MirContext, MirType, MirTypeTrait};
 
 crate::mir! {
 pub struct MirTypeOptional {

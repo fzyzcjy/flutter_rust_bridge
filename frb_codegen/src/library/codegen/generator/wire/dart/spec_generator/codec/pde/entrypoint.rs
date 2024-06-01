@@ -5,8 +5,8 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::base::{
 };
 use crate::codegen::generator::wire::dart::spec_generator::codec::sse::entrypoint::generate_serialize_inputs;
 use crate::codegen::generator::wire::misc::has_port_argument;
-use crate::codegen::mir::func::MirFunc;
-use crate::codegen::mir::ty::MirType;
+use crate::codegen::ir::mir::func::MirFunc;
+use crate::codegen::ir::mir::ty::MirType;
 
 pub(crate) struct PdeWireDartCodecEntrypoint;
 

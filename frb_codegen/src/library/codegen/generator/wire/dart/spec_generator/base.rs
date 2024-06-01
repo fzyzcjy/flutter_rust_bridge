@@ -4,7 +4,7 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::Wir
 use crate::codegen::generator::wire::dart::spec_generator::codec::dco::base::WireDartCodecDcoGeneratorContext;
 use crate::codegen::generator::wire::dart::spec_generator::codec::sse::base::WireDartCodecSseGeneratorContext;
 use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInternalConfig;
-use crate::codegen::mir::ty::MirType::*;
+use crate::codegen::ir::mir::ty::MirType::*;
 use crate::codegen_generator_structs;
 use crate::library::codegen::generator::api_dart::spec_generator::base::ApiDartGeneratorContext;
 use enum_dispatch::enum_dispatch;

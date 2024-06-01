@@ -1,5 +1,5 @@
-use crate::codegen::hir::hierarchical::struct_or_enum::HirStructOrEnumWrapper;
-use crate::codegen::mir::namespace::{Namespace, NamespacedName};
+use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStructOrEnumWrapper;
+use crate::codegen::ir::mir::namespace::{Namespace, NamespacedName};
 use crate::codegen::parser::internal_config::RustInputNamespacePack;
 use crate::library::misc::consts::HANDLER_NAME;
 use itertools::Itertools;

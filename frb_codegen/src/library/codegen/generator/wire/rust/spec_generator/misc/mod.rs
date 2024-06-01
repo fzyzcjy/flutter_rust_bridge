@@ -8,9 +8,9 @@ use crate::codegen::generator::wire::rust::spec_generator::base::{
 use crate::codegen::generator::wire::rust::spec_generator::misc::wire_func::generate_wire_func;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::generator::wire::rust::MirPackComputedCache;
-use crate::codegen::mir::pack::MirPack;
-use crate::codegen::mir::ty::rust_opaque::RustOpaqueCodecMode;
-use crate::codegen::mir::ty::MirType;
+use crate::codegen::ir::mir::pack::MirPack;
+use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
+use crate::codegen::ir::mir::ty::MirType;
 use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
 use itertools::Itertools;
 use serde::Serialize;

@@ -1,4 +1,4 @@
-use crate::codegen::mir::comment::MirComment;
+use crate::codegen::ir::mir::comment::MirComment;
 use itertools::Itertools;
 use syn::*;
 

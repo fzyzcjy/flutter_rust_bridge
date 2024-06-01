@@ -1,7 +1,7 @@
 use crate::codegen::generator::wire::rust::spec_generator::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
-use crate::codegen::mir::ty::enumeration::MirVariantKind;
-use crate::library::codegen::mir::ty::MirTypeTrait;
+use crate::codegen::ir::mir::ty::enumeration::MirVariantKind;
+use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use itertools::Itertools;
 
 impl<'a> WireRustGeneratorMiscTrait for EnumRefWireRustGenerator<'a> {

@@ -2,7 +2,7 @@ use crate::codegen::generator::api_dart::spec_generator::class::method::dart_con
 use crate::codegen::generator::codec::sse::ty::*;
 use crate::codegen::generator::misc::StructOrRecord;
 use crate::codegen::generator::misc::StructOrRecord::Struct;
-use crate::codegen::mir::ty::structure::MirStruct;
+use crate::codegen::ir::mir::ty::structure::MirStruct;
 use crate::library::codegen::generator::codec::sse::lang::LangTrait;
 use itertools::Itertools;
 

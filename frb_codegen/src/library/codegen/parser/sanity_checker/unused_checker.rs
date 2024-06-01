@@ -1,8 +1,8 @@
-use crate::codegen::hir::hierarchical::struct_or_enum::{HirEnum, HirStruct};
-use crate::codegen::mir::namespace::{Namespace, NamespacedName};
-use crate::codegen::mir::pack::MirPack;
-use crate::codegen::mir::ty::delegate::MirTypeDelegate;
-use crate::codegen::mir::ty::MirType;
+use crate::codegen::ir::hir::hierarchical::struct_or_enum::{HirEnum, HirStruct};
+use crate::codegen::ir::mir::namespace::{Namespace, NamespacedName};
+use crate::codegen::ir::mir::pack::MirPack;
+use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
+use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::internal_config::RustInputNamespacePack;
 use crate::codegen::parser::misc::extract_src_types_in_paths;
 use crate::codegen::parser::type_parser::path_data::extract_path_data;

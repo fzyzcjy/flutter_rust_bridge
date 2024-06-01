@@ -1,7 +1,7 @@
-use crate::codegen::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegateBigPrimitive};
-use crate::codegen::mir::ty::primitive::MirTypePrimitive;
-use crate::codegen::mir::ty::MirType;
-use crate::codegen::mir::ty::MirType::Primitive;
+use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegateBigPrimitive};
+use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+use crate::codegen::ir::mir::ty::MirType;
+use crate::codegen::ir::mir::ty::MirType::Primitive;
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 

@@ -1,12 +1,12 @@
 use crate::codegen::generator::wire::dart::spec_generator::codec::dco::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::dco::decoder::misc::gen_decode_simple_type_cast;
 use crate::codegen::generator::wire::dart::spec_generator::codec::dco::decoder::ty::WireDartCodecDcoGeneratorDecoderTrait;
-use crate::codegen::mir::ty::delegate::{
+use crate::codegen::ir::mir::ty::delegate::{
     MirTypeDelegate, MirTypeDelegateArrayMode, MirTypeDelegatePrimitiveEnum, MirTypeDelegateTime,
 };
 use crate::library::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
-use crate::library::codegen::mir::ty::MirTypeTrait;
+use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 
 impl<'a> WireDartCodecDcoGeneratorDecoderTrait for DelegateWireDartCodecDcoGenerator<'a> {
     fn generate_impl_decode_body(&self) -> String {

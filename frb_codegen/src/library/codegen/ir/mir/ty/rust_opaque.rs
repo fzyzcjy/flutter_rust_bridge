@@ -1,6 +1,6 @@
-use crate::codegen::mir::namespace::Namespace;
-use crate::codegen::mir::ty::primitive::MirTypePrimitive;
-use crate::codegen::mir::ty::{MirContext, MirType, MirTypeTrait};
+use crate::codegen::ir::mir::namespace::Namespace;
+use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+use crate::codegen::ir::mir::ty::{MirContext, MirType, MirTypeTrait};
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 use lazy_static::lazy_static;

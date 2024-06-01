@@ -1,6 +1,6 @@
-use crate::codegen::mir::func::{MirFunc, MirFuncInput, OwnershipMode};
-use crate::codegen::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqueImplicit;
-use crate::codegen::mir::ty::MirType;
+use crate::codegen::ir::mir::func::{MirFunc, MirFuncInput, OwnershipMode};
+use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqueImplicit;
+use crate::codegen::ir::mir::ty::MirType;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 

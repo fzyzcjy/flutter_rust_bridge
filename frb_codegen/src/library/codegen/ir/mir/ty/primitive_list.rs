@@ -1,5 +1,5 @@
-use crate::codegen::mir::ty::primitive::MirTypePrimitive;
-use crate::codegen::mir::ty::{MirContext, MirType, MirTypeTrait};
+use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+use crate::codegen::ir::mir::ty::{MirContext, MirType, MirTypeTrait};
 
 crate::mir! {
 pub struct MirTypePrimitiveList {

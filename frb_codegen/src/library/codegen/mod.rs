@@ -14,7 +14,7 @@ mod preparer;
 use crate::codegen::config::internal_config::InternalConfig;
 use crate::codegen::dumper::internal_config::ConfigDumpContent::Config as ContentConfig;
 use crate::codegen::dumper::Dumper;
-use crate::codegen::mir::pack::MirPack;
+use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::parser::reader::CachedRustReader;

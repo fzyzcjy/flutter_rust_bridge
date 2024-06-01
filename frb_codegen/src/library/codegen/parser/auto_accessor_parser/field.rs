@@ -1,12 +1,12 @@
-use crate::codegen::mir::field::MirField;
-use crate::codegen::mir::func::{
+use crate::codegen::ir::mir::field::MirField;
+use crate::codegen::ir::mir::func::{
     MirFunc, MirFuncAccessorMode, MirFuncArgMode, MirFuncInput, MirFuncMode, MirFuncOutput,
     MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode, OwnershipMode,
 };
-use crate::codegen::mir::ident::MirIdent;
-use crate::codegen::mir::namespace::NamespacedName;
-use crate::codegen::mir::ty::primitive::MirTypePrimitive;
-use crate::codegen::mir::ty::MirType;
+use crate::codegen::ir::mir::ident::MirIdent;
+use crate::codegen::ir::mir::namespace::NamespacedName;
+use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::auto_accessor_parser::MirFuncAndSanityCheckInfo;
 use crate::codegen::parser::function_parser::argument::merge_ownership_into_ty;

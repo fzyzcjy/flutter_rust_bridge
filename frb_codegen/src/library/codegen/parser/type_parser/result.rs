@@ -1,6 +1,6 @@
-use crate::codegen::mir::ty::delegate::MirTypeDelegate;
-use crate::codegen::mir::ty::MirType;
-use crate::codegen::mir::ty::MirType::{EnumRef, StructRef};
+use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
+use crate::codegen::ir::mir::ty::MirType;
+use crate::codegen::ir::mir::ty::MirType::{EnumRef, StructRef};
 use crate::codegen::parser::type_parser::unencodable::splay_segments;
 use crate::codegen::parser::type_parser::{TypeParser, TypeParserParsingContext};
 

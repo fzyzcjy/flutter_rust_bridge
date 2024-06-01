@@ -3,8 +3,8 @@ use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGenerat
 use crate::codegen::generator::wire::dart::spec_generator::codec::base::{
     WireDartCodecEntrypointTrait, WireDartCodecOutputSpec,
 };
-use crate::codegen::mir::func::MirFunc;
-use crate::codegen::mir::ty::MirType;
+use crate::codegen::ir::mir::func::MirFunc;
+use crate::codegen::ir::mir::ty::MirType;
 
 pub(crate) struct DcoWireDartCodecEntrypoint;
 

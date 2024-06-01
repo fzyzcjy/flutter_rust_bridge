@@ -1,4 +1,4 @@
-use crate::codegen::hir::hierarchical::struct_or_enum::serialize_syn;
+use crate::codegen::ir::hir::hierarchical::struct_or_enum::serialize_syn;
 use serde::Serialize;
 use syn::Type;
 

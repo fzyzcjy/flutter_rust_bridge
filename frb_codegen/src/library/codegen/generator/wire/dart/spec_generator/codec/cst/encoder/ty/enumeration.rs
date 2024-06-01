@@ -3,8 +3,8 @@ use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::misc::dart_wire_type_from_rust_wire_type_or_web;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
-use crate::codegen::mir::ty::enumeration::{MirVariant, MirVariantKind};
-use crate::library::codegen::mir::ty::MirTypeTrait;
+use crate::codegen::ir::mir::ty::enumeration::{MirVariant, MirVariantKind};
+use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use itertools::Itertools;
 
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for EnumRefWireDartCodecCstGenerator<'a> {

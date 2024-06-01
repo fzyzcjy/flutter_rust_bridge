@@ -6,7 +6,7 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::base::{
 };
 use crate::codegen::generator::wire::rust::spec_generator::dump::generate_dump_info;
 use crate::codegen::generator::wire::rust::spec_generator::misc::WireRustOutputSpecMisc;
-use crate::codegen::mir::pack::MirPackComputedCache;
+use crate::codegen::ir::mir::pack::MirPackComputedCache;
 use crate::codegen::ConfigDumpContent::GeneratorInfo;
 use itertools::Itertools;
 use serde::Serialize;

@@ -1,10 +1,10 @@
 use crate::codegen::generator::codec::structs::CodecModePack;
-use crate::codegen::mir::comment::MirComment;
-use crate::codegen::mir::field::MirField;
-use crate::codegen::mir::namespace::NamespacedName;
-use crate::codegen::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegatePrimitiveEnum};
-use crate::codegen::mir::ty::primitive::MirTypePrimitive;
-use crate::codegen::mir::ty::{MirContext, MirType, MirTypeTrait};
+use crate::codegen::ir::mir::comment::MirComment;
+use crate::codegen::ir::mir::field::MirField;
+use crate::codegen::ir::mir::namespace::NamespacedName;
+use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegatePrimitiveEnum};
+use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+use crate::codegen::ir::mir::ty::{MirContext, MirType, MirTypeTrait};
 use crate::if_then_some;
 use convert_case::{Case, Casing};
 use itertools::Itertools;

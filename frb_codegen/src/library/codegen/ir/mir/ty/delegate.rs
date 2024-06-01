@@ -1,13 +1,13 @@
 use crate::codegen::generator::codec::structs::CodecMode;
-use crate::codegen::mir::namespace::Namespace;
-use crate::codegen::mir::ty::enumeration::MirTypeEnumRef;
-use crate::codegen::mir::ty::general_list::{mir_list, MirTypeGeneralList};
-use crate::codegen::mir::ty::primitive::MirTypePrimitive;
-use crate::codegen::mir::ty::primitive_list::MirTypePrimitiveList;
-use crate::codegen::mir::ty::record::MirTypeRecord;
-use crate::codegen::mir::ty::rust_auto_opaque_implicit::MirRustAutoOpaqueRaw;
-use crate::codegen::mir::ty::rust_opaque::MirTypeRustOpaque;
-use crate::codegen::mir::ty::{MirContext, MirType, MirTypeTrait};
+use crate::codegen::ir::mir::namespace::Namespace;
+use crate::codegen::ir::mir::ty::enumeration::MirTypeEnumRef;
+use crate::codegen::ir::mir::ty::general_list::{mir_list, MirTypeGeneralList};
+use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+use crate::codegen::ir::mir::ty::primitive_list::MirTypePrimitiveList;
+use crate::codegen::ir::mir::ty::record::MirTypeRecord;
+use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirRustAutoOpaqueRaw;
+use crate::codegen::ir::mir::ty::rust_opaque::MirTypeRustOpaque;
+use crate::codegen::ir::mir::ty::{MirContext, MirType, MirTypeTrait};
 
 crate::mir! {
 /// types that delegate to another type

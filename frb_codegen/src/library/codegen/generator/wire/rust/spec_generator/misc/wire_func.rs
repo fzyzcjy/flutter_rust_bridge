@@ -7,8 +7,8 @@ use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
     ExternFunc, ExternFuncParam,
 };
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
-use crate::codegen::mir::func::{MirFunc, MirFuncMode, MirFuncOwnerInfo};
-use crate::codegen::mir::ty::MirType;
+use crate::codegen::ir::mir::func::{MirFunc, MirFuncMode, MirFuncOwnerInfo};
+use crate::codegen::ir::mir::ty::MirType;
 use crate::if_then_some;
 use crate::misc::consts::HANDLER_NAME;
 use convert_case::{Case, Casing};

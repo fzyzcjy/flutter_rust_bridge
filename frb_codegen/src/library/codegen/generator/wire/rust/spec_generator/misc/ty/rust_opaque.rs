@@ -7,8 +7,8 @@ use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
 };
 use crate::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
-use crate::codegen::mir::ty::rust_opaque::RustOpaqueCodecMode;
-use crate::codegen::mir::ty::MirTypeTrait;
+use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
+use crate::codegen::ir::mir::ty::MirTypeTrait;
 use itertools::Itertools;
 
 impl<'a> WireRustGeneratorMiscTrait for RustOpaqueWireRustGenerator<'a> {

@@ -1,7 +1,7 @@
-use crate::codegen::mir::default::MirDefaultValue;
-use crate::codegen::mir::field::MirField;
-use crate::codegen::mir::ty::delegate::MirTypeDelegate;
-use crate::codegen::mir::ty::MirType;
+use crate::codegen::ir::mir::default::MirDefaultValue;
+use crate::codegen::ir::mir::field::MirField;
+use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
+use crate::codegen::ir::mir::ty::MirType;
 use crate::utils::dart_keywords::make_string_keyword_safe;
 use convert_case::{Case, Casing};
 use std::borrow::Cow;

@@ -5,14 +5,14 @@ use crate::codegen::generator::codec::sse::ty::delegate::{
 use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
-use crate::codegen::mir::ty::delegate::{
+use crate::codegen::ir::mir::ty::delegate::{
     MirTypeDelegate, MirTypeDelegateArrayMode, MirTypeDelegatePrimitiveEnum, MirTypeDelegateTime,
 };
-use crate::codegen::mir::ty::primitive::MirTypePrimitive;
-use crate::codegen::mir::ty::primitive_list::MirTypePrimitiveList;
+use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+use crate::codegen::ir::mir::ty::primitive_list::MirTypePrimitiveList;
 use crate::library::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
-use crate::library::codegen::mir::ty::MirTypeTrait;
+use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGenerator<'a> {
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {

@@ -4,9 +4,9 @@ use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::primitive::dart_native_type_of_primitive;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
-use crate::codegen::mir::ty::delegate::MirTypeDelegate;
-use crate::codegen::mir::ty::MirType::StructRef;
-use crate::codegen::mir::ty::{MirType, MirTypeTrait};
+use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
+use crate::codegen::ir::mir::ty::MirType::StructRef;
+use crate::codegen::ir::mir::ty::{MirType, MirTypeTrait};
 
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for BoxedWireDartCodecCstGenerator<'a> {
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {

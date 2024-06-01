@@ -1,7 +1,7 @@
 use crate::codegen::generator::codec::sse::lang::LangTrait;
-use crate::codegen::mir::ty::structure::rust_brackets_pair;
-use crate::codegen::mir::ty::MirType;
-use crate::library::codegen::mir::ty::MirTypeTrait;
+use crate::codegen::ir::mir::ty::structure::rust_brackets_pair;
+use crate::codegen::ir::mir::ty::MirType;
+use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use itertools::{multizip, Itertools};
 
 #[derive(Clone, Copy, Debug)]

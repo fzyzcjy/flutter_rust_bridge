@@ -4,7 +4,7 @@ use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInt
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::WireRustCodecCstGeneratorContext;
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::base::WireRustCodecDcoGeneratorContext;
 use crate::codegen::generator::wire::rust::spec_generator::codec::sse::base::WireRustCodecSseGeneratorContext;
-use crate::codegen::mir::ty::MirType::*;
+use crate::codegen::ir::mir::ty::MirType::*;
 use crate::codegen_generator_structs;
 use enum_dispatch::enum_dispatch;
 

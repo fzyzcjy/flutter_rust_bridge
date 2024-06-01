@@ -1,5 +1,5 @@
-use crate::codegen::hir::hierarchical::module::HirVisibility;
-use crate::codegen::mir::namespace::{Namespace, NamespacedName};
+use crate::codegen::ir::hir::hierarchical::module::HirVisibility;
+use crate::codegen::ir::mir::namespace::{Namespace, NamespacedName};
 use derivative::Derivative;
 use proc_macro2::Ident;
 use quote::ToTokens;

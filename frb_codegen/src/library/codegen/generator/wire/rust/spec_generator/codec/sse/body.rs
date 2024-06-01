@@ -8,9 +8,9 @@ use crate::codegen::generator::misc::comments::generate_codec_comments;
 use crate::codegen::generator::wire::rust::spec_generator::codec::base::WireRustCodecOutputSpec;
 use crate::codegen::generator::wire::rust::spec_generator::codec::sse::base::WireRustCodecSseGeneratorContext;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
-use crate::codegen::mir::ty::MirType;
+use crate::codegen::ir::mir::ty::MirType;
 use crate::library::codegen::generator::codec::sse::ty::CodecSseTyTrait;
-use crate::library::codegen::mir::ty::MirTypeTrait;
+use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 
 pub(super) fn generate_encode_or_decode(
     context: WireRustCodecSseGeneratorContext,

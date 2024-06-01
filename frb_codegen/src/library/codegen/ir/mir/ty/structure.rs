@@ -1,10 +1,10 @@
 // Name "structure" not "struct", since the latter is a keyword
 
-use crate::codegen::mir::annotation::MirDartAnnotation;
-use crate::codegen::mir::comment::MirComment;
-use crate::codegen::mir::field::MirField;
-use crate::codegen::mir::namespace::{Namespace, NamespacedName};
-use crate::codegen::mir::ty::{MirContext, MirType, MirTypeTrait};
+use crate::codegen::ir::mir::annotation::MirDartAnnotation;
+use crate::codegen::ir::mir::comment::MirComment;
+use crate::codegen::ir::mir::field::MirField;
+use crate::codegen::ir::mir::namespace::{Namespace, NamespacedName};
+use crate::codegen::ir::mir::ty::{MirContext, MirType, MirTypeTrait};
 use convert_case::{Case, Casing};
 
 crate::mir! {

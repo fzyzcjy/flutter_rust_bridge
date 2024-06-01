@@ -1,7 +1,7 @@
 use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::codegen::generator::codec::sse::lang::*;
 use crate::codegen::generator::codec::sse::ty::*;
-use crate::codegen::mir::ty::delegate::{
+use crate::codegen::ir::mir::ty::delegate::{
     MirTypeDelegatePrimitiveEnum, MirTypeDelegateSet, MirTypeDelegateStreamSink,
     MirTypeDelegateTime,
 };

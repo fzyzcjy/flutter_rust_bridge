@@ -1,5 +1,5 @@
-use crate::codegen::mir::ty::primitive::MirTypePrimitive;
-use crate::codegen::mir::ty::MirType;
+use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+use crate::codegen::ir::mir::ty::MirType;
 use itertools::Itertools;
 
 pub(crate) fn with_sse_extra_types(raw: &[MirType]) -> Vec<MirType> {

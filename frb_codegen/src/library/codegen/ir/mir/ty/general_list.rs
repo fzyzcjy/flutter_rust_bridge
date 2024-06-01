@@ -1,7 +1,7 @@
-use crate::codegen::mir::ty::primitive::MirTypePrimitive;
-use crate::codegen::mir::ty::primitive_list::MirTypePrimitiveList;
-use crate::codegen::mir::ty::MirType::{GeneralList, PrimitiveList};
-use crate::codegen::mir::ty::{MirContext, MirType, MirTypeTrait};
+use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+use crate::codegen::ir::mir::ty::primitive_list::MirTypePrimitiveList;
+use crate::codegen::ir::mir::ty::MirType::{GeneralList, PrimitiveList};
+use crate::codegen::ir::mir::ty::{MirContext, MirType, MirTypeTrait};
 
 crate::mir! {
 pub struct MirTypeGeneralList {

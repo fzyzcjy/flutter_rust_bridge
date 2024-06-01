@@ -1,4 +1,4 @@
-use crate::codegen::mir::ty::MirType;
+use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::type_parser::path_data::extract_path_data;
 use crate::codegen::parser::type_parser::unencodable::splay_segments;
 use crate::codegen::parser::type_parser::TypeParserWithContext;

@@ -1,9 +1,9 @@
-use crate::codegen::mir::namespace::Namespace;
-use crate::codegen::mir::ty::rust_opaque::{
+use crate::codegen::ir::mir::namespace::Namespace;
+use crate::codegen::ir::mir::ty::rust_opaque::{
     MirRustOpaqueInner, MirTypeRustOpaque, RustOpaqueCodecMode,
 };
-use crate::codegen::mir::ty::MirType;
-use crate::codegen::mir::ty::MirType::RustOpaque;
+use crate::codegen::ir::mir::ty::MirType;
+use crate::codegen::ir::mir::ty::MirType::RustOpaque;
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use quote::ToTokens;

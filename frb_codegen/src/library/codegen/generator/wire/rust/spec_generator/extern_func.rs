@@ -3,7 +3,7 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::Wir
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::{
     WireRustCodecCstGenerator, WireRustCodecCstGeneratorContext,
 };
-use crate::codegen::mir::ty::MirType;
+use crate::codegen::ir::mir::ty::MirType;
 use crate::library::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
 use crate::library::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 use itertools::Itertools;
