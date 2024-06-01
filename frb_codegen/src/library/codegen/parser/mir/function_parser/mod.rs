@@ -56,15 +56,12 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             default_rust_opaque_codec,
         )
         .unwrap_or_else(|err| {
-            create_output_skip(
-                func,
-                namespace_naive,
-                MirSkipInner::Err(format!(
-                    "Error when parsing function={:?} error={:?}",
-                    func.sig().ident,
-                    err
-                )),
-            )
+            log::debug!(
+                "parse_function see error and skip function: function={:?} error={:?}",
+                func.sig().ident,
+                err
+            );
+            create_output_skip(func, namespace_naive, MirSkipInner::Err)
         })
     }
 

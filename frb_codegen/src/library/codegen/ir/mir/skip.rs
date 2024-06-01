@@ -8,6 +8,6 @@ pub struct MirSkip {
 
 pub(crate) enum MirSkipInner {
     Ignored,
-    Err(String),
+    Err,
 }
 }
