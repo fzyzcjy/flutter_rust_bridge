@@ -35,9 +35,9 @@ impl GeneratorProgressBarPack {
     }
 }
 
-pub(crate) struct Skipper;
+pub(crate) struct GenerateSkipper;
 
-impl Skipper {
+impl GenerateSkipper {
     pub(crate) const ENV_VAR_KEY: &str = "FLUTTER_RUST_BRIDGE_CODEGEN_GENERATE_SKIP";
 
     pub(crate) fn check() -> bool {

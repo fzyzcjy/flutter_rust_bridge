@@ -47,7 +47,11 @@ fn run_raw(
     let mut extra_env: HashMap<_, _> = [(
         "RUSTFLAGS".to_owned(),
         env::var("RUSTFLAGS").map(|x| x + " ").unwrap_or_default() + extra_rustflags,
-    )]
+    ),
+        (
+            Skipper
+            )
+    ]
     .into();
     if let Some(cargo_target_dir) = compute_cargo_target_dir() {
         extra_env.insert("CARGO_TARGET_DIR".to_owned(), cargo_target_dir);

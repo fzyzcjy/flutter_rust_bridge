@@ -5,7 +5,7 @@ mod controller;
 pub(crate) mod dumper;
 pub(crate) mod generator;
 pub(crate) mod ir;
-mod misc;
+pub(crate) mod misc;
 pub(crate) mod parser;
 mod polisher;
 mod preparer;
@@ -20,7 +20,7 @@ use log::debug;
 
 /// Execute the main code generator
 pub fn generate(config: Config, meta_config: MetaConfig) -> anyhow::Result<()> {
-    if misc::Skipper::check() {
+    if misc::GenerateSkipper::check() {
         debug!("generate skipped");
         return Ok(());
     }
