@@ -3,6 +3,7 @@ use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::IrType;
+use crate::codegen::parser::internal_config::RustInputNamespacePack;
 use crate::codegen::parser::misc::extract_src_types_in_paths;
 use crate::codegen::parser::type_parser::path_data::extract_path_data;
 use itertools::Itertools;
@@ -14,11 +15,11 @@ pub(crate) fn get_unused_types(
     pack: &IrPack,
     src_structs: &HashMap<String, &HirStruct>,
     src_enums: &HashMap<String, &HirEnum>,
-    rust_input_namespaces: &[Namespace],
+    rust_input_namespace_pack: &RustInputNamespacePack,
 ) -> anyhow::Result<Vec<NamespacedName>> {
     let all_types = [
-        extract_src_types_in_paths(src_structs, rust_input_namespaces)?,
-        extract_src_types_in_paths(src_enums, rust_input_namespaces)?,
+        extract_src_types_in_paths(src_structs, rust_input_namespace_pack)?,
+        extract_src_types_in_paths(src_enums, rust_input_namespace_pack)?,
     ]
     .concat();
 

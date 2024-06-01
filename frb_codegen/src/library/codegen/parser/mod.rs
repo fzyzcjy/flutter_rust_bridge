@@ -78,7 +78,7 @@ pub(crate) fn parse(
         &ans,
         &hir_flat_crate.structs,
         &hir_flat_crate.enums,
-        &config.rust_input_namespace_pack.rust_input_namespaces,
+        &config.rust_input_namespace_pack,
     )?;
 
     check_opaque_inside_translatable(&ans);

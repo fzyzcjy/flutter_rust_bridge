@@ -75,7 +75,7 @@ impl Namespace {
     }
 
     pub fn is_prefix_of(&self, other: &Namespace) -> bool {
-        other.path().starts_with(self.path())
+        other.path().starts_with(&self.path())
     }
 }
 
