@@ -45,7 +45,10 @@ pub(crate) fn parse(
         &hir_flat_crate.structs,
     )?;
 
-    let existing_handlers = existing_handler::parse_existing_handlers(&hir_flat_crate.modules)?;
+    let existing_handlers = existing_handler::parse_existing_handlers(
+        &hir_flat_crate.modules,
+        &config.rust_input_namespace_pack,
+    )?;
 
     let (struct_pool, enum_pool, dart_code_of_type) = type_parser.consume();
 
