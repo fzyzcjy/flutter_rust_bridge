@@ -13,14 +13,16 @@ use crate::codegen::ir::hir::flat::HirFlatCrate;
 use crate::codegen::ir::hir::hierarchical::function::HirFunction;
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStruct;
 use crate::codegen::ir::mir::func::MirFunc;
-use crate::utils::namespace::NamespacedName;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::parser::mir::auto_accessor_parser::parse_auto_accessors;
+use crate::codegen::parser::mir::function_parser::structs::ParseFunctionOutput;
 use crate::codegen::parser::mir::function_parser::FunctionParser;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::sanity_checker::opaque_inside_translatable_checker::check_opaque_inside_translatable;
 use crate::codegen::parser::mir::sanity_checker::unused_checker::get_unused_types;
 use crate::codegen::parser::mir::type_parser::TypeParser;
+use crate::if_then_some;
+use crate::utils::namespace::NamespacedName;
 use itertools::{concat, Itertools};
 use std::collections::HashMap;
 use syn::Visibility;
@@ -79,7 +81,7 @@ fn parse_mir_funcs(
 ) -> anyhow::Result<Vec<MirFunc>> {
     let mut function_parser = FunctionParser::new(type_parser);
 
-    let mir_funcs_normal = src_fns
+    let (mir_funcs_normal, mir_funcs_skipped): (Vec<_>, Vec<_>) = src_fns
         .iter()
         .map(|f| {
             function_parser.parse_function(
@@ -90,6 +92,10 @@ fn parse_mir_funcs(
                 config.default_rust_opaque_codec,
             )
         })
+        .partition(|item| matches!(item, ParseFunctionOutput::Ok(_)));
+    let mir_funcs_normal = mir_funcs_normal.into_iter().map(|x| x.ok()).collect_vec();
+    let mir_funcs_skipped = (mir_funcs_skipped.into_iter())
+        .map(|x| x.skip())
         .collect_vec();
 
     let mir_funcs_auto_accessor = parse_auto_accessors(config, src_structs, type_parser)?;
