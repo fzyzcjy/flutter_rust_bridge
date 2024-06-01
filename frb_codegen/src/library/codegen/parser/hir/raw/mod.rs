@@ -4,13 +4,14 @@ use crate::utils::namespace::Namespace;
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 use crate::library::commands::cargo_expand::run_cargo_expand;
 use itertools::concat;
+use crate::utils::crate_name::CrateName;
 
 pub(crate) fn parse(
     config: &ParserHirInternalConfig,
     dumper: &Dumper,
 ) -> anyhow::Result<HirRawPack> {
     let crates = concat([
-        vec![Namespace::SELF_CRATE.to_owned()],
+        vec![CrateName::new(Namespace::SELF_CRATE.to_owned())],
         config.third_party_crate_names.clone(),
     ])
     .iter()

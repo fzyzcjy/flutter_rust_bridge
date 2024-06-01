@@ -67,13 +67,13 @@ fn fallback_rust_output_path(rust_crate_dir: &Path) -> PathBuf {
     rust_crate_dir.join("src").join("frb_generated.rs")
 }
 
-fn compute_third_party_crate_names(rust_input_namespace_prefixes_raw: &[Namespace]) -> Vec<String> {
+fn compute_third_party_crate_names(rust_input_namespace_prefixes_raw: &[Namespace]) -> Vec<CrateName> {
     rust_input_namespace_prefixes_raw
         .iter()
         .map(|x| x.path()[0])
         .filter(|x| *x != Namespace::SELF_CRATE)
         .dedup()
         .sorted()
-        .map(|x| x.to_owned())
+        .map(|x| CrateName::new(x.to_owned()))
         .collect_vec()
 }
