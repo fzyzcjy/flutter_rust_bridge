@@ -4,6 +4,7 @@ use crate::codegen::config::internal_config_parser::rust_path_parser::RustInputI
 use crate::codegen::dumper::internal_config::DumperInternalConfig;
 use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
 use crate::codegen::generator::wire::dart::internal_config::DartOutputClassNamePack;
+use crate::codegen::ir::mir::namespace::Namespace;
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
@@ -97,7 +98,9 @@ impl InternalConfig {
             parser: ParserInternalConfig {
                 hir: ParserHirInternalConfig {
                     rust_input_namespace_pack: rust_input_namespace_pack.clone(),
-                    third_party_crates: todo!(),
+                    third_party_crates: parse_third_party_crates(
+                        &rust_input_namespace_pack.rust_input_namespace_prefices,
+                    ),
                 },
                 mir: ParserMirInternalConfig {
                     rust_input_namespace_pack: rust_input_namespace_pack.clone(),
@@ -126,6 +129,16 @@ impl InternalConfig {
             },
         })
     }
+}
+
+fn parse_third_party_crates(rust_input_namespace_prefices: &[Namespace]) -> Vec<String> {
+    rust_input_namespace_prefices
+        .iter()
+        .map(|x| x.path()[0])
+        .filter(|x| x != Namespace::SELF_CRATE)
+        .dedup()
+        .sorted()
+        .collect_vec()
 }
 
 fn parse_dump_contents(config: &Config) -> Vec<ConfigDumpContent> {
