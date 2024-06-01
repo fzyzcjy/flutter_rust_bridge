@@ -17,3 +17,9 @@ pub(crate) struct ParserInternalConfig {
 pub(crate) struct RustInputNamespacePack {
     rust_input_namespace_prefices: Vec<Namespace>,
 }
+
+impl RustInputNamespacePack {
+    pub fn is_interest(&self, namespace: &Namespace) -> bool {
+        (self.rust_input_namespace_prefices.iter()).any(|prefix| prefix.is_prefix_of(namespace))
+    }
+}

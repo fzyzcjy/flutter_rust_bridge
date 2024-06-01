@@ -73,6 +73,10 @@ impl Namespace {
     pub fn join(&self, other: &str) -> Self {
         Self::new_raw(format!("{}{}{}", self.joined_path, Self::SEP, other))
     }
+
+    pub fn is_prefix_of(&self, other: &Namespace) -> bool {
+        other.path().starts_with(self.path())
+    }
 }
 
 impl Display for Namespace {
