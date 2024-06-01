@@ -66,7 +66,7 @@ where
     let expect = deserializer(if matcher_path.exists() {
         fs::read_to_string(matcher_path)?
     } else {
-        "".to_string()
+        "{}".to_string()
     })?;
 
     if enable_update_golden() {
