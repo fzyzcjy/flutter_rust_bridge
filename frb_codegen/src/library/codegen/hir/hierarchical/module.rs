@@ -1,6 +1,7 @@
 use crate::codegen::hir::hierarchical::struct_or_enum::HirEnum;
 use crate::codegen::hir::hierarchical::struct_or_enum::HirStruct;
 use crate::codegen::hir::hierarchical::type_alias::HirTypeAlias;
+use crate::codegen::ir::namespace::Namespace;
 use derivative::Derivative;
 use serde::Serialize;
 use std::path::PathBuf;
@@ -15,6 +16,7 @@ pub struct HirModule {
 #[derivative(Debug)]
 pub struct HirModuleInfo {
     pub visibility: HirVisibility,
+    pub namespace: Namespace,
 }
 
 #[derive(Debug, Clone, Serialize, Default)]
