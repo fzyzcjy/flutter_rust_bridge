@@ -49,7 +49,7 @@ fn generate_once(internal_config: &InternalConfig, dumper: &Dumper) -> anyhow::R
     preparer::prepare(&internal_config.preparer)?;
 
     let pb = progress_bar_pack.parse.start();
-    let ir_pack = parse(&internal_config.parser, dumper)?;
+    let ir_pack = parse(&internal_config.parser, dumper, &progress_bar_pack)?;
     dumper.dump(ConfigDumpContent::Ir, "ir_pack.json", &ir_pack)?;
     drop(pb);
 
@@ -86,7 +86,7 @@ fn parse(
 ) -> anyhow::Result<IrPack> {
     let pb = progress_bar_pack.parse_cargo_expand.start();
     let mut cached_rust_reader = CachedRustReader::default();
-    let file = cached_rust_reader.read_rust_crate(config.rust_crate_dir, dumper)?;
+    let file = cached_rust_reader.read_rust_crate(&config.rust_crate_dir, dumper)?;
     drop(pb);
 
     let pb = progress_bar_pack.parse_hir.start();
@@ -95,7 +95,7 @@ fn parse(
     drop(pb);
 
     let pb = progress_bar_pack.parse_mir.start();
-    let ir_pack = parser::parse(config, &hir_flat)?;
+    let ir_pack = parser::parse(config, hir_flat)?;
     drop(pb);
 
     Ok(ir_pack)

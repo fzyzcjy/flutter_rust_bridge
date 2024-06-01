@@ -9,7 +9,7 @@ pub(crate) mod module;
 pub(crate) mod struct_or_enum;
 pub(crate) mod visibility;
 
-pub(crate) fn parse(file: syn::File) -> anyhow::Result<HirCrate> {
+pub(crate) fn parse(file: &syn::File) -> anyhow::Result<HirCrate> {
     let info = HirModuleInfo {
         visibility: HirVisibility::Public,
         namespace: Namespace::new(vec![Namespace::SELF_CRATE.to_owned()]),
