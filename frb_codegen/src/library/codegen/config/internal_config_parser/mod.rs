@@ -37,7 +37,7 @@ impl InternalConfig {
         let RustInputInfo {
             rust_crate_dir,
             rust_input_namespace_pack,
-        } = rust_path_parser::compute_rust_input_info(&base_dir, &migrated_rust_input)?;
+        } = rust_path_parser::compute_rust_input_info(&migrated_rust_input, &base_dir)?;
 
         let dart_output_dir = canonicalize_with_error_message(&base_dir.join(&config.dart_output))?;
         let dart_output_path_pack =

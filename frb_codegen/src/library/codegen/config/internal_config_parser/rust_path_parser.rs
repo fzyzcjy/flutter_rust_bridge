@@ -67,7 +67,7 @@ fn compute_rust_input_namespace_pack(
 }
 
 fn compute_rust_crate_dir(base_dir: &Path, rust_root: &str) -> anyhow::Result<PathBuf> {
-    canonicalize_with_error_message(&base_dir.join(rust_root.into()))
+    canonicalize_with_error_message(&base_dir.join(rust_root))
 }
 
 pub(super) fn compute_rust_output_path(
