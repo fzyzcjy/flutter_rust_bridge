@@ -79,6 +79,7 @@ fn compute_cargo_target_dir() -> Option<String> {
     // to see how this handles the case when called in build.rs
     if let Ok(ref path) = env::var("OUT_DIR") {
         let ans = PathBuf::from(path).join("frb_expanded");
+        log::debug!("compute_cargo_target_dir choose ans={ans:?} since see OUT_DIR");
         Some(ans.to_str().unwrap().to_string())
     } else {
         None
