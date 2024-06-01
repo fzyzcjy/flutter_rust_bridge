@@ -95,7 +95,7 @@ fn parse(
     drop(pb);
 
     let pb = progress_bar_pack.parse_mir.start();
-    let ir_pack = parser::parse(config, hir_flat)?;
+    let ir_pack = parser::parse(config, &hir_flat)?;
     drop(pb);
 
     Ok(ir_pack)

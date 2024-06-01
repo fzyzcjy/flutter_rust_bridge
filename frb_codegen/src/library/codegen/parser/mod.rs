@@ -40,7 +40,7 @@ use syn::Visibility;
 
 pub(crate) fn parse(
     config: &ParserInternalConfig,
-    hir_flat_crate: HirFlatCrate,
+    hir_flat_crate: &HirFlatCrate,
 ) -> anyhow::Result<IrPack> {
     let src_fns_all = file_data_arr
         .iter()
@@ -52,13 +52,20 @@ pub(crate) fn parse(
     let (src_fns_interest, src_fns_skipped): (Vec<_>, Vec<_>) = (src_fns_all.into_iter())
         .partition(|item| matches!(item.generalized_item_fn.vis(), Visibility::Public(_)));
 
-    let src_structs = crate_map.root_module().collect_structs();
-    let src_enums = crate_map.root_module().collect_enums();
     let src_types = resolve_type_aliases(crate_map.root_module().collect_types());
 
-    let mut type_parser = TypeParser::new(src_structs.clone(), src_enums.clone(), src_types);
+    let mut type_parser = TypeParser::new(
+        hir_flat_crate.structs.clone(),
+        hir_flat_crate.enums.clone(),
+        hir_flat_crate.types.clone(),
+    );
 
-    let ir_funcs = parse_ir_funcs(config, &src_fns_interest, &mut type_parser, &src_structs)?;
+    let ir_funcs = parse_ir_funcs(
+        config,
+        &src_fns_interest,
+        &mut type_parser,
+        &hir_flat_crate.structs,
+    )?;
 
     let existing_handlers = parse_existing_handlers(config, &file_data_arr)?;
 
@@ -76,8 +83,8 @@ pub(crate) fn parse(
 
     ans.unused_types = get_unused_types(
         &ans,
-        &src_structs,
-        &src_enums,
+        &hir_flat_crate.structs,
+        &hir_flat_crate.enums,
         &config.rust_input_namespace_pack.rust_input_namespaces,
     )?;
 
