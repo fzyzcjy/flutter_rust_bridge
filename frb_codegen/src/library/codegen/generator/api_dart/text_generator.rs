@@ -24,7 +24,7 @@ pub(super) fn generate(
             .iter()
             .map(|(namespace, item)| {
                 let dart_output_path =
-                    compute_path_from_namespace(&config.dart_decl_base_output_path, namespace);
+                    compute_path_from_namespace(&config.dart_decl_base_output_path, namespace, common_namespace_prefix);
                 let text = generate_end_api_text(namespace, &dart_output_path, item)?;
                 Ok(PathText::new(dart_output_path, text))
             })
@@ -138,8 +138,9 @@ fn generate_function(func: &ApiDartGeneratedFunction) -> String {
 fn compute_path_from_namespace(
     dart_decl_base_output_path: &Path,
     namespace: &Namespace,
+    common_namespace_prefix: &Namespace,
 ) -> PathBuf {
-    let chunks = namespace.path_exclude_self_crate();
+    let chunks = namespace.strip_prefix(common_namespace_prefix);
     let ans_without_extension = chunks
         .iter()
         .fold(dart_decl_base_output_path.to_owned(), |a, b| a.join(b));

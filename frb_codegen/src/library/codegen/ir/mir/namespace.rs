@@ -53,13 +53,13 @@ impl Namespace {
         self.joined_path.split(Self::SEP).collect()
     }
 
-    pub fn path_exclude_self_crate(&self) -> Vec<&str> {
-        let mut path = self.path();
-        if path.first() == Some(&Self::SELF_CRATE) {
-            path.remove(0);
-        }
-        path
-    }
+    // pub fn path_exclude_self_crate(&self) -> Vec<&str> {
+    //     let mut path = self.path();
+    //     if path.first() == Some(&Self::SELF_CRATE) {
+    //         path.remove(0);
+    //     }
+    //     path
+    // }
 
     pub fn to_pseudo_io_path(&self, extension: &str) -> PathBuf {
         PathBuf::from(&format!("/{}.{extension}", self.path().join("/")))
@@ -76,7 +76,11 @@ impl Namespace {
     pub fn is_prefix_of(&self, other: &Namespace) -> bool {
         other.path().starts_with(&self.path())
     }
-    
+
+    pub fn strip_prefix(&self, prefix: &Namespace) -> bool {
+        Self::new(self.path().strip_prefix(prefix.path()).unwrap())
+    }
+
     pub fn compute_common_prefix(namespaces: &[&Namespace]) -> Self {
         TODO
     }
