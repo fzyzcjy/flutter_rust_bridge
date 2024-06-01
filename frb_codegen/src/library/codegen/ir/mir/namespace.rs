@@ -77,24 +77,24 @@ impl Namespace {
         other.path().starts_with(&self.path())
     }
 
-    pub fn strip_prefix(&self, prefix: &Namespace) -> Self {
-        Self::new(
-            (self.path().into_iter().map(ToString::to_string).collect_vec())
-                .strip_prefix(&prefix.path().into_iter().map(ToString::to_string).collect_vec()[..])
-                .unwrap().to_vec(),
-        )
-    }
-
-    pub fn compute_common_prefix(namespaces: &[&Namespace]) -> Self {
-        let paths = namespaces.iter().map(|x| x.path()).collect_vec();
-        let prefix_len = vec_common_prefix(&paths);
-        Self::new(
-            paths[0][..prefix_len]
-                .iter()
-                .map(|x| x.to_string())
-                .collect_vec(),
-        )
-    }
+    // pub fn strip_prefix(&self, prefix: &Namespace) -> Self {
+    //     Self::new(
+    //         (self.path().into_iter().map(ToString::to_string).collect_vec())
+    //             .strip_prefix(&prefix.path().into_iter().map(ToString::to_string).collect_vec()[..])
+    //             .unwrap().to_vec(),
+    //     )
+    // }
+    //
+    // pub fn compute_common_prefix(namespaces: &[&Namespace]) -> Self {
+    //     let paths = namespaces.iter().map(|x| x.path()).collect_vec();
+    //     let prefix_len = vec_common_prefix(&paths);
+    //     Self::new(
+    //         paths[0][..prefix_len]
+    //             .iter()
+    //             .map(|x| x.to_string())
+    //             .collect_vec(),
+    //     )
+    // }
 }
 
 impl Display for Namespace {
@@ -103,16 +103,16 @@ impl Display for Namespace {
     }
 }
 
-fn vec_common_prefix(vecs: &[Vec<&str>]) -> usize {
-    let min_len = vecs.iter().map(|x| x.len()).reduce(usize::min).unwrap();
-    for i in 0..min_len {
-        let sample_value = vecs[0][i];
-        if vecs.iter().any(|vec| vec[i] != sample_value) {
-            return i;
-        }
-    }
-    min_len
-}
+// fn vec_common_prefix(vecs: &[Vec<&str>]) -> usize {
+//     let min_len = vecs.iter().map(|x| x.len()).reduce(usize::min).unwrap();
+//     for i in 0..min_len {
+//         let sample_value = vecs[0][i];
+//         if vecs.iter().any(|vec| vec[i] != sample_value) {
+//             return i;
+//         }
+//     }
+//     min_len
+// }
 
 /// A name and the namespace it is in.
 ///

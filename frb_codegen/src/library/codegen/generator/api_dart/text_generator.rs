@@ -8,7 +8,6 @@ use crate::codegen::ir::mir::namespace::Namespace;
 use crate::utils::basic_code::DartBasicHeaderCode;
 use anyhow::ensure;
 use itertools::Itertools;
-use log::debug;
 use std::path::{Path, PathBuf};
 
 pub(super) struct ApiDartOutputText {
@@ -19,9 +18,9 @@ pub(super) fn generate(
     spec: &ApiDartOutputSpec,
     config: &GeneratorApiDartInternalConfig,
 ) -> anyhow::Result<ApiDartOutputText> {
-    let common_namespace_prefix =
-        Namespace::compute_common_prefix(&spec.namespaced_items.keys().collect_vec());
-    debug!("common_namespace_prefix={common_namespace_prefix:?}");
+    // let common_namespace_prefix =
+    //     Namespace::compute_common_prefix(&spec.namespaced_items.keys().collect_vec());
+    // debug!("common_namespace_prefix={common_namespace_prefix:?}");
 
     let path_texts = PathTexts(
         spec.namespaced_items
@@ -30,7 +29,6 @@ pub(super) fn generate(
                 let dart_output_path = compute_path_from_namespace(
                     &config.dart_decl_base_output_path,
                     namespace,
-                    &common_namespace_prefix,
                 );
                 let text = generate_end_api_text(namespace, &dart_output_path, item)?;
                 Ok(PathText::new(dart_output_path, text))
@@ -145,10 +143,9 @@ fn generate_function(func: &ApiDartGeneratedFunction) -> String {
 fn compute_path_from_namespace(
     dart_decl_base_output_path: &Path,
     namespace: &Namespace,
-    common_namespace_prefix: &Namespace,
 ) -> PathBuf {
-    let namespace_stripped = namespace.strip_prefix(common_namespace_prefix);
-    let chunks = namespace_stripped.path();
+    // let namespace_stripped = namespace.strip_prefix(common_namespace_prefix);
+    let chunks = namespace.path();
     let ans_without_extension =
         (chunks.iter()).fold(dart_decl_base_output_path.to_owned(), |a, b| a.join(b));
     ans_without_extension.with_extension("dart")
