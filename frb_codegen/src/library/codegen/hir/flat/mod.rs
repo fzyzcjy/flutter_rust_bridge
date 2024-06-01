@@ -6,32 +6,44 @@ use std::collections::HashMap;
 use std::fmt::Debug;
 use syn::Type;
 
-fn collect_structs(&self) -> HashMap<String, &Struct> {
-    self.collect_objects(
+pub(crate) fn parse_module(module: &Module) {}
+
+fn collect_structs(module: &Module) -> HashMap<String, &Struct> {
+    collect_objects(
+        module,
         |module| &module.scope.structs,
         |x| (x.0.ident.to_string(), x),
     )
 }
 
-fn collect_enums(&self) -> HashMap<String, &Enum> {
-    self.collect_objects(|module| &module.scope.enums, |x| (x.0.ident.to_string(), x))
+fn collect_enums(module: &Module) -> HashMap<String, &Enum> {
+    collect_objects(
+        module,
+        |module| &module.scope.enums,
+        |x| (x.0.ident.to_string(), x),
+    )
 }
 
-fn collect_types(&self) -> HashMap<String, Type> {
-    self.collect_objects(
+fn collect_types(module: &Module) -> HashMap<String, Type> {
+    collect_objects(
+        module,
         |module| &module.scope.type_alias,
         |x| (x.ident.clone(), x.target.clone()),
     )
 }
 
-fn collect_objects<'a, T: 'a, F, G, V: 'a>(&'a self, f: F, extract_entry: G) -> HashMap<String, V>
+fn collect_objects<'a, T: 'a, F, G, V: 'a>(
+    module: &'a Module,
+    f: F,
+    extract_entry: G,
+) -> HashMap<String, V>
 where
     F: Fn(&Module) -> &[T],
     G: Fn(&'a T) -> (String, V),
     V: Debug,
 {
     let mut ans = HashMap::new();
-    self.visit_modules(&mut |module| {
+    visit_modules(module, &mut |module| {
         for item in f(module) {
             let (key, value) = extract_entry(item);
             if let Some(old_value) = ans.get(&key) {
@@ -43,10 +55,9 @@ where
     ans
 }
 
-//noinspection RsNeedlessLifetimes
-fn visit_modules<'a, F: FnMut(&'a Module)>(&'a self, f: &mut F) {
-    f(self);
-    for scope_module in &self.scope.modules {
-        scope_module.visit_modules(f);
+fn visit_modules<'a, F: FnMut(&'a Module)>(module: &'a Module, f: &mut F) {
+    f(module);
+    for scope_module in module.scope.modules {
+        visit_modules(&scope_module, f);
     }
 }
