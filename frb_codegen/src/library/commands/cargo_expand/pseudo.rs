@@ -1,7 +1,7 @@
 use anyhow::ensure;
 use log::warn;
 use std::fs;
-use std::path::Path;
+use std::path::{Path, PathBuf};
 
 pub(super) fn run(rust_crate_dir: &Path) -> anyhow::Result<syn::File> {
     warn!(
@@ -34,12 +34,19 @@ fn modify_file(file: &mut syn::File) -> anyhow::Result<()> {
 fn modify_mod(item_mod: &mut syn::ItemMod) -> anyhow::Result<()> {
     ensure!(item_mod.content.is_none() && item_mod.semi.is_some());
 
-    let mod_syn_file = parse_file(TODO)?;
-
-    item_mod.semi = None;
-    item_mod.content = Some(syn::token::Brace::default(), mod_syn_file.items);
+    if let Some(mod_path) = first_existing_path(&get_module_file_path_candidates(TODO, TODO)) {
+        let mod_syn_file = parse_file(mod_path)?;
+        item_mod.semi = None;
+        item_mod.content = Some(syn::token::Brace::default(), mod_syn_file.items);
+    } else {
+        log::debug!("Skip parsing {TODO} since do not know its corresponding file path");
+    }
 
     Ok(())
+}
+
+fn first_existing_path(path_candidates: &[PathBuf]) -> Option<&PathBuf> {
+    path_candidates.iter().find(|path| path.exists())
 }
 
 fn get_module_file_path_candidates(
