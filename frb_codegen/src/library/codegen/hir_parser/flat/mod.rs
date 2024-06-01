@@ -4,6 +4,7 @@ use crate::codegen::hir::hierarchical::module::HirModule;
 use crate::codegen::hir::hierarchical::struct_or_enum::HirEnum;
 use crate::codegen::hir::hierarchical::struct_or_enum::HirStruct;
 use crate::codegen::hir_parser::flat::type_alias_resolver::resolve_type_aliases;
+use itertools::Itertools;
 use log::debug;
 use std::collections::HashMap;
 use std::fmt::Debug;
@@ -21,7 +22,11 @@ pub(crate) fn parse(root_module: &HirModule) -> anyhow::Result<HirFlatCrate> {
 }
 
 fn collect_functions(module: &HirModule) -> Vec<&HirFunction> {
-    TODO
+    let mut ans = vec![];
+    visit_modules(module, &mut |module| {
+        ans.extend(module.content.functions.iter().collect_vec());
+    });
+    ans
 }
 
 fn collect_structs(module: &HirModule) -> HashMap<String, &HirStruct> {
