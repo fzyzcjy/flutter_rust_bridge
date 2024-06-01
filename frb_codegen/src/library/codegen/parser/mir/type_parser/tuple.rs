@@ -6,7 +6,7 @@ use crate::codegen::ir::mir::ty::record::MirTypeRecord;
 use crate::codegen::ir::mir::ty::structure::{MirStruct, MirStructIdent, MirTypeStructRef};
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ir::mir::ty::MirType::Primitive;
-use crate::codegen::mir_parser::type_parser::TypeParserWithContext;
+use crate::codegen::parser::mir::type_parser::TypeParserWithContext;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use anyhow::Result;
 use itertools::Itertools;

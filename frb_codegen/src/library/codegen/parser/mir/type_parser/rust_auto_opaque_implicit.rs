@@ -7,12 +7,12 @@ use crate::codegen::ir::mir::ty::rust_opaque::{
     MirRustOpaqueInner, MirTypeRustOpaque, RustOpaqueCodecMode,
 };
 use crate::codegen::ir::mir::ty::{MirType, MirTypeTrait};
-use crate::codegen::mir_parser::type_parser::external_impl;
-use crate::codegen::mir_parser::type_parser::path_data::extract_path_data;
-use crate::codegen::mir_parser::type_parser::rust_opaque::{
+use crate::codegen::parser::mir::type_parser::external_impl;
+use crate::codegen::parser::mir::type_parser::path_data::extract_path_data;
+use crate::codegen::parser::mir::type_parser::rust_opaque::{
     GeneralizedRustOpaqueParserInfo, RustOpaqueParserTypeInfo,
 };
-use crate::codegen::mir_parser::type_parser::TypeParserWithContext;
+use crate::codegen::parser::mir::type_parser::TypeParserWithContext;
 use anyhow::Result;
 use quote::ToTokens;
 use syn::Type;

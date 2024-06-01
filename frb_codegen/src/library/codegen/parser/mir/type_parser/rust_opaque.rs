@@ -4,8 +4,8 @@ use crate::codegen::ir::mir::ty::rust_opaque::{
 };
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ir::mir::ty::MirType::RustOpaque;
-use crate::codegen::mir_parser::type_parser::unencodable::SplayedSegment;
-use crate::codegen::mir_parser::type_parser::TypeParserWithContext;
+use crate::codegen::parser::mir::type_parser::unencodable::SplayedSegment;
+use crate::codegen::parser::mir::type_parser::TypeParserWithContext;
 use quote::ToTokens;
 use std::collections::HashMap;
 use std::fmt::Debug;

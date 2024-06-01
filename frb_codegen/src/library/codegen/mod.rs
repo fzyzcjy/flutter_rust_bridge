@@ -14,9 +14,9 @@ use crate::codegen::config::internal_config::InternalConfig;
 use crate::codegen::dumper::internal_config::ConfigDumpContent::Config as ContentConfig;
 use crate::codegen::dumper::Dumper;
 use crate::codegen::ir::mir::pack::MirPack;
-use crate::codegen::mir_parser::internal_config::ParserInternalConfig;
-use crate::codegen::mir_parser::reader::CachedRustReader;
 use crate::codegen::misc::GeneratorProgressBarPack;
+use crate::codegen::parser::mir::internal_config::ParserInternalConfig;
+use crate::codegen::parser::mir::reader::CachedRustReader;
 pub use config::config::{Config, MetaConfig};
 pub use dumper::internal_config::ConfigDumpContent;
 use log::debug;
@@ -88,12 +88,12 @@ fn parse(
     drop(pb);
 
     let pb = progress_bar_pack.parse_hir.start();
-    let hir_hierarchical = hir_parser::hierarchical::parse(config, file)?;
-    let hir_flat = hir_parser::flat::parse(&hir_hierarchical.root_module)?;
+    let hir_hierarchical = parser::hir::hierarchical::parse(config, file)?;
+    let hir_flat = parser::hir::flat::parse(&hir_hierarchical.root_module)?;
     drop(pb);
 
     let pb = progress_bar_pack.parse_mir.start();
-    let mir_pack = mir_parser::parse(config, &hir_flat)?;
+    let mir_pack = parser::mir::parse(config, &hir_flat)?;
     drop(pb);
 
     Ok(mir_pack)

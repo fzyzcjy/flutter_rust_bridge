@@ -14,8 +14,8 @@ use crate::codegen::generator::wire::dart::internal_config::{
 };
 use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInternalConfig;
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
-use crate::codegen::mir_parser::internal_config::ParserInternalConfig;
-use crate::codegen::mir_parser::internal_config::RustInputNamespacePack;
+use crate::codegen::parser::mir::internal_config::ParserInternalConfig;
+use crate::codegen::parser::mir::internal_config::RustInputNamespacePack;
 use crate::codegen::polisher::internal_config::PolisherInternalConfig;
 use crate::codegen::preparer::internal_config::PreparerInternalConfig;
 use crate::codegen::{Config, ConfigDumpContent};

@@ -7,15 +7,15 @@ use crate::codegen::ir::mir::ident::MirIdent;
 use crate::codegen::ir::mir::namespace::NamespacedName;
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::MirType;
-use crate::codegen::mir_parser::attribute_parser::FrbAttributes;
-use crate::codegen::mir_parser::auto_accessor_parser::MirFuncAndSanityCheckInfo;
-use crate::codegen::mir_parser::function_parser::argument::merge_ownership_into_ty;
-use crate::codegen::mir_parser::function_parser::{
+use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
+use crate::codegen::parser::mir::auto_accessor_parser::MirFuncAndSanityCheckInfo;
+use crate::codegen::parser::mir::function_parser::argument::merge_ownership_into_ty;
+use crate::codegen::parser::mir::function_parser::{
     compute_codec_mode_pack, parse_effective_function_name_of_method,
 };
-use crate::codegen::mir_parser::internal_config::ParserInternalConfig;
-use crate::codegen::mir_parser::sanity_checker::auto_accessor_checker;
-use crate::codegen::mir_parser::type_parser::{TypeParser, TypeParserParsingContext};
+use crate::codegen::parser::mir::internal_config::ParserInternalConfig;
+use crate::codegen::parser::mir::sanity_checker::auto_accessor_checker;
+use crate::codegen::parser::mir::type_parser::{TypeParser, TypeParserParsingContext};
 use sha1::{Digest, Sha1};
 
 pub(super) fn parse_auto_accessor_of_field(

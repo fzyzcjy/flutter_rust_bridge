@@ -6,11 +6,11 @@ use crate::codegen::ir::mir::func::{MirFunc, MirFuncAccessorMode};
 use crate::codegen::ir::mir::namespace::NamespacedName;
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::mir::ty::{MirContext, MirType};
-use crate::codegen::mir_parser::attribute_parser::FrbAttributes;
-use crate::codegen::mir_parser::internal_config::ParserInternalConfig;
-use crate::codegen::mir_parser::misc::extract_src_types_in_paths;
-use crate::codegen::mir_parser::sanity_checker::auto_accessor_checker;
-use crate::codegen::mir_parser::type_parser::{
+use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
+use crate::codegen::parser::mir::internal_config::ParserInternalConfig;
+use crate::codegen::parser::mir::misc::extract_src_types_in_paths;
+use crate::codegen::parser::mir::sanity_checker::auto_accessor_checker;
+use crate::codegen::parser::mir::type_parser::{
     TypeParser, TypeParserParsingContext, TypeParserWithContext,
 };
 use field::parse_auto_accessor_of_field;

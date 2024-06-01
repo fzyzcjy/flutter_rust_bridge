@@ -1,15 +1,15 @@
 use crate::codegen::dumper::Dumper;
-use crate::codegen::hir_parser::hierarchical::function::parse_generalized_functions;
-use crate::codegen::hir_parser::hierarchical::item_type::parse_syn_item_type;
-use crate::codegen::hir_parser::hierarchical::struct_or_enum::{
-    parse_syn_item_enum, parse_syn_item_struct,
-};
 use crate::codegen::ir::hir::hierarchical::module::{
     HirModule, HirModuleContent, HirModuleMeta, HirVisibility,
 };
 use crate::codegen::ir::mir::namespace::Namespace;
-use crate::codegen::mir_parser::internal_config::ParserInternalConfig;
-use crate::codegen::mir_parser::reader::CachedRustReader;
+use crate::codegen::parser::hir::hierarchical::function::parse_generalized_functions;
+use crate::codegen::parser::hir::hierarchical::item_type::parse_syn_item_type;
+use crate::codegen::parser::hir::hierarchical::struct_or_enum::{
+    parse_syn_item_enum, parse_syn_item_struct,
+};
+use crate::codegen::parser::mir::internal_config::ParserInternalConfig;
+use crate::codegen::parser::mir::reader::CachedRustReader;
 use log::debug;
 use syn::ItemMod;
 

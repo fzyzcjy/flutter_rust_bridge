@@ -1,6 +1,6 @@
 use crate::codegen::ir::mir::ty::MirType;
-use crate::codegen::mir_parser::type_parser::misc::convert_ident_str;
-use crate::codegen::mir_parser::type_parser::TypeParserWithContext;
+use crate::codegen::parser::mir::type_parser::misc::convert_ident_str;
+use crate::codegen::parser::mir::type_parser::TypeParserWithContext;
 use anyhow::Context;
 use syn::Type;
 

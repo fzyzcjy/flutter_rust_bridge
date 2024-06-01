@@ -3,7 +3,7 @@ use crate::codegen::config::internal_config_parser::rust_path_migrator::ConfigRu
 use crate::codegen::generator::misc::target::TargetOrCommonMap;
 use crate::codegen::generator::wire::dart::internal_config::DartOutputClassNamePack;
 use crate::codegen::ir::mir::namespace::Namespace;
-use crate::codegen::mir_parser::internal_config::RustInputNamespacePack;
+use crate::codegen::parser::mir::internal_config::RustInputNamespacePack;
 use crate::codegen::Config;
 use crate::utils::path_utils::{canonicalize_with_error_message, find_rust_crate_dir, glob_path};
 use anyhow::{ensure, Context};

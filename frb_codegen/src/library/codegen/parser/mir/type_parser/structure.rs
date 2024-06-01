@@ -5,13 +5,13 @@ use crate::codegen::ir::mir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::mir::ty::structure::{MirStruct, MirStructIdent, MirTypeStructRef};
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ir::mir::ty::MirType::StructRef;
-use crate::codegen::mir_parser::attribute_parser::FrbAttributes;
-use crate::codegen::mir_parser::type_parser::enum_or_struct::{
+use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
+use crate::codegen::parser::mir::type_parser::enum_or_struct::{
     EnumOrStructParser, EnumOrStructParserInfo,
 };
-use crate::codegen::mir_parser::type_parser::misc::parse_comments;
-use crate::codegen::mir_parser::type_parser::unencodable::SplayedSegment;
-use crate::codegen::mir_parser::type_parser::TypeParserWithContext;
+use crate::codegen::parser::mir::type_parser::misc::parse_comments;
+use crate::codegen::parser::mir::type_parser::unencodable::SplayedSegment;
+use crate::codegen::parser::mir::type_parser::TypeParserWithContext;
 use anyhow::bail;
 use std::collections::HashMap;
 use syn::{Field, Fields, FieldsNamed, FieldsUnnamed, ItemStruct, Type, Visibility};

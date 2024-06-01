@@ -8,9 +8,9 @@ use crate::codegen::ir::mir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::mir::ty::MirType;
-use crate::codegen::mir_parser::attribute_parser::FrbAttributes;
-use crate::codegen::mir_parser::type_parser::misc::parse_comments;
-use crate::codegen::mir_parser::type_parser::{
+use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
+use crate::codegen::parser::mir::type_parser::misc::parse_comments;
+use crate::codegen::parser::mir::type_parser::{
     external_impl, TypeParser, TypeParserParsingContext,
 };
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
