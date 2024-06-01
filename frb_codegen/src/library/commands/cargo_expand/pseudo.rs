@@ -14,6 +14,11 @@ pub(super) fn run(rust_crate_dir: &Path) -> anyhow::Result<syn::File> {
 
 fn parse_file(path: &Path) -> anyhow::Result<syn::File> {
     let code = fs::read_to_string(&path)?;
-    let ast = syn::parse_file(&code)?;
+    let mut file = syn::parse_file(&code)?;
+    replace_mod_derivative(&mut file)?;
+    Ok(file)
+}
+
+fn replace_mod_derivative(file: &mut syn::File) -> anyhow::Result<()> {
     TODO
 }
