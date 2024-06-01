@@ -8,6 +8,7 @@ use crate::codegen::hir_parser::hierarchical::struct_or_enum::{
 };
 use crate::codegen::parser::reader::CachedRustReader;
 use log::debug;
+use syn::ItemMod;
 
 pub(crate) fn parse_module(
     items: &[syn::Item],
@@ -41,4 +42,15 @@ fn parse_syn_item(item: &syn::Item, scope: &mut HirModuleScope) -> anyhow::Resul
         _ => {}
     }
     Ok(())
+}
+
+fn parse_syn_item_mod(item_mod: &ItemMod) -> anyhow::Result<Option<HirModule>> {
+    // TODO module_path := module_path + ident
+    // let ident = item_mod.ident.clone();
+
+    if let Some((_, items)) = &item_mod.content {
+        parse_module(items, item_mod.vis.into())
+    } else {
+        Ok(None)
+    }
 }
