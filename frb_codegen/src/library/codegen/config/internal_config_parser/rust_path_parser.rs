@@ -27,9 +27,9 @@ pub(super) fn compute_rust_input_info(
         third_party_crate_names: compute_third_party_crate_names(&rust_input_namespace_prefixes_raw),
         rust_input_namespace_pack: RustInputNamespacePack {
             rust_input_namespace_prefixes: tidy_rust_input_namespace_prefixes(
-                rust_input_namespace_prefixes_raw,
+                &rust_input_namespace_prefixes_raw,
             ),
-        }?,
+        },
     })
 }
 
