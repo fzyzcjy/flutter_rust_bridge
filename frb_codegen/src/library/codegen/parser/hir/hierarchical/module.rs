@@ -9,7 +9,6 @@ use crate::codegen::parser::hir::hierarchical::struct_or_enum::{
     parse_syn_item_enum, parse_syn_item_struct,
 };
 use crate::codegen::parser::mir::internal_config::ParserInternalConfig;
-use crate::codegen::parser::mir::reader::CachedRustReader;
 use log::debug;
 use syn::ItemMod;
 

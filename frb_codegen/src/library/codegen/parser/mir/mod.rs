@@ -21,7 +21,6 @@ use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::codegen::parser::mir::auto_accessor_parser::parse_auto_accessors;
 use crate::codegen::parser::mir::function_parser::FunctionParser;
 use crate::codegen::parser::mir::internal_config::ParserInternalConfig;
-use crate::codegen::parser::mir::reader::CachedRustReader;
 use crate::codegen::parser::mir::sanity_checker::opaque_inside_translatable_checker::check_opaque_inside_translatable;
 use crate::codegen::parser::mir::sanity_checker::unused_checker::get_unused_types;
 use crate::codegen::parser::mir::type_parser::TypeParser;
