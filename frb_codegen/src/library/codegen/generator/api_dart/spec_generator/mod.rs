@@ -9,18 +9,19 @@ use crate::codegen::generator::api_dart::spec_generator::function::ApiDartGenera
 use crate::codegen::generator::api_dart::spec_generator::misc::generate_imports_which_types_and_funcs_use;
 use crate::codegen::generator::api_dart::spec_generator::sanity_checker::sanity_check_class_name_duplicates;
 use crate::codegen::ir::mir::func::{MirFunc, MirFuncOwnerInfo};
-use crate::utils::namespace::Namespace;
 use crate::codegen::ir::mir::pack::{MirPack, MirPackComputedCache};
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ConfigDumpContent;
 use crate::library::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::basic_code::DartBasicHeaderCode;
+use crate::utils::namespace::Namespace;
 use anyhow::Result;
 use itertools::Itertools;
 use serde::Serialize;
 use std::collections::{HashMap, HashSet};
 use ConfigDumpContent::GeneratorInfo;
+use crate::codegen::ir::mir::skip::MirSkipReason;
 
 pub(crate) mod base;
 pub(crate) mod class;
@@ -42,7 +43,7 @@ pub(crate) struct ApiDartOutputSpecItem {
     pub imports: DartBasicHeaderCode,
     pub preamble: String,
     pub unused_types: Vec<String>,
-    pub skipped_functions: Vec<String>,
+    pub skipped_functions: HashMap<MirSkipReason, String>,
     pub needs_freezed: bool,
 }
 
@@ -132,9 +133,11 @@ fn generate_item(
 
     let skipped_functions = (context.mir_pack.skipped_functions.iter())
         .filter(|t| &t.name.namespace == namespace)
-        .group_by(|t| t.reason)
-        // .map(|t| t.name.name.to_owned())
-        .collect_vec();
+        .cloned()
+        .into_group_map_by(|t| t.reason)
+        .into_iter()
+        .map(|(reason, items)| (reason, items.into_iter().map(|x| x.name.name).collect_vec()))
+        .collect::<HashMap<_, _>>();
 
     let needs_freezed = classes.iter().any(|class| class.needs_freezed);
 

@@ -6,6 +6,7 @@ pub struct MirSkip {
     pub reason: MirSkipReason,
 }
 
+#[derive(Copy)]
 pub(crate) enum MirSkipReason {
     Ignored,
     Err,
