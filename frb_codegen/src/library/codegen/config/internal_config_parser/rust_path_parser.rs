@@ -7,6 +7,7 @@ use crate::codegen::parser::internal_config::RustInputNamespacePack;
 use crate::codegen::Config;
 use crate::utils::path_utils::{canonicalize_with_error_message, find_rust_crate_dir, glob_path};
 use anyhow::{ensure, Context};
+use itertools::Itertools;
 use std::path::{Path, PathBuf};
 
 pub(super) struct RustInputInfo {
@@ -32,8 +33,10 @@ fn compute_rust_input_namespace_pack(
     base_dir: &Path,
 ) -> anyhow::Result<RustInputNamespacePack> {
     Ok(RustInputNamespacePack {
-        // will support multi prefices later
-        rust_input_namespace_prefices: vec![Namespace::new_raw(raw_rust_input.to_owned())],
+        rust_input_namespace_prefices: raw_rust_input
+            .split(",")
+            .map(|s| Namespace::new_raw(s.to_owned()))
+            .collect_vec(),
     })
 
     // const BLACKLIST_FILE_NAMES: [&str; 1] = ["mod.rs"];
