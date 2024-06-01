@@ -41,3 +41,39 @@ fn modify_mod(item_mod: &mut syn::ItemMod) -> anyhow::Result<()> {
 
     Ok(())
 }
+
+fn get_module_file_path_candidates(
+    module_name: String,
+    parent_module_file_path: &Path,
+) -> Vec<PathBuf> {
+    [
+        parent_module_file_path.parent().unwrap().to_owned(),
+        parent_module_file_path.with_extension(""),
+    ]
+        .iter()
+        .flat_map(|folder_path| {
+            [
+                folder_path.join(&module_name).with_extension("rs"),
+                folder_path.join(&module_name).join("mod.rs"),
+            ]
+        })
+        .collect_vec()
+}
+
+#[cfg(test)]
+mod tests {
+    use std::path::PathBuf;
+
+    #[test]
+    fn test_get_module_file_path_candidates_simple() {
+        let actual =
+            get_module_file_path_candidates("api".to_owned(), &PathBuf::from("/hello/src/main.rs"));
+        let expect = vec![
+            PathBuf::from("/hello/src/api.rs"),
+            PathBuf::from("/hello/src/api/mod.rs"),
+            PathBuf::from("/hello/src/main/api.rs"),
+            PathBuf::from("/hello/src/main/api/mod.rs"),
+        ];
+        assert_eq!(actual, expect);
+    }
+}
