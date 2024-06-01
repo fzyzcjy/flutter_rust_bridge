@@ -1,12 +1,12 @@
 use crate::codegen::ir::hir::hierarchical::module::HirModule;
 use crate::codegen::ir::mir::namespace::{Namespace, NamespacedName};
-use crate::codegen::parser::mir::internal_config::ParserInternalConfig;
+use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::library::misc::consts::HANDLER_NAME;
 use anyhow::ensure;
 use itertools::Itertools;
 
 pub(super) fn parse_existing_handlers(
-    config: &ParserInternalConfig,
+    config: &ParserMirInternalConfig,
     modules: &[&HirModule],
 ) -> anyhow::Result<Vec<NamespacedName>> {
     let existing_handlers = (modules.iter())

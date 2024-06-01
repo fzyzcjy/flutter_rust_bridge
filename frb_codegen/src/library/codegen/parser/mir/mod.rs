@@ -20,7 +20,7 @@ use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::codegen::parser::mir::auto_accessor_parser::parse_auto_accessors;
 use crate::codegen::parser::mir::function_parser::FunctionParser;
-use crate::codegen::parser::mir::internal_config::ParserInternalConfig;
+use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::sanity_checker::opaque_inside_translatable_checker::check_opaque_inside_translatable;
 use crate::codegen::parser::mir::sanity_checker::unused_checker::get_unused_types;
 use crate::codegen::parser::mir::type_parser::TypeParser;
@@ -34,7 +34,7 @@ use std::path::Path;
 use syn::Visibility;
 
 pub(crate) fn parse(
-    config: &ParserInternalConfig,
+    config: &ParserMirInternalConfig,
     hir_flat_crate: &HirFlatCrate,
 ) -> anyhow::Result<MirPack> {
     let (src_fns_interest, src_fns_skipped): (Vec<_>, Vec<_>) = (hir_flat_crate.functions.iter())
@@ -81,7 +81,7 @@ pub(crate) fn parse(
 }
 
 fn parse_mir_funcs(
-    config: &ParserInternalConfig,
+    config: &ParserMirInternalConfig,
     src_fns: &[&HirFunction],
     type_parser: &mut TypeParser,
     src_structs: &HashMap<String, &HirStruct>,

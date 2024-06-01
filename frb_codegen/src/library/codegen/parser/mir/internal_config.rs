@@ -5,7 +5,7 @@ use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
-pub(crate) struct ParserInternalConfig {
+pub(crate) struct ParserMirInternalConfig {
     pub rust_input_namespace_pack: RustInputNamespacePack,
     pub rust_crate_dir: PathBuf,
     pub force_codec_mode_pack: Option<CodecModePack>,

@@ -7,7 +7,7 @@ use crate::codegen::ir::mir::namespace::NamespacedName;
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::mir::ty::{MirContext, MirType};
 use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
-use crate::codegen::parser::mir::internal_config::ParserInternalConfig;
+use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::misc::extract_src_types_in_paths;
 use crate::codegen::parser::mir::sanity_checker::auto_accessor_checker;
 use crate::codegen::parser::mir::type_parser::{
@@ -18,7 +18,7 @@ use itertools::Itertools;
 use std::collections::HashMap;
 
 pub(crate) fn parse_auto_accessors(
-    config: &ParserInternalConfig,
+    config: &ParserMirInternalConfig,
     src_structs: &HashMap<String, &HirStruct>,
     type_parser: &mut TypeParser,
 ) -> anyhow::Result<Vec<MirFunc>> {
@@ -44,7 +44,7 @@ pub(crate) fn parse_auto_accessors(
 }
 
 fn parse_auto_accessors_of_struct(
-    config: &ParserInternalConfig,
+    config: &ParserMirInternalConfig,
     struct_name: &NamespacedName,
     type_parser: &mut TypeParser,
 ) -> anyhow::Result<Vec<MirFuncAndSanityCheckInfo>> {

@@ -13,13 +13,13 @@ use crate::codegen::parser::mir::function_parser::argument::merge_ownership_into
 use crate::codegen::parser::mir::function_parser::{
     compute_codec_mode_pack, parse_effective_function_name_of_method,
 };
-use crate::codegen::parser::mir::internal_config::ParserInternalConfig;
+use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::sanity_checker::auto_accessor_checker;
 use crate::codegen::parser::mir::type_parser::{TypeParser, TypeParserParsingContext};
 use sha1::{Digest, Sha1};
 
 pub(super) fn parse_auto_accessor_of_field(
-    config: &ParserInternalConfig,
+    config: &ParserMirInternalConfig,
     struct_name: &NamespacedName,
     field: &MirField,
     accessor_mode: MirFuncAccessorMode,
