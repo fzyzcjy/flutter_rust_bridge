@@ -1,3 +1,13 @@
+use crate::codegen::dumper::Dumper;
+use crate::codegen::ConfigDumpContent;
+use crate::command_args;
+use crate::library::commands::command_runner::execute_command;
+use crate::utils::path_utils::{normalize_windows_unc_path, path_to_string};
+use anyhow::{bail, Context, Result};
+use itertools::Itertools;
+use lazy_static::lazy_static;
+use log::{debug, info, warn};
+use regex::Regex;
 use std::borrow::Cow;
 use std::env;
 use std::path::Path;
@@ -47,7 +57,7 @@ fn run_raw(
         if stderr.contains("no such command: `expand`") && allow_auto_install {
             info!("Cargo expand is not installed. Automatically install and re-run.");
             install_cargo_expand()?;
-            return run_raw(rust_crate_dir, extra_rustflags, dumper, false);
+            return run_raw(rust_crate_dir, extra_rustflags, false);
         }
         // This will stop the whole generator and tell the users, so we do not care about testing it
         // frb-coverage:ignore-start
