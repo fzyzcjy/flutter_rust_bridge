@@ -7,6 +7,10 @@ use crate::utils::namespace::Namespace;
 pub(crate) struct CrateName(String);
 
 impl CrateName {
+    pub fn self_crate() -> CrateName {
+        CrateName::new(Namespace::SELF_CRATE.to_owned())
+    }
+
     pub const fn new(raw: String) -> Self {
         Self(raw)
     }
