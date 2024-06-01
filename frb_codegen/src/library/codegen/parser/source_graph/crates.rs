@@ -9,14 +9,6 @@ use std::fs;
 use std::path::{Path, PathBuf};
 use syn::File;
 
-/// Represents a crate, including a map of its modules, imports, structs and enums.
-#[derive(Debug, Clone, serde::Serialize)]
-pub struct Crate {
-    name: String,
-    manifest_path: PathBuf,
-    root_module: Module,
-}
-
 impl Crate {
     pub(crate) fn parse(
         manifest_path: &Path,
