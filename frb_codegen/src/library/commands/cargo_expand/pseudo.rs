@@ -43,21 +43,21 @@ fn modify_mod(item_mod: &mut syn::ItemMod) -> anyhow::Result<()> {
 }
 
 fn get_module_file_path_candidates(
-    module_name: String,
+    module_name: &str,
     parent_module_file_path: &Path,
 ) -> Vec<PathBuf> {
     [
         parent_module_file_path.parent().unwrap().to_owned(),
         parent_module_file_path.with_extension(""),
     ]
-        .iter()
-        .flat_map(|folder_path| {
-            [
-                folder_path.join(&module_name).with_extension("rs"),
-                folder_path.join(&module_name).join("mod.rs"),
-            ]
-        })
-        .collect_vec()
+    .iter()
+    .flat_map(|folder_path| {
+        [
+            folder_path.join(&module_name).with_extension("rs"),
+            folder_path.join(&module_name).join("mod.rs"),
+        ]
+    })
+    .collect_vec()
 }
 
 #[cfg(test)]
@@ -66,8 +66,7 @@ mod tests {
 
     #[test]
     fn test_get_module_file_path_candidates_simple() {
-        let actual =
-            get_module_file_path_candidates("api".to_owned(), &PathBuf::from("/hello/src/main.rs"));
+        let actual = get_module_file_path_candidates("api", &PathBuf::from("/hello/src/main.rs"));
         let expect = vec![
             PathBuf::from("/hello/src/api.rs"),
             PathBuf::from("/hello/src/api/mod.rs"),
