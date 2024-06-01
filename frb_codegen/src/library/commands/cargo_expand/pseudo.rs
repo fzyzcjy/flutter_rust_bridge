@@ -34,7 +34,7 @@ fn modify_file(file: &mut syn::File) -> anyhow::Result<()> {
 fn modify_mod(item_mod: &mut syn::ItemMod) -> anyhow::Result<()> {
     ensure!(item_mod.content.is_none() && item_mod.semi.is_some());
 
-    if let Some(mod_path) = first_existing_path(&get_module_file_path_candidates(TODO, TODO)) {
+    if let Some(mod_path) = get_module_file_path() {
         let mod_syn_file = parse_file(mod_path)?;
         item_mod.semi = None;
         item_mod.content = Some(syn::token::Brace::default(), mod_syn_file.items);
@@ -45,7 +45,8 @@ fn modify_mod(item_mod: &mut syn::ItemMod) -> anyhow::Result<()> {
     Ok(())
 }
 
-fn first_existing_path(path_candidates: &[PathBuf]) -> Option<&PathBuf> {
+fn get_module_file_path() -> Option<&PathBuf> {
+    let path_candidates = get_module_file_path_candidates();
     path_candidates.iter().find(|path| path.exists())
 }
 
