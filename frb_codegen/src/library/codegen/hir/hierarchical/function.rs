@@ -1,10 +1,11 @@
+use crate::codegen::ir::namespace::Namespace;
 use proc_macro2::Span;
 use std::path::PathBuf;
 use syn::spanned::Spanned;
 use syn::{Attribute, ImplItemFn, ItemFn, ItemImpl, Signature, Visibility};
 
 pub(crate) struct HirFunction {
-    pub(crate) path: PathBuf,
+    pub(crate) namespace: Namespace,
     pub(crate) inner: HirFunctionInner,
 }
 
