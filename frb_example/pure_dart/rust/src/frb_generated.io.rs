@@ -9648,6 +9648,15 @@ impl CstDecode<Vec<i8>> for *mut wire_cst_list_prim_i_8_strict {
         }
     }
 }
+impl CstDecode<Vec<isize>> for *mut wire_cst_list_prim_isize_strict {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> Vec<isize> {
+        unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
+    }
+}
 impl CstDecode<Vec<u16>> for *mut wire_cst_list_prim_u_16_loose {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<u16> {
@@ -9705,6 +9714,15 @@ impl CstDecode<Vec<u8>> for *mut wire_cst_list_prim_u_8_loose {
 impl CstDecode<Vec<u8>> for *mut wire_cst_list_prim_u_8_strict {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<u8> {
+        unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
+    }
+}
+impl CstDecode<Vec<usize>> for *mut wire_cst_list_prim_usize_strict {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> Vec<usize> {
         unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
             flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -19892,6 +19910,16 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_isize_twin_normal(
+    port_: i64,
+    arg: *mut wire_cst_list_prim_isize_strict,
+) {
+    wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_isize_twin_normal_impl(
+        port_, arg,
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_string_twin_normal(
     port_: i64,
     arg: *mut wire_cst_list_String,
@@ -19937,6 +19965,16 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
     arg: *mut wire_cst_list_prim_u_8_loose,
 ) {
     wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u8_twin_normal_impl(
+        port_, arg,
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_usize_twin_normal(
+    port_: i64,
+    arg: *mut wire_cst_list_prim_usize_strict,
+) {
+    wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_usize_twin_normal_impl(
         port_, arg,
     )
 }
@@ -20030,6 +20068,14 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_isize_twin_rust_async(
+    port_: i64,
+    arg: *mut wire_cst_list_prim_isize_strict,
+) {
+    wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_isize_twin_rust_async_impl(port_, arg)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_string_twin_rust_async(
     port_: i64,
     arg: *mut wire_cst_list_String,
@@ -20067,6 +20113,14 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
     arg: *mut wire_cst_list_prim_u_8_loose,
 ) {
     wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_u8_twin_rust_async_impl(port_, arg)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_usize_twin_rust_async(
+    port_: i64,
+    arg: *mut wire_cst_list_prim_usize_strict,
+) {
+    wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_usize_twin_rust_async_impl(port_, arg)
 }
 
 #[no_mangle]
@@ -20180,6 +20234,16 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_basic_list_type_isize_twin_rust_async_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_basic_list_type_isize_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_basic_list_type_string_twin_rust_async_sse(
     port_: i64,
     ptr_: *mut u8,
@@ -20227,6 +20291,16 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
     data_len_: i32,
 ) {
     wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_basic_list_type_u8_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_basic_list_type_usize_twin_rust_async_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_basic_list_type_usize_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
@@ -20375,6 +20449,16 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_type_isize_twin_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_type_isize_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_type_string_twin_sse(
     port_: i64,
     ptr_: *mut u8,
@@ -20442,6 +20526,16 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
         rust_vec_len_,
         data_len_,
     )
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_type_usize_twin_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_type_usize_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
@@ -20524,6 +20618,13 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_isize_twin_sync(
+    arg: *mut wire_cst_list_prim_isize_strict,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_isize_twin_sync_impl(arg)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_string_twin_sync(
     arg: *mut wire_cst_list_String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
@@ -20558,6 +20659,13 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
     wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u8_twin_sync_impl(
         arg,
     )
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_usize_twin_sync(
+    arg: *mut wire_cst_list_prim_usize_strict,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_usize_twin_sync_impl(arg)
 }
 
 #[no_mangle]
@@ -20660,6 +20768,15 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_isize_twin_sync_sse(
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_isize_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_string_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
@@ -20702,6 +20819,15 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_u8_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_usize_twin_sync_sse(
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_usize_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
@@ -48643,6 +48769,17 @@ pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_prim_i_8_strict(
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_prim_isize_strict(
+    len: i32,
+) -> *mut wire_cst_list_prim_isize_strict {
+    let ans = wire_cst_list_prim_isize_strict {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_prim_u_16_loose(
     len: i32,
 ) -> *mut wire_cst_list_prim_u_16_loose {
@@ -48713,6 +48850,17 @@ pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_prim_u_8_strict(
     len: i32,
 ) -> *mut wire_cst_list_prim_u_8_strict {
     let ans = wire_cst_list_prim_u_8_strict {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_prim_usize_strict(
+    len: i32,
+) -> *mut wire_cst_list_prim_usize_strict {
+    let ans = wire_cst_list_prim_usize_strict {
         ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len),
         len,
     };
@@ -51854,6 +52002,12 @@ pub struct wire_cst_list_prim_i_8_strict {
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
+pub struct wire_cst_list_prim_isize_strict {
+    ptr: *mut isize,
+    len: i32,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
 pub struct wire_cst_list_prim_u_16_loose {
     ptr: *mut u16,
     len: i32,
@@ -51892,6 +52046,12 @@ pub struct wire_cst_list_prim_u_8_loose {
 #[derive(Clone, Copy)]
 pub struct wire_cst_list_prim_u_8_strict {
     ptr: *mut u8,
+    len: i32,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_list_prim_usize_strict {
+    ptr: *mut usize,
     len: i32,
 }
 #[repr(C)]
