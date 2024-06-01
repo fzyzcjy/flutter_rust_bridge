@@ -2,6 +2,7 @@ use crate::codegen::hir::hierarchical::crates::HirCrate;
 use crate::codegen::hir::hierarchical::module::{HirModuleMeta, HirVisibility};
 use crate::codegen::hir_parser::hierarchical::module::parse_module;
 use crate::codegen::ir::namespace::Namespace;
+use crate::codegen::parser::internal_config::ParserInternalConfig;
 
 pub(crate) mod function;
 pub(crate) mod item_type;
@@ -10,11 +11,11 @@ pub(crate) mod module;
 pub(crate) mod struct_or_enum;
 pub(crate) mod visibility;
 
-pub(crate) fn parse(file: &syn::File) -> anyhow::Result<HirCrate> {
+pub(crate) fn parse(config: &ParserInternalConfig, file: &syn::File) -> anyhow::Result<HirCrate> {
     let info = HirModuleMeta {
         visibility: HirVisibility::Public,
         namespace: Namespace::new(vec![Namespace::SELF_CRATE.to_owned()]),
     };
-    let root_module = parse_module(&file.items, info)?;
+    let root_module = parse_module(&file.items, info, config)?;
     Ok(HirCrate { root_module })
 }

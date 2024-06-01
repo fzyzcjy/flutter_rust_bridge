@@ -90,7 +90,7 @@ fn parse(
     drop(pb);
 
     let pb = progress_bar_pack.parse_hir.start();
-    let hir_hierarchical = hir_parser::hierarchical::parse(file)?;
+    let hir_hierarchical = hir_parser::hierarchical::parse(config, file)?;
     let hir_flat = hir_parser::flat::parse(&hir_hierarchical.root_module)?;
     drop(pb);
 

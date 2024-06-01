@@ -8,16 +8,21 @@ use crate::codegen::hir_parser::hierarchical::struct_or_enum::{
     parse_syn_item_enum, parse_syn_item_struct,
 };
 use crate::codegen::ir::namespace::Namespace;
+use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::parser::reader::CachedRustReader;
 use log::debug;
 use syn::ItemMod;
 
-pub(crate) fn parse_module(items: &[syn::Item], info: HirModuleMeta) -> anyhow::Result<HirModule> {
+pub(crate) fn parse_module(
+    items: &[syn::Item],
+    info: HirModuleMeta,
+    config: &ParserInternalConfig,
+) -> anyhow::Result<HirModule> {
     let mut scope = HirModuleContent::default();
     scope.functions = parse_generalized_functions(items, &info.namespace)?;
 
     for item in items.iter() {
-        parse_syn_item(item, &mut scope, &info.namespace)?;
+        parse_syn_item(item, &mut scope, &info.namespace, config)?;
     }
 
     Ok(HirModule {
@@ -30,6 +35,7 @@ fn parse_syn_item(
     item: &syn::Item,
     scope: &mut HirModuleContent,
     namespace: &Namespace,
+    config: &ParserInternalConfig,
 ) -> anyhow::Result<()> {
     match item {
         syn::Item::Struct(item_struct) => {
@@ -46,7 +52,7 @@ fn parse_syn_item(
         syn::Item::Mod(item_mod) => {
             scope
                 .modules
-                .extend(parse_syn_item_mod(item_mod, namespace)?);
+                .extend(parse_syn_item_mod(item_mod, namespace, config)?);
         }
         _ => {}
     }
@@ -56,13 +62,14 @@ fn parse_syn_item(
 fn parse_syn_item_mod(
     item_mod: &ItemMod,
     namespace: &Namespace,
+    config: &ParserInternalConfig,
 ) -> anyhow::Result<Option<HirModule>> {
     Ok(if let Some((_, items)) = &item_mod.content {
         let info = HirModuleMeta {
             visibility: (&item_mod.vis).into(),
             namespace: namespace.join(&item_mod.ident.to_string()),
         };
-        Some(parse_module(items, info)?)
+        Some(parse_module(items, info, config)?)
     } else {
         None
     })
