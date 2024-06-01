@@ -16,25 +16,25 @@ pub(super) fn run(rust_crate_dir: &Path) -> anyhow::Result<syn::File> {
 fn parse_file(path: &Path) -> anyhow::Result<syn::File> {
     let code = fs::read_to_string(&path)?;
     let mut file = syn::parse_file(&code)?;
-    modify_file(&mut file)?;
+    modify_file(&mut file, path)?;
     Ok(file)
 }
 
-fn modify_file(file: &mut syn::File) -> anyhow::Result<()> {
+fn modify_file(file: &mut syn::File, path: &Path) -> anyhow::Result<()> {
     for item in file.items.iter_mut() {
         if let syn::Item::Mod(item_mod) = item {
             if item_mod.content.is_none() {
-                modify_mod(item_mod)?;
+                modify_mod(item_mod, path)?;
             }
         }
     }
     Ok(())
 }
 
-fn modify_mod(item_mod: &mut syn::ItemMod) -> anyhow::Result<()> {
+fn modify_mod(item_mod: &mut syn::ItemMod, path: &Path) -> anyhow::Result<()> {
     ensure!(item_mod.content.is_none() && item_mod.semi.is_some());
 
-    if let Some(mod_path) = get_module_file_path() {
+    if let Some(mod_path) = get_module_file_path(item_mod.ident.to_string(), path) {
         let mod_syn_file = parse_file(mod_path)?;
         item_mod.semi = None;
         item_mod.content = Some(syn::token::Brace::default(), mod_syn_file.items);
@@ -45,7 +45,7 @@ fn modify_mod(item_mod: &mut syn::ItemMod) -> anyhow::Result<()> {
     Ok(())
 }
 
-fn get_module_file_path() -> Option<&PathBuf> {
+fn get_module_file_path(module_name: &str, parent_module_file_path: &Path) -> Option<&PathBuf> {
     let path_candidates = get_module_file_path_candidates();
     path_candidates.iter().find(|path| path.exists())
 }
