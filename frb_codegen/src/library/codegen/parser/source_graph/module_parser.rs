@@ -1,6 +1,15 @@
 use crate::codegen::dumper::Dumper;
+use crate::codegen::hir::hierarchical::module::Module;
+use crate::codegen::hir::hierarchical::module::ModuleInfo;
+use crate::codegen::hir::hierarchical::module::ModuleScope;
+use crate::codegen::hir::hierarchical::module::ModuleSource;
+use crate::codegen::hir::hierarchical::module::Visibility;
+use crate::codegen::hir::hierarchical::struct_or_enum::Enum;
+use crate::codegen::hir::hierarchical::struct_or_enum::StructOrEnum;
+use crate::codegen::hir::hierarchical::type_alias::TypeAlias;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::reader::CachedRustReader;
+use crate::codegen::parser::Struct;
 use crate::utils::path_utils::{find_rust_crate_dir, path_to_string};
 use anyhow::Context;
 use itertools::Itertools;

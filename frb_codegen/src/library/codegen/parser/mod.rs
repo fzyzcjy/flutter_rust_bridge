@@ -12,6 +12,8 @@ pub(crate) mod type_alias_resolver;
 pub(crate) mod type_parser;
 
 use crate::codegen::dumper::Dumper;
+use crate::codegen::hir::hierarchical::crates::Crate;
+use crate::codegen::hir::hierarchical::struct_or_enum::Struct;
 use crate::codegen::ir::func::IrFunc;
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::pack::IrPack;
@@ -25,7 +27,6 @@ use crate::codegen::parser::misc::parse_has_executor;
 use crate::codegen::parser::reader::CachedRustReader;
 use crate::codegen::parser::sanity_checker::opaque_inside_translatable_checker::check_opaque_inside_translatable;
 use crate::codegen::parser::sanity_checker::unused_checker::get_unused_types;
-use crate::codegen::parser::source_graph::modules::Struct;
 use crate::codegen::parser::type_alias_resolver::resolve_type_aliases;
 use crate::codegen::parser::type_parser::TypeParser;
 use crate::codegen::ConfigDumpContent;
@@ -67,7 +68,7 @@ pub(crate) fn parse(
     drop(pb);
 
     let pb = progress_bar_pack.parse_source_graph.start();
-    let crate_map = source_graph::crates::Crate::parse(
+    let crate_map = Crate::parse(
         &config.rust_crate_dir.join("Cargo.toml"),
         cached_rust_reader,
         dumper,
@@ -201,6 +202,7 @@ mod tests {
     use crate::codegen::config::internal_config_parser::compute_force_codec_mode_pack;
     use crate::codegen::dumper::Dumper;
     use crate::codegen::generator::codec::structs::CodecMode;
+    use crate::codegen::hir::hierarchical::crates::Crate;
     use crate::codegen::ir::namespace::Namespace;
     use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
     use crate::codegen::misc::GeneratorProgressBarPack;
@@ -208,7 +210,6 @@ mod tests {
     use crate::codegen::parser::internal_config::RustInputNamespacePack;
     use crate::codegen::parser::parse;
     use crate::codegen::parser::reader::CachedRustReader;
-    use crate::codegen::parser::source_graph::crates::Crate;
     use crate::codegen::parser::IrPack;
     use crate::utils::logs::configure_opinionated_test_logging;
     use crate::utils::test_utils::{

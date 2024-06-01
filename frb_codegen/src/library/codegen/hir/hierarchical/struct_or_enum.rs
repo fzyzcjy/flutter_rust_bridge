@@ -1,3 +1,4 @@
+use crate::codegen::hir::hierarchical::module::Visibility;
 use crate::codegen::ir::namespace::Namespace;
 use derivative::Derivative;
 use proc_macro2::Ident;

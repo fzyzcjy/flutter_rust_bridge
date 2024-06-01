@@ -1,3 +1,4 @@
+use crate::codegen::hir::hierarchical::struct_or_enum::Struct;
 use crate::codegen::ir::field::{IrField, IrFieldSettings};
 use crate::codegen::ir::ident::IrIdent;
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
@@ -5,7 +6,6 @@ use crate::codegen::ir::ty::structure::{IrStruct, IrStructIdent, IrTypeStructRef
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::StructRef;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
-use crate::codegen::parser::source_graph::modules::Struct;
 use crate::codegen::parser::type_parser::enum_or_struct::{
     EnumOrStructParser, EnumOrStructParserInfo,
 };

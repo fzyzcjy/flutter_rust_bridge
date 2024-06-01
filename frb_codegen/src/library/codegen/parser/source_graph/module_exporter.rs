@@ -1,3 +1,6 @@
+use crate::codegen::hir::hierarchical::module::Module;
+use crate::codegen::hir::hierarchical::struct_or_enum::Enum;
+use crate::codegen::hir::hierarchical::struct_or_enum::Struct;
 use log::debug;
 use std::collections::HashMap;
 use std::fmt::Debug;

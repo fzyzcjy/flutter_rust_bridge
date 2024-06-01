@@ -1,3 +1,6 @@
+use crate::codegen::hir::hierarchical::struct_or_enum::Enum;
+use crate::codegen::hir::hierarchical::struct_or_enum::Struct;
+use crate::codegen::hir::hierarchical::type_alias::TypeAlias;
 use derivative::Derivative;
 use serde::Serialize;
 use std::path::PathBuf;

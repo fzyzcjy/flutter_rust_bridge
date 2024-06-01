@@ -1,5 +1,8 @@
 use crate::codegen::dumper::Dumper;
 use crate::codegen::hir::hierarchical::crates::Crate;
+use crate::codegen::hir::hierarchical::module::Module;
+use crate::codegen::hir::hierarchical::module::ModuleSource;
+use crate::codegen::hir::hierarchical::module::{ModuleInfo, Visibility};
 use crate::codegen::parser::reader::CachedRustReader;
 use crate::library::commands::cargo_metadata::execute_cargo_metadata;
 use anyhow::{bail, Context};
@@ -7,7 +10,6 @@ use cargo_metadata::Package;
 use log::debug;
 use std::fs;
 use std::path::{Path, PathBuf};
-use syn::token::Crate;
 use syn::File;
 
 impl Crate {
