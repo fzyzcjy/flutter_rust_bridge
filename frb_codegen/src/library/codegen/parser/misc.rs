@@ -17,7 +17,7 @@ pub(crate) fn extract_src_types_in_paths<T: HirStructOrEnumWrapper<I>, I>(
     Ok((src_items.iter())
         .filter_map(|(k, v)| {
             let namespace = &v.inner().namespaced_name.namespace;
-            if TODO(rust_input_namespace_pack) {
+            if rust_input_namespace_pack.is_interest(namespace) {
                 Some(NamespacedName::new(namespace.to_owned(), k.to_owned()))
             } else {
                 None

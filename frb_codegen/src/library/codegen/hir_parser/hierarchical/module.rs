@@ -20,7 +20,10 @@ pub(crate) fn parse_module(
 ) -> anyhow::Result<HirModule> {
     let mut scope = HirModuleContent::default();
 
-    if TODO(config.rust_input_namespace_pack) {
+    if config
+        .rust_input_namespace_pack
+        .is_interest(&info.namespace)
+    {
         scope.functions = parse_generalized_functions(items, &info.namespace)?;
     }
 
