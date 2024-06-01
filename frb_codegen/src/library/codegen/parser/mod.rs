@@ -38,9 +38,9 @@ pub(crate) fn parse(
     config: &ParserInternalConfig,
     hir_flat_crate: &HirFlatCrate,
 ) -> anyhow::Result<IrPack> {
-    let src_fns_all = &hir_flat_crate.functions;
-    let (src_fns_interest, src_fns_skipped): (Vec<_>, Vec<_>) = (src_fns_all.into_iter())
-        .partition(|item| matches!(item.inner.vis(), Visibility::Public(_)));
+    let (src_fns_interest, src_fns_skipped): (Vec<_>, Vec<_>) =
+        (&hir_flat_crate.functions.into_iter())
+            .partition(|item| matches!(item.inner.vis(), Visibility::Public(_)));
 
     let mut type_parser = TypeParser::new(
         hir_flat_crate.structs.clone(),
