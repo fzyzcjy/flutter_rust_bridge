@@ -44,22 +44,22 @@ impl HirCrate {
     }
 }
 
-fn get_root_src_file(root_package: &Package) -> anyhow::Result<PathBuf> {
-    for attempt_relative_path in ["src/lib.rs", "src/main.rs"] {
-        let file = root_package
-            .manifest_path
-            .parent()
-            .unwrap()
-            .join(attempt_relative_path);
-        if file.exists() {
-            return Ok(fs::canonicalize(file).unwrap());
-            // This will stop the whole generator and tell the users, so we do not care about testing it
-            // frb-coverage:ignore-start
-        }
-    }
-    bail!("No src/lib.rs or src/main.rs found for the specified/inferred Cargo.toml.")
-    // frb-coverage:ignore-end
-}
+// fn get_root_src_file(root_package: &Package) -> anyhow::Result<PathBuf> {
+//     for attempt_relative_path in ["src/lib.rs", "src/main.rs"] {
+//         let file = root_package
+//             .manifest_path
+//             .parent()
+//             .unwrap()
+//             .join(attempt_relative_path);
+//         if file.exists() {
+//             return Ok(fs::canonicalize(file).unwrap());
+//             // This will stop the whole generator and tell the users, so we do not care about testing it
+//             // frb-coverage:ignore-start
+//         }
+//     }
+//     bail!("No src/lib.rs or src/main.rs found for the specified/inferred Cargo.toml.")
+//     // frb-coverage:ignore-end
+// }
 
 fn get_root_module_info(root_src_file: PathBuf, root_src_ast: File) -> HirModuleInfo {
     HirModuleInfo {
