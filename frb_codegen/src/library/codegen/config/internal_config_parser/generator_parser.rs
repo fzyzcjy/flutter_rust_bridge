@@ -60,7 +60,7 @@ pub(super) fn parse(args: Args) -> anyhow::Result<GeneratorInternalConfig> {
         api_dart: GeneratorApiDartInternalConfig {
             dart_enums_style,
             dart3,
-            dart_decl_base_output_path: dart_output_path_pack.dart_decl_base_output_path,
+            dart_decl_base_output_path: dart_output_path_pack.dart_decl_base_output_path.clone(),
             dart_entrypoint_class_name: dart_output_class_name_pack.entrypoint_class_name.clone(),
             dart_preamble: config.dart_preamble.clone().unwrap_or_default(),
         },
@@ -77,7 +77,7 @@ pub(super) fn parse(args: Args) -> anyhow::Result<GeneratorInternalConfig> {
                     .collect_vec(),
                 llvm_compiler_opts: config.llvm_compiler_opts.clone().unwrap_or_default(),
                 extra_headers: config.extra_headers.clone().unwrap_or_default(),
-                dart_impl_output_path: dart_output_path_pack.dart_impl_output_path,
+                dart_impl_output_path: dart_output_path_pack.dart_impl_output_path.clone(),
                 dart_output_class_name_pack: dart_output_class_name_pack.to_owned(),
                 default_external_library_loader,
                 c_symbol_prefix: c_symbol_prefix.clone(),
