@@ -18,7 +18,7 @@ pub(crate) fn parse_module(items: &[syn::Item], info: HirModuleInfo) -> anyhow::
         parse_syn_item(item, &mut scope, &info.namespace)?;
     }
 
-    extract_generalized_functions_from_syn_items(items)?;
+    scope.functions = extract_generalized_functions_from_syn_items(items, &info.namespace)?;
 
     Ok(HirModule { info, scope })
 }
