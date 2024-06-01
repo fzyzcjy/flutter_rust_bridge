@@ -16,14 +16,11 @@ use std::env;
 use std::path::Path;
 
 pub(crate) fn run_cargo_expand(rust_crate_dir: &Path, dumper: &Dumper) -> Result<syn::File> {
-    let ans = if can_execute_real(rust_crate_dir)? {
-        real::run(rust_crate_dir)?
+    if can_execute_real(rust_crate_dir)? {
+        real::run(rust_crate_dir, dumper)
     } else {
-        pseudo::run(rust_crate_dir)?
-    };
-
-    dumper.dump_str(ConfigDumpContent::Source, "cargo_expand.rs", &ans)?;
-    Ok(ans)
+        pseudo::run(rust_crate_dir)
+    }
 }
 
 fn can_execute_real(rust_crate_dir: &Path) -> anyhow::Result<bool> {
