@@ -25,7 +25,9 @@ pub(super) fn compute_rust_input_info(
     Ok(RustInputInfo {
         rust_crate_dir: compute_rust_crate_dir(base_dir, &migrated_rust_input.rust_root)?,
         rust_input_namespace_pack: RustInputNamespacePack {
-            rust_input_namespace_prefixes: tidy_rust_input_namespace_prefixes(rust_input_namespace_prefixes_raw),
+            rust_input_namespace_prefixes: tidy_rust_input_namespace_prefixes(
+                rust_input_namespace_prefixes_raw,
+            ),
         }?,
     })
 }
@@ -34,6 +36,12 @@ fn compute_rust_input_namespace_prefixes_raw(raw_rust_input: &str) -> Vec<Namesp
     raw_rust_input
         .split(',')
         .map(|s| Namespace::new_raw(s.to_owned()))
+        .collect_vec()
+}
+
+fn tidy_rust_input_namespace_prefixes(raw: &[Namespace]) -> Vec<Namespace> {
+    raw.iter()
+        .map(|x| Namespace::new_raw(x.joined_path.replace('-', "_")))
         .collect_vec()
 }
 
