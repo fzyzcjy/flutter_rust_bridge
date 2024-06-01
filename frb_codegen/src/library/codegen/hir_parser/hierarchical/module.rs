@@ -14,11 +14,11 @@ use syn::ItemMod;
 
 pub(crate) fn parse_module(items: &[syn::Item], info: HirModuleInfo) -> anyhow::Result<HirModule> {
     let mut scope = HirModuleScope::default();
+    scope.functions = extract_generalized_functions_from_syn_items(items, &info.namespace)?;
+
     for item in items.iter() {
         parse_syn_item(item, &mut scope, &info.namespace)?;
     }
-
-    scope.functions = extract_generalized_functions_from_syn_items(items, &info.namespace)?;
 
     Ok(HirModule { info, scope })
 }
