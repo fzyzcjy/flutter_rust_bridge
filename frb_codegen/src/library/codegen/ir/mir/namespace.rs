@@ -82,7 +82,9 @@ impl Namespace {
     }
 
     pub fn compute_common_prefix(namespaces: &[&Namespace]) -> Self {
-        TODO
+        let paths = namespaces.iter().map(|x| x.path()).collect();
+        let prefix_len = vec_common_prefix(paths);
+        Self::new(paths[0][..prefix_len].to_owned())
     }
 }
 
@@ -90,6 +92,16 @@ impl Display for Namespace {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         f.write_str(&self.joined_path)
     }
+}
+
+fn vec_common_prefix(vecs: &[Vec<&str>]) -> usize {
+    let min_len = vecs.iter().map(|x| x.len()).reduce(usize::min).unwrap();
+    for i in 0..min_len {
+        if TODO {
+            return i;
+        }
+    }
+    min_len
 }
 
 /// A name and the namespace it is in.
