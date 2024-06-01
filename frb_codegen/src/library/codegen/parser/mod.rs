@@ -11,6 +11,7 @@ pub(crate) mod type_parser;
 use crate::codegen::dumper::Dumper;
 use crate::codegen::hir::flat::HirFlatCrate;
 use crate::codegen::hir::hierarchical::crates::HirCrate;
+use crate::codegen::hir::hierarchical::function::HirFunction;
 use crate::codegen::hir::hierarchical::struct_or_enum::HirStruct;
 use crate::codegen::ir::func::IrFunc;
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
