@@ -12,50 +12,50 @@ use crate::codegen::ir::hir::hierarchical::pack::HirPack;
 
 mod type_alias_resolver;
 
-pub(crate) fn parse(hir: &HirPack) -> anyhow::Result<HirFlatCrate> {
+pub(crate) fn parse(hir_pack: &HirPack) -> anyhow::Result<HirFlatCrate> {
     Ok(HirFlatCrate {
-        functions: collect_functions(root_module),
-        structs: collect_structs(root_module),
-        enums: collect_enums(root_module),
-        types: resolve_type_aliases(collect_types(root_module)),
-        modules: collect_modules(root_module),
+        functions: collect_functions(hir_pack),
+        structs: collect_structs(hir_pack),
+        enums: collect_enums(hir_pack),
+        types: resolve_type_aliases(collect_types(hir_pack)),
+        modules: collect_modules(hir_pack),
     })
 }
 
-fn collect_functions(module: &HirModule) -> Vec<&HirFunction> {
-    collect_objects_vec(module, |module| module.content.functions.iter().collect())
+fn collect_functions(hir_pack: &HirPack) -> Vec<&HirFunction> {
+    collect_objects_vec(hir_pack, |module| module.content.functions.iter().collect())
 }
 
-fn collect_modules(module: &HirModule) -> Vec<&HirModule> {
-    collect_objects_vec(module, |module| vec![module])
+fn collect_modules(hir_pack: &HirPack) -> Vec<&HirModule> {
+    collect_objects_vec(hir_pack, |module| vec![module])
 }
 
-fn collect_structs(module: &HirModule) -> HashMap<String, &HirStruct> {
+fn collect_structs(hir_pack: &HirPack) -> HashMap<String, &HirStruct> {
     collect_objects_map(
-        module,
+        hir_pack,
         |module| &module.content.structs,
         |x| (x.0.ident.to_string(), x),
     )
 }
 
-fn collect_enums(module: &HirModule) -> HashMap<String, &HirEnum> {
+fn collect_enums(hir_pack: &HirPack) -> HashMap<String, &HirEnum> {
     collect_objects_map(
-        module,
+        hir_pack,
         |module| &module.content.enums,
         |x| (x.0.ident.to_string(), x),
     )
 }
 
-fn collect_types(module: &HirModule) -> HashMap<String, Type> {
+fn collect_types(hir_pack: &HirPack) -> HashMap<String, Type> {
     collect_objects_map(
-        module,
+        hir_pack,
         |module| &module.content.type_alias,
         |x| (x.ident.clone(), x.target.clone()),
     )
 }
 
 fn collect_objects_map<'a, T: 'a, F, G, V: 'a>(
-    module: &'a HirModule,
+    hir_pack: &'a HirPack,
     f: F,
     extract_entry: G,
 ) -> HashMap<String, V>
@@ -65,7 +65,7 @@ where
     V: Debug,
 {
     let mut ans = HashMap::new();
-    visit_modules(module, &mut |module| {
+    visit_pack(hir_pack, &mut |module| {
         for item in f(module) {
             let (key, value) = extract_entry(item);
             if let Some(old_value) = ans.get(&key) {
@@ -77,13 +77,19 @@ where
     ans
 }
 
-fn collect_objects_vec<'a, T: 'a, F>(module: &'a HirModule, f: F) -> Vec<T>
+fn collect_objects_vec<'a, T: 'a, F>(hir_pack: &'a HirPack, f: F) -> Vec<T>
 where
     F: Fn(&'a HirModule) -> Vec<T>,
 {
     let mut ans = vec![];
-    visit_modules(module, &mut |module| ans.extend(f(module)));
+    visit_pack(hir_pack, &mut |module| ans.extend(f(module)));
     ans
+}
+
+fn visit_pack<'a, F: FnMut(&'a HirModule)>(hir_pack: &'a HirPack, f: &mut F) {
+    for hir_crate in hir_pack.crates.values() {
+        visit_modules(&hir_crate.root_module, f);
+    }
 }
 
 fn visit_modules<'a, F: FnMut(&'a HirModule)>(module: &'a HirModule, f: &mut F) {
