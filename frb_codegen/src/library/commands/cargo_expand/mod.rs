@@ -7,10 +7,11 @@ use anyhow::Result;
 use log::debug;
 use std::env;
 use std::path::Path;
+use crate::utils::crate_name::CrateName;
 
 pub(crate) fn run_cargo_expand(
     rust_crate_dir: &Path,
-    interest_crate_name: Option<&str>,
+    interest_crate_name: Option<&CrateName>,
     dumper: &Dumper,
 ) -> Result<syn::File> {
     if can_execute_real(rust_crate_dir)? {

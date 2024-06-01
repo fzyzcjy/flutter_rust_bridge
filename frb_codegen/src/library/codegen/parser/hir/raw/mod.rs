@@ -20,7 +20,7 @@ pub(crate) fn parse(
             crate_name.to_owned(),
             run_cargo_expand(
                 &config.rust_crate_dir,
-                (crate_name != Namespace::SELF_CRATE_TYPED).then(|| crate_name.as_ref()),
+                (*crate_name != Namespace::SELF_CRATE_TYPED).then(|| crate_name.as_ref()),
                 dumper,
             )?,
         ))

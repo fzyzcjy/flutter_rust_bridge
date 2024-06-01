@@ -10,10 +10,11 @@ use regex::Regex;
 use std::borrow::Cow;
 use std::env;
 use std::path::Path;
+use crate::utils::crate_name::CrateName;
 
 pub(super) fn run(
     rust_crate_dir: &Path,
-    interest_crate_name: Option<&str>,
+    interest_crate_name: Option<&CrateName>,
     dumper: &Dumper,
 ) -> Result<syn::File> {
     let text = run_with_frb_aware(rust_crate_dir, interest_crate_name)?;
@@ -21,7 +22,7 @@ pub(super) fn run(
     Ok(syn::parse_file(&text)?)
 }
 
-fn run_with_frb_aware(rust_crate_dir: &Path, interest_crate_name: Option<&str>) -> Result<String> {
+fn run_with_frb_aware(rust_crate_dir: &Path, interest_crate_name: Option<&CrateName>) -> Result<String> {
     Ok(unwrap_frb_attrs_in_doc(&run_raw(
         rust_crate_dir,
         interest_crate_name,
@@ -45,7 +46,7 @@ fn unwrap_frb_attrs_in_doc(code: &str) -> Cow<str> {
 #[allow(clippy::vec_init_then_push)]
 fn run_raw(
     rust_crate_dir: &Path,
-    interest_crate_name: Option<&str>,
+    interest_crate_name: Option<&CrateName>,
     extra_rustflags: &str,
     allow_auto_install: bool,
 ) -> Result<String> {
