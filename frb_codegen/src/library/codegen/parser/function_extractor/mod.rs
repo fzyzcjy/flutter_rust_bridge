@@ -9,12 +9,12 @@ use itertools::Itertools;
 use syn::File;
 
 pub(super) fn extract_generalized_functions_from_file(
-    file: &File,
+    items: &[syn::Item],
     path: &std::path::Path,
 ) -> anyhow::Result<Vec<PathAndItemFn>> {
     let item_fns = [
-        extract_fns_from_file(file),
-        extract_methods_from_file(file)?,
+        extract_fns_from_file(items),
+        extract_methods_from_file(items)?,
     ]
     .concat();
     let ans = item_fns
