@@ -14,7 +14,7 @@ pub(crate) fn parse(
         config.third_party_crates.clone(),
     ])
     .iter()
-    .map(|crate_name| run_cargo_expand(&config.rust_crate_dir, dumper, TODO))
+    .map(|crate_name| run_cargo_expand(TODO, dumper))
     .collect::<anyhow::Result<Vec<_>>>()
     .into_iter()
     .collect())
