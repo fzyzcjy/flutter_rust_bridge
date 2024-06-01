@@ -1,3 +1,4 @@
+use anyhow::ensure;
 use log::warn;
 use std::fs;
 use std::path::Path;
@@ -15,10 +16,22 @@ pub(super) fn run(rust_crate_dir: &Path) -> anyhow::Result<syn::File> {
 fn parse_file(path: &Path) -> anyhow::Result<syn::File> {
     let code = fs::read_to_string(&path)?;
     let mut file = syn::parse_file(&code)?;
-    replace_mod_derivative(&mut file)?;
+    modify_file(&mut file)?;
     Ok(file)
 }
 
-fn replace_mod_derivative(file: &mut syn::File) -> anyhow::Result<()> {
+fn modify_file(file: &mut syn::File) -> anyhow::Result<()> {
+    for item in file.items.iter_mut() {
+        if let syn::Item::Mod(item_mod) = item {
+            if item_mod.content.is_none() {
+                modify_mod(item_mod)?;
+            }
+        }
+    }
+    Ok(())
+}
+
+fn modify_mod(item_mod: &mut syn::ItemMod) -> anyhow::Result<()> {
+    ensure!(item_mod.content.is_none() && item_mod.semi.is_some());
     TODO
 }
