@@ -38,15 +38,9 @@ pub(crate) fn parse(
     config: &ParserInternalConfig,
     hir_flat_crate: &HirFlatCrate,
 ) -> anyhow::Result<IrPack> {
-    let src_fns_all = file_data_arr
-        .iter()
-        .map(|file| extract_generalized_functions_from_syn_items(&file.ast, &file.path))
-        .collect::<anyhow::Result<Vec<_>>>()?
-        .into_iter()
-        .flatten()
-        .collect_vec();
+    let src_fns_all = &hir_flat_crate.functions;
     let (src_fns_interest, src_fns_skipped): (Vec<_>, Vec<_>) = (src_fns_all.into_iter())
-        .partition(|item| matches!(item.generalized_item_fn.vis(), Visibility::Public(_)));
+        .partition(|item| matches!(item.inner.vis(), Visibility::Public(_)));
 
     let mut type_parser = TypeParser::new(
         hir_flat_crate.structs.clone(),
