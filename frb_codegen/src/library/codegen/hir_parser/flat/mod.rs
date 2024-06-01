@@ -18,19 +18,16 @@ pub(crate) fn parse(root_module: &HirModule) -> anyhow::Result<HirFlatCrate> {
         structs: collect_structs(root_module),
         enums: collect_enums(root_module),
         types: resolve_type_aliases(collect_types(root_module)),
+        modules: TODO,
     })
 }
 
 fn collect_functions(module: &HirModule) -> Vec<&HirFunction> {
-    let mut ans = vec![];
-    visit_modules(module, &mut |module| {
-        ans.extend(module.content.functions.iter().collect_vec());
-    });
-    ans
+    collect_objects_vec(module, |module| module.content.functions.iter().collect())
 }
 
 fn collect_structs(module: &HirModule) -> HashMap<String, &HirStruct> {
-    collect_objects(
+    collect_objects_map(
         module,
         |module| &module.content.structs,
         |x| (x.0.ident.to_string(), x),
@@ -38,7 +35,7 @@ fn collect_structs(module: &HirModule) -> HashMap<String, &HirStruct> {
 }
 
 fn collect_enums(module: &HirModule) -> HashMap<String, &HirEnum> {
-    collect_objects(
+    collect_objects_map(
         module,
         |module| &module.content.enums,
         |x| (x.0.ident.to_string(), x),
@@ -46,14 +43,14 @@ fn collect_enums(module: &HirModule) -> HashMap<String, &HirEnum> {
 }
 
 fn collect_types(module: &HirModule) -> HashMap<String, Type> {
-    collect_objects(
+    collect_objects_map(
         module,
         |module| &module.content.type_alias,
         |x| (x.ident.clone(), x.target.clone()),
     )
 }
 
-fn collect_objects<'a, T: 'a, F, G, V: 'a>(
+fn collect_objects_map<'a, T: 'a, F, G, V: 'a>(
     module: &'a HirModule,
     f: F,
     extract_entry: G,
@@ -73,6 +70,15 @@ where
             let _old_value = ans.insert(key, value);
         }
     });
+    ans
+}
+
+fn collect_objects_vec<'a, T: 'a, F, V: 'a>(module: &'a HirModule, f: F) -> Vec<T>
+where
+    F: Fn(&HirModule) -> Vec<T>,
+{
+    let mut ans = vec![];
+    visit_modules(module, &mut |module| ans.extend(f(module)));
     ans
 }
 
