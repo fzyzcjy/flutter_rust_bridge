@@ -17,8 +17,8 @@ pub(super) fn parse_existing_handlers(
         existing_handlers.len() <= 1,
         // frb-coverage:ignore-start
         // This will stop the whole generator and tell the users, so we do not care about testing it
-        "Should have at most one custom handler (currently: {:?})",
-        existing_handlers
+        "Should have at most one custom handler (currently: {})",
+        existing_handlers.iter().map(|x| x.rust_style()).join(", ")
     );
     // frb-coverage:ignore-end
     Ok(existing_handlers)
