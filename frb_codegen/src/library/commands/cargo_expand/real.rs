@@ -52,14 +52,24 @@ fn run_raw(
     // let _pb = simple_progress("Run cargo-expand".to_owned(), 1);
     debug!("Running cargo expand in '{rust_crate_dir:?}'");
 
-    let args = command_args!("expand", "--lib", "--theme=none", "--ugly");
+    let args_choosing_crate = if let Some(interest_crate_name) = interest_crate_name {
+        vec!["-p", interest_crate_name];
+    } else {
+        vec![];
+    };
+
+    let args = command_args!(
+        "expand",
+        "--lib",
+        "--theme=none",
+        "--ugly",
+        *args_choosing_crate,
+    );
     let extra_env = [(
         "RUSTFLAGS".to_owned(),
         env::var("RUSTFLAGS").map(|x| x + " ").unwrap_or_default() + extra_rustflags,
     )]
     .into();
-    
-    TODO
 
     let output = execute_command("cargo", &args, Some(rust_crate_dir), Some(extra_env))
         .with_context(|| format!("Could not expand rust code at path {rust_crate_dir:?}"))?;
