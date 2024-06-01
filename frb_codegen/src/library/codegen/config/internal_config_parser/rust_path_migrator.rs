@@ -26,7 +26,7 @@ pub(super) fn migrate_rust_input_config(
     );
 
     Ok(ConfigRustRootAndRustInput {
-        rust_root: raw_rust_root.unwrap_or_else(|| "rust/".to_owned()),
+        rust_root: raw_rust_root.clone().unwrap_or_else(|| "rust/".to_owned()),
         rust_input: raw_rust_input.to_owned(),
     })
 }

@@ -79,7 +79,7 @@ where
 
 fn collect_objects_vec<'a, T: 'a, F>(module: &'a HirModule, f: F) -> Vec<T>
 where
-    F: Fn(&HirModule) -> Vec<T>,
+    F: Fn(&'a HirModule) -> Vec<T>,
 {
     let mut ans = vec![];
     visit_modules(module, &mut |module| ans.extend(f(module)));
