@@ -22,7 +22,7 @@ pub struct ModuleInfo {
     pub source: ModuleSource,
 }
 
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, Default)]
 pub struct ModuleScope {
     pub modules: Vec<Module>,
     pub enums: Vec<Enum>,
