@@ -1,0 +1,52 @@
+{
+  "root_module": {
+    "content": {
+      "enums": [],
+      "functions": [],
+      "modules": [
+        {
+          "content": {
+            "enums": [
+              {
+                "ident": "UnusedEnum",
+                "mirror": false,
+                "namespaced_name": "crate::api/UnusedEnum",
+                "visibility": "Public"
+              }
+            ],
+            "functions": [],
+            "modules": [],
+            "structs": [
+              {
+                "ident": "UnusedStruct",
+                "mirror": false,
+                "namespaced_name": "crate::api/UnusedStruct",
+                "visibility": "Public"
+              }
+            ],
+            "type_alias": []
+          },
+          "meta": {
+            "namespace": "crate::api",
+            "visibility": "Inherited"
+          },
+          "raw": [
+            "pub struct UnusedStruct { a : String , }",
+            "pub enum UnusedEnum { Apple , }"
+          ]
+        }
+      ],
+      "structs": [],
+      "type_alias": []
+    },
+    "meta": {
+      "namespace": "crate",
+      "visibility": "Public"
+    },
+    "raw": [
+      "# [prelude_import] use std :: prelude :: rust_2018 :: * ;",
+      "# [macro_use] extern crate std ;",
+      "mod api { pub struct UnusedStruct { a : String , } pub enum UnusedEnum { Apple , } }"
+    ]
+  }
+}

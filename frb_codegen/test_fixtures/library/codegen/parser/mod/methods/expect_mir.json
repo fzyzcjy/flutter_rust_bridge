@@ -49,7 +49,7 @@
             "ty": {
               "data": {
                 "PrimitiveEnum": {
-                  "ir": {
+                  "mir": {
                     "ident": "crate::api/MyEnum",
                     "is_exception": false
                   },
@@ -81,7 +81,7 @@
           "owner_ty": {
             "data": {
               "PrimitiveEnum": {
-                "ir": {
+                "mir": {
                   "ident": "crate::api/MyEnum",
                   "is_exception": false
                 },
@@ -127,7 +127,7 @@
           "owner_ty": {
             "data": {
               "PrimitiveEnum": {
-                "ir": {
+                "mir": {
                   "ident": "crate::api/MyEnum",
                   "is_exception": false
                 },

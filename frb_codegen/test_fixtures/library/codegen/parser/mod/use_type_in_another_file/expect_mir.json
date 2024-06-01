@@ -71,7 +71,7 @@
             "ty": {
               "data": {
                 "PrimitiveEnum": {
-                  "ir": {
+                  "mir": {
                     "ident": "crate::another_file/EnumInAnotherFile",
                     "is_exception": false
                   },

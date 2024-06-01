@@ -1,0 +1,48 @@
+{
+  "root_module": {
+    "content": {
+      "enums": [],
+      "functions": [],
+      "modules": [
+        {
+          "content": {
+            "enums": [],
+            "functions": [
+              {
+                "namespace": "crate::api"
+              },
+              {
+                "namespace": "crate::api"
+              }
+            ],
+            "modules": [],
+            "structs": [],
+            "type_alias": []
+          },
+          "meta": {
+            "namespace": "crate::api",
+            "visibility": "Inherited"
+          },
+          "raw": [
+            "use anyhow :: Result ;",
+            "use chrono :: * ;",
+            "use uuid :: Uuid ;",
+            "pub fn func_1 (duration : Duration , uuid : Uuid) { }",
+            "pub fn func_anyhow_result () -> Result < i32 , String > { { :: std :: rt :: begin_panic (\"explicit panic\") } }"
+          ]
+        }
+      ],
+      "structs": [],
+      "type_alias": []
+    },
+    "meta": {
+      "namespace": "crate",
+      "visibility": "Public"
+    },
+    "raw": [
+      "# [prelude_import] use std :: prelude :: rust_2018 :: * ;",
+      "# [macro_use] extern crate std ;",
+      "mod api { use anyhow :: Result ; use chrono :: * ; use uuid :: Uuid ; pub fn func_1 (duration : Duration , uuid : Uuid) { } pub fn func_anyhow_result () -> Result < i32 , String > { { :: std :: rt :: begin_panic (\"explicit panic\") } } }"
+    ]
+  }
+}
