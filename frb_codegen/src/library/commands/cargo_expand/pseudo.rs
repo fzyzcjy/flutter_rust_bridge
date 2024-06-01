@@ -1,4 +1,5 @@
 use log::warn;
+use std::fs;
 use std::path::Path;
 
 pub(super) fn run(rust_crate_dir: &Path) -> anyhow::Result<String> {
