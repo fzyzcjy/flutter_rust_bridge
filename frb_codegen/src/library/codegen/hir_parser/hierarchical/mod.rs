@@ -9,6 +9,6 @@ pub(crate) mod struct_or_enum;
 pub(crate) mod visibility;
 
 pub(crate) fn parse(file: syn::File) -> anyhow::Result<HirCrate> {
-    let root_modulee = parse_module(&file.items, HirVisibility::Public)?;
+    let root_module = parse_module(&file.items, HirVisibility::Public)?;
     Ok(HirCrate { root_module })
 }
