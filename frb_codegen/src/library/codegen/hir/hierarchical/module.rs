@@ -1,3 +1,4 @@
+use crate::codegen::hir::hierarchical::function::HirFunction;
 use crate::codegen::hir::hierarchical::struct_or_enum::HirEnum;
 use crate::codegen::hir::hierarchical::struct_or_enum::HirStruct;
 use crate::codegen::hir::hierarchical::type_alias::HirTypeAlias;
@@ -26,6 +27,7 @@ pub struct HirModuleScope {
     pub structs: Vec<HirStruct>,
     // pub imports: Vec<Import>, // not implemented yet
     pub type_alias: Vec<HirTypeAlias>,
+    pub functions: Vec<HirFunction>,
 }
 
 /// Mirrors syn::Visibility, but can be created without a token
