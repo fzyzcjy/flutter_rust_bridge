@@ -44,7 +44,6 @@ fn generate_once(internal_config: &InternalConfig, dumper: &Dumper) -> anyhow::R
 
     let pb = progress_bar_pack.parse.start();
     let mir_pack = parser::parse(&internal_config.parser, dumper, &progress_bar_pack)?;
-    dumper.dump(ConfigDumpContent::Mir, "mir_pack.json", &mir_pack)?;
     drop(pb);
 
     let pb = progress_bar_pack.generate.start();

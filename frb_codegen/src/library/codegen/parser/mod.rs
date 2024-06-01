@@ -1,3 +1,4 @@
+use crate::codegen::ConfigDumpContent;
 use crate::codegen::dumper::Dumper;
 use crate::codegen::ir::hir::hierarchical::crates::HirCrate;
 use crate::codegen::ir::hir::hierarchical::pack::HirPack;
@@ -31,10 +32,12 @@ fn parse_inner(
     let hir_hierarchical = hir::hierarchical::parse(&config.hir, &hir_raw)?;
     let hir_flat = hir::flat::parse(&hir_hierarchical)?;
     on_hir(&hir_hierarchical)?;
+    dumper.dump(ConfigDumpContent::Hir, "hir_hierarchical.json", &hir_hierarchical)?;
     drop(pb);
 
     let pb = progress_bar_pack.parse_mir.start();
     let mir_pack = mir::parse(&config.mir, &hir_flat)?;
+    dumper.dump(ConfigDumpContent::Mir, "mir_pack.json", &mir_pack)?;
     drop(pb);
 
     Ok(mir_pack)
