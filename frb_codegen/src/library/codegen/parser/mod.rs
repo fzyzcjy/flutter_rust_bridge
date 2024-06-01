@@ -23,11 +23,11 @@ fn parse_inner(
     on_hir: impl FnOnce(&HirCrate) -> anyhow::Result<()>,
 ) -> anyhow::Result<MirPack> {
     let pb = progress_bar_pack.parse_hir_raw.start();
-    let file = hir::raw::parse(&config.hir, dumper)?;
+    let hir_raw = hir::raw::parse(&config.hir, dumper)?;
     drop(pb);
 
     let pb = progress_bar_pack.parse_hir_primary.start();
-    let hir_hierarchical = hir::hierarchical::parse(&config.hir, &file)?;
+    let hir_hierarchical = hir::hierarchical::parse(&config.hir, &hir_raw)?;
     let hir_flat = hir::flat::parse(&hir_hierarchical.root_module)?;
     on_hir(&hir_hierarchical)?;
     drop(pb);
