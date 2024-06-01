@@ -8,10 +8,7 @@ use crate::codegen::hir_parser::hierarchical::struct_or_enum::{
 use crate::codegen::parser::reader::CachedRustReader;
 use log::debug;
 
-/// Maps out modules, structs and enums within the scope of this module
 pub(crate) fn parse_module(items: &[syn::Item]) -> anyhow::Result<HirModule> {
-    debug!("parse_module START info={info:?}");
-
     let mut scope = HirModuleScope::default();
 
     for item in items.iter() {
@@ -23,7 +20,6 @@ pub(crate) fn parse_module(items: &[syn::Item]) -> anyhow::Result<HirModule> {
         scope,
     };
 
-    debug!("parse_module END info={info:?}");
     Ok(ans)
 }
 
