@@ -1,4 +1,6 @@
 use crate::codegen::dumper::Dumper;
+use crate::codegen::ir::hir::flat::HirFlatCrate;
+use crate::codegen::ir::hir::hierarchical::crates::HirCrate;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::codegen::parser;
@@ -13,6 +15,15 @@ pub(crate) fn parse(
     dumper: &Dumper,
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<MirPack> {
+    parse_inner(config, dumper, progress_bar_pack, |_, _| {})
+}
+
+fn parse_inner(
+    config: &ParserInternalConfig,
+    dumper: &Dumper,
+    progress_bar_pack: &GeneratorProgressBarPack,
+    on_hir: impl FnOnce(&HirCrate, &HirFlatCrate) -> (),
+) -> anyhow::Result<MirPack> {
     let pb = progress_bar_pack.parse_read.start();
     let file = read_rust_crate(&config.rust_crate_dir, dumper)?;
     drop(pb);
@@ -20,6 +31,7 @@ pub(crate) fn parse(
     let pb = progress_bar_pack.parse_hir.start();
     let hir_hierarchical = hir::hierarchical::parse(config, &file)?;
     let hir_flat = hir::flat::parse(&hir_hierarchical.root_module)?;
+    on_hir(&hir_hierarchical, &hir_flat);
     drop(pb);
 
     let pb = progress_bar_pack.parse_mir.start();
