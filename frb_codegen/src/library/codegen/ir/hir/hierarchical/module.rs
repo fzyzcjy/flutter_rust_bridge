@@ -10,6 +10,8 @@ use serde::Serialize;
 pub struct HirModule {
     pub meta: HirModuleMeta,
     pub content: HirModuleContent,
+    // avoid too big debug dump
+    #[serde(skip_serializing)]
     pub raw: Vec<String>,
 }
 
