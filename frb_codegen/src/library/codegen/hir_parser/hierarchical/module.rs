@@ -1,5 +1,8 @@
 use crate::codegen::dumper::Dumper;
 use crate::codegen::hir::hierarchical::module::{Module, ModuleInfo, ModuleScope, ModuleSource};
+use crate::codegen::hir_parser::hierarchical::struct_or_enum::{
+    parse_syn_item_enum, parse_syn_item_struct,
+};
 use crate::codegen::parser::reader::CachedRustReader;
 use log::debug;
 

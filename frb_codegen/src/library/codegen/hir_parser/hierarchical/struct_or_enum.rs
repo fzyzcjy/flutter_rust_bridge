@@ -1,5 +1,8 @@
 use crate::codegen::hir::hierarchical::module::{ModuleInfo, Visibility};
 use crate::codegen::hir::hierarchical::struct_or_enum::{Enum, Struct, StructOrEnum};
+use crate::codegen::hir_parser::hierarchical::mirror_ident::{
+    parse_mirror_ident, ParseMirrorIdentOutput,
+};
 use log::debug;
 use proc_macro2::Ident;
 use syn::{Attribute, ItemEnum, ItemStruct};
@@ -29,6 +32,7 @@ where
     debug!("parse_syn_item_struct_or_enum item_ident={item_ident:?}");
 
     let ParseMirrorIdentOutput { idents, mirror } = parse_mirror_ident(item_ident, item_attrs)?;
+
     Ok(idents
         .into_iter()
         .map(|ident| {
