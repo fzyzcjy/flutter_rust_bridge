@@ -5,11 +5,11 @@ use crate::codegen::generator::api_dart::spec_generator::class::field::generate_
 use crate::codegen::generator::api_dart::spec_generator::misc::{
     generate_dart_comments, generate_imports_which_types_and_funcs_use,
 };
-use crate::codegen::ir::field::IrField;
-use crate::codegen::ir::func::{IrFunc, IrFuncArgMode, IrFuncMode};
-use crate::codegen::ir::namespace::Namespace;
-use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegateStreamSink};
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::ir::mir::field::MirField;
+use crate::codegen::ir::mir::func::{MirFunc, MirFuncArgMode, MirFuncMode};
+use crate::codegen::ir::mir::namespace::Namespace;
+use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegateStreamSink};
+use crate::codegen::ir::mir::ty::MirType;
 use crate::if_then_some;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::utils::basic_code::DartBasicHeaderCode;
@@ -38,7 +38,7 @@ pub(crate) struct ApiDartGeneratedFunctionParam {
 }
 
 impl ApiDartGeneratedFunctionParam {
-    pub(crate) fn full(&self, arg_mode: IrFuncArgMode) -> String {
+    pub(crate) fn full(&self, arg_mode: MirFuncArgMode) -> String {
         let ApiDartGeneratedFunctionParam {
             is_required,
             type_str,
@@ -47,8 +47,8 @@ impl ApiDartGeneratedFunctionParam {
         } = &self;
 
         match arg_mode {
-            IrFuncArgMode::Positional => format!("{type_str} {name_str}"),
-            IrFuncArgMode::Named => format!(
+            MirFuncArgMode::Positional => format!("{type_str} {name_str}"),
+            MirFuncArgMode::Named => format!(
                 "{required}{type_str} {name_str} {default_value}",
                 required = if *is_required { "required " } else { "" }
             ),
@@ -57,7 +57,7 @@ impl ApiDartGeneratedFunctionParam {
 }
 
 pub(crate) fn generate(
-    func: &IrFunc,
+    func: &MirFunc,
     context: ApiDartGeneratorContext,
 ) -> anyhow::Result<ApiDartGeneratedFunction> {
     let return_stream = compute_return_stream(func);
@@ -105,15 +105,15 @@ pub(crate) fn generate(
 
 #[derive(Debug, Serialize)]
 pub(crate) struct ReturnStreamInfo {
-    pub field: IrField,
-    pub ty: IrTypeDelegateStreamSink,
+    pub field: MirField,
+    pub ty: MirTypeDelegateStreamSink,
 }
 
-fn compute_return_stream(func: &IrFunc) -> Option<ReturnStreamInfo> {
+fn compute_return_stream(func: &MirFunc) -> Option<ReturnStreamInfo> {
     let stream_sink_vars = (func.inputs.iter())
         .filter_map(|input| {
             if_then_some!(
-                let IrType::Delegate(IrTypeDelegate::StreamSink(ty)) = &input.inner.ty,
+                let MirType::Delegate(MirTypeDelegate::StreamSink(ty)) = &input.inner.ty,
                 ReturnStreamInfo { field: input.inner.to_owned(), ty: ty.clone() }
             )
         })
@@ -126,7 +126,7 @@ fn compute_return_stream(func: &IrFunc) -> Option<ReturnStreamInfo> {
 }
 
 fn generate_params(
-    func: &IrFunc,
+    func: &MirFunc,
     context: ApiDartGeneratorContext,
     dart_enums_style: bool,
     return_stream: &Option<ReturnStreamInfo>,
@@ -156,17 +156,17 @@ fn generate_params(
 
 pub(crate) fn compute_params_str(
     params: &[ApiDartGeneratedFunctionParam],
-    mode: IrFuncArgMode,
+    mode: MirFuncArgMode,
 ) -> String {
     let mut params_str = params.iter().map(|x| x.full(mode)).join(", ");
-    if !params_str.is_empty() && mode == IrFuncArgMode::Named {
+    if !params_str.is_empty() && mode == MirFuncArgMode::Named {
         params_str = format!("{{{params_str}}}");
     }
     params_str
 }
 
 fn generate_func_impl(
-    func: &IrFunc,
+    func: &MirFunc,
     dart_entrypoint_class_name: &str,
     return_stream: &Option<ReturnStreamInfo>,
 ) -> String {
@@ -189,7 +189,7 @@ fn generate_func_impl(
 }
 
 fn generate_header(
-    func: &IrFunc,
+    func: &MirFunc,
     context: ApiDartGeneratorContext,
 ) -> anyhow::Result<DartBasicHeaderCode> {
     Ok(DartBasicHeaderCode {
@@ -204,7 +204,7 @@ fn generate_header(
 }
 
 fn generate_function_dart_return_type(
-    func: &IrFunc,
+    func: &MirFunc,
     inner: &str,
     return_stream: &Option<ReturnStreamInfo>,
     context: ApiDartGeneratorContext,
@@ -221,7 +221,7 @@ fn generate_function_dart_return_type(
     let return_future = if return_stream.is_some() {
         func.stream_dart_await
     } else {
-        func.mode != IrFuncMode::Sync
+        func.mode != MirFuncMode::Sync
     };
     if return_future {
         inner = format!("Future<{inner}>");

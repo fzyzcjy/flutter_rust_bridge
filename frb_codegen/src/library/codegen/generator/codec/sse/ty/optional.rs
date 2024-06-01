@@ -7,7 +7,7 @@ impl<'a> CodecSseTyTrait for OptionalCodecSseTy<'a> {
             Lang::DartLang(_) => "self != null",
             Lang::RustLang(_) => "self.is_some()",
         };
-        let encode_flag = lang.call_encode(&Primitive(IrTypePrimitive::Bool), self_is_not_null);
+        let encode_flag = lang.call_encode(&Primitive(MirTypePrimitive::Bool), self_is_not_null);
 
         Some(match lang {
             Lang::DartLang(_) => format!(
@@ -17,7 +17,7 @@ impl<'a> CodecSseTyTrait for OptionalCodecSseTy<'a> {
                     {};
                 }}
                 ",
-                lang.call_encode(&self.ir.inner, "self"),
+                lang.call_encode(&self.mir.inner, "self"),
             ),
             Lang::RustLang(_) => format!(
                 "
@@ -26,7 +26,7 @@ impl<'a> CodecSseTyTrait for OptionalCodecSseTy<'a> {
                     {};
                 }}
                 ",
-                lang.call_encode(&self.ir.inner, "value"),
+                lang.call_encode(&self.mir.inner, "value"),
             ),
         })
     }
@@ -49,8 +49,8 @@ impl<'a> CodecSseTyTrait for OptionalCodecSseTy<'a> {
                 return {null};
             }}
             ",
-            lang.call_decode(&Primitive(IrTypePrimitive::Bool)),
-            lang.call_decode(&self.ir.inner),
+            lang.call_decode(&Primitive(MirTypePrimitive::Bool)),
+            lang.call_decode(&self.mir.inner),
         ))
     }
 }

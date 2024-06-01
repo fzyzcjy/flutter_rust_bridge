@@ -4,7 +4,7 @@ use crate::codegen::generator::api_dart::spec_generator::{
     ApiDartOutputSpec, ApiDartOutputSpecItem,
 };
 use crate::codegen::generator::misc::{generate_code_header, PathText, PathTexts};
-use crate::codegen::ir::namespace::Namespace;
+use crate::codegen::ir::mir::namespace::Namespace;
 use crate::utils::basic_code::DartBasicHeaderCode;
 use anyhow::ensure;
 use itertools::Itertools;
@@ -18,6 +18,10 @@ pub(super) fn generate(
     spec: &ApiDartOutputSpec,
     config: &GeneratorApiDartInternalConfig,
 ) -> anyhow::Result<ApiDartOutputText> {
+    // let common_namespace_prefix =
+    //     Namespace::compute_common_prefix(&spec.namespaced_items.keys().collect_vec());
+    // debug!("common_namespace_prefix={common_namespace_prefix:?}");
+
     let path_texts = PathTexts(
         spec.namespaced_items
             .iter()
@@ -139,8 +143,7 @@ fn compute_path_from_namespace(
     namespace: &Namespace,
 ) -> PathBuf {
     let chunks = namespace.path_exclude_self_crate();
-    let ans_without_extension = chunks
-        .iter()
-        .fold(dart_decl_base_output_path.to_owned(), |a, b| a.join(b));
+    let ans_without_extension =
+        (chunks.iter()).fold(dart_decl_base_output_path.to_owned(), |a, b| a.join(b));
     ans_without_extension.with_extension("dart")
 }

@@ -1,27 +1,27 @@
 use crate::codegen::generator::wire::rust::spec_generator::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
-use crate::codegen::ir::ty::enumeration::IrVariantKind;
-use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::codegen::ir::mir::ty::enumeration::MirVariantKind;
+use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use itertools::Itertools;
 
 impl<'a> WireRustGeneratorMiscTrait for EnumRefWireRustGenerator<'a> {
     fn wrapper_struct_name(&self) -> Option<String> {
-        let src = self.ir.get(self.context.ir_pack);
+        let src = self.mir.get(self.context.mir_pack);
         src.wrapper_name.clone()
     }
 
     fn generate_static_checks(&self) -> Option<String> {
-        let src = self.ir.get(self.context.ir_pack);
+        let src = self.mir.get(self.context.mir_pack);
         src.wrapper_name.as_ref()?;
 
         let branches = src
             .variants()
             .iter()
             .map(|variant| match &variant.kind {
-                IrVariantKind::Value => {
+                MirVariantKind::Value => {
                     format!("{}::{} => {{}}", src.name.rust_style(), &variant.name)
                 }
-                IrVariantKind::Struct(s) => {
+                MirVariantKind::Struct(s) => {
                     let pattern = s
                         .fields
                         .iter()

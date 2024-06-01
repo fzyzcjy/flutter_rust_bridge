@@ -10,7 +10,7 @@ pub(super) fn dart_wire_type_from_rust_wire_type_or_web(
 ) -> String {
     match target {
         Target::Io => {
-            WireRustCodecCstGenerator::new(that.ir_type(), that.context().as_wire_rust_context())
+            WireRustCodecCstGenerator::new(that.mir_type(), that.context().as_wire_rust_context())
                 .rust_wire_type(target)
         }
         Target::Web => web_type,

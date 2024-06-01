@@ -1,16 +1,16 @@
 use crate::codegen::generator::wire::rust::spec_generator::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
-use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use itertools::Itertools;
 
 impl<'a> WireRustGeneratorMiscTrait for StructRefWireRustGenerator<'a> {
     fn wrapper_struct_name(&self) -> Option<String> {
-        let src = self.ir.get(self.context.ir_pack);
+        let src = self.mir.get(self.context.mir_pack);
         src.wrapper_name.clone()
     }
 
     fn generate_static_checks(&self) -> Option<String> {
-        let src = self.ir.get(self.context.ir_pack);
+        let src = self.mir.get(self.context.mir_pack);
         src.wrapper_name.as_ref()?;
 
         let var = if src.is_fields_named {

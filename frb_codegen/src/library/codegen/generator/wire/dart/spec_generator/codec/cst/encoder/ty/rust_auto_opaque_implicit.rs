@@ -8,7 +8,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait
     for RustAutoOpaqueImplicitWireDartCodecCstGenerator<'a>
 {
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {
-        let needs_move = self.ir.needs_move();
+        let needs_move = self.mir.needs_move();
         Acc::new_common(Some(format!(
             "// ignore: invalid_use_of_internal_member
             return raw.frbInternalCstEncode(move: {needs_move});",

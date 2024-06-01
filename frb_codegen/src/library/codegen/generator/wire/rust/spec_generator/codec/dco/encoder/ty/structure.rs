@@ -8,7 +8,7 @@ use itertools::Itertools;
 
 impl<'a> WireRustCodecDcoGeneratorEncoderTrait for StructRefWireRustCodecDcoGenerator<'a> {
     fn generate_impl_into_dart(&self) -> Option<String> {
-        let src = self.ir.get(self.context.ir_pack);
+        let src = self.mir.get(self.context.mir_pack);
 
         let unwrap = match &src.wrapper_name {
             Some(_) => ".0",

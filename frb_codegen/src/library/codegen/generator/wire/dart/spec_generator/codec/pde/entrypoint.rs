@@ -5,8 +5,8 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::base::{
 };
 use crate::codegen::generator::wire::dart::spec_generator::codec::sse::entrypoint::generate_serialize_inputs;
 use crate::codegen::generator::wire::misc::has_port_argument;
-use crate::codegen::ir::func::IrFunc;
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::ir::mir::func::MirFunc;
+use crate::codegen::ir::mir::ty::MirType;
 
 pub(crate) struct PdeWireDartCodecEntrypoint;
 
@@ -16,7 +16,7 @@ impl BaseCodecEntrypointTrait<WireDartGeneratorContext<'_>, WireDartCodecOutputS
     fn generate(
         &self,
         _context: WireDartGeneratorContext,
-        _types: &[IrType],
+        _types: &[MirType],
         _mode: EncodeOrDecode,
     ) -> Option<WireDartCodecOutputSpec> {
         None
@@ -24,7 +24,7 @@ impl BaseCodecEntrypointTrait<WireDartGeneratorContext<'_>, WireDartCodecOutputS
 }
 
 impl WireDartCodecEntrypointTrait<'_> for PdeWireDartCodecEntrypoint {
-    fn generate_dart2rust_inner_func_stmt(&self, func: &IrFunc, _wire_func_name: &str) -> String {
+    fn generate_dart2rust_inner_func_stmt(&self, func: &MirFunc, _wire_func_name: &str) -> String {
         let serialize_inputs = generate_serialize_inputs(func);
         let (maybe_port, maybe_return, maybe_bang) = if has_port_argument(func.mode) {
             (", port: port_", "", "")

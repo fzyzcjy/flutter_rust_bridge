@@ -1,0 +1,72 @@
+{
+  "root_module": {
+    "content": {
+      "enums": [],
+      "functions": [],
+      "modules": [
+        {
+          "content": {
+            "enums": [
+              {
+                "ident": "MyGenericEnum",
+                "mirror": false,
+                "namespaced_name": "crate::api/MyGenericEnum",
+                "visibility": "Public"
+              }
+            ],
+            "functions": [
+              {
+                "namespace": "crate::api"
+              },
+              {
+                "namespace": "crate::api"
+              },
+              {
+                "namespace": "crate::api"
+              },
+              {
+                "namespace": "crate::api"
+              },
+              {
+                "namespace": "crate::api"
+              }
+            ],
+            "modules": [],
+            "structs": [
+              {
+                "ident": "MyGenericStruct",
+                "mirror": false,
+                "namespaced_name": "crate::api/MyGenericStruct",
+                "visibility": "Public"
+              }
+            ],
+            "type_alias": []
+          },
+          "meta": {
+            "namespace": "crate::api",
+            "visibility": "Inherited"
+          },
+          "raw": [
+            "pub struct MyGenericStruct < T > { generic_field : T , generic_boxed_field : Box < T > , normal_field : i32 , }",
+            "pub fn func_struct_string (arg : MyGenericStruct < String >) { }",
+            "pub fn func_struct_string_repeated (arg : MyGenericStruct < String >) { }",
+            "pub fn func_struct_bool (arg : MyGenericStruct < bool >) { }",
+            "pub enum MyGenericEnum < A , B > { One (A) , Two (B) , }",
+            "pub fn func_enum_string (arg : MyGenericEnum < String >) { }",
+            "pub fn func_enum_bool (arg : MyGenericEnum < bool >) { }"
+          ]
+        }
+      ],
+      "structs": [],
+      "type_alias": []
+    },
+    "meta": {
+      "namespace": "crate",
+      "visibility": "Public"
+    },
+    "raw": [
+      "# [prelude_import] use std :: prelude :: rust_2018 :: * ;",
+      "# [macro_use] extern crate std ;"
+    ]
+  }
+}

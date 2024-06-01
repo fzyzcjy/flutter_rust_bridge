@@ -7,7 +7,7 @@ impl<'a> CodecSseTyTrait for DynamicCodecSseTy<'a> {
         Some(format!(
             "{};",
             lang.throw_unimplemented(&generate_unimplemented_in_sse_message(
-                &self.ir.clone().into()
+                &self.mir.clone().into()
             ))
         ))
     }
@@ -16,7 +16,7 @@ impl<'a> CodecSseTyTrait for DynamicCodecSseTy<'a> {
         Some(format!(
             "{};",
             lang.throw_unimplemented(&generate_unimplemented_in_sse_message(
-                &self.ir.clone().into()
+                &self.mir.clone().into()
             ))
         ))
     }

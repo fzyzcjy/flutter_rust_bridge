@@ -1,12 +1,12 @@
-use crate::codegen::ir::default::IrDefaultValue;
-use crate::codegen::ir::field::IrField;
-use crate::codegen::ir::ty::delegate::IrTypeDelegate;
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::ir::mir::default::MirDefaultValue;
+use crate::codegen::ir::mir::field::MirField;
+use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
+use crate::codegen::ir::mir::ty::MirType;
 use crate::utils::dart_keywords::make_string_keyword_safe;
 use convert_case::{Case, Casing};
 use std::borrow::Cow;
 
-pub(crate) fn generate_field_required_modifier(field: &IrField) -> &str {
+pub(crate) fn generate_field_required_modifier(field: &MirField) -> &str {
     if field.is_optional() {
         ""
     } else {
@@ -17,15 +17,15 @@ pub(crate) fn generate_field_required_modifier(field: &IrField) -> &str {
 // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
 // frb-coverage:ignore-start
 pub(crate) fn generate_field_default(
-    field: &IrField,
+    field: &MirField,
     freezed: bool,
     dart_enums_style: bool,
 ) -> String {
     // frb-coverage:ignore-end
     if let Some(default_value) = field.default.as_ref() {
         let default_value = match default_value {
-            IrDefaultValue::String { content }
-                if !matches!(&field.ty, IrType::Delegate(IrTypeDelegate::String)) =>
+            MirDefaultValue::String { content }
+                if !matches!(&field.ty, MirType::Delegate(MirTypeDelegate::String)) =>
             {
                 default_value_maybe_to_dart_style(content, dart_enums_style)
             }

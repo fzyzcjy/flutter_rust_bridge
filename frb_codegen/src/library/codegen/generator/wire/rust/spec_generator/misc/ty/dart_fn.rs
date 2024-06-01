@@ -2,17 +2,17 @@ use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::wire::rust::spec_generator::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
-use crate::codegen::ir::ty::IrTypeTrait;
+use crate::codegen::ir::mir::ty::MirTypeTrait;
 use crate::library::misc::consts::HANDLER_NAME;
 use itertools::Itertools;
 
 impl<'a> WireRustGeneratorMiscTrait for DartFnWireRustGenerator<'a> {
     fn generate_related_funcs(&self) -> Acc<WireRustOutputCode> {
-        let safe_ident = self.ir.safe_ident();
+        let safe_ident = self.mir.safe_ident();
 
-        let num_params = self.ir.inputs.len();
+        let num_params = self.mir.inputs.len();
         let parameter_names = (0..num_params).map(|i| format!("arg{i}")).join(", ");
-        let parameter_types = (self.ir.inputs.iter())
+        let parameter_types = (self.mir.inputs.iter())
             .map(|x| x.rust_api_type())
             .collect_vec();
         let parameter_names_and_types = (parameter_types.iter().enumerate())
@@ -22,14 +22,14 @@ impl<'a> WireRustGeneratorMiscTrait for DartFnWireRustGenerator<'a> {
             .map(|i| format!("arg{i}.into_into_dart().into_dart(),"))
             .join("");
 
-        let return_type_outer = self.ir.output.rust_api_type();
-        let output_normal_type = self.ir.output.normal.rust_api_type();
-        let output_error_type = self.ir.output.error.rust_api_type();
+        let return_type_outer = self.mir.output.rust_api_type();
+        let output_normal_type = self.mir.output.normal.rust_api_type();
+        let output_error_type = self.mir.output.error.rust_api_type();
 
         let action_normal = DartFnOutputAction::Success as i32;
         let action_error = DartFnOutputAction::Error as i32;
 
-        let maybe_unwrap_ans = if self.ir.output.api_fallible {
+        let maybe_unwrap_ans = if self.mir.output.api_fallible {
             ""
         } else {
             r#"let ans = ans.expect("Dart throws exception but Rust side assume it is not failable");"#
@@ -70,11 +70,11 @@ impl<'a> WireRustGeneratorMiscTrait for DartFnWireRustGenerator<'a> {
     }
 
     fn generate_wire_func_call_decode_wrapper(&self) -> Option<String> {
-        Some(format!("decode_{}", self.ir.safe_ident()))
+        Some(format!("decode_{}", self.mir.safe_ident()))
     }
 
     fn generate_wire_func_call_decode_type(&self) -> Option<String> {
-        Some(self.ir.get_delegate().rust_api_type())
+        Some(self.mir.get_delegate().rust_api_type())
     }
 }
 

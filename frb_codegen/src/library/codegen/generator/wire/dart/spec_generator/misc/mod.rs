@@ -8,8 +8,8 @@ use crate::codegen::generator::wire::dart::spec_generator::base::{
 };
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
-use crate::codegen::ir::namespace::Namespace;
-use crate::codegen::ir::pack::IrPackComputedCache;
+use crate::codegen::ir::mir::namespace::Namespace;
+use crate::codegen::ir::mir::pack::MirPackComputedCache;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::library::codegen::generator::wire::dart::spec_generator::misc::ty::WireDartGeneratorMiscTrait;
 use crate::utils::basic_code::DartBasicHeaderCode;
@@ -33,7 +33,7 @@ pub(crate) struct WireDartOutputSpecMisc {
 
 pub(crate) fn generate(
     context: WireDartGeneratorContext,
-    cache: &IrPackComputedCache,
+    cache: &MirPackComputedCache,
     c_file_content: &str,
     api_dart_actual_output_paths: &[PathBuf],
     rust_extern_funcs: &[ExternFunc],
@@ -53,7 +53,7 @@ pub(crate) fn generate(
             context,
             rust_content_hash,
         )?,
-        api_impl_normal_functions: (context.ir_pack.funcs.iter())
+        api_impl_normal_functions: (context.mir_pack.funcs.iter())
             .map(|f| api_impl_body::generate_api_impl_normal_function(f, context))
             .collect::<anyhow::Result<Vec<_>>>()?,
         // wire_delegate_functions: (rust_extern_funcs.iter())
@@ -67,7 +67,7 @@ pub(crate) fn generate(
 
 fn generate_boilerplate(
     api_dart_actual_output_paths: &[PathBuf],
-    cache: &IrPackComputedCache,
+    cache: &MirPackComputedCache,
     context: WireDartGeneratorContext,
     rust_content_hash: i32,
 ) -> anyhow::Result<Acc<Vec<WireDartOutputCode>>> {
@@ -99,7 +99,7 @@ fn generate_boilerplate(
     import 'dart:async';
     ";
 
-    let execute_rust_initializers = (context.ir_pack.funcs.iter())
+    let execute_rust_initializers = (context.mir_pack.funcs.iter())
         .filter(|f| f.initializer)
         .map(|f| format!("await api.{}();\n", f.name_dart_wire()))
         .join("");

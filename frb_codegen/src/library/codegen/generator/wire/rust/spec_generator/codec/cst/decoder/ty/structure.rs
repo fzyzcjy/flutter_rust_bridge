@@ -7,14 +7,14 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
-use crate::codegen::ir::ty::{IrType, IrTypeTrait};
+use crate::codegen::ir::mir::ty::{MirType, MirTypeTrait};
 use itertools::Itertools;
 
 impl<'a> WireRustCodecCstGeneratorDecoderTrait for StructRefWireRustCodecCstGenerator<'a> {
     fn generate_decoder_class(&self) -> Option<WireRustOutputCode> {
-        let s = self.ir.get(self.context.ir_pack);
+        let s = self.mir.get(self.context.mir_pack);
         Some(generate_class_from_fields(
-            self.ir.clone(),
+            self.mir.clone(),
             self.context,
             &s.fields
                 .iter()
@@ -33,7 +33,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for StructRefWireRustCodecCstGene
     }
 
     fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
-        let api_struct = self.ir.get(self.context.ir_pack);
+        let api_struct = self.mir.get(self.context.mir_pack);
         let fields: Acc<Vec<_>> = api_struct
             .fields
             .iter()
@@ -55,7 +55,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for StructRefWireRustCodecCstGene
             .collect();
 
         let (left, right) = api_struct.brackets_pair();
-        let rust_api_type = self.ir.rust_api_type();
+        let rust_api_type = self.mir.rust_api_type();
         Acc {
             io: Some(format!(
                 "
@@ -77,7 +77,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for StructRefWireRustCodecCstGene
     }
 
     fn generate_impl_new_with_nullptr(&self) -> Option<WireRustOutputCode> {
-        let src = self.ir.get(self.context.ir_pack);
+        let src = self.mir.get(self.context.mir_pack);
 
         let body = {
             src.fields
@@ -88,7 +88,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for StructRefWireRustCodecCstGene
                         field.name.rust_style(),
                         if WireRustCodecCstGenerator::new(field.ty.clone(), self.context)
                             .rust_wire_is_pointer(Target::Io)
-                            || matches!(field.ty, IrType::DartOpaque(_))
+                            || matches!(field.ty, MirType::DartOpaque(_))
                         {
                             "core::ptr::null_mut()".to_owned()
                         } else {
@@ -102,7 +102,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for StructRefWireRustCodecCstGene
 
         Some(
             generate_impl_new_with_nullptr_code_block(
-                self.ir.clone(),
+                self.mir.clone(),
                 self.context,
                 &format!("Self {{ {body} }}"),
             )
@@ -111,6 +111,6 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for StructRefWireRustCodecCstGene
     }
 
     fn rust_wire_type(&self, target: Target) -> String {
-        rust_wire_type_add_prefix_or_js_value(&self.ir, target)
+        rust_wire_type_add_prefix_or_js_value(&self.mir, target)
     }
 }

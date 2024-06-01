@@ -1,6 +1,6 @@
 use crate::codegen::generator::codec::sse::lang::dart::DartLang;
 use crate::codegen::generator::codec::sse::lang::rust::RustLang;
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::ir::mir::ty::MirType;
 use enum_dispatch::enum_dispatch;
 
 pub(crate) mod dart;
@@ -15,9 +15,9 @@ pub(crate) enum Lang {
 
 #[enum_dispatch(Lang)]
 pub(crate) trait LangTrait {
-    fn call_encode(&self, var_ty: &IrType, var_name: &str) -> String;
+    fn call_encode(&self, var_ty: &MirType, var_name: &str) -> String;
 
-    fn call_decode(&self, var_ty: &IrType) -> String;
+    fn call_decode(&self, var_ty: &MirType) -> String;
 
     fn call_constructor(
         &self,

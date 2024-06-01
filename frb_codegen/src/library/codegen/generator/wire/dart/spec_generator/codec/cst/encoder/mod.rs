@@ -9,19 +9,19 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::{
 use crate::codegen::generator::wire::dart::spec_generator::output_code::{
     DartApiImplClassMethod, WireDartOutputCode,
 };
-use crate::codegen::ir::ty::IrType;
-use crate::codegen::ir::ty::IrType::Optional;
+use crate::codegen::ir::mir::ty::MirType;
+use crate::codegen::ir::mir::ty::MirType::Optional;
 use crate::library::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::library::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
-use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 
 mod misc;
 pub(crate) mod ty;
 
 pub(crate) fn generate(
     context: WireDartCodecCstGeneratorContext,
-    types: &[IrType],
+    types: &[MirType],
 ) -> WireDartCodecOutputSpec {
     let mut inner = Acc::<Vec<WireDartOutputCode>>::default();
     inner += (types.iter())
@@ -34,7 +34,7 @@ pub(crate) fn generate(
 }
 
 fn generate_encode_func(
-    ty: &IrType,
+    ty: &MirType,
     context: WireDartCodecCstGeneratorContext,
 ) -> Acc<WireDartOutputCode> {
     let generator = WireDartCodecCstGenerator::new(ty.clone(), context);
@@ -70,7 +70,7 @@ fn generate_encode_func(
 // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
 // frb-coverage:ignore-start
 fn generate_encode_api_fill_to_wire_func(
-    ty: &IrType,
+    ty: &MirType,
     context: WireDartCodecCstGeneratorContext,
 ) -> WireDartOutputCode {
     // frb-coverage:ignore-end

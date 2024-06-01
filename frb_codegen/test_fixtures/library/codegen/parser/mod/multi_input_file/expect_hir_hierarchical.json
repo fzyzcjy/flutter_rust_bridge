@@ -1,0 +1,60 @@
+{
+  "root_module": {
+    "content": {
+      "enums": [],
+      "functions": [],
+      "modules": [
+        {
+          "content": {
+            "enums": [],
+            "functions": [
+              {
+                "namespace": "crate::api_one"
+              }
+            ],
+            "modules": [],
+            "structs": [],
+            "type_alias": []
+          },
+          "meta": {
+            "namespace": "crate::api_one",
+            "visibility": "Inherited"
+          },
+          "raw": [
+            "pub fn func_one () { }"
+          ]
+        },
+        {
+          "content": {
+            "enums": [],
+            "functions": [
+              {
+                "namespace": "crate::api_two"
+              }
+            ],
+            "modules": [],
+            "structs": [],
+            "type_alias": []
+          },
+          "meta": {
+            "namespace": "crate::api_two",
+            "visibility": "Inherited"
+          },
+          "raw": [
+            "pub fn func_two () { }"
+          ]
+        }
+      ],
+      "structs": [],
+      "type_alias": []
+    },
+    "meta": {
+      "namespace": "crate",
+      "visibility": "Public"
+    },
+    "raw": [
+      "# [prelude_import] use std :: prelude :: rust_2018 :: * ;",
+      "# [macro_use] extern crate std ;"
+    ]
+  }
+}

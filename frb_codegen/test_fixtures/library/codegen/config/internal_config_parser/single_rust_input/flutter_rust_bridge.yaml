@@ -1,3 +1,4 @@
-rust_input: src/api.rs
+rust_input: crate::api
+rust_root: .
 dart_output: my_dart_folder
 c_output: frb_generated.h

@@ -8,13 +8,13 @@ use crate::codegen::generator::api_dart::spec_generator::dump::generate_dump_inf
 use crate::codegen::generator::api_dart::spec_generator::function::ApiDartGeneratedFunction;
 use crate::codegen::generator::api_dart::spec_generator::misc::generate_imports_which_types_and_funcs_use;
 use crate::codegen::generator::api_dart::spec_generator::sanity_checker::sanity_check_class_name_duplicates;
-use crate::codegen::ir::func::{IrFunc, IrFuncOwnerInfo};
-use crate::codegen::ir::namespace::Namespace;
-use crate::codegen::ir::pack::{IrPack, IrPackComputedCache};
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::ir::mir::func::{MirFunc, MirFuncOwnerInfo};
+use crate::codegen::ir::mir::namespace::Namespace;
+use crate::codegen::ir::mir::pack::{MirPack, MirPackComputedCache};
+use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ConfigDumpContent;
 use crate::library::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
-use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::basic_code::DartBasicHeaderCode;
 use anyhow::Result;
 use itertools::Itertools;
@@ -47,12 +47,12 @@ pub(crate) struct ApiDartOutputSpecItem {
 }
 
 pub(crate) fn generate(
-    ir_pack: &IrPack,
+    mir_pack: &MirPack,
     config: &GeneratorApiDartInternalConfig,
     dumper: &Dumper,
 ) -> Result<ApiDartOutputSpec> {
-    let cache = IrPackComputedCache::compute(ir_pack);
-    let context = ApiDartGeneratorContext { ir_pack, config };
+    let cache = MirPackComputedCache::compute(mir_pack);
+    let context = ApiDartGeneratorContext { mir_pack, config };
 
     dumper.dump(
         GeneratorInfo,
@@ -60,7 +60,7 @@ pub(crate) fn generate(
         &generate_dump_info(&cache, context),
     )?;
 
-    let grouped_funcs = (ir_pack.funcs.iter()).into_group_map_by(|x| x.name.namespace.clone());
+    let grouped_funcs = (mir_pack.funcs.iter()).into_group_map_by(|x| x.name.namespace.clone());
     let grouped_namespaced_types = (cache.distinct_types.iter())
         .filter(|x| x.self_namespace().is_some())
         .into_group_map_by(|x| x.self_namespace().unwrap());
@@ -90,8 +90,8 @@ pub(crate) fn generate(
 
 fn generate_item(
     namespace: &Namespace,
-    namespaced_types: &Option<&Vec<&IrType>>,
-    funcs: &Option<&Vec<&IrFunc>>,
+    namespaced_types: &Option<&Vec<&MirType>>,
+    funcs: &Option<&Vec<&MirFunc>>,
     context: ApiDartGeneratorContext,
 ) -> Result<ApiDartOutputSpecItem> {
     let imports = DartBasicHeaderCode {
@@ -108,7 +108,7 @@ fn generate_item(
         .map(|funcs| {
             funcs
                 .iter()
-                .filter(|f| (f.owner == IrFuncOwnerInfo::Function) && !f.initializer)
+                .filter(|f| (f.owner == MirFuncOwnerInfo::Function) && !f.initializer)
                 .map(|f| function::generate(f, context))
                 .collect::<Result<Vec<_>>>()
         })
@@ -125,12 +125,12 @@ fn generate_item(
 
     sanity_check_class_name_duplicates(&classes)?;
 
-    let unused_types = (context.ir_pack.unused_types.iter())
+    let unused_types = (context.mir_pack.unused_types.iter())
         .filter(|t| &t.namespace == namespace)
         .map(|t| t.name.to_owned())
         .collect_vec();
 
-    let skipped_functions = (context.ir_pack.skipped_functions.iter())
+    let skipped_functions = (context.mir_pack.skipped_functions.iter())
         .filter(|t| &t.namespace == namespace)
         .map(|t| t.name.to_owned())
         .collect_vec();

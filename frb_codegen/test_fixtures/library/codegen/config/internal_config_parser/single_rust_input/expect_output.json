@@ -81,12 +81,6 @@
         "default_stream_sink_codec": "Sse",
         "has_ffigen": false,
         "rust_crate_dir": "{the-working-directory}",
-        "rust_input_path_pack": {
-          "rust_input_paths": [
-            "{the-working-directory}/src/api.rs"
-          ],
-          "rust_suppressed_input_paths": []
-        },
         "rust_output_path": {
           "common": "{the-working-directory}/src/frb_generated.rs",
           "io": "{the-working-directory}/src/frb_generated.io.rs",
@@ -97,19 +91,27 @@
     }
   },
   "parser": {
-    "default_rust_opaque_codec": "Moi",
-    "default_stream_sink_codec": "Sse",
-    "force_codec_mode_pack": {
-      "dart2rust": "Pde",
-      "rust2dart": "Pde"
+    "hir": {
+      "rust_input_namespace_pack": {
+        "rust_input_namespace_prefices": [
+          "crate::api"
+        ]
+      }
     },
-    "rust_crate_dir": "{the-working-directory}",
-    "rust_input_path_pack": {
-      "rust_input_paths": [
-        "{the-working-directory}/src/api.rs"
-      ],
-      "rust_suppressed_input_paths": []
-    }
+    "mir": {
+      "default_rust_opaque_codec": "Moi",
+      "default_stream_sink_codec": "Sse",
+      "force_codec_mode_pack": {
+        "dart2rust": "Pde",
+        "rust2dart": "Pde"
+      },
+      "rust_input_namespace_pack": {
+        "rust_input_namespace_prefices": [
+          "crate::api"
+        ]
+      }
+    },
+    "rust_crate_dir": "{the-working-directory}"
   },
   "polisher": {
     "add_mod_to_lib": true,

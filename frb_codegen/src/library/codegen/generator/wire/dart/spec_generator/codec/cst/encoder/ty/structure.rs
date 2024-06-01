@@ -7,9 +7,9 @@ use crate::codegen::generator::misc::StructOrRecord::Struct;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::misc::dart_wire_type_from_rust_wire_type_or_web;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
-use crate::codegen::ir::field::IrField;
-use crate::codegen::ir::ty::structure::{IrStruct, IrTypeStructRef};
-use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::codegen::ir::mir::field::MirField;
+use crate::codegen::ir::mir::ty::structure::{MirStruct, MirTypeStructRef};
+use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use itertools::Itertools;
 
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for StructRefWireDartCodecCstGenerator<'a> {
@@ -28,29 +28,29 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for StructRefWireDartCodecCstGene
 
 impl<'a> StructRefWireDartCodecCstGenerator<'a> {
     fn new_generalized_generator(&self) -> GeneralizedStructGenerator {
-        GeneralizedStructGenerator::new(self.ir.clone(), self.context, Struct)
+        GeneralizedStructGenerator::new(self.mir.clone(), self.context, Struct)
     }
 }
 
 pub(crate) struct GeneralizedStructGenerator<'a> {
-    ir: IrTypeStructRef,
+    mir: MirTypeStructRef,
     context: WireDartCodecCstGeneratorContext<'a>,
     mode: StructOrRecord,
 }
 
 impl<'a> GeneralizedStructGenerator<'a> {
     pub(crate) fn new(
-        ir: IrTypeStructRef,
+        mir: MirTypeStructRef,
         context: WireDartCodecCstGeneratorContext<'a>,
         mode: StructOrRecord,
     ) -> Self {
-        Self { ir, context, mode }
+        Self { mir, context, mode }
     }
 
     pub(crate) fn generate_encode_func_body(&self) -> Acc<Option<String>> {
         Acc {
             web: self.context.config.web_enabled.then(|| {
-                let st = self.ir.get(self.context.ir_pack);
+                let st = self.mir.get(self.context.mir_pack);
                 let values = (st.fields.iter().enumerate())
                     .map(|(index, field)| {
                         format!(
@@ -72,7 +72,7 @@ impl<'a> GeneralizedStructGenerator<'a> {
     }
 
     pub(crate) fn api_fill_to_wire_body(&self) -> Option<String> {
-        let st = self.ir.get(self.context.ir_pack);
+        let st = self.mir.get(self.context.mir_pack);
         Some(
             st.fields
                 .iter()
@@ -88,8 +88,8 @@ impl<'a> GeneralizedStructGenerator<'a> {
     fn generate_api_fill_to_wire_body_struct_field(
         &self,
         index: usize,
-        field: &IrField,
-        st: &IrStruct,
+        field: &MirField,
+        st: &MirStruct,
     ) -> String {
         let safe_ident = field.ty.safe_ident();
         let dart_style =

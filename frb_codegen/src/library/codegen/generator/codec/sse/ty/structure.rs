@@ -2,7 +2,7 @@ use crate::codegen::generator::api_dart::spec_generator::class::method::dart_con
 use crate::codegen::generator::codec::sse::ty::*;
 use crate::codegen::generator::misc::StructOrRecord;
 use crate::codegen::generator::misc::StructOrRecord::Struct;
-use crate::codegen::ir::ty::structure::IrStruct;
+use crate::codegen::ir::mir::ty::structure::MirStruct;
 use crate::library::codegen::generator::codec::sse::lang::LangTrait;
 use itertools::Itertools;
 
@@ -22,7 +22,7 @@ impl<'a> CodecSseTyTrait for StructRefCodecSseTy<'a> {
 impl<'a> StructRefCodecSseTy<'a> {
     fn new_generalized_generator(&self) -> GeneralizedStructGenerator {
         GeneralizedStructGenerator::new(
-            self.ir.get(self.context.ir_pack).clone(),
+            self.mir.get(self.context.mir_pack).clone(),
             self.context,
             Struct,
         )
@@ -30,13 +30,13 @@ impl<'a> StructRefCodecSseTy<'a> {
 }
 
 pub(crate) struct GeneralizedStructGenerator<'a> {
-    st: IrStruct,
+    st: MirStruct,
     mode: StructOrRecord,
     context: CodecSseTyContext<'a>,
 }
 
 impl<'a> GeneralizedStructGenerator<'a> {
-    pub(crate) fn new(st: IrStruct, context: CodecSseTyContext<'a>, mode: StructOrRecord) -> Self {
+    pub(crate) fn new(st: MirStruct, context: CodecSseTyContext<'a>, mode: StructOrRecord) -> Self {
         Self { st, mode, context }
     }
 
@@ -78,7 +78,7 @@ impl<'a> GeneralizedStructGenerator<'a> {
         let ctor = match self.mode {
             Struct => lang.call_constructor(
                 &override_struct_name.unwrap_or_else(|| self.st.name.style(lang)),
-                dart_constructor_postfix(&self.st.name, &self.context.ir_pack.funcs),
+                dart_constructor_postfix(&self.st.name, &self.context.mir_pack.funcs),
                 &(self.st.fields.iter())
                     .map(|x| x.name.style(lang))
                     .collect_vec(),

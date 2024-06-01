@@ -6,7 +6,7 @@ use crate::codegen::dumper::internal_config::ConfigDumpContent;
 use crate::codegen::dumper::Dumper;
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
 use crate::codegen::generator::misc::PathTexts;
-use crate::codegen::ir::pack::IrPack;
+use crate::codegen::ir::mir::pack::MirPack;
 use anyhow::Result;
 
 pub(crate) struct GeneratorApiDartOutput {
@@ -15,11 +15,11 @@ pub(crate) struct GeneratorApiDartOutput {
 }
 
 pub(crate) fn generate(
-    ir_pack: &IrPack,
+    mir_pack: &MirPack,
     config: &GeneratorApiDartInternalConfig,
     dumper: &Dumper,
 ) -> Result<GeneratorApiDartOutput> {
-    let spec = spec_generator::generate(ir_pack, config, dumper)?;
+    let spec = spec_generator::generate(mir_pack, config, dumper)?;
     dumper.dump(ConfigDumpContent::GeneratorSpec, "api_dart.json", &spec)?;
 
     let text = text_generator::generate(&spec, config)?;
@@ -43,8 +43,7 @@ mod tests {
     use crate::codegen::dumper::Dumper;
     use crate::codegen::generator::api_dart::generate;
     use crate::codegen::misc::GeneratorProgressBarPack;
-    use crate::codegen::parser::reader::CachedRustReader;
-    use crate::codegen::{parser, Config};
+    use crate::codegen::Config;
     use crate::utils::logs::configure_opinionated_test_logging;
     use crate::utils::test_utils::{get_test_fixture_dir, text_golden_test};
     use serial_test::serial;
@@ -79,15 +78,13 @@ mod tests {
 
         let config = Config::from_files_auto()?;
         let internal_config = InternalConfig::parse(&config, &MetaConfig { watch: false })?;
-        let mut cached_rust_reader = CachedRustReader::default();
-        let ir_pack = parser::parse(
+        let mir_pack = crate::codegen::parser::parse(
             &internal_config.parser,
-            &mut cached_rust_reader,
             &Dumper(&Default::default()),
             &GeneratorProgressBarPack::new(),
         )?;
         let actual = generate(
-            &ir_pack,
+            &mir_pack,
             &internal_config.generator.api_dart,
             &Dumper(&Default::default()),
         )?;

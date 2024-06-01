@@ -1,0 +1,66 @@
+{
+  "root_module": {
+    "content": {
+      "enums": [],
+      "functions": [],
+      "modules": [
+        {
+          "content": {
+            "enums": [
+              {
+                "ident": "MyEnum",
+                "mirror": false,
+                "namespaced_name": "crate::api/MyEnum",
+                "visibility": "Public"
+              }
+            ],
+            "functions": [
+              {
+                "namespace": "crate::api"
+              },
+              {
+                "namespace": "crate::api"
+              },
+              {
+                "namespace": "crate::api"
+              },
+              {
+                "namespace": "crate::api"
+              }
+            ],
+            "modules": [],
+            "structs": [
+              {
+                "ident": "MyStruct",
+                "mirror": false,
+                "namespaced_name": "crate::api/MyStruct",
+                "visibility": "Public"
+              }
+            ],
+            "type_alias": []
+          },
+          "meta": {
+            "namespace": "crate::api",
+            "visibility": "Inherited"
+          },
+          "raw": [
+            "pub struct MyStruct { }",
+            "impl MyStruct { pub fn example_static_method () { } pub fn example_instance_method (& self) { } }",
+            "pub enum MyEnum { A , B , }",
+            "impl MyEnum { pub fn example_static_method () { } pub fn example_instance_method (& self) { } }"
+          ]
+        }
+      ],
+      "structs": [],
+      "type_alias": []
+    },
+    "meta": {
+      "namespace": "crate",
+      "visibility": "Public"
+    },
+    "raw": [
+      "# [prelude_import] use std :: prelude :: rust_2018 :: * ;",
+      "# [macro_use] extern crate std ;"
+    ]
+  }
+}

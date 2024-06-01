@@ -1,7 +1,7 @@
 use crate::codegen::config::internal_config::GeneratorInternalConfig;
 use crate::codegen::dumper::Dumper;
 use crate::codegen::generator::misc::PathTexts;
-use crate::codegen::ir::pack::IrPack;
+use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::misc::GeneratorProgressBarPack;
 
 pub(crate) mod acc;
@@ -16,14 +16,14 @@ pub(crate) struct GeneratorOutput {
 }
 
 pub(crate) fn generate(
-    ir_pack: &IrPack,
+    mir_pack: &MirPack,
     config: &GeneratorInternalConfig,
     dumper: &Dumper,
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<GeneratorOutput> {
-    let api_dart_output = api_dart::generate(ir_pack, &config.api_dart, dumper)?;
+    let api_dart_output = api_dart::generate(mir_pack, &config.api_dart, dumper)?;
     let wire_output = wire::generate(
-        ir_pack,
+        mir_pack,
         &config.wire,
         &config.api_dart,
         &api_dart_output.output_texts.paths(),

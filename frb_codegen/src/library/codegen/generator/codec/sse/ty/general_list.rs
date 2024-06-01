@@ -5,19 +5,19 @@ use crate::library::codegen::generator::codec::sse::lang::LangTrait;
 
 impl<'a> CodecSseTyTrait for GeneralListCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
-        Some(general_list_generate_encode(lang, &self.ir.inner))
+        Some(general_list_generate_encode(lang, &self.mir.inner))
     }
 
     fn generate_decode(&self, lang: &Lang) -> Option<String> {
         Some(general_list_generate_decode(
             lang,
-            &self.ir.inner,
+            &self.mir.inner,
             self.context,
         ))
     }
 }
 
-pub(super) fn general_list_generate_encode(lang: &Lang, ir_inner: &IrType) -> String {
+pub(super) fn general_list_generate_encode(lang: &Lang, mir_inner: &MirType) -> String {
     format!(
         "{};
         {}",
@@ -25,7 +25,7 @@ pub(super) fn general_list_generate_encode(lang: &Lang, ir_inner: &IrType) -> St
         lang.for_loop(
             "item",
             "self",
-            &format!("{};", lang.call_encode(ir_inner, "item")),
+            &format!("{};", lang.call_encode(mir_inner, "item")),
         )
     )
 }
@@ -39,7 +39,7 @@ pub(super) fn list_len_method(lang: &Lang) -> &'static str {
 
 pub(super) fn general_list_generate_decode(
     lang: &Lang,
-    ir_inner: &IrType,
+    mir_inner: &MirType,
     context: CodecSseTyContext,
 ) -> String {
     let var_decl = lang.var_decl();
@@ -47,7 +47,7 @@ pub(super) fn general_list_generate_decode(
     let init = match lang {
         Lang::DartLang(_) => format!(
             "<{}>[]",
-            ApiDartGenerator::new(ir_inner.clone(), context.as_api_dart_context()).dart_api_type()
+            ApiDartGenerator::new(mir_inner.clone(), context.as_api_dart_context()).dart_api_type()
         ),
         Lang::RustLang(_) => "vec![]".to_owned(),
     };
@@ -67,9 +67,9 @@ pub(super) fn general_list_generate_decode(
         lang.for_range_loop(
             "idx_",
             "len_",
-            &format!("ans_.{list_push}({});", lang.call_decode(ir_inner))
+            &format!("ans_.{list_push}({});", lang.call_decode(mir_inner))
         ),
     )
 }
 
-pub(super) const LEN_TYPE: IrType = Primitive(IrTypePrimitive::I32);
+pub(super) const LEN_TYPE: MirType = Primitive(MirTypePrimitive::I32);

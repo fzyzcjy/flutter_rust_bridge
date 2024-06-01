@@ -1,4 +1,4 @@
-use crate::codegen::ir::namespace::Namespace;
+use crate::codegen::ir::mir::namespace::Namespace;
 use crate::utils::basic_code::DartBasicHeaderCode;
 use serde::Serialize;
 

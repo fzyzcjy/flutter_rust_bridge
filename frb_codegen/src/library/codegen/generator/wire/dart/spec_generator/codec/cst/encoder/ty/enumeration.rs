@@ -3,13 +3,13 @@ use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::misc::dart_wire_type_from_rust_wire_type_or_web;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
-use crate::codegen::ir::ty::enumeration::{IrVariant, IrVariantKind};
-use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::codegen::ir::mir::ty::enumeration::{MirVariant, MirVariantKind};
+use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use itertools::Itertools;
 
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for EnumRefWireDartCodecCstGenerator<'a> {
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {
-        let variants = (self.ir.get(self.context.ir_pack).variants())
+        let variants = (self.mir.get(self.context.mir_pack).variants())
             .iter()
             .enumerate()
             .map(|(idx, variant)| generate_encode_body_variant(idx, variant))
@@ -27,8 +27,8 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for EnumRefWireDartCodecCstGenera
 
     fn generate_encode_api_fill_to_wire_body(&self) -> Option<String> {
         Some(
-            self.ir
-                .get(self.context.ir_pack)
+            self.mir
+                .get(self.context.mir_pack)
                 .variants()
                 .iter()
                 .enumerate()
@@ -43,13 +43,13 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for EnumRefWireDartCodecCstGenera
 }
 
 impl<'a> EnumRefWireDartCodecCstGenerator<'a> {
-    fn generate_api_fill_to_wire_body_variant(&self, index: usize, variant: &IrVariant) -> String {
+    fn generate_api_fill_to_wire_body_variant(&self, index: usize, variant: &MirVariant) -> String {
         let wrapper_name = &variant.wrapper_name;
         let variant_name = &variant.name;
 
         let (stmt_prepare, stmt_postpare) = match &variant.kind {
-            IrVariantKind::Value => ("".to_owned(), "".to_owned()),
-            IrVariantKind::Struct(st) => {
+            MirVariantKind::Value => ("".to_owned(), "".to_owned()),
+            MirVariantKind::Struct(st) => {
                 let pre_field = st
                     .fields
                     .iter()
@@ -85,10 +85,10 @@ impl<'a> EnumRefWireDartCodecCstGenerator<'a> {
     }
 }
 
-fn generate_encode_body_variant(index: usize, variant: &IrVariant) -> String {
+fn generate_encode_body_variant(index: usize, variant: &MirVariant) -> String {
     let fields = match &variant.kind {
-        IrVariantKind::Value => vec![],
-        IrVariantKind::Struct(st) => (st.fields)
+        MirVariantKind::Value => vec![],
+        MirVariantKind::Struct(st) => (st.fields)
             .iter()
             .map(|field| {
                 format!(

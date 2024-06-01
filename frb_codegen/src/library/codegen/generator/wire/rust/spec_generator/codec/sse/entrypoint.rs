@@ -10,10 +10,10 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::base::{
 };
 use crate::codegen::generator::wire::rust::spec_generator::codec::sse::body::generate_encode_or_decode;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFuncParam;
-use crate::codegen::ir::func::{IrFunc, IrFuncMode};
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::ir::mir::func::{MirFunc, MirFuncMode};
+use crate::codegen::ir::mir::ty::MirType;
 use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
-use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use itertools::Itertools;
 
 pub(crate) struct SseWireRustCodecEntrypoint;
@@ -24,7 +24,7 @@ impl BaseCodecEntrypointTrait<WireRustGeneratorContext<'_>, WireRustCodecOutputS
     fn generate(
         &self,
         context: WireRustGeneratorContext,
-        types: &[IrType],
+        types: &[MirType],
         mode: EncodeOrDecode,
     ) -> Option<WireRustCodecOutputSpec> {
         Some(generate_encode_or_decode(
@@ -38,7 +38,7 @@ impl BaseCodecEntrypointTrait<WireRustGeneratorContext<'_>, WireRustCodecOutputS
 impl WireRustCodecEntrypointTrait<'_> for SseWireRustCodecEntrypoint {
     fn generate_func_params(
         &self,
-        func: &IrFunc,
+        func: &MirFunc,
         _context: WireRustGeneratorContext,
     ) -> Acc<Vec<ExternFuncParam>> {
         Acc::new(|target| {
@@ -55,7 +55,7 @@ impl WireRustCodecEntrypointTrait<'_> for SseWireRustCodecEntrypoint {
 
     fn generate_func_call_decode(
         &self,
-        func: &IrFunc,
+        func: &MirFunc,
         context: WireRustGeneratorContext,
     ) -> String {
         let primary = (func.inputs.iter())
@@ -85,7 +85,7 @@ impl WireRustCodecEntrypointTrait<'_> for SseWireRustCodecEntrypoint {
 }
 
 pub(crate) fn create_maybe_port_param(
-    mode: IrFuncMode,
+    mode: MirFuncMode,
     target: TargetOrCommon,
 ) -> Option<ExternFuncParam> {
     has_port_argument(mode).then(|| create_port_param(target, "flutter_rust_bridge"))

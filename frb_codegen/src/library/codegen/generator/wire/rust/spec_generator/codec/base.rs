@@ -9,8 +9,8 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::pde::entrypoin
 use crate::codegen::generator::wire::rust::spec_generator::codec::sse::entrypoint::SseWireRustCodecEntrypoint;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFuncParam;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
-use crate::codegen::ir::func::IrFunc;
-use crate::codegen::ir::pack::IrPackComputedCache;
+use crate::codegen::ir::mir::func::MirFunc;
+use crate::codegen::ir::mir::pack::MirPackComputedCache;
 use crate::codegen_codec_structs;
 use serde::Serialize;
 use strum::IntoEnumIterator;
@@ -22,10 +22,13 @@ pub(crate) trait WireRustCodecEntrypointTrait<'a>:
 {
     fn generate_func_params(
         &self,
-        func: &IrFunc,
+        func: &MirFunc,
         context: WireRustGeneratorContext,
     ) -> Acc<Vec<ExternFuncParam>>;
 
-    fn generate_func_call_decode(&self, func: &IrFunc, context: WireRustGeneratorContext)
-        -> String;
+    fn generate_func_call_decode(
+        &self,
+        func: &MirFunc,
+        context: WireRustGeneratorContext,
+    ) -> String;
 }

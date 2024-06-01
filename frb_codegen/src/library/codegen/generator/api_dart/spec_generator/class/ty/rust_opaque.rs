@@ -2,11 +2,11 @@ use crate::codegen::generator::api_dart::spec_generator::class::method::generate
 use crate::codegen::generator::api_dart::spec_generator::class::misc::generate_class_extra_body;
 use crate::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
-use crate::codegen::ir::namespace::NamespacedName;
-use crate::codegen::ir::ty::rust_opaque::IrTypeRustOpaque;
+use crate::codegen::ir::mir::namespace::NamespacedName;
+use crate::codegen::ir::mir::ty::rust_opaque::MirTypeRustOpaque;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
-use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use lazy_static::lazy_static;
 use regex::Regex;
 
@@ -15,22 +15,22 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
         let dart_entrypoint_class_name = &self.context.config.dart_entrypoint_class_name;
         let dart_api_instance = format!("{dart_entrypoint_class_name}.instance.api");
 
-        let rust_api_type = self.ir.rust_api_type();
-        let dart_api_type = ApiDartGenerator::new(self.ir.clone(), self.context).dart_api_type();
+        let rust_api_type = self.mir.rust_api_type();
+        let dart_api_type = ApiDartGenerator::new(self.mir.clone(), self.context).dart_api_type();
 
         let methods = generate_api_methods(
             &NamespacedName::new(
-                self.ir.namespace.clone(),
-                compute_api_method_query_name(&self.ir, self.context),
+                self.mir.namespace.clone(),
+                compute_api_method_query_name(&self.mir, self.context),
             ),
             self.context,
         )
         .join("\n");
         let extra_body =
-            generate_class_extra_body(self.ir_type(), &self.context.ir_pack.dart_code_of_type);
+            generate_class_extra_body(self.mir_type(), &self.context.mir_pack.dart_code_of_type);
 
         Some(ApiDartGeneratedClass {
-            namespace: self.ir.namespace.clone(),
+            namespace: self.mir.namespace.clone(),
             class_name: dart_api_type.clone(),
             code: format!(
                 "
@@ -61,7 +61,7 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
 }
 
 fn compute_api_method_query_name(
-    ir: &IrTypeRustOpaque,
+    mir: &MirTypeRustOpaque,
     _context: ApiDartGeneratorContext,
 ) -> String {
     lazy_static! {
@@ -69,5 +69,5 @@ fn compute_api_method_query_name(
             Regex::new(r"^flutter_rust_bridge::for_generated::RustAutoOpaqueInner<(.*)>$").unwrap();
     }
 
-    FILTER.replace_all(&ir.inner.0, "$1").to_string()
+    FILTER.replace_all(&mir.inner.0, "$1").to_string()
 }

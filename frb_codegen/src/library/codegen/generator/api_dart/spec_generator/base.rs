@@ -1,5 +1,5 @@
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
-use crate::codegen::ir::ty::IrType::*;
+use crate::codegen::ir::mir::ty::MirType::*;
 use crate::codegen_generator_structs;
 use enum_dispatch::enum_dispatch;
 
@@ -11,6 +11,6 @@ codegen_generator_structs!(
 
 #[derive(Debug, Clone, Copy)]
 pub(crate) struct ApiDartGeneratorContext<'a> {
-    pub(crate) ir_pack: &'a IrPack,
+    pub(crate) mir_pack: &'a MirPack,
     pub(crate) config: &'a GeneratorApiDartInternalConfig,
 }
