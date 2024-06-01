@@ -53,7 +53,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             default_rust_opaque_codec,
         )
         .unwrap_or_else(|err| {
-            ParseFunctionOutput::Skipped(ParseFunctionOutputSkipped::Err(format!(
+            ParseFunctionOutput::Skip(ParseFunctionOutputSkipped::Err(format!(
                 "Error when parsing function={:?} error={:?}",
                 func.sig().ident,
                 err
@@ -73,7 +73,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         debug!("parse_function function name: {:?}", func.sig().ident);
 
         if !matches!(func.vis(), Visibility::Public(_)) {
-            return Ok(ParseFunctionOutput::Skipped(ParseFunctionOutputSkipped::Ignored));
+            return Ok(ParseFunctionOutput::Skip(ParseFunctionOutputSkipped::Ignored));
         }
 
         let sig = func.sig();
@@ -93,13 +93,13 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         {
             owner
         } else {
-            return Ok(ParseFunctionOutput::Skipped(ParseFunctionOutputSkipped::Ignored));
+            return Ok(ParseFunctionOutput::Skip(ParseFunctionOutputSkipped::Ignored));
         };
 
         let func_name = parse_name(sig, &owner);
 
         if attributes.ignore() {
-            return Ok(ParseFunctionOutput::Skipped(ParseFunctionOutputSkipped::Ignored));
+            return Ok(ParseFunctionOutput::Skip(ParseFunctionOutputSkipped::Ignored));
         }
 
         let context = create_context(Some(owner.clone()));
@@ -116,7 +116,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let namespace_refined = refine_namespace(&owner).unwrap_or(namespace_naive.clone());
 
         if info.ignore_func {
-            return Ok(ParseFunctionOutput::Skipped(ParseFunctionOutputSkipped::Ignored));
+            return Ok(ParseFunctionOutput::Skip(ParseFunctionOutputSkipped::Ignored));
         }
 
         Ok(ParseFunctionOutput::Ok(MirFunc {

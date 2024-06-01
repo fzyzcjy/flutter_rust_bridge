@@ -1,11 +1,7 @@
 use crate::codegen::ir::mir::func::MirFunc;
+use crate::codegen::ir::mir::skip::MirSkip;
 
 pub(crate) enum ParseFunctionOutput {
     Ok(MirFunc),
-    Skipped(ParseFunctionOutputSkipped),
-}
-
-pub(crate) enum ParseFunctionOutputSkipped {
-    Ignored,
-    Err(String),
+    Skip(MirSkip),
 }
