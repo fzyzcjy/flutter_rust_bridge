@@ -22,17 +22,17 @@ use pathdiff::diff_paths;
 use std::path::{Path, PathBuf};
 
 pub(super) struct Args<'a> {
-    config: &'a Config,
-    dart_root: &'a Path,
-    rust_crate_dir: &'a Path,
-    dart_output_path_pack: &'a DartOutputPathPack,
-    dart_output_class_name_pack: &'a DartOutputClassNamePack,
-    rust_output_path: &'a TargetOrCommonMap<PathBuf>,
-    default_stream_sink_codec: CodecMode,
-    default_rust_opaque_codec: RustOpaqueCodecMode,
-    c_output_path: &'a Option<PathBuf>,
-    web_enabled: bool,
-    full_dep: bool,
+    pub config: &'a Config,
+    pub dart_root: &'a Path,
+    pub rust_crate_dir: &'a Path,
+    pub dart_output_path_pack: &'a DartOutputPathPack,
+    pub dart_output_class_name_pack: &'a DartOutputClassNamePack,
+    pub rust_output_path: &'a TargetOrCommonMap<PathBuf>,
+    pub default_stream_sink_codec: CodecMode,
+    pub default_rust_opaque_codec: RustOpaqueCodecMode,
+    pub c_output_path: &'a Option<PathBuf>,
+    pub web_enabled: bool,
+    pub full_dep: bool,
 }
 
 pub(super) fn parse(args: Args) -> anyhow::Result<GeneratorInternalConfig> {

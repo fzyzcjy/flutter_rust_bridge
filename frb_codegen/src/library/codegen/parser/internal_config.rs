@@ -19,6 +19,12 @@ pub(crate) struct RustInputNamespacePack {
 }
 
 impl RustInputNamespacePack {
+    pub(crate) fn new(rust_input_namespace_prefices: Vec<Namespace>) -> Self {
+        Self {
+            rust_input_namespace_prefices,
+        }
+    }
+
     pub fn is_interest(&self, namespace: &Namespace) -> bool {
         (self.rust_input_namespace_prefices.iter()).any(|prefix| prefix.is_prefix_of(namespace))
     }

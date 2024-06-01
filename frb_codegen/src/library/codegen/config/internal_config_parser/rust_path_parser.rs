@@ -32,12 +32,12 @@ fn compute_rust_input_namespace_pack(
     raw_rust_input: &str,
     base_dir: &Path,
 ) -> anyhow::Result<RustInputNamespacePack> {
-    Ok(RustInputNamespacePack {
-        rust_input_namespace_prefices: raw_rust_input
+    Ok(RustInputNamespacePack::new(
+        raw_rust_input
             .split(",")
             .map(|s| Namespace::new_raw(s.to_owned()))
             .collect_vec(),
-    })
+    ))
 
     // const BLACKLIST_FILE_NAMES: [&str; 1] = ["mod.rs"];
     //
