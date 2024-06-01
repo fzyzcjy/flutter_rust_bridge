@@ -1,6 +1,4 @@
-use crate::codegen::Config;
 use anyhow::ensure;
-use std::path::PathBuf;
 
 #[derive(PartialEq, Eq, Debug, Clone)]
 pub(super) struct ConfigRustRootAndRustInput {

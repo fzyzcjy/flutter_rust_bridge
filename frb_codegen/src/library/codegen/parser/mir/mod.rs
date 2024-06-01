@@ -9,28 +9,20 @@ pub(crate) mod reader;
 pub(crate) mod sanity_checker;
 pub(crate) mod type_parser;
 
-use crate::codegen::dumper::Dumper;
 use crate::codegen::ir::hir::flat::HirFlatCrate;
-use crate::codegen::ir::hir::hierarchical::crates::HirCrate;
 use crate::codegen::ir::hir::hierarchical::function::HirFunction;
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStruct;
 use crate::codegen::ir::mir::func::MirFunc;
-use crate::codegen::ir::mir::namespace::{Namespace, NamespacedName};
+use crate::codegen::ir::mir::namespace::NamespacedName;
 use crate::codegen::ir::mir::pack::MirPack;
-use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::codegen::parser::mir::auto_accessor_parser::parse_auto_accessors;
 use crate::codegen::parser::mir::function_parser::FunctionParser;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::sanity_checker::opaque_inside_translatable_checker::check_opaque_inside_translatable;
 use crate::codegen::parser::mir::sanity_checker::unused_checker::get_unused_types;
 use crate::codegen::parser::mir::type_parser::TypeParser;
-use crate::codegen::ConfigDumpContent;
-use crate::library::misc::consts::HANDLER_NAME;
-use anyhow::ensure;
 use itertools::{concat, Itertools};
-use log::trace;
 use std::collections::HashMap;
-use std::path::Path;
 use syn::Visibility;
 
 pub(crate) fn parse(
@@ -53,8 +45,7 @@ pub(crate) fn parse(
         &hir_flat_crate.structs,
     )?;
 
-    let existing_handlers =
-        existing_handler::parse_existing_handlers(config, &hir_flat_crate.modules)?;
+    let existing_handlers = existing_handler::parse_existing_handlers(&hir_flat_crate.modules)?;
 
     let (struct_pool, enum_pool, dart_code_of_type) = type_parser.consume();
 

@@ -2,7 +2,7 @@ use crate::codegen::ir::hir::hierarchical::function::{HirFunction, HirFunctionIn
 use crate::codegen::ir::mir::namespace::Namespace;
 use crate::if_then_some;
 use itertools::Itertools;
-use syn::{File, ImplItem, Item};
+use syn::{ImplItem, Item};
 
 pub(super) fn parse_generalized_functions(
     items: &[syn::Item],

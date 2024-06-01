@@ -1,10 +1,8 @@
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStructOrEnumWrapper;
-use crate::codegen::ir::mir::namespace::{Namespace, NamespacedName};
+use crate::codegen::ir::mir::namespace::NamespacedName;
 use crate::codegen::parser::mir::internal_config::RustInputNamespacePack;
-use crate::library::misc::consts::HANDLER_NAME;
 use itertools::Itertools;
 use std::collections::HashMap;
-use std::path::{Path, PathBuf};
 
 pub(crate) fn extract_src_types_in_paths<T: HirStructOrEnumWrapper<I>, I>(
     src_items: &HashMap<String, &T>,

@@ -1,7 +1,6 @@
 use crate::codegen::ir::mir::namespace::Namespace;
 use proc_macro2::Span;
 use serde::Serialize;
-use std::path::PathBuf;
 use syn::spanned::Spanned;
 use syn::{Attribute, ImplItemFn, ItemFn, ItemImpl, Signature, Visibility};
 

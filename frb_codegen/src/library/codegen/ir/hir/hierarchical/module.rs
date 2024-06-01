@@ -5,7 +5,6 @@ use crate::codegen::ir::hir::hierarchical::type_alias::HirTypeAlias;
 use crate::codegen::ir::mir::namespace::Namespace;
 use derivative::Derivative;
 use serde::Serialize;
-use std::path::PathBuf;
 
 #[derive(Clone, Debug, Serialize)]
 pub struct HirModule {

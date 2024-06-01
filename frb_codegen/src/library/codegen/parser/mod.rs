@@ -3,7 +3,6 @@ use crate::codegen::ir::hir::flat::HirFlatCrate;
 use crate::codegen::ir::hir::hierarchical::crates::HirCrate;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::misc::GeneratorProgressBarPack;
-use crate::codegen::parser;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::parser::mir::reader::read_rust_crate;
 
@@ -47,7 +46,6 @@ mod tests {
     use crate::codegen::config::internal_config_parser::compute_force_codec_mode_pack;
     use crate::codegen::dumper::Dumper;
     use crate::codegen::generator::codec::structs::CodecMode;
-    use crate::codegen::ir::hir::hierarchical::crates::HirCrate;
     use crate::codegen::ir::mir::namespace::Namespace;
     use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
     use crate::codegen::misc::GeneratorProgressBarPack;
@@ -56,8 +54,7 @@ mod tests {
     use crate::codegen::parser::mir::internal_config::{
         ParserMirInternalConfig, RustInputNamespacePack,
     };
-    use crate::codegen::parser::mir::reader::read_rust_crate;
-    use crate::codegen::parser::{hir, parse_inner, MirPack};
+    use crate::codegen::parser::{parse_inner, MirPack};
     use crate::utils::logs::configure_opinionated_test_logging;
     use crate::utils::test_utils::{
         create_path_sanitizers, get_test_fixture_dir, json_golden_test,
@@ -83,7 +80,7 @@ mod tests {
     fn test_multi_input_file() -> anyhow::Result<()> {
         body(
             "library/codegen/parser/mod/multi_input_file",
-            Some(Box::new(|rust_crate_dir| {
+            Some(Box::new(|_rust_crate_dir| {
                 RustInputNamespacePack::new(vec![
                     Namespace::new_self_crate("api_one".to_owned()),
                     Namespace::new_self_crate("api_two".to_owned()),

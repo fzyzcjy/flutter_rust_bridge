@@ -1,5 +1,5 @@
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::{HirEnum, HirStruct};
-use crate::codegen::ir::mir::namespace::{Namespace, NamespacedName};
+use crate::codegen::ir::mir::namespace::NamespacedName;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
 use crate::codegen::ir::mir::ty::MirType;
@@ -8,7 +8,6 @@ use crate::codegen::parser::mir::misc::extract_src_types_in_paths;
 use crate::codegen::parser::mir::type_parser::path_data::extract_path_data;
 use itertools::Itertools;
 use std::collections::{HashMap, HashSet};
-use std::path::{Path, PathBuf};
 use syn::Type;
 
 pub(crate) fn get_unused_types(

@@ -18,7 +18,6 @@ use anyhow::{bail, Context};
 use itertools::concat;
 use log::{debug, warn};
 use std::fmt::Debug;
-use std::path::Path;
 use syn::*;
 use MirType::Primitive;
 

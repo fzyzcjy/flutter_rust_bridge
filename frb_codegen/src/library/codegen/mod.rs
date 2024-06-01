@@ -13,13 +13,10 @@ mod preparer;
 use crate::codegen::config::internal_config::InternalConfig;
 use crate::codegen::dumper::internal_config::ConfigDumpContent::Config as ContentConfig;
 use crate::codegen::dumper::Dumper;
-use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::misc::GeneratorProgressBarPack;
-use crate::codegen::parser::internal_config::ParserInternalConfig;
 pub use config::config::{Config, MetaConfig};
 pub use dumper::internal_config::ConfigDumpContent;
 use log::debug;
-use std::path::Path;
 
 /// Execute the main code generator
 pub fn generate(config: Config, meta_config: MetaConfig) -> anyhow::Result<()> {

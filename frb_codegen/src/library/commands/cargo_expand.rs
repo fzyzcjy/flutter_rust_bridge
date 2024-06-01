@@ -9,10 +9,8 @@ use lazy_static::lazy_static;
 use log::{debug, info, warn};
 use regex::Regex;
 use std::borrow::Cow;
-use std::collections::hash_map::Entry::{Occupied, Vacant};
-use std::collections::HashMap;
-use std::path::{Path, PathBuf};
-use std::{env, fs};
+use std::env;
+use std::path::Path;
 
 pub(crate) fn run_cargo_expand(rust_crate_dir: &Path, dumper: &Dumper) -> Result<String> {
     let manifest_dir = env::var("CARGO_MANIFEST_DIR").unwrap_or_default();

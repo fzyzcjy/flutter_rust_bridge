@@ -1,38 +1,21 @@
 use crate::codegen::config::config::MetaConfig;
-use crate::codegen::config::internal_config::{
-    ControllerInternalConfig, GeneratorInternalConfig, GeneratorWireInternalConfig, InternalConfig,
-};
+use crate::codegen::config::internal_config::InternalConfig;
 use crate::codegen::config::internal_config_parser::rust_path_parser::RustInputInfo;
 use crate::codegen::dumper::internal_config::DumperInternalConfig;
-use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
 use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
-use crate::codegen::generator::misc::target::TargetOrCommonMap;
-use crate::codegen::generator::wire::c::internal_config::GeneratorWireCInternalConfig;
-use crate::codegen::generator::wire::dart::internal_config::{
-    DartOutputClassNamePack, GeneratorWireDartDefaultExternalLibraryLoaderInternalConfig,
-    GeneratorWireDartInternalConfig,
-};
-use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInternalConfig;
+use crate::codegen::generator::wire::dart::internal_config::DartOutputClassNamePack;
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
-use crate::codegen::parser::mir::internal_config::{
-    ParserMirInternalConfig, RustInputNamespacePack,
-};
+use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::polisher::internal_config::PolisherInternalConfig;
 use crate::codegen::preparer::internal_config::PreparerInternalConfig;
 use crate::codegen::{Config, ConfigDumpContent};
-use crate::library::commands::cargo_metadata::execute_cargo_metadata;
-use crate::utils::dart_repository::get_dart_package_name;
-use crate::utils::path_utils::{
-    canonicalize_with_error_message, find_dart_package_dir, find_rust_crate_dir, glob_path,
-    path_to_string,
-};
-use anyhow::{ensure, Context, Result};
+use crate::utils::path_utils::{canonicalize_with_error_message, find_dart_package_dir};
+use anyhow::Result;
 use itertools::Itertools;
 use log::debug;
-use pathdiff::diff_paths;
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 use strum::IntoEnumIterator;
 
 mod controller_parser;
@@ -54,7 +37,7 @@ impl InternalConfig {
         let RustInputInfo {
             rust_crate_dir,
             rust_input_namespace_pack,
-        } = rust_path_parser::compute_rust_input_info(&migrated_rust_input, &base_dir)?;
+        } = rust_path_parser::compute_rust_input_info(&migrated_rust_input)?;
 
         let dart_output_dir = canonicalize_with_error_message(&base_dir.join(&config.dart_output))?;
         let dart_output_path_pack =

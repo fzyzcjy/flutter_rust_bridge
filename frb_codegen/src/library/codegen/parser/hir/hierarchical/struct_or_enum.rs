@@ -1,4 +1,3 @@
-use crate::codegen::ir::hir::hierarchical::module::{HirModuleMeta, HirVisibility};
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::{HirEnum, HirStruct, HirStructOrEnum};
 use crate::codegen::ir::mir::namespace::{Namespace, NamespacedName};
 use crate::codegen::parser::hir::hierarchical::mirror_ident::{
