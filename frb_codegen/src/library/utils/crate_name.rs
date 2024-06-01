@@ -7,7 +7,7 @@ use crate::utils::namespace::Namespace;
 pub(crate) struct CrateName(String);
 
 impl CrateName {
-    pub fn new(raw: String) -> Self {
+    pub const fn new(raw: String) -> Self {
         Self(raw)
     }
 

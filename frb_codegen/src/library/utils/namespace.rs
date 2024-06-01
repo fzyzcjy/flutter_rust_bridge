@@ -3,6 +3,7 @@ use itertools::Itertools;
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
 use std::fmt::{Display, Formatter};
 use std::path::PathBuf;
+use crate::utils::crate_name::CrateName;
 
 /// The Rust files/modules/namespaces.
 #[derive(Debug, Clone, Hash, Eq, PartialEq, Serialize, Deserialize, Ord, PartialOrd, Default)]
@@ -15,6 +16,7 @@ pub struct Namespace {
 impl Namespace {
     const SEP: &'static str = "::";
     pub(crate) const SELF_CRATE: &'static str = "crate";
+    pub(crate) const SELF_CRATE_TYPED: CrateName = CrateName::new(Self::SELF_CRATE);
 
     pub fn new(path: Vec<String>) -> Self {
         assert!((path.iter()).all(|item| !item.contains(Self::SEP)));
