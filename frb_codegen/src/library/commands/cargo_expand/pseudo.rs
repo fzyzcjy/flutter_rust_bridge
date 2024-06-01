@@ -12,5 +12,7 @@ pub(super) fn run(rust_crate_dir: &Path) -> anyhow::Result<String> {
 }
 
 fn parse_file(path: &Path) -> anyhow::Result<String> {
+    let code = fs::read_to_string(&path)?;
+    let ast = syn::parse_file(&code)?;
     TODO
 }
