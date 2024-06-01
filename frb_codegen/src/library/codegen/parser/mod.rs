@@ -69,12 +69,11 @@ mod tests {
     fn test_multi_input_file() -> anyhow::Result<()> {
         body(
             "library/codegen/parser/mod/multi_input_file",
-            Some(Box::new(|rust_crate_dir| RustInputNamespacePack {
-                rust_input_namespaces: [
+            Some(Box::new(|rust_crate_dir| {
+                RustInputNamespacePack::new(vec![
                     Namespace::new_self_crate("api_one".to_owned()),
                     Namespace::new_self_crate("api_two".to_owned()),
-                ]
-                .into(),
+                ])
             })),
         )
     }
@@ -150,15 +149,14 @@ mod tests {
             &ParserInternalConfig {
                 rust_input_namespace_pack: rust_input_namespace_pack
                     .map(|f| f(&rust_crate_dir))
-                    .unwrap_or(RustInputNamespacePack {
-                        rust_input_namespaces: vec![Namespace::new_self_crate("api".to_owned())],
-                    }),
+                    .unwrap_or(RustInputNamespacePack::new(vec![
+                        Namespace::new_self_crate("api".to_owned()),
+                    ])),
                 rust_crate_dir: rust_crate_dir.clone(),
                 force_codec_mode_pack: compute_force_codec_mode_pack(true),
                 default_stream_sink_codec: CodecMode::Dco,
                 default_rust_opaque_codec: RustOpaqueCodecMode::Nom,
             },
-            &mut CachedRustReader::default(),
             &Dumper(&Default::default()),
             &GeneratorProgressBarPack::new(),
         )?;
