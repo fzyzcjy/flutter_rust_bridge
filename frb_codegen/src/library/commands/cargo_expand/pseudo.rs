@@ -2,11 +2,8 @@ use std::borrow::Cow;
 use std::env;
 use std::path::Path;
 
-fn run_with_frb_aware(rust_crate_dir: &Path, dumper: &Dumper) -> Result<String> {
-    Ok(
-        unwrap_frb_attrs_in_doc(&run_raw(rust_crate_dir, "--cfg frb_expand", dumper, true)?)
-            .into_owned(),
-    )
+fn run_with_frb_aware(rust_crate_dir: &Path) -> Result<String> {
+    Ok(unwrap_frb_attrs_in_doc(&run_raw(rust_crate_dir, "--cfg frb_expand", true)?).into_owned())
 }
 
 /// Turns `#[doc = "frb_marker: .."]` back into `#[frb(..)]`, usually produced
@@ -24,7 +21,6 @@ fn unwrap_frb_attrs_in_doc(code: &str) -> Cow<str> {
 fn run_raw(
     rust_crate_dir: &Path,
     extra_rustflags: &str,
-    dumper: &Dumper,
     allow_auto_install: bool,
 ) -> Result<String> {
     // let _pb = simple_progress("Run cargo-expand".to_owned(), 1);
@@ -35,7 +31,7 @@ fn run_raw(
         "RUSTFLAGS".to_owned(),
         env::var("RUSTFLAGS").map(|x| x + " ").unwrap_or_default() + extra_rustflags,
     )]
-        .into();
+    .into();
 
     let output = execute_command("cargo", &args, Some(rust_crate_dir), Some(extra_env))
         .with_context(|| format!("Could not expand rust code at path {rust_crate_dir:?}"))?;
@@ -55,9 +51,7 @@ fn run_raw(
         // frb-coverage:ignore-end
     }
 
-    let ans = stdout.lines().skip(1).join("\n");
-    dumper.dump_str(ConfigDumpContent::Source, "cargo_expand.rs", &ans)?;
-    Ok(ans)
+    Ok(stdout.lines().skip(1).join("\n"))
 }
 
 fn install_cargo_expand() -> Result<()> {
