@@ -84,7 +84,7 @@ pub(crate) fn parse(
 
 fn parse_ir_funcs(
     config: &ParserInternalConfig,
-    src_fns: &[HirFunction],
+    src_fns: &[&HirFunction],
     type_parser: &mut TypeParser,
     src_structs: &HashMap<String, &HirStruct>,
 ) -> anyhow::Result<Vec<IrFunc>> {
@@ -121,7 +121,7 @@ fn parse_ir_funcs(
 }
 
 fn compute_skipped_functions(
-    src_fns_skipped: &[HirFunction],
+    src_fns_skipped: &[&HirFunction],
 ) -> anyhow::Result<Vec<NamespacedName>> {
     src_fns_skipped
         .iter()
