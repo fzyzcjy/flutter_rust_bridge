@@ -10,7 +10,7 @@ pub(super) fn parse_existing_handlers(
     modules: &[&HirModule],
 ) -> anyhow::Result<Vec<NamespacedName>> {
     let existing_handlers = (modules.iter())
-        .filter(|module| module.raw.iter().any(parse_has_executor))
+        .filter(|module| module.raw.iter().any(|code| parse_has_executor(code)))
         .map(|module| {
             NamespacedName::new(module.meta.namespace.to_owned(), HANDLER_NAME.to_owned())
         })
