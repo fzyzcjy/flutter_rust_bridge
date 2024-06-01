@@ -3,7 +3,6 @@ use crate::codegen::ir::hir::hierarchical::crates::HirCrate;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
-use crate::library::commands::cargo_expand::run_cargo_expand;
 
 pub(crate) mod hir;
 pub(crate) mod internal_config;
