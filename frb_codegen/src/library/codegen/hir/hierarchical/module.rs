@@ -1,6 +1,3 @@
-use crate::codegen::parser::source_graph::modules::{
-    ModuleScope, ModuleSource, TypeAlias, Visibility,
-};
 use derivative::Derivative;
 use serde::Serialize;
 use std::path::PathBuf;

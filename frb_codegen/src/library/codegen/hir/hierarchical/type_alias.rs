@@ -7,4 +7,3 @@ pub struct TypeAlias {
     #[serde(serialize_with = "serialize_syn")]
     pub(super) target: Type,
 }
-

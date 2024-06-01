@@ -1,7 +1,7 @@
+use crate::codegen::hir::hierarchical::struct_or_enum::StructOrEnumWrapper;
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
-use crate::codegen::parser::source_graph::modules::StructOrEnumWrapper;
 use crate::codegen::parser::type_parser::external_impl;
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::library::codegen::ir::ty::IrTypeTrait;

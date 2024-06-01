@@ -1,5 +1,4 @@
 use crate::codegen::ir::namespace::Namespace;
-use crate::codegen::parser::source_graph::modules::Visibility;
 use derivative::Derivative;
 use proc_macro2::Ident;
 use quote::ToTokens;

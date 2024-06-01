@@ -1,6 +1,7 @@
 mod field;
 
 use crate::codegen::generator::codec::structs::CodecMode;
+use crate::codegen::hir::hierarchical::struct_or_enum::Struct;
 use crate::codegen::ir::func::{IrFunc, IrFuncAccessorMode};
 use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
@@ -9,7 +10,6 @@ use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::parser::misc::extract_src_types_in_paths;
 use crate::codegen::parser::sanity_checker::auto_accessor_checker;
-use crate::codegen::parser::source_graph::modules::Struct;
 use crate::codegen::parser::type_parser::{
     TypeParser, TypeParserParsingContext, TypeParserWithContext,
 };

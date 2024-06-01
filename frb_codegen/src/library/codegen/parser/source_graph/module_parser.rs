@@ -1,10 +1,6 @@
 use crate::codegen::dumper::Dumper;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::reader::CachedRustReader;
-use crate::codegen::parser::source_graph::modules::{
-    Enum, Module, ModuleInfo, ModuleScope, ModuleSource, Struct, StructOrEnum, TypeAlias,
-    Visibility,
-};
 use crate::utils::path_utils::{find_rust_crate_dir, path_to_string};
 use anyhow::Context;
 use itertools::Itertools;

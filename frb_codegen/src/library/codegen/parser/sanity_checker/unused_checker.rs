@@ -1,9 +1,9 @@
+use crate::codegen::hir::hierarchical::struct_or_enum::{Enum, Struct};
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::misc::extract_src_types_in_paths;
-use crate::codegen::parser::source_graph::modules::{Enum, Struct};
 use crate::codegen::parser::type_parser::path_data::extract_path_data;
 use itertools::Itertools;
 use std::collections::{HashMap, HashSet};
