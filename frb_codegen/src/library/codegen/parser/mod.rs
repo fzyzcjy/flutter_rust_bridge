@@ -4,6 +4,7 @@ use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::parser::mir::reader::read_rust_crate;
+use crate::library::commands::cargo_expand::run_cargo_expand;
 
 pub(crate) mod hir;
 pub(crate) mod internal_config;
@@ -24,7 +25,7 @@ fn parse_inner(
     on_hir: impl FnOnce(&HirCrate) -> anyhow::Result<()>,
 ) -> anyhow::Result<MirPack> {
     let pb = progress_bar_pack.parse_read.start();
-    let file = read_rust_crate(&config.rust_crate_dir, dumper)?;
+    let file = run_cargo_expand(&config.rust_crate_dir, dumper)?;
     drop(pb);
 
     let pb = progress_bar_pack.parse_hir.start();

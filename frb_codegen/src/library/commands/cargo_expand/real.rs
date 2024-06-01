@@ -12,8 +12,8 @@ use std::borrow::Cow;
 use std::env;
 use std::path::Path;
 
-pub(super) fn run(rust_crate_dir: &Path) -> Result<String> {
-    run_with_frb_aware(rust_crate_dir)
+pub(super) fn run(rust_crate_dir: &Path) -> Result<syn::File> {
+    Ok(syn::parse_file(run_with_frb_aware(rust_crate_dir)?)?)
 }
 
 fn run_with_frb_aware(rust_crate_dir: &Path) -> Result<String> {
@@ -45,7 +45,7 @@ fn run_raw(
         "RUSTFLAGS".to_owned(),
         env::var("RUSTFLAGS").map(|x| x + " ").unwrap_or_default() + extra_rustflags,
     )]
-        .into();
+    .into();
 
     let output = execute_command("cargo", &args, Some(rust_crate_dir), Some(extra_env))
         .with_context(|| format!("Could not expand rust code at path {rust_crate_dir:?}"))?;

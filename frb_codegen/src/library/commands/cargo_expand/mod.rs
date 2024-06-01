@@ -15,7 +15,7 @@ use std::borrow::Cow;
 use std::env;
 use std::path::Path;
 
-pub(crate) fn run_cargo_expand(rust_crate_dir: &Path, dumper: &Dumper) -> Result<String> {
+pub(crate) fn run_cargo_expand(rust_crate_dir: &Path, dumper: &Dumper) -> Result<syn::File> {
     let ans = if can_execute_real(rust_crate_dir)? {
         real::run(rust_crate_dir)?
     } else {
