@@ -25,7 +25,7 @@ fn parse_inner(
     on_hir: impl FnOnce(&HirCrate) -> anyhow::Result<()>,
 ) -> anyhow::Result<MirPack> {
     let pb = progress_bar_pack.parse_reader.start();
-    let file = run_cargo_expand(&config.rust_crate_dir, dumper)?;
+    let file = reader::parse(&config.reader, dumper)?;
     drop(pb);
 
     let pb = progress_bar_pack.parse_hir.start();
