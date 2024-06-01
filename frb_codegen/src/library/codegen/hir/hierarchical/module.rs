@@ -1,4 +1,6 @@
-use crate::codegen::parser::source_graph::modules::{ModuleScope, ModuleSource, Visibility};
+use crate::codegen::parser::source_graph::modules::{
+    ModuleScope, ModuleSource, TypeAlias, Visibility,
+};
 use derivative::Derivative;
 use serde::Serialize;
 use std::path::PathBuf;
@@ -18,4 +20,28 @@ pub struct ModuleInfo {
     #[derivative(Debug = "ignore")]
     #[serde(skip_serializing)]
     pub(super) source: ModuleSource,
+}
+
+#[derive(Debug, Clone, Serialize)]
+pub struct ModuleScope {
+    pub(super) modules: Vec<Module>,
+    pub(super) enums: Vec<Enum>,
+    pub(super) structs: Vec<Struct>,
+    // pub(super) imports: Vec<Import>, // not implemented yet
+    pub(super) type_alias: Vec<TypeAlias>,
+}
+
+/// Mirrors syn::Visibility, but can be created without a token
+#[derive(Debug, Clone, Serialize)]
+pub enum Visibility {
+    Public,
+    Restricted,
+    // Not supported
+    Inherited, // Usually means private
+}
+
+#[derive(Debug, Clone)]
+pub enum ModuleSource {
+    File(syn::File),
+    ModuleInFile(Vec<syn::Item>),
 }

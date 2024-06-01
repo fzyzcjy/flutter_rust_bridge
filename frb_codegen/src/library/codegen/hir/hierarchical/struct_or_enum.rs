@@ -2,7 +2,8 @@ use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::parser::source_graph::modules::Visibility;
 use derivative::Derivative;
 use proc_macro2::Ident;
-use serde::Serialize;
+use quote::ToTokens;
+use serde::{Serialize, Serializer};
 use syn::{Attribute, ItemEnum, ItemStruct};
 
 // This struct is surely used many times, but coverage tool thinks it is never used
@@ -58,3 +59,10 @@ macro_rules! struct_or_enum_wrapper {
 
 struct_or_enum_wrapper!(Struct, ItemStruct);
 struct_or_enum_wrapper!(Enum, ItemEnum);
+
+pub(super) fn serialize_syn<T: ToTokens, S: Serializer>(
+    value: &T,
+    s: S,
+) -> Result<S::Ok, S::Error> {
+    quote::quote!(#value).to_string().serialize(s)
+}
