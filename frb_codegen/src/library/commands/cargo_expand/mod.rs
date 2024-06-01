@@ -1,4 +1,3 @@
-mod pseudo;
 mod real;
 
 use crate::codegen::dumper::Dumper;
