@@ -16,9 +16,10 @@ pub(super) struct RustInputInfo {
 
 pub(super) fn compute_rust_input_info(
     migrated_rust_input: &ConfigRustRootAndRustInput,
+    base_dir: &Path,
 ) -> anyhow::Result<RustInputInfo> {
     Ok(RustInputInfo {
-        rust_crate_dir: compute_rust_crate_dir(&migrated_rust_input.rust_root)?,
+        rust_crate_dir: compute_rust_crate_dir(base_dir, &migrated_rust_input.rust_root)?,
         rust_input_namespace_pack: compute_rust_input_namespace_pack(
             &migrated_rust_input.rust_input,
         )?,
@@ -65,8 +66,8 @@ fn compute_rust_input_namespace_pack(
     // Ok(pack)
 }
 
-fn compute_rust_crate_dir(rust_root: &str) -> anyhow::Result<PathBuf> {
-    canonicalize_with_error_message(&PathBuf::from(rust_root))
+fn compute_rust_crate_dir(base_dir: &Path, rust_root: &str) -> anyhow::Result<PathBuf> {
+    canonicalize_with_error_message(&base_dir.join(rust_root.into()))
 }
 
 pub(super) fn compute_rust_output_path(
