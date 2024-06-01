@@ -2,7 +2,7 @@ use crate::codegen::ir::hir::hierarchical::function::HirFunction;
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirEnum;
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStruct;
 use crate::codegen::ir::hir::hierarchical::type_alias::HirTypeAlias;
-use crate::codegen::ir::mir::namespace::Namespace;
+use crate::utils::namespace::Namespace;
 use derivative::Derivative;
 use serde::Serialize;
 

@@ -1,6 +1,6 @@
 use crate::codegen::ir::mir::field::MirField;
 use crate::codegen::ir::mir::ident::MirIdent;
-use crate::codegen::ir::mir::namespace::NamespacedName;
+use crate::utils::namespace::NamespacedName;
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::record::MirTypeRecord;
 use crate::codegen::ir::mir::ty::structure::{MirStruct, MirStructIdent, MirTypeStructRef};

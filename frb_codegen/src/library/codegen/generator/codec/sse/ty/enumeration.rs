@@ -1,7 +1,7 @@
 use crate::codegen::generator::codec::sse::ty::structure::GeneralizedStructGenerator;
 use crate::codegen::generator::codec::sse::ty::*;
 use crate::codegen::generator::misc::StructOrRecord;
-use crate::codegen::ir::mir::namespace::NamespacedName;
+use crate::utils::namespace::NamespacedName;
 use crate::codegen::ir::mir::ty::enumeration::{MirEnum, MirVariant, MirVariantKind};
 use crate::library::codegen::generator::codec::sse::lang::LangTrait;
 use itertools::Itertools;

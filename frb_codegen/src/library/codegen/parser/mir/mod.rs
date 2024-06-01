@@ -13,7 +13,7 @@ use crate::codegen::ir::hir::flat::HirFlatCrate;
 use crate::codegen::ir::hir::hierarchical::function::HirFunction;
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStruct;
 use crate::codegen::ir::mir::func::MirFunc;
-use crate::codegen::ir::mir::namespace::NamespacedName;
+use crate::utils::namespace::NamespacedName;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::parser::mir::auto_accessor_parser::parse_auto_accessors;
 use crate::codegen::parser::mir::function_parser::FunctionParser;

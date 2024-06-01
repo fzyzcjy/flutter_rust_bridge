@@ -4,7 +4,7 @@ use crate::codegen::generator::api_dart::spec_generator::{
     ApiDartOutputSpec, ApiDartOutputSpecItem,
 };
 use crate::codegen::generator::misc::{generate_code_header, PathText, PathTexts};
-use crate::codegen::ir::mir::namespace::Namespace;
+use crate::utils::namespace::Namespace;
 use crate::utils::basic_code::DartBasicHeaderCode;
 use anyhow::ensure;
 use itertools::Itertools;

@@ -1,4 +1,4 @@
-use crate::codegen::ir::mir::namespace::Namespace;
+use crate::utils::namespace::Namespace;
 use crate::codegen::ir::mir::ty::rust_opaque::{
     MirRustOpaqueInner, MirTypeRustOpaque, RustOpaqueCodecMode,
 };

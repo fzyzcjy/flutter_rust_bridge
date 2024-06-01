@@ -1,6 +1,6 @@
 use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::ir::mir::func::MirFunc;
-use crate::codegen::ir::mir::namespace::NamespacedName;
+use crate::utils::namespace::NamespacedName;
 use crate::codegen::ir::mir::ty::enumeration::{MirEnum, MirEnumIdent};
 use crate::codegen::ir::mir::ty::structure::{MirStruct, MirStructIdent};
 use crate::codegen::ir::mir::ty::MirType;

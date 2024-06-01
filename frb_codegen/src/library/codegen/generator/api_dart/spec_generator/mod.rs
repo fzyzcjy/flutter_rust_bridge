@@ -9,7 +9,7 @@ use crate::codegen::generator::api_dart::spec_generator::function::ApiDartGenera
 use crate::codegen::generator::api_dart::spec_generator::misc::generate_imports_which_types_and_funcs_use;
 use crate::codegen::generator::api_dart::spec_generator::sanity_checker::sanity_check_class_name_duplicates;
 use crate::codegen::ir::mir::func::{MirFunc, MirFuncOwnerInfo};
-use crate::codegen::ir::mir::namespace::Namespace;
+use crate::utils::namespace::Namespace;
 use crate::codegen::ir::mir::pack::{MirPack, MirPackComputedCache};
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ConfigDumpContent;

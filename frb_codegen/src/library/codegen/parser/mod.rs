@@ -48,7 +48,7 @@ mod tests {
     use crate::codegen::config::internal_config_parser::compute_force_codec_mode_pack;
     use crate::codegen::dumper::Dumper;
     use crate::codegen::generator::codec::structs::CodecMode;
-    use crate::codegen::ir::mir::namespace::Namespace;
+    use crate::utils::namespace::Namespace;
     use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
     use crate::codegen::misc::GeneratorProgressBarPack;
     use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;

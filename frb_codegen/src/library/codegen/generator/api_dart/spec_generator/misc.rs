@@ -5,7 +5,7 @@ use crate::codegen::ir::mir::annotation::MirDartAnnotation;
 use crate::codegen::ir::mir::comment::MirComment;
 use crate::codegen::ir::mir::func::MirFunc;
 use crate::codegen::ir::mir::import::MirDartImport;
-use crate::codegen::ir::mir::namespace::Namespace;
+use crate::utils::namespace::Namespace;
 use crate::codegen::ir::mir::pack::DistinctTypeGatherer;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;

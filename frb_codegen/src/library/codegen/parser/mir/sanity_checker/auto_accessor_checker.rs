@@ -1,5 +1,5 @@
 use crate::codegen::ir::mir::field::MirField;
-use crate::codegen::ir::mir::namespace::NamespacedName;
+use crate::utils::namespace::NamespacedName;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use itertools::Itertools;
 use log::warn;
@@ -33,7 +33,7 @@ pub(crate) struct SanityCheckHint {
 
 #[cfg(test)]
 mod tests {
-    use crate::codegen::ir::mir::namespace::Namespace;
+    use crate::utils::namespace::Namespace;
     use crate::codegen::ir::mir::ty::boxed::MirTypeBoxed;
     use crate::codegen::ir::mir::ty::dart_opaque::MirTypeDartOpaque;
     use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;

@@ -3,7 +3,7 @@ mod field;
 use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStruct;
 use crate::codegen::ir::mir::func::{MirFunc, MirFuncAccessorMode};
-use crate::codegen::ir::mir::namespace::NamespacedName;
+use crate::utils::namespace::NamespacedName;
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::mir::ty::{MirContext, MirType};
 use crate::codegen::parser::mir::attribute_parser::FrbAttributes;

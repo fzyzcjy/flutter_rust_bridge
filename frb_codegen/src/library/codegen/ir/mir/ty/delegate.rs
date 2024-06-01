@@ -1,5 +1,5 @@
 use crate::codegen::generator::codec::structs::CodecMode;
-use crate::codegen::ir::mir::namespace::Namespace;
+use crate::utils::namespace::Namespace;
 use crate::codegen::ir::mir::ty::enumeration::MirTypeEnumRef;
 use crate::codegen::ir::mir::ty::general_list::{mir_list, MirTypeGeneralList};
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;

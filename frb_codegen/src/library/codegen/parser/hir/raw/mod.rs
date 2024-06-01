@@ -1,6 +1,6 @@
 use crate::codegen::dumper::Dumper;
 use crate::codegen::ir::hir::raw::HirRawPack;
-use crate::codegen::ir::mir::namespace::Namespace;
+use crate::utils::namespace::Namespace;
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 use crate::library::commands::cargo_expand::run_cargo_expand;
 use itertools::concat;

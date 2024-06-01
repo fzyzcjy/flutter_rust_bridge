@@ -1,5 +1,5 @@
 use crate::codegen::ir::hir::hierarchical::function::{HirFunction, HirFunctionInner};
-use crate::codegen::ir::mir::namespace::Namespace;
+use crate::utils::namespace::Namespace;
 use crate::if_then_some;
 use itertools::Itertools;
 use syn::{ImplItem, Item};

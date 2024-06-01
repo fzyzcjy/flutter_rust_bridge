@@ -1,7 +1,7 @@
 use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::{HirEnum, HirStruct};
 use crate::codegen::ir::mir::func::MirFuncOwnerInfo;
-use crate::codegen::ir::mir::namespace::Namespace;
+use crate::utils::namespace::Namespace;
 use crate::codegen::ir::mir::pack::{MirEnumPool, MirStructPool};
 use crate::codegen::ir::mir::ty::enumeration::{MirEnum, MirEnumIdent};
 use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqueImplicit;

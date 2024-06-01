@@ -1,5 +1,5 @@
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::{HirEnum, HirStruct};
-use crate::codegen::ir::mir::namespace::NamespacedName;
+use crate::utils::namespace::NamespacedName;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
 use crate::codegen::ir::mir::ty::MirType;

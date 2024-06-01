@@ -1,5 +1,5 @@
 use crate::codegen::ir::mir::func::OwnershipMode;
-use crate::codegen::ir::mir::namespace::Namespace;
+use crate::utils::namespace::Namespace;
 use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::{
     MirRustAutoOpaqueRaw, MirTypeRustAutoOpaqueImplicit,
 };

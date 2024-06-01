@@ -1,5 +1,5 @@
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStructOrEnumWrapper;
-use crate::codegen::ir::mir::namespace::{Namespace, NamespacedName};
+use crate::utils::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
 use crate::codegen::parser::mir::type_parser::external_impl;

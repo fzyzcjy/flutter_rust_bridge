@@ -15,3 +15,4 @@ pub(crate) mod simple_cache;
 #[cfg(test)]
 pub(crate) mod test_utils;
 pub(crate) mod crate_name;
+pub(crate) mod namespace;
