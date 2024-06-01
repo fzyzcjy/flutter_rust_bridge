@@ -11,7 +11,7 @@ pub(crate) fn parse(
     dumper: &Dumper,
 ) -> anyhow::Result<HirRawPack> {
     let crates = concat([
-        vec![Namespace::SELF_CRATE_TYPED.clone()],
+        vec![CrateName::self_crate()],
         config.third_party_crate_names.clone(),
     ])
     .iter()
@@ -20,7 +20,7 @@ pub(crate) fn parse(
             crate_name.to_owned(),
             run_cargo_expand(
                 &config.rust_crate_dir,
-                (*crate_name != Namespace::SELF_CRATE_TYPED).then(|| crate_name),
+                (*crate_name != CrateName::self_crate()).then(|| crate_name),
                 dumper,
             )?,
         ))

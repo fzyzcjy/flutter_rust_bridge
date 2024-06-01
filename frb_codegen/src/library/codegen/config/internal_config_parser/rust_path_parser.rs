@@ -71,7 +71,7 @@ fn compute_third_party_crate_names(rust_input_namespace_prefixes_raw: &[Namespac
     rust_input_namespace_prefixes_raw
         .iter()
         .map(|x| x.path()[0])
-        .filter(|x| *x != Namespace::SELF_CRATE)
+        .filter(|x| *x != CrateName::SELF_CRATE)
         .dedup()
         .sorted()
         .map(|x| CrateName::new(x.to_owned()))
