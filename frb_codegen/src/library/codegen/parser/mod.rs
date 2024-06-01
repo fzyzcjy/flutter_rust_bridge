@@ -51,10 +51,13 @@ mod tests {
     use crate::codegen::ir::mir::namespace::Namespace;
     use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
     use crate::codegen::misc::GeneratorProgressBarPack;
-    use crate::codegen::parser::mir::internal_config::RustInputNamespacePack;
+    use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
+    use crate::codegen::parser::internal_config::ParserInternalConfig;
+    use crate::codegen::parser::mir::internal_config::{
+        ParserMirInternalConfig, RustInputNamespacePack,
+    };
     use crate::codegen::parser::mir::reader::read_rust_crate;
     use crate::codegen::parser::{hir, parse_inner, MirPack};
-    use crate::codegen::ParserInternalConfig;
     use crate::utils::logs::configure_opinionated_test_logging;
     use crate::utils::test_utils::{
         create_path_sanitizers, get_test_fixture_dir, json_golden_test,
@@ -145,15 +148,18 @@ mod tests {
         info!("test_fixture_dir={test_fixture_dir:?}");
 
         let config = ParserInternalConfig {
-            rust_input_namespace_pack: rust_input_namespace_pack
-                .map(|f| f(&rust_crate_dir))
-                .unwrap_or(RustInputNamespacePack::new(vec![
-                    Namespace::new_self_crate("api".to_owned()),
-                ])),
-            rust_crate_dir: rust_crate_dir.clone(),
-            force_codec_mode_pack: compute_force_codec_mode_pack(true),
-            default_stream_sink_codec: CodecMode::Dco,
-            default_rust_opaque_codec: RustOpaqueCodecMode::Nom,
+            hir: ParserHirInternalConfig {},
+            mir: ParserMirInternalConfig {
+                rust_input_namespace_pack: rust_input_namespace_pack
+                    .map(|f| f(&rust_crate_dir))
+                    .unwrap_or(RustInputNamespacePack::new(vec![
+                        Namespace::new_self_crate("api".to_owned()),
+                    ])),
+                rust_crate_dir: rust_crate_dir.clone(),
+                force_codec_mode_pack: compute_force_codec_mode_pack(true),
+                default_stream_sink_codec: CodecMode::Dco,
+                default_rust_opaque_codec: RustOpaqueCodecMode::Nom,
+            },
         };
 
         let pack = parse_inner(
