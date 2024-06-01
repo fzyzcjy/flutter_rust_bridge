@@ -208,11 +208,11 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 fn create_output_skip(
     func: &HirFunctionInner,
     namespace_naive: &Namespace,
-    inner: MirSkipReason,
+    reason: MirSkipReason,
 ) -> ParseFunctionOutput {
     ParseFunctionOutput::Skip(MirSkip {
         name: NamespacedName::new(namespace_naive.to_owned(), func.sig().ident.to_string()),
-        inner: reason,
+        reason,
     })
 }
 

@@ -43,7 +43,7 @@ pub(crate) struct ApiDartOutputSpecItem {
     pub imports: DartBasicHeaderCode,
     pub preamble: String,
     pub unused_types: Vec<String>,
-    pub skipped_functions: HashMap<MirSkipReason, String>,
+    pub skipped_functions: HashMap<MirSkipReason, Vec<String>>,
     pub needs_freezed: bool,
 }
 
