@@ -69,6 +69,10 @@ impl Namespace {
     pub fn safe_ident(&self) -> String {
         self.path().iter().join("__")
     }
+
+    pub fn join(&self, other: &str) -> Self {
+        Self::new_raw(format!("{}{}{}", self.joined_path, Self::SEP, other))
+    }
 }
 
 impl Display for Namespace {
