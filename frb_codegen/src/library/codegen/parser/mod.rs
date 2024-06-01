@@ -1,5 +1,6 @@
 use crate::codegen::dumper::Dumper;
 use crate::codegen::ir::hir::hierarchical::crates::HirCrate;
+use crate::codegen::ir::hir::hierarchical::pack::HirPack;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
@@ -20,7 +21,7 @@ fn parse_inner(
     config: &ParserInternalConfig,
     dumper: &Dumper,
     progress_bar_pack: &GeneratorProgressBarPack,
-    on_hir: impl FnOnce(&HirCrate) -> anyhow::Result<()>,
+    on_hir: impl FnOnce(&HirPack) -> anyhow::Result<()>,
 ) -> anyhow::Result<MirPack> {
     let pb = progress_bar_pack.parse_hir_raw.start();
     let hir_raw = hir::raw::parse(&config.hir, dumper)?;
