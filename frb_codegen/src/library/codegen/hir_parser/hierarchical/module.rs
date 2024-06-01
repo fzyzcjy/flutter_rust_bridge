@@ -1,5 +1,7 @@
 use crate::codegen::dumper::Dumper;
-use crate::codegen::hir::hierarchical::module::{Module, ModuleInfo, ModuleScope, ModuleSource};
+use crate::codegen::hir::hierarchical::module::{
+    HirModule, HirModuleInfo, HirModuleScope, HirModuleSource,
+};
 use crate::codegen::hir_parser::hierarchical::struct_or_enum::{
     parse_syn_item_enum, parse_syn_item_struct,
 };
@@ -8,19 +10,19 @@ use log::debug;
 
 /// Maps out modules, structs and enums within the scope of this module
 pub(crate) fn parse_module(
-    info: ModuleInfo,
+    info: HirModuleInfo,
     cached_rust_reader: &mut CachedRustReader,
     dumper: &Dumper,
-) -> anyhow::Result<Module> {
+) -> anyhow::Result<HirModule> {
     debug!("parse_module START info={info:?}");
 
-    let mut scope = ModuleScope::default();
+    let mut scope = HirModuleScope::default();
 
     for item in info.source.items().iter() {
         parse_syn_item(item, &mut scope)?;
     }
 
-    let ans = Module {
+    let ans = HirModule {
         info: info.clone(),
         scope,
     };
@@ -29,7 +31,7 @@ pub(crate) fn parse_module(
     Ok(ans)
 }
 
-fn parse_syn_item(item: &syn::Item, scope: &mut ModuleScope) -> anyhow::Result<()> {
+fn parse_syn_item(item: &syn::Item, scope: &mut HirModuleScope) -> anyhow::Result<()> {
     match item {
         syn::Item::Struct(item_struct) => {
             (scope.structs).extend(parse_syn_item_struct(&info, item_struct)?);

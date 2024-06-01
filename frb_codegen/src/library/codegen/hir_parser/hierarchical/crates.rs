@@ -1,5 +1,5 @@
-use crate::codegen::hir::hierarchical::crates::Crate;
+use crate::codegen::hir::hierarchical::crates::HirCrate;
 
-pub(crate) fn parse_crate() -> anyhow::Result<Crate> {
+pub(crate) fn parse_crate() -> anyhow::Result<HirCrate> {
     todo!()
 }

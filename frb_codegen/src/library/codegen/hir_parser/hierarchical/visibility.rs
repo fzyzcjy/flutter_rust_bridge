@@ -1,11 +1,11 @@
-use crate::codegen::hir::hierarchical::module::Visibility;
+use crate::codegen::hir::hierarchical::module::HirVisibility;
 
-impl From<&syn::Visibility> for Visibility {
+impl From<&syn::Visibility> for HirVisibility {
     fn from(value: &syn::Visibility) -> Self {
         match value {
-            syn::Visibility::Public(_) => Visibility::Public,
-            syn::Visibility::Restricted(_) => Visibility::Restricted,
-            syn::Visibility::Inherited => Visibility::Inherited,
+            syn::Visibility::Public(_) => HirVisibility::Public,
+            syn::Visibility::Restricted(_) => HirVisibility::Restricted,
+            syn::Visibility::Inherited => HirVisibility::Inherited,
         }
     }
 }

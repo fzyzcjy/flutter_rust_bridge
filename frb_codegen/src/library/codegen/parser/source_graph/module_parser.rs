@@ -1,15 +1,15 @@
 use crate::codegen::dumper::Dumper;
-use crate::codegen::hir::hierarchical::module::Module;
-use crate::codegen::hir::hierarchical::module::ModuleInfo;
-use crate::codegen::hir::hierarchical::module::ModuleScope;
-use crate::codegen::hir::hierarchical::module::ModuleSource;
-use crate::codegen::hir::hierarchical::module::Visibility;
-use crate::codegen::hir::hierarchical::struct_or_enum::Enum;
-use crate::codegen::hir::hierarchical::struct_or_enum::StructOrEnum;
-use crate::codegen::hir::hierarchical::type_alias::TypeAlias;
+use crate::codegen::hir::hierarchical::module::HirModule;
+use crate::codegen::hir::hierarchical::module::HirModuleInfo;
+use crate::codegen::hir::hierarchical::module::HirModuleScope;
+use crate::codegen::hir::hierarchical::module::HirModuleSource;
+use crate::codegen::hir::hierarchical::module::HirVisibility;
+use crate::codegen::hir::hierarchical::struct_or_enum::HirEnum;
+use crate::codegen::hir::hierarchical::struct_or_enum::HirStructOrEnum;
+use crate::codegen::hir::hierarchical::type_alias::HirTypeAlias;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::reader::CachedRustReader;
-use crate::codegen::parser::Struct;
+use crate::codegen::parser::HirStruct;
 use crate::utils::path_utils::{find_rust_crate_dir, path_to_string};
 use anyhow::Context;
 use itertools::Itertools;
@@ -19,11 +19,11 @@ use syn::token::Brace;
 use syn::{Attribute, Ident, Item, ItemEnum, ItemMod, ItemStruct, ItemType, PathArguments};
 
 fn parse_syn_item_mod(
-    info: &ModuleInfo,
+    info: &HirModuleInfo,
     item_mod: &ItemMod,
     cached_rust_reader: &mut CachedRustReader,
     dumper: &Dumper,
-) -> anyhow::Result<Option<Module>> {
+) -> anyhow::Result<Option<HirModule>> {
     let ident = item_mod.ident.clone();
 
     let module_path = {
@@ -55,21 +55,21 @@ fn parse_syn_item_mod(
 }
 
 fn parse_syn_item_mod_contentful(
-    info: &ModuleInfo,
+    info: &HirModuleInfo,
     item_mod: &ItemMod,
     module_path: Vec<String>,
     content: &(Brace, Vec<Item>),
     cached_rust_reader: &mut CachedRustReader,
     dumper: &Dumper,
-) -> anyhow::Result<Option<Module>> {
+) -> anyhow::Result<Option<HirModule>> {
     debug!("parse_syn_item_mod_contentful module_path={module_path:?}");
 
-    Ok(Some(Module::parse(
-        ModuleInfo {
-            visibility: Visibility::from_syn(&item_mod.vis),
+    Ok(Some(HirModule::parse(
+        HirModuleInfo {
+            visibility: HirVisibility::from_syn(&item_mod.vis),
             file_path: info.file_path.clone(),
             module_path,
-            source: ModuleSource::ModuleInFile(content.1.clone()),
+            source: HirModuleSource::ModuleInFile(content.1.clone()),
         },
         cached_rust_reader,
         dumper,
@@ -77,13 +77,13 @@ fn parse_syn_item_mod_contentful(
 }
 
 fn parse_syn_item_mod_contentless(
-    info: &ModuleInfo,
+    info: &HirModuleInfo,
     item_mod: &ItemMod,
     module_path: Vec<String>,
     ident: Ident,
     cached_rust_reader: &mut CachedRustReader,
     dumper: &Dumper,
-) -> anyhow::Result<Option<Module>> {
+) -> anyhow::Result<Option<HirModule>> {
     debug!("parse_syn_item_mod_contentless module_path={module_path:?}");
 
     let file_path_candidates = get_module_file_path_candidates(ident.to_string(), &info.file_path);
@@ -99,11 +99,11 @@ fn parse_syn_item_mod_contentless(
         let source_rust_content =
             cached_rust_reader.read_rust_file(file_path, &rust_crate_dir_for_file, dumper)?;
         debug!("Trying to parse {:?}", file_path);
-        let source = ModuleSource::File(syn::parse_file(&source_rust_content).unwrap());
+        let source = HirModuleSource::File(syn::parse_file(&source_rust_content).unwrap());
 
-        Ok(Some(Module::parse(
-            ModuleInfo {
-                visibility: Visibility::from_syn(&item_mod.vis),
+        Ok(Some(HirModule::parse(
+            HirModuleInfo {
+                visibility: HirVisibility::from_syn(&item_mod.vis),
                 file_path: file_path.to_owned(),
                 module_path,
                 source,

@@ -1,4 +1,4 @@
-use crate::codegen::hir::hierarchical::struct_or_enum::Enum;
+use crate::codegen::hir::hierarchical::struct_or_enum::HirEnum;
 use crate::codegen::ir::field::{IrField, IrFieldSettings};
 use crate::codegen::ir::ident::IrIdent;
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
@@ -33,7 +33,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
     fn parse_enum(
         &mut self,
-        src_enum: &Enum,
+        src_enum: &HirEnum,
         name: NamespacedName,
         wrapper_name: Option<String>,
     ) -> anyhow::Result<IrEnum> {
@@ -58,7 +58,11 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         })
     }
 
-    fn parse_variant(&mut self, src_enum: &Enum, variant: &Variant) -> anyhow::Result<IrVariant> {
+    fn parse_variant(
+        &mut self,
+        src_enum: &HirEnum,
+        variant: &Variant,
+    ) -> anyhow::Result<IrVariant> {
         Ok(IrVariant {
             name: IrIdent::new(variant.ident.to_string()),
             wrapper_name: IrIdent::new(format!("{}_{}", src_enum.0.ident, variant.ident)),
@@ -76,7 +80,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
     fn parse_variant_kind_struct(
         &mut self,
-        src_enum: &Enum,
+        src_enum: &HirEnum,
         variant: &Variant,
         attrs: &[Attribute],
         field_ident: &Option<Ident>,
@@ -123,12 +127,12 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
 struct EnumOrStructParserEnum<'a, 'b, 'c, 'd>(&'d mut TypeParserWithContext<'a, 'b, 'c>);
 
-impl EnumOrStructParser<IrEnumIdent, IrEnum, Enum, ItemEnum>
+impl EnumOrStructParser<IrEnumIdent, IrEnum, HirEnum, ItemEnum>
     for EnumOrStructParserEnum<'_, '_, '_, '_>
 {
     fn parse_inner_impl(
         &mut self,
-        src_object: &Enum,
+        src_object: &HirEnum,
         name: NamespacedName,
         wrapper_name: Option<String>,
     ) -> anyhow::Result<IrEnum> {
@@ -155,7 +159,7 @@ impl EnumOrStructParser<IrEnumIdent, IrEnum, Enum, ItemEnum>
         )
     }
 
-    fn src_objects(&self) -> &HashMap<String, &Enum> {
+    fn src_objects(&self) -> &HashMap<String, &HirEnum> {
         &self.0.inner.src_enums
     }
 

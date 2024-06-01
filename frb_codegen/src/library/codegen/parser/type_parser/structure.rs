@@ -1,4 +1,4 @@
-use crate::codegen::hir::hierarchical::struct_or_enum::Struct;
+use crate::codegen::hir::hierarchical::struct_or_enum::HirStruct;
 use crate::codegen::ir::field::{IrField, IrFieldSettings};
 use crate::codegen::ir::ident::IrIdent;
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
@@ -27,7 +27,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
     fn parse_struct(
         &mut self,
-        src_struct: &Struct,
+        src_struct: &HirStruct,
         name: NamespacedName,
         wrapper_name: Option<String>,
     ) -> anyhow::Result<IrStruct> {
@@ -85,12 +85,12 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
 struct EnumOrStructParserStruct<'a, 'b, 'c, 'd>(&'d mut TypeParserWithContext<'a, 'b, 'c>);
 
-impl EnumOrStructParser<IrStructIdent, IrStruct, Struct, ItemStruct>
+impl EnumOrStructParser<IrStructIdent, IrStruct, HirStruct, ItemStruct>
     for EnumOrStructParserStruct<'_, '_, '_, '_>
 {
     fn parse_inner_impl(
         &mut self,
-        src_object: &Struct,
+        src_object: &HirStruct,
         name: NamespacedName,
         wrapper_name: Option<String>,
     ) -> anyhow::Result<IrStruct> {
@@ -104,7 +104,7 @@ impl EnumOrStructParser<IrStructIdent, IrStruct, Struct, ItemStruct>
         }))
     }
 
-    fn src_objects(&self) -> &HashMap<String, &Struct> {
+    fn src_objects(&self) -> &HashMap<String, &HirStruct> {
         &self.0.inner.src_structs
     }
 

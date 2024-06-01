@@ -1,8 +1,8 @@
 use crate::codegen::dumper::Dumper;
-use crate::codegen::hir::hierarchical::crates::Crate;
-use crate::codegen::hir::hierarchical::module::Module;
-use crate::codegen::hir::hierarchical::module::ModuleSource;
-use crate::codegen::hir::hierarchical::module::{ModuleInfo, Visibility};
+use crate::codegen::hir::hierarchical::crates::HirCrate;
+use crate::codegen::hir::hierarchical::module::HirModule;
+use crate::codegen::hir::hierarchical::module::HirModuleSource;
+use crate::codegen::hir::hierarchical::module::{HirModuleInfo, HirVisibility};
 use crate::codegen::parser::reader::CachedRustReader;
 use crate::library::commands::cargo_metadata::execute_cargo_metadata;
 use anyhow::{bail, Context};
@@ -12,7 +12,7 @@ use std::fs;
 use std::path::{Path, PathBuf};
 use syn::File;
 
-impl Crate {
+impl HirCrate {
     pub(crate) fn parse(
         manifest_path: &Path,
         cached_rust_reader: &mut CachedRustReader,
@@ -30,16 +30,16 @@ impl Crate {
         let root_src_ast = syn::parse_file(&root_src_content)?;
 
         let root_module_info = get_root_module_info(root_src_file, root_src_ast);
-        let root_module = Module::parse(root_module_info, cached_rust_reader, dumper)?;
+        let root_module = HirModule::parse(root_module_info, cached_rust_reader, dumper)?;
 
-        Ok(Crate {
+        Ok(HirCrate {
             name: root_package.name.clone(),
             manifest_path,
             root_module,
         })
     }
 
-    pub fn root_module(&self) -> &Module {
+    pub fn root_module(&self) -> &HirModule {
         &self.root_module
     }
 }
@@ -61,12 +61,12 @@ fn get_root_src_file(root_package: &Package) -> anyhow::Result<PathBuf> {
     // frb-coverage:ignore-end
 }
 
-fn get_root_module_info(root_src_file: PathBuf, root_src_ast: File) -> ModuleInfo {
-    ModuleInfo {
-        visibility: Visibility::Public,
+fn get_root_module_info(root_src_file: PathBuf, root_src_ast: File) -> HirModuleInfo {
+    HirModuleInfo {
+        visibility: HirVisibility::Public,
         file_path: root_src_file,
         module_path: vec!["crate".to_string()],
-        source: ModuleSource::File(root_src_ast),
+        source: HirModuleSource::File(root_src_ast),
     }
 }
 

@@ -1,4 +1,4 @@
-use crate::codegen::hir::hierarchical::struct_or_enum::StructOrEnumWrapper;
+use crate::codegen::hir::hierarchical::struct_or_enum::HirStructOrEnumWrapper;
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
@@ -14,7 +14,7 @@ use syn::{Ident, Type};
 pub(super) trait EnumOrStructParser<Id, Obj, SrcObj, Item>
 where
     Id: From<NamespacedName> + Clone + PartialEq + Eq + Hash,
-    SrcObj: StructOrEnumWrapper<Item> + Clone + Debug,
+    SrcObj: HirStructOrEnumWrapper<Item> + Clone + Debug,
 {
     fn parse(
         &mut self,

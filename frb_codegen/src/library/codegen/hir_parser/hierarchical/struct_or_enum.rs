@@ -1,5 +1,5 @@
-use crate::codegen::hir::hierarchical::module::{ModuleInfo, Visibility};
-use crate::codegen::hir::hierarchical::struct_or_enum::{Enum, Struct, StructOrEnum};
+use crate::codegen::hir::hierarchical::module::{HirModuleInfo, HirVisibility};
+use crate::codegen::hir::hierarchical::struct_or_enum::{HirEnum, HirStruct, HirStructOrEnum};
 use crate::codegen::hir_parser::hierarchical::mirror_ident::{
     parse_mirror_ident, ParseMirrorIdentOutput,
 };
@@ -8,18 +8,21 @@ use proc_macro2::Ident;
 use syn::{Attribute, ItemEnum, ItemStruct};
 
 pub(crate) fn parse_syn_item_struct(
-    info: &ModuleInfo,
+    info: &HirModuleInfo,
     item: &ItemStruct,
-) -> anyhow::Result<Vec<Struct>> {
-    parse_syn_item_struct_or_enum(info, item, &item.ident, &item.attrs, &item.vis, Struct)
+) -> anyhow::Result<Vec<HirStruct>> {
+    parse_syn_item_struct_or_enum(info, item, &item.ident, &item.attrs, &item.vis, HirStruct)
 }
 
-pub(crate) fn parse_syn_item_enum(info: &ModuleInfo, item: &ItemEnum) -> anyhow::Result<Vec<Enum>> {
-    parse_syn_item_struct_or_enum(info, item, &item.ident, &item.attrs, &item.vis, Enum)
+pub(crate) fn parse_syn_item_enum(
+    info: &HirModuleInfo,
+    item: &ItemEnum,
+) -> anyhow::Result<Vec<HirEnum>> {
+    parse_syn_item_struct_or_enum(info, item, &item.ident, &item.attrs, &item.vis, HirEnum)
 }
 
 fn parse_syn_item_struct_or_enum<I: Clone, F, T>(
-    info: &ModuleInfo,
+    info: &HirModuleInfo,
     item: &I,
     item_ident: &Ident,
     item_attrs: &[Attribute],
@@ -27,7 +30,7 @@ fn parse_syn_item_struct_or_enum<I: Clone, F, T>(
     constructor: F,
 ) -> anyhow::Result<Vec<T>>
 where
-    F: Fn(StructOrEnum<I>) -> T,
+    F: Fn(HirStructOrEnum<I>) -> T,
 {
     debug!("parse_syn_item_struct_or_enum item_ident={item_ident:?}");
 
@@ -37,10 +40,10 @@ where
         .into_iter()
         .map(|ident| {
             let ident_str = ident.to_string();
-            constructor(StructOrEnum {
+            constructor(HirStructOrEnum {
                 ident,
                 src: item.clone(),
-                visibility: Visibility::from_syn(item_vis),
+                visibility: HirVisibility::from_syn(item_vis),
                 path: {
                     let mut path = info.module_path.clone();
                     path.push(ident_str);

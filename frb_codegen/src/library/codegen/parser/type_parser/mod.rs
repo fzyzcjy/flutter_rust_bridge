@@ -1,5 +1,5 @@
 use crate::codegen::generator::codec::structs::CodecMode;
-use crate::codegen::hir::hierarchical::struct_or_enum::{Enum, Struct};
+use crate::codegen::hir::hierarchical::struct_or_enum::{HirEnum, HirStruct};
 use crate::codegen::ir::func::IrFuncOwnerInfo;
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::{IrEnumPool, IrStructPool};
@@ -38,8 +38,8 @@ pub(crate) mod ty;
 pub(crate) mod unencodable;
 
 pub(crate) struct TypeParser<'a> {
-    src_structs: HashMap<String, &'a Struct>,
-    src_enums: HashMap<String, &'a Enum>,
+    src_structs: HashMap<String, &'a HirStruct>,
+    src_enums: HashMap<String, &'a HirEnum>,
     src_types: HashMap<String, Type>,
     dart_code_of_type: HashMap<String, String>,
     struct_parser_info: EnumOrStructParserInfo<IrStructIdent, IrStruct>,
@@ -51,8 +51,8 @@ pub(crate) struct TypeParser<'a> {
 
 impl<'a> TypeParser<'a> {
     pub(crate) fn new(
-        src_structs: HashMap<String, &'a Struct>,
-        src_enums: HashMap<String, &'a Enum>,
+        src_structs: HashMap<String, &'a HirStruct>,
+        src_enums: HashMap<String, &'a HirEnum>,
         src_types: HashMap<String, Type>,
     ) -> Self {
         TypeParser {

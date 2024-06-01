@@ -1,4 +1,4 @@
-use crate::codegen::hir::hierarchical::module::Visibility;
+use crate::codegen::hir::hierarchical::module::HirVisibility;
 use crate::codegen::ir::namespace::Namespace;
 use derivative::Derivative;
 use proc_macro2::Ident;
@@ -11,19 +11,19 @@ use syn::{Attribute, ItemEnum, ItemStruct};
 // frb-coverage:ignore-start
 #[derive(Clone, Derivative, Serialize)]
 #[derivative(Debug)]
-pub struct StructOrEnum<Item> {
+pub struct HirStructOrEnum<Item> {
     #[serde(serialize_with = "serialize_syn")]
     pub(crate) ident: Ident,
     #[derivative(Debug = "ignore")]
     #[serde(skip_serializing)]
     pub(crate) src: Item,
-    pub(crate) visibility: Visibility,
+    pub(crate) visibility: HirVisibility,
     pub(crate) path: Vec<String>,
     pub(crate) mirror: bool,
 }
 // frb-coverage:ignore-end
 
-impl<Item> StructOrEnum<Item> {
+impl<Item> HirStructOrEnum<Item> {
     pub(crate) fn namespace(&self) -> Namespace {
         let mut p = self.path.clone();
         p.pop();
@@ -32,21 +32,21 @@ impl<Item> StructOrEnum<Item> {
 }
 
 #[derive(Clone, Debug, Serialize)]
-pub struct Struct(pub StructOrEnum<ItemStruct>);
+pub struct HirStruct(pub HirStructOrEnum<ItemStruct>);
 
 #[derive(Clone, Debug, Serialize)]
-pub struct Enum(pub StructOrEnum<ItemEnum>);
+pub struct HirEnum(pub HirStructOrEnum<ItemEnum>);
 
-pub trait StructOrEnumWrapper<Item> {
-    fn inner(&self) -> &StructOrEnum<Item>;
+pub trait HirStructOrEnumWrapper<Item> {
+    fn inner(&self) -> &HirStructOrEnum<Item>;
 
     fn attrs(&self) -> &[Attribute];
 }
 
 macro_rules! struct_or_enum_wrapper {
     ($name:ident, $item:ident) => {
-        impl StructOrEnumWrapper<$item> for $name {
-            fn inner(&self) -> &StructOrEnum<$item> {
+        impl HirStructOrEnumWrapper<$item> for $name {
+            fn inner(&self) -> &HirStructOrEnum<$item> {
                 &self.0
             }
 
@@ -57,8 +57,8 @@ macro_rules! struct_or_enum_wrapper {
     };
 }
 
-struct_or_enum_wrapper!(Struct, ItemStruct);
-struct_or_enum_wrapper!(Enum, ItemEnum);
+struct_or_enum_wrapper!(HirStruct, ItemStruct);
+struct_or_enum_wrapper!(HirEnum, ItemEnum);
 
 pub(super) fn serialize_syn<T: ToTokens, S: Serializer>(
     value: &T,

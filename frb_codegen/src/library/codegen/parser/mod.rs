@@ -12,8 +12,8 @@ pub(crate) mod type_alias_resolver;
 pub(crate) mod type_parser;
 
 use crate::codegen::dumper::Dumper;
-use crate::codegen::hir::hierarchical::crates::Crate;
-use crate::codegen::hir::hierarchical::struct_or_enum::Struct;
+use crate::codegen::hir::hierarchical::crates::HirCrate;
+use crate::codegen::hir::hierarchical::struct_or_enum::HirStruct;
 use crate::codegen::ir::func::IrFunc;
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::pack::IrPack;
@@ -68,7 +68,7 @@ pub(crate) fn parse(
     drop(pb);
 
     let pb = progress_bar_pack.parse_source_graph.start();
-    let crate_map = Crate::parse(
+    let crate_map = HirCrate::parse(
         &config.rust_crate_dir.join("Cargo.toml"),
         cached_rust_reader,
         dumper,
@@ -124,7 +124,7 @@ fn parse_ir_funcs(
     config: &ParserInternalConfig,
     src_fns: &[PathAndItemFn],
     type_parser: &mut TypeParser,
-    src_structs: &HashMap<String, &Struct>,
+    src_structs: &HashMap<String, &HirStruct>,
 ) -> anyhow::Result<Vec<IrFunc>> {
     let mut function_parser = FunctionParser::new(type_parser);
 
@@ -202,7 +202,7 @@ mod tests {
     use crate::codegen::config::internal_config_parser::compute_force_codec_mode_pack;
     use crate::codegen::dumper::Dumper;
     use crate::codegen::generator::codec::structs::CodecMode;
-    use crate::codegen::hir::hierarchical::crates::Crate;
+    use crate::codegen::hir::hierarchical::crates::HirCrate;
     use crate::codegen::ir::namespace::Namespace;
     use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
     use crate::codegen::misc::GeneratorProgressBarPack;
@@ -301,7 +301,7 @@ mod tests {
         let rust_crate_dir = test_fixture_dir.clone();
         info!("test_fixture_dir={test_fixture_dir:?}");
 
-        let crate_map = Crate::parse(
+        let crate_map = HirCrate::parse(
             &rust_crate_dir.join("Cargo.toml"),
             &mut CachedRustReader::default(),
             &Dumper(&Default::default()),

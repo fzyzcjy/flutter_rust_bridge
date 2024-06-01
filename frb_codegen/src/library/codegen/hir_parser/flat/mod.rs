@@ -1,13 +1,13 @@
 use crate::codegen::hir::flat::HirFlatCrate;
-use crate::codegen::hir::hierarchical::module::Module;
-use crate::codegen::hir::hierarchical::struct_or_enum::Enum;
-use crate::codegen::hir::hierarchical::struct_or_enum::Struct;
+use crate::codegen::hir::hierarchical::module::HirModule;
+use crate::codegen::hir::hierarchical::struct_or_enum::HirEnum;
+use crate::codegen::hir::hierarchical::struct_or_enum::HirStruct;
 use log::debug;
 use std::collections::HashMap;
 use std::fmt::Debug;
 use syn::Type;
 
-pub(crate) fn parse(root_module: &Module) -> anyhow::Result<HirFlatCrate> {
+pub(crate) fn parse(root_module: &HirModule) -> anyhow::Result<HirFlatCrate> {
     Ok(HirFlatCrate {
         structs: collect_structs(root_module),
         enums: collect_enums(root_module),
@@ -15,7 +15,7 @@ pub(crate) fn parse(root_module: &Module) -> anyhow::Result<HirFlatCrate> {
     })
 }
 
-fn collect_structs(module: &Module) -> HashMap<String, &Struct> {
+fn collect_structs(module: &HirModule) -> HashMap<String, &HirStruct> {
     collect_objects(
         module,
         |module| &module.scope.structs,
@@ -23,7 +23,7 @@ fn collect_structs(module: &Module) -> HashMap<String, &Struct> {
     )
 }
 
-fn collect_enums(module: &Module) -> HashMap<String, &Enum> {
+fn collect_enums(module: &HirModule) -> HashMap<String, &HirEnum> {
     collect_objects(
         module,
         |module| &module.scope.enums,
@@ -31,7 +31,7 @@ fn collect_enums(module: &Module) -> HashMap<String, &Enum> {
     )
 }
 
-fn collect_types(module: &Module) -> HashMap<String, Type> {
+fn collect_types(module: &HirModule) -> HashMap<String, Type> {
     collect_objects(
         module,
         |module| &module.scope.type_alias,
@@ -40,12 +40,12 @@ fn collect_types(module: &Module) -> HashMap<String, Type> {
 }
 
 fn collect_objects<'a, T: 'a, F, G, V: 'a>(
-    module: &'a Module,
+    module: &'a HirModule,
     f: F,
     extract_entry: G,
 ) -> HashMap<String, V>
 where
-    F: Fn(&Module) -> &[T],
+    F: Fn(&HirModule) -> &[T],
     G: Fn(&'a T) -> (String, V),
     V: Debug,
 {
@@ -62,7 +62,7 @@ where
     ans
 }
 
-fn visit_modules<'a, F: FnMut(&'a Module)>(module: &'a Module, f: &mut F) {
+fn visit_modules<'a, F: FnMut(&'a HirModule)>(module: &'a HirModule, f: &mut F) {
     f(module);
     for scope_module in module.scope.modules {
         visit_modules(&scope_module, f);

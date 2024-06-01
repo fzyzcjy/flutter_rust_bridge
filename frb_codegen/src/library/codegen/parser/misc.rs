@@ -1,4 +1,4 @@
-use crate::codegen::hir::hierarchical::struct_or_enum::StructOrEnumWrapper;
+use crate::codegen::hir::hierarchical::struct_or_enum::HirStructOrEnumWrapper;
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::library::misc::consts::HANDLER_NAME;
 use itertools::Itertools;
@@ -9,7 +9,7 @@ pub(crate) fn parse_has_executor(source_rust_content: &str) -> bool {
     source_rust_content.contains(&format!("static {HANDLER_NAME}"))
 }
 
-pub(crate) fn extract_src_types_in_paths<T: StructOrEnumWrapper<I>, I>(
+pub(crate) fn extract_src_types_in_paths<T: HirStructOrEnumWrapper<I>, I>(
     src_items: &HashMap<String, &T>,
     rust_input_namespaces: &[Namespace],
 ) -> anyhow::Result<Vec<NamespacedName>> {
