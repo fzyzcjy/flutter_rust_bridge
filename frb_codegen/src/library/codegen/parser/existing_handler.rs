@@ -9,13 +9,10 @@ pub(super) fn parse_existing_handlers(
     config: &ParserInternalConfig,
     modules: &[&HirModule],
 ) -> anyhow::Result<Vec<NamespacedName>> {
-    let existing_handlers = (file_data_arr.iter())
-        .filter(|file| parse_has_executor(&file.content))
-        .map(|file| {
-            NamespacedName::new(
-                Namespace::new_from_rust_crate_path(&file.path, &config.rust_crate_dir).unwrap(),
-                HANDLER_NAME.to_owned(),
-            )
+    let existing_handlers = (modules.iter())
+        .filter(|module| module.raw.iter().any(parse_has_executor))
+        .map(|module| {
+            NamespacedName::new(module.meta.namespace.to_owned(), HANDLER_NAME.to_owned())
         })
         .collect_vec();
     ensure!(
@@ -28,6 +25,6 @@ pub(super) fn parse_existing_handlers(
     Ok(existing_handlers)
 }
 
-fn parse_has_executor(source_rust_content: &str) -> bool {
-    source_rust_content.contains(&format!("static {HANDLER_NAME}"))
+fn parse_has_executor(code: &str) -> bool {
+    code.contains(&format!("static {HANDLER_NAME}"))
 }
