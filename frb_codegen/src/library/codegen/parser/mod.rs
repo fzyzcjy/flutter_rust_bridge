@@ -126,7 +126,7 @@ mod tests {
         let (actual_ir, rust_crate_dir) = execute_parse(fixture_name, rust_input_namespace_pack)?;
         json_golden_test(
             &serde_json::to_value(actual_ir)?,
-            &rust_crate_dir.join("expect_ir.json"),
+            &rust_crate_dir.join("expect_mir.json"),
             &[],
         )?;
 
@@ -162,7 +162,7 @@ mod tests {
             |hir_hierarchical, _hir_flat| {
                 json_golden_test(
                     &serde_json::to_value(hir_hierarchical).unwrap(),
-                    &rust_crate_dir.join("expect_source_graph.json"),
+                    &rust_crate_dir.join("expect_hir_hierarchical.json"),
                     &create_path_sanitizers(&test_fixture_dir),
                 )
                 .unwrap();
