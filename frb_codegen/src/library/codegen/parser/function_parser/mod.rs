@@ -37,16 +37,14 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     pub(crate) fn parse_function(
         &mut self,
         func: &HirFunctionInner,
-        file_path: &Path,
-        rust_crate_dir: &Path,
+        namespace_naive: &Namespace,
         force_codec_mode_pack: &Option<CodecModePack>,
         default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
     ) -> anyhow::Result<Option<IrFunc>> {
         self.parse_function_inner(
             func,
-            file_path,
-            rust_crate_dir,
+            namespace_naive,
             force_codec_mode_pack,
             default_stream_sink_codec,
             default_rust_opaque_codec,
@@ -58,8 +56,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     fn parse_function_inner(
         &mut self,
         func: &HirFunctionInner,
-        file_path: &Path,
-        rust_crate_dir: &Path,
+        namespace_naive: &Namespace,
         force_codec_mode_pack: &Option<CodecModePack>,
         default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
@@ -69,7 +66,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let sig = func.sig();
         let src_lineno = func.span().start().line;
         let attributes = FrbAttributes::parse(func.attrs())?;
-        let namespace_naive = Namespace::new_from_rust_crate_path(file_path, rust_crate_dir)?;
 
         let create_context = |owner: Option<IrFuncOwnerInfo>| TypeParserParsingContext {
             initiated_namespace: namespace_naive.clone(),

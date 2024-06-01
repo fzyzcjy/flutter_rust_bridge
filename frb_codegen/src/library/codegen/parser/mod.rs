@@ -72,7 +72,7 @@ pub(crate) fn parse(
         dart_code_of_type,
         existing_handler: existing_handlers.first().cloned(),
         unused_types: vec![],
-        skipped_functions: compute_skipped_functions(&src_fns_skipped, &config.rust_crate_dir)?,
+        skipped_functions: compute_skipped_functions(&src_fns_skipped)?,
     };
 
     ans.unused_types = get_unused_types(
@@ -99,9 +99,8 @@ fn parse_ir_funcs(
         .iter()
         .map(|f| {
             function_parser.parse_function(
-                &f.generalized_item_fn,
-                &f.path,
-                &config.rust_crate_dir,
+                &f.inner,
+                &f.namespace,
                 &config.force_codec_mode_pack,
                 config.default_stream_sink_codec,
                 config.default_rust_opaque_codec,
@@ -151,14 +150,13 @@ fn parse_existing_handlers(
 
 fn compute_skipped_functions(
     src_fns_skipped: &[HirFunction],
-    rust_crate_dir: &Path,
 ) -> anyhow::Result<Vec<NamespacedName>> {
     src_fns_skipped
         .iter()
         .map(|x| {
             Ok(NamespacedName::new(
-                Namespace::new_from_rust_crate_path(&x.path, rust_crate_dir)?,
-                x.generalized_item_fn.sig().ident.to_string(),
+                x.namespace.to_owned(),
+                x.inner.sig().ident.to_string(),
             ))
         })
         .collect()
