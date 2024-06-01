@@ -20,6 +20,11 @@ use log::debug;
 
 /// Execute the main code generator
 pub fn generate(config: Config, meta_config: MetaConfig) -> anyhow::Result<()> {
+    if misc::Skipper::check() {
+        debug!("generate skipped");
+        return Ok(());
+    }
+
     debug!("config={config:?} meta_config={meta_config:?}");
 
     let internal_config = InternalConfig::parse(&config, &meta_config)?;

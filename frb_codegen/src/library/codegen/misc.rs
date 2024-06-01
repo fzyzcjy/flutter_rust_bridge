@@ -1,4 +1,5 @@
 use crate::utils::console::SimpleProgressBar;
+use std::env;
 
 pub(crate) struct GeneratorProgressBarPack {
     pub parse: SimpleProgressBar,
@@ -31,5 +32,15 @@ impl GeneratorProgressBarPack {
             polish_rust_formatter: SimpleProgressBar::new("Run Rust formatter", 1),
             polish_upgrade: SimpleProgressBar::new("Auto upgrade", 1),
         }
+    }
+}
+
+pub(crate) struct Skipper;
+
+impl Skipper {
+    pub(crate) const ENV_VAR_KEY: &str = "FLUTTER_RUST_BRIDGE_CODEGEN_GENERATE_SKIP";
+
+    pub(crate) fn check() -> bool {
+        env::var(Self::ENV_VAR_KEY).is_ok()
     }
 }
