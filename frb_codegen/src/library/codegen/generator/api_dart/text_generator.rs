@@ -109,7 +109,7 @@ fn generate_end_api_text(
     let skipped_functions = item
         .skipped_functions
         .iter()
-        .sorted_by_key(|(reason, _)| reason)
+        .sorted_by_key(|(reason, _)| **reason)
         .map(|(reason, names)| {
             format!(
                 "{}: {}",
