@@ -159,14 +159,15 @@ mod tests {
             &config,
             &Dumper(&Default::default()),
             &GeneratorProgressBarPack::new(),
+            |hir_hierarchical, _hir_flat| {
+                json_golden_test(
+                    &serde_json::to_value(hir_hierarchical)?,
+                    &rust_crate_dir.join("expect_source_graph.json"),
+                    &create_path_sanitizers(&test_fixture_dir),
+                )
+                .unwrap();
+            },
         )?;
-
-        json_golden_test(
-            &serde_json::to_value(TODO)?,
-            &rust_crate_dir.join("expect_source_graph.json"),
-            &create_path_sanitizers(&test_fixture_dir),
-        )
-        .unwrap();
 
         Ok((pack, rust_crate_dir))
     }
