@@ -2,16 +2,19 @@ use crate::codegen::hir::flat::HirFlatCrate;
 use crate::codegen::hir::hierarchical::module::HirModule;
 use crate::codegen::hir::hierarchical::struct_or_enum::HirEnum;
 use crate::codegen::hir::hierarchical::struct_or_enum::HirStruct;
+use crate::codegen::hir_parser::flat::type_alias_resolver::resolve_type_aliases;
 use log::debug;
 use std::collections::HashMap;
 use std::fmt::Debug;
 use syn::Type;
 
+mod type_alias_resolver;
+
 pub(crate) fn parse(root_module: &HirModule) -> anyhow::Result<HirFlatCrate> {
     Ok(HirFlatCrate {
         structs: collect_structs(root_module),
         enums: collect_enums(root_module),
-        types: collect_types(root_module),
+        types: resolve_type_aliases(collect_types(root_module)),
     })
 }
 

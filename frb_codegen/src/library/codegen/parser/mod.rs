@@ -52,8 +52,6 @@ pub(crate) fn parse(
     let (src_fns_interest, src_fns_skipped): (Vec<_>, Vec<_>) = (src_fns_all.into_iter())
         .partition(|item| matches!(item.generalized_item_fn.vis(), Visibility::Public(_)));
 
-    let src_types = resolve_type_aliases(crate_map.root_module().collect_types());
-
     let mut type_parser = TypeParser::new(
         hir_flat_crate.structs.clone(),
         hir_flat_crate.enums.clone(),
