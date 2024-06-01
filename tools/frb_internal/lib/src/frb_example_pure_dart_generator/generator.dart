@@ -37,7 +37,8 @@ Future<void> generateForPackage(
 
   await generateDartTestEntrypoints(package, dartRoot: dartRoot);
   await generateRustMod(dartRoot.resolve('rust/src/api/pseudo_manual/'));
-  await generateRustMod(dartRoot.resolve('rust/src/api/'));
+  await generateRustMod(dartRoot.resolve('rust/src/api/'),
+      extraLines: ['pub fn function_at_api_mod_rs() {}', '']);
 
   await rust.executeFormat();
   await dart.executeFormat();

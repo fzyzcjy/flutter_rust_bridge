@@ -73,5 +73,3 @@ pub mod type_alias_twin_rust_async;
 pub mod type_alias_twin_sync;
 pub mod uuid_type_twin_rust_async;
 pub mod uuid_type_twin_sync;
-
-pub fn function_at_api_mod_rs() {}
