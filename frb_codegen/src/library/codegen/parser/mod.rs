@@ -152,6 +152,7 @@ mod tests {
         let config = ParserInternalConfig {
             hir: ParserHirInternalConfig {
                 rust_input_namespace_pack: rust_input_namespace_pack.clone(),
+                third_party_crates: vec![],
             },
             mir: ParserMirInternalConfig {
                 rust_input_namespace_pack: rust_input_namespace_pack.clone(),
