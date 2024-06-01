@@ -14,6 +14,7 @@ use crate::codegen::ir::hir::hierarchical::function::HirFunction;
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStruct;
 use crate::codegen::ir::mir::func::MirFunc;
 use crate::codegen::ir::mir::pack::MirPack;
+use crate::codegen::ir::mir::skip::MirSkip;
 use crate::codegen::parser::mir::auto_accessor_parser::parse_auto_accessors;
 use crate::codegen::parser::mir::function_parser::structs::ParseFunctionOutput;
 use crate::codegen::parser::mir::function_parser::FunctionParser;
@@ -26,7 +27,6 @@ use crate::utils::namespace::NamespacedName;
 use itertools::{concat, Itertools};
 use std::collections::HashMap;
 use syn::Visibility;
-use crate::codegen::ir::mir::skip::MirSkip;
 
 pub(crate) fn parse(
     config: &ParserMirInternalConfig,
@@ -95,9 +95,7 @@ fn parse_mir_funcs(
         })
         .partition(|item| matches!(item, ParseFunctionOutput::Ok(_)));
     let mir_funcs_normal = mir_funcs_normal.into_iter().map(|x| x.ok()).collect_vec();
-    let mir_skips = (mir_skips.into_iter())
-        .map(|x| x.skip())
-        .collect_vec();
+    let mir_skips = (mir_skips.into_iter()).map(|x| x.skip()).collect_vec();
 
     let mir_funcs_auto_accessor = parse_auto_accessors(config, src_structs, type_parser)?;
 
@@ -113,18 +111,4 @@ fn parse_mir_funcs(
         .collect_vec();
 
     Ok((mir_funcs, mir_skips))
-}
-
-fn compute_skipped_functions(
-    src_fns_skipped: &[&HirFunction],
-) -> anyhow::Result<Vec<NamespacedName>> {
-    src_fns_skipped
-        .iter()
-        .map(|x| {
-            Ok(NamespacedName::new(
-                x.namespace.to_owned(),
-                x.inner.sig().ident.to_string(),
-            ))
-        })
-        .collect()
 }

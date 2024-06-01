@@ -8,6 +8,7 @@ use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use itertools::Itertools;
 use std::collections::{HashMap, HashSet};
 use strum::IntoEnumIterator;
+use crate::codegen::ir::mir::skip::MirSkip;
 
 pub type MirStructPool = HashMap<MirStructIdent, MirStruct>;
 pub type MirEnumPool = HashMap<MirEnumIdent, MirEnum>;
@@ -20,7 +21,7 @@ pub struct MirPack {
     pub dart_code_of_type: HashMap<String, String>,
     pub existing_handler: Option<NamespacedName>,
     pub unused_types: Vec<NamespacedName>,
-    pub skipped_functions: Vec<NamespacedName>,
+    pub skipped_functions: Vec<MirSkip>,
 }
 
 impl MirPack {
