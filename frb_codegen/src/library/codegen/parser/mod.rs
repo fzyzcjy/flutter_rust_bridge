@@ -37,43 +37,11 @@ use log::trace;
 use std::collections::HashMap;
 use std::path::Path;
 use syn::Visibility;
-use ConfigDumpContent::SourceGraph;
 
 pub(crate) fn parse(
     config: &ParserInternalConfig,
     hir_flat_crate: HirFlatCrate,
 ) -> anyhow::Result<IrPack> {
-    // check_suppressed_input_path_no_content(
-    //     &config
-    //         .rust_input_namespace_pack
-    //         .rust_suppressed_input_namespaces,
-    //     &config.rust_crate_dir,
-    //     cached_rust_reader,
-    //     dumper,
-    // )?;
-    //
-    // let rust_input_paths = &config.rust_input_namespace_pack.rust_input_namespaces;
-    // trace!("rust_input_paths={:?}", &rust_input_paths);
-
-    let pb = progress_bar_pack.parse_cargo_expand.start();
-    let rust_crate_ast = cached_rust_reader.read_rust_crate(&config.rust_crate_dir, dumper)?;
-    // let file_data_arr = read_files(
-    //     rust_input_paths,
-    //     &config.rust_crate_dir,
-    //     cached_rust_reader,
-    //     dumper,
-    // )?;
-    drop(pb);
-
-    let pb = progress_bar_pack.parse_source_graph.start();
-    let crate_map = HirCrate::parse(
-        &config.rust_crate_dir.join("Cargo.toml"),
-        cached_rust_reader,
-        dumper,
-    )?;
-    dumper.dump(SourceGraph, "source_graph.json", &crate_map)?;
-    drop(pb);
-
     let src_fns_all = file_data_arr
         .iter()
         .map(|file| extract_generalized_functions_from_file(&file.ast, &file.path))
