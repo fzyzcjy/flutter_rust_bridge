@@ -57,7 +57,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         .unwrap_or_else(|err| {
             log::debug!(
                 "parse_function see error and skip function: function={:?} error={:?}",
-                func.sig().ident,
+                func.name(),
                 err
             );
             create_output_skip(func, namespace_naive, MirSkipReason::Err)
@@ -73,7 +73,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
     ) -> anyhow::Result<ParseFunctionOutput> {
-        debug!("parse_function function name: {:?}", func.sig().ident);
+        debug!("parse_function function name: {:?}", func.name());
 
         if !matches!(func.vis(), Visibility::Public(_)) {
             return Ok(create_output_skip(
@@ -83,7 +83,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             ));
         }
 
-        let sig = func.sig();
         let src_lineno = func.span().start().line;
         let attributes = FrbAttributes::parse(func.attrs())?;
 
@@ -103,7 +102,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             return Ok(create_output_skip(func, namespace_naive, IgnoredMisc));
         };
 
-        let func_name = parse_name(sig.ident, &owner);
+        let func_name = parse_name(&func.name(), &owner);
 
         if attributes.ignore() {
             return Ok(create_output_skip(func, namespace_naive, IgnoredMisc));
@@ -111,10 +110,10 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         let context = create_context(Some(owner.clone()));
         let mut info = FunctionPartialInfo::default();
-        for sig_input in sig.inputs.iter() {
+        for sig_input in func.sig().inputs.iter() {
             info = info.merge(self.parse_fn_arg(sig_input, &owner, &context)?)?;
         }
-        info = info.merge(self.parse_fn_output(sig, &context)?)?;
+        info = info.merge(self.parse_fn_output(func.sig(), &context)?)?;
         info = self.transform_fn_info(info);
 
         let codec_mode_pack = compute_codec_mode_pack(&attributes, force_codec_mode_pack);
@@ -138,7 +137,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             owner,
             mode,
             stream_dart_await,
-            rust_async: sig.asyncness.is_some(),
+            rust_async: func.sig().asyncness.is_some(),
             initializer: attributes.init(),
             accessor: attributes.accessor(),
             arg_mode: if attributes.positional() {
@@ -214,7 +213,7 @@ fn create_output_skip(
     reason: MirSkipReason,
 ) -> ParseFunctionOutput {
     ParseFunctionOutput::Skip(MirSkip {
-        name: NamespacedName::new(namespace_naive.to_owned(), func.sig().ident.to_string()),
+        name: NamespacedName::new(namespace_naive.to_owned(), func.name().to_string()),
         reason,
     })
 }
@@ -227,9 +226,9 @@ fn compute_func_mode(attributes: &FrbAttributes, info: &FunctionPartialInfo) -> 
     })
 }
 
-fn parse_name(sig_ident: &Ident, owner: &MirFuncOwnerInfo) -> String {
+fn parse_name(function_sig_ident_raw_name: &str, owner: &MirFuncOwnerInfo) -> String {
     match owner {
-        MirFuncOwnerInfo::Function => sig_ident.to_string(),
+        MirFuncOwnerInfo::Function => function_sig_ident_raw_name.to_string(),
         MirFuncOwnerInfo::Method(method) => parse_effective_function_name_of_method(method),
     }
 }
