@@ -50,19 +50,20 @@ fn transform_module_content_functions(
     target: &mut Vec<HirFunction>,
     src_content_functions: Vec<HirFunction>,
 ) -> anyhow::Result<()> {
-    transform_module_content_attrable(target, src_content_functions)
+    transform_module_content_attrable(target, src_content_functions, |x| x.inner.name())
 }
 
 fn transform_module_content_struct_or_enums<Item: SynItemStructOrEnum>(
     target: &mut Vec<HirStructOrEnum<Item>>,
     src_content_struct_or_enums: Vec<HirStructOrEnum<Item>>,
 ) -> anyhow::Result<()> {
-    transform_module_content_attrable(target, src_content_struct_or_enums)
+    transform_module_content_attrable(target, src_content_struct_or_enums, |x| x.ident.to_string())
 }
 
 fn transform_module_content_attrable<T>(
     target: &mut Vec<T>,
     src_items: Vec<T>,
+    key: impl Fn(&T) -> String,
 ) -> anyhow::Result<()> {
     for src_item in src_items {
         TODO;
