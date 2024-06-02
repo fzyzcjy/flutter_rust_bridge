@@ -42,13 +42,13 @@ fn transform_module_by_pub_use_single(
     let self_namespace = &module.meta.namespace;
 
     let src_functions = (src_mod.content.functions.iter())
-        .map(|x| x.with_namespace(self_namespace))
+        .map(|x| x.with_namespace(self_namespace.clone()))
         .collect_vec();
     let src_structs = (src_mod.content.structs.iter())
-        .map(|x| x.with_namespace(self_namespace))
+        .map(|x| x.with_namespace(self_namespace.clone()))
         .collect_vec();
     let src_enums = (src_mod.content.enums.iter())
-        .map(|x| x.with_namespace(self_namespace))
+        .map(|x| x.with_namespace(self_namespace.clone()))
         .collect_vec();
 
     module.content.functions.extend(src_functions);
