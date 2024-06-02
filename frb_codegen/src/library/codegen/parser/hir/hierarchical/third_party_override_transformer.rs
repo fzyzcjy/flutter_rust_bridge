@@ -2,6 +2,8 @@ use crate::codegen::ir::hir::hierarchical::crates::HirCrate;
 use crate::codegen::ir::hir::hierarchical::function::HirFunction;
 use crate::codegen::ir::hir::hierarchical::module::HirModule;
 use crate::codegen::ir::hir::hierarchical::pack::HirPack;
+use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStructOrEnum;
+use crate::codegen::ir::hir::hierarchical::syn_item_struct_or_enum::SynItemStructOrEnum;
 use crate::codegen::misc::THIRD_PARTY_DIR_NAME;
 use crate::utils::crate_name::CrateName;
 
@@ -54,9 +56,9 @@ fn transform_module_content_functions(
     Ok(())
 }
 
-fn transform_module_content_struct_or_enums<T>(
+fn transform_module_content_struct_or_enums<Item: SynItemStructOrEnum>(
     target: &mut HirModule,
-    src_content_struct_or_enums: T,
+    src_content_struct_or_enums: Vec<HirStructOrEnum<Item>>,
 ) -> anyhow::Result<()> {
     todo!();
     Ok(())
