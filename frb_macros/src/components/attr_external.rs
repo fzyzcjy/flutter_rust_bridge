@@ -1,3 +1,4 @@
+use crate::components::encoder::create_frb_encoded_comment;
 use proc_macro::TokenStream;
 use quote::quote;
 use quote::ToTokens;
@@ -7,6 +8,8 @@ pub(crate) fn handle_external_impl(attribute: TokenStream, item: TokenStream) ->
     if attribute.to_string() != ATTR_KEYWORD {
         return item;
     }
+
+    let encoded_original_item = create_frb_encoded_comment("items", &item.to_string());
 
     let mut item: ItemImpl = syn::parse(item).unwrap();
 
@@ -33,7 +36,8 @@ pub(crate) fn handle_external_impl(attribute: TokenStream, item: TokenStream) ->
 
     // eprintln!("attribute={attribute:?} self_ty_string={original_self_ty_string} dummy_struct_name={dummy_struct_name} item={item:#?}");
 
-    let mut output: TokenStream = item.to_token_stream().into();
+    let mut output: TokenStream = encoded_original_item;
+    output.extend(item.to_token_stream().into());
     output.extend(dummy_struct_def);
     output
 }
