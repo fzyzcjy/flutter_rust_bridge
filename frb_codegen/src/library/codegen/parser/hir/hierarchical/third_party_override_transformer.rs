@@ -7,7 +7,8 @@ use crate::utils::crate_name::CrateName;
 pub(super) fn transform(mut pack: HirPack) -> anyhow::Result<HirPack> {
     if let Some(module_third_party_root) = remove_module_third_party_root(&mut pack) {
         for module_third_party_crate in module_third_party_root.content.modules {
-            if let Some(target_crate) = pack.crates.get_mut() {
+            let crate_name = (module_third_party_crate.meta.namespace.path().last()).unwrap();
+            if let Some(target_crate) = pack.crates.get_mut(crate_name) {
                 transform_crate(target_crate, module_third_party_crate)
             } else {
                 log::warn!(

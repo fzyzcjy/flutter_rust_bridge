@@ -2,9 +2,17 @@ use crate::utils::namespace::Namespace;
 use serde::{Deserialize, Serialize};
 
 /// e.g. `web-audio-api` (note the `-` instead of `_`)
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, Serialize, Deserialize, Hash)]
 #[serde(transparent)]
 pub(crate) struct CrateName(String);
+
+impl PartialEq for CrateName {
+    fn eq(&self, other: &Self) -> bool {
+        self.namespace() == other.namespace()
+    }
+}
+
+impl Eq for CrateName {}
 
 impl CrateName {
     pub(crate) const SELF_CRATE: &'static str = "crate";
