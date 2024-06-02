@@ -24,7 +24,7 @@ fn parse_pub_use_from_item(item: &syn::Item) -> Option<Namespace> {
     if let syn::Item::Use(item_use) = item {
         if matches!(item_use.vis, syn::Visibility::Public(_)) {
             let tree = &item_use.tree;
-            let tree_string = quote::quote!(#tree).to_string();
+            let tree_string = quote::quote!(#tree).to_string().replace(' ', "");
             if let Some(interest_use_part) = tree_string.strip_suffix("::*") {
                 return Some(Namespace::new_raw(interest_use_part.to_owned()));
             }
