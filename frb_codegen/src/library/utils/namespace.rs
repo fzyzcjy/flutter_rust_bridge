@@ -1,11 +1,11 @@
-use std::borrow::ToOwned;
 use crate::codegen::generator::codec::sse::lang::Lang;
+use crate::utils::crate_name::CrateName;
 use itertools::Itertools;
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
+use std::borrow::ToOwned;
 use std::fmt::{Display, Formatter};
 use std::path::PathBuf;
 use std::string::ToString;
-use crate::utils::crate_name::CrateName;
 
 /// The Rust files/modules/namespaces.
 #[derive(Debug, Clone, Hash, Eq, PartialEq, Serialize, Deserialize, Ord, PartialOrd, Default)]
@@ -18,10 +18,10 @@ pub struct Namespace {
 impl Namespace {
     const SEP: &'static str = "::";
 
-    pub fn new(path: Vec<String>) -> Self {
-        assert!((path.iter()).all(|item| !item.contains(Self::SEP)));
-        Self::new_raw(path.join(Self::SEP))
-    }
+    // pub fn new(path: Vec<String>) -> Self {
+    //     assert!((path.iter()).all(|item| !item.contains(Self::SEP)));
+    //     Self::new_raw(path.join(Self::SEP))
+    // }
 
     pub fn new_raw(joined_path: String) -> Self {
         // This will stop the whole generator and tell the users, so we do not care about testing it
@@ -176,7 +176,8 @@ mod tests {
     #[test]
     pub fn test_namespace_display() {
         assert_eq!(
-            Namespace::new(vec!["crate".into(), "hello".into(), "world".into()]).to_string(),
+            // Namespace::new(vec!["crate".into(), "hello".into(), "world".into()]).to_string(),
+            Namespace::new_raw("crate::hello::world".to_owned()).to_string(),
             "crate::hello::world"
         );
     }
