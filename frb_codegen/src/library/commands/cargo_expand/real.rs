@@ -26,24 +26,12 @@ fn run_with_frb_aware(
     rust_crate_dir: &Path,
     interest_crate_name: Option<&CrateName>,
 ) -> Result<String> {
-    Ok(unwrap_frb_attrs_in_doc(&run_raw(
+    run_raw(
         rust_crate_dir,
         interest_crate_name,
         "--cfg frb_expand",
         true,
-    )?)
-    .into_owned())
-}
-
-/// Turns `#[doc = "frb_marker: .."]` back into `#[frb(..)]`, usually produced
-/// as a side-effect of cargo-expand.
-// NOTE: The amount of pounds must match exactly with the implementation in frb_macros
-fn unwrap_frb_attrs_in_doc(code: &str) -> Cow<str> {
-    lazy_static! {
-        static ref PATTERN: Regex =
-            Regex::new(r####"#\[doc =[\s\n]*r###"frb_marker: ([\s\S]*?)"###]"####).unwrap();
-    }
-    PATTERN.replace_all(code, "$1")
+    )
 }
 
 #[allow(clippy::vec_init_then_push)]
