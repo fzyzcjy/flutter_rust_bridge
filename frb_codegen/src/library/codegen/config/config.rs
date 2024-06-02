@@ -1,3 +1,4 @@
+use std::collections::HashMap;
 use crate::codegen::dumper::internal_config::ConfigDumpContent;
 use serde::{Deserialize, Serialize};
 
@@ -29,6 +30,7 @@ pub struct Config {
     pub full_dep: Option<bool>,
     pub local: Option<bool>,
     pub default_external_library_loader_web_prefix: Option<String>,
+    pub dart_type_rename: Option<HashMap<String, String>>,
     pub dump: Option<Vec<ConfigDumpContent>>,
     pub dump_all: Option<bool>,
 }
