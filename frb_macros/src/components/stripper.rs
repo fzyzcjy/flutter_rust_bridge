@@ -12,7 +12,7 @@ pub(crate) fn strip_frb_attr(item: TokenStream) -> TokenStream {
                 }
                 (Some(_), TT::Group(group)) if is_frb_bracket(group) => {
                     _ = pound.take();
-                    Some(create_frb_encoded_comment(format!("#[{}]", group.stream())))
+                    Some(create_frb_encoded_comment("attribute", &format!("#[{}]", group.stream())))
                 }
                 (_, TT::Group(group)) => Some(
                     [

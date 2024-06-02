@@ -15,7 +15,7 @@ use proc_macro::*;
 // frb-coverage:ignore-start
 #[proc_macro_attribute]
 pub fn frb(attribute: TokenStream, item: TokenStream) -> TokenStream {
-    let mut output = create_frb_encoded_comment(format!("#[frb({attribute})]"));
+    let mut output = create_frb_encoded_comment("attribute", &format!("#[frb({attribute})]"));
     output.extend(strip_frb_attr(handle_external_impl(attribute, item)));
     output
 }
