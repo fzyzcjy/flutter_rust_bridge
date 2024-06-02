@@ -52,20 +52,37 @@ fn transform_module_content_functions(
     target: &mut Vec<HirFunction>,
     src_content_functions: Vec<HirFunction>,
 ) -> anyhow::Result<()> {
-    transform_module_content_attrable(target, src_content_functions, |x| x.inner.name())
+    transform_module_content_general_vec(
+        target,
+        src_content_functions,
+        |x| x.inner.name(),
+        |target, src| {
+            TODO;
+            TODO;
+        },
+    )
 }
 
 fn transform_module_content_struct_or_enums<Item: SynItemStructOrEnum>(
     target: &mut Vec<HirStructOrEnum<Item>>,
     src_content_struct_or_enums: Vec<HirStructOrEnum<Item>>,
 ) -> anyhow::Result<()> {
-    transform_module_content_attrable(target, src_content_struct_or_enums, |x| x.ident.to_string())
+    transform_module_content_general_vec(
+        target,
+        src_content_struct_or_enums,
+        |x| x.ident.to_string(),
+        |target, src| {
+            TODO;
+            TODO;
+        },
+    )
 }
 
-fn transform_module_content_attrable<T: Debug>(
+fn transform_module_content_general_vec<T: Debug>(
     target_items: &mut Vec<T>,
     src_items: Vec<T>,
     key: impl Fn(&T) -> String,
+    write: impl Fn(&mut T, T),
 ) -> anyhow::Result<()> {
     for src_item in src_items {
         let src_key = key(src_item);
@@ -82,9 +99,9 @@ fn transform_module_content_attrable<T: Debug>(
             );
             continue;
         }
-        let interest_target_item = interest_target_items.into_iter().next().unwrap();
+        let target_item = interest_target_items.into_iter().next().unwrap();
 
-        TODO;
+        write(target_item, src_item);
     }
     Ok(())
 }
