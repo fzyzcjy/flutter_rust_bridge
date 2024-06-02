@@ -1,4 +1,5 @@
 use crate::codegen::ir::hir::hierarchical::crates::HirCrate;
+use crate::codegen::ir::hir::hierarchical::function::HirFunction;
 use crate::codegen::ir::hir::hierarchical::module::HirModule;
 use crate::codegen::ir::hir::hierarchical::pack::HirPack;
 use crate::codegen::misc::THIRD_PARTY_DIR_NAME;
@@ -49,7 +50,7 @@ fn transform_module(target: &mut HirModule, src: HirModule) -> anyhow::Result<()
 
 fn transform_module_content_function(
     target: &mut HirModule,
-    src_content_functions: TODO,
+    src_content_functions: Vec<HirFunction>,
 ) -> anyhow::Result<()> {
     TODO;
     Ok(())
