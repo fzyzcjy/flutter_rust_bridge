@@ -10,6 +10,7 @@ use crate::codegen::generator::api_dart::spec_generator::misc::generate_imports_
 use crate::codegen::generator::api_dart::spec_generator::sanity_checker::sanity_check_class_name_duplicates;
 use crate::codegen::ir::mir::func::{MirFunc, MirFuncOwnerInfo};
 use crate::codegen::ir::mir::pack::{MirPack, MirPackComputedCache};
+use crate::codegen::ir::mir::skip::{MirSkip, MirSkipReason};
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ConfigDumpContent;
 use crate::library::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
@@ -21,7 +22,6 @@ use itertools::Itertools;
 use serde::Serialize;
 use std::collections::{HashMap, HashSet};
 use ConfigDumpContent::GeneratorInfo;
-use crate::codegen::ir::mir::skip::MirSkipReason;
 
 pub(crate) mod base;
 pub(crate) mod class;
@@ -42,8 +42,7 @@ pub(crate) struct ApiDartOutputSpecItem {
     pub classes: Vec<ApiDartGeneratedClass>,
     pub imports: DartBasicHeaderCode,
     pub preamble: String,
-    pub unused_types: Vec<String>,
-    pub skipped_functions: HashMap<MirSkipReason, Vec<String>>,
+    pub skips: Vec<MirSkip>,
     pub needs_freezed: bool,
 }
 
@@ -126,19 +125,6 @@ fn generate_item(
 
     sanity_check_class_name_duplicates(&classes)?;
 
-    let unused_types = (context.mir_pack.unused_types.iter())
-        .filter(|t| &t.namespace == namespace)
-        .map(|t| t.name.to_owned())
-        .collect_vec();
-
-    let skipped_functions = (context.mir_pack.skipped_functions.iter())
-        .filter(|t| &t.name.namespace == namespace)
-        .cloned()
-        .into_group_map_by(|t| t.reason)
-        .into_iter()
-        .map(|(reason, items)| (reason, items.into_iter().map(|x| x.name.name).collect_vec()))
-        .collect::<HashMap<_, _>>();
-
     let needs_freezed = classes.iter().any(|class| class.needs_freezed);
 
     Ok(ApiDartOutputSpecItem {
@@ -146,8 +132,25 @@ fn generate_item(
         classes,
         imports,
         preamble: context.config.dart_preamble.clone(),
-        unused_types,
-        skipped_functions,
+        skips: compute_skips(context.mir_pack),
         needs_freezed,
     })
+}
+
+fn compute_skips(mir_pack: &MirPack) -> Vec<MirSkip> {
+    let unused_types = (mir_pack.unused_types.iter())
+        .filter(|t| &t.namespace == namespace)
+        .map(|name| MirSkip {
+            name: name.clone(),
+            reason: MirSkipReason::IgnoredTypeNotUsedByPub,
+        })
+        .collect_vec();
+
+    let skipped_functions = (mir_pack.skipped_functions.iter())
+        .filter(|t| &t.name.namespace == namespace)
+        .cloned()
+        .into_group_map_by(|t| t.reason)
+        .into_iter()
+        .map(|(reason, items)| (reason, items.into_iter().map(|x| x.name.name).collect_vec()))
+        .collect::<HashMap<_, _>>();
 }
