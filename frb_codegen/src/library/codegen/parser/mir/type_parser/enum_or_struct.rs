@@ -1,3 +1,5 @@
+use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStructOrEnum;
+use crate::codegen::ir::hir::hierarchical::syn_item_struct_or_enum::SynItemStructOrEnum;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
 use crate::codegen::parser::mir::type_parser::external_impl;
@@ -9,9 +11,8 @@ use std::collections::{HashMap, HashSet};
 use std::fmt::Debug;
 use std::hash::Hash;
 use syn::{Ident, Type};
-use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStructOrEnum;
 
-pub(super) trait EnumOrStructParser<Id, Obj, Item>
+pub(super) trait EnumOrStructParser<Id, Obj, Item: SynItemStructOrEnum>
 where
     Id: From<NamespacedName> + Clone + PartialEq + Eq + Hash,
 {

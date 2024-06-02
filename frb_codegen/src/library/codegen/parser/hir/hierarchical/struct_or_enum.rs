@@ -7,6 +7,7 @@ use itertools::Itertools;
 use log::debug;
 use proc_macro2::Ident;
 use syn::{Attribute, ItemEnum, ItemStruct};
+use crate::codegen::ir::hir::hierarchical::syn_item_struct_or_enum::SynItemStructOrEnum;
 
 pub(crate) fn parse_syn_item_struct(
     item: &ItemStruct,
@@ -22,7 +23,7 @@ pub(crate) fn parse_syn_item_enum(
     parse_syn_item_struct_or_enum(item, namespace, &item.ident, &item.attrs, &item.vis)
 }
 
-fn parse_syn_item_struct_or_enum<I: Clone>(
+fn parse_syn_item_struct_or_enum<I: SynItemStructOrEnum>(
     item: &I,
     namespace: &Namespace,
     item_ident: &Ident,
