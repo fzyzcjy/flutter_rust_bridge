@@ -18,7 +18,8 @@ pub struct HirModule {
 #[derive(Clone, Derivative, Serialize)]
 #[derivative(Debug)]
 pub struct HirModuleMeta {
-    // pub visibility: HirVisibility,
+    pub parent_visibilities: Vec<HirVisibility>,
+    pub visibility: HirVisibility,
     pub namespace: Namespace,
 }
 
