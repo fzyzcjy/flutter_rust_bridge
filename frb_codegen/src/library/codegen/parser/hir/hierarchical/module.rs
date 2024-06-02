@@ -14,11 +14,10 @@ pub(crate) fn parse_module(
     config: &ParserHirInternalConfig,
     // cumulated_visibility_pub: bool,
 ) -> anyhow::Result<HirModule> {
-    let mut scope = HirModuleContent::default();
-
-    if (config.rust_input_namespace_pack).is_interest(&info.namespace) {
-        scope.functions = parse_generalized_functions(items, &info.namespace)?;
-    }
+    let mut scope = HirModuleContent {
+        functions: parse_generalized_functions(items, &info.namespace)?,
+        ..HirModuleContent::default()
+    };
 
     for item in items.iter() {
         parse_syn_item(
