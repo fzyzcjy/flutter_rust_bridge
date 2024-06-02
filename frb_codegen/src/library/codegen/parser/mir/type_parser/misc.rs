@@ -3,6 +3,7 @@ use crate::codegen::ir::mir::comment::MirComment;
 use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
 use itertools::Itertools;
 use syn::*;
+use crate::utils::crate_name::CrateName;
 
 pub(crate) fn convert_ident_str(ty: &Type) -> Option<String> {
     if let Type::Path(TypePath { qself: _, path }) = ty {
@@ -48,6 +49,6 @@ fn parse_comment(input: &str) -> MirComment {
     })
 }
 
-pub(crate) fn parse_type_should_ignore_simple(attrs: &FrbAttributes, vis: HirVisibility) -> bool {
-    attrs.ignore() || (vis != HirVisibility::Public)
+pub(crate) fn parse_type_should_ignore_simple(attrs: &FrbAttributes, vis: HirVisibility, crate_name: &CrateName) -> bool {
+    attrs.ignore() || (crate_name != CrateName::self_crate() && vis != HirVisibility::Public)
 }
