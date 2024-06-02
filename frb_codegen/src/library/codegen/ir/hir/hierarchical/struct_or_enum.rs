@@ -4,7 +4,7 @@ use derivative::Derivative;
 use proc_macro2::Ident;
 use quote::ToTokens;
 use serde::{Serialize, Serializer};
-use syn::{Attribute, ItemEnum, ItemStruct};
+use syn::{ItemEnum, ItemStruct};
 use crate::codegen::ir::hir::hierarchical::syn_item_struct_or_enum::SynItemStructOrEnum;
 
 // This struct is surely used many times, but coverage tool thinks it is never used
