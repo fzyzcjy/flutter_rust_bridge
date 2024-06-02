@@ -4,6 +4,7 @@ use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStruct;
 use crate::codegen::ir::hir::hierarchical::type_alias::HirTypeAlias;
 use crate::utils::namespace::Namespace;
 use derivative::Derivative;
+use itertools::concat;
 use serde::Serialize;
 
 #[derive(Clone, Debug, Serialize)]
@@ -18,9 +19,19 @@ pub struct HirModule {
 #[derive(Clone, Derivative, Serialize)]
 #[derivative(Debug)]
 pub struct HirModuleMeta {
-    pub parent_visibilities: Vec<HirVisibility>,
-    pub visibility: HirVisibility,
+    pub parent_vis: Vec<HirVisibility>,
+    pub vis: HirVisibility,
     pub namespace: Namespace,
+}
+
+impl HirModuleMeta {
+    pub(crate) fn parent_and_self_vis(&self) -> Vec<HirVisibility> {
+        concat([self.parent_vis.clone(), vec![self.vis]])
+    }
+
+    pub(crate) fn is_public(&self) -> bool {
+        (self.parent_and_self_vis().iter()).all(|x| *x == HirVisibility::Public)
+    }
 }
 
 #[derive(Debug, Clone, Serialize, Default)]
@@ -34,7 +45,7 @@ pub struct HirModuleContent {
 }
 
 /// Mirrors syn::Visibility, but can be created without a token
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Copy, Serialize)]
 pub enum HirVisibility {
     Public,
     Restricted,
