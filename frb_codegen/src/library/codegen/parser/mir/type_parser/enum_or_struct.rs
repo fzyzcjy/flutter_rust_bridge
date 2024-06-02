@@ -48,7 +48,7 @@ where
             if attrs_opaque == Some(true) {
                 debug!("Treat {name} as opaque since attribute says so");
                 return Ok(Some((
-                    self.parse_opaque(&namespaced_name, attrs, vis)?,
+                    self.parse_opaque(&namespaced_name, &attrs, vis)?,
                     attrs,
                 )));
             }
@@ -71,7 +71,7 @@ where
             {
                 debug!("Treat {name} as opaque by compute_default_opaque");
                 return Ok(Some((
-                    self.parse_opaque(&namespaced_name, attrs, vis)?,
+                    self.parse_opaque(&namespaced_name, &attrs, vis)?,
                     attrs,
                 )));
             }
