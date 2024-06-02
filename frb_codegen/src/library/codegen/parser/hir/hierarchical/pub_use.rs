@@ -19,9 +19,9 @@ fn parse_pub_use_from_items(items: &[syn::Item]) -> Vec<String> {
 fn parse_pub_use_from_item(item: &syn::Item) -> Option<String> {
     if let syn::Item::Use(item_use) = item {
         if matches!(item_use.vis, syn::Visibility::Public(_)) {
-            let tree = item_use.tree;
+            let tree = &item_use.tree;
             let tree_string = quote::quote!(#tree).to_string();
-            tree_string.strip_suffix("::*")
+            return tree_string.strip_suffix("::*").map(ToOwned::to_owned);
         }
     }
     None
