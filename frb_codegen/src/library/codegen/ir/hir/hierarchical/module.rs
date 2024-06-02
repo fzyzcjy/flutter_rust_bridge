@@ -68,6 +68,11 @@ impl HirModuleContent {
             .map(|i| &self.modules[i])
     }
 
+    pub(crate) fn remove_module_by_name(&mut self, mod_name: &str) -> Option<HirModule> {
+        self.get_module_index_by_name(mod_name)
+            .map(|index| self.modules.remove(index))
+    }
+
     pub(crate) fn get_module_nested(&self, mod_names: &[&str]) -> Option<&HirModule> {
         let m = self.get_module_by_name(mod_names[0])?;
         if mod_names.len() == 1 {
