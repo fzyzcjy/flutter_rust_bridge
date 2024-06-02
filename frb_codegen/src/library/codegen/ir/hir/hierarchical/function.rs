@@ -32,7 +32,7 @@ impl HirFunction {
 }
 
 impl HirFunctionInner {
-    fn sig(&self) -> &Signature {
+    pub(crate) fn sig(&self) -> &Signature {
         match self {
             HirFunctionInner::Function { item_fn } => &item_fn.sig,
             HirFunctionInner::Method { impl_item_fn, .. } => &impl_item_fn.sig,
