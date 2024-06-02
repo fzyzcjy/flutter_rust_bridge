@@ -14,10 +14,10 @@ use syn::Type;
 
 mod type_alias_resolver;
 
-pub(crate) fn parse(
+pub(crate) fn parse<'a>(
     config: &ParserHirInternalConfig,
-    hir_pack: &HirPack,
-) -> anyhow::Result<HirFlatCrate> {
+    hir_pack: &'a HirPack,
+) -> anyhow::Result<HirFlatCrate<'a>> {
     Ok(HirFlatCrate {
         functions: collect_functions(config, hir_pack),
         structs: collect_structs(hir_pack),
@@ -27,7 +27,7 @@ pub(crate) fn parse(
     })
 }
 
-fn collect_functions(config: &ParserHirInternalConfig, hir_pack: &HirPack) -> Vec<&HirFunction> {
+fn collect_functions<'a>(config: &ParserHirInternalConfig, hir_pack: &'a HirPack) -> Vec<&'a HirFunction> {
     collect_objects_vec(hir_pack, |module| {
         if (config.rust_input_namespace_pack).is_interest(&module.meta.namespace) {
             module.content.functions.iter().collect()
