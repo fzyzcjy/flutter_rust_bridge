@@ -1,6 +1,6 @@
 use crate::codegen::ir::mir::field::MirField;
-use crate::codegen::ir::mir::namespace::NamespacedName;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
+use crate::utils::namespace::NamespacedName;
 use itertools::Itertools;
 use log::warn;
 
@@ -33,7 +33,6 @@ pub(crate) struct SanityCheckHint {
 
 #[cfg(test)]
 mod tests {
-    use crate::codegen::ir::mir::namespace::Namespace;
     use crate::codegen::ir::mir::ty::boxed::MirTypeBoxed;
     use crate::codegen::ir::mir::ty::dart_opaque::MirTypeDartOpaque;
     use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
@@ -45,6 +44,7 @@ mod tests {
     };
     use crate::codegen::ir::mir::ty::MirType;
     use crate::library::codegen::ir::mir::ty::MirTypeTrait;
+    use crate::utils::namespace::Namespace;
 
     #[test]
     fn test_cloned_getter_semantics_reasonable() {

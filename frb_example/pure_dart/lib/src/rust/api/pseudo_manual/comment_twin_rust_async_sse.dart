@@ -6,8 +6,7 @@
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// The type `ComplexEnumWithCommentsTwinRustAsyncSse` is not used by any `pub` functions, thus it is ignored.
-// The type `SimpleEnumWithCommentsTwinRustAsyncSse` is not used by any `pub` functions, thus it is ignored.
+// These types are ignored because they are not used by any `pub` functions: `ComplexEnumWithCommentsTwinRustAsyncSse`, `SimpleEnumWithCommentsTwinRustAsyncSse`
 
 /// This is single line comment
 Future<void> functionWithCommentsTripleSlashSingleLineTwinRustAsyncSse() => RustLib

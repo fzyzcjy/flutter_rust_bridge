@@ -1,7 +1,6 @@
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirEnum;
 use crate::codegen::ir::mir::field::{MirField, MirFieldSettings};
 use crate::codegen::ir::mir::ident::MirIdent;
-use crate::codegen::ir::mir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::mir::ty::boxed::MirTypeBoxed;
 use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegatePrimitiveEnum};
 use crate::codegen::ir::mir::ty::enumeration::{
@@ -20,6 +19,7 @@ use crate::codegen::parser::mir::type_parser::structure::structure_compute_defau
 use crate::codegen::parser::mir::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::mir::type_parser::TypeParserWithContext;
 use crate::if_then_some;
+use crate::utils::namespace::{Namespace, NamespacedName};
 use std::collections::HashMap;
 use syn::{Attribute, Field, Ident, ItemEnum, Type, Variant, Visibility};
 

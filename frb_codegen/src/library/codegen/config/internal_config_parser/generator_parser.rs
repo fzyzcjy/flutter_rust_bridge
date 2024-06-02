@@ -16,9 +16,11 @@ use crate::codegen::Config;
 use crate::library::commands::cargo_metadata::execute_cargo_metadata;
 use crate::utils::dart_repository::get_dart_package_name;
 use crate::utils::path_utils::path_to_string;
+use crate::utils::syn_utils::canonicalize_rust_type;
 use anyhow::Context;
 use itertools::Itertools;
 use pathdiff::diff_paths;
+use std::collections::HashMap;
 use std::path::{Path, PathBuf};
 
 pub(super) struct Args<'a> {
@@ -61,8 +63,10 @@ pub(super) fn parse(args: Args) -> anyhow::Result<GeneratorInternalConfig> {
             dart_enums_style,
             dart3,
             dart_decl_base_output_path: dart_output_path_pack.dart_decl_base_output_path.clone(),
+            dart_impl_output_path: dart_output_path_pack.dart_impl_output_path.clone(),
             dart_entrypoint_class_name: dart_output_class_name_pack.entrypoint_class_name.clone(),
             dart_preamble: config.dart_preamble.clone().unwrap_or_default(),
+            dart_type_rename: compute_dart_type_rename(config)?,
         },
         wire: GeneratorWireInternalConfig {
             dart: GeneratorWireDartInternalConfig {
@@ -167,4 +171,32 @@ fn compute_default_external_library_relative_directory(
 ) -> anyhow::Result<String> {
     let diff = diff_paths(rust_crate_dir, dart_root).context("cannot diff path")?;
     Ok(path_to_string(&diff.join("target").join("release/"))?.replace('\\', "/"))
+}
+
+fn compute_dart_type_rename(config: &Config) -> anyhow::Result<HashMap<String, String>> {
+    fn convert_rust_type(raw: &str) -> anyhow::Result<Vec<String>> {
+        Ok(vec![
+            canonicalize_rust_type(raw)?,
+            canonicalize_rust_type(&format!(
+                "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<{}>",
+                raw
+            ))?,
+        ])
+    }
+
+    Ok(config
+        .dart_type_rename
+        .clone()
+        .unwrap_or_default()
+        .iter()
+        .map(|(k, v)| {
+            Ok(convert_rust_type(k)?
+                .into_iter()
+                .map(|parsed_k| (parsed_k, v.to_owned()))
+                .collect_vec())
+        })
+        .collect::<anyhow::Result<Vec<_>>>()?
+        .into_iter()
+        .flatten()
+        .collect())
 }

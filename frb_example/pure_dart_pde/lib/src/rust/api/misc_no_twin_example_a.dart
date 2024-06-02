@@ -7,13 +7,40 @@ import '../frb_generated.dart';
 import 'misc_no_twin_example_b.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// The functions `clone` are not `pub`, thus are ignored.
+// These functions are ignored because they are not marked as `pub`: `clone`
 
 Future<void> sameFunctionNameInDifferentFiles() => RustLib.instance.api
     .crateApiMiscNoTwinExampleASameFunctionNameInDifferentFiles();
 
 Future<void> renamedFunction() => RustLib.instance.api
     .crateApiMiscNoTwinExampleAFunctionWithCustomNameTwinNormal();
+
+Future<void> functionWithArgTypeNameOverride(
+        {required BoxAnyMyDartTypeRename a}) =>
+    RustLib.instance.api
+        .crateApiMiscNoTwinExampleAFunctionWithArgTypeNameOverride(a: a);
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn Any + Send + Sync + 'static >>>
+@sealed
+class BoxAnyMyDartTypeRename extends RustOpaque {
+  // Not to be used by end users
+  BoxAnyMyDartTypeRename.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  BoxAnyMyDartTypeRename.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_BoxAnyMyDartTypeRename,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_BoxAnyMyDartTypeRename,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_BoxAnyMyDartTypeRenamePtr,
+  );
+}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DeliberateFailSanityCheckTwinNormal>>
 @sealed

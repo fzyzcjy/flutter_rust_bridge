@@ -8,8 +8,8 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'event_listener_twin_sse.freezed.dart';
 
-// The type `EVENTS` is not used by any `pub` functions, thus it is ignored.
-// The functions `deref`, `initialize`, `clone` are not `pub`, thus are ignored.
+// These functions are ignored because they are not marked as `pub`: `clone`, `deref`, `initialize`
+// These types are ignored because they are not used by any `pub` functions: `EVENTS`
 
 Future<Stream<EventTwinSse>> registerEventListenerTwinSse() =>
     RustLib.instance.api

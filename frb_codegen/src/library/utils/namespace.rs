@@ -1,6 +1,8 @@
 use crate::codegen::generator::codec::sse::lang::Lang;
+use crate::utils::crate_name::CrateName;
 use itertools::Itertools;
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
+use std::borrow::ToOwned;
 use std::fmt::{Display, Formatter};
 use std::path::PathBuf;
 
@@ -14,12 +16,11 @@ pub struct Namespace {
 
 impl Namespace {
     const SEP: &'static str = "::";
-    pub(crate) const SELF_CRATE: &'static str = "crate";
 
-    pub fn new(path: Vec<String>) -> Self {
-        assert!((path.iter()).all(|item| !item.contains(Self::SEP)));
-        Self::new_raw(path.join(Self::SEP))
-    }
+    // pub fn new(path: Vec<String>) -> Self {
+    //     assert!((path.iter()).all(|item| !item.contains(Self::SEP)));
+    //     Self::new_raw(path.join(Self::SEP))
+    // }
 
     pub fn new_raw(joined_path: String) -> Self {
         // This will stop the whole generator and tell the users, so we do not care about testing it
@@ -35,7 +36,7 @@ impl Namespace {
 
     pub fn new_self_crate(joined_path: String) -> Self {
         let sep = Self::SEP;
-        let self_crate = Self::SELF_CRATE;
+        let self_crate = CrateName::SELF_CRATE;
 
         assert!(!joined_path.starts_with(&format!("{self_crate}{sep}")));
         Self::new_raw(format!("{self_crate}{sep}{joined_path}"))
@@ -55,7 +56,7 @@ impl Namespace {
 
     pub fn path_exclude_self_crate(&self) -> Vec<&str> {
         let mut path = self.path();
-        if path.first() == Some(&Self::SELF_CRATE) {
+        if path.first() == Some(&CrateName::SELF_CRATE) {
             path.remove(0);
         }
         path
@@ -174,7 +175,8 @@ mod tests {
     #[test]
     pub fn test_namespace_display() {
         assert_eq!(
-            Namespace::new(vec!["crate".into(), "hello".into(), "world".into()]).to_string(),
+            // Namespace::new(vec!["crate".into(), "hello".into(), "world".into()]).to_string(),
+            Namespace::new_raw("crate::hello::world".to_owned()).to_string(),
             "crate::hello::world"
         );
     }

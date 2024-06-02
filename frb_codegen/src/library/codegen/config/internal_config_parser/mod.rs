@@ -36,6 +36,7 @@ impl InternalConfig {
             rust_path_migrator::migrate_rust_input_config(&config.rust_root, &config.rust_input)?;
         let RustInputInfo {
             rust_crate_dir,
+            third_party_crate_names,
             rust_input_namespace_pack,
         } = rust_path_parser::compute_rust_input_info(&migrated_rust_input, &base_dir)?;
 
@@ -96,7 +97,9 @@ impl InternalConfig {
             },
             parser: ParserInternalConfig {
                 hir: ParserHirInternalConfig {
+                    rust_crate_dir: rust_crate_dir.clone(),
                     rust_input_namespace_pack: rust_input_namespace_pack.clone(),
+                    third_party_crate_names,
                 },
                 mir: ParserMirInternalConfig {
                     rust_input_namespace_pack: rust_input_namespace_pack.clone(),
@@ -104,7 +107,6 @@ impl InternalConfig {
                     default_stream_sink_codec,
                     default_rust_opaque_codec,
                 },
-                rust_crate_dir: rust_crate_dir.clone(),
             },
             generator,
             polisher: PolisherInternalConfig {

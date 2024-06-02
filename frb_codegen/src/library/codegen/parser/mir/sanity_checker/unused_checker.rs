@@ -1,11 +1,11 @@
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::{HirEnum, HirStruct};
-use crate::codegen::ir::mir::namespace::NamespacedName;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::internal_config::RustInputNamespacePack;
 use crate::codegen::parser::mir::misc::extract_src_types_in_paths;
 use crate::codegen::parser::mir::type_parser::path_data::extract_path_data;
+use crate::utils::namespace::NamespacedName;
 use itertools::Itertools;
 use std::collections::{HashMap, HashSet};
 use syn::Type;

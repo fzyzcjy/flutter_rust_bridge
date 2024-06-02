@@ -6,9 +6,8 @@
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// The type `BINARY_TREES` is not used by any `pub` functions, thus it is ignored.
-// The type `BINARY_TREES_PROTOBUF` is not used by any `pub` functions, thus it is ignored.
-// The functions `create_binary_tree`, `create_binary_tree_protobuf`, `create_binary_tree_map`, `create_blob`, `clone`, `fmt`, `deref`, `initialize`, `deref`, `initialize`, `clone`, `fmt` are not `pub`, thus are ignored.
+// These functions are ignored because they are not marked as `pub`: `clone`, `clone`, `create_binary_tree_map`, `create_binary_tree_protobuf`, `create_binary_tree`, `create_blob`, `deref`, `deref`, `fmt`, `fmt`, `initialize`, `initialize`
+// These types are ignored because they are not used by any `pub` functions: `BINARY_TREES_PROTOBUF`, `BINARY_TREES`
 
 void benchmarkVoidTwinSync() => RustLib.instance.api
     .crateApiPseudoManualBenchmarkApiTwinSyncBenchmarkVoidTwinSync();

@@ -9,8 +9,8 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'misc_example_twin_sync.freezed.dart';
 
-// The type `MySizeFreezedTwinSync` is not used by any `pub` functions, thus it is ignored.
-// The functions `visibility_restricted_func_twin_sync`, `fmt`, `clone`, `fmt`, `clone`, `fmt`, `clone`, `fmt`, `clone` are not `pub`, thus are ignored.
+// These functions are ignored because they are not marked as `pub`: `clone`, `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`, `visibility_restricted_func_twin_sync`
+// These types are ignored because they are not used by any `pub` functions: `MySizeFreezedTwinSync`
 
 MyTreeNodeTwinSync handleComplexStructTwinSync(
         {required MyTreeNodeTwinSync s}) =>

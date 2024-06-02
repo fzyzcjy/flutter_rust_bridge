@@ -109,6 +109,20 @@ impl CstDecode<RustAutoOpaqueNom<OpaqueItemTwinNormal>> for usize {
         flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(self.cst_decode())
     }
 }
+impl CstDecode<Box<dyn Any + Send + Sync + 'static>> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> Box<dyn Any + Send + Sync + 'static> {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
+            RustOpaqueNom<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                    Box<dyn Any + Send + Sync + 'static>,
+                >,
+            >,
+        >::cst_decode(
+            self
+        ))
+    }
+}
 impl CstDecode<Box<dyn Fn(String) -> String + Send + Sync>> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<dyn Fn(String) -> String + Send + Sync> {
@@ -1888,6 +1902,26 @@ impl CstDecode<RustOpaqueMoi<RwLock<HideDataTwinSyncMoi>>> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueMoi<RwLock<HideDataTwinSyncMoi>> {
         decode_rust_opaque_moi(self as _)
+    }
+}
+impl
+    CstDecode<
+        RustOpaqueNom<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                Box<dyn Any + Send + Sync + 'static>,
+            >,
+        >,
+    > for usize
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> RustOpaqueNom<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+            Box<dyn Any + Send + Sync + 'static>,
+        >,
+    > {
+        unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
@@ -18581,6 +18615,14 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_ex
     wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_simple_setter_impl(
         that, value,
     )
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__function_with_arg_type_name_override(
+    port_: i64,
+    a: usize,
+) {
+    wire__crate__api__misc_no_twin_example_a__function_with_arg_type_name_override_impl(port_, a)
 }
 
 #[no_mangle]
@@ -43220,6 +43262,32 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     MoiArc::<RwLock<HideDataTwinSyncSseMoi>>::decrement_strong_count(ptr as _);
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendSyncstatic(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                Box<dyn Any + Send + Sync + 'static>,
+            >,
+        >::increment_strong_count(ptr as _);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendSyncstatic(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                Box<dyn Any + Send + Sync + 'static>,
+            >,
+        >::decrement_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]

@@ -13,10 +13,10 @@ pub(crate) mod rust_auto_opaque_implicit;
 pub(crate) mod rust_opaque;
 pub(crate) mod structure;
 
-use crate::codegen::ir::mir::namespace::Namespace;
 use crate::codegen::ir::mir::pack::{MirEnumPool, MirPack, MirStructPool};
 use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+use crate::utils::namespace::Namespace;
 use enum_dispatch::enum_dispatch;
 use serde::ser::SerializeStruct;
 use serde::{Serialize, Serializer};

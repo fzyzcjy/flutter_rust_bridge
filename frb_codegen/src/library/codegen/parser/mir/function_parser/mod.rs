@@ -4,25 +4,29 @@ use crate::codegen::ir::mir::func::{
     MirFunc, MirFuncArgMode, MirFuncInput, MirFuncMode, MirFuncOutput, MirFuncOwnerInfo,
     MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
 };
-use crate::codegen::ir::mir::namespace::{Namespace, NamespacedName};
+use crate::codegen::ir::mir::skip::{MirSkip, MirSkipReason};
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
+use crate::codegen::parser::mir::function_parser::structs::ParseFunctionOutput;
 use crate::codegen::parser::mir::type_parser::misc::parse_comments;
 use crate::codegen::parser::mir::type_parser::{
     external_impl, TypeParser, TypeParserParsingContext,
 };
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
+use crate::utils::namespace::{Namespace, NamespacedName};
 use anyhow::{bail, Context};
 use itertools::concat;
 use log::{debug, warn};
 use std::fmt::Debug;
 use syn::*;
+use MirSkipReason::{IgnoredFunctionNotPub, IgnoredMisc};
 use MirType::Primitive;
 
 pub(crate) mod argument;
 pub(crate) mod output;
+pub(crate) mod structs;
 mod transformer;
 
 pub(crate) struct FunctionParser<'a, 'b> {
@@ -42,7 +46,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         force_codec_mode_pack: &Option<CodecModePack>,
         default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
-    ) -> anyhow::Result<Option<MirFunc>> {
+    ) -> ParseFunctionOutput {
         self.parse_function_inner(
             func,
             namespace_naive,
@@ -50,7 +54,14 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             default_stream_sink_codec,
             default_rust_opaque_codec,
         )
-        .with_context(|| format!("function={:?}", func.sig().ident))
+        .unwrap_or_else(|err| {
+            log::debug!(
+                "parse_function see error and skip function: function={:?} error={:?}",
+                func.sig().ident,
+                err
+            );
+            create_output_skip(func, namespace_naive, MirSkipReason::Err)
+        })
     }
 
     #[allow(clippy::too_many_arguments)]
@@ -61,8 +72,16 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         force_codec_mode_pack: &Option<CodecModePack>,
         default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
-    ) -> anyhow::Result<Option<MirFunc>> {
+    ) -> anyhow::Result<ParseFunctionOutput> {
         debug!("parse_function function name: {:?}", func.sig().ident);
+
+        if !matches!(func.vis(), Visibility::Public(_)) {
+            return Ok(create_output_skip(
+                func,
+                namespace_naive,
+                IgnoredFunctionNotPub,
+            ));
+        }
 
         let sig = func.sig();
         let src_lineno = func.span().start().line;
@@ -81,13 +100,13 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         {
             owner
         } else {
-            return Ok(None);
+            return Ok(create_output_skip(func, namespace_naive, IgnoredMisc));
         };
 
         let func_name = parse_name(sig, &owner);
 
         if attributes.ignore() {
-            return Ok(None);
+            return Ok(create_output_skip(func, namespace_naive, IgnoredMisc));
         }
 
         let context = create_context(Some(owner.clone()));
@@ -104,10 +123,10 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let namespace_refined = refine_namespace(&owner).unwrap_or(namespace_naive.clone());
 
         if info.ignore_func {
-            return Ok(None);
+            return Ok(create_output_skip(func, namespace_naive, IgnoredMisc));
         }
 
-        Ok(Some(MirFunc {
+        Ok(ParseFunctionOutput::Ok(MirFunc {
             name: NamespacedName::new(namespace_refined, func_name),
             dart_name: attributes.name(),
             id: None, // to be filled later
@@ -187,6 +206,17 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let syn_ty: Type = parse_str(&owner_ty_name)?;
         Ok(Some(self.type_parser.parse_type(&syn_ty, context)?))
     }
+}
+
+fn create_output_skip(
+    func: &HirFunctionInner,
+    namespace_naive: &Namespace,
+    reason: MirSkipReason,
+) -> ParseFunctionOutput {
+    ParseFunctionOutput::Skip(MirSkip {
+        name: NamespacedName::new(namespace_naive.to_owned(), func.sig().ident.to_string()),
+        reason,
+    })
 }
 
 fn compute_func_mode(attributes: &FrbAttributes, info: &FunctionPartialInfo) -> MirFuncMode {

@@ -1,10 +1,11 @@
 use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::ir::mir::func::MirFunc;
-use crate::codegen::ir::mir::namespace::NamespacedName;
+use crate::codegen::ir::mir::skip::MirSkip;
 use crate::codegen::ir::mir::ty::enumeration::{MirEnum, MirEnumIdent};
 use crate::codegen::ir::mir::ty::structure::{MirStruct, MirStructIdent};
 use crate::codegen::ir::mir::ty::MirType;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
+use crate::utils::namespace::NamespacedName;
 use itertools::Itertools;
 use std::collections::{HashMap, HashSet};
 use strum::IntoEnumIterator;
@@ -20,7 +21,7 @@ pub struct MirPack {
     pub dart_code_of_type: HashMap<String, String>,
     pub existing_handler: Option<NamespacedName>,
     pub unused_types: Vec<NamespacedName>,
-    pub skipped_functions: Vec<NamespacedName>,
+    pub skipped_functions: Vec<MirSkip>,
 }
 
 impl MirPack {

@@ -1,9 +1,9 @@
 use crate::codegen::dumper::Dumper;
-use crate::codegen::ir::hir::hierarchical::crates::HirCrate;
+use crate::codegen::ir::hir::hierarchical::pack::HirPack;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
-use crate::library::commands::cargo_expand::run_cargo_expand;
+use crate::codegen::ConfigDumpContent;
 
 pub(crate) mod hir;
 pub(crate) mod internal_config;
@@ -21,20 +21,26 @@ fn parse_inner(
     config: &ParserInternalConfig,
     dumper: &Dumper,
     progress_bar_pack: &GeneratorProgressBarPack,
-    on_hir: impl FnOnce(&HirCrate) -> anyhow::Result<()>,
+    on_hir: impl FnOnce(&HirPack) -> anyhow::Result<()>,
 ) -> anyhow::Result<MirPack> {
-    let pb = progress_bar_pack.parse_read.start();
-    let file = run_cargo_expand(&config.rust_crate_dir, dumper)?;
+    let pb = progress_bar_pack.parse_hir_raw.start();
+    let hir_raw = hir::raw::parse(&config.hir, dumper)?;
     drop(pb);
 
-    let pb = progress_bar_pack.parse_hir.start();
-    let hir_hierarchical = hir::hierarchical::parse(&config.hir, &file)?;
-    let hir_flat = hir::flat::parse(&hir_hierarchical.root_module)?;
+    let pb = progress_bar_pack.parse_hir_primary.start();
+    let hir_hierarchical = hir::hierarchical::parse(&config.hir, &hir_raw)?;
+    let hir_flat = hir::flat::parse(&hir_hierarchical)?;
     on_hir(&hir_hierarchical)?;
+    dumper.dump(
+        ConfigDumpContent::Hir,
+        "hir_hierarchical.json",
+        &hir_hierarchical,
+    )?;
     drop(pb);
 
     let pb = progress_bar_pack.parse_mir.start();
     let mir_pack = mir::parse(&config.mir, &hir_flat)?;
+    dumper.dump(ConfigDumpContent::Mir, "mir_pack.json", &mir_pack)?;
     drop(pb);
 
     Ok(mir_pack)
@@ -45,7 +51,6 @@ mod tests {
     use crate::codegen::config::internal_config_parser::compute_force_codec_mode_pack;
     use crate::codegen::dumper::Dumper;
     use crate::codegen::generator::codec::structs::CodecMode;
-    use crate::codegen::ir::mir::namespace::Namespace;
     use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
     use crate::codegen::misc::GeneratorProgressBarPack;
     use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
@@ -55,6 +60,7 @@ mod tests {
     };
     use crate::codegen::parser::{parse_inner, MirPack};
     use crate::utils::logs::configure_opinionated_test_logging;
+    use crate::utils::namespace::Namespace;
     use crate::utils::test_utils::{
         create_path_sanitizers, get_test_fixture_dir, json_golden_test,
     };
@@ -79,11 +85,11 @@ mod tests {
     fn test_multi_input_file() -> anyhow::Result<()> {
         body(
             "library/codegen/parser/mod/multi_input_file",
-            Some(Box::new(|_rust_crate_dir| {
-                RustInputNamespacePack::new(vec![
+            Some(Box::new(|_rust_crate_dir| RustInputNamespacePack {
+                rust_input_namespace_prefixes: vec![
                     Namespace::new_self_crate("api_one".to_owned()),
                     Namespace::new_self_crate("api_two".to_owned()),
-                ])
+                ],
             })),
         )
     }
@@ -145,13 +151,15 @@ mod tests {
 
         let rust_input_namespace_pack = rust_input_namespace_pack
             .map(|f| f(&rust_crate_dir))
-            .unwrap_or(RustInputNamespacePack::new(vec![
-                Namespace::new_self_crate("api".to_owned()),
-            ]));
+            .unwrap_or(RustInputNamespacePack {
+                rust_input_namespace_prefixes: vec![Namespace::new_self_crate("api".to_owned())],
+            });
 
         let config = ParserInternalConfig {
             hir: ParserHirInternalConfig {
                 rust_input_namespace_pack: rust_input_namespace_pack.clone(),
+                rust_crate_dir: rust_crate_dir.clone(),
+                third_party_crate_names: vec![],
             },
             mir: ParserMirInternalConfig {
                 rust_input_namespace_pack: rust_input_namespace_pack.clone(),
@@ -159,7 +167,6 @@ mod tests {
                 default_stream_sink_codec: CodecMode::Dco,
                 default_rust_opaque_codec: RustOpaqueCodecMode::Nom,
             },
-            rust_crate_dir: rust_crate_dir.clone(),
         };
 
         let pack = parse_inner(

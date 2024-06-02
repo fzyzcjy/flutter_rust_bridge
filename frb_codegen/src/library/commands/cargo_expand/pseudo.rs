@@ -1,15 +1,27 @@
+use crate::utils::crate_name::CrateName;
 use anyhow::ensure;
 use itertools::Itertools;
 use log::warn;
 use std::fs;
 use std::path::{Path, PathBuf};
 
-pub(super) fn run(rust_crate_dir: &Path) -> anyhow::Result<syn::File> {
+pub(super) fn run(
+    rust_crate_dir: &Path,
+    interest_crate_name: Option<&CrateName>,
+) -> anyhow::Result<syn::File> {
     warn!(
         "Skip cargo-expand on {rust_crate_dir:?}, \
          because cargo is already running and would block cargo-expand. \
          This might cause errors if your api contains macros or complex mods."
     );
+
+    // This will stop the whole generator and tell the users, so we do not care about testing it
+    // frb-coverage:ignore-start
+    ensure!(
+        interest_crate_name.is_none(),
+        "When parsing third party crates, need to use cargo-expand"
+    );
+    // frb-coverage:ignore-end
 
     parse_file(&rust_crate_dir.join("src/lib.rs"))
 }

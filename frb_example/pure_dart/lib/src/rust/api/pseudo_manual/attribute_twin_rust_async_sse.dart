@@ -9,8 +9,9 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'package:meta/meta.dart' as meta;
 part 'attribute_twin_rust_async_sse.freezed.dart';
 
-// The type `IgnoredStructTwinRustAsyncSse` is not used by any `pub` functions, thus it is ignored.
-// The functions `fmt`, `clone` are not `pub`, thus are ignored.
+// These functions are ignored because they are not marked as `pub`: `clone`, `fmt`
+// These types are ignored because they are not used by any `pub` functions: `IgnoredStructTwinRustAsyncSse`
+// These functions are ignored: `func_should_not_exist_in_dart_twin_rust_async_sse`, `method_should_not_exist_in_dart_twin_rust_async_sse`, `method_should_not_exist_in_dart_twin_rust_async_sse`
 
 Future<void> handleCustomizedStructTwinRustAsyncSse(
         {required CustomizedTwinRustAsyncSse val}) =>

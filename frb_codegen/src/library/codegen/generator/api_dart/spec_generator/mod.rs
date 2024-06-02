@@ -9,15 +9,16 @@ use crate::codegen::generator::api_dart::spec_generator::function::ApiDartGenera
 use crate::codegen::generator::api_dart::spec_generator::misc::generate_imports_which_types_and_funcs_use;
 use crate::codegen::generator::api_dart::spec_generator::sanity_checker::sanity_check_class_name_duplicates;
 use crate::codegen::ir::mir::func::{MirFunc, MirFuncOwnerInfo};
-use crate::codegen::ir::mir::namespace::Namespace;
 use crate::codegen::ir::mir::pack::{MirPack, MirPackComputedCache};
+use crate::codegen::ir::mir::skip::{MirSkip, MirSkipReason};
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ConfigDumpContent;
 use crate::library::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::basic_code::DartBasicHeaderCode;
+use crate::utils::namespace::Namespace;
 use anyhow::Result;
-use itertools::Itertools;
+use itertools::{concat, Itertools};
 use serde::Serialize;
 use std::collections::{HashMap, HashSet};
 use ConfigDumpContent::GeneratorInfo;
@@ -41,8 +42,7 @@ pub(crate) struct ApiDartOutputSpecItem {
     pub classes: Vec<ApiDartGeneratedClass>,
     pub imports: DartBasicHeaderCode,
     pub preamble: String,
-    pub unused_types: Vec<String>,
-    pub skipped_functions: Vec<String>,
+    pub skips: Vec<MirSkip>,
     pub needs_freezed: bool,
 }
 
@@ -125,16 +125,6 @@ fn generate_item(
 
     sanity_check_class_name_duplicates(&classes)?;
 
-    let unused_types = (context.mir_pack.unused_types.iter())
-        .filter(|t| &t.namespace == namespace)
-        .map(|t| t.name.to_owned())
-        .collect_vec();
-
-    let skipped_functions = (context.mir_pack.skipped_functions.iter())
-        .filter(|t| &t.namespace == namespace)
-        .map(|t| t.name.to_owned())
-        .collect_vec();
-
     let needs_freezed = classes.iter().any(|class| class.needs_freezed);
 
     Ok(ApiDartOutputSpecItem {
@@ -142,8 +132,24 @@ fn generate_item(
         classes,
         imports,
         preamble: context.config.dart_preamble.clone(),
-        unused_types,
-        skipped_functions,
+        skips: compute_skips(context.mir_pack, namespace),
         needs_freezed,
     })
+}
+
+fn compute_skips(mir_pack: &MirPack, namespace: &Namespace) -> Vec<MirSkip> {
+    let unused_types = (mir_pack.unused_types.iter())
+        .filter(|t| &t.namespace == namespace)
+        .map(|name| MirSkip {
+            name: name.clone(),
+            reason: MirSkipReason::IgnoredTypeNotUsedByPub,
+        })
+        .collect_vec();
+
+    let skipped_functions = (mir_pack.skipped_functions.iter())
+        .filter(|t| &t.name.namespace == namespace)
+        .cloned()
+        .collect_vec();
+
+    concat([unused_types, skipped_functions])
 }

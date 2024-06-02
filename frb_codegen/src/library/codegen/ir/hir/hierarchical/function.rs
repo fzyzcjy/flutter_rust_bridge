@@ -1,4 +1,4 @@
-use crate::codegen::ir::mir::namespace::Namespace;
+use crate::utils::namespace::Namespace;
 use proc_macro2::Span;
 use serde::Serialize;
 use syn::spanned::Spanned;

@@ -2,7 +2,7 @@ use crate::codegen::ir::hir::hierarchical::function::HirFunction;
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirEnum;
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStruct;
 use crate::codegen::ir::hir::hierarchical::type_alias::HirTypeAlias;
-use crate::codegen::ir::mir::namespace::Namespace;
+use crate::utils::namespace::Namespace;
 use derivative::Derivative;
 use serde::Serialize;
 
@@ -10,13 +10,15 @@ use serde::Serialize;
 pub struct HirModule {
     pub meta: HirModuleMeta,
     pub content: HirModuleContent,
+    // avoid too big debug dump
+    #[serde(skip_serializing)]
     pub raw: Vec<String>,
 }
 
 #[derive(Clone, Derivative, Serialize)]
 #[derivative(Debug)]
 pub struct HirModuleMeta {
-    pub visibility: HirVisibility,
+    // pub visibility: HirVisibility,
     pub namespace: Namespace,
 }
 
