@@ -1,4 +1,6 @@
-use crate::codegen::ir::hir::hierarchical::module::{HirModule, HirModuleContent, HirModuleMeta};
+use crate::codegen::ir::hir::hierarchical::module::{
+    HirModule, HirModuleContent, HirModuleMeta, HirVisibility,
+};
 use crate::codegen::parser::hir::hierarchical::function::parse_generalized_functions;
 use crate::codegen::parser::hir::hierarchical::item_type::parse_syn_item_type;
 use crate::codegen::parser::hir::hierarchical::struct_or_enum::{
@@ -7,31 +9,34 @@ use crate::codegen::parser::hir::hierarchical::struct_or_enum::{
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 use crate::utils::namespace::Namespace;
 use syn::ItemMod;
+use crate::codegen::parser::hir::hierarchical::pub_use::transform_module_by_pub_use;
 
 pub(crate) fn parse_module(
     items: &[syn::Item],
-    info: HirModuleMeta,
+    meta: HirModuleMeta,
     config: &ParserHirInternalConfig,
-    // cumulated_visibility_pub: bool,
 ) -> anyhow::Result<HirModule> {
-    let mut scope = HirModuleContent::default();
+    let module = parse_module_raw(items, meta, config)?;
+    let module = transform_module_by_pub_use(module, items)?;
+    Ok(module)
+}
 
-    if (config.rust_input_namespace_pack).is_interest(&info.namespace) {
-        scope.functions = parse_generalized_functions(items, &info.namespace)?;
-    }
+fn parse_module_raw(
+    items: &[syn::Item],
+    meta: HirModuleMeta,
+    config: &ParserHirInternalConfig,
+) -> anyhow::Result<HirModule> {
+    let mut scope = HirModuleContent {
+        functions: parse_generalized_functions(items, &meta.namespace)?,
+        ..HirModuleContent::default()
+    };
 
     for item in items.iter() {
-        parse_syn_item(
-            item,
-            &mut scope,
-            &info.namespace,
-            config,
-            // cumulated_visibility_pub,
-        )?;
+        parse_syn_item(item, &mut scope, config, &meta.namespace, &meta.parent_vis)?;
     }
 
     Ok(HirModule {
-        meta: info,
+        meta,
         content: scope,
         raw: (items.iter())
             .filter(|item| !matches!(item, syn::Item::Mod(_)))
@@ -43,9 +48,9 @@ pub(crate) fn parse_module(
 fn parse_syn_item(
     item: &syn::Item,
     scope: &mut HirModuleContent,
-    namespace: &Namespace,
     config: &ParserHirInternalConfig,
-    // cumulated_visibility_pub: bool,
+    namespace: &Namespace,
+    parent_vis: &[HirVisibility],
 ) -> anyhow::Result<()> {
     match item {
         syn::Item::Struct(item_struct) => {
@@ -60,10 +65,9 @@ fn parse_syn_item(
             scope.type_alias.extend(parse_syn_item_type(item_type));
         }
         syn::Item::Mod(item_mod) => {
-            scope.modules.extend(parse_syn_item_mod(
-                item_mod, namespace, config,
-                // cumulated_visibility_pub,
-            )?);
+            scope
+                .modules
+                .extend(parse_syn_item_mod(item_mod, namespace, config, parent_vis)?);
         }
         _ => {}
     }
@@ -74,11 +78,12 @@ fn parse_syn_item_mod(
     item_mod: &ItemMod,
     namespace: &Namespace,
     config: &ParserHirInternalConfig,
-    // cumulated_visibility_pub: bool,
+    parent_vis: &[HirVisibility],
 ) -> anyhow::Result<Option<HirModule>> {
     Ok(if let Some((_, items)) = &item_mod.content {
         let info = HirModuleMeta {
-            // visibility: (&item_mod.vis).into(),
+            parent_vis: parent_vis.to_owned(),
+            vis: (&item_mod.vis).into(),
             namespace: namespace.join(&item_mod.ident.to_string()),
         };
         Some(parse_module(

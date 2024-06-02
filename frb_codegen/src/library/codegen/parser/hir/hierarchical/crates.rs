@@ -1,3 +1,4 @@
+use crate::codegen::ir::hir::hierarchical::module::HirVisibility;
 use crate::codegen::ir::hir::hierarchical::crates::HirCrate;
 use crate::codegen::ir::hir::hierarchical::module::HirModuleMeta;
 use crate::codegen::parser::hir::hierarchical::module::parse_module;
@@ -10,7 +11,8 @@ pub(crate) fn parse_crate(
     crate_name: &CrateName,
 ) -> anyhow::Result<HirCrate> {
     let info = HirModuleMeta {
-        // visibility: HirVisibility::Public,
+        parent_vis: vec![],
+        vis: HirVisibility::Public,
         namespace: crate_name.namespace(),
     };
     let root_module = parse_module(&file.items, info, config)?;
