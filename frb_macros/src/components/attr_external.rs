@@ -9,7 +9,8 @@ pub(crate) fn handle_external_impl(attribute: TokenStream, item: TokenStream) ->
         return item;
     }
 
-    let encoded_original_item = create_frb_encoded_comment("items", &item.to_string());
+    let encoded_original_item =
+        create_frb_encoded_comment("items", attribute.to_string() + &item.to_string());
 
     let mut item: ItemImpl = syn::parse(item).unwrap();
 
