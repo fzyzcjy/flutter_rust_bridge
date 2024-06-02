@@ -3,7 +3,7 @@ use syn::*;
 pub(crate) trait SynItemStructOrEnum: Clone {
     fn attrs(&self) -> &[Attribute];
 
-    fn attrs_mut(&mut self) -> &mut [Attribute];
+    fn attrs_mut(&mut self) -> &mut Vec<Attribute>;
 }
 
 macro_rules! impl_trait {
@@ -11,7 +11,7 @@ macro_rules! impl_trait {
         impl SynItemStructOrEnum for $name {
             fn attrs(&self) -> &[syn::Attribute] { &self.attrs }
 
-            fn attrs_mut(&mut self) -> &mut [syn::Attribute] { &mut self.attrs }
+            fn attrs_mut(&mut self) -> &mut Vec<syn::Attribute> { &mut self.attrs }
         }
     };
 }

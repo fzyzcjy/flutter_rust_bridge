@@ -83,7 +83,7 @@ fn transform_module_content_general_vec<T: Debug>(
     write: impl Fn(&mut T, T),
 ) -> anyhow::Result<()> {
     for src_item in src_items {
-        let src_key = key(src_item);
+        let src_key = key(&src_item);
 
         let interest_target_items = target_items
             .iter_mut()
