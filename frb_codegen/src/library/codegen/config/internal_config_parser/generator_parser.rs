@@ -173,10 +173,13 @@ fn compute_default_external_library_relative_directory(
 
 fn compute_dart_type_rename(config: &Config) -> anyhow::Result<HashMap<String, String>> {
     fn convert_rust_type(raw: &str) -> anyhow::Result<Vec<String>> {
-        let ast: syn::Type = syn::parse_str(raw)?;
-        let canonicalized_ty = quote::quote!(#ast).to_string();
-
-        Ok(TODO)
+        Ok(vec![
+            canonicalize_rust_type(raw)?,
+            canonicalize_rust_type(format!(
+                "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<{}>",
+                raw
+            ))?,
+        ])
     }
 
     Ok(config
@@ -194,4 +197,9 @@ fn compute_dart_type_rename(config: &Config) -> anyhow::Result<HashMap<String, S
         .into_iter()
         .flatten()
         .collect())
+}
+
+fn canonicalize_rust_type(raw: &str) -> anyhow::Result<String> {
+    let ast: syn::Type = syn::parse_str(raw)?;
+    Ok(quote::quote!(#ast).to_string())
 }
