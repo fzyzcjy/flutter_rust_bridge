@@ -1,3 +1,4 @@
+use std::collections::HashMap;
 use crate::codegen::config::internal_config::{
     GeneratorInternalConfig, GeneratorWireInternalConfig,
 };
@@ -63,7 +64,7 @@ pub(super) fn parse(args: Args) -> anyhow::Result<GeneratorInternalConfig> {
             dart_decl_base_output_path: dart_output_path_pack.dart_decl_base_output_path.clone(),
             dart_entrypoint_class_name: dart_output_class_name_pack.entrypoint_class_name.clone(),
             dart_preamble: config.dart_preamble.clone().unwrap_or_default(),
-            dart_type_rename: config.dart_type_rename.clone(),unwrap_or_default(),
+            dart_type_rename: compute_dart_type_rename(config),
         },
         wire: GeneratorWireInternalConfig {
             dart: GeneratorWireDartInternalConfig {
@@ -168,4 +169,18 @@ fn compute_default_external_library_relative_directory(
 ) -> anyhow::Result<String> {
     let diff = diff_paths(rust_crate_dir, dart_root).context("cannot diff path")?;
     Ok(path_to_string(&diff.join("target").join("release/"))?.replace('\\', "/"))
+}
+
+fn compute_dart_type_rename(config: &Config) -> HashMap<String, String> {
+    config
+        .dart_type_rename
+        .as_ref()
+        .unwrap_or_default()
+        .iter()
+        .map(|(k, v)| (canonicalize_rust_type(k), v.to_owned()))
+        .collect()
+}
+
+fn canonicalize_rust_type(raw: &str) -> String {
+    TDOO
 }
