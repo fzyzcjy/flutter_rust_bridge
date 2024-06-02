@@ -218,7 +218,7 @@ impl<'a> ApiDartGeneratorInfoTrait for RustAutoOpaqueImplicitApiDartGenerator<'a
 
 impl<'a> ApiDartGeneratorInfoTrait for RustOpaqueApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
-        self.context.config.dart_type_rename.get(&canonicalize_rust_type(&self.mir.inner.0))
+        self.context.config.dart_type_rename.get(&canonicalize_rust_type(&self.mir.inner.0).unwrap())
             .cloned()
             .unwrap_or_else(|| self.mir.sanitized_type())
     }
