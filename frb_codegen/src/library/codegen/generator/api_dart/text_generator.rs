@@ -1,3 +1,4 @@
+use std::collections::HashMap;
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
 use crate::codegen::generator::api_dart::spec_generator::function::ApiDartGeneratedFunction;
 use crate::codegen::generator::api_dart::spec_generator::{
@@ -116,21 +117,15 @@ fn generate_end_api_text(
 }
 
 fn compute_skips(item: &ApiDartOutputSpecItem) -> String {
-    let unused_types = (item.unused_types.iter().sorted())
-        .map(|t| {
-            format!("// The type `{t}` is not used by any `pub` functions, thus it is ignored.\n")
-        })
-        .join("");
-
-    let skips = item
-        .skipped_functions
-        .iter()
-        .sorted_by_key(|(reason, _)| **reason)
+    let skips = (item.skips.iter())
+        .into_group_map_by(|t| t.reason)
+        .into_iter()
+        .sorted_by_key(|(reason, _)| *reason)
         .map(|(reason, names)| {
             format!(
                 "// {}: {}\n",
                 reason.explanation_prefix(),
-                (names.iter().map(|x| format!("`{x}`"))).join(", "),
+                (names.iter().map(|x| format!("`{}`", x.name.name))).join(", "),
             )
         })
         .join("");
