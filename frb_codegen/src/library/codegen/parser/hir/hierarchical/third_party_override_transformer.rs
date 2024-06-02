@@ -108,8 +108,9 @@ fn transform_module_content_general_vec<T: Debug, K: Eq + Debug>(
             .collect_vec();
         if interest_target_items.len() != 1 {
             log::warn!(
-                "transform_module_content_attrable skip src_key={src_key:?} src_item={src_item:?},\
-                since the number of corresponding target items is not one (indeed is {}).",
+                "transform_module_content_attrable skip src_key={src_key:?}, \
+                since the number of corresponding target items is not one (indeed is {}). \
+                src_item={src_item:?}",
                 interest_target_items.len(),
             );
             continue;
