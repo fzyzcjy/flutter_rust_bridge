@@ -52,3 +52,9 @@ pub enum HirVisibility {
     // Not supported
     Inherited, // Usually means private
 }
+
+impl HirModuleContent {
+    pub(crate) fn get_module(&self, mod_name: &str) -> &HirModule {
+        (self.modules.iter()).find(|m| m.meta.namespace.path().last().unwrap() == mod_name)
+    }
+}

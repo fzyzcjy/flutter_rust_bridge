@@ -37,6 +37,13 @@ fn transform_module_by_pub_use_single(
     module: &mut HirModule,
     pub_use_name: &Namespace,
 ) -> anyhow::Result<()> {
+    let target_mod = module;
+    for chunk in pub_use_name.path() {
+        (target_mod.content.modules)
+            .iter()
+            .filter(|m| m.meta.namespace.path().last().unwrap() == chunk)
+    }
+
     TODO;
     Ok(())
 }
