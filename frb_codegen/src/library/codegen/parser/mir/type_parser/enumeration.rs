@@ -14,7 +14,9 @@ use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
 use crate::codegen::parser::mir::type_parser::enum_or_struct::{
     EnumOrStructParser, EnumOrStructParserInfo,
 };
-use crate::codegen::parser::mir::type_parser::misc::parse_comments;
+use crate::codegen::parser::mir::type_parser::misc::{
+    parse_comments, parse_type_should_ignore_simple,
+};
 use crate::codegen::parser::mir::type_parser::structure::structure_compute_default_opaque;
 use crate::codegen::parser::mir::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::mir::type_parser::TypeParserWithContext;
@@ -37,6 +39,8 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         name: NamespacedName,
         wrapper_name: Option<String>,
     ) -> anyhow::Result<MirEnum> {
+        let attributes = FrbAttributes::parse(&src_enum.src.attrs)?;
+
         let comments = parse_comments(&src_enum.src.attrs);
         let raw_variants = src_enum
             .src
@@ -47,6 +51,11 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
         let mode = compute_enum_mode(&raw_variants);
         let variants = maybe_field_wrap_box(raw_variants, mode);
+        let ignore = parse_type_should_ignore_simple(
+            &attributes,
+            src_enum.visibility,
+            &name.namespace.crate_name(),
+        );
 
         Ok(MirEnum {
             name,
@@ -54,6 +63,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             comments,
             variants,
             mode,
+            ignore,
         })
     }
 
@@ -177,8 +187,10 @@ impl EnumOrStructParser<MirEnumIdent, MirEnum, ItemEnum>
         &mut self,
         namespace: Option<Namespace>,
         ty: &Type,
+        override_ignore: Option<bool>,
     ) -> anyhow::Result<MirType> {
-        self.0.parse_type_rust_auto_opaque_implicit(namespace, ty)
+        self.0
+            .parse_type_rust_auto_opaque_implicit(namespace, ty, override_ignore)
     }
 
     fn compute_default_opaque(obj: &MirEnum) -> bool {

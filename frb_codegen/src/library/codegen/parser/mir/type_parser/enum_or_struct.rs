@@ -1,8 +1,10 @@
+use crate::codegen::ir::hir::hierarchical::module::HirVisibility;
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStructOrEnum;
 use crate::codegen::ir::hir::hierarchical::syn_item_struct_or_enum::SynItemStructOrEnum;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
 use crate::codegen::parser::mir::type_parser::external_impl;
+use crate::codegen::parser::mir::type_parser::misc::parse_type_should_ignore_simple;
 use crate::codegen::parser::mir::type_parser::unencodable::SplayedSegment;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::namespace::{Namespace, NamespacedName};
@@ -36,6 +38,7 @@ where
 
         if let Some(src_object) = self.src_objects().get(&name) {
             let src_object = (*src_object).clone();
+            let vis = src_object.visibility;
 
             let namespace = &src_object.namespaced_name.namespace;
             let namespaced_name = NamespacedName::new(namespace.clone(), name.clone());
@@ -44,7 +47,10 @@ where
             let attrs_opaque = override_opaque.or(attrs.opaque());
             if attrs_opaque == Some(true) {
                 debug!("Treat {name} as opaque since attribute says so");
-                return Ok(Some((self.parse_opaque(&namespaced_name)?, attrs)));
+                return Ok(Some((
+                    self.parse_opaque(&namespaced_name, &attrs, vis)?,
+                    attrs,
+                )));
             }
 
             let ident: Id = namespaced_name.clone().into();
@@ -64,7 +70,10 @@ where
                     .map_or(false, |obj| Self::compute_default_opaque(obj))
             {
                 debug!("Treat {name} as opaque by compute_default_opaque");
-                return Ok(Some((self.parse_opaque(&namespaced_name)?, attrs)));
+                return Ok(Some((
+                    self.parse_opaque(&namespaced_name, &attrs, vis)?,
+                    attrs,
+                )));
             }
 
             return Ok(Some((self.construct_output(ident)?, attrs)));
@@ -91,10 +100,20 @@ where
         }
     }
 
-    fn parse_opaque(&mut self, namespaced_name: &NamespacedName) -> anyhow::Result<MirType> {
+    fn parse_opaque(
+        &mut self,
+        namespaced_name: &NamespacedName,
+        attrs: &FrbAttributes,
+        vis: HirVisibility,
+    ) -> anyhow::Result<MirType> {
         self.parse_type_rust_auto_opaque_implicit(
             Some(namespaced_name.namespace.clone()),
             &syn::parse_str(&namespaced_name.name)?,
+            Some(parse_type_should_ignore_simple(
+                attrs,
+                vis,
+                &namespaced_name.namespace.crate_name(),
+            )),
         )
     }
 
@@ -117,6 +136,7 @@ where
         &mut self,
         namespace: Option<Namespace>,
         ty: &Type,
+        override_ignore: Option<bool>,
     ) -> anyhow::Result<MirType>;
 
     fn compute_default_opaque(obj: &Obj) -> bool;

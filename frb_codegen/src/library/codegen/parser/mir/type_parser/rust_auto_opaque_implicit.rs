@@ -23,6 +23,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         &mut self,
         namespace: Option<Namespace>,
         ty: &Type,
+        override_ignore: Option<bool>,
     ) -> Result<MirType> {
         let (inner, ownership_mode) = split_ownership_from_ty(ty);
         let (ans_raw, ans_inner) =
@@ -31,6 +32,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             ownership_mode,
             raw: ans_raw,
             inner: ans_inner,
+            ignore: override_ignore.unwrap_or(false),
         }))
     }
 
@@ -93,6 +95,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         self.parse_type_rust_auto_opaque_implicit(
             ty_raw.self_namespace(),
             &syn::parse_str(&transform(&ty_raw.raw.string))?,
+            None,
         )
     }
 }

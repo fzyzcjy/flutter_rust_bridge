@@ -3,6 +3,7 @@
   "enum_pool": {
     "crate::another_file/EnumInAnotherFile": {
       "comments": [],
+      "ignore": false,
       "mode": "Simple",
       "name": "crate::another_file/EnumInAnotherFile",
       "variants": [

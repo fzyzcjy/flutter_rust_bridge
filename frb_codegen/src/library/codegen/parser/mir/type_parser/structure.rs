@@ -8,7 +8,9 @@ use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
 use crate::codegen::parser::mir::type_parser::enum_or_struct::{
     EnumOrStructParser, EnumOrStructParserInfo,
 };
-use crate::codegen::parser::mir::type_parser::misc::parse_comments;
+use crate::codegen::parser::mir::type_parser::misc::{
+    parse_comments, parse_type_should_ignore_simple,
+};
 use crate::codegen::parser::mir::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::mir::type_parser::TypeParserWithContext;
 use crate::utils::namespace::{Namespace, NamespacedName};
@@ -51,13 +53,19 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         let attributes = FrbAttributes::parse(&src_struct.src.attrs)?;
         let dart_metadata = attributes.dart_metadata();
 
+        let ignore = parse_type_should_ignore_simple(
+            &attributes,
+            src_struct.visibility,
+            &name.namespace.crate_name(),
+        );
+
         Ok(MirStruct {
             name,
             wrapper_name,
             fields,
             is_fields_named,
             dart_metadata,
-            ignore: attributes.ignore(),
+            ignore,
             generate_hash: attributes.generate_hash(),
             generate_eq: attributes.generate_eq(),
             comments,
@@ -120,8 +128,10 @@ impl EnumOrStructParser<MirStructIdent, MirStruct, ItemStruct>
         &mut self,
         namespace: Option<Namespace>,
         ty: &Type,
+        override_ignore: Option<bool>,
     ) -> anyhow::Result<MirType> {
-        self.0.parse_type_rust_auto_opaque_implicit(namespace, ty)
+        self.0
+            .parse_type_rust_auto_opaque_implicit(namespace, ty, override_ignore)
     }
 
     fn compute_default_opaque(obj: &MirStruct) -> bool {

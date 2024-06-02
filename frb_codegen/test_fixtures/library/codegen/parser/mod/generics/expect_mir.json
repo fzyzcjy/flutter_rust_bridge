@@ -3,6 +3,7 @@
   "enum_pool": {
     "crate::api/MyGenericEnum": {
       "comments": [],
+      "ignore": false,
       "mode": "Complex",
       "name": "crate::api/MyGenericEnum",
       "variants": [
@@ -24,6 +25,7 @@
                   },
                   "ty": {
                     "data": {
+                      "ignore": false,
                       "inner": {
                         "brief_name": true,
                         "codec": "Nom",
@@ -75,6 +77,7 @@
                   },
                   "ty": {
                     "data": {
+                      "ignore": false,
                       "inner": {
                         "brief_name": true,
                         "codec": "Nom",
@@ -138,6 +141,7 @@
             },
             "ty": {
               "data": {
+                "ignore": false,
                 "inner": {
                   "brief_name": true,
                   "codec": "Nom",
@@ -201,6 +205,7 @@
             },
             "ty": {
               "data": {
+                "ignore": false,
                 "inner": {
                   "brief_name": true,
                   "codec": "Nom",
@@ -264,6 +269,7 @@
             },
             "ty": {
               "data": {
+                "ignore": false,
                 "inner": {
                   "brief_name": true,
                   "codec": "Nom",
@@ -327,6 +333,7 @@
             },
             "ty": {
               "data": {
+                "ignore": false,
                 "inner": {
                   "brief_name": true,
                   "codec": "Nom",
@@ -390,6 +397,7 @@
             },
             "ty": {
               "data": {
+                "ignore": false,
                 "inner": {
                   "brief_name": true,
                   "codec": "Nom",
@@ -447,6 +455,7 @@
           },
           "ty": {
             "data": {
+              "ignore": false,
               "inner": {
                 "brief_name": true,
                 "codec": "Nom",
@@ -479,6 +488,7 @@
           },
           "ty": {
             "data": {
+              "ignore": false,
               "inner": {
                 "brief_name": true,
                 "codec": "Nom",

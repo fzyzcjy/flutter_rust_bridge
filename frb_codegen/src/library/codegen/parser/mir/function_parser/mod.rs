@@ -176,6 +176,10 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     return Ok(None);
                 };
 
+                if owner_ty.should_ignore(self.type_parser) {
+                    return Ok(None);
+                }
+
                 let actual_method_name = impl_item_fn.sig.ident.to_string();
 
                 MirFuncOwnerInfo::Method(MirFuncOwnerInfoMethod {
