@@ -177,13 +177,21 @@ fn compute_dart_type_rename(config: &Config) -> anyhow::Result<HashMap<String, S
         .clone()
         .unwrap_or_default()
         .iter()
-        .map(|(k, v)| Ok((canonicalize_rust_type(k)?, v.to_owned())))
+        .map(|(k, v)| {
+            Ok(parse_rust_type(k)?
+                .into_iter()
+                .map(|parsed_k| (parsed_k, v.to_owned()))
+                .collect_vec())
+        })
         .collect::<anyhow::Result<Vec<_>>>()?
         .into_iter()
+        .flatten()
         .collect())
 }
 
-fn canonicalize_rust_type(raw: &str) -> anyhow::Result<String> {
+fn parse_rust_type(raw: &str) -> anyhow::Result<Vec<String>> {
     let ast: syn::Type = syn::parse_str(raw)?;
-    Ok(quote::quote!(#ast).to_string())
+    let canonicalized_ty = quote::quote!(#ast).to_string();
+
+    Ok(TODO)
 }
