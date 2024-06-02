@@ -1,4 +1,3 @@
-use std::collections::HashMap;
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
 use crate::codegen::generator::api_dart::spec_generator::function::ApiDartGeneratedFunction;
 use crate::codegen::generator::api_dart::spec_generator::{
@@ -12,6 +11,7 @@ use crate::utils::path_utils::path_to_string;
 use anyhow::{ensure, Context};
 use itertools::Itertools;
 use pathdiff::diff_paths;
+use std::collections::HashMap;
 use std::path::{Path, PathBuf};
 
 pub(super) struct ApiDartOutputText {
@@ -101,7 +101,7 @@ fn generate_end_api_text(
 
     let header = header.all_code();
 
-    let skips = compute_skips();
+    let skips = compute_skips(item);
 
     Ok(format!(
         "
@@ -117,7 +117,7 @@ fn generate_end_api_text(
 }
 
 fn compute_skips(item: &ApiDartOutputSpecItem) -> String {
-    let skips = (item.skips.iter())
+    (item.skips.iter())
         .into_group_map_by(|t| t.reason)
         .into_iter()
         .sorted_by_key(|(reason, _)| *reason)
@@ -128,7 +128,7 @@ fn compute_skips(item: &ApiDartOutputSpecItem) -> String {
                 (names.iter().map(|x| format!("`{}`", x.name.name))).join(", "),
             )
         })
-        .join("");
+        .join("")
 }
 
 fn generate_function(func: &ApiDartGeneratedFunction) -> String {

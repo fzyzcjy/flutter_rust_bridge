@@ -132,12 +132,12 @@ fn generate_item(
         classes,
         imports,
         preamble: context.config.dart_preamble.clone(),
-        skips: compute_skips(context.mir_pack),
+        skips: compute_skips(context.mir_pack, namespace),
         needs_freezed,
     })
 }
 
-fn compute_skips(mir_pack: &MirPack) -> Vec<MirSkip> {
+fn compute_skips(mir_pack: &MirPack, namespace: &Namespace) -> Vec<MirSkip> {
     let unused_types = (mir_pack.unused_types.iter())
         .filter(|t| &t.namespace == namespace)
         .map(|name| MirSkip {
