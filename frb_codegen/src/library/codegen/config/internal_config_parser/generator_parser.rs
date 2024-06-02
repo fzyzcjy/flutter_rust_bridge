@@ -64,7 +64,7 @@ pub(super) fn parse(args: Args) -> anyhow::Result<GeneratorInternalConfig> {
             dart_decl_base_output_path: dart_output_path_pack.dart_decl_base_output_path.clone(),
             dart_entrypoint_class_name: dart_output_class_name_pack.entrypoint_class_name.clone(),
             dart_preamble: config.dart_preamble.clone().unwrap_or_default(),
-            dart_type_rename: compute_dart_type_rename(config),
+            dart_type_rename: compute_dart_type_rename(config)?,
         },
         wire: GeneratorWireInternalConfig {
             dart: GeneratorWireDartInternalConfig {
@@ -171,16 +171,18 @@ fn compute_default_external_library_relative_directory(
     Ok(path_to_string(&diff.join("target").join("release/"))?.replace('\\', "/"))
 }
 
-fn compute_dart_type_rename(config: &Config) -> HashMap<String, String> {
-    config
+fn compute_dart_type_rename(config: &Config) -> anyhow::Result<HashMap<String, String>> {
+    Ok(config
         .dart_type_rename
         .as_ref()
         .unwrap_or_default()
         .iter()
-        .map(|(k, v)| (canonicalize_rust_type(k), v.to_owned()))
-        .collect()
+        .map(|(k, v)| Ok((canonicalize_rust_type(k)?, v.to_owned())))
+        .collect::<anyhow::Result<Vec<_>>>()?
+        .into_iter()
+        .collect())
 }
 
-fn canonicalize_rust_type(raw: &str) -> String {
-    TDOO
+fn canonicalize_rust_type(raw: &str) -> anyhow::Result<String> {
+    syn::parse_str(raw)
 }
