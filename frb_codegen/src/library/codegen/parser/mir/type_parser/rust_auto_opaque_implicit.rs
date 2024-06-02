@@ -17,7 +17,6 @@ use anyhow::Result;
 use quote::ToTokens;
 use syn::Type;
 use MirType::RustAutoOpaqueImplicit;
-use crate::codegen::parser::mir::type_parser::misc::parse_simple_type_should_ignore;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_rust_auto_opaque_implicit(
