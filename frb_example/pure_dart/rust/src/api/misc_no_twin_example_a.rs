@@ -2,6 +2,7 @@
 
 use crate::frb_generated::RustAutoOpaque;
 use flutter_rust_bridge::frb;
+use std::any::Any;
 
 // Reproduce #1630
 #[frb(opaque)]
@@ -115,4 +116,11 @@ pub struct DeliberateFailSanityCheckTwinNormal {
 
 impl DeliberateFailSanityCheckTwinNormal {
     pub fn dummy_function_twin_normal() {}
+}
+
+pub fn function_with_arg_type_name_override(
+    a: Box<dyn Any + Send>,
+    b: Box<dyn Any + Send + 'static>,
+) {
+    let _ = (a, b);
 }
