@@ -73,7 +73,7 @@ fn parse_syn_item_mod(
 ) -> anyhow::Result<Option<HirModule>> {
     Ok(if let Some((_, items)) = &item_mod.content {
         let info = HirModuleMeta {
-            visibility: (&item_mod.vis).into(),
+            // visibility: (&item_mod.vis).into(),
             namespace: namespace.join(&item_mod.ident.to_string()),
         };
         Some(parse_module(items, info, config)?)

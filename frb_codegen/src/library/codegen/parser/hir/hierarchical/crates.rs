@@ -10,7 +10,7 @@ pub(crate) fn parse_crate(
     crate_name: &CrateName,
 ) -> anyhow::Result<HirCrate> {
     let info = HirModuleMeta {
-        visibility: HirVisibility::Public,
+        // visibility: HirVisibility::Public,
         namespace: crate_name.namespace(),
     };
     let root_module = parse_module(&file.items, info, config)?;
