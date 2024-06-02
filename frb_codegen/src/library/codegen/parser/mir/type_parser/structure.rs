@@ -51,13 +51,15 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         let attributes = FrbAttributes::parse(&src_struct.src.attrs)?;
         let dart_metadata = attributes.dart_metadata();
 
+        let ignore = attributes.ignore() || TODO;
+
         Ok(MirStruct {
             name,
             wrapper_name,
             fields,
             is_fields_named,
             dart_metadata,
-            ignore: attributes.ignore(),
+            ignore,
             generate_hash: attributes.generate_hash(),
             generate_eq: attributes.generate_eq(),
             comments,
