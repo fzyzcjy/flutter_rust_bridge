@@ -1,6 +1,7 @@
 //! Main documentation is in https://github.com/fzyzcjy/flutter_rust_bridge
 
 use proc_macro::*;
+
 use quote::{quote, ToTokens};
 use syn::{ImplItem, ItemImpl};
 
@@ -68,7 +69,7 @@ fn handle_external_impl(attribute: TokenStream, item: TokenStream) -> TokenStrea
     let dummy_struct_ty = syn::parse_str(&dummy_struct_name).unwrap();
 
     let dummy_struct_def: TokenStream = quote! {
-        pub struct #dummy_struct_ty {}
+        pub struct #dummy_struct_ty(pub #original_self_ty);
     }
     .to_token_stream()
     .into();
