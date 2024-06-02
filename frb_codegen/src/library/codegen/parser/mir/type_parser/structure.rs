@@ -1,3 +1,4 @@
+use crate::codegen::ir::hir::hierarchical::module::HirVisibility;
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStruct;
 use crate::codegen::ir::mir::field::{MirField, MirFieldSettings};
 use crate::codegen::ir::mir::ident::MirIdent;
@@ -51,7 +52,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         let attributes = FrbAttributes::parse(&src_struct.src.attrs)?;
         let dart_metadata = attributes.dart_metadata();
 
-        let ignore = attributes.ignore() || TODO;
+        let ignore = attributes.ignore() || (src_struct.visibility != HirVisibility::Public);
 
         Ok(MirStruct {
             name,
