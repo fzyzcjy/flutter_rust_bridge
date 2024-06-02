@@ -1,3 +1,7 @@
+use std::fmt::Debug;
+
+use itertools::Itertools;
+
 use crate::codegen::ir::hir::hierarchical::function::HirFunction;
 use crate::codegen::ir::hir::hierarchical::module::HirModule;
 use crate::codegen::ir::hir::hierarchical::pack::HirPack;
@@ -5,8 +9,6 @@ use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStructOrEnum;
 use crate::codegen::ir::hir::hierarchical::syn_item_struct_or_enum::SynItemStructOrEnum;
 use crate::codegen::misc::THIRD_PARTY_DIR_NAME;
 use crate::utils::crate_name::CrateName;
-use itertools::Itertools;
-use std::fmt::Debug;
 
 pub(super) fn transform(mut pack: HirPack) -> anyhow::Result<HirPack> {
     if let Some(module_third_party_root) = remove_module_third_party_root(&mut pack) {
