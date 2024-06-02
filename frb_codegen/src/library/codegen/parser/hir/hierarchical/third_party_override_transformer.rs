@@ -18,7 +18,7 @@ pub(super) fn transform(mut pack: HirPack) -> anyhow::Result<HirPack> {
 }
 
 fn remove_module_third_party_root(pack: &mut HirPack) -> Option<HirModule> {
-    let hir_crate = pack.crates.get_mut(&CrateName::self_crate()).unwrap();
+    let hir_crate = pack.get_mut_crate(&CrateName::self_crate()).unwrap();
     hir_crate
         .root_module
         .content
@@ -27,7 +27,7 @@ fn remove_module_third_party_root(pack: &mut HirPack) -> Option<HirModule> {
 
 fn transform_crate(pack: &mut HirPack, src: HirModule) -> anyhow::Result<()> {
     let crate_name = CrateName::new((src.meta.namespace.path().last()).unwrap().to_string());
-    if let Some(target_crate) = pack.crates.get_mut(&crate_name) {
+    if let Some(target_crate) = pack.get_mut_crate(&crate_name) {
         transform_module(&mut target_crate.root_module, src)?;
     } else {
         log::warn!(

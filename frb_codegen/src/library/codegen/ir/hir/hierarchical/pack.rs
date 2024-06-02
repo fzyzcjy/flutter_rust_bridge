@@ -8,7 +8,7 @@ pub struct HirPack {
 }
 
 impl HirPack {
-    pub(crate) fn get_mut_crate(&mut self, name: CrateName) -> Option<&mut HirCrate> {
+    pub(crate) fn get_mut_crate(&mut self, name: &CrateName) -> Option<&mut HirCrate> {
         (self.crates.iter_mut()).find(|x| x.name.namespace() == name.namespace())
     }
 }
