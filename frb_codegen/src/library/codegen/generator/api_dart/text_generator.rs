@@ -7,11 +7,11 @@ use crate::codegen::generator::misc::target::TargetOrCommonMap;
 use crate::codegen::generator::misc::{generate_code_header, PathText, PathTexts};
 use crate::utils::basic_code::DartBasicHeaderCode;
 use crate::utils::namespace::Namespace;
+use crate::utils::path_utils::path_to_string;
 use anyhow::{ensure, Context};
 use itertools::Itertools;
 use pathdiff::diff_paths;
 use std::path::{Path, PathBuf};
-use crate::utils::path_utils::path_to_string;
 
 pub(super) struct ApiDartOutputText {
     pub(super) output_texts: PathTexts,
@@ -31,12 +31,8 @@ pub(super) fn generate(
             .map(|(namespace, item)| {
                 let dart_output_path =
                     compute_path_from_namespace(&config.dart_decl_base_output_path, namespace);
-                let text = generate_end_api_text(
-                    namespace,
-                    &dart_output_path,
-                    &config.dart_impl_output_path,
-                    item,
-                )?;
+                let text =
+                    generate_end_api_text(&dart_output_path, &config.dart_impl_output_path, item)?;
                 Ok(PathText::new(dart_output_path, text))
             })
             .collect::<anyhow::Result<Vec<_>>>()?,
@@ -48,7 +44,6 @@ pub(super) fn generate(
 }
 
 fn generate_end_api_text(
-    namespace: &Namespace,
     dart_output_path: &Path,
     dart_impl_output_path: &TargetOrCommonMap<PathBuf>,
     item: &ApiDartOutputSpecItem,
