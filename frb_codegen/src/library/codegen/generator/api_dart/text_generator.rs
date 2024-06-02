@@ -124,7 +124,9 @@ fn compute_skips(item: &ApiDartOutputSpecItem) -> String {
             format!(
                 "// {}: {}\n",
                 reason.explanation_prefix(),
-                (names.iter().map(|x| format!("`{}`", x.name.name))).join(", "),
+                (names.iter().map(|x| format!("`{}`", x.name.name)))
+                    .sorted()
+                    .join(", "),
             )
         })
         .join("")
