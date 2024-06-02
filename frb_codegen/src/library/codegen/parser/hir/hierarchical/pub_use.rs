@@ -24,7 +24,9 @@ fn parse_pub_use_from_item(item: &syn::Item) -> Option<String> {
         if matches!(item_use.vis, syn::Visibility::Public(_)) {
             let tree = &item_use.tree;
             let tree_string = quote::quote!(#tree).to_string();
-            return tree_string.strip_suffix("::*").map(ToOwned::to_owned);
+            if let Some(interest_use_part) = tree_string.strip_suffix("::*") {
+                return Some(interest_use_part.to_owned());
+            }
         }
     }
     None
