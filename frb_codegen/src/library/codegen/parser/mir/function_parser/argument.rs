@@ -48,7 +48,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             ownership_mode_split,
         )?;
 
-        if should_ignore_function_by_type(ty, self.type_parser) {
+        if should_ignore_function_by_type(&ty, self.type_parser) {
             return Ok(FunctionPartialInfo {
                 ignore_func: true,
                 ..Default::default()
