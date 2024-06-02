@@ -58,11 +58,11 @@ macro_rules! struct_or_enum_wrapper {
 struct_or_enum_wrapper!(HirStruct, ItemStruct);
 struct_or_enum_wrapper!(HirEnum, ItemEnum);
 
-impl<Item> HirStructOrEnum<Item> {
+impl<Item: Clone> HirStructOrEnum<Item> {
     fn with_namespace(&self, namespace: Namespace) -> Self {
         Self {
             namespaced_name: NamespacedName::new(namespace, self.namespaced_name.name.clone()),
-            ..self.clone()
+            ..self.to_owned()
         }
     }
 }
