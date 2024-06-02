@@ -5,10 +5,7 @@ use crate::library::commands::command_runner::execute_command;
 use crate::utils::crate_name::CrateName;
 use anyhow::{bail, Context, Result};
 use itertools::Itertools;
-use lazy_static::lazy_static;
 use log::{debug, info};
-use regex::Regex;
-use std::borrow::Cow;
 use std::env;
 use std::path::Path;
 
