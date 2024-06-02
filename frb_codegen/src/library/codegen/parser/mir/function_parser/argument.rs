@@ -48,13 +48,11 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             ownership_mode_split,
         )?;
 
-        if let MirType::StructRef(s) = &ty {
-            if s.get(self.type_parser).ignore {
-                return Ok(FunctionPartialInfo {
-                    ignore_func: true,
-                    ..Default::default()
-                });
-            }
+        if should_ignore_function_by_type(ty, self.type_parser) {
+            return Ok(FunctionPartialInfo {
+                ignore_func: true,
+                ..Default::default()
+            });
         }
 
         let attrs = parse_attrs_from_fn_arg(sig_input);
@@ -75,6 +73,12 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             }],
             ..Default::default()
         })
+    }
+}
+
+fn should_ignore_function_by_type(ty: &MirType, type_parser: &mut TypeParser) -> bool {
+    match ty {
+        MirType::StructRef(s) => s.get(type_parser).ignore,
     }
 }
 
