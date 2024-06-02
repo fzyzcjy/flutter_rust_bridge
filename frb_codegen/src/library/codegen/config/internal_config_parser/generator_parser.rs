@@ -175,7 +175,7 @@ fn compute_dart_type_rename(config: &Config) -> anyhow::Result<HashMap<String, S
     fn convert_rust_type(raw: &str) -> anyhow::Result<Vec<String>> {
         Ok(vec![
             canonicalize_rust_type(raw)?,
-            canonicalize_rust_type(format!(
+            canonicalize_rust_type(&format!(
                 "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<{}>",
                 raw
             ))?,
