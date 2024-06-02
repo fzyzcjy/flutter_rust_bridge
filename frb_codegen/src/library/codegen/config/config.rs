@@ -1,6 +1,6 @@
-use std::collections::HashMap;
 use crate::codegen::dumper::internal_config::ConfigDumpContent;
 use serde::{Deserialize, Serialize};
+use std::collections::HashMap;
 
 /// Configuration for code generation
 /// Refer to `GenerateCommandArgs` for documentations
