@@ -79,6 +79,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 fn should_ignore_function_by_type(ty: &MirType, type_parser: &mut TypeParser) -> bool {
     match ty {
         MirType::StructRef(ty) => ty.get(type_parser).ignore,
+        _ => false,
         // TODO handle enum
     }
 }
