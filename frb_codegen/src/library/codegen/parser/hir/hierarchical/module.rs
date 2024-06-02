@@ -1,4 +1,6 @@
-use crate::codegen::ir::hir::hierarchical::module::{HirModule, HirModuleContent, HirModuleMeta};
+use crate::codegen::ir::hir::hierarchical::module::{
+    HirModule, HirModuleContent, HirModuleMeta, HirVisibility,
+};
 use crate::codegen::parser::hir::hierarchical::function::parse_generalized_functions;
 use crate::codegen::parser::hir::hierarchical::item_type::parse_syn_item_type;
 use crate::codegen::parser::hir::hierarchical::struct_or_enum::{
@@ -12,10 +14,13 @@ pub(crate) fn parse_module(
     items: &[syn::Item],
     info: HirModuleMeta,
     config: &ParserHirInternalConfig,
+    cumulated_visibility: HirVisibility,
 ) -> anyhow::Result<HirModule> {
     let mut scope = HirModuleContent::default();
 
-    if (config.rust_input_namespace_pack).is_interest(&info.namespace) {
+    if (config.rust_input_namespace_pack).is_interest(&info.namespace)
+        && cumulated_visibility == HirVisibility::Public
+    {
         scope.functions = parse_generalized_functions(items, &info.namespace)?;
     }
 
