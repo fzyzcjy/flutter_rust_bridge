@@ -9,7 +9,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'enumeration_twin_sse.freezed.dart';
 
-// The functions `fmt`, `fmt`, `clone`, `fmt`, `clone`, `fmt`, `clone`, `fmt` are not `pub`, thus are ignored.
+// These functions are ignored because they are not marked as `pub`: `fmt`, `fmt`, `clone`, `fmt`, `clone`, `fmt`, `clone`, `fmt`
 
 Future<EnumSimpleTwinSse> funcEnumSimpleTwinSse(
         {required EnumSimpleTwinSse arg}) =>

@@ -9,9 +9,8 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'rust_auto_opaque_twin_rust_async.dart';
 part 'rust_auto_opaque_twin_sync.freezed.dart';
 
-// The type `HelloOneStructTwinSync` is not used by any `pub` functions, thus it is ignored.
-// The type `HelloTwoEnumTwinSync` is not used by any `pub` functions, thus it is ignored.
-// The functions `f`, `func_hello`, `func_hello` are not `pub`, thus are ignored.
+// These functions are ignored because they are not marked as `pub`: `f`, `func_hello`, `func_hello`
+// These types are ignored because they are not used by any `pub` functions: `HelloOneStructTwinSync`, `HelloTwoEnumTwinSync`
 
 void rustAutoOpaqueArgOwnTwinSync(
         {required NonCloneSimpleTwinSync arg, required int expect}) =>

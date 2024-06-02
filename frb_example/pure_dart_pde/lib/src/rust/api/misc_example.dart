@@ -9,8 +9,8 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'misc_example.freezed.dart';
 
-// The type `MySizeFreezedTwinNormal` is not used by any `pub` functions, thus it is ignored.
-// The functions `visibility_restricted_func_twin_normal`, `fmt`, `clone`, `fmt`, `clone`, `fmt`, `clone`, `fmt`, `clone` are not `pub`, thus are ignored.
+// These functions are ignored because they are not marked as `pub`: `visibility_restricted_func_twin_normal`, `fmt`, `clone`, `fmt`, `clone`, `fmt`, `clone`, `fmt`, `clone`
+// These types are ignored because they are not used by any `pub` functions: `MySizeFreezedTwinNormal`
 
 Future<MyTreeNodeTwinNormal> handleComplexStructTwinNormal(
         {required MyTreeNodeTwinNormal s}) =>

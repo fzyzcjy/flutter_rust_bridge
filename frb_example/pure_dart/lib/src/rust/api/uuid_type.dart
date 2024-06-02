@@ -7,7 +7,7 @@ import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:uuid/uuid.dart';
 
-// The functions `fmt`, `clone` are not `pub`, thus are ignored.
+// These functions are ignored because they are not marked as `pub`: `fmt`, `clone`
 
 Future<UuidValue> handleUuidTwinNormal({required UuidValue id}) =>
     RustLib.instance.api.crateApiUuidTypeHandleUuidTwinNormal(id: id);

@@ -6,9 +6,8 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// The type `INIT_ONE_DONE` is not used by any `pub` functions, thus it is ignored.
-// The type `INIT_TWO_DONE` is not used by any `pub` functions, thus it is ignored.
-// The functions `deref`, `initialize`, `deref`, `initialize` are not `pub`, thus are ignored.
+// These functions are ignored because they are not marked as `pub`: `deref`, `initialize`, `deref`, `initialize`
+// These types are ignored because they are not used by any `pub` functions: `INIT_TWO_DONE`, `INIT_ONE_DONE`
 
 Future<bool> checkInitDone() =>
     RustLib.instance.api.crateApiCustomizationCheckInitDone();

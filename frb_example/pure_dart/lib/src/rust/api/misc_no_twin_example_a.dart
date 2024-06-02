@@ -7,7 +7,7 @@ import '../frb_generated.dart';
 import 'misc_no_twin_example_b.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// The functions `clone` are not `pub`, thus are ignored.
+// These functions are ignored because they are not marked as `pub`: `clone`
 
 Future<void> sameFunctionNameInDifferentFiles() => RustLib.instance.api
     .crateApiMiscNoTwinExampleASameFunctionNameInDifferentFiles();
