@@ -4,7 +4,7 @@
 
 use crate::frb_generated::RustAutoOpaque;
 use flutter_rust_bridge::frb;
-use std::any::Any;
+pub use std::any::Any;
 
 // Reproduce #1630
 #[frb(opaque)]
