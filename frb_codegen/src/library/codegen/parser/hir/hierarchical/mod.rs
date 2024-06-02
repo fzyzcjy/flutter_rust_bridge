@@ -1,4 +1,3 @@
-use crate::codegen::ir::hir::hierarchical::crates::HirCrate;
 use crate::codegen::ir::hir::hierarchical::pack::HirPack;
 use crate::codegen::ir::hir::raw::pack::HirRawPack;
 use crate::codegen::parser::hir::hierarchical::crates::parse_crate;
