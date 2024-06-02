@@ -22,13 +22,13 @@ pub(crate) fn parse_syn_item_enum(
     parse_syn_item_struct_or_enum(item, namespace, &item.ident, &item.attrs, &item.vis)
 }
 
-fn parse_syn_item_struct_or_enum<I: Clone, F, T>(
+fn parse_syn_item_struct_or_enum<I: Clone>(
     item: &I,
     namespace: &Namespace,
     item_ident: &Ident,
     item_attrs: &[Attribute],
     item_vis: &syn::Visibility,
-) -> anyhow::Result<Vec<T>> {
+) -> anyhow::Result<Vec<HirStructOrEnum<I>>> {
     debug!("parse_syn_item_struct_or_enum item_ident={item_ident:?}");
 
     let ParseMirrorIdentOutput { idents, mirror } = parse_mirror_ident(item_ident, item_attrs)?;

@@ -31,12 +31,12 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         name: NamespacedName,
         wrapper_name: Option<String>,
     ) -> anyhow::Result<MirStruct> {
-        let (is_fields_named, struct_fields) = match &src_struct.0.src.fields {
+        let (is_fields_named, struct_fields) = match &src_struct.src.fields {
             Fields::Named(FieldsNamed { named, .. }) => (true, named),
             Fields::Unnamed(FieldsUnnamed { unnamed, .. }) => (false, unnamed),
             // This will stop the whole generator and tell the users, so we do not care about testing it
             // frb-coverage:ignore-start
-            Fields::Unit => bail!("struct with unit fields are not supported yet, what about using `struct {} {{}}` instead", src_struct.0.ident),
+            Fields::Unit => bail!("struct with unit fields are not supported yet, what about using `struct {} {{}}` instead", src_struct.ident),
             // frb-coverage:ignore-end
         };
 
@@ -46,9 +46,9 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             .map(|(idx, field)| self.parse_struct_field(idx, field))
             .collect::<anyhow::Result<Vec<_>>>()?;
 
-        let comments = parse_comments(&src_struct.0.src.attrs);
+        let comments = parse_comments(&src_struct.src.attrs);
 
-        let attributes = FrbAttributes::parse(&src_struct.0.src.attrs)?;
+        let attributes = FrbAttributes::parse(&src_struct.src.attrs)?;
         let dart_metadata = attributes.dart_metadata();
 
         Ok(MirStruct {
@@ -85,7 +85,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
 struct EnumOrStructParserStruct<'a, 'b, 'c, 'd>(&'d mut TypeParserWithContext<'a, 'b, 'c>);
 
-impl EnumOrStructParser<MirStructIdent, MirStruct, HirStruct, ItemStruct>
+impl EnumOrStructParser<MirStructIdent, MirStruct, ItemStruct>
     for EnumOrStructParserStruct<'_, '_, '_, '_>
 {
     fn parse_inner_impl(
