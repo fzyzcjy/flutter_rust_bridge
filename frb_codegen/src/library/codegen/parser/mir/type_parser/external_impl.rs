@@ -1,5 +1,5 @@
 use anyhow::Result;
-use syn::{parse_str, visit_mut, visit_mut::VisitMut, Path, Type};
+use syn::{parse_str, Path, Type, visit_mut, visit_mut::VisitMut};
 
 pub(crate) fn parse_type(mut ty: Type) -> Result<Type> {
     struct Visitor;
@@ -24,7 +24,7 @@ pub(crate) fn parse_name_or_original(raw_name: &str) -> Result<String> {
     Ok(parse_name(raw_name)?.unwrap_or_else(|| raw_name.to_string()))
 }
 
-pub(crate) fn parse_name(raw_name: &str) -> Result<Option<String>> {
+fn parse_name(raw_name: &str) -> Result<Option<String>> {
     const DUMMY_STRUCT_PREFIX: &str = "__external_impl__";
     Ok(
         if let Some(stripped_name) = raw_name.strip_prefix(DUMMY_STRUCT_PREFIX) {
