@@ -39,29 +39,29 @@ fn transform_crate(pack: &mut HirPack, src: HirModule) -> anyhow::Result<()> {
 }
 
 fn transform_module(target: &mut HirModule, src: HirModule) -> anyhow::Result<()> {
-    transform_module_content_functions(target, src.content.functions)?;
-    transform_module_content_struct_or_enums(target, src.content.structs)?;
-    transform_module_content_struct_or_enums(target, src.content.enums)?;
+    transform_module_content_functions(&mut target.content.functions, src.content.functions)?;
+    transform_module_content_struct_or_enums(&mut target.content.structs, src.content.structs)?;
+    transform_module_content_struct_or_enums(&mut target.content.enums, src.content.enums)?;
     transform_module_content_modules(target, src.content.modules)?;
     Ok(())
 }
 
 fn transform_module_content_functions(
-    target: &mut HirModule,
+    target: &mut Vec<HirFunction>,
     src_content_functions: Vec<HirFunction>,
 ) -> anyhow::Result<()> {
     transform_module_content_attrable(target, src_content_functions)
 }
 
 fn transform_module_content_struct_or_enums<Item: SynItemStructOrEnum>(
-    target: &mut HirModule,
+    target: &mut Vec<HirStructOrEnum<Item>>,
     src_content_struct_or_enums: Vec<HirStructOrEnum<Item>>,
 ) -> anyhow::Result<()> {
     transform_module_content_attrable(target, src_content_struct_or_enums)
 }
 
 fn transform_module_content_attrable<T>(
-    target: &mut HirModule,
+    target: &mut Vec<T>,
     src_items: Vec<T>,
 ) -> anyhow::Result<()> {
     for src_item in src_items {
