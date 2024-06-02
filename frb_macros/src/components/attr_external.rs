@@ -4,9 +4,6 @@ use quote::ToTokens;
 use syn::{ImplItem, ItemImpl};
 
 pub(crate) fn handle_external_impl(attribute: TokenStream, item: TokenStream) -> TokenStream {
-    const ATTR_KEYWORD: &str = "external";
-    const DUMMY_STRUCT_PREFIX: &str = "__external_impl__";
-
     if attribute.to_string() != ATTR_KEYWORD {
         return item;
     }
@@ -40,3 +37,6 @@ pub(crate) fn handle_external_impl(attribute: TokenStream, item: TokenStream) ->
     output.extend(dummy_struct_def);
     output
 }
+
+const ATTR_KEYWORD: &str = "external";
+const DUMMY_STRUCT_PREFIX: &str = "__external_impl__";
