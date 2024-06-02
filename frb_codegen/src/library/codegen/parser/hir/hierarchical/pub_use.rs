@@ -1,4 +1,5 @@
 use crate::codegen::ir::hir::hierarchical::module::HirModule;
+use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStructOrEnumWrapper;
 use crate::utils::namespace::Namespace;
 use itertools::Itertools;
 
@@ -24,7 +25,7 @@ fn parse_pub_use_from_item(item: &syn::Item) -> Option<Namespace> {
     if let syn::Item::Use(item_use) = item {
         if matches!(item_use.vis, syn::Visibility::Public(_)) {
             let tree = &item_use.tree;
-            let tree_string = quote::quote!(#tree).to_string();
+            let tree_string = quote::quote!(#tree).to_string().replace(' ', "");
             if let Some(interest_use_part) = tree_string.strip_suffix("::*") {
                 return Some(Namespace::new_raw(interest_use_part.to_owned()));
             }
@@ -37,15 +38,22 @@ fn transform_module_by_pub_use_single(
     module: &mut HirModule,
     pub_use_name: &Namespace,
 ) -> anyhow::Result<()> {
-    let target_mod = module.content.get_module_nested(&pub_use_name.path());
+    let src_mod = module.content.get_module_nested(&pub_use_name.path());
+    let self_namespace = &module.meta.namespace;
 
-    let target_functions = target_mod.content.functions.clone();
-    let target_structs = target_mod.content.structs.clone();
-    let target_enums = target_mod.content.enums.clone();
+    let src_functions = (src_mod.content.functions.iter())
+        .map(|x| x.with_namespace(self_namespace.clone()))
+        .collect_vec();
+    let src_structs = (src_mod.content.structs.iter())
+        .map(|x| x.with_namespace(self_namespace.clone()))
+        .collect_vec();
+    let src_enums = (src_mod.content.enums.iter())
+        .map(|x| x.with_namespace(self_namespace.clone()))
+        .collect_vec();
 
-    module.content.functions.extend(target_functions);
-    module.content.structs.extend(target_structs);
-    module.content.enums.extend(target_enums);
+    module.content.functions.extend(src_functions);
+    module.content.structs.extend(src_structs);
+    module.content.enums.extend(src_enums);
 
     Ok(())
 }
