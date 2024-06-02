@@ -92,10 +92,10 @@ fn transform_module_content_struct_or_enums<Item: SynItemStructOrEnum>(
     )
 }
 
-fn transform_module_content_general_vec<T: Debug>(
+fn transform_module_content_general_vec<T: Debug, K: Eq + Debug>(
     target_items: &mut [T],
     src_items: Vec<T>,
-    key: impl Fn(&T) -> String,
+    key: impl Fn(&T) -> K,
     write: impl Fn(&mut T, T),
 ) -> anyhow::Result<()> {
     for src_item in src_items {
@@ -107,7 +107,7 @@ fn transform_module_content_general_vec<T: Debug>(
             .collect_vec();
         if interest_target_items.len() != 1 {
             log::warn!(
-                "transform_module_content_attrable skip src_key={src_key} src_item={src_item:?},\
+                "transform_module_content_attrable skip src_key={src_key:?} src_item={src_item:?},\
                 since the number of corresponding target items is not one (indeed is {}).",
                 interest_target_items.len(),
             );
