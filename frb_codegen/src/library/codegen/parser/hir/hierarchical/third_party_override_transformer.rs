@@ -29,5 +29,5 @@ fn remove_module_third_party_root(pack: &mut HirPack) -> Option<HirModule> {
 }
 
 fn transform_crate(target: &mut HirCrate, src: HirModule) -> anyhow::Result<()> {
-    TODO;
+    todo!()
 }
