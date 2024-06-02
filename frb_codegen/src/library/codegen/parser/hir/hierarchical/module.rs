@@ -3,13 +3,13 @@ use crate::codegen::ir::hir::hierarchical::module::{
 };
 use crate::codegen::parser::hir::hierarchical::function::parse_generalized_functions;
 use crate::codegen::parser::hir::hierarchical::item_type::parse_syn_item_type;
+use crate::codegen::parser::hir::hierarchical::pub_use::transform_module_by_pub_use;
 use crate::codegen::parser::hir::hierarchical::struct_or_enum::{
     parse_syn_item_enum, parse_syn_item_struct,
 };
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 use crate::utils::namespace::Namespace;
 use syn::ItemMod;
-use crate::codegen::parser::hir::hierarchical::pub_use::transform_module_by_pub_use;
 
 pub(crate) fn parse_module(
     items: &[syn::Item],
