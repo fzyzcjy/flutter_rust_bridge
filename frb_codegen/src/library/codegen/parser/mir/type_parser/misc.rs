@@ -1,4 +1,6 @@
+use crate::codegen::ir::hir::hierarchical::module::HirVisibility;
 use crate::codegen::ir::mir::comment::MirComment;
+use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
 use itertools::Itertools;
 use syn::*;
 
@@ -44,4 +46,8 @@ fn parse_comment(input: &str) -> MirComment {
     } else {
         format!("///{input}")
     })
+}
+
+pub(crate) fn parse_simple_type_should_ignore(attrs: &FrbAttributes, vis: HirVisibility) -> bool {
+    attributes.ignore() || (vis != HirVisibility::Public)
 }
