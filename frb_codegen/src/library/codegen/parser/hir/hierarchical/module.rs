@@ -15,6 +15,15 @@ pub(crate) fn parse_module(
     meta: HirModuleMeta,
     config: &ParserHirInternalConfig,
 ) -> anyhow::Result<HirModule> {
+    let raw = parse_module_raw(items, meta, config)?;
+    Ok(TODO)
+}
+
+fn parse_module_raw(
+    items: &[syn::Item],
+    meta: HirModuleMeta,
+    config: &ParserHirInternalConfig,
+) -> anyhow::Result<HirModule> {
     let mut scope = HirModuleContent {
         functions: parse_generalized_functions(items, &meta.namespace)?,
         ..HirModuleContent::default()
