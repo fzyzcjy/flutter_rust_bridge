@@ -1,5 +1,4 @@
 use crate::codegen::generator::codec::structs::CodecMode;
-use crate::utils::namespace::Namespace;
 use crate::codegen::ir::mir::ty::enumeration::MirTypeEnumRef;
 use crate::codegen::ir::mir::ty::general_list::{mir_list, MirTypeGeneralList};
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
@@ -8,6 +7,7 @@ use crate::codegen::ir::mir::ty::record::MirTypeRecord;
 use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirRustAutoOpaqueRaw;
 use crate::codegen::ir::mir::ty::rust_opaque::MirTypeRustOpaque;
 use crate::codegen::ir::mir::ty::{MirContext, MirType, MirTypeTrait};
+use crate::utils::namespace::Namespace;
 
 crate::mir! {
 /// types that delegate to another type

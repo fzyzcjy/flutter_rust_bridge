@@ -1,10 +1,10 @@
-use crate::utils::namespace::Namespace;
 use crate::codegen::ir::mir::ty::delegate::{
     MirTypeDelegate, MirTypeDelegateArray, MirTypeDelegateArrayMode,
 };
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ir::mir::ty::MirType::{Delegate, Primitive};
 use crate::codegen::parser::mir::type_parser::TypeParserWithContext;
+use crate::utils::namespace::Namespace;
 use anyhow::bail;
 use std::collections::HashMap;
 use syn::Expr;

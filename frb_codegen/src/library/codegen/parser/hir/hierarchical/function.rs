@@ -1,6 +1,6 @@
 use crate::codegen::ir::hir::hierarchical::function::{HirFunction, HirFunctionInner};
-use crate::utils::namespace::Namespace;
 use crate::if_then_some;
+use crate::utils::namespace::Namespace;
 use itertools::Itertools;
 use syn::{ImplItem, Item};
 

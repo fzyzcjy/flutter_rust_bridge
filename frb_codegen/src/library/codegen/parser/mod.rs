@@ -1,10 +1,9 @@
-use crate::codegen::ConfigDumpContent;
 use crate::codegen::dumper::Dumper;
-use crate::codegen::ir::hir::hierarchical::crates::HirCrate;
 use crate::codegen::ir::hir::hierarchical::pack::HirPack;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
+use crate::codegen::ConfigDumpContent;
 
 pub(crate) mod hir;
 pub(crate) mod internal_config;
@@ -32,7 +31,11 @@ fn parse_inner(
     let hir_hierarchical = hir::hierarchical::parse(&config.hir, &hir_raw)?;
     let hir_flat = hir::flat::parse(&hir_hierarchical)?;
     on_hir(&hir_hierarchical)?;
-    dumper.dump(ConfigDumpContent::Hir, "hir_hierarchical.json", &hir_hierarchical)?;
+    dumper.dump(
+        ConfigDumpContent::Hir,
+        "hir_hierarchical.json",
+        &hir_hierarchical,
+    )?;
     drop(pb);
 
     let pb = progress_bar_pack.parse_mir.start();
@@ -48,7 +51,6 @@ mod tests {
     use crate::codegen::config::internal_config_parser::compute_force_codec_mode_pack;
     use crate::codegen::dumper::Dumper;
     use crate::codegen::generator::codec::structs::CodecMode;
-    use crate::utils::namespace::Namespace;
     use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
     use crate::codegen::misc::GeneratorProgressBarPack;
     use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
@@ -58,6 +60,7 @@ mod tests {
     };
     use crate::codegen::parser::{parse_inner, MirPack};
     use crate::utils::logs::configure_opinionated_test_logging;
+    use crate::utils::namespace::Namespace;
     use crate::utils::test_utils::{
         create_path_sanitizers, get_test_fixture_dir, json_golden_test,
     };

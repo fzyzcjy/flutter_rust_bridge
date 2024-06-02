@@ -1,7 +1,6 @@
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStruct;
 use crate::codegen::ir::mir::field::{MirField, MirFieldSettings};
 use crate::codegen::ir::mir::ident::MirIdent;
-use crate::utils::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::mir::ty::structure::{MirStruct, MirStructIdent, MirTypeStructRef};
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ir::mir::ty::MirType::StructRef;
@@ -12,6 +11,7 @@ use crate::codegen::parser::mir::type_parser::enum_or_struct::{
 use crate::codegen::parser::mir::type_parser::misc::parse_comments;
 use crate::codegen::parser::mir::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::mir::type_parser::TypeParserWithContext;
+use crate::utils::namespace::{Namespace, NamespacedName};
 use anyhow::bail;
 use std::collections::HashMap;
 use syn::{Field, Fields, FieldsNamed, FieldsUnnamed, ItemStruct, Type, Visibility};

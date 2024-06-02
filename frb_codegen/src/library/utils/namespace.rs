@@ -5,7 +5,6 @@ use serde::{Deserialize, Deserializer, Serialize, Serializer};
 use std::borrow::ToOwned;
 use std::fmt::{Display, Formatter};
 use std::path::PathBuf;
-use std::string::ToString;
 
 /// The Rust files/modules/namespaces.
 #[derive(Debug, Clone, Hash, Eq, PartialEq, Serialize, Deserialize, Ord, PartialOrd, Default)]

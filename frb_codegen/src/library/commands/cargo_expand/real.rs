@@ -2,6 +2,7 @@ use crate::codegen::dumper::Dumper;
 use crate::codegen::ConfigDumpContent;
 use crate::command_args;
 use crate::library::commands::command_runner::execute_command;
+use crate::utils::crate_name::CrateName;
 use anyhow::{bail, Context, Result};
 use itertools::Itertools;
 use lazy_static::lazy_static;
@@ -10,7 +11,6 @@ use regex::Regex;
 use std::borrow::Cow;
 use std::env;
 use std::path::Path;
-use crate::utils::crate_name::CrateName;
 
 pub(super) fn run(
     rust_crate_dir: &Path,
@@ -22,7 +22,10 @@ pub(super) fn run(
     Ok(syn::parse_file(&text)?)
 }
 
-fn run_with_frb_aware(rust_crate_dir: &Path, interest_crate_name: Option<&CrateName>) -> Result<String> {
+fn run_with_frb_aware(
+    rust_crate_dir: &Path,
+    interest_crate_name: Option<&CrateName>,
+) -> Result<String> {
     Ok(unwrap_frb_attrs_in_doc(&run_raw(
         rust_crate_dir,
         interest_crate_name,
@@ -82,7 +85,7 @@ fn run_raw(
         if stderr.contains("no such command: `expand`") && allow_auto_install {
             info!("Cargo expand is not installed. Automatically install and re-run.");
             install_cargo_expand()?;
-            return run_raw(rust_crate_dir, interest_crate_name,extra_rustflags, false);
+            return run_raw(rust_crate_dir, interest_crate_name, extra_rustflags, false);
         }
         // This will stop the whole generator and tell the users, so we do not care about testing it
         // frb-coverage:ignore-start

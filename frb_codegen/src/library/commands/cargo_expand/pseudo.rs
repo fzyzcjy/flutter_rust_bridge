@@ -1,9 +1,9 @@
+use crate::utils::crate_name::CrateName;
 use anyhow::ensure;
 use itertools::Itertools;
 use log::warn;
 use std::fs;
 use std::path::{Path, PathBuf};
-use crate::utils::crate_name::CrateName;
 
 pub(super) fn run(
     rust_crate_dir: &Path,

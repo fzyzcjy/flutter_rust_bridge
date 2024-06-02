@@ -22,11 +22,8 @@ use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::sanity_checker::opaque_inside_translatable_checker::check_opaque_inside_translatable;
 use crate::codegen::parser::mir::sanity_checker::unused_checker::get_unused_types;
 use crate::codegen::parser::mir::type_parser::TypeParser;
-use crate::if_then_some;
-use crate::utils::namespace::NamespacedName;
 use itertools::{concat, Itertools};
 use std::collections::HashMap;
-use syn::Visibility;
 
 pub(crate) fn parse(
     config: &ParserMirInternalConfig,

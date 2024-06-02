@@ -15,7 +15,6 @@ use crate::codegen::parser::mir::type_parser::{
     external_impl, TypeParser, TypeParserParsingContext,
 };
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
-use crate::utils::namespace;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use anyhow::{bail, Context};
 use itertools::concat;
@@ -77,7 +76,11 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         debug!("parse_function function name: {:?}", func.sig().ident);
 
         if !matches!(func.vis(), Visibility::Public(_)) {
-            return Ok(create_output_skip(func, namespace_naive, IgnoredFunctionNotPub));
+            return Ok(create_output_skip(
+                func,
+                namespace_naive,
+                IgnoredFunctionNotPub,
+            ));
         }
 
         let sig = func.sig();

@@ -1,6 +1,6 @@
+use crate::codegen::generator::misc::target::TargetOrCommonMap;
 use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
-use crate::codegen::generator::misc::target::TargetOrCommonMap;
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
 pub(crate) struct GeneratorApiDartInternalConfig {

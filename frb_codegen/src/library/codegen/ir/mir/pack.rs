@@ -1,14 +1,14 @@
 use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::ir::mir::func::MirFunc;
-use crate::utils::namespace::NamespacedName;
+use crate::codegen::ir::mir::skip::MirSkip;
 use crate::codegen::ir::mir::ty::enumeration::{MirEnum, MirEnumIdent};
 use crate::codegen::ir::mir::ty::structure::{MirStruct, MirStructIdent};
 use crate::codegen::ir::mir::ty::MirType;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
+use crate::utils::namespace::NamespacedName;
 use itertools::Itertools;
 use std::collections::{HashMap, HashSet};
 use strum::IntoEnumIterator;
-use crate::codegen::ir::mir::skip::MirSkip;
 
 pub type MirStructPool = HashMap<MirStructIdent, MirStruct>;
 pub type MirEnumPool = HashMap<MirEnumIdent, MirEnum>;

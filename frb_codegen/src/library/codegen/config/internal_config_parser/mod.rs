@@ -4,7 +4,6 @@ use crate::codegen::config::internal_config_parser::rust_path_parser::RustInputI
 use crate::codegen::dumper::internal_config::DumperInternalConfig;
 use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
 use crate::codegen::generator::wire::dart::internal_config::DartOutputClassNamePack;
-use crate::utils::namespace::Namespace;
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 use crate::codegen::parser::internal_config::ParserInternalConfig;

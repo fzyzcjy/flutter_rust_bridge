@@ -1,6 +1,7 @@
 use crate::codegen::ir::hir::flat::HirFlatCrate;
 use crate::codegen::ir::hir::hierarchical::function::HirFunction;
 use crate::codegen::ir::hir::hierarchical::module::HirModule;
+use crate::codegen::ir::hir::hierarchical::pack::HirPack;
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirEnum;
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStruct;
 use crate::codegen::parser::hir::flat::type_alias_resolver::resolve_type_aliases;
@@ -8,7 +9,6 @@ use log::debug;
 use std::collections::HashMap;
 use std::fmt::Debug;
 use syn::Type;
-use crate::codegen::ir::hir::hierarchical::pack::HirPack;
 
 mod type_alias_resolver;
 

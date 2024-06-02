@@ -7,9 +7,9 @@ use crate::codegen::ir::mir::func::{
     MirFunc, MirFuncAccessorMode, MirFuncArgMode, MirFuncDefaultConstructorMode, MirFuncOwnerInfo,
     MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
 };
-use crate::utils::namespace::NamespacedName;
 use crate::if_then_some;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
+use crate::utils::namespace::NamespacedName;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 

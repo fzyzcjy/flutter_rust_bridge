@@ -1,6 +1,6 @@
 use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
-use crate::utils::namespace::Namespace;
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
+use crate::utils::namespace::Namespace;
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]

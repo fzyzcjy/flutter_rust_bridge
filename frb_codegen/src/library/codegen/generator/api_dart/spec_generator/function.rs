@@ -7,12 +7,12 @@ use crate::codegen::generator::api_dart::spec_generator::misc::{
 };
 use crate::codegen::ir::mir::field::MirField;
 use crate::codegen::ir::mir::func::{MirFunc, MirFuncArgMode, MirFuncMode};
-use crate::utils::namespace::Namespace;
 use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegateStreamSink};
 use crate::codegen::ir::mir::ty::MirType;
 use crate::if_then_some;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::utils::basic_code::DartBasicHeaderCode;
+use crate::utils::namespace::Namespace;
 use itertools::Itertools;
 use serde::Serialize;
 

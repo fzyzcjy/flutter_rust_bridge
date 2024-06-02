@@ -2,12 +2,12 @@ mod pseudo;
 mod real;
 
 use crate::codegen::dumper::Dumper;
+use crate::utils::crate_name::CrateName;
 use crate::utils::path_utils::{normalize_windows_unc_path, path_to_string};
 use anyhow::Result;
 use log::debug;
 use std::env;
 use std::path::Path;
-use crate::utils::crate_name::CrateName;
 
 pub(crate) fn run_cargo_expand(
     rust_crate_dir: &Path,

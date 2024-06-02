@@ -4,7 +4,6 @@ use crate::codegen::ir::mir::func::{
     MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode, OwnershipMode,
 };
 use crate::codegen::ir::mir::ident::MirIdent;
-use crate::utils::namespace::NamespacedName;
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
@@ -16,6 +15,7 @@ use crate::codegen::parser::mir::function_parser::{
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::sanity_checker::auto_accessor_checker;
 use crate::codegen::parser::mir::type_parser::{TypeParser, TypeParserParsingContext};
+use crate::utils::namespace::NamespacedName;
 use sha1::{Digest, Sha1};
 
 pub(super) fn parse_auto_accessor_of_field(

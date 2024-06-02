@@ -8,10 +8,9 @@ use crate::codegen::generator::misc::{generate_code_header, PathText, PathTexts}
 use crate::utils::basic_code::DartBasicHeaderCode;
 use crate::utils::namespace::Namespace;
 use crate::utils::path_utils::path_to_string;
-use anyhow::{ensure, Context};
+use anyhow::Context;
 use itertools::Itertools;
 use pathdiff::diff_paths;
-use std::collections::HashMap;
 use std::path::{Path, PathBuf};
 
 pub(super) struct ApiDartOutputText {
@@ -61,7 +60,7 @@ fn generate_end_api_text(
         &dart_impl_output_path.common,
         dart_output_path.parent().unwrap(),
     )
-    .with_context(|| format!("Fail to find relative path"))?;
+    .with_context(|| "Fail to find relative path".to_string())?;
     let path_frb_generated = path_to_string(&path_frb_generated)?;
 
     let preamble = &item.preamble.as_str();

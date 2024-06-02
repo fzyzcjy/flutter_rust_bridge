@@ -1,14 +1,14 @@
 use crate::codegen::config::internal_config_parser::dart_path_parser::compute_path_map;
 use crate::codegen::config::internal_config_parser::rust_path_migrator::ConfigRustRootAndRustInput;
 use crate::codegen::generator::misc::target::TargetOrCommonMap;
-use crate::utils::namespace::Namespace;
 use crate::codegen::parser::mir::internal_config::RustInputNamespacePack;
 use crate::codegen::Config;
+use crate::utils::crate_name::CrateName;
+use crate::utils::namespace::Namespace;
 use crate::utils::path_utils::canonicalize_with_error_message;
 use anyhow::Context;
 use itertools::Itertools;
 use std::path::{Path, PathBuf};
-use crate::utils::crate_name::CrateName;
 
 pub(super) struct RustInputInfo {
     pub rust_crate_dir: PathBuf,
@@ -25,7 +25,9 @@ pub(super) fn compute_rust_input_info(
 
     Ok(RustInputInfo {
         rust_crate_dir: compute_rust_crate_dir(base_dir, &migrated_rust_input.rust_root)?,
-        third_party_crate_names: compute_third_party_crate_names(&rust_input_namespace_prefixes_raw),
+        third_party_crate_names: compute_third_party_crate_names(
+            &rust_input_namespace_prefixes_raw,
+        ),
         rust_input_namespace_pack: RustInputNamespacePack {
             rust_input_namespace_prefixes: tidy_rust_input_namespace_prefixes(
                 &rust_input_namespace_prefixes_raw,
@@ -67,7 +69,9 @@ fn fallback_rust_output_path(rust_crate_dir: &Path) -> PathBuf {
     rust_crate_dir.join("src").join("frb_generated.rs")
 }
 
-fn compute_third_party_crate_names(rust_input_namespace_prefixes_raw: &[Namespace]) -> Vec<CrateName> {
+fn compute_third_party_crate_names(
+    rust_input_namespace_prefixes_raw: &[Namespace],
+) -> Vec<CrateName> {
     rust_input_namespace_prefixes_raw
         .iter()
         .map(|x| x.path()[0])

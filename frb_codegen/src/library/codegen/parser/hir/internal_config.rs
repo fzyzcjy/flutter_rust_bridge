@@ -1,7 +1,7 @@
-use std::path::PathBuf;
 use crate::codegen::parser::mir::internal_config::RustInputNamespacePack;
-use serde::{Deserialize, Serialize};
 use crate::utils::crate_name::CrateName;
+use serde::{Deserialize, Serialize};
+use std::path::PathBuf;
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
 pub(crate) struct ParserHirInternalConfig {

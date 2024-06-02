@@ -1,9 +1,9 @@
 use crate::codegen::generator::codec::sse::ty::structure::GeneralizedStructGenerator;
 use crate::codegen::generator::codec::sse::ty::*;
 use crate::codegen::generator::misc::StructOrRecord;
-use crate::utils::namespace::NamespacedName;
 use crate::codegen::ir::mir::ty::enumeration::{MirEnum, MirVariant, MirVariantKind};
 use crate::library::codegen::generator::codec::sse::lang::LangTrait;
+use crate::utils::namespace::NamespacedName;
 use itertools::Itertools;
 
 impl<'a> CodecSseTyTrait for EnumRefCodecSseTy<'a> {

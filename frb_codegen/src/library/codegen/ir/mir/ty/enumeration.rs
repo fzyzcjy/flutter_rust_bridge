@@ -3,9 +3,9 @@
 use crate::codegen::ir::mir::comment::MirComment;
 use crate::codegen::ir::mir::field::MirField;
 use crate::codegen::ir::mir::ident::MirIdent;
-use crate::utils::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::mir::ty::structure::MirStruct;
 use crate::codegen::ir::mir::ty::{MirContext, MirType, MirTypeTrait};
+use crate::utils::namespace::{Namespace, NamespacedName};
 use convert_case::{Case, Casing};
 
 crate::mir! {
