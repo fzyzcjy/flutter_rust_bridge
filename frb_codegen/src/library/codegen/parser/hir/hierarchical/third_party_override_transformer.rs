@@ -1,4 +1,4 @@
-use crate::codegen::ir::hir::hierarchical::function::HirFunction;
+use crate::codegen::ir::hir::hierarchical::function::{HirFunction, HirFunctionInner};
 use crate::codegen::ir::hir::hierarchical::module::HirModule;
 use crate::codegen::ir::hir::hierarchical::pack::HirPack;
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStructOrEnum;
@@ -54,7 +54,15 @@ fn transform_module_content_functions(
     transform_module_content_general_vec(
         target,
         src_content_functions,
-        |x| x.inner.name(),
+        |x| {
+            let owner = match &x.inner {
+                HirFunctionInner::Method { item_impl, .. } => {
+                    Some(ty_to_string(&item_impl.self_ty))
+                }
+                _ => None,
+            };
+            (owner, x.inner.name())
+        },
         |target, src| {
             target
                 .inner
@@ -62,6 +70,10 @@ fn transform_module_content_functions(
                 .extend(src.inner.attrs().to_owned());
         },
     )
+}
+
+fn ty_to_string(ty: &syn::Type) -> String {
+    quote::quote!(#ty).to_string()
 }
 
 fn transform_module_content_struct_or_enums<Item: SynItemStructOrEnum>(
@@ -78,10 +90,10 @@ fn transform_module_content_struct_or_enums<Item: SynItemStructOrEnum>(
     )
 }
 
-fn transform_module_content_general_vec<T: Debug>(
+fn transform_module_content_general_vec<T: Debug, K: Eq + Debug>(
     target_items: &mut [T],
     src_items: Vec<T>,
-    key: impl Fn(&T) -> String,
+    key: impl Fn(&T) -> K,
     write: impl Fn(&mut T, T),
 ) -> anyhow::Result<()> {
     for src_item in src_items {
@@ -93,8 +105,9 @@ fn transform_module_content_general_vec<T: Debug>(
             .collect_vec();
         if interest_target_items.len() != 1 {
             log::warn!(
-                "transform_module_content_attrable skip src_key={src_key} src_item={src_item:?},\
-                since the number of corresponding target items is not one (indeed is {}).",
+                "transform_module_content_attrable skip src_key={src_key:?}, \
+                since the number of corresponding target items is not one (indeed is {}). \
+                src_item={src_item:?}",
                 interest_target_items.len(),
             );
             continue;
