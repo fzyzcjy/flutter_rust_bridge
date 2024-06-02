@@ -21,6 +21,11 @@
       "dart_decl_base_output_path": "{the-working-directory}/my_dart_folder",
       "dart_entrypoint_class_name": "RustLib",
       "dart_enums_style": true,
+      "dart_impl_output_path": {
+        "common": "{the-working-directory}/my_dart_folder/frb_generated.dart",
+        "io": "{the-working-directory}/my_dart_folder/frb_generated.io.dart",
+        "web": "{the-working-directory}/my_dart_folder/frb_generated.web.dart"
+      },
       "dart_preamble": ""
     },
     "wire": {
@@ -92,11 +97,13 @@
   },
   "parser": {
     "hir": {
+      "rust_crate_dir": "{the-working-directory}",
       "rust_input_namespace_pack": {
         "rust_input_namespace_prefixes": [
           "crate::api"
         ]
-      }
+      },
+      "third_party_crate_names": []
     },
     "mir": {
       "default_rust_opaque_codec": "Moi",
@@ -110,8 +117,7 @@
           "crate::api"
         ]
       }
-    },
-    "rust_crate_dir": "{the-working-directory}"
+    }
   },
   "polisher": {
     "add_mod_to_lib": true,

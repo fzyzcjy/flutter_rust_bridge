@@ -1,73 +1,61 @@
 {
-  "root_module": {
-    "content": {
-      "enums": [],
-      "functions": [],
-      "modules": [
-        {
-          "content": {
-            "enums": [
-              {
-                "ident": "EnumInAnotherFile",
-                "mirror": false,
-                "namespaced_name": "crate::another_file/EnumInAnotherFile",
-                "visibility": "Public"
+  "crates": {
+    "crate": {
+      "root_module": {
+        "content": {
+          "enums": [],
+          "functions": [],
+          "modules": [
+            {
+              "content": {
+                "enums": [
+                  {
+                    "ident": "EnumInAnotherFile",
+                    "mirror": false,
+                    "namespaced_name": "crate::another_file/EnumInAnotherFile",
+                    "visibility": "Public"
+                  }
+                ],
+                "functions": [],
+                "modules": [],
+                "structs": [
+                  {
+                    "ident": "StructInAnotherFile",
+                    "mirror": false,
+                    "namespaced_name": "crate::another_file/StructInAnotherFile",
+                    "visibility": "Public"
+                  }
+                ],
+                "type_alias": []
+              },
+              "meta": {
+                "namespace": "crate::another_file"
               }
-            ],
-            "functions": [],
-            "modules": [],
-            "structs": [
-              {
-                "ident": "StructInAnotherFile",
-                "mirror": false,
-                "namespaced_name": "crate::another_file/StructInAnotherFile",
-                "visibility": "Public"
-              }
-            ],
-            "type_alias": []
-          },
-          "meta": {
-            "namespace": "crate::another_file",
-            "visibility": "Inherited"
-          },
-          "raw": [
-            "pub struct StructInAnotherFile { a : i32 , }",
-            "pub enum EnumInAnotherFile { Apple , }"
-          ]
-        },
-        {
-          "content": {
-            "enums": [],
-            "functions": [
-              {
+            },
+            {
+              "content": {
+                "enums": [],
+                "functions": [
+                  {
+                    "namespace": "crate::api"
+                  }
+                ],
+                "modules": [],
+                "structs": [],
+                "type_alias": []
+              },
+              "meta": {
                 "namespace": "crate::api"
               }
-            ],
-            "modules": [],
-            "structs": [],
-            "type_alias": []
-          },
-          "meta": {
-            "namespace": "crate::api",
-            "visibility": "Inherited"
-          },
-          "raw": [
-            "use crate :: another_file :: EnumInAnotherFile ;",
-            "use crate :: another_file :: StructInAnotherFile ;",
-            "pub fn func_one (s : StructInAnotherFile , e : EnumInAnotherFile) { }"
-          ]
+            }
+          ],
+          "structs": [],
+          "type_alias": []
+        },
+        "meta": {
+          "namespace": "crate"
         }
-      ],
-      "structs": [],
-      "type_alias": []
-    },
-    "meta": {
-      "namespace": "crate",
-      "visibility": "Public"
-    },
-    "raw": [
-      "# [prelude_import] use std :: prelude :: rust_2018 :: * ;",
-      "# [macro_use] extern crate std ;"
-    ]
+      }
+    }
   }
 }
