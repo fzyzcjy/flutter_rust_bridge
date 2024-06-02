@@ -67,5 +67,16 @@ fn transform_module_content_module(
     target: &mut HirModule,
     src_content_modules: Vec<HirModule>,
 ) -> anyhow::Result<()> {
+    for src_child_module in src_content_modules {
+        let name = TODO;
+        if let Some(target_child_module) = target.content.get_mut_module_by_name(name) {
+            transform_module(target_child_module, src_child_module)?;
+        } else {
+            log::warn!(
+                "Skip `{}` since there is no corresponding scanned third party crate target module.",
+                src_child_module.meta.namespace,
+            );
+        }
+    }
     Ok(())
 }

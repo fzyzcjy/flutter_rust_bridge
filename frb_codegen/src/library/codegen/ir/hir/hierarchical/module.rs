@@ -68,6 +68,11 @@ impl HirModuleContent {
             .map(|i| &self.modules[i])
     }
 
+    pub(crate) fn get_mut_module_by_name(&self, mod_name: &str) -> Option<&mut HirModule> {
+        self.get_module_index_by_name(mod_name)
+            .map(|i| &self.modules.get_mut(i))
+    }
+
     pub(crate) fn remove_module_by_name(&mut self, mod_name: &str) -> Option<HirModule> {
         self.get_module_index_by_name(mod_name)
             .map(|index| self.modules.remove(index))
