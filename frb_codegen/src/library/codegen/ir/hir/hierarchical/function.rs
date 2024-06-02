@@ -50,6 +50,13 @@ impl HirFunctionInner {
         }
     }
 
+    pub(crate) fn attrs_mut(&self) -> &mut Vec<Attribute> {
+        match self {
+            HirFunctionInner::Function { item_fn } => &mut item_fn.attrs,
+            HirFunctionInner::Method { impl_item_fn, .. } => &mut impl_item_fn.attrs,
+        }
+    }
+
     pub(crate) fn span(&self) -> Span {
         match self {
             HirFunctionInner::Function { item_fn } => item_fn.span(),

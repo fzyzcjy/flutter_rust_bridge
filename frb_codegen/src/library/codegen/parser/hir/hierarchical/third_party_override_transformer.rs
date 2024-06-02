@@ -57,8 +57,7 @@ fn transform_module_content_functions(
         src_content_functions,
         |x| x.inner.name(),
         |target, src| {
-            TODO;
-            TODO;
+            target.inner.attrs_mut().extend(src.inner.attrs().to_owned());
         },
     )
 }
@@ -72,8 +71,7 @@ fn transform_module_content_struct_or_enums<Item: SynItemStructOrEnum>(
         src_content_struct_or_enums,
         |x| x.ident.to_string(),
         |target, src| {
-            TODO;
-            TODO;
+            target.src.attrs_mut().extend(src.src.attrs().to_owned());
         },
     )
 }
