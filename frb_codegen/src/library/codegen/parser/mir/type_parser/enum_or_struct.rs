@@ -36,7 +36,7 @@ where
         if let Some(src_object) = self.src_objects().get(&name) {
             let src_object = (*src_object).clone();
 
-            let namespace = &src_object.inner().namespaced_name.namespace;
+            let namespace = &src_object.namespaced_name.namespace;
             let namespaced_name = NamespacedName::new(namespace.clone(), name.clone());
 
             let attrs = FrbAttributes::parse(src_object.attrs())?;
@@ -51,8 +51,8 @@ where
             if (self.parser_info().parsing_or_parsed_objects).insert(namespaced_name.clone()) {
                 let (name, wrapper_name) = compute_name_and_wrapper_name(
                     &namespaced_name.namespace,
-                    &src_object.inner().ident,
-                    src_object.inner().mirror,
+                    &src_object.ident,
+                    src_object.mirror,
                 );
                 let parsed_object = self.parse_inner_impl(&src_object, name, wrapper_name)?;
                 (self.parser_info().object_pool).insert(ident.clone(), parsed_object);

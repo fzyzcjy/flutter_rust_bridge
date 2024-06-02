@@ -37,7 +37,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         name: NamespacedName,
         wrapper_name: Option<String>,
     ) -> anyhow::Result<MirEnum> {
-        let comments = parse_comments(&src_enum.0.src.attrs);
+        let comments = parse_comments(&src_enum.src.attrs);
         let raw_variants = src_enum
             .src
             .variants
