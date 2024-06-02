@@ -25,7 +25,7 @@ pub(crate) fn sanity_check_class_name_duplicates(
             warn!("{}", message);
         } else {
             bail!(
-                "{} (set {} env var to forcefully skip it)",
+                "{}Another way to debug is to temporarily set environment variable `{}=1` and check the generated code.",
                 message,
                 SKIP_ENV_VAR
             );
