@@ -5,7 +5,6 @@ use crate::codegen::ir::hir::hierarchical::module::{
 };
 use crate::codegen::parser::hir::hierarchical::function::parse_generalized_functions;
 use crate::codegen::parser::hir::hierarchical::item_type::parse_syn_item_type;
-use crate::codegen::parser::hir::hierarchical::pub_use::transform_module_by_pub_use;
 use crate::codegen::parser::hir::hierarchical::struct_or_enum::{
     parse_syn_item_enum, parse_syn_item_struct,
 };
@@ -19,7 +18,7 @@ pub(crate) fn parse_module(
     config: &ParserHirInternalConfig,
 ) -> anyhow::Result<HirModule> {
     let module = parse_module_raw(items, meta, config)?;
-    let module = transform_module_by_pub_use(module, items)?;
+    let module = pub_use_transformer::transform(module, items)?;
     Ok(module)
 }
 

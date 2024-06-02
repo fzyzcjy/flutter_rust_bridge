@@ -8,7 +8,6 @@ pub(crate) mod function;
 pub(crate) mod item_type;
 pub(crate) mod mirror_ident;
 pub(crate) mod module;
-mod pub_use;
 pub(crate) mod struct_or_enum;
 mod third_party_override_transformer;
 pub(crate) mod visibility;

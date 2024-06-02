@@ -2,7 +2,7 @@ use crate::codegen::ir::hir::hierarchical::module::HirModule;
 use crate::utils::namespace::Namespace;
 use itertools::Itertools;
 
-pub(crate) fn transform_module_by_pub_use(
+pub(crate) fn transform(
     mut module: HirModule,
     items: &[syn::Item],
 ) -> anyhow::Result<HirModule> {
