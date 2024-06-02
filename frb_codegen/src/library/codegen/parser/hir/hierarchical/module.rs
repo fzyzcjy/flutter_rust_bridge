@@ -1,5 +1,5 @@
 use crate::codegen::ir::hir::hierarchical::module::{
-    HirModule, HirModuleContent, HirModuleMeta, HirVisibility,
+    HirModule, HirModuleContent, HirModuleMeta,
 };
 use crate::codegen::parser::hir::hierarchical::function::parse_generalized_functions;
 use crate::codegen::parser::hir::hierarchical::item_type::parse_syn_item_type;
