@@ -49,16 +49,16 @@ fn transform_module_content_functions(
     src_content_functions: Vec<HirFunction>,
 ) -> anyhow::Result<()> {
     for src_function in src_content_functions {
-        TODO;
+        todo!();
     }
     Ok(())
 }
 
 fn transform_module_content_struct_or_enums(
     target: &mut HirModule,
-    src_content_struct_or_enums: TODO,
+    src_content_struct_or_enums: (), // TODO
 ) -> anyhow::Result<()> {
-    TODO;
+    todo!();
     Ok(())
 }
 
