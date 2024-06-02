@@ -4,5 +4,5 @@ use std::collections::HashMap;
 
 #[derive(Debug, Clone, serde::Serialize)]
 pub struct HirPack {
-    pub(crate) crates: HashMap<CrateName, HirCrate>,
+    pub(crate) crates: Vec<HirCrate>,
 }

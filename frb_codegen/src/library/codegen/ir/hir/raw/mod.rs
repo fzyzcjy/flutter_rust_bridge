@@ -1,6 +1,7 @@
-use crate::utils::crate_name::CrateName;
-use std::collections::HashMap;
+mod crates;
+
+use crate::codegen::ir::hir::raw::crates::HirRawCrate;
 
 pub(crate) struct HirRawPack {
-    pub crates: HashMap<CrateName, syn::File>,
+    pub crates: Vec<HirRawCrate>,
 }
