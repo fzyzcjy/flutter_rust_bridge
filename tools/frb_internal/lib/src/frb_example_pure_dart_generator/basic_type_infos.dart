@@ -186,7 +186,7 @@ final kBasicTypes = [
   BasicTypeInfo(
     rustTypeName: 'isize',
     dartTypeName: 'PlatformInt64',
-    listName: 'Int64List',
+    enableList: false,
     interestRawValues: [
       RawValue(_platformInt64('0')),
       RawValue(_platformInt64('-2147483648')),
@@ -205,7 +205,7 @@ final kBasicTypes = [
   BasicTypeInfo(
     rustTypeName: 'usize',
     dartTypeName: 'BigInt',
-    listName: 'Uint64List',
+    enableList: false,
     interestRawValues: [
       RawValue(_bigInt('0')),
       RawValue(_bigInt('4294967295')),

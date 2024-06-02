@@ -47,17 +47,6 @@ Future<Uint64List> exampleBasicListTypeU64TwinSse({required Uint64List arg}) =>
         .crateApiPseudoManualBasicListTwinSseExampleBasicListTypeU64TwinSse(
             arg: arg);
 
-Future<Int64List> exampleBasicListTypeIsizeTwinSse({required Int64List arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBasicListTwinSseExampleBasicListTypeIsizeTwinSse(
-            arg: arg);
-
-Future<Uint64List> exampleBasicListTypeUsizeTwinSse(
-        {required Uint64List arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBasicListTwinSseExampleBasicListTypeUsizeTwinSse(
-            arg: arg);
-
 Future<Float32List> exampleBasicListTypeF32TwinSse(
         {required List<double> arg}) =>
     RustLib.instance.api
