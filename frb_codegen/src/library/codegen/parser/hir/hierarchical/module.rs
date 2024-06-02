@@ -21,7 +21,7 @@ pub(crate) fn parse_module(
     };
 
     for item in items.iter() {
-        parse_syn_item(item, &mut scope, &meta.namespace, config, meta.parent_vis)?;
+        parse_syn_item(item, &mut scope, config, &meta.namespace, &meta.parent_vis)?;
     }
 
     Ok(HirModule {
@@ -37,8 +37,8 @@ pub(crate) fn parse_module(
 fn parse_syn_item(
     item: &syn::Item,
     scope: &mut HirModuleContent,
-    namespace: &Namespace,
     config: &ParserHirInternalConfig,
+    namespace: &Namespace,
     parent_vis: &[HirVisibility],
 ) -> anyhow::Result<()> {
     match item {
