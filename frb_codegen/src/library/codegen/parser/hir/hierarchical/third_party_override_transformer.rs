@@ -23,17 +23,13 @@ fn remove_module_third_party_root(pack: &mut HirPack) -> Option<HirModule> {
 }
 
 fn transform_crate(pack: &mut HirPack, src: HirModule) -> anyhow::Result<()> {
-    let crate_name = CrateName::new(
-        (module_third_party_crate.meta.namespace.path().last())
-            .unwrap()
-            .to_string(),
-    );
+    let crate_name = CrateName::new((src.meta.namespace.path().last()).unwrap().to_string());
     if let Some(target_crate) = pack.crates.get_mut(&crate_name) {
-        transform_module(target_crate.root_module, module_third_party_crate)?;
+        transform_module(&mut target_crate.root_module, src)?;
     } else {
         log::warn!(
             "Skip `{}` since there is no corresponding scanned third party crate.",
-            module_third_party_crate.meta.namespace,
+            src.meta.namespace,
         );
     }
 
