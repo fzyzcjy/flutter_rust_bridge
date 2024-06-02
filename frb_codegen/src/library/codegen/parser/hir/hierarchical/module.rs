@@ -17,7 +17,7 @@ pub(crate) fn parse_module(
     config: &ParserHirInternalConfig,
 ) -> anyhow::Result<HirModule> {
     let module = parse_module_raw(items, meta, config)?;
-    let module = transform_module_by_pub_use(module)?;
+    let module = transform_module_by_pub_use(module, items)?;
     Ok(module)
 }
 
