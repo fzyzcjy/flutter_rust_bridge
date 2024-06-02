@@ -26,11 +26,13 @@ pub struct HirStructOrEnum<Item> {
 pub type HirStruct = HirStructOrEnum<ItemStruct>;
 pub type HirEnum = HirStructOrEnum<ItemEnum>;
 
-impl<Item: Clone> HirStructOrEnum<Item> {
+impl<Item> HirStructOrEnum<Item> {
     pub(crate) fn attrs(&self) -> &[Attribute] {
         &self.src.attrs
     }
+}
 
+impl<Item: Clone> HirStructOrEnum<Item> {
     pub(crate) fn with_namespace(&self, namespace: Namespace) -> Self {
         Self {
             namespaced_name: NamespacedName::new(namespace, self.namespaced_name.name.clone()),
