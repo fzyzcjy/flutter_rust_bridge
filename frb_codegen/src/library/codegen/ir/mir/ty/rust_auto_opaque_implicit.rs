@@ -10,6 +10,7 @@ pub struct MirTypeRustAutoOpaqueImplicit {
     pub ownership_mode: OwnershipMode,
     pub inner: MirTypeRustOpaque,
     pub raw: MirRustAutoOpaqueRaw,
+    pub ignore: bool,
 }
 
 /// Original type without any transformation

@@ -22,6 +22,7 @@ pub struct MirEnum {
     pub comments: Vec<MirComment>,
     pub variants: Vec<MirVariant>,
     pub mode: MirEnumMode,
+    pub ignore: bool,
 }
 
 #[derive(Copy)]
