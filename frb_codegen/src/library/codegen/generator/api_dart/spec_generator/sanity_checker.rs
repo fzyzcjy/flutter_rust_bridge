@@ -1,6 +1,7 @@
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
-use anyhow::ensure;
+use anyhow::{bail, ensure};
 use itertools::Itertools;
+use log::warn;
 
 pub(crate) fn sanity_check_class_name_duplicates(
     classes: &[ApiDartGeneratedClass],
@@ -20,7 +21,7 @@ pub(crate) fn sanity_check_class_name_duplicates(
             duplicate_class_names,
         );
 
-        if std::env::var(SKIP_ENV_VAR) {
+        if std::env::var(SKIP_ENV_VAR).is_ok() {
             warn!("{}", message);
         } else {
             bail!("{} (set {} env var to forcefully skip it)", message, SKIP_ENV_VAR);
