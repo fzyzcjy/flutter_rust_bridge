@@ -79,7 +79,7 @@ fn transform_module_content_struct_or_enums<Item: SynItemStructOrEnum>(
 }
 
 fn transform_module_content_general_vec<T: Debug>(
-    target_items: &mut Vec<T>,
+    target_items: &mut [T],
     src_items: Vec<T>,
     key: impl Fn(&T) -> String,
     write: impl Fn(&mut T, T),
