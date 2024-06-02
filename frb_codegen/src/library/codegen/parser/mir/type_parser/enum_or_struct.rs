@@ -4,7 +4,7 @@ use crate::codegen::ir::hir::hierarchical::syn_item_struct_or_enum::SynItemStruc
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
 use crate::codegen::parser::mir::type_parser::external_impl;
-use crate::codegen::parser::mir::type_parser::misc::parse_simple_type_should_ignore;
+use crate::codegen::parser::mir::type_parser::misc::parse_type_should_ignore_simple;
 use crate::codegen::parser::mir::type_parser::unencodable::SplayedSegment;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::namespace::{Namespace, NamespacedName};
@@ -109,7 +109,7 @@ where
         self.parse_type_rust_auto_opaque_implicit(
             Some(namespaced_name.namespace.clone()),
             &syn::parse_str(&namespaced_name.name)?,
-            Some(parse_simple_type_should_ignore(attrs, vis)),
+            Some(parse_type_should_ignore_simple(attrs, vis)),
         )
     }
 
