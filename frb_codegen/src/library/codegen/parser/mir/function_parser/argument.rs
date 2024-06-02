@@ -48,7 +48,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             ownership_mode_split,
         )?;
 
-        if should_ignore_function_by_type(&ty, self.type_parser) {
+        if ty.ignore(self.type_parser) {
             return Ok(FunctionPartialInfo {
                 ignore_func: true,
                 ..Default::default()
@@ -73,14 +73,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             }],
             ..Default::default()
         })
-    }
-}
-
-fn should_ignore_function_by_type(ty: &MirType, type_parser: &mut TypeParser) -> bool {
-    match ty {
-        MirType::StructRef(ty) => ty.get(type_parser).ignore,
-        _ => false,
-        // TODO handle enum
     }
 }
 
