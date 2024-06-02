@@ -51,6 +51,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
         let mode = compute_enum_mode(&raw_variants);
         let variants = maybe_field_wrap_box(raw_variants, mode);
+        let ignore = parse_type_should_ignore_simple(&attributes, src_enum.visibility, &name.namespace.crate_name());
 
         Ok(MirEnum {
             name,
@@ -58,7 +59,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             comments,
             variants,
             mode,
-            ignore: parse_type_should_ignore_simple(&attributes, src_enum.visibility),
+            ignore,
         })
     }
 

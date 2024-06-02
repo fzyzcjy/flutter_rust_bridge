@@ -50,6 +50,10 @@ impl Namespace {
     //     Ok(Self::new_self_crate(p))
     // }
 
+    pub fn crate_name(&self) -> CrateName {
+        CrateName::new(self.path()[0].to_owned())
+    }
+
     pub fn path(&self) -> Vec<&str> {
         self.joined_path.split(Self::SEP).collect()
     }
