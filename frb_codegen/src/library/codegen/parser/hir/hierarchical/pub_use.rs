@@ -39,6 +39,9 @@ fn transform_module_by_pub_use_single(
 ) -> anyhow::Result<()> {
     let target_mod = module.content.get_module_nested(&pub_use_name.path());
 
-    TODO;
+    module.content.functions.extend(target_mod.content.functions.clone());
+    module.content.structs.extend(target_mod.content.structs.clone());
+    module.content.enums.extend(target_mod.content.enums.clone());
+
     Ok(())
 }
