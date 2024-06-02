@@ -217,11 +217,9 @@ impl<'a> ApiDartGeneratorInfoTrait for RustAutoOpaqueImplicitApiDartGenerator<'a
 
 impl<'a> ApiDartGeneratorInfoTrait for RustOpaqueApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
-        if TODO {
-            TODO
-        } else {
-            self.mir.sanitized_type()
-        }
+        self.context.config.dart_type_rename.get(TODO)
+            .cloned()
+            .unwrap_or_else(|| self.mir.sanitized_type())
     }
 }
 
