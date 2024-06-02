@@ -1,4 +1,5 @@
 use crate::codegen::ir::hir::hierarchical::module::HirModule;
+use crate::utils::namespace::Namespace;
 use itertools::Itertools;
 
 pub(crate) fn transform_module_by_pub_use(
@@ -12,20 +13,20 @@ pub(crate) fn transform_module_by_pub_use(
     Ok(module)
 }
 
-fn parse_pub_use_from_items(items: &[syn::Item]) -> Vec<String> {
+fn parse_pub_use_from_items(items: &[syn::Item]) -> Vec<Namespace> {
     items
         .iter()
         .filter_map(parse_pub_use_from_item)
         .collect_vec()
 }
 
-fn parse_pub_use_from_item(item: &syn::Item) -> Option<String> {
+fn parse_pub_use_from_item(item: &syn::Item) -> Option<Namespace> {
     if let syn::Item::Use(item_use) = item {
         if matches!(item_use.vis, syn::Visibility::Public(_)) {
             let tree = &item_use.tree;
             let tree_string = quote::quote!(#tree).to_string();
             if let Some(interest_use_part) = tree_string.strip_suffix("::*") {
-                return Some(interest_use_part.to_owned());
+                return Some(Namespace::new_raw(interest_use_part.to_owned()));
             }
         }
     }
@@ -34,7 +35,7 @@ fn parse_pub_use_from_item(item: &syn::Item) -> Option<String> {
 
 fn transform_module_by_pub_use_single(
     module: &mut HirModule,
-    pub_use_name: &str,
+    pub_use_name: &Namespace,
 ) -> anyhow::Result<()> {
     TODO;
     Ok(())
