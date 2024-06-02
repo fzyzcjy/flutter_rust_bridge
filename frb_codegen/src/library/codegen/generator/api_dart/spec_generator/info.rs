@@ -9,6 +9,7 @@ use crate::codegen::ir::mir::ty::{MirType, MirTypeTrait};
 use convert_case::{Case, Casing};
 use enum_dispatch::enum_dispatch;
 use itertools::Itertools;
+use crate::utils::syn_utils::canonicalize_rust_type;
 
 #[enum_dispatch]
 pub(crate) trait ApiDartGeneratorInfoTrait {
@@ -217,9 +218,7 @@ impl<'a> ApiDartGeneratorInfoTrait for RustAutoOpaqueImplicitApiDartGenerator<'a
 
 impl<'a> ApiDartGeneratorInfoTrait for RustOpaqueApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
-        let canonicalized_inner = TODO;
-
-        self.context.config.dart_type_rename.get(&self.mir.inner.0)
+        self.context.config.dart_type_rename.get(&canonicalize_rust_type(&self.mir.inner.0))
             .cloned()
             .unwrap_or_else(|| self.mir.sanitized_type())
     }
