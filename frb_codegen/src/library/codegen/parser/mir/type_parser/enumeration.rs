@@ -37,6 +37,8 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         name: NamespacedName,
         wrapper_name: Option<String>,
     ) -> anyhow::Result<MirEnum> {
+        let attributes = FrbAttributes::parse(&src_enum.src.attrs)?;
+
         let comments = parse_comments(&src_enum.src.attrs);
         let raw_variants = src_enum
             .src
@@ -54,6 +56,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             comments,
             variants,
             mode,
+            ignore: attributes.ignore(),
         })
     }
 
