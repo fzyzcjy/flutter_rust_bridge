@@ -41,22 +41,24 @@ fn transform_crate(pack: &mut HirPack, src: HirModule) -> anyhow::Result<()> {
 }
 
 fn transform_module(target: &mut HirModule, src: HirModule) -> anyhow::Result<()> {
-    transform_module_content_function(target, src.content.functions)?;
-    transform_module_content_struct_or_enum(target, src.content.structs)?;
-    transform_module_content_struct_or_enum(target, src.content.enums)?;
-    transform_module_content_module(target, src.content.modules)?;
+    transform_module_content_functions(target, src.content.functions)?;
+    transform_module_content_struct_or_enums(target, src.content.structs)?;
+    transform_module_content_struct_or_enums(target, src.content.enums)?;
+    transform_module_content_modules(target, src.content.modules)?;
     Ok(())
 }
 
-fn transform_module_content_function(
+fn transform_module_content_functions(
     target: &mut HirModule,
     src_content_functions: Vec<HirFunction>,
 ) -> anyhow::Result<()> {
-    TODO;
+    for src_function in src_content_functions {
+        TODO;
+    }
     Ok(())
 }
 
-fn transform_module_content_struct_or_enum(
+fn transform_module_content_struct_or_enums(
     target: &mut HirModule,
     src_content_struct_or_enums: TODO,
 ) -> anyhow::Result<()> {
@@ -64,7 +66,7 @@ fn transform_module_content_struct_or_enum(
     Ok(())
 }
 
-fn transform_module_content_module(
+fn transform_module_content_modules(
     target: &mut HirModule,
     src_content_modules: Vec<HirModule>,
 ) -> anyhow::Result<()> {
