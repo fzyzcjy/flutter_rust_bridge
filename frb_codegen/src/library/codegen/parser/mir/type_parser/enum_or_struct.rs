@@ -1,4 +1,3 @@
-use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStructOrEnumWrapper;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
 use crate::codegen::parser::mir::type_parser::external_impl;
@@ -10,11 +9,11 @@ use std::collections::{HashMap, HashSet};
 use std::fmt::Debug;
 use std::hash::Hash;
 use syn::{Ident, Type};
+use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStructOrEnum;
 
-pub(super) trait EnumOrStructParser<Id, Obj, SrcObj, Item>
+pub(super) trait EnumOrStructParser<Id, Obj, Item>
 where
     Id: From<NamespacedName> + Clone + PartialEq + Eq + Hash,
-    SrcObj: HirStructOrEnumWrapper<Item> + Clone + Debug,
 {
     fn parse(
         &mut self,
@@ -100,14 +99,14 @@ where
 
     fn parse_inner_impl(
         &mut self,
-        src_object: &SrcObj,
+        src_object: &HirStructOrEnum<Item>,
         name: NamespacedName,
         wrapper_name: Option<String>,
     ) -> anyhow::Result<Obj>;
 
     fn construct_output(&self, ident: Id) -> anyhow::Result<MirType>;
 
-    fn src_objects(&self) -> &HashMap<String, &SrcObj>;
+    fn src_objects(&self) -> &HashMap<String, &HirStructOrEnum<Item>>;
 
     fn parser_info(&mut self) -> &mut EnumOrStructParserInfo<Id, Obj>;
 

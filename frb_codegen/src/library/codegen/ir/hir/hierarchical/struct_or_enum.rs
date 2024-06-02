@@ -24,7 +24,7 @@ pub struct HirStructOrEnum<Item> {
 // frb-coverage:ignore-end
 
 pub type HirStruct = HirStructOrEnum<ItemStruct>;
-pub type HirEnum = HirEnumOrEnum<ItemEnum>;
+pub type HirEnum = HirStructOrEnum<ItemEnum>;
 
 impl<Item: Clone> HirStructOrEnum<Item> {
     fn attrs(&self) -> &[Attribute] {
