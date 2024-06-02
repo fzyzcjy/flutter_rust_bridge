@@ -56,7 +56,10 @@ fn transform_module_content_functions(
         src_content_functions,
         |x| x.inner.name(),
         |target, src| {
-            target.inner.attrs_mut().extend(src.inner.attrs().to_owned());
+            target
+                .inner
+                .attrs_mut()
+                .extend(src.inner.attrs().to_owned());
         },
     )
 }

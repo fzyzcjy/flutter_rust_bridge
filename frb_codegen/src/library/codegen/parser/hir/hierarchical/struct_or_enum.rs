@@ -1,4 +1,5 @@
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::{HirEnum, HirStruct, HirStructOrEnum};
+use crate::codegen::ir::hir::hierarchical::syn_item_struct_or_enum::SynItemStructOrEnum;
 use crate::codegen::parser::hir::hierarchical::mirror_ident::{
     parse_mirror_ident, ParseMirrorIdentOutput,
 };
@@ -7,7 +8,6 @@ use itertools::Itertools;
 use log::debug;
 use proc_macro2::Ident;
 use syn::{Attribute, ItemEnum, ItemStruct};
-use crate::codegen::ir::hir::hierarchical::syn_item_struct_or_enum::SynItemStructOrEnum;
 
 pub(crate) fn parse_syn_item_struct(
     item: &ItemStruct,
