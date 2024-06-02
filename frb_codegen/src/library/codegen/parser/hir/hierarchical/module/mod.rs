@@ -1,3 +1,5 @@
+mod pub_use_transformer;
+
 use crate::codegen::ir::hir::hierarchical::module::{
     HirModule, HirModuleContent, HirModuleMeta, HirVisibility,
 };
