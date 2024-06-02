@@ -74,9 +74,8 @@ fn transform_module_content_functions(
     )
 }
 
-#[allow(unused_variables)]
 fn ty_to_string(ty: &syn::Type) -> String {
-    quote::quote!(ty).to_string()
+    quote::quote!(#ty).to_string()
 }
 
 fn transform_module_content_struct_or_enums<Item: SynItemStructOrEnum>(
