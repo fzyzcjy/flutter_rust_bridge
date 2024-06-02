@@ -29,7 +29,7 @@ fn parse_inner(
 
     let pb = progress_bar_pack.parse_hir_primary.start();
     let hir_hierarchical = hir::hierarchical::parse(&config.hir, &hir_raw)?;
-    let hir_flat = hir::flat::parse(&hir_hierarchical)?;
+    let hir_flat = hir::flat::parse(&config.hir, &hir_hierarchical)?;
     on_hir(&hir_hierarchical)?;
     dumper.dump(
         ConfigDumpContent::Hir,

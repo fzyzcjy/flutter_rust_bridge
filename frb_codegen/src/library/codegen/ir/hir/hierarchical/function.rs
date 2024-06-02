@@ -22,6 +22,15 @@ pub(crate) enum HirFunctionInner {
     },
 }
 
+impl HirFunction {
+    pub(crate) fn with_namespace(&self, namespace: Namespace) -> Self {
+        Self {
+            namespace,
+            ..self.clone()
+        }
+    }
+}
+
 impl HirFunctionInner {
     pub(crate) fn sig(&self) -> &Signature {
         match self {
