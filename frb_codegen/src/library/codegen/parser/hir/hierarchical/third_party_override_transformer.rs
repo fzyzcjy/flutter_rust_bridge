@@ -35,8 +35,31 @@ fn transform_crate(pack: &mut HirPack, src: HirModule) -> anyhow::Result<()> {
             module_third_party_crate.meta.namespace,
         );
     }
+
+    Ok(())
 }
 
 fn transform_module(target: &mut HirModule, src: HirModule) -> anyhow::Result<()> {
-    TODO
+    transform_module_content_function(target, src)?;
+    transform_module_content_struct_or_enum(target, src)?;
+    transform_module_content_module(target, src)?;
+    Ok(())
+}
+
+fn transform_module_content_function(target: &mut HirModule, src: HirModule) -> anyhow::Result<()> {
+    TODO;
+    Ok(())
+}
+
+fn transform_module_content_struct_or_enum(
+    target: &mut HirModule,
+    src: HirModule,
+) -> anyhow::Result<()> {
+    TODO;
+    Ok(())
+}
+
+fn transform_module_content_module(target: &mut HirModule, src: HirModule) -> anyhow::Result<()> {
+    TODO;
+    Ok(())
 }
