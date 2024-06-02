@@ -74,6 +74,7 @@ fn transform_module_content_functions(
     )
 }
 
+#[allow(unused_variables)]
 fn ty_to_string(ty: &syn::Type) -> String {
     quote::quote!(ty).to_string()
 }
