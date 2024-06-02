@@ -176,7 +176,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     return Ok(None);
                 };
 
-                if owner_ty.should_ignore(context) {
+                if owner_ty.should_ignore(self.type_parser) {
                     return Ok(None);
                 }
 
