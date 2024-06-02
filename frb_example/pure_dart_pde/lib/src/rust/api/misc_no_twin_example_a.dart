@@ -15,28 +15,30 @@ Future<void> sameFunctionNameInDifferentFiles() => RustLib.instance.api
 Future<void> renamedFunction() => RustLib.instance.api
     .crateApiMiscNoTwinExampleAFunctionWithCustomNameTwinNormal();
 
-Future<void> functionWithArgTypeNameOverride({required BoxAny a}) =>
+Future<void> functionWithArgTypeNameOverride(
+        {required BoxAnyMyDartTypeRename a}) =>
     RustLib.instance.api
         .crateApiMiscNoTwinExampleAFunctionWithArgTypeNameOverride(a: a);
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn Any + Send + Sync + 'static >>>
 @sealed
-class BoxAny extends RustOpaque {
+class BoxAnyMyDartTypeRename extends RustOpaque {
   // Not to be used by end users
-  BoxAny.frbInternalDcoDecode(List<dynamic> wire)
+  BoxAnyMyDartTypeRename.frbInternalDcoDecode(List<dynamic> wire)
       : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
-  BoxAny.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
+  BoxAnyMyDartTypeRename.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
       : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_BoxAny,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_BoxAny,
-    rustArcDecrementStrongCountPtr:
-        RustLib.instance.api.rust_arc_decrement_strong_count_BoxAnyPtr,
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_BoxAnyMyDartTypeRename,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_BoxAnyMyDartTypeRename,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_BoxAnyMyDartTypeRenamePtr,
   );
 }
 
