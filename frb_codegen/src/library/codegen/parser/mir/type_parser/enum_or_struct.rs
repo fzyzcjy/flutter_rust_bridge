@@ -11,6 +11,7 @@ use std::collections::{HashMap, HashSet};
 use std::fmt::Debug;
 use std::hash::Hash;
 use syn::{Ident, Type};
+use crate::codegen::parser::mir::type_parser::misc::parse_simple_type_should_ignore;
 
 pub(super) trait EnumOrStructParser<Id, Obj, Item: SynItemStructOrEnum>
 where
@@ -95,7 +96,7 @@ where
         self.parse_type_rust_auto_opaque_implicit(
             Some(namespaced_name.namespace.clone()),
             &syn::parse_str(&namespaced_name.name)?,
-            Some(TODO),
+            Some(parse_simple_type_should_ignore(&attributes, src_enum.visibility)),
         )
     }
 
