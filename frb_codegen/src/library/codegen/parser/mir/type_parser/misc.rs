@@ -49,5 +49,5 @@ fn parse_comment(input: &str) -> MirComment {
 }
 
 pub(crate) fn parse_simple_type_should_ignore(attrs: &FrbAttributes, vis: HirVisibility) -> bool {
-    attributes.ignore() || (vis != HirVisibility::Public)
+    attrs.ignore() || (vis != HirVisibility::Public)
 }
