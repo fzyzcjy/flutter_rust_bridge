@@ -1,5 +1,7 @@
+use syn::*;
+
 pub(crate) trait SynItemStructOrEnum: Clone {
-    fn attrs(&self) -> &[syn::Attribute];
+    fn attrs(&self) -> &[Attribute];
 }
 
 macro_rules! impl_trait {
@@ -12,5 +14,5 @@ macro_rules! impl_trait {
     };
 }
 
-impl_trait!(syn::ItemStruct);
-impl_trait!(syn::ItemEnum);
+impl_trait!(ItemStruct);
+impl_trait!(ItemEnum);
