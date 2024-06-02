@@ -1,4 +1,3 @@
-use crate::codegen::ir::hir::hierarchical::crates::HirCrate;
 use crate::codegen::ir::hir::hierarchical::function::HirFunction;
 use crate::codegen::ir::hir::hierarchical::module::HirModule;
 use crate::codegen::ir::hir::hierarchical::pack::HirPack;
@@ -12,7 +11,7 @@ use std::fmt::Debug;
 pub(super) fn transform(mut pack: HirPack) -> anyhow::Result<HirPack> {
     if let Some(module_third_party_root) = remove_module_third_party_root(&mut pack) {
         for src in module_third_party_root.content.modules {
-            transform_crate(&mut pack, src);
+            transform_crate(&mut pack, src)?;
         }
     }
     Ok(pack)
