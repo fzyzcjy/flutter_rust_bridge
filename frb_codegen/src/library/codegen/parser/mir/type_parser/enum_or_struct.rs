@@ -95,6 +95,7 @@ where
         self.parse_type_rust_auto_opaque_implicit(
             Some(namespaced_name.namespace.clone()),
             &syn::parse_str(&namespaced_name.name)?,
+            Some(TODO),
         )
     }
 
@@ -117,6 +118,7 @@ where
         &mut self,
         namespace: Option<Namespace>,
         ty: &Type,
+        override_ignore: Option<bool>,
     ) -> anyhow::Result<MirType>;
 
     fn compute_default_opaque(obj: &Obj) -> bool;

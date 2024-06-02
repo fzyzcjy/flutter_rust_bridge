@@ -15,7 +15,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             Type::ImplTrait(type_impl_trait) => self
                 .parse_type_impl_trait_dart_fn(&type_impl_trait)
                 .context("when trying to parse DartFn")?,
-            _ => self.parse_type_rust_auto_opaque_implicit(None, &resolve_ty)?,
+            _ => self.parse_type_rust_auto_opaque_implicit(None, &resolve_ty, None)?,
         })
     }
 

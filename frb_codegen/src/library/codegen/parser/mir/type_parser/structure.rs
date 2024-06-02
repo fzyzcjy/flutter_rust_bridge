@@ -123,8 +123,9 @@ impl EnumOrStructParser<MirStructIdent, MirStruct, ItemStruct>
         &mut self,
         namespace: Option<Namespace>,
         ty: &Type,
+        override_ignore: Option<bool>,
     ) -> anyhow::Result<MirType> {
-        self.0.parse_type_rust_auto_opaque_implicit(namespace, ty)
+        self.0.parse_type_rust_auto_opaque_implicit(namespace, ty, override_ignore)
     }
 
     fn compute_default_opaque(obj: &MirStruct) -> bool {
