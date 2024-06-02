@@ -14,7 +14,9 @@ use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
 use crate::codegen::parser::mir::type_parser::enum_or_struct::{
     EnumOrStructParser, EnumOrStructParserInfo,
 };
-use crate::codegen::parser::mir::type_parser::misc::{parse_comments, parse_simple_type_should_ignore};
+use crate::codegen::parser::mir::type_parser::misc::{
+    parse_comments, parse_simple_type_should_ignore,
+};
 use crate::codegen::parser::mir::type_parser::structure::structure_compute_default_opaque;
 use crate::codegen::parser::mir::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::mir::type_parser::TypeParserWithContext;
@@ -182,7 +184,8 @@ impl EnumOrStructParser<MirEnumIdent, MirEnum, ItemEnum>
         ty: &Type,
         override_ignore: Option<bool>,
     ) -> anyhow::Result<MirType> {
-        self.0.parse_type_rust_auto_opaque_implicit(namespace, ty, override_ignore)
+        self.0
+            .parse_type_rust_auto_opaque_implicit(namespace, ty, override_ignore)
     }
 
     fn compute_default_opaque(obj: &MirEnum) -> bool {
