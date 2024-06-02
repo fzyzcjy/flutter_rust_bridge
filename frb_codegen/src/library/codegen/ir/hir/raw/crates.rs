@@ -2,7 +2,7 @@
 
 use crate::utils::crate_name::CrateName;
 
-#[derive(Debug, Clone, serde::Serialize)]
+#[derive(Debug, Clone)]
 pub struct HirRawCrate {
     pub(crate) name: CrateName,
     pub(crate) syn_file: syn::File,

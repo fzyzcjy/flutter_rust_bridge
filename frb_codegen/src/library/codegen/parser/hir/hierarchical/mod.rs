@@ -26,10 +26,10 @@ fn parse_raw(config: &ParserHirInternalConfig, hir_raw: &HirRawPack) -> anyhow::
     let crates = hir_raw
         .crates
         .iter()
-        .map(|(crate_name, syn_file)| {
+        .map(|c| {
             Ok((
-                crate_name.to_owned(),
-                parse_crate(config, syn_file, crate_name)?,
+                c.name.to_owned(),
+                parse_crate(config, c.syn_file, crate_name)?,
             ))
         })
         .collect::<anyhow::Result<Vec<_>>>()?

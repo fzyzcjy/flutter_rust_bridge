@@ -16,5 +16,8 @@ pub(crate) fn parse_crate(
         namespace: crate_name.namespace(),
     };
     let root_module = parse_module(&file.items, info, config)?;
-    Ok(HirCrate { root_module })
+    Ok(HirCrate {
+        crate_name: crate_name.to_owned(),
+        root_module,
+    })
 }

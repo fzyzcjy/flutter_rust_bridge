@@ -117,7 +117,7 @@ fn is_interest_mod(module: &HirModule) -> bool {
 }
 
 fn visit_pack<'a, F: FnMut(&'a HirModule)>(hir_pack: &'a HirPack, f: &mut F) {
-    for hir_crate in hir_pack.crates.values() {
+    for hir_crate in &hir_pack.crates {
         visit_modules(&hir_crate.root_module, f);
     }
 }
