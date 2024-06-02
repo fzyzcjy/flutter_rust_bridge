@@ -2,11 +2,14 @@ use crate::codegen::ir::hir::hierarchical::module::HirModule;
 use itertools::Itertools;
 
 pub(crate) fn transform_module_by_pub_use(
-    raw: HirModule,
+    mut module: HirModule,
     items: &[syn::Item],
 ) -> anyhow::Result<HirModule> {
     let pub_use_names = parse_pub_use_from_items(items);
-    Ok(todo!())
+    for pub_use_name in pub_use_names {
+        transform_module_by_pub_use_single(&mut module, &pub_use_name)?;
+    }
+    Ok(module)
 }
 
 fn parse_pub_use_from_items(items: &[syn::Item]) -> Vec<String> {
@@ -25,4 +28,12 @@ fn parse_pub_use_from_item(item: &syn::Item) -> Option<String> {
         }
     }
     None
+}
+
+fn transform_module_by_pub_use_single(
+    module: &mut HirModule,
+    pub_use_name: &str,
+) -> anyhow::Result<()> {
+    TODO;
+    Ok(())
 }
