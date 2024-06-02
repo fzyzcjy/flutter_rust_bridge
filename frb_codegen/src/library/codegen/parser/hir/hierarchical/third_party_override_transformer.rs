@@ -68,7 +68,7 @@ fn transform_module_content_module(
     src_content_modules: Vec<HirModule>,
 ) -> anyhow::Result<()> {
     for src_child_module in src_content_modules {
-        let name = TODO;
+        let name = *src_child_module.meta.namespace.path().last().unwrap();
         if let Some(target_child_module) = target.content.get_mut_module_by_name(name) {
             transform_module(target_child_module, src_child_module)?;
         } else {
