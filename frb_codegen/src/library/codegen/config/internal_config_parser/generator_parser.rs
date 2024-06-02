@@ -184,5 +184,6 @@ fn compute_dart_type_rename(config: &Config) -> anyhow::Result<HashMap<String, S
 }
 
 fn canonicalize_rust_type(raw: &str) -> anyhow::Result<String> {
-    syn::parse_str(raw)
+    let ast: syn::Type = syn::parse_str(raw)?;
+    Ok(quote::quote!(#ast).to_string())
 }
