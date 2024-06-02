@@ -54,9 +54,9 @@ fn transform_module_content_functions(
     Ok(())
 }
 
-fn transform_module_content_struct_or_enums(
+fn transform_module_content_struct_or_enums<T>(
     target: &mut HirModule,
-    src_content_struct_or_enums: (), // TODO
+    src_content_struct_or_enums: T,
 ) -> anyhow::Result<()> {
     todo!();
     Ok(())
