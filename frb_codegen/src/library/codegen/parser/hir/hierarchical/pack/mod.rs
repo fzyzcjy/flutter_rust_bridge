@@ -1,8 +1,9 @@
 use crate::codegen::ir::hir::hierarchical::pack::HirPack;
 use crate::codegen::ir::hir::raw::pack::HirRawPack;
 use crate::codegen::parser::hir::hierarchical::crates::parse_crate;
-use crate::codegen::parser::hir::hierarchical::third_party_override_transformer;
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
+
+mod third_party_override_transformer;
 
 pub(crate) fn parse_pack(
     config: &ParserHirInternalConfig,
