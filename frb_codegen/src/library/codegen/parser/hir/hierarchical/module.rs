@@ -14,18 +14,22 @@ pub(crate) fn parse_module(
     items: &[syn::Item],
     info: HirModuleMeta,
     config: &ParserHirInternalConfig,
-    cumulated_visibility: HirVisibility,
+    cumulated_visibility_pub: bool,
 ) -> anyhow::Result<HirModule> {
     let mut scope = HirModuleContent::default();
 
-    if (config.rust_input_namespace_pack).is_interest(&info.namespace)
-        && cumulated_visibility == HirVisibility::Public
-    {
+    if (config.rust_input_namespace_pack).is_interest(&info.namespace) && cumulated_visibility_pub {
         scope.functions = parse_generalized_functions(items, &info.namespace)?;
     }
 
     for item in items.iter() {
-        parse_syn_item(item, &mut scope, &info.namespace, config)?;
+        parse_syn_item(
+            item,
+            &mut scope,
+            &info.namespace,
+            config,
+            cumulated_visibility_pub,
+        )?;
     }
 
     Ok(HirModule {
@@ -43,6 +47,7 @@ fn parse_syn_item(
     scope: &mut HirModuleContent,
     namespace: &Namespace,
     config: &ParserHirInternalConfig,
+    cumulated_visibility_pub: bool,
 ) -> anyhow::Result<()> {
     match item {
         syn::Item::Struct(item_struct) => {
@@ -57,9 +62,12 @@ fn parse_syn_item(
             scope.type_alias.extend(parse_syn_item_type(item_type));
         }
         syn::Item::Mod(item_mod) => {
-            scope
-                .modules
-                .extend(parse_syn_item_mod(item_mod, namespace, config)?);
+            scope.modules.extend(parse_syn_item_mod(
+                item_mod,
+                namespace,
+                config,
+                cumulated_visibility_pub,
+            )?);
         }
         _ => {}
     }
@@ -70,13 +78,19 @@ fn parse_syn_item_mod(
     item_mod: &ItemMod,
     namespace: &Namespace,
     config: &ParserHirInternalConfig,
+    cumulated_visibility_pub: bool,
 ) -> anyhow::Result<Option<HirModule>> {
     Ok(if let Some((_, items)) = &item_mod.content {
         let info = HirModuleMeta {
             // visibility: (&item_mod.vis).into(),
             namespace: namespace.join(&item_mod.ident.to_string()),
         };
-        Some(parse_module(items, info, config)?)
+        Some(parse_module(
+            items,
+            info,
+            config,
+            cumulated_visibility_pub && matches!(item_mod.vis, syn::Visibility::Public(_)),
+        )?)
     } else {
         None
     })

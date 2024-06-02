@@ -13,6 +13,6 @@ pub(crate) fn parse_crate(
         // visibility: HirVisibility::Public,
         namespace: crate_name.namespace(),
     };
-    let root_module = parse_module(&file.items, info, config)?;
+    let root_module = parse_module(&file.items, info, config, true)?;
     Ok(HirCrate { root_module })
 }
