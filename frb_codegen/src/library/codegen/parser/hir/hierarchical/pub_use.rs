@@ -20,7 +20,7 @@ fn parse_pub_use_from_item(item: &syn::Item) -> Option<String> {
         if matches!(item_use.vis, syn::Visibility::Public(_)) {
             let tree = item_use.tree;
             let tree_string = quote::quote!(#tree).to_string();
-            TODO
+            tree_string.strip_suffix("::*")
         }
     }
     None
