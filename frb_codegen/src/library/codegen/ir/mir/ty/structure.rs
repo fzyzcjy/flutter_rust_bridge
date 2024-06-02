@@ -59,6 +59,10 @@ impl MirTypeTrait for MirTypeStructRef {
     fn self_namespace(&self) -> Option<Namespace> {
         Some(self.ident.0.namespace.clone())
     }
+
+    fn ignore(&self, mir_context: &impl MirContext) -> bool {
+        self.get(mir_context).ignore
+    }
 }
 
 impl MirStruct {

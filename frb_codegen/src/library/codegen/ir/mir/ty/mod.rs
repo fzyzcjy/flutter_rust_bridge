@@ -100,6 +100,10 @@ pub trait MirTypeTrait {
         None
     }
 
+    fn ignore(&self, mir_context: &impl MirContext) -> bool {
+        false
+    }
+
     // TODO move
     fn cloned_getter_semantics_reasonable(&self) -> bool {
         false
