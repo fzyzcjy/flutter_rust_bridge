@@ -112,7 +112,7 @@ fn generate_end_api_text(
         .sorted_by_key(|(reason, _)| **reason)
         .map(|(reason, names)| {
             format!(
-                "{}: {}",
+                "// {}: {}\n",
                 reason.explanation_prefix(),
                 (names.iter().map(|x| format!("`{x}`"))).join(", "),
             )
