@@ -1,3 +1,4 @@
+use std::fmt::Debug;
 use crate::codegen::ir::hir::hierarchical::crates::HirCrate;
 use crate::codegen::ir::hir::hierarchical::function::HirFunction;
 use crate::codegen::ir::hir::hierarchical::module::HirModule;
@@ -6,6 +7,7 @@ use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStructOrEnum;
 use crate::codegen::ir::hir::hierarchical::syn_item_struct_or_enum::SynItemStructOrEnum;
 use crate::codegen::misc::THIRD_PARTY_DIR_NAME;
 use crate::utils::crate_name::CrateName;
+use itertools::Itertools;
 
 pub(super) fn transform(mut pack: HirPack) -> anyhow::Result<HirPack> {
     if let Some(module_third_party_root) = remove_module_third_party_root(&mut pack) {
@@ -60,12 +62,27 @@ fn transform_module_content_struct_or_enums<Item: SynItemStructOrEnum>(
     transform_module_content_attrable(target, src_content_struct_or_enums, |x| x.ident.to_string())
 }
 
-fn transform_module_content_attrable<T>(
-    target: &mut Vec<T>,
+fn transform_module_content_attrable<T: Debug>(
+    target_items: &mut Vec<T>,
     src_items: Vec<T>,
     key: impl Fn(&T) -> String,
 ) -> anyhow::Result<()> {
     for src_item in src_items {
+        let src_key = key(src_item);
+
+        let interest_target_items = target_items
+            .iter_mut()
+            .filter(|x| key(x) == src_key)
+            .collect_vec();
+        if interest_target_items.len() != 1 {
+            log::warn!(
+                "transform_module_content_attrable skip src_key={src_key} src_item={src_item:?},\
+                since the number of corresponding target items is not one (indeed is {}).",
+                interest_target_items.len(),
+            );
+            continue;
+        }
+
         TODO;
     }
     Ok(())
