@@ -5,6 +5,8 @@ use crate::codegen::ir::hir::hierarchical::pack::HirPack;
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirEnum;
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStruct;
 use crate::codegen::parser::hir::flat::type_alias_resolver::resolve_type_aliases;
+use crate::utils::crate_name::CrateName;
+use crate::utils::namespace::Namespace;
 use log::debug;
 use std::collections::HashMap;
 use std::fmt::Debug;
@@ -97,7 +99,9 @@ where
 }
 
 fn is_interest_mod(module: &HirModule) -> bool {
-    module.meta.is_public()
+    // If it is third party crate, then we only scan the `pub` mods,
+    // since for non-pub modes, it is impossible to use them even if we scanned them.
+    module.meta.namespace.path()[0] == CrateName::SELF_CRATE || module.meta.is_public()
 }
 
 fn visit_pack<'a, F: FnMut(&'a HirModule)>(hir_pack: &'a HirPack, f: &mut F) {
