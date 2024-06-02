@@ -16,6 +16,7 @@ use crate::codegen::Config;
 use crate::library::commands::cargo_metadata::execute_cargo_metadata;
 use crate::utils::dart_repository::get_dart_package_name;
 use crate::utils::path_utils::path_to_string;
+use crate::utils::syn_utils::canonicalize_rust_type;
 use anyhow::Context;
 use itertools::Itertools;
 use pathdiff::diff_paths;
@@ -197,9 +198,4 @@ fn compute_dart_type_rename(config: &Config) -> anyhow::Result<HashMap<String, S
         .into_iter()
         .flatten()
         .collect())
-}
-
-fn canonicalize_rust_type(raw: &str) -> anyhow::Result<String> {
-    let ast: syn::Type = syn::parse_str(raw)?;
-    Ok(quote::quote!(#ast).to_string())
 }
