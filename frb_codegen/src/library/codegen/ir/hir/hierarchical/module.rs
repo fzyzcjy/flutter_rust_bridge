@@ -55,8 +55,7 @@ pub enum HirVisibility {
 
 impl HirModuleContent {
     pub(crate) fn get_module_by_name(&self, mod_name: &str) -> Option<&HirModule> {
-        (self.modules.iter())
-            .find(|m| *m.meta.namespace.path().last().unwrap() == mod_name)
+        (self.modules.iter()).find(|m| *m.meta.namespace.path().last().unwrap() == mod_name)
     }
 
     pub(crate) fn get_module_nested(&self, mod_names: &[&str]) -> Option<&HirModule> {
