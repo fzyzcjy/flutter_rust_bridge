@@ -34,4 +34,4 @@ impl GeneratorProgressBarPack {
     }
 }
 
-pub(crate) const THIRD_PARTY_DIR_NAME: &'static str = "third_party";
+pub(crate) const THIRD_PARTY_DIR_NAME: &str = "third_party";
