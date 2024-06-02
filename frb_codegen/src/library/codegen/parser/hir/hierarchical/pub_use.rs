@@ -38,22 +38,27 @@ fn transform_module_by_pub_use_single(
     module: &mut HirModule,
     pub_use_name: &Namespace,
 ) -> anyhow::Result<()> {
-    let src_mod = module.content.get_module_nested(&pub_use_name.path());
-    let self_namespace = &module.meta.namespace;
+    if let Some(src_mod) = module.content.get_module_nested(&pub_use_name.path()) {
+        let self_namespace = &module.meta.namespace;
 
-    let src_functions = (src_mod.content.functions.iter())
-        .map(|x| x.with_namespace(self_namespace.clone()))
-        .collect_vec();
-    let src_structs = (src_mod.content.structs.iter())
-        .map(|x| x.with_namespace(self_namespace.clone()))
-        .collect_vec();
-    let src_enums = (src_mod.content.enums.iter())
-        .map(|x| x.with_namespace(self_namespace.clone()))
-        .collect_vec();
+        let src_functions = (src_mod.content.functions.iter())
+            .map(|x| x.with_namespace(self_namespace.clone()))
+            .collect_vec();
+        let src_structs = (src_mod.content.structs.iter())
+            .map(|x| x.with_namespace(self_namespace.clone()))
+            .collect_vec();
+        let src_enums = (src_mod.content.enums.iter())
+            .map(|x| x.with_namespace(self_namespace.clone()))
+            .collect_vec();
 
-    module.content.functions.extend(src_functions);
-    module.content.structs.extend(src_structs);
-    module.content.enums.extend(src_enums);
+        module.content.functions.extend(src_functions);
+        module.content.structs.extend(src_structs);
+        module.content.enums.extend(src_enums);
+    } else {
+        log::debug!(
+            "transform_module_by_pub_use_single skip `{pub_use_name}` since cannot find mod"
+        );
+    }
 
     Ok(())
 }
