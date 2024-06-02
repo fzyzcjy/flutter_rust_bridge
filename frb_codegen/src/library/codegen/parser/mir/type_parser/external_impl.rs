@@ -1,5 +1,5 @@
 use anyhow::Result;
-use syn::{parse_str, Path, Type, visit_mut, visit_mut::VisitMut};
+use syn::{parse_str, visit_mut, visit_mut::VisitMut, Path, Type};
 
 pub(crate) fn parse_type(mut ty: Type) -> Result<Type> {
     struct Visitor;
