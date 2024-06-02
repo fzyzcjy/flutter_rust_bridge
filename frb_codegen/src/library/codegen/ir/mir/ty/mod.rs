@@ -100,7 +100,7 @@ pub trait MirTypeTrait {
         None
     }
 
-    fn should_ignore(&self, mir_context: &impl MirContext) -> bool {
+    fn should_ignore(&self, _mir_context: &impl MirContext) -> bool {
         false
     }
 
