@@ -119,8 +119,7 @@ impl DeliberateFailSanityCheckTwinNormal {
 }
 
 pub fn function_with_arg_type_name_override(
-    a: Box<dyn Any + Send>,
-    b: Box<dyn Any + Send + 'static>,
+    a: Box<dyn Any + Send + 'static>,
 ) {
-    let _ = (a, b);
+    let _ = a;
 }
