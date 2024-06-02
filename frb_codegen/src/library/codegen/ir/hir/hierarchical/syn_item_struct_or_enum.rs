@@ -1,5 +1,5 @@
-pub(crate) trait SynItemStructOrEnum {
-
+pub(crate) trait SynItemStructOrEnum: Clone {
+    fn attrs(&self) -> &[syn::Attribute];
 }
 
 macro_rules! impl_trait {

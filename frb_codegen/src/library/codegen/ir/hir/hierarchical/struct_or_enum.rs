@@ -5,13 +5,14 @@ use proc_macro2::Ident;
 use quote::ToTokens;
 use serde::{Serialize, Serializer};
 use syn::{Attribute, ItemEnum, ItemStruct};
+use crate::codegen::ir::hir::hierarchical::syn_item_struct_or_enum::SynItemStructOrEnum;
 
 // This struct is surely used many times, but coverage tool thinks it is never used
 // (possibly because of the macro?), so we manually exclude it from coverage report
 // frb-coverage:ignore-start
 #[derive(Clone, Derivative, Serialize)]
 #[derivative(Debug)]
-pub struct HirStructOrEnum<Item> {
+pub struct HirStructOrEnum<Item: SynItemStructOrEnum> {
     #[serde(serialize_with = "serialize_syn")]
     pub(crate) ident: Ident,
     #[derivative(Debug = "ignore")]
@@ -26,13 +27,7 @@ pub struct HirStructOrEnum<Item> {
 pub type HirStruct = HirStructOrEnum<ItemStruct>;
 pub type HirEnum = HirStructOrEnum<ItemEnum>;
 
-impl<Item> HirStructOrEnum<Item> {
-    pub(crate) fn attrs(&self) -> &[Attribute] {
-        &self.src.attrs
-    }
-}
-
-impl<Item: Clone> HirStructOrEnum<Item> {
+impl<Item: SynItemStructOrEnum> HirStructOrEnum<Item> {
     pub(crate) fn with_namespace(&self, namespace: Namespace) -> Self {
         Self {
             namespaced_name: NamespacedName::new(namespace, self.namespaced_name.name.clone()),
