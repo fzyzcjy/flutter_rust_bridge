@@ -66,6 +66,10 @@ where
 {
     let mut ans = HashMap::new();
     visit_pack(hir_pack, &mut |module| {
+        if !is_interest_mod(module) {
+            return;
+        }
+
         for item in f(module) {
             let (key, value) = extract_entry(item);
             if let Some(old_value) = ans.get(&key) {
@@ -82,8 +86,18 @@ where
     F: Fn(&'a HirModule) -> Vec<T>,
 {
     let mut ans = vec![];
-    visit_pack(hir_pack, &mut |module| ans.extend(f(module)));
+    visit_pack(hir_pack, &mut |module| {
+        if !is_interest_mod(module) {
+            return;
+        }
+
+        ans.extend(f(module))
+    });
     ans
+}
+
+fn is_interest_mod(module: &HirModule) -> bool {
+    module.meta.is_public()
 }
 
 fn visit_pack<'a, F: FnMut(&'a HirModule)>(hir_pack: &'a HirPack, f: &mut F) {
