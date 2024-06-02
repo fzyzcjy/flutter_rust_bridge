@@ -1,4 +1,3 @@
-use std::collections::HashMap;
 use crate::codegen::config::internal_config::{
     GeneratorInternalConfig, GeneratorWireInternalConfig,
 };
@@ -20,6 +19,7 @@ use crate::utils::path_utils::path_to_string;
 use anyhow::Context;
 use itertools::Itertools;
 use pathdiff::diff_paths;
+use std::collections::HashMap;
 use std::path::{Path, PathBuf};
 
 pub(super) struct Args<'a> {
@@ -174,7 +174,7 @@ fn compute_default_external_library_relative_directory(
 fn compute_dart_type_rename(config: &Config) -> anyhow::Result<HashMap<String, String>> {
     Ok(config
         .dart_type_rename
-        .as_ref()
+        .clone()
         .unwrap_or_default()
         .iter()
         .map(|(k, v)| Ok((canonicalize_rust_type(k)?, v.to_owned())))
