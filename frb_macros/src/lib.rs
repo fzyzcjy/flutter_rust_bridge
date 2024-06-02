@@ -4,7 +4,7 @@ mod components;
 
 use crate::components::attr_external::handle_external_impl;
 use crate::components::encoder::create_frb_encoded_comment;
-use crate::components::stripper::convert_frb_attr_to_encoded_form;
+use crate::components::converter::convert_frb_attr_to_encoded_form;
 use proc_macro::*;
 
 /// Attribute to guide code generation.
