@@ -1,5 +1,3 @@
-mod transform_macro_encoded;
-
 use crate::codegen::dumper::Dumper;
 use crate::codegen::ir::hir::raw::crates::HirRawCrate;
 use crate::codegen::ir::hir::raw::pack::HirRawPack;
@@ -18,15 +16,13 @@ pub(crate) fn parse(
     ])
     .iter()
     .map(|crate_name| {
-        let syn_file = run_cargo_expand(
-            &config.rust_crate_dir,
-            (*crate_name != CrateName::self_crate()).then_some(crate_name),
-            dumper,
-        )?;
-        let syn_file = transform_macro_encoded::transform(syn_file);
         Ok(HirRawCrate {
             name: crate_name.to_owned(),
-            syn_file,
+            syn_file: run_cargo_expand(
+                &config.rust_crate_dir,
+                (*crate_name != CrateName::self_crate()).then_some(crate_name),
+                dumper,
+            )?,
         })
     })
     .collect::<anyhow::Result<Vec<_>>>()?
