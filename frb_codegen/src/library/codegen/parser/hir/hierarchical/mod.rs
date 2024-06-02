@@ -10,12 +10,19 @@ pub(crate) mod mirror_ident;
 pub(crate) mod module;
 mod pub_use;
 pub(crate) mod struct_or_enum;
+mod third_party_override_transformer;
 pub(crate) mod visibility;
 
 pub(crate) fn parse(
     config: &ParserHirInternalConfig,
     hir_raw: &HirRawPack,
 ) -> anyhow::Result<HirPack> {
+    let pack = parse_raw(config, hir_raw)?;
+    let pack = third_party_override_transformer::transform(pack)?;
+    Ok(pack)
+}
+
+fn parse_raw(config: &ParserHirInternalConfig, hir_raw: &HirRawPack) -> anyhow::Result<HirPack> {
     let crates = hir_raw
         .crates
         .iter()
