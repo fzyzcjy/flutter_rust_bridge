@@ -3,7 +3,7 @@
 mod components;
 
 use crate::components::attr_external::handle_external_impl;
-use crate::components::encoder::format_frb_attribute;
+use crate::components::encoder::create_frb_encoded_comment;
 use crate::components::stripper::strip_frb_attr;
 use proc_macro::*;
 
@@ -15,7 +15,7 @@ use proc_macro::*;
 // frb-coverage:ignore-start
 #[proc_macro_attribute]
 pub fn frb(attribute: TokenStream, item: TokenStream) -> TokenStream {
-    let mut output = format_frb_attribute(format!("#[frb({attribute})]"));
+    let mut output = create_frb_encoded_comment(format!("#[frb({attribute})]"));
     output.extend(strip_frb_attr(handle_external_impl(attribute, item)));
     output
 }

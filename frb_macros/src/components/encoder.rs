@@ -1,9 +1,9 @@
 use proc_macro::TokenStream;
 use quote::quote;
 
-// TODO rename
-pub(crate) fn format_frb_attribute(item: String) -> TokenStream {
+pub(crate) fn create_frb_encoded_comment(data: String) -> TokenStream {
+    let encoded = hex::encode(data);
     quote! {
-        #[cfg_attr(frb_expand, doc="frb_marker={}")]
+        #[cfg_attr(frb_expand, doc="frb_encoded={#encoded}")]
     }
 }

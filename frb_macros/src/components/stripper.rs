@@ -1,4 +1,4 @@
-use crate::components::encoder::format_frb_attribute;
+use crate::components::encoder::create_frb_encoded_comment;
 use proc_macro::*;
 
 pub(crate) fn strip_frb_attr(item: TokenStream) -> TokenStream {
@@ -12,7 +12,7 @@ pub(crate) fn strip_frb_attr(item: TokenStream) -> TokenStream {
                 }
                 (Some(_), TT::Group(group)) if is_frb_bracket(group) => {
                     _ = pound.take();
-                    Some(format_frb_attribute(format!("#[{}]", group.stream())))
+                    Some(create_frb_encoded_comment(format!("#[{}]", group.stream())))
                 }
                 (_, TT::Group(group)) => Some(
                     [
