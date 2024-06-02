@@ -16,30 +16,9 @@ Future<void> renamedFunction() => RustLib.instance.api
     .crateApiMiscNoTwinExampleAFunctionWithCustomNameTwinNormal();
 
 Future<void> functionWithArgTypeNameOverride(
-        {required BoxAny a, required BoxAnyMyDartTypeRename b}) =>
+        {required BoxAnyMyDartTypeRename a}) =>
     RustLib.instance.api
-        .crateApiMiscNoTwinExampleAFunctionWithArgTypeNameOverride(a: a, b: b);
-
-// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn Any + Send >>>
-@sealed
-class BoxAny extends RustOpaque {
-  // Not to be used by end users
-  BoxAny.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  BoxAny.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_BoxAny,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_BoxAny,
-    rustArcDecrementStrongCountPtr:
-        RustLib.instance.api.rust_arc_decrement_strong_count_BoxAnyPtr,
-  );
-}
+        .crateApiMiscNoTwinExampleAFunctionWithArgTypeNameOverride(a: a);
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn Any + Send + 'static >>>
 @sealed

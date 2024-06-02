@@ -886,7 +886,7 @@ abstract class RustLibApi extends BaseApi {
       {required StructWithSimpleSetterTwinNormal that, required int value});
 
   Future<void> crateApiMiscNoTwinExampleAFunctionWithArgTypeNameOverride(
-      {required BoxAny a, required BoxAnyMyDartTypeRename b});
+      {required BoxAnyMyDartTypeRename a});
 
   Future<void> crateApiMiscNoTwinExampleAFunctionWithCustomNameTwinNormal();
 
@@ -4431,12 +4431,6 @@ abstract class RustLibApi extends BaseApi {
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_RwLockHideDataTwinSyncPtr;
-
-  RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_BoxAny;
-
-  RustArcDecrementStrongCountFnType get rust_arc_decrement_strong_count_BoxAny;
-
-  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_BoxAnyPtr;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxAnyMyDartTypeRename;
@@ -11077,14 +11071,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> crateApiMiscNoTwinExampleAFunctionWithArgTypeNameOverride(
-      {required BoxAny a, required BoxAnyMyDartTypeRename b}) {
+      {required BoxAnyMyDartTypeRename a}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySend(
-            a, serializer);
         sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendstatic(
-            b, serializer);
+            a, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 229, port: port_);
       },
@@ -11094,7 +11086,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       ),
       constMeta:
           kCrateApiMiscNoTwinExampleAFunctionWithArgTypeNameOverrideConstMeta,
-      argValues: [a, b],
+      argValues: [a],
       apiImpl: this,
     ));
   }
@@ -11103,7 +11095,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get kCrateApiMiscNoTwinExampleAFunctionWithArgTypeNameOverrideConstMeta =>
           const TaskConstMeta(
             debugName: "function_with_arg_type_name_override",
-            argNames: ["a", "b"],
+            argNames: ["a"],
           );
 
   @override
@@ -38525,14 +38517,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           .rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataTwinSync;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_BoxAny => wire
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySend;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_BoxAny => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySend;
-
-  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxAnyMyDartTypeRename => wire
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendstatic;
 
@@ -38922,14 +38906,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
         raw);
-  }
-
-  @protected
-  BoxAny
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySend(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BoxAny.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -40253,14 +40229,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return RwLockHideDataTwinSync.frbInternalDcoDecode(raw as List<dynamic>);
-  }
-
-  @protected
-  BoxAny
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySend(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BoxAny.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -48828,15 +48796,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  BoxAny
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySend(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return BoxAny.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
   BoxAnyMyDartTypeRename
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendstatic(
           SseDeserializer deserializer) {
@@ -50167,15 +50126,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return RwLockHideDataTwinSync.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
-  BoxAny
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySend(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return BoxAny.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -59342,14 +59292,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySend(
-          BoxAny self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(self.frbInternalSseEncode(move: true), serializer);
-  }
-
-  @protected
-  void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendstatic(
           BoxAnyMyDartTypeRename self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -60659,14 +60601,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void sse_encode_RustOpaque_RwLockHideDataTwinSync(
       RwLockHideDataTwinSync self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(self.frbInternalSseEncode(move: null), serializer);
-  }
-
-  @protected
-  void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySend(
-          BoxAny self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(self.frbInternalSseEncode(move: null), serializer);
   }

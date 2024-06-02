@@ -8599,18 +8599,6 @@ impl CstDecode<RustAutoOpaqueNom<OpaqueItemTwinNormal>>
         flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(self.cst_decode())
     }
 }
-impl CstDecode<Box<dyn Any + Send>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> Box<dyn Any + Send> {
-        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
-            RustOpaqueNom<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box<dyn Any + Send>>,
-            >,
-        >::cst_decode(
-            self
-        ))
-    }
-}
 impl CstDecode<Box<dyn Any + Send + 'static>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -10820,23 +10808,6 @@ impl CstDecode<RustOpaqueMoi<RwLock<HideDataTwinSyncMoi>>>
             compile_error!("64-bit pointers are not supported.");
         }
         decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box<dyn Any + Send>>>,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box<dyn Any + Send>>>
-    {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
     }
 }
 impl
@@ -15640,9 +15611,8 @@ pub fn wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNorma
 pub fn wire__crate__api__misc_no_twin_example_a__function_with_arg_type_name_override(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    b: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire__crate__api__misc_no_twin_example_a__function_with_arg_type_name_override_impl(port_, a, b)
+    wire__crate__api__misc_no_twin_example_a__function_with_arg_type_name_override_impl(port_, a)
 }
 
 #[wasm_bindgen]
@@ -40262,24 +40232,6 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataTwinSyncSseMoi(
     ptr: *const std::ffi::c_void,
 ) {
     MoiArc::<RwLock<HideDataTwinSyncSseMoi>>::decrement_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySend(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn Any + Send >>>::increment_strong_count(ptr as _);
-    }
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySend(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn Any + Send >>>::decrement_strong_count(ptr as _);
-    }
 }
 
 #[wasm_bindgen]
