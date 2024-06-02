@@ -71,7 +71,7 @@ where
             if let Some(old_value) = ans.get(&key) {
                 debug!("Same key={key} has multiple values: {old_value:?} (thrown away) and {value:?} (used). This may or may not be a problem.");
             }
-            let _old_value = ans.insert(key, value);
+            ans.insert(key, value);
         }
     });
     ans
