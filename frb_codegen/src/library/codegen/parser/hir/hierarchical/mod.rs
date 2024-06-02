@@ -1,3 +1,4 @@
+use crate::codegen::ir::hir::hierarchical::crates::HirCrate;
 use crate::codegen::ir::hir::hierarchical::pack::HirPack;
 use crate::codegen::ir::hir::raw::pack::HirRawPack;
 use crate::codegen::parser::hir::hierarchical::crates::parse_crate;
@@ -26,12 +27,7 @@ fn parse_raw(config: &ParserHirInternalConfig, hir_raw: &HirRawPack) -> anyhow::
     let crates = hir_raw
         .crates
         .iter()
-        .map(|c| {
-            Ok((
-                c.name.to_owned(),
-                parse_crate(config, c.syn_file, c.name)?,
-            ))
-        })
+        .map(|c| parse_crate(config, &c.syn_file, &c.name))
         .collect::<anyhow::Result<Vec<_>>>()?
         .into_iter()
         .collect();
