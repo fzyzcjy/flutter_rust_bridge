@@ -2,8 +2,8 @@ use proc_macro::TokenStream;
 use quote::quote;
 
 pub(crate) fn create_frb_encoded_comment(data: String) -> TokenStream {
-    let encoded = hex::encode(data);
+    let encoded = format!(r#"frb_encoded={}"#, hex::encode(data));
     quote! {
-        #[cfg_attr(frb_expand, doc="frb_encoded={#encoded}")]
-    }
+        #[cfg_attr(frb_expand, doc=#encoded)]
+    }.into()
 }
