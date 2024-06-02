@@ -6,7 +6,7 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These functions are ignored because they are not marked as `pub`: `fmt`, `clone`, `fmt`, `clone`
+// These functions are ignored because they are not marked as `pub`: `clone`, `clone`, `fmt`, `fmt`
 
 Future<Uint8List> drawMandelbrot(
         {required Size imageSize,

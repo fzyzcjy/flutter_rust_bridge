@@ -8,7 +8,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'event_listener_twin_rust_async.freezed.dart';
 
-// These functions are ignored because they are not marked as `pub`: `deref`, `initialize`, `clone`
+// These functions are ignored because they are not marked as `pub`: `clone`, `deref`, `initialize`
 
 Future<
     Stream<

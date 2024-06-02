@@ -6,7 +6,7 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These types are ignored because they are not used by any `pub` functions: `SimpleEnumWithCommentsTwinNormal`, `ComplexEnumWithCommentsTwinNormal`
+// These types are ignored because they are not used by any `pub` functions: `ComplexEnumWithCommentsTwinNormal`, `SimpleEnumWithCommentsTwinNormal`
 
 /// This is single line comment
 Future<void> functionWithCommentsTripleSlashSingleLineTwinNormal() =>
