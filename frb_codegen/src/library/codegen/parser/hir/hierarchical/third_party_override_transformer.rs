@@ -57,7 +57,7 @@ fn transform_module_content_functions(
         target,
         src_content_functions,
         |x| {
-            let owner = match x.inner {
+            let owner = match &x.inner {
                 HirFunctionInner::Method { item_impl, .. } => {
                     Some(ty_to_string(&item_impl.self_ty))
                 }
