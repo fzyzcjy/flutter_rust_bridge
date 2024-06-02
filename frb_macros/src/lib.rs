@@ -3,6 +3,7 @@
 mod components;
 
 use crate::components::attr_external::handle_external_impl;
+use crate::components::encoder::format_frb_attribute;
 use crate::components::stripper::strip_frb_attr;
 use proc_macro::*;
 

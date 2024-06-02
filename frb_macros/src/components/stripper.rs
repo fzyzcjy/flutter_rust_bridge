@@ -1,3 +1,4 @@
+use crate::components::encoder::format_frb_attribute;
 use proc_macro::*;
 
 pub(crate) fn strip_frb_attr(item: TokenStream) -> TokenStream {
@@ -33,10 +34,4 @@ pub(crate) fn strip_frb_attr(item: TokenStream) -> TokenStream {
 
 fn is_frb_bracket(group: &Group) -> bool {
     matches!((group.delimiter(), group.stream().into_iter().next()), (Delimiter::Bracket, Some(TokenTree::Ident(ident))) if ident.to_string() == "frb")
-}
-
-fn format_frb_attribute(item: String) -> TokenStream {
-    format!("#[cfg_attr(frb_expand, doc = r###\"frb_marker: {item}\"###)]",)
-        .parse()
-        .unwrap()
 }
