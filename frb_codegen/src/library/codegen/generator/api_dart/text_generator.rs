@@ -3,11 +3,13 @@ use crate::codegen::generator::api_dart::spec_generator::function::ApiDartGenera
 use crate::codegen::generator::api_dart::spec_generator::{
     ApiDartOutputSpec, ApiDartOutputSpecItem,
 };
+use crate::codegen::generator::misc::target::TargetOrCommonMap;
 use crate::codegen::generator::misc::{generate_code_header, PathText, PathTexts};
 use crate::utils::basic_code::DartBasicHeaderCode;
 use crate::utils::namespace::Namespace;
-use anyhow::ensure;
+use anyhow::{ensure, Context};
 use itertools::Itertools;
+use pathdiff::diff_paths;
 use std::path::{Path, PathBuf};
 
 pub(super) struct ApiDartOutputText {
@@ -28,7 +30,12 @@ pub(super) fn generate(
             .map(|(namespace, item)| {
                 let dart_output_path =
                     compute_path_from_namespace(&config.dart_decl_base_output_path, namespace);
-                let text = generate_end_api_text(namespace, &dart_output_path, item)?;
+                let text = generate_end_api_text(
+                    namespace,
+                    &dart_output_path,
+                    &config.dart_impl_output_path,
+                    item,
+                )?;
                 Ok(PathText::new(dart_output_path, text))
             })
             .collect::<anyhow::Result<Vec<_>>>()?,
@@ -42,6 +49,7 @@ pub(super) fn generate(
 fn generate_end_api_text(
     namespace: &Namespace,
     dart_output_path: &Path,
+    dart_impl_output_path: &TargetOrCommonMap<PathBuf>,
     item: &ApiDartOutputSpecItem,
 ) -> anyhow::Result<String> {
     let funcs = item
@@ -52,7 +60,11 @@ fn generate_end_api_text(
         .join("\n\n");
     let classes = item.classes.iter().map(|c| c.code.clone()).join("\n\n");
 
-    let path_frb_generated = TODO;
+    let path_frb_generated = diff_paths(
+        dart_impl_output_path.common,
+        dart_output_path.parent().unwrap(),
+    )
+    .with_context(|| format!("Fail to find relative path"))?;
 
     let preamble = &item.preamble.as_str();
     let mut header = DartBasicHeaderCode {

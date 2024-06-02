@@ -61,6 +61,7 @@ pub(super) fn parse(args: Args) -> anyhow::Result<GeneratorInternalConfig> {
             dart_enums_style,
             dart3,
             dart_decl_base_output_path: dart_output_path_pack.dart_decl_base_output_path.clone(),
+            dart_impl_output_path: dart_output_path_pack.dart_impl_output_path.clone(),
             dart_entrypoint_class_name: dart_output_class_name_pack.entrypoint_class_name.clone(),
             dart_preamble: config.dart_preamble.clone().unwrap_or_default(),
         },
