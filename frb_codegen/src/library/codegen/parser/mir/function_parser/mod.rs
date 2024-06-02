@@ -22,7 +22,7 @@ use itertools::concat;
 use log::{debug, warn};
 use std::fmt::Debug;
 use syn::*;
-use MirSkipReason::Ignored;
+use MirSkipReason::{IgnoredNotPub, IgnoredMisc};
 use MirType::Primitive;
 
 pub(crate) mod argument;
@@ -77,7 +77,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         debug!("parse_function function name: {:?}", func.sig().ident);
 
         if !matches!(func.vis(), Visibility::Public(_)) {
-            return Ok(create_output_skip(func, namespace_naive, Ignored));
+            return Ok(create_output_skip(func, namespace_naive, IgnoredNotPub));
         }
 
         let sig = func.sig();
@@ -97,13 +97,13 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         {
             owner
         } else {
-            return Ok(create_output_skip(func, namespace_naive, Ignored));
+            return Ok(create_output_skip(func, namespace_naive, IgnoredMisc));
         };
 
         let func_name = parse_name(sig, &owner);
 
         if attributes.ignore() {
-            return Ok(create_output_skip(func, namespace_naive, Ignored));
+            return Ok(create_output_skip(func, namespace_naive, IgnoredMisc));
         }
 
         let context = create_context(Some(owner.clone()));
@@ -120,7 +120,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let namespace_refined = refine_namespace(&owner).unwrap_or(namespace_naive.clone());
 
         if info.ignore_func {
-            return Ok(create_output_skip(func, namespace_naive, Ignored));
+            return Ok(create_output_skip(func, namespace_naive, IgnoredMisc));
         }
 
         Ok(ParseFunctionOutput::Ok(MirFunc {
