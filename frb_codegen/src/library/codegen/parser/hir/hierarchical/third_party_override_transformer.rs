@@ -54,7 +54,7 @@ fn transform_module_content_functions(
     transform_module_content_general_vec(
         target,
         src_content_functions,
-        |x| x.inner.name(),
+        |x| (TODO, x.inner.name()),
         |target, src| {
             target
                 .inner
