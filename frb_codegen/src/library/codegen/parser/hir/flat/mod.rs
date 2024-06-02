@@ -5,6 +5,7 @@ use crate::codegen::ir::hir::hierarchical::pack::HirPack;
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirEnum;
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStruct;
 use crate::codegen::parser::hir::flat::type_alias_resolver::resolve_type_aliases;
+use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 use crate::utils::crate_name::CrateName;
 use log::debug;
 use std::collections::HashMap;
@@ -13,9 +14,12 @@ use syn::Type;
 
 mod type_alias_resolver;
 
-pub(crate) fn parse(hir_pack: &HirPack) -> anyhow::Result<HirFlatCrate> {
+pub(crate) fn parse(
+    config: &ParserHirInternalConfig,
+    hir_pack: &HirPack,
+) -> anyhow::Result<HirFlatCrate> {
     Ok(HirFlatCrate {
-        functions: collect_functions(hir_pack),
+        functions: collect_functions(config, hir_pack),
         structs: collect_structs(hir_pack),
         enums: collect_enums(hir_pack),
         types: resolve_type_aliases(collect_types(hir_pack)),
@@ -23,8 +27,14 @@ pub(crate) fn parse(hir_pack: &HirPack) -> anyhow::Result<HirFlatCrate> {
     })
 }
 
-fn collect_functions(hir_pack: &HirPack) -> Vec<&HirFunction> {
-    collect_objects_vec(hir_pack, |module| module.content.functions.iter().collect())
+fn collect_functions(config: &ParserHirInternalConfig, hir_pack: &HirPack) -> Vec<&HirFunction> {
+    collect_objects_vec(hir_pack, |module| {
+        if (config.rust_input_namespace_pack).is_interest(&module.meta.namespace) {
+            module.content.functions.iter().collect()
+        } else {
+            vec![]
+        }
+    })
 }
 
 fn collect_modules(hir_pack: &HirPack) -> Vec<&HirModule> {
