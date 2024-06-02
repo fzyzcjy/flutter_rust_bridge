@@ -10,6 +10,7 @@ pub(crate) mod mirror_ident;
 pub(crate) mod module;
 pub(crate) mod struct_or_enum;
 pub(crate) mod visibility;
+mod pub_use;
 
 pub(crate) fn parse(
     config: &ParserHirInternalConfig,

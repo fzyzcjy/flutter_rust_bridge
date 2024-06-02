@@ -9,14 +9,16 @@ use crate::codegen::parser::hir::hierarchical::struct_or_enum::{
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 use crate::utils::namespace::Namespace;
 use syn::ItemMod;
+use crate::codegen::parser::hir::hierarchical::pub_use::transform_module_by_pub_use;
 
 pub(crate) fn parse_module(
     items: &[syn::Item],
     meta: HirModuleMeta,
     config: &ParserHirInternalConfig,
 ) -> anyhow::Result<HirModule> {
-    let raw = parse_module_raw(items, meta, config)?;
-    Ok(TODO)
+    let module = parse_module_raw(items, meta, config)?;
+    let module = transform_module_by_pub_use(module)?;
+    Ok(module)
 }
 
 fn parse_module_raw(
