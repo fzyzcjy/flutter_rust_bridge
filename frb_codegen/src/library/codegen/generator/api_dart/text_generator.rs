@@ -61,7 +61,7 @@ fn generate_end_api_text(
         dart_output_path.parent().unwrap(),
     )
     .with_context(|| "Fail to find relative path".to_string())?;
-    let path_frb_generated = path_to_string(&path_frb_generated)?;
+    let path_frb_generated = path_to_string(&path_frb_generated)?.replace('\\', "/");
 
     let preamble = &item.preamble.as_str();
     let mut header = DartBasicHeaderCode {
