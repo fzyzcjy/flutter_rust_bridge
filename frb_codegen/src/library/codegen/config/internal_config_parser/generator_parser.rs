@@ -172,13 +172,20 @@ fn compute_default_external_library_relative_directory(
 }
 
 fn compute_dart_type_rename(config: &Config) -> anyhow::Result<HashMap<String, String>> {
+    fn convert_rust_type(raw: &str) -> anyhow::Result<Vec<String>> {
+        let ast: syn::Type = syn::parse_str(raw)?;
+        let canonicalized_ty = quote::quote!(#ast).to_string();
+
+        Ok(TODO)
+    }
+
     Ok(config
         .dart_type_rename
         .clone()
         .unwrap_or_default()
         .iter()
         .map(|(k, v)| {
-            Ok(parse_rust_type(k)?
+            Ok(convert_rust_type(k)?
                 .into_iter()
                 .map(|parsed_k| (parsed_k, v.to_owned()))
                 .collect_vec())
@@ -187,11 +194,4 @@ fn compute_dart_type_rename(config: &Config) -> anyhow::Result<HashMap<String, S
         .into_iter()
         .flatten()
         .collect())
-}
-
-fn parse_rust_type(raw: &str) -> anyhow::Result<Vec<String>> {
-    let ast: syn::Type = syn::parse_str(raw)?;
-    let canonicalized_ty = quote::quote!(#ast).to_string();
-
-    Ok(TODO)
 }
