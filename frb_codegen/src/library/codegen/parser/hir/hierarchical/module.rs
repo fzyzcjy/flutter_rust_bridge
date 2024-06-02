@@ -1,6 +1,4 @@
-use crate::codegen::ir::hir::hierarchical::module::{
-    HirModule, HirModuleContent, HirModuleMeta,
-};
+use crate::codegen::ir::hir::hierarchical::module::{HirModule, HirModuleContent, HirModuleMeta};
 use crate::codegen::parser::hir::hierarchical::function::parse_generalized_functions;
 use crate::codegen::parser::hir::hierarchical::item_type::parse_syn_item_type;
 use crate::codegen::parser::hir::hierarchical::struct_or_enum::{
@@ -63,9 +61,7 @@ fn parse_syn_item(
         }
         syn::Item::Mod(item_mod) => {
             scope.modules.extend(parse_syn_item_mod(
-                item_mod,
-                namespace,
-                config,
+                item_mod, namespace, config,
                 // cumulated_visibility_pub,
             )?);
         }
@@ -86,8 +82,7 @@ fn parse_syn_item_mod(
             namespace: namespace.join(&item_mod.ident.to_string()),
         };
         Some(parse_module(
-            items,
-            info,
+            items, info,
             config,
             // cumulated_visibility_pub && matches!(item_mod.vis, syn::Visibility::Public(_)),
         )?)
