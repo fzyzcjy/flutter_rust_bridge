@@ -18,7 +18,7 @@ use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::basic_code::DartBasicHeaderCode;
 use crate::utils::namespace::Namespace;
 use anyhow::Result;
-use itertools::Itertools;
+use itertools::{concat, Itertools};
 use serde::Serialize;
 use std::collections::{HashMap, HashSet};
 use ConfigDumpContent::GeneratorInfo;
@@ -149,8 +149,7 @@ fn compute_skips(mir_pack: &MirPack) -> Vec<MirSkip> {
     let skipped_functions = (mir_pack.skipped_functions.iter())
         .filter(|t| &t.name.namespace == namespace)
         .cloned()
-        .into_group_map_by(|t| t.reason)
-        .into_iter()
-        .map(|(reason, items)| (reason, items.into_iter().map(|x| x.name.name).collect_vec()))
-        .collect::<HashMap<_, _>>();
+        .collect_vec();
+
+    concat([unused_types, skipped_functions])
 }
