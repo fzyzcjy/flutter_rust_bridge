@@ -79,7 +79,7 @@ impl MirTypeTrait for MirTypeEnumRef {
         Some(self.ident.0.namespace.clone())
     }
 
-    fn ignore(&self, mir_context: &impl MirContext) -> bool {
+    fn should_ignore(&self, mir_context: &impl MirContext) -> bool {
         self.get(mir_context).ignore
     }
 }

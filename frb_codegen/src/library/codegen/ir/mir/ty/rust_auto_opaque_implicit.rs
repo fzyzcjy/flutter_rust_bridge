@@ -49,7 +49,7 @@ impl MirTypeTrait for MirTypeRustAutoOpaqueImplicit {
         Some(&RUST_OPAQUE_AS_PRIMITIVE)
     }
 
-    fn ignore(&self, mir_context: &impl MirContext) -> bool {
+    fn should_ignore(&self, mir_context: &impl MirContext) -> bool {
         self.get(mir_context).ignore
     }
 }
