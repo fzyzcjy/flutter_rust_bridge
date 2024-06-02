@@ -50,4 +50,11 @@ impl HirFunctionInner {
             HirFunctionInner::Method { impl_item_fn, .. } => &impl_item_fn.vis,
         }
     }
+
+    pub(crate) fn with_namespace(&self, namespace: Namespace) -> Self {
+        Self {
+            namespace,
+            ..self.clone()
+        }
+    }
 }

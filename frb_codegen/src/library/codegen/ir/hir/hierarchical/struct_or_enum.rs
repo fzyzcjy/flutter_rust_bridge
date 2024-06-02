@@ -1,5 +1,5 @@
 use crate::codegen::ir::hir::hierarchical::module::HirVisibility;
-use crate::utils::namespace::NamespacedName;
+use crate::utils::namespace::{Namespace, NamespacedName};
 use derivative::Derivative;
 use proc_macro2::Ident;
 use quote::ToTokens;
@@ -33,6 +33,8 @@ pub trait HirStructOrEnumWrapper<Item> {
     fn inner(&self) -> &HirStructOrEnum<Item>;
 
     fn attrs(&self) -> &[Attribute];
+
+    fn with_namespace(&self, namespace: Namespace) -> Self;
 }
 
 macro_rules! struct_or_enum_wrapper {
@@ -45,12 +47,25 @@ macro_rules! struct_or_enum_wrapper {
             fn attrs(&self) -> &[Attribute] {
                 &self.0.src.attrs
             }
+
+            fn with_namespace(&self, namespace: Namespace) -> Self {
+                Self(self.0.with_namespace(namespace))
+            }
         }
     };
 }
 
 struct_or_enum_wrapper!(HirStruct, ItemStruct);
 struct_or_enum_wrapper!(HirEnum, ItemEnum);
+
+impl<Item> HirStructOrEnum<Item> {
+    fn with_namespace(&self, namespace: Namespace) -> Self {
+        Self {
+            namespaced_name: NamespacedName::new(namespace, self.namespaced_name.name.clone()),
+            ..self.clone(),
+        }
+    }
+}
 
 pub(super) fn serialize_syn<T: ToTokens, S: Serializer>(
     value: &T,
