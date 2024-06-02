@@ -11,6 +11,7 @@ use anyhow::{ensure, Context};
 use itertools::Itertools;
 use pathdiff::diff_paths;
 use std::path::{Path, PathBuf};
+use crate::utils::path_utils::path_to_string;
 
 pub(super) struct ApiDartOutputText {
     pub(super) output_texts: PathTexts,
@@ -61,10 +62,11 @@ fn generate_end_api_text(
     let classes = item.classes.iter().map(|c| c.code.clone()).join("\n\n");
 
     let path_frb_generated = diff_paths(
-        dart_impl_output_path.common,
+        &dart_impl_output_path.common,
         dart_output_path.parent().unwrap(),
     )
     .with_context(|| format!("Fail to find relative path"))?;
+    let path_frb_generated = path_to_string(&path_frb_generated)?;
 
     let preamble = &item.preamble.as_str();
     let mut header = DartBasicHeaderCode {
