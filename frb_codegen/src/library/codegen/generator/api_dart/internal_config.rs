@@ -1,3 +1,4 @@
+use std::collections::HashMap;
 use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
 
@@ -8,4 +9,5 @@ pub(crate) struct GeneratorApiDartInternalConfig {
     pub dart_decl_base_output_path: PathBuf,
     pub dart_entrypoint_class_name: String,
     pub dart_preamble: String,
+    pub dart_type_rename: HashMap<String, String>,
 }

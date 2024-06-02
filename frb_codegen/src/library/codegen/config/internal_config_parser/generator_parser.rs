@@ -63,6 +63,7 @@ pub(super) fn parse(args: Args) -> anyhow::Result<GeneratorInternalConfig> {
             dart_decl_base_output_path: dart_output_path_pack.dart_decl_base_output_path.clone(),
             dart_entrypoint_class_name: dart_output_class_name_pack.entrypoint_class_name.clone(),
             dart_preamble: config.dart_preamble.clone().unwrap_or_default(),
+            dart_type_rename: config.dart_type_rename.clone(),unwrap_or_default(),
         },
         wire: GeneratorWireInternalConfig {
             dart: GeneratorWireDartInternalConfig {
