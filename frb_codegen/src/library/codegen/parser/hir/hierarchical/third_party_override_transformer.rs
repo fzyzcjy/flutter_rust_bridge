@@ -48,7 +48,7 @@ fn transform_module(target: &mut HirModule, src: HirModule) -> anyhow::Result<()
 }
 
 fn transform_module_content_functions(
-    target: &mut Vec<HirFunction>,
+    target: &mut [HirFunction],
     src_content_functions: Vec<HirFunction>,
 ) -> anyhow::Result<()> {
     transform_module_content_general_vec(
@@ -65,7 +65,7 @@ fn transform_module_content_functions(
 }
 
 fn transform_module_content_struct_or_enums<Item: SynItemStructOrEnum>(
-    target: &mut Vec<HirStructOrEnum<Item>>,
+    target: &mut [HirStructOrEnum<Item>],
     src_content_struct_or_enums: Vec<HirStructOrEnum<Item>>,
 ) -> anyhow::Result<()> {
     transform_module_content_general_vec(
