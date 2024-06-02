@@ -58,7 +58,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             comments,
             variants,
             mode,
-            ignore: parse_type_should_ignore_simple(&attributes, src_enum.visibility),
+            ignore: parse_type_should_ignore_simple(&attributes, src_enum.visibility, &self.context.crate_name),
         })
     }
 

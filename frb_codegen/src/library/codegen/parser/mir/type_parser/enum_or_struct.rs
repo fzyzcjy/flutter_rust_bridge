@@ -7,6 +7,7 @@ use crate::codegen::parser::mir::type_parser::external_impl;
 use crate::codegen::parser::mir::type_parser::misc::parse_type_should_ignore_simple;
 use crate::codegen::parser::mir::type_parser::unencodable::SplayedSegment;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
+use crate::utils::crate_name::CrateName;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use log::debug;
 use std::collections::{HashMap, HashSet};
@@ -21,9 +22,10 @@ where
     fn parse(
         &mut self,
         last_segment: &SplayedSegment,
+        crate_name: &CrateName,
         override_opaque: Option<bool>,
     ) -> anyhow::Result<Option<MirType>> {
-        let output = self.parse_impl(last_segment, override_opaque)?;
+        let output = self.parse_impl(last_segment , crate_name, override_opaque)?;
         self.handle_dart_code(&output);
         Ok(output.map(|(ty, _)| ty))
     }
@@ -31,6 +33,7 @@ where
     fn parse_impl(
         &mut self,
         last_segment: &SplayedSegment,
+        crate_name: &CrateName,
         override_opaque: Option<bool>,
     ) -> anyhow::Result<Option<(MirType, FrbAttributes)>> {
         let (name, _) = last_segment;
@@ -48,7 +51,7 @@ where
             if attrs_opaque == Some(true) {
                 debug!("Treat {name} as opaque since attribute says so");
                 return Ok(Some((
-                    self.parse_opaque(&namespaced_name, &attrs, vis)?,
+                    self.parse_opaque(&namespaced_name, crate_name, &attrs, vis)?,
                     attrs,
                 )));
             }
@@ -71,7 +74,7 @@ where
             {
                 debug!("Treat {name} as opaque by compute_default_opaque");
                 return Ok(Some((
-                    self.parse_opaque(&namespaced_name, &attrs, vis)?,
+                    self.parse_opaque(&namespaced_name, crate_name, &attrs, vis)?,
                     attrs,
                 )));
             }
@@ -103,13 +106,14 @@ where
     fn parse_opaque(
         &mut self,
         namespaced_name: &NamespacedName,
+        crate_name: &CrateName,
         attrs: &FrbAttributes,
         vis: HirVisibility,
     ) -> anyhow::Result<MirType> {
         self.parse_type_rust_auto_opaque_implicit(
             Some(namespaced_name.namespace.clone()),
             &syn::parse_str(&namespaced_name.name)?,
-            Some(parse_type_should_ignore_simple(attrs, vis)),
+            Some(parse_type_should_ignore_simple(attrs, vis, crate_name)),
         )
     }
 

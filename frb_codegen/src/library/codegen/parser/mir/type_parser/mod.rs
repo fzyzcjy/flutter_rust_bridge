@@ -16,6 +16,7 @@ use crate::codegen::parser::mir::type_parser::rust_opaque::RustOpaqueParserInfo;
 use crate::utils::namespace::Namespace;
 use std::collections::HashMap;
 use syn::Type;
+use crate::utils::crate_name::CrateName;
 
 pub(crate) mod array;
 pub(crate) mod concrete;
@@ -111,6 +112,7 @@ pub(crate) struct TypeParserParsingContext {
     pub(crate) default_stream_sink_codec: CodecMode,
     pub(crate) default_rust_opaque_codec: RustOpaqueCodecMode,
     pub(crate) owner: Option<MirFuncOwnerInfo>,
+    pub(crate) crate_name: CrateName,
 }
 
 impl MirContext for TypeParser<'_> {

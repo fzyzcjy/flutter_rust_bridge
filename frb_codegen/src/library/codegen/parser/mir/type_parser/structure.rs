@@ -53,7 +53,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         let attributes = FrbAttributes::parse(&src_struct.src.attrs)?;
         let dart_metadata = attributes.dart_metadata();
 
-        let ignore = parse_type_should_ignore_simple(&attributes, src_struct.visibility);
+        let ignore = parse_type_should_ignore_simple(&attributes, src_struct.visibility, &self.context.crate_name);
 
         Ok(MirStruct {
             name,
