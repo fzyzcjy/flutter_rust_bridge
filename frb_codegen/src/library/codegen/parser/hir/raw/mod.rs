@@ -1,5 +1,5 @@
 use crate::codegen::dumper::Dumper;
-use crate::codegen::ir::hir::raw::HirRawPack;
+use crate::codegen::ir::hir::raw::pack::HirRawPack;
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 use crate::library::commands::cargo_expand::run_cargo_expand;
 use crate::utils::crate_name::CrateName;

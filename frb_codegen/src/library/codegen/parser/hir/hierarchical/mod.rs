@@ -1,5 +1,5 @@
 use crate::codegen::ir::hir::hierarchical::pack::HirPack;
-use crate::codegen::ir::hir::raw::HirRawPack;
+use crate::codegen::ir::hir::raw::pack::HirRawPack;
 use crate::codegen::parser::hir::hierarchical::crates::parse_crate;
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 
