@@ -15,8 +15,7 @@ use proc_macro::*;
 #[proc_macro_attribute]
 pub fn frb(attribute: TokenStream, item: TokenStream) -> TokenStream {
     let mut output = format_frb_attribute(format!("#[frb({attribute})]"));
-    let item = strip_frb_attr(handle_external_impl(attribute, item));
-    output.extend(item);
+    output.extend(strip_frb_attr(handle_external_impl(attribute, item)));
     output
 }
 // frb-coverage:ignore-end
