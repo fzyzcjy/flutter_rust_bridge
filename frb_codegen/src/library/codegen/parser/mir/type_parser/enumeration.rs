@@ -14,7 +14,7 @@ use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
 use crate::codegen::parser::mir::type_parser::enum_or_struct::{
     EnumOrStructParser, EnumOrStructParserInfo,
 };
-use crate::codegen::parser::mir::type_parser::misc::parse_comments;
+use crate::codegen::parser::mir::type_parser::misc::{parse_comments, parse_simple_type_should_ignore};
 use crate::codegen::parser::mir::type_parser::structure::structure_compute_default_opaque;
 use crate::codegen::parser::mir::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::mir::type_parser::TypeParserWithContext;
@@ -56,7 +56,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             comments,
             variants,
             mode,
-            ignore: attributes.ignore(),
+            ignore: parse_simple_type_should_ignore(&attributes, src_enum.visibility),
         })
     }
 
