@@ -5,7 +5,8 @@ pub(crate) fn transform_module_by_pub_use(
     raw: HirModule,
     items: &[syn::Item],
 ) -> anyhow::Result<HirModule> {
-    TODO
+    let pub_use_names = parse_pub_use_from_items(items);
+    Ok(todo!())
 }
 
 fn parse_pub_use_from_items(items: &[syn::Item]) -> Vec<String> {
