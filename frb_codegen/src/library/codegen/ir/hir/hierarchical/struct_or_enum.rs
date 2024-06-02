@@ -23,42 +23,14 @@ pub struct HirStructOrEnum<Item> {
 }
 // frb-coverage:ignore-end
 
-#[derive(Clone, Debug, Serialize)]
-pub struct HirStruct(pub HirStructOrEnum<ItemStruct>);
-
-#[derive(Clone, Debug, Serialize)]
-pub struct HirEnum(pub HirStructOrEnum<ItemEnum>);
-
-pub trait HirStructOrEnumWrapper<Item> {
-    fn inner(&self) -> &HirStructOrEnum<Item>;
-
-    fn attrs(&self) -> &[Attribute];
-
-    fn with_namespace(&self, namespace: Namespace) -> Self;
-}
-
-macro_rules! struct_or_enum_wrapper {
-    ($name:ident, $item:ident) => {
-        impl HirStructOrEnumWrapper<$item> for $name {
-            fn inner(&self) -> &HirStructOrEnum<$item> {
-                &self.0
-            }
-
-            fn attrs(&self) -> &[Attribute] {
-                &self.0.src.attrs
-            }
-
-            fn with_namespace(&self, namespace: Namespace) -> Self {
-                Self(self.0.with_namespace(namespace))
-            }
-        }
-    };
-}
-
-struct_or_enum_wrapper!(HirStruct, ItemStruct);
-struct_or_enum_wrapper!(HirEnum, ItemEnum);
+pub type HirStruct = HirStructOrEnum<ItemStruct>;
+pub type HirEnum = HirEnumOrEnum<ItemEnum>;
 
 impl<Item: Clone> HirStructOrEnum<Item> {
+    fn attrs(&self) -> &[Attribute] {
+        &self.src.attrs
+    }
+
     fn with_namespace(&self, namespace: Namespace) -> Self {
         Self {
             namespaced_name: NamespacedName::new(namespace, self.namespaced_name.name.clone()),
