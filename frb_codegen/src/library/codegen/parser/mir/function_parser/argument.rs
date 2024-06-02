@@ -11,6 +11,7 @@ use crate::codegen::parser::mir::type_parser::misc::parse_comments;
 use crate::codegen::parser::mir::type_parser::rust_auto_opaque_implicit::split_ownership_from_ty;
 use crate::codegen::parser::mir::type_parser::{TypeParser, TypeParserParsingContext};
 use crate::if_then_some;
+use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use anyhow::Context;
 use syn::*;
 

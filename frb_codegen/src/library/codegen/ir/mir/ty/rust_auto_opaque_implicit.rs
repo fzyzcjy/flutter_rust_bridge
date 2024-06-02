@@ -50,7 +50,7 @@ impl MirTypeTrait for MirTypeRustAutoOpaqueImplicit {
     }
 
     fn should_ignore(&self, mir_context: &impl MirContext) -> bool {
-        self.get(mir_context).ignore
+        self.ignore
     }
 }
 
