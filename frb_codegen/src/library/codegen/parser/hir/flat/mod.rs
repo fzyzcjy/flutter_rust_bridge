@@ -27,7 +27,10 @@ pub(crate) fn parse<'a>(
     })
 }
 
-fn collect_functions<'a>(config: &ParserHirInternalConfig, hir_pack: &'a HirPack) -> Vec<&'a HirFunction> {
+fn collect_functions<'a>(
+    config: &ParserHirInternalConfig,
+    hir_pack: &'a HirPack,
+) -> Vec<&'a HirFunction> {
     collect_objects_vec(hir_pack, |module| {
         if (config.rust_input_namespace_pack).is_interest(&module.meta.namespace) {
             module.content.functions.iter().collect()
