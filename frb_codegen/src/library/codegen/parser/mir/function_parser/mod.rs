@@ -22,7 +22,7 @@ use itertools::concat;
 use log::{debug, warn};
 use std::fmt::Debug;
 use syn::*;
-use MirSkipReason::{IgnoredNotPub, IgnoredMisc};
+use MirSkipReason::{IgnoredFunctionNotPub, IgnoredMisc};
 use MirType::Primitive;
 
 pub(crate) mod argument;
@@ -77,7 +77,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         debug!("parse_function function name: {:?}", func.sig().ident);
 
         if !matches!(func.vis(), Visibility::Public(_)) {
-            return Ok(create_output_skip(func, namespace_naive, IgnoredNotPub));
+            return Ok(create_output_skip(func, namespace_naive, IgnoredFunctionNotPub));
         }
 
         let sig = func.sig();

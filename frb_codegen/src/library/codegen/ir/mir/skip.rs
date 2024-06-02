@@ -8,7 +8,7 @@ pub struct MirSkip {
 
 #[derive(Copy, PartialOrd, Ord)]
 pub(crate) enum MirSkipReason {
-    IgnoredNotPub,
+    IgnoredFunctionNotPub,
     IgnoredMisc,
     Err,
 }
@@ -17,7 +17,7 @@ pub(crate) enum MirSkipReason {
 impl MirSkipReason {
     pub(crate) fn explanation_prefix(&self) -> &'static str {
         match self {
-            Self::IgnoredNotPub => "These functions are ignored because they are not marked as `pub`",
+            Self::IgnoredFunctionNotPub => "These functions are ignored because they are not marked as `pub`",
             Self::IgnoredMisc => "These functions are ignored",
             Self::Err => "These functions have error during generation (see debug logs for more details)",
         }
