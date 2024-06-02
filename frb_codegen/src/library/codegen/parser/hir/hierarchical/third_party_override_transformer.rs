@@ -50,17 +50,23 @@ fn transform_module_content_functions(
     target: &mut HirModule,
     src_content_functions: Vec<HirFunction>,
 ) -> anyhow::Result<()> {
-    for src_function in src_content_functions {
-        todo!();
-    }
-    Ok(())
+    transform_module_content_attrable(target, src_content_functions)
 }
 
 fn transform_module_content_struct_or_enums<Item: SynItemStructOrEnum>(
     target: &mut HirModule,
     src_content_struct_or_enums: Vec<HirStructOrEnum<Item>>,
 ) -> anyhow::Result<()> {
-    todo!();
+    transform_module_content_attrable(target, src_content_struct_or_enums)
+}
+
+fn transform_module_content_attrable<T>(
+    target: &mut HirModule,
+    src_items: Vec<T>,
+) -> anyhow::Result<()> {
+    for src_item in src_items {
+        TODO;
+    }
     Ok(())
 }
 
