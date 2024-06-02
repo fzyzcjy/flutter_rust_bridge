@@ -14,5 +14,6 @@ pub(crate) mod namespace;
 pub(crate) mod path_utils;
 pub(crate) mod rust_project_utils;
 pub(crate) mod simple_cache;
+pub(crate) mod syn_utils;
 #[cfg(test)]
 pub(crate) mod test_utils;
