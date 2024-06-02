@@ -103,7 +103,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             return Ok(create_output_skip(func, namespace_naive, IgnoredMisc));
         };
 
-        let func_name = parse_name(sig, &owner);
+        let func_name = parse_name(sig.ident, &owner);
 
         if attributes.ignore() {
             return Ok(create_output_skip(func, namespace_naive, IgnoredMisc));
@@ -227,9 +227,9 @@ fn compute_func_mode(attributes: &FrbAttributes, info: &FunctionPartialInfo) -> 
     })
 }
 
-fn parse_name(sig: &Signature, owner: &MirFuncOwnerInfo) -> String {
+fn parse_name(sig_ident: &Ident, owner: &MirFuncOwnerInfo) -> String {
     match owner {
-        MirFuncOwnerInfo::Function => sig.ident.to_string(),
+        MirFuncOwnerInfo::Function => sig_ident.to_string(),
         MirFuncOwnerInfo::Method(method) => parse_effective_function_name_of_method(method),
     }
 }
