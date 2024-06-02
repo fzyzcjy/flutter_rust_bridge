@@ -100,13 +100,29 @@ fn generate_end_api_text(
 
     let header = header.all_code();
 
+    let skips = compute_skips();
+
+    Ok(format!(
+        "
+        {header}
+
+        {skips}
+
+        {funcs}
+
+        {classes}
+        ",
+    ))
+}
+
+fn compute_skips() -> String {
     let unused_types = (item.unused_types.iter().sorted())
         .map(|t| {
             format!("// The type `{t}` is not used by any `pub` functions, thus it is ignored.\n")
         })
         .join("");
 
-    let skipped_functions = item
+    let skips = item
         .skipped_functions
         .iter()
         .sorted_by_key(|(reason, _)| **reason)
@@ -118,18 +134,6 @@ fn generate_end_api_text(
             )
         })
         .join("");
-
-    Ok(format!(
-        "
-        {header}
-
-        {unused_types}{skipped_functions}
-
-        {funcs}
-
-        {classes}
-        ",
-    ))
 }
 
 fn generate_function(func: &ApiDartGeneratedFunction) -> String {
