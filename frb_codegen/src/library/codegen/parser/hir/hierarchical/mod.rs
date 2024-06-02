@@ -29,7 +29,7 @@ fn parse_raw(config: &ParserHirInternalConfig, hir_raw: &HirRawPack) -> anyhow::
         .map(|c| {
             Ok((
                 c.name.to_owned(),
-                parse_crate(config, c.syn_file, crate_name)?,
+                parse_crate(config, c.syn_file, c.name)?,
             ))
         })
         .collect::<anyhow::Result<Vec<_>>>()?

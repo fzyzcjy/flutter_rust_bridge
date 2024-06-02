@@ -1,4 +1,4 @@
-mod crates;
+pub(crate) mod crates;
 
 use crate::codegen::ir::hir::raw::crates::HirRawCrate;
 
