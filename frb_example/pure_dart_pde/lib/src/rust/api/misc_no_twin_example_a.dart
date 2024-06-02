@@ -15,30 +15,28 @@ Future<void> sameFunctionNameInDifferentFiles() => RustLib.instance.api
 Future<void> renamedFunction() => RustLib.instance.api
     .crateApiMiscNoTwinExampleAFunctionWithCustomNameTwinNormal();
 
-Future<void> functionWithArgTypeNameOverride(
-        {required BoxAnyMyDartTypeRename a}) =>
+Future<void> functionWithArgTypeNameOverride({required BoxAny a}) =>
     RustLib.instance.api
         .crateApiMiscNoTwinExampleAFunctionWithArgTypeNameOverride(a: a);
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn Any + Send + 'static >>>
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn Any + Send + Sync + 'static >>>
 @sealed
-class BoxAnyMyDartTypeRename extends RustOpaque {
+class BoxAny extends RustOpaque {
   // Not to be used by end users
-  BoxAnyMyDartTypeRename.frbInternalDcoDecode(List<dynamic> wire)
+  BoxAny.frbInternalDcoDecode(List<dynamic> wire)
       : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
-  BoxAnyMyDartTypeRename.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
+  BoxAny.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
       : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_BoxAnyMyDartTypeRename,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_BoxAnyMyDartTypeRename,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_BoxAnyMyDartTypeRenamePtr,
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_BoxAny,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_BoxAny,
+    rustArcDecrementStrongCountPtr:
+        RustLib.instance.api.rust_arc_decrement_strong_count_BoxAnyPtr,
   );
 }
 

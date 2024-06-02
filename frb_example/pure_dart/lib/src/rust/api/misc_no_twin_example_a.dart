@@ -20,7 +20,7 @@ Future<void> functionWithArgTypeNameOverride(
     RustLib.instance.api
         .crateApiMiscNoTwinExampleAFunctionWithArgTypeNameOverride(a: a);
 
-// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn Any + Send + 'static >>>
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn Any + Send + Sync + 'static >>>
 @sealed
 class BoxAnyMyDartTypeRename extends RustOpaque {
   // Not to be used by end users

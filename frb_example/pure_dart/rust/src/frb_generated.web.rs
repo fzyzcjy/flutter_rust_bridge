@@ -8599,15 +8599,15 @@ impl CstDecode<RustAutoOpaqueNom<OpaqueItemTwinNormal>>
         flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(self.cst_decode())
     }
 }
-impl CstDecode<Box<dyn Any + Send + 'static>>
+impl CstDecode<Box<dyn Any + Send + Sync + 'static>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> Box<dyn Any + Send + 'static> {
+    fn cst_decode(self) -> Box<dyn Any + Send + Sync + 'static> {
         flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueNom<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                    Box<dyn Any + Send + 'static>,
+                    Box<dyn Any + Send + Sync + 'static>,
                 >,
             >,
         >::cst_decode(
@@ -10813,7 +10813,9 @@ impl CstDecode<RustOpaqueMoi<RwLock<HideDataTwinSyncMoi>>>
 impl
     CstDecode<
         RustOpaqueNom<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box<dyn Any + Send + 'static>>,
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                Box<dyn Any + Send + Sync + 'static>,
+            >,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -10821,7 +10823,9 @@ impl
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
-        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box<dyn Any + Send + 'static>>,
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+            Box<dyn Any + Send + Sync + 'static>,
+        >,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -40235,23 +40239,27 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataTwinSyncSseMoi(
 }
 
 #[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendstatic(
+pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendSyncstatic(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
         StdArc::<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box<dyn Any + Send + 'static>>,
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                Box<dyn Any + Send + Sync + 'static>,
+            >,
         >::increment_strong_count(ptr as _);
     }
 }
 
 #[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendstatic(
+pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendSyncstatic(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
         StdArc::<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box<dyn Any + Send + 'static>>,
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                Box<dyn Any + Send + Sync + 'static>,
+            >,
         >::decrement_strong_count(ptr as _);
     }
 }
