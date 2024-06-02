@@ -5,7 +5,7 @@ full_dep: true
 
 # this config, together with usage of that type, tests the feature of type rename
 dart_type_rename:
-  Box<dyn Any + Send + 'static>: BoxAnyMyDartTypeRename
+  Box<dyn Any + Send + Sync + 'static>: BoxAnyMyDartTypeRename
 
 # only for development of flutter_rust_bridge, not for normal users (dump all debug information)
 dump_all: true
