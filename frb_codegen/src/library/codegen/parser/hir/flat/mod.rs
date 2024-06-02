@@ -48,7 +48,7 @@ fn collect_structs(hir_pack: &HirPack) -> HashMap<String, &HirStruct> {
     collect_objects_map(
         hir_pack,
         |module| &module.content.structs,
-        |x| (x.0.ident.to_string(), x),
+        |x| (x.ident.to_string(), x),
     )
 }
 
@@ -56,7 +56,7 @@ fn collect_enums(hir_pack: &HirPack) -> HashMap<String, &HirEnum> {
     collect_objects_map(
         hir_pack,
         |module| &module.content.enums,
-        |x| (x.0.ident.to_string(), x),
+        |x| (x.ident.to_string(), x),
     )
 }
 
@@ -117,7 +117,7 @@ fn is_interest_mod(module: &HirModule) -> bool {
 }
 
 fn visit_pack<'a, F: FnMut(&'a HirModule)>(hir_pack: &'a HirPack, f: &mut F) {
-    for hir_crate in hir_pack.crates.values() {
+    for hir_crate in &hir_pack.crates {
         visit_modules(&hir_crate.root_module, f);
     }
 }

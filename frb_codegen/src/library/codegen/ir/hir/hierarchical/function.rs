@@ -39,10 +39,21 @@ impl HirFunctionInner {
         }
     }
 
+    pub(crate) fn name(&self) -> String {
+        self.sig().ident.to_string()
+    }
+
     pub(crate) fn attrs(&self) -> &Vec<Attribute> {
         match self {
             HirFunctionInner::Function { item_fn } => &item_fn.attrs,
             HirFunctionInner::Method { impl_item_fn, .. } => &impl_item_fn.attrs,
+        }
+    }
+
+    pub(crate) fn attrs_mut(&mut self) -> &mut Vec<Attribute> {
+        match self {
+            HirFunctionInner::Function { item_fn } => &mut item_fn.attrs,
+            HirFunctionInner::Method { impl_item_fn, .. } => &mut impl_item_fn.attrs,
         }
     }
 

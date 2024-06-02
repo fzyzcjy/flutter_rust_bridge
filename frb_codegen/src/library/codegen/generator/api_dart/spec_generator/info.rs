@@ -177,8 +177,8 @@ impl<'a> ApiDartGeneratorInfoTrait for PrimitiveListApiDartGenerator<'a> {
                 MirTypePrimitive::I16 => "Int16List",
                 MirTypePrimitive::U32 => "Uint32List",
                 MirTypePrimitive::I32 => "Int32List",
-                MirTypePrimitive::U64 => "Uint64List",
-                MirTypePrimitive::I64 => "Int64List",
+                MirTypePrimitive::U64 | MirTypePrimitive::Usize => "Uint64List",
+                MirTypePrimitive::I64 | MirTypePrimitive::Isize => "Int64List",
                 MirTypePrimitive::F32 => "Float32List",
                 MirTypePrimitive::F64 => "Float64List",
                 // frb-coverage:ignore-start

@@ -1,6 +1,7 @@
 {
-  "crates": {
-    "crate": {
+  "crates": [
+    {
+      "name": "crate",
       "root_module": {
         "content": {
           "enums": [],
@@ -44,5 +45,5 @@
         }
       }
     }
-  }
+  ]
 }

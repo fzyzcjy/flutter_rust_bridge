@@ -1,4 +1,5 @@
-use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStructOrEnumWrapper;
+use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStructOrEnum;
+use crate::codegen::ir::hir::hierarchical::syn_item_struct_or_enum::SynItemStructOrEnum;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
 use crate::codegen::parser::mir::type_parser::external_impl;
@@ -11,10 +12,9 @@ use std::fmt::Debug;
 use std::hash::Hash;
 use syn::{Ident, Type};
 
-pub(super) trait EnumOrStructParser<Id, Obj, SrcObj, Item>
+pub(super) trait EnumOrStructParser<Id, Obj, Item: SynItemStructOrEnum>
 where
     Id: From<NamespacedName> + Clone + PartialEq + Eq + Hash,
-    SrcObj: HirStructOrEnumWrapper<Item> + Clone + Debug,
 {
     fn parse(
         &mut self,
@@ -37,10 +37,10 @@ where
         if let Some(src_object) = self.src_objects().get(&name) {
             let src_object = (*src_object).clone();
 
-            let namespace = &src_object.inner().namespaced_name.namespace;
+            let namespace = &src_object.namespaced_name.namespace;
             let namespaced_name = NamespacedName::new(namespace.clone(), name.clone());
 
-            let attrs = FrbAttributes::parse(src_object.attrs())?;
+            let attrs = FrbAttributes::parse(src_object.src.attrs())?;
             let attrs_opaque = override_opaque.or(attrs.opaque());
             if attrs_opaque == Some(true) {
                 debug!("Treat {name} as opaque since attribute says so");
@@ -52,8 +52,8 @@ where
             if (self.parser_info().parsing_or_parsed_objects).insert(namespaced_name.clone()) {
                 let (name, wrapper_name) = compute_name_and_wrapper_name(
                     &namespaced_name.namespace,
-                    &src_object.inner().ident,
-                    src_object.inner().mirror,
+                    &src_object.ident,
+                    src_object.mirror,
                 );
                 let parsed_object = self.parse_inner_impl(&src_object, name, wrapper_name)?;
                 (self.parser_info().object_pool).insert(ident.clone(), parsed_object);
@@ -100,14 +100,14 @@ where
 
     fn parse_inner_impl(
         &mut self,
-        src_object: &SrcObj,
+        src_object: &HirStructOrEnum<Item>,
         name: NamespacedName,
         wrapper_name: Option<String>,
     ) -> anyhow::Result<Obj>;
 
     fn construct_output(&self, ident: Id) -> anyhow::Result<MirType>;
 
-    fn src_objects(&self) -> &HashMap<String, &SrcObj>;
+    fn src_objects(&self) -> &HashMap<String, &HirStructOrEnum<Item>>;
 
     fn parser_info(&mut self) -> &mut EnumOrStructParserInfo<Id, Obj>;
 

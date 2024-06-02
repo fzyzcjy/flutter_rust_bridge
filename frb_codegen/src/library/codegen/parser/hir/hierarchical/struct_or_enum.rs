@@ -1,4 +1,5 @@
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::{HirEnum, HirStruct, HirStructOrEnum};
+use crate::codegen::ir::hir::hierarchical::syn_item_struct_or_enum::SynItemStructOrEnum;
 use crate::codegen::parser::hir::hierarchical::mirror_ident::{
     parse_mirror_ident, ParseMirrorIdentOutput,
 };
@@ -12,41 +13,23 @@ pub(crate) fn parse_syn_item_struct(
     item: &ItemStruct,
     namespace: &Namespace,
 ) -> anyhow::Result<Vec<HirStruct>> {
-    parse_syn_item_struct_or_enum(
-        item,
-        namespace,
-        &item.ident,
-        &item.attrs,
-        &item.vis,
-        HirStruct,
-    )
+    parse_syn_item_struct_or_enum(item, namespace, &item.ident, &item.attrs, &item.vis)
 }
 
 pub(crate) fn parse_syn_item_enum(
     item: &ItemEnum,
     namespace: &Namespace,
 ) -> anyhow::Result<Vec<HirEnum>> {
-    parse_syn_item_struct_or_enum(
-        item,
-        namespace,
-        &item.ident,
-        &item.attrs,
-        &item.vis,
-        HirEnum,
-    )
+    parse_syn_item_struct_or_enum(item, namespace, &item.ident, &item.attrs, &item.vis)
 }
 
-fn parse_syn_item_struct_or_enum<I: Clone, F, T>(
+fn parse_syn_item_struct_or_enum<I: SynItemStructOrEnum>(
     item: &I,
     namespace: &Namespace,
     item_ident: &Ident,
     item_attrs: &[Attribute],
     item_vis: &syn::Visibility,
-    constructor: F,
-) -> anyhow::Result<Vec<T>>
-where
-    F: Fn(HirStructOrEnum<I>) -> T,
-{
+) -> anyhow::Result<Vec<HirStructOrEnum<I>>> {
     debug!("parse_syn_item_struct_or_enum item_ident={item_ident:?}");
 
     let ParseMirrorIdentOutput { idents, mirror } = parse_mirror_ident(item_ident, item_attrs)?;
@@ -55,13 +38,13 @@ where
         .into_iter()
         .map(|ident| {
             let ident_str = ident.to_string();
-            constructor(HirStructOrEnum {
+            HirStructOrEnum {
                 ident,
                 src: item.clone(),
                 visibility: item_vis.into(),
                 namespaced_name: NamespacedName::new(namespace.to_owned(), ident_str),
                 mirror,
-            })
+            }
         })
         .collect_vec())
 }

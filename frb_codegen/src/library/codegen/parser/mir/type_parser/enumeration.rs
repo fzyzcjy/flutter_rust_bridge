@@ -37,9 +37,8 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         name: NamespacedName,
         wrapper_name: Option<String>,
     ) -> anyhow::Result<MirEnum> {
-        let comments = parse_comments(&src_enum.0.src.attrs);
+        let comments = parse_comments(&src_enum.src.attrs);
         let raw_variants = src_enum
-            .0
             .src
             .variants
             .iter()
@@ -65,7 +64,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     ) -> anyhow::Result<MirVariant> {
         Ok(MirVariant {
             name: MirIdent::new(variant.ident.to_string()),
-            wrapper_name: MirIdent::new(format!("{}_{}", src_enum.0.ident, variant.ident)),
+            wrapper_name: MirIdent::new(format!("{}_{}", src_enum.ident, variant.ident)),
             comments: parse_comments(&variant.attrs),
             kind: match variant.fields.iter().next() {
                 None => MirVariantKind::Value,
@@ -86,7 +85,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         field_ident: &Option<Ident>,
     ) -> anyhow::Result<MirVariantKind> {
         let variant_ident = variant.ident.to_string();
-        let enum_name = &src_enum.0.namespaced_name;
+        let enum_name = &src_enum.namespaced_name;
         let variant_namespace = enum_name.namespace.join(&enum_name.name);
         let attributes = FrbAttributes::parse(attrs)?;
         Ok(MirVariantKind::Struct(MirStruct {
@@ -117,7 +116,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                         comments: parse_comments(&field.attrs),
                         default: FrbAttributes::parse(&field.attrs)?.default_value(),
                         settings: MirFieldSettings {
-                            is_in_mirrored_enum: src_enum.0.mirror,
+                            is_in_mirrored_enum: src_enum.mirror,
                         },
                     })
                 })
@@ -128,7 +127,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
 struct EnumOrStructParserEnum<'a, 'b, 'c, 'd>(&'d mut TypeParserWithContext<'a, 'b, 'c>);
 
-impl EnumOrStructParser<MirEnumIdent, MirEnum, HirEnum, ItemEnum>
+impl EnumOrStructParser<MirEnumIdent, MirEnum, ItemEnum>
     for EnumOrStructParserEnum<'_, '_, '_, '_>
 {
     fn parse_inner_impl(

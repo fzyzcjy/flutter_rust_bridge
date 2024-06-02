@@ -1,5 +1,4 @@
 use crate::codegen::ir::hir::hierarchical::module::HirModule;
-use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStructOrEnumWrapper;
 use crate::utils::namespace::Namespace;
 use itertools::Itertools;
 
