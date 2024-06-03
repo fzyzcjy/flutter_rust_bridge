@@ -881,6 +881,16 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "NobodyForNothing",
+      "name": "derdilla",
+      "avatar_url": "https://avatars.githubusercontent.com/u/82763757?v=4",
+      "profile": "http://derdilla.com",
+      "contributions": [
+        "code",
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
