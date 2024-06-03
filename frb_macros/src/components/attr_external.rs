@@ -24,6 +24,7 @@ pub(crate) fn handle_external_impl(attribute: TokenStream, item: TokenStream) ->
     let dummy_struct_ty = syn::parse_str(&dummy_struct_name).unwrap();
 
     let dummy_struct_def: TokenStream = quote! {
+        #[cfg(not(frb_expand))]
         pub struct #dummy_struct_ty(pub #original_self_ty);
     }
     .to_token_stream()
@@ -39,6 +40,7 @@ pub(crate) fn handle_external_impl(attribute: TokenStream, item: TokenStream) ->
     // eprintln!("attribute={attribute:?} self_ty_string={original_self_ty_string} dummy_struct_name={dummy_struct_name} item={item:#?}");
 
     let mut output: TokenStream = encoded_original_item;
+    output.extend(TokenStream::from(quote! { #[cfg(not(frb_expand))] }));
     output.extend(TokenStream::from(item.to_token_stream()));
     output.extend(dummy_struct_def);
     output
