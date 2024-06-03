@@ -8,10 +8,7 @@ use itertools::Itertools;
 pub(super) fn transform(mut pack: HirPack) -> anyhow::Result<HirPack> {
     let trait_map = collect_traits(&pack);
     pack.visit_mut(&mut |module| {
-        module
-            .content
-            .functions
-            .extend(compute_methods(module, &trait_map));
+        (module.content.functions).extend(compute_methods(module, &trait_map));
     });
     Ok(pack)
 }
