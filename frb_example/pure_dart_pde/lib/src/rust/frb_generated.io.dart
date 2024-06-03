@@ -12,6 +12,7 @@ import 'api/benchmark_misc.dart';
 import 'api/chrono_type.dart';
 import 'api/comment.dart';
 import 'api/constructor.dart';
+import 'api/custom_handler.dart';
 import 'api/customization.dart';
 import 'api/dart_code.dart';
 import 'api/dart_fn.dart';
@@ -24,6 +25,7 @@ import 'api/event_listener.dart';
 import 'api/exception.dart';
 import 'api/external_impl.dart';
 import 'api/external_type_in_crate.dart';
+import 'api/impl_trait.dart';
 import 'api/inside_macro.dart';
 import 'api/map_and_set.dart';
 import 'api/method.dart';
@@ -73,6 +75,8 @@ import 'api/pseudo_manual/exception_twin_rust_async.dart';
 import 'api/pseudo_manual/exception_twin_sync.dart';
 import 'api/pseudo_manual/external_type_in_crate_twin_rust_async.dart';
 import 'api/pseudo_manual/external_type_in_crate_twin_sync.dart';
+import 'api/pseudo_manual/impl_trait_twin_rust_async.dart';
+import 'api/pseudo_manual/impl_trait_twin_sync.dart';
 import 'api/pseudo_manual/map_and_set_twin_rust_async.dart';
 import 'api/pseudo_manual/map_and_set_twin_sync.dart';
 import 'api/pseudo_manual/method_twin_rust_async.dart';
@@ -1616,6 +1620,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   BigBuffersTwinSync dco_decode_big_buffers_twin_sync(dynamic raw);
 
   @protected
+  BINARY_TREES dco_decode_binary_trees(dynamic raw);
+
+  @protected
+  BINARY_TREES_PROTOBUF dco_decode_binary_trees_protobuf(dynamic raw);
+
+  @protected
   BlobTwinNormal dco_decode_blob_twin_normal(dynamic raw);
 
   @protected
@@ -1780,6 +1790,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  BINARY_TREES dco_decode_box_autoadd_binary_trees(dynamic raw);
+
+  @protected
+  BINARY_TREES_PROTOBUF dco_decode_box_autoadd_binary_trees_protobuf(
+      dynamic raw);
+
+  @protected
   bool dco_decode_box_autoadd_bool(dynamic raw);
 
   @protected
@@ -1877,6 +1894,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   CustomizedTwinSync dco_decode_box_autoadd_customized_twin_sync(dynamic raw);
 
   @protected
+  DART_OPAQUE dco_decode_box_autoadd_dart_opaque(dynamic raw);
+
+  @protected
   DartOpaqueNestedTwinNormal
       dco_decode_box_autoadd_dart_opaque_nested_twin_normal(dynamic raw);
 
@@ -1887,6 +1907,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   DartOpaqueNestedTwinSync dco_decode_box_autoadd_dart_opaque_nested_twin_sync(
       dynamic raw);
+
+  @protected
+  DROP_COUNT dco_decode_box_autoadd_drop_count(dynamic raw);
 
   @protected
   ElementTwinNormal dco_decode_box_autoadd_element_twin_normal(dynamic raw);
@@ -1986,6 +2009,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   EventTwinRustAsync dco_decode_box_autoadd_event_twin_rust_async(dynamic raw);
 
   @protected
+  EVENTS dco_decode_box_autoadd_events(dynamic raw);
+
+  @protected
   ExoticOptionalsTwinNormal dco_decode_box_autoadd_exotic_optionals_twin_normal(
       dynamic raw);
 
@@ -2038,6 +2064,22 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   FeedIdTwinSync dco_decode_box_autoadd_feed_id_twin_sync(dynamic raw);
 
   @protected
+  FLUTTER_RUST_BRIDGE_HANDLER
+      dco_decode_box_autoadd_flutter_rust_bridge_handler(dynamic raw);
+
+  @protected
+  HelloOneStructTwinNormal dco_decode_box_autoadd_hello_one_struct_twin_normal(
+      dynamic raw);
+
+  @protected
+  HelloOneStructTwinRustAsync
+      dco_decode_box_autoadd_hello_one_struct_twin_rust_async(dynamic raw);
+
+  @protected
+  HelloOneStructTwinSync dco_decode_box_autoadd_hello_one_struct_twin_sync(
+      dynamic raw);
+
+  @protected
   int dco_decode_box_autoadd_i_16(dynamic raw);
 
   @protected
@@ -2048,6 +2090,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   int dco_decode_box_autoadd_i_8(dynamic raw);
+
+  @protected
+  INIT_ONE_DONE dco_decode_box_autoadd_init_one_done(dynamic raw);
+
+  @protected
+  INIT_TWO_DONE dco_decode_box_autoadd_init_two_done(dynamic raw);
 
   @protected
   PlatformInt64 dco_decode_box_autoadd_isize(dynamic raw);
@@ -2707,6 +2755,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   CustomizedTwinSync dco_decode_customized_twin_sync(dynamic raw);
 
   @protected
+  DART_OPAQUE dco_decode_dart_opaque(dynamic raw);
+
+  @protected
   DartOpaqueNestedTwinNormal dco_decode_dart_opaque_nested_twin_normal(
       dynamic raw);
 
@@ -2733,6 +2784,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   DistanceTwinSync dco_decode_distance_twin_sync(dynamic raw);
+
+  @protected
+  DROP_COUNT dco_decode_drop_count(dynamic raw);
 
   @protected
   ElementTwinNormal dco_decode_element_twin_normal(dynamic raw);
@@ -2859,6 +2913,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   EventTwinRustAsync dco_decode_event_twin_rust_async(dynamic raw);
 
   @protected
+  EVENTS dco_decode_events(dynamic raw);
+
+  @protected
   ExoticOptionalsTwinNormal dco_decode_exotic_optionals_twin_normal(
       dynamic raw);
 
@@ -2907,7 +2964,31 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   FeedIdTwinSync dco_decode_feed_id_twin_sync(dynamic raw);
 
   @protected
+  FLUTTER_RUST_BRIDGE_HANDLER dco_decode_flutter_rust_bridge_handler(
+      dynamic raw);
+
+  @protected
   HashMapValue dco_decode_hash_map_value(dynamic raw);
+
+  @protected
+  HelloOneStructTwinNormal dco_decode_hello_one_struct_twin_normal(dynamic raw);
+
+  @protected
+  HelloOneStructTwinRustAsync dco_decode_hello_one_struct_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  HelloOneStructTwinSync dco_decode_hello_one_struct_twin_sync(dynamic raw);
+
+  @protected
+  HelloTwoEnumTwinNormal dco_decode_hello_two_enum_twin_normal(dynamic raw);
+
+  @protected
+  HelloTwoEnumTwinRustAsync dco_decode_hello_two_enum_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  HelloTwoEnumTwinSync dco_decode_hello_two_enum_twin_sync(dynamic raw);
 
   @protected
   int dco_decode_i_16(dynamic raw);
@@ -2923,6 +3004,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   int dco_decode_i_8(dynamic raw);
+
+  @protected
+  INIT_ONE_DONE dco_decode_init_one_done(dynamic raw);
+
+  @protected
+  INIT_TWO_DONE dco_decode_init_two_done(dynamic raw);
 
   @protected
   PlatformInt64 dco_decode_isize(dynamic raw);
@@ -4193,6 +4280,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithOneFieldTwinSync dco_decode_struct_with_one_field_twin_sync(
       dynamic raw);
+
+  @protected
+  StructWithTraitTwinNormal dco_decode_struct_with_trait_twin_normal(
+      dynamic raw);
+
+  @protected
+  StructWithTraitTwinRustAsync dco_decode_struct_with_trait_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  StructWithTraitTwinSync dco_decode_struct_with_trait_twin_sync(dynamic raw);
 
   @protected
   StructWithTwoFieldTwinNormal dco_decode_struct_with_two_field_twin_normal(
@@ -5609,6 +5707,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  BINARY_TREES sse_decode_binary_trees(SseDeserializer deserializer);
+
+  @protected
+  BINARY_TREES_PROTOBUF sse_decode_binary_trees_protobuf(
+      SseDeserializer deserializer);
+
+  @protected
   BlobTwinNormal sse_decode_blob_twin_normal(SseDeserializer deserializer);
 
   @protected
@@ -5796,6 +5901,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  BINARY_TREES sse_decode_box_autoadd_binary_trees(
+      SseDeserializer deserializer);
+
+  @protected
+  BINARY_TREES_PROTOBUF sse_decode_box_autoadd_binary_trees_protobuf(
+      SseDeserializer deserializer);
+
+  @protected
   bool sse_decode_box_autoadd_bool(SseDeserializer deserializer);
 
   @protected
@@ -5908,6 +6021,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  DART_OPAQUE sse_decode_box_autoadd_dart_opaque(SseDeserializer deserializer);
+
+  @protected
   DartOpaqueNestedTwinNormal
       sse_decode_box_autoadd_dart_opaque_nested_twin_normal(
           SseDeserializer deserializer);
@@ -5920,6 +6036,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   DartOpaqueNestedTwinSync sse_decode_box_autoadd_dart_opaque_nested_twin_sync(
       SseDeserializer deserializer);
+
+  @protected
+  DROP_COUNT sse_decode_box_autoadd_drop_count(SseDeserializer deserializer);
 
   @protected
   ElementTwinNormal sse_decode_box_autoadd_element_twin_normal(
@@ -6039,6 +6158,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  EVENTS sse_decode_box_autoadd_events(SseDeserializer deserializer);
+
+  @protected
   ExoticOptionalsTwinNormal sse_decode_box_autoadd_exotic_optionals_twin_normal(
       SseDeserializer deserializer);
 
@@ -6095,6 +6217,24 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  FLUTTER_RUST_BRIDGE_HANDLER
+      sse_decode_box_autoadd_flutter_rust_bridge_handler(
+          SseDeserializer deserializer);
+
+  @protected
+  HelloOneStructTwinNormal sse_decode_box_autoadd_hello_one_struct_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  HelloOneStructTwinRustAsync
+      sse_decode_box_autoadd_hello_one_struct_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  HelloOneStructTwinSync sse_decode_box_autoadd_hello_one_struct_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
   int sse_decode_box_autoadd_i_16(SseDeserializer deserializer);
 
   @protected
@@ -6105,6 +6245,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   int sse_decode_box_autoadd_i_8(SseDeserializer deserializer);
+
+  @protected
+  INIT_ONE_DONE sse_decode_box_autoadd_init_one_done(
+      SseDeserializer deserializer);
+
+  @protected
+  INIT_TWO_DONE sse_decode_box_autoadd_init_two_done(
+      SseDeserializer deserializer);
 
   @protected
   PlatformInt64 sse_decode_box_autoadd_isize(SseDeserializer deserializer);
@@ -6847,6 +6995,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  DART_OPAQUE sse_decode_dart_opaque(SseDeserializer deserializer);
+
+  @protected
   DartOpaqueNestedTwinNormal sse_decode_dart_opaque_nested_twin_normal(
       SseDeserializer deserializer);
 
@@ -6878,6 +7029,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   DistanceTwinSync sse_decode_distance_twin_sync(SseDeserializer deserializer);
+
+  @protected
+  DROP_COUNT sse_decode_drop_count(SseDeserializer deserializer);
 
   @protected
   ElementTwinNormal sse_decode_element_twin_normal(
@@ -7022,6 +7176,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  EVENTS sse_decode_events(SseDeserializer deserializer);
+
+  @protected
   ExoticOptionalsTwinNormal sse_decode_exotic_optionals_twin_normal(
       SseDeserializer deserializer);
 
@@ -7077,7 +7234,35 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   FeedIdTwinSync sse_decode_feed_id_twin_sync(SseDeserializer deserializer);
 
   @protected
+  FLUTTER_RUST_BRIDGE_HANDLER sse_decode_flutter_rust_bridge_handler(
+      SseDeserializer deserializer);
+
+  @protected
   HashMapValue sse_decode_hash_map_value(SseDeserializer deserializer);
+
+  @protected
+  HelloOneStructTwinNormal sse_decode_hello_one_struct_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  HelloOneStructTwinRustAsync sse_decode_hello_one_struct_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  HelloOneStructTwinSync sse_decode_hello_one_struct_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  HelloTwoEnumTwinNormal sse_decode_hello_two_enum_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  HelloTwoEnumTwinRustAsync sse_decode_hello_two_enum_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  HelloTwoEnumTwinSync sse_decode_hello_two_enum_twin_sync(
+      SseDeserializer deserializer);
 
   @protected
   int sse_decode_i_16(SseDeserializer deserializer);
@@ -7093,6 +7278,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   int sse_decode_i_8(SseDeserializer deserializer);
+
+  @protected
+  INIT_ONE_DONE sse_decode_init_one_done(SseDeserializer deserializer);
+
+  @protected
+  INIT_TWO_DONE sse_decode_init_two_done(SseDeserializer deserializer);
 
   @protected
   PlatformInt64 sse_decode_isize(SseDeserializer deserializer);
@@ -8543,6 +8734,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   StructWithOneFieldTwinSync sse_decode_struct_with_one_field_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  StructWithTraitTwinNormal sse_decode_struct_with_trait_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  StructWithTraitTwinRustAsync sse_decode_struct_with_trait_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  StructWithTraitTwinSync sse_decode_struct_with_trait_twin_sync(
       SseDeserializer deserializer);
 
   @protected
@@ -10050,6 +10253,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       BigBuffersTwinSync self, SseSerializer serializer);
 
   @protected
+  void sse_encode_binary_trees(BINARY_TREES self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_binary_trees_protobuf(
+      BINARY_TREES_PROTOBUF self, SseSerializer serializer);
+
+  @protected
   void sse_encode_blob_twin_normal(
       BlobTwinNormal self, SseSerializer serializer);
 
@@ -10234,6 +10444,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       BenchmarkBlobTwinSync self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_binary_trees(
+      BINARY_TREES self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_binary_trees_protobuf(
+      BINARY_TREES_PROTOBUF self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_bool(bool self, SseSerializer serializer);
 
   @protected
@@ -10333,6 +10551,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       CustomizedTwinSync self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_dart_opaque(
+      DART_OPAQUE self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_dart_opaque_nested_twin_normal(
       DartOpaqueNestedTwinNormal self, SseSerializer serializer);
 
@@ -10343,6 +10565,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_box_autoadd_dart_opaque_nested_twin_sync(
       DartOpaqueNestedTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_drop_count(
+      DROP_COUNT self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_element_twin_normal(
@@ -10449,6 +10675,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       EventTwinRustAsync self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_events(EVENTS self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_exotic_optionals_twin_normal(
       ExoticOptionalsTwinNormal self, SseSerializer serializer);
 
@@ -10503,6 +10732,22 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       FeedIdTwinSync self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_flutter_rust_bridge_handler(
+      FLUTTER_RUST_BRIDGE_HANDLER self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_hello_one_struct_twin_normal(
+      HelloOneStructTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_hello_one_struct_twin_rust_async(
+      HelloOneStructTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_hello_one_struct_twin_sync(
+      HelloOneStructTwinSync self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_i_16(int self, SseSerializer serializer);
 
   @protected
@@ -10514,6 +10759,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_box_autoadd_i_8(int self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_init_one_done(
+      INIT_ONE_DONE self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_init_two_done(
+      INIT_TWO_DONE self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_isize(
@@ -11218,6 +11471,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       CustomizedTwinSync self, SseSerializer serializer);
 
   @protected
+  void sse_encode_dart_opaque(DART_OPAQUE self, SseSerializer serializer);
+
+  @protected
   void sse_encode_dart_opaque_nested_twin_normal(
       DartOpaqueNestedTwinNormal self, SseSerializer serializer);
 
@@ -11248,6 +11504,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_distance_twin_sync(
       DistanceTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_drop_count(DROP_COUNT self, SseSerializer serializer);
 
   @protected
   void sse_encode_element_twin_normal(
@@ -11389,6 +11648,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       EventTwinRustAsync self, SseSerializer serializer);
 
   @protected
+  void sse_encode_events(EVENTS self, SseSerializer serializer);
+
+  @protected
   void sse_encode_exotic_optionals_twin_normal(
       ExoticOptionalsTwinNormal self, SseSerializer serializer);
 
@@ -11446,7 +11708,35 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       FeedIdTwinSync self, SseSerializer serializer);
 
   @protected
+  void sse_encode_flutter_rust_bridge_handler(
+      FLUTTER_RUST_BRIDGE_HANDLER self, SseSerializer serializer);
+
+  @protected
   void sse_encode_hash_map_value(HashMapValue self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_hello_one_struct_twin_normal(
+      HelloOneStructTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_hello_one_struct_twin_rust_async(
+      HelloOneStructTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_hello_one_struct_twin_sync(
+      HelloOneStructTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_hello_two_enum_twin_normal(
+      HelloTwoEnumTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_hello_two_enum_twin_rust_async(
+      HelloTwoEnumTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_hello_two_enum_twin_sync(
+      HelloTwoEnumTwinSync self, SseSerializer serializer);
 
   @protected
   void sse_encode_i_16(int self, SseSerializer serializer);
@@ -11462,6 +11752,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_i_8(int self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_init_one_done(INIT_ONE_DONE self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_init_two_done(INIT_TWO_DONE self, SseSerializer serializer);
 
   @protected
   void sse_encode_isize(PlatformInt64 self, SseSerializer serializer);
@@ -12883,6 +13179,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_struct_with_one_field_twin_sync(
       StructWithOneFieldTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_trait_twin_normal(
+      StructWithTraitTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_trait_twin_rust_async(
+      StructWithTraitTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_trait_twin_sync(
+      StructWithTraitTwinSync self, SseSerializer serializer);
 
   @protected
   void sse_encode_struct_with_two_field_twin_normal(

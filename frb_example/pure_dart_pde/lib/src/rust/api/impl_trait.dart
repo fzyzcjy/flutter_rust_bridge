@@ -6,25 +6,24 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<NewTypeIntTwinNormal> handleNewtypeTwinNormal(
-        {required NewTypeIntTwinNormal arg}) =>
-    RustLib.instance.api
-        .crateApiNewtypePatternHandleNewtypeTwinNormal(arg: arg);
+class StructWithTraitTwinNormal {
+  final int value;
 
-class NewTypeIntTwinNormal {
-  final PlatformInt64 field0;
-
-  const NewTypeIntTwinNormal({
-    required this.field0,
+  const StructWithTraitTwinNormal({
+    required this.value,
   });
 
+  static Future<StructWithTraitTwinNormal> simpleTraitFnTwinNormal() =>
+      RustLib.instance.api
+          .crateApiImplTraitStructWithTraitTwinNormalSimpleTraitFnTwinNormal();
+
   @override
-  int get hashCode => field0.hashCode;
+  int get hashCode => value.hashCode;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is NewTypeIntTwinNormal &&
+      other is StructWithTraitTwinNormal &&
           runtimeType == other.runtimeType &&
-          field0 == other.field0;
+          value == other.value;
 }

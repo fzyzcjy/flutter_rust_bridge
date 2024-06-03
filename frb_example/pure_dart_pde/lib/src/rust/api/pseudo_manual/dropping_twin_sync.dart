@@ -6,9 +6,6 @@
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These functions are ignored because they are not marked as `pub`: `deref`, `drop`, `initialize`
-// These types are ignored because they are not used by any `pub` functions: `DROP_COUNT`
-
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DroppableTwinSync>>
 @sealed
 class DroppableTwinSync extends RustOpaque {
@@ -34,6 +31,11 @@ class DroppableTwinSync extends RustOpaque {
         that: this,
       );
 
+  Future<void> drop() => RustLib.instance.api
+          .crateApiPseudoManualDroppingTwinSyncDroppableTwinSyncDrop(
+        that: this,
+      );
+
   static int getDropCountTwinSync() => RustLib.instance.api
       .crateApiPseudoManualDroppingTwinSyncDroppableTwinSyncGetDropCountTwinSync();
 
@@ -44,4 +46,49 @@ class DroppableTwinSync extends RustOpaque {
           .crateApiPseudoManualDroppingTwinSyncDroppableTwinSyncSimpleMethodTwinSync(
         that: this,
       );
+}
+
+class DROP_COUNT {
+  final void privateField;
+
+  const DROP_COUNT({
+    required this.privateField,
+  });
+
+  Future<void> deref() =>
+      RustLib.instance.api.crateApiPseudoManualDroppingTwinSyncDropCountDeref(
+        that: this,
+      );
+
+  Future<void> deref() =>
+      RustLib.instance.api.crateApiPseudoManualDroppingTwinSyncDropCountDeref(
+        that: this,
+      );
+
+  Future<void> deref() =>
+      RustLib.instance.api.crateApiPseudoManualDroppingTwinSyncDropCountDeref(
+        that: this,
+      );
+
+  static Future<void> initialize({required DROP_COUNT lazy}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualDroppingTwinSyncDropCountInitialize(lazy: lazy);
+
+  static Future<void> initialize({required DROP_COUNT lazy}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualDroppingTwinSyncDropCountInitialize(lazy: lazy);
+
+  static Future<void> initialize({required DROP_COUNT lazy}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualDroppingTwinSyncDropCountInitialize(lazy: lazy);
+
+  @override
+  int get hashCode => privateField.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is DROP_COUNT &&
+          runtimeType == other.runtimeType &&
+          privateField == other.privateField;
 }

@@ -6,25 +6,24 @@
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-NewTypeIntTwinSync handleNewtypeTwinSync({required NewTypeIntTwinSync arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualNewtypePatternTwinSyncHandleNewtypeTwinSync(
-            arg: arg);
+class StructWithTraitTwinRustAsync {
+  final int value;
 
-class NewTypeIntTwinSync {
-  final PlatformInt64 field0;
-
-  const NewTypeIntTwinSync({
-    required this.field0,
+  const StructWithTraitTwinRustAsync({
+    required this.value,
   });
 
+  static Future<StructWithTraitTwinRustAsync> simpleTraitFnTwinRustAsync() =>
+      RustLib.instance.api
+          .crateApiPseudoManualImplTraitTwinRustAsyncStructWithTraitTwinRustAsyncSimpleTraitFnTwinRustAsync();
+
   @override
-  int get hashCode => field0.hashCode;
+  int get hashCode => value.hashCode;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is NewTypeIntTwinSync &&
+      other is StructWithTraitTwinRustAsync &&
           runtimeType == other.runtimeType &&
-          field0 == other.field0;
+          value == other.value;
 }
