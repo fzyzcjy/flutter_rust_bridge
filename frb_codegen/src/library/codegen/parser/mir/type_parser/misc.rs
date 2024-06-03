@@ -53,10 +53,10 @@ fn parse_comment(input: &str) -> MirComment {
 
 // TODO rename
 pub(crate) fn parse_type_should_ignore_simple<Item: SynItemStructOrEnum>(
-    src_object: HirStructOrEnum<Item>,
+    src_object: &HirStructOrEnum<Item>,
     crate_name: &CrateName,
 ) -> bool {
-    let attrs = FrbAttributes::parse(src_object.src.attrs())?;
+    let attrs = FrbAttributes::parse(src_object.src.attrs()).unwrap();
 
     attrs.ignore()
         // For third party crates, if a struct is not public, then it is impossible to utilize it,

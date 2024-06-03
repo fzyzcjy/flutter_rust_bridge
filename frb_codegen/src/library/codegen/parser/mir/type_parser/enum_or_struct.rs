@@ -47,7 +47,7 @@ where
             if attrs_opaque == Some(true) {
                 debug!("Treat {name} as opaque since attribute says so");
                 return Ok(Some((
-                    self.parse_opaque(&namespaced_name, &attrs, vis)?,
+                    self.parse_opaque(&namespaced_name, &src_object)?,
                     attrs,
                 )));
             }
@@ -70,7 +70,7 @@ where
             {
                 debug!("Treat {name} as opaque by compute_default_opaque");
                 return Ok(Some((
-                    self.parse_opaque(&namespaced_name, &attrs, vis)?,
+                    self.parse_opaque(&namespaced_name, &src_object)?,
                     attrs,
                 )));
             }
@@ -99,10 +99,10 @@ where
         }
     }
 
-    fn parse_opaque<Item: SynItemStructOrEnum>(
+    fn parse_opaque(
         &mut self,
         namespaced_name: &NamespacedName,
-        src_object: HirStructOrEnum<Item>,
+        src_object: &HirStructOrEnum<Item>,
     ) -> anyhow::Result<MirType> {
         self.parse_type_rust_auto_opaque_implicit(
             Some(namespaced_name.namespace.clone()),
