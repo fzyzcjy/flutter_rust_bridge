@@ -13,16 +13,21 @@ class DartFileBuilder {
     String funcName,
     List<String> values, {
     String? valueType,
+    bool withExpect = false,
   }) {
     if (values.isEmpty) throw ArgumentError();
     final bracketedValueType = valueType == null ? "" : '<$valueType>';
+    final testerName = withExpect
+        ? 'addTestsIdentityWithExpectFunctionCall'
+        : 'addTestsIdentityFunctionCall';
     body +=
-        'addTestsIdentityFunctionCall($funcName, $bracketedValueType[${values.join(", ")}]);';
+        '$testerName($funcName, $bracketedValueType[${values.join(", ")}]);';
   }
 
   @override
   String toString() {
     return '''$kDirectSourcesPrelude
+import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:${package.dartPackageName}/src/rust/api/pseudo_manual/$importName.dart';
 import 'package:${package.dartPackageName}/src/rust/frb_generated.dart';
 import 'package:test/test.dart';

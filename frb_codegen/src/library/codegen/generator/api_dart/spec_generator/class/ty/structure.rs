@@ -11,16 +11,16 @@ use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 
 impl<'a> ApiDartGeneratorClassTrait for StructRefApiDartGenerator<'a> {
     fn generate_class(&self) -> Option<ApiDartGeneratedClass> {
-        let src = self.ir.get(self.context.ir_pack);
+        let src = self.mir.get(self.context.mir_pack);
         let comments = generate_dart_comments(&src.comments);
         let metadata = generate_dart_metadata(&src.dart_metadata);
 
         let methods = generate_api_methods(&src.name, self.context);
         let extra_body =
-            generate_class_extra_body(self.ir_type(), &self.context.ir_pack.dart_code_of_type);
+            generate_class_extra_body(self.mir_type(), &self.context.mir_pack.dart_code_of_type);
 
-        let constructor_postfix = dart_constructor_postfix(&src.name, &self.context.ir_pack.funcs);
-        let class_name = &self.ir.ident.0.name;
+        let constructor_postfix = dart_constructor_postfix(&src.name, &self.context.mir_pack.funcs);
+        let class_name = &self.mir.ident.0.name;
 
         Some(ApiDartGeneratedClass {
             namespace: src.name.namespace.clone(),

@@ -7,10 +7,10 @@ use crate::codegen::generator::wire::rust::spec_generator::base::{
 };
 use crate::codegen::generator::wire::rust::spec_generator::misc::wire_func::generate_wire_func;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
-use crate::codegen::generator::wire::rust::IrPackComputedCache;
-use crate::codegen::ir::pack::IrPack;
-use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::generator::wire::rust::MirPackComputedCache;
+use crate::codegen::ir::mir::pack::MirPack;
+use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
+use crate::codegen::ir::mir::ty::MirType;
 use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
 use itertools::Itertools;
 use serde::Serialize;
@@ -19,6 +19,7 @@ use std::collections::HashSet;
 
 pub(crate) mod ty;
 pub(crate) mod wire_func;
+pub(crate) mod wire_func_rao;
 
 #[derive(Serialize)]
 pub(crate) struct WireRustOutputSpecMisc {
@@ -36,20 +37,20 @@ pub(crate) struct WireRustOutputSpecMisc {
 
 pub(crate) fn generate(
     context: WireRustGeneratorContext,
-    cache: &IrPackComputedCache,
+    cache: &MirPackComputedCache,
 ) -> anyhow::Result<WireRustOutputSpecMisc> {
-    let content_hash = generate_content_hash(context.ir_pack);
+    let content_hash = generate_content_hash(context.mir_pack);
     Ok(WireRustOutputSpecMisc {
         code_header: Acc::new(|_| vec![(generate_code_header() + "\n\n").into()]),
         file_attributes: Acc::new_common(vec![FILE_ATTRIBUTES.to_string().into()]),
         imports: generate_imports(&cache.distinct_types, context),
-        executor: Acc::new_common(vec![generate_handler(context.ir_pack).into()]),
+        executor: Acc::new_common(vec![generate_handler(context.mir_pack).into()]),
         boilerplate: generate_boilerplate(
             context.config.default_stream_sink_codec,
             context.config.default_rust_opaque_codec,
             content_hash,
         ),
-        wire_funcs: (context.ir_pack.funcs.iter())
+        wire_funcs: (context.mir_pack.funcs.iter())
             .map(|f| generate_wire_func(f, context))
             .collect(),
         wrapper_structs: Acc::default(),
@@ -80,11 +81,13 @@ clippy::unused_unit,
 clippy::double_parens,
 clippy::let_and_return,
 clippy::too_many_arguments,
-clippy::match_single_binding
+clippy::match_single_binding,
+clippy::clone_on_copy,
+clippy::let_unit_value
 )]"#;
 
 fn generate_imports(
-    types: &[IrType],
+    types: &[MirType],
     context: WireRustGeneratorContext,
 ) -> Acc<Vec<WireRustOutputCode>> {
     let imports_from_types = types
@@ -115,7 +118,7 @@ use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, WriteBytesExt,
     })
 }
 
-fn generate_static_checks(types: &[IrType], context: WireRustGeneratorContext) -> String {
+fn generate_static_checks(types: &[MirType], context: WireRustGeneratorContext) -> String {
     let raw = types
         .iter()
         .filter_map(|ty| WireRustGenerator::new(ty.clone(), context).generate_static_checks())
@@ -205,8 +208,8 @@ fn generate_boilerplate(
 //     }
 // }
 
-fn generate_handler(ir_pack: &IrPack) -> String {
-    if let Some(existing_handler) = &ir_pack.existing_handler {
+fn generate_handler(mir_pack: &MirPack) -> String {
+    if let Some(existing_handler) = &mir_pack.existing_handler {
         format!("pub use {};", existing_handler.rust_style())
     } else {
         r#"flutter_rust_bridge::frb_generated_default_handler!();"#.to_owned()
@@ -214,10 +217,10 @@ fn generate_handler(ir_pack: &IrPack) -> String {
 }
 
 // TODO can compute hash for more things
-fn generate_content_hash(ir_pack: &IrPack) -> i32 {
+fn generate_content_hash(mir_pack: &MirPack) -> i32 {
     let mut hasher = Sha1::new();
     hasher.update(
-        (ir_pack.funcs.iter())
+        (mir_pack.funcs.iter())
             .map(|func| func.name.rust_style())
             .sorted()
             .join("\n")

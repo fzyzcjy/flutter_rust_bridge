@@ -10,11 +10,11 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::base::{
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::WireRustCodecCstGenerator;
 use crate::codegen::generator::wire::rust::spec_generator::codec::sse::entrypoint::create_maybe_port_param;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFuncParam;
-use crate::codegen::ir::func::IrFunc;
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::ir::mir::func::MirFunc;
+use crate::codegen::ir::mir::ty::MirType;
 use crate::library::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
-use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use itertools::Itertools;
 use std::convert::TryInto;
 
@@ -26,7 +26,7 @@ impl BaseCodecEntrypointTrait<WireRustGeneratorContext<'_>, WireRustCodecOutputS
     fn generate(
         &self,
         context: WireRustGeneratorContext,
-        types: &[IrType],
+        types: &[MirType],
         mode: EncodeOrDecode,
     ) -> Option<WireRustCodecOutputSpec> {
         match mode {
@@ -42,7 +42,7 @@ impl BaseCodecEntrypointTrait<WireRustGeneratorContext<'_>, WireRustCodecOutputS
 impl WireRustCodecEntrypointTrait<'_> for CstWireRustCodecEntrypoint {
     fn generate_func_params(
         &self,
-        func: &IrFunc,
+        func: &MirFunc,
         context: WireRustGeneratorContext,
     ) -> Acc<Vec<ExternFuncParam>> {
         let mut params = Acc::new(|target| {
@@ -86,7 +86,7 @@ impl WireRustCodecEntrypointTrait<'_> for CstWireRustCodecEntrypoint {
 
     fn generate_func_call_decode(
         &self,
-        func: &IrFunc,
+        func: &MirFunc,
         context: WireRustGeneratorContext,
     ) -> String {
         func.inputs

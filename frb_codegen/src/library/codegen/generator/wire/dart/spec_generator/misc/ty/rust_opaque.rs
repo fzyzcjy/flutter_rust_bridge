@@ -3,28 +3,28 @@ use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::misc::ty::WireDartGeneratorMiscTrait;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::ir::mir::ty::MirType;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
-use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use convert_case::{Case, Casing};
 
 impl<'a> WireDartGeneratorMiscTrait for RustOpaqueWireDartGenerator<'a> {
     fn generate_extra_functions(&self) -> Option<Acc<WireDartOutputCode>> {
         Some(generate_rust_arc_functions(
-            self.ir.clone().into(),
+            self.mir.clone().into(),
             self.context,
         ))
     }
 }
 
 pub(super) fn generate_rust_arc_functions(
-    ir: IrType,
+    mir: MirType,
     context: WireDartGeneratorContext,
 ) -> Acc<WireDartOutputCode> {
     vec![
-        generate_rust_arc_modify_strong_count("increment", &ir, context),
-        generate_rust_arc_modify_strong_count("decrement", &ir, context),
-        generate_rust_arc_function_pointer(&ir, context),
+        generate_rust_arc_modify_strong_count("increment", &mir, context),
+        generate_rust_arc_modify_strong_count("decrement", &mir, context),
+        generate_rust_arc_function_pointer(&mir, context),
     ]
     .into_iter()
     .collect::<Acc<Vec<WireDartOutputCode>>>()
@@ -33,13 +33,13 @@ pub(super) fn generate_rust_arc_functions(
 
 fn generate_rust_arc_modify_strong_count(
     op_name: &str,
-    ir: &IrType,
+    mir: &MirType,
     context: WireDartGeneratorContext,
 ) -> Acc<WireDartOutputCode> {
     let ty_dart_api_type =
-        ApiDartGenerator::new(ir.clone(), context.as_api_dart_context()).dart_api_type();
+        ApiDartGenerator::new(mir.clone(), context.as_api_dart_context()).dart_api_type();
     let op_name_pascal = op_name.to_case(Case::Pascal);
-    let safe_ident = ir.safe_ident();
+    let safe_ident = mir.safe_ident();
 
     let definition = format!(
             "RustArc{op_name_pascal}StrongCountFnType get rust_arc_{op_name}_strong_count_{ty_dart_api_type}"
@@ -58,12 +58,12 @@ fn generate_rust_arc_modify_strong_count(
 }
 
 fn generate_rust_arc_function_pointer(
-    ir: &IrType,
+    mir: &MirType,
     context: WireDartGeneratorContext,
 ) -> Acc<WireDartOutputCode> {
     let ty_dart_api_type =
-        ApiDartGenerator::new(ir.clone(), context.as_api_dart_context()).dart_api_type();
-    let ty_safe_ident = ir.safe_ident();
+        ApiDartGenerator::new(mir.clone(), context.as_api_dart_context()).dart_api_type();
+    let ty_safe_ident = mir.safe_ident();
     let getter_name = format!("rust_arc_decrement_strong_count_{ty_dart_api_type}Ptr");
 
     let generate_platform_impl = |ptr_name: &str| WireDartOutputCode {

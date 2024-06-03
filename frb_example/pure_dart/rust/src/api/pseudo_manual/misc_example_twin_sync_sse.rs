@@ -125,6 +125,12 @@ pub fn handle_string_twin_sync_sse(s: String) -> String {
     s + &s2
 }
 
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn handle_char_twin_sync_sse(arg: char) -> char {
+    arg
+}
+
 // to check that `Vec<u8>` can be used as return type
 #[flutter_rust_bridge::frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]
@@ -166,3 +172,10 @@ pub struct MySizeFreezedTwinSyncSse {
 // To test parsing of `pub(super)`
 #[allow(dead_code)]
 pub(super) fn visibility_restricted_func_twin_sync_sse() {}
+
+#[frb(positional)]
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn positional_arguments_twin_sync_sse(a: i32, b: i32) -> i32 {
+    a + b
+}

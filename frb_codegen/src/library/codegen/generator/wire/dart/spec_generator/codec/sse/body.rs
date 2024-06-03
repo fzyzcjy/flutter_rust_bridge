@@ -11,14 +11,14 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::sse::base::Wir
 use crate::codegen::generator::wire::dart::spec_generator::output_code::{
     DartApiImplClassMethod, WireDartOutputCode,
 };
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::ir::mir::ty::MirType;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::library::codegen::generator::codec::sse::ty::CodecSseTyTrait;
-use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 
 pub(super) fn generate_encode_or_decode(
     context: WireDartCodecSseGeneratorContext,
-    types: &[IrType],
+    types: &[MirType],
     mode: EncodeOrDecode,
 ) -> WireDartCodecOutputSpec {
     let types = with_sse_extra_types(types);
@@ -31,7 +31,7 @@ pub(super) fn generate_encode_or_decode(
 }
 
 fn generate_encode_or_decode_for_type(
-    ty: &IrType,
+    ty: &MirType,
     context: WireDartCodecSseGeneratorContext,
     mode: EncodeOrDecode,
 ) -> Acc<WireDartOutputCode> {
@@ -40,7 +40,7 @@ fn generate_encode_or_decode_for_type(
     let safe_ident = ty.safe_ident();
     let body = CodecSseTy::new(
         ty.clone(),
-        CodecSseTyContext::new(context.ir_pack, context.api_dart_config),
+        CodecSseTyContext::new(context.mir_pack, context.api_dart_config),
     )
     .generate(&Lang::DartLang(DartLang), mode);
 

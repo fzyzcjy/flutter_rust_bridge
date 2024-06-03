@@ -8,14 +8,13 @@ use crate::codegen::generator::wire::dart::spec_generator::base::{
 };
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
-use crate::codegen::ir::namespace::Namespace;
-use crate::codegen::ir::pack::IrPackComputedCache;
+use crate::codegen::ir::mir::pack::MirPackComputedCache;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::library::codegen::generator::wire::dart::spec_generator::misc::ty::WireDartGeneratorMiscTrait;
 use crate::utils::basic_code::DartBasicHeaderCode;
+use crate::utils::namespace::Namespace;
 use crate::utils::path_utils::path_to_string;
 use anyhow::Context;
-use convert_case::{Case, Casing};
 use itertools::Itertools;
 use pathdiff::diff_paths;
 use serde::Serialize;
@@ -34,7 +33,7 @@ pub(crate) struct WireDartOutputSpecMisc {
 
 pub(crate) fn generate(
     context: WireDartGeneratorContext,
-    cache: &IrPackComputedCache,
+    cache: &MirPackComputedCache,
     c_file_content: &str,
     api_dart_actual_output_paths: &[PathBuf],
     rust_extern_funcs: &[ExternFunc],
@@ -54,7 +53,7 @@ pub(crate) fn generate(
             context,
             rust_content_hash,
         )?,
-        api_impl_normal_functions: (context.ir_pack.funcs.iter())
+        api_impl_normal_functions: (context.mir_pack.funcs.iter())
             .map(|f| api_impl_body::generate_api_impl_normal_function(f, context))
             .collect::<anyhow::Result<Vec<_>>>()?,
         // wire_delegate_functions: (rust_extern_funcs.iter())
@@ -68,7 +67,7 @@ pub(crate) fn generate(
 
 fn generate_boilerplate(
     api_dart_actual_output_paths: &[PathBuf],
-    cache: &IrPackComputedCache,
+    cache: &MirPackComputedCache,
     context: WireDartGeneratorContext,
     rust_content_hash: i32,
 ) -> anyhow::Result<Acc<Vec<WireDartOutputCode>>> {
@@ -80,7 +79,9 @@ fn generate_boilerplate(
         ..
     } = &context.config.dart_output_class_name_pack;
 
+    let dart_preamble = &context.api_dart_config.dart_preamble.as_str();
     let file_top = generate_code_header()
+        + if !dart_preamble.is_empty() {"\n\n"} else {""} + dart_preamble
         + "\n\n// ignore_for_file: unused_import, unused_element, unnecessary_import, duplicate_ignore, invalid_use_of_internal_member, annotate_overrides, non_constant_identifier_names, curly_braces_in_flow_control_structures, prefer_const_literals_to_create_immutables, unused_field\n";
 
     let mut universal_imports = generate_import_dart_api_layer(
@@ -98,9 +99,9 @@ fn generate_boilerplate(
     import 'dart:async';
     ";
 
-    let execute_rust_initializers = (context.ir_pack.funcs.iter())
+    let execute_rust_initializers = (context.mir_pack.funcs.iter())
         .filter(|f| f.initializer)
-        .map(|f| format!("await api.{}();\n", f.name.name.to_case(Case::Camel)))
+        .map(|f| format!("await api.{}();\n", f.name_dart_wire()))
         .join("");
 
     let codegen_version = env!("CARGO_PKG_VERSION");
@@ -195,7 +196,7 @@ fn generate_boilerplate(
         }],
         web: vec![WireDartOutputCode {
             header: DartBasicHeaderCode {
-                file_top,
+                file_top: format!("{file_top}\n\n// Static analysis wrongly picks the IO variant, thus ignore this\n// ignore_for_file: argument_type_not_assignable\n"),
                 import: format!(
                     "
                     {universal_imports}

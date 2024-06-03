@@ -10,5 +10,5 @@ codegen_generator_structs!(
 
 #[derive(Debug, Clone, Copy)]
 pub(crate) struct WireRustCodecDcoGeneratorContext<'a> {
-    pub(crate) ir_pack: &'a IrPack,
+    pub(crate) mir_pack: &'a MirPack,
 }

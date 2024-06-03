@@ -59,6 +59,17 @@ class Config {
   /// {@macro flutter_rust_bridge.cli}
   @CliOption(
       help:
+          'Override RUSTUP_TOOLCHAIN environment variable when running wasm-pack')
+  late String? wasmPackRustupToolchain;
+
+  /// {@macro flutter_rust_bridge.cli}
+  @CliOption(
+      help: 'Override RUSTFLAGS environment variable when running wasm-pack')
+  late String? wasmPackRustflags;
+
+  /// {@macro flutter_rust_bridge.cli}
+  @CliOption(
+      help:
           'If specified, compile Dart into JavaScript and use this option as entrypoint')
   late String? dartCompileJsEntrypoint;
 
@@ -100,6 +111,8 @@ BuildWebArgs _parseConfigToArgs(Config config) {
     rustCrateDir: config.rustRoot,
     cargoBuildArgs: config.cargoBuildArgs,
     wasmBindgenArgs: config.wasmBindgenArgs,
+    wasmPackRustupToolchain: config.wasmPackRustupToolchain,
+    wasmPackRustflags: config.wasmPackRustflags,
     dartCompileJsEntrypoint: config.dartCompileJsEntrypoint,
   );
 }

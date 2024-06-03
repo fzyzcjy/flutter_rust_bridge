@@ -4,7 +4,6 @@
 use crate::frb_generated::RustAutoOpaque;
 use crate::frb_generated::StreamSink;
 use flutter_rust_bridge::frb;
-use flutter_rust_bridge::rust_async::RwLock;
 use std::path::PathBuf;
 
 // TODO auto determine it is opaque or not later
@@ -273,9 +272,10 @@ pub fn rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_normal(
 
 // ================ struct/enum with both encodable and opaque fields, without non_opaque option ===================
 
+#[allow(dead_code)]
 pub struct StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal {
     pub good: String,
-    pub opaque: NonCloneSimpleTwinNormal,
+    opaque: NonCloneSimpleTwinNormal,
 }
 
 pub enum EnumWithGoodAndOpaqueWithoutOptionTwinNormal {
@@ -330,7 +330,7 @@ pub fn rust_auto_opaque_explicit_arg_twin_normal(
     arg: RustAutoOpaque<NonCloneSimpleTwinNormal>,
     expect: i32,
 ) {
-    assert_eq!((*arg).try_read().unwrap().inner, expect);
+    assert_eq!(arg.try_read().unwrap().inner, expect);
 }
 
 pub struct StructWithExplicitAutoOpaqueFieldTwinNormal {
@@ -341,13 +341,35 @@ pub struct StructWithExplicitAutoOpaqueFieldTwinNormal {
 pub fn rust_auto_opaque_explicit_struct_twin_normal(
     arg: StructWithExplicitAutoOpaqueFieldTwinNormal,
 ) {
-    assert_eq!((*arg.auto_opaque).try_read().unwrap().inner, arg.normal);
+    assert_eq!(arg.auto_opaque.try_read().unwrap().inner, arg.normal);
+}
+
+pub fn rust_auto_opaque_explicit_return_struct_twin_normal(
+) -> StructWithExplicitAutoOpaqueFieldTwinNormal {
+    StructWithExplicitAutoOpaqueFieldTwinNormal {
+        normal: 100,
+        auto_opaque: RustAutoOpaque::new(NonCloneSimpleTwinNormal { inner: 100 }),
+    }
 }
 
 pub fn rust_auto_opaque_explicit_return_twin_normal(
     initial: i32,
 ) -> RustAutoOpaque<NonCloneSimpleTwinNormal> {
-    RustAutoOpaque::new(RwLock::new(NonCloneSimpleTwinNormal { inner: initial }))
+    RustAutoOpaque::new(NonCloneSimpleTwinNormal { inner: initial })
+}
+
+// ================ deadlock detection ===================
+
+pub fn rust_auto_opaque_sleep_twin_normal(
+    apple: &mut NonCloneSimpleTwinNormal,
+    orange: &mut NonCloneSimpleTwinNormal,
+) -> i32 {
+    // If WASM + main thread (i.e. "sync"), the `sleep` cannot be used, which is a Rust / WASM limit.
+    // (But if on native, or on WASM + async mode, it is OK)
+    #[cfg(not(target_family = "wasm"))]
+    std::thread::sleep(std::time::Duration::from_millis(1000));
+
+    apple.inner + orange.inner
 }
 
 // ================ misc ===================

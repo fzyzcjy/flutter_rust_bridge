@@ -13,17 +13,18 @@ Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   test('dart call handle_type_id', () async {
-    final id = await handleTypeAliasIdTwinSync(input: 42);
+    final id = await handleTypeAliasIdTwinSync(input: BigInt.from(42));
     expect(id.toInt(), 42);
   });
 
   test('dart call handle_type_nest_alias_id', () async {
-    final id = await handleTypeNestAliasIdTwinSync(input: 42);
+    final id = await handleTypeNestAliasIdTwinSync(input: BigInt.from(42));
     expect(id.toInt(), 42);
   });
 
   test('dart call handle_type_model', () async {
-    final testModel = await handleTypeAliasModelTwinSync(input: 42);
+    final testModel =
+        await handleTypeAliasModelTwinSync(input: BigInt.from(42));
     expect(testModel.id.toInt(), 42);
     expect(testModel.name, "TestModel");
     expect(testModel.aliasEnum, MyEnum.False);

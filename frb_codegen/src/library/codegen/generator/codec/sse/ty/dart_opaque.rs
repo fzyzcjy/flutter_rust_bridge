@@ -7,10 +7,10 @@ impl<'a> CodecSseTyTrait for DartOpaqueCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
         Some(simple_delegate_encode(
             lang,
-            &self.ir.get_delegate(),
+            &self.mir.get_delegate(),
             match lang {
                 Lang::DartLang(_) => {
-                    "PlatformPointerUtil.ptrToInt(encodeDartOpaque(self, portManager.dartHandlerPort, generalizedFrbRustBinding))"
+                    "BigInt.from(PlatformPointerUtil.ptrToInt(encodeDartOpaque(self, portManager.dartHandlerPort, generalizedFrbRustBinding))).toUnsigned(64)"
                 }
                 Lang::RustLang(_) => "self.encode()",
             },
@@ -20,7 +20,7 @@ impl<'a> CodecSseTyTrait for DartOpaqueCodecSseTy<'a> {
     fn generate_decode(&self, lang: &Lang) -> Option<String> {
         Some(simple_delegate_decode(
             lang,
-            &self.ir.get_delegate(),
+            &self.mir.get_delegate(),
             match lang {
                 Lang::DartLang(_) => "decodeDartOpaque(inner, generalizedFrbRustBinding)",
                 Lang::RustLang(_) => {

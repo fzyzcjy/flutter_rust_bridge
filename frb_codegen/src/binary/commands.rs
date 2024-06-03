@@ -88,6 +88,10 @@ pub(crate) struct GenerateCommandArgsPrimary {
     #[arg(long)]
     pub dart_format_line_length: Option<u32>,
 
+    /// Raw header of output generated Dart code, pasted as-it-is.
+    #[arg(long)]
+    pub dart_preamble: Option<String>,
+
     /// The generated Dart enums will not have their variant names camelCased.
     #[arg(long)]
     pub no_dart_enums_style: bool,

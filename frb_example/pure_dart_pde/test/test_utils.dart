@@ -9,7 +9,7 @@ import 'package:test/test.dart';
 
 @isTestGroup
 void addTestsIdentityFunctionCall<T>(
-  FutureOr<T> Function({required T arg, dynamic hint}) func,
+  FutureOr<T> Function({required T arg}) func,
   List<T> values,
 ) {
   _addTestsRaw(
@@ -20,8 +20,21 @@ void addTestsIdentityFunctionCall<T>(
 }
 
 @isTestGroup
+void addTestsIdentityWithExpectFunctionCall<T>(
+  FutureOr<T> Function({required T arg, required String expect}) func,
+  List<T> values,
+) {
+  _addTestsRaw(
+    groupName: 'call $func',
+    values: values,
+    body: (value) async =>
+        expect(await func(arg: value, expect: value.toString()), value),
+  );
+}
+
+@isTestGroup
 void addTestsErrorFunctionCall<T>(
-  FutureOr<void> Function({required T arg, dynamic hint}) func,
+  FutureOr<void> Function({required T arg}) func,
   List<T> values,
   Matcher matcher(T value),
 ) {

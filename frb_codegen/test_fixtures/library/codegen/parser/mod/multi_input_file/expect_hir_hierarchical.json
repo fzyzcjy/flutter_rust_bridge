@@ -1,0 +1,58 @@
+{
+  "crates": [
+    {
+      "name": "crate",
+      "root_module": {
+        "content": {
+          "enums": [],
+          "functions": [],
+          "modules": [
+            {
+              "content": {
+                "enums": [],
+                "functions": [
+                  {
+                    "namespace": "crate::api_one"
+                  }
+                ],
+                "modules": [],
+                "structs": [],
+                "type_alias": []
+              },
+              "meta": {
+                "namespace": "crate::api_one",
+                "parent_vis": [],
+                "vis": "Inherited"
+              }
+            },
+            {
+              "content": {
+                "enums": [],
+                "functions": [
+                  {
+                    "namespace": "crate::api_two"
+                  }
+                ],
+                "modules": [],
+                "structs": [],
+                "type_alias": []
+              },
+              "meta": {
+                "namespace": "crate::api_two",
+                "parent_vis": [],
+                "vis": "Inherited"
+              }
+            }
+          ],
+          "structs": [],
+          "type_alias": []
+        },
+        "meta": {
+          "namespace": "crate",
+          "parent_vis": [],
+          "vis": "Public"
+        }
+      }
+    }
+  ]
+}

@@ -1,13 +1,9 @@
 # Manual arbitrary Rust type
 
-Usually the [automatic arbitrary Rust type](rust-auto-opaque) is sufficient,
-and thus there is no need to manually write down anything.
+:::info
+Usually the [automatic arbitrary Rust type](rust-auto-opaque) is sufficient.
 However, if you somehow want lower-level control, here is the type for you.
-
-In addition, there is `RustAutoOpaque<YourArbitraryType>`,
-which is a simple type alias of `RustOpaque<RwLock<YourArbitraryType>>`.
-This is convenient when you want to sometimes have [everything automatically done](rust-auto-opaque),
-and sometimes have the manual low-level control.
+:::
 
 ## Example
 

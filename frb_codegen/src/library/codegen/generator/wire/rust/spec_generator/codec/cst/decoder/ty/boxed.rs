@@ -9,21 +9,21 @@ use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
     ExternFunc, ExternFuncParam,
 };
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
-use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegatePrimitiveEnum};
-use crate::codegen::ir::ty::IrType;
-use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegatePrimitiveEnum};
+use crate::codegen::ir::mir::ty::MirType;
+use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 
 impl<'a> WireRustCodecCstGeneratorDecoderTrait for BoxedWireRustCodecCstGenerator<'a> {
     fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
-        let box_inner = self.ir.inner.as_ref();
-        let exist_in_real_api = self.ir.exist_in_real_api;
+        let box_inner = self.mir.inner.as_ref();
+        let exist_in_real_api = self.mir.exist_in_real_api;
         Acc::new(|target| {
-            match (target, self.ir.inner.as_ref()) {
-                (Io, IrType::Primitive(_)) => Some(format!(
+            match (target, self.mir.inner.as_ref()) {
+                (Io, MirType::Primitive(_)) => Some(format!(
                     "unsafe {{ {extra} flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }}",
                     extra = if exist_in_real_api { "" } else { "*" }
                 )),
-                (Io | Web, ir) if ir.is_array() => Some(format!(
+                (Io | Web, mir) if mir.is_array() => Some(format!(
                     "CstDecode::<{}>::cst_decode(self).into()",
                     box_inner.rust_api_type()
                 )),
@@ -38,8 +38,8 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for BoxedWireRustCodecCstGenerato
     }
 
     fn generate_impl_decode_jsvalue_body(&self) -> Option<std::borrow::Cow<str>> {
-        (self.ir.exist_in_real_api).then(|| match &*self.ir.inner {
-            IrType::Delegate(IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum {
+        (self.mir.exist_in_real_api).then(|| match &*self.mir.inner {
+            MirType::Delegate(MirTypeDelegate::PrimitiveEnum(MirTypeDelegatePrimitiveEnum {
                                                                repr,
                                                                ..
                                                            })) => format!(
@@ -47,7 +47,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for BoxedWireRustCodecCstGenerato
                 repr.rust_api_type()
             )
                 .into(),
-            IrType::Delegate(IrTypeDelegate::Array(array)) => format!(
+            MirType::Delegate(MirTypeDelegate::Array(array)) => format!(
                 "let vec: Vec<{}> = self.cst_decode(); Box::new(flutter_rust_bridge::for_generated::from_vec_to_array(vec))",
                 array.inner().rust_api_type()
             )
@@ -57,14 +57,17 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for BoxedWireRustCodecCstGenerato
     }
 
     fn generate_allocate_funcs(&self) -> Acc<WireRustOutputCode> {
-        if self.ir.inner.is_array() {
+        if self.mir.inner.is_array() {
             return Acc::default();
         }
-        let func_name = format!("cst_new_{}", self.ir.safe_ident());
-        if self.ir.inner.is_primitive()
+        let func_name = format!("cst_new_{}", self.mir.safe_ident());
+        if self.mir.inner.is_primitive()
             || matches!(
-                *self.ir.inner,
-                IrType::RustOpaque(_) | IrType::RustAutoOpaque(_) | IrType::DartOpaque(_)
+                *self.mir.inner,
+                MirType::RustOpaque(_)
+                    | MirType::RustAutoOpaqueImplicit(_)
+                    | MirType::Delegate(MirTypeDelegate::RustAutoOpaqueExplicit(_))
+                    | MirType::DartOpaque(_)
             )
         {
             Acc {
@@ -73,12 +76,12 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for BoxedWireRustCodecCstGenerato
                     params: vec![ExternFuncParam::new(
                         "value".to_owned(),
                         Target::Io,
-                        &self.ir.inner,
+                        &self.mir.inner,
                         self.context,
                     )],
                     return_type: Some(format!(
                         "*mut {}",
-                        WireRustCodecCstGenerator::new(self.ir.inner.clone(), self.context)
+                        WireRustCodecCstGenerator::new(self.mir.inner.clone(), self.context)
                             .rust_wire_type(Target::Io)
                     )),
                     body: "flutter_rust_bridge::for_generated::new_leak_box_ptr(value)".to_owned(),
@@ -102,7 +105,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for BoxedWireRustCodecCstGenerato
                     ),
                     body: format!(
                         "flutter_rust_bridge::for_generated::new_leak_box_ptr({}::new_with_null_ptr())",
-                        WireRustCodecCstGenerator::new(self.ir.inner.clone(), self.context)
+                        WireRustCodecCstGenerator::new(self.mir.inner.clone(), self.context)
                             .rust_wire_type(Target::Io)
                     ),
                     target: Target::Io,
@@ -115,18 +118,18 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for BoxedWireRustCodecCstGenerato
     }
 
     fn rust_wire_type(&self, target: Target) -> String {
-        if target == Target::Web && self.ir.inner.is_primitive() {
+        if target == Target::Web && self.mir.inner.is_primitive() {
             JS_VALUE.into()
         } else {
-            WireRustCodecCstGenerator::new(self.ir.inner.clone(), self.context)
+            WireRustCodecCstGenerator::new(self.mir.inner.clone(), self.context)
                 .rust_wire_type(target)
         }
     }
 
     fn rust_wire_is_pointer(&self, target: Target) -> bool {
         (target != Target::Web)
-            || !is_js_value(&self.ir.inner)
-                && !self.ir.inner.is_array()
-                && !self.ir.inner.is_primitive()
+            || !is_js_value(&self.mir.inner)
+                && !self.mir.inner.is_array()
+                && !self.mir.inner.is_primitive()
     }
 }

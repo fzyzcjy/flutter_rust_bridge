@@ -5,6 +5,7 @@ import 'dart:collection';
 import 'dart:typed_data' hide Int64List, Uint64List;
 
 import 'package:flutter_rust_bridge/src/exceptions.dart';
+import 'package:flutter_rust_bridge/src/platform_utils/_web.dart';
 import 'package:js/js.dart';
 import 'package:js/js_util.dart';
 
@@ -18,7 +19,7 @@ abstract class _TypedArray {
 }
 
 extension on _TypedArray {
-  operator []=(int index, value) {
+  operator []=(int index, Object? value) {
     setProperty(this, index, value);
   }
 }
@@ -74,7 +75,7 @@ abstract class BigUint64Array extends _TypedArray {
 /// Helpful if the array needs to accept multiple types.
 abstract class _SetAnyListMixin<T> extends ListMixin<T> {
   @override
-  void operator []=(int index, dynamic value) {
+  void operator []=(int index, Object? value) {
     this[index] = value;
   }
 }
@@ -83,17 +84,17 @@ abstract class _TypedList<T> extends _SetAnyListMixin<T> {
   _TypedArray get inner;
 
   /// How to cast a raw JS value to an acceptable Dart value.
-  T js2dart(Object? value);
+  T _js2dart(Object? value);
 
   /// How to convert a Dart integer-like value to an acceptable JS value.
-  dynamic dart2js(Object? value);
+  Object? _dart2js(Object? value);
 
   @override
-  T operator [](int index) => js2dart(inner.at(index));
+  T operator [](int index) => _js2dart(inner.at(index));
 
   @override
   void operator []=(int index, value) {
-    inner[index] = dart2js(value);
+    inner[index] = _dart2js(value);
   }
 
   @override
@@ -105,11 +106,7 @@ abstract class _TypedList<T> extends _SetAnyListMixin<T> {
   ByteBuffer get buffer => inner.buffer;
 }
 
-BigInt _castBigInt(Object bigInt) {
-  return BigInt.parse(callMethod(bigInt, 'toString', const []));
-}
-
-Object _convertBigInt(Object dart) {
+Object _convertBigIntToJs(Object dart) {
   if (dart is int) return BigInt.from(dart);
   // Assume value is already JS safe.
   return dart;
@@ -124,10 +121,10 @@ class Int64List extends _TypedList<BigInt> {
   Int64List.from(this.inner);
 
   @override
-  BigInt js2dart(Object? value) => _castBigInt(value!);
+  BigInt _js2dart(Object? value) => jsBigIntToDartBigInt(value!);
 
   @override
-  dart2js(Object? value) => _convertBigInt(value!);
+  Object? _dart2js(Object? value) => _convertBigIntToJs(value!);
 
   /// Construct a list
   factory Int64List(int length) => Int64List.from(BigInt64Array(length));
@@ -155,10 +152,10 @@ class Uint64List extends _TypedList<BigInt> {
   Uint64List.from(this.inner);
 
   @override
-  BigInt js2dart(Object? value) => _castBigInt(value!);
+  BigInt _js2dart(Object? value) => jsBigIntToDartBigInt(value!);
 
   @override
-  dynamic dart2js(Object? value) => _convertBigInt(value!);
+  Object? _dart2js(Object? value) => _convertBigIntToJs(value!);
 
   /// Construct a list
   factory Uint64List(int length) => Uint64List.from(BigUint64Array(length));
@@ -180,7 +177,7 @@ class Uint64List extends _TypedList<BigInt> {
 /// {@macro flutter_rust_bridge.internal}
 void byteDataSetUint64(
         ByteData byteData, int byteOffset, BigInt value, Endian endian) =>
-    byteDataSetInt64(byteData, byteOffset, value, endian);
+    byteDataSetInt64(byteData, byteOffset, value.toSigned(64), endian);
 
 /// {@macro flutter_rust_bridge.internal}
 void byteDataSetInt64(

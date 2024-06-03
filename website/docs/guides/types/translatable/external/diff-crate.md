@@ -1,11 +1,17 @@
 # Different crates
 
 Consider the types in other crates.
-The feature is called "mirroring". In short, you need to define the type again mirroring the external type that you want to use. That definition is only used at code-generation time to tell `flutter_rust_bridge` type information. To see exact grammar, have a look at the example below.
+The feature is called "mirroring". In short, you need to define the type again mirroring the external type that you want
+to use. That definition is only used at code-generation time to tell `flutter_rust_bridge` type information. To see
+exact grammar, have a look at the example below.
 
-No need to worry whether this breaks the DRY principle, or what happens when you accidentally write down a wrong field. This is because *compile errors will happen* if your mirrored type is not exactly same as the original type.
+No need to worry whether this breaks the DRY principle, or what happens when you accidentally write down a wrong field.
+This is because *compile errors will happen* if your mirrored type is not exactly same as the original type.
 
-When multiple structs have the same fields, you can mirror them *once* using grammar like `#[frb(mirror(FirstStruct, SecondStruct, ThirdStruct))]`.
+In order to use methods of externals types, please refer to [this page](../../../functions/methods).
+
+When multiple structs have the same fields, you can mirror them *once* using grammar
+like `#[frb(mirror(FirstStruct, SecondStruct, ThirdStruct))]`.
 
 Remark: This mirroring boilerplate is only needed for translatable types.
 For [arbitrary types](../../arbitrary), everything is automatic.
@@ -69,13 +75,14 @@ pub fn is_app_embedded(app_settings: ApplicationSettings) -> bool {
 
 Another example using one struct to mirror multiple structs:
 
-
 ```rust
 // *no* need to do these
 #[frb(mirror(MessageId))]
 pub struct MId(pub [u8; 32]);
+
 #[frb(mirror(BlobId))]
 pub struct BId(pub [u8; 32]);
+
 #[frb(mirror(FeedId))]
 pub struct FId(pub [u8; 32]);
 

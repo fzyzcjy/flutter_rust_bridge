@@ -9,8 +9,9 @@ Map<String, String> generateDartDirectSources(Package package) {
     'pseudo_manual/basic_test.dart': _generateBasicRelated(
       package,
       postfix: '',
-      values: (ty) => ty.interestRawValues,
+      values: (ty) => ty.interestRawValues.map((x) => x.textAndGuard).toList(),
       valueType: (ty) => ty.dartTypeName,
+      withExpect: (ty) => ty.enableRustExpect,
     ),
     'pseudo_manual/basic_optional_test.dart': _generateBasicRelated(
       package,
@@ -18,18 +19,19 @@ Map<String, String> generateDartDirectSources(Package package) {
       imports: """
       import 'package:${package.dartPackageName}/src/rust/api/pseudo_manual/basic.dart';
       """,
-      values: (ty) => ["null", ...ty.interestRawValues],
+      values: (ty) =>
+          ["null", ...ty.interestRawValues.map((x) => x.textAndGuard)],
       valueType: (ty) => '${ty.dartTypeName}?',
     ),
     'pseudo_manual/basic_list_test.dart': _generateBasicRelated(
       package,
       postfix: '_list',
       values: (ty) => [
-        ty.listWrapper(ty, ''),
-        ...ty.interestRawValues.map((x) => ty.listWrapper(ty, x)),
+        ty.listWrapper(ty, null),
+        ...ty.interestRawValues
+            .map((x) => x.guard + ty.listWrapper(ty, x.text)),
       ],
       imports: """
-      import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
       import 'package:${package.dartPackageName}/src/rust/api/pseudo_manual/basic.dart';
       """,
       enable: (ty) => ty.enableList,
@@ -41,7 +43,10 @@ Map<String, String> generateDartDirectSources(Package package) {
       imports: """
       import 'package:${package.dartPackageName}/src/rust/api/pseudo_manual/basic.dart';
       """,
-      values: (ty) => ['{}', ...ty.interestRawValues.map((x) => '{42: $x}')],
+      values: (ty) => [
+        '{}',
+        ...ty.interestRawValues.map((x) => '${x.guard}{42: ${x.text}}')
+      ],
       valueType: (ty) => 'Map<int, ${ty.dartTypeName}>',
     ),
     if (package == Package.pureDart)
@@ -54,12 +59,12 @@ String _generateBasicRelated(
   required String postfix,
   required List<String> Function(BasicTypeInfo) values,
   required String? Function(BasicTypeInfo) valueType,
+  bool Function(BasicTypeInfo)? withExpect,
   String imports = '',
   bool Function(BasicTypeInfo)? enable,
 }) {
   final builder = DartFileBuilder(package, importName: 'basic$postfix');
   builder.imports += '''
-  import 'dart:typed_data';
   $imports
   ''';
   for (final ty in kBasicTypes) {
@@ -68,6 +73,7 @@ String _generateBasicRelated(
         'exampleBasic${ReCase(postfix).pascalCase}Type${ReCase(ty.name).pascalCase}TwinNormal',
         values(ty),
         valueType: valueType(ty),
+        withExpect: withExpect?.call(ty) ?? false,
       );
     }
   }

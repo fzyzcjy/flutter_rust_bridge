@@ -9,7 +9,7 @@ mod optional;
 mod primitive;
 mod primitive_list;
 mod record;
-pub(crate) mod rust_auto_opaque;
+pub(crate) mod rust_auto_opaque_implicit;
 pub(crate) mod rust_opaque;
 mod structure;
 
@@ -18,7 +18,7 @@ use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGeneratorC
 use crate::codegen::generator::codec::sse::lang::Lang;
 use crate::codegen::generator::codec::structs::EncodeOrDecode;
 use crate::codegen_generator_structs;
-use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use enum_dispatch::enum_dispatch;
 
 codegen_generator_structs!(
@@ -28,21 +28,21 @@ codegen_generator_structs!(
 
 #[derive(Debug, Clone, Copy)]
 pub(crate) struct CodecSseTyContext<'a> {
-    pub(crate) ir_pack: &'a IrPack,
+    pub(crate) mir_pack: &'a MirPack,
     pub(crate) api_dart_config: &'a GeneratorApiDartInternalConfig,
 }
 
 impl<'a> CodecSseTyContext<'a> {
-    pub fn new(ir_pack: &'a IrPack, api_dart_config: &'a GeneratorApiDartInternalConfig) -> Self {
+    pub fn new(mir_pack: &'a MirPack, api_dart_config: &'a GeneratorApiDartInternalConfig) -> Self {
         Self {
-            ir_pack,
+            mir_pack,
             api_dart_config,
         }
     }
 
     pub(crate) fn as_api_dart_context(&self) -> ApiDartGeneratorContext {
         ApiDartGeneratorContext {
-            ir_pack: self.ir_pack,
+            mir_pack: self.mir_pack,
             config: self.api_dart_config,
         }
     }

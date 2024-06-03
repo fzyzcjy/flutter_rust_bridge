@@ -8,7 +8,7 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::{
 use crate::codegen::generator::wire::rust::spec_generator::codec::base::WireRustCodecOutputSpec;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::impl_new_with_nullptr::generate_impl_new_with_nullptr;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::impl_decode_trait::generate_impl_decode;
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::ir::mir::ty::MirType;
 
 mod impl_decode_trait;
 mod impl_new_with_nullptr;
@@ -17,7 +17,7 @@ pub(crate) mod ty;
 
 pub(crate) fn generate(
     context: WireRustCodecCstGeneratorContext,
-    types: &[IrType],
+    types: &[MirType],
 ) -> WireRustCodecOutputSpec {
     let mut inner = Default::default();
     inner += (types.iter())

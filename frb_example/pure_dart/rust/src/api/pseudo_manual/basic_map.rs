@@ -20,6 +20,10 @@ pub fn example_basic_map_type_i64_twin_normal(arg: HashMap<i32, i64>) -> HashMap
     arg
 }
 
+pub fn example_basic_map_type_i128_twin_normal(arg: HashMap<i32, i128>) -> HashMap<i32, i128> {
+    arg
+}
+
 pub fn example_basic_map_type_u8_twin_normal(arg: HashMap<i32, u8>) -> HashMap<i32, u8> {
     arg
 }
@@ -33,6 +37,10 @@ pub fn example_basic_map_type_u32_twin_normal(arg: HashMap<i32, u32>) -> HashMap
 }
 
 pub fn example_basic_map_type_u64_twin_normal(arg: HashMap<i32, u64>) -> HashMap<i32, u64> {
+    arg
+}
+
+pub fn example_basic_map_type_u128_twin_normal(arg: HashMap<i32, u128>) -> HashMap<i32, u128> {
     arg
 }
 

@@ -1,6 +1,8 @@
 use crate::codec::BaseCodec;
 use crate::for_generated::{BaseArc, StreamSinkBase};
 use crate::generalized_isolate::{IntoDart, ZeroCopyBuffer};
+#[cfg(feature = "rust-async")]
+use crate::rust_auto_opaque::{inner::RustAutoOpaqueInner, RustAutoOpaqueBase};
 use crate::rust_opaque::RustOpaqueBase;
 use std::collections::{HashMap, HashSet};
 
@@ -39,6 +41,16 @@ where
 impl<T, A: BaseArc<T>> IntoIntoDart<RustOpaqueBase<T, A>> for RustOpaqueBase<T, A> {
     #[inline(always)]
     fn into_into_dart(self) -> RustOpaqueBase<T, A> {
+        self
+    }
+}
+
+#[cfg(feature = "rust-async")]
+impl<T, A: BaseArc<RustAutoOpaqueInner<T>>> IntoIntoDart<RustAutoOpaqueBase<T, A>>
+    for RustAutoOpaqueBase<T, A>
+{
+    #[inline(always)]
+    fn into_into_dart(self) -> RustAutoOpaqueBase<T, A> {
         self
     }
 }
@@ -172,6 +184,8 @@ impl_into_into_dart_by_self!(u32);
 impl_into_into_dart_by_self!(i32);
 impl_into_into_dart_by_self!(u64);
 impl_into_into_dart_by_self!(i64);
+impl_into_into_dart_by_self!(u128);
+impl_into_into_dart_by_self!(i128);
 impl_into_into_dart_by_self!(f32);
 impl_into_into_dart_by_self!(f64);
 impl_into_into_dart_by_self!(bool);
@@ -179,6 +193,7 @@ impl_into_into_dart_by_self!(());
 impl_into_into_dart_by_self!(usize);
 impl_into_into_dart_by_self!(isize);
 impl_into_into_dart_by_self!(String);
+impl_into_into_dart_by_self!(char);
 #[cfg(feature = "dart-opaque")]
 impl_into_into_dart_by_self!(crate::dart_opaque::DartOpaque);
 #[cfg(not(target_family = "wasm"))]

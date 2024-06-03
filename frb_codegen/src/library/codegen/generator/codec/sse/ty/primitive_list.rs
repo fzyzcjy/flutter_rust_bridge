@@ -9,12 +9,12 @@ impl<'a> CodecSseTyTrait for PrimitiveListCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
         match lang {
             Lang::DartLang(_) => {
-                let type_converter = if self.ir.strict_dart_type {
+                let type_converter = if self.mir.strict_dart_type {
                     "self".to_owned()
                 } else {
                     format!(
                         "self is {prim}List ? self : {prim}List.fromList(self)",
-                        prim = get_serializer_dart_postfix(&self.ir.primitive),
+                        prim = get_serializer_dart_postfix(&self.mir.primitive, true),
                     )
                 };
 
@@ -22,15 +22,15 @@ impl<'a> CodecSseTyTrait for PrimitiveListCodecSseTy<'a> {
                     "{};
                     serializer.buffer.put{}List({type_converter});",
                     lang.call_encode(&LEN_TYPE, &format!("self.{}", list_len_method(lang))),
-                    get_serializer_dart_postfix(&self.ir.primitive)
+                    get_serializer_dart_postfix(&self.mir.primitive, true)
                 ))
             }
             Lang::RustLang(_) => {
                 // TODO do not use naive loop
-                self.ir.strict_dart_type.then(|| {
+                self.mir.strict_dart_type.then(|| {
                     general_list_generate_encode(
                         lang,
-                        &IrType::Primitive(self.ir.primitive.clone()),
+                        &MirType::Primitive(self.mir.primitive.clone()),
                     )
                 })
             }
@@ -44,14 +44,14 @@ impl<'a> CodecSseTyTrait for PrimitiveListCodecSseTy<'a> {
                 "{var_decl} len_ = {};
                 return deserializer.buffer.get{}List(len_);",
                 lang.call_decode(&LEN_TYPE),
-                get_serializer_dart_postfix(&self.ir.primitive)
+                get_serializer_dart_postfix(&self.mir.primitive, true)
             )),
             Lang::RustLang(_) => {
                 // TODO do not use naive loop
-                self.ir.strict_dart_type.then(|| {
+                self.mir.strict_dart_type.then(|| {
                     general_list_generate_decode(
                         lang,
-                        &IrType::Primitive(self.ir.primitive.clone()),
+                        &MirType::Primitive(self.mir.primitive.clone()),
                         self.context,
                     )
                 })

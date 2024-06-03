@@ -40,8 +40,8 @@ class ReadBuffer {
     return value;
   }
 
-  /// Reads a Uint64 from the buffer.
-  int getUint64({Endian? endian}) => getBigUint64(endian: endian).toInt();
+  // /// Reads a Uint64 from the buffer.
+  // int getUint64({Endian? endian}) => getBigUint64(endian: endian).toInt();
 
   /// Reads a Uint64 from the buffer.
   BigInt getBigUint64({Endian? endian}) {

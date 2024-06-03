@@ -11,8 +11,8 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::base::{
 use crate::codegen::generator::wire::rust::spec_generator::codec::sse::entrypoint::SseWireRustCodecEntrypoint;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFuncParam;
 use crate::codegen::generator::wire::rust::spec_generator::misc::wire_func::wire_func_name;
-use crate::codegen::ir::func::{IrFunc, IrFuncMode};
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::ir::mir::func::{MirFunc, MirFuncMode};
+use crate::codegen::ir::mir::ty::MirType;
 use itertools::Itertools;
 use std::collections::HashMap;
 use strum::IntoEnumIterator;
@@ -26,17 +26,17 @@ impl BaseCodecEntrypointTrait<WireRustGeneratorContext<'_>, WireRustCodecOutputS
     fn generate(
         &self,
         context: WireRustGeneratorContext,
-        _types: &[IrType],
+        _types: &[MirType],
         mode: EncodeOrDecode,
     ) -> Option<WireRustCodecOutputSpec> {
         match mode {
             EncodeOrDecode::Encode => None,
-            EncodeOrDecode::Decode => Some(generate_ffi_dispatcher(&context.ir_pack.funcs)),
+            EncodeOrDecode::Decode => Some(generate_ffi_dispatcher(&context.mir_pack.funcs)),
         }
     }
 }
 
-fn generate_ffi_dispatcher(funcs: &[IrFunc]) -> WireRustCodecOutputSpec {
+fn generate_ffi_dispatcher(funcs: &[MirFunc]) -> WireRustCodecOutputSpec {
     let variants = FfiDispatcherMode::iter()
         .map(|mode| {
             (
@@ -52,7 +52,7 @@ fn generate_ffi_dispatcher(funcs: &[IrFunc]) -> WireRustCodecOutputSpec {
                         };
                         format!(
                             "{} => {}_impl({maybe_port}ptr, rust_vec_len, data_len),",
-                            f.id,
+                            f.id.unwrap(),
                             wire_func_name(f)
                         )
                     })
@@ -72,11 +72,11 @@ pub(crate) enum FfiDispatcherMode {
     Sync,
 }
 
-impl From<&IrFuncMode> for FfiDispatcherMode {
-    fn from(value: &IrFuncMode) -> Self {
+impl From<&MirFuncMode> for FfiDispatcherMode {
+    fn from(value: &MirFuncMode) -> Self {
         match value {
-            IrFuncMode::Normal => Self::Primary,
-            IrFuncMode::Sync => Self::Sync,
+            MirFuncMode::Normal => Self::Primary,
+            MirFuncMode::Sync => Self::Sync,
         }
     }
 }
@@ -125,7 +125,7 @@ pub(crate) fn generate_ffi_dispatcher_raw(
 impl WireRustCodecEntrypointTrait<'_> for PdeWireRustCodecEntrypoint {
     fn generate_func_params(
         &self,
-        func: &IrFunc,
+        func: &MirFunc,
         context: WireRustGeneratorContext,
     ) -> Acc<Vec<ExternFuncParam>> {
         SseWireRustCodecEntrypoint.generate_func_params(func, context)
@@ -133,7 +133,7 @@ impl WireRustCodecEntrypointTrait<'_> for PdeWireRustCodecEntrypoint {
 
     fn generate_func_call_decode(
         &self,
-        func: &IrFunc,
+        func: &MirFunc,
         context: WireRustGeneratorContext,
     ) -> String {
         SseWireRustCodecEntrypoint.generate_func_call_decode(func, context)

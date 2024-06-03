@@ -1,14 +1,14 @@
 use crate::codegen::generator::codec::sse::ty::structure::GeneralizedStructGenerator;
 use crate::codegen::generator::codec::sse::ty::*;
 use crate::codegen::generator::misc::StructOrRecord;
-use crate::codegen::ir::namespace::NamespacedName;
-use crate::codegen::ir::ty::enumeration::{IrEnum, IrVariant, IrVariantKind};
+use crate::codegen::ir::mir::ty::enumeration::{MirEnum, MirVariant, MirVariantKind};
 use crate::library::codegen::generator::codec::sse::lang::LangTrait;
+use crate::utils::namespace::NamespacedName;
 use itertools::Itertools;
 
 impl<'a> CodecSseTyTrait for EnumRefCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
-        let src = self.ir.get(self.context.ir_pack);
+        let src = self.mir.get(self.context.mir_pack);
         Some(generate_enum_encode_rust_general(
             lang,
             src,
@@ -32,7 +32,7 @@ impl<'a> CodecSseTyTrait for EnumRefCodecSseTy<'a> {
     }
 
     fn generate_decode(&self, lang: &Lang) -> Option<String> {
-        let src = self.ir.get(self.context.ir_pack);
+        let src = self.mir.get(self.context.mir_pack);
 
         let var_decl = lang.var_decl();
         let expr_decode_tag = lang.call_decode(&TAG_TYPE);
@@ -62,7 +62,7 @@ impl<'a> CodecSseTyTrait for EnumRefCodecSseTy<'a> {
 }
 
 fn generate_decode_variant(
-    variant: &IrVariant,
+    variant: &MirVariant,
     enum_name: &NamespacedName,
     lang: &Lang,
     context: CodecSseTyContext,
@@ -70,7 +70,7 @@ fn generate_decode_variant(
     let enum_name_str = enum_name.style(lang);
     let enum_sep = enum_sep(lang);
     match &variant.kind {
-        IrVariantKind::Value => {
+        MirVariantKind::Value => {
             format!(
                 "return {enum_name_str}{enum_sep}{}{};",
                 variant.name,
@@ -80,7 +80,7 @@ fn generate_decode_variant(
                 }
             )
         }
-        IrVariantKind::Struct(st) => {
+        MirVariantKind::Struct(st) => {
             GeneralizedStructGenerator::new(st.clone(), context, StructOrRecord::Struct)
                 .generate_decode(
                     lang,
@@ -93,9 +93,9 @@ fn generate_decode_variant(
 
 pub(crate) fn generate_enum_encode_rust_general(
     lang: &Lang,
-    src: &IrEnum,
+    src: &MirEnum,
     self_ref: &str,
-    generate_branch: impl Fn(usize, &IrVariant) -> String,
+    generate_branch: impl Fn(usize, &MirVariant) -> String,
 ) -> String {
     let enum_name_str = src.name.style(lang);
     let enum_sep = enum_sep(lang);
@@ -111,16 +111,20 @@ pub(crate) fn generate_enum_encode_rust_general(
         })
         .collect_vec();
 
-    lang.switch_expr(self_ref, &variants, None)
+    lang.switch_expr(
+        self_ref,
+        &variants,
+        Some(format!("{};", lang.throw_unimplemented(""))),
+    )
 }
 
-fn pattern_match_enum_variant(lang: &Lang, variant: &IrVariant) -> String {
+fn pattern_match_enum_variant(lang: &Lang, variant: &MirVariant) -> String {
     match &variant.kind {
-        IrVariantKind::Value => match lang {
+        MirVariantKind::Value => match lang {
             Lang::DartLang(_) => "()".to_owned(),
             Lang::RustLang(_) => "".to_owned(),
         },
-        IrVariantKind::Struct(st) => match lang {
+        MirVariantKind::Struct(st) => match lang {
             Lang::DartLang(_) => {
                 let pattern = (st.fields.iter())
                     .map(|field| format!("{name}: final {name}", name = field.name.dart_style()))
@@ -145,4 +149,4 @@ fn enum_sep(lang: &Lang) -> &'static str {
     }
 }
 
-const TAG_TYPE: IrType = Primitive(IrTypePrimitive::I32);
+const TAG_TYPE: MirType = Primitive(MirTypePrimitive::I32);

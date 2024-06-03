@@ -1,9 +1,9 @@
 use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::WireDartCodecCstGenerator;
-use crate::codegen::ir::pack::IrPackComputedCache;
+use crate::codegen::ir::mir::pack::MirPackComputedCache;
 use crate::library::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
-use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use serde::Serialize;
 use std::collections::HashMap;
 use strum::IntoEnumIterator;
@@ -20,7 +20,7 @@ pub(crate) struct WireDartDumpInfoType {
 }
 
 pub(super) fn generate_dump_info(
-    cache: &IrPackComputedCache,
+    cache: &MirPackComputedCache,
     context: WireDartGeneratorContext,
 ) -> WireDartDumpInfo {
     WireDartDumpInfo {

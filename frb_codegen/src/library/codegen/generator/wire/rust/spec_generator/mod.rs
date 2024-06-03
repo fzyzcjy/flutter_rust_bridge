@@ -6,7 +6,7 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::base::{
 };
 use crate::codegen::generator::wire::rust::spec_generator::dump::generate_dump_info;
 use crate::codegen::generator::wire::rust::spec_generator::misc::WireRustOutputSpecMisc;
-use crate::codegen::ir::pack::IrPackComputedCache;
+use crate::codegen::ir::mir::pack::MirPackComputedCache;
 use crate::codegen::ConfigDumpContent::GeneratorInfo;
 use itertools::Itertools;
 use serde::Serialize;
@@ -30,7 +30,7 @@ pub(super) fn generate(
     context: WireRustGeneratorContext,
     dumper: &Dumper,
 ) -> anyhow::Result<WireRustOutputSpec> {
-    let cache = IrPackComputedCache::compute(context.ir_pack);
+    let cache = MirPackComputedCache::compute(context.mir_pack);
 
     dumper.dump(
         GeneratorInfo,

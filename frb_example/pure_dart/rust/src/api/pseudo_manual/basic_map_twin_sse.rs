@@ -29,6 +29,11 @@ pub fn example_basic_map_type_i64_twin_sse(arg: HashMap<i32, i64>) -> HashMap<i3
 }
 
 #[flutter_rust_bridge::frb(serialize)]
+pub fn example_basic_map_type_i128_twin_sse(arg: HashMap<i32, i128>) -> HashMap<i32, i128> {
+    arg
+}
+
+#[flutter_rust_bridge::frb(serialize)]
 pub fn example_basic_map_type_u8_twin_sse(arg: HashMap<i32, u8>) -> HashMap<i32, u8> {
     arg
 }
@@ -45,6 +50,11 @@ pub fn example_basic_map_type_u32_twin_sse(arg: HashMap<i32, u32>) -> HashMap<i3
 
 #[flutter_rust_bridge::frb(serialize)]
 pub fn example_basic_map_type_u64_twin_sse(arg: HashMap<i32, u64>) -> HashMap<i32, u64> {
+    arg
+}
+
+#[flutter_rust_bridge::frb(serialize)]
+pub fn example_basic_map_type_u128_twin_sse(arg: HashMap<i32, u128>) -> HashMap<i32, u128> {
     arg
 }
 

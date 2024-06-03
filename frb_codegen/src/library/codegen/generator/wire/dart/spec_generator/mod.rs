@@ -11,7 +11,7 @@ use crate::codegen::generator::wire::dart::spec_generator::output_code::{
     DartApiImplClassMethod, WireDartOutputCode,
 };
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
-use crate::codegen::ir::pack::IrPackComputedCache;
+use crate::codegen::ir::mir::pack::MirPackComputedCache;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::codegen::ConfigDumpContent::GeneratorInfo;
 use itertools::Itertools;
@@ -41,7 +41,7 @@ pub(crate) fn generate(
     dumper: &Dumper,
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<WireDartOutputSpec> {
-    let cache = IrPackComputedCache::compute(context.ir_pack);
+    let cache = MirPackComputedCache::compute(context.mir_pack);
 
     dumper.dump(
         GeneratorInfo,

@@ -8,7 +8,6 @@
 use crate::frb_generated::RustAutoOpaque;
 use crate::frb_generated::StreamSink;
 use flutter_rust_bridge::frb;
-use flutter_rust_bridge::rust_async::RwLock;
 use std::path::PathBuf;
 
 // TODO auto determine it is opaque or not later
@@ -353,9 +352,10 @@ pub fn rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_ss
 
 // ================ struct/enum with both encodable and opaque fields, without non_opaque option ===================
 
+#[allow(dead_code)]
 pub struct StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse {
     pub good: String,
-    pub opaque: NonCloneSimpleTwinSyncSse,
+    opaque: NonCloneSimpleTwinSyncSse,
 }
 
 pub enum EnumWithGoodAndOpaqueWithoutOptionTwinSyncSse {
@@ -426,7 +426,7 @@ pub fn rust_auto_opaque_explicit_arg_twin_sync_sse(
     arg: RustAutoOpaque<NonCloneSimpleTwinSyncSse>,
     expect: i32,
 ) {
-    assert_eq!((*arg).try_read().unwrap().inner, expect);
+    assert_eq!(arg.try_read().unwrap().inner, expect);
 }
 
 pub struct StructWithExplicitAutoOpaqueFieldTwinSyncSse {
@@ -439,7 +439,17 @@ pub struct StructWithExplicitAutoOpaqueFieldTwinSyncSse {
 pub fn rust_auto_opaque_explicit_struct_twin_sync_sse(
     arg: StructWithExplicitAutoOpaqueFieldTwinSyncSse,
 ) {
-    assert_eq!((*arg.auto_opaque).try_read().unwrap().inner, arg.normal);
+    assert_eq!(arg.auto_opaque.try_read().unwrap().inner, arg.normal);
+}
+
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_explicit_return_struct_twin_sync_sse(
+) -> StructWithExplicitAutoOpaqueFieldTwinSyncSse {
+    StructWithExplicitAutoOpaqueFieldTwinSyncSse {
+        normal: 100,
+        auto_opaque: RustAutoOpaque::new(NonCloneSimpleTwinSyncSse { inner: 100 }),
+    }
 }
 
 #[flutter_rust_bridge::frb(serialize)]
@@ -447,7 +457,23 @@ pub fn rust_auto_opaque_explicit_struct_twin_sync_sse(
 pub fn rust_auto_opaque_explicit_return_twin_sync_sse(
     initial: i32,
 ) -> RustAutoOpaque<NonCloneSimpleTwinSyncSse> {
-    RustAutoOpaque::new(RwLock::new(NonCloneSimpleTwinSyncSse { inner: initial }))
+    RustAutoOpaque::new(NonCloneSimpleTwinSyncSse { inner: initial })
+}
+
+// ================ deadlock detection ===================
+
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_sleep_twin_sync_sse(
+    apple: &mut NonCloneSimpleTwinSyncSse,
+    orange: &mut NonCloneSimpleTwinSyncSse,
+) -> i32 {
+    // If WASM + main thread (i.e. "sync"), the `sleep` cannot be used, which is a Rust / WASM limit.
+    // (But if on native, or on WASM + async mode, it is OK)
+    #[cfg(not(target_family = "wasm"))]
+    std::thread::sleep(std::time::Duration::from_millis(1000));
+
+    apple.inner + orange.inner
 }
 
 // ================ misc ===================

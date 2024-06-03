@@ -19,6 +19,10 @@ pub fn example_basic_optional_type_i64_twin_normal(arg: Option<i64>) -> Option<i
     arg
 }
 
+pub fn example_basic_optional_type_i128_twin_normal(arg: Option<i128>) -> Option<i128> {
+    arg
+}
+
 pub fn example_basic_optional_type_u8_twin_normal(arg: Option<u8>) -> Option<u8> {
     arg
 }
@@ -32,6 +36,10 @@ pub fn example_basic_optional_type_u32_twin_normal(arg: Option<u32>) -> Option<u
 }
 
 pub fn example_basic_optional_type_u64_twin_normal(arg: Option<u64>) -> Option<u64> {
+    arg
+}
+
+pub fn example_basic_optional_type_u128_twin_normal(arg: Option<u128>) -> Option<u128> {
     arg
 }
 

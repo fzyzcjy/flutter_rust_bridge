@@ -5,6 +5,8 @@ import 'package:frb_example_pure_dart/src/rust/auxiliary/sample_types.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
+import '../test_utils.dart';
+
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
@@ -95,6 +97,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
     );
   });
 
+  addTestsIdentityFunctionCall(
+      handleCharTwinNormal, <String>['a', '\0', '\u{10FFFF}']);
+
   test('dart call handleVecU8', () async {
     final len = 100000;
     expect(
@@ -109,6 +114,10 @@ Future<void> main({bool skipRustLibInit = false}) async {
         boxed: MySize(width: 1000, height: 10000));
     expect(structResp.width, 42 + 1000);
     expect(structResp.height, 100 + 10000);
+  });
+
+  test('positionalArgumentsTwinNormal', () async {
+    expect(await positionalArgumentsTwinNormal(100, 200), 300);
   });
 }
 

@@ -1,5 +1,6 @@
 use crate::codegen::dumper::internal_config::ConfigDumpContent;
 use serde::{Deserialize, Serialize};
+use std::collections::HashMap;
 
 /// Configuration for code generation
 /// Refer to `GenerateCommandArgs` for documentations
@@ -15,6 +16,7 @@ pub struct Config {
     pub rust_output: Option<String>,
     pub dart_entrypoint_class_name: Option<String>,
     pub dart_format_line_length: Option<u32>,
+    pub dart_preamble: Option<String>,
     pub dart_enums_style: Option<bool>,
     pub add_mod_to_lib: Option<bool>,
     pub llvm_path: Option<Vec<String>>,
@@ -28,6 +30,7 @@ pub struct Config {
     pub full_dep: Option<bool>,
     pub local: Option<bool>,
     pub default_external_library_loader_web_prefix: Option<String>,
+    pub dart_type_rename: Option<HashMap<String, String>>,
     pub dump: Option<Vec<ConfigDumpContent>>,
     pub dump_all: Option<bool>,
 }

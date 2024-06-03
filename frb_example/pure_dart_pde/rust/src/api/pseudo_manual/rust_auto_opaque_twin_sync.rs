@@ -10,7 +10,6 @@
 use crate::frb_generated::RustAutoOpaque;
 use crate::frb_generated::StreamSink;
 use flutter_rust_bridge::frb;
-use flutter_rust_bridge::rust_async::RwLock;
 use std::path::PathBuf;
 
 // TODO auto determine it is opaque or not later
@@ -308,9 +307,10 @@ pub fn rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync(
 
 // ================ struct/enum with both encodable and opaque fields, without non_opaque option ===================
 
+#[allow(dead_code)]
 pub struct StructWithGoodAndOpaqueFieldWithoutOptionTwinSync {
     pub good: String,
-    pub opaque: NonCloneSimpleTwinSync,
+    opaque: NonCloneSimpleTwinSync,
 }
 
 pub enum EnumWithGoodAndOpaqueWithoutOptionTwinSync {
@@ -369,7 +369,7 @@ pub fn rust_auto_opaque_explicit_arg_twin_sync(
     arg: RustAutoOpaque<NonCloneSimpleTwinSync>,
     expect: i32,
 ) {
-    assert_eq!((*arg).try_read().unwrap().inner, expect);
+    assert_eq!(arg.try_read().unwrap().inner, expect);
 }
 
 pub struct StructWithExplicitAutoOpaqueFieldTwinSync {
@@ -379,14 +379,38 @@ pub struct StructWithExplicitAutoOpaqueFieldTwinSync {
 
 #[flutter_rust_bridge::frb(sync)]
 pub fn rust_auto_opaque_explicit_struct_twin_sync(arg: StructWithExplicitAutoOpaqueFieldTwinSync) {
-    assert_eq!((*arg.auto_opaque).try_read().unwrap().inner, arg.normal);
+    assert_eq!(arg.auto_opaque.try_read().unwrap().inner, arg.normal);
+}
+
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_explicit_return_struct_twin_sync(
+) -> StructWithExplicitAutoOpaqueFieldTwinSync {
+    StructWithExplicitAutoOpaqueFieldTwinSync {
+        normal: 100,
+        auto_opaque: RustAutoOpaque::new(NonCloneSimpleTwinSync { inner: 100 }),
+    }
 }
 
 #[flutter_rust_bridge::frb(sync)]
 pub fn rust_auto_opaque_explicit_return_twin_sync(
     initial: i32,
 ) -> RustAutoOpaque<NonCloneSimpleTwinSync> {
-    RustAutoOpaque::new(RwLock::new(NonCloneSimpleTwinSync { inner: initial }))
+    RustAutoOpaque::new(NonCloneSimpleTwinSync { inner: initial })
+}
+
+// ================ deadlock detection ===================
+
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_sleep_twin_sync(
+    apple: &mut NonCloneSimpleTwinSync,
+    orange: &mut NonCloneSimpleTwinSync,
+) -> i32 {
+    // If WASM + main thread (i.e. "sync"), the `sleep` cannot be used, which is a Rust / WASM limit.
+    // (But if on native, or on WASM + async mode, it is OK)
+    #[cfg(not(target_family = "wasm"))]
+    std::thread::sleep(std::time::Duration::from_millis(1000));
+
+    apple.inner + orange.inner
 }
 
 // ================ misc ===================

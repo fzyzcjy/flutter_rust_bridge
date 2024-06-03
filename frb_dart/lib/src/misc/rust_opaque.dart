@@ -14,7 +14,8 @@ abstract class RustOpaque {
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @internal
-  RustOpaque.dcoDecode(List<dynamic> wire, RustArcStaticData staticData)
+  RustOpaque.frbInternalDcoDecode(
+      List<dynamic> wire, RustArcStaticData staticData)
       : this._fromRaw(
           ptr: wire[0],
           externalSizeOnNative: wire[1],
@@ -23,10 +24,10 @@ abstract class RustOpaque {
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @internal
-  RustOpaque.sseDecode(
-      int ptr, int externalSizeOnNative, RustArcStaticData staticData)
+  RustOpaque.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative, RustArcStaticData staticData)
       : this._fromRaw(
-          ptr: ptr,
+          ptr: ptr.toSigned(64).toInt(),
           externalSizeOnNative: externalSizeOnNative,
           staticData: staticData,
         );
@@ -43,7 +44,7 @@ abstract class RustOpaque {
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @internal
-  int cstEncode({bool? move}) {
+  int frbInternalCstEncode({bool? move}) {
     assert(move == null || _move == null,
         'Cannot specify move semantics in two places');
     final effectiveMoveMode = move ?? _move ?? false;
@@ -54,7 +55,8 @@ abstract class RustOpaque {
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @internal
-  int sseEncode({bool? move}) => cstEncode(move: move);
+  BigInt frbInternalSseEncode({bool? move}) =>
+      BigInt.from(frbInternalCstEncode(move: move)).toUnsigned(64);
 
   /// Dispose the underlying `Arc`.
   void dispose() => _arc.dispose();

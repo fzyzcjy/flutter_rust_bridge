@@ -3,7 +3,7 @@ description: This is for testing the correct parsing
 version: 1.0.0
 
 flutter_rust_bridge:
-  rust_input: hello.rs
+  rust_input: crate::hello
   dart_output: hello.dart
   c_output: hello.h
   dart3: false

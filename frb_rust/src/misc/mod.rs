@@ -8,4 +8,4 @@ pub(crate) mod user_utils;
 pub(crate) mod version;
 /// cbindgen:ignore
 #[cfg(target_family = "wasm")]
-pub(crate) mod web_utils;
+pub mod web_utils;

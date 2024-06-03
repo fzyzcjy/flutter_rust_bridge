@@ -6,8 +6,8 @@ impl<'a> CodecSseTyTrait for DartFnCodecSseTy<'a> {
         self.should_generate(lang).then(|| {
             simple_delegate_encode(
                 lang,
-                &self.ir.get_delegate(),
-                &format!("encode_{}(self)", self.ir.safe_ident()),
+                &self.mir.get_delegate(),
+                &format!("encode_{}(self)", self.mir.safe_ident()),
             )
         })
     }

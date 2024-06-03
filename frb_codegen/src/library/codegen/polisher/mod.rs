@@ -116,6 +116,7 @@ fn execute_dart_format(
         &filter_paths_by_extension(output_paths, "dart"),
         &config.dart_root,
         config.dart_format_line_length,
+        &["g.dart", "freezed.dart"],
     )
 }
 

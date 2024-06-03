@@ -4,7 +4,7 @@ use std::cell::RefCell;
 use std::panic::UnwindSafe;
 
 thread_local! {
-    static BACKTRACE: RefCell<Option<Backtrace>> = RefCell::new(None);
+    static BACKTRACE: RefCell<Option<Backtrace>> = const { RefCell::new(None) };
 }
 
 pub(crate) struct PanicBacktrace;

@@ -293,11 +293,16 @@ Future<void> main({bool skipRustLibInit = false}) async {
           rustAutoOpaqueExplicitArgTwinMoi(arg: obj, expect: 100));
     });
 
-    test('it can be inside a struct', () async {
+    test('it can be inside a struct used as argument', () async {
       final obj = await rustAutoOpaqueExplicitReturnTwinMoi(initial: 100);
       await futurizeVoidTwinMoi(rustAutoOpaqueExplicitStructTwinMoi(
           arg: StructWithExplicitAutoOpaqueFieldTwinMoi(
               autoOpaque: obj, normal: 100)));
+    });
+
+    test('it can be inside a struct used as return type', () async {
+      final obj = await rustAutoOpaqueExplicitReturnStructTwinMoi();
+      await futurizeVoidTwinMoi(rustAutoOpaqueExplicitStructTwinMoi(arg: obj));
     });
 
     group('it can be used with automatic (implicit) ones', () {
@@ -322,7 +327,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
         () async => rustAutoOpaqueBorrowAndMutBorrowTwinMoi(
             borrow: obj, mutBorrow: obj),
         'TwinMoi',
-        messageMatcherOnNative: matches(RegExp('Fail to.*borrow object')),
+        messageMatcherOnNative: matches(RegExp('Cannot.*borrow.*object')),
       );
     });
 
@@ -346,6 +351,36 @@ Future<void> main({bool skipRustLibInit = false}) async {
       final a = await rustAutoOpaqueReturnOwnTwinMoi(initial: 100);
       final b = await rustAutoOpaqueReturnOwnTwinMoi(initial: 200);
       expect(await rustAutoOpaqueBorrowAndBorrowTwinMoi(a: a, b: b), 300);
+    });
+  });
+
+  group('deadlock', () {
+    test('simple call', () async {
+      final a = await rustAutoOpaqueReturnOwnTwinMoi(initial: 100);
+      final b = await rustAutoOpaqueReturnOwnTwinMoi(initial: 200);
+      expect(await rustAutoOpaqueSleepTwinMoi(apple: a, orange: b), 300);
+    });
+
+    test('call both with same order', () async {
+      final a = await rustAutoOpaqueReturnOwnTwinMoi(initial: 100);
+      final b = await rustAutoOpaqueReturnOwnTwinMoi(initial: 200);
+
+      final future1 = rustAutoOpaqueSleepTwinMoi(apple: a, orange: b);
+      final future2 = rustAutoOpaqueSleepTwinMoi(apple: a, orange: b);
+
+      expect(await future1, 300);
+      expect(await future2, 300);
+    });
+
+    test('call both with reversed order', () async {
+      final a = await rustAutoOpaqueReturnOwnTwinMoi(initial: 100);
+      final b = await rustAutoOpaqueReturnOwnTwinMoi(initial: 200);
+
+      final future1 = rustAutoOpaqueSleepTwinMoi(apple: a, orange: b);
+      final future2 = rustAutoOpaqueSleepTwinMoi(apple: b, orange: a);
+
+      expect(await future1, 300);
+      expect(await future2, 300);
     });
   });
 }

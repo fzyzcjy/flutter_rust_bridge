@@ -8,18 +8,18 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::dco::base::{
 use crate::codegen::generator::wire::dart::spec_generator::output_code::{
     DartApiImplClassMethod, WireDartOutputCode,
 };
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::ir::mir::ty::MirType;
 use crate::library::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::library::codegen::generator::wire::dart::spec_generator::codec::dco::decoder::ty::WireDartCodecDcoGeneratorDecoderTrait;
-use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 
 mod misc;
 pub(crate) mod ty;
 
 pub(crate) fn generate(
     context: WireDartCodecDcoGeneratorContext,
-    types: &[IrType],
+    types: &[MirType],
 ) -> WireDartCodecOutputSpec {
     WireDartCodecOutputSpec {
         inner: (types.iter())
@@ -29,7 +29,7 @@ pub(crate) fn generate(
 }
 
 fn generate_impl_decode(
-    ty: &IrType,
+    ty: &MirType,
     context: WireDartCodecDcoGeneratorContext,
 ) -> WireDartOutputCode {
     let body = WireDartCodecDcoGenerator::new(ty.clone(), context).generate_impl_decode_body();

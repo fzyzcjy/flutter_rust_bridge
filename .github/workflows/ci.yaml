@@ -10,8 +10,8 @@ on:
 env:
   CARGO_TERM_COLOR: always
   FRB_MAIN_RUST_VERSION: 1.74.0
-  FRB_MAIN_DART_VERSION: 3.3.0
-  FRB_MAIN_FLUTTER_VERSION: 3.19.2
+  FRB_MAIN_DART_VERSION: 3.4.0
+  FRB_MAIN_FLUTTER_VERSION: 3.22.0
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -707,7 +707,7 @@ jobs:
       matrix:
         sanitizer:
           - asan
-          # - msan # todo: #1824
+          - msan
           - lsan
           # Every time we build TSAN in https://github.com/fzyzcjy/dart_lang_ci, it fails near the end.
           # Since it is unlikely we will have thread issues, we temporarily disable TSAN now.
@@ -745,8 +745,7 @@ jobs:
   # ref https://betterprogramming.pub/test-flutter-apps-on-android-with-github-actions-abdba2137b4
   test_flutter_native_android:
     name: 'Test :: Flutter :: Native:: Android'
-    # Must use MacOS because of reasons mentioned in `android-emulator-runner`'s readme.
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
@@ -775,7 +774,12 @@ jobs:
       - uses: actions/setup-java@v2
         with:
           distribution: 'zulu'
-          java-version: "11.x"
+          java-version: "17.x"
+      - name: Enable KVM group perms
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
       - name: AVD cache
         uses: actions/cache@v3
         id: avd-cache
@@ -790,16 +794,16 @@ jobs:
         with:
           api-level: ${{ matrix.api-level }}
           force-avd-creation: false
-          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
-          disable-animations: false
+          # emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          # disable-animations: false
           script: echo "Generated AVD snapshot for caching."
 
       # execute
       - uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: ${{ matrix.api-level }}
-          emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim
-          arch: x86_64
+          # emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim
+          # arch: x86_64
           profile: ${{ matrix.device }}
           script: ./frb_internal test-flutter-native --package ${{ matrix.package }}
 
@@ -814,8 +818,8 @@ jobs:
           - frb_example--flutter_via_create
           # no `frb_example--flutter_via_integrate` since it is similar to `flutter_via_create`
         device:
-          - "iPad (9th generation) Simulator (16.2)"
-          - "iPhone 12 Pro Max Simulator (16.2)"
+          - "iPad (10th generation) Simulator (17.2)"
+          - "iPhone 14 Pro Max Simulator (17.2)"
 
     steps:
       # setup
@@ -976,3 +980,40 @@ jobs:
         with:
           directory: downloaded-artifacts
           verbose: true
+
+  misc_check_precommit:
+    name: 'Misc :: Check precommit'
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        mode:
+          - fast
+          - slow
+
+    steps:
+      # setup
+      - uses: catchpoint/workflow-telemetry-action@v1
+        with:
+          comment_on_pr: false
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
+          components: rustfmt, clippy
+      - run: |
+          rustup toolchain install nightly
+          rustup target add wasm32-unknown-unknown
+          rustup component add rustfmt --toolchain nightly-x86_64-unknown-linux-gnu
+          cargo install cargo-expand
+      - uses: subosito/flutter-action@v2
+        with:
+          cache: true
+          flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
+
+      # execute
+      - run: ./frb_internal precommit --mode ${{ matrix.mode }}
+

@@ -3,10 +3,10 @@ use crate::codegen::generator::wire::rust::spec_generator::base::{
     WireRustGenerator, WireRustGeneratorContext,
 };
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::WireRustCodecCstGenerator;
-use crate::codegen::ir::pack::IrPackComputedCache;
+use crate::codegen::ir::mir::pack::MirPackComputedCache;
 use crate::library::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
-use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use serde::Serialize;
 use std::collections::HashMap;
 use strum::IntoEnumIterator;
@@ -25,7 +25,7 @@ pub(crate) struct WireRustDumpInfoType {
 }
 
 pub(super) fn generate_dump_info(
-    cache: &IrPackComputedCache,
+    cache: &MirPackComputedCache,
     context: WireRustGeneratorContext,
 ) -> WireRustDumpInfo {
     WireRustDumpInfo {

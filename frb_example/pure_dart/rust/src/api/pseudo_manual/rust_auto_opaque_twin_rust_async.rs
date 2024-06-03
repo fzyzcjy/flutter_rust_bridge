@@ -8,7 +8,6 @@
 use crate::frb_generated::RustAutoOpaque;
 use crate::frb_generated::StreamSink;
 use flutter_rust_bridge::frb;
-use flutter_rust_bridge::rust_async::RwLock;
 use std::path::PathBuf;
 
 // TODO auto determine it is opaque or not later
@@ -297,9 +296,10 @@ pub async fn rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_r
 
 // ================ struct/enum with both encodable and opaque fields, without non_opaque option ===================
 
+#[allow(dead_code)]
 pub struct StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync {
     pub good: String,
-    pub opaque: NonCloneSimpleTwinRustAsync,
+    opaque: NonCloneSimpleTwinRustAsync,
 }
 
 pub enum EnumWithGoodAndOpaqueWithoutOptionTwinRustAsync {
@@ -358,7 +358,7 @@ pub async fn rust_auto_opaque_explicit_arg_twin_rust_async(
     arg: RustAutoOpaque<NonCloneSimpleTwinRustAsync>,
     expect: i32,
 ) {
-    assert_eq!((*arg).try_read().unwrap().inner, expect);
+    assert_eq!(arg.try_read().unwrap().inner, expect);
 }
 
 pub struct StructWithExplicitAutoOpaqueFieldTwinRustAsync {
@@ -369,13 +369,35 @@ pub struct StructWithExplicitAutoOpaqueFieldTwinRustAsync {
 pub async fn rust_auto_opaque_explicit_struct_twin_rust_async(
     arg: StructWithExplicitAutoOpaqueFieldTwinRustAsync,
 ) {
-    assert_eq!((*arg.auto_opaque).try_read().unwrap().inner, arg.normal);
+    assert_eq!(arg.auto_opaque.try_read().unwrap().inner, arg.normal);
+}
+
+pub async fn rust_auto_opaque_explicit_return_struct_twin_rust_async(
+) -> StructWithExplicitAutoOpaqueFieldTwinRustAsync {
+    StructWithExplicitAutoOpaqueFieldTwinRustAsync {
+        normal: 100,
+        auto_opaque: RustAutoOpaque::new(NonCloneSimpleTwinRustAsync { inner: 100 }),
+    }
 }
 
 pub async fn rust_auto_opaque_explicit_return_twin_rust_async(
     initial: i32,
 ) -> RustAutoOpaque<NonCloneSimpleTwinRustAsync> {
-    RustAutoOpaque::new(RwLock::new(NonCloneSimpleTwinRustAsync { inner: initial }))
+    RustAutoOpaque::new(NonCloneSimpleTwinRustAsync { inner: initial })
+}
+
+// ================ deadlock detection ===================
+
+pub async fn rust_auto_opaque_sleep_twin_rust_async(
+    apple: &mut NonCloneSimpleTwinRustAsync,
+    orange: &mut NonCloneSimpleTwinRustAsync,
+) -> i32 {
+    // If WASM + main thread (i.e. "sync"), the `sleep` cannot be used, which is a Rust / WASM limit.
+    // (But if on native, or on WASM + async mode, it is OK)
+    #[cfg(not(target_family = "wasm"))]
+    std::thread::sleep(std::time::Duration::from_millis(1000));
+
+    apple.inner + orange.inner
 }
 
 // ================ misc ===================

@@ -3,11 +3,16 @@ use crate::codegen::generator::api_dart::spec_generator::function::ApiDartGenera
 use crate::codegen::generator::api_dart::spec_generator::{
     ApiDartOutputSpec, ApiDartOutputSpecItem,
 };
+use crate::codegen::generator::misc::target::TargetOrCommonMap;
 use crate::codegen::generator::misc::{generate_code_header, PathText, PathTexts};
-use crate::codegen::ir::namespace::Namespace;
+use crate::codegen::misc::THIRD_PARTY_DIR_NAME;
 use crate::utils::basic_code::DartBasicHeaderCode;
-use anyhow::ensure;
-use itertools::Itertools;
+use crate::utils::crate_name::CrateName;
+use crate::utils::namespace::Namespace;
+use crate::utils::path_utils::path_to_string;
+use anyhow::Context;
+use itertools::{concat, Itertools};
+use pathdiff::diff_paths;
 use std::path::{Path, PathBuf};
 
 pub(super) struct ApiDartOutputText {
@@ -18,13 +23,18 @@ pub(super) fn generate(
     spec: &ApiDartOutputSpec,
     config: &GeneratorApiDartInternalConfig,
 ) -> anyhow::Result<ApiDartOutputText> {
+    // let common_namespace_prefix =
+    //     Namespace::compute_common_prefix(&spec.namespaced_items.keys().collect_vec());
+    // debug!("common_namespace_prefix={common_namespace_prefix:?}");
+
     let path_texts = PathTexts(
         spec.namespaced_items
             .iter()
             .map(|(namespace, item)| {
                 let dart_output_path =
                     compute_path_from_namespace(&config.dart_decl_base_output_path, namespace);
-                let text = generate_end_api_text(namespace, &dart_output_path, item)?;
+                let text =
+                    generate_end_api_text(&dart_output_path, &config.dart_impl_output_path, item)?;
                 Ok(PathText::new(dart_output_path, text))
             })
             .collect::<anyhow::Result<Vec<_>>>()?,
@@ -36,31 +46,29 @@ pub(super) fn generate(
 }
 
 fn generate_end_api_text(
-    namespace: &Namespace,
     dart_output_path: &Path,
+    dart_impl_output_path: &TargetOrCommonMap<PathBuf>,
     item: &ApiDartOutputSpecItem,
 ) -> anyhow::Result<String> {
     let funcs = item
         .funcs
         .iter()
-        .sorted_by_key(|f| f.src_lineno)
+        .sorted_by_key(|f| f.src_lineno_pseudo)
         .map(generate_function)
         .join("\n\n");
     let classes = item.classes.iter().map(|c| c.code.clone()).join("\n\n");
 
-    let path_chunks_len = namespace.path().len();
-    ensure!(
-        path_chunks_len >= 2,
-        // This will stop the whole generator and tell the users, so we do not care about testing it
-        // frb-coverage:ignore-start
-        "Please do not put structs in `lib.rs`",
-        // frb-coverage:ignore-end
-    );
-    // TODO use relative path calculation
-    let path_frb_generated = "../".repeat(path_chunks_len - 2) + "frb_generated.dart";
+    let path_frb_generated = diff_paths(
+        &dart_impl_output_path.common,
+        dart_output_path.parent().unwrap(),
+    )
+    .with_context(|| "Fail to find relative path".to_string())?;
+    let path_frb_generated = path_to_string(&path_frb_generated)?.replace('\\', "/");
 
+    let preamble = &item.preamble.as_str();
     let mut header = DartBasicHeaderCode {
         file_top: generate_code_header()
+            + if !preamble.is_empty() {"\n\n"} else {""} + preamble
             + "\n\n// ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import\n",
         import: format!(
             "
@@ -94,26 +102,36 @@ fn generate_end_api_text(
 
     let header = header.all_code();
 
-    let unused_types = item
-        .unused_types
-        .iter()
-        .sorted()
-        .map(|t| {
-            format!("// The type `{t}` is not used by any `pub` functions, thus it is ignored.\n")
-        })
-        .join("");
+    let skips = compute_skips(item);
 
     Ok(format!(
         "
         {header}
 
-        {unused_types}
+        {skips}
 
         {funcs}
 
         {classes}
         ",
     ))
+}
+
+fn compute_skips(item: &ApiDartOutputSpecItem) -> String {
+    (item.skips.iter())
+        .into_group_map_by(|t| t.reason)
+        .into_iter()
+        .sorted_by_key(|(reason, _)| *reason)
+        .map(|(reason, names)| {
+            format!(
+                "// {}: {}\n",
+                reason.explanation_prefix(),
+                (names.iter().map(|x| format!("`{}`", x.name.name)))
+                    .sorted()
+                    .join(", "),
+            )
+        })
+        .join("")
 }
 
 fn generate_function(func: &ApiDartGeneratedFunction) -> String {
@@ -130,9 +148,13 @@ fn compute_path_from_namespace(
     dart_decl_base_output_path: &Path,
     namespace: &Namespace,
 ) -> PathBuf {
-    let chunks = namespace.path_exclude_self_crate();
-    let ans_without_extension = chunks
-        .iter()
-        .fold(dart_decl_base_output_path.to_owned(), |a, b| a.join(b));
+    let raw_path = namespace.path();
+    let chunks = match raw_path[0] {
+        CrateName::SELF_CRATE => raw_path[1..].to_owned(),
+        _ => concat([vec![THIRD_PARTY_DIR_NAME], raw_path.clone()]),
+    };
+
+    let ans_without_extension =
+        (chunks.iter()).fold(dart_decl_base_output_path.to_owned(), |a, b| a.join(b));
     ans_without_extension.with_extension("dart")
 }

@@ -59,6 +59,9 @@ build-target = "0.4.0"
 wasm-bindgen-test = "0.3.32"
 cool_asserts = "2.0.3"
 
+[target.'cfg(not(target_family = "wasm"))'.dev-dependencies]
+tokio = { version = "1.34.0", features = ["rt-multi-thread", "sync", "macros"] }
+
 [features]
 default = [
     "anyhow",

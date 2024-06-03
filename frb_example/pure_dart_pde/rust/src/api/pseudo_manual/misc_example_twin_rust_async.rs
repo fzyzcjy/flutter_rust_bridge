@@ -115,6 +115,10 @@ pub async fn handle_string_twin_rust_async(s: String) -> String {
     s + &s2
 }
 
+pub async fn handle_char_twin_rust_async(arg: char) -> char {
+    arg
+}
+
 // to check that `Vec<u8>` can be used as return type
 pub async fn handle_vec_u8_twin_rust_async(v: Vec<u8>) -> Vec<u8> {
     info!("handle_vec_u8(first few elements: {:?})", &v[..5]);
@@ -152,3 +156,8 @@ pub struct MySizeFreezedTwinRustAsync {
 // To test parsing of `pub(super)`
 #[allow(dead_code)]
 pub(super) fn visibility_restricted_func_twin_rust_async() {}
+
+#[frb(positional)]
+pub async fn positional_arguments_twin_rust_async(a: i32, b: i32) -> i32 {
+    a + b
+}

@@ -294,11 +294,17 @@ Future<void> main({bool skipRustLibInit = false}) async {
           rustAutoOpaqueExplicitArgTwinSync(arg: obj, expect: 100));
     });
 
-    test('it can be inside a struct', () async {
+    test('it can be inside a struct used as argument', () async {
       final obj = await rustAutoOpaqueExplicitReturnTwinSync(initial: 100);
       await futurizeVoidTwinSync(rustAutoOpaqueExplicitStructTwinSync(
           arg: StructWithExplicitAutoOpaqueFieldTwinSync(
               autoOpaque: obj, normal: 100)));
+    });
+
+    test('it can be inside a struct used as return type', () async {
+      final obj = await rustAutoOpaqueExplicitReturnStructTwinSync();
+      await futurizeVoidTwinSync(
+          rustAutoOpaqueExplicitStructTwinSync(arg: obj));
     });
 
     group('it can be used with automatic (implicit) ones', () {
@@ -323,7 +329,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
         () async => rustAutoOpaqueBorrowAndMutBorrowTwinSync(
             borrow: obj, mutBorrow: obj),
         'TwinSync',
-        messageMatcherOnNative: matches(RegExp('Fail to.*borrow object')),
+        messageMatcherOnNative: matches(RegExp('Cannot.*borrow.*object')),
       );
     });
 
@@ -347,6 +353,36 @@ Future<void> main({bool skipRustLibInit = false}) async {
       final a = await rustAutoOpaqueReturnOwnTwinSync(initial: 100);
       final b = await rustAutoOpaqueReturnOwnTwinSync(initial: 200);
       expect(await rustAutoOpaqueBorrowAndBorrowTwinSync(a: a, b: b), 300);
+    });
+  });
+
+  group('deadlock', () {
+    test('simple call', () async {
+      final a = await rustAutoOpaqueReturnOwnTwinSync(initial: 100);
+      final b = await rustAutoOpaqueReturnOwnTwinSync(initial: 200);
+      expect(await rustAutoOpaqueSleepTwinSync(apple: a, orange: b), 300);
+    });
+
+    test('call both with same order', () async {
+      final a = await rustAutoOpaqueReturnOwnTwinSync(initial: 100);
+      final b = await rustAutoOpaqueReturnOwnTwinSync(initial: 200);
+
+      final future1 = rustAutoOpaqueSleepTwinSync(apple: a, orange: b);
+      final future2 = rustAutoOpaqueSleepTwinSync(apple: a, orange: b);
+
+      expect(await future1, 300);
+      expect(await future2, 300);
+    });
+
+    test('call both with reversed order', () async {
+      final a = await rustAutoOpaqueReturnOwnTwinSync(initial: 100);
+      final b = await rustAutoOpaqueReturnOwnTwinSync(initial: 200);
+
+      final future1 = rustAutoOpaqueSleepTwinSync(apple: a, orange: b);
+      final future2 = rustAutoOpaqueSleepTwinSync(apple: b, orange: a);
+
+      expect(await future1, 300);
+      expect(await future2, 300);
     });
   });
 }

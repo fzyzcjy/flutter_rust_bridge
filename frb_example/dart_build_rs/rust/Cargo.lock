@@ -589,7 +589,7 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge"
-version = "2.0.0-dev.32"
+version = "2.0.0-dev.37"
 dependencies = [
  "allo-isolate",
  "android_logger",
@@ -614,7 +614,7 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge_codegen"
-version = "2.0.0-dev.32"
+version = "2.0.0-dev.37"
 dependencies = [
  "anyhow",
  "atty",
@@ -658,9 +658,10 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge_macros"
-version = "2.0.0-dev.32"
+version = "2.0.0-dev.37"
 dependencies = [
  "hex",
+ "proc-macro2",
  "quote",
  "syn 2.0.48",
 ]

@@ -3,7 +3,7 @@ description: This is for testing the correct parsing of a file with faulty entri
 version: 1.0.0
 
 flutter_rust_bridge:
-  rust_input: hello.rs
+  rust_input: crate::hello
   dart_output: hello.dart
   c_output: hello.h
   misspelled_dart3: false

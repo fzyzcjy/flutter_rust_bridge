@@ -8,7 +8,6 @@
 use crate::frb_generated::RustAutoOpaque;
 use crate::frb_generated::StreamSink;
 use flutter_rust_bridge::frb;
-use flutter_rust_bridge::rust_async::RwLock;
 use std::path::PathBuf;
 
 // TODO auto determine it is opaque or not later
@@ -306,9 +305,10 @@ pub fn rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_moi(
 
 // ================ struct/enum with both encodable and opaque fields, without non_opaque option ===================
 
+#[allow(dead_code)]
 pub struct StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi {
     pub good: String,
-    pub opaque: NonCloneSimpleTwinMoi,
+    opaque: NonCloneSimpleTwinMoi,
 }
 
 pub enum EnumWithGoodAndOpaqueWithoutOptionTwinMoi {
@@ -367,7 +367,7 @@ pub fn rust_auto_opaque_explicit_arg_twin_moi(
     arg: crate::frb_generated::RustAutoOpaqueMoi<NonCloneSimpleTwinMoi>,
     expect: i32,
 ) {
-    assert_eq!((*arg).try_read().unwrap().inner, expect);
+    assert_eq!(arg.try_read().unwrap().inner, expect);
 }
 
 pub struct StructWithExplicitAutoOpaqueFieldTwinMoi {
@@ -377,16 +377,40 @@ pub struct StructWithExplicitAutoOpaqueFieldTwinMoi {
 
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
 pub fn rust_auto_opaque_explicit_struct_twin_moi(arg: StructWithExplicitAutoOpaqueFieldTwinMoi) {
-    assert_eq!((*arg.auto_opaque).try_read().unwrap().inner, arg.normal);
+    assert_eq!(arg.auto_opaque.try_read().unwrap().inner, arg.normal);
+}
+
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+pub fn rust_auto_opaque_explicit_return_struct_twin_moi() -> StructWithExplicitAutoOpaqueFieldTwinMoi
+{
+    StructWithExplicitAutoOpaqueFieldTwinMoi {
+        normal: 100,
+        auto_opaque: crate::frb_generated::RustAutoOpaqueMoi::new(NonCloneSimpleTwinMoi {
+            inner: 100,
+        }),
+    }
 }
 
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
 pub fn rust_auto_opaque_explicit_return_twin_moi(
     initial: i32,
 ) -> crate::frb_generated::RustAutoOpaqueMoi<NonCloneSimpleTwinMoi> {
-    crate::frb_generated::RustAutoOpaqueMoi::new(RwLock::new(NonCloneSimpleTwinMoi {
-        inner: initial,
-    }))
+    crate::frb_generated::RustAutoOpaqueMoi::new(NonCloneSimpleTwinMoi { inner: initial })
+}
+
+// ================ deadlock detection ===================
+
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+pub fn rust_auto_opaque_sleep_twin_moi(
+    apple: &mut NonCloneSimpleTwinMoi,
+    orange: &mut NonCloneSimpleTwinMoi,
+) -> i32 {
+    // If WASM + main thread (i.e. "sync"), the `sleep` cannot be used, which is a Rust / WASM limit.
+    // (But if on native, or on WASM + async mode, it is OK)
+    #[cfg(not(target_family = "wasm"))]
+    std::thread::sleep(std::time::Duration::from_millis(1000));
+
+    apple.inner + orange.inner
 }
 
 // ================ misc ===================

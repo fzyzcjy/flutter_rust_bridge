@@ -16,8 +16,8 @@ pub(crate) struct DumperInternalConfig {
 pub enum ConfigDumpContent {
     Config,
     Source,
-    SourceGraph,
-    Ir,
+    Hir,
+    Mir,
     GeneratorInfo,
     GeneratorSpec,
     GeneratorText,

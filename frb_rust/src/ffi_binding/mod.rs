@@ -3,11 +3,13 @@ use crate::for_generated::{into_leak_vec_ptr, new_leak_vec_ptr, vec_from_leak_pt
 #[cfg(not(wasm))]
 mod io;
 #[cfg(not(wasm))]
+#[allow(unused)]
 pub use io::*;
 
 #[cfg(wasm)]
 mod web;
 #[cfg(wasm)]
+#[allow(unused)]
 pub use web::*;
 
 #[no_mangle]

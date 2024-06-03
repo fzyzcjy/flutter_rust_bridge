@@ -1,6 +1,8 @@
 use crate::for_generated::BaseArc;
 use crate::generalized_isolate::ZeroCopyBuffer;
 use crate::platform_types::DartAbi;
+#[cfg(feature = "rust-async")]
+use crate::rust_auto_opaque::{inner::RustAutoOpaqueInner, RustAutoOpaqueBase};
 use crate::rust_opaque::RustOpaqueBase;
 use js_sys::{Array, BigInt64Array, BigUint64Array, Int32Array};
 use std::collections::{HashMap, HashSet};
@@ -14,6 +16,8 @@ pub trait IntoDart {
 pub trait IntoDartExceptPrimitive: IntoDart {}
 impl IntoDartExceptPrimitive for JsValue {}
 impl<T, A: BaseArc<T>> IntoDartExceptPrimitive for RustOpaqueBase<T, A> {}
+#[cfg(feature = "rust-async")]
+impl<T, A: BaseArc<RustAutoOpaqueInner<T>>> IntoDartExceptPrimitive for RustAutoOpaqueBase<T, A> {}
 #[cfg(feature = "dart-opaque")]
 impl IntoDartExceptPrimitive for crate::dart_opaque::DartOpaque {}
 impl IntoDartExceptPrimitive for String {}
@@ -145,7 +149,7 @@ macro_rules! delegate_buffer {
 // Orphan rules disallow blanket implementations, so we have to manually delegate here.
 delegate! {
     bool
-    i8 u8 i16 u16 i32 u32 i64 u64 i128 u128 isize usize
+    i8 u8 i16 u16 i32 u32 i64 u64 isize usize
     f32 f64
     &str String JsValue
 }
@@ -158,6 +162,26 @@ delegate_buffer! {
     u32 => js_sys::Uint32Array
     f32 => js_sys::Float32Array
     f64 => js_sys::Float64Array
+}
+
+impl IntoDart for char {
+    #[inline]
+    fn into_dart(self) -> DartAbi {
+        (self as u32).into_dart()
+    }
+}
+
+impl IntoDart for i128 {
+    #[inline]
+    fn into_dart(self) -> DartAbi {
+        self.to_string().into_dart()
+    }
+}
+impl IntoDart for u128 {
+    #[inline]
+    fn into_dart(self) -> DartAbi {
+        self.to_string().into_dart()
+    }
 }
 
 fn into_dart_iterator<T, It>(iter: It) -> DartAbi
@@ -222,6 +246,14 @@ impl<T> IntoDart for *mut T {
 }
 
 impl<T, A: BaseArc<T>> IntoDart for RustOpaqueBase<T, A> {
+    #[inline]
+    fn into_dart(self) -> DartAbi {
+        self.into()
+    }
+}
+
+#[cfg(feature = "rust-async")]
+impl<T, A: BaseArc<RustAutoOpaqueInner<T>>> IntoDart for RustAutoOpaqueBase<T, A> {
     #[inline]
     fn into_dart(self) -> DartAbi {
         self.into()

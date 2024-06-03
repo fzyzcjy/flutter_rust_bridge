@@ -1,5 +1,5 @@
-use crate::codegen::ir::pack::IrPackComputedCache;
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::ir::mir::pack::MirPackComputedCache;
+use crate::codegen::ir::mir::ty::MirType;
 use serde::{Deserialize, Serialize};
 use strum_macros::{Display, EnumIter, EnumString};
 
@@ -80,7 +80,7 @@ macro_rules! codegen_codec_structs {
             impl<'a> [<Wire $partial_name CodecEntrypoint>]<'a> {
                 pub(crate) fn generate_all(
                     context: [<Wire $partial_name GeneratorContext>],
-                    cache: &IrPackComputedCache,
+                    cache: &MirPackComputedCache,
                     mode: EncodeOrDecode,
                 ) -> [<Wire $partial_name CodecOutputSpec>] {
                     CodecMode::iter()
@@ -107,9 +107,9 @@ macro_rules! codegen_codec_structs {
 }
 
 pub(crate) fn get_interest_types_for_codec(
-    cache: &IrPackComputedCache,
+    cache: &MirPackComputedCache,
     codec: CodecMode,
-) -> Vec<IrType> {
+) -> Vec<MirType> {
     match codec {
         CodecMode::Cst => cache.distinct_types_for_codec[&codec].clone(),
         // Consider all types in Rust, since users may want IntoDart and IntoIntoDart for DartDynamic etc
@@ -122,7 +122,7 @@ pub(crate) fn get_interest_types_for_codec(
 }
 
 pub(crate) trait BaseCodecEntrypointTrait<C, O> {
-    fn generate(&self, context: C, types: &[IrType], mode: EncodeOrDecode) -> Option<O>;
+    fn generate(&self, context: C, types: &[MirType], mode: EncodeOrDecode) -> Option<O>;
 }
 
 #[derive(Debug, Copy, Clone, PartialEq, Eq)]

@@ -1,0 +1,40 @@
+{
+  "crates": [
+    {
+      "name": "crate",
+      "root_module": {
+        "content": {
+          "enums": [],
+          "functions": [],
+          "modules": [
+            {
+              "content": {
+                "enums": [],
+                "functions": [
+                  {
+                    "namespace": "crate::api"
+                  }
+                ],
+                "modules": [],
+                "structs": [],
+                "type_alias": []
+              },
+              "meta": {
+                "namespace": "crate::api",
+                "parent_vis": [],
+                "vis": "Inherited"
+              }
+            }
+          ],
+          "structs": [],
+          "type_alias": []
+        },
+        "meta": {
+          "namespace": "crate",
+          "parent_vis": [],
+          "vis": "Public"
+        }
+      }
+    }
+  ]
+}

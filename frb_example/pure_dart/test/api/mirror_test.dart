@@ -75,13 +75,14 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('dart call repeatNumber()', () async {
-    var numbers = await repeatNumberTwinNormal(num: 1, times: 10);
+    var numbers = await repeatNumberTwinNormal(num: 1, times: BigInt.from(10));
     expect(numbers.field0.toList(),
         Int32List.fromList([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]));
   });
 
   test('dart call repeatSequence()', () async {
-    var sequences = await repeatSequenceTwinNormal(seq: 1, times: 10);
+    var sequences =
+        await repeatSequenceTwinNormal(seq: 1, times: BigInt.from(10));
     expect(sequences.field0.toList(),
         Int32List.fromList([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]));
   });

@@ -1,13 +1,13 @@
 use crate::codegen::generator::codec::sse::lang::LangTrait;
-use crate::codegen::ir::ty::IrType;
-use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::codegen::ir::mir::ty::MirType;
+use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use itertools::{multizip, Itertools};
 
 #[derive(Clone, Copy, Debug)]
 pub(crate) struct DartLang;
 
 impl LangTrait for DartLang {
-    fn call_encode(&self, var_ty: &IrType, var_name: &str) -> String {
+    fn call_encode(&self, var_ty: &MirType, var_name: &str) -> String {
         format!(
             "sse_encode_{}({}, serializer)",
             var_ty.safe_ident(),
@@ -15,7 +15,7 @@ impl LangTrait for DartLang {
         )
     }
 
-    fn call_decode(&self, var_ty: &IrType) -> String {
+    fn call_decode(&self, var_ty: &MirType) -> String {
         format!("sse_decode_{}(deserializer)", var_ty.safe_ident(),)
     }
 

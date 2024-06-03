@@ -105,6 +105,10 @@ pub fn handle_string_twin_normal(s: String) -> String {
     s + &s2
 }
 
+pub fn handle_char_twin_normal(arg: char) -> char {
+    arg
+}
+
 // to check that `Vec<u8>` can be used as return type
 pub fn handle_vec_u8_twin_normal(v: Vec<u8>) -> Vec<u8> {
     info!("handle_vec_u8(first few elements: {:?})", &v[..5]);
@@ -142,3 +146,8 @@ pub struct MySizeFreezedTwinNormal {
 // To test parsing of `pub(super)`
 #[allow(dead_code)]
 pub(super) fn visibility_restricted_func_twin_normal() {}
+
+#[frb(positional)]
+pub fn positional_arguments_twin_normal(a: i32, b: i32) -> i32 {
+    a + b
+}

@@ -1,5 +1,52 @@
 # Changelog
 
+## 2.0.0-dev.37
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Support positional parameters (in addition to named parameters) #1988
+* Support overriding environment variable for build-web #1984
+* Hint users when a function is not public and is ignored #1985
+* Rename generated functions that are not to be used by end users explicitly #1983
+* Improve generated user-facing API #1988
+
+## 2.0.0-dev.36
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Automatically generate getters and setters for public fields of opaque types #1975
+* Support Dart setters #1972
+* Support i128 and u128 #1964
+* Improve RustAutoOpaque's API and codegen handling #1970
+* Fix when users do not have explicit dependency on anyhow #1967
+* Hint users when using opaque types inside non opaque structs #1978
+* Hint users when using getters of opaque types #1976
+
+## 2.0.0-dev.35
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Support Result type when Rust calls Dart back #1945
+* Support type char #1957
+* Support renaming functions and methods #1958
+* Re-enable MemorySanitizer #1959
+* Show hints when functions or methods are ignored #1956
+* Add hints to deliberate Exception in RustLib.init in Chrome #1955
+* Support when struct type definition is in one file, struct impl is in another file, and the impl needs extra import #1953
+
+## 2.0.0-dev.34
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Add preamble for dart generated files #1949 (thanks @Krysl)
+* Support same function name in different files #1944
+* Support dart_format_line_length on generated .freezed.dart #1939
+* Improve hints when Flutter hot restarts with Streams #1942
+* Fix name conflict when using C++ keywords #1943
+* Fix warning use of deprecated associated function chrono::NaiveDateTime::from_timestamp_micros #1941
+* Bump Dart SDK source #1940
+
+## 2.0.0-dev.33
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Automatically wait when concurrent mutable access, while still preventing deadlocks #1920
+
 ## 2.0.0-dev.32
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.

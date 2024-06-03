@@ -20,7 +20,14 @@
       "dart3": true,
       "dart_decl_base_output_path": "{the-working-directory}/my_dart_folder",
       "dart_entrypoint_class_name": "RustLib",
-      "dart_enums_style": true
+      "dart_enums_style": true,
+      "dart_impl_output_path": {
+        "common": "{the-working-directory}/my_dart_folder/frb_generated.dart",
+        "io": "{the-working-directory}/my_dart_folder/frb_generated.io.dart",
+        "web": "{the-working-directory}/my_dart_folder/frb_generated.web.dart"
+      },
+      "dart_preamble": "",
+      "dart_type_rename": {}
     },
     "wire": {
       "c": {
@@ -80,12 +87,6 @@
         "default_stream_sink_codec": "Sse",
         "has_ffigen": false,
         "rust_crate_dir": "{the-working-directory}",
-        "rust_input_path_pack": {
-          "rust_input_paths": [
-            "{the-working-directory}/src/api/apple.rs",
-            "{the-working-directory}/src/api/orange.rs"
-          ]
-        },
         "rust_output_path": {
           "common": "{the-working-directory}/src/frb_generated.rs",
           "io": "{the-working-directory}/src/frb_generated.io.rs",
@@ -96,18 +97,27 @@
     }
   },
   "parser": {
-    "default_rust_opaque_codec": "Moi",
-    "default_stream_sink_codec": "Sse",
-    "force_codec_mode_pack": {
-      "dart2rust": "Pde",
-      "rust2dart": "Pde"
+    "hir": {
+      "rust_crate_dir": "{the-working-directory}",
+      "rust_input_namespace_pack": {
+        "rust_input_namespace_prefixes": [
+          "crate::api"
+        ]
+      },
+      "third_party_crate_names": []
     },
-    "rust_crate_dir": "{the-working-directory}",
-    "rust_input_path_pack": {
-      "rust_input_paths": [
-        "{the-working-directory}/src/api/apple.rs",
-        "{the-working-directory}/src/api/orange.rs"
-      ]
+    "mir": {
+      "default_rust_opaque_codec": "Moi",
+      "default_stream_sink_codec": "Sse",
+      "force_codec_mode_pack": {
+        "dart2rust": "Pde",
+        "rust2dart": "Pde"
+      },
+      "rust_input_namespace_pack": {
+        "rust_input_namespace_prefixes": [
+          "crate::api"
+        ]
+      }
     }
   },
   "polisher": {

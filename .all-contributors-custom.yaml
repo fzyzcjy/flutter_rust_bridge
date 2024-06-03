@@ -22,6 +22,7 @@
 - JustSimplyKyle: Also finish implementing exception hierarchy. Allow ignore function.
 - Zaitam: Fix when method return struct. Partial migration to Dart 3.
 - coder0xff: Discuss binding unmodified Rust. Refactor SupportedInnerType. Extra codegen tester.
+- NobodyForNothing: Support impl-for partially.
 - nitn3lav: Nested `struct`s without `Box`.
 - AlienKevin: Add flutter example for macOS. Add doc for Android NDK bug. Improve migration doc.
 - alexthe2: Add Option Datetime. Add empty structs. Improve doc. Add `r#`. Fix mirror enum bug.
@@ -30,6 +31,7 @@
 - temeddix: Fix broken CI. Custom num workers. Fix MacOS doc steps. Update doc. Make zero-copy defaultable.
 - NightFeather0615: Fix Vec bool.
 - OfficialBoyfriend: Fix error display.
+- Krysl: Add preamble.
 - w-ensink: Improve doc. Fix CI. Refactor. Add tests.
 - smw-wagnerma: Improve Windows encoding handling.
 - powpingdone: Document JNI init and libc++_static linking.

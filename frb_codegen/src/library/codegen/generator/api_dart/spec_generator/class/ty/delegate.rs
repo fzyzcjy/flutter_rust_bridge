@@ -1,7 +1,7 @@
 use crate::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
-use crate::codegen::ir::ty::delegate::{
-    IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegateArrayMode, IrTypeDelegatePrimitiveEnum,
+use crate::codegen::ir::mir::ty::delegate::{
+    MirTypeDelegate, MirTypeDelegateArray, MirTypeDelegateArrayMode, MirTypeDelegatePrimitiveEnum,
 };
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
@@ -9,18 +9,18 @@ use crate::utils::basic_code::DartBasicHeaderCode;
 
 impl<'a> ApiDartGeneratorClassTrait for DelegateApiDartGenerator<'a> {
     fn generate_class(&self) -> Option<ApiDartGeneratedClass> {
-        match &self.ir {
-            IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum { ir, .. }) => {
-                EnumRefApiDartGenerator::new(ir.clone(), self.context).generate_class()
+        match &self.mir {
+            MirTypeDelegate::PrimitiveEnum(MirTypeDelegatePrimitiveEnum { mir, .. }) => {
+                EnumRefApiDartGenerator::new(mir.clone(), self.context).generate_class()
             }
-            IrTypeDelegate::Array(array) => generate_array(array, self.context),
+            MirTypeDelegate::Array(array) => generate_array(array, self.context),
             _ => None,
         }
     }
 }
 
 fn generate_array(
-    array: &IrTypeDelegateArray,
+    array: &MirTypeDelegateArray,
     context: ApiDartGeneratorContext,
 ) -> Option<ApiDartGeneratedClass> {
     let self_dart_api_type = array.dart_api_type(context);
@@ -31,10 +31,10 @@ fn generate_array(
     let array_length = array.length;
 
     let dart_init_method = match array.mode {
-            IrTypeDelegateArrayMode::General(..) => format!(
+            MirTypeDelegateArrayMode::General(..) => format!(
                 "{self_dart_api_type}.init({inner_dart_api_type} fill): this(List<{inner_dart_api_type}>.filled(arraySize,fill));",
             ),
-            IrTypeDelegateArrayMode::Primitive(..) => format!(
+            MirTypeDelegateArrayMode::Primitive(..) => format!(
                 "{self_dart_api_type}.init(): this({delegate_dart_api_type}(arraySize));",
             ),
         };
