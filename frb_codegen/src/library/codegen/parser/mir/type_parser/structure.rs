@@ -6,11 +6,9 @@ use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ir::mir::ty::MirType::StructRef;
 use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
 use crate::codegen::parser::mir::type_parser::enum_or_struct::{
-    EnumOrStructParser, EnumOrStructParserInfo,
+    parse_type_should_ignore_simple, EnumOrStructParser, EnumOrStructParserInfo,
 };
-use crate::codegen::parser::mir::type_parser::misc::{
-    parse_comments, parse_type_should_ignore_simple,
-};
+use crate::codegen::parser::mir::type_parser::misc::parse_comments;
 use crate::codegen::parser::mir::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::mir::type_parser::TypeParserWithContext;
 use crate::utils::namespace::{Namespace, NamespacedName};

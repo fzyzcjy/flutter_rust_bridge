@@ -3,9 +3,9 @@ use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStructOrEnum;
 use crate::codegen::ir::hir::hierarchical::syn_item_struct_or_enum::SynItemStructOrEnum;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
-use crate::codegen::parser::mir::type_parser::misc::parse_type_should_ignore_simple;
 use crate::codegen::parser::mir::type_parser::unencodable::SplayedSegment;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
+use crate::utils::crate_name::CrateName;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use log::debug;
 use std::collections::{HashMap, HashSet};
@@ -167,4 +167,18 @@ fn compute_name_and_wrapper_name(
         None
     };
     (namespaced_name, wrapper_name)
+}
+
+// TODO rename
+pub(crate) fn parse_type_should_ignore_simple<Item: SynItemStructOrEnum>(
+    src_object: &HirStructOrEnum<Item>,
+    crate_name: &CrateName,
+) -> bool {
+    let attrs = FrbAttributes::parse(src_object.src.attrs()).unwrap();
+
+    attrs.ignore()
+        // For third party crates, if a struct is not public, then it is impossible to utilize it,
+        // thus we ignore it.
+        || (crate_name != &CrateName::self_crate() && src_object.visibility != HirVisibility::Public)
+        || TODO
 }
