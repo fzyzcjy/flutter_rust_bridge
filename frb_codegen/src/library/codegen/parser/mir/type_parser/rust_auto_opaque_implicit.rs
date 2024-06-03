@@ -6,7 +6,6 @@ use crate::codegen::ir::mir::ty::rust_opaque::{
     MirRustOpaqueInner, MirTypeRustOpaque, RustOpaqueCodecMode,
 };
 use crate::codegen::ir::mir::ty::{MirType, MirTypeTrait};
-use crate::codegen::parser::mir::type_parser::external_impl;
 use crate::codegen::parser::mir::type_parser::path_data::extract_path_data;
 use crate::codegen::parser::mir::type_parser::rust_opaque::{
     GeneralizedRustOpaqueParserInfo, RustOpaqueParserTypeInfo,
@@ -23,6 +22,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         &mut self,
         namespace: Option<Namespace>,
         ty: &Type,
+        override_ignore: Option<bool>,
     ) -> Result<MirType> {
         let (inner, ownership_mode) = split_ownership_from_ty(ty);
         let (ans_raw, ans_inner) =
@@ -31,6 +31,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             ownership_mode,
             raw: ans_raw,
             inner: ans_inner,
+            ignore: override_ignore.unwrap_or(false),
         }))
     }
 
@@ -40,7 +41,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         namespace: Option<Namespace>,
         codec: Option<RustOpaqueCodecMode>,
     ) -> Result<(MirRustAutoOpaqueRaw, MirTypeRustOpaque)> {
-        let inner = external_impl::parse_type(inner)?;
+        // let inner = external_impl::parse_type(inner)?;
 
         let inner_str = inner.to_token_stream().to_string();
         let info = self.get_or_insert_rust_auto_opaque_info(&inner_str, namespace, codec);
@@ -93,6 +94,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         self.parse_type_rust_auto_opaque_implicit(
             ty_raw.self_namespace(),
             &syn::parse_str(&transform(&ty_raw.raw.string))?,
+            None,
         )
     }
 }

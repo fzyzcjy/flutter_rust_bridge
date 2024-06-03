@@ -94,9 +94,11 @@ fn wire__crate__api__simple__init_app_impl(
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
             move |context| {
-                transform_result_sse(
-                    (move || Result::<_, ()>::Ok(crate::api::simple::init_app()))(),
-                )
+                transform_result_sse((move || {
+                    Result::<_, ()>::Ok({
+                        crate::api::simple::init_app();
+                    })
+                })())
             }
         },
     )

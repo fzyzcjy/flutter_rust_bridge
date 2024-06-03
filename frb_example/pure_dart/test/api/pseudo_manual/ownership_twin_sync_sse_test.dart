@@ -13,6 +13,12 @@ Future<void> main({bool skipRustLibInit = false}) async {
   addTestsIdentityFunctionCall(borrowStringTwinSyncSse, ['a']);
   addTestsIdentityFunctionCall(borrowStrTwinSyncSse, ['a']);
   addTestsIdentityFunctionCall(borrowI32TwinSyncSse, [100]);
+  addTestsIdentityFunctionCall(borrowSliceU8TwinSyncSse, [
+    [10, 20, 30]
+  ]);
+  addTestsIdentityFunctionCall(borrowSliceStringTwinSyncSse, [
+    ['a', 'b']
+  ]);
   addTestsIdentityFunctionCall(
       borrowStructTwinSyncSse, [SimpleStructForBorrowTwinSyncSse(one: 'a')]);
 }

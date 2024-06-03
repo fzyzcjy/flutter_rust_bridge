@@ -17,6 +17,14 @@ String borrowStrTwinSync({required String arg}) => RustLib.instance.api
 int borrowI32TwinSync({required int arg}) => RustLib.instance.api
     .crateApiPseudoManualOwnershipTwinSyncBorrowI32TwinSync(arg: arg);
 
+Uint8List borrowSliceU8TwinSync({required List<int> arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualOwnershipTwinSyncBorrowSliceU8TwinSync(arg: arg);
+
+List<String> borrowSliceStringTwinSync({required List<String> arg}) => RustLib
+    .instance.api
+    .crateApiPseudoManualOwnershipTwinSyncBorrowSliceStringTwinSync(arg: arg);
+
 SimpleStructForBorrowTwinSync borrowStructTwinSync(
         {required SimpleStructForBorrowTwinSync arg}) =>
     RustLib.instance.api

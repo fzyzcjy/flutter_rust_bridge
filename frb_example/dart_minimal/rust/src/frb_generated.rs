@@ -66,7 +66,9 @@ fn wire__crate__api__minimal__init_app_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
-                    Result::<_, ()>::Ok(crate::api::minimal::init_app())
+                    Result::<_, ()>::Ok({
+                        crate::api::minimal::init_app();
+                    })
                 })())
             }
         },

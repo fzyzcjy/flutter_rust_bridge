@@ -7,7 +7,7 @@ use anyhow::{bail, Context, Result};
 use itertools::Itertools;
 use lazy_static::lazy_static;
 use log::{debug, info};
-use regex::Regex;
+use regex::{Captures, Regex};
 use std::borrow::Cow;
 use std::env;
 use std::path::Path;
@@ -26,7 +26,7 @@ fn run_with_frb_aware(
     rust_crate_dir: &Path,
     interest_crate_name: Option<&CrateName>,
 ) -> Result<String> {
-    Ok(unwrap_frb_attrs_in_doc(&run_raw(
+    Ok(decode_macro_frb_encoded_comments(&run_raw(
         rust_crate_dir,
         interest_crate_name,
         "--cfg frb_expand",
@@ -35,15 +35,18 @@ fn run_with_frb_aware(
     .into_owned())
 }
 
-/// Turns `#[doc = "frb_marker: .."]` back into `#[frb(..)]`, usually produced
-/// as a side-effect of cargo-expand.
-// NOTE: The amount of pounds must match exactly with the implementation in frb_macros
-fn unwrap_frb_attrs_in_doc(code: &str) -> Cow<str> {
+/// Decode `#[doc = "frb_encoded(...)"]`, usually produced as a side-effect of cargo-expand.
+fn decode_macro_frb_encoded_comments(code: &str) -> Cow<str> {
     lazy_static! {
         static ref PATTERN: Regex =
-            Regex::new(r####"#\[doc =[\s\n]*r###"frb_marker: ([\s\S]*?)"###]"####).unwrap();
+            Regex::new(r##"#\[doc =[\s\n]*"frb_encoded\(([\s\S]*?)\)"\]"##).unwrap();
     }
-    PATTERN.replace_all(code, "$1")
+
+    PATTERN.replace_all(code, |captures: &Captures| {
+        let hex_str = captures.get(1).unwrap().as_str();
+        let decoded_str = String::from_utf8(hex::decode(hex_str).unwrap()).unwrap();
+        decoded_str.to_string()
+    })
 }
 
 #[allow(clippy::vec_init_then_push)]

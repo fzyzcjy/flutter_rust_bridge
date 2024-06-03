@@ -12,7 +12,7 @@ use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ir::mir::ty::MirType::{Delegate, EnumRef};
 use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
 use crate::codegen::parser::mir::type_parser::enum_or_struct::{
-    EnumOrStructParser, EnumOrStructParserInfo,
+    parse_struct_or_enum_should_ignore, EnumOrStructParser, EnumOrStructParserInfo,
 };
 use crate::codegen::parser::mir::type_parser::misc::parse_comments;
 use crate::codegen::parser::mir::type_parser::structure::structure_compute_default_opaque;
@@ -37,9 +37,8 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         name: NamespacedName,
         wrapper_name: Option<String>,
     ) -> anyhow::Result<MirEnum> {
-        let comments = parse_comments(&src_enum.0.src.attrs);
+        let comments = parse_comments(&src_enum.src.attrs);
         let raw_variants = src_enum
-            .0
             .src
             .variants
             .iter()
@@ -48,6 +47,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
         let mode = compute_enum_mode(&raw_variants);
         let variants = maybe_field_wrap_box(raw_variants, mode);
+        let ignore = parse_struct_or_enum_should_ignore(src_enum, &name.namespace.crate_name());
 
         Ok(MirEnum {
             name,
@@ -55,6 +55,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             comments,
             variants,
             mode,
+            ignore,
         })
     }
 
@@ -65,7 +66,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     ) -> anyhow::Result<MirVariant> {
         Ok(MirVariant {
             name: MirIdent::new(variant.ident.to_string()),
-            wrapper_name: MirIdent::new(format!("{}_{}", src_enum.0.ident, variant.ident)),
+            wrapper_name: MirIdent::new(format!("{}_{}", src_enum.ident, variant.ident)),
             comments: parse_comments(&variant.attrs),
             kind: match variant.fields.iter().next() {
                 None => MirVariantKind::Value,
@@ -86,7 +87,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         field_ident: &Option<Ident>,
     ) -> anyhow::Result<MirVariantKind> {
         let variant_ident = variant.ident.to_string();
-        let enum_name = &src_enum.0.namespaced_name;
+        let enum_name = &src_enum.namespaced_name;
         let variant_namespace = enum_name.namespace.join(&enum_name.name);
         let attributes = FrbAttributes::parse(attrs)?;
         Ok(MirVariantKind::Struct(MirStruct {
@@ -117,7 +118,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                         comments: parse_comments(&field.attrs),
                         default: FrbAttributes::parse(&field.attrs)?.default_value(),
                         settings: MirFieldSettings {
-                            is_in_mirrored_enum: src_enum.0.mirror,
+                            is_in_mirrored_enum: src_enum.mirror,
                         },
                     })
                 })
@@ -128,7 +129,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
 struct EnumOrStructParserEnum<'a, 'b, 'c, 'd>(&'d mut TypeParserWithContext<'a, 'b, 'c>);
 
-impl EnumOrStructParser<MirEnumIdent, MirEnum, HirEnum, ItemEnum>
+impl EnumOrStructParser<MirEnumIdent, MirEnum, ItemEnum>
     for EnumOrStructParserEnum<'_, '_, '_, '_>
 {
     fn parse_inner_impl(
@@ -178,15 +179,17 @@ impl EnumOrStructParser<MirEnumIdent, MirEnum, HirEnum, ItemEnum>
         &mut self,
         namespace: Option<Namespace>,
         ty: &Type,
+        override_ignore: Option<bool>,
     ) -> anyhow::Result<MirType> {
-        self.0.parse_type_rust_auto_opaque_implicit(namespace, ty)
+        self.0
+            .parse_type_rust_auto_opaque_implicit(namespace, ty, override_ignore)
     }
 
     fn compute_default_opaque(obj: &MirEnum) -> bool {
         obj.variants
             .iter()
             .filter_map(|variant| if_then_some!(let MirVariantKind::Struct(s) = &variant.kind, s))
-            .any(structure_compute_default_opaque)
+            .any(|ty| structure_compute_default_opaque(ty, &obj.name.namespace.crate_name()))
     }
 }
 

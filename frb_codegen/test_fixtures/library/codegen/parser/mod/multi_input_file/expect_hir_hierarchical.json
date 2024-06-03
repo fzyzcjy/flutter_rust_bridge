@@ -1,6 +1,7 @@
 {
-  "crates": {
-    "crate": {
+  "crates": [
+    {
+      "name": "crate",
       "root_module": {
         "content": {
           "enums": [],
@@ -19,7 +20,9 @@
                 "type_alias": []
               },
               "meta": {
-                "namespace": "crate::api_one"
+                "namespace": "crate::api_one",
+                "parent_vis": [],
+                "vis": "Inherited"
               }
             },
             {
@@ -35,7 +38,9 @@
                 "type_alias": []
               },
               "meta": {
-                "namespace": "crate::api_two"
+                "namespace": "crate::api_two",
+                "parent_vis": [],
+                "vis": "Inherited"
               }
             }
           ],
@@ -43,9 +48,11 @@
           "type_alias": []
         },
         "meta": {
-          "namespace": "crate"
+          "namespace": "crate",
+          "parent_vis": [],
+          "vis": "Public"
         }
       }
     }
-  }
+  ]
 }

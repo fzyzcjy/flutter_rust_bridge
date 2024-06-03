@@ -11,6 +11,7 @@ use crate::codegen::parser::mir::type_parser::misc::parse_comments;
 use crate::codegen::parser::mir::type_parser::rust_auto_opaque_implicit::split_ownership_from_ty;
 use crate::codegen::parser::mir::type_parser::{TypeParser, TypeParserParsingContext};
 use crate::if_then_some;
+use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use anyhow::Context;
 use syn::*;
 
@@ -48,13 +49,11 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             ownership_mode_split,
         )?;
 
-        if let MirType::StructRef(s) = &ty {
-            if s.get(self.type_parser).ignore {
-                return Ok(FunctionPartialInfo {
-                    ignore_func: true,
-                    ..Default::default()
-                });
-            }
+        if ty.should_ignore(self.type_parser) {
+            return Ok(FunctionPartialInfo {
+                ignore_func: true,
+                ..Default::default()
+            });
         }
 
         let attrs = parse_attrs_from_fn_arg(sig_input);

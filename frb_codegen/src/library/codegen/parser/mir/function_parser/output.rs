@@ -1,4 +1,6 @@
+use crate::codegen::ir::mir::func::OwnershipMode;
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqueImplicit;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::function_parser::{FunctionParser, FunctionPartialInfo};
 use crate::codegen::parser::mir::type_parser::result::parse_type_maybe_result;
@@ -12,9 +14,9 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         context: &TypeParserParsingContext,
     ) -> anyhow::Result<FunctionPartialInfo> {
         Ok(match &sig.output {
-            ReturnType::Type(_, ty) => {
-                remove_primitive_unit(self.parse_fn_output_type(ty, context)?)
-            }
+            ReturnType::Type(_, ty) => remove_reference_type(remove_primitive_unit(
+                self.parse_fn_output_type(ty, context)?,
+            )),
             ReturnType::Default => Default::default(),
         })
     }
@@ -37,11 +39,28 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
 // Convert primitive Unit type -> None
 fn remove_primitive_unit(info: FunctionPartialInfo) -> FunctionPartialInfo {
-    let ok_output = if info.ok_output == Some(MirType::Primitive(MirTypePrimitive::Unit)) {
-        None
-    } else {
-        info.ok_output
-    };
+    if info.ok_output == Some(MirType::Primitive(MirTypePrimitive::Unit)) {
+        return FunctionPartialInfo {
+            ok_output: None,
+            ..info
+        };
+    }
+    info
+}
 
-    FunctionPartialInfo { ok_output, ..info }
+fn remove_reference_type(info: FunctionPartialInfo) -> FunctionPartialInfo {
+    if let Some(MirType::RustAutoOpaqueImplicit(MirTypeRustAutoOpaqueImplicit {
+        ownership_mode,
+        ..
+    })) = &info.ok_output
+    {
+        if *ownership_mode != OwnershipMode::Owned {
+            log::debug!("remove_reference_type: detect output type is a reference, thus set to unit (info={:?})", info);
+            return FunctionPartialInfo {
+                ok_output: None,
+                ..info
+            };
+        }
+    }
+    info
 }

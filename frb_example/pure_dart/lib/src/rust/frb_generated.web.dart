@@ -38243,6 +38243,16 @@ class RustLibWire implements BaseWire {
       wasmModule.wire__crate__api__ownership__borrow_i32_twin_normal(
           port_, arg);
 
+  void wire__crate__api__ownership__borrow_slice_string_twin_normal(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule.wire__crate__api__ownership__borrow_slice_string_twin_normal(
+          port_, arg);
+
+  void wire__crate__api__ownership__borrow_slice_u8_twin_normal(
+          NativePortType port_, List<int> arg) =>
+      wasmModule.wire__crate__api__ownership__borrow_slice_u8_twin_normal(
+          port_, arg);
+
   void wire__crate__api__ownership__borrow_str_twin_normal(
           NativePortType port_, String arg) =>
       wasmModule.wire__crate__api__ownership__borrow_str_twin_normal(
@@ -49685,6 +49695,18 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_i32_twin_rust_async(
               port_, arg);
 
+  void wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_slice_string_twin_rust_async(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_slice_string_twin_rust_async(
+              port_, arg);
+
+  void wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_slice_u8_twin_rust_async(
+          NativePortType port_, List<int> arg) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_slice_u8_twin_rust_async(
+              port_, arg);
+
   void wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_str_twin_rust_async(
           NativePortType port_, String arg) =>
       wasmModule
@@ -49710,6 +49732,24 @@ class RustLibWire implements BaseWire {
           int data_len_) =>
       wasmModule
           .wire__crate__api__pseudo_manual__ownership_twin_rust_async_sse__borrow_i32_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__ownership_twin_rust_async_sse__borrow_slice_string_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__ownership_twin_rust_async_sse__borrow_slice_string_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__ownership_twin_rust_async_sse__borrow_slice_u8_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__ownership_twin_rust_async_sse__borrow_slice_u8_twin_rust_async_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__pseudo_manual__ownership_twin_rust_async_sse__borrow_str_twin_rust_async_sse(
@@ -49748,6 +49788,24 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__ownership_twin_sse__borrow_i32_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
+  void wire__crate__api__pseudo_manual__ownership_twin_sse__borrow_slice_string_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__ownership_twin_sse__borrow_slice_string_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__ownership_twin_sse__borrow_slice_u8_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__ownership_twin_sse__borrow_slice_u8_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
   void wire__crate__api__pseudo_manual__ownership_twin_sse__borrow_str_twin_sse(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
@@ -49783,6 +49841,20 @@ class RustLibWire implements BaseWire {
                   arg);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_slice_string_twin_sync(
+              List<dynamic> arg) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_slice_string_twin_sync(
+                  arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_slice_u8_twin_sync(
+              List<int> arg) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_slice_u8_twin_sync(
+                  arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_str_twin_sync(
               String arg) =>
           wasmModule
@@ -49810,6 +49882,24 @@ class RustLibWire implements BaseWire {
               int data_len_) =>
           wasmModule
               .wire__crate__api__pseudo_manual__ownership_twin_sync_sse__borrow_i32_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__ownership_twin_sync_sse__borrow_slice_string_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__ownership_twin_sync_sse__borrow_slice_string_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__ownership_twin_sync_sse__borrow_slice_u8_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__ownership_twin_sync_sse__borrow_slice_u8_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
@@ -60327,6 +60417,12 @@ class RustLibWasmModule implements WasmModule {
   external void wire__crate__api__ownership__borrow_i32_twin_normal(
       NativePortType port_, int arg);
 
+  external void wire__crate__api__ownership__borrow_slice_string_twin_normal(
+      NativePortType port_, List<dynamic> arg);
+
+  external void wire__crate__api__ownership__borrow_slice_u8_twin_normal(
+      NativePortType port_, List<int> arg);
+
   external void wire__crate__api__ownership__borrow_str_twin_normal(
       NativePortType port_, String arg);
 
@@ -68358,6 +68454,14 @@ class RustLibWasmModule implements WasmModule {
           NativePortType port_, int arg);
 
   external void
+      wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_slice_string_twin_rust_async(
+          NativePortType port_, List<dynamic> arg);
+
+  external void
+      wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_slice_u8_twin_rust_async(
+          NativePortType port_, List<int> arg);
+
+  external void
       wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_str_twin_rust_async(
           NativePortType port_, String arg);
 
@@ -68371,6 +68475,20 @@ class RustLibWasmModule implements WasmModule {
 
   external void
       wire__crate__api__pseudo_manual__ownership_twin_rust_async_sse__borrow_i32_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__ownership_twin_rust_async_sse__borrow_slice_string_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__ownership_twin_rust_async_sse__borrow_slice_u8_twin_rust_async_sse(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -68405,6 +68523,20 @@ class RustLibWasmModule implements WasmModule {
           int data_len_);
 
   external void
+      wire__crate__api__pseudo_manual__ownership_twin_sse__borrow_slice_string_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__ownership_twin_sse__borrow_slice_u8_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
       wire__crate__api__pseudo_manual__ownership_twin_sse__borrow_str_twin_sse(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
@@ -68430,6 +68562,14 @@ class RustLibWasmModule implements WasmModule {
           int arg);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_slice_string_twin_sync(
+          List<dynamic> arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_slice_u8_twin_sync(
+          List<int> arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_str_twin_sync(
           String arg);
 
@@ -68443,6 +68583,18 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__ownership_twin_sync_sse__borrow_i32_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__ownership_twin_sync_sse__borrow_slice_string_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__ownership_twin_sync_sse__borrow_slice_u8_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);

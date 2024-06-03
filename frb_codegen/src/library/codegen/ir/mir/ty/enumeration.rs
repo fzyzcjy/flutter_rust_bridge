@@ -22,6 +22,7 @@ pub struct MirEnum {
     pub comments: Vec<MirComment>,
     pub variants: Vec<MirVariant>,
     pub mode: MirEnumMode,
+    pub ignore: bool,
 }
 
 #[derive(Copy)]
@@ -76,6 +77,10 @@ impl MirTypeTrait for MirTypeEnumRef {
 
     fn self_namespace(&self) -> Option<Namespace> {
         Some(self.ident.0.namespace.clone())
+    }
+
+    fn should_ignore(&self, mir_context: &impl MirContext) -> bool {
+        self.get(mir_context).ignore
     }
 }
 
