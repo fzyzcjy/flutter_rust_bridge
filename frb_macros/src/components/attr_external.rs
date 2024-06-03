@@ -18,7 +18,7 @@ pub(crate) fn handle_external_impl(attribute: TokenStream, item: TokenStream) ->
     let item_syn: ItemImpl = syn::parse(item.into()).unwrap();
     let original_self_ty = item_syn.self_ty.clone();
     let dummy_struct_ty = compute_dummy_struct_ty(&*original_self_ty);
-    let converted_item = convert_item(item_syn);
+    let converted_item = convert_item(item_syn, dummy_struct_ty.clone());
 
     // eprintln!("attribute={attribute:?} self_ty_string={original_self_ty_string} dummy_struct_name={dummy_struct_name} item={item:#?}");
 
@@ -44,8 +44,8 @@ fn compute_dummy_struct_ty(original_self_ty: &syn::Type) -> syn::Type {
     syn::parse_str(&dummy_struct_name).unwrap()
 }
 
-fn convert_item(mut item_syn: syn::ItemImpl) -> TokenStream {
-    item_syn.self_ty = Box::new(dummy_struct_ty.clone());
+fn convert_item(mut item_syn: syn::ItemImpl, dummy_struct_ty: syn::Type) -> TokenStream {
+    item_syn.self_ty = Box::new(dummy_struct_ty);
     for inner_item in &mut item_syn.items {
         if let ImplItem::Fn(inner_item) = inner_item {
             inner_item.block = syn::parse_str("{ unreachable!() }").unwrap();
