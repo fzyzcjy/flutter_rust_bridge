@@ -76,12 +76,18 @@ impl GeneralItemFn {
         }
     }
 
-    pub(crate) fn vis(&self) -> &Visibility {
+    pub(crate) fn vis(&self) -> Option<&Visibility> {
         match self {
-            Self::ItemFn(inner) => &inner.vis,
-            Self::ImplItemFn(inner) => &inner.vis,
-            Self::TraitItemFn(inner) => &inner.vis,
+            Self::ItemFn(inner) => Some(&inner.vis),
+            Self::ImplItemFn(inner) => Some(&inner.vis),
+            Self::TraitItemFn(inner) => None,
         }
+    }
+
+    pub(crate) fn is_public(&self) -> bool {
+        self.vis()
+            .map(|vis| matches!(vis, Visibility::Public(_)))
+            .unwrap_or(true)
     }
 }
 
