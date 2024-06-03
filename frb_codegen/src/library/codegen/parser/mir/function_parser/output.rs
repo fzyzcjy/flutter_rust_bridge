@@ -49,6 +49,8 @@ fn remove_primitive_unit(info: FunctionPartialInfo) -> FunctionPartialInfo {
 }
 
 fn remove_reference_type(info: FunctionPartialInfo) -> FunctionPartialInfo {
+    return info; // TODO
+
     if let Some(MirType::RustAutoOpaqueImplicit(MirTypeRustAutoOpaqueImplicit {
         ownership_mode,
         ..
