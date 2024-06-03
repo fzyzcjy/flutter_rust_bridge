@@ -45,6 +45,7 @@ impl HirFunctionInner {
     pub(crate) fn simple_owner(&self) -> Option<String> {
         match &self {
             HirFunctionInner::Method { item_impl, .. } => Some(ty_to_string(&item_impl.self_ty)),
+            HirFunctionInner::Trait { .. } => Some(TODO),
             _ => None,
         }
     }
