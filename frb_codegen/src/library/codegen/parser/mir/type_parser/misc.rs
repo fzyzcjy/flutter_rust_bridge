@@ -1,4 +1,6 @@
 use crate::codegen::ir::hir::hierarchical::module::HirVisibility;
+use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStructOrEnum;
+use crate::codegen::ir::hir::hierarchical::syn_item_struct_or_enum::SynItemStructOrEnum;
 use crate::codegen::ir::mir::comment::MirComment;
 use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
 use crate::utils::crate_name::CrateName;
@@ -49,14 +51,16 @@ fn parse_comment(input: &str) -> MirComment {
     })
 }
 
-pub(crate) fn parse_type_should_ignore_simple(
-    attrs: &FrbAttributes,
-    vis: HirVisibility,
+// TODO rename
+pub(crate) fn parse_type_should_ignore_simple<Item: SynItemStructOrEnum>(
+    src_object: HirStructOrEnum<Item>,
     crate_name: &CrateName,
 ) -> bool {
+    let attrs = FrbAttributes::parse(src_object.src.attrs())?;
+
     attrs.ignore()
         // For third party crates, if a struct is not public, then it is impossible to utilize it,
         // thus we ignore it.
-        || (crate_name != &CrateName::self_crate() && vis != HirVisibility::Public)
+        || (crate_name != &CrateName::self_crate() && src_object.visibility != HirVisibility::Public)
         || TODO
 }
