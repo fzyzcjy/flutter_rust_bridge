@@ -3,7 +3,7 @@
   "enum_pool": {
     "crate::api/MyGenericEnum": {
       "comments": [],
-      "ignore": false,
+      "ignore": true,
       "mode": "Complex",
       "name": "crate::api/MyGenericEnum",
       "variants": [
@@ -528,7 +528,7 @@
       ],
       "generate_eq": true,
       "generate_hash": true,
-      "ignore": false,
+      "ignore": true,
       "is_fields_named": true,
       "name": "crate::api/MyGenericStruct",
       "wrapper_name": null

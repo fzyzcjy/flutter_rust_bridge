@@ -4,6 +4,7 @@ use crate::codegen::ir::mir::func::{
     MirFunc, MirFuncArgMode, MirFuncInput, MirFuncMode, MirFuncOutput, MirFuncOwnerInfo,
     MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
 };
+use crate::codegen::ir::mir::skip::MirSkipReason::IgnoredFunctionGeneric;
 use crate::codegen::ir::mir::skip::{MirSkip, MirSkipReason};
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
@@ -78,6 +79,13 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                 func,
                 namespace_naive,
                 IgnoredFunctionNotPub,
+            ));
+        }
+        if !func.sig().generics.params.is_empty() {
+            return Ok(create_output_skip(
+                func,
+                namespace_naive,
+                IgnoredFunctionGeneric,
             ));
         }
 

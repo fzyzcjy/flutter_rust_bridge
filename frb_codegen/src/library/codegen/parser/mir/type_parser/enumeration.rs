@@ -12,11 +12,9 @@ use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ir::mir::ty::MirType::{Delegate, EnumRef};
 use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
 use crate::codegen::parser::mir::type_parser::enum_or_struct::{
-    EnumOrStructParser, EnumOrStructParserInfo,
+    parse_struct_or_enum_should_ignore, EnumOrStructParser, EnumOrStructParserInfo,
 };
-use crate::codegen::parser::mir::type_parser::misc::{
-    parse_comments, parse_type_should_ignore_simple,
-};
+use crate::codegen::parser::mir::type_parser::misc::parse_comments;
 use crate::codegen::parser::mir::type_parser::structure::structure_compute_default_opaque;
 use crate::codegen::parser::mir::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::mir::type_parser::TypeParserWithContext;
@@ -39,8 +37,6 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         name: NamespacedName,
         wrapper_name: Option<String>,
     ) -> anyhow::Result<MirEnum> {
-        let attributes = FrbAttributes::parse(&src_enum.src.attrs)?;
-
         let comments = parse_comments(&src_enum.src.attrs);
         let raw_variants = src_enum
             .src
@@ -51,11 +47,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
         let mode = compute_enum_mode(&raw_variants);
         let variants = maybe_field_wrap_box(raw_variants, mode);
-        let ignore = parse_type_should_ignore_simple(
-            &attributes,
-            src_enum.visibility,
-            &name.namespace.crate_name(),
-        );
+        let ignore = parse_struct_or_enum_should_ignore(src_enum, &name.namespace.crate_name());
 
         Ok(MirEnum {
             name,

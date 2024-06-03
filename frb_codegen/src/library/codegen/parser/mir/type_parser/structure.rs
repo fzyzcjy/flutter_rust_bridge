@@ -6,11 +6,9 @@ use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ir::mir::ty::MirType::StructRef;
 use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
 use crate::codegen::parser::mir::type_parser::enum_or_struct::{
-    EnumOrStructParser, EnumOrStructParserInfo,
+    parse_struct_or_enum_should_ignore, EnumOrStructParser, EnumOrStructParserInfo,
 };
-use crate::codegen::parser::mir::type_parser::misc::{
-    parse_comments, parse_type_should_ignore_simple,
-};
+use crate::codegen::parser::mir::type_parser::misc::parse_comments;
 use crate::codegen::parser::mir::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::mir::type_parser::TypeParserWithContext;
 use crate::utils::namespace::{Namespace, NamespacedName};
@@ -53,11 +51,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         let attributes = FrbAttributes::parse(&src_struct.src.attrs)?;
         let dart_metadata = attributes.dart_metadata();
 
-        let ignore = parse_type_should_ignore_simple(
-            &attributes,
-            src_struct.visibility,
-            &name.namespace.crate_name(),
-        );
+        let ignore = parse_struct_or_enum_should_ignore(src_struct, &name.namespace.crate_name());
 
         Ok(MirStruct {
             name,

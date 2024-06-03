@@ -1,7 +1,4 @@
-use crate::codegen::ir::hir::hierarchical::module::HirVisibility;
 use crate::codegen::ir::mir::comment::MirComment;
-use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
-use crate::utils::crate_name::CrateName;
 use itertools::Itertools;
 use syn::*;
 
@@ -47,15 +44,4 @@ fn parse_comment(input: &str) -> MirComment {
     } else {
         format!("///{input}")
     })
-}
-
-pub(crate) fn parse_type_should_ignore_simple(
-    attrs: &FrbAttributes,
-    vis: HirVisibility,
-    crate_name: &CrateName,
-) -> bool {
-    attrs.ignore()
-        // For third party crates, if a struct is not public, then it is impossible to utilize it,
-        // thus we ignore it.
-        || (crate_name != &CrateName::self_crate() && vis != HirVisibility::Public)
 }

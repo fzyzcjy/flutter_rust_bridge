@@ -12,6 +12,7 @@ use crate::codegen::parser::mir::sanity_checker::auto_accessor_checker;
 use crate::codegen::parser::mir::type_parser::{
     TypeParser, TypeParserParsingContext, TypeParserWithContext,
 };
+use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::namespace::NamespacedName;
 use field::parse_auto_accessor_of_field;
 use itertools::Itertools;
@@ -61,6 +62,9 @@ fn parse_auto_accessors_of_struct(
             Err(_) => return Ok(vec![]),
         };
     if !matches!(ty_direct_parse, MirType::RustAutoOpaqueImplicit(_)) {
+        return Ok(vec![]);
+    }
+    if ty_direct_parse.should_ignore(type_parser) {
         return Ok(vec![]);
     }
 

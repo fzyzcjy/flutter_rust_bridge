@@ -3,9 +3,9 @@ use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStructOrEnum;
 use crate::codegen::ir::hir::hierarchical::syn_item_struct_or_enum::SynItemStructOrEnum;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
-use crate::codegen::parser::mir::type_parser::misc::parse_type_should_ignore_simple;
 use crate::codegen::parser::mir::type_parser::unencodable::SplayedSegment;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
+use crate::utils::crate_name::CrateName;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use log::debug;
 use std::collections::{HashMap, HashSet};
@@ -37,7 +37,6 @@ where
 
         if let Some(src_object) = self.src_objects().get(*name) {
             let src_object = (*src_object).clone();
-            let vis = src_object.visibility;
 
             let namespace = &src_object.namespaced_name.namespace;
             let namespaced_name = NamespacedName::new(namespace.clone(), name.to_string());
@@ -47,7 +46,7 @@ where
             if attrs_opaque == Some(true) {
                 debug!("Treat {name} as opaque since attribute says so");
                 return Ok(Some((
-                    self.parse_opaque(&namespaced_name, &attrs, vis)?,
+                    self.parse_opaque(&namespaced_name, &src_object)?,
                     attrs,
                 )));
             }
@@ -70,7 +69,7 @@ where
             {
                 debug!("Treat {name} as opaque by compute_default_opaque");
                 return Ok(Some((
-                    self.parse_opaque(&namespaced_name, &attrs, vis)?,
+                    self.parse_opaque(&namespaced_name, &src_object)?,
                     attrs,
                 )));
             }
@@ -102,15 +101,13 @@ where
     fn parse_opaque(
         &mut self,
         namespaced_name: &NamespacedName,
-        attrs: &FrbAttributes,
-        vis: HirVisibility,
+        src_object: &HirStructOrEnum<Item>,
     ) -> anyhow::Result<MirType> {
         self.parse_type_rust_auto_opaque_implicit(
             Some(namespaced_name.namespace.clone()),
             &syn::parse_str(&namespaced_name.name)?,
-            Some(parse_type_should_ignore_simple(
-                attrs,
-                vis,
+            Some(parse_struct_or_enum_should_ignore(
+                src_object,
                 &namespaced_name.namespace.crate_name(),
             )),
         )
@@ -169,4 +166,17 @@ fn compute_name_and_wrapper_name(
         None
     };
     (namespaced_name, wrapper_name)
+}
+
+pub(crate) fn parse_struct_or_enum_should_ignore<Item: SynItemStructOrEnum>(
+    src_object: &HirStructOrEnum<Item>,
+    crate_name: &CrateName,
+) -> bool {
+    let attrs = FrbAttributes::parse(src_object.src.attrs()).unwrap();
+
+    attrs.ignore()
+        // For third party crates, if a struct is not public, then it is impossible to utilize it,
+        // thus we ignore it.
+        || (crate_name != &CrateName::self_crate() && src_object.visibility != HirVisibility::Public)
+        || !src_object.src.generics().params.is_empty()
 }
