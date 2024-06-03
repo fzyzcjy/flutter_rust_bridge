@@ -15,8 +15,25 @@ pub(crate) fn handle_external_impl(attribute: TokenStream, item: TokenStream) ->
         &item.to_string()
     ));
 
-    let mut item: ItemImpl = syn::parse(item.into()).unwrap();
+    let item_syn: ItemImpl = syn::parse(item.into()).unwrap();
 
+    let converted_item = convert_item(item_syn);
+
+    // eprintln!("attribute={attribute:?} self_ty_string={original_self_ty_string} dummy_struct_name={dummy_struct_name} item={item:#?}");
+
+    (quote! {
+        #encoded_original_item
+        const _: () = ();
+
+        #[cfg(not(frb_expand))]
+        #converted_item
+
+        #[cfg(not(frb_expand))]
+        pub struct #dummy_struct_ty(pub #original_self_ty);
+    }).into()
+}
+
+fn convert_item(item_syn: syn::ItemImpl) -> TokenStream {
     let original_self_ty = item.self_ty.clone();
     let original_self_ty_string = quote!(#original_self_ty).to_string();
     let dummy_struct_name = format!(
@@ -32,20 +49,7 @@ pub(crate) fn handle_external_impl(attribute: TokenStream, item: TokenStream) ->
         }
     }
 
-    let item = item.to_token_stream();
-
-    // eprintln!("attribute={attribute:?} self_ty_string={original_self_ty_string} dummy_struct_name={dummy_struct_name} item={item:#?}");
-
-    (quote! {
-        #encoded_original_item
-        const _: () = ();
-
-        #[cfg(not(frb_expand))]
-        #item
-
-        #[cfg(not(frb_expand))]
-        pub struct #dummy_struct_ty(pub #original_self_ty);
-    }).into()
+    item.to_token_stream()
 }
 
 const ATTR_KEYWORD: &str = "external";
