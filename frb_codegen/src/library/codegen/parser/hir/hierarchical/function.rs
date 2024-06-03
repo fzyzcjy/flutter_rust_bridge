@@ -25,7 +25,7 @@ pub(crate) fn parse_syn_item_impl(
             namespace: namespace.clone(),
             owner: HirFunctionOwner::Method {
                 item_impl: item_impl.to_owned(),
-                trait_def_name,
+                trait_def_name: trait_def_name.clone(),
             },
             item_fn: GeneralizedItemFn::ImplItemFn(impl_item_fn.clone()),
         })

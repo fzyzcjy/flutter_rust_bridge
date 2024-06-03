@@ -1,4 +1,3 @@
-use crate::codegen::ir::hir::hierarchical::function::HirFunctionOwner;
 use crate::codegen::ir::hir::hierarchical::module::{
     HirModule, HirModuleContent, HirModuleMeta, HirVisibility,
 };
