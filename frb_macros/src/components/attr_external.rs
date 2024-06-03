@@ -1,5 +1,5 @@
 use crate::components::encoder::create_frb_encoded_comment;
-use proc_macro::TokenStream;
+use proc_macro2::TokenStream;
 use quote::quote;
 use quote::ToTokens;
 use syn::{ImplItem, ItemImpl};
@@ -15,7 +15,7 @@ pub(crate) fn handle_external_impl(attribute: TokenStream, item: TokenStream) ->
         &item.to_string()
     ));
 
-    let mut item: ItemImpl = syn::parse(item).unwrap();
+    let mut item: ItemImpl = syn::parse(item.into()).unwrap();
 
     let original_self_ty = item.self_ty.clone();
     let original_self_ty_string = quote!(#original_self_ty).to_string();

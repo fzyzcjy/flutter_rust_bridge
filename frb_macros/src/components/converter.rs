@@ -1,5 +1,5 @@
 use crate::components::encoder::create_frb_encoded_comment;
-use proc_macro::*;
+use proc_macro2::*;
 
 pub(crate) fn convert_frb_attr_to_encoded_form(item: TokenStream) -> TokenStream {
     item.into_iter()
