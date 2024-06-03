@@ -1,6 +1,7 @@
 use crate::codegen::ir::hir::hierarchical::module::{
     HirModule, HirModuleContent, HirModuleMeta, HirVisibility,
 };
+use crate::codegen::parser::hir::hierarchical::function::parse_syn_item_fn;
 use crate::codegen::parser::hir::hierarchical::item_type::parse_syn_item_type;
 use crate::codegen::parser::hir::hierarchical::module::parse_module;
 use crate::codegen::parser::hir::hierarchical::struct_or_enum::{
@@ -9,7 +10,6 @@ use crate::codegen::parser::hir::hierarchical::struct_or_enum::{
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 use crate::utils::namespace::Namespace;
 use syn::ItemMod;
-use crate::codegen::parser::hir::hierarchical::function::parse_syn_item_fn;
 
 pub(super) fn parse_syn_item(
     item: &syn::Item,
@@ -23,23 +23,19 @@ pub(super) fn parse_syn_item(
             (scope.structs).extend(parse_syn_item_struct(item_struct, namespace)?);
         }
         syn::Item::Enum(item_enum) => {
-            scope
-                .enums
-                .extend(parse_syn_item_enum(item_enum, namespace)?);
+            (scope.enums).extend(parse_syn_item_enum(item_enum, namespace)?);
         }
         syn::Item::Type(item_type) => {
             scope.type_alias.extend(parse_syn_item_type(item_type));
         }
         syn::Item::Fn(item_fn) => {
-            scope.functions.push(parse_syn_item_fn(item_fn));
+            scope.functions.push(parse_syn_item_fn(item_fn, namespace));
         }
         syn::Item::Impl(item_impl) => {
-            scope.functions.extend(parse_syn_item_impl(item_impl));
+            (scope.functions).extend(parse_syn_item_impl(item_impl, namespace));
         }
         syn::Item::Mod(item_mod) => {
-            scope
-                .modules
-                .extend(parse_syn_item_mod(item_mod, namespace, config, parent_vis)?);
+            (scope.modules).extend(parse_syn_item_mod(item_mod, namespace, config, parent_vis)?);
         }
         _ => {}
     }
