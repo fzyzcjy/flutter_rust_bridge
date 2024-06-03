@@ -661,7 +661,6 @@ name = "flutter_rust_bridge_macros"
 version = "2.0.0-dev.37"
 dependencies = [
  "hex",
- "proc-macro2",
  "quote",
  "syn 2.0.48",
 ]
@@ -1207,9 +1206,9 @@ checksum = "7170ef9988bc169ba16dd36a7fa041e5c4cbeb6a35b76d4c03daded371eae7c0"
 
 [[package]]
 name = "proc-macro2"
-version = "1.0.85"
+version = "1.0.78"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "22244ce15aa966053a896d1accb3a6e68469b97c7f33f284b99f0d576879fc23"
+checksum = "e2422ad645d89c99f8f3e6b88a9fdeca7fabeac836b1002371c4367c8f984aae"
 dependencies = [
  "unicode-ident",
 ]
