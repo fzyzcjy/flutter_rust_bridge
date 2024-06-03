@@ -67,7 +67,9 @@ fn wire__crate__api__minimal__borrow_str_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
-                    Result::<_, ()>::Ok(crate::api::minimal::borrow_str_twin_normal(&api_arg))
+                    Result::<_, ()>::Ok({
+                        crate::api::minimal::borrow_str_twin_normal(&api_arg);
+                    })
                 })())
             }
         },
@@ -99,7 +101,9 @@ fn wire__crate__api__minimal__borrow_vec_u8_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
-                    Result::<_, ()>::Ok(crate::api::minimal::borrow_vec_u8_twin_normal(&api_arg))
+                    Result::<_, ()>::Ok({
+                        crate::api::minimal::borrow_vec_u8_twin_normal(&api_arg);
+                    })
                 })())
             }
         },
@@ -130,7 +134,9 @@ fn wire__crate__api__minimal__init_app_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
-                    Result::<_, ()>::Ok(crate::api::minimal::init_app())
+                    Result::<_, ()>::Ok({
+                        crate::api::minimal::init_app();
+                    })
                 })())
             }
         },
