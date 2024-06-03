@@ -24,6 +24,13 @@ impl HirModule {
             scope_module.visit(f);
         }
     }
+
+    pub(crate) fn visit_mut<'a, F: FnMut(&'a mut HirModule)>(&'a mut self, f: &mut F) {
+        f(self);
+        for scope_module in self.content.modules.iter_mut() {
+            scope_module.visit_mut(f);
+        }
+    }
 }
 
 #[derive(Clone, Derivative, Serialize)]

@@ -17,4 +17,10 @@ impl HirPack {
             hir_crate.root_module.visit(f);
         }
     }
+
+    pub(crate) fn visit_mut<'a, F: FnMut(&'a mut HirModule)>(&'a mut self, f: &mut F) {
+        for hir_crate in &mut self.crates {
+            hir_crate.root_module.visit_mut(f);
+        }
+    }
 }
