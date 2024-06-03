@@ -1,3 +1,4 @@
+use crate::codegen::generator::api_dart;
 use crate::codegen::generator::api_dart::spec_generator::base::{
     ApiDartGenerator, ApiDartGeneratorContext,
 };
@@ -14,6 +15,7 @@ use crate::utils::path_utils::path_to_string;
 use anyhow::Context;
 use itertools::Itertools;
 use pathdiff::diff_paths;
+use std::path::PathBuf;
 
 /// A trailing newline is included if comments is not empty.
 pub(crate) fn generate_dart_comments(comments: &[MirComment]) -> String {
@@ -89,9 +91,15 @@ fn generate_imports_from_ty(
 ) -> anyhow::Result<String> {
     let import_ty_itself = if let Some(ty_namespace) = ty.self_namespace() {
         if &ty_namespace != current_file_namespace {
+            let dummy_base_path = PathBuf::from("/".to_owned());
             let path_diff = diff_paths(
-                ty_namespace.to_pseudo_io_path("dart"),
-                (current_file_namespace.to_pseudo_io_path("dart").parent()).unwrap(),
+                api_dart::misc::compute_path_from_namespace(dummy_base_path, &ty_namespace),
+                (api_dart::misc::compute_path_from_namespace(
+                    dummy_base_path,
+                    &current_file_namespace,
+                )
+                .parent())
+                .unwrap(),
             )
             .context("cannot diff path")?;
             format!(
