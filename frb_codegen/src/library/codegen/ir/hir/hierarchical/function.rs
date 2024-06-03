@@ -23,7 +23,7 @@ impl HirFunction {
     }
 
     pub(crate) fn simple_owner(&self) -> Option<String> {
-        self.item_impl
+        self.item_impl.as_ref()
             .map(|item_impl| ty_to_string(&item_impl.self_ty))
     }
 
