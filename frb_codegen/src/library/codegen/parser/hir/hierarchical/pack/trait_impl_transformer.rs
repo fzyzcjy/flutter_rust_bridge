@@ -46,14 +46,7 @@ fn compute_methods(module: &HirModule, trait_map: &HashMap<String, HirTrait>) ->
                 return vec![];
             }
 
-            let impl_functions = parse_syn_item_impl(
-                &trait_impl.item_impl,
-                namespace,
-                &HirFunctionOwner::Method {
-                    item_impl: trait_impl.item_impl.clone(),
-                    trait_def_name: Some(todo!()),
-                },
-            );
+            let impl_functions = parse_syn_item_impl(&trait_impl.item_impl, namespace, TODO);
             let def_functions = trait_def
                 .map(|t| parse_trait_def_functions(t, &trait_impl.item_impl, namespace))
                 .unwrap_or_default();
@@ -79,7 +72,7 @@ fn parse_trait_def_functions(
             namespace: namespace.clone(),
             owner: HirFunctionOwner::Method {
                 item_impl: item_impl.to_owned(),
-                trait_def_name: Some(todo!()),
+                trait_def_name: Some(TODO),
             },
             item_fn: GeneralizedItemFn::TraitItemFn(trait_item_fn.to_owned()),
         })
