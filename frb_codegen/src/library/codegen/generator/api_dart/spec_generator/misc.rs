@@ -96,7 +96,7 @@ fn generate_imports_from_ty(
                 api_dart::misc::compute_path_from_namespace(&dummy_base_path, &ty_namespace),
                 (api_dart::misc::compute_path_from_namespace(
                     &dummy_base_path,
-                    &current_file_namespace,
+                    current_file_namespace,
                 )
                 .parent())
                 .unwrap(),
