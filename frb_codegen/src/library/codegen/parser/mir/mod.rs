@@ -83,7 +83,7 @@ fn parse_mir_funcs(
         .iter()
         .map(|f| {
             function_parser.parse_function(
-                &f,
+                f,
                 &config.force_codec_mode_pack,
                 config.default_stream_sink_codec,
                 config.default_rust_opaque_codec,

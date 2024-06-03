@@ -33,7 +33,7 @@ pub(crate) fn parse_type_maybe_result(
 fn parse_type_result(args: &[MirType]) -> anyhow::Result<ResultTypeInfo> {
     let ok_output = args
         .first()
-        .with_context(|| format!("invalid number of args"))?;
+        .with_context(|| "invalid number of args".to_string())?;
 
     let is_anyhow = args.len() == 1
         || args.iter().any(|x| {
