@@ -23,7 +23,8 @@ impl HirFunction {
     }
 
     pub(crate) fn simple_owner(&self) -> Option<String> {
-        self.item_impl.as_ref()
+        self.item_impl
+            .as_ref()
             .map(|item_impl| ty_to_string(&item_impl.self_ty))
     }
 
@@ -35,7 +36,10 @@ impl HirFunction {
 #[derive(Debug, Clone)]
 pub(crate) enum GeneralItemFn {
     ItemFn(ItemFn),
-    ImplItemFn(ImplItemFn),
+    ImplItemFn {
+        inner: ImplItemFn,
+        owned_by_trait: bool,
+    },
     TraitItemFn(TraitItemFn),
 }
 
@@ -43,7 +47,7 @@ impl GeneralItemFn {
     pub(crate) fn sig(&self) -> &Signature {
         match self {
             Self::ItemFn(inner) => &inner.sig,
-            Self::ImplItemFn(inner) => &inner.sig,
+            Self::ImplItemFn { inner, .. } => &inner.sig,
             Self::TraitItemFn(inner) => &inner.sig,
         }
     }
@@ -55,7 +59,7 @@ impl GeneralItemFn {
     pub(crate) fn attrs(&self) -> &Vec<Attribute> {
         match self {
             Self::ItemFn(inner) => &inner.attrs,
-            Self::ImplItemFn(inner) => &inner.attrs,
+            Self::ImplItemFn { inner, .. } => &inner.attrs,
             Self::TraitItemFn(inner) => &inner.attrs,
         }
     }
@@ -63,7 +67,7 @@ impl GeneralItemFn {
     pub(crate) fn attrs_mut(&mut self) -> &mut Vec<Attribute> {
         match self {
             Self::ItemFn(inner) => &mut inner.attrs,
-            Self::ImplItemFn(inner) => &mut inner.attrs,
+            Self::ImplItemFn { inner, .. } => &mut inner.attrs,
             Self::TraitItemFn(inner) => &mut inner.attrs,
         }
     }
@@ -71,7 +75,7 @@ impl GeneralItemFn {
     pub(crate) fn span(&self) -> Span {
         match self {
             Self::ItemFn(inner) => inner.span(),
-            Self::ImplItemFn(inner) => inner.span(),
+            Self::ImplItemFn { inner, .. } => inner.span(),
             Self::TraitItemFn(inner) => inner.span(),
         }
     }
@@ -79,14 +83,22 @@ impl GeneralItemFn {
     pub(crate) fn vis(&self) -> Option<&Visibility> {
         match self {
             Self::ItemFn(inner) => Some(&inner.vis),
-            Self::ImplItemFn(inner) => Some(&inner.vis),
+            Self::ImplItemFn {
+                inner,
+                owned_by_trait,
+            } => {
+                if owned_by_trait {
+                    None
+                } else {
+                    Some(&inner.vis)
+                }
+            }
             Self::TraitItemFn(_) => None,
         }
     }
 
     pub(crate) fn is_public(&self) -> Option<bool> {
-        self.vis()
-            .map(|vis| matches!(vis, Visibility::Public(_)))
+        self.vis().map(|vis| matches!(vis, Visibility::Public(_)))
     }
 }
 
