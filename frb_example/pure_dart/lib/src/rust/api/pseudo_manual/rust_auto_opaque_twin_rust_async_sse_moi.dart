@@ -293,6 +293,33 @@ class EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncSseMoi extends RustOpaque {
   );
 }
 
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinRustAsyncSseMoi>>
+@sealed
+class HelloOneStructTwinRustAsyncSseMoi extends RustOpaque {
+  // Not to be used by end users
+  HelloOneStructTwinRustAsyncSseMoi.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  HelloOneStructTwinRustAsyncSseMoi.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_HelloOneStructTwinRustAsyncSseMoi,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_HelloOneStructTwinRustAsyncSseMoi,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_HelloOneStructTwinRustAsyncSseMoiPtr,
+  );
+
+  Future<void> funcHello() => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiHelloOneStructTwinRustAsyncSseMoiFuncHello(
+        that: this,
+      );
+}
+
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleEnumTwinRustAsyncSseMoi>>
 @sealed
 class NonCloneSimpleEnumTwinRustAsyncSseMoi extends RustOpaque {
@@ -491,29 +518,6 @@ sealed class EnumWithGoodAndOpaqueTwinRustAsyncSseMoi
   const factory EnumWithGoodAndOpaqueTwinRustAsyncSseMoi.opaque(
     NonCloneSimpleTwinRustAsyncSseMoi field0,
   ) = EnumWithGoodAndOpaqueTwinRustAsyncSseMoi_Opaque;
-}
-
-class HelloOneStructTwinRustAsyncSseMoi {
-  final String inner;
-
-  const HelloOneStructTwinRustAsyncSseMoi({
-    required this.inner,
-  });
-
-  Future<void> funcHello() => RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiHelloOneStructTwinRustAsyncSseMoiFuncHello(
-        that: this,
-      );
-
-  @override
-  int get hashCode => inner.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is HelloOneStructTwinRustAsyncSseMoi &&
-          runtimeType == other.runtimeType &&
-          inner == other.inner;
 }
 
 enum HelloTwoEnumTwinRustAsyncSseMoi {

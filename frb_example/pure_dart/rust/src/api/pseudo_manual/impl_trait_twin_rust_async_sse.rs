@@ -8,6 +8,10 @@ pub struct StructWithTraitTwinRustAsyncSse {
 
 pub trait SimpleTraitTwinRustAsyncSse {
     fn simple_trait_fn_twin_rust_async_sse() -> Self;
+
+    fn simple_trait_fn_with_default_impl_twin_rust_async_sse() -> i32 {
+        42
+    }
 }
 
 impl SimpleTraitTwinRustAsyncSse for StructWithTraitTwinRustAsyncSse {

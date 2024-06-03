@@ -11,5 +11,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('SimpleTraitTwinSync', () async {
     expect((await SimpleTraitTwinSync.simpleTraitFnTwinSync()).value, 42);
+    expect(
+        await SimpleTraitTwinSync.simpleTraitFnWithDefaultImplTwinSync(), 42);
   });
 }

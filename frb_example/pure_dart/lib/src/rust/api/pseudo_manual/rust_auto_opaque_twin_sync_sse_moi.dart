@@ -284,6 +284,33 @@ class EnumWithGoodAndOpaqueWithoutOptionTwinSyncSseMoi extends RustOpaque {
   );
 }
 
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinSyncSseMoi>>
+@sealed
+class HelloOneStructTwinSyncSseMoi extends RustOpaque {
+  // Not to be used by end users
+  HelloOneStructTwinSyncSseMoi.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  HelloOneStructTwinSyncSseMoi.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_HelloOneStructTwinSyncSseMoi,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_HelloOneStructTwinSyncSseMoi,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_HelloOneStructTwinSyncSseMoiPtr,
+  );
+
+  Future<void> funcHello() => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiHelloOneStructTwinSyncSseMoiFuncHello(
+        that: this,
+      );
+}
+
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleEnumTwinSyncSseMoi>>
 @sealed
 class NonCloneSimpleEnumTwinSyncSseMoi extends RustOpaque {
@@ -479,29 +506,6 @@ sealed class EnumWithGoodAndOpaqueTwinSyncSseMoi
   const factory EnumWithGoodAndOpaqueTwinSyncSseMoi.opaque(
     NonCloneSimpleTwinSyncSseMoi field0,
   ) = EnumWithGoodAndOpaqueTwinSyncSseMoi_Opaque;
-}
-
-class HelloOneStructTwinSyncSseMoi {
-  final String inner;
-
-  const HelloOneStructTwinSyncSseMoi({
-    required this.inner,
-  });
-
-  Future<void> funcHello() => RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiHelloOneStructTwinSyncSseMoiFuncHello(
-        that: this,
-      );
-
-  @override
-  int get hashCode => inner.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is HelloOneStructTwinSyncSseMoi &&
-          runtimeType == other.runtimeType &&
-          inner == other.inner;
 }
 
 enum HelloTwoEnumTwinSyncSseMoi {

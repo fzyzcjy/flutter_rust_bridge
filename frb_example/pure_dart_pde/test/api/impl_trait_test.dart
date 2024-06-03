@@ -9,5 +9,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('SimpleTraitTwinNormal', () async {
     expect((await SimpleTraitTwinNormal.simpleTraitFnTwinNormal()).value, 42);
+    expect(await SimpleTraitTwinNormal.simpleTraitFnWithDefaultImplTwinNormal(),
+        42);
   });
 }

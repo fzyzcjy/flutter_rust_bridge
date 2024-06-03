@@ -17,6 +17,10 @@ class StructWithTraitTwinRustAsync {
       RustLib.instance.api
           .crateApiPseudoManualImplTraitTwinRustAsyncStructWithTraitTwinRustAsyncSimpleTraitFnTwinRustAsync();
 
+  static Future<int> simpleTraitFnWithDefaultImplTwinRustAsync() => RustLib
+      .instance.api
+      .crateApiPseudoManualImplTraitTwinRustAsyncStructWithTraitTwinRustAsyncSimpleTraitFnWithDefaultImplTwinRustAsync();
+
   @override
   int get hashCode => value.hashCode;
 

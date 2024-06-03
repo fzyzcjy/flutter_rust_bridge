@@ -8,6 +8,10 @@ pub struct StructWithTraitTwinSyncSse {
 
 pub trait SimpleTraitTwinSyncSse {
     fn simple_trait_fn_twin_sync_sse() -> Self;
+
+    fn simple_trait_fn_with_default_impl_twin_sync_sse() -> i32 {
+        42
+    }
 }
 
 impl SimpleTraitTwinSyncSse for StructWithTraitTwinSyncSse {

@@ -8,6 +8,10 @@ pub struct StructWithTraitTwinSse {
 
 pub trait SimpleTraitTwinSse {
     fn simple_trait_fn_twin_sse() -> Self;
+
+    fn simple_trait_fn_with_default_impl_twin_sse() -> i32 {
+        42
+    }
 }
 
 impl SimpleTraitTwinSse for StructWithTraitTwinSse {

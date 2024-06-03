@@ -17,6 +17,10 @@ class StructWithTraitTwinNormal {
       RustLib.instance.api
           .crateApiImplTraitStructWithTraitTwinNormalSimpleTraitFnTwinNormal();
 
+  static Future<int> simpleTraitFnWithDefaultImplTwinNormal() => RustLib
+      .instance.api
+      .crateApiImplTraitStructWithTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormal();
+
   @override
   int get hashCode => value.hashCode;
 

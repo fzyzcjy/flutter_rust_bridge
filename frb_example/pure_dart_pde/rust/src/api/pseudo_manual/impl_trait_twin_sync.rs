@@ -10,6 +10,10 @@ pub struct StructWithTraitTwinSync {
 
 pub trait SimpleTraitTwinSync {
     fn simple_trait_fn_twin_sync() -> Self;
+
+    fn simple_trait_fn_with_default_impl_twin_sync() -> i32 {
+        42
+    }
 }
 
 impl SimpleTraitTwinSync for StructWithTraitTwinSync {

@@ -17,6 +17,10 @@ class StructWithTraitTwinSyncSse {
       .instance.api
       .crateApiPseudoManualImplTraitTwinSyncSseStructWithTraitTwinSyncSseSimpleTraitFnTwinSyncSse();
 
+  static Future<int> simpleTraitFnWithDefaultImplTwinSyncSse() => RustLib
+      .instance.api
+      .crateApiPseudoManualImplTraitTwinSyncSseStructWithTraitTwinSyncSseSimpleTraitFnWithDefaultImplTwinSyncSse();
+
   @override
   int get hashCode => value.hashCode;
 
