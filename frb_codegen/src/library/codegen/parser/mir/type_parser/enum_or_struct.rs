@@ -99,18 +99,16 @@ where
         }
     }
 
-    fn parse_opaque(
+    fn parse_opaque<Item: SynItemStructOrEnum>(
         &mut self,
         namespaced_name: &NamespacedName,
-        attrs: &FrbAttributes,
-        vis: HirVisibility,
+        src_object: HirStructOrEnum<Item>,
     ) -> anyhow::Result<MirType> {
         self.parse_type_rust_auto_opaque_implicit(
             Some(namespaced_name.namespace.clone()),
             &syn::parse_str(&namespaced_name.name)?,
             Some(parse_type_should_ignore_simple(
-                attrs,
-                vis,
+                src_object,
                 &namespaced_name.namespace.crate_name(),
             )),
         )
