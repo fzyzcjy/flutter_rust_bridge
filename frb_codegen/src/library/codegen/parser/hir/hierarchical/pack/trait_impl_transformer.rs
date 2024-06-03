@@ -33,9 +33,9 @@ fn compute_methods(module: &HirModule, trait_map: &HashMap<String, HirTrait>) ->
 
             let trait_name_raw = &trait_impl.item_impl.trait_.as_ref().unwrap().1;
             let trait_name = trait_name_raw.segments.last().unwrap().ident.to_string();
-            if BLACKLIST_TRAIT_NAMES.contains(&&trait_name[..]) {
-                return vec![];
-            }
+            // if BLACKLIST_TRAIT_NAMES.contains(&&trait_name[..]) {
+            //     return vec![];
+            // }
 
             let trait_def = trait_map.get(&trait_name);
 
@@ -69,4 +69,4 @@ fn parse_trait_def_functions(
         .collect_vec()
 }
 
-const BLACKLIST_TRAIT_NAMES: [&str; 4] = ["Clone", "Default", "Debug", "Deref"];
+// const BLACKLIST_TRAIT_NAMES: [&str; 4] = ["Clone", "Default", "Debug", "Deref"];
