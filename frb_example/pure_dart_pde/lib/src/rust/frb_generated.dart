@@ -61569,6 +61569,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case AbcTwinNormal_JustInt(field0: final field0):
         sse_encode_i_32(3, serializer);
         sse_encode_i_32(field0, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -61589,6 +61591,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case AbcTwinRustAsync_JustInt(field0: final field0):
         sse_encode_i_32(3, serializer);
         sse_encode_i_32(field0, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -61608,6 +61612,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case AbcTwinSync_JustInt(field0: final field0):
         sse_encode_i_32(3, serializer);
         sse_encode_i_32(field0, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -61669,6 +61675,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(y, serializer);
       case ApplicationMessage_Exit():
         sse_encode_i_32(2, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -61750,6 +61758,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_String(field, serializer);
       case BasicGeneralEnumTwinNormal_Orange():
         sse_encode_i_32(1, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -61763,6 +61773,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_String(field, serializer);
       case BasicGeneralEnumTwinRustAsync_Orange():
         sse_encode_i_32(1, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -61776,6 +61788,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_String(field, serializer);
       case BasicGeneralEnumTwinSync_Orange():
         sse_encode_i_32(1, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -63787,6 +63801,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(1, serializer);
         sse_encode_u_32(message, serializer);
         sse_encode_Backtrace(backtrace, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -63809,6 +63825,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(1, serializer);
         sse_encode_u_32(message, serializer);
         sse_encode_Backtrace(backtrace, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -63831,6 +63849,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(1, serializer);
         sse_encode_u_32(message, serializer);
         sse_encode_Backtrace(backtrace, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -63847,6 +63867,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(1, serializer);
         sse_encode_u_32(e, serializer);
         sse_encode_Backtrace(backtrace, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -63869,6 +63891,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(1, serializer);
         sse_encode_u_32(e, serializer);
         sse_encode_Backtrace(backtrace, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -63885,6 +63909,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(1, serializer);
         sse_encode_u_32(e, serializer);
         sse_encode_Backtrace(backtrace, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -63900,6 +63926,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(1, serializer);
         sse_encode_box_autoadd_custom_nested_error_2_twin_normal(
             field0, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -63915,6 +63943,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(1, serializer);
         sse_encode_box_autoadd_custom_nested_error_2_twin_rust_async(
             field0, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -63930,6 +63960,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(1, serializer);
         sse_encode_box_autoadd_custom_nested_error_2_twin_sync(
             field0, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -63946,6 +63978,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         ):
         sse_encode_i_32(1, serializer);
         sse_encode_u_32(field0, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -63962,6 +63996,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         ):
         sse_encode_i_32(1, serializer);
         sse_encode_u_32(field0, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -63976,6 +64012,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case CustomNestedError2TwinSync_CustomNested2Number(field0: final field0):
         sse_encode_i_32(1, serializer);
         sse_encode_u_32(field0, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -63990,6 +64028,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case CustomNestedErrorInnerTwinNormal_Four(field0: final field0):
         sse_encode_i_32(1, serializer);
         sse_encode_u_32(field0, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -64004,6 +64044,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case CustomNestedErrorInnerTwinRustAsync_Four(field0: final field0):
         sse_encode_i_32(1, serializer);
         sse_encode_u_32(field0, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -64018,6 +64060,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case CustomNestedErrorInnerTwinSync_Four(field0: final field0):
         sse_encode_i_32(1, serializer);
         sse_encode_u_32(field0, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -64033,6 +64077,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(1, serializer);
         sse_encode_box_autoadd_custom_nested_error_inner_twin_normal(
             field0, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -64048,6 +64094,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(1, serializer);
         sse_encode_box_autoadd_custom_nested_error_inner_twin_rust_async(
             field0, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -64063,6 +64111,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(1, serializer);
         sse_encode_box_autoadd_custom_nested_error_inner_twin_sync(
             field0, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -64201,6 +64251,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case DistanceTwinNormal_Map(field0: final field0):
         sse_encode_i_32(1, serializer);
         sse_encode_f_64(field0, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -64214,6 +64266,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case DistanceTwinRustAsync_Map(field0: final field0):
         sse_encode_i_32(1, serializer);
         sse_encode_f_64(field0, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -64227,6 +64281,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case DistanceTwinSync_Map(field0: final field0):
         sse_encode_i_32(1, serializer);
         sse_encode_f_64(field0, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -64289,6 +64345,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case EnumDartOpaqueTwinNormal_Opaque(field0: final field0):
         sse_encode_i_32(1, serializer);
         sse_encode_DartOpaque(field0, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -64303,6 +64361,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case EnumDartOpaqueTwinRustAsync_Opaque(field0: final field0):
         sse_encode_i_32(1, serializer);
         sse_encode_DartOpaque(field0, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -64317,6 +64377,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case EnumDartOpaqueTwinSync_Opaque(field0: final field0):
         sse_encode_i_32(1, serializer);
         sse_encode_DartOpaque(field0, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -64342,6 +64404,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_RustOpaque_RwLockHideDataTwinNormal(field0, serializer);
       case EnumOpaqueTwinNormal_Nothing():
         sse_encode_i_32(5, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -64374,6 +64438,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_RustOpaque_RwLockHideDataTwinRustAsync(field0, serializer);
       case EnumOpaqueTwinRustAsync_Nothing():
         sse_encode_i_32(5, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -64406,6 +64472,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_RustOpaque_RwLockHideDataTwinSync(field0, serializer);
       case EnumOpaqueTwinSync_Nothing():
         sse_encode_i_32(5, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -64470,6 +64538,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(1, serializer);
         sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
             field0, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -64485,6 +64555,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(1, serializer);
         sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
             field0, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -64500,6 +64572,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(1, serializer);
         sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
             field0, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -64516,6 +64590,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case EnumWithItemMixedTwinNormal_C(cField: final cField):
         sse_encode_i_32(2, serializer);
         sse_encode_String(cField, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -64532,6 +64608,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case EnumWithItemMixedTwinRustAsync_C(cField: final cField):
         sse_encode_i_32(2, serializer);
         sse_encode_String(cField, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -64548,6 +64626,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case EnumWithItemMixedTwinSync_C(cField: final cField):
         sse_encode_i_32(2, serializer);
         sse_encode_String(cField, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -64562,6 +64642,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case EnumWithItemStructTwinNormal_B(bField: final bField):
         sse_encode_i_32(1, serializer);
         sse_encode_list_prim_i_32_strict(bField, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -64576,6 +64658,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case EnumWithItemStructTwinRustAsync_B(bField: final bField):
         sse_encode_i_32(1, serializer);
         sse_encode_list_prim_i_32_strict(bField, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -64590,6 +64674,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case EnumWithItemStructTwinSync_B(bField: final bField):
         sse_encode_i_32(1, serializer);
         sse_encode_list_prim_i_32_strict(bField, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -64604,6 +64690,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case EnumWithItemTupleTwinNormal_B(field0: final field0):
         sse_encode_i_32(1, serializer);
         sse_encode_list_prim_i_32_strict(field0, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -64618,6 +64706,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case EnumWithItemTupleTwinRustAsync_B(field0: final field0):
         sse_encode_i_32(1, serializer);
         sse_encode_list_prim_i_32_strict(field0, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -64632,6 +64722,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case EnumWithItemTupleTwinSync_B(field0: final field0):
         sse_encode_i_32(1, serializer);
         sse_encode_list_prim_i_32_strict(field0, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -64897,6 +64989,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case KitchenSinkTwinNormal_Enums(field0: final field0):
         sse_encode_i_32(5, serializer);
         sse_encode_weekdays_twin_normal(field0, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -64936,6 +65030,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case KitchenSinkTwinRustAsync_Enums(field0: final field0):
         sse_encode_i_32(5, serializer);
         sse_encode_weekdays_twin_rust_async(field0, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -64975,6 +65071,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case KitchenSinkTwinSync_Enums(field0: final field0):
         sse_encode_i_32(5, serializer);
         sse_encode_weekdays_twin_sync(field0, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -66282,6 +66380,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case MeasureTwinNormal_Distance(field0: final field0):
         sse_encode_i_32(1, serializer);
         sse_encode_box_distance_twin_normal(field0, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -66296,6 +66396,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case MeasureTwinRustAsync_Distance(field0: final field0):
         sse_encode_i_32(1, serializer);
         sse_encode_box_distance_twin_rust_async(field0, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -66310,6 +66412,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case MeasureTwinSync_Distance(field0: final field0):
         sse_encode_i_32(1, serializer);
         sse_encode_box_distance_twin_sync(field0, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -67611,6 +67715,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(2, serializer);
         sse_encode_box_autoadd_list_of_nested_raw_string_mirrored(
             field0, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -68000,6 +68106,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case SimpleEnumTwinNormal_Second(field0: final field0):
         sse_encode_i_32(1, serializer);
         sse_encode_String(field0, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -68013,6 +68121,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case SimpleEnumTwinRustAsync_Second(field0: final field0):
         sse_encode_i_32(1, serializer);
         sse_encode_String(field0, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -68026,6 +68136,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case SimpleEnumTwinSync_Second(field0: final field0):
         sse_encode_i_32(1, serializer);
         sse_encode_String(field0, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -68131,6 +68243,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case SpeedTwinNormal_GPS(field0: final field0):
         sse_encode_i_32(1, serializer);
         sse_encode_f_64(field0, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -68144,6 +68258,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case SpeedTwinRustAsync_GPS(field0: final field0):
         sse_encode_i_32(1, serializer);
         sse_encode_f_64(field0, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
@@ -68157,6 +68273,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case SpeedTwinSync_GPS(field0: final field0):
         sse_encode_i_32(1, serializer);
         sse_encode_f_64(field0, serializer);
+      default:
+        throw UnimplementedError('');
     }
   }
 
