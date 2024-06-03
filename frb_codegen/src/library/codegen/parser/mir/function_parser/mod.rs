@@ -168,7 +168,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             HirFunctionInner::Function { .. } => MirFuncOwnerInfo::Function,
             HirFunctionInner::Method {
                 item_impl,
-                impl_item_fn,
+                item_fn: impl_item_fn,
             } => {
                 let mode = if matches!(impl_item_fn.sig.inputs.first(), Some(FnArg::Receiver(..))) {
                     MirFuncOwnerInfoMethodMode::Instance

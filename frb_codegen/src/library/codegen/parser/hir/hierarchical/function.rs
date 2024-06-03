@@ -20,7 +20,7 @@ pub(crate) fn parse_syn_item_impl(item_impl: &ItemImpl, namespace: &Namespace) -
             namespace: namespace.clone(),
             inner: HirFunctionInner::Method {
                 item_impl: item_impl.clone(),
-                impl_item_fn: impl_item_fn.clone(),
+                item_fn: impl_item_fn.clone(),
             },
         })
         .collect_vec()
