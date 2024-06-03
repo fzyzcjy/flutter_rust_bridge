@@ -1,10 +1,12 @@
-use crate::codegen::ir::hir::hierarchical::function::HirFunction;
+use crate::codegen::ir::hir::hierarchical::function::{HirFunction, HirFunctionInner};
 use crate::codegen::ir::hir::hierarchical::module::HirModule;
 use crate::codegen::ir::hir::hierarchical::pack::HirPack;
 use crate::codegen::ir::hir::hierarchical::traits::HirTrait;
 use crate::codegen::parser::hir::hierarchical::function::parse_syn_item_impl;
+use crate::if_then_some;
 use fern::HashMap;
 use itertools::Itertools;
+use syn::TraitItem;
 
 pub(super) fn transform(mut pack: HirPack) -> anyhow::Result<HirPack> {
     let trait_map = collect_traits(&pack);
@@ -31,8 +33,23 @@ fn compute_methods(module: &HirModule, trait_map: &HashMap<String, HirTrait>) ->
             let trait_def = trait_map.get(trait_name);
 
             let impl_functions = parse_syn_item_impl(&trait_impl.item_impl, &trait_impl.namespace);
+            let def_functions = trait_def
+                .map(|t| parse_trait_def_functions(t))
+                .unwrap_or_default();
 
             TODO
+        })
+        .collect_vec()
+}
+
+fn parse_trait_def_functions(trait_def: &HirTrait) -> Vec<HirFunction> {
+    (trait_def.item_trait.items.iter())
+        .filter_map(
+            |item| if_then_some!(let TraitItem::Fn(ref trait_item_fn) = item, trait_item_fn),
+        )
+        .map(|trait_item_fn| HirFunction {
+            namespace: namespace.clone(),
+            inner: TODO,
         })
         .collect_vec()
 }
