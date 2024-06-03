@@ -47,6 +47,16 @@ Uint64List exampleBasicListTypeU64TwinSync({required Uint64List arg}) =>
         .crateApiPseudoManualBasicListTwinSyncExampleBasicListTypeU64TwinSync(
             arg: arg);
 
+Int64List exampleBasicListTypeIsizeTwinSync({required Int64List arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicListTwinSyncExampleBasicListTypeIsizeTwinSync(
+            arg: arg);
+
+Uint64List exampleBasicListTypeUsizeTwinSync({required Uint64List arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicListTwinSyncExampleBasicListTypeUsizeTwinSync(
+            arg: arg);
+
 Float32List exampleBasicListTypeF32TwinSync({required List<double> arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualBasicListTwinSyncExampleBasicListTypeF32TwinSync(
