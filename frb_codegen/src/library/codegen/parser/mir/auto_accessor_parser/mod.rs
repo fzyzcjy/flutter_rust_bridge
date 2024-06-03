@@ -63,6 +63,9 @@ fn parse_auto_accessors_of_struct(
     if !matches!(ty_direct_parse, MirType::RustAutoOpaqueImplicit(_)) {
         return Ok(vec![]);
     }
+    if ty_direct_parse.ignore() {
+        return Ok(vec![]);
+    }
 
     let ty_struct_ref = TypeParserWithContext::new(type_parser, &context)
         .parse_type_path_data_struct(&(&struct_name.name, &[]), Some(false));
