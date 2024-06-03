@@ -55,7 +55,8 @@ fn parse_trait_def_functions(trait_def: &HirTrait, namespace: &Namespace) -> Vec
         )
         .map(|trait_item_fn| HirFunction {
             namespace: namespace.clone(),
-            inner: HirFunctionInner::Trait {
+            inner: HirFunctionInner::TraitMethod {
+                item_trait: trait_def.item_trait.to_owned(),
                 trait_item_fn: trait_item_fn.to_owned(),
             },
         })

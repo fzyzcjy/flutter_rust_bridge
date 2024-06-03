@@ -2,7 +2,7 @@ use crate::utils::namespace::Namespace;
 use proc_macro2::Span;
 use serde::Serialize;
 use syn::spanned::Spanned;
-use syn::{Attribute, ImplItemFn, ItemFn, ItemImpl, Signature, TraitItemFn, Visibility};
+use syn::{Attribute, ImplItemFn, ItemFn, ItemImpl, ItemTrait, Signature, TraitItemFn, Visibility};
 
 #[derive(Debug, Clone, Serialize)]
 pub(crate) struct HirFunction {
@@ -20,7 +20,8 @@ pub(crate) enum HirFunctionInner {
         item_impl: ItemImpl,
         impl_item_fn: ImplItemFn,
     },
-    Trait {
+    TraitMethod {
+        item_trait: ItemTrait,
         trait_item_fn: TraitItemFn,
     },
 }
@@ -43,11 +44,11 @@ impl HirFunctionInner {
     }
 
     pub(crate) fn simple_owner(&self) -> Option<String> {
-        Some(match &self {
+        match &self {
             HirFunctionInner::Method { item_impl, .. } => ty_to_string(&item_impl.self_ty),
-            HirFunctionInner::Trait { .. } => TODO,
+            HirFunctionInner::TraitMethod { .. } => TODO,
             _ => return None,
-        })
+        }
     }
 
     pub(crate) fn name(&self) -> String {
