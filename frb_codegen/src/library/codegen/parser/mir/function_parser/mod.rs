@@ -21,7 +21,6 @@ use std::fmt::Debug;
 use syn::*;
 use MirSkipReason::{IgnoredFunctionNotPub, IgnoredMisc};
 use MirType::Primitive;
-use crate::codegen::ir::hir::hierarchical::function::GeneralItemFn;
 
 pub(crate) mod argument;
 pub(crate) mod output;
@@ -40,7 +39,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     #[allow(clippy::too_many_arguments)]
     pub(crate) fn parse_function(
         &mut self,
-        func: &GeneralItemFn,
+        func: &HirFunctionInner,
         namespace_naive: &Namespace,
         force_codec_mode_pack: &Option<CodecModePack>,
         default_stream_sink_codec: CodecMode,
@@ -66,7 +65,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     #[allow(clippy::too_many_arguments)]
     fn parse_function_inner(
         &mut self,
-        func: &GeneralItemFn,
+        func: &HirFunctionInner,
         namespace_naive: &Namespace,
         force_codec_mode_pack: &Option<CodecModePack>,
         default_stream_sink_codec: CodecMode,
@@ -160,13 +159,13 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
     fn parse_owner(
         &mut self,
-        item_fn: &GeneralItemFn,
+        item_fn: &HirFunctionInner,
         context: &TypeParserParsingContext,
         actual_method_dart_name: Option<String>,
     ) -> anyhow::Result<Option<MirFuncOwnerInfo>> {
         Ok(Some(match item_fn {
-            GeneralItemFn::Function { .. } => MirFuncOwnerInfo::Function,
-            GeneralItemFn::Method {
+            HirFunctionInner::Function { .. } => MirFuncOwnerInfo::Function,
+            HirFunctionInner::Method {
                 item_impl,
                 item_fn: impl_item_fn,
             } => {
@@ -219,7 +218,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 }
 
 fn create_output_skip(
-    func: &GeneralItemFn,
+    func: &HirFunctionInner,
     namespace_naive: &Namespace,
     reason: MirSkipReason,
 ) -> ParseFunctionOutput {
