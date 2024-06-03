@@ -134,5 +134,6 @@ impl EnumOrStructParser<MirStructIdent, MirStruct, ItemStruct>
 }
 
 pub(super) fn structure_compute_default_opaque(s: &MirStruct) -> bool {
-    (s.fields.iter()).any(|f| matches!(f.ty, MirType::RustAutoOpaqueImplicit(_)))
+    (s.fields.iter())
+        .any(|f| matches!(f.ty, MirType::RustAutoOpaqueImplicit(_)) || !f.is_rust_public.unwrap())
 }
