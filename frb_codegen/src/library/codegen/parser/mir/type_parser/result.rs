@@ -1,3 +1,4 @@
+use anyhow::Context;
 use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ir::mir::ty::MirType::{EnumRef, StructRef};
@@ -30,7 +31,7 @@ pub(crate) fn parse_type_maybe_result(
 }
 
 fn parse_type_result(args: &[MirType]) -> anyhow::Result<ResultTypeInfo> {
-    let ok_output = args.first().unwrap();
+    let ok_output = args.first().with_context(|| format!("invalid number of args"))?;
 
     let is_anyhow = args.len() == 1
         || args.iter().any(|x| {
