@@ -8,6 +8,7 @@ use syn::{Attribute, ImplItemFn, ItemFn, ItemImpl, ItemTrait, Signature, TraitIt
 pub(crate) struct HirFunction {
     pub(crate) namespace: Namespace,
     /// Only exist for methods (and not exist for functions)
+    #[serde(skip_serializing)]
     pub(crate) item_impl: Option<ItemImpl>,
     #[serde(skip_serializing)]
     pub(crate) item_fn: GeneralItemFn,

@@ -1,4 +1,4 @@
-use crate::codegen::ir::hir::hierarchical::function::{HirFunction, HirFunctionInner};
+use crate::codegen::ir::hir::hierarchical::function::{GeneralItemFn, HirFunction};
 use crate::codegen::ir::hir::hierarchical::module::HirModule;
 use crate::codegen::ir::hir::hierarchical::pack::HirPack;
 use crate::codegen::ir::hir::hierarchical::traits::HirTrait;
@@ -42,7 +42,7 @@ fn compute_methods(module: &HirModule, trait_map: &HashMap<String, HirTrait>) ->
 
             concat([impl_functions, def_functions])
                 .into_iter()
-                .unique_by(|f| f.inner.owner_and_name())
+                .unique_by(|f| f.owner_and_name())
                 .collect_vec()
         })
         .collect_vec()
@@ -59,10 +59,8 @@ fn parse_trait_def_functions(
         )
         .map(|trait_item_fn| HirFunction {
             namespace: namespace.clone(),
-            inner: HirFunctionInner::TraitMethod {
-                item_impl: item_impl.to_owned(),
-                trait_item_fn: trait_item_fn.to_owned(),
-            },
+            item_impl: item_impl.to_owned(),
+            item_fn: GeneralItemFn::TraitItemFn(trait_item_fn.to_owned()),
         })
         .collect_vec()
 }
