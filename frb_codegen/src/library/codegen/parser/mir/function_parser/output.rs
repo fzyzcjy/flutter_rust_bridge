@@ -55,6 +55,7 @@ fn remove_reference_type(info: FunctionPartialInfo) -> FunctionPartialInfo {
     })) = &info.ok_output
     {
         if *ownership_mode != OwnershipMode::Owned {
+            log::debug!("remove_reference_type: detect output type is a reference, thus set to unit (info={:?})", info);
             return FunctionPartialInfo {
                 ok_output: None,
                 ..info
