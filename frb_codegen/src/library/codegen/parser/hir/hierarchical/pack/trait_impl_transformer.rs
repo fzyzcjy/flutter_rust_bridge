@@ -49,8 +49,9 @@ fn compute_methods(module: &HirModule, trait_map: &HashMap<String, HirTrait>) ->
             let impl_functions = parse_syn_item_impl(
                 &trait_impl.item_impl,
                 namespace,
-                &HirFunctionOwner::TraitMethod {
+                &HirFunctionOwner::Method {
                     item_impl: trait_impl.item_impl.clone(),
+                    trait_def_name: Some(todo!()),
                 },
             );
             let def_functions = trait_def
@@ -76,8 +77,9 @@ fn parse_trait_def_functions(
         )
         .map(|trait_item_fn| HirFunction {
             namespace: namespace.clone(),
-            owner: HirFunctionOwner::TraitMethod {
+            owner: HirFunctionOwner::Method {
                 item_impl: item_impl.to_owned(),
+                trait_def_name: Some(todo!()),
             },
             item_fn: GeneralizedItemFn::TraitItemFn(trait_item_fn.to_owned()),
         })

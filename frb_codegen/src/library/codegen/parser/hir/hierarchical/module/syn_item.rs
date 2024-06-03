@@ -42,6 +42,7 @@ pub(super) fn parse_syn_item(
                     namespace,
                     &HirFunctionOwner::Method {
                         item_impl: item_impl.clone(),
+                        trait_def_name: None,
                     },
                 ));
             }

@@ -53,7 +53,7 @@ impl HirFunctionOwner {
     pub(crate) fn simple_name(&self) -> Option<String> {
         match self {
             Self::Function => None,
-            Self::Method { item_impl } => Some(ty_to_string(&item_impl.self_ty)),
+            Self::Method { item_impl, .. } => Some(ty_to_string(&item_impl.self_ty)),
         }
     }
 }
