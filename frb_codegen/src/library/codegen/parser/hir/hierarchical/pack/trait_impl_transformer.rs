@@ -5,7 +5,7 @@ use crate::codegen::ir::hir::hierarchical::traits::HirTrait;
 use crate::codegen::parser::hir::hierarchical::function::parse_syn_item_impl;
 use crate::if_then_some;
 use fern::HashMap;
-use itertools::Itertools;
+use itertools::{concat, Itertools};
 use syn::TraitItem;
 
 pub(super) fn transform(mut pack: HirPack) -> anyhow::Result<HirPack> {
@@ -37,7 +37,10 @@ fn compute_methods(module: &HirModule, trait_map: &HashMap<String, HirTrait>) ->
                 .map(|t| parse_trait_def_functions(t))
                 .unwrap_or_default();
 
-            merge_items(impl_functions, def_functions)
+            concat([impl_functions, def_functions])
+                .into_iter()
+                .unique_by(|f| f.inner.owner_and_name())
+                .collect_vec()
         })
         .collect_vec()
 }
@@ -54,12 +57,4 @@ fn parse_trait_def_functions(trait_def: &HirTrait) -> Vec<HirFunction> {
             },
         })
         .collect_vec()
-}
-
-fn merge_items<T, K: Eq>(
-    high_priority_items: Vec<T>,
-    low_priority_items: Vec<T>,
-    key: impl Fn(T) -> K,
-) -> Vec<T> {
-    todo!()
 }
