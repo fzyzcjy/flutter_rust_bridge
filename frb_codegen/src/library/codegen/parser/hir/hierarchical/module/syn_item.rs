@@ -29,6 +29,12 @@ pub(super) fn parse_syn_item(
         syn::Item::Type(item_type) => {
             scope.type_alias.extend(parse_syn_item_type(item_type));
         }
+        syn::Item::Fn(item_fn) => {
+            scope.functions.extend(parse_syn_item_fn(item_fn));
+        }
+        syn::Item::Impl(item_impl) => {
+            scope.functions.extend(parse_syn_item_impl(item_impl));
+        }
         syn::Item::Mod(item_mod) => {
             scope
                 .modules
