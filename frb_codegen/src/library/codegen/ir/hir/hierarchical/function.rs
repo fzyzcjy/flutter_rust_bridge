@@ -21,14 +21,8 @@ impl HirFunction {
         }
     }
 
-    pub(crate) fn simple_owner(&self) -> Option<String> {
-        self.item_impl
-            .as_ref()
-            .map(|item_impl| ty_to_string(&item_impl.self_ty))
-    }
-
     pub(crate) fn owner_and_name(&self) -> SimpleOwnerAndName {
-        (self.simple_owner(), self.item_fn.name())
+        (self.owner.simple_name(), self.item_fn.name())
     }
 
     pub(crate) fn is_public(&self) -> Option<bool> {
@@ -42,8 +36,19 @@ impl HirFunction {
 #[derive(Debug, Clone)]
 pub(crate) enum HirFunctionOwner {
     Function,
-    Method,
-    TraitMethod,
+    Method { item_impl: ItemImpl },
+    TraitMethod { item_impl: ItemImpl },
+}
+
+impl HirFunctionOwner {
+    pub(crate) fn simple_name(&self) -> Option<String> {
+        match self {
+            Self::Function => None,
+            Self::Method { item_impl } | Self::TraitMethod { item_impl } => {
+                ty_to_string(&item_impl.self_ty)
+            }
+        }
+    }
 }
 
 #[derive(Debug, Clone)]
@@ -97,7 +102,6 @@ impl GeneralizedItemFn {
             Self::TraitItemFn(_) => None,
         }
     }
-
 }
 
 pub(crate) type SimpleOwnerAndName = (Option<String>, String);
