@@ -31,7 +31,7 @@ fn compute_methods(module: &HirModule, trait_map: &HashMap<String, HirTrait>) ->
         .flat_map(|trait_impl| {
             let namespace = &trait_impl.namespace;
 
-            let trait_name_raw = trait_impl.item_impl.trait_.as_ref().unwrap().1;
+            let trait_name_raw = &trait_impl.item_impl.trait_.as_ref().unwrap().1;
             let trait_name = trait_name_raw.segments.last().unwrap().ident.to_string();
             let trait_def = trait_map.get(&trait_name);
 

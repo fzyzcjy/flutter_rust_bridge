@@ -80,7 +80,7 @@ impl GeneralItemFn {
         match self {
             Self::ItemFn(inner) => Some(&inner.vis),
             Self::ImplItemFn(inner) => Some(&inner.vis),
-            Self::TraitItemFn(inner) => None,
+            Self::TraitItemFn(_) => None,
         }
     }
 
