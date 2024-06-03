@@ -58,6 +58,7 @@ impl HirFunctionOwner {
     }
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone)]
 pub(crate) enum GeneralizedItemFn {
     ItemFn(ItemFn),
