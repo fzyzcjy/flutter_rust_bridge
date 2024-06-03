@@ -170,7 +170,7 @@ impl MirFuncOwnerInfoMethod {
             MirType::RustAutoOpaqueImplicit(ty) => {
                 NamespacedName::new(ty.self_namespace().unwrap(), ty.rust_api_type())
             }
-            ty => return None,
+            _ => return None,
         })
     }
 }
