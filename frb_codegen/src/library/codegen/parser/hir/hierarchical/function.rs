@@ -2,11 +2,11 @@ use crate::codegen::ir::hir::hierarchical::function::{HirFunction, HirFunctionIn
 use crate::if_then_some;
 use crate::utils::namespace::Namespace;
 use itertools::Itertools;
-use syn::{ImplItem, Item, ItemFn, ItemImpl};
+use syn::{ImplItem, ItemFn, ItemImpl};
 
 pub(crate) fn parse_syn_item_fn(item_fn: &ItemFn, namespace: &Namespace) -> HirFunction {
     HirFunction {
-        namespace,
+        namespace: namespace.clone(),
         inner: HirFunctionInner::Function {
             item_fn: item_fn.to_owned(),
         },

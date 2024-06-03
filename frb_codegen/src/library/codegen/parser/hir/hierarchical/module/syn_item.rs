@@ -1,7 +1,7 @@
 use crate::codegen::ir::hir::hierarchical::module::{
     HirModule, HirModuleContent, HirModuleMeta, HirVisibility,
 };
-use crate::codegen::parser::hir::hierarchical::function::parse_syn_item_fn;
+use crate::codegen::parser::hir::hierarchical::function::{parse_syn_item_fn, parse_syn_item_impl};
 use crate::codegen::parser::hir::hierarchical::item_type::parse_syn_item_type;
 use crate::codegen::parser::hir::hierarchical::module::parse_module;
 use crate::codegen::parser::hir::hierarchical::struct_or_enum::{
