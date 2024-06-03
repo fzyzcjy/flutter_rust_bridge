@@ -44,8 +44,8 @@ fn decode_macro_frb_encoded_comments(code: &str) -> Cow<str> {
 
     PATTERN.replace_all(code, |captures: &Captures| {
         let hex_str = captures.get(1).unwrap().as_str();
-        let decoded_str = String::from_utf8(hex::decode(&hex_str).unwrap()).unwrap();
-        format!("{}", decoded_str)
+        let decoded_str = String::from_utf8(hex::decode(hex_str).unwrap()).unwrap();
+        decoded_str.to_string()
     })
 }
 
