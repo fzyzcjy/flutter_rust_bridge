@@ -9,42 +9,43 @@ pub(crate) fn handle_external_impl(attribute: TokenStream, item: TokenStream) ->
         return item;
     }
 
-    let encoded_original_item = create_frb_encoded_comment(
-        &format!("#[frb({})]{}", attribute.to_string(), &item.to_string()),
-    );
+    let encoded_original_item = create_frb_encoded_comment(&format!(
+        "#[frb({})]{}",
+        attribute.to_string(),
+        &item.to_string()
+    ));
 
     let mut item: ItemImpl = syn::parse(item).unwrap();
 
-    let original_self_ty = &item.self_ty;
+    let original_self_ty = item.self_ty.clone();
     let original_self_ty_string = quote!(#original_self_ty).to_string();
     let dummy_struct_name = format!(
         "{DUMMY_STRUCT_PREFIX}{}",
         hex::encode(original_self_ty_string)
     );
-    let dummy_struct_ty = syn::parse_str(&dummy_struct_name).unwrap();
+    let dummy_struct_ty: syn::Type = syn::parse_str(&dummy_struct_name).unwrap();
 
-    let dummy_struct_def: TokenStream = quote! {
-        #[cfg(not(frb_expand))]
-        pub struct #dummy_struct_ty(pub #original_self_ty);
-    }
-    .to_token_stream()
-    .into();
-
-    item.self_ty = dummy_struct_ty;
+    item.self_ty = Box::new(dummy_struct_ty.clone());
     for inner_item in &mut item.items {
         if let ImplItem::Fn(inner_item) = inner_item {
             inner_item.block = syn::parse_str("{ unreachable!() }").unwrap();
         }
     }
 
+    let item = item.to_token_stream();
+
     // eprintln!("attribute={attribute:?} self_ty_string={original_self_ty_string} dummy_struct_name={dummy_struct_name} item={item:#?}");
 
-    let mut output: TokenStream = encoded_original_item;
-    output.extend(TokenStream::from(quote! { const _: () = (); }));
-    output.extend(TokenStream::from(quote! { #[cfg(not(frb_expand))] }));
-    output.extend(TokenStream::from(item.to_token_stream()));
-    output.extend(dummy_struct_def);
-    output
+    (quote! {
+        #encoded_original_item
+        const _: () = ();
+
+        #[cfg(not(frb_expand))]
+        #item
+
+        #[cfg(not(frb_expand))]
+        pub struct #dummy_struct_ty(pub #original_self_ty);
+    }).into()
 }
 
 const ATTR_KEYWORD: &str = "external";

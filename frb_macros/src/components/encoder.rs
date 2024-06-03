@@ -1,4 +1,4 @@
-use proc_macro::TokenStream;
+use proc_macro2::TokenStream;
 use quote::quote;
 
 pub(crate) fn create_frb_encoded_comment(data: &str) -> TokenStream {
@@ -6,5 +6,4 @@ pub(crate) fn create_frb_encoded_comment(data: &str) -> TokenStream {
     quote! {
         #[cfg_attr(frb_expand, doc=#encoded)]
     }
-    .into()
 }
