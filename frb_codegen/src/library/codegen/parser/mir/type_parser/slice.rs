@@ -1,3 +1,4 @@
+use crate::codegen::ir::mir::ty::general_list::mir_list;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::type_parser::TypeParserWithContext;
 
@@ -6,7 +7,6 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         &mut self,
         type_slice: &syn::TypeSlice,
     ) -> anyhow::Result<MirType> {
-        log::info!("parse_type_slice {type_slice:?}");
-        unimplemented!()
+        Ok(mir_list(self.parse_type(&*type_slice.elem)?, true))
     }
 }
