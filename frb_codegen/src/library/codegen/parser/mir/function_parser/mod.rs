@@ -1,5 +1,5 @@
 use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
-use crate::codegen::ir::hir::hierarchical::function::HirFunction;
+use crate::codegen::ir::hir::hierarchical::function::{HirFunction, HirFunctionOwner};
 use crate::codegen::ir::mir::func::{
     MirFunc, MirFuncArgMode, MirFuncInput, MirFuncMode, MirFuncOutput, MirFuncOwnerInfo,
     MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
@@ -71,7 +71,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     ) -> anyhow::Result<ParseFunctionOutput> {
         debug!("parse_function function name: {:?}", func.item_fn.name());
 
-        if func.item_fn.is_public() == Some(false) {
+        if func.is_public() == Some(false) {
             return Ok(create_output_skip(func, IgnoredFunctionNotPub));
         }
         if !func.item_fn.sig().generics.params.is_empty() {
@@ -153,9 +153,10 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         context: &TypeParserParsingContext,
         actual_method_dart_name: Option<String>,
     ) -> anyhow::Result<Option<MirFuncOwnerInfo>> {
-        Ok(Some(match &func.item_impl {
-            None => MirFuncOwnerInfo::Function,
-            Some(item_impl) => {
+        Ok(Some(match &func.owner {
+            HirFunctionOwner::Function => MirFuncOwnerInfo::Function,
+            HirFunctionOwner::Method { item_impl }
+            | HirFunctionOwner::TraitMethod { item_impl } => {
                 let sig = func.item_fn.sig();
                 let mode = if matches!(sig.inputs.first(), Some(FnArg::Receiver(..))) {
                     MirFuncOwnerInfoMethodMode::Instance
