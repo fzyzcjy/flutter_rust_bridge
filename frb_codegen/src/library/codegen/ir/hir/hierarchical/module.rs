@@ -1,3 +1,4 @@
+use crate::codegen::ir::hir::hierarchical::traits::HirTrait;
 use crate::codegen::ir::hir::hierarchical::function::HirFunction;
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirEnum;
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStruct;
