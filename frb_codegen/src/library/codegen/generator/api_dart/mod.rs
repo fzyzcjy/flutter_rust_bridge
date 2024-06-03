@@ -1,4 +1,5 @@
 pub(crate) mod internal_config;
+pub(crate) mod misc;
 pub(crate) mod spec_generator;
 mod text_generator;
 
