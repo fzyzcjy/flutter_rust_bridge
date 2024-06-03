@@ -19,6 +19,25 @@ Future<Uint8List> drawMandelbrot(
         scale: scale,
         numThreads: numThreads);
 
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<:: core :: fmt :: Formatter>>
+@sealed
+class CoreFmtFormatter extends RustOpaque {
+  CoreFmtFormatter.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  CoreFmtFormatter.sseDecode(int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_CoreFmtFormatter,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_CoreFmtFormatter,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_CoreFmtFormatterPtr,
+  );
+}
+
 class Point {
   final double x;
   final double y;
@@ -27,6 +46,12 @@ class Point {
     required this.x,
     required this.y,
   });
+
+  Future<Point> Clone({dynamic hint}) =>
+      RustLib.instance.api.pointClone(that: this, hint: hint);
+
+  Future<void> Fmt({required CoreFmtFormatter f, dynamic hint}) =>
+      RustLib.instance.api.pointFmt(that: this, f: f, hint: hint);
 
   @override
   int get hashCode => x.hashCode ^ y.hashCode;
@@ -48,6 +73,12 @@ class Size {
     required this.width,
     required this.height,
   });
+
+  Future<Size> Clone({dynamic hint}) =>
+      RustLib.instance.api.sizeClone(that: this, hint: hint);
+
+  Future<void> Fmt({required CoreFmtFormatter f, dynamic hint}) =>
+      RustLib.instance.api.sizeFmt(that: this, f: f, hint: hint);
 
   @override
   int get hashCode => width.hashCode ^ height.hashCode;
