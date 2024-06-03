@@ -6,6 +6,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         &mut self,
         type_slice: &syn::TypeSlice,
     ) -> anyhow::Result<MirType> {
-        TODO
+        log::info!("parse_type_slice {type_slice:?}");
+        unimplemented!()
     }
 }
