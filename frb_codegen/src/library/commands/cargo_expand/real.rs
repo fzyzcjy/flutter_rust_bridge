@@ -1,3 +1,5 @@
+use std::borrow::Cow;
+use lazy_static::lazy_static;
 use crate::codegen::dumper::Dumper;
 use crate::codegen::ConfigDumpContent;
 use crate::command_args;
@@ -40,13 +42,13 @@ fn decode_macro_frb_encoded_comments(code: &str) -> Cow<str> {
             Regex::new(r##"#\[doc =[\s\n]*r"frb_encoded\(([\s\S]*?)\)"]"##).unwrap();
     }
 
-    fn replacer(capture: &Captures) -> String {
-        let hex_str = capture.get(1).unwrap().as_str();
-        let decoded_str = String::from_utf8(hex::decode(&hex_str)?).unwrap();
-        format!("{}", decoded_str)
+    fn replacer(captures: &Captures) -> anyhow::Result<String> {
+        let hex_str = captures.get(1).unwrap().as_str();
+        let decoded_str = String::from_utf8(hex::decode(&hex_str)?)?;
+        Ok(format!("{}", decoded_str))
     }
 
-    PATTERN.replace_all(code, replacer)
+    PATTERN.replace_all(code, |captures| replacer(captures).unwrap())
 }
 
 #[allow(clippy::vec_init_then_push)]
