@@ -1,4 +1,4 @@
-use crate::utils::namespace::{Namespace, NamespacedName};
+use crate::utils::namespace::Namespace;
 use proc_macro2::Span;
 use serde::Serialize;
 use syn::spanned::Spanned;
@@ -38,20 +38,15 @@ impl HirFunction {
 #[derive(Debug, Clone)]
 pub(crate) enum HirFunctionOwner {
     Function,
-    Method {
-        item_impl: ItemImpl,
-    },
-    TraitMethod {
-        item_impl: ItemImpl,
-        trait_def_name: NamespacedName,
-    },
+    Method { item_impl: ItemImpl },
+    TraitMethod { item_impl: ItemImpl },
 }
 
 impl HirFunctionOwner {
     pub(crate) fn simple_name(&self) -> Option<String> {
         match self {
             Self::Function => None,
-            Self::Method { item_impl } | Self::TraitMethod { item_impl, .. } => {
+            Self::Method { item_impl } | Self::TraitMethod { item_impl } => {
                 Some(ty_to_string(&item_impl.self_ty))
             }
         }
