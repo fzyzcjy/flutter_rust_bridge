@@ -1,4 +1,5 @@
 use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
+use crate::codegen::ir::hir::hierarchical::function::HirFunction;
 use crate::codegen::ir::mir::func::{
     MirFunc, MirFuncArgMode, MirFuncInput, MirFuncMode, MirFuncOutput, MirFuncOwnerInfo,
     MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
@@ -21,7 +22,6 @@ use std::fmt::Debug;
 use syn::*;
 use MirSkipReason::{IgnoredFunctionNotPub, IgnoredMisc};
 use MirType::Primitive;
-use crate::codegen::ir::hir::hierarchical::function::HirFunction;
 
 pub(crate) mod argument;
 pub(crate) mod output;
@@ -72,16 +72,10 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         debug!("parse_function function name: {:?}", func.item_fn.name());
 
         if !matches!(func.item_fn.vis(), Visibility::Public(_)) {
-            return Ok(create_output_skip(
-                func,
-                IgnoredFunctionNotPub,
-            ));
+            return Ok(create_output_skip(func, IgnoredFunctionNotPub));
         }
         if !func.item_fn.sig().generics.params.is_empty() {
-            return Ok(create_output_skip(
-                func,
-                IgnoredFunctionGeneric,
-            ));
+            return Ok(create_output_skip(func, IgnoredFunctionGeneric));
         }
 
         let src_lineno = func.item_fn.span().start().line;
@@ -159,13 +153,11 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         context: &TypeParserParsingContext,
         actual_method_dart_name: Option<String>,
     ) -> anyhow::Result<Option<MirFuncOwnerInfo>> {
-        Ok(Some(match item_fn {
-            HirFunction::Function { .. } => MirFuncOwnerInfo::Function,
-            HirFunction::Method {
-                item_impl,
-                item_fn: impl_item_fn,
-            } => {
-                let mode = if matches!(impl_item_fn.sig.inputs.first(), Some(FnArg::Receiver(..))) {
+        Ok(Some(match &item_fn.item_impl {
+            None => MirFuncOwnerInfo::Function,
+            Some(item_impl) => {
+                let sig = item_fn.item_fn.sig();
+                let mode = if matches!(sig.inputs.first(), Some(FnArg::Receiver(..))) {
                     MirFuncOwnerInfoMethodMode::Instance
                 } else {
                     MirFuncOwnerInfoMethodMode::Static
@@ -181,7 +173,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     return Ok(None);
                 }
 
-                let actual_method_name = impl_item_fn.sig.ident.to_string();
+                let actual_method_name = sig.ident.to_string();
 
                 MirFuncOwnerInfo::Method(MirFuncOwnerInfoMethod {
                     owner_ty,
@@ -213,10 +205,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     }
 }
 
-fn create_output_skip(
-    func: &HirFunction,
-    reason: MirSkipReason,
-) -> ParseFunctionOutput {
+fn create_output_skip(func: &HirFunction, reason: MirSkipReason) -> ParseFunctionOutput {
     ParseFunctionOutput::Skip(MirSkip {
         name: NamespacedName::new(func.namespace.clone(), func.item_fn.name().to_string()),
         reason,
