@@ -63,6 +63,7 @@ pub struct MirFuncOwnerInfoMethod {
     pub(crate) actual_method_name: String,
     pub(crate) actual_method_dart_name: Option<String>,
     pub(crate) mode: MirFuncOwnerInfoMethodMode,
+    pub(crate) trait_def_name: Option<NamespacedName>,
 }
 
 pub enum MirFuncOwnerInfoMethodMode {
