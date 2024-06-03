@@ -42,6 +42,7 @@ pub struct HirModuleContent {
     // pub imports: Vec<Import>, // not implemented yet
     pub type_alias: Vec<HirTypeAlias>,
     pub functions: Vec<HirFunction>,
+    pub traits: Vec<HirTrait>,
 }
 
 /// Mirrors syn::Visibility, but can be created without a token

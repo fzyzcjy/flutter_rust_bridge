@@ -7,6 +7,7 @@ use crate::codegen::parser::hir::hierarchical::module::parse_module;
 use crate::codegen::parser::hir::hierarchical::struct_or_enum::{
     parse_syn_item_enum, parse_syn_item_struct,
 };
+use crate::codegen::parser::hir::hierarchical::traits::parse_syn_item_trait;
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 use crate::utils::namespace::Namespace;
 use syn::ItemMod;
@@ -33,6 +34,9 @@ pub(super) fn parse_syn_item(
         }
         syn::Item::Impl(item_impl) => {
             (scope.functions).extend(parse_syn_item_impl(item_impl, namespace));
+        }
+        syn::Item::Trait(item_trait) => {
+            (scope.traits).push(parse_syn_item_trait(item_trait, namespace));
         }
         syn::Item::Mod(item_mod) => {
             (scope.modules).extend(parse_syn_item_mod(item_mod, namespace, config, parent_vis)?);
