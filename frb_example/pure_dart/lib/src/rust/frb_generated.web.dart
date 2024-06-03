@@ -786,6 +786,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinSyncSseMoi;
 
   CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_HelloOneStructTwinNormalPtr => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal;
+
+  CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_ItemContainerSolutionOneTwinNormalPtr =>
           wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal;
 
@@ -1388,6 +1392,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   EnumWithGoodAndOpaqueWithoutOptionTwinSyncSseMoi
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinSyncSseMoi(
+          dynamic raw);
+
+  @protected
+  HelloOneStructTwinNormal
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal(
           dynamic raw);
 
   @protected
@@ -2098,6 +2107,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   DroppableTwinSyncSse
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinSyncSse(
+          dynamic raw);
+
+  @protected
+  HelloOneStructTwinNormal
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal(
           dynamic raw);
 
   @protected
@@ -3186,6 +3200,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   EnumWithGoodAndOpaqueWithoutOptionTwinSyncSseMoi
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinSyncSseMoi(
+          dynamic raw);
+
+  @protected
+  HelloOneStructTwinNormal
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal(
           dynamic raw);
 
   @protected
@@ -5020,10 +5039,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
-  HelloOneStructTwinNormal dco_decode_box_autoadd_hello_one_struct_twin_normal(
-      dynamic raw);
-
-  @protected
   HelloOneStructTwinRustAsync
       dco_decode_box_autoadd_hello_one_struct_twin_rust_async(dynamic raw);
 
@@ -6843,9 +6858,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   HelloOneStructTwinMoi dco_decode_hello_one_struct_twin_moi(dynamic raw);
-
-  @protected
-  HelloOneStructTwinNormal dco_decode_hello_one_struct_twin_normal(dynamic raw);
 
   @protected
   HelloOneStructTwinRustAsync dco_decode_hello_one_struct_twin_rust_async(
@@ -9975,6 +9987,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  HelloOneStructTwinNormal
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
   ItemContainerSolutionOneTwinNormal
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal(
           SseDeserializer deserializer);
@@ -10682,6 +10699,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   DroppableTwinSyncSse
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinSyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  HelloOneStructTwinNormal
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal(
           SseDeserializer deserializer);
 
   @protected
@@ -11770,6 +11792,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   EnumWithGoodAndOpaqueWithoutOptionTwinSyncSseMoi
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinSyncSseMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  HelloOneStructTwinNormal
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal(
           SseDeserializer deserializer);
 
   @protected
@@ -13799,10 +13826,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   HelloOneStructTwinMoi sse_decode_box_autoadd_hello_one_struct_twin_moi(
-      SseDeserializer deserializer);
-
-  @protected
-  HelloOneStructTwinNormal sse_decode_box_autoadd_hello_one_struct_twin_normal(
       SseDeserializer deserializer);
 
   @protected
@@ -15875,10 +15898,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   HelloOneStructTwinMoi sse_decode_hello_one_struct_twin_moi(
-      SseDeserializer deserializer);
-
-  @protected
-  HelloOneStructTwinNormal sse_decode_hello_one_struct_twin_normal(
       SseDeserializer deserializer);
 
   @protected
@@ -21108,13 +21127,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_hello_one_struct_twin_normal(
-      HelloOneStructTwinNormal raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_hello_one_struct_twin_normal(raw);
-  }
-
-  @protected
   List<dynamic> cst_encode_box_autoadd_hello_one_struct_twin_rust_async(
       HelloOneStructTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -23472,13 +23484,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_hello_one_struct_twin_moi(
       HelloOneStructTwinMoi raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.inner)];
-  }
-
-  @protected
-  List<dynamic> cst_encode_hello_one_struct_twin_normal(
-      HelloOneStructTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_String(raw.inner)];
   }
@@ -27204,6 +27209,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       EnumWithGoodAndOpaqueWithoutOptionTwinSyncMoi raw);
 
   @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal(
+      HelloOneStructTwinNormal raw);
+
+  @protected
   int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal(
       ItemContainerSolutionOneTwinNormal raw);
 
@@ -27566,6 +27575,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinSync(
       DroppableTwinSync raw);
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal(
+      HelloOneStructTwinNormal raw);
 
   @protected
   int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal(
@@ -27993,6 +28006,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinSyncMoi(
       EnumWithGoodAndOpaqueWithoutOptionTwinSyncMoi raw);
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal(
+      HelloOneStructTwinNormal raw);
 
   @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal(
@@ -28632,6 +28649,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinSyncSseMoi(
           EnumWithGoodAndOpaqueWithoutOptionTwinSyncSseMoi self,
           SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal(
+          HelloOneStructTwinNormal self, SseSerializer serializer);
 
   @protected
   void
@@ -29366,6 +29388,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinSyncSse(
           DroppableTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal(
+          HelloOneStructTwinNormal self, SseSerializer serializer);
 
   @protected
   void
@@ -30525,6 +30552,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinSyncSseMoi(
           EnumWithGoodAndOpaqueWithoutOptionTwinSyncSseMoi self,
           SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal(
+          HelloOneStructTwinNormal self, SseSerializer serializer);
 
   @protected
   void
@@ -32467,10 +32499,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_box_autoadd_hello_one_struct_twin_moi(
       HelloOneStructTwinMoi self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_box_autoadd_hello_one_struct_twin_normal(
-      HelloOneStructTwinNormal self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_hello_one_struct_twin_rust_async(
@@ -34431,10 +34459,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_hello_one_struct_twin_moi(
       HelloOneStructTwinMoi self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_hello_one_struct_twin_normal(
-      HelloOneStructTwinNormal self, SseSerializer serializer);
 
   @protected
   void sse_encode_hello_one_struct_twin_rust_async(
@@ -57345,6 +57369,12 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__raw_string__test_raw_string_item_struct_twin_normal(
               port_);
 
+  void wire__crate__api__rust_auto_opaque__HelloOneStructTwinNormal_func_hello(
+          NativePortType port_, Object that) =>
+      wasmModule
+          .wire__crate__api__rust_auto_opaque__HelloOneStructTwinNormal_func_hello(
+              port_, that);
+
   void wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_instance_method_arg_borrow_twin_normal(
           NativePortType port_, Object that) =>
       wasmModule
@@ -57430,12 +57460,6 @@ class RustLibWire implements BaseWire {
           wasmModule
               .wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_set_good(
                   that, good);
-
-  void wire__crate__api__rust_auto_opaque__hello_one_struct_twin_normal_func_hello(
-          NativePortType port_, List<dynamic> that) =>
-      wasmModule
-          .wire__crate__api__rust_auto_opaque__hello_one_struct_twin_normal_func_hello(
-              port_, that);
 
   void wire__crate__api__rust_auto_opaque__hello_two_enum_twin_normal_func_hello(
           NativePortType port_, int that) =>
@@ -59395,6 +59419,18 @@ class RustLibWire implements BaseWire {
           dynamic ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinSyncSseMoi(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal(
@@ -74112,6 +74148,10 @@ class RustLibWasmModule implements WasmModule {
           NativePortType port_);
 
   external void
+      wire__crate__api__rust_auto_opaque__HelloOneStructTwinNormal_func_hello(
+          NativePortType port_, Object that);
+
+  external void
       wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_instance_method_arg_borrow_twin_normal(
           NativePortType port_, Object that);
 
@@ -74166,10 +74206,6 @@ class RustLibWasmModule implements WasmModule {
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_set_good(
           Object that, String good);
-
-  external void
-      wire__crate__api__rust_auto_opaque__hello_one_struct_twin_normal_func_hello(
-          NativePortType port_, List<dynamic> that);
 
   external void
       wire__crate__api__rust_auto_opaque__hello_two_enum_twin_normal_func_hello(
@@ -75457,6 +75493,14 @@ class RustLibWasmModule implements WasmModule {
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinSyncSseMoi(
+          dynamic ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal(
+          dynamic ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal(
           dynamic ptr);
 
   external void

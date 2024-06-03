@@ -272,6 +272,33 @@ class EnumWithGoodAndOpaqueWithoutOptionTwinNormal extends RustOpaque {
   );
 }
 
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinNormal>>
+@sealed
+class HelloOneStructTwinNormal extends RustOpaque {
+  // Not to be used by end users
+  HelloOneStructTwinNormal.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  HelloOneStructTwinNormal.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_HelloOneStructTwinNormal,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_HelloOneStructTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_HelloOneStructTwinNormalPtr,
+  );
+
+  Future<void> funcHello() => RustLib.instance.api
+          .crateApiRustAutoOpaqueHelloOneStructTwinNormalFuncHello(
+        that: this,
+      );
+}
+
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleEnumTwinNormal>>
 @sealed
 class NonCloneSimpleEnumTwinNormal extends RustOpaque {
@@ -464,29 +491,6 @@ sealed class EnumWithGoodAndOpaqueTwinNormal
   const factory EnumWithGoodAndOpaqueTwinNormal.opaque(
     NonCloneSimpleTwinNormal field0,
   ) = EnumWithGoodAndOpaqueTwinNormal_Opaque;
-}
-
-class HelloOneStructTwinNormal {
-  final String inner;
-
-  const HelloOneStructTwinNormal({
-    required this.inner,
-  });
-
-  Future<void> funcHello() => RustLib.instance.api
-          .crateApiRustAutoOpaqueHelloOneStructTwinNormalFuncHello(
-        that: this,
-      );
-
-  @override
-  int get hashCode => inner.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is HelloOneStructTwinNormal &&
-          runtimeType == other.runtimeType &&
-          inner == other.inner;
 }
 
 enum HelloTwoEnumTwinNormal {

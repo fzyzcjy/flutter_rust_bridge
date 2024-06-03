@@ -8,6 +8,7 @@ use crate::api::constructor::*;
 use crate::api::dart_code::*;
 use crate::api::dropping::*;
 use crate::api::external_impl::*;
+use crate::api::impl_trait::SimpleTraitTwinNormal;
 use crate::api::method::*;
 use crate::api::misc_no_twin_example_a::*;
 use crate::api::misc_no_twin_example_b::*;
@@ -16,21 +17,37 @@ use crate::api::pseudo_manual::dropping_twin_rust_async_sse::*;
 use crate::api::pseudo_manual::dropping_twin_sse::*;
 use crate::api::pseudo_manual::dropping_twin_sync::*;
 use crate::api::pseudo_manual::dropping_twin_sync_sse::*;
+use crate::api::pseudo_manual::impl_trait_twin_rust_async::SimpleTraitTwinRustAsync;
+use crate::api::pseudo_manual::impl_trait_twin_rust_async_sse::SimpleTraitTwinRustAsyncSse;
+use crate::api::pseudo_manual::impl_trait_twin_sse::SimpleTraitTwinSse;
+use crate::api::pseudo_manual::impl_trait_twin_sync::SimpleTraitTwinSync;
+use crate::api::pseudo_manual::impl_trait_twin_sync_sse::SimpleTraitTwinSyncSse;
 use crate::api::pseudo_manual::method_twin_rust_async::*;
 use crate::api::pseudo_manual::method_twin_rust_async_sse::*;
 use crate::api::pseudo_manual::method_twin_sse::*;
 use crate::api::pseudo_manual::method_twin_sync::*;
 use crate::api::pseudo_manual::method_twin_sync_sse::*;
+use crate::api::pseudo_manual::rust_auto_opaque_twin_moi::HelloTraitTwinMoi;
 use crate::api::pseudo_manual::rust_auto_opaque_twin_moi::*;
+use crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::HelloTraitTwinRustAsync;
 use crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::*;
+use crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_moi::HelloTraitTwinRustAsyncMoi;
 use crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_moi::*;
+use crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::HelloTraitTwinRustAsyncSse;
 use crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::*;
+use crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse_moi::HelloTraitTwinRustAsyncSseMoi;
 use crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse_moi::*;
+use crate::api::pseudo_manual::rust_auto_opaque_twin_sse::HelloTraitTwinSse;
 use crate::api::pseudo_manual::rust_auto_opaque_twin_sse::*;
+use crate::api::pseudo_manual::rust_auto_opaque_twin_sse_moi::HelloTraitTwinSseMoi;
 use crate::api::pseudo_manual::rust_auto_opaque_twin_sse_moi::*;
+use crate::api::pseudo_manual::rust_auto_opaque_twin_sync::HelloTraitTwinSync;
 use crate::api::pseudo_manual::rust_auto_opaque_twin_sync::*;
+use crate::api::pseudo_manual::rust_auto_opaque_twin_sync_moi::HelloTraitTwinSyncMoi;
 use crate::api::pseudo_manual::rust_auto_opaque_twin_sync_moi::*;
+use crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::HelloTraitTwinSyncSse;
 use crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::*;
+use crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse_moi::HelloTraitTwinSyncSseMoi;
 use crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse_moi::*;
 use crate::api::pseudo_manual::rust_opaque_sync_twin_moi::*;
 use crate::api::pseudo_manual::rust_opaque_sync_twin_sse::*;
@@ -46,6 +63,7 @@ use crate::api::pseudo_manual::rust_opaque_twin_sync::*;
 use crate::api::pseudo_manual::rust_opaque_twin_sync_moi::*;
 use crate::api::pseudo_manual::rust_opaque_twin_sync_sse::*;
 use crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::*;
+use crate::api::rust_auto_opaque::HelloTraitTwinNormal;
 use crate::api::rust_auto_opaque::*;
 use crate::api::rust_opaque::*;
 use crate::api::rust_opaque_sync::*;
@@ -3207,25 +3225,6 @@ impl CstDecode<crate::api::pseudo_manual::rust_auto_opaque_twin_moi::HelloOneStr
             self_.length()
         );
         crate::api::pseudo_manual::rust_auto_opaque_twin_moi::HelloOneStructTwinMoi {
-            inner: self_.get(0).cst_decode(),
-        }
-    }
-}
-impl CstDecode<crate::api::rust_auto_opaque::HelloOneStructTwinNormal>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> crate::api::rust_auto_opaque::HelloOneStructTwinNormal {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::rust_auto_opaque::HelloOneStructTwinNormal {
             inner: self_.get(0).cst_decode(),
         }
     }
@@ -9343,6 +9342,20 @@ impl CstDecode<EnumWithGoodAndOpaqueWithoutOptionTwinSyncMoi>
         ))
     }
 }
+impl CstDecode<HelloOneStructTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> HelloOneStructTwinNormal {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
+            RustOpaqueNom<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinNormal>,
+            >,
+        >::cst_decode(
+            self
+        ))
+    }
+}
 impl CstDecode<ItemContainerSolutionOneTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -11734,6 +11747,26 @@ impl
             compile_error!("64-bit pointers are not supported.");
         }
         decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
+    }
+}
+impl
+    CstDecode<
+        RustOpaqueNom<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinNormal>,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> RustOpaqueNom<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinNormal>,
+    > {
+        #[cfg(target_pointer_width = "64")]
+        {
+            compile_error!("64-bit pointers are not supported.");
+        }
+        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
     }
 }
 impl
@@ -38990,6 +39023,14 @@ pub fn wire__crate__api__raw_string__test_raw_string_item_struct_twin_normal(
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__rust_auto_opaque__HelloOneStructTwinNormal_func_hello(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire__crate__api__rust_auto_opaque__HelloOneStructTwinNormal_func_hello_impl(port_, that)
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_instance_method_arg_borrow_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
@@ -39098,14 +39139,6 @@ pub fn wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOp
     good: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_set_good_impl(that, good)
-}
-
-#[wasm_bindgen]
-pub fn wire__crate__api__rust_auto_opaque__hello_one_struct_twin_normal_func_hello(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire__crate__api__rust_auto_opaque__hello_one_struct_twin_normal_func_hello_impl(port_, that)
 }
 
 #[wasm_bindgen]
@@ -42105,6 +42138,24 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
             EnumWithGoodAndOpaqueWithoutOptionTwinSyncSseMoi,
         >,
     >::decrement_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinNormal>>::increment_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinNormal>>::decrement_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]

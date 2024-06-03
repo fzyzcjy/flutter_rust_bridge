@@ -8,6 +8,7 @@ use crate::api::constructor::*;
 use crate::api::dart_code::*;
 use crate::api::dropping::*;
 use crate::api::external_impl::*;
+use crate::api::impl_trait::SimpleTraitTwinNormal;
 use crate::api::method::*;
 use crate::api::misc_no_twin_example_a::*;
 use crate::api::misc_no_twin_example_b::*;
@@ -16,21 +17,37 @@ use crate::api::pseudo_manual::dropping_twin_rust_async_sse::*;
 use crate::api::pseudo_manual::dropping_twin_sse::*;
 use crate::api::pseudo_manual::dropping_twin_sync::*;
 use crate::api::pseudo_manual::dropping_twin_sync_sse::*;
+use crate::api::pseudo_manual::impl_trait_twin_rust_async::SimpleTraitTwinRustAsync;
+use crate::api::pseudo_manual::impl_trait_twin_rust_async_sse::SimpleTraitTwinRustAsyncSse;
+use crate::api::pseudo_manual::impl_trait_twin_sse::SimpleTraitTwinSse;
+use crate::api::pseudo_manual::impl_trait_twin_sync::SimpleTraitTwinSync;
+use crate::api::pseudo_manual::impl_trait_twin_sync_sse::SimpleTraitTwinSyncSse;
 use crate::api::pseudo_manual::method_twin_rust_async::*;
 use crate::api::pseudo_manual::method_twin_rust_async_sse::*;
 use crate::api::pseudo_manual::method_twin_sse::*;
 use crate::api::pseudo_manual::method_twin_sync::*;
 use crate::api::pseudo_manual::method_twin_sync_sse::*;
+use crate::api::pseudo_manual::rust_auto_opaque_twin_moi::HelloTraitTwinMoi;
 use crate::api::pseudo_manual::rust_auto_opaque_twin_moi::*;
+use crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::HelloTraitTwinRustAsync;
 use crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::*;
+use crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_moi::HelloTraitTwinRustAsyncMoi;
 use crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_moi::*;
+use crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::HelloTraitTwinRustAsyncSse;
 use crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::*;
+use crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse_moi::HelloTraitTwinRustAsyncSseMoi;
 use crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse_moi::*;
+use crate::api::pseudo_manual::rust_auto_opaque_twin_sse::HelloTraitTwinSse;
 use crate::api::pseudo_manual::rust_auto_opaque_twin_sse::*;
+use crate::api::pseudo_manual::rust_auto_opaque_twin_sse_moi::HelloTraitTwinSseMoi;
 use crate::api::pseudo_manual::rust_auto_opaque_twin_sse_moi::*;
+use crate::api::pseudo_manual::rust_auto_opaque_twin_sync::HelloTraitTwinSync;
 use crate::api::pseudo_manual::rust_auto_opaque_twin_sync::*;
+use crate::api::pseudo_manual::rust_auto_opaque_twin_sync_moi::HelloTraitTwinSyncMoi;
 use crate::api::pseudo_manual::rust_auto_opaque_twin_sync_moi::*;
+use crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::HelloTraitTwinSyncSse;
 use crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::*;
+use crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse_moi::HelloTraitTwinSyncSseMoi;
 use crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse_moi::*;
 use crate::api::pseudo_manual::rust_opaque_sync_twin_moi::*;
 use crate::api::pseudo_manual::rust_opaque_sync_twin_sse::*;
@@ -46,6 +63,7 @@ use crate::api::pseudo_manual::rust_opaque_twin_sync::*;
 use crate::api::pseudo_manual::rust_opaque_twin_sync_moi::*;
 use crate::api::pseudo_manual::rust_opaque_twin_sync_sse::*;
 use crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::*;
+use crate::api::rust_auto_opaque::HelloTraitTwinNormal;
 use crate::api::rust_auto_opaque::*;
 use crate::api::rust_opaque::*;
 use crate::api::rust_opaque_sync::*;
@@ -459,6 +477,18 @@ impl CstDecode<EnumWithGoodAndOpaqueWithoutOptionTwinSyncMoi> for usize {
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                     EnumWithGoodAndOpaqueWithoutOptionTwinSyncMoi,
                 >,
+            >,
+        >::cst_decode(
+            self
+        ))
+    }
+}
+impl CstDecode<HelloOneStructTwinNormal> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> HelloOneStructTwinNormal {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
+            RustOpaqueNom<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinNormal>,
             >,
         >::cst_decode(
             self
@@ -2384,6 +2414,22 @@ impl
         >,
     > {
         decode_rust_opaque_moi(self as _)
+    }
+}
+impl
+    CstDecode<
+        RustOpaqueNom<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinNormal>,
+        >,
+    > for usize
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> RustOpaqueNom<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinNormal>,
+    > {
+        unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
@@ -5508,16 +5554,6 @@ impl CstDecode<crate::api::pseudo_manual::rust_auto_opaque_twin_moi::HelloOneStr
     ) -> crate::api::pseudo_manual::rust_auto_opaque_twin_moi::HelloOneStructTwinMoi {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::rust_auto_opaque_twin_moi::HelloOneStructTwinMoi>::cst_decode(*wrap).into()
-    }
-}
-impl CstDecode<crate::api::rust_auto_opaque::HelloOneStructTwinNormal>
-    for *mut wire_cst_hello_one_struct_twin_normal
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> crate::api::rust_auto_opaque::HelloOneStructTwinNormal {
-        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-        CstDecode::<crate::api::rust_auto_opaque::HelloOneStructTwinNormal>::cst_decode(*wrap)
-            .into()
     }
 }
 impl
@@ -8787,16 +8823,6 @@ impl CstDecode<crate::api::pseudo_manual::rust_auto_opaque_twin_moi::HelloOneStr
         self,
     ) -> crate::api::pseudo_manual::rust_auto_opaque_twin_moi::HelloOneStructTwinMoi {
         crate::api::pseudo_manual::rust_auto_opaque_twin_moi::HelloOneStructTwinMoi {
-            inner: self.inner.cst_decode(),
-        }
-    }
-}
-impl CstDecode<crate::api::rust_auto_opaque::HelloOneStructTwinNormal>
-    for wire_cst_hello_one_struct_twin_normal
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> crate::api::rust_auto_opaque::HelloOneStructTwinNormal {
-        crate::api::rust_auto_opaque::HelloOneStructTwinNormal {
             inner: self.inner.cst_decode(),
         }
     }
@@ -14710,18 +14736,6 @@ impl NewWithNullPtr for wire_cst_hello_one_struct_twin_moi {
     }
 }
 impl Default for wire_cst_hello_one_struct_twin_moi {
-    fn default() -> Self {
-        Self::new_with_null_ptr()
-    }
-}
-impl NewWithNullPtr for wire_cst_hello_one_struct_twin_normal {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            inner: core::ptr::null_mut(),
-        }
-    }
-}
-impl Default for wire_cst_hello_one_struct_twin_normal {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
@@ -42093,6 +42107,14 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__raw_string__tes
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__rust_auto_opaque__HelloOneStructTwinNormal_func_hello(
+    port_: i64,
+    that: usize,
+) {
+    wire__crate__api__rust_auto_opaque__HelloOneStructTwinNormal_func_hello_impl(port_, that)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_instance_method_arg_borrow_twin_normal(
     port_: i64,
     that: usize,
@@ -42201,14 +42223,6 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__rust_auto_opaqu
     good: *mut wire_cst_list_prim_u_8_strict,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_set_good_impl(that, good)
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__rust_auto_opaque__hello_one_struct_twin_normal_func_hello(
-    port_: i64,
-    that: *mut wire_cst_hello_one_struct_twin_normal,
-) {
-    wire__crate__api__rust_auto_opaque__hello_one_struct_twin_normal_func_hello_impl(port_, that)
 }
 
 #[no_mangle]
@@ -45231,6 +45245,24 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinNormal>>::increment_strong_count(ptr as _);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinNormal>>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal(
     ptr: *const std::ffi::c_void,
 ) {
@@ -47618,14 +47650,6 @@ pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_hello_one_str
 ) -> *mut wire_cst_hello_one_struct_twin_moi {
     flutter_rust_bridge::for_generated::new_leak_box_ptr(
         wire_cst_hello_one_struct_twin_moi::new_with_null_ptr(),
-    )
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_hello_one_struct_twin_normal(
-) -> *mut wire_cst_hello_one_struct_twin_normal {
-    flutter_rust_bridge::for_generated::new_leak_box_ptr(
-        wire_cst_hello_one_struct_twin_normal::new_with_null_ptr(),
     )
 }
 
@@ -52327,11 +52351,6 @@ pub struct wire_cst_hash_map_value {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_hello_one_struct_twin_moi {
-    inner: *mut wire_cst_list_prim_u_8_strict,
-}
-#[repr(C)]
-#[derive(Clone, Copy)]
-pub struct wire_cst_hello_one_struct_twin_normal {
     inner: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
