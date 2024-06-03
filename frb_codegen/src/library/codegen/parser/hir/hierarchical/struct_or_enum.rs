@@ -3,7 +3,6 @@ use crate::codegen::ir::hir::hierarchical::syn_item_struct_or_enum::SynItemStruc
 use crate::codegen::parser::hir::hierarchical::mirror_ident::{
     parse_mirror_ident, ParseMirrorIdentOutput,
 };
-use crate::utils::crate_name::CrateName;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use itertools::Itertools;
 use log::debug;
