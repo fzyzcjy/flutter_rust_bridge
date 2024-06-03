@@ -53,7 +53,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for PrimitiveListWireRustCodecCst
             // frb-coverage:ignore-start
             MirTypePrimitive::Bool | MirTypePrimitive::Unit => Some("todo!()".into()),
             // frb-coverage:ignore-end
-            MirTypePrimitive::I64 | MirTypePrimitive::U64 | MirTypePrimitive::Isize | MirTypePrimitive::Usize => Some(
+            MirTypePrimitive::I64 | MirTypePrimitive::U64 => Some(
                 format!(
                     "let buf = self.dyn_into::<{}>().unwrap();
                     let buf = flutter_rust_bridge::for_generated::js_sys::Uint8Array::new(&buf.buffer());
