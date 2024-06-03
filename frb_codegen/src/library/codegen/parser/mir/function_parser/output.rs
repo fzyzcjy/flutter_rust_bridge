@@ -1,3 +1,4 @@
+use crate::codegen::ir::mir::func::OwnershipMode;
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqueImplicit;
 use crate::codegen::ir::mir::ty::MirType;
@@ -39,15 +40,25 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 // Convert primitive Unit type -> None
 fn remove_primitive_unit(info: FunctionPartialInfo) -> FunctionPartialInfo {
     if info.ok_output == Some(MirType::Primitive(MirTypePrimitive::Unit)) {
-        FunctionPartialInfo {
+        return FunctionPartialInfo {
             ok_output: None,
             ..info
-        }
-    } else {
-        info
+        };
     }
+    info
 }
 
 fn remove_reference_type(info: FunctionPartialInfo) -> FunctionPartialInfo {
-    TODO
+    if let MirType::RustAutoOpaqueImplicit(MirTypeRustAutoOpaqueImplicit {
+        ownership_mode, ..
+    }) = &info.ok_output
+    {
+        if ownership_mode != OwnershipMode::Owned {
+            return FunctionPartialInfo {
+                ok_output: None,
+                ..info
+            };
+        }
+    }
+    info
 }
