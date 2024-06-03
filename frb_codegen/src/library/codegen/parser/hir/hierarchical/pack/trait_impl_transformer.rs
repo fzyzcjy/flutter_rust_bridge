@@ -39,10 +39,9 @@ fn compute_methods(module: &HirModule, trait_map: &HashMap<String, HirTrait>) ->
             //     return vec![];
             // }
 
-            let trait_def = trait_map.get(&trait_name);
             // Only parse impl of known traits by default, otherwise things like `lazy_staic!`
             // will introduce a ton of unwanted trait impls.
-            if let Some(trait_def) = trait_def {
+            if let Some(trait_def) = trait_map.get(&trait_name) {
                 let impl_functions =
                     parse_syn_item_impl(&trait_impl.item_impl, namespace, Some(TODO));
                 let def_functions =
