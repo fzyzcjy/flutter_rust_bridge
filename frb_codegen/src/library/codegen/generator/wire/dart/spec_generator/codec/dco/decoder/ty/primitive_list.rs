@@ -6,8 +6,10 @@ use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 impl<'a> WireDartCodecDcoGeneratorDecoderTrait for PrimitiveListWireDartCodecDcoGenerator<'a> {
     fn generate_impl_decode_body(&self) -> String {
         match &self.mir.primitive {
-            MirTypePrimitive::I64 => "return Int64List.from(raw);".into(),
-            MirTypePrimitive::U64 => "return Uint64List.from(raw);".into(),
+            MirTypePrimitive::I64 | MirTypePrimitive::Isize => "return Int64List.from(raw);".into(),
+            MirTypePrimitive::U64 | MirTypePrimitive::Usize => {
+                "return Uint64List.from(raw);".into()
+            }
             _ => gen_decode_simple_type_cast(self.mir.clone().into(), self.context),
         }
     }
