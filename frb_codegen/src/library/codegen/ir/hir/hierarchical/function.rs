@@ -21,7 +21,7 @@ pub(crate) enum HirFunctionInner {
         impl_item_fn: ImplItemFn,
     },
     TraitMethod {
-        item_trait: ItemTrait,
+        item_impl: ItemImpl,
         trait_item_fn: TraitItemFn,
     },
 }
@@ -45,8 +45,8 @@ impl HirFunctionInner {
 
     pub(crate) fn simple_owner(&self) -> Option<String> {
         Some(match &self {
-            HirFunctionInner::Method { item_impl, .. } => ty_to_string(&item_impl.self_ty),
-            HirFunctionInner::TraitMethod { item_trait, .. } => ty_to_string(TODO),
+            HirFunctionInner::Method { item_impl, .. }
+            | HirFunctionInner::TraitMethod { item_impl, .. } => ty_to_string(&item_impl.self_ty),
             _ => return None,
         })
     }

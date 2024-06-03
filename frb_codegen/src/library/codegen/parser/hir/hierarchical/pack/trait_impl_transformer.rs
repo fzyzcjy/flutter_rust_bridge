@@ -1,13 +1,13 @@
-use std::collections::HashMap;
 use crate::codegen::ir::hir::hierarchical::function::{HirFunction, HirFunctionInner};
 use crate::codegen::ir::hir::hierarchical::module::HirModule;
 use crate::codegen::ir::hir::hierarchical::pack::HirPack;
 use crate::codegen::ir::hir::hierarchical::traits::HirTrait;
 use crate::codegen::parser::hir::hierarchical::function::parse_syn_item_impl;
 use crate::if_then_some;
-use itertools::{concat, Itertools};
-use syn::TraitItem;
 use crate::utils::namespace::Namespace;
+use itertools::{concat, Itertools};
+use std::collections::HashMap;
+use syn::{ItemImpl, TraitItem};
 
 pub(super) fn transform(mut pack: HirPack) -> anyhow::Result<HirPack> {
     let trait_map = collect_traits(&pack);
@@ -37,7 +37,7 @@ fn compute_methods(module: &HirModule, trait_map: &HashMap<String, HirTrait>) ->
 
             let impl_functions = parse_syn_item_impl(&trait_impl.item_impl, namespace);
             let def_functions = trait_def
-                .map(|t| parse_trait_def_functions(t, namespace))
+                .map(|t| parse_trait_def_functions(t, &trait_impl.item_impl, namespace))
                 .unwrap_or_default();
 
             concat([impl_functions, def_functions])
@@ -48,7 +48,11 @@ fn compute_methods(module: &HirModule, trait_map: &HashMap<String, HirTrait>) ->
         .collect_vec()
 }
 
-fn parse_trait_def_functions(trait_def: &HirTrait, namespace: &Namespace) -> Vec<HirFunction> {
+fn parse_trait_def_functions(
+    trait_def: &HirTrait,
+    item_impl: &ItemImpl,
+    namespace: &Namespace,
+) -> Vec<HirFunction> {
     (trait_def.item_trait.items.iter())
         .filter_map(
             |item| if_then_some!(let TraitItem::Fn(ref trait_item_fn) = item, trait_item_fn),
@@ -56,7 +60,7 @@ fn parse_trait_def_functions(trait_def: &HirTrait, namespace: &Namespace) -> Vec
         .map(|trait_item_fn| HirFunction {
             namespace: namespace.clone(),
             inner: HirFunctionInner::TraitMethod {
-                item_trait: trait_def.item_trait.to_owned(),
+                item_impl: item_impl.to_owned(),
                 trait_item_fn: trait_item_fn.to_owned(),
             },
         })
