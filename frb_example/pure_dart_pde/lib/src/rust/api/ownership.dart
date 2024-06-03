@@ -11,7 +11,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 Future<String> borrowStringTwinNormal({required String arg}) =>
     RustLib.instance.api.crateApiOwnershipBorrowStringTwinNormal(arg: arg);
 
-Future<void> borrowStrTwinNormal({required String arg}) =>
+Future<String> borrowStrTwinNormal({required String arg}) =>
     RustLib.instance.api.crateApiOwnershipBorrowStrTwinNormal(arg: arg);
 
 Future<int> borrowI32TwinNormal({required int arg}) =>

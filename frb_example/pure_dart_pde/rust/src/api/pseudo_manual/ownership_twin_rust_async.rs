@@ -8,8 +8,8 @@ pub async fn borrow_string_twin_rust_async(arg: &String) -> String {
     arg.to_owned()
 }
 
-pub async fn borrow_str_twin_rust_async(arg: &str) -> &str {
-    arg
+pub async fn borrow_str_twin_rust_async(arg: &str) -> String {
+    arg.to_owned()
 }
 
 pub async fn borrow_i32_twin_rust_async(arg: &i32) -> i32 {

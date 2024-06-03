@@ -970,7 +970,7 @@ abstract class RustLibApi extends BaseApi {
   Future<Uint8List> crateApiOwnershipBorrowSliceU8TwinNormal(
       {required List<int> arg});
 
-  Future<void> crateApiOwnershipBorrowStrTwinNormal({required String arg});
+  Future<String> crateApiOwnershipBorrowStrTwinNormal({required String arg});
 
   Future<String> crateApiOwnershipBorrowStringTwinNormal({required String arg});
 
@@ -3273,8 +3273,9 @@ abstract class RustLibApi extends BaseApi {
       crateApiPseudoManualOwnershipTwinRustAsyncBorrowSliceU8TwinRustAsync(
           {required List<int> arg});
 
-  Future<void> crateApiPseudoManualOwnershipTwinRustAsyncBorrowStrTwinRustAsync(
-      {required String arg});
+  Future<String>
+      crateApiPseudoManualOwnershipTwinRustAsyncBorrowStrTwinRustAsync(
+          {required String arg});
 
   Future<String>
       crateApiPseudoManualOwnershipTwinRustAsyncBorrowStringTwinRustAsync(
@@ -3293,7 +3294,7 @@ abstract class RustLibApi extends BaseApi {
   Uint8List crateApiPseudoManualOwnershipTwinSyncBorrowSliceU8TwinSync(
       {required List<int> arg});
 
-  void crateApiPseudoManualOwnershipTwinSyncBorrowStrTwinSync(
+  String crateApiPseudoManualOwnershipTwinSyncBorrowStrTwinSync(
       {required String arg});
 
   String crateApiPseudoManualOwnershipTwinSyncBorrowStringTwinSync(
@@ -11826,7 +11827,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<void> crateApiOwnershipBorrowStrTwinNormal({required String arg}) {
+  Future<String> crateApiOwnershipBorrowStrTwinNormal({required String arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -11835,7 +11836,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             funcId: 255, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
+        decodeSuccessData: sse_decode_String,
         decodeErrorData: null,
       ),
       constMeta: kCrateApiOwnershipBorrowStrTwinNormalConstMeta,
@@ -29971,8 +29972,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  Future<void> crateApiPseudoManualOwnershipTwinRustAsyncBorrowStrTwinRustAsync(
-      {required String arg}) {
+  Future<String>
+      crateApiPseudoManualOwnershipTwinRustAsyncBorrowStrTwinRustAsync(
+          {required String arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -29981,7 +29983,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             funcId: 890, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
+        decodeSuccessData: sse_decode_String,
         decodeErrorData: null,
       ),
       constMeta:
@@ -30139,7 +30141,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  void crateApiPseudoManualOwnershipTwinSyncBorrowStrTwinSync(
+  String crateApiPseudoManualOwnershipTwinSyncBorrowStrTwinSync(
       {required String arg}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -30148,7 +30150,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 896)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
+        decodeSuccessData: sse_decode_String,
         decodeErrorData: null,
       ),
       constMeta:

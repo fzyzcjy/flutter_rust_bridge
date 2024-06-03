@@ -8156,9 +8156,7 @@ fn wire__crate__api__ownership__borrow_str_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
-                    Result::<_, ()>::Ok({
-                        crate::api::ownership::borrow_str_twin_normal(&api_arg);
-                    })
+                    Result::<_, ()>::Ok(crate::api::ownership::borrow_str_twin_normal(&api_arg))
                 })())
             }
         },
@@ -19816,7 +19814,7 @@ fn wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_str_twin_r
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok({ crate::api::pseudo_manual::ownership_twin_rust_async::borrow_str_twin_rust_async(&api_arg).await; })
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::ownership_twin_rust_async::borrow_str_twin_rust_async(&api_arg).await)
                     })().await)
                 } })
 }
@@ -19971,9 +19969,9 @@ fn wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_str_twin_sync_im
             let api_arg = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse((move || {
-                Result::<_, ()>::Ok({
-                    crate::api::pseudo_manual::ownership_twin_sync::borrow_str_twin_sync(&api_arg);
-                })
+                Result::<_, ()>::Ok(
+                    crate::api::pseudo_manual::ownership_twin_sync::borrow_str_twin_sync(&api_arg),
+                )
             })())
         },
     )

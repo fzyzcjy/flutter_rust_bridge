@@ -11,7 +11,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 String borrowStringTwinSync({required String arg}) => RustLib.instance.api
     .crateApiPseudoManualOwnershipTwinSyncBorrowStringTwinSync(arg: arg);
 
-void borrowStrTwinSync({required String arg}) => RustLib.instance.api
+String borrowStrTwinSync({required String arg}) => RustLib.instance.api
     .crateApiPseudoManualOwnershipTwinSyncBorrowStrTwinSync(arg: arg);
 
 int borrowI32TwinSync({required int arg}) => RustLib.instance.api

@@ -8,8 +8,8 @@ pub async fn borrow_string_twin_rust_async_sse(arg: &String) -> String {
 }
 
 #[flutter_rust_bridge::frb(serialize)]
-pub async fn borrow_str_twin_rust_async_sse(arg: &str) -> &str {
-    arg
+pub async fn borrow_str_twin_rust_async_sse(arg: &str) -> String {
+    arg.to_owned()
 }
 
 #[flutter_rust_bridge::frb(serialize)]

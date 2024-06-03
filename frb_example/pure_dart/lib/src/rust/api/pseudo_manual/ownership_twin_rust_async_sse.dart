@@ -13,7 +13,7 @@ Future<String> borrowStringTwinRustAsyncSse({required String arg}) => RustLib
     .crateApiPseudoManualOwnershipTwinRustAsyncSseBorrowStringTwinRustAsyncSse(
         arg: arg);
 
-Future<void> borrowStrTwinRustAsyncSse({required String arg}) =>
+Future<String> borrowStrTwinRustAsyncSse({required String arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualOwnershipTwinRustAsyncSseBorrowStrTwinRustAsyncSse(
             arg: arg);
