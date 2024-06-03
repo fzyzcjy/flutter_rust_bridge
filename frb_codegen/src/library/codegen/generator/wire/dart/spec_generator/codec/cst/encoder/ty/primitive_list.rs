@@ -11,7 +11,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for PrimitiveListWireDartCodecCst
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {
         if matches!(
             self.mir.primitive,
-            MirTypePrimitive::Isize | MirTypePrimitive::U64
+            MirTypePrimitive::Isize | MirTypePrimitive::Usize
         ) {
             return Acc::new_io_web(Some(
                 "throw UnimplementedError('Not implemented in this codec');".to_owned(),
