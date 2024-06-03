@@ -179,5 +179,5 @@ pub(crate) fn parse_struct_or_enum_should_ignore<Item: SynItemStructOrEnum>(
         // For third party crates, if a struct is not public, then it is impossible to utilize it,
         // thus we ignore it.
         || (crate_name != &CrateName::self_crate() && src_object.visibility != HirVisibility::Public)
-        || TODO
+        || !src_object.src.generics().params.is_empty()
 }
