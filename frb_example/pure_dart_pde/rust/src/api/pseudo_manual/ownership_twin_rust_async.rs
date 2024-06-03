@@ -16,6 +16,14 @@ pub async fn borrow_i32_twin_rust_async(arg: &i32) -> i32 {
     *arg
 }
 
+pub async fn borrow_slice_u8_twin_rust_async(arg: &[u8]) -> Vec<u8> {
+    arg.to_owned()
+}
+
+pub async fn borrow_slice_string_twin_rust_async(arg: &[String]) -> Vec<String> {
+    arg.to_owned()
+}
+
 #[derive(Clone)]
 pub struct SimpleStructForBorrowTwinRustAsync {
     pub one: String,

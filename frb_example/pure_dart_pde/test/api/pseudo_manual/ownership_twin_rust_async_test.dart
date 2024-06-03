@@ -15,6 +15,12 @@ Future<void> main({bool skipRustLibInit = false}) async {
   addTestsIdentityFunctionCall(borrowStringTwinRustAsync, ['a']);
   addTestsIdentityFunctionCall(borrowStrTwinRustAsync, ['a']);
   addTestsIdentityFunctionCall(borrowI32TwinRustAsync, [100]);
+  addTestsIdentityFunctionCall(borrowSliceU8TwinRustAsync, [
+    [10, 20, 30]
+  ]);
+  addTestsIdentityFunctionCall(borrowSliceStringTwinRustAsync, [
+    ['a', 'b']
+  ]);
   addTestsIdentityFunctionCall(borrowStructTwinRustAsync,
       [SimpleStructForBorrowTwinRustAsync(one: 'a')]);
 }

@@ -17,6 +17,12 @@ Future<String> borrowStrTwinNormal({required String arg}) =>
 Future<int> borrowI32TwinNormal({required int arg}) =>
     RustLib.instance.api.crateApiOwnershipBorrowI32TwinNormal(arg: arg);
 
+Future<Uint8List> borrowSliceU8TwinNormal({required List<int> arg}) =>
+    RustLib.instance.api.crateApiOwnershipBorrowSliceU8TwinNormal(arg: arg);
+
+Future<List<String>> borrowSliceStringTwinNormal({required List<String> arg}) =>
+    RustLib.instance.api.crateApiOwnershipBorrowSliceStringTwinNormal(arg: arg);
+
 Future<SimpleStructForBorrowTwinNormal> borrowStructTwinNormal(
         {required SimpleStructForBorrowTwinNormal arg}) =>
     RustLib.instance.api.crateApiOwnershipBorrowStructTwinNormal(arg: arg);

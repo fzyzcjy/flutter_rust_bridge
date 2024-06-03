@@ -8,6 +8,7 @@ use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
 };
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::ir::mir::func::{MirFunc, MirFuncMode, MirFuncOwnerInfo};
+use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::if_then_some;
 use crate::misc::consts::HANDLER_NAME;
@@ -119,6 +120,12 @@ fn generate_code_call_inner_func_result(func: &MirFunc, inner_func_args: Vec<Str
 
     if func.rust_async {
         ans = format!("{ans}.await");
+    }
+
+    if func.output.normal == MirType::Primitive(MirTypePrimitive::Unit)
+        && func.output.error.is_none()
+    {
+        ans = format!("{{ {ans}; }}");
     }
 
     if !func.fallible() {
