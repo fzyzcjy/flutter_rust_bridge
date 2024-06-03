@@ -8,9 +8,3 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
-
-Future<void> borrowStrTwinNormal({required String arg}) =>
-    RustLib.instance.api.crateApiMinimalBorrowStrTwinNormal(arg: arg);
-
-Future<void> borrowVecU8TwinNormal({required List<int> arg}) =>
-    RustLib.instance.api.crateApiMinimalBorrowVecU8TwinNormal(arg: arg);
