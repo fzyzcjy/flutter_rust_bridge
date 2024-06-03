@@ -27,8 +27,10 @@ impl HirFunction {
 
     pub(crate) fn is_public(&self) -> Option<bool> {
         match self.owner {
-            HirFunctionOwner::Function | HirFunctionOwner::Method => self.item_fn.vis(),
-            HirFunctionOwner::TraitMethod => None,
+            HirFunctionOwner::Function | HirFunctionOwner::Method { .. } => {
+                (self.item_fn.vis()).map(|vis| matches!(vis, Visibility::Public(_)))
+            }
+            HirFunctionOwner::TraitMethod { .. } => None,
         }
     }
 }
@@ -45,7 +47,7 @@ impl HirFunctionOwner {
         match self {
             Self::Function => None,
             Self::Method { item_impl } | Self::TraitMethod { item_impl } => {
-                ty_to_string(&item_impl.self_ty)
+                Some(ty_to_string(&item_impl.self_ty))
             }
         }
     }
