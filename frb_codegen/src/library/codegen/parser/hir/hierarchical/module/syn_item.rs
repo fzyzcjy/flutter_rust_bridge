@@ -9,6 +9,7 @@ use crate::codegen::parser::hir::hierarchical::struct_or_enum::{
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 use crate::utils::namespace::Namespace;
 use syn::ItemMod;
+use crate::codegen::parser::hir::hierarchical::function::parse_syn_item_fn;
 
 pub(super) fn parse_syn_item(
     item: &syn::Item,
@@ -30,7 +31,7 @@ pub(super) fn parse_syn_item(
             scope.type_alias.extend(parse_syn_item_type(item_type));
         }
         syn::Item::Fn(item_fn) => {
-            scope.functions.extend(parse_syn_item_fn(item_fn));
+            scope.functions.push(parse_syn_item_fn(item_fn));
         }
         syn::Item::Impl(item_impl) => {
             scope.functions.extend(parse_syn_item_impl(item_impl));
