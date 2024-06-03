@@ -32,7 +32,10 @@ fn parse_syn_item_struct_or_enum<I: SynItemStructOrEnum>(
 ) -> anyhow::Result<Vec<HirStructOrEnum<I>>> {
     debug!("parse_syn_item_struct_or_enum item_ident={item_ident:?}");
 
-    let ParseMirrorIdentOutput { idents, mirror } = parse_mirror_ident(item_ident, item_attrs)?;
+    let ParseMirrorIdentOutput {
+        idents,
+        mirror: mirror_by_ident,
+    } = parse_mirror_ident(item_ident, item_attrs)?;
 
     Ok(idents
         .into_iter()
@@ -43,7 +46,7 @@ fn parse_syn_item_struct_or_enum<I: SynItemStructOrEnum>(
                 src: item.clone(),
                 visibility: item_vis.into(),
                 namespaced_name: NamespacedName::new(namespace.to_owned(), ident_str),
-                mirror,
+                mirror: mirror_by_ident || !namespace.crate_name().is_self_crate(),
             }
         })
         .collect_vec())

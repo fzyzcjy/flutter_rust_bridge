@@ -20,7 +20,7 @@ pub(crate) fn parse(
             name: crate_name.to_owned(),
             syn_file: run_cargo_expand(
                 &config.rust_crate_dir,
-                (*crate_name != CrateName::self_crate()).then_some(crate_name),
+                (!crate_name.is_self_crate()).then_some(crate_name),
                 dumper,
             )?,
         })
