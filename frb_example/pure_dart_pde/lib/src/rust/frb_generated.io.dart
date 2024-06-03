@@ -3180,9 +3180,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Int8List dco_decode_list_prim_i_8_strict(dynamic raw);
 
   @protected
-  Int64List dco_decode_list_prim_isize_strict(dynamic raw);
-
-  @protected
   List<int> dco_decode_list_prim_u_16_loose(dynamic raw);
 
   @protected
@@ -3202,9 +3199,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   Uint8List dco_decode_list_prim_u_8_strict(dynamic raw);
-
-  @protected
-  Uint64List dco_decode_list_prim_usize_strict(dynamic raw);
 
   @protected
   List<RawStringEnumMirrored> dco_decode_list_raw_string_enum_mirrored(
@@ -7385,9 +7379,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Int8List sse_decode_list_prim_i_8_strict(SseDeserializer deserializer);
 
   @protected
-  Int64List sse_decode_list_prim_isize_strict(SseDeserializer deserializer);
-
-  @protected
   List<int> sse_decode_list_prim_u_16_loose(SseDeserializer deserializer);
 
   @protected
@@ -7407,9 +7398,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   Uint8List sse_decode_list_prim_u_8_strict(SseDeserializer deserializer);
-
-  @protected
-  Uint64List sse_decode_list_prim_usize_strict(SseDeserializer deserializer);
 
   @protected
   List<RawStringEnumMirrored> sse_decode_list_raw_string_enum_mirrored(
@@ -11763,10 +11751,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_list_prim_i_8_strict(Int8List self, SseSerializer serializer);
 
   @protected
-  void sse_encode_list_prim_isize_strict(
-      Int64List self, SseSerializer serializer);
-
-  @protected
   void sse_encode_list_prim_u_16_loose(
       List<int> self, SseSerializer serializer);
 
@@ -11792,10 +11776,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_list_prim_u_8_strict(
       Uint8List self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_list_prim_usize_strict(
-      Uint64List self, SseSerializer serializer);
 
   @protected
   void sse_encode_list_raw_string_enum_mirrored(

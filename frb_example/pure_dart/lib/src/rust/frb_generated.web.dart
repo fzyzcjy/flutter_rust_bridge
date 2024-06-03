@@ -7285,9 +7285,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Int8List dco_decode_list_prim_i_8_strict(dynamic raw);
 
   @protected
-  Int64List dco_decode_list_prim_isize_strict(dynamic raw);
-
-  @protected
   List<int> dco_decode_list_prim_u_16_loose(dynamic raw);
 
   @protected
@@ -7307,9 +7304,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   Uint8List dco_decode_list_prim_u_8_strict(dynamic raw);
-
-  @protected
-  Uint64List dco_decode_list_prim_usize_strict(dynamic raw);
 
   @protected
   List<RawStringEnumMirrored> dco_decode_list_raw_string_enum_mirrored(
@@ -16220,9 +16214,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Int8List sse_decode_list_prim_i_8_strict(SseDeserializer deserializer);
 
   @protected
-  Int64List sse_decode_list_prim_isize_strict(SseDeserializer deserializer);
-
-  @protected
   List<int> sse_decode_list_prim_u_16_loose(SseDeserializer deserializer);
 
   @protected
@@ -16242,9 +16233,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   Uint8List sse_decode_list_prim_u_8_strict(SseDeserializer deserializer);
-
-  @protected
-  Uint64List sse_decode_list_prim_usize_strict(SseDeserializer deserializer);
 
   @protected
   List<RawStringEnumMirrored> sse_decode_list_raw_string_enum_mirrored(
@@ -23748,12 +23736,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  Int64List cst_encode_list_prim_isize_strict(Int64List raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    throw UnimplementedError('Not implemented in this codec');
-  }
-
-  @protected
   List<int> cst_encode_list_prim_u_16_loose(List<int> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw;
@@ -23793,12 +23775,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Uint8List cst_encode_list_prim_u_8_strict(Uint8List raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw;
-  }
-
-  @protected
-  Uint64List cst_encode_list_prim_usize_strict(Uint64List raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    throw UnimplementedError('Not implemented in this codec');
   }
 
   @protected
@@ -34357,10 +34333,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_list_prim_i_8_strict(Int8List self, SseSerializer serializer);
 
   @protected
-  void sse_encode_list_prim_isize_strict(
-      Int64List self, SseSerializer serializer);
-
-  @protected
   void sse_encode_list_prim_u_16_loose(
       List<int> self, SseSerializer serializer);
 
@@ -34386,10 +34358,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_list_prim_u_8_strict(
       Uint8List self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_list_prim_usize_strict(
-      Uint64List self, SseSerializer serializer);
 
   @protected
   void sse_encode_list_raw_string_enum_mirrored(
@@ -39008,12 +38976,6 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i8_twin_normal(
               port_, arg);
 
-  void wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_isize_twin_normal(
-          NativePortType port_, Int64List arg) =>
-      wasmModule
-          .wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_isize_twin_normal(
-              port_, arg);
-
   void wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_string_twin_normal(
           NativePortType port_, List<dynamic> arg) =>
       wasmModule
@@ -39042,12 +39004,6 @@ class RustLibWire implements BaseWire {
           NativePortType port_, List<int> arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u8_twin_normal(
-              port_, arg);
-
-  void wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_usize_twin_normal(
-          NativePortType port_, Uint64List arg) =>
-      wasmModule
-          .wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_usize_twin_normal(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_basic_general_enum_twin_rust_async_twin_rust_async(
@@ -39116,12 +39072,6 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_i8_twin_rust_async(
               port_, arg);
 
-  void wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_isize_twin_rust_async(
-          NativePortType port_, Int64List arg) =>
-      wasmModule
-          .wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_isize_twin_rust_async(
-              port_, arg);
-
   void wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_string_twin_rust_async(
           NativePortType port_, List<dynamic> arg) =>
       wasmModule
@@ -39150,12 +39100,6 @@ class RustLibWire implements BaseWire {
           NativePortType port_, List<int> arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_u8_twin_rust_async(
-              port_, arg);
-
-  void wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_usize_twin_rust_async(
-          NativePortType port_, Uint64List arg) =>
-      wasmModule
-          .wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_usize_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_basic_list_type_basic_general_enum_twin_rust_async_sse_twin_rust_async_sse(
@@ -39257,15 +39201,6 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_basic_list_type_i8_twin_rust_async_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_basic_list_type_isize_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule
-          .wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_basic_list_type_isize_twin_rust_async_sse(
-              port_, ptr_, rust_vec_len_, data_len_);
-
   void wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_basic_list_type_string_twin_rust_async_sse(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
@@ -39309,15 +39244,6 @@ class RustLibWire implements BaseWire {
           int data_len_) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_basic_list_type_u8_twin_rust_async_sse(
-              port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_basic_list_type_usize_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule
-          .wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_basic_list_type_usize_twin_rust_async_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_type_basic_general_enum_twin_sse_twin_sse(
@@ -39419,15 +39345,6 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_type_i8_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_type_isize_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule
-          .wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_type_isize_twin_sse(
-              port_, ptr_, rust_vec_len_, data_len_);
-
   void wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_type_string_twin_sse(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
@@ -39471,15 +39388,6 @@ class RustLibWire implements BaseWire {
           int data_len_) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_type_u8_twin_sse(
-              port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_type_usize_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule
-          .wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_type_usize_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
@@ -39560,13 +39468,6 @@ class RustLibWire implements BaseWire {
                   arg);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_isize_twin_sync(
-              Int64List arg) =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_isize_twin_sync(
-                  arg);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_string_twin_sync(
               List<dynamic> arg) =>
           wasmModule
@@ -39599,13 +39500,6 @@ class RustLibWire implements BaseWire {
               List<int> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u8_twin_sync(
-                  arg);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_usize_twin_sync(
-              Uint64List arg) =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_usize_twin_sync(
                   arg);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
@@ -39708,15 +39602,6 @@ class RustLibWire implements BaseWire {
                   ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_isize_twin_sync_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_isize_twin_sync_sse(
-                  ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_string_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -39759,15 +39644,6 @@ class RustLibWire implements BaseWire {
               int data_len_) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_u8_twin_sync_sse(
-                  ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_usize_twin_sync_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_usize_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_basic_general_enum_twin_normal_twin_normal(
@@ -60947,10 +60823,6 @@ class RustLibWasmModule implements WasmModule {
           NativePortType port_, List<int> arg);
 
   external void
-      wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_isize_twin_normal(
-          NativePortType port_, Int64List arg);
-
-  external void
       wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_string_twin_normal(
           NativePortType port_, List<dynamic> arg);
 
@@ -60969,10 +60841,6 @@ class RustLibWasmModule implements WasmModule {
   external void
       wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u8_twin_normal(
           NativePortType port_, List<int> arg);
-
-  external void
-      wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_usize_twin_normal(
-          NativePortType port_, Uint64List arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_basic_general_enum_twin_rust_async_twin_rust_async(
@@ -61019,10 +60887,6 @@ class RustLibWasmModule implements WasmModule {
           NativePortType port_, List<int> arg);
 
   external void
-      wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_isize_twin_rust_async(
-          NativePortType port_, Int64List arg);
-
-  external void
       wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_string_twin_rust_async(
           NativePortType port_, List<dynamic> arg);
 
@@ -61041,10 +60905,6 @@ class RustLibWasmModule implements WasmModule {
   external void
       wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_u8_twin_rust_async(
           NativePortType port_, List<int> arg);
-
-  external void
-      wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_usize_twin_rust_async(
-          NativePortType port_, Uint64List arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_basic_list_type_basic_general_enum_twin_rust_async_sse_twin_rust_async_sse(
@@ -61124,13 +60984,6 @@ class RustLibWasmModule implements WasmModule {
           int data_len_);
 
   external void
-      wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_basic_list_type_isize_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external void
       wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_basic_list_type_string_twin_rust_async_sse(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
@@ -61160,13 +61013,6 @@ class RustLibWasmModule implements WasmModule {
 
   external void
       wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_basic_list_type_u8_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external void
-      wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_basic_list_type_usize_twin_rust_async_sse(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -61250,13 +61096,6 @@ class RustLibWasmModule implements WasmModule {
           int data_len_);
 
   external void
-      wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_type_isize_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external void
       wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_type_string_twin_sse(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
@@ -61286,13 +61125,6 @@ class RustLibWasmModule implements WasmModule {
 
   external void
       wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_type_u8_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external void
-      wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_type_usize_twin_sse(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -61343,10 +61175,6 @@ class RustLibWasmModule implements WasmModule {
           List<int> arg);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_isize_twin_sync(
-          Int64List arg);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_string_twin_sync(
           List<dynamic> arg);
 
@@ -61365,10 +61193,6 @@ class RustLibWasmModule implements WasmModule {
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u8_twin_sync(
           List<int> arg);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_usize_twin_sync(
-          Uint64List arg);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_basic_general_enum_twin_sync_sse_twin_sync_sse(
@@ -61437,12 +61261,6 @@ class RustLibWasmModule implements WasmModule {
           int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_isize_twin_sync_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_string_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -61468,12 +61286,6 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_u8_twin_sync_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_usize_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);

@@ -35,14 +35,6 @@ pub fn example_basic_list_type_u64_twin_normal(arg: Vec<u64>) -> Vec<u64> {
     arg
 }
 
-pub fn example_basic_list_type_isize_twin_normal(arg: Vec<isize>) -> Vec<isize> {
-    arg
-}
-
-pub fn example_basic_list_type_usize_twin_normal(arg: Vec<usize>) -> Vec<usize> {
-    arg
-}
-
 pub fn example_basic_list_type_f32_twin_normal(arg: Vec<f32>) -> Vec<f32> {
     arg
 }

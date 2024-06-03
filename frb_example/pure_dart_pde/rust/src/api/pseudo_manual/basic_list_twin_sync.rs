@@ -48,16 +48,6 @@ pub fn example_basic_list_type_u64_twin_sync(arg: Vec<u64>) -> Vec<u64> {
 }
 
 #[flutter_rust_bridge::frb(sync)]
-pub fn example_basic_list_type_isize_twin_sync(arg: Vec<isize>) -> Vec<isize> {
-    arg
-}
-
-#[flutter_rust_bridge::frb(sync)]
-pub fn example_basic_list_type_usize_twin_sync(arg: Vec<usize>) -> Vec<usize> {
-    arg
-}
-
-#[flutter_rust_bridge::frb(sync)]
 pub fn example_basic_list_type_f32_twin_sync(arg: Vec<f32>) -> Vec<f32> {
     arg
 }

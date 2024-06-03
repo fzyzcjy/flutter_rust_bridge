@@ -85,32 +85,6 @@ Future<void> main({bool skipRustLibInit = false}) async {
       Uint64List(1)..[0] = BigInt.parse("12345678912345678913")
     ]);
     addTestsIdentityFunctionCall(
-        exampleBasicListTypeIsizeTwinSyncSse, <Int64List>[
-      Int64List(0),
-      Int64List(1)..[0] = PlatformInt64.parse("0"),
-      Int64List(1)..[0] = PlatformInt64.parse("-2147483648"),
-      Int64List(1)..[0] = PlatformInt64.parse("2147483647"),
-      Int64List(1)..[0] = PlatformInt64.parse("-1234234567"),
-      Int64List(1)..[0] = PlatformInt64.parse("1234234567"),
-      if (!kIsWeb) Int64List(1)..[0] = PlatformInt64.parse("-9007199254740992"),
-      if (!kIsWeb) Int64List(1)..[0] = PlatformInt64.parse("9007199254740992"),
-      if (!kIsWeb)
-        Int64List(1)..[0] = PlatformInt64.parse("-9223372036854775808"),
-      if (!kIsWeb)
-        Int64List(1)..[0] = PlatformInt64.parse("9223372036854775807")
-    ]);
-    addTestsIdentityFunctionCall(
-        exampleBasicListTypeUsizeTwinSyncSse, <Uint64List>[
-      Uint64List(0),
-      Uint64List(1)..[0] = BigInt.parse("0"),
-      Uint64List(1)..[0] = BigInt.parse("4294967295"),
-      Uint64List(1)..[0] = BigInt.parse("1234234567"),
-      if (!kIsWeb) Uint64List(1)..[0] = BigInt.parse("9007199254740992"),
-      if (!kIsWeb) Uint64List(1)..[0] = BigInt.parse("9223372036854775807"),
-      if (!kIsWeb) Uint64List(1)..[0] = BigInt.parse("18446744073709551615"),
-      if (!kIsWeb) Uint64List(1)..[0] = BigInt.parse("12345678912345678913")
-    ]);
-    addTestsIdentityFunctionCall(
         exampleBasicListTypeF32TwinSyncSse, <Float32List>[
       Float32List(0),
       Float32List(1)..[0] = 0,

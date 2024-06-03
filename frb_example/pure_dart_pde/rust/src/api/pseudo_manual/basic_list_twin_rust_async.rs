@@ -39,14 +39,6 @@ pub async fn example_basic_list_type_u64_twin_rust_async(arg: Vec<u64>) -> Vec<u
     arg
 }
 
-pub async fn example_basic_list_type_isize_twin_rust_async(arg: Vec<isize>) -> Vec<isize> {
-    arg
-}
-
-pub async fn example_basic_list_type_usize_twin_rust_async(arg: Vec<usize>) -> Vec<usize> {
-    arg
-}
-
 pub async fn example_basic_list_type_f32_twin_rust_async(arg: Vec<f32>) -> Vec<f32> {
     arg
 }
