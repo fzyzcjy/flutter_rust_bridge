@@ -189,7 +189,7 @@ impl EnumOrStructParser<MirEnumIdent, MirEnum, ItemEnum>
         obj.variants
             .iter()
             .filter_map(|variant| if_then_some!(let MirVariantKind::Struct(s) = &variant.kind, s))
-            .any(structure_compute_default_opaque)
+            .any(|ty| structure_compute_default_opaque(ty, &obj.name.namespace.crate_name()))
     }
 }
 
