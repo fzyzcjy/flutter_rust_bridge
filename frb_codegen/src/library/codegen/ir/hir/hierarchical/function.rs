@@ -7,7 +7,6 @@ use syn::{Attribute, ImplItemFn, ItemFn, ItemImpl, Signature, TraitItemFn, Visib
 #[derive(Debug, Clone, Serialize)]
 pub(crate) struct HirFunction {
     pub(crate) namespace: Namespace,
-    /// Only exist for methods (and not exist for functions)
     #[serde(skip_serializing)]
     pub(crate) item_impl: Option<ItemImpl>,
     #[serde(skip_serializing)]
@@ -36,10 +35,7 @@ impl HirFunction {
 #[derive(Debug, Clone)]
 pub(crate) enum GeneralItemFn {
     ItemFn(ItemFn),
-    ImplItemFn {
-        inner: ImplItemFn,
-        owned_by_trait: bool,
-    },
+    ImplItemFn(ImplItemFn),
     TraitItemFn(TraitItemFn),
 }
 
