@@ -6,8 +6,6 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These functions are ignored because they are not marked as `pub`: `simple_trait_fn_twin_normal`
-
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
 
@@ -17,6 +15,10 @@ class StructWithTraitTwinNormal {
   const StructWithTraitTwinNormal({
     required this.value,
   });
+
+  static Future<StructWithTraitTwinNormal> simpleTraitFnTwinNormal() =>
+      RustLib.instance.api
+          .crateApiMinimalStructWithTraitTwinNormalSimpleTraitFnTwinNormal();
 
   static Future<int> simpleTraitFnWithDefaultImplTwinNormal() => RustLib
       .instance.api

@@ -56,7 +56,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.0.0-dev.37';
 
   @override
-  int get rustContentHash => -1958378632;
+  int get rustContentHash => 71792207;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -70,6 +70,9 @@ abstract class RustLibApi extends BaseApi {
   Future<void> crateApiMinimalInitApp();
 
   Future<int> crateApiMinimalMinimalAdder({required int a, required int b});
+
+  Future<StructWithTraitTwinNormal>
+      crateApiMinimalStructWithTraitTwinNormalSimpleTraitFnTwinNormal();
 
   Future<int>
       crateApiMinimalStructWithTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormal();
@@ -133,13 +136,41 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<StructWithTraitTwinNormal>
+      crateApiMinimalStructWithTraitTwinNormalSimpleTraitFnTwinNormal() {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 3, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_struct_with_trait_twin_normal,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMinimalStructWithTraitTwinNormalSimpleTraitFnTwinNormalConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMinimalStructWithTraitTwinNormalSimpleTraitFnTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "struct_with_trait_twin_normal_simple_trait_fn_twin_normal",
+            argNames: [],
+          );
+
+  @override
   Future<int>
       crateApiMinimalStructWithTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormal() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 3, port: port_);
+            funcId: 4, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
