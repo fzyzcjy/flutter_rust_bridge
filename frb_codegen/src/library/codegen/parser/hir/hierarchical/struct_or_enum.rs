@@ -3,6 +3,7 @@ use crate::codegen::ir::hir::hierarchical::syn_item_struct_or_enum::SynItemStruc
 use crate::codegen::parser::hir::hierarchical::mirror_ident::{
     parse_mirror_ident, ParseMirrorIdentOutput,
 };
+use crate::utils::crate_name::CrateName;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use itertools::Itertools;
 use log::debug;
@@ -46,7 +47,7 @@ fn parse_syn_item_struct_or_enum<I: SynItemStructOrEnum>(
                 src: item.clone(),
                 visibility: item_vis.into(),
                 namespaced_name: NamespacedName::new(namespace.to_owned(), ident_str),
-                mirror: mirror_by_ident || TODO,
+                mirror: mirror_by_ident || (namespace.crate_name() != &CrateName::self_crate()),
             }
         })
         .collect_vec())
