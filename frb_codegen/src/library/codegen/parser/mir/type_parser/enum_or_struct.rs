@@ -1,9 +1,11 @@
-use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStructOrEnumWrapper;
+use crate::codegen::ir::hir::hierarchical::module::HirVisibility;
+use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStructOrEnum;
+use crate::codegen::ir::hir::hierarchical::syn_item_struct_or_enum::SynItemStructOrEnum;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
-use crate::codegen::parser::mir::type_parser::external_impl;
 use crate::codegen::parser::mir::type_parser::unencodable::SplayedSegment;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
+use crate::utils::crate_name::CrateName;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use log::debug;
 use std::collections::{HashMap, HashSet};
@@ -11,10 +13,9 @@ use std::fmt::Debug;
 use std::hash::Hash;
 use syn::{Ident, Type};
 
-pub(super) trait EnumOrStructParser<Id, Obj, SrcObj, Item>
+pub(super) trait EnumOrStructParser<Id, Obj, Item: SynItemStructOrEnum>
 where
     Id: From<NamespacedName> + Clone + PartialEq + Eq + Hash,
-    SrcObj: HirStructOrEnumWrapper<Item> + Clone + Debug,
 {
     fn parse(
         &mut self,
@@ -32,19 +33,22 @@ where
         override_opaque: Option<bool>,
     ) -> anyhow::Result<Option<(MirType, FrbAttributes)>> {
         let (name, _) = last_segment;
-        let name = external_impl::parse_name_or_original(name)?;
+        // let name = external_impl::parse_name_or_original(name)?;
 
-        if let Some(src_object) = self.src_objects().get(&name) {
+        if let Some(src_object) = self.src_objects().get(*name) {
             let src_object = (*src_object).clone();
 
-            let namespace = &src_object.inner().namespaced_name.namespace;
-            let namespaced_name = NamespacedName::new(namespace.clone(), name.clone());
+            let namespace = &src_object.namespaced_name.namespace;
+            let namespaced_name = NamespacedName::new(namespace.clone(), name.to_string());
 
-            let attrs = FrbAttributes::parse(src_object.attrs())?;
+            let attrs = FrbAttributes::parse(src_object.src.attrs())?;
             let attrs_opaque = override_opaque.or(attrs.opaque());
             if attrs_opaque == Some(true) {
                 debug!("Treat {name} as opaque since attribute says so");
-                return Ok(Some((self.parse_opaque(&namespaced_name)?, attrs)));
+                return Ok(Some((
+                    self.parse_opaque(&namespaced_name, &src_object)?,
+                    attrs,
+                )));
             }
 
             let ident: Id = namespaced_name.clone().into();
@@ -52,8 +56,8 @@ where
             if (self.parser_info().parsing_or_parsed_objects).insert(namespaced_name.clone()) {
                 let (name, wrapper_name) = compute_name_and_wrapper_name(
                     &namespaced_name.namespace,
-                    &src_object.inner().ident,
-                    src_object.inner().mirror,
+                    &src_object.ident,
+                    src_object.mirror,
                 );
                 let parsed_object = self.parse_inner_impl(&src_object, name, wrapper_name)?;
                 (self.parser_info().object_pool).insert(ident.clone(), parsed_object);
@@ -64,7 +68,10 @@ where
                     .map_or(false, |obj| Self::compute_default_opaque(obj))
             {
                 debug!("Treat {name} as opaque by compute_default_opaque");
-                return Ok(Some((self.parse_opaque(&namespaced_name)?, attrs)));
+                return Ok(Some((
+                    self.parse_opaque(&namespaced_name, &src_object)?,
+                    attrs,
+                )));
             }
 
             return Ok(Some((self.construct_output(ident)?, attrs)));
@@ -91,23 +98,31 @@ where
         }
     }
 
-    fn parse_opaque(&mut self, namespaced_name: &NamespacedName) -> anyhow::Result<MirType> {
+    fn parse_opaque(
+        &mut self,
+        namespaced_name: &NamespacedName,
+        src_object: &HirStructOrEnum<Item>,
+    ) -> anyhow::Result<MirType> {
         self.parse_type_rust_auto_opaque_implicit(
             Some(namespaced_name.namespace.clone()),
             &syn::parse_str(&namespaced_name.name)?,
+            Some(parse_struct_or_enum_should_ignore(
+                src_object,
+                &namespaced_name.namespace.crate_name(),
+            )),
         )
     }
 
     fn parse_inner_impl(
         &mut self,
-        src_object: &SrcObj,
+        src_object: &HirStructOrEnum<Item>,
         name: NamespacedName,
         wrapper_name: Option<String>,
     ) -> anyhow::Result<Obj>;
 
     fn construct_output(&self, ident: Id) -> anyhow::Result<MirType>;
 
-    fn src_objects(&self) -> &HashMap<String, &SrcObj>;
+    fn src_objects(&self) -> &HashMap<String, &HirStructOrEnum<Item>>;
 
     fn parser_info(&mut self) -> &mut EnumOrStructParserInfo<Id, Obj>;
 
@@ -117,6 +132,7 @@ where
         &mut self,
         namespace: Option<Namespace>,
         ty: &Type,
+        override_ignore: Option<bool>,
     ) -> anyhow::Result<MirType>;
 
     fn compute_default_opaque(obj: &Obj) -> bool;
@@ -150,4 +166,17 @@ fn compute_name_and_wrapper_name(
         None
     };
     (namespaced_name, wrapper_name)
+}
+
+pub(crate) fn parse_struct_or_enum_should_ignore<Item: SynItemStructOrEnum>(
+    src_object: &HirStructOrEnum<Item>,
+    crate_name: &CrateName,
+) -> bool {
+    let attrs = FrbAttributes::parse(src_object.src.attrs()).unwrap();
+
+    attrs.ignore()
+        // For third party crates, if a struct is not public, then it is impossible to utilize it,
+        // thus we ignore it.
+        || ((!crate_name.is_self_crate())  && src_object.visibility != HirVisibility::Public)
+        || !src_object.src.generics().params.is_empty()
 }

@@ -2,7 +2,7 @@ mod field;
 
 use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStruct;
-use crate::codegen::ir::mir::func::{MirFunc, MirFuncAccessorMode};
+use crate::codegen::ir::mir::func::{MirFunc, MirFuncAccessorMode, OwnershipMode};
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::mir::ty::{MirContext, MirType};
 use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
@@ -12,6 +12,7 @@ use crate::codegen::parser::mir::sanity_checker::auto_accessor_checker;
 use crate::codegen::parser::mir::type_parser::{
     TypeParser, TypeParserParsingContext, TypeParserWithContext,
 };
+use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::namespace::NamespacedName;
 use field::parse_auto_accessor_of_field;
 use itertools::Itertools;
@@ -63,6 +64,9 @@ fn parse_auto_accessors_of_struct(
     if !matches!(ty_direct_parse, MirType::RustAutoOpaqueImplicit(_)) {
         return Ok(vec![]);
     }
+    if ty_direct_parse.should_ignore(type_parser) {
+        return Ok(vec![]);
+    }
 
     let ty_struct_ref = TypeParserWithContext::new(type_parser, &context)
         .parse_type_path_data_struct(&(&struct_name.name, &[]), Some(false));
@@ -74,7 +78,7 @@ fn parse_auto_accessors_of_struct(
     let ty_struct = &type_parser.struct_pool()[&ty_struct_ident].to_owned();
 
     (ty_struct.fields.iter())
-        .filter(|field| field.is_rust_public.unwrap())
+        .filter(|field| field.is_rust_public.unwrap() && !is_ty_opaque_reference_type(&field.ty))
         .flat_map(|field| {
             [MirFuncAccessorMode::Getter, MirFuncAccessorMode::Setter]
                 .into_iter()
@@ -111,4 +115,12 @@ fn create_parsing_context(
 struct MirFuncAndSanityCheckInfo {
     mir_func: MirFunc,
     sanity_check_hint: Option<auto_accessor_checker::SanityCheckHint>,
+}
+
+fn is_ty_opaque_reference_type(ty: &MirType) -> bool {
+    if let MirType::RustAutoOpaqueImplicit(inner) = ty {
+        inner.ownership_mode != OwnershipMode::Owned
+    } else {
+        false
+    }
 }

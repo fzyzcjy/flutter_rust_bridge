@@ -3,6 +3,7 @@
   "enum_pool": {
     "crate::api/MyEnum": {
       "comments": [],
+      "ignore": false,
       "mode": "Simple",
       "name": "crate::api/MyEnum",
       "variants": [

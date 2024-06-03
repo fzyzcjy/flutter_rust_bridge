@@ -34,6 +34,7 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for DelegateWireRustCodecDcoGener
             let body = format!(
                 "match {self_ref} {{
                     {variants}
+                    _ => unreachable!(),
                 }}"
             );
 

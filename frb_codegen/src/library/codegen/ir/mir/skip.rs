@@ -9,6 +9,7 @@ pub struct MirSkip {
 #[derive(Copy, PartialOrd, Ord)]
 pub(crate) enum MirSkipReason {
     IgnoredFunctionNotPub,
+    IgnoredFunctionGeneric,
     IgnoredTypeNotUsedByPub,
     IgnoredMisc,
     Err,
@@ -20,6 +21,9 @@ impl MirSkipReason {
         match self {
             Self::IgnoredFunctionNotPub => {
                 "These functions are ignored because they are not marked as `pub`"
+            }
+            Self::IgnoredFunctionGeneric => {
+                "These functions are ignored because they have generic arguments"
             }
             Self::IgnoredTypeNotUsedByPub => {
                 "These types are ignored because they are not used by any `pub` functions"

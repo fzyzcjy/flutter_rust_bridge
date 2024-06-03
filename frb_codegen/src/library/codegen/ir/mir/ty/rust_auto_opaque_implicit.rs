@@ -10,6 +10,7 @@ pub struct MirTypeRustAutoOpaqueImplicit {
     pub ownership_mode: OwnershipMode,
     pub inner: MirTypeRustOpaque,
     pub raw: MirRustAutoOpaqueRaw,
+    pub ignore: bool,
 }
 
 /// Original type without any transformation
@@ -46,6 +47,10 @@ impl MirTypeTrait for MirTypeRustAutoOpaqueImplicit {
 
     fn as_primitive(&self) -> Option<&MirTypePrimitive> {
         Some(&RUST_OPAQUE_AS_PRIMITIVE)
+    }
+
+    fn should_ignore(&self, _mir_context: &impl MirContext) -> bool {
+        self.ignore
     }
 }
 

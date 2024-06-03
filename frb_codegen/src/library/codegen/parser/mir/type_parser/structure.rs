@@ -6,11 +6,12 @@ use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ir::mir::ty::MirType::StructRef;
 use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
 use crate::codegen::parser::mir::type_parser::enum_or_struct::{
-    EnumOrStructParser, EnumOrStructParserInfo,
+    parse_struct_or_enum_should_ignore, EnumOrStructParser, EnumOrStructParserInfo,
 };
 use crate::codegen::parser::mir::type_parser::misc::parse_comments;
 use crate::codegen::parser::mir::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::mir::type_parser::TypeParserWithContext;
+use crate::utils::crate_name::CrateName;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use anyhow::bail;
 use std::collections::HashMap;
@@ -31,12 +32,12 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         name: NamespacedName,
         wrapper_name: Option<String>,
     ) -> anyhow::Result<MirStruct> {
-        let (is_fields_named, struct_fields) = match &src_struct.0.src.fields {
+        let (is_fields_named, struct_fields) = match &src_struct.src.fields {
             Fields::Named(FieldsNamed { named, .. }) => (true, named),
             Fields::Unnamed(FieldsUnnamed { unnamed, .. }) => (false, unnamed),
             // This will stop the whole generator and tell the users, so we do not care about testing it
             // frb-coverage:ignore-start
-            Fields::Unit => bail!("struct with unit fields are not supported yet, what about using `struct {} {{}}` instead", src_struct.0.ident),
+            Fields::Unit => bail!("struct with unit fields are not supported yet, what about using `struct {} {{}}` instead", src_struct.ident),
             // frb-coverage:ignore-end
         };
 
@@ -46,10 +47,12 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             .map(|(idx, field)| self.parse_struct_field(idx, field))
             .collect::<anyhow::Result<Vec<_>>>()?;
 
-        let comments = parse_comments(&src_struct.0.src.attrs);
+        let comments = parse_comments(&src_struct.src.attrs);
 
-        let attributes = FrbAttributes::parse(&src_struct.0.src.attrs)?;
+        let attributes = FrbAttributes::parse(&src_struct.src.attrs)?;
         let dart_metadata = attributes.dart_metadata();
+
+        let ignore = parse_struct_or_enum_should_ignore(src_struct, &name.namespace.crate_name());
 
         Ok(MirStruct {
             name,
@@ -57,7 +60,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             fields,
             is_fields_named,
             dart_metadata,
-            ignore: attributes.ignore(),
+            ignore,
             generate_hash: attributes.generate_hash(),
             generate_eq: attributes.generate_eq(),
             comments,
@@ -85,7 +88,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
 struct EnumOrStructParserStruct<'a, 'b, 'c, 'd>(&'d mut TypeParserWithContext<'a, 'b, 'c>);
 
-impl EnumOrStructParser<MirStructIdent, MirStruct, HirStruct, ItemStruct>
+impl EnumOrStructParser<MirStructIdent, MirStruct, ItemStruct>
     for EnumOrStructParserStruct<'_, '_, '_, '_>
 {
     fn parse_inner_impl(
@@ -120,15 +123,20 @@ impl EnumOrStructParser<MirStructIdent, MirStruct, HirStruct, ItemStruct>
         &mut self,
         namespace: Option<Namespace>,
         ty: &Type,
+        override_ignore: Option<bool>,
     ) -> anyhow::Result<MirType> {
-        self.0.parse_type_rust_auto_opaque_implicit(namespace, ty)
+        self.0
+            .parse_type_rust_auto_opaque_implicit(namespace, ty, override_ignore)
     }
 
     fn compute_default_opaque(obj: &MirStruct) -> bool {
-        structure_compute_default_opaque(obj)
+        structure_compute_default_opaque(obj, &obj.name.namespace.crate_name())
     }
 }
 
-pub(super) fn structure_compute_default_opaque(s: &MirStruct) -> bool {
-    (s.fields.iter()).any(|f| matches!(f.ty, MirType::RustAutoOpaqueImplicit(_)))
+pub(super) fn structure_compute_default_opaque(s: &MirStruct, crate_name: &CrateName) -> bool {
+    (s.fields.iter()).any(|f| {
+        matches!(f.ty, MirType::RustAutoOpaqueImplicit(_))
+            || ((!crate_name.is_self_crate()) && !f.is_rust_public.unwrap())
+    })
 }

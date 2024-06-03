@@ -50,17 +50,21 @@ impl Namespace {
     //     Ok(Self::new_self_crate(p))
     // }
 
+    pub fn crate_name(&self) -> CrateName {
+        CrateName::new(self.path()[0].to_owned())
+    }
+
     pub fn path(&self) -> Vec<&str> {
         self.joined_path.split(Self::SEP).collect()
     }
 
-    pub fn path_exclude_self_crate(&self) -> Vec<&str> {
-        let mut path = self.path();
-        if path.first() == Some(&CrateName::SELF_CRATE) {
-            path.remove(0);
-        }
-        path
-    }
+    // pub fn path_exclude_self_crate(&self) -> Vec<&str> {
+    //     let mut path = self.path();
+    //     if path.first() == Some(&CrateName::SELF_CRATE) {
+    //         path.remove(0);
+    //     }
+    //     path
+    // }
 
     pub fn to_pseudo_io_path(&self, extension: &str) -> PathBuf {
         PathBuf::from(&format!("/{}.{extension}", self.path().join("/")))

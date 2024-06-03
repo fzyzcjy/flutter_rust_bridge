@@ -17,6 +17,16 @@ pub fn borrow_i32_twin_sse(arg: &i32) -> i32 {
     *arg
 }
 
+#[flutter_rust_bridge::frb(serialize)]
+pub fn borrow_slice_u8_twin_sse(arg: &[u8]) -> Vec<u8> {
+    arg.to_owned()
+}
+
+#[flutter_rust_bridge::frb(serialize)]
+pub fn borrow_slice_string_twin_sse(arg: &[String]) -> Vec<String> {
+    arg.to_owned()
+}
+
 #[derive(Clone)]
 pub struct SimpleStructForBorrowTwinSse {
     pub one: String,
