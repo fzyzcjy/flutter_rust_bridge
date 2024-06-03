@@ -6,6 +6,7 @@ use crate::utils::crate_name::CrateName;
 use anyhow::{bail, Context, Result};
 use itertools::Itertools;
 use log::{debug, info};
+use regex::{Captures, Regex};
 use std::env;
 use std::path::Path;
 
@@ -23,12 +24,29 @@ fn run_with_frb_aware(
     rust_crate_dir: &Path,
     interest_crate_name: Option<&CrateName>,
 ) -> Result<String> {
-    run_raw(
+    Ok(decode_macro_frb_encoded_comments(&run_raw(
         rust_crate_dir,
         interest_crate_name,
         "--cfg frb_expand",
         true,
-    )
+    )?)
+    .into_owned())
+}
+
+/// Decode `#[doc = "frb_encoded(...)"]`, usually produced as a side-effect of cargo-expand.
+fn decode_macro_frb_encoded_comments(code: &str) -> Cow<str> {
+    lazy_static! {
+        static ref PATTERN: Regex =
+            Regex::new(r##"#\[doc =[\s\n]*r"frb_encoded\(([\s\S]*?)\)"]"##).unwrap();
+    }
+
+    fn replacer(capture: &Captures) -> String {
+        let hex_str = capture.get(1).unwrap().as_str();
+        let decoded_str = String::from_utf8(hex::decode(&hex_str)?).unwrap();
+        format!("{}", decoded_str)
+    }
+
+    PATTERN.replace_all(code, replacer)
 }
 
 #[allow(clippy::vec_init_then_push)]
