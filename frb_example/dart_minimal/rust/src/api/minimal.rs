@@ -8,3 +8,11 @@ pub fn init_app() {
 pub fn minimal_adder(a: i32, b: i32) -> i32 {
     a + b
 }
+
+// TODO temp
+pub fn borrow_str_twin_normal(arg: &str) -> &str {
+    arg
+}
+pub fn borrow_vec_u8_twin_normal(arg: &[u8]) -> &[u8] {
+    arg
+}
