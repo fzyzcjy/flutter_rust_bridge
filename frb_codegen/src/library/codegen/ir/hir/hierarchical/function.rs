@@ -84,10 +84,9 @@ impl GeneralItemFn {
         }
     }
 
-    pub(crate) fn is_public(&self) -> bool {
+    pub(crate) fn is_public(&self) -> Option<bool> {
         self.vis()
             .map(|vis| matches!(vis, Visibility::Public(_)))
-            .unwrap_or(true)
     }
 }
 

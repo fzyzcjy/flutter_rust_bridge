@@ -71,7 +71,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     ) -> anyhow::Result<ParseFunctionOutput> {
         debug!("parse_function function name: {:?}", func.item_fn.name());
 
-        if !func.item_fn.is_public() {
+        if func.item_fn.is_public() == Some(false) {
             return Ok(create_output_skip(func, IgnoredFunctionNotPub));
         }
         if !func.item_fn.sig().generics.params.is_empty() {
