@@ -16,7 +16,8 @@ pub(crate) fn handle_external_impl(attribute: TokenStream, item: TokenStream) ->
     ));
 
     let item_syn: ItemImpl = syn::parse(item.into()).unwrap();
-
+    let original_self_ty = item_syn.self_ty.clone();
+    let dummy_struct_ty = compute_dummy_struct_ty(&*original_self_ty);
     let converted_item = convert_item(item_syn);
 
     // eprintln!("attribute={attribute:?} self_ty_string={original_self_ty_string} dummy_struct_name={dummy_struct_name} item={item:#?}");
@@ -30,26 +31,27 @@ pub(crate) fn handle_external_impl(attribute: TokenStream, item: TokenStream) ->
 
         #[cfg(not(frb_expand))]
         pub struct #dummy_struct_ty(pub #original_self_ty);
-    }).into()
+    })
+    .into()
 }
 
-fn convert_item(item_syn: syn::ItemImpl) -> TokenStream {
-    let original_self_ty = item.self_ty.clone();
+fn compute_dummy_struct_ty(original_self_ty: &syn::Type) -> syn::Type {
     let original_self_ty_string = quote!(#original_self_ty).to_string();
     let dummy_struct_name = format!(
         "{DUMMY_STRUCT_PREFIX}{}",
         hex::encode(original_self_ty_string)
     );
-    let dummy_struct_ty: syn::Type = syn::parse_str(&dummy_struct_name).unwrap();
+    syn::parse_str(&dummy_struct_name).unwrap()
+}
 
-    item.self_ty = Box::new(dummy_struct_ty.clone());
-    for inner_item in &mut item.items {
+fn convert_item(mut item_syn: syn::ItemImpl) -> TokenStream {
+    item_syn.self_ty = Box::new(dummy_struct_ty.clone());
+    for inner_item in &mut item_syn.items {
         if let ImplItem::Fn(inner_item) = inner_item {
             inner_item.block = syn::parse_str("{ unreachable!() }").unwrap();
         }
     }
-
-    item.to_token_stream()
+    item_syn.to_token_stream()
 }
 
 const ATTR_KEYWORD: &str = "external";
