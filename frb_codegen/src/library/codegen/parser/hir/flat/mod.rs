@@ -79,7 +79,7 @@ where
     V: Debug,
 {
     let mut ans = HashMap::new();
-    visit_pack(hir_pack, &mut |module| {
+    hir_pack.visit( &mut |module| {
         if !is_interest_mod(module) {
             return;
         }
@@ -100,7 +100,7 @@ where
     F: Fn(&'a HirModule) -> Vec<T>,
 {
     let mut ans = vec![];
-    visit_pack(hir_pack, &mut |module| {
+    hir_pack.visit(&mut |module| {
         if !is_interest_mod(module) {
             return;
         }

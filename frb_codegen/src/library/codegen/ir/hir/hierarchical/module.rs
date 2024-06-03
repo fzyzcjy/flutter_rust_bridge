@@ -17,6 +17,15 @@ pub struct HirModule {
     pub raw: Vec<String>,
 }
 
+impl HirModule {
+    pub(crate) fn visit<'a, F: FnMut(&'a HirModule)>(&'a self, f: &mut F) {
+        f(self);
+        for scope_module in self.content.modules.iter() {
+            scope_module.visit(f);
+        }
+    }
+}
+
 #[derive(Clone, Derivative, Serialize)]
 #[derivative(Debug)]
 pub struct HirModuleMeta {
@@ -57,13 +66,6 @@ pub enum HirVisibility {
 }
 
 impl HirModuleContent {
-    pub(crate) fn visit<'a, F: FnMut(&'a HirModule)>(&'a self, f: &mut F) {
-        f(self);
-        for scope_module in self.content.modules.iter() {
-            scope_module.visit(f);
-        }
-    }
-
     pub(crate) fn get_module_index_by_name(&self, mod_name: &str) -> Option<usize> {
         self.modules
             .iter()
