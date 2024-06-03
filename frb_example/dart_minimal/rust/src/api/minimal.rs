@@ -1,5 +1,5 @@
 use flutter_rust_bridge::frb;
-use std::any::Any;
+pub use std::any::Any;
 
 #[frb(init)]
 pub fn init_app() {
