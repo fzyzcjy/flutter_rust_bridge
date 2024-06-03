@@ -11,6 +11,7 @@ use crate::codegen::parser::mir::type_parser::enum_or_struct::{
 use crate::codegen::parser::mir::type_parser::misc::parse_comments;
 use crate::codegen::parser::mir::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::mir::type_parser::TypeParserWithContext;
+use crate::utils::crate_name::CrateName;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use anyhow::bail;
 use std::collections::HashMap;
@@ -129,10 +130,13 @@ impl EnumOrStructParser<MirStructIdent, MirStruct, ItemStruct>
     }
 
     fn compute_default_opaque(obj: &MirStruct) -> bool {
-        structure_compute_default_opaque(obj)
+        structure_compute_default_opaque(obj, &obj.name.namespace.crate_name())
     }
 }
 
-pub(super) fn structure_compute_default_opaque(s: &MirStruct) -> bool {
-    (s.fields.iter()).any(|f| matches!(f.ty, MirType::RustAutoOpaqueImplicit(_)))
+pub(super) fn structure_compute_default_opaque(s: &MirStruct, crate_name: &CrateName) -> bool {
+    (s.fields.iter()).any(|f| {
+        matches!(f.ty, MirType::RustAutoOpaqueImplicit(_))
+            || (crate_name != &CrateName::self_crate() && !f.is_rust_public.unwrap())
+    })
 }
