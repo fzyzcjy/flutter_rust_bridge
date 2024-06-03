@@ -1,10 +1,14 @@
-use syn::ItemMod;
-use crate::codegen::ir::hir::hierarchical::module::{HirModule, HirModuleContent, HirModuleMeta, HirVisibility};
+use crate::codegen::ir::hir::hierarchical::module::{
+    HirModule, HirModuleContent, HirModuleMeta, HirVisibility,
+};
 use crate::codegen::parser::hir::hierarchical::item_type::parse_syn_item_type;
 use crate::codegen::parser::hir::hierarchical::module::parse_module;
-use crate::codegen::parser::hir::hierarchical::struct_or_enum::{parse_syn_item_enum, parse_syn_item_struct};
+use crate::codegen::parser::hir::hierarchical::struct_or_enum::{
+    parse_syn_item_enum, parse_syn_item_struct,
+};
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 use crate::utils::namespace::Namespace;
+use syn::ItemMod;
 
 pub(super) fn parse_syn_item(
     item: &syn::Item,

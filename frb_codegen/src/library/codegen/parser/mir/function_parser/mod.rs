@@ -11,9 +11,7 @@ use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
 use crate::codegen::parser::mir::function_parser::structs::ParseFunctionOutput;
 use crate::codegen::parser::mir::type_parser::misc::parse_comments;
-use crate::codegen::parser::mir::type_parser::{
-    TypeParser, TypeParserParsingContext,
-};
+use crate::codegen::parser::mir::type_parser::{TypeParser, TypeParserParsingContext};
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use anyhow::{bail, Context};

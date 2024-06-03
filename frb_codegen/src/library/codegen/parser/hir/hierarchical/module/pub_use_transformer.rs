@@ -2,10 +2,7 @@ use crate::codegen::ir::hir::hierarchical::module::HirModule;
 use crate::utils::namespace::Namespace;
 use itertools::Itertools;
 
-pub(crate) fn transform(
-    mut module: HirModule,
-    items: &[syn::Item],
-) -> anyhow::Result<HirModule> {
+pub(crate) fn transform(mut module: HirModule, items: &[syn::Item]) -> anyhow::Result<HirModule> {
     let pub_use_names = parse_pub_use_from_items(items);
     for pub_use_name in pub_use_names {
         transform_module_by_pub_use_single(&mut module, &pub_use_name)?;
