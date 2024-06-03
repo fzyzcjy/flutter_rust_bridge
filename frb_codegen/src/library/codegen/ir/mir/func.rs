@@ -159,7 +159,7 @@ impl MirFunc {
 }
 
 impl MirFuncOwnerInfoMethod {
-    pub(crate) fn owner_ty_name(&self) -> NamespacedName {
+    pub(crate) fn owner_ty_name(&self) -> anyhow::Result<NamespacedName> {
         match &self.owner_ty {
             MirType::StructRef(ty) => ty.ident.0.clone(),
             MirType::EnumRef(ty) => ty.ident.0.clone(),
@@ -170,7 +170,7 @@ impl MirFuncOwnerInfoMethod {
             MirType::RustAutoOpaqueImplicit(ty) => {
                 NamespacedName::new(ty.self_namespace().unwrap(), ty.rust_api_type())
             }
-            ty => unimplemented!("enum_or_struct_name does not know {ty:?}"),
+            ty => bail!("enum_or_struct_name does not know {:?}", ty),
         }
     }
 }
