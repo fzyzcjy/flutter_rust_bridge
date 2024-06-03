@@ -21,6 +21,7 @@ use std::fmt::Debug;
 use syn::*;
 use MirSkipReason::{IgnoredFunctionNotPub, IgnoredMisc};
 use MirType::Primitive;
+use crate::codegen::ir::mir::skip::MirSkipReason::IgnoredFunctionGeneric;
 
 pub(crate) mod argument;
 pub(crate) mod output;
@@ -78,6 +79,13 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                 func,
                 namespace_naive,
                 IgnoredFunctionNotPub,
+            ));
+        }
+        if TODO {
+            return Ok(create_output_skip(
+                func,
+                namespace_naive,
+                IgnoredFunctionGeneric,
             ));
         }
 
