@@ -43,7 +43,7 @@ impl HirFunctionInner {
     }
 
     pub(crate) fn simple_owner(&self) -> Option<String> {
-        match &x.inner {
+        match &self {
             HirFunctionInner::Method { item_impl, .. } => Some(ty_to_string(&item_impl.self_ty)),
             _ => None,
         }
@@ -54,7 +54,7 @@ impl HirFunctionInner {
     }
 
     pub(crate) fn owner_and_name(&self) -> SimpleOwnerAndName {
-        (self.owner(), self.name())
+        (self.simple_owner(), self.name())
     }
 
     pub(crate) fn attrs(&self) -> &Vec<Attribute> {
