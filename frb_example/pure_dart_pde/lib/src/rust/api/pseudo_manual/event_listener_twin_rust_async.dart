@@ -8,6 +8,8 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'event_listener_twin_rust_async.freezed.dart';
 
+// These types are ignored because they are not used by any `pub` functions: `EVENTS`
+
 Future<
     Stream<
         EventTwinRustAsync>> registerEventListenerTwinRustAsync() => RustLib
@@ -34,40 +36,4 @@ class EventTwinRustAsync with _$EventTwinRustAsync {
           .crateApiPseudoManualEventListenerTwinRustAsyncEventTwinRustAsyncAsStringTwinRustAsync(
         that: this,
       );
-}
-
-class EVENTS {
-  final void privateField;
-
-  const EVENTS({
-    required this.privateField,
-  });
-
-  Future<void> deref() => RustLib.instance.api
-          .crateApiPseudoManualEventListenerTwinRustAsyncEventsDeref(
-        that: this,
-      );
-
-  Future<void> deref() => RustLib.instance.api
-          .crateApiPseudoManualEventListenerTwinRustAsyncEventsDeref(
-        that: this,
-      );
-
-  static Future<void> initialize({required EVENTS lazy}) => RustLib.instance.api
-      .crateApiPseudoManualEventListenerTwinRustAsyncEventsInitialize(
-          lazy: lazy);
-
-  static Future<void> initialize({required EVENTS lazy}) => RustLib.instance.api
-      .crateApiPseudoManualEventListenerTwinRustAsyncEventsInitialize(
-          lazy: lazy);
-
-  @override
-  int get hashCode => privateField.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is EVENTS &&
-          runtimeType == other.runtimeType &&
-          privateField == other.privateField;
 }

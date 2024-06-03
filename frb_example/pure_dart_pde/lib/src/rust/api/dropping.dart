@@ -31,11 +31,6 @@ class DroppableTwinNormal extends RustOpaque {
         that: this,
       );
 
-  Future<void> drop() =>
-      RustLib.instance.api.crateApiDroppingDroppableTwinNormalDrop(
-        that: this,
-      );
-
   static Future<int> getDropCountTwinNormal() => RustLib.instance.api
       .crateApiDroppingDroppableTwinNormalGetDropCountTwinNormal();
 

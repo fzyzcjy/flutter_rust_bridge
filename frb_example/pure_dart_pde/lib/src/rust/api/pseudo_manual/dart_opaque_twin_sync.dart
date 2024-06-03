@@ -9,6 +9,8 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'dart_opaque_twin_sync.freezed.dart';
 
+// These types are ignored because they are not used by any `pub` functions: `DART_OPAQUE`
+
 String asyncAcceptDartOpaqueTwinSync({required Object opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualDartOpaqueTwinSyncAsyncAcceptDartOpaqueTwinSync(
@@ -84,51 +86,6 @@ List<Object> cloneDartOpaqueTwinSync({required Object opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualDartOpaqueTwinSyncCloneDartOpaqueTwinSync(
             opaque: opaque);
-
-class DART_OPAQUE {
-  final void privateField;
-
-  const DART_OPAQUE({
-    required this.privateField,
-  });
-
-  Future<void> deref() => RustLib.instance.api
-          .crateApiPseudoManualDartOpaqueTwinSyncDartOpaqueDeref(
-        that: this,
-      );
-
-  Future<void> deref() => RustLib.instance.api
-          .crateApiPseudoManualDartOpaqueTwinSyncDartOpaqueDeref(
-        that: this,
-      );
-
-  Future<void> deref() => RustLib.instance.api
-          .crateApiPseudoManualDartOpaqueTwinSyncDartOpaqueDeref(
-        that: this,
-      );
-
-  static Future<void> initialize({required DART_OPAQUE lazy}) => RustLib
-      .instance.api
-      .crateApiPseudoManualDartOpaqueTwinSyncDartOpaqueInitialize(lazy: lazy);
-
-  static Future<void> initialize({required DART_OPAQUE lazy}) => RustLib
-      .instance.api
-      .crateApiPseudoManualDartOpaqueTwinSyncDartOpaqueInitialize(lazy: lazy);
-
-  static Future<void> initialize({required DART_OPAQUE lazy}) => RustLib
-      .instance.api
-      .crateApiPseudoManualDartOpaqueTwinSyncDartOpaqueInitialize(lazy: lazy);
-
-  @override
-  int get hashCode => privateField.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is DART_OPAQUE &&
-          runtimeType == other.runtimeType &&
-          privateField == other.privateField;
-}
 
 class DartOpaqueNestedTwinSync {
   final Object first;

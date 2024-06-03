@@ -32,11 +32,6 @@ class DroppableTwinRustAsyncSse extends RustOpaque {
         that: this,
       );
 
-  Future<void> drop() => RustLib.instance.api
-          .crateApiPseudoManualDroppingTwinRustAsyncSseDroppableTwinRustAsyncSseDrop(
-        that: this,
-      );
-
   static Future<int> getDropCountTwinRustAsyncSse() => RustLib.instance.api
       .crateApiPseudoManualDroppingTwinRustAsyncSseDroppableTwinRustAsyncSseGetDropCountTwinRustAsyncSse();
 

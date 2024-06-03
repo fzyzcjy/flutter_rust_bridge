@@ -6,59 +6,7 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+// These types are ignored because they are not used by any `pub` functions: `INIT_ONE_DONE`, `INIT_TWO_DONE`
+
 Future<bool> checkInitDone() =>
     RustLib.instance.api.crateApiCustomizationCheckInitDone();
-
-class INIT_ONE_DONE {
-  final void privateField;
-
-  const INIT_ONE_DONE({
-    required this.privateField,
-  });
-
-  Future<void> deref() =>
-      RustLib.instance.api.crateApiCustomizationInitOneDoneDeref(
-        that: this,
-      );
-
-  static Future<void> initialize({required INIT_ONE_DONE lazy}) =>
-      RustLib.instance.api
-          .crateApiCustomizationInitOneDoneInitialize(lazy: lazy);
-
-  @override
-  int get hashCode => privateField.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is INIT_ONE_DONE &&
-          runtimeType == other.runtimeType &&
-          privateField == other.privateField;
-}
-
-class INIT_TWO_DONE {
-  final void privateField;
-
-  const INIT_TWO_DONE({
-    required this.privateField,
-  });
-
-  Future<void> deref() =>
-      RustLib.instance.api.crateApiCustomizationInitTwoDoneDeref(
-        that: this,
-      );
-
-  static Future<void> initialize({required INIT_TWO_DONE lazy}) =>
-      RustLib.instance.api
-          .crateApiCustomizationInitTwoDoneInitialize(lazy: lazy);
-
-  @override
-  int get hashCode => privateField.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is INIT_TWO_DONE &&
-          runtimeType == other.runtimeType &&
-          privateField == other.privateField;
-}

@@ -31,11 +31,6 @@ class DroppableTwinSync extends RustOpaque {
         that: this,
       );
 
-  Future<void> drop() => RustLib.instance.api
-          .crateApiPseudoManualDroppingTwinSyncDroppableTwinSyncDrop(
-        that: this,
-      );
-
   static int getDropCountTwinSync() => RustLib.instance.api
       .crateApiPseudoManualDroppingTwinSyncDroppableTwinSyncGetDropCountTwinSync();
 

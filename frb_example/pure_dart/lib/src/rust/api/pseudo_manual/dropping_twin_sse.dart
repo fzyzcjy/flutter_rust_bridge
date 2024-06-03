@@ -31,11 +31,6 @@ class DroppableTwinSse extends RustOpaque {
         that: this,
       );
 
-  Future<void> drop() => RustLib.instance.api
-          .crateApiPseudoManualDroppingTwinSseDroppableTwinSseDrop(
-        that: this,
-      );
-
   static Future<int> getDropCountTwinSse() => RustLib.instance.api
       .crateApiPseudoManualDroppingTwinSseDroppableTwinSseGetDropCountTwinSse();
 
