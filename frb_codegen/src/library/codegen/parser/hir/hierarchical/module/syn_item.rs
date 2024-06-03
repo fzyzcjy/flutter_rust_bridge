@@ -1,3 +1,4 @@
+use crate::codegen::ir::hir::hierarchical::function::HirFunctionOwner;
 use crate::codegen::ir::hir::hierarchical::module::{
     HirModule, HirModuleContent, HirModuleMeta, HirVisibility,
 };
@@ -36,7 +37,13 @@ pub(super) fn parse_syn_item(
             if item_impl.trait_.is_some() {
                 (scope.trait_impls).push(parse_trait_impl(item_impl, namespace));
             } else {
-                (scope.functions).extend(parse_syn_item_impl(item_impl, namespace, false));
+                (scope.functions).extend(parse_syn_item_impl(
+                    item_impl,
+                    namespace,
+                    &HirFunctionOwner::Method {
+                        item_impl: item_impl.clone(),
+                    },
+                ));
             }
         }
         syn::Item::Trait(item_trait) => {

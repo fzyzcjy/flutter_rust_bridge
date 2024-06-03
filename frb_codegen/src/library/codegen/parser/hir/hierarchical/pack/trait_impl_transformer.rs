@@ -1,4 +1,6 @@
-use crate::codegen::ir::hir::hierarchical::function::{GeneralizedItemFn, HirFunction};
+use crate::codegen::ir::hir::hierarchical::function::{
+    GeneralizedItemFn, HirFunction, HirFunctionOwner,
+};
 use crate::codegen::ir::hir::hierarchical::module::HirModule;
 use crate::codegen::ir::hir::hierarchical::pack::HirPack;
 use crate::codegen::ir::hir::hierarchical::traits::HirTrait;
@@ -44,7 +46,13 @@ fn compute_methods(module: &HirModule, trait_map: &HashMap<String, HirTrait>) ->
                 return vec![];
             }
 
-            let impl_functions = parse_syn_item_impl(&trait_impl.item_impl, namespace, true);
+            let impl_functions = parse_syn_item_impl(
+                &trait_impl.item_impl,
+                namespace,
+                &HirFunctionOwner::TraitMethod {
+                    item_impl: trait_impl.item_impl.clone(),
+                },
+            );
             let def_functions = trait_def
                 .map(|t| parse_trait_def_functions(t, &trait_impl.item_impl, namespace))
                 .unwrap_or_default();
