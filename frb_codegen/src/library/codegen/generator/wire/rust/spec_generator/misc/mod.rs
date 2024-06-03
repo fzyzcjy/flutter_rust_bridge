@@ -105,7 +105,7 @@ fn generate_imports(
             |func| if_then_some!(let MirFuncOwnerInfo::Method(method) = &func.owner, method),
         )
         .filter_map(|method| method.trait_def_name.clone())
-        .map(|name| format!("use {};\n", name.namespace.joined_path))
+        .map(|name| format!("use {};\n", name.rust_style()))
         .join("");
 
     // NOTE Do *not* use imports when possible, instead use fully specified name directly
