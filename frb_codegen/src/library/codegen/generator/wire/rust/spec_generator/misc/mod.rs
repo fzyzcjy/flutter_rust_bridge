@@ -98,6 +98,8 @@ fn generate_imports(
         .into_iter()
         .join("\n");
 
+    let imports_from_functions = TODO;
+
     // NOTE Do *not* use imports when possible, instead use fully specified name directly
     let static_imports = "use flutter_rust_bridge::{Handler, IntoIntoDart};
 use flutter_rust_bridge::for_generated::transform_result_dco;
@@ -114,7 +116,11 @@ use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, WriteBytesExt,
             _ => "",
         };
 
-        vec![(imports_from_types.clone() + static_imports + platform_imports).into()]
+        vec![(imports_from_types.clone()
+            + imports_from_functions.clone()
+            + static_imports
+            + platform_imports)
+            .into()]
     })
 }
 
