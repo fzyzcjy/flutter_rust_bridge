@@ -8,7 +8,7 @@ use syn::{Attribute, ImplItemFn, ItemFn, ItemImpl, Signature, TraitItemFn, Visib
 pub(crate) struct HirFunction {
     pub(crate) namespace: Namespace,
     #[serde(skip_serializing)]
-    pub(crate) item_impl: Option<ItemImpl>,
+    pub(crate) owner: HirFunctionOwner,
     #[serde(skip_serializing)]
     pub(crate) item_fn: GeneralizedItemFn,
 }
@@ -30,6 +30,13 @@ impl HirFunction {
     pub(crate) fn owner_and_name(&self) -> SimpleOwnerAndName {
         (self.simple_owner(), self.item_fn.name())
     }
+}
+
+#[derive(Debug, Clone)]
+pub(crate) enum HirFunctionOwner {
+    Function,
+    Method,
+    TraitMethod,
 }
 
 #[derive(Debug, Clone)]
