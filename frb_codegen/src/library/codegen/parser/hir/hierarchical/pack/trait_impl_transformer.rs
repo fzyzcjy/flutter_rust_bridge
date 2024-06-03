@@ -49,7 +49,9 @@ fn parse_trait_def_functions(trait_def: &HirTrait) -> Vec<HirFunction> {
         )
         .map(|trait_item_fn| HirFunction {
             namespace: namespace.clone(),
-            inner: TODO,
+            inner: HirFunctionInner::Trait {
+                trait_item_fn: trait_item_fn.to_owned(),
+            },
         })
         .collect_vec()
 }
