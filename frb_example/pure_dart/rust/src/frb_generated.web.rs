@@ -15818,6 +15818,22 @@ pub fn wire__crate__api__ownership__borrow_i32_twin_normal(
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__ownership__borrow_slice_string_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire__crate__api__ownership__borrow_slice_string_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__ownership__borrow_slice_u8_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: Box<[u8]>,
+) {
+    wire__crate__api__ownership__borrow_slice_u8_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__ownership__borrow_str_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: String,
@@ -30122,6 +30138,24 @@ pub fn wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_i32_tw
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_slice_string_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_slice_string_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_slice_u8_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: Box<[u8]>,
+) {
+    wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_slice_u8_twin_rust_async_impl(
+        port_, arg,
+    )
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_str_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: String,
@@ -30162,6 +30196,26 @@ pub fn wire__crate__api__pseudo_manual__ownership_twin_rust_async_sse__borrow_i3
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__ownership_twin_rust_async_sse__borrow_slice_string_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__pseudo_manual__ownership_twin_rust_async_sse__borrow_slice_string_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__ownership_twin_rust_async_sse__borrow_slice_u8_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__pseudo_manual__ownership_twin_rust_async_sse__borrow_slice_u8_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__ownership_twin_rust_async_sse__borrow_str_twin_rust_async_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -30199,6 +30253,36 @@ pub fn wire__crate__api__pseudo_manual__ownership_twin_sse__borrow_i32_twin_sse(
     data_len_: i32,
 ) {
     wire__crate__api__pseudo_manual__ownership_twin_sse__borrow_i32_twin_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__ownership_twin_sse__borrow_slice_string_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__pseudo_manual__ownership_twin_sse__borrow_slice_string_twin_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__ownership_twin_sse__borrow_slice_u8_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__pseudo_manual__ownership_twin_sse__borrow_slice_u8_twin_sse_impl(
         port_,
         ptr_,
         rust_vec_len_,
@@ -30259,6 +30343,20 @@ pub fn wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_i32_twin_syn
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_slice_string_twin_sync(
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_slice_string_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_slice_u8_twin_sync(
+    arg: Box<[u8]>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_slice_u8_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_str_twin_sync(
     arg: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
@@ -30286,6 +30384,32 @@ pub fn wire__crate__api__pseudo_manual__ownership_twin_sync_sse__borrow_i32_twin
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire__crate__api__pseudo_manual__ownership_twin_sync_sse__borrow_i32_twin_sync_sse_impl(
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__ownership_twin_sync_sse__borrow_slice_string_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire__crate__api__pseudo_manual__ownership_twin_sync_sse__borrow_slice_string_twin_sync_sse_impl(
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__ownership_twin_sync_sse__borrow_slice_u8_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire__crate__api__pseudo_manual__ownership_twin_sync_sse__borrow_slice_u8_twin_sync_sse_impl(
         ptr_,
         rust_vec_len_,
         data_len_,

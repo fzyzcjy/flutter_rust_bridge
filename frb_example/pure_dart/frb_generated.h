@@ -4013,6 +4013,12 @@ void frbgen_frb_example_pure_dart_wire__crate__api__optional_primitive_misc__pri
 void frbgen_frb_example_pure_dart_wire__crate__api__ownership__borrow_i32_twin_normal(int64_t port_,
                                                                                       int32_t arg);
 
+void frbgen_frb_example_pure_dart_wire__crate__api__ownership__borrow_slice_string_twin_normal(int64_t port_,
+                                                                                               struct wire_cst_list_String *arg);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__ownership__borrow_slice_u8_twin_normal(int64_t port_,
+                                                                                           struct wire_cst_list_prim_u_8_loose *arg);
+
 void frbgen_frb_example_pure_dart_wire__crate__api__ownership__borrow_str_twin_normal(int64_t port_,
                                                                                       struct wire_cst_list_prim_u_8_strict *arg);
 
@@ -9531,6 +9537,12 @@ WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manua
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_i32_twin_rust_async(int64_t port_,
                                                                                                                          int32_t arg);
 
+void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_slice_string_twin_rust_async(int64_t port_,
+                                                                                                                                  struct wire_cst_list_String *arg);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_slice_u8_twin_rust_async(int64_t port_,
+                                                                                                                              struct wire_cst_list_prim_u_8_loose *arg);
+
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_str_twin_rust_async(int64_t port_,
                                                                                                                          struct wire_cst_list_prim_u_8_strict *arg);
 
@@ -9544,6 +9556,16 @@ void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twi
                                                                                                                                  uint8_t *ptr_,
                                                                                                                                  int32_t rust_vec_len_,
                                                                                                                                  int32_t data_len_);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_rust_async_sse__borrow_slice_string_twin_rust_async_sse(int64_t port_,
+                                                                                                                                          uint8_t *ptr_,
+                                                                                                                                          int32_t rust_vec_len_,
+                                                                                                                                          int32_t data_len_);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_rust_async_sse__borrow_slice_u8_twin_rust_async_sse(int64_t port_,
+                                                                                                                                      uint8_t *ptr_,
+                                                                                                                                      int32_t rust_vec_len_,
+                                                                                                                                      int32_t data_len_);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_rust_async_sse__borrow_str_twin_rust_async_sse(int64_t port_,
                                                                                                                                  uint8_t *ptr_,
@@ -9565,6 +9587,16 @@ void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twi
                                                                                                            int32_t rust_vec_len_,
                                                                                                            int32_t data_len_);
 
+void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_sse__borrow_slice_string_twin_sse(int64_t port_,
+                                                                                                                    uint8_t *ptr_,
+                                                                                                                    int32_t rust_vec_len_,
+                                                                                                                    int32_t data_len_);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_sse__borrow_slice_u8_twin_sse(int64_t port_,
+                                                                                                                uint8_t *ptr_,
+                                                                                                                int32_t rust_vec_len_,
+                                                                                                                int32_t data_len_);
+
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_sse__borrow_str_twin_sse(int64_t port_,
                                                                                                            uint8_t *ptr_,
                                                                                                            int32_t rust_vec_len_,
@@ -9582,6 +9614,10 @@ void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twi
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_i32_twin_sync(int32_t arg);
 
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_slice_string_twin_sync(struct wire_cst_list_String *arg);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_slice_u8_twin_sync(struct wire_cst_list_prim_u_8_loose *arg);
+
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_str_twin_sync(struct wire_cst_list_prim_u_8_strict *arg);
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_string_twin_sync(struct wire_cst_list_prim_u_8_strict *arg);
@@ -9591,6 +9627,14 @@ WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manua
 WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_sync_sse__borrow_i32_twin_sync_sse(uint8_t *ptr_,
                                                                                                                                      int32_t rust_vec_len_,
                                                                                                                                      int32_t data_len_);
+
+WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_sync_sse__borrow_slice_string_twin_sync_sse(uint8_t *ptr_,
+                                                                                                                                              int32_t rust_vec_len_,
+                                                                                                                                              int32_t data_len_);
+
+WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_sync_sse__borrow_slice_u8_twin_sync_sse(uint8_t *ptr_,
+                                                                                                                                          int32_t rust_vec_len_,
+                                                                                                                                          int32_t data_len_);
 
 WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_sync_sse__borrow_str_twin_sync_sse(uint8_t *ptr_,
                                                                                                                                      int32_t rust_vec_len_,
@@ -15783,6 +15827,8 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__optional__handle_vec_of_opts_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__optional_primitive_misc__primitive_optional_types_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__ownership__borrow_i32_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__ownership__borrow_slice_string_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__ownership__borrow_slice_u8_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__ownership__borrow_str_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__ownership__borrow_string_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__ownership__borrow_struct_twin_normal);
@@ -17234,22 +17280,32 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__optional_twin_sync_sse__handle_optional_struct_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__optional_twin_sync_sse__handle_vec_of_opts_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_i32_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_slice_string_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_slice_u8_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_str_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_string_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_struct_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_rust_async_sse__borrow_i32_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_rust_async_sse__borrow_slice_string_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_rust_async_sse__borrow_slice_u8_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_rust_async_sse__borrow_str_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_rust_async_sse__borrow_string_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_rust_async_sse__borrow_struct_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_sse__borrow_i32_twin_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_sse__borrow_slice_string_twin_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_sse__borrow_slice_u8_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_sse__borrow_str_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_sse__borrow_string_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_sse__borrow_struct_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_i32_twin_sync);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_slice_string_twin_sync);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_slice_u8_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_str_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_string_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_struct_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_sync_sse__borrow_i32_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_sync_sse__borrow_slice_string_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_sync_sse__borrow_slice_u8_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_sync_sse__borrow_str_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_sync_sse__borrow_string_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__ownership_twin_sync_sse__borrow_struct_twin_sync_sse);

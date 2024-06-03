@@ -12,11 +12,19 @@ Future<String> borrowStringTwinSse({required String arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualOwnershipTwinSseBorrowStringTwinSse(arg: arg);
 
-Future<String> borrowStrTwinSse({required String arg}) => RustLib.instance.api
+Future<void> borrowStrTwinSse({required String arg}) => RustLib.instance.api
     .crateApiPseudoManualOwnershipTwinSseBorrowStrTwinSse(arg: arg);
 
 Future<int> borrowI32TwinSse({required int arg}) => RustLib.instance.api
     .crateApiPseudoManualOwnershipTwinSseBorrowI32TwinSse(arg: arg);
+
+Future<Uint8List> borrowSliceU8TwinSse({required List<int> arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualOwnershipTwinSseBorrowSliceU8TwinSse(arg: arg);
+
+Future<List<String>> borrowSliceStringTwinSse({required List<String> arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualOwnershipTwinSseBorrowSliceStringTwinSse(arg: arg);
 
 Future<SimpleStructForBorrowTwinSse> borrowStructTwinSse(
         {required SimpleStructForBorrowTwinSse arg}) =>

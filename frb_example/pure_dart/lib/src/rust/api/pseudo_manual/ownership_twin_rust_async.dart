@@ -13,12 +13,23 @@ Future<String> borrowStringTwinRustAsync({required String arg}) =>
         .crateApiPseudoManualOwnershipTwinRustAsyncBorrowStringTwinRustAsync(
             arg: arg);
 
-Future<String> borrowStrTwinRustAsync({required String arg}) => RustLib
+Future<void> borrowStrTwinRustAsync({required String arg}) => RustLib
     .instance.api
     .crateApiPseudoManualOwnershipTwinRustAsyncBorrowStrTwinRustAsync(arg: arg);
 
 Future<int> borrowI32TwinRustAsync({required int arg}) => RustLib.instance.api
     .crateApiPseudoManualOwnershipTwinRustAsyncBorrowI32TwinRustAsync(arg: arg);
+
+Future<Uint8List> borrowSliceU8TwinRustAsync({required List<int> arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualOwnershipTwinRustAsyncBorrowSliceU8TwinRustAsync(
+            arg: arg);
+
+Future<List<String>> borrowSliceStringTwinRustAsync(
+        {required List<String> arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualOwnershipTwinRustAsyncBorrowSliceStringTwinRustAsync(
+            arg: arg);
 
 Future<SimpleStructForBorrowTwinRustAsync> borrowStructTwinRustAsync(
         {required SimpleStructForBorrowTwinRustAsync arg}) =>
