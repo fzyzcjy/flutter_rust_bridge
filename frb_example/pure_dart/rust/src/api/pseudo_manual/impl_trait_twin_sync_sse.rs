@@ -2,16 +2,16 @@
 // and is auto-generated from `impl_trait.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
-pub struct StructWithDefaultValue {
-    pub val: u32,
+pub struct StructWithTraitTwinSyncSse {
+    pub value: u32,
 }
 
-pub trait TestTrait {
-    fn trait_fun() -> Self;
+pub trait SimpleTraitTwinSyncSse {
+    fn simple_trait_fn_twin_sync_sse() -> Self;
 }
 
-impl TestTrait for StructWithDefaultValue {
-    fn trait_fun() -> Self {
-        StructWithDefaultValue { val: 42 }
+impl SimpleTraitTwinSyncSse for StructWithTraitTwinSyncSse {
+    fn simple_trait_fn_twin_sync_sse() -> Self {
+        StructWithTraitTwinSyncSse { value: 42 }
     }
 }

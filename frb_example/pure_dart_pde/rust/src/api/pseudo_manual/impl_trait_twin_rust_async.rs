@@ -4,16 +4,16 @@
 
 // AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
 
-pub struct StructWithDefaultValue {
-    pub val: u32,
+pub struct StructWithTraitTwinRustAsync {
+    pub value: u32,
 }
 
-pub trait TestTrait {
-    fn trait_fun() -> Self;
+pub trait SimpleTraitTwinRustAsync {
+    fn simple_trait_fn_twin_rust_async() -> Self;
 }
 
-impl TestTrait for StructWithDefaultValue {
-    fn trait_fun() -> Self {
-        StructWithDefaultValue { val: 42 }
+impl SimpleTraitTwinRustAsync for StructWithTraitTwinRustAsync {
+    fn simple_trait_fn_twin_rust_async() -> Self {
+        StructWithTraitTwinRustAsync { value: 42 }
     }
 }
