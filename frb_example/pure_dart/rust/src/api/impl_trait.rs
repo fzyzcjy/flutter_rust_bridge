@@ -1,13 +1,13 @@
-pub struct StructWithDefaultValue {
-    pub val: u32,
+pub struct StructWithTraitTwinNormal {
+    pub value: u32,
 }
 
-pub trait TestTrait {
-    fn trait_fun() -> Self;
+pub trait SimpleTraitTwinNormal {
+    fn simple_trait_fn_twin_normal() -> Self;
 }
 
-impl TestTrait for StructWithDefaultValue {
-    fn trait_fun() -> Self {
-        StructWithDefaultValue { val: 42 }
+impl SimpleTraitTwinNormal for StructWithTraitTwinNormal {
+    fn simple_trait_fn_twin_normal() -> Self {
+        StructWithTraitTwinNormal { value: 42 }
     }
 }
