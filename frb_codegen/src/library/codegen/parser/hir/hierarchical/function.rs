@@ -1,4 +1,4 @@
-use crate::codegen::ir::hir::hierarchical::function::{HirFunction, HirFunctionInner};
+use crate::codegen::ir::hir::hierarchical::function::{GeneralItemFn, HirFunction};
 use crate::if_then_some;
 use crate::utils::namespace::Namespace;
 use itertools::Itertools;
@@ -7,9 +7,8 @@ use syn::{ImplItem, ItemFn, ItemImpl};
 pub(crate) fn parse_syn_item_fn(item_fn: &ItemFn, namespace: &Namespace) -> HirFunction {
     HirFunction {
         namespace: namespace.clone(),
-        inner: HirFunctionInner::Function {
-            item_fn: item_fn.to_owned(),
-        },
+        item_impl: None,
+        item_fn: GeneralItemFn::ItemFn(item_fn.to_owned()),
     }
 }
 

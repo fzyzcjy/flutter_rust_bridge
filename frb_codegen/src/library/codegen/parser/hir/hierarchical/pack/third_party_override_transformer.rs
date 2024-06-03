@@ -1,4 +1,4 @@
-use crate::codegen::ir::hir::hierarchical::function::{HirFunction, HirFunctionInner};
+use crate::codegen::ir::hir::hierarchical::function::HirFunction;
 use crate::codegen::ir::hir::hierarchical::module::HirModule;
 use crate::codegen::ir::hir::hierarchical::pack::HirPack;
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStructOrEnum;
@@ -54,7 +54,7 @@ fn transform_module_content_functions(
     transform_module_content_general_vec(
         target,
         src_content_functions,
-        |x| x.inner.owner_and_name(),
+        |x| x.owner_and_name(),
         |target, src| {
             target
                 .inner
