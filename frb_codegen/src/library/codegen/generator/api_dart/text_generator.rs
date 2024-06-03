@@ -14,6 +14,7 @@ use anyhow::Context;
 use itertools::{concat, Itertools};
 use pathdiff::diff_paths;
 use std::path::{Path, PathBuf};
+use crate::codegen::generator::api_dart::misc::compute_path_from_namespace;
 
 pub(super) struct ApiDartOutputText {
     pub(super) output_texts: PathTexts,
@@ -142,19 +143,4 @@ fn generate_function(func: &ApiDartGeneratedFunction) -> String {
         ..
     } = &func;
     format!("{func_comments}{func_expr} => {func_impl};")
-}
-
-pub(crate) fn compute_path_from_namespace(
-    dart_decl_base_output_path: &Path,
-    namespace: &Namespace,
-) -> PathBuf {
-    let raw_path = namespace.path();
-    let chunks = match raw_path[0] {
-        CrateName::SELF_CRATE => raw_path[1..].to_owned(),
-        _ => concat([vec![THIRD_PARTY_DIR_NAME], raw_path.clone()]),
-    };
-
-    let ans_without_extension =
-        (chunks.iter()).fold(dart_decl_base_output_path.to_owned(), |a, b| a.join(b));
-    ans_without_extension.with_extension("dart")
 }
