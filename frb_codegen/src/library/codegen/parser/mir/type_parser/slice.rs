@@ -7,6 +7,6 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         &mut self,
         type_slice: &syn::TypeSlice,
     ) -> anyhow::Result<MirType> {
-        Ok(mir_list(self.parse_type(&*type_slice.elem)?, true))
+        Ok(mir_list(self.parse_type(&type_slice.elem)?, true))
     }
 }
