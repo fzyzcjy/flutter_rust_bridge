@@ -66,9 +66,9 @@ impl Namespace {
     //     path
     // }
 
-    pub fn to_pseudo_io_path(&self, extension: &str) -> PathBuf {
-        PathBuf::from(&format!("/{}.{extension}", self.path().join("/")))
-    }
+    // pub fn to_pseudo_io_path(&self, extension: &str) -> PathBuf {
+    //     PathBuf::from(&format!("/{}.{extension}", self.path().join("/")))
+    // }
 
     pub fn safe_ident(&self) -> String {
         self.path().iter().join("__")
@@ -197,12 +197,12 @@ mod tests {
         Ok(())
     }
 
-    #[test]
-    pub fn test_to_pseudo_io_path() -> anyhow::Result<()> {
-        assert_eq!(
-            Namespace::new_raw("apple::orange".into()).to_pseudo_io_path("dart"),
-            PathBuf::from("/apple/orange.dart")
-        );
-        Ok(())
-    }
+    // #[test]
+    // pub fn test_to_pseudo_io_path() -> anyhow::Result<()> {
+    //     assert_eq!(
+    //         Namespace::new_raw("apple::orange".into()).to_pseudo_io_path("dart"),
+    //         PathBuf::from("/apple/orange.dart")
+    //     );
+    //     Ok(())
+    // }
 }

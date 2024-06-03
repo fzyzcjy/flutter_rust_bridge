@@ -1,6 +1,6 @@
 pub(crate) mod internal_config;
 pub(crate) mod spec_generator;
-mod text_generator;
+pub(crate) mod text_generator;
 
 use crate::codegen::dumper::internal_config::ConfigDumpContent;
 use crate::codegen::dumper::Dumper;
