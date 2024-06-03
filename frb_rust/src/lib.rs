@@ -48,9 +48,3 @@ pub use crate::rust_auto_opaque::RustAutoOpaqueNom;
 #[allow(deprecated)]
 pub use crate::rust_opaque::{DartSafe, RustOpaqueNom};
 pub use flutter_rust_bridge_macros::frb;
-
-// TODO only for demo
-pub struct HelloStruct {
-    pub a: i32,
-    pub b: String,
-}
