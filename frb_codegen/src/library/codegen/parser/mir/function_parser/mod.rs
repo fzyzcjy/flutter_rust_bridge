@@ -12,7 +12,7 @@ use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
 use crate::codegen::parser::mir::function_parser::structs::ParseFunctionOutput;
 use crate::codegen::parser::mir::type_parser::misc::parse_comments;
 use crate::codegen::parser::mir::type_parser::{
-    external_impl, TypeParser, TypeParserParsingContext,
+    TypeParser, TypeParserParsingContext,
 };
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::namespace::{Namespace, NamespacedName};
@@ -203,9 +203,10 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             return Ok(None);
         };
 
-        let owner_ty_name = external_impl::parse_name_or_original(
-            &(self_ty_path.path.segments.first().unwrap().ident).to_string(),
-        )?;
+        // let owner_ty_name = external_impl::parse_name_or_original(
+        //     &(self_ty_path.path.segments.first().unwrap().ident).to_string(),
+        // )?;
+        let owner_ty_name = (self_ty_path.path.segments.first().unwrap().ident).to_string();
         let syn_ty: Type = parse_str(&owner_ty_name)?;
         Ok(Some(self.type_parser.parse_type(&syn_ty, context)?))
     }

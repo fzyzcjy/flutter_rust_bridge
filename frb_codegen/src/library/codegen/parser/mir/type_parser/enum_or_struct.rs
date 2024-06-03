@@ -3,7 +3,6 @@ use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStructOrEnum;
 use crate::codegen::ir::hir::hierarchical::syn_item_struct_or_enum::SynItemStructOrEnum;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
-use crate::codegen::parser::mir::type_parser::external_impl;
 use crate::codegen::parser::mir::type_parser::misc::parse_type_should_ignore_simple;
 use crate::codegen::parser::mir::type_parser::unencodable::SplayedSegment;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
@@ -34,14 +33,14 @@ where
         override_opaque: Option<bool>,
     ) -> anyhow::Result<Option<(MirType, FrbAttributes)>> {
         let (name, _) = last_segment;
-        let name = external_impl::parse_name_or_original(name)?;
+        // let name = external_impl::parse_name_or_original(name)?;
 
-        if let Some(src_object) = self.src_objects().get(&name) {
+        if let Some(src_object) = self.src_objects().get(*name) {
             let src_object = (*src_object).clone();
             let vis = src_object.visibility;
 
             let namespace = &src_object.namespaced_name.namespace;
-            let namespaced_name = NamespacedName::new(namespace.clone(), name.clone());
+            let namespaced_name = NamespacedName::new(namespace.clone(), name.to_string());
 
             let attrs = FrbAttributes::parse(src_object.src.attrs())?;
             let attrs_opaque = override_opaque.or(attrs.opaque());
