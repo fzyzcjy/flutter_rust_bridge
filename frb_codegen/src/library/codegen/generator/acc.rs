@@ -70,6 +70,17 @@ impl<T> Acc<T> {
         }
     }
 
+    pub fn new_io_web(value: T) -> Acc<T>
+    where
+        T: Default + Clone,
+    {
+        Acc {
+            io: value.clone(),
+            web: value,
+            ..Default::default()
+        }
+    }
+
     pub fn new_common(common: T) -> Acc<T>
     where
         T: Default,
