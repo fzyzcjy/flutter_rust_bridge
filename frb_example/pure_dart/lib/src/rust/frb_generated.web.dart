@@ -23750,7 +23750,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   Int64List cst_encode_list_prim_isize_strict(Int64List raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw;
+    throw UnimplementedError('Not implemented in this codec');
   }
 
   @protected
@@ -23780,7 +23780,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   Object /* BigInt64Array */ cst_encode_list_prim_u_64_strict(Uint64List raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.inner;
+    throw UnimplementedError('Not implemented in this codec');
   }
 
   @protected
