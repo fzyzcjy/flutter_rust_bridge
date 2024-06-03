@@ -49,11 +49,12 @@ fn remove_primitive_unit(info: FunctionPartialInfo) -> FunctionPartialInfo {
 }
 
 fn remove_reference_type(info: FunctionPartialInfo) -> FunctionPartialInfo {
-    if let MirType::RustAutoOpaqueImplicit(MirTypeRustAutoOpaqueImplicit {
-        ownership_mode, ..
-    }) = &info.ok_output
+    if let Some(MirType::RustAutoOpaqueImplicit(MirTypeRustAutoOpaqueImplicit {
+        ownership_mode,
+        ..
+    })) = &info.ok_output
     {
-        if ownership_mode != OwnershipMode::Owned {
+        if *ownership_mode != OwnershipMode::Owned {
             return FunctionPartialInfo {
                 ok_output: None,
                 ..info
