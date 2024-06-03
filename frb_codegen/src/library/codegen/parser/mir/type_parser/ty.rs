@@ -11,6 +11,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         Ok(match resolve_ty.clone() {
             Type::Path(path) => self.parse_type_path(&path)?,
             Type::Array(type_array) => self.parse_type_array(&type_array)?,
+            Type::Slice(type_slice) => self.parse_type_slice(&type_slice)?,
             Type::Tuple(type_tuple) => self.parse_type_tuple(&type_tuple)?,
             Type::ImplTrait(type_impl_trait) => self
                 .parse_type_impl_trait_dart_fn(&type_impl_trait)

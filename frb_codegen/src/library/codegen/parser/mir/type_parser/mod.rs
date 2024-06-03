@@ -32,6 +32,7 @@ pub(crate) mod result;
 pub(crate) mod rust_auto_opaque_explicit;
 pub(crate) mod rust_auto_opaque_implicit;
 mod rust_opaque;
+pub(crate) mod slice;
 pub(crate) mod structure;
 pub(crate) mod tuple;
 pub(crate) mod ty;
