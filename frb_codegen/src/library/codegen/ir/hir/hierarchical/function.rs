@@ -18,12 +18,14 @@ pub(crate) enum HirFunctionInner {
     },
     Method {
         item_impl: ItemImpl,
-        impl_item_fn: ImplItemFn,
+        impl_item_fn: ImplOrTraitItemFn,
     },
-    TraitMethod {
-        item_impl: ItemImpl,
-        trait_item_fn: TraitItemFn,
-    },
+}
+
+#[derive(Debug, Clone)]
+pub(crate) enum ImplOrTraitItemFn {
+    ImplItemFn(ImplItemFn),
+    TraitItemFn(TraitItemFn),
 }
 
 impl HirFunction {
