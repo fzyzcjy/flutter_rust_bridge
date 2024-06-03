@@ -1,9 +1,9 @@
-use anyhow::Context;
 use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ir::mir::ty::MirType::{EnumRef, StructRef};
 use crate::codegen::parser::mir::type_parser::unencodable::splay_segments;
 use crate::codegen::parser::mir::type_parser::{TypeParser, TypeParserParsingContext};
+use anyhow::Context;
 
 #[allow(clippy::single_match)] // deliberate do so to ensure style consistency
 pub(crate) fn parse_type_maybe_result(
@@ -31,7 +31,9 @@ pub(crate) fn parse_type_maybe_result(
 }
 
 fn parse_type_result(args: &[MirType]) -> anyhow::Result<ResultTypeInfo> {
-    let ok_output = args.first().with_context(|| format!("invalid number of args"))?;
+    let ok_output = args
+        .first()
+        .with_context(|| format!("invalid number of args"))?;
 
     let is_anyhow = args.len() == 1
         || args.iter().any(|x| {
