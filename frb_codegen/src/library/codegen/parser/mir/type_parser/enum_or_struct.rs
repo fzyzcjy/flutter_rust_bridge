@@ -37,7 +37,6 @@ where
 
         if let Some(src_object) = self.src_objects().get(*name) {
             let src_object = (*src_object).clone();
-            let vis = src_object.visibility;
 
             let namespace = &src_object.namespaced_name.namespace;
             let namespaced_name = NamespacedName::new(namespace.clone(), name.to_string());
