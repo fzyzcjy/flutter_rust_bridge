@@ -39,7 +39,7 @@ fn run_with_frb_aware(
 fn decode_macro_frb_encoded_comments(code: &str) -> Cow<str> {
     lazy_static! {
         static ref PATTERN: Regex =
-            Regex::new(r##"#\[doc =[\s\n]*r"frb_encoded\(([\s\S]*?)\)"]"##).unwrap();
+            Regex::new(r##"#\[doc =[\s\n]*"frb_encoded\(([\s\S]*?)\)"]"##).unwrap();
     }
 
     PATTERN.replace_all(code, |captures: &Captures| {
