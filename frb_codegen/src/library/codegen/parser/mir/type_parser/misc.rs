@@ -58,4 +58,5 @@ pub(crate) fn parse_type_should_ignore_simple(
         // For third party crates, if a struct is not public, then it is impossible to utilize it,
         // thus we ignore it.
         || (crate_name != &CrateName::self_crate() && vis != HirVisibility::Public)
+        || TODO
 }
