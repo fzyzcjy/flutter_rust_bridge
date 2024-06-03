@@ -91,7 +91,8 @@
             },
             "safe_ident": "my_enum",
             "type": "Delegate"
-          }
+          },
+          "trait_def_name": null
         }
       },
       "rust_async": false,
@@ -137,7 +138,8 @@
             },
             "safe_ident": "my_enum",
             "type": "Delegate"
-          }
+          },
+          "trait_def_name": null
         }
       },
       "rust_async": false,
@@ -207,7 +209,8 @@
             },
             "safe_ident": "my_struct",
             "type": "StructRef"
-          }
+          },
+          "trait_def_name": null
         }
       },
       "rust_async": false,
@@ -248,7 +251,8 @@
             },
             "safe_ident": "my_struct",
             "type": "StructRef"
-          }
+          },
+          "trait_def_name": null
         }
       },
       "rust_async": false,

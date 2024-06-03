@@ -17,6 +17,8 @@
                 ],
                 "modules": [],
                 "structs": [],
+                "trait_impls": [],
+                "traits": [],
                 "type_alias": []
               },
               "meta": {
@@ -35,6 +37,8 @@
                 ],
                 "modules": [],
                 "structs": [],
+                "trait_impls": [],
+                "traits": [],
                 "type_alias": []
               },
               "meta": {
@@ -45,6 +49,8 @@
             }
           ],
           "structs": [],
+          "trait_impls": [],
+          "traits": [],
           "type_alias": []
         },
         "meta": {
