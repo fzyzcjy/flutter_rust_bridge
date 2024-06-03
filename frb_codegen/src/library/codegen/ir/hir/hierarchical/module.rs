@@ -1,7 +1,7 @@
-use crate::codegen::ir::hir::hierarchical::traits::HirTrait;
 use crate::codegen::ir::hir::hierarchical::function::HirFunction;
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirEnum;
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStruct;
+use crate::codegen::ir::hir::hierarchical::traits::{HirTrait, HirTraitImpl};
 use crate::codegen::ir::hir::hierarchical::type_alias::HirTypeAlias;
 use crate::utils::namespace::Namespace;
 use derivative::Derivative;
@@ -44,6 +44,7 @@ pub struct HirModuleContent {
     pub type_alias: Vec<HirTypeAlias>,
     pub functions: Vec<HirFunction>,
     pub traits: Vec<HirTrait>,
+    pub trait_impls: Vec<HirTraitImpl>,
 }
 
 /// Mirrors syn::Visibility, but can be created without a token
