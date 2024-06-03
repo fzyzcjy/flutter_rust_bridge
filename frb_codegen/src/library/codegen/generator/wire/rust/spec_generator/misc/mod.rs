@@ -125,7 +125,7 @@ use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, WriteBytesExt,
         };
 
         vec![(imports_from_types.clone()
-            + imports_from_functions.clone()
+            + &imports_from_functions
             + static_imports
             + platform_imports)
             .into()]
