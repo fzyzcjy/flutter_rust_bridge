@@ -1,8 +1,8 @@
-use std::path::{Path, PathBuf};
-use itertools::concat;
 use crate::codegen::misc::THIRD_PARTY_DIR_NAME;
 use crate::utils::crate_name::CrateName;
 use crate::utils::namespace::Namespace;
+use itertools::concat;
+use std::path::{Path, PathBuf};
 
 pub(crate) fn compute_path_from_namespace(
     dart_decl_base_output_path: &Path,

@@ -1,4 +1,5 @@
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
+use crate::codegen::generator::api_dart::misc::compute_path_from_namespace;
 use crate::codegen::generator::api_dart::spec_generator::function::ApiDartGeneratedFunction;
 use crate::codegen::generator::api_dart::spec_generator::{
     ApiDartOutputSpec, ApiDartOutputSpecItem,
@@ -11,7 +12,6 @@ use anyhow::Context;
 use itertools::Itertools;
 use pathdiff::diff_paths;
 use std::path::{Path, PathBuf};
-use crate::codegen::generator::api_dart::misc::compute_path_from_namespace;
 
 pub(super) struct ApiDartOutputText {
     pub(super) output_texts: PathTexts,
