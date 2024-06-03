@@ -38,13 +38,14 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
 // Convert primitive Unit type -> None
 fn remove_primitive_unit(info: FunctionPartialInfo) -> FunctionPartialInfo {
-    let ok_output = if info.ok_output == Some(MirType::Primitive(MirTypePrimitive::Unit)) {
-        None
+    if info.ok_output == Some(MirType::Primitive(MirTypePrimitive::Unit)) {
+        FunctionPartialInfo {
+            ok_output: None,
+            ..info
+        }
     } else {
-        info.ok_output
-    };
-
-    FunctionPartialInfo { ok_output, ..info }
+        info
+    }
 }
 
 fn remove_reference_type(info: FunctionPartialInfo) -> FunctionPartialInfo {
