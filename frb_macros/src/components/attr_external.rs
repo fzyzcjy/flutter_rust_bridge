@@ -11,18 +11,18 @@ pub(crate) fn handle_external_impl(attribute: TokenStream, item: TokenStream) ->
 
     let encoded_original_item = create_frb_encoded_comment(&format!(
         "#[frb({})]{}",
-        attribute.to_string(),
+        attribute,
         &item.to_string()
     ));
 
     let item_syn: ItemImpl = syn::parse(item.into()).unwrap();
     let original_self_ty = item_syn.self_ty.clone();
-    let dummy_struct_ty = compute_dummy_struct_ty(&*original_self_ty);
+    let dummy_struct_ty = compute_dummy_struct_ty(&original_self_ty);
     let converted_item = convert_item(item_syn, dummy_struct_ty.clone());
 
     // eprintln!("attribute={attribute:?} self_ty_string={original_self_ty_string} dummy_struct_name={dummy_struct_name} item={item:#?}");
 
-    (quote! {
+    quote! {
         #encoded_original_item
         const _: () = ();
 
@@ -31,8 +31,7 @@ pub(crate) fn handle_external_impl(attribute: TokenStream, item: TokenStream) ->
 
         #[cfg(not(frb_expand))]
         pub struct #dummy_struct_ty(pub #original_self_ty);
-    })
-    .into()
+    }
 }
 
 fn compute_dummy_struct_ty(original_self_ty: &syn::Type) -> syn::Type {

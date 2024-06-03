@@ -12,7 +12,7 @@ pub(crate) fn convert_frb_attr_to_encoded_form(item: TokenStream) -> TokenStream
                 }
                 (Some(_), TT::Group(group)) if is_frb_bracket(group) => {
                     _ = pound.take();
-                    Some(create_frb_encoded_comment(&format!("#[{}]", group.stream())).into())
+                    Some(create_frb_encoded_comment(&format!("#[{}]", group.stream())))
                 }
                 (_, TT::Group(group)) => Some(
                     [
@@ -33,5 +33,5 @@ pub(crate) fn convert_frb_attr_to_encoded_form(item: TokenStream) -> TokenStream
 }
 
 fn is_frb_bracket(group: &Group) -> bool {
-    matches!((group.delimiter(), group.stream().into_iter().next()), (Delimiter::Bracket, Some(TokenTree::Ident(ident))) if ident.to_string() == "frb")
+    matches!((group.delimiter(), group.stream().into_iter().next()), (Delimiter::Bracket, Some(TokenTree::Ident(ident))) if ident == "frb")
 }
