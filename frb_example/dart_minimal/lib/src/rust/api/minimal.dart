@@ -8,3 +8,27 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
+
+Future<HelloStruct> f({required HelloStruct a}) =>
+    RustLib.instance.api.crateApiMinimalF(a: a);
+
+class HelloStruct {
+  final int a;
+  final String b;
+
+  const HelloStruct({
+    required this.a,
+    required this.b,
+  });
+
+  @override
+  int get hashCode => a.hashCode ^ b.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is HelloStruct &&
+          runtimeType == other.runtimeType &&
+          a == other.a &&
+          b == other.b;
+}

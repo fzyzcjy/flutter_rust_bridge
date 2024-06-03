@@ -21,13 +21,43 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   @protected
+  String dco_decode_String(dynamic raw);
+
+  @protected
+  HelloStruct dco_decode_box_autoadd_hello_struct(dynamic raw);
+
+  @protected
+  HelloStruct dco_decode_hello_struct(dynamic raw);
+
+  @protected
   int dco_decode_i_32(dynamic raw);
+
+  @protected
+  Uint8List dco_decode_list_prim_u_8_strict(dynamic raw);
+
+  @protected
+  int dco_decode_u_8(dynamic raw);
 
   @protected
   void dco_decode_unit(dynamic raw);
 
   @protected
+  String sse_decode_String(SseDeserializer deserializer);
+
+  @protected
+  HelloStruct sse_decode_box_autoadd_hello_struct(SseDeserializer deserializer);
+
+  @protected
+  HelloStruct sse_decode_hello_struct(SseDeserializer deserializer);
+
+  @protected
   int sse_decode_i_32(SseDeserializer deserializer);
+
+  @protected
+  Uint8List sse_decode_list_prim_u_8_strict(SseDeserializer deserializer);
+
+  @protected
+  int sse_decode_u_8(SseDeserializer deserializer);
 
   @protected
   void sse_decode_unit(SseDeserializer deserializer);
@@ -36,7 +66,57 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
+  String cst_encode_String(String raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw;
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_hello_struct(HelloStruct raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_hello_struct(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_hello_struct(HelloStruct raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_i_32(raw.a), cst_encode_String(raw.b)];
+  }
+
+  @protected
+  Uint8List cst_encode_list_prim_u_8_strict(Uint8List raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw;
+  }
+
+  @protected
+  int cst_encode_i_32(int raw);
+
+  @protected
+  int cst_encode_u_8(int raw);
+
+  @protected
+  void cst_encode_unit(void raw);
+
+  @protected
+  void sse_encode_String(String self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_hello_struct(
+      HelloStruct self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_hello_struct(HelloStruct self, SseSerializer serializer);
+
+  @protected
   void sse_encode_i_32(int self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_prim_u_8_strict(
+      Uint8List self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_u_8(int self, SseSerializer serializer);
 
   @protected
   void sse_encode_unit(void self, SseSerializer serializer);
@@ -49,6 +129,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
 class RustLibWire implements BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
+
+  void wire__crate__api__minimal__f(NativePortType port_, List<dynamic> a) =>
+      wasmModule.wire__crate__api__minimal__f(port_, a);
+
+  void wire__crate__api__minimal__init_app(NativePortType port_) =>
+      wasmModule.wire__crate__api__minimal__init_app(port_);
+
+  void wire__crate__api__minimal__minimal_adder(
+          NativePortType port_, int a, int b) =>
+      wasmModule.wire__crate__api__minimal__minimal_adder(port_, a, b);
 }
 
 @JS('wasm_bindgen')
@@ -62,4 +152,12 @@ class RustLibWasmModule implements WasmModule {
 
   @override
   external RustLibWasmModule bind(dynamic thisArg, String moduleName);
+
+  external void wire__crate__api__minimal__f(
+      NativePortType port_, List<dynamic> a);
+
+  external void wire__crate__api__minimal__init_app(NativePortType port_);
+
+  external void wire__crate__api__minimal__minimal_adder(
+      NativePortType port_, int a, int b);
 }
