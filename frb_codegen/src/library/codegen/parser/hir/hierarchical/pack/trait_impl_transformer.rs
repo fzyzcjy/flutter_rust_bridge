@@ -59,7 +59,7 @@ fn parse_trait_def_functions(
         )
         .map(|trait_item_fn| HirFunction {
             namespace: namespace.clone(),
-            item_impl: item_impl.to_owned(),
+            item_impl: Some(item_impl.to_owned()),
             item_fn: GeneralItemFn::TraitItemFn(trait_item_fn.to_owned()),
         })
         .collect_vec()

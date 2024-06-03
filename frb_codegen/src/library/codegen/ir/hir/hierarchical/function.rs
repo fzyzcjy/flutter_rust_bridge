@@ -70,9 +70,9 @@ impl GeneralItemFn {
 
     pub(crate) fn span(&self) -> Span {
         match self {
-            Self::ItemFn(inner) => &inner.span(),
-            Self::ImplItemFn(inner) => &inner.span(),
-            Self::TraitItemFn(inner) => &inner.span(),
+            Self::ItemFn(inner) => inner.span(),
+            Self::ImplItemFn(inner) => inner.span(),
+            Self::TraitItemFn(inner) => inner.span(),
         }
     }
 
