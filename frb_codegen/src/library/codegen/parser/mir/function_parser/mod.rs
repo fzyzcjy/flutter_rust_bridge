@@ -54,10 +54,10 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         .unwrap_or_else(|err| {
             log::debug!(
                 "parse_function see error and skip function: function={:?} error={:?}",
-                func.item_fn.name(),
+                func.name(),
                 err
             );
-            create_output_skip(func, MirSkipReason::Err)
+            create_output_skip(func, &func.namespace, MirSkipReason::Err)
         })
     }
 
