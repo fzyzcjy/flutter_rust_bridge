@@ -111,7 +111,7 @@ fn generate_code_call_inner_func_result(func: &MirFunc, inner_func_args: Vec<Str
         MirFuncOwnerInfo::Method(method) => {
             format!(
                 r"{}::{}({})",
-                method.owner_ty_name().rust_style(),
+                method.owner_ty_name().unwrap().rust_style(),
                 method.actual_method_name,
                 inner_func_args.join(", ")
             )

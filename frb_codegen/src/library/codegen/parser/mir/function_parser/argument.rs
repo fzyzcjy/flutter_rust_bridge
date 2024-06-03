@@ -120,7 +120,7 @@ fn syntheize_receiver_type(
     let ty_str = format!(
         "{}{}",
         parse_receiver_ownership_mode(receiver).prefix(),
-        method.owner_ty_name().name.to_owned()
+        method.owner_ty_name().unwrap().name.to_owned()
     );
     Ok(parse_str::<Type>(&ty_str)?)
 }

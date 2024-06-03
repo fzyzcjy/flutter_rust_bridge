@@ -48,7 +48,7 @@ fn get_methods_of_enum_or_struct<'a>(
     all_funcs: &'a [MirFunc],
 ) -> Vec<&'a MirFunc> {
     (all_funcs.iter())
-        .filter(|f| matches!(&f.owner, MirFuncOwnerInfo::Method(m) if &m.owner_ty_name() == name))
+        .filter(|f| matches!(&f.owner, MirFuncOwnerInfo::Method(m) if m.owner_ty_name().as_ref() == Some(name)))
         .collect_vec()
 }
 
