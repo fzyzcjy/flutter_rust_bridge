@@ -69,4 +69,4 @@ fn parse_trait_def_functions(
         .collect_vec()
 }
 
-const BLACKLIST_TRAIT_NAMES: [&str; 3] = ["Clone", "Default", "Debug"];
+const BLACKLIST_TRAIT_NAMES: [&str; 4] = ["Clone", "Default", "Debug", "Deref"];
