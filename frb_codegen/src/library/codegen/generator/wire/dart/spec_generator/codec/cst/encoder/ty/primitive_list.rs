@@ -9,6 +9,15 @@ use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartG
 
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for PrimitiveListWireDartCodecCstGenerator<'a> {
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {
+        if matches!(
+            self.mir.primitive,
+            MirTypePrimitive::Isize | MirTypePrimitive::U64
+        ) {
+            return Acc::new_io_web(Some(
+                "throw UnimplementedError('Not implemented in this codec');".to_owned(),
+            ));
+        }
+
         Acc {
             // NOTE Dart code *only* allocates memory. It never *release* memory by itself.
             // Instead, Rust receives that pointer and now it is in control of Rust.
