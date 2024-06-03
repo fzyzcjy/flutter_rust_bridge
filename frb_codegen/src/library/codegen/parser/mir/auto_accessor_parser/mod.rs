@@ -78,7 +78,7 @@ fn parse_auto_accessors_of_struct(
     let ty_struct = &type_parser.struct_pool()[&ty_struct_ident].to_owned();
 
     (ty_struct.fields.iter())
-        .filter(|field| field.is_rust_public.unwrap())
+        .filter(|field| field.is_rust_public.unwrap() && TODO)
         .flat_map(|field| {
             [MirFuncAccessorMode::Getter, MirFuncAccessorMode::Setter]
                 .into_iter()
