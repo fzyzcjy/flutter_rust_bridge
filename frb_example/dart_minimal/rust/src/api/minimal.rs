@@ -8,12 +8,3 @@ pub fn init_app() {
 pub fn minimal_adder(a: i32, b: i32) -> i32 {
     a + b
 }
-
-// TODO temp
-pub struct MyExternalType {
-    this_is_fake_external: i32,
-}
-#[frb(external)]
-impl MyExternalType {
-    pub fn f(&self, a: i32) {}
-}
