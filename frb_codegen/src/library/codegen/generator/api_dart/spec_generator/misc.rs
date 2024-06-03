@@ -93,9 +93,9 @@ fn generate_imports_from_ty(
         if &ty_namespace != current_file_namespace {
             let dummy_base_path = PathBuf::from("/".to_owned());
             let path_diff = diff_paths(
-                api_dart::misc::compute_path_from_namespace(dummy_base_path, &ty_namespace),
+                api_dart::misc::compute_path_from_namespace(&dummy_base_path, &ty_namespace),
                 (api_dart::misc::compute_path_from_namespace(
-                    dummy_base_path,
+                    &dummy_base_path,
                     &current_file_namespace,
                 )
                 .parent())

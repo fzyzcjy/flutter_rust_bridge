@@ -5,13 +5,10 @@ use crate::codegen::generator::api_dart::spec_generator::{
 };
 use crate::codegen::generator::misc::target::TargetOrCommonMap;
 use crate::codegen::generator::misc::{generate_code_header, PathText, PathTexts};
-use crate::codegen::misc::THIRD_PARTY_DIR_NAME;
 use crate::utils::basic_code::DartBasicHeaderCode;
-use crate::utils::crate_name::CrateName;
-use crate::utils::namespace::Namespace;
 use crate::utils::path_utils::path_to_string;
 use anyhow::Context;
-use itertools::{concat, Itertools};
+use itertools::Itertools;
 use pathdiff::diff_paths;
 use std::path::{Path, PathBuf};
 use crate::codegen::generator::api_dart::misc::compute_path_from_namespace;
