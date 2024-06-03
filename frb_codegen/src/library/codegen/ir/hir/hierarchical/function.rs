@@ -10,7 +10,7 @@ pub(crate) struct HirFunction {
     #[serde(skip_serializing)]
     pub(crate) item_impl: Option<ItemImpl>,
     #[serde(skip_serializing)]
-    pub(crate) item_fn: GeneralItemFn,
+    pub(crate) item_fn: GeneralizedItemFn,
 }
 
 impl HirFunction {
@@ -33,13 +33,13 @@ impl HirFunction {
 }
 
 #[derive(Debug, Clone)]
-pub(crate) enum GeneralItemFn {
+pub(crate) enum GeneralizedItemFn {
     ItemFn(ItemFn),
     ImplItemFn(ImplItemFn),
     TraitItemFn(TraitItemFn),
 }
 
-impl GeneralItemFn {
+impl GeneralizedItemFn {
     pub(crate) fn sig(&self) -> &Signature {
         match self {
             Self::ItemFn(inner) => &inner.sig,
