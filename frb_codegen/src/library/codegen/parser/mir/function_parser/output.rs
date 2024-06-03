@@ -1,4 +1,5 @@
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqueImplicit;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::function_parser::{FunctionParser, FunctionPartialInfo};
 use crate::codegen::parser::mir::type_parser::result::parse_type_maybe_result;
@@ -12,9 +13,9 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         context: &TypeParserParsingContext,
     ) -> anyhow::Result<FunctionPartialInfo> {
         Ok(match &sig.output {
-            ReturnType::Type(_, ty) => {
-                remove_primitive_unit(self.parse_fn_output_type(ty, context)?)
-            }
+            ReturnType::Type(_, ty) => remove_reference_type(remove_primitive_unit(
+                self.parse_fn_output_type(ty, context)?,
+            )),
             ReturnType::Default => Default::default(),
         })
     }
@@ -44,4 +45,8 @@ fn remove_primitive_unit(info: FunctionPartialInfo) -> FunctionPartialInfo {
     };
 
     FunctionPartialInfo { ok_output, ..info }
+}
+
+fn remove_reference_type(info: FunctionPartialInfo) -> FunctionPartialInfo {
+    TODO
 }
