@@ -7,23 +7,15 @@ use syn::{Attribute, ImplItemFn, ItemFn, ItemImpl, ItemTrait, Signature, TraitIt
 #[derive(Debug, Clone, Serialize)]
 pub(crate) struct HirFunction {
     pub(crate) namespace: Namespace,
+    /// Only exist for methods (and not exist for functions)
+    pub(crate) item_impl: Option<ItemImpl>,
     #[serde(skip_serializing)]
-    pub(crate) inner: HirFunctionInner,
+    pub(crate) item_fn: GeneralItemFn,
 }
 
 #[derive(Debug, Clone)]
-pub(crate) enum HirFunctionInner {
-    Function {
-        item_fn: ItemFn,
-    },
-    Method {
-        item_impl: ItemImpl,
-        item_fn: ImplOrTraitItemFn,
-    },
-}
-
-#[derive(Debug, Clone)]
-pub(crate) enum ImplOrTraitItemFn {
+pub(crate) enum GeneralItemFn {
+    ItemFn(ItemFn),
     ImplItemFn(ImplItemFn),
     TraitItemFn(TraitItemFn),
 }
@@ -41,7 +33,10 @@ impl HirFunctionInner {
     pub(crate) fn sig(&self) -> &Signature {
         match self {
             HirFunctionInner::Function { item_fn } => &item_fn.sig,
-            HirFunctionInner::Method { item_fn: impl_item_fn, .. } => &impl_item_fn.sig,
+            HirFunctionInner::Method {
+                item_fn: impl_item_fn,
+                ..
+            } => &impl_item_fn.sig,
         }
     }
 
@@ -64,28 +59,40 @@ impl HirFunctionInner {
     pub(crate) fn attrs(&self) -> &Vec<Attribute> {
         match self {
             HirFunctionInner::Function { item_fn } => &item_fn.attrs,
-            HirFunctionInner::Method { item_fn: impl_item_fn, .. } => &impl_item_fn.attrs,
+            HirFunctionInner::Method {
+                item_fn: impl_item_fn,
+                ..
+            } => &impl_item_fn.attrs,
         }
     }
 
     pub(crate) fn attrs_mut(&mut self) -> &mut Vec<Attribute> {
         match self {
             HirFunctionInner::Function { item_fn } => &mut item_fn.attrs,
-            HirFunctionInner::Method { item_fn: impl_item_fn, .. } => &mut impl_item_fn.attrs,
+            HirFunctionInner::Method {
+                item_fn: impl_item_fn,
+                ..
+            } => &mut impl_item_fn.attrs,
         }
     }
 
     pub(crate) fn span(&self) -> Span {
         match self {
             HirFunctionInner::Function { item_fn } => item_fn.span(),
-            HirFunctionInner::Method { item_fn: impl_item_fn, .. } => impl_item_fn.span(),
+            HirFunctionInner::Method {
+                item_fn: impl_item_fn,
+                ..
+            } => impl_item_fn.span(),
         }
     }
 
     pub(crate) fn vis(&self) -> &Visibility {
         match self {
             HirFunctionInner::Function { item_fn } => &item_fn.vis,
-            HirFunctionInner::Method { item_fn: impl_item_fn, .. } => &impl_item_fn.vis,
+            HirFunctionInner::Method {
+                item_fn: impl_item_fn,
+                ..
+            } => &impl_item_fn.vis,
         }
     }
 }
