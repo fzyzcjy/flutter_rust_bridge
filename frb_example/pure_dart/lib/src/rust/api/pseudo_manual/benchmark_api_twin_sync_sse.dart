@@ -6,8 +6,7 @@
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These functions are ignored because they are not marked as `pub`: `clone`, `clone`, `create_binary_tree_map`, `create_binary_tree_protobuf`, `create_binary_tree`, `create_blob`, `deref`, `deref`, `fmt`, `fmt`, `initialize`, `initialize`
-// These types are ignored because they are not used by any `pub` functions: `BINARY_TREES_PROTOBUF`, `BINARY_TREES`
+// These functions are ignored because they are not marked as `pub`: `create_binary_tree_map`, `create_binary_tree_protobuf`, `create_binary_tree`, `create_blob`
 
 void benchmarkVoidTwinSyncSse() => RustLib.instance.api
     .crateApiPseudoManualBenchmarkApiTwinSyncSseBenchmarkVoidTwinSyncSse();
@@ -130,4 +129,160 @@ class BenchmarkBlobTwinSyncSse {
           first == other.first &&
           second == other.second &&
           third == other.third;
+}
+
+class BINARY_TREES {
+  final void privateField;
+
+  const BINARY_TREES({
+    required this.privateField,
+  });
+
+  Future<void> deref() => RustLib.instance.api
+          .crateApiPseudoManualBenchmarkApiTwinSyncSseBinaryTreesDeref(
+        that: this,
+      );
+
+  Future<void> deref() => RustLib.instance.api
+          .crateApiPseudoManualBenchmarkApiTwinSyncSseBinaryTreesDeref(
+        that: this,
+      );
+
+  Future<void> deref() => RustLib.instance.api
+          .crateApiPseudoManualBenchmarkApiTwinSyncSseBinaryTreesDeref(
+        that: this,
+      );
+
+  Future<void> deref() => RustLib.instance.api
+          .crateApiPseudoManualBenchmarkApiTwinSyncSseBinaryTreesDeref(
+        that: this,
+      );
+
+  Future<void> deref() => RustLib.instance.api
+          .crateApiPseudoManualBenchmarkApiTwinSyncSseBinaryTreesDeref(
+        that: this,
+      );
+
+  Future<void> deref() => RustLib.instance.api
+          .crateApiPseudoManualBenchmarkApiTwinSyncSseBinaryTreesDeref(
+        that: this,
+      );
+
+  static Future<void> initialize({required BINARY_TREES lazy}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualBenchmarkApiTwinSyncSseBinaryTreesInitialize(
+              lazy: lazy);
+
+  static Future<void> initialize({required BINARY_TREES lazy}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualBenchmarkApiTwinSyncSseBinaryTreesInitialize(
+              lazy: lazy);
+
+  static Future<void> initialize({required BINARY_TREES lazy}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualBenchmarkApiTwinSyncSseBinaryTreesInitialize(
+              lazy: lazy);
+
+  static Future<void> initialize({required BINARY_TREES lazy}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualBenchmarkApiTwinSyncSseBinaryTreesInitialize(
+              lazy: lazy);
+
+  static Future<void> initialize({required BINARY_TREES lazy}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualBenchmarkApiTwinSyncSseBinaryTreesInitialize(
+              lazy: lazy);
+
+  static Future<void> initialize({required BINARY_TREES lazy}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualBenchmarkApiTwinSyncSseBinaryTreesInitialize(
+              lazy: lazy);
+
+  @override
+  int get hashCode => privateField.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is BINARY_TREES &&
+          runtimeType == other.runtimeType &&
+          privateField == other.privateField;
+}
+
+class BINARY_TREES_PROTOBUF {
+  final void privateField;
+
+  const BINARY_TREES_PROTOBUF({
+    required this.privateField,
+  });
+
+  Future<void> deref() => RustLib.instance.api
+          .crateApiPseudoManualBenchmarkApiTwinSyncSseBinaryTreesProtobufDeref(
+        that: this,
+      );
+
+  Future<void> deref() => RustLib.instance.api
+          .crateApiPseudoManualBenchmarkApiTwinSyncSseBinaryTreesProtobufDeref(
+        that: this,
+      );
+
+  Future<void> deref() => RustLib.instance.api
+          .crateApiPseudoManualBenchmarkApiTwinSyncSseBinaryTreesProtobufDeref(
+        that: this,
+      );
+
+  Future<void> deref() => RustLib.instance.api
+          .crateApiPseudoManualBenchmarkApiTwinSyncSseBinaryTreesProtobufDeref(
+        that: this,
+      );
+
+  Future<void> deref() => RustLib.instance.api
+          .crateApiPseudoManualBenchmarkApiTwinSyncSseBinaryTreesProtobufDeref(
+        that: this,
+      );
+
+  Future<void> deref() => RustLib.instance.api
+          .crateApiPseudoManualBenchmarkApiTwinSyncSseBinaryTreesProtobufDeref(
+        that: this,
+      );
+
+  static Future<void> initialize({required BINARY_TREES_PROTOBUF lazy}) => RustLib
+      .instance.api
+      .crateApiPseudoManualBenchmarkApiTwinSyncSseBinaryTreesProtobufInitialize(
+          lazy: lazy);
+
+  static Future<void> initialize({required BINARY_TREES_PROTOBUF lazy}) => RustLib
+      .instance.api
+      .crateApiPseudoManualBenchmarkApiTwinSyncSseBinaryTreesProtobufInitialize(
+          lazy: lazy);
+
+  static Future<void> initialize({required BINARY_TREES_PROTOBUF lazy}) => RustLib
+      .instance.api
+      .crateApiPseudoManualBenchmarkApiTwinSyncSseBinaryTreesProtobufInitialize(
+          lazy: lazy);
+
+  static Future<void> initialize({required BINARY_TREES_PROTOBUF lazy}) => RustLib
+      .instance.api
+      .crateApiPseudoManualBenchmarkApiTwinSyncSseBinaryTreesProtobufInitialize(
+          lazy: lazy);
+
+  static Future<void> initialize({required BINARY_TREES_PROTOBUF lazy}) => RustLib
+      .instance.api
+      .crateApiPseudoManualBenchmarkApiTwinSyncSseBinaryTreesProtobufInitialize(
+          lazy: lazy);
+
+  static Future<void> initialize({required BINARY_TREES_PROTOBUF lazy}) => RustLib
+      .instance.api
+      .crateApiPseudoManualBenchmarkApiTwinSyncSseBinaryTreesProtobufInitialize(
+          lazy: lazy);
+
+  @override
+  int get hashCode => privateField.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is BINARY_TREES_PROTOBUF &&
+          runtimeType == other.runtimeType &&
+          privateField == other.privateField;
 }

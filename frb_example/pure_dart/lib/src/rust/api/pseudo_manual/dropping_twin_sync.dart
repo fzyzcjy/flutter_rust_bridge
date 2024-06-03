@@ -6,8 +6,6 @@
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These functions are ignored because they are not marked as `pub`: `deref`, `drop`, `initialize`
-
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DroppableTwinSync>>
 @sealed
 class DroppableTwinSync extends RustOpaque {
@@ -30,6 +28,11 @@ class DroppableTwinSync extends RustOpaque {
 
   Stream<int> createStreamTwinSync() => RustLib.instance.api
           .crateApiPseudoManualDroppingTwinSyncDroppableTwinSyncCreateStreamTwinSync(
+        that: this,
+      );
+
+  Future<void> drop() => RustLib.instance.api
+          .crateApiPseudoManualDroppingTwinSyncDroppableTwinSyncDrop(
         that: this,
       );
 

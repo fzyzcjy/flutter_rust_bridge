@@ -9,9 +9,6 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'dart_opaque_twin_sync_sse.freezed.dart';
 
-// These functions are ignored because they are not marked as `pub`: `deref`, `initialize`
-// These types are ignored because they are not used by any `pub` functions: `DART_OPAQUE`
-
 String asyncAcceptDartOpaqueTwinSyncSse({required Object opaque}) => RustLib
     .instance.api
     .crateApiPseudoManualDartOpaqueTwinSyncSseAsyncAcceptDartOpaqueTwinSyncSse(
@@ -95,6 +92,84 @@ List<Object> cloneDartOpaqueTwinSyncSse({required Object opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualDartOpaqueTwinSyncSseCloneDartOpaqueTwinSyncSse(
             opaque: opaque);
+
+class DART_OPAQUE {
+  final void privateField;
+
+  const DART_OPAQUE({
+    required this.privateField,
+  });
+
+  Future<void> deref() => RustLib.instance.api
+          .crateApiPseudoManualDartOpaqueTwinSyncSseDartOpaqueDeref(
+        that: this,
+      );
+
+  Future<void> deref() => RustLib.instance.api
+          .crateApiPseudoManualDartOpaqueTwinSyncSseDartOpaqueDeref(
+        that: this,
+      );
+
+  Future<void> deref() => RustLib.instance.api
+          .crateApiPseudoManualDartOpaqueTwinSyncSseDartOpaqueDeref(
+        that: this,
+      );
+
+  Future<void> deref() => RustLib.instance.api
+          .crateApiPseudoManualDartOpaqueTwinSyncSseDartOpaqueDeref(
+        that: this,
+      );
+
+  Future<void> deref() => RustLib.instance.api
+          .crateApiPseudoManualDartOpaqueTwinSyncSseDartOpaqueDeref(
+        that: this,
+      );
+
+  Future<void> deref() => RustLib.instance.api
+          .crateApiPseudoManualDartOpaqueTwinSyncSseDartOpaqueDeref(
+        that: this,
+      );
+
+  static Future<void> initialize({required DART_OPAQUE lazy}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualDartOpaqueTwinSyncSseDartOpaqueInitialize(
+              lazy: lazy);
+
+  static Future<void> initialize({required DART_OPAQUE lazy}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualDartOpaqueTwinSyncSseDartOpaqueInitialize(
+              lazy: lazy);
+
+  static Future<void> initialize({required DART_OPAQUE lazy}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualDartOpaqueTwinSyncSseDartOpaqueInitialize(
+              lazy: lazy);
+
+  static Future<void> initialize({required DART_OPAQUE lazy}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualDartOpaqueTwinSyncSseDartOpaqueInitialize(
+              lazy: lazy);
+
+  static Future<void> initialize({required DART_OPAQUE lazy}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualDartOpaqueTwinSyncSseDartOpaqueInitialize(
+              lazy: lazy);
+
+  static Future<void> initialize({required DART_OPAQUE lazy}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualDartOpaqueTwinSyncSseDartOpaqueInitialize(
+              lazy: lazy);
+
+  @override
+  int get hashCode => privateField.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is DART_OPAQUE &&
+          runtimeType == other.runtimeType &&
+          privateField == other.privateField;
+}
 
 class DartOpaqueNestedTwinSyncSse {
   final Object first;

@@ -8,8 +8,6 @@ import 'misc_example_twin_rust_async_sse.dart';
 import 'newtype_pattern_twin_rust_async_sse.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These functions are ignored because they are not marked as `pub`: `clone`, `clone`, `default`, `fmt`, `fmt`, `fmt`
-
 Future<double?> handleOptionalReturnTwinRustAsyncSse(
         {required double left, required double right}) =>
     RustLib.instance.api

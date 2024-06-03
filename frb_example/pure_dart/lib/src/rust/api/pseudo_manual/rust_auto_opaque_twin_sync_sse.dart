@@ -9,8 +9,7 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'rust_auto_opaque_twin_moi.dart';
 part 'rust_auto_opaque_twin_sync_sse.freezed.dart';
 
-// These functions are ignored because they are not marked as `pub`: `f`, `func_hello`, `func_hello`
-// These types are ignored because they are not used by any `pub` functions: `HelloOneStructTwinSyncSse`, `HelloTwoEnumTwinSyncSse`
+// These functions have error during generation (see debug logs for more details): `f`
 
 void rustAutoOpaqueArgOwnTwinSyncSse(
         {required NonCloneSimpleTwinSyncSse arg, required int expect}) =>
@@ -475,6 +474,40 @@ sealed class EnumWithGoodAndOpaqueTwinSyncSse
   const factory EnumWithGoodAndOpaqueTwinSyncSse.opaque(
     NonCloneSimpleTwinSyncSse field0,
   ) = EnumWithGoodAndOpaqueTwinSyncSse_Opaque;
+}
+
+class HelloOneStructTwinSyncSse {
+  final String inner;
+
+  const HelloOneStructTwinSyncSse({
+    required this.inner,
+  });
+
+  Future<void> funcHello() => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSyncSseHelloOneStructTwinSyncSseFuncHello(
+        that: this,
+      );
+
+  @override
+  int get hashCode => inner.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is HelloOneStructTwinSyncSse &&
+          runtimeType == other.runtimeType &&
+          inner == other.inner;
+}
+
+enum HelloTwoEnumTwinSyncSse {
+  a,
+  b,
+  ;
+
+  Future<void> funcHello() => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSyncSseHelloTwoEnumTwinSyncSseFuncHello(
+        that: this,
+      );
 }
 
 class StructWithExplicitAutoOpaqueFieldTwinSyncSse {

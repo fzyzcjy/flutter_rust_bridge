@@ -9,8 +9,7 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'rust_auto_opaque_twin_moi.dart';
 part 'rust_auto_opaque_twin_rust_async_moi.freezed.dart';
 
-// These functions are ignored because they are not marked as `pub`: `f`, `func_hello`, `func_hello`
-// These types are ignored because they are not used by any `pub` functions: `HelloOneStructTwinRustAsyncMoi`, `HelloTwoEnumTwinRustAsyncMoi`
+// These functions have error during generation (see debug logs for more details): `f`
 
 Future<void> rustAutoOpaqueArgOwnTwinRustAsyncMoi(
         {required NonCloneSimpleTwinRustAsyncMoi arg, required int expect}) =>
@@ -482,6 +481,40 @@ sealed class EnumWithGoodAndOpaqueTwinRustAsyncMoi
   const factory EnumWithGoodAndOpaqueTwinRustAsyncMoi.opaque(
     NonCloneSimpleTwinRustAsyncMoi field0,
   ) = EnumWithGoodAndOpaqueTwinRustAsyncMoi_Opaque;
+}
+
+class HelloOneStructTwinRustAsyncMoi {
+  final String inner;
+
+  const HelloOneStructTwinRustAsyncMoi({
+    required this.inner,
+  });
+
+  Future<void> funcHello() => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncMoiHelloOneStructTwinRustAsyncMoiFuncHello(
+        that: this,
+      );
+
+  @override
+  int get hashCode => inner.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is HelloOneStructTwinRustAsyncMoi &&
+          runtimeType == other.runtimeType &&
+          inner == other.inner;
+}
+
+enum HelloTwoEnumTwinRustAsyncMoi {
+  a,
+  b,
+  ;
+
+  Future<void> funcHello() => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncMoiHelloTwoEnumTwinRustAsyncMoiFuncHello(
+        that: this,
+      );
 }
 
 class StructWithExplicitAutoOpaqueFieldTwinRustAsyncMoi {

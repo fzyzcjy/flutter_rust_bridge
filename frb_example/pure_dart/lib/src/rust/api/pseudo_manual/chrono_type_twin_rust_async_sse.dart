@@ -6,8 +6,6 @@
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These functions are ignored because they are not marked as `pub`: `clone`, `fmt`
-
 Future<DateTime> datetimeUtcTwinRustAsyncSse({required DateTime d}) => RustLib
     .instance.api
     .crateApiPseudoManualChronoTypeTwinRustAsyncSseDatetimeUtcTwinRustAsyncSse(
