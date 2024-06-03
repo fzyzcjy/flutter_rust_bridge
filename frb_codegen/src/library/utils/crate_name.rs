@@ -13,6 +13,10 @@ impl CrateName {
         CrateName::new(Self::SELF_CRATE.to_owned())
     }
 
+    pub fn is_self_crate(&self) -> bool {
+        self.0 == Self::SELF_CRATE
+    }
+
     pub const fn new(raw: String) -> Self {
         Self(raw)
     }
