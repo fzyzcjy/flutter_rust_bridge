@@ -149,14 +149,14 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
     fn parse_owner(
         &mut self,
-        item_fn: &HirFunction,
+        func: &HirFunction,
         context: &TypeParserParsingContext,
         actual_method_dart_name: Option<String>,
     ) -> anyhow::Result<Option<MirFuncOwnerInfo>> {
-        Ok(Some(match &item_fn.item_impl {
+        Ok(Some(match &func.item_impl {
             None => MirFuncOwnerInfo::Function,
             Some(item_impl) => {
-                let sig = item_fn.item_fn.sig();
+                let sig = func.item_fn.sig();
                 let mode = if matches!(sig.inputs.first(), Some(FnArg::Receiver(..))) {
                     MirFuncOwnerInfoMethodMode::Instance
                 } else {
