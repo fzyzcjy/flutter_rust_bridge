@@ -155,7 +155,10 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     ) -> anyhow::Result<Option<MirFuncOwnerInfo>> {
         Ok(Some(match &func.owner {
             HirFunctionOwner::Function => MirFuncOwnerInfo::Function,
-            HirFunctionOwner::Method { item_impl, .. } => {
+            HirFunctionOwner::Method {
+                item_impl,
+                trait_def_name,
+            } => {
                 let sig = func.item_fn.sig();
                 let mode = if matches!(sig.inputs.first(), Some(FnArg::Receiver(..))) {
                     MirFuncOwnerInfoMethodMode::Instance
@@ -180,6 +183,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     actual_method_name,
                     actual_method_dart_name,
                     mode,
+                    trait_def_name: trait_def_name.to_owned(),
                 })
             }
         }))
