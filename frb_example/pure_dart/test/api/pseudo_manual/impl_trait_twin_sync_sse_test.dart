@@ -9,10 +9,12 @@ import 'package:test/test.dart';
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
-  test('SimpleTraitTwinSyncSse', () async {
-    expect((await SimpleTraitTwinSyncSse.simpleTraitFnTwinSyncSse()).value, 42);
+  test('StructWithTraitTwinSyncSse', () async {
+    expect((await StructWithTraitTwinSyncSse.simpleTraitFnTwinSyncSse()).value,
+        42);
     expect(
-        await SimpleTraitTwinSyncSse.simpleTraitFnWithDefaultImplTwinSyncSse(),
+        await StructWithTraitTwinSyncSse
+            .simpleTraitFnWithDefaultImplTwinSyncSse(),
         42);
   });
 }

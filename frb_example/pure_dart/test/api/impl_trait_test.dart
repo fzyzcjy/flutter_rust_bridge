@@ -6,8 +6,11 @@ Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   test('StructWithTraitTwinNormal', () async {
-    expect((await StructWithTraitTwinNormal.simpleTraitFnTwinNormal()).value, 42);
-    expect(await StructWithTraitTwinNormal.simpleTraitFnWithDefaultImplTwinNormal(),
+    expect(
+        (await StructWithTraitTwinNormal.simpleTraitFnTwinNormal()).value, 42);
+    expect(
+        await StructWithTraitTwinNormal
+            .simpleTraitFnWithDefaultImplTwinNormal(),
         42);
   });
 }
