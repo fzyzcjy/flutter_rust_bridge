@@ -106,6 +106,7 @@ fn generate_imports(
         )
         .filter_map(|method| method.trait_def_name.clone())
         .map(|name| format!("use {};\n", name.rust_style()))
+        .unique()
         .join("");
 
     // NOTE Do *not* use imports when possible, instead use fully specified name directly
