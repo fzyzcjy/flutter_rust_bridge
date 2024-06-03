@@ -54,15 +54,7 @@ fn transform_module_content_functions(
     transform_module_content_general_vec(
         target,
         src_content_functions,
-        |x| {
-            let owner = match &x.inner {
-                HirFunctionInner::Method { item_impl, .. } => {
-                    Some(ty_to_string(&item_impl.self_ty))
-                }
-                _ => None,
-            };
-            (owner, x.inner.name())
-        },
+        |x| x.inner.owner_and_name(),
         |target, src| {
             target
                 .inner
@@ -70,10 +62,6 @@ fn transform_module_content_functions(
                 .extend(src.inner.attrs().to_owned());
         },
     )
-}
-
-fn ty_to_string(ty: &syn::Type) -> String {
-    quote::quote!(#ty).to_string()
 }
 
 fn transform_module_content_struct_or_enums<Item: SynItemStructOrEnum>(
