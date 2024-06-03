@@ -2,7 +2,7 @@ use crate::utils::namespace::Namespace;
 use proc_macro2::Span;
 use serde::Serialize;
 use syn::spanned::Spanned;
-use syn::{Attribute, ImplItemFn, ItemFn, ItemImpl, ItemTrait, Signature, TraitItemFn, Visibility};
+use syn::{Attribute, ImplItemFn, ItemFn, ItemImpl, Signature, TraitItemFn, Visibility};
 
 #[derive(Debug, Clone, Serialize)]
 pub(crate) struct HirFunction {
