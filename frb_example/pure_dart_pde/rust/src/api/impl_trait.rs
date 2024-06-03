@@ -1,15 +1,15 @@
 // AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
 
-pub struct StructWithTraitTwinNormal {
-    pub value: u32,
+pub struct StructWithDefaultValue {
+    pub val: u32,
 }
 
-pub trait SimpleTraitTwinNormal {
-    fn simple_trait_fn_twin_normal() -> Self;
+pub trait TestTrait {
+    fn trait_fun() -> Self;
 }
 
-impl SimpleTraitTwinNormal for StructWithTraitTwinNormal {
-    fn simple_trait_fn_twin_normal() -> Self {
-        StructWithTraitTwinNormal { value: 42 }
+impl TestTrait for StructWithDefaultValue {
+    fn trait_fun() -> Self {
+        StructWithDefaultValue { val: 42 }
     }
 }

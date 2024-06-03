@@ -9,7 +9,7 @@ import 'package:test/test.dart';
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
-  test('StructWithDefaultValue', () async {
-    expect(await StructWithDefaultValue.trait_fun().val, 42);
+  test('SimpleTraitTwinSync', () async {
+    expect((await SimpleTraitTwinSync.simpleTraitFnTwinSync()).value, 42);
   });
 }
