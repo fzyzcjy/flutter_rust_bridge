@@ -37,7 +37,7 @@ fn compute_methods(module: &HirModule, trait_map: &HashMap<String, HirTrait>) ->
                 .map(|t| parse_trait_def_functions(t))
                 .unwrap_or_default();
 
-            TODO
+            merge_functions(impl_functions, def_functions)
         })
         .collect_vec()
 }
@@ -52,4 +52,11 @@ fn parse_trait_def_functions(trait_def: &HirTrait) -> Vec<HirFunction> {
             inner: TODO,
         })
         .collect_vec()
+}
+
+fn merge_functions(
+    high_priority_functions: Vec<HirFunction>,
+    low_priority_functions: Vec<HirFunction>,
+) -> Vec<HirFunction> {
+    todo!()
 }
