@@ -1,5 +1,6 @@
 mod pub_use_transformer;
 mod syn_item;
+mod macro_encoded_transformer;
 
 use crate::codegen::ir::hir::hierarchical::module::{HirModule, HirModuleContent, HirModuleMeta};
 use crate::codegen::parser::hir::hierarchical::function::parse_generalized_functions;
@@ -10,8 +11,9 @@ pub(crate) fn parse_module(
     meta: HirModuleMeta,
     config: &ParserHirInternalConfig,
 ) -> anyhow::Result<HirModule> {
-    let module = parse_raw(items, meta, config)?;
-    let module = pub_use_transformer::transform(module, items)?;
+    let items = macro_encoded_transformer::transform(items)?;
+    let module = parse_raw(&items, meta, config)?;
+    let module = pub_use_transformer::transform(module, &items)?;
     Ok(module)
 }
 
