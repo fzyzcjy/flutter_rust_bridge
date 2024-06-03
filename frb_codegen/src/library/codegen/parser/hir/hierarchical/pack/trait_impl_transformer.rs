@@ -4,7 +4,6 @@ use crate::codegen::ir::hir::hierarchical::pack::HirPack;
 use crate::codegen::ir::hir::hierarchical::traits::HirTrait;
 use fern::HashMap;
 use itertools::Itertools;
-use crate::codegen::parser::hir::hierarchical::function::parse_syn_impl_item_fn;
 
 pub(super) fn transform(mut pack: HirPack) -> anyhow::Result<HirPack> {
     let trait_map = collect_traits(&pack);
@@ -29,10 +28,6 @@ fn compute_methods(module: &HirModule, trait_map: &HashMap<String, HirTrait>) ->
             let trait_name_raw = trait_impl.item_impl.trait_.unwrap().1;
             let trait_name = trait_name_raw.segments.last().unwrap().ident.to_string();
             let trait_def = trait_map.get(trait_name);
-
-            let trait_impl_functions = trait_impl.item_impl.items.iter()
-                .map(|item| parse_syn_impl_item_fn())
-
             TODO
         })
         .collect_vec()
