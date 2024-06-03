@@ -35,7 +35,7 @@ fn compute_methods(module: &HirModule, trait_map: &HashMap<String, HirTrait>) ->
             let trait_name = trait_name_raw.segments.last().unwrap().ident.to_string();
             let trait_def = trait_map.get(&trait_name);
 
-            let impl_functions = parse_syn_item_impl(&trait_impl.item_impl, namespace);
+            let impl_functions = parse_syn_item_impl(&trait_impl.item_impl, namespace, true);
             let def_functions = trait_def
                 .map(|t| parse_trait_def_functions(t, &trait_impl.item_impl, namespace))
                 .unwrap_or_default();

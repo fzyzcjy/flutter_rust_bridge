@@ -36,7 +36,7 @@ pub(super) fn parse_syn_item(
             if item_impl.trait_.is_some() {
                 (scope.trait_impls).push(parse_trait_impl(item_impl, namespace));
             } else {
-                (scope.functions).extend(parse_syn_item_impl(item_impl, namespace));
+                (scope.functions).extend(parse_syn_item_impl(item_impl, namespace, false));
             }
         }
         syn::Item::Trait(item_trait) => {

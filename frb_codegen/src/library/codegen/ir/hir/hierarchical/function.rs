@@ -87,7 +87,7 @@ impl GeneralItemFn {
                 inner,
                 owned_by_trait,
             } => {
-                if owned_by_trait {
+                if *owned_by_trait {
                     None
                 } else {
                     Some(&inner.vis)
