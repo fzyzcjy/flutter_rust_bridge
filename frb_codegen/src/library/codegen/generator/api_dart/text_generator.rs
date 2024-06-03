@@ -144,7 +144,7 @@ fn generate_function(func: &ApiDartGeneratedFunction) -> String {
     format!("{func_comments}{func_expr} => {func_impl};")
 }
 
-fn compute_path_from_namespace(
+pub(crate) fn compute_path_from_namespace(
     dart_decl_base_output_path: &Path,
     namespace: &Namespace,
 ) -> PathBuf {
