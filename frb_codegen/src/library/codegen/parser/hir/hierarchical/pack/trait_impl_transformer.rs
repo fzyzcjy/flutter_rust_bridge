@@ -6,7 +6,7 @@ use crate::codegen::ir::hir::hierarchical::pack::HirPack;
 use crate::codegen::ir::hir::hierarchical::traits::HirTrait;
 use crate::codegen::parser::hir::hierarchical::function::parse_syn_item_impl;
 use crate::if_then_some;
-use crate::utils::namespace::Namespace;
+use crate::utils::namespace::{Namespace, NamespacedName};
 use itertools::{concat, Itertools};
 use std::collections::HashMap;
 use syn::{ItemImpl, TraitItem};
@@ -42,10 +42,20 @@ fn compute_methods(module: &HirModule, trait_map: &HashMap<String, HirTrait>) ->
             // Only parse impl of known traits by default, otherwise things like `lazy_staic!`
             // will introduce a ton of unwanted trait impls.
             if let Some(trait_def) = trait_map.get(&trait_name) {
-                let impl_functions =
-                    parse_syn_item_impl(&trait_impl.item_impl, namespace, Some(TODO));
-                let def_functions =
-                    parse_trait_def_functions(trait_def, &trait_impl.item_impl, namespace);
+                let trait_def_name =
+                    NamespacedName::new(trait_def.namespace.clone(), trait_name.clone());
+
+                let impl_functions = parse_syn_item_impl(
+                    &trait_impl.item_impl,
+                    namespace,
+                    Some(trait_def_name.clone()),
+                );
+                let def_functions = parse_trait_def_functions(
+                    trait_def,
+                    &trait_impl.item_impl,
+                    namespace,
+                    &trait_def_name,
+                );
 
                 concat([impl_functions, def_functions])
                     .into_iter()
@@ -62,6 +72,7 @@ fn parse_trait_def_functions(
     trait_def: &HirTrait,
     item_impl: &ItemImpl,
     namespace: &Namespace,
+    trait_def_name: &NamespacedName,
 ) -> Vec<HirFunction> {
     (trait_def.item_trait.items.iter())
         .filter_map(
@@ -71,7 +82,7 @@ fn parse_trait_def_functions(
             namespace: namespace.clone(),
             owner: HirFunctionOwner::Method {
                 item_impl: item_impl.to_owned(),
-                trait_def_name: Some(TODO),
+                trait_def_name: Some(trait_def_name.to_owned()),
             },
             item_fn: GeneralizedItemFn::TraitItemFn(trait_item_fn.to_owned()),
         })
