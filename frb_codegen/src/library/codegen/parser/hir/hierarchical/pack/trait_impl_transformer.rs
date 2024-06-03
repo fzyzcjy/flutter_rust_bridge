@@ -46,7 +46,7 @@ fn compute_methods(module: &HirModule, trait_map: &HashMap<String, HirTrait>) ->
                 return vec![];
             }
 
-            let impl_functions = parse_syn_item_impl(&trait_impl.item_impl, namespace, TODO);
+            let impl_functions = parse_syn_item_impl(&trait_impl.item_impl, namespace, Some(TODO));
             let def_functions = trait_def
                 .map(|t| parse_trait_def_functions(t, &trait_impl.item_impl, namespace))
                 .unwrap_or_default();
