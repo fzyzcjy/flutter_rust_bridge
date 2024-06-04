@@ -86,6 +86,7 @@ fn generate_api_method(
         default_constructor_mode,
         &api_dart_func,
         &method_name,
+        mode,
     );
 
     let maybe_implementation = match mode {
@@ -135,6 +136,7 @@ fn generate_signature(
     default_constructor_mode: Option<MirFuncDefaultConstructorMode>,
     api_dart_func: &ApiDartGeneratedFunction,
     method_name: &str,
+    mode: GenerateApiMethodMode,
 ) -> String {
     let is_static_method = method_info.mode == MirFuncOwnerInfoMethodMode::Static;
     let maybe_static = if is_static_method { "static" } else { "" };
@@ -158,7 +160,13 @@ fn generate_signature(
     };
 
     if default_constructor_mode == Some(MirFuncDefaultConstructorMode::DartConstructor) {
-        return format!("factory {return_type}{func_params}");
+        let owner_ty_name = method_info.owner_ty_name().unwrap().name;
+        let class_postfix = if mode == GenerateApiMethodMode::SeparatedImpl {
+            "Impl"
+        } else {
+            ""
+        };
+        return format!("factory {owner_ty_name}{class_postfix}{func_params}");
     }
 
     format!("{maybe_static} {return_type} {maybe_accessor} {method_name}{func_params}")
