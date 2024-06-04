@@ -272,7 +272,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
           MyStruct self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(self.frbInternalSseEncode(move: true), serializer);
+    sse_encode_usize(
+        (self as MyStructImpl).frbInternalSseEncode(move: true), serializer);
   }
 
   @protected
@@ -280,7 +281,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
           MyStruct self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(self.frbInternalSseEncode(move: false), serializer);
+    sse_encode_usize(
+        (self as MyStructImpl).frbInternalSseEncode(move: false), serializer);
   }
 
   @protected
@@ -288,7 +290,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
           MyStruct self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(self.frbInternalSseEncode(move: null), serializer);
+    sse_encode_usize(
+        (self as MyStructImpl).frbInternalSseEncode(move: null), serializer);
   }
 
   @protected
