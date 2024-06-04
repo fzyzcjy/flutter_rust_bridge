@@ -70145,6 +70145,1213 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 // Section: boilerplate
 
 @sealed
+class StructInMiscNoTwinExampleBImpl extends RustOpaque
+    implements StructInMiscNoTwinExampleB {
+  // Not to be used by end users
+  StructInMiscNoTwinExampleBImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  StructInMiscNoTwinExampleBImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_StructInMiscNoTwinExampleB,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_StructInMiscNoTwinExampleB,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_StructInMiscNoTwinExampleBPtr,
+  );
+
+  Future<StructInMiscNoTwinExampleA> getStructInMiscNoTwinExampleA() =>
+      RustLib.instance.api
+          .crateApiMiscNoTwinExampleBStructInMiscNoTwinExampleBGetStructInMiscNoTwinExampleA(
+        that: this,
+      );
+
+  Future<void> sampleFunctionB() => RustLib.instance.api
+          .crateApiMiscNoTwinExampleBStructInMiscNoTwinExampleBSampleFunctionB(
+        that: this,
+      );
+}
+
+@sealed
+class BoxAnyMyDartTypeRenameImpl extends RustOpaque
+    implements BoxAnyMyDartTypeRename {
+  // Not to be used by end users
+  BoxAnyMyDartTypeRenameImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  BoxAnyMyDartTypeRenameImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_BoxAnyMyDartTypeRename,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_BoxAnyMyDartTypeRename,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_BoxAnyMyDartTypeRenamePtr,
+  );
+}
+
+@sealed
+class DeliberateFailSanityCheckTwinNormalImpl extends RustOpaque
+    implements DeliberateFailSanityCheckTwinNormal {
+  // Not to be used by end users
+  DeliberateFailSanityCheckTwinNormalImpl.frbInternalDcoDecode(
+      List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  DeliberateFailSanityCheckTwinNormalImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_DeliberateFailSanityCheckTwinNormal,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_DeliberateFailSanityCheckTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_DeliberateFailSanityCheckTwinNormalPtr,
+  );
+
+  Uint8List get deliberateBadFieldA => RustLib.instance.api
+          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetDeliberateBadFieldA(
+        that: this,
+      );
+
+  OpaqueItemTwinNormal get deliberateBadFieldB => RustLib.instance.api
+          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetDeliberateBadFieldB(
+        that: this,
+      );
+
+  List<OpaqueItemTwinNormal> get deliberateBadFieldC => RustLib.instance.api
+          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetDeliberateBadFieldC(
+        that: this,
+      );
+
+  String get goodFieldA => RustLib.instance.api
+          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetGoodFieldA(
+        that: this,
+      );
+
+  int get goodFieldB => RustLib.instance.api
+          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetGoodFieldB(
+        that: this,
+      );
+
+  OpaqueItemTwinNormal get goodFieldC => RustLib.instance.api
+          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetGoodFieldC(
+        that: this,
+      );
+
+  void set deliberateBadFieldA(Uint8List deliberateBadFieldA) => RustLib
+      .instance.api
+      .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetDeliberateBadFieldA(
+          that: this, deliberateBadFieldA: deliberateBadFieldA);
+
+  void set deliberateBadFieldB(OpaqueItemTwinNormal deliberateBadFieldB) => RustLib
+      .instance.api
+      .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetDeliberateBadFieldB(
+          that: this, deliberateBadFieldB: deliberateBadFieldB);
+
+  void set deliberateBadFieldC(
+          List<OpaqueItemTwinNormal> deliberateBadFieldC) =>
+      RustLib.instance.api
+          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetDeliberateBadFieldC(
+              that: this, deliberateBadFieldC: deliberateBadFieldC);
+
+  void set goodFieldA(String goodFieldA) => RustLib.instance.api
+      .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetGoodFieldA(
+          that: this, goodFieldA: goodFieldA);
+
+  void set goodFieldB(int goodFieldB) => RustLib.instance.api
+      .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetGoodFieldB(
+          that: this, goodFieldB: goodFieldB);
+
+  void set goodFieldC(OpaqueItemTwinNormal goodFieldC) => RustLib.instance.api
+      .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetGoodFieldC(
+          that: this, goodFieldC: goodFieldC);
+}
+
+@sealed
+class ItemContainerSolutionOneTwinNormalImpl extends RustOpaque
+    implements ItemContainerSolutionOneTwinNormal {
+  // Not to be used by end users
+  ItemContainerSolutionOneTwinNormalImpl.frbInternalDcoDecode(
+      List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  ItemContainerSolutionOneTwinNormalImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_ItemContainerSolutionOneTwinNormal,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_ItemContainerSolutionOneTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_ItemContainerSolutionOneTwinNormalPtr,
+  );
+
+  Future<Int32List> getItemContentsTwinNormal() => RustLib.instance.api
+          .crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalGetItemContentsTwinNormal(
+        that: this,
+      );
+
+  String get name => RustLib.instance.api
+          .crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalGetName(
+        that: this,
+      );
+
+  void set name(String name) => RustLib.instance.api
+      .crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalSetName(
+          that: this, name: name);
+}
+
+@sealed
+class OpaqueItemTwinNormalImpl extends RustOpaque
+    implements OpaqueItemTwinNormal {
+  // Not to be used by end users
+  OpaqueItemTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  OpaqueItemTwinNormalImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_OpaqueItemTwinNormal,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_OpaqueItemTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_OpaqueItemTwinNormalPtr,
+  );
+}
+
+@sealed
+class StructInMiscNoTwinExampleAImpl extends RustOpaque
+    implements StructInMiscNoTwinExampleA {
+  // Not to be used by end users
+  StructInMiscNoTwinExampleAImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  StructInMiscNoTwinExampleAImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_StructInMiscNoTwinExampleA,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_StructInMiscNoTwinExampleA,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_StructInMiscNoTwinExampleAPtr,
+  );
+
+  Future<void> sampleFunctionA() => RustLib.instance.api
+          .crateApiMiscNoTwinExampleAStructInMiscNoTwinExampleASampleFunctionA(
+        that: this,
+      );
+}
+
+@sealed
+class StructWithImplBlockInMultiFileImpl extends RustOpaque
+    implements StructWithImplBlockInMultiFile {
+  // Not to be used by end users
+  StructWithImplBlockInMultiFileImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  StructWithImplBlockInMultiFileImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_StructWithImplBlockInMultiFile,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_StructWithImplBlockInMultiFile,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_StructWithImplBlockInMultiFilePtr,
+  );
+
+  Future<void> methodInA() => RustLib.instance.api
+          .crateApiMiscNoTwinExampleAStructWithImplBlockInMultiFileMethodInA(
+        that: this,
+      );
+
+  Future<void> methodInB() => RustLib.instance.api
+          .crateApiMiscNoTwinExampleBStructWithImplBlockInMultiFileMethodInB(
+        that: this,
+      );
+}
+
+@sealed
+class StructWithSimpleSetterTwinNormalImpl extends RustOpaque
+    implements StructWithSimpleSetterTwinNormal {
+  // Not to be used by end users
+  StructWithSimpleSetterTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  StructWithSimpleSetterTwinNormalImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_StructWithSimpleSetterTwinNormal,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_StructWithSimpleSetterTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_StructWithSimpleSetterTwinNormalPtr,
+  );
+
+  int get simpleGetter => RustLib.instance.api
+          .crateApiMiscNoTwinExampleAStructWithSimpleSetterTwinNormalSimpleGetter(
+        that: this,
+      );
+
+  void set simpleSetter(int value) => RustLib.instance.api
+      .crateApiMiscNoTwinExampleAStructWithSimpleSetterTwinNormalSimpleSetter(
+          that: this, value: value);
+}
+
+@sealed
+class DroppableTwinSyncImpl extends RustOpaque implements DroppableTwinSync {
+  // Not to be used by end users
+  DroppableTwinSyncImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  DroppableTwinSyncImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_DroppableTwinSync,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_DroppableTwinSync,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_DroppableTwinSyncPtr,
+  );
+
+  Stream<int> createStreamTwinSync() => RustLib.instance.api
+          .crateApiPseudoManualDroppingTwinSyncDroppableTwinSyncCreateStreamTwinSync(
+        that: this,
+      );
+
+  void simpleMethodTwinSync() => RustLib.instance.api
+          .crateApiPseudoManualDroppingTwinSyncDroppableTwinSyncSimpleMethodTwinSync(
+        that: this,
+      );
+}
+
+@sealed
+class DroppableTwinRustAsyncImpl extends RustOpaque
+    implements DroppableTwinRustAsync {
+  // Not to be used by end users
+  DroppableTwinRustAsyncImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  DroppableTwinRustAsyncImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_DroppableTwinRustAsync,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_DroppableTwinRustAsync,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_DroppableTwinRustAsyncPtr,
+  );
+
+  Stream<int> createStreamTwinRustAsync() => RustLib.instance.api
+          .crateApiPseudoManualDroppingTwinRustAsyncDroppableTwinRustAsyncCreateStreamTwinRustAsync(
+        that: this,
+      );
+
+  Future<void> simpleMethodTwinRustAsync() => RustLib.instance.api
+          .crateApiPseudoManualDroppingTwinRustAsyncDroppableTwinRustAsyncSimpleMethodTwinRustAsync(
+        that: this,
+      );
+}
+
+@sealed
+class DroppableTwinNormalImpl extends RustOpaque
+    implements DroppableTwinNormal {
+  // Not to be used by end users
+  DroppableTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  DroppableTwinNormalImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_DroppableTwinNormal,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_DroppableTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_DroppableTwinNormalPtr,
+  );
+
+  Stream<int> createStream() =>
+      RustLib.instance.api.crateApiDroppingDroppableTwinNormalCreateStream(
+        that: this,
+      );
+
+  Future<void> simpleMethodTwinNormal() => RustLib.instance.api
+          .crateApiDroppingDroppableTwinNormalSimpleMethodTwinNormal(
+        that: this,
+      );
+}
+
+@sealed
+class FrbOpaqueSyncReturnTwinNormalImpl extends RustOpaque
+    implements FrbOpaqueSyncReturnTwinNormal {
+  // Not to be used by end users
+  FrbOpaqueSyncReturnTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  FrbOpaqueSyncReturnTwinNormalImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_FrbOpaqueSyncReturnTwinNormal,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_FrbOpaqueSyncReturnTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_FrbOpaqueSyncReturnTwinNormalPtr,
+  );
+}
+
+@sealed
+class HideDataAnotherTwinNormalImpl extends RustOpaque
+    implements HideDataAnotherTwinNormal {
+  // Not to be used by end users
+  HideDataAnotherTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  HideDataAnotherTwinNormalImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_HideDataAnotherTwinNormal,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_HideDataAnotherTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_HideDataAnotherTwinNormalPtr,
+  );
+}
+
+@sealed
+class StaticGetterOnlyTwinSyncImpl extends RustOpaque
+    implements StaticGetterOnlyTwinSync {
+  // Not to be used by end users
+  StaticGetterOnlyTwinSyncImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  StaticGetterOnlyTwinSyncImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_StaticGetterOnlyTwinSync,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_StaticGetterOnlyTwinSync,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_StaticGetterOnlyTwinSyncPtr,
+  );
+}
+
+@sealed
+class StaticGetterOnlyTwinNormalImpl extends RustOpaque
+    implements StaticGetterOnlyTwinNormal {
+  // Not to be used by end users
+  StaticGetterOnlyTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  StaticGetterOnlyTwinNormalImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_StaticGetterOnlyTwinNormal,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_StaticGetterOnlyTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_StaticGetterOnlyTwinNormalPtr,
+  );
+}
+
+@sealed
+class BoxHelloTraitTwinNormalImpl extends RustOpaque
+    implements BoxHelloTraitTwinNormal {
+  // Not to be used by end users
+  BoxHelloTraitTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  BoxHelloTraitTwinNormalImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_BoxHelloTraitTwinNormal,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_BoxHelloTraitTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_BoxHelloTraitTwinNormalPtr,
+  );
+}
+
+@sealed
+class BoxMyTraitTwinNormalImpl extends RustOpaque
+    implements BoxMyTraitTwinNormal {
+  // Not to be used by end users
+  BoxMyTraitTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  BoxMyTraitTwinNormalImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_BoxMyTraitTwinNormal,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_BoxMyTraitTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_BoxMyTraitTwinNormalPtr,
+  );
+}
+
+@sealed
+class EnumWithGoodAndOpaqueWithoutOptionTwinNormalImpl extends RustOpaque
+    implements EnumWithGoodAndOpaqueWithoutOptionTwinNormal {
+  // Not to be used by end users
+  EnumWithGoodAndOpaqueWithoutOptionTwinNormalImpl.frbInternalDcoDecode(
+      List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  EnumWithGoodAndOpaqueWithoutOptionTwinNormalImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_EnumWithGoodAndOpaqueWithoutOptionTwinNormal,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_EnumWithGoodAndOpaqueWithoutOptionTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_EnumWithGoodAndOpaqueWithoutOptionTwinNormalPtr,
+  );
+}
+
+@sealed
+class HelloOneStructTwinNormalImpl extends RustOpaque
+    implements HelloOneStructTwinNormal {
+  // Not to be used by end users
+  HelloOneStructTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  HelloOneStructTwinNormalImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_HelloOneStructTwinNormal,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_HelloOneStructTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_HelloOneStructTwinNormalPtr,
+  );
+
+  Future<void> funcHello() => RustLib.instance.api
+          .crateApiRustAutoOpaqueHelloOneStructTwinNormalFuncHello(
+        that: this,
+      );
+}
+
+@sealed
+class NonCloneSimpleEnumTwinNormalImpl extends RustOpaque
+    implements NonCloneSimpleEnumTwinNormal {
+  // Not to be used by end users
+  NonCloneSimpleEnumTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  NonCloneSimpleEnumTwinNormalImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_NonCloneSimpleEnumTwinNormal,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_NonCloneSimpleEnumTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_NonCloneSimpleEnumTwinNormalPtr,
+  );
+}
+
+@sealed
+class NonCloneSimpleTwinNormalImpl extends RustOpaque
+    implements NonCloneSimpleTwinNormal {
+  // Not to be used by end users
+  NonCloneSimpleTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  NonCloneSimpleTwinNormalImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_NonCloneSimpleTwinNormal,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_NonCloneSimpleTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_NonCloneSimpleTwinNormalPtr,
+  );
+
+  Future<void> instanceMethodArgBorrowTwinNormal() => RustLib.instance.api
+          .crateApiRustAutoOpaqueNonCloneSimpleTwinNormalInstanceMethodArgBorrowTwinNormal(
+        that: this,
+      );
+
+  Future<void> instanceMethodArgMutBorrowTwinNormal() => RustLib.instance.api
+          .crateApiRustAutoOpaqueNonCloneSimpleTwinNormalInstanceMethodArgMutBorrowTwinNormal(
+        that: this,
+      );
+
+  Future<void> instanceMethodArgOwnTwinNormal() => RustLib.instance.api
+          .crateApiRustAutoOpaqueNonCloneSimpleTwinNormalInstanceMethodArgOwnTwinNormal(
+        that: this,
+      );
+
+  Future<int> get instanceMethodGetterTwinNormal => RustLib.instance.api
+          .crateApiRustAutoOpaqueNonCloneSimpleTwinNormalInstanceMethodGetterTwinNormal(
+        that: this,
+      );
+
+  Future<NonCloneSimpleTwinNormal> instanceMethodReturnOwnTwinNormal() =>
+      RustLib.instance.api
+          .crateApiRustAutoOpaqueNonCloneSimpleTwinNormalInstanceMethodReturnOwnTwinNormal(
+        that: this,
+      );
+}
+
+@sealed
+class OpaqueOneTwinNormalImpl extends RustOpaque
+    implements OpaqueOneTwinNormal {
+  // Not to be used by end users
+  OpaqueOneTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  OpaqueOneTwinNormalImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_OpaqueOneTwinNormal,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_OpaqueOneTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_OpaqueOneTwinNormalPtr,
+  );
+}
+
+@sealed
+class OpaqueTwoTwinNormalImpl extends RustOpaque
+    implements OpaqueTwoTwinNormal {
+  // Not to be used by end users
+  OpaqueTwoTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  OpaqueTwoTwinNormalImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_OpaqueTwoTwinNormal,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_OpaqueTwoTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_OpaqueTwoTwinNormalPtr,
+  );
+}
+
+@sealed
+class StructWithGoodAndOpaqueFieldWithoutOptionTwinNormalImpl extends RustOpaque
+    implements StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal {
+  // Not to be used by end users
+  StructWithGoodAndOpaqueFieldWithoutOptionTwinNormalImpl.frbInternalDcoDecode(
+      List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  StructWithGoodAndOpaqueFieldWithoutOptionTwinNormalImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldWithoutOptionTwinNormalPtr,
+  );
+
+  String get good => RustLib.instance.api
+          .crateApiRustAutoOpaqueStructWithGoodAndOpaqueFieldWithoutOptionTwinNormalGetGood(
+        that: this,
+      );
+
+  void set good(String good) => RustLib.instance.api
+      .crateApiRustAutoOpaqueStructWithGoodAndOpaqueFieldWithoutOptionTwinNormalSetGood(
+          that: this, good: good);
+}
+
+@sealed
+class BoxDartDebugTwinNormalImpl extends RustOpaque
+    implements BoxDartDebugTwinNormal {
+  // Not to be used by end users
+  BoxDartDebugTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  BoxDartDebugTwinNormalImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_BoxDartDebugTwinNormal,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_BoxDartDebugTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_BoxDartDebugTwinNormalPtr,
+  );
+}
+
+@sealed
+class FrbOpaqueReturnTwinNormalImpl extends RustOpaque
+    implements FrbOpaqueReturnTwinNormal {
+  // Not to be used by end users
+  FrbOpaqueReturnTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  FrbOpaqueReturnTwinNormalImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_FrbOpaqueReturnTwinNormal,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_FrbOpaqueReturnTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_FrbOpaqueReturnTwinNormalPtr,
+  );
+}
+
+@sealed
+class HideDataTwinNormalImpl extends RustOpaque implements HideDataTwinNormal {
+  // Not to be used by end users
+  HideDataTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  HideDataTwinNormalImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_HideDataTwinNormal,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_HideDataTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_HideDataTwinNormalPtr,
+  );
+}
+
+@sealed
+class MutexHideDataTwinNormalImpl extends RustOpaque
+    implements MutexHideDataTwinNormal {
+  // Not to be used by end users
+  MutexHideDataTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  MutexHideDataTwinNormalImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_MutexHideDataTwinNormal,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_MutexHideDataTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_MutexHideDataTwinNormalPtr,
+  );
+}
+
+@sealed
+class NonCloneDataTwinNormalImpl extends RustOpaque
+    implements NonCloneDataTwinNormal {
+  // Not to be used by end users
+  NonCloneDataTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  NonCloneDataTwinNormalImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_NonCloneDataTwinNormal,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_NonCloneDataTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_NonCloneDataTwinNormalPtr,
+  );
+}
+
+@sealed
+class RwLockHideDataTwinNormalImpl extends RustOpaque
+    implements RwLockHideDataTwinNormal {
+  // Not to be used by end users
+  RwLockHideDataTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  RwLockHideDataTwinNormalImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_RwLockHideDataTwinNormal,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_RwLockHideDataTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_RwLockHideDataTwinNormalPtr,
+  );
+}
+
+@sealed
+class BoxDartDebugTwinSyncImpl extends RustOpaque
+    implements BoxDartDebugTwinSync {
+  // Not to be used by end users
+  BoxDartDebugTwinSyncImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  BoxDartDebugTwinSyncImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_BoxDartDebugTwinSync,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_BoxDartDebugTwinSync,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_BoxDartDebugTwinSyncPtr,
+  );
+}
+
+@sealed
+class FrbOpaqueReturnTwinSyncImpl extends RustOpaque
+    implements FrbOpaqueReturnTwinSync {
+  // Not to be used by end users
+  FrbOpaqueReturnTwinSyncImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  FrbOpaqueReturnTwinSyncImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_FrbOpaqueReturnTwinSync,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_FrbOpaqueReturnTwinSync,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_FrbOpaqueReturnTwinSyncPtr,
+  );
+}
+
+@sealed
+class HideDataTwinSyncImpl extends RustOpaque implements HideDataTwinSync {
+  // Not to be used by end users
+  HideDataTwinSyncImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  HideDataTwinSyncImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_HideDataTwinSync,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_HideDataTwinSync,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_HideDataTwinSyncPtr,
+  );
+}
+
+@sealed
+class MutexHideDataTwinSyncImpl extends RustOpaque
+    implements MutexHideDataTwinSync {
+  // Not to be used by end users
+  MutexHideDataTwinSyncImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  MutexHideDataTwinSyncImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_MutexHideDataTwinSync,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_MutexHideDataTwinSync,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_MutexHideDataTwinSyncPtr,
+  );
+}
+
+@sealed
+class NonCloneDataTwinSyncImpl extends RustOpaque
+    implements NonCloneDataTwinSync {
+  // Not to be used by end users
+  NonCloneDataTwinSyncImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  NonCloneDataTwinSyncImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_NonCloneDataTwinSync,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_NonCloneDataTwinSync,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_NonCloneDataTwinSyncPtr,
+  );
+}
+
+@sealed
+class RwLockHideDataTwinSyncImpl extends RustOpaque
+    implements RwLockHideDataTwinSync {
+  // Not to be used by end users
+  RwLockHideDataTwinSyncImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  RwLockHideDataTwinSyncImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_RwLockHideDataTwinSync,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_RwLockHideDataTwinSync,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_RwLockHideDataTwinSyncPtr,
+  );
+}
+
+@sealed
+class BoxHelloTraitTwinSyncImpl extends RustOpaque
+    implements BoxHelloTraitTwinSync {
+  // Not to be used by end users
+  BoxHelloTraitTwinSyncImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  BoxHelloTraitTwinSyncImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_BoxHelloTraitTwinSync,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_BoxHelloTraitTwinSync,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_BoxHelloTraitTwinSyncPtr,
+  );
+}
+
+@sealed
+class BoxMyTraitTwinSyncImpl extends RustOpaque implements BoxMyTraitTwinSync {
+  // Not to be used by end users
+  BoxMyTraitTwinSyncImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  BoxMyTraitTwinSyncImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_BoxMyTraitTwinSync,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_BoxMyTraitTwinSync,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_BoxMyTraitTwinSyncPtr,
+  );
+}
+
+@sealed
+class EnumWithGoodAndOpaqueWithoutOptionTwinSyncImpl extends RustOpaque
+    implements EnumWithGoodAndOpaqueWithoutOptionTwinSync {
+  // Not to be used by end users
+  EnumWithGoodAndOpaqueWithoutOptionTwinSyncImpl.frbInternalDcoDecode(
+      List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  EnumWithGoodAndOpaqueWithoutOptionTwinSyncImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_EnumWithGoodAndOpaqueWithoutOptionTwinSync,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_EnumWithGoodAndOpaqueWithoutOptionTwinSync,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_EnumWithGoodAndOpaqueWithoutOptionTwinSyncPtr,
+  );
+}
+
+@sealed
+class HelloOneStructTwinSyncImpl extends RustOpaque
+    implements HelloOneStructTwinSync {
+  // Not to be used by end users
+  HelloOneStructTwinSyncImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  HelloOneStructTwinSyncImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_HelloOneStructTwinSync,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_HelloOneStructTwinSync,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_HelloOneStructTwinSyncPtr,
+  );
+
+  Future<void> funcHello() => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSyncHelloOneStructTwinSyncFuncHello(
+        that: this,
+      );
+}
+
+@sealed
+class NonCloneSimpleEnumTwinSyncImpl extends RustOpaque
+    implements NonCloneSimpleEnumTwinSync {
+  // Not to be used by end users
+  NonCloneSimpleEnumTwinSyncImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  NonCloneSimpleEnumTwinSyncImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_NonCloneSimpleEnumTwinSync,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_NonCloneSimpleEnumTwinSync,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_NonCloneSimpleEnumTwinSyncPtr,
+  );
+}
+
+@sealed
+class NonCloneSimpleTwinSyncImpl extends RustOpaque
+    implements NonCloneSimpleTwinSync {
+  // Not to be used by end users
+  NonCloneSimpleTwinSyncImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  NonCloneSimpleTwinSyncImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_NonCloneSimpleTwinSync,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_NonCloneSimpleTwinSync,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_NonCloneSimpleTwinSyncPtr,
+  );
+
+  void instanceMethodArgBorrowTwinSync() => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSyncNonCloneSimpleTwinSyncInstanceMethodArgBorrowTwinSync(
+        that: this,
+      );
+
+  void instanceMethodArgMutBorrowTwinSync() => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSyncNonCloneSimpleTwinSyncInstanceMethodArgMutBorrowTwinSync(
+        that: this,
+      );
+
+  void instanceMethodArgOwnTwinSync() => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSyncNonCloneSimpleTwinSyncInstanceMethodArgOwnTwinSync(
+        that: this,
+      );
+
+  int get instanceMethodGetterTwinSync => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSyncNonCloneSimpleTwinSyncInstanceMethodGetterTwinSync(
+        that: this,
+      );
+
+  NonCloneSimpleTwinSync instanceMethodReturnOwnTwinSync() =>
+      RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSyncNonCloneSimpleTwinSyncInstanceMethodReturnOwnTwinSync(
+        that: this,
+      );
+}
+
+@sealed
+class OpaqueOneTwinSyncImpl extends RustOpaque implements OpaqueOneTwinSync {
+  // Not to be used by end users
+  OpaqueOneTwinSyncImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  OpaqueOneTwinSyncImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_OpaqueOneTwinSync,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_OpaqueOneTwinSync,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_OpaqueOneTwinSyncPtr,
+  );
+}
+
+@sealed
+class OpaqueTwoTwinSyncImpl extends RustOpaque implements OpaqueTwoTwinSync {
+  // Not to be used by end users
+  OpaqueTwoTwinSyncImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  OpaqueTwoTwinSyncImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_OpaqueTwoTwinSync,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_OpaqueTwoTwinSync,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_OpaqueTwoTwinSyncPtr,
+  );
+}
+
+@sealed
+class StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncImpl extends RustOpaque
+    implements StructWithGoodAndOpaqueFieldWithoutOptionTwinSync {
+  // Not to be used by end users
+  StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncImpl.frbInternalDcoDecode(
+      List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldWithoutOptionTwinSync,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldWithoutOptionTwinSync,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncPtr,
+  );
+
+  String get good => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSyncStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncGetGood(
+        that: this,
+      );
+
+  void set good(String good) => RustLib.instance.api
+      .crateApiPseudoManualRustAutoOpaqueTwinSyncStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSetGood(
+          that: this, good: good);
+}
+
+@sealed
 class BoxFnStringStringImpl extends RustOpaque implements BoxFnStringString {
   // Not to be used by end users
   BoxFnStringStringImpl.frbInternalDcoDecode(List<dynamic> wire)
@@ -70407,1320 +71614,6 @@ class StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncImpl
 }
 
 @sealed
-class StaticGetterOnlyTwinSyncImpl extends RustOpaque
-    implements StaticGetterOnlyTwinSync {
-  // Not to be used by end users
-  StaticGetterOnlyTwinSyncImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  StaticGetterOnlyTwinSyncImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_StaticGetterOnlyTwinSync,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_StaticGetterOnlyTwinSync,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StaticGetterOnlyTwinSyncPtr,
-  );
-}
-
-@sealed
-class BoxHelloTraitTwinSyncImpl extends RustOpaque
-    implements BoxHelloTraitTwinSync {
-  // Not to be used by end users
-  BoxHelloTraitTwinSyncImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  BoxHelloTraitTwinSyncImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_BoxHelloTraitTwinSync,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_BoxHelloTraitTwinSync,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_BoxHelloTraitTwinSyncPtr,
-  );
-}
-
-@sealed
-class BoxMyTraitTwinSyncImpl extends RustOpaque implements BoxMyTraitTwinSync {
-  // Not to be used by end users
-  BoxMyTraitTwinSyncImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  BoxMyTraitTwinSyncImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_BoxMyTraitTwinSync,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_BoxMyTraitTwinSync,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_BoxMyTraitTwinSyncPtr,
-  );
-}
-
-@sealed
-class EnumWithGoodAndOpaqueWithoutOptionTwinSyncImpl extends RustOpaque
-    implements EnumWithGoodAndOpaqueWithoutOptionTwinSync {
-  // Not to be used by end users
-  EnumWithGoodAndOpaqueWithoutOptionTwinSyncImpl.frbInternalDcoDecode(
-      List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  EnumWithGoodAndOpaqueWithoutOptionTwinSyncImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_EnumWithGoodAndOpaqueWithoutOptionTwinSync,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_EnumWithGoodAndOpaqueWithoutOptionTwinSync,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_EnumWithGoodAndOpaqueWithoutOptionTwinSyncPtr,
-  );
-}
-
-@sealed
-class HelloOneStructTwinSyncImpl extends RustOpaque
-    implements HelloOneStructTwinSync {
-  // Not to be used by end users
-  HelloOneStructTwinSyncImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  HelloOneStructTwinSyncImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_HelloOneStructTwinSync,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_HelloOneStructTwinSync,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_HelloOneStructTwinSyncPtr,
-  );
-
-  Future<void> funcHello() => RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinSyncHelloOneStructTwinSyncFuncHello(
-        that: this,
-      );
-}
-
-@sealed
-class NonCloneSimpleEnumTwinSyncImpl extends RustOpaque
-    implements NonCloneSimpleEnumTwinSync {
-  // Not to be used by end users
-  NonCloneSimpleEnumTwinSyncImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  NonCloneSimpleEnumTwinSyncImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_NonCloneSimpleEnumTwinSync,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_NonCloneSimpleEnumTwinSync,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_NonCloneSimpleEnumTwinSyncPtr,
-  );
-}
-
-@sealed
-class NonCloneSimpleTwinSyncImpl extends RustOpaque
-    implements NonCloneSimpleTwinSync {
-  // Not to be used by end users
-  NonCloneSimpleTwinSyncImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  NonCloneSimpleTwinSyncImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_NonCloneSimpleTwinSync,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_NonCloneSimpleTwinSync,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_NonCloneSimpleTwinSyncPtr,
-  );
-
-  void instanceMethodArgBorrowTwinSync() => RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinSyncNonCloneSimpleTwinSyncInstanceMethodArgBorrowTwinSync(
-        that: this,
-      );
-
-  void instanceMethodArgMutBorrowTwinSync() => RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinSyncNonCloneSimpleTwinSyncInstanceMethodArgMutBorrowTwinSync(
-        that: this,
-      );
-
-  void instanceMethodArgOwnTwinSync() => RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinSyncNonCloneSimpleTwinSyncInstanceMethodArgOwnTwinSync(
-        that: this,
-      );
-
-  int get instanceMethodGetterTwinSync => RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinSyncNonCloneSimpleTwinSyncInstanceMethodGetterTwinSync(
-        that: this,
-      );
-
-  NonCloneSimpleTwinSync instanceMethodReturnOwnTwinSync() =>
-      RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinSyncNonCloneSimpleTwinSyncInstanceMethodReturnOwnTwinSync(
-        that: this,
-      );
-}
-
-@sealed
-class OpaqueOneTwinSyncImpl extends RustOpaque implements OpaqueOneTwinSync {
-  // Not to be used by end users
-  OpaqueOneTwinSyncImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  OpaqueOneTwinSyncImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_OpaqueOneTwinSync,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_OpaqueOneTwinSync,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_OpaqueOneTwinSyncPtr,
-  );
-}
-
-@sealed
-class OpaqueTwoTwinSyncImpl extends RustOpaque implements OpaqueTwoTwinSync {
-  // Not to be used by end users
-  OpaqueTwoTwinSyncImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  OpaqueTwoTwinSyncImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_OpaqueTwoTwinSync,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_OpaqueTwoTwinSync,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_OpaqueTwoTwinSyncPtr,
-  );
-}
-
-@sealed
-class StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncImpl extends RustOpaque
-    implements StructWithGoodAndOpaqueFieldWithoutOptionTwinSync {
-  // Not to be used by end users
-  StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncImpl.frbInternalDcoDecode(
-      List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldWithoutOptionTwinSync,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldWithoutOptionTwinSync,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncPtr,
-  );
-
-  String get good => RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinSyncStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncGetGood(
-        that: this,
-      );
-
-  void set good(String good) => RustLib.instance.api
-      .crateApiPseudoManualRustAutoOpaqueTwinSyncStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSetGood(
-          that: this, good: good);
-}
-
-@sealed
-class BoxDartDebugTwinSyncImpl extends RustOpaque
-    implements BoxDartDebugTwinSync {
-  // Not to be used by end users
-  BoxDartDebugTwinSyncImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  BoxDartDebugTwinSyncImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_BoxDartDebugTwinSync,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_BoxDartDebugTwinSync,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_BoxDartDebugTwinSyncPtr,
-  );
-}
-
-@sealed
-class FrbOpaqueReturnTwinSyncImpl extends RustOpaque
-    implements FrbOpaqueReturnTwinSync {
-  // Not to be used by end users
-  FrbOpaqueReturnTwinSyncImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  FrbOpaqueReturnTwinSyncImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_FrbOpaqueReturnTwinSync,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_FrbOpaqueReturnTwinSync,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_FrbOpaqueReturnTwinSyncPtr,
-  );
-}
-
-@sealed
-class HideDataTwinSyncImpl extends RustOpaque implements HideDataTwinSync {
-  // Not to be used by end users
-  HideDataTwinSyncImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  HideDataTwinSyncImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_HideDataTwinSync,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_HideDataTwinSync,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_HideDataTwinSyncPtr,
-  );
-}
-
-@sealed
-class MutexHideDataTwinSyncImpl extends RustOpaque
-    implements MutexHideDataTwinSync {
-  // Not to be used by end users
-  MutexHideDataTwinSyncImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  MutexHideDataTwinSyncImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_MutexHideDataTwinSync,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_MutexHideDataTwinSync,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_MutexHideDataTwinSyncPtr,
-  );
-}
-
-@sealed
-class NonCloneDataTwinSyncImpl extends RustOpaque
-    implements NonCloneDataTwinSync {
-  // Not to be used by end users
-  NonCloneDataTwinSyncImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  NonCloneDataTwinSyncImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_NonCloneDataTwinSync,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_NonCloneDataTwinSync,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_NonCloneDataTwinSyncPtr,
-  );
-}
-
-@sealed
-class RwLockHideDataTwinSyncImpl extends RustOpaque
-    implements RwLockHideDataTwinSync {
-  // Not to be used by end users
-  RwLockHideDataTwinSyncImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  RwLockHideDataTwinSyncImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_RwLockHideDataTwinSync,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_RwLockHideDataTwinSync,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_RwLockHideDataTwinSyncPtr,
-  );
-}
-
-@sealed
-class DroppableTwinRustAsyncImpl extends RustOpaque
-    implements DroppableTwinRustAsync {
-  // Not to be used by end users
-  DroppableTwinRustAsyncImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  DroppableTwinRustAsyncImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_DroppableTwinRustAsync,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_DroppableTwinRustAsync,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_DroppableTwinRustAsyncPtr,
-  );
-
-  Stream<int> createStreamTwinRustAsync() => RustLib.instance.api
-          .crateApiPseudoManualDroppingTwinRustAsyncDroppableTwinRustAsyncCreateStreamTwinRustAsync(
-        that: this,
-      );
-
-  Future<void> simpleMethodTwinRustAsync() => RustLib.instance.api
-          .crateApiPseudoManualDroppingTwinRustAsyncDroppableTwinRustAsyncSimpleMethodTwinRustAsync(
-        that: this,
-      );
-}
-
-@sealed
-class ConstructorOpaqueStructTwinNormalImpl extends RustOpaque
-    implements ConstructorOpaqueStructTwinNormal {
-  // Not to be used by end users
-  ConstructorOpaqueStructTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  ConstructorOpaqueStructTwinNormalImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_ConstructorOpaqueStructTwinNormal,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_ConstructorOpaqueStructTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_ConstructorOpaqueStructTwinNormalPtr,
-  );
-
-  void check() => RustLib.instance.api
-          .crateApiConstructorConstructorOpaqueStructTwinNormalCheck(
-        that: this,
-      );
-
-  String get one => RustLib.instance.api
-          .crateApiConstructorConstructorOpaqueStructTwinNormalGetOne(
-        that: this,
-      );
-
-  void set one(String one) => RustLib.instance.api
-      .crateApiConstructorConstructorOpaqueStructTwinNormalSetOne(
-          that: this, one: one);
-}
-
-@sealed
-class ConstructorOpaqueSyncStructTwinNormalImpl extends RustOpaque
-    implements ConstructorOpaqueSyncStructTwinNormal {
-  // Not to be used by end users
-  ConstructorOpaqueSyncStructTwinNormalImpl.frbInternalDcoDecode(
-      List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  ConstructorOpaqueSyncStructTwinNormalImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_ConstructorOpaqueSyncStructTwinNormal,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_ConstructorOpaqueSyncStructTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_ConstructorOpaqueSyncStructTwinNormalPtr,
-  );
-
-  void check() => RustLib.instance.api
-          .crateApiConstructorConstructorOpaqueSyncStructTwinNormalCheck(
-        that: this,
-      );
-
-  String get one => RustLib.instance.api
-          .crateApiConstructorConstructorOpaqueSyncStructTwinNormalGetOne(
-        that: this,
-      );
-
-  void set one(String one) => RustLib.instance.api
-      .crateApiConstructorConstructorOpaqueSyncStructTwinNormalSetOne(
-          that: this, one: one);
-}
-
-@sealed
-class SimpleOpaqueExternalStructWithMethodImpl extends RustOpaque
-    implements SimpleOpaqueExternalStructWithMethod {
-  // Not to be used by end users
-  SimpleOpaqueExternalStructWithMethodImpl.frbInternalDcoDecode(
-      List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  SimpleOpaqueExternalStructWithMethodImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_SimpleOpaqueExternalStructWithMethod,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_SimpleOpaqueExternalStructWithMethod,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_SimpleOpaqueExternalStructWithMethodPtr,
-  );
-
-  Future<String> simpleExternalMethod() => RustLib.instance.api
-          .crateApiExternalImplSimpleOpaqueExternalStructWithMethodSimpleExternalMethod(
-        that: this,
-      );
-}
-
-@sealed
-class BoxAnyMyDartTypeRenameImpl extends RustOpaque
-    implements BoxAnyMyDartTypeRename {
-  // Not to be used by end users
-  BoxAnyMyDartTypeRenameImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  BoxAnyMyDartTypeRenameImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_BoxAnyMyDartTypeRename,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_BoxAnyMyDartTypeRename,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_BoxAnyMyDartTypeRenamePtr,
-  );
-}
-
-@sealed
-class DeliberateFailSanityCheckTwinNormalImpl extends RustOpaque
-    implements DeliberateFailSanityCheckTwinNormal {
-  // Not to be used by end users
-  DeliberateFailSanityCheckTwinNormalImpl.frbInternalDcoDecode(
-      List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  DeliberateFailSanityCheckTwinNormalImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_DeliberateFailSanityCheckTwinNormal,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_DeliberateFailSanityCheckTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_DeliberateFailSanityCheckTwinNormalPtr,
-  );
-
-  Uint8List get deliberateBadFieldA => RustLib.instance.api
-          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetDeliberateBadFieldA(
-        that: this,
-      );
-
-  OpaqueItemTwinNormal get deliberateBadFieldB => RustLib.instance.api
-          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetDeliberateBadFieldB(
-        that: this,
-      );
-
-  List<OpaqueItemTwinNormal> get deliberateBadFieldC => RustLib.instance.api
-          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetDeliberateBadFieldC(
-        that: this,
-      );
-
-  String get goodFieldA => RustLib.instance.api
-          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetGoodFieldA(
-        that: this,
-      );
-
-  int get goodFieldB => RustLib.instance.api
-          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetGoodFieldB(
-        that: this,
-      );
-
-  OpaqueItemTwinNormal get goodFieldC => RustLib.instance.api
-          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetGoodFieldC(
-        that: this,
-      );
-
-  void set deliberateBadFieldA(Uint8List deliberateBadFieldA) => RustLib
-      .instance.api
-      .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetDeliberateBadFieldA(
-          that: this, deliberateBadFieldA: deliberateBadFieldA);
-
-  void set deliberateBadFieldB(OpaqueItemTwinNormal deliberateBadFieldB) => RustLib
-      .instance.api
-      .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetDeliberateBadFieldB(
-          that: this, deliberateBadFieldB: deliberateBadFieldB);
-
-  void set deliberateBadFieldC(
-          List<OpaqueItemTwinNormal> deliberateBadFieldC) =>
-      RustLib.instance.api
-          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetDeliberateBadFieldC(
-              that: this, deliberateBadFieldC: deliberateBadFieldC);
-
-  void set goodFieldA(String goodFieldA) => RustLib.instance.api
-      .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetGoodFieldA(
-          that: this, goodFieldA: goodFieldA);
-
-  void set goodFieldB(int goodFieldB) => RustLib.instance.api
-      .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetGoodFieldB(
-          that: this, goodFieldB: goodFieldB);
-
-  void set goodFieldC(OpaqueItemTwinNormal goodFieldC) => RustLib.instance.api
-      .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetGoodFieldC(
-          that: this, goodFieldC: goodFieldC);
-}
-
-@sealed
-class ItemContainerSolutionOneTwinNormalImpl extends RustOpaque
-    implements ItemContainerSolutionOneTwinNormal {
-  // Not to be used by end users
-  ItemContainerSolutionOneTwinNormalImpl.frbInternalDcoDecode(
-      List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  ItemContainerSolutionOneTwinNormalImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_ItemContainerSolutionOneTwinNormal,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_ItemContainerSolutionOneTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_ItemContainerSolutionOneTwinNormalPtr,
-  );
-
-  Future<Int32List> getItemContentsTwinNormal() => RustLib.instance.api
-          .crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalGetItemContentsTwinNormal(
-        that: this,
-      );
-
-  String get name => RustLib.instance.api
-          .crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalGetName(
-        that: this,
-      );
-
-  void set name(String name) => RustLib.instance.api
-      .crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalSetName(
-          that: this, name: name);
-}
-
-@sealed
-class OpaqueItemTwinNormalImpl extends RustOpaque
-    implements OpaqueItemTwinNormal {
-  // Not to be used by end users
-  OpaqueItemTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  OpaqueItemTwinNormalImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_OpaqueItemTwinNormal,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_OpaqueItemTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_OpaqueItemTwinNormalPtr,
-  );
-}
-
-@sealed
-class StructInMiscNoTwinExampleAImpl extends RustOpaque
-    implements StructInMiscNoTwinExampleA {
-  // Not to be used by end users
-  StructInMiscNoTwinExampleAImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  StructInMiscNoTwinExampleAImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_StructInMiscNoTwinExampleA,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StructInMiscNoTwinExampleA,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StructInMiscNoTwinExampleAPtr,
-  );
-
-  Future<void> sampleFunctionA() => RustLib.instance.api
-          .crateApiMiscNoTwinExampleAStructInMiscNoTwinExampleASampleFunctionA(
-        that: this,
-      );
-}
-
-@sealed
-class StructWithImplBlockInMultiFileImpl extends RustOpaque
-    implements StructWithImplBlockInMultiFile {
-  // Not to be used by end users
-  StructWithImplBlockInMultiFileImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  StructWithImplBlockInMultiFileImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_StructWithImplBlockInMultiFile,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StructWithImplBlockInMultiFile,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StructWithImplBlockInMultiFilePtr,
-  );
-
-  Future<void> methodInA() => RustLib.instance.api
-          .crateApiMiscNoTwinExampleAStructWithImplBlockInMultiFileMethodInA(
-        that: this,
-      );
-
-  Future<void> methodInB() => RustLib.instance.api
-          .crateApiMiscNoTwinExampleBStructWithImplBlockInMultiFileMethodInB(
-        that: this,
-      );
-}
-
-@sealed
-class StructWithSimpleSetterTwinNormalImpl extends RustOpaque
-    implements StructWithSimpleSetterTwinNormal {
-  // Not to be used by end users
-  StructWithSimpleSetterTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  StructWithSimpleSetterTwinNormalImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_StructWithSimpleSetterTwinNormal,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StructWithSimpleSetterTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StructWithSimpleSetterTwinNormalPtr,
-  );
-
-  int get simpleGetter => RustLib.instance.api
-          .crateApiMiscNoTwinExampleAStructWithSimpleSetterTwinNormalSimpleGetter(
-        that: this,
-      );
-
-  void set simpleSetter(int value) => RustLib.instance.api
-      .crateApiMiscNoTwinExampleAStructWithSimpleSetterTwinNormalSimpleSetter(
-          that: this, value: value);
-}
-
-@sealed
-class StaticGetterOnlyTwinNormalImpl extends RustOpaque
-    implements StaticGetterOnlyTwinNormal {
-  // Not to be used by end users
-  StaticGetterOnlyTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  StaticGetterOnlyTwinNormalImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_StaticGetterOnlyTwinNormal,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StaticGetterOnlyTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StaticGetterOnlyTwinNormalPtr,
-  );
-}
-
-@sealed
-class BoxDartDebugTwinNormalImpl extends RustOpaque
-    implements BoxDartDebugTwinNormal {
-  // Not to be used by end users
-  BoxDartDebugTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  BoxDartDebugTwinNormalImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_BoxDartDebugTwinNormal,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_BoxDartDebugTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_BoxDartDebugTwinNormalPtr,
-  );
-}
-
-@sealed
-class FrbOpaqueReturnTwinNormalImpl extends RustOpaque
-    implements FrbOpaqueReturnTwinNormal {
-  // Not to be used by end users
-  FrbOpaqueReturnTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  FrbOpaqueReturnTwinNormalImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_FrbOpaqueReturnTwinNormal,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_FrbOpaqueReturnTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_FrbOpaqueReturnTwinNormalPtr,
-  );
-}
-
-@sealed
-class HideDataTwinNormalImpl extends RustOpaque implements HideDataTwinNormal {
-  // Not to be used by end users
-  HideDataTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  HideDataTwinNormalImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_HideDataTwinNormal,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_HideDataTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_HideDataTwinNormalPtr,
-  );
-}
-
-@sealed
-class MutexHideDataTwinNormalImpl extends RustOpaque
-    implements MutexHideDataTwinNormal {
-  // Not to be used by end users
-  MutexHideDataTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  MutexHideDataTwinNormalImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_MutexHideDataTwinNormal,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_MutexHideDataTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_MutexHideDataTwinNormalPtr,
-  );
-}
-
-@sealed
-class NonCloneDataTwinNormalImpl extends RustOpaque
-    implements NonCloneDataTwinNormal {
-  // Not to be used by end users
-  NonCloneDataTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  NonCloneDataTwinNormalImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_NonCloneDataTwinNormal,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_NonCloneDataTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_NonCloneDataTwinNormalPtr,
-  );
-}
-
-@sealed
-class RwLockHideDataTwinNormalImpl extends RustOpaque
-    implements RwLockHideDataTwinNormal {
-  // Not to be used by end users
-  RwLockHideDataTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  RwLockHideDataTwinNormalImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_RwLockHideDataTwinNormal,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_RwLockHideDataTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_RwLockHideDataTwinNormalPtr,
-  );
-}
-
-@sealed
-class OpaqueStructWithDartCodeTwinNormalImpl extends RustOpaque
-    implements OpaqueStructWithDartCodeTwinNormal {
-  // Not to be used by end users
-  OpaqueStructWithDartCodeTwinNormalImpl.frbInternalDcoDecode(
-      List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  OpaqueStructWithDartCodeTwinNormalImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_OpaqueStructWithDartCodeTwinNormal,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_OpaqueStructWithDartCodeTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_OpaqueStructWithDartCodeTwinNormalPtr,
-  );
-
-  Future<int> normalMethodTwinNormal() => RustLib.instance.api
-          .crateApiDartCodeOpaqueStructWithDartCodeTwinNormalNormalMethodTwinNormal(
-        that: this,
-      );
-}
-
-@sealed
-class StructInMiscNoTwinExampleBImpl extends RustOpaque
-    implements StructInMiscNoTwinExampleB {
-  // Not to be used by end users
-  StructInMiscNoTwinExampleBImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  StructInMiscNoTwinExampleBImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_StructInMiscNoTwinExampleB,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StructInMiscNoTwinExampleB,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StructInMiscNoTwinExampleBPtr,
-  );
-
-  Future<StructInMiscNoTwinExampleA> getStructInMiscNoTwinExampleA() =>
-      RustLib.instance.api
-          .crateApiMiscNoTwinExampleBStructInMiscNoTwinExampleBGetStructInMiscNoTwinExampleA(
-        that: this,
-      );
-
-  Future<void> sampleFunctionB() => RustLib.instance.api
-          .crateApiMiscNoTwinExampleBStructInMiscNoTwinExampleBSampleFunctionB(
-        that: this,
-      );
-}
-
-@sealed
-class StaticGetterOnlyTwinRustAsyncImpl extends RustOpaque
-    implements StaticGetterOnlyTwinRustAsync {
-  // Not to be used by end users
-  StaticGetterOnlyTwinRustAsyncImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  StaticGetterOnlyTwinRustAsyncImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_StaticGetterOnlyTwinRustAsync,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StaticGetterOnlyTwinRustAsync,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StaticGetterOnlyTwinRustAsyncPtr,
-  );
-}
-
-@sealed
-class DroppableTwinNormalImpl extends RustOpaque
-    implements DroppableTwinNormal {
-  // Not to be used by end users
-  DroppableTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  DroppableTwinNormalImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_DroppableTwinNormal,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_DroppableTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_DroppableTwinNormalPtr,
-  );
-
-  Stream<int> createStream() =>
-      RustLib.instance.api.crateApiDroppingDroppableTwinNormalCreateStream(
-        that: this,
-      );
-
-  Future<void> simpleMethodTwinNormal() => RustLib.instance.api
-          .crateApiDroppingDroppableTwinNormalSimpleMethodTwinNormal(
-        that: this,
-      );
-}
-
-@sealed
-class BoxHelloTraitTwinNormalImpl extends RustOpaque
-    implements BoxHelloTraitTwinNormal {
-  // Not to be used by end users
-  BoxHelloTraitTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  BoxHelloTraitTwinNormalImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_BoxHelloTraitTwinNormal,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_BoxHelloTraitTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_BoxHelloTraitTwinNormalPtr,
-  );
-}
-
-@sealed
-class BoxMyTraitTwinNormalImpl extends RustOpaque
-    implements BoxMyTraitTwinNormal {
-  // Not to be used by end users
-  BoxMyTraitTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  BoxMyTraitTwinNormalImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_BoxMyTraitTwinNormal,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_BoxMyTraitTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_BoxMyTraitTwinNormalPtr,
-  );
-}
-
-@sealed
-class EnumWithGoodAndOpaqueWithoutOptionTwinNormalImpl extends RustOpaque
-    implements EnumWithGoodAndOpaqueWithoutOptionTwinNormal {
-  // Not to be used by end users
-  EnumWithGoodAndOpaqueWithoutOptionTwinNormalImpl.frbInternalDcoDecode(
-      List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  EnumWithGoodAndOpaqueWithoutOptionTwinNormalImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_EnumWithGoodAndOpaqueWithoutOptionTwinNormal,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_EnumWithGoodAndOpaqueWithoutOptionTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_EnumWithGoodAndOpaqueWithoutOptionTwinNormalPtr,
-  );
-}
-
-@sealed
-class HelloOneStructTwinNormalImpl extends RustOpaque
-    implements HelloOneStructTwinNormal {
-  // Not to be used by end users
-  HelloOneStructTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  HelloOneStructTwinNormalImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_HelloOneStructTwinNormal,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_HelloOneStructTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_HelloOneStructTwinNormalPtr,
-  );
-
-  Future<void> funcHello() => RustLib.instance.api
-          .crateApiRustAutoOpaqueHelloOneStructTwinNormalFuncHello(
-        that: this,
-      );
-}
-
-@sealed
-class NonCloneSimpleEnumTwinNormalImpl extends RustOpaque
-    implements NonCloneSimpleEnumTwinNormal {
-  // Not to be used by end users
-  NonCloneSimpleEnumTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  NonCloneSimpleEnumTwinNormalImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_NonCloneSimpleEnumTwinNormal,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_NonCloneSimpleEnumTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_NonCloneSimpleEnumTwinNormalPtr,
-  );
-}
-
-@sealed
-class NonCloneSimpleTwinNormalImpl extends RustOpaque
-    implements NonCloneSimpleTwinNormal {
-  // Not to be used by end users
-  NonCloneSimpleTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  NonCloneSimpleTwinNormalImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_NonCloneSimpleTwinNormal,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_NonCloneSimpleTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_NonCloneSimpleTwinNormalPtr,
-  );
-
-  Future<void> instanceMethodArgBorrowTwinNormal() => RustLib.instance.api
-          .crateApiRustAutoOpaqueNonCloneSimpleTwinNormalInstanceMethodArgBorrowTwinNormal(
-        that: this,
-      );
-
-  Future<void> instanceMethodArgMutBorrowTwinNormal() => RustLib.instance.api
-          .crateApiRustAutoOpaqueNonCloneSimpleTwinNormalInstanceMethodArgMutBorrowTwinNormal(
-        that: this,
-      );
-
-  Future<void> instanceMethodArgOwnTwinNormal() => RustLib.instance.api
-          .crateApiRustAutoOpaqueNonCloneSimpleTwinNormalInstanceMethodArgOwnTwinNormal(
-        that: this,
-      );
-
-  Future<int> get instanceMethodGetterTwinNormal => RustLib.instance.api
-          .crateApiRustAutoOpaqueNonCloneSimpleTwinNormalInstanceMethodGetterTwinNormal(
-        that: this,
-      );
-
-  Future<NonCloneSimpleTwinNormal> instanceMethodReturnOwnTwinNormal() =>
-      RustLib.instance.api
-          .crateApiRustAutoOpaqueNonCloneSimpleTwinNormalInstanceMethodReturnOwnTwinNormal(
-        that: this,
-      );
-}
-
-@sealed
-class OpaqueOneTwinNormalImpl extends RustOpaque
-    implements OpaqueOneTwinNormal {
-  // Not to be used by end users
-  OpaqueOneTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  OpaqueOneTwinNormalImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_OpaqueOneTwinNormal,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_OpaqueOneTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_OpaqueOneTwinNormalPtr,
-  );
-}
-
-@sealed
-class OpaqueTwoTwinNormalImpl extends RustOpaque
-    implements OpaqueTwoTwinNormal {
-  // Not to be used by end users
-  OpaqueTwoTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  OpaqueTwoTwinNormalImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_OpaqueTwoTwinNormal,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_OpaqueTwoTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_OpaqueTwoTwinNormalPtr,
-  );
-}
-
-@sealed
-class StructWithGoodAndOpaqueFieldWithoutOptionTwinNormalImpl extends RustOpaque
-    implements StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal {
-  // Not to be used by end users
-  StructWithGoodAndOpaqueFieldWithoutOptionTwinNormalImpl.frbInternalDcoDecode(
-      List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  StructWithGoodAndOpaqueFieldWithoutOptionTwinNormalImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldWithoutOptionTwinNormalPtr,
-  );
-
-  String get good => RustLib.instance.api
-          .crateApiRustAutoOpaqueStructWithGoodAndOpaqueFieldWithoutOptionTwinNormalGetGood(
-        that: this,
-      );
-
-  void set good(String good) => RustLib.instance.api
-      .crateApiRustAutoOpaqueStructWithGoodAndOpaqueFieldWithoutOptionTwinNormalSetGood(
-          that: this, good: good);
-}
-
-@sealed
-class DroppableTwinSyncImpl extends RustOpaque implements DroppableTwinSync {
-  // Not to be used by end users
-  DroppableTwinSyncImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  DroppableTwinSyncImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_DroppableTwinSync,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_DroppableTwinSync,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_DroppableTwinSyncPtr,
-  );
-
-  Stream<int> createStreamTwinSync() => RustLib.instance.api
-          .crateApiPseudoManualDroppingTwinSyncDroppableTwinSyncCreateStreamTwinSync(
-        that: this,
-      );
-
-  void simpleMethodTwinSync() => RustLib.instance.api
-          .crateApiPseudoManualDroppingTwinSyncDroppableTwinSyncSimpleMethodTwinSync(
-        that: this,
-      );
-}
-
-@sealed
 class BoxDartDebugTwinRustAsyncImpl extends RustOpaque
     implements BoxDartDebugTwinRustAsync {
   // Not to be used by end users
@@ -71873,45 +71766,152 @@ class I32Impl extends RustOpaque implements I32 {
 }
 
 @sealed
-class FrbOpaqueSyncReturnTwinNormalImpl extends RustOpaque
-    implements FrbOpaqueSyncReturnTwinNormal {
+class SimpleOpaqueExternalStructWithMethodImpl extends RustOpaque
+    implements SimpleOpaqueExternalStructWithMethod {
   // Not to be used by end users
-  FrbOpaqueSyncReturnTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
+  SimpleOpaqueExternalStructWithMethodImpl.frbInternalDcoDecode(
+      List<dynamic> wire)
       : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
-  FrbOpaqueSyncReturnTwinNormalImpl.frbInternalSseDecode(
+  SimpleOpaqueExternalStructWithMethodImpl.frbInternalSseDecode(
       BigInt ptr, int externalSizeOnNative)
       : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_FrbOpaqueSyncReturnTwinNormal,
+        .rust_arc_increment_strong_count_SimpleOpaqueExternalStructWithMethod,
     rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_FrbOpaqueSyncReturnTwinNormal,
+        .rust_arc_decrement_strong_count_SimpleOpaqueExternalStructWithMethod,
     rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_FrbOpaqueSyncReturnTwinNormalPtr,
+        .rust_arc_decrement_strong_count_SimpleOpaqueExternalStructWithMethodPtr,
   );
+
+  Future<String> simpleExternalMethod() => RustLib.instance.api
+          .crateApiExternalImplSimpleOpaqueExternalStructWithMethodSimpleExternalMethod(
+        that: this,
+      );
 }
 
 @sealed
-class HideDataAnotherTwinNormalImpl extends RustOpaque
-    implements HideDataAnotherTwinNormal {
+class StaticGetterOnlyTwinRustAsyncImpl extends RustOpaque
+    implements StaticGetterOnlyTwinRustAsync {
   // Not to be used by end users
-  HideDataAnotherTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
+  StaticGetterOnlyTwinRustAsyncImpl.frbInternalDcoDecode(List<dynamic> wire)
       : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
-  HideDataAnotherTwinNormalImpl.frbInternalSseDecode(
+  StaticGetterOnlyTwinRustAsyncImpl.frbInternalSseDecode(
       BigInt ptr, int externalSizeOnNative)
       : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_HideDataAnotherTwinNormal,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_HideDataAnotherTwinNormal,
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_StaticGetterOnlyTwinRustAsync,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_StaticGetterOnlyTwinRustAsync,
     rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_HideDataAnotherTwinNormalPtr,
+        .rust_arc_decrement_strong_count_StaticGetterOnlyTwinRustAsyncPtr,
   );
+}
+
+@sealed
+class OpaqueStructWithDartCodeTwinNormalImpl extends RustOpaque
+    implements OpaqueStructWithDartCodeTwinNormal {
+  // Not to be used by end users
+  OpaqueStructWithDartCodeTwinNormalImpl.frbInternalDcoDecode(
+      List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  OpaqueStructWithDartCodeTwinNormalImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_OpaqueStructWithDartCodeTwinNormal,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_OpaqueStructWithDartCodeTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_OpaqueStructWithDartCodeTwinNormalPtr,
+  );
+
+  Future<int> normalMethodTwinNormal() => RustLib.instance.api
+          .crateApiDartCodeOpaqueStructWithDartCodeTwinNormalNormalMethodTwinNormal(
+        that: this,
+      );
+}
+
+@sealed
+class ConstructorOpaqueStructTwinNormalImpl extends RustOpaque
+    implements ConstructorOpaqueStructTwinNormal {
+  // Not to be used by end users
+  ConstructorOpaqueStructTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  ConstructorOpaqueStructTwinNormalImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_ConstructorOpaqueStructTwinNormal,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_ConstructorOpaqueStructTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_ConstructorOpaqueStructTwinNormalPtr,
+  );
+
+  void check() => RustLib.instance.api
+          .crateApiConstructorConstructorOpaqueStructTwinNormalCheck(
+        that: this,
+      );
+
+  String get one => RustLib.instance.api
+          .crateApiConstructorConstructorOpaqueStructTwinNormalGetOne(
+        that: this,
+      );
+
+  void set one(String one) => RustLib.instance.api
+      .crateApiConstructorConstructorOpaqueStructTwinNormalSetOne(
+          that: this, one: one);
+}
+
+@sealed
+class ConstructorOpaqueSyncStructTwinNormalImpl extends RustOpaque
+    implements ConstructorOpaqueSyncStructTwinNormal {
+  // Not to be used by end users
+  ConstructorOpaqueSyncStructTwinNormalImpl.frbInternalDcoDecode(
+      List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  ConstructorOpaqueSyncStructTwinNormalImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_ConstructorOpaqueSyncStructTwinNormal,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_ConstructorOpaqueSyncStructTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_ConstructorOpaqueSyncStructTwinNormalPtr,
+  );
+
+  void check() => RustLib.instance.api
+          .crateApiConstructorConstructorOpaqueSyncStructTwinNormalCheck(
+        that: this,
+      );
+
+  String get one => RustLib.instance.api
+          .crateApiConstructorConstructorOpaqueSyncStructTwinNormalGetOne(
+        that: this,
+      );
+
+  void set one(String one) => RustLib.instance.api
+      .crateApiConstructorConstructorOpaqueSyncStructTwinNormalSetOne(
+          that: this, one: one);
 }
