@@ -30,7 +30,7 @@ fn parse_pub_use_from_item(item: &syn::Item) -> Option<PubUseInfo> {
             let tree = &item_use.tree;
             let tree_string = quote::quote!(#tree).to_string().replace(' ', "");
             let tree_parts = tree_string.split(Namespace::SEP).collect_vec();
-            let name_filters = match tree_parts.last() {
+            let name_filters = match tree_parts.last().unwrap() {
                 "*" => None,
                 x => Some(x.to_string()),
             };
