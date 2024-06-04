@@ -12,9 +12,6 @@ use regex::Regex;
 
 impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
     fn generate_class(&self) -> Option<ApiDartGeneratedClass> {
-        let dart_entrypoint_class_name = &self.context.config.dart_entrypoint_class_name;
-        let dart_api_instance = format!("{dart_entrypoint_class_name}.instance.api");
-
         let rust_api_type = self.mir.rust_api_type();
         let dart_api_type = ApiDartGenerator::new(self.mir.clone(), self.context).dart_api_type();
 
@@ -34,6 +31,12 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
             class_name: dart_api_type.clone(),
             code: format!(
                 "
+                // Rust type: {rust_api_type}
+                abstract class {dart_api_type} {{
+                    TODO
+
+                    {extra_body}
+                }}
                 "
             ),
             needs_freezed: false,
@@ -42,9 +45,16 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
     }
 
     fn generate_extra_impl_code(&self) -> Option<String> {
+        let Info {
+            dart_api_type,
+            rust_api_type,
+        } = TODO;
+
+        let dart_entrypoint_class_name = &self.context.config.dart_entrypoint_class_name;
+        let dart_api_instance = format!("{dart_entrypoint_class_name}.instance.api");
+
         Some(format!(
             "
-            // Rust type: {rust_api_type}
             @sealed class {dart_api_type} extends RustOpaque {{
                 // Not to be used by end users
                 {dart_api_type}.frbInternalDcoDecode(List<dynamic> wire):
@@ -61,10 +71,14 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
                 );
 
                 {methods}
-                {extra_body}
             }}"
         ))
     }
+}
+
+struct Info {
+    dart_api_type: String,
+    rust_api_type: String,
 }
 
 fn compute_api_method_query_name(
