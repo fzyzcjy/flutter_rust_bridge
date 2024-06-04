@@ -1,9 +1,8 @@
 use crate::components::encoder::create_frb_encoded_comment;
 use md5::{Digest, Md5};
-use proc_macro2::{Span, TokenStream};
+use proc_macro2::TokenStream;
 use quote::quote;
 use quote::ToTokens;
-use syn::spanned::Spanned;
 use syn::{ImplItem, ItemImpl};
 
 pub(crate) fn handle_external_impl(attribute: TokenStream, item: TokenStream) -> TokenStream {
