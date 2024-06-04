@@ -56,7 +56,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.0.0-dev.37';
 
   @override
-  int get rustContentHash => -982871662;
+  int get rustContentHash => 2047558242;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -69,6 +69,10 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 abstract class RustLibApi extends BaseApi {
   Future<int> crateApiMinimalMyStructF(
       {required MyStruct that, required int a});
+
+  Future<int> crateApiMinimalMyStructMyStaticMethod();
+
+  MyStruct crateApiMinimalMyStructNew();
 
   Future<void> crateApiMinimalInitApp();
 
@@ -119,12 +123,59 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<void> crateApiMinimalInitApp() {
+  Future<int> crateApiMinimalMyStructMyStaticMethod() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 2, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiMinimalMyStructMyStaticMethodConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiMinimalMyStructMyStaticMethodConstMeta =>
+      const TaskConstMeta(
+        debugName: "MyStruct_my_static_method",
+        argNames: [],
+      );
+
+  @override
+  MyStruct crateApiMinimalMyStructNew() {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 3)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiMinimalMyStructNewConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiMinimalMyStructNewConstMeta => const TaskConstMeta(
+        debugName: "MyStruct_new",
+        argNames: [],
+      );
+
+  @override
+  Future<void> crateApiMinimalInitApp() {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 4, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -149,7 +200,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(a, serializer);
         sse_encode_i_32(b, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 3, port: port_);
+            funcId: 5, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
@@ -341,4 +392,9 @@ class MyStructImpl extends RustOpaque implements MyStruct {
 
   Future<int> f({required int a}) =>
       RustLib.instance.api.crateApiMinimalMyStructF(that: this, a: a);
+
+  static Future<int> myStaticMethod() =>
+      RustLib.instance.api.crateApiMinimalMyStructMyStaticMethod();
+
+  factory MyStruct() => RustLib.instance.api.crateApiMinimalMyStructNew();
 }

@@ -16,4 +16,13 @@ impl MyStruct {
     pub fn f(&mut self, a: i32) -> i32 {
         a
     }
+
+    pub fn my_static_method() -> i32 {
+        42
+    }
+
+    #[frb(sync)]
+    pub fn new() -> Self {
+        Self {}
+    }
 }
