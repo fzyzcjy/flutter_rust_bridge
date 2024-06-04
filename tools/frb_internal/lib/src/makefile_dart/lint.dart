@@ -6,6 +6,7 @@ import 'package:args/command_runner.dart';
 import 'package:build_cli_annotations/build_cli_annotations.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/utils.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/misc_utils.dart';
 import 'package:yaml/yaml.dart';
@@ -41,6 +42,7 @@ Future<void> lint(LintConfig config) async {
 }
 
 Future<void> lintRust(LintConfig config) async {
+  await installSystemDependencies();
   await lintRustFormat(config);
   await lintRustClippy(config);
 }
