@@ -42,6 +42,16 @@ struct PubUseInfo {
     name_filters: Option<Vec<String>>,
 }
 
+impl PubUseInfo {
+    fn is_interest_name(&self, name: &str) -> bool {
+        if let Some(name_filters) = &self.name_filters {
+            name_filters.contains(name)
+        } else {
+            true
+        }
+    }
+}
+
 fn transform_module_by_pub_use_single(
     module: &mut HirModule,
     pub_use_info: &PubUseInfo,
@@ -54,10 +64,11 @@ fn transform_module_by_pub_use_single(
 
         let self_namespace = &module.meta.namespace;
 
-        let src_functions = transform_items(&src_mod.content.functions, self_namespace);
-        let src_structs = transform_items(&src_mod.content.structs, self_namespace);
-        let src_enums = transform_items(&src_mod.content.enums, self_namespace);
-        let src_traits = transform_items(&src_mod.content.traits, self_namespace);
+        let src_functions =
+            transform_items(&src_mod.content.functions, self_namespace, pub_use_info);
+        let src_structs = transform_items(&src_mod.content.structs, self_namespace, pub_use_info);
+        let src_enums = transform_items(&src_mod.content.enums, self_namespace, pub_use_info);
+        let src_traits = transform_items(&src_mod.content.traits, self_namespace, pub_use_info);
 
         module.content.functions.extend(src_functions);
         module.content.structs.extend(src_structs);
@@ -72,8 +83,13 @@ fn transform_module_by_pub_use_single(
     Ok(())
 }
 
-fn transform_items<T: WithNamespace>(items: &[T], self_namespace: &Namespace) -> Vec<T> {
+fn transform_items<T: WithNamespace>(
+    items: &[T],
+    self_namespace: &Namespace,
+    pub_use_info: &PubUseInfo,
+) -> Vec<T> {
     (items.iter())
+        .filter(|x| pub_use_info.is_interest_name(TODO))
         .map(|x| x.with_namespace(self_namespace.clone()))
         .collect_vec()
 }
