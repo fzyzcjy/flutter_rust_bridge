@@ -40,6 +40,11 @@ fn transform_module_by_pub_use_single(
     pub_use_name: &Namespace,
 ) -> anyhow::Result<()> {
     if let Some(src_mod) = module.content.get_module_nested(&pub_use_name.path()) {
+        if src_mod.meta.is_public() {
+            log::debug!("transform_module_by_pub_use_single skip `{pub_use_name}` since src mod already public");
+            return Ok(());
+        }
+
         let self_namespace = &module.meta.namespace;
 
         let src_functions = (src_mod.content.functions.iter())
