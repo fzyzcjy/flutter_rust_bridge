@@ -22,8 +22,8 @@ impl HirCommon for HirFunction {
         }
     }
 
-    fn ident(&self) -> Ident {
-        self.item_fn.sig().ident.clone()
+    fn ident(&self) -> String {
+        self.item_fn.sig().ident.to_string()
     }
 }
 

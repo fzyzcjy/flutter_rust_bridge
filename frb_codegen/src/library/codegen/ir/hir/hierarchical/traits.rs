@@ -27,8 +27,8 @@ impl HirCommon for HirTrait {
         }
     }
 
-    fn ident(&self) -> Ident {
-        self.item_trait.ident.clone()
+    fn ident(&self) -> String {
+        self.item_trait.ident.to_string()
     }
 }
 
@@ -40,8 +40,8 @@ impl HirCommon for HirTraitImpl {
         }
     }
 
-    fn ident(&self) -> Ident {
-        self.item_impl.self_ty
+    fn ident(&self) -> String {
+        ty_to_string(&self.item_impl.self_ty)
     }
 }
 
