@@ -702,6 +702,7 @@ name = "flutter_rust_bridge_macros"
 version = "2.0.0-dev.37"
 dependencies = [
  "hex",
+ "md-5",
  "proc-macro2",
  "quote",
  "syn 2.0.28",
@@ -1080,6 +1081,16 @@ name = "log"
 version = "0.4.19"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b06a4cde4c0f271a446782e3eff8de789548ce57dbc8eca9292c27f4a42004b4"
+
+[[package]]
+name = "md-5"
+version = "0.10.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d89e7ee0cfbedfc4da3340218492196241d89eefb6dab27de5df917a6d2e78cf"
+dependencies = [
+ "cfg-if",
+ "digest",
+]
 
 [[package]]
 name = "memchr"
