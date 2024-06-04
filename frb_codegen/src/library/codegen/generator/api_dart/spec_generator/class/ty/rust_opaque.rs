@@ -15,10 +15,11 @@ use regex::Regex;
 impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
     fn generate_class(&self) -> Option<ApiDartGeneratedClass> {
         let Info {
-            rust_api_type,
             dart_api_type,
             methods,
         } = self.compute_info(GenerateApiMethodMode::Abstract);
+
+        let rust_api_type = self.mir.rust_api_type();
 
         let extra_body =
             generate_class_extra_body(self.mir_type(), &self.context.mir_pack.dart_code_of_type);
@@ -43,7 +44,6 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
 
     fn generate_extra_impl_code(&self) -> Option<String> {
         let Info {
-            rust_api_type,
             dart_api_type,
             methods,
         } = self.compute_info(GenerateApiMethodMode::Primary);
@@ -78,7 +78,6 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
 
 impl RustOpaqueApiDartGenerator<'_> {
     fn compute_info(&self, mode: GenerateApiMethodMode) -> Info {
-        let rust_api_type = self.mir.rust_api_type();
         let dart_api_type = ApiDartGenerator::new(self.mir.clone(), self.context).dart_api_type();
 
         let methods = generate_api_methods(
@@ -92,7 +91,6 @@ impl RustOpaqueApiDartGenerator<'_> {
         .join("\n");
 
         Info {
-            rust_api_type,
             dart_api_type,
             methods,
         }
@@ -100,7 +98,6 @@ impl RustOpaqueApiDartGenerator<'_> {
 }
 
 struct Info {
-    rust_api_type: String,
     dart_api_type: String,
     methods: String,
 }
