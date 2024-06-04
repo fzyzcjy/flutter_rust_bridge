@@ -1,4 +1,4 @@
-use crate::codegen::ir::hir::hierarchical::misc::WithNamespace;
+use crate::codegen::ir::hir::hierarchical::misc::HirCommon;
 use crate::codegen::ir::hir::hierarchical::module::HirModule;
 use crate::utils::namespace::Namespace;
 use itertools::Itertools;
@@ -83,7 +83,7 @@ fn transform_module_by_pub_use_single(
     Ok(())
 }
 
-fn transform_items<T: WithNamespace>(
+fn transform_items<T: HirCommon>(
     items: &[T],
     self_namespace: &Namespace,
     pub_use_info: &PubUseInfo,
