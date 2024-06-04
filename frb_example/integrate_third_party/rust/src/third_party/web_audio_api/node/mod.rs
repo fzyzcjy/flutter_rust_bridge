@@ -130,17 +130,45 @@ impl OscillatorNode {
 #[frb(external)]
 impl PannerNode {
     #[frb(ignore)]
+    pub fn disconnect_dest() {}
+
+    #[frb(ignore)]
+    pub fn disconnect_dest_from_output() {}
+
+    #[frb(ignore)]
+    pub fn disconnect_dest_from_output_to_input() {}
+
+    #[frb(ignore)]
+    pub fn set_onprocessorerror() {}
+}
+
+#[frb(ignore)]
     pub fn set_onprocessorerror() {}
 }
 
 #[frb(external)]
 impl ScriptProcessorNode {
     #[frb(ignore)]
+    pub fn disconnect_dest() {}
+
+    #[frb(ignore)]
+    pub fn disconnect_dest_from_output() {}
+
+    #[frb(ignore)]
+    pub fn disconnect_dest_from_output_to_input() {}
+
+    #[frb(ignore)]
     pub fn set_onprocessorerror() {}
 }
 
 #[frb(external)]
 impl StereoPannerNode {
+    #[frb(ignore)]
+    pub fn disconnect_dest() {}
+
+    #[frb(ignore)]
+    pub fn disconnect_dest_from_output() {}
+
     #[frb(ignore)]
     pub fn set_onprocessorerror() {}
 }
@@ -149,6 +177,12 @@ impl StereoPannerNode {
 impl WaveShaperNode {
     #[frb(ignore)]
     pub fn curve() {}
+
+    #[frb(ignore)]
+    pub fn disconnect_dest_from_output() {}
+
+    #[frb(ignore)]
+    pub fn disconnect_dest_from_output_to_input() {}
 
     #[frb(ignore)]
     pub fn set_onprocessorerror() {}
