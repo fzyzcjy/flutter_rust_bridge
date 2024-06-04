@@ -35,7 +35,7 @@ fn serialize_item_trait<S: Serializer>(x: &ItemTrait, s: S) -> Result<S::Ok, S::
     s.serialize_str(&format!("ident={}", x.ident))
 }
 
-fn serialize_item_impl<S: Serializer>(x: &ItemImpl, s: S) -> Result<S::Ok, S::Error> {
+pub(super) fn serialize_item_impl<S: Serializer>(x: &ItemImpl, s: S) -> Result<S::Ok, S::Error> {
     s.serialize_str(&format!("self_ty={}", ty_to_string(&x.self_ty)))
 }
 
