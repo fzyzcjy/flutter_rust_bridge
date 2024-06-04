@@ -13,14 +13,18 @@ use std::collections::HashMap;
 use syn::{ItemImpl, TraitItem};
 
 pub(super) fn transform(mut pack: HirPack) -> anyhow::Result<HirPack> {
-    let trait_map = collect_traits(&pack);
+    let trait_map = (collect_traits(&pack).into_iter())
+        .map(|(k, v)| (k, v.to_owned()))
+        .collect::<HashMap<_, _>>();
+
     pack.visit_mut(&mut |module| {
         (module.content.functions).extend(compute_methods(module, &trait_map));
     });
+
     Ok(pack)
 }
 
-fn compute_methods(module: &HirModule, trait_map: &HashMap<String, &HirTrait>) -> Vec<HirFunction> {
+fn compute_methods(module: &HirModule, trait_map: &HashMap<String, HirTrait>) -> Vec<HirFunction> {
     (module.content.trait_impls.iter())
         .flat_map(|trait_impl| {
             let namespace = &trait_impl.namespace;
