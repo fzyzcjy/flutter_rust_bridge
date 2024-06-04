@@ -33,6 +33,10 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
                 abstract class {dart_api_type} {{
                     {methods}
 
+                    void dispose();
+
+                    bool get isDisposed;
+
                     {extra_body}
                 }}
                 "

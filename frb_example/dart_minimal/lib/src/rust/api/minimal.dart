@@ -12,4 +12,8 @@ Future<int> minimalAdder({required int a, required int b}) =>
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyStruct>>
 abstract class MyStruct {
   Future<int> f({required int a});
+
+  void dispose();
+
+  bool get isDisposed;
 }
