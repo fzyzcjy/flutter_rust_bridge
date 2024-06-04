@@ -15,7 +15,7 @@ impl<'a> ApiDartGeneratorClassTrait for StructRefApiDartGenerator<'a> {
         let comments = generate_dart_comments(&src.comments);
         let metadata = generate_dart_metadata(&src.dart_metadata);
 
-        let methods = generate_api_methods(&src.name, self.context, GenerateApiMethodMode::Impl);
+        let methods = generate_api_methods(&src.name, self.context, GenerateApiMethodMode::Primary);
         let extra_body =
             generate_class_extra_body(self.mir_type(), &self.context.mir_pack.dart_code_of_type);
 

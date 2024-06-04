@@ -18,7 +18,7 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
             rust_api_type,
             dart_api_type,
             methods,
-        } = self.compute_info(GenerateApiMethodMode::Decl);
+        } = self.compute_info(GenerateApiMethodMode::Abstract);
 
         let extra_body =
             generate_class_extra_body(self.mir_type(), &self.context.mir_pack.dart_code_of_type);
@@ -46,7 +46,7 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
             rust_api_type,
             dart_api_type,
             methods,
-        } = self.compute_info(GenerateApiMethodMode::Impl);
+        } = self.compute_info(GenerateApiMethodMode::Primary);
 
         let dart_api_type_impl = format!("{dart_api_type}Impl");
 

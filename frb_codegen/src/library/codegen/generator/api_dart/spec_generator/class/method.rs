@@ -15,8 +15,8 @@ use itertools::Itertools;
 
 #[derive(Debug, Clone, Copy, Eq, PartialEq)]
 pub(crate) enum GenerateApiMethodMode {
-    Decl,
-    Impl,
+    Abstract,
+    Primary,
 }
 
 pub(crate) fn generate_api_methods(
@@ -86,8 +86,8 @@ fn generate_api_method(
     );
 
     let maybe_implementation = match mode {
-        GenerateApiMethodMode::Decl => "".to_owned(),
-        GenerateApiMethodMode::Impl => format!(
+        GenerateApiMethodMode::Abstract => "".to_owned(),
+        GenerateApiMethodMode::Primary => format!(
             "=>{}",
             generate_implementation(func, context, method_info, &params)
         ),
