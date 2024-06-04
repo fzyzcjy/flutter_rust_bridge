@@ -30,13 +30,17 @@ fn parse_pub_use_from_item(item: &syn::Item) -> Option<PubUseInfo> {
             let tree = &item_use.tree;
             let tree_string = quote::quote!(#tree).to_string().replace(' ', "");
             let tree_parts = tree_string.split(Namespace::SEP).collect_vec();
-            let name_filters = match tree_parts.last().unwrap() {
+            let name_filters = match *tree_parts.last().unwrap() {
                 "*" => None,
-                x => Some(x.to_string()),
+                x => Some(vec![x.to_string()]),
             };
 
             return Some(PubUseInfo {
-                namespace: Namespace::new_raw(tree_parts[..tree_parts.len() - 1]),
+                namespace: Namespace::new(
+                    (tree_parts[..tree_parts.len() - 1].iter())
+                        .map(ToString::to_string)
+                        .collect_vec(),
+                ),
                 name_filters,
             });
         }
