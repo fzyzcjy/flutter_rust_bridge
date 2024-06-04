@@ -89,7 +89,8 @@ fn generate_api_method(
         mode,
     );
 
-    let maybe_implementation = generate_maybe_implementation(func, context, method_info, &params);
+    let maybe_implementation =
+        generate_maybe_implementation(func, context, method_info, &params, mode);
     let maybe_implementation = (maybe_implementation.map(|x| format!("=>{x}"))).unwrap_or_default();
 
     format!("{comments}{signature}{maybe_implementation};\n\n")
@@ -177,6 +178,25 @@ fn generate_method_name(
 }
 
 fn generate_maybe_implementation(
+    func: &MirFunc,
+    context: ApiDartGeneratorContext,
+    method_info: &MirFuncOwnerInfoMethod,
+    params: &[ApiDartGeneratedFunctionParam],
+    mode: GenerateApiMethodMode,
+) -> Option<String> {
+    match mode {
+        GenerateApiMethodMode::SeparatedDecl => TODO,
+        GenerateApiMethodMode::SeparatedImpl => TODO,
+        GenerateApiMethodMode::Combined => Some(generate_implementation_call_impl(
+            func,
+            context,
+            method_info,
+            params,
+        )),
+    }
+}
+
+fn generate_implementation_call_impl(
     func: &MirFunc,
     context: ApiDartGeneratorContext,
     method_info: &MirFuncOwnerInfoMethod,
