@@ -1,5 +1,8 @@
 use flutter_rust_bridge::frb;
-use web_audio_api::node::{AnalyserNode, AudioBufferSourceNode, BiquadFilterNode, ConvolverNode, IIRFilterNode, WaveShaperNode};
+use web_audio_api::node::{
+    AnalyserNode, AudioBufferSourceNode, BiquadFilterNode, ConvolverNode, IIRFilterNode,
+    WaveShaperNode,
+};
 
 #[frb(external)]
 impl AnalyserNode {

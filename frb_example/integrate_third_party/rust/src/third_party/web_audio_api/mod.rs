@@ -1,8 +1,8 @@
-pub mod worklet;
-pub mod node;
-pub mod media_devices;
 pub mod context;
+pub mod media_devices;
 pub mod media_element;
+pub mod node;
+pub mod worklet;
 
 use flutter_rust_bridge::frb;
 use web_audio_api::{AudioBuffer, AudioRenderCapacity};
