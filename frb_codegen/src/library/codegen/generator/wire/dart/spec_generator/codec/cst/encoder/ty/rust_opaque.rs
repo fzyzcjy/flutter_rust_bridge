@@ -6,9 +6,11 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for RustOpaqueWireDartCodecCstGenerator<'a> {
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {
         Acc::new_common(Some(
-            "// ignore: invalid_use_of_internal_member
-            return raw.frbInternalCstEncode();"
-                .to_string(),
+            format!(
+                "// ignore: invalid_use_of_internal_member
+                return (raw as {}Impl).frbInternalCstEncode();",
+                TODO,
+            ),
         ))
     }
 

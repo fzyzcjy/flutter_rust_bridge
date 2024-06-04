@@ -72,7 +72,10 @@ pub(super) fn generate_generalized_rust_opaque_encode(lang: &Lang, needs_move: &
         Lang::DartLang(_) => simple_delegate_encode(
             lang,
             &MirTypeRustOpaque::DELEGATE_TYPE,
-            &format!("self.frbInternalSseEncode(move: {needs_move})"),
+            &format!(
+                "(self as {}Impl).frbInternalSseEncode(move: {needs_move})",
+                TODO,
+            ),
         ),
         Lang::RustLang(_) => {
             format!(
