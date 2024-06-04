@@ -19,13 +19,12 @@ void main() {
 //
 // ignore: unused_element
 Future<void> _demoUsage() async {
-  final context = AudioContext(
-    options: const AudioContextOptions(
-      latencyHint: AudioContextLatencyCategory.balanced(),
-      sinkId: '',
-      renderSizeHint: AudioContextRenderSizeCategory.Default,
-    ),
+  const options = AudioContextOptions(
+    latencyHint: AudioContextLatencyCategory.balanced(),
+    sinkId: '',
+    renderSizeHint: AudioContextRenderSizeCategory.Default,
   );
+  final context = AudioContext(options: options);
 
   final buffer =
       await context.decodeAudioDataSync(inputPath: 'samples/major-scale.ogg');
