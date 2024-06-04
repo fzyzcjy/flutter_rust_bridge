@@ -28,6 +28,19 @@ impl BiquadFilterNode {
     pub fn get_frequency_response() {}
 }
 
+macro_rules! handle_biquad_filter_node_audio_param {
+    ($name:ident) => {
+        #[frb(external)]
+        impl BiquadFilterNode {
+        }
+    };
+}
+
+handle_biquad_filter_node_audio_param!(q);
+handle_biquad_filter_node_audio_param!(detune);
+handle_biquad_filter_node_audio_param!(frequency);
+handle_biquad_filter_node_audio_param!(gain);
+
 #[frb(external)]
 impl ConvolverNode {
     #[frb(ignore)]
