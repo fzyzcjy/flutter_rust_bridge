@@ -181,6 +181,7 @@ fn generate_boilerplate(
                 io_directory = context.config.default_external_library_loader.io_directory,
                 web_prefix = context.config.default_external_library_loader.web_prefix,
             ),
+            body: extra_impl_text.to_owned(),
             ..Default::default()
         }],
         io: vec![WireDartOutputCode {
