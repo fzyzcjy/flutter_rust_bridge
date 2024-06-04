@@ -5,7 +5,7 @@ use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegatePrim
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::{MirContext, MirType, MirTypeTrait};
 use crate::if_then_some;
-use crate::utils::namespace::{Namespace, NamespacedName};
+use crate::utils::namespace::NamespacedName;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 
@@ -153,10 +153,9 @@ impl MirFunc {
     pub(crate) fn locator_dart_api(&self) -> MirFuncDartApiLocator {
         MirFuncDartApiLocator {
             accessor: self.accessor.clone(),
-            namespace: self.name.namespace.clone(),
             inner: match &self.owner {
                 MirFuncOwnerInfo::Function => MirFuncDartApiLocatorInner::Function {
-                    name: self.name.name.clone(),
+                    name: self.name.clone(),
                 },
                 MirFuncOwnerInfo::Method(method) => MirFuncDartApiLocatorInner::Method {
                     owner_name: method.owner_ty.safe_ident(),
@@ -221,13 +220,12 @@ impl MirFuncOverridePriority {
 pub(crate) struct MirFuncDartApiLocator {
     accessor: Option<MirFuncAccessorMode>,
     inner: MirFuncDartApiLocatorInner,
-    namespace: Namespace,
 }
 
 #[derive(Clone, Eq, PartialEq, Hash)]
 pub(crate) enum MirFuncDartApiLocatorInner {
     Function {
-        name: String,
+        name: NamespacedName,
     },
     Method {
         owner_name: String,
