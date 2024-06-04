@@ -328,7 +328,7 @@ Future<void> testRustPackage(TestRustPackageConfig config) async {
 }
 
 Future<void> testDartNative(TestDartNativeConfig config) async {
-  await installSystemDependencies();
+  await installSystemDependencies(package: config.package);
 
   final enableRustCoverage = config.coverage &&
       !const [

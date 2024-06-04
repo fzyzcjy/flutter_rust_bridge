@@ -302,7 +302,7 @@ Future<void> generateInternalBuildRunner(GenerateConfig config) async {
 
 Future<void> generateRunFrbCodegenCommandGenerate(
     GeneratePackageConfig config) async {
-  await installSystemDependencies();
+  await installSystemDependencies(package: config.package);
 
   await _wrapMaybeSetExitIfChanged(config, () async {
     await runPubGetIfNotRunYet(config.package);

@@ -42,7 +42,7 @@ Future<void> lint(LintConfig config) async {
 }
 
 Future<void> lintRust(LintConfig config) async {
-  await installSystemDependencies();
+  await installSystemDependencies(package: null);
   await lintRustFormat(config);
   await lintRustClippy(config);
 }
