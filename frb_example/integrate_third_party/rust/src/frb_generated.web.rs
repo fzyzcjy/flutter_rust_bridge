@@ -15,7 +15,7 @@ use web_audio_api::context::*;
 use web_audio_api::media_devices::*;
 use web_audio_api::media_recorder::*;
 use web_audio_api::media_streams::*;
-use web_audio_api::node::audio_node::AudioNode;
+use web_audio_api::node::AudioNode;
 use web_audio_api::node::*;
 use web_audio_api::worklet::*;
 use web_audio_api::*;
