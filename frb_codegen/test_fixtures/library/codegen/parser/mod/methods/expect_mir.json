@@ -74,6 +74,7 @@
           "type": "Primitive"
         }
       },
+      "override_priority": 0,
       "owner": {
         "Method": {
           "actual_method_dart_name": null,
@@ -121,6 +122,7 @@
           "type": "Primitive"
         }
       },
+      "override_priority": 0,
       "owner": {
         "Method": {
           "actual_method_dart_name": null,
@@ -197,6 +199,7 @@
           "type": "Primitive"
         }
       },
+      "override_priority": 0,
       "owner": {
         "Method": {
           "actual_method_dart_name": null,
@@ -239,6 +242,7 @@
           "type": "Primitive"
         }
       },
+      "override_priority": 0,
       "owner": {
         "Method": {
           "actual_method_dart_name": null,

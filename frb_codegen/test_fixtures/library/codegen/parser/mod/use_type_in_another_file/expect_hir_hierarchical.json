@@ -42,6 +42,7 @@
                 "enums": [],
                 "functions": [
                   {
+                    "item_fn": "GeneralizedItemFn(name=func_one)",
                     "namespace": "crate::api",
                     "owner": "Function"
                   }

@@ -19,22 +19,27 @@
                 ],
                 "functions": [
                   {
+                    "item_fn": "GeneralizedItemFn(name=func_struct_string)",
                     "namespace": "crate::api",
                     "owner": "Function"
                   },
                   {
+                    "item_fn": "GeneralizedItemFn(name=func_struct_string_repeated)",
                     "namespace": "crate::api",
                     "owner": "Function"
                   },
                   {
+                    "item_fn": "GeneralizedItemFn(name=func_struct_bool)",
                     "namespace": "crate::api",
                     "owner": "Function"
                   },
                   {
+                    "item_fn": "GeneralizedItemFn(name=func_enum_string)",
                     "namespace": "crate::api",
                     "owner": "Function"
                   },
                   {
+                    "item_fn": "GeneralizedItemFn(name=func_enum_bool)",
                     "namespace": "crate::api",
                     "owner": "Function"
                   }
