@@ -1,3 +1,4 @@
+use crate::codegen::ir::hir::hierarchical::misc::WithNamespace;
 use crate::codegen::ir::hir::hierarchical::module::HirModule;
 use crate::utils::namespace::Namespace;
 use itertools::Itertools;
@@ -53,18 +54,10 @@ fn transform_module_by_pub_use_single(
 
         let self_namespace = &module.meta.namespace;
 
-        let src_functions = (src_mod.content.functions.iter())
-            .map(|x| x.with_namespace(self_namespace.clone()))
-            .collect_vec();
-        let src_structs = (src_mod.content.structs.iter())
-            .map(|x| x.with_namespace(self_namespace.clone()))
-            .collect_vec();
-        let src_enums = (src_mod.content.enums.iter())
-            .map(|x| x.with_namespace(self_namespace.clone()))
-            .collect_vec();
-        let src_traits = (src_mod.content.traits.iter())
-            .map(|x| x.with_namespace(self_namespace.clone()))
-            .collect_vec();
+        let src_functions = transform_items(src_mod.content.functions, self_namespace);
+        let src_structs = transform_items(src_mod.content.structs, self_namespace);
+        let src_enums = transform_items(src_mod.content.enums, self_namespace);
+        let src_traits = transform_items(src_mod.content.traits, self_namespace);
 
         module.content.functions.extend(src_functions);
         module.content.structs.extend(src_structs);
@@ -77,4 +70,10 @@ fn transform_module_by_pub_use_single(
     }
 
     Ok(())
+}
+
+fn transform_items<T: WithNamespace>(items: &[T], self_namespace: &Namespace) -> Vec<T> {
+    (items.iter())
+        .map(|x| x.with_namespace(self_namespace.clone()))
+        .collect_vec()
 }
