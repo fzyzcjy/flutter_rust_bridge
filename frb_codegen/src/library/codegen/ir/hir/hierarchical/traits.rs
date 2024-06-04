@@ -14,6 +14,7 @@ pub(crate) struct HirTrait {
 #[derive(Debug, Clone, Serialize)]
 pub(crate) struct HirTraitImpl {
     pub(crate) namespace: Namespace,
+    #[serde(serialize_with = "serialize_item_impl")]
     pub(crate) item_impl: ItemImpl,
 }
 
@@ -32,4 +33,12 @@ impl HirCommon for HirTrait {
 
 fn serialize_item_trait<S: Serializer>(x: &ItemTrait, s: S) -> Result<S::Ok, S::Error> {
     s.serialize_str(&format!("ident={}", x.ident.to_string()))
+}
+
+fn serialize_item_impl<S: Serializer>(x: &ItemImpl, s: S) -> Result<S::Ok, S::Error> {
+    s.serialize_str(&format!("self_ty={}", ty_to_string(&x.self_ty)))
+}
+
+fn ty_to_string(ty: &syn::Type) -> String {
+    quote::quote!(#ty).to_string()
 }
