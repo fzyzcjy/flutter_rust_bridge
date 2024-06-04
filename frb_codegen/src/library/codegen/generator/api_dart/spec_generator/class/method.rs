@@ -184,7 +184,7 @@ fn generate_maybe_implementation(
     params: &[ApiDartGeneratedFunctionParam],
     mode: GenerateApiMethodMode,
 ) -> Option<String> {
-    match (mode, method_info.mode) {
+    match (mode, method_info.mode.to_owned()) {
         (GenerateApiMethodMode::Combined, _)
         | (GenerateApiMethodMode::SeparatedDecl, MirFuncOwnerInfoMethodMode::Static)
         | (GenerateApiMethodMode::SeparatedImpl, MirFuncOwnerInfoMethodMode::Instance) => Some(
