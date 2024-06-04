@@ -10,9 +10,9 @@ pub impl AudioContext {
         input_path: String,
     ) -> anyhow::Result<AudioBuffer> {
         let input = std::fs::File::open(input_path)?;
-        Ok(self
+        self
             .decode_audio_data_sync(input)
-            .map_err(|e| anyhow::anyhow!("{:?}", e))?)
+            .map_err(|e| anyhow::anyhow!("{:?}", e))
     }
 
     // TODO only to test overriding an existing function, not to be really used (and should be reverted later)!
