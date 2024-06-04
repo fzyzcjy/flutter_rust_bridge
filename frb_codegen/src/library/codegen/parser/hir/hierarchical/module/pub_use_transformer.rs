@@ -2,6 +2,7 @@ use crate::codegen::ir::hir::hierarchical::misc::HirCommon;
 use crate::codegen::ir::hir::hierarchical::module::HirModule;
 use crate::utils::namespace::Namespace;
 use itertools::Itertools;
+use quote::ToTokens;
 
 pub(crate) fn transform(mut module: HirModule, items: &[syn::Item]) -> anyhow::Result<HirModule> {
     // Only apply to third party crate currently, since in self crate usually no need to care about this
@@ -28,12 +29,16 @@ fn parse_pub_use_from_item(item: &syn::Item) -> Option<PubUseInfo> {
         if matches!(item_use.vis, syn::Visibility::Public(_)) {
             let tree = &item_use.tree;
             let tree_string = quote::quote!(#tree).to_string().replace(' ', "");
-            if let Some(interest_use_part) = tree_string.strip_suffix("::*") {
-                return Some(PubUseInfo {
-                    namespace: Namespace::new_raw(interest_use_part.to_owned()),
-                    name_filters: TODO,
-                });
-            }
+            let tree_parts = tree_string.split(Namespace::SEP).collect_vec();
+            let name_filters = match tree_parts.last() {
+                "*" => None,
+                x => Some(x.to_string()),
+            };
+
+            return Some(PubUseInfo {
+                namespace: Namespace::new_raw(tree_parts[..tree_parts.len() - 1]),
+                name_filters,
+            });
         }
     }
     None
