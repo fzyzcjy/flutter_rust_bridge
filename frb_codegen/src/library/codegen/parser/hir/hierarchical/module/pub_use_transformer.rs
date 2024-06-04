@@ -30,11 +30,6 @@ fn parse_pub_use_from_item(item: &syn::Item) -> Option<Namespace> {
     None
 }
 
-struct PubUseInfo {
-    namespace: Namespace,
-    name_filters: Option<Vec<String>>,
-}
-
 fn transform_module_by_pub_use_single(
     module: &mut HirModule,
     pub_use_name: &Namespace,
