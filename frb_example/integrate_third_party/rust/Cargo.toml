@@ -8,3 +8,6 @@ crate-type = ["cdylib", "staticlib"]
 
 [dependencies]
 flutter_rust_bridge = { path = "../../../frb_rust" }
+web-audio-api = "1.0.0-rc.6"
+extend = "1.2.0"
+anyhow = "1.0.86"
