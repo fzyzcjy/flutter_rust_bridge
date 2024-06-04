@@ -34,6 +34,16 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
             class_name: dart_api_type.clone(),
             code: format!(
                 "
+                "
+            ),
+            needs_freezed: false,
+            header: Default::default(),
+        })
+    }
+
+    fn generate_extra_impl_code(&self) -> Option<String> {
+        Some(format!(
+            "
             // Rust type: {rust_api_type}
             @sealed class {dart_api_type} extends RustOpaque {{
                 // Not to be used by end users
@@ -53,14 +63,7 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
                 {methods}
                 {extra_body}
             }}"
-            ),
-            needs_freezed: false,
-            header: Default::default(),
-        })
-    }
-
-    fn generate_extra_impl_code(&self) -> Option<String> {
-        Some(TODO)
+        ))
     }
 }
 
