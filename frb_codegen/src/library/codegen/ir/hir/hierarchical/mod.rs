@@ -6,3 +6,4 @@ pub(crate) mod struct_or_enum;
 pub(crate) mod syn_item_struct_or_enum;
 pub(crate) mod traits;
 pub(crate) mod type_alias;
+pub(crate) mod misc;
