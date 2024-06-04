@@ -16,6 +16,7 @@ impl<'a> CodecSseTyTrait for RustAutoOpaqueImplicitCodecSseTy<'a> {
                 Some(generate_generalized_rust_opaque_encode(
                     lang,
                     &format!("{needs_move}"),
+                    MirType::RustAutoOpaqueImplicit(self.mir), self.context,
                 ))
             }
             Lang::RustLang(_) => {

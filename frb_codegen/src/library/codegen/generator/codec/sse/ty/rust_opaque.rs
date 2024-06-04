@@ -3,6 +3,7 @@ use crate::codegen::generator::codec::sse::ty::delegate::{
     simple_delegate_decode, simple_delegate_encode,
 };
 use crate::codegen::generator::codec::sse::ty::*;
+use crate::codegen::generator::wire::dart::spec_generator::codec::sse::base::WireDartCodecSseGeneratorContext;
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::library::codegen::generator::codec::sse::lang::LangTrait;
@@ -10,7 +11,12 @@ use convert_case::{Case, Casing};
 
 impl<'a> CodecSseTyTrait for RustOpaqueCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
-        Some(generate_generalized_rust_opaque_encode(lang, "null"))
+        Some(generate_generalized_rust_opaque_encode(
+            lang,
+            "null",
+            MirType::RustOpaque(self.mir),
+            self.context,
+        ))
     }
 
     fn generate_decode(&self, lang: &Lang) -> Option<String> {
@@ -67,14 +73,19 @@ pub(crate) fn generate_maybe_unsafe(inner: &str, needs_unsafe_block: bool) -> St
     }
 }
 
-pub(super) fn generate_generalized_rust_opaque_encode(lang: &Lang, needs_move: &str) -> String {
+pub(super) fn generate_generalized_rust_opaque_encode(
+    lang: &Lang,
+    needs_move: &str,
+    mir: MirType,
+    context: CodecSseTyContext,
+) -> String {
     match lang {
         Lang::DartLang(_) => simple_delegate_encode(
             lang,
             &MirTypeRustOpaque::DELEGATE_TYPE,
             &format!(
                 "(self as {}Impl).frbInternalSseEncode(move: {needs_move})",
-                TODO,
+                ApiDartGenerator::new(mir, context.as_api_dart_context()).dart_api_type()
             ),
         ),
         Lang::RustLang(_) => {
