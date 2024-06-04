@@ -29,7 +29,10 @@ fn parse_pub_use_from_item(item: &syn::Item) -> Option<PubUseInfo> {
             let tree = &item_use.tree;
             let tree_string = quote::quote!(#tree).to_string().replace(' ', "");
             if let Some(interest_use_part) = tree_string.strip_suffix("::*") {
-                return Some(Namespace::new_raw(interest_use_part.to_owned()));
+                return Some(PubUseInfo {
+                    namespace: Namespace::new_raw(interest_use_part.to_owned()),
+                    name_filters: TODO,
+                });
             }
         }
     }
