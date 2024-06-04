@@ -180,7 +180,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return MyStruct.frbInternalDcoDecode(raw as List<dynamic>);
+    return MyStructImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -188,7 +188,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return MyStruct.frbInternalDcoDecode(raw as List<dynamic>);
+    return MyStructImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -196,7 +196,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return MyStruct.frbInternalDcoDecode(raw as List<dynamic>);
+    return MyStructImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -222,7 +222,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return MyStruct.frbInternalSseDecode(
+    return MyStructImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -231,7 +231,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return MyStruct.frbInternalSseDecode(
+    return MyStructImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -240,7 +240,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return MyStruct.frbInternalSseDecode(
+    return MyStructImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -329,11 +329,11 @@ class MyStructImpl extends RustOpaque implements MyStruct {
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_MyStructImpl,
+        RustLib.instance.api.rust_arc_increment_strong_count_MyStruct,
     rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_MyStructImpl,
+        RustLib.instance.api.rust_arc_decrement_strong_count_MyStruct,
     rustArcDecrementStrongCountPtr:
-        RustLib.instance.api.rust_arc_decrement_strong_count_MyStructImplPtr,
+        RustLib.instance.api.rust_arc_decrement_strong_count_MyStructPtr,
   );
 
   Future<int> f({required int a}) =>
