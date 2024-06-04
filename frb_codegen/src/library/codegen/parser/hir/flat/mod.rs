@@ -79,7 +79,7 @@ where
     V: Debug,
 {
     let mut ans = HashMap::new();
-    visit_pack(hir_pack, &mut |module| {
+    hir_pack.visit( &mut |module| {
         if !is_interest_mod(module) {
             return;
         }
@@ -100,7 +100,7 @@ where
     F: Fn(&'a HirModule) -> Vec<T>,
 {
     let mut ans = vec![];
-    visit_pack(hir_pack, &mut |module| {
+    hir_pack.visit(&mut |module| {
         if !is_interest_mod(module) {
             return;
         }
@@ -114,17 +114,4 @@ fn is_interest_mod(module: &HirModule) -> bool {
     // If it is third party crate, then we only scan the `pub` mods,
     // since for non-pub modes, it is impossible to use them even if we scanned them.
     module.meta.namespace.path()[0] == CrateName::SELF_CRATE || module.meta.is_public()
-}
-
-fn visit_pack<'a, F: FnMut(&'a HirModule)>(hir_pack: &'a HirPack, f: &mut F) {
-    for hir_crate in &hir_pack.crates {
-        visit_modules(&hir_crate.root_module, f);
-    }
-}
-
-fn visit_modules<'a, F: FnMut(&'a HirModule)>(module: &'a HirModule, f: &mut F) {
-    f(module);
-    for scope_module in module.content.modules.iter() {
-        visit_modules(scope_module, f);
-    }
 }

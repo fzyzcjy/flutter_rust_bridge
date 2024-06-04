@@ -9,8 +9,7 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'rust_auto_opaque_twin_moi.dart';
 part 'rust_auto_opaque_twin_rust_async.freezed.dart';
 
-// These functions are ignored because they are not marked as `pub`: `f`, `func_hello`, `func_hello`
-// These types are ignored because they are not used by any `pub` functions: `HelloOneStructTwinRustAsync`, `HelloTwoEnumTwinRustAsync`
+// These functions have error during generation (see debug logs for more details): `f`
 
 Future<void> rustAutoOpaqueArgOwnTwinRustAsync(
         {required NonCloneSimpleTwinRustAsync arg, required int expect}) =>
@@ -282,6 +281,33 @@ class EnumWithGoodAndOpaqueWithoutOptionTwinRustAsync extends RustOpaque {
   );
 }
 
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinRustAsync>>
+@sealed
+class HelloOneStructTwinRustAsync extends RustOpaque {
+  // Not to be used by end users
+  HelloOneStructTwinRustAsync.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  HelloOneStructTwinRustAsync.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_HelloOneStructTwinRustAsync,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_HelloOneStructTwinRustAsync,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_HelloOneStructTwinRustAsyncPtr,
+  );
+
+  Future<void> funcHello() => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncHelloOneStructTwinRustAsyncFuncHello(
+        that: this,
+      );
+}
+
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleEnumTwinRustAsync>>
 @sealed
 class NonCloneSimpleEnumTwinRustAsync extends RustOpaque {
@@ -477,6 +503,17 @@ sealed class EnumWithGoodAndOpaqueTwinRustAsync
   const factory EnumWithGoodAndOpaqueTwinRustAsync.opaque(
     NonCloneSimpleTwinRustAsync field0,
   ) = EnumWithGoodAndOpaqueTwinRustAsync_Opaque;
+}
+
+enum HelloTwoEnumTwinRustAsync {
+  a,
+  b,
+  ;
+
+  Future<void> funcHello() => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncHelloTwoEnumTwinRustAsyncFuncHello(
+        that: this,
+      );
 }
 
 class StructWithExplicitAutoOpaqueFieldTwinRustAsync {

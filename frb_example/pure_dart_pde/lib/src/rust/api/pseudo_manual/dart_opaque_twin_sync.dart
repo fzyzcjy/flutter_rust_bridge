@@ -9,7 +9,6 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'dart_opaque_twin_sync.freezed.dart';
 
-// These functions are ignored because they are not marked as `pub`: `deref`, `initialize`
 // These types are ignored because they are not used by any `pub` functions: `DART_OPAQUE`
 
 String asyncAcceptDartOpaqueTwinSync({required Object opaque}) =>

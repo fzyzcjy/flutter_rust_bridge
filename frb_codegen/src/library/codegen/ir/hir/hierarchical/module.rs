@@ -1,6 +1,7 @@
 use crate::codegen::ir::hir::hierarchical::function::HirFunction;
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirEnum;
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStruct;
+use crate::codegen::ir::hir::hierarchical::traits::{HirTrait, HirTraitImpl};
 use crate::codegen::ir::hir::hierarchical::type_alias::HirTypeAlias;
 use crate::utils::namespace::Namespace;
 use derivative::Derivative;
@@ -14,6 +15,22 @@ pub struct HirModule {
     // avoid too big debug dump
     #[serde(skip_serializing)]
     pub raw: Vec<String>,
+}
+
+impl HirModule {
+    pub(crate) fn visit<'a, F: FnMut(&'a HirModule)>(&'a self, f: &mut F) {
+        f(self);
+        for scope_module in self.content.modules.iter() {
+            scope_module.visit(f);
+        }
+    }
+
+    pub(crate) fn visit_mut<F: FnMut(&mut HirModule)>(&mut self, f: &mut F) {
+        f(self);
+        for scope_module in self.content.modules.iter_mut() {
+            scope_module.visit_mut(f);
+        }
+    }
 }
 
 #[derive(Clone, Derivative, Serialize)]
@@ -42,6 +59,8 @@ pub struct HirModuleContent {
     // pub imports: Vec<Import>, // not implemented yet
     pub type_alias: Vec<HirTypeAlias>,
     pub functions: Vec<HirFunction>,
+    pub traits: Vec<HirTrait>,
+    pub trait_impls: Vec<HirTraitImpl>,
 }
 
 /// Mirrors syn::Visibility, but can be created without a token

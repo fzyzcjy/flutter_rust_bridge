@@ -63,6 +63,7 @@ pub struct MirFuncOwnerInfoMethod {
     pub(crate) actual_method_name: String,
     pub(crate) actual_method_dart_name: Option<String>,
     pub(crate) mode: MirFuncOwnerInfoMethodMode,
+    pub(crate) trait_def_name: Option<NamespacedName>,
 }
 
 pub enum MirFuncOwnerInfoMethodMode {
@@ -159,8 +160,8 @@ impl MirFunc {
 }
 
 impl MirFuncOwnerInfoMethod {
-    pub(crate) fn owner_ty_name(&self) -> NamespacedName {
-        match &self.owner_ty {
+    pub(crate) fn owner_ty_name(&self) -> Option<NamespacedName> {
+        Some(match &self.owner_ty {
             MirType::StructRef(ty) => ty.ident.0.clone(),
             MirType::EnumRef(ty) => ty.ident.0.clone(),
             MirType::Delegate(MirTypeDelegate::PrimitiveEnum(MirTypeDelegatePrimitiveEnum {
@@ -170,8 +171,8 @@ impl MirFuncOwnerInfoMethod {
             MirType::RustAutoOpaqueImplicit(ty) => {
                 NamespacedName::new(ty.self_namespace().unwrap(), ty.rust_api_type())
             }
-            ty => unimplemented!("enum_or_struct_name does not know {ty:?}"),
-        }
+            _ => return None,
+        })
     }
 }
 

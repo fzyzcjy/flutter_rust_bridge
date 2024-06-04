@@ -6,8 +6,6 @@
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These functions are ignored because they are not marked as `pub`: `fmt`
-
 NewTypeIntTwinSync handleNewtypeTwinSync({required NewTypeIntTwinSync arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualNewtypePatternTwinSyncHandleNewtypeTwinSync(

@@ -8,9 +8,11 @@ use crate::codegen::generator::wire::rust::spec_generator::base::{
 use crate::codegen::generator::wire::rust::spec_generator::misc::wire_func::generate_wire_func;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::generator::wire::rust::MirPackComputedCache;
+use crate::codegen::ir::mir::func::MirFuncOwnerInfo;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::mir::ty::MirType;
+use crate::if_then_some;
 use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
 use itertools::Itertools;
 use serde::Serialize;
@@ -98,6 +100,15 @@ fn generate_imports(
         .into_iter()
         .join("\n");
 
+    let imports_from_functions = (context.mir_pack.funcs.iter())
+        .filter_map(
+            |func| if_then_some!(let MirFuncOwnerInfo::Method(method) = &func.owner, method),
+        )
+        .filter_map(|method| method.trait_def_name.clone())
+        .map(|name| format!("use {};\n", name.rust_style()))
+        .unique()
+        .join("");
+
     // NOTE Do *not* use imports when possible, instead use fully specified name directly
     let static_imports = "use flutter_rust_bridge::{Handler, IntoIntoDart};
 use flutter_rust_bridge::for_generated::transform_result_dco;
@@ -114,7 +125,11 @@ use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, WriteBytesExt,
             _ => "",
         };
 
-        vec![(imports_from_types.clone() + static_imports + platform_imports).into()]
+        vec![(imports_from_types.clone()
+            + &imports_from_functions
+            + static_imports
+            + platform_imports)
+            .into()]
     })
 }
 

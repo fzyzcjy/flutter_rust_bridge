@@ -2,7 +2,6 @@ mod pub_use_transformer;
 mod syn_item;
 
 use crate::codegen::ir::hir::hierarchical::module::{HirModule, HirModuleContent, HirModuleMeta};
-use crate::codegen::parser::hir::hierarchical::function::parse_generalized_functions;
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 
 pub(crate) fn parse_module(
@@ -20,11 +19,7 @@ fn parse_raw(
     meta: HirModuleMeta,
     config: &ParserHirInternalConfig,
 ) -> anyhow::Result<HirModule> {
-    let mut scope = HirModuleContent {
-        functions: parse_generalized_functions(items, &meta.namespace)?,
-        ..HirModuleContent::default()
-    };
-
+    let mut scope = HirModuleContent::default();
     for item in items.iter() {
         syn_item::parse_syn_item(item, &mut scope, config, &meta.namespace, &meta.parent_vis)?;
     }

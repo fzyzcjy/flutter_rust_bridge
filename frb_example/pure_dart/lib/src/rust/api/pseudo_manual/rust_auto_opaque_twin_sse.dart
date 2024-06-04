@@ -9,8 +9,7 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'rust_auto_opaque_twin_moi.dart';
 part 'rust_auto_opaque_twin_sse.freezed.dart';
 
-// These functions are ignored because they are not marked as `pub`: `f`, `func_hello`, `func_hello`
-// These types are ignored because they are not used by any `pub` functions: `HelloOneStructTwinSse`, `HelloTwoEnumTwinSse`
+// These functions have error during generation (see debug logs for more details): `f`
 
 Future<void> rustAutoOpaqueArgOwnTwinSse(
         {required NonCloneSimpleTwinSse arg, required int expect}) =>
@@ -280,6 +279,33 @@ class EnumWithGoodAndOpaqueWithoutOptionTwinSse extends RustOpaque {
   );
 }
 
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinSse>>
+@sealed
+class HelloOneStructTwinSse extends RustOpaque {
+  // Not to be used by end users
+  HelloOneStructTwinSse.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  HelloOneStructTwinSse.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_HelloOneStructTwinSse,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_HelloOneStructTwinSse,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_HelloOneStructTwinSsePtr,
+  );
+
+  Future<void> funcHello() => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSseHelloOneStructTwinSseFuncHello(
+        that: this,
+      );
+}
+
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleEnumTwinSse>>
 @sealed
 class NonCloneSimpleEnumTwinSse extends RustOpaque {
@@ -470,6 +496,17 @@ sealed class EnumWithGoodAndOpaqueTwinSse with _$EnumWithGoodAndOpaqueTwinSse {
   const factory EnumWithGoodAndOpaqueTwinSse.opaque(
     NonCloneSimpleTwinSse field0,
   ) = EnumWithGoodAndOpaqueTwinSse_Opaque;
+}
+
+enum HelloTwoEnumTwinSse {
+  a,
+  b,
+  ;
+
+  Future<void> funcHello() => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSseHelloTwoEnumTwinSseFuncHello(
+        that: this,
+      );
 }
 
 class StructWithExplicitAutoOpaqueFieldTwinSse {

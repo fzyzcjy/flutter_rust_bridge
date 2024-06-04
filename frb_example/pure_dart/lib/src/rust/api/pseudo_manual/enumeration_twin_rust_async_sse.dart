@@ -9,8 +9,6 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'enumeration_twin_rust_async_sse.freezed.dart';
 
-// These functions are ignored because they are not marked as `pub`: `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`
-
 Future<EnumSimpleTwinRustAsyncSse> funcEnumSimpleTwinRustAsyncSse(
         {required EnumSimpleTwinRustAsyncSse arg}) =>
     RustLib.instance.api

@@ -1,5 +1,5 @@
 use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
-use crate::codegen::ir::hir::hierarchical::function::HirFunctionInner;
+use crate::codegen::ir::hir::hierarchical::function::{HirFunction, HirFunctionOwner};
 use crate::codegen::ir::mir::func::{
     MirFunc, MirFuncArgMode, MirFuncInput, MirFuncMode, MirFuncOutput, MirFuncOwnerInfo,
     MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
@@ -40,15 +40,13 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     #[allow(clippy::too_many_arguments)]
     pub(crate) fn parse_function(
         &mut self,
-        func: &HirFunctionInner,
-        namespace_naive: &Namespace,
+        func: &HirFunction,
         force_codec_mode_pack: &Option<CodecModePack>,
         default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
     ) -> ParseFunctionOutput {
         self.parse_function_inner(
             func,
-            namespace_naive,
             force_codec_mode_pack,
             default_stream_sink_codec,
             default_rust_opaque_codec,
@@ -56,44 +54,35 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         .unwrap_or_else(|err| {
             log::debug!(
                 "parse_function see error and skip function: function={:?} error={:?}",
-                func.name(),
+                func.item_fn.name(),
                 err
             );
-            create_output_skip(func, namespace_naive, MirSkipReason::Err)
+            create_output_skip(func, MirSkipReason::Err)
         })
     }
 
     #[allow(clippy::too_many_arguments)]
     fn parse_function_inner(
         &mut self,
-        func: &HirFunctionInner,
-        namespace_naive: &Namespace,
+        func: &HirFunction,
         force_codec_mode_pack: &Option<CodecModePack>,
         default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
     ) -> anyhow::Result<ParseFunctionOutput> {
-        debug!("parse_function function name: {:?}", func.name());
+        debug!("parse_function function name: {:?}", func.item_fn.name());
 
-        if !matches!(func.vis(), Visibility::Public(_)) {
-            return Ok(create_output_skip(
-                func,
-                namespace_naive,
-                IgnoredFunctionNotPub,
-            ));
+        if func.is_public() == Some(false) {
+            return Ok(create_output_skip(func, IgnoredFunctionNotPub));
         }
-        if !func.sig().generics.params.is_empty() {
-            return Ok(create_output_skip(
-                func,
-                namespace_naive,
-                IgnoredFunctionGeneric,
-            ));
+        if !func.item_fn.sig().generics.params.is_empty() {
+            return Ok(create_output_skip(func, IgnoredFunctionGeneric));
         }
 
-        let src_lineno = func.span().start().line;
-        let attributes = FrbAttributes::parse(func.attrs())?;
+        let src_lineno = func.item_fn.span().start().line;
+        let attributes = FrbAttributes::parse(func.item_fn.attrs())?;
 
         let create_context = |owner: Option<MirFuncOwnerInfo>| TypeParserParsingContext {
-            initiated_namespace: namespace_naive.clone(),
+            initiated_namespace: func.namespace.clone(),
             func_attributes: attributes.clone(),
             default_stream_sink_codec,
             default_rust_opaque_codec,
@@ -105,30 +94,30 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         {
             owner
         } else {
-            return Ok(create_output_skip(func, namespace_naive, IgnoredMisc));
+            return Ok(create_output_skip(func, IgnoredMisc));
         };
 
-        let func_name = parse_name(&func.name(), &owner);
+        let func_name = parse_name(&func.item_fn.name(), &owner);
 
         if attributes.ignore() {
-            return Ok(create_output_skip(func, namespace_naive, IgnoredMisc));
+            return Ok(create_output_skip(func, IgnoredMisc));
         }
 
         let context = create_context(Some(owner.clone()));
         let mut info = FunctionPartialInfo::default();
-        for sig_input in func.sig().inputs.iter() {
+        for sig_input in func.item_fn.sig().inputs.iter() {
             info = info.merge(self.parse_fn_arg(sig_input, &owner, &context)?)?;
         }
-        info = info.merge(self.parse_fn_output(func.sig(), &context)?)?;
+        info = info.merge(self.parse_fn_output(func.item_fn.sig(), &context)?)?;
         info = self.transform_fn_info(info);
 
         let codec_mode_pack = compute_codec_mode_pack(&attributes, force_codec_mode_pack);
         let mode = compute_func_mode(&attributes, &info);
         let stream_dart_await = attributes.stream_dart_await() && !attributes.sync();
-        let namespace_refined = refine_namespace(&owner).unwrap_or(namespace_naive.clone());
+        let namespace_refined = refine_namespace(&owner).unwrap_or(func.namespace.clone());
 
         if info.ignore_func {
-            return Ok(create_output_skip(func, namespace_naive, IgnoredMisc));
+            return Ok(create_output_skip(func, IgnoredMisc));
         }
 
         Ok(ParseFunctionOutput::Ok(MirFunc {
@@ -143,7 +132,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             owner,
             mode,
             stream_dart_await,
-            rust_async: func.sig().asyncness.is_some(),
+            rust_async: func.item_fn.sig().asyncness.is_some(),
             initializer: attributes.init(),
             accessor: attributes.accessor(),
             arg_mode: if attributes.positional() {
@@ -151,7 +140,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             } else {
                 MirFuncArgMode::Named
             },
-            comments: parse_comments(func.attrs()),
+            comments: parse_comments(func.item_fn.attrs()),
             codec_mode_pack,
             rust_call_code: None,
             src_lineno_pseudo: src_lineno,
@@ -160,17 +149,18 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
     fn parse_owner(
         &mut self,
-        item_fn: &HirFunctionInner,
+        func: &HirFunction,
         context: &TypeParserParsingContext,
         actual_method_dart_name: Option<String>,
     ) -> anyhow::Result<Option<MirFuncOwnerInfo>> {
-        Ok(Some(match item_fn {
-            HirFunctionInner::Function { .. } => MirFuncOwnerInfo::Function,
-            HirFunctionInner::Method {
+        Ok(Some(match &func.owner {
+            HirFunctionOwner::Function => MirFuncOwnerInfo::Function,
+            HirFunctionOwner::Method {
                 item_impl,
-                impl_item_fn,
+                trait_def_name,
             } => {
-                let mode = if matches!(impl_item_fn.sig.inputs.first(), Some(FnArg::Receiver(..))) {
+                let sig = func.item_fn.sig();
+                let mode = if matches!(sig.inputs.first(), Some(FnArg::Receiver(..))) {
                     MirFuncOwnerInfoMethodMode::Instance
                 } else {
                     MirFuncOwnerInfoMethodMode::Static
@@ -186,13 +176,14 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     return Ok(None);
                 }
 
-                let actual_method_name = impl_item_fn.sig.ident.to_string();
+                let actual_method_name = sig.ident.to_string();
 
                 MirFuncOwnerInfo::Method(MirFuncOwnerInfoMethod {
                     owner_ty,
                     actual_method_name,
                     actual_method_dart_name,
                     mode,
+                    trait_def_name: trait_def_name.to_owned(),
                 })
             }
         }))
@@ -218,13 +209,9 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     }
 }
 
-fn create_output_skip(
-    func: &HirFunctionInner,
-    namespace_naive: &Namespace,
-    reason: MirSkipReason,
-) -> ParseFunctionOutput {
+fn create_output_skip(func: &HirFunction, reason: MirSkipReason) -> ParseFunctionOutput {
     ParseFunctionOutput::Skip(MirSkip {
-        name: NamespacedName::new(namespace_naive.to_owned(), func.name().to_string()),
+        name: NamespacedName::new(func.namespace.clone(), func.item_fn.name().to_string()),
         reason,
     })
 }

@@ -9,8 +9,7 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'rust_auto_opaque_twin_moi.dart';
 part 'rust_auto_opaque_twin_rust_async_sse_moi.freezed.dart';
 
-// These functions are ignored because they are not marked as `pub`: `f`, `func_hello`, `func_hello`
-// These types are ignored because they are not used by any `pub` functions: `HelloOneStructTwinRustAsyncSseMoi`, `HelloTwoEnumTwinRustAsyncSseMoi`
+// These functions have error during generation (see debug logs for more details): `f`
 
 Future<void> rustAutoOpaqueArgOwnTwinRustAsyncSseMoi(
         {required NonCloneSimpleTwinRustAsyncSseMoi arg,
@@ -294,6 +293,33 @@ class EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncSseMoi extends RustOpaque {
   );
 }
 
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinRustAsyncSseMoi>>
+@sealed
+class HelloOneStructTwinRustAsyncSseMoi extends RustOpaque {
+  // Not to be used by end users
+  HelloOneStructTwinRustAsyncSseMoi.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  HelloOneStructTwinRustAsyncSseMoi.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_HelloOneStructTwinRustAsyncSseMoi,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_HelloOneStructTwinRustAsyncSseMoi,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_HelloOneStructTwinRustAsyncSseMoiPtr,
+  );
+
+  Future<void> funcHello() => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiHelloOneStructTwinRustAsyncSseMoiFuncHello(
+        that: this,
+      );
+}
+
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleEnumTwinRustAsyncSseMoi>>
 @sealed
 class NonCloneSimpleEnumTwinRustAsyncSseMoi extends RustOpaque {
@@ -492,6 +518,17 @@ sealed class EnumWithGoodAndOpaqueTwinRustAsyncSseMoi
   const factory EnumWithGoodAndOpaqueTwinRustAsyncSseMoi.opaque(
     NonCloneSimpleTwinRustAsyncSseMoi field0,
   ) = EnumWithGoodAndOpaqueTwinRustAsyncSseMoi_Opaque;
+}
+
+enum HelloTwoEnumTwinRustAsyncSseMoi {
+  a,
+  b,
+  ;
+
+  Future<void> funcHello() => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiHelloTwoEnumTwinRustAsyncSseMoiFuncHello(
+        that: this,
+      );
 }
 
 class StructWithExplicitAutoOpaqueFieldTwinRustAsyncSseMoi {

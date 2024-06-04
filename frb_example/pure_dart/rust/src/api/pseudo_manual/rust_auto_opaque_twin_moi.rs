@@ -111,6 +111,7 @@ pub trait HelloTraitTwinMoi: Send + Sync {
     fn func_hello(&self) -> &str;
 }
 
+#[frb(opaque)]
 pub struct HelloOneStructTwinMoi {
     inner: String,
 }

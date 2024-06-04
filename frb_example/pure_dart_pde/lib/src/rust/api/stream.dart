@@ -7,7 +7,7 @@ import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'pseudo_manual/stream_twin_rust_async.dart';
 
-// These functions are ignored because they are not marked as `pub`: `clone`, `fmt`, `handle_stream_inner`
+// These functions are ignored because they are not marked as `pub`: `handle_stream_inner`
 
 Future<Stream<String>> funcStreamReturnErrorTwinNormal() =>
     RustLib.instance.api.crateApiStreamFuncStreamReturnErrorTwinNormal();

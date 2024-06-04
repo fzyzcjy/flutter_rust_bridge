@@ -8,8 +8,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'rust_auto_opaque_twin_moi.freezed.dart';
 
-// These functions are ignored because they are not marked as `pub`: `f`, `func_hello`, `func_hello`
-// These types are ignored because they are not used by any `pub` functions: `HelloOneStructTwinMoi`, `HelloTwoEnumTwinMoi`
+// These functions have error during generation (see debug logs for more details): `f`
 
 Future<void> rustAutoOpaqueArgOwnTwinMoi(
         {required NonCloneSimpleTwinMoi arg, required int expect}) =>
@@ -300,6 +299,33 @@ class EnumWithGoodAndOpaqueWithoutOptionTwinMoi extends RustOpaque {
   );
 }
 
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinMoi>>
+@sealed
+class HelloOneStructTwinMoi extends RustOpaque {
+  // Not to be used by end users
+  HelloOneStructTwinMoi.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  HelloOneStructTwinMoi.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_HelloOneStructTwinMoi,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_HelloOneStructTwinMoi,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_HelloOneStructTwinMoiPtr,
+  );
+
+  Future<void> funcHello() => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinMoiHelloOneStructTwinMoiFuncHello(
+        that: this,
+      );
+}
+
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleEnumTwinMoi>>
 @sealed
 class NonCloneSimpleEnumTwinMoi extends RustOpaque {
@@ -490,6 +516,17 @@ sealed class EnumWithGoodAndOpaqueTwinMoi with _$EnumWithGoodAndOpaqueTwinMoi {
   const factory EnumWithGoodAndOpaqueTwinMoi.opaque(
     NonCloneSimpleTwinMoi field0,
   ) = EnumWithGoodAndOpaqueTwinMoi_Opaque;
+}
+
+enum HelloTwoEnumTwinMoi {
+  a,
+  b,
+  ;
+
+  Future<void> funcHello() => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinMoiHelloTwoEnumTwinMoiFuncHello(
+        that: this,
+      );
 }
 
 class StructWithExplicitAutoOpaqueFieldTwinMoi {

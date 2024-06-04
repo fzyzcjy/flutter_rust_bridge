@@ -8,17 +8,23 @@ use crate::api::constructor::*;
 use crate::api::dart_code::*;
 use crate::api::dropping::*;
 use crate::api::external_impl::*;
+use crate::api::impl_trait::SimpleTraitTwinNormal;
 use crate::api::method::*;
 use crate::api::misc_no_twin_example_a::*;
 use crate::api::misc_no_twin_example_b::*;
 use crate::api::pseudo_manual::dropping_twin_rust_async::*;
 use crate::api::pseudo_manual::dropping_twin_sync::*;
+use crate::api::pseudo_manual::impl_trait_twin_rust_async::SimpleTraitTwinRustAsync;
+use crate::api::pseudo_manual::impl_trait_twin_sync::SimpleTraitTwinSync;
 use crate::api::pseudo_manual::method_twin_rust_async::*;
 use crate::api::pseudo_manual::method_twin_sync::*;
+use crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::HelloTraitTwinRustAsync;
 use crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::*;
+use crate::api::pseudo_manual::rust_auto_opaque_twin_sync::HelloTraitTwinSync;
 use crate::api::pseudo_manual::rust_auto_opaque_twin_sync::*;
 use crate::api::pseudo_manual::rust_opaque_twin_rust_async::*;
 use crate::api::pseudo_manual::rust_opaque_twin_sync::*;
+use crate::api::rust_auto_opaque::HelloTraitTwinNormal;
 use crate::api::rust_auto_opaque::*;
 use crate::api::rust_opaque::*;
 use crate::api::rust_opaque_sync::*;
@@ -628,6 +634,48 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
             EnumWithGoodAndOpaqueWithoutOptionTwinSync,
         >,
     >::decrement_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinNormal>>::increment_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinNormal>>::decrement_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinRustAsync(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinRustAsync>>::increment_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinRustAsync(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinRustAsync>>::decrement_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinSync(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinSync>>::increment_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinSync(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinSync>>::decrement_strong_count(ptr as _);
 }
 
 #[wasm_bindgen]

@@ -9,8 +9,7 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'rust_auto_opaque_twin_moi.dart';
 part 'rust_auto_opaque_twin_sync.freezed.dart';
 
-// These functions are ignored because they are not marked as `pub`: `f`, `func_hello`, `func_hello`
-// These types are ignored because they are not used by any `pub` functions: `HelloOneStructTwinSync`, `HelloTwoEnumTwinSync`
+// These functions have error during generation (see debug logs for more details): `f`
 
 void rustAutoOpaqueArgOwnTwinSync(
         {required NonCloneSimpleTwinSync arg, required int expect}) =>
@@ -279,6 +278,33 @@ class EnumWithGoodAndOpaqueWithoutOptionTwinSync extends RustOpaque {
   );
 }
 
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinSync>>
+@sealed
+class HelloOneStructTwinSync extends RustOpaque {
+  // Not to be used by end users
+  HelloOneStructTwinSync.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  HelloOneStructTwinSync.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_HelloOneStructTwinSync,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_HelloOneStructTwinSync,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_HelloOneStructTwinSyncPtr,
+  );
+
+  Future<void> funcHello() => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSyncHelloOneStructTwinSyncFuncHello(
+        that: this,
+      );
+}
+
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleEnumTwinSync>>
 @sealed
 class NonCloneSimpleEnumTwinSync extends RustOpaque {
@@ -468,6 +494,17 @@ sealed class EnumWithGoodAndOpaqueTwinSync
   const factory EnumWithGoodAndOpaqueTwinSync.opaque(
     NonCloneSimpleTwinSync field0,
   ) = EnumWithGoodAndOpaqueTwinSync_Opaque;
+}
+
+enum HelloTwoEnumTwinSync {
+  a,
+  b,
+  ;
+
+  Future<void> funcHello() => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSyncHelloTwoEnumTwinSyncFuncHello(
+        that: this,
+      );
 }
 
 class StructWithExplicitAutoOpaqueFieldTwinSync {

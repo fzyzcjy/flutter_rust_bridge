@@ -9,8 +9,6 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'dart_opaque_twin_rust_async_sse.freezed.dart';
 
-// These functions are ignored because they are not marked as `pub`: `deref`, `initialize`
-
 Future<String> asyncAcceptDartOpaqueTwinRustAsyncSse(
         {required Object opaque}) =>
     RustLib.instance.api

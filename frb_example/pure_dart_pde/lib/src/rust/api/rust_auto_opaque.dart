@@ -9,8 +9,7 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'pseudo_manual/rust_auto_opaque_twin_rust_async.dart';
 part 'rust_auto_opaque.freezed.dart';
 
-// These functions are ignored because they are not marked as `pub`: `f`, `func_hello`, `func_hello`
-// These types are ignored because they are not used by any `pub` functions: `HelloOneStructTwinNormal`, `HelloTwoEnumTwinNormal`
+// These functions have error during generation (see debug logs for more details): `f`
 
 Future<void> rustAutoOpaqueArgOwnTwinNormal(
         {required NonCloneSimpleTwinNormal arg, required int expect}) =>
@@ -273,6 +272,33 @@ class EnumWithGoodAndOpaqueWithoutOptionTwinNormal extends RustOpaque {
   );
 }
 
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinNormal>>
+@sealed
+class HelloOneStructTwinNormal extends RustOpaque {
+  // Not to be used by end users
+  HelloOneStructTwinNormal.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  HelloOneStructTwinNormal.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_HelloOneStructTwinNormal,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_HelloOneStructTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_HelloOneStructTwinNormalPtr,
+  );
+
+  Future<void> funcHello() => RustLib.instance.api
+          .crateApiRustAutoOpaqueHelloOneStructTwinNormalFuncHello(
+        that: this,
+      );
+}
+
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleEnumTwinNormal>>
 @sealed
 class NonCloneSimpleEnumTwinNormal extends RustOpaque {
@@ -465,6 +491,17 @@ sealed class EnumWithGoodAndOpaqueTwinNormal
   const factory EnumWithGoodAndOpaqueTwinNormal.opaque(
     NonCloneSimpleTwinNormal field0,
   ) = EnumWithGoodAndOpaqueTwinNormal_Opaque;
+}
+
+enum HelloTwoEnumTwinNormal {
+  a,
+  b,
+  ;
+
+  Future<void> funcHello() => RustLib.instance.api
+          .crateApiRustAutoOpaqueHelloTwoEnumTwinNormalFuncHello(
+        that: this,
+      );
 }
 
 class StructWithExplicitAutoOpaqueFieldTwinNormal {

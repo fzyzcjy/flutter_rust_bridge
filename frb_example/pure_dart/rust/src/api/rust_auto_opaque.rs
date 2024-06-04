@@ -100,6 +100,7 @@ pub trait HelloTraitTwinNormal: Send + Sync {
     fn func_hello(&self) -> &str;
 }
 
+#[frb(opaque)]
 pub struct HelloOneStructTwinNormal {
     inner: String,
 }

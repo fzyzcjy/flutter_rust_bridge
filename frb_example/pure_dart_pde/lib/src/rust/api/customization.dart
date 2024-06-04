@@ -6,7 +6,6 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These functions are ignored because they are not marked as `pub`: `deref`, `deref`, `initialize`, `initialize`
 // These types are ignored because they are not used by any `pub` functions: `INIT_ONE_DONE`, `INIT_TWO_DONE`
 
 Future<bool> checkInitDone() =>

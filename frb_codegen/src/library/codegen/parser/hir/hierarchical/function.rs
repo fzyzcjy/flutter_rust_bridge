@@ -1,44 +1,33 @@
-use crate::codegen::ir::hir::hierarchical::function::{HirFunction, HirFunctionInner};
+use crate::codegen::ir::hir::hierarchical::function::{
+    GeneralizedItemFn, HirFunction, HirFunctionOwner,
+};
 use crate::if_then_some;
-use crate::utils::namespace::Namespace;
+use crate::utils::namespace::{Namespace, NamespacedName};
 use itertools::Itertools;
-use syn::{ImplItem, Item};
+use syn::{ImplItem, ItemFn, ItemImpl};
 
-pub(super) fn parse_generalized_functions(
-    items: &[syn::Item],
-    namespace: &Namespace,
-) -> anyhow::Result<Vec<HirFunction>> {
-    let item_fns = [parse_functions(items), parse_methods(items)?].concat();
-    let ans = (item_fns.into_iter())
-        .map(|inner| HirFunction {
-            namespace: namespace.clone(),
-            inner,
-        })
-        .collect_vec();
-    Ok(ans)
-}
-
-fn parse_functions(items: &[syn::Item]) -> Vec<HirFunctionInner> {
-    (items.iter())
-        .filter_map(|item| if_then_some!(let Item::Fn(ref item_fn) = item, item_fn))
-        .cloned()
-        .map(|item_fn| HirFunctionInner::Function { item_fn })
-        .collect_vec()
-}
-
-fn parse_methods(items: &[syn::Item]) -> anyhow::Result<Vec<HirFunctionInner>> {
-    let mut src_fns = Vec::new();
-    for item in items.iter() {
-        if let Item::Impl(ref item_impl) = item {
-            for item in &item_impl.items {
-                if let ImplItem::Fn(impl_item_fn) = item {
-                    src_fns.push(HirFunctionInner::Method {
-                        item_impl: item_impl.clone(),
-                        impl_item_fn: impl_item_fn.clone(),
-                    });
-                }
-            }
-        }
+pub(crate) fn parse_syn_item_fn(item_fn: &ItemFn, namespace: &Namespace) -> HirFunction {
+    HirFunction {
+        namespace: namespace.clone(),
+        owner: HirFunctionOwner::Function,
+        item_fn: GeneralizedItemFn::ItemFn(item_fn.to_owned()),
     }
-    Ok(src_fns)
+}
+
+pub(crate) fn parse_syn_item_impl(
+    item_impl: &ItemImpl,
+    namespace: &Namespace,
+    trait_def_name: Option<NamespacedName>,
+) -> Vec<HirFunction> {
+    (item_impl.items.iter())
+        .filter_map(|item| if_then_some!(let ImplItem::Fn(ref impl_item_fn) = item, impl_item_fn))
+        .map(|impl_item_fn| HirFunction {
+            namespace: namespace.clone(),
+            owner: HirFunctionOwner::Method {
+                item_impl: item_impl.to_owned(),
+                trait_def_name: trait_def_name.clone(),
+            },
+            item_fn: GeneralizedItemFn::ImplItemFn(impl_item_fn.clone()),
+        })
+        .collect_vec()
 }
