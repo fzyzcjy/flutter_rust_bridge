@@ -8,9 +8,7 @@ use syn::{Attribute, ImplItemFn, ItemFn, ItemImpl, Signature, TraitItemFn, Visib
 #[derive(Debug, Clone, Serialize)]
 pub(crate) struct HirFunction {
     pub(crate) namespace: Namespace,
-    #[serde(skip_serializing)]
     pub(crate) owner: HirFunctionOwner,
-    #[serde(skip_serializing)]
     pub(crate) item_fn: GeneralizedItemFn,
 }
 
