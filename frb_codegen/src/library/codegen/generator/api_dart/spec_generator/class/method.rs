@@ -87,7 +87,10 @@ fn generate_api_method(
     );
 
     let maybe_implementation = match mode {
-        GenerateApiMethodMode::SeparatedDecl => "".to_owned(),
+        GenerateApiMethodMode::SeparatedDecl => match method_info.mode {
+            MirFuncOwnerInfoMethodMode::Static => format!("=>{}", TODO),
+            MirFuncOwnerInfoMethodMode::Instance => "",
+        },
         GenerateApiMethodMode::SeparatedImpl | GenerateApiMethodMode::Combined => format!(
             "=>{}",
             generate_implementation(func, context, method_info, &params)
