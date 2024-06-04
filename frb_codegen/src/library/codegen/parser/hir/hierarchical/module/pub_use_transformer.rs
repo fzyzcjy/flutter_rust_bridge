@@ -45,7 +45,7 @@ fn transform_module_by_pub_use_single(
     module: &mut HirModule,
     pub_use_info: &PubUseInfo,
 ) -> anyhow::Result<()> {
-    if let Some(src_mod) = module.content.get_module_nested(&pub_use_info.path()) {
+    if let Some(src_mod) = (module.content).get_module_nested(&pub_use_info.namespace.path()) {
         if src_mod.meta.is_public() {
             log::debug!("transform_module_by_pub_use_single skip `{pub_use_info}` since src mod already public");
             return Ok(());
