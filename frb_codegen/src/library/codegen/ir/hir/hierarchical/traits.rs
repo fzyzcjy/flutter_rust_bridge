@@ -25,7 +25,7 @@ impl HirCommon for HirTrait {
         }
     }
 
-    fn name(&self) -> String {
+    fn ident(&self) -> String {
         self.item_trait.ident.to_string()
     }
 }

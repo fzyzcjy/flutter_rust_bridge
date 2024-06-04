@@ -22,7 +22,7 @@ impl HirCommon for HirFunction {
         }
     }
 
-    fn name(&self) -> String {
+    fn ident(&self) -> String {
         self.item_fn.name()
     }
 }
