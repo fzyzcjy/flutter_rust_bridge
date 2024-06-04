@@ -1,20 +1,22 @@
 use crate::components::encoder::create_frb_encoded_comment;
-use proc_macro2::TokenStream;
+use proc_macro2::{Span, TokenStream};
 use quote::quote;
 use quote::ToTokens;
 use syn::{ImplItem, ItemImpl};
+use syn::spanned::Spanned;
 
 pub(crate) fn handle_external_impl(attribute: TokenStream, item: TokenStream) -> TokenStream {
     if attribute.to_string() != ATTR_KEYWORD {
         return item;
     }
 
+    let item_string = item.to_string();
     let encoded_original_item =
-        create_frb_encoded_comment(&format!("#[frb({})]{}", attribute, &item.to_string()));
+        create_frb_encoded_comment(&format!("#[frb({})]{}", attribute, &item_string));
 
     let item_syn: ItemImpl = syn::parse(item.into()).unwrap();
     let original_self_ty = item_syn.self_ty.clone();
-    let dummy_struct_ty = compute_dummy_struct_ty(&original_self_ty);
+    let dummy_struct_ty = compute_dummy_struct_ty(&original_self_ty, &item_string));
     let converted_item = convert_item(item_syn, dummy_struct_ty.clone());
 
     // eprintln!("attribute={attribute:?} self_ty_string={original_self_ty_string} dummy_struct_name={dummy_struct_name} item={item:#?}");
@@ -31,11 +33,12 @@ pub(crate) fn handle_external_impl(attribute: TokenStream, item: TokenStream) ->
     }
 }
 
-fn compute_dummy_struct_ty(original_self_ty: &syn::Type) -> syn::Type {
+fn compute_dummy_struct_ty(original_self_ty: &syn::Type, item_string: &str) -> syn::Type {
     let original_self_ty_string = quote!(#original_self_ty).to_string();
     let dummy_struct_name = format!(
-        "{DUMMY_STRUCT_PREFIX}{}",
-        hex::encode(original_self_ty_string)
+        "{DUMMY_STRUCT_PREFIX}{}{}",
+        hex::encode(original_self_ty_string),
+        MD5,
     );
     syn::parse_str(&dummy_struct_name).unwrap()
 }
