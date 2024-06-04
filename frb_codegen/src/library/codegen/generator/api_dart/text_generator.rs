@@ -38,8 +38,11 @@ pub(super) fn generate(
             })
             .collect::<anyhow::Result<Vec<_>>>()?,
     );
-    
-    let extra_impl_text = TODO;
+
+    let extra_impl_text = spec.namespaced_items
+        .values()
+        .flat_map(|item| item.extra_impl_code.clone())
+        .join("");
 
     Ok(ApiDartOutputText {
         output_texts: path_texts,
