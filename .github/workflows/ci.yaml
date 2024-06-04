@@ -190,6 +190,8 @@ jobs:
         exclude:
           - { image: windows-2019, package: frb_example--deliberate_bad }
           - { image: macos-11, package: frb_example--deliberate_bad }
+          - { image: windows-2019, package: frb_example--integrate_third_party }
+          - { image: macos-11, package: frb_example--integrate_third_party }
           - { image: windows-2019, package: frb_example--flutter_via_integrate }
           - { image: macos-11, package: frb_example--flutter_via_integrate }
 
@@ -589,6 +591,8 @@ jobs:
           - { image: macos-11, package: tools--frb_internal }
           - { image: windows-2019, package: frb_example--deliberate_bad }
           - { image: macos-11, package: frb_example--deliberate_bad }
+          - { image: windows-2019, package: frb_example--integrate_third_party }
+          - { image: macos-11, package: frb_example--integrate_third_party }
 
     steps:
       # setup
