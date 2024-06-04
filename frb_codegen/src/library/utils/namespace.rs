@@ -14,12 +14,12 @@ pub struct Namespace {
 }
 
 impl Namespace {
-    const SEP: &'static str = "::";
+    pub(crate) const SEP: &'static str = "::";
 
-    // pub fn new(path: Vec<String>) -> Self {
-    //     assert!((path.iter()).all(|item| !item.contains(Self::SEP)));
-    //     Self::new_raw(path.join(Self::SEP))
-    // }
+    pub fn new(path: Vec<String>) -> Self {
+        assert!((path.iter()).all(|item| !item.contains(Self::SEP)));
+        Self::new_raw(path.join(Self::SEP))
+    }
 
     pub fn new_raw(joined_path: String) -> Self {
         // This will stop the whole generator and tell the users, so we do not care about testing it

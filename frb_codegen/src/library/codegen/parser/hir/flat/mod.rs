@@ -4,6 +4,7 @@ use crate::codegen::ir::hir::hierarchical::module::HirModule;
 use crate::codegen::ir::hir::hierarchical::pack::HirPack;
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirEnum;
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStruct;
+use crate::codegen::ir::hir::hierarchical::traits::HirTrait;
 use crate::codegen::parser::hir::flat::type_alias_resolver::resolve_type_aliases;
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 use crate::utils::crate_name::CrateName;
@@ -57,6 +58,15 @@ fn collect_enums(hir_pack: &HirPack) -> HashMap<String, &HirEnum> {
         hir_pack,
         |module| &module.content.enums,
         |x| (x.ident.to_string(), x),
+    )
+}
+
+// TODO move
+pub(crate) fn collect_traits(hir_pack: &HirPack) -> HashMap<String, &HirTrait> {
+    collect_objects_map(
+        hir_pack,
+        |module| &module.content.traits,
+        |x| (x.item_trait.ident.to_string(), x),
     )
 }
 

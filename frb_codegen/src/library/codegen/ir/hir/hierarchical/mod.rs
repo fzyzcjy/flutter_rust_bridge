@@ -1,5 +1,6 @@
 pub(crate) mod crates;
 pub(crate) mod function;
+pub(crate) mod misc;
 pub(crate) mod module;
 pub(crate) mod pack;
 pub(crate) mod struct_or_enum;
