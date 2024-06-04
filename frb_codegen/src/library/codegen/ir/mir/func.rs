@@ -150,6 +150,19 @@ impl MirFunc {
         }
     }
 
+    pub(crate) fn locator_dart_api(&self) -> MirFuncDartApiLocator {
+        match self.owner {
+            MirFuncOwnerInfo::Function => MirFuncDartApiLocator::Function {
+                name: self.name.clone(),
+            },
+            MirFuncOwnerInfo::Method(method) => MirFuncDartApiLocator::Method {
+                owner_name: method.owner_ty.safe_ident(),
+                actual_method_dart_name: (method.actual_method_dart_name.clone())
+                    .unwrap_or(method.actual_method_name.clone()),
+            },
+        }
+    }
+
     pub(crate) fn name_dart_api(&self) -> String {
         (self.dart_name.clone()).unwrap_or_else(|| self.name.name.to_owned().to_case(Case::Camel))
     }
@@ -198,4 +211,15 @@ impl MirFuncAccessorMode {
 
 impl MirFuncOverridePriority {
     pub(crate) const FRB_OVERRIDE: MirFuncOverridePriority = MirFuncOverridePriority(1);
+}
+
+#[derive(Clone, Eq, PartialEq)]
+pub(crate) enum MirFuncDartApiLocator {
+    Function {
+        name: NamespacedName,
+    },
+    Method {
+        owner_name: String,
+        actual_method_dart_name: String,
+    },
 }

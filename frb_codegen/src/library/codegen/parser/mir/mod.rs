@@ -115,6 +115,6 @@ fn dedup_funcs(funcs: Vec<MirFunc>) -> Vec<MirFunc> {
         .into_iter()
         // Higher priority goes first
         .sorted_by_key(|f| -f.override_priority.0)
-        .unique_by(|f| (f.name.namespace.clone(), f.name_dart_api()))
+        .unique_by(|f| f.locator_dart_api())
         .collect_vec()
 }
