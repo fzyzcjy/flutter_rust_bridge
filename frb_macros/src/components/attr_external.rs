@@ -16,7 +16,7 @@ pub(crate) fn handle_external_impl(attribute: TokenStream, item: TokenStream) ->
 
     let item_syn: ItemImpl = syn::parse(item.into()).unwrap();
     let original_self_ty = item_syn.self_ty.clone();
-    let dummy_struct_ty = compute_dummy_struct_ty(&original_self_ty, &item_string));
+    let dummy_struct_ty = compute_dummy_struct_ty(&original_self_ty, &item_string);
     let converted_item = convert_item(item_syn, dummy_struct_ty.clone());
 
     // eprintln!("attribute={attribute:?} self_ty_string={original_self_ty_string} dummy_struct_name={dummy_struct_name} item={item:#?}");
@@ -38,7 +38,7 @@ fn compute_dummy_struct_ty(original_self_ty: &syn::Type, item_string: &str) -> s
     let dummy_struct_name = format!(
         "{DUMMY_STRUCT_PREFIX}{}{}",
         hex::encode(original_self_ty_string),
-        MD5,
+        "TODO",
     );
     syn::parse_str(&dummy_struct_name).unwrap()
 }
