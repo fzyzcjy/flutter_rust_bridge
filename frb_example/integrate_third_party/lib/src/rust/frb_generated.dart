@@ -23020,197 +23020,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 // Section: boilerplate
 
 @sealed
-class AudioWorkletNodeImpl extends RustOpaque implements AudioWorkletNode {
-  // Not to be used by end users
-  AudioWorkletNodeImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  AudioWorkletNodeImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_AudioWorkletNode,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_AudioWorkletNode,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_AudioWorkletNodePtr,
-  );
-
-  Future<void> channelConfig() =>
-      RustLib.instance.api.webAudioApiWorkletAudioWorkletNodeChannelConfig(
-        that: this,
-      );
-
-  /// Represents an integer used to determine how many channels are used when up-mixing and
-  /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount() =>
-      RustLib.instance.api.webAudioApiWorkletAudioWorkletNodeChannelCount(
-        that: this,
-      );
-
-  /// Represents an enumerated value describing the way channels must be matched between the
-  /// node's inputs and outputs.
-  Future<ChannelCountMode> channelCountMode() =>
-      RustLib.instance.api.webAudioApiWorkletAudioWorkletNodeChannelCountMode(
-        that: this,
-      );
-
-  /// Represents an enumerated value describing the meaning of the channels. This interpretation
-  /// will define how audio up-mixing and down-mixing will happen.
-  Future<ChannelInterpretation> channelInterpretation() => RustLib.instance.api
-          .webAudioApiWorkletAudioWorkletNodeChannelInterpretation(
-        that: this,
-      );
-
-  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
-  Future<void> clearOnprocessorerror() => RustLib.instance.api
-          .webAudioApiWorkletAudioWorkletNodeClearOnprocessorerror(
-        that: this,
-      );
-
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context() =>
-      RustLib.instance.api.webAudioApiWorkletAudioWorkletNodeContext(
-        that: this,
-      );
-
-  /// Disconnects all outgoing connections from the AudioNode.
-  Future<void> disconnect() =>
-      RustLib.instance.api.webAudioApiWorkletAudioWorkletNodeDisconnect(
-        that: this,
-      );
-
-  /// Disconnects all outgoing connections at the given output port from the AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output}) =>
-      RustLib.instance.api.webAudioApiWorkletAudioWorkletNodeDisconnectOutput(
-          that: this, output: output);
-
-  Future<BigInt> numberOfInputs() =>
-      RustLib.instance.api.webAudioApiWorkletAudioWorkletNodeNumberOfInputs(
-        that: this,
-      );
-
-  Future<BigInt> numberOfOutputs() =>
-      RustLib.instance.api.webAudioApiWorkletAudioWorkletNodeNumberOfOutputs(
-        that: this,
-      );
-
-  /// Collection of AudioParam objects with associated names of this node
-  ///
-  /// This map is populated from a list of [`AudioParamDescriptor`]s in the
-  /// [`AudioWorkletProcessor`] class constructor at the instantiation.
-  Future<void> parameters() =>
-      RustLib.instance.api.webAudioApiWorkletAudioWorkletNodeParameters(
-        that: this,
-      );
-
-  Future<void> registration() =>
-      RustLib.instance.api.webAudioApiWorkletAudioWorkletNodeRegistration(
-        that: this,
-      );
-
-  /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v}) => RustLib.instance.api
-      .webAudioApiWorkletAudioWorkletNodeSetChannelCount(that: this, v: v);
-
-  /// Update the `channel_count_mode` attribute
-  Future<void> setChannelCountMode({required ChannelCountMode v}) => RustLib
-      .instance.api
-      .webAudioApiWorkletAudioWorkletNodeSetChannelCountMode(that: this, v: v);
-
-  /// Update the `channel_interpretation` attribute
-  Future<void> setChannelInterpretation({required ChannelInterpretation v}) =>
-      RustLib.instance.api
-          .webAudioApiWorkletAudioWorkletNodeSetChannelInterpretation(
-              that: this, v: v);
-}
-
-@sealed
-class MediaStreamImpl extends RustOpaque implements MediaStream {
-  // Not to be used by end users
-  MediaStreamImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  MediaStreamImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_MediaStream,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_MediaStream,
-    rustArcDecrementStrongCountPtr:
-        RustLib.instance.api.rust_arc_decrement_strong_count_MediaStreamPtr,
-  );
-
-  Future<void> getTracks() =>
-      RustLib.instance.api.webAudioApiMediaStreamsMediaStreamGetTracks(
-        that: this,
-      );
-}
-
-@sealed
-class MediaStreamTrackImpl extends RustOpaque implements MediaStreamTrack {
-  // Not to be used by end users
-  MediaStreamTrackImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  MediaStreamTrackImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_MediaStreamTrack,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_MediaStreamTrack,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_MediaStreamTrackPtr,
-  );
-
-  Future<void> close() =>
-      RustLib.instance.api.webAudioApiMediaStreamsMediaStreamTrackClose(
-        that: this,
-      );
-
-  Future<MediaStreamTrackState> readyState() =>
-      RustLib.instance.api.webAudioApiMediaStreamsMediaStreamTrackReadyState(
-        that: this,
-      );
-}
-
-@sealed
-class DummyStructImpl extends RustOpaque implements DummyStruct {
-  // Not to be used by end users
-  DummyStructImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  DummyStructImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_DummyStruct,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_DummyStruct,
-    rustArcDecrementStrongCountPtr:
-        RustLib.instance.api.rust_arc_decrement_strong_count_DummyStructPtr,
-  );
-}
-
-@sealed
 class AudioContextImpl extends RustOpaque implements AudioContext {
   // Not to be used by end users
   AudioContextImpl.frbInternalDcoDecode(List<dynamic> wire)
@@ -24719,6 +24528,101 @@ class MediaStreamConstraintsImpl extends RustOpaque
     rustArcDecrementStrongCountPtr: RustLib
         .instance.api.rust_arc_decrement_strong_count_MediaStreamConstraintsPtr,
   );
+}
+
+@sealed
+class BlobEventImpl extends RustOpaque implements BlobEvent {
+  // Not to be used by end users
+  BlobEventImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  BlobEventImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_BlobEvent,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_BlobEvent,
+    rustArcDecrementStrongCountPtr:
+        RustLib.instance.api.rust_arc_decrement_strong_count_BlobEventPtr,
+  );
+
+  Uint8List get blob =>
+      RustLib.instance.api.webAudioApiMediaRecorderBlobEventGetBlob(
+        that: this,
+      );
+
+  Event get event =>
+      RustLib.instance.api.webAudioApiMediaRecorderBlobEventGetEvent(
+        that: this,
+      );
+
+  double get timecode =>
+      RustLib.instance.api.webAudioApiMediaRecorderBlobEventGetTimecode(
+        that: this,
+      );
+
+  void set blob(Uint8List blob) => RustLib.instance.api
+      .webAudioApiMediaRecorderBlobEventSetBlob(that: this, blob: blob);
+
+  void set event(Event event) => RustLib.instance.api
+      .webAudioApiMediaRecorderBlobEventSetEvent(that: this, event: event);
+
+  void set timecode(double timecode) =>
+      RustLib.instance.api.webAudioApiMediaRecorderBlobEventSetTimecode(
+          that: this, timecode: timecode);
+}
+
+@sealed
+class MediaRecorderImpl extends RustOpaque implements MediaRecorder {
+  // Not to be used by end users
+  MediaRecorderImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  MediaRecorderImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_MediaRecorder,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_MediaRecorder,
+    rustArcDecrementStrongCountPtr:
+        RustLib.instance.api.rust_arc_decrement_strong_count_MediaRecorderPtr,
+  );
+
+  Future<void> clearOndataavailable() => RustLib.instance.api
+          .webAudioApiMediaRecorderMediaRecorderClearOndataavailable(
+        that: this,
+      );
+
+  Future<void> clearOnerror() =>
+      RustLib.instance.api.webAudioApiMediaRecorderMediaRecorderClearOnerror(
+        that: this,
+      );
+
+  Future<void> clearOnstop() =>
+      RustLib.instance.api.webAudioApiMediaRecorderMediaRecorderClearOnstop(
+        that: this,
+      );
+
+  /// Begin recording media
+  ///
+  /// # Panics
+  ///
+  /// Will panic when the recorder has already started
+  Future<void> start() =>
+      RustLib.instance.api.webAudioApiMediaRecorderMediaRecorderStart(
+        that: this,
+      );
+
+  Future<void> stop() =>
+      RustLib.instance.api.webAudioApiMediaRecorderMediaRecorderStop(
+        that: this,
+      );
 }
 
 @sealed
@@ -27394,96 +27298,192 @@ class WaveShaperNodeImpl extends RustOpaque implements WaveShaperNode {
 }
 
 @sealed
-class BlobEventImpl extends RustOpaque implements BlobEvent {
+class DummyStructImpl extends RustOpaque implements DummyStruct {
   // Not to be used by end users
-  BlobEventImpl.frbInternalDcoDecode(List<dynamic> wire)
+  DummyStructImpl.frbInternalDcoDecode(List<dynamic> wire)
       : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
-  BlobEventImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
+  DummyStructImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
       : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_BlobEvent,
+        RustLib.instance.api.rust_arc_increment_strong_count_DummyStruct,
     rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_BlobEvent,
+        RustLib.instance.api.rust_arc_decrement_strong_count_DummyStruct,
     rustArcDecrementStrongCountPtr:
-        RustLib.instance.api.rust_arc_decrement_strong_count_BlobEventPtr,
+        RustLib.instance.api.rust_arc_decrement_strong_count_DummyStructPtr,
   );
-
-  Uint8List get blob =>
-      RustLib.instance.api.webAudioApiMediaRecorderBlobEventGetBlob(
-        that: this,
-      );
-
-  Event get event =>
-      RustLib.instance.api.webAudioApiMediaRecorderBlobEventGetEvent(
-        that: this,
-      );
-
-  double get timecode =>
-      RustLib.instance.api.webAudioApiMediaRecorderBlobEventGetTimecode(
-        that: this,
-      );
-
-  void set blob(Uint8List blob) => RustLib.instance.api
-      .webAudioApiMediaRecorderBlobEventSetBlob(that: this, blob: blob);
-
-  void set event(Event event) => RustLib.instance.api
-      .webAudioApiMediaRecorderBlobEventSetEvent(that: this, event: event);
-
-  void set timecode(double timecode) =>
-      RustLib.instance.api.webAudioApiMediaRecorderBlobEventSetTimecode(
-          that: this, timecode: timecode);
 }
 
 @sealed
-class MediaRecorderImpl extends RustOpaque implements MediaRecorder {
+class MediaStreamImpl extends RustOpaque implements MediaStream {
   // Not to be used by end users
-  MediaRecorderImpl.frbInternalDcoDecode(List<dynamic> wire)
+  MediaStreamImpl.frbInternalDcoDecode(List<dynamic> wire)
       : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
-  MediaRecorderImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
+  MediaStreamImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
       : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_MediaRecorder,
+        RustLib.instance.api.rust_arc_increment_strong_count_MediaStream,
     rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_MediaRecorder,
+        RustLib.instance.api.rust_arc_decrement_strong_count_MediaStream,
     rustArcDecrementStrongCountPtr:
-        RustLib.instance.api.rust_arc_decrement_strong_count_MediaRecorderPtr,
+        RustLib.instance.api.rust_arc_decrement_strong_count_MediaStreamPtr,
   );
 
-  Future<void> clearOndataavailable() => RustLib.instance.api
-          .webAudioApiMediaRecorderMediaRecorderClearOndataavailable(
+  Future<void> getTracks() =>
+      RustLib.instance.api.webAudioApiMediaStreamsMediaStreamGetTracks(
+        that: this,
+      );
+}
+
+@sealed
+class MediaStreamTrackImpl extends RustOpaque implements MediaStreamTrack {
+  // Not to be used by end users
+  MediaStreamTrackImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  MediaStreamTrackImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_MediaStreamTrack,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_MediaStreamTrack,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_MediaStreamTrackPtr,
+  );
+
+  Future<void> close() =>
+      RustLib.instance.api.webAudioApiMediaStreamsMediaStreamTrackClose(
         that: this,
       );
 
-  Future<void> clearOnerror() =>
-      RustLib.instance.api.webAudioApiMediaRecorderMediaRecorderClearOnerror(
+  Future<MediaStreamTrackState> readyState() =>
+      RustLib.instance.api.webAudioApiMediaStreamsMediaStreamTrackReadyState(
+        that: this,
+      );
+}
+
+@sealed
+class AudioWorkletNodeImpl extends RustOpaque implements AudioWorkletNode {
+  // Not to be used by end users
+  AudioWorkletNodeImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  AudioWorkletNodeImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_AudioWorkletNode,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_AudioWorkletNode,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_AudioWorkletNodePtr,
+  );
+
+  Future<void> channelConfig() =>
+      RustLib.instance.api.webAudioApiWorkletAudioWorkletNodeChannelConfig(
         that: this,
       );
 
-  Future<void> clearOnstop() =>
-      RustLib.instance.api.webAudioApiMediaRecorderMediaRecorderClearOnstop(
+  /// Represents an integer used to determine how many channels are used when up-mixing and
+  /// down-mixing connections to any inputs to the node.
+  Future<BigInt> channelCount() =>
+      RustLib.instance.api.webAudioApiWorkletAudioWorkletNodeChannelCount(
         that: this,
       );
 
-  /// Begin recording media
+  /// Represents an enumerated value describing the way channels must be matched between the
+  /// node's inputs and outputs.
+  Future<ChannelCountMode> channelCountMode() =>
+      RustLib.instance.api.webAudioApiWorkletAudioWorkletNodeChannelCountMode(
+        that: this,
+      );
+
+  /// Represents an enumerated value describing the meaning of the channels. This interpretation
+  /// will define how audio up-mixing and down-mixing will happen.
+  Future<ChannelInterpretation> channelInterpretation() => RustLib.instance.api
+          .webAudioApiWorkletAudioWorkletNodeChannelInterpretation(
+        that: this,
+      );
+
+  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
+  Future<void> clearOnprocessorerror() => RustLib.instance.api
+          .webAudioApiWorkletAudioWorkletNodeClearOnprocessorerror(
+        that: this,
+      );
+
+  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
+  /// AudioNode.
+  Future<void> context() =>
+      RustLib.instance.api.webAudioApiWorkletAudioWorkletNodeContext(
+        that: this,
+      );
+
+  /// Disconnects all outgoing connections from the AudioNode.
+  Future<void> disconnect() =>
+      RustLib.instance.api.webAudioApiWorkletAudioWorkletNodeDisconnect(
+        that: this,
+      );
+
+  /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
   /// # Panics
   ///
-  /// Will panic when the recorder has already started
-  Future<void> start() =>
-      RustLib.instance.api.webAudioApiMediaRecorderMediaRecorderStart(
+  /// This function will panic when
+  /// - if the output port is out of bounds for this node
+  Future<void> disconnectOutput({required BigInt output}) =>
+      RustLib.instance.api.webAudioApiWorkletAudioWorkletNodeDisconnectOutput(
+          that: this, output: output);
+
+  Future<BigInt> numberOfInputs() =>
+      RustLib.instance.api.webAudioApiWorkletAudioWorkletNodeNumberOfInputs(
         that: this,
       );
 
-  Future<void> stop() =>
-      RustLib.instance.api.webAudioApiMediaRecorderMediaRecorderStop(
+  Future<BigInt> numberOfOutputs() =>
+      RustLib.instance.api.webAudioApiWorkletAudioWorkletNodeNumberOfOutputs(
         that: this,
       );
+
+  /// Collection of AudioParam objects with associated names of this node
+  ///
+  /// This map is populated from a list of [`AudioParamDescriptor`]s in the
+  /// [`AudioWorkletProcessor`] class constructor at the instantiation.
+  Future<void> parameters() =>
+      RustLib.instance.api.webAudioApiWorkletAudioWorkletNodeParameters(
+        that: this,
+      );
+
+  Future<void> registration() =>
+      RustLib.instance.api.webAudioApiWorkletAudioWorkletNodeRegistration(
+        that: this,
+      );
+
+  /// Update the `channel_count` attribute
+  Future<void> setChannelCount({required BigInt v}) => RustLib.instance.api
+      .webAudioApiWorkletAudioWorkletNodeSetChannelCount(that: this, v: v);
+
+  /// Update the `channel_count_mode` attribute
+  Future<void> setChannelCountMode({required ChannelCountMode v}) => RustLib
+      .instance.api
+      .webAudioApiWorkletAudioWorkletNodeSetChannelCountMode(that: this, v: v);
+
+  /// Update the `channel_interpretation` attribute
+  Future<void> setChannelInterpretation({required ChannelInterpretation v}) =>
+      RustLib.instance.api
+          .webAudioApiWorkletAudioWorkletNodeSetChannelInterpretation(
+              that: this, v: v);
 }
