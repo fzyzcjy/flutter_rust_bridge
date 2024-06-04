@@ -2,7 +2,6 @@ use crate::codegen::ir::hir::hierarchical::misc::HirCommon;
 use crate::codegen::ir::hir::hierarchical::module::HirModule;
 use crate::utils::namespace::Namespace;
 use itertools::Itertools;
-use quote::ToTokens;
 
 pub(crate) fn transform(mut module: HirModule, items: &[syn::Item]) -> anyhow::Result<HirModule> {
     // Only apply to third party crate currently, since in self crate usually no need to care about this
