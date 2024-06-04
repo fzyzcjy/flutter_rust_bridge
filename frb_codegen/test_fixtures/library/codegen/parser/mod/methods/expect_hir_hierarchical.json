@@ -23,7 +23,7 @@
                     "namespace": "crate::api",
                     "owner": {
                       "Method": {
-                        "item_impl": "ItemImpl(self_ty=MyStruct)",
+                        "item_impl": "ItemImpl(self_ty=MyStruct, trait=None)",
                         "trait_def_name": null
                       }
                     }
@@ -33,7 +33,7 @@
                     "namespace": "crate::api",
                     "owner": {
                       "Method": {
-                        "item_impl": "ItemImpl(self_ty=MyStruct)",
+                        "item_impl": "ItemImpl(self_ty=MyStruct, trait=None)",
                         "trait_def_name": null
                       }
                     }
@@ -43,7 +43,7 @@
                     "namespace": "crate::api",
                     "owner": {
                       "Method": {
-                        "item_impl": "ItemImpl(self_ty=MyEnum)",
+                        "item_impl": "ItemImpl(self_ty=MyEnum, trait=None)",
                         "trait_def_name": null
                       }
                     }
@@ -53,7 +53,7 @@
                     "namespace": "crate::api",
                     "owner": {
                       "Method": {
-                        "item_impl": "ItemImpl(self_ty=MyEnum)",
+                        "item_impl": "ItemImpl(self_ty=MyEnum, trait=None)",
                         "trait_def_name": null
                       }
                     }
