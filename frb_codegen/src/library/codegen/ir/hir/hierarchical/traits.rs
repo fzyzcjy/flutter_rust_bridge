@@ -24,4 +24,8 @@ impl HirCommon for HirTrait {
             ..self.to_owned()
         }
     }
+
+    fn name(&self) -> String {
+        self.item_trait.ident.to_string()
+    }
 }

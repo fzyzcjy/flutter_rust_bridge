@@ -35,6 +35,10 @@ impl<Item: SynItemStructOrEnum> HirCommon for HirStructOrEnum<Item> {
             ..self.to_owned()
         }
     }
+
+    fn name(&self) -> String {
+        self.ident.to_string()
+    }
 }
 
 pub(super) fn serialize_syn<T: ToTokens, S: Serializer>(

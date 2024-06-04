@@ -21,6 +21,10 @@ impl HirCommon for HirFunction {
             ..self.clone()
         }
     }
+
+    fn name(&self) -> String {
+        self.item_fn.name()
+    }
 }
 
 impl HirFunction {
