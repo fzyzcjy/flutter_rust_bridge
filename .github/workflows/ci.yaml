@@ -84,6 +84,9 @@ jobs:
         with:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
           components: rustfmt, clippy
+      # https://github.com/RustAudio/cpal/blob/0246442da2f401895d2c82bbf941e3ebf6e93a04/.github/workflows/cpal.yml#L48C34-L48C47
+      - if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install libasound2-dev
       - run: |-
           rustup toolchain install nightly
           rustup component add rustfmt --toolchain nightly-x86_64-unknown-linux-gnu
