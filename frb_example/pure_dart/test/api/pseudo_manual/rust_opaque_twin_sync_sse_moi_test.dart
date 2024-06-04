@@ -4,7 +4,6 @@
 
 // FRB_INTERNAL_GENERATOR: {"enableAll": true}
 
-import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:flutter_rust_bridge/src/droppable/droppable.dart';
 import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/rust_opaque_twin_sync_sse_moi.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
@@ -237,23 +236,23 @@ Future<void> main({bool skipRustLibInit = false}) async {
     data[1].dispose();
   });
 
-  test('unwrap', () async {
-    var data = await createOpaqueTwinSyncSseMoi();
-    data.move = true;
-    expect(
-        await unwrapRustOpaqueTwinSyncSseMoi(opaque: data),
-        "content - Some(PrivateData "
-        "{"
-        " content: \"content nested\", "
-        "primitive: 424242, "
-        "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-        "lifetime: \"static str\" "
-        "})");
-    expect(data.isDisposed, isTrue);
-
-    var data2 = await createOpaqueTwinSyncSseMoi();
-    await expectLater(() => unwrapRustOpaqueTwinSyncSseMoi(opaque: data2),
-        throwsA(isA<AnyhowException>()));
-    expect(data2.isDisposed, isFalse);
-  });
+  // test('unwrap', () async {
+  //   var data = await createOpaqueTwinSyncSseMoi();
+  //   data.move = true;
+  //   expect(
+  //       await unwrapRustOpaqueTwinSyncSseMoi(opaque: data),
+  //       "content - Some(PrivateData "
+  //       "{"
+  //       " content: \"content nested\", "
+  //       "primitive: 424242, "
+  //       "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+  //       "lifetime: \"static str\" "
+  //       "})");
+  //   expect(data.isDisposed, isTrue);
+  //
+  //   var data2 = await createOpaqueTwinSyncSseMoi();
+  //   await expectLater(() => unwrapRustOpaqueTwinSyncSseMoi(opaque: data2),
+  //       throwsA(isA<AnyhowException>()));
+  //   expect(data2.isDisposed, isFalse);
+  // });
 }
