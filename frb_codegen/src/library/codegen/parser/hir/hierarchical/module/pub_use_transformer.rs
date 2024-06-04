@@ -45,7 +45,7 @@ struct PubUseInfo {
 impl PubUseInfo {
     fn is_interest_name(&self, name: &str) -> bool {
         if let Some(name_filters) = &self.name_filters {
-            name_filters.contains(name)
+            name_filters.contains(&name.to_owned())
         } else {
             true
         }
@@ -89,7 +89,7 @@ fn transform_items<T: HirCommon>(
     pub_use_info: &PubUseInfo,
 ) -> Vec<T> {
     (items.iter())
-        .filter(|x| pub_use_info.is_interest_name(x.ident().to_string()))
+        .filter(|x| pub_use_info.is_interest_name(&x.ident().to_string()))
         .map(|x| x.with_namespace(self_namespace.clone()))
         .collect_vec()
 }
