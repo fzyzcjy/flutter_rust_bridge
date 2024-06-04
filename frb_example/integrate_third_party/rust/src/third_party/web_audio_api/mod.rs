@@ -4,9 +4,9 @@ pub mod media_element;
 pub mod node;
 pub mod worklet;
 
+use crate::handle_audio_node_trait_impls;
 use flutter_rust_bridge::frb;
 use web_audio_api::{AudioBuffer, AudioParam, AudioRenderCapacity};
-use crate::handle_audio_node_trait_impls;
 
 #[frb(external)]
 impl AudioRenderCapacity {
