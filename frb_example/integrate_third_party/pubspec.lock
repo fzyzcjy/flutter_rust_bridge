@@ -102,10 +102,9 @@ packages:
   flutter_rust_bridge:
     dependency: "direct main"
     description:
-      name: flutter_rust_bridge
-      sha256: d8a8419099180408b224235e2e2aa386b67ebfd59cc65610d618bb06fb640954
-      url: "https://pub.dev"
-    source: hosted
+      path: "../../frb_dart"
+      relative: true
+    source: path
     version: "2.0.0-dev.37"
   flutter_test:
     dependency: "direct dev"
