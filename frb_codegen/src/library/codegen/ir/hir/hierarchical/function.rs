@@ -3,7 +3,7 @@ use crate::utils::namespace::{Namespace, NamespacedName};
 use proc_macro2::{Ident, Span};
 use serde::Serialize;
 use syn::spanned::Spanned;
-use syn::{Attribute, Block, ImplItemFn, ItemFn, ItemImpl, Signature, TraitItemFn, Visibility};
+use syn::{Attribute, ImplItemFn, ItemFn, ItemImpl, Signature, TraitItemFn, Visibility};
 
 #[derive(Debug, Clone, Serialize)]
 pub(crate) struct HirFunction {
@@ -115,14 +115,6 @@ impl GeneralizedItemFn {
             Self::ItemFn(inner) => Some(&inner.vis),
             Self::ImplItemFn(inner) => Some(&inner.vis),
             Self::TraitItemFn(_) => None,
-        }
-    }
-
-    pub(crate) fn block(&self) -> Option<&Block> {
-        match self {
-            Self::ItemFn(inner) => Some(&inner.block),
-            Self::ImplItemFn(inner) => Some(&inner.block),
-            Self::TraitItemFn(inner) => None,
         }
     }
 }

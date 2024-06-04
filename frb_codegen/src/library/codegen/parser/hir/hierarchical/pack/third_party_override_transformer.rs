@@ -56,12 +56,8 @@ fn transform_module_content_functions(
         src_content_functions,
         |x| x.owner_and_name(),
         |target, src| {
-            let has_stmt = !src.item_fn.block().unwrap().stmts.is_empty();
-            if has_stmt {
-                TODO;
-            } else {
-                (target.item_fn.attrs_mut()).extend(src.item_fn.attrs().to_owned());
-            }
+            TODO;
+            (target.item_fn.attrs_mut()).extend(src.item_fn.attrs().to_owned());
         },
     )
 }
