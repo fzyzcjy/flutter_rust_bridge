@@ -1,6 +1,6 @@
 {
-    "name": "integrate_third_party",
-    "short_name": "integrate_third_party",
+    "name": "frb_example_integrate_third_party",
+    "short_name": "frb_example_integrate_third_party",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

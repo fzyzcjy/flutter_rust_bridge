@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="integrate_third_party"
+        android:label="frb_example_integrate_third_party"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

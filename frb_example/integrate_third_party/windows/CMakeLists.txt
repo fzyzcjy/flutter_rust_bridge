@@ -1,10 +1,10 @@
 # Project-level configuration.
 cmake_minimum_required(VERSION 3.14)
-project(integrate_third_party LANGUAGES CXX)
+project(frb_example_integrate_third_party LANGUAGES CXX)
 
 # The name of the executable created for the application. Change this to change
 # the on-disk name of your application.
-set(BINARY_NAME "integrate_third_party")
+set(BINARY_NAME "frb_example_integrate_third_party")
 
 # Explicitly opt in to modern CMake behaviors to avoid warnings with recent
 # versions of CMake.

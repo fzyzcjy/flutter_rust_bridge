@@ -1,4 +1,4 @@
-name: rust_lib_integrate_third_party
+name: rust_lib_frb_example_integrate_third_party
 description: "Utility to build Rust code"
 version: 0.0.1
 publish_to: none

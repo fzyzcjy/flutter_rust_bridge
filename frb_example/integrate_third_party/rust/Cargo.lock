@@ -1038,7 +1038,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "rust_lib_integrate_third_party"
+name = "rust_lib_frb_example_integrate_third_party"
 version = "0.1.0"
 dependencies = [
  "anyhow",

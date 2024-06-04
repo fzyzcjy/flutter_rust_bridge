@@ -6,7 +6,7 @@ list(APPEND FLUTTER_PLUGIN_LIST
 )
 
 list(APPEND FLUTTER_FFI_PLUGIN_LIST
-  rust_lib_integrate_third_party
+  rust_lib_frb_example_integrate_third_party
 )
 
 set(PLUGIN_BUNDLED_LIBRARIES)
