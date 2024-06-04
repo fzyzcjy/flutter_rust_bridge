@@ -1,4 +1,4 @@
-use crate::codegen::generator::api_dart::spec_generator::class::method::generate_api_methods;
+use crate::codegen::generator::api_dart::spec_generator::class::method::{generate_api_methods, GenerateApiMethodMode};
 use crate::codegen::generator::api_dart::spec_generator::class::misc::generate_class_extra_body;
 use crate::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
@@ -37,22 +37,10 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
     }
 
     fn generate_extra_impl_code(&self) -> Option<String> {
-        let rust_api_type = self.mir.rust_api_type();
-        let dart_api_type = ApiDartGenerator::new(self.mir.clone(), self.context).dart_api_type();
-
         let dart_api_type_impl = format!("{dart_api_type}Impl");
 
         let dart_entrypoint_class_name = &self.context.config.dart_entrypoint_class_name;
         let dart_api_instance = format!("{dart_entrypoint_class_name}.instance.api");
-
-        let methods = generate_api_methods(
-            &NamespacedName::new(
-                self.mir.namespace.clone(),
-                compute_api_method_query_name(&self.mir, self.context),
-            ),
-            self.context,
-        )
-        .join("\n");
 
         Some(format!(
             "
@@ -75,6 +63,35 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
             }}"
         ))
     }
+}
+
+impl RustOpaqueApiDartGenerator<'_> {
+    fn compute_info(&self, mode: GenerateApiMethodMode) {
+        let rust_api_type = self.mir.rust_api_type();
+        let dart_api_type = ApiDartGenerator::new(self.mir.clone(), self.context).dart_api_type();
+
+        let methods = generate_api_methods(
+            &NamespacedName::new(
+                self.mir.namespace.clone(),
+                compute_api_method_query_name(&self.mir, self.context),
+            ),
+            self.context,
+            mode,
+        )
+        .join("\n");
+
+        Info {
+            rust_api_type,
+            dart_api_type,
+            methods,
+        }
+    }
+}
+
+struct Info {
+    rust_api_type: String,
+    dart_api_type: String,
+    methods: String,
 }
 
 fn compute_api_method_query_name(
