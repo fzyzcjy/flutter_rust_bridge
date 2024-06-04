@@ -20,7 +20,7 @@ pub(super) fn transform(mut pack: HirPack) -> anyhow::Result<HirPack> {
     Ok(pack)
 }
 
-fn compute_methods(module: &HirModule, trait_map: &HashMap<String, HirTrait>) -> Vec<HirFunction> {
+fn compute_methods(module: &HirModule, trait_map: &HashMap<String, &HirTrait>) -> Vec<HirFunction> {
     (module.content.trait_impls.iter())
         .flat_map(|trait_impl| {
             let namespace = &trait_impl.namespace;
