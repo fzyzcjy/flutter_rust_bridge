@@ -19,28 +19,13 @@ SumWithTwinSyncSseArray3 getSumArrayTwinSyncSse(
             a: a, b: b, c: c);
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StaticGetterOnlyTwinSyncSse>>
-@sealed
-class StaticGetterOnlyTwinSyncSse extends RustOpaque {
-  // Not to be used by end users
-  StaticGetterOnlyTwinSyncSse.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  StaticGetterOnlyTwinSyncSse.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_StaticGetterOnlyTwinSyncSse,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StaticGetterOnlyTwinSyncSse,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StaticGetterOnlyTwinSyncSsePtr,
-  );
-
+abstract class StaticGetterOnlyTwinSyncSse {
   static int get staticGetterTwinSyncSse => RustLib.instance.api
       .crateApiPseudoManualMethodTwinSyncSseStaticGetterOnlyTwinSyncSseStaticGetterTwinSyncSse();
+
+  void dispose();
+
+  bool get isDisposed;
 }
 
 class ConcatenateWithTwinSyncSse {

@@ -27,6 +27,7 @@ pub(crate) fn generate(
         &config.wire,
         &config.api_dart,
         &api_dart_output.output_texts.paths(),
+        &api_dart_output.output_extra_impl_text,
         dumper,
         progress_bar_pack,
     )?;

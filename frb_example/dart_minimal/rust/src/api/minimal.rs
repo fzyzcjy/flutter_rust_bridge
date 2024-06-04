@@ -8,3 +8,21 @@ pub fn init_app() {
 pub fn minimal_adder(a: i32, b: i32) -> i32 {
     a + b
 }
+
+// TODO temp demo
+#[frb(opaque)]
+pub struct MyStruct {}
+impl MyStruct {
+    pub fn f(&mut self, a: i32) -> i32 {
+        a
+    }
+
+    pub fn my_static_method() -> i32 {
+        42
+    }
+
+    #[frb(sync)]
+    pub fn new() -> Self {
+        Self {}
+    }
+}

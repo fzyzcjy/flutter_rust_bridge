@@ -13,30 +13,9 @@ import 'web_audio_api/node.dart';
 // These functions are ignored: `as_mut_slice`, `as_slice`, `audio_processing`, `clear_handler`, `complete`, `copy_from_channel_with_offset`, `copy_from_channel`, `copy_to_channel_with_offset`, `copy_to_channel`, `current_time`, `diagnostics`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output`, `disconnect_dest`, `ended`, `forward_x`, `forward_y`, `forward_z`, `from`, `handle_pending_events`, `is_empty`, `len`, `load`, `load`, `loop_`, `message`, `new`, `new`, `new`, `new`, `pause`, `paused`, `play`, `playback_rate`, `position_x`, `position_y`, `position_z`, `processor_error`, `render_capacity`, `run_in_thread`, `set_current_time`, `set_handler`, `set_loop`, `set_onprocessorerror`, `set_playback_rate`, `sink_change`, `state_change`, `store`, `store`, `up_x`, `up_y`, `up_z`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioBuffer>>
-@sealed
-class AudioBuffer extends RustOpaque {
-  // Not to be used by end users
-  AudioBuffer.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  AudioBuffer.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_AudioBuffer,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_AudioBuffer,
-    rustArcDecrementStrongCountPtr:
-        RustLib.instance.api.rust_arc_decrement_strong_count_AudioBufferPtr,
-  );
-
+abstract class AudioBuffer {
   /// Duration in seconds of the `AudioBuffer`
-  Future<double> duration() =>
-      RustLib.instance.api.webAudioApiAudioBufferDuration(
-        that: this,
-      );
+  Future<double> duration();
 
   /// Convert raw samples to an AudioBuffer
   ///
@@ -60,9 +39,7 @@ class AudioBuffer extends RustOpaque {
   ///
   /// This function will panic if:
   /// - the given channel number is greater than or equal to the given number of channels.
-  Future<void> getChannelData({required BigInt channelNumber}) =>
-      RustLib.instance.api.webAudioApiAudioBufferGetChannelData(
-          that: this, channelNumber: channelNumber);
+  Future<void> getChannelData({required BigInt channelNumber});
 
   /// Return a mutable slice of the underlying data of the channel
   ///
@@ -70,14 +47,10 @@ class AudioBuffer extends RustOpaque {
   ///
   /// This function will panic if:
   /// - the given channel number is greater than or equal to the given number of channels.
-  Future<void> getChannelDataMut({required BigInt channelNumber}) =>
-      RustLib.instance.api.webAudioApiAudioBufferGetChannelDataMut(
-          that: this, channelNumber: channelNumber);
+  Future<void> getChannelDataMut({required BigInt channelNumber});
 
   /// Number of samples per channel in this `AudioBuffer`
-  Future<BigInt> length() => RustLib.instance.api.webAudioApiAudioBufferLength(
-        that: this,
-      );
+  Future<BigInt> length();
 
   // HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.
   /// Allocate a silent audiobuffer with [`AudioBufferOptions`]
@@ -93,86 +66,34 @@ class AudioBuffer extends RustOpaque {
       RustLib.instance.api.webAudioApiAudioBufferNew(options: options);
 
   /// Number of channels in this `AudioBuffer`
-  Future<BigInt> numberOfChannels() =>
-      RustLib.instance.api.webAudioApiAudioBufferNumberOfChannels(
-        that: this,
-      );
+  Future<BigInt> numberOfChannels();
 
   /// Sample rate of this `AudioBuffer` in Hertz
-  Future<double> sampleRate() =>
-      RustLib.instance.api.webAudioApiAudioBufferSampleRate(
-        that: this,
-      );
+  Future<double> sampleRate();
+
+  void dispose();
+
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioContextRegistration>>
-@sealed
-class AudioContextRegistration extends RustOpaque {
-  // Not to be used by end users
-  AudioContextRegistration.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class AudioContextRegistration {
+  void dispose();
 
-  // Not to be used by end users
-  AudioContextRegistration.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_AudioContextRegistration,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_AudioContextRegistration,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_AudioContextRegistrationPtr,
-  );
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioListener>>
-@sealed
-class AudioListener extends RustOpaque {
-  // Not to be used by end users
-  AudioListener.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class AudioListener {
+  void dispose();
 
-  // Not to be used by end users
-  AudioListener.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_AudioListener,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_AudioListener,
-    rustArcDecrementStrongCountPtr:
-        RustLib.instance.api.rust_arc_decrement_strong_count_AudioListenerPtr,
-  );
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioParam>>
-@sealed
-class AudioParam extends RustOpaque {
-  // Not to be used by end users
-  AudioParam.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  AudioParam.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_AudioParam,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_AudioParam,
-    rustArcDecrementStrongCountPtr:
-        RustLib.instance.api.rust_arc_decrement_strong_count_AudioParamPtr,
-  );
-
+abstract class AudioParam {
   /// Current value of the automation rate of the AudioParam
-  Future<AutomationRate> automationRate() =>
-      RustLib.instance.api.webAudioApiAudioParamAutomationRate(
-        that: this,
-      );
+  Future<AutomationRate> automationRate();
 
   /// Cancels all scheduled parameter changes with times greater than or equal
   /// to `cancel_time` and the automation value that would have happened at
@@ -181,9 +102,7 @@ class AudioParam extends RustOpaque {
   /// # Panics
   ///
   /// Will panic if `cancel_time` is negative
-  Future<void> cancelAndHoldAtTime({required double cancelTime}) =>
-      RustLib.instance.api.webAudioApiAudioParamCancelAndHoldAtTime(
-          that: this, cancelTime: cancelTime);
+  Future<void> cancelAndHoldAtTime({required double cancelTime});
 
   /// Cancels all scheduled parameter changes with times greater than or equal
   /// to `cancel_time`.
@@ -191,58 +110,33 @@ class AudioParam extends RustOpaque {
   /// # Panics
   ///
   /// Will panic if `cancel_time` is negative
-  Future<void> cancelScheduledValues({required double cancelTime}) =>
-      RustLib.instance.api.webAudioApiAudioParamCancelScheduledValues(
-          that: this, cancelTime: cancelTime);
+  Future<void> cancelScheduledValues({required double cancelTime});
 
-  Future<void> channelConfig() =>
-      RustLib.instance.api.webAudioApiAudioParamChannelConfig(
-        that: this,
-      );
+  Future<void> channelConfig();
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
   /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount() =>
-      RustLib.instance.api.webAudioApiAudioParamChannelCount(
-        that: this,
-      );
+  Future<BigInt> channelCount();
 
   /// Represents an enumerated value describing the way channels must be matched between the
   /// node's inputs and outputs.
-  Future<ChannelCountMode> channelCountMode() =>
-      RustLib.instance.api.webAudioApiAudioParamChannelCountMode(
-        that: this,
-      );
+  Future<ChannelCountMode> channelCountMode();
 
   /// Represents an enumerated value describing the meaning of the channels. This interpretation
   /// will define how audio up-mixing and down-mixing will happen.
-  Future<ChannelInterpretation> channelInterpretation() =>
-      RustLib.instance.api.webAudioApiAudioParamChannelInterpretation(
-        that: this,
-      );
+  Future<ChannelInterpretation> channelInterpretation();
 
   /// Unset the callback to run when an unhandled exception occurs in the audio processor.
-  Future<void> clearOnprocessorerror() =>
-      RustLib.instance.api.webAudioApiAudioParamClearOnprocessorerror(
-        that: this,
-      );
+  Future<void> clearOnprocessorerror();
 
   /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
   /// AudioNode.
-  Future<void> context() => RustLib.instance.api.webAudioApiAudioParamContext(
-        that: this,
-      );
+  Future<void> context();
 
-  Future<double> defaultValue() =>
-      RustLib.instance.api.webAudioApiAudioParamDefaultValue(
-        that: this,
-      );
+  Future<double> defaultValue();
 
   /// Disconnects all outgoing connections from the AudioNode.
-  Future<void> disconnect() =>
-      RustLib.instance.api.webAudioApiAudioParamDisconnect(
-        that: this,
-      );
+  Future<void> disconnect();
 
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
@@ -250,9 +144,7 @@ class AudioParam extends RustOpaque {
   ///
   /// This function will panic when
   /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output}) =>
-      RustLib.instance.api
-          .webAudioApiAudioParamDisconnectOutput(that: this, output: output);
+  Future<void> disconnectOutput({required BigInt output});
 
   /// Schedules an exponential continuous change in parameter value from the
   /// previous scheduled parameter value to the given value.
@@ -263,9 +155,7 @@ class AudioParam extends RustOpaque {
   /// - `value` is zero
   /// - `end_time` is negative
   Future<void> exponentialRampToValueAtTime(
-          {required double value, required double endTime}) =>
-      RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
-          that: this, value: value, endTime: endTime);
+      {required double value, required double endTime});
 
   /// Schedules a linear continuous change in parameter value from the
   /// previous scheduled parameter value to the given value.
@@ -274,54 +164,30 @@ class AudioParam extends RustOpaque {
   ///
   /// Will panic if `end_time` is negative
   Future<void> linearRampToValueAtTime(
-          {required double value, required double endTime}) =>
-      RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
-          that: this, value: value, endTime: endTime);
+      {required double value, required double endTime});
 
-  Future<double> maxValue() =>
-      RustLib.instance.api.webAudioApiAudioParamMaxValue(
-        that: this,
-      );
+  Future<double> maxValue();
 
-  Future<double> minValue() =>
-      RustLib.instance.api.webAudioApiAudioParamMinValue(
-        that: this,
-      );
+  Future<double> minValue();
 
-  Future<BigInt> numberOfInputs() =>
-      RustLib.instance.api.webAudioApiAudioParamNumberOfInputs(
-        that: this,
-      );
+  Future<BigInt> numberOfInputs();
 
-  Future<BigInt> numberOfOutputs() =>
-      RustLib.instance.api.webAudioApiAudioParamNumberOfOutputs(
-        that: this,
-      );
+  Future<BigInt> numberOfOutputs();
 
-  Future<void> registration() =>
-      RustLib.instance.api.webAudioApiAudioParamRegistration(
-        that: this,
-      );
+  Future<void> registration();
 
   /// Update the current value of the automation rate of the AudioParam
   ///
   /// # Panics
   ///
   /// Some nodes have automation rate constraints and may panic when updating the value.
-  Future<void> setAutomationRate({required AutomationRate value}) =>
-      RustLib.instance.api
-          .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
+  Future<void> setAutomationRate({required AutomationRate value});
 
-  Future<void> setChannelCount({required BigInt v}) => RustLib.instance.api
-      .webAudioApiAudioParamSetChannelCount(that: this, v: v);
+  Future<void> setChannelCount({required BigInt v});
 
-  Future<void> setChannelCountMode({required ChannelCountMode v}) =>
-      RustLib.instance.api
-          .webAudioApiAudioParamSetChannelCountMode(that: this, v: v);
+  Future<void> setChannelCountMode({required ChannelCountMode v});
 
-  Future<void> setChannelInterpretation({required ChannelInterpretation v}) =>
-      RustLib.instance.api
-          .webAudioApiAudioParamSetChannelInterpretation(that: this, v: v);
+  Future<void> setChannelInterpretation({required ChannelInterpretation v});
 
   /// Start exponentially approaching the target value at the given time with
   /// a rate having the given time constant.
@@ -332,21 +198,15 @@ class AudioParam extends RustOpaque {
   /// - `start_time` is negative
   /// - `time_constant` is negative
   Future<void> setTargetAtTime(
-          {required double value,
-          required double startTime,
-          required double timeConstant}) =>
-      RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
-          that: this,
-          value: value,
-          startTime: startTime,
-          timeConstant: timeConstant);
+      {required double value,
+      required double startTime,
+      required double timeConstant});
 
   /// Set the value of the `AudioParam`.
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
-  Future<void> setValue({required double value}) => RustLib.instance.api
-      .webAudioApiAudioParamSetValue(that: this, value: value);
+  Future<void> setValue({required double value});
 
   /// Schedules a parameter value change at the given time.
   ///
@@ -354,9 +214,7 @@ class AudioParam extends RustOpaque {
   ///
   /// Will panic if `start_time` is negative
   Future<void> setValueAtTime(
-          {required double value, required double startTime}) =>
-      RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
-          that: this, value: value, startTime: startTime);
+      {required double value, required double startTime});
 
   /// Sets an array of arbitrary parameter values starting at the given time
   /// for the given duration.
@@ -368,250 +226,107 @@ class AudioParam extends RustOpaque {
   /// - `start_time` is negative
   /// - `duration` is negative or equal to zero
   Future<void> setValueCurveAtTime(
-          {required List<double> values,
-          required double startTime,
-          required double duration}) =>
-      RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
-          that: this, values: values, startTime: startTime, duration: duration);
+      {required List<double> values,
+      required double startTime,
+      required double duration});
 
   /// Retrieve the current value of the `AudioParam`.
-  Future<double> value() => RustLib.instance.api.webAudioApiAudioParamValue(
-        that: this,
-      );
+  Future<double> value();
+
+  void dispose();
+
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioProcessingEvent>>
-@sealed
-class AudioProcessingEvent extends RustOpaque {
-  // Not to be used by end users
-  AudioProcessingEvent.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class AudioProcessingEvent {
+  AudioBuffer get inputBuffer;
 
-  // Not to be used by end users
-  AudioProcessingEvent.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+  AudioBuffer get outputBuffer;
 
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_AudioProcessingEvent,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_AudioProcessingEvent,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_AudioProcessingEventPtr,
-  );
+  double get playbackTime;
 
-  AudioBuffer get inputBuffer =>
-      RustLib.instance.api.webAudioApiAudioProcessingEventGetInputBuffer(
-        that: this,
-      );
+  void set inputBuffer(AudioBuffer inputBuffer);
 
-  AudioBuffer get outputBuffer =>
-      RustLib.instance.api.webAudioApiAudioProcessingEventGetOutputBuffer(
-        that: this,
-      );
+  void set outputBuffer(AudioBuffer outputBuffer);
 
-  double get playbackTime =>
-      RustLib.instance.api.webAudioApiAudioProcessingEventGetPlaybackTime(
-        that: this,
-      );
+  void set playbackTime(double playbackTime);
 
-  void set inputBuffer(AudioBuffer inputBuffer) =>
-      RustLib.instance.api.webAudioApiAudioProcessingEventSetInputBuffer(
-          that: this, inputBuffer: inputBuffer);
+  void dispose();
 
-  void set outputBuffer(AudioBuffer outputBuffer) =>
-      RustLib.instance.api.webAudioApiAudioProcessingEventSetOutputBuffer(
-          that: this, outputBuffer: outputBuffer);
-
-  void set playbackTime(double playbackTime) =>
-      RustLib.instance.api.webAudioApiAudioProcessingEventSetPlaybackTime(
-          that: this, playbackTime: playbackTime);
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioRenderCapacity>>
-@sealed
-class AudioRenderCapacity extends RustOpaque {
-  // Not to be used by end users
-  AudioRenderCapacity.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  AudioRenderCapacity.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_AudioRenderCapacity,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_AudioRenderCapacity,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_AudioRenderCapacityPtr,
-  );
-
+abstract class AudioRenderCapacity {
   /// Unset the EventHandler for [`AudioRenderCapacityEvent`].
-  Future<void> clearOnupdate() =>
-      RustLib.instance.api.webAudioApiAudioRenderCapacityClearOnupdate(
-        that: this,
-      );
+  Future<void> clearOnupdate();
 
   /// Start metric collection and analysis
-  Future<void> start({required AudioRenderCapacityOptions options}) =>
-      RustLib.instance.api
-          .webAudioApiAudioRenderCapacityStart(that: this, options: options);
+  Future<void> start({required AudioRenderCapacityOptions options});
 
   /// Stop metric collection and analysis
-  Future<void> stop() =>
-      RustLib.instance.api.webAudioApiAudioRenderCapacityStop(
-        that: this,
-      );
+  Future<void> stop();
+
+  void dispose();
+
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioRenderCapacityEvent>>
-@sealed
-class AudioRenderCapacityEvent extends RustOpaque {
-  // Not to be used by end users
-  AudioRenderCapacityEvent.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class AudioRenderCapacityEvent {
+  double get averageLoad;
 
-  // Not to be used by end users
-  AudioRenderCapacityEvent.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+  Event get event;
 
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_AudioRenderCapacityEvent,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_AudioRenderCapacityEvent,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_AudioRenderCapacityEventPtr,
-  );
+  double get peakLoad;
 
-  double get averageLoad =>
-      RustLib.instance.api.webAudioApiAudioRenderCapacityEventGetAverageLoad(
-        that: this,
-      );
+  double get timestamp;
 
-  Event get event =>
-      RustLib.instance.api.webAudioApiAudioRenderCapacityEventGetEvent(
-        that: this,
-      );
+  double get underrunRatio;
 
-  double get peakLoad =>
-      RustLib.instance.api.webAudioApiAudioRenderCapacityEventGetPeakLoad(
-        that: this,
-      );
+  void set averageLoad(double averageLoad);
 
-  double get timestamp =>
-      RustLib.instance.api.webAudioApiAudioRenderCapacityEventGetTimestamp(
-        that: this,
-      );
+  void set event(Event event);
 
-  double get underrunRatio =>
-      RustLib.instance.api.webAudioApiAudioRenderCapacityEventGetUnderrunRatio(
-        that: this,
-      );
+  void set peakLoad(double peakLoad);
 
-  void set averageLoad(double averageLoad) =>
-      RustLib.instance.api.webAudioApiAudioRenderCapacityEventSetAverageLoad(
-          that: this, averageLoad: averageLoad);
+  void set timestamp(double timestamp);
 
-  void set event(Event event) => RustLib.instance.api
-      .webAudioApiAudioRenderCapacityEventSetEvent(that: this, event: event);
+  void set underrunRatio(double underrunRatio);
 
-  void set peakLoad(double peakLoad) =>
-      RustLib.instance.api.webAudioApiAudioRenderCapacityEventSetPeakLoad(
-          that: this, peakLoad: peakLoad);
+  void dispose();
 
-  void set timestamp(double timestamp) =>
-      RustLib.instance.api.webAudioApiAudioRenderCapacityEventSetTimestamp(
-          that: this, timestamp: timestamp);
-
-  void set underrunRatio(double underrunRatio) =>
-      RustLib.instance.api.webAudioApiAudioRenderCapacityEventSetUnderrunRatio(
-          that: this, underrunRatio: underrunRatio);
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Event>>
-@sealed
-class Event extends RustOpaque {
-  // Not to be used by end users
-  Event.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class Event {
+  void dispose();
 
-  // Not to be used by end users
-  Event.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_Event,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_Event,
-    rustArcDecrementStrongCountPtr:
-        RustLib.instance.api.rust_arc_decrement_strong_count_EventPtr,
-  );
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OfflineAudioCompletionEvent>>
-@sealed
-class OfflineAudioCompletionEvent extends RustOpaque {
-  // Not to be used by end users
-  OfflineAudioCompletionEvent.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class OfflineAudioCompletionEvent {
+  Event get event;
 
-  // Not to be used by end users
-  OfflineAudioCompletionEvent.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+  AudioBuffer get renderedBuffer;
 
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_OfflineAudioCompletionEvent,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_OfflineAudioCompletionEvent,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_OfflineAudioCompletionEventPtr,
-  );
+  void set event(Event event);
 
-  Event get event =>
-      RustLib.instance.api.webAudioApiOfflineAudioCompletionEventGetEvent(
-        that: this,
-      );
+  void set renderedBuffer(AudioBuffer renderedBuffer);
 
-  AudioBuffer get renderedBuffer => RustLib.instance.api
-          .webAudioApiOfflineAudioCompletionEventGetRenderedBuffer(
-        that: this,
-      );
+  void dispose();
 
-  void set event(Event event) => RustLib.instance.api
-      .webAudioApiOfflineAudioCompletionEventSetEvent(that: this, event: event);
-
-  void set renderedBuffer(AudioBuffer renderedBuffer) => RustLib.instance.api
-      .webAudioApiOfflineAudioCompletionEventSetRenderedBuffer(
-          that: this, renderedBuffer: renderedBuffer);
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<PeriodicWave>>
-@sealed
-class PeriodicWave extends RustOpaque {
-  // Not to be used by end users
-  PeriodicWave.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class PeriodicWave {
+  void dispose();
 
-  // Not to be used by end users
-  PeriodicWave.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_PeriodicWave,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_PeriodicWave,
-    rustArcDecrementStrongCountPtr:
-        RustLib.instance.api.rust_arc_decrement_strong_count_PeriodicWavePtr,
-  );
+  bool get isDisposed;
 }
 
 /// Options for constructing an [`AudioBuffer`]

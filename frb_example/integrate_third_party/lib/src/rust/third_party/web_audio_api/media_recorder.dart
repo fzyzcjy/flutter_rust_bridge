@@ -13,85 +13,31 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 // These types are ignored because they are not used by any `pub` functions: `MediaRecorderInner`, `RecordedData`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<BlobEvent>>
-@sealed
-class BlobEvent extends RustOpaque {
-  // Not to be used by end users
-  BlobEvent.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class BlobEvent {
+  Uint8List get blob;
 
-  // Not to be used by end users
-  BlobEvent.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+  Event get event;
 
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_BlobEvent,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_BlobEvent,
-    rustArcDecrementStrongCountPtr:
-        RustLib.instance.api.rust_arc_decrement_strong_count_BlobEventPtr,
-  );
+  double get timecode;
 
-  Uint8List get blob =>
-      RustLib.instance.api.webAudioApiMediaRecorderBlobEventGetBlob(
-        that: this,
-      );
+  void set blob(Uint8List blob);
 
-  Event get event =>
-      RustLib.instance.api.webAudioApiMediaRecorderBlobEventGetEvent(
-        that: this,
-      );
+  void set event(Event event);
 
-  double get timecode =>
-      RustLib.instance.api.webAudioApiMediaRecorderBlobEventGetTimecode(
-        that: this,
-      );
+  void set timecode(double timecode);
 
-  void set blob(Uint8List blob) => RustLib.instance.api
-      .webAudioApiMediaRecorderBlobEventSetBlob(that: this, blob: blob);
+  void dispose();
 
-  void set event(Event event) => RustLib.instance.api
-      .webAudioApiMediaRecorderBlobEventSetEvent(that: this, event: event);
-
-  void set timecode(double timecode) =>
-      RustLib.instance.api.webAudioApiMediaRecorderBlobEventSetTimecode(
-          that: this, timecode: timecode);
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaRecorder>>
-@sealed
-class MediaRecorder extends RustOpaque {
-  // Not to be used by end users
-  MediaRecorder.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class MediaRecorder {
+  Future<void> clearOndataavailable();
 
-  // Not to be used by end users
-  MediaRecorder.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+  Future<void> clearOnerror();
 
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_MediaRecorder,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_MediaRecorder,
-    rustArcDecrementStrongCountPtr:
-        RustLib.instance.api.rust_arc_decrement_strong_count_MediaRecorderPtr,
-  );
-
-  Future<void> clearOndataavailable() => RustLib.instance.api
-          .webAudioApiMediaRecorderMediaRecorderClearOndataavailable(
-        that: this,
-      );
-
-  Future<void> clearOnerror() =>
-      RustLib.instance.api.webAudioApiMediaRecorderMediaRecorderClearOnerror(
-        that: this,
-      );
-
-  Future<void> clearOnstop() =>
-      RustLib.instance.api.webAudioApiMediaRecorderMediaRecorderClearOnstop(
-        that: this,
-      );
+  Future<void> clearOnstop();
 
   // HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.
   /// Creates a new `MediaRecorder` object, given a [`MediaStream`] to record.
@@ -106,13 +52,11 @@ class MediaRecorder extends RustOpaque {
   /// # Panics
   ///
   /// Will panic when the recorder has already started
-  Future<void> start() =>
-      RustLib.instance.api.webAudioApiMediaRecorderMediaRecorderStart(
-        that: this,
-      );
+  Future<void> start();
 
-  Future<void> stop() =>
-      RustLib.instance.api.webAudioApiMediaRecorderMediaRecorderStop(
-        that: this,
-      );
+  Future<void> stop();
+
+  void dispose();
+
+  bool get isDisposed;
 }

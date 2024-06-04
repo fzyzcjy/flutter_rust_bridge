@@ -11,65 +11,28 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 // These functions have error during generation (see debug logs for more details): `iter`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStream>>
-@sealed
-class MediaStream extends RustOpaque {
-  // Not to be used by end users
-  MediaStream.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  MediaStream.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_MediaStream,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_MediaStream,
-    rustArcDecrementStrongCountPtr:
-        RustLib.instance.api.rust_arc_decrement_strong_count_MediaStreamPtr,
-  );
-
+abstract class MediaStream {
   static Future<MediaStream> fromTracks(
           {required List<MediaStreamTrack> tracks}) =>
       RustLib.instance.api
           .webAudioApiMediaStreamsMediaStreamFromTracks(tracks: tracks);
 
-  Future<void> getTracks() =>
-      RustLib.instance.api.webAudioApiMediaStreamsMediaStreamGetTracks(
-        that: this,
-      );
+  Future<void> getTracks();
+
+  void dispose();
+
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamTrack>>
-@sealed
-class MediaStreamTrack extends RustOpaque {
-  // Not to be used by end users
-  MediaStreamTrack.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class MediaStreamTrack {
+  Future<void> close();
 
-  // Not to be used by end users
-  MediaStreamTrack.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+  Future<MediaStreamTrackState> readyState();
 
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_MediaStreamTrack,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_MediaStreamTrack,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_MediaStreamTrackPtr,
-  );
+  void dispose();
 
-  Future<void> close() =>
-      RustLib.instance.api.webAudioApiMediaStreamsMediaStreamTrackClose(
-        that: this,
-      );
-
-  Future<MediaStreamTrackState> readyState() =>
-      RustLib.instance.api.webAudioApiMediaStreamsMediaStreamTrackReadyState(
-        that: this,
-      );
+  bool get isDisposed;
 }
 
 /// Ready-state of a [`MediaStreamTrack`]

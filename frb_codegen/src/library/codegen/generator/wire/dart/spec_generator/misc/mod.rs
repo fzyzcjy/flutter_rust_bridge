@@ -31,11 +31,13 @@ pub(crate) struct WireDartOutputSpecMisc {
     pub(crate) extra_functions: Acc<Vec<WireDartOutputCode>>,
 }
 
+#[allow(clippy::too_many_arguments)]
 pub(crate) fn generate(
     context: WireDartGeneratorContext,
     cache: &MirPackComputedCache,
     c_file_content: &str,
     api_dart_actual_output_paths: &[PathBuf],
+    extra_impl_text: &str,
     rust_extern_funcs: &[ExternFunc],
     rust_content_hash: i32,
     progress_bar_pack: &GeneratorProgressBarPack,
@@ -49,6 +51,7 @@ pub(crate) fn generate(
         )?,
         boilerplate: generate_boilerplate(
             api_dart_actual_output_paths,
+            extra_impl_text,
             cache,
             context,
             rust_content_hash,
@@ -67,6 +70,7 @@ pub(crate) fn generate(
 
 fn generate_boilerplate(
     api_dart_actual_output_paths: &[PathBuf],
+    extra_impl_text: &str,
     cache: &MirPackComputedCache,
     context: WireDartGeneratorContext,
     rust_content_hash: i32,
@@ -178,6 +182,7 @@ fn generate_boilerplate(
                 io_directory = context.config.default_external_library_loader.io_directory,
                 web_prefix = context.config.default_external_library_loader.web_prefix,
             ),
+            body: extra_impl_text.to_owned(),
             ..Default::default()
         }],
         io: vec![WireDartOutputCode {

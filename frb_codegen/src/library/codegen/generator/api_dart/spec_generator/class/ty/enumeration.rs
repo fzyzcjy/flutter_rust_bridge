@@ -1,4 +1,6 @@
-use crate::codegen::generator::api_dart::spec_generator::class::method::generate_api_methods;
+use crate::codegen::generator::api_dart::spec_generator::class::method::{
+    generate_api_methods, GenerateApiMethodMode,
+};
 use crate::codegen::generator::api_dart::spec_generator::class::misc::generate_class_extra_body;
 use crate::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
@@ -9,7 +11,9 @@ impl<'a> ApiDartGeneratorClassTrait for EnumRefApiDartGenerator<'a> {
     fn generate_class(&self) -> Option<ApiDartGeneratedClass> {
         let src = self.mir.get(self.context.mir_pack);
 
-        let methods_str = generate_api_methods(&src.name, self.context).join("\n");
+        let methods_str =
+            generate_api_methods(&src.name, self.context, GenerateApiMethodMode::Combined)
+                .join("\n");
         let extra_body =
             generate_class_extra_body(self.mir_type(), &self.context.mir_pack.dart_code_of_type);
 

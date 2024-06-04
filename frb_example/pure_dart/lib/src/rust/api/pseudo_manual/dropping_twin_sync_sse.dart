@@ -9,30 +9,8 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 // These types are ignored because they are not used by any `pub` functions: `DROP_COUNT`
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DroppableTwinSyncSse>>
-@sealed
-class DroppableTwinSyncSse extends RustOpaque {
-  // Not to be used by end users
-  DroppableTwinSyncSse.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  DroppableTwinSyncSse.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_DroppableTwinSyncSse,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_DroppableTwinSyncSse,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_DroppableTwinSyncSsePtr,
-  );
-
-  Stream<int> createStreamTwinSyncSse() => RustLib.instance.api
-          .crateApiPseudoManualDroppingTwinSyncSseDroppableTwinSyncSseCreateStreamTwinSyncSse(
-        that: this,
-      );
+abstract class DroppableTwinSyncSse {
+  Stream<int> createStreamTwinSyncSse();
 
   static int getDropCountTwinSyncSse() => RustLib.instance.api
       .crateApiPseudoManualDroppingTwinSyncSseDroppableTwinSyncSseGetDropCountTwinSyncSse();
@@ -40,8 +18,9 @@ class DroppableTwinSyncSse extends RustOpaque {
   static DroppableTwinSyncSse newTwinSyncSse() => RustLib.instance.api
       .crateApiPseudoManualDroppingTwinSyncSseDroppableTwinSyncSseNewTwinSyncSse();
 
-  void simpleMethodTwinSyncSse() => RustLib.instance.api
-          .crateApiPseudoManualDroppingTwinSyncSseDroppableTwinSyncSseSimpleMethodTwinSyncSse(
-        that: this,
-      );
+  void simpleMethodTwinSyncSse();
+
+  void dispose();
+
+  bool get isDisposed;
 }

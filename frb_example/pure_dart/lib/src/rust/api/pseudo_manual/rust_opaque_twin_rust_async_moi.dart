@@ -92,69 +92,24 @@ Future<FrbOpaqueReturnTwinRustAsyncMoi> frbGeneratorTestTwinRustAsyncMoi() =>
         .crateApiPseudoManualRustOpaqueTwinRustAsyncMoiFrbGeneratorTestTwinRustAsyncMoi();
 
 // Rust type: RustOpaqueMoi<Box < dyn DartDebugTwinRustAsyncMoi >>
-@sealed
-class BoxDartDebugTwinRustAsyncMoi extends RustOpaque {
-  // Not to be used by end users
-  BoxDartDebugTwinRustAsyncMoi.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class BoxDartDebugTwinRustAsyncMoi {
+  void dispose();
 
-  // Not to be used by end users
-  BoxDartDebugTwinRustAsyncMoi.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_BoxDartDebugTwinRustAsyncMoi,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_BoxDartDebugTwinRustAsyncMoi,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_BoxDartDebugTwinRustAsyncMoiPtr,
-  );
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<FrbOpaqueReturnTwinRustAsyncMoi>
-@sealed
-class FrbOpaqueReturnTwinRustAsyncMoi extends RustOpaque {
-  // Not to be used by end users
-  FrbOpaqueReturnTwinRustAsyncMoi.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class FrbOpaqueReturnTwinRustAsyncMoi {
+  void dispose();
 
-  // Not to be used by end users
-  FrbOpaqueReturnTwinRustAsyncMoi.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_FrbOpaqueReturnTwinRustAsyncMoi,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_FrbOpaqueReturnTwinRustAsyncMoi,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_FrbOpaqueReturnTwinRustAsyncMoiPtr,
-  );
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<HideDataTwinRustAsyncMoi>
-@sealed
-class HideDataTwinRustAsyncMoi extends RustOpaque {
-  // Not to be used by end users
-  HideDataTwinRustAsyncMoi.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class HideDataTwinRustAsyncMoi {
+  void dispose();
 
-  // Not to be used by end users
-  HideDataTwinRustAsyncMoi.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_HideDataTwinRustAsyncMoi,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_HideDataTwinRustAsyncMoi,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_HideDataTwinRustAsyncMoiPtr,
-  );
+  bool get isDisposed;
 }
 
 class HideDataTwinRustAsyncMoiArray2
@@ -174,69 +129,24 @@ class HideDataTwinRustAsyncMoiArray2
 }
 
 // Rust type: RustOpaqueMoi<Mutex < HideDataTwinRustAsyncMoi >>
-@sealed
-class MutexHideDataTwinRustAsyncMoi extends RustOpaque {
-  // Not to be used by end users
-  MutexHideDataTwinRustAsyncMoi.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class MutexHideDataTwinRustAsyncMoi {
+  void dispose();
 
-  // Not to be used by end users
-  MutexHideDataTwinRustAsyncMoi.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_MutexHideDataTwinRustAsyncMoi,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_MutexHideDataTwinRustAsyncMoi,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_MutexHideDataTwinRustAsyncMoiPtr,
-  );
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<NonCloneDataTwinRustAsyncMoi>
-@sealed
-class NonCloneDataTwinRustAsyncMoi extends RustOpaque {
-  // Not to be used by end users
-  NonCloneDataTwinRustAsyncMoi.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class NonCloneDataTwinRustAsyncMoi {
+  void dispose();
 
-  // Not to be used by end users
-  NonCloneDataTwinRustAsyncMoi.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_NonCloneDataTwinRustAsyncMoi,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_NonCloneDataTwinRustAsyncMoi,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_NonCloneDataTwinRustAsyncMoiPtr,
-  );
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<RwLock < HideDataTwinRustAsyncMoi >>
-@sealed
-class RwLockHideDataTwinRustAsyncMoi extends RustOpaque {
-  // Not to be used by end users
-  RwLockHideDataTwinRustAsyncMoi.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class RwLockHideDataTwinRustAsyncMoi {
+  void dispose();
 
-  // Not to be used by end users
-  RwLockHideDataTwinRustAsyncMoi.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_RwLockHideDataTwinRustAsyncMoi,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_RwLockHideDataTwinRustAsyncMoi,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_RwLockHideDataTwinRustAsyncMoiPtr,
-  );
+  bool get isDisposed;
 }
 
 @freezed

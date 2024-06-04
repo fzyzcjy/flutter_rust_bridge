@@ -7,34 +7,16 @@ import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<SimpleOpaqueExternalStructWithMethod>>
-@sealed
-class SimpleOpaqueExternalStructWithMethod extends RustOpaque {
-  // Not to be used by end users
-  SimpleOpaqueExternalStructWithMethod.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  SimpleOpaqueExternalStructWithMethod.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_SimpleOpaqueExternalStructWithMethod,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_SimpleOpaqueExternalStructWithMethod,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_SimpleOpaqueExternalStructWithMethodPtr,
-  );
-
+abstract class SimpleOpaqueExternalStructWithMethod {
   factory SimpleOpaqueExternalStructWithMethod({required String a}) =>
       RustLib.instance.api
           .crateApiExternalImplSimpleOpaqueExternalStructWithMethodNew(a: a);
 
-  Future<String> simpleExternalMethod() => RustLib.instance.api
-          .crateApiExternalImplSimpleOpaqueExternalStructWithMethodSimpleExternalMethod(
-        that: this,
-      );
+  Future<String> simpleExternalMethod();
+
+  void dispose();
+
+  bool get isDisposed;
 }
 
 class SimpleTranslatableExternalStructWithMethod {

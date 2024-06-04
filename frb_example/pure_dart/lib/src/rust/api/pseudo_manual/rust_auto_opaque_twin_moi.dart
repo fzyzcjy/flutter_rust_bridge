@@ -213,187 +213,60 @@ Future<int> rustAutoOpaqueBorrowAndBorrowTwinMoi(
             a: a, b: b);
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn Fn (String) -> String + Send + Sync >>>
-@sealed
-class BoxFnStringString extends RustOpaque {
-  // Not to be used by end users
-  BoxFnStringString.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class BoxFnStringString {
+  void dispose();
 
-  // Not to be used by end users
-  BoxFnStringString.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_BoxFnStringString,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_BoxFnStringString,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_BoxFnStringStringPtr,
-  );
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn HelloTraitTwinMoi >>>
-@sealed
-class BoxHelloTraitTwinMoi extends RustOpaque {
-  // Not to be used by end users
-  BoxHelloTraitTwinMoi.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class BoxHelloTraitTwinMoi {
+  void dispose();
 
-  // Not to be used by end users
-  BoxHelloTraitTwinMoi.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_BoxHelloTraitTwinMoi,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_BoxHelloTraitTwinMoi,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_BoxHelloTraitTwinMoiPtr,
-  );
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn MyTraitTwinMoi + Send + Sync >>>
-@sealed
-class BoxMyTraitTwinMoi extends RustOpaque {
-  // Not to be used by end users
-  BoxMyTraitTwinMoi.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class BoxMyTraitTwinMoi {
+  void dispose();
 
-  // Not to be used by end users
-  BoxMyTraitTwinMoi.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_BoxMyTraitTwinMoi,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_BoxMyTraitTwinMoi,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_BoxMyTraitTwinMoiPtr,
-  );
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<EnumWithGoodAndOpaqueWithoutOptionTwinMoi>>
-@sealed
-class EnumWithGoodAndOpaqueWithoutOptionTwinMoi extends RustOpaque {
-  // Not to be used by end users
-  EnumWithGoodAndOpaqueWithoutOptionTwinMoi.frbInternalDcoDecode(
-      List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class EnumWithGoodAndOpaqueWithoutOptionTwinMoi {
+  void dispose();
 
-  // Not to be used by end users
-  EnumWithGoodAndOpaqueWithoutOptionTwinMoi.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_EnumWithGoodAndOpaqueWithoutOptionTwinMoi,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_EnumWithGoodAndOpaqueWithoutOptionTwinMoi,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_EnumWithGoodAndOpaqueWithoutOptionTwinMoiPtr,
-  );
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinMoi>>
-@sealed
-class HelloOneStructTwinMoi extends RustOpaque {
-  // Not to be used by end users
-  HelloOneStructTwinMoi.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class HelloOneStructTwinMoi {
+  Future<void> funcHello();
 
-  // Not to be used by end users
-  HelloOneStructTwinMoi.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+  void dispose();
 
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_HelloOneStructTwinMoi,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_HelloOneStructTwinMoi,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_HelloOneStructTwinMoiPtr,
-  );
-
-  Future<void> funcHello() => RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinMoiHelloOneStructTwinMoiFuncHello(
-        that: this,
-      );
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleEnumTwinMoi>>
-@sealed
-class NonCloneSimpleEnumTwinMoi extends RustOpaque {
-  // Not to be used by end users
-  NonCloneSimpleEnumTwinMoi.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class NonCloneSimpleEnumTwinMoi {
+  void dispose();
 
-  // Not to be used by end users
-  NonCloneSimpleEnumTwinMoi.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_NonCloneSimpleEnumTwinMoi,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_NonCloneSimpleEnumTwinMoi,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_NonCloneSimpleEnumTwinMoiPtr,
-  );
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinMoi>>
-@sealed
-class NonCloneSimpleTwinMoi extends RustOpaque {
-  // Not to be used by end users
-  NonCloneSimpleTwinMoi.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class NonCloneSimpleTwinMoi {
+  Future<void> instanceMethodArgBorrowTwinMoi();
 
-  // Not to be used by end users
-  NonCloneSimpleTwinMoi.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+  Future<void> instanceMethodArgMutBorrowTwinMoi();
 
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_NonCloneSimpleTwinMoi,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_NonCloneSimpleTwinMoi,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_NonCloneSimpleTwinMoiPtr,
-  );
+  Future<void> instanceMethodArgOwnTwinMoi();
 
-  Future<void> instanceMethodArgBorrowTwinMoi() => RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinMoiNonCloneSimpleTwinMoiInstanceMethodArgBorrowTwinMoi(
-        that: this,
-      );
+  Future<int> get instanceMethodGetterTwinMoi;
 
-  Future<void> instanceMethodArgMutBorrowTwinMoi() => RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinMoiNonCloneSimpleTwinMoiInstanceMethodArgMutBorrowTwinMoi(
-        that: this,
-      );
-
-  Future<void> instanceMethodArgOwnTwinMoi() => RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinMoiNonCloneSimpleTwinMoiInstanceMethodArgOwnTwinMoi(
-        that: this,
-      );
-
-  Future<int> get instanceMethodGetterTwinMoi => RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinMoiNonCloneSimpleTwinMoiInstanceMethodGetterTwinMoi(
-        that: this,
-      );
-
-  Future<NonCloneSimpleTwinMoi> instanceMethodReturnOwnTwinMoi() =>
-      RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinMoiNonCloneSimpleTwinMoiInstanceMethodReturnOwnTwinMoi(
-        that: this,
-      );
+  Future<NonCloneSimpleTwinMoi> instanceMethodReturnOwnTwinMoi();
 
   /// named constructor
   static Future<NonCloneSimpleTwinMoi> newCustomNameTwinMoi() => RustLib
@@ -430,80 +303,35 @@ class NonCloneSimpleTwinMoi extends RustOpaque {
   static Future<NonCloneSimpleTwinMoi> staticMethodReturnOwnTwinMoi() => RustLib
       .instance.api
       .crateApiPseudoManualRustAutoOpaqueTwinMoiNonCloneSimpleTwinMoiStaticMethodReturnOwnTwinMoi();
+
+  void dispose();
+
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueOneTwinMoi>>
-@sealed
-class OpaqueOneTwinMoi extends RustOpaque {
-  // Not to be used by end users
-  OpaqueOneTwinMoi.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class OpaqueOneTwinMoi {
+  void dispose();
 
-  // Not to be used by end users
-  OpaqueOneTwinMoi.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_OpaqueOneTwinMoi,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_OpaqueOneTwinMoi,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_OpaqueOneTwinMoiPtr,
-  );
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueTwoTwinMoi>>
-@sealed
-class OpaqueTwoTwinMoi extends RustOpaque {
-  // Not to be used by end users
-  OpaqueTwoTwinMoi.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class OpaqueTwoTwinMoi {
+  void dispose();
 
-  // Not to be used by end users
-  OpaqueTwoTwinMoi.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_OpaqueTwoTwinMoi,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_OpaqueTwoTwinMoi,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_OpaqueTwoTwinMoiPtr,
-  );
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi>>
-@sealed
-class StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi extends RustOpaque {
-  // Not to be used by end users
-  StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi.frbInternalDcoDecode(
-      List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi {
+  String get good;
 
-  // Not to be used by end users
-  StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+  void set good(String good);
 
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldWithoutOptionTwinMoiPtr,
-  );
+  void dispose();
 
-  String get good => RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinMoiStructWithGoodAndOpaqueFieldWithoutOptionTwinMoiGetGood(
-        that: this,
-      );
-
-  void set good(String good) => RustLib.instance.api
-      .crateApiPseudoManualRustAutoOpaqueTwinMoiStructWithGoodAndOpaqueFieldWithoutOptionTwinMoiSetGood(
-          that: this, good: good);
+  bool get isDisposed;
 }
 
 @freezed

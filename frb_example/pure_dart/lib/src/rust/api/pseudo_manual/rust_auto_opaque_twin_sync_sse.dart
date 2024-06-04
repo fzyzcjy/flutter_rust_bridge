@@ -215,167 +215,53 @@ int rustAutoOpaqueBorrowAndBorrowTwinSyncSse(
             a: a, b: b);
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn HelloTraitTwinSyncSse >>>
-@sealed
-class BoxHelloTraitTwinSyncSse extends RustOpaque {
-  // Not to be used by end users
-  BoxHelloTraitTwinSyncSse.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class BoxHelloTraitTwinSyncSse {
+  void dispose();
 
-  // Not to be used by end users
-  BoxHelloTraitTwinSyncSse.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_BoxHelloTraitTwinSyncSse,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_BoxHelloTraitTwinSyncSse,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_BoxHelloTraitTwinSyncSsePtr,
-  );
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn MyTraitTwinSyncSse + Send + Sync >>>
-@sealed
-class BoxMyTraitTwinSyncSse extends RustOpaque {
-  // Not to be used by end users
-  BoxMyTraitTwinSyncSse.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class BoxMyTraitTwinSyncSse {
+  void dispose();
 
-  // Not to be used by end users
-  BoxMyTraitTwinSyncSse.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_BoxMyTraitTwinSyncSse,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_BoxMyTraitTwinSyncSse,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_BoxMyTraitTwinSyncSsePtr,
-  );
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<EnumWithGoodAndOpaqueWithoutOptionTwinSyncSse>>
-@sealed
-class EnumWithGoodAndOpaqueWithoutOptionTwinSyncSse extends RustOpaque {
-  // Not to be used by end users
-  EnumWithGoodAndOpaqueWithoutOptionTwinSyncSse.frbInternalDcoDecode(
-      List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class EnumWithGoodAndOpaqueWithoutOptionTwinSyncSse {
+  void dispose();
 
-  // Not to be used by end users
-  EnumWithGoodAndOpaqueWithoutOptionTwinSyncSse.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_EnumWithGoodAndOpaqueWithoutOptionTwinSyncSse,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_EnumWithGoodAndOpaqueWithoutOptionTwinSyncSse,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_EnumWithGoodAndOpaqueWithoutOptionTwinSyncSsePtr,
-  );
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinSyncSse>>
-@sealed
-class HelloOneStructTwinSyncSse extends RustOpaque {
-  // Not to be used by end users
-  HelloOneStructTwinSyncSse.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class HelloOneStructTwinSyncSse {
+  Future<void> funcHello();
 
-  // Not to be used by end users
-  HelloOneStructTwinSyncSse.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+  void dispose();
 
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_HelloOneStructTwinSyncSse,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_HelloOneStructTwinSyncSse,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_HelloOneStructTwinSyncSsePtr,
-  );
-
-  Future<void> funcHello() => RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinSyncSseHelloOneStructTwinSyncSseFuncHello(
-        that: this,
-      );
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleEnumTwinSyncSse>>
-@sealed
-class NonCloneSimpleEnumTwinSyncSse extends RustOpaque {
-  // Not to be used by end users
-  NonCloneSimpleEnumTwinSyncSse.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class NonCloneSimpleEnumTwinSyncSse {
+  void dispose();
 
-  // Not to be used by end users
-  NonCloneSimpleEnumTwinSyncSse.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_NonCloneSimpleEnumTwinSyncSse,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_NonCloneSimpleEnumTwinSyncSse,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_NonCloneSimpleEnumTwinSyncSsePtr,
-  );
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinSyncSse>>
-@sealed
-class NonCloneSimpleTwinSyncSse extends RustOpaque {
-  // Not to be used by end users
-  NonCloneSimpleTwinSyncSse.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class NonCloneSimpleTwinSyncSse {
+  void instanceMethodArgBorrowTwinSyncSse();
 
-  // Not to be used by end users
-  NonCloneSimpleTwinSyncSse.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+  void instanceMethodArgMutBorrowTwinSyncSse();
 
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_NonCloneSimpleTwinSyncSse,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_NonCloneSimpleTwinSyncSse,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_NonCloneSimpleTwinSyncSsePtr,
-  );
+  void instanceMethodArgOwnTwinSyncSse();
 
-  void instanceMethodArgBorrowTwinSyncSse() => RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinSyncSseNonCloneSimpleTwinSyncSseInstanceMethodArgBorrowTwinSyncSse(
-        that: this,
-      );
+  int get instanceMethodGetterTwinSyncSse;
 
-  void instanceMethodArgMutBorrowTwinSyncSse() => RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinSyncSseNonCloneSimpleTwinSyncSseInstanceMethodArgMutBorrowTwinSyncSse(
-        that: this,
-      );
-
-  void instanceMethodArgOwnTwinSyncSse() => RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinSyncSseNonCloneSimpleTwinSyncSseInstanceMethodArgOwnTwinSyncSse(
-        that: this,
-      );
-
-  int get instanceMethodGetterTwinSyncSse => RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinSyncSseNonCloneSimpleTwinSyncSseInstanceMethodGetterTwinSyncSse(
-        that: this,
-      );
-
-  NonCloneSimpleTwinSyncSse instanceMethodReturnOwnTwinSyncSse() =>
-      RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinSyncSseNonCloneSimpleTwinSyncSseInstanceMethodReturnOwnTwinSyncSse(
-        that: this,
-      );
+  NonCloneSimpleTwinSyncSse instanceMethodReturnOwnTwinSyncSse();
 
   /// named constructor
   static NonCloneSimpleTwinSyncSse newCustomNameTwinSyncSse() => RustLib
@@ -412,82 +298,35 @@ class NonCloneSimpleTwinSyncSse extends RustOpaque {
   static NonCloneSimpleTwinSyncSse staticMethodReturnOwnTwinSyncSse() => RustLib
       .instance.api
       .crateApiPseudoManualRustAutoOpaqueTwinSyncSseNonCloneSimpleTwinSyncSseStaticMethodReturnOwnTwinSyncSse();
+
+  void dispose();
+
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueOneTwinSyncSse>>
-@sealed
-class OpaqueOneTwinSyncSse extends RustOpaque {
-  // Not to be used by end users
-  OpaqueOneTwinSyncSse.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class OpaqueOneTwinSyncSse {
+  void dispose();
 
-  // Not to be used by end users
-  OpaqueOneTwinSyncSse.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_OpaqueOneTwinSyncSse,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_OpaqueOneTwinSyncSse,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_OpaqueOneTwinSyncSsePtr,
-  );
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueTwoTwinSyncSse>>
-@sealed
-class OpaqueTwoTwinSyncSse extends RustOpaque {
-  // Not to be used by end users
-  OpaqueTwoTwinSyncSse.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class OpaqueTwoTwinSyncSse {
+  void dispose();
 
-  // Not to be used by end users
-  OpaqueTwoTwinSyncSse.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_OpaqueTwoTwinSyncSse,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_OpaqueTwoTwinSyncSse,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_OpaqueTwoTwinSyncSsePtr,
-  );
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse>>
-@sealed
-class StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse extends RustOpaque {
-  // Not to be used by end users
-  StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse.frbInternalDcoDecode(
-      List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse {
+  String get good;
 
-  // Not to be used by end users
-  StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+  void set good(String good);
 
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSsePtr,
-  );
+  void dispose();
 
-  String get good => RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinSyncSseStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseGetGood(
-        that: this,
-      );
-
-  void set good(String good) => RustLib.instance.api
-      .crateApiPseudoManualRustAutoOpaqueTwinSyncSseStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseSetGood(
-          that: this, good: good);
+  bool get isDisposed;
 }
 
 @freezed

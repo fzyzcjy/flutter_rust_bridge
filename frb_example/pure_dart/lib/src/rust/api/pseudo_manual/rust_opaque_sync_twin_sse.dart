@@ -22,66 +22,22 @@ FrbOpaqueSyncReturnTwinSse frbSyncGeneratorTestTwinSse() => RustLib.instance.api
     .crateApiPseudoManualRustOpaqueSyncTwinSseFrbSyncGeneratorTestTwinSse();
 
 // Rust type: RustOpaqueNom<FrbOpaqueSyncReturnTwinSse>
-@sealed
-class FrbOpaqueSyncReturnTwinSse extends RustOpaque {
-  // Not to be used by end users
-  FrbOpaqueSyncReturnTwinSse.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class FrbOpaqueSyncReturnTwinSse {
+  void dispose();
 
-  // Not to be used by end users
-  FrbOpaqueSyncReturnTwinSse.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_FrbOpaqueSyncReturnTwinSse,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_FrbOpaqueSyncReturnTwinSse,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_FrbOpaqueSyncReturnTwinSsePtr,
-  );
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueNom<HideDataAnotherTwinSse>
-@sealed
-class HideDataAnotherTwinSse extends RustOpaque {
-  // Not to be used by end users
-  HideDataAnotherTwinSse.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class HideDataAnotherTwinSse {
+  void dispose();
 
-  // Not to be used by end users
-  HideDataAnotherTwinSse.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_HideDataAnotherTwinSse,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_HideDataAnotherTwinSse,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_HideDataAnotherTwinSsePtr,
-  );
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueNom<NonCloneDataTwinSse>
-@sealed
-class NonCloneDataTwinSse extends RustOpaque {
-  // Not to be used by end users
-  NonCloneDataTwinSse.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class NonCloneDataTwinSse {
+  void dispose();
 
-  // Not to be used by end users
-  NonCloneDataTwinSse.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_NonCloneDataTwinSse,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_NonCloneDataTwinSse,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_NonCloneDataTwinSsePtr,
-  );
+  bool get isDisposed;
 }

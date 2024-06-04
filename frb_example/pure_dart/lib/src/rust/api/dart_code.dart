@@ -7,30 +7,12 @@ import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueStructWithDartCodeTwinNormal>>
-@sealed
-class OpaqueStructWithDartCodeTwinNormal extends RustOpaque {
-  // Not to be used by end users
-  OpaqueStructWithDartCodeTwinNormal.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class OpaqueStructWithDartCodeTwinNormal {
+  Future<int> normalMethodTwinNormal();
 
-  // Not to be used by end users
-  OpaqueStructWithDartCodeTwinNormal.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+  void dispose();
 
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_OpaqueStructWithDartCodeTwinNormal,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_OpaqueStructWithDartCodeTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_OpaqueStructWithDartCodeTwinNormalPtr,
-  );
-
-  Future<int> normalMethodTwinNormal() => RustLib.instance.api
-          .crateApiDartCodeOpaqueStructWithDartCodeTwinNormalNormalMethodTwinNormal(
-        that: this,
-      );
+  bool get isDisposed;
 
   static int get dartCodeGetter => 123;
 }

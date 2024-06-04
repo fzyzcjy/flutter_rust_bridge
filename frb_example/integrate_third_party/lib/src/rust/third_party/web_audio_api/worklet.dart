@@ -13,69 +13,30 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 // These functions are ignored: `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output`, `disconnect_dest`, `get`, `port`, `set_onprocessorerror`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioWorkletNode>>
-@sealed
-class AudioWorkletNode extends RustOpaque {
-  // Not to be used by end users
-  AudioWorkletNode.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  AudioWorkletNode.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_AudioWorkletNode,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_AudioWorkletNode,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_AudioWorkletNodePtr,
-  );
-
-  Future<void> channelConfig() =>
-      RustLib.instance.api.webAudioApiWorkletAudioWorkletNodeChannelConfig(
-        that: this,
-      );
+abstract class AudioWorkletNode {
+  Future<void> channelConfig();
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
   /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount() =>
-      RustLib.instance.api.webAudioApiWorkletAudioWorkletNodeChannelCount(
-        that: this,
-      );
+  Future<BigInt> channelCount();
 
   /// Represents an enumerated value describing the way channels must be matched between the
   /// node's inputs and outputs.
-  Future<ChannelCountMode> channelCountMode() =>
-      RustLib.instance.api.webAudioApiWorkletAudioWorkletNodeChannelCountMode(
-        that: this,
-      );
+  Future<ChannelCountMode> channelCountMode();
 
   /// Represents an enumerated value describing the meaning of the channels. This interpretation
   /// will define how audio up-mixing and down-mixing will happen.
-  Future<ChannelInterpretation> channelInterpretation() => RustLib.instance.api
-          .webAudioApiWorkletAudioWorkletNodeChannelInterpretation(
-        that: this,
-      );
+  Future<ChannelInterpretation> channelInterpretation();
 
   /// Unset the callback to run when an unhandled exception occurs in the audio processor.
-  Future<void> clearOnprocessorerror() => RustLib.instance.api
-          .webAudioApiWorkletAudioWorkletNodeClearOnprocessorerror(
-        that: this,
-      );
+  Future<void> clearOnprocessorerror();
 
   /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
   /// AudioNode.
-  Future<void> context() =>
-      RustLib.instance.api.webAudioApiWorkletAudioWorkletNodeContext(
-        that: this,
-      );
+  Future<void> context();
 
   /// Disconnects all outgoing connections from the AudioNode.
-  Future<void> disconnect() =>
-      RustLib.instance.api.webAudioApiWorkletAudioWorkletNodeDisconnect(
-        that: this,
-      );
+  Future<void> disconnect();
 
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
@@ -83,46 +44,30 @@ class AudioWorkletNode extends RustOpaque {
   ///
   /// This function will panic when
   /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output}) =>
-      RustLib.instance.api.webAudioApiWorkletAudioWorkletNodeDisconnectOutput(
-          that: this, output: output);
+  Future<void> disconnectOutput({required BigInt output});
 
-  Future<BigInt> numberOfInputs() =>
-      RustLib.instance.api.webAudioApiWorkletAudioWorkletNodeNumberOfInputs(
-        that: this,
-      );
+  Future<BigInt> numberOfInputs();
 
-  Future<BigInt> numberOfOutputs() =>
-      RustLib.instance.api.webAudioApiWorkletAudioWorkletNodeNumberOfOutputs(
-        that: this,
-      );
+  Future<BigInt> numberOfOutputs();
 
   /// Collection of AudioParam objects with associated names of this node
   ///
   /// This map is populated from a list of [`AudioParamDescriptor`]s in the
   /// [`AudioWorkletProcessor`] class constructor at the instantiation.
-  Future<void> parameters() =>
-      RustLib.instance.api.webAudioApiWorkletAudioWorkletNodeParameters(
-        that: this,
-      );
+  Future<void> parameters();
 
-  Future<void> registration() =>
-      RustLib.instance.api.webAudioApiWorkletAudioWorkletNodeRegistration(
-        that: this,
-      );
+  Future<void> registration();
 
   /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v}) => RustLib.instance.api
-      .webAudioApiWorkletAudioWorkletNodeSetChannelCount(that: this, v: v);
+  Future<void> setChannelCount({required BigInt v});
 
   /// Update the `channel_count_mode` attribute
-  Future<void> setChannelCountMode({required ChannelCountMode v}) => RustLib
-      .instance.api
-      .webAudioApiWorkletAudioWorkletNodeSetChannelCountMode(that: this, v: v);
+  Future<void> setChannelCountMode({required ChannelCountMode v});
 
   /// Update the `channel_interpretation` attribute
-  Future<void> setChannelInterpretation({required ChannelInterpretation v}) =>
-      RustLib.instance.api
-          .webAudioApiWorkletAudioWorkletNodeSetChannelInterpretation(
-              that: this, v: v);
+  Future<void> setChannelInterpretation({required ChannelInterpretation v});
+
+  void dispose();
+
+  bool get isDisposed;
 }

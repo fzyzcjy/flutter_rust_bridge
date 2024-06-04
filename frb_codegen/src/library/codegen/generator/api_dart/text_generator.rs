@@ -15,6 +15,7 @@ use std::path::{Path, PathBuf};
 
 pub(super) struct ApiDartOutputText {
     pub(super) output_texts: PathTexts,
+    pub(super) output_extra_impl_text: String,
 }
 
 pub(super) fn generate(
@@ -38,8 +39,16 @@ pub(super) fn generate(
             .collect::<anyhow::Result<Vec<_>>>()?,
     );
 
+    let extra_impl_text = spec
+        .namespaced_items
+        .values()
+        .flat_map(|item| item.extra_impl_code.clone())
+        .sorted()
+        .join("");
+
     Ok(ApiDartOutputText {
         output_texts: path_texts,
+        output_extra_impl_text: extra_impl_text,
     })
 }
 

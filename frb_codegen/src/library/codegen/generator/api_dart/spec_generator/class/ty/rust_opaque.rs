@@ -1,4 +1,6 @@
-use crate::codegen::generator::api_dart::spec_generator::class::method::generate_api_methods;
+use crate::codegen::generator::api_dart::spec_generator::class::method::{
+    generate_api_methods, GenerateApiMethodMode,
+};
 use crate::codegen::generator::api_dart::spec_generator::class::misc::generate_class_extra_body;
 use crate::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
@@ -12,20 +14,13 @@ use regex::Regex;
 
 impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
     fn generate_class(&self) -> Option<ApiDartGeneratedClass> {
-        let dart_entrypoint_class_name = &self.context.config.dart_entrypoint_class_name;
-        let dart_api_instance = format!("{dart_entrypoint_class_name}.instance.api");
+        let Info {
+            dart_api_type,
+            methods,
+        } = self.compute_info(GenerateApiMethodMode::SeparatedDecl);
 
         let rust_api_type = self.mir.rust_api_type();
-        let dart_api_type = ApiDartGenerator::new(self.mir.clone(), self.context).dart_api_type();
 
-        let methods = generate_api_methods(
-            &NamespacedName::new(
-                self.mir.namespace.clone(),
-                compute_api_method_query_name(&self.mir, self.context),
-            ),
-            self.context,
-        )
-        .join("\n");
         let extra_body =
             generate_class_extra_body(self.mir_type(), &self.context.mir_pack.dart_code_of_type);
 
@@ -34,14 +29,43 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
             class_name: dart_api_type.clone(),
             code: format!(
                 "
-            // Rust type: {rust_api_type}
-            @sealed class {dart_api_type} extends RustOpaque {{
+                // Rust type: {rust_api_type}
+                abstract class {dart_api_type} {{
+                    {methods}
+
+                    void dispose();
+
+                    bool get isDisposed;
+
+                    {extra_body}
+                }}
+                "
+            ),
+            needs_freezed: false,
+            header: Default::default(),
+        })
+    }
+
+    fn generate_extra_impl_code(&self) -> Option<String> {
+        let Info {
+            dart_api_type,
+            methods,
+        } = self.compute_info(GenerateApiMethodMode::SeparatedImpl);
+
+        let dart_api_type_impl = format!("{dart_api_type}Impl");
+
+        let dart_entrypoint_class_name = &self.context.config.dart_entrypoint_class_name;
+        let dart_api_instance = format!("{dart_entrypoint_class_name}.instance.api");
+
+        Some(format!(
+            "
+            @sealed class {dart_api_type_impl} extends RustOpaque implements {dart_api_type} {{
                 // Not to be used by end users
-                {dart_api_type}.frbInternalDcoDecode(List<dynamic> wire):
+                {dart_api_type_impl}.frbInternalDcoDecode(List<dynamic> wire):
                     super.frbInternalDcoDecode(wire, _kStaticData);
 
                 // Not to be used by end users
-                {dart_api_type}.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative):
+                {dart_api_type_impl}.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative):
                     super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
                 static final _kStaticData = RustArcStaticData(
@@ -51,13 +75,35 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
                 );
 
                 {methods}
-                {extra_body}
             }}"
-            ),
-            needs_freezed: false,
-            header: Default::default(),
-        })
+        ))
     }
+}
+
+impl RustOpaqueApiDartGenerator<'_> {
+    fn compute_info(&self, mode: GenerateApiMethodMode) -> Info {
+        let dart_api_type = ApiDartGenerator::new(self.mir.clone(), self.context).dart_api_type();
+
+        let methods = generate_api_methods(
+            &NamespacedName::new(
+                self.mir.namespace.clone(),
+                compute_api_method_query_name(&self.mir, self.context),
+            ),
+            self.context,
+            mode,
+        )
+        .join("\n");
+
+        Info {
+            dart_api_type,
+            methods,
+        }
+    }
+}
+
+struct Info {
+    dart_api_type: String,
+    methods: String,
 }
 
 fn compute_api_method_query_name(

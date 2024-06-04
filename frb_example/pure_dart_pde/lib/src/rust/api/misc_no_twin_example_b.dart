@@ -11,36 +11,14 @@ Future<void> sameFunctionNameInDifferentFiles() => RustLib.instance.api
     .crateApiMiscNoTwinExampleBSameFunctionNameInDifferentFiles();
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructInMiscNoTwinExampleB>>
-@sealed
-class StructInMiscNoTwinExampleB extends RustOpaque {
-  // Not to be used by end users
-  StructInMiscNoTwinExampleB.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class StructInMiscNoTwinExampleB {
+  Future<StructInMiscNoTwinExampleA> getStructInMiscNoTwinExampleA();
 
-  // Not to be used by end users
-  StructInMiscNoTwinExampleB.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+  Future<void> sampleFunctionB();
 
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_StructInMiscNoTwinExampleB,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StructInMiscNoTwinExampleB,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StructInMiscNoTwinExampleBPtr,
-  );
+  void dispose();
 
-  Future<StructInMiscNoTwinExampleA> getStructInMiscNoTwinExampleA() =>
-      RustLib.instance.api
-          .crateApiMiscNoTwinExampleBStructInMiscNoTwinExampleBGetStructInMiscNoTwinExampleA(
-        that: this,
-      );
-
-  Future<void> sampleFunctionB() => RustLib.instance.api
-          .crateApiMiscNoTwinExampleBStructInMiscNoTwinExampleBSampleFunctionB(
-        that: this,
-      );
+  bool get isDisposed;
 }
 
 class StructWithImplBlockInAnotherFileDependency {

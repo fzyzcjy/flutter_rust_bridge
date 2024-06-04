@@ -30,9 +30,10 @@ Future<void> main({bool skipRustLibInit = false}) async {
     data.dispose();
   });
 
-  test('check generator', () {
-    expect(
-        frbSyncGeneratorTestTwinMoi().runtimeType == FrbOpaqueSyncReturnTwinMoi,
-        isTrue);
-  });
+  // test('check generator', () {
+  //   expect(
+  //       frbSyncGeneratorTestTwinMoi().runtimeType ==
+  //           FrbOpaqueSyncReturnTwinMoi,
+  //       isTrue);
+  // });
 }

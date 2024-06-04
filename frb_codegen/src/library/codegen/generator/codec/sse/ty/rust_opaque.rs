@@ -10,7 +10,12 @@ use convert_case::{Case, Casing};
 
 impl<'a> CodecSseTyTrait for RustOpaqueCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
-        Some(generate_generalized_rust_opaque_encode(lang, "null"))
+        Some(generate_generalized_rust_opaque_encode(
+            lang,
+            "null",
+            MirType::RustOpaque(self.mir.clone()),
+            self.context,
+        ))
     }
 
     fn generate_decode(&self, lang: &Lang) -> Option<String> {
@@ -34,7 +39,7 @@ pub(super) fn generate_generalized_rust_opaque_decode(
     match lang {
         Lang::DartLang(_) => {
             format!(
-                "return {}.frbInternalSseDecode({}, {});",
+                "return {}Impl.frbInternalSseDecode({}, {});",
                 ApiDartGenerator::new(mir, context.as_api_dart_context()).dart_api_type(),
                 lang.call_decode(&MirTypeRustOpaque::DELEGATE_TYPE),
                 lang.call_decode(&EXTERNAL_SIZE_TYPE),
@@ -67,12 +72,20 @@ pub(crate) fn generate_maybe_unsafe(inner: &str, needs_unsafe_block: bool) -> St
     }
 }
 
-pub(super) fn generate_generalized_rust_opaque_encode(lang: &Lang, needs_move: &str) -> String {
+pub(super) fn generate_generalized_rust_opaque_encode(
+    lang: &Lang,
+    needs_move: &str,
+    mir: MirType,
+    context: CodecSseTyContext,
+) -> String {
     match lang {
         Lang::DartLang(_) => simple_delegate_encode(
             lang,
             &MirTypeRustOpaque::DELEGATE_TYPE,
-            &format!("self.frbInternalSseEncode(move: {needs_move})"),
+            &format!(
+                "(self as {}Impl).frbInternalSseEncode(move: {needs_move})",
+                ApiDartGenerator::new(mir, context.as_api_dart_context()).dart_api_type()
+            ),
         ),
         Lang::RustLang(_) => {
             format!(

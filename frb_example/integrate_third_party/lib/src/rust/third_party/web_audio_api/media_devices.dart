@@ -50,23 +50,8 @@ Future<MediaStream> getUserMediaSync(
         .webAudioApiMediaDevicesGetUserMediaSync(constraints: constraints);
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamConstraints>>
-@sealed
-class MediaStreamConstraints extends RustOpaque {
-  // Not to be used by end users
-  MediaStreamConstraints.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class MediaStreamConstraints {
+  void dispose();
 
-  // Not to be used by end users
-  MediaStreamConstraints.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_MediaStreamConstraints,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_MediaStreamConstraints,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_MediaStreamConstraintsPtr,
-  );
+  bool get isDisposed;
 }

@@ -18,28 +18,13 @@ Future<SumWithTwinSseArray3> getSumArrayTwinSse(
         .crateApiPseudoManualMethodTwinSseGetSumArrayTwinSse(a: a, b: b, c: c);
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StaticGetterOnlyTwinSse>>
-@sealed
-class StaticGetterOnlyTwinSse extends RustOpaque {
-  // Not to be used by end users
-  StaticGetterOnlyTwinSse.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  StaticGetterOnlyTwinSse.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_StaticGetterOnlyTwinSse,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_StaticGetterOnlyTwinSse,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StaticGetterOnlyTwinSsePtr,
-  );
-
+abstract class StaticGetterOnlyTwinSse {
   static Future<int> get staticGetterTwinSse => RustLib.instance.api
       .crateApiPseudoManualMethodTwinSseStaticGetterOnlyTwinSseStaticGetterTwinSse();
+
+  void dispose();
+
+  bool get isDisposed;
 }
 
 class ConcatenateWithTwinSse {

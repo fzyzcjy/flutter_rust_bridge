@@ -25,6 +25,7 @@ pub(crate) fn generate(
     config: &GeneratorWireInternalConfig,
     api_dart_config: &GeneratorApiDartInternalConfig,
     api_dart_actual_output_paths: &[PathBuf],
+    extra_impl_text: &str,
     dumper: &Dumper,
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> Result<GeneratorWireOutput> {
@@ -59,6 +60,7 @@ pub(crate) fn generate(
         wire_dart_generator_context,
         &c_output.c_file_content,
         api_dart_actual_output_paths,
+        extra_impl_text,
         &rust_output.extern_funcs,
         rust_output.content_hash,
         dumper,

@@ -7,30 +7,8 @@ import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DroppableTwinRustAsyncSse>>
-@sealed
-class DroppableTwinRustAsyncSse extends RustOpaque {
-  // Not to be used by end users
-  DroppableTwinRustAsyncSse.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  DroppableTwinRustAsyncSse.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_DroppableTwinRustAsyncSse,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_DroppableTwinRustAsyncSse,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_DroppableTwinRustAsyncSsePtr,
-  );
-
-  Stream<int> createStreamTwinRustAsyncSse() => RustLib.instance.api
-          .crateApiPseudoManualDroppingTwinRustAsyncSseDroppableTwinRustAsyncSseCreateStreamTwinRustAsyncSse(
-        that: this,
-      );
+abstract class DroppableTwinRustAsyncSse {
+  Stream<int> createStreamTwinRustAsyncSse();
 
   static Future<int> getDropCountTwinRustAsyncSse() => RustLib.instance.api
       .crateApiPseudoManualDroppingTwinRustAsyncSseDroppableTwinRustAsyncSseGetDropCountTwinRustAsyncSse();
@@ -39,8 +17,9 @@ class DroppableTwinRustAsyncSse extends RustOpaque {
       .instance.api
       .crateApiPseudoManualDroppingTwinRustAsyncSseDroppableTwinRustAsyncSseNewTwinRustAsyncSse();
 
-  Future<void> simpleMethodTwinRustAsyncSse() => RustLib.instance.api
-          .crateApiPseudoManualDroppingTwinRustAsyncSseDroppableTwinRustAsyncSseSimpleMethodTwinRustAsyncSse(
-        that: this,
-      );
+  Future<void> simpleMethodTwinRustAsyncSse();
+
+  void dispose();
+
+  bool get isDisposed;
 }
