@@ -90,12 +90,7 @@ fn generate_api_method(
     );
 
     let maybe_implementation = match mode {
-        GenerateApiMethodMode::SeparatedDecl => generate_implementation_separated_decl_forward(
-            default_constructor_mode,
-            &params,
-            method_info,
-            &method_name,
-        ),
+        GenerateApiMethodMode::SeparatedDecl => TODO,
         GenerateApiMethodMode::SeparatedImpl | GenerateApiMethodMode::Combined => Some(
             generate_implementation_normal(func, context, method_info, &params),
         ),
@@ -208,31 +203,4 @@ fn generate_implementation_normal(
         let extra_arg_name = func.inputs[0].inner.name.dart_style();
         format!("{dart_api_instance}.{func_name}({extra_arg_name}: this, {arg_names})")
     }
-}
-
-fn generate_implementation_separated_decl_forward(
-    default_constructor_mode: Option<MirFuncDefaultConstructorMode>,
-    params: &[ApiDartGeneratedFunctionParam],
-    method_info: &MirFuncOwnerInfoMethod,
-    method_name: &str,
-) -> Option<String> {
-    if method_info.mode != MirFuncOwnerInfoMethodMode::Static {
-        return None;
-    }
-
-    let owner_ty_name = method_info.owner_ty_name().unwrap().name;
-
-    let maybe_method_name =
-        if default_constructor_mode == Some(MirFuncDefaultConstructorMode::DartConstructor) {
-            "".to_owned()
-        } else {
-            format!(".{method_name}")
-        };
-
-    let params = params
-        .iter()
-        .map(|x| format!("{name}: {name}", name = x.name_str))
-        .join(", ");
-
-    Some(format!("{owner_ty_name}Impl{maybe_method_name}({params})"))
 }
