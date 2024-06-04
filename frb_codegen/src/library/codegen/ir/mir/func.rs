@@ -151,14 +151,17 @@ impl MirFunc {
     }
 
     pub(crate) fn locator_dart_api(&self) -> MirFuncDartApiLocator {
-        match &self.owner {
-            MirFuncOwnerInfo::Function => MirFuncDartApiLocator::Function {
-                name: self.name.clone(),
-            },
-            MirFuncOwnerInfo::Method(method) => MirFuncDartApiLocator::Method {
-                owner_name: method.owner_ty.safe_ident(),
-                actual_method_dart_name: (method.actual_method_dart_name.clone())
-                    .unwrap_or(method.actual_method_name.clone()),
+        MirFuncDartApiLocator {
+            accessor: self.accessor.clone(),
+            inner: match &self.owner {
+                MirFuncOwnerInfo::Function => MirFuncDartApiLocatorInner::Function {
+                    name: self.name.clone(),
+                },
+                MirFuncOwnerInfo::Method(method) => MirFuncDartApiLocatorInner::Method {
+                    owner_name: method.owner_ty.safe_ident(),
+                    actual_method_dart_name: (method.actual_method_dart_name.clone())
+                        .unwrap_or(method.actual_method_name.clone()),
+                },
             },
         }
     }
@@ -214,7 +217,13 @@ impl MirFuncOverridePriority {
 }
 
 #[derive(Clone, Eq, PartialEq, Hash)]
-pub(crate) enum MirFuncDartApiLocator {
+pub(crate) struct MirFuncDartApiLocator {
+    accessor: Option<MirFuncAccessorMode>,
+    inner: MirFuncDartApiLocatorInner,
+}
+
+#[derive(Clone, Eq, PartialEq, Hash)]
+pub(crate) enum MirFuncDartApiLocatorInner {
     Function {
         name: NamespacedName,
     },
