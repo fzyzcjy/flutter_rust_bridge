@@ -9,312 +9,387 @@ import 'dart:convert';
 import 'frb_generated.io.dart' if (dart.library.html) 'frb_generated.web.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+/// Main entrypoint of the Rust API
+class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
+  @internal
+  static final instance = RustLib._();
 
-                /// Main entrypoint of the Rust API
-                class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
-                  @internal
-                  static final instance = RustLib._();
+  RustLib._();
 
-                  RustLib._();
+  /// Initialize flutter_rust_bridge
+  static Future<void> init({
+    RustLibApi? api,
+    BaseHandler? handler,
+    ExternalLibrary? externalLibrary,
+  }) async {
+    await instance.initImpl(
+      api: api,
+      handler: handler,
+      externalLibrary: externalLibrary,
+    );
+  }
 
-                  /// Initialize flutter_rust_bridge
-                  static Future<void> init({
-                    RustLibApi? api,
-                    BaseHandler? handler,
-                    ExternalLibrary? externalLibrary,
-                  }) async {
-                    await instance.initImpl(
-                      api: api,
-                      handler: handler,
-                      externalLibrary: externalLibrary,
-                    );
-                  }
-                  
-                  /// Dispose flutter_rust_bridge
-                  ///
-                  /// The call to this function is optional, since flutter_rust_bridge (and everything else)
-                  /// is automatically disposed when the app stops.
-                  static void dispose() => instance.disposeImpl();
+  /// Dispose flutter_rust_bridge
+  ///
+  /// The call to this function is optional, since flutter_rust_bridge (and everything else)
+  /// is automatically disposed when the app stops.
+  static void dispose() => instance.disposeImpl();
 
-                  @override
-                  ApiImplConstructor<RustLibApiImpl, RustLibWire> get apiImplConstructor => RustLibApiImpl.new;
+  @override
+  ApiImplConstructor<RustLibApiImpl, RustLibWire> get apiImplConstructor =>
+      RustLibApiImpl.new;
 
-                  @override
-                  WireConstructor<RustLibWire> get wireConstructor => RustLibWire.fromExternalLibrary;
-                  
-                  @override
-                  Future<void> executeRustInitializers() async {
-                    await api.crateApiMinimalInitApp();
+  @override
+  WireConstructor<RustLibWire> get wireConstructor =>
+      RustLibWire.fromExternalLibrary;
 
-                  }
+  @override
+  Future<void> executeRustInitializers() async {
+    await api.crateApiMinimalInitApp();
+  }
 
-                  @override
-                  ExternalLibraryLoaderConfig get defaultExternalLibraryLoaderConfig => kDefaultExternalLibraryLoaderConfig;
+  @override
+  ExternalLibraryLoaderConfig get defaultExternalLibraryLoaderConfig =>
+      kDefaultExternalLibraryLoaderConfig;
 
-                  @override
-                  String get codegenVersion => '2.0.0-dev.37';
+  @override
+  String get codegenVersion => '2.0.0-dev.37';
 
-                  @override
-                  int get rustContentHash => 2047558242;
+  @override
+  int get rustContentHash => 2047558242;
 
-                  static const kDefaultExternalLibraryLoaderConfig = ExternalLibraryLoaderConfig(
-                    stem: 'frb_example_dart_minimal',
-                    ioDirectory: 'rust/target/release/',
-                    webPrefix: 'pkg/',
-                  );
-                }
-                
+  static const kDefaultExternalLibraryLoaderConfig =
+      ExternalLibraryLoaderConfig(
+    stem: 'frb_example_dart_minimal',
+    ioDirectory: 'rust/target/release/',
+    webPrefix: 'pkg/',
+  );
+}
 
-                abstract class RustLibApi extends BaseApi {
-                  Future<int> crateApiMinimalMyStructF({required MyStruct that , required int a });
+abstract class RustLibApi extends BaseApi {
+  Future<int> crateApiMinimalMyStructF(
+      {required MyStruct that, required int a});
 
-Future<int> crateApiMinimalMyStructMyStaticMethod();
+  Future<int> crateApiMinimalMyStructMyStaticMethod();
 
-MyStruct crateApiMinimalMyStructNew();
+  MyStruct crateApiMinimalMyStructNew();
 
-Future<void> crateApiMinimalInitApp();
+  Future<void> crateApiMinimalInitApp();
 
-Future<int> crateApiMinimalMinimalAdder({required int a , required int b });
+  Future<int> crateApiMinimalMinimalAdder({required int a, required int b});
 
-RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_MyStruct;
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_MyStruct;
 
-RustArcDecrementStrongCountFnType get rust_arc_decrement_strong_count_MyStruct;
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_MyStruct;
 
-CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_MyStructPtr;
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_MyStructPtr;
+}
 
+class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
+  RustLibApiImpl({
+    required super.handler,
+    required super.wire,
+    required super.generalizedFrbRustBinding,
+    required super.portManager,
+  });
 
-                }
-                
+  @override
+  Future<int> crateApiMinimalMyStructF(
+      {required MyStruct that, required int a}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
+            that, serializer);
+        sse_encode_i_32(a, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 1, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiMinimalMyStructFConstMeta,
+      argValues: [that, a],
+      apiImpl: this,
+    ));
+  }
 
-                class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
-                  RustLibApiImpl({
-                    required super.handler,
-                    required super.wire,
-                    required super.generalizedFrbRustBinding,
-                    required super.portManager,
-                  });
+  TaskConstMeta get kCrateApiMinimalMyStructFConstMeta => const TaskConstMeta(
+        debugName: "MyStruct_f",
+        argNames: ["that", "a"],
+      );
 
-                  @override Future<int> crateApiMinimalMyStructF({required MyStruct that , required int a })  { return handler.executeNormal(NormalTask(
-            callFfi: (port_) {
-              
-            final serializer = SseSerializer(generalizedFrbRustBinding);sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(that, serializer);
-sse_encode_i_32(a, serializer);
-            pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1, port: port_);
-            
-            },
-            codec: 
-        SseCodec(
-          decodeSuccessData: sse_decode_i_32,
-          decodeErrorData: null,
-        )
-        ,
-            constMeta: kCrateApiMinimalMyStructFConstMeta,
-            argValues: [that, a],
-            apiImpl: this,
-        )); }
+  @override
+  Future<int> crateApiMinimalMyStructMyStaticMethod() {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 2, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiMinimalMyStructMyStaticMethodConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
 
+  TaskConstMeta get kCrateApiMinimalMyStructMyStaticMethodConstMeta =>
+      const TaskConstMeta(
+        debugName: "MyStruct_my_static_method",
+        argNames: [],
+      );
 
-        TaskConstMeta get kCrateApiMinimalMyStructFConstMeta => const TaskConstMeta(
-            debugName: "MyStruct_f",
-            argNames: ["that", "a"],
-        );
-        
+  @override
+  MyStruct crateApiMinimalMyStructNew() {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 3)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiMinimalMyStructNewConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
 
-@override Future<int> crateApiMinimalMyStructMyStaticMethod()  { return handler.executeNormal(NormalTask(
-            callFfi: (port_) {
-              
-            final serializer = SseSerializer(generalizedFrbRustBinding);
-            pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 2, port: port_);
-            
-            },
-            codec: 
-        SseCodec(
-          decodeSuccessData: sse_decode_i_32,
-          decodeErrorData: null,
-        )
-        ,
-            constMeta: kCrateApiMinimalMyStructMyStaticMethodConstMeta,
-            argValues: [],
-            apiImpl: this,
-        )); }
+  TaskConstMeta get kCrateApiMinimalMyStructNewConstMeta => const TaskConstMeta(
+        debugName: "MyStruct_new",
+        argNames: [],
+      );
 
+  @override
+  Future<void> crateApiMinimalInitApp() {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 4, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiMinimalInitAppConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
 
-        TaskConstMeta get kCrateApiMinimalMyStructMyStaticMethodConstMeta => const TaskConstMeta(
-            debugName: "MyStruct_my_static_method",
-            argNames: [],
-        );
-        
+  TaskConstMeta get kCrateApiMinimalInitAppConstMeta => const TaskConstMeta(
+        debugName: "init_app",
+        argNames: [],
+      );
 
-@override MyStruct crateApiMinimalMyStructNew()  { return handler.executeSync(SyncTask(
-            callFfi: () {
-              
-            final serializer = SseSerializer(generalizedFrbRustBinding);
-            return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 3)!;
-            
-            },
-            codec: 
-        SseCodec(
-          decodeSuccessData: sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct,
-          decodeErrorData: null,
-        )
-        ,
-            constMeta: kCrateApiMinimalMyStructNewConstMeta,
-            argValues: [],
-            apiImpl: this,
-        )); }
+  @override
+  Future<int> crateApiMinimalMinimalAdder({required int a, required int b}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_i_32(a, serializer);
+        sse_encode_i_32(b, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 5, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiMinimalMinimalAdderConstMeta,
+      argValues: [a, b],
+      apiImpl: this,
+    ));
+  }
 
+  TaskConstMeta get kCrateApiMinimalMinimalAdderConstMeta =>
+      const TaskConstMeta(
+        debugName: "minimal_adder",
+        argNames: ["a", "b"],
+      );
 
-        TaskConstMeta get kCrateApiMinimalMyStructNewConstMeta => const TaskConstMeta(
-            debugName: "MyStruct_new",
-            argNames: [],
-        );
-        
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_MyStruct => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct;
 
-@override Future<void> crateApiMinimalInitApp()  { return handler.executeNormal(NormalTask(
-            callFfi: (port_) {
-              
-            final serializer = SseSerializer(generalizedFrbRustBinding);
-            pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 4, port: port_);
-            
-            },
-            codec: 
-        SseCodec(
-          decodeSuccessData: sse_decode_unit,
-          decodeErrorData: null,
-        )
-        ,
-            constMeta: kCrateApiMinimalInitAppConstMeta,
-            argValues: [],
-            apiImpl: this,
-        )); }
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_MyStruct => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct;
 
+  @protected
+  MyStruct
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return MyStructImpl.frbInternalDcoDecode(raw as List<dynamic>);
+  }
 
-        TaskConstMeta get kCrateApiMinimalInitAppConstMeta => const TaskConstMeta(
-            debugName: "init_app",
-            argNames: [],
-        );
-        
+  @protected
+  MyStruct
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return MyStructImpl.frbInternalDcoDecode(raw as List<dynamic>);
+  }
 
-@override Future<int> crateApiMinimalMinimalAdder({required int a , required int b })  { return handler.executeNormal(NormalTask(
-            callFfi: (port_) {
-              
-            final serializer = SseSerializer(generalizedFrbRustBinding);sse_encode_i_32(a, serializer);
-sse_encode_i_32(b, serializer);
-            pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 5, port: port_);
-            
-            },
-            codec: 
-        SseCodec(
-          decodeSuccessData: sse_decode_i_32,
-          decodeErrorData: null,
-        )
-        ,
-            constMeta: kCrateApiMinimalMinimalAdderConstMeta,
-            argValues: [a, b],
-            apiImpl: this,
-        )); }
+  @protected
+  MyStruct
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return MyStructImpl.frbInternalDcoDecode(raw as List<dynamic>);
+  }
 
+  @protected
+  int dco_decode_i_32(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return raw as int;
+  }
 
-        TaskConstMeta get kCrateApiMinimalMinimalAdderConstMeta => const TaskConstMeta(
-            debugName: "minimal_adder",
-            argNames: ["a", "b"],
-        );
-        
+  @protected
+  void dco_decode_unit(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return;
+  }
 
-RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_MyStruct => wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct;
+  @protected
+  BigInt dco_decode_usize(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dcoDecodeU64(raw);
+  }
 
-RustArcDecrementStrongCountFnType get rust_arc_decrement_strong_count_MyStruct => wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct;
+  @protected
+  MyStruct
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return MyStructImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
 
+  @protected
+  MyStruct
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return MyStructImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
 
+  @protected
+  MyStruct
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return MyStructImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
 
-                  @protected MyStruct dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(dynamic raw){ // Codec=Dco (DartCObject based), see doc to use other codecs
-return MyStructImpl.frbInternalDcoDecode(raw as List<dynamic>); }
+  @protected
+  int sse_decode_i_32(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return deserializer.buffer.getInt32();
+  }
 
-@protected MyStruct dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(dynamic raw){ // Codec=Dco (DartCObject based), see doc to use other codecs
-return MyStructImpl.frbInternalDcoDecode(raw as List<dynamic>); }
+  @protected
+  void sse_decode_unit(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+  }
 
-@protected MyStruct dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(dynamic raw){ // Codec=Dco (DartCObject based), see doc to use other codecs
-return MyStructImpl.frbInternalDcoDecode(raw as List<dynamic>); }
+  @protected
+  BigInt sse_decode_usize(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return deserializer.buffer.getBigUint64();
+  }
 
-@protected int dco_decode_i_32(dynamic raw){ // Codec=Dco (DartCObject based), see doc to use other codecs
-return raw as int; }
+  @protected
+  bool sse_decode_bool(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return deserializer.buffer.getUint8() != 0;
+  }
 
-@protected void dco_decode_unit(dynamic raw){ // Codec=Dco (DartCObject based), see doc to use other codecs
-return; }
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
+          MyStruct self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as MyStructImpl).frbInternalSseEncode(move: true), serializer);
+  }
 
-@protected BigInt dco_decode_usize(dynamic raw){ // Codec=Dco (DartCObject based), see doc to use other codecs
-return dcoDecodeU64(raw); }
+  @protected
+  void
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
+          MyStruct self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as MyStructImpl).frbInternalSseEncode(move: false), serializer);
+  }
 
-@protected MyStruct sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(SseDeserializer deserializer){ // Codec=Sse (Serialization based), see doc to use other codecs
-return MyStructImpl.frbInternalSseDecode(sse_decode_usize(deserializer), sse_decode_i_32(deserializer)); }
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
+          MyStruct self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as MyStructImpl).frbInternalSseEncode(move: null), serializer);
+  }
 
-@protected MyStruct sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(SseDeserializer deserializer){ // Codec=Sse (Serialization based), see doc to use other codecs
-return MyStructImpl.frbInternalSseDecode(sse_decode_usize(deserializer), sse_decode_i_32(deserializer)); }
+  @protected
+  void sse_encode_i_32(int self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    serializer.buffer.putInt32(self);
+  }
 
-@protected MyStruct sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(SseDeserializer deserializer){ // Codec=Sse (Serialization based), see doc to use other codecs
-return MyStructImpl.frbInternalSseDecode(sse_decode_usize(deserializer), sse_decode_i_32(deserializer)); }
+  @protected
+  void sse_encode_unit(void self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+  }
 
-@protected int sse_decode_i_32(SseDeserializer deserializer){ // Codec=Sse (Serialization based), see doc to use other codecs
-return deserializer.buffer.getInt32(); }
+  @protected
+  void sse_encode_usize(BigInt self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    serializer.buffer.putBigUint64(self);
+  }
 
-@protected void sse_decode_unit(SseDeserializer deserializer){ // Codec=Sse (Serialization based), see doc to use other codecs
- }
-
-@protected BigInt sse_decode_usize(SseDeserializer deserializer){ // Codec=Sse (Serialization based), see doc to use other codecs
-return deserializer.buffer.getBigUint64(); }
-
-@protected bool sse_decode_bool(SseDeserializer deserializer){ // Codec=Sse (Serialization based), see doc to use other codecs
-return deserializer.buffer.getUint8() != 0; }
-
-@protected void sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(MyStruct self, SseSerializer serializer){ // Codec=Sse (Serialization based), see doc to use other codecs
-sse_encode_usize((self as MyStructImpl).frbInternalSseEncode(move: true), serializer); }
-
-@protected void sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(MyStruct self, SseSerializer serializer){ // Codec=Sse (Serialization based), see doc to use other codecs
-sse_encode_usize((self as MyStructImpl).frbInternalSseEncode(move: false), serializer); }
-
-@protected void sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(MyStruct self, SseSerializer serializer){ // Codec=Sse (Serialization based), see doc to use other codecs
-sse_encode_usize((self as MyStructImpl).frbInternalSseEncode(move: null), serializer); }
-
-@protected void sse_encode_i_32(int self, SseSerializer serializer){ // Codec=Sse (Serialization based), see doc to use other codecs
-serializer.buffer.putInt32(self); }
-
-@protected void sse_encode_unit(void self, SseSerializer serializer){ // Codec=Sse (Serialization based), see doc to use other codecs
- }
-
-@protected void sse_encode_usize(BigInt self, SseSerializer serializer){ // Codec=Sse (Serialization based), see doc to use other codecs
-serializer.buffer.putBigUint64(self); }
-
-@protected void sse_encode_bool(bool self, SseSerializer serializer){ // Codec=Sse (Serialization based), see doc to use other codecs
-serializer.buffer.putUint8(self ? 1 : 0); }
-                }
-                
-
+  @protected
+  void sse_encode_bool(bool self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    serializer.buffer.putUint8(self ? 1 : 0);
+  }
+}
 
 // Section: boilerplate
 
+@sealed
+class MyStructImpl extends RustOpaque implements MyStruct {
+  // Not to be used by end users
+  MyStructImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
-            @sealed class MyStructImpl extends RustOpaque implements MyStruct {
-                // Not to be used by end users
-                MyStructImpl.frbInternalDcoDecode(List<dynamic> wire):
-                    super.frbInternalDcoDecode(wire, _kStaticData);
+  // Not to be used by end users
+  MyStructImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
-                // Not to be used by end users
-                MyStructImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative):
-                    super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_MyStruct,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_MyStruct,
+    rustArcDecrementStrongCountPtr:
+        RustLib.instance.api.rust_arc_decrement_strong_count_MyStructPtr,
+  );
 
-                static final _kStaticData = RustArcStaticData(
-                    rustArcIncrementStrongCount: RustLib.instance.api.rust_arc_increment_strong_count_MyStruct,
-                    rustArcDecrementStrongCount: RustLib.instance.api.rust_arc_decrement_strong_count_MyStruct,
-                    rustArcDecrementStrongCountPtr: RustLib.instance.api.rust_arc_decrement_strong_count_MyStructPtr,
-                );
-
-                 Future<int>  f({required int a })=>RustLib.instance.api.crateApiMinimalMyStructF(that: this, a: a);
-
-
-static Future<int>  myStaticMethod();
-
-
-factory MyStructImpl();
-
-
-            }
+  Future<int> f({required int a}) =>
+      RustLib.instance.api.crateApiMinimalMyStructF(that: this, a: a);
+}

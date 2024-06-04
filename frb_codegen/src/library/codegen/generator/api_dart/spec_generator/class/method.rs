@@ -27,7 +27,7 @@ pub(crate) fn generate_api_methods(
 ) -> Vec<String> {
     get_methods_of_enum_or_struct(generalized_class_name, &context.mir_pack.funcs)
         .iter()
-        .map(|func| generate_api_method(func, context, mode))
+        .filter_map(|func| generate_api_method(func, context, mode))
         .collect_vec()
 }
 
@@ -64,11 +64,18 @@ fn generate_api_method(
     func: &MirFunc,
     context: ApiDartGeneratorContext,
     mode: GenerateApiMethodMode,
-) -> String {
+) -> Option<String> {
     let api_dart_func = api_dart::spec_generator::function::generate(func, context).unwrap();
 
     let method_info =
         if_then_some!(let MirFuncOwnerInfo::Method(info) = &func.owner , info).unwrap();
+
+    if method_info.mode == MirFuncOwnerInfoMethodMode::Static
+        && mode == GenerateApiMethodMode::SeparatedImpl
+    {
+        return None;
+    }
+
     let default_constructor_mode = func.default_constructor_mode();
 
     let skip_names = compute_skip_names(method_info);
@@ -93,7 +100,7 @@ fn generate_api_method(
         generate_maybe_implementation(func, context, method_info, &params, mode);
     let maybe_implementation = (maybe_implementation.map(|x| format!("=>{x}"))).unwrap_or_default();
 
-    format!("{comments}{signature}{maybe_implementation};\n\n")
+    Some(format!("{comments}{signature}{maybe_implementation};\n\n"))
 }
 
 fn compute_skip_names(method_info: &MirFuncOwnerInfoMethod) -> Vec<&'static str> {
