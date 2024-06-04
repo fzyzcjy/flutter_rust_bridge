@@ -15,8 +15,9 @@ use itertools::Itertools;
 
 #[derive(Debug, Clone, Copy, Eq, PartialEq)]
 pub(crate) enum GenerateApiMethodMode {
-    Abstract,
-    Primary,
+    SeparatedDecl,
+    SeparatedImpl,
+    Combined,
 }
 
 pub(crate) fn generate_api_methods(
