@@ -50,24 +50,26 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
             rust_api_type,
         } = TODO;
 
+        let dart_api_type_impl = format!("{dart_api_type}Impl");
+
         let dart_entrypoint_class_name = &self.context.config.dart_entrypoint_class_name;
         let dart_api_instance = format!("{dart_entrypoint_class_name}.instance.api");
 
         Some(format!(
             "
-            @sealed class {dart_api_type} extends RustOpaque {{
+            @sealed class {dart_api_type_impl}extends RustOpaque implements {} {{
                 // Not to be used by end users
-                {dart_api_type}.frbInternalDcoDecode(List<dynamic> wire):
+                {dart_api_type_impl}.frbInternalDcoDecode(List<dynamic> wire):
                     super.frbInternalDcoDecode(wire, _kStaticData);
 
                 // Not to be used by end users
-                {dart_api_type}.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative):
+                {dart_api_type_impl}.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative):
                     super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
                 static final _kStaticData = RustArcStaticData(
-                    rustArcIncrementStrongCount: {dart_api_instance}.rust_arc_increment_strong_count_{dart_api_type},
-                    rustArcDecrementStrongCount: {dart_api_instance}.rust_arc_decrement_strong_count_{dart_api_type},
-                    rustArcDecrementStrongCountPtr: {dart_api_instance}.rust_arc_decrement_strong_count_{dart_api_type}Ptr,
+                    rustArcIncrementStrongCount: {dart_api_instance}.rust_arc_increment_strong_count_{dart_api_type_impl},
+                    rustArcDecrementStrongCount: {dart_api_instance}.rust_arc_decrement_strong_count_{dart_api_type_impl},
+                    rustArcDecrementStrongCountPtr: {dart_api_instance}.rust_arc_decrement_strong_count_{dart_api_type_impl}Ptr,
                 );
 
                 {methods}
