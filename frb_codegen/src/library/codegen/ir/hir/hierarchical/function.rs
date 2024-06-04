@@ -22,8 +22,11 @@ impl HirCommon for HirFunction {
         }
     }
 
-    fn ident(&self) -> String {
-        self.item_fn.sig().ident.to_string()
+    fn name_for_use_stmt(&self) -> String {
+        match &self.owner {
+            HirFunctionOwner::Function => self.item_fn.sig().ident.to_string(),
+            HirFunctionOwner::Method { item_impl, .. } => ty_to_string(&item_impl.self_ty),
+        }
     }
 }
 

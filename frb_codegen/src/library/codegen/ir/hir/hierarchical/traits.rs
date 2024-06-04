@@ -26,7 +26,7 @@ impl HirCommon for HirTrait {
         }
     }
 
-    fn ident(&self) -> String {
+    fn name_for_use_stmt(&self) -> String {
         self.item_trait.ident.to_string()
     }
 }
@@ -39,7 +39,7 @@ impl HirCommon for HirTraitImpl {
         }
     }
 
-    fn ident(&self) -> String {
+    fn name_for_use_stmt(&self) -> String {
         ty_to_string(&self.item_impl.self_ty)
     }
 }
