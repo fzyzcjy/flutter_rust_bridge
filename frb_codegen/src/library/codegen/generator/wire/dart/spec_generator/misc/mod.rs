@@ -36,6 +36,7 @@ pub(crate) fn generate(
     cache: &MirPackComputedCache,
     c_file_content: &str,
     api_dart_actual_output_paths: &[PathBuf],
+    extra_impl_text: &str,
     rust_extern_funcs: &[ExternFunc],
     rust_content_hash: i32,
     progress_bar_pack: &GeneratorProgressBarPack,
@@ -49,6 +50,7 @@ pub(crate) fn generate(
         )?,
         boilerplate: generate_boilerplate(
             api_dart_actual_output_paths,
+            extra_impl_text,
             cache,
             context,
             rust_content_hash,
@@ -67,6 +69,7 @@ pub(crate) fn generate(
 
 fn generate_boilerplate(
     api_dart_actual_output_paths: &[PathBuf],
+    extra_impl_text: &str,
     cache: &MirPackComputedCache,
     context: WireDartGeneratorContext,
     rust_content_hash: i32,

@@ -12,6 +12,7 @@ use anyhow::Result;
 
 pub(crate) struct GeneratorApiDartOutput {
     pub output_texts: PathTexts,
+    pub output_extra_impl_text: String,
     pub needs_freezed: bool,
 }
 
