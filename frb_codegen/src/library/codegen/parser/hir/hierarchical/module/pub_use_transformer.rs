@@ -8,21 +8,21 @@ pub(crate) fn transform(mut module: HirModule, items: &[syn::Item]) -> anyhow::R
         return Ok(module);
     }
 
-    let pub_use_names = parse_pub_use_from_items(items);
-    for pub_use_name in pub_use_names {
-        transform_module_by_pub_use_single(&mut module, &pub_use_name)?;
+    let pub_use_infos = parse_pub_use_from_items(items);
+    for pub_use_info in pub_use_infos {
+        transform_module_by_pub_use_single(&mut module, &pub_use_info)?;
     }
     Ok(module)
 }
 
-fn parse_pub_use_from_items(items: &[syn::Item]) -> Vec<Namespace> {
+fn parse_pub_use_from_items(items: &[syn::Item]) -> Vec<PubUseInfo> {
     items
         .iter()
         .filter_map(parse_pub_use_from_item)
         .collect_vec()
 }
 
-fn parse_pub_use_from_item(item: &syn::Item) -> Option<Namespace> {
+fn parse_pub_use_from_item(item: &syn::Item) -> Option<PubUseInfo> {
     if let syn::Item::Use(item_use) = item {
         if matches!(item_use.vis, syn::Visibility::Public(_)) {
             let tree = &item_use.tree;
@@ -35,6 +35,7 @@ fn parse_pub_use_from_item(item: &syn::Item) -> Option<Namespace> {
     None
 }
 
+#[derive(Debug, Clone)]
 struct PubUseInfo {
     namespace: Namespace,
     name_filters: Option<Vec<String>>,
@@ -42,11 +43,11 @@ struct PubUseInfo {
 
 fn transform_module_by_pub_use_single(
     module: &mut HirModule,
-    pub_use_name: &Namespace,
+    pub_use_info: &PubUseInfo,
 ) -> anyhow::Result<()> {
-    if let Some(src_mod) = module.content.get_module_nested(&pub_use_name.path()) {
+    if let Some(src_mod) = module.content.get_module_nested(&pub_use_info.path()) {
         if src_mod.meta.is_public() {
-            log::debug!("transform_module_by_pub_use_single skip `{pub_use_name}` since src mod already public");
+            log::debug!("transform_module_by_pub_use_single skip `{pub_use_info}` since src mod already public");
             return Ok(());
         }
 
@@ -71,7 +72,7 @@ fn transform_module_by_pub_use_single(
         module.content.traits.extend(src_traits);
     } else {
         log::debug!(
-            "transform_module_by_pub_use_single skip `{pub_use_name}` since cannot find mod"
+            "transform_module_by_pub_use_single skip `{pub_use_info}` since cannot find mod"
         );
     }
 
