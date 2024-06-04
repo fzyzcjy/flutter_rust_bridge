@@ -1,8 +1,8 @@
 use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
 use crate::codegen::ir::hir::hierarchical::function::{HirFunction, HirFunctionOwner};
 use crate::codegen::ir::mir::func::{
-    MirFunc, MirFuncArgMode, MirFuncInput, MirFuncMode, MirFuncOutput, MirFuncOwnerInfo,
-    MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
+    MirFunc, MirFuncArgMode, MirFuncInput, MirFuncMode, MirFuncOutput, MirFuncOverridePriority,
+    MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
 };
 use crate::codegen::ir::mir::skip::MirSkipReason::IgnoredFunctionGeneric;
 use crate::codegen::ir::mir::skip::{MirSkip, MirSkipReason};
@@ -80,7 +80,11 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         let src_lineno = func.item_fn.span().start().line;
         let attributes = FrbAttributes::parse(func.item_fn.attrs())?;
-        let dart_name = parse_dart_name(&attributes, func);
+
+        let dart_name = attributes.name();
+        let override_priority = MirFuncOverridePriority::default();
+        let (dart_name, override_priority) =
+            parse_frb_override_marker(dart_name, override_priority, func);
 
         let create_context = |owner: Option<MirFuncOwnerInfo>| TypeParserParsingContext {
             initiated_namespace: func.namespace.clone(),
@@ -145,7 +149,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             codec_mode_pack,
             rust_call_code: None,
             src_lineno_pseudo: src_lineno,
-            override_priority: Default::default(),
+            override_priority,
         }))
     }
 
@@ -300,12 +304,18 @@ fn refine_namespace(owner: &MirFuncOwnerInfo) -> Option<Namespace> {
     None
 }
 
-fn parse_dart_name(attributes: &FrbAttributes, func: &HirFunction) -> Option<String> {
-    attributes.name().or_else(|| {
-        const FRB_OVERRIDE_PREFIX: &str = "frb_override_";
-        let func_name_raw = func.item_fn.name();
-        func_name_raw
-            .strip_prefix(FRB_OVERRIDE_PREFIX)
-            .map(ToString::to_string)
-    })
+fn parse_frb_override_marker(
+    dart_name_raw: Option<String>,
+    override_priority_raw: MirFuncOverridePriority,
+    func: &HirFunction,
+) -> (Option<String>, MirFuncOverridePriority) {
+    const FRB_OVERRIDE_PREFIX: &str = "frb_override_";
+    if let Some(func_name_stripped) = func.item_fn.name().strip_prefix(FRB_OVERRIDE_PREFIX) {
+        (
+            dart_name_raw.or(Some(func_name_stripped.to_owned())),
+            MirFuncOverridePriority::FRB_OVERRIDE,
+        )
+    } else {
+        (dart_name_raw, override_priority_raw)
+    }
 }

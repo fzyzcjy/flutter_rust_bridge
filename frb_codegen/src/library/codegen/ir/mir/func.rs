@@ -195,3 +195,7 @@ impl MirFuncAccessorMode {
         }
     }
 }
+
+impl MirFuncOverridePriority {
+    pub(crate) const FRB_OVERRIDE: MirFuncOverridePriority = MirFuncOverridePriority(1);
+}
