@@ -11,6 +11,7 @@ use log::debug;
 use std::collections::HashMap;
 use std::fmt::Debug;
 use syn::Type;
+use crate::codegen::ir::hir::hierarchical::traits::HirTrait;
 
 mod type_alias_resolver;
 
@@ -57,6 +58,15 @@ fn collect_enums(hir_pack: &HirPack) -> HashMap<String, &HirEnum> {
         hir_pack,
         |module| &module.content.enums,
         |x| (x.ident.to_string(), x),
+    )
+}
+
+// TODO move
+pub(crate) fn collect_traits(hir_pack: &HirPack) -> HashMap<String, &HirTrait> {
+    collect_objects_map(
+        hir_pack,
+        |module| &module.content.traits,
+        |x| (x.item_trait.ident.to_string(), x),
     )
 }
 
