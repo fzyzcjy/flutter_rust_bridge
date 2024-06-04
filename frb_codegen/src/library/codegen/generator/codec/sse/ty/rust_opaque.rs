@@ -14,7 +14,7 @@ impl<'a> CodecSseTyTrait for RustOpaqueCodecSseTy<'a> {
         Some(generate_generalized_rust_opaque_encode(
             lang,
             "null",
-            MirType::RustOpaque(self.mir),
+            MirType::RustOpaque(self.mir.clone()),
             self.context,
         ))
     }
