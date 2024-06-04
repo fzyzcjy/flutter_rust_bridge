@@ -204,6 +204,7 @@ fn generate_implementation_normal(
 fn generate_implementation_separated_decl_forward(
     func: &MirFunc,
     default_constructor_mode: Option<MirFuncDefaultConstructorMode>,
+    params: &[ApiDartGeneratedFunctionParam],
     method_info: &MirFuncOwnerInfoMethod,
     method_name: &str,
 ) -> Option<String> {
@@ -219,6 +220,11 @@ fn generate_implementation_separated_decl_forward(
         } else {
             format!(".{method_name}")
         };
+
+    let params = params
+        .iter()
+        .map(|x| format!("{name}: {name}", name = x.name_str))
+        .join(", ");
 
     Some(format!("{owner_ty_name}Impl{maybe_method_name}({params})"))
 }
