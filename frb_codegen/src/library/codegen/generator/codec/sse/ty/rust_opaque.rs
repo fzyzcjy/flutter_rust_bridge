@@ -3,7 +3,6 @@ use crate::codegen::generator::codec::sse::ty::delegate::{
     simple_delegate_decode, simple_delegate_encode,
 };
 use crate::codegen::generator::codec::sse::ty::*;
-use crate::codegen::generator::wire::dart::spec_generator::codec::sse::base::WireDartCodecSseGeneratorContext;
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::library::codegen::generator::codec::sse::lang::LangTrait;
