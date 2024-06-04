@@ -1,8 +1,8 @@
 use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
 use crate::codegen::ir::hir::hierarchical::function::{HirFunction, HirFunctionOwner};
 use crate::codegen::ir::mir::func::{
-    MirFunc, MirFuncArgMode, MirFuncInput, MirFuncMode, MirFuncOutput, MirFuncOwnerInfo,
-    MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
+    MirFunc, MirFuncArgMode, MirFuncInput, MirFuncMode, MirFuncOutput, MirFuncOverridePriority,
+    MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
 };
 use crate::codegen::ir::mir::skip::MirSkipReason::IgnoredFunctionGeneric;
 use crate::codegen::ir::mir::skip::{MirSkip, MirSkipReason};
@@ -81,6 +81,11 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let src_lineno = func.item_fn.span().start().line;
         let attributes = FrbAttributes::parse(func.item_fn.attrs())?;
 
+        let dart_name = attributes.name();
+        let override_priority = MirFuncOverridePriority::default();
+        let (dart_name, override_priority) =
+            parse_frb_override_marker(dart_name, override_priority, func);
+
         let create_context = |owner: Option<MirFuncOwnerInfo>| TypeParserParsingContext {
             initiated_namespace: func.namespace.clone(),
             func_attributes: attributes.clone(),
@@ -90,7 +95,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         };
 
         let owner = if let Some(owner) =
-            self.parse_owner(func, &create_context(None), attributes.name())?
+            self.parse_owner(func, &create_context(None), dart_name.clone())?
         {
             owner
         } else {
@@ -122,7 +127,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         Ok(ParseFunctionOutput::Ok(MirFunc {
             name: NamespacedName::new(namespace_refined, func_name),
-            dart_name: attributes.name(),
+            dart_name,
             id: None, // to be filled later
             inputs: info.inputs,
             output: MirFuncOutput {
@@ -144,6 +149,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             codec_mode_pack,
             rust_call_code: None,
             src_lineno_pseudo: src_lineno,
+            override_priority,
         }))
     }
 
@@ -296,4 +302,20 @@ fn refine_namespace(owner: &MirFuncOwnerInfo) -> Option<Namespace> {
         }
     }
     None
+}
+
+fn parse_frb_override_marker(
+    dart_name_raw: Option<String>,
+    override_priority_raw: MirFuncOverridePriority,
+    func: &HirFunction,
+) -> (Option<String>, MirFuncOverridePriority) {
+    const FRB_OVERRIDE_PREFIX: &str = "frb_override_";
+    if let Some(func_name_stripped) = func.item_fn.name().strip_prefix(FRB_OVERRIDE_PREFIX) {
+        (
+            dart_name_raw.or(Some(func_name_stripped.to_owned())),
+            MirFuncOverridePriority::FRB_OVERRIDE,
+        )
+    } else {
+        (dart_name_raw, override_priority_raw)
+    }
 }

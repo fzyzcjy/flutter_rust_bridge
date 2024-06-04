@@ -1,7 +1,8 @@
 use crate::codegen::ir::hir::hierarchical::misc::HirCommon;
+use crate::codegen::ir::hir::hierarchical::traits::serialize_item_impl;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use proc_macro2::{Ident, Span};
-use serde::Serialize;
+use serde::{Serialize, Serializer};
 use syn::spanned::Spanned;
 use syn::{Attribute, ImplItemFn, ItemFn, ItemImpl, Signature, TraitItemFn, Visibility};
 
@@ -9,7 +10,7 @@ use syn::{Attribute, ImplItemFn, ItemFn, ItemImpl, Signature, TraitItemFn, Visib
 pub(crate) struct HirFunction {
     pub(crate) namespace: Namespace,
     pub(crate) owner: HirFunctionOwner,
-    #[serde(skip_serializing)]
+    #[serde(serialize_with = "serialize_generalized_item_fn")]
     pub(crate) item_fn: GeneralizedItemFn,
 }
 
@@ -50,7 +51,7 @@ impl HirFunction {
 pub(crate) enum HirFunctionOwner {
     Function,
     Method {
-        #[serde(skip_serializing)]
+        #[serde(serialize_with = "serialize_item_impl")]
         item_impl: ItemImpl,
         trait_def_name: Option<NamespacedName>,
     },
@@ -123,4 +124,11 @@ pub(crate) type SimpleOwnerAndName = (Option<String>, String);
 
 fn ty_to_string(ty: &syn::Type) -> String {
     quote::quote!(#ty).to_string()
+}
+
+fn serialize_generalized_item_fn<S: Serializer>(
+    x: &GeneralizedItemFn,
+    s: S,
+) -> Result<S::Ok, S::Error> {
+    s.serialize_str(&format!("GeneralizedItemFn(name={})", x.name()))
 }

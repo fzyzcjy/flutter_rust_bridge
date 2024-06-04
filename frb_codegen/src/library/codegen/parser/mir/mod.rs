@@ -95,8 +95,9 @@ fn parse_mir_funcs(
 
     let mir_funcs_auto_accessor = parse_auto_accessors(config, src_structs, type_parser)?;
 
-    let mir_funcs = concat([mir_funcs_normal, mir_funcs_auto_accessor])
-        .into_iter()
+    let mir_funcs = concat([mir_funcs_normal, mir_funcs_auto_accessor]);
+    let mir_funcs = dedup_funcs(mir_funcs);
+    let mir_funcs = (mir_funcs.into_iter())
         // to give downstream a stable output
         .sorted_by_cached_key(|func| func.name.clone())
         .enumerate()
@@ -107,4 +108,13 @@ fn parse_mir_funcs(
         .collect_vec();
 
     Ok((mir_funcs, mir_skips))
+}
+
+fn dedup_funcs(funcs: Vec<MirFunc>) -> Vec<MirFunc> {
+    funcs
+        .into_iter()
+        // Higher priority goes first
+        .sorted_by_key(|f| -f.override_priority.0)
+        .unique_by(|f| f.locator_dart_api())
+        .collect_vec()
 }

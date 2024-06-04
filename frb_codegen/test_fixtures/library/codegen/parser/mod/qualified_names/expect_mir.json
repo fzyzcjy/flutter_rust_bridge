@@ -64,6 +64,7 @@
           "type": "Primitive"
         }
       },
+      "override_priority": 0,
       "owner": "Function",
       "rust_async": false,
       "rust_call_code": null,
@@ -95,6 +96,7 @@
           "type": "Primitive"
         }
       },
+      "override_priority": 0,
       "owner": "Function",
       "rust_async": false,
       "rust_call_code": null,
@@ -126,6 +128,7 @@
           "type": "Primitive"
         }
       },
+      "override_priority": 0,
       "owner": "Function",
       "rust_async": false,
       "rust_call_code": null,
@@ -157,6 +160,7 @@
           "type": "Primitive"
         }
       },
+      "override_priority": 0,
       "owner": "Function",
       "rust_async": false,
       "rust_call_code": null,

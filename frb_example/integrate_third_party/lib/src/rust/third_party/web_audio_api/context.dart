@@ -36,13 +36,12 @@ class AudioContext extends RustOpaque {
         RustLib.instance.api.rust_arc_decrement_strong_count_AudioContextPtr,
   );
 
-  Future<AudioBuffer> frbOverrideDecodeAudioDataSync(
-          {required String inputPath}) =>
+  Future<AudioBuffer> decodeAudioDataSync({required String inputPath}) =>
       RustLib.instance.api
           .crateApiOverrideWebAudioApiAudioContextFrbOverrideDecodeAudioDataSync(
               that: this, inputPath: inputPath);
 
-  Future<String> frbOverrideOutputLatency() => RustLib.instance.api
+  Future<String> outputLatency() => RustLib.instance.api
           .crateApiOverrideWebAudioApiAudioContextFrbOverrideOutputLatency(
         that: this,
       );
@@ -140,15 +139,6 @@ class AudioContext extends RustOpaque {
   /// never panics.
   factory AudioContext({required AudioContextOptions options}) =>
       RustLib.instance.api.webAudioApiContextAudioContextNew(options: options);
-
-  /// The estimation in seconds of audio output latency, i.e., the interval
-  /// between the time the UA requests the host system to play a buffer and
-  /// the time at which the first sample in the buffer is actually processed
-  /// by the audio output device.
-  Future<double> outputLatency() =>
-      RustLib.instance.api.webAudioApiContextAudioContextOutputLatency(
-        that: this,
-      );
 
   /// Returns an [`AudioRenderCapacity`] instance associated with an AudioContext.
   Future<void> renderCapacity() =>
