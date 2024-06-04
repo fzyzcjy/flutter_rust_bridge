@@ -10,8 +10,7 @@ pub impl AudioContext {
         input_path: String,
     ) -> anyhow::Result<AudioBuffer> {
         let input = std::fs::File::open(input_path)?;
-        self
-            .decode_audio_data_sync(input)
+        self.decode_audio_data_sync(input)
             .map_err(|e| anyhow::anyhow!("{:?}", e))
     }
 
