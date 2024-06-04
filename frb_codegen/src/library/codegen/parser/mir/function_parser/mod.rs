@@ -145,6 +145,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             codec_mode_pack,
             rust_call_code: None,
             src_lineno_pseudo: src_lineno,
+            override_priority: Default::default(),
         }))
     }
 

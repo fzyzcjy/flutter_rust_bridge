@@ -27,7 +27,7 @@ pub struct MirFunc {
     pub codec_mode_pack: CodecModePack,
     pub rust_call_code: Option<String>,
     // When multiple func with same name, the one with higher priority will evict the other one
-    pub override_priority: i32,
+    pub override_priority: MirFuncOverridePriority,
     // Currently, we use serde only for tests. Since lineno can be unstable, we skip this field for comparison
     #[serde(skip_serializing)]
     pub src_lineno_pseudo: usize,
@@ -48,6 +48,9 @@ pub enum MirFuncMode {
     Normal,
     Sync,
 }
+
+#[derive(Copy, Ord, PartialOrd, Default)]
+pub struct MirFuncOverridePriority(pub i32);
 
 #[derive(Copy)]
 pub enum MirFuncArgMode {
