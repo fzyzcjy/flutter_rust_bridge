@@ -1,3 +1,4 @@
+use crate::codegen::ir::hir::hierarchical::misc::WithNamespace;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use proc_macro2::Span;
 use serde::Serialize;
@@ -13,14 +14,16 @@ pub(crate) struct HirFunction {
     pub(crate) item_fn: GeneralizedItemFn,
 }
 
-impl HirFunction {
-    pub(crate) fn with_namespace(&self, namespace: Namespace) -> Self {
+impl WithNamespace for HirFunction {
+    fn with_namespace(&self, namespace: Namespace) -> Self {
         Self {
             namespace,
             ..self.clone()
         }
     }
+}
 
+impl HirFunction {
     pub(crate) fn owner_and_name(&self) -> SimpleOwnerAndName {
         (self.owner.simple_name(), self.item_fn.name())
     }

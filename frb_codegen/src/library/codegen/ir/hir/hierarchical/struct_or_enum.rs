@@ -1,3 +1,4 @@
+use crate::codegen::ir::hir::hierarchical::misc::WithNamespace;
 use crate::codegen::ir::hir::hierarchical::module::HirVisibility;
 use crate::codegen::ir::hir::hierarchical::syn_item_struct_or_enum::SynItemStructOrEnum;
 use crate::utils::namespace::{Namespace, NamespacedName};
@@ -27,8 +28,8 @@ pub struct HirStructOrEnum<Item: SynItemStructOrEnum> {
 pub type HirStruct = HirStructOrEnum<ItemStruct>;
 pub type HirEnum = HirStructOrEnum<ItemEnum>;
 
-impl<Item: SynItemStructOrEnum> HirStructOrEnum<Item> {
-    pub(crate) fn with_namespace(&self, namespace: Namespace) -> Self {
+impl<Item: SynItemStructOrEnum> WithNamespace for HirStructOrEnum<Item> {
+    fn with_namespace(&self, namespace: Namespace) -> Self {
         Self {
             namespaced_name: NamespacedName::new(namespace, self.namespaced_name.name.clone()),
             ..self.to_owned()

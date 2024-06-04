@@ -1,3 +1,4 @@
+use crate::codegen::ir::hir::hierarchical::misc::WithNamespace;
 use crate::utils::namespace::Namespace;
 use serde::Serialize;
 use syn::{ItemImpl, ItemTrait};
@@ -16,8 +17,8 @@ pub(crate) struct HirTraitImpl {
     pub(crate) item_impl: ItemImpl,
 }
 
-impl HirTrait {
-    pub(crate) fn with_namespace(&self, namespace: Namespace) -> Self {
+impl WithNamespace for HirTrait {
+    fn with_namespace(&self, namespace: Namespace) -> Self {
         Self {
             namespace,
             ..self.to_owned()
