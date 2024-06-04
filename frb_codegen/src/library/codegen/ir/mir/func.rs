@@ -152,7 +152,7 @@ impl MirFunc {
 
     pub(crate) fn locator_dart_api(&self) -> MirFuncDartApiLocator {
         MirFuncDartApiLocator {
-            accessor: self.accessor.clone(),
+            accessor: self.accessor,
             inner: match &self.owner {
                 MirFuncOwnerInfo::Function => MirFuncDartApiLocatorInner::Function {
                     name: self.name.clone(),
