@@ -1,3 +1,4 @@
+use proc_macro2::Ident;
 use crate::codegen::ir::hir::hierarchical::misc::HirCommon;
 use crate::utils::namespace::Namespace;
 use serde::Serialize;
@@ -25,7 +26,7 @@ impl HirCommon for HirTrait {
         }
     }
 
-    fn ident(&self) -> String {
-        self.item_trait.ident.to_string()
+    fn ident(&self) -> Ident {
+        self.item_trait.ident.clone()
     }
 }

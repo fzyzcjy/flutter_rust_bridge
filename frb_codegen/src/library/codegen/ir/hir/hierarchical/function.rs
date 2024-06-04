@@ -1,6 +1,6 @@
 use crate::codegen::ir::hir::hierarchical::misc::HirCommon;
 use crate::utils::namespace::{Namespace, NamespacedName};
-use proc_macro2::Span;
+use proc_macro2::{Ident, Span};
 use serde::Serialize;
 use syn::spanned::Spanned;
 use syn::{Attribute, ImplItemFn, ItemFn, ItemImpl, Signature, TraitItemFn, Visibility};
@@ -22,8 +22,8 @@ impl HirCommon for HirFunction {
         }
     }
 
-    fn ident(&self) -> String {
-        self.item_fn.name()
+    fn ident(&self) -> Ident {
+        self.item_fn.sig().ident.clone()
     }
 }
 

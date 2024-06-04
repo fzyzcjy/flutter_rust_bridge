@@ -36,8 +36,8 @@ impl<Item: SynItemStructOrEnum> HirCommon for HirStructOrEnum<Item> {
         }
     }
 
-    fn ident(&self) -> String {
-        self.ident.to_string()
+    fn ident(&self) -> Ident {
+        self.ident.clone()
     }
 }
 
