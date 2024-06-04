@@ -44,7 +44,9 @@ fn convert_item(mut item_syn: syn::ItemImpl, dummy_struct_ty: syn::Type) -> Toke
     item_syn.self_ty = Box::new(dummy_struct_ty);
     for inner_item in &mut item_syn.items {
         if let ImplItem::Fn(inner_item) = inner_item {
-            inner_item.block = syn::parse_str("{ unreachable!() }").unwrap();
+            if inner_item.block.stmts.is_empty() {
+                inner_item.block = syn::parse_str("{ unreachable!() }").unwrap();
+            }
         }
     }
     item_syn.to_token_stream()
