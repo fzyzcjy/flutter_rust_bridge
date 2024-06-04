@@ -32,7 +32,7 @@ impl HirCommon for HirTrait {
 }
 
 fn serialize_item_trait<S: Serializer>(x: &ItemTrait, s: S) -> Result<S::Ok, S::Error> {
-    s.serialize_str(&format!("ident={}", x.ident.to_string()))
+    s.serialize_str(&format!("ident={}", x.ident))
 }
 
 fn serialize_item_impl<S: Serializer>(x: &ItemImpl, s: S) -> Result<S::Ok, S::Error> {
