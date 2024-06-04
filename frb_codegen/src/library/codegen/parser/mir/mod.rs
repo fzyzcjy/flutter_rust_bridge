@@ -12,7 +12,7 @@ pub(crate) mod type_parser;
 use crate::codegen::ir::hir::flat::HirFlatCrate;
 use crate::codegen::ir::hir::hierarchical::function::HirFunction;
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStruct;
-use crate::codegen::ir::mir::func::{MirFunc, MirFuncOverridePriority};
+use crate::codegen::ir::mir::func::MirFunc;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::ir::mir::skip::MirSkip;
 use crate::codegen::parser::mir::auto_accessor_parser::parse_auto_accessors;
