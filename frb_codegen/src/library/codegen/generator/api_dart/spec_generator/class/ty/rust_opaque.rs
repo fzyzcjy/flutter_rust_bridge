@@ -1,4 +1,6 @@
-use crate::codegen::generator::api_dart::spec_generator::class::method::{generate_api_methods, GenerateApiMethodMode};
+use crate::codegen::generator::api_dart::spec_generator::class::method::{
+    generate_api_methods, GenerateApiMethodMode,
+};
 use crate::codegen::generator::api_dart::spec_generator::class::misc::generate_class_extra_body;
 use crate::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
@@ -12,8 +14,11 @@ use regex::Regex;
 
 impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
     fn generate_class(&self) -> Option<ApiDartGeneratedClass> {
-        let rust_api_type = self.mir.rust_api_type();
-        let dart_api_type = ApiDartGenerator::new(self.mir.clone(), self.context).dart_api_type();
+        let Info {
+            rust_api_type,
+            dart_api_type,
+            methods,
+        } = self.compute_info(GenerateApiMethodMode::Decl);
 
         let extra_body =
             generate_class_extra_body(self.mir_type(), &self.context.mir_pack.dart_code_of_type);
@@ -37,6 +42,12 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
     }
 
     fn generate_extra_impl_code(&self) -> Option<String> {
+        let Info {
+            rust_api_type,
+            dart_api_type,
+            methods,
+        } = self.compute_info(GenerateApiMethodMode::Impl);
+
         let dart_api_type_impl = format!("{dart_api_type}Impl");
 
         let dart_entrypoint_class_name = &self.context.config.dart_entrypoint_class_name;
