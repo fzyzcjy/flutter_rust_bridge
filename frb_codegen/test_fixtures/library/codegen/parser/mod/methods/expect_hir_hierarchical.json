@@ -19,33 +19,41 @@
                 ],
                 "functions": [
                   {
+                    "item_fn": "GeneralizedItemFn(name=example_static_method)",
                     "namespace": "crate::api",
                     "owner": {
                       "Method": {
+                        "item_impl": "ItemImpl(self_ty=MyStruct)",
                         "trait_def_name": null
                       }
                     }
                   },
                   {
+                    "item_fn": "GeneralizedItemFn(name=example_instance_method)",
                     "namespace": "crate::api",
                     "owner": {
                       "Method": {
+                        "item_impl": "ItemImpl(self_ty=MyStruct)",
                         "trait_def_name": null
                       }
                     }
                   },
                   {
+                    "item_fn": "GeneralizedItemFn(name=example_static_method)",
                     "namespace": "crate::api",
                     "owner": {
                       "Method": {
+                        "item_impl": "ItemImpl(self_ty=MyEnum)",
                         "trait_def_name": null
                       }
                     }
                   },
                   {
+                    "item_fn": "GeneralizedItemFn(name=example_instance_method)",
                     "namespace": "crate::api",
                     "owner": {
                       "Method": {
+                        "item_impl": "ItemImpl(self_ty=MyEnum)",
                         "trait_def_name": null
                       }
                     }

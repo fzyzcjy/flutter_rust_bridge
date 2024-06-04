@@ -12,10 +12,12 @@
                 "enums": [],
                 "functions": [
                   {
+                    "item_fn": "GeneralizedItemFn(name=func_1)",
                     "namespace": "crate::api",
                     "owner": "Function"
                   },
                   {
+                    "item_fn": "GeneralizedItemFn(name=func_anyhow_result)",
                     "namespace": "crate::api",
                     "owner": "Function"
                   }
