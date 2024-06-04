@@ -10,7 +10,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 // These functions are ignored because they are not marked as `pub`: `apply_curve`, `apply_mono_to_stereo_gain`, `apply_stereo_to_stereo_gain`, `assert_valid_channel_count_mode`, `assert_valid_channel_count_mode`, `assert_valid_channel_count_mode`, `assert_valid_channel_count_mode`, `assert_valid_channel_count_mode`, `assert_valid_channel_count`, `assert_valid_channel_count`, `assert_valid_channel_count`, `assert_valid_channel_count`, `assert_valid_channel_count`, `assert_valid_channel_interpretation`, `assert_valid_cone_outer_gain`, `assert_valid_feedback_coefs`, `assert_valid_feedforward_coefs`, `assert_valid_number_of_channels`, `assert_valid_number_of_channels`, `calculate_coefs`, `check_ring_buffer_up_down_mix`, `complex`, `cone_gain`, `count_mode`, `count`, `db_to_lin`, `dist_gain`, `downsample_x2`, `downsample_x4`, `from_raw_parts`, `generate_custom`, `generate_sample`, `generate_sawtooth`, `generate_sine`, `generate_square`, `generate_triangle`, `get_computed_freq`, `get_phase_incr`, `get_playback_infos`, `get_stereo_gains`, `handle_control_message`, `inner`, `interpretation`, `into_channel_config`, `inverse`, `lin_to_db`, `load_hrtf_processor`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `normalize_buffer`, `poly_blep`, `precomputed_sine_table`, `process`, `process`, `process`, `process`, `real`, `roll_zero`, `samples_out_mut`, `samples_out`, `set_count_mode`, `set_count`, `set_interpretation`, `tail_time_samples`, `tail`, `unroll_phase`, `upsample_x2`, `upsample_x4`
 // These functions are ignored because they have generic arguments: `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `set_onaudioprocess`, `set_onended`, `set_onended`, `set_onended`
 // These types are ignored because they are not used by any `pub` functions: `AnalyserOptions`, `AnalyserRenderer`, `AudioBufferRendererState`, `AudioBufferSourceOptions`, `AudioBufferSourceRenderer`, `AudioDestinationNodeStream`, `AudioNodeOptions`, `BiquadFilterOptions`, `BiquadFilterRenderer`, `ChannelConfigInner`, `ChannelConfig`, `ChannelMergerOptions`, `ChannelMergerRenderer`, `ChannelSplitterOptions`, `ChannelSplitterRenderer`, `Coefficients`, `ConstantSourceOptions`, `ConstantSourceRenderer`, `ControlMessage`, `ConvolverOptions`, `ConvolverRendererInner`, `ConvolverRenderer`, `DelayOptions`, `DelayReader`, `DelayWriter`, `DestinationRenderer`, `DynamicsCompressorOptions`, `DynamicsCompressorRenderer`, `Fft`, `GainOptions`, `GainRenderer`, `HrtfState`, `IIRFilterOptions`, `IirFilterRenderer`, `LoopState`, `MediaElementAudioSourceOptions`, `MediaStreamAudioSourceOptions`, `MediaStreamRenderer`, `MediaStreamTrackAudioSourceOptions`, `OscillatorOptions`, `OscillatorRenderer`, `PannerOptions`, `PannerRenderer`, `PlaybackInfo`, `RendererConfig`, `ResamplerConfig`, `Resampler`, `Schedule`, `ScriptProcessorOptions`, `ScriptProcessorRenderer`, `SpatialParams`, `StereoPannerOptions`, `StereoPannerRenderer`, `WaveShaperOptions`, `WaveShaperRenderer`
-// These functions are ignored: `buffer`, `buffer`, `check_ring_buffer_size`, `check_ring_buffer_size`, `curve`, `get_byte_frequency_data`, `get_byte_time_domain_data`, `get_float_frequency_data`, `get_float_time_domain_data`, `get_frequency_response`, `get_frequency_response`, `ring_buffer_mut`, `ring_buffer_mut`
+// These functions are ignored: `buffer`, `buffer`, `check_ring_buffer_size`, `check_ring_buffer_size`, `curve`, `get_byte_frequency_data`, `get_byte_time_domain_data`, `get_float_frequency_data`, `get_float_time_domain_data`, `get_frequency_response`, `get_frequency_response`, `ring_buffer_mut`, `ring_buffer_mut`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AnalyserNode>>
 @sealed
@@ -224,16 +224,6 @@ class AnalyserNode extends RustOpaque {
   /// to max decibels.
   Future<void> setMinDecibels({required double value}) => RustLib.instance.api
       .webAudioApiNodeAnalyserNodeSetMinDecibels(that: this, value: value);
-
-  /// Register callback to run when an unhandled exception occurs in the audio processor.
-  ///
-  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
-  ///
-  /// Only a single event handler is active at any time. Calling this method multiple times will
-  /// override the previous event handler.
-  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback}) =>
-      RustLib.instance.api.webAudioApiNodeAnalyserNodeSetOnprocessorerror(
-          that: this, callback: callback);
 
   /// Set smoothing time constant
   ///
@@ -482,17 +472,6 @@ class AudioBufferSourceNode extends RustOpaque {
       RustLib.instance.api.webAudioApiNodeAudioBufferSourceNodeSetLoopStart(
           that: this, value: value);
 
-  /// Register callback to run when an unhandled exception occurs in the audio processor.
-  ///
-  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
-  ///
-  /// Only a single event handler is active at any time. Calling this method multiple times will
-  /// override the previous event handler.
-  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback}) =>
-      RustLib.instance.api
-          .webAudioApiNodeAudioBufferSourceNodeSetOnprocessorerror(
-              that: this, callback: callback);
-
   Future<void> start() =>
       RustLib.instance.api.webAudioApiNodeAudioBufferSourceNodeStart(
         that: this,
@@ -688,17 +667,6 @@ class AudioDestinationNode extends RustOpaque {
       RustLib.instance.api
           .webAudioApiNodeAudioDestinationNodeSetChannelInterpretation(
               that: this, v: v);
-
-  /// Register callback to run when an unhandled exception occurs in the audio processor.
-  ///
-  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
-  ///
-  /// Only a single event handler is active at any time. Calling this method multiple times will
-  /// override the previous event handler.
-  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback}) =>
-      RustLib.instance.api
-          .webAudioApiNodeAudioDestinationNodeSetOnprocessorerror(
-              that: this, callback: callback);
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<BiquadFilterNode>>
@@ -871,16 +839,6 @@ class BiquadFilterNode extends RustOpaque {
           .webAudioApiNodeBiquadFilterNodeSetChannelInterpretation(
               that: this, v: v);
 
-  /// Register callback to run when an unhandled exception occurs in the audio processor.
-  ///
-  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
-  ///
-  /// Only a single event handler is active at any time. Calling this method multiple times will
-  /// override the previous event handler.
-  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback}) =>
-      RustLib.instance.api.webAudioApiNodeBiquadFilterNodeSetOnprocessorerror(
-          that: this, callback: callback);
-
   /// biquad filter type setter
   ///
   /// # Arguments
@@ -894,27 +852,6 @@ class BiquadFilterNode extends RustOpaque {
       RustLib.instance.api.webAudioApiNodeBiquadFilterNodeType(
         that: this,
       );
-}
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn FnOnce (ErrorEvent) + Send + 'static >>>
-@sealed
-class BoxFnOnceErrorEvent extends RustOpaque {
-  // Not to be used by end users
-  BoxFnOnceErrorEvent.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  BoxFnOnceErrorEvent.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_BoxFnOnceErrorEvent,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_BoxFnOnceErrorEvent,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_BoxFnOnceErrorEventPtr,
-  );
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ChannelMergerNode>>
@@ -1062,16 +999,6 @@ class ChannelMergerNode extends RustOpaque {
       RustLib.instance.api
           .webAudioApiNodeChannelMergerNodeSetChannelInterpretation(
               that: this, v: v);
-
-  /// Register callback to run when an unhandled exception occurs in the audio processor.
-  ///
-  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
-  ///
-  /// Only a single event handler is active at any time. Calling this method multiple times will
-  /// override the previous event handler.
-  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback}) =>
-      RustLib.instance.api.webAudioApiNodeChannelMergerNodeSetOnprocessorerror(
-          that: this, callback: callback);
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ChannelSplitterNode>>
@@ -1220,17 +1147,6 @@ class ChannelSplitterNode extends RustOpaque {
       RustLib.instance.api
           .webAudioApiNodeChannelSplitterNodeSetChannelInterpretation(
               that: this, interpretation: interpretation);
-
-  /// Register callback to run when an unhandled exception occurs in the audio processor.
-  ///
-  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
-  ///
-  /// Only a single event handler is active at any time. Calling this method multiple times will
-  /// override the previous event handler.
-  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback}) =>
-      RustLib.instance.api
-          .webAudioApiNodeChannelSplitterNodeSetOnprocessorerror(
-              that: this, callback: callback);
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ConstantSourceNode>>
@@ -1390,16 +1306,6 @@ class ConstantSourceNode extends RustOpaque {
       RustLib.instance.api
           .webAudioApiNodeConstantSourceNodeSetChannelInterpretation(
               that: this, v: v);
-
-  /// Register callback to run when an unhandled exception occurs in the audio processor.
-  ///
-  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
-  ///
-  /// Only a single event handler is active at any time. Calling this method multiple times will
-  /// override the previous event handler.
-  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback}) =>
-      RustLib.instance.api.webAudioApiNodeConstantSourceNodeSetOnprocessorerror(
-          that: this, callback: callback);
 
   Future<void> start() =>
       RustLib.instance.api.webAudioApiNodeConstantSourceNodeStart(
@@ -1581,16 +1487,6 @@ class ConvolverNode extends RustOpaque {
   /// Update the `normalize` setting. This will only have an effect when `set_buffer` is called.
   Future<void> setNormalize({required bool value}) => RustLib.instance.api
       .webAudioApiNodeConvolverNodeSetNormalize(that: this, value: value);
-
-  /// Register callback to run when an unhandled exception occurs in the audio processor.
-  ///
-  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
-  ///
-  /// Only a single event handler is active at any time. Calling this method multiple times will
-  /// override the previous event handler.
-  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback}) =>
-      RustLib.instance.api.webAudioApiNodeConvolverNodeSetOnprocessorerror(
-          that: this, callback: callback);
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DelayNode>>
@@ -1743,16 +1639,6 @@ class DelayNode extends RustOpaque {
   Future<void> setChannelInterpretation({required ChannelInterpretation v}) =>
       RustLib.instance.api
           .webAudioApiNodeDelayNodeSetChannelInterpretation(that: this, v: v);
-
-  /// Register callback to run when an unhandled exception occurs in the audio processor.
-  ///
-  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
-  ///
-  /// Only a single event handler is active at any time. Calling this method multiple times will
-  /// override the previous event handler.
-  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback}) =>
-      RustLib.instance.api.webAudioApiNodeDelayNodeSetOnprocessorerror(
-          that: this, callback: callback);
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DynamicsCompressorNode>>
@@ -1930,17 +1816,6 @@ class DynamicsCompressorNode extends RustOpaque {
           .webAudioApiNodeDynamicsCompressorNodeSetChannelInterpretation(
               that: this, v: v);
 
-  /// Register callback to run when an unhandled exception occurs in the audio processor.
-  ///
-  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
-  ///
-  /// Only a single event handler is active at any time. Calling this method multiple times will
-  /// override the previous event handler.
-  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback}) =>
-      RustLib.instance.api
-          .webAudioApiNodeDynamicsCompressorNodeSetOnprocessorerror(
-              that: this, callback: callback);
-
   Future<void> threshold() =>
       RustLib.instance.api.webAudioApiNodeDynamicsCompressorNodeThreshold(
         that: this,
@@ -2094,16 +1969,6 @@ class GainNode extends RustOpaque {
   Future<void> setChannelInterpretation({required ChannelInterpretation v}) =>
       RustLib.instance.api
           .webAudioApiNodeGainNodeSetChannelInterpretation(that: this, v: v);
-
-  /// Register callback to run when an unhandled exception occurs in the audio processor.
-  ///
-  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
-  ///
-  /// Only a single event handler is active at any time. Calling this method multiple times will
-  /// override the previous event handler.
-  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback}) =>
-      RustLib.instance.api.webAudioApiNodeGainNodeSetOnprocessorerror(
-          that: this, callback: callback);
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<IIRFilterNode>>
@@ -2250,16 +2115,6 @@ class IirFilterNode extends RustOpaque {
   Future<void> setChannelInterpretation({required ChannelInterpretation v}) =>
       RustLib.instance.api.webAudioApiNodeIirFilterNodeSetChannelInterpretation(
           that: this, v: v);
-
-  /// Register callback to run when an unhandled exception occurs in the audio processor.
-  ///
-  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
-  ///
-  /// Only a single event handler is active at any time. Calling this method multiple times will
-  /// override the previous event handler.
-  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback}) =>
-      RustLib.instance.api.webAudioApiNodeIirFilterNodeSetOnprocessorerror(
-          that: this, callback: callback);
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaElementAudioSourceNode>>
@@ -2413,17 +2268,6 @@ class MediaElementAudioSourceNode extends RustOpaque {
       RustLib.instance.api
           .webAudioApiNodeMediaElementAudioSourceNodeSetChannelInterpretation(
               that: this, v: v);
-
-  /// Register callback to run when an unhandled exception occurs in the audio processor.
-  ///
-  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
-  ///
-  /// Only a single event handler is active at any time. Calling this method multiple times will
-  /// override the previous event handler.
-  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback}) =>
-      RustLib.instance.api
-          .webAudioApiNodeMediaElementAudioSourceNodeSetOnprocessorerror(
-              that: this, callback: callback);
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamAudioDestinationNode>>
@@ -2577,17 +2421,6 @@ class MediaStreamAudioDestinationNode extends RustOpaque {
       RustLib.instance.api
           .webAudioApiNodeMediaStreamAudioDestinationNodeSetChannelInterpretation(
               that: this, v: v);
-
-  /// Register callback to run when an unhandled exception occurs in the audio processor.
-  ///
-  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
-  ///
-  /// Only a single event handler is active at any time. Calling this method multiple times will
-  /// override the previous event handler.
-  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback}) =>
-      RustLib.instance.api
-          .webAudioApiNodeMediaStreamAudioDestinationNodeSetOnprocessorerror(
-              that: this, callback: callback);
 
   /// A [`MediaStream`] producing audio buffers with the same number of channels as the node
   /// itself
@@ -2748,17 +2581,6 @@ class MediaStreamAudioSourceNode extends RustOpaque {
       RustLib.instance.api
           .webAudioApiNodeMediaStreamAudioSourceNodeSetChannelInterpretation(
               that: this, v: v);
-
-  /// Register callback to run when an unhandled exception occurs in the audio processor.
-  ///
-  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
-  ///
-  /// Only a single event handler is active at any time. Calling this method multiple times will
-  /// override the previous event handler.
-  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback}) =>
-      RustLib.instance.api
-          .webAudioApiNodeMediaStreamAudioSourceNodeSetOnprocessorerror(
-              that: this, callback: callback);
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamTrackAudioSourceNode>>
@@ -2912,17 +2734,6 @@ class MediaStreamTrackAudioSourceNode extends RustOpaque {
       RustLib.instance.api
           .webAudioApiNodeMediaStreamTrackAudioSourceNodeSetChannelInterpretation(
               that: this, v: v);
-
-  /// Register callback to run when an unhandled exception occurs in the audio processor.
-  ///
-  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
-  ///
-  /// Only a single event handler is active at any time. Calling this method multiple times will
-  /// override the previous event handler.
-  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback}) =>
-      RustLib.instance.api
-          .webAudioApiNodeMediaStreamTrackAudioSourceNodeSetOnprocessorerror(
-              that: this, callback: callback);
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OscillatorNode>>
@@ -3099,16 +2910,6 @@ class OscillatorNode extends RustOpaque {
       RustLib.instance.api
           .webAudioApiNodeOscillatorNodeSetChannelInterpretation(
               that: this, v: v);
-
-  /// Register callback to run when an unhandled exception occurs in the audio processor.
-  ///
-  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
-  ///
-  /// Only a single event handler is active at any time. Calling this method multiple times will
-  /// override the previous event handler.
-  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback}) =>
-      RustLib.instance.api.webAudioApiNodeOscillatorNodeSetOnprocessorerror(
-          that: this, callback: callback);
 
   /// Sets a `PeriodicWave` which describes a waveform to be used by the oscillator.
   ///
@@ -3393,16 +3194,6 @@ class PannerNode extends RustOpaque {
   Future<void> setMaxDistance({required double value}) => RustLib.instance.api
       .webAudioApiNodePannerNodeSetMaxDistance(that: this, value: value);
 
-  /// Register callback to run when an unhandled exception occurs in the audio processor.
-  ///
-  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
-  ///
-  /// Only a single event handler is active at any time. Calling this method multiple times will
-  /// override the previous event handler.
-  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback}) =>
-      RustLib.instance.api.webAudioApiNodePannerNodeSetOnprocessorerror(
-          that: this, callback: callback);
-
   Future<void> setOrientation(
           {required double x, required double y, required double z}) =>
       RustLib.instance.api.webAudioApiNodePannerNodeSetOrientation(
@@ -3591,17 +3382,6 @@ class ScriptProcessorNode extends RustOpaque {
       RustLib.instance.api
           .webAudioApiNodeScriptProcessorNodeSetChannelInterpretation(
               that: this, v: v);
-
-  /// Register callback to run when an unhandled exception occurs in the audio processor.
-  ///
-  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
-  ///
-  /// Only a single event handler is active at any time. Calling this method multiple times will
-  /// override the previous event handler.
-  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback}) =>
-      RustLib.instance.api
-          .webAudioApiNodeScriptProcessorNodeSetOnprocessorerror(
-              that: this, callback: callback);
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StereoPannerNode>>
@@ -3753,16 +3533,6 @@ class StereoPannerNode extends RustOpaque {
       RustLib.instance.api
           .webAudioApiNodeStereoPannerNodeSetChannelInterpretation(
               that: this, v: v);
-
-  /// Register callback to run when an unhandled exception occurs in the audio processor.
-  ///
-  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
-  ///
-  /// Only a single event handler is active at any time. Calling this method multiple times will
-  /// override the previous event handler.
-  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback}) =>
-      RustLib.instance.api.webAudioApiNodeStereoPannerNodeSetOnprocessorerror(
-          that: this, callback: callback);
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<WaveShaperNode>>
@@ -3930,16 +3700,6 @@ class WaveShaperNode extends RustOpaque {
   /// `set_curve`)
   Future<void> setCurve({required List<double> curve}) => RustLib.instance.api
       .webAudioApiNodeWaveShaperNodeSetCurve(that: this, curve: curve);
-
-  /// Register callback to run when an unhandled exception occurs in the audio processor.
-  ///
-  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
-  ///
-  /// Only a single event handler is active at any time. Calling this method multiple times will
-  /// override the previous event handler.
-  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback}) =>
-      RustLib.instance.api.webAudioApiNodeWaveShaperNodeSetOnprocessorerror(
-          that: this, callback: callback);
 
   /// set the `oversample` factor of this node
   ///
