@@ -87,17 +87,14 @@ fn generate_api_method(
     );
 
     let maybe_implementation = match mode {
-        GenerateApiMethodMode::SeparatedDecl => match method_info.mode {
-            MirFuncOwnerInfoMethodMode::Static => {
-                format!("=>{}", generate_implementation_separated_decl_forward(func))
-            }
-            MirFuncOwnerInfoMethodMode::Instance => "",
-        },
-        GenerateApiMethodMode::SeparatedImpl | GenerateApiMethodMode::Combined => format!(
-            "=>{}",
-            generate_implementation_normal(func, context, method_info, &params)
+        GenerateApiMethodMode::SeparatedDecl => {
+            generate_implementation_separated_decl_forward(func)
+        }
+        GenerateApiMethodMode::SeparatedImpl | GenerateApiMethodMode::Combined => Some(
+            generate_implementation_normal(func, context, method_info, &params),
         ),
     };
+    let maybe_implementation = (maybe_implementation.map(|x| format!("=>{x}"))).unwrap_or_default();
 
     format!("{comments}{signature}{maybe_implementation};\n\n")
 }
@@ -193,6 +190,10 @@ fn generate_implementation_normal(
     }
 }
 
-fn generate_implementation_separated_decl_forward(func: &MirFunc) -> String {
-    TODO
+fn generate_implementation_separated_decl_forward(func: &MirFunc) -> Option<String> {
+    if method_info.mode != MirFuncOwnerInfoMethodMode::Static {
+        return None;
+    }
+
+    Some(TODO)
 }
