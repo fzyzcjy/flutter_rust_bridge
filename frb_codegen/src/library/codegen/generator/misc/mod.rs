@@ -50,6 +50,14 @@ impl PathText {
     pub(crate) fn new(path: PathBuf, text: String) -> Self {
         Self { path, text }
     }
+
+    pub(crate) fn merge(&self, other: &Self) -> Self {
+        assert_eq!(self.path, other.path);
+        Self {
+            path: self.path.clone(),
+            text: self.text.clone() + other.text,
+        }
+    }
 }
 
 #[derive(Clone)]
@@ -59,7 +67,15 @@ impl Add for PathTexts {
     type Output = Self;
 
     fn add(self, rhs: Self) -> Self::Output {
-        Self([self.0, rhs.0].concat())
+        Self(
+            [self.0, rhs.0]
+                .concat()
+                .into_iter()
+                .into_group_map_by(|x| x.path.clone())
+                .into_iter()
+                .map(|(_, v)| v.into_iter().reduce(|a, b| a.merge(b)).unwrap())
+                .collect_vec(),
+        )
     }
 }
 
