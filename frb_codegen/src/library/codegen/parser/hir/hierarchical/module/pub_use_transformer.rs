@@ -89,7 +89,7 @@ fn transform_items<T: HirCommon>(
     pub_use_info: &PubUseInfo,
 ) -> Vec<T> {
     (items.iter())
-        .filter(|x| pub_use_info.is_interest_name(x.ident()))
+        .filter(|x| pub_use_info.is_interest_name(x.ident().to_string()))
         .map(|x| x.with_namespace(self_namespace.clone()))
         .collect_vec()
 }
