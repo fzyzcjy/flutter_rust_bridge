@@ -38,9 +38,12 @@ fn serialize_item_trait<S: Serializer>(x: &ItemTrait, s: S) -> Result<S::Ok, S::
 
 pub(super) fn serialize_item_impl<S: Serializer>(x: &ItemImpl, s: S) -> Result<S::Ok, S::Error> {
     s.serialize_str(&format!(
-        "ItemImpl(self_ty={}, trait={:?})",
+        "ItemImpl(self_ty={}, trait={})",
         ty_to_string(&x.self_ty),
-        x.trait_.as_ref().map(|t| ty_to_string(&t.1))
+        x.trait_
+            .as_ref()
+            .map(|t| ty_to_string(&t.1).replace(' ', ""))
+            .unwrap_or("None".to_owned())
     ))
 }
 
