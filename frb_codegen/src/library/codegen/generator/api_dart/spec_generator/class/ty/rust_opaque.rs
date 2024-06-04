@@ -15,14 +15,6 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
         let rust_api_type = self.mir.rust_api_type();
         let dart_api_type = ApiDartGenerator::new(self.mir.clone(), self.context).dart_api_type();
 
-        let methods = generate_api_methods(
-            &NamespacedName::new(
-                self.mir.namespace.clone(),
-                compute_api_method_query_name(&self.mir, self.context),
-            ),
-            self.context,
-        )
-        .join("\n");
         let extra_body =
             generate_class_extra_body(self.mir_type(), &self.context.mir_pack.dart_code_of_type);
 
@@ -33,7 +25,7 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
                 "
                 // Rust type: {rust_api_type}
                 abstract class {dart_api_type} {{
-                    TODO
+                    {methods}
 
                     {extra_body}
                 }}
@@ -45,15 +37,22 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
     }
 
     fn generate_extra_impl_code(&self) -> Option<String> {
-        let Info {
-            dart_api_type,
-            rust_api_type,
-        } = TODO;
+        let rust_api_type = self.mir.rust_api_type();
+        let dart_api_type = ApiDartGenerator::new(self.mir.clone(), self.context).dart_api_type();
 
         let dart_api_type_impl = format!("{dart_api_type}Impl");
 
         let dart_entrypoint_class_name = &self.context.config.dart_entrypoint_class_name;
         let dart_api_instance = format!("{dart_entrypoint_class_name}.instance.api");
+
+        let methods = generate_api_methods(
+            &NamespacedName::new(
+                self.mir.namespace.clone(),
+                compute_api_method_query_name(&self.mir, self.context),
+            ),
+            self.context,
+        )
+        .join("\n");
 
         Some(format!(
             "
@@ -76,11 +75,6 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
             }}"
         ))
     }
-}
-
-struct Info {
-    dart_api_type: String,
-    rust_api_type: String,
 }
 
 fn compute_api_method_query_name(
