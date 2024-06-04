@@ -15,3 +15,12 @@ pub(crate) struct HirTraitImpl {
     #[serde(skip_serializing)]
     pub(crate) item_impl: ItemImpl,
 }
+
+impl HirTrait {
+    pub(crate) fn with_namespace(&self, namespace: Namespace) -> Self {
+        Self {
+            namespace,
+            ..self.to_owned()
+        }
+    }
+}

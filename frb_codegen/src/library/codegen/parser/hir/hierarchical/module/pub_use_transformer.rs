@@ -46,10 +46,14 @@ fn transform_module_by_pub_use_single(
         let src_enums = (src_mod.content.enums.iter())
             .map(|x| x.with_namespace(self_namespace.clone()))
             .collect_vec();
+        let src_traits = (src_mod.content.traits.iter())
+            .map(|x| x.with_namespace(self_namespace.clone()))
+            .collect_vec();
 
         module.content.functions.extend(src_functions);
         module.content.structs.extend(src_structs);
         module.content.enums.extend(src_enums);
+        module.content.traits.extend(src_traits);
     } else {
         log::debug!(
             "transform_module_by_pub_use_single skip `{pub_use_name}` since cannot find mod"
