@@ -4,6 +4,7 @@ use crate::codegen::ir::hir::hierarchical::function::{
 use crate::codegen::ir::hir::hierarchical::module::HirModule;
 use crate::codegen::ir::hir::hierarchical::pack::HirPack;
 use crate::codegen::ir::hir::hierarchical::traits::HirTrait;
+use crate::codegen::parser::hir::flat::collect_traits;
 use crate::codegen::parser::hir::hierarchical::function::parse_syn_item_impl;
 use crate::if_then_some;
 use crate::utils::namespace::{Namespace, NamespacedName};
@@ -12,20 +13,15 @@ use std::collections::HashMap;
 use syn::{ItemImpl, TraitItem};
 
 pub(super) fn transform(mut pack: HirPack) -> anyhow::Result<HirPack> {
-    let trait_map = collect_traits(&pack);
+    let trait_map = (collect_traits(&pack).into_iter())
+        .map(|(k, v)| (k, v.to_owned()))
+        .collect::<HashMap<_, _>>();
+
     pack.visit_mut(&mut |module| {
         (module.content.functions).extend(compute_methods(module, &trait_map));
     });
-    Ok(pack)
-}
 
-fn collect_traits(pack: &HirPack) -> HashMap<String, HirTrait> {
-    let mut traits = vec![];
-    pack.visit(&mut |module| traits.extend(module.content.traits.clone()));
-    traits
-        .into_iter()
-        .map(|t| (t.item_trait.ident.to_string(), t))
-        .collect()
+    Ok(pack)
 }
 
 fn compute_methods(module: &HirModule, trait_map: &HashMap<String, HirTrait>) -> Vec<HirFunction> {

@@ -1,5 +1,6 @@
+use crate::codegen::ir::hir::hierarchical::misc::HirCommon;
 use crate::utils::namespace::{Namespace, NamespacedName};
-use proc_macro2::Span;
+use proc_macro2::{Ident, Span};
 use serde::Serialize;
 use syn::spanned::Spanned;
 use syn::{Attribute, ImplItemFn, ItemFn, ItemImpl, Signature, TraitItemFn, Visibility};
@@ -7,20 +8,25 @@ use syn::{Attribute, ImplItemFn, ItemFn, ItemImpl, Signature, TraitItemFn, Visib
 #[derive(Debug, Clone, Serialize)]
 pub(crate) struct HirFunction {
     pub(crate) namespace: Namespace,
-    #[serde(skip_serializing)]
     pub(crate) owner: HirFunctionOwner,
     #[serde(skip_serializing)]
     pub(crate) item_fn: GeneralizedItemFn,
 }
 
-impl HirFunction {
-    pub(crate) fn with_namespace(&self, namespace: Namespace) -> Self {
+impl HirCommon for HirFunction {
+    fn with_namespace(&self, namespace: Namespace) -> Self {
         Self {
             namespace,
             ..self.clone()
         }
     }
 
+    fn ident(&self) -> Ident {
+        self.item_fn.sig().ident.clone()
+    }
+}
+
+impl HirFunction {
     pub(crate) fn owner_and_name(&self) -> SimpleOwnerAndName {
         (self.owner.simple_name(), self.item_fn.name())
     }
@@ -40,10 +46,11 @@ impl HirFunction {
     }
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize)]
 pub(crate) enum HirFunctionOwner {
     Function,
     Method {
+        #[serde(skip_serializing)]
         item_impl: ItemImpl,
         trait_def_name: Option<NamespacedName>,
     },

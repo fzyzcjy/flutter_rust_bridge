@@ -19,16 +19,36 @@
                 ],
                 "functions": [
                   {
-                    "namespace": "crate::api"
+                    "namespace": "crate::api",
+                    "owner": {
+                      "Method": {
+                        "trait_def_name": null
+                      }
+                    }
                   },
                   {
-                    "namespace": "crate::api"
+                    "namespace": "crate::api",
+                    "owner": {
+                      "Method": {
+                        "trait_def_name": null
+                      }
+                    }
                   },
                   {
-                    "namespace": "crate::api"
+                    "namespace": "crate::api",
+                    "owner": {
+                      "Method": {
+                        "trait_def_name": null
+                      }
+                    }
                   },
                   {
-                    "namespace": "crate::api"
+                    "namespace": "crate::api",
+                    "owner": {
+                      "Method": {
+                        "trait_def_name": null
+                      }
+                    }
                   }
                 ],
                 "modules": [],
