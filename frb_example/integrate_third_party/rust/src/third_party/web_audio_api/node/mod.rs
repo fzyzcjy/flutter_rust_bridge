@@ -28,21 +28,6 @@ impl BiquadFilterNode {
     pub fn get_frequency_response() {}
 }
 
-macro_rules! handle_biquad_filter_node_audio_param {
-    ($func_name:ident) => {
-        #[frb(external)]
-        impl BiquadFilterNode {
-            #[frb(ignore)]
-            pub fn $func_name() {}
-        }
-    };
-}
-
-handle_biquad_filter_node_audio_param!(q);
-handle_biquad_filter_node_audio_param!(detune);
-handle_biquad_filter_node_audio_param!(frequency);
-handle_biquad_filter_node_audio_param!(gain);
-
 #[frb(external)]
 impl ConvolverNode {
     #[frb(ignore)]
@@ -104,3 +89,18 @@ handle_audio_node_trait_impls!(PannerNode);
 handle_audio_node_trait_impls!(ScriptProcessorNode);
 handle_audio_node_trait_impls!(StereoPannerNode);
 handle_audio_node_trait_impls!(WaveShaperNode);
+
+macro_rules! handle_getter_audio_param {
+    ($struct_name:ident ; $($func_name:ident),+) => {
+        #[frb(external)]
+        impl $struct_name {
+            $(
+                #[frb(ignore)]
+                pub fn $func_name() {}
+            )+
+        }
+    };
+}
+
+handle_getter_audio_param!(BiquadFilterNode ; q , detune , frequency , gain);
+
