@@ -32,6 +32,19 @@ impl HirCommon for HirTrait {
     }
 }
 
+impl HirCommon for HirTraitImpl {
+    fn with_namespace(&self, namespace: Namespace) -> Self {
+        Self {
+            namespace,
+            ..self.to_owned()
+        }
+    }
+
+    fn ident(&self) -> Ident {
+        self.item_impl.self_ty
+    }
+}
+
 fn serialize_item_trait<S: Serializer>(x: &ItemTrait, s: S) -> Result<S::Ok, S::Error> {
     s.serialize_str(&format!("ItemTrait(ident={})", x.ident))
 }
