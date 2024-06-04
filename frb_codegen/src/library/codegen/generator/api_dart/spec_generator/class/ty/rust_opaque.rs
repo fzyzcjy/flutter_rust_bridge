@@ -55,7 +55,7 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
 
         Some(format!(
             "
-            @sealed class {dart_api_type_impl}extends RustOpaque implements {} {{
+            @sealed class {dart_api_type_impl}extends RustOpaque implements {dart_api_type} {{
                 // Not to be used by end users
                 {dart_api_type_impl}.frbInternalDcoDecode(List<dynamic> wire):
                     super.frbInternalDcoDecode(wire, _kStaticData);
@@ -77,7 +77,7 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
 }
 
 impl RustOpaqueApiDartGenerator<'_> {
-    fn compute_info(&self, mode: GenerateApiMethodMode) {
+    fn compute_info(&self, mode: GenerateApiMethodMode) -> Info {
         let rust_api_type = self.mir.rust_api_type();
         let dart_api_type = ApiDartGenerator::new(self.mir.clone(), self.context).dart_api_type();
 
