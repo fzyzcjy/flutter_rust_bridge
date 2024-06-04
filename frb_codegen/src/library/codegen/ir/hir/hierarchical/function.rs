@@ -1,7 +1,7 @@
 use crate::codegen::ir::hir::hierarchical::misc::HirCommon;
 use crate::codegen::ir::hir::hierarchical::traits::serialize_item_impl;
 use crate::utils::namespace::{Namespace, NamespacedName};
-use proc_macro2::{Ident, Span};
+use proc_macro2::Span;
 use serde::{Serialize, Serializer};
 use syn::spanned::Spanned;
 use syn::{Attribute, ImplItemFn, ItemFn, ItemImpl, Signature, TraitItemFn, Visibility};

@@ -1,6 +1,5 @@
 use crate::codegen::ir::hir::hierarchical::misc::HirCommon;
 use crate::utils::namespace::Namespace;
-use proc_macro2::Ident;
 use quote::ToTokens;
 use serde::{Serialize, Serializer};
 use syn::{ItemImpl, ItemTrait};
