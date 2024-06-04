@@ -12,8 +12,8 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'context.freezed.dart';
 
 // These functions are ignored because they are not marked as `pub`: `address`, `calculate_suspend_frame`, `clear_event_handler`, `connect_listener_to_panner`, `connect`, `context`, `current_time`, `destination_channel_config`, `disconnect`, `ensure_audio_listener_present`, `get`, `id`, `is_valid_sink_id`, `listener`, `lock_control_msg_sender`, `mark_node_dropped`, `max_channel_count`, `new`, `new`, `offline`, `post_message`, `queue_audio_param_connect`, `register`, `resolve_queued_control_msgs`, `sample_rate`, `send_control_msg`, `send_event`, `set_event_handler`, `set_state`, `state`
-// These functions are ignored because they have generic arguments: `run_diagnostics`, `set_oncomplete`, `set_onsinkchange`, `suspend_sync`
-// These types are ignored because they are not used by any `pub` functions: `AudioContextState`, `AudioNodeIdProvider`, `AudioNodeId`, `AudioParamId`, `ConcreteBaseAudioContextInner`, `OfflineAudioContextRenderer`
+// These functions are ignored because they have generic arguments: `decode_audio_data_sync`, `decode_audio_data_sync`, `decode_audio_data_sync`, `run_diagnostics`, `set_oncomplete`, `set_onsinkchange`, `set_onstatechange`, `set_onstatechange`, `set_onstatechange`, `suspend_sync`
+// These types are ignored because they are not used by any `pub` functions: `AudioNodeIdProvider`, `AudioNodeId`, `ConcreteBaseAudioContextInner`, `OfflineAudioContextRenderer`
 // These functions are ignored: `create_media_element_source`, `resume`, `set_sink_id_sync`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioContext>>
@@ -46,6 +46,11 @@ class AudioContext extends RustOpaque {
         that: this,
       );
 
+  Future<void> base() =>
+      RustLib.instance.api.webAudioApiContextAudioContextBase(
+        that: this,
+      );
+
   /// This represents the number of seconds of processing latency incurred by
   /// the `AudioContext` passing the audio from the `AudioDestinationNode`
   /// to the audio subsystem.
@@ -57,6 +62,12 @@ class AudioContext extends RustOpaque {
   /// Unset the callback to run when the audio sink has changed
   Future<void> clearOnsinkchange() =>
       RustLib.instance.api.webAudioApiContextAudioContextClearOnsinkchange(
+        that: this,
+      );
+
+  /// Unset the callback to run when the state of the AudioContext has changed
+  Future<void> clearOnstatechange() =>
+      RustLib.instance.api.webAudioApiContextAudioContextClearOnstatechange(
         that: this,
       );
 
@@ -89,6 +100,104 @@ class AudioContext extends RustOpaque {
         that: this,
       );
 
+  /// Creates a `AnalyserNode`
+  Future<AnalyserNode> createAnalyser() =>
+      RustLib.instance.api.webAudioApiContextAudioContextCreateAnalyser(
+        that: this,
+      );
+
+  /// Create an `AudioParam`.
+  ///
+  /// Call this inside the `register` closure when setting up your `AudioNode`
+  Future<(AudioParam, AudioParamId)> createAudioParam(
+          {required AudioParamDescriptor opts,
+          required AudioContextRegistration dest}) =>
+      RustLib.instance.api.webAudioApiContextAudioContextCreateAudioParam(
+          that: this, opts: opts, dest: dest);
+
+  /// Creates an `BiquadFilterNode` which implements a second order filter
+  Future<BiquadFilterNode> createBiquadFilter() =>
+      RustLib.instance.api.webAudioApiContextAudioContextCreateBiquadFilter(
+        that: this,
+      );
+
+  /// Create an new "in-memory" `AudioBuffer` with the given number of channels,
+  /// length (i.e. number of samples per channel) and sample rate.
+  ///
+  /// Note: In most cases you will want the sample rate to match the current
+  /// audio context sample rate.
+  Future<AudioBuffer> createBuffer(
+          {required BigInt numberOfChannels,
+          required BigInt length,
+          required double sampleRate}) =>
+      RustLib.instance.api.webAudioApiContextAudioContextCreateBuffer(
+          that: this,
+          numberOfChannels: numberOfChannels,
+          length: length,
+          sampleRate: sampleRate);
+
+  /// Creates an `AudioBufferSourceNode`
+  Future<AudioBufferSourceNode> createBufferSource() =>
+      RustLib.instance.api.webAudioApiContextAudioContextCreateBufferSource(
+        that: this,
+      );
+
+  /// Creates a `ChannelMergerNode`
+  Future<ChannelMergerNode> createChannelMerger(
+          {required BigInt numberOfInputs}) =>
+      RustLib.instance.api.webAudioApiContextAudioContextCreateChannelMerger(
+          that: this, numberOfInputs: numberOfInputs);
+
+  /// Creates a `ChannelSplitterNode`
+  Future<ChannelSplitterNode> createChannelSplitter(
+          {required BigInt numberOfOutputs}) =>
+      RustLib.instance.api.webAudioApiContextAudioContextCreateChannelSplitter(
+          that: this, numberOfOutputs: numberOfOutputs);
+
+  /// Creates an `ConstantSourceNode`, a source representing a constant value
+  Future<ConstantSourceNode> createConstantSource() =>
+      RustLib.instance.api.webAudioApiContextAudioContextCreateConstantSource(
+        that: this,
+      );
+
+  /// Creates an `ConvolverNode`, a processing node which applies linear convolution
+  Future<ConvolverNode> createConvolver() =>
+      RustLib.instance.api.webAudioApiContextAudioContextCreateConvolver(
+        that: this,
+      );
+
+  /// Creates a `DelayNode`, delaying the audio signal
+  Future<DelayNode> createDelay({required double maxDelayTime}) =>
+      RustLib.instance.api.webAudioApiContextAudioContextCreateDelay(
+          that: this, maxDelayTime: maxDelayTime);
+
+  /// Creates a `DynamicsCompressorNode`, compressing the audio signal
+  Future<DynamicsCompressorNode> createDynamicsCompressor() =>
+      RustLib.instance.api
+          .webAudioApiContextAudioContextCreateDynamicsCompressor(
+        that: this,
+      );
+
+  /// Creates an `GainNode`, to control audio volume
+  Future<GainNode> createGain() =>
+      RustLib.instance.api.webAudioApiContextAudioContextCreateGain(
+        that: this,
+      );
+
+  /// Creates an `IirFilterNode`
+  ///
+  /// # Arguments
+  ///
+  /// * `feedforward` - An array of the feedforward (numerator) coefficients for the transfer function of the IIR filter.
+  /// The maximum length of this array is 20
+  /// * `feedback` - An array of the feedback (denominator) coefficients for the transfer function of the IIR filter.
+  /// The maximum length of this array is 20
+  Future<IirFilterNode> createIirFilter(
+          {required List<double> feedforward,
+          required List<double> feedback}) =>
+      RustLib.instance.api.webAudioApiContextAudioContextCreateIirFilter(
+          that: this, feedforward: feedforward, feedback: feedback);
+
   /// Creates a [`MediaStreamAudioDestinationNode`](node::MediaStreamAudioDestinationNode)
   Future<MediaStreamAudioDestinationNode> createMediaStreamDestination() =>
       RustLib.instance.api
@@ -111,6 +220,77 @@ class AudioContext extends RustOpaque {
       RustLib.instance.api
           .webAudioApiContextAudioContextCreateMediaStreamTrackSource(
               that: this, media: media);
+
+  /// Creates an `OscillatorNode`, a source representing a periodic waveform.
+  Future<OscillatorNode> createOscillator() =>
+      RustLib.instance.api.webAudioApiContextAudioContextCreateOscillator(
+        that: this,
+      );
+
+  /// Creates a `PannerNode`
+  Future<PannerNode> createPanner() =>
+      RustLib.instance.api.webAudioApiContextAudioContextCreatePanner(
+        that: this,
+      );
+
+  /// Creates a periodic wave
+  ///
+  /// Please note that this constructor deviates slightly from the spec by requiring a single
+  /// argument with the periodic wave options.
+  Future<PeriodicWave> createPeriodicWave(
+          {required PeriodicWaveOptions options}) =>
+      RustLib.instance.api.webAudioApiContextAudioContextCreatePeriodicWave(
+          that: this, options: options);
+
+  /// Creates an `ScriptProcessorNode` for custom audio processing (deprecated);
+  ///
+  /// # Panics
+  ///
+  /// This function panics if:
+  /// - `buffer_size` is not 256, 512, 1024, 2048, 4096, 8192, or 16384
+  /// - the number of input and output channels are both zero
+  /// - either of the channel counts exceed [`crate::MAX_CHANNELS`]
+  Future<ScriptProcessorNode> createScriptProcessor(
+          {required BigInt bufferSize,
+          required BigInt numberOfInputChannels,
+          required BigInt numberOfOutputChannels}) =>
+      RustLib.instance.api.webAudioApiContextAudioContextCreateScriptProcessor(
+          that: this,
+          bufferSize: bufferSize,
+          numberOfInputChannels: numberOfInputChannels,
+          numberOfOutputChannels: numberOfOutputChannels);
+
+  /// Creates an `StereoPannerNode` to pan a stereo output
+  Future<StereoPannerNode> createStereoPanner() =>
+      RustLib.instance.api.webAudioApiContextAudioContextCreateStereoPanner(
+        that: this,
+      );
+
+  /// Creates a `WaveShaperNode`
+  Future<WaveShaperNode> createWaveShaper() =>
+      RustLib.instance.api.webAudioApiContextAudioContextCreateWaveShaper(
+        that: this,
+      );
+
+  /// This is the time in seconds of the sample frame immediately following the last sample-frame
+  /// in the block of audio most recently processed by the context’s rendering graph.
+  Future<double> currentTime() =>
+      RustLib.instance.api.webAudioApiContextAudioContextCurrentTime(
+        that: this,
+      );
+
+  /// Returns an `AudioDestinationNode` representing the final destination of all audio in the
+  /// context. It can be thought of as the audio-rendering device.
+  Future<AudioDestinationNode> destination() =>
+      RustLib.instance.api.webAudioApiContextAudioContextDestination(
+        that: this,
+      );
+
+  /// Returns the `AudioListener` which is used for 3D spatialization
+  Future<AudioListener> listener() =>
+      RustLib.instance.api.webAudioApiContextAudioContextListener(
+        that: this,
+      );
 
   /// Creates and returns a new `AudioContext` object.
   ///
@@ -163,11 +343,23 @@ class AudioContext extends RustOpaque {
         that: this,
       );
 
+  /// The sample rate (in sample-frames per second) at which the `AudioContext` handles audio.
+  Future<double> sampleRate() =>
+      RustLib.instance.api.webAudioApiContextAudioContextSampleRate(
+        that: this,
+      );
+
   /// Identifier or the information of the current audio output device.
   ///
   /// The initial value is `""`, which means the default audio output device.
   Future<String> sinkId() =>
       RustLib.instance.api.webAudioApiContextAudioContextSinkId(
+        that: this,
+      );
+
+  /// Returns state of current context
+  Future<AudioContextState> state() =>
+      RustLib.instance.api.webAudioApiContextAudioContextState(
         that: this,
       );
 
@@ -207,25 +399,24 @@ class AudioContext extends RustOpaque {
       );
 }
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioContextRegistration>>
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioParamId>>
 @sealed
-class AudioContextRegistration extends RustOpaque {
+class AudioParamId extends RustOpaque {
   // Not to be used by end users
-  AudioContextRegistration.frbInternalDcoDecode(List<dynamic> wire)
+  AudioParamId.frbInternalDcoDecode(List<dynamic> wire)
       : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
-  AudioContextRegistration.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
+  AudioParamId.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
       : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_AudioContextRegistration,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_AudioContextRegistration,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_AudioContextRegistrationPtr,
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_AudioParamId,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_AudioParamId,
+    rustArcDecrementStrongCountPtr:
+        RustLib.instance.api.rust_arc_decrement_strong_count_AudioParamIdPtr,
   );
 }
 
@@ -250,11 +441,211 @@ class ConcreteBaseAudioContext extends RustOpaque {
         .rust_arc_decrement_strong_count_ConcreteBaseAudioContextPtr,
   );
 
+  Future<void> base() =>
+      RustLib.instance.api.webAudioApiContextConcreteBaseAudioContextBase(
+        that: this,
+      );
+
+  /// Unset the callback to run when the state of the AudioContext has changed
+  Future<void> clearOnstatechange() => RustLib.instance.api
+          .webAudioApiContextConcreteBaseAudioContextClearOnstatechange(
+        that: this,
+      );
+
+  /// Creates a `AnalyserNode`
+  Future<AnalyserNode> createAnalyser() => RustLib.instance.api
+          .webAudioApiContextConcreteBaseAudioContextCreateAnalyser(
+        that: this,
+      );
+
+  /// Create an `AudioParam`.
+  ///
+  /// Call this inside the `register` closure when setting up your `AudioNode`
+  Future<(AudioParam, AudioParamId)> createAudioParam(
+          {required AudioParamDescriptor opts,
+          required AudioContextRegistration dest}) =>
+      RustLib.instance.api
+          .webAudioApiContextConcreteBaseAudioContextCreateAudioParam(
+              that: this, opts: opts, dest: dest);
+
+  /// Creates an `BiquadFilterNode` which implements a second order filter
+  Future<BiquadFilterNode> createBiquadFilter() => RustLib.instance.api
+          .webAudioApiContextConcreteBaseAudioContextCreateBiquadFilter(
+        that: this,
+      );
+
+  /// Create an new "in-memory" `AudioBuffer` with the given number of channels,
+  /// length (i.e. number of samples per channel) and sample rate.
+  ///
+  /// Note: In most cases you will want the sample rate to match the current
+  /// audio context sample rate.
+  Future<AudioBuffer> createBuffer(
+          {required BigInt numberOfChannels,
+          required BigInt length,
+          required double sampleRate}) =>
+      RustLib.instance.api
+          .webAudioApiContextConcreteBaseAudioContextCreateBuffer(
+              that: this,
+              numberOfChannels: numberOfChannels,
+              length: length,
+              sampleRate: sampleRate);
+
+  /// Creates an `AudioBufferSourceNode`
+  Future<AudioBufferSourceNode> createBufferSource() => RustLib.instance.api
+          .webAudioApiContextConcreteBaseAudioContextCreateBufferSource(
+        that: this,
+      );
+
+  /// Creates a `ChannelMergerNode`
+  Future<ChannelMergerNode> createChannelMerger(
+          {required BigInt numberOfInputs}) =>
+      RustLib.instance.api
+          .webAudioApiContextConcreteBaseAudioContextCreateChannelMerger(
+              that: this, numberOfInputs: numberOfInputs);
+
+  /// Creates a `ChannelSplitterNode`
+  Future<ChannelSplitterNode> createChannelSplitter(
+          {required BigInt numberOfOutputs}) =>
+      RustLib.instance.api
+          .webAudioApiContextConcreteBaseAudioContextCreateChannelSplitter(
+              that: this, numberOfOutputs: numberOfOutputs);
+
+  /// Creates an `ConstantSourceNode`, a source representing a constant value
+  Future<ConstantSourceNode> createConstantSource() => RustLib.instance.api
+          .webAudioApiContextConcreteBaseAudioContextCreateConstantSource(
+        that: this,
+      );
+
+  /// Creates an `ConvolverNode`, a processing node which applies linear convolution
+  Future<ConvolverNode> createConvolver() => RustLib.instance.api
+          .webAudioApiContextConcreteBaseAudioContextCreateConvolver(
+        that: this,
+      );
+
+  /// Creates a `DelayNode`, delaying the audio signal
+  Future<DelayNode> createDelay({required double maxDelayTime}) =>
+      RustLib.instance.api
+          .webAudioApiContextConcreteBaseAudioContextCreateDelay(
+              that: this, maxDelayTime: maxDelayTime);
+
+  /// Creates a `DynamicsCompressorNode`, compressing the audio signal
+  Future<DynamicsCompressorNode> createDynamicsCompressor() =>
+      RustLib.instance.api
+          .webAudioApiContextConcreteBaseAudioContextCreateDynamicsCompressor(
+        that: this,
+      );
+
+  /// Creates an `GainNode`, to control audio volume
+  Future<GainNode> createGain() =>
+      RustLib.instance.api.webAudioApiContextConcreteBaseAudioContextCreateGain(
+        that: this,
+      );
+
+  /// Creates an `IirFilterNode`
+  ///
+  /// # Arguments
+  ///
+  /// * `feedforward` - An array of the feedforward (numerator) coefficients for the transfer function of the IIR filter.
+  /// The maximum length of this array is 20
+  /// * `feedback` - An array of the feedback (denominator) coefficients for the transfer function of the IIR filter.
+  /// The maximum length of this array is 20
+  Future<IirFilterNode> createIirFilter(
+          {required List<double> feedforward,
+          required List<double> feedback}) =>
+      RustLib.instance.api
+          .webAudioApiContextConcreteBaseAudioContextCreateIirFilter(
+              that: this, feedforward: feedforward, feedback: feedback);
+
+  /// Creates an `OscillatorNode`, a source representing a periodic waveform.
+  Future<OscillatorNode> createOscillator() => RustLib.instance.api
+          .webAudioApiContextConcreteBaseAudioContextCreateOscillator(
+        that: this,
+      );
+
+  /// Creates a `PannerNode`
+  Future<PannerNode> createPanner() => RustLib.instance.api
+          .webAudioApiContextConcreteBaseAudioContextCreatePanner(
+        that: this,
+      );
+
+  /// Creates a periodic wave
+  ///
+  /// Please note that this constructor deviates slightly from the spec by requiring a single
+  /// argument with the periodic wave options.
+  Future<PeriodicWave> createPeriodicWave(
+          {required PeriodicWaveOptions options}) =>
+      RustLib.instance.api
+          .webAudioApiContextConcreteBaseAudioContextCreatePeriodicWave(
+              that: this, options: options);
+
+  /// Creates an `ScriptProcessorNode` for custom audio processing (deprecated);
+  ///
+  /// # Panics
+  ///
+  /// This function panics if:
+  /// - `buffer_size` is not 256, 512, 1024, 2048, 4096, 8192, or 16384
+  /// - the number of input and output channels are both zero
+  /// - either of the channel counts exceed [`crate::MAX_CHANNELS`]
+  Future<ScriptProcessorNode> createScriptProcessor(
+          {required BigInt bufferSize,
+          required BigInt numberOfInputChannels,
+          required BigInt numberOfOutputChannels}) =>
+      RustLib.instance.api
+          .webAudioApiContextConcreteBaseAudioContextCreateScriptProcessor(
+              that: this,
+              bufferSize: bufferSize,
+              numberOfInputChannels: numberOfInputChannels,
+              numberOfOutputChannels: numberOfOutputChannels);
+
+  /// Creates an `StereoPannerNode` to pan a stereo output
+  Future<StereoPannerNode> createStereoPanner() => RustLib.instance.api
+          .webAudioApiContextConcreteBaseAudioContextCreateStereoPanner(
+        that: this,
+      );
+
+  /// Creates a `WaveShaperNode`
+  Future<WaveShaperNode> createWaveShaper() => RustLib.instance.api
+          .webAudioApiContextConcreteBaseAudioContextCreateWaveShaper(
+        that: this,
+      );
+
+  /// This is the time in seconds of the sample frame immediately following the last sample-frame
+  /// in the block of audio most recently processed by the context’s rendering graph.
+  Future<double> currentTime() => RustLib.instance.api
+          .webAudioApiContextConcreteBaseAudioContextCurrentTime(
+        that: this,
+      );
+
+  /// Returns an `AudioDestinationNode` representing the final destination of all audio in the
+  /// context. It can be thought of as the audio-rendering device.
+  Future<AudioDestinationNode> destination() => RustLib.instance.api
+          .webAudioApiContextConcreteBaseAudioContextDestination(
+        that: this,
+      );
+
+  /// Returns the `AudioListener` which is used for 3D spatialization
+  Future<AudioListener> listener() =>
+      RustLib.instance.api.webAudioApiContextConcreteBaseAudioContextListener(
+        that: this,
+      );
+
   /// Inform render thread that this node can act as a cycle breaker
   Future<void> markCycleBreaker({required AudioContextRegistration reg}) =>
       RustLib.instance.api
           .webAudioApiContextConcreteBaseAudioContextMarkCycleBreaker(
               that: this, reg: reg);
+
+  /// The sample rate (in sample-frames per second) at which the `AudioContext` handles audio.
+  Future<double> sampleRate() =>
+      RustLib.instance.api.webAudioApiContextConcreteBaseAudioContextSampleRate(
+        that: this,
+      );
+
+  /// Returns state of current context
+  Future<AudioContextState> state() =>
+      RustLib.instance.api.webAudioApiContextConcreteBaseAudioContextState(
+        that: this,
+      );
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OfflineAudioContext>>
@@ -277,15 +668,200 @@ class OfflineAudioContext extends RustOpaque {
         .instance.api.rust_arc_decrement_strong_count_OfflineAudioContextPtr,
   );
 
+  Future<void> base() =>
+      RustLib.instance.api.webAudioApiContextOfflineAudioContextBase(
+        that: this,
+      );
+
   /// Unset the callback to run when the rendering has completed
   Future<void> clearOncomplete() =>
       RustLib.instance.api.webAudioApiContextOfflineAudioContextClearOncomplete(
         that: this,
       );
 
+  /// Unset the callback to run when the state of the AudioContext has changed
+  Future<void> clearOnstatechange() => RustLib.instance.api
+          .webAudioApiContextOfflineAudioContextClearOnstatechange(
+        that: this,
+      );
+
+  /// Creates a `AnalyserNode`
+  Future<AnalyserNode> createAnalyser() =>
+      RustLib.instance.api.webAudioApiContextOfflineAudioContextCreateAnalyser(
+        that: this,
+      );
+
+  /// Create an `AudioParam`.
+  ///
+  /// Call this inside the `register` closure when setting up your `AudioNode`
+  Future<(AudioParam, AudioParamId)> createAudioParam(
+          {required AudioParamDescriptor opts,
+          required AudioContextRegistration dest}) =>
+      RustLib.instance.api
+          .webAudioApiContextOfflineAudioContextCreateAudioParam(
+              that: this, opts: opts, dest: dest);
+
+  /// Creates an `BiquadFilterNode` which implements a second order filter
+  Future<BiquadFilterNode> createBiquadFilter() => RustLib.instance.api
+          .webAudioApiContextOfflineAudioContextCreateBiquadFilter(
+        that: this,
+      );
+
+  /// Create an new "in-memory" `AudioBuffer` with the given number of channels,
+  /// length (i.e. number of samples per channel) and sample rate.
+  ///
+  /// Note: In most cases you will want the sample rate to match the current
+  /// audio context sample rate.
+  Future<AudioBuffer> createBuffer(
+          {required BigInt numberOfChannels,
+          required BigInt length,
+          required double sampleRate}) =>
+      RustLib.instance.api.webAudioApiContextOfflineAudioContextCreateBuffer(
+          that: this,
+          numberOfChannels: numberOfChannels,
+          length: length,
+          sampleRate: sampleRate);
+
+  /// Creates an `AudioBufferSourceNode`
+  Future<AudioBufferSourceNode> createBufferSource() => RustLib.instance.api
+          .webAudioApiContextOfflineAudioContextCreateBufferSource(
+        that: this,
+      );
+
+  /// Creates a `ChannelMergerNode`
+  Future<ChannelMergerNode> createChannelMerger(
+          {required BigInt numberOfInputs}) =>
+      RustLib.instance.api
+          .webAudioApiContextOfflineAudioContextCreateChannelMerger(
+              that: this, numberOfInputs: numberOfInputs);
+
+  /// Creates a `ChannelSplitterNode`
+  Future<ChannelSplitterNode> createChannelSplitter(
+          {required BigInt numberOfOutputs}) =>
+      RustLib.instance.api
+          .webAudioApiContextOfflineAudioContextCreateChannelSplitter(
+              that: this, numberOfOutputs: numberOfOutputs);
+
+  /// Creates an `ConstantSourceNode`, a source representing a constant value
+  Future<ConstantSourceNode> createConstantSource() => RustLib.instance.api
+          .webAudioApiContextOfflineAudioContextCreateConstantSource(
+        that: this,
+      );
+
+  /// Creates an `ConvolverNode`, a processing node which applies linear convolution
+  Future<ConvolverNode> createConvolver() =>
+      RustLib.instance.api.webAudioApiContextOfflineAudioContextCreateConvolver(
+        that: this,
+      );
+
+  /// Creates a `DelayNode`, delaying the audio signal
+  Future<DelayNode> createDelay({required double maxDelayTime}) =>
+      RustLib.instance.api.webAudioApiContextOfflineAudioContextCreateDelay(
+          that: this, maxDelayTime: maxDelayTime);
+
+  /// Creates a `DynamicsCompressorNode`, compressing the audio signal
+  Future<DynamicsCompressorNode> createDynamicsCompressor() =>
+      RustLib.instance.api
+          .webAudioApiContextOfflineAudioContextCreateDynamicsCompressor(
+        that: this,
+      );
+
+  /// Creates an `GainNode`, to control audio volume
+  Future<GainNode> createGain() =>
+      RustLib.instance.api.webAudioApiContextOfflineAudioContextCreateGain(
+        that: this,
+      );
+
+  /// Creates an `IirFilterNode`
+  ///
+  /// # Arguments
+  ///
+  /// * `feedforward` - An array of the feedforward (numerator) coefficients for the transfer function of the IIR filter.
+  /// The maximum length of this array is 20
+  /// * `feedback` - An array of the feedback (denominator) coefficients for the transfer function of the IIR filter.
+  /// The maximum length of this array is 20
+  Future<IirFilterNode> createIirFilter(
+          {required List<double> feedforward,
+          required List<double> feedback}) =>
+      RustLib.instance.api.webAudioApiContextOfflineAudioContextCreateIirFilter(
+          that: this, feedforward: feedforward, feedback: feedback);
+
+  /// Creates an `OscillatorNode`, a source representing a periodic waveform.
+  Future<OscillatorNode> createOscillator() => RustLib.instance.api
+          .webAudioApiContextOfflineAudioContextCreateOscillator(
+        that: this,
+      );
+
+  /// Creates a `PannerNode`
+  Future<PannerNode> createPanner() =>
+      RustLib.instance.api.webAudioApiContextOfflineAudioContextCreatePanner(
+        that: this,
+      );
+
+  /// Creates a periodic wave
+  ///
+  /// Please note that this constructor deviates slightly from the spec by requiring a single
+  /// argument with the periodic wave options.
+  Future<PeriodicWave> createPeriodicWave(
+          {required PeriodicWaveOptions options}) =>
+      RustLib.instance.api
+          .webAudioApiContextOfflineAudioContextCreatePeriodicWave(
+              that: this, options: options);
+
+  /// Creates an `ScriptProcessorNode` for custom audio processing (deprecated);
+  ///
+  /// # Panics
+  ///
+  /// This function panics if:
+  /// - `buffer_size` is not 256, 512, 1024, 2048, 4096, 8192, or 16384
+  /// - the number of input and output channels are both zero
+  /// - either of the channel counts exceed [`crate::MAX_CHANNELS`]
+  Future<ScriptProcessorNode> createScriptProcessor(
+          {required BigInt bufferSize,
+          required BigInt numberOfInputChannels,
+          required BigInt numberOfOutputChannels}) =>
+      RustLib.instance.api
+          .webAudioApiContextOfflineAudioContextCreateScriptProcessor(
+              that: this,
+              bufferSize: bufferSize,
+              numberOfInputChannels: numberOfInputChannels,
+              numberOfOutputChannels: numberOfOutputChannels);
+
+  /// Creates an `StereoPannerNode` to pan a stereo output
+  Future<StereoPannerNode> createStereoPanner() => RustLib.instance.api
+          .webAudioApiContextOfflineAudioContextCreateStereoPanner(
+        that: this,
+      );
+
+  /// Creates a `WaveShaperNode`
+  Future<WaveShaperNode> createWaveShaper() => RustLib.instance.api
+          .webAudioApiContextOfflineAudioContextCreateWaveShaper(
+        that: this,
+      );
+
+  /// This is the time in seconds of the sample frame immediately following the last sample-frame
+  /// in the block of audio most recently processed by the context’s rendering graph.
+  Future<double> currentTime() =>
+      RustLib.instance.api.webAudioApiContextOfflineAudioContextCurrentTime(
+        that: this,
+      );
+
+  /// Returns an `AudioDestinationNode` representing the final destination of all audio in the
+  /// context. It can be thought of as the audio-rendering device.
+  Future<AudioDestinationNode> destination() =>
+      RustLib.instance.api.webAudioApiContextOfflineAudioContextDestination(
+        that: this,
+      );
+
   /// get the length of rendering audio buffer
   Future<BigInt> length() =>
       RustLib.instance.api.webAudioApiContextOfflineAudioContextLength(
+        that: this,
+      );
+
+  /// Returns the `AudioListener` which is used for 3D spatialization
+  Future<AudioListener> listener() =>
+      RustLib.instance.api.webAudioApiContextOfflineAudioContextListener(
         that: this,
       );
 
@@ -313,6 +889,12 @@ class OfflineAudioContext extends RustOpaque {
   /// Panics when the context is closed or rendering has not started
   Future<void> resume() =>
       RustLib.instance.api.webAudioApiContextOfflineAudioContextResume(
+        that: this,
+      );
+
+  /// The sample rate (in sample-frames per second) at which the `AudioContext` handles audio.
+  Future<double> sampleRate() =>
+      RustLib.instance.api.webAudioApiContextOfflineAudioContextSampleRate(
         that: this,
       );
 
@@ -345,6 +927,12 @@ class OfflineAudioContext extends RustOpaque {
   /// Panics if this method is called multiple times
   Future<AudioBuffer> startRenderingSync() => RustLib.instance.api
           .webAudioApiContextOfflineAudioContextStartRenderingSync(
+        that: this,
+      );
+
+  /// Returns state of current context
+  Future<AudioContextState> state() =>
+      RustLib.instance.api.webAudioApiContextOfflineAudioContextState(
         that: this,
       );
 
@@ -483,5 +1071,20 @@ class AudioContextOptions {
 enum AudioContextRenderSizeCategory {
   /// The default value of 128 frames
   Default,
+  ;
+}
+
+/// Describes the current state of the `AudioContext`
+enum AudioContextState {
+  /// This context is currently suspended (context time is not proceeding,
+  /// audio hardware may be powered down/released).
+  suspended,
+
+  /// Audio is being processed.
+  running,
+
+  /// This context has been released, and can no longer be used to process audio.
+  /// All system audio resources have been released.
+  closed,
   ;
 }
