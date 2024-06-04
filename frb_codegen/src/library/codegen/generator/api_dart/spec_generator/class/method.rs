@@ -184,15 +184,13 @@ fn generate_maybe_implementation(
     params: &[ApiDartGeneratedFunctionParam],
     mode: GenerateApiMethodMode,
 ) -> Option<String> {
-    match mode {
-        GenerateApiMethodMode::SeparatedDecl => TODO,
-        GenerateApiMethodMode::SeparatedImpl => TODO,
-        GenerateApiMethodMode::Combined => Some(generate_implementation_call_impl(
-            func,
-            context,
-            method_info,
-            params,
-        )),
+    match (mode, method_info.mode) {
+        (GenerateApiMethodMode::Combined, _)
+        | (GenerateApiMethodMode::SeparatedDecl, MirFuncOwnerInfoMethodMode::Static)
+        | (GenerateApiMethodMode::SeparatedImpl, MirFuncOwnerInfoMethodMode::Instance) => Some(
+            generate_implementation_call_impl(func, context, method_info, params),
+        ),
+        _ => None,
     }
 }
 
