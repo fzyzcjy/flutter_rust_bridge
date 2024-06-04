@@ -5,7 +5,7 @@ pub mod node;
 pub mod worklet;
 
 use flutter_rust_bridge::frb;
-use web_audio_api::{AudioBuffer, AudioRenderCapacity};
+use web_audio_api::{AudioBuffer, AudioParam, AudioRenderCapacity};
 
 #[frb(external)]
 impl AudioRenderCapacity {
@@ -23,6 +23,12 @@ impl AudioBuffer {
     pub fn copy_to_channel() {}
     #[frb(ignore)]
     pub fn copy_to_channel_with_offset() {}
+}
+
+#[frb(external)]
+impl AudioParam {
+    #[frb(ignore)]
+    pub fn set_onprocessorerror() {}
 }
 
 #[frb(ignore)]
