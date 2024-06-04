@@ -314,3 +314,28 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     serializer.buffer.putUint8(self ? 1 : 0);
   }
 }
+
+// Section: boilerplate
+
+@sealed
+class MyStructImpl extends RustOpaque implements MyStruct {
+  // Not to be used by end users
+  MyStructImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  MyStructImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_MyStructImpl,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_MyStructImpl,
+    rustArcDecrementStrongCountPtr:
+        RustLib.instance.api.rust_arc_decrement_strong_count_MyStructImplPtr,
+  );
+
+  Future<int> f({required int a}) =>
+      RustLib.instance.api.crateApiMinimalMyStructF(that: this, a: a);
+}
