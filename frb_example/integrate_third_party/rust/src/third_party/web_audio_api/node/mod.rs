@@ -57,3 +57,23 @@ macro_rules! handle_audio_node {
 }
 
 handle_audio_node!(AnalyserNode);
+handle_audio_node!(AudioBufferSourceNode);
+handle_audio_node!(AudioDestinationNode);
+handle_audio_node!(BiquadFilterNode);
+handle_audio_node!(ChannelMergerNode);
+handle_audio_node!(ChannelSplitterNode);
+handle_audio_node!(ConstantSourceNode);
+handle_audio_node!(ConvolverNode);
+handle_audio_node!(DelayNode);
+handle_audio_node!(DynamicsCompressorNode);
+handle_audio_node!(GainNode);
+handle_audio_node!(IIRFilterNode);
+handle_audio_node!(MediaElementAudioSourceNode);
+handle_audio_node!(MediaStreamAudioDestinationNode);
+handle_audio_node!(MediaStreamAudioSourceNode);
+handle_audio_node!(MediaStreamTrackAudioSourceNode);
+handle_audio_node!(OscillatorNode);
+handle_audio_node!(PannerNode);
+handle_audio_node!(ScriptProcessorNode);
+handle_audio_node!(StereoPannerNode);
+handle_audio_node!(WaveShaperNode);
