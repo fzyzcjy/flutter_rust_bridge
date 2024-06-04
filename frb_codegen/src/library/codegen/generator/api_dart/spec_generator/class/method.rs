@@ -88,12 +88,14 @@ fn generate_api_method(
 
     let maybe_implementation = match mode {
         GenerateApiMethodMode::SeparatedDecl => match method_info.mode {
-            MirFuncOwnerInfoMethodMode::Static => format!("=>{}", TODO),
+            MirFuncOwnerInfoMethodMode::Static => {
+                format!("=>{}", generate_implementation_separated_decl_forward(func))
+            }
             MirFuncOwnerInfoMethodMode::Instance => "",
         },
         GenerateApiMethodMode::SeparatedImpl | GenerateApiMethodMode::Combined => format!(
             "=>{}",
-            generate_implementation(func, context, method_info, &params)
+            generate_implementation_normal(func, context, method_info, &params)
         ),
     };
 
@@ -167,7 +169,7 @@ fn generate_signature(
     format!("{maybe_static} {return_type} {maybe_accessor} {method_name}{func_params}")
 }
 
-fn generate_implementation(
+fn generate_implementation_normal(
     func: &MirFunc,
     context: ApiDartGeneratorContext,
     method_info: &MirFuncOwnerInfoMethod,
@@ -189,4 +191,8 @@ fn generate_implementation(
         let extra_arg_name = func.inputs[0].inner.name.dart_style();
         format!("{dart_api_instance}.{func_name}({extra_arg_name}: this, {arg_names})")
     }
+}
+
+fn generate_implementation_separated_decl_forward(func: &MirFunc) -> String {
+    TODO
 }
