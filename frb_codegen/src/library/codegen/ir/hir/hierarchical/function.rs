@@ -23,9 +23,9 @@ impl HirCommon for HirFunction {
     }
 
     fn name_for_use_stmt(&self) -> String {
-        match self.owner {
+        match &self.owner {
             HirFunctionOwner::Function => self.item_fn.sig().ident.to_string(),
-            HirFunctionOwner::Method { item_impl, .. } => ty_to_string(item_impl.self_ty),
+            HirFunctionOwner::Method { item_impl, .. } => ty_to_string(&item_impl.self_ty),
         }
     }
 }
