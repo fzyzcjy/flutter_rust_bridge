@@ -14,7 +14,6 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/misc.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
-import 'package:flutter_rust_bridge_internal/src/makefile_dart/utils.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/codecov_transformer.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 import 'package:path/path.dart' as path;
@@ -302,8 +301,6 @@ Future<void> generateInternalBuildRunner(GenerateConfig config) async {
 
 Future<void> generateRunFrbCodegenCommandGenerate(
     GeneratePackageConfig config) async {
-  await installSystemDependencies(package: config.package);
-
   await _wrapMaybeSetExitIfChanged(config, () async {
     await runPubGetIfNotRunYet(config.package);
     await executeFrbCodegen(
