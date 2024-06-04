@@ -56,7 +56,6 @@ fn transform_module_content_functions(
         src_content_functions,
         |x| x.owner_and_name(),
         |target, src| {
-            TODO;
             (target.item_fn.attrs_mut()).extend(src.item_fn.attrs().to_owned());
         },
     )
