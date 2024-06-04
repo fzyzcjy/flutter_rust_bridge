@@ -90,7 +90,9 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             owner,
         };
 
-        let owner = if let Some(owner) = self.parse_owner(func, &create_context(None), dart_name)? {
+        let owner = if let Some(owner) =
+            self.parse_owner(func, &create_context(None), dart_name.clone())?
+        {
             owner
         } else {
             return Ok(create_output_skip(func, IgnoredMisc));
@@ -298,9 +300,11 @@ fn refine_namespace(owner: &MirFuncOwnerInfo) -> Option<Namespace> {
 }
 
 fn parse_dart_name(attributes: &FrbAttributes, func: &HirFunction) -> Option<String> {
-    attributes.name().unwrap_or_else(|| {
+    attributes.name().or_else(|| {
         const FRB_OVERRIDE_PREFIX: &str = "frb_override_";
         let func_name_raw = func.item_fn.name();
-        func_name_raw.strip_prefix(FRB_OVERRIDE_PREFIX)
+        func_name_raw
+            .strip_prefix(FRB_OVERRIDE_PREFIX)
+            .map(ToString::to_string)
     })
 }
