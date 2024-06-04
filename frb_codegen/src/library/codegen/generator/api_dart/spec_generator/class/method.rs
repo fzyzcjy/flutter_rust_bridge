@@ -90,9 +90,11 @@ fn generate_api_method(
     );
 
     let maybe_implementation = match mode {
-        GenerateApiMethodMode::SeparatedDecl => {
-            generate_implementation_separated_decl_forward(func)
-        }
+        GenerateApiMethodMode::SeparatedDecl => generate_implementation_separated_decl_forward(
+            func,
+            default_constructor_mode,
+            &method_name,
+        ),
         GenerateApiMethodMode::SeparatedImpl | GenerateApiMethodMode::Combined => Some(
             generate_implementation_normal(func, context, method_info, &params),
         ),
@@ -202,6 +204,7 @@ fn generate_implementation_normal(
 fn generate_implementation_separated_decl_forward(
     func: &MirFunc,
     default_constructor_mode: Option<MirFuncDefaultConstructorMode>,
+    method_name: &str,
 ) -> Option<String> {
     if method_info.mode != MirFuncOwnerInfoMethodMode::Static {
         return None;
@@ -211,7 +214,7 @@ fn generate_implementation_separated_decl_forward(
         if default_constructor_mode == Some(MirFuncDefaultConstructorMode::DartConstructor) {
             "".to_owned()
         } else {
-            format!(".{}", TODO)
+            format!(".{method_name}")
         };
 
     Some(format!("{TODO}{maybe_method_name}({params})"))
