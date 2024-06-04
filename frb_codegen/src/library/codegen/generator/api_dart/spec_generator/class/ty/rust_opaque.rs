@@ -17,7 +17,7 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
         let Info {
             dart_api_type,
             methods,
-        } = self.compute_info(GenerateApiMethodMode::Abstract);
+        } = self.compute_info(GenerateApiMethodMode::SeparatedDecl);
 
         let rust_api_type = self.mir.rust_api_type();
 
@@ -50,7 +50,7 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
         let Info {
             dart_api_type,
             methods,
-        } = self.compute_info(GenerateApiMethodMode::Primary);
+        } = self.compute_info(GenerateApiMethodMode::SeparatedImpl);
 
         let dart_api_type_impl = format!("{dart_api_type}Impl");
 

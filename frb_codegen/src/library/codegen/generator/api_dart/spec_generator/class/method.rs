@@ -87,8 +87,8 @@ fn generate_api_method(
     );
 
     let maybe_implementation = match mode {
-        GenerateApiMethodMode::Abstract => "".to_owned(),
-        GenerateApiMethodMode::Primary => format!(
+        GenerateApiMethodMode::SeparatedDecl => "".to_owned(),
+        GenerateApiMethodMode::SeparatedImpl | GenerateApiMethodMode::Combined => format!(
             "=>{}",
             generate_implementation(func, context, method_info, &params)
         ),
