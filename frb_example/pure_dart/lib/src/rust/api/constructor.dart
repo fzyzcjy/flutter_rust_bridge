@@ -7,83 +7,37 @@ import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ConstructorOpaqueStructTwinNormal>>
-@sealed
-class ConstructorOpaqueStructTwinNormal extends RustOpaque {
-  // Not to be used by end users
-  ConstructorOpaqueStructTwinNormal.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class ConstructorOpaqueStructTwinNormal {
+  void check();
 
-  // Not to be used by end users
-  ConstructorOpaqueStructTwinNormal.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_ConstructorOpaqueStructTwinNormal,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_ConstructorOpaqueStructTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_ConstructorOpaqueStructTwinNormalPtr,
-  );
-
-  void check() => RustLib.instance.api
-          .crateApiConstructorConstructorOpaqueStructTwinNormalCheck(
-        that: this,
-      );
-
-  String get one => RustLib.instance.api
-          .crateApiConstructorConstructorOpaqueStructTwinNormalGetOne(
-        that: this,
-      );
+  String get one;
 
   // HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.
   static Future<ConstructorOpaqueStructTwinNormal> newInstance() =>
       RustLib.instance.api
           .crateApiConstructorConstructorOpaqueStructTwinNormalNew();
 
-  void set one(String one) => RustLib.instance.api
-      .crateApiConstructorConstructorOpaqueStructTwinNormalSetOne(
-          that: this, one: one);
+  void set one(String one);
+
+  void dispose();
+
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ConstructorOpaqueSyncStructTwinNormal>>
-@sealed
-class ConstructorOpaqueSyncStructTwinNormal extends RustOpaque {
-  // Not to be used by end users
-  ConstructorOpaqueSyncStructTwinNormal.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class ConstructorOpaqueSyncStructTwinNormal {
+  void check();
 
-  // Not to be used by end users
-  ConstructorOpaqueSyncStructTwinNormal.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_ConstructorOpaqueSyncStructTwinNormal,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_ConstructorOpaqueSyncStructTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_ConstructorOpaqueSyncStructTwinNormalPtr,
-  );
-
-  void check() => RustLib.instance.api
-          .crateApiConstructorConstructorOpaqueSyncStructTwinNormalCheck(
-        that: this,
-      );
-
-  String get one => RustLib.instance.api
-          .crateApiConstructorConstructorOpaqueSyncStructTwinNormalGetOne(
-        that: this,
-      );
+  String get one;
 
   factory ConstructorOpaqueSyncStructTwinNormal() => RustLib.instance.api
       .crateApiConstructorConstructorOpaqueSyncStructTwinNormalNew();
 
-  void set one(String one) => RustLib.instance.api
-      .crateApiConstructorConstructorOpaqueSyncStructTwinNormalSetOne(
-          that: this, one: one);
+  void set one(String one);
+
+  void dispose();
+
+  bool get isDisposed;
 }
 
 class ConstructorTranslatableStructTwinNormal {

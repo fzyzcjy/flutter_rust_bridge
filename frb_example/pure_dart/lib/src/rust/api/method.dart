@@ -17,28 +17,13 @@ Future<SumWithTwinNormalArray3> getSumArrayTwinNormal(
     RustLib.instance.api.crateApiMethodGetSumArrayTwinNormal(a: a, b: b, c: c);
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StaticGetterOnlyTwinNormal>>
-@sealed
-class StaticGetterOnlyTwinNormal extends RustOpaque {
-  // Not to be used by end users
-  StaticGetterOnlyTwinNormal.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  StaticGetterOnlyTwinNormal.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_StaticGetterOnlyTwinNormal,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StaticGetterOnlyTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StaticGetterOnlyTwinNormalPtr,
-  );
-
+abstract class StaticGetterOnlyTwinNormal {
   static Future<int> get staticGetterTwinNormal => RustLib.instance.api
       .crateApiMethodStaticGetterOnlyTwinNormalStaticGetterTwinNormal();
+
+  void dispose();
+
+  bool get isDisposed;
 }
 
 class ConcatenateWithTwinNormal {

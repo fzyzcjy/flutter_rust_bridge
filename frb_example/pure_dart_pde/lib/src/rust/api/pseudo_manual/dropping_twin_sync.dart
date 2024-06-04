@@ -9,29 +9,8 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 // These types are ignored because they are not used by any `pub` functions: `DROP_COUNT`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DroppableTwinSync>>
-@sealed
-class DroppableTwinSync extends RustOpaque {
-  // Not to be used by end users
-  DroppableTwinSync.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  DroppableTwinSync.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_DroppableTwinSync,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_DroppableTwinSync,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_DroppableTwinSyncPtr,
-  );
-
-  Stream<int> createStreamTwinSync() => RustLib.instance.api
-          .crateApiPseudoManualDroppingTwinSyncDroppableTwinSyncCreateStreamTwinSync(
-        that: this,
-      );
+abstract class DroppableTwinSync {
+  Stream<int> createStreamTwinSync();
 
   static int getDropCountTwinSync() => RustLib.instance.api
       .crateApiPseudoManualDroppingTwinSyncDroppableTwinSyncGetDropCountTwinSync();
@@ -39,8 +18,9 @@ class DroppableTwinSync extends RustOpaque {
   static DroppableTwinSync newTwinSync() => RustLib.instance.api
       .crateApiPseudoManualDroppingTwinSyncDroppableTwinSyncNewTwinSync();
 
-  void simpleMethodTwinSync() => RustLib.instance.api
-          .crateApiPseudoManualDroppingTwinSyncDroppableTwinSyncSimpleMethodTwinSync(
-        that: this,
-      );
+  void simpleMethodTwinSync();
+
+  void dispose();
+
+  bool get isDisposed;
 }

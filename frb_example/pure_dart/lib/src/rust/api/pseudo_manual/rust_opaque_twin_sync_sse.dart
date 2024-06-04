@@ -79,68 +79,24 @@ FrbOpaqueReturnTwinSyncSse frbGeneratorTestTwinSyncSse() => RustLib.instance.api
     .crateApiPseudoManualRustOpaqueTwinSyncSseFrbGeneratorTestTwinSyncSse();
 
 // Rust type: RustOpaqueNom<Box < dyn DartDebugTwinSyncSse >>
-@sealed
-class BoxDartDebugTwinSyncSse extends RustOpaque {
-  // Not to be used by end users
-  BoxDartDebugTwinSyncSse.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class BoxDartDebugTwinSyncSse {
+  void dispose();
 
-  // Not to be used by end users
-  BoxDartDebugTwinSyncSse.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_BoxDartDebugTwinSyncSse,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_BoxDartDebugTwinSyncSse,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_BoxDartDebugTwinSyncSsePtr,
-  );
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueNom<FrbOpaqueReturnTwinSyncSse>
-@sealed
-class FrbOpaqueReturnTwinSyncSse extends RustOpaque {
-  // Not to be used by end users
-  FrbOpaqueReturnTwinSyncSse.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class FrbOpaqueReturnTwinSyncSse {
+  void dispose();
 
-  // Not to be used by end users
-  FrbOpaqueReturnTwinSyncSse.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_FrbOpaqueReturnTwinSyncSse,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_FrbOpaqueReturnTwinSyncSse,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_FrbOpaqueReturnTwinSyncSsePtr,
-  );
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueNom<HideDataTwinSyncSse>
-@sealed
-class HideDataTwinSyncSse extends RustOpaque {
-  // Not to be used by end users
-  HideDataTwinSyncSse.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class HideDataTwinSyncSse {
+  void dispose();
 
-  // Not to be used by end users
-  HideDataTwinSyncSse.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_HideDataTwinSyncSse,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_HideDataTwinSyncSse,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_HideDataTwinSyncSsePtr,
-  );
+  bool get isDisposed;
 }
 
 class HideDataTwinSyncSseArray2
@@ -160,69 +116,24 @@ class HideDataTwinSyncSseArray2
 }
 
 // Rust type: RustOpaqueNom<Mutex < HideDataTwinSyncSse >>
-@sealed
-class MutexHideDataTwinSyncSse extends RustOpaque {
-  // Not to be used by end users
-  MutexHideDataTwinSyncSse.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class MutexHideDataTwinSyncSse {
+  void dispose();
 
-  // Not to be used by end users
-  MutexHideDataTwinSyncSse.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_MutexHideDataTwinSyncSse,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_MutexHideDataTwinSyncSse,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_MutexHideDataTwinSyncSsePtr,
-  );
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueNom<NonCloneDataTwinSyncSse>
-@sealed
-class NonCloneDataTwinSyncSse extends RustOpaque {
-  // Not to be used by end users
-  NonCloneDataTwinSyncSse.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class NonCloneDataTwinSyncSse {
+  void dispose();
 
-  // Not to be used by end users
-  NonCloneDataTwinSyncSse.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_NonCloneDataTwinSyncSse,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_NonCloneDataTwinSyncSse,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_NonCloneDataTwinSyncSsePtr,
-  );
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueNom<RwLock < HideDataTwinSyncSse >>
-@sealed
-class RwLockHideDataTwinSyncSse extends RustOpaque {
-  // Not to be used by end users
-  RwLockHideDataTwinSyncSse.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class RwLockHideDataTwinSyncSse {
+  void dispose();
 
-  // Not to be used by end users
-  RwLockHideDataTwinSyncSse.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_RwLockHideDataTwinSyncSse,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_RwLockHideDataTwinSyncSse,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_RwLockHideDataTwinSyncSsePtr,
-  );
+  bool get isDisposed;
 }
 
 @freezed

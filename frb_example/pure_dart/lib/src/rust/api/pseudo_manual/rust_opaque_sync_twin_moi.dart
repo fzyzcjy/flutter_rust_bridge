@@ -22,66 +22,22 @@ FrbOpaqueSyncReturnTwinMoi frbSyncGeneratorTestTwinMoi() => RustLib.instance.api
     .crateApiPseudoManualRustOpaqueSyncTwinMoiFrbSyncGeneratorTestTwinMoi();
 
 // Rust type: RustOpaqueMoi<FrbOpaqueSyncReturnTwinMoi>
-@sealed
-class FrbOpaqueSyncReturnTwinMoi extends RustOpaque {
-  // Not to be used by end users
-  FrbOpaqueSyncReturnTwinMoi.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class FrbOpaqueSyncReturnTwinMoi {
+  void dispose();
 
-  // Not to be used by end users
-  FrbOpaqueSyncReturnTwinMoi.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_FrbOpaqueSyncReturnTwinMoi,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_FrbOpaqueSyncReturnTwinMoi,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_FrbOpaqueSyncReturnTwinMoiPtr,
-  );
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<HideDataAnotherTwinMoi>
-@sealed
-class HideDataAnotherTwinMoi extends RustOpaque {
-  // Not to be used by end users
-  HideDataAnotherTwinMoi.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class HideDataAnotherTwinMoi {
+  void dispose();
 
-  // Not to be used by end users
-  HideDataAnotherTwinMoi.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_HideDataAnotherTwinMoi,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_HideDataAnotherTwinMoi,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_HideDataAnotherTwinMoiPtr,
-  );
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<NonCloneDataTwinMoi>
-@sealed
-class NonCloneDataTwinMoi extends RustOpaque {
-  // Not to be used by end users
-  NonCloneDataTwinMoi.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class NonCloneDataTwinMoi {
+  void dispose();
 
-  // Not to be used by end users
-  NonCloneDataTwinMoi.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_NonCloneDataTwinMoi,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_NonCloneDataTwinMoi,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_NonCloneDataTwinMoiPtr,
-  );
+  bool get isDisposed;
 }

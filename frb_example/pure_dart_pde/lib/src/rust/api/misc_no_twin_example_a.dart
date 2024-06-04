@@ -19,263 +19,102 @@ Future<void> functionWithArgTypeNameOverride(
         .crateApiMiscNoTwinExampleAFunctionWithArgTypeNameOverride(a: a);
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn Any + Send + Sync + 'static >>>
-@sealed
-class BoxAnyMyDartTypeRename extends RustOpaque {
-  // Not to be used by end users
-  BoxAnyMyDartTypeRename.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class BoxAnyMyDartTypeRename {
+  void dispose();
 
-  // Not to be used by end users
-  BoxAnyMyDartTypeRename.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_BoxAnyMyDartTypeRename,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_BoxAnyMyDartTypeRename,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_BoxAnyMyDartTypeRenamePtr,
-  );
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DeliberateFailSanityCheckTwinNormal>>
-@sealed
-class DeliberateFailSanityCheckTwinNormal extends RustOpaque {
-  // Not to be used by end users
-  DeliberateFailSanityCheckTwinNormal.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  DeliberateFailSanityCheckTwinNormal.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_DeliberateFailSanityCheckTwinNormal,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_DeliberateFailSanityCheckTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_DeliberateFailSanityCheckTwinNormalPtr,
-  );
-
+abstract class DeliberateFailSanityCheckTwinNormal {
   static Future<void> dummyFunctionTwinNormal() => RustLib.instance.api
       .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalDummyFunctionTwinNormal();
 
-  Uint8List get deliberateBadFieldA => RustLib.instance.api
-          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetDeliberateBadFieldA(
-        that: this,
-      );
+  Uint8List get deliberateBadFieldA;
 
-  OpaqueItemTwinNormal get deliberateBadFieldB => RustLib.instance.api
-          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetDeliberateBadFieldB(
-        that: this,
-      );
+  OpaqueItemTwinNormal get deliberateBadFieldB;
 
-  List<OpaqueItemTwinNormal> get deliberateBadFieldC => RustLib.instance.api
-          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetDeliberateBadFieldC(
-        that: this,
-      );
+  List<OpaqueItemTwinNormal> get deliberateBadFieldC;
 
-  String get goodFieldA => RustLib.instance.api
-          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetGoodFieldA(
-        that: this,
-      );
+  String get goodFieldA;
 
-  int get goodFieldB => RustLib.instance.api
-          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetGoodFieldB(
-        that: this,
-      );
+  int get goodFieldB;
 
-  OpaqueItemTwinNormal get goodFieldC => RustLib.instance.api
-          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetGoodFieldC(
-        that: this,
-      );
+  OpaqueItemTwinNormal get goodFieldC;
 
-  void set deliberateBadFieldA(Uint8List deliberateBadFieldA) => RustLib
-      .instance.api
-      .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetDeliberateBadFieldA(
-          that: this, deliberateBadFieldA: deliberateBadFieldA);
+  void set deliberateBadFieldA(Uint8List deliberateBadFieldA);
 
-  void set deliberateBadFieldB(OpaqueItemTwinNormal deliberateBadFieldB) => RustLib
-      .instance.api
-      .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetDeliberateBadFieldB(
-          that: this, deliberateBadFieldB: deliberateBadFieldB);
+  void set deliberateBadFieldB(OpaqueItemTwinNormal deliberateBadFieldB);
 
-  void set deliberateBadFieldC(
-          List<OpaqueItemTwinNormal> deliberateBadFieldC) =>
-      RustLib.instance.api
-          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetDeliberateBadFieldC(
-              that: this, deliberateBadFieldC: deliberateBadFieldC);
+  void set deliberateBadFieldC(List<OpaqueItemTwinNormal> deliberateBadFieldC);
 
-  void set goodFieldA(String goodFieldA) => RustLib.instance.api
-      .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetGoodFieldA(
-          that: this, goodFieldA: goodFieldA);
+  void set goodFieldA(String goodFieldA);
 
-  void set goodFieldB(int goodFieldB) => RustLib.instance.api
-      .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetGoodFieldB(
-          that: this, goodFieldB: goodFieldB);
+  void set goodFieldB(int goodFieldB);
 
-  void set goodFieldC(OpaqueItemTwinNormal goodFieldC) => RustLib.instance.api
-      .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetGoodFieldC(
-          that: this, goodFieldC: goodFieldC);
+  void set goodFieldC(OpaqueItemTwinNormal goodFieldC);
+
+  void dispose();
+
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ItemContainerSolutionOneTwinNormal>>
-@sealed
-class ItemContainerSolutionOneTwinNormal extends RustOpaque {
-  // Not to be used by end users
-  ItemContainerSolutionOneTwinNormal.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  ItemContainerSolutionOneTwinNormal.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_ItemContainerSolutionOneTwinNormal,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_ItemContainerSolutionOneTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_ItemContainerSolutionOneTwinNormalPtr,
-  );
-
+abstract class ItemContainerSolutionOneTwinNormal {
   static Future<ItemContainerSolutionOneTwinNormal> createTwinNormal() => RustLib
       .instance.api
       .crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalCreateTwinNormal();
 
-  Future<Int32List> getItemContentsTwinNormal() => RustLib.instance.api
-          .crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalGetItemContentsTwinNormal(
-        that: this,
-      );
+  Future<Int32List> getItemContentsTwinNormal();
 
-  String get name => RustLib.instance.api
-          .crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalGetName(
-        that: this,
-      );
+  String get name;
 
-  void set name(String name) => RustLib.instance.api
-      .crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalSetName(
-          that: this, name: name);
+  void set name(String name);
+
+  void dispose();
+
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinNormal>>
-@sealed
-class OpaqueItemTwinNormal extends RustOpaque {
-  // Not to be used by end users
-  OpaqueItemTwinNormal.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class OpaqueItemTwinNormal {
+  void dispose();
 
-  // Not to be used by end users
-  OpaqueItemTwinNormal.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_OpaqueItemTwinNormal,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_OpaqueItemTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_OpaqueItemTwinNormalPtr,
-  );
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructInMiscNoTwinExampleA>>
-@sealed
-class StructInMiscNoTwinExampleA extends RustOpaque {
-  // Not to be used by end users
-  StructInMiscNoTwinExampleA.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class StructInMiscNoTwinExampleA {
+  Future<void> sampleFunctionA();
 
-  // Not to be used by end users
-  StructInMiscNoTwinExampleA.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+  void dispose();
 
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_StructInMiscNoTwinExampleA,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StructInMiscNoTwinExampleA,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StructInMiscNoTwinExampleAPtr,
-  );
-
-  Future<void> sampleFunctionA() => RustLib.instance.api
-          .crateApiMiscNoTwinExampleAStructInMiscNoTwinExampleASampleFunctionA(
-        that: this,
-      );
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithImplBlockInMultiFile>>
-@sealed
-class StructWithImplBlockInMultiFile extends RustOpaque {
-  // Not to be used by end users
-  StructWithImplBlockInMultiFile.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+abstract class StructWithImplBlockInMultiFile {
+  Future<void> methodInA();
 
-  // Not to be used by end users
-  StructWithImplBlockInMultiFile.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+  Future<void> methodInB();
 
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_StructWithImplBlockInMultiFile,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StructWithImplBlockInMultiFile,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StructWithImplBlockInMultiFilePtr,
-  );
+  void dispose();
 
-  Future<void> methodInA() => RustLib.instance.api
-          .crateApiMiscNoTwinExampleAStructWithImplBlockInMultiFileMethodInA(
-        that: this,
-      );
-
-  Future<void> methodInB() => RustLib.instance.api
-          .crateApiMiscNoTwinExampleBStructWithImplBlockInMultiFileMethodInB(
-        that: this,
-      );
+  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithSimpleSetterTwinNormal>>
-@sealed
-class StructWithSimpleSetterTwinNormal extends RustOpaque {
-  // Not to be used by end users
-  StructWithSimpleSetterTwinNormal.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  StructWithSimpleSetterTwinNormal.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_StructWithSimpleSetterTwinNormal,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StructWithSimpleSetterTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StructWithSimpleSetterTwinNormalPtr,
-  );
-
+abstract class StructWithSimpleSetterTwinNormal {
   factory StructWithSimpleSetterTwinNormal() => RustLib.instance.api
       .crateApiMiscNoTwinExampleAStructWithSimpleSetterTwinNormalNew();
 
-  int get simpleGetter => RustLib.instance.api
-          .crateApiMiscNoTwinExampleAStructWithSimpleSetterTwinNormalSimpleGetter(
-        that: this,
-      );
+  int get simpleGetter;
 
-  void set simpleSetter(int value) => RustLib.instance.api
-      .crateApiMiscNoTwinExampleAStructWithSimpleSetterTwinNormalSimpleSetter(
-          that: this, value: value);
+  void set simpleSetter(int value);
+
+  void dispose();
+
+  bool get isDisposed;
 }
 
 class ItemContainerSolutionTwoTwinNormal {
