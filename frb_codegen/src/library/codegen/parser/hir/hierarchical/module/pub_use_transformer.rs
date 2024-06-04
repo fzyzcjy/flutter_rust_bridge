@@ -68,13 +68,13 @@ fn transform_module_by_pub_use_single(
     pub_use_info: &PubUseInfo,
 ) -> anyhow::Result<()> {
     if let Some(src_mod) = (module.content).get_module_nested(&pub_use_info.namespace.path()) {
-        log::info!(
+        log::debug!(
             "transform_module_by_pub_use_single pub_use_info={:?}",
             pub_use_info
         );
 
         if src_mod.meta.is_public() {
-            log::info!("transform_module_by_pub_use_single skip `{pub_use_info:?}` since src mod already public");
+            log::debug!("transform_module_by_pub_use_single skip `{pub_use_info:?}` since src mod already public");
             return Ok(());
         }
 
@@ -91,7 +91,7 @@ fn transform_module_by_pub_use_single(
         module.content.enums.extend(src_enums);
         module.content.traits.extend(src_traits);
     } else {
-        log::info!(
+        log::debug!(
             "transform_module_by_pub_use_single skip `{pub_use_info:?}` since cannot find mod"
         );
     }
