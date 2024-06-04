@@ -13,10 +13,18 @@ use crate::utils::namespace::NamespacedName;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 
+#[derive(Debug, Clone, Copy, Eq, PartialEq)]
+pub(crate) enum GenerateApiMethodMode {
+    Decl,
+    Impl,
+}
+
 pub(crate) fn generate_api_methods(
     generalized_class_name: &NamespacedName,
     context: ApiDartGeneratorContext,
+    mode: GenerateApiMethodMode,
 ) -> Vec<String> {
+    TODO;
     get_methods_of_enum_or_struct(generalized_class_name, &context.mir_pack.funcs)
         .iter()
         .map(|func| generate_api_method(func, context))
