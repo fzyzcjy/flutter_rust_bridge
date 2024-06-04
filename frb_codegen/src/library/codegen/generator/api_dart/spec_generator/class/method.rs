@@ -12,6 +12,7 @@ use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::utils::namespace::NamespacedName;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
+use std::cmp::min;
 
 #[derive(Debug, Clone, Copy, Eq, PartialEq)]
 pub(crate) enum GenerateApiMethodMode {
@@ -76,6 +77,7 @@ fn generate_api_method(
         .filter(|param| !skip_names.contains(&&param.name_str[..]))
         .cloned()
         .collect_vec();
+    let method_name = generate_method_name(method_info, default_constructor_mode);
 
     let comments = generate_comments(func, default_constructor_mode);
     let signature = generate_signature(
@@ -84,6 +86,7 @@ fn generate_api_method(
         &params,
         default_constructor_mode,
         &api_dart_func,
+        &method_name,
     );
 
     let maybe_implementation = match mode {
@@ -132,15 +135,6 @@ fn generate_signature(
     let is_static_method = method_info.mode == MirFuncOwnerInfoMethodMode::Static;
     let maybe_static = if is_static_method { "static" } else { "" };
     let return_type = &api_dart_func.func_return_type;
-    let method_name = if default_constructor_mode.is_some() {
-        "newInstance".to_owned()
-    } else {
-        (method_info
-            .actual_method_dart_name
-            .as_ref()
-            .unwrap_or(&method_info.actual_method_name))
-        .to_case(Case::Camel)
-    };
     let (func_params, maybe_accessor) = match func.accessor {
         Some(MirFuncAccessorMode::Getter) => ("".to_owned(), "get"),
         Some(MirFuncAccessorMode::Setter) => (
@@ -164,6 +158,21 @@ fn generate_signature(
     }
 
     format!("{maybe_static} {return_type} {maybe_accessor} {method_name}{func_params}")
+}
+
+fn generate_method_name(
+    method_info: &MirFuncOwnerInfoMethod,
+    default_constructor_mode: Option<MirFuncDefaultConstructorMode>,
+) -> String {
+    if default_constructor_mode.is_some() {
+        "newInstance".to_owned()
+    } else {
+        (method_info
+            .actual_method_dart_name
+            .as_ref()
+            .unwrap_or(&method_info.actual_method_name))
+        .to_case(Case::Camel)
+    }
 }
 
 fn generate_implementation_normal(
