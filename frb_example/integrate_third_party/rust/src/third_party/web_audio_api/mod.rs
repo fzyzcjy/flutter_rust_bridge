@@ -4,8 +4,9 @@ pub mod media_element;
 pub mod node;
 pub mod worklet;
 
+use crate::handle_audio_node_trait_impls;
 use flutter_rust_bridge::frb;
-use web_audio_api::{AudioBuffer, AudioRenderCapacity};
+use web_audio_api::{AudioBuffer, AudioParam, AudioRenderCapacity};
 
 #[frb(external)]
 impl AudioRenderCapacity {
@@ -25,5 +26,13 @@ impl AudioBuffer {
     pub fn copy_to_channel_with_offset() {}
 }
 
+#[frb(external)]
+impl AudioParam {
+    #[frb(ignore)]
+    pub fn set_onprocessorerror() {}
+}
+
 #[frb(ignore)]
 pub struct ErrorEvent;
+
+handle_audio_node_trait_impls!(AudioParam);

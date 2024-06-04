@@ -1,6 +1,6 @@
 use crate::codegen::ir::hir::hierarchical::misc::HirCommon;
 use crate::utils::namespace::Namespace;
-use proc_macro2::Ident;
+use quote::ToTokens;
 use serde::{Serialize, Serializer};
 use syn::{ItemImpl, ItemTrait};
 
@@ -26,8 +26,21 @@ impl HirCommon for HirTrait {
         }
     }
 
-    fn ident(&self) -> Ident {
-        self.item_trait.ident.clone()
+    fn ident(&self) -> String {
+        self.item_trait.ident.to_string()
+    }
+}
+
+impl HirCommon for HirTraitImpl {
+    fn with_namespace(&self, namespace: Namespace) -> Self {
+        Self {
+            namespace,
+            ..self.to_owned()
+        }
+    }
+
+    fn ident(&self) -> String {
+        ty_to_string(&self.item_impl.self_ty)
     }
 }
 
@@ -36,9 +49,16 @@ fn serialize_item_trait<S: Serializer>(x: &ItemTrait, s: S) -> Result<S::Ok, S::
 }
 
 pub(super) fn serialize_item_impl<S: Serializer>(x: &ItemImpl, s: S) -> Result<S::Ok, S::Error> {
-    s.serialize_str(&format!("ItemImpl(self_ty={})", ty_to_string(&x.self_ty)))
+    s.serialize_str(&format!(
+        "ItemImpl(self_ty={}, trait={})",
+        ty_to_string(&x.self_ty),
+        x.trait_
+            .as_ref()
+            .map(|t| ty_to_string(&t.1).replace(' ', ""))
+            .unwrap_or("None".to_owned())
+    ))
 }
 
-fn ty_to_string(ty: &syn::Type) -> String {
+fn ty_to_string<T: ToTokens>(ty: &T) -> String {
     quote::quote!(#ty).to_string()
 }

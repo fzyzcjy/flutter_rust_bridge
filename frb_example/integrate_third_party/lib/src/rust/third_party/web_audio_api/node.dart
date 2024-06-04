@@ -8,9 +8,9 @@ import '../web_audio_api.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // These functions are ignored because they are not marked as `pub`: `apply_curve`, `apply_mono_to_stereo_gain`, `apply_stereo_to_stereo_gain`, `assert_valid_channel_count_mode`, `assert_valid_channel_count_mode`, `assert_valid_channel_count_mode`, `assert_valid_channel_count_mode`, `assert_valid_channel_count_mode`, `assert_valid_channel_count`, `assert_valid_channel_count`, `assert_valid_channel_count`, `assert_valid_channel_count`, `assert_valid_channel_count`, `assert_valid_channel_interpretation`, `assert_valid_cone_outer_gain`, `assert_valid_feedback_coefs`, `assert_valid_feedforward_coefs`, `assert_valid_number_of_channels`, `assert_valid_number_of_channels`, `calculate_coefs`, `check_ring_buffer_up_down_mix`, `complex`, `cone_gain`, `count_mode`, `count`, `db_to_lin`, `dist_gain`, `downsample_x2`, `downsample_x4`, `from_raw_parts`, `generate_custom`, `generate_sample`, `generate_sawtooth`, `generate_sine`, `generate_square`, `generate_triangle`, `get_computed_freq`, `get_phase_incr`, `get_playback_infos`, `get_stereo_gains`, `handle_control_message`, `inner`, `interpretation`, `into_channel_config`, `inverse`, `lin_to_db`, `load_hrtf_processor`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `normalize_buffer`, `poly_blep`, `precomputed_sine_table`, `process`, `process`, `process`, `process`, `real`, `roll_zero`, `samples_out_mut`, `samples_out`, `set_count_mode`, `set_count`, `set_interpretation`, `tail_time_samples`, `tail`, `unroll_phase`, `upsample_x2`, `upsample_x4`
-// These functions are ignored because they have generic arguments: `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `set_onaudioprocess`
-// These types are ignored because they are not used by any `pub` functions: `AnalyserOptions`, `AnalyserRenderer`, `AudioBufferRendererState`, `AudioBufferSourceOptions`, `AudioBufferSourceRenderer`, `AudioDestinationNodeStream`, `AudioNodeOptions`, `BiquadFilterOptions`, `BiquadFilterRenderer`, `ChannelConfigInner`, `ChannelConfig`, `ChannelMergerNode`, `ChannelMergerOptions`, `ChannelMergerRenderer`, `ChannelSplitterNode`, `ChannelSplitterOptions`, `ChannelSplitterRenderer`, `Coefficients`, `ConstantSourceOptions`, `ConstantSourceRenderer`, `ControlMessage`, `ConvolverOptions`, `ConvolverRendererInner`, `ConvolverRenderer`, `DelayOptions`, `DelayReader`, `DelayWriter`, `DestinationRenderer`, `DynamicsCompressorOptions`, `DynamicsCompressorRenderer`, `Fft`, `GainOptions`, `GainRenderer`, `HrtfState`, `IIRFilterNode`, `IIRFilterOptions`, `IirFilterRenderer`, `LoopState`, `MediaElementAudioSourceNode`, `MediaElementAudioSourceOptions`, `MediaStreamAudioSourceOptions`, `MediaStreamRenderer`, `MediaStreamTrackAudioSourceOptions`, `OscillatorOptions`, `OscillatorRenderer`, `PannerOptions`, `PannerRenderer`, `PlaybackInfo`, `RendererConfig`, `ResamplerConfig`, `Resampler`, `Schedule`, `ScriptProcessorOptions`, `ScriptProcessorRenderer`, `SpatialParams`, `StereoPannerOptions`, `StereoPannerRenderer`, `WaveShaperOptions`, `WaveShaperRenderer`
-// These functions are ignored: `buffer`, `buffer`, `curve`, `get_byte_frequency_data`, `get_byte_time_domain_data`, `get_float_frequency_data`, `get_float_time_domain_data`, `get_frequency_response`, `get_frequency_response`
+// These functions are ignored because they have generic arguments: `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `set_onaudioprocess`, `set_onended`, `set_onended`, `set_onended`
+// These types are ignored because they are not used by any `pub` functions: `AnalyserOptions`, `AnalyserRenderer`, `AudioBufferRendererState`, `AudioBufferSourceOptions`, `AudioBufferSourceRenderer`, `AudioDestinationNodeStream`, `AudioNodeOptions`, `BiquadFilterOptions`, `BiquadFilterRenderer`, `ChannelConfigInner`, `ChannelConfig`, `ChannelMergerOptions`, `ChannelMergerRenderer`, `ChannelSplitterOptions`, `ChannelSplitterRenderer`, `Coefficients`, `ConstantSourceOptions`, `ConstantSourceRenderer`, `ControlMessage`, `ConvolverOptions`, `ConvolverRendererInner`, `ConvolverRenderer`, `DelayOptions`, `DelayReader`, `DelayWriter`, `DestinationRenderer`, `DynamicsCompressorOptions`, `DynamicsCompressorRenderer`, `Fft`, `GainOptions`, `GainRenderer`, `HrtfState`, `IIRFilterOptions`, `IirFilterRenderer`, `LoopState`, `MediaElementAudioSourceOptions`, `MediaStreamAudioSourceOptions`, `MediaStreamRenderer`, `MediaStreamTrackAudioSourceOptions`, `OscillatorOptions`, `OscillatorRenderer`, `PannerOptions`, `PannerRenderer`, `PlaybackInfo`, `RendererConfig`, `ResamplerConfig`, `Resampler`, `Schedule`, `ScriptProcessorOptions`, `ScriptProcessorRenderer`, `SpatialParams`, `StereoPannerOptions`, `StereoPannerRenderer`, `WaveShaperOptions`, `WaveShaperRenderer`
+// These functions are ignored: `buffer`, `buffer`, `check_ring_buffer_size`, `check_ring_buffer_size`, `curve`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `get_byte_frequency_data`, `get_byte_time_domain_data`, `get_float_frequency_data`, `get_float_time_domain_data`, `get_frequency_response`, `get_frequency_response`, `ring_buffer_mut`, `ring_buffer_mut`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AnalyserNode>>
 @sealed
@@ -31,6 +31,61 @@ class AnalyserNode extends RustOpaque {
     rustArcDecrementStrongCountPtr:
         RustLib.instance.api.rust_arc_decrement_strong_count_AnalyserNodePtr,
   );
+
+  Future<void> channelConfig() =>
+      RustLib.instance.api.webAudioApiNodeAnalyserNodeChannelConfig(
+        that: this,
+      );
+
+  /// Represents an integer used to determine how many channels are used when up-mixing and
+  /// down-mixing connections to any inputs to the node.
+  Future<BigInt> channelCount() =>
+      RustLib.instance.api.webAudioApiNodeAnalyserNodeChannelCount(
+        that: this,
+      );
+
+  /// Represents an enumerated value describing the way channels must be matched between the
+  /// node's inputs and outputs.
+  Future<ChannelCountMode> channelCountMode() =>
+      RustLib.instance.api.webAudioApiNodeAnalyserNodeChannelCountMode(
+        that: this,
+      );
+
+  /// Represents an enumerated value describing the meaning of the channels. This interpretation
+  /// will define how audio up-mixing and down-mixing will happen.
+  Future<ChannelInterpretation> channelInterpretation() =>
+      RustLib.instance.api.webAudioApiNodeAnalyserNodeChannelInterpretation(
+        that: this,
+      );
+
+  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
+  Future<void> clearOnprocessorerror() =>
+      RustLib.instance.api.webAudioApiNodeAnalyserNodeClearOnprocessorerror(
+        that: this,
+      );
+
+  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
+  /// AudioNode.
+  Future<void> context() =>
+      RustLib.instance.api.webAudioApiNodeAnalyserNodeContext(
+        that: this,
+      );
+
+  /// Disconnects all outgoing connections from the AudioNode.
+  Future<void> disconnect() =>
+      RustLib.instance.api.webAudioApiNodeAnalyserNodeDisconnect(
+        that: this,
+      );
+
+  /// Disconnects all outgoing connections at the given output port from the AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - if the output port is out of bounds for this node
+  Future<void> disconnectOutput({required BigInt output}) => RustLib
+      .instance.api
+      .webAudioApiNodeAnalyserNodeDisconnectOutput(that: this, output: output);
 
   /// The size of the FFT used for frequency-domain analysis (in sample-frames)
   ///
@@ -73,6 +128,35 @@ class AnalyserNode extends RustOpaque {
       RustLib.instance.api.webAudioApiNodeAnalyserNodeMinDecibels(
         that: this,
       );
+
+  Future<BigInt> numberOfInputs() =>
+      RustLib.instance.api.webAudioApiNodeAnalyserNodeNumberOfInputs(
+        that: this,
+      );
+
+  Future<BigInt> numberOfOutputs() =>
+      RustLib.instance.api.webAudioApiNodeAnalyserNodeNumberOfOutputs(
+        that: this,
+      );
+
+  Future<void> registration() =>
+      RustLib.instance.api.webAudioApiNodeAnalyserNodeRegistration(
+        that: this,
+      );
+
+  /// Update the `channel_count` attribute
+  Future<void> setChannelCount({required BigInt v}) => RustLib.instance.api
+      .webAudioApiNodeAnalyserNodeSetChannelCount(that: this, v: v);
+
+  /// Update the `channel_count_mode` attribute
+  Future<void> setChannelCountMode({required ChannelCountMode v}) =>
+      RustLib.instance.api
+          .webAudioApiNodeAnalyserNodeSetChannelCountMode(that: this, v: v);
+
+  /// Update the `channel_interpretation` attribute
+  Future<void> setChannelInterpretation({required ChannelInterpretation v}) =>
+      RustLib.instance.api.webAudioApiNodeAnalyserNodeSetChannelInterpretation(
+          that: this, v: v);
 
   /// Set FFT size
   ///
@@ -143,6 +227,51 @@ class AudioBufferSourceNode extends RustOpaque {
         .instance.api.rust_arc_decrement_strong_count_AudioBufferSourceNodePtr,
   );
 
+  Future<void> channelConfig() =>
+      RustLib.instance.api.webAudioApiNodeAudioBufferSourceNodeChannelConfig(
+        that: this,
+      );
+
+  /// Represents an integer used to determine how many channels are used when up-mixing and
+  /// down-mixing connections to any inputs to the node.
+  Future<BigInt> channelCount() =>
+      RustLib.instance.api.webAudioApiNodeAudioBufferSourceNodeChannelCount(
+        that: this,
+      );
+
+  /// Represents an enumerated value describing the way channels must be matched between the
+  /// node's inputs and outputs.
+  Future<ChannelCountMode> channelCountMode() =>
+      RustLib.instance.api.webAudioApiNodeAudioBufferSourceNodeChannelCountMode(
+        that: this,
+      );
+
+  /// Represents an enumerated value describing the meaning of the channels. This interpretation
+  /// will define how audio up-mixing and down-mixing will happen.
+  Future<ChannelInterpretation> channelInterpretation() => RustLib.instance.api
+          .webAudioApiNodeAudioBufferSourceNodeChannelInterpretation(
+        that: this,
+      );
+
+  /// Unset the callback to run when the source node has stopped playing
+  Future<void> clearOnended() =>
+      RustLib.instance.api.webAudioApiNodeAudioBufferSourceNodeClearOnended(
+        that: this,
+      );
+
+  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
+  Future<void> clearOnprocessorerror() => RustLib.instance.api
+          .webAudioApiNodeAudioBufferSourceNodeClearOnprocessorerror(
+        that: this,
+      );
+
+  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
+  /// AudioNode.
+  Future<void> context() =>
+      RustLib.instance.api.webAudioApiNodeAudioBufferSourceNodeContext(
+        that: this,
+      );
+
   /// K-rate [`AudioParam`] that defines a pitch transposition of the file,
   /// expressed in cents
   ///
@@ -151,6 +280,22 @@ class AudioBufferSourceNode extends RustOpaque {
       RustLib.instance.api.webAudioApiNodeAudioBufferSourceNodeDetune(
         that: this,
       );
+
+  /// Disconnects all outgoing connections from the AudioNode.
+  Future<void> disconnect() =>
+      RustLib.instance.api.webAudioApiNodeAudioBufferSourceNodeDisconnect(
+        that: this,
+      );
+
+  /// Disconnects all outgoing connections at the given output port from the AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - if the output port is out of bounds for this node
+  Future<void> disconnectOutput({required BigInt output}) =>
+      RustLib.instance.api.webAudioApiNodeAudioBufferSourceNodeDisconnectOutput(
+          that: this, output: output);
 
   /// Defines if the playback the [`AudioBuffer`] should be looped
   Future<bool> loop() =>
@@ -167,6 +312,16 @@ class AudioBufferSourceNode extends RustOpaque {
   /// Defines the loop start point, in the time reference of the [`AudioBuffer`]
   Future<double> loopStart() =>
       RustLib.instance.api.webAudioApiNodeAudioBufferSourceNodeLoopStart(
+        that: this,
+      );
+
+  Future<BigInt> numberOfInputs() =>
+      RustLib.instance.api.webAudioApiNodeAudioBufferSourceNodeNumberOfInputs(
+        that: this,
+      );
+
+  Future<BigInt> numberOfOutputs() =>
+      RustLib.instance.api.webAudioApiNodeAudioBufferSourceNodeNumberOfOutputs(
         that: this,
       );
 
@@ -192,6 +347,11 @@ class AudioBufferSourceNode extends RustOpaque {
         that: this,
       );
 
+  Future<void> registration() =>
+      RustLib.instance.api.webAudioApiNodeAudioBufferSourceNodeRegistration(
+        that: this,
+      );
+
   /// Provide an [`AudioBuffer`] as the source of data to be played bask
   ///
   /// # Panics
@@ -202,6 +362,22 @@ class AudioBufferSourceNode extends RustOpaque {
       RustLib.instance.api.webAudioApiNodeAudioBufferSourceNodeSetBuffer(
           that: this, audioBuffer: audioBuffer);
 
+  /// Update the `channel_count` attribute
+  Future<void> setChannelCount({required BigInt v}) => RustLib.instance.api
+      .webAudioApiNodeAudioBufferSourceNodeSetChannelCount(that: this, v: v);
+
+  /// Update the `channel_count_mode` attribute
+  Future<void> setChannelCountMode({required ChannelCountMode v}) =>
+      RustLib.instance.api
+          .webAudioApiNodeAudioBufferSourceNodeSetChannelCountMode(
+              that: this, v: v);
+
+  /// Update the `channel_interpretation` attribute
+  Future<void> setChannelInterpretation({required ChannelInterpretation v}) =>
+      RustLib.instance.api
+          .webAudioApiNodeAudioBufferSourceNodeSetChannelInterpretation(
+              that: this, v: v);
+
   Future<void> setLoop({required bool value}) => RustLib.instance.api
       .webAudioApiNodeAudioBufferSourceNodeSetLoop(that: this, value: value);
 
@@ -211,6 +387,14 @@ class AudioBufferSourceNode extends RustOpaque {
   Future<void> setLoopStart({required double value}) =>
       RustLib.instance.api.webAudioApiNodeAudioBufferSourceNodeSetLoopStart(
           that: this, value: value);
+
+  Future<void> start() =>
+      RustLib.instance.api.webAudioApiNodeAudioBufferSourceNodeStart(
+        that: this,
+      );
+
+  Future<void> startAt({required double when}) => RustLib.instance.api
+      .webAudioApiNodeAudioBufferSourceNodeStartAt(that: this, when: when);
 
   /// Start the playback at the given time and with a given offset
   ///
@@ -235,6 +419,14 @@ class AudioBufferSourceNode extends RustOpaque {
       RustLib.instance.api
           .webAudioApiNodeAudioBufferSourceNodeStartAtWithOffsetAndDuration(
               that: this, start: start, offset: offset, duration: duration);
+
+  Future<void> stop() =>
+      RustLib.instance.api.webAudioApiNodeAudioBufferSourceNodeStop(
+        that: this,
+      );
+
+  Future<void> stopAt({required double when}) => RustLib.instance.api
+      .webAudioApiNodeAudioBufferSourceNodeStopAt(that: this, when: when);
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioDestinationNode>>
@@ -258,6 +450,61 @@ class AudioDestinationNode extends RustOpaque {
         .instance.api.rust_arc_decrement_strong_count_AudioDestinationNodePtr,
   );
 
+  Future<void> channelConfig() =>
+      RustLib.instance.api.webAudioApiNodeAudioDestinationNodeChannelConfig(
+        that: this,
+      );
+
+  /// Represents an integer used to determine how many channels are used when up-mixing and
+  /// down-mixing connections to any inputs to the node.
+  Future<BigInt> channelCount() =>
+      RustLib.instance.api.webAudioApiNodeAudioDestinationNodeChannelCount(
+        that: this,
+      );
+
+  /// Represents an enumerated value describing the way channels must be matched between the
+  /// node's inputs and outputs.
+  Future<ChannelCountMode> channelCountMode() =>
+      RustLib.instance.api.webAudioApiNodeAudioDestinationNodeChannelCountMode(
+        that: this,
+      );
+
+  /// Represents an enumerated value describing the meaning of the channels. This interpretation
+  /// will define how audio up-mixing and down-mixing will happen.
+  Future<ChannelInterpretation> channelInterpretation() => RustLib.instance.api
+          .webAudioApiNodeAudioDestinationNodeChannelInterpretation(
+        that: this,
+      );
+
+  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
+  Future<void> clearOnprocessorerror() => RustLib.instance.api
+          .webAudioApiNodeAudioDestinationNodeClearOnprocessorerror(
+        that: this,
+      );
+
+  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
+  /// AudioNode.
+  Future<void> context() =>
+      RustLib.instance.api.webAudioApiNodeAudioDestinationNodeContext(
+        that: this,
+      );
+
+  /// Disconnects all outgoing connections from the AudioNode.
+  Future<void> disconnect() =>
+      RustLib.instance.api.webAudioApiNodeAudioDestinationNodeDisconnect(
+        that: this,
+      );
+
+  /// Disconnects all outgoing connections at the given output port from the AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - if the output port is out of bounds for this node
+  Future<void> disconnectOutput({required BigInt output}) =>
+      RustLib.instance.api.webAudioApiNodeAudioDestinationNodeDisconnectOutput(
+          that: this, output: output);
+
   /// The maximum number of channels that the channelCount attribute can be set to (the max
   /// number of channels that the hardware is capable of supporting).
   /// <https://www.w3.org/TR/webaudio/#dom-audiodestinationnode-maxchannelcount>
@@ -265,6 +512,34 @@ class AudioDestinationNode extends RustOpaque {
       RustLib.instance.api.webAudioApiNodeAudioDestinationNodeMaxChannelCount(
         that: this,
       );
+
+  Future<BigInt> numberOfInputs() =>
+      RustLib.instance.api.webAudioApiNodeAudioDestinationNodeNumberOfInputs(
+        that: this,
+      );
+
+  Future<BigInt> numberOfOutputs() =>
+      RustLib.instance.api.webAudioApiNodeAudioDestinationNodeNumberOfOutputs(
+        that: this,
+      );
+
+  Future<void> registration() =>
+      RustLib.instance.api.webAudioApiNodeAudioDestinationNodeRegistration(
+        that: this,
+      );
+
+  Future<void> setChannelCount({required BigInt v}) => RustLib.instance.api
+      .webAudioApiNodeAudioDestinationNodeSetChannelCount(that: this, v: v);
+
+  Future<void> setChannelCountMode({required ChannelCountMode v}) => RustLib
+      .instance.api
+      .webAudioApiNodeAudioDestinationNodeSetChannelCountMode(that: this, v: v);
+
+  /// Update the `channel_interpretation` attribute
+  Future<void> setChannelInterpretation({required ChannelInterpretation v}) =>
+      RustLib.instance.api
+          .webAudioApiNodeAudioDestinationNodeSetChannelInterpretation(
+              that: this, v: v);
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<BiquadFilterNode>>
@@ -287,11 +562,66 @@ class BiquadFilterNode extends RustOpaque {
         .instance.api.rust_arc_decrement_strong_count_BiquadFilterNodePtr,
   );
 
+  Future<void> channelConfig() =>
+      RustLib.instance.api.webAudioApiNodeBiquadFilterNodeChannelConfig(
+        that: this,
+      );
+
+  /// Represents an integer used to determine how many channels are used when up-mixing and
+  /// down-mixing connections to any inputs to the node.
+  Future<BigInt> channelCount() =>
+      RustLib.instance.api.webAudioApiNodeBiquadFilterNodeChannelCount(
+        that: this,
+      );
+
+  /// Represents an enumerated value describing the way channels must be matched between the
+  /// node's inputs and outputs.
+  Future<ChannelCountMode> channelCountMode() =>
+      RustLib.instance.api.webAudioApiNodeBiquadFilterNodeChannelCountMode(
+        that: this,
+      );
+
+  /// Represents an enumerated value describing the meaning of the channels. This interpretation
+  /// will define how audio up-mixing and down-mixing will happen.
+  Future<ChannelInterpretation> channelInterpretation() =>
+      RustLib.instance.api.webAudioApiNodeBiquadFilterNodeChannelInterpretation(
+        that: this,
+      );
+
+  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
+  Future<void> clearOnprocessorerror() =>
+      RustLib.instance.api.webAudioApiNodeBiquadFilterNodeClearOnprocessorerror(
+        that: this,
+      );
+
+  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
+  /// AudioNode.
+  Future<void> context() =>
+      RustLib.instance.api.webAudioApiNodeBiquadFilterNodeContext(
+        that: this,
+      );
+
   /// Returns the detune audio parameter
   Future<void> detune() =>
       RustLib.instance.api.webAudioApiNodeBiquadFilterNodeDetune(
         that: this,
       );
+
+  /// Disconnects all outgoing connections from the AudioNode.
+  Future<void> disconnect() =>
+      RustLib.instance.api.webAudioApiNodeBiquadFilterNodeDisconnect(
+        that: this,
+      );
+
+  /// Disconnects all outgoing connections at the given output port from the AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - if the output port is out of bounds for this node
+  Future<void> disconnectOutput({required BigInt output}) =>
+      RustLib.instance.api.webAudioApiNodeBiquadFilterNodeDisconnectOutput(
+          that: this, output: output);
 
   /// Returns the frequency audio parameter
   Future<void> frequency() =>
@@ -305,10 +635,40 @@ class BiquadFilterNode extends RustOpaque {
         that: this,
       );
 
+  Future<BigInt> numberOfInputs() =>
+      RustLib.instance.api.webAudioApiNodeBiquadFilterNodeNumberOfInputs(
+        that: this,
+      );
+
+  Future<BigInt> numberOfOutputs() =>
+      RustLib.instance.api.webAudioApiNodeBiquadFilterNodeNumberOfOutputs(
+        that: this,
+      );
+
   /// Returns the Q audio parameter
   Future<void> q() => RustLib.instance.api.webAudioApiNodeBiquadFilterNodeQ(
         that: this,
       );
+
+  Future<void> registration() =>
+      RustLib.instance.api.webAudioApiNodeBiquadFilterNodeRegistration(
+        that: this,
+      );
+
+  /// Update the `channel_count` attribute
+  Future<void> setChannelCount({required BigInt v}) => RustLib.instance.api
+      .webAudioApiNodeBiquadFilterNodeSetChannelCount(that: this, v: v);
+
+  /// Update the `channel_count_mode` attribute
+  Future<void> setChannelCountMode({required ChannelCountMode v}) =>
+      RustLib.instance.api
+          .webAudioApiNodeBiquadFilterNodeSetChannelCountMode(that: this, v: v);
+
+  /// Update the `channel_interpretation` attribute
+  Future<void> setChannelInterpretation({required ChannelInterpretation v}) =>
+      RustLib.instance.api
+          .webAudioApiNodeBiquadFilterNodeSetChannelInterpretation(
+              that: this, v: v);
 
   /// biquad filter type setter
   ///
@@ -323,6 +683,217 @@ class BiquadFilterNode extends RustOpaque {
       RustLib.instance.api.webAudioApiNodeBiquadFilterNodeType(
         that: this,
       );
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ChannelMergerNode>>
+@sealed
+class ChannelMergerNode extends RustOpaque {
+  // Not to be used by end users
+  ChannelMergerNode.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  ChannelMergerNode.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_ChannelMergerNode,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_ChannelMergerNode,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_ChannelMergerNodePtr,
+  );
+
+  Future<void> channelConfig() =>
+      RustLib.instance.api.webAudioApiNodeChannelMergerNodeChannelConfig(
+        that: this,
+      );
+
+  /// Represents an integer used to determine how many channels are used when up-mixing and
+  /// down-mixing connections to any inputs to the node.
+  Future<BigInt> channelCount() =>
+      RustLib.instance.api.webAudioApiNodeChannelMergerNodeChannelCount(
+        that: this,
+      );
+
+  /// Represents an enumerated value describing the way channels must be matched between the
+  /// node's inputs and outputs.
+  Future<ChannelCountMode> channelCountMode() =>
+      RustLib.instance.api.webAudioApiNodeChannelMergerNodeChannelCountMode(
+        that: this,
+      );
+
+  /// Represents an enumerated value describing the meaning of the channels. This interpretation
+  /// will define how audio up-mixing and down-mixing will happen.
+  Future<ChannelInterpretation> channelInterpretation() => RustLib.instance.api
+          .webAudioApiNodeChannelMergerNodeChannelInterpretation(
+        that: this,
+      );
+
+  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
+  Future<void> clearOnprocessorerror() => RustLib.instance.api
+          .webAudioApiNodeChannelMergerNodeClearOnprocessorerror(
+        that: this,
+      );
+
+  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
+  /// AudioNode.
+  Future<void> context() =>
+      RustLib.instance.api.webAudioApiNodeChannelMergerNodeContext(
+        that: this,
+      );
+
+  /// Disconnects all outgoing connections from the AudioNode.
+  Future<void> disconnect() =>
+      RustLib.instance.api.webAudioApiNodeChannelMergerNodeDisconnect(
+        that: this,
+      );
+
+  /// Disconnects all outgoing connections at the given output port from the AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - if the output port is out of bounds for this node
+  Future<void> disconnectOutput({required BigInt output}) =>
+      RustLib.instance.api.webAudioApiNodeChannelMergerNodeDisconnectOutput(
+          that: this, output: output);
+
+  Future<BigInt> numberOfInputs() =>
+      RustLib.instance.api.webAudioApiNodeChannelMergerNodeNumberOfInputs(
+        that: this,
+      );
+
+  Future<BigInt> numberOfOutputs() =>
+      RustLib.instance.api.webAudioApiNodeChannelMergerNodeNumberOfOutputs(
+        that: this,
+      );
+
+  Future<void> registration() =>
+      RustLib.instance.api.webAudioApiNodeChannelMergerNodeRegistration(
+        that: this,
+      );
+
+  Future<void> setChannelCount({required BigInt count}) =>
+      RustLib.instance.api.webAudioApiNodeChannelMergerNodeSetChannelCount(
+          that: this, count: count);
+
+  Future<void> setChannelCountMode({required ChannelCountMode mode}) =>
+      RustLib.instance.api.webAudioApiNodeChannelMergerNodeSetChannelCountMode(
+          that: this, mode: mode);
+
+  /// Update the `channel_interpretation` attribute
+  Future<void> setChannelInterpretation({required ChannelInterpretation v}) =>
+      RustLib.instance.api
+          .webAudioApiNodeChannelMergerNodeSetChannelInterpretation(
+              that: this, v: v);
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ChannelSplitterNode>>
+@sealed
+class ChannelSplitterNode extends RustOpaque {
+  // Not to be used by end users
+  ChannelSplitterNode.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  ChannelSplitterNode.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_ChannelSplitterNode,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_ChannelSplitterNode,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_ChannelSplitterNodePtr,
+  );
+
+  Future<void> channelConfig() =>
+      RustLib.instance.api.webAudioApiNodeChannelSplitterNodeChannelConfig(
+        that: this,
+      );
+
+  /// Represents an integer used to determine how many channels are used when up-mixing and
+  /// down-mixing connections to any inputs to the node.
+  Future<BigInt> channelCount() =>
+      RustLib.instance.api.webAudioApiNodeChannelSplitterNodeChannelCount(
+        that: this,
+      );
+
+  /// Represents an enumerated value describing the way channels must be matched between the
+  /// node's inputs and outputs.
+  Future<ChannelCountMode> channelCountMode() =>
+      RustLib.instance.api.webAudioApiNodeChannelSplitterNodeChannelCountMode(
+        that: this,
+      );
+
+  /// Represents an enumerated value describing the meaning of the channels. This interpretation
+  /// will define how audio up-mixing and down-mixing will happen.
+  Future<ChannelInterpretation> channelInterpretation() => RustLib.instance.api
+          .webAudioApiNodeChannelSplitterNodeChannelInterpretation(
+        that: this,
+      );
+
+  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
+  Future<void> clearOnprocessorerror() => RustLib.instance.api
+          .webAudioApiNodeChannelSplitterNodeClearOnprocessorerror(
+        that: this,
+      );
+
+  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
+  /// AudioNode.
+  Future<void> context() =>
+      RustLib.instance.api.webAudioApiNodeChannelSplitterNodeContext(
+        that: this,
+      );
+
+  /// Disconnects all outgoing connections from the AudioNode.
+  Future<void> disconnect() =>
+      RustLib.instance.api.webAudioApiNodeChannelSplitterNodeDisconnect(
+        that: this,
+      );
+
+  /// Disconnects all outgoing connections at the given output port from the AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - if the output port is out of bounds for this node
+  Future<void> disconnectOutput({required BigInt output}) =>
+      RustLib.instance.api.webAudioApiNodeChannelSplitterNodeDisconnectOutput(
+          that: this, output: output);
+
+  Future<BigInt> numberOfInputs() =>
+      RustLib.instance.api.webAudioApiNodeChannelSplitterNodeNumberOfInputs(
+        that: this,
+      );
+
+  Future<BigInt> numberOfOutputs() =>
+      RustLib.instance.api.webAudioApiNodeChannelSplitterNodeNumberOfOutputs(
+        that: this,
+      );
+
+  Future<void> registration() =>
+      RustLib.instance.api.webAudioApiNodeChannelSplitterNodeRegistration(
+        that: this,
+      );
+
+  Future<void> setChannelCount({required BigInt count}) =>
+      RustLib.instance.api.webAudioApiNodeChannelSplitterNodeSetChannelCount(
+          that: this, count: count);
+
+  Future<void> setChannelCountMode({required ChannelCountMode mode}) =>
+      RustLib.instance.api
+          .webAudioApiNodeChannelSplitterNodeSetChannelCountMode(
+              that: this, mode: mode);
+
+  Future<void> setChannelInterpretation(
+          {required ChannelInterpretation interpretation}) =>
+      RustLib.instance.api
+          .webAudioApiNodeChannelSplitterNodeSetChannelInterpretation(
+              that: this, interpretation: interpretation);
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ConstantSourceNode>>
@@ -345,10 +916,117 @@ class ConstantSourceNode extends RustOpaque {
         .instance.api.rust_arc_decrement_strong_count_ConstantSourceNodePtr,
   );
 
+  Future<void> channelConfig() =>
+      RustLib.instance.api.webAudioApiNodeConstantSourceNodeChannelConfig(
+        that: this,
+      );
+
+  /// Represents an integer used to determine how many channels are used when up-mixing and
+  /// down-mixing connections to any inputs to the node.
+  Future<BigInt> channelCount() =>
+      RustLib.instance.api.webAudioApiNodeConstantSourceNodeChannelCount(
+        that: this,
+      );
+
+  /// Represents an enumerated value describing the way channels must be matched between the
+  /// node's inputs and outputs.
+  Future<ChannelCountMode> channelCountMode() =>
+      RustLib.instance.api.webAudioApiNodeConstantSourceNodeChannelCountMode(
+        that: this,
+      );
+
+  /// Represents an enumerated value describing the meaning of the channels. This interpretation
+  /// will define how audio up-mixing and down-mixing will happen.
+  Future<ChannelInterpretation> channelInterpretation() => RustLib.instance.api
+          .webAudioApiNodeConstantSourceNodeChannelInterpretation(
+        that: this,
+      );
+
+  /// Unset the callback to run when the source node has stopped playing
+  Future<void> clearOnended() =>
+      RustLib.instance.api.webAudioApiNodeConstantSourceNodeClearOnended(
+        that: this,
+      );
+
+  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
+  Future<void> clearOnprocessorerror() => RustLib.instance.api
+          .webAudioApiNodeConstantSourceNodeClearOnprocessorerror(
+        that: this,
+      );
+
+  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
+  /// AudioNode.
+  Future<void> context() =>
+      RustLib.instance.api.webAudioApiNodeConstantSourceNodeContext(
+        that: this,
+      );
+
+  /// Disconnects all outgoing connections from the AudioNode.
+  Future<void> disconnect() =>
+      RustLib.instance.api.webAudioApiNodeConstantSourceNodeDisconnect(
+        that: this,
+      );
+
+  /// Disconnects all outgoing connections at the given output port from the AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - if the output port is out of bounds for this node
+  Future<void> disconnectOutput({required BigInt output}) =>
+      RustLib.instance.api.webAudioApiNodeConstantSourceNodeDisconnectOutput(
+          that: this, output: output);
+
+  Future<BigInt> numberOfInputs() =>
+      RustLib.instance.api.webAudioApiNodeConstantSourceNodeNumberOfInputs(
+        that: this,
+      );
+
+  Future<BigInt> numberOfOutputs() =>
+      RustLib.instance.api.webAudioApiNodeConstantSourceNodeNumberOfOutputs(
+        that: this,
+      );
+
   Future<void> offset() =>
       RustLib.instance.api.webAudioApiNodeConstantSourceNodeOffset(
         that: this,
       );
+
+  Future<void> registration() =>
+      RustLib.instance.api.webAudioApiNodeConstantSourceNodeRegistration(
+        that: this,
+      );
+
+  /// Update the `channel_count` attribute
+  Future<void> setChannelCount({required BigInt v}) => RustLib.instance.api
+      .webAudioApiNodeConstantSourceNodeSetChannelCount(that: this, v: v);
+
+  /// Update the `channel_count_mode` attribute
+  Future<void> setChannelCountMode({required ChannelCountMode v}) => RustLib
+      .instance.api
+      .webAudioApiNodeConstantSourceNodeSetChannelCountMode(that: this, v: v);
+
+  /// Update the `channel_interpretation` attribute
+  Future<void> setChannelInterpretation({required ChannelInterpretation v}) =>
+      RustLib.instance.api
+          .webAudioApiNodeConstantSourceNodeSetChannelInterpretation(
+              that: this, v: v);
+
+  Future<void> start() =>
+      RustLib.instance.api.webAudioApiNodeConstantSourceNodeStart(
+        that: this,
+      );
+
+  Future<void> startAt({required double when}) => RustLib.instance.api
+      .webAudioApiNodeConstantSourceNodeStartAt(that: this, when: when);
+
+  Future<void> stop() =>
+      RustLib.instance.api.webAudioApiNodeConstantSourceNodeStop(
+        that: this,
+      );
+
+  Future<void> stopAt({required double when}) => RustLib.instance.api
+      .webAudioApiNodeConstantSourceNodeStopAt(that: this, when: when);
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ConvolverNode>>
@@ -371,9 +1049,79 @@ class ConvolverNode extends RustOpaque {
         RustLib.instance.api.rust_arc_decrement_strong_count_ConvolverNodePtr,
   );
 
+  Future<void> channelConfig() =>
+      RustLib.instance.api.webAudioApiNodeConvolverNodeChannelConfig(
+        that: this,
+      );
+
+  /// Represents an integer used to determine how many channels are used when up-mixing and
+  /// down-mixing connections to any inputs to the node.
+  Future<BigInt> channelCount() =>
+      RustLib.instance.api.webAudioApiNodeConvolverNodeChannelCount(
+        that: this,
+      );
+
+  /// Represents an enumerated value describing the way channels must be matched between the
+  /// node's inputs and outputs.
+  Future<ChannelCountMode> channelCountMode() =>
+      RustLib.instance.api.webAudioApiNodeConvolverNodeChannelCountMode(
+        that: this,
+      );
+
+  /// Represents an enumerated value describing the meaning of the channels. This interpretation
+  /// will define how audio up-mixing and down-mixing will happen.
+  Future<ChannelInterpretation> channelInterpretation() =>
+      RustLib.instance.api.webAudioApiNodeConvolverNodeChannelInterpretation(
+        that: this,
+      );
+
+  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
+  Future<void> clearOnprocessorerror() =>
+      RustLib.instance.api.webAudioApiNodeConvolverNodeClearOnprocessorerror(
+        that: this,
+      );
+
+  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
+  /// AudioNode.
+  Future<void> context() =>
+      RustLib.instance.api.webAudioApiNodeConvolverNodeContext(
+        that: this,
+      );
+
+  /// Disconnects all outgoing connections from the AudioNode.
+  Future<void> disconnect() =>
+      RustLib.instance.api.webAudioApiNodeConvolverNodeDisconnect(
+        that: this,
+      );
+
+  /// Disconnects all outgoing connections at the given output port from the AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - if the output port is out of bounds for this node
+  Future<void> disconnectOutput({required BigInt output}) => RustLib
+      .instance.api
+      .webAudioApiNodeConvolverNodeDisconnectOutput(that: this, output: output);
+
   /// Denotes if the response buffer will be scaled with an equal-power normalization
   Future<bool> normalize() =>
       RustLib.instance.api.webAudioApiNodeConvolverNodeNormalize(
+        that: this,
+      );
+
+  Future<BigInt> numberOfInputs() =>
+      RustLib.instance.api.webAudioApiNodeConvolverNodeNumberOfInputs(
+        that: this,
+      );
+
+  Future<BigInt> numberOfOutputs() =>
+      RustLib.instance.api.webAudioApiNodeConvolverNodeNumberOfOutputs(
+        that: this,
+      );
+
+  Future<void> registration() =>
+      RustLib.instance.api.webAudioApiNodeConvolverNodeRegistration(
         that: this,
       );
 
@@ -385,6 +1133,20 @@ class ConvolverNode extends RustOpaque {
   /// sample rate.
   Future<void> setBuffer({required AudioBuffer buffer}) => RustLib.instance.api
       .webAudioApiNodeConvolverNodeSetBuffer(that: this, buffer: buffer);
+
+  /// Update the `channel_count` attribute
+  Future<void> setChannelCount({required BigInt v}) => RustLib.instance.api
+      .webAudioApiNodeConvolverNodeSetChannelCount(that: this, v: v);
+
+  /// Update the `channel_count_mode` attribute
+  Future<void> setChannelCountMode({required ChannelCountMode v}) =>
+      RustLib.instance.api
+          .webAudioApiNodeConvolverNodeSetChannelCountMode(that: this, v: v);
+
+  /// Update the `channel_interpretation` attribute
+  Future<void> setChannelInterpretation({required ChannelInterpretation v}) =>
+      RustLib.instance.api.webAudioApiNodeConvolverNodeSetChannelInterpretation(
+          that: this, v: v);
 
   /// Update the `normalize` setting. This will only have an effect when `set_buffer` is called.
   Future<void> setNormalize({required bool value}) => RustLib.instance.api
@@ -411,11 +1173,95 @@ class DelayNode extends RustOpaque {
         RustLib.instance.api.rust_arc_decrement_strong_count_DelayNodePtr,
   );
 
+  Future<void> channelConfig() =>
+      RustLib.instance.api.webAudioApiNodeDelayNodeChannelConfig(
+        that: this,
+      );
+
+  /// Represents an integer used to determine how many channels are used when up-mixing and
+  /// down-mixing connections to any inputs to the node.
+  Future<BigInt> channelCount() =>
+      RustLib.instance.api.webAudioApiNodeDelayNodeChannelCount(
+        that: this,
+      );
+
+  /// Represents an enumerated value describing the way channels must be matched between the
+  /// node's inputs and outputs.
+  Future<ChannelCountMode> channelCountMode() =>
+      RustLib.instance.api.webAudioApiNodeDelayNodeChannelCountMode(
+        that: this,
+      );
+
+  /// Represents an enumerated value describing the meaning of the channels. This interpretation
+  /// will define how audio up-mixing and down-mixing will happen.
+  Future<ChannelInterpretation> channelInterpretation() =>
+      RustLib.instance.api.webAudioApiNodeDelayNodeChannelInterpretation(
+        that: this,
+      );
+
+  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
+  Future<void> clearOnprocessorerror() =>
+      RustLib.instance.api.webAudioApiNodeDelayNodeClearOnprocessorerror(
+        that: this,
+      );
+
+  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
+  /// AudioNode.
+  Future<void> context() =>
+      RustLib.instance.api.webAudioApiNodeDelayNodeContext(
+        that: this,
+      );
+
   /// A-rate [`AudioParam`] representing the amount of delay (in seconds) to apply.
   Future<void> delayTime() =>
       RustLib.instance.api.webAudioApiNodeDelayNodeDelayTime(
         that: this,
       );
+
+  /// Disconnects all outgoing connections from the AudioNode.
+  Future<void> disconnect() =>
+      RustLib.instance.api.webAudioApiNodeDelayNodeDisconnect(
+        that: this,
+      );
+
+  /// Disconnects all outgoing connections at the given output port from the AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - if the output port is out of bounds for this node
+  Future<void> disconnectOutput({required BigInt output}) =>
+      RustLib.instance.api
+          .webAudioApiNodeDelayNodeDisconnectOutput(that: this, output: output);
+
+  Future<BigInt> numberOfInputs() =>
+      RustLib.instance.api.webAudioApiNodeDelayNodeNumberOfInputs(
+        that: this,
+      );
+
+  Future<BigInt> numberOfOutputs() =>
+      RustLib.instance.api.webAudioApiNodeDelayNodeNumberOfOutputs(
+        that: this,
+      );
+
+  Future<void> registration() =>
+      RustLib.instance.api.webAudioApiNodeDelayNodeRegistration(
+        that: this,
+      );
+
+  /// Update the `channel_count` attribute
+  Future<void> setChannelCount({required BigInt v}) => RustLib.instance.api
+      .webAudioApiNodeDelayNodeSetChannelCount(that: this, v: v);
+
+  /// Update the `channel_count_mode` attribute
+  Future<void> setChannelCountMode({required ChannelCountMode v}) =>
+      RustLib.instance.api
+          .webAudioApiNodeDelayNodeSetChannelCountMode(that: this, v: v);
+
+  /// Update the `channel_interpretation` attribute
+  Future<void> setChannelInterpretation({required ChannelInterpretation v}) =>
+      RustLib.instance.api
+          .webAudioApiNodeDelayNodeSetChannelInterpretation(that: this, v: v);
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DynamicsCompressorNode>>
@@ -444,8 +1290,74 @@ class DynamicsCompressorNode extends RustOpaque {
         that: this,
       );
 
+  Future<void> channelConfig() =>
+      RustLib.instance.api.webAudioApiNodeDynamicsCompressorNodeChannelConfig(
+        that: this,
+      );
+
+  /// Represents an integer used to determine how many channels are used when up-mixing and
+  /// down-mixing connections to any inputs to the node.
+  Future<BigInt> channelCount() =>
+      RustLib.instance.api.webAudioApiNodeDynamicsCompressorNodeChannelCount(
+        that: this,
+      );
+
+  /// Represents an enumerated value describing the way channels must be matched between the
+  /// node's inputs and outputs.
+  Future<ChannelCountMode> channelCountMode() => RustLib.instance.api
+          .webAudioApiNodeDynamicsCompressorNodeChannelCountMode(
+        that: this,
+      );
+
+  /// Represents an enumerated value describing the meaning of the channels. This interpretation
+  /// will define how audio up-mixing and down-mixing will happen.
+  Future<ChannelInterpretation> channelInterpretation() => RustLib.instance.api
+          .webAudioApiNodeDynamicsCompressorNodeChannelInterpretation(
+        that: this,
+      );
+
+  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
+  Future<void> clearOnprocessorerror() => RustLib.instance.api
+          .webAudioApiNodeDynamicsCompressorNodeClearOnprocessorerror(
+        that: this,
+      );
+
+  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
+  /// AudioNode.
+  Future<void> context() =>
+      RustLib.instance.api.webAudioApiNodeDynamicsCompressorNodeContext(
+        that: this,
+      );
+
+  /// Disconnects all outgoing connections from the AudioNode.
+  Future<void> disconnect() =>
+      RustLib.instance.api.webAudioApiNodeDynamicsCompressorNodeDisconnect(
+        that: this,
+      );
+
+  /// Disconnects all outgoing connections at the given output port from the AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - if the output port is out of bounds for this node
+  Future<void> disconnectOutput({required BigInt output}) =>
+      RustLib.instance.api
+          .webAudioApiNodeDynamicsCompressorNodeDisconnectOutput(
+              that: this, output: output);
+
   Future<void> knee() =>
       RustLib.instance.api.webAudioApiNodeDynamicsCompressorNodeKnee(
+        that: this,
+      );
+
+  Future<BigInt> numberOfInputs() =>
+      RustLib.instance.api.webAudioApiNodeDynamicsCompressorNodeNumberOfInputs(
+        that: this,
+      );
+
+  Future<BigInt> numberOfOutputs() =>
+      RustLib.instance.api.webAudioApiNodeDynamicsCompressorNodeNumberOfOutputs(
         that: this,
       );
 
@@ -459,10 +1371,30 @@ class DynamicsCompressorNode extends RustOpaque {
         that: this,
       );
 
+  Future<void> registration() =>
+      RustLib.instance.api.webAudioApiNodeDynamicsCompressorNodeRegistration(
+        that: this,
+      );
+
   Future<void> release() =>
       RustLib.instance.api.webAudioApiNodeDynamicsCompressorNodeRelease(
         that: this,
       );
+
+  Future<void> setChannelCount({required BigInt count}) =>
+      RustLib.instance.api.webAudioApiNodeDynamicsCompressorNodeSetChannelCount(
+          that: this, count: count);
+
+  Future<void> setChannelCountMode({required ChannelCountMode mode}) =>
+      RustLib.instance.api
+          .webAudioApiNodeDynamicsCompressorNodeSetChannelCountMode(
+              that: this, mode: mode);
+
+  /// Update the `channel_interpretation` attribute
+  Future<void> setChannelInterpretation({required ChannelInterpretation v}) =>
+      RustLib.instance.api
+          .webAudioApiNodeDynamicsCompressorNodeSetChannelInterpretation(
+              that: this, v: v);
 
   Future<void> threshold() =>
       RustLib.instance.api.webAudioApiNodeDynamicsCompressorNodeThreshold(
@@ -490,9 +1422,307 @@ class GainNode extends RustOpaque {
         RustLib.instance.api.rust_arc_decrement_strong_count_GainNodePtr,
   );
 
+  Future<void> channelConfig() =>
+      RustLib.instance.api.webAudioApiNodeGainNodeChannelConfig(
+        that: this,
+      );
+
+  /// Represents an integer used to determine how many channels are used when up-mixing and
+  /// down-mixing connections to any inputs to the node.
+  Future<BigInt> channelCount() =>
+      RustLib.instance.api.webAudioApiNodeGainNodeChannelCount(
+        that: this,
+      );
+
+  /// Represents an enumerated value describing the way channels must be matched between the
+  /// node's inputs and outputs.
+  Future<ChannelCountMode> channelCountMode() =>
+      RustLib.instance.api.webAudioApiNodeGainNodeChannelCountMode(
+        that: this,
+      );
+
+  /// Represents an enumerated value describing the meaning of the channels. This interpretation
+  /// will define how audio up-mixing and down-mixing will happen.
+  Future<ChannelInterpretation> channelInterpretation() =>
+      RustLib.instance.api.webAudioApiNodeGainNodeChannelInterpretation(
+        that: this,
+      );
+
+  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
+  Future<void> clearOnprocessorerror() =>
+      RustLib.instance.api.webAudioApiNodeGainNodeClearOnprocessorerror(
+        that: this,
+      );
+
+  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
+  /// AudioNode.
+  Future<void> context() => RustLib.instance.api.webAudioApiNodeGainNodeContext(
+        that: this,
+      );
+
+  /// Disconnects all outgoing connections from the AudioNode.
+  Future<void> disconnect() =>
+      RustLib.instance.api.webAudioApiNodeGainNodeDisconnect(
+        that: this,
+      );
+
+  /// Disconnects all outgoing connections at the given output port from the AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - if the output port is out of bounds for this node
+  Future<void> disconnectOutput({required BigInt output}) =>
+      RustLib.instance.api
+          .webAudioApiNodeGainNodeDisconnectOutput(that: this, output: output);
+
   Future<void> gain() => RustLib.instance.api.webAudioApiNodeGainNodeGain(
         that: this,
       );
+
+  Future<BigInt> numberOfInputs() =>
+      RustLib.instance.api.webAudioApiNodeGainNodeNumberOfInputs(
+        that: this,
+      );
+
+  Future<BigInt> numberOfOutputs() =>
+      RustLib.instance.api.webAudioApiNodeGainNodeNumberOfOutputs(
+        that: this,
+      );
+
+  Future<void> registration() =>
+      RustLib.instance.api.webAudioApiNodeGainNodeRegistration(
+        that: this,
+      );
+
+  /// Update the `channel_count` attribute
+  Future<void> setChannelCount({required BigInt v}) => RustLib.instance.api
+      .webAudioApiNodeGainNodeSetChannelCount(that: this, v: v);
+
+  /// Update the `channel_count_mode` attribute
+  Future<void> setChannelCountMode({required ChannelCountMode v}) =>
+      RustLib.instance.api
+          .webAudioApiNodeGainNodeSetChannelCountMode(that: this, v: v);
+
+  /// Update the `channel_interpretation` attribute
+  Future<void> setChannelInterpretation({required ChannelInterpretation v}) =>
+      RustLib.instance.api
+          .webAudioApiNodeGainNodeSetChannelInterpretation(that: this, v: v);
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<IIRFilterNode>>
+@sealed
+class IirFilterNode extends RustOpaque {
+  // Not to be used by end users
+  IirFilterNode.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  IirFilterNode.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_IirFilterNode,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_IirFilterNode,
+    rustArcDecrementStrongCountPtr:
+        RustLib.instance.api.rust_arc_decrement_strong_count_IirFilterNodePtr,
+  );
+
+  Future<void> channelConfig() =>
+      RustLib.instance.api.webAudioApiNodeIirFilterNodeChannelConfig(
+        that: this,
+      );
+
+  /// Represents an integer used to determine how many channels are used when up-mixing and
+  /// down-mixing connections to any inputs to the node.
+  Future<BigInt> channelCount() =>
+      RustLib.instance.api.webAudioApiNodeIirFilterNodeChannelCount(
+        that: this,
+      );
+
+  /// Represents an enumerated value describing the way channels must be matched between the
+  /// node's inputs and outputs.
+  Future<ChannelCountMode> channelCountMode() =>
+      RustLib.instance.api.webAudioApiNodeIirFilterNodeChannelCountMode(
+        that: this,
+      );
+
+  /// Represents an enumerated value describing the meaning of the channels. This interpretation
+  /// will define how audio up-mixing and down-mixing will happen.
+  Future<ChannelInterpretation> channelInterpretation() =>
+      RustLib.instance.api.webAudioApiNodeIirFilterNodeChannelInterpretation(
+        that: this,
+      );
+
+  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
+  Future<void> clearOnprocessorerror() =>
+      RustLib.instance.api.webAudioApiNodeIirFilterNodeClearOnprocessorerror(
+        that: this,
+      );
+
+  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
+  /// AudioNode.
+  Future<void> context() =>
+      RustLib.instance.api.webAudioApiNodeIirFilterNodeContext(
+        that: this,
+      );
+
+  /// Disconnects all outgoing connections from the AudioNode.
+  Future<void> disconnect() =>
+      RustLib.instance.api.webAudioApiNodeIirFilterNodeDisconnect(
+        that: this,
+      );
+
+  /// Disconnects all outgoing connections at the given output port from the AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - if the output port is out of bounds for this node
+  Future<void> disconnectOutput({required BigInt output}) => RustLib
+      .instance.api
+      .webAudioApiNodeIirFilterNodeDisconnectOutput(that: this, output: output);
+
+  Future<BigInt> numberOfInputs() =>
+      RustLib.instance.api.webAudioApiNodeIirFilterNodeNumberOfInputs(
+        that: this,
+      );
+
+  Future<BigInt> numberOfOutputs() =>
+      RustLib.instance.api.webAudioApiNodeIirFilterNodeNumberOfOutputs(
+        that: this,
+      );
+
+  Future<void> registration() =>
+      RustLib.instance.api.webAudioApiNodeIirFilterNodeRegistration(
+        that: this,
+      );
+
+  /// Update the `channel_count` attribute
+  Future<void> setChannelCount({required BigInt v}) => RustLib.instance.api
+      .webAudioApiNodeIirFilterNodeSetChannelCount(that: this, v: v);
+
+  /// Update the `channel_count_mode` attribute
+  Future<void> setChannelCountMode({required ChannelCountMode v}) =>
+      RustLib.instance.api
+          .webAudioApiNodeIirFilterNodeSetChannelCountMode(that: this, v: v);
+
+  /// Update the `channel_interpretation` attribute
+  Future<void> setChannelInterpretation({required ChannelInterpretation v}) =>
+      RustLib.instance.api.webAudioApiNodeIirFilterNodeSetChannelInterpretation(
+          that: this, v: v);
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaElementAudioSourceNode>>
+@sealed
+class MediaElementAudioSourceNode extends RustOpaque {
+  // Not to be used by end users
+  MediaElementAudioSourceNode.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  MediaElementAudioSourceNode.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_MediaElementAudioSourceNode,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_MediaElementAudioSourceNode,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_MediaElementAudioSourceNodePtr,
+  );
+
+  Future<void> channelConfig() => RustLib.instance.api
+          .webAudioApiNodeMediaElementAudioSourceNodeChannelConfig(
+        that: this,
+      );
+
+  /// Represents an integer used to determine how many channels are used when up-mixing and
+  /// down-mixing connections to any inputs to the node.
+  Future<BigInt> channelCount() => RustLib.instance.api
+          .webAudioApiNodeMediaElementAudioSourceNodeChannelCount(
+        that: this,
+      );
+
+  /// Represents an enumerated value describing the way channels must be matched between the
+  /// node's inputs and outputs.
+  Future<ChannelCountMode> channelCountMode() => RustLib.instance.api
+          .webAudioApiNodeMediaElementAudioSourceNodeChannelCountMode(
+        that: this,
+      );
+
+  /// Represents an enumerated value describing the meaning of the channels. This interpretation
+  /// will define how audio up-mixing and down-mixing will happen.
+  Future<ChannelInterpretation> channelInterpretation() => RustLib.instance.api
+          .webAudioApiNodeMediaElementAudioSourceNodeChannelInterpretation(
+        that: this,
+      );
+
+  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
+  Future<void> clearOnprocessorerror() => RustLib.instance.api
+          .webAudioApiNodeMediaElementAudioSourceNodeClearOnprocessorerror(
+        that: this,
+      );
+
+  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
+  /// AudioNode.
+  Future<void> context() =>
+      RustLib.instance.api.webAudioApiNodeMediaElementAudioSourceNodeContext(
+        that: this,
+      );
+
+  /// Disconnects all outgoing connections from the AudioNode.
+  Future<void> disconnect() =>
+      RustLib.instance.api.webAudioApiNodeMediaElementAudioSourceNodeDisconnect(
+        that: this,
+      );
+
+  /// Disconnects all outgoing connections at the given output port from the AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - if the output port is out of bounds for this node
+  Future<void> disconnectOutput({required BigInt output}) =>
+      RustLib.instance.api
+          .webAudioApiNodeMediaElementAudioSourceNodeDisconnectOutput(
+              that: this, output: output);
+
+  Future<BigInt> numberOfInputs() => RustLib.instance.api
+          .webAudioApiNodeMediaElementAudioSourceNodeNumberOfInputs(
+        that: this,
+      );
+
+  Future<BigInt> numberOfOutputs() => RustLib.instance.api
+          .webAudioApiNodeMediaElementAudioSourceNodeNumberOfOutputs(
+        that: this,
+      );
+
+  Future<void> registration() => RustLib.instance.api
+          .webAudioApiNodeMediaElementAudioSourceNodeRegistration(
+        that: this,
+      );
+
+  /// Update the `channel_count` attribute
+  Future<void> setChannelCount({required BigInt v}) => RustLib.instance.api
+      .webAudioApiNodeMediaElementAudioSourceNodeSetChannelCount(
+          that: this, v: v);
+
+  /// Update the `channel_count_mode` attribute
+  Future<void> setChannelCountMode({required ChannelCountMode v}) =>
+      RustLib.instance.api
+          .webAudioApiNodeMediaElementAudioSourceNodeSetChannelCountMode(
+              that: this, v: v);
+
+  /// Update the `channel_interpretation` attribute
+  Future<void> setChannelInterpretation({required ChannelInterpretation v}) =>
+      RustLib.instance.api
+          .webAudioApiNodeMediaElementAudioSourceNodeSetChannelInterpretation(
+              that: this, v: v);
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamAudioDestinationNode>>
@@ -515,6 +1745,94 @@ class MediaStreamAudioDestinationNode extends RustOpaque {
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_MediaStreamAudioDestinationNodePtr,
   );
+
+  Future<void> channelConfig() => RustLib.instance.api
+          .webAudioApiNodeMediaStreamAudioDestinationNodeChannelConfig(
+        that: this,
+      );
+
+  /// Represents an integer used to determine how many channels are used when up-mixing and
+  /// down-mixing connections to any inputs to the node.
+  Future<BigInt> channelCount() => RustLib.instance.api
+          .webAudioApiNodeMediaStreamAudioDestinationNodeChannelCount(
+        that: this,
+      );
+
+  /// Represents an enumerated value describing the way channels must be matched between the
+  /// node's inputs and outputs.
+  Future<ChannelCountMode> channelCountMode() => RustLib.instance.api
+          .webAudioApiNodeMediaStreamAudioDestinationNodeChannelCountMode(
+        that: this,
+      );
+
+  /// Represents an enumerated value describing the meaning of the channels. This interpretation
+  /// will define how audio up-mixing and down-mixing will happen.
+  Future<ChannelInterpretation> channelInterpretation() => RustLib.instance.api
+          .webAudioApiNodeMediaStreamAudioDestinationNodeChannelInterpretation(
+        that: this,
+      );
+
+  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
+  Future<void> clearOnprocessorerror() => RustLib.instance.api
+          .webAudioApiNodeMediaStreamAudioDestinationNodeClearOnprocessorerror(
+        that: this,
+      );
+
+  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
+  /// AudioNode.
+  Future<void> context() => RustLib.instance.api
+          .webAudioApiNodeMediaStreamAudioDestinationNodeContext(
+        that: this,
+      );
+
+  /// Disconnects all outgoing connections from the AudioNode.
+  Future<void> disconnect() => RustLib.instance.api
+          .webAudioApiNodeMediaStreamAudioDestinationNodeDisconnect(
+        that: this,
+      );
+
+  /// Disconnects all outgoing connections at the given output port from the AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - if the output port is out of bounds for this node
+  Future<void> disconnectOutput({required BigInt output}) =>
+      RustLib.instance.api
+          .webAudioApiNodeMediaStreamAudioDestinationNodeDisconnectOutput(
+              that: this, output: output);
+
+  Future<BigInt> numberOfInputs() => RustLib.instance.api
+          .webAudioApiNodeMediaStreamAudioDestinationNodeNumberOfInputs(
+        that: this,
+      );
+
+  Future<BigInt> numberOfOutputs() => RustLib.instance.api
+          .webAudioApiNodeMediaStreamAudioDestinationNodeNumberOfOutputs(
+        that: this,
+      );
+
+  Future<void> registration() => RustLib.instance.api
+          .webAudioApiNodeMediaStreamAudioDestinationNodeRegistration(
+        that: this,
+      );
+
+  /// Update the `channel_count` attribute
+  Future<void> setChannelCount({required BigInt v}) => RustLib.instance.api
+      .webAudioApiNodeMediaStreamAudioDestinationNodeSetChannelCount(
+          that: this, v: v);
+
+  /// Update the `channel_count_mode` attribute
+  Future<void> setChannelCountMode({required ChannelCountMode v}) =>
+      RustLib.instance.api
+          .webAudioApiNodeMediaStreamAudioDestinationNodeSetChannelCountMode(
+              that: this, v: v);
+
+  /// Update the `channel_interpretation` attribute
+  Future<void> setChannelInterpretation({required ChannelInterpretation v}) =>
+      RustLib.instance.api
+          .webAudioApiNodeMediaStreamAudioDestinationNodeSetChannelInterpretation(
+              that: this, v: v);
 
   /// A [`MediaStream`] producing audio buffers with the same number of channels as the node
   /// itself
@@ -544,6 +1862,94 @@ class MediaStreamAudioSourceNode extends RustOpaque {
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_MediaStreamAudioSourceNodePtr,
   );
+
+  Future<void> channelConfig() => RustLib.instance.api
+          .webAudioApiNodeMediaStreamAudioSourceNodeChannelConfig(
+        that: this,
+      );
+
+  /// Represents an integer used to determine how many channels are used when up-mixing and
+  /// down-mixing connections to any inputs to the node.
+  Future<BigInt> channelCount() => RustLib.instance.api
+          .webAudioApiNodeMediaStreamAudioSourceNodeChannelCount(
+        that: this,
+      );
+
+  /// Represents an enumerated value describing the way channels must be matched between the
+  /// node's inputs and outputs.
+  Future<ChannelCountMode> channelCountMode() => RustLib.instance.api
+          .webAudioApiNodeMediaStreamAudioSourceNodeChannelCountMode(
+        that: this,
+      );
+
+  /// Represents an enumerated value describing the meaning of the channels. This interpretation
+  /// will define how audio up-mixing and down-mixing will happen.
+  Future<ChannelInterpretation> channelInterpretation() => RustLib.instance.api
+          .webAudioApiNodeMediaStreamAudioSourceNodeChannelInterpretation(
+        that: this,
+      );
+
+  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
+  Future<void> clearOnprocessorerror() => RustLib.instance.api
+          .webAudioApiNodeMediaStreamAudioSourceNodeClearOnprocessorerror(
+        that: this,
+      );
+
+  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
+  /// AudioNode.
+  Future<void> context() =>
+      RustLib.instance.api.webAudioApiNodeMediaStreamAudioSourceNodeContext(
+        that: this,
+      );
+
+  /// Disconnects all outgoing connections from the AudioNode.
+  Future<void> disconnect() =>
+      RustLib.instance.api.webAudioApiNodeMediaStreamAudioSourceNodeDisconnect(
+        that: this,
+      );
+
+  /// Disconnects all outgoing connections at the given output port from the AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - if the output port is out of bounds for this node
+  Future<void> disconnectOutput({required BigInt output}) =>
+      RustLib.instance.api
+          .webAudioApiNodeMediaStreamAudioSourceNodeDisconnectOutput(
+              that: this, output: output);
+
+  Future<BigInt> numberOfInputs() => RustLib.instance.api
+          .webAudioApiNodeMediaStreamAudioSourceNodeNumberOfInputs(
+        that: this,
+      );
+
+  Future<BigInt> numberOfOutputs() => RustLib.instance.api
+          .webAudioApiNodeMediaStreamAudioSourceNodeNumberOfOutputs(
+        that: this,
+      );
+
+  Future<void> registration() => RustLib.instance.api
+          .webAudioApiNodeMediaStreamAudioSourceNodeRegistration(
+        that: this,
+      );
+
+  /// Update the `channel_count` attribute
+  Future<void> setChannelCount({required BigInt v}) => RustLib.instance.api
+      .webAudioApiNodeMediaStreamAudioSourceNodeSetChannelCount(
+          that: this, v: v);
+
+  /// Update the `channel_count_mode` attribute
+  Future<void> setChannelCountMode({required ChannelCountMode v}) =>
+      RustLib.instance.api
+          .webAudioApiNodeMediaStreamAudioSourceNodeSetChannelCountMode(
+              that: this, v: v);
+
+  /// Update the `channel_interpretation` attribute
+  Future<void> setChannelInterpretation({required ChannelInterpretation v}) =>
+      RustLib.instance.api
+          .webAudioApiNodeMediaStreamAudioSourceNodeSetChannelInterpretation(
+              that: this, v: v);
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamTrackAudioSourceNode>>
@@ -566,6 +1972,94 @@ class MediaStreamTrackAudioSourceNode extends RustOpaque {
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_MediaStreamTrackAudioSourceNodePtr,
   );
+
+  Future<void> channelConfig() => RustLib.instance.api
+          .webAudioApiNodeMediaStreamTrackAudioSourceNodeChannelConfig(
+        that: this,
+      );
+
+  /// Represents an integer used to determine how many channels are used when up-mixing and
+  /// down-mixing connections to any inputs to the node.
+  Future<BigInt> channelCount() => RustLib.instance.api
+          .webAudioApiNodeMediaStreamTrackAudioSourceNodeChannelCount(
+        that: this,
+      );
+
+  /// Represents an enumerated value describing the way channels must be matched between the
+  /// node's inputs and outputs.
+  Future<ChannelCountMode> channelCountMode() => RustLib.instance.api
+          .webAudioApiNodeMediaStreamTrackAudioSourceNodeChannelCountMode(
+        that: this,
+      );
+
+  /// Represents an enumerated value describing the meaning of the channels. This interpretation
+  /// will define how audio up-mixing and down-mixing will happen.
+  Future<ChannelInterpretation> channelInterpretation() => RustLib.instance.api
+          .webAudioApiNodeMediaStreamTrackAudioSourceNodeChannelInterpretation(
+        that: this,
+      );
+
+  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
+  Future<void> clearOnprocessorerror() => RustLib.instance.api
+          .webAudioApiNodeMediaStreamTrackAudioSourceNodeClearOnprocessorerror(
+        that: this,
+      );
+
+  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
+  /// AudioNode.
+  Future<void> context() => RustLib.instance.api
+          .webAudioApiNodeMediaStreamTrackAudioSourceNodeContext(
+        that: this,
+      );
+
+  /// Disconnects all outgoing connections from the AudioNode.
+  Future<void> disconnect() => RustLib.instance.api
+          .webAudioApiNodeMediaStreamTrackAudioSourceNodeDisconnect(
+        that: this,
+      );
+
+  /// Disconnects all outgoing connections at the given output port from the AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - if the output port is out of bounds for this node
+  Future<void> disconnectOutput({required BigInt output}) =>
+      RustLib.instance.api
+          .webAudioApiNodeMediaStreamTrackAudioSourceNodeDisconnectOutput(
+              that: this, output: output);
+
+  Future<BigInt> numberOfInputs() => RustLib.instance.api
+          .webAudioApiNodeMediaStreamTrackAudioSourceNodeNumberOfInputs(
+        that: this,
+      );
+
+  Future<BigInt> numberOfOutputs() => RustLib.instance.api
+          .webAudioApiNodeMediaStreamTrackAudioSourceNodeNumberOfOutputs(
+        that: this,
+      );
+
+  Future<void> registration() => RustLib.instance.api
+          .webAudioApiNodeMediaStreamTrackAudioSourceNodeRegistration(
+        that: this,
+      );
+
+  /// Update the `channel_count` attribute
+  Future<void> setChannelCount({required BigInt v}) => RustLib.instance.api
+      .webAudioApiNodeMediaStreamTrackAudioSourceNodeSetChannelCount(
+          that: this, v: v);
+
+  /// Update the `channel_count_mode` attribute
+  Future<void> setChannelCountMode({required ChannelCountMode v}) =>
+      RustLib.instance.api
+          .webAudioApiNodeMediaStreamTrackAudioSourceNodeSetChannelCountMode(
+              that: this, v: v);
+
+  /// Update the `channel_interpretation` attribute
+  Future<void> setChannelInterpretation({required ChannelInterpretation v}) =>
+      RustLib.instance.api
+          .webAudioApiNodeMediaStreamTrackAudioSourceNodeSetChannelInterpretation(
+              that: this, v: v);
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OscillatorNode>>
@@ -588,6 +2082,51 @@ class OscillatorNode extends RustOpaque {
         RustLib.instance.api.rust_arc_decrement_strong_count_OscillatorNodePtr,
   );
 
+  Future<void> channelConfig() =>
+      RustLib.instance.api.webAudioApiNodeOscillatorNodeChannelConfig(
+        that: this,
+      );
+
+  /// Represents an integer used to determine how many channels are used when up-mixing and
+  /// down-mixing connections to any inputs to the node.
+  Future<BigInt> channelCount() =>
+      RustLib.instance.api.webAudioApiNodeOscillatorNodeChannelCount(
+        that: this,
+      );
+
+  /// Represents an enumerated value describing the way channels must be matched between the
+  /// node's inputs and outputs.
+  Future<ChannelCountMode> channelCountMode() =>
+      RustLib.instance.api.webAudioApiNodeOscillatorNodeChannelCountMode(
+        that: this,
+      );
+
+  /// Represents an enumerated value describing the meaning of the channels. This interpretation
+  /// will define how audio up-mixing and down-mixing will happen.
+  Future<ChannelInterpretation> channelInterpretation() =>
+      RustLib.instance.api.webAudioApiNodeOscillatorNodeChannelInterpretation(
+        that: this,
+      );
+
+  /// Unset the callback to run when the source node has stopped playing
+  Future<void> clearOnended() =>
+      RustLib.instance.api.webAudioApiNodeOscillatorNodeClearOnended(
+        that: this,
+      );
+
+  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
+  Future<void> clearOnprocessorerror() =>
+      RustLib.instance.api.webAudioApiNodeOscillatorNodeClearOnprocessorerror(
+        that: this,
+      );
+
+  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
+  /// AudioNode.
+  Future<void> context() =>
+      RustLib.instance.api.webAudioApiNodeOscillatorNodeContext(
+        that: this,
+      );
+
   /// A-rate [`AudioParam`] that defines a transposition according to the
   /// frequency, expressed in cents.
   ///
@@ -599,6 +2138,22 @@ class OscillatorNode extends RustOpaque {
         that: this,
       );
 
+  /// Disconnects all outgoing connections from the AudioNode.
+  Future<void> disconnect() =>
+      RustLib.instance.api.webAudioApiNodeOscillatorNodeDisconnect(
+        that: this,
+      );
+
+  /// Disconnects all outgoing connections at the given output port from the AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - if the output port is out of bounds for this node
+  Future<void> disconnectOutput({required BigInt output}) =>
+      RustLib.instance.api.webAudioApiNodeOscillatorNodeDisconnectOutput(
+          that: this, output: output);
+
   /// A-rate [`AudioParam`] that defines the fundamental frequency of the
   /// oscillator, expressed in Hz
   ///
@@ -607,6 +2162,38 @@ class OscillatorNode extends RustOpaque {
       RustLib.instance.api.webAudioApiNodeOscillatorNodeFrequency(
         that: this,
       );
+
+  /// `OscillatorNode` is a source node. A source node is by definition with no input
+  Future<BigInt> numberOfInputs() =>
+      RustLib.instance.api.webAudioApiNodeOscillatorNodeNumberOfInputs(
+        that: this,
+      );
+
+  /// `OscillatorNode` is a mono source node.
+  Future<BigInt> numberOfOutputs() =>
+      RustLib.instance.api.webAudioApiNodeOscillatorNodeNumberOfOutputs(
+        that: this,
+      );
+
+  Future<void> registration() =>
+      RustLib.instance.api.webAudioApiNodeOscillatorNodeRegistration(
+        that: this,
+      );
+
+  /// Update the `channel_count` attribute
+  Future<void> setChannelCount({required BigInt v}) => RustLib.instance.api
+      .webAudioApiNodeOscillatorNodeSetChannelCount(that: this, v: v);
+
+  /// Update the `channel_count_mode` attribute
+  Future<void> setChannelCountMode({required ChannelCountMode v}) =>
+      RustLib.instance.api
+          .webAudioApiNodeOscillatorNodeSetChannelCountMode(that: this, v: v);
+
+  /// Update the `channel_interpretation` attribute
+  Future<void> setChannelInterpretation({required ChannelInterpretation v}) =>
+      RustLib.instance.api
+          .webAudioApiNodeOscillatorNodeSetChannelInterpretation(
+              that: this, v: v);
 
   /// Sets a `PeriodicWave` which describes a waveform to be used by the oscillator.
   ///
@@ -627,6 +2214,21 @@ class OscillatorNode extends RustOpaque {
   /// if `type_` is `OscillatorType::Custom`
   Future<void> setType({required OscillatorType type}) => RustLib.instance.api
       .webAudioApiNodeOscillatorNodeSetType(that: this, type: type);
+
+  Future<void> start() =>
+      RustLib.instance.api.webAudioApiNodeOscillatorNodeStart(
+        that: this,
+      );
+
+  Future<void> startAt({required double when}) => RustLib.instance.api
+      .webAudioApiNodeOscillatorNodeStartAt(that: this, when: when);
+
+  Future<void> stop() => RustLib.instance.api.webAudioApiNodeOscillatorNodeStop(
+        that: this,
+      );
+
+  Future<void> stopAt({required double when}) => RustLib.instance.api
+      .webAudioApiNodeOscillatorNodeStopAt(that: this, when: when);
 
   /// Returns the oscillator type
   Future<OscillatorType> type() =>
@@ -655,6 +2257,38 @@ class PannerNode extends RustOpaque {
         RustLib.instance.api.rust_arc_decrement_strong_count_PannerNodePtr,
   );
 
+  Future<void> channelConfig() =>
+      RustLib.instance.api.webAudioApiNodePannerNodeChannelConfig(
+        that: this,
+      );
+
+  /// Represents an integer used to determine how many channels are used when up-mixing and
+  /// down-mixing connections to any inputs to the node.
+  Future<BigInt> channelCount() =>
+      RustLib.instance.api.webAudioApiNodePannerNodeChannelCount(
+        that: this,
+      );
+
+  /// Represents an enumerated value describing the way channels must be matched between the
+  /// node's inputs and outputs.
+  Future<ChannelCountMode> channelCountMode() =>
+      RustLib.instance.api.webAudioApiNodePannerNodeChannelCountMode(
+        that: this,
+      );
+
+  /// Represents an enumerated value describing the meaning of the channels. This interpretation
+  /// will define how audio up-mixing and down-mixing will happen.
+  Future<ChannelInterpretation> channelInterpretation() =>
+      RustLib.instance.api.webAudioApiNodePannerNodeChannelInterpretation(
+        that: this,
+      );
+
+  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
+  Future<void> clearOnprocessorerror() =>
+      RustLib.instance.api.webAudioApiNodePannerNodeClearOnprocessorerror(
+        that: this,
+      );
+
   Future<double> coneInnerAngle() =>
       RustLib.instance.api.webAudioApiNodePannerNodeConeInnerAngle(
         that: this,
@@ -670,6 +2304,29 @@ class PannerNode extends RustOpaque {
         that: this,
       );
 
+  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
+  /// AudioNode.
+  Future<void> context() =>
+      RustLib.instance.api.webAudioApiNodePannerNodeContext(
+        that: this,
+      );
+
+  /// Disconnects all outgoing connections from the AudioNode.
+  Future<void> disconnect() =>
+      RustLib.instance.api.webAudioApiNodePannerNodeDisconnect(
+        that: this,
+      );
+
+  /// Disconnects all outgoing connections at the given output port from the AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - if the output port is out of bounds for this node
+  Future<void> disconnectOutput({required BigInt output}) => RustLib
+      .instance.api
+      .webAudioApiNodePannerNodeDisconnectOutput(that: this, output: output);
+
   Future<DistanceModelType> distanceModel() =>
       RustLib.instance.api.webAudioApiNodePannerNodeDistanceModel(
         that: this,
@@ -677,6 +2334,16 @@ class PannerNode extends RustOpaque {
 
   Future<double> maxDistance() =>
       RustLib.instance.api.webAudioApiNodePannerNodeMaxDistance(
+        that: this,
+      );
+
+  Future<BigInt> numberOfInputs() =>
+      RustLib.instance.api.webAudioApiNodePannerNodeNumberOfInputs(
+        that: this,
+      );
+
+  Future<BigInt> numberOfOutputs() =>
+      RustLib.instance.api.webAudioApiNodePannerNodeNumberOfOutputs(
         that: this,
       );
 
@@ -720,10 +2387,27 @@ class PannerNode extends RustOpaque {
         that: this,
       );
 
+  Future<void> registration() =>
+      RustLib.instance.api.webAudioApiNodePannerNodeRegistration(
+        that: this,
+      );
+
   Future<double> rolloffFactor() =>
       RustLib.instance.api.webAudioApiNodePannerNodeRolloffFactor(
         that: this,
       );
+
+  Future<void> setChannelCount({required BigInt count}) => RustLib.instance.api
+      .webAudioApiNodePannerNodeSetChannelCount(that: this, count: count);
+
+  Future<void> setChannelCountMode({required ChannelCountMode mode}) =>
+      RustLib.instance.api
+          .webAudioApiNodePannerNodeSetChannelCountMode(that: this, mode: mode);
+
+  /// Update the `channel_interpretation` attribute
+  Future<void> setChannelInterpretation({required ChannelInterpretation v}) =>
+      RustLib.instance.api
+          .webAudioApiNodePannerNodeSetChannelInterpretation(that: this, v: v);
 
   Future<void> setConeInnerAngle({required double value}) =>
       RustLib.instance.api
@@ -809,11 +2493,96 @@ class ScriptProcessorNode extends RustOpaque {
         that: this,
       );
 
+  Future<void> channelConfig() =>
+      RustLib.instance.api.webAudioApiNodeScriptProcessorNodeChannelConfig(
+        that: this,
+      );
+
+  /// Represents an integer used to determine how many channels are used when up-mixing and
+  /// down-mixing connections to any inputs to the node.
+  Future<BigInt> channelCount() =>
+      RustLib.instance.api.webAudioApiNodeScriptProcessorNodeChannelCount(
+        that: this,
+      );
+
+  /// Represents an enumerated value describing the way channels must be matched between the
+  /// node's inputs and outputs.
+  Future<ChannelCountMode> channelCountMode() =>
+      RustLib.instance.api.webAudioApiNodeScriptProcessorNodeChannelCountMode(
+        that: this,
+      );
+
+  /// Represents an enumerated value describing the meaning of the channels. This interpretation
+  /// will define how audio up-mixing and down-mixing will happen.
+  Future<ChannelInterpretation> channelInterpretation() => RustLib.instance.api
+          .webAudioApiNodeScriptProcessorNodeChannelInterpretation(
+        that: this,
+      );
+
   /// Unset the callback to run when the AudioProcessingEvent is dispatched
   Future<void> clearOnaudioprocess() => RustLib.instance.api
           .webAudioApiNodeScriptProcessorNodeClearOnaudioprocess(
         that: this,
       );
+
+  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
+  Future<void> clearOnprocessorerror() => RustLib.instance.api
+          .webAudioApiNodeScriptProcessorNodeClearOnprocessorerror(
+        that: this,
+      );
+
+  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
+  /// AudioNode.
+  Future<void> context() =>
+      RustLib.instance.api.webAudioApiNodeScriptProcessorNodeContext(
+        that: this,
+      );
+
+  /// Disconnects all outgoing connections from the AudioNode.
+  Future<void> disconnect() =>
+      RustLib.instance.api.webAudioApiNodeScriptProcessorNodeDisconnect(
+        that: this,
+      );
+
+  /// Disconnects all outgoing connections at the given output port from the AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - if the output port is out of bounds for this node
+  Future<void> disconnectOutput({required BigInt output}) =>
+      RustLib.instance.api.webAudioApiNodeScriptProcessorNodeDisconnectOutput(
+          that: this, output: output);
+
+  Future<BigInt> numberOfInputs() =>
+      RustLib.instance.api.webAudioApiNodeScriptProcessorNodeNumberOfInputs(
+        that: this,
+      );
+
+  Future<BigInt> numberOfOutputs() =>
+      RustLib.instance.api.webAudioApiNodeScriptProcessorNodeNumberOfOutputs(
+        that: this,
+      );
+
+  Future<void> registration() =>
+      RustLib.instance.api.webAudioApiNodeScriptProcessorNodeRegistration(
+        that: this,
+      );
+
+  Future<void> setChannelCount({required BigInt count}) =>
+      RustLib.instance.api.webAudioApiNodeScriptProcessorNodeSetChannelCount(
+          that: this, count: count);
+
+  Future<void> setChannelCountMode({required ChannelCountMode mode}) =>
+      RustLib.instance.api
+          .webAudioApiNodeScriptProcessorNodeSetChannelCountMode(
+              that: this, mode: mode);
+
+  /// Update the `channel_interpretation` attribute
+  Future<void> setChannelInterpretation({required ChannelInterpretation v}) =>
+      RustLib.instance.api
+          .webAudioApiNodeScriptProcessorNodeSetChannelInterpretation(
+              that: this, v: v);
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StereoPannerNode>>
@@ -836,10 +2605,93 @@ class StereoPannerNode extends RustOpaque {
         .instance.api.rust_arc_decrement_strong_count_StereoPannerNodePtr,
   );
 
+  Future<void> channelConfig() =>
+      RustLib.instance.api.webAudioApiNodeStereoPannerNodeChannelConfig(
+        that: this,
+      );
+
+  /// Represents an integer used to determine how many channels are used when up-mixing and
+  /// down-mixing connections to any inputs to the node.
+  Future<BigInt> channelCount() =>
+      RustLib.instance.api.webAudioApiNodeStereoPannerNodeChannelCount(
+        that: this,
+      );
+
+  /// Represents an enumerated value describing the way channels must be matched between the
+  /// node's inputs and outputs.
+  Future<ChannelCountMode> channelCountMode() =>
+      RustLib.instance.api.webAudioApiNodeStereoPannerNodeChannelCountMode(
+        that: this,
+      );
+
+  /// Represents an enumerated value describing the meaning of the channels. This interpretation
+  /// will define how audio up-mixing and down-mixing will happen.
+  Future<ChannelInterpretation> channelInterpretation() =>
+      RustLib.instance.api.webAudioApiNodeStereoPannerNodeChannelInterpretation(
+        that: this,
+      );
+
+  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
+  Future<void> clearOnprocessorerror() =>
+      RustLib.instance.api.webAudioApiNodeStereoPannerNodeClearOnprocessorerror(
+        that: this,
+      );
+
+  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
+  /// AudioNode.
+  Future<void> context() =>
+      RustLib.instance.api.webAudioApiNodeStereoPannerNodeContext(
+        that: this,
+      );
+
+  /// Disconnects all outgoing connections from the AudioNode.
+  Future<void> disconnect() =>
+      RustLib.instance.api.webAudioApiNodeStereoPannerNodeDisconnect(
+        that: this,
+      );
+
+  /// Disconnects all outgoing connections at the given output port from the AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - if the output port is out of bounds for this node
+  Future<void> disconnectOutput({required BigInt output}) =>
+      RustLib.instance.api.webAudioApiNodeStereoPannerNodeDisconnectOutput(
+          that: this, output: output);
+
+  Future<BigInt> numberOfInputs() =>
+      RustLib.instance.api.webAudioApiNodeStereoPannerNodeNumberOfInputs(
+        that: this,
+      );
+
+  Future<BigInt> numberOfOutputs() =>
+      RustLib.instance.api.webAudioApiNodeStereoPannerNodeNumberOfOutputs(
+        that: this,
+      );
+
   /// Returns the pan audio parameter
   Future<void> pan() => RustLib.instance.api.webAudioApiNodeStereoPannerNodePan(
         that: this,
       );
+
+  Future<void> registration() =>
+      RustLib.instance.api.webAudioApiNodeStereoPannerNodeRegistration(
+        that: this,
+      );
+
+  Future<void> setChannelCount({required BigInt count}) => RustLib.instance.api
+      .webAudioApiNodeStereoPannerNodeSetChannelCount(that: this, count: count);
+
+  Future<void> setChannelCountMode({required ChannelCountMode mode}) =>
+      RustLib.instance.api.webAudioApiNodeStereoPannerNodeSetChannelCountMode(
+          that: this, mode: mode);
+
+  /// Update the `channel_interpretation` attribute
+  Future<void> setChannelInterpretation({required ChannelInterpretation v}) =>
+      RustLib.instance.api
+          .webAudioApiNodeStereoPannerNodeSetChannelInterpretation(
+              that: this, v: v);
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<WaveShaperNode>>
@@ -862,11 +2714,96 @@ class WaveShaperNode extends RustOpaque {
         RustLib.instance.api.rust_arc_decrement_strong_count_WaveShaperNodePtr,
   );
 
+  Future<void> channelConfig() =>
+      RustLib.instance.api.webAudioApiNodeWaveShaperNodeChannelConfig(
+        that: this,
+      );
+
+  /// Represents an integer used to determine how many channels are used when up-mixing and
+  /// down-mixing connections to any inputs to the node.
+  Future<BigInt> channelCount() =>
+      RustLib.instance.api.webAudioApiNodeWaveShaperNodeChannelCount(
+        that: this,
+      );
+
+  /// Represents an enumerated value describing the way channels must be matched between the
+  /// node's inputs and outputs.
+  Future<ChannelCountMode> channelCountMode() =>
+      RustLib.instance.api.webAudioApiNodeWaveShaperNodeChannelCountMode(
+        that: this,
+      );
+
+  /// Represents an enumerated value describing the meaning of the channels. This interpretation
+  /// will define how audio up-mixing and down-mixing will happen.
+  Future<ChannelInterpretation> channelInterpretation() =>
+      RustLib.instance.api.webAudioApiNodeWaveShaperNodeChannelInterpretation(
+        that: this,
+      );
+
+  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
+  Future<void> clearOnprocessorerror() =>
+      RustLib.instance.api.webAudioApiNodeWaveShaperNodeClearOnprocessorerror(
+        that: this,
+      );
+
+  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
+  /// AudioNode.
+  Future<void> context() =>
+      RustLib.instance.api.webAudioApiNodeWaveShaperNodeContext(
+        that: this,
+      );
+
+  /// Disconnects all outgoing connections from the AudioNode.
+  Future<void> disconnect() =>
+      RustLib.instance.api.webAudioApiNodeWaveShaperNodeDisconnect(
+        that: this,
+      );
+
+  /// Disconnects all outgoing connections at the given output port from the AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - if the output port is out of bounds for this node
+  Future<void> disconnectOutput({required BigInt output}) =>
+      RustLib.instance.api.webAudioApiNodeWaveShaperNodeDisconnectOutput(
+          that: this, output: output);
+
+  Future<BigInt> numberOfInputs() =>
+      RustLib.instance.api.webAudioApiNodeWaveShaperNodeNumberOfInputs(
+        that: this,
+      );
+
+  Future<BigInt> numberOfOutputs() =>
+      RustLib.instance.api.webAudioApiNodeWaveShaperNodeNumberOfOutputs(
+        that: this,
+      );
+
   /// Returns the `oversample` faactor of this node
   Future<OverSampleType> oversample() =>
       RustLib.instance.api.webAudioApiNodeWaveShaperNodeOversample(
         that: this,
       );
+
+  Future<void> registration() =>
+      RustLib.instance.api.webAudioApiNodeWaveShaperNodeRegistration(
+        that: this,
+      );
+
+  /// Update the `channel_count` attribute
+  Future<void> setChannelCount({required BigInt v}) => RustLib.instance.api
+      .webAudioApiNodeWaveShaperNodeSetChannelCount(that: this, v: v);
+
+  /// Update the `channel_count_mode` attribute
+  Future<void> setChannelCountMode({required ChannelCountMode v}) =>
+      RustLib.instance.api
+          .webAudioApiNodeWaveShaperNodeSetChannelCountMode(that: this, v: v);
+
+  /// Update the `channel_interpretation` attribute
+  Future<void> setChannelInterpretation({required ChannelInterpretation v}) =>
+      RustLib.instance.api
+          .webAudioApiNodeWaveShaperNodeSetChannelInterpretation(
+              that: this, v: v);
 
   /// Set the distortion `curve` of this node
   ///

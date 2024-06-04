@@ -85,11 +85,14 @@ fn transform_module_by_pub_use_single(
         let src_structs = transform_items(&src_mod.content.structs, self_namespace, pub_use_info);
         let src_enums = transform_items(&src_mod.content.enums, self_namespace, pub_use_info);
         let src_traits = transform_items(&src_mod.content.traits, self_namespace, pub_use_info);
+        let src_trait_impls =
+            transform_items(&src_mod.content.trait_impls, self_namespace, pub_use_info);
 
         module.content.functions.extend(src_functions);
         module.content.structs.extend(src_structs);
         module.content.enums.extend(src_enums);
         module.content.traits.extend(src_traits);
+        module.content.trait_impls.extend(src_trait_impls);
     } else {
         log::debug!(
             "transform_module_by_pub_use_single skip `{pub_use_info:?}` since cannot find mod"
