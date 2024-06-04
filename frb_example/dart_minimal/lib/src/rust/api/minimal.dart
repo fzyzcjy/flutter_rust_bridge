@@ -13,9 +13,10 @@ Future<int> minimalAdder({required int a, required int b}) =>
 abstract class MyStruct {
   Future<int> f({required int a});
 
-  static Future<int> myStaticMethod() => MyStructImpl.myStaticMethod();
+  static Future<int> myStaticMethod() =>
+      RustLib.instance.api.crateApiMinimalMyStructMyStaticMethod();
 
-  factory MyStruct() => MyStructImpl();
+  factory MyStruct() => RustLib.instance.api.crateApiMinimalMyStructNew();
 
   void dispose();
 
