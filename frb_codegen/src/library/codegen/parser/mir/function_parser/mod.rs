@@ -80,7 +80,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         let src_lineno = func.item_fn.span().start().line;
         let attributes = FrbAttributes::parse(func.item_fn.attrs())?;
-        let dart_name = parse_dart_name(&attributes);
+        let dart_name = parse_dart_name(&attributes, func);
 
         let create_context = |owner: Option<MirFuncOwnerInfo>| TypeParserParsingContext {
             initiated_namespace: func.namespace.clone(),
@@ -90,9 +90,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             owner,
         };
 
-        let owner = if let Some(owner) =
-            self.parse_owner(func, &create_context(None), dart_name)?
-        {
+        let owner = if let Some(owner) = self.parse_owner(func, &create_context(None), dart_name)? {
             owner
         } else {
             return Ok(create_output_skip(func, IgnoredMisc));
@@ -299,7 +297,10 @@ fn refine_namespace(owner: &MirFuncOwnerInfo) -> Option<Namespace> {
     None
 }
 
-fn parse_dart_name(attributes: &FrbAttributes) -> Option<String> {
-    attributes.name()
+fn parse_dart_name(attributes: &FrbAttributes, func: &HirFunction) -> Option<String> {
+    attributes.name().unwrap_or_else(|| {
+        const FRB_OVERRIDE_PREFIX: &str = "frb_override_";
+        let func_name_raw = func.item_fn.name();
+        func_name_raw.strip_prefix(FRB_OVERRIDE_PREFIX)
+    })
 }
-
