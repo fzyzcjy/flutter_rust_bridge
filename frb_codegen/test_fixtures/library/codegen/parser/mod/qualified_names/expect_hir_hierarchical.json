@@ -12,16 +12,20 @@
                 "enums": [],
                 "functions": [
                   {
-                    "namespace": "crate::api"
+                    "namespace": "crate::api",
+                    "owner": "Function"
                   },
                   {
-                    "namespace": "crate::api"
+                    "namespace": "crate::api",
+                    "owner": "Function"
                   },
                   {
-                    "namespace": "crate::api"
+                    "namespace": "crate::api",
+                    "owner": "Function"
                   },
                   {
-                    "namespace": "crate::api"
+                    "namespace": "crate::api",
+                    "owner": "Function"
                   }
                 ],
                 "modules": [],
