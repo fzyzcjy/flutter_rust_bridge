@@ -90,6 +90,7 @@ handle_audio_node_trait_impls!(ScriptProcessorNode);
 handle_audio_node_trait_impls!(StereoPannerNode);
 handle_audio_node_trait_impls!(WaveShaperNode);
 
+#[macro_export]
 macro_rules! handle_getter_audio_param {
     ($struct_name:ident ; $($func_name:ident),+) => {
         #[frb(external)]
@@ -102,5 +103,12 @@ macro_rules! handle_getter_audio_param {
     };
 }
 
-handle_getter_audio_param!(BiquadFilterNode ; q , detune , frequency , gain);
-// TODO for other types
+handle_getter_audio_param!(AudioBufferSourceNode; playback_rate, detune);
+handle_getter_audio_param!(BiquadFilterNode; gain, frequency, detune, q);
+handle_getter_audio_param!(ConstantSourceNode; offset);
+handle_getter_audio_param!(DelayNode; delay_time);
+handle_getter_audio_param!(DynamicsCompressorNode; attack, knee, ratio, release, threshold);
+handle_getter_audio_param!(GainNode; gain);
+handle_getter_audio_param!(OscillatorNode; frequency, detune);
+handle_getter_audio_param!(PannerNode; position_x, position_y, position_z, orientation_x, orientation_y, orientation_z);
+handle_getter_audio_param!(StereoPannerNode; pan);
