@@ -12,7 +12,7 @@ pub(crate) mod type_parser;
 use crate::codegen::ir::hir::flat::HirFlatCrate;
 use crate::codegen::ir::hir::hierarchical::function::HirFunction;
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStruct;
-use crate::codegen::ir::mir::func::MirFunc;
+use crate::codegen::ir::mir::func::{MirFunc, MirFuncOverridePriority};
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::ir::mir::skip::MirSkip;
 use crate::codegen::parser::mir::auto_accessor_parser::parse_auto_accessors;
@@ -95,8 +95,9 @@ fn parse_mir_funcs(
 
     let mir_funcs_auto_accessor = parse_auto_accessors(config, src_structs, type_parser)?;
 
-    let mir_funcs = concat([mir_funcs_normal, mir_funcs_auto_accessor])
-        .into_iter()
+    let mir_funcs = concat([mir_funcs_normal, mir_funcs_auto_accessor]);
+    let mir_funcs = dedup_funcs(mir_funcs)?;
+    let mir_funcs = (mir_funcs.into_iter())
         // to give downstream a stable output
         .sorted_by_cached_key(|func| func.name.clone())
         .enumerate()
@@ -107,4 +108,8 @@ fn parse_mir_funcs(
         .collect_vec();
 
     Ok((mir_funcs, mir_skips))
+}
+
+fn dedup_funcs(funcs: Vec<MirFunc>) -> anyhow::Result<Vec<MirFunc>> {
+    TODO
 }
