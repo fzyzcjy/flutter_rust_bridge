@@ -126,7 +126,9 @@ fn generate_item(
     let extra_impl_code = namespaced_types
         .map(|classes| {
             (classes.iter())
-                .filter_map(|&ty| ApiDartGenerator::new(ty.clone(), context).generate_extra_impl_code())
+                .filter_map(|&ty| {
+                    ApiDartGenerator::new(ty.clone(), context).generate_extra_impl_code()
+                })
                 .collect_vec()
         })
         .unwrap_or_default();

@@ -10,7 +10,8 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for RustOpaqueWireDartCodecCstGen
         Acc::new_common(Some(format!(
             "// ignore: invalid_use_of_internal_member
                 return (raw as {}Impl).frbInternalCstEncode();",
-            ApiDartGenerator::new(self.mir.clone(), self.context.as_api_dart_context()).dart_api_type(),
+            ApiDartGenerator::new(self.mir.clone(), self.context.as_api_dart_context())
+                .dart_api_type(),
         )))
     }
 
