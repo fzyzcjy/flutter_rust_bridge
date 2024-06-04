@@ -14,6 +14,7 @@ pub(crate) struct GeneratorWireDartOutput {
     pub output_texts: PathTexts,
 }
 
+#[allow(clippy::too_many_arguments)]
 pub(crate) fn generate(
     context: WireDartGeneratorContext,
     c_file_content: &str,

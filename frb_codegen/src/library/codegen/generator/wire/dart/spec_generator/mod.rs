@@ -32,6 +32,7 @@ pub(crate) struct WireDartOutputSpec {
     pub(super) dart2rust: WireDartCodecOutputSpec,
 }
 
+#[allow(clippy::too_many_arguments)]
 pub(crate) fn generate(
     context: WireDartGeneratorContext,
     c_file_content: &str,

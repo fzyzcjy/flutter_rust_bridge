@@ -31,6 +31,7 @@ pub(crate) struct WireDartOutputSpecMisc {
     pub(crate) extra_functions: Acc<Vec<WireDartOutputCode>>,
 }
 
+#[allow(clippy::too_many_arguments)]
 pub(crate) fn generate(
     context: WireDartGeneratorContext,
     cache: &MirPackComputedCache,
