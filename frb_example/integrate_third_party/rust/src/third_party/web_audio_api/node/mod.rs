@@ -52,6 +52,17 @@ macro_rules! handle_audio_node {
         impl $name {
             #[frb(ignore)]
             pub fn set_onprocessorerror() {}
+
+            #[frb(ignore)]
+            pub fn connect() {}
+            #[frb(ignore)]
+            pub fn connect_from_output_to_input() {}
+            #[frb(ignore)]
+            pub fn disconnect_dest() {}
+            #[frb(ignore)]
+            pub fn disconnect_dest_from_output() {}
+            #[frb(ignore)]
+            pub fn disconnect_dest_from_output_to_input() {}
         }
     };
 }
