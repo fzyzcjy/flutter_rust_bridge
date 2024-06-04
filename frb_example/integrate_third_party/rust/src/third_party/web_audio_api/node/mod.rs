@@ -1,3 +1,4 @@
+use web_audio_api::AudioParam;
 use flutter_rust_bridge::frb;
 use web_audio_api::node::*;
 
@@ -46,7 +47,8 @@ impl WaveShaperNode {
     pub fn curve() {}
 }
 
-macro_rules! handle_audio_node {
+#[macro_export]
+macro_rules! handle_audio_node_trait_impls {
     ($name:ident) => {
         #[frb(external)]
         impl $name {
@@ -67,24 +69,24 @@ macro_rules! handle_audio_node {
     };
 }
 
-handle_audio_node!(AnalyserNode);
-handle_audio_node!(AudioBufferSourceNode);
-handle_audio_node!(AudioDestinationNode);
-handle_audio_node!(BiquadFilterNode);
-handle_audio_node!(ChannelMergerNode);
-handle_audio_node!(ChannelSplitterNode);
-handle_audio_node!(ConstantSourceNode);
-handle_audio_node!(ConvolverNode);
-handle_audio_node!(DelayNode);
-handle_audio_node!(DynamicsCompressorNode);
-handle_audio_node!(GainNode);
-handle_audio_node!(IIRFilterNode);
-handle_audio_node!(MediaElementAudioSourceNode);
-handle_audio_node!(MediaStreamAudioDestinationNode);
-handle_audio_node!(MediaStreamAudioSourceNode);
-handle_audio_node!(MediaStreamTrackAudioSourceNode);
-handle_audio_node!(OscillatorNode);
-handle_audio_node!(PannerNode);
-handle_audio_node!(ScriptProcessorNode);
-handle_audio_node!(StereoPannerNode);
-handle_audio_node!(WaveShaperNode);
+handle_audio_node_trait_impls!(AnalyserNode);
+handle_audio_node_trait_impls!(AudioBufferSourceNode);
+handle_audio_node_trait_impls!(AudioDestinationNode);
+handle_audio_node_trait_impls!(BiquadFilterNode);
+handle_audio_node_trait_impls!(ChannelMergerNode);
+handle_audio_node_trait_impls!(ChannelSplitterNode);
+handle_audio_node_trait_impls!(ConstantSourceNode);
+handle_audio_node_trait_impls!(ConvolverNode);
+handle_audio_node_trait_impls!(DelayNode);
+handle_audio_node_trait_impls!(DynamicsCompressorNode);
+handle_audio_node_trait_impls!(GainNode);
+handle_audio_node_trait_impls!(IIRFilterNode);
+handle_audio_node_trait_impls!(MediaElementAudioSourceNode);
+handle_audio_node_trait_impls!(MediaStreamAudioDestinationNode);
+handle_audio_node_trait_impls!(MediaStreamAudioSourceNode);
+handle_audio_node_trait_impls!(MediaStreamTrackAudioSourceNode);
+handle_audio_node_trait_impls!(OscillatorNode);
+handle_audio_node_trait_impls!(PannerNode);
+handle_audio_node_trait_impls!(ScriptProcessorNode);
+handle_audio_node_trait_impls!(StereoPannerNode);
+handle_audio_node_trait_impls!(WaveShaperNode);

@@ -6,6 +6,7 @@ pub mod worklet;
 
 use flutter_rust_bridge::frb;
 use web_audio_api::{AudioBuffer, AudioParam, AudioRenderCapacity};
+use crate::handle_audio_node_trait_impls;
 
 #[frb(external)]
 impl AudioRenderCapacity {
@@ -33,3 +34,5 @@ impl AudioParam {
 
 #[frb(ignore)]
 pub struct ErrorEvent;
+
+handle_audio_node_trait_impls!(AudioParam);
