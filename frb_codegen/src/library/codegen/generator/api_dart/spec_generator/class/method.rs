@@ -12,7 +12,6 @@ use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::utils::namespace::NamespacedName;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
-use std::cmp::min;
 
 #[derive(Debug, Clone, Copy, Eq, PartialEq)]
 pub(crate) enum GenerateApiMethodMode {
@@ -93,6 +92,8 @@ fn generate_api_method(
         GenerateApiMethodMode::SeparatedDecl => generate_implementation_separated_decl_forward(
             func,
             default_constructor_mode,
+            &params,
+            method_info,
             &method_name,
         ),
         GenerateApiMethodMode::SeparatedImpl | GenerateApiMethodMode::Combined => Some(
@@ -133,6 +134,7 @@ fn generate_signature(
     func_params: &[ApiDartGeneratedFunctionParam],
     default_constructor_mode: Option<MirFuncDefaultConstructorMode>,
     api_dart_func: &ApiDartGeneratedFunction,
+    method_name: &str,
 ) -> String {
     let is_static_method = method_info.mode == MirFuncOwnerInfoMethodMode::Static;
     let maybe_static = if is_static_method { "static" } else { "" };
