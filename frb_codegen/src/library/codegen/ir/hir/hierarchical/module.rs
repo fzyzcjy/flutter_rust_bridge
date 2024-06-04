@@ -54,10 +54,9 @@ impl HirModuleMeta {
 #[derive(Debug, Clone, Serialize, Default)]
 pub struct HirModuleContent {
     pub modules: Vec<HirModule>,
+    pub type_alias: Vec<HirTypeAlias>,
     pub enums: Vec<HirEnum>,
     pub structs: Vec<HirStruct>,
-    // pub imports: Vec<Import>, // not implemented yet
-    pub type_alias: Vec<HirTypeAlias>,
     pub functions: Vec<HirFunction>,
     pub traits: Vec<HirTrait>,
     pub trait_impls: Vec<HirTraitImpl>,
