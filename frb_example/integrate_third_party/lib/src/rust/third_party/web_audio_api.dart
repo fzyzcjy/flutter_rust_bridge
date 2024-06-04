@@ -10,7 +10,7 @@ import 'web_audio_api/node.dart';
 // These functions are ignored because they are not marked as `pub`: `as_slice`, `assert_is_finite`, `assert_not_zero`, `assert_sequence_length`, `assert_strictly_positive`, `assert_valid_buffer_length`, `assert_valid_channel_number`, `assert_valid_number_of_channels`, `assert_valid_sample_rate`, `assert_valid_time_value`, `audio_param_pair`, `cancel_and_hold_at_time_raw`, `cancel_scheduled_values_raw`, `channel_data_mut`, `channel_data`, `channels_mut`, `channels`, `compute_buffer`, `compute_exponential_ramp_automation`, `compute_exponential_ramp_sample`, `compute_intrinsic_values`, `compute_linear_ramp_automation`, `compute_linear_ramp_sample`, `compute_set_target_automation`, `compute_set_target_sample`, `compute_set_value_automation`, `compute_set_value_curve_automation`, `compute_set_value_curve_sample`, `exponential_ramp_to_value_at_time_raw`, `extend`, `from_channels`, `from_raw_parts`, `generate_wavetable`, `handle_event`, `handle_incoming_event`, `into_raw_parts`, `is_a_rate`, `is_empty`, `iter_mut`, `iter`, `linear_ramp_to_value_at_time_raw`, `mix_to_output`, `new`, `new`, `new`, `next`, `normalize`, `peek`, `pop`, `push`, `replace_peek`, `resample`, `retain`, `send_event`, `set_automation_rate_constrained`, `set_target_at_time_raw`, `set_value_at_time_raw`, `set_value_curve_at_time_raw`, `set_value_raw`, `sort`, `split_off`, `unsorted_peek`
 // These functions are ignored because they have generic arguments: `connect_from_output_to_input`, `connect`, `new`, `set_onupdate`
 // These types are ignored because they are not used by any `pub` functions: `AtomicF32`, `AtomicF64`, `AudioParamEventTimeline`, `AudioParamEventType`, `AudioParamEvent`, `AudioParamInner`, `AudioParamProcessor`, `AudioRenderCapacityLoad`, `BlockInfos`, `ChannelData`, `ErrorEvent`, `EventDispatch`, `EventHandler`, `EventLoop`, `EventPayload`, `EventType`, `MediaElement`, `MessagePort`
-// These functions are ignored: `as_mut_slice`, `as_slice`, `audio_processing`, `clear_handler`, `complete`, `copy_from_channel_with_offset`, `copy_from_channel`, `copy_to_channel_with_offset`, `copy_to_channel`, `diagnostics`, `ended`, `from`, `handle_pending_events`, `is_empty`, `len`, `load`, `load`, `message`, `new`, `new`, `new`, `new`, `processor_error`, `render_capacity`, `run_in_thread`, `set_handler`, `set_onprocessorerror`, `sink_change`, `state_change`, `store`, `store`
+// These functions are ignored: `as_mut_slice`, `as_slice`, `audio_processing`, `clear_handler`, `complete`, `copy_from_channel_with_offset`, `copy_from_channel`, `copy_to_channel_with_offset`, `copy_to_channel`, `diagnostics`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output`, `disconnect_dest`, `ended`, `from`, `handle_pending_events`, `is_empty`, `len`, `load`, `load`, `message`, `new`, `new`, `new`, `new`, `processor_error`, `render_capacity`, `run_in_thread`, `set_handler`, `set_onprocessorerror`, `sink_change`, `state_change`, `store`, `store`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioBuffer>>
 @sealed
@@ -243,46 +243,6 @@ class AudioParam extends RustOpaque {
       RustLib.instance.api.webAudioApiAudioParamDisconnect(
         that: this,
       );
-
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest}) => RustLib.instance.api
-      .webAudioApiAudioParamDisconnectDest(that: this, dest: dest);
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-          {required AudioNode dest, required BigInt output}) =>
-      RustLib.instance.api.webAudioApiAudioParamDisconnectDestFromOutput(
-          that: this, dest: dest, output: output);
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-          {required AudioNode dest,
-          required BigInt output,
-          required BigInt input}) =>
-      RustLib.instance.api.webAudioApiAudioParamDisconnectDestFromOutputToInput(
-          that: this, dest: dest, output: output, input: input);
 
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
@@ -651,27 +611,6 @@ class PeriodicWave extends RustOpaque {
         RustLib.instance.api.rust_arc_decrement_strong_count_PeriodicWave,
     rustArcDecrementStrongCountPtr:
         RustLib.instance.api.rust_arc_decrement_strong_count_PeriodicWavePtr,
-  );
-}
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<dyn AudioNode>>
-@sealed
-class AudioNode extends RustOpaque {
-  // Not to be used by end users
-  AudioNode.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  AudioNode.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_AudioNode,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_AudioNode,
-    rustArcDecrementStrongCountPtr:
-        RustLib.instance.api.rust_arc_decrement_strong_count_AudioNodePtr,
   );
 }
 
