@@ -1,10 +1,10 @@
 use crate::components::encoder::create_frb_encoded_comment;
+use md5::{Digest, Md5};
 use proc_macro2::{Span, TokenStream};
 use quote::quote;
 use quote::ToTokens;
-use syn::{ImplItem, ItemImpl};
 use syn::spanned::Spanned;
-use md5::{Md5, Digest};
+use syn::{ImplItem, ItemImpl};
 
 pub(crate) fn handle_external_impl(attribute: TokenStream, item: TokenStream) -> TokenStream {
     if attribute.to_string() != ATTR_KEYWORD {
@@ -36,10 +36,14 @@ pub(crate) fn handle_external_impl(attribute: TokenStream, item: TokenStream) ->
 
 fn compute_dummy_struct_ty(original_self_ty: &syn::Type, item_string: &str) -> syn::Type {
     let original_self_ty_string = quote!(#original_self_ty).to_string();
+
+    let item_string_md5 = Md5::digest(item_string);
+    let item_string_md5_value = usize::from_le_bytes(item_string_md5[..8].try_into().unwrap());
+
     let dummy_struct_name = format!(
         "{DUMMY_STRUCT_PREFIX}{}{}",
         hex::encode(original_self_ty_string),
-        Md5::digest(item_string),
+        item_string_md5_value,
     );
     syn::parse_str(&dummy_struct_name).unwrap()
 }
