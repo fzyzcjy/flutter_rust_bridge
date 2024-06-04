@@ -91,7 +91,6 @@ fn generate_api_method(
 
     let maybe_implementation = match mode {
         GenerateApiMethodMode::SeparatedDecl => generate_implementation_separated_decl_forward(
-            func,
             default_constructor_mode,
             &params,
             method_info,
