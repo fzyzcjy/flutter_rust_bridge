@@ -89,12 +89,7 @@ fn generate_api_method(
         mode,
     );
 
-    let maybe_implementation = match mode {
-        GenerateApiMethodMode::SeparatedDecl => TODO,
-        GenerateApiMethodMode::SeparatedImpl | GenerateApiMethodMode::Combined => Some(
-            generate_implementation_normal(func, context, method_info, &params),
-        ),
-    };
+    let maybe_implementation = generate_maybe_implementation(func, context, method_info, &params);
     let maybe_implementation = (maybe_implementation.map(|x| format!("=>{x}"))).unwrap_or_default();
 
     format!("{comments}{signature}{maybe_implementation};\n\n")
@@ -181,12 +176,12 @@ fn generate_method_name(
     }
 }
 
-fn generate_implementation_normal(
+fn generate_maybe_implementation(
     func: &MirFunc,
     context: ApiDartGeneratorContext,
     method_info: &MirFuncOwnerInfoMethod,
     params: &[ApiDartGeneratedFunctionParam],
-) -> String {
+) -> Option<String> {
     let dart_entrypoint_class_name = &context.config.dart_entrypoint_class_name;
     let dart_api_instance = format!("{dart_entrypoint_class_name}.instance.api");
 
