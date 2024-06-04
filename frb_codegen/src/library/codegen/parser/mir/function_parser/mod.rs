@@ -80,6 +80,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         let src_lineno = func.item_fn.span().start().line;
         let attributes = FrbAttributes::parse(func.item_fn.attrs())?;
+        let dart_name = attributes.name();
 
         let create_context = |owner: Option<MirFuncOwnerInfo>| TypeParserParsingContext {
             initiated_namespace: func.namespace.clone(),
@@ -90,7 +91,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         };
 
         let owner = if let Some(owner) =
-            self.parse_owner(func, &create_context(None), attributes.name())?
+            self.parse_owner(func, &create_context(None), dart_name)?
         {
             owner
         } else {
@@ -122,7 +123,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         Ok(ParseFunctionOutput::Ok(MirFunc {
             name: NamespacedName::new(namespace_refined, func_name),
-            dart_name: attributes.name(),
+            dart_name,
             id: None, // to be filled later
             inputs: info.inputs,
             output: MirFuncOutput {
