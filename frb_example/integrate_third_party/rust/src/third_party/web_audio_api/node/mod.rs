@@ -29,9 +29,11 @@ impl BiquadFilterNode {
 }
 
 macro_rules! handle_biquad_filter_node_audio_param {
-    ($name:ident) => {
+    ($func_name:ident) => {
         #[frb(external)]
         impl BiquadFilterNode {
+            #[frb(ignore)]
+            pub fn $func_name() {}
         }
     };
 }
