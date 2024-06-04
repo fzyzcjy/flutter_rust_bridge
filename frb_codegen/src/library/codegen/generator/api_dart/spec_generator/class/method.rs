@@ -204,7 +204,6 @@ fn generate_implementation_normal(
 }
 
 fn generate_implementation_separated_decl_forward(
-    func: &MirFunc,
     default_constructor_mode: Option<MirFuncDefaultConstructorMode>,
     params: &[ApiDartGeneratedFunctionParam],
     method_info: &MirFuncOwnerInfoMethod,
