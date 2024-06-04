@@ -190,10 +190,20 @@ fn generate_implementation_normal(
     }
 }
 
-fn generate_implementation_separated_decl_forward(func: &MirFunc) -> Option<String> {
+fn generate_implementation_separated_decl_forward(
+    func: &MirFunc,
+    default_constructor_mode: Option<MirFuncDefaultConstructorMode>,
+) -> Option<String> {
     if method_info.mode != MirFuncOwnerInfoMethodMode::Static {
         return None;
     }
 
-    Some(TODO)
+    let maybe_method_name =
+        if default_constructor_mode == Some(MirFuncDefaultConstructorMode::DartConstructor) {
+            "".to_owned()
+        } else {
+            format!(".{}", TODO)
+        };
+
+    Some(format!("{TODO}{maybe_method_name}({params})"))
 }
