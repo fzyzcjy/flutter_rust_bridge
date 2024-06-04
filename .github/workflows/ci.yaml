@@ -184,6 +184,7 @@ jobs:
           - frb_example--pure_dart_pde
           - frb_example--dart_build_rs
           - frb_example--deliberate_bad
+          - frb_example--integrate_third_party
           - frb_example--flutter_via_create
           - frb_example--flutter_via_integrate
         exclude:
@@ -580,6 +581,7 @@ jobs:
           - frb_example--pure_dart_pde
           - frb_example--dart_build_rs
           - frb_example--deliberate_bad
+          - frb_example--integrate_third_party
         exclude:
           - { image: windows-2019, package: frb_utils }
           - { image: macos-11, package: frb_utils }

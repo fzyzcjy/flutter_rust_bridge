@@ -9,6 +9,7 @@ const kRustPackagesAllowWeb = [
   'frb_example/pure_dart_pde/rust',
   'frb_example/dart_build_rs/rust',
   'frb_example/deliberate_bad/rust',
+  'frb_example/integrate_third_party/rust',
   'frb_example/flutter_via_create/rust',
   'frb_example/flutter_via_integrate/rust',
   'frb_example/gallery/rust',
@@ -35,6 +36,7 @@ const kDartExamplePackages = [
   'frb_example/pure_dart_pde',
   'frb_example/dart_build_rs',
   'frb_example/deliberate_bad',
+  'frb_example/integrate_third_party',
   ...kDartExampleIntegratePackages,
   'frb_example/gallery',
 ];
@@ -61,6 +63,7 @@ const kDartModeOfPackage = {
   'frb_example/pure_dart_pde': DartMode.dart,
   'frb_example/dart_build_rs': DartMode.dart,
   'frb_example/deliberate_bad': DartMode.dart,
+  'frb_example/integrate_third_party': DartMode.flutter,
   'frb_example/flutter_via_create': DartMode.flutter,
   'frb_example/flutter_via_integrate': DartMode.flutter,
   'frb_example/gallery': DartMode.flutter,
