@@ -583,7 +583,6 @@ jobs:
           - frb_example--pure_dart_pde
           - frb_example--dart_build_rs
           - frb_example--deliberate_bad
-          - frb_example--integrate_third_party
         exclude:
           - { image: windows-2019, package: frb_utils }
           - { image: macos-11, package: frb_utils }
@@ -591,8 +590,6 @@ jobs:
           - { image: macos-11, package: tools--frb_internal }
           - { image: windows-2019, package: frb_example--deliberate_bad }
           - { image: macos-11, package: frb_example--deliberate_bad }
-          - { image: windows-2019, package: frb_example--integrate_third_party }
-          - { image: macos-11, package: frb_example--integrate_third_party }
 
     steps:
       # setup
@@ -877,6 +874,10 @@ jobs:
           - image: ubuntu-latest
             platform: linux
             package: frb_example--gallery
+          # only slightly test `integrate_third_party`, since the main point is not this
+          - image: ubuntu-latest
+            platform: linux
+            package: frb_example--integrate_third_party
 
     steps:
       # setup

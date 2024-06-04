@@ -519,6 +519,7 @@ Future<void> testDartSanitizer(TestDartSanitizerConfig config) async =>
 
 Future<void> testFlutterNative(TestFlutterConfig config) async {
   await _runFlutterDoctor();
+  await installSystemDependencies(package: config.package);
   await runPubGetIfNotRunYet(config.package);
 
   await flutterIntegrationTestRaw(
