@@ -40,7 +40,7 @@ pub(crate) struct ApiDartOutputSpec {
 pub(crate) struct ApiDartOutputSpecItem {
     pub funcs: Vec<ApiDartGeneratedFunction>,
     pub classes: Vec<ApiDartGeneratedClass>,
-    pub extra_classes: Vec<ApiDartGeneratedClass>,
+    pub extra_code: Vec<String>,
     pub imports: DartBasicHeaderCode,
     pub preamble: String,
     pub skips: Vec<MirSkip>,
@@ -123,10 +123,10 @@ fn generate_item(
         })
         .unwrap_or_default();
 
-    let extra_classes = namespaced_types
+    let extra_code = namespaced_types
         .map(|classes| {
             (classes.iter())
-                .filter_map(|&ty| ApiDartGenerator::new(ty.clone(), context).generate_extra_class())
+                .filter_map(|&ty| ApiDartGenerator::new(ty.clone(), context).generate_extra_code())
                 .collect_vec()
         })
         .unwrap_or_default();
@@ -138,7 +138,7 @@ fn generate_item(
     Ok(ApiDartOutputSpecItem {
         funcs,
         classes,
-        extra_classes,
+        extra_code,
         imports,
         preamble: context.config.dart_preamble.clone(),
         skips: compute_skips(context.mir_pack, namespace),

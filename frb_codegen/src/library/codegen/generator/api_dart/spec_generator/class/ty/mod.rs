@@ -17,8 +17,8 @@ pub(crate) trait ApiDartGeneratorClassTrait {
         None
     }
 
-    /// This class will not be put in dart api files, but instead be in `frb_generated.dart`
-    fn generate_extra_class(&self) -> Option<ApiDartGeneratedClass> {
+    /// The code will not be put in dart api files, but instead be in `frb_generated.dart`
+    fn generate_extra_code(&self) -> Option<String> {
         None
     }
 }
