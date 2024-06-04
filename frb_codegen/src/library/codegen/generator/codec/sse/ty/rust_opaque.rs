@@ -34,7 +34,7 @@ pub(super) fn generate_generalized_rust_opaque_decode(
     match lang {
         Lang::DartLang(_) => {
             format!(
-                "return {}.frbInternalSseDecode({}, {});",
+                "return {}Impl.frbInternalSseDecode({}, {});",
                 ApiDartGenerator::new(mir, context.as_api_dart_context()).dart_api_type(),
                 lang.call_decode(&MirTypeRustOpaque::DELEGATE_TYPE),
                 lang.call_decode(&EXTERNAL_SIZE_TYPE),
