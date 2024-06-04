@@ -80,7 +80,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         let src_lineno = func.item_fn.span().start().line;
         let attributes = FrbAttributes::parse(func.item_fn.attrs())?;
-        let dart_name = attributes.name();
+        let dart_name = parse_dart_name(&attributes);
 
         let create_context = |owner: Option<MirFuncOwnerInfo>| TypeParserParsingContext {
             initiated_namespace: func.namespace.clone(),
@@ -298,3 +298,8 @@ fn refine_namespace(owner: &MirFuncOwnerInfo) -> Option<Namespace> {
     }
     None
 }
+
+fn parse_dart_name(attributes: &FrbAttributes) -> Option<String> {
+    attributes.name()
+}
+
