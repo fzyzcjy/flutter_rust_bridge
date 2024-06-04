@@ -10,7 +10,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 // These functions are ignored because they are not marked as `pub`: `apply_curve`, `apply_mono_to_stereo_gain`, `apply_stereo_to_stereo_gain`, `assert_valid_channel_count_mode`, `assert_valid_channel_count_mode`, `assert_valid_channel_count_mode`, `assert_valid_channel_count_mode`, `assert_valid_channel_count_mode`, `assert_valid_channel_count`, `assert_valid_channel_count`, `assert_valid_channel_count`, `assert_valid_channel_count`, `assert_valid_channel_count`, `assert_valid_channel_interpretation`, `assert_valid_cone_outer_gain`, `assert_valid_feedback_coefs`, `assert_valid_feedforward_coefs`, `assert_valid_number_of_channels`, `assert_valid_number_of_channels`, `calculate_coefs`, `check_ring_buffer_up_down_mix`, `complex`, `cone_gain`, `count_mode`, `count`, `db_to_lin`, `dist_gain`, `downsample_x2`, `downsample_x4`, `from_raw_parts`, `generate_custom`, `generate_sample`, `generate_sawtooth`, `generate_sine`, `generate_square`, `generate_triangle`, `get_computed_freq`, `get_phase_incr`, `get_playback_infos`, `get_stereo_gains`, `handle_control_message`, `inner`, `interpretation`, `into_channel_config`, `inverse`, `lin_to_db`, `load_hrtf_processor`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `normalize_buffer`, `poly_blep`, `precomputed_sine_table`, `process`, `process`, `process`, `process`, `real`, `roll_zero`, `samples_out_mut`, `samples_out`, `set_count_mode`, `set_count`, `set_interpretation`, `tail_time_samples`, `tail`, `unroll_phase`, `upsample_x2`, `upsample_x4`
 // These functions are ignored because they have generic arguments: `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `new`, `set_onaudioprocess`, `set_onended`, `set_onended`, `set_onended`
 // These types are ignored because they are not used by any `pub` functions: `AnalyserOptions`, `AnalyserRenderer`, `AudioBufferRendererState`, `AudioBufferSourceOptions`, `AudioBufferSourceRenderer`, `AudioDestinationNodeStream`, `AudioNodeOptions`, `BiquadFilterOptions`, `BiquadFilterRenderer`, `ChannelConfigInner`, `ChannelConfig`, `ChannelMergerOptions`, `ChannelMergerRenderer`, `ChannelSplitterOptions`, `ChannelSplitterRenderer`, `Coefficients`, `ConstantSourceOptions`, `ConstantSourceRenderer`, `ControlMessage`, `ConvolverOptions`, `ConvolverRendererInner`, `ConvolverRenderer`, `DelayOptions`, `DelayReader`, `DelayWriter`, `DestinationRenderer`, `DynamicsCompressorOptions`, `DynamicsCompressorRenderer`, `Fft`, `GainOptions`, `GainRenderer`, `HrtfState`, `IIRFilterOptions`, `IirFilterRenderer`, `LoopState`, `MediaElementAudioSourceOptions`, `MediaStreamAudioSourceOptions`, `MediaStreamRenderer`, `MediaStreamTrackAudioSourceOptions`, `OscillatorOptions`, `OscillatorRenderer`, `PannerOptions`, `PannerRenderer`, `PlaybackInfo`, `RendererConfig`, `ResamplerConfig`, `Resampler`, `Schedule`, `ScriptProcessorOptions`, `ScriptProcessorRenderer`, `SpatialParams`, `StereoPannerOptions`, `StereoPannerRenderer`, `WaveShaperOptions`, `WaveShaperRenderer`
-// These functions are ignored: `buffer`, `buffer`, `check_ring_buffer_size`, `check_ring_buffer_size`, `curve`, `get_byte_frequency_data`, `get_byte_time_domain_data`, `get_float_frequency_data`, `get_float_time_domain_data`, `get_frequency_response`, `get_frequency_response`, `ring_buffer_mut`, `ring_buffer_mut`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`
+// These functions are ignored: `buffer`, `buffer`, `check_ring_buffer_size`, `check_ring_buffer_size`, `curve`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `get_byte_frequency_data`, `get_byte_time_domain_data`, `get_float_frequency_data`, `get_float_time_domain_data`, `get_frequency_response`, `get_frequency_response`, `ring_buffer_mut`, `ring_buffer_mut`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AnalyserNode>>
 @sealed
@@ -76,47 +76,6 @@ class AnalyserNode extends RustOpaque {
       RustLib.instance.api.webAudioApiNodeAnalyserNodeDisconnect(
         that: this,
       );
-
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest}) => RustLib.instance.api
-      .webAudioApiNodeAnalyserNodeDisconnectDest(that: this, dest: dest);
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-          {required AudioNode dest, required BigInt output}) =>
-      RustLib.instance.api.webAudioApiNodeAnalyserNodeDisconnectDestFromOutput(
-          that: this, dest: dest, output: output);
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-          {required AudioNode dest,
-          required BigInt output,
-          required BigInt input}) =>
-      RustLib.instance.api
-          .webAudioApiNodeAnalyserNodeDisconnectDestFromOutputToInput(
-              that: this, dest: dest, output: output, input: input);
 
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
@@ -328,49 +287,6 @@ class AudioBufferSourceNode extends RustOpaque {
         that: this,
       );
 
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest}) =>
-      RustLib.instance.api.webAudioApiNodeAudioBufferSourceNodeDisconnectDest(
-          that: this, dest: dest);
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-          {required AudioNode dest, required BigInt output}) =>
-      RustLib.instance.api
-          .webAudioApiNodeAudioBufferSourceNodeDisconnectDestFromOutput(
-              that: this, dest: dest, output: output);
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-          {required AudioNode dest,
-          required BigInt output,
-          required BigInt input}) =>
-      RustLib.instance.api
-          .webAudioApiNodeAudioBufferSourceNodeDisconnectDestFromOutputToInput(
-              that: this, dest: dest, output: output, input: input);
-
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
   /// # Panics
@@ -579,49 +495,6 @@ class AudioDestinationNode extends RustOpaque {
         that: this,
       );
 
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest}) =>
-      RustLib.instance.api.webAudioApiNodeAudioDestinationNodeDisconnectDest(
-          that: this, dest: dest);
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-          {required AudioNode dest, required BigInt output}) =>
-      RustLib.instance.api
-          .webAudioApiNodeAudioDestinationNodeDisconnectDestFromOutput(
-              that: this, dest: dest, output: output);
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-          {required AudioNode dest,
-          required BigInt output,
-          required BigInt input}) =>
-      RustLib.instance.api
-          .webAudioApiNodeAudioDestinationNodeDisconnectDestFromOutputToInput(
-              that: this, dest: dest, output: output, input: input);
-
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
   /// # Panics
@@ -739,48 +612,6 @@ class BiquadFilterNode extends RustOpaque {
       RustLib.instance.api.webAudioApiNodeBiquadFilterNodeDisconnect(
         that: this,
       );
-
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest}) => RustLib.instance.api
-      .webAudioApiNodeBiquadFilterNodeDisconnectDest(that: this, dest: dest);
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-          {required AudioNode dest, required BigInt output}) =>
-      RustLib.instance.api
-          .webAudioApiNodeBiquadFilterNodeDisconnectDestFromOutput(
-              that: this, dest: dest, output: output);
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-          {required AudioNode dest,
-          required BigInt output,
-          required BigInt input}) =>
-      RustLib.instance.api
-          .webAudioApiNodeBiquadFilterNodeDisconnectDestFromOutputToInput(
-              that: this, dest: dest, output: output, input: input);
 
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
@@ -919,48 +750,6 @@ class ChannelMergerNode extends RustOpaque {
         that: this,
       );
 
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest}) => RustLib.instance.api
-      .webAudioApiNodeChannelMergerNodeDisconnectDest(that: this, dest: dest);
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-          {required AudioNode dest, required BigInt output}) =>
-      RustLib.instance.api
-          .webAudioApiNodeChannelMergerNodeDisconnectDestFromOutput(
-              that: this, dest: dest, output: output);
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-          {required AudioNode dest,
-          required BigInt output,
-          required BigInt input}) =>
-      RustLib.instance.api
-          .webAudioApiNodeChannelMergerNodeDisconnectDestFromOutputToInput(
-              that: this, dest: dest, output: output, input: input);
-
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
   /// # Panics
@@ -1065,48 +854,6 @@ class ChannelSplitterNode extends RustOpaque {
       RustLib.instance.api.webAudioApiNodeChannelSplitterNodeDisconnect(
         that: this,
       );
-
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest}) => RustLib.instance.api
-      .webAudioApiNodeChannelSplitterNodeDisconnectDest(that: this, dest: dest);
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-          {required AudioNode dest, required BigInt output}) =>
-      RustLib.instance.api
-          .webAudioApiNodeChannelSplitterNodeDisconnectDestFromOutput(
-              that: this, dest: dest, output: output);
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-          {required AudioNode dest,
-          required BigInt output,
-          required BigInt input}) =>
-      RustLib.instance.api
-          .webAudioApiNodeChannelSplitterNodeDisconnectDestFromOutputToInput(
-              that: this, dest: dest, output: output, input: input);
 
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
@@ -1219,48 +966,6 @@ class ConstantSourceNode extends RustOpaque {
       RustLib.instance.api.webAudioApiNodeConstantSourceNodeDisconnect(
         that: this,
       );
-
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest}) => RustLib.instance.api
-      .webAudioApiNodeConstantSourceNodeDisconnectDest(that: this, dest: dest);
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-          {required AudioNode dest, required BigInt output}) =>
-      RustLib.instance.api
-          .webAudioApiNodeConstantSourceNodeDisconnectDestFromOutput(
-              that: this, dest: dest, output: output);
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-          {required AudioNode dest,
-          required BigInt output,
-          required BigInt input}) =>
-      RustLib.instance.api
-          .webAudioApiNodeConstantSourceNodeDisconnectDestFromOutputToInput(
-              that: this, dest: dest, output: output, input: input);
 
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
@@ -1388,47 +1093,6 @@ class ConvolverNode extends RustOpaque {
       RustLib.instance.api.webAudioApiNodeConvolverNodeDisconnect(
         that: this,
       );
-
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest}) => RustLib.instance.api
-      .webAudioApiNodeConvolverNodeDisconnectDest(that: this, dest: dest);
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-          {required AudioNode dest, required BigInt output}) =>
-      RustLib.instance.api.webAudioApiNodeConvolverNodeDisconnectDestFromOutput(
-          that: this, dest: dest, output: output);
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-          {required AudioNode dest,
-          required BigInt output,
-          required BigInt input}) =>
-      RustLib.instance.api
-          .webAudioApiNodeConvolverNodeDisconnectDestFromOutputToInput(
-              that: this, dest: dest, output: output, input: input);
 
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
@@ -1560,47 +1224,6 @@ class DelayNode extends RustOpaque {
         that: this,
       );
 
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest}) => RustLib.instance.api
-      .webAudioApiNodeDelayNodeDisconnectDest(that: this, dest: dest);
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-          {required AudioNode dest, required BigInt output}) =>
-      RustLib.instance.api.webAudioApiNodeDelayNodeDisconnectDestFromOutput(
-          that: this, dest: dest, output: output);
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-          {required AudioNode dest,
-          required BigInt output,
-          required BigInt input}) =>
-      RustLib.instance.api
-          .webAudioApiNodeDelayNodeDisconnectDestFromOutputToInput(
-              that: this, dest: dest, output: output, input: input);
-
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
   /// # Panics
@@ -1711,49 +1334,6 @@ class DynamicsCompressorNode extends RustOpaque {
       RustLib.instance.api.webAudioApiNodeDynamicsCompressorNodeDisconnect(
         that: this,
       );
-
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest}) =>
-      RustLib.instance.api.webAudioApiNodeDynamicsCompressorNodeDisconnectDest(
-          that: this, dest: dest);
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-          {required AudioNode dest, required BigInt output}) =>
-      RustLib.instance.api
-          .webAudioApiNodeDynamicsCompressorNodeDisconnectDestFromOutput(
-              that: this, dest: dest, output: output);
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-          {required AudioNode dest,
-          required BigInt output,
-          required BigInt input}) =>
-      RustLib.instance.api
-          .webAudioApiNodeDynamicsCompressorNodeDisconnectDestFromOutputToInput(
-              that: this, dest: dest, output: output, input: input);
 
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
@@ -1886,47 +1466,6 @@ class GainNode extends RustOpaque {
         that: this,
       );
 
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest}) => RustLib.instance.api
-      .webAudioApiNodeGainNodeDisconnectDest(that: this, dest: dest);
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-          {required AudioNode dest, required BigInt output}) =>
-      RustLib.instance.api.webAudioApiNodeGainNodeDisconnectDestFromOutput(
-          that: this, dest: dest, output: output);
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-          {required AudioNode dest,
-          required BigInt output,
-          required BigInt input}) =>
-      RustLib.instance.api
-          .webAudioApiNodeGainNodeDisconnectDestFromOutputToInput(
-              that: this, dest: dest, output: output, input: input);
-
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
   /// # Panics
@@ -2036,47 +1575,6 @@ class IirFilterNode extends RustOpaque {
         that: this,
       );
 
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest}) => RustLib.instance.api
-      .webAudioApiNodeIirFilterNodeDisconnectDest(that: this, dest: dest);
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-          {required AudioNode dest, required BigInt output}) =>
-      RustLib.instance.api.webAudioApiNodeIirFilterNodeDisconnectDestFromOutput(
-          that: this, dest: dest, output: output);
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-          {required AudioNode dest,
-          required BigInt output,
-          required BigInt input}) =>
-      RustLib.instance.api
-          .webAudioApiNodeIirFilterNodeDisconnectDestFromOutputToInput(
-              that: this, dest: dest, output: output, input: input);
-
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
   /// # Panics
@@ -2182,49 +1680,6 @@ class MediaElementAudioSourceNode extends RustOpaque {
       RustLib.instance.api.webAudioApiNodeMediaElementAudioSourceNodeDisconnect(
         that: this,
       );
-
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest}) => RustLib.instance.api
-      .webAudioApiNodeMediaElementAudioSourceNodeDisconnectDest(
-          that: this, dest: dest);
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-          {required AudioNode dest, required BigInt output}) =>
-      RustLib.instance.api
-          .webAudioApiNodeMediaElementAudioSourceNodeDisconnectDestFromOutput(
-              that: this, dest: dest, output: output);
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-          {required AudioNode dest,
-          required BigInt output,
-          required BigInt input}) =>
-      RustLib.instance.api
-          .webAudioApiNodeMediaElementAudioSourceNodeDisconnectDestFromOutputToInput(
-              that: this, dest: dest, output: output, input: input);
 
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
@@ -2335,49 +1790,6 @@ class MediaStreamAudioDestinationNode extends RustOpaque {
           .webAudioApiNodeMediaStreamAudioDestinationNodeDisconnect(
         that: this,
       );
-
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest}) => RustLib.instance.api
-      .webAudioApiNodeMediaStreamAudioDestinationNodeDisconnectDest(
-          that: this, dest: dest);
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-          {required AudioNode dest, required BigInt output}) =>
-      RustLib.instance.api
-          .webAudioApiNodeMediaStreamAudioDestinationNodeDisconnectDestFromOutput(
-              that: this, dest: dest, output: output);
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-          {required AudioNode dest,
-          required BigInt output,
-          required BigInt input}) =>
-      RustLib.instance.api
-          .webAudioApiNodeMediaStreamAudioDestinationNodeDisconnectDestFromOutputToInput(
-              that: this, dest: dest, output: output, input: input);
 
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
@@ -2496,49 +1908,6 @@ class MediaStreamAudioSourceNode extends RustOpaque {
         that: this,
       );
 
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest}) => RustLib.instance.api
-      .webAudioApiNodeMediaStreamAudioSourceNodeDisconnectDest(
-          that: this, dest: dest);
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-          {required AudioNode dest, required BigInt output}) =>
-      RustLib.instance.api
-          .webAudioApiNodeMediaStreamAudioSourceNodeDisconnectDestFromOutput(
-              that: this, dest: dest, output: output);
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-          {required AudioNode dest,
-          required BigInt output,
-          required BigInt input}) =>
-      RustLib.instance.api
-          .webAudioApiNodeMediaStreamAudioSourceNodeDisconnectDestFromOutputToInput(
-              that: this, dest: dest, output: output, input: input);
-
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
   /// # Panics
@@ -2648,49 +2017,6 @@ class MediaStreamTrackAudioSourceNode extends RustOpaque {
           .webAudioApiNodeMediaStreamTrackAudioSourceNodeDisconnect(
         that: this,
       );
-
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest}) => RustLib.instance.api
-      .webAudioApiNodeMediaStreamTrackAudioSourceNodeDisconnectDest(
-          that: this, dest: dest);
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-          {required AudioNode dest, required BigInt output}) =>
-      RustLib.instance.api
-          .webAudioApiNodeMediaStreamTrackAudioSourceNodeDisconnectDestFromOutput(
-              that: this, dest: dest, output: output);
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-          {required AudioNode dest,
-          required BigInt output,
-          required BigInt input}) =>
-      RustLib.instance.api
-          .webAudioApiNodeMediaStreamTrackAudioSourceNodeDisconnectDestFromOutputToInput(
-              that: this, dest: dest, output: output, input: input);
 
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
@@ -2817,48 +2143,6 @@ class OscillatorNode extends RustOpaque {
       RustLib.instance.api.webAudioApiNodeOscillatorNodeDisconnect(
         that: this,
       );
-
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest}) => RustLib.instance.api
-      .webAudioApiNodeOscillatorNodeDisconnectDest(that: this, dest: dest);
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-          {required AudioNode dest, required BigInt output}) =>
-      RustLib.instance.api
-          .webAudioApiNodeOscillatorNodeDisconnectDestFromOutput(
-              that: this, dest: dest, output: output);
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-          {required AudioNode dest,
-          required BigInt output,
-          required BigInt input}) =>
-      RustLib.instance.api
-          .webAudioApiNodeOscillatorNodeDisconnectDestFromOutputToInput(
-              that: this, dest: dest, output: output, input: input);
 
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
@@ -3032,47 +2316,6 @@ class PannerNode extends RustOpaque {
       RustLib.instance.api.webAudioApiNodePannerNodeDisconnect(
         that: this,
       );
-
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest}) => RustLib.instance.api
-      .webAudioApiNodePannerNodeDisconnectDest(that: this, dest: dest);
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-          {required AudioNode dest, required BigInt output}) =>
-      RustLib.instance.api.webAudioApiNodePannerNodeDisconnectDestFromOutput(
-          that: this, dest: dest, output: output);
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-          {required AudioNode dest,
-          required BigInt output,
-          required BigInt input}) =>
-      RustLib.instance.api
-          .webAudioApiNodePannerNodeDisconnectDestFromOutputToInput(
-              that: this, dest: dest, output: output, input: input);
 
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
@@ -3301,48 +2544,6 @@ class ScriptProcessorNode extends RustOpaque {
         that: this,
       );
 
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest}) => RustLib.instance.api
-      .webAudioApiNodeScriptProcessorNodeDisconnectDest(that: this, dest: dest);
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-          {required AudioNode dest, required BigInt output}) =>
-      RustLib.instance.api
-          .webAudioApiNodeScriptProcessorNodeDisconnectDestFromOutput(
-              that: this, dest: dest, output: output);
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-          {required AudioNode dest,
-          required BigInt output,
-          required BigInt input}) =>
-      RustLib.instance.api
-          .webAudioApiNodeScriptProcessorNodeDisconnectDestFromOutputToInput(
-              that: this, dest: dest, output: output, input: input);
-
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
   /// # Panics
@@ -3448,48 +2649,6 @@ class StereoPannerNode extends RustOpaque {
       RustLib.instance.api.webAudioApiNodeStereoPannerNodeDisconnect(
         that: this,
       );
-
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest}) => RustLib.instance.api
-      .webAudioApiNodeStereoPannerNodeDisconnectDest(that: this, dest: dest);
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-          {required AudioNode dest, required BigInt output}) =>
-      RustLib.instance.api
-          .webAudioApiNodeStereoPannerNodeDisconnectDestFromOutput(
-              that: this, dest: dest, output: output);
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-          {required AudioNode dest,
-          required BigInt output,
-          required BigInt input}) =>
-      RustLib.instance.api
-          .webAudioApiNodeStereoPannerNodeDisconnectDestFromOutputToInput(
-              that: this, dest: dest, output: output, input: input);
 
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
@@ -3599,48 +2758,6 @@ class WaveShaperNode extends RustOpaque {
       RustLib.instance.api.webAudioApiNodeWaveShaperNodeDisconnect(
         that: this,
       );
-
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest}) => RustLib.instance.api
-      .webAudioApiNodeWaveShaperNodeDisconnectDest(that: this, dest: dest);
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-          {required AudioNode dest, required BigInt output}) =>
-      RustLib.instance.api
-          .webAudioApiNodeWaveShaperNodeDisconnectDestFromOutput(
-              that: this, dest: dest, output: output);
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-          {required AudioNode dest,
-          required BigInt output,
-          required BigInt input}) =>
-      RustLib.instance.api
-          .webAudioApiNodeWaveShaperNodeDisconnectDestFromOutputToInput(
-              that: this, dest: dest, output: output, input: input);
 
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
