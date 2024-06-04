@@ -201,7 +201,7 @@ fn generate_implementation_call_impl(
     context: ApiDartGeneratorContext,
     method_info: &MirFuncOwnerInfoMethod,
     params: &[ApiDartGeneratedFunctionParam],
-) -> Option<String> {
+) -> String {
     let dart_entrypoint_class_name = &context.config.dart_entrypoint_class_name;
     let dart_api_instance = format!("{dart_entrypoint_class_name}.instance.api");
 
