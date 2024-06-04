@@ -4,6 +4,7 @@ use quote::quote;
 use quote::ToTokens;
 use syn::{ImplItem, ItemImpl};
 use syn::spanned::Spanned;
+use md5::{Md5, Digest};
 
 pub(crate) fn handle_external_impl(attribute: TokenStream, item: TokenStream) -> TokenStream {
     if attribute.to_string() != ATTR_KEYWORD {
@@ -38,7 +39,7 @@ fn compute_dummy_struct_ty(original_self_ty: &syn::Type, item_string: &str) -> s
     let dummy_struct_name = format!(
         "{DUMMY_STRUCT_PREFIX}{}{}",
         hex::encode(original_self_ty_string),
-        "TODO",
+        Md5::digest(item_string),
     );
     syn::parse_str(&dummy_struct_name).unwrap()
 }
