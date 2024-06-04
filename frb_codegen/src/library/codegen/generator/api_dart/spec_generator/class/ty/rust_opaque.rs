@@ -58,6 +58,10 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
             header: Default::default(),
         })
     }
+
+    fn generate_extra_impl_code(&self) -> Option<String> {
+        Some(TODO)
+    }
 }
 
 fn compute_api_method_query_name(
