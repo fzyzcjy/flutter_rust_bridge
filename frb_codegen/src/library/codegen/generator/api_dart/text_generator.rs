@@ -43,6 +43,7 @@ pub(super) fn generate(
         .namespaced_items
         .values()
         .flat_map(|item| item.extra_impl_code.clone())
+        .sorted()
         .join("");
 
     Ok(ApiDartOutputText {
