@@ -151,7 +151,7 @@ impl MirFunc {
     }
 
     pub(crate) fn locator_dart_api(&self) -> MirFuncDartApiLocator {
-        match self.owner {
+        match &self.owner {
             MirFuncOwnerInfo::Function => MirFuncDartApiLocator::Function {
                 name: self.name.clone(),
             },
@@ -213,7 +213,7 @@ impl MirFuncOverridePriority {
     pub(crate) const FRB_OVERRIDE: MirFuncOverridePriority = MirFuncOverridePriority(1);
 }
 
-#[derive(Clone, Eq, PartialEq)]
+#[derive(Clone, Eq, PartialEq, Hash)]
 pub(crate) enum MirFuncDartApiLocator {
     Function {
         name: NamespacedName,
