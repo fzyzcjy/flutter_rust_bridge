@@ -8,6 +8,8 @@ use crate::utils::crate_name::CrateName;
 use itertools::Itertools;
 use std::fmt::Debug;
 
+pub(crate) struct ThirdPartyOverrideMerger;
+
 pub(crate) fn transform(mut pack: HirPack) -> anyhow::Result<HirPack> {
     if let Some(module_third_party_root) = remove_module_third_party_root(&mut pack) {
         for src in module_third_party_root.content.modules {
