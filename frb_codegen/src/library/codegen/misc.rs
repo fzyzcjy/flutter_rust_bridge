@@ -1,3 +1,4 @@
+use crate::utils::namespace::Namespace;
 use crate::utils::console::SimpleProgressBar;
 use crate::utils::crate_name::CrateName;
 use lazy_static::lazy_static;
