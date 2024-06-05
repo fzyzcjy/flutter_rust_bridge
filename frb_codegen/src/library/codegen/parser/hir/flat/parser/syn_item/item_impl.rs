@@ -6,13 +6,16 @@ use crate::if_then_some;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use itertools::Itertools;
 use syn::{ItemImpl, ItemStruct};
+use crate::codegen::ir::hir::tree::module::HirTreeModuleMeta;
 
 pub(crate) fn parse_syn_item_impl(
     target: &mut HirFlatPack,
     item_impl: ItemImpl,
+    meta: &HirTreeModuleMeta,
 ) -> anyhow::Result<TODO> {
     if item_impl.trait_.is_some() {
         (target.functions).push(parse_trait_impl(item_impl, namespace));
+        (target.trait_impls).push(TODO);
     } else {
         (target.functions).extend(parse_for_struct_or_enum(item_impl, namespace, None));
     }
@@ -20,7 +23,7 @@ pub(crate) fn parse_syn_item_impl(
 
 fn parse_for_struct_or_enum(
     item_impl: &ItemImpl,
-    namespace: &Namespace,
+    meta: &HirTreeModuleMeta,
     trait_def_name: Option<NamespacedName>,
 ) -> Vec<HirFlatFunction> {
     (item_impl.items.iter())
