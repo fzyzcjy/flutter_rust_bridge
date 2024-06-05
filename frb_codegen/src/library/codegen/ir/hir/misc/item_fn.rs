@@ -57,9 +57,3 @@ impl GeneralizedItemFn {
     }
 }
 
-pub(crate) fn serialize_generalized_item_fn<S: Serializer>(
-    x: &GeneralizedItemFn,
-    s: S,
-) -> Result<S::Ok, S::Error> {
-    s.serialize_str(&format!("GeneralizedItemFn(name={})", x.name()))
-}
