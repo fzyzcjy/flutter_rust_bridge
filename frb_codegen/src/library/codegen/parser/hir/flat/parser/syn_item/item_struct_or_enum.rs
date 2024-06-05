@@ -43,10 +43,10 @@ fn parse_syn_item_struct_or_enum<I: SynItemStructOrEnum>(
     Ok(idents
         .into_iter()
         .map(|ident| HirFlatStructOrEnum {
-            src: item.clone(),
-            visibility: item_vis.into(),
             name: NamespacedName::new(meta.namespace.to_owned(), ident.to_string()),
+            visibility: item_vis.into(),
             mirror: mirror_by_ident || !meta.namespace.crate_name().is_self_crate(),
+            src: item.clone(),
         })
         .collect_vec())
 }
