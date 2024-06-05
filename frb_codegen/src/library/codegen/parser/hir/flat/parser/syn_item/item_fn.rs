@@ -1,3 +1,4 @@
+use crate::codegen::ir::hir::misc::item_fn::GeneralizedItemFn;
 use crate::codegen::ir::hir::flat::function::{HirFlatFunction, HirFlatFunctionOwner};
 use crate::codegen::ir::hir::tree::module::HirTreeModuleMeta;
 use crate::if_then_some;

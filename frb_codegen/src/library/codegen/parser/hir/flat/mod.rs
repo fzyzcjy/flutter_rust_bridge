@@ -2,6 +2,7 @@ pub(crate) mod parser;
 pub(crate) mod transformer;
 mod exporter;
 
+use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::hir::tree::pack::HirTreePack;
 

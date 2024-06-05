@@ -1,3 +1,4 @@
+use crate::codegen::ir::hir::misc::visibility::HirVisibility;
 use crate::utils::namespace::Namespace;
 use derivative::Derivative;
 use itertools::concat;

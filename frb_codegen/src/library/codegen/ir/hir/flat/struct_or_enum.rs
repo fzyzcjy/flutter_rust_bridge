@@ -1,3 +1,5 @@
+use crate::codegen::ir::hir::misc::visibility::HirVisibility;
+use crate::codegen::ir::hir::misc::syn_item_struct_or_enum::SynItemStructOrEnum;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use derivative::Derivative;
 use proc_macro2::Ident;

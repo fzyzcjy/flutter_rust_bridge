@@ -1,3 +1,5 @@
+use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatStruct;
+use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatEnum;
 use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::ir::mir::func::MirFuncOwnerInfo;
 use crate::codegen::ir::mir::pack::{MirEnumPool, MirStructPool};

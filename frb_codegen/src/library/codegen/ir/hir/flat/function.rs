@@ -1,3 +1,6 @@
+use crate::codegen::ir::hir::misc::serializers::serialize_syn;
+use crate::codegen::ir::hir::misc::serializers::serialize_generalized_item_fn;
+use crate::codegen::ir::hir::misc::item_fn::GeneralizedItemFn;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use proc_macro2::Span;
 use serde::{Serialize, Serializer};

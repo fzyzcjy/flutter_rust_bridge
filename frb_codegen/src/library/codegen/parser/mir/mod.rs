@@ -9,6 +9,8 @@ pub(crate) mod reader;
 pub(crate) mod sanity_checker;
 pub(crate) mod type_parser;
 
+use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatStruct;
+use crate::codegen::ir::hir::flat::function::HirFlatFunction;
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::mir::func::MirFunc;
 use crate::codegen::ir::mir::pack::MirPack;

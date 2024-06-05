@@ -1,3 +1,4 @@
+use crate::codegen::ir::hir::misc::syn_item_struct_or_enum::SynItemStructOrEnum;
 use crate::codegen::ir::hir::flat::struct_or_enum::{
     HirFlatEnum, HirFlatStruct, HirFlatStructOrEnum,
 };

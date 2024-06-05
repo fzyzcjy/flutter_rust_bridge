@@ -1,5 +1,6 @@
 mod field;
 
+use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatStruct;
 use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::ir::mir::func::{MirFunc, MirFuncAccessorMode, OwnershipMode};
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;

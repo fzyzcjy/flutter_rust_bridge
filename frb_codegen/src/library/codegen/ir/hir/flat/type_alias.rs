@@ -1,3 +1,4 @@
+use crate::codegen::ir::hir::misc::serializers::serialize_syn;
 use quote::ToTokens;
 use serde::{Serialize, Serializer};
 use syn::Type;

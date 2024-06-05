@@ -1,3 +1,4 @@
+use crate::codegen::ir::hir::misc::visibility::HirVisibility;
 use crate::codegen::ir::hir::tree::module::{HirTreeModule, HirTreeModuleMeta};
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 use crate::utils::namespace::Namespace;

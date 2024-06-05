@@ -1,3 +1,5 @@
+use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatEnum;
+use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatStruct;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
 use crate::codegen::ir::mir::ty::MirType;
