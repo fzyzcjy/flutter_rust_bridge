@@ -9,17 +9,13 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
 
-class StructOneWithTraitTwinNormal {
-  final int value;
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitTwinNormal>>
+abstract class StructOneWithTraitTwinNormal {
+  int get value;
 
-  const StructOneWithTraitTwinNormal({
-    required this.value,
-  });
+  void set value(int value);
 
-  Future<int> simpleTraitFnReceiverBorrowTwinNormal() => RustLib.instance.api
-          .crateApiMinimalStructOneWithTraitTwinNormalSimpleTraitFnReceiverBorrowTwinNormal(
-        that: this,
-      );
+  Future<int> simpleTraitFnReceiverBorrowTwinNormal();
 
   static Future<StructOneWithTraitTwinNormal> simpleTraitFnTwinNormal(
           {required int value}) =>
@@ -31,28 +27,18 @@ class StructOneWithTraitTwinNormal {
       .instance.api
       .crateApiMinimalStructOneWithTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormal();
 
-  @override
-  int get hashCode => value.hashCode;
+  void dispose();
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is StructOneWithTraitTwinNormal &&
-          runtimeType == other.runtimeType &&
-          value == other.value;
+  bool get isDisposed;
 }
 
-class StructTwoWithTraitTwinNormal {
-  final int value;
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructTwoWithTraitTwinNormal>>
+abstract class StructTwoWithTraitTwinNormal {
+  int get value;
 
-  const StructTwoWithTraitTwinNormal({
-    required this.value,
-  });
+  void set value(int value);
 
-  Future<int> simpleTraitFnReceiverBorrowTwinNormal() => RustLib.instance.api
-          .crateApiMinimalStructTwoWithTraitTwinNormalSimpleTraitFnReceiverBorrowTwinNormal(
-        that: this,
-      );
+  Future<int> simpleTraitFnReceiverBorrowTwinNormal();
 
   static Future<StructTwoWithTraitTwinNormal> simpleTraitFnTwinNormal(
           {required int value}) =>
@@ -64,13 +50,7 @@ class StructTwoWithTraitTwinNormal {
       .instance.api
       .crateApiMinimalStructTwoWithTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormal();
 
-  @override
-  int get hashCode => value.hashCode;
+  void dispose();
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is StructTwoWithTraitTwinNormal &&
-          runtimeType == other.runtimeType &&
-          value == other.value;
+  bool get isDisposed;
 }

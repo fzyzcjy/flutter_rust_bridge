@@ -21,6 +21,7 @@ pub trait SimpleTraitTwinNormal {
     fn simple_trait_fn_receiver_borrow_twin_normal(&self) -> i32;
 }
 
+#[frb(opaque)]
 pub struct StructOneWithTraitTwinNormal {
     pub value: i32,
 }
@@ -35,6 +36,7 @@ impl SimpleTraitTwinNormal for StructOneWithTraitTwinNormal {
     }
 }
 
+#[frb(opaque)]
 pub struct StructTwoWithTraitTwinNormal {
     pub value: i32,
 }
