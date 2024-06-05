@@ -1,3 +1,4 @@
+use crate::codegen::ir::hir::misc::HirVisibility;
 use crate::codegen::ir::hir::tree::crates::HirTreeCrate;
 use crate::codegen::ir::hir::tree::module::HirTreeModuleMeta;
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
@@ -14,7 +15,7 @@ pub(crate) fn parse_crate(
         namespace: crate_name.namespace(),
     };
     let root_module = parse_module(&file.items, info, config)?;
-    Ok(HirCrate {
+    Ok(HirTreeCrate {
         name: crate_name.to_owned(),
         root_module,
     })
