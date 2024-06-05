@@ -2,8 +2,12 @@ use crate::codegen::ir::hir::flat::function::{HirFlatFunction, HirFlatFunctionOw
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::hir::flat::trait_impl::HirFlatTraitImpl;
 use itertools::Itertools;
+use std::collections::HashSet;
 
 pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
+    let good_trait_names: HashSet<String> =
+        pack.traits.iter().map(|t| t.name.name.clone()).collect();
+
     pack.functions = (pack.functions.drain(..))
         .filter(|f| {
             if let HirFlatFunctionOwner::StructOrEnum {
@@ -11,7 +15,7 @@ pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
                 ..
             } = &f.owner
             {
-                TODO
+                good_trait_names.contains(trait_def_name)
             } else {
                 true
             }
