@@ -42,3 +42,13 @@ impl HirTreeModule {
         }
     }
 }
+
+impl HirTreeModuleMeta {
+    pub(crate) fn parent_and_self_vis(&self) -> Vec<HirVisibility> {
+        concat([self.parent_vis.clone(), vec![self.vis]])
+    }
+
+    pub(crate) fn is_public(&self) -> bool {
+        (self.parent_and_self_vis().iter()).all(|x| *x == HirVisibility::Public)
+    }
+}
