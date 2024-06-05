@@ -105,7 +105,7 @@ fn generate_api_method(
     );
 
     let maybe_implementation = should_generate_implementation(method_info.mode, config)
-        .then(|| generate_implementation(func, context, method_info, &params, config));
+        .then(|| generate_implementation(func, context, method_info, &params));
     let maybe_implementation = (maybe_implementation.map(|x| format!("=>{x}"))).unwrap_or_default();
 
     Some(format!("{comments}{signature}{maybe_implementation};\n\n"))
@@ -192,7 +192,7 @@ fn should_generate_implementation(
     mode: MirFuncOwnerInfoMethodMode,
     config: &GenerateApiMethodConfig,
 ) -> bool {
-    match method_info.mode.to_owned() {
+    match mode.to_owned() {
         MirFuncOwnerInfoMethodMode::Static => config.generate_static,
         MirFuncOwnerInfoMethodMode::Instance => config.generate_non_static,
     }
