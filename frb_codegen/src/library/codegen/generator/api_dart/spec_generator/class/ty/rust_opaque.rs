@@ -1,6 +1,4 @@
-use crate::codegen::generator::api_dart::spec_generator::class::method::{
-    generate_api_methods, GenerateApiMethodMode,
-};
+use crate::codegen::generator::api_dart::spec_generator::class::method::{generate_api_methods, GenerateApiMethodConfig};
 use crate::codegen::generator::api_dart::spec_generator::class::misc::generate_class_extra_body;
 use crate::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
@@ -85,7 +83,7 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
 }
 
 impl RustOpaqueApiDartGenerator<'_> {
-    fn compute_info(&self, mode: GenerateApiMethodMode) -> Info {
+    fn compute_info(&self, config: &GenerateApiMethodConfig) -> Info {
         let dart_api_type = ApiDartGenerator::new(self.mir.clone(), self.context).dart_api_type();
 
         let methods = generate_api_methods(
@@ -94,7 +92,7 @@ impl RustOpaqueApiDartGenerator<'_> {
                 compute_api_method_query_name(&self.mir, self.context),
             ),
             self.context,
-            mode,
+            config,
         )
         .join("\n");
 

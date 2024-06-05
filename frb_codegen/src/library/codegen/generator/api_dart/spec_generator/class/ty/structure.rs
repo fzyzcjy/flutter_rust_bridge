@@ -1,5 +1,5 @@
 use crate::codegen::generator::api_dart::spec_generator::class::method::{
-    dart_constructor_postfix, generate_api_methods, GenerateApiMethodConfig, GenerateApiMethodMode,
+    dart_constructor_postfix, generate_api_methods, GenerateApiMethodConfig,
 };
 use crate::codegen::generator::api_dart::spec_generator::class::misc::generate_class_extra_body;
 use crate::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
