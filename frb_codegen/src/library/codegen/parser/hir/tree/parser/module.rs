@@ -14,7 +14,7 @@ pub(super) fn parse_module(
 
     for item in items.into_iter() {
         match item {
-            syn::Item::Mod(item_mod) => output_modules.extend(parse_syn_item_mod(
+            syn::Item::Mod(item_mod) => output_modules.extend(&parse_syn_item_mod(
                 item_mod,
                 config,
                 meta.namespace,
