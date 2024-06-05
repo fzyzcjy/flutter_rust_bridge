@@ -12,5 +12,5 @@ pub(crate) trait BaseMerger {
         &self,
         base: HirFlatStructOrEnum<Item>,
         overrider: HirFlatStructOrEnum<Item>,
-    ) -> Vec<HirFlatStructOrEnum<Item>>;
+    ) -> Option<HirFlatStructOrEnum<Item>>;
 }
