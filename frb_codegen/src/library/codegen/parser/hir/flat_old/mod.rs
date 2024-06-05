@@ -46,15 +46,6 @@ fn collect_enums(hir_pack: &HirPack) -> HashMap<String, &HirFlatEnum> {
     )
 }
 
-// TODO move
-pub(crate) fn collect_traits(hir_pack: &HirPack) -> HashMap<String, &HirTrait> {
-    collect_objects_map(
-        hir_pack,
-        |module| &module.content.traits,
-        |x| (x.item_trait.ident.to_string(), x),
-    )
-}
-
 fn collect_types(hir_pack: &HirPack) -> HashMap<String, Type> {
     collect_objects_map(
         hir_pack,
