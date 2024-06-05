@@ -12,5 +12,6 @@ pub(crate) fn parse(
     let pack = transformer::copy_trait_def_to_impl_transformer::transform(pack)?;
     let pack = transformer::merge_duplicate_transformer::transform(pack)?;
     let pack = transformer::resolve_type_alias_transformer::transform(pack)?;
+    let pack = transformer::visibility_transformer::transform(pack)?;
     Ok(pack)
 }
