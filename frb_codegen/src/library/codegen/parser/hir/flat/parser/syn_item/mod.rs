@@ -32,13 +32,9 @@ pub(crate) fn parse_syn_item(
         syn::Item::Type(item_type) => {
             target.type_alias.extend(parse_syn_item_type(item_type));
         }
-        syn::Item::Fn(item_fn) => {
-            target.functions.push(parse_syn_item_fn(item_fn, meta));
-        }
+        syn::Item::Fn(item_fn) => target.functions.push(parse_syn_item_fn(item_fn, meta)),
         syn::Item::Impl(item_impl) => parse_syn_item_impl(target, item_impl),
-        syn::Item::Trait(item_trait) => {
-            parse_syn_item_trait(target, item_trait);
-        }
+        syn::Item::Trait(item_trait) => parse_syn_item_trait(target, item_trait),
         _ => {}
     }
     Ok(())
