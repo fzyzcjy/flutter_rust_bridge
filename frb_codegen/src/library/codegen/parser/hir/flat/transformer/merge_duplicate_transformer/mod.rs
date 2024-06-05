@@ -4,7 +4,7 @@ use itertools::Itertools;
 use crate::codegen::ir::hir::flat::function::HirFlatFunction;
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatStructOrEnum;
-use crate::codegen::parser::hir::flat::transformer::merge_duplicate_transformer::base::{BaseMerger, DynAbleMerger};
+use crate::codegen::parser::hir::flat::transformer::merge_duplicate_transformer::base::BaseMerger;
 use crate::codegen::parser::hir::flat::transformer::merge_duplicate_transformer::third_party_override_merger::ThirdPartyOverrideMerger;
 use crate::codegen::parser::hir::flat::transformer::merge_duplicate_transformer::trait_def_default_impl_merger::TraitDefDefaultImplMerger;
 
@@ -35,7 +35,7 @@ pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
 fn transform_component<T, K>(
     items: &mut Vec<T>,
     key: Fn(&T) -> K,
-    merge: impl Fn(&dyn DynAbleMerger, T, T) -> Option<T>,
+    merge: impl Fn(&dyn BaseMerger, T, T) -> Option<T>,
 ) {
     *items = transform_component_raw(items, key, merge);
 }
@@ -43,7 +43,7 @@ fn transform_component<T, K>(
 fn transform_component_raw<T, K: Eq + Hash>(
     items: Vec<T>,
     key: Fn(&T) -> K,
-    merge: impl Fn(&dyn DynAbleMerger, T, T) -> Option<T>,
+    merge: impl Fn(&dyn BaseMerger, T, T) -> Option<T>,
 ) -> Vec<T> {
     let mergers = vec![TraitDefDefaultImplMerger, ThirdPartyOverrideMerger];
 
