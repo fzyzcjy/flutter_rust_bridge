@@ -4,11 +4,18 @@ use crate::utils::namespace::Namespace;
 use itertools::Itertools;
 
 pub(crate) fn transform(mut pack: HirTreePack) -> anyhow::Result<HirTreePack> {
-    TODO;
+    for hir_crate in pack.crates.iter_mut() {
+        transform_module(&mut hir_crate.root_module);
+    }
     Ok(pack)
 }
 
-fn transform_module(module: &mut HirTreeModule, items: &[syn::Item]) -> anyhow::Result<()> {
+fn transform_module(module: &mut HirTreeModule) -> anyhow::Result<()> {
+    // Transform child modules *first*, since parent module may `pub use` something in child module
+    for child_module in module.modules.iter_mut() {
+        transform_module(child_module)?;
+    }
+
     // Only apply to third party crate currently, since in self crate usually no need to care about this
     if module.meta.namespace.crate_name().is_self_crate() {
         return Ok(module);
