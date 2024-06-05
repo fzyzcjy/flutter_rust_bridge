@@ -1,6 +1,6 @@
-use crate::codegen::ir::hir::flat::function::HirFlatFunctionOwner;
-use crate::codegen::ir::hir::flat::function::HirFlatFunction;
 use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
+use crate::codegen::ir::hir::flat::function::HirFlatFunction;
+use crate::codegen::ir::hir::flat::function::HirFlatFunctionOwner;
 use crate::codegen::ir::mir::func::{
     MirFunc, MirFuncArgMode, MirFuncInput, MirFuncMode, MirFuncOutput, MirFuncOverridePriority,
     MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
@@ -162,8 +162,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     ) -> anyhow::Result<Option<MirFuncOwnerInfo>> {
         Ok(Some(match &func.owner {
             HirFlatFunctionOwner::Function => MirFuncOwnerInfo::Function,
-            HirFlatFunctionOwner::Method {
-                item_impl,
+            HirFlatFunctionOwner::StructOrEnum {
+                impl_ty,
                 trait_def_name,
             } => {
                 let sig = func.item_fn.sig();
@@ -173,7 +173,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     MirFuncOwnerInfoMethodMode::Static
                 };
 
-                let owner_ty = if let Some(x) = self.parse_method_owner_ty(item_impl, context)? {
+                let owner_ty = if let Some(x) = self.parse_method_owner_ty(impl_ty, context)? {
                     x
                 } else {
                     return Ok(None);
@@ -198,10 +198,10 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
     fn parse_method_owner_ty(
         &mut self,
-        item_impl: &ItemImpl,
+        impl_ty: &Type,
         context: &TypeParserParsingContext,
     ) -> anyhow::Result<Option<MirType>> {
-        let self_ty_path = if let Type::Path(self_ty_path) = item_impl.self_ty.as_ref() {
+        let self_ty_path = if let Type::Path(self_ty_path) = impl_ty.as_ref() {
             self_ty_path
         } else {
             return Ok(None);
