@@ -2,6 +2,7 @@ use crate::codegen::ir::hir::misc::HirVisibility;
 use crate::codegen::ir::hir::tree::crates::HirTreeCrate;
 use crate::codegen::ir::hir::tree::module::HirTreeModuleMeta;
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
+use crate::codegen::parser::hir::tree::parser::module::parse_module;
 use crate::utils::crate_name::CrateName;
 
 pub(crate) fn parse_crate(

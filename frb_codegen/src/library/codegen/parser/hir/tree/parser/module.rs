@@ -1,14 +1,22 @@
-use crate::codegen::ir::hir::tree::module::{HirTreeModule, HirTreeModuleContent};
+use crate::codegen::ir::hir::tree::module::{
+    HirTreeModule, HirTreeModuleContent, HirTreeModuleMeta,
+};
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 
-fn parse_module(
+pub(super) fn parse_module(
     items: &[syn::Item],
-    meta: HirModuleMeta,
+    meta: HirTreeModuleMeta,
     config: &ParserHirInternalConfig,
 ) -> anyhow::Result<HirTreeModule> {
     let mut content = HirTreeModuleContent::default();
     for item in items.iter() {
-        parse_syn_item(item, &mut content, config, &meta.namespace, &meta.parent_vis)?;
+        parse_syn_item(
+            item,
+            &mut content,
+            config,
+            &meta.namespace,
+            &meta.parent_vis,
+        )?;
     }
 
     Ok(HirTreeModule {

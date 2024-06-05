@@ -1,6 +1,7 @@
 use crate::codegen::ir::hir::raw::pack::HirRawPack;
 use crate::codegen::ir::hir::tree::pack::HirTreePack;
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
+use crate::codegen::parser::hir::tree::parser::crates::parse_crate;
 
 pub(crate) fn parse_pack(
     config: &ParserHirInternalConfig,
