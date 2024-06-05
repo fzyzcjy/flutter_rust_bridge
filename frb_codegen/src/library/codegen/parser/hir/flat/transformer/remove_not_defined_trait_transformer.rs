@@ -1,6 +1,5 @@
-use crate::codegen::ir::hir::flat::function::{HirFlatFunction, HirFlatFunctionOwner};
+use crate::codegen::ir::hir::flat::function::HirFlatFunctionOwner;
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
-use crate::codegen::ir::hir::flat::trait_impl::HirFlatTraitImpl;
 use itertools::Itertools;
 use std::collections::HashSet;
 
