@@ -118,8 +118,3 @@ where
     ans
 }
 
-fn is_interest_mod(module: &HirModule) -> bool {
-    // If it is third party crate, then we only scan the `pub` mods,
-    // since for non-pub modes, it is impossible to use them even if we scanned them.
-    module.meta.namespace.path()[0] == CrateName::SELF_CRATE || module.meta.is_public()
-}
