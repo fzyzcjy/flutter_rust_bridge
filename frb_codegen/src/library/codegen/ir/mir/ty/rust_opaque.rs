@@ -43,22 +43,6 @@ impl RustOpaqueCodecMode {
 }
 
 impl MirTypeRustOpaque {
-    pub fn new(
-        namespace: Namespace,
-        inner: MirRustOpaqueInner,
-        codec: RustOpaqueCodecMode,
-        impl_traits: Vec<MirTypeDelegateDynTrait>,
-        brief_name: bool,
-    ) -> Self {
-        Self {
-            namespace,
-            inner,
-            codec,
-            impl_traits,
-            brief_name,
-        }
-    }
-
     pub(crate) fn get_delegate(&self) -> MirType {
         Self::DELEGATE_TYPE.clone()
     }

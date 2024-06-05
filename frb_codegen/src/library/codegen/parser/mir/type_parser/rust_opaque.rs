@@ -36,13 +36,13 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                     .unwrap_or(self.context.default_rust_opaque_codec),
             ),
         );
-        RustOpaque(MirTypeRustOpaque::new(
-            info.namespace,
-            MirRustOpaqueInner(ty_str),
-            info.codec,
-            TODO,
-            false,
-        ))
+        RustOpaque(MirTypeRustOpaque {
+            namespace: info.namespace,
+            inner: MirRustOpaqueInner(ty_str),
+            codec: info.codec,
+            impl_traits: TODO,
+            brief_name: false,
+        })
     }
 }
 
