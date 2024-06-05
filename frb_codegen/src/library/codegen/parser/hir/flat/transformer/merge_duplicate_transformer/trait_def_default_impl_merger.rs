@@ -19,6 +19,6 @@ impl BaseMerger for TraitDefDefaultImplMerger {
         base: &HirFlatStructOrEnum<Item>,
         overrider: &HirFlatStructOrEnum<Item>,
     ) -> Option<HirFlatStructOrEnum<Item>> {
-        todo!()
+        None
     }
 }
