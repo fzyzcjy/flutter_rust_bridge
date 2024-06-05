@@ -4,11 +4,11 @@ use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 
 pub(crate) mod crates;
 pub(crate) mod function;
-pub(crate) mod item_type;
+pub(crate) mod syn_item_type;
 pub(crate) mod mirror_ident;
 pub(crate) mod module;
 pub(crate) mod pack;
-pub(crate) mod struct_or_enum;
+pub(crate) mod syn_item_struct_or_enum;
 pub(crate) mod traits;
 pub(crate) mod visibility;
 
