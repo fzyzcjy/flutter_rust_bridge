@@ -23,7 +23,7 @@ fn compute_functions(trait_impl: &HirFlatTraitImpl, pack: &HirFlatPack) -> Vec<H
             }
         })
         .map(|f| HirFlatFunction {
-            namespace: TODO,
+            namespace: f.namespace.clone(), // TODO correct?
             owner: HirFlatFunctionOwner::StructOrEnum {
                 impl_ty: trait_impl.impl_ty.clone(),
                 trait_def_name: Some(trait_impl.trait_name.clone()),
