@@ -1,4 +1,3 @@
-use crate::codegen::ir::hir::hierarchical::misc::HirCommon;
 use crate::codegen::ir::hir::misc::item_fn::{serialize_generalized_item_fn, GeneralizedItemFn};
 use crate::utils::namespace::{Namespace, NamespacedName};
 use proc_macro2::Span;
