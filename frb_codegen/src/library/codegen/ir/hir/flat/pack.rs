@@ -11,5 +11,5 @@ pub(crate) struct HirFlatPack {
     pub structs: Vec<HirFlatStruct>,
     pub traits: Vec<HirFlatTrait>,
     pub trait_impls: Vec<HirFlatTraitImpl>,
-    pub type_alias: Vec<HirFlatTypeAlias>,
+    pub types: Vec<HirFlatTypeAlias>,
 }
