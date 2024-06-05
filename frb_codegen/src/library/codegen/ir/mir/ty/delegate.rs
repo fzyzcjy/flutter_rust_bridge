@@ -84,6 +84,7 @@ pub struct MirTypeDelegateRustAutoOpaqueExplicit {
 }
 
 pub struct MirTypeDelegateDynTrait {
+    pub name: NamespacedName,
     pub inner: MirTypeEnumRef,
 }
 }
@@ -130,6 +131,9 @@ impl MirTypeTrait for MirTypeDelegate {
             MirTypeDelegate::BigPrimitive(mir) => mir.to_string(),
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => {
                 format!("AutoExplicit_{}", mir.inner.safe_ident())
+            }
+            MirTypeDelegate::DynTrait(mir) => {
+                format!("DynTrait_{}", mir.inner.safe_ident())
             }
         }
     }
@@ -193,6 +197,7 @@ impl MirTypeTrait for MirTypeDelegate {
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => {
                 format!("RustAutoOpaque{}<{}>", mir.inner.codec, mir.raw.string)
             }
+            MirTypeDelegate::DynTrait(mir) => format!("dyn <{}>", mir.name.name),
         }
     }
 
@@ -260,6 +265,7 @@ impl MirTypeDelegate {
             MirTypeDelegate::StreamSink(_) => MirType::Delegate(MirTypeDelegate::String),
             MirTypeDelegate::BigPrimitive(_) => MirType::Delegate(MirTypeDelegate::String),
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => MirType::RustOpaque(mir.inner.clone()),
+            MirTypeDelegate::DynTrait(mir) => MirType::EnumRef(mir.inner.clone()),
         }
     }
 }
