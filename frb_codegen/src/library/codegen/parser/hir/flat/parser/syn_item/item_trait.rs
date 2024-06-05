@@ -27,8 +27,7 @@ fn parse_functions(
         .filter_map(|item| if_then_some!(let TraitItem::Fn(trait_item_fn) = item, trait_item_fn))
         .map(|trait_item_fn| HirFlatFunction {
             namespace: meta.namespace.clone(),
-            owner: HirFlatFunctionOwner::Method {
-                item_impl: item_impl.to_owned(),
+            owner: HirFlatFunctionOwner::TraitDef {
                 trait_def_name: Some(trait_def_name.to_owned()),
             },
             item_fn: GeneralizedItemFn::TraitItemFn(trait_item_fn),

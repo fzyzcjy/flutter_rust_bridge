@@ -42,6 +42,9 @@ pub(crate) enum HirFlatFunctionOwner {
         item_impl: ItemImpl,
         trait_def_name: Option<NamespacedName>,
     },
+    TraitDef {
+        trait_def_name: Option<NamespacedName>,
+    },
 }
 
 impl HirFlatFunctionOwner {
