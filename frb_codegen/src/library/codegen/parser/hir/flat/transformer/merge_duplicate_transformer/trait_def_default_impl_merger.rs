@@ -1,4 +1,4 @@
-use crate::codegen::ir::hir::flat::function::HirFlatFunction;
+use crate::codegen::ir::hir::flat::function::{HirFlatFunction, HirFlatFunctionOwner};
 use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatStructOrEnum;
 use crate::codegen::parser::hir::flat::transformer::merge_duplicate_transformer::base::BaseMerger;
 
@@ -11,7 +11,13 @@ impl BaseMerger for TraitDefDefaultImplMerger {
         base: &HirFlatFunction,
         overrider: &HirFlatFunction,
     ) -> Option<HirFlatFunction> {
-        todo!()
+        if let (HirFlatFunctionOwner::StructOrEnum { .. }, HirFlatFunctionOwner::TraitDef { .. }) =
+            (base.owner, overrider.owner)
+        {
+            Some(TODO)
+        } else {
+            None
+        }
     }
 
     fn merge_struct_or_enums<Item: SynItemStructOrEnum>(
