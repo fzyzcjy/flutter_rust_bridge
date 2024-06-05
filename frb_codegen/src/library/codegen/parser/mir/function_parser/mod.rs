@@ -161,6 +161,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         actual_method_dart_name: Option<String>,
     ) -> anyhow::Result<Option<MirFuncOwnerInfo>> {
         Ok(Some(match &func.owner {
+            HirFlatFunctionOwner::TraitDef { .. } => return Ok(None), // TODO not yet implemented
             HirFlatFunctionOwner::Function => MirFuncOwnerInfo::Function,
             HirFlatFunctionOwner::StructOrEnum {
                 impl_ty,
