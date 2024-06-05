@@ -6,5 +6,12 @@ pub(crate) fn parse_pack(
     config: &ParserHirInternalConfig,
     hir_raw: &HirRawPack,
 ) -> anyhow::Result<HirTreePack> {
-    Ok(TODO)
+    let crates = hir_raw
+        .crates
+        .iter()
+        .map(|c| parse_crate(config, &c.syn_file, &c.name))
+        .collect::<anyhow::Result<Vec<_>>>()?
+        .into_iter()
+        .collect();
+    Ok(HirTreePack { crates })
 }
