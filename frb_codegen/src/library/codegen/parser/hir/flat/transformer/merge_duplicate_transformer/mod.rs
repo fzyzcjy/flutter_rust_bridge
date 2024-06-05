@@ -63,7 +63,7 @@ fn transform_component_raw<T: Debug + Clone + Serialize, K: Eq + Hash + Debug>(
             if items_of_key.len() > 1 {
                 log::warn!(
                     "There are still multiple objects with same key after merging, \
-                    thus randomly pick one (key={key:?}, objects={:?})",
+                    thus randomly pick one (key={key:?}, objects={})",
                     (items_of_key.iter())
                         .map(|x| serde_json::to_string(x).unwrap())
                         .join(", "),
