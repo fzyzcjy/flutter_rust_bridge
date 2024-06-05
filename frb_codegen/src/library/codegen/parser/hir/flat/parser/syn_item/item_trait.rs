@@ -14,15 +14,11 @@ pub(crate) fn parse_syn_item_trait(
     meta: &HirTreeModuleMeta,
 ) {
     let trait_name = NamespacedName::new(namespace.clone(), item_trait.ident.to_string());
-
     target.traits.push(HirFlatTrait { name: trait_name });
-
-    target
-        .functions
-        .extend(parse_functions(item_trait, meta, &trait_name));
+    (target.functions).extend(parse_functions(item_trait, meta, &trait_name));
 }
 
-fn parse_trait_def_functions(
+fn parse_functions(
     item_trait: ItemTrait,
     meta: &HirTreeModuleMeta,
     trait_def_name: &NamespacedName,
