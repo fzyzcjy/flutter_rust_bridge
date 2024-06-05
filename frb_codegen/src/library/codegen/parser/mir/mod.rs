@@ -1,6 +1,5 @@
 pub(crate) mod attribute_parser;
 mod auto_accessor_parser;
-mod existing_handler;
 mod file_reader;
 pub(crate) mod function_parser;
 pub(crate) mod internal_config;

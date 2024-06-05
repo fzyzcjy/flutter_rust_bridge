@@ -5,7 +5,7 @@ use anyhow::ensure;
 use itertools::Itertools;
 use crate::codegen::ir::hir::tree::module::HirTreeModule;
 
-pub(super) fn parse_existing_handlers(
+pub(super) fn parse_existing_handler(
     modules: &[&HirTreeModule],
     rust_input_namespace_pack: &RustInputNamespacePack,
 ) -> anyhow::Result<Vec<NamespacedName>> {
@@ -24,7 +24,7 @@ pub(super) fn parse_existing_handlers(
         existing_handlers.iter().map(|x| x.rust_style()).join(", ")
     );
     // frb-coverage:ignore-end
-    Ok(existing_handlers)
+    Ok(existing_handlers.first())
 }
 
 fn parse_has_executor(code: &str) -> bool {

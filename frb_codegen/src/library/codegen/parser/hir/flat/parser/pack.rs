@@ -10,9 +10,14 @@ pub(crate) fn parse_pack(
     let items = super::flattener::flatten(hir_tree)?;
     let items = super::visibility_filter::filter_visible_modules(items);
 
-    let mut pack = HirFlatPack::default();
+    let mut pack = HirFlatPack {
+        existing_handler: super::existing_handler::parse_existing_handler(),
+        ..HirFlatPack::default()
+    };
+
     for item in items {
         parse_syn_item(item.item, &item.meta, &mut pack, config)?;
     }
+
     Ok(pack)
 }
