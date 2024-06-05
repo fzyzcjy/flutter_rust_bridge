@@ -1,9 +1,10 @@
 use crate::codegen::dumper::Dumper;
-use crate::codegen::ir::hir::tree::pack::HirPack;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::ConfigDumpContent;
+use crate::codegen::ir::hir::flat::pack::HirFlatPack;
+use crate::codegen::ir::hir::tree::pack::HirTreePack;
 
 pub(crate) mod hir;
 pub(crate) mod internal_config;
@@ -21,7 +22,7 @@ fn parse_inner(
     config: &ParserInternalConfig,
     dumper: &Dumper,
     progress_bar_pack: &GeneratorProgressBarPack,
-    on_hir: impl FnOnce(&HirPack) -> anyhow::Result<()>,
+    on_hir: impl FnOnce(&HirFlatPack) -> anyhow::Result<()>,
 ) -> anyhow::Result<MirPack> {
     let pb = progress_bar_pack.parse_hir_raw.start();
     let hir_raw = hir::raw::parse(&config.hir, dumper)?;
@@ -30,7 +31,7 @@ fn parse_inner(
     let pb = progress_bar_pack.parse_hir_primary.start();
     let hir_tree = hir::tree::parse(&config.hir, &hir_raw)?;
     let hir_flat = hir::flat::parse(&config.hir, &hir_tree)?;
-    on_hir(&hir_tree)?;
+    on_hir(&hir_flat)?;
     dumper.dump(ConfigDumpContent::Hir, "hir_tree.json", &hir_tree)?;
     dumper.dump(ConfigDumpContent::Hir, "hir_flat.json", &hir_flat)?;
     drop(pb);
@@ -170,10 +171,10 @@ mod tests {
             &config,
             &Dumper(&Default::default()),
             &GeneratorProgressBarPack::new(),
-            |hir_tree| {
+            |hir_flat| {
                 json_golden_test(
-                    &serde_json::to_value(hir_tree).unwrap(),
-                    &rust_crate_dir.join("expect_hir_tree.json"),
+                    &serde_json::to_value(hir_flat).unwrap(),
+                    &rust_crate_dir.join("expect_hir_flat.json"),
                     &create_path_sanitizers(&test_fixture_dir),
                 )
             },
