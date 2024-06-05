@@ -1,6 +1,6 @@
+use itertools::Itertools;
 use std::fmt::Debug;
 use std::hash::Hash;
-use itertools::Itertools;
 
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 
@@ -32,7 +32,7 @@ pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
     Ok(pack)
 }
 
-fn transform_component<T: Debug + Clone, K: Eq + Hash>(
+fn transform_component<T: Debug + Clone, K: Eq + Hash + Debug>(
     items: &mut Vec<T>,
     key: impl Fn(&T) -> K,
     merge: impl Fn(&dyn BaseMerger, &T, &T) -> Option<T>,
@@ -40,7 +40,7 @@ fn transform_component<T: Debug + Clone, K: Eq + Hash>(
     *items = transform_component_raw(items.drain(..).collect_vec(), key, merge);
 }
 
-fn transform_component_raw<T: Debug + Clone, K: Eq + Hash>(
+fn transform_component_raw<T: Debug + Clone, K: Eq + Hash + Debug>(
     items: Vec<T>,
     key: impl Fn(&T) -> K,
     merge: impl Fn(&dyn BaseMerger, &T, &T) -> Option<T>,
