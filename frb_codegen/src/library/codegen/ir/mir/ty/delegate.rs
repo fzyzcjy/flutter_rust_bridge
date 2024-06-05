@@ -83,7 +83,9 @@ pub struct MirTypeDelegateRustAutoOpaqueExplicit {
     pub raw: MirRustAutoOpaqueRaw,
 }
 
-pub struct MirTypeDelegateDynTrait {}
+pub struct MirTypeDelegateDynTrait {
+    pub inner: MirTypeEnumRef,
+}
 }
 
 impl MirTypeTrait for MirTypeDelegate {
