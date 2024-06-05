@@ -5,6 +5,7 @@ use proc_macro2::Span;
 use serde::{Serialize, Serializer};
 use syn::spanned::Spanned;
 use syn::{Attribute, ImplItemFn, ItemFn, ItemImpl, Signature, TraitItemFn, Visibility};
+use crate::codegen::ir::hir::misc::item_fn::GeneralizedItemFn;
 
 #[derive(Debug, Clone, Serialize)]
 pub(crate) struct HirFlatFunction {
