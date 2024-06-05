@@ -92,7 +92,11 @@ fn transform_module_by_pub_use_single(
         let self_namespace = &module.meta.namespace;
 
         let src_mod_interest_items = (src_mod.items.iter())
-            .filter(|x| pub_use_info.is_interest_name(&x.name_for_use_stmt().to_string()))
+            .filter(|x| {
+                let name = name_for_use_stmt(x);
+                name.map(|name| pub_use_info.is_interest_name(name))
+                    .unwrap_or_default()
+            })
             .cloned()
             .collect_vec();
 
@@ -104,4 +108,15 @@ fn transform_module_by_pub_use_single(
     }
 
     Ok(())
+}
+
+fn name_for_use_stmt(item: &syn::Item) -> Option<String> {
+    match item {
+        syn::Item::Struct(x) => Some(x.ident.to_string()),
+        syn::Item::Enum(x) => Some(x.ident.to_string()),
+        syn::Item::Type(x) => Some(x.ident.to_string()),
+        syn::Item::Fn(x) => Some(x.sig.ident.to_string()),
+        syn::Item::Trait(x) => Some(x.ident.to_string()),
+        syn::Item::Impl(x) | _ => None,
+    }
 }
