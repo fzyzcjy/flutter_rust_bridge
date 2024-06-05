@@ -9,9 +9,9 @@ pub(crate) mod reader;
 pub(crate) mod sanity_checker;
 pub(crate) mod type_parser;
 
-use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatStruct;
 use crate::codegen::ir::hir::flat::function::HirFlatFunction;
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
+use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatStruct;
 use crate::codegen::ir::mir::func::MirFunc;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::ir::mir::skip::MirSkip;
@@ -30,9 +30,9 @@ pub(crate) fn parse(
     hir_flat: &HirFlatPack,
 ) -> anyhow::Result<MirPack> {
     let mut type_parser = TypeParser::new(
-        hir_flat.structs.clone(),
-        hir_flat.enums.clone(),
-        hir_flat.types.clone(),
+        hir_flat.structs_map(),
+        hir_flat.enums_map(),
+        hir_flat.types_map(),
     );
 
     let (mir_funcs, mir_skips) = parse_mir_funcs(
@@ -61,8 +61,8 @@ pub(crate) fn parse(
 
     ans.unused_types = get_unused_types(
         &ans,
-        &hir_flat.structs,
-        &hir_flat.enums,
+        &hir_flat.structs_map(),
+        &hir_flat.enums_map(),
         &config.rust_input_namespace_pack,
     )?;
 

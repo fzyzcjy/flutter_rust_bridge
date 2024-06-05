@@ -201,7 +201,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         impl_ty: &Type,
         context: &TypeParserParsingContext,
     ) -> anyhow::Result<Option<MirType>> {
-        let self_ty_path = if let Type::Path(self_ty_path) = impl_ty.as_ref() {
+        let self_ty_path = if let Type::Path(self_ty_path) = impl_ty {
             self_ty_path
         } else {
             return Ok(None);
