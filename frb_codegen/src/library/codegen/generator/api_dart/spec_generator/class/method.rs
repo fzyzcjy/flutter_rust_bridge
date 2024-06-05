@@ -104,7 +104,7 @@ fn generate_api_method(
         dart_class_name,
     );
 
-    let maybe_implementation = should_generate_implementation(method_info.mode, config)
+    let maybe_implementation = should_generate_implementation(method_info.mode.clone(), config)
         .then(|| generate_implementation(func, context, method_info, &params));
     let maybe_implementation = (maybe_implementation.map(|x| format!("=>{x}"))).unwrap_or_default();
 
