@@ -1,13 +1,10 @@
-pub(crate) mod parser;
-pub(crate) mod transformer;
-
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::hir::tree::pack::HirTreePack;
+use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 
-pub(crate) fn parse(
+pub(crate) fn parse_pack(
     config: &ParserHirInternalConfig,
     hir_tree: HirTreePack,
 ) -> anyhow::Result<HirFlatPack> {
-    let pack = parser::pack::parse_pack(config, hir_tree)?;
-    Ok(pack)
+    TODO
 }
