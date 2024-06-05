@@ -25,7 +25,7 @@ pub(crate) fn generate_api_methods(
 ) -> Vec<String> {
     get_methods_of_enum_or_struct(generalized_class_name, &context.mir_pack.funcs)
         .iter()
-        .filter_map(|func| generate_api_method(func, context, mode))
+        .filter_map(|func| generate_api_method(func, context, config))
         .collect_vec()
 }
 
@@ -69,7 +69,7 @@ fn generate_api_method(
         if_then_some!(let MirFuncOwnerInfo::Method(info) = &func.owner , info).unwrap();
 
     if method_info.mode == MirFuncOwnerInfoMethodMode::Static
-        && mode == GenerateApiMethodMode::SeparatedImpl
+        && config == GenerateApiMethodMode::SeparatedImpl
     {
         return None;
     }
@@ -91,11 +91,11 @@ fn generate_api_method(
         default_constructor_mode,
         &api_dart_func,
         &method_name,
-        mode,
+        config,
     );
 
     let maybe_implementation =
-        generate_maybe_implementation(func, context, method_info, &params, mode);
+        generate_maybe_implementation(func, context, method_info, &params, config);
     let maybe_implementation = (maybe_implementation.map(|x| format!("=>{x}"))).unwrap_or_default();
 
     Some(format!("{comments}{signature}{maybe_implementation};\n\n"))
@@ -156,7 +156,7 @@ fn generate_signature(
 
     if default_constructor_mode == Some(MirFuncDefaultConstructorMode::DartConstructor) {
         let owner_ty_name = method_info.owner_ty_name().unwrap().name;
-        let class_postfix = if mode == GenerateApiMethodMode::SeparatedImpl {
+        let class_postfix = if config == GenerateApiMethodMode::SeparatedImpl {
             "Impl"
         } else {
             ""
@@ -189,7 +189,7 @@ fn generate_maybe_implementation(
     params: &[ApiDartGeneratedFunctionParam],
     config: &GenerateApiMethodConfig,
 ) -> Option<String> {
-    match (mode, method_info.mode.to_owned()) {
+    match (config, method_info.mode.to_owned()) {
         (GenerateApiMethodMode::Combined, _)
         | (GenerateApiMethodMode::SeparatedDecl, MirFuncOwnerInfoMethodMode::Static)
         | (GenerateApiMethodMode::SeparatedImpl, MirFuncOwnerInfoMethodMode::Instance) => Some(
