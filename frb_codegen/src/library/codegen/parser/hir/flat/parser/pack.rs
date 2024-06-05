@@ -6,5 +6,6 @@ pub(crate) fn parse_pack(
     config: &ParserHirInternalConfig,
     hir_tree: HirTreePack,
 ) -> anyhow::Result<HirFlatPack> {
+    let items = super::flattener::flatten(hir_tree)?;
     TODO
 }
