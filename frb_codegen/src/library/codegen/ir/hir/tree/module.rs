@@ -8,6 +8,7 @@ use serde::Serialize;
 pub struct HirTreeModule {
     pub meta: HirTreeModuleMeta,
     pub modules: Vec<HirTreeModule>,
+    #[serde(skip_serializing)]
     pub items: Vec<syn::Item>,
 }
 

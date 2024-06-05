@@ -1,5 +1,6 @@
 use crate::codegen::ir::hir::tree::module::{HirTreeModule, HirTreeModuleMeta};
 use crate::codegen::ir::hir::tree::pack::HirTreePack;
+use sha1::digest::typenum::tarr;
 
 pub(crate) fn flatten(pack: HirTreePack) -> anyhow::Result<Vec<SynItemWithMeta>> {
     let mut ans = vec![];
@@ -16,7 +17,7 @@ fn flatten_module(module: HirTreeModule, target: &mut Vec<SynItemWithMeta>) {
     }));
 
     for child_module in module.modules {
-        flatten_module(child_module);
+        flatten_module(child_module, target);
     }
 }
 
