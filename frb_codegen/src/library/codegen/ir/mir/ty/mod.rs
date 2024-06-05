@@ -153,6 +153,7 @@ impl Serialize for MirType {
             }
             MirType::RustOpaque(inner) => ser::<S, _>(&mut state, "RustOpaque", inner),
             MirType::StructRef(inner) => ser::<S, _>(&mut state, "StructRef", inner),
+            MirType::TraitDef(inner) => ser::<S, _>(&mut state, "TraitDef", inner),
         }?;
 
         state.end()

@@ -49,7 +49,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                         MirTypeOptional::new(inner.clone())
                     }
                     // frb-coverage:ignore-start
-                    Optional(_) => unreachable!(),
+                    Optional(_) | MirType::TraitDef(_) => unreachable!(),
                     // frb-coverage:ignore-end
                 })
             }
