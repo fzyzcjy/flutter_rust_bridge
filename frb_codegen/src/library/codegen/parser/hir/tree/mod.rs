@@ -9,5 +9,7 @@ pub(crate) fn parse(
     config: &ParserHirInternalConfig,
     hir_raw: HirRawPack,
 ) -> anyhow::Result<HirTreePack> {
-    parser::pack::parse_pack(config, hir_raw)
+    let pack = parser::pack::parse_pack(config, hir_raw)?;
+    let pack = transformer::pub_use_transformer::transform(pack)?;
+    Ok(pack)
 }
