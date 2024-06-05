@@ -1,10 +1,22 @@
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
+use crate::codegen::ir::hir::flat::type_alias::HirFlatTypeAlias;
 use crate::codegen::parser::mir::type_parser::misc::convert_ident_str;
+use itertools::Itertools;
 use std::collections::HashMap;
 use syn::Type;
 use topological_sort::TopologicalSort;
 
 pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
+    let map_raw = (pack.type_alias.iter())
+        .map(|x| (x.ident.clone(), x.target.clone()))
+        .collect();
+    let map_transformed = resolve_type_aliases(map_raw);
+    let vec_transformed = (map_transformed.into_iter())
+        .map(|(ident, target)| HirFlatTypeAlias { ident, target })
+        .collect_vec();
+
+    *pack.type_alias = vec_transformed;
+
     Ok(pack)
 }
 
