@@ -1,20 +1,17 @@
+use crate::codegen::ir::hir::tree::module::HirTreeModule;
+use crate::codegen::parser::hir::flat::parser::flattener::SynItemWithMeta;
 use crate::codegen::parser::mir::internal_config::RustInputNamespacePack;
 use crate::library::misc::consts::HANDLER_NAME;
 use crate::utils::namespace::NamespacedName;
 use anyhow::ensure;
 use itertools::Itertools;
-use crate::codegen::ir::hir::tree::module::HirTreeModule;
 
 pub(super) fn parse_existing_handler(
-    modules: &[&HirTreeModule],
-    rust_input_namespace_pack: &RustInputNamespacePack,
+    items: &[SynItemWithMeta],
 ) -> anyhow::Result<Vec<NamespacedName>> {
-    let existing_handlers = (modules.iter())
-        .filter(|module| rust_input_namespace_pack.is_interest(&module.meta.namespace))
-        .filter(|module| module.raw.iter().any(|code| parse_has_executor(code)))
-        .map(|module| {
-            NamespacedName::new(module.meta.namespace.to_owned(), HANDLER_NAME.to_owned())
-        })
+    let existing_handlers = (items.iter())
+        .filter(|item| parse_has_executor(&item.item))
+        .map(|item| NamespacedName::new(item.meta.namespace.to_owned(), HANDLER_NAME.to_owned()))
         .collect_vec();
     ensure!(
         existing_handlers.len() <= 1,
@@ -27,6 +24,7 @@ pub(super) fn parse_existing_handler(
     Ok(existing_handlers.first())
 }
 
-fn parse_has_executor(code: &str) -> bool {
+fn parse_has_executor(item: &syn::Item) -> bool {
+    let code = quote::quote!(#item).to_string();
     code.contains(&format!("static {HANDLER_NAME}"))
 }
