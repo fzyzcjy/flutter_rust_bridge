@@ -36,11 +36,6 @@ pub(crate) fn parse(
     let (mir_funcs, mir_skips) =
         parse_mir_funcs(config, &hir_flat.functions, &mut type_parser, &structs_map)?;
 
-    let existing_handlers = existing_handler::parse_existing_handlers(
-        &hir_flat.modules,
-        &config.rust_input_namespace_pack,
-    )?;
-
     let (struct_pool, enum_pool, dart_code_of_type) = type_parser.consume();
 
     let mut ans = MirPack {
@@ -48,7 +43,7 @@ pub(crate) fn parse(
         struct_pool,
         enum_pool,
         dart_code_of_type,
-        existing_handler: existing_handlers.first().cloned(),
+        existing_handler: hir_flat.existing_handler.clone(),
         unused_types: vec![],
         skipped_functions: mir_skips,
     };
