@@ -14,9 +14,17 @@ pub(crate) mod trait_impl_merger;
 
 pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
     let merger = CombinedMerger(vec![TraitDefDefaultImplMerger, ThirdPartyOverrideMerger]);
-    transform_component(&mut pack.functions, |x| merger.merge_functions(x));
-    transform_component(&mut pack.structs, |x| merger.merge_struct_or_enums(x));
-    transform_component(&mut pack.enums, |x| merger.merge_struct_or_enums(x));
+    transform_component(&mut pack.functions, |x| TODO, |x| merger.merge_functions(x));
+    transform_component(
+        &mut pack.structs,
+        |x| TODO,
+        |x| merger.merge_struct_or_enums(x),
+    );
+    transform_component(
+        &mut pack.enums,
+        |x| TODO,
+        |x| merger.merge_struct_or_enums(x),
+    );
     Ok(pack)
 }
 
