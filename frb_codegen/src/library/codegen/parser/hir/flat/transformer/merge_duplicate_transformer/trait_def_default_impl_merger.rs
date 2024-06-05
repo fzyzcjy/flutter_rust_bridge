@@ -1,6 +1,8 @@
-use crate::codegen::ir::hir::misc::syn_item_struct_or_enum::SynItemStructOrEnum;
 use crate::codegen::ir::hir::flat::function::{HirFlatFunction, HirFlatFunctionOwner};
-use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatStructOrEnum;
+use crate::codegen::ir::hir::flat::struct_or_enum::{
+    HirFlatEnum, HirFlatStruct, HirFlatStructOrEnum,
+};
+use crate::codegen::ir::hir::misc::syn_item_struct_or_enum::SynItemStructOrEnum;
 use crate::codegen::parser::hir::flat::transformer::merge_duplicate_transformer::base::BaseMerger;
 
 /// Merge the "default implementation in trait definition" with the overriden implementation in trait impl.
@@ -21,11 +23,15 @@ impl BaseMerger for TraitDefDefaultImplMerger {
         }
     }
 
-    fn merge_struct_or_enums<Item: SynItemStructOrEnum>(
+    fn merge_structs(
         &self,
-        base: &HirFlatStructOrEnum<Item>,
-        overrider: &HirFlatStructOrEnum<Item>,
-    ) -> Option<HirFlatStructOrEnum<Item>> {
+        base: &HirFlatStruct,
+        overrider: &HirFlatStruct,
+    ) -> Option<HirFlatStruct> {
+        None
+    }
+
+    fn merge_enums(&self, base: &HirFlatEnum, overrider: &HirFlatEnum) -> Option<HirFlatEnum> {
         None
     }
 }

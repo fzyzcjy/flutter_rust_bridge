@@ -1,6 +1,8 @@
-use crate::codegen::ir::hir::misc::syn_item_struct_or_enum::SynItemStructOrEnum;
 use crate::codegen::ir::hir::flat::function::HirFlatFunction;
-use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatStructOrEnum;
+use crate::codegen::ir::hir::flat::struct_or_enum::{
+    HirFlatEnum, HirFlatStruct, HirFlatStructOrEnum,
+};
+use crate::codegen::ir::hir::misc::syn_item_struct_or_enum::SynItemStructOrEnum;
 use crate::codegen::misc::THIRD_PARTY_DIR_NAME;
 use crate::codegen::parser::hir::flat::transformer::merge_duplicate_transformer::base::BaseMerger;
 use crate::utils::crate_name::CrateName;
@@ -21,11 +23,17 @@ impl BaseMerger for ThirdPartyOverrideMerger {
         })
     }
 
-    fn merge_struct_or_enums<Item: SynItemStructOrEnum>(
+    fn merge_structs(
         &self,
-        base: &HirFlatStructOrEnum<Item>,
-        overrider: &HirFlatStructOrEnum<Item>,
-    ) -> Option<HirFlatStructOrEnum<Item>> {
+        base: &HirFlatStruct,
+        overrider: &HirFlatStruct,
+    ) -> Option<HirFlatStruct> {
+        merge_core(base, overrider, &overrider.name.namespace, |ans| {
+            ans.src.attrs_mut().extend(overrider.src.attrs().to_owned());
+        })
+    }
+
+    fn merge_enums(&self, base: &HirFlatEnum, overrider: &HirFlatEnum) -> Option<HirFlatEnum> {
         merge_core(base, overrider, &overrider.name.namespace, |ans| {
             ans.src.attrs_mut().extend(overrider.src.attrs().to_owned());
         })
