@@ -34,11 +34,11 @@ pub(crate) mod rust_auto_opaque_implicit;
 mod rust_opaque;
 pub(crate) mod slice;
 pub(crate) mod structure;
+mod trait_impl;
 pub(crate) mod trait_object;
 pub(crate) mod tuple;
 pub(crate) mod ty;
 pub(crate) mod unencodable;
-mod trait_impl;
 
 pub(crate) struct TypeParser<'a> {
     src_structs: HashMap<String, &'a HirStruct>,
