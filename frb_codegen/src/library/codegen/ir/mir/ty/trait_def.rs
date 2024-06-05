@@ -17,7 +17,7 @@ impl MirTypeTrait for MirTypeTraitDef {
     }
 
     fn safe_ident(&self) -> String {
-        format!("TraitDef_{}", self.name)
+        format!("TraitDef_{}", self.name.name)
     }
 
     fn rust_api_type(&self) -> String {
