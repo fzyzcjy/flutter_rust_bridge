@@ -29,18 +29,12 @@ pub(crate) fn parse(
     config: &ParserMirInternalConfig,
     hir_flat: &HirFlatPack,
 ) -> anyhow::Result<MirPack> {
-    let mut type_parser = TypeParser::new(
-        hir_flat.structs_map(),
-        hir_flat.enums_map(),
-        hir_flat.types_map(),
-    );
+    let structs_map = hir_flat.structs_map();
+    let enums_map = hir_flat.enums_map();
+    let mut type_parser = TypeParser::new(structs_map, enums_map, hir_flat.types_map());
 
-    let (mir_funcs, mir_skips) = parse_mir_funcs(
-        config,
-        &hir_flat.functions,
-        &mut type_parser,
-        &hir_flat.structs,
-    )?;
+    let (mir_funcs, mir_skips) =
+        parse_mir_funcs(config, &hir_flat.functions, &mut type_parser, &structs_map)?;
 
     let existing_handlers = existing_handler::parse_existing_handlers(
         &hir_flat.modules,
@@ -61,8 +55,8 @@ pub(crate) fn parse(
 
     ans.unused_types = get_unused_types(
         &ans,
-        &hir_flat.structs_map(),
-        &hir_flat.enums_map(),
+        &structs_map,
+        &enums_map,
         &config.rust_input_namespace_pack,
     )?;
 

@@ -33,7 +33,7 @@ fn parse_functions(
     trait_def_name: &Option<String>,
 ) -> Vec<HirFlatFunction> {
     (item_impl.items.into_iter())
-        .filter_map(|item| if_then_some!(let ImplItem::Fn(ref impl_item_fn) = item, impl_item_fn))
+        .filter_map(|item| if_then_some!(let ImplItem::Fn(impl_item_fn) = item, impl_item_fn))
         .map(|impl_item_fn| HirFlatFunction {
             namespace: meta.namespace.clone(),
             owner: HirFlatFunctionOwner::StructOrEnum {
@@ -48,6 +48,6 @@ fn parse_functions(
 fn parse_trait_impl(item_impl: &ItemImpl, trait_name: &str) -> HirFlatTraitImpl {
     HirFlatTraitImpl {
         trait_name: trait_name.to_owned(),
-        impl_ty: item_impl.self_ty.clone(),
+        impl_ty: *item_impl.self_ty.clone(),
     }
 }

@@ -29,7 +29,7 @@ fn parse_functions(
         .map(|trait_item_fn| HirFlatFunction {
             namespace: meta.namespace.clone(),
             owner: HirFlatFunctionOwner::TraitDef {
-                trait_def_name: Some(trait_def_name.to_owned()),
+                trait_def_name: trait_def_name.to_owned(),
             },
             item_fn: GeneralizedItemFn::TraitItemFn(trait_item_fn),
         })

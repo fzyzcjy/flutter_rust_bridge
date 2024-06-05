@@ -93,6 +93,7 @@ fn transform_module_by_pub_use_single(
 
         let src_mod_interest_items = (src_mod.items.iter())
             .filter(|x| pub_use_info.is_interest_name(&x.name_for_use_stmt().to_string()))
+            .cloned()
             .collect_vec();
 
         module.items.extend(src_mod_interest_items);
