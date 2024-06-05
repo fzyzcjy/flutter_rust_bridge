@@ -4,11 +4,13 @@ use crate::codegen::generator::api_dart::spec_generator::class::method::{
 use crate::codegen::generator::api_dart::spec_generator::class::misc::generate_class_extra_body;
 use crate::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
+use crate::codegen::ir::mir::ty::delegate::MirTypeDelegateDynTrait;
 use crate::codegen::ir::mir::ty::rust_opaque::MirTypeRustOpaque;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::namespace::NamespacedName;
+use itertools::Itertools;
 use lazy_static::lazy_static;
 use regex::Regex;
 
@@ -24,13 +26,15 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
         let extra_body =
             generate_class_extra_body(self.mir_type(), &self.context.mir_pack.dart_code_of_type);
 
+        let maybe_impls = generate_maybe_impls(&self.mir.impl_traits);
+
         Some(ApiDartGeneratedClass {
             namespace: self.mir.namespace.clone(),
             class_name: dart_api_type.clone(),
             code: format!(
                 "
                 // Rust type: {rust_api_type}
-                abstract class {dart_api_type} {{
+                abstract class {dart_api_type}{maybe_impls} {{
                     {methods}
 
                     void dispose();
@@ -116,4 +120,13 @@ fn compute_api_method_query_name(
     }
 
     FILTER.replace_all(&mir.inner.0, "$1").to_string()
+}
+
+fn generate_maybe_impls(impl_traits: &[MirTypeDelegateDynTrait]) -> String {
+    if impl_traits.is_empty() {
+        return "".to_owned();
+    }
+
+    let combined_impls = (impl_traits.iter()).map(|t| t.name.name.clone()).join(", ");
+    format!("implements {}", combined_impls)
 }

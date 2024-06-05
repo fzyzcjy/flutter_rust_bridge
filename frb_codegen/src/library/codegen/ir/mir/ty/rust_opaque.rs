@@ -1,3 +1,4 @@
+use crate::codegen::ir::mir::ty::delegate::MirTypeDelegateDynTrait;
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::{MirContext, MirType, MirTypeTrait};
 use crate::utils::namespace::Namespace;
@@ -15,6 +16,7 @@ pub struct MirTypeRustOpaque {
     pub namespace: Namespace,
     pub inner: MirRustOpaqueInner,
     pub codec: RustOpaqueCodecMode,
+    pub impl_traits: Vec<MirTypeDelegateDynTrait>,
     pub brief_name: bool,
 }
 
