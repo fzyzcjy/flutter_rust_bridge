@@ -13,11 +13,6 @@ impl BaseMerger for ThirdPartyOverrideMerger {
         base: &HirFlatFunction,
         overrider: &HirFlatFunction,
     ) -> Option<HirFlatFunction> {
-        log::info!(
-            "hi merge_functions {} {}",
-            serde_json::to_string(base).unwrap(),
-            serde_json::to_string(overrider).unwrap()
-        );
         merge_core(base, &overrider.namespace, |ans| {
             (ans.item_fn.attrs_mut()).extend(overrider.item_fn.attrs().to_owned())
         })
