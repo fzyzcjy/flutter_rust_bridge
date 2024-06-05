@@ -1,7 +1,7 @@
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 use itertools::Itertools;
-use crate::codegen::misc::THIRD_PARTY_NAMESPACE;
+use crate::codegen::misc::SELF_CRATE_THIRD_PARTY_NAMESPACE;
 
 pub(crate) fn transform(
     mut pack: HirFlatPack,
