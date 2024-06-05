@@ -87,7 +87,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         field_ident: &Option<Ident>,
     ) -> anyhow::Result<MirVariantKind> {
         let variant_ident = variant.ident.to_string();
-        let enum_name = &src_enum.namespaced_name;
+        let enum_name = &src_enum.name;
         let variant_namespace = enum_name.namespace.join(&enum_name.name);
         let attributes = FrbAttributes::parse(attrs)?;
         Ok(MirVariantKind::Struct(MirStruct {

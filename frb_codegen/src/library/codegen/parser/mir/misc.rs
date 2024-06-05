@@ -11,7 +11,7 @@ pub(crate) fn extract_src_types_in_paths<I: SynItemStructOrEnum>(
 ) -> anyhow::Result<Vec<NamespacedName>> {
     Ok((src_items.iter())
         .filter_map(|(k, v)| {
-            let namespace = &v.namespaced_name.namespace;
+            let namespace = &v.name.namespace;
             if rust_input_namespace_pack.is_interest(namespace) {
                 Some(NamespacedName::new(namespace.to_owned(), k.to_owned()))
             } else {

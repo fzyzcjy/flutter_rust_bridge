@@ -18,7 +18,7 @@ pub struct HirStructOrEnum<Item: SynItemStructOrEnum> {
     #[serde(skip_serializing)]
     pub(crate) src: Item,
     pub(crate) visibility: HirVisibility,
-    pub(crate) namespaced_name: NamespacedName,
+    pub(crate) name: NamespacedName,
     pub(crate) mirror: bool,
 }
 // frb-coverage:ignore-end
@@ -29,7 +29,7 @@ pub type HirEnum = HirStructOrEnum<ItemEnum>;
 impl<Item: SynItemStructOrEnum> HirCommon for HirStructOrEnum<Item> {
     fn with_namespace(&self, namespace: Namespace) -> Self {
         Self {
-            namespaced_name: NamespacedName::new(namespace, self.namespaced_name.name.clone()),
+            name: NamespacedName::new(namespace, self.name.name.clone()),
             ..self.to_owned()
         }
     }
