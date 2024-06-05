@@ -30,14 +30,14 @@ fn parse_trait_name(item_impl: &ItemImpl) -> Option<String> {
 fn parse_functions(
     item_impl: ItemImpl,
     meta: &HirTreeModuleMeta,
-    trait_def_name: Option<NamespacedName>,
+    trait_def_name: &Option<String>,
 ) -> Vec<HirFlatFunction> {
     (item_impl.items.into_iter())
         .filter_map(|item| if_then_some!(let ImplItem::Fn(ref impl_item_fn) = item, impl_item_fn))
         .map(|impl_item_fn| HirFlatFunction {
             namespace: meta.namespace.clone(),
             owner: HirFlatFunctionOwner::StructOrEnum {
-                impl_ty: item_impl.self_ty.clone(),
+                impl_ty: *item_impl.self_ty.clone(),
                 trait_def_name: trait_def_name.clone(),
             },
             item_fn: GeneralizedItemFn::ImplItemFn(impl_item_fn),
