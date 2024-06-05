@@ -1,13 +1,13 @@
-pub(crate) mod syn_item_fn;
-pub(crate) mod syn_item_struct_or_enum;
-pub(crate) mod syn_item_type;
+pub(crate) mod item_fn;
+pub(crate) mod item_struct_or_enum;
+pub(crate) mod item_type;
 
 use crate::codegen::ir::hir::tree::module::HirTreeModuleMeta;
-use crate::codegen::parser::hir::flat::parser::syn_item::syn_item_fn::parse_syn_item_fn;
-use crate::codegen::parser::hir::flat::parser::syn_item::syn_item_struct_or_enum::{
+use crate::codegen::parser::hir::flat::parser::syn_item::item_fn::parse_syn_item_fn;
+use crate::codegen::parser::hir::flat::parser::syn_item::item_struct_or_enum::{
     parse_syn_item_enum, parse_syn_item_struct,
 };
-use crate::codegen::parser::hir::flat::parser::syn_item::syn_item_type::parse_syn_item_type;
+use crate::codegen::parser::hir::flat::parser::syn_item::item_type::parse_syn_item_type;
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 use crate::utils::namespace::Namespace;
 
