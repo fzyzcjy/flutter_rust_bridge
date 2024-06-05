@@ -187,7 +187,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
                 let trait_def_namespaced_name = if let Some(trait_def_name) = trait_def_name {
                     if let Some(ans) = self.type_parser.src_traits.get(trait_def_name) {
-                        ans
+                        Some(ans.name.clone())
                     } else {
                         return Ok(None);
                     }
