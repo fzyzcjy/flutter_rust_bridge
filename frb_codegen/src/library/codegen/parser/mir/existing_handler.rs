@@ -3,9 +3,10 @@ use crate::library::misc::consts::HANDLER_NAME;
 use crate::utils::namespace::NamespacedName;
 use anyhow::ensure;
 use itertools::Itertools;
+use crate::codegen::ir::hir::tree::module::HirTreeModule;
 
 pub(super) fn parse_existing_handlers(
-    modules: &[&HirModule],
+    modules: &[&HirTreeModule],
     rust_input_namespace_pack: &RustInputNamespacePack,
 ) -> anyhow::Result<Vec<NamespacedName>> {
     let existing_handlers = (modules.iter())

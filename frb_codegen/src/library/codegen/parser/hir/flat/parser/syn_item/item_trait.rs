@@ -1,3 +1,4 @@
+use itertools::Itertools;
 use crate::codegen::ir::hir::misc::item_fn::GeneralizedItemFn;
 use crate::codegen::ir::hir::flat::function::{HirFlatFunction, HirFlatFunctionOwner};
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
@@ -13,7 +14,7 @@ pub(crate) fn parse_syn_item_trait(
     item_trait: ItemTrait,
     meta: &HirTreeModuleMeta,
 ) {
-    let trait_name = NamespacedName::new(namespace.clone(), item_trait.ident.to_string());
+    let trait_name = NamespacedName::new(meta.namespace.clone(), item_trait.ident.to_string());
     target.traits.push(HirFlatTrait { name: trait_name });
     (target.functions).extend(parse_functions(item_trait, meta, &trait_name));
 }

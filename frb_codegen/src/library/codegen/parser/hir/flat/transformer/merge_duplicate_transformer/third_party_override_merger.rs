@@ -32,15 +32,15 @@ impl BaseMerger for ThirdPartyOverrideMerger {
     }
 }
 
-fn merge_core<T>(
+fn merge_core<T: Clone>(
     base: &T,
     overrider: &T,
     overrider_namespace: &Namespace,
     writer: impl Fn(&mut T),
 ) -> Option<T> {
-    is_module_third_party(&namespace).then(|| {
+    is_module_third_party(overrider.namespace).then(|| {
         let mut ans = base.to_owned();
-        writer(ans);
+        writer(&mut ans);
         ans
     })
 }
