@@ -8,7 +8,7 @@ pub(crate) fn transform(mut pack: HirTreePack) -> anyhow::Result<HirTreePack> {
     Ok(pack)
 }
 
-fn transform_module(mut module: HirTreeModule, items: &[syn::Item]) -> anyhow::Result<HirTreeModule> {
+fn transform_module(module: &mut HirTreeModule, items: &[syn::Item]) -> anyhow::Result<()> {
     // Only apply to third party crate currently, since in self crate usually no need to care about this
     if module.meta.namespace.crate_name().is_self_crate() {
         return Ok(module);
