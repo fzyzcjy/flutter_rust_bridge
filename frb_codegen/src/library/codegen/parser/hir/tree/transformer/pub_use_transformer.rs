@@ -94,7 +94,7 @@ fn transform_module_by_pub_use_single(
         let src_mod_interest_items = (src_mod.items.iter())
             .filter(|x| {
                 pub_use_info.is_interest_name(
-                    name_for_use_stmt(x).unwrap_or(|| "NOT_EXIST_NAME".to_owned()),
+                    &name_for_use_stmt(x).unwrap_or_else(|| "NOT_EXIST_NAME".to_owned()),
                 )
             })
             .cloned()

@@ -61,7 +61,7 @@ pub(crate) fn parse(
 
 fn parse_mir_funcs(
     config: &ParserMirInternalConfig,
-    src_fns: &[&HirFlatFunction],
+    src_fns: &[HirFlatFunction],
     type_parser: &mut TypeParser,
     src_structs: &HashMap<String, &HirFlatStruct>,
 ) -> anyhow::Result<(Vec<MirFunc>, Vec<MirSkip>)> {

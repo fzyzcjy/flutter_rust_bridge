@@ -11,7 +11,7 @@ pub(crate) fn parse_pack(
     let items = super::visibility_filter::filter_visible_modules(items);
 
     let mut pack = HirFlatPack {
-        existing_handler: super::existing_handler::parse_existing_handler(&items),
+        existing_handler: super::existing_handler::parse_existing_handler(&items)?,
         ..HirFlatPack::default()
     };
 
