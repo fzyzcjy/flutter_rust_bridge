@@ -1,6 +1,5 @@
 use std::fmt::Debug;
 use std::hash::Hash;
-use clap::builder::TypedValueParser;
 use itertools::Itertools;
 
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
