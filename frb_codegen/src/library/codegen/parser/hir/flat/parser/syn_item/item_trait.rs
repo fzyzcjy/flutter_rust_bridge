@@ -1,4 +1,4 @@
-use crate::codegen::ir::hir::flat::function::{HirFlatFunction, HirFlatFunctionOwner};
+use crate::codegen::ir::hir::flat::function::{HirFlatFunction, HirFlatFunctionOwner, HirFlatFunctionSource};
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::hir::flat::traits::HirFlatTrait;
 use crate::codegen::ir::hir::misc::item_fn::GeneralizedItemFn;
@@ -34,6 +34,7 @@ fn parse_functions(
                 trait_def_name: trait_def_name.to_owned(),
             },
             item_fn: GeneralizedItemFn::TraitItemFn(trait_item_fn),
+            source: HirFlatFunctionSource::Normal,
         })
         .collect_vec()
 }
