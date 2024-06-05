@@ -11,6 +11,14 @@ pub(crate) trait BaseMerger {
         overrider: &HirFlatFunction,
     ) -> Option<HirFlatFunction>;
 
+    fn merge_struct_or_enums<Item: SynItemStructOrEnum>(
+        &self,
+        base: &HirFlatStructOrEnum<Item>,
+        overrider: &HirFlatStructOrEnum<Item>,
+    ) -> Option<HirFlatStructOrEnum<Item>>;
+}
+
+pub(crate) trait DynAbleMerger: BaseMerger {
     fn merge_structs(
         &self,
         base: &HirFlatStruct,
@@ -22,10 +30,6 @@ pub(crate) trait BaseMerger {
     fn merge_enums(&self, base: &HirFlatEnum, overrider: &HirFlatEnum) -> Option<HirFlatEnum> {
         self.merge_struct_or_enums(base, overrider)
     }
-
-    fn merge_struct_or_enums<Item: SynItemStructOrEnum>(
-        &self,
-        base: &HirFlatStructOrEnum<Item>,
-        overrider: &HirFlatStructOrEnum<Item>,
-    ) -> Option<HirFlatStructOrEnum<Item>>;
 }
+
+impl<T: BaseMerger> DynAbleMerger for T {}
