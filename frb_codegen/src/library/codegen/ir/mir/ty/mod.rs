@@ -42,6 +42,7 @@ pub enum MirType {
     RustAutoOpaqueImplicit(rust_auto_opaque_implicit::MirTypeRustAutoOpaqueImplicit),
     RustOpaque(rust_opaque::MirTypeRustOpaque),
     StructRef(structure::MirTypeStructRef),
+    TraitDef(trait_def::MirTypeTraitDef),
 }
 }
 
