@@ -9,9 +9,8 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'package:meta/meta.dart' as meta;
 part 'attribute.freezed.dart';
 
-// These types are ignored because they are not used by any `pub` functions: `IgnoredStructTwinNormal`, `StructWithOnlyIgnoredMethodTwinNormal`
-// These functions are ignored: `func_should_not_exist_in_dart_twin_normal`, `method_should_not_exist_in_dart_twin_normal`
-// These functions have error during generation (see debug logs for more details): `method_should_not_exist_in_dart_twin_normal`
+// These types are ignored because they are not used by any `pub` functions: `IgnoredStructTwinNormal`
+// These functions are ignored: `func_should_not_exist_in_dart_twin_normal`, `method_should_not_exist_in_dart_twin_normal`, `method_should_not_exist_in_dart_twin_normal`
 
 Future<void> handleCustomizedStructTwinNormal(
         {required CustomizedTwinNormal val}) =>

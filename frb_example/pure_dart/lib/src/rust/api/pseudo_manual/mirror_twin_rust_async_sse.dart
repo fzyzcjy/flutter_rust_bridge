@@ -6,9 +6,6 @@
 import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
 import '../mirror.dart';
-import 'mirror_twin_rust_async.dart';
-import 'mirror_twin_sse.dart';
-import 'mirror_twin_sync.dart';
 import 'mirror_twin_sync_sse.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
@@ -147,24 +144,6 @@ class AnotherTwinRustAsyncSse {
           a == other.a;
 }
 
-class ApplicationEnv {
-  final List<ApplicationEnvVar> vars;
-
-  const ApplicationEnv({
-    required this.vars,
-  });
-
-  @override
-  int get hashCode => vars.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ApplicationEnv &&
-          runtimeType == other.runtimeType &&
-          vars == other.vars;
-}
-
 class ContainsMirroredSubStructTwinRustAsyncSse {
   final RawStringMirrored test;
   final AnotherTwinRustAsyncSse test2;
@@ -211,40 +190,4 @@ class MirrorStructTwinRustAsyncSse {
           b == other.b &&
           c == other.c &&
           d == other.d;
-}
-
-class NestedRawStringMirrored {
-  final RawStringMirrored raw;
-
-  const NestedRawStringMirrored({
-    required this.raw,
-  });
-
-  @override
-  int get hashCode => raw.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is NestedRawStringMirrored &&
-          runtimeType == other.runtimeType &&
-          raw == other.raw;
-}
-
-class Sequences {
-  final Int32List field0;
-
-  const Sequences({
-    required this.field0,
-  });
-
-  @override
-  int get hashCode => field0.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Sequences &&
-          runtimeType == other.runtimeType &&
-          field0 == other.field0;
 }

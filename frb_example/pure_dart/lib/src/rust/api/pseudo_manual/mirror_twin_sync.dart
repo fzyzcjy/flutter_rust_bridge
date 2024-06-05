@@ -6,9 +6,6 @@
 import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
 import '../mirror.dart';
-import 'mirror_twin_rust_async.dart';
-import 'mirror_twin_rust_async_sse.dart';
-import 'mirror_twin_sse.dart';
 import 'mirror_twin_sync_sse.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
@@ -148,24 +145,6 @@ class ContainsMirroredSubStructTwinSync {
           runtimeType == other.runtimeType &&
           test == other.test &&
           test2 == other.test2;
-}
-
-class HashMapValue {
-  final String inner;
-
-  const HashMapValue({
-    required this.inner,
-  });
-
-  @override
-  int get hashCode => inner.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is HashMapValue &&
-          runtimeType == other.runtimeType &&
-          inner == other.inner;
 }
 
 class MirrorStructTwinSync {
