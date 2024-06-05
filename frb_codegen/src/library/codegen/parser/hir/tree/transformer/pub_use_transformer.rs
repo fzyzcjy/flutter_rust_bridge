@@ -93,9 +93,12 @@ fn transform_module_by_pub_use_single(
 
         let src_mod_interest_items = (src_mod.items.iter())
             .filter(|x| {
-                pub_use_info.is_interest_name(
-                    &name_for_use_stmt(x).unwrap_or_else(|| "NOT_EXIST_NAME".to_owned()),
-                )
+                let name_for_use_stmt =
+                    name_for_use_stmt(x).unwrap_or_else(|| "NOT_EXIST_NAME".to_owned());
+                let is_interest_name = pub_use_info.is_interest_name(&name_for_use_stmt);
+                let is_public_enough = is_public_enough(x).unwrap_or(true);
+
+                is_interest_name && is_public_enough
             })
             .cloned()
             .collect_vec();
@@ -111,12 +114,25 @@ fn transform_module_by_pub_use_single(
 }
 
 fn name_for_use_stmt(item: &syn::Item) -> Option<String> {
-    match item {
-        syn::Item::Struct(x) => Some(x.ident.to_string()),
-        syn::Item::Enum(x) => Some(x.ident.to_string()),
-        syn::Item::Type(x) => Some(x.ident.to_string()),
-        syn::Item::Fn(x) => Some(x.sig.ident.to_string()),
-        syn::Item::Trait(x) => Some(x.ident.to_string()),
-        syn::Item::Impl(_) | _ => None,
-    }
+    let ident = match item {
+        syn::Item::Struct(x) => &x.ident,
+        syn::Item::Enum(x) => &x.ident,
+        syn::Item::Type(x) => &x.ident,
+        syn::Item::Fn(x) => &x.sig.ident,
+        syn::Item::Trait(x) => &x.ident,
+        syn::Item::Impl(_) | _ => return None,
+    };
+    Ok(ident.to_string())
+}
+
+fn is_public_enough(item: &syn::Item) -> Option<bool> {
+    let vis = match item {
+        syn::Item::Struct(x) => &x.vis,
+        syn::Item::Enum(x) => &x.vis,
+        syn::Item::Type(x) => &x.vis,
+        syn::Item::Fn(x) => &x.vis,
+        syn::Item::Trait(x) => &x.vis,
+        syn::Item::Impl(_) | _ => return None,
+    };
+    Ok(matches!(vis, syn::Visibility::Public(_)))
 }
