@@ -25,13 +25,13 @@ impl BaseMerger for TraitDefDefaultImplMerger {
 
     fn merge_structs(
         &self,
-        base: &HirFlatStruct,
-        overrider: &HirFlatStruct,
+        _base: &HirFlatStruct,
+        _overrider: &HirFlatStruct,
     ) -> Option<HirFlatStruct> {
         None
     }
 
-    fn merge_enums(&self, base: &HirFlatEnum, overrider: &HirFlatEnum) -> Option<HirFlatEnum> {
+    fn merge_enums(&self, _base: &HirFlatEnum, _overrider: &HirFlatEnum) -> Option<HirFlatEnum> {
         None
     }
 }
