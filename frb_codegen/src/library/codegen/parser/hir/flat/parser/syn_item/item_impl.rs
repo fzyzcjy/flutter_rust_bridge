@@ -23,8 +23,7 @@ pub(crate) fn parse_syn_item_impl(
 
 fn parse_trait_name(item_impl: &ItemImpl) -> Option<String> {
     (item_impl.trait_.as_ref())
-        .map(|t| t.1)
-        .map(|t| t.segments.last().unwrap().ident.to_string())
+        .map(|t| t.1.segments.last().unwrap().ident.to_string())
 }
 
 fn parse_functions(
