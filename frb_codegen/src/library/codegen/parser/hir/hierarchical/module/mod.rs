@@ -1,4 +1,3 @@
-mod pub_use_transformer;
 mod syn_item;
 
 use crate::codegen::ir::hir::hierarchical::module::{HirModule, HirModuleContent, HirModuleMeta};
