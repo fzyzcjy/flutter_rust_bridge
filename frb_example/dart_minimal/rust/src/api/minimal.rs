@@ -10,19 +10,27 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 }
 
 // TODO temp demo
-#[frb(opaque)]
-pub struct MyStruct {}
-impl MyStruct {
-    pub fn f(&mut self, a: i32) -> i32 {
-        a
-    }
 
-    pub fn my_static_method() -> i32 {
+pub struct StructWithTraitTwinNormal {
+    pub value: i32,
+}
+
+pub trait SimpleTraitTwinNormal {
+    fn simple_trait_fn_twin_normal() -> Self;
+
+    fn simple_trait_fn_with_default_impl_twin_normal() -> i32 {
         42
     }
 
-    #[frb(sync)]
-    pub fn new() -> Self {
-        Self {}
+    fn simple_trait_fn_receiver_borrow_twin_normal(&self) -> i32;
+}
+
+impl SimpleTraitTwinNormal for StructWithTraitTwinNormal {
+    fn simple_trait_fn_twin_normal() -> Self {
+        StructWithTraitTwinNormal { value: 42 }
+    }
+
+    fn simple_trait_fn_receiver_borrow_twin_normal(&self) -> i32 {
+        self.value
     }
 }
