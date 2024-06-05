@@ -244,3 +244,9 @@ impl<'a> ApiDartGeneratorInfoTrait for StructRefApiDartGenerator<'a> {
         )
     }
 }
+
+impl<'a> ApiDartGeneratorInfoTrait for TraitDefApiDartGenerator<'a> {
+    fn dart_api_type(&self) -> String {
+        self.mir.name.to_string()
+    }
+}
