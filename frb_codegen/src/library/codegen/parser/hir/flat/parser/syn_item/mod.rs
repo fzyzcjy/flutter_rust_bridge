@@ -23,18 +23,12 @@ pub(crate) fn parse_syn_item(
     config: &ParserHirInternalConfig,
 ) -> anyhow::Result<()> {
     match item {
-        syn::Item::Struct(item_struct) => {
-            (target.structs).extend(parse_syn_item_struct(item_struct, meta)?);
-        }
-        syn::Item::Enum(item_enum) => {
-            (target.enums).extend(parse_syn_item_enum(item_enum, meta)?);
-        }
-        syn::Item::Type(item_type) => {
-            target.type_alias.extend(parse_syn_item_type(item_type));
-        }
-        syn::Item::Fn(item_fn) => target.functions.push(parse_syn_item_fn(item_fn, meta)),
-        syn::Item::Impl(item_impl) => parse_syn_item_impl(target, item_impl),
-        syn::Item::Trait(item_trait) => parse_syn_item_trait(target, item_trait),
+        syn::Item::Struct(x) => (target.structs).extend(parse_syn_item_struct(x, meta)?),
+        syn::Item::Enum(x) => (target.enums).extend(parse_syn_item_enum(x, meta)?),
+        syn::Item::Type(x) => target.type_alias.extend(parse_syn_item_type(x)),
+        syn::Item::Fn(x) => target.functions.push(parse_syn_item_fn(x, meta)),
+        syn::Item::Impl(x) => parse_syn_item_impl(target, x),
+        syn::Item::Trait(x) => parse_syn_item_trait(target, x),
         _ => {}
     }
     Ok(())
