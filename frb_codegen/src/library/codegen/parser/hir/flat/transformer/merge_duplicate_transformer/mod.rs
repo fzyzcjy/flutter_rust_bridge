@@ -1,3 +1,4 @@
+use std::fmt::Debug;
 use std::hash::Hash;
 use clap::builder::TypedValueParser;
 use itertools::Itertools;
@@ -32,7 +33,7 @@ pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
     Ok(pack)
 }
 
-fn transform_component<T, K: Eq + Hash>(
+fn transform_component<T: Debug, K: Eq + Hash>(
     items: &mut Vec<T>,
     key: impl Fn(&T) -> K,
     merge: impl Fn(&dyn BaseMerger, &T, &T) -> Option<T>,
@@ -40,7 +41,7 @@ fn transform_component<T, K: Eq + Hash>(
     *items = transform_component_raw(items, key, merge);
 }
 
-fn transform_component_raw<T, K: Eq + Hash>(
+fn transform_component_raw<T: Debug, K: Eq + Hash>(
     items: &Vec<T>,
     key: impl Fn(&T) -> K,
     merge: impl Fn(&dyn BaseMerger, &T, &T) -> Option<T>,
@@ -56,7 +57,7 @@ fn transform_component_raw<T, K: Eq + Hash>(
         .map(|(_key, items_of_key)| {
             let mut items_of_key = items_of_key.collect_vec();
             for merger in &mergers {
-                *items_of_key = merge_vec_by_pair(items_of_key, |a, b| merge(&*merger, a, b));
+                items_of_key = merge_vec_by_pair(items_of_key, |a, b| merge(&*merger, a, b));
             }
             assert!(!items_of_key.is_empty());
 
@@ -73,7 +74,7 @@ fn transform_component_raw<T, K: Eq + Hash>(
         .collect_vec()
 }
 
-fn merge_vec_by_pair<T>(mut vec: Vec<T>, merger: impl Fn(T, T) -> Option<T>) -> Vec<T> {
+fn merge_vec_by_pair<T>(mut vec: Vec<T>, merger: impl Fn(&T, &T) -> Option<T>) -> Vec<T> {
     let act_one_round = || {
         // merge(i,j) may be different from merge(j,i)
         for i in 0..vec.len() {
@@ -84,8 +85,8 @@ fn merge_vec_by_pair<T>(mut vec: Vec<T>, merger: impl Fn(T, T) -> Option<T>) -> 
 
                 if let Some(merged) = merger(vec[i], vec[j]) {
                     // super slow but seems not like a bottleneck so ok
-                    *vec = (vec.into_iter().enumerate())
-                        .filter(|(item_index, _)| item_index != i && item_index != j)
+                    vec = (vec.into_iter().enumerate())
+                        .filter(|(item_index, _)| *item_index != i && *item_index != j)
                         .map(|(_, value)| value)
                         .collect_vec();
                     vec.push(merged);
