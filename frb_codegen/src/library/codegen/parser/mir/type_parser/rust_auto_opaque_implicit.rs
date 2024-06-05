@@ -64,6 +64,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                     "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<{inner_str}>"
                 )),
                 codec: info.codec,
+                impl_traits: TODO,
                 brief_name: true,
             },
         ))

@@ -47,12 +47,14 @@ impl MirTypeRustOpaque {
         namespace: Namespace,
         inner: MirRustOpaqueInner,
         codec: RustOpaqueCodecMode,
+        impl_traits: Vec<MirTypeDelegateDynTrait>,
         brief_name: bool,
     ) -> Self {
         Self {
             namespace,
             inner,
             codec,
+            impl_traits,
             brief_name,
         }
     }

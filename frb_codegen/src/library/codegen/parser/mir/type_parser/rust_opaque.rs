@@ -40,6 +40,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             info.namespace,
             MirRustOpaqueInner(ty_str),
             info.codec,
+            TODO,
             false,
         ))
     }

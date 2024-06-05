@@ -58,6 +58,7 @@ mod tests {
             namespace: Namespace::new_raw("".to_owned()),
             inner: MirRustOpaqueInner("".to_owned()),
             codec: RustOpaqueCodecMode::Nom,
+            impl_traits: vec![],
             brief_name: true,
         })
         .cloned_getter_semantics_reasonable());
