@@ -14,8 +14,6 @@ use syn::{ItemEnum, ItemStruct};
 #[derive(Clone, Derivative, Serialize)]
 #[derivative(Debug)]
 pub struct HirStructOrEnum<Item: SynItemStructOrEnum> {
-    #[serde(serialize_with = "serialize_syn")]
-    pub(crate) ident: Ident,
     #[derivative(Debug = "ignore")]
     #[serde(skip_serializing)]
     pub(crate) src: Item,
