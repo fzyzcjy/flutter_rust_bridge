@@ -13,7 +13,7 @@ pub(crate) fn parse_syn_item_impl(
     target: &mut HirFlatPack,
     item_impl: ItemImpl,
     meta: &HirTreeModuleMeta,
-) -> anyhow::Result<TODO> {
+) {
     let trait_name = parse_trait_name(&item_impl);
 
     (target.functions).extend(parse_functions(item_impl, meta, &trait_name));
