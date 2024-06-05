@@ -42,7 +42,7 @@ pub(crate) enum HirFlatFunctionOwner {
     StructOrEnum {
         #[serde(serialize_with = "serialize_syn")]
         impl_ty: syn::Type,
-        trait_def_name: Option<NamespacedName>,
+        trait_def_name: Option<String>,
     },
     TraitDef {
         trait_def_name: NamespacedName,
