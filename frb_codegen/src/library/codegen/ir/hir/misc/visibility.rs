@@ -7,3 +7,13 @@ pub enum HirVisibility {
     Restricted,
     Inherited, // Usually means private
 }
+
+impl From<&syn::Visibility> for HirVisibility {
+    fn from(value: &syn::Visibility) -> Self {
+        match value {
+            syn::Visibility::Public(_) => HirVisibility::Public,
+            syn::Visibility::Restricted(_) => HirVisibility::Restricted,
+            syn::Visibility::Inherited => HirVisibility::Inherited,
+        }
+    }
+}
