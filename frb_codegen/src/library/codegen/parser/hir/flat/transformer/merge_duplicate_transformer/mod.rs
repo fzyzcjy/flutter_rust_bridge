@@ -66,3 +66,7 @@ fn transform_component_raw<T, K: Eq + Hash>(
         })
         .collect_vec()
 }
+
+fn merge_vec_by_pair<T>(vec: Vec<T>, merger: impl Fn(T, T) -> Option<T>) -> Vec<T> {
+    TODO
+}
