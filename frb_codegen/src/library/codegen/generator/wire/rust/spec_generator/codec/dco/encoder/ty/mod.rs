@@ -12,6 +12,7 @@ mod record;
 mod rust_auto_opaque_implicit;
 mod rust_opaque;
 mod structure;
+mod trait_def;
 
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::base::*;
 use enum_dispatch::enum_dispatch;
