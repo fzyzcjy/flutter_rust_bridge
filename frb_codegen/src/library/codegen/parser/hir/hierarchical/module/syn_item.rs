@@ -50,24 +50,25 @@ pub(super) fn parse_syn_item(
     Ok(())
 }
 
-fn parse_syn_item_mod(
-    item_mod: &ItemMod,
-    namespace: &Namespace,
-    config: &ParserHirInternalConfig,
-    parent_vis: &[HirVisibility],
-) -> anyhow::Result<Option<HirModule>> {
-    Ok(if let Some((_, items)) = &item_mod.content {
-        let info = HirModuleMeta {
-            parent_vis: parent_vis.to_owned(),
-            vis: (&item_mod.vis).into(),
-            namespace: namespace.join(&item_mod.ident.to_string()),
-        };
-        Some(parse_module(
-            items, info,
-            config,
-            // cumulated_visibility_pub && matches!(item_mod.vis, syn::Visibility::Public(_)),
-        )?)
-    } else {
-        None
-    })
-}
+// moved
+// fn parse_syn_item_mod(
+//     item_mod: &ItemMod,
+//     namespace: &Namespace,
+//     config: &ParserHirInternalConfig,
+//     parent_vis: &[HirVisibility],
+// ) -> anyhow::Result<Option<HirModule>> {
+//     Ok(if let Some((_, items)) = &item_mod.content {
+//         let info = HirModuleMeta {
+//             parent_vis: parent_vis.to_owned(),
+//             vis: (&item_mod.vis).into(),
+//             namespace: namespace.join(&item_mod.ident.to_string()),
+//         };
+//         Some(parse_module(
+//             items, info,
+//             config,
+//             // cumulated_visibility_pub && matches!(item_mod.vis, syn::Visibility::Public(_)),
+//         )?)
+//     } else {
+//         None
+//     })
+// }

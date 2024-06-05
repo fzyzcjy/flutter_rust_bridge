@@ -2,6 +2,7 @@ use crate::utils::namespace::Namespace;
 use derivative::Derivative;
 use itertools::concat;
 use serde::Serialize;
+use crate::codegen::ir::hir::misc::HirVisibility;
 
 #[derive(Clone, Debug, Serialize)]
 pub struct HirTreeModule {
@@ -15,5 +16,7 @@ pub struct HirTreeModule {
 #[derive(Clone, Derivative, Serialize)]
 #[derivative(Debug)]
 pub struct HirTreeModuleMeta {
-    // TODO
+    pub parent_vis: Vec<HirVisibility>,
+    pub vis: HirVisibility,
+    pub namespace: Namespace,
 }
