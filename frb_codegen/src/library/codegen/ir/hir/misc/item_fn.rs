@@ -1,4 +1,5 @@
 use proc_macro2::Span;
+use serde::Serializer;
 use syn::spanned::Spanned;
 use syn::{Attribute, ImplItemFn, ItemFn, Signature, TraitItemFn, Visibility};
 
@@ -54,4 +55,11 @@ impl GeneralizedItemFn {
             Self::TraitItemFn(_) => None,
         }
     }
+}
+
+pub(crate) fn serialize_generalized_item_fn<S: Serializer>(
+    x: &GeneralizedItemFn,
+    s: S,
+) -> Result<S::Ok, S::Error> {
+    s.serialize_str(&format!("GeneralizedItemFn(name={})", x.name()))
 }
