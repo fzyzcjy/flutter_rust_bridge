@@ -2,7 +2,7 @@ use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::hir::flat::struct_or_enum::{HirFlatEnum, HirFlatStruct};
 use log::debug;
 use std::collections::HashMap;
-use std::fmt::Debug;
+use std::fmt::{Debug, Display};
 use std::hash::Hash;
 use syn::Type;
 
@@ -20,7 +20,7 @@ impl HirFlatPack {
     }
 }
 
-fn vec_to_map_with_warn<T, K: Eq + Hash, V>(
+fn vec_to_map_with_warn<T, K: Eq + Hash + Display, V: Debug>(
     items: &[T],
     extract_entry: impl Fn(&T) -> (K, V),
 ) -> HashMap<K, V> {

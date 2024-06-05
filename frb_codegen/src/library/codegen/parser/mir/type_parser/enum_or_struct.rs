@@ -158,7 +158,7 @@ fn compute_name_and_wrapper_name(
     name: &str,
     mirror: bool,
 ) -> (NamespacedName, Option<String>) {
-    let namespaced_name = NamespacedName::new(namespace.clone(), name.clone());
+    let namespaced_name = NamespacedName::new(namespace.clone(), name.to_owned());
     let wrapper_name = if mirror {
         Some(format!("FrbWrapper<{}>", namespaced_name.rust_style()))
     } else {
