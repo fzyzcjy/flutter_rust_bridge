@@ -15,7 +15,7 @@ pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
         .map(|(ident, target)| HirFlatTypeAlias { ident, target })
         .collect_vec();
 
-    *pack.types = vec_transformed;
+    pack.types = vec_transformed;
 
     Ok(pack)
 }
