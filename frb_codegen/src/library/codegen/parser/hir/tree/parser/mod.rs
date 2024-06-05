@@ -1,2 +1,3 @@
-pub(super) mod pack;
-mod crates;
+pub(crate) mod crates;
+pub(crate) mod module;
+pub(crate) mod pack;
