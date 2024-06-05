@@ -21,6 +21,14 @@ pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
 }
 
 fn transform_component<T, K>(
+    items: &mut Vec<T>,
+    key: Fn(&T) -> K,
+    merge: impl Fn(Vec<T>) -> Vec<T>,
+) {
+    *items = transform_component_raw(items, key, merge);
+}
+
+fn transform_component_raw<T, K>(
     items: Vec<T>,
     key: Fn(&T) -> K,
     merge: impl Fn(Vec<T>) -> Vec<T>,
