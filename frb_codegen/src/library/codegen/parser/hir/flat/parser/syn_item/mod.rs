@@ -37,7 +37,7 @@ pub(crate) fn parse_syn_item(
         syn::Item::Fn(item_fn) => {
             target.functions.push(parse_syn_item_fn(item_fn, meta));
         }
-        syn::Item::Impl(item_impl) => TODO(parse_syn_item_impl(item_impl)),
+        syn::Item::Impl(item_impl) => parse_syn_item_impl(target, item_impl),
         syn::Item::Trait(item_trait) => {
             (target.traits).push(parse_syn_item_trait(item_trait));
         }

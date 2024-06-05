@@ -1,4 +1,5 @@
 use crate::codegen::ir::hir::flat::function::{HirFlatFunction, HirFlatFunctionOwner};
+use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirFlatStruct;
 use crate::codegen::ir::hir::misc::item_fn::GeneralizedItemFn;
 use crate::if_then_some;
@@ -6,11 +7,14 @@ use crate::utils::namespace::{Namespace, NamespacedName};
 use itertools::Itertools;
 use syn::{ItemImpl, ItemStruct};
 
-pub(crate) fn parse_syn_item_impl(item: &ItemImpl) -> anyhow::Result<TODO> {
+pub(crate) fn parse_syn_item_impl(
+    target: &mut HirFlatPack,
+    item_impl: ItemImpl,
+) -> anyhow::Result<TODO> {
     if item_impl.trait_.is_some() {
-        (pack.trait_impls).push(parse_trait_impl(item_impl, namespace));
+        (target.functions).push(parse_trait_impl(item_impl, namespace));
     } else {
-        (pack.functions).extend(parse_for_struct_or_enum(item_impl, namespace, None));
+        (target.functions).extend(parse_for_struct_or_enum(item_impl, namespace, None));
     }
 }
 
