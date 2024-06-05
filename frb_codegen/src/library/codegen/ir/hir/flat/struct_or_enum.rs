@@ -1,6 +1,7 @@
 use crate::codegen::ir::hir::hierarchical::misc::HirCommon;
 use crate::codegen::ir::hir::hierarchical::module::HirVisibility;
 use crate::codegen::ir::hir::hierarchical::syn_item_struct_or_enum::SynItemStructOrEnum;
+use crate::codegen::ir::hir::misc::syn_item_struct_or_enum::SynItemStructOrEnum;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use derivative::Derivative;
 use proc_macro2::Ident;
@@ -21,4 +22,3 @@ pub struct HirFlatStructOrEnum<Item: SynItemStructOrEnum> {
 
 pub type HirFlatStruct = HirFlatStructOrEnum<ItemStruct>;
 pub type HirFlatEnum = HirFlatStructOrEnum<ItemEnum>;
-
