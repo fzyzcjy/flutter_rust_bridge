@@ -20,7 +20,9 @@ impl BaseMerger for ThirdPartyOverrideMerger {
         base: HirFlatFunction,
         overrider: HirFlatFunction,
     ) -> Option<HirFlatFunction> {
-        merge_core(base, overrider)
+        is_module_third_party(&overrider.namespace).then(|| {
+            TODO;
+        })
     }
 
     fn merge_struct_or_enums<Item: SynItemStructOrEnum>(
@@ -28,16 +30,10 @@ impl BaseMerger for ThirdPartyOverrideMerger {
         base: HirFlatStructOrEnum<Item>,
         overrider: HirFlatStructOrEnum<Item>,
     ) -> Option<HirFlatStructOrEnum<Item>> {
-        merge_core(base, overrider)
+        is_module_third_party(&overrider.name.namespace).then(|| {
+            TODO;
+        })
     }
-}
-
-fn merge_core<T>(base: T, overrider: T) -> Option<T> {
-    if !is_module_third_party(&overrider.namespace) {
-        return None;
-    }
-
-    Some(todo!())
 }
 
 fn is_module_third_party(namespace: &Namespace) -> bool {
@@ -74,33 +70,4 @@ fn transform_module_content_struct_or_enums<Item: SynItemStructOrEnum>(
             target.src.attrs_mut().extend(src.src.attrs().to_owned());
         },
     )
-}
-
-fn transform_module_content_general_vec<T: Debug, K: Eq + Debug>(
-    target_items: &mut [T],
-    src_items: Vec<T>,
-    key: impl Fn(&T) -> K,
-    write: impl Fn(&mut T, T),
-) -> anyhow::Result<()> {
-    for src_item in src_items {
-        let src_key = key(&src_item);
-
-        let interest_target_items = target_items
-            .iter_mut()
-            .filter(|x| key(x) == src_key)
-            .collect_vec();
-        if interest_target_items.len() != 1 {
-            log::warn!(
-                "transform_module_content_attrable skip src_key={src_key:?}, \
-                since the number of corresponding target items is not one (indeed is {}). \
-                src_item={src_item:?}",
-                interest_target_items.len(),
-            );
-            continue;
-        }
-        let target_item = interest_target_items.into_iter().next().unwrap();
-
-        write(target_item, src_item);
-    }
-    Ok(())
 }
