@@ -12,9 +12,9 @@ pub struct CustomizedTwinNormal {
 #[frb(ignore)]
 pub fn func_should_not_exist_in_dart_twin_normal() {}
 
-pub struct EmptyTwinNormal;
+pub struct StructWithOnlyIgnoredMethodTwinNormal;
 
-impl EmptyTwinNormal {
+impl StructWithOnlyIgnoredMethodTwinNormal {
     #[frb(ignore)]
     pub fn method_should_not_exist_in_dart_twin_normal(&self) {}
 }
