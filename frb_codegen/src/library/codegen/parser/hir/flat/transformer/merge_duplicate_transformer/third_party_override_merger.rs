@@ -8,6 +8,7 @@ use crate::codegen::ir::hir::hierarchical::syn_item_struct_or_enum::SynItemStruc
 use crate::codegen::misc::THIRD_PARTY_DIR_NAME;
 use crate::codegen::parser::hir::flat::transformer::merge_duplicate_transformer::base::BaseMerger;
 use crate::utils::crate_name::CrateName;
+use crate::utils::namespace::Namespace;
 use itertools::Itertools;
 use std::fmt::Debug;
 
@@ -26,12 +27,12 @@ impl BaseMerger for ThirdPartyOverrideMerger {
     }
 }
 
-fn remove_module_third_party_root(pack: &mut HirPack) -> Option<HirModule> {
-    let hir_crate = pack.get_mut_crate(&CrateName::self_crate()).unwrap();
-    hir_crate
-        .root_module
-        .content
-        .remove_module_by_name(THIRD_PARTY_DIR_NAME)
+fn is_module_third_party(namespace: &Namespace) -> bool {
+    Namespace::new(vec![
+        CrateName::SELF_CRATE.to_owned(),
+        THIRD_PARTY_DIR_NAME.to_owned(),
+    ])
+    .is_prefix_of(namespace)
 }
 
 fn transform_module_content_functions(
