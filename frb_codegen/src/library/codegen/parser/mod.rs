@@ -1,5 +1,5 @@
 use crate::codegen::dumper::Dumper;
-use crate::codegen::ir::hir::hierarchical::pack::HirPack;
+use crate::codegen::ir::hir::tree::pack::HirPack;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
@@ -28,13 +28,13 @@ fn parse_inner(
     drop(pb);
 
     let pb = progress_bar_pack.parse_hir_primary.start();
-    let hir_hierarchical = hir::hierarchical::parse(&config.hir, &hir_raw)?;
-    let hir_flat = hir::flat::parse(&config.hir, &hir_hierarchical)?;
-    on_hir(&hir_hierarchical)?;
+    let hir_tree = hir::tree::parse(&config.hir, &hir_raw)?;
+    let hir_flat = hir::flat::parse(&config.hir, &hir_tree)?;
+    on_hir(&hir_tree)?;
     dumper.dump(
         ConfigDumpContent::Hir,
-        "hir_hierarchical.json",
-        &hir_hierarchical,
+        "hir_tree.json",
+        &hir_tree,
     )?;
     drop(pb);
 
@@ -173,10 +173,10 @@ mod tests {
             &config,
             &Dumper(&Default::default()),
             &GeneratorProgressBarPack::new(),
-            |hir_hierarchical| {
+            |hir_tree| {
                 json_golden_test(
-                    &serde_json::to_value(hir_hierarchical).unwrap(),
-                    &rust_crate_dir.join("expect_hir_hierarchical.json"),
+                    &serde_json::to_value(hir_tree).unwrap(),
+                    &rust_crate_dir.join("expect_hir_tree.json"),
                     &create_path_sanitizers(&test_fixture_dir),
                 )
             },
