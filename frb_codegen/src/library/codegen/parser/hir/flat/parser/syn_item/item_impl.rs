@@ -1,27 +1,30 @@
 use crate::codegen::ir::hir::flat::function::{HirFlatFunction, HirFlatFunctionOwner};
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
+use crate::codegen::ir::hir::flat::trait_impl::HirFlatTraitImpl;
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirFlatStruct;
 use crate::codegen::ir::hir::misc::item_fn::GeneralizedItemFn;
+use crate::codegen::ir::hir::tree::module::HirTreeModuleMeta;
 use crate::if_then_some;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use itertools::Itertools;
 use syn::{ImplItem, ItemImpl, ItemStruct};
-use crate::codegen::ir::hir::tree::module::HirTreeModuleMeta;
 
 pub(crate) fn parse_syn_item_impl(
     target: &mut HirFlatPack,
     item_impl: ItemImpl,
     meta: &HirTreeModuleMeta,
 ) -> anyhow::Result<TODO> {
-    if item_impl.trait_.is_some() {
-        (target.functions).push(parse_trait_impl(item_impl, namespace));
-        (target.trait_impls).push(TODO);
-    } else {
-        (target.functions).extend(parse_for_struct_or_enum(item_impl, namespace, None));
+    let trait_name = (item_impl.trait_.as_ref())
+        .map(|t| t.1)
+        .map(|t| t.segments.last().unwrap().ident.to_string());
+
+    (target.functions).extend(parse_functions(item_impl, meta, &trait_name));
+    if let Some(trait_name) = &trait_name {
+        (target.trait_impls).push(parse_trait_impl(item_impl, trait_name));
     }
 }
 
-fn parse_for_struct_or_enum(
+fn parse_functions(
     item_impl: &ItemImpl,
     meta: &HirTreeModuleMeta,
     trait_def_name: Option<NamespacedName>,
@@ -37,4 +40,11 @@ fn parse_for_struct_or_enum(
             item_fn: GeneralizedItemFn::ImplItemFn(impl_item_fn),
         })
         .collect_vec()
+}
+
+fn parse_trait_impl(item_impl: &ItemImpl, trait_name: &str) -> HirFlatTraitImpl {
+    HirFlatTraitImpl {
+        trait_name: trait_name.to_owned(),
+        impl_ty: item_impl.self_ty.clone(),
+    }
 }
