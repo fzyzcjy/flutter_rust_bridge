@@ -10,7 +10,7 @@ pub(crate) fn transform(
     pack.functions = (pack.functions.drain(..))
         .filter(|f| {
             (config.rust_input_namespace_pack).is_interest(&f.namespace)
-                || THIRD_PARTY_NAMESPACE.is_prefix_of(&f.namespace)
+                || SELF_CRATE_THIRD_PARTY_NAMESPACE.is_prefix_of(&f.namespace)
         })
         .collect_vec();
     Ok(pack)

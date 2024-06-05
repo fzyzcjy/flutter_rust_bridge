@@ -54,5 +54,5 @@ fn merge_core<T: Clone>(
 }
 
 fn is_module_third_party(namespace: &Namespace) -> bool {
-    THIRD_PARTY_NAMESPACE.is_prefix_of(namespace)
+    SELF_CRATE_THIRD_PARTY_NAMESPACE.is_prefix_of(namespace)
 }
