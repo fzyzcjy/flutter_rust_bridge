@@ -8,9 +8,6 @@ use quote::ToTokens;
 use serde::{Serialize, Serializer};
 use syn::{ItemEnum, ItemStruct};
 
-// This struct is surely used many times, but coverage tool thinks it is never used
-// (possibly because of the macro?), so we manually exclude it from coverage report
-// frb-coverage:ignore-start
 #[derive(Clone, Derivative, Serialize)]
 #[derivative(Debug)]
 pub struct HirStructOrEnum<Item: SynItemStructOrEnum> {
@@ -21,7 +18,6 @@ pub struct HirStructOrEnum<Item: SynItemStructOrEnum> {
     #[serde(skip_serializing)]
     pub(crate) src: Item,
 }
-// frb-coverage:ignore-end
 
 pub type HirStruct = HirStructOrEnum<ItemStruct>;
 pub type HirEnum = HirStructOrEnum<ItemEnum>;
