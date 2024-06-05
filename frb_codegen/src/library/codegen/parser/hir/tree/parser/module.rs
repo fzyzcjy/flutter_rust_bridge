@@ -9,11 +9,6 @@ pub(super) fn parse_module(
     meta: HirTreeModuleMeta,
     config: &ParserHirInternalConfig,
 ) -> anyhow::Result<HirTreeModule> {
-    let raw = (items.iter())
-        .filter(|item| !matches!(item, syn::Item::Mod(_)))
-        .map(|item| quote::quote!(#item).to_string())
-        .collect();
-
     let mut output_items = vec![];
     let mut output_modules = vec![];
 
@@ -33,7 +28,6 @@ pub(super) fn parse_module(
         meta,
         items: output_items,
         modules: output_modules,
-        raw,
     })
 }
 

@@ -9,8 +9,6 @@ pub struct HirTreeModule {
     pub meta: HirTreeModuleMeta,
     pub modules: Vec<HirTreeModule>,
     pub items: Vec<syn::Item>,
-    #[serde(skip_serializing)] // avoid too big debug dump
-    pub raw: Vec<String>,
 }
 
 #[derive(Clone, Derivative, Serialize)]
