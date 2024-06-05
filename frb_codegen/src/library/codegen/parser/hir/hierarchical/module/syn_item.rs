@@ -12,44 +12,6 @@ use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 use crate::utils::namespace::Namespace;
 use syn::ItemMod;
 
-pub(super) fn parse_syn_item(
-    item: &syn::Item,
-    scope: &mut HirModuleContent,
-    config: &ParserHirInternalConfig,
-    namespace: &Namespace,
-    parent_vis: &[HirVisibility],
-) -> anyhow::Result<()> {
-    match item {
-        syn::Item::Struct(item_struct) => {
-            (scope.structs).extend(parse_syn_item_struct(item_struct, namespace)?);
-        }
-        syn::Item::Enum(item_enum) => {
-            (scope.enums).extend(parse_syn_item_enum(item_enum, namespace)?);
-        }
-        syn::Item::Type(item_type) => {
-            scope.type_alias.extend(parse_syn_item_type(item_type));
-        }
-        syn::Item::Fn(item_fn) => {
-            scope.functions.push(parse_syn_item_fn(item_fn, namespace));
-        }
-        syn::Item::Impl(item_impl) => {
-            if item_impl.trait_.is_some() {
-                (scope.trait_impls).push(parse_trait_impl(item_impl, namespace));
-            } else {
-                (scope.functions).extend(parse_syn_item_impl(item_impl, namespace, None));
-            }
-        }
-        syn::Item::Trait(item_trait) => {
-            (scope.traits).push(parse_syn_item_trait(item_trait, namespace));
-        }
-        syn::Item::Mod(item_mod) => {
-            (scope.modules).extend(parse_syn_item_mod(item_mod, namespace, config, parent_vis)?);
-        }
-        _ => {}
-    }
-    Ok(())
-}
-
 // moved
 // fn parse_syn_item_mod(
 //     item_mod: &ItemMod,
