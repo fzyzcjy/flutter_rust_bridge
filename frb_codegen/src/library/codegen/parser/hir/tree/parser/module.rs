@@ -1,3 +1,4 @@
+use crate::codegen::ir::hir::misc::HirVisibility;
 use crate::codegen::ir::hir::tree::module::{
     HirTreeModule, HirTreeModuleContent, HirTreeModuleMeta,
 };
@@ -20,7 +21,12 @@ pub(super) fn parse_module(
 
     for item in items.into_iter() {
         match item {
-            syn::Item::Mod(item_mod) => output_modules.extend(parse_syn_item_mod()?),
+            syn::Item::Mod(item_mod) => output_modules.extend(parse_syn_item_mod(
+                item_mod,
+                config,
+                meta.namespace,
+                meta.parent_vis,
+            )?),
             _ => output_items.push(item),
         }
     }
@@ -34,9 +40,9 @@ pub(super) fn parse_module(
 }
 
 fn parse_syn_item_mod(
-    item_mod: &ItemMod,
-    namespace: &Namespace,
+    item_mod: ItemMod,
     config: &ParserHirInternalConfig,
+    namespace: &Namespace,
     parent_vis: &[HirVisibility],
 ) -> anyhow::Result<Option<HirTreeModule>> {
     Ok(if let Some((_, items)) = item_mod.content {
