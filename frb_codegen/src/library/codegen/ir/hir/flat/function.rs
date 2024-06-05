@@ -21,10 +21,10 @@ impl HirFlatFunction {
     }
 
     pub(crate) fn owner_for_dedup(&self) -> String {
-        match self {
-            Self::Function => self.namespace.joined_path,
-            Self::StructOrEnum { impl_ty, .. } => ty_to_string(impl_ty),
-            Self::TraitDef { trait_def_name } => trait_def_name.name.clone(),
+        match &self.owner {
+            HirFlatFunctionOwner::Function => self.namespace.joined_path.clone(),
+            HirFlatFunctionOwner::StructOrEnum { impl_ty, .. } => ty_to_string(impl_ty),
+            HirFlatFunctionOwner::TraitDef { trait_def_name } => trait_def_name.name.clone(),
         }
     }
 
