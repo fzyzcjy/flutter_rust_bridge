@@ -14,22 +14,6 @@ pub(crate) struct HirFlatFunction {
     pub(crate) item_fn: GeneralizedItemFn,
 }
 
-impl HirCommon for HirFlatFunction {
-    fn with_namespace(&self, namespace: Namespace) -> Self {
-        Self {
-            namespace,
-            ..self.clone()
-        }
-    }
-
-    fn name_for_use_stmt(&self) -> String {
-        match &self.owner {
-            HirFlatFunctionOwner::Function => self.item_fn.sig().ident.to_string(),
-            HirFlatFunctionOwner::Method { item_impl, .. } => ty_to_string(&item_impl.self_ty),
-        }
-    }
-}
-
 impl HirFlatFunction {
     pub(crate) fn owner_and_name(&self) -> SimpleOwnerAndName {
         (self.owner.simple_name(), self.item_fn.name())

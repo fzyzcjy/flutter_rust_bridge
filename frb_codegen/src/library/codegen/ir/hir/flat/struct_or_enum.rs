@@ -22,22 +22,3 @@ pub struct HirFlatStructOrEnum<Item: SynItemStructOrEnum> {
 pub type HirFlatStruct = HirFlatStructOrEnum<ItemStruct>;
 pub type HirFlatEnum = HirFlatStructOrEnum<ItemEnum>;
 
-impl<Item: SynItemStructOrEnum> HirCommon for HirFlatStructOrEnum<Item> {
-    fn with_namespace(&self, namespace: Namespace) -> Self {
-        Self {
-            name: NamespacedName::new(namespace, self.name.name.clone()),
-            ..self.to_owned()
-        }
-    }
-
-    fn name_for_use_stmt(&self) -> String {
-        self.ident.to_string()
-    }
-}
-
-pub(super) fn serialize_syn<T: ToTokens, S: Serializer>(
-    value: &T,
-    s: S,
-) -> Result<S::Ok, S::Error> {
-    quote::quote!(#value).to_string().serialize(s)
-}
