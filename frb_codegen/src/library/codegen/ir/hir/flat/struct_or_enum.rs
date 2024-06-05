@@ -1,6 +1,3 @@
-use crate::codegen::ir::hir::hierarchical::misc::HirCommon;
-use crate::codegen::ir::hir::hierarchical::module::HirVisibility;
-use crate::codegen::ir::hir::hierarchical::syn_item_struct_or_enum::SynItemStructOrEnum;
 use crate::codegen::ir::hir::misc::syn_item_struct_or_enum::SynItemStructOrEnum;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use derivative::Derivative;

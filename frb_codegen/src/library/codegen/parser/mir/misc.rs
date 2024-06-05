@@ -1,5 +1,3 @@
-use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirFlatStructOrEnum;
-use crate::codegen::ir::hir::hierarchical::syn_item_struct_or_enum::SynItemStructOrEnum;
 use crate::codegen::parser::mir::internal_config::RustInputNamespacePack;
 use crate::utils::namespace::NamespacedName;
 use itertools::Itertools;

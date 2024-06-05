@@ -10,8 +10,6 @@ pub(crate) mod sanity_checker;
 pub(crate) mod type_parser;
 
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
-use crate::codegen::ir::hir::hierarchical::function::HirFlatFunction;
-use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirFlatStruct;
 use crate::codegen::ir::mir::func::MirFunc;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::ir::mir::skip::MirSkip;

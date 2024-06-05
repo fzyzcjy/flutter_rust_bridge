@@ -1,4 +1,3 @@
-use crate::codegen::ir::hir::hierarchical::module::HirModule;
 use crate::codegen::parser::mir::internal_config::RustInputNamespacePack;
 use crate::library::misc::consts::HANDLER_NAME;
 use crate::utils::namespace::NamespacedName;

@@ -1,4 +1,3 @@
-use crate::codegen::ir::hir::hierarchical::struct_or_enum::{HirFlatEnum, HirFlatStruct};
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
 use crate::codegen::ir::mir::ty::MirType;

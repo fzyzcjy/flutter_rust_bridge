@@ -1,6 +1,3 @@
-use crate::codegen::ir::hir::hierarchical::module::HirVisibility;
-use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirFlatStructOrEnum;
-use crate::codegen::ir::hir::hierarchical::syn_item_struct_or_enum::SynItemStructOrEnum;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
 use crate::codegen::parser::mir::type_parser::unencodable::SplayedSegment;

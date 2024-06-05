@@ -1,5 +1,4 @@
 use crate::codegen::ir::hir::flat::type_alias::HirFlatTypeAlias;
-use crate::codegen::ir::hir::hierarchical::type_alias::HirFlatTypeAlias;
 use syn::ItemType;
 
 pub(crate) fn parse_syn_item_type(item_type: ItemType) -> Option<HirFlatTypeAlias> {
