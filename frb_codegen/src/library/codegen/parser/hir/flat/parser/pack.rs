@@ -9,9 +9,9 @@ pub(crate) fn parse_pack(
 ) -> anyhow::Result<HirFlatPack> {
     let items = super::flattener::flatten(hir_tree)?;
 
-    let mut ans = HirFlatPack::default();
+    let mut pack = HirFlatPack::default();
     for item in items {
-        parse_syn_item(item.item, item.meta, config)?;
+        parse_syn_item(item.item, item.meta, &mut pack, config)?;
     }
-    Ok(ans)
+    Ok(pack)
 }
