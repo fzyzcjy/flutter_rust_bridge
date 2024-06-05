@@ -21,7 +21,7 @@ fn transform_module(module: &mut HirTreeModule) -> anyhow::Result<()> {
         return Ok(module);
     }
 
-    let pub_use_infos = parse_pub_use_from_items(items);
+    let pub_use_infos = parse_pub_use_from_items(&module.items);
     for pub_use_info in pub_use_infos {
         transform_module_by_pub_use_single(&mut module, &pub_use_info)?;
     }
@@ -29,8 +29,7 @@ fn transform_module(module: &mut HirTreeModule) -> anyhow::Result<()> {
 }
 
 fn parse_pub_use_from_items(items: &[syn::Item]) -> Vec<PubUseInfo> {
-    items
-        .iter()
+    (items.iter())
         .filter_map(parse_pub_use_from_item)
         .collect_vec()
 }
