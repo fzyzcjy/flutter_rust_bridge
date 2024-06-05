@@ -7,6 +7,8 @@ use serde::Serialize;
 pub struct HirTreeModule {
     pub meta: HirTreeModuleMeta,
     pub content: HirTreeModuleContent,
+    #[serde(skip_serializing)] // avoid too big debug dump
+    pub raw: Vec<String>,
 }
 
 #[derive(Clone, Derivative, Serialize)]
