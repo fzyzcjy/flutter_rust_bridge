@@ -104,14 +104,3 @@ fn transform_module_by_pub_use_single(
 
     Ok(())
 }
-
-fn transform_items<T: HirCommon>(
-    items: &[T],
-    self_namespace: &Namespace,
-    pub_use_info: &PubUseInfo,
-) -> Vec<T> {
-    (items.iter())
-        .filter(|x| pub_use_info.is_interest_name(&x.name_for_use_stmt().to_string()))
-        .map(|x| x.with_namespace(self_namespace.clone()))
-        .collect_vec()
-}
