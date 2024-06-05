@@ -18,14 +18,21 @@ pub(crate) struct GenerateApiMethodConfig {
     generate_static: bool,
 }
 
+impl GenerateApiMethodConfig {
+    pub(crate) const COMBINED: GenerateApiMethodConfig = GenerateApiMethodConfig {
+        generate_static: true,
+    };
+}
+
 pub(crate) fn generate_api_methods(
     generalized_class_name: &NamespacedName,
     context: ApiDartGeneratorContext,
     config: &GenerateApiMethodConfig,
+    dart_class_name: &str,
 ) -> Vec<String> {
     get_methods_of_enum_or_struct(generalized_class_name, &context.mir_pack.funcs)
         .iter()
-        .filter_map(|func| generate_api_method(func, context, config))
+        .filter_map(|func| generate_api_method(func, context, config, dart_class_name))
         .collect_vec()
 }
 
@@ -62,15 +69,14 @@ fn generate_api_method(
     func: &MirFunc,
     context: ApiDartGeneratorContext,
     config: &GenerateApiMethodConfig,
+    dart_class_name: &str,
 ) -> Option<String> {
     let api_dart_func = api_dart::spec_generator::function::generate(func, context).unwrap();
 
     let method_info =
         if_then_some!(let MirFuncOwnerInfo::Method(info) = &func.owner , info).unwrap();
 
-    if method_info.mode == MirFuncOwnerInfoMethodMode::Static
-        && config == GenerateApiMethodMode::SeparatedImpl
-    {
+    if method_info.mode == MirFuncOwnerInfoMethodMode::Static && !config.generate_static {
         return None;
     }
 
@@ -92,6 +98,7 @@ fn generate_api_method(
         &api_dart_func,
         &method_name,
         config,
+        dart_class_name,
     );
 
     let maybe_implementation =
@@ -132,6 +139,7 @@ fn generate_signature(
     api_dart_func: &ApiDartGeneratedFunction,
     method_name: &str,
     config: &GenerateApiMethodConfig,
+    dart_class_name: &str,
 ) -> String {
     let is_static_method = method_info.mode == MirFuncOwnerInfoMethodMode::Static;
     let maybe_static = if is_static_method { "static" } else { "" };
@@ -156,12 +164,7 @@ fn generate_signature(
 
     if default_constructor_mode == Some(MirFuncDefaultConstructorMode::DartConstructor) {
         let owner_ty_name = method_info.owner_ty_name().unwrap().name;
-        let class_postfix = if config == GenerateApiMethodMode::SeparatedImpl {
-            "Impl"
-        } else {
-            ""
-        };
-        return format!("factory {owner_ty_name}{class_postfix}{func_params}");
+        return format!("factory {dart_class_name}{func_params}");
     }
 
     format!("{maybe_static} {return_type} {maybe_accessor} {method_name}{func_params}")
