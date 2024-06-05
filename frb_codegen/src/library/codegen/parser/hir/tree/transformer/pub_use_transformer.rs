@@ -5,7 +5,7 @@ use itertools::Itertools;
 
 pub(crate) fn transform(mut pack: HirTreePack) -> anyhow::Result<HirTreePack> {
     for hir_crate in pack.crates.iter_mut() {
-        transform_module(&mut hir_crate.root_module);
+        transform_module(&mut hir_crate.root_module)?;
     }
     Ok(pack)
 }
@@ -89,7 +89,7 @@ fn transform_module_by_pub_use_single(
             return Ok(());
         }
 
-        let self_namespace = &module.meta.namespace;
+        // let self_namespace = &module.meta.namespace;
 
         let src_mod_interest_items = (src_mod.items.iter())
             .filter(|x| {
