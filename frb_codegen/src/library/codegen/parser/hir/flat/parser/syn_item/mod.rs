@@ -6,9 +6,7 @@ pub(crate) mod item_type;
 
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::hir::tree::module::HirTreeModuleMeta;
-use crate::codegen::parser::hir::flat::parser::syn_item::item_fn::{
-    parse_syn_item_fn,
-};
+use crate::codegen::parser::hir::flat::parser::syn_item::item_fn::parse_syn_item_fn;
 use crate::codegen::parser::hir::flat::parser::syn_item::item_impl::parse_syn_item_impl;
 use crate::codegen::parser::hir::flat::parser::syn_item::item_struct_or_enum::{
     parse_syn_item_enum, parse_syn_item_struct,
@@ -39,7 +37,7 @@ pub(crate) fn parse_syn_item(
         }
         syn::Item::Impl(item_impl) => parse_syn_item_impl(target, item_impl),
         syn::Item::Trait(item_trait) => {
-            (target.traits).push(parse_syn_item_trait(item_trait));
+            parse_syn_item_trait(target, item_trait);
         }
         _ => {}
     }
