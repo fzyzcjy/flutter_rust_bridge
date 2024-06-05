@@ -1,9 +1,14 @@
-use crate::codegen::ir::hir::hierarchical::misc::HirCommon;
-use crate::codegen::ir::hir::hierarchical::module::HirModule;
+use crate::codegen::ir::hir::tree::module::HirTreeModule;
+use crate::codegen::ir::hir::tree::pack::HirTreePack;
 use crate::utils::namespace::Namespace;
 use itertools::Itertools;
 
-pub(crate) fn transform(mut module: HirModule, items: &[syn::Item]) -> anyhow::Result<HirModule> {
+pub(crate) fn transform(mut pack: HirTreePack) -> anyhow::Result<HirTreePack> {
+    TODO;
+    Ok(pack)
+}
+
+fn transform_module(mut module: HirTreeModule, items: &[syn::Item]) -> anyhow::Result<HirTreeModule> {
     // Only apply to third party crate currently, since in self crate usually no need to care about this
     if module.meta.namespace.crate_name().is_self_crate() {
         return Ok(module);
@@ -64,7 +69,7 @@ impl PubUseInfo {
 }
 
 fn transform_module_by_pub_use_single(
-    module: &mut HirModule,
+    module: &mut HirTreeModule,
     pub_use_info: &PubUseInfo,
 ) -> anyhow::Result<()> {
     if let Some(src_mod) = (module.content).get_module_nested(&pub_use_info.namespace.path()) {
