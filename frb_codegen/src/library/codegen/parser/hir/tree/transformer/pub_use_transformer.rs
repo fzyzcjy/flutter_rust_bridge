@@ -122,7 +122,7 @@ fn name_for_use_stmt(item: &syn::Item) -> Option<String> {
         syn::Item::Trait(x) => &x.ident,
         syn::Item::Impl(_) | _ => return None,
     };
-    Ok(ident.to_string())
+    Some(ident.to_string())
 }
 
 fn is_public_enough(item: &syn::Item) -> Option<bool> {
@@ -134,5 +134,5 @@ fn is_public_enough(item: &syn::Item) -> Option<bool> {
         syn::Item::Trait(x) => &x.vis,
         syn::Item::Impl(_) | _ => return None,
     };
-    Ok(matches!(vis, syn::Visibility::Public(_)))
+    Some(matches!(vis, syn::Visibility::Public(_)))
 }
