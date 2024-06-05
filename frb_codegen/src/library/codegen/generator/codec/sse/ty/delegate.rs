@@ -43,7 +43,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 }
                 MirTypeDelegate::BigPrimitive(_) => "self.toString()".to_owned(),
                 MirTypeDelegate::RustAutoOpaqueExplicit(_ir) => "self".to_owned(),
-                MirTypeDelegate::DynTrait(ir) => TODO,
+                MirTypeDelegate::DynTrait(ir) => "TODO_dyntrait_encode".to_owned(),
             },
             Lang::RustLang(_) => match &self.mir {
                 MirTypeDelegate::Array(_) => {
@@ -189,7 +189,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     "flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(inner)"
                         .to_owned()
                 }
-                MirTypeDelegate::DynTrait(ir) => TODO,
+                MirTypeDelegate::DynTrait(ir) => "TODO_dyntrait_decode".to_owned(),
             },
         };
 
