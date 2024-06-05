@@ -1,3 +1,5 @@
+use clap::builder::TypedValueParser;
+use itertools::Itertools;
 use crate::codegen::ir::hir::flat::function::HirFlatFunction;
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatStructOrEnum;
@@ -18,6 +20,28 @@ pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
     Ok(pack)
 }
 
-fn transform_component<T>(items: &mut Vec<T>, merge: Fn(Vec<T>) -> Vec<T>) {
-    TODO
+fn transform_component<T, K>(
+    items: Vec<T>,
+    key: Fn(&T) -> K,
+    merge: impl Fn(Vec<T>) -> Vec<T>,
+) -> Vec<T> {
+    (items.into_iter())
+        .group_by(key)
+        .into_iter()
+        .map(|(_key, items_of_key)| {
+            let items_of_key = items_of_key.collect_vec();
+            let merged_items_of_key = merge(items_of_key);
+            assert!(!merged_items_of_key.is_empty());
+
+            if merged_items_of_key.len() > 1 {
+                log::warn!(
+                    "There are still multiple objects with same key after merging, \
+                    thus randomly pick one (objects={:?})",
+                    merged_items_of_key
+                );
+            }
+
+            merged_items_of_key[0]
+        })
+        .collect_vec()
 }
