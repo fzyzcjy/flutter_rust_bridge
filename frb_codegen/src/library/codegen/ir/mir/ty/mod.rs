@@ -12,6 +12,7 @@ pub(crate) mod record;
 pub(crate) mod rust_auto_opaque_implicit;
 pub(crate) mod rust_opaque;
 pub(crate) mod structure;
+pub(crate) mod trait_def;
 
 use crate::codegen::ir::mir::pack::{MirEnumPool, MirPack, MirStructPool};
 use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
