@@ -75,6 +75,8 @@ fn parse_mir_funcs(
 
     let (mir_funcs_normal, mir_skips): (Vec<_>, Vec<_>) = src_fns
         .iter()
+        // sort to make things stable
+        .sorted_by_key(|f| f.owner_and_name_for_dedup())
         .map(|f| {
             function_parser.parse_function(
                 f,
