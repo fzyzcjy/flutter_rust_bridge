@@ -15,13 +15,14 @@ use std::fmt::Debug;
 pub(crate) struct ThirdPartyOverrideMerger;
 
 impl BaseMerger for ThirdPartyOverrideMerger {
-    fn merge_functions(&self, items: Vec<HirFlatFunction>) -> Vec<HirFlatFunction> {
+    fn merge_functions(&self, a: HirFlatFunction, b: HirFlatFunction) -> Option<HirFlatFunction> {
         todo!()
     }
 
     fn merge_struct_or_enums<Item: SynItemStructOrEnum>(
         &self,
-        items: Vec<HirFlatStructOrEnum<Item>>,
+        a: HirFlatStructOrEnum<Item>,
+        b: HirFlatStructOrEnum<Item>,
     ) -> Vec<HirFlatStructOrEnum<Item>> {
         todo!()
     }
