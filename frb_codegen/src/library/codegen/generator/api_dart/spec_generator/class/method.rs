@@ -13,17 +13,15 @@ use crate::utils::namespace::NamespacedName;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 
-#[derive(Debug, Clone, Copy, Eq, PartialEq)]
-pub(crate) enum GenerateApiMethodMode {
-    SeparatedDecl,
-    SeparatedImpl,
-    Combined,
+#[derive(Debug, Clone)]
+pub(crate) struct GenerateApiMethodConfig {
+    generate_static: bool,
 }
 
 pub(crate) fn generate_api_methods(
     generalized_class_name: &NamespacedName,
     context: ApiDartGeneratorContext,
-    mode: GenerateApiMethodMode,
+    config: &GenerateApiMethodConfig,
 ) -> Vec<String> {
     get_methods_of_enum_or_struct(generalized_class_name, &context.mir_pack.funcs)
         .iter()
@@ -63,7 +61,7 @@ fn get_methods_of_enum_or_struct<'a>(
 fn generate_api_method(
     func: &MirFunc,
     context: ApiDartGeneratorContext,
-    mode: GenerateApiMethodMode,
+    config: &GenerateApiMethodConfig,
 ) -> Option<String> {
     let api_dart_func = api_dart::spec_generator::function::generate(func, context).unwrap();
 
@@ -133,7 +131,7 @@ fn generate_signature(
     default_constructor_mode: Option<MirFuncDefaultConstructorMode>,
     api_dart_func: &ApiDartGeneratedFunction,
     method_name: &str,
-    mode: GenerateApiMethodMode,
+    config: &GenerateApiMethodConfig,
 ) -> String {
     let is_static_method = method_info.mode == MirFuncOwnerInfoMethodMode::Static;
     let maybe_static = if is_static_method { "static" } else { "" };
@@ -189,7 +187,7 @@ fn generate_maybe_implementation(
     context: ApiDartGeneratorContext,
     method_info: &MirFuncOwnerInfoMethod,
     params: &[ApiDartGeneratedFunctionParam],
-    mode: GenerateApiMethodMode,
+    config: &GenerateApiMethodConfig,
 ) -> Option<String> {
     match (mode, method_info.mode.to_owned()) {
         (GenerateApiMethodMode::Combined, _)
