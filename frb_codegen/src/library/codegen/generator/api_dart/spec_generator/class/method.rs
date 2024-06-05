@@ -16,8 +16,8 @@ use std::os::unix::raw::mode_t;
 
 #[derive(Debug, Clone)]
 pub(crate) struct GenerateApiMethodConfig {
-    generate_static: bool,
-    generate_non_static: bool,
+    pub generate_static: bool,
+    pub generate_non_static: bool,
 }
 
 impl GenerateApiMethodConfig {
