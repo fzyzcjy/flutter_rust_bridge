@@ -1,3 +1,4 @@
+use std::hash::Hash;
 use clap::builder::TypedValueParser;
 use itertools::Itertools;
 use crate::codegen::ir::hir::flat::function::HirFlatFunction;
@@ -14,15 +15,19 @@ pub(crate) mod trait_impl_merger;
 
 pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
     let merger = CombinedMerger(vec![TraitDefDefaultImplMerger, ThirdPartyOverrideMerger]);
-    transform_component(&mut pack.functions, |x| TODO, |x| merger.merge_functions(x));
+    transform_component(
+        &mut pack.functions,
+        |x| x.owner_and_name(),
+        |x| merger.merge_functions(x),
+    );
     transform_component(
         &mut pack.structs,
-        |x| TODO,
+        |x| x.name.clone(),
         |x| merger.merge_struct_or_enums(x),
     );
     transform_component(
         &mut pack.enums,
-        |x| TODO,
+        |x| x.name.clone(),
         |x| merger.merge_struct_or_enums(x),
     );
     Ok(pack)
@@ -36,7 +41,7 @@ fn transform_component<T, K>(
     *items = transform_component_raw(items, key, merge);
 }
 
-fn transform_component_raw<T, K>(
+fn transform_component_raw<T, K: Eq + Hash>(
     items: Vec<T>,
     key: Fn(&T) -> K,
     merge: impl Fn(Vec<T>) -> Vec<T>,
