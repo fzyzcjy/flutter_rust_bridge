@@ -7,10 +7,7 @@ import '../auxiliary/sample_types.dart';
 import '../frb_generated.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-import 'pseudo_manual/mirror_twin_rust_async.dart';
 import 'pseudo_manual/mirror_twin_sync.dart';
-part 'mirror.freezed.dart';
 
 Future<ApplicationSettings> getAppSettingsTwinNormal() =>
     RustLib.instance.api.crateApiMirrorGetAppSettingsTwinNormal();
@@ -121,30 +118,6 @@ class AnotherTwinNormal {
           a == other.a;
 }
 
-class ApplicationEnv {
-  final List<ApplicationEnvVar> vars;
-
-  const ApplicationEnv({
-    required this.vars,
-  });
-
-  @override
-  int get hashCode => vars.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ApplicationEnv &&
-          runtimeType == other.runtimeType &&
-          vars == other.vars;
-}
-
-enum ApplicationMode {
-  standalone,
-  embedded,
-  ;
-}
-
 class ApplicationModeArray2 extends NonGrowableListView<ApplicationMode> {
   static const arraySize = 2;
 
@@ -181,24 +154,6 @@ class ContainsMirroredSubStructTwinNormal {
           test2 == other.test2;
 }
 
-class ListOfNestedRawStringMirrored {
-  final List<NestedRawStringMirrored> raw;
-
-  const ListOfNestedRawStringMirrored({
-    required this.raw,
-  });
-
-  @override
-  int get hashCode => raw.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ListOfNestedRawStringMirrored &&
-          runtimeType == other.runtimeType &&
-          raw == other.raw;
-}
-
 class MirrorStructTwinNormal {
   final ApplicationSettings a;
   final MyStruct b;
@@ -224,55 +179,4 @@ class MirrorStructTwinNormal {
           b == other.b &&
           c == other.c &&
           d == other.d;
-}
-
-@freezed
-sealed class RawStringEnumMirrored with _$RawStringEnumMirrored {
-  const RawStringEnumMirrored._();
-
-  const factory RawStringEnumMirrored.raw(
-    RawStringMirrored field0,
-  ) = RawStringEnumMirrored_Raw;
-  const factory RawStringEnumMirrored.nested(
-    NestedRawStringMirrored field0,
-  ) = RawStringEnumMirrored_Nested;
-  const factory RawStringEnumMirrored.listOfNested(
-    ListOfNestedRawStringMirrored field0,
-  ) = RawStringEnumMirrored_ListOfNested;
-}
-
-class RawStringMirrored {
-  final String value;
-
-  const RawStringMirrored({
-    required this.value,
-  });
-
-  @override
-  int get hashCode => value.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is RawStringMirrored &&
-          runtimeType == other.runtimeType &&
-          value == other.value;
-}
-
-class StructWithHashMap {
-  final Map<String, HashMapValue> map;
-
-  const StructWithHashMap({
-    required this.map,
-  });
-
-  @override
-  int get hashCode => map.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is StructWithHashMap &&
-          runtimeType == other.runtimeType &&
-          map == other.map;
 }

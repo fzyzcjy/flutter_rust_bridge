@@ -139,27 +139,6 @@ class AnotherTwinRustAsync {
           a == other.a;
 }
 
-class ApplicationEnvVar {
-  final String field0;
-  final bool field1;
-
-  const ApplicationEnvVar({
-    required this.field0,
-    required this.field1,
-  });
-
-  @override
-  int get hashCode => field0.hashCode ^ field1.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ApplicationEnvVar &&
-          runtimeType == other.runtimeType &&
-          field0 == other.field0 &&
-          field1 == other.field1;
-}
-
 class ContainsMirroredSubStructTwinRustAsync {
   final RawStringMirrored test;
   final AnotherTwinRustAsync test2;
@@ -179,24 +158,6 @@ class ContainsMirroredSubStructTwinRustAsync {
           runtimeType == other.runtimeType &&
           test == other.test &&
           test2 == other.test2;
-}
-
-class HashMapValue {
-  final String inner;
-
-  const HashMapValue({
-    required this.inner,
-  });
-
-  @override
-  int get hashCode => inner.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is HashMapValue &&
-          runtimeType == other.runtimeType &&
-          inner == other.inner;
 }
 
 class MirrorStructTwinRustAsync {
@@ -224,22 +185,4 @@ class MirrorStructTwinRustAsync {
           b == other.b &&
           c == other.c &&
           d == other.d;
-}
-
-class Numbers {
-  final Int32List field0;
-
-  const Numbers({
-    required this.field0,
-  });
-
-  @override
-  int get hashCode => field0.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Numbers &&
-          runtimeType == other.runtimeType &&
-          field0 == other.field0;
 }
