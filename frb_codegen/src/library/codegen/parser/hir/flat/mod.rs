@@ -11,5 +11,6 @@ pub(crate) fn parse(
     let pack = parser::pack::parse_pack(config, hir_tree)?;
     let pack = transformer::copy_trait_def_to_impl_transformer::transform(pack)?;
     let pack = transformer::merge_duplicate_transformer::transform(pack)?;
+    let pack = transformer::resolve_type_alias_transformer::transform(pack)?;
     Ok(pack)
 }

@@ -13,8 +13,6 @@ use std::collections::HashMap;
 use std::fmt::Debug;
 use syn::Type;
 
-mod type_alias_resolver;
-
 pub(crate) fn parse<'a>(
     config: &ParserHirInternalConfig,
     hir_pack: &'a HirPack,

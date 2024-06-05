@@ -1,7 +1,12 @@
+use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::parser::mir::type_parser::misc::convert_ident_str;
 use std::collections::HashMap;
 use syn::Type;
 use topological_sort::TopologicalSort;
+
+pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
+    Ok(pack)
+}
 
 // See https://github.com/fzyzcjy/flutter_rust_bridge/pull/929 for more details of the algorithm
 pub(crate) fn resolve_type_aliases(src: HashMap<String, Type>) -> HashMap<String, Type> {
