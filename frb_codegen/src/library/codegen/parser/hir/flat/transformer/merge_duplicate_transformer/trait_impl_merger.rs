@@ -64,25 +64,4 @@ fn compute_methods(module: &HirModule, trait_map: &HashMap<String, HirTrait>) ->
         .collect_vec()
 }
 
-fn parse_trait_def_functions(
-    trait_def: &HirTrait,
-    item_impl: &ItemImpl,
-    namespace: &Namespace,
-    trait_def_name: &NamespacedName,
-) -> Vec<HirFlatFunction> {
-    (trait_def.item_trait.items.iter())
-        .filter_map(
-            |item| if_then_some!(let TraitItem::Fn(ref trait_item_fn) = item, trait_item_fn),
-        )
-        .map(|trait_item_fn| HirFlatFunction {
-            namespace: namespace.clone(),
-            owner: HirFlatFunctionOwner::Method {
-                item_impl: item_impl.to_owned(),
-                trait_def_name: Some(trait_def_name.to_owned()),
-            },
-            item_fn: GeneralizedItemFn::TraitItemFn(trait_item_fn.to_owned()),
-        })
-        .collect_vec()
-}
-
 // const BLACKLIST_TRAIT_NAMES: [&str; 4] = ["Clone", "Default", "Debug", "Deref"];
