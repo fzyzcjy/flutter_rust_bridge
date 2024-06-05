@@ -1,4 +1,5 @@
 use crate::codegen::ir::hir::misc::item_fn::GeneralizedItemFn;
+use crate::utils::syn_utils::ty_to_string;
 use quote::ToTokens;
 use serde::{Serialize, Serializer};
 use syn::{ItemImpl, ItemTrait};

@@ -1,11 +1,12 @@
-use crate::codegen::ir::hir::misc::serializers::serialize_syn;
-use crate::codegen::ir::hir::misc::serializers::serialize_generalized_item_fn;
 use crate::codegen::ir::hir::misc::item_fn::GeneralizedItemFn;
+use crate::codegen::ir::hir::misc::serializers::serialize_generalized_item_fn;
+use crate::codegen::ir::hir::misc::serializers::serialize_syn;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use proc_macro2::Span;
 use serde::{Serialize, Serializer};
 use syn::spanned::Spanned;
 use syn::{Attribute, ImplItemFn, ItemFn, ItemImpl, Signature, TraitItemFn, Visibility};
+use crate::utils::syn_utils::ty_to_string;
 
 #[derive(Debug, Clone, Serialize)]
 pub(crate) struct HirFlatFunction {
@@ -58,7 +59,3 @@ impl HirFlatFunctionOwner {
 }
 
 pub(crate) type SimpleOwnerAndName = (Option<String>, String);
-
-fn ty_to_string(ty: &syn::Type) -> String {
-    quote::quote!(#ty).to_string()
-}
