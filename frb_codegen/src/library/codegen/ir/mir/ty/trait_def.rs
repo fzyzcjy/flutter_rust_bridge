@@ -1,6 +1,5 @@
 use crate::codegen::ir::mir::ty::{MirContext, MirType, MirTypeTrait};
 use crate::utils::namespace::NamespacedName;
-use convert_case::{Case, Casing};
 
 crate::mir! {
 pub struct MirTypeTraitDef {
