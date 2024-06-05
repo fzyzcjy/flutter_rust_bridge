@@ -1,7 +1,7 @@
-use crate::codegen::ir::hir::misc::item_fn::GeneralizedItemFn;
 use crate::codegen::ir::hir::flat::function::{HirFlatFunction, HirFlatFunctionOwner};
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::hir::flat::trait_impl::HirFlatTraitImpl;
+use crate::codegen::ir::hir::misc::item_fn::GeneralizedItemFn;
 use crate::codegen::ir::hir::tree::module::HirTreeModuleMeta;
 use crate::if_then_some;
 use crate::utils::namespace::{Namespace, NamespacedName};
@@ -15,10 +15,10 @@ pub(crate) fn parse_syn_item_impl(
 ) {
     let trait_name = parse_trait_name(&item_impl);
 
-    (target.functions).extend(parse_functions(item_impl, meta, &trait_name));
     if let Some(trait_name) = &trait_name {
-        (target.trait_impls).push(parse_trait_impl(item_impl, trait_name));
+        (target.trait_impls).push(parse_trait_impl(&item_impl, trait_name));
     }
+    (target.functions).extend(parse_functions(item_impl, meta, &trait_name));
 }
 
 fn parse_trait_name(item_impl: &ItemImpl) -> Option<String> {
@@ -28,7 +28,7 @@ fn parse_trait_name(item_impl: &ItemImpl) -> Option<String> {
 }
 
 fn parse_functions(
-    item_impl: &ItemImpl,
+    item_impl: ItemImpl,
     meta: &HirTreeModuleMeta,
     trait_def_name: Option<NamespacedName>,
 ) -> Vec<HirFlatFunction> {

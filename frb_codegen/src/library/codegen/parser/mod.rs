@@ -22,17 +22,17 @@ fn parse_inner(
     config: &ParserInternalConfig,
     dumper: &Dumper,
     progress_bar_pack: &GeneratorProgressBarPack,
-    on_hir: impl FnOnce(&HirFlatPack) -> anyhow::Result<()>,
+    on_hir_flat: impl FnOnce(&HirFlatPack) -> anyhow::Result<()>,
 ) -> anyhow::Result<MirPack> {
     let pb = progress_bar_pack.parse_hir_raw.start();
     let hir_raw = hir::raw::parse(&config.hir, dumper)?;
     drop(pb);
 
     let pb = progress_bar_pack.parse_hir_primary.start();
-    let hir_tree = hir::tree::parse(&config.hir, &hir_raw)?;
-    let hir_flat = hir::flat::parse(&config.hir, &hir_tree)?;
-    on_hir(&hir_flat)?;
+    let hir_tree = hir::tree::parse(&config.hir, hir_raw)?;
     dumper.dump(ConfigDumpContent::Hir, "hir_tree.json", &hir_tree)?;
+    let hir_flat = hir::flat::parse(&config.hir, hir_tree)?;
+    on_hir_flat(&hir_flat)?;
     dumper.dump(ConfigDumpContent::Hir, "hir_flat.json", &hir_flat)?;
     drop(pb);
 
