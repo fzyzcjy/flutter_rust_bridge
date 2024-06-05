@@ -25,16 +25,16 @@ pub(crate) fn parse_syn_item(
 ) -> anyhow::Result<()> {
     match item {
         syn::Item::Struct(item_struct) => {
-            (target.structs).extend(parse_syn_item_struct(item_struct, &meta)?);
+            (target.structs).extend(parse_syn_item_struct(item_struct, meta)?);
         }
         syn::Item::Enum(item_enum) => {
-            (target.enums).extend(parse_syn_item_enum(item_enum)?);
+            (target.enums).extend(parse_syn_item_enum(item_enum, meta)?);
         }
         syn::Item::Type(item_type) => {
             target.type_alias.extend(parse_syn_item_type(item_type));
         }
         syn::Item::Fn(item_fn) => {
-            target.functions.push(parse_syn_item_fn(item_fn));
+            target.functions.push(parse_syn_item_fn(item_fn, meta));
         }
         syn::Item::Impl(item_impl) => TODO(parse_syn_item_impl(item_impl)),
         syn::Item::Trait(item_trait) => {

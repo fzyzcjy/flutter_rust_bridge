@@ -1,3 +1,4 @@
+use crate::codegen::ir::hir::flat::type_alias::HirFlatTypeAlias;
 use crate::codegen::ir::hir::hierarchical::type_alias::HirFlatTypeAlias;
 use syn::ItemType;
 
