@@ -53,7 +53,7 @@ fn transform_component_raw<T: Debug + Clone, K: Eq + Hash + Debug>(
     (items.into_iter())
         .into_group_map_by(|x| key(x))
         .into_iter()
-        .map(|(_key, mut items_of_key)| {
+        .map(|(key, mut items_of_key)| {
             for merger in &mergers {
                 merge_vec_by_pair(&mut items_of_key, |a, b| merge(merger.as_ref(), a, b));
             }
@@ -62,8 +62,7 @@ fn transform_component_raw<T: Debug + Clone, K: Eq + Hash + Debug>(
             if items_of_key.len() > 1 {
                 log::warn!(
                     "There are still multiple objects with same key after merging, \
-                    thus randomly pick one (objects={:?})",
-                    items_of_key
+                    thus randomly pick one (key={key:?}, objects={items_of_key:?})",
                 );
             }
 
