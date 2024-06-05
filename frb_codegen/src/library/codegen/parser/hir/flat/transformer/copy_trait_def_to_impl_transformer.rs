@@ -16,7 +16,7 @@ pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
 fn compute_functions(trait_impl: &HirFlatTraitImpl, pack: &HirFlatPack) -> Vec<HirFlatFunction> {
     (pack.functions.iter())
         .filter(|f| {
-            if let HirFlatFunctionOwner::TraitDef { trait_def_name } = f {
+            if let HirFlatFunctionOwner::TraitDef { trait_def_name } = &f.owner {
                 &trait_def_name.name == &trait_impl.trait_name
             } else {
                 false
