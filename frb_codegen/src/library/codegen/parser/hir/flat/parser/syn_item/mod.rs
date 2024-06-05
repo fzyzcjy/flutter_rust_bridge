@@ -19,13 +19,13 @@ use crate::utils::namespace::Namespace;
 
 pub(crate) fn parse_syn_item(
     item: syn::Item,
-    meta: HirTreeModuleMeta,
+    meta: &HirTreeModuleMeta,
     target: &mut HirFlatPack,
     config: &ParserHirInternalConfig,
 ) -> anyhow::Result<()> {
     match item {
         syn::Item::Struct(item_struct) => {
-            (target.structs).extend(parse_syn_item_struct(item_struct)?);
+            (target.structs).extend(parse_syn_item_struct(item_struct, &meta)?);
         }
         syn::Item::Enum(item_enum) => {
             (target.enums).extend(parse_syn_item_enum(item_enum)?);

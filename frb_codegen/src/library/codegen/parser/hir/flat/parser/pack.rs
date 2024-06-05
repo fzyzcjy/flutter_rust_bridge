@@ -11,7 +11,7 @@ pub(crate) fn parse_pack(
 
     let mut pack = HirFlatPack::default();
     for item in items {
-        parse_syn_item(item.item, item.meta, &mut pack, config)?;
+        parse_syn_item(item.item, &item.meta, &mut pack, config)?;
     }
     Ok(pack)
 }

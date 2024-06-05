@@ -1,8 +1,8 @@
-use crate::codegen::ir::hir::hierarchical::struct_or_enum::{HirFlatEnum, HirFlatStruct, HirFlatStructOrEnum};
-use crate::codegen::ir::hir::hierarchical::syn_item_struct_or_enum::SynItemStructOrEnum;
-use crate::codegen::parser::hir::hierarchical::mirror_ident::{
-    parse_mirror_ident, ParseMirrorIdentOutput,
+use crate::codegen::ir::hir::flat::struct_or_enum::{
+    HirFlatEnum, HirFlatStruct, HirFlatStructOrEnum,
 };
+use crate::codegen::ir::hir::misc::syn_item_struct_or_enum::SynItemStructOrEnum;
+use crate::codegen::ir::hir::tree::module::HirTreeModuleMeta;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use itertools::Itertools;
 use log::debug;
@@ -11,21 +11,21 @@ use syn::{Attribute, ItemEnum, ItemStruct};
 
 pub(crate) fn parse_syn_item_struct(
     item: &ItemStruct,
-    namespace: &Namespace,
+    meta: &HirTreeModuleMeta,
 ) -> anyhow::Result<Vec<HirFlatStruct>> {
-    parse_syn_item_struct_or_enum(item, namespace, &item.ident, &item.attrs, &item.vis)
+    parse_syn_item_struct_or_enum(item, meta, &item.ident, &item.attrs, &item.vis)
 }
 
 pub(crate) fn parse_syn_item_enum(
     item: &ItemEnum,
-    namespace: &Namespace,
+    meta: &HirTreeModuleMeta,
 ) -> anyhow::Result<Vec<HirFlatEnum>> {
-    parse_syn_item_struct_or_enum(item, namespace, &item.ident, &item.attrs, &item.vis)
+    parse_syn_item_struct_or_enum(item, meta, &item.ident, &item.attrs, &item.vis)
 }
 
 fn parse_syn_item_struct_or_enum<I: SynItemStructOrEnum>(
     item: &I,
-    namespace: &Namespace,
+    meta: &HirTreeModuleMeta,
     item_ident: &Ident,
     item_attrs: &[Attribute],
     item_vis: &syn::Visibility,
@@ -42,8 +42,8 @@ fn parse_syn_item_struct_or_enum<I: SynItemStructOrEnum>(
         .map(|ident| HirFlatStructOrEnum {
             src: item.clone(),
             visibility: item_vis.into(),
-            name: NamespacedName::new(namespace.to_owned(), ident.to_string()),
-            mirror: mirror_by_ident || !namespace.crate_name().is_self_crate(),
+            name: NamespacedName::new(meta.namespace.to_owned(), ident.to_string()),
+            mirror: mirror_by_ident || !meta.namespace.crate_name().is_self_crate(),
         })
         .collect_vec())
 }
