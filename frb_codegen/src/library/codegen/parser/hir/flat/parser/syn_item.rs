@@ -1,11 +1,12 @@
+use crate::codegen::ir::hir::tree::module::HirTreeModuleMeta;
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 use crate::utils::namespace::Namespace;
 
 pub(crate) fn parse_syn_item(
     item: syn::Item,
+    meta: HirTreeModuleMeta,
     content: &mut HirModuleContent,
     config: &ParserHirInternalConfig,
-    namespace: &Namespace,
 ) -> anyhow::Result<()> {
     match item {
         syn::Item::Struct(item_struct) => {

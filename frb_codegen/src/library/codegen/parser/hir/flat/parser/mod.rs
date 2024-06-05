@@ -1,3 +1,3 @@
+pub(crate) mod flattener;
 pub(crate) mod pack;
-mod flattener;
-mod syn_item;
+pub(crate) mod syn_item;
