@@ -20,7 +20,11 @@ impl BaseMerger for ThirdPartyOverrideMerger {
         base: HirFlatFunction,
         overrider: HirFlatFunction,
     ) -> Option<HirFlatFunction> {
-        todo!()
+        if !is_module_third_party(&overrider.namespace) {
+            return None;
+        }
+
+        Some(todo!())
     }
 
     fn merge_struct_or_enums<Item: SynItemStructOrEnum>(
@@ -28,7 +32,11 @@ impl BaseMerger for ThirdPartyOverrideMerger {
         base: HirFlatStructOrEnum<Item>,
         overrider: HirFlatStructOrEnum<Item>,
     ) -> Vec<HirFlatStructOrEnum<Item>> {
-        todo!()
+        if !is_module_third_party(&overrider.namespace) {
+            return None;
+        }
+
+        Some(todo!())
     }
 }
 
