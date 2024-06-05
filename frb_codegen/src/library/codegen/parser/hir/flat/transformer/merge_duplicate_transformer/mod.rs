@@ -73,8 +73,13 @@ fn transform_component_raw<T, K: Eq + Hash>(
 
 fn merge_vec_by_pair<T>(mut vec: Vec<T>, merger: impl Fn(T, T) -> Option<T>) -> Vec<T> {
     let act_one_round = || {
+        // merge(i,j) may be different from merge(j,i)
         for i in 0..vec.len() {
-            for j in i + 1..vec.len() {
+            for j in 0..vec.len() {
+                if i == j {
+                    continue;
+                }
+
                 if let Some(merged) = merger(vec[i], vec[j]) {
                     // super slow but seems not like a bottleneck so ok
                     *vec = (vec.into_iter().enumerate())
