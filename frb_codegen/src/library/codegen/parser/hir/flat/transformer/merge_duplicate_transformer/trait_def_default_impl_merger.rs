@@ -11,16 +11,8 @@ impl BaseMerger for TraitDefDefaultImplMerger {
         base: &HirFlatFunction,
         overrider: &HirFlatFunction,
     ) -> Option<HirFlatFunction> {
-        if let (
-            HirFlatFunctionOwner::StructOrEnum {
-                trait_def_name: Some(_),
-                ..
-            },
-            HirFlatFunctionOwner::StructOrEnum {
-                trait_def_name: None,
-                ..
-            },
-        ) = (&base.owner, &overrider.owner)
+        if let (HirFlatFunctionSource::CopyFromTraitDef, HirFlatFunctionSource::Normal) =
+            (&base.source, &overrider.source)
         {
             Some(overrider.to_owned())
         } else {
