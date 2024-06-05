@@ -34,16 +34,16 @@ pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
 
 fn transform_component<T, K>(
     items: &mut Vec<T>,
-    key: Fn(&T) -> K,
-    merge: impl Fn(&dyn BaseMerger, T, T) -> Option<T>,
+    key: impl Fn(&T) -> K,
+    merge: impl Fn(&dyn BaseMerger, &T, &T) -> Option<T>,
 ) {
     *items = transform_component_raw(items, key, merge);
 }
 
 fn transform_component_raw<T, K: Eq + Hash>(
     items: Vec<T>,
-    key: Fn(&T) -> K,
-    merge: impl Fn(&dyn BaseMerger, T, T) -> Option<T>,
+    key: impl Fn(&T) -> K,
+    merge: impl Fn(&dyn BaseMerger, &T, &T) -> Option<T>,
 ) -> Vec<T> {
     let mergers = vec![TraitDefDefaultImplMerger, ThirdPartyOverrideMerger];
 
