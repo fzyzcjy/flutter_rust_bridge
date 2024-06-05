@@ -75,7 +75,7 @@ fn transform_component_raw<T: Debug + Clone, K: Eq + Hash>(
 }
 
 fn merge_vec_by_pair<T>(vec: &mut Vec<T>, merger: impl Fn(&T, &T) -> Option<T>) {
-    let act_one_round = || {
+    let mut act_one_round = || {
         // merge(i,j) may be different from merge(j,i)
         for i in 0..vec.len() {
             for j in 0..vec.len() {
