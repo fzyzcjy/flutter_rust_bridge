@@ -162,7 +162,7 @@ fn compute_default_external_library_stem(rust_crate_dir: &Path) -> anyhow::Resul
     let target = (package.targets.iter())
         .find(|target| target.kind.iter().any(|kind| kind.contains("lib")))
         .context("cannot find target")?;
-    Ok(target.name.replace('-', '_'))
+    Ok(target.name.replace('-', "_"))
 }
 
 fn compute_default_external_library_relative_directory(
