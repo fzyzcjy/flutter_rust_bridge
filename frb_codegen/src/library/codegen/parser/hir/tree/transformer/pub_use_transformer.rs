@@ -78,7 +78,7 @@ fn transform_module_by_pub_use_single(
     module: &mut HirTreeModule,
     pub_use_info: &PubUseInfo,
 ) -> anyhow::Result<()> {
-    if let Some(src_mod) = (module.content).get_module_nested(&pub_use_info.namespace.path()) {
+    if let Some(src_mod) = module.get_module_nested(&pub_use_info.namespace.path()) {
         log::debug!(
             "transform_module_by_pub_use_single pub_use_info={:?}",
             pub_use_info
