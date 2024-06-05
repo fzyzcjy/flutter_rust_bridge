@@ -7,7 +7,7 @@ use crate::utils::namespace::NamespacedName;
 impl<'a> ApiDartGeneratorClassTrait for TraitDefApiDartGenerator<'a> {
     fn generate_class(&self) -> Option<ApiDartGeneratedClass> {
         let dart_api_type = &self.mir.name.name;
-        let methods = generate_api_methods(&self.mir.name, self.context, todo!()).join("\n");
+        let methods = generate_api_methods(&self.mir.name, self.context, todo!(), dart_api_type).join("\n");
 
         Some(ApiDartGeneratedClass {
             namespace: self.mir.name.namespace.clone(),

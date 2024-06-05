@@ -19,10 +19,13 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
         let Info {
             dart_api_type,
             methods,
-        } = self.compute_info(&GenerateApiMethodConfig {
-            generate_static: true,
-            generate_non_static: false,
-        });
+        } = self.compute_info(
+            &GenerateApiMethodConfig {
+                generate_static: true,
+                generate_non_static: false,
+            },
+            "",
+        );
 
         let rust_api_type = self.mir.rust_api_type();
 
@@ -57,10 +60,13 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
         let Info {
             dart_api_type,
             methods,
-        } = self.compute_info(&GenerateApiMethodConfig {
-            generate_static: false,
-            generate_non_static: true,
-        });
+        } = self.compute_info(
+            &GenerateApiMethodConfig {
+                generate_static: false,
+                generate_non_static: true,
+            },
+            "Impl",
+        );
 
         let dart_api_type_impl = format!("{dart_api_type}Impl");
 
@@ -91,7 +97,11 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
 }
 
 impl RustOpaqueApiDartGenerator<'_> {
-    fn compute_info(&self, config: &GenerateApiMethodConfig) -> Info {
+    fn compute_info(
+        &self,
+        config: &GenerateApiMethodConfig,
+        dart_class_name_postfix: &str,
+    ) -> Info {
         let dart_api_type = ApiDartGenerator::new(self.mir.clone(), self.context).dart_api_type();
 
         let methods = generate_api_methods(
@@ -101,6 +111,7 @@ impl RustOpaqueApiDartGenerator<'_> {
             ),
             self.context,
             config,
+            &format!("{dart_api_type}{dart_class_name_postfix}"),
         )
         .join("\n");
 

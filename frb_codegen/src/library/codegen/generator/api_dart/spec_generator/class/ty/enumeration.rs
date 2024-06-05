@@ -15,7 +15,7 @@ impl<'a> ApiDartGeneratorClassTrait for EnumRefApiDartGenerator<'a> {
             &src.name,
             self.context,
             &GenerateApiMethodConfig::COMBINED,
-            src.name.name,
+            &src.name.name,
         )
         .join("\n");
         let extra_body =
