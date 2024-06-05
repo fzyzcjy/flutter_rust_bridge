@@ -57,7 +57,7 @@ fn transform_component_raw<T: Debug + Clone, K: Eq + Hash>(
         .map(|(_key, items_of_key)| {
             let mut items_of_key = items_of_key.collect_vec();
             for merger in &mergers {
-                items_of_key = merge_vec_by_pair(items_of_key, |a, b| merge(merger.as_ref(), a, b));
+                merge_vec_by_pair(&mut items_of_key, |a, b| merge(merger.as_ref(), a, b));
             }
             assert!(!items_of_key.is_empty());
 
@@ -74,7 +74,7 @@ fn transform_component_raw<T: Debug + Clone, K: Eq + Hash>(
         .collect_vec()
 }
 
-fn merge_vec_by_pair<T>(mut vec: Vec<T>, merger: impl Fn(&T, &T) -> Option<T>) -> Vec<T> {
+fn merge_vec_by_pair<T>(vec: &mut Vec<T>, merger: impl Fn(&T, &T) -> Option<T>) {
     let act_one_round = || {
         // merge(i,j) may be different from merge(j,i)
         for i in 0..vec.len() {
@@ -85,7 +85,7 @@ fn merge_vec_by_pair<T>(mut vec: Vec<T>, merger: impl Fn(&T, &T) -> Option<T>) -
 
                 if let Some(merged) = merger(&vec[i], &vec[j]) {
                     // super slow but seems not like a bottleneck so ok
-                    vec = (vec.into_iter().enumerate())
+                    *vec = (vec.drain(..).enumerate())
                         .filter(|(item_index, _)| *item_index != i && *item_index != j)
                         .map(|(_, value)| value)
                         .collect_vec();
@@ -99,5 +99,4 @@ fn merge_vec_by_pair<T>(mut vec: Vec<T>, merger: impl Fn(&T, &T) -> Option<T>) -
     };
 
     while act_one_round() {}
-    vec
 }
