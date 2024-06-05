@@ -12,7 +12,6 @@ pub(crate) fn parse(
 ) -> anyhow::Result<HirFlatPack> {
     let pack = parser::pack::parse_pack(config, hir_tree)?;
     let pack = transformer::function_interest_module_transformer::transform(pack, config)?;
-    let pack = transformer::item_visibility_transformer::transform(pack, config)?;
     let pack = transformer::remove_not_defined_trait_transformer::transform(pack)?;
     let pack = transformer::copy_trait_def_to_impl_transformer::transform(pack)?;
     let pack = transformer::merge_duplicate_transformer::transform(pack)?;
