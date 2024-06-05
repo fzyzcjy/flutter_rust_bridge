@@ -38,7 +38,7 @@ fn merge_core<T: Clone>(
     overrider_namespace: &Namespace,
     writer: impl Fn(&mut T),
 ) -> Option<T> {
-    is_module_third_party(overrider.namespace).then(|| {
+    is_module_third_party(overrider_namespace).then(|| {
         let mut ans = base.to_owned();
         writer(&mut ans);
         ans
