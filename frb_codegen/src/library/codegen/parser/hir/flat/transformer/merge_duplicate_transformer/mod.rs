@@ -18,17 +18,17 @@ pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
     transform_component(
         &mut pack.functions,
         |x| x.owner_and_name(),
-        |x| merger.merge_functions(x),
+        merger.merge_functions,
     );
     transform_component(
         &mut pack.structs,
         |x| x.name.clone(),
-        |x| merger.merge_struct_or_enums(x),
+        merger.merge_struct_or_enums,
     );
     transform_component(
         &mut pack.enums,
         |x| x.name.clone(),
-        |x| merger.merge_struct_or_enums(x),
+        merger.merge_struct_or_enums,
     );
     Ok(pack)
 }
@@ -36,7 +36,7 @@ pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
 fn transform_component<T, K>(
     items: &mut Vec<T>,
     key: Fn(&T) -> K,
-    merge: impl Fn(Vec<T>) -> Vec<T>,
+    merger: impl Fn(T, T) -> Option<T>,
 ) {
     *items = transform_component_raw(items, key, merge);
 }
@@ -44,14 +44,14 @@ fn transform_component<T, K>(
 fn transform_component_raw<T, K: Eq + Hash>(
     items: Vec<T>,
     key: Fn(&T) -> K,
-    merge: impl Fn(Vec<T>) -> Vec<T>,
+    merger: impl Fn(T, T) -> Option<T>,
 ) -> Vec<T> {
     (items.into_iter())
         .group_by(key)
         .into_iter()
         .map(|(_key, items_of_key)| {
             let items_of_key = items_of_key.collect_vec();
-            let merged_items_of_key = merge(items_of_key);
+            let merged_items_of_key = merge_vec_by_pair(items_of_key, merger);
             assert!(!merged_items_of_key.is_empty());
 
             if merged_items_of_key.len() > 1 {
