@@ -10,7 +10,7 @@ pub(crate) fn transform(
     mut pack: HirFlatPack,
     config: &ParserHirInternalConfig,
 ) -> anyhow::Result<HirFlatPack> {
-    transform_component(&mut pack.functions);
+    transform_component(&mut pack.functions, |x| x.is_public().unwrap());
     Ok(pack)
 }
 
