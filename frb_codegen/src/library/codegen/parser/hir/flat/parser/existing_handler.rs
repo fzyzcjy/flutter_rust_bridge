@@ -8,7 +8,7 @@ use itertools::Itertools;
 
 pub(super) fn parse_existing_handler(
     items: &[SynItemWithMeta],
-) -> anyhow::Result<Vec<NamespacedName>> {
+) -> anyhow::Result<Option<NamespacedName>> {
     let existing_handlers = (items.iter())
         .filter(|item| parse_has_executor(&item.item))
         .map(|item| NamespacedName::new(item.meta.namespace.to_owned(), HANDLER_NAME.to_owned()))
@@ -21,7 +21,7 @@ pub(super) fn parse_existing_handler(
         existing_handlers.iter().map(|x| x.rust_style()).join(", ")
     );
     // frb-coverage:ignore-end
-    Ok(existing_handlers.first())
+    Ok(existing_handlers.first().cloned())
 }
 
 fn parse_has_executor(item: &syn::Item) -> bool {
