@@ -34,6 +34,7 @@ pub(crate) mod rust_auto_opaque_implicit;
 mod rust_opaque;
 pub(crate) mod slice;
 pub(crate) mod structure;
+pub(crate) mod trait_object;
 pub(crate) mod tuple;
 pub(crate) mod ty;
 pub(crate) mod unencodable;

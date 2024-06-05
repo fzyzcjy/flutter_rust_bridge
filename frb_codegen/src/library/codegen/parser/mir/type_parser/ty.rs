@@ -13,6 +13,9 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             Type::Array(type_array) => self.parse_type_array(&type_array)?,
             Type::Slice(type_slice) => self.parse_type_slice(&type_slice)?,
             Type::Tuple(type_tuple) => self.parse_type_tuple(&type_tuple)?,
+            Type::TraitObject(type_trait_object) => {
+                self.parse_type_trait_object(&type_trait_object)?
+            }
             Type::ImplTrait(type_impl_trait) => self
                 .parse_type_impl_trait_dart_fn(&type_impl_trait)
                 .context("when trying to parse DartFn")?,
