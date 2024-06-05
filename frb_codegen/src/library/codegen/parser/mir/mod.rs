@@ -75,7 +75,8 @@ fn parse_mir_funcs(
 
     let (mir_funcs_normal, mir_skips): (Vec<_>, Vec<_>) = src_fns
         .iter()
-        // sort to make things stable
+        // Sort to make things stable. The order of parsing functions will affect things like, e.g.,
+        // which file an opaque type is put in.
         .sorted_by_key(|f| f.owner_and_name_for_dedup())
         .map(|f| {
             function_parser.parse_function(
