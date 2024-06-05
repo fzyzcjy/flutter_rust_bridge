@@ -8,20 +8,20 @@ pub(super) fn parse_module(
     meta: HirTreeModuleMeta,
     config: &ParserHirInternalConfig,
 ) -> anyhow::Result<HirTreeModule> {
-    let mut content = HirTreeModuleContent::default();
+    let mut output_items = vec![];
+    let mut output_modules = vec![];
+
     for item in items.iter() {
-        parse_syn_item(
-            item,
-            &mut content,
-            config,
-            &meta.namespace,
-            &meta.parent_vis,
-        )?;
+        match item {
+            syn::Item::Mod(item_mod) => TODO,
+            _ => items.push(item.to_owned()),
+        }
     }
 
     Ok(HirTreeModule {
         meta,
-        content,
+        items: output_items,
+        modules: output_modules,
         raw: (items.iter())
             .filter(|item| !matches!(item, syn::Item::Mod(_)))
             .map(|item| quote::quote!(#item).to_string())

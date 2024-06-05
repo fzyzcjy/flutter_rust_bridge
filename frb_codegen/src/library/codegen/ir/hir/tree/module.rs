@@ -6,7 +6,8 @@ use serde::Serialize;
 #[derive(Clone, Debug, Serialize)]
 pub struct HirTreeModule {
     pub meta: HirTreeModuleMeta,
-    pub content: HirTreeModuleContent,
+    pub modules: Vec<HirTreeModule>,
+    pub items: Vec<syn::Item>,
     #[serde(skip_serializing)] // avoid too big debug dump
     pub raw: Vec<String>,
 }
@@ -14,10 +15,5 @@ pub struct HirTreeModule {
 #[derive(Clone, Derivative, Serialize)]
 #[derivative(Debug)]
 pub struct HirTreeModuleMeta {
-    // TODO
-}
-
-#[derive(Debug, Clone, Serialize, Default)]
-pub struct HirTreeModuleContent {
     // TODO
 }
