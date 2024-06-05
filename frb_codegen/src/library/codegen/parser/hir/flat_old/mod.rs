@@ -49,7 +49,7 @@ fn collect_structs(hir_pack: &HirPack) -> HashMap<String, &HirStruct> {
     collect_objects_map(
         hir_pack,
         |module| &module.content.structs,
-        |x| (x.ident.to_string(), x),
+        |x| (x.name.name.clone(), x),
     )
 }
 
@@ -57,7 +57,7 @@ fn collect_enums(hir_pack: &HirPack) -> HashMap<String, &HirEnum> {
     collect_objects_map(
         hir_pack,
         |module| &module.content.enums,
-        |x| (x.ident.to_string(), x),
+        |x| (x.name.name.clone(), x),
     )
 }
 

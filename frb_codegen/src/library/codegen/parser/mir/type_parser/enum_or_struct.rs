@@ -56,7 +56,7 @@ where
             if (self.parser_info().parsing_or_parsed_objects).insert(namespaced_name.clone()) {
                 let (name, wrapper_name) = compute_name_and_wrapper_name(
                     &namespaced_name.namespace,
-                    &src_object.ident,
+                    &src_object.name.name,
                     src_object.mirror,
                 );
                 let parsed_object = self.parse_inner_impl(&src_object, name, wrapper_name)?;
@@ -155,11 +155,10 @@ impl<Id, Obj> EnumOrStructParserInfo<Id, Obj> {
 
 fn compute_name_and_wrapper_name(
     namespace: &Namespace,
-    ident: &Ident,
+    name: &str,
     mirror: bool,
 ) -> (NamespacedName, Option<String>) {
-    let name = ident.to_string();
-    let namespaced_name = NamespacedName::new(namespace.clone(), name);
+    let namespaced_name = NamespacedName::new(namespace.clone(), name.clone());
     let wrapper_name = if mirror {
         Some(format!("FrbWrapper<{}>", namespaced_name.rust_style()))
     } else {

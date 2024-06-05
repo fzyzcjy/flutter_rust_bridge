@@ -66,7 +66,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     ) -> anyhow::Result<MirVariant> {
         Ok(MirVariant {
             name: MirIdent::new(variant.ident.to_string()),
-            wrapper_name: MirIdent::new(format!("{}_{}", src_enum.ident, variant.ident)),
+            wrapper_name: MirIdent::new(format!("{}_{}", src_enum.name.name, variant.ident)),
             comments: parse_comments(&variant.attrs),
             kind: match variant.fields.iter().next() {
                 None => MirVariantKind::Value,

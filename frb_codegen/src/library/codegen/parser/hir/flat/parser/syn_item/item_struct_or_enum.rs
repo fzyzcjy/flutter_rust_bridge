@@ -39,15 +39,11 @@ fn parse_syn_item_struct_or_enum<I: SynItemStructOrEnum>(
 
     Ok(idents
         .into_iter()
-        .map(|ident| {
-            let ident_str = ident.to_string();
-            HirStructOrEnum {
-                ident,
-                src: item.clone(),
-                visibility: item_vis.into(),
-                name: NamespacedName::new(namespace.to_owned(), ident_str),
-                mirror: mirror_by_ident || !namespace.crate_name().is_self_crate(),
-            }
+        .map(|ident| HirStructOrEnum {
+            src: item.clone(),
+            visibility: item_vis.into(),
+            name: NamespacedName::new(namespace.to_owned(), ident.to_string()),
+            mirror: mirror_by_ident || !namespace.crate_name().is_self_crate(),
         })
         .collect_vec())
 }

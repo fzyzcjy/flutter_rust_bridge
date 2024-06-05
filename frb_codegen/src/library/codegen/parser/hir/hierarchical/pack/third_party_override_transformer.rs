@@ -68,7 +68,7 @@ fn transform_module_content_struct_or_enums<Item: SynItemStructOrEnum>(
     transform_module_content_general_vec(
         target,
         src_content_struct_or_enums,
-        |x| x.ident.to_string(),
+        |x| x.name.name.clone(),
         |target, src| {
             target.src.attrs_mut().extend(src.src.attrs().to_owned());
         },
