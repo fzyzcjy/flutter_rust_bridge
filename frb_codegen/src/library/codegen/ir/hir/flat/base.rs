@@ -1,7 +1,5 @@
 use crate::utils::namespace::Namespace;
 
-pub(crate) trait HirCommon {
+pub(crate) trait HirComponent {
     fn with_namespace(&self, namespace: Namespace) -> Self;
-
-    fn name_for_use_stmt(&self) -> String;
 }
