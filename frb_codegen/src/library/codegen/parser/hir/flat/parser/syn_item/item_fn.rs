@@ -6,11 +6,10 @@ use crate::utils::namespace::{Namespace, NamespacedName};
 use itertools::Itertools;
 use syn::{ImplItem, ItemFn, ItemImpl};
 
-pub(crate) fn parse_syn_item_fn(item_fn: &ItemFn, meta: &HirTreeModuleMeta) -> HirFlatFunction {
+pub(crate) fn parse_syn_item_fn(item_fn: ItemFn, meta: &HirTreeModuleMeta) -> HirFlatFunction {
     HirFlatFunction {
         namespace: meta.namespace.clone(),
         owner: HirFlatFunctionOwner::Function,
-        item_fn: GeneralizedItemFn::ItemFn(item_fn.to_owned()),
+        item_fn: GeneralizedItemFn::ItemFn(item_fn),
     }
 }
-

@@ -13,21 +13,21 @@ use proc_macro2::Ident;
 use syn::{Attribute, ItemEnum, ItemStruct};
 
 pub(crate) fn parse_syn_item_struct(
-    item: &ItemStruct,
+    item: ItemStruct,
     meta: &HirTreeModuleMeta,
 ) -> anyhow::Result<Vec<HirFlatStruct>> {
     parse_syn_item_struct_or_enum(item, meta, &item.ident, &item.attrs, &item.vis)
 }
 
 pub(crate) fn parse_syn_item_enum(
-    item: &ItemEnum,
+    item: ItemEnum,
     meta: &HirTreeModuleMeta,
 ) -> anyhow::Result<Vec<HirFlatEnum>> {
     parse_syn_item_struct_or_enum(item, meta, &item.ident, &item.attrs, &item.vis)
 }
 
 fn parse_syn_item_struct_or_enum<I: SynItemStructOrEnum>(
-    item: &I,
+    item: I,
     meta: &HirTreeModuleMeta,
     item_ident: &Ident,
     item_attrs: &[Attribute],
@@ -46,7 +46,7 @@ fn parse_syn_item_struct_or_enum<I: SynItemStructOrEnum>(
             name: NamespacedName::new(meta.namespace.to_owned(), ident.to_string()),
             visibility: item_vis.into(),
             mirror: mirror_by_ident || !meta.namespace.crate_name().is_self_crate(),
-            src: item.clone(),
+            src: item,
         })
         .collect_vec())
 }
