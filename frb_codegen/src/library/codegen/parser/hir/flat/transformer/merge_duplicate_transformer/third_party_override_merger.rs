@@ -21,10 +21,8 @@ impl BaseMerger for ThirdPartyOverrideMerger {
         base: &HirFlatFunction,
         overrider: &HirFlatFunction,
     ) -> Option<HirFlatFunction> {
-        is_module_third_party(&overrider.namespace).then(|| {
-            let mut ans = base.to_owned();
-            (ans.item_fn.attrs_mut()).extend(overrider.item_fn.attrs().to_owned());
-            ans
+        merge_core(base, overrider, &overrider.namespace, |ans| {
+            (ans.item_fn.attrs_mut()).extend(overrider.item_fn.attrs().to_owned())
         })
     }
 
@@ -33,12 +31,23 @@ impl BaseMerger for ThirdPartyOverrideMerger {
         base: &HirFlatStructOrEnum<Item>,
         overrider: &HirFlatStructOrEnum<Item>,
     ) -> Option<HirFlatStructOrEnum<Item>> {
-        is_module_third_party(&overrider.name.namespace).then(|| {
-            let mut ans = base.to_owned();
+        merge_core(base, overrider, &overrider.name.namespace, |ans| {
             ans.src.attrs_mut().extend(overrider.src.attrs().to_owned());
-            ans
         })
     }
+}
+
+fn merge_core<T>(
+    base: &T,
+    overrider: &T,
+    overrider_namespace: &Namespace,
+    writer: impl Fn(&mut T),
+) -> Option<T> {
+    is_module_third_party(&namespace).then(|| {
+        let mut ans = base.to_owned();
+        writer(ans);
+        ans
+    })
 }
 
 fn is_module_third_party(namespace: &Namespace) -> bool {
