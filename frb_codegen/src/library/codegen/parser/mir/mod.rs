@@ -9,7 +9,7 @@ pub(crate) mod reader;
 pub(crate) mod sanity_checker;
 pub(crate) mod type_parser;
 
-use crate::codegen::ir::hir::flat::HirFlatCrate;
+use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::hir::hierarchical::function::HirFlatFunction;
 use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirFlatStruct;
 use crate::codegen::ir::mir::func::MirFunc;
@@ -27,23 +27,23 @@ use std::collections::HashMap;
 
 pub(crate) fn parse(
     config: &ParserMirInternalConfig,
-    hir_flat_crate: &HirFlatCrate,
+    hir_flat: &HirFlatPack,
 ) -> anyhow::Result<MirPack> {
     let mut type_parser = TypeParser::new(
-        hir_flat_crate.structs.clone(),
-        hir_flat_crate.enums.clone(),
-        hir_flat_crate.types.clone(),
+        hir_flat.structs.clone(),
+        hir_flat.enums.clone(),
+        hir_flat.types.clone(),
     );
 
     let (mir_funcs, mir_skips) = parse_mir_funcs(
         config,
-        &hir_flat_crate.functions,
+        &hir_flat.functions,
         &mut type_parser,
-        &hir_flat_crate.structs,
+        &hir_flat.structs,
     )?;
 
     let existing_handlers = existing_handler::parse_existing_handlers(
-        &hir_flat_crate.modules,
+        &hir_flat.modules,
         &config.rust_input_namespace_pack,
     )?;
 
@@ -61,8 +61,8 @@ pub(crate) fn parse(
 
     ans.unused_types = get_unused_types(
         &ans,
-        &hir_flat_crate.structs,
-        &hir_flat_crate.enums,
+        &hir_flat.structs,
+        &hir_flat.enums,
         &config.rust_input_namespace_pack,
     )?;
 
