@@ -51,10 +51,9 @@ fn transform_component_raw<T: Debug + Clone, K: Eq + Hash + Debug>(
     ];
 
     (items.into_iter())
-        .group_by(|x| key(x))
+        .into_group_map_by(|x| key(x))
         .into_iter()
-        .map(|(_key, items_of_key)| {
-            let mut items_of_key = items_of_key.collect_vec();
+        .map(|(_key, mut items_of_key)| {
             for merger in &mergers {
                 merge_vec_by_pair(&mut items_of_key, |a, b| merge(merger.as_ref(), a, b));
             }
