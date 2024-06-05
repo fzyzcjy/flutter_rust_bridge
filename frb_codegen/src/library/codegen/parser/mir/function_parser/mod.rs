@@ -185,12 +185,15 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
                 let actual_method_name = sig.ident.to_string();
 
+                let trait_def_namespaced_name = trait_def_name
+                    .map(|trait_def_name| self.type_parser.src_traits.get(trait_def_name));
+
                 MirFuncOwnerInfo::Method(MirFuncOwnerInfoMethod {
                     owner_ty,
                     actual_method_name,
                     actual_method_dart_name,
                     mode,
-                    trait_def_name: trait_def_name.to_owned(),
+                    trait_def_name: trait_def_namespaced_name,
                 })
             }
         }))
