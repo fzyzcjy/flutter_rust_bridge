@@ -89,6 +89,7 @@ impl<'a> ApiDartGeneratorInfoTrait for DelegateApiDartGenerator<'a> {
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => {
                 ApiDartGenerator::new(mir.inner.clone(), self.context).dart_api_type()
             }
+            MirTypeDelegate::DynTrait(mir) => mir.name.name.clone(),
         }
     }
 
