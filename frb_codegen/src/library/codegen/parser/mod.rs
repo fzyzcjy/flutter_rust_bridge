@@ -32,6 +32,7 @@ fn parse_inner(
     let hir_flat = hir::flat::parse(&config.hir, &hir_tree)?;
     on_hir(&hir_tree)?;
     dumper.dump(ConfigDumpContent::Hir, "hir_tree.json", &hir_tree)?;
+    dumper.dump(ConfigDumpContent::Hir, "hir_flat.json", &hir_flat)?;
     drop(pb);
 
     let pb = progress_bar_pack.parse_mir.start();
