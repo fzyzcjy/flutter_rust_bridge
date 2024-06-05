@@ -14,29 +14,29 @@ pub(crate) mod trait_def_default_impl_merger;
 pub(crate) mod trait_impl_merger;
 
 pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
-    let merger = CombinedMerger(vec![TraitDefDefaultImplMerger, ThirdPartyOverrideMerger]);
     transform_component(
         &mut pack.functions,
         |x| x.owner_and_name(),
-        merger.merge_functions,
+        |merger, a, b| merger.merge_functions(a, b),
     );
     transform_component(
         &mut pack.structs,
         |x| x.name.clone(),
-        merger.merge_struct_or_enums,
+        |merger, a, b| merger.merge_struct_or_enums(a, b),
     );
     transform_component(
         &mut pack.enums,
         |x| x.name.clone(),
-        merger.merge_struct_or_enums,
+        |merger, a, b| merger.merge_struct_or_enums(a, b),
     );
+
     Ok(pack)
 }
 
 fn transform_component<T, K>(
     items: &mut Vec<T>,
     key: Fn(&T) -> K,
-    merger: impl Fn(T, T) -> Option<T>,
+    merge: impl Fn(&dyn BaseMerger, T, T) -> Option<T>,
 ) {
     *items = transform_component_raw(items, key, merge);
 }
@@ -44,21 +44,25 @@ fn transform_component<T, K>(
 fn transform_component_raw<T, K: Eq + Hash>(
     items: Vec<T>,
     key: Fn(&T) -> K,
-    merger: impl Fn(T, T) -> Option<T>,
+    merge: impl Fn(&dyn BaseMerger, T, T) -> Option<T>,
 ) -> Vec<T> {
+    let mergers = vec![TraitDefDefaultImplMerger, ThirdPartyOverrideMerger];
+
     (items.into_iter())
         .group_by(key)
         .into_iter()
         .map(|(_key, items_of_key)| {
-            let items_of_key = items_of_key.collect_vec();
-            let merged_items_of_key = merge_vec_by_pair(items_of_key, merger);
-            assert!(!merged_items_of_key.is_empty());
+            let mut items_of_key = items_of_key.collect_vec();
+            for merger in &mergers {
+                *items_of_key = merge_vec_by_pair(items_of_key, |a, b| merge(merger, a, b));
+            }
+            assert!(!items_of_key.is_empty());
 
-            if merged_items_of_key.len() > 1 {
+            if items_of_key.len() > 1 {
                 log::warn!(
                     "There are still multiple objects with same key after merging, \
                     thus randomly pick one (objects={:?})",
-                    merged_items_of_key
+                    items_of_key
                 );
             }
 
