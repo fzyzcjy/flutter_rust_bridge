@@ -16,12 +16,19 @@ pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
 fn compute_functions(trait_impl: &HirFlatTraitImpl, pack: &HirFlatPack) -> Vec<HirFlatFunction> {
     (pack.functions.iter())
         .filter(|f| {
-            TODO;
-            TODO;
+            if let HirFlatFunctionOwner::TraitDef { trait_def_name } = f {
+                &trait_def_name.name == &trait_impl.trait_name
+            } else {
+                false
+            }
         })
-        .map(|f| {
-            TODO;
-            TODO;
+        .map(|f| HirFlatFunction {
+            namespace: TODO,
+            owner: HirFlatFunctionOwner::StructOrEnum {
+                impl_ty: trait_impl.impl_ty.clone(),
+                trait_def_name: Some(trait_impl.trait_name.clone()),
+            },
+            item_fn: f.item_fn.clone(),
         })
         .collect_vec()
 }

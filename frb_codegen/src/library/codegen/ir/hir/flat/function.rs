@@ -38,12 +38,12 @@ impl HirFlatFunction {
 pub(crate) enum HirFlatFunctionOwner {
     Function,
     StructOrEnum {
-        #[serde(serialize_with = "serialize_item_impl")]
-        item_impl: ItemImpl,
+        #[serde(serialize_with = "serialize_syn")]
+        impl_ty: syn::Type,
         trait_def_name: Option<NamespacedName>,
     },
     TraitDef {
-        trait_def_name: Option<NamespacedName>,
+        trait_def_name: NamespacedName,
     },
 }
 
@@ -51,7 +51,7 @@ impl HirFlatFunctionOwner {
     pub(crate) fn simple_name(&self) -> Option<String> {
         match self {
             Self::Function => None,
-            Self::StructOrEnum { item_impl, .. } => Some(ty_to_string(&item_impl.self_ty)),
+            Self::StructOrEnum { impl_ty, .. } => Some(ty_to_string(impl_ty)),
         }
     }
 }
