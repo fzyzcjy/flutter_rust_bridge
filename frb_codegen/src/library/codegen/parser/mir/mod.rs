@@ -30,7 +30,8 @@ pub(crate) fn parse(
 ) -> anyhow::Result<MirPack> {
     let structs_map = hir_flat.structs_map();
     let enums_map = hir_flat.enums_map();
-    let mut type_parser = TypeParser::new(structs_map, enums_map, hir_flat.types_map());
+    let traits_map = hir_flat.traits_map();
+    let mut type_parser = TypeParser::new(structs_map, enums_map, traits_map, hir_flat.types_map());
 
     let (mir_funcs, mir_skips) =
         parse_mir_funcs(config, &hir_flat.functions, &mut type_parser, &structs_map)?;

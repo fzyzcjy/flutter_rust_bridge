@@ -17,6 +17,7 @@ use crate::codegen::parser::mir::type_parser::rust_opaque::RustOpaqueParserInfo;
 use crate::utils::namespace::Namespace;
 use std::collections::HashMap;
 use syn::Type;
+use crate::codegen::ir::hir::flat::traits::HirFlatTrait;
 
 pub(crate) mod array;
 pub(crate) mod concrete;
@@ -42,6 +43,7 @@ pub(crate) mod unencodable;
 pub(crate) struct TypeParser<'a> {
     src_structs: HashMap<String, &'a HirFlatStruct>,
     src_enums: HashMap<String, &'a HirFlatEnum>,
+    src_traits: HashMap<String, &'a HirFlatTrait>,
     src_types: HashMap<String, Type>,
     dart_code_of_type: HashMap<String, String>,
     struct_parser_info: EnumOrStructParserInfo<MirStructIdent, MirStruct>,
@@ -55,11 +57,13 @@ impl<'a> TypeParser<'a> {
     pub(crate) fn new(
         src_structs: HashMap<String, &'a HirFlatStruct>,
         src_enums: HashMap<String, &'a HirFlatEnum>,
+        src_traits: HashMap<String, &'a HirFlatTrait>,
         src_types: HashMap<String, Type>,
     ) -> Self {
         TypeParser {
             src_structs,
             src_enums,
+            src_traits,
             src_types,
             dart_code_of_type: HashMap::new(),
             struct_parser_info: EnumOrStructParserInfo::new(),

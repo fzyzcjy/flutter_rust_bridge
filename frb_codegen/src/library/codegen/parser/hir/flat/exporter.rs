@@ -1,5 +1,6 @@
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::hir::flat::struct_or_enum::{HirFlatEnum, HirFlatStruct};
+use crate::codegen::ir::hir::flat::traits::HirFlatTrait;
 use log::debug;
 use std::collections::HashMap;
 use std::fmt::{Debug, Display};
@@ -13,6 +14,10 @@ impl HirFlatPack {
 
     pub(crate) fn enums_map(&self) -> HashMap<String, &HirFlatEnum> {
         vec_to_map_with_warn(&self.enums, |x| (x.name.name.clone(), x))
+    }
+
+    pub(crate) fn traits_map(&self) -> HashMap<String, &HirFlatTrait> {
+        vec_to_map_with_warn(&self.traits, |x| (x.name.name.clone(), x))
     }
 
     pub(crate) fn types_map(&self) -> HashMap<String, Type> {
