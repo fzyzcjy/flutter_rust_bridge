@@ -1,4 +1,5 @@
 use itertools::Itertools;
+use serde::Serialize;
 use std::fmt::Debug;
 use std::hash::Hash;
 
@@ -32,7 +33,7 @@ pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
     Ok(pack)
 }
 
-fn transform_component<T: Debug + Clone, K: Eq + Hash + Debug>(
+fn transform_component<T: Debug + Clone + Serialize, K: Eq + Hash + Debug>(
     items: &mut Vec<T>,
     key: impl Fn(&T) -> K,
     merge: impl Fn(&dyn BaseMerger, &T, &T) -> Option<T>,
@@ -40,7 +41,7 @@ fn transform_component<T: Debug + Clone, K: Eq + Hash + Debug>(
     *items = transform_component_raw(items.drain(..).collect_vec(), key, merge);
 }
 
-fn transform_component_raw<T: Debug + Clone, K: Eq + Hash + Debug>(
+fn transform_component_raw<T: Debug + Clone + Serialize, K: Eq + Hash + Debug>(
     items: Vec<T>,
     key: impl Fn(&T) -> K,
     merge: impl Fn(&dyn BaseMerger, &T, &T) -> Option<T>,
@@ -62,7 +63,11 @@ fn transform_component_raw<T: Debug + Clone, K: Eq + Hash + Debug>(
             if items_of_key.len() > 1 {
                 log::warn!(
                     "There are still multiple objects with same key after merging, \
-                    thus randomly pick one (key={key:?}, objects={items_of_key:?})",
+                    thus randomly pick one (key={key:?}, objects={:?})",
+                    items_of_key
+                        .iter()
+                        .map(|x| serde_json::to_string(x))
+                        .join(", "),
                 );
             }
 
