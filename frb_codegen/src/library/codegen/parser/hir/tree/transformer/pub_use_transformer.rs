@@ -23,7 +23,7 @@ fn transform_module(module: &mut HirTreeModule) -> anyhow::Result<()> {
 
     let pub_use_infos = parse_pub_use_from_items(&module.items);
     for pub_use_info in pub_use_infos {
-        transform_module_by_pub_use_single(&mut module, &pub_use_info)?;
+        transform_module_by_pub_use_single(module, &pub_use_info)?;
     }
     Ok(())
 }

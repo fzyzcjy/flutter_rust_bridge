@@ -25,9 +25,9 @@ impl HirFlatPack {
     }
 }
 
-fn vec_to_map_with_warn<T, K: Eq + Hash + Display, V: Debug>(
-    items: &[T],
-    extract_entry: impl Fn(&T) -> (K, V),
+fn vec_to_map_with_warn<'a, T, K: Eq + Hash + Display, V: Debug + 'a>(
+    items: &'a [T],
+    extract_entry: impl Fn(&'a T) -> (K, V),
 ) -> HashMap<K, V> {
     let mut ans = HashMap::new();
     for item in items {
