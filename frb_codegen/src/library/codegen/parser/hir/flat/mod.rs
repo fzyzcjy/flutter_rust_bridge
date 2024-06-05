@@ -9,5 +9,7 @@ pub(crate) fn parse(
     hir_tree: HirTreePack,
 ) -> anyhow::Result<HirFlatPack> {
     let pack = parser::pack::parse_pack(config, hir_tree)?;
+    let pack = transformer::trait_impl_transformer::transform(pack)?;
+    let pack = transformer::third_party_override_transformer::transform(pack)?;
     Ok(pack)
 }
