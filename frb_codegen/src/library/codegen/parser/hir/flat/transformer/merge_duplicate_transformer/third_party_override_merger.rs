@@ -1,7 +1,7 @@
 use crate::codegen::ir::hir::flat::function::HirFlatFunction;
 use crate::codegen::ir::hir::flat::struct_or_enum::{HirFlatEnum, HirFlatStruct};
 use crate::codegen::ir::hir::misc::syn_item_struct_or_enum::SynItemStructOrEnum;
-use crate::codegen::misc::THIRD_PARTY_DIR_NAME;
+use crate::codegen::misc::{THIRD_PARTY_DIR_NAME, THIRD_PARTY_NAMESPACE};
 use crate::codegen::parser::hir::flat::transformer::merge_duplicate_transformer::base::BaseMerger;
 use crate::utils::crate_name::CrateName;
 use crate::utils::namespace::Namespace;
@@ -14,7 +14,11 @@ impl BaseMerger for ThirdPartyOverrideMerger {
         base: &HirFlatFunction,
         overrider: &HirFlatFunction,
     ) -> Option<HirFlatFunction> {
-        log::info!("hi merge_functions {} {}", serde_json::to_string(base).unwrap(), serde_json::to_string(overrider).unwrap());
+        log::info!(
+            "hi merge_functions {} {}",
+            serde_json::to_string(base).unwrap(),
+            serde_json::to_string(overrider).unwrap()
+        );
         merge_core(base, &overrider.namespace, |ans| {
             (ans.item_fn.attrs_mut()).extend(overrider.item_fn.attrs().to_owned())
         })
@@ -50,9 +54,5 @@ fn merge_core<T: Clone>(
 }
 
 fn is_module_third_party(namespace: &Namespace) -> bool {
-    Namespace::new(vec![
-        CrateName::SELF_CRATE.to_owned(),
-        THIRD_PARTY_DIR_NAME.to_owned(),
-    ])
-    .is_prefix_of(namespace)
+    THIRD_PARTY_NAMESPACE.is_prefix_of(namespace)
 }
