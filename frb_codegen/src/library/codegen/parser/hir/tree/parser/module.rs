@@ -1,7 +1,5 @@
 use crate::codegen::ir::hir::misc::HirVisibility;
-use crate::codegen::ir::hir::tree::module::{
-    HirTreeModule, HirTreeModuleContent, HirTreeModuleMeta,
-};
+use crate::codegen::ir::hir::tree::module::{HirTreeModule, HirTreeModuleMeta};
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 use crate::utils::namespace::Namespace;
 use syn::ItemMod;
