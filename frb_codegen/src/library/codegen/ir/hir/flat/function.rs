@@ -22,11 +22,11 @@ impl HirFlatFunction {
     pub(crate) fn is_public(&self) -> Option<bool> {
         match self.owner {
             HirFlatFunctionOwner::Function
-            | HirFlatFunctionOwner::Method {
+            | HirFlatFunctionOwner::StructOrEnum {
                 trait_def_name: None,
                 ..
             } => (self.item_fn.vis()).map(|vis| matches!(vis, Visibility::Public(_))),
-            HirFlatFunctionOwner::Method {
+            HirFlatFunctionOwner::StructOrEnum {
                 trait_def_name: Some(_),
                 ..
             } => None,
@@ -37,7 +37,7 @@ impl HirFlatFunction {
 #[derive(Debug, Clone, Serialize)]
 pub(crate) enum HirFlatFunctionOwner {
     Function,
-    Method {
+    StructOrEnum {
         #[serde(serialize_with = "serialize_item_impl")]
         item_impl: ItemImpl,
         trait_def_name: Option<NamespacedName>,
@@ -51,7 +51,7 @@ impl HirFlatFunctionOwner {
     pub(crate) fn simple_name(&self) -> Option<String> {
         match self {
             Self::Function => None,
-            Self::Method { item_impl, .. } => Some(ty_to_string(&item_impl.self_ty)),
+            Self::StructOrEnum { item_impl, .. } => Some(ty_to_string(&item_impl.self_ty)),
         }
     }
 }
