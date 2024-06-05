@@ -3,6 +3,9 @@ use crate::codegen::ir::hir::flat::struct_or_enum::{
 };
 use crate::codegen::ir::hir::misc::syn_item_struct_or_enum::SynItemStructOrEnum;
 use crate::codegen::ir::hir::tree::module::HirTreeModuleMeta;
+use crate::codegen::parser::hir::flat::parser::mirror_ident::{
+    parse_mirror_ident, ParseMirrorIdentOutput,
+};
 use crate::utils::namespace::{Namespace, NamespacedName};
 use itertools::Itertools;
 use log::debug;
