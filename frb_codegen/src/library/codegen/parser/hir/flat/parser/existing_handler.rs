@@ -1,4 +1,5 @@
 use crate::codegen::parser::hir::flat::parser::flattener::SynItemWithMeta;
+use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 use crate::library::misc::consts::HANDLER_NAME;
 use crate::utils::namespace::NamespacedName;
 use anyhow::ensure;
@@ -6,8 +7,10 @@ use itertools::Itertools;
 
 pub(super) fn parse_existing_handler(
     items: &[SynItemWithMeta],
+    config: &ParserHirInternalConfig,
 ) -> anyhow::Result<Option<NamespacedName>> {
     let existing_handlers = (items.iter())
+        .filter(|module| config.rust_input_namespace_pack.is_interest(&module.meta.namespace))
         .filter(|item| parse_has_executor(&item.item))
         .map(|item| NamespacedName::new(item.meta.namespace.to_owned(), HANDLER_NAME.to_owned()))
         .collect_vec();
