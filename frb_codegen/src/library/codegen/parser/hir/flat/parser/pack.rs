@@ -8,6 +8,7 @@ pub(crate) fn parse_pack(
     hir_tree: HirTreePack,
 ) -> anyhow::Result<HirFlatPack> {
     let items = super::flattener::flatten(hir_tree)?;
+    let items = super::simple_filter::simple_filter(items, config)?;
 
     let mut pack = HirFlatPack::default();
     for item in items {
