@@ -117,6 +117,6 @@ fn name_for_use_stmt(item: &syn::Item) -> Option<String> {
         syn::Item::Type(x) => Some(x.ident.to_string()),
         syn::Item::Fn(x) => Some(x.sig.ident.to_string()),
         syn::Item::Trait(x) => Some(x.ident.to_string()),
-        syn::Item::Impl(x) | _ => None,
+        syn::Item::Impl(_) | _ => None,
     }
 }
