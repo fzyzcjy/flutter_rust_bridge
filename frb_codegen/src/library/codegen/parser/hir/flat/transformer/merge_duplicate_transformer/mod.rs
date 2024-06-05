@@ -16,7 +16,7 @@ pub(crate) mod trait_def_default_impl_merger;
 pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
     transform_component(
         &mut pack.functions,
-        |x| x.owner_and_name(),
+        |x| x.owner_and_name_for_dedup(),
         |merger, a, b| merger.merge_functions(a, b),
     );
     transform_component(

@@ -16,8 +16,16 @@ pub(crate) struct HirFlatFunction {
 }
 
 impl HirFlatFunction {
-    pub(crate) fn owner_and_name(&self) -> SimpleOwnerAndName {
-        (self.owner.simple_name(), self.item_fn.name())
+    pub(crate) fn owner_and_name_for_dedup(&self) -> SimpleOwnerAndName {
+        (self.owner_for_dedup(), self.item_fn.name())
+    }
+
+    pub(crate) fn owner_for_dedup(&self) -> String {
+        match self {
+            Self::Function => self.namespace.joined_path,
+            Self::StructOrEnum { impl_ty, .. } => ty_to_string(impl_ty),
+            Self::TraitDef { trait_def_name } => trait_def_name.name.clone(),
+        }
     }
 
     pub(crate) fn is_public(&self) -> Option<bool> {
@@ -49,17 +57,7 @@ pub(crate) enum HirFlatFunctionOwner {
     },
 }
 
-impl HirFlatFunctionOwner {
-    pub(crate) fn simple_name(&self) -> Option<String> {
-        match self {
-            Self::Function => None,
-            Self::StructOrEnum { impl_ty, .. } => Some(ty_to_string(impl_ty)),
-            Self::TraitDef { trait_def_name } => Some(trait_def_name.name.clone()),
-        }
-    }
-}
-
-pub(crate) type SimpleOwnerAndName = (Option<String>, String);
+pub(crate) type SimpleOwnerAndName = (String, String);
 
 #[derive(Debug, Clone, Copy, Serialize)]
 pub(crate) enum HirFlatFunctionSource {
