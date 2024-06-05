@@ -12,7 +12,7 @@ use itertools::{concat, Itertools};
 use std::collections::HashMap;
 use syn::{ItemImpl, TraitItem};
 
-pub(super) fn transform(mut pack: HirPack) -> anyhow::Result<HirPack> {
+pub(crate) fn transform(mut pack: HirPack) -> anyhow::Result<HirPack> {
     let trait_map = (collect_traits(&pack).into_iter())
         .map(|(k, v)| (k, v.to_owned()))
         .collect::<HashMap<_, _>>();
